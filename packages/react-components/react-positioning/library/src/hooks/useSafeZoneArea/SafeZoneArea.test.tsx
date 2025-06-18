@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 
 import type { createSafeZoneAreaStateStore } from './createSafeZoneAreaStateStore';
 import { SafeZoneArea, type SafeZoneAreaImperativeHandle } from './SafeZoneArea';
@@ -70,10 +70,12 @@ describe('SafeZoneArea', () => {
         />,
       );
 
-      imperativeRef.current?.updateSVG({
-        containerRect,
-        targetRect,
-        mouseCoordinates,
+      act(() => {
+        imperativeRef.current?.updateSVG({
+          containerRect,
+          targetRect,
+          mouseCoordinates,
+        });
       });
 
       expect(container.querySelector('svg')).toMatchSnapshot();

@@ -23,8 +23,8 @@ describe('InteractionTag', () => {
         <InteractionTagSecondary data-testid="secondary" aria-label="remove" />
       </InteractionTag>,
     );
-    expect(getByTestId('secondary').getAttribute('aria-labelledby')).toMatch(
-      /fui-InteractionTagPrimary-\d+ fui-InteractionTagSecondary-\d+/,
+    expect(getByTestId('secondary').getAttribute('aria-labelledby')).toMatchInlineSnapshot(
+      `"fui-InteractionTagPrimary-rf fui-InteractionTagSecondary-rg"`,
     );
   });
 });

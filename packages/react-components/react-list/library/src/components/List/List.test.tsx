@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fireEvent, render, within } from '@testing-library/react';
+import { act, fireEvent, render, within } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { List } from './List';
 import { ListProps } from './List.types';
@@ -270,11 +270,11 @@ describe('List', () => {
       expectListboxItemSelected(firstItem, false);
       expectListboxItemSelected(secondItem, false);
 
-      firstItem.click();
+      fireEvent.click(firstItem);
       expectListboxItemSelected(firstItem, true);
       expectListboxItemSelected(secondItem, false);
 
-      secondItem.click();
+      fireEvent.click(secondItem);
       expectListboxItemSelected(firstItem, false);
       expectListboxItemSelected(secondItem, true);
     });
@@ -294,22 +294,22 @@ describe('List', () => {
       expectListboxItemSelected(firstItem, false);
       expectListboxItemSelected(secondItem, false);
 
-      firstItem.click();
+      fireEvent.click(firstItem);
       // [x][ ]
       expectListboxItemSelected(firstItem, true);
       expectListboxItemSelected(secondItem, false);
 
-      secondItem.click();
+      fireEvent.click(secondItem);
       // [x][x]
       expectListboxItemSelected(firstItem, true);
       expectListboxItemSelected(secondItem, true);
 
-      secondItem.click();
+      fireEvent.click(secondItem);
       // [x][ ]
       expectListboxItemSelected(firstItem, true);
       expectListboxItemSelected(secondItem, false);
 
-      firstItem.click();
+      fireEvent.click(firstItem);
       // [ ][ ]
       expectListboxItemSelected(firstItem, false);
       expectListboxItemSelected(secondItem, false);
@@ -383,7 +383,9 @@ describe('List', () => {
         );
 
         const firstItem = result.getByText('First ListItem');
-        interaction(firstItem);
+        act(() => {
+          interaction(firstItem);
+        });
 
         return { listItem: firstItem, onAction };
       }
