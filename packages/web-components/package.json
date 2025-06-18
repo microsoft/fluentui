@@ -3,16 +3,16 @@
   "description": "A library of Fluent Web Components",
   "version": "3.0.0-beta.107",
   "author": {
-    "name": "Microsoft",
-    "url": "https://discord.gg/FcSNfg4"
+    "name": "NBS-Sandbox",
+    "url": "https://github.com/NBS-Sandbox"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/microsoft/fluentui/tree/master/packages/web-components"
+    "url": "https://github.com/NBS-Sandbox/npds-lib-fluentui"
   },
-  "bugs": {
-    "url": "https://github.com/Microsoft/fluentui/issues/new/choose"
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "type": "module",
   "main": "dist/esm/index.js",
