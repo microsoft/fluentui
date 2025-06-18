@@ -50,7 +50,7 @@ export const ChartTable: React_2.FunctionComponent<IChartTableProps>;
 // Warning: (ae-forgotten-export) The symbol "CustomPoints" needs to be exported by the entry point index.d.ts
 //
 // @public
-export type DataPointShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
+export type DataPointShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints | `${keyof typeof Points}-open`;
 
 // @public (undocumented)
 export const DataVizGradientPalette: {

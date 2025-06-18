@@ -293,7 +293,12 @@ export interface ILegendsProps {
  * triangle: show the triangle legend
  * {@docCategory Legends}
  */
-export type DataPointShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
+export type DataPointShape =
+  | 'default'
+  | 'triangle'
+  | keyof typeof Points
+  | keyof typeof CustomPoints
+  | `${keyof typeof Points}-open`;
 
 /**
  * {@docCategory Legends}
