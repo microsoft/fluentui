@@ -1,7 +1,7 @@
 import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
 import { HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { isIE11 } from '@fluentui/react';
-import { getAxisTitleStyle, getTooltipStyles } from '../../utilities';
+import { getAxisTitleStyle, getTooltipStyle } from '../../utilities/index';
 
 const isIE11Var: boolean = isIE11();
 
@@ -191,7 +191,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         borderTop: `1px solid ${theme.semanticColors.menuDivider}`,
       },
     ],
-    tooltip: getTooltipStyles(theme),
+    tooltip: getTooltipStyle(theme),
     svgTooltip: {
       fill: theme.semanticColors.bodyBackground,
       [HighContrastSelector]: {

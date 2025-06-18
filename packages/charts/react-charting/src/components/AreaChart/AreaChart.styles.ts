@@ -1,8 +1,8 @@
 import { IAreaChartStyleProps, IAreaChartStyles } from './AreaChart.types';
-import { getTooltipStyles } from '../../utilities';
+import { getTooltipStyle } from '../../utilities/index';
 
 export const getStyles = (props: IAreaChartStyleProps): IAreaChartStyles => {
   return {
-    tooltip: getTooltipStyles(props.theme!),
+    tooltip: getTooltipStyle(props.theme!),
   };
 };

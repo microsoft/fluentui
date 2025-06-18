@@ -1,6 +1,5 @@
-import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { IVerticalBarChartStyleProps, IVerticalBarChartStyles } from '../../index';
-import { getTooltipStyles } from '../../utilities';
+import { getBarLabelStyle, getTooltipStyle } from '../../utilities/index';
 
 export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChartStyles => {
   const { shouldHighlight, theme } = props;
@@ -21,18 +20,7 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
         transform: 'scaleX(-1)',
       },
     ],
-
-    tooltip: getTooltipStyles(theme),
-
-    barLabel: {
-      fontSize: FontSizes.small,
-      fontWeight: FontWeights.semibold,
-      fill: theme.palette.neutralPrimary,
-      selectors: {
-        [HighContrastSelector]: {
-          fill: 'CanvasText',
-        },
-      },
-    },
+    tooltip: getTooltipStyle(theme),
+    barLabel: getBarLabelStyle(theme),
   };
 };

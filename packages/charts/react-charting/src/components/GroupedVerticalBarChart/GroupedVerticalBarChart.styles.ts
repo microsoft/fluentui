@@ -1,6 +1,5 @@
-import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles } from '../../index';
-import { getTooltipStyles } from '../../utilities';
+import { getBarLabelStyle, getTooltipStyle } from '../../utilities/index';
 
 export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVerticalBarChartStyles => {
   const { theme, href } = props;
@@ -8,16 +7,7 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
     opacityChangeOnHover: {
       cursor: href ? 'pointer' : 'default',
     },
-    tooltip: getTooltipStyles(theme),
-    barLabel: {
-      fontSize: FontSizes.small,
-      fontWeight: FontWeights.semibold,
-      fill: theme.palette.neutralPrimary,
-      selectors: {
-        [HighContrastSelector]: {
-          fill: 'CanvasText',
-        },
-      },
-    },
+    tooltip: getTooltipStyle(theme),
+    barLabel: getBarLabelStyle(theme),
   };
 };

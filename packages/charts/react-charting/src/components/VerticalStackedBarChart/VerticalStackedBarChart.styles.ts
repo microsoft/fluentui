@@ -1,6 +1,5 @@
-import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
-import { getTooltipStyles } from '../../utilities';
+import { getBarLabelStyle, getTooltipStyle } from '../../utilities/index';
 
 export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalStackedBarChartStyles => {
   const { shouldHighlight, href, theme } = props;
@@ -9,16 +8,7 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       opacity: shouldHighlight ? '' : '0.1',
       cursor: href ? 'pointer' : 'default',
     },
-    tooltip: getTooltipStyles(theme),
-    barLabel: {
-      fontSize: FontSizes.small,
-      fontWeight: FontWeights.semibold,
-      fill: theme.palette.neutralPrimary,
-      selectors: {
-        [HighContrastSelector]: {
-          fill: 'CanvasText',
-        },
-      },
-    },
+    tooltip: getTooltipStyle(theme),
+    barLabel: getBarLabelStyle(theme),
   };
 };

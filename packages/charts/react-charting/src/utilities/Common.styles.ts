@@ -3,7 +3,7 @@ import type { IRawStyle } from '@fluentui/merge-styles';
 import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { NeutralColors } from '@fluentui/react';
 
-export const getTooltipStyles = (theme: ITheme): IStyle => {
+export const getTooltipStyle = (theme: ITheme): IStyle => {
   return {
     ...theme.fonts.medium,
     display: 'flex',
@@ -34,4 +34,17 @@ export const getAxisTitleStyle = (theme: ITheme, font: IRawStyle): IStyle => {
       },
     },
   ];
+};
+
+export const getBarLabelStyle = (theme: ITheme): IStyle => {
+  return {
+    fontSize: FontSizes.small,
+    fontWeight: FontWeights.semibold,
+    fill: theme.palette.neutralPrimary,
+    selectors: {
+      [HighContrastSelector]: {
+        fill: 'CanvasText',
+      },
+    },
+  };
 };
