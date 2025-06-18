@@ -29,7 +29,11 @@ export const styles = css`
       --max: attr(max type(<number>), 100);
       --min: attr(min type(<number>), 0);
       --value: attr(value type(<number>), 0);
-      --indicator-width: calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%);
+      --indicator-width: clamp(
+        0%,
+        calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%),
+        100%
+      );
     }
   }
 
