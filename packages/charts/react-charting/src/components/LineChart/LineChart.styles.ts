@@ -1,27 +1,9 @@
-import { HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
+import { getMarkerLabelStyle, getTooltipStyle } from '../../utilities/index';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
   return {
-    tooltip: {
-      ...props.theme!.fonts.medium,
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '8px',
-      position: 'absolute',
-      textAlign: 'center',
-      top: '0px',
-      background: props.theme!.semanticColors.bodyBackground,
-      borderRadius: '2px',
-      pointerEvents: 'none',
-      color: props.theme!.semanticColors.bodyText,
-    },
-    markerLabel: {
-      selectors: {
-        [HighContrastSelector]: {
-          fill: 'CanvasText',
-        },
-      },
-    },
+    tooltip: getTooltipStyle(props.theme!),
+    markerLabel: getMarkerLabelStyle(props.theme!),
   };
 };

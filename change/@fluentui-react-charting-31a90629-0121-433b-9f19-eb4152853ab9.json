@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-charting): Refactoring common code to reduce bundle size",
+  "packageName": "@fluentui/react-charting",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
