@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts';
+// eslint-disable-next-line no-restricted-imports
 import { useId } from '@fluentui/react-utilities';
 
 export const LineChartSecondaryYAxis = () => {
