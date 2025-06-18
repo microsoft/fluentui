@@ -1,6 +1,6 @@
 import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles } from '../../index';
-import { getTooltipStyles } from '../../CartesianChart';
+import { getTooltipStyles } from '../../utilities';
 
 export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVerticalBarChartStyles => {
   const { theme, href } = props;

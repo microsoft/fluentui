@@ -1,6 +1,6 @@
 import { FontSizes, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { IScatterChartStyleProps, IScatterChartStyles } from './ScatterChart.types';
-import { getTooltipStyles } from '../../CartesianChart';
+import { getTooltipStyles } from '../../utilities';
 
 export const getStyles = (props: IScatterChartStyleProps): IScatterChartStyles => {
   return {

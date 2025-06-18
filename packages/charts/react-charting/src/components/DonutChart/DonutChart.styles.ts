@@ -1,5 +1,5 @@
 import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
-import { getAxisTitleStyle } from '../../CartesianChart';
+import { getAxisTitleStyle } from '../../utilities';
 
 export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
   const { className, width, height, theme } = props;

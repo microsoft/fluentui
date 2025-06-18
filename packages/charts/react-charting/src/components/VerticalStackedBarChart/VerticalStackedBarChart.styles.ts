@@ -1,6 +1,6 @@
 import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
-import { getTooltipStyles } from '../../CartesianChart';
+import { getTooltipStyles } from '../../utilities';
 
 export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalStackedBarChartStyles => {
   const { shouldHighlight, href, theme } = props;

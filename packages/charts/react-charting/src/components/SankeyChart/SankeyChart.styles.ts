@@ -1,6 +1,6 @@
 import { ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 import { HighContrastSelector } from '@fluentui/react/lib/Styling';
-import { getTooltipStyles } from '../../CartesianChart';
+import { getTooltipStyles } from '../../utilities';
 
 export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => {
   const { className, theme, pathColor, enableReflow } = props;

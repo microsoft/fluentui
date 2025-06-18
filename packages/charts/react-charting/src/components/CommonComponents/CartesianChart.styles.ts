@@ -1,7 +1,7 @@
 import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
 import { HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { isIE11 } from '@fluentui/react';
-import { getAxisTitleStyle, getTooltipStyles } from './Common.styles';
+import { getAxisTitleStyle, getTooltipStyles } from '../../utilities';
 
 const isIE11Var: boolean = isIE11();
 
