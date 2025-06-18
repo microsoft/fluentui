@@ -140,15 +140,15 @@ export const colorNeutralForeground2 = 'var(--colorNeutralForeground2)';
  */
 export const colorCompoundBrandBackground = 'var(--colorCompoundBrandBackground)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorBrandForeground1 | `colorBrandForeground1`} design token.
- * @public
- */
-export const colorBrandForeground1 = 'var(--colorBrandForeground1)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground1 | `colorNeutralForeground1`} design token.
  * @public
  */
 export const colorNeutralForeground1 = 'var(--colorNeutralForeground1)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandForeground1 | `colorBrandForeground1`} design token.
+ * @public
+ */
+export const colorBrandForeground1 = 'var(--colorBrandForeground1)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForegroundDisabled | `colorNeutralForegroundDisabled`} design token.
  * @public
