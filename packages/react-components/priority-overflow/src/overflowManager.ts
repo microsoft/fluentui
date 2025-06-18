@@ -100,8 +100,15 @@ export function createOverflowManager(): OverflowManager {
   }
 
   function gapSize(): number {
-    let elements = visibleItemQueue.all().map(id => overflowItems[id].element);
-    elements = elements.concat(Object.values(overflowDividers).map(x => x.element));
+    const elements = visibleItemQueue.all().map(id => overflowItems[id].element);
+
+    if (Object.keys(overflowDividers).length > 0) {
+      const visibleDividers = Object.entries(overflowDividers)
+        .filter(([id]) => groupManager.groupVisibility()[id] !== 'hidden')
+        .map(([, divider]) => divider.element);
+
+      elements.push(...visibleDividers);
+    }
 
     if (hasOverflowItems() && overflowMenu) {
       elements.push(overflowMenu);

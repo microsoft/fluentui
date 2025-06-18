@@ -174,7 +174,7 @@ export const CustomDivider: React.FC<{
   const isGroupVisible = useIsOverflowGroupVisible(groupId);
 
   if (isGroupVisible === 'hidden') {
-    return null;
+    // return null;
   }
 
   const selector = {
@@ -182,7 +182,6 @@ export const CustomDivider: React.FC<{
   };
 
   const style = {
-    display: 'inline-block',
     width: '30px',
     backgroundColor: 'red',
     height: '20px',
@@ -562,16 +561,16 @@ describe('Overflow', () => {
     setContainerWidth(500);
     cy.get(`[${selectors.item}="8"]`).should('not.be.visible');
     setContainerWidth(350);
-    cy.get(`[${selectors.divider}="4"]`).should('not.exist');
-    cy.get(`[${selectors.divider}]`).should('have.length', 3);
+    cy.get(`[${selectors.divider}="4"]`).should('have.attr', 'data-overflowing');
+    cy.get(`[${selectors.divider}]:not([data-overflowing])`).should('have.length', 3);
     cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
     setContainerWidth(250);
-    cy.get(`[${selectors.divider}="3"]`).should('not.exist');
-    cy.get(`[${selectors.divider}]`).should('have.length', 2);
+    cy.get(`[${selectors.divider}="3"]`).should('have.attr', 'data-overflowing');
+    cy.get(`[${selectors.divider}]:not([data-overflowing])`).should('have.length', 2);
     cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
     setContainerWidth(200);
     cy.get(`[${selectors.divider}="1"]`).should('exist');
-    cy.get(`[${selectors.divider}]`).should('have.length', 1);
+    cy.get(`[${selectors.divider}]:not([data-overflowing])`).should('have.length', 1);
     cy.get(`[${selectors.item}="1"]`).should('be.visible');
     cy.get(`[${selectors.item}="2"]`).should('not.be.visible');
   });
@@ -789,7 +788,7 @@ describe('Overflow', () => {
     cy.get(`[${selectors.divider}="5"]`).should('exist');
     cy.get(`[${selectors.item}="6"]`).should('not.be.visible');
     cy.get(`[${selectors.item}="5"]`).should('be.visible');
-    cy.get(`[${selectors.divider}]`).should('have.length', 5);
+    cy.get(`[${selectors.divider}]:not([data-overflowing])`).should('have.length', 5);
     setContainerWidth(468);
     cy.get(`[${selectors.item}="6"]`).should('not.be.visible');
     cy.get(`[${selectors.item}="5"]`).should('be.visible');
@@ -1184,6 +1183,63 @@ describe('Overflow', () => {
     overflowCases.forEach(({ overflowCount, containerSize }) => {
       setContainerWidth(containerSize);
       cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+    });
+  });
+
+  it(`should overflow items with gap and dividers`, () => {
+    mount(
+      <Container style={{ gap: 10 }} measureGap>
+        <Item id={'6'} priority={6} groupId={'1'}>
+          6-1
+        </Item>
+        <CustomDivider groupId={'1'}>
+          <span data-divider="1" />
+        </CustomDivider>
+        <Item id={'7'} priority={7} groupId={'2'}>
+          7-2
+        </Item>
+        <CustomDivider groupId={'2'} data-divider="2">
+          <span data-divider="2" />
+        </CustomDivider>
+        <Item id={'4'} priority={4} groupId={'3'}>
+          4-3
+        </Item>
+        <Item id={'5'} priority={5} groupId={'3'}>
+          5-3
+        </Item>
+        <CustomDivider groupId={'3'} data-divider="3">
+          <span data-divider="3" />
+        </CustomDivider>
+        <Item id={'1'} priority={1} groupId={'4'}>
+          1-4
+        </Item>
+        <Item id={'2'} priority={2} groupId={'4'}>
+          2-4
+        </Item>
+        <Item id={'3'} priority={3} groupId={'4'}>
+          3-4
+        </Item>
+        <CustomDivider groupId={'4'} data-divider="4">
+          <span data-divider="4" />
+        </CustomDivider>
+        <Item id={'8'} priority={8} groupId={'5'}>
+          8-5
+        </Item>
+        <Menu />
+      </Container>,
+    );
+
+    const overflowCases = [
+      { containerSize: 570, overflowCount: 2, dividerCount: 4 },
+      { containerSize: 470, overflowCount: 3, dividerCount: 3 },
+      { containerSize: 410, overflowCount: 4, dividerCount: 3 },
+      { containerSize: 310, overflowCount: 5, dividerCount: 2 },
+    ];
+
+    overflowCases.forEach(({ overflowCount, containerSize, dividerCount }) => {
+      setContainerWidth(containerSize);
+      cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+      cy.get(`[${selectors.divider}]:not([data-overflowing])`).should('have.length', dividerCount);
     });
   });
 });
