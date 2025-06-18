@@ -17,6 +17,8 @@ import { TablistOrientation } from './tablist.options.js';
 /**
  * A Tablist element that wraps a collection of tab elements
  * @public
+ *
+ * @event change - Fires a custom 'change' event when the active tab changes
  */
 export class BaseTablist extends FASTElement {
   /**

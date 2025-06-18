@@ -11,6 +11,10 @@ import { ImplicitSubmissionBlockingTypes, TextInputType } from './text-input.opt
  * @csspart label - The internal `<label>` element
  * @csspart root - the root container for the internal control
  * @csspart control - The internal `<input>` control
+ *
+ * @fires change - Fires a custom 'change' event when the input value changes
+ * @fires select - Fires a custom 'select' event when the input value is selected
+ * @fires input - Fires a custom 'input' event when the input value changes
  * @public
  */
 export class BaseTextInput extends FASTElement {
@@ -446,6 +450,7 @@ export class BaseTextInput extends FASTElement {
   /**
    * Clicks the inner control when the component is clicked.
    *
+   * @internal
    * @param e - the event object
    */
   public clickHandler(e: MouseEvent): boolean | void {
@@ -466,8 +471,8 @@ export class BaseTextInput extends FASTElement {
   /**
    * Focuses the inner control when the component is focused.
    *
+   * @internal
    * @param e - the event object
-   * @public
    */
   public focusinHandler(e: FocusEvent): boolean | void {
     if (e.target === this) {
