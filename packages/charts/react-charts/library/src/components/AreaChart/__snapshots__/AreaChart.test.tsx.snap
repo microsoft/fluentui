@@ -2019,7 +2019,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,265.5)"
             >
               <line
                 stroke="currentColor"
@@ -2031,7 +2031,79 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
                 fill="currentColor"
                 x="10"
               >
-                NaNundefined
+                0
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,204.25)"
+            >
+              <line
+                stroke="currentColor"
+                x2="-570"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="10"
+              >
+                25
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,143)"
+            >
+              <line
+                stroke="currentColor"
+                x2="-570"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="10"
+              >
+                50
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,81.75)"
+            >
+              <line
+                stroke="currentColor"
+                x2="-570"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="10"
+              >
+                75
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,20.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="-570"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="10"
+              >
+                100
               </text>
             </g>
           </g>

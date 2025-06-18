@@ -709,9 +709,9 @@ export function createNumericYAxisForOtherCharts(
   } = yAxisParams;
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
-  const tempVal = maxOfYVal || yMinMaxValues.endValue;
+  const tempVal = maxOfYVal || yMinMaxValues.endValue || 0;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = Math.min(yMinMaxValues.startValue, yMinValue || 0);
+  const finalYmin = Math.min(yMinMaxValues.startValue || 0, yMinValue || 0);
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
   let yMin = finalYmin;
   let yMax = domainValues[domainValues.length - 1];
