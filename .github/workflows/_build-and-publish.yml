@@ -40,9 +40,13 @@ jobs:
         working-directory: packages/web-components
         run: yarn nx build
 
-      - name: Bump & Pack
+      - name: bump Version
         working-directory: packages/web-components
-        run: npm run bump
+        run: npm run bump-patch
+
+      - name: Pack
+        working-directory: packages/web-components
+        run: npm pack --ignore-scripts
 
       - name: Publish to GitHub Packages
         working-directory: packages/web-components
