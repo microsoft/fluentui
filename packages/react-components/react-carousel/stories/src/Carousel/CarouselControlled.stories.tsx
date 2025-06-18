@@ -128,6 +128,7 @@ export const Controlled = () => {
       <Carousel
         activeIndex={activeIndex}
         groupSize={1}
+        draggable
         onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
         announcement={getAnnouncement}
       >
