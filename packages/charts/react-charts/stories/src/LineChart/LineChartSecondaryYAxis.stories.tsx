@@ -130,7 +130,6 @@ export const LineChartSecondaryYAxis = () => {
           enableReflow={false}
           hideTickOverlap={true}
           secondaryYScaleOptions={{}}
-          supportNegativeData={true}
         />
       </div>
     </div>

@@ -162,7 +162,6 @@ export interface CartesianChartProps {
     showXAxisLablesTooltip?: boolean;
     strokeWidth?: number;
     styles?: CartesianChartStyles;
-    supportNegativeData?: boolean;
     svgProps?: React_2.SVGProps<SVGSVGElement>;
     tickFormat?: string;
     tickPadding?: number;
