@@ -44,8 +44,12 @@ jobs:
         working-directory: packages/web-components
         run: yarn version --patch --no-git-tag-version
 
+      - name: Pack Version
+        working-directory: packages/web-components
+        run: npm pack
+
       - name: Publish to GitHub Packages
         working-directory: packages/web-components
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: yarn publish
+        run: npm publish
