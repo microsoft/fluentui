@@ -258,7 +258,6 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         onChartMouseLeave={this._handleChartMouseLeave}
         ref={this._cartesianChartRef}
         tickParams={tickParams}
-        getXAxisLabelWidth={this._getXAxisLabelWidth}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -914,18 +913,5 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       });
     });
     return categoryToValues;
-  };
-
-  private _getXAxisLabelWidth = (containerWidth: number): number => {
-    if (this._xAxisType !== XAxisTypes.StringAxis) {
-      return 0;
-    }
-
-    if (this._stringXAxisDataPoints.length <= 1) {
-      return containerWidth;
-    }
-
-    const totalWidth = containerWidth - this.margins.left! - this.margins.right!;
-    return totalWidth / this._stringXAxisDataPoints.length;
   };
 }

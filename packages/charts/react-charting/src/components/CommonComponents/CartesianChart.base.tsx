@@ -402,12 +402,21 @@ export class CartesianChartBase
        * Required space will be calculated first time chart rendering and if any width/height of chart updated.
        * */
       if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
+        let maxXAxisLabelWidth: number | undefined;
+        if (this.props.xAxisType === XAxisTypes.StringAxis) {
+          if ((this.props.datasetForXAxisDomain?.length || 0) > 1) {
+            maxXAxisLabelWidth = xScale.step();
+          } else {
+            maxXAxisLabelWidth = this.state.containerWidth;
+          }
+        }
+
         const wrapLabelProps = {
           node: this.xAxisElement,
           xAxis: xScale,
           showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
           noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
-          width: this.props.getXAxisLabelWidth?.(this.state.containerWidth),
+          width: maxXAxisLabelWidth,
         };
         const temp = xScale && (createWrapOfXLabels(wrapLabelProps) as number);
         // this value need to be updated for draw graph updated. So instead of using private value, using set state.

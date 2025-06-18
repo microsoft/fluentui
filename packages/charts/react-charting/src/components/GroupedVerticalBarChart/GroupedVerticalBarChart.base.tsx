@@ -238,7 +238,6 @@ export class GroupedVerticalBarChartBase
         })}
         barwidth={this._barWidth}
         ref={this._cartesianChartRef}
-        getXAxisLabelWidth={this._getXAxisLabelWidth}
         /* eslint-disable react/jsx-no-bind */
         children={() => {
           return <g>{this._groupedVerticalBarGraph}</g>;
@@ -863,20 +862,5 @@ export class GroupedVerticalBarChartBase
       });
     });
     return categoryToValues;
-  };
-
-  private _getXAxisLabelWidth = (containerWidth: number): number => {
-    if (this._xAxisType !== XAxisTypes.StringAxis) {
-      return 0;
-    }
-
-    if (this._xAxisLabels.length <= 1) {
-      return containerWidth;
-    }
-
-    const totalWidth = calcTotalWidth(containerWidth, this.margins, this._domainMargin);
-    const groupBandwidth = calcBandwidth(totalWidth, this._xAxisLabels.length, this._xAxisInnerPadding);
-    const step = groupBandwidth / (1 - this._xAxisInnerPadding);
-    return step;
   };
 }

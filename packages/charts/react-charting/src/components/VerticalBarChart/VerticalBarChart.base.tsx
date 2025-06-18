@@ -231,7 +231,6 @@ export class VerticalBarChartBase
           !isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding) &&
           this.props.mode !== 'histogram'
         }
-        getXAxisLabelWidth={this._getXAxisLabelWidth}
         /* eslint-disable react/jsx-no-bind */
         children={(props: IChildProps) => {
           return (
@@ -1405,20 +1404,5 @@ export class VerticalBarChartBase
       }
     });
     return categoryToValues;
-  };
-
-  private _getXAxisLabelWidth = (containerWidth: number): number => {
-    if (this._xAxisType !== XAxisTypes.StringAxis) {
-      return 0;
-    }
-
-    if (this._xAxisLabels.length <= 1) {
-      return containerWidth;
-    }
-
-    const totalWidth = calcTotalWidth(containerWidth, this.margins, this._domainMargin);
-    const bandwidth = calcBandwidth(totalWidth, this._xAxisLabels.length, this._xAxisInnerPadding);
-    const step = bandwidth / (1 - this._xAxisInnerPadding);
-    return step;
   };
 }
