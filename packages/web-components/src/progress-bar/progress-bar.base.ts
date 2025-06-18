@@ -113,17 +113,17 @@ export class BaseProgressBar extends FASTElement {
       return;
     }
 
+    if (Number.isNaN(this.value)) {
+      this.indicator.style.removeProperty('width');
+      return;
+    }
+
     const min = this.min ?? 0;
     const max = this.max ?? 100;
     const value = this.value ?? 0;
     const range = max - min;
-
     const width = range === 0 ? 0 : Math.fround(((value - min) / range) * 100);
 
-    if (width) {
-      this.indicator.style.setProperty('width', `${width}%`);
-    } else {
-      this.indicator.style.removeProperty('width');
-    }
+    this.indicator.style.setProperty('width', `${width}%`);
   }
 }
