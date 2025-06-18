@@ -1,6 +1,5 @@
 import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
-import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
-import { NeutralColors } from '@fluentui/react';
+import { getAxisTitleStyle } from '../../CartesianChart';
 
 export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
   const { className, width, height, theme } = props;
@@ -29,19 +28,6 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
       paddingTop: '16px',
       width: `${width}px`,
     },
-    axisAnnotation: [
-      theme.fonts.small,
-      {
-        textAlign: 'center',
-        fontWeight: FontWeights.semibold,
-        fontStyle: 'normal',
-        lineHeight: FontSizes.medium,
-        color: NeutralColors.gray160,
-        fill: theme.semanticColors.bodyText,
-        [HighContrastSelector]: {
-          fill: 'CanvasText',
-        },
-      },
-    ],
+    axisAnnotation: getAxisTitleStyle(theme, theme.fonts.small),
   };
 };

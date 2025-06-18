@@ -1,6 +1,7 @@
 import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
-import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
-import { NeutralColors, isIE11 } from '@fluentui/react';
+import { HighContrastSelector } from '@fluentui/react/lib/Styling';
+import { isIE11 } from '@fluentui/react';
+import { getAxisTitleStyle, getTooltipStyles } from './Common.styles';
 
 const isIE11Var: boolean = isIE11();
 
@@ -31,34 +32,8 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
     chartWrapper: {
       ...(enableReflow ? { overflow: 'auto' } : {}),
     },
-    axisTitle: [
-      theme.fonts.xSmall,
-      {
-        textAlign: 'center',
-        fontWeight: FontWeights.semibold,
-        fontStyle: 'normal',
-        lineHeight: FontSizes.medium,
-        color: NeutralColors.gray160,
-        fill: theme.semanticColors.bodyText,
-        [HighContrastSelector]: {
-          fill: 'CanvasText',
-        },
-      },
-    ],
-    axisAnnotation: [
-      theme.fonts.small,
-      {
-        textAlign: 'center',
-        fontWeight: FontWeights.semibold,
-        fontStyle: 'normal',
-        lineHeight: FontSizes.medium,
-        color: NeutralColors.gray160,
-        fill: theme.semanticColors.bodyText,
-        [HighContrastSelector]: {
-          fill: 'CanvasText',
-        },
-      },
-    ],
+    axisTitle: getAxisTitleStyle(theme!, theme.fonts.xSmall),
+    axisAnnotation: getAxisTitleStyle(theme!, theme.fonts.small),
     xAxis: {
       selectors: {
         text: [
@@ -216,18 +191,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         borderTop: `1px solid ${theme.semanticColors.menuDivider}`,
       },
     ],
-    tooltip: {
-      ...theme.fonts.medium,
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '8px',
-      position: 'absolute',
-      textAlign: 'center',
-      top: '0px',
-      background: theme.semanticColors.bodyBackground,
-      borderRadius: '2px',
-      pointerEvents: 'none',
-    },
+    tooltip: getTooltipStyles(theme),
     svgTooltip: {
       fill: theme.semanticColors.bodyBackground,
       [HighContrastSelector]: {

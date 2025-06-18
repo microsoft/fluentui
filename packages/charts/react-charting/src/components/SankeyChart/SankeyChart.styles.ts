@@ -1,5 +1,6 @@
 import { ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 import { HighContrastSelector } from '@fluentui/react/lib/Styling';
+import { getTooltipStyles } from '../../CartesianChart';
 
 export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => {
   const { className, theme, pathColor, enableReflow } = props;
@@ -34,18 +35,7 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
         },
       },
     },
-    toolTip: {
-      ...props.theme!.fonts.medium,
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '8px',
-      position: 'absolute',
-      textAlign: 'center',
-      top: '0px',
-      background: props.theme!.semanticColors.bodyBackground,
-      borderRadius: '2px',
-      pointerEvents: 'none',
-    },
+    toolTip: getTooltipStyles(props.theme!),
     nodeTextContainer: {
       selectors: {
         text: {
