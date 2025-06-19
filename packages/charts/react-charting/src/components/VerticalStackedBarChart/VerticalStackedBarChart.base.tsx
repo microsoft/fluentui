@@ -887,6 +887,7 @@ export class VerticalStackedBarChartBase
     readonly gapHeight: number;
     readonly heightValueScale: number;
     readonly adjustedTotalHeight: number;
+    readonly absStackTotal: number;
   } {
     const { barGapMax = 0 } = this.props;
 
@@ -921,6 +922,7 @@ export class VerticalStackedBarChartBase
       gapHeight,
       heightValueScale,
       adjustedTotalHeight: sumOfPercent,
+      absStackTotal: totalData,
     } as const;
   }
 
@@ -971,7 +973,7 @@ export class VerticalStackedBarChartBase
         return undefined;
       }
 
-      const { gapHeight, heightValueScale, adjustedTotalHeight } = this._getBarGapAndScale(barsToDisplay, yBarScale);
+      const { gapHeight, heightValueScale, absStackTotal } = this._getBarGapAndScale(barsToDisplay, yBarScale);
 
       if (heightValueScale < 0) {
         return undefined;
@@ -1032,7 +1034,7 @@ export class VerticalStackedBarChartBase
           yPoint = yPositiveStart;
         } else {
           barHeight = Math.abs(heightValueScale * (point.data as number));
-          const minHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
+          const minHeight = Math.max((heightValueScale * absStackTotal) / 100.0, barMinimumHeight);
           if (barHeight < minHeight) {
             barHeight = minHeight;
           }
