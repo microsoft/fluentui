@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat(react-charting): Support for categorical theta values for scatter polar chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "120183316+srmukher@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

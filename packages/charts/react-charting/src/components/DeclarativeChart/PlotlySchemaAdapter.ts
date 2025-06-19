@@ -1517,22 +1517,87 @@ export const transformPlotlyJsonToChartTableProps = (
 
 export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
   const projection: PlotlySchema = { ...input };
+
+  // 1. Find the global max radius across all series
+  let maxRadius = 0;
+  for (let sindex = 0; sindex < input.data.length; sindex++) {
+    const rVals = (input.data[sindex] as Partial<PlotData>).r;
+    if (rVals) {
+      for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
+        if (!isInvalidValue(rVals[ptindex])) {
+          maxRadius = Math.max(maxRadius, rVals[ptindex] as number);
+        }
+      }
+    }
+  }
+
+  // 2. Project all points and create a perfect square domain
+  const allX: number[] = [];
+  const allY: number[] = [];
   for (let sindex = 0; sindex < input.data.length; sindex++) {
     const series = input.data[sindex] as Partial<PlotData>;
     series.x = [] as Datum[];
     series.y = [] as Datum[];
-    for (let ptindex = 0; ptindex < (series.r?.length ?? 0); ptindex++) {
-      if (isInvalidValue(series.theta?.[ptindex]) || isInvalidValue(series.r?.[ptindex])) {
+    const thetas = series.theta!;
+    const rVals = series.r!;
+
+    // Compute tick positions if categorical
+    let uniqueTheta: Datum[] = [];
+    let categorical = false;
+    if (!isNumberArray(thetas)) {
+      uniqueTheta = Array.from(new Set(thetas));
+      categorical = true;
+    }
+
+    for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
+      if (isInvalidValue(thetas?.[ptindex]) || isInvalidValue(rVals?.[ptindex])) {
         continue;
       }
 
-      const thetaRad = ((series.theta![ptindex] as number) * Math.PI) / 180;
-      const radius = series.r![ptindex] as number;
-      series.x.push(radius * Math.cos(thetaRad));
-      series.y.push(radius * Math.sin(thetaRad));
+      // 3. Map theta to angle in radians
+      let thetaRad;
+      if (categorical) {
+        const idx = uniqueTheta.indexOf(thetas[ptindex]);
+        const step = (2 * Math.PI) / uniqueTheta.length;
+        thetaRad = idx * step;
+      } else {
+        thetaRad = ((thetas[ptindex] as number) * Math.PI) / 180;
+      }
+
+      // 4. Calculate cartesian coordinates (without scaling yet)
+      const rawRadius = rVals[ptindex] as number;
+      const x = rawRadius * Math.cos(thetaRad);
+      const y = rawRadius * Math.sin(thetaRad);
+
+      series.x.push(x);
+      series.y.push(y);
+      allX.push(x);
+      allY.push(y);
     }
+
     projection.data[sindex] = series;
   }
+
+  // 5. Find the maximum absolute value among all x and y
+  let maxAbs = Math.max(...allX.map(Math.abs), ...allY.map(Math.abs));
+  maxAbs = maxAbs === 0 ? 1 : maxAbs;
+
+  // 6. Rescale all points so that the largest |x| or |y| is 0.5
+  for (let sindex = 0; sindex < projection.data.length; sindex++) {
+    const series = projection.data[sindex] as Partial<PlotData>;
+    if (series.x && series.y) {
+      series.x = (series.x as number[]).map((v: number) => v / (2 * maxAbs));
+      series.y = (series.y as number[]).map((v: number) => v / (2 * maxAbs));
+    }
+  }
+
+  // 7. Customize layout for perfect square with absolute positioning
+  const size = input.layout?.width || input.layout?.height || 500;
+  projection.layout = {
+    ...projection.layout,
+    width: size,
+    height: size,
+  };
 
   return projection;
 };
