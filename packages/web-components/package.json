@@ -1,18 +1,18 @@
 {
-  "name": "@fluentui/web-components",
+  "name": "@nbs-sandbox/npds-lib-fluentui",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.107",
+  "version": "2.6.1",
   "author": {
-    "name": "Microsoft",
-    "url": "https://discord.gg/FcSNfg4"
+    "name": "NBS-Sandbox",
+    "url": "https://github.com/NBS-Sandbox"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/microsoft/fluentui/tree/master/packages/web-components"
+    "url": "https://github.com/NBS-Sandbox/npds-lib-fluentui"
   },
-  "bugs": {
-    "url": "https://github.com/Microsoft/fluentui/issues/new/choose"
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "type": "module",
   "main": "dist/esm/index.js",
@@ -66,7 +66,9 @@
     "start-storybook": "storybook dev",
     "build-storybook": "storybook build -o ./dist/storybook --docs",
     "e2e": "node ./scripts/e2e.js",
-    "e2e:local": "node ./scripts/e2e.js --ui"
+    "e2e:local": "node ./scripts/e2e.js --ui",
+    "bump-patch": "node scripts/bump-patch.js",
+    "overlay-styles": "node scripts/copy-custom-styles.js"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
