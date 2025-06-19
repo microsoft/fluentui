@@ -2017,7 +2017,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr2h"
+      id="calloutr1v"
     >
       <div
         class="fui-PopoverSurface"
@@ -2035,7 +2035,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               class="fui-cart__calloutContentX"
             >
               2020/04/30
-
+               
             </div>
           </div>
           <div
@@ -2565,7 +2565,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr2p"
+      id="calloutr27"
     >
       <div
         class="fui-PopoverSurface"
@@ -3142,7 +3142,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr2t"
+      id="calloutr2b"
     >
       <div
         class="fui-PopoverSurface"
