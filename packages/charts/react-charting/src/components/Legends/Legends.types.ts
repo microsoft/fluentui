@@ -114,9 +114,9 @@ export interface ILegend {
   opacity?: number;
 
   /**
-   * The shape for the legend
+   * The shape for the legend or marker. Backward compatible: accepts both LegendShape and DataPointShape.
    */
-  shape?: DataPointShape;
+  shape?: LegendShape | DataPointShape;
 
   /**
    * Indicated whether or not to apply stripe pattern
@@ -276,9 +276,9 @@ export interface ILegendsProps {
   selectedLegend?: string;
 
   /**
-   * The shape for the legend.
+   * The shape for the legend or marker. Backward compatible: accepts both LegendShape and DataPointShape.
    */
-  shape?: DataPointShape;
+  shape?: LegendShape | DataPointShape;
 
   /**
    * Callback to access the public methods and properties of the component.
@@ -293,12 +293,12 @@ export interface ILegendsProps {
  * triangle: show the triangle legend
  * {@docCategory Legends}
  */
-export type DataPointShape =
-  | 'default'
-  | 'triangle'
-  | keyof typeof Points
-  | keyof typeof CustomPoints
-  | `${keyof typeof Points}-open`;
+export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
+
+/**
+ * The shape for the data point. Backward compatible: accepts both LegendShape and DataPointShape.
+ */
+export type DataPointShape = LegendShape | `${keyof typeof Points}-open`;
 
 /**
  * {@docCategory Legends}

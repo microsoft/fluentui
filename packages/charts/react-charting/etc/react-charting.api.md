@@ -46,11 +46,11 @@ export const ChartHoverCard: React_2.FunctionComponent<IChartHoverCardProps>;
 // @public
 export const ChartTable: React_2.FunctionComponent<IChartTableProps>;
 
+// Warning: (ae-forgotten-export) The symbol "LegendShape" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "Points" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "CustomPoints" needs to be exported by the entry point index.d.ts
 //
 // @public
-export type DataPointShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints | `${keyof typeof Points}-open`;
+export type DataPointShape = LegendShape | `${keyof typeof Points}-open`;
 
 // @public (undocumented)
 export const DataVizGradientPalette: {
@@ -183,7 +183,7 @@ export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolea
 export const getNextGradient: (index: number, offset?: number, isDarkTheme?: boolean) => [string, string];
 
 // @public (undocumented)
-export function getShapePath(shape: DataPointShape | undefined): string;
+export function getShapePath(shape: LegendShape | DataPointShape | undefined): string;
 
 // @public
 export const GroupedVerticalBarChart: React_2.FunctionComponent<IGroupedVerticalBarChartProps>;
@@ -959,7 +959,7 @@ export interface ILegend {
     nativeButtonProps?: React_2.ButtonHTMLAttributes<HTMLButtonElement>;
     onMouseOutAction?: (isLegendFocused?: boolean) => void;
     opacity?: number;
-    shape?: DataPointShape;
+    shape?: LegendShape | DataPointShape;
     stripePattern?: boolean;
     title: string;
 }
@@ -997,7 +997,7 @@ export interface ILegendsProps {
     ref?: IRefObject<ILegendContainer>;
     selectedLegend?: string;
     selectedLegends?: string[];
-    shape?: DataPointShape;
+    shape?: LegendShape | DataPointShape;
     styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
     theme?: ITheme;
 }
@@ -1073,7 +1073,7 @@ export interface ILineChartPoints {
     gaps?: ILineChartGap[];
     hideNonActiveDots?: boolean;
     legend: string;
-    legendShape?: DataPointShape;
+    legendShape?: LegendShape | DataPointShape;
     lineOptions?: ILineChartLineOptions;
     onLegendClick?: (selectedLegend: string | null | string[]) => void;
     onLineClick?: () => void;
@@ -1398,7 +1398,7 @@ export interface ISankeyChartStyles {
 
 // @public
 export interface IScatterChartDataPoint extends IBaseDataPoint {
-    markerShape?: DataPointShape;
+    markerShape?: LegendShape | DataPointShape;
     x: number | Date | string;
     y: number;
 }
@@ -1409,7 +1409,7 @@ export interface IScatterChartPoints {
     data: IScatterChartDataPoint[];
     hideNonActiveDots?: boolean;
     legend: string;
-    legendShape?: DataPointShape;
+    legendShape?: LegendShape | DataPointShape;
     onLegendClick?: (selectedLegend: string | null | string[]) => void;
     opacity?: number;
     useSecondaryYScale?: boolean;
@@ -1442,13 +1442,13 @@ export interface IShapeProps {
     // (undocumented)
     pathProps: React_2.SVGAttributes<SVGPathElement>;
     // (undocumented)
-    shape: DataPointShape;
+    shape: LegendShape | DataPointShape;
     // (undocumented)
     svgProps: React_2.SVGAttributes<SVGElement>;
 }
 
 // @public (undocumented)
-export function isOpenShape(shape?: DataPointShape): boolean;
+export function isOpenShape(shape?: LegendShape | DataPointShape): boolean;
 
 // @public
 export interface ISparklineProps {

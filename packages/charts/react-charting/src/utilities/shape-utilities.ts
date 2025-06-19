@@ -3,7 +3,7 @@
  * we need to also add that in  pointTypes below and vise-versa
  */
 
-import { DataPointShape } from '../components/Legends/Legends.types';
+import { DataPointShape, LegendShape } from '../components/Legends/Legends.types';
 
 export enum Points {
   circle,
@@ -110,7 +110,7 @@ export const pointPaths: { [key: string]: string } = {
   dottedLine: 'M0 6 H3 M5 6 H8 M10 6 H13',
 };
 
-export function getShapePath(shape: DataPointShape | undefined): string {
+export function getShapePath(shape: LegendShape | DataPointShape | undefined): string {
   if (!shape || shape === 'default') {
     return pointPaths.circle;
   }
@@ -124,6 +124,6 @@ export function getShapePath(shape: DataPointShape | undefined): string {
   return pointPaths[mappedShape] || pointPaths.circle;
 }
 
-export function isOpenShape(shape?: DataPointShape): boolean {
+export function isOpenShape(shape?: LegendShape | DataPointShape): boolean {
   return Boolean(String(shape)?.toLowerCase().includes('open'));
 }

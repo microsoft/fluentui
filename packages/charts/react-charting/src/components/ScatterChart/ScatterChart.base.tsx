@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IChildProps, IScatterChartStyleProps, IScatterChartStyles, IScatterChartProps } from './ScatterChart.types';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
-import { ILegend, ILegendContainer, Legends, DataPointShape } from '../Legends/index';
+import { ILegend, ILegendContainer, Legends, DataPointShape, LegendShape } from '../Legends/index';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import {
   areArraysEqual,
@@ -408,7 +408,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
   const _renderShape = React.useCallback(
     (
-      shape: DataPointShape | undefined,
+      shape: LegendShape | DataPointShape | undefined,
       x: number | string | Date,
       y: number,
       size: number,
@@ -515,7 +515,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           const { x, y, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points.current?.[i]?.data[j];
           const pointMarkerSize = (_points.current?.[i]?.data[j] as IScatterChartDataPoint).markerSize;
           const pointShape =
-            (_points.current?.[i]?.data[j] as IScatterChartDataPoint).markerShape || _points.current?.[i]?.legendShape;
+            (_points.current?.[i]?.data[j] as IScatterChartDataPoint).markerShape ||
+            (_points.current?.[i]?.legendShape as LegendShape | DataPointShape);
           const extraMaxPixels =
             _xAxisType !== XAxisTypes.StringAxis
               ? _getRangeForScatterMarkerSize(_yAxisScale.current, yPadding, xMin, xMax, xPadding)
@@ -538,7 +539,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           pointsForSeries.push(
             <>
               {_renderShape(
-                String(pointShape)?.toLowerCase().replace(/-/g, '') as DataPointShape,
+                pointShape,
                 x,
                 y,
                 circleRadius,

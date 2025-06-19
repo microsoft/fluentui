@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SankeyLink, SankeyNode } from 'd3-sankey';
-import { DataPointShape } from '../components/Legends/Legends.types';
+import { DataPointShape, LegendShape } from '../components/Legends/Legends.types';
 import { CurveFactory } from 'd3-shape';
 
 export interface IBasestate {
@@ -455,7 +455,7 @@ export interface ILineChartPoints {
    * The shape for the legend
    * default: show the rect legend
    */
-  legendShape?: DataPointShape;
+  legendShape?: LegendShape | DataPointShape;
 
   /**
    * dataPoints for the line chart
@@ -920,7 +920,7 @@ export interface IScatterChartDataPoint extends IBaseDataPoint {
   /**
    * Shape of the marker for this data point
    */
-  markerShape?: DataPointShape;
+  markerShape?: LegendShape | DataPointShape;
 }
 
 /**
@@ -936,7 +936,7 @@ export interface IScatterChartPoints {
    * The shape for the legend
    * default: show the rect legend
    */
-  legendShape?: DataPointShape;
+  legendShape?: LegendShape | DataPointShape;
 
   /**
    * dataPoints for the line chart
