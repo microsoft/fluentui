@@ -44,21 +44,6 @@ function sharedAfterEach() {
   window.requestAnimationFrame = originalRAF;
 }
 
-beforeAll(() => {
-  // https://github.com/jsdom/jsdom/issues/3368
-  global.ResizeObserver = class ResizeObserver {
-    public observe() {
-      // do nothing
-    }
-    public unobserve() {
-      // do nothing
-    }
-    public disconnect() {
-      // do nothing
-    }
-  };
-});
-
 describe('Gauge chart rendering - ', () => {
   beforeEach(() => {
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
