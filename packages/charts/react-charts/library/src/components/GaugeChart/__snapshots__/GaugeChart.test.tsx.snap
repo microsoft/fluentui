@@ -3,7 +3,7 @@
 exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider67"
+    class="fui-FluentProvider fui-FluentProviderr22"
     dir="ltr"
   >
     <div
@@ -261,7 +261,7 @@ Array [
     aria-haspopup="menu"
     class="fui-Button fui-MenuButton"
     data-overflow-menu=""
-    id="menu66"
+    id="menur21"
     type="button"
   >
     +3 more
@@ -856,7 +856,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout24"
+      id="calloutrn"
     >
       <div
         class="fui-PopoverSurface"
@@ -893,7 +893,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       Low Risk
                     </div>
                     <div
@@ -919,7 +919,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       Medium Risk
                     </div>
                     <div
@@ -945,7 +945,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       High Risk
                     </div>
                     <div
@@ -1530,7 +1530,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout29"
+      id="calloutrs"
     >
       <div
         class="fui-PopoverSurface"
@@ -1567,7 +1567,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       Low Risk
                     </div>
                     <div
@@ -1593,7 +1593,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       Medium Risk
                     </div>
                     <div
@@ -1619,7 +1619,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       High Risk
                     </div>
                     <div
@@ -1826,7 +1826,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout16"
+      id="calloutrf"
     >
       <div
         class="fui-PopoverSurface"
@@ -1863,7 +1863,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       Low Risk
                     </div>
                     <div
@@ -1889,7 +1889,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       Medium Risk
                     </div>
                     <div
@@ -1915,7 +1915,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       High Risk
                     </div>
                     <div
@@ -2879,7 +2879,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-78"
+        id="tooltip-r2d"
         role="tooltip"
       >
         <div
@@ -3234,7 +3234,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-89"
+        id="tooltip-r2o"
         role="tooltip"
       >
         <div
@@ -3609,7 +3609,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-75"
+        id="tooltip-r2a"
         role="tooltip"
       >
         <div
@@ -4029,7 +4029,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-94"
+        id="tooltip-r2t"
         role="tooltip"
       >
         <div
@@ -4457,7 +4457,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-81"
+        id="tooltip-r2g"
         role="tooltip"
       >
         <div
@@ -4915,7 +4915,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-91"
+        id="tooltip-r2q"
         role="tooltip"
       >
         <div
@@ -5378,7 +5378,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-84"
+        id="tooltip-r2j"
         role="tooltip"
       >
         <div
@@ -5394,7 +5394,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-86"
+        id="tooltip-r2l"
         role="tooltip"
       >
         <div
