@@ -49,6 +49,8 @@ const X1_INNER_PADDING = 0.1;
 // => space_between_bars = (x1_inner_padding / (1 - x1_inner_padding)) * bar_width
 /** Rate at which the space between the bars in a group changes wrt the bar width */
 const BAR_GAP_RATE = X1_INNER_PADDING / (1 - X1_INNER_PADDING);
+const VERTICAL_BAR_GAP = 1;
+const MIN_BAR_HEIGHT = 1;
 
 // This interface used for - While forming datapoints from given prop "data" in code
 interface GVDataPoint {
@@ -82,6 +84,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
+  const Y_ORIGIN: number = 0;
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -389,19 +392,36 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     tempDataSet.forEach((datasetKey: string, index: number) => {
       const refIndexNumber = singleSet.indexNum * tempDataSet.length + index;
       const pointData = singleSet[datasetKey];
+
+      console.log('point data', pointData);
       // To align the centers of the generated bandwidth and the calculated one when they differ,
       // use the following addend.
       const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - _barWidth) / 2;
-      const yPoint = Math.max(containerHeight! - _margins.bottom! - yBarScale(pointData.data), 0);
       const startColor = pointData.color ? pointData.color : getNextColor(index, 0);
 
+      let barTotalValue = 0;
+      const yBaseline = yBarScale(Y_ORIGIN);
+      let yPositiveStart = yBaseline;
+      let yNegativeStart = yBaseline;
+      let yPoint = Y_ORIGIN;
+
+      const barGap = (VERTICAL_BAR_GAP / 2) * (index > 0 ? 2 : 0);
+      const height = Math.max(yBarScale(Y_ORIGIN) - yBarScale(Math.abs(pointData.data)), MIN_BAR_HEIGHT);
+      if (pointData.data >= Y_ORIGIN) {
+        yPositiveStart -= height + barGap;
+        yPoint = yPositiveStart;
+      } else {
+        yPoint = yNegativeStart + barGap;
+        yNegativeStart = yPoint + height;
+      }
+      barTotalValue += pointData.data;
       // Not rendering data with 0.
       pointData.data &&
         singleGroup.push(
           <React.Fragment key={`${singleSet.indexNum}-${index}`}>
             <rect
               className={classes.opacityChangeOnHover}
-              height={Math.max(yBarScale(pointData.data), 0)}
+              height={height}
               width={_barWidth}
               x={xPoint}
               y={yPoint}
@@ -426,6 +446,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         );
       if (
         pointData.data &&
+        barTotalValue !== null &&
         !props.hideLabels &&
         _barWidth >= 16 &&
         (_legendHighlighted(pointData.legend) || _noLegendHighlighted())
@@ -434,7 +455,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
           <text
             key={`${singleSet.indexNum}-${index}`}
             x={xPoint + _barWidth / 2}
-            y={yPoint - 6}
+            y={barTotalValue >= Y_ORIGIN ? yPositiveStart - 6 : yNegativeStart + 12}
             textAnchor="middle"
             className={classes.barLabel}
             aria-hidden={true}

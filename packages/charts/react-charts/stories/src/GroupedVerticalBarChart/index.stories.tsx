@@ -4,6 +4,7 @@ import descriptionMd from './GroupedVerticalBarChartDescription.md';
 import bestPracticesMd from './GroupedVerticalBarChartBestPractices.md';
 
 export { GroupedVerticalBarDefault } from './GroupedVerticalBarChartDefault.stories';
+export { GroupedVerticalBarNegative } from './GroupedVerticalBarChartNegative.stories';
 
 export default {
   title: 'Charts/GroupedVerticalBarChart',
