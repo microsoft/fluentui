@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import fs   from 'fs';
+import fs from 'fs';
 import path from 'path';
 
 // you can pass the preid ("beta") or "stable" as first arg; defaults to "beta"
@@ -12,7 +12,7 @@ const version = pkg.version;
 const re  = /^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z\-]+)\.(\d+))?$/;
 const m   = version.match(re);
 if (!m) {
-  console.error(`✘ Could not parse version "${version}"`);
+  console.error(`Could not parse version "${version}"`);
   process.exit(1);
 }
 

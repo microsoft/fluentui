@@ -1,0 +1,54 @@
+name: Publish Stable (FE-1.x) Line
+
+on:
+  push:
+    branches:
+      - stable
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * 1'
+
+jobs:
+  release-stable:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout stable branch
+        uses: actions/checkout@v4
+        with:
+          ref: stable
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.19.2
+          registry-url: https://npm.pkg.github.com/
+          scope: '@nbs-sandbox'
+
+      - name: Install deps & build
+        run: |
+          npm install -g yarn@1
+          yarn install
+          cd packages/web-components
+          yarn install
+          yarn nx build
+          npm run overlay-styles
+
+      - name: Bump stable patch
+        working-directory: packages/web-components
+        run: npm run bump-patch stable
+
+      - name: Publish stable as latest
+        working-directory: packages/web-components
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm publish
+
+      - name: Commit version bump
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add packages/web-components/package.json
+          git commit -m "chore: bump stable to $(node -p \"require('./packages/web-components/package.json').version\")"
+          git push origin stable
