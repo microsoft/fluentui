@@ -356,7 +356,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           yMinValue: props.secondaryYScaleOptions?.yMinValue || 0,
           yMaxValue: props.secondaryYScaleOptions?.yMaxValue ?? 100,
           tickPadding: 10,
-          yMinMaxValues: getMinMaxOfYAxis(points, props.chartType, props.yAxisType, true),
+          yMinMaxValues: props.getMinMaxOfYAxis
+            ? props.getMinMaxOfYAxis(points, props.yAxisType, true)
+            : getMinMaxOfYAxis(points, props.chartType, props.yAxisType, true),
           yAxisPadding: props.yAxisPadding,
         };
 

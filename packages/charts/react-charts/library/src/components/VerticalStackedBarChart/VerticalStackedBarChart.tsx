@@ -27,6 +27,7 @@ import {
   ChartPopover,
   Legends,
   Chart,
+  DataPoint,
 } from '../../index';
 import {
   ChartTypes,
@@ -46,6 +47,8 @@ import {
   useRtl,
   DataVizPalette,
   getColorFromToken,
+  findVSBCNumericMinMaxOfY,
+  YAxisType,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -1048,6 +1051,27 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     return bars.filter((bar): bar is JSX.Element => !!bar);
   }
 
+  function _getMinMaxOfYAxis(
+    dataset: DataPoint[],
+    yAxisType?: YAxisType,
+    useSecondaryYScale?: boolean,
+  ): { startValue: number; endValue: number } {
+    if (!useSecondaryYScale) {
+      return findVSBCNumericMinMaxOfY(dataset);
+    }
+
+    const values: number[] = [];
+    props.data.forEach(xPoint => {
+      xPoint.lineData?.forEach(point => {
+        if (point.useSecondaryYScale) {
+          values.push(point.y);
+        }
+      });
+    });
+
+    return { startValue: d3Min(values)!, endValue: d3Max(values)! };
+  }
+
   if (!_isChartEmpty()) {
     _adjustProps();
     const _isHavingLines = props.data.some(
@@ -1088,6 +1112,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         points={_dataset}
         chartType={ChartTypes.VerticalStackedBarChart}
         xAxisType={_xAxisType}
+        getMinMaxOfYAxis={_getMinMaxOfYAxis}
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}

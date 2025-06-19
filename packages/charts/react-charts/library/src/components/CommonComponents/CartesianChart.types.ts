@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LegendsProps } from '../Legends/index';
-import { AccessibilityProps, Chart, Margins } from '../../types/index';
+import { AccessibilityProps, Chart, Margins, DataPoint } from '../../types/index';
 import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartPopoverProps } from './ChartPopover.types';
@@ -576,4 +576,13 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
    * Used to control the first render cycle Performance optimization code.
    */
   enableFirstRenderOptimization?: boolean;
+
+  /**
+   * Get the min and max values of the y-axis
+   */
+  getMinMaxOfYAxis?: (
+    points: DataPoint[],
+    yAxisType: YAxisType | undefined,
+    useSecondaryYScale?: boolean,
+  ) => { startValue: number; endValue: number };
 }
