@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: correct bar height rendering for values less than 1 in VSBC",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
