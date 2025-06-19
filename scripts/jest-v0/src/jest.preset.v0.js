@@ -15,7 +15,7 @@ const createConfig = (/** @type {import('@jest/types').Config.InitialOptions} */
   coverageDirectory: './coverage/',
   coverageReporters: ['json', 'lcov'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
-  setupFilesAfterEnv: [`${__dirname}/v0/setupTests.js`],
+  setupFilesAfterEnv: [`${__dirname}/setupTests.js`],
   testRegex: '/test/.*-test\\.tsx?$',
   transform: {
     '^.+\\.tsx?$': 'babel-jest',
