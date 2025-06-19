@@ -25,7 +25,7 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-gulp": "*",
-    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-jest-v0": "*",
     "@types/react": "17.0.44",
     "@types/react-dom": "17.0.15",
     "@types/react-is": "17.0.7",

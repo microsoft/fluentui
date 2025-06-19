@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const { workspaceRoot } = require('@nx/devkit');
 const { pathsToModuleNameMapper } = require('ts-jest');
-const { createV0Config: commonConfig } = require('@fluentui/scripts-jest');
+const { createV0Config: commonConfig } = require('@fluentui/scripts-jest-v0');
 
 const config = commonConfig({
   displayName: 'react-northstar',
