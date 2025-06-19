@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 02 Jun 2025 04:07:10 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Jun 2025 04:06:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.108](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.108)
+
+Thu, 19 Jun 2025 04:06:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.107..@fluentui/web-components_v3.0.0-beta.108)
+
+### Changes
+
+- refactor: use css attr func to calculate progress indicator width ([PR #34674](https://github.com/microsoft/fluentui/pull/34674) by machi@microsoft.com)
 
 ## [3.0.0-beta.107](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.107)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Allow the skeleton root to be a span in addition to a div",
-  "packageName": "@fluentui/react-skeleton",
-  "email": "nathansokol@microsoft.com",
-  "dependentChangeType": "patch"
-}

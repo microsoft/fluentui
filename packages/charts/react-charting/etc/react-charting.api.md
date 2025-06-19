@@ -605,6 +605,7 @@ export interface IDonutChartStyleProps extends ICartesianChartStyleProps {
 
 // @public
 export interface IDonutChartStyles {
+    axisAnnotation?: IStyle;
     chart?: IStyle;
     legendContainer: IStyle;
     root?: IStyle;

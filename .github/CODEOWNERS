@@ -171,6 +171,8 @@ packages/react-icons-mdl2 @microsoft/cxe-red
 packages/react-icons-mdl2-branded @microsoft/cxe-red
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
+packages/react-components/react-positioning/library @microsoft/teams-prg
+packages/react-components/react-positioning/stories @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg
 packages/react-components/react-overflow/library @microsoft/teams-prg
 packages/react-components/react-overflow/stories @microsoft/teams-prg

@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 19 Jun 2025 04:06:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.108",
+      "version": "3.0.0-beta.108",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "0faa5951fbd59ea5b666e20b141c6a5547871eb3",
+            "comment": "refactor: use css attr func to calculate progress indicator width"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Jun 2025 04:07:10 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.107",
       "version": "3.0.0-beta.107",
