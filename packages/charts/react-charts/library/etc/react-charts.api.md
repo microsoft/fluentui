@@ -1036,7 +1036,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     getDomainMargins?: (containerWidth: number) => Margins;
     getGraphData?: any;
     getmargins?: (margins: Margins) => void;
-    getMinMaxOfYAxis?: (points: LineChartPoints[] | HorizontalBarChartWithAxisDataPoint[] | VerticalBarChartDataPoint[] | DataPoint[] | ScatterChartDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
+    getMinMaxOfYAxis?: (points: DataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
         startValue: number;
         endValue: number;
     };
