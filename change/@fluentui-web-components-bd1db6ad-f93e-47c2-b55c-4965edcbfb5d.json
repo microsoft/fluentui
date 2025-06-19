@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "refactor: use css attr func to calculate progress indicator width",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}
