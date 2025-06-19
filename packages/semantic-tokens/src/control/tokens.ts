@@ -23,6 +23,7 @@ import {
   fontFamilyBase,
   fontWeightRegular,
   fontWeightSemibold,
+  spacingHorizontalXXL,
   spacingHorizontalM,
   spacingHorizontalS,
   spacingHorizontalL,
@@ -54,6 +55,7 @@ import {
   colorPaletteDarkOrangeBackground3,
   colorPaletteGreenBackground3,
   colorTransparentBackground,
+  shadow64,
 } from '../legacy/tokens';
 import {
   textGlobalDisplay1FontSizeRaw,
@@ -302,7 +304,7 @@ export const paddingContentXxSmall = `var(${paddingContentXxSmallRaw})`;
 export const paddingContentXSmall = `var(${paddingContentXSmallRaw})`;
 export const paddingContentSmall = `var(${paddingContentSmallRaw})`;
 export const paddingContentMedium = `var(${paddingContentMediumRaw})`;
-export const paddingContentLarge = `var(${paddingContentLargeRaw})`;
+export const paddingContentLarge = `var(${paddingContentLargeRaw}, ${spacingHorizontalXXL})`;
 export const paddingContentXLarge = `var(${paddingContentXLargeRaw})`;
 export const paddingContentXxLarge = `var(${paddingContentXxLargeRaw})`;
 export const paddingContentXxxLarge = `var(${paddingContentXxxLargeRaw})`;
@@ -387,7 +389,7 @@ export const backgroundFlyoutColorBlend = `var(${backgroundFlyoutColorBlendRaw})
 export const cornerZero = `var(${cornerZeroRaw}, ${borderRadiusNone})`;
 export const cornerBezel = `var(${cornerBezelRaw})`;
 export const cornerWindowDefault = `var(${cornerWindowDefaultRaw})`;
-export const cornerFlyoutRest = `var(${cornerFlyoutRestRaw})`;
+export const cornerFlyoutRest = `var(${cornerFlyoutRestRaw}, 0px)`;
 export const cornerLayerDefault = `var(${cornerLayerDefaultRaw})`;
 export const cornerCardRest = `var(${cornerCardRestRaw})`;
 export const cornerCtrlRest = `var(${cornerCtrlRestRaw}, ${borderRadiusMedium})`;
@@ -459,6 +461,6 @@ export const backgroundCardOnFlyoutDefaultHover = `var(${backgroundCardOnFlyoutD
 export const backgroundCardOnFlyoutDefaultPressed = `var(${backgroundCardOnFlyoutDefaultPressedRaw})`;
 export const backgroundCardOnFlyoutDefaultDisabled = `var(${backgroundCardOnFlyoutDefaultDisabledRaw})`;
 export const textStyleDefaultDisplayWeight = `var(${textStyleDefaultDisplayWeightRaw})`;
-export const shadowFlyout = `var(${shadowFlyoutRaw})`;
+export const shadowFlyout = `var(${shadowFlyoutRaw}, ${shadow64})`;
 export const shadowToolbar = `var(${shadowToolbarRaw})`;
 export const shadowWindowActive = `var(${shadowWindowActiveRaw})`;

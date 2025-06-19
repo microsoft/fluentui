@@ -435,10 +435,20 @@ export const fontFamilyBase = 'var(--fontFamilyBase)';
  */
 export const fontWeightRegular = 'var(--fontWeightRegular)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackground3 | `colorNeutralBackground3`} design token.
+ * @public
+ */
+export const colorNeutralBackground3 = 'var(--colorNeutralBackground3)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#shadow64 | `shadow64`} design token.
  * @public
  */
 export const shadow64 = 'var(--shadow64)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalXXL | `spacingHorizontalXXL`} design token.
+ * @public
+ */
+export const spacingHorizontalXXL = 'var(--spacingHorizontalXXL)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#strokeWidthThickest | `strokeWidthThickest`} design token.
  * @public
