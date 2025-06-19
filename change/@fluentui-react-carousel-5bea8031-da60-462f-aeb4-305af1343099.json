@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Ensure documentDownListener is removed on unmount",
-  "packageName": "@fluentui/react-carousel",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}
