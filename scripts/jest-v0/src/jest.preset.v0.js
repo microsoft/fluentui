@@ -1,6 +1,6 @@
 const path = require('node:path');
 
-const { getWorkspaceProjectsAliases } = require('@fluentui/scripts-monorepo');
+const { getWorkspaceProjectsAliases, workspaceRoot } = require('@fluentui/scripts-monorepo');
 const { findConfig } = require('@fluentui/scripts-utils');
 
 const { workersConfig } = require('./shared');
@@ -15,7 +15,7 @@ const createConfig = (/** @type {import('@jest/types').Config.InitialOptions} */
   coverageDirectory: './coverage/',
   coverageReporters: ['json', 'lcov'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
-  setupFilesAfterEnv: [`${__dirname}/v0/setupTests.js`],
+  setupFilesAfterEnv: [`${__dirname}/setupTests.js`],
   testRegex: '/test/.*-test\\.tsx?$',
   transform: {
     '^.+\\.tsx?$': 'babel-jest',
@@ -36,6 +36,13 @@ const createConfig = (/** @type {import('@jest/types').Config.InitialOptions} */
       excludeProjects: excludedPackages,
     }),
     ...customConfig.moduleNameMapper,
+    /**
+     * NOTE: need to explicitly pin react deps to v17, because yarn v1 incorrectly installs react and react-dom in some v0 packages
+     */
+    '^react-is$': path.join(workspaceRoot, 'packages/fluentui/react-northstar/node_modules/react-is'),
+    '^react$': path.join(workspaceRoot, 'packages/fluentui/react-northstar/node_modules/react'),
+    '^react-dom$': path.join(workspaceRoot, 'packages/fluentui/react-northstar/node_modules/react-dom'),
+    '^react-dom/(.*)$': path.join(workspaceRoot, 'packages/fluentui/react-northstar/node_modules/react-dom/$1'),
   },
   // OLD format for migration to jest 29 - TODO: migrate to new format . https://jestjs.io/blog/2022/04/25/jest-28#future
   snapshotFormat: {
