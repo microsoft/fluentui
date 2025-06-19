@@ -1063,6 +1063,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     const values: number[] = [];
     props.data.forEach(xPoint => {
       xPoint.lineData?.forEach(point => {
+        // useSecondaryYScale is applicable only for lines in VSBC
         if (point.useSecondaryYScale) {
           values.push(point.y);
         }
