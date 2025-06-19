@@ -1,10 +1,8 @@
-# .github/workflows/_build-and-publish.yml
 name: Build and Publish Fluent UI
 
 on:
   workflow_dispatch:
   push:
-    # support either `main` or `master` as your default branch
     branches:
       - main
       - master
@@ -15,7 +13,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-      repository-projects: read
 
     steps:
       - name: Checkout repo
@@ -56,16 +53,31 @@ jobs:
         working-directory: packages/web-components
         run: npm run overlay-styles
 
-      - name: bump Version
+      - name: Determine package version
+        id: get_version
+        run: |
+          VERSION=$(node -p "require('./packages/web-components/package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Bump version for stable line
+        if: startsWith(steps.get_version.outputs.VERSION, '2.')
+        working-directory: packages/web-components
+        run: npm run bump-patch stable
+
+      - name: Bump version for beta line
+        if: startsWith(steps.get_version.outputs.VERSION, '3.')
         working-directory: packages/web-components
         run: npm run bump-patch
-
-      - name: Pack
-        working-directory: packages/web-components
-        run: npm pack --ignore-scripts
 
       - name: Publish to GitHub Packages
         working-directory: packages/web-components
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm publish
+        run: |
+          if [[ "${{ steps.get_version.outputs.VERSION }}" == 2.* ]]; then
+            echo "Publishing v${{ steps.get_version.outputs.VERSION }} → latest"
+            npm publish
+          else
+            echo "Publishing v${{ steps.get_version.outputs.VERSION }} → beta"
+            npm publish --tag beta
+          fi
