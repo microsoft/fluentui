@@ -41,6 +41,18 @@ test.describe('Progress Bar', () => {
     await expect(element).toHaveJSProperty('elementInternals.ariaValueMax', '50');
   });
 
+  test('should set indicator width to be 1/3 of the container width if `value` is missing', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    await element.evaluate(node => {
+      node.style.setProperty("width", "100px");
+    });
+    const indicator = element.locator('.indicator');
+
+    await expect(indicator).toHaveCSS('width', "33px");
+  });
+
   test('should set indicator width to match the `value` property as a percentage between 0 and 100 when `min` and `max` are unset', async ({
     fastPage,
   }) => {
