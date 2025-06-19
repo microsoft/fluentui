@@ -3935,7 +3935,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -3943,7 +3943,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -4082,7 +4082,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -4092,7 +4092,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -4485,7 +4485,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4499,7 +4499,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4518,7 +4518,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, red, red);
                               opacity: ;
                             }
@@ -4585,7 +4585,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4599,7 +4599,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4618,7 +4618,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, green, green);
                               opacity: ;
                             }
@@ -4685,7 +4685,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4699,7 +4699,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4718,7 +4718,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, yellow, yellow);
                               opacity: ;
                             }
@@ -4805,7 +4805,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -4813,7 +4813,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -4952,7 +4952,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -4962,7 +4962,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -5351,7 +5351,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5365,7 +5365,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -5453,7 +5453,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5467,7 +5467,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -5555,7 +5555,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5569,7 +5569,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -5677,7 +5677,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -5685,7 +5685,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -5824,7 +5824,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -5834,7 +5834,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -5953,7 +5953,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                @media screen and (forced-colors: active){& text {
                   fill: CanvasText;
                 }
                 & path {
@@ -5963,7 +5963,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                   opacity: 0.2;
                   stroke: #323130;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                @media screen and (forced-colors: active){& line {
                   opacity: 0.1;
                   stroke: CanvasText;
                 }
@@ -6357,7 +6357,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -6371,7 +6371,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -6390,7 +6390,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, red, red);
                               opacity: ;
                             }
@@ -6457,7 +6457,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -6471,7 +6471,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -6490,7 +6490,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, green, green);
                               opacity: ;
                             }
@@ -6557,7 +6557,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -6571,7 +6571,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -6590,7 +6590,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, yellow, yellow);
                               opacity: ;
                             }
@@ -6677,7 +6677,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -6685,7 +6685,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -6824,7 +6824,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -6834,7 +6834,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -7227,7 +7227,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -7241,7 +7241,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -7260,7 +7260,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, red, red);
                               opacity: ;
                             }
@@ -7327,7 +7327,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -7341,7 +7341,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -7360,7 +7360,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, green, green);
                               opacity: ;
                             }
@@ -7427,7 +7427,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -7441,7 +7441,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -7460,7 +7460,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, yellow, yellow);
                               opacity: ;
                             }
@@ -7547,7 +7547,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -7555,7 +7555,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -7694,7 +7694,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -7704,7 +7704,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -8115,7 +8115,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -8129,7 +8129,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -8148,7 +8148,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, red, red);
                               opacity: ;
                             }
@@ -8215,7 +8215,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -8229,7 +8229,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -8248,7 +8248,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, green, green);
                               opacity: ;
                             }
@@ -8315,7 +8315,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -8329,7 +8329,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -8348,7 +8348,7 @@ exports[`Line chart rendering should render the line chart with negative y value
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, yellow, yellow);
                               opacity: ;
                             }
@@ -8435,7 +8435,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -8443,7 +8443,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -8582,7 +8582,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -8592,7 +8592,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -8985,7 +8985,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -8999,7 +8999,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -9018,7 +9018,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, red, red);
                               opacity: ;
                             }
@@ -9085,7 +9085,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -9099,7 +9099,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -9118,7 +9118,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, green, green);
                               opacity: ;
                             }
@@ -9185,7 +9185,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -9199,7 +9199,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -9218,7 +9218,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, yellow, yellow);
                               opacity: ;
                             }
@@ -9305,7 +9305,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -9313,7 +9313,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -9452,7 +9452,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -9462,7 +9462,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -9855,7 +9855,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -9869,7 +9869,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -9888,7 +9888,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, red, red);
                               opacity: ;
                             }
@@ -9955,7 +9955,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -9969,7 +9969,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -9988,7 +9988,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, green, green);
                               opacity: ;
                             }
@@ -10055,7 +10055,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -10069,7 +10069,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -10088,7 +10088,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, yellow, yellow);
                               opacity: ;
                             }
@@ -10188,7 +10188,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                @media screen and (forced-colors: active){& text {
                   fill: CanvasText;
                 }
                 & line {
@@ -10196,7 +10196,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   stroke: #f3f2f1;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                @media screen and (forced-colors: active){& line {
                   opacity: 0.1;
                   stroke: CanvasText;
                 }
@@ -10335,7 +10335,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                @media screen and (forced-colors: active){& text {
                   fill: CanvasText;
                 }
                 & path {
@@ -10345,7 +10345,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   opacity: 0.2;
                   stroke: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                @media screen and (forced-colors: active){& line {
                   opacity: 0.1;
                   stroke: CanvasText;
                 }
@@ -10738,7 +10738,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -10752,7 +10752,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -10771,7 +10771,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, red, red);
                                 opacity: ;
                               }
@@ -10838,7 +10838,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -10852,7 +10852,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -10871,7 +10871,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, green, green);
                                 opacity: ;
                               }
@@ -10938,7 +10938,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -10952,7 +10952,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -10971,7 +10971,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, yellow, yellow);
                                 opacity: ;
                               }

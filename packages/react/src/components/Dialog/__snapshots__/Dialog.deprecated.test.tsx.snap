@@ -111,7 +111,7 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
                 right: 0px;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 border: 1px solid WindowText;
                 opacity: 0;
               }
@@ -425,7 +425,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
                 right: 0px;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 border: 1px solid WindowText;
                 opacity: 0;
               }
@@ -739,7 +739,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                 right: 0px;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 border: 1px solid WindowText;
                 opacity: 0;
               }
@@ -921,7 +921,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                           top: 2px;
                           z-index: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           bottom: -2px;
                           left: -2px;
                           outline-color: ButtonText;
@@ -939,7 +939,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                           top: 2px;
                           z-index: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           bottom: -2px;
                           left: -2px;
                           outline-color: ButtonText;
@@ -955,7 +955,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                           background-color: #f3f2f1;
                           color: #106ebe;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+                        @media screen and (forced-colors: active){&:hover {
                           border-color: Highlight;
                           color: Highlight;
                         }
@@ -1204,7 +1204,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
                 right: 0px;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 border: 1px solid WindowText;
                 opacity: 0;
               }

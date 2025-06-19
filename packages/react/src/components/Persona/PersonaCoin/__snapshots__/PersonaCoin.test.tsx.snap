@@ -117,7 +117,7 @@ exports[`PersonaCoin renders correctly 1`] = `
             height: 48px;
             line-height: 46px;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window !important;
             border: 1px solid WindowText;
@@ -269,7 +269,7 @@ exports[`PersonaCoin renders correctly with onRender callback 1`] = `
             height: 100px;
             line-height: 100px;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window !important;
             border: 1px solid WindowText;
@@ -328,7 +328,7 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             height: 48px;
             line-height: 46px;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window !important;
             border: 1px solid WindowText;
@@ -387,7 +387,7 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             height: 48px;
             line-height: 46px;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window !important;
             border: 1px solid WindowText;
@@ -446,7 +446,7 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
             height: 48px;
             line-height: 46px;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window !important;
             border: 1px solid WindowText;

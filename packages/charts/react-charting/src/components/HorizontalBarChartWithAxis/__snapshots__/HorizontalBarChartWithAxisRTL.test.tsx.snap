@@ -51,7 +51,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -59,7 +59,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -252,7 +252,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -262,7 +262,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -559,7 +559,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -573,7 +573,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -592,7 +592,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078d4, #0078d4);
                               opacity: ;
                             }
@@ -659,7 +659,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -673,7 +673,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -692,7 +692,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #002050, #002050);
                               opacity: ;
                             }
@@ -759,7 +759,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -773,7 +773,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -792,7 +792,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #00188f, #00188f);
                               opacity: ;
                             }
@@ -859,7 +859,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -873,7 +873,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -892,7 +892,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #00bcf2, #00bcf2);
                               opacity: ;
                             }
@@ -977,7 +977,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -985,7 +985,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -1178,7 +1178,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -1188,7 +1188,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -1485,7 +1485,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1499,7 +1499,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1518,7 +1518,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078d4, #0078d4);
                               opacity: ;
                             }
@@ -1585,7 +1585,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1599,7 +1599,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1618,7 +1618,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #002050, #002050);
                               opacity: ;
                             }
@@ -1685,7 +1685,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1699,7 +1699,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1718,7 +1718,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #00188f, #00188f);
                               opacity: ;
                             }
@@ -1785,7 +1785,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1799,7 +1799,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1818,7 +1818,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #00bcf2, #00bcf2);
                               opacity: ;
                             }
@@ -1916,7 +1916,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                @media screen and (forced-colors: active){& text {
                   fill: CanvasText;
                 }
                 & line {
@@ -1924,7 +1924,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                   stroke: #f3f2f1;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                @media screen and (forced-colors: active){& line {
                   opacity: 0.1;
                   stroke: CanvasText;
                 }
@@ -2117,7 +2117,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                @media screen and (forced-colors: active){& text {
                   fill: CanvasText;
                 }
                 & path {
@@ -2127,7 +2127,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                   opacity: 0.2;
                   stroke: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                @media screen and (forced-colors: active){& line {
                   opacity: 0.1;
                   stroke: CanvasText;
                 }
@@ -2424,7 +2424,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2438,7 +2438,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -2457,7 +2457,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, #0078d4, #0078d4);
                                 opacity: ;
                               }
@@ -2524,7 +2524,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2538,7 +2538,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -2557,7 +2557,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, #002050, #002050);
                                 opacity: ;
                               }
@@ -2624,7 +2624,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2638,7 +2638,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -2657,7 +2657,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, #00188f, #00188f);
                                 opacity: ;
                               }
@@ -2724,7 +2724,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2738,7 +2738,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -2757,7 +2757,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, #00bcf2, #00bcf2);
                                 opacity: ;
                               }
@@ -2843,7 +2843,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -2851,7 +2851,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -3044,7 +3044,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -3054,7 +3054,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -3351,7 +3351,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3365,7 +3365,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3384,7 +3384,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078d4, #0078d4);
                               opacity: ;
                             }
@@ -3451,7 +3451,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3465,7 +3465,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3484,7 +3484,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #002050, #002050);
                               opacity: ;
                             }
@@ -3551,7 +3551,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3565,7 +3565,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3584,7 +3584,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #00188f, #00188f);
                               opacity: ;
                             }
@@ -3651,7 +3651,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3665,7 +3665,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3684,7 +3684,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #00bcf2, #00bcf2);
                               opacity: ;
                             }
@@ -3769,7 +3769,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -3777,7 +3777,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -3916,7 +3916,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -3926,7 +3926,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -4235,7 +4235,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4249,7 +4249,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4268,7 +4268,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078d4, #0078d4);
                               opacity: ;
                             }
@@ -4353,7 +4353,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -4361,7 +4361,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -4554,7 +4554,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -4564,7 +4564,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -4861,7 +4861,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4875,7 +4875,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4894,7 +4894,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078d4, #0078d4);
                               opacity: ;
                             }
@@ -4961,7 +4961,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4975,7 +4975,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4994,7 +4994,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #002050, #002050);
                               opacity: ;
                             }
@@ -5061,7 +5061,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5075,7 +5075,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -5094,7 +5094,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #00188f, #00188f);
                               opacity: ;
                             }
@@ -5161,7 +5161,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5175,7 +5175,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -5194,7 +5194,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #00bcf2, #00bcf2);
                               opacity: ;
                             }

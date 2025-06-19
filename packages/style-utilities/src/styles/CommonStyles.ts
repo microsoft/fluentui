@@ -1,17 +1,16 @@
 import type { IRawStyle } from '../MergeStyles';
 
-export const HighContrastSelector = '@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)';
+export const HighContrastSelector = '@media screen and (forced-colors: active)';
 export const HighContrastSelectorWhite =
   // eslint-disable-next-line @fluentui/max-len
-  '@media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light)';
+  '@media screen and (forced-colors: active) and (prefers-color-scheme: light)';
 export const HighContrastSelectorBlack =
   // eslint-disable-next-line @fluentui/max-len
-  '@media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark)';
+  '@media screen and (forced-colors: active) and (prefers-color-scheme: dark)';
 /**
  * @deprecated Use `HighContrastSelector`
  */
-export const EdgeChromiumHighContrastSelector =
-  '@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)';
+export const EdgeChromiumHighContrastSelector = '@media screen and (forced-colors: active)';
 
 export const ScreenWidthMinSmall = 320;
 export const ScreenWidthMinMedium = 480;

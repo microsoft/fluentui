@@ -90,7 +90,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -104,7 +104,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -123,7 +123,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #e81123, #e81123);
                           opacity: ;
                         }
@@ -190,7 +190,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -204,7 +204,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -223,7 +223,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #000000, #000000);
                           opacity: ;
                         }
@@ -290,7 +290,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -304,7 +304,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -323,7 +323,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #107c10, #107c10);
                           opacity: ;
                         }
@@ -390,7 +390,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -404,7 +404,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -423,7 +423,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -490,7 +490,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -504,7 +504,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -523,7 +523,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -590,7 +590,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -604,7 +604,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -623,7 +623,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, rgba(255,255,255,.4), rgba(255,255,255,.4));
                           opacity: ;
                         }
@@ -690,7 +690,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -704,7 +704,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -723,7 +723,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #004b1c, #004b1c);
                           opacity: ;
                         }
@@ -790,7 +790,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -804,7 +804,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -823,7 +823,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
@@ -890,7 +890,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -904,7 +904,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -923,7 +923,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #d83b01, #d83b01);
                           opacity: ;
                         }
@@ -990,7 +990,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1004,7 +1004,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -1023,7 +1023,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #32145a, #32145a);
                           opacity: ;
                         }
@@ -1090,7 +1090,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1104,7 +1104,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -1123,7 +1123,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #fff100, #fff100);
                           opacity: ;
                         }
@@ -1190,7 +1190,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1204,7 +1204,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -1223,7 +1223,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #bad80a, #bad80a);
                           opacity: ;
                         }
@@ -1290,7 +1290,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1304,7 +1304,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -1323,7 +1323,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #ff8c00, #ff8c00);
                           opacity: ;
                         }
@@ -1390,7 +1390,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1404,7 +1404,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -1423,7 +1423,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #008272, #008272);
                           opacity: ;
                         }
@@ -1490,7 +1490,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1504,7 +1504,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -1523,7 +1523,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00b294, #00b294);
                           opacity: ;
                         }
@@ -1590,7 +1590,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1604,7 +1604,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -1623,7 +1623,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #a4262c, #a4262c);
                           opacity: ;
                         }
@@ -1690,7 +1690,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1704,7 +1704,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -1723,7 +1723,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #ffffff, #ffffff);
                           opacity: 0.6;
                         }
@@ -1845,7 +1845,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1859,7 +1859,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -1878,7 +1878,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #e81123, #e81123);
                           opacity: ;
                         }
@@ -1945,7 +1945,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1959,7 +1959,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -1978,7 +1978,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #000000, #000000);
                           opacity: ;
                         }
@@ -2045,7 +2045,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2059,7 +2059,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -2078,7 +2078,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #107c10, #107c10);
                           opacity: ;
                         }
@@ -2145,7 +2145,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2159,7 +2159,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -2178,7 +2178,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -2245,7 +2245,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2259,7 +2259,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -2278,7 +2278,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -2345,7 +2345,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2359,7 +2359,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -2378,7 +2378,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, rgba(255,255,255,.4), rgba(255,255,255,.4));
                           opacity: ;
                         }
@@ -2445,7 +2445,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2459,7 +2459,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -2478,7 +2478,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #004b1c, #004b1c);
                           opacity: ;
                         }
@@ -2545,7 +2545,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2559,7 +2559,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -2578,7 +2578,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
@@ -2645,7 +2645,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2659,7 +2659,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -2678,7 +2678,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #d83b01, #d83b01);
                           opacity: ;
                         }
@@ -2745,7 +2745,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2759,7 +2759,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -2778,7 +2778,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #32145a, #32145a);
                           opacity: ;
                         }
@@ -2845,7 +2845,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2859,7 +2859,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -2878,7 +2878,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #fff100, #fff100);
                           opacity: ;
                         }
@@ -2945,7 +2945,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2959,7 +2959,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -2978,7 +2978,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #bad80a, #bad80a);
                           opacity: ;
                         }
@@ -3045,7 +3045,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3059,7 +3059,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -3078,7 +3078,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #ff8c00, #ff8c00);
                           opacity: ;
                         }
@@ -3145,7 +3145,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3159,7 +3159,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -3178,7 +3178,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #008272, #008272);
                           opacity: ;
                         }
@@ -3245,7 +3245,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3259,7 +3259,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -3278,7 +3278,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00b294, #00b294);
                           opacity: ;
                         }
@@ -3345,7 +3345,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3359,7 +3359,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -3378,7 +3378,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #a4262c, #a4262c);
                           opacity: ;
                         }
@@ -3445,7 +3445,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3459,7 +3459,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -3478,7 +3478,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #ffffff, #ffffff);
                           opacity: 0.6;
                         }
@@ -3600,7 +3600,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3614,7 +3614,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -3633,7 +3633,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #e81123, #e81123);
                           opacity: ;
                         }
@@ -3700,7 +3700,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3714,7 +3714,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -3733,7 +3733,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #000000, #000000);
                           opacity: ;
                         }
@@ -3800,7 +3800,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3814,7 +3814,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -3833,7 +3833,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #107c10, #107c10);
                           opacity: ;
                         }
@@ -3900,7 +3900,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3914,7 +3914,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -3933,7 +3933,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -4000,7 +4000,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4014,7 +4014,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -4033,7 +4033,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -4100,7 +4100,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4114,7 +4114,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -4133,7 +4133,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, rgba(255,255,255,.4), rgba(255,255,255,.4));
                           opacity: ;
                         }
@@ -4200,7 +4200,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4214,7 +4214,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -4233,7 +4233,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #004b1c, #004b1c);
                           opacity: ;
                         }
@@ -4300,7 +4300,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4314,7 +4314,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -4333,7 +4333,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
@@ -4400,7 +4400,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4414,7 +4414,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -4433,7 +4433,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #d83b01, #d83b01);
                           opacity: ;
                         }
@@ -4500,7 +4500,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4514,7 +4514,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -4533,7 +4533,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #32145a, #32145a);
                           opacity: ;
                         }
@@ -4600,7 +4600,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4614,7 +4614,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -4633,7 +4633,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #fff100, #fff100);
                           opacity: ;
                         }
@@ -4700,7 +4700,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4714,7 +4714,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -4733,7 +4733,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #bad80a, #bad80a);
                           opacity: ;
                         }
@@ -4800,7 +4800,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4814,7 +4814,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -4833,7 +4833,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #ff8c00, #ff8c00);
                           opacity: ;
                         }
@@ -4900,7 +4900,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4914,7 +4914,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -4933,7 +4933,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #008272, #008272);
                           opacity: ;
                         }
@@ -5000,7 +5000,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5014,7 +5014,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -5033,7 +5033,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00b294, #00b294);
                           opacity: ;
                         }
@@ -5100,7 +5100,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5114,7 +5114,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -5133,7 +5133,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #a4262c, #a4262c);
                           opacity: ;
                         }
@@ -5200,7 +5200,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5214,7 +5214,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -5233,7 +5233,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #ffffff, #ffffff);
                           opacity: 0.6;
                         }
@@ -5355,7 +5355,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5369,7 +5369,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -5388,7 +5388,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #e81123, #e81123);
                           opacity: ;
                         }
@@ -5455,7 +5455,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5469,7 +5469,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -5488,7 +5488,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #000000, #000000);
                           opacity: ;
                         }
@@ -5555,7 +5555,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5569,7 +5569,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -5588,7 +5588,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #107c10, #107c10);
                           opacity: ;
                         }
@@ -5655,7 +5655,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5669,7 +5669,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -5688,7 +5688,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -5755,7 +5755,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5769,7 +5769,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -5788,7 +5788,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -5855,7 +5855,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5869,7 +5869,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -5888,7 +5888,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, rgba(255,255,255,.4), rgba(255,255,255,.4));
                           opacity: ;
                         }
@@ -5955,7 +5955,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5969,7 +5969,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -5988,7 +5988,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #004b1c, #004b1c);
                           opacity: ;
                         }
@@ -6055,7 +6055,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -6069,7 +6069,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -6088,7 +6088,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
@@ -6155,7 +6155,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -6169,7 +6169,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -6188,7 +6188,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #d83b01, #d83b01);
                           opacity: ;
                         }
@@ -6255,7 +6255,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -6269,7 +6269,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -6288,7 +6288,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #32145a, #32145a);
                           opacity: ;
                         }
@@ -6355,7 +6355,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -6369,7 +6369,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -6388,7 +6388,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #fff100, #fff100);
                           opacity: ;
                         }
@@ -6455,7 +6455,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -6469,7 +6469,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -6488,7 +6488,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #bad80a, #bad80a);
                           opacity: ;
                         }
@@ -6555,7 +6555,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -6569,7 +6569,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -6588,7 +6588,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #ff8c00, #ff8c00);
                           opacity: ;
                         }
@@ -6655,7 +6655,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -6669,7 +6669,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -6688,7 +6688,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #008272, #008272);
                           opacity: ;
                         }
@@ -6755,7 +6755,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -6769,7 +6769,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -6788,7 +6788,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00b294, #00b294);
                           opacity: ;
                         }
@@ -6855,7 +6855,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -6869,7 +6869,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -6888,7 +6888,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #a4262c, #a4262c);
                           opacity: ;
                         }
@@ -6955,7 +6955,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                       :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -6969,7 +6969,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable="true"
@@ -6988,7 +6988,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #ffffff, #ffffff);
                           opacity: 0.6;
                         }
