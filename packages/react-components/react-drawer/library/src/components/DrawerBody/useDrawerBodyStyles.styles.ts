@@ -1,6 +1,6 @@
 import { makeResetStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 import type { DrawerBodySlots, DrawerBodyState } from './DrawerBody.types';
 
@@ -12,7 +12,7 @@ export const drawerBodyClassNames: SlotClassNames<DrawerBodySlots> = {
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
-  padding: `0 ${tokens.spacingHorizontalXXL}`,
+  padding: `0 ${semanticTokens.paddingContentLarge}`,
   flex: 1,
   alignSelf: 'stretch',
   position: 'relative',
@@ -20,11 +20,11 @@ const useStyles = makeResetStyles({
   overflow: 'auto',
 
   ':last-child': {
-    paddingBottom: `calc(${tokens.spacingHorizontalXXL} + 1px)`,
+    paddingBottom: `calc(${semanticTokens.paddingContentLarge} + 1px)`,
   },
 
   ':first-child': {
-    paddingTop: `calc(${tokens.spacingHorizontalXXL} + 1px)`,
+    paddingTop: `calc(${semanticTokens.paddingContentLarge} + 1px)`,
   },
 });
 

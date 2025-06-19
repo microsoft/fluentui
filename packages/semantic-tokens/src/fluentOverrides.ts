@@ -25,10 +25,12 @@ export const fluentOverrides: FluentOverrides = {
   backgroundCtrlSubtleHover: { f2Token: 'colorSubtleBackgroundHover' },
   backgroundCtrlSubtlePressed: { f2Token: 'colorSubtleBackgroundPressed' },
   backgroundCtrlSubtleRest: { f2Token: 'colorSubtleBackground' },
+  backgroundFlyoutSolid: { f2Token: 'colorNeutralBackground1' },
   cornerCircular: { f2Token: 'borderRadiusCircular' },
   cornerCtrlLgRest: { f2Token: 'borderRadiusMedium' }, // Button uses borderRadiusMedium in all sizes
   cornerCtrlRest: { f2Token: 'borderRadiusMedium' },
   cornerCtrlSmRest: { f2Token: 'borderRadiusMedium' }, // Button uses borderRadiusMedium in all sizes
+  cornerFlyoutRest: { rawValue: '0px' },
   cornerZero: { f2Token: 'borderRadiusNone' },
   ctrlAvatarActiveRingStrokeWidth: { f2Token: 'strokeWidthThick' },
   ctrlAvatarBackground: { f2Token: 'colorNeutralBackground6' },
@@ -94,6 +96,7 @@ export const fluentOverrides: FluentOverrides = {
   gapInsideCtrlLgDefault: { f2Token: 'spacingHorizontalSNudge' },
   gapInsideCtrlSmDefault: { f2Token: 'spacingHorizontalXS' },
   nullColor: { f2Token: 'colorTransparentBackground' },
+  paddingContentLarge: { f2Token: 'spacingHorizontalXXL' },
   paddingCtrlHorizontalDefault: { f2Token: 'spacingHorizontalM' },
   paddingCtrlHorizontalIconOnly: { rawValue: '5px' },
   paddingCtrlLgHorizontalDefault: { f2Token: 'spacingHorizontalL' },
@@ -107,6 +110,7 @@ export const fluentOverrides: FluentOverrides = {
   paddingCtrlTextBottom: { rawValue: '5px' },
   paddingCtrlTextSide: { rawValue: '0px' }, // For now, text padding is not applied (use default);
   paddingCtrlTextTop: { rawValue: '5px' },
+  shadowFlyout: { f2Token: 'shadow64' },
   sizeCtrlDefault: { rawValue: '44px' },
   sizeCtrlIcon: { rawValue: '20px' },
   sizeCtrlLgDefault: { rawValue: '44px' },
@@ -142,6 +146,7 @@ export const fluentOverrides: FluentOverrides = {
   strokeDividerDefault: { f2Token: 'colorNeutralStroke2' },
   strokeDividerStrong: { f2Token: 'colorNeutralStroke1' },
   strokeDividerSubtle: { f2Token: 'colorNeutralStroke3' },
+  strokeFlyout: { f2Token: 'colorNeutralBackground3' },
   strokeLayer: { f2Token: 'colorTransparentStroke' },
   strokeWidthCtrlOutlineHover: { f2Token: 'strokeWidthThin' },
   strokeWidthCtrlOutlinePressed: { f2Token: 'strokeWidthThin' },
