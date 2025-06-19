@@ -1,8 +1,5 @@
 import { type GriffelResetStyle, makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-
 import { DrawerBaseState } from './DrawerBase.types';
-
 import * as semanticTokens from '@fluentui/semantic-tokens';
 
 /**
@@ -37,20 +34,26 @@ export const drawerDefaultStyles: GriffelResetStyle = {
 const useDrawerStyles = makeStyles({
   /* Positioning */
   start: {
-    borderRight: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.strokeFlyout}`,
+    borderRight: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.nullColor}`,
 
     left: 0,
     right: 'auto',
+    borderEndEndRadius: semanticTokens.cornerFlyoutRest,
+    borderStartEndRadius: semanticTokens.cornerFlyoutRest,
   },
   end: {
-    borderLeft: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.strokeFlyout}`,
+    borderLeft: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.nullColor}`,
 
     right: 0,
     left: 'auto',
+    borderStartStartRadius: semanticTokens.cornerFlyoutRest,
+    borderEndStartRadius: semanticTokens.cornerFlyoutRest,
   },
   bottom: {
     bottom: 0,
     top: 'auto',
+    borderTopRightRadius: semanticTokens.cornerFlyoutRest,
+    borderTopLeftRadius: semanticTokens.cornerFlyoutRest,
   },
 
   /* Sizes */
