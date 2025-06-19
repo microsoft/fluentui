@@ -48,8 +48,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: NBS-Sandbox/npds-fluentui-custom-files
+          token: ${{ secrets.CUSTOM_FILES_PAT }}
           path: packages/web-components/.temp-custom-files
-          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
 
       - name: Apply Custom NPDS Styling
         working-directory: packages/web-components
