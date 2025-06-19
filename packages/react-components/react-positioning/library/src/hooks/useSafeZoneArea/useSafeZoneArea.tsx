@@ -1,12 +1,11 @@
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import type { Placement } from '@floating-ui/dom';
 import * as React from 'react';
 
-import { createSafeZoneAreaStateStore, type SafeZoneAreaImperativeHandle, SafeZoneArea } from './SafeZoneArea';
-import { parseFloatingUIPlacement } from './utils';
+import { createSafeZoneAreaStateStore } from './createSafeZoneAreaStateStore';
+import { type SafeZoneAreaImperativeHandle, SafeZoneArea } from './SafeZoneArea';
 
-export type SafeBufferAreaOptions = {
+export type UseSafeZoneOptions = {
   /** Enables debug mode: makes drawn shapes visible. */
   debug?: boolean;
 
@@ -39,7 +38,7 @@ export function useSafeZoneArea({
   onSafeZoneTimeout,
 
   timeout = 1500,
-}: SafeBufferAreaOptions = {}) {
+}: UseSafeZoneOptions = {}) {
   const [stateStore] = React.useState(createSafeZoneAreaStateStore);
   const { targetDocument } = useFluent_unstable();
 
@@ -173,9 +172,8 @@ export function useSafeZoneArea({
 
           if (containerEl && targetEl) {
             safeZoneAreaRef.current?.updateSVG({
-              containerPlacementSide: parseFloatingUIPlacement(containerEl.dataset.popperPlacement as Placement).side,
               containerRect: containerEl.getBoundingClientRect(),
-              mouseCoordinates: mouseCoordinatesRef.current,
+              mouseCoordinates: [mouseCoordinatesRef.current.x, mouseCoordinatesRef.current.y],
               targetRect: targetEl.getBoundingClientRect(),
             });
           }

@@ -24,8 +24,6 @@ export const useStyles = makeStyles({
   triangleDebug: {
     cursor: 'crosshair',
     fill: `color-mix(in srgb, ${tokens.colorPaletteGreenBackground3} 20%, transparent)`,
-    stroke: `color-mix(in srgb, ${tokens.colorPaletteGreenBackground3} 60%, transparent)`,
-    strokeWidth: '2px',
   },
   rectDebug: {
     fill: `color-mix(in srgb, ${tokens.colorPaletteRedBackground3} 20%, transparent)`,

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: export usePositioning() & useSafeZoneArea() hooks",
+  "packageName": "@fluentui/react-components",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
