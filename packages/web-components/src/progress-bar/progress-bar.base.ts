@@ -113,7 +113,7 @@ export class BaseProgressBar extends FASTElement {
       return;
     }
 
-    if (typeof this.value !== "number") {
+    if (typeof this.value !== 'number') {
       this.indicator.style.removeProperty('width');
       return;
     }
