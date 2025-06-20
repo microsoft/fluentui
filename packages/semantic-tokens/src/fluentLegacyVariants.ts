@@ -158,7 +158,7 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     // should be 8px per design
     originalToken: 'gapBetweenCtrlDefault',
   },
-  _ctrlMessageBarPaddingY: {
+  _ctrlMessageBarPaddingVertical: {
     originalToken: 'paddingContentAlignOutdentIconOnSubtle',
     rawValue: '0px', // setting this to maintain current Fluent implementation
   },

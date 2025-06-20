@@ -345,7 +345,7 @@ export const _ctrlMessageBarPaddingRight = `var(${gapBetweenCtrlDefaultRaw}, ${s
  * This token is not intended for use in new semantic theme implementations
  * please use paddingContentAlignOutdentIconOnSubtle instead.
  */
-export const _ctrlMessageBarPaddingY = `var(${paddingContentAlignOutdentIconOnSubtleRaw}, 0px)`;
+export const _ctrlMessageBarPaddingVertical = `var(${paddingContentAlignOutdentIconOnSubtleRaw}, 0px)`;
 /**
  * This is a legacy variant for paddingContentAlignDefault to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.

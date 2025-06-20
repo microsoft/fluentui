@@ -2243,7 +2243,7 @@ export const _ctrlMessageBarPaddingContentAlignDefault = "var(--smtc-padding-con
 export const _ctrlMessageBarPaddingRight = "var(--smtc-gap-between-ctrl-default, var(--spacingHorizontalM))";
 
 // @public
-export const _ctrlMessageBarPaddingY = "var(--smtc-padding-content-align-outdent-icon-on-subtle, 0px)";
+export const _ctrlMessageBarPaddingVertical = "var(--smtc-padding-content-align-outdent-icon-on-subtle, 0px)";
 
 // @public
 export const _ctrlMessageBarReflowSpacerMarginBottom = "var(--smtc-padding-content-align-default, var(--spacingVerticalS))";
