@@ -401,7 +401,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   protected renderLabel(
     inputId: string,
     styles: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> | undefined,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element | null {
     const { label, disabled, required } = this.props;
     if (!label) {
@@ -429,7 +429,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
 
   protected renderSuggestions(
     styles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles> | undefined,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element | null {
     const StyledTypedSuggestions: React.FunctionComponent<ISuggestionsProps<T>> = this._styledSuggestions;
 

@@ -104,7 +104,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     personas: IFacepilePersona[],
     singlePersona: boolean,
     showTooltip: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element[] {
     const {
       onRenderPersona = this._getPersonaControl,
@@ -173,7 +173,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     persona: IFacepilePersona,
     showTooltip: boolean,
     index: number,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element {
     const { keytipProps } = persona;
     return (
@@ -195,7 +195,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     persona: IFacepilePersona,
     showTooltip: boolean,
     index: number,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element {
     return (
       <div {...getNativeProps(persona, buttonProperties)} {...this._getElementProps(persona, showTooltip, index)}>

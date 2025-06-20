@@ -547,7 +547,7 @@ export class HorizontalBarChartWithAxisBase
     xBarScale: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yBarScale: any,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     const sortedBars: IHorizontalBarChartWithAxisDataPoint[] = [...singleBarData];
@@ -754,7 +754,7 @@ export class HorizontalBarChartWithAxisBase
     xBarScale: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yBarScale: any,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     let prevWidthPositive = 0;

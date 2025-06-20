@@ -116,7 +116,7 @@ type IDetailsListInnerProps = Omit<IDetailsListProps, 'selection'> &
  */
 const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   props: IDetailsListInnerProps,
-// eslint-disable-next-line @typescript-eslint/no-deprecated
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): JSX.Element | null => {
   const { selection } = props;
 
@@ -1019,7 +1019,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   protected _onRenderRow = (
     props: IDetailsRowProps,
     defaultRender?: IRenderFunction<IDetailsRowProps>,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element => {
     return <DetailsRow {...props} />;
   };

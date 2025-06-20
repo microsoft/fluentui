@@ -201,7 +201,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
 
   private _renderPreviousWeekNavigationButton = (
     classNames: IProcessedStyleSet<IWeeklyDayPickerStyles>,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element => {
     const { minDate, firstDayOfWeek, navigationIcons } = this.props;
     const { navigatedDate } = this.state;

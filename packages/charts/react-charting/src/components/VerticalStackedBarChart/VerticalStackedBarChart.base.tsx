@@ -412,7 +412,7 @@ export class VerticalStackedBarChartBase
     containerHeight: number,
     containerWidth: number,
     yScaleSecondary?: NumericScale,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element => {
     const lineObject: LineObject = this._getFormattedLineData(this.props.data);
     const lines: React.ReactNode[] = [];
@@ -639,7 +639,7 @@ export class VerticalStackedBarChartBase
     data: IVerticalStackedChartProps[],
     palette: IPalette,
     lineLegends: LineLegends[],
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element {
     if (this.props.hideLegend) {
       return <></>;
@@ -935,7 +935,7 @@ export class VerticalStackedBarChartBase
     yBarScale: NumericScale | StringScale,
     containerHeight: number,
     xElement: SVGElement,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element[] => {
     const { barCornerRadius = 0, barMinimumHeight = 0 } = this.props;
     const _isHavingLines = this.props.data.some(

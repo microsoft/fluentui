@@ -615,7 +615,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _renderComboBoxWrapper = (
     multiselectAccessibleText: string | undefined,
     errorMessageId: string,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element => {
     const {
       label,

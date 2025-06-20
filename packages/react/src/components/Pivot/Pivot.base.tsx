@@ -124,7 +124,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       link: IPivotItemProps,
       renderPivotLinkSelectedKey: string | null | undefined,
       className: string,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
     ): JSX.Element => {
       const { itemKey, headerButtonProps, onRenderItemLink } = link;
       const tabId = renderLinkCollection.keyToTabIdMapping[itemKey!];

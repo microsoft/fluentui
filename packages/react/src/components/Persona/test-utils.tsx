@@ -8,7 +8,7 @@ import type { IPersonaProps, IPersonaSharedProps } from './index';
 export const wrapPersona = (
   example: IPersonaSharedProps,
   shouldWrapPersonaCoin: boolean = false,
-// eslint-disable-next-line @typescript-eslint/no-deprecated
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): ((coinProps: IPersonaProps, defaultRenderer: IRenderFunction<IPersonaProps>) => JSX.Element | null) => {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   return (coinProps, defaultCoinRenderer): JSX.Element | null => {

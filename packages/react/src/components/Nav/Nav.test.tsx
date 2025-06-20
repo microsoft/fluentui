@@ -77,7 +77,7 @@ describe('Nav', () => {
     function onRenderGroupHeader(
       props?: IRenderGroupHeaderProps,
       defaultRender?: IRenderFunction<IRenderGroupHeaderProps>,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
     ): JSX.Element | null {
       if (!props || !defaultRender) {
         return null;

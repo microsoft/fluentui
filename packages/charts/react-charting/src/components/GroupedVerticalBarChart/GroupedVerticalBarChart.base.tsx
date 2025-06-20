@@ -429,7 +429,7 @@ export class GroupedVerticalBarChartBase
     yScaleSecondary: ScaleLinear<number, number> | undefined,
     containerHeight: number,
     xElement: SVGElement,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element => {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const singleGroup: JSX.Element[] = [];
