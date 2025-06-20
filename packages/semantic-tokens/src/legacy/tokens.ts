@@ -320,11 +320,6 @@ export const spacingHorizontalM = 'var(--spacingHorizontalM)';
  */
 export const spacingHorizontalL = 'var(--spacingHorizontalL)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#shadow64 | `shadow64`} design token.
- * @public
- */
-export const shadow64 = 'var(--shadow64)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedBackground3 | `colorPaletteRedBackground3`} design token.
  * @public
  */
