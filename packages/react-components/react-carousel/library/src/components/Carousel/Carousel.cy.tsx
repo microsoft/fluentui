@@ -92,7 +92,7 @@ describe('CarouselControlledIndexTest', () => {
     const prevButton = cy.get<HTMLElement>(`.${carouselButtonClassNames.root}`).first();
     const nextButton = cy.get<HTMLElement>(`.${carouselButtonClassNames.root}`).last();
 
-    // Click to previous of original index
+    // Click to previous navigation button and then next navigation button
     prevButton.click().then(() => {
       nextButton.should('be.focused').and('not.be.disabled');
 
