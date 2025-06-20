@@ -9,6 +9,7 @@ export interface IExample {
   code: string;
 
   /** Working example of the example */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   view: JSX.Element;
 
   isScrollable?: boolean;
@@ -31,6 +32,7 @@ export interface IDocPageProps {
   componentUrl: string;
 
   /** Knobs that applies to all the examples */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   exampleKnobs?: JSX.Element;
 
   /** Array of examples, displayed in the order defined */
@@ -76,11 +78,13 @@ export interface IDocPageProps {
    * Related link
    * @deprecated No longer shown on ComponentPage
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   related?: JSX.Element;
 
   /** Pass through other sections for ComponentPage */
   otherSections?: {
     title: string;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     section: JSX.Element;
   }[];
 

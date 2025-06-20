@@ -61,6 +61,7 @@ export function asAsync<TProps extends {}>(options: IAsAsyncOptions<TProps>) {
       Component: _syncModuleCache ? (_syncModuleCache.get(options.load) as React.ElementType<TProps>) : undefined,
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     public render(): JSX.Element | null {
       // Typescript issue: the rest can't be pulled without the any cast, as TypeScript fails with rest on generics.
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -123,6 +123,7 @@ export interface IDialogProps
    * The title text to display at the top of the dialog.
    * @deprecated Pass through via `dialogContentProps` instead.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   title?: string | JSX.Element;
 
   /**

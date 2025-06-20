@@ -1,4 +1,4 @@
-/** eslint-disable @typescript-eslint/no-deprecate */
+/* eslint-disable @typescript-eslint/no-deprecated */
 import { act, create as defaultCreate } from 'react-test-renderer';
 
 /**

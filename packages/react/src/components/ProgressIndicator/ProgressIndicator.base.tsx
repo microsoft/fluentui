@@ -84,6 +84,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderProgress = (props: IProgressIndicatorProps): JSX.Element => {
     const {
       ariaLabel,

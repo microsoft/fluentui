@@ -112,6 +112,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     this._events.on(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, this._onPersistedKeytipExecute);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { content, styles } = this.props;
 

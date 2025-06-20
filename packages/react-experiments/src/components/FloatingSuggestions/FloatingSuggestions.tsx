@@ -144,6 +144,7 @@ export class FloatingSuggestions<TItem extends {}>
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { className } = this.props;
     return (
@@ -188,7 +189,7 @@ export class FloatingSuggestions<TItem extends {}>
       });
     }
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderSuggestions(): JSX.Element | null {
     // Express this as 2 separate statements instead of a single one, because `undefined` isn't filtered out of the type
     // when using `|| SuggestionsControl`
