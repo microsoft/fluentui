@@ -674,10 +674,10 @@ export function createNumericYAxis(
   } = yAxisParams;
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
-  const tempVal = maxOfYVal || yMinMaxValues.endValue;
+  const tempVal = maxOfYVal || yMinMaxValues.endValue || 0;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = supportNegativeData
-    ? Math.min(yMinMaxValues.startValue, yMinValue || 0)
+    ? Math.min(yMinMaxValues.startValue || 0, yMinValue || 0)
     : yMinMaxValues.startValue < yMinValue
     ? 0
     : yMinValue!;

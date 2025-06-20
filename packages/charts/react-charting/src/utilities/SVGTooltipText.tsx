@@ -3,7 +3,7 @@ import { ITooltipHost, ITooltipProps, Tooltip, TooltipDelay } from '@fluentui/re
 import { Async, KeyCodes, getId, portalContainsElement } from '../Utilities';
 import { ITheme } from '@fluentui/react';
 
-interface ISVGTooltipTextProps {
+export interface ISVGTooltipTextProps {
   /**
    * Number of milliseconds to delay closing the tooltip, so that the user has time to hover over
    * the tooltip and interact with it. Hovering over the tooltip will count as hovering over the
