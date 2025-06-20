@@ -46,7 +46,6 @@ export const ChartHoverCard: React_2.FunctionComponent<IChartHoverCardProps>;
 // @public
 export const ChartTable: React_2.FunctionComponent<IChartTableProps>;
 
-// Warning: (ae-forgotten-export) The symbol "LegendShape" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "Points" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -1771,6 +1770,11 @@ export interface IYValueHover {
 // @public
 export const Legends: React_2.FunctionComponent<ILegendsProps>;
 
+// Warning: (ae-forgotten-export) The symbol "CustomPoints" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
+
 // @public
 export const LineChart: React_2.FunctionComponent<ILineChartProps>;
 
@@ -1807,6 +1811,9 @@ export const ScatterChart: React_2.FunctionComponent<IScatterChartProps>;
 export interface Schema {
     plotlySchema: any;
 }
+
+// @public (undocumented)
+export const Shape: React_2.FC<IShapeProps>;
 
 // Warning: (ae-forgotten-export) The symbol "ISNodeExtra" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "ISLinkExtra" needs to be exported by the entry point index.d.ts

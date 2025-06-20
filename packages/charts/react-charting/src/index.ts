@@ -15,9 +15,10 @@ export type {
   ILegendsProps,
   ILegendsStyles,
   IShapeProps,
+  LegendShape,
   DataPointShape,
 } from './Legends';
-export { Legends } from './Legends';
+export { Legends, Shape } from './Legends';
 export type {
   IColorFillBarData,
   IColorFillBarsProps,
