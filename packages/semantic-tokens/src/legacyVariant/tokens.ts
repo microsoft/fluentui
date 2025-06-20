@@ -4,28 +4,31 @@ import {
   ctrlAvatarCornerGroupRaw,
   ctrlAvatarPresenceBadgeStrokeWidthRaw,
 } from '../components/avatar/variables';
+import { ctrlFocusOuterStrokeRaw } from '../components/focus/variables';
 import { ctrlInputBackgroundRestRaw } from '../components/input/variables';
 import {
-  cornerCtrlRestRaw,
   foregroundCtrlNeutralPrimaryRestRaw,
+  cornerCtrlRestRaw,
   strokeWidthDefaultRaw,
   gapInsideCtrlDefaultRaw,
   nullColorRaw,
+  backgroundCtrlBrandRestRaw,
   backgroundCtrlNeutralRestRaw,
   foregroundCtrlNeutralSecondaryRestRaw,
 } from '../control/variables';
 import {
-  borderRadiusMedium,
-  strokeWidthThick,
   colorNeutralForeground2,
   strokeWidthThickest,
   strokeWidthThicker,
+  strokeWidthThick,
   borderRadiusLarge,
+  borderRadiusMedium,
   borderRadiusSmall,
   borderRadiusXLarge,
   strokeWidthThin,
   spacingHorizontalSNudge,
   colorNeutralForeground3,
+  colorTransparentStrokeInteractive,
   colorNeutralBackground3,
   colorNeutralBackground1,
   colorNeutralForeground4,
@@ -37,27 +40,6 @@ import {
   foregroundCtrlOnTransparentRestRaw,
 } from '../optional/variables';
 
-/**
- * This is a legacy variant for cornerCtrlRest to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use cornerCtrlRest instead.
- */
-export const _cornerCtrlRestButton = `var(${cornerCtrlRestRaw}, ${borderRadiusMedium})`;
-/**
- * This is a legacy variant for cornerCtrlRest to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use cornerCtrlRest instead.
- */
-export const _cornerCtrlRestTextAreaMedium = `var(${cornerCtrlRestRaw}, ${borderRadiusMedium})`;
-/**
- * This is a legacy variant for cornerCtrlRest to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use cornerCtrlRest instead.
- */
-export const _cornerCtrlRestTextAreaThick = `var(${cornerCtrlRestRaw}, ${strokeWidthThick})`;
 /**
  * This is a legacy variant for foregroundCtrlOnTransparentHover to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
@@ -157,6 +139,13 @@ export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${sp
  */
 export const _ctrlDividerForegroundSubtle = `var(${foregroundCtrlHintDefaultRaw}, var(${nullColorRaw}, ${colorNeutralForeground3}))`;
 /**
+ * This is a legacy variant for ctrlFocusOuterStroke to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlFocusOuterStroke instead.
+ */
+export const _ctrlFocusOuterStrokeInteractive = `var(${ctrlFocusOuterStrokeRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorTransparentStrokeInteractive}))`;
+/**
  * This is a legacy variant for ctrlInputBackgroundRest to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations
@@ -176,11 +165,4 @@ export const _ctrlInputBackgroundRestLighter = `var(${ctrlInputBackgroundRestRaw
  * This token is not intended for use in new semantic theme implementations
  * please use foregroundCtrlNeutralSecondaryRest instead.
  */
-export const _foregroundCtrlNeutralSecondaryRest2 = `var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground2})`;
-/**
- * This is a legacy variant for foregroundCtrlNeutralSecondaryRest to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use foregroundCtrlNeutralSecondaryRest instead.
- */
-export const _foregroundCtrlNeutralSecondaryRest4 = `var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground4})`;
+export const _ctrlInputNeutralForegroundPlaceholder = `var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground4})`;

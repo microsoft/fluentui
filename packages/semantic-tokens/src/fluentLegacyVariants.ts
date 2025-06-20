@@ -13,18 +13,6 @@ export type LegacyFluentVariantValue =
 export type LegacyFluentVariants = Record<string, LegacyFluentVariantValue | null>;
 
 export const legacyFluentVariantsValues: LegacyFluentVariants = {
-  _cornerCtrlRestButton: {
-    f2Token: 'borderRadiusMedium',
-    originalToken: 'cornerCtrlRest',
-  },
-  _cornerCtrlRestTextAreaMedium: {
-    f2Token: 'borderRadiusMedium',
-    originalToken: 'cornerCtrlRest',
-  },
-  _cornerCtrlRestTextAreaThick: {
-    f2Token: 'strokeWidthThick',
-    originalToken: 'cornerCtrlRest',
-  },
   _ctrlAccordionForegroundHover: {
     f2Token: 'colorNeutralForeground2',
     originalToken: 'foregroundCtrlOnTransparentHover',
@@ -81,6 +69,10 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlHintDefault',
   },
+  _ctrlFocusOuterStrokeInteractive: {
+    f2Token: 'colorTransparentStrokeInteractive',
+    originalToken: 'ctrlFocusOuterStroke',
+  },
   _ctrlInputBackgroundRestDarker: {
     f2Token: 'colorNeutralBackground3',
     originalToken: 'ctrlInputBackgroundRest',
@@ -89,12 +81,8 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralBackground1',
     originalToken: 'ctrlInputBackgroundRest',
   },
-  _foregroundCtrlNeutralSecondaryRest2:{
-    f2Token: 'colorNeutralForeground2',
-    originalToken: 'foregroundCtrlNeutralSecondaryRest',
-  },
-  _foregroundCtrlNeutralSecondaryRest4:{
+  _ctrlInputNeutralForegroundPlaceholder: {
     f2Token: 'colorNeutralForeground4',
     originalToken: 'foregroundCtrlNeutralSecondaryRest',
-  }
+  },
 };

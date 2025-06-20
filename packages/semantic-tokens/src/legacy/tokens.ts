@@ -115,20 +115,20 @@ export const colorPaletteRedBorder2 = 'var(--colorPaletteRedBorder2)';
  */
 export const colorNeutralStrokeAccessibleHover = 'var(--colorNeutralStrokeAccessibleHover)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStroke | `colorCompoundBrandStroke`} design token.
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeAccessiblePressed | `colorNeutralStrokeAccessiblePressed`} design token.
  * @public
  */
-export const colorCompoundBrandStroke = 'var(--colorCompoundBrandStroke)';
+export const colorNeutralStrokeAccessiblePressed = 'var(--colorNeutralStrokeAccessiblePressed)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeAccessible | `colorNeutralStrokeAccessible`} design token.
  * @public
  */
 export const colorNeutralStrokeAccessible = 'var(--colorNeutralStrokeAccessible)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeAccessiblePressed | `colorNeutralStrokeAccessiblePressed`} design token.
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStroke | `colorCompoundBrandStroke`} design token.
  * @public
  */
-export const colorNeutralStrokeAccessiblePressed = 'var(--colorNeutralStrokeAccessiblePressed)';
+export const colorCompoundBrandStroke = 'var(--colorCompoundBrandStroke)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStroke1Hover | `colorNeutralStroke1Hover`} design token.
  * @public
@@ -424,6 +424,11 @@ export const borderRadiusSmall = 'var(--borderRadiusSmall)';
  * @public
  */
 export const borderRadiusXLarge = 'var(--borderRadiusXLarge)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorTransparentStrokeInteractive | `colorTransparentStrokeInteractive`} design token.
+ * @public
+ */
+export const colorTransparentStrokeInteractive = 'var(--colorTransparentStrokeInteractive)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackground3 | `colorNeutralBackground3`} design token.
  * @public

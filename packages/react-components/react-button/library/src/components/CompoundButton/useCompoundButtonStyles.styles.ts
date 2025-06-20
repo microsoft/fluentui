@@ -18,7 +18,7 @@ const useRootStyles = makeStyles({
     height: 'auto',
 
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens._foregroundCtrlNeutralSecondaryRest2,
+      color: semanticTokens.foregroundCtrlNeutralSecondaryRest,
     },
 
     ':hover': {

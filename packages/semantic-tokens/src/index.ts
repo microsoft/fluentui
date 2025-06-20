@@ -1782,9 +1782,6 @@ export {
   ctrlCardStateDisabled,
 } from './components/card/tokens';
 export {
-  _cornerCtrlRestButton,
-  _cornerCtrlRestTextAreaMedium,
-  _cornerCtrlRestTextAreaThick,
   _ctrlAccordionForegroundHover,
   _ctrlAccordionForegroundPressed,
   _ctrlAccordionForegroundRest,
@@ -1799,9 +1796,9 @@ export {
   _ctrlAvatarPresenceBadgeStrokeWidthSm,
   _ctrlButtonGapInsideDefault,
   _ctrlDividerForegroundSubtle,
+  _ctrlFocusOuterStrokeInteractive,
   _ctrlInputBackgroundRestDarker,
   _ctrlInputBackgroundRestLighter,
-  _foregroundCtrlNeutralSecondaryRest2,
-  _foregroundCtrlNeutralSecondaryRest4,
+  _ctrlInputNeutralForegroundPlaceholder,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';
