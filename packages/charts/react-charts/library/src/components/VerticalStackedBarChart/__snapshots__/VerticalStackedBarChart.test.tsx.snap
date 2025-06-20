@@ -216,13 +216,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#002050"
-                height="1.225"
+                height="2.45"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="258.875"
+                y="257.65000000000003"
               />
             </g>
             <text
@@ -232,7 +232,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="252.875"
+              y="251.65000000000003"
             >
               2.5
             </text>
@@ -727,13 +727,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#002050"
-                height="1.225"
+                height="2.45"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="258.875"
+                y="257.65000000000003"
               />
             </g>
             <text
@@ -743,7 +743,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="252.875"
+              y="251.65000000000003"
             >
               2.5
             </text>
