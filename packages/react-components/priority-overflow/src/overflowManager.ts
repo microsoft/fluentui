@@ -188,7 +188,11 @@ export function createOverflowManager(): OverflowManager {
       forceDispatch = false;
       if (detectInfiniteLoop()) {
         console.error(
-          '@fluentui/react-overflow:Infinite loop detected: 100 overflow updates happened in less than 100ms',
+          [
+            '@fluentui/react-overflow:Infinite loop detected: 100 overflow updates happened in less than 100ms',
+            'This usually indicates that somr overflow items are not stable and are being recreated on every update.',
+            'For more support please contact the Fluent UI team.',
+          ].join('\n'),
         );
         return;
       }
