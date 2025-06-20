@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { DataVizPalette, getColorFromToken, FunnelChart } from '@fluentui/react-charting';
+import {
+  DataVizPalette,
+  GaugeChart,
+  GaugeChartVariant,
+  getGradientFromToken,
+  DataVizGradientPalette,
+} from '@fluentui/react-charting';
 import { Stack, StackItem, Checkbox } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
@@ -47,7 +53,6 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
   }
 
   public render(): React.ReactNode {
-    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
       <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: 20 }}>
@@ -123,19 +128,39 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
             onChange={this._onToggleLegendMultiSelect}
           />
         </div>
-        <div style={rootStyle}>
-          <FunnelChart
-            data={[
-              { stage: 'Visitors', value: 1000, color: getColorFromToken(DataVizPalette.color5) },
-              { stage: 'Signups', value: 600, color: getColorFromToken(DataVizPalette.color6) },
-              { stage: 'Trials', value: 300, color: getColorFromToken(DataVizPalette.color7) },
-              { stage: 'Customers', value: 150, color: getColorFromToken(DataVizPalette.color10) },
-            ]}
-            chartTitle="Funnel Chart Example"
-            width={this.state.width}
-            height={this.state.height}
-          />
-        </div>
+
+        <GaugeChart
+          width={this.state.width}
+          height={this.state.height}
+          segments={[
+            {
+              size: 33,
+              color: DataVizPalette.success,
+              gradient: getGradientFromToken(DataVizGradientPalette.success),
+              legend: 'Low Risk',
+            },
+            {
+              size: 34,
+              color: DataVizPalette.warning,
+              gradient: getGradientFromToken(DataVizGradientPalette.warning),
+              legend: 'Medium Risk',
+            },
+            {
+              size: 33,
+              color: DataVizPalette.error,
+              gradient: getGradientFromToken(DataVizGradientPalette.error),
+              legend: 'High Risk',
+            },
+          ]}
+          chartValue={this.state.chartValue}
+          hideMinMax={this.state.hideMinMax}
+          variant={GaugeChartVariant.MultipleSegments}
+          enableGradient={this.state.enableGradient}
+          roundCorners={this.state.roundedCorners}
+          legendProps={{
+            canSelectMultipleLegends: this.state.legendMultiSelect,
+          }}
+        />
       </div>
     );
   }
