@@ -293,12 +293,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="2.37"
+                height="1.185"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.89"
+                y="251.075"
               />
             </g>
             <text
@@ -317,7 +317,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.89"
+              y="245.075"
             >
               2.5
             </text>
@@ -1285,12 +1285,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="2.37"
+                height="1.185"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.89"
+                y="251.075"
               />
             </g>
             <text
@@ -1309,7 +1309,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.89"
+              y="245.075"
             >
               2.5
             </text>
@@ -2277,12 +2277,12 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                       opacity: ;
                     }
                 fill="#00188f"
-                height="2.37"
+                height="1.185"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.89"
+                y="251.075"
               />
             </g>
             <text
@@ -2301,7 +2301,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.89"
+              y="245.075"
             >
               2.5
             </text>
@@ -10064,12 +10064,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                       opacity: ;
                     }
                 fill="#00188f"
-                height="5.925"
+                height="2.9625"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="251.075"
+                y="254.0375"
               />
             </g>
             <text
