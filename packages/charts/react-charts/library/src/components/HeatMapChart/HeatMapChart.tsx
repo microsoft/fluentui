@@ -679,7 +679,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       /* eslint-disable react/jsx-no-bind */
       children={(p: ChildProps) => {
         _xAxisScale.current = p.xScale;
-        _yAxisScale.current = p.yScale;
+        _yAxisScale.current = p.yScalePrimary;
         return _createRectangles();
       }}
     />
