@@ -712,7 +712,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   ): {
     readonly gapHeight: number;
     readonly heightValueScale: number;
-    readonly adjustedTotalHeight: number;
+    readonly absStackTotal: number;
   } {
     const { barGapMax = 0 } = props;
     // When displaying gaps between the bars, the height of each bar is
@@ -734,7 +734,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     return {
       gapHeight,
       heightValueScale,
-      adjustedTotalHeight: sumOfPercent,
+      absStackTotal: totalData,
     } as const;
   }
 
@@ -899,7 +899,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         return undefined;
       }
 
-      const { gapHeight, heightValueScale, adjustedTotalHeight } = _getBarGapAndScale(barsToDisplay, yBarScale);
+      const { gapHeight, heightValueScale, absStackTotal } = _getBarGapAndScale(barsToDisplay, yBarScale);
 
       if (heightValueScale < 0) {
         return undefined;
@@ -930,7 +930,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         };
 
         let barHeight = Math.abs(heightValueScale * point.data);
-        const minHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
+        // FIXME: The current scaling logic may produce different min and gap heights for each bar stack.
+        const minHeight = Math.max((heightValueScale * absStackTotal) / 100.0, barMinimumHeight);
         if (barHeight < minHeight) {
           barHeight = minHeight;
         }
