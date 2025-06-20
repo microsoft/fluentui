@@ -1796,5 +1796,9 @@ export {
   _ctrlAvatarPresenceBadgeStrokeWidthSm,
   _ctrlButtonGapInsideDefault,
   _ctrlDividerForegroundSubtle,
+  _ctrlFocusOuterStrokeInteractive,
+  _ctrlInputBackgroundRestDarker,
+  _ctrlInputBackgroundRestLighter,
+  _ctrlInputNeutralForegroundPlaceholder,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';

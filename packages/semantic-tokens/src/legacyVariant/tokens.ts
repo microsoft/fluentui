@@ -4,12 +4,17 @@ import {
   ctrlAvatarCornerGroupRaw,
   ctrlAvatarPresenceBadgeStrokeWidthRaw,
 } from '../components/avatar/variables';
+import { ctrlFocusOuterStrokeRaw } from '../components/focus/variables';
+import { ctrlInputBackgroundRestRaw } from '../components/input/variables';
 import {
   foregroundCtrlNeutralPrimaryRestRaw,
   cornerCtrlRestRaw,
   strokeWidthDefaultRaw,
   gapInsideCtrlDefaultRaw,
   nullColorRaw,
+  backgroundCtrlBrandRestRaw,
+  backgroundCtrlNeutralRestRaw,
+  foregroundCtrlNeutralSecondaryRestRaw,
 } from '../control/variables';
 import {
   colorNeutralForeground2,
@@ -23,6 +28,10 @@ import {
   strokeWidthThin,
   spacingHorizontalSNudge,
   colorNeutralForeground3,
+  colorTransparentStrokeInteractive,
+  colorNeutralBackground3,
+  colorNeutralBackground1,
+  colorNeutralForeground4,
 } from '../legacy/tokens';
 import { foregroundCtrlHintDefaultRaw } from '../nullable/variables';
 import {
@@ -129,3 +138,31 @@ export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${sp
  * please use foregroundCtrlHintDefault instead.
  */
 export const _ctrlDividerForegroundSubtle = `var(${foregroundCtrlHintDefaultRaw}, var(${nullColorRaw}, ${colorNeutralForeground3}))`;
+/**
+ * This is a legacy variant for ctrlFocusOuterStroke to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlFocusOuterStroke instead.
+ */
+export const _ctrlFocusOuterStrokeInteractive = `var(${ctrlFocusOuterStrokeRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorTransparentStrokeInteractive}))`;
+/**
+ * This is a legacy variant for ctrlInputBackgroundRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlInputBackgroundRest instead.
+ */
+export const _ctrlInputBackgroundRestDarker = `var(${ctrlInputBackgroundRestRaw}, var(${backgroundCtrlNeutralRestRaw}, ${colorNeutralBackground3}))`;
+/**
+ * This is a legacy variant for ctrlInputBackgroundRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlInputBackgroundRest instead.
+ */
+export const _ctrlInputBackgroundRestLighter = `var(${ctrlInputBackgroundRestRaw}, var(${backgroundCtrlNeutralRestRaw}, ${colorNeutralBackground1}))`;
+/**
+ * This is a legacy variant for foregroundCtrlNeutralSecondaryRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlNeutralSecondaryRest instead.
+ */
+export const _ctrlInputNeutralForegroundPlaceholder = `var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground4})`;
