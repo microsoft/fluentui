@@ -7,6 +7,7 @@ import {
   slot,
   useIsomorphicLayoutEffect,
   useMergedRefs,
+  useAnimationFrame,
 } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -34,6 +35,8 @@ export const useCarouselButton_unstable = (
   // Locally tracks the total number of slides, will only update if this changes.
   const [totalSlides, setTotalSlides] = React.useState(0);
 
+  const [requestAnimationFrame] = useAnimationFrame();
+
   const { dir } = useFluent();
   const buttonRef = React.useRef<HTMLButtonElement>();
   const circular = useCarouselContext(ctx => ctx.circular);
@@ -55,33 +58,46 @@ export const useCarouselButton_unstable = (
     return ctx.activeIndex === totalSlides - 1;
   });
 
+  const isTrailingAfterNavigation = (nextIndex: number): boolean => {
+    return navType === 'prev' ? nextIndex === 0 : nextIndex === totalSlides - 1;
+  };
+
+  const focusOppositeNavigationButton = () => {
+    if (!containerRef?.current) {
+      return;
+    }
+
+    const buttonRefs: NodeListOf<HTMLButtonElement> = containerRef.current.querySelectorAll(
+      `.${carouselButtonClassNames.root}`,
+    );
+
+    const changeFocus = () => {
+      buttonRefs.forEach(_buttonRef => {
+        if (_buttonRef !== buttonRef.current) {
+          _buttonRef.focus();
+        }
+      });
+    };
+
+    // A sync focus would work in most cases, as the opposite button is enabled.
+    // However, in the case of only 2 slides, the opposite button is still disabled.
+    requestAnimationFrame(changeFocus);
+  };
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
     if (event.isDefaultPrevented()) {
       return;
     }
 
     const nextIndex = selectPageByDirection(event, navType);
-
-    let _trailing = false;
-    if (navType === 'prev') {
-      _trailing = nextIndex === 0;
-    } else {
-      _trailing = nextIndex === totalSlides - 1;
-    }
-
-    if (!circular && _trailing && containerRef?.current) {
-      // Focus non-disabled element
-      const buttonRefs: NodeListOf<HTMLButtonElement> = containerRef.current.querySelectorAll(
-        `.${carouselButtonClassNames.root}`,
-      );
-      buttonRefs.forEach(_buttonRef => {
-        if (_buttonRef !== buttonRef.current) {
-          _buttonRef.focus();
-        }
-      });
-    }
-
     resetAutoplay();
+
+    // No need to handle focus if using circular navigation or not at a trailing position
+    if (circular || (!isTrailingAfterNavigation(nextIndex) && containerRef?.current)) {
+      return;
+    }
+
+    focusOppositeNavigationButton();
   };
 
   useIsomorphicLayoutEffect(() => {
