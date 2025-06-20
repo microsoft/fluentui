@@ -4985,7 +4985,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_0
+                    <tspan
+                      data-="x_0"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_0
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5003,7 +5011,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_1
+                    <tspan
+                      data-="x_1"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_1
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5021,7 +5037,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_2
+                    <tspan
+                      data-="x_2"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_2
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5039,7 +5063,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_3
+                    <tspan
+                      data-="x_3"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_3
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5057,7 +5089,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_4
+                    <tspan
+                      data-="x_4"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_4
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5075,7 +5115,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_5
+                    <tspan
+                      data-="x_5"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_5
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5093,7 +5141,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_6
+                    <tspan
+                      data-="x_6"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_6
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5111,7 +5167,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_7
+                    <tspan
+                      data-="x_7"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_7
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5129,7 +5193,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_8
+                    <tspan
+                      data-="x_8"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_8
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5147,7 +5219,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_9
+                    <tspan
+                      data-="x_9"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_9
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5165,7 +5245,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_10
+                    <tspan
+                      data-="x_10"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_10
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5183,7 +5271,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_11
+                    <tspan
+                      data-="x_11"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_11
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5201,7 +5297,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_12
+                    <tspan
+                      data-="x_12"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_12
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5219,7 +5323,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_13
+                    <tspan
+                      data-="x_13"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_13
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5237,7 +5349,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_14
+                    <tspan
+                      data-="x_14"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_14
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5255,7 +5375,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_15
+                    <tspan
+                      data-="x_15"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_15
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5273,7 +5401,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_16
+                    <tspan
+                      data-="x_16"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_16
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5291,7 +5427,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_17
+                    <tspan
+                      data-="x_17"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_17
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5309,7 +5453,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_18
+                    <tspan
+                      data-="x_18"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_18
+                    </tspan>
                   </text>
                 </g>
                 <g
@@ -5327,7 +5479,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                     fill="currentColor"
                     y="10"
                   >
-                    x_19
+                    <tspan
+                      data-="x_19"
+                      dy="0.71em"
+                      id="BaseSpan"
+                      x="0"
+                      y="10"
+                    >
+                      x_19
+                    </tspan>
                   </text>
                 </g>
               </g>
