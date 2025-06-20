@@ -256,6 +256,7 @@ export class CartesianChartBase
     );
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const {
       calloutProps,
@@ -294,6 +295,7 @@ export class CartesianChartBase
       enableReflow: this.props.enableReflow,
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     let callout: JSX.Element | null = null;
 
     let children = null;
@@ -765,7 +767,7 @@ export class CartesianChartBase
    * @param chartHoverProps
    * @returns
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-deprecated
   private _generateCallout(calloutProps: any, chartHoverProps: any): JSX.Element {
     return (
       <Callout

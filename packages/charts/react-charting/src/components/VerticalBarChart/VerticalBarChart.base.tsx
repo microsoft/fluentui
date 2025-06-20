@@ -101,6 +101,7 @@ export class VerticalBarChartBase
   private _calloutId: string;
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _bars: JSX.Element[];
   private _xAxisLabels: string[];
   private _yMax: number;
@@ -153,6 +154,7 @@ export class VerticalBarChartBase
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     this._adjustProps();
     this._xAxisLabels = this._getOrderedXAxisLabels();
@@ -164,6 +166,7 @@ export class VerticalBarChartBase
       d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
       this.props.yMinValue || 0,
     );
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -313,6 +316,7 @@ export class VerticalBarChartBase
     const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = this.props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const line: JSX.Element[] = [];
     data &&
       data.forEach((item: IVerticalBarChartDataPoint, index: number) => {
@@ -464,8 +468,10 @@ export class VerticalBarChartBase
     this.margins = margins;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderContentForBothLineAndBars = (point: IVerticalBarChartDataPoint): JSX.Element => {
     const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const content: JSX.Element[] = YValueHover.map((item: IYValueHover, index: number) => {
       return (
         <ChartHoverCard
@@ -480,6 +486,7 @@ export class VerticalBarChartBase
     });
     return <>{content}</>;
   };
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderContentForOnlyBars = (props: IVerticalBarChartDataPoint): JSX.Element => {
     const { useSingleColor = false } = this.props;
     return (
@@ -495,6 +502,7 @@ export class VerticalBarChartBase
     );
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderCallout = (props?: IVerticalBarChartDataPoint): JSX.Element | null => {
     return props
       ? this._isHavingLine
@@ -766,6 +774,7 @@ export class VerticalBarChartBase
         : Math.max(Math.abs(yMax - yReferencePoint), Math.abs(yMin - yReferencePoint));
     return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
   }
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
@@ -876,6 +885,7 @@ export class VerticalBarChartBase
     return bars;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
@@ -992,6 +1002,7 @@ export class VerticalBarChartBase
     return bars;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
@@ -1120,6 +1131,7 @@ export class VerticalBarChartBase
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getLegendData = (data: IVerticalBarChartDataPoint[], palette: IPalette): JSX.Element => {
     const { theme, useSingleColor } = this.props;
     const { lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
