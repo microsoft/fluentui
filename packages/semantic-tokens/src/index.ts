@@ -1807,7 +1807,7 @@ export {
   _ctrlMessageBarMultilinePaddingTop,
   _ctrlMessageBarPaddingContentAlignDefault,
   _ctrlMessageBarPaddingRight,
-  _ctrlMessageBarPaddingY,
+  _ctrlMessageBarPaddingVertical,
   _ctrlMessageBarReflowSpacerMarginBottom,
   _ctrlMessageBarTitleFontSize,
   _ctrlMessageBarTitleLineHeight,
