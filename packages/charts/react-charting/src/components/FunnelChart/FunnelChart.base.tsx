@@ -6,7 +6,6 @@ import {
   IFunnelChartStyleProps,
   IFunnelChartStyles,
 } from './FunnelChart.types';
-import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -14,13 +13,14 @@ import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IImageExportOptions } from '../../types/index';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
+import {
+  getHorizontalFunnelSegmentGeometry,
+  getVerticalFunnelSegmentGeometry,
+  getSegmentTextProps,
+  getStackedHorizontalFunnelSegmentGeometry,
+  getStackedVerticalFunnelSegmentGeometry,
+} from './funnelGeometry';
 
-// ToDo
-// Add export as image [Done]
-// Test support for RTl
-// Need to support 1, 2, 3, 4 from this https://chatgpt.com/share/68155f7d-19e8-800a-93e9-3014219dc91d [Done]
-// Center align control similar to gauge [Done]
-// Multiple legend selection [Done]
 const getClassNames = classNamesFunction<IFunnelChartStyleProps, IFunnelChartStyles>();
 
 export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React.forwardRef<
@@ -29,10 +29,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
 >((props, forwardedRef) => {
   const _tooltipId: string = getId('FunnelChartTooltipId_');
   const _emptyChartId: string = getId('_FunnelChart_empty');
-  const isRTL = getRTL(); // Determine if RTL mode is enabled
-  //const chartRef = React.useRef<SVGSVGElement | null>(null);
-
-  //let margins: Margins;
+  const isRTL = getRTL();
 
   const [hoveredStage, setHoveredStage] = React.useState<string | null>(null);
   const [isCalloutVisible, setIsCalloutVisible] = React.useState(false);
@@ -121,102 +118,74 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
 
   function _createFunnel(containerHeight: number, containerWidth: number): JSX.Element[] {
     const { data, culture } = props;
-    const funnelWidth = containerWidth * 0.8;
+    const funnelWidth = containerWidth;
     const funnelHeight = containerHeight * 0.8;
-    const funnelX = (containerWidth - funnelWidth) / 2;
-    const funnelY = (containerHeight - funnelHeight) / 2;
 
     if (props.orientation === 'horizontal') {
-      const widthScale = d3ScaleLinear()
-        .domain([0, Math.max(...data.map(d => d.value!))])
-        .range([0, funnelWidth]);
-
-      const segmentHeight = funnelHeight / data.length;
-
       return data.map((d, i) => {
-        const topWidth = widthScale(d.value!);
-        const bottomWidth = i < data.length - 1 ? widthScale(data[i + 1].value!) : 0;
-        const xOffset = (funnelWidth - topWidth) / 2;
-        const nextXOffset = (funnelWidth - bottomWidth) / 2;
-
-        // Adjust x-coordinates for RTL mode
-        const xStart = isRTL ? funnelWidth - xOffset : xOffset;
-        const xEnd = isRTL ? funnelWidth - nextXOffset : nextXOffset;
-
-        return (
-          <g key={i} transform={`translate(${funnelX}, ${funnelY})`}>
-            <path
-              d={`
-              M${xStart},${i * segmentHeight}
-              L${funnelWidth - xStart},${i * segmentHeight}
-              L${funnelWidth - xEnd},${(i + 1) * segmentHeight}
-              L${xEnd},${(i + 1) * segmentHeight}
-              Z
-            `}
-              fill={d.color}
-              opacity={legendHighlighted(d.stage as string) || noLegendHighlighted() ? 1 : 0.1}
-              onMouseOver={(event: React.MouseEvent<SVGElement>) => _handleHover(d, event)}
-              onMouseMove={(event: React.MouseEvent<SVGElement>) => _handleHover(d, event)}
-              onMouseOut={() => _handleMouseOut()}
-            />
-            <text
-              x={funnelWidth / 2}
-              y={i * segmentHeight + segmentHeight / 2}
-              textAnchor="middle"
-              onMouseOver={(event: React.MouseEvent<SVGElement>) => _handleHover(d, event)}
-              onMouseMove={(event: React.MouseEvent<SVGElement>) => _handleHover(d, event)}
-              onMouseOut={() => _handleMouseOut()}
-            >
-              {formatToLocaleString(d.value!.toString(), culture)}
-            </text>
-          </g>
-        );
+        const { pathD, textX, textY, availableWidth } = getHorizontalFunnelSegmentGeometry({
+          d,
+          i,
+          data,
+          funnelWidth,
+          funnelHeight,
+          isRTL,
+        });
+        const minTextWidth = 24;
+        const textProps = getSegmentTextProps({
+          availableWidth,
+          minTextWidth,
+          textX,
+          textY,
+          value: d.value!,
+          culture,
+          onMouseOver: event => _handleHover(d, event),
+          onMouseMove: event => _handleHover(d, event),
+          onMouseOut: () => _handleMouseOut(),
+        });
+        return renderFunnelSegment({
+          key: i,
+          pathD,
+          fill: d.color!,
+          opacity: legendHighlighted(d.stage as string) || noLegendHighlighted() ? 1 : 0.1,
+          onMouseOver: event => _handleHover(d, event),
+          onMouseMove: event => _handleHover(d, event),
+          onMouseOut: () => _handleMouseOut(),
+          textProps,
+        });
       });
     } else {
-      // Vertical funnel chart - use value for scaling, not stage
-      const heightScale = d3ScaleLinear()
-        .domain([0, Math.max(...data.map(d => d.value!))])
-        .range([0, funnelHeight]);
-      const segmentWidth = funnelWidth / data.length;
-
       return data.map((d, i) => {
-        const leftHeight = heightScale(d.value!);
-        const rightHeight = i < data.length - 1 ? heightScale(data[i + 1].value!) : 0;
-        const yOffset = (funnelHeight - leftHeight) / 2;
-        const nextYOffset = (funnelHeight - rightHeight) / 2;
-
-        // Adjust x-coordinates for RTL mode
-        const x0 = isRTL ? funnelWidth - (i + 1) * segmentWidth : i * segmentWidth;
-        const x1 = isRTL ? funnelWidth - i * segmentWidth : (i + 1) * segmentWidth;
-
-        return (
-          <g key={i} transform={`translate(${funnelX}, ${funnelY})`}>
-            <path
-              d={`
-              M${x0},${yOffset}
-              L${x1},${nextYOffset}
-              L${x1},${funnelHeight - nextYOffset}
-              L${x0},${funnelHeight - yOffset}
-              Z
-            `}
-              fill={d.color}
-              opacity={legendHighlighted(d.stage as string) || noLegendHighlighted() ? 1 : 0.1}
-              onMouseOver={(event: React.MouseEvent<SVGElement>) => _handleHover(d, event)}
-              onMouseMove={(event: React.MouseEvent<SVGElement>) => _handleHover(d, event)}
-              onMouseOut={() => _handleMouseOut()}
-            />
-            <text
-              x={(x0 + x1) / 2}
-              y={funnelHeight / 2}
-              textAnchor="middle"
-              onMouseOver={(event: React.MouseEvent<SVGElement>) => _handleHover(d, event)}
-              onMouseMove={(event: React.MouseEvent<SVGElement>) => _handleHover(d, event)}
-              onMouseOut={() => _handleMouseOut()}
-            >
-              {formatToLocaleString(d.value!.toString(), culture)}
-            </text>
-          </g>
-        );
+        const { pathD, textX, textY, availableWidth } = getVerticalFunnelSegmentGeometry({
+          d,
+          i,
+          data,
+          funnelWidth,
+          funnelHeight,
+          isRTL,
+        });
+        const minTextWidth = 24;
+        const textProps = getSegmentTextProps({
+          availableWidth,
+          minTextWidth,
+          textX,
+          textY,
+          value: d.value!,
+          culture,
+          onMouseOver: event => _handleHover(d, event),
+          onMouseMove: event => _handleHover(d, event),
+          onMouseOut: () => _handleMouseOut(),
+        });
+        return renderFunnelSegment({
+          key: i,
+          pathD,
+          fill: d.color!,
+          opacity: legendHighlighted(d.stage as string) || noLegendHighlighted() ? 1 : 0.1,
+          onMouseOver: event => _handleHover(d, event),
+          onMouseMove: event => _handleHover(d, event),
+          onMouseOut: () => _handleMouseOut(),
+          textProps,
+        });
       });
     }
   }
@@ -232,160 +201,93 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     const totals = stages.map(s => s?.subValues?.reduce((sum, s) => sum + s.value, 0) ?? 0);
     const maxTotal = Math.max(...totals);
 
-    const funnelWidth = containerWidth * 0.8;
+    const funnelWidth = containerWidth;
     const funnelHeight = containerHeight * 0.8;
-    const funnelX = (containerWidth - funnelWidth) / 2;
-    const funnelY = (containerHeight - funnelHeight) / 2;
 
     const paths: JSX.Element[] = [];
 
     if (orientation === 'horizontal') {
-      const segmentHeight = funnelHeight / stages.length;
-
       for (let i = 0; i < stages.length; i++) {
         const cur = stages[i];
-        const next = stages[i + 1] || { subValues: [] };
-        const curTotal = totals[i] || 1;
-        const nextTotal = totals[i + 1] || 0;
-
-        let cumTop = 0;
-        let cumBot = 0;
-
         for (let k = 0; k < (cur.subValues ?? []).length; k++) {
-          const v = cur.subValues![k];
-          const vNext = next.subValues?.find(x => x.category === v.category);
-          const val = v.value;
-          const nextVal = vNext ? vNext.value : 0;
-
-          const topW = (val / curTotal) * (curTotal / maxTotal) * funnelWidth;
-          const botW = (nextVal / nextTotal || 0) * (nextTotal / maxTotal) * funnelWidth;
-
-          const topStart = (funnelWidth - (curTotal / maxTotal) * funnelWidth) / 2 + cumTop;
-          const topEnd = topStart + topW;
-          const botStart = (funnelWidth - (nextTotal / maxTotal) * funnelWidth) / 2 + cumBot;
-          const botEnd = botStart + botW;
-
-          const textX = (topStart + topEnd + botStart + botEnd) / 4;
-          const textY = i * segmentHeight + segmentHeight / 2;
-
+          const v = cur.subValues?.[k];
+          if (!v) continue;
+          const geom = getStackedHorizontalFunnelSegmentGeometry({
+            i,
+            k,
+            stages,
+            totals,
+            maxTotal,
+            funnelWidth,
+            funnelHeight,
+          });
+          const minTextWidth = 24;
+          const textProps = getSegmentTextProps({
+            availableWidth: geom.availableWidth,
+            minTextWidth,
+            textX: geom.textX,
+            textY: geom.textY,
+            value: v.value,
+            culture,
+            onMouseOver: event => _handleStackedHover(cur.stage as string, v, event),
+            onMouseMove: event => _handleStackedHover(cur.stage as string, v, event),
+            onMouseOut: () => _handleMouseOut(),
+          });
           paths.push(
-            <g key={`${i}-${k}`} transform={`translate(${funnelX},${funnelY})`}>
-              <path
-                d={`
-                  M${topStart},${i * segmentHeight}
-                  L${topEnd},${i * segmentHeight}
-                  L${botEnd},${(i + 1) * segmentHeight}
-                  L${botStart},${(i + 1) * segmentHeight}
-                  Z
-                `}
-                fill={v.color}
-                opacity={
-                  (isStackedFunnelData(props.data) && legendHighlighted(v.category)) || noLegendHighlighted() ? 1 : 0.1
-                }
-                onMouseOver={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v, event)
-                }
-                onMouseMove={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v, event)
-                }
-                onMouseOut={() => _handleMouseOut()}
-              />
-              <text
-                x={textX}
-                y={textY}
-                textAnchor="middle"
-                alignmentBaseline="middle"
-                onMouseOver={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v, event)
-                }
-                onMouseMove={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v, event)
-                }
-                onMouseOut={() => _handleMouseOut()}
-              >
-                {formatToLocaleString(v.value.toString(), culture)}
-              </text>
-            </g>,
+            renderFunnelSegment({
+              key: `${i}-${k}`,
+              pathD: geom.pathD,
+              fill: v.color,
+              opacity:
+                (isStackedFunnelData(props.data) && legendHighlighted(v.category)) || noLegendHighlighted() ? 1 : 0.1,
+              onMouseOver: event => _handleStackedHover(cur.stage as string, v, event),
+              onMouseMove: event => _handleStackedHover(cur.stage as string, v, event),
+              onMouseOut: () => _handleMouseOut(),
+              textProps,
+            }),
           );
-
-          cumTop += topW;
-          cumBot += botW;
         }
       }
     } else {
-      const segmentWidth = funnelWidth / stages.length;
-
       for (let i = 0; i < stages.length; i++) {
         const cur = stages[i];
-        const next = stages[i + 1] || { subValues: [] };
-        const curTotal = totals[i] || 1;
-        const nextTotal = totals[i + 1] || 0;
-
-        let cumTop = 0;
-        let cumBot = 0;
-
         for (let k = 0; k < (cur.subValues ?? []).length; k++) {
-          const v = cur.subValues![k];
-          const vNext = next.subValues?.find(x => x.category === v.category);
-          const val = v.value;
-          const nextVal = vNext ? vNext.value : 0;
-
-          const topH = (val / curTotal) * (curTotal / maxTotal) * funnelHeight;
-          const botH = (nextVal / nextTotal || 0) * (nextTotal / maxTotal) * funnelHeight;
-
-          const leftStart = i * segmentWidth;
-          const leftEnd = (i + 1) * segmentWidth;
-          const topStart = (funnelHeight - (curTotal / maxTotal) * funnelHeight) / 2 + cumTop;
-          const topEnd = topStart + topH;
-          const botStart = (funnelHeight - (nextTotal / maxTotal) * funnelHeight) / 2 + cumBot;
-          const botEnd = botStart + botH;
-
-          // Center of the stack segment
-          const textX = (leftStart + leftEnd) / 2;
-          const textY = (topStart + topEnd + botStart + botEnd) / 4;
-
+          const v = cur.subValues?.[k];
+          if (!v) continue;
+          const geom = getStackedVerticalFunnelSegmentGeometry({
+            i,
+            k,
+            stages,
+            totals,
+            maxTotal,
+            funnelWidth,
+            funnelHeight,
+          });
+          const minTextWidth = 24;
+          const textProps = getSegmentTextProps({
+            availableWidth: geom.availableWidth,
+            minTextWidth,
+            textX: geom.textX,
+            textY: geom.textY,
+            value: v.value,
+            culture,
+            onMouseOver: event => _handleStackedHover(cur.stage as string, v, event),
+            onMouseMove: event => _handleStackedHover(cur.stage as string, v, event),
+            onMouseOut: () => _handleMouseOut(),
+          });
           paths.push(
-            <g key={`${i}-${k}`} transform={`translate(${funnelX},${funnelY})`}>
-              <path
-                d={`
-                  M${leftStart},${topStart}
-                  L${leftEnd},${botStart}
-                  L${leftEnd},${botEnd}
-                  L${leftStart},${topEnd}
-                  Z
-                `}
-                fill={v.color}
-                opacity={
-                  (isStackedFunnelData(props.data) && legendHighlighted(v.category)) || noLegendHighlighted() ? 1 : 0.1
-                }
-                onMouseOver={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v, event)
-                }
-                onMouseMove={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v, event)
-                }
-                onMouseOut={() => _handleMouseOut()}
-              />
-              <text
-                x={textX}
-                y={textY}
-                textAnchor="middle"
-                alignmentBaseline="middle"
-                onMouseOver={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v, event)
-                }
-                onMouseMove={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v, event)
-                }
-                onMouseOut={() => _handleMouseOut()}
-              >
-                {formatToLocaleString(v.value.toString(), culture)}
-              </text>
-            </g>,
+            renderFunnelSegment({
+              key: `${i}-${k}`,
+              pathD: geom.pathD,
+              fill: v.color,
+              opacity:
+                (isStackedFunnelData(props.data) && legendHighlighted(v.category)) || noLegendHighlighted() ? 1 : 0.1,
+              onMouseOver: event => _handleStackedHover(cur.stage as string, v, event),
+              onMouseMove: event => _handleStackedHover(cur.stage as string, v, event),
+              onMouseOut: () => _handleMouseOut(),
+              textProps,
+            }),
           );
-
-          cumTop += topH;
-          cumBot += botH;
         }
       }
     }
@@ -401,7 +303,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
 
     // For stacked funnel, show only the unique categories as legends (e.g., 'A', 'B')
     if (isStackedFunnelData(funnelData)) {
-      // Collect unique categories and their color (first color found for each category)
+      // Collect unique categories and their color
       const categoryMap: Record<string, string> = {};
       funnelData.forEach((stage: IFunnelChartDataPoint) => {
         (stage.subValues || []).forEach(sub => {
@@ -418,7 +320,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       }));
 
       return (
-        <div>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Legends
             legends={legends}
             centerLegends
@@ -430,7 +332,6 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       );
     }
 
-    // Non-stacked: allow selection
     const legends: ILegend[] = funnelData.map((d: IFunnelChartDataPoint) => ({
       title: d.stage as string,
       color: d.color!,
@@ -439,7 +340,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     }));
 
     return (
-      <div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Legends
           legends={legends}
           centerLegends
@@ -481,11 +382,19 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     chartHeight: height,
   });
 
+  const funnelMarginTop = 40;
+  const funnelWidth = width * 0.8;
+  const funnelOffsetX = (width - funnelWidth) / 2;
+
   return !_isChartEmpty() ? (
     <div ref={chartContainerRef} className={classNames.root}>
       <FocusZone direction={FocusZoneDirection.horizontal}>
         <svg width={width} height={height} className={classNames.chart} role={'img'} aria-label={props.chartTitle}>
-          {isStackedFunnelData(props.data) ? _createStackedFunnel(height, width) : _createFunnel(height, width)}
+          <g transform={`translate(${funnelOffsetX}, ${funnelMarginTop})`}>
+            {isStackedFunnelData(props.data)
+              ? _createStackedFunnel(height - funnelMarginTop, funnelWidth)
+              : _createFunnel(height - funnelMarginTop, funnelWidth)}
+          </g>
           {isCalloutVisible && (
             <Callout {...calloutProps}>
               <ChartHoverCard
@@ -507,3 +416,81 @@ FunnelChartBase.displayName = 'FunnelChart';
 FunnelChartBase.defaultProps = {
   orientation: 'horizontal',
 };
+
+function renderSegmentText({
+  show,
+  x,
+  y,
+  value,
+  culture,
+  onMouseOver,
+  onMouseMove,
+  onMouseOut,
+}: {
+  show: boolean;
+  x: number;
+  y: number;
+  value: number;
+  culture: string | undefined;
+  onMouseOver: (event: React.MouseEvent<SVGElement>) => void;
+  onMouseMove: (event: React.MouseEvent<SVGElement>) => void;
+  onMouseOut: () => void;
+}) {
+  if (!show) return null;
+  return (
+    <text
+      x={x}
+      y={y}
+      textAnchor="middle"
+      alignmentBaseline="middle"
+      onMouseOver={onMouseOver}
+      onMouseMove={onMouseMove}
+      onMouseOut={onMouseOut}
+    >
+      {formatToLocaleString(value.toString(), culture)}
+    </text>
+  );
+}
+
+function renderFunnelSegment({
+  key,
+  pathD,
+  fill,
+  opacity,
+  onMouseOver,
+  onMouseMove,
+  onMouseOut,
+  textProps,
+}: {
+  key: string | number;
+  pathD: string;
+  fill: string;
+  opacity: number;
+  onMouseOver: (event: React.MouseEvent<SVGElement>) => void;
+  onMouseMove: (event: React.MouseEvent<SVGElement>) => void;
+  onMouseOut: () => void;
+  textProps?: {
+    show: boolean;
+    x: number;
+    y: number;
+    value: number;
+    culture: string | undefined;
+    onMouseOver: (event: React.MouseEvent<SVGElement>) => void;
+    onMouseMove: (event: React.MouseEvent<SVGElement>) => void;
+    onMouseOut: () => void;
+  };
+}) {
+  return (
+    <g key={key}>
+      <path
+        d={pathD}
+        fill={fill}
+        opacity={opacity}
+        onMouseOver={onMouseOver}
+        onMouseMove={onMouseMove}
+        onMouseOut={onMouseOut}
+      />
+      {textProps && renderSegmentText(textProps)}
+    </g>
+  );
+}

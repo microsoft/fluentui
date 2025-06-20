@@ -10,7 +10,7 @@ interface IFunnelChartBasicState {
   legendMultiSelect: boolean;
 }
 
-export class FunnelChartBasicExample extends React.Component<{}, IFunnelChartBasicState> {
+export class FunnelChartStackedExample extends React.Component<{}, IFunnelChartBasicState> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -32,12 +32,28 @@ export class FunnelChartBasicExample extends React.Component<{}, IFunnelChartBas
   public render(): React.ReactNode {
     const { width, height, hideLegend, orientation, legendMultiSelect } = this.state;
 
-    // Basic funnel chart data
-    const basicData = [
-      { stage: 'Visitors', value: 1000, color: getColorFromToken(DataVizPalette.color5) },
-      { stage: 'Signups', value: 600, color: getColorFromToken(DataVizPalette.color6) },
-      { stage: 'Trials', value: 300, color: getColorFromToken(DataVizPalette.color7) },
-      { stage: 'Customers', value: 250, color: getColorFromToken(DataVizPalette.color10) },
+    const stackedData = [
+      {
+        stage: 'Visit',
+        subValues: [
+          { category: 'A', value: 100, color: getColorFromToken(DataVizPalette.color5) },
+          { category: 'B', value: 80, color: getColorFromToken(DataVizPalette.color6) },
+        ],
+      },
+      {
+        stage: 'Sign-Up',
+        subValues: [
+          { category: 'A', value: 60, color: getColorFromToken(DataVizPalette.color5) },
+          { category: 'B', value: 40, color: getColorFromToken(DataVizPalette.color6) },
+        ],
+      },
+      {
+        stage: 'Purchase',
+        subValues: [
+          { category: 'A', value: 30, color: getColorFromToken(DataVizPalette.color5) },
+          { category: 'B', value: 20, color: getColorFromToken(DataVizPalette.color6) },
+        ],
+      },
     ];
 
     const orientationOptions: IChoiceGroupOption[] = [
@@ -69,6 +85,7 @@ export class FunnelChartBasicExample extends React.Component<{}, IFunnelChartBas
           onChange={this._onHeightChange}
           aria-valuetext={`ChangeHeightslider${this.state.height}`}
         />
+
         <Toggle
           label="Hide Legend"
           onText="ON"
@@ -90,10 +107,11 @@ export class FunnelChartBasicExample extends React.Component<{}, IFunnelChartBas
           options={orientationOptions}
           onChange={this._onOrientationChange}
         />
+
         <div style={rootStyle}>
           <FunnelChart
-            data={basicData}
-            chartTitle="Basic Funnel Chart"
+            data={stackedData}
+            chartTitle="Stacked Funnel Chart"
             width={width}
             height={height}
             hideLegend={hideLegend}

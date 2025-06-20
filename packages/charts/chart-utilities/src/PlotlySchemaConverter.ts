@@ -446,7 +446,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
           }
         case 'funnel':
         case 'funnelarea':
-          return { isValid: true, type: 'funnel', validTracesInfo: validTraces };
+          return { isValid: true, traceIndex, type: 'funnel' };
         case 'scatter':
           const scatterData = traceData as Partial<PlotData>;
           const isAreaChart =

@@ -1516,8 +1516,37 @@ export const transformPlotlyJsonToChartTableProps = (
   };
 };
 
-export const transformPlotlyJsonToFunnelProps = (
+function getCategoriesAndValues(series: any): { categories: any[]; values: any[] } {
+  const orientation = series.orientation || 'h';
+  const y = series.labels ?? series.y ?? series.stage;
+  const x = series.values ?? series.x ?? series.value;
+  const xIsString = isArrayOrTypedArray(x) && x.every((v: any) => typeof v === 'string');
+  const yIsString = isArrayOrTypedArray(y) && y.every((v: any) => typeof v === 'string');
+  const xIsNumber = isArrayOrTypedArray(x) && x.every((v: any) => typeof v === 'number');
+  const yIsNumber = isArrayOrTypedArray(y) && y.every((v: any) => typeof v === 'number');
+
+  if (orientation === 'h') {
+    if (yIsString && xIsNumber) {
+      return { categories: y, values: x };
+    } else if (xIsString && yIsNumber) {
+      return { categories: x, values: y };
+    } else {
+      return { categories: yIsString ? y : x, values: yIsString ? x : y };
+    }
+  } else {
+    if (xIsString && yIsNumber) {
+      return { categories: x, values: y };
+    } else if (yIsString && xIsNumber) {
+      return { categories: y, values: x };
+    } else {
+      return { categories: xIsString ? x : y, values: xIsString ? y : x };
+    }
+  }
+}
+
+export const transformPlotlyJsonToFunnelChartProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1540,9 +1569,9 @@ export const transformPlotlyJsonToFunnelProps = (
       const category = series.name || `Category ${seriesIdx + 1}`;
       // Use the same color for this category across all stages
       const extractedColors = extractColor(
-        series.marker?.colors,
+        input.layout?.template?.layout?.colorway,
         colorwayType,
-        series.marker?.colors,
+        series.marker?.colors ?? series.marker?.color,
         colorMap,
         isDarkTheme,
       );
@@ -1557,7 +1586,7 @@ export const transformPlotlyJsonToFunnelProps = (
       const category = series.name || `Category ${seriesIdx + 1}`;
       const color = seriesColors[category];
 
-      if (!Array.isArray(labels) || !Array.isArray(values)) {
+      if (!isArrayOrTypedArray(labels) || !isArrayOrTypedArray(values)) {
         return;
       }
 
@@ -1575,24 +1604,23 @@ export const transformPlotlyJsonToFunnelProps = (
       });
     });
   } else {
-    // Non-stacked data handling (multiple series with single-value arrays allowed)
+    // Non-stacked data handling (multiple series with single-value arrays)
     input.data.forEach((series: any, seriesIdx: number) => {
-      const labels = series.labels ?? series.y ?? series.stage;
-      const values = series.values ?? series.x ?? series.value;
+      const { categories, values } = getCategoriesAndValues(series);
 
-      if (!Array.isArray(labels) || !Array.isArray(values)) {
+      if (!isArrayOrTypedArray(categories) || !isArrayOrTypedArray(values)) {
         return;
       }
 
       const extractedColors = extractColor(
-        series.marker?.colors,
+        input.layout?.template?.layout?.colorway,
         colorwayType,
-        series.marker?.colors,
+        series.marker?.colors ?? series.marker?.color,
         colorMap,
         isDarkTheme,
       );
 
-      labels.forEach((label: string, i: number) => {
+      categories.forEach((label: string, i: number) => {
         const color = resolveColor(extractedColors, i, label, colorMap, isDarkTheme);
         funnelData.push({
           stage: label,
@@ -1608,8 +1636,10 @@ export const transformPlotlyJsonToFunnelProps = (
     width: input.layout?.width,
     height: input.layout?.height,
     orientation: (input.data[0] as any)?.orientation === 'v' ? 'vertical' : 'horizontal',
+    hideLegend: isMultiPlot || input.layout?.showlegend === false,
   };
 };
+
 export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
   const projection: PlotlySchema = { ...input };
   for (let sindex = 0; sindex < input.data.length; sindex++) {

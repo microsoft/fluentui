@@ -29,6 +29,7 @@ import {
   getAllupLegendsProps,
   NON_PLOT_KEY_PREFIX,
   SINGLE_REPEAT,
+  transformPlotlyJsonToFunnelChartProps,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { LineChart } from '../LineChart/index';
@@ -213,7 +214,7 @@ type ChartTypeMap = {
     renderer: typeof ResponsiveScatterChart;
   } & PreTransformHooks;
   funnel: {
-    transformer: typeof transformPlotlyJsonToLineChartProps;
+    transformer: typeof transformPlotlyJsonToFunnelChartProps;
     renderer: typeof ResponsiveFunnelChart;
   } & PreTransformHooks;
   fallback: {
@@ -279,7 +280,7 @@ const chartMap: ChartTypeMap = {
     preTransformOperation: LineAreaPreTransformOp,
   },
   funnel: {
-    transformer: transformPlotlyJsonToLineChartProps,
+    transformer: transformPlotlyJsonToFunnelChartProps,
     renderer: ResponsiveFunnelChart,
   },
   fallback: {
