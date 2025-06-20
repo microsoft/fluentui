@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Carousel): fixed re-focus to opposite navigation button in 2 card edge case",
+  "packageName": "@fluentui/react-carousel",
+  "email": "mathis.michel@outlook.de",
+  "dependentChangeType": "patch"
+}
