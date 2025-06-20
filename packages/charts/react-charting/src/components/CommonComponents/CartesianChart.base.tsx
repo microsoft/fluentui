@@ -33,7 +33,7 @@ import {
   tooltipOfAxislabels,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
-import { SVGTooltipText } from '../../utilities/SVGTooltipText';
+import { SVGTooltipText, ISVGTooltipTextProps } from '../../utilities/SVGTooltipText';
 import { IChart } from '../../types/index';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
@@ -131,20 +131,36 @@ export class CartesianChartBase
           : 20
         : this.props.margins?.left ?? 40,
     };
+    const TITLE_MARGIN_HORIZONTAL = 24;
+    const TITLE_MARGIN_VERTICAL = 20;
     if (this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '') {
-      this.margins.bottom! = this.props.margins?.bottom ?? 55;
+      this.margins.bottom! = this.props.margins?.bottom ?? this.margins.bottom! + TITLE_MARGIN_VERTICAL;
     }
     if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
       this.margins.left! = this._isRtl
         ? this.props.margins?.right ?? this.props?.secondaryYAxistitle
-          ? 80
-          : 40
-        : this.props.margins?.left ?? 60;
+          ? this.margins.right! + 2 * TITLE_MARGIN_HORIZONTAL
+          : this.margins.right! + TITLE_MARGIN_HORIZONTAL
+        : this.props.margins?.left ?? this.margins.left! + TITLE_MARGIN_HORIZONTAL;
       this.margins.right! = this._isRtl
-        ? this.props.margins?.left ?? 60
+        ? this.props.margins?.left ?? this.margins.left! + TITLE_MARGIN_HORIZONTAL
         : this.props.margins?.right ?? this.props?.secondaryYAxistitle
-        ? 80
-        : 40;
+        ? this.margins.right! + 2 * TITLE_MARGIN_HORIZONTAL
+        : this.margins.right! + TITLE_MARGIN_HORIZONTAL;
+    }
+    if (this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '') {
+      this.margins.top! = this.props.margins?.top ?? this.margins.top! + TITLE_MARGIN_VERTICAL;
+    }
+    if (
+      this.props.yAxisAnnotation !== undefined &&
+      this.props.yAxisAnnotation !== '' &&
+      (this.props.secondaryYAxistitle === undefined || this.props.secondaryYAxistitle === '')
+    ) {
+      if (this._isRtl) {
+        this.margins.left! = this.props.margins?.right ?? this.margins.right! + TITLE_MARGIN_HORIZONTAL;
+      } else {
+        this.margins.right! = this.props.margins?.right ?? this.margins.right! + TITLE_MARGIN_HORIZONTAL;
+      }
     }
   }
 
@@ -540,6 +556,13 @@ export class CartesianChartBase
       this.margins.top! -
       this.state._removalValueForTextTuncate! -
       this.titleMargin;
+
+    const commonSvgToolTipProps: ISVGTooltipTextProps = {
+      wrapContent,
+      theme: this.props.theme,
+      showBackground: true,
+      className: this._classNames.svgTooltip,
+    };
     /**
      * We have use the {@link defaultTabbableElement } to fix
      * the Focus not landing on chart while tabbing, instead  goes to legend.
@@ -605,9 +628,21 @@ export class CartesianChartBase
                   'aria-hidden': true,
                 }}
                 maxWidth={xAxisTitleMaximumAllowedWidth}
-                wrapContent={wrapContent}
-                theme={this.props.theme}
-                showBackground={true}
+                {...commonSvgToolTipProps}
+              />
+            )}
+            {this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '' && (
+              <SVGTooltipText
+                content={this.props.xAxisAnnotation}
+                textProps={{
+                  x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                  y: this.titleMargin + 3,
+                  className: this._classNames.axisAnnotation!,
+                  textAnchor: 'middle',
+                  'aria-hidden': true,
+                }}
+                maxWidth={xAxisTitleMaximumAllowedWidth}
+                {...commonSvgToolTipProps}
               />
             )}
             <g
@@ -657,9 +692,7 @@ export class CartesianChartBase
                       'aria-hidden': true,
                     }}
                     maxWidth={yAxisTitleMaximumAllowedHeight}
-                    wrapContent={wrapContent}
-                    theme={this.props.theme}
-                    showBackground={true}
+                    {...commonSvgToolTipProps}
                   />
                 )}
               </g>
@@ -682,11 +715,35 @@ export class CartesianChartBase
                   'aria-hidden': true,
                 }}
                 maxWidth={yAxisTitleMaximumAllowedHeight}
-                wrapContent={wrapContent}
-                theme={this.props.theme}
-                showBackground={true}
+                {...commonSvgToolTipProps}
               />
             )}
+            {this.props.yAxisAnnotation !== undefined &&
+              this.props.yAxisAnnotation !== '' &&
+              (this.props.secondaryYAxistitle === undefined || this.props.secondaryYAxistitle === '') && (
+                <SVGTooltipText
+                  content={this.props.yAxisAnnotation}
+                  textProps={{
+                    x:
+                      (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 +
+                      this.state._removalValueForTextTuncate!,
+                    y: this._isRtl
+                      ? this.state.startFromX - this.titleMargin
+                      : svgDimensions.width - this.margins.right!,
+                    textAnchor: 'middle',
+                    transform: `translate(${
+                      this._isRtl
+                        ? this.margins.right! / 2 - this.titleMargin
+                        : this.margins.right! / 2 + this.titleMargin
+                    },
+                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                    className: this._classNames.axisAnnotation!,
+                    'aria-hidden': true,
+                  }}
+                  maxWidth={yAxisTitleMaximumAllowedHeight}
+                  {...commonSvgToolTipProps}
+                />
+              )}
           </svg>
         </FocusZone>
 

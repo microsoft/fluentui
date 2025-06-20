@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix: react 18 type issues",
-  "packageName": "@fluentui/react-toast",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "none"
-}

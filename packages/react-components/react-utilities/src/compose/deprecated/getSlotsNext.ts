@@ -13,21 +13,23 @@ import { ObjectSlotProps, Slots } from './getSlots';
  * @deprecated use slot.always or slot.optional combined with assertSlots instead
  */
 export function getSlotsNext<R extends SlotPropsRecord>(
-  state: ComponentState<R>,
+  state: unknown,
 ): {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   slots: Slots<R>;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   slotProps: ObjectSlotProps<R>;
 } {
+  const typedState = state as ComponentState<R>;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const slots = {} as Slots<R>;
   const slotProps = {} as R;
 
-  const slotNames: (keyof R)[] = Object.keys(state.components);
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  const slotNames: (keyof R)[] = Object.keys(typedState.components);
   for (const slotName of slotNames) {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const [slot, props] = getSlotNext(state, slotName);
+    const [slot, props] = getSlotNext(typedState, slotName);
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     slots[slotName] = slot as Slots<R>[typeof slotName];
     slotProps[slotName] = props;
@@ -54,12 +56,17 @@ function getSlotNext<R extends SlotPropsRecord, K extends keyof R>(
   const { as: asProp, ...propsWithoutAs } = props as NonUndefined<typeof props>;
 
   const slot = (
-    state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
-      ? asProp || state.components?.[slotName] || 'div'
-      : state.components[slotName]
+    state.components?.[slotName] === undefined || // eslint-disable-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    typeof state.components[slotName] === 'string'
+      ? // eslint-disable-next-line @typescript-eslint/no-deprecated
+        asProp || state.components?.[slotName] || 'div'
+      : // eslint-disable-next-line @typescript-eslint/no-deprecated
+        state.components[slotName]
   ) as React.ElementType<R[K]>;
 
   const shouldOmitAsProp = typeof slot === 'string' && asProp;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const slotProps: UnknownSlotProps = shouldOmitAsProp ? propsWithoutAs : props;
 
   return [slot, slotProps as R[K]];

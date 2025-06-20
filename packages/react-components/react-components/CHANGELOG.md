@@ -1,8 +1,117 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 14 May 2025 18:49:15 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Jun 2025 17:33:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.66.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.2)
+
+Wed, 18 Jun 2025 17:33:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.1..@fluentui/react-components_v9.66.2)
+
+### Minor changes
+
+- `@fluentui/react-shared-contexts`
+  - feat: add support for custom style hooks for nav components ([PR #34633](https://github.com/microsoft/fluentui/pull/34633) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - chore (react-charts): Remove enzyme dependency for tests ([PR #34595](https://github.com/microsoft/fluentui/pull/34595) by 98592573+AtishayMsft@users.noreply.github.com)
+  - fix (react-charts): Update traceinfo property structure ([PR #34652](https://github.com/microsoft/fluentui/pull/34652) by 98592573+AtishayMsft@users.noreply.github.com)
+  - fix(react-charts): Consume y axis tick format for bar labels ([PR #34653](https://github.com/microsoft/fluentui/pull/34653) by 98592573+AtishayMsft@users.noreply.github.com)
+  - fix(react-charts): Fix svg tooltip background alignment ([PR #34663](https://github.com/microsoft/fluentui/pull/34663) by 98592573+AtishayMsft@users.noreply.github.com)
+  - port v8 fixes to v9 ([PR #34670](https://github.com/microsoft/fluentui/pull/34670) by anushgupta@microsoft.com)
+  - Charts made responsive ([PR #34641](https://github.com/microsoft/fluentui/pull/34641) by anushgupta@microsoft.com)
+- `@fluentui/react-nav`
+  - feat: add support for custom style hooks ([PR #34633](https://github.com/microsoft/fluentui/pull/34633) by marcosvmmoura@gmail.com)
+- `@fluentui/react-carousel`
+  - fix: Ensure documentDownListener is removed on unmount ([PR #34661](https://github.com/microsoft/fluentui/pull/34661) by mifraser@microsoft.com)
+
+## [9.66.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.1)
+
+Fri, 13 Jun 2025 12:32:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.0..@fluentui/react-components_v9.66.1)
+
+### Patches
+
+- `@fluentui/react-positioning`
+  - fix: update logic for triggering updates ([PR #34639](https://github.com/microsoft/fluentui/pull/34639) by olfedias@microsoft.com)
+- `@fluentui/react-skeleton`
+  - Allow the skeleton root to be a span in addition to a div ([PR #34563](https://github.com/microsoft/fluentui/pull/34563) by nathansokol@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - chore(react-tag-picker): ensure no toggle behaviour when re-selecting already selected data ([PR #33344](https://github.com/microsoft/fluentui/pull/33344) by bernardo.sunderhus@gmail.com)
+
+## [9.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.0)
+
+Thu, 12 Jun 2025 09:43:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.65.0..@fluentui/react-components_v9.66.0)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - feat: react 18 support for slots api ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-aria`
+  - chore: adjust types to support react 18 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - line border and axis title background fix ([PR #34621](https://github.com/microsoft/fluentui/pull/34621) by anushgupta@microsoft.com)
+
+## [9.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.65.0)
+
+Wed, 11 Jun 2025 22:31:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.64.1..@fluentui/react-components_v9.65.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: add @fluentui/react-nav to suite ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by marcosvmmoura@gmail.com)
+- `@fluentui/react-nav`
+  - feat: release stable ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - Fix GaugeChart so it can merge customer provided styles to the chart ([PR #34604](https://github.com/microsoft/fluentui/pull/34604) by emhkimm@gmail.com)
+  - fix(react-charts): Move isMonth function to chart-utilities ([PR #34626](https://github.com/microsoft/fluentui/pull/34626) by 98592573+AtishayMsft@users.noreply.github.com)
+  - fix accessibility bugs ([PR #34609](https://github.com/microsoft/fluentui/pull/34609) by anushgupta@microsoft.com)
+- `@fluentui/react-color-picker`
+  - docs: removed text from preview stage ([PR #34612](https://github.com/microsoft/fluentui/pull/34612) by vkozlova@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: implement useSafeZoneArea() hook ([PR #34445](https://github.com/microsoft/fluentui/pull/34445) by olfedias@microsoft.com)
+- `@fluentui/react-tags`
+  - fix: selected Tag and InteractionTag styles are visible in high contrast mode ([PR #34620](https://github.com/microsoft/fluentui/pull/34620) by sarah.higley@microsoft.com)
+
+## [9.64.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.64.1)
+
+Fri, 06 Jun 2025 13:15:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.64.0..@fluentui/react-components_v9.64.1)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - feat: add custom RefAttributes interface which is used within ForwardRefComponent to mitigate breaking changes shipped as patch release in @types/react@18.2.61 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by martinhochel@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-calendar-compat`
+  - fix: aria-label for year selection ([PR #34536](https://github.com/microsoft/fluentui/pull/34536) by v.kozlova13@gmail.com)
+- `@fluentui/react-charts`
+  - feat(react-charts): Improve formatting and numeric and date labels ([PR #34562](https://github.com/microsoft/fluentui/pull/34562) by 98592573+AtishayMsft@users.noreply.github.com)
+- `@fluentui/react-nav-preview`
+  - fix: Change Nav icon display animations to opacity animations ([PR #34452](https://github.com/microsoft/fluentui/pull/34452) by jiangemma@microsoft.com)
+  - fix: focus borders being cut-off ([PR #34565](https://github.com/microsoft/fluentui/pull/34565) by marcosvmmoura@gmail.com)
+- `@fluentui/react-slider`
+  - fix: adjust focus outline offset ([PR #34538](https://github.com/microsoft/fluentui/pull/34538) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-table`
+  - fix(DataGridSelectionCell): should not use `aria-checked` on gridcell ([PR #34503](https://github.com/microsoft/fluentui/pull/34503) by lingfangao@hotmail.com)
+  - fix: Single select should not render header selection indicator ([PR #33752](https://github.com/microsoft/fluentui/pull/33752) by lingfangao@hotmail.com)
+- `@fluentui/react-tabster`
+  - Bumping Tabster to 8.5.5 ([PR #34395](https://github.com/microsoft/fluentui/pull/34395) by marata@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: re-introduce active state style to TreeItemLayout ([PR #34558](https://github.com/microsoft/fluentui/pull/34558) by bernardo.sunderhus@gmail.com)
 
 ## [9.64.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.64.0)
 

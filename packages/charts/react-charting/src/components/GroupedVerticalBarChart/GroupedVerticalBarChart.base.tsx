@@ -34,6 +34,7 @@ import {
   areArraysEqual,
   calculateLongestLabelWidth,
   YAxisType,
+  sortAxisCategories,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -89,6 +90,7 @@ export class GroupedVerticalBarChartBase
 {
   public static defaultProps: Partial<IGroupedVerticalBarChartProps> = {
     maxBarWidth: 24,
+    xAxisCategoryOrder: 'default',
   };
 
   private _createSet: (
@@ -163,11 +165,11 @@ export class GroupedVerticalBarChartBase
 
   public render(): React.ReactNode {
     const points = this._addDefaultColors(this.props.data);
+    this._xAxisType = getTypeOfAxis(points[0].name, true) as XAxisTypes;
     const { legends, xAxisLabels, datasetForBars } = this._createSet(points);
     this._legends = legends;
     this._xAxisLabels = xAxisLabels;
     this._datasetForBars = datasetForBars;
-    this._xAxisType = getTypeOfAxis(points[0].name, true) as XAxisTypes;
     const legendBars: JSX.Element = this._getLegendData();
     this._adjustProps();
 
@@ -328,7 +330,7 @@ export class GroupedVerticalBarChartBase
 
   private _createDataSetOfGVBC = (points: IGroupedVerticalBarChartData[]) => {
     const legends = new Set<string>();
-    const xAxisLabels: string[] = points.map(singlePoint => singlePoint.name);
+    const xAxisLabels: string[] = this._getOrderedXAxisLabels(points);
     points.forEach((point: IGroupedVerticalBarChartData) => {
       point.series.forEach((seriesPoint: IGVBarChartSeriesPoint) => {
         legends.add(seriesPoint.legend);
@@ -512,7 +514,9 @@ export class GroupedVerticalBarChartBase
               className={this._classNames.barLabel}
               aria-hidden={true}
             >
-              {formatScientificLimitWidth(barTotalValue)}
+              {typeof this.props.yAxisTickFormat === 'function'
+                ? this.props.yAxisTickFormat(barTotalValue)
+                : formatScientificLimitWidth(barTotalValue)}
             </text>,
           );
         }
@@ -843,5 +847,26 @@ export class GroupedVerticalBarChartBase
         };
       }) ?? []
     );
+  };
+
+  private _getOrderedXAxisLabels = (points: IGroupedVerticalBarChartData[]) => {
+    if (this._xAxisType !== XAxisTypes.StringAxis) {
+      return [];
+    }
+
+    return sortAxisCategories(this._mapCategoryToValues(points), this.props.xAxisCategoryOrder);
+  };
+
+  private _mapCategoryToValues = (points: IGroupedVerticalBarChartData[]) => {
+    const categoryToValues: Record<string, number[]> = {};
+    points.forEach(point => {
+      if (!categoryToValues[point.name]) {
+        categoryToValues[point.name] = [];
+      }
+      point.series.forEach(seriesPoint => {
+        categoryToValues[point.name].push(seriesPoint.data);
+      });
+    });
+    return categoryToValues;
   };
 }

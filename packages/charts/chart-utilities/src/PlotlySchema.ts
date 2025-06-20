@@ -1710,7 +1710,7 @@ export interface Annotations extends Label {
   text: string;
 
   /** Sets the angle at which the `text` is drawn with respect to the horizontal. */
-  textangle: string;
+  textangle: string | number;
 
   /**
    * Sets an explicit width for the text box. null (default) lets the

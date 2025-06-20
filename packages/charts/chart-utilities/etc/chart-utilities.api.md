@@ -31,7 +31,7 @@ export interface Annotations extends Label {
     startarrowsize: number;
     startstandoff: number;
     text: string;
-    textangle: string;
+    textangle: string | number;
     valign: 'top' | 'middle' | 'bottom';
     visible: boolean;
     width: number;
@@ -387,6 +387,9 @@ export interface ErrorOptions {
 }
 
 // @public (undocumented)
+export type FluentChart = 'area' | 'composite' | 'donut' | 'fallback' | 'gauge' | 'groupedverticalbar' | 'heatmap' | 'horizontalbar' | 'line' | 'scatter' | 'scatterpolar' | 'sankey' | 'table' | 'verticalstackedbar';
+
+// @public (undocumented)
 export interface Font {
     // (undocumented)
     color: Color;
@@ -492,6 +495,12 @@ export const isDateArray: (data: Datum[] | Datum[][] | TypedArray | undefined) =
 
 // @public (undocumented)
 export const isInvalidValue: (value: any) => boolean;
+
+// @public (undocumented)
+export const isMonth: (possiblyMonthValue: any) => boolean;
+
+// @public (undocumented)
+export const isMonthArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
 export const isNumber: (value: any) => boolean;
@@ -897,7 +906,7 @@ export interface OutputChartType {
     isValid: boolean;
     // (undocumented)
     type?: string;
-    validTracesInfo?: [number, string][];
+    validTracesInfo?: TraceInfo[];
 }
 
 // @public (undocumented)
@@ -2000,6 +2009,12 @@ export interface TickFormatStop {
     templateitemname: string;
     value: string;
 }
+
+// @public (undocumented)
+export type TraceInfo = {
+    index: number;
+    type: FluentChart;
+};
 
 // @public (undocumented)
 export interface Transform {
