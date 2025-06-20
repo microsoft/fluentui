@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useGroupedVerticalBarChartStyles_unstable } from './useGroupedVerticalBarChartStyles.styles';
-import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { Axis as D3Axis } from 'd3-axis';
-import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
+import { max as d3Max, min as d3Min } from 'd3-array';
+import { ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 
 import { useId } from '@fluentui/react-utilities';
 import {
@@ -21,6 +21,7 @@ import {
   areArraysEqual,
   calculateLongestLabelWidth,
   useRtl,
+  YAxisType,
 } from '../../utilities/index';
 
 import {
@@ -70,7 +71,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   const _emptyChartId: string = useId('_GVBC_empty');
   const _useRtl: boolean = useRtl();
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
-  let _dataset: GVDataPoint[] = [];
   let _keys: string[] = [];
   let _xAxisLabels: string[] = [];
   let _datasetForBars: any[] = [];
@@ -155,7 +155,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       datasetForBars.push(singleDatasetPointForBars);
       dataset.push(singleDatasetPoint);
     });
-    _dataset = dataset;
     return datasetForBars;
   };
 
@@ -241,8 +240,25 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   const legends: JSX.Element = _getLegendData(points!);
   _adjustProps();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-anyAdd commentMore actions
+  function _getMinMaxOfYAxis(datasetForBars: any, yAxisType?: YAxisType, useSecondaryYScale?: boolean) {
+    const values: number[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    datasetForBars.forEach((data: any) => {
+      data.groupSeries.forEach((point: GVBarChartSeriesPoint) => {
+        if (!useSecondaryYScale === !point.useSecondaryYScale) {
+          values.push(point.data);
+        }
+      });
+    });
+
+    return { startValue: d3Min(values)!, endValue: d3Max(values)! };
+  }
+
+  // The maxOfYVal prop is only required for the primary y-axis, so yMax should be calculated
+  // using only the data points associated with the primary y-axis.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const yMax = d3Max(_dataset, (point: any) => d3Max(_keys, (key: string) => point[key]));
+  const yMax = _getMinMaxOfYAxis(_datasetForBars).endValue;
   _yMax = Math.max(yMax, props.yMaxValue || 0);
 
   const calloutProps: ChartPopoverProps = {
@@ -266,10 +282,12 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
   const _getGraphData = (
     xScale: StringAxis | NumericAxis,
-    yScale: NumericAxis,
+    yScalePrimary: ScaleLinear<number, number>,
     containerHeight: number,
     containerWidth: number,
     xElement?: SVGElement | null,
+    yAxisElement?: SVGElement | null,
+    yScaleSecondary?: ScaleLinear<number, number>,
   ) => {
     const xScale0 = _createX0Scale(containerWidth);
 
@@ -285,7 +303,9 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     const xScale1 = _createX1Scale();
     const allGroupsBars: JSX.Element[] = [];
     _datasetForBars.forEach((singleSet: GVSingleDataPoint) => {
-      allGroupsBars.push(_buildGraph(singleSet, xScale0, xScale1, containerHeight, xElement!));
+      allGroupsBars.push(
+        _buildGraph(singleSet, xScale0, xScale1, yScalePrimary, yScaleSecondary, containerHeight, xElement!),
+      );
     });
     _groupedVerticalBarGraph = allGroupsBars;
   };
@@ -378,22 +398,19 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     xScale0: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale1: any,
+    yScalePrimary: ScaleLinear<number, number>,
+    yScaleSecondary: ScaleLinear<number, number> | undefined,
     containerHeight: number,
     xElement: SVGElement,
   ): JSX.Element => {
     const singleGroup: JSX.Element[] = [];
     const barLabelsForGroup: JSX.Element[] = [];
 
-    const yBarScale = d3ScaleLinear()
-      .domain([0, yMax])
-      .range([0, containerHeight! - _margins.bottom! - _margins.top!]);
-
     const tempDataSet = Object.keys(datasetForBars[0]).splice(0, keys.length);
     tempDataSet.forEach((datasetKey: string, index: number) => {
       const refIndexNumber = singleSet.indexNum * tempDataSet.length + index;
       const pointData = singleSet[datasetKey];
-
-      console.log('point data', pointData);
+      const yBarScale = pointData.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
       // To align the centers of the generated bandwidth and the calculated one when they differ,
       // use the following addend.
       const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - _barWidth) / 2;
@@ -635,6 +652,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       chartTitle={_getChartTitle()}
       points={_datasetForBars}
       chartType={ChartTypes.GroupedVerticalBarChart}
+      getMinMaxOfYAxis={_getMinMaxOfYAxis}
       calloutProps={calloutProps}
       legendBars={legends}
       xAxisType={_xAxisType}
