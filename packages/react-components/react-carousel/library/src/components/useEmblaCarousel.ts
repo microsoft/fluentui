@@ -318,6 +318,13 @@ export function useEmblaCarousel(
     }
   }, [activeIndex]);
 
+  React.useEffect(() => {
+    return () => {
+      emblaApi.current?.destroy();
+      emblaApi.current = null;
+    };
+  }, []);
+
   return {
     activeIndex,
     carouselApi,

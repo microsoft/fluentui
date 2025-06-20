@@ -8,7 +8,7 @@ export type PointerEventPluginOptions = {
 export type PointerEventPlugin = CreatePluginType<{}, PointerEventPluginOptions>;
 
 export function pointerEventPlugin(options: PointerEventPluginOptions): PointerEventPlugin {
-  let emblaApi: EmblaCarouselType;
+  let emblaApi: EmblaCarouselType | undefined;
   let pointerEvent: PointerEvent | MouseEvent | undefined;
   let carouselListenerTarget: HTMLElement | undefined;
 
@@ -46,7 +46,7 @@ export function pointerEventPlugin(options: PointerEventPluginOptions): PointerE
 
   function selectListener() {
     if (pointerEvent) {
-      const newIndex = emblaApi.selectedScrollSnap() ?? 0;
+      const newIndex = emblaApi?.selectedScrollSnap() ?? 0;
       options.onSelectViaDrag(pointerEvent, newIndex);
     }
   }
@@ -73,9 +73,10 @@ export function pointerEventPlugin(options: PointerEventPluginOptions): PointerE
 
     carouselListenerTarget = undefined;
 
-    emblaApi.off('pointerUp', pointerUpListener);
-    emblaApi.off('select', selectListener);
-    emblaApi.off('settle', clearPointerEvent);
+    emblaApi?.off('pointerUp', pointerUpListener);
+    emblaApi?.off('select', selectListener);
+    emblaApi?.off('settle', clearPointerEvent);
+    emblaApi = undefined;
   }
 
   return {
