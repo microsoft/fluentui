@@ -1112,4 +1112,30 @@ describe('Overflow', () => {
       });
     });
   });
+
+  it(`should detect loop`, () => {
+    cy.clock();
+    cy.spy(console, 'error');
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    mount(
+      <Container>
+        {mapHelper.map(i => (
+          <Item key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+      </Container>,
+    );
+
+    for (let i = 0; i < 101; i++) {
+      setContainerWidth(i % 2 === 0 ? 300 : 450);
+    }
+
+    cy.then(() => {
+      expect(console.error).to.be.calledWith(
+        '@fluentui/react-overflow:Infinite loop detected: 100 overflow updates happened in less than 100ms',
+      );
+    });
+  });
 });

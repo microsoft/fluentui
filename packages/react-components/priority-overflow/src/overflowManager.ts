@@ -1,6 +1,7 @@
 import { DATA_OVERFLOWING, DATA_OVERFLOW_GROUP } from './consts';
 import { observeResize } from './createResizeObserver';
 import { debounce } from './debounce';
+import { infiniteLoopDetector } from './infiniteLoopDetector';
 import { createPriorityQueue, PriorityQueue } from './priorityQueue';
 import type {
   OverflowGroupState,
@@ -37,6 +38,7 @@ export function createOverflowManager(): OverflowManager {
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
   let disposeResizeObserver: () => void = () => null;
+  const detectInfiniteLoop = infiniteLoopDetector();
 
   const getNextItem = (queueToDequeue: PriorityQueue<string>, queueToEnqueue: PriorityQueue<string>) => {
     const nextItem = queueToDequeue.dequeue();
@@ -184,6 +186,12 @@ export function createOverflowManager(): OverflowManager {
   const forceUpdate: OverflowManager['forceUpdate'] = () => {
     if (processOverflowItems() || forceDispatch) {
       forceDispatch = false;
+      if (detectInfiniteLoop()) {
+        console.error(
+          '@fluentui/react-overflow:Infinite loop detected: 100 overflow updates happened in less than 100ms',
+        );
+        return;
+      }
       dispatchOverflowUpdate();
     }
   };
