@@ -90,14 +90,13 @@ export const useCarouselButton_unstable = (
     }
 
     const nextIndex = selectPageByDirection(event, navType);
-    resetAutoplay();
 
-    // No need to handle focus if using circular navigation or not at a trailing position
-    if (circular || (!isTrailingAfterNavigation(nextIndex) && containerRef?.current)) {
-      return;
+    // Focus the opposite navigation button if the navigation results in trailing state
+    if (!circular && isTrailingAfterNavigation(nextIndex) && containerRef?.current) {
+      focusOppositeNavigationButton();
     }
 
-    focusOppositeNavigationButton();
+    resetAutoplay();
   };
 
   useIsomorphicLayoutEffect(() => {
