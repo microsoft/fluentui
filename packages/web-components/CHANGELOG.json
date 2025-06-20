@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 20 Jun 2025 04:06:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.109",
+      "version": "3.0.0-beta.109",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "29f518aed9699becb81f89996a4f08a3b763d47e",
+            "comment": "fix: progress bar when value is missing in firefox and safari"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Jun 2025 04:06:30 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.108",
       "version": "3.0.0-beta.108",
