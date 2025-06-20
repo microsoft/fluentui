@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 19 Jun 2025 07:20:01 GMT",
+      "tag": "@fluentui/react-charting_v5.24.6",
+      "version": "5.24.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ddb50b0e9313fe7eb75830a0546d01a2c7fe270b",
+            "comment": "fix(react-charting): Refactoring common code to reduce bundle size"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Jun 2025 07:20:32 GMT",
       "tag": "@fluentui/react-charting_v5.24.5",
       "version": "5.24.5",

@@ -707,8 +707,12 @@ export class BaseField extends FASTElement {
 // @public
 export class BaseProgressBar extends FASTElement {
     constructor();
+    // (undocumented)
+    connectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
+    // @internal (undocumented)
+    indicator: HTMLElement;
     // @internal
     max?: number;
     // @internal
@@ -716,8 +720,6 @@ export class BaseProgressBar extends FASTElement {
     // @internal
     min?: number;
     protected minChanged(prev: number | undefined, next: number | undefined): void;
-    // @internal
-    get percentComplete(): number;
     validationState: ProgressBarValidationState | null;
     validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
     // @internal
