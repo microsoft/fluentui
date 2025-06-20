@@ -89,5 +89,12 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralBackground1',
     originalToken: 'ctrlInputBackgroundRest',
   },
-
+  _foregroundCtrlNeutralSecondaryRest2:{
+    f2Token: 'colorNeutralForeground2',
+    originalToken: 'foregroundCtrlNeutralSecondaryRest',
+  },
+  _foregroundCtrlNeutralSecondaryRest4:{
+    f2Token: 'colorNeutralForeground4',
+    originalToken: 'foregroundCtrlNeutralSecondaryRest',
+  }
 };

@@ -56,7 +56,7 @@ const useRootStyles = makeStyles({
       // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
       // (This could be done without trimming using `background: linear-gradient(...)`, but using
       // borderBottom makes it easier for people to override the color if needed.)
-      borderBottom: `${semanticTokens._cornerCtrlRestTextAreaThick} solid ${semanticTokens.ctrlInputBottomLineStrokeRest}`,
+      borderBottom: `${semanticTokens._cornerCtrlRestTextAreaThick} solid ${semanticTokens.ctrlInputBottomLineStrokePressed}`,
       clipPath: `inset(calc(100% - ${semanticTokens._cornerCtrlRestTextAreaThick}) 0 0 0)`,
 
       // Animation for focus OUT
@@ -119,8 +119,8 @@ const useRootStyles = makeStyles({
   outline: {
     backgroundColor: semanticTokens._ctrlInputBackgroundRestLighter,
     border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.ctrlInputStrokeRest}`,
-    borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeSelected,
-  },
+    borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeRest,
+    },
   outlineInteractive: {
     ':hover': {
       border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.ctrlInputStrokeHover}`,
@@ -129,12 +129,12 @@ const useRootStyles = makeStyles({
 
     ':active': {
       border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.ctrlInputStrokePressed}`,
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed, // TODO
-    },
+      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeSelected,
+  },
 
     ':focus-within': {
       border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.ctrlInputStrokePressed}`,
-      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeSelected,
+      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokePressed,
     },
   },
 
@@ -160,13 +160,13 @@ const useTextareaStyles = makeStyles({
     height: '100%',
 
     '::placeholder': {
-      color: tokens.colorNeutralForeground4, // TODO
+      color: semanticTokens._foregroundCtrlNeutralSecondaryRest4,
       opacity: 1,
     },
 
     '::selection': {
       color: tokens.colorNeutralForegroundInverted,
-      backgroundColor: tokens.colorNeutralBackgroundInverted, // TODO
+      backgroundColor: tokens.colorNeutralBackgroundInverted,
     },
 
     outlineStyle: 'none', // disable default browser outline
@@ -184,19 +184,19 @@ const useTextareaStyles = makeStyles({
   // affected by changing the padding of the root.
   small: {
     minHeight: '40px',
-    padding: `${tokens.spacingVerticalXS} calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`, // TODO
+    padding: `${tokens.spacingVerticalXS} calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
     maxHeight: '200px',
     ...typographyStyles.caption1,
   },
   medium: {
     minHeight: '52px',
-    padding: `${tokens.spacingVerticalSNudge} calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`, // TODO
+    padding: `${tokens.spacingVerticalSNudge} calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
     maxHeight: '260px',
     ...typographyStyles.body1,
   },
   large: {
     minHeight: '64px',
-    padding: `${tokens.spacingVerticalS} calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`, // TODO
+    padding: `${tokens.spacingVerticalS} calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`,
     maxHeight: '320px',
     ...typographyStyles.body2,
   },

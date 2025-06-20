@@ -47,7 +47,6 @@ import {
   borderRadiusMedium,
   colorNeutralForeground1,
   colorNeutralForegroundDisabled,
-  colorNeutralForeground2,
   colorNeutralForegroundOnBrand,
   colorPaletteRedBackground3,
   colorPaletteRedForeground3,
@@ -396,7 +395,7 @@ export const cornerCtrlLgRest = `var(${cornerCtrlLgRestRaw}, ${borderRadiusMediu
 export const cornerImageInCard = `var(${cornerImageInCardRaw})`;
 export const foregroundCtrlNeutralPrimaryRest = `var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1})`;
 export const foregroundCtrlNeutralPrimaryDisabled = `var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${colorNeutralForegroundDisabled})`;
-export const foregroundCtrlNeutralSecondaryRest = `var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground2})`;
+export const foregroundCtrlNeutralSecondaryRest = `var(${foregroundCtrlNeutralSecondaryRestRaw})`;
 export const foregroundCtrlNeutralSecondaryDisabled = `var(${foregroundCtrlNeutralSecondaryDisabledRaw}, ${colorNeutralForegroundDisabled})`;
 export const foregroundCtrlBrandRest = `var(${foregroundCtrlBrandRestRaw})`;
 export const foregroundCtrlBrandHover = `var(${foregroundCtrlBrandHoverRaw})`;

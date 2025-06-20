@@ -1798,8 +1798,10 @@ export {
   _ctrlAvatarPresenceBadgeStrokeWidthLg,
   _ctrlAvatarPresenceBadgeStrokeWidthSm,
   _ctrlButtonGapInsideDefault,
+  _ctrlDividerForegroundSubtle,
   _ctrlInputBackgroundRestDarker,
   _ctrlInputBackgroundRestLighter,
-  _ctrlDividerForegroundSubtle,
+  _foregroundCtrlNeutralSecondaryRest2,
+  _foregroundCtrlNeutralSecondaryRest4,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';

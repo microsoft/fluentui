@@ -1658,25 +1658,25 @@ export const ctrlInputBottomLineStrokeError = "var(--smtc-ctrl-input-bottom-line
 export const ctrlInputBottomLineStrokeErrorRaw = "--smtc-ctrl-input-bottom-line-stroke-error";
 
 // @public (undocumented)
-export const ctrlInputBottomLineStrokeHover = "var(--smtc-ctrl-input-bottom-line-stroke-hover, var(--smtc-foreground-ctrl-neutral-secondary-rest))";
+export const ctrlInputBottomLineStrokeHover = "var(--smtc-ctrl-input-bottom-line-stroke-hover, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralStrokeAccessibleHover)))";
 
 // @public (undocumented)
 export const ctrlInputBottomLineStrokeHoverRaw = "--smtc-ctrl-input-bottom-line-stroke-hover";
 
 // @public (undocumented)
-export const ctrlInputBottomLineStrokePressed = "var(--smtc-ctrl-input-bottom-line-stroke-pressed, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorCompoundBrandStrokePressed)))";
+export const ctrlInputBottomLineStrokePressed = "var(--smtc-ctrl-input-bottom-line-stroke-pressed, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorCompoundBrandStroke)))";
 
 // @public (undocumented)
 export const ctrlInputBottomLineStrokePressedRaw = "--smtc-ctrl-input-bottom-line-stroke-pressed";
 
 // @public (undocumented)
-export const ctrlInputBottomLineStrokeRest = "var(--smtc-ctrl-input-bottom-line-stroke-rest, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorCompoundBrandStroke)))";
+export const ctrlInputBottomLineStrokeRest = "var(--smtc-ctrl-input-bottom-line-stroke-rest, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralStrokeAccessible)))";
 
 // @public (undocumented)
 export const ctrlInputBottomLineStrokeRestRaw = "--smtc-ctrl-input-bottom-line-stroke-rest";
 
 // @public (undocumented)
-export const ctrlInputBottomLineStrokeSelected = "var(--smtc-ctrl-input-bottom-line-stroke-selected, var(--smtc-background-ctrl-brand-rest))";
+export const ctrlInputBottomLineStrokeSelected = "var(--smtc-ctrl-input-bottom-line-stroke-selected, var(--smtc-background-ctrl-brand-rest, var(--colorNeutralStrokeAccessiblePressed)))";
 
 // @public (undocumented)
 export const ctrlInputBottomLineStrokeSelectedRaw = "--smtc-ctrl-input-bottom-line-stroke-selected";
@@ -1718,7 +1718,7 @@ export const ctrlInputStrokeError = "var(--smtc-ctrl-input-stroke-error, var(--s
 export const ctrlInputStrokeErrorRaw = "--smtc-ctrl-input-stroke-error";
 
 // @public (undocumented)
-export const ctrlInputStrokeHover = "var(--smtc-ctrl-input-stroke-hover, var(--smtc-stroke-ctrl-on-outline-hover))";
+export const ctrlInputStrokeHover = "var(--smtc-ctrl-input-stroke-hover, var(--smtc-stroke-ctrl-on-outline-hover, var(--colorNeutralStroke1Hover)))";
 
 // @public (undocumented)
 export const ctrlInputStrokeHoverRaw = "--smtc-ctrl-input-stroke-hover";
@@ -1730,7 +1730,7 @@ export const ctrlInputStrokePressed = "var(--smtc-ctrl-input-stroke-pressed, var
 export const ctrlInputStrokePressedRaw = "--smtc-ctrl-input-stroke-pressed";
 
 // @public (undocumented)
-export const ctrlInputStrokeRest = "var(--smtc-ctrl-input-stroke-rest, var(--smtc-stroke-ctrl-on-outline-rest))";
+export const ctrlInputStrokeRest = "var(--smtc-ctrl-input-stroke-rest, var(--smtc-stroke-ctrl-on-outline-rest, var(--colorNeutralStroke1)))";
 
 // @public (undocumented)
 export const ctrlInputStrokeRestRaw = "--smtc-ctrl-input-stroke-rest";
@@ -2966,7 +2966,13 @@ export const foregroundCtrlNeutralSecondaryPressed = "var(--smtc-foreground-ctrl
 export const foregroundCtrlNeutralSecondaryPressedRaw = "--smtc-foreground-ctrl-neutral-secondary-pressed";
 
 // @public (undocumented)
-export const foregroundCtrlNeutralSecondaryRest = "var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground2))";
+export const foregroundCtrlNeutralSecondaryRest = "var(--smtc-foreground-ctrl-neutral-secondary-rest)";
+
+// @public
+export const _foregroundCtrlNeutralSecondaryRest2 = "var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground2))";
+
+// @public
+export const _foregroundCtrlNeutralSecondaryRest4 = "var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground4))";
 
 // @public (undocumented)
 export const foregroundCtrlNeutralSecondaryRestRaw = "--smtc-foreground-ctrl-neutral-secondary-rest";
