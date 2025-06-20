@@ -68,8 +68,8 @@ export function getVerticalFunnelSegmentGeometry({
   const rightHeight = i < data.length - 1 ? heightScale(data[i + 1].value!) : 0;
   const yOffset = (funnelHeight - leftHeight) / 2;
   const nextYOffset = (funnelHeight - rightHeight) / 2;
-  const x0 = isRTL ? funnelWidth - (i + 1) * segmentWidth : i * segmentWidth;
-  const x1 = isRTL ? funnelWidth - i * segmentWidth : (i + 1) * segmentWidth;
+  const x0 = i * segmentWidth;
+  const x1 = (i + 1) * segmentWidth;
   const textY = funnelHeight / 2;
   const textX = (x0 + x1) / 2;
   const availableWidth = segmentWidth;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AreaChart, FunnelChart, ICustomizedCalloutData } from '@fluentui/react-charting';
+import { AreaChart, ICustomizedCalloutData } from '@fluentui/react-charting';
 import { IAreaChartProps, ChartHoverCard, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Toggle } from '@fluentui/react/lib/Toggle';
@@ -214,35 +214,6 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
       lineChartData: chartPoints,
     };
 
-    const funnelChartPoints = [
-      {
-        stage: 'Visited Website',
-        value: 7000,
-        color: 'rgba(55, 128, 191, 0.7)',
-      },
-      {
-        stage: 'Added to Cart',
-        value: 5000,
-        color: 'rgba(50, 171, 96, 0.7)',
-      },
-      {
-        stage: 'Purchased',
-        value: 3000,
-        color: 'rgba(255, 153, 51, 0.7)',
-      },
-      {
-        stage: 'Retained',
-        value: 1200,
-        color: 'rgba(128, 0, 128, 0.7)',
-      },
-    ];
-
-    const funneldata2 = [
-      { stage: 'Visitors', value: 1000, color: getColorFromToken(DataVizPalette.color5) },
-      { stage: 'Signups', value: 600, color: getColorFromToken(DataVizPalette.color6) },
-      { stage: 'Trials', value: 300, color: getColorFromToken(DataVizPalette.color7) },
-      { stage: 'Customers', value: 150, color: getColorFromToken(DataVizPalette.color10) },
-    ];
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
@@ -295,14 +266,30 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
         />
         {this.state.showAxisTitles && (
           <div style={rootStyle}>
-            <FunnelChart
+            <AreaChart
               culture={window.navigator.language}
               height={this.state.height}
               width={this.state.width}
-              data={funneldata2}
+              data={chartData}
+              enablePerfOptimization={true}
+              // eslint-disable-next-line react/jsx-no-bind
+              onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
+                props && this.state.isCalloutselected ? (
+                  <ChartHoverCard
+                    XValue={props.x.toString()}
+                    Legend={'Custom Legend'}
+                    YValue={`${props.values[0].yAxisCalloutData || props.values[0].y} h`}
+                    color={getColorFromToken(DataVizPalette.color7)}
+                  />
+                ) : null
+              }
+              enableReflow={true}
+              yAxisTitle={this.state.showAxisTitles ? 'Variation of stock market prices' : undefined}
+              xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
               legendProps={{
                 canSelectMultipleLegends: this.state.legendMultiSelect,
               }}
+              mode={this.state.changeChartMode ? 'tozeroy' : 'tonexty'}
             />
           </div>
         )}

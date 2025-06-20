@@ -152,6 +152,8 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
           onMouseMove: event => _handleHover(d, event),
           onMouseOut: () => _handleMouseOut(),
           textProps,
+          isRTL,
+          funnelWidth,
         });
       });
     } else {
@@ -185,6 +187,8 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
           onMouseMove: event => _handleHover(d, event),
           onMouseOut: () => _handleMouseOut(),
           textProps,
+          isRTL,
+          funnelWidth,
         });
       });
     }
@@ -244,6 +248,8 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
               onMouseMove: event => _handleStackedHover(cur.stage as string, v, event),
               onMouseOut: () => _handleMouseOut(),
               textProps,
+              isRTL,
+              funnelWidth,
             }),
           );
         }
@@ -286,6 +292,8 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
               onMouseMove: event => _handleStackedHover(cur.stage as string, v, event),
               onMouseOut: () => _handleMouseOut(),
               textProps,
+              isRTL,
+              funnelWidth,
             }),
           );
         }
@@ -390,7 +398,13 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     <div ref={chartContainerRef} className={classNames.root}>
       <FocusZone direction={FocusZoneDirection.horizontal}>
         <svg width={width} height={height} className={classNames.chart} role={'img'} aria-label={props.chartTitle}>
-          <g transform={`translate(${funnelOffsetX}, ${funnelMarginTop})`}>
+          <g
+            transform={
+              isRTL
+                ? `translate(${funnelOffsetX + funnelWidth}, ${funnelMarginTop}) scale(-1,1)`
+                : `translate(${funnelOffsetX}, ${funnelMarginTop})`
+            }
+          >
             {isStackedFunnelData(props.data)
               ? _createStackedFunnel(height - funnelMarginTop, funnelWidth)
               : _createFunnel(height - funnelMarginTop, funnelWidth)}
@@ -426,6 +440,8 @@ function renderSegmentText({
   onMouseOver,
   onMouseMove,
   onMouseOut,
+  isRTL,
+  funnelWidth,
 }: {
   show: boolean;
   x: number;
@@ -435,8 +451,27 @@ function renderSegmentText({
   onMouseOver: (event: React.MouseEvent<SVGElement>) => void;
   onMouseMove: (event: React.MouseEvent<SVGElement>) => void;
   onMouseOut: () => void;
+  isRTL: boolean;
+  funnelWidth: number;
 }) {
   if (!show) return null;
+  if (isRTL) {
+    return (
+      <g transform={`scale(-1,1) translate(${-funnelWidth},0)`}>
+        <text
+          x={funnelWidth - x}
+          y={y}
+          textAnchor="middle"
+          alignmentBaseline="middle"
+          onMouseOver={onMouseOver}
+          onMouseMove={onMouseMove}
+          onMouseOut={onMouseOut}
+        >
+          {formatToLocaleString(value.toString(), culture)}
+        </text>
+      </g>
+    );
+  }
   return (
     <text
       x={x}
@@ -461,6 +496,8 @@ function renderFunnelSegment({
   onMouseMove,
   onMouseOut,
   textProps,
+  isRTL,
+  funnelWidth,
 }: {
   key: string | number;
   pathD: string;
@@ -479,6 +516,8 @@ function renderFunnelSegment({
     onMouseMove: (event: React.MouseEvent<SVGElement>) => void;
     onMouseOut: () => void;
   };
+  isRTL: boolean;
+  funnelWidth: number;
 }) {
   return (
     <g key={key}>
@@ -490,7 +529,7 @@ function renderFunnelSegment({
         onMouseMove={onMouseMove}
         onMouseOut={onMouseOut}
       />
-      {textProps && renderSegmentText(textProps)}
+      {textProps && renderSegmentText({ ...textProps, isRTL, funnelWidth })}
     </g>
   );
 }
