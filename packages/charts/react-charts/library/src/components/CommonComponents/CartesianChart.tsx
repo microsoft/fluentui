@@ -255,7 +255,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       yMaxValue: props.yMaxValue || 0,
       tickPadding: 10,
       maxOfYVal: props.maxOfYVal,
-      yMinMaxValues: getMinMaxOfYAxis(points, chartType, props.yAxisType),
+      yMinMaxValues: props.getMinMaxOfYAxis
+        ? props.getMinMaxOfYAxis(points, props.yAxisType)
+        : getMinMaxOfYAxis(points, chartType, props.yAxisType),
       // please note these padding default values must be consistent in here
       // and the parent chart(HBWA/Vertical etc..) for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html

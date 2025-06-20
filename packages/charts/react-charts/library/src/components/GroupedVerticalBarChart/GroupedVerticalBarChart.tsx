@@ -416,7 +416,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - _barWidth) / 2;
       const startColor = pointData.color ? pointData.color : getNextColor(index, 0);
 
-      let barTotalValue = 0;
       const yBaseline = yBarScale(Y_ORIGIN);
       let yPositiveStart = yBaseline;
       let yNegativeStart = yBaseline;
@@ -431,7 +430,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         yPoint = yNegativeStart + barGap;
         yNegativeStart = yPoint + height;
       }
-      barTotalValue += pointData.data;
       // Not rendering data with 0.
       pointData.data &&
         singleGroup.push(
@@ -463,7 +461,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         );
       if (
         pointData.data &&
-        barTotalValue !== null &&
         !props.hideLabels &&
         _barWidth >= 16 &&
         (_legendHighlighted(pointData.legend) || _noLegendHighlighted())
@@ -472,7 +469,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
           <text
             key={`${singleSet.indexNum}-${index}`}
             x={xPoint + _barWidth / 2}
-            y={barTotalValue >= Y_ORIGIN ? yPositiveStart - 6 : yNegativeStart + 12}
+            y={pointData.data >= Y_ORIGIN ? yPositiveStart - 6 : yNegativeStart + 12}
             textAnchor="middle"
             className={classes.barLabel}
             aria-hidden={true}
