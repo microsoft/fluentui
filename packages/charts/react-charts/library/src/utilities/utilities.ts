@@ -51,7 +51,6 @@ import {
   VerticalBarChartDataPoint,
   HorizontalBarChartWithAxisDataPoint,
   LineChartLineOptions,
-  GVBarChartSeriesPoint,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -1624,30 +1623,6 @@ export function findHBCWANumericMinMaxOfY(
 }
 
 /**
- * Fins the min and max values of the grouped vertical bar chart y axis data point.
- * @export
- * @param {GVBarChartSeriesPoint[]} points
- * @returns {{ startValue: number; endValue: number }}
- */
-export function findGroupedVerticalNumericMinMaxOfY(
-  datasetForBars: GVBarChartSeriesPoint[],
-  yAxisType?: YAxisType,
-  useSecondaryYScale?: boolean,
-): { startValue: number; endValue: number } {
-  const values: number[] = [];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  datasetForBars.forEach((data: any) => {
-    data.groupSeries.forEach((point: GVBarChartSeriesPoint) => {
-      if (!useSecondaryYScale === !point.useSecondaryYScale) {
-        values.push(point.data);
-      }
-    });
-  });
-
-  return { startValue: d3Min(values)!, endValue: d3Max(values)! };
-}
-
-/**
  * For creating Y axis, need to calculate y axis domain values from given points. This may vary based on chart type.
  * So, this method will define which method need to call based on chart type to find out min and max values(For Domain).
  * For grouped vertical bar chart, Calculating yMax value in the base file and sending as MaxOfYVal to cartesian.
@@ -1680,9 +1655,6 @@ export function getMinMaxOfYAxis(
       break;
     case ChartTypes.HorizontalBarChartWithAxis:
       minMaxValues = findHBCWANumericMinMaxOfY(points, yAxisType);
-      break;
-    case ChartTypes.GroupedVerticalBarChart:
-      minMaxValues = findGroupedVerticalNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
       break;
     default:
       minMaxValues = { startValue: 0, endValue: 0 };

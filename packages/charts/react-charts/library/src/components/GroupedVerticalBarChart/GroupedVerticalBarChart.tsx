@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useGroupedVerticalBarChartStyles_unstable } from './useGroupedVerticalBarChartStyles.styles';
 import { select as d3Select } from 'd3-selection';
 import { Axis as D3Axis } from 'd3-axis';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 
 import { useId } from '@fluentui/react-utilities';
@@ -20,7 +21,7 @@ import {
   areArraysEqual,
   calculateLongestLabelWidth,
   useRtl,
-  findGroupedVerticalNumericMinMaxOfY,
+  YAxisType,
 } from '../../utilities/index';
 
 import {
@@ -236,10 +237,25 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   const legends: JSX.Element = _getLegendData(points!);
   _adjustProps();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-anyAdd commentMore actions
+  function _getMinMaxOfYAxis(datasetForBars: any, yAxisType?: YAxisType, useSecondaryYScale?: boolean) {
+    const values: number[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    datasetForBars.forEach((data: any) => {
+      data.groupSeries.forEach((point: GVBarChartSeriesPoint) => {
+        if (!useSecondaryYScale === !point.useSecondaryYScale) {
+          values.push(point.data);
+        }
+      });
+    });
+
+    return { startValue: d3Min(values)!, endValue: d3Max(values)! };
+  }
+
   // The maxOfYVal prop is only required for the primary y-axis, so yMax should be calculated
   // using only the data points associated with the primary y-axis.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const yMax = findGroupedVerticalNumericMinMaxOfY(_datasetForBars).endValue;
+  const yMax = _getMinMaxOfYAxis(_datasetForBars).endValue;
   _yMax = Math.max(yMax, props.yMaxValue || 0);
 
   const calloutProps: ChartPopoverProps = {
@@ -617,6 +633,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       chartTitle={_getChartTitle()}
       points={_datasetForBars}
       chartType={ChartTypes.GroupedVerticalBarChart}
+      getMinMaxOfYAxis={_getMinMaxOfYAxis}
       calloutProps={calloutProps}
       legendBars={legends}
       xAxisType={_xAxisType}
