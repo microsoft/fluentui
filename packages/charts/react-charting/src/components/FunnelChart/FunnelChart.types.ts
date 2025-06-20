@@ -4,15 +4,42 @@ import { ICalloutContentStyleProps, ICalloutContentStyles } from '@fluentui/reac
 import { ILegendsProps } from '../Legends/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 
+/**
+ * Data point for funnel chart
+ * {@docCategory FunnelChart}
+ */
 export interface IFunnelChartDataPoint {
+  /**
+   * Stage name or identifier
+   */
   stage: string | number;
+  /**
+   * Sub-values for stacked funnel charts
+   * Each sub-value represents a category within the stage
+   */
   subValues?: Array<{ category: string; value: number; color: string }>;
+  /**
+   * Value for the stage (used for non-stacked funnel charts)
+   */
   value?: number;
+  /**
+   * Color for the stage (used for non-stacked funnel charts)
+   */
   color?: string;
 }
 
+/**
+ * Funnel Chart component props
+ * {@docCategory FunnelChart}
+ */
 export interface IFunnelChartProps {
+  /**
+   * Data points for the funnel chart
+   */
   data: IFunnelChartDataPoint[];
+  /**
+   * Title for the chart
+   */
   chartTitle?: string;
   /**
    * Width of the chart
@@ -30,7 +57,7 @@ export interface IFunnelChartProps {
    */
   hideLegend?: boolean;
 
-  /*
+  /**
    * Props for the legends in the chart
    */
   legendProps?: Partial<ILegendsProps>;
@@ -55,6 +82,9 @@ export interface IFunnelChartProps {
    */
   culture?: string;
 
+  /**
+   * Reference to the chart component
+   */
   componentRef?: React.RefObject<any>;
 
   /**
@@ -62,6 +92,10 @@ export interface IFunnelChartProps {
    */
   className?: string;
 
+  /**
+   * Orientation of the funnel chart
+   * @defaultvalue 'horizontal'
+   */
   orientation?: 'horizontal' | 'vertical';
 }
 
@@ -89,8 +123,8 @@ export interface IFunnelChartStyleProps {
 }
 
 /**
- * Gauge Chart styles
- * {@docCategory GaugeChart}
+ * Funnel Chart styles
+ * {@docCategory FunnelChart}
  */
 export interface IFunnelChartStyles {
   /**
@@ -103,7 +137,14 @@ export interface IFunnelChartStyles {
    */
   chart?: IStyle;
 
+  /**
+   * Styles for text elements
+   */
   text?: IStyle;
+
+  /**
+   * Styles for sub-components
+   */
   subComponentStyles: {
     calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
   };

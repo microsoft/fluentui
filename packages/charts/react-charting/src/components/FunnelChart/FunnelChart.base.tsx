@@ -8,7 +8,7 @@ import {
 } from './FunnelChart.types';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ILegend, /* ILegendContainer, */ Legends } from '../Legends/index';
+import { ILegend, Legends } from '../Legends/index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
@@ -107,15 +107,15 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     }
   }
 
-  function getHighlightedLegend() {
+  function getHighlightedLegend(): string[] {
     return selectedLegends.length > 0 ? selectedLegends : hoveredStage ? [hoveredStage] : [];
   }
 
-  function legendHighlighted(legend: string) {
-    return getHighlightedLegend().includes(legend!);
+  function legendHighlighted(legend: string): boolean {
+    return getHighlightedLegend().includes(legend);
   }
 
-  function noLegendHighlighted() {
+  function noLegendHighlighted(): boolean {
     return getHighlightedLegend().length === 0;
   }
 
@@ -173,23 +173,18 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
         );
       });
     } else {
-      console.log('Creating vertical funnel chart');
-      // x is category, y is value, so we scale on height
+      // Vertical funnel chart - use value for scaling, not stage
       const heightScale = d3ScaleLinear()
-        .domain([0, Math.max(...data.map(d => d.stage as number))])
+        .domain([0, Math.max(...data.map(d => d.value!))])
         .range([0, funnelHeight]);
       const segmentWidth = funnelWidth / data.length;
-      console.log('funnelWidth', funnelWidth, 'funnelHeight', funnelHeight);
-      console.log('segmentWidth', segmentWidth);
 
       return data.map((d, i) => {
-        console.log('data', data);
-        const leftHeight = heightScale(d.stage as number);
-        const rightHeight = i < data.length - 1 ? heightScale(data[i + 1].stage as number) : 0;
+        const leftHeight = heightScale(d.value!);
+        const rightHeight = i < data.length - 1 ? heightScale(data[i + 1].value!) : 0;
         const yOffset = (funnelHeight - leftHeight) / 2;
         const nextYOffset = (funnelHeight - rightHeight) / 2;
-        console.log('leftHeight', leftHeight, 'rightHeight', rightHeight);
-        console.log('yOffset', yOffset, 'nextYOffset', nextYOffset);
+
         // Adjust x-coordinates for RTL mode
         const x0 = isRTL ? funnelWidth - (i + 1) * segmentWidth : i * segmentWidth;
         const x1 = isRTL ? funnelWidth - i * segmentWidth : (i + 1) * segmentWidth;
@@ -218,7 +213,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
               onMouseMove={(event: React.MouseEvent<SVGElement>) => _handleHover(d, event)}
               onMouseOut={() => _handleMouseOut()}
             >
-              {formatToLocaleString(d.stage.toString(), culture)}
+              {formatToLocaleString(d.value!.toString(), culture)}
             </text>
           </g>
         );
@@ -226,23 +221,23 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     }
   }
 
-  function isStackedFunnelData(data: any): boolean {
+  function isStackedFunnelData(data: IFunnelChartDataPoint[]): boolean {
     return Array.isArray(data) && data.every(stage => Array.isArray(stage.subValues));
   }
 
   function _createStackedFunnel(containerHeight: number, containerWidth: number): JSX.Element[] {
     const { data, culture, orientation = 'horizontal' } = props;
 
-    const stages = data; // [{stage, subValues:[{category,value,color}]}]
-    const totals = stages.map(s => s?.subValues?.reduce((sum, s) => sum + s.value, 0));
-    const maxTotal = Math.max(...totals.filter((total): total is number => total !== undefined));
+    const stages = data;
+    const totals = stages.map(s => s?.subValues?.reduce((sum, s) => sum + s.value, 0) ?? 0);
+    const maxTotal = Math.max(...totals);
 
     const funnelWidth = containerWidth * 0.8;
     const funnelHeight = containerHeight * 0.8;
     const funnelX = (containerWidth - funnelWidth) / 2;
     const funnelY = (containerHeight - funnelHeight) / 2;
 
-    let paths: JSX.Element[] = [];
+    const paths: JSX.Element[] = [];
 
     if (orientation === 'horizontal') {
       const segmentHeight = funnelHeight / stages.length;
@@ -250,16 +245,16 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       for (let i = 0; i < stages.length; i++) {
         const cur = stages[i];
         const next = stages[i + 1] || { subValues: [] };
-        const curTotal = totals[i] ?? 1;
-        const nextTotal = totals[i + 1] ?? 0;
+        const curTotal = totals[i] || 1;
+        const nextTotal = totals[i + 1] || 0;
 
         let cumTop = 0;
         let cumBot = 0;
 
         for (let k = 0; k < (cur.subValues ?? []).length; k++) {
-          const v = cur.subValues?.[k];
-          const vNext = next?.subValues?.find(x => x.category === v?.category);
-          const val = v?.value ?? 0;
+          const v = cur.subValues![k];
+          const vNext = next.subValues?.find(x => x.category === v.category);
+          const val = v.value;
           const nextVal = vNext ? vNext.value : 0;
 
           const topW = (val / curTotal) * (curTotal / maxTotal) * funnelWidth;
@@ -283,17 +278,15 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
                   L${botStart},${(i + 1) * segmentHeight}
                   Z
                 `}
-                fill={v?.color}
+                fill={v.color}
                 opacity={
-                  (isStackedFunnelData(props.data) && legendHighlighted(v?.category!)) || noLegendHighlighted()
-                    ? 1
-                    : 0.1
+                  (isStackedFunnelData(props.data) && legendHighlighted(v.category)) || noLegendHighlighted() ? 1 : 0.1
                 }
                 onMouseOver={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v!, event)
+                  _handleStackedHover(cur.stage as string, v, event)
                 }
                 onMouseMove={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v!, event)
+                  _handleStackedHover(cur.stage as string, v, event)
                 }
                 onMouseOut={() => _handleMouseOut()}
               />
@@ -303,14 +296,14 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
                 textAnchor="middle"
                 alignmentBaseline="middle"
                 onMouseOver={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v!, event)
+                  _handleStackedHover(cur.stage as string, v, event)
                 }
                 onMouseMove={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v!, event)
+                  _handleStackedHover(cur.stage as string, v, event)
                 }
                 onMouseOut={() => _handleMouseOut()}
               >
-                {formatToLocaleString(v?.value.toString(), culture)}
+                {formatToLocaleString(v.value.toString(), culture)}
               </text>
             </g>,
           );
@@ -325,16 +318,16 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       for (let i = 0; i < stages.length; i++) {
         const cur = stages[i];
         const next = stages[i + 1] || { subValues: [] };
-        const curTotal = totals[i] ?? 1;
-        const nextTotal = totals[i + 1] ?? 0;
+        const curTotal = totals[i] || 1;
+        const nextTotal = totals[i + 1] || 0;
 
         let cumTop = 0;
         let cumBot = 0;
 
         for (let k = 0; k < (cur.subValues ?? []).length; k++) {
-          const v = cur.subValues?.[k];
-          const vNext = next.subValues?.find(x => x.category === v?.category);
-          const val = v?.value ?? 0;
+          const v = cur.subValues![k];
+          const vNext = next.subValues?.find(x => x.category === v.category);
+          const val = v.value;
           const nextVal = vNext ? vNext.value : 0;
 
           const topH = (val / curTotal) * (curTotal / maxTotal) * funnelHeight;
@@ -361,17 +354,15 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
                   L${leftStart},${topEnd}
                   Z
                 `}
-                fill={v?.color}
+                fill={v.color}
                 opacity={
-                  (isStackedFunnelData(props.data) && legendHighlighted(v?.category!)) || noLegendHighlighted()
-                    ? 1
-                    : 0.1
+                  (isStackedFunnelData(props.data) && legendHighlighted(v.category)) || noLegendHighlighted() ? 1 : 0.1
                 }
                 onMouseOver={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v!, event)
+                  _handleStackedHover(cur.stage as string, v, event)
                 }
                 onMouseMove={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v!, event)
+                  _handleStackedHover(cur.stage as string, v, event)
                 }
                 onMouseOut={() => _handleMouseOut()}
               />
@@ -381,14 +372,14 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
                 textAnchor="middle"
                 alignmentBaseline="middle"
                 onMouseOver={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v!, event)
+                  _handleStackedHover(cur.stage as string, v, event)
                 }
                 onMouseMove={(event: React.MouseEvent<SVGElement>) =>
-                  _handleStackedHover(cur.stage as string, v!, event)
+                  _handleStackedHover(cur.stage as string, v, event)
                 }
                 onMouseOut={() => _handleMouseOut()}
               >
-                {formatToLocaleString(v?.value.toString(), culture)}
+                {formatToLocaleString(v.value.toString(), culture)}
               </text>
             </g>,
           );
@@ -412,8 +403,8 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     if (isStackedFunnelData(funnelData)) {
       // Collect unique categories and their color (first color found for each category)
       const categoryMap: Record<string, string> = {};
-      funnelData.forEach((stage: any) => {
-        (stage.subValues || []).forEach((sub: any) => {
+      funnelData.forEach((stage: IFunnelChartDataPoint) => {
+        (stage.subValues || []).forEach(sub => {
           if (!(sub.category in categoryMap)) {
             categoryMap[sub.category] = sub.color;
           }
@@ -422,7 +413,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       const legends: ILegend[] = Object.entries(categoryMap).map(([category, color]) => ({
         title: category,
         color,
-        hoverAction: () => setHoveredStage(category), // highlight all segments of this category
+        hoverAction: () => setHoveredStage(category),
         onMouseOutAction: () => setHoveredStage(null),
       }));
 
@@ -440,10 +431,10 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     }
 
     // Non-stacked: allow selection
-    const legends: ILegend[] = funnelData.map((d: any) => ({
-      title: d.stage,
-      color: d.color,
-      hoverAction: () => setHoveredStage(d.stage),
+    const legends: ILegend[] = funnelData.map((d: IFunnelChartDataPoint) => ({
+      title: d.stage as string,
+      color: d.color!,
+      hoverAction: () => setHoveredStage(d.stage as string),
       onMouseOutAction: () => setHoveredStage(null),
     }));
 
@@ -489,9 +480,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     chartWidth: width,
     chartHeight: height,
   });
-  console.log('isStackedFunnelData', isStackedFunnelData(props.data));
-  console.log('orientation', props.orientation);
-  console.log('props.data', props.data);
+
   return !_isChartEmpty() ? (
     <div ref={chartContainerRef} className={classNames.root}>
       <FocusZone direction={FocusZoneDirection.horizontal}>

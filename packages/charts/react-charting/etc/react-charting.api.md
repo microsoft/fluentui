@@ -598,20 +598,19 @@ export interface IEventsAnnotationProps {
     strokeColor?: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IFunnelChartProps {
     calloutProps?: Partial<ICalloutProps>;
-    // (undocumented)
     chartTitle?: string;
+    className?: string;
+    componentRef?: React.RefObject<any>;
     culture?: string;
     // Warning: (ae-forgotten-export) The symbol "IFunnelChartDataPoint" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
     data: IFunnelChartDataPoint[];
     height?: number;
     hideLegend?: boolean;
-    // (undocumented)
     legendProps?: Partial<ILegendsProps>;
+    orientation?: 'horizontal' | 'vertical';
     styles?: IStyleFunctionOrObject<IFunnelChartStyleProps, IFunnelChartStyles>;
     theme?: ITheme;
     width?: number;
@@ -619,6 +618,9 @@ export interface IFunnelChartProps {
 
 // @public
 export interface IFunnelChartStyleProps {
+    chartHeight: number;
+    chartWidth: number;
+    className?: string;
     theme: ITheme;
 }
 
@@ -626,11 +628,9 @@ export interface IFunnelChartStyleProps {
 export interface IFunnelChartStyles {
     chart?: IStyle;
     root?: IStyle;
-    // (undocumented)
     subComponentStyles: {
         calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     };
-    // (undocumented)
     text?: IStyle;
 }
 

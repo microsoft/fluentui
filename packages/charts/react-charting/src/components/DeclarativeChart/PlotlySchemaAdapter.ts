@@ -1374,48 +1374,6 @@ export const transformPlotlyJsonToChartTableProps = (
   };
 };
 
-// export const transformPlotlyJsonToFunnelProps = (
-//   input: PlotlySchema,
-//   colorMap: React.MutableRefObject<Map<string, string>>,
-//   colorwayType: ColorwayType,
-//   isDarkTheme?: boolean,
-// ): IFunnelChartProps => {
-//   // Support multiple series of data
-//   const funnelData: Array<{ stage: string; value: number; color: string }> = [];
-//   input.data.forEach((series: any, seriesIdx: number) => {
-//     // Prefer .labels/.values, fallback to .y/.x, fallback to .stage/.value
-//     const labels = series.labels ?? series.y ?? series.stage;
-//     const values = series.values ?? series.x ?? series.value;
-//     if (!Array.isArray(labels) || !Array.isArray(values)) {
-//       return;
-//     }
-//     const extractedColors = extractColor(
-//       series.marker?.colors,
-//       colorwayType,
-//       series.marker?.colors,
-//       colorMap,
-//       isDarkTheme,
-//     );
-//     labels.forEach((label: string, i: number) => {
-//       funnelData.push({
-//         stage: label,
-//         value: values[i],
-//         color: resolveColor(extractedColors, i, label, colorMap, isDarkTheme),
-//       });
-//     });
-//   });
-//   // Remove debug log or keep as needed
-//   // console.log('Funnel chart data:', funnelData);
-//   const firstData = input.data[0] as any;
-//   return {
-//     data: funnelData,
-//     values: funnelData,
-//     width: input.layout?.width,
-//     height: input.layout?.height,
-//     orientation: firstData.orientation === 'v' ? 'vertical' : 'horizontal',
-//   };
-// };
-
 export const transformPlotlyJsonToFunnelProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -1429,7 +1387,7 @@ export const transformPlotlyJsonToFunnelProps = (
     input.data.length > 1 &&
     input.data.every((series: Partial<PlotData>) => {
       const values = series.values ?? series.x ?? series.value;
-      const labels = series.labels ?? series.y ?? series.stage;
+      const labels = series.labels ?? series.y ?? (series as any).stage;
       return Array.isArray(labels) && Array.isArray(values) && values.length > 1 && labels.length > 1;
     });
 
@@ -1507,7 +1465,7 @@ export const transformPlotlyJsonToFunnelProps = (
     data: funnelData,
     width: input.layout?.width,
     height: input.layout?.height,
-    orientation: input.data[0]?.orientation === 'v' ? 'vertical' : 'horizontal',
+    orientation: (input.data[0] as any)?.orientation === 'v' ? 'vertical' : 'horizontal',
   };
 };
 export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
