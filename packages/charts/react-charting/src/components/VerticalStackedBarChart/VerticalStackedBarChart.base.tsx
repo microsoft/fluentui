@@ -886,7 +886,6 @@ export class VerticalStackedBarChartBase
   ): {
     readonly gapHeight: number;
     readonly heightValueScale: number;
-    readonly adjustedTotalHeight: number;
     readonly absStackTotal: number;
   } {
     const { barGapMax = 0 } = this.props;
@@ -921,7 +920,6 @@ export class VerticalStackedBarChartBase
     return {
       gapHeight,
       heightValueScale,
-      adjustedTotalHeight: sumOfPercent,
       absStackTotal: totalData,
     } as const;
   }
@@ -1034,6 +1032,7 @@ export class VerticalStackedBarChartBase
           yPoint = yPositiveStart;
         } else {
           barHeight = Math.abs(heightValueScale * (point.data as number));
+          // FIXME: The current scaling logic may produce different min and gap heights for each bar stack.
           const minHeight = Math.max((heightValueScale * absStackTotal) / 100.0, barMinimumHeight);
           if (barHeight < minHeight) {
             barHeight = minHeight;
