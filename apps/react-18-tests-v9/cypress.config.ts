@@ -15,7 +15,6 @@ config.component.devServer.webpackConfig.resolve.alias = {
   '@types/react-dom': path.resolve(usedNodeModulesPath, './@types/react-dom'),
   react: path.resolve(usedNodeModulesPath, './react'),
   'react-dom': path.resolve(usedNodeModulesPath, './react-dom'),
-  'cypress-real-events': path.resolve(usedNodeModulesPath, './cypress-real-events'),
 };
 
 export default config;
