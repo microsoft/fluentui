@@ -12,16 +12,14 @@ import {
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
-  Points,
   areArraysEqual,
   formatScientificLimitWidth,
   getAccessibleDataObject,
   getColorFromToken,
   getNextColor,
   getNextGradient,
-  pointTypes,
 } from '../../utilities/index';
-import { ILegend, ILegendContainer, LegendShape, Legends, Shape } from '../Legends/index';
+import { ILegend, ILegendContainer, DataPointShape, Legends, Shape } from '../Legends/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IYValueHover } from '../../index';
@@ -29,6 +27,7 @@ import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { select as d3Select } from 'd3-selection';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
+import { Points, pointTypes } from '../../utilities/shape-utilities';
 
 const GAUGE_MARGIN = 16;
 const LABEL_WIDTH = 36;
@@ -748,7 +747,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                   className: _classNames.shapeStyles,
                 }}
                 pathProps={{ fill: xValue.color }}
-                shape={Points[xValue.index! % Object.keys(pointTypes).length] as LegendShape}
+                shape={Points[xValue.index! % Object.keys(pointTypes).length] as DataPointShape}
               />
             )}
             <div>

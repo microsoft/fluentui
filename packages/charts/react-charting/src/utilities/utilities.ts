@@ -1489,72 +1489,6 @@ export const getTypeOfAxis = (p: string | number | Date, isXAxis: boolean): XAxi
 };
 
 /**
- * we need to make sure that if we add any property to this, then
- * we need to also add that in  pointTypes below and vise-versa
- */
-
-export enum Points {
-  circle,
-  square,
-  triangle,
-  diamond,
-  pyramid,
-  hexagon,
-  pentagon,
-  octagon,
-}
-
-export enum CustomPoints {
-  dottedLine,
-}
-
-export type PointTypes = {
-  [key in number]: {
-    /**
-     * For certian shapes like pentagon, hexagon and octagon.
-     * the width of the bouding box increase by the time of the
-     * length of the side, so when we want to render a pentagon
-     * having each side of length 7 units we need to decrease it's
-     * units by width ratio so that the bounding box width of the pentagon
-     * stays as 7
-     */
-    widthRatio: number;
-  };
-};
-
-/**
- * we need to make sure that if we add any property to this, then
- * we need to also add that in enum Point and vise-versa
- */
-
-export const pointTypes: PointTypes = {
-  [Points.circle]: {
-    widthRatio: 1,
-  },
-  [Points.square]: {
-    widthRatio: 1,
-  },
-  [Points.triangle]: {
-    widthRatio: 1,
-  },
-  [Points.diamond]: {
-    widthRatio: 1,
-  },
-  [Points.pyramid]: {
-    widthRatio: 1,
-  },
-  [Points.hexagon]: {
-    widthRatio: 2,
-  },
-  [Points.pentagon]: {
-    widthRatio: 1.168,
-  },
-  [Points.octagon]: {
-    widthRatio: 2.414,
-  },
-};
-
-/**
  * @param accessibleData accessible data
  * @param role string to define role of tag
  * @param isDataFocusable boolean
@@ -1867,12 +1801,12 @@ export function domainRangeOfNumericForScatterChart(
   width: number,
   isRTL: boolean,
 ): IDomainNRange {
-  let xMin = d3Min(points, (point: ILineChartPoints) => {
+  let xMin = d3Min(points, (point: IScatterChartPoints) => {
     return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as number)!;
   })!;
 
-  let xMax = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data as IScatterChartDataPoint[], (item: ILineChartDataPoint) => {
+  let xMax = d3Max(points, (point: IScatterChartPoints) => {
+    return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
       return item.x as number;
     });
   })!;

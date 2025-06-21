@@ -10,7 +10,7 @@ import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluen
 import {
   ILegend,
   ILegendsProps,
-  LegendShape,
+  DataPointShape,
   ILegendsStyles,
   ILegendStyleProps,
   ILegendOverflowData,
@@ -29,7 +29,7 @@ interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   hoverAction: VoidFunction;
   onMouseOutAction: VoidFunction;
   color: string;
-  shape?: LegendShape;
+  shape?: DataPointShape;
   key: number;
   opacity?: number;
   stripePattern?: boolean;
@@ -443,8 +443,13 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
       <Shape
         svgProps={svgParentProps}
         pathProps={svgChildProps}
-        shape={legend.shape as LegendShape}
+        shape={
+          String(legend.shape)?.includes('open')
+            ? (String(legend.shape).replace('open', '') as DataPointShape)
+            : (String(legend.shape).toLowerCase() as DataPointShape)
+        }
         classNameForNonSvg={classNames.rect}
+        isOpenShape={String(legend.shape)?.toLowerCase().includes('open')}
       />
     );
   }
