@@ -1,0 +1,83 @@
+name: Build and Publish Fluent UI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node 20.19.2
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.19.2
+          registry-url: https://npm.pkg.github.com/
+          scope: '@nbs-sandbox'
+
+      - name: Install Yarn v1
+        run: npm install -g yarn@1
+
+      - name: Install root dependencies
+        run: yarn install
+
+      - name: Install web-components dependencies
+        working-directory: packages/web-components
+        run: yarn install
+
+      - name: Build Fluent UI web-components
+        working-directory: packages/web-components
+        run: yarn nx build
+
+      - name: Checkout custom-styles repo
+        uses: actions/checkout@v4
+        with:
+          repository: NBS-Sandbox/npds-fluentui-custom-files
+          token: ${{ secrets.CUSTOM_FILES_PAT }}
+          path: packages/web-components/.temp-custom-files
+          ref: main
+
+      - name: Apply Custom NPDS Styling
+        working-directory: packages/web-components
+        run: npm run overlay-styles
+
+      - name: Determine package version
+        id: get_version
+        run: |
+          VERSION=$(node -p "require('./packages/web-components/package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Bump version for stable line
+        if: startsWith(steps.get_version.outputs.VERSION, '2.')
+        working-directory: packages/web-components
+        run: npm run bump-patch stable
+
+      - name: Bump version for beta line
+        if: startsWith(steps.get_version.outputs.VERSION, '3.')
+        working-directory: packages/web-components
+        run: npm run bump-patch
+
+      - name: Publish to GitHub Packages
+        working-directory: packages/web-components
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [[ "${{ steps.get_version.outputs.VERSION }}" == 2.* ]]; then
+            echo "Publishing v${{ steps.get_version.outputs.VERSION }} → latest"
+            npm publish
+          else
+            echo "Publishing v${{ steps.get_version.outputs.VERSION }} → beta"
+            npm publish --tag beta
+          fi
