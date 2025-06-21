@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { Dialog } from './Dialog';
 import { DialogProps } from './Dialog.types';
 import { isConformant } from '../../testing/isConformant';
@@ -61,12 +61,12 @@ describe('Dialog', () => {
       </Dialog>,
     );
 
-    result.getByTestId('trigger').click();
+    fireEvent.click(result.getByTestId('trigger'));
 
     expect(result.getByTestId('surface-content')).toBeInTheDocument();
     expect(result.getByTestId('surface-content')).toBeVisible();
 
-    result.getByTestId('trigger-close').click();
+    fireEvent.click(result.getByTestId('trigger-close'));
     expect(result.queryByTestId('surface-content')).toBeNull();
   });
 });

@@ -22,7 +22,7 @@ describe('ColorSlider', () => {
           <input
             aria-orientation="horizontal"
             class="fui-ColorSlider__input"
-            id="slider-9"
+            id="slider-r8"
             max="360"
             min="0"
             tabindex="0"

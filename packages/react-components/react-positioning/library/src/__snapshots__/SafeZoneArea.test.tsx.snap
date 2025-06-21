@@ -9,11 +9,11 @@ exports[`SafeZoneArea updateSVGs updates SVGs 1`] = `
 >
   <path
     class=""
-    clip-path="url(#fui-1)"
+    clip-path="url(#fui-r0)"
     d="M 9 -190 200 300 200 0 z"
   />
   <clippath
-    id="fui-1"
+    id="fui-r0"
   >
     <path
       d="M 0 0 0 100 100 100 100 150 0 150 0 300 200 300 200 0 z"
@@ -35,11 +35,11 @@ exports[`SafeZoneArea updateSVGs updates SVGs 2`] = `
 >
   <path
     class=""
-    clip-path="url(#fui-2)"
+    clip-path="url(#fui-r1)"
     d="M -100 310 0 300 0 0 z"
   />
   <clippath
-    id="fui-2"
+    id="fui-r1"
   >
     <path
       d="M 0 0 0 300 200 300 200 150 100 150 100 100 200 100 200 0 z"
@@ -61,11 +61,11 @@ exports[`SafeZoneArea updateSVGs updates SVGs 3`] = `
 >
   <path
     class=""
-    clip-path="url(#fui-3)"
+    clip-path="url(#fui-r2)"
     d="M 200 200 -190 315 0 200 z"
   />
   <clippath
-    id="fui-3"
+    id="fui-r2"
   >
     <path
       d="M 0 0 0 200 200 200 200 0 200 0 200 50 100 50 100 0 z"
@@ -87,11 +87,11 @@ exports[`SafeZoneArea updateSVGs updates SVGs 4`] = `
 >
   <path
     class=""
-    clip-path="url(#fui-4)"
+    clip-path="url(#fui-r3)"
     d="M 200 0 210 100 0 0 z"
   />
   <clippath
-    id="fui-4"
+    id="fui-r3"
   >
     <path
       d="M 0 0 0 150 100 150 100 100 200 100 200 150 200 150 200 0 z"

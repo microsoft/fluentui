@@ -1,3 +1,4 @@
+import path from 'node:path';
 import { getDefaultEnvironmentVars } from '@fluentui/scripts-monorepo';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
@@ -129,7 +130,7 @@ const webpackConfig: webpack.Configuration &
       faker: 'faker/locale/en',
       'react-hook-form': 'react-hook-form/dist/react-hook-form.ie11',
       ...(__DEV__ && {
-        'react-dom': '@hot-loader/react-dom',
+        'react-dom': path.join(paths.docs(), 'node_modules/@hot-loader/react-dom'),
       }),
     },
     fallback: {

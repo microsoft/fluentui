@@ -86,6 +86,7 @@ scripts/generators @microsoft/fluentui-react-build
 scripts/github @microsoft/fluentui-react-build
 scripts/gulp @microsoft/fluentui-react-build @microsoft/teams-prg
 scripts/jest @microsoft/fluentui-react-build
+scripts/jest-v0 @microsoft/fluentui-react-build
 scripts/lint-staged @microsoft/fluentui-react-build
 scripts/monorepo @microsoft/fluentui-react-build
 scripts/package-manager @microsoft/fluentui-react-build

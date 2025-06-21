@@ -34,6 +34,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   };
   // need to check WindowContext to get the provided document
   public static contextType = WindowContext;
+  public context: any;
 
   private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
@@ -150,6 +151,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     this._async.dispose();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
     const style = { ...this.props.style, fontFamily: 'inherit' };

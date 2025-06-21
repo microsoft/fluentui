@@ -9,8 +9,15 @@ describe('BaseComponent', () => {
       public root!: HTMLElement;
 
       public render(): JSX.Element {
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        return <div ref={this._resolveRef('root')} />;
+        return (
+          <div
+            // @ts-expect-error - react 18 types issue
+            ref={
+              // eslint-disable-next-line @typescript-eslint/no-deprecated
+              this._resolveRef('root')
+            }
+          />
+        );
       }
     }
 

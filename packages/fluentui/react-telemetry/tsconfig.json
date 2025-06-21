@@ -7,7 +7,13 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "react/*": ["packages/fluentui/react-northstar/node_modules/@types/react/*"],
+      "react": ["packages/fluentui/react-northstar/node_modules/@types/react/index.d.ts"],
+      "react-dom": ["packages/fluentui/react-northstar/node_modules/@types/react-dom/index.d.ts"],
+      "@fluentui/react-bindings": ["packages/fluentui/react-bindings/src/index.ts"]
+    }
   },
   "include": ["src", "test"],
   "references": [

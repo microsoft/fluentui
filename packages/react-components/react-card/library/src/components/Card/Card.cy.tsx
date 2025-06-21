@@ -15,7 +15,10 @@ import {
 } from '@fluentui/react-card';
 import type { CardProps, CardOnSelectionChangeEvent } from '@fluentui/react-card';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

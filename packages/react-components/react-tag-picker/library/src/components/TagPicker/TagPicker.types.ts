@@ -46,6 +46,7 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> &
     /**
      * Can contain two children including a trigger and a popover
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     children: [JSX.Element, JSX.Element | undefined | false] | JSX.Element;
     /**
      * TagPickers are rendered out of DOM order on `document.body` by default,

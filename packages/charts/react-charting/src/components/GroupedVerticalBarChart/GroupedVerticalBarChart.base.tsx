@@ -102,6 +102,7 @@ export class GroupedVerticalBarChartBase
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _datasetForBars: any;
   private margins: IMargins;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _groupedVerticalBarGraph: JSX.Element[];
   private _classNames: IProcessedStyleSet<IGroupedVerticalBarChartStyles>;
   private _yMax: number;
@@ -170,6 +171,7 @@ export class GroupedVerticalBarChartBase
     this._legends = legends;
     this._xAxisLabels = xAxisLabels;
     this._datasetForBars = datasetForBars;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const legendBars: JSX.Element = this._getLegendData();
     this._adjustProps();
 
@@ -317,6 +319,7 @@ export class GroupedVerticalBarChartBase
     this._groupWidth = calcRequiredWidth(this._barWidth, this._legends.length, X1_INNER_PADDING);
 
     const xScale1 = this._createX1Scale();
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const allGroupsBars: JSX.Element[] = [];
     this._datasetForBars.forEach((singleSet: IGVSingleDataPoint) => {
       allGroupsBars.push(
@@ -426,8 +429,11 @@ export class GroupedVerticalBarChartBase
     yScaleSecondary: ScaleLinear<number, number> | undefined,
     containerHeight: number,
     xElement: SVGElement,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const singleGroup: JSX.Element[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const barLabelsForGroup: JSX.Element[] = [];
 
     this._legends.forEach((legendTitle: string, legendIndex: number) => {
@@ -621,6 +627,7 @@ export class GroupedVerticalBarChartBase
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getLegendData = (): JSX.Element => {
     const actions: ILegend[] = [];
 

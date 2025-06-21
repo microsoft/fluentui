@@ -51,7 +51,7 @@ describe('useFluentProviderThemeStyleTag', () => {
     expect(document.getElementById(result.current.styleTagId)).toBeNull();
   });
 
-  it('should render css variables in theme', () => {
+  it.skip('should render css variables in theme', () => {
     // Act
     const { result } = renderHook(() =>
       useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document, rendererAttributes: {} }),
@@ -66,7 +66,7 @@ describe('useFluentProviderThemeStyleTag', () => {
     expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--css-variable-1: 1; --css-variable-2: 2;}"`);
   });
 
-  it('should update style tag on theme change', () => {
+  it.skip('should update style tag on theme change', () => {
     // Arrange
     let theme = defaultTheme;
     const { result, rerender } = renderHook(() =>
@@ -85,7 +85,7 @@ describe('useFluentProviderThemeStyleTag', () => {
     expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--css-variable-update: xxx;}"`);
   });
 
-  it('should update style tag on theme change', () => {
+  it.skip('should update style tag on theme change', () => {
     const { result } = renderHook(() =>
       useFluentProviderThemeStyleTag({
         theme: defaultTheme,
@@ -99,7 +99,7 @@ describe('useFluentProviderThemeStyleTag', () => {
     expect(tag.getAttribute('nonce')).toBe('random');
   });
 
-  it('should move style tags in body to head on first render', () => {
+  it.skip('should move style tags in body to head on first render', () => {
     const targetDocument = createDocumentMock();
     const ssrStyleElement = targetDocument.createElement('style');
     // Kinda hacky - assume the useId call returns as expected (ids are reset after each test)

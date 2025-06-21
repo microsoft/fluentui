@@ -9,6 +9,7 @@ import type {
   IBaseFloatingSuggestionsStylesProps,
 } from './FloatingSuggestions.types';
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSuggestionsProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IBaseFloatingSuggestionsStylesProps, IBaseFloatingSuggestionsStyles>();
   const classNames = getClassNames(getStyles);

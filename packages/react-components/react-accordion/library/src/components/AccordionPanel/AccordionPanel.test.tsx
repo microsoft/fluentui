@@ -26,6 +26,7 @@ describe('AccordionPanel', () => {
    * Note: see more visual regression tests for AccordionPanel in /apps/vr-tests.
    */
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(<AccordionPanel>Default AccordionPanel</AccordionPanel>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

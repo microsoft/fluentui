@@ -134,7 +134,7 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
         firstRender: boolean;
     };
     // (undocumented)
-    render(): JSX.Element;
+    render(): React_2.JSX.Element;
 }
 
 // @public (undocumented)

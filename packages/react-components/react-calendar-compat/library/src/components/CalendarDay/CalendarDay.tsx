@@ -95,7 +95,10 @@ interface CalendarDayNavigationButtonsProps extends CalendarDayProps {
   classNames: Record<keyof CalendarDayStyles, string>;
 }
 
-const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps): JSX.Element => {
+const CalendarDayNavigationButtons = (
+  props: CalendarDayNavigationButtonsProps,
+): // eslint-disable-next-line @typescript-eslint/no-deprecated
+JSX.Element => {
   const {
     minDate,
     maxDate,

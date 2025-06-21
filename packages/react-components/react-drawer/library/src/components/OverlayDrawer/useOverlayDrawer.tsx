@@ -66,6 +66,7 @@ export const useOverlayDrawer_unstable = (
        * children is not needed here because we construct the children in the render function,
        * but it's required by DialogProps
        */
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       children: null as unknown as JSX.Element,
     },
     {
