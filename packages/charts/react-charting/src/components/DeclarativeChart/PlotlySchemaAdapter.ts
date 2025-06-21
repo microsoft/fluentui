@@ -68,6 +68,7 @@ import {
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
+import { IFunnelChartDataPoint, IFunnelChartProps } from '../FunnelChart/FunnelChart.types';
 import { getOpacity, extractColor, resolveColor } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
@@ -1520,6 +1521,130 @@ export const transformPlotlyJsonToChartTableProps = (
     width: input.layout?.width,
     height: input.layout?.height,
     styles,
+  };
+};
+
+function getCategoriesAndValues(series: any): { categories: any[]; values: any[] } {
+  const orientation = series.orientation || 'h';
+  const y = series.labels ?? series.y ?? series.stage;
+  const x = series.values ?? series.x ?? series.value;
+  const xIsString = isArrayOrTypedArray(x) && x.every((v: any) => typeof v === 'string');
+  const yIsString = isArrayOrTypedArray(y) && y.every((v: any) => typeof v === 'string');
+  const xIsNumber = isArrayOrTypedArray(x) && x.every((v: any) => typeof v === 'number');
+  const yIsNumber = isArrayOrTypedArray(y) && y.every((v: any) => typeof v === 'number');
+
+  if (orientation === 'h') {
+    if (yIsString && xIsNumber) {
+      return { categories: y, values: x };
+    } else if (xIsString && yIsNumber) {
+      return { categories: x, values: y };
+    } else {
+      return { categories: yIsString ? y : x, values: yIsString ? x : y };
+    }
+  } else {
+    if (xIsString && yIsNumber) {
+      return { categories: x, values: y };
+    } else if (yIsString && xIsNumber) {
+      return { categories: y, values: x };
+    } else {
+      return { categories: xIsString ? x : y, values: xIsString ? y : x };
+    }
+  }
+}
+
+export const transformPlotlyJsonToFunnelChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): IFunnelChartProps => {
+  const funnelData: IFunnelChartDataPoint[] = [];
+
+  // Determine if data is stacked based on multiple series with multiple values per series
+  const isStacked =
+    input.data.length > 1 &&
+    input.data.every((series: Partial<PlotData>) => {
+      const values = series.values ?? series.x ?? series.value;
+      const labels = series.labels ?? series.y ?? (series as any).stage;
+      return Array.isArray(labels) && Array.isArray(values) && values.length > 1 && labels.length > 1;
+    });
+
+  if (isStacked) {
+    // Assign a color per series/category and use it for all subValues of that category
+    const seriesColors: Record<string, string> = {};
+    input.data.forEach((series: any, seriesIdx: number) => {
+      const category = series.name || `Category ${seriesIdx + 1}`;
+      // Use the same color for this category across all stages
+      const extractedColors = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.marker?.colors ?? series.marker?.color,
+        colorMap,
+        isDarkTheme,
+      );
+      // Always use the first color for the series/category
+      const color = resolveColor(extractedColors, 0, category, colorMap, isDarkTheme);
+      seriesColors[category] = color;
+    });
+
+    input.data.forEach((series: any, seriesIdx: number) => {
+      const labels = series.labels ?? series.y ?? series.stage;
+      const values = series.values ?? series.x ?? series.value;
+      const category = series.name || `Category ${seriesIdx + 1}`;
+      const color = seriesColors[category];
+
+      if (!isArrayOrTypedArray(labels) || !isArrayOrTypedArray(values)) {
+        return;
+      }
+
+      labels.forEach((label: string, i: number) => {
+        const stageIndex = funnelData.findIndex(stage => stage.stage === label);
+
+        if (stageIndex === -1) {
+          funnelData.push({
+            stage: label,
+            subValues: [{ category, value: values[i], color }],
+          });
+        } else {
+          funnelData[stageIndex].subValues!.push({ category, value: values[i], color });
+        }
+      });
+    });
+  } else {
+    // Non-stacked data handling (multiple series with single-value arrays)
+    input.data.forEach((series: any, seriesIdx: number) => {
+      const { categories, values } = getCategoriesAndValues(series);
+
+      if (!isArrayOrTypedArray(categories) || !isArrayOrTypedArray(values)) {
+        return;
+      }
+
+      const extractedColors = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.marker?.colors ?? series.marker?.color,
+        colorMap,
+        isDarkTheme,
+      );
+
+      categories.forEach((label: string, i: number) => {
+        const color = resolveColor(extractedColors, i, label, colorMap, isDarkTheme);
+        funnelData.push({
+          stage: label,
+          value: values[i],
+          color,
+        });
+      });
+    });
+  }
+
+  return {
+    data: funnelData,
+    width: input.layout?.width,
+    height: input.layout?.height,
+    orientation: (input.data[0] as any)?.orientation === 'v' ? 'vertical' : 'horizontal',
+    hideLegend: isMultiPlot || input.layout?.showlegend === false,
   };
 };
 
