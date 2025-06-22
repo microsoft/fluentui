@@ -430,29 +430,19 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       let xMax: number = 0;
       if (_xAxisType === XAxisTypes.StringAxis) {
         _xBandwidth.current = _xAxisScale.current?.bandwidth() / 2;
-      } else if (_xAxisType === XAxisTypes.DateAxis) {
-        xMin = d3Min(_points.current, (point: IScatterChartPoints) => {
-          return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as Date)!;
-        })!.getTime();
-
-        xMax = d3Max(_points.current, (point: IScatterChartPoints) => {
-          return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
-            return item.x as Date;
-          });
-        })!.getTime();
-
-        xPadding = (xMax - xMin) * 0.1;
       } else {
-        xMin = d3Min(_points.current, (point: IScatterChartPoints) => {
-          return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as number)!;
-        })!;
+        const isDate = _xAxisType === XAxisTypes.DateAxis;
+        const getX = (item: IScatterChartDataPoint) => (isDate ? (item.x as Date) : (item.x as number));
 
-        xMax = d3Max(_points.current, (point: IScatterChartPoints) => {
-          return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
-            return item.x as number;
-          });
-        })!;
+        const minVal = d3Min(_points.current, (point: IScatterChartPoints) =>
+          d3Min(point.data as IScatterChartDataPoint[], getX),
+        );
+        const maxVal = d3Max(_points.current, (point: IScatterChartPoints) =>
+          d3Max(point.data as IScatterChartDataPoint[], getX),
+        );
 
+        xMin = isDate ? (minVal as Date).getTime() : (minVal as number);
+        xMax = isDate ? (maxVal as Date).getTime() : (maxVal as number);
         xPadding = (xMax - xMin) * 0.1;
       }
 
