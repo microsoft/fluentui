@@ -1,7 +1,11 @@
 {
   "name": "@nbs-sandbox/npds-lib-fluentui",
   "description": "A library of Fluent Web Components",
+<<<<<<< HEAD
   "version": "2.6.1",
+=======
+  "version": "3.0.0-beta.109",
+>>>>>>> upstream/master
   "author": {
     "name": "NBS-Sandbox",
     "url": "https://github.com/NBS-Sandbox"

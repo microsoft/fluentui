@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add support for negative vsbc",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}
