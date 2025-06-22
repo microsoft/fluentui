@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { PresenceComponentProps } from '@fluentui/react-components';
-import { Fade } from '@fluentui/react-motion-components-preview';
+// import { Fade } from '@fluentui/react-motion-components-preview';
 
 const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>((props, ref) => (
   <div ref={ref} {...props}>
@@ -10,10 +9,12 @@ const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivEleme
   </div>
 ));
 
-export const DefaultFade = (props: PresenceComponentProps) => {
+const Experiments = () => <div>Experiments</div>;
+
+export const DefaultExperiments = () => {
   return (
-    <Fade {...props}>
+    <Experiments {...props}>
       <LoremIpsum />
-    </Fade>
+    </Experiments>
   );
 };

@@ -7,6 +7,10 @@
 import type { MotionParam } from '@fluentui/react-motion';
 import { PresenceComponent } from '@fluentui/react-motion';
 import type { PresenceMotionFn } from '@fluentui/react-motion';
+import * as React_2 from 'react';
+
+// @public (undocumented)
+export const Blur: PresenceComponent<BlurRuntimeParams>;
 
 // @public
 export const Collapse: PresenceComponent<CollapseRuntimeParams>;
@@ -33,6 +37,9 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<CollapseDela
 export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantParams, CollapseRuntimeParams>;
 
 // @public
+export const createSlidePresence: PresenceMotionFnCreator<SlideVariantParams_unstable, SlideRuntimeParams_unstable>;
+
+// @public
 export const Fade: PresenceComponent<FadeVariantParams>;
 
 // @public (undocumented)
@@ -40,6 +47,25 @@ export const FadeRelaxed: PresenceComponent<FadeVariantParams>;
 
 // @public (undocumented)
 export const FadeSnappy: PresenceComponent<FadeVariantParams>;
+
+// @public (undocumented)
+export const Hold: React_2.FC<{
+    duration: number;
+    onMotionFinish?: () => void;
+}>;
+
+// @public
+export const PresenceStagger: React_2.FC<{
+    children: React_2.ReactNode;
+    delay?: number;
+    mode?: 'enter' | 'exit' | 'enterReverse' | 'exitReverse';
+    exit?: boolean;
+    reverse?: boolean;
+    onMotionFinish?: () => void;
+}>;
+
+// @public (undocumented)
+export const Rotate: PresenceComponent<RotateRuntimeParams>;
 
 // @public
 export const Scale: PresenceComponent<ScaleVariantParams>;
@@ -49,6 +75,38 @@ export const ScaleRelaxed: PresenceComponent<ScaleVariantParams>;
 
 // @public (undocumented)
 export const ScaleSnappy: PresenceComponent<ScaleVariantParams>;
+
+// @public (undocumented)
+export const Scene: React_2.FC<{
+    duration: number;
+    onMotionFinish?: (() => void) | undefined;
+}>;
+
+// @public (undocumented)
+export const Series: React_2.FC<{
+    children: React_2.ReactNode;
+    autoloop?: boolean;
+    commonProps?: Record<string, unknown>;
+    onMotionFinish?: () => void;
+}>;
+
+// @public
+export const Slide: PresenceComponent<SlideRuntimeParams_unstable>;
+
+// @public (undocumented)
+export const SlideRelaxed: PresenceComponent<SlideRuntimeParams_unstable>;
+
+// @public (undocumented)
+export const SlideSnappy: PresenceComponent<SlideRuntimeParams_unstable>;
+
+// @public (undocumented)
+export const Stagger: React_2.FC<{
+    children: React_2.ReactNode;
+    delay?: number;
+    autoloop?: boolean;
+    reverse?: boolean;
+    onMotionFinish?: () => void;
+}>;
 
 // (No @packageDocumentation comment for this package)
 

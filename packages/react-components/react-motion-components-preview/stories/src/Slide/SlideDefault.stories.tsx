@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
-import { Scale } from '@fluentui/react-motion-components-preview';
+import { Slide } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -35,7 +35,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Default = (props: React.ComponentProps<typeof Scale>) => {
+export const Default = () => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
 
@@ -47,11 +47,11 @@ export const Default = (props: React.ComponentProps<typeof Scale>) => {
         </Field>
       </div>
 
-      <Scale visible={visible}>
+      <Slide visible={visible}>
         <div className={classes.card}>
           <LoremIpsum />
         </div>
-      </Scale>
+      </Slide>
     </div>
   );
 };

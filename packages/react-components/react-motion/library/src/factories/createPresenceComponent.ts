@@ -16,6 +16,7 @@ import type {
   AnimationHandle,
 } from '../types';
 import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
+import { createMotionComponent, MotionComponentProps } from './createMotionComponent';
 
 /**
  * @internal A private symbol to store the motion definition on the component for variants.
@@ -77,6 +78,8 @@ export type PresenceComponentProps = {
 export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = {
   (props: PresenceComponentProps & MotionParams): React.ReactElement | null;
   [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
+  In: React.FC<MotionComponentProps & MotionParams>;
+  Out: React.FC<MotionComponentProps & MotionParams>;
 };
 
 const INTERRUPTABLE_MOTION_SYMBOL = Symbol.for('interruptablePresence');
@@ -243,6 +246,14 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       // Heads up!
       // Always normalize it to a function to simplify types
       [MOTION_DEFINITION]: typeof value === 'function' ? value : () => value,
+    },
+    {
+      In: createMotionComponent(
+        typeof value !== 'function' ? value.enter : (...args: Parameters<typeof value>) => value(...args).enter,
+      ),
+      Out: createMotionComponent(
+        typeof value !== 'function' ? value.exit : (...args: Parameters<typeof value>) => value(...args).exit,
+      ),
     },
   );
 }
