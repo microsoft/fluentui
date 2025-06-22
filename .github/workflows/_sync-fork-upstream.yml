@@ -1,0 +1,108 @@
+name: Sync Fork with Upstream
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+    outputs:
+      changes_made: ${{ steps.check-changes.outputs.changes_made }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.FLUENTUI_ACTION }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/microsoft/fluentui.git
+          git fetch upstream master
+          git fetch origin $DEFAULT_BRANCH
+
+      - name: Ensure on default branch
+        run: git checkout $DEFAULT_BRANCH
+
+      - name: Check for conflicts
+        id: check-conflicts
+        run: |
+          git checkout -b temp-merge-branch $DEFAULT_BRANCH
+          if git merge upstream/master --no-commit --no-ff; then
+            echo "has_conflicts=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_conflicts=true" >> $GITHUB_OUTPUT
+          fi
+          git merge --abort || true
+          git checkout $DEFAULT_BRANCH
+          git branch -D temp-merge-branch
+
+      - name: Set date
+        id: date
+        run: echo "date=$(date +%Y%m%d)" >> $GITHUB_OUTPUT
+
+      - name: Check if there are changes to merge
+        id: check-changes
+        run: |
+          if git diff --quiet $DEFAULT_BRANCH upstream/master; then
+            echo "changes_made=false" >> $GITHUB_OUTPUT
+          else
+            echo "changes_made=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Merge upstream if no conflicts
+        if: steps.check-conflicts.outputs.has_conflicts == 'false' && steps.check-changes.outputs.changes_made == 'true'
+        run: git merge upstream/master --no-edit
+
+      - name: Push merged changes
+        if: steps.check-conflicts.outputs.has_conflicts == 'false' && steps.check-changes.outputs.changes_made == 'true'
+        env:
+          GH_PAT: ${{ secrets.FLUENTUI_ACTION }}
+        run: git push https://$GH_PAT@github.com/${{ github.repository }}.git $DEFAULT_BRANCH
+
+      - name: Create conflict PR branch
+        if: steps.check-conflicts.outputs.has_conflicts == 'true'
+        env:
+          GH_PAT: ${{ secrets.FLUENTUI_ACTION }}
+        run: |
+          BRANCH=upstream-sync-${{ steps.date.outputs.date }}
+          git checkout -b $BRANCH
+          git merge upstream/master || true
+          git commit -am "Merge upstream/master with conflicts"
+          git push https://$GH_PAT@github.com/${{ github.repository }}.git $BRANCH
+
+      - name: Create Pull Request
+        if: steps.check-conflicts.outputs.has_conflicts == 'true'
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: 'upstream-sync-${{ steps.date.outputs.date }}'
+          destination_branch: ${{ env.DEFAULT_BRANCH }}
+          pr_title: 'Sync with upstream/master – Merge Conflicts'
+          pr_body: |
+            This PR was automatically created by the GitHub Actions workflow to sync with upstream.
+            **Merge conflicts detected**
+            Please resolve the conflicts manually and merge this PR.
+          github_token: ${{ secrets.FLUENTUI_ACTION }}
+
+      - name: Trigger Build & Publish Workflow
+        if: steps.check-conflicts.outputs.has_conflicts == 'false' && steps.check-changes.outputs.changes_made == 'true'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: "_build-and-publish.yml",
+              ref: process.env.DEFAULT_BRANCH
+            });
