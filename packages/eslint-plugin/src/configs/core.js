@@ -1,8 +1,8 @@
 // @ts-check
-const { __internal } = require('../internal');
 const configHelpers = require('../utils/configHelpers');
+const { __internal } = require('../internal');
 
-/** @type {import("eslint").Linter.Config} */
+/** @type {import("eslint").Linter.LegacyConfig} */
 const config = {
   root: true,
   extends: [
