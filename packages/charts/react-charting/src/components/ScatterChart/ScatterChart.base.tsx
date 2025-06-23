@@ -85,23 +85,24 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const [activePoint, setActivePoint] = React.useState<string>('');
   const [stackCalloutProps, setStackCalloutProps] = React.useState<ICustomizedCalloutData>();
   const [isCalloutVisible, setCalloutVisible] = React.useState(false);
-  const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
+  const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const [refSelected, setRefSelected] = React.useState<string>('');
-  const prevPropsRef = React.useRef<IScatterChartProps | null>(null);
+  const prevSelectedLegendsRef = React.useRef<string[] | undefined>(undefined);
 
   const classNames = getClassNames(props.styles!, {
     theme: props.theme!,
   });
 
   React.useEffect(() => {
-    if (prevPropsRef.current) {
-      const prevProps = prevPropsRef.current;
-      if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
+    if (prevSelectedLegendsRef.current) {
+      if (!areArraysEqual(prevSelectedLegendsRef.current, props.legendProps?.selectedLegends)) {
         setSelectedLegends(props.legendProps?.selectedLegends || []);
       }
+    } else {
+      setSelectedLegends(props.legendProps?.selectedLegends || []);
     }
-    prevPropsRef.current = props;
-  }, [props]);
+    prevSelectedLegendsRef.current = props.legendProps?.selectedLegends;
+  }, [props.legendProps?.selectedLegends]);
 
   React.useImperativeHandle(
     props.componentRef,
@@ -358,8 +359,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
    * This function checks if none of the legends is selected or hovered.*/
 
   const _noLegendHighlighted = React.useCallback((): boolean => {
-    return selectedLegends.length === 0;
-  }, [selectedLegends]);
+    return selectedLegends.length === 0 && activeLegend === '';
+  }, [selectedLegends, activeLegend]);
 
   const _getHighlightedLegend = React.useCallback((): string[] => {
     return selectedLegends.length > 0 ? selectedLegends : activeLegend ? [activeLegend] : [];
