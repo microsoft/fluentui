@@ -358,8 +358,8 @@ test.describe('Tablist', () => {
     });
     const tabs = element.locator('fluent-tab');
 
-    await expect(tabs.nth(0)).toHaveAttribute('data-hasIndent', '');
-    await expect(tabs.nth(1)).toHaveAttribute('data-hasIndent', '');
-    await expect(tabs.nth(2)).toHaveAttribute('data-hasIndent', '');
+    await expect(tabs.nth(0)).toHaveAttribute('data-hasIndent');
+    await expect(tabs.nth(1)).toHaveAttribute('data-hasIndent');
+    await expect(tabs.nth(2)).toHaveAttribute('data-hasIndent');
   });
 });

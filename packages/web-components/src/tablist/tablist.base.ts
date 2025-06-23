@@ -12,8 +12,8 @@ import {
 import { getDirection } from '../utils/index.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
 import { isFocusableElement } from '../utils/focusable-element.js';
-import { Tab } from '../tab/tab.js';
-import { isTab } from '../tab/tab.options';
+import type { Tab } from '../tab/tab.js';
+import { isTab } from '../tab/tab.options.js';
 import { TablistOrientation } from './tablist.options.js';
 
 /**
@@ -106,14 +106,19 @@ export class BaseTablist extends FASTElement {
     }
   }
 
+  /**
+   * Content slotted in the tab slot.
+   * @internal
+   */
   @observable
   public slottedTabs!: Node[];
 
+  /**
+   * Updates the tabs property when content in the tabs slot changes.
+   * @internal
+   */
   public slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
-    this.tabs =
-      next?.filter(tab => {
-        return isTab(tab);
-      }) ?? [];
+    this.tabs = next?.filter(tab => isTab(tab)) as Tab[] ?? [];
   }
 
   /**

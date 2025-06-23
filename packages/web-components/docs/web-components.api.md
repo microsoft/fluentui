@@ -759,7 +759,7 @@ export class BaseTablist extends FASTElement {
     activeid: string;
     // @internal (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
-    activetab: HTMLElement;
+    activetab: Tab;
     adjust(adjustment: number): void;
     // @internal (undocumented)
     connectedCallback(): void;
@@ -772,8 +772,12 @@ export class BaseTablist extends FASTElement {
     // @internal (undocumented)
     protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
     protected setTabs(): void;
+    // @internal
+    slottedTabs: Node[];
+    // @internal
+    slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
     // @internal (undocumented)
-    tabs: HTMLElement[];
+    tabs: Tab[];
     // @internal (undocumented)
     protected tabsChanged(): void;
 }
@@ -2802,6 +2806,9 @@ export function isDropdownOption(value: Node | null, tagName?: string): value is
 
 // @public
 export function isListbox(element?: Node | null, tagName?: string): element is Listbox;
+
+// @public
+export function isTab(element?: Node | null, tagName?: string): element is Tab;
 
 // @public
 export function isTreeItem(element?: Node | null, tagName?: string): element is BaseTreeItem;

@@ -1,4 +1,4 @@
-import { Tab } from "./tab";
+import type { Tab } from './tab.js';
 
 /**
  * Predicate function that determines if the element should be considered a tab.
