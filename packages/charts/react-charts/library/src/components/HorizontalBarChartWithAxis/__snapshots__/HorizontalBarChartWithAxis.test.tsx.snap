@@ -397,32 +397,18 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         </g>
         <g>
           <rect
-            aria-label="20%. 2020/04/30."
+            aria-label="10%. 2020/04/30."
             aria-labelledby="toolTipcallout1"
             data-is-focusable="true"
-            fill="#00bcf2"
+            fill="#0078d4"
             height="32"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
-            width="295"
+            width="147.5"
             x="40"
-            y="4"
-          />
-          <rect
-            aria-label="37%. 2020/04/30."
-            aria-labelledby="toolTipcallout1"
-            data-is-focusable="true"
-            fill="#00188f"
-            height="32"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="0"
-            width="368.75"
-            x="40"
-            y="102"
+            y="224.5"
           />
           <rect
             aria-label="88%. 2020/04/30."
@@ -439,18 +425,32 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             y="185.29999999999998"
           />
           <rect
-            aria-label="10%. 2020/04/30."
+            aria-label="37%. 2020/04/30."
             aria-labelledby="toolTipcallout1"
             data-is-focusable="true"
-            fill="#0078d4"
+            fill="#00188f"
             height="32"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
-            width="147.5"
+            width="368.75"
             x="40"
-            y="224.5"
+            y="102"
+          />
+          <rect
+            aria-label="20%. 2020/04/30."
+            aria-labelledby="toolTipcallout1"
+            data-is-focusable="true"
+            fill="#00bcf2"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            width="295"
+            x="40"
+            y="4"
           />
         </g>
       </svg>
@@ -929,10 +929,49 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             rx="0"
             tabindex="0"
             transform="translate(0,10.625)"
-            width="118"
+            width="116"
             x="40"
             y="36"
           />
+           
+           
+           
+          <rect
+            aria-label="1000. String One."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#0078d4"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,-5.125)"
+            width="10"
+            x="28"
+            y="14.25"
+          />
+           
+           
+           
+          <rect
+            aria-label="1000. String One."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#0078d4"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,-5.125)"
+            width="10"
+            x="28"
+            y="14.25"
+          />
+           
+           
+           
           <rect
             aria-label="5000. String Two."
             aria-labelledby="toolTipcallout5"
@@ -944,8 +983,8 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             rx="0"
             tabindex="0"
             transform="translate(0,10.625)"
-            width="590"
-            x="40"
+            width="588"
+            x="158"
             y="89.25"
           />
           <rect
@@ -959,8 +998,8 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             rx="0"
             tabindex="0"
             transform="translate(0,10.625)"
-            width="354"
-            x="40"
+            width="352"
+            x="748"
             y="142.5"
           />
           <rect
@@ -975,7 +1014,187 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             tabindex="0"
             transform="translate(0,10.625)"
             width="236"
+            x="1102"
+            y="195.75"
+          />
+          <rect
+            aria-label="1000. String One."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#0078d4"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,10.625)"
+            width="116"
             x="40"
+            y="36"
+          />
+          <rect
+            aria-label="5000. String Two."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#00bcf2"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,10.625)"
+            width="588"
+            x="158"
+            y="89.25"
+          />
+          <rect
+            aria-label="3000. String Three."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#00188f"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,10.625)"
+            width="352"
+            x="748"
+            y="142.5"
+          />
+          <rect
+            aria-label="2000. String Four."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#002050"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,10.625)"
+            width="236"
+            x="1102"
+            y="195.75"
+          />
+          <rect
+            aria-label="1000. String One."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#0078d4"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,10.625)"
+            width="116"
+            x="40"
+            y="36"
+          />
+          <rect
+            aria-label="5000. String Two."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#00bcf2"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,10.625)"
+            width="588"
+            x="158"
+            y="89.25"
+          />
+          <rect
+            aria-label="3000. String Three."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#00188f"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,10.625)"
+            width="352"
+            x="748"
+            y="142.5"
+          />
+          <rect
+            aria-label="2000. String Four."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#002050"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,10.625)"
+            width="236"
+            x="1102"
+            y="195.75"
+          />
+          <rect
+            aria-label="1000. String One."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#0078d4"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,10.625)"
+            width="116"
+            x="40"
+            y="36"
+          />
+          <rect
+            aria-label="5000. String Two."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#00bcf2"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,10.625)"
+            width="588"
+            x="158"
+            y="89.25"
+          />
+          <rect
+            aria-label="3000. String Three."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#00188f"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,10.625)"
+            width="352"
+            x="748"
+            y="142.5"
+          />
+          <rect
+            aria-label="2000. String Four."
+            aria-labelledby="toolTipcallout5"
+            data-is-focusable="true"
+            fill="#002050"
+            height="32"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,10.625)"
+            width="236"
+            x="1102"
             y="195.75"
           />
         </g>
@@ -1001,57 +1220,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class="fui-legend__text"
-            />
-          </button>
-          <button
-            aria-label="undefined"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-            />
-            <div
-              class="fui-legend__text"
-            />
-          </button>
-          <button
-            aria-label="undefined"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-            />
-            <div
-              class="fui-legend__text"
-            />
-          </button>
-          <button
-            aria-label="undefined"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
             style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
             type="button"
           >
@@ -1061,7 +1229,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             />
             <div
               class="fui-legend__text"
-            />
+            >
+              undefined
+            </div>
           </button>
         </div>
       </div>
@@ -1477,32 +1647,18 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="20%. 2020/04/30."
+                aria-label="10%. 2020/04/30."
                 aria-labelledby="toolTipcallout75"
                 data-is-focusable="true"
-                fill="#00bcf2"
+                fill="#0078d4"
                 height="32"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="295"
+                width="147.5"
                 x="40"
-                y="4"
-              />
-              <rect
-                aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcallout75"
-                data-is-focusable="true"
-                fill="#00188f"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="0"
-                tabindex="0"
-                width="368.75"
-                x="40"
-                y="102"
+                y="224.5"
               />
               <rect
                 aria-label="88%. 2020/04/30."
@@ -1519,18 +1675,32 @@ Object {
                 y="185.29999999999998"
               />
               <rect
-                aria-label="10%. 2020/04/30."
+                aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout75"
                 data-is-focusable="true"
-                fill="#0078d4"
+                fill="#00188f"
                 height="32"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="147.5"
+                width="368.75"
                 x="40"
-                y="224.5"
+                y="102"
+              />
+              <rect
+                aria-label="20%. 2020/04/30."
+                aria-labelledby="toolTipcallout75"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="295"
+                x="40"
+                y="4"
               />
             </g>
           </svg>
@@ -2027,32 +2197,18 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="20%. 2020/04/30."
+              aria-label="10%. 2020/04/30."
               aria-labelledby="toolTipcallout75"
               data-is-focusable="true"
-              fill="#00bcf2"
+              fill="#0078d4"
               height="32"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              width="295"
+              width="147.5"
               x="40"
-              y="4"
-            />
-            <rect
-              aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcallout75"
-              data-is-focusable="true"
-              fill="#00188f"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="368.75"
-              x="40"
-              y="102"
+              y="224.5"
             />
             <rect
               aria-label="88%. 2020/04/30."
@@ -2069,18 +2225,32 @@ Object {
               y="185.29999999999998"
             />
             <rect
-              aria-label="10%. 2020/04/30."
+              aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout75"
               data-is-focusable="true"
-              fill="#0078d4"
+              fill="#00188f"
               height="32"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              width="147.5"
+              width="368.75"
               x="40"
-              y="224.5"
+              y="102"
+            />
+            <rect
+              aria-label="20%. 2020/04/30."
+              aria-labelledby="toolTipcallout75"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="295"
+              x="40"
+              y="4"
             />
           </g>
         </svg>
@@ -2641,32 +2811,18 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="20%. 2020/04/30."
+                aria-label="10%. 2020/04/30."
                 aria-labelledby="toolTipcallout79"
                 data-is-focusable="true"
-                fill="#00bcf2"
+                fill="#0078d4"
                 height="32"
                 opacity="1"
                 role="img"
                 rx="3"
                 tabindex="0"
-                width="295"
+                width="147.5"
                 x="40"
-                y="4"
-              />
-              <rect
-                aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcallout79"
-                data-is-focusable="true"
-                fill="#00188f"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="3"
-                tabindex="0"
-                width="368.75"
-                x="40"
-                y="102"
+                y="224.5"
               />
               <rect
                 aria-label="88%. 2020/04/30."
@@ -2683,18 +2839,32 @@ Object {
                 y="185.29999999999998"
               />
               <rect
-                aria-label="10%. 2020/04/30."
+                aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout79"
                 data-is-focusable="true"
-                fill="#0078d4"
+                fill="#00188f"
                 height="32"
                 opacity="1"
                 role="img"
                 rx="3"
                 tabindex="0"
-                width="147.5"
+                width="368.75"
                 x="40"
-                y="224.5"
+                y="102"
+              />
+              <rect
+                aria-label="20%. 2020/04/30."
+                aria-labelledby="toolTipcallout79"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="3"
+                tabindex="0"
+                width="295"
+                x="40"
+                y="4"
               />
             </g>
           </svg>
@@ -3191,32 +3361,18 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="20%. 2020/04/30."
+              aria-label="10%. 2020/04/30."
               aria-labelledby="toolTipcallout79"
               data-is-focusable="true"
-              fill="#00bcf2"
+              fill="#0078d4"
               height="32"
               opacity="1"
               role="img"
               rx="3"
               tabindex="0"
-              width="295"
+              width="147.5"
               x="40"
-              y="4"
-            />
-            <rect
-              aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcallout79"
-              data-is-focusable="true"
-              fill="#00188f"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="3"
-              tabindex="0"
-              width="368.75"
-              x="40"
-              y="102"
+              y="224.5"
             />
             <rect
               aria-label="88%. 2020/04/30."
@@ -3233,18 +3389,32 @@ Object {
               y="185.29999999999998"
             />
             <rect
-              aria-label="10%. 2020/04/30."
+              aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout79"
               data-is-focusable="true"
-              fill="#0078d4"
+              fill="#00188f"
               height="32"
               opacity="1"
               role="img"
               rx="3"
               tabindex="0"
-              width="147.5"
+              width="368.75"
               x="40"
-              y="224.5"
+              y="102"
+            />
+            <rect
+              aria-label="20%. 2020/04/30."
+              aria-labelledby="toolTipcallout79"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="3"
+              tabindex="0"
+              width="295"
+              x="40"
+              y="4"
             />
           </g>
         </svg>
@@ -3800,32 +3970,18 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="20%. 2020/04/30."
+                aria-label="10%. 2020/04/30."
                 aria-labelledby="toolTipcallout60"
                 data-is-focusable="true"
-                fill="#00bcf2"
+                fill="#0078d4"
                 height="32"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="295"
+                width="147.5"
                 x="40"
-                y="4"
-              />
-              <rect
-                aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcallout60"
-                data-is-focusable="true"
-                fill="#00188f"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="0"
-                tabindex="0"
-                width="368.75"
-                x="40"
-                y="102"
+                y="224.5"
               />
               <rect
                 aria-label="88%. 2020/04/30."
@@ -3842,18 +3998,32 @@ Object {
                 y="185.29999999999998"
               />
               <rect
-                aria-label="10%. 2020/04/30."
+                aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout60"
                 data-is-focusable="true"
-                fill="#0078d4"
+                fill="#00188f"
                 height="32"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="147.5"
+                width="368.75"
                 x="40"
-                y="224.5"
+                y="102"
+              />
+              <rect
+                aria-label="20%. 2020/04/30."
+                aria-labelledby="toolTipcallout60"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="295"
+                x="40"
+                y="4"
               />
             </g>
           </svg>
@@ -4350,32 +4520,18 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="20%. 2020/04/30."
+              aria-label="10%. 2020/04/30."
               aria-labelledby="toolTipcallout60"
               data-is-focusable="true"
-              fill="#00bcf2"
+              fill="#0078d4"
               height="32"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              width="295"
+              width="147.5"
               x="40"
-              y="4"
-            />
-            <rect
-              aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcallout60"
-              data-is-focusable="true"
-              fill="#00188f"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="368.75"
-              x="40"
-              y="102"
+              y="224.5"
             />
             <rect
               aria-label="88%. 2020/04/30."
@@ -4392,18 +4548,32 @@ Object {
               y="185.29999999999998"
             />
             <rect
-              aria-label="10%. 2020/04/30."
+              aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout60"
               data-is-focusable="true"
-              fill="#0078d4"
+              fill="#00188f"
               height="32"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              width="147.5"
+              width="368.75"
               x="40"
-              y="224.5"
+              y="102"
+            />
+            <rect
+              aria-label="20%. 2020/04/30."
+              aria-labelledby="toolTipcallout60"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="295"
+              x="40"
+              y="4"
             />
           </g>
         </svg>
@@ -4959,32 +5129,18 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="20%. 2020/04/30."
+                aria-label="10%. 2020/04/30."
                 aria-labelledby="toolTipcallout64"
                 data-is-focusable="true"
-                fill="#00bcf2"
+                fill="#0078d4"
                 height="32"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="295"
+                width="147.5"
                 x="40"
-                y="4"
-              />
-              <rect
-                aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcallout64"
-                data-is-focusable="true"
-                fill="#00188f"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="0"
-                tabindex="0"
-                width="368.75"
-                x="40"
-                y="2"
+                y="-0.5"
               />
               <rect
                 aria-label="88%. 2020/04/30."
@@ -5001,18 +5157,32 @@ Object {
                 y="0.3000000000000007"
               />
               <rect
-                aria-label="10%. 2020/04/30."
+                aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout64"
                 data-is-focusable="true"
-                fill="#0078d4"
+                fill="#00188f"
                 height="32"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="147.5"
+                width="368.75"
                 x="40"
-                y="-0.5"
+                y="2"
+              />
+              <rect
+                aria-label="20%. 2020/04/30."
+                aria-labelledby="toolTipcallout64"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="295"
+                x="40"
+                y="4"
               />
             </g>
           </svg>
@@ -5416,32 +5586,18 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="20%. 2020/04/30."
+              aria-label="10%. 2020/04/30."
               aria-labelledby="toolTipcallout64"
               data-is-focusable="true"
-              fill="#00bcf2"
+              fill="#0078d4"
               height="32"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              width="295"
+              width="147.5"
               x="40"
-              y="4"
-            />
-            <rect
-              aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcallout64"
-              data-is-focusable="true"
-              fill="#00188f"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="368.75"
-              x="40"
-              y="2"
+              y="-0.5"
             />
             <rect
               aria-label="88%. 2020/04/30."
@@ -5458,18 +5614,32 @@ Object {
               y="0.3000000000000007"
             />
             <rect
-              aria-label="10%. 2020/04/30."
+              aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout64"
               data-is-focusable="true"
-              fill="#0078d4"
+              fill="#00188f"
               height="32"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              width="147.5"
+              width="368.75"
               x="40"
-              y="-0.5"
+              y="2"
+            />
+            <rect
+              aria-label="20%. 2020/04/30."
+              aria-labelledby="toolTipcallout64"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="295"
+              x="40"
+              y="4"
             />
           </g>
         </svg>
@@ -5912,10 +6082,49 @@ Object {
                 rx="0"
                 tabindex="0"
                 transform="translate(0,10.625)"
-                width="118"
+                width="116"
                 x="40"
                 y="36"
               />
+               
+               
+               
+              <rect
+                aria-label="1000. String One."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,-5.125)"
+                width="10"
+                x="28"
+                y="14.25"
+              />
+               
+               
+               
+              <rect
+                aria-label="1000. String One."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,-5.125)"
+                width="10"
+                x="28"
+                y="14.25"
+              />
+               
+               
+               
               <rect
                 aria-label="5000. String Two."
                 aria-labelledby="toolTipcallout67"
@@ -5927,8 +6136,8 @@ Object {
                 rx="0"
                 tabindex="0"
                 transform="translate(0,10.625)"
-                width="590"
-                x="40"
+                width="588"
+                x="158"
                 y="89.25"
               />
               <rect
@@ -5942,8 +6151,8 @@ Object {
                 rx="0"
                 tabindex="0"
                 transform="translate(0,10.625)"
-                width="354"
-                x="40"
+                width="352"
+                x="748"
                 y="142.5"
               />
               <rect
@@ -5958,7 +6167,187 @@ Object {
                 tabindex="0"
                 transform="translate(0,10.625)"
                 width="236"
+                x="1102"
+                y="195.75"
+              />
+              <rect
+                aria-label="1000. String One."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="116"
                 x="40"
+                y="36"
+              />
+              <rect
+                aria-label="5000. String Two."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="588"
+                x="158"
+                y="89.25"
+              />
+              <rect
+                aria-label="3000. String Three."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#00188f"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="352"
+                x="748"
+                y="142.5"
+              />
+              <rect
+                aria-label="2000. String Four."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#002050"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="236"
+                x="1102"
+                y="195.75"
+              />
+              <rect
+                aria-label="1000. String One."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="116"
+                x="40"
+                y="36"
+              />
+              <rect
+                aria-label="5000. String Two."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="588"
+                x="158"
+                y="89.25"
+              />
+              <rect
+                aria-label="3000. String Three."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#00188f"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="352"
+                x="748"
+                y="142.5"
+              />
+              <rect
+                aria-label="2000. String Four."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#002050"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="236"
+                x="1102"
+                y="195.75"
+              />
+              <rect
+                aria-label="1000. String One."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="116"
+                x="40"
+                y="36"
+              />
+              <rect
+                aria-label="5000. String Two."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="588"
+                x="158"
+                y="89.25"
+              />
+              <rect
+                aria-label="3000. String Three."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#00188f"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="352"
+                x="748"
+                y="142.5"
+              />
+              <rect
+                aria-label="2000. String Four."
+                aria-labelledby="toolTipcallout67"
+                data-is-focusable="true"
+                fill="#002050"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="236"
+                x="1102"
                 y="195.75"
               />
             </g>
@@ -5984,57 +6373,6 @@ Object {
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-                />
-                <div
-                  class="fui-legend__text"
-                />
-              </button>
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-                />
-                <div
-                  class="fui-legend__text"
-                />
-              </button>
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-                />
-                <div
-                  class="fui-legend__text"
-                />
-              </button>
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
                 type="button"
               >
@@ -6044,7 +6382,9 @@ Object {
                 />
                 <div
                   class="fui-legend__text"
-                />
+                >
+                  undefined
+                </div>
               </button>
             </div>
           </div>
@@ -6433,10 +6773,49 @@ Object {
               rx="0"
               tabindex="0"
               transform="translate(0,10.625)"
-              width="118"
+              width="116"
               x="40"
               y="36"
             />
+             
+             
+             
+            <rect
+              aria-label="1000. String One."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,-5.125)"
+              width="10"
+              x="28"
+              y="14.25"
+            />
+             
+             
+             
+            <rect
+              aria-label="1000. String One."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,-5.125)"
+              width="10"
+              x="28"
+              y="14.25"
+            />
+             
+             
+             
             <rect
               aria-label="5000. String Two."
               aria-labelledby="toolTipcallout67"
@@ -6448,8 +6827,8 @@ Object {
               rx="0"
               tabindex="0"
               transform="translate(0,10.625)"
-              width="590"
-              x="40"
+              width="588"
+              x="158"
               y="89.25"
             />
             <rect
@@ -6463,8 +6842,8 @@ Object {
               rx="0"
               tabindex="0"
               transform="translate(0,10.625)"
-              width="354"
-              x="40"
+              width="352"
+              x="748"
               y="142.5"
             />
             <rect
@@ -6479,7 +6858,187 @@ Object {
               tabindex="0"
               transform="translate(0,10.625)"
               width="236"
+              x="1102"
+              y="195.75"
+            />
+            <rect
+              aria-label="1000. String One."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="116"
               x="40"
+              y="36"
+            />
+            <rect
+              aria-label="5000. String Two."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="588"
+              x="158"
+              y="89.25"
+            />
+            <rect
+              aria-label="3000. String Three."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#00188f"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="352"
+              x="748"
+              y="142.5"
+            />
+            <rect
+              aria-label="2000. String Four."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#002050"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="236"
+              x="1102"
+              y="195.75"
+            />
+            <rect
+              aria-label="1000. String One."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="116"
+              x="40"
+              y="36"
+            />
+            <rect
+              aria-label="5000. String Two."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="588"
+              x="158"
+              y="89.25"
+            />
+            <rect
+              aria-label="3000. String Three."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#00188f"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="352"
+              x="748"
+              y="142.5"
+            />
+            <rect
+              aria-label="2000. String Four."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#002050"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="236"
+              x="1102"
+              y="195.75"
+            />
+            <rect
+              aria-label="1000. String One."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="116"
+              x="40"
+              y="36"
+            />
+            <rect
+              aria-label="5000. String Two."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="588"
+              x="158"
+              y="89.25"
+            />
+            <rect
+              aria-label="3000. String Three."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#00188f"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="352"
+              x="748"
+              y="142.5"
+            />
+            <rect
+              aria-label="2000. String Four."
+              aria-labelledby="toolTipcallout67"
+              data-is-focusable="true"
+              fill="#002050"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="236"
+              x="1102"
               y="195.75"
             />
           </g>
@@ -6505,57 +7064,6 @@ Object {
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-              />
-              <div
-                class="fui-legend__text"
-              />
-            </button>
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-              />
-              <div
-                class="fui-legend__text"
-              />
-            </button>
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-              />
-              <div
-                class="fui-legend__text"
-              />
-            </button>
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
               style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
               type="button"
             >
@@ -6565,7 +7073,9 @@ Object {
               />
               <div
                 class="fui-legend__text"
-              />
+              >
+                undefined
+              </div>
             </button>
           </div>
         </div>
@@ -7013,10 +7523,49 @@ Object {
                 rx="0"
                 tabindex="0"
                 transform="translate(0,10.625)"
-                width="118"
+                width="116"
                 x="40"
                 y="36"
               />
+               
+               
+               
+              <rect
+                aria-label="1000. String One."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,-5.125)"
+                width="10"
+                x="28"
+                y="14.25"
+              />
+               
+               
+               
+              <rect
+                aria-label="1000. String One."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,-5.125)"
+                width="10"
+                x="28"
+                y="14.25"
+              />
+               
+               
+               
               <rect
                 aria-label="5000. String Two."
                 aria-labelledby="toolTipcallout71"
@@ -7028,8 +7577,8 @@ Object {
                 rx="0"
                 tabindex="0"
                 transform="translate(0,10.625)"
-                width="590"
-                x="40"
+                width="588"
+                x="158"
                 y="89.25"
               />
               <rect
@@ -7043,8 +7592,8 @@ Object {
                 rx="0"
                 tabindex="0"
                 transform="translate(0,10.625)"
-                width="354"
-                x="40"
+                width="352"
+                x="748"
                 y="142.5"
               />
               <rect
@@ -7059,7 +7608,187 @@ Object {
                 tabindex="0"
                 transform="translate(0,10.625)"
                 width="236"
+                x="1102"
+                y="195.75"
+              />
+              <rect
+                aria-label="1000. String One."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="116"
                 x="40"
+                y="36"
+              />
+              <rect
+                aria-label="5000. String Two."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="588"
+                x="158"
+                y="89.25"
+              />
+              <rect
+                aria-label="3000. String Three."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#00188f"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="352"
+                x="748"
+                y="142.5"
+              />
+              <rect
+                aria-label="2000. String Four."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#002050"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="236"
+                x="1102"
+                y="195.75"
+              />
+              <rect
+                aria-label="1000. String One."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="116"
+                x="40"
+                y="36"
+              />
+              <rect
+                aria-label="5000. String Two."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="588"
+                x="158"
+                y="89.25"
+              />
+              <rect
+                aria-label="3000. String Three."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#00188f"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="352"
+                x="748"
+                y="142.5"
+              />
+              <rect
+                aria-label="2000. String Four."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#002050"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="236"
+                x="1102"
+                y="195.75"
+              />
+              <rect
+                aria-label="1000. String One."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="116"
+                x="40"
+                y="36"
+              />
+              <rect
+                aria-label="5000. String Two."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="588"
+                x="158"
+                y="89.25"
+              />
+              <rect
+                aria-label="3000. String Three."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#00188f"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="352"
+                x="748"
+                y="142.5"
+              />
+              <rect
+                aria-label="2000. String Four."
+                aria-labelledby="toolTipcallout71"
+                data-is-focusable="true"
+                fill="#002050"
+                height="32"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,10.625)"
+                width="236"
+                x="1102"
                 y="195.75"
               />
             </g>
@@ -7085,57 +7814,6 @@ Object {
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-                />
-                <div
-                  class="fui-legend__text"
-                />
-              </button>
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-                />
-                <div
-                  class="fui-legend__text"
-                />
-              </button>
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-                />
-                <div
-                  class="fui-legend__text"
-                />
-              </button>
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
                 type="button"
               >
@@ -7145,7 +7823,9 @@ Object {
                 />
                 <div
                   class="fui-legend__text"
-                />
+                >
+                  undefined
+                </div>
               </button>
             </div>
           </div>
@@ -7529,10 +8209,49 @@ Object {
               rx="0"
               tabindex="0"
               transform="translate(0,10.625)"
-              width="118"
+              width="116"
               x="40"
               y="36"
             />
+             
+             
+             
+            <rect
+              aria-label="1000. String One."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,-5.125)"
+              width="10"
+              x="28"
+              y="14.25"
+            />
+             
+             
+             
+            <rect
+              aria-label="1000. String One."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,-5.125)"
+              width="10"
+              x="28"
+              y="14.25"
+            />
+             
+             
+             
             <rect
               aria-label="5000. String Two."
               aria-labelledby="toolTipcallout71"
@@ -7544,8 +8263,8 @@ Object {
               rx="0"
               tabindex="0"
               transform="translate(0,10.625)"
-              width="590"
-              x="40"
+              width="588"
+              x="158"
               y="89.25"
             />
             <rect
@@ -7559,8 +8278,8 @@ Object {
               rx="0"
               tabindex="0"
               transform="translate(0,10.625)"
-              width="354"
-              x="40"
+              width="352"
+              x="748"
               y="142.5"
             />
             <rect
@@ -7575,7 +8294,187 @@ Object {
               tabindex="0"
               transform="translate(0,10.625)"
               width="236"
+              x="1102"
+              y="195.75"
+            />
+            <rect
+              aria-label="1000. String One."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="116"
               x="40"
+              y="36"
+            />
+            <rect
+              aria-label="5000. String Two."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="588"
+              x="158"
+              y="89.25"
+            />
+            <rect
+              aria-label="3000. String Three."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#00188f"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="352"
+              x="748"
+              y="142.5"
+            />
+            <rect
+              aria-label="2000. String Four."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#002050"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="236"
+              x="1102"
+              y="195.75"
+            />
+            <rect
+              aria-label="1000. String One."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="116"
+              x="40"
+              y="36"
+            />
+            <rect
+              aria-label="5000. String Two."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="588"
+              x="158"
+              y="89.25"
+            />
+            <rect
+              aria-label="3000. String Three."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#00188f"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="352"
+              x="748"
+              y="142.5"
+            />
+            <rect
+              aria-label="2000. String Four."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#002050"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="236"
+              x="1102"
+              y="195.75"
+            />
+            <rect
+              aria-label="1000. String One."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="116"
+              x="40"
+              y="36"
+            />
+            <rect
+              aria-label="5000. String Two."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="588"
+              x="158"
+              y="89.25"
+            />
+            <rect
+              aria-label="3000. String Three."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#00188f"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="352"
+              x="748"
+              y="142.5"
+            />
+            <rect
+              aria-label="2000. String Four."
+              aria-labelledby="toolTipcallout71"
+              data-is-focusable="true"
+              fill="#002050"
+              height="32"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,10.625)"
+              width="236"
+              x="1102"
               y="195.75"
             />
           </g>
@@ -7601,57 +8500,6 @@ Object {
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-              />
-              <div
-                class="fui-legend__text"
-              />
-            </button>
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-              />
-              <div
-                class="fui-legend__text"
-              />
-            </button>
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-              />
-              <div
-                class="fui-legend__text"
-              />
-            </button>
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
               style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
               type="button"
             >
@@ -7661,7 +8509,9 @@ Object {
               />
               <div
                 class="fui-legend__text"
-              />
+              >
+                undefined
+              </div>
             </button>
           </div>
         </div>
