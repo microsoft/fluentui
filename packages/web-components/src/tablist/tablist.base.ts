@@ -13,6 +13,7 @@ import { getDirection } from '../utils/index.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
 import { isFocusableElement } from '../utils/focusable-element.js';
 import { Tab } from '../tab/tab.js';
+import { isTab } from '../tab/tab.options';
 import { TablistOrientation } from './tablist.options.js';
 
 /**
@@ -105,11 +106,21 @@ export class BaseTablist extends FASTElement {
     }
   }
 
+  @observable
+  public slottedTabs!: Node[];
+
+  public slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
+    this.tabs =
+      next?.filter(tab => {
+        return isTab(tab);
+      }) ?? [];
+  }
+
   /**
    * @internal
    */
   @observable
-  public tabs!: HTMLElement[];
+  public tabs!: Tab[];
   /**
    * @internal
    */
@@ -135,7 +146,7 @@ export class BaseTablist extends FASTElement {
    * A reference to the active tab
    * @public
    */
-  public activetab!: HTMLElement;
+  public activetab!: Tab;
 
   private prevActiveTabIndex: number = 0;
   private activeTabIndex: number = 0;
@@ -164,9 +175,9 @@ export class BaseTablist extends FASTElement {
   protected setTabs(): void {
     this.activeTabIndex = this.getActiveIndex();
 
-    const hasStartSlot = this.tabs.some(tab => (tab as Tab).start?.assignedNodes().length > 0);
+    const hasStartSlot = this.tabs.some(tab => tab.start.assignedNodes().length > 0);
 
-    this.tabs.forEach((tab: HTMLElement, index: number) => {
+    this.tabs.forEach((tab: Tab, index: number) => {
       if (tab.slot === 'tab') {
         const isActiveTab = this.activeTabIndex === index && isFocusableElement(tab);
         const tabId: string = this.tabIds[index];
@@ -201,7 +212,7 @@ export class BaseTablist extends FASTElement {
   }
 
   private handleTabClick = (event: MouseEvent): void => {
-    const selectedTab = event.currentTarget as HTMLElement;
+    const selectedTab = event.currentTarget as Tab;
     if (selectedTab.nodeType === Node.ELEMENT_NODE && isFocusableElement(selectedTab)) {
       this.prevActiveTabIndex = this.activeTabIndex;
       this.activeTabIndex = this.tabs.indexOf(selectedTab);
@@ -275,8 +286,8 @@ export class BaseTablist extends FASTElement {
     }
   }
 
-  private activateTabByIndex(group: HTMLElement[], index: number) {
-    const tab: HTMLElement = group[index] as HTMLElement;
+  private activateTabByIndex(group: Tab[], index: number) {
+    const tab = group[index];
     this.activetab = tab;
     this.prevActiveTabIndex = this.activeTabIndex;
     this.activeTabIndex = index;
