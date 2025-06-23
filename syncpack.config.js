@@ -148,6 +148,8 @@ const config = {
       dependencies: [
         'react',
         'react-dom',
+        'react-frame-component',
+        '@types/react-frame-component',
         '@testing-library/dom',
         '@testing-library/react',
         '@types/react',
