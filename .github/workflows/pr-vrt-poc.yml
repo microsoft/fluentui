@@ -103,7 +103,7 @@ jobs:
           fi
 
       - name: Post comment on PR / success
-        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
+        uses: marocchino/sticky-pull-request-comment@d2ad0de260ae8b0235ce059e63f2949ba9e05943 # v2.9.3
         with:
           header: vrt-diff-update-comment
           number: ${{ github.event.issue.number }}
@@ -113,7 +113,7 @@ jobs:
 
       - name: Post comment on PR / failure
         if: always() && steps.update_pr_images.outcome != 'success'
-        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
+        uses: marocchino/sticky-pull-request-comment@d2ad0de260ae8b0235ce059e63f2949ba9e05943 # v2.9.3
         with:
           header: vrt-diff-update-comment
           number: ${{ github.event.issue.number }}
