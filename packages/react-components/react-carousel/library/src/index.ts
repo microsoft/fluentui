@@ -92,3 +92,11 @@ export {
   useCarouselViewportStyles_unstable,
   useCarouselViewport_unstable,
 } from './CarouselViewport';
+export {
+  carouselCardButtonClassNames,
+  CarouselCardButton,
+  renderCarouselCardButton_unstable,
+  useCarouselCardButton_unstable,
+  useCarouselCardButtonStyles_unstable,
+} from './CarouselCardButton';
+export type { CarouselCardButtonProps, CarouselCardButtonState } from './CarouselCardButton';

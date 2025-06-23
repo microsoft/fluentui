@@ -28,6 +28,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useCarouselAutoplayButtonStyles_unstable: CustomStyleHook;
   useCarouselButtonStyles_unstable: CustomStyleHook;
   useCarouselCardStyles_unstable: CustomStyleHook;
+  useCarouselCardButtonStyles_unstable: CustomStyleHook;
   useCarouselNavButtonStyles_unstable: CustomStyleHook;
   useCarouselNavContainerStyles_unstable: CustomStyleHook;
   useCarouselNavImageButtonStyles_unstable: CustomStyleHook;
