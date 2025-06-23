@@ -118,7 +118,7 @@ export class BaseTablist extends FASTElement {
    * @internal
    */
   public slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
-    this.tabs = next?.filter(tab => isTab(tab)) as Tab[] ?? [];
+    this.tabs = (next?.filter(tab => isTab(tab)) as Tab[]) ?? [];
   }
 
   /**
