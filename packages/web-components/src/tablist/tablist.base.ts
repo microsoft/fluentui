@@ -12,6 +12,7 @@ import {
 import { getDirection } from '../utils/index.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
 import { isFocusableElement } from '../utils/focusable-element.js';
+import { Tab } from '../tab/tab';
 import { TablistOrientation } from './tablist.options.js';
 
 /**
@@ -163,10 +164,11 @@ export class BaseTablist extends FASTElement {
   protected setTabs(): void {
     this.activeTabIndex = this.getActiveIndex();
 
+    const hasStartSlot = this.tabs.some(tab => (tab as Tab).start?.assignedNodes().length > 0);
+
     this.tabs.forEach((tab: HTMLElement, index: number) => {
       if (tab.slot === 'tab') {
         const isActiveTab = this.activeTabIndex === index && isFocusableElement(tab);
-
         const tabId: string = this.tabIds[index];
         tab.setAttribute('id', tabId);
         tab.setAttribute('aria-selected', isActiveTab ? 'true' : 'false');
@@ -176,6 +178,10 @@ export class BaseTablist extends FASTElement {
         if (isActiveTab) {
           this.activetab = tab;
           this.activeid = tabId;
+        }
+        // Only set the data-hasIndent attribute if the tab has a start slot and the orientation is vertical
+        if (hasStartSlot && this.orientation === TablistOrientation.vertical) {
+          tab.setAttribute('data-hasIndent', '');
         }
       }
     });

@@ -345,4 +345,21 @@ test.describe('Tablist', () => {
     await expect(secondPanel).toBeVisible();
     await expect(thirdPanel).toBeHidden();
   });
+
+  test('should set data-hasIndent on all tabs when any tab has a start slot', async ({ fastPage }) => {
+    const { element } = fastPage;
+    await fastPage.setTemplate({
+      attributes: { orientation: 'vertical' },
+      innerHTML: /* html */ `
+        <fluent-tab>Tab one</fluent-tab>
+        <fluent-tab><span slot="start">T</span>Tab two</fluent-tab>
+        <fluent-tab>Tab three</fluent-tab>
+      `,
+    });
+    const tabs = element.locator('fluent-tab');
+
+    await expect(tabs.nth(0)).toHaveAttribute('data-hasIndent', '');
+    await expect(tabs.nth(1)).toHaveAttribute('data-hasIndent', '');
+    await expect(tabs.nth(2)).toHaveAttribute('data-hasIndent', '');
+  });
 });
