@@ -1796,5 +1796,12 @@ export {
   _ctrlAvatarPresenceBadgeStrokeWidthSm,
   _ctrlButtonGapInsideDefault,
   _ctrlDividerForegroundSubtle,
+  _ctrlListItemStroke,
+  _ctrlListForegroundColorRest,
+  _ctrlListForegroundColorHover,
+  _ctrlListForegroundColorPressed,
+  _ctrlListBackgroundColorRest,
+  _ctrlListBackgroundColorPressed,
+  _ctrlListBackgroundColorHover,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';

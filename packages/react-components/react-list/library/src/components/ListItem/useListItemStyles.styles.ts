@@ -2,7 +2,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { ListItemSlots, ListItemState } from './ListItem.types';
-import { tokens } from '@fluentui/react-theme';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const listItemClassNames: SlotClassNames<ListItemSlots> = {
   root: 'fui-ListItem',
@@ -16,11 +16,15 @@ const useRootBaseStyles = makeResetStyles({
   listStyleType: 'none',
   ...createCustomFocusIndicatorStyle(
     {
-      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: tokens.borderRadiusMedium,
+      outline: `${semanticTokens.ctrlFocusOuterStrokeWidth} solid ${semanticTokens._ctrlListItemStroke}`,
+      borderRadius: semanticTokens.cornerCtrlRest,
     },
     { selector: 'focus' },
   ),
+  color: semanticTokens._ctrlListForegroundColorRest,
+  backgroundColor: semanticTokens._ctrlListBackgroundColorRest,
+  fontSize: semanticTokens.textRampItemBodyFontSize,
+  lineHeight: semanticTokens.textRampItemBodyLineHeight,
 });
 
 const useCheckmarkBaseStyles = makeStyles({
@@ -37,6 +41,28 @@ const useStyles = makeStyles({
   rootClickableOrSelectable: {
     display: 'flex',
     cursor: 'pointer',
+    ':hover': {
+      color: semanticTokens._ctrlListForegroundColorHover,
+      backgroundColor: semanticTokens._ctrlListBackgroundColorHover,
+      ...createCustomFocusIndicatorStyle(
+        {
+          outline: `${semanticTokens.ctrlFocusOuterStrokeWidth} solid ${semanticTokens._ctrlListItemStroke}`,
+          borderRadius: semanticTokens.cornerCtrlHover,
+        },
+        { selector: 'focus' },
+      ),
+    },
+    ':active': {
+      color: semanticTokens._ctrlListForegroundColorPressed,
+      backgroundColor: semanticTokens._ctrlListBackgroundColorPressed,
+      ...createCustomFocusIndicatorStyle(
+        {
+          outline: `${semanticTokens.ctrlFocusOuterStrokeWidth} solid ${semanticTokens._ctrlListItemStroke}`,
+          borderRadius: semanticTokens.cornerCtrlPressed,
+        },
+        { selector: 'focus' },
+      ),
+    },
   },
 });
 
