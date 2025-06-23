@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add negative y value support in GVBC",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

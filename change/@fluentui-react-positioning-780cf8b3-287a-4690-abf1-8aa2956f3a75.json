@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: improve handling of different shapes of rectangles in useSafeZoneArea()",
-  "packageName": "@fluentui/react-positioning",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
