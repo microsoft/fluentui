@@ -99,6 +99,7 @@ import {
   colorNeutralStroke3,
   colorNeutralStroke1,
   colorBrandStroke1,
+<<<<<<< HEAD
   colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
   colorCompoundBrandBackgroundPressed,
@@ -107,6 +108,9 @@ import {
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorNeutralForegroundDisabled,
+=======
+  borderRadiusMedium,
+>>>>>>> 6cc0d163da (Add semantic tokens to list)
   colorNeutralForeground1,
   colorNeutralForeground2,
   colorBrandForeground1,
@@ -543,8 +547,8 @@ export const cornerCardHover = `var(${cornerCardHoverRaw}, var(${cornerCardRestR
 export const cornerCardPressed = `var(${cornerCardPressedRaw}, var(${cornerCardRestRaw}))`;
 export const cornerToolbarDefault = `var(${cornerToolbarDefaultRaw}, var(${cornerCardRestRaw}))`;
 export const cornerImageOnPage = `var(${cornerImageOnPageRaw}, var(${cornerCardRestRaw}))`;
-export const cornerCtrlHover = `var(${cornerCtrlHoverRaw}, var(${cornerCtrlRestRaw}))`;
-export const cornerCtrlPressed = `var(${cornerCtrlPressedRaw}, var(${cornerCtrlRestRaw}))`;
+export const cornerCtrlHover = `var(${cornerCtrlHoverRaw}, var(${cornerCtrlRestRaw}, ${borderRadiusMedium}))`;
+export const cornerCtrlPressed = `var(${cornerCtrlPressedRaw}, var(${cornerCtrlRestRaw}, ${borderRadiusMedium}))`;
 export const cornerCtrlSmHover = `var(${cornerCtrlSmHoverRaw}, var(${cornerCtrlSmRestRaw}))`;
 export const cornerCtrlSmPressed = `var(${cornerCtrlSmPressedRaw}, var(${cornerCtrlSmRestRaw}))`;
 export const cornerCtrlLgHover = `var(${cornerCtrlLgHoverRaw}, var(${cornerCtrlLgRestRaw}))`;

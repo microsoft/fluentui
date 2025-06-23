@@ -1801,6 +1801,7 @@ export {
   _ctrlAvatarPresenceBadgeStrokeWidthSm,
   _ctrlButtonGapInsideDefault,
   _ctrlDividerForegroundSubtle,
+<<<<<<< HEAD
   _ctrlFocusOuterStrokeInteractive,
   _ctrlInputBackgroundRestDarker,
   _ctrlInputBackgroundRestLighter,
@@ -1827,5 +1828,14 @@ export {
   _ctrlTreePaddingTextLeft,
   _ctrlTreePaddingTextRight,
   _ctrlTreePaddingTextTop,
+=======
+  _ctrlListItemStroke,
+  _ctrlListForegroundColorRest,
+  _ctrlListForegroundColorHover,
+  _ctrlListForegroundColorPressed,
+  _ctrlListBackgroundColorRest,
+  _ctrlListBackgroundColorPressed,
+  _ctrlListBackgroundColorHover,
+>>>>>>> 6cc0d163da (Add semantic tokens to list)
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';

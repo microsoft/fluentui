@@ -241,4 +241,6 @@ export const fluentOverrides: FluentOverrides = {
   textStyleDefaultRegularFontFamily: { f2Token: 'fontFamilyBase' },
   textStyleDefaultRegularLetterSpacing: { rawValue: '0' },
   textStyleDefaultRegularWeight: { f2Token: 'fontWeightRegular' },
+  cornerCtrlHover: { f2Token: 'borderRadiusMedium' },
+  cornerCtrlPressed: { f2Token: 'borderRadiusMedium' },
 };
