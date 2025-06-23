@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: enable wrapping of string x-axis labels in DeclarativeChart + hide overlapping labels based on post-transform width",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
