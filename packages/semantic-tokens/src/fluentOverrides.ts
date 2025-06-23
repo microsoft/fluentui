@@ -26,7 +26,9 @@ export const fluentOverrides: FluentOverrides = {
   backgroundCtrlSubtlePressed: { f2Token: 'colorSubtleBackgroundPressed' },
   backgroundCtrlSubtleRest: { f2Token: 'colorSubtleBackground' },
   cornerCircular: { f2Token: 'borderRadiusCircular' },
+  cornerCtrlHover: { f2Token: 'borderRadiusMedium' },
   cornerCtrlLgRest: { f2Token: 'borderRadiusMedium' }, // Button uses borderRadiusMedium in all sizes
+  cornerCtrlPressed: { f2Token: 'borderRadiusMedium' },
   cornerCtrlRest: { f2Token: 'borderRadiusMedium' },
   cornerCtrlSmRest: { f2Token: 'borderRadiusMedium' }, // Button uses borderRadiusMedium in all sizes
   cornerZero: { f2Token: 'borderRadiusNone' },
@@ -181,6 +183,4 @@ export const fluentOverrides: FluentOverrides = {
   textStyleDefaultRegularFontFamily: { f2Token: 'fontFamilyBase' },
   textStyleDefaultRegularLetterSpacing: { rawValue: '0' },
   textStyleDefaultRegularWeight: { f2Token: 'fontWeightRegular' },
-  cornerCtrlHover: { f2Token: 'borderRadiusMedium' },
-  cornerCtrlPressed: { f2Token: 'borderRadiusMedium' },
 };
