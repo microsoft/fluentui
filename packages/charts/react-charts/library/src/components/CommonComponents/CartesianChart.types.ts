@@ -554,6 +554,9 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /** Callback method to get extra margins for domain */
   getDomainMargins?: (containerWidth: number) => Margins;
 
+  /** Callback method to get extra margins for Y-axis domain */
+  getYDomainMargins?: (containerHeight: number) => Margins;
+
   /** Padding between each bar/line-point */
   xAxisInnerPadding?: number;
 
