@@ -1,4 +1,4 @@
-PresenceStagger
+Stagger
 
 > **⚠️ Preview components are considered unstable**
 
