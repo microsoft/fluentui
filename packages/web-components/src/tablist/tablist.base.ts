@@ -12,7 +12,7 @@ import {
 import { getDirection } from '../utils/index.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
 import { isFocusableElement } from '../utils/focusable-element.js';
-import { Tab } from '../tab/tab';
+import { Tab } from '../tab/tab.js';
 import { TablistOrientation } from './tablist.options.js';
 
 /**
