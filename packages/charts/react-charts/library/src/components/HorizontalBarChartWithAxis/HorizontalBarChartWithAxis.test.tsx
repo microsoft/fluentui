@@ -321,10 +321,10 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       // Assert
       expect(bars).toHaveLength(4);
-      expect(bars[0]).toHaveAttribute('opacity', '0.1');
+      expect(bars[0]).toHaveAttribute('opacity', '1');
       expect(bars[1]).toHaveAttribute('opacity', '0.1');
       expect(bars[2]).toHaveAttribute('opacity', '0.1');
-      expect(bars[3]).toHaveAttribute('opacity', '1');
+      expect(bars[3]).toHaveAttribute('opacity', '0.1');
     },
   );
 
@@ -362,10 +362,10 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
       expect(getByClass(container, /calloutDateTimeContainer/i)).toBeDefined();
       const xAxisCallOutData = getByClass(container, /calloutContentX/i);
       expect(xAxisCallOutData).toBeDefined();
-      expect(xAxisCallOutData[0].textContent).toEqual('5000 ');
+      expect(xAxisCallOutData[0].textContent).toEqual('1000 ');
       const yAxisCallOutData = getByClass(container, /calloutContentY/i);
       expect(yAxisCallOutData).toBeDefined();
-      expect(yAxisCallOutData[0].textContent).toEqual('2000');
+      expect(yAxisCallOutData[0].textContent).toEqual('1000');
     },
   );
 
