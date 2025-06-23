@@ -69,4 +69,32 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlHintDefault',
   },
+  _ctrlListBackgroundColorHover: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'backgroundCtrlSubtleHover',
+  },
+  _ctrlListBackgroundColorPressed: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'backgroundCtrlSubtlePressed',
+  },
+  _ctrlListBackgroundColorRest: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'backgroundCtrlSubtleRest',
+  },
+  _ctrlListForegroundColorHover: {
+    f2Token: 'colorNeutralForeground1',
+    originalToken: 'foregroundCtrlOnSubtleHover',
+  },
+  _ctrlListForegroundColorPressed: {
+    f2Token: 'colorNeutralForeground1',
+    originalToken: 'foregroundCtrlOnSubtlePressed',
+  },
+  _ctrlListForegroundColorRest: {
+    f2Token: 'colorNeutralForeground1',
+    originalToken: 'foregroundCtrlOnSubtleRest',
+  },
+  _ctrlListItemStroke: {
+    f2Token: 'colorStrokeFocus2',
+    originalToken: 'strokeWidthCtrlOutlineRest',
+  },
 };
