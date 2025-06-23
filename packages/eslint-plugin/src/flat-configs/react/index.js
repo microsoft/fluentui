@@ -1,11 +1,10 @@
 // @ts-check
-const tseslint = require('typescript-eslint');
 const configHelpers = require('../../utils/configHelpers');
-const base = require('../base/index');
+const baseConfig = require('../base/index');
 const reactConfig = require('./config');
 const reactCompilerPlugin = require('eslint-plugin-react-compiler');
 const { __internal } = require('../../internal-flat');
-// const { defineConfig } = require('eslint/config');
+const { defineConfig } = require('eslint/config');
 
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
@@ -18,11 +17,11 @@ const v9PackageDeps = Object.keys(configHelpers.getPackageJson({ root, name: 're
   pkg => !unstableV9Packages.has(pkg),
 );
 
-// /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigArray} */
-module.exports = tseslint.config(
+/** @type {import('eslint').Linter.Config[]} */
+module.exports = defineConfig([
   {
     files: ['**/*.{ts,tsx}'],
-    extends: [base, reactConfig],
+    extends: [baseConfig, reactConfig],
     plugins: {
       'react-compiler': reactCompilerPlugin,
     },
@@ -84,4 +83,4 @@ module.exports = tseslint.config(
     },
   },
   __internal.overrides.react,
-);
+]);

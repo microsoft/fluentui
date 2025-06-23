@@ -1,9 +1,9 @@
 // @ts-check
-const tseslint = require('typescript-eslint');
+const { defineConfig } = require('eslint/config');
 const importPlugin = require('eslint-plugin-import');
 
-/** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigArray} */
-module.exports = tseslint.config({
+/** @type {import('eslint').Linter.Config[]} */
+module.exports = defineConfig({
   files: ['**/*.{ts,tsx,js,jsx,cjs,mjs}'],
   plugins: {
     import: importPlugin,

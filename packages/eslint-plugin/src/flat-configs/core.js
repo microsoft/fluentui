@@ -7,11 +7,14 @@ const rnxPlugin = require('@rnx-kit/eslint-plugin');
 const fluentuiPlugin = require('../index');
 const jestPlugin = require('eslint-plugin-jest');
 const jsDocPlugin = require('eslint-plugin-jsdoc');
+const airbnbPlugin = require('eslint-config-airbnb');
 const { __internal } = require('../internal-flat');
-// const airbnbConfig = require('eslint-config-airbnb');
-// const { fixupConfigRules } = require('@eslint/compat');
+const { FlatCompat } = require('@eslint/eslintrc');
+const { defineConfig, globalIgnores } = require('eslint/config');
 
-const ignores = [
+const compat = new FlatCompat({});
+
+const IGNORES = [
   'coverage',
   'dist',
   'dist-storybook',
@@ -31,10 +34,10 @@ const languageOptions = {
     ...globals.browser,
     ...globals.jest,
   },
-  parser: tseslint.parser,
+  parser: /** @type {import('eslint').Linter.Parser} */ (tseslint.parser),
 };
 
-/** @type {import('@typescript-eslint/utils').TSESLint.Linter.RulesRecord} */
+/** @type {import('eslint').Linter.RulesRecord} */
 const coreRules = {
   curly: ['error', 'all'],
   'dot-notation': 'error',
@@ -74,7 +77,7 @@ const coreRules = {
   radix: ['error', 'always'],
 };
 
-/** @type {import('@typescript-eslint/utils').TSESLint.Linter.RulesRecord} */
+/** @type {import('eslint').Linter.RulesRecord} */
 const disabledRules = {
   'lines-between-class-members': 'off',
   'max-classes-per-file': 'off',
@@ -120,7 +123,7 @@ const disabledRules = {
   'no-empty-character-class': 'off',
 };
 
-/** @type {import('@typescript-eslint/utils').TSESLint.Linter.RulesRecord} */
+/** @type {import('eslint').Linter.RulesRecord} */
 const fluentRules = {
   '@fluentui/ban-imports': [
     'error',
@@ -148,7 +151,7 @@ const fluentRules = {
   '@fluentui/no-tslint-comments': 'error',
 };
 
-/** @type {import('@typescript-eslint/utils').TSESLint.Linter.RulesRecord} */
+/** @type {import('eslint').Linter.RulesRecord} */
 const jsDocRules = {
   'jsdoc/check-tag-names': [
     'error',
@@ -158,19 +161,19 @@ const jsDocRules = {
   ],
 };
 
-/** @type {import('@typescript-eslint/utils').TSESLint.Linter.RulesRecord} */
+/** @type {import('eslint').Linter.RulesRecord} */
 const typescriptRules = {
   '@typescript-eslint/no-empty-function': 'error',
   '@typescript-eslint/no-explicit-any': 'error',
   '@typescript-eslint/prefer-namespace-keyword': 'error',
 };
 
-/** @type {import('@typescript-eslint/utils').TSESLint.Linter.RulesRecord} */
+/** @type {import('eslint').Linter.RulesRecord} */
 const rnxRules = {
   '@rnx-kit/no-export-all': ['error', { expand: 'external-only' }],
 };
 
-/** @type {import('@typescript-eslint/utils').TSESLint.Linter.RulesRecord} */
+/** @type {import('eslint').Linter.RulesRecord} */
 const importRules = {
   'import/no-extraneous-dependencies': ['error', { devDependencies: false }],
   'import/no-duplicates': 'off',
@@ -193,18 +196,19 @@ const importRules = {
   'import/export': 'off',
 };
 
-/** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigArray} */
-module.exports = tseslint.config(
+/** @type {import('eslint').Linter.Config[]} */
+module.exports = defineConfig([
+  globalIgnores(IGNORES),
   {
     files: ['**/*.{js,jsx,cjs,mjs,ts,tsx}'],
-    extends: [importPlugin?.flatConfigs.typescript],
+    extends: [compat.extends('airbnb'), 'import/typescript'],
     plugins: {
       '@fluentui': fluentuiPlugin,
+      airbnb: airbnbPlugin,
       '@rnx-kit': rnxPlugin,
-      '@typescript-eslint': tseslint.plugin,
+      '@typescript-eslint': /** @type {import('eslint').ESLint.Plugin} */ (tseslint.plugin),
       import: importPlugin,
-      // @ts-expect-error https://github.com/gajus/eslint-plugin-jsdoc/issues/1223
-      jsdoc: jsDocPlugin,
+      jsdoc: /** @type {import('eslint').ESLint.Plugin} */ (jsDocPlugin),
       jest: jestPlugin,
       ...__internal.plugins,
     },
@@ -231,7 +235,6 @@ module.exports = tseslint.config(
       reportUnusedDisableDirectives: !configHelpers.isLintStaged,
     },
     languageOptions,
-    ignores,
     rules: {
       ...coreRules,
       ...disabledRules,
@@ -323,4 +326,4 @@ module.exports = tseslint.config(
       'import/no-extraneous-dependencies': 'off',
     },
   },
-);
+]);

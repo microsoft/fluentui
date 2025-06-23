@@ -1,10 +1,10 @@
 // @ts-check
-const tseslint = require('typescript-eslint');
-const baseLegacy = require('../base/legacy');
+const baseLegacyConfig = require('../base/legacy');
+const { defineConfig } = require('eslint/config');
 
-/** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigArray} */
-module.exports = tseslint.config({
+/** @type {import('eslint').Linter.Config[]} */
+module.exports = defineConfig({
   files: ['**/*.{ts,js}'],
-  extends: [baseLegacy],
+  extends: [baseLegacyConfig],
   rules: {},
 });

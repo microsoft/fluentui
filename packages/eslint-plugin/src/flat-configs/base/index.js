@@ -1,12 +1,12 @@
 // @ts-check
-const tseslint = require('typescript-eslint');
 const core = require('../core');
 const compat = require('eslint-plugin-compat');
+const { defineConfig } = require('eslint/config');
 
 const { getNamingConventionRule, testFiles, storyFiles } = require('../../utils/configHelpers');
 
-/** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigArray} */
-module.exports = tseslint.config(
+/** @type {import('eslint').Linter.Config[]} */
+module.exports = defineConfig([
   {
     extends: [core],
     rules: {
@@ -50,4 +50,4 @@ module.exports = tseslint.config(
       ],
     },
   },
-);
+]);

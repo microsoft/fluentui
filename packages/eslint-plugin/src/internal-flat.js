@@ -23,6 +23,7 @@ const __internal = {
   /**
    * `@nx/eslint-plugin` is necessary in order to register custom lint rules that live within tools/eslint-rules
    */
+  /** @type {Record<string, import('eslint').ESLint.Plugin | {}>} */
   plugins: shouldRegister ? { '@nx': nxPlugin } : {},
   // extend this object with your rule overrides
   overrides: {
@@ -30,7 +31,7 @@ const __internal = {
       ? {
           files: ['**/src/**/*.{ts,tsx}'],
           ignores: ['*.{test,spec,cy,stories}.{ts,tsx}'],
-          /** @type {import('@typescript-eslint/utils').TSESLint.Linter.RulesRecord} */
+          /** @type {import('eslint').Linter.RulesRecord} */
           rules: {
             '@nx/workspace-consistent-callback-type': 'error',
             '@nx/workspace-no-restricted-globals': restrictedGlobals.react,

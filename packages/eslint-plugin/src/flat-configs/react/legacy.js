@@ -1,14 +1,14 @@
 // @ts-check
-const tseslint = require('typescript-eslint');
-const baseLegacy = require('../base/legacy');
+const baseLegacyConfig = require('../base/legacy');
 const reactConfig = require('../react/config');
 const configHelpers = require('../../utils/configHelpers');
 const { reactLegacy: restrictedGlobals } = require('../../utils/restricted-globals');
+const { defineConfig } = require('eslint/config');
 
-/** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigArray} */
-module.exports = tseslint.config(
+/** @type {import('eslint').Linter.Config[]} */
+module.exports = defineConfig([
   {
-    extends: [baseLegacy, reactConfig],
+    extends: [baseLegacyConfig, reactConfig],
     rules: {
       'jsdoc/check-tag-names': 'off',
       '@griffel/no-shorthands': 'off',
@@ -23,4 +23,4 @@ module.exports = tseslint.config(
       'react/jsx-no-bind': 'off',
     },
   },
-);
+]);

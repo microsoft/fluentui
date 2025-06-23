@@ -1,14 +1,8 @@
 // @ts-check
 
-/**
- * @import { type TSESLint } from '@typescript-eslint/utils';
- * @import { Linter } from 'eslint'
- */
-
-// const configHelpers = require('./utils/configHelpers');
+const configHelpers = require('./utils/configHelpers');
 const { name, version } = require('../package.json');
 
-// Create flat configs (Only ones that declare plugins and parser options need to be different from the legacy config)
 const rules = {
   'ban-imports': require('./rules/ban-imports'),
   'ban-context-export': require('./rules/ban-context-export'),
@@ -22,7 +16,7 @@ const rules = {
   'no-context-default-value': require('./rules/no-context-default-value'),
 };
 
-/** @type {Record<string, Linter.LegacyConfig>} */
+/** @type {Record<string, import('eslint').Linter.LegacyConfig>} */
 const legacy = {
   imports: require('./configs/imports'),
   node: require('./configs/node'),
@@ -32,28 +26,38 @@ const legacy = {
   'react-northstar': require('./configs/react-northstar'),
 };
 
+/** @type {Record<string, import('eslint').Linter.Config[]>} */
+const flat = {
+  get ['flat/react']() {
+    return require('./flat-configs/react');
+  },
+  get ['flat/react-legacy']() {
+    return require('./flat-configs/react/legacy');
+  },
+  get ['flat/react-northstar']() {
+    return require('./flat-configs/react/northstar');
+  },
+  get ['flat/node']() {
+    return require('./flat-configs/node');
+  },
+  get ['flat/node-legacy']() {
+    return require('./flat-configs/node/legacy');
+  },
+  get ['flat/imports']() {
+    return require('./flat-configs/imports');
+  },
+};
+
+/** @type {import('eslint').ESLint.Plugin} */
 const plugin = {
   meta: { name, version },
   namespace: '@fluentui',
-  configs: {},
-  rules,
-};
-
-Object.assign(
-  plugin.configs,
-  {
+  configs: {
     ...legacy,
-    // 'flat/imports': require('./flat-configs/imports'),
-    // 'flat/node': require('./flat-configs/node'),
-    // 'flat/node--legacy': require('./flat-configs/node/legacy'),
-    'flat/react': require('./flat-configs/react'),
+    ...flat,
   },
-
-  // get ['flat/react']() {
-  //   return require('./flat-configs/react');
-  // },
-  // 'flat/react--legacy': require('./flat-configs/react/legacy'),
-  // 'flat/react-northstar': require('./flat-configs/react/northstar'),
-);
+  rules,
+  configHelpers,
+};
 
 module.exports = plugin;

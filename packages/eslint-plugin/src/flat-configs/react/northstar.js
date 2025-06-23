@@ -1,30 +1,39 @@
 // @ts-check
+const airbnbPlugin = require('eslint-config-airbnb');
 const tseslint = require('typescript-eslint');
-const airbnbConfig = require('eslint-config-airbnb');
-const { fixupConfigRules } = require('@eslint/compat');
 const globals = require('globals');
 const jestPlugin = require('eslint-plugin-jest');
 const fluentui = require('../../index');
 const reactHooksPlugin = require('eslint-plugin-react-hooks');
 const importPlugin = require('eslint-plugin-import');
+const { defineConfig, globalIgnores } = require('eslint/config');
 const { findGitRoot } = require('../../utils/configHelpers');
+const { FlatCompat } = require('@eslint/eslintrc');
+
+const compat = new FlatCompat({});
 
 const workspaceRoot = findGitRoot();
+const IGNORES = ['**/coverage', '**/dist', '**/etc', '**/lib', '**/lib-commonjs', '**/node_modules', '**/temp'];
 
-/** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigArray} */
-module.exports = tseslint.config(
+/** @type {import('eslint').Linter.Config[]} */
+module.exports = defineConfig([
+  globalIgnores(IGNORES),
   {
     files: ['**/*.{ts,tsx,js,jsx}'],
-    extends: [...fixupConfigRules(airbnbConfig), tseslint.configs.recommended],
+    extends: [
+      compat.extends('airbnb-base'),
+      /** @type {import('eslint').Linter.Config} */ (tseslint.configs.eslintRecommended),
+    ],
     plugins: {
-      '@typescript-eslint': tseslint.plugin,
+      airbnb: airbnbPlugin,
+      '@typescript-eslint': /** @type {import('eslint').ESLint.Plugin} */ (tseslint.plugin),
       import: importPlugin,
       'react-hooks': reactHooksPlugin,
       '@fluentui': fluentui,
       jest: jestPlugin,
     },
     languageOptions: {
-      parser: tseslint.parser,
+      parser: /** @type {import('eslint').Linter.Parser} */ (tseslint.parser),
       globals: {
         ...globals.browser,
         ...globals.jest,
@@ -37,7 +46,6 @@ module.exports = tseslint.config(
         },
       },
     },
-    ignores: ['coverage', 'dist', 'etc', 'lib', 'lib-commonjs', 'node_modules', 'temp'],
     rules: {
       '@fluentui/no-global-react': 'error',
       '@fluentui/no-tslint-comments': 'error',
@@ -180,4 +188,4 @@ module.exports = tseslint.config(
       'no-dupe-class-members': 'off',
     },
   },
-);
+]);

@@ -1,18 +1,19 @@
 // @ts-check
-const tseslint = require('typescript-eslint');
 const jsxA11yPlugin = require('eslint-plugin-jsx-a11y');
 const reactPlugin = require('eslint-plugin-react');
 const reactHooksPlugin = require('eslint-plugin-react-hooks');
 const griffelPlugin = require('@griffel/eslint-plugin');
 const configHelpers = require('../../utils/configHelpers');
+const { defineConfig } = require('eslint/config');
+const { fixupPluginRules } = require('@eslint/compat');
 
-/** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigArray} */
-module.exports = tseslint.config(
+/** @type {import('eslint').Linter.Config[]} */
+module.exports = defineConfig([
   {
     files: ['**/*.{jsx,tsx}'],
     plugins: {
       react: reactPlugin,
-      '@griffel': griffelPlugin,
+      '@griffel': fixupPluginRules(/** @type {any} */ (griffelPlugin)),
       'jsx-a11y': jsxA11yPlugin,
       'react-hooks': reactHooksPlugin,
     },
@@ -162,4 +163,4 @@ module.exports = tseslint.config(
       'react/jsx-no-bind': 'off',
     },
   },
-);
+]);

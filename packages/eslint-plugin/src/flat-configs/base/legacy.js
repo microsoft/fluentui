@@ -1,10 +1,10 @@
 // @ts-check
-const tseslint = require('typescript-eslint');
 const core = require('../core');
 const { getNamingConventionRule } = require('../../utils/configHelpers');
+const { defineConfig } = require('eslint/config');
 
-/** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigArray} */
-module.exports = tseslint.config(
+/** @type {import('eslint').Linter.Config[]} */
+module.exports = defineConfig([
   {
     extends: [core],
     rules: {
@@ -22,4 +22,4 @@ module.exports = tseslint.config(
       '@rnx-kit/no-export-all': ['warn', { expand: 'all' }],
     },
   },
-);
+]);
