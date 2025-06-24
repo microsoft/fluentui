@@ -78,8 +78,8 @@ export type PresenceComponentProps = {
 export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = {
   (props: PresenceComponentProps & MotionParams): React.ReactElement | null;
   [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
-  In: React.FC<MotionComponentProps & MotionParams>;
-  Out: React.FC<MotionComponentProps & MotionParams>;
+  In: ReturnType<typeof createMotionComponent<MotionParams>>;
+  Out: ReturnType<typeof createMotionComponent<MotionParams>>;
 };
 
 const INTERRUPTABLE_MOTION_SYMBOL = Symbol.for('interruptablePresence');
