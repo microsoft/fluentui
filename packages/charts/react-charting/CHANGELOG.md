@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 23 Jun 2025 07:19:47 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Jun 2025 07:20:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.8)
+
+Tue, 24 Jun 2025 07:20:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.7..@fluentui/react-charting_v5.24.8)
+
+### Patches
+
+- fix(react-charting): Fix legend selection for Scatter charts ([PR #34701](https://github.com/microsoft/fluentui/pull/34701) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.24.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.7)
 
