@@ -1,4 +1,4 @@
-import type { ExtractSlotProps, Slot, UnionToIntersection } from '@fluentui/react-utilities';
+import type { DistributiveOmit, ExtractSlotProps, Slot, UnionToIntersection } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 export type ARIAButtonType = 'button' | 'a' | 'div';
@@ -18,8 +18,9 @@ export type ARIAButtonElementIntersection<AlternateAs extends 'a' | 'div' = 'a' 
 /**
  * Props expected by `useARIAButtonProps` hooks
  */
-export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = React.PropsWithRef<
-  JSX.IntrinsicElements[Type]
+export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = DistributiveOmit<
+  React.PropsWithRef<JSX.IntrinsicElements[Type]>,
+  'children'
 > & {
   disabled?: boolean;
   /**

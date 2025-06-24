@@ -255,7 +255,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       yMaxValue: props.yMaxValue || 0,
       tickPadding: 10,
       maxOfYVal: props.maxOfYVal,
-      yMinMaxValues: getMinMaxOfYAxis(points, chartType, props.yAxisType),
+      yMinMaxValues: props.getMinMaxOfYAxis
+        ? props.getMinMaxOfYAxis(points, props.yAxisType)
+        : getMinMaxOfYAxis(points, chartType, props.yAxisType),
       // please note these padding default values must be consistent in here
       // and the parent chart(HBWA/Vertical etc..) for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
@@ -326,12 +328,12 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
      * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let yScale: any;
+    let yScalePrimary: any;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let yScaleSecondary: any;
     const axisData: IAxisData = { yAxisDomainValues: [] };
     if (props.yAxisType && props.yAxisType === YAxisType.StringAxis) {
-      yScale = createStringYAxis(
+      yScalePrimary = createStringYAxis(
         YAxisParams,
         props.stringDatasetForYAxisDomain!,
         _useRtl,
@@ -340,6 +342,11 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         culture,
       );
     } else {
+      // TODO: Since the scale domain values are now computed independently for both the primary and
+      // secondary y-axes, the yMinValue and yMaxValue props are no longer necessary for accurately
+      // rendering the secondary y-axis. Therefore, rather than checking the secondaryYScaleOptions
+      // prop to determine whether to create a secondary y-axis, it's more appropriate to check if any
+      // data points are assigned to use the secondary y-scale.
       if (props?.secondaryYScaleOptions) {
         const YAxisParamsSecondary = {
           margins: margins,
@@ -351,8 +358,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           yMinValue: props.secondaryYScaleOptions?.yMinValue || 0,
           yMaxValue: props.secondaryYScaleOptions?.yMaxValue ?? 100,
           tickPadding: 10,
-          maxOfYVal: props.secondaryYScaleOptions?.yMaxValue ?? 100,
-          yMinMaxValues: getMinMaxOfYAxis(points, chartType),
+          yMinMaxValues: props.getMinMaxOfYAxis
+            ? props.getMinMaxOfYAxis(points, props.yAxisType, true)
+            : getMinMaxOfYAxis(points, props.chartType, props.yAxisType, true),
           yAxisPadding: props.yAxisPadding,
         };
 
@@ -367,7 +375,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           props.roundedTicks!,
         );
       }
-      yScale = createYAxis(
+      yScalePrimary = createYAxis(
         YAxisParams,
         _useRtl,
         axisData,
@@ -385,10 +393,10 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     or showing the whole string,
      * */
     chartTypesToCheck.includes(props.chartType) &&
-      yScale &&
+      yScalePrimary &&
       createYAxisLabels(
         yAxisElement.current!,
-        yScale,
+        yScalePrimary,
         props.noOfCharsToTruncate || 4,
         props.showYAxisLablesTooltip || false,
         startFromX,
@@ -397,25 +405,26 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
 
     // Call back to the chart.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const _getData = (xScale: any, yScale: any) => {
+    const _getData = (xScale: any, yScalePrimary: any, yScaleSecondary: any) => {
       props.getGraphData &&
         props.getGraphData(
           xScale,
-          yScale,
+          yScalePrimary,
           containerHeight - removalValueForTextTuncate!,
           containerWidth,
           xAxisElement.current,
           yAxisElement.current,
+          yScaleSecondary,
         );
     };
 
     props.getAxisData && props.getAxisData(axisData);
     // Callback function for chart, returns axis
-    _getData(xScale, yScale);
+    _getData(xScale, yScalePrimary, yScaleSecondary);
 
     children = props.children({
       xScale,
-      yScale,
+      yScalePrimary,
       yScaleSecondary,
       containerHeight,
       containerWidth,
@@ -580,6 +589,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               maxWidth={xAxisTitleMaximumAllowedWidth}
               wrapContent={wrapContent}
               showBackground={true}
+              className={classes.svgTooltip}
             />
           )}
           <g
@@ -620,6 +630,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                   maxWidth={yAxisTitleMaximumAllowedHeight}
                   wrapContent={wrapContent}
                   showBackground={true}
+                  className={classes.svgTooltip}
                 />
               )}
             </g>
@@ -639,6 +650,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               maxWidth={yAxisTitleMaximumAllowedHeight}
               wrapContent={wrapContent}
               showBackground={true}
+              className={classes.svgTooltip}
             />
           )}
         </svg>

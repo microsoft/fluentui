@@ -52,78 +52,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(55.25,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              1000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(70,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              2000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(84.75,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              3000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(99.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              4000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(114.25,0)"
           >
             <line
@@ -137,78 +65,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               y="10"
             >
               5000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(129,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              6000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(143.75,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              7000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(158.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              8000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(173.25,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              9000
             </text>
           </g>
           <g
@@ -232,78 +88,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(202.75,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              11,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(217.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              12,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(232.25,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              13,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(247,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              14,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(261.75,0)"
           >
             <line
@@ -317,78 +101,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               y="10"
             >
               15,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(276.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              16,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(291.25,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              17,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(306,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              18,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(320.75,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              19,000
             </text>
           </g>
           <g
@@ -412,78 +124,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(350.25,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              21,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(365,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              22,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(379.75,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              23,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(394.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              24,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(409.25,0)"
           >
             <line
@@ -497,78 +137,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               y="10"
             >
               25,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(424,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              26,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(438.75,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              27,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(453.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              28,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(468.25,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              29,000
             </text>
           </g>
           <g
@@ -592,78 +160,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(497.75,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              31,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(512.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              32,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(527.25,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              33,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(542,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              34,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(556.75,0)"
           >
             <line
@@ -677,78 +173,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               y="10"
             >
               35,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(571.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              36,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(586.25,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              37,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(601,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              38,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(615.75,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              39,000
             </text>
           </g>
           <g
@@ -1180,7 +604,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(64.1,0)"
+            transform="translate(99.5,0)"
           >
             <line
               stroke="currentColor"
@@ -1192,61 +616,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              200
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(87.7,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              400
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(111.3,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              600
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(134.9,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              800
+              500
             </text>
           </g>
           <g
@@ -1270,7 +640,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(182.1,0)"
+            transform="translate(217.5,0)"
           >
             <line
               stroke="currentColor"
@@ -1282,61 +652,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              1200
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(205.7,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              1400
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(229.29999999999998,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              1600
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(252.89999999999998,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              1800
+              1500
             </text>
           </g>
           <g
@@ -1360,7 +676,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(300.09999999999997,0)"
+            transform="translate(335.5,0)"
           >
             <line
               stroke="currentColor"
@@ -1372,61 +688,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              2200
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(323.7,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              2400
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(347.3,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              2600
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(370.90000000000003,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              2800
+              2500
             </text>
           </g>
           <g
@@ -1450,7 +712,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(418.09999999999997,0)"
+            transform="translate(453.5,0)"
           >
             <line
               stroke="currentColor"
@@ -1462,61 +724,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              3200
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(441.70000000000005,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              3400
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(465.29999999999995,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              3600
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(488.90000000000003,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              3800
+              3500
             </text>
           </g>
           <g
@@ -1540,7 +748,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(536.0999999999999,0)"
+            transform="translate(571.5,0)"
           >
             <line
               stroke="currentColor"
@@ -1552,61 +760,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              4200
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(559.6999999999999,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              4400
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(583.3000000000001,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              4600
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(606.9,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="-280"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="10"
-            >
-              4800
+              4500
             </text>
           </g>
           <g
@@ -1978,78 +1132,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(55.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  1000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(70,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  2000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(84.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  3000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(99.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  4000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(114.25,0)"
               >
                 <line
@@ -2063,78 +1145,6 @@ Object {
                   y="10"
                 >
                   5000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(129,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  6000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(143.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  7000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(158.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  8000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(173.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  9000
                 </text>
               </g>
               <g
@@ -2158,78 +1168,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(202.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  11,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(217.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  12,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(232.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  13,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(247,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  14,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(261.75,0)"
               >
                 <line
@@ -2243,78 +1181,6 @@ Object {
                   y="10"
                 >
                   15,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(276.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  16,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(291.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  17,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(306,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  18,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(320.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  19,000
                 </text>
               </g>
               <g
@@ -2338,78 +1204,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(350.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  21,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(365,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  22,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(379.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  23,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(394.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  24,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(409.25,0)"
               >
                 <line
@@ -2423,78 +1217,6 @@ Object {
                   y="10"
                 >
                   25,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(424,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  26,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(438.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  27,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(453.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  28,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(468.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  29,000
                 </text>
               </g>
               <g
@@ -2518,78 +1240,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(497.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  31,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(512.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  32,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(527.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  33,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(542,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  34,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(556.75,0)"
               >
                 <line
@@ -2603,78 +1253,6 @@ Object {
                   y="10"
                 >
                   35,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(571.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  36,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(586.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  37,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(601,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  38,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(615.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  39,000
                 </text>
               </g>
               <g
@@ -3104,78 +1682,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(55.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                1000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(70,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                2000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(84.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                3000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(99.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                4000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(114.25,0)"
             >
               <line
@@ -3189,78 +1695,6 @@ Object {
                 y="10"
               >
                 5000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(129,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                6000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(143.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                7000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(158.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                8000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(173.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                9000
               </text>
             </g>
             <g
@@ -3284,78 +1718,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(202.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                11,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(217.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                12,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(232.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                13,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(247,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                14,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(261.75,0)"
             >
               <line
@@ -3369,78 +1731,6 @@ Object {
                 y="10"
               >
                 15,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(276.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                16,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(291.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                17,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(306,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                18,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(320.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                19,000
               </text>
             </g>
             <g
@@ -3464,78 +1754,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(350.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                21,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(365,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                22,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(379.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                23,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(394.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                24,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(409.25,0)"
             >
               <line
@@ -3549,78 +1767,6 @@ Object {
                 y="10"
               >
                 25,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(424,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                26,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(438.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                27,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(453.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                28,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(468.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                29,000
               </text>
             </g>
             <g
@@ -3644,78 +1790,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(497.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                31,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(512.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                32,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(527.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                33,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(542,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                34,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(556.75,0)"
             >
               <line
@@ -3729,78 +1803,6 @@ Object {
                 y="10"
               >
                 35,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(571.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                36,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(586.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                37,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(601,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                38,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(615.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                39,000
               </text>
             </g>
             <g
@@ -4294,78 +2296,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(55.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  1000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(70,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  2000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(84.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  3000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(99.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  4000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(114.25,0)"
               >
                 <line
@@ -4379,78 +2309,6 @@ Object {
                   y="10"
                 >
                   5000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(129,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  6000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(143.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  7000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(158.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  8000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(173.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  9000
                 </text>
               </g>
               <g
@@ -4474,78 +2332,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(202.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  11,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(217.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  12,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(232.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  13,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(247,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  14,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(261.75,0)"
               >
                 <line
@@ -4559,78 +2345,6 @@ Object {
                   y="10"
                 >
                   15,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(276.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  16,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(291.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  17,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(306,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  18,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(320.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  19,000
                 </text>
               </g>
               <g
@@ -4654,78 +2368,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(350.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  21,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(365,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  22,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(379.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  23,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(394.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  24,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(409.25,0)"
               >
                 <line
@@ -4739,78 +2381,6 @@ Object {
                   y="10"
                 >
                   25,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(424,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  26,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(438.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  27,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(453.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  28,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(468.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  29,000
                 </text>
               </g>
               <g
@@ -4834,78 +2404,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(497.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  31,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(512.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  32,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(527.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  33,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(542,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  34,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(556.75,0)"
               >
                 <line
@@ -4919,78 +2417,6 @@ Object {
                   y="10"
                 >
                   35,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(571.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  36,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(586.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  37,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(601,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  38,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(615.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  39,000
                 </text>
               </g>
               <g
@@ -5420,78 +2846,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(55.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                1000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(70,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                2000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(84.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                3000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(99.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                4000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(114.25,0)"
             >
               <line
@@ -5505,78 +2859,6 @@ Object {
                 y="10"
               >
                 5000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(129,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                6000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(143.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                7000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(158.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                8000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(173.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                9000
               </text>
             </g>
             <g
@@ -5600,78 +2882,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(202.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                11,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(217.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                12,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(232.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                13,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(247,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                14,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(261.75,0)"
             >
               <line
@@ -5685,78 +2895,6 @@ Object {
                 y="10"
               >
                 15,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(276.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                16,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(291.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                17,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(306,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                18,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(320.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                19,000
               </text>
             </g>
             <g
@@ -5780,78 +2918,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(350.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                21,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(365,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                22,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(379.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                23,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(394.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                24,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(409.25,0)"
             >
               <line
@@ -5865,78 +2931,6 @@ Object {
                 y="10"
               >
                 25,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(424,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                26,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(438.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                27,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(453.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                28,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(468.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                29,000
               </text>
             </g>
             <g
@@ -5960,78 +2954,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(497.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                31,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(512.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                32,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(527.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                33,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(542,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                34,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(556.75,0)"
             >
               <line
@@ -6045,78 +2967,6 @@ Object {
                 y="10"
               >
                 35,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(571.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                36,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(586.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                37,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(601,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                38,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(615.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                39,000
               </text>
             </g>
             <g
@@ -6605,78 +3455,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(55.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  1000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(70,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  2000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(84.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  3000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(99.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  4000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(114.25,0)"
               >
                 <line
@@ -6690,78 +3468,6 @@ Object {
                   y="10"
                 >
                   5000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(129,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  6000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(143.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  7000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(158.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  8000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(173.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  9000
                 </text>
               </g>
               <g
@@ -6785,78 +3491,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(202.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  11,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(217.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  12,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(232.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  13,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(247,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  14,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(261.75,0)"
               >
                 <line
@@ -6870,78 +3504,6 @@ Object {
                   y="10"
                 >
                   15,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(276.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  16,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(291.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  17,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(306,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  18,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(320.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  19,000
                 </text>
               </g>
               <g
@@ -6965,78 +3527,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(350.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  21,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(365,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  22,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(379.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  23,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(394.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  24,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(409.25,0)"
               >
                 <line
@@ -7050,78 +3540,6 @@ Object {
                   y="10"
                 >
                   25,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(424,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  26,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(438.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  27,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(453.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  28,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(468.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  29,000
                 </text>
               </g>
               <g
@@ -7145,78 +3563,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(497.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  31,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(512.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  32,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(527.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  33,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(542,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  34,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(556.75,0)"
               >
                 <line
@@ -7230,78 +3576,6 @@ Object {
                   y="10"
                 >
                   35,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(571.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  36,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(586.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  37,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(601,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  38,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(615.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  39,000
                 </text>
               </g>
               <g
@@ -7731,78 +4005,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(55.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                1000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(70,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                2000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(84.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                3000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(99.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                4000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(114.25,0)"
             >
               <line
@@ -7816,78 +4018,6 @@ Object {
                 y="10"
               >
                 5000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(129,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                6000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(143.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                7000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(158.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                8000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(173.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                9000
               </text>
             </g>
             <g
@@ -7911,78 +4041,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(202.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                11,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(217.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                12,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(232.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                13,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(247,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                14,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(261.75,0)"
             >
               <line
@@ -7996,78 +4054,6 @@ Object {
                 y="10"
               >
                 15,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(276.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                16,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(291.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                17,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(306,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                18,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(320.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                19,000
               </text>
             </g>
             <g
@@ -8091,78 +4077,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(350.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                21,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(365,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                22,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(379.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                23,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(394.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                24,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(409.25,0)"
             >
               <line
@@ -8176,78 +4090,6 @@ Object {
                 y="10"
               >
                 25,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(424,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                26,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(438.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                27,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(453.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                28,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(468.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                29,000
               </text>
             </g>
             <g
@@ -8271,78 +4113,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(497.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                31,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(512.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                32,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(527.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                33,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(542,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                34,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(556.75,0)"
             >
               <line
@@ -8356,78 +4126,6 @@ Object {
                 y="10"
               >
                 35,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(571.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                36,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(586.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                37,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(601,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                38,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(615.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                39,000
               </text>
             </g>
             <g
@@ -8916,78 +4614,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(55.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  1000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(70,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  2000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(84.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  3000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(99.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  4000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(114.25,0)"
               >
                 <line
@@ -9001,78 +4627,6 @@ Object {
                   y="10"
                 >
                   5000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(129,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  6000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(143.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  7000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(158.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  8000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(173.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  9000
                 </text>
               </g>
               <g
@@ -9096,78 +4650,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(202.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  11,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(217.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  12,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(232.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  13,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(247,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  14,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(261.75,0)"
               >
                 <line
@@ -9181,78 +4663,6 @@ Object {
                   y="10"
                 >
                   15,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(276.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  16,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(291.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  17,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(306,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  18,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(320.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  19,000
                 </text>
               </g>
               <g
@@ -9276,78 +4686,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(350.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  21,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(365,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  22,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(379.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  23,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(394.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  24,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(409.25,0)"
               >
                 <line
@@ -9361,78 +4699,6 @@ Object {
                   y="10"
                 >
                   25,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(424,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  26,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(438.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  27,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(453.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  28,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(468.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  29,000
                 </text>
               </g>
               <g
@@ -9456,78 +4722,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(497.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  31,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(512.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  32,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(527.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  33,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(542,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  34,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(556.75,0)"
               >
                 <line
@@ -9541,78 +4735,6 @@ Object {
                   y="10"
                 >
                   35,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(571.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  36,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(586.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  37,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(601,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  38,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(615.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-30"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  39,000
                 </text>
               </g>
               <g
@@ -9949,78 +5071,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(55.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                1000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(70,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                2000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(84.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                3000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(99.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                4000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(114.25,0)"
             >
               <line
@@ -10034,78 +5084,6 @@ Object {
                 y="10"
               >
                 5000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(129,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                6000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(143.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                7000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(158.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                8000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(173.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                9000
               </text>
             </g>
             <g
@@ -10129,78 +5107,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(202.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                11,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(217.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                12,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(232.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                13,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(247,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                14,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(261.75,0)"
             >
               <line
@@ -10214,78 +5120,6 @@ Object {
                 y="10"
               >
                 15,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(276.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                16,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(291.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                17,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(306,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                18,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(320.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                19,000
               </text>
             </g>
             <g
@@ -10309,78 +5143,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(350.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                21,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(365,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                22,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(379.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                23,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(394.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                24,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(409.25,0)"
             >
               <line
@@ -10394,78 +5156,6 @@ Object {
                 y="10"
               >
                 25,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(424,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                26,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(438.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                27,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(453.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                28,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(468.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                29,000
               </text>
             </g>
             <g
@@ -10489,78 +5179,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(497.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                31,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(512.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                32,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(527.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                33,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(542,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                34,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(556.75,0)"
             >
               <line
@@ -10574,78 +5192,6 @@ Object {
                 y="10"
               >
                 35,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(571.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                36,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(586.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                37,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(601,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                38,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(615.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-30"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                39,000
               </text>
             </g>
             <g
@@ -11041,7 +5587,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(64.1,0)"
+                transform="translate(99.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -11053,61 +5599,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  200
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(87.7,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  400
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(111.3,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  600
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(134.9,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  800
+                  500
                 </text>
               </g>
               <g
@@ -11131,7 +5623,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(182.1,0)"
+                transform="translate(217.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -11143,61 +5635,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  1200
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(205.7,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  1400
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(229.29999999999998,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  1600
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(252.89999999999998,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  1800
+                  1500
                 </text>
               </g>
               <g
@@ -11221,7 +5659,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(300.09999999999997,0)"
+                transform="translate(335.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -11233,61 +5671,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  2200
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(323.7,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  2400
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(347.3,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  2600
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(370.90000000000003,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  2800
+                  2500
                 </text>
               </g>
               <g
@@ -11311,7 +5695,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(418.09999999999997,0)"
+                transform="translate(453.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -11323,61 +5707,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  3200
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(441.70000000000005,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  3400
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(465.29999999999995,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  3600
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(488.90000000000003,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  3800
+                  3500
                 </text>
               </g>
               <g
@@ -11401,7 +5731,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(536.0999999999999,0)"
+                transform="translate(571.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -11413,61 +5743,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  4200
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(559.6999999999999,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  4400
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(583.3000000000001,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  4600
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(606.9,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  4800
+                  4500
                 </text>
               </g>
               <g
@@ -11832,7 +6108,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(64.1,0)"
+              transform="translate(99.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -11844,61 +6120,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                200
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(87.7,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                400
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(111.3,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                600
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(134.9,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                800
+                500
               </text>
             </g>
             <g
@@ -11922,7 +6144,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(182.1,0)"
+              transform="translate(217.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -11934,61 +6156,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                1200
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(205.7,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                1400
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(229.29999999999998,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                1600
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(252.89999999999998,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                1800
+                1500
               </text>
             </g>
             <g
@@ -12012,7 +6180,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(300.09999999999997,0)"
+              transform="translate(335.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -12024,61 +6192,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                2200
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(323.7,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                2400
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(347.3,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                2600
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(370.90000000000003,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                2800
+                2500
               </text>
             </g>
             <g
@@ -12102,7 +6216,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(418.09999999999997,0)"
+              transform="translate(453.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -12114,61 +6228,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                3200
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(441.70000000000005,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                3400
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(465.29999999999995,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                3600
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(488.90000000000003,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                3800
+                3500
               </text>
             </g>
             <g
@@ -12192,7 +6252,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(536.0999999999999,0)"
+              transform="translate(571.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -12204,61 +6264,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                4200
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(559.6999999999999,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                4400
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(583.3000000000001,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                4600
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(606.9,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                4800
+                4500
               </text>
             </g>
             <g
@@ -12682,7 +6688,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(64.1,0)"
+                transform="translate(99.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -12694,61 +6700,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  200
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(87.7,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  400
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(111.3,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  600
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(134.9,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  800
+                  500
                 </text>
               </g>
               <g
@@ -12772,7 +6724,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(182.1,0)"
+                transform="translate(217.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -12784,61 +6736,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  1200
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(205.7,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  1400
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(229.29999999999998,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  1600
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(252.89999999999998,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  1800
+                  1500
                 </text>
               </g>
               <g
@@ -12862,7 +6760,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(300.09999999999997,0)"
+                transform="translate(335.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -12874,61 +6772,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  2200
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(323.7,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  2400
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(347.3,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  2600
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(370.90000000000003,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  2800
+                  2500
                 </text>
               </g>
               <g
@@ -12952,7 +6796,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(418.09999999999997,0)"
+                transform="translate(453.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -12964,61 +6808,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  3200
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(441.70000000000005,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  3400
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(465.29999999999995,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  3600
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(488.90000000000003,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  3800
+                  3500
                 </text>
               </g>
               <g
@@ -13042,7 +6832,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(536.0999999999999,0)"
+                transform="translate(571.5,0)"
               >
                 <line
                   stroke="currentColor"
@@ -13054,61 +6844,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  4200
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(559.6999999999999,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  4400
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(583.3000000000001,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  4600
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(606.9,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-280"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  4800
+                  4500
                 </text>
               </g>
               <g
@@ -13468,7 +7204,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(64.1,0)"
+              transform="translate(99.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -13480,61 +7216,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                200
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(87.7,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                400
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(111.3,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                600
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(134.9,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                800
+                500
               </text>
             </g>
             <g
@@ -13558,7 +7240,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(182.1,0)"
+              transform="translate(217.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -13570,61 +7252,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                1200
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(205.7,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                1400
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(229.29999999999998,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                1600
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(252.89999999999998,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                1800
+                1500
               </text>
             </g>
             <g
@@ -13648,7 +7276,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(300.09999999999997,0)"
+              transform="translate(335.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -13660,61 +7288,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                2200
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(323.7,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                2400
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(347.3,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                2600
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(370.90000000000003,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                2800
+                2500
               </text>
             </g>
             <g
@@ -13738,7 +7312,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(418.09999999999997,0)"
+              transform="translate(453.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -13750,61 +7324,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                3200
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(441.70000000000005,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                3400
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(465.29999999999995,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                3600
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(488.90000000000003,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                3800
+                3500
               </text>
             </g>
             <g
@@ -13828,7 +7348,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(536.0999999999999,0)"
+              transform="translate(571.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -13840,61 +7360,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                4200
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(559.6999999999999,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                4400
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(583.3000000000001,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                4600
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(606.9,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-280"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                4800
+                4500
               </text>
             </g>
             <g

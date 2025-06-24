@@ -1,6 +1,27 @@
 import type { Datum, TypedArray, PlotData, PlotlySchema, Data, Layout, SankeyData } from './PlotlySchema';
 import { decodeBase64Fields } from './DecodeBase64Data';
 
+export type FluentChart =
+  | 'area'
+  | 'composite'
+  | 'donut'
+  | 'fallback'
+  | 'gauge'
+  | 'groupedverticalbar'
+  | 'heatmap'
+  | 'horizontalbar'
+  | 'line'
+  | 'scatter'
+  | 'scatterpolar'
+  | 'sankey'
+  | 'table'
+  | 'verticalstackedbar';
+
+export type TraceInfo = {
+  index: number;
+  type: FluentChart;
+};
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface OutputChartType {
   isValid: boolean;
@@ -9,7 +30,7 @@ export interface OutputChartType {
   /**
    * Array of [index, chartType] pairs
    */
-  validTracesInfo?: [number, string][];
+  validTracesInfo?: TraceInfo[];
 }
 
 const UNSUPPORTED_MSG_PREFIX = 'Unsupported chart - type :';
@@ -207,15 +228,18 @@ const validateBarData = (data: Partial<PlotData>) => {
   } else if (data.orientation === 'h' && isNumberArray(data.x)) {
     validateSeriesData(data, false);
   } else if (!isNumberArray(data.y) && !isStringArray(data.y)) {
-    throw new Error(`Non numeric or string Y values encountered.`);
+    throw new Error(`Non numeric or string Y values encountered, type: ${typeof data.y}`);
   }
+};
+const isScatterMarkers = (mode: string): boolean => {
+  return ['markers', 'text+markers', 'markers+text'].includes(mode);
 };
 
 const validateScatterData = (data: Partial<PlotData>) => {
   const mode = data.mode ?? '';
   const xAxisType = data && data.x && data.x.length > 0 ? typeof data?.x?.[0] : 'undefined';
   const yAxisType = data && data.y && data.y.length > 0 ? typeof data?.y?.[0] : 'undefined';
-  if (mode === 'markers') {
+  if (isScatterMarkers(mode)) {
     // Any series having only markers -> Supported number x/string x/date x + number y
     if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
       throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
@@ -223,17 +247,7 @@ const validateScatterData = (data: Partial<PlotData>) => {
     if (!isNumberArray(data.y)) {
       throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
     }
-  } else if (
-    [
-      'lines+markers',
-      'markers+lines',
-      'text+lines+markers',
-      'lines',
-      'text+lines',
-      'text+markers',
-      'markers+text',
-    ].includes(mode)
-  ) {
+  } else if (['lines+markers', 'markers+lines', 'text+lines+markers', 'lines', 'text+lines'].includes(mode)) {
     if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
       throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
     }
@@ -433,7 +447,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
           const scatterData = traceData as Partial<PlotData>;
           const isAreaChart =
             scatterData.fill === 'tonexty' || scatterData.fill === 'tozeroy' || !!scatterData.stackgroup;
-          const isScatterChart = (scatterData.mode ?? '') === 'markers';
+          const isScatterChart = isScatterMarkers(scatterData.mode ?? '');
           if (isScatterChart) {
             return { isValid: true, traceIndex, type: 'scatter' };
           }
@@ -477,6 +491,14 @@ export const mapFluentChart = (input: any): OutputChartType => {
     // Filter invalid traces and render successfully even if 1 valid trace is present
     mappedTraces = mappedTraces.filter(trace => trace.isValid);
 
+    const tracesInfo = mappedTraces.map(
+      trace =>
+        ({
+          index: trace.traceIndex!,
+          type: trace.type!,
+        } as TraceInfo),
+    );
+
     const containsBars = mappedTraces.some(
       trace => trace.type === 'groupedverticalbar' || trace.type === 'verticalstackedbar',
     );
@@ -485,7 +507,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
       return {
         isValid: true,
         type: 'fallback',
-        validTracesInfo: mappedTraces.map(trace => [trace.traceIndex!, trace.type!]),
+        validTracesInfo: tracesInfo,
       };
     }
 
@@ -495,14 +517,14 @@ export const mapFluentChart = (input: any): OutputChartType => {
       return {
         isValid: true,
         type: `composite`,
-        validTracesInfo: mappedTraces.map(trace => [trace.traceIndex!, trace.type!]),
+        validTracesInfo: tracesInfo,
       };
     }
     const chartType = Array.from(uniqueTypes)[0];
     return {
       isValid: true,
       type: chartType,
-      validTracesInfo: mappedTraces.map(trace => [trace.traceIndex!, trace.type!]),
+      validTracesInfo: tracesInfo,
     };
   } catch (error) {
     return { isValid: false, errorMessage: `Invalid plotly schema: ${error}` };
