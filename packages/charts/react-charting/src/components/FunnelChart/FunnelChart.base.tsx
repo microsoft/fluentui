@@ -7,12 +7,13 @@ import {
   IFunnelChartStyles,
 } from './FunnelChart.types';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ILegend, Legends } from '../Legends/index';
+import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IImageExportOptions } from '../../types/index';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
+import { getInvertedTextColor } from '../../utilities/utilities';
 import {
   getHorizontalFunnelSegmentGeometry,
   getVerticalFunnelSegmentGeometry,
@@ -34,10 +35,11 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
   const [hoveredStage, setHoveredStage] = React.useState<string | null>(null);
   const [isCalloutVisible, setIsCalloutVisible] = React.useState(false);
   const [calloutData, setCalloutData] = React.useState<IFunnelChartDataPoint | null>(null);
-  const [refSelected, setRefSelected] = React.useState<any>(null);
+  const [refSelected, setRefSelected] = React.useState<SVGElement | null>(null);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
-  const chartContainerRef = React.useRef<any>(null);
-  const legendsRef = React.useRef<any>(null);
+  const chartContainerRef = React.useRef<HTMLDivElement | null>(null);
+  const legendsRef = React.useRef<ILegendContainer | null>(null);
+  const isStacked = isStackedFunnelData(props.data);
 
   React.useEffect(() => {
     if (props.legendProps?.selectedLegends) {
@@ -104,6 +106,8 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     }
   }
 
+  const _onLegendSelectionChangeCallback = React.useCallback(_onLegendSelectionChange, [props.legendProps]);
+
   function getHighlightedLegend(): string[] {
     return selectedLegends.length > 0 ? selectedLegends : hoveredStage ? [hoveredStage] : [];
   }
@@ -116,93 +120,168 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     return getHighlightedLegend().length === 0;
   }
 
+  function _getEventHandlerProps(
+    data: IFunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } },
+  ) {
+    if ('subValue' in data) {
+      return {
+        culture: props.culture,
+        onMouseOver: (event: React.MouseEvent<SVGElement>) => _handleStackedHover(data.stage, data.subValue, event),
+        onMouseMove: (event: React.MouseEvent<SVGElement>) => _handleStackedHover(data.stage, data.subValue, event),
+        onMouseOut: () => _handleMouseOut(),
+      };
+    } else {
+      return {
+        culture: props.culture,
+        onMouseOver: (event: React.MouseEvent<SVGElement>) => _handleHover(data, event),
+        onMouseMove: (event: React.MouseEvent<SVGElement>) => _handleHover(data, event),
+        onMouseOut: () => _handleMouseOut(),
+      };
+    }
+  }
+
+  function _renderSegmentText({
+    show,
+    x,
+    y,
+    value,
+    textColor,
+  }: {
+    show: boolean;
+    x: number;
+    y: number;
+    value: number;
+    textColor: string;
+  }) {
+    if (!show) {return null;}
+
+    const textElement = (
+      <text x={isRTL ? funnelWidth - x : x} y={y} textAnchor="middle" alignmentBaseline="middle" fill={textColor}>
+        {formatToLocaleString(value.toString(), props.culture)}
+      </text>
+    );
+
+    if (isRTL) {
+      return <g transform={`scale(-1,1) translate(${-funnelWidth},0)`}>{textElement}</g>;
+    }
+    return textElement;
+  }
+
+  function _renderFunnelSegment({
+    key,
+    pathD,
+    fill,
+    opacity,
+    textProps,
+    data,
+  }: {
+    key: string | number;
+    pathD: string;
+    fill: string;
+    opacity: number;
+    textProps?: {
+      show: boolean;
+      x: number;
+      y: number;
+      value: number;
+    };
+    data: IFunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } };
+  }) {
+    const eventHandlers = _getEventHandlerProps(data);
+    const textColor = getInvertedTextColor(fill, props.theme);
+
+    return (
+      <g key={key}>
+        <path d={pathD} fill={fill} opacity={opacity} {...eventHandlers} />
+        {textProps && <g {...eventHandlers}>{_renderSegmentText({ ...textProps, textColor })}</g>}
+      </g>
+    );
+  }
+
   function _createFunnel(containerHeight: number, containerWidth: number): JSX.Element[] {
-    const { data, culture } = props;
+    const { data } = props;
     const funnelWidth = containerWidth;
     const funnelHeight = containerHeight * 0.8;
 
-    if (props.orientation === 'horizontal') {
-      return data.map((d, i) => {
-        const { pathD, textX, textY, availableWidth } = getHorizontalFunnelSegmentGeometry({
-          d,
-          i,
-          data,
-          funnelWidth,
-          funnelHeight,
-          isRTL,
-        });
-        const minTextWidth = 24;
-        const textProps = getSegmentTextProps({
-          availableWidth,
-          minTextWidth,
-          textX,
-          textY,
-          value: d.value!,
-          culture,
-          onMouseOver: event => _handleHover(d, event),
-          onMouseMove: event => _handleHover(d, event),
-          onMouseOut: () => _handleMouseOut(),
-        });
-        return renderFunnelSegment({
-          key: i,
-          pathD,
-          fill: d.color!,
-          opacity: legendHighlighted(d.stage as string) || noLegendHighlighted() ? 1 : 0.1,
-          onMouseOver: event => _handleHover(d, event),
-          onMouseMove: event => _handleHover(d, event),
-          onMouseOut: () => _handleMouseOut(),
-          textProps,
-          isRTL,
-          funnelWidth,
-        });
+    return data.map((d, i) => {
+      const geometryProps =
+        props.orientation === 'horizontal'
+          ? getHorizontalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL })
+          : getVerticalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL });
+
+      const { pathD, textX, textY, availableWidth } = geometryProps;
+      const minTextWidth = 24;
+      const eventHandlerProps = _getEventHandlerProps(d);
+      const textProps = getSegmentTextProps({
+        availableWidth,
+        minTextWidth,
+        textX,
+        textY,
+        value: d.value!,
+        ...eventHandlerProps,
       });
-    } else {
-      return data.map((d, i) => {
-        const { pathD, textX, textY, availableWidth } = getVerticalFunnelSegmentGeometry({
-          d,
-          i,
-          data,
-          funnelWidth,
-          funnelHeight,
-          isRTL,
-        });
-        const minTextWidth = 24;
-        const textProps = getSegmentTextProps({
-          availableWidth,
-          minTextWidth,
-          textX,
-          textY,
-          value: d.value!,
-          culture,
-          onMouseOver: event => _handleHover(d, event),
-          onMouseMove: event => _handleHover(d, event),
-          onMouseOut: () => _handleMouseOut(),
-        });
-        return renderFunnelSegment({
-          key: i,
-          pathD,
-          fill: d.color!,
-          opacity: legendHighlighted(d.stage as string) || noLegendHighlighted() ? 1 : 0.1,
-          onMouseOver: event => _handleHover(d, event),
-          onMouseMove: event => _handleHover(d, event),
-          onMouseOut: () => _handleMouseOut(),
-          textProps,
-          isRTL,
-          funnelWidth,
-        });
+
+      return _renderFunnelSegment({
+        key: i,
+        pathD,
+        fill: d.color!,
+        opacity: legendHighlighted(d.stage as string) || noLegendHighlighted() ? 1 : 0.1,
+        textProps,
+        data: d,
       });
-    }
+    });
   }
 
   function isStackedFunnelData(data: IFunnelChartDataPoint[]): boolean {
     return Array.isArray(data) && data.every(stage => Array.isArray(stage.subValues));
   }
 
+  function _renderStackedSegment(
+    stage: IFunnelChartDataPoint,
+    subValue: { value: number; color: string; category: string },
+    stageIndex: number,
+    subValueIndex: number,
+    geometryParams: {
+      stages: IFunnelChartDataPoint[];
+      totals: number[];
+      maxTotal: number;
+      funnelWidth: number;
+      funnelHeight: number;
+      isRTL: boolean;
+    },
+  ): JSX.Element {
+    const geom =
+      props.orientation === 'horizontal'
+        ? getStackedHorizontalFunnelSegmentGeometry({ ...geometryParams, i: stageIndex, k: subValueIndex })
+        : getStackedVerticalFunnelSegmentGeometry({ ...geometryParams, i: stageIndex, k: subValueIndex });
+
+    const minTextWidth = 24;
+    const eventHandlerProps = _getEventHandlerProps({ stage: stage.stage as string, subValue });
+    const textProps = getSegmentTextProps({
+      availableWidth: geom.availableWidth,
+      minTextWidth,
+      textX: geom.textX,
+      textY: geom.textY,
+      value: subValue.value,
+      ...eventHandlerProps,
+    });
+
+    return _renderFunnelSegment({
+      key: `${stageIndex}-${subValueIndex}`,
+      pathD: geom.pathD,
+      fill: subValue.color,
+      opacity:
+        (isStackedFunnelData(props.data) && legendHighlighted(subValue.category)) || noLegendHighlighted() ? 1 : 0.1,
+      textProps,
+      data: { stage: stage.stage as string, subValue },
+    });
+  }
+
   function _createStackedFunnel(containerHeight: number, containerWidth: number): JSX.Element[] {
-    const { data, culture, orientation = 'horizontal' } = props;
+    const { data } = props;
 
     const stages = data;
-    const totals = stages.map(s => s?.subValues?.reduce((sum, s) => sum + s.value, 0) ?? 0);
+    const totals = stages.map(s => s?.subValues?.reduce((sum, subValue) => sum + subValue.value, 0) ?? 0);
     const maxTotal = Math.max(...totals);
 
     const funnelWidth = containerWidth;
@@ -210,93 +289,21 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
 
     const paths: JSX.Element[] = [];
 
-    if (orientation === 'horizontal') {
-      for (let i = 0; i < stages.length; i++) {
-        const cur = stages[i];
-        for (let k = 0; k < (cur.subValues ?? []).length; k++) {
-          const v = cur.subValues?.[k];
-          if (!v) continue;
-          const geom = getStackedHorizontalFunnelSegmentGeometry({
-            i,
-            k,
-            stages,
-            totals,
-            maxTotal,
-            funnelWidth,
-            funnelHeight,
-          });
-          const minTextWidth = 24;
-          const textProps = getSegmentTextProps({
-            availableWidth: geom.availableWidth,
-            minTextWidth,
-            textX: geom.textX,
-            textY: geom.textY,
-            value: v.value,
-            culture,
-            onMouseOver: event => _handleStackedHover(cur.stage as string, v, event),
-            onMouseMove: event => _handleStackedHover(cur.stage as string, v, event),
-            onMouseOut: () => _handleMouseOut(),
-          });
-          paths.push(
-            renderFunnelSegment({
-              key: `${i}-${k}`,
-              pathD: geom.pathD,
-              fill: v.color,
-              opacity:
-                (isStackedFunnelData(props.data) && legendHighlighted(v.category)) || noLegendHighlighted() ? 1 : 0.1,
-              onMouseOver: event => _handleStackedHover(cur.stage as string, v, event),
-              onMouseMove: event => _handleStackedHover(cur.stage as string, v, event),
-              onMouseOut: () => _handleMouseOut(),
-              textProps,
-              isRTL,
-              funnelWidth,
-            }),
-          );
-        }
-      }
-    } else {
-      for (let i = 0; i < stages.length; i++) {
-        const cur = stages[i];
-        for (let k = 0; k < (cur.subValues ?? []).length; k++) {
-          const v = cur.subValues?.[k];
-          if (!v) continue;
-          const geom = getStackedVerticalFunnelSegmentGeometry({
-            i,
-            k,
-            stages,
-            totals,
-            maxTotal,
-            funnelWidth,
-            funnelHeight,
-          });
-          const minTextWidth = 24;
-          const textProps = getSegmentTextProps({
-            availableWidth: geom.availableWidth,
-            minTextWidth,
-            textX: geom.textX,
-            textY: geom.textY,
-            value: v.value,
-            culture,
-            onMouseOver: event => _handleStackedHover(cur.stage as string, v, event),
-            onMouseMove: event => _handleStackedHover(cur.stage as string, v, event),
-            onMouseOut: () => _handleMouseOut(),
-          });
-          paths.push(
-            renderFunnelSegment({
-              key: `${i}-${k}`,
-              pathD: geom.pathD,
-              fill: v.color,
-              opacity:
-                (isStackedFunnelData(props.data) && legendHighlighted(v.category)) || noLegendHighlighted() ? 1 : 0.1,
-              onMouseOver: event => _handleStackedHover(cur.stage as string, v, event),
-              onMouseMove: event => _handleStackedHover(cur.stage as string, v, event),
-              onMouseOut: () => _handleMouseOut(),
-              textProps,
-              isRTL,
-              funnelWidth,
-            }),
-          );
-        }
+    const geometryParams = {
+      stages,
+      totals,
+      maxTotal,
+      funnelWidth,
+      funnelHeight,
+      isRTL,
+    };
+
+    for (let i = 0; i < stages.length; i++) {
+      const cur = stages[i];
+      for (let k = 0; k < (cur.subValues ?? []).length; k++) {
+        const v = cur.subValues?.[k];
+        if (!v) {continue;}
+        paths.push(_renderStackedSegment(cur, v, i, k, geometryParams));
       }
     }
     return paths;
@@ -306,54 +313,40 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     if (props.hideLegend) {
       return <></>;
     }
+    let legends: ILegend[];
 
-    const funnelData = props.data;
-
-    // For stacked funnel, show only the unique categories as legends (e.g., 'A', 'B')
-    if (isStackedFunnelData(funnelData)) {
+    if (isStacked) {
       // Collect unique categories and their color
       const categoryMap: Record<string, string> = {};
-      funnelData.forEach((stage: IFunnelChartDataPoint) => {
+      props.data.forEach((stage: IFunnelChartDataPoint) => {
         (stage.subValues || []).forEach(sub => {
           if (!(sub.category in categoryMap)) {
             categoryMap[sub.category] = sub.color;
           }
         });
       });
-      const legends: ILegend[] = Object.entries(categoryMap).map(([category, color]) => ({
+      legends = Object.entries(categoryMap).map(([category, color]) => ({
         title: category,
         color,
         hoverAction: () => setHoveredStage(category),
         onMouseOutAction: () => setHoveredStage(null),
       }));
-
-      return (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Legends
-            legends={legends}
-            centerLegends
-            onChange={_onLegendSelectionChange}
-            ref={legendsRef}
-            {...props.legendProps}
-          />
-        </div>
-      );
+    } else {
+      legends = props.data.map((d: IFunnelChartDataPoint) => ({
+        title: d.stage as string,
+        color: d.color!,
+        hoverAction: () => setHoveredStage(d.stage as string),
+        onMouseOutAction: () => setHoveredStage(null),
+      }));
     }
-
-    const legends: ILegend[] = funnelData.map((d: IFunnelChartDataPoint) => ({
-      title: d.stage as string,
-      color: d.color!,
-      hoverAction: () => setHoveredStage(d.stage as string),
-      onMouseOutAction: () => setHoveredStage(null),
-    }));
 
     return (
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Legends
-          legends={legends}
-          centerLegends
-          onChange={_onLegendSelectionChange}
           ref={legendsRef}
+          legends={legends}
+          centerLegends={true}
+          onChange={_onLegendSelectionChangeCallback}
           {...props.legendProps}
         />
       </div>
@@ -364,22 +357,25 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     return !(props.data && props.data.length > 0);
   }
 
-  const calloutProps = {
-    isCalloutVisible: isCalloutVisible,
-    directionalHint: DirectionalHint.topAutoEdge,
-    id: `toolTip${_tooltipId}`,
-    target: refSelected,
-    color: calloutData?.color,
-    XValue: calloutData?.stage,
-    YValue: calloutData?.value,
-    isBeakVisible: false,
-    gapSpace: 15,
-    onDismiss: () => {
-      setIsCalloutVisible(false);
-    },
-    preventDismissOnLostFocus: true,
-    ...props.calloutProps!,
-  };
+  const calloutProps = React.useMemo(
+    () => ({
+      isCalloutVisible,
+      directionalHint: DirectionalHint.topAutoEdge,
+      id: `toolTip${_tooltipId}`,
+      target: refSelected,
+      color: calloutData?.color,
+      XValue: calloutData?.stage,
+      YValue: calloutData?.value,
+      isBeakVisible: false,
+      gapSpace: 15,
+      onDismiss: () => {
+        setIsCalloutVisible(false);
+      },
+      preventDismissOnLostFocus: true,
+      ...props.calloutProps,
+    }),
+    [isCalloutVisible, _tooltipId, refSelected, calloutData, props.calloutProps],
+  );
 
   const width = props.width || 350;
   const height = props.height || 500;
@@ -405,7 +401,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
                 : `translate(${funnelOffsetX}, ${funnelMarginTop})`
             }
           >
-            {isStackedFunnelData(props.data)
+            {isStacked
               ? _createStackedFunnel(height - funnelMarginTop, funnelWidth)
               : _createFunnel(height - funnelMarginTop, funnelWidth)}
           </g>
@@ -430,106 +426,3 @@ FunnelChartBase.displayName = 'FunnelChart';
 FunnelChartBase.defaultProps = {
   orientation: 'horizontal',
 };
-
-function renderSegmentText({
-  show,
-  x,
-  y,
-  value,
-  culture,
-  onMouseOver,
-  onMouseMove,
-  onMouseOut,
-  isRTL,
-  funnelWidth,
-}: {
-  show: boolean;
-  x: number;
-  y: number;
-  value: number;
-  culture: string | undefined;
-  onMouseOver: (event: React.MouseEvent<SVGElement>) => void;
-  onMouseMove: (event: React.MouseEvent<SVGElement>) => void;
-  onMouseOut: () => void;
-  isRTL: boolean;
-  funnelWidth: number;
-}) {
-  if (!show) return null;
-  if (isRTL) {
-    return (
-      <g transform={`scale(-1,1) translate(${-funnelWidth},0)`}>
-        <text
-          x={funnelWidth - x}
-          y={y}
-          textAnchor="middle"
-          alignmentBaseline="middle"
-          onMouseOver={onMouseOver}
-          onMouseMove={onMouseMove}
-          onMouseOut={onMouseOut}
-        >
-          {formatToLocaleString(value.toString(), culture)}
-        </text>
-      </g>
-    );
-  }
-  return (
-    <text
-      x={x}
-      y={y}
-      textAnchor="middle"
-      alignmentBaseline="middle"
-      onMouseOver={onMouseOver}
-      onMouseMove={onMouseMove}
-      onMouseOut={onMouseOut}
-    >
-      {formatToLocaleString(value.toString(), culture)}
-    </text>
-  );
-}
-
-function renderFunnelSegment({
-  key,
-  pathD,
-  fill,
-  opacity,
-  onMouseOver,
-  onMouseMove,
-  onMouseOut,
-  textProps,
-  isRTL,
-  funnelWidth,
-}: {
-  key: string | number;
-  pathD: string;
-  fill: string;
-  opacity: number;
-  onMouseOver: (event: React.MouseEvent<SVGElement>) => void;
-  onMouseMove: (event: React.MouseEvent<SVGElement>) => void;
-  onMouseOut: () => void;
-  textProps?: {
-    show: boolean;
-    x: number;
-    y: number;
-    value: number;
-    culture: string | undefined;
-    onMouseOver: (event: React.MouseEvent<SVGElement>) => void;
-    onMouseMove: (event: React.MouseEvent<SVGElement>) => void;
-    onMouseOut: () => void;
-  };
-  isRTL: boolean;
-  funnelWidth: number;
-}) {
-  return (
-    <g key={key}>
-      <path
-        d={pathD}
-        fill={fill}
-        opacity={opacity}
-        onMouseOver={onMouseOver}
-        onMouseMove={onMouseMove}
-        onMouseOut={onMouseOut}
-      />
-      {textProps && renderSegmentText({ ...textProps, isRTL, funnelWidth })}
-    </g>
-  );
-}
