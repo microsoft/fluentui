@@ -252,14 +252,14 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       In: createMotionComponent(
         // If we have a motion function, wrap it to forward the runtime params and pick `enter`.
         // Otherwise, pass the `enter` motion object directly.
-        typeof value !== 'function' ? value.enter : (...args: Parameters<typeof value>) => value(...args).enter,
+        typeof value === 'function' ? (...args: Parameters<typeof value>) => value(...args).enter : value.enter,
       ),
 
       // Wrap `exit` in its own motion component as a static method, e.g. <Fade.Out>
       Out: createMotionComponent(
         // If we have a motion function, wrap it to forward the runtime params and pick `exit`.
         // Otherwise, pass the `exit` motion object directly.
-        typeof value !== 'function' ? value.exit : (...args: Parameters<typeof value>) => value(...args).exit,
+        typeof value === 'function' ? (...args: Parameters<typeof value>) => value(...args).exit : value.exit,
       ),
     },
   );
