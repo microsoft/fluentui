@@ -388,5 +388,6 @@
   },
   "nx": {
     "includedScripts": []
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha224.b3354a4448ff7f95109b317dcf100acbb19dd7a067ff7fad9acf941f"
 }
