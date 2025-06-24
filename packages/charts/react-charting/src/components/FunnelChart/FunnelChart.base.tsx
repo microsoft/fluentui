@@ -72,7 +72,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     mouseEvent: React.MouseEvent<SVGElement>,
   ) {
     mouseEvent?.persist();
-    setHoveredStage(stage);
+    setHoveredStage(subValue.category);
     setCalloutData({
       stage,
       value: subValue.value,
@@ -153,7 +153,9 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     value: number;
     textColor: string;
   }) {
-    if (!show) {return null;}
+    if (!show) {
+      return null;
+    }
 
     const textElement = (
       <text x={isRTL ? funnelWidth - x : x} y={y} textAnchor="middle" alignmentBaseline="middle" fill={textColor}>
@@ -210,7 +212,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
           : getVerticalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL });
 
       const { pathD, textX, textY, availableWidth } = geometryProps;
-      const minTextWidth = 24;
+      const minTextWidth = 16;
       const eventHandlerProps = _getEventHandlerProps(d);
       const textProps = getSegmentTextProps({
         availableWidth,
@@ -255,7 +257,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
         ? getStackedHorizontalFunnelSegmentGeometry({ ...geometryParams, i: stageIndex, k: subValueIndex })
         : getStackedVerticalFunnelSegmentGeometry({ ...geometryParams, i: stageIndex, k: subValueIndex });
 
-    const minTextWidth = 24;
+    const minTextWidth = 16;
     const eventHandlerProps = _getEventHandlerProps({ stage: stage.stage as string, subValue });
     const textProps = getSegmentTextProps({
       availableWidth: geom.availableWidth,
@@ -302,7 +304,9 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       const cur = stages[i];
       for (let k = 0; k < (cur.subValues ?? []).length; k++) {
         const v = cur.subValues?.[k];
-        if (!v) {continue;}
+        if (!v) {
+          continue;
+        }
         paths.push(_renderStackedSegment(cur, v, i, k, geometryParams));
       }
     }
