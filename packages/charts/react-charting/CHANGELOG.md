@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 19 Jun 2025 07:20:01 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Jun 2025 07:19:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.7)
+
+Mon, 23 Jun 2025 07:19:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.6..@fluentui/react-charting_v5.24.7)
+
+### Patches
+
+- make change in createNumericYAxis function in utilities  ([PR #34665](https://github.com/microsoft/fluentui/pull/34665) by anushgupta@microsoft.com)
+- feat: enable wrapping of string x-axis labels in DeclarativeChart + hide overlapping labels based on post-transform width ([PR #34666](https://github.com/microsoft/fluentui/pull/34666) by kumarkshitij@microsoft.com)
+- fix: correct bar height rendering for values less than 1 in VSBC ([PR #34680](https://github.com/microsoft/fluentui/pull/34680) by kumarkshitij@microsoft.com)
 
 ## [5.24.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.6)
 

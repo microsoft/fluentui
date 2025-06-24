@@ -55,6 +55,9 @@ import {
   areArraysEqual,
   calculateLongestLabelWidth,
   sortAxisCategories,
+  calcTotalWidth,
+  calcBandwidth,
+  calcRequiredWidth,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { ILegendContainer } from '../Legends/index';
@@ -452,11 +455,14 @@ export class VerticalBarChartBase
     const { palette } = this.props.theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
     this._isHavingLine = this._checkForLine();
-    this._xAxisInnerPadding = getScalePadding(
-      this.props.xAxisInnerPadding,
-      this.props.xAxisPadding,
-      this.props.mode === 'histogram' ? 0 : this._xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
-    );
+    this._xAxisInnerPadding =
+      this.props.mode === 'histogram'
+        ? 0
+        : getScalePadding(
+            this.props.xAxisInnerPadding,
+            this.props.xAxisPadding,
+            this._xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
+          );
     this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding, this.props.xAxisPadding, 0);
   }
 
@@ -1288,11 +1294,7 @@ export class VerticalBarChartBase
     const uniqueX = Object.values(mapX);
 
     /** Total width available to render the bars */
-    const totalWidth =
-      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
-    /** Rate at which the space between the bars changes wrt the bar width */
-    const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
-    const numBars = uniqueX.length + (uniqueX.length - 1) * barGapRate;
+    const totalWidth = calcTotalWidth(containerWidth, this.margins, MIN_DOMAIN_MARGIN);
 
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding, this.props.xAxisPadding)) {
@@ -1304,7 +1306,7 @@ export class VerticalBarChartBase
         // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
-        const reqWidth = numBars * this._barWidth;
+        const reqWidth = calcRequiredWidth(this._barWidth, uniqueX.length, this._xAxisInnerPadding);
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
@@ -1312,13 +1314,15 @@ export class VerticalBarChartBase
         }
       } else if (['plotly', 'histogram'].includes(this.props.mode!) && uniqueX.length > 1) {
         // Calculate the remaining width after rendering bars at their maximum allowable width
-        const bandwidth = totalWidth / numBars;
+        const bandwidth = calcBandwidth(totalWidth, uniqueX.length, this._xAxisInnerPadding);
         const barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, bandwidth, this.props.mode);
-        let reqWidth = numBars * barWidth;
+        let reqWidth = calcRequiredWidth(barWidth, uniqueX.length, this._xAxisInnerPadding);
         const margin1 = (totalWidth - reqWidth) / 2;
 
         let margin2 = Number.POSITIVE_INFINITY;
-        if (!this.props.hideTickOverlap) {
+        // This logic may introduce gaps between histogram bars when the barWidth is restricted.
+        // So disable it for histogram mode.
+        if (this.props.mode !== 'histogram') {
           // Calculate the remaining width after accounting for the space required to render x-axis labels
           const step = calculateLongestLabelWidth(uniqueX as string[]) + 20;
           reqWidth = (uniqueX.length - this._xAxisInnerPadding) * step;
@@ -1333,7 +1337,7 @@ export class VerticalBarChartBase
         // This only works if the bin centers are consistent across all legend groups; otherwise,
         // the calculated domainMargin may be too small.
         const barWidth = this.props.maxBarWidth!;
-        const reqWidth = numBars * barWidth;
+        const reqWidth = calcRequiredWidth(barWidth, uniqueX.length, this._xAxisInnerPadding);
         this._domainMargin += Math.max(0, (totalWidth - reqWidth) / 2);
       }
 
@@ -1350,7 +1354,7 @@ export class VerticalBarChartBase
         this.props.maxBarWidth,
         calculateAppropriateBarWidth(
           uniqueX as number[] | Date[],
-          totalWidth - 2 * (this._domainMargin - MIN_DOMAIN_MARGIN),
+          calcTotalWidth(containerWidth, this.margins, this._domainMargin),
           this._xAxisInnerPadding,
         ),
         this.props.mode,

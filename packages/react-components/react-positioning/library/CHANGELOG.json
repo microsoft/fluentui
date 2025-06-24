@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Mon, 23 Jun 2025 15:49:47 GMT",
+      "tag": "@fluentui/react-positioning_v9.18.3",
+      "version": "9.18.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a00b7d0f205b6178637eddd2e981b5e12efb3df5",
+            "comment": "feat: improve handling of different shapes of rectangles in useSafeZoneArea()"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jun 2025 17:33:58 GMT",
       "tag": "@fluentui/react-positioning_v9.18.2",
       "version": "9.18.2",

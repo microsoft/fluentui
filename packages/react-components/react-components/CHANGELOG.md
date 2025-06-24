@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 18 Jun 2025 17:33:57 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Jun 2025 15:49:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.66.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.3)
+
+Mon, 23 Jun 2025 15:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.2..@fluentui/react-components_v9.66.3)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - Add negative y value support in GVBC ([PR #34687](https://github.com/microsoft/fluentui/pull/34687) by anushgupta@microsoft.com)
+  - add support for negative vsbc ([PR #34668](https://github.com/microsoft/fluentui/pull/34668) by anushgupta@microsoft.com)
+  - port v8 changes to v9 ([PR #34665](https://github.com/microsoft/fluentui/pull/34665) by anushgupta@microsoft.com)
+- `@fluentui/react-components`
+  - feat: export usePositioning() & useSafeZoneArea() hooks ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: improve handling of different shapes of rectangles in useSafeZoneArea() ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by olfedias@microsoft.com)
 
 ## [9.66.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.2)
 
