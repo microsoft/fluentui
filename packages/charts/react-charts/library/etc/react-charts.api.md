@@ -1042,6 +1042,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
         startValue: number;
         endValue: number;
     };
+    getYDomainMargins?: (containerHeight: number) => Margins;
     isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;

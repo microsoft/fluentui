@@ -90,22 +90,24 @@ export const HorizontalBarWithAxisDynamic = () => {
     setWidth(parseInt(e.target.value, 10));
   };
   const _onAxisTypeChange = (ev: React.FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData): void => {
-    if (data) {
-      setYAxisType(data.value);
-      setDynamicData(_getData(dataSize, data.value));
-    }
+    setYAxisType(data.value);
+    setDynamicData(_getData(dataSize, data.value));
+    setStatusKey(statusKey + 1);
   };
   const _onYAxisPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setYAxisPadding(Number(e.target.value));
+    setStatusKey(statusKey + 1);
   };
 
   const _onYAxisPaddingCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setYAxisPaddingEnabled(checked.checked as boolean);
+    setStatusKey(statusKey + 1);
   };
   const _onDataSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const size = Number(e.target.value);
     setDataSize(size);
     setDynamicData(_getData(size, yAxisType));
+    setStatusKey(statusKey + 1);
   };
 
   const _onSwitchRoundCorners = React.useCallback(ev => {

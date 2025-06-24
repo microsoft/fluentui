@@ -871,7 +871,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         legendBars={legendBars}
         barwidth={_barHeight}
         getmargins={_getMargins}
-        getDomainMargins={_getDomainMarginsForHorizontalBarChart}
+        getYDomainMargins={_getDomainMarginsForHorizontalBarChart}
         getGraphData={_getGraphData}
         getAxisData={_getAxisData}
         onChartMouseLeave={_handleChartMouseLeave}
