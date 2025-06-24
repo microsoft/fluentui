@@ -16,7 +16,7 @@ import type {
   AnimationHandle,
 } from '../types';
 import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
-import { createMotionComponent } from './createMotionComponent';
+import { createMotionComponent, MotionComponentProps } from './createMotionComponent';
 
 /**
  * @internal A private symbol to store the motion definition on the component for variants.
