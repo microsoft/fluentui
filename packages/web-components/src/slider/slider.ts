@@ -340,6 +340,12 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @internal
    */
   @observable
+  public trackTop: number = 0;
+
+  /**
+   * @internal
+   */
+  @observable
   public trackLeft: number = 0;
 
   /**
@@ -651,14 +657,20 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   private setupTrackConstraints = (): void => {
-    const clientRect: DOMRect = this.track.getBoundingClientRect();
+    const trackClientRect: DOMRect = this.track.getBoundingClientRect();
     this.trackWidth = this.track.clientWidth;
     this.trackMinWidth = this.track.clientLeft;
-    this.trackHeight = clientRect.top;
-    this.trackMinHeight = clientRect.bottom;
-    this.trackLeft = this.getBoundingClientRect().left;
+    this.trackHeight = trackClientRect.top;
+    this.trackMinHeight = trackClientRect.bottom;
+
+    const clientRect = this.getBoundingClientRect();
+    this.trackTop = clientRect.top;
+    this.trackLeft = clientRect.left;
     if (this.trackWidth === 0) {
       this.trackWidth = 1;
+    }
+    if (this.trackHeight === 0) {
+      this.trackHeight = 1;
     }
   };
 
@@ -705,13 +717,12 @@ export class Slider extends FASTElement implements SliderConfiguration {
 
     // update the value based on current position
     const sourceEvent = window.TouchEvent && event instanceof TouchEvent ? event.touches[0] : (event as PointerEvent);
-
-    const thumbWidth = this.thumb.getBoundingClientRect().width;
-
+    const thumbHalfSize =
+      this.orientation === Orientation.vertical ? this.thumb.clientHeight / 2 : this.thumb.clientWidth / 2;
     const eventValue: number =
       this.orientation === Orientation.vertical
-        ? sourceEvent.pageY - document.documentElement.scrollTop
-        : sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft - thumbWidth / 2;
+        ? sourceEvent.pageY - document.documentElement.scrollTop - this.trackTop - thumbHalfSize
+        : sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft - thumbHalfSize;
 
     this.value = `${this.calculateNewValue(eventValue)}`;
   };
@@ -730,8 +741,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // update the value based on current position
     const newPosition = convertPixelToPercent(
       rawValue,
-      this.orientation === Orientation.vertical ? this.trackMinHeight : this.trackMinWidth,
-      this.orientation === Orientation.vertical ? this.trackHeight : this.trackWidth,
+      this.orientation === Orientation.vertical ? this.trackMinHeight - this.trackHeight : this.trackMinWidth,
+      this.orientation === Orientation.vertical ? 0 : this.trackWidth,
       this.direction,
     );
     const newValue: number = (this.maxAsNumber - this.minAsNumber) * newPosition + this.minAsNumber;
@@ -767,10 +778,12 @@ export class Slider extends FASTElement implements SliderConfiguration {
 
       if (event) {
         this.setupTrackConstraints();
+        const thumbHalfSize =
+          this.orientation === Orientation.vertical ? this.thumb.clientHeight / 2 : this.thumb.clientWidth / 2;
         const controlValue: number =
           this.orientation === Orientation.vertical
-            ? event.pageY - document.documentElement.scrollTop
-            : event.pageX - document.documentElement.scrollLeft - this.trackLeft - thumbWidth / 2;
+            ? event.pageY - document.documentElement.scrollTop - this.trackTop - thumbHalfSize
+            : event.pageX - document.documentElement.scrollLeft - this.trackLeft - thumbHalfSize;
 
         this.value = `${this.calculateNewValue(controlValue)}`;
       }
