@@ -23,6 +23,14 @@ export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
 // This links says that makeResetStyles should only be called once per element
 // https://griffel.js.org/react/api/make-reset-styles/#limitations
 
+const { actionButton, toggleButton, menuButton } = splitNavItemClassNames;
+const buttonHoverStyles = {
+  [`& .${actionButton}, & .${toggleButton}, & .${menuButton}`]: {
+    opacity: 1,
+    pointerEvents: 'auto',
+  },
+};
+
 /**
  * Styles for the root slot
  */
@@ -38,13 +46,10 @@ const useSplitNaveItemStyles = makeStyles({
 
     ':hover': {
       backgroundColor: navItemTokens.backgroundColorHover,
-
-      [`& .${splitNavItemClassNames.actionButton}, & .${splitNavItemClassNames.toggleButton}, & .${splitNavItemClassNames.menuButton}`]:
-        {
-          opacity: 1,
-          pointerEvents: 'auto',
-        },
+      ...buttonHoverStyles,
     },
+
+    ':focus-within': buttonHoverStyles,
 
     ':active': {
       backgroundColor: navItemTokens.backgroundColorPressed,
