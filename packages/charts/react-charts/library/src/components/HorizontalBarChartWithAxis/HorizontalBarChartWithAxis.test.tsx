@@ -66,6 +66,83 @@ const chartPointsHBCWA: HorizontalBarChartWithAxisDataPoint[] = [
   },
 ];
 
+const stackedChartPointsHBCWA: HorizontalBarChartWithAxisDataPoint[] = [
+  {
+    x: 10000,
+    y: 'Q1',
+    legend: 'Product A',
+    color: '#0078d4',
+    xAxisCalloutData: '10K',
+    yAxisCalloutData: 'Q1',
+  },
+  {
+    x: -5000,
+    y: 'Q1',
+    legend: 'Product B',
+    color: '#ff8c00',
+    xAxisCalloutData: '-5K',
+    yAxisCalloutData: 'Q1',
+  },
+  {
+    x: 8000,
+    y: 'Q1',
+    legend: 'Product C',
+    color: '#107c10',
+    xAxisCalloutData: '8K',
+    yAxisCalloutData: 'Q1',
+  },
+
+  {
+    x: -7000,
+    y: 'Q2',
+    legend: 'Product A',
+    color: '#0078d4',
+    xAxisCalloutData: '-7K',
+    yAxisCalloutData: 'Q2',
+  },
+  {
+    x: 12000,
+    y: 'Q2',
+    legend: 'Product B',
+    color: '#ff8c00',
+    xAxisCalloutData: '12K',
+    yAxisCalloutData: 'Q2',
+  },
+  {
+    x: 3000,
+    y: 'Q2',
+    legend: 'Product C',
+    color: '#107c10',
+    xAxisCalloutData: '3K',
+    yAxisCalloutData: 'Q2',
+  },
+
+  {
+    x: 15000,
+    y: 'Q3',
+    legend: 'Product A',
+    color: '#0078d4',
+    xAxisCalloutData: '15K',
+    yAxisCalloutData: 'Q3',
+  },
+  {
+    x: -4000,
+    y: 'Q3',
+    legend: 'Product B',
+    color: '#ff8c00',
+    xAxisCalloutData: '-4K',
+    yAxisCalloutData: 'Q3',
+  },
+  {
+    x: 5000,
+    y: 'Q3',
+    legend: 'Product C',
+    color: '#107c10',
+    xAxisCalloutData: '5K',
+    yAxisCalloutData: 'Q3',
+  },
+];
+
 const chartPointsWithStringYAxisHBCWA: HorizontalBarChartWithAxisDataPoint[] = [
   {
     y: 'String One',
@@ -394,6 +471,11 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
 describe('HorizontalBarChartWithAxis snapShot testing', () => {
   it('renders HorizontalBarChartWithAxis correctly', () => {
     let component = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('renders Stacked HorizontalBarChartWithAxis correctly', () => {
+    let component = render(<HorizontalBarChartWithAxis data={stackedChartPointsHBCWA} />);
     expect(component).toMatchSnapshot();
   });
 

@@ -341,10 +341,10 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     let prevWidthNegative = 0;
     let prevPoint = 0;
 
-    const totalPositiveBars = sortedBars.filter(
+    const totalPositiveBars = singleBarData.filter(
       (point: HorizontalBarChartWithAxisDataPoint) => point.x >= X_ORIGIN,
     ).length;
-    const totalNegativeBars = sortedBars.length - totalPositiveBars;
+    const totalNegativeBars = singleBarData.length - totalPositiveBars;
     let currPositiveCounter = 0;
     let currNegativeCounter = 0;
 
@@ -481,13 +481,13 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     let prevWidthPositive = 0;
     let prevWidthNegative = 0;
     let prevPoint = 0;
-    const totalPositiveBars = _points.filter(
+    const totalPositiveBars = singleBarData.filter(
       (point: HorizontalBarChartWithAxisDataPoint) => point.x >= X_ORIGIN,
     ).length;
-    const totalNegativeBars = _points.length - totalPositiveBars;
+    const totalNegativeBars = singleBarData.length - totalPositiveBars;
     let currPositiveCounter = 0;
     let currNegativeCounter = 0;
-    const bars = _points.map((point: HorizontalBarChartWithAxisDataPoint, index: number) => {
+    const bars = singleBarData.map((point: HorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (isLegendHovered || isLegendSelected) {
         shouldHighlight = _isLegendHighlighted(point.legend);
