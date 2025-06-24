@@ -42,12 +42,18 @@ const MyFade = createPresenceComponent({
     keyframes: [{ opacity: 0 }, { opacity: 1 }],
     duration: 4000,
     iterations: Infinity,
+    reducedMotion: {
+      duration: 8000,
+    },
   },
 
   exit: {
     keyframes: [{ opacity: 1 }, { opacity: 0 }],
     duration: 2000,
     iterations: Infinity,
+    reducedMotion: {
+      duration: 8000,
+    },
   },
 });
 
