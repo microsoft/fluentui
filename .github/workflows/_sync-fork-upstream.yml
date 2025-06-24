@@ -81,19 +81,6 @@ jobs:
           git commit -am "Merge upstream/master with conflicts"
           git push https://$GH_PAT@github.com/${{ github.repository }}.git $BRANCH
 
-      - name: Create Pull Request
-        if: steps.check-conflicts.outputs.has_conflicts == 'true'
-        uses: repo-sync/pull-request@v2
-        with:
-          source_branch: 'upstream-sync-${{ steps.date.outputs.date }}'
-          destination_branch: ${{ env.DEFAULT_BRANCH }}
-          pr_title: 'Sync with upstream/master – Merge Conflicts'
-          pr_body: |
-            This PR was automatically created by the GitHub Actions workflow to sync with upstream.
-            **Merge conflicts detected**
-            Please resolve the conflicts manually and merge this PR.
-          github_token: ${{ secrets.FLUENTUI_ACTION }}
-
       - name: Trigger Build & Publish Workflow
         if: steps.check-conflicts.outputs.has_conflicts == 'false' && steps.check-changes.outputs.changes_made == 'true'
         uses: actions/github-script@v7
