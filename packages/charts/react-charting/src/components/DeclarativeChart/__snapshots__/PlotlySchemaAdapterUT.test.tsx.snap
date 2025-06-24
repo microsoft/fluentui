@@ -5584,7 +5584,7 @@ Object {
           },
         ],
         "legend": "Trace 0",
-        "legendShape": "circle",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
           "mode": "markers",
@@ -6096,7 +6096,7 @@ Object {
           },
         ],
         "legend": "Trace 1",
-        "legendShape": "circle",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
           "mode": "markers",
@@ -6608,7 +6608,7 @@ Object {
           },
         ],
         "legend": "Trace 2",
-        "legendShape": "circle",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
           "mode": "markers",
