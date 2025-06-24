@@ -146,6 +146,13 @@ module.exports = createRule({
       },
       // eslint-disable-next-line @typescript-eslint/naming-convention
       ExportSpecifier(exportSpecifier) {
+        if (
+          typeof exportSpecifier.exported !== 'object' ||
+          exportSpecifier.exported.type !== AST_NODE_TYPES.Identifier
+        ) {
+          return;
+        }
+
         if (exportSpecifier.exported.name.includes('Context')) {
           checkContextType(exportSpecifier, exportSpecifier.exported.name);
         }
