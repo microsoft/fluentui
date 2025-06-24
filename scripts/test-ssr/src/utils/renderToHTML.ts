@@ -3,7 +3,7 @@ import * as path from 'path';
 
 import { RendererProvider, createDOMRenderer, renderToStyleElements } from '@griffel/react';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 
 type RenderToHTMLConfig = {
   cjsOutfile: string;
@@ -25,12 +25,10 @@ export async function renderToHTML(config: RenderToHTMLConfig): Promise<void> {
     throw new Error(`"${cjsOutfile}" does not have an export named "App", please check the matching file`);
   }
 
-  const resultHTML = ReactDOM.renderToString(
+  const resultHTML = renderToString(
     React.createElement(RendererProvider, { renderer, children: React.createElement(App) }),
   );
-  const resultStylesHTML = ReactDOM.renderToStaticMarkup(
-    React.createElement(React.Fragment, null, renderToStyleElements(renderer)),
-  );
+  const resultStylesHTML = renderToString(React.createElement(React.Fragment, null, renderToStyleElements(renderer)));
 
   const scriptPath = path.relative(path.dirname(htmlOutfile), esmOutfile);
   const htmlPage = `
