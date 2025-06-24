@@ -459,7 +459,7 @@ export const useHamburgerStyles_unstable: (state: HamburgerState) => HamburgerSt
 export const useNav_unstable: (props: NavProps, ref: React_2.Ref<HTMLDivElement>) => NavState;
 
 // @public
-export const useNavCategory_unstable: (props: NavCategoryProps, ref: React.Ref<HTMLDivElement>) => NavCategoryState;
+export const useNavCategory_unstable: (props: NavCategoryProps, ref: React_2.Ref<HTMLDivElement>) => NavCategoryState;
 
 // @public (undocumented)
 export const useNavCategoryContext_unstable: () => NavCategoryContextValue;
