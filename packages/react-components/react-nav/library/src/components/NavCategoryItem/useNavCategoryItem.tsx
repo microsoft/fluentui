@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
 import { ChevronDown20Regular } from '@fluentui/react-icons';
 import { createPresenceComponent, motionTokens, presenceMotionSlot } from '@fluentui/react-motion';
-import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
+
 import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 import { useNavContext_unstable } from '../NavContext';
@@ -71,7 +71,7 @@ export const useNavCategoryItem_unstable = (
       root: 'button',
       icon: 'span',
       expandIcon: 'span',
-      expandIconMotion: ExpandIconMotion as React.FC<PresenceMotionSlotProps>,
+      expandIconMotion: ExpandIconMotion,
     },
     root: slot.always(
       getIntrinsicElementProps('button', {

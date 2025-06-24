@@ -1,17 +1,13 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { createPresenceComponent, motionTokens, presenceMotionSlot } from '@fluentui/react-motion';
+
 import type {
   NavSubItemGroupCollapseMotionParams,
   NavSubItemGroupProps,
   NavSubItemGroupState,
 } from './NavSubItemGroup.types';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
-import {
-  PresenceMotionSlotProps,
-  createPresenceComponent,
-  motionTokens,
-  presenceMotionSlot,
-} from '@fluentui/react-motion';
 import { useNavContext_unstable } from '../NavContext';
 
 const smallSize = 28; // 28px for small density
@@ -71,7 +67,7 @@ export const useNavSubItemGroup_unstable = (
     open,
     components: {
       root: 'div',
-      collapseMotion: NavGroupMotion as React.FC<PresenceMotionSlotProps>,
+      collapseMotion: NavGroupMotion,
     },
 
     root: slot.always(

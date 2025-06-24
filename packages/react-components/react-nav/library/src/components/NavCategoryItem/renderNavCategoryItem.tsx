@@ -8,19 +8,19 @@ import { NavCategoryItemProvider } from '../NavCategoryItemContext';
 const getExpandIcon = (state: NavCategoryItemState) => {
   assertSlots<NavCategoryItemSlots>(state);
 
-  if (state.expandIcon) {
-    if (!state.expandIconMotion) {
-      return <state.expandIcon />;
-    }
-
-    return (
-      <state.expandIconMotion>
-        <state.expandIcon />
-      </state.expandIconMotion>
-    );
+  if (!state.expandIcon) {
+    return null;
   }
 
-  return null;
+  if (!state.expandIconMotion) {
+    return <state.expandIcon />;
+  }
+
+  return (
+    <state.expandIconMotion>
+      <state.expandIcon />
+    </state.expandIconMotion>
+  );
 };
 
 /**

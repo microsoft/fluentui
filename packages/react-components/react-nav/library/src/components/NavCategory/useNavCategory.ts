@@ -11,7 +11,9 @@ import type { NavCategoryProps, NavCategoryState } from './NavCategory.types';
  * @param props - props from this instance of NavCategory
  * @param ref - reference to root HTMLDivElement of NavCategory
  */
-export const useNavCategory_unstable = (props: NavCategoryProps): NavCategoryState => {
+// As this component is renderless, the ref is unnecessary, but changing it would be a breaking change.
+// eslint-disable-next-line no-unused-vars
+export const useNavCategory_unstable = (props: NavCategoryProps, ref: React.Ref<HTMLDivElement>): NavCategoryState => {
   const { value, children } = props;
 
   const { openCategories } = useNavContext_unstable();
