@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix start and end slot for tabs",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
