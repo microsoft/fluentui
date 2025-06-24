@@ -94,11 +94,10 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   });
 
   React.useEffect(() => {
-    if (prevSelectedLegendsRef.current) {
-      if (!areArraysEqual(prevSelectedLegendsRef.current, props.legendProps?.selectedLegends)) {
-        setSelectedLegends(props.legendProps?.selectedLegends || []);
-      }
-    } else {
+    if (
+      prevSelectedLegendsRef.current &&
+      !areArraysEqual(prevSelectedLegendsRef.current, props.legendProps?.selectedLegends)
+    ) {
       setSelectedLegends(props.legendProps?.selectedLegends || []);
     }
     prevSelectedLegendsRef.current = props.legendProps?.selectedLegends;
@@ -355,16 +354,15 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     }
   }, [_uniqueCallOutID, isCalloutVisible, setActivePoint, setCalloutVisible]);
 
-  /**
-   * This function checks if none of the legends is selected or hovered.*/
-
-  const _noLegendHighlighted = React.useCallback((): boolean => {
-    return selectedLegends.length === 0 && activeLegend === '';
-  }, [selectedLegends, activeLegend]);
-
   const _getHighlightedLegend = React.useCallback((): string[] => {
     return selectedLegends.length > 0 ? selectedLegends : activeLegend ? [activeLegend] : [];
   }, [selectedLegends, activeLegend]);
+
+  /**
+   * This function checks if none of the legends is selected or hovered.*/
+  const _noLegendHighlighted = React.useCallback((): boolean => {
+    return _getHighlightedLegend().length === 0;
+  }, [_getHighlightedLegend]);
 
   /**
    * This function checks if the given legend is highlighted or not.
