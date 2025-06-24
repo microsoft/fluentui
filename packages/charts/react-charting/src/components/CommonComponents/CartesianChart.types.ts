@@ -6,6 +6,7 @@ import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import {
+  AxisCategoryOrder,
   IAccessibilityProps,
   IChart,
   IDataPoint,
@@ -14,6 +15,7 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartPoints,
   IMargins,
+  IScatterChartDataPoint,
   IVerticalBarChartDataPoint,
   IVerticalStackedBarDataPoint,
 } from '../../types/index';
@@ -187,6 +189,11 @@ export interface ICartesianChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: IStyle;
+
+  /**
+   * Styles for the svg tooltip
+   */
+  svgTooltip?: IStyle;
 }
 
 /**
@@ -488,6 +495,18 @@ export interface ICartesianChartProps {
    * @default undefined
    */
   yAxisAnnotation?: string;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the x-axis.
+   * @default 'default'
+   */
+  xAxisCategoryOrder?: AxisCategoryOrder;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the y-axis.
+   * @default 'default'
+   */
+  yAxisCategoryOrder?: AxisCategoryOrder;
 }
 
 export interface IYValueHover {
@@ -690,7 +709,12 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Get the min and max values of the y-axis
    */
   getMinMaxOfYAxis: (
-    points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[],
+    points:
+      | ILineChartPoints[]
+      | IHorizontalBarChartWithAxisDataPoint[]
+      | IVerticalBarChartDataPoint[]
+      | IDataPoint[]
+      | IScatterChartDataPoint[],
     yAxisType: YAxisType | undefined,
     useSecondaryYScale?: boolean,
   ) => { startValue: number; endValue: number };

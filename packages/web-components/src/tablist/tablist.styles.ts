@@ -45,8 +45,8 @@ export const styles = css`
     flex-direction: column;
   }
 
-  :host ::slotted([role='tab']) {
-    align-items: flex-start;
+  :host([orientation='vertical']) ::slotted([role='tab']) {
+    justify-content: flex-start;
   }
 
   /* indicator animation  */

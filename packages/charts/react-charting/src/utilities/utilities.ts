@@ -1,5 +1,13 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
-import { max as d3Max, min as d3Min, ticks as d3Ticks, nice as d3nice } from 'd3-array';
+import {
+  max as d3Max,
+  min as d3Min,
+  ticks as d3Ticks,
+  nice as d3nice,
+  sum as d3Sum,
+  mean as d3Mean,
+  median as d3Median,
+} from 'd3-array';
 import {
   scaleLinear as d3ScaleLinear,
   scaleBand as d3ScaleBand,
@@ -42,6 +50,7 @@ import {
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartLineOptions,
+  AxisCategoryOrder,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { getId } from '@fluentui/react';
@@ -95,6 +104,7 @@ export interface IWrapLabelProps {
   xAxis: NumericAxis | StringAxis;
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
+  width?: number;
 }
 
 export interface IRotateLabelProps {
@@ -150,6 +160,7 @@ export interface IXAxisParams {
   containerHeight: number;
   containerWidth: number;
   hideTickOverlap?: boolean;
+  calcMaxLabelWidth: (x: (string | number)[]) => number;
 }
 export interface ITickParams {
   tickValues?: Date[] | number[] | string[];
@@ -226,6 +237,7 @@ export function createNumericXAxis(
     xAxisCount,
     xAxisElement,
     hideTickOverlap,
+    calcMaxLabelWidth,
   } = xAxisParams;
   const xAxisScale = d3ScaleLinear()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
@@ -241,8 +253,7 @@ export function createNumericXAxis(
     return formatToLocaleString(xAxisValue, culture) as string;
   };
   if (hideTickOverlap && typeof xAxisCount === 'undefined') {
-    const longestLabelWidth =
-      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 20;
+    const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map(tickFormat)) + 20;
     const [start, end] = xAxisScale.range();
     tickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
   }
@@ -389,7 +400,14 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: boolean,
 ) {
-  const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount } = xAxisParams;
+  const {
+    domainNRangeValues,
+    xAxisElement,
+    tickPadding = 6,
+    xAxistickSize = 6,
+    xAxisCount,
+    calcMaxLabelWidth,
+  } = xAxisParams;
   const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
   xAxisScale
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
@@ -441,8 +459,7 @@ export function createDateXAxis(
     return formatDateToLocaleString(domainValue, culture, useUTC, false, formatOptions);
   };
 
-  const longestLabelWidth =
-    calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 40;
+  const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map(tickFormat)) + 40;
   const [start, end] = xAxisScale.range();
   const maxPossibleTickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
   tickCount = Math.min(maxPossibleTickCount, xAxisCount ?? tickCount);
@@ -487,6 +504,7 @@ export function createStringXAxis(
     xAxisOuterPadding,
     containerWidth,
     hideTickOverlap,
+    calcMaxLabelWidth,
   } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
@@ -500,7 +518,7 @@ export function createStringXAxis(
     // Here, we need the width of each individual label to detect overlaps,
     // but calculateLongestLabelWidth returns the maximum pixel width from an array of labels.
     // So call this function separately for each label, instead of the entire array.
-    const tickSizes = tickValues.map(value => calculateLongestLabelWidth([value], '[class^="xAxis-"] text'));
+    const tickSizes = tickValues.map(value => calcMaxLabelWidth([value]));
     // for LTR
     let start = 0;
     let end = containerWidth;
@@ -656,10 +674,10 @@ export function createNumericYAxis(
   } = yAxisParams;
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
-  const tempVal = maxOfYVal || yMinMaxValues.endValue;
+  const tempVal = maxOfYVal || yMinMaxValues.endValue || 0;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = supportNegativeData
-    ? Math.min(yMinMaxValues.startValue, yMinValue || 0)
+    ? Math.min(yMinMaxValues.startValue || 0, yMinValue || 0)
     : yMinMaxValues.startValue < yMinValue
     ? 0
     : yMinValue!;
@@ -863,6 +881,8 @@ export function silceOrAppendToArray(array: string[], value: string): string[] {
   }
 }
 
+export const DEFAULT_WRAP_WIDTH = 10;
+
 /**
  * This method used for wrapping of x axis labels (tick values).
  * It breaks down given text value by space separated and calculates the total height needed to display all the words.
@@ -873,21 +893,19 @@ export function silceOrAppendToArray(array: string[], value: string): string[] {
  * @returns
  */
 export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
-  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip } = wrapLabelProps;
+  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip, width = DEFAULT_WRAP_WIDTH } = wrapLabelProps;
   if (node === null) {
     return;
   }
   const axisNode = d3Select(node).call(xAxis);
   let removeVal = 0;
-  const width = 10;
-  const arr: number[] = [];
+  let maxLines = 1;
   axisNode.selectAll('.tick text').each(function () {
     const text = d3Select(this);
     const totalWord = text.text();
     const truncatedWord = `${text.text().slice(0, noOfCharsToTruncate)}...`;
     const totalWordLength = text.text().length;
     const words = text.text().split(/\s+/).reverse();
-    arr.push(words.length);
     let word: string = '';
     let line: string[] = [];
     let lineNumber: number = 0;
@@ -909,7 +927,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
         .attr('id', 'showDots')
         .attr('x', 0)
         .attr('y', y)
-        .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+        .attr('dy', dy + 'em')
         .text(truncatedWord);
     } else if (showXAxisLablesTooltip && totalWordLength <= noOfCharsToTruncate) {
       tspan = text
@@ -917,7 +935,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
         .attr('id', 'LessLength')
         .attr('x', 0)
         .attr('y', y)
-        .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+        .attr('dy', dy + 'em')
         .text(totalWord);
     } else {
       while ((word = words.pop()!)) {
@@ -936,30 +954,20 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
             .text(word);
         }
       }
-      const maxDigit = Math.max(...arr);
-      let maxHeight: number = 12; // intial value to render corretly first time
-      axisNode.selectAll('text').each(() => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const outerHTMLElement = document.getElementById('WordBreakId') as any;
-        const BoxCordinates = outerHTMLElement && outerHTMLElement.getBoundingClientRect();
-        const boxHeight = BoxCordinates && BoxCordinates.height;
-        if (boxHeight > maxHeight) {
-          maxHeight = boxHeight;
-        }
-      });
-      // If we take directly maxDigit * maxheight, then it will show more height between x axis tick values and bottom.
-      // To avoid this, reducing maxDigit value by removing some digit based on legth of word.
-      let removeDigit: number = 4;
-      if (maxDigit <= 2) {
-        removeDigit = 1;
-      } else if (maxDigit > 2 && maxDigit <= 6) {
-        removeDigit = 2;
-      } else if (maxDigit > 6 && maxDigit <= 9) {
-        removeDigit = 3;
-      }
-      removeVal = (maxDigit - removeDigit) * maxHeight;
     }
+    maxLines = Math.max(maxLines, lineNumber + 1);
   });
+  if (!showXAxisLablesTooltip) {
+    let maxHeight: number = 12; // intial value to render corretly first time
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const outerHTMLElement = document.getElementById('WordBreakId') as any;
+    const BoxCordinates = outerHTMLElement && outerHTMLElement.getBoundingClientRect();
+    const boxHeight = BoxCordinates && BoxCordinates.height;
+    if (boxHeight > maxHeight) {
+      maxHeight = boxHeight;
+    }
+    removeVal = (maxLines - 1) * maxHeight;
+  }
   return removeVal > 0 ? removeVal : 0;
 }
 
@@ -1374,7 +1382,7 @@ export function domainRageOfVerticalNumeric(
  * @returns {{ startValue: number; endValue: number }}
  */
 export function findNumericMinMaxOfY(
-  points: ILineChartPoints[],
+  points: ILineChartPoints[] | IScatterChartPoints[],
   yAxisType?: YAxisType,
   useSecondaryYScale?: boolean,
 ): { startValue: number; endValue: number } {
@@ -1881,61 +1889,79 @@ export function domainRangeOfNumericForScatterChart(
     : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
 }
 
-export function createYAxisForScatterChart(
-  yAxisParams: IYAxisParams,
-  isRtl: boolean,
-  axisData: IAxisData,
-  isIntegralDataset: boolean,
-  useSecondaryYScale: boolean = false,
-  _supportNegativeData: boolean = false,
-  roundedTicks: boolean = false,
-) {
-  const {
-    yMinMaxValues = { startValue: 0, endValue: 0 },
-    yAxisElement = null,
-    yMaxValue = 0,
-    yMinValue = 0,
-    containerHeight,
-    containerWidth,
-    margins,
-    tickPadding = 12,
-    maxOfYVal = 0,
-    yAxisTickFormat,
-    yAxisTickCount = 4,
-    eventAnnotationProps,
-    eventLabelHeight,
-  } = yAxisParams;
-
-  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
-  const tempVal = maxOfYVal || yMinMaxValues.endValue;
-  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = Math.min(yMinMaxValues.startValue, yMinValue || 0);
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
-  let yMin = finalYmin;
-  let yMax = domainValues[domainValues.length - 1];
-  const yPadding = (yMax - yMin) * 0.1;
-  yMin = yMin - yPadding;
-  yMax = yMax + yPadding;
-  const yAxisScale = d3ScaleLinear()
-    .domain([domainValues[0], yMax])
-    .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
-  const axis =
-    (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis
-    .tickPadding(tickPadding)
-    .tickValues(domainValues)
-    .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
-
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
-  axisData.yAxisDomainValues = domainValues;
-  return yAxisScale;
-}
-
 export const truncateString = (str: string, maxLength: number, ellipsis = '...'): string => {
   if (str.length <= maxLength) {
     return str;
   }
 
   return str.slice(0, maxLength) + ellipsis;
+};
+
+const categoryOrderRegex = /(category|total|sum|min|max|mean|median) (ascending|descending)/;
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/plots.js#L3041}
+ */
+export const sortAxisCategories = (
+  categoryToValues: Record<string, number[]>,
+  categoryOrder: AxisCategoryOrder | undefined,
+): string[] => {
+  if (Array.isArray(categoryOrder)) {
+    const result: string[] = [];
+    const seen = new Set<string>();
+
+    // Add elements from categoryOrder array that are in categoryToValues, in the array's order
+    categoryOrder.forEach(category => {
+      if (categoryToValues[category] && !seen.has(category)) {
+        result.push(category);
+        seen.add(category);
+      }
+    });
+
+    // Append any keys from categoryToValues not already in result
+    Object.keys(categoryToValues).forEach(category => {
+      if (!seen.has(category)) {
+        result.push(category);
+      }
+    });
+
+    return result;
+  }
+
+  const match = categoryOrder?.match(categoryOrderRegex);
+  if (match) {
+    const aggregator = match[1];
+    const order = match[2];
+
+    if (aggregator === 'category') {
+      const result = Object.keys(categoryToValues).sort();
+      return order === 'descending' ? result.reverse() : result;
+    }
+
+    const aggFn: Record<string, (values: number[]) => number | undefined> = {
+      min: d3Min,
+      max: d3Max,
+      sum: d3Sum,
+      total: d3Sum,
+      mean: d3Mean,
+      median: d3Median,
+    };
+    const sortAscending = (a: [string, number], b: [string, number]) => {
+      return a[1] - b[1];
+    };
+    const sortDescending = (a: [string, number], b: [string, number]) => {
+      return b[1] - a[1];
+    };
+
+    const categoriesAggregatedValue: [string, number][] = [];
+    Object.keys(categoryToValues).forEach(category => {
+      categoriesAggregatedValue.push([category, aggFn[aggregator](categoryToValues[category]) || 0]);
+    });
+
+    categoriesAggregatedValue.sort(order === 'descending' ? sortDescending : sortAscending);
+
+    return categoriesAggregatedValue.map(([category]) => category);
+  }
+
+  return Object.keys(categoryToValues);
 };

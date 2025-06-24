@@ -8,7 +8,7 @@ import { renderNavCategory_unstable } from './renderNavCategory';
 import { useNavCategoryContextValues_unstable } from '../useNavCategoryContextValues_unstable';
 
 /**
- * NavCategory component - TODO: add more docs
+ * NavCategory component - a category in the navigation menu that can contain multiple items.
  */
 export const NavCategory: ForwardRefComponent<NavCategoryProps> = React.forwardRef(props => {
   const state = useNavCategory_unstable(props);

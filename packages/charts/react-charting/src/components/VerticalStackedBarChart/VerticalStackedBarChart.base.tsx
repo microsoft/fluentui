@@ -62,6 +62,10 @@ import {
   areArraysEqual,
   calculateLongestLabelWidth,
   YAxisType,
+  sortAxisCategories,
+  calcTotalWidth,
+  calcBandwidth,
+  calcRequiredWidth,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
@@ -110,6 +114,8 @@ export class VerticalStackedBarChartBase
   public static defaultProps: Partial<IVerticalStackedBarChartProps> = {
     maxBarWidth: 24,
     useUTC: true,
+    xAxisCategoryOrder: 'default',
+    yAxisCategoryOrder: 'default',
   };
 
   private _points: IVerticalStackedChartProps[];
@@ -569,10 +575,7 @@ export class VerticalStackedBarChartBase
   }
 
   private _createDataSetLayer(): IVerticalStackedBarDataPoint[] {
-    const tempArr: string[] = [];
     const dataset: IVerticalStackedBarDataPoint[] = this._points.map(singlePointData => {
-      tempArr.push(singlePointData.xAxisPoint as string);
-
       if (this._yAxisType === YAxisType.StringAxis) {
         return {
           x: singlePointData.xAxisPoint,
@@ -588,7 +591,7 @@ export class VerticalStackedBarChartBase
         y: total,
       };
     });
-    this._xAxisLabels = tempArr;
+    this._xAxisLabels = this._getOrderedXAxisLabels();
     return dataset;
   }
 
@@ -886,7 +889,7 @@ export class VerticalStackedBarChartBase
   ): {
     readonly gapHeight: number;
     readonly heightValueScale: number;
-    readonly adjustedTotalHeight: number;
+    readonly absStackTotal: number;
   } {
     const { barGapMax = 0 } = this.props;
 
@@ -920,7 +923,7 @@ export class VerticalStackedBarChartBase
     return {
       gapHeight,
       heightValueScale,
-      adjustedTotalHeight: sumOfPercent,
+      absStackTotal: totalData,
     } as const;
   }
 
@@ -971,7 +974,7 @@ export class VerticalStackedBarChartBase
         return undefined;
       }
 
-      const { gapHeight, heightValueScale, adjustedTotalHeight } = this._getBarGapAndScale(barsToDisplay, yBarScale);
+      const { gapHeight, heightValueScale, absStackTotal } = this._getBarGapAndScale(barsToDisplay, yBarScale);
 
       if (heightValueScale < 0) {
         return undefined;
@@ -1032,7 +1035,8 @@ export class VerticalStackedBarChartBase
           yPoint = yPositiveStart;
         } else {
           barHeight = Math.abs(heightValueScale * (point.data as number));
-          const minHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
+          // FIXME: The current scaling logic may produce different min and gap heights for each bar stack.
+          const minHeight = Math.max((heightValueScale * absStackTotal) / 100.0, barMinimumHeight);
           if (barHeight < minHeight) {
             barHeight = minHeight;
           }
@@ -1165,7 +1169,9 @@ export class VerticalStackedBarChartBase
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {formatScientificLimitWidth(barLabel)}
+              {typeof this.props.yAxisTickFormat === 'function'
+                ? this.props.yAxisTickFormat(barLabel)
+                : formatScientificLimitWidth(barLabel)}
             </text>
           )}
         </g>
@@ -1342,10 +1348,7 @@ export class VerticalStackedBarChartBase
     this._domainMargin = MIN_DOMAIN_MARGIN;
 
     /** Total width available to render the bars */
-    const totalWidth =
-      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
-    /** Rate at which the space between the bars changes wrt the bar width */
-    const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+    const totalWidth = calcTotalWidth(containerWidth, this.margins, MIN_DOMAIN_MARGIN);
 
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding, this.props.xAxisPadding)) {
@@ -1357,7 +1360,7 @@ export class VerticalStackedBarChartBase
         // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
-        const reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * this._barWidth;
+        const reqWidth = calcRequiredWidth(this._barWidth, this._xAxisLabels.length, this._xAxisInnerPadding);
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
@@ -1365,18 +1368,15 @@ export class VerticalStackedBarChartBase
         }
       } else if (this.props.mode === 'plotly' && this._xAxisLabels.length > 1) {
         // Calculate the remaining width after rendering bars at their maximum allowable width
-        const bandwidth = totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate);
+        const bandwidth = calcBandwidth(totalWidth, this._xAxisLabels.length, this._xAxisInnerPadding);
         const barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, bandwidth);
-        let reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * barWidth;
+        let reqWidth = calcRequiredWidth(barWidth, this._xAxisLabels.length, this._xAxisInnerPadding);
         const margin1 = (totalWidth - reqWidth) / 2;
 
-        let margin2 = Number.POSITIVE_INFINITY;
-        if (!this.props.hideTickOverlap) {
-          // Calculate the remaining width after accounting for the space required to render x-axis labels
-          const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
-          reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
-          margin2 = (totalWidth - reqWidth) / 2;
-        }
+        // Calculate the remaining width after accounting for the space required to render x-axis labels
+        const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
+        reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
+        const margin2 = (totalWidth - reqWidth) / 2;
 
         this._domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
@@ -1448,33 +1448,7 @@ export class VerticalStackedBarChartBase
       });
     }
 
-    if (this._yAxisType === YAxisType.StringAxis) {
-      const legendToYValues: Record<string, string[]> = {};
-      this._points.forEach(xPoint => {
-        xPoint.chartData.forEach(bar => {
-          if (!legendToYValues[bar.legend]) {
-            legendToYValues[bar.legend] = [`${bar.data}`];
-          } else {
-            legendToYValues[bar.legend].push(`${bar.data}`);
-          }
-        });
-      });
-
-      const yAxisLabels = new Set<string>();
-      Object.values(legendToYValues).forEach(yValues => {
-        yValues.forEach(yVal => {
-          yAxisLabels.add(yVal);
-        });
-      });
-      Object.values(this._lineObject).forEach(linePoints => {
-        linePoints.forEach(linePoint => {
-          if (!linePoint.useSecondaryYScale) {
-            yAxisLabels.add(`${linePoint.y}`);
-          }
-        });
-      });
-      this._yAxisLabels = Array.from(yAxisLabels);
-    }
+    this._yAxisLabels = this._getOrderedYAxisLabels();
   };
 
   private _getYDomainMargins = (containerHeight: number): IMargins => {
@@ -1507,5 +1481,51 @@ export class VerticalStackedBarChartBase
       ...this.margins,
       top: this.margins.top! + yAxisTickMarginTop,
     };
+  };
+
+  private _getOrderedXAxisLabels = () => {
+    if (this._xAxisType !== XAxisTypes.StringAxis) {
+      return [];
+    }
+
+    return sortAxisCategories(this._mapCategoryToValues(), this.props.xAxisCategoryOrder);
+  };
+
+  private _getOrderedYAxisLabels = () => {
+    if (this._yAxisType !== YAxisType.StringAxis) {
+      return [];
+    }
+
+    return sortAxisCategories(this._mapCategoryToValues(true), this.props.yAxisCategoryOrder);
+  };
+
+  private _mapCategoryToValues = (isYAxis = false) => {
+    const categoryToValues: Record<string, number[]> = {};
+    this._points.forEach(point => {
+      point.chartData.forEach(bar => {
+        const category = (isYAxis ? bar.data : point.xAxisPoint) as string;
+        const value = isYAxis ? point.xAxisPoint : bar.data;
+        if (!categoryToValues[category]) {
+          categoryToValues[category] = [];
+        }
+        if (typeof value === 'number') {
+          categoryToValues[category].push(value);
+        }
+      });
+      point.lineData?.forEach(linePoint => {
+        if (isYAxis && linePoint.useSecondaryYScale) {
+          return;
+        }
+        const category = (isYAxis ? linePoint.y : point.xAxisPoint) as string;
+        const value = isYAxis ? point.xAxisPoint : linePoint.y;
+        if (!categoryToValues[category]) {
+          categoryToValues[category] = [];
+        }
+        if (typeof value === 'number') {
+          categoryToValues[category].push(value);
+        }
+      });
+    });
+    return categoryToValues;
   };
 }

@@ -5,7 +5,6 @@ import { Tooltip } from '@fluentui/react-tooltip';
 import { Async } from './async-utils';
 import { KeyCodes } from './KeyCodes';
 import { useId } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
 
 interface SVGTooltipTextProps {
   closeDelay?: number;
@@ -19,6 +18,7 @@ interface SVGTooltipTextProps {
   isTooltipVisibleProp?: boolean;
   wrapContent?: (content: string, id: string, maxWidth: number, maxHeight?: number) => boolean;
   showBackground?: boolean;
+  className?: string;
 }
 
 export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = React.forwardRef<
@@ -37,7 +37,7 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
   const tooltipHostId = useRef(useId('tooltip-host')).current;
   const ignoreNextFocusEvent = useRef(false);
   const portalMountNode = usePortalMountNode();
-  const PADDING = 4;
+  const PADDING = 3;
 
   const wrapContentCallback = useCallback(() => {
     if (
@@ -162,9 +162,8 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
   const showTooltip =
     (props.isTooltipVisibleProp && isOverflowing && !!props.content) || (isTooltipVisible && !!props.content);
 
-  const backgroundColor = tokens.colorNeutralBackground1;
   const rectX = (typeof props.textProps?.x === 'number' ? props.textProps.x : 0) - (textWidth ?? 0) / 2 - PADDING;
-  const rectY = (typeof props.textProps?.y === 'number' ? props.textProps.y : 0) - (textHeight ?? 0) / 2 - PADDING;
+  const rectY = (typeof props.textProps?.y === 'number' ? props.textProps.y : 0) - (textHeight ?? 0) / 2 - 2 * PADDING;
 
   return (
     <>
@@ -173,9 +172,9 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
           x={rectX}
           y={rectY}
           width={(textWidth ?? 0) + 2 * PADDING}
-          height={(textHeight ?? 0) + 2 * PADDING}
-          fill={backgroundColor}
+          height={(textHeight ?? 0) + PADDING}
           transform={props.textProps?.transform}
+          className={props.className}
         />
       )}
       <Tooltip

@@ -160,6 +160,7 @@ const createXAxisParams = (xAxisParams?: ICreateXAxisParams): utils.IXAxisParams
       bottom: 0,
       ...xAxisParams?.margins,
     },
+    calcMaxLabelWidth: utils.calculateLongestLabelWidth,
   };
 };
 const convertXAxisResultToJson = (
@@ -253,7 +254,7 @@ conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('createDateXA
 
   it('should create the x-axis labels correctly when culture and options are provided', () => {
     const xAxisParams = createXAxisParams({ domainNRangeValues });
-    const result = utils.createDateXAxis(xAxisParams, {}, 'ar-EG', { dateStyle: 'full' });
+    const result = utils.createDateXAxis(xAxisParams, {}, 'ar-EG');
     matchResult(convertXAxisResultToJson(result));
   });
 

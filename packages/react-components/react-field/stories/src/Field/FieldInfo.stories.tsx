@@ -27,7 +27,7 @@ Info.parameters = {
       story:
         "Add an info button to the label by replacing the Field's label with an `InfoLabel`. " +
         'This can be done using a [slot render function]' +
-        '(./?path=/docs/concepts-developer-customizing-components-with-slots--page#replacing-the-entire-slot). ' +
+        '(./?path=/docs/concepts-developer-customizing-components-with-slots--docs#replacing-the-entire-slot). ' +
         'See the code from this story for more details.',
     },
   },
