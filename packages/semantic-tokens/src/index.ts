@@ -1795,6 +1795,7 @@ export {
   _ctrlAvatarPresenceBadgeStrokeWidthLg,
   _ctrlAvatarPresenceBadgeStrokeWidthSm,
   _ctrlButtonGapInsideDefault,
+  _ctrlDialogGapBetweenContentMedium,
   _ctrlDividerForegroundSubtle,
   _ctrlSwitchPaddingTextBottom,
   _ctrlSwitchPaddingTextTop,
