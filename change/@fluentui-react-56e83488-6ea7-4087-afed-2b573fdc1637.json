@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Picker suggestion items hover correctly in WHCM",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
