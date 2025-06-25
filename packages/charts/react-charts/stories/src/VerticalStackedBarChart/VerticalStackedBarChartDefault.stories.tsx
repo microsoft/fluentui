@@ -39,7 +39,7 @@ export const VerticalStackedBarDefault = () => {
     setHideLabels(checked.checked as boolean);
   };
 
-  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
     if (ev.currentTarget.checked) {
       setMargins({
@@ -57,11 +57,11 @@ export const VerticalStackedBarDefault = () => {
       });
     }
   }, []);
-  const _onRoundCornersChange = React.useCallback(ev => {
+  const _onRoundCornersChange = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchLegendMultiSelect = React.useCallback(ev => {
+  const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
 
