@@ -1246,6 +1246,59 @@ export function domainRangeOfNumericForScatterChart(
 }
 
 /**
+ * Groups HorizontalBarChart With Axis data based on YValue
+ * Used for stacked case
+ * @param {IHorizontalBarChartWithAxisDataPoint[]} chartData
+ * @returns {IHorizontalBarChartWithAxisDataPoint[][]}
+ */
+export function groupChartDataByYValue(
+  chartData: HorizontalBarChartWithAxisDataPoint[],
+): HorizontalBarChartWithAxisDataPoint[][] {
+  const map: Record<string, HorizontalBarChartWithAxisDataPoint[]> = {};
+  chartData.forEach(dataPoint => {
+    const key = dataPoint.y;
+    if (!map[key]) {
+      map[key] = [];
+    }
+    map[key].push(dataPoint);
+  });
+
+  return Object.values(map);
+}
+
+/**
+ * Calculates maximum domain values for Numeric x axis for both positive and negative values
+ * works for Horizontal Bar Chart With axis
+ * @param {HorizontalBarChartWithAxisDataPoint[][]} stackedChartData
+ * @returns {number}
+ */
+export function computeLongestBars(
+  stackedChartData: HorizontalBarChartWithAxisDataPoint[][],
+  X_ORIGIN: number,
+): {
+  longestPositiveBar: number;
+  longestNegativeBar: number;
+} {
+  let longestPositiveBar = 0;
+  let longestNegativeBar = 0;
+
+  stackedChartData.forEach((group: HorizontalBarChartWithAxisDataPoint[]) => {
+    const positiveBarTotal = group.reduce(
+      (acc: number, point: HorizontalBarChartWithAxisDataPoint) => acc + (point.x > 0 ? point.x : 0),
+      X_ORIGIN,
+    );
+    const negativeBarTotal = group.reduce(
+      (acc: number, point: HorizontalBarChartWithAxisDataPoint) => acc + (point.x < 0 ? point.x : 0),
+      X_ORIGIN,
+    );
+
+    longestPositiveBar = Math.max(longestPositiveBar, positiveBarTotal);
+    longestNegativeBar = Math.min(longestNegativeBar, negativeBarTotal);
+  });
+  return { longestPositiveBar, longestNegativeBar };
+}
+
+/**
  * Calculates Domain and range values for Numeric X axis.
  * This method calculates Horizontal Chart with Axis
  * @export
@@ -1261,14 +1314,17 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   containerWidth: number,
   isRTL: boolean,
   shiftX: number,
+  X_ORIGIN?: number,
 ): IDomainNRange {
-  const xMax = d3Max(points, (point: HorizontalBarChartWithAxisDataPoint) => point.x as number)!;
+  const longestBars = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN!);
+  const xMax = longestBars.longestPositiveBar;
+  const xMin = longestBars.longestNegativeBar;
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 
   return isRTL
-    ? { dStartValue: xMax, dEndValue: 0, rStartValue: rMin, rEndValue: rMax }
-    : { dStartValue: 0, dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
+    ? { dStartValue: xMax, dEndValue: Math.min(xMin, X_ORIGIN!), rStartValue: rMin, rEndValue: rMax }
+    : { dStartValue: Math.min(xMin, X_ORIGIN!), dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
 }
 
 /**
@@ -1474,6 +1530,7 @@ export function getDomainNRangeValues(
   barWidth: number,
   tickValues: number[] | Date[] | string[] | undefined,
   shiftX: number,
+  X_ORIGIN?: number,
 ): IDomainNRange {
   let domainNRangeValue: IDomainNRange;
   if (xAxisType === XAxisTypes.NumericAxis) {
@@ -1489,7 +1546,14 @@ export function getDomainNRangeValues(
         domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
         break;
       case ChartTypes.HorizontalBarChartWithAxis:
-        domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, shiftX);
+        domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(
+          points,
+          margins,
+          width,
+          isRTL,
+          shiftX,
+          X_ORIGIN!,
+        );
         break;
       case ChartTypes.ScatterChart:
         domainNRangeValue = domainRangeOfNumericForScatterChart(points, margins, width, isRTL);
