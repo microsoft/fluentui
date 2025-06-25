@@ -2,10 +2,8 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavSubItemGroupSlots, NavSubItemGroupState } from './NavSubItemGroup.types';
 
-export const navSubItemGroupClassNames: SlotClassNames<NavSubItemGroupSlots> = {
+export const navSubItemGroupClassNames: SlotClassNames<Omit<NavSubItemGroupSlots, 'collapseMotion'>> = {
   root: 'fui-NavSubItemGroup',
-  // TODO: add class names for all slots on NavSubItemGroupSlots.
-  // Should be of the form `<slotName>: 'fui-NavSubItemGroup__<slotName>`
 };
 
 /**
@@ -13,10 +11,9 @@ export const navSubItemGroupClassNames: SlotClassNames<NavSubItemGroupSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    transform: 'translateZ(0)',
+    overflow: 'hidden',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -26,10 +23,8 @@ export const useNavSubItemGroupStyles_unstable = (state: NavSubItemGroupState): 
   'use no memo';
 
   const styles = useStyles();
-  state.root.className = mergeClasses(navSubItemGroupClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.root.className = mergeClasses(navSubItemGroupClassNames.root, styles.root, state.root.className);
 
   return state;
 };
