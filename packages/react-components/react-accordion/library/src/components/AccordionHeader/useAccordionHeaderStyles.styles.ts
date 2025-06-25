@@ -3,7 +3,6 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { AccordionHeaderSlots, AccordionHeaderState } from './AccordionHeader.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import * as semanticTokens from '@fluentui/semantic-tokens';
-import { tokens } from '@fluentui/react-theme';
 
 export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots> = {
   root: 'fui-AccordionHeader',
@@ -28,10 +27,17 @@ const useStyles = makeStyles({
     WebkitAppearance: 'button',
     textAlign: 'unset',
   },
-  focusIndicator: createFocusOutlineStyle(),
+  focusIndicator: createFocusOutlineStyle({
+    style: {
+      outlineRadius: semanticTokens.ctrlListCornerRest,
+      outlineOffset: semanticTokens._ctrlAccordionFocusInnerStrokeWidth,
+      outlineColor: semanticTokens._ctrlAccordionFocusOuterStroke,
+      outlineWidth: semanticTokens.ctrlFocusOuterStrokeWidth,
+    },
+  }),
   root: {
     color: semanticTokens._ctrlAccordionForegroundRest,
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: semanticTokens._ctrlAccordionBackgroundRest,
     margin: '0',
     borderRadius: semanticTokens.ctrlListCornerRest,
 
@@ -54,10 +60,8 @@ const useStyles = makeStyles({
     position: 'relative',
     width: '100%',
     ...shorthands.borderWidth('0'),
-    padding: `0 ${semanticTokens.paddingCtrlHorizontalDefault} 0 ${paddingCtrlHorizontalDefaultNudge}`,
+    padding: `${semanticTokens._ctrlAccordionPaddingTextTop} ${semanticTokens.paddingCtrlHorizontalDefault} ${semanticTokens._ctrlAccordionPaddingTextBottom} ${paddingCtrlHorizontalDefaultNudge}`,
     minHeight: semanticTokens.sizeCtrlDefault,
-    paddingTop: semanticTokens.paddingCtrlTextTop,
-    paddingBottom: semanticTokens.paddingCtrlTextBottom,
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',

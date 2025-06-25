@@ -13,17 +13,37 @@ export type LegacyFluentVariantValue =
 export type LegacyFluentVariants = Record<string, LegacyFluentVariantValue | null>;
 
 export const legacyFluentVariantsValues: LegacyFluentVariants = {
+  _ctrlAccordionBackgroundRest: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'backgroundCtrlSubtleRest',
+  },
+  _ctrlAccordionFocusInnerStrokeWidth: {
+    originalToken: 'ctrlFocusInnerStrokeWidth',
+    rawValue: '0px',
+  },
+  _ctrlAccordionFocusOuterStroke: {
+    f2Token: 'colorStrokeFocus2',
+    originalToken: 'ctrlFocusOuterStroke',
+  },
   _ctrlAccordionForegroundHover: {
-    f2Token: 'colorNeutralForeground2',
+    f2Token: 'colorNeutralForeground1',
     originalToken: 'foregroundCtrlOnTransparentHover',
   },
   _ctrlAccordionForegroundPressed: {
-    f2Token: 'colorNeutralForeground2',
+    f2Token: 'colorNeutralForeground1',
     originalToken: 'foregroundCtrlOnTransparentPressed',
   },
   _ctrlAccordionForegroundRest: {
-    f2Token: 'colorNeutralForeground2',
+    f2Token: 'colorNeutralForeground1',
     originalToken: 'foregroundCtrlOnTransparentRest',
+  },
+  _ctrlAccordionPaddingTextBottom: {
+    originalToken: 'paddingCtrlTextBottom',
+    rawValue: '0px',
+  },
+  _ctrlAccordionPaddingTextTop: {
+    originalToken: 'paddingCtrlTextTop',
+    rawValue: '0px',
   },
   _ctrlAvatarActiveRingStrokeWidthLg: {
     f2Token: 'strokeWidthThickest',
@@ -69,6 +89,10 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlHintDefault',
   },
+  _ctrlPersonaTreeIconOnSubtlePressed: {
+    f2Token: 'colorNeutralForeground3Pressed',
+    originalToken: 'foregroundCtrlOnSubtlePressed',
+  },
   _ctrlSpinnerBackgroundEmpty: {
     f2Token: 'colorBrandStroke2Contrast',
     originalToken: 'ctrlProgressBackgroundEmpty',
@@ -112,5 +136,45 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _ctrlSwitchStrokeOnActiveBrandRest: {
     f2Token: 'colorTransparentStroke',
     originalToken: 'strokeCtrlOnActiveBrandRest',
+  },
+  _ctrlTreeGapInsideDefault: {
+    f2Token: 'spacingVerticalXXS',
+    originalToken: 'gapInsideCtrlDefault',
+  },
+  _ctrlTreeIconOnSubtle: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'foregroundCtrlOnSubtleRest',
+  },
+  _ctrlTreeIconOnSubtleHover: {
+    f2Token: 'colorNeutralForeground3Hover',
+    originalToken: 'foregroundCtrlOnSubtleHover',
+  },
+  _ctrlTreeIconOnSubtlePressed: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'foregroundCtrlOnSubtlePressed',
+  },
+  _ctrlTreeOnTransparentHover: {
+    f2Token: 'colorNeutralForeground2Hover',
+    originalToken: 'foregroundCtrlOnTransparentHover',
+  },
+  _ctrlTreeOnTransparentPressed: {
+    f2Token: 'colorNeutralForeground2Pressed',
+    originalToken: 'foregroundCtrlOnTransparentPressed',
+  },
+  _ctrlTreePaddingTextBottom: {
+    originalToken: 'paddingCtrlTextBottom',
+    rawValue: '0px',
+  },
+  _ctrlTreePaddingTextLeft: {
+    f2Token: 'spacingHorizontalXXS',
+    originalToken: 'paddingCtrlTextSide',
+  },
+  _ctrlTreePaddingTextRight: {
+    f2Token: 'spacingHorizontalXXS',
+    originalToken: 'paddingCtrlHorizontalDefault',
+  },
+  _ctrlTreePaddingTextTop: {
+    originalToken: 'paddingCtrlTextTop',
+    rawValue: '0px',
   },
 };
