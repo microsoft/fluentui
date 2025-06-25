@@ -118,6 +118,7 @@ import {
   colorNeutralForegroundInverted,
   colorNeutralForegroundInvertedHover,
   colorNeutralForegroundInvertedPressed,
+  colorNeutralBackground1,
 } from '../legacy/tokens';
 import {
   strokeCardOnPrimaryRestRaw,
@@ -428,7 +429,7 @@ export const textRampItemHeaderFontSize = `var(${textRampItemHeaderFontSizeRaw},
 export const textRampItemHeaderLineHeight = `var(${textRampItemHeaderLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}))`;
 export const textRampItemBodyFontSize = `var(${textRampItemBodyFontSizeRaw}, var(${textGlobalBody3FontSizeRaw}, ${fontSizeBase300}))`;
 export const textRampItemBodyLineHeight = `var(${textRampItemBodyLineHeightRaw}, var(${textGlobalBody3LineHeightRaw}, ${lineHeightBase300}))`;
-export const textRampMetadataFontSize = `var(${textRampMetadataFontSizeRaw}, var(${textGlobalCaption1FontSizeRaw}))`;
+export const textRampMetadataFontSize = `var(${textRampMetadataFontSizeRaw}, var(${textGlobalCaption1FontSizeRaw}, ${fontSizeBase200}))`;
 export const textRampMetadataLineHeight = `var(${textRampMetadataLineHeightRaw}, var(${textGlobalCaption1LineHeightRaw}))`;
 export const textRampLegalFontSize = `var(${textRampLegalFontSizeRaw}, var(${textGlobalCaption2FontSizeRaw}))`;
 export const textRampLegalLineHeight = `var(${textRampLegalLineHeightRaw}, var(${textGlobalCaption2LineHeightRaw}))`;
@@ -469,7 +470,7 @@ export const textCtrlButtonWeightDefault = `var(${textCtrlButtonWeightDefaultRaw
 export const textCtrlButtonWeightSelected = `var(${textCtrlButtonWeightSelectedRaw}, var(${textCtrlWeightSelectedRaw}))`;
 export const paddingToolbarInside = `var(${paddingToolbarInsideRaw}, var(${paddingContentXSmallRaw}))`;
 export const paddingToolbarOutside = `var(${paddingToolbarOutsideRaw}, var(${paddingContentXxSmallRaw}))`;
-export const paddingFlyoutDefault = `var(${paddingFlyoutDefaultRaw}, var(${paddingContentAlignOutdentTextOnSubtleRaw}))`;
+export const paddingFlyoutDefault = `var(${paddingFlyoutDefaultRaw}, var(${paddingContentAlignOutdentTextOnSubtleRaw}, 4px))`;
 export const paddingCardNestedImage = `var(${paddingCardNestedImageRaw}, var(${paddingContentAlignDefaultRaw}))`;
 export const paddingCtrlTextBottom = `var(${paddingCtrlTextBottomRaw}, var(${paddingCtrlTextTopRaw}, 5px))`;
 export const paddingCtrlSmTextBottom = `var(${paddingCtrlSmTextBottomRaw}, var(${paddingCtrlSmTextTopRaw}))`;
@@ -589,7 +590,7 @@ export const foregroundCtrlOnTransparentRest = `var(${foregroundCtrlOnTransparen
 export const foregroundCtrlOnTransparentHover = `var(${foregroundCtrlOnTransparentHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2BrandHover}))`;
 export const foregroundCtrlOnTransparentPressed = `var(${foregroundCtrlOnTransparentPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2BrandPressed}))`;
 export const foregroundCtrlOnTransparentDisabled = `var(${foregroundCtrlOnTransparentDisabledRaw}, var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${colorNeutralForegroundDisabled}))`;
-export const materialAcrylicDefaultSolid = `var(${materialAcrylicDefaultSolidRaw}, var(${backgroundLayerPrimarySolidRaw}))`;
+export const materialAcrylicDefaultSolid = `var(${materialAcrylicDefaultSolidRaw}, var(${backgroundLayerPrimarySolidRaw}, ${colorNeutralBackground1}))`;
 export const materialAcrylicDefaultColorBlend = `var(${materialAcrylicDefaultColorBlendRaw}, var(${backgroundLayerPrimarySolidRaw}))`;
 export const materialAcrylicDefaultLumBlend = `var(${materialAcrylicDefaultLumBlendRaw}, var(${backgroundLayerPrimarySolidRaw}))`;
 export const materialMicaDefaultSolid = `var(${materialMicaDefaultSolidRaw}, var(${backgroundLayerPrimarySolidRaw}))`;

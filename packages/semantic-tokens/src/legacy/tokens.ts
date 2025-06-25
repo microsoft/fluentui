@@ -470,6 +470,26 @@ export const borderRadiusSmall = 'var(--borderRadiusSmall)';
  */
 export const borderRadiusXLarge = 'var(--borderRadiusXLarge)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalSNudge | `spacingVerticalSNudge`} design token.
+ * @public
+ */
+export const spacingVerticalSNudge = 'var(--spacingVerticalSNudge)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground3Hover | `colorNeutralForeground3Hover`} design token.
+ * @public
+ */
+export const colorNeutralForeground3Hover = 'var(--colorNeutralForeground3Hover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground3Pressed | `colorNeutralForeground3Pressed`} design token.
+ * @public
+ */
+export const colorNeutralForeground3Pressed = 'var(--colorNeutralForeground3Pressed)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#shadow16 | `shadow16`} design token.
+ * @public
+ */
+export const shadow16 = 'var(--shadow16)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalXS | `spacingVerticalXS`} design token.
  * @public
  */
