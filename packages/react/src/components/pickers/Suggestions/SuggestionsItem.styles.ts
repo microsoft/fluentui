@@ -85,6 +85,9 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
           ':hover': {
             color: semanticColors.menuItemTextHovered,
           },
+          '.ms-Button-flexContainer': {
+            width: '100%',
+          },
         },
       },
       suggested && [
