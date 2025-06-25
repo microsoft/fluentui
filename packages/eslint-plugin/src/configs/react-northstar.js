@@ -1,7 +1,10 @@
+// @ts-check
+
 const { findGitRoot } = require('../utils/configHelpers');
 
 const workspaceRoot = findGitRoot();
 
+/** @type {import("eslint").Linter.LegacyConfig} */
 module.exports = {
   extends: [
     'airbnb',
