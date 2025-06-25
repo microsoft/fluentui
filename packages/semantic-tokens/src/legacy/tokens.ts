@@ -470,6 +470,11 @@ export const borderRadiusSmall = 'var(--borderRadiusSmall)';
  */
 export const borderRadiusXLarge = 'var(--borderRadiusXLarge)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke2Contrast | `colorBrandStroke2Contrast`} design token.
+ * @public
+ */
+export const colorBrandStroke2Contrast = 'var(--colorBrandStroke2Contrast)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalXS | `spacingVerticalXS`} design token.
  * @public
  */
