@@ -35,7 +35,7 @@ export const Dynamic = () => {
   const [flag, toggleFlag] = React.useState(false);
   const styles = useStyles();
   const childLength = 1000;
-  const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   React.useEffect(() => {
     updateTimeout();
@@ -43,7 +43,7 @@ export const Dynamic = () => {
   }, []);
 
   const updateTimeout = () => {
-    clearTimeout(timeoutRef.current);
+    timeoutRef.current && clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
       toggleFlag(iFlag => !iFlag);
       updateTimeout();
