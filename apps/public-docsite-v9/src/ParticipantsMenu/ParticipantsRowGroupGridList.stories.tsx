@@ -17,7 +17,7 @@ export const ParticipantsRowGroupGridList = () => {
               <ListItem key={index} role="row" aria-label={name}>
                 <div role="gridcell">{name}</div>
                 <div role="gridcell">
-                  <Button aria-description={`Show profile card for ${name}`}>Avatar for {name}</Button>
+                  <Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>
                 </div>
                 <div role="gridcell">
                   <Button>Remove {name}</Button>
@@ -31,7 +31,7 @@ export const ParticipantsRowGroupGridList = () => {
               <ListItem key={index} role="row" aria-label={name}>
                 <div role="gridcell">{name}</div>
                 <div role="gridcell">
-                  <Button aria-description={`Show profile card for ${name}`}>Avatar for {name}</Button>
+                  <Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>
                 </div>
                 <div role="gridcell">
                   <Button>Remove {name}</Button>

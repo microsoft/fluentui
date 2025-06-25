@@ -17,7 +17,7 @@ export const ParticipantsRowGroupGridListActionsInOneColumn = () => {
               <ListItem key={index} role="row" aria-label={name}>
                 <div role="gridcell">{name}</div>
                 <div role="gridcell">
-                  <Button aria-description={`Show profile card for ${name}`}>Avatar for {name}</Button>
+                  <Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>
                   <Button>Remove {name}</Button>
                 </div>
               </ListItem>
@@ -29,7 +29,7 @@ export const ParticipantsRowGroupGridListActionsInOneColumn = () => {
               <ListItem key={index} role="row" aria-label={name}>
                 <div role="gridcell">{name}</div>
                 <div role="gridcell">
-                  <Button aria-description={`Show profile card for ${name}`}>Avatar for {name}</Button>
+                  <Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>
                   <Button>Remove {name}</Button>
                 </div>
               </ListItem>
