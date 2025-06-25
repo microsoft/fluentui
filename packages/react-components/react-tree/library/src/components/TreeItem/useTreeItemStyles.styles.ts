@@ -1,7 +1,6 @@
 import { GriffelStyle, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { TreeItemCSSProperties, TreeItemSlots, TreeItemState } from './TreeItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { treeItemLevelToken } from '../../utils/tokens';
 import { treeItemLayoutClassNames } from '../TreeItemLayout/useTreeItemLayoutStyles.styles';

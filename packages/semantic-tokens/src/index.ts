@@ -1818,5 +1818,6 @@ export {
   _ctrlTreeIconOnSubtlePressed,
   _ctrlTreeOnTransparentHover,
   _ctrlTreeOnTransparentPressed,
+  _ctrlPersonaTreeIconOnSubtlePressed,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';

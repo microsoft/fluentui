@@ -494,3 +494,8 @@ export const spacingVerticalXS = 'var(--spacingVerticalXS)';
  * @public
  */
 export const colorNeutralForeground3Hover = 'var(--colorNeutralForeground3Hover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground3Pressed | `colorNeutralForeground3Pressed`} design token.
+ * @public
+ */
+export const colorNeutralForeground3Pressed = 'var(--colorNeutralForeground3Pressed)';

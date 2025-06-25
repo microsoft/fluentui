@@ -89,6 +89,10 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlHintDefault',
   },
+  _ctrlPersonaTreeIconOnSubtlePressed: {
+    f2Token: 'colorNeutralForeground3Pressed',
+    originalToken: 'foregroundCtrlOnSubtlePressed',
+  },
   _ctrlSpinnerBackgroundEmpty: {
     f2Token: 'colorBrandStroke2Contrast',
     originalToken: 'ctrlProgressBackgroundEmpty',

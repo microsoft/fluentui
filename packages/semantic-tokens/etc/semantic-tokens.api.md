@@ -2197,6 +2197,9 @@ export const ctrlLiteFilterStrokeWidthSelected = "var(--smtc-ctrl-lite-filter-st
 // @public (undocumented)
 export const ctrlLiteFilterStrokeWidthSelectedRaw = "--smtc-ctrl-lite-filter-stroke-width-selected";
 
+// @public
+export const _ctrlPersonaTreeIconOnSubtlePressed = "var(--smtc-foreground-ctrl-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-pressed, var(--colorNeutralForeground3Pressed)))";
+
 // @public (undocumented)
 export const ctrlProgressBackgroundEmpty = "var(--smtc-ctrl-progress-background-empty, var(--colorNeutralBackground6))";
 
