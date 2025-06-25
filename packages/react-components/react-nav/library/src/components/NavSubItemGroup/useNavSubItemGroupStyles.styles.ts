@@ -2,9 +2,8 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavSubItemGroupSlots, NavSubItemGroupState } from './NavSubItemGroup.types';
 
-export const navSubItemGroupClassNames: SlotClassNames<NavSubItemGroupSlots> = {
+export const navSubItemGroupClassNames: SlotClassNames<Omit<NavSubItemGroupSlots, 'collapseMotion'>> = {
   root: 'fui-NavSubItemGroup',
-  collapseMotion: 'fui-NavSubItemGroup__collapseMotion',
 };
 
 /**
