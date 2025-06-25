@@ -245,6 +245,11 @@ export const spacingHorizontalSNudge = 'var(--spacingHorizontalSNudge)';
  */
 export const spacingHorizontalXS = 'var(--spacingHorizontalXS)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalXXL | `spacingHorizontalXXL`} design token.
+ * @public
+ */
+export const spacingHorizontalXXL = 'var(--spacingHorizontalXXL)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalM | `spacingHorizontalM`} design token.
  * @public
  */
@@ -254,6 +259,11 @@ export const spacingHorizontalM = 'var(--spacingHorizontalM)';
  * @public
  */
 export const spacingHorizontalL = 'var(--spacingHorizontalL)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#shadow64 | `shadow64`} design token.
+ * @public
+ */
+export const shadow64 = 'var(--shadow64)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedBackground3 | `colorPaletteRedBackground3`} design token.
  * @public
@@ -319,6 +329,11 @@ export const colorNeutralStroke2 = 'var(--colorNeutralStroke2)';
  * @public
  */
 export const colorNeutralStroke3 = 'var(--colorNeutralStroke3)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackground3 | `colorNeutralBackground3`} design token.
+ * @public
+ */
+export const colorNeutralBackground3 = 'var(--colorNeutralBackground3)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#strokeWidthThicker | `strokeWidthThicker`} design token.
  * @public
@@ -434,21 +449,6 @@ export const fontFamilyBase = 'var(--fontFamilyBase)';
  * @public
  */
 export const fontWeightRegular = 'var(--fontWeightRegular)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackground3 | `colorNeutralBackground3`} design token.
- * @public
- */
-export const colorNeutralBackground3 = 'var(--colorNeutralBackground3)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#shadow64 | `shadow64`} design token.
- * @public
- */
-export const shadow64 = 'var(--shadow64)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalXXL | `spacingHorizontalXXL`} design token.
- * @public
- */
-export const spacingHorizontalXXL = 'var(--spacingHorizontalXXL)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#strokeWidthThickest | `strokeWidthThickest`} design token.
  * @public
