@@ -7,7 +7,7 @@ import { participantsList } from './participantsList';
 
 export const ParticipantsRowGroupGridListActionsInOneColumn = () => {
   return (
-    <Prototype pageTitle="Row group grid with just two columns">
+    <Prototype pageTitle="Row group grid with actions in one column">
       <h1>Row group grid with actions in one column</h1>
       <ParticipantsMenuWrapper>
         <List navigationMode="composite">
