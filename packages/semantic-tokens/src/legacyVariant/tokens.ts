@@ -5,11 +5,21 @@ import {
   ctrlAvatarPresenceBadgeStrokeWidthRaw,
 } from '../components/avatar/variables';
 import {
+  ctrlProgressBackgroundEmptyRaw,
+  ctrlProgressBackgroundFilledRaw,
+  ctrlProgressHeightFilledRaw,
+} from '../components/progress/variables';
+import { ctrlSpinnerStrokeWidthRaw } from '../components/spinner/variables';
+import {
   foregroundCtrlNeutralPrimaryRestRaw,
   cornerCtrlRestRaw,
   strokeWidthDefaultRaw,
   gapInsideCtrlDefaultRaw,
   nullColorRaw,
+  backgroundCtrlBrandRestRaw,
+  textGlobalBody3FontSizeRaw,
+  textGlobalBody3LineHeightRaw,
+  textStyleDefaultRegularWeightRaw,
   paddingCtrlTextTopRaw,
 } from '../control/variables';
 import {
@@ -24,6 +34,11 @@ import {
   strokeWidthThin,
   spacingHorizontalSNudge,
   colorNeutralForeground3,
+  colorBrandStroke2Contrast,
+  colorBrandStroke1,
+  fontSizeBase400,
+  lineHeightBase400,
+  fontWeightSemibold,
   spacingVerticalXS,
   colorTransparentStrokeInteractive,
   colorTransparentStroke,
@@ -37,6 +52,8 @@ import {
   foregroundCtrlOnTransparentHoverRaw,
   foregroundCtrlOnTransparentPressedRaw,
   foregroundCtrlOnTransparentRestRaw,
+  textRampItemBodyFontSizeRaw,
+  textRampItemBodyLineHeightRaw,
   paddingCtrlTextBottomRaw,
   strokeCtrlOnActiveBrandHoverRaw,
   strokeCtrlOnActiveBrandRestRaw,
@@ -140,6 +157,55 @@ export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${sp
  * please use foregroundCtrlHintDefault instead.
  */
 export const _ctrlDividerForegroundSubtle = `var(${foregroundCtrlHintDefaultRaw}, var(${nullColorRaw}, ${colorNeutralForeground3}))`;
+/**
+ * This is a legacy variant for ctrlProgressBackgroundEmpty to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlProgressBackgroundEmpty instead.
+ */
+export const _ctrlSpinnerBackgroundEmpty = `var(${ctrlProgressBackgroundEmptyRaw}, ${colorBrandStroke2Contrast})`;
+/**
+ * This is a legacy variant for ctrlProgressBackgroundFilled to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlProgressBackgroundFilled instead.
+ */
+export const _ctrlSpinnerBackgroundFilled = `var(${ctrlProgressBackgroundFilledRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorBrandStroke1}))`;
+/**
+ * This is a legacy variant for textRampItemBodyFontSize to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use textRampItemBodyFontSize instead.
+ */
+export const _ctrlSpinnerItemBodyFontSize = `var(${textRampItemBodyFontSizeRaw}, var(${textGlobalBody3FontSizeRaw}, ${fontSizeBase400}))`;
+/**
+ * This is a legacy variant for textRampItemBodyLineHeight to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use textRampItemBodyLineHeight instead.
+ */
+export const _ctrlSpinnerItemBodyLineHeight = `var(${textRampItemBodyLineHeightRaw}, var(${textGlobalBody3LineHeightRaw}, ${lineHeightBase400}))`;
+/**
+ * This is a legacy variant for ctrlSpinnerStrokeWidth to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlSpinnerStrokeWidth instead.
+ */
+export const _ctrlSpinnerStrokeLgWidth = `var(${ctrlSpinnerStrokeWidthRaw}, var(${ctrlProgressHeightFilledRaw}, ${strokeWidthThickest}))`;
+/**
+ * This is a legacy variant for ctrlSpinnerStrokeWidth to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlSpinnerStrokeWidth instead.
+ */
+export const _ctrlSpinnerStrokeSmWidth = `var(${ctrlSpinnerStrokeWidthRaw}, var(${ctrlProgressHeightFilledRaw}, ${strokeWidthThick}))`;
+/**
+ * This is a legacy variant for textStyleDefaultRegularWeight to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use textStyleDefaultRegularWeight instead.
+ */
+export const _ctrlSpinnerTextStyleRegularWeight = `var(${textStyleDefaultRegularWeightRaw}, ${fontWeightSemibold})`;
 /**
  * This is a legacy variant for paddingCtrlTextBottom to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
