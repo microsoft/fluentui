@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Charts made responsive",
+  "comment": "implement stacked hbc with axis and support for negative x values",
   "packageName": "@fluentui/react-charts",
   "email": "anushgupta@microsoft.com",
   "dependentChangeType": "patch"

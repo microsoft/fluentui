@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "feat: add support for custom style hooks",
+  "type": "minor",
+  "comment": "feat: add motion to nav components",
   "packageName": "@fluentui/react-nav",
   "email": "marcosvmmoura@gmail.com",
   "dependentChangeType": "patch"
