@@ -90,8 +90,8 @@ export const fluentOverrides: FluentOverrides = {
   ctrlProgressLgHeightFilled: { rawValue: '100%' },
   ctrlRatingIconForegroundEmpty: { f2Token: 'colorNeutralBackground6' }, // should be #D9DDE3 per design
   ctrlRatingIconForegroundFilled: { f2Token: 'colorNeutralForeground1' }, // should be #24282F per design
-  foregroundContentBrandPrimary: { f2Token: 'colorBrandForeground1' },
   ctrlSpinnerStrokeWidth: { f2Token: 'strokeWidthThicker' },
+  foregroundContentBrandPrimary: { f2Token: 'colorBrandForeground1' },
   foregroundContentNeutralPrimary: { f2Token: 'colorNeutralForeground1' },
   foregroundContentNeutralSecondary: { f2Token: 'colorNeutralForeground2' },
   foregroundCtrlIconOnNeutralDisabled: { f2Token: 'colorNeutralForegroundDisabled' },
