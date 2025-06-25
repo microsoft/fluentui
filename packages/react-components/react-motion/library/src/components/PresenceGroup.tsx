@@ -67,7 +67,8 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
     this.mounted = false;
   }
 
-  render() {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  render(): JSX.Element {
     return (
       <>
         {Object.entries(this.state.childMapping).map(([childKey, childProps]) => (

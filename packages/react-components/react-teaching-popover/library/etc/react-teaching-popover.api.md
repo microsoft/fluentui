@@ -15,7 +15,6 @@ import { ComponentState } from '@fluentui/react-utilities';
 import { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSX as JSX_2 } from 'react';
 import { JSXElementConstructor } from 'react';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import type { PopoverProps } from '@fluentui/react-popover';
@@ -31,7 +30,7 @@ import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTeachingPopover_unstable: (state: PopoverState) => JSX_2.Element;
+export const renderTeachingPopover_unstable: (state: PopoverState) => JSX.Element;
 
 // @public
 export const renderTeachingPopoverBody_unstable: (state: TeachingPopoverBodyState) => JSX.Element;

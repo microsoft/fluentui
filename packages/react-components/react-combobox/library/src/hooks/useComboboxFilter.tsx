@@ -38,7 +38,8 @@ export function useComboboxFilter<T extends { children: React.ReactNode; value: 
   query: string,
   options: T[],
   config: UseComboboxFilterConfig<T>,
-) {
+): // eslint-disable-next-line @typescript-eslint/no-deprecated
+JSX.Element[] {
   const {
     filter = defaultFilter,
     noOptionsMessage = "We couldn't find any matches.",

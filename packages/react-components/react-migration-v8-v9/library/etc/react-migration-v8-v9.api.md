@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import { BrandVariants } from '@fluentui/react-components';
 import type { ButtonProps } from '@fluentui/react-components';
 import type { IBaseButtonProps } from '@fluentui/react';
@@ -163,7 +165,7 @@ export const hcHyperlink = "#ffff00";
 export const MenuButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
-export const MenuItemShim: (props: IContextualMenuItem) => React_2.JSX.Element;
+export const MenuItemShim: (props: IContextualMenuItem) => JSX.Element;
 
 // @public
 export const PrimaryButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
@@ -178,10 +180,10 @@ export const shimButtonProps: (props: IBaseButtonProps & React_2.RefAttributes<H
 export const shimMenuProps: (props: IContextualMenuProps) => Partial<MenuProps>;
 
 // @public (undocumented)
-export const StackItemShim: (props: IStackItemProps) => React_2.JSX.Element;
+export const StackItemShim: (props: IStackItemProps) => JSX.Element;
 
 // @public (undocumented)
-export const StackShim: (props: IStackProps) => React_2.JSX.Element;
+export const StackShim: (props: IStackProps) => JSX.Element;
 
 // @public (undocumented)
 export type TextAlignment = 'inherit' | 'initial' | 'revert' | 'unset' | 'center' | 'end' | 'start' | 'justify' | 'left' | 'match-parent' | 'right';
