@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { Legend } from '../../components/Legends/Legends.types';
@@ -36,7 +36,9 @@ import {
   IDomainNRange,
   domainRangeOfNumericForHorizontalBarChartWithAxis,
   groupChartDataByYValue,
+  MIN_DOMAIN_MARGIN,
 } from '../../utilities/index';
+import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
 type ColorScale = (_p?: number) => string;
 
 export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarChartWithAxisProps> = React.forwardRef<
@@ -68,6 +70,8 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   let tooltipElement: any;
   let _longestBarPositiveTotalValue: number;
   let _longestBarNegativeTotalValue: number;
+  let _domainMargin: number = MIN_DOMAIN_MARGIN;
+  let _yAxisPadding: number = props.yAxisPadding ?? 0.5;
   const cartesianChartRef = React.useRef<Chart>(null);
   const X_ORIGIN: number = 0;
 
@@ -183,29 +187,34 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       _yAxisType === YAxisType.NumericAxis
         ? _getScales(containerHeight, containerWidth, true)
         : _getScales(containerHeight, containerWidth, false);
-    const allBars = stackedChartData
-      .map(singleBarData =>
-        _yAxisType === YAxisType.NumericAxis
-          ? _createNumericBars(
-              containerHeight,
-              containerWidth,
-              xElement!,
-              yElement!,
-              singleBarData,
-              xBarScale,
-              yBarScale,
-            )
-          : _createStringBars(
-              containerHeight,
-              containerWidth,
-              xElement!,
-              yElement!,
-              singleBarData,
-              xBarScale,
-              yBarScale,
-            ),
-      )
-      .flat();
+    const xRange = xBarScale.range();
+    let allBars: JSX.Element[] = [];
+    // when the chart mounts, the xRange[1] is sometimes seen to be < 0 (like -40) while xRange[0] > 0.
+    if (xRange[0] < xRange[1]) {
+      allBars = stackedChartData
+        .map(singleBarData =>
+          _yAxisType === YAxisType.NumericAxis
+            ? _createNumericBars(
+                containerHeight,
+                containerWidth,
+                xElement!,
+                yElement!,
+                singleBarData,
+                xBarScale,
+                yBarScale,
+              )
+            : _createStringBars(
+                containerHeight,
+                containerWidth,
+                xElement!,
+                yElement!,
+                singleBarData,
+                xBarScale,
+                yBarScale,
+              ),
+        )
+        .flat();
+    }
 
     return (_bars = allBars);
   }
@@ -293,13 +302,18 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     const xDomain = [Math.min(X_ORIGIN, xMin), Math.max(X_ORIGIN, xMax)];
     if (isNumericScale) {
       const yMax = d3Max(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      const yMin = d3Min(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      const yDomainMax = Math.max(yMax, props.yMaxValue || 0);
+      // Default to 0 if yMinValue is not provided.
+      const yMinProp = props.yMinValue || 0;
+      const yDomainMin = Math.min(yMin, yMinProp);
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
         .nice()
         .range([_margins.left!, containerWidth - _margins.right!]);
       const yBarScale = d3ScaleLinear()
-        .domain([0, yMax])
-        .range([containerHeight - _margins.bottom!, _margins.top!]);
+        .domain([yDomainMin, yDomainMax])
+        .range([containerHeight - (_margins.bottom! + _domainMargin), _margins.top! + _domainMargin]);
       return { xBarScale, yBarScale };
     } else {
       // please note these padding default values must be consistent in here
@@ -307,8 +321,8 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       // http://using-d3js.com/04_07_ordinal_scales.html
       const yBarScale = d3ScaleBand()
         .domain(_yAxisLabels)
-        .range([containerHeight - _margins.bottom! - _barHeight / 2, _margins.top! + _barHeight / 2])
-        .padding(props.yAxisPadding || 0);
+        .range([containerHeight - (_margins.bottom! + _domainMargin), _margins.top! + _domainMargin])
+        .padding(_yAxisPadding);
 
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
@@ -431,6 +445,68 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     });
     return bars;
   }
+
+  function _getUniqueYValues() {
+    const mapY: Record<string, number | string> = {};
+    props.data?.forEach((point: HorizontalBarChartWithAxisDataPoint) => {
+      mapY[point.y] = point.y;
+    });
+    const uniqueY = Object.values(mapY);
+    return uniqueY;
+  }
+
+  function _calculateAppropriateBarHeight(data: number[] | Date[], totalWidth: number, innerPadding: number) {
+    const result = getClosestPairDiffAndRange(data);
+    if (!result || result[1] === 0) {
+      return 16;
+    }
+    const closestPairDiff = result[0];
+    let range = result[1];
+    const yMax = d3Max(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+    // Since we are always rendering from 0 to yMax, we need to ensure that the range is at least yMax
+    // to calculate the bar height correctly.
+    range = Math.max(range, yMax);
+    // Refer to https://microsoft.github.io/fluentui-charting-contrib/docs/rfcs/fix-overlapping-bars-on-continuous-axes
+    // for the derivation of the following formula.
+    const barWidth = Math.floor(
+      (totalWidth * closestPairDiff * (1 - innerPadding)) / (range + closestPairDiff * (1 - innerPadding)),
+    );
+    return barWidth;
+  }
+
+  function _getDomainMarginsForHorizontalBarChart(containerHeight: number): Margins {
+    _domainMargin = MIN_DOMAIN_MARGIN;
+    const uniqueY = _getUniqueYValues();
+    /** Rate at which the space between the bars changes wrt the bar height */
+    _yAxisPadding = _yAxisPadding === 1 ? 0.99 : _yAxisPadding;
+    const barGapRate = _yAxisPadding / (1 - _yAxisPadding);
+    const numBars = uniqueY.length + (uniqueY.length - 1) * barGapRate;
+    // Total height available to render the bars
+    const totalHeight = containerHeight - (_margins.top! + MIN_DOMAIN_MARGIN) - (_margins.bottom! + MIN_DOMAIN_MARGIN);
+    if (_yAxisType !== YAxisType.StringAxis) {
+      // Calculate bar height dynamically
+      _barHeight =
+        props.barHeight || _calculateAppropriateBarHeight(uniqueY as number[] | Date[], totalHeight, _yAxisPadding);
+      _barHeight = Math.max(_barHeight, 1);
+      _domainMargin += _barHeight / 2;
+    } else {
+      // Calculate the appropriate bar height
+      _barHeight = props.barHeight || totalHeight / numBars;
+      /** Total height required to render the bars. Directly proportional to bar height */
+      const reqHeight = numBars * _barHeight;
+      if (totalHeight >= reqHeight) {
+        // Center align the chart by setting equal left and right margins for domain
+        _domainMargin = MIN_DOMAIN_MARGIN + (totalHeight - reqHeight) / 2;
+      }
+    }
+
+    return {
+      ..._margins,
+      top: _margins.top! + _domainMargin,
+      bottom: _margins.bottom! + _domainMargin,
+    };
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function _tooltipOfYAxislabels(ytooltipProps: any) {
     const { tooltipCls, yAxis, id } = ytooltipProps;
@@ -781,6 +857,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     const legendBars: JSX.Element = _getLegendData(_points);
     return (
       <CartesianChart
+        yAxisPadding={_yAxisPadding}
         {...props}
         chartTitle={_getChartTitle()}
         points={_points}
@@ -794,6 +871,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         legendBars={legendBars}
         barwidth={_barHeight}
         getmargins={_getMargins}
+        getYDomainMargins={_getDomainMarginsForHorizontalBarChart}
         getGraphData={_getGraphData}
         getAxisData={_getAxisData}
         onChartMouseLeave={_handleChartMouseLeave}

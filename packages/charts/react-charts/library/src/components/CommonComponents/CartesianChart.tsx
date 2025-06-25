@@ -258,7 +258,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     };
 
     const YAxisParams = {
-      margins: margins,
+      margins: props.getYDomainMargins ? props.getYDomainMargins(containerHeight) : margins,
       containerWidth: containerWidth,
       containerHeight: containerHeight - removalValueForTextTuncate!,
       yAxisElement: yAxisElement.current,
