@@ -18,11 +18,11 @@ export const GaugeChartSingleSegment = () => {
   const _onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChartValue(parseInt(e.target.value, 10));
   };
-  const _onSwitchGradient = React.useCallback(ev => {
+  const _onSwitchGradient = React.useCallback((ev: any) => {
     setEnableGradient(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchRoundedCorners = React.useCallback(ev => {
+  const _onSwitchRoundedCorners = React.useCallback((ev: any) => {
     setRoundedCorners(ev.currentTarget.checked);
   }, []);
 
