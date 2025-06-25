@@ -308,7 +308,7 @@ export interface ChildProps {
     // (undocumented)
     xScale?: any;
     // (undocumented)
-    yScale?: any;
+    yScalePrimary?: any;
     // (undocumented)
     yScaleSecondary?: any;
 }
@@ -606,6 +606,7 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
     isCalloutForStack?: boolean;
     maxBarWidth?: number;
     mode?: 'default' | 'plotly';
+    roundCorners?: boolean;
     styles?: GroupedVerticalBarChartStyles;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;
@@ -632,6 +633,7 @@ export interface GVBarChartSeriesPoint {
     key: string;
     legend: string;
     onClick?: VoidFunction;
+    useSecondaryYScale?: boolean;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;
 }
@@ -949,6 +951,7 @@ export interface LineChartPoints {
     onLegendClick?: (selectedLegend: string | null | string[]) => void;
     onLineClick?: () => void;
     opacity?: number;
+    useSecondaryYScale?: boolean;
 }
 
 // @public
@@ -1032,8 +1035,13 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     // (undocumented)
     getAxisData?: any;
     getDomainMargins?: (containerWidth: number) => Margins;
+    getDomainNRangeValues?: (points: HorizontalBarChartWithAxisDataPoint[], margins: Margins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: Margins) => void;
+    getMinMaxOfYAxis?: (points: DataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
+        startValue: number;
+        endValue: number;
+    };
     isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;

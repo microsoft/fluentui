@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Wed, 18 Jun 2025 17:33:57 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Jun 2025 15:49:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.3)
+
+Mon, 23 Jun 2025 15:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.2..@fluentui/react-charts_v9.1.3)
+
+### Patches
+
+- Add negative y value support in GVBC ([PR #34687](https://github.com/microsoft/fluentui/pull/34687) by anushgupta@microsoft.com)
+- add support for negative vsbc ([PR #34668](https://github.com/microsoft/fluentui/pull/34668) by anushgupta@microsoft.com)
+- port v8 changes to v9 ([PR #34665](https://github.com/microsoft/fluentui/pull/34665) by anushgupta@microsoft.com)
+- Bump @fluentui/react-overflow to v9.4.3 ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by beachball)
+- Bump @fluentui/react-popover to v9.11.3 ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.3 ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by beachball)
 
 ## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.2)
 

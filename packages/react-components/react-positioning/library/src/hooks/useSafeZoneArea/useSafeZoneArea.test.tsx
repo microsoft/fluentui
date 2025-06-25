@@ -1,13 +1,13 @@
 import { act, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useSafeZoneArea, type SafeBufferAreaOptions } from '@fluentui/react-positioning';
+import { useSafeZoneArea, type UseSafeZoneOptions } from '@fluentui/react-positioning';
 import * as React from 'react';
 
 const Example = ({
   onSafeZoneLeave,
   onSafeZoneEnter,
   onSafeZoneTimeout,
-}: Pick<SafeBufferAreaOptions, 'onSafeZoneEnter' | 'onSafeZoneLeave' | 'onSafeZoneTimeout'>) => {
+}: Pick<UseSafeZoneOptions, 'onSafeZoneEnter' | 'onSafeZoneLeave' | 'onSafeZoneTimeout'>) => {
   const safeZoneArea = useSafeZoneArea({
     debug: true,
     timeout: 1000,
@@ -68,8 +68,10 @@ describe('useSafeZoneArea', () => {
 
       // Hover over the trigger element
 
-      userEvent.hover(triggerEl);
-      jest.advanceTimersByTime(100);
+      act(() => {
+        userEvent.hover(triggerEl);
+        jest.advanceTimersByTime(100);
+      });
 
       const svgPathEl = safeZoneEl?.querySelector('svg path') as SVGPathElement;
 
@@ -78,7 +80,9 @@ describe('useSafeZoneArea', () => {
 
       // Hover over the SVG path element
 
-      userEvent.hover(svgPathEl);
+      act(() => {
+        userEvent.hover(svgPathEl);
+      });
 
       expect(onSafeZoneEnter).toHaveBeenCalledTimes(1);
       expect(onSafeZoneTimeout).not.toHaveBeenCalled();
@@ -108,8 +112,10 @@ describe('useSafeZoneArea', () => {
 
       // Hover over the trigger element
 
-      userEvent.hover(triggerEl);
-      jest.advanceTimersByTime(100);
+      act(() => {
+        userEvent.hover(triggerEl);
+        jest.advanceTimersByTime(100);
+      });
 
       const svgPathEl = safeZoneEl?.querySelector('svg path') as SVGPathElement;
 
@@ -118,15 +124,19 @@ describe('useSafeZoneArea', () => {
 
       // Hover over the SVG path element
 
-      userEvent.hover(svgPathEl);
+      act(() => {
+        userEvent.hover(svgPathEl);
+      });
 
       expect(onSafeZoneEnter).toHaveBeenCalledTimes(1);
       expect(onSafeZoneTimeout).not.toHaveBeenCalled();
 
       // Move back to the trigger element
 
-      jest.advanceTimersByTime(500);
-      userEvent.hover(triggerEl);
+      act(() => {
+        jest.advanceTimersByTime(500);
+        userEvent.hover(triggerEl);
+      });
 
       expect(safeZoneEl).toBeVisible();
       expect(onSafeZoneTimeout).not.toHaveBeenCalled();
@@ -154,8 +164,10 @@ describe('useSafeZoneArea', () => {
 
       // Hover over the trigger element
 
-      userEvent.hover(triggerEl);
-      jest.advanceTimersByTime(100);
+      act(() => {
+        userEvent.hover(triggerEl);
+        jest.advanceTimersByTime(100);
+      });
 
       const svgPathEl = safeZoneEl?.querySelector('svg path') as SVGPathElement;
 
@@ -164,22 +176,28 @@ describe('useSafeZoneArea', () => {
 
       // Hover over the SVG path element
 
-      userEvent.hover(svgPathEl);
+      act(() => {
+        userEvent.hover(svgPathEl);
+      });
 
       expect(onSafeZoneEnter).toHaveBeenCalledTimes(1);
       expect(onSafeZoneTimeout).not.toHaveBeenCalled();
 
       // Move to a container element
 
-      jest.advanceTimersByTime(500);
-      userEvent.hover(containerEl);
+      act(() => {
+        jest.advanceTimersByTime(500);
+        userEvent.hover(containerEl);
+      });
 
       expect(safeZoneEl).not.toBeVisible();
       expect(onSafeZoneTimeout).not.toHaveBeenCalled();
 
       // Check again
 
-      jest.advanceTimersByTime(1000);
+      act(() => {
+        jest.advanceTimersByTime(1000);
+      });
 
       expect(onSafeZoneTimeout).not.toHaveBeenCalled();
     });

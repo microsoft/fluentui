@@ -158,7 +158,7 @@ const useIFrameFocus = (options: UseIFrameFocusOptions) => {
     element: targetDocument,
     callback,
     contains = DEFAULT_CONTAINS,
-    pollDuration = 1000,
+    pollDuration = 100,
     refs,
   } = options;
   const timeoutRef = React.useRef<number>();
