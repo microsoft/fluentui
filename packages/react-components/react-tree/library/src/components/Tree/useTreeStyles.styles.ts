@@ -1,7 +1,7 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { TreeSlots, TreeState } from './Tree.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const treeClassNames: SlotClassNames<Omit<TreeSlots, 'collapseMotion'>> = {
   root: 'fui-Tree',
@@ -10,12 +10,12 @@ export const treeClassNames: SlotClassNames<Omit<TreeSlots, 'collapseMotion'>> =
 const useBaseStyles = makeResetStyles({
   display: 'flex',
   flexDirection: 'column',
-  rowGap: tokens.spacingVerticalXXS,
+  rowGap: semanticTokens._ctrlTreeGapInsideDefault,
 });
 
 const useStyles = makeStyles({
   subtree: {
-    paddingTop: tokens.spacingVerticalXXS,
+    paddingTop: semanticTokens._ctrlTreeGapInsideDefault,
   },
 });
 

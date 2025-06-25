@@ -1,11 +1,11 @@
 import { GriffelStyle, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { TreeItemCSSProperties, TreeItemSlots, TreeItemState } from './TreeItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { treeItemLevelToken } from '../../utils/tokens';
 import { treeItemLayoutClassNames } from '../TreeItemLayout/useTreeItemLayoutStyles.styles';
 import { treeItemPersonaLayoutClassNames } from '../TreeItemPersonaLayout/useTreeItemPersonaLayoutStyles.styles';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
   root: 'fui-TreeItem',
@@ -17,9 +17,9 @@ const useBaseStyles = makeResetStyles({
   display: 'flex',
   flexDirection: 'column',
   boxSizing: 'border-box',
-  backgroundColor: tokens.colorSubtleBackground,
-  color: tokens.colorNeutralForeground2,
-  paddingRight: tokens.spacingHorizontalNone,
+  backgroundColor: semanticTokens.backgroundCtrlSubtleRest,
+  color: semanticTokens.foregroundCtrlOnSubtleRest,
+  paddingRight: semanticTokens.paddingContentNone,
   // if using createCustomFocusIndicatorStyle then we need to remove default outline styles provided by the browser
   ':focus': {
     outlineStyle: 'none',
@@ -30,12 +30,11 @@ const useBaseStyles = makeResetStyles({
   // This adds the focus outline for the TreeItemLayout element
   ...createCustomFocusIndicatorStyle(
     {
-      borderRadius: tokens.borderRadiusMedium,
-      outlineColor: tokens.colorStrokeFocus2,
-      outlineRadius: tokens.borderRadiusMedium,
-      // FIXME: tokens.strokeWidthThick causes some weird bugs
-      outlineWidth: '2px',
-      outlineStyle: 'solid',
+      outlineRadius: semanticTokens.ctrlListCornerRest,
+      borderRadius: semanticTokens.ctrlListCornerRest,
+      boxShadow: `0 0 0 ${semanticTokens._ctrlAccordionFocusInnerStrokeWidth} ${semanticTokens.ctrlFocusInnerStroke}`,
+      outline: `${semanticTokens.ctrlFocusOuterStrokeWidth} solid ${semanticTokens._ctrlAccordionFocusOuterStroke}`,
+      outlineOffset: semanticTokens._ctrlAccordionFocusInnerStrokeWidth,
     },
     {
       customizeSelector: selector =>

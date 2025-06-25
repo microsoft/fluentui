@@ -81,6 +81,7 @@ export const fluentOverrides: FluentOverrides = {
   ctrlLinkForegroundNeutralPressed: { f2Token: 'colorNeutralForeground2Pressed' },
   ctrlLinkForegroundNeutralRest: { f2Token: 'colorNeutralForeground2' },
   ctrlListCornerRest: { f2Token: 'borderRadiusMedium' },
+  ctrlListIndentLevel1: { f2Token: 'spacingHorizontalXXL' },
   ctrlProgressBackgroundEmpty: { f2Token: 'colorNeutralBackground6' },
   ctrlProgressBackgroundFilled: { f2Token: 'colorCompoundBrandBackground' },
   ctrlProgressCorner: { f2Token: 'borderRadiusMedium' },
@@ -126,6 +127,7 @@ export const fluentOverrides: FluentOverrides = {
   foregroundCtrlOnTransparentHover: { f2Token: 'colorNeutralForeground2BrandHover' },
   foregroundCtrlOnTransparentPressed: { f2Token: 'colorNeutralForeground2BrandPressed' },
   foregroundCtrlOnTransparentRest: { f2Token: 'colorNeutralForeground2' },
+  gapBetweenListItem: { f2Token: 'spacingVerticalXXS' },
   gapInsideCtrlDefault: { f2Token: 'spacingHorizontalS' },
   gapInsideCtrlLgDefault: { f2Token: 'spacingHorizontalSNudge' },
   gapInsideCtrlLgToLabel: { f2Token: 'spacingHorizontalS' },
@@ -134,18 +136,19 @@ export const fluentOverrides: FluentOverrides = {
   gapInsideCtrlToLabel: { f2Token: 'spacingHorizontalSNudge' }, // Rating uses 8px, or spacingHorizontalS, for all gaps between icons and label in design
   nullColor: { f2Token: 'colorTransparentBackground' },
   paddingContentLarge: { f2Token: 'spacingHorizontalXXL' },
+  paddingContentNone: { f2Token: 'spacingHorizontalNone' },
   paddingCtrlHorizontalDefault: { f2Token: 'spacingHorizontalM' },
   paddingCtrlHorizontalIconOnly: { rawValue: '5px' },
   paddingCtrlLgHorizontalDefault: { f2Token: 'spacingHorizontalL' },
   paddingCtrlLgHorizontalIconOnly: { rawValue: '7px' },
-  paddingCtrlLgTextBottom: null, // We can add a value here if needed, but for now it's a noop in Accordion
-  paddingCtrlLgTextTop: null, // We can add a value here if needed, but for now it's a noop in Accordion
+  paddingCtrlLgTextBottom: null, // Enable for semantic, but legacy should fallback to undefined
+  paddingCtrlLgTextTop: null, // Enable for semantic, but legacy should fallback to undefined
   paddingCtrlSmHorizontalDefault: { f2Token: 'spacingHorizontalS' },
   paddingCtrlSmHorizontalIconOnly: { rawValue: '1px' },
-  paddingCtrlSmTextBottom: null, // We can add a value here if needed, but for now it's a noop in Accordion
-  paddingCtrlSmTextTop: null, // We can add a value here if needed, but for now it's a noop in Accordion
+  paddingCtrlSmTextBottom: null, // Enable for semantic, but legacy should fallback to undefined
+  paddingCtrlSmTextTop: null, // Enable for semantic, but legacy should fallback to undefined
   paddingCtrlTextBottom: { rawValue: '5px' },
-  paddingCtrlTextSide: { rawValue: '0px' }, // For now, text padding is not applied (use default);
+  paddingCtrlTextSide: { rawValue: '0px' }, // Enable for semantic, but legacy should fallback to 0px
   paddingCtrlTextTop: { rawValue: '5px' },
   shadowFlyout: { f2Token: 'shadow64' },
   sizeCtrlDefault: { rawValue: '44px' },

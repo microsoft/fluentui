@@ -1782,9 +1782,14 @@ export {
   ctrlCardStateDisabled,
 } from './components/card/tokens';
 export {
+  _ctrlAccordionBackgroundRest,
+  _ctrlAccordionFocusInnerStrokeWidth,
+  _ctrlAccordionFocusOuterStroke,
   _ctrlAccordionForegroundHover,
   _ctrlAccordionForegroundPressed,
   _ctrlAccordionForegroundRest,
+  _ctrlAccordionPaddingTextBottom,
+  _ctrlAccordionPaddingTextTop,
   _ctrlAvatarActiveRingStrokeWidthLg,
   _ctrlAvatarActiveRingStrokeWidthMd,
   _ctrlAvatarActiveRingStrokeWidthSm,
@@ -1796,6 +1801,7 @@ export {
   _ctrlAvatarPresenceBadgeStrokeWidthSm,
   _ctrlButtonGapInsideDefault,
   _ctrlDividerForegroundSubtle,
+  _ctrlPersonaTreeIconOnSubtlePressed,
   _ctrlSpinnerBackgroundEmpty,
   _ctrlSpinnerBackgroundFilled,
   _ctrlSpinnerItemBodyFontSize,
@@ -1807,5 +1813,15 @@ export {
   _ctrlSwitchPaddingTextTop,
   _ctrlSwitchStrokeOnActiveBrandHover,
   _ctrlSwitchStrokeOnActiveBrandRest,
+  _ctrlTreeGapInsideDefault,
+  _ctrlTreeIconOnSubtle,
+  _ctrlTreeIconOnSubtleHover,
+  _ctrlTreeIconOnSubtlePressed,
+  _ctrlTreeOnTransparentHover,
+  _ctrlTreeOnTransparentPressed,
+  _ctrlTreePaddingTextBottom,
+  _ctrlTreePaddingTextLeft,
+  _ctrlTreePaddingTextRight,
+  _ctrlTreePaddingTextTop,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';
