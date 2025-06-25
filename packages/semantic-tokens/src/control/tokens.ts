@@ -23,6 +23,7 @@ import {
   fontFamilyBase,
   fontWeightRegular,
   fontWeightSemibold,
+  spacingHorizontalNone,
   spacingHorizontalXXL,
   spacingHorizontalM,
   spacingHorizontalS,
@@ -298,7 +299,7 @@ export const sizeCtrlLgDefault = `var(${sizeCtrlLgDefaultRaw}, 44px)`;
 export const sizeCtrlLgIcon = `var(${sizeCtrlLgIconRaw}, 24px)`;
 export const paddingContentAlignDefault = `var(${paddingContentAlignDefaultRaw})`;
 export const paddingContentAlignOutdentIconOnSubtle = `var(${paddingContentAlignOutdentIconOnSubtleRaw})`;
-export const paddingContentNone = `var(${paddingContentNoneRaw})`;
+export const paddingContentNone = `var(${paddingContentNoneRaw}, ${spacingHorizontalNone})`;
 export const paddingContentAlignOutdentTextOnSubtle = `var(${paddingContentAlignOutdentTextOnSubtleRaw})`;
 export const paddingContentXxSmall = `var(${paddingContentXxSmallRaw})`;
 export const paddingContentXSmall = `var(${paddingContentXSmallRaw})`;

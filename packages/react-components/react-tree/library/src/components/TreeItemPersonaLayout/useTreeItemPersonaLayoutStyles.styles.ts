@@ -4,6 +4,7 @@ import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { treeItemLevelToken } from '../../utils/tokens';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutSlots> = {
   root: 'fui-TreeItemPersonaLayout',
@@ -27,19 +28,19 @@ const useRootBaseStyles = makeResetStyles({
   alignItems: 'center',
   ...typographyStyles.body1,
   ':active': {
-    color: tokens.colorNeutralForeground2Pressed,
-    backgroundColor: tokens.colorSubtleBackgroundPressed,
+    color: semanticTokens.foregroundCtrlOnSubtlePressed,
+    backgroundColor: semanticTokens.backgroundCtrlSubtlePressed,
     // TODO: stop using treeItemPersonaLayoutClassNames.expandIcon for styling
     [`& .${treeItemPersonaLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Pressed,
+      color: semanticTokens._ctrlPersonaTreeIconOnSubtlePressed,
     },
   },
   ':hover': {
-    color: tokens.colorNeutralForeground2Hover,
-    backgroundColor: tokens.colorSubtleBackgroundHover,
+    color: semanticTokens.foregroundCtrlOnSubtleHover,
+    backgroundColor: semanticTokens.backgroundCtrlSubtleHover,
     // TODO: stop using treeItemPersonaLayoutClassNames.expandIcon  for styling
     [`& .${treeItemPersonaLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Hover,
+      color: semanticTokens._ctrlTreeIconOnSubtleHover,
     },
   },
 });
@@ -49,10 +50,10 @@ const useRootBaseStyles = makeResetStyles({
  */
 const useRootStyles = makeStyles({
   leaf: {
-    paddingLeft: `calc(var(${treeItemLevelToken}, 1) * ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc(var(${treeItemLevelToken}, 1) * ${semanticTokens.ctrlListIndentLevel1})`,
   },
   branch: {
-    paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${semanticTokens.ctrlListIndentLevel1})`,
   },
 });
 
@@ -118,7 +119,7 @@ const useExpandIconBaseStyles = makeResetStyles({
   justifyContent: 'center',
   minWidth: '24px',
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground3,
+  color: semanticTokens._ctrlTreeIconOnSubtle,
   gridArea: 'expandIcon',
   flex: `0 0 auto`,
   padding: `${tokens.spacingVerticalXS} 0`,

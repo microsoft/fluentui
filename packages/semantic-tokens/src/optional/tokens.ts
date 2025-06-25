@@ -89,6 +89,7 @@ import {
   fontSizeBase400,
   lineHeightBase400,
   fontWeightSemibold,
+  spacingVerticalXXS,
   strokeWidthThin,
   strokeWidthThicker,
   colorNeutralForegroundOnBrand,
@@ -479,7 +480,7 @@ export const gapBetweenTextSmall = `var(${gapBetweenTextSmallRaw}, var(${gapBetw
 export const gapBetweenCtrlLgNested = `var(${gapBetweenCtrlLgNestedRaw}, var(${paddingCtrlLgToNestedControlRaw}))`;
 export const gapBetweenTextLarge = `var(${gapBetweenTextLargeRaw}, var(${gapBetweenContentXSmallRaw}))`;
 export const gapBetweenCtrlSmNested = `var(${gapBetweenCtrlSmNestedRaw}, var(${paddingCtrlSmToNestedControlRaw}))`;
-export const gapBetweenListItem = `var(${gapBetweenListItemRaw}, var(${gapBetweenContentXxSmallRaw}))`;
+export const gapBetweenListItem = `var(${gapBetweenListItemRaw}, var(${gapBetweenContentXxSmallRaw}, ${spacingVerticalXXS}))`;
 export const gapBetweenCard = `var(${gapBetweenCardRaw}, var(${gapBetweenContentMediumRaw}))`;
 export const strokeWidthDividerDefault = `var(${strokeWidthDividerDefaultRaw}, var(${strokeWidthDefaultRaw}, ${strokeWidthThin}))`;
 export const strokeWidthDividerStrong = `var(${strokeWidthDividerStrongRaw}, var(${strokeWidthDefaultRaw}))`;
