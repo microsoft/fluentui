@@ -9,6 +9,16 @@ import {
   sizeCtrlLgIconRaw,
 } from '../../control/variables';
 import {
+  spacingHorizontalS,
+  spacingVerticalS,
+  colorTransparentBackground,
+  colorNeutralStrokeAccessiblePressed,
+  colorNeutralStrokeAccessible,
+  colorNeutralStrokeAccessibleHover,
+  colorNeutralStrokeDisabled,
+  borderRadiusCircular,
+} from '../../legacy/tokens';
+import {
   backgroundCtrlOutlineRestRaw,
   backgroundCtrlOutlineHoverRaw,
   backgroundCtrlOutlinePressedRaw,
@@ -68,33 +78,33 @@ import {
   ctrlChoiceSwitchThumbShadowRaw,
 } from './variables';
 
-export const ctrlChoicePaddingHorizontal = `var(${ctrlChoicePaddingHorizontalRaw})`;
-export const ctrlChoicePaddingVertical = `var(${ctrlChoicePaddingVerticalRaw})`;
+export const ctrlChoicePaddingHorizontal = `var(${ctrlChoicePaddingHorizontalRaw}, ${spacingHorizontalS})`;
+export const ctrlChoicePaddingVertical = `var(${ctrlChoicePaddingVerticalRaw}, ${spacingVerticalS})`;
 export const ctrlChoiceBaseSize = `var(${ctrlChoiceBaseSizeRaw}, var(${sizeCtrlIconRaw}, 20px))`;
 export const ctrlChoiceIconTheme = `var(${ctrlChoiceIconThemeRaw})`;
-export const ctrlChoiceBaseBackgroundRest = `var(${ctrlChoiceBaseBackgroundRestRaw}, var(${backgroundCtrlOutlineRestRaw}))`;
-export const ctrlChoiceBaseBackgroundHover = `var(${ctrlChoiceBaseBackgroundHoverRaw}, var(${backgroundCtrlOutlineHoverRaw}))`;
-export const ctrlChoiceBaseBackgroundPressed = `var(${ctrlChoiceBaseBackgroundPressedRaw}, var(${backgroundCtrlOutlinePressedRaw}))`;
-export const ctrlChoiceBaseBackgroundDisabled = `var(${ctrlChoiceBaseBackgroundDisabledRaw}, var(${backgroundCtrlOutlineDisabledRaw}))`;
-export const ctrlChoiceBaseStrokeRest = `var(${ctrlChoiceBaseStrokeRestRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
-export const ctrlChoiceBaseStrokeHover = `var(${ctrlChoiceBaseStrokeHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
-export const ctrlChoiceBaseStrokePressed = `var(${ctrlChoiceBaseStrokePressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
-export const ctrlChoiceBaseStrokeDisabled = `var(${ctrlChoiceBaseStrokeDisabledRaw}, var(${foregroundCtrlNeutralSecondaryDisabledRaw}))`;
+export const ctrlChoiceBaseBackgroundRest = `var(${ctrlChoiceBaseBackgroundRestRaw}, var(${backgroundCtrlOutlineRestRaw}, ${colorTransparentBackground}))`;
+export const ctrlChoiceBaseBackgroundHover = `var(${ctrlChoiceBaseBackgroundHoverRaw}, var(${backgroundCtrlOutlineHoverRaw}, unset))`;
+export const ctrlChoiceBaseBackgroundPressed = `var(${ctrlChoiceBaseBackgroundPressedRaw}, var(${backgroundCtrlOutlinePressedRaw}, ${colorNeutralStrokeAccessiblePressed}))`;
+export const ctrlChoiceBaseBackgroundDisabled = `var(${ctrlChoiceBaseBackgroundDisabledRaw}, var(${backgroundCtrlOutlineDisabledRaw}, ${colorTransparentBackground}))`;
+export const ctrlChoiceBaseStrokeRest = `var(${ctrlChoiceBaseStrokeRestRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessible}))`;
+export const ctrlChoiceBaseStrokeHover = `var(${ctrlChoiceBaseStrokeHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessibleHover}))`;
+export const ctrlChoiceBaseStrokePressed = `var(${ctrlChoiceBaseStrokePressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessiblePressed}))`;
+export const ctrlChoiceBaseStrokeDisabled = `var(${ctrlChoiceBaseStrokeDisabledRaw}, var(${foregroundCtrlNeutralSecondaryDisabledRaw}, ${colorNeutralStrokeDisabled}))`;
 export const ctrlChoiceCheckboxIconSize = `var(${ctrlChoiceCheckboxIconSizeRaw}, var(${sizeCtrlIconSecondaryRaw}))`;
 export const ctrlChoiceCheckboxCorner = `var(${ctrlChoiceCheckboxCornerRaw})`;
 export const ctrlChoiceCheckboxIndeterminateCorner = `var(${ctrlChoiceCheckboxIndeterminateCornerRaw}, var(${cornerCircularRaw}))`;
 export const ctrlChoiceCheckboxIndeterminateWidth = `var(${ctrlChoiceCheckboxIndeterminateWidthRaw})`;
 export const ctrlChoiceCheckboxIndeterminateHeight = `var(${ctrlChoiceCheckboxIndeterminateHeightRaw})`;
 export const ctrlChoiceRadioCorner = `var(${ctrlChoiceRadioCornerRaw}, var(${cornerCircularRaw}))`;
-export const ctrlChoiceSwitchCorner = `var(${ctrlChoiceSwitchCornerRaw}, var(${cornerCircularRaw}))`;
-export const ctrlChoiceSwitchHeight = `var(${ctrlChoiceSwitchHeightRaw}, var(${sizeCtrlIconRaw}))`;
-export const ctrlChoiceSwitchWidth = `var(${ctrlChoiceSwitchWidthRaw})`;
-export const ctrlChoiceSwitchPaddingRest = `var(${ctrlChoiceSwitchPaddingRestRaw})`;
-export const ctrlChoiceSwitchPaddingHover = `var(${ctrlChoiceSwitchPaddingHoverRaw}, var(${ctrlChoiceSwitchPaddingRestRaw}))`;
-export const ctrlChoiceSwitchPaddingPressed = `var(${ctrlChoiceSwitchPaddingPressedRaw}, var(${ctrlChoiceSwitchPaddingRestRaw}))`;
-export const ctrlChoiceSwitchThumbWidthRest = `var(${ctrlChoiceSwitchThumbWidthRestRaw})`;
-export const ctrlChoiceSwitchThumbWidthHover = `var(${ctrlChoiceSwitchThumbWidthHoverRaw}, var(${ctrlChoiceSwitchThumbWidthRestRaw}))`;
-export const ctrlChoiceSwitchThumbWidthPressed = `var(${ctrlChoiceSwitchThumbWidthPressedRaw}, var(${ctrlChoiceSwitchThumbWidthRestRaw}))`;
+export const ctrlChoiceSwitchCorner = `var(${ctrlChoiceSwitchCornerRaw}, var(${cornerCircularRaw}, ${borderRadiusCircular}))`;
+export const ctrlChoiceSwitchHeight = `var(${ctrlChoiceSwitchHeightRaw}, var(${sizeCtrlIconRaw}, 20px))`;
+export const ctrlChoiceSwitchWidth = `var(${ctrlChoiceSwitchWidthRaw}, 40px)`;
+export const ctrlChoiceSwitchPaddingRest = `var(${ctrlChoiceSwitchPaddingRestRaw}, 1px)`;
+export const ctrlChoiceSwitchPaddingHover = `var(${ctrlChoiceSwitchPaddingHoverRaw}, var(${ctrlChoiceSwitchPaddingRestRaw}, 1px))`;
+export const ctrlChoiceSwitchPaddingPressed = `var(${ctrlChoiceSwitchPaddingPressedRaw}, var(${ctrlChoiceSwitchPaddingRestRaw}, 1px))`;
+export const ctrlChoiceSwitchThumbWidthRest = `var(${ctrlChoiceSwitchThumbWidthRestRaw}, 18px)`;
+export const ctrlChoiceSwitchThumbWidthHover = `var(${ctrlChoiceSwitchThumbWidthHoverRaw}, var(${ctrlChoiceSwitchThumbWidthRestRaw}, 18px))`;
+export const ctrlChoiceSwitchThumbWidthPressed = `var(${ctrlChoiceSwitchThumbWidthPressedRaw}, var(${ctrlChoiceSwitchThumbWidthRestRaw}, 18px))`;
 export const ctrlChoiceRadioDotSizeRest = `var(${ctrlChoiceRadioDotSizeRestRaw})`;
 export const ctrlChoiceRadioDotSizeHover = `var(${ctrlChoiceRadioDotSizeHoverRaw}, var(${ctrlChoiceRadioDotSizeRestRaw}))`;
 export const ctrlChoiceRadioDotSizePressed = `var(${ctrlChoiceRadioDotSizePressedRaw}, var(${ctrlChoiceRadioDotSizeRestRaw}))`;
