@@ -2710,17 +2710,38 @@ export const ctrlSliderThumbSizeRest = "var(--smtc-ctrl-slider-thumb-size-rest, 
 // @public (undocumented)
 export const ctrlSliderThumbSizeRestRaw = "--smtc-ctrl-slider-thumb-size-rest";
 
+// @public
+export const _ctrlSpinnerBackgroundEmpty = "var(--smtc-ctrl-progress-background-empty, var(--colorBrandStroke2Contrast))";
+
+// @public
+export const _ctrlSpinnerBackgroundFilled = "var(--smtc-ctrl-progress-background-filled, var(--smtc-background-ctrl-brand-rest, var(--colorBrandStroke1)))";
+
+// @public
+export const _ctrlSpinnerItemBodyFontSize = "var(--smtc-text-ramp-item-body-font-size, var(--smtc-text-global-body3-font-size, var(--fontSizeBase400)))";
+
+// @public
+export const _ctrlSpinnerItemBodyLineHeight = "var(--smtc-text-ramp-item-body-line-height, var(--smtc-text-global-body3-line-height, var(--lineHeightBase400)))";
+
 // @public (undocumented)
 export const ctrlSpinnerShowEmptyTrack = "var(--smtc-ctrl-spinner-show-empty-track)";
 
 // @public (undocumented)
 export const ctrlSpinnerShowEmptyTrackRaw = "--smtc-ctrl-spinner-show-empty-track";
 
+// @public
+export const _ctrlSpinnerStrokeLgWidth = "var(--smtc-ctrl-spinner-stroke-width, var(--smtc-ctrl-progress-height-filled, var(--strokeWidthThickest)))";
+
+// @public
+export const _ctrlSpinnerStrokeSmWidth = "var(--smtc-ctrl-spinner-stroke-width, var(--smtc-ctrl-progress-height-filled, var(--strokeWidthThick)))";
+
 // @public (undocumented)
-export const ctrlSpinnerStrokeWidth = "var(--smtc-ctrl-spinner-stroke-width, var(--smtc-ctrl-progress-height-filled))";
+export const ctrlSpinnerStrokeWidth = "var(--smtc-ctrl-spinner-stroke-width, var(--smtc-ctrl-progress-height-filled, var(--strokeWidthThicker)))";
 
 // @public (undocumented)
 export const ctrlSpinnerStrokeWidthRaw = "--smtc-ctrl-spinner-stroke-width";
+
+// @public
+export const _ctrlSpinnerTextStyleRegularWeight = "var(--smtc-text-style-default-regular-weight, var(--fontWeightSemibold))";
 
 // @public (undocumented)
 export const ctrlSplitDividerStrokeWidth = "var(--smtc-ctrl-split-divider-stroke-width, var(--smtc-stroke-width-default))";
