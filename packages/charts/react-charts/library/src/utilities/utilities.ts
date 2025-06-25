@@ -60,6 +60,8 @@ import {
   getMultiLevelDateTimeFormatOptions,
 } from '@fluentui/chart-utilities';
 
+export const MIN_DOMAIN_MARGIN = 8;
+
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
 
@@ -668,10 +670,10 @@ export function createYAxisForHorizontalBarChartWithAxis(
     yAxisTickCount = 4,
   } = yAxisParams;
 
-  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
+  // maxOfYVal coming from horizontal bar chart with axis (Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
+  const finalYmin = yMinMaxValues.startValue < yMinValue ? Math.min(0, yMinMaxValues.startValue) : yMinValue!;
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
@@ -764,11 +766,14 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   barWidth: number,
   culture?: string,
 ) => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement } = yAxisParams;
+  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding } = yAxisParams;
 
+  let yAxisPaddingValue = yAxisPadding ?? 0.5;
+  yAxisPaddingValue = yAxisPaddingValue === 1 ? 0.99 : yAxisPaddingValue;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
-    .range([containerHeight - margins.bottom! - barWidth / 2, margins.top! + barWidth / 2]);
+    .range([containerHeight - margins.bottom!, margins.top!])
+    .padding(yAxisPaddingValue);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(dataPoints);
   if (yAxisTickFormat) {
