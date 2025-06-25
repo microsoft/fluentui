@@ -155,6 +155,31 @@ export const strokeWidthThin = 'var(--strokeWidthThin)';
  */
 export const colorTransparentStroke = 'var(--colorTransparentStroke)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedBorder2 | `colorPaletteRedBorder2`} design token.
+ * @public
+ */
+export const colorPaletteRedBorder2 = 'var(--colorPaletteRedBorder2)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStroke | `colorCompoundBrandStroke`} design token.
+ * @public
+ */
+export const colorCompoundBrandStroke = 'var(--colorCompoundBrandStroke)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStroke1Hover | `colorNeutralStroke1Hover`} design token.
+ * @public
+ */
+export const colorNeutralStroke1Hover = 'var(--colorNeutralStroke1Hover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStroke1Pressed | `colorNeutralStroke1Pressed`} design token.
+ * @public
+ */
+export const colorNeutralStroke1Pressed = 'var(--colorNeutralStroke1Pressed)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStroke1 | `colorNeutralStroke1`} design token.
+ * @public
+ */
+export const colorNeutralStroke1 = 'var(--colorNeutralStroke1)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorBrandForegroundLinkHover | `colorBrandForegroundLinkHover`} design token.
  * @public
  */
@@ -305,11 +330,6 @@ export const colorPaletteDarkOrangeBackground3 = 'var(--colorPaletteDarkOrangeBa
  */
 export const colorNeutralStrokeOnBrand = 'var(--colorNeutralStrokeOnBrand)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStroke1 | `colorNeutralStroke1`} design token.
- * @public
- */
-export const colorNeutralStroke1 = 'var(--colorNeutralStroke1)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#colorTransparentStrokeDisabled | `colorTransparentStrokeDisabled`} design token.
  * @public
  */
@@ -319,16 +339,6 @@ export const colorTransparentStrokeDisabled = 'var(--colorTransparentStrokeDisab
  * @public
  */
 export const colorTransparentStrokeInteractive = 'var(--colorTransparentStrokeInteractive)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStroke1Hover | `colorNeutralStroke1Hover`} design token.
- * @public
- */
-export const colorNeutralStroke1Hover = 'var(--colorNeutralStroke1Hover)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStroke1Pressed | `colorNeutralStroke1Pressed`} design token.
- * @public
- */
-export const colorNeutralStroke1Pressed = 'var(--colorNeutralStroke1Pressed)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke1 | `colorBrandStroke1`} design token.
  * @public
@@ -479,6 +489,11 @@ export const borderRadiusSmall = 'var(--borderRadiusSmall)';
  * @public
  */
 export const borderRadiusXLarge = 'var(--borderRadiusXLarge)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground4 | `colorNeutralForeground4`} design token.
+ * @public
+ */
+export const colorNeutralForeground4 = 'var(--colorNeutralForeground4)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground3Pressed | `colorNeutralForeground3Pressed`} design token.
  * @public
