@@ -2,6 +2,27 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Tue, 17 Jun 2025 07:20:32 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.18",
+      "version": "1.1.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "0e2b75a2b9f3108726359976929d2224e989689c",
+            "comment": "fix(chart-utilities): Add type info to bar validation error message"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "342462151232a909b98d049ec70e356b7470780b",
+            "comment": "fix(chart-utilities): Strongly type TraceInfo"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Jun 2025 07:21:01 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.17",
       "version": "1.1.17",

@@ -821,7 +821,12 @@ export type {
   TooltipTriggerProps,
 } from '@fluentui/react-tooltip';
 
-export { resolvePositioningShorthand, PositioningConfigurationProvider } from '@fluentui/react-positioning';
+export {
+  resolvePositioningShorthand,
+  PositioningConfigurationProvider,
+  usePositioning,
+  useSafeZoneArea,
+} from '@fluentui/react-positioning';
 export type {
   PositioningBoundary,
   PositioningProps,
@@ -832,6 +837,7 @@ export type {
   PositioningVirtualElement,
   PositioningConfigurationFn,
   PositioningConfigurationFnOptions,
+  UseSafeZoneOptions,
 } from '@fluentui/react-positioning';
 
 export {

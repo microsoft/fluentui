@@ -136,6 +136,7 @@ export interface CartesianChartProps {
     customDateTimeFormatter?: (dateTime: Date) => string;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
+    enableReflow?: boolean;
     height?: number;
     hideLegend?: boolean;
     hideTickOverlap?: boolean;
@@ -185,6 +186,7 @@ export interface CartesianChartProps {
 export interface CartesianChartStyleProps {
     className?: string;
     color?: string;
+    enableReflow?: boolean;
     height?: number;
     href?: string;
     lineColor?: string;
@@ -306,7 +308,7 @@ export interface ChildProps {
     // (undocumented)
     xScale?: any;
     // (undocumented)
-    yScale?: any;
+    yScalePrimary?: any;
     // (undocumented)
     yScaleSecondary?: any;
 }
@@ -604,6 +606,7 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
     isCalloutForStack?: boolean;
     maxBarWidth?: number;
     mode?: 'default' | 'plotly';
+    roundCorners?: boolean;
     styles?: GroupedVerticalBarChartStyles;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;
@@ -630,6 +633,7 @@ export interface GVBarChartSeriesPoint {
     key: string;
     legend: string;
     onClick?: VoidFunction;
+    useSecondaryYScale?: boolean;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;
 }
@@ -947,6 +951,7 @@ export interface LineChartPoints {
     onLegendClick?: (selectedLegend: string | null | string[]) => void;
     onLineClick?: () => void;
     opacity?: number;
+    useSecondaryYScale?: boolean;
 }
 
 // @public
@@ -1030,8 +1035,13 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     // (undocumented)
     getAxisData?: any;
     getDomainMargins?: (containerWidth: number) => Margins;
+    getDomainNRangeValues?: (points: HorizontalBarChartWithAxisDataPoint[], margins: Margins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: Margins) => void;
+    getMinMaxOfYAxis?: (points: DataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
+        startValue: number;
+        endValue: number;
+    };
     isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;
@@ -1101,8 +1111,30 @@ export interface RefArrayData {
     refElement?: SVGGElement;
 }
 
-// @public (undocumented)
+// @public
+export interface ResponsiveChildProps {
+    // (undocumented)
+    height?: number;
+    // (undocumented)
+    shouldResize?: number;
+    // (undocumented)
+    width?: number;
+}
+
+// @public
 export const ResponsiveContainer: React_2.FC<ResponsiveContainerProps>;
+
+// @public
+export interface ResponsiveContainerProps {
+    aspect?: number;
+    children: React_2.ReactElement<ResponsiveChildProps>;
+    height?: number | string;
+    maxHeight?: number;
+    minHeight?: number | string;
+    minWidth?: number | string;
+    onResize?: (width: number, height: number) => void;
+    width?: number | string;
+}
 
 // @public (undocumented)
 export const SankeyChart: React_2.FunctionComponent<SankeyChartProps>;
@@ -1320,7 +1352,7 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
     xAxisPadding?: number;
-    yMinValue?: undefined;
+    yMinValue?: number | undefined;
 }
 
 // @public
@@ -1357,6 +1389,9 @@ export interface VSChartDataPoint {
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;
 }
+
+// @public
+export function withResponsiveContainer<TProps extends Omit<ResponsiveContainerProps, 'children'>>(WrappedComponent: React_2.ComponentType<TProps>): React_2.FC<TProps>;
 
 // @public (undocumented)
 export interface YValueHover {

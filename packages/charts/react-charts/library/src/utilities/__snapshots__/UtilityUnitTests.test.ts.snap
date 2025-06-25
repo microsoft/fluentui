@@ -4029,6 +4029,24 @@ Object {
 }
 `;
 
+exports[`domainRangeOfNumericForHorizontalBarChartWithAxisStacked should return domain and range values correctly for numeric x-axis 1`] = `
+Object {
+  "dEndValue": 60,
+  "dStartValue": 0,
+  "rEndValue": 90,
+  "rStartValue": 6,
+}
+`;
+
+exports[`domainRangeOfNumericForHorizontalBarChartWithAxisStacked should return domain and range values correctly for numeric x-axis when layout direction is RTL 1`] = `
+Object {
+  "dEndValue": 0,
+  "dStartValue": 60,
+  "rEndValue": 89,
+  "rStartValue": 5,
+}
+`;
+
 exports[`domainRangeOfVSBCNumeric should return domain and range values correctly for numeric x-axis 1`] = `
 Object {
   "dEndValue": 30,

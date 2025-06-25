@@ -70,6 +70,24 @@ const thirdChartPoints: VSChartDataPoint[] = [
   { legend: 'Metadata3', data: 30, color: '#00188f' },
 ];
 
+const firstChartNegativePoints: VSChartDataPoint[] = [
+  { legend: 'Metadata1', data: -2, color: '0078d4' },
+  { legend: 'Metadata2', data: 0.5, color: '#002050' },
+  { legend: 'Metadata3', data: 0, color: '#00188f' },
+];
+
+const secondChartNegativePoints: VSChartDataPoint[] = [
+  { legend: 'Metadata1', data: -30, color: '#0078d4' },
+  { legend: 'Metadata2', data: -3, color: '#002050' },
+  { legend: 'Metadata3', data: -40, color: '#00188f' },
+];
+
+const thirdChartNegativePoints: VSChartDataPoint[] = [
+  { legend: 'Metadata1', data: 10, color: '0078d4' },
+  { legend: 'Metadata2', data: 60, color: '#002050' },
+  { legend: 'Metadata3', data: -30, color: '#00188f' },
+];
+
 const simplePoints = [
   {
     chartData: firstChartPoints,
@@ -84,6 +102,25 @@ const simplePoints = [
   },
   {
     chartData: thirdChartPoints,
+    xAxisPoint: 'March',
+    lineData: [{ y: 100, legend: 'Supported Builds', color: '#0078d4' }],
+  },
+];
+
+const negativePoints = [
+  {
+    chartData: firstChartNegativePoints,
+    xAxisPoint: 'January',
+    activeLegend: 'Supported Builds',
+    lineData: [{ y: 42, legend: 'Supported Builds', color: '#0078d4' }],
+  },
+  {
+    chartData: secondChartNegativePoints,
+    xAxisPoint: 'February',
+    lineData: [{ y: 41, legend: 'Supported Builds', color: '#0078d4' }],
+  },
+  {
+    chartData: thirdChartNegativePoints,
     xAxisPoint: 'March',
     lineData: [{ y: 100, legend: 'Supported Builds', color: '#0078d4' }],
   },
@@ -146,6 +183,11 @@ describe('Vertical stacked bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+});
+
+describe.skip('Vertical stacked bar chart rendering with Date x-axis data', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
 
   testWithoutWait(
     'Should render the vertical stacked bar chart with Date x-axis data',
@@ -202,6 +244,16 @@ describe('Vertical stacked bar chart rendering', () => {
       },
     );
   });
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with negative points',
+    VerticalStackedBarChart,
+    { data: negativePoints },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
 describe('Vertical stacked bar chart - Subcomponent Line', () => {

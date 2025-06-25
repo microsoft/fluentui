@@ -2,6 +2,66 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Tue, 24 Jun 2025 07:20:41 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.344",
+      "version": "1.7.344",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.24.8",
+            "commit": "39380931736a1d9f6b62a990bebb80d05f3b9a15"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Jun 2025 07:19:48 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.343",
+      "version": "1.7.343",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.24.7",
+            "commit": "2e2354bac6eceea41195a8ae40dc4ee654ca2817"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Jun 2025 07:20:01 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.342",
+      "version": "1.7.342",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.24.6",
+            "commit": "682288f3c21565fbefc72d09e85f92e2cb9e51e7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Jun 2025 07:20:33 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.341",
+      "version": "1.7.341",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.24.5",
+            "commit": "654d9e63cf2ea8cda5279677b5535c047a5a0de4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Jun 2025 07:21:03 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.7.340",
       "version": "1.7.340",

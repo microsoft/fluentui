@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 13 Jun 2025 12:32:51 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Jun 2025 15:49:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.3)
+
+Mon, 23 Jun 2025 15:49:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.18.2..@fluentui/react-positioning_v9.18.3)
+
+### Patches
+
+- feat: improve handling of different shapes of rectangles in useSafeZoneArea() ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by olfedias@microsoft.com)
+
+## [9.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.2)
+
+Wed, 18 Jun 2025 17:33:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.18.1..@fluentui/react-positioning_v9.18.2)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.24.0 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-utilities to v9.21.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
 
 ## [9.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.1)
 
