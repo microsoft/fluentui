@@ -35,13 +35,13 @@ const useStyles = makeStyles({
   },
 });
 
-const Box: React.FC = props => {
+const Box: React.FC<{ children?: React.ReactNode }> = props => {
   const classes = useStyles();
 
   return <div className={classes.box}>{props.children}</div>;
 };
 
-const Container: React.FC<{ className?: string; primary?: boolean }> = props => {
+const Container: React.FC<{ className?: string; primary?: boolean; children?: React.ReactNode }> = props => {
   const classes = useStyles();
 
   return (
