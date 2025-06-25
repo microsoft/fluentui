@@ -86,6 +86,8 @@ export const fluentOverrides: FluentOverrides = {
   ctrlProgressHeightFilled: { rawValue: '100%' },
   ctrlProgressLgHeightEmpty: { rawValue: '4px' },
   ctrlProgressLgHeightFilled: { rawValue: '100%' },
+  ctrlRatingIconForegroundEmpty: { f2Token: 'colorNeutralBackground6' }, // should be #D9DDE3 per design
+  ctrlRatingIconForegroundFilled: { f2Token: 'colorNeutralForeground1' }, // should be #24282F per design
   foregroundContentBrandPrimary: { f2Token: 'colorBrandForeground1' },
   foregroundContentNeutralPrimary: { f2Token: 'colorNeutralForeground1' },
   foregroundContentNeutralSecondary: { f2Token: 'colorNeutralForeground2' },
@@ -123,7 +125,10 @@ export const fluentOverrides: FluentOverrides = {
   foregroundCtrlOnTransparentRest: { f2Token: 'colorNeutralForeground2' },
   gapInsideCtrlDefault: { f2Token: 'spacingHorizontalS' },
   gapInsideCtrlLgDefault: { f2Token: 'spacingHorizontalSNudge' },
+  gapInsideCtrlLgToLabel: { f2Token: 'spacingHorizontalS' },
   gapInsideCtrlSmDefault: { f2Token: 'spacingHorizontalXS' },
+  gapInsideCtrlSmToLabel: { f2Token: 'spacingHorizontalXS' }, // Rating uses 8px, or spacingHorizontalS, for all gaps between icons and label in design
+  gapInsideCtrlToLabel: { f2Token: 'spacingHorizontalSNudge' }, // Rating uses 8px, or spacingHorizontalS, for all gaps between icons and label in design
   nullColor: { f2Token: 'colorTransparentBackground' },
   paddingCtrlHorizontalDefault: { f2Token: 'spacingHorizontalM' },
   paddingCtrlHorizontalIconOnly: { rawValue: '5px' },
