@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LegendsProps } from '../Legends/index';
-import { AccessibilityProps, Chart, Margins, DataPoint } from '../../types/index';
-import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/index';
+import { AccessibilityProps, Chart, Margins, DataPoint, HorizontalBarChartWithAxisDataPoint } from '../../types/index';
+import { ChartTypes, XAxisTypes, YAxisType, IDomainNRange } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartPopoverProps } from './ChartPopover.types';
 /**
@@ -585,4 +585,19 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     yAxisType: YAxisType | undefined,
     useSecondaryYScale?: boolean,
   ) => { startValue: number; endValue: number };
+
+  /**Add commentMore actions
+   * Get the domain and range values
+   */
+  getDomainNRangeValues?: (
+    points: HorizontalBarChartWithAxisDataPoint[],
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | string[] | undefined,
+    shiftX: number,
+  ) => IDomainNRange;
 }
