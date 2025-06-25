@@ -2237,13 +2237,13 @@ export const ctrlProgressSmHeightFilled = "var(--smtc-ctrl-progress-sm-height-fi
 export const ctrlProgressSmHeightFilledRaw = "--smtc-ctrl-progress-sm-height-filled";
 
 // @public (undocumented)
-export const ctrlRatingIconForegroundEmpty = "var(--smtc-ctrl-rating-icon-foreground-empty, var(--smtc-ctrl-progress-background-empty))";
+export const ctrlRatingIconForegroundEmpty = "var(--smtc-ctrl-rating-icon-foreground-empty, var(--smtc-ctrl-progress-background-empty, var(--colorNeutralBackground6)))";
 
 // @public (undocumented)
 export const ctrlRatingIconForegroundEmptyRaw = "--smtc-ctrl-rating-icon-foreground-empty";
 
 // @public (undocumented)
-export const ctrlRatingIconForegroundFilled = "var(--smtc-ctrl-rating-icon-foreground-filled, var(--smtc-background-ctrl-brand-rest))";
+export const ctrlRatingIconForegroundFilled = "var(--smtc-ctrl-rating-icon-foreground-filled, var(--smtc-background-ctrl-brand-rest, var(--colorNeutralForeground1)))";
 
 // @public (undocumented)
 export const ctrlRatingIconForegroundFilledRaw = "--smtc-ctrl-rating-icon-foreground-filled";
@@ -3209,7 +3209,7 @@ export const gapInsideCtrlLgDefault = "var(--smtc-gap-inside-ctrl-lg-default, va
 export const gapInsideCtrlLgDefaultRaw = "--smtc-gap-inside-ctrl-lg-default";
 
 // @public (undocumented)
-export const gapInsideCtrlLgToLabel = "var(--smtc-gap-inside-ctrl-lg-to-label)";
+export const gapInsideCtrlLgToLabel = "var(--smtc-gap-inside-ctrl-lg-to-label, var(--spacingHorizontalS))";
 
 // @public (undocumented)
 export const gapInsideCtrlLgToLabelRaw = "--smtc-gap-inside-ctrl-lg-to-label";
@@ -3227,7 +3227,7 @@ export const gapInsideCtrlSmDefault = "var(--smtc-gap-inside-ctrl-sm-default, va
 export const gapInsideCtrlSmDefaultRaw = "--smtc-gap-inside-ctrl-sm-default";
 
 // @public (undocumented)
-export const gapInsideCtrlSmToLabel = "var(--smtc-gap-inside-ctrl-sm-to-label)";
+export const gapInsideCtrlSmToLabel = "var(--smtc-gap-inside-ctrl-sm-to-label, var(--spacingHorizontalXS))";
 
 // @public (undocumented)
 export const gapInsideCtrlSmToLabelRaw = "--smtc-gap-inside-ctrl-sm-to-label";
@@ -3239,7 +3239,7 @@ export const gapInsideCtrlSmToSecondaryIcon = "var(--smtc-gap-inside-ctrl-sm-to-
 export const gapInsideCtrlSmToSecondaryIconRaw = "--smtc-gap-inside-ctrl-sm-to-secondary-icon";
 
 // @public (undocumented)
-export const gapInsideCtrlToLabel = "var(--smtc-gap-inside-ctrl-to-label)";
+export const gapInsideCtrlToLabel = "var(--smtc-gap-inside-ctrl-to-label, var(--spacingHorizontalSNudge))";
 
 // @public (undocumented)
 export const gapInsideCtrlToLabelRaw = "--smtc-gap-inside-ctrl-to-label";
