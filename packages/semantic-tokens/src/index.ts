@@ -1801,6 +1801,7 @@ export {
   _ctrlAvatarPresenceBadgeStrokeWidthSm,
   _ctrlButtonGapInsideDefault,
   _ctrlDividerForegroundSubtle,
+  _ctrlPersonaTreeIconOnSubtlePressed,
   _ctrlSpinnerBackgroundEmpty,
   _ctrlSpinnerBackgroundFilled,
   _ctrlSpinnerItemBodyFontSize,
@@ -1818,6 +1819,9 @@ export {
   _ctrlTreeIconOnSubtlePressed,
   _ctrlTreeOnTransparentHover,
   _ctrlTreeOnTransparentPressed,
-  _ctrlPersonaTreeIconOnSubtlePressed,
+  _ctrlTreePaddingTextBottom,
+  _ctrlTreePaddingTextLeft,
+  _ctrlTreePaddingTextRight,
+  _ctrlTreePaddingTextTop,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';

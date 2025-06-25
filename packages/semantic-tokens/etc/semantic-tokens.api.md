@@ -2833,6 +2833,18 @@ export const _ctrlTreeOnTransparentHover = "var(--smtc-foreground-ctrl-on-transp
 // @public
 export const _ctrlTreeOnTransparentPressed = "var(--smtc-foreground-ctrl-on-transparent-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Pressed)))";
 
+// @public
+export const _ctrlTreePaddingTextBottom = "var(--smtc-padding-ctrl-text-bottom, var(--smtc-padding-ctrl-text-top, 0px))";
+
+// @public
+export const _ctrlTreePaddingTextLeft = "var(--smtc-padding-ctrl-text-side, var(--spacingHorizontalXXS))";
+
+// @public
+export const _ctrlTreePaddingTextRight = "var(--smtc-padding-ctrl-horizontal-default, var(--spacingHorizontalXXS))";
+
+// @public
+export const _ctrlTreePaddingTextTop = "var(--smtc-padding-ctrl-text-top, 0px)";
+
 // @public (undocumented)
 export const foregroundContentBrandPrimary = "var(--smtc-foreground-content-brand-primary, var(--smtc-foreground-ctrl-brand-rest, var(--colorBrandForeground1)))";
 

@@ -22,6 +22,8 @@ import {
   textGlobalBody3FontSizeRaw,
   textGlobalBody3LineHeightRaw,
   textStyleDefaultRegularWeightRaw,
+  paddingCtrlTextSideRaw,
+  paddingCtrlHorizontalDefaultRaw,
 } from '../control/variables';
 import {
   colorTransparentBackground,
@@ -37,6 +39,7 @@ import {
   strokeWidthThin,
   spacingHorizontalSNudge,
   colorNeutralForeground3,
+  colorNeutralForeground3Pressed,
   colorBrandStroke2Contrast,
   colorBrandStroke1,
   fontSizeBase400,
@@ -49,7 +52,7 @@ import {
   colorNeutralForeground3Hover,
   colorNeutralForeground2Hover,
   colorNeutralForeground2Pressed,
-  colorNeutralForeground3Pressed,
+  spacingHorizontalXXS,
 } from '../legacy/tokens';
 import {
   backgroundCtrlSubtleRestRaw,
@@ -62,6 +65,8 @@ import {
   foregroundCtrlOnTransparentPressedRaw,
   foregroundCtrlOnTransparentRestRaw,
   paddingCtrlTextBottomRaw,
+  foregroundCtrlOnSubtlePressedRaw,
+  foregroundCtrlNeutralPrimaryPressedRaw,
   textRampItemBodyFontSizeRaw,
   textRampItemBodyLineHeightRaw,
   strokeCtrlOnActiveBrandHoverRaw,
@@ -69,8 +74,6 @@ import {
   foregroundCtrlOnSubtleRestRaw,
   foregroundCtrlOnSubtleHoverRaw,
   foregroundCtrlNeutralPrimaryHoverRaw,
-  foregroundCtrlOnSubtlePressedRaw,
-  foregroundCtrlNeutralPrimaryPressedRaw,
 } from '../optional/variables';
 
 /**
@@ -207,6 +210,13 @@ export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${sp
  */
 export const _ctrlDividerForegroundSubtle = `var(${foregroundCtrlHintDefaultRaw}, var(${nullColorRaw}, ${colorNeutralForeground3}))`;
 /**
+ * This is a legacy variant for foregroundCtrlOnSubtlePressed to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlOnSubtlePressed instead.
+ */
+export const _ctrlPersonaTreeIconOnSubtlePressed = `var(${foregroundCtrlOnSubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw}, ${colorNeutralForeground3Pressed}))`;
+/**
  * This is a legacy variant for ctrlProgressBackgroundEmpty to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations
@@ -326,9 +336,30 @@ export const _ctrlTreeOnTransparentHover = `var(${foregroundCtrlOnTransparentHov
  */
 export const _ctrlTreeOnTransparentPressed = `var(${foregroundCtrlOnTransparentPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2Pressed}))`;
 /**
- * This is a legacy variant for foregroundCtrlOnSubtlePressed to enable backwards compatibility.
+ * This is a legacy variant for paddingCtrlTextBottom to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations
- * please use foregroundCtrlOnSubtlePressed instead.
+ * please use paddingCtrlTextBottom instead.
  */
-export const _ctrlPersonaTreeIconOnSubtlePressed = `var(${foregroundCtrlOnSubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw}, ${colorNeutralForeground3Pressed}))`;
+export const _ctrlTreePaddingTextBottom = `var(${paddingCtrlTextBottomRaw}, var(${paddingCtrlTextTopRaw}, 0px))`;
+/**
+ * This is a legacy variant for paddingCtrlTextSide to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextSide instead.
+ */
+export const _ctrlTreePaddingTextLeft = `var(${paddingCtrlTextSideRaw}, ${spacingHorizontalXXS})`;
+/**
+ * This is a legacy variant for paddingCtrlHorizontalDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlHorizontalDefault instead.
+ */
+export const _ctrlTreePaddingTextRight = `var(${paddingCtrlHorizontalDefaultRaw}, ${spacingHorizontalXXS})`;
+/**
+ * This is a legacy variant for paddingCtrlTextTop to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextTop instead.
+ */
+export const _ctrlTreePaddingTextTop = `var(${paddingCtrlTextTopRaw}, 0px)`;

@@ -131,7 +131,8 @@ const useExpandIconBaseStyles = makeResetStyles({
  * Styles for the content slot
  */
 const useMainBaseStyles = makeResetStyles({
-  padding: `0 ${tokens.spacingHorizontalXXS}`,
+  // padding: `0 ${tokens.spacingHorizontalXXS}`,
+  padding: `${semanticTokens._ctrlTreePaddingTextTop} ${semanticTokens._ctrlTreePaddingTextRight} ${semanticTokens._ctrlTreePaddingTextBottom} ${semanticTokens._ctrlTreePaddingTextLeft}`,
 });
 
 /**

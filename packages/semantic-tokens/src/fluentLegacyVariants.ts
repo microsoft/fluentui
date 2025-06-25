@@ -161,4 +161,20 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground2Pressed',
     originalToken: 'foregroundCtrlOnTransparentPressed',
   },
+  _ctrlTreePaddingTextBottom: {
+    originalToken: 'paddingCtrlTextBottom',
+    rawValue: '0px',
+  },
+  _ctrlTreePaddingTextLeft: {
+    f2Token: 'spacingHorizontalXXS',
+    originalToken: 'paddingCtrlTextSide',
+  },
+  _ctrlTreePaddingTextRight: {
+    f2Token: 'spacingHorizontalXXS',
+    originalToken: 'paddingCtrlHorizontalDefault',
+  },
+  _ctrlTreePaddingTextTop: {
+    originalToken: 'paddingCtrlTextTop',
+    rawValue: '0px',
+  },
 };
