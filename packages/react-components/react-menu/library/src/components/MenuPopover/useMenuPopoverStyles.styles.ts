@@ -1,8 +1,8 @@
 import { mergeClasses, makeStyles } from '@griffel/react';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createSlideStyles } from '@fluentui/react-positioning';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots> = {
   root: 'fui-MenuPopover',
@@ -10,18 +10,21 @@ export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots> = {
 
 const useStyles = makeStyles({
   root: {
-    borderRadius: tokens.borderRadiusMedium,
-    backgroundColor: tokens.colorNeutralBackground1,
-    color: tokens.colorNeutralForeground1,
+    borderRadius: semanticTokens._ctrlMenuPopoverCornerFlyoutRest,
+    backgroundColor: semanticTokens.materialAcrylicDefaultSolid,
+    color: semanticTokens.foregroundContentNeutralPrimary,
     boxSizing: 'border-box',
     minWidth: '138px',
     maxWidth: '300px',
     overflowX: 'hidden',
     width: 'max-content',
-    boxShadow: `${tokens.shadow16}`,
-    padding: '4px',
-    border: `1px solid ${tokens.colorTransparentStroke}`,
-    ...typographyStyles.body1,
+    boxShadow: semanticTokens._ctrlMenuPopoverShadowFlyout,
+    padding: semanticTokens.paddingFlyoutDefault,
+    border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens._ctrlMenuPopoverStrokeFlyout}`,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontSize: semanticTokens.textRampItemBodyFontSize,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+    lineHeight: semanticTokens.textRampItemBodyLineHeight,
     ...createSlideStyles(10),
   },
 });

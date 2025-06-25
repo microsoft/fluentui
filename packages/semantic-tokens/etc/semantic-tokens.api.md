@@ -1994,7 +1994,7 @@ export const ctrlListChoiceStrokeSelectedRest = "var(--smtc-ctrl-list-choice-str
 export const ctrlListChoiceStrokeSelectedRestRaw = "--smtc-ctrl-list-choice-stroke-selected-rest";
 
 // @public (undocumented)
-export const ctrlListCornerHover = "var(--smtc-ctrl-list-corner-hover, var(--smtc-corner-ctrl-rest))";
+export const ctrlListCornerHover = "var(--smtc-ctrl-list-corner-hover, var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium)))";
 
 // @public (undocumented)
 export const ctrlListCornerHoverRaw = "--smtc-ctrl-list-corner-hover";
@@ -2234,6 +2234,7 @@ export const ctrlLiteFilterStrokeWidthSelected = "var(--smtc-ctrl-lite-filter-st
 export const ctrlLiteFilterStrokeWidthSelectedRaw = "--smtc-ctrl-lite-filter-stroke-width-selected";
 
 // @public
+<<<<<<< HEAD
 export const _ctrlMessageBarActionsMultilinePaddingRight = "var(--smtc-padding-content-align-default, var(--spacingVerticalM))";
 
 // @public
@@ -2256,6 +2257,60 @@ export const _ctrlMessageBarSpacingTop = "var(--smtc-padding-content-align-defau
 
 // @public
 export const _ctrlMessageBarTitleLineHeight = "var(--smtc-text-ramp-item-header-line-height, var(--smtc-text-global-body2-line-height, var(--lineHeightBase300)))";
+=======
+export const _ctrlMenuGroupHeaderColor = "var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground3))";
+
+// @public
+export const _ctrlMenuGroupHeaderFontWeight = "var(--smtc-text-style-default-regular-weight, var(--fontWeightSemibold))";
+
+// @public
+export const _ctrlMenuGroupHeaderHeight = "var(--smtc-size-ctrl-default, 32px)";
+
+// @public
+export const _ctrlMenuGroupHeaderPaddingHorizontal = "var(--smtc-padding-ctrl-horizontal-default, 8px)";
+
+// @public
+export const _ctrlMenuItemContentPaddingX = "var(--smtc-padding-ctrl-text-side, 2px)";
+
+// @public
+export const _ctrlMenuItemGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, 4px)";
+
+// @public
+export const _ctrlMenuItemPaddingBottom = "var(--smtc-padding-ctrl-text-bottom, var(--smtc-padding-ctrl-text-top, var(--spacingVerticalSNudge)))";
+
+// @public
+export const _ctrlMenuItemPaddingTop = "var(--smtc-padding-ctrl-text-top, var(--spacingVerticalSNudge))";
+
+// @public
+export const _ctrlMenuItemPaddingX = "var(--smtc-ctrl-list-indent-level1, var(--smtc-padding-ctrl-horizontal-default, var(--spacingVerticalSNudge)))";
+
+// @public
+export const _ctrlMenuItemSecondaryContentFontSize = "var(--smtc-text-ramp-item-body-font-size, var(--smtc-text-global-body3-font-size, var(--fontSizeBase200)))";
+
+// @public
+export const _ctrlMenuItemSecondaryContentForegroundHover = "var(--smtc-foreground-ctrl-neutral-secondary-hover, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground3Hover)))";
+
+// @public
+export const _ctrlMenuItemSecondaryContentForegroundRest = "var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground3))";
+
+// @public
+export const _ctrlMenuItemSizeDefault = "var(--smtc-size-ctrl-default, 32px)";
+
+// @public
+export const _ctrlMenuItemSubTextForegroundHover = "var(--smtc-foreground-ctrl-neutral-secondary-hover, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground3Hover)))";
+
+// @public
+export const _ctrlMenuItemSubTextForegroundPressed = "var(--smtc-foreground-ctrl-neutral-secondary-pressed, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground3Pressed)))";
+
+// @public
+export const _ctrlMenuPopoverCornerFlyoutRest = "var(--smtc-corner-flyout-rest, var(--borderRadiusMedium))";
+
+// @public
+export const _ctrlMenuPopoverShadowFlyout = "var(--smtc-shadow-flyout, var(--shadow16))";
+
+// @public
+export const _ctrlMenuPopoverStrokeFlyout = "var(--smtc-stroke-flyout, var(--smtc-null-color, var(--colorTransparentStroke)))";
+>>>>>>> 6746de9a03 (update menu to use semantic tokens)
 
 // @public
 export const _ctrlPersonaTreeIconOnSubtlePressed = "var(--smtc-foreground-ctrl-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-pressed, var(--colorNeutralForeground3Pressed)))";
@@ -4054,7 +4109,7 @@ export const materialAcrylicDefaultLumBlend = "var(--smtc-material-acrylic-defau
 export const materialAcrylicDefaultLumBlendRaw = "--smtc-material-acrylic-default-lum-blend";
 
 // @public (undocumented)
-export const materialAcrylicDefaultSolid = "var(--smtc-material-acrylic-default-solid, var(--smtc-background-layer-primary-solid))";
+export const materialAcrylicDefaultSolid = "var(--smtc-material-acrylic-default-solid, var(--smtc-background-layer-primary-solid, var(--colorNeutralBackground1)))";
 
 // @public (undocumented)
 export const materialAcrylicDefaultSolidRaw = "--smtc-material-acrylic-default-solid";
@@ -4336,7 +4391,7 @@ export const paddingCtrlToNestedControl = "var(--smtc-padding-ctrl-to-nested-con
 export const paddingCtrlToNestedControlRaw = "--smtc-padding-ctrl-to-nested-control";
 
 // @public (undocumented)
-export const paddingFlyoutDefault = "var(--smtc-padding-flyout-default, var(--smtc-padding-content-align-outdent-text-on-subtle))";
+export const paddingFlyoutDefault = "var(--smtc-padding-flyout-default, var(--smtc-padding-content-align-outdent-text-on-subtle, 4px))";
 
 // @public (undocumented)
 export const paddingFlyoutDefaultRaw = "--smtc-padding-flyout-default";
@@ -4426,7 +4481,7 @@ export const sizeCtrlIcon = "var(--smtc-size-ctrl-icon, 20px)";
 export const sizeCtrlIconRaw = "--smtc-size-ctrl-icon";
 
 // @public (undocumented)
-export const sizeCtrlIconSecondary = "var(--smtc-size-ctrl-icon-secondary)";
+export const sizeCtrlIconSecondary = "var(--smtc-size-ctrl-icon-secondary, 20px)";
 
 // @public (undocumented)
 export const sizeCtrlIconSecondaryRaw = "--smtc-size-ctrl-icon-secondary";
@@ -5452,7 +5507,7 @@ export const textRampLgSubsectionHeaderLineHeight = "var(--smtc-text-ramp-lg-sub
 export const textRampLgSubsectionHeaderLineHeightRaw = "--smtc-text-ramp-lg-subsection-header-line-height";
 
 // @public (undocumented)
-export const textRampMetadataFontSize = "var(--smtc-text-ramp-metadata-font-size, var(--smtc-text-global-caption1-font-size))";
+export const textRampMetadataFontSize = "var(--smtc-text-ramp-metadata-font-size, var(--smtc-text-global-caption1-font-size, var(--fontSizeBase200)))";
 
 // @public (undocumented)
 export const textRampMetadataFontSizeRaw = "--smtc-text-ramp-metadata-font-size";
