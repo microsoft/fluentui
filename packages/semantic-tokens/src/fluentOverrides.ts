@@ -80,7 +80,9 @@ export const fluentOverrides: FluentOverrides = {
   ctrlLinkForegroundNeutralHover: { f2Token: 'colorNeutralForeground2Hover' },
   ctrlLinkForegroundNeutralPressed: { f2Token: 'colorNeutralForeground2Pressed' },
   ctrlLinkForegroundNeutralRest: { f2Token: 'colorNeutralForeground2' },
+  ctrlListCornerHover: { f2Token: 'borderRadiusMedium' },
   ctrlListCornerRest: { f2Token: 'borderRadiusMedium' },
+  ctrlListIndentLevel1: { rawValue: '8px' }, // should be 10px per Menu design
   ctrlProgressBackgroundEmpty: { f2Token: 'colorNeutralBackground6' },
   ctrlProgressBackgroundFilled: { f2Token: 'colorCompoundBrandBackground' },
   ctrlProgressCorner: { f2Token: 'borderRadiusMedium' },
@@ -131,6 +133,7 @@ export const fluentOverrides: FluentOverrides = {
   gapInsideCtrlSmDefault: { f2Token: 'spacingHorizontalXS' },
   gapInsideCtrlSmToLabel: { f2Token: 'spacingHorizontalXS' }, // Rating uses 8px, or spacingHorizontalS, for all gaps between icons and label in design
   gapInsideCtrlToLabel: { f2Token: 'spacingHorizontalSNudge' }, // Rating uses 8px, or spacingHorizontalS, for all gaps between icons and label in design
+  materialAcrylicDefaultSolid: { f2Token: 'colorNeutralBackground1' },
   nullColor: { f2Token: 'colorTransparentBackground' },
   paddingContentLarge: { f2Token: 'spacingHorizontalXXL' },
   paddingCtrlHorizontalDefault: { f2Token: 'spacingHorizontalM' },
@@ -146,9 +149,11 @@ export const fluentOverrides: FluentOverrides = {
   paddingCtrlTextBottom: { rawValue: '5px' },
   paddingCtrlTextSide: { rawValue: '0px' }, // For now, text padding is not applied (use default);
   paddingCtrlTextTop: { rawValue: '5px' },
+  paddingFlyoutDefault: { rawValue: '4px' },
   shadowFlyout: { f2Token: 'shadow64' },
   sizeCtrlDefault: { rawValue: '44px' },
   sizeCtrlIcon: { rawValue: '20px' },
+  sizeCtrlIconSecondary: { rawValue: '20px' },
   sizeCtrlLgDefault: { rawValue: '44px' },
   sizeCtrlLgIcon: { rawValue: '24px' },
   sizeCtrlSmDefault: { rawValue: '32px' },
@@ -217,6 +222,7 @@ export const fluentOverrides: FluentOverrides = {
   textRampItemBodyLineHeight: { f2Token: 'lineHeightBase300' },
   textRampLgItemBodyFontSize: { f2Token: 'fontSizeBase400' },
   textRampLgItemBodyLineHeight: { f2Token: 'lineHeightBase400' },
+  textRampMetadataFontSize: { f2Token: 'fontSizeBase200' }, // should be fontSizeBase100 per Menu design
   textRampSmItemBodyFontSize: { f2Token: 'fontSizeBase200' },
   textRampSmItemBodyLineHeight: { f2Token: 'lineHeightBase200' },
   textStyleDefaultHeaderFontFamily: { f2Token: 'fontFamilyBase' },

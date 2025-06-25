@@ -1,8 +1,8 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
 import { menuItemClassNames } from '../MenuItem/useMenuItemStyles.styles';
 import type { MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const menuSplitGroupMultilineAttr = 'data-multiline';
 
@@ -30,9 +30,9 @@ const useStyles = makeStyles({
       paddingLeft: 0,
       '::before': {
         content: '""',
-        width: tokens.strokeWidthThin,
+        width: semanticTokens.strokeWidthDefault,
         height: '20px',
-        backgroundColor: tokens.colorNeutralStroke1,
+        backgroundColor: semanticTokens.strokeCtrlOnNeutralRest,
       },
     },
   },
