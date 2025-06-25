@@ -838,54 +838,79 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const isLegendSelected: boolean =
           this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
         const currentMarkerSize = this._points[i].data[0].markerSize!;
+        const supportsTextMode = this._points[i].lineOptions?.mode?.includes('text');
+        const text = this._points[i].data[0].text;
+
         pointsForLine.push(
-          <circle
-            id={circleId}
-            key={circleId}
-            r={
-              currentMarkerSize
-                ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize
-                : activePoint === circleId
-                ? 5.5
-                : 3.5
-            }
-            cx={this._xAxisScale(x1)}
-            cy={yScale(y1)}
-            fill={activePoint === circleId ? theme!.semanticColors.bodyBackground : lineColor}
-            opacity={isLegendSelected ? 1 : 0.1}
-            onMouseOver={this._handleHover.bind(
-              this,
-              x1,
-              y1,
-              verticaLineHeight,
-              xAxisCalloutData,
-              circleId,
-              xAxisCalloutAccessibilityData,
-              yScale,
+          <React.Fragment key={`${circleId}_fragment`}>
+            <circle
+              id={circleId}
+              key={circleId}
+              r={
+                currentMarkerSize
+                  ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize
+                  : activePoint === circleId
+                  ? 5.5
+                  : 3.5
+              }
+              cx={this._xAxisScale(x1)}
+              cy={yScale(y1)}
+              fill={activePoint === circleId ? theme!.semanticColors.bodyBackground : lineColor}
+              opacity={isLegendSelected ? 1 : 0.1}
+              onMouseOver={this._handleHover.bind(
+                this,
+                x1,
+                y1,
+                verticaLineHeight,
+                xAxisCalloutData,
+                circleId,
+                xAxisCalloutAccessibilityData,
+                yScale,
+              )}
+              onMouseMove={this._handleHover.bind(
+                this,
+                x1,
+                y1,
+                verticaLineHeight,
+                xAxisCalloutData,
+                circleId,
+                xAxisCalloutAccessibilityData,
+                yScale,
+              )}
+              onMouseOut={this._handleMouseOut}
+              strokeWidth={activePoint === circleId ? DEFAULT_LINE_STROKE_SIZE : 0}
+              stroke={activePoint === circleId ? lineColor : ''}
+              role="img"
+              aria-label={this._getAriaLabel(i, 0)}
+              data-is-focusable={isLegendSelected}
+              ref={(e: SVGCircleElement | null) => {
+                this._refCallback(e!, circleId);
+              }}
+              onFocus={() => this._handleFocus(circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+              onBlur={this._handleMouseOut}
+              {...this._getClickHandler(this._points[i].data[0].onDataPointClick)}
+            />
+            {text && supportsTextMode && (
+              <text
+                key={`${circleId}-label`}
+                x={this._xAxisScale(x1)}
+                y={
+                  yScale(y1) +
+                  Math.max(currentMarkerSize ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize : 3.5, 4) +
+                  12
+                }
+                fontSize={12}
+                fill={theme?.semanticColors.bodyText}
+                textAnchor="middle"
+                dominantBaseline="middle"
+                className={classNames.markerLabel}
+                opacity={isLegendSelected ? 1 : 0.1}
+                style={{ pointerEvents: 'none' }}
+              >
+                {text}
+              </text>
             )}
-            onMouseMove={this._handleHover.bind(
-              this,
-              x1,
-              y1,
-              verticaLineHeight,
-              xAxisCalloutData,
-              circleId,
-              xAxisCalloutAccessibilityData,
-              yScale,
-            )}
-            onMouseOut={this._handleMouseOut}
-            strokeWidth={activePoint === circleId ? DEFAULT_LINE_STROKE_SIZE : 0}
-            stroke={activePoint === circleId ? lineColor : ''}
-            role="img"
-            aria-label={this._getAriaLabel(i, 0)}
-            data-is-focusable={isLegendSelected}
-            ref={(e: SVGCircleElement | null) => {
-              this._refCallback(e!, circleId);
-            }}
-            onFocus={() => this._handleFocus(circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
-            onBlur={this._handleMouseOut}
-            {...this._getClickHandler(this._points[i].data[0].onDataPointClick)}
-          />,
+          </React.Fragment>,
         );
       }
 
@@ -975,57 +1000,59 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         }
 
         const isPointHighlighted = this.state.activeLine !== null && this.state.activeLine === i;
-        const supportsTextMode = this._points[i].lineOptions?.mode?.includes('text');
-        // Add individual marker circles and text labels for large dataset optimization
-        if (supportsTextMode || this._points[i].lineOptions?.mode?.includes('markers')) {
-          for (let k = 0; k < this._points[i].data.length; k++) {
-            const dataPoint = this._points[i].data[k];
-            const circleId = `${this._circleId}_${i}_${k}_opt`;
-            const currentMarkerSize = dataPoint.markerSize || 4;
-            const hasText = dataPoint.text;
-            const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
-            pointsForLine.push(
-              this._renderMarkerWithText(
-                circleId,
-                dataPoint.x,
-                dataPoint.y,
-                currentMarkerSize,
-                extraMaxPixels,
-                maxMarkerSize,
-                isLegendSelected,
-                currentPointHidden!,
-                lineColor,
-                strokeWidth,
-                yScale,
-                verticaLineHeight,
-                dataPoint.xAxisCalloutData,
-                dataPoint.xAxisCalloutAccessibilityData,
-                dataPoint.onDataPointClick,
-                dataPoint.text ?? this._getAriaLabel(i, k),
-                hasText,
-                supportsTextMode,
-                `${this._lineId}_${i}`,
-              ),
-            );
+        if (!this.props.optimizeLargeData) {
+          const supportsTextMode = this._points[i].lineOptions?.mode?.includes('text');
+          // Add individual marker circles and text labels for large dataset optimization
+          if (supportsTextMode || this._points[i].lineOptions?.mode?.includes('markers')) {
+            for (let k = 0; k < this._points[i].data.length; k++) {
+              const dataPoint = this._points[i].data[k];
+              const circleId = `${this._circleId}_${i}_${k}_opt`;
+              const currentMarkerSize = dataPoint.markerSize || 4;
+              const hasText = dataPoint.text;
+              const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
+              pointsForLine.push(
+                this._renderMarkerWithText(
+                  circleId,
+                  dataPoint.x,
+                  dataPoint.y,
+                  currentMarkerSize,
+                  extraMaxPixels,
+                  maxMarkerSize,
+                  isLegendSelected,
+                  currentPointHidden!,
+                  lineColor,
+                  strokeWidth,
+                  yScale,
+                  verticaLineHeight,
+                  dataPoint.xAxisCalloutData,
+                  dataPoint.xAxisCalloutAccessibilityData,
+                  dataPoint.onDataPointClick,
+                  dataPoint.text ?? this._getAriaLabel(i, k),
+                  hasText,
+                  supportsTextMode,
+                  `${this._lineId}_${i}`,
+                ),
+              );
+            }
           }
+        } else {
+          pointsForLine.push(
+            <circle
+              id={`${this._staticHighlightCircle}_${i}`}
+              key={`${this._staticHighlightCircle}_${i}`}
+              r={5.5}
+              cx={0}
+              cy={0}
+              fill={theme!.semanticColors.bodyBackground}
+              strokeWidth={DEFAULT_LINE_STROKE_SIZE}
+              stroke={lineColor}
+              visibility={isPointHighlighted ? 'visibility' : 'hidden'}
+              onMouseMove={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight, yScale)}
+              onMouseOver={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight, yScale)}
+              onMouseOut={this._handleMouseOut}
+            />,
+          );
         }
-
-        pointsForLine.push(
-          <circle
-            id={`${this._staticHighlightCircle}_${i}`}
-            key={`${this._staticHighlightCircle}_${i}`}
-            r={5.5}
-            cx={0}
-            cy={0}
-            fill={theme!.semanticColors.bodyBackground}
-            strokeWidth={DEFAULT_LINE_STROKE_SIZE}
-            stroke={lineColor}
-            visibility={isPointHighlighted ? 'visibility' : 'hidden'}
-            onMouseMove={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight, yScale)}
-            onMouseOver={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight, yScale)}
-            onMouseOut={this._handleMouseOut}
-          />,
-        );
       } else if (!this.props.optimizeLargeData) {
         for (let j = 1; j < this._points[i].data.length; j++) {
           const gapResult = this._checkInGap(j, gaps, gapIndex);
