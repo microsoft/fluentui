@@ -1,4 +1,4 @@
-export { ParticipantsRowGroupGridListTwoColumns } from './ParticipantsRowGroupGridListTwoColumns.stories';
+export { ParticipantsRowGroupGridListActionsInOneColumn } from './ParticipantsRowGroupGridListActionsInOneColumn.stories';
 export { ParticipantsRowGroupGridList } from './ParticipantsRowGroupGridList.stories';
 export { ParticipantsGridList } from './ParticipantsGridList.stories';
 

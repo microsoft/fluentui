@@ -5,10 +5,10 @@ import { Prototype } from './utils';
 import { ParticipantsMenuWrapper } from './ParticipantsMenuWrapper';
 import { participantsList } from './participantsList';
 
-export const ParticipantsRowGroupGridListTwoColumns = () => {
+export const ParticipantsRowGroupGridListActionsInOneColumn = () => {
   return (
     <Prototype pageTitle="Row group grid with just two columns">
-      <h1>Row group grid with just two columns</h1>
+      <h1>Row group grid with actions in one column</h1>
       <ParticipantsMenuWrapper>
         <List navigationMode="composite">
           <div aria-hidden="true">People</div>
