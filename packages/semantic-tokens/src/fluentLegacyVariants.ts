@@ -69,4 +69,20 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlHintDefault',
   },
+  _ctrlSwitchPaddingTextBottom: {
+    f2Token: 'spacingVerticalXS',
+    originalToken: 'paddingCtrlTextBottom',
+  },
+  _ctrlSwitchPaddingTextTop: {
+    f2Token: 'spacingVerticalXS',
+    originalToken: 'paddingCtrlTextTop',
+  },
+  _ctrlSwitchStrokeOnActiveBrandHover: {
+    f2Token: 'colorTransparentStrokeInteractive',
+    originalToken: 'strokeCtrlOnActiveBrandHover',
+  },
+  _ctrlSwitchStrokeOnActiveBrandRest: {
+    f2Token: 'colorTransparentStroke',
+    originalToken: 'strokeCtrlOnActiveBrandRest',
+  },
 };
