@@ -20,7 +20,7 @@ const useBaseStyles = makeResetStyles({
   boxSizing: 'border-box',
   backgroundColor: semanticTokens.backgroundCtrlSubtleRest,
   color: semanticTokens.foregroundCtrlOnSubtleRest,
-  paddingRight: tokens.spacingHorizontalNone,
+  paddingRight: semanticTokens.paddingContentNone,
   // if using createCustomFocusIndicatorStyle then we need to remove default outline styles provided by the browser
   ':focus': {
     outlineStyle: 'none',

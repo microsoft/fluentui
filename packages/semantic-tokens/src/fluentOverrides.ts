@@ -127,6 +127,7 @@ export const fluentOverrides: FluentOverrides = {
   foregroundCtrlOnTransparentHover: { f2Token: 'colorNeutralForeground2BrandHover' },
   foregroundCtrlOnTransparentPressed: { f2Token: 'colorNeutralForeground2BrandPressed' },
   foregroundCtrlOnTransparentRest: { f2Token: 'colorNeutralForeground2' },
+  gapBetweenListItem: { f2Token: 'spacingVerticalXXS' },
   gapInsideCtrlDefault: { f2Token: 'spacingHorizontalS' },
   gapInsideCtrlLgDefault: { f2Token: 'spacingHorizontalSNudge' },
   gapInsideCtrlLgToLabel: { f2Token: 'spacingHorizontalS' },
@@ -135,6 +136,7 @@ export const fluentOverrides: FluentOverrides = {
   gapInsideCtrlToLabel: { f2Token: 'spacingHorizontalSNudge' }, // Rating uses 8px, or spacingHorizontalS, for all gaps between icons and label in design
   nullColor: { f2Token: 'colorTransparentBackground' },
   paddingContentLarge: { f2Token: 'spacingHorizontalXXL' },
+  paddingContentNone: { f2Token: 'spacingHorizontalNone' },
   paddingCtrlHorizontalDefault: { f2Token: 'spacingHorizontalM' },
   paddingCtrlHorizontalIconOnly: { rawValue: '5px' },
   paddingCtrlLgHorizontalDefault: { f2Token: 'spacingHorizontalL' },

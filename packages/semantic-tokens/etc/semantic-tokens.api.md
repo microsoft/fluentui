@@ -2812,15 +2812,6 @@ export const ctrlTooltipShadow = "var(--smtc-ctrl-tooltip-shadow, var(--smtc-ctr
 // @public (undocumented)
 export const ctrlTooltipShadowRaw = "--smtc-ctrl-tooltip-shadow";
 
-// @public (undocumented)
-<<<<<<< HEAD
-export const foregroundContentBrandPrimary = "var(--smtc-foreground-content-brand-primary, var(--smtc-foreground-ctrl-brand-rest, var(--colorBrandForeground1)))";
-=======
-export const ctrlTooltipShadowKey = "var(--smtc-ctrl-tooltip-shadow-key, var(--smtc-ctrl-fab-shadow-rest-key))";
-
-// @public (undocumented)
-export const ctrlTooltipShadowKeyRaw = "--smtc-ctrl-tooltip-shadow-key";
-
 // @public
 export const _ctrlTreeGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingVerticalXXS))";
 
@@ -2840,8 +2831,7 @@ export const _ctrlTreeOnTransparentHover = "var(--smtc-foreground-ctrl-on-transp
 export const _ctrlTreeOnTransparentPressed = "var(--smtc-foreground-ctrl-on-transparent-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Pressed)))";
 
 // @public (undocumented)
-export const foregroundContentBrandPrimary = "var(--smtc-foreground-content-brand-primary, var(--smtc-foreground-ctrl-brand-rest))";
->>>>>>> bab7aa8536 (Squish for rebase)
+export const foregroundContentBrandPrimary = "var(--smtc-foreground-content-brand-primary, var(--smtc-foreground-ctrl-brand-rest, var(--colorBrandForeground1)))";
 
 // @public (undocumented)
 export const foregroundContentBrandPrimaryRaw = "--smtc-foreground-content-brand-primary";
@@ -3243,7 +3233,7 @@ export const gapBetweenCtrlSmNested = "var(--smtc-gap-between-ctrl-sm-nested, va
 export const gapBetweenCtrlSmNestedRaw = "--smtc-gap-between-ctrl-sm-nested";
 
 // @public (undocumented)
-export const gapBetweenListItem = "var(--smtc-gap-between-list-item, var(--smtc-gap-between-content-xx-small))";
+export const gapBetweenListItem = "var(--smtc-gap-between-list-item, var(--smtc-gap-between-content-xx-small, var(--spacingVerticalXXS)))";
 
 // @public (undocumented)
 export const gapBetweenListItemRaw = "--smtc-gap-between-list-item";
@@ -4073,7 +4063,7 @@ export const paddingContentMedium = "var(--smtc-padding-content-medium)";
 export const paddingContentMediumRaw = "--smtc-padding-content-medium";
 
 // @public (undocumented)
-export const paddingContentNone = "var(--smtc-padding-content-none)";
+export const paddingContentNone = "var(--smtc-padding-content-none, var(--spacingHorizontalNone))";
 
 // @public (undocumented)
 export const paddingContentNoneRaw = "--smtc-padding-content-none";
