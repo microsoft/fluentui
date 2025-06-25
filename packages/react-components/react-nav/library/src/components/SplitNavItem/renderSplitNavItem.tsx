@@ -14,12 +14,13 @@ const getButtonSlot = (slot: keyof SplitNavItemSlots, state: SplitNavItemState) 
   assertSlots<SplitNavItemSlots>(state);
 
   const Button = state[slot];
-  const tooltipSlotName = (slot + 'Tooltip') as keyof SplitNavItemSlots;
-  const Tooltip = state[tooltipSlotName];
 
   if (!Button) {
     return null;
   }
+
+  const tooltipSlotName = (slot + 'Tooltip') as keyof SplitNavItemSlots;
+  const Tooltip = state[tooltipSlotName];
 
   if (Tooltip) {
     return (
