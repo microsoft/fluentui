@@ -335,7 +335,7 @@ export const navSubItemClassNames: SlotClassNames<NavSubItemSlots>;
 export const NavSubItemGroup: ForwardRefComponent<NavSubItemGroupProps>;
 
 // @public (undocumented)
-export const navSubItemGroupClassNames: SlotClassNames<NavSubItemGroupSlots>;
+export const navSubItemGroupClassNames: SlotClassNames<Omit<NavSubItemGroupSlots, 'collapseMotion'>>;
 
 // @public
 export type NavSubItemGroupProps = ComponentProps<NavSubItemGroupSlots>;
