@@ -92,7 +92,6 @@ export const OverlayDrawerMotion = createPresenceComponent<DrawerMotionParams>((
     },
     {
       transform: 'translate3d(0, 0, 0)',
-      // boxShadow: tokens.shadow64,
       boxShadow: semanticTokens.shadowFlyout,
       opacity: 1,
     },
