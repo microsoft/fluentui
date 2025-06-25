@@ -695,6 +695,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   };
   private _getRangeForScatterMarkerSize(yScale: ScaleLinear<number, number>, yPadding: number): number {
+    if (!this._xMax || !this._xMin || !this._xPadding || !this._xAxisScale || !yScale || !yPadding) {
+      return 0;
+    }
     const extraXPixels = this._isRTL
       ? this._xAxisScale(this._xMax - this._xPadding) - this._xAxisScale(this._xMax)
       : this._xAxisScale(this._xMin + this._xPadding) - this._xAxisScale(this._xMin);
@@ -703,6 +706,99 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const extraYPixels = yScale(yMin) - yScale(yMin + yPadding);
     return Math.min(extraXPixels, extraYPixels);
   }
+
+  private _renderMarkerWithText = (
+    circleId: string,
+    x: number | Date,
+    y: number,
+    markerSize: number,
+    extraMaxPixels: number,
+    maxMarkerSize: number,
+    isLegendSelected: boolean,
+    currentPointHidden: boolean,
+    lineColor: string,
+    strokeWidth: string | number,
+    yScale: ScaleLinear<number, number>,
+    verticaLineHeight: number,
+    xAxisCalloutData: string | undefined,
+    xAxisCalloutAccessibilityData: IAccessibilityProps | undefined,
+    onDataPointClick: (() => void) | undefined,
+    ariaLabel: string,
+    text?: string,
+    supportsTextMode?: boolean,
+    lineId?: string,
+  ): JSX.Element => {
+    const { theme } = this.props;
+    const classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+    });
+    return (
+      <React.Fragment key={`${circleId}_fragment`}>
+        <circle
+          id={circleId}
+          r={markerSize ? (markerSize * extraMaxPixels) / maxMarkerSize : 4}
+          cx={this._xAxisScale(x)}
+          cy={yScale(y)}
+          data-is-focusable={isLegendSelected}
+          onMouseOver={this._handleHover.bind(
+            this,
+            x,
+            y,
+            verticaLineHeight,
+            xAxisCalloutData,
+            circleId,
+            xAxisCalloutAccessibilityData,
+            yScale,
+          )}
+          onMouseMove={this._handleHover.bind(
+            this,
+            x,
+            y,
+            verticaLineHeight,
+            xAxisCalloutData,
+            circleId,
+            xAxisCalloutAccessibilityData,
+            yScale,
+          )}
+          onMouseOut={this._handleMouseOut}
+          onFocus={() =>
+            this._handleFocus(
+              lineId || `${this._lineId}_${circleId}`,
+              x,
+              xAxisCalloutData,
+              circleId,
+              xAxisCalloutAccessibilityData,
+            )
+          }
+          onBlur={this._handleMouseOut}
+          {...this._getClickHandler(onDataPointClick)}
+          opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
+          fill={this._getPointFill(lineColor, circleId, 0, false)}
+          stroke={lineColor}
+          strokeWidth={strokeWidth}
+          role="img"
+          aria-label={ariaLabel}
+        />
+        {text && supportsTextMode && (
+          <text
+            key={`${circleId}-label`}
+            x={this._xAxisScale(x)}
+            y={yScale(y) + Math.max(markerSize ? (markerSize * extraMaxPixels) / maxMarkerSize : 4, 4) + 12}
+            fontSize={12}
+            fill={theme?.semanticColors.bodyText}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className={classNames.markerLabel}
+            opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
+            style={{ pointerEvents: 'none' }}
+          >
+            {text}
+          </text>
+        )}
+      </React.Fragment>
+    );
+  };
+
   private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
     const lines: JSX.Element[] = [];
     if (this.state.isSelectedLegend) {
@@ -879,6 +975,40 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         }
 
         const isPointHighlighted = this.state.activeLine !== null && this.state.activeLine === i;
+        const supportsTextMode = this._points[i].lineOptions?.mode?.includes('text');
+        // Add individual marker circles and text labels for large dataset optimization
+        if (supportsTextMode || this._points[i].lineOptions?.mode?.includes('markers')) {
+          for (let k = 0; k < this._points[i].data.length; k++) {
+            const dataPoint = this._points[i].data[k];
+            const circleId = `${this._circleId}_${i}_${k}_opt`;
+            const currentMarkerSize = dataPoint.markerSize || 4;
+            const hasText = dataPoint.text;
+            const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
+            pointsForLine.push(
+              this._renderMarkerWithText(
+                circleId,
+                dataPoint.x,
+                dataPoint.y,
+                currentMarkerSize,
+                extraMaxPixels,
+                maxMarkerSize,
+                isLegendSelected,
+                currentPointHidden!,
+                lineColor,
+                strokeWidth,
+                yScale,
+                verticaLineHeight,
+                dataPoint.xAxisCalloutData,
+                dataPoint.xAxisCalloutAccessibilityData,
+                dataPoint.onDataPointClick,
+                dataPoint.text ?? this._getAriaLabel(i, k),
+                hasText,
+                supportsTextMode,
+                `${this._lineId}_${i}`,
+              ),
+            );
+          }
+        }
 
         pointsForLine.push(
           <circle
@@ -916,6 +1046,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
           const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
           let currentMarkerSize = this._points[i].data[j - 1].markerSize!;
+          const supportsTextMode = this._points[i].lineOptions?.mode?.includes('text');
+          const text = this._points[i].data[j - 1].text;
           pointsForLine.push(
             this._points[i].lineOptions?.mode?.includes('markers') ? (
               <>
@@ -959,7 +1091,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   role="img"
                   aria-label={this._points[i].data[j - 1].text ?? this._getAriaLabel(i, j - 1)}
                 />
-                {this._points[i].data[j - 1].text && (
+                {text && supportsTextMode && (
                   <text
                     key={`${circleId}-label`}
                     x={this._xAxisScale(x1)}
@@ -1023,6 +1155,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               xAxisCalloutAccessibilityData: lastCirlceXCalloutAccessibilityData,
             } = this._points[i].data[j];
             currentMarkerSize = this._points[i].data[j].markerSize!;
+            const lastSupportsTextMode = this._points[i].lineOptions?.mode?.includes('text');
+            const lastText = this._points[i].data[j].text;
+
             pointsForLine.push(
               <React.Fragment key={`${lastCircleId}_container`}>
                 {this._points[i].lineOptions?.mode?.includes('markers') ? (
@@ -1073,7 +1208,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       role="img"
                       aria-label={this._points[i].data[j].text ?? this._getAriaLabel(i, j)}
                     />
-                    {this._points[i].data[j].text && (
+                    {lastText && lastSupportsTextMode && (
                       <text
                         key={`${lastCircleId}-label`}
                         x={this._xAxisScale(x2)}
