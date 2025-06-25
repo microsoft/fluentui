@@ -2,6 +2,7 @@
 import { nullColorRaw } from '../control/variables';
 import {
   colorTransparentStroke,
+  colorNeutralBackground3,
   colorNeutralStroke1,
   colorNeutralStroke1Hover,
   colorNeutralStroke1Pressed,
@@ -66,7 +67,7 @@ export const textStyleDataVizHeaderCase = `var(${textStyleDataVizHeaderCaseRaw},
 export const textStyleQuoteHeaderCase = `var(${textStyleQuoteHeaderCaseRaw}, unset)`;
 export const strokeLayer = `var(${strokeLayerRaw}, var(${nullColorRaw}, ${colorTransparentStroke}))`;
 export const strokeImage = `var(${strokeImageRaw}, unset)`;
-export const strokeFlyout = `var(${strokeFlyoutRaw}, unset)`;
+export const strokeFlyout = `var(${strokeFlyoutRaw}, var(${nullColorRaw}, ${colorNeutralBackground3}))`;
 export const strokeCtrlOnBrandRest = `var(${strokeCtrlOnBrandRestRaw}, var(${nullColorRaw}, transparent))`;
 export const strokeCtrlOnBrandHover = `var(${strokeCtrlOnBrandHoverRaw}, var(${nullColorRaw}, transparent))`;
 export const strokeCtrlOnBrandPressed = `var(${strokeCtrlOnBrandPressedRaw}, var(${nullColorRaw}, transparent))`;

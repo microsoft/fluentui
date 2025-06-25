@@ -359,7 +359,7 @@ export const backgroundFlyoutLumBlend = "var(--smtc-background-flyout-lum-blend)
 export const backgroundFlyoutLumBlendRaw = "--smtc-background-flyout-lum-blend";
 
 // @public (undocumented)
-export const backgroundFlyoutSolid = "var(--smtc-background-flyout-solid)";
+export const backgroundFlyoutSolid = "var(--smtc-background-flyout-solid, var(--colorNeutralBackground1))";
 
 // @public (undocumented)
 export const backgroundFlyoutSolidRaw = "--smtc-background-flyout-solid";
@@ -575,7 +575,7 @@ export const cornerFlyoutPressed = "var(--smtc-corner-flyout-pressed, var(--smtc
 export const cornerFlyoutPressedRaw = "--smtc-corner-flyout-pressed";
 
 // @public (undocumented)
-export const cornerFlyoutRest = "var(--smtc-corner-flyout-rest)";
+export const cornerFlyoutRest = "var(--smtc-corner-flyout-rest, 0px)";
 
 // @public (undocumented)
 export const cornerFlyoutRestRaw = "--smtc-corner-flyout-rest";
@@ -3997,7 +3997,7 @@ export const paddingContentAlignOutdentTextOnSubtle = "var(--smtc-padding-conten
 export const paddingContentAlignOutdentTextOnSubtleRaw = "--smtc-padding-content-align-outdent-text-on-subtle";
 
 // @public (undocumented)
-export const paddingContentLarge = "var(--smtc-padding-content-large)";
+export const paddingContentLarge = "var(--smtc-padding-content-large, var(--spacingHorizontalXXL))";
 
 // @public (undocumented)
 export const paddingContentLargeRaw = "--smtc-padding-content-large";
@@ -4195,7 +4195,7 @@ export const shadowCtrlOnDrag = "var(--smtc-shadow-ctrl-on-drag, var(--smtc-shad
 export const shadowCtrlOnDragRaw = "--smtc-shadow-ctrl-on-drag";
 
 // @public (undocumented)
-export const shadowFlyout = "var(--smtc-shadow-flyout)";
+export const shadowFlyout = "var(--smtc-shadow-flyout, var(--shadow64))";
 
 // @public (undocumented)
 export const shadowFlyoutRaw = "--smtc-shadow-flyout";
@@ -4891,7 +4891,7 @@ export const strokeDividerSubtle = "var(--smtc-stroke-divider-subtle, var(--smtc
 export const strokeDividerSubtleRaw = "--smtc-stroke-divider-subtle";
 
 // @public (undocumented)
-export const strokeFlyout = "var(--smtc-stroke-flyout, unset)";
+export const strokeFlyout = "var(--smtc-stroke-flyout, var(--smtc-null-color, var(--colorNeutralBackground3)))";
 
 // @public (undocumented)
 export const strokeFlyoutRaw = "--smtc-stroke-flyout";
