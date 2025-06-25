@@ -97,7 +97,7 @@ export const CreateMotionComponentLifecycleCallbacks = () => {
   const classes = useClasses();
   const logLabelId = useId();
 
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
   const [statusLog, setStatusLog] = React.useState<[number, string][]>([]);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
