@@ -6,7 +6,7 @@
 
 import type { GriffelStyle } from '@griffel/react';
 import * as React_2 from 'react';
-import { RefObjectFunction } from '@fluentui/react-utilities';
+import type { RefObjectFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -139,7 +139,7 @@ export const usePositioningMouseTarget: (initialState?: PositioningVirtualElemen
 export function useSafeZoneArea({ debug, disabled, onSafeZoneEnter, onSafeZoneMove, onSafeZoneLeave, onSafeZoneTimeout, timeout, }?: UseSafeZoneOptions): {
     containerRef: RefObjectFunction<HTMLElement>;
     targetRef: RefObjectFunction<HTMLElement>;
-    elementToRender: React_2.JSX.Element | null;
+    elementToRender: JSX.Element | null;
 };
 
 // @public (undocumented)
