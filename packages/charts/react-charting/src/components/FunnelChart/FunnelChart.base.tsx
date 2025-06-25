@@ -252,10 +252,26 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       isRTL: boolean;
     },
   ): JSX.Element {
+    // Ensure stages have subValues for geometry functions
+    const stagesWithSubValues = geometryParams.stages.map(s => ({
+      ...s,
+      subValues: s.subValues || [],
+    }));
+
     const geom =
       props.orientation === 'horizontal'
-        ? getStackedHorizontalFunnelSegmentGeometry({ ...geometryParams, i: stageIndex, k: subValueIndex })
-        : getStackedVerticalFunnelSegmentGeometry({ ...geometryParams, i: stageIndex, k: subValueIndex });
+        ? getStackedHorizontalFunnelSegmentGeometry({
+            ...geometryParams,
+            stages: stagesWithSubValues,
+            i: stageIndex,
+            k: subValueIndex,
+          })
+        : getStackedVerticalFunnelSegmentGeometry({
+            ...geometryParams,
+            stages: stagesWithSubValues,
+            i: stageIndex,
+            k: subValueIndex,
+          });
 
     const minTextWidth = 16;
     const eventHandlerProps = _getEventHandlerProps({ stage: stage.stage as string, subValue });
