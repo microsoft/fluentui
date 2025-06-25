@@ -1,9 +1,37 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
-import { ChevronRight20Regular } from '@fluentui/react-icons';
+import { ChevronDown20Regular } from '@fluentui/react-icons';
+import { createPresenceComponent, motionTokens, presenceMotionSlot } from '@fluentui/react-motion';
+
 import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 import { useNavContext_unstable } from '../NavContext';
+
+const ExpandIconMotion = createPresenceComponent(() => {
+  const keyframes: Keyframe[] = [
+    {
+      transform: 'rotate(0deg) translate3D(0, 0, 0)',
+    },
+    {
+      transform: 'rotate(180deg) translate3D(0, 0, 0)',
+    },
+  ];
+  const duration = motionTokens.durationFast;
+  const easing = motionTokens.curveEasyEase;
+
+  return {
+    enter: {
+      keyframes,
+      duration,
+      easing,
+    },
+    exit: {
+      keyframes: [...keyframes].reverse(),
+      duration,
+      easing,
+    },
+  };
+});
 
 /**
  * Create the state required to render NavCategoryItem.
@@ -43,6 +71,7 @@ export const useNavCategoryItem_unstable = (
       root: 'button',
       icon: 'span',
       expandIcon: 'span',
+      expandIconMotion: ExpandIconMotion,
     },
     root: slot.always(
       getIntrinsicElementProps('button', {
@@ -56,10 +85,16 @@ export const useNavCategoryItem_unstable = (
     ),
     expandIcon: slot.always(expandIcon, {
       defaultProps: {
-        children: <ChevronRight20Regular />,
+        children: <ChevronDown20Regular />,
         'aria-hidden': true,
       },
       elementType: 'span',
+    }),
+    expandIconMotion: presenceMotionSlot(props.expandIconMotion, {
+      elementType: ExpandIconMotion,
+      defaultProps: {
+        visible: open,
+      },
     }),
     icon: slot.optional(icon, {
       elementType: 'span',
