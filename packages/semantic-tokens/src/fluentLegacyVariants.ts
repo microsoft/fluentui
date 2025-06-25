@@ -89,6 +89,22 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlHintDefault',
   },
+  _ctrlFocusOuterStrokeInteractive: {
+    f2Token: 'colorTransparentStrokeInteractive',
+    originalToken: 'ctrlFocusOuterStroke',
+  },
+  _ctrlInputBackgroundRestDarker: {
+    f2Token: 'colorNeutralBackground3',
+    originalToken: 'ctrlInputBackgroundRest',
+  },
+  _ctrlInputBackgroundRestLighter: {
+    f2Token: 'colorNeutralBackground1',
+    originalToken: 'ctrlInputBackgroundRest',
+  },
+  _ctrlInputNeutralForegroundPlaceholder: {
+    f2Token: 'colorNeutralForeground4',
+    originalToken: 'foregroundCtrlNeutralSecondaryRest',
+  },
   _ctrlPersonaTreeIconOnSubtlePressed: {
     f2Token: 'colorNeutralForeground3Pressed',
     originalToken: 'foregroundCtrlOnSubtlePressed',
