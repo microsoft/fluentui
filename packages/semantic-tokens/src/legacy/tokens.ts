@@ -195,6 +195,11 @@ export const colorNeutralForeground1 = 'var(--colorNeutralForeground1)';
  */
 export const colorBrandForeground1 = 'var(--colorBrandForeground1)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#strokeWidthThicker | `strokeWidthThicker`} design token.
+ * @public
+ */
+export const strokeWidthThicker = 'var(--strokeWidthThicker)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground2BrandHover | `colorNeutralForeground2BrandHover`} design token.
  * @public
  */
@@ -334,11 +339,6 @@ export const colorNeutralStroke3 = 'var(--colorNeutralStroke3)';
  * @public
  */
 export const colorNeutralBackground3 = 'var(--colorNeutralBackground3)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#strokeWidthThicker | `strokeWidthThicker`} design token.
- * @public
- */
-export const strokeWidthThicker = 'var(--strokeWidthThicker)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#fontWeightSemibold | `fontWeightSemibold`} design token.
  * @public
