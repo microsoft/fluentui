@@ -602,27 +602,27 @@ describe('transformPlotlyJsonToChartTableProps', () => {
           values: ['Column 1', 'Column 2'],
           font: { color: '#000000', size: 12 },
           fill: { color: '#f0f0f0' },
-          align: 'left'
+          align: 'left',
         },
         cells: {
           values: [
             ['Row 1 Col 1', 'Row 2 Col 1'],
-            ['Row 1 Col 2', 'Row 2 Col 2']
+            ['Row 1 Col 2', 'Row 2 Col 2'],
           ],
           font: { color: '#333333', size: 10 },
           fill: { color: ['#ffffff', '#f8f8f8'] },
           align: 'center',
           format: '',
           prefix: '',
-          suffix: ''
-        }
-      }
+          suffix: '',
+        },
+      },
     ],
     layout: {
       title: 'Test Table',
       width: 400,
-      height: 300
-    }
+      height: 300,
+    },
   };
 
   test('Should return chart table props with valid data', () => {
@@ -645,21 +645,23 @@ describe('transformPlotlyJsonToChartTableProps', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const schemaWithHTML: any = {
       ...mockTableSchema,
-      data: [{
-        ...mockTableSchema.data[0],
-        cells: {
-          values: [
-            ['<b>Bold text</b>', '<i>Italic text</i>'],
-            ['&lt;script&gt;alert()&lt;/script&gt;', 'Normal text']
-          ],
-          font: { color: '#333333', size: 10 },
-          format: '',
-          prefix: '',
-          suffix: ''
-        }
-      }]
+      data: [
+        {
+          ...mockTableSchema.data[0],
+          cells: {
+            values: [
+              ['<b>Bold text</b>', '<i>Italic text</i>'],
+              ['&lt;script&gt;alert()&lt;/script&gt;', 'Normal text'],
+            ],
+            font: { color: '#333333', size: 10 },
+            format: '',
+            prefix: '',
+            suffix: '',
+          },
+        },
+      ],
     };
-    
+
     const result = transformPlotlyJsonToChartTableProps(schemaWithHTML, false, { current: colorMap }, 'default', false);
     expect(result.rows[0][0].value).toBe('Bold text');
     expect(result.rows[0][1].value).toBe('alert()');
@@ -668,19 +670,22 @@ describe('transformPlotlyJsonToChartTableProps', () => {
   test('Should handle minimal table data', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const minimalSchema: any = {
-      data: [{
-        type: 'table' as const,
-        header: { values: ['Col1'] },
-        cells: {
-          values: [['Value1']],
-          font: true
-        }
-      }],
-      layout: {}
+      data: [
+        {
+          type: 'table' as const,
+          header: { values: ['Col1'] },
+          cells: {
+            values: [['Value1']],
+            font: true,
+          },
+        },
+      ],
+      layout: {},
     };
-    
-    expect(() => transformPlotlyJsonToChartTableProps(minimalSchema, false, { current: colorMap }, 'default', false))
-      .not.toThrow();
+
+    expect(() =>
+      transformPlotlyJsonToChartTableProps(minimalSchema, false, { current: colorMap }, 'default', false),
+    ).not.toThrow();
   });
 });
 
@@ -691,10 +696,10 @@ describe('projectPolarToCartesian', () => {
         {
           type: 'scatterpolar' as const,
           r: [1, 2, 3],
-          theta: [0, 90, 180]
-        }
+          theta: [0, 90, 180],
+        },
       ],
-      layout: {}
+      layout: {},
     };
 
     const result = projectPolarToCartesian(polarSchema);
@@ -714,10 +719,10 @@ describe('projectPolarToCartesian', () => {
         {
           type: 'scatterpolar' as const,
           r: [1, null, NaN, Infinity],
-          theta: [0, 90, null, 270]
-        }
+          theta: [0, 90, null, 270],
+        },
       ],
-      layout: {}
+      layout: {},
     };
 
     const result = projectPolarToCartesian(invalidSchema);
@@ -730,7 +735,7 @@ describe('projectPolarToCartesian', () => {
   test('Should handle empty polar data', () => {
     const emptySchema = {
       data: [{ type: 'scatterpolar' as const, r: [], theta: [] }],
-      layout: {}
+      layout: {},
     };
 
     const result = projectPolarToCartesian(emptySchema);
@@ -766,7 +771,7 @@ describe('_getGaugeAxisColor', () => {
   test('Should return resolved color for gauge axis', () => {
     const colorway = ['#ff0000', '#00ff00', '#0000ff'];
     const color = '#ff0000';
-    
+
     const result = _getGaugeAxisColor(colorway, 'default', color, { current: colorMap }, false);
     expect(typeof result).toBe('string');
     expect(result).toBeTruthy();
@@ -793,10 +798,10 @@ describe('getAllupLegendsProps', () => {
           type: 'pie' as const,
           labels: ['A', 'B', 'C'],
           values: [1, 2, 3],
-          showlegend: true
-        }
+          showlegend: true,
+        },
       ],
-      layout: { showlegend: true }
+      layout: { showlegend: true },
     };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const traceInfo: any = [{ type: 'donut', index: 0 }];
@@ -816,10 +821,10 @@ describe('getAllupLegendsProps', () => {
           type: 'scatter' as const,
           legendgroup: 'Series 1',
           line: { color: '#ff0000' },
-          showlegend: true
-        }
+          showlegend: true,
+        },
       ],
-      layout: { showlegend: true }
+      layout: { showlegend: true },
     };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const traceInfo: any = [{ type: 'line', index: 0 }];
@@ -836,10 +841,10 @@ describe('getAllupLegendsProps', () => {
         {
           type: 'scatter' as const,
           legendgroup: 'Series 1',
-          showlegend: false
-        }
+          showlegend: false,
+        },
       ],
-      layout: { showlegend: false }
+      layout: { showlegend: false },
     };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const traceInfo: any = [{ type: 'line', index: 0 }];
@@ -854,7 +859,7 @@ describe('getGridProperties', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const schema: any = {
       data: [{ type: 'scatter' as const, x: [1, 2, 3], y: [1, 2, 3] }],
-      layout: {}
+      layout: {},
     };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const traceInfo: any = [{ type: 'line', index: 0 }];
@@ -873,8 +878,8 @@ describe('getGridProperties', () => {
         xaxis: { domain: [0, 0.45], anchor: 'y' as const },
         yaxis: { domain: [0, 1], anchor: 'x' as const },
         xaxis2: { domain: [0.55, 1], anchor: 'y2' as const },
-        yaxis2: { domain: [0, 1], anchor: 'x2' as const }
-      }
+        yaxis2: { domain: [0, 1], anchor: 'x2' as const },
+      },
     };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const traceInfo: any = [{ type: 'line', index: 0 }];
@@ -889,14 +894,13 @@ describe('getGridProperties', () => {
       data: [{ type: 'scatter' as const, x: [1, 2], y: [1, 2] }],
       layout: {
         xaxis: { domain: [0, 1], anchor: 'y2' as const },
-        yaxis: { domain: [0, 1], anchor: 'x' as const }
-      }
+        yaxis: { domain: [0, 1], anchor: 'x' as const },
+      },
     };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const traceInfo: any = [{ type: 'line', index: 0 }];
 
-    expect(() => getGridProperties(schema, true, traceInfo))
-      .toThrow('Invalid layout: xaxis 1 anchor should be y2');
+    expect(() => getGridProperties(schema, true, traceInfo)).toThrow('Invalid layout: xaxis 1 anchor should be y2');
   });
 
   test('Should handle undefined schema', () => {
