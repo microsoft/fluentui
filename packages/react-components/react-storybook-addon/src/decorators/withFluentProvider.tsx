@@ -14,7 +14,7 @@ import { defaultTheme, ThemeIds } from '../theme';
 import { DIR_ID, THEME_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
-import { CustomStyleHooksProvider } from '../../../react-shared-contexts/library/src/CustomStyleHooksContext';
+import { CustomStyleHooksProvider_unstable as CustomStyleHooksProvider } from '@fluentui/react-shared-contexts';
 import { SEMANTIC_STYLE_HOOKS } from '@fluentui/semantic-style-hooks-preview';
 
 // TODO: Remove this when merging Semantic tokens to master
