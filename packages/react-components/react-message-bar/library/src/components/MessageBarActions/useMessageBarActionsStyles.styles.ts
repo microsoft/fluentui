@@ -1,7 +1,7 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
 import type { MessageBarActionsSlots, MessageBarActionsState } from './MessageBarActions.types';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots> = {
   root: 'fui-MessageBarActions',
@@ -14,22 +14,21 @@ export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots>
 const useRootBaseStyles = makeResetStyles({
   gridArea: 'secondaryActions',
   display: 'flex',
-  columnGap: tokens.spacingHorizontalM,
-  paddingRight: tokens.spacingHorizontalM,
+  columnGap: semanticTokens.gapBetweenCtrlDefault,
+  paddingRight: semanticTokens.gapBetweenCtrlDefault,
 });
 
 const useContainerActionBaseStyles = makeResetStyles({
   gridArea: 'actions',
-  paddingRight: tokens.spacingHorizontalM,
 });
 
 const useMultilineStyles = makeStyles({
   root: {
     justifyContent: 'end',
-    marginTop: tokens.spacingVerticalMNudge,
-    marginBottom: tokens.spacingVerticalS,
+    marginTop: semanticTokens._ctrlMessageBarSpacingTop,
+    marginBottom: semanticTokens.paddingContentAlignDefault,
     marginRight: '0px',
-    paddingRight: tokens.spacingVerticalM,
+    paddingRight: semanticTokens._ctrlMessageBarActionsMultilinePaddingRight,
   },
 
   noActions: {

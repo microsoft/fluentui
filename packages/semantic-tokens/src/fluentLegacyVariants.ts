@@ -105,6 +105,34 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground4',
     originalToken: 'foregroundCtrlNeutralSecondaryRest',
   },
+  _ctrlMessageBarActionsMultilinePaddingRight: {
+    f2Token: 'spacingVerticalM',
+    originalToken: 'paddingContentAlignDefault',
+  },
+  _ctrlMessageBarErrorIconColor: {
+    f2Token: 'colorStatusDangerForeground1',
+    originalToken: 'statusDangerTintForeground',
+  },
+  _ctrlMessageBarPaddingContentAlignDefault: {
+    originalToken: 'paddingContentAlignDefault',
+    rawValue: '12px',
+  },
+  _ctrlMessageBarPaddingVertical: {
+    originalToken: 'paddingContentAlignOutdentIconOnSubtle',
+    rawValue: '0px', // setting this to maintain current Fluent implementation
+  },
+  _ctrlMessageBarReflowSpacerMarginBottom: {
+    f2Token: 'spacingVerticalS',
+    originalToken: 'paddingContentAlignDefault',
+  },
+  _ctrlMessageBarSpacingTop: {
+    f2Token: 'spacingVerticalMNudge',
+    originalToken: 'paddingContentAlignDefault',
+  },
+  _ctrlMessageBarTitleLineHeight: {
+    f2Token: 'lineHeightBase300',
+    originalToken: 'textRampItemHeaderLineHeight',
+  },
   _ctrlPersonaTreeIconOnSubtlePressed: {
     f2Token: 'colorNeutralForeground3Pressed',
     originalToken: 'foregroundCtrlOnSubtlePressed',
