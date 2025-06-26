@@ -4,18 +4,20 @@ import {
   PresenceMotionFn,
   createPresenceComponentVariant,
 } from '@fluentui/react-motion';
+import { fadeAtom } from '../../atoms/fade-atom';
+import { scaleAtom } from '../../atoms/scale-atom';
 
 type ScaleVariantParams = {
-  /** Time (ms) for the enter transition (scale-in). Defaults to the `durationNormal` value (200 ms). */
+  /** Time (ms) for the enter transition (scale-in). Defaults to the `durationGentle` value (250 ms). */
   duration?: number;
 
-  /** Easing curve for the enter transition (scale-in). Defaults to the `curveDecelerateMid` value.  */
+  /** Easing curve for the enter transition (scale-in). Defaults to the `curveDecelerateMax` value.  */
   easing?: string;
 
-  /** Time (ms) for the exit transition (scale-out). Defaults to the `duration` param for symmetry. */
+  /** Time (ms) for the exit transition (scale-out). Defaults to the `durationNormal` value (200 ms). */
   exitDuration?: number;
 
-  /** Easing curve for the exit transition (scale-out). Defaults to the `curveAccelerateMid` value.  */
+  /** Easing curve for the exit transition (scale-out). Defaults to the `curveAccelerateMax` value.  */
   exitEasing?: string;
 
   /** The scale value to animate from. Defaults to `0.9`. */
@@ -27,36 +29,32 @@ type ScaleVariantParams = {
 
 /** Define a presence motion for scale in/out */
 const scalePresenceFn: PresenceMotionFn<ScaleVariantParams> = ({
-  duration = motionTokens.durationNormal,
-  easing = motionTokens.curveDecelerateMid,
-  exitDuration = duration,
-  exitEasing = motionTokens.curveAccelerateMid,
+  duration = motionTokens.durationGentle,
+  easing = motionTokens.curveDecelerateMax,
+  exitDuration = motionTokens.durationNormal,
+  exitEasing = motionTokens.curveAccelerateMax,
   fromScale = 0.9,
   animateOpacity = true,
 }) => {
-  const fromOpacity = animateOpacity ? 0 : 1;
-  const toOpacity = 1;
-  const toScale = 1;
-
-  // TODO: use fadeAtom
-  // TODO: make scaleAtom
-  const enterKeyframes = [
-    { opacity: fromOpacity, transform: `scale3d(${fromScale}, ${fromScale}, 1)`, visibility: 'visible' },
-    { opacity: toOpacity, transform: `scale3d(${toScale}, ${toScale}, 1)` },
+  const enterAtoms = [scaleAtom({ direction: 'enter', duration, easing, fromValue: fromScale })];
+  const exitAtoms = [
+    scaleAtom({
+      direction: 'exit',
+      duration: exitDuration,
+      easing: exitEasing,
+      fromValue: fromScale,
+    }),
   ];
 
-  const exitKeyframes = [
-    { opacity: toOpacity, transform: `scale3d(${toScale}, ${toScale}, 1)` },
-    { opacity: fromOpacity, transform: `scale3d(${fromScale}, ${fromScale}, 1)`, visibility: 'hidden' },
-  ];
+  // Only add fade atoms if animateOpacity is true.
+  if (animateOpacity) {
+    enterAtoms.push(fadeAtom({ direction: 'enter', duration, easing }));
+    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing }));
+  }
 
   return {
-    enter: {
-      duration,
-      easing,
-      keyframes: enterKeyframes,
-    },
-    exit: { duration: exitDuration, easing: exitEasing, keyframes: exitKeyframes },
+    enter: enterAtoms,
+    exit: exitAtoms,
   };
 };
 
@@ -64,13 +62,9 @@ const scalePresenceFn: PresenceMotionFn<ScaleVariantParams> = ({
 export const Scale = createPresenceComponent(scalePresenceFn);
 
 export const ScaleSnappy = createPresenceComponentVariant(Scale, {
-  duration: motionTokens.durationFast,
-  easing: motionTokens.curveDecelerateMax,
-  exitEasing: motionTokens.curveAccelerateMax,
+  duration: motionTokens.durationNormal,
 });
 
 export const ScaleRelaxed = createPresenceComponentVariant(Scale, {
-  duration: motionTokens.durationGentle,
-  easing: motionTokens.curveDecelerateMid,
-  exitEasing: motionTokens.curveAccelerateMid,
+  duration: motionTokens.durationSlow,
 });

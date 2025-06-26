@@ -2,6 +2,21 @@
   "name": "@fluentui/react-carousel",
   "entries": [
     {
+      "date": "Mon, 23 Jun 2025 15:49:48 GMT",
+      "tag": "@fluentui/react-carousel_v9.7.3",
+      "version": "9.7.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-tooltip to v9.7.3",
+            "commit": "a00b7d0f205b6178637eddd2e981b5e12efb3df5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jun 2025 17:33:59 GMT",
       "tag": "@fluentui/react-carousel_v9.7.2",
       "version": "9.7.2",
