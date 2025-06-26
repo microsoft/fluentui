@@ -1,5 +1,4 @@
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { useAnimationFrame, useEventCallback, useMergedRefs, useTimeout } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { createSafeZoneAreaStateStore } from './createSafeZoneAreaStateStore';
@@ -28,6 +27,15 @@ export type UseSafeZoneOptions = {
   onSafeZoneTimeout?: () => void;
 };
 
+/**
+ * Time in milliseconds after which the safe zone area will be cleared if no mouse movement is detected.
+ *
+ * Only affects the target element, not the safe zone area itself.
+ */
+const MOUSE_MOVE_TARGET_POLLING_TIMEOUT = 2000;
+
+// ---
+
 export function useSafeZoneArea({
   debug = false,
   disabled = false,
@@ -40,14 +48,14 @@ export function useSafeZoneArea({
   timeout = 1500,
 }: UseSafeZoneOptions = {}) {
   const [stateStore] = React.useState(createSafeZoneAreaStateStore);
-  const { targetDocument } = useFluent_unstable();
 
   const safeZoneAreaRef = React.useRef<SafeZoneAreaImperativeHandle>(null);
   const containerRef = React.useRef<HTMLElement>(null);
   const targetRef = React.useRef<HTMLElement>(null);
 
-  const timeoutIdRef = React.useRef<number | null>(null);
-  const mouseMoveIdRef = React.useRef<number | null>(null);
+  const [setSafeZoneTimeout, clearSafeZoneTimeout] = useTimeout();
+  const [setTargetTimeout, clearTargetTimeout] = useTimeout();
+  const [requestMouseMoveFrame, clearMouseMoveFrame] = useAnimationFrame();
 
   const mouseCoordinatesRef = React.useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
@@ -61,16 +69,8 @@ export function useSafeZoneArea({
     let containerEl: HTMLElement | null = null;
 
     function onContainerMouseEnter() {
-      const targetWindow = targetDocument?.defaultView;
-
-      if (!targetWindow) {
-        return;
-      }
-
-      if (timeoutIdRef.current) {
-        targetWindow.clearTimeout(timeoutIdRef.current);
-        timeoutIdRef.current = null;
-      }
+      clearSafeZoneTimeout();
+      clearTargetTimeout();
 
       stateStore.toggleActive(false);
     }
@@ -83,7 +83,7 @@ export function useSafeZoneArea({
       containerEl = el;
       el?.addEventListener('mouseenter', onContainerMouseEnter);
     };
-  }, [disabled, stateStore, targetDocument]);
+  }, [clearSafeZoneTimeout, clearTargetTimeout, disabled, stateStore]);
 
   const targetListenerRef = React.useMemo(() => {
     if (disabled) {
@@ -97,31 +97,23 @@ export function useSafeZoneArea({
     function onTargetMouseMove(e: MouseEvent) {
       mouseCoordinatesRef.current = { x: e.clientX, y: e.clientY };
 
-      if (timeoutIdRef.current) {
-        targetDocument?.defaultView?.clearTimeout(timeoutIdRef.current);
-        timeoutIdRef.current = null;
-      }
-
       if (!stateStore.isActive()) {
         stateStore.toggleActive(true);
       }
+
+      clearSafeZoneTimeout();
+      clearTargetTimeout();
+
+      setTargetTimeout(() => {
+        stateStore.toggleActive(false);
+      }, MOUSE_MOVE_TARGET_POLLING_TIMEOUT);
     }
 
     return (el: HTMLElement | null) => {
       if (el === null) {
-        const targetWindow = targetDocument?.defaultView;
-
-        if (targetWindow) {
-          if (mouseMoveIdRef.current) {
-            targetWindow.cancelAnimationFrame(mouseMoveIdRef.current);
-            mouseMoveIdRef.current = null;
-          }
-
-          if (timeoutIdRef.current) {
-            targetWindow.clearTimeout(timeoutIdRef.current);
-            timeoutIdRef.current = null;
-          }
-        }
+        clearMouseMoveFrame();
+        clearSafeZoneTimeout();
+        clearTargetTimeout();
 
         targetEl?.removeEventListener('mousemove', onTargetMouseMove);
       }
@@ -129,26 +121,15 @@ export function useSafeZoneArea({
       targetEl = el;
       el?.addEventListener('mousemove', onTargetMouseMove);
     };
-  }, [disabled, stateStore, targetDocument]);
+  }, [clearMouseMoveFrame, clearSafeZoneTimeout, clearTargetTimeout, disabled, stateStore, setTargetTimeout]);
 
   const onSvgMouseEnter = useEventCallback((e: React.MouseEvent) => {
     onSafeZoneEnter?.(e);
 
-    const targetWindow = targetDocument?.defaultView;
+    clearSafeZoneTimeout();
+    clearTargetTimeout();
 
-    if (!targetWindow) {
-      return;
-    }
-
-    if (timeoutIdRef.current) {
-      targetWindow.clearTimeout(timeoutIdRef.current);
-      timeoutIdRef.current = null;
-    }
-
-    // React 17 still uses pooled synthetic events
-    e.persist();
-
-    timeoutIdRef.current = targetWindow.setTimeout(() => {
+    setSafeZoneTimeout(() => {
       stateStore.toggleActive(false);
       onSafeZoneTimeout?.();
     }, timeout);
@@ -168,7 +149,6 @@ export function useSafeZoneArea({
         function updateSVGs() {
           const containerEl = containerRef.current;
           const targetEl = targetRef.current;
-          const targetWindow = targetDocument?.defaultView;
 
           if (containerEl && targetEl) {
             safeZoneAreaRef.current?.updateSVG({
@@ -178,21 +158,16 @@ export function useSafeZoneArea({
             });
           }
 
-          if (targetWindow) {
-            mouseMoveIdRef.current = targetWindow.requestAnimationFrame(updateSVGs);
-          }
+          requestMouseMoveFrame(updateSVGs);
         }
 
         updateSVGs();
         return;
       }
 
-      if (mouseMoveIdRef.current) {
-        targetDocument?.defaultView?.cancelAnimationFrame(mouseMoveIdRef.current);
-        mouseMoveIdRef.current = null;
-      }
+      clearMouseMoveFrame();
     });
-  }, [stateStore, targetDocument]);
+  }, [clearMouseMoveFrame, requestMouseMoveFrame, stateStore]);
 
   return {
     containerRef: useMergedRefs(containerRef, containerListenerRef),

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: stop rAF if no mouse movement happening",
+  "packageName": "@fluentui/react-positioning",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
