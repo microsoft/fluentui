@@ -654,7 +654,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     points: IScatterChartPoints[],
     yAxisType?: YAxisType,
   ): { startValue: number; endValue: number } {
-     
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType);
     let yPadding = 0;
     yPadding = (endValue - startValue) * 0.1;
@@ -740,7 +740,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       datasetForXAxisDomain={_xAxisLabels}
       componentRef={cartesianChartRef}
       /* eslint-disable react/jsx-no-bind */
-       
+      // eslint-disable-next-line react/no-children-prop
       children={(childProps: IChildProps) => {
         _xAxisScale.current = childProps.xScale!;
         _yAxisScale.current = childProps.yScalePrimary!;

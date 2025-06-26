@@ -334,7 +334,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
         ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
-         
+        // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           this._xAxisScale = props.xScale!;
           this._yScalePrimary = props.yScalePrimary!;
@@ -487,7 +487,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     yAxisType?: YAxisType,
     useSecondaryYScale?: boolean,
   ): { startValue: number; endValue: number } => {
-     
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
     let yPadding = 0;
     if (this._hasMarkersMode) {

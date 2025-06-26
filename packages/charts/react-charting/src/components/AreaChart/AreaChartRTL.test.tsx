@@ -16,7 +16,7 @@ import {
   isTestEnv,
 } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
- 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const global: any;
 
 const { Timezone } = require('../../../scripts/constants');

@@ -1195,9 +1195,7 @@ describe('getAllupLegendsProps', () => {
       layout: { showlegend: true },
     };
 
-    expect(() =>
-      getAllupLegendsProps(schema, { current: colorMap }, 'default', [], false),
-    ).toThrow();
+    expect(() => getAllupLegendsProps(schema, { current: colorMap }, 'default', [], false)).toThrow();
   });
 
   test('Should handle null schema', () => {

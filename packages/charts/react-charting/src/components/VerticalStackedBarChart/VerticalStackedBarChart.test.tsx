@@ -12,7 +12,7 @@ function sharedBeforeEach() {
 
 function sharedAfterEach() {
   // cleaned up in fake timers world
-   
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if ((global.setTimeout as any).mock) {
     jest.useRealTimers();
   }

@@ -1,4 +1,4 @@
- 
+/* eslint-disable @typescript-eslint/naming-convention */
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import {
   IChartProps,

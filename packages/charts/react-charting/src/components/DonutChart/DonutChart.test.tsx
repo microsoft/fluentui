@@ -1,4 +1,4 @@
- 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { chartPointsDC, chartPointsDCElevateMinimums, pointsDC } from '../../utilities/test-data';
 import { resetIds } from '../../Utilities';
