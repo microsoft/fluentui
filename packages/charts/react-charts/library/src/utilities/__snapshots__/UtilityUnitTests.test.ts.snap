@@ -1917,13 +1917,13 @@ exports[`createStringYAxis should render y-axis labels correctly for horizontal 
 >
   <path
     class="domain"
-    d="M-6,92.5H0.5V8.5H-6"
+    d="M-6,100.5H0.5V0.5H-6"
     stroke="currentColor"
   />
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,78)"
+    transform="translate(0,78.57142857142857)"
   >
     <line
       stroke="currentColor"
@@ -1940,7 +1940,7 @@ exports[`createStringYAxis should render y-axis labels correctly for horizontal 
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,50)"
+    transform="translate(0,50.00000000000001)"
   >
     <line
       stroke="currentColor"
@@ -1957,7 +1957,7 @@ exports[`createStringYAxis should render y-axis labels correctly for horizontal 
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,22)"
+    transform="translate(0,21.428571428571427)"
   >
     <line
       stroke="currentColor"
@@ -2049,13 +2049,13 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
 >
   <path
     class="domain"
-    d="M6,92.5H0.5V8.5H6"
+    d="M6,100.5H0.5V0.5H6"
     stroke="currentColor"
   />
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,78)"
+    transform="translate(0,78.57142857142857)"
   >
     <line
       stroke="currentColor"
@@ -2072,7 +2072,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,50)"
+    transform="translate(0,50.00000000000001)"
   >
     <line
       stroke="currentColor"
@@ -2089,7 +2089,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,22)"
+    transform="translate(0,21.428571428571427)"
   >
     <line
       stroke="currentColor"
@@ -2115,13 +2115,13 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
 >
   <path
     class="domain"
-    d="M-6,92.5H0.5V8.5H-6"
+    d="M-6,100.5H0.5V0.5H-6"
     stroke="currentColor"
   />
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,78)"
+    transform="translate(0,78.57142857142857)"
   >
     <line
       stroke="currentColor"
@@ -2138,7 +2138,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,50)"
+    transform="translate(0,50.00000000000001)"
   >
     <line
       stroke="currentColor"
@@ -2155,7 +2155,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,22)"
+    transform="translate(0,21.428571428571427)"
   >
     <line
       stroke="currentColor"
@@ -2181,13 +2181,13 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
 >
   <path
     class="domain"
-    d="M-6,92.5H0.5V8.5H-6"
+    d="M-6,100.5H0.5V0.5H-6"
     stroke="currentColor"
   />
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,78)"
+    transform="translate(0,78.57142857142857)"
   >
     <line
       stroke="currentColor"
@@ -2204,7 +2204,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,50)"
+    transform="translate(0,50.00000000000001)"
   >
     <line
       stroke="currentColor"
@@ -2221,7 +2221,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,22)"
+    transform="translate(0,21.428571428571427)"
   >
     <line
       stroke="currentColor"
@@ -3746,13 +3746,13 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
 >
   <path
     class="domain"
-    d="M-6,92.5H0.5V8.5H-6"
+    d="M-6,100.5H0.5V0.5H-6"
     stroke="currentColor"
   />
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,78)"
+    transform="translate(0,78.57142857142857)"
   >
     <line
       stroke="currentColor"
@@ -3782,7 +3782,7 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,50)"
+    transform="translate(0,50.00000000000001)"
   >
     <line
       stroke="currentColor"
@@ -3812,7 +3812,7 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,22)"
+    transform="translate(0,21.428571428571427)"
   >
     <line
       stroke="currentColor"
@@ -3852,13 +3852,13 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
 >
   <path
     class="domain"
-    d="M-6,92.5H0.5V8.5H-6"
+    d="M-6,100.5H0.5V0.5H-6"
     stroke="currentColor"
   />
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,78)"
+    transform="translate(0,78.57142857142857)"
   >
     <line
       stroke="currentColor"
@@ -3888,7 +3888,7 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,50)"
+    transform="translate(0,50.00000000000001)"
   >
     <line
       stroke="currentColor"
@@ -3918,7 +3918,7 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,22)"
+    transform="translate(0,21.428571428571427)"
   >
     <line
       stroke="currentColor"
