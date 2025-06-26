@@ -331,7 +331,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
             stroke={seriesColor}
             role="img"
             aria-label={_getAriaLabel(i, j)}
-            tabIndex={_points[i].legend !== '' ? 0 : undefined}
+            tabIndex={isLegendSelected ? 0 : undefined}
           />,
         );
       }
@@ -566,7 +566,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       // eslint-disable-next-line react/no-children-prop
       children={(props: ChildProps) => {
         _xAxisScale = props.xScale!;
-        _yAxisScale = props.yScale!;
+        _yAxisScale = props.yScalePrimary!;
         return (
           <>
             <g>

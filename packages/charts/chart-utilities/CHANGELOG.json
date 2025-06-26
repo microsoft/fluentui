@@ -2,6 +2,147 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Tue, 17 Jun 2025 07:20:32 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.18",
+      "version": "1.1.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "0e2b75a2b9f3108726359976929d2224e989689c",
+            "comment": "fix(chart-utilities): Add type info to bar validation error message"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "342462151232a909b98d049ec70e356b7470780b",
+            "comment": "fix(chart-utilities): Strongly type TraceInfo"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Jun 2025 07:21:01 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.17",
+      "version": "1.1.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "a73394f7914fc6051e0e6567caa89b6ff6c9799d",
+            "comment": "fix(chart-utilities): Updating plotly converter for scatter chart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Jun 2025 07:20:13 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.16",
+      "version": "1.1.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "3e902f17659ae2f04fbf92f72dba48b5e9c1cad5",
+            "comment": "feat(react-charting): Adding Scatter Chart component"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "4524a28299ce317d53ca354f7c0e202e5a491d04",
+            "comment": "feat(charts): Enable support for rendering different traces individually or as a group"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Jun 2025 07:20:27 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.15",
+      "version": "1.1.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "9bb677885774dba335492101f97f3d6e0a34ebf9",
+            "comment": "feat: allow string y values in bar and scatter traces for VSBC rendering"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "0ac3d6be1e465b781c601b22b6a20358bbbcb4a9",
+            "comment": "feat(charts): Add locale aware date and number formatter"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Jun 2025 07:20:40 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.14",
+      "version": "1.1.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "69378d8f06f462504866e59ecd3e360ff0b0871c",
+            "comment": "Add styling to tables"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "19a140fd14d467d133acd7527e97484eae78aaf9",
+            "comment": "fix(chart-utilities): Mark sankey chart with cycles as unsupported"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "14cd5d59f87aa416c579af2fb4bf8fbe4006faf5",
+            "comment": "fix(chart-utilities): Exporting ColorAxis type"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 May 2025 07:20:28 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.13",
+      "version": "1.1.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "9449bf78f8c3e7492198db6817f6f7b128a8ad57",
+            "comment": "fix(chart-utilities): Add property to plotly schema"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 May 2025 07:20:25 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.12",
+      "version": "1.1.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "bbf6450069454f3012d9b6cf15943db514479f4a",
+            "comment": "fix(chart-utilities): Mark log scale as unsupported"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "5e8d6af41f45b7dd42ef5b34604a5b4d4f47e820",
+            "comment": "fix(chart-utilities): Adding properties to plotly schema"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 May 2025 07:20:14 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.11",
       "version": "1.1.11",

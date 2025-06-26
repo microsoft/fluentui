@@ -1,8 +1,56 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 26 May 2025 04:07:35 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Jun 2025 04:06:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.110](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.110)
+
+Tue, 24 Jun 2025 04:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.109..@fluentui/web-components_v3.0.0-beta.110)
+
+### Changes
+
+- fix start and end slot for tabs ([PR #34704](https://github.com/microsoft/fluentui/pull/34704) by jes@microsoft.com)
+- fix(dropdown): add anchor positioning fallback logic ([PR #34647](https://github.com/microsoft/fluentui/pull/34647) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.109](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.109)
+
+Fri, 20 Jun 2025 04:06:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.108..@fluentui/web-components_v3.0.0-beta.109)
+
+### Changes
+
+- fix: progress bar when value is missing in firefox and safari ([PR #34684](https://github.com/microsoft/fluentui/pull/34684) by machi@microsoft.com)
+
+## [3.0.0-beta.108](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.108)
+
+Thu, 19 Jun 2025 04:06:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.107..@fluentui/web-components_v3.0.0-beta.108)
+
+### Changes
+
+- refactor: use css attr func to calculate progress indicator width ([PR #34674](https://github.com/microsoft/fluentui/pull/34674) by machi@microsoft.com)
+
+## [3.0.0-beta.107](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.107)
+
+Mon, 02 Jun 2025 04:07:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.106..@fluentui/web-components_v3.0.0-beta.107)
+
+### Changes
+
+- fix: various field interaction bugs ([PR #34555](https://github.com/microsoft/fluentui/pull/34555) by 863023+radium-v@users.noreply.github.com)
+- occasionally focusing off of combobox would open and focus listbox ([PR #34404](https://github.com/microsoft/fluentui/pull/34404) by jes@microsoft.com)
+
+## [3.0.0-beta.106](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.106)
+
+Wed, 28 May 2025 04:06:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.105..@fluentui/web-components_v3.0.0-beta.106)
+
+### Changes
+
+- Co-located types with ES modules. This should not affect users. ([PR #34487](https://github.com/microsoft/fluentui/pull/34487) by burtonsmith@microsoft.com)
+- Accesible name and title for dialog ([PR #34519](https://github.com/microsoft/fluentui/pull/34519) by jes@microsoft.com)
 
 ## [3.0.0-beta.105](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.105)
 

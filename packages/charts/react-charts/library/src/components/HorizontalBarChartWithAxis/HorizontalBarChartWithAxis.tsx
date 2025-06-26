@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { Legend } from '../../components/Legends/Legends.types';
@@ -32,7 +32,13 @@ import {
   useRtl,
   DataVizPalette,
   getColorFromToken,
+  computeLongestBars,
+  IDomainNRange,
+  domainRangeOfNumericForHorizontalBarChartWithAxis,
+  groupChartDataByYValue,
+  MIN_DOMAIN_MARGIN,
 } from '../../utilities/index';
+import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
 type ColorScale = (_p?: number) => string;
 
 export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarChartWithAxisProps> = React.forwardRef<
@@ -62,7 +68,12 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   let _calloutAnchorPoint: HorizontalBarChartWithAxisDataPoint | null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let tooltipElement: any;
+  let _longestBarPositiveTotalValue: number;
+  let _longestBarNegativeTotalValue: number;
+  let _domainMargin: number = MIN_DOMAIN_MARGIN;
+  let _yAxisPadding: number = props.yAxisPadding ?? 0.5;
   const cartesianChartRef = React.useRef<Chart>(null);
+  const X_ORIGIN: number = 0;
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -167,10 +178,45 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     xElement?: SVGElement | null,
     yElement?: SVGElement | null,
   ) {
-    return (_bars =
+    const stackedChartData = groupChartDataByYValue(_points);
+    const longestBars = computeLongestBars(stackedChartData, X_ORIGIN);
+    _longestBarPositiveTotalValue = longestBars.longestPositiveBar;
+    _longestBarNegativeTotalValue = longestBars.longestNegativeBar;
+
+    const { xBarScale, yBarScale } =
       _yAxisType === YAxisType.NumericAxis
-        ? _createNumericBars(containerHeight, containerWidth, xElement!, yElement!)
-        : _createStringBars(containerHeight, containerWidth, xElement!, yElement!));
+        ? _getScales(containerHeight, containerWidth, true)
+        : _getScales(containerHeight, containerWidth, false);
+    const xRange = xBarScale.range();
+    let allBars: JSX.Element[] = [];
+    // when the chart mounts, the xRange[1] is sometimes seen to be < 0 (like -40) while xRange[0] > 0.
+    if (xRange[0] < xRange[1]) {
+      allBars = stackedChartData
+        .map(singleBarData =>
+          _yAxisType === YAxisType.NumericAxis
+            ? _createNumericBars(
+                containerHeight,
+                containerWidth,
+                xElement!,
+                yElement!,
+                singleBarData,
+                xBarScale,
+                yBarScale,
+              )
+            : _createStringBars(
+                containerHeight,
+                containerWidth,
+                xElement!,
+                yElement!,
+                singleBarData,
+                xBarScale,
+                yBarScale,
+              ),
+        )
+        .flat();
+    }
+
+    return (_bars = allBars);
   }
 
   function _createColors(): D3ScaleLinear<string, string> | ColorScale {
@@ -251,29 +297,35 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     isNumericScale: boolean,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): { xBarScale: any; yBarScale: any } {
+    const xMax = _longestBarPositiveTotalValue;
+    const xMin = _longestBarNegativeTotalValue;
+    const xDomain = [Math.min(X_ORIGIN, xMin), Math.max(X_ORIGIN, xMax)];
     if (isNumericScale) {
-      const xMax = d3Max(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.x as number)!;
       const yMax = d3Max(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      const yMin = d3Min(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      const yDomainMax = Math.max(yMax, props.yMaxValue || 0);
+      // Default to 0 if yMinValue is not provided.
+      const yMinProp = props.yMinValue || 0;
+      const yDomainMin = Math.min(yMin, yMinProp);
       const xBarScale = d3ScaleLinear()
-        .domain(_isRtl ? [xMax, 0] : [0, xMax])
+        .domain(xDomain)
         .nice()
         .range([_margins.left!, containerWidth - _margins.right!]);
       const yBarScale = d3ScaleLinear()
-        .domain([0, yMax])
-        .range([containerHeight - _margins.bottom!, _margins.top!]);
+        .domain([yDomainMin, yDomainMax])
+        .range([containerHeight - (_margins.bottom! + _domainMargin), _margins.top! + _domainMargin]);
       return { xBarScale, yBarScale };
     } else {
-      const xMax = d3Max(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.x as number)!;
       // please note these padding default values must be consistent in here
       // and CatrtesianChartBase w for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
       const yBarScale = d3ScaleBand()
         .domain(_yAxisLabels)
-        .range([containerHeight - _margins.bottom! - _barHeight / 2, _margins.top! + _barHeight / 2])
-        .padding(props.yAxisPadding || 0);
+        .range([containerHeight - (_margins.bottom! + _domainMargin), _margins.top! + _domainMargin])
+        .padding(_yAxisPadding);
 
       const xBarScale = d3ScaleLinear()
-        .domain(_isRtl ? [xMax, 0] : [0, xMax])
+        .domain(xDomain)
         .nice()
         .range([_margins.left!, containerWidth - _margins.right!]);
       return { xBarScale, yBarScale };
@@ -285,21 +337,46 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     containerWidth: number,
     xElement: SVGElement,
     yElement: SVGElement,
+    singleBarData: HorizontalBarChartWithAxisDataPoint[],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xBarScale: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    yBarScale: any,
   ): JSX.Element[] {
     const { useSingleColor = false } = props;
-    const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth, true);
-    const sortedBars: HorizontalBarChartWithAxisDataPoint[] = [..._points];
+    const sortedBars: HorizontalBarChartWithAxisDataPoint[] = [...singleBarData];
     sortedBars.sort((a, b) => {
       const aValue = typeof a.y === 'number' ? a.y : parseFloat(a.y);
       const bValue = typeof b.y === 'number' ? b.y : parseFloat(b.y);
       return bValue - aValue;
     });
 
+    let prevWidthPositive = 0;
+    let prevWidthNegative = 0;
+    let prevPoint = 0;
+
+    const totalPositiveBars = singleBarData.filter(
+      (point: HorizontalBarChartWithAxisDataPoint) => point.x >= X_ORIGIN,
+    ).length;
+    const totalNegativeBars = singleBarData.length - totalPositiveBars;
+    let currPositiveCounter = 0;
+    let currNegativeCounter = 0;
+
     const bars = sortedBars.map((point: HorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (isLegendHovered || isLegendSelected) {
         shouldHighlight = _isLegendHighlighted(point.legend);
       }
+      if (point.x >= X_ORIGIN) {
+        ++currPositiveCounter;
+      }
+      if (point.x < X_ORIGIN) {
+        ++currNegativeCounter;
+      }
+      const barStartX = _isRtl
+        ? containerWidth -
+          (_margins.right! + Math.max(xBarScale(point.x + X_ORIGIN), xBarScale(X_ORIGIN)) - _margins.left!)
+        : Math.min(xBarScale(point.x + X_ORIGIN), xBarScale(X_ORIGIN));
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
@@ -315,18 +392,37 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
 
       startColor = point.color && !useSingleColor ? point.color : startColor;
 
+      const prevBarWidth = Math.abs(xBarScale(prevPoint + X_ORIGIN) - xBarScale(X_ORIGIN));
+      prevPoint > X_ORIGIN ? (prevWidthPositive += prevBarWidth) : (prevWidthNegative += prevBarWidth);
+      const currentWidth = Math.abs(xBarScale(point.x + X_ORIGIN) - xBarScale(X_ORIGIN));
+      const gapWidthLTR =
+        currentWidth > 2 &&
+        ((point.x > X_ORIGIN && currPositiveCounter !== totalPositiveBars) ||
+          (point.x < X_ORIGIN && (totalPositiveBars !== 0 || currNegativeCounter > 1)))
+          ? 2
+          : 0;
+      const gapWidthRTL =
+        currentWidth > 2 &&
+        ((point.x > X_ORIGIN && (totalNegativeBars !== 0 || currPositiveCounter > 1)) ||
+          (point.x < X_ORIGIN && currNegativeCounter !== totalNegativeBars))
+          ? 2
+          : 0;
+      let xStart = X_ORIGIN;
+      if (_isRtl) {
+        xStart = point.x > X_ORIGIN ? barStartX - prevWidthPositive : barStartX + prevWidthNegative;
+      } else {
+        xStart = point.x > X_ORIGIN ? barStartX + prevWidthPositive : barStartX - prevWidthNegative;
+      }
+      prevPoint = point.x;
+
       return (
         <React.Fragment key={`${index}_${point.x}`}>
           <rect
             key={point.y}
-            x={_isRtl ? xBarScale(point.x) : _margins.left!}
+            x={xStart}
             y={yBarScale(point.y) - _barHeight / 2}
             data-is-focusable={shouldHighlight}
-            width={
-              _isRtl
-                ? containerWidth - _margins.right! - Math.max(xBarScale(point.x), 0)
-                : Math.max(xBarScale(point.x), 0) - _margins.left!
-            }
+            width={currentWidth - (_isRtl ? gapWidthRTL : gapWidthLTR)}
             height={_barHeight}
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
@@ -349,6 +445,68 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     });
     return bars;
   }
+
+  function _getUniqueYValues() {
+    const mapY: Record<string, number | string> = {};
+    props.data?.forEach((point: HorizontalBarChartWithAxisDataPoint) => {
+      mapY[point.y] = point.y;
+    });
+    const uniqueY = Object.values(mapY);
+    return uniqueY;
+  }
+
+  function _calculateAppropriateBarHeight(data: number[] | Date[], totalWidth: number, innerPadding: number) {
+    const result = getClosestPairDiffAndRange(data);
+    if (!result || result[1] === 0) {
+      return 16;
+    }
+    const closestPairDiff = result[0];
+    let range = result[1];
+    const yMax = d3Max(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+    // Since we are always rendering from 0 to yMax, we need to ensure that the range is at least yMax
+    // to calculate the bar height correctly.
+    range = Math.max(range, yMax);
+    // Refer to https://microsoft.github.io/fluentui-charting-contrib/docs/rfcs/fix-overlapping-bars-on-continuous-axes
+    // for the derivation of the following formula.
+    const barWidth = Math.floor(
+      (totalWidth * closestPairDiff * (1 - innerPadding)) / (range + closestPairDiff * (1 - innerPadding)),
+    );
+    return barWidth;
+  }
+
+  function _getDomainMarginsForHorizontalBarChart(containerHeight: number): Margins {
+    _domainMargin = MIN_DOMAIN_MARGIN;
+    const uniqueY = _getUniqueYValues();
+    /** Rate at which the space between the bars changes wrt the bar height */
+    _yAxisPadding = _yAxisPadding === 1 ? 0.99 : _yAxisPadding;
+    const barGapRate = _yAxisPadding / (1 - _yAxisPadding);
+    const numBars = uniqueY.length + (uniqueY.length - 1) * barGapRate;
+    // Total height available to render the bars
+    const totalHeight = containerHeight - (_margins.top! + MIN_DOMAIN_MARGIN) - (_margins.bottom! + MIN_DOMAIN_MARGIN);
+    if (_yAxisType !== YAxisType.StringAxis) {
+      // Calculate bar height dynamically
+      _barHeight =
+        props.barHeight || _calculateAppropriateBarHeight(uniqueY as number[] | Date[], totalHeight, _yAxisPadding);
+      _barHeight = Math.max(_barHeight, 1);
+      _domainMargin += _barHeight / 2;
+    } else {
+      // Calculate the appropriate bar height
+      _barHeight = props.barHeight || totalHeight / numBars;
+      /** Total height required to render the bars. Directly proportional to bar height */
+      const reqHeight = numBars * _barHeight;
+      if (totalHeight >= reqHeight) {
+        // Center align the chart by setting equal left and right margins for domain
+        _domainMargin = MIN_DOMAIN_MARGIN + (totalHeight - reqHeight) / 2;
+      }
+    }
+
+    return {
+      ..._margins,
+      top: _margins.top! + _domainMargin,
+      bottom: _margins.bottom! + _domainMargin,
+    };
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function _tooltipOfYAxislabels(ytooltipProps: any) {
     const { tooltipCls, yAxis, id } = ytooltipProps;
@@ -389,14 +547,37 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     containerWidth: number,
     xElement: SVGElement,
     yElement: SVGElement,
+    singleBarData: HorizontalBarChartWithAxisDataPoint[],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xBarScale: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    yBarScale: any,
   ): JSX.Element[] {
-    const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth, false);
     const { useSingleColor = false } = props;
-    const bars = _points.map((point: HorizontalBarChartWithAxisDataPoint, index: number) => {
+    let prevWidthPositive = 0;
+    let prevWidthNegative = 0;
+    let prevPoint = 0;
+    const totalPositiveBars = singleBarData.filter(
+      (point: HorizontalBarChartWithAxisDataPoint) => point.x >= X_ORIGIN,
+    ).length;
+    const totalNegativeBars = singleBarData.length - totalPositiveBars;
+    let currPositiveCounter = 0;
+    let currNegativeCounter = 0;
+    const bars = singleBarData.map((point: HorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (isLegendHovered || isLegendSelected) {
         shouldHighlight = _isLegendHighlighted(point.legend);
       }
+      if (point.x >= X_ORIGIN) {
+        ++currPositiveCounter;
+      }
+      if (point.x < X_ORIGIN) {
+        ++currNegativeCounter;
+      }
+      const barStartX = _isRtl
+        ? containerWidth -
+          (_margins.right! + Math.max(xBarScale(point.x + X_ORIGIN), xBarScale(X_ORIGIN)) - _margins.left!)
+        : Math.min(xBarScale(point.x + X_ORIGIN), xBarScale(X_ORIGIN));
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
@@ -411,20 +592,37 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       }
 
       startColor = point.color && !useSingleColor ? point.color : startColor;
-
+      const prevBarWidth = Math.abs(xBarScale(prevPoint + X_ORIGIN) - xBarScale(X_ORIGIN));
+      prevPoint > 0 ? (prevWidthPositive += prevBarWidth) : (prevWidthNegative += prevBarWidth);
+      const currentWidth = Math.abs(xBarScale(point.x + X_ORIGIN) - xBarScale(X_ORIGIN));
+      const gapWidthLTR =
+        currentWidth > 2 &&
+        ((point.x > X_ORIGIN && currPositiveCounter !== totalPositiveBars) ||
+          (point.x < X_ORIGIN && (totalPositiveBars !== 0 || currNegativeCounter > 1)))
+          ? 2
+          : 0;
+      const gapWidthRTL =
+        currentWidth > 2 &&
+        ((point.x > X_ORIGIN && (totalNegativeBars !== 0 || currPositiveCounter > 1)) ||
+          (point.x < X_ORIGIN && currNegativeCounter !== totalNegativeBars))
+          ? 2
+          : 0;
+      prevPoint = point.x;
+      let xStart = X_ORIGIN;
+      if (_isRtl) {
+        xStart = point.x > X_ORIGIN ? barStartX - prevWidthPositive : barStartX + prevWidthNegative;
+      } else {
+        xStart = point.x > X_ORIGIN ? barStartX + prevWidthPositive : barStartX - prevWidthNegative;
+      }
       return (
         <React.Fragment key={`${index}_${point.x}`}>
           <rect
             transform={`translate(0,${0.5 * (yBarScale.bandwidth() - _barHeight)})`}
             key={point.x}
-            x={_isRtl ? xBarScale(point.x) : _margins.left!}
+            x={xStart}
             y={yBarScale(point.y)}
             rx={props.roundCorners ? 3 : 0}
-            width={
-              _isRtl
-                ? containerWidth - _margins.right! - Math.max(xBarScale(point.x), 0)
-                : Math.max(xBarScale(point.x), 0) - _margins.left!
-            }
+            width={currentWidth - (_isRtl ? gapWidthRTL : gapWidthLTR)}
             height={_barHeight}
             aria-labelledby={`toolTip${_calloutId}`}
             aria-label={_getAriaLabel(point)}
@@ -494,18 +692,22 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   function _getLegendData(data: HorizontalBarChartWithAxisDataPoint[]): JSX.Element {
     const { useSingleColor } = props;
     const actions: Legend[] = [];
+    const mapLegendToColor: Record<string, string> = {};
 
     data.forEach((point: HorizontalBarChartWithAxisDataPoint, _index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const color: string = useSingleColor ? (props.colors ? _createColors()(1) : getNextColor(1, 0)) : point.color!;
 
+      mapLegendToColor[point.legend!] = color;
+    });
+    Object.entries(mapLegendToColor).forEach(([legendTitle, color]) => {
       // mapping data to the format Legends component needs
       const legend: Legend = {
-        title: point.legend!,
+        title: legendTitle,
         color,
         hoverAction: () => {
           _handleChartMouseLeave();
-          _onLegendHover(point.legend!);
+          _onLegendHover(legendTitle);
         },
         // eslint-disable-next-line @typescript-eslint/no-shadow
         onMouseOutAction: (isLegendSelected?: boolean) => {
@@ -598,6 +800,33 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     }
   }
 
+  function _getDomainNRangeValues(
+    points: HorizontalBarChartWithAxisDataPoint[],
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(
+        points,
+        margins,
+        width,
+        isRTL,
+        shiftX,
+        X_ORIGIN,
+      );
+    } else {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    }
+    return domainNRangeValue;
+  }
+
   if (!_isChartEmpty()) {
     _adjustProps();
     const calloutProps: ChartPopoverProps = {
@@ -628,18 +857,21 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     const legendBars: JSX.Element = _getLegendData(_points);
     return (
       <CartesianChart
+        yAxisPadding={_yAxisPadding}
         {...props}
         chartTitle={_getChartTitle()}
         points={_points}
         chartType={ChartTypes.HorizontalBarChartWithAxis}
         xAxisType={_xAxisType}
         yAxisType={_yAxisType}
+        getDomainNRangeValues={_getDomainNRangeValues}
         stringDatasetForYAxisDomain={_yAxisLabels}
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
         barwidth={_barHeight}
         getmargins={_getMargins}
+        getYDomainMargins={_getDomainMarginsForHorizontalBarChart}
         getGraphData={_getGraphData}
         getAxisData={_getAxisData}
         onChartMouseLeave={_handleChartMouseLeave}

@@ -5,7 +5,9 @@ import {
   decodeBase64Fields,
   isArrayOrTypedArray,
   isDateArray,
+  isMonthArray,
   isNumberArray,
+  isYearArray,
   mapFluentChart,
   sanitizeJson,
 } from '@fluentui/chart-utilities';
@@ -15,7 +17,6 @@ import { Theme, webLightTheme } from '@fluentui/tokens';
 import * as d3Color from 'd3-color';
 
 import {
-  isMonthArray,
   correctYearMonth,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
@@ -40,19 +41,20 @@ import { VerticalBarChart } from '../VerticalBarChart/index';
 import { ImageExportOptions, toImage } from './imageExporter';
 import { Chart } from '../../types/index';
 import { ScatterChart } from '../ScatterChart/index';
-// TODO
-// import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 
-// const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
-// const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
-// const ResponsiveLineChart = withResponsiveContainer(LineChart);
-// const ResponsiveHorizontalBarChartWithAxis = withResponsiveContainer(HorizontalBarChartWithAxis);
-// const ResponsiveAreaChart = withResponsiveContainer(AreaChart);
-// const ResponsiveHeatMapChart = withResponsiveContainer(HeatMapChart);
-// const ResponsiveSankeyChart = withResponsiveContainer(SankeyChart);
-// const ResponsiveGaugeChart = withResponsiveContainer(GaugeChart);
-// const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVerticalBarChart);
-// const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
+import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
+
+const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
+const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
+const ResponsiveLineChart = withResponsiveContainer(LineChart);
+const ResponsiveHorizontalBarChartWithAxis = withResponsiveContainer(HorizontalBarChartWithAxis);
+const ResponsiveAreaChart = withResponsiveContainer(AreaChart);
+const ResponsiveHeatMapChart = withResponsiveContainer(HeatMapChart);
+const ResponsiveSankeyChart = withResponsiveContainer(SankeyChart);
+const ResponsiveGaugeChart = withResponsiveContainer(GaugeChart);
+const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVerticalBarChart);
+const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
+const ResponsiveScatterChart = withResponsiveContainer(ScatterChart);
 
 /**
  * DeclarativeChart schema.
@@ -134,7 +136,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   }
   const plotlyInputWithValidData: PlotlySchema = {
     ...plotlyInput,
-    data: chart.validTracesInfo!.map(trace => plotlyInput.data[trace[0]]),
+    data: chart.validTracesInfo!.map(trace => plotlyInput.data[trace.index]),
   };
 
   let { selectedLegends } = plotlySchema;
@@ -185,12 +187,12 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       ...commonProps,
     };
     if (isAreaChart) {
-      return <AreaChart {...chartProps} />;
+      return <ResponsiveAreaChart {...chartProps} />;
     }
     if (isScatterMarkers) {
-      return <ScatterChart {...chartProps} />;
+      return <ResponsiveScatterChart {...chartProps} />;
     }
-    return <LineChart {...chartProps} />;
+    return <ResponsiveLineChart {...chartProps} />;
   };
 
   const checkAndRenderChart = (isAreaChart: boolean = false) => {
@@ -199,7 +201,14 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const isXMonth = isMonthArray(xValues);
-    if (isXDate || isXNumber) {
+
+    // Consider year as categorical variable not numeric continuous variable
+    // Also year is not considered a date variable as it is represented as a point
+    // in time and brings additional complexity of handling timezone and locale
+    // formatting given the current design of the charting library
+    const isXYear = isYearArray(xValues);
+
+    if ((isXDate || isXNumber) && !isXYear) {
       return renderLineAreaScatter(plotlyInputWithValidData.data, isAreaChart);
     } else if (isXMonth) {
       const updatedData = plotlyInputWithValidData.data.map((dataPoint: PlotData) => ({
@@ -211,7 +220,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     // Unsupported schema, render as VerticalStackedBarChart
     fallbackVSBC = true;
     return (
-      <VerticalStackedBarChart
+      <ResponsiveVerticalStackedBarChart
         {...transformPlotlyJsonToVSBCProps(plotlyInputWithValidData, colorMap, isDarkTheme, fallbackVSBC)}
         {...commonProps}
       />
@@ -238,35 +247,35 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   switch (chart.type) {
     case 'donut':
       return (
-        <DonutChart
+        <ResponsiveDonutChart
           {...transformPlotlyJsonToDonutProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
     case 'horizontalbar':
       return (
-        <HorizontalBarChartWithAxis
+        <ResponsiveHorizontalBarChartWithAxis
           {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
     case 'groupedverticalbar':
       return (
-        <GroupedVerticalBarChart
+        <ResponsiveGroupedVerticalBarChart
           {...transformPlotlyJsonToGVBCProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
     case 'verticalstackedbar':
       return (
-        <VerticalStackedBarChart
+        <ResponsiveVerticalStackedBarChart
           {...transformPlotlyJsonToVSBCProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
     case 'heatmap':
       return (
-        <HeatMapChart
+        <ResponsiveHeatMapChart
           {...transformPlotlyJsonToHeatmapProps(plotlyInputWithValidData)}
           {...commonProps}
           legendProps={{}}
@@ -274,21 +283,21 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       );
     case 'sankey':
       return (
-        <SankeyChart
+        <ResponsiveSankeyChart
           {...transformPlotlyJsonToSankeyProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
     case 'gauge':
       return (
-        <GaugeChart
+        <ResponsiveGaugeChart
           {...transformPlotlyJsonToGaugeProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
     case 'verticalbar':
       return (
-        <VerticalBarChart
+        <ResponsiveVerticalBarChart
           {...transformPlotlyJsonToVBCProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />

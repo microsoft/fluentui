@@ -10,11 +10,11 @@ import {
   GaugeChartVariant,
 } from './GaugeChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   Points,
   areArraysEqual,
-  formatValueLimitWidth,
+  formatScientificLimitWidth,
   getAccessibleDataObject,
   getColorFromToken,
   getNextColor,
@@ -235,7 +235,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     role="img"
                     aria-label={`Min value: ${this._minValue}`}
                   >
-                    {formatValueLimitWidth(this._minValue)}
+                    {formatScientificLimitWidth(this._minValue)}
                   </text>
                   <text
                     x={(this._isRTL ? -1 : 1) * (this._outerRadius + LABEL_OFFSET)}
@@ -245,7 +245,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     role="img"
                     aria-label={`Max value: ${this._maxValue}`}
                   >
-                    {formatValueLimitWidth(this._maxValue)}
+                    {formatScientificLimitWidth(this._maxValue)}
                   </text>
                 </>
               )}
@@ -659,7 +659,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             className={this._classNames.calloutContentX}
             {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
           >
-            {convertToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
+            {formatToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
           </div>
         </div>
         <div
@@ -732,7 +732,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     });
 
     const { culture } = this.props;
-    const yValue = convertToLocaleString(xValue.y, culture);
+    const yValue = formatToLocaleString(xValue.y, culture);
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
@@ -754,7 +754,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             <div>
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
-                {convertToLocaleString(
+                {formatToLocaleString(
                   xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
                   culture,
                 )}
@@ -773,9 +773,9 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
               <div key={subcountName} className={_classNames.calloutBlockContainer}>
-                <div className={_classNames.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
+                <div className={_classNames.calloutlegendText}> {formatToLocaleString(subcountName, culture)}</div>
                 <div className={_classNames.calloutContentY}>
-                  {convertToLocaleString(subcounts[subcountName], culture)}
+                  {formatToLocaleString(subcounts[subcountName], culture)}
                 </div>
               </div>
             );

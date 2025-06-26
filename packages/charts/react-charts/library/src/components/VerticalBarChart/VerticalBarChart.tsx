@@ -33,7 +33,7 @@ import {
   NumericAxis,
   getTypeOfAxis,
   tooltipOfXAxislabels,
-  formatValueWithSIPrefix,
+  formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
@@ -127,7 +127,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    yScale: any,
+    yScalePrimary: any,
     containerHeight: number = 0,
     containerWidth: number = 0,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -155,7 +155,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => (isStringAxis ? xScale(d.x) + 0.5 * xScale.bandwidth() : xScale(d.x)))
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y((d: any) => (d.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScale(d.y)));
+      .y((d: any) => (d.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScalePrimary(d.y)));
     const shouldHighlight = _legendHighlighted(lineLegendText!) || _noLegendHighlighted() ? true : false;
     const lineBorderWidth = props.lineOptions?.lineBorderWidth
       ? Number.parseFloat(props.lineOptions!.lineBorderWidth!.toString())
@@ -171,7 +171,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           fill="transparent"
           strokeLinecap="square"
           strokeWidth={3 + lineBorderWidth * 2}
-          stroke={tokens.colorNeutralBackground1}
+          className={classes.lineBorder}
         />,
       );
     }
@@ -206,7 +206,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             key={index}
             id={`${_vbcPointId}-${index}`}
             cx={isStringAxis ? xScale(item.x) + 0.5 * xScale.bandwidth() : xScale(item.x)}
-            cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScale(item.y)}
+            cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScalePrimary(item.y)}
             onMouseOver={event =>
               _legendHighlighted(lineLegendText!)
                 ? _lineHover(item.point, event)
@@ -967,7 +967,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         className={classes.barLabel}
         aria-hidden={true}
       >
-        {formatValueWithSIPrefix(barValue)}
+        {typeof props.yAxisTickFormat === 'function'
+          ? props.yAxisTickFormat(barValue)
+          : formatScientificLimitWidth(barValue)}
       </text>
     );
   }
@@ -1112,7 +1114,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
               <g>
                 {_createLine(
                   props.xScale!,
-                  props.yScale!,
+                  props.yScalePrimary!,
                   props.containerHeight,
                   props.containerWidth,
                   props.yScaleSecondary,

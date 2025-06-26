@@ -5,8 +5,6 @@ import { Tooltip } from '@fluentui/react-tooltip';
 import { Async } from './async-utils';
 import { KeyCodes } from './KeyCodes';
 import { useId } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
-import { useRtl } from './utilities';
 
 interface SVGTooltipTextProps {
   closeDelay?: number;
@@ -20,6 +18,7 @@ interface SVGTooltipTextProps {
   isTooltipVisibleProp?: boolean;
   wrapContent?: (content: string, id: string, maxWidth: number, maxHeight?: number) => boolean;
   showBackground?: boolean;
+  className?: string;
 }
 
 export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = React.forwardRef<
@@ -28,8 +27,6 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
 >((props, forwardedRef) => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const [isOverflowing, setIsOverflowing] = useState(false);
-  const [textX, setTextX] = useState(0);
-  const [textY, setTextY] = useState(0);
   const [textWidth, setTextWidth] = useState(0);
   const [textHeight, setTextHeight] = useState(0);
 
@@ -40,7 +37,7 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
   const tooltipHostId = useRef(useId('tooltip-host')).current;
   const ignoreNextFocusEvent = useRef(false);
   const portalMountNode = usePortalMountNode();
-  const PADDING = 4;
+  const PADDING = 3;
 
   const wrapContentCallback = useCallback(() => {
     if (
@@ -58,8 +55,6 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
   const measureText = useCallback((): void => {
     if (tooltipHostRef.current && typeof tooltipHostRef.current.getBBox === 'function') {
       const bbox = tooltipHostRef.current.getBBox();
-      setTextX(bbox.x);
-      setTextY(bbox.y);
       setTextWidth(bbox.width);
       setTextHeight(bbox.height);
     }
@@ -167,20 +162,19 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
   const showTooltip =
     (props.isTooltipVisibleProp && isOverflowing && !!props.content) || (isTooltipVisible && !!props.content);
 
-  const backgroundColor = tokens.colorNeutralBackground1;
-  const isRTL = useRtl();
-  const rectX = isRTL ? (textX ?? 0) + (textWidth ?? 0) - PADDING : (textX ?? 0) - PADDING;
+  const rectX = (typeof props.textProps?.x === 'number' ? props.textProps.x : 0) - (textWidth ?? 0) / 2 - PADDING;
+  const rectY = (typeof props.textProps?.y === 'number' ? props.textProps.y : 0) - (textHeight ?? 0) / 2 - 2 * PADDING;
 
   return (
     <>
       {props.showBackground && (
         <rect
           x={rectX}
-          y={(textY ?? 0) - PADDING}
+          y={rectY}
           width={(textWidth ?? 0) + 2 * PADDING}
-          height={(textHeight ?? 0) + 2 * PADDING}
-          fill={backgroundColor}
+          height={(textHeight ?? 0) + PADDING}
           transform={props.textProps?.transform}
+          className={props.className}
         />
       )}
       <Tooltip

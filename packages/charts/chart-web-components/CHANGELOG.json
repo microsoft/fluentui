@@ -2,6 +2,87 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Tue, 24 Jun 2025 04:06:56 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.34",
+      "version": "0.0.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.110",
+            "commit": "b187b0751628ee81f8964a83e7e73d323fea36b1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Jun 2025 04:06:30 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.33",
+      "version": "0.0.33",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.109",
+            "commit": "29f518aed9699becb81f89996a4f08a3b763d47e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Jun 2025 04:06:31 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.32",
+      "version": "0.0.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.108",
+            "commit": "0faa5951fbd59ea5b666e20b141c6a5547871eb3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Jun 2025 04:07:11 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.31",
+      "version": "0.0.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.107",
+            "commit": "69378d8f06f462504866e59ecd3e360ff0b0871c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 May 2025 04:06:58 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.30",
+      "version": "0.0.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "burtonsmith@microsoft.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "f90b2181a0b5b46d53f0c1abbd2107c1ba85eb92",
+            "comment": "Co-locate ES modules and type definitions. This should not affect users."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.106",
+            "commit": "5311067472d31cf9077f0ae7a6a49e2e49e556cc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 May 2025 04:07:35 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.29",
       "version": "0.0.29",

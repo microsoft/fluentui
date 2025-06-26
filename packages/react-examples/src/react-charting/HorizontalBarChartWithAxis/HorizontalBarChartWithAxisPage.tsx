@@ -12,6 +12,8 @@ import { HorizontalBarChartWithAxisBasicExample } from './HorizontalBarChartWith
 import { HorizontalBarChartWithAxisTooltipExample } from './HorizontalBarChartWithAxis.AxisTooltip.Example';
 import { HorizontalBarChartWithAxisStringAxisTooltipExample } from './HorizontalBarChartWithAxis.StringAxisTooltip.Example';
 import { HorizontalBarChartWithAxisDynamicExample } from './HorizontalBarChartWithAxis.Dynamic.Example';
+import { HorizontalBarChartWithAxisNegativeExample } from './HorizontalBarChartWithAxis.Negative.Example';
+import { HBWAAxisCategoryOrderExample } from './HorizontalBarChartWithAxis.AxisCategoryOrder.Example';
 
 const HorizontalBarChartWithAxisBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Basic.Example.tsx') as string;
@@ -21,6 +23,10 @@ const HorizontalBarChartWithAxisStringAxisTooltipExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.StringAxisTooltip.Example.tsx') as string;
 const HorizontalBarChartWithAxisDynamicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Dynamic.Example.tsx') as string;
+const HorizontalBarChartWithAxisNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Negative.Example.tsx') as string;
+const HBWAAxisCategoryOrderExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.AxisCategoryOrder.Example.tsx') as string;
 
 export class HorizontalBarChartWithAxisPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -50,6 +56,15 @@ export class HorizontalBarChartWithAxisPage extends React.Component<IComponentDe
               code={HorizontalBarChartWithAxisDynamicExampleCode}
             >
               <HorizontalBarChartWithAxisDynamicExample />
+            </ExampleCard>
+            <ExampleCard
+              title="HorizontalBarChartWithAxis with Negative X Axis"
+              code={HorizontalBarChartWithAxisNegativeExampleCode}
+            >
+              <HorizontalBarChartWithAxisNegativeExample />
+            </ExampleCard>
+            <ExampleCard title="HorizontalBarChartWithAxis Axis Category Order" code={HBWAAxisCategoryOrderExampleCode}>
+              <HBWAAxisCategoryOrderExample />
             </ExampleCard>
           </div>
         }

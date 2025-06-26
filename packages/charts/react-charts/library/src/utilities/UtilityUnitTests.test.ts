@@ -12,49 +12,57 @@ import { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
 import * as vbcUtils from './vbc-utils';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 const { Timezone } = require('../../scripts/constants');
 const env = require('../../config/tests');
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
+const X_ORIGIN = 0;
 
-describe('Unit test to convert data to localized string', () => {
+describe('Unit test to format data to localized string', () => {
   test('Should return undefined when data provided is undefined', () => {
-    expect(utils.convertToLocaleString(undefined)).toBeUndefined();
+    expect(formatToLocaleString(undefined)).toBeUndefined();
   });
   test('Should return NaN when data is NaN', () => {
-    expect(utils.convertToLocaleString(NaN)).toBeNaN();
+    expect(formatToLocaleString(NaN)).toBeNaN();
   });
   test('Should return localized 0 when data is numeric 0', () => {
-    expect(utils.convertToLocaleString(0)).toBe('0');
+    expect(formatToLocaleString(0)).toBe('0');
   });
   test('Should return localized 123 when data is string 123', () => {
-    expect(utils.convertToLocaleString('123')).toBe('123');
+    expect(formatToLocaleString('123')).toBe('123');
   });
   test('Should return localized 1234 when data is string 1234', () => {
-    expect(utils.convertToLocaleString('1234')).toBe('1,234');
+    expect(formatToLocaleString('1234')).toBe('1234');
   });
   test('Should return localized Hello World when data is string Hello World', () => {
-    expect(utils.convertToLocaleString('Hello World')).toBe('Hello World');
+    expect(formatToLocaleString('Hello World')).toBe('Hello World');
   });
   test('Should return 0 as string when data is empty string', () => {
-    expect(utils.convertToLocaleString('')).toBe('0');
+    expect(formatToLocaleString('')).toBe('');
   });
   test('Should return 0 as string when data is single whitespace string', () => {
-    expect(utils.convertToLocaleString(' ')).toBe('0');
+    expect(formatToLocaleString(' ')).toBe('0');
   });
   test('Should return the localised data in the given culture when input data is a string', () => {
-    expect(utils.convertToLocaleString('text', 'en-GB')).toBe('text');
-    expect(utils.convertToLocaleString('text', 'ar-SY')).toBe('text');
+    expect(formatToLocaleString('text', 'en-GB')).toBe('text');
+    expect(formatToLocaleString('text', 'ar-SY')).toBe('text');
   });
 
   test('Should return the localised data in the given culture when the input data is a number', () => {
-    expect(utils.convertToLocaleString(10, 'en-GB')).toBe('10');
-    expect(utils.convertToLocaleString(2560, 'ar-SY')).toBe('٢٬٥٦٠');
+    expect(formatToLocaleString(10, 'en-GB')).toBe('10');
+    expect(formatToLocaleString(25600, 'ar-SY')).toBe('٢٥٬٦٠٠');
+  });
+
+  test('Do not localize 4 digit numbers', () => {
+    expect(formatToLocaleString(1000, 'en-GB')).toBe('1000');
+    expect(formatToLocaleString(2560, 'ar-SY')).toBe('٢٥٦٠');
+    expect(formatToLocaleString('2000')).toBe('2000');
   });
 
   test('Should return the localised data when the input data is a string containing a number', () => {
-    expect(utils.convertToLocaleString('10', 'en-GB')).toBe('10');
-    expect(utils.convertToLocaleString('1234', 'ar-SY')).toBe('١٬٢٣٤');
+    expect(formatToLocaleString('10', 'en-GB')).toBe('10');
+    expect(formatToLocaleString('12345', 'ar-SY')).toBe('١٢٬٣٤٥');
   });
 });
 
@@ -454,26 +462,26 @@ describe('createYAxisForHorizontalBarChartWithAxis', () => {
   });
 });
 
-describe('createYAxisForOtherCharts', () => {
+describe('createNumericYAxisForOtherCharts', () => {
   it('should render y-axis labels correctly with specific min and max tick values', () => {
     const yAxisParams = createYAxisParams({ yMaxValue: 10, yMinValue: 1, maxOfYVal: 5 });
     delete yAxisParams.yMinMaxValues;
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.VerticalBarChart);
+    utils.createNumericYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.VerticalBarChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with specific tick padding value', () => {
     const yAxisParams = createYAxisParams({ tickPadding: 5 });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
+    utils.createNumericYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a specific number of ticks', () => {
     const yAxisParams = createYAxisParams({ yAxisTickCount: 3 });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.VerticalBarChart);
+    utils.createNumericYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.VerticalBarChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
@@ -483,35 +491,35 @@ describe('createYAxisForOtherCharts', () => {
       eventLabelHeight: 20,
     });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
+    utils.createNumericYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, true, axisData, false, utils.ChartTypes.VerticalBarChart);
+    utils.createNumericYAxisForOtherCharts(yAxisParams, true, axisData, false, utils.ChartTypes.VerticalBarChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for secondary scale', () => {
     const yAxisParams = createYAxisParams();
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart, true);
+    utils.createNumericYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for secondary scale when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, true, axisData, false, utils.ChartTypes.VerticalBarChart, true);
+    utils.createNumericYAxisForOtherCharts(yAxisParams, true, axisData, false, utils.ChartTypes.VerticalBarChart, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a custom tick format', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: d3Format('$') });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
+    utils.createNumericYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
@@ -958,12 +966,37 @@ describe('domainRangeOfNumericForHorizontalBarChartWithAxis', () => {
   };
 
   it('should return domain and range values correctly for numeric x-axis', () => {
-    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, 1);
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, 1, X_ORIGIN);
     matchResult(result);
   });
 
   it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
-    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, 1);
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, 1, X_ORIGIN);
+    matchResult(result);
+  });
+});
+
+describe('domainRangeOfNumericForHorizontalBarChartWithAxisStacked', () => {
+  const points: HorizontalBarChartWithAxisDataPoint[] = [
+    { x: 10, y: 20 },
+    { x: 20, y: 40 },
+    { x: 30, y: 40 },
+    { x: 50, y: 20 },
+  ];
+  const margins: utils.IMargins = {
+    left: 5,
+    right: 10,
+    top: 0,
+    bottom: 0,
+  };
+
+  it('should return domain and range values correctly for numeric x-axis', () => {
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, 1, X_ORIGIN);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, 1, X_ORIGIN);
     matchResult(result);
   });
 });
@@ -1118,6 +1151,7 @@ describe('getDomainNRangeValues', () => {
       16,
       undefined,
       1,
+      X_ORIGIN,
     );
     matchResult(result);
   });
@@ -1390,11 +1424,11 @@ test('wrapTextInsideDonut should wrap valueInsideDonut when it exceeds the maxWi
   SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
 });
 
-test('formatValueWithSIPrefix should format a numeric value with appropriate SI prefix', () => {
-  expect(utils.formatValueWithSIPrefix(19.53)).toBe('19.53');
-  expect(utils.formatValueWithSIPrefix(983)).toBe('983');
-  expect(utils.formatValueWithSIPrefix(9801)).toBe('9.8k');
-  expect(utils.formatValueWithSIPrefix(100990000)).toBe('101.0M');
+test('formatScientificLimitWidth should format a numeric value with appropriate SI prefix', () => {
+  expect(utils.formatScientificLimitWidth(19.53)).toBe('19.53');
+  expect(utils.formatScientificLimitWidth(983)).toBe('983');
+  expect(utils.formatScientificLimitWidth(9801)).toBe('9.8k');
+  expect(utils.formatScientificLimitWidth(100990000)).toBe('101M');
 });
 
 describe('getClosestPairDiffAndRange', () => {
@@ -1436,5 +1470,43 @@ describe('test array equality utility', () => {
 
   it('both arrays are equal', () => {
     expect(utils.areArraysEqual(['ab', 'cd', 'ef', 'gh'], ['ab', 'cd', 'ef', 'gh']) === true);
+  });
+});
+
+describe('defaultYAxisTickFormatter tests', () => {
+  it('should format small numbers and maintain precision', () => {
+    expect(utils.defaultYAxisTickFormatter(1000)).toBe('1k');
+    expect(utils.defaultYAxisTickFormatter(123.56)).toBe('123.56');
+    expect(utils.defaultYAxisTickFormatter(148)).toBe('148');
+    expect(utils.defaultYAxisTickFormatter(999.56)).toBe('999.56');
+    expect(utils.defaultYAxisTickFormatter(1995.89)).toBe('2k');
+  });
+  it('should format large numbers with SI prefixes', () => {
+    expect(utils.defaultYAxisTickFormatter(1e6)).toBe('1M'); // 1 million
+    expect(utils.defaultYAxisTickFormatter(1e9)).toBe('1B'); // 1 billion (G replaced with B)
+    expect(utils.defaultYAxisTickFormatter(1.5e9)).toBe('1.5B'); // 1.5 billion
+  });
+
+  it('should format small numbers without SI prefixes', () => {
+    expect(utils.defaultYAxisTickFormatter(0.123)).toBe('0.12'); // Small number
+    expect(utils.defaultYAxisTickFormatter(0.0000343)).toBe('0.000034'); // Scientific notation for very small numbers
+  });
+
+  it('should format negative numbers correctly', () => {
+    expect(utils.defaultYAxisTickFormatter(-1e6)).toBe('−1M'); // Negative 1 million
+    expect(utils.defaultYAxisTickFormatter(-1e9)).toBe('−1B'); // Negative 1 billion (G replaced with B)
+    expect(utils.defaultYAxisTickFormatter(-0.123)).toBe('−0.12'); // Small negative number
+  });
+
+  it('should handle zero correctly', () => {
+    expect(utils.defaultYAxisTickFormatter(0)).toBe('0'); // Zero
+  });
+
+  it('should not replace G with B for values less than 1e9', () => {
+    expect(utils.defaultYAxisTickFormatter(1e8)).toBe('100M'); // 100 million (no G to replace)
+  });
+
+  it('should format very small numbers in scientific notation', () => {
+    expect(utils.defaultYAxisTickFormatter(0.0000001)).toBe('1e-7'); // Scientific notation
   });
 });

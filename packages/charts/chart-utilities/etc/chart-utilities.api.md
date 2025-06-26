@@ -31,7 +31,7 @@ export interface Annotations extends Label {
     startarrowsize: number;
     startstandoff: number;
     text: string;
-    textangle: string;
+    textangle: string | number;
     valign: 'top' | 'middle' | 'bottom';
     visible: boolean;
     width: number;
@@ -165,6 +165,29 @@ export type Calendar = 'gregorian' | 'chinese' | 'coptic' | 'discworld' | 'ethio
 
 // @public (undocumented)
 export type Color = string | number | Array<string | number | undefined | null> | Array<Array<string | number | undefined | null>>;
+
+// @public (undocumented)
+export interface ColorAxis {
+    // (undocumented)
+    cmax?: number;
+    // (undocumented)
+    cmin?: number;
+    // (undocumented)
+    colorbar?: {
+        title?: string | {
+            text: string;
+        };
+        thickness?: number;
+        len?: number;
+        outlinewidth?: number;
+    };
+    // (undocumented)
+    colorscale?: Array<[number, string]>;
+    // (undocumented)
+    reversescale?: boolean;
+    // (undocumented)
+    showscale?: boolean;
+}
 
 // @public (undocumented)
 export interface ColorBar {
@@ -364,6 +387,9 @@ export interface ErrorOptions {
 }
 
 // @public (undocumented)
+export type FluentChart = 'area' | 'composite' | 'donut' | 'fallback' | 'gauge' | 'groupedverticalbar' | 'heatmap' | 'horizontalbar' | 'line' | 'scatter' | 'scatterpolar' | 'sankey' | 'table' | 'verticalstackedbar';
+
+// @public (undocumented)
 export interface Font {
     // (undocumented)
     color: Color;
@@ -372,6 +398,12 @@ export interface Font {
     size: number;
     weight: number;
 }
+
+// @public
+export const formatDateToLocaleString: (date: Date, culture?: string, useUtc?: boolean, showTZname?: boolean, options?: Intl.DateTimeFormatOptions) => string;
+
+// @public
+export const formatToLocaleString: (data: LocaleStringDataProps, culture?: string, useUtc?: boolean | string) => LocaleStringDataProps;
 
 // @public (undocumented)
 export interface Gauge {
@@ -414,8 +446,14 @@ export interface GaugeLine {
     width: number;
 }
 
+// @public
+export function getMultiLevelDateTimeFormatOptions(startLevel?: number, endLevel?: number): Intl.DateTimeFormatOptions;
+
 // @public (undocumented)
 export const getValidSchema: (input: any) => PlotlySchema;
+
+// @public
+export function handleFloatingPointPrecisionError(num: number): number;
 
 // @public (undocumented)
 export interface HoverLabel extends Label {
@@ -456,10 +494,22 @@ export const isDate: (value: any) => boolean;
 export const isDateArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
+export const isInvalidValue: (value: any) => boolean;
+
+// @public (undocumented)
+export const isMonth: (possiblyMonthValue: any) => boolean;
+
+// @public (undocumented)
+export const isMonthArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
+
+// @public (undocumented)
 export const isNumber: (value: any) => boolean;
 
 // @public (undocumented)
 export const isNumberArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
+
+// @public (undocumented)
+export const isStringArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
 export function isTypedArray(a: any): boolean;
@@ -521,6 +571,14 @@ export interface Layout {
     // (undocumented)
     clickmode: 'event' | 'select' | 'event+select' | 'none';
     // (undocumented)
+    coloraxis: Partial<ColorAxis>;
+    // (undocumented)
+    colorscale: Array<[number, string]> | Partial<{
+        diverging: Array<[number, string]>;
+        sequential: Array<[number, string]>;
+        sequentialminus: Array<[number, string]>;
+    }>;
+    // (undocumented)
     colorway: string[];
     // (undocumented)
     datarevision: number | string;
@@ -572,6 +630,8 @@ export interface Layout {
     orientation: number;
     // (undocumented)
     paper_bgcolor: Color;
+    // (undocumented)
+    piecolorway: string[];
     // (undocumented)
     plot_bgcolor: Color;
     // (undocumented)
@@ -846,7 +906,7 @@ export interface OutputChartType {
     isValid: boolean;
     // (undocumented)
     type?: string;
-    validTracesInfo?: [number, string][];
+    validTracesInfo?: TraceInfo[];
 }
 
 // @public (undocumented)
@@ -1070,6 +1130,22 @@ export interface PlotData {
     // (undocumented)
     branchvalues: 'total' | 'remainder';
     // (undocumented)
+    cells?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[][];
+        format: string | string[];
+        prefix: string | string[];
+        suffix: string | string[];
+    };
+    // (undocumented)
     cliponaxis: boolean;
     // (undocumented)
     colorbar: Partial<ColorBar>;
@@ -1120,6 +1196,19 @@ export interface PlotData {
     gauge: Partial<Gauge>;
     // (undocumented)
     groupnorm: '' | 'fraction' | 'percent';
+    // (undocumented)
+    header?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[];
+    };
     // (undocumented)
     histfunc: 'count' | 'sum' | 'avg' | 'min' | 'max';
     // (undocumented)
@@ -1869,6 +1958,9 @@ export interface TableData {
             color?: Color | Color[];
         };
         values: (string | number | boolean | null)[][];
+        format: string | string[];
+        prefix: string | string[];
+        suffix: string | string[];
     };
     // (undocumented)
     header?: {
@@ -1915,6 +2007,12 @@ export interface TickFormatStop {
     templateitemname: string;
     value: string;
 }
+
+// @public (undocumented)
+export type TraceInfo = {
+    index: number;
+    type: FluentChart;
+};
 
 // @public (undocumented)
 export interface Transform {

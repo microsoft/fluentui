@@ -64,7 +64,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -205,13 +205,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         >
           <path
             class="domain"
-            d="M-6,265.5H0.5V20.5H-6"
+            d="M-6,249.5H0.5V36.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,265.5)"
+            transform="translate(0,249.5)"
           >
             <line
               stroke="currentColor"
@@ -242,7 +242,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,216.5)"
+            transform="translate(0,206.9)"
           >
             <line
               stroke="currentColor"
@@ -273,7 +273,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,167.5)"
+            transform="translate(0,164.3)"
           >
             <line
               stroke="currentColor"
@@ -304,7 +304,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,118.5)"
+            transform="translate(0,121.7)"
           >
             <line
               stroke="currentColor"
@@ -335,7 +335,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,69.49999999999999)"
+            transform="translate(0,79.1)"
           >
             <line
               stroke="currentColor"
@@ -366,7 +366,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,20.5)"
+            transform="translate(0,36.5)"
           >
             <line
               stroke="currentColor"
@@ -397,60 +397,60 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         </g>
         <g>
           <rect
-            aria-label="20%. 2020/04/30."
-            aria-labelledby="toolTipcallout1"
-            data-is-focusable="true"
-            fill="#00bcf2"
-            height="32"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="0"
-            width="295"
-            x="40"
-            y="4"
-          />
-          <rect
-            aria-label="37%. 2020/04/30."
-            aria-labelledby="toolTipcallout1"
-            data-is-focusable="true"
-            fill="#00188f"
-            height="32"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="0"
-            width="368.75"
-            x="40"
-            y="102"
-          />
-          <rect
-            aria-label="88%. 2020/04/30."
-            aria-labelledby="toolTipcallout1"
-            data-is-focusable="true"
-            fill="#002050"
-            height="32"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="0"
-            width="590"
-            x="40"
-            y="185.29999999999998"
-          />
-          <rect
             aria-label="10%. 2020/04/30."
             aria-labelledby="toolTipcallout1"
             data-is-focusable="true"
             fill="#0078d4"
-            height="32"
+            height="16"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="147.5"
             x="40"
-            y="224.5"
+            y="219.7"
+          />
+          <rect
+            aria-label="88%. 2020/04/30."
+            aria-labelledby="toolTipcallout1"
+            data-is-focusable="true"
+            fill="#002050"
+            height="16"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            width="590"
+            x="40"
+            y="185.62"
+          />
+          <rect
+            aria-label="37%. 2020/04/30."
+            aria-labelledby="toolTipcallout1"
+            data-is-focusable="true"
+            fill="#00188f"
+            height="16"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            width="368.75"
+            x="40"
+            y="113.2"
+          />
+          <rect
+            aria-label="20%. 2020/04/30."
+            aria-labelledby="toolTipcallout1"
+            data-is-focusable="true"
+            fill="#00bcf2"
+            height="16"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            width="295"
+            x="40"
+            y="28"
           />
         </g>
       </svg>
@@ -604,6 +604,24 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
+            transform="translate(99.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-280"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              500
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
             transform="translate(158.5,0)"
           >
             <line
@@ -616,7 +634,25 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              1,000
+              1000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(217.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-280"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              1500
             </text>
           </g>
           <g
@@ -634,7 +670,25 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              2,000
+              2000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-280"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              2500
             </text>
           </g>
           <g
@@ -652,7 +706,25 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              3,000
+              3000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(453.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-280"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              3500
             </text>
           </g>
           <g
@@ -670,7 +742,25 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              4,000
+              4000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(571.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-280"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              4500
             </text>
           </g>
           <g
@@ -688,7 +778,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              5,000
+              5000
             </text>
           </g>
         </g>
@@ -703,13 +793,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         >
           <path
             class="domain"
-            d="M-6,249.5H0.5V36.5H-6"
+            d="M-6,257.5H0.5V28.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,222.375)"
+            transform="translate(0,218.83333333333334)"
           >
             <line
               stroke="currentColor"
@@ -739,7 +829,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,169.125)"
+            transform="translate(0,167.94444444444446)"
           >
             <line
               stroke="currentColor"
@@ -769,7 +859,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,115.875)"
+            transform="translate(0,117.05555555555557)"
           >
             <line
               stroke="currentColor"
@@ -799,7 +889,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,62.625)"
+            transform="translate(0,66.16666666666669)"
           >
             <line
               stroke="currentColor"
@@ -833,60 +923,60 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             aria-labelledby="toolTipcallout5"
             data-is-focusable="true"
             fill="#0078d4"
-            height="32"
+            height="32.714285714285715"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
-            transform="translate(0,10.625)"
+            transform="translate(0,-3.634920634920636)"
             width="118"
             x="40"
-            y="36"
+            y="53.44444444444446"
           />
           <rect
             aria-label="5000. String Two."
             aria-labelledby="toolTipcallout5"
             data-is-focusable="true"
             fill="#00bcf2"
-            height="32"
+            height="32.714285714285715"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
-            transform="translate(0,10.625)"
+            transform="translate(0,-3.634920634920636)"
             width="590"
             x="40"
-            y="89.25"
+            y="104.33333333333334"
           />
           <rect
             aria-label="3000. String Three."
             aria-labelledby="toolTipcallout5"
             data-is-focusable="true"
             fill="#00188f"
-            height="32"
+            height="32.714285714285715"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
-            transform="translate(0,10.625)"
+            transform="translate(0,-3.634920634920636)"
             width="354"
             x="40"
-            y="142.5"
+            y="155.22222222222223"
           />
           <rect
             aria-label="2000. String Four."
             aria-labelledby="toolTipcallout5"
             data-is-focusable="true"
             fill="#002050"
-            height="32"
+            height="32.714285714285715"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
-            transform="translate(0,10.625)"
+            transform="translate(0,-3.634920634920636)"
             width="236"
             x="40"
-            y="195.75"
+            y="206.11111111111111"
           />
         </g>
       </svg>
@@ -911,57 +1001,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class="fui-legend__text"
-            />
-          </button>
-          <button
-            aria-label="undefined"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-            />
-            <div
-              class="fui-legend__text"
-            />
-          </button>
-          <button
-            aria-label="undefined"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-            />
-            <div
-              class="fui-legend__text"
-            />
-          </button>
-          <button
-            aria-label="undefined"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
             style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
             type="button"
           >
@@ -971,7 +1010,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             />
             <div
               class="fui-legend__text"
-            />
+            >
+              undefined
+            </div>
           </button>
         </div>
       </div>
@@ -988,7 +1029,7 @@ Object {
   >
     <div
       class="fui-hbcwa__tooltip"
-      id="HBCWATooltipID_68"
+      id="HBCWATooltipID_72"
       style="opacity: 0;"
     />
     <div>
@@ -1054,7 +1095,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  5,000
+                  5000
                 </text>
               </g>
               <g
@@ -1195,13 +1236,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,265.5H0.5V20.5H-6"
+                d="M-6,249.5H0.5V36.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,265.5)"
+                transform="translate(0,249.5)"
               >
                 <line
                   stroke="currentColor"
@@ -1232,7 +1273,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,216.5)"
+                transform="translate(0,206.9)"
               >
                 <line
                   stroke="currentColor"
@@ -1263,7 +1304,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,167.5)"
+                transform="translate(0,164.3)"
               >
                 <line
                   stroke="currentColor"
@@ -1294,7 +1335,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,118.5)"
+                transform="translate(0,121.7)"
               >
                 <line
                   stroke="currentColor"
@@ -1325,7 +1366,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,69.49999999999999)"
+                transform="translate(0,79.1)"
               >
                 <line
                   stroke="currentColor"
@@ -1356,7 +1397,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,20.5)"
+                transform="translate(0,36.5)"
               >
                 <line
                   stroke="currentColor"
@@ -1387,60 +1428,60 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="20%. 2020/04/30."
-                aria-labelledby="toolTipcallout75"
-                data-is-focusable="true"
-                fill="#00bcf2"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="0"
-                tabindex="0"
-                width="295"
-                x="40"
-                y="4"
-              />
-              <rect
-                aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcallout75"
-                data-is-focusable="true"
-                fill="#00188f"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="0"
-                tabindex="0"
-                width="368.75"
-                x="40"
-                y="102"
-              />
-              <rect
-                aria-label="88%. 2020/04/30."
-                aria-labelledby="toolTipcallout75"
-                data-is-focusable="true"
-                fill="#002050"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="0"
-                tabindex="0"
-                width="590"
-                x="40"
-                y="185.29999999999998"
-              />
-              <rect
                 aria-label="10%. 2020/04/30."
-                aria-labelledby="toolTipcallout75"
+                aria-labelledby="toolTipcallout79"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="32"
+                height="16"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="147.5"
                 x="40"
-                y="224.5"
+                y="219.7"
+              />
+              <rect
+                aria-label="88%. 2020/04/30."
+                aria-labelledby="toolTipcallout79"
+                data-is-focusable="true"
+                fill="#002050"
+                height="16"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="590"
+                x="40"
+                y="185.62"
+              />
+              <rect
+                aria-label="37%. 2020/04/30."
+                aria-labelledby="toolTipcallout79"
+                data-is-focusable="true"
+                fill="#00188f"
+                height="16"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="368.75"
+                x="40"
+                y="113.2"
+              />
+              <rect
+                aria-label="20%. 2020/04/30."
+                aria-labelledby="toolTipcallout79"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="16"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="295"
+                x="40"
+                y="28"
               />
             </g>
           </svg>
@@ -1604,7 +1645,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                5,000
+                5000
               </text>
             </g>
             <g
@@ -1745,13 +1786,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,265.5H0.5V20.5H-6"
+              d="M-6,249.5H0.5V36.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,265.5)"
+              transform="translate(0,249.5)"
             >
               <line
                 stroke="currentColor"
@@ -1782,7 +1823,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,216.5)"
+              transform="translate(0,206.9)"
             >
               <line
                 stroke="currentColor"
@@ -1813,7 +1854,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,167.5)"
+              transform="translate(0,164.3)"
             >
               <line
                 stroke="currentColor"
@@ -1844,7 +1885,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,118.5)"
+              transform="translate(0,121.7)"
             >
               <line
                 stroke="currentColor"
@@ -1875,7 +1916,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,69.49999999999999)"
+              transform="translate(0,79.1)"
             >
               <line
                 stroke="currentColor"
@@ -1906,7 +1947,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,20.5)"
+              transform="translate(0,36.5)"
             >
               <line
                 stroke="currentColor"
@@ -1937,60 +1978,60 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcallout75"
-              data-is-focusable="true"
-              fill="#00bcf2"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="295"
-              x="40"
-              y="4"
-            />
-            <rect
-              aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcallout75"
-              data-is-focusable="true"
-              fill="#00188f"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="368.75"
-              x="40"
-              y="102"
-            />
-            <rect
-              aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcallout75"
-              data-is-focusable="true"
-              fill="#002050"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="590"
-              x="40"
-              y="185.29999999999998"
-            />
-            <rect
               aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcallout75"
+              aria-labelledby="toolTipcallout79"
               data-is-focusable="true"
               fill="#0078d4"
-              height="32"
+              height="16"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="147.5"
               x="40"
-              y="224.5"
+              y="219.7"
+            />
+            <rect
+              aria-label="88%. 2020/04/30."
+              aria-labelledby="toolTipcallout79"
+              data-is-focusable="true"
+              fill="#002050"
+              height="16"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="590"
+              x="40"
+              y="185.62"
+            />
+            <rect
+              aria-label="37%. 2020/04/30."
+              aria-labelledby="toolTipcallout79"
+              data-is-focusable="true"
+              fill="#00188f"
+              height="16"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="368.75"
+              x="40"
+              y="113.2"
+            />
+            <rect
+              aria-label="20%. 2020/04/30."
+              aria-labelledby="toolTipcallout79"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="16"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="295"
+              x="40"
+              y="28"
             />
           </g>
         </svg>
@@ -2152,7 +2193,7 @@ Object {
   >
     <div
       class="fui-hbcwa__tooltip"
-      id="HBCWATooltipID_68"
+      id="HBCWATooltipID_72"
       style="opacity: 0;"
     />
     <div>
@@ -2218,7 +2259,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  5,000
+                  5000
                 </text>
               </g>
               <g
@@ -2359,13 +2400,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,265.5H0.5V20.5H-6"
+                d="M-6,249.5H0.5V36.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,265.5)"
+                transform="translate(0,249.5)"
               >
                 <line
                   stroke="currentColor"
@@ -2396,7 +2437,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,216.5)"
+                transform="translate(0,206.9)"
               >
                 <line
                   stroke="currentColor"
@@ -2427,7 +2468,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,167.5)"
+                transform="translate(0,164.3)"
               >
                 <line
                   stroke="currentColor"
@@ -2458,7 +2499,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,118.5)"
+                transform="translate(0,121.7)"
               >
                 <line
                   stroke="currentColor"
@@ -2489,7 +2530,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,69.49999999999999)"
+                transform="translate(0,79.1)"
               >
                 <line
                   stroke="currentColor"
@@ -2520,7 +2561,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,20.5)"
+                transform="translate(0,36.5)"
               >
                 <line
                   stroke="currentColor"
@@ -2551,60 +2592,60 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="20%. 2020/04/30."
-                aria-labelledby="toolTipcallout79"
-                data-is-focusable="true"
-                fill="#00bcf2"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="3"
-                tabindex="0"
-                width="295"
-                x="40"
-                y="4"
-              />
-              <rect
-                aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcallout79"
-                data-is-focusable="true"
-                fill="#00188f"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="3"
-                tabindex="0"
-                width="368.75"
-                x="40"
-                y="102"
-              />
-              <rect
-                aria-label="88%. 2020/04/30."
-                aria-labelledby="toolTipcallout79"
-                data-is-focusable="true"
-                fill="#002050"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="3"
-                tabindex="0"
-                width="590"
-                x="40"
-                y="185.29999999999998"
-              />
-              <rect
                 aria-label="10%. 2020/04/30."
-                aria-labelledby="toolTipcallout79"
+                aria-labelledby="toolTipcallout83"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="32"
+                height="16"
                 opacity="1"
                 role="img"
                 rx="3"
                 tabindex="0"
                 width="147.5"
                 x="40"
-                y="224.5"
+                y="219.7"
+              />
+              <rect
+                aria-label="88%. 2020/04/30."
+                aria-labelledby="toolTipcallout83"
+                data-is-focusable="true"
+                fill="#002050"
+                height="16"
+                opacity="1"
+                role="img"
+                rx="3"
+                tabindex="0"
+                width="590"
+                x="40"
+                y="185.62"
+              />
+              <rect
+                aria-label="37%. 2020/04/30."
+                aria-labelledby="toolTipcallout83"
+                data-is-focusable="true"
+                fill="#00188f"
+                height="16"
+                opacity="1"
+                role="img"
+                rx="3"
+                tabindex="0"
+                width="368.75"
+                x="40"
+                y="113.2"
+              />
+              <rect
+                aria-label="20%. 2020/04/30."
+                aria-labelledby="toolTipcallout83"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="16"
+                opacity="1"
+                role="img"
+                rx="3"
+                tabindex="0"
+                width="295"
+                x="40"
+                y="28"
               />
             </g>
           </svg>
@@ -2768,7 +2809,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                5,000
+                5000
               </text>
             </g>
             <g
@@ -2909,13 +2950,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,265.5H0.5V20.5H-6"
+              d="M-6,249.5H0.5V36.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,265.5)"
+              transform="translate(0,249.5)"
             >
               <line
                 stroke="currentColor"
@@ -2946,7 +2987,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,216.5)"
+              transform="translate(0,206.9)"
             >
               <line
                 stroke="currentColor"
@@ -2977,7 +3018,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,167.5)"
+              transform="translate(0,164.3)"
             >
               <line
                 stroke="currentColor"
@@ -3008,7 +3049,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,118.5)"
+              transform="translate(0,121.7)"
             >
               <line
                 stroke="currentColor"
@@ -3039,7 +3080,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,69.49999999999999)"
+              transform="translate(0,79.1)"
             >
               <line
                 stroke="currentColor"
@@ -3070,7 +3111,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,20.5)"
+              transform="translate(0,36.5)"
             >
               <line
                 stroke="currentColor"
@@ -3101,60 +3142,60 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcallout79"
-              data-is-focusable="true"
-              fill="#00bcf2"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="3"
-              tabindex="0"
-              width="295"
-              x="40"
-              y="4"
-            />
-            <rect
-              aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcallout79"
-              data-is-focusable="true"
-              fill="#00188f"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="3"
-              tabindex="0"
-              width="368.75"
-              x="40"
-              y="102"
-            />
-            <rect
-              aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcallout79"
-              data-is-focusable="true"
-              fill="#002050"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="3"
-              tabindex="0"
-              width="590"
-              x="40"
-              y="185.29999999999998"
-            />
-            <rect
               aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcallout79"
+              aria-labelledby="toolTipcallout83"
               data-is-focusable="true"
               fill="#0078d4"
-              height="32"
+              height="16"
               opacity="1"
               role="img"
               rx="3"
               tabindex="0"
               width="147.5"
               x="40"
-              y="224.5"
+              y="219.7"
+            />
+            <rect
+              aria-label="88%. 2020/04/30."
+              aria-labelledby="toolTipcallout83"
+              data-is-focusable="true"
+              fill="#002050"
+              height="16"
+              opacity="1"
+              role="img"
+              rx="3"
+              tabindex="0"
+              width="590"
+              x="40"
+              y="185.62"
+            />
+            <rect
+              aria-label="37%. 2020/04/30."
+              aria-labelledby="toolTipcallout83"
+              data-is-focusable="true"
+              fill="#00188f"
+              height="16"
+              opacity="1"
+              role="img"
+              rx="3"
+              tabindex="0"
+              width="368.75"
+              x="40"
+              y="113.2"
+            />
+            <rect
+              aria-label="20%. 2020/04/30."
+              aria-labelledby="toolTipcallout83"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="16"
+              opacity="1"
+              role="img"
+              rx="3"
+              tabindex="0"
+              width="295"
+              x="40"
+              y="28"
             />
           </g>
         </svg>
@@ -3377,7 +3418,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  5,000
+                  5000
                 </text>
               </g>
               <g
@@ -3518,13 +3559,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,265.5H0.5V20.5H-6"
+                d="M-6,249.5H0.5V36.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,265.5)"
+                transform="translate(0,249.5)"
               >
                 <line
                   stroke="currentColor"
@@ -3555,7 +3596,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,216.5)"
+                transform="translate(0,206.9)"
               >
                 <line
                   stroke="currentColor"
@@ -3586,7 +3627,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,167.5)"
+                transform="translate(0,164.3)"
               >
                 <line
                   stroke="currentColor"
@@ -3617,7 +3658,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,118.5)"
+                transform="translate(0,121.7)"
               >
                 <line
                   stroke="currentColor"
@@ -3648,7 +3689,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,69.49999999999999)"
+                transform="translate(0,79.1)"
               >
                 <line
                   stroke="currentColor"
@@ -3679,7 +3720,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,20.5)"
+                transform="translate(0,36.5)"
               >
                 <line
                   stroke="currentColor"
@@ -3710,60 +3751,60 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="20%. 2020/04/30."
-                aria-labelledby="toolTipcallout60"
-                data-is-focusable="true"
-                fill="#00bcf2"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="0"
-                tabindex="0"
-                width="295"
-                x="40"
-                y="4"
-              />
-              <rect
-                aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcallout60"
-                data-is-focusable="true"
-                fill="#00188f"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="0"
-                tabindex="0"
-                width="368.75"
-                x="40"
-                y="102"
-              />
-              <rect
-                aria-label="88%. 2020/04/30."
-                aria-labelledby="toolTipcallout60"
-                data-is-focusable="true"
-                fill="#002050"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="0"
-                tabindex="0"
-                width="590"
-                x="40"
-                y="185.29999999999998"
-              />
-              <rect
                 aria-label="10%. 2020/04/30."
                 aria-labelledby="toolTipcallout60"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="32"
+                height="16"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="147.5"
                 x="40"
-                y="224.5"
+                y="219.7"
+              />
+              <rect
+                aria-label="88%. 2020/04/30."
+                aria-labelledby="toolTipcallout60"
+                data-is-focusable="true"
+                fill="#002050"
+                height="16"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="590"
+                x="40"
+                y="185.62"
+              />
+              <rect
+                aria-label="37%. 2020/04/30."
+                aria-labelledby="toolTipcallout60"
+                data-is-focusable="true"
+                fill="#00188f"
+                height="16"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="368.75"
+                x="40"
+                y="113.2"
+              />
+              <rect
+                aria-label="20%. 2020/04/30."
+                aria-labelledby="toolTipcallout60"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="16"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="295"
+                x="40"
+                y="28"
               />
             </g>
           </svg>
@@ -3927,7 +3968,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                5,000
+                5000
               </text>
             </g>
             <g
@@ -4068,13 +4109,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,265.5H0.5V20.5H-6"
+              d="M-6,249.5H0.5V36.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,265.5)"
+              transform="translate(0,249.5)"
             >
               <line
                 stroke="currentColor"
@@ -4105,7 +4146,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,216.5)"
+              transform="translate(0,206.9)"
             >
               <line
                 stroke="currentColor"
@@ -4136,7 +4177,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,167.5)"
+              transform="translate(0,164.3)"
             >
               <line
                 stroke="currentColor"
@@ -4167,7 +4208,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,118.5)"
+              transform="translate(0,121.7)"
             >
               <line
                 stroke="currentColor"
@@ -4198,7 +4239,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,69.49999999999999)"
+              transform="translate(0,79.1)"
             >
               <line
                 stroke="currentColor"
@@ -4229,7 +4270,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,20.5)"
+              transform="translate(0,36.5)"
             >
               <line
                 stroke="currentColor"
@@ -4260,60 +4301,60 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcallout60"
-              data-is-focusable="true"
-              fill="#00bcf2"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="295"
-              x="40"
-              y="4"
-            />
-            <rect
-              aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcallout60"
-              data-is-focusable="true"
-              fill="#00188f"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="368.75"
-              x="40"
-              y="102"
-            />
-            <rect
-              aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcallout60"
-              data-is-focusable="true"
-              fill="#002050"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="590"
-              x="40"
-              y="185.29999999999998"
-            />
-            <rect
               aria-label="10%. 2020/04/30."
               aria-labelledby="toolTipcallout60"
               data-is-focusable="true"
               fill="#0078d4"
-              height="32"
+              height="16"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="147.5"
               x="40"
-              y="224.5"
+              y="219.7"
+            />
+            <rect
+              aria-label="88%. 2020/04/30."
+              aria-labelledby="toolTipcallout60"
+              data-is-focusable="true"
+              fill="#002050"
+              height="16"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="590"
+              x="40"
+              y="185.62"
+            />
+            <rect
+              aria-label="37%. 2020/04/30."
+              aria-labelledby="toolTipcallout60"
+              data-is-focusable="true"
+              fill="#00188f"
+              height="16"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="368.75"
+              x="40"
+              y="113.2"
+            />
+            <rect
+              aria-label="20%. 2020/04/30."
+              aria-labelledby="toolTipcallout60"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="16"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="295"
+              x="40"
+              y="28"
             />
           </g>
         </svg>
@@ -4467,6 +4508,1309 @@ Object {
 }
 `;
 
+exports[`HorizontalBarChartWithAxis snapShot testing renders Stacked HorizontalBarChartWithAxis correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body
+    data-tabster="{\\"root\\":{}}"
+  >
+    <div>
+      <div
+        class="fui-cart__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Horizontal bar chart with 9 bars. "
+            height="300"
+            style="display: block;"
+            width="650"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 265)"
+            >
+              <path
+                class="domain"
+                d="M40.5,6V0.5H630.5V6"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(40.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  -8000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(82.64285714285714,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  -6000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(124.78571428571429,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  -4000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(166.92857142857142,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  -2000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(209.07142857142858,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  0
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(251.21428571428572,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  2000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(293.35714285714283,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  4000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(335.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  6000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(377.64285714285717,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  8000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(419.78571428571433,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  10,000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(461.92857142857144,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  12,000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(504.07142857142856,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  14,000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(546.2142857142857,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  16,000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(588.3571428571429,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  18,000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(630.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  20,000
+                </text>
+              </g>
+            </g>
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(40, 0)"
+            >
+              <path
+                class="domain"
+                d="M-6,257.5H0.5V28.5H-6"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,207.92857142857142)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-6"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  text-align="start"
+                  x="-16"
+                >
+                  <tspan
+                    data-="Q3"
+                    dy="0.32em"
+                    id="BaseSpan-0"
+                    x="-16"
+                  />
+                  <tspan
+                    dx="1em"
+                    id="LessLength-0"
+                    x="-16"
+                  >
+                    Q3
+                  </tspan>
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,142.5)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-6"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  text-align="start"
+                  x="-16"
+                >
+                  <tspan
+                    data-="Q2"
+                    dy="0.32em"
+                    id="BaseSpan-1"
+                    x="-16"
+                  />
+                  <tspan
+                    dx="1em"
+                    id="LessLength-1"
+                    x="-16"
+                  >
+                    Q2
+                  </tspan>
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,77.07142857142857)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-6"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  text-align="start"
+                  x="-16"
+                >
+                  <tspan
+                    data-="Q1"
+                    dy="0.32em"
+                    id="BaseSpan-2"
+                    x="-16"
+                  />
+                  <tspan
+                    dx="1em"
+                    id="LessLength-2"
+                    x="-16"
+                  >
+                    Q1
+                  </tspan>
+                </text>
+              </g>
+            </g>
+            <g>
+              <rect
+                aria-label="10K. Q1."
+                aria-labelledby="toolTipcallout64"
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="45.8"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,-6.542857142857141)"
+                width="208.71428571428575"
+                x="208.57142857142858"
+                y="60.71428571428571"
+              />
+              <rect
+                aria-label="-5K. Q1."
+                aria-labelledby="toolTipcallout64"
+                data-is-focusable="true"
+                fill="#ff8c00"
+                height="45.8"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,-6.542857142857141)"
+                width="103.35714285714286"
+                x="103.21428571428572"
+                y="60.71428571428571"
+              />
+              <rect
+                aria-label="8K. Q1."
+                aria-labelledby="toolTipcallout64"
+                data-is-focusable="true"
+                fill="#107c10"
+                height="45.8"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,-6.542857142857141)"
+                width="168.57142857142858"
+                x="419.28571428571433"
+                y="60.71428571428571"
+              />
+              <rect
+                aria-label="-7K. Q2."
+                aria-labelledby="toolTipcallout64"
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="45.8"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,-6.542857142857141)"
+                width="145.5"
+                x="61.07142857142857"
+                y="126.14285714285714"
+              />
+              <rect
+                aria-label="12K. Q2."
+                aria-labelledby="toolTipcallout64"
+                data-is-focusable="true"
+                fill="#ff8c00"
+                height="45.8"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,-6.542857142857141)"
+                width="250.85714285714286"
+                x="208.57142857142858"
+                y="126.14285714285714"
+              />
+              <rect
+                aria-label="3K. Q2."
+                aria-labelledby="toolTipcallout64"
+                data-is-focusable="true"
+                fill="#107c10"
+                height="45.8"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,-6.542857142857141)"
+                width="63.214285714285694"
+                x="461.42857142857144"
+                y="126.14285714285714"
+              />
+              <rect
+                aria-label="15K. Q3."
+                aria-labelledby="toolTipcallout64"
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="45.8"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,-6.542857142857141)"
+                width="314.07142857142856"
+                x="208.57142857142858"
+                y="191.57142857142856"
+              />
+              <rect
+                aria-label="-4K. Q3."
+                aria-labelledby="toolTipcallout64"
+                data-is-focusable="true"
+                fill="#ff8c00"
+                height="45.8"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,-6.542857142857141)"
+                width="82.28571428571429"
+                x="124.28571428571429"
+                y="191.57142857142856"
+              />
+              <rect
+                aria-label="5K. Q3."
+                aria-labelledby="toolTipcallout64"
+                data-is-focusable="true"
+                fill="#107c10"
+                height="45.8"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(0,-6.542857142857141)"
+                width="105.35714285714286"
+                x="524.6428571428571"
+                y="191.57142857142856"
+              />
+            </g>
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label="Product A"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Product A
+                </div>
+              </button>
+              <button
+                aria-label="Product B"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #ff8c00; --rect-borderColor: #ff8c00;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(255, 140, 0); border-color: #ff8c00; --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Product B
+                </div>
+              </button>
+              <button
+                aria-label="Product C"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Product C
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="fui-cart__root"
+      id="chart_"
+      role="presentation"
+    >
+      <div
+        class="fui-cart__chartWrapper"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      >
+        <svg
+          aria-label="Horizontal bar chart with 9 bars. "
+          height="300"
+          style="display: block;"
+          width="650"
+        >
+          <g
+            class="fui-cart__xAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="xAxisGElementchart_"
+            text-anchor="middle"
+            transform="translate(0, 265)"
+          >
+            <path
+              class="domain"
+              d="M40.5,6V0.5H630.5V6"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(40.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                -8000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(82.64285714285714,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                -6000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(124.78571428571429,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                -4000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(166.92857142857142,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                -2000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(209.07142857142858,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                0
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(251.21428571428572,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                2000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(293.35714285714283,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                4000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(335.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                6000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(377.64285714285717,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                8000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(419.78571428571433,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                10,000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(461.92857142857144,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                12,000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(504.07142857142856,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                14,000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(546.2142857142857,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                16,000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(588.3571428571429,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                18,000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(630.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                20,000
+              </text>
+            </g>
+          </g>
+          <g
+            class="fui-cart__yAxis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="yAxisGElementchart_"
+            text-anchor="end"
+            transform="translate(40, 0)"
+          >
+            <path
+              class="domain"
+              d="M-6,257.5H0.5V28.5H-6"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,207.92857142857142)"
+            >
+              <line
+                stroke="currentColor"
+                x2="-6"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                text-align="start"
+                x="-16"
+              >
+                <tspan
+                  data-="Q3"
+                  dy="0.32em"
+                  id="BaseSpan-0"
+                  x="-16"
+                />
+                <tspan
+                  dx="1em"
+                  id="LessLength-0"
+                  x="-16"
+                >
+                  Q3
+                </tspan>
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,142.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="-6"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                text-align="start"
+                x="-16"
+              >
+                <tspan
+                  data-="Q2"
+                  dy="0.32em"
+                  id="BaseSpan-1"
+                  x="-16"
+                />
+                <tspan
+                  dx="1em"
+                  id="LessLength-1"
+                  x="-16"
+                >
+                  Q2
+                </tspan>
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,77.07142857142857)"
+            >
+              <line
+                stroke="currentColor"
+                x2="-6"
+              />
+              <text
+                dy="0.32em"
+                fill="currentColor"
+                text-align="start"
+                x="-16"
+              >
+                <tspan
+                  data-="Q1"
+                  dy="0.32em"
+                  id="BaseSpan-2"
+                  x="-16"
+                />
+                <tspan
+                  dx="1em"
+                  id="LessLength-2"
+                  x="-16"
+                >
+                  Q1
+                </tspan>
+              </text>
+            </g>
+          </g>
+          <g>
+            <rect
+              aria-label="10K. Q1."
+              aria-labelledby="toolTipcallout64"
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="45.8"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,-6.542857142857141)"
+              width="208.71428571428575"
+              x="208.57142857142858"
+              y="60.71428571428571"
+            />
+            <rect
+              aria-label="-5K. Q1."
+              aria-labelledby="toolTipcallout64"
+              data-is-focusable="true"
+              fill="#ff8c00"
+              height="45.8"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,-6.542857142857141)"
+              width="103.35714285714286"
+              x="103.21428571428572"
+              y="60.71428571428571"
+            />
+            <rect
+              aria-label="8K. Q1."
+              aria-labelledby="toolTipcallout64"
+              data-is-focusable="true"
+              fill="#107c10"
+              height="45.8"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,-6.542857142857141)"
+              width="168.57142857142858"
+              x="419.28571428571433"
+              y="60.71428571428571"
+            />
+            <rect
+              aria-label="-7K. Q2."
+              aria-labelledby="toolTipcallout64"
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="45.8"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,-6.542857142857141)"
+              width="145.5"
+              x="61.07142857142857"
+              y="126.14285714285714"
+            />
+            <rect
+              aria-label="12K. Q2."
+              aria-labelledby="toolTipcallout64"
+              data-is-focusable="true"
+              fill="#ff8c00"
+              height="45.8"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,-6.542857142857141)"
+              width="250.85714285714286"
+              x="208.57142857142858"
+              y="126.14285714285714"
+            />
+            <rect
+              aria-label="3K. Q2."
+              aria-labelledby="toolTipcallout64"
+              data-is-focusable="true"
+              fill="#107c10"
+              height="45.8"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,-6.542857142857141)"
+              width="63.214285714285694"
+              x="461.42857142857144"
+              y="126.14285714285714"
+            />
+            <rect
+              aria-label="15K. Q3."
+              aria-labelledby="toolTipcallout64"
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="45.8"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,-6.542857142857141)"
+              width="314.07142857142856"
+              x="208.57142857142858"
+              y="191.57142857142856"
+            />
+            <rect
+              aria-label="-4K. Q3."
+              aria-labelledby="toolTipcallout64"
+              data-is-focusable="true"
+              fill="#ff8c00"
+              height="45.8"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,-6.542857142857141)"
+              width="82.28571428571429"
+              x="124.28571428571429"
+              y="191.57142857142856"
+            />
+            <rect
+              aria-label="5K. Q3."
+              aria-labelledby="toolTipcallout64"
+              data-is-focusable="true"
+              fill="#107c10"
+              height="45.8"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              transform="translate(0,-6.542857142857141)"
+              width="105.35714285714286"
+              x="524.6428571428571"
+              y="191.57142857142856"
+            />
+          </g>
+        </svg>
+      </div>
+      <div
+        class="fui-cart__legendContainer"
+      >
+        <div
+          aria-label="Legends"
+          aria-multiselectable="false"
+          class="fui-legend__root"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          role="listbox"
+        >
+          <div
+            class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: unset;"
+          >
+            <button
+              aria-label="Product A"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Product A
+              </div>
+            </button>
+            <button
+              aria-label="Product B"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #ff8c00; --rect-borderColor: #ff8c00;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(255, 140, 0); border-color: #ff8c00; --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Product B
+              </div>
+            </button>
+            <button
+              aria-label="Product C"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Product C
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
 exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctly 1`] = `
 Object {
   "asFragment": [Function],
@@ -4536,7 +5880,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  5,000
+                  5000
                 </text>
               </g>
               <g
@@ -4677,13 +6021,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,15.5H0.5V20.5H-6"
+                d="M-6,7H0.5V29H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,15.5)"
+                transform="translate(0,7)"
               >
                 <line
                   stroke="currentColor"
@@ -4714,7 +6058,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,16.5)"
+                transform="translate(0,11.4)"
               >
                 <line
                   stroke="currentColor"
@@ -4745,7 +6089,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,17.5)"
+                transform="translate(0,15.8)"
               >
                 <line
                   stroke="currentColor"
@@ -4776,7 +6120,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,18.5)"
+                transform="translate(0,20.2)"
               >
                 <line
                   stroke="currentColor"
@@ -4807,7 +6151,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,19.5)"
+                transform="translate(0,24.6)"
               >
                 <line
                   stroke="currentColor"
@@ -4838,7 +6182,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,20.5)"
+                transform="translate(0,29)"
               >
                 <line
                   stroke="currentColor"
@@ -4869,60 +6213,60 @@ Object {
             </g>
             <g>
               <rect
-                aria-label="20%. 2020/04/30."
-                aria-labelledby="toolTipcallout64"
-                data-is-focusable="true"
-                fill="#00bcf2"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="0"
-                tabindex="0"
-                width="295"
-                x="40"
-                y="4"
-              />
-              <rect
-                aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcallout64"
-                data-is-focusable="true"
-                fill="#00188f"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="0"
-                tabindex="0"
-                width="368.75"
-                x="40"
-                y="2"
-              />
-              <rect
-                aria-label="88%. 2020/04/30."
-                aria-labelledby="toolTipcallout64"
-                data-is-focusable="true"
-                fill="#002050"
-                height="32"
-                opacity="1"
-                role="img"
-                rx="0"
-                tabindex="0"
-                width="590"
-                x="40"
-                y="0.3000000000000007"
-              />
-              <rect
                 aria-label="10%. 2020/04/30."
-                aria-labelledby="toolTipcallout64"
+                aria-labelledby="toolTipcallout68"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="32"
+                height="1"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="147.5"
                 x="40"
-                y="-0.5"
+                y="8.200000000000001"
+              />
+              <rect
+                aria-label="88%. 2020/04/30."
+                aria-labelledby="toolTipcallout68"
+                data-is-focusable="true"
+                fill="#002050"
+                height="1"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="590"
+                x="40"
+                y="11.719999999999999"
+              />
+              <rect
+                aria-label="37%. 2020/04/30."
+                aria-labelledby="toolTipcallout68"
+                data-is-focusable="true"
+                fill="#00188f"
+                height="1"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="368.75"
+                x="40"
+                y="19.2"
+              />
+              <rect
+                aria-label="20%. 2020/04/30."
+                aria-labelledby="toolTipcallout68"
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="1"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="295"
+                x="40"
+                y="28"
               />
             </g>
           </svg>
@@ -4993,7 +6337,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                5,000
+                5000
               </text>
             </g>
             <g
@@ -5134,13 +6478,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,15.5H0.5V20.5H-6"
+              d="M-6,7H0.5V29H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,15.5)"
+              transform="translate(0,7)"
             >
               <line
                 stroke="currentColor"
@@ -5171,7 +6515,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,16.5)"
+              transform="translate(0,11.4)"
             >
               <line
                 stroke="currentColor"
@@ -5202,7 +6546,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,17.5)"
+              transform="translate(0,15.8)"
             >
               <line
                 stroke="currentColor"
@@ -5233,7 +6577,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,18.5)"
+              transform="translate(0,20.2)"
             >
               <line
                 stroke="currentColor"
@@ -5264,7 +6608,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,19.5)"
+              transform="translate(0,24.6)"
             >
               <line
                 stroke="currentColor"
@@ -5295,7 +6639,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,20.5)"
+              transform="translate(0,29)"
             >
               <line
                 stroke="currentColor"
@@ -5326,60 +6670,60 @@ Object {
           </g>
           <g>
             <rect
-              aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcallout64"
-              data-is-focusable="true"
-              fill="#00bcf2"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="295"
-              x="40"
-              y="4"
-            />
-            <rect
-              aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcallout64"
-              data-is-focusable="true"
-              fill="#00188f"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="368.75"
-              x="40"
-              y="2"
-            />
-            <rect
-              aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcallout64"
-              data-is-focusable="true"
-              fill="#002050"
-              height="32"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="590"
-              x="40"
-              y="0.3000000000000007"
-            />
-            <rect
               aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcallout64"
+              aria-labelledby="toolTipcallout68"
               data-is-focusable="true"
               fill="#0078d4"
-              height="32"
+              height="1"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="147.5"
               x="40"
-              y="-0.5"
+              y="8.200000000000001"
+            />
+            <rect
+              aria-label="88%. 2020/04/30."
+              aria-labelledby="toolTipcallout68"
+              data-is-focusable="true"
+              fill="#002050"
+              height="1"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="590"
+              x="40"
+              y="11.719999999999999"
+            />
+            <rect
+              aria-label="37%. 2020/04/30."
+              aria-labelledby="toolTipcallout68"
+              data-is-focusable="true"
+              fill="#00188f"
+              height="1"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="368.75"
+              x="40"
+              y="19.2"
+            />
+            <rect
+              aria-label="20%. 2020/04/30."
+              aria-labelledby="toolTipcallout68"
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="1"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="295"
+              x="40"
+              y="28"
             />
           </g>
         </svg>
@@ -5497,6 +6841,24 @@ Object {
               <g
                 class="tick"
                 opacity="1"
+                transform="translate(99.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  500
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
                 transform="translate(158.5,0)"
               >
                 <line
@@ -5509,7 +6871,25 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  1,000
+                  1000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(217.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  1500
                 </text>
               </g>
               <g
@@ -5527,7 +6907,25 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  2,000
+                  2000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(335.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  2500
                 </text>
               </g>
               <g
@@ -5545,7 +6943,25 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  3,000
+                  3000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(453.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  3500
                 </text>
               </g>
               <g
@@ -5563,7 +6979,25 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  4,000
+                  4000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(571.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  4500
                 </text>
               </g>
               <g
@@ -5581,7 +7015,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  5,000
+                  5000
                 </text>
               </g>
             </g>
@@ -5596,13 +7030,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,249.5H0.5V36.5H-6"
+                d="M-6,257.5H0.5V28.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,222.375)"
+                transform="translate(0,218.83333333333334)"
               >
                 <line
                   stroke="currentColor"
@@ -5632,7 +7066,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,169.125)"
+                transform="translate(0,167.94444444444446)"
               >
                 <line
                   stroke="currentColor"
@@ -5662,7 +7096,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,115.875)"
+                transform="translate(0,117.05555555555557)"
               >
                 <line
                   stroke="currentColor"
@@ -5692,7 +7126,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,62.625)"
+                transform="translate(0,66.16666666666669)"
               >
                 <line
                   stroke="currentColor"
@@ -5723,63 +7157,63 @@ Object {
             <g>
               <rect
                 aria-label="1000. String One."
-                aria-labelledby="toolTipcallout67"
+                aria-labelledby="toolTipcallout71"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="32"
+                height="32.714285714285715"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,10.625)"
+                transform="translate(0,-3.634920634920636)"
                 width="118"
                 x="40"
-                y="36"
+                y="53.44444444444446"
               />
               <rect
                 aria-label="5000. String Two."
-                aria-labelledby="toolTipcallout67"
+                aria-labelledby="toolTipcallout71"
                 data-is-focusable="true"
                 fill="#00bcf2"
-                height="32"
+                height="32.714285714285715"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,10.625)"
+                transform="translate(0,-3.634920634920636)"
                 width="590"
                 x="40"
-                y="89.25"
+                y="104.33333333333334"
               />
               <rect
                 aria-label="3000. String Three."
-                aria-labelledby="toolTipcallout67"
+                aria-labelledby="toolTipcallout71"
                 data-is-focusable="true"
                 fill="#00188f"
-                height="32"
+                height="32.714285714285715"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,10.625)"
+                transform="translate(0,-3.634920634920636)"
                 width="354"
                 x="40"
-                y="142.5"
+                y="155.22222222222223"
               />
               <rect
                 aria-label="2000. String Four."
-                aria-labelledby="toolTipcallout67"
+                aria-labelledby="toolTipcallout71"
                 data-is-focusable="true"
                 fill="#002050"
-                height="32"
+                height="32.714285714285715"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,10.625)"
+                transform="translate(0,-3.634920634920636)"
                 width="236"
                 x="40"
-                y="195.75"
+                y="206.11111111111111"
               />
             </g>
           </svg>
@@ -5804,57 +7238,6 @@ Object {
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-                />
-                <div
-                  class="fui-legend__text"
-                />
-              </button>
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-                />
-                <div
-                  class="fui-legend__text"
-                />
-              </button>
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-                />
-                <div
-                  class="fui-legend__text"
-                />
-              </button>
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
                 type="button"
               >
@@ -5864,7 +7247,9 @@ Object {
                 />
                 <div
                   class="fui-legend__text"
-                />
+                >
+                  undefined
+                </div>
               </button>
             </div>
           </div>
@@ -5873,7 +7258,7 @@ Object {
     </div>
     <div
       class="fui-hbcwa__tooltip"
-      id="HBCWATooltipID_68"
+      id="HBCWATooltipID_72"
       style="opacity: 0;"
     />
   </body>,
@@ -5928,6 +7313,24 @@ Object {
             <g
               class="tick"
               opacity="1"
+              transform="translate(99.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                500
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
               transform="translate(158.5,0)"
             >
               <line
@@ -5940,7 +7343,25 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                1,000
+                1000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(217.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                1500
               </text>
             </g>
             <g
@@ -5958,7 +7379,25 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                2,000
+                2000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(335.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                2500
               </text>
             </g>
             <g
@@ -5976,7 +7415,25 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                3,000
+                3000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(453.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                3500
               </text>
             </g>
             <g
@@ -5994,7 +7451,25 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                4,000
+                4000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(571.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                4500
               </text>
             </g>
             <g
@@ -6012,7 +7487,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                5,000
+                5000
               </text>
             </g>
           </g>
@@ -6027,13 +7502,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,249.5H0.5V36.5H-6"
+              d="M-6,257.5H0.5V28.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,222.375)"
+              transform="translate(0,218.83333333333334)"
             >
               <line
                 stroke="currentColor"
@@ -6063,7 +7538,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,169.125)"
+              transform="translate(0,167.94444444444446)"
             >
               <line
                 stroke="currentColor"
@@ -6093,7 +7568,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,115.875)"
+              transform="translate(0,117.05555555555557)"
             >
               <line
                 stroke="currentColor"
@@ -6123,7 +7598,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,62.625)"
+              transform="translate(0,66.16666666666669)"
             >
               <line
                 stroke="currentColor"
@@ -6154,63 +7629,63 @@ Object {
           <g>
             <rect
               aria-label="1000. String One."
-              aria-labelledby="toolTipcallout67"
+              aria-labelledby="toolTipcallout71"
               data-is-focusable="true"
               fill="#0078d4"
-              height="32"
+              height="32.714285714285715"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,10.625)"
+              transform="translate(0,-3.634920634920636)"
               width="118"
               x="40"
-              y="36"
+              y="53.44444444444446"
             />
             <rect
               aria-label="5000. String Two."
-              aria-labelledby="toolTipcallout67"
+              aria-labelledby="toolTipcallout71"
               data-is-focusable="true"
               fill="#00bcf2"
-              height="32"
+              height="32.714285714285715"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,10.625)"
+              transform="translate(0,-3.634920634920636)"
               width="590"
               x="40"
-              y="89.25"
+              y="104.33333333333334"
             />
             <rect
               aria-label="3000. String Three."
-              aria-labelledby="toolTipcallout67"
+              aria-labelledby="toolTipcallout71"
               data-is-focusable="true"
               fill="#00188f"
-              height="32"
+              height="32.714285714285715"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,10.625)"
+              transform="translate(0,-3.634920634920636)"
               width="354"
               x="40"
-              y="142.5"
+              y="155.22222222222223"
             />
             <rect
               aria-label="2000. String Four."
-              aria-labelledby="toolTipcallout67"
+              aria-labelledby="toolTipcallout71"
               data-is-focusable="true"
               fill="#002050"
-              height="32"
+              height="32.714285714285715"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,10.625)"
+              transform="translate(0,-3.634920634920636)"
               width="236"
               x="40"
-              y="195.75"
+              y="206.11111111111111"
             />
           </g>
         </svg>
@@ -6235,57 +7710,6 @@ Object {
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-              />
-              <div
-                class="fui-legend__text"
-              />
-            </button>
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-              />
-              <div
-                class="fui-legend__text"
-              />
-            </button>
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-              />
-              <div
-                class="fui-legend__text"
-              />
-            </button>
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
               style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
               type="button"
             >
@@ -6295,7 +7719,9 @@ Object {
               />
               <div
                 class="fui-legend__text"
-              />
+              >
+                undefined
+              </div>
             </button>
           </div>
         </div>
@@ -6364,7 +7790,7 @@ Object {
   >
     <div
       class="fui-hbcwa__tooltip"
-      id="HBCWATooltipID_68"
+      id="HBCWATooltipID_72"
       style="opacity: 0;"
     />
     <div>
@@ -6418,6 +7844,24 @@ Object {
               <g
                 class="tick"
                 opacity="1"
+                transform="translate(99.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  500
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
                 transform="translate(158.5,0)"
               >
                 <line
@@ -6430,7 +7874,25 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  1,000
+                  1000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(217.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  1500
                 </text>
               </g>
               <g
@@ -6448,7 +7910,25 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  2,000
+                  2000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(335.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  2500
                 </text>
               </g>
               <g
@@ -6466,7 +7946,25 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  3,000
+                  3000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(453.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  3500
                 </text>
               </g>
               <g
@@ -6484,7 +7982,25 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  4,000
+                  4000
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(571.5,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="-280"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="10"
+                >
+                  4500
                 </text>
               </g>
               <g
@@ -6502,7 +8018,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  5,000
+                  5000
                 </text>
               </g>
             </g>
@@ -6517,13 +8033,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,249.5H0.5V36.5H-6"
+                d="M-6,257.5H0.5V28.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,222.375)"
+                transform="translate(0,218.83333333333334)"
               >
                 <line
                   stroke="currentColor"
@@ -6553,7 +8069,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,169.125)"
+                transform="translate(0,167.94444444444446)"
               >
                 <line
                   stroke="currentColor"
@@ -6583,7 +8099,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,115.875)"
+                transform="translate(0,117.05555555555557)"
               >
                 <line
                   stroke="currentColor"
@@ -6613,7 +8129,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,62.625)"
+                transform="translate(0,66.16666666666669)"
               >
                 <line
                   stroke="currentColor"
@@ -6644,63 +8160,63 @@ Object {
             <g>
               <rect
                 aria-label="1000. String One."
-                aria-labelledby="toolTipcallout71"
+                aria-labelledby="toolTipcallout75"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="32"
+                height="32.714285714285715"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,10.625)"
+                transform="translate(0,-3.634920634920636)"
                 width="118"
                 x="40"
-                y="36"
+                y="53.44444444444446"
               />
               <rect
                 aria-label="5000. String Two."
-                aria-labelledby="toolTipcallout71"
+                aria-labelledby="toolTipcallout75"
                 data-is-focusable="true"
                 fill="#00bcf2"
-                height="32"
+                height="32.714285714285715"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,10.625)"
+                transform="translate(0,-3.634920634920636)"
                 width="590"
                 x="40"
-                y="89.25"
+                y="104.33333333333334"
               />
               <rect
                 aria-label="3000. String Three."
-                aria-labelledby="toolTipcallout71"
+                aria-labelledby="toolTipcallout75"
                 data-is-focusable="true"
                 fill="#00188f"
-                height="32"
+                height="32.714285714285715"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,10.625)"
+                transform="translate(0,-3.634920634920636)"
                 width="354"
                 x="40"
-                y="142.5"
+                y="155.22222222222223"
               />
               <rect
                 aria-label="2000. String Four."
-                aria-labelledby="toolTipcallout71"
+                aria-labelledby="toolTipcallout75"
                 data-is-focusable="true"
                 fill="#002050"
-                height="32"
+                height="32.714285714285715"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,10.625)"
+                transform="translate(0,-3.634920634920636)"
                 width="236"
                 x="40"
-                y="195.75"
+                y="206.11111111111111"
               />
             </g>
           </svg>
@@ -6725,57 +8241,6 @@ Object {
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-                />
-                <div
-                  class="fui-legend__text"
-                />
-              </button>
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-                />
-                <div
-                  class="fui-legend__text"
-                />
-              </button>
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-                />
-                <div
-                  class="fui-legend__text"
-                />
-              </button>
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
                 type="button"
               >
@@ -6785,7 +8250,9 @@ Object {
                 />
                 <div
                   class="fui-legend__text"
-                />
+                >
+                  undefined
+                </div>
               </button>
             </div>
           </div>
@@ -6844,6 +8311,24 @@ Object {
             <g
               class="tick"
               opacity="1"
+              transform="translate(99.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                500
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
               transform="translate(158.5,0)"
             >
               <line
@@ -6856,7 +8341,25 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                1,000
+                1000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(217.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                1500
               </text>
             </g>
             <g
@@ -6874,7 +8377,25 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                2,000
+                2000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(335.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                2500
               </text>
             </g>
             <g
@@ -6892,7 +8413,25 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                3,000
+                3000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(453.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                3500
               </text>
             </g>
             <g
@@ -6910,7 +8449,25 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                4,000
+                4000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(571.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-280"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                4500
               </text>
             </g>
             <g
@@ -6928,7 +8485,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                5,000
+                5000
               </text>
             </g>
           </g>
@@ -6943,13 +8500,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,249.5H0.5V36.5H-6"
+              d="M-6,257.5H0.5V28.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,222.375)"
+              transform="translate(0,218.83333333333334)"
             >
               <line
                 stroke="currentColor"
@@ -6979,7 +8536,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,169.125)"
+              transform="translate(0,167.94444444444446)"
             >
               <line
                 stroke="currentColor"
@@ -7009,7 +8566,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,115.875)"
+              transform="translate(0,117.05555555555557)"
             >
               <line
                 stroke="currentColor"
@@ -7039,7 +8596,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,62.625)"
+              transform="translate(0,66.16666666666669)"
             >
               <line
                 stroke="currentColor"
@@ -7070,63 +8627,63 @@ Object {
           <g>
             <rect
               aria-label="1000. String One."
-              aria-labelledby="toolTipcallout71"
+              aria-labelledby="toolTipcallout75"
               data-is-focusable="true"
               fill="#0078d4"
-              height="32"
+              height="32.714285714285715"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,10.625)"
+              transform="translate(0,-3.634920634920636)"
               width="118"
               x="40"
-              y="36"
+              y="53.44444444444446"
             />
             <rect
               aria-label="5000. String Two."
-              aria-labelledby="toolTipcallout71"
+              aria-labelledby="toolTipcallout75"
               data-is-focusable="true"
               fill="#00bcf2"
-              height="32"
+              height="32.714285714285715"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,10.625)"
+              transform="translate(0,-3.634920634920636)"
               width="590"
               x="40"
-              y="89.25"
+              y="104.33333333333334"
             />
             <rect
               aria-label="3000. String Three."
-              aria-labelledby="toolTipcallout71"
+              aria-labelledby="toolTipcallout75"
               data-is-focusable="true"
               fill="#00188f"
-              height="32"
+              height="32.714285714285715"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,10.625)"
+              transform="translate(0,-3.634920634920636)"
               width="354"
               x="40"
-              y="142.5"
+              y="155.22222222222223"
             />
             <rect
               aria-label="2000. String Four."
-              aria-labelledby="toolTipcallout71"
+              aria-labelledby="toolTipcallout75"
               data-is-focusable="true"
               fill="#002050"
-              height="32"
+              height="32.714285714285715"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,10.625)"
+              transform="translate(0,-3.634920634920636)"
               width="236"
               x="40"
-              y="195.75"
+              y="206.11111111111111"
             />
           </g>
         </svg>
@@ -7151,57 +8708,6 @@ Object {
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-              />
-              <div
-                class="fui-legend__text"
-              />
-            </button>
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-              />
-              <div
-                class="fui-legend__text"
-              />
-            </button>
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-              />
-              <div
-                class="fui-legend__text"
-              />
-            </button>
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
               style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
               type="button"
             >
@@ -7211,7 +8717,9 @@ Object {
               />
               <div
                 class="fui-legend__text"
-              />
+              >
+                undefined
+              </div>
             </button>
           </div>
         </div>

@@ -32,6 +32,9 @@ import { TimeLocaleDefinition } from 'd3-time-format';
 export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
 
 // @public
+export type AxisCategoryOrder = 'default' | 'data' | string[] | 'category ascending' | 'category descending' | 'total ascending' | 'total descending' | 'min ascending' | 'min descending' | 'max ascending' | 'max descending' | 'sum ascending' | 'sum descending' | 'mean ascending' | 'mean descending' | 'median ascending' | 'median descending';
+
+// @public
 export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartProps>;
 
 // @public
@@ -225,6 +228,20 @@ export interface IAreaChartStyles extends ICartesianChartStyles {
 }
 
 // @public (undocumented)
+export interface IBaseDataPoint {
+    callOutAccessibilityData?: IAccessibilityProps;
+    hideCallout?: boolean;
+    markerSize?: number;
+    onDataPointClick?: () => void;
+    text?: string;
+    xAxisCalloutAccessibilityData?: IAccessibilityProps;
+    xAxisCalloutData?: string;
+    yAxisCalloutData?: string | {
+        [id: string]: number;
+    };
+}
+
+// @public (undocumented)
 export interface IBasestate {
     // (undocumented)
     activeLegend?: string;
@@ -235,7 +252,7 @@ export interface IBasestate {
     // (undocumented)
     containerWidth?: number;
     // (undocumented)
-    dataForHoverCard?: number;
+    dataForHoverCard?: number | string;
     // (undocumented)
     _height?: number;
     // (undocumented)
@@ -265,7 +282,7 @@ export interface IBasestate {
     // (undocumented)
     YValueHover?: {
         legend?: string;
-        y?: number;
+        y?: number | string;
         color?: string;
     }[];
 }
@@ -315,11 +332,15 @@ export interface ICartesianChartProps {
     useUTC?: boolean;
     width?: number;
     wrapXAxisLables?: boolean;
+    xAxisAnnotation?: string;
+    xAxisCategoryOrder?: AxisCategoryOrder;
     xAxisTickCount?: number;
     xAxisTickPadding?: number;
     xAxistickSize?: number;
     xAxisTitle?: string;
     xMaxValue?: number;
+    yAxisAnnotation?: string;
+    yAxisCategoryOrder?: AxisCategoryOrder;
     yAxisTickCount?: number;
     yAxisTickFormat?: any;
     yAxisTitle?: string;
@@ -344,6 +365,7 @@ export interface ICartesianChartStyleProps {
 
 // @public
 export interface ICartesianChartStyles {
+    axisAnnotation?: IStyle;
     axisTitle?: IStyle;
     calloutBlockContainer?: IStyle;
     calloutContentRoot?: IStyle;
@@ -360,6 +382,7 @@ export interface ICartesianChartStyles {
     opacityChangeOnHover?: IStyle;
     root?: IStyle;
     shapeStyles?: IStyle;
+    svgTooltip?: IStyle;
     tooltip?: IStyle;
     xAxis?: IStyle;
     yAxis?: IStyle;
@@ -433,15 +456,22 @@ export interface IChartProps {
     pointLineOptions?: React_2.SVGProps<SVGLineElement>;
     pointOptions?: React_2.SVGProps<SVGCircleElement>;
     SankeyChartData?: ISankeyChartData;
+    scatterChartData?: IScatterChartPoints[];
 }
 
 // @public
 export interface IChartTableProps {
     className?: string;
     componentRef?: IRefObject<IChart>;
-    headers: (string | number | boolean | null)[] | (string | number | boolean | null)[][];
+    headers: {
+        value: string | number | boolean | null;
+        style?: React_2.CSSProperties;
+    }[];
     height?: string | number;
-    rows: (string | number | boolean | null)[][];
+    rows: {
+        value: string | number | boolean | null;
+        style?: React_2.CSSProperties;
+    }[][];
     styles?: IStyleFunctionOrObject<IChartTableStyleProps, IChartTableStyles>;
     theme?: ITheme;
     width?: string | number;
@@ -566,6 +596,7 @@ export interface IDonutChartStyleProps extends ICartesianChartStyleProps {
 
 // @public
 export interface IDonutChartStyles {
+    axisAnnotation?: IStyle;
     chart?: IStyle;
     legendContainer: IStyle;
     root?: IStyle;
@@ -1004,18 +1035,9 @@ export interface ILegendSubComponentStyles {
 }
 
 // @public (undocumented)
-export interface ILineChartDataPoint {
-    callOutAccessibilityData?: IAccessibilityProps;
-    hideCallout?: boolean;
-    markerSize?: number;
-    onDataPointClick?: () => void;
+export interface ILineChartDataPoint extends IBaseDataPoint {
     x: number | Date;
-    xAxisCalloutAccessibilityData?: IAccessibilityProps;
-    xAxisCalloutData?: string;
     y: number;
-    yAxisCalloutData?: string | {
-        [id: string]: number;
-    };
 }
 
 // @public (undocumented)
@@ -1076,6 +1098,8 @@ export interface ILineChartStyleProps extends ICartesianChartStyleProps {
 
 // @public
 export interface ILineChartStyles extends ICartesianChartStyles {
+    // (undocumented)
+    markerLabel?: IStyle;
 }
 
 // @public (undocumented)
@@ -1092,14 +1116,14 @@ export interface ILineDataInVerticalBarChart {
 export interface ILineDataInVerticalStackedBarChart {
     // (undocumented)
     color: string;
-    data?: number;
+    data?: number | string;
     // (undocumented)
     legend: string;
     legendShape?: LegendShape;
     lineOptions?: ILineChartLineOptions;
     useSecondaryYScale?: boolean;
     // (undocumented)
-    y: number;
+    y: number | string;
     // (undocumented)
     yAxisCalloutData?: string;
 }
@@ -1131,7 +1155,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     // Warning: (ae-forgotten-export) The symbol "ChartTypes" needs to be exported by the entry point index.d.ts
     chartType: ChartTypes;
     children(props: IChildProps): React_2.ReactNode;
-    createStringYAxis: (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean, barWidth: number | undefined) => ScaleBand<string>;
+    createStringYAxis: (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean, barWidth: number | undefined, chartType?: ChartTypes) => ScaleBand<string>;
     // Warning: (ae-forgotten-export) The symbol "IYAxisParams" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "IAxisData" needs to be exported by the entry point index.d.ts
     createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean, supportNegativeData?: boolean, roundedTicks?: boolean) => ScaleLinear<number, number, never>;
@@ -1147,7 +1171,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getDomainNRangeValues: (points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[] | IHorizontalBarChartWithAxisDataPoint[] | IGroupedVerticalBarChartData[] | IHeatMapChartDataPoint[], margins: IMargins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
-    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
+    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[] | IScatterChartDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
         startValue: number;
         endValue: number;
     };
@@ -1362,6 +1386,42 @@ export interface ISankeyChartStyles {
     nodeTextContainer?: IStyle;
     root?: IStyle;
     toolTip?: IStyle;
+}
+
+// @public
+export interface IScatterChartDataPoint extends IBaseDataPoint {
+    x: number | Date | string;
+    y: number;
+}
+
+// @public (undocumented)
+export interface IScatterChartPoints {
+    color?: string;
+    data: IScatterChartDataPoint[];
+    hideNonActiveDots?: boolean;
+    legend: string;
+    legendShape?: LegendShape;
+    onLegendClick?: (selectedLegend: string | null | string[]) => void;
+    opacity?: number;
+    useSecondaryYScale?: boolean;
+}
+
+// @public
+export interface IScatterChartProps extends ICartesianChartProps {
+    culture?: string;
+    data: IChartProps;
+    getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
+    onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
+    styles?: IScatterChartStyles;
+}
+
+// @public
+export interface IScatterChartStyleProps extends ICartesianChartStyleProps {
+}
+
+// @public
+export interface IScatterChartStyles extends ICartesianChartStyles {
+    markerLabel?: IStyle_2;
 }
 
 // @public (undocumented)
@@ -1613,6 +1673,8 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     onRenderCalloutPerDataPoint?: IRenderFunction<IVSChartDataPoint>;
     onRenderCalloutPerStack?: IRenderFunction<IVerticalStackedChartProps>;
     roundCorners?: boolean;
+    showYAxisLables?: boolean;
+    showYAxisLablesTooltip?: boolean;
     styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
@@ -1662,7 +1724,7 @@ export interface IVerticalStackedChartProps {
 export interface IVSChartDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
-    data: number;
+    data: number | string;
     gradient?: [string, string];
     legend: string;
     xAxisCalloutData?: string;
@@ -1684,7 +1746,7 @@ export interface IYValueHover {
     // (undocumented)
     shouldDrawBorderBottom?: boolean;
     // (undocumented)
-    y?: number;
+    y?: number | string;
     // (undocumented)
     yAxisCalloutData?: string | {
         [id: string]: number;
@@ -1728,6 +1790,9 @@ export const ResponsiveContainer: React_2.FC<IResponsiveContainerProps>;
 
 // @public
 export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
+
+// @public
+export const ScatterChart: React_2.FunctionComponent<IScatterChartProps>;
 
 // @public
 export interface Schema {

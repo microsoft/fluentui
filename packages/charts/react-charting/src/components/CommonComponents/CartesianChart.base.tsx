@@ -9,10 +9,8 @@ import {
   ICartesianChartStyleProps,
   IModifiedCartesianChartProps,
   IYValueHover,
-  IHorizontalBarChartWithAxisDataPoint,
-  IHeatMapChartDataPoint,
 } from '../../index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   createNumericXAxis,
   createStringXAxis,
@@ -33,33 +31,27 @@ import {
   getSecureProps,
   truncateString,
   tooltipOfAxislabels,
+  DEFAULT_WRAP_WIDTH,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
-import { SVGTooltipText } from '../../utilities/SVGTooltipText';
+import { SVGTooltipText, ISVGTooltipTextProps } from '../../utilities/SVGTooltipText';
 import { IChart } from '../../types/index';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 const ChartHoverCard = React.lazy(() =>
   import('../../utilities/ChartHoverCard/ChartHoverCard').then(module => ({ default: module.ChartHoverCard })),
 );
-const chartTypesToCheck = [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart];
+const chartTypesWithStringYAxis = [
+  ChartTypes.HorizontalBarChartWithAxis,
+  ChartTypes.HeatMapChart,
+  ChartTypes.VerticalStackedBarChart,
+];
 
 export interface ICartesianChartState {
   containerWidth: number;
   containerHeight: number;
   _width: number;
   _height: number;
-  /* To update this values using setState in render method.
-   * To avoid multiple re renders, Only first time setting the value.
-   */
-  isRemoveValCalculated?: boolean;
-  /* Used for when WrapXAxisLabels props appeared.
-   * To display the total word (space separated words), Need to have more space than usual.
-   * This height will get total height need to disaply total word.
-   * These value need to be removed from actual svg height/graph height.
-   * Defalut value is 0. And this values calculted when 'wrapXAxisLables' or 'showXAxisLablesTooltip' is true.
-   */
-  _removalValueForTextTuncate?: number;
   startFromX: number;
 }
 
@@ -88,6 +80,13 @@ export class CartesianChartBase
   private _tickValues: (string | number)[];
   private titleMargin: number;
   private _isFirstRender: boolean = true;
+  /* Used for when WrapXAxisLabels props appeared.
+   * To display the total word (space separated words), Need to have more space than usual.
+   * This height will get total height need to disaply total word.
+   * These value need to be removed from actual svg height/graph height.
+   * Defalut value is 0. And this values calculted when 'wrapXAxisLables' or 'showXAxisLablesTooltip' is true.
+   */
+  private _removalValueForTextTuncate: number = 0;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale: any;
@@ -101,8 +100,6 @@ export class CartesianChartBase
       containerWidth: 0,
       _width: this.props.width || 600,
       _height: this.props.height || 350,
-      _removalValueForTextTuncate: 0,
-      isRemoveValCalculated: true,
       startFromX: 0,
     };
     this.idForGraph = getId('chart_');
@@ -129,31 +126,48 @@ export class CartesianChartBase
           : 20
         : this.props.margins?.left ?? 40,
     };
+    const TITLE_MARGIN_HORIZONTAL = 24;
+    const TITLE_MARGIN_VERTICAL = 20;
     if (this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '') {
-      this.margins.bottom! = this.props.margins?.bottom ?? 55;
+      this.margins.bottom! = this.props.margins?.bottom ?? this.margins.bottom! + TITLE_MARGIN_VERTICAL;
     }
     if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
       this.margins.left! = this._isRtl
         ? this.props.margins?.right ?? this.props?.secondaryYAxistitle
-          ? 80
-          : 40
-        : this.props.margins?.left ?? 60;
+          ? this.margins.right! + 2 * TITLE_MARGIN_HORIZONTAL
+          : this.margins.right! + TITLE_MARGIN_HORIZONTAL
+        : this.props.margins?.left ?? this.margins.left! + TITLE_MARGIN_HORIZONTAL;
       this.margins.right! = this._isRtl
-        ? this.props.margins?.left ?? 60
+        ? this.props.margins?.left ?? this.margins.left! + TITLE_MARGIN_HORIZONTAL
         : this.props.margins?.right ?? this.props?.secondaryYAxistitle
-        ? 80
-        : 40;
+        ? this.margins.right! + 2 * TITLE_MARGIN_HORIZONTAL
+        : this.margins.right! + TITLE_MARGIN_HORIZONTAL;
+    }
+    if (this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '') {
+      this.margins.top! = this.props.margins?.top ?? this.margins.top! + TITLE_MARGIN_VERTICAL;
+    }
+    if (
+      this.props.yAxisAnnotation !== undefined &&
+      this.props.yAxisAnnotation !== '' &&
+      (this.props.secondaryYAxistitle === undefined || this.props.secondaryYAxistitle === '')
+    ) {
+      if (this._isRtl) {
+        this.margins.left! = this.props.margins?.right ?? this.margins.right! + TITLE_MARGIN_HORIZONTAL;
+      } else {
+        this.margins.right! = this.props.margins?.right ?? this.margins.right! + TITLE_MARGIN_HORIZONTAL;
+      }
     }
   }
 
   public componentDidMount(): void {
     this._fitParentContainer();
-    if (chartTypesToCheck.includes(this.props.chartType) && this.props.showYAxisLables && this.yAxisElement) {
-      const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(
-        this.props.chartType,
-        this.props.points,
-        this._classNames.yAxis!,
-      );
+    if (
+      chartTypesWithStringYAxis.includes(this.props.chartType) &&
+      this.props.showYAxisLables &&
+      this.yAxisElement &&
+      this.props.yAxisType === YAxisType.StringAxis
+    ) {
+      const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(this._classNames.yAxis!);
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
           startFromX: maxYAxisLabelLength,
@@ -178,32 +192,12 @@ export class CartesianChartBase
       this._fitParentContainer();
     }
     if (
-      !this.props.wrapXAxisLables &&
-      this.props.rotateXAxisLables &&
-      this.props.xAxisType! === XAxisTypes.StringAxis
+      chartTypesWithStringYAxis.includes(this.props.chartType) &&
+      this.props.showYAxisLables &&
+      this.yAxisElement &&
+      this.props.yAxisType === YAxisType.StringAxis
     ) {
-      const rotateLabelProps = {
-        node: this.xAxisElement,
-        xAxis: this._xScale,
-      };
-      const rotatedHeight = rotateXAxisLabels(rotateLabelProps);
-      if (
-        this.state.isRemoveValCalculated &&
-        this.state._removalValueForTextTuncate !== rotatedHeight! + this.margins.bottom! &&
-        rotatedHeight! > 0
-      ) {
-        this.setState({
-          _removalValueForTextTuncate: rotatedHeight! + this.margins.bottom!,
-          isRemoveValCalculated: false,
-        });
-      }
-    }
-    if (chartTypesToCheck.includes(this.props.chartType) && this.props.showYAxisLables && this.yAxisElement) {
-      const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(
-        this.props.chartType,
-        this.props.points,
-        this._classNames.yAxis!,
-      );
+      const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(this._classNames.yAxis!);
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
           startFromX: maxYAxisLabelLength,
@@ -221,12 +215,7 @@ export class CartesianChartBase
     }
   }
 
-  public calculateMaxYAxisLabelLength = (
-    chartType: ChartTypes,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    points: any[],
-    className: string,
-  ): number => {
+  public calculateMaxYAxisLabelLength = (className: string): number => {
     const formatTickLabel = (str: string) => {
       if (this.props.showYAxisLablesTooltip) {
         return truncateString(str, this.props.noOfCharsToTruncate || 4);
@@ -235,17 +224,10 @@ export class CartesianChartBase
       return str;
     };
 
-    if (chartType === ChartTypes.HeatMapChart) {
-      return calculateLongestLabelWidth(
-        points[0].data.map((point: IHeatMapChartDataPoint) => formatTickLabel(`${point.y}`)),
-        `.${className} text`,
-      );
-    } else {
-      return calculateLongestLabelWidth(
-        points.map((point: IHorizontalBarChartWithAxisDataPoint) => formatTickLabel(`${point.y}`)),
-        `.${className} text`,
-      );
-    }
+    return calculateLongestLabelWidth(
+      this.props.stringDatasetForYAxisDomain!.map(label => formatTickLabel(label)),
+      `.${className} text`,
+    );
   };
 
   public render(): JSX.Element {
@@ -266,7 +248,8 @@ export class CartesianChartBase
     }
 
     const margin = { ...this.margins };
-    if (chartTypesToCheck.includes(this.props.chartType)) {
+    // Note: This check is unnecessary since startFromX is only set for charts with string y-axis.
+    if (chartTypesWithStringYAxis.includes(this.props.chartType)) {
       if (!this._isRtl) {
         margin.left! += this.state.startFromX;
       } else {
@@ -306,7 +289,13 @@ export class CartesianChartBase
           // This is only used for Horizontal Bar Chart with Axis for y as string axis
           this.state.startFromX,
         ),
-        containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
+        // FIXME: In XAxisParams, containerHeight is used by HBWA to generate vertical gridlines.
+        // Since the x-axis in HBWA is numeric, it typically doesn't require transformation.
+        // However, if transformation props are enabled, the updated _removalValueForTextTuncate
+        // will only be available in the next render, as it's set after the axis is created.
+        // Solution: Delay the creation of gridlines until after the transformation has been applied,
+        // or precompute the required height for transformed labels (_removalValueForTextTuncate).
+        containerHeight: this.state.containerHeight - this._removalValueForTextTuncate,
         margins: this.margins,
         xAxisElement: this.xAxisElement!,
         showRoundOffXTickValues: this.props.showRoundOffXTickValues ?? true,
@@ -317,30 +306,10 @@ export class CartesianChartBase
         xAxisInnerPadding: this.props.xAxisInnerPadding,
         xAxisOuterPadding: this.props.xAxisOuterPadding,
         containerWidth: this.state.containerWidth,
-        hideTickOverlap:
-          this.props.hideTickOverlap &&
-          !this.props.rotateXAxisLables &&
-          !this.props.showXAxisLablesTooltip &&
-          !this.props.wrapXAxisLables,
+        hideTickOverlap: this.props.hideTickOverlap,
+        calcMaxLabelWidth: this._calcMaxLabelWidthWithTransform,
       };
 
-      const YAxisParams = {
-        margins: this.props.getYDomainMargins ? this.props.getYDomainMargins(this.state.containerHeight) : this.margins,
-        containerWidth: this.state.containerWidth,
-        containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
-        yAxisElement: this.yAxisElement,
-        yAxisTickFormat: this.props.yAxisTickFormat!,
-        yAxisTickCount: this.props.yAxisTickCount!,
-        yMinValue: this.props.yMinValue || 0,
-        yMaxValue: this.props.yMaxValue || 0,
-        tickPadding: this.props.showYAxisLablesTooltip ? 15 : 10,
-        maxOfYVal: this.props.maxOfYVal,
-        yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType),
-        // please note these padding default values must be consistent in here
-        // and the parent chart(HBWA/Vertical etc..) for more details refer example
-        // http://using-d3js.com/04_07_ordinal_scales.html
-        yAxisPadding: this.props.yAxisPadding || 0,
-      };
       /**
        * These scales used for 2 purposes.
        * 1. To create x and y axis
@@ -389,25 +358,25 @@ export class CartesianChartBase
       this._xScale = xScale;
       this._tickValues = tickValues;
 
-      /*
-       * To enable wrapping of x axis tick values or to display complete x axis tick values,
-       * we need to calculate how much space it needed to render the text.
-       * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
-       * Required space will be calculated first time chart rendering and if any width/height of chart updated.
-       * */
-      if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
-        const wrapLabelProps = {
-          node: this.xAxisElement,
-          xAxis: xScale,
-          showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
-          noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
-        };
-        const temp = xScale && (createWrapOfXLabels(wrapLabelProps) as number);
-        // this value need to be updated for draw graph updated. So instead of using private value, using set state.
-        if (this.state.isRemoveValCalculated && this.state._removalValueForTextTuncate !== temp) {
-          this.setState({ _removalValueForTextTuncate: temp, isRemoveValCalculated: false });
-        }
-      }
+      this._transformXAxisLabels();
+
+      const YAxisParams = {
+        margins: this.props.getYDomainMargins ? this.props.getYDomainMargins(this.state.containerHeight) : this.margins,
+        containerWidth: this.state.containerWidth,
+        containerHeight: this.state.containerHeight - this._removalValueForTextTuncate,
+        yAxisElement: this.yAxisElement,
+        yAxisTickFormat: this.props.yAxisTickFormat!,
+        yAxisTickCount: this.props.yAxisTickCount!,
+        yMinValue: this.props.yMinValue || 0,
+        yMaxValue: this.props.yMaxValue || 0,
+        tickPadding: 10,
+        maxOfYVal: this.props.maxOfYVal,
+        yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType),
+        // please note these padding default values must be consistent in here
+        // and the parent chart(HBWA/Vertical etc..) for more details refer example
+        // http://using-d3js.com/04_07_ordinal_scales.html
+        yAxisPadding: this.props.yAxisPadding || 0,
+      };
 
       /**
        * These scales used for 2 purposes.
@@ -426,6 +395,7 @@ export class CartesianChartBase
           this.props.stringDatasetForYAxisDomain!,
           this._isRtl,
           this.props.barwidth,
+          this.props.chartType,
         );
       } else {
         // TODO: Since the scale domain values are now computed independently for both the primary and
@@ -437,7 +407,7 @@ export class CartesianChartBase
           const YAxisParamsSecondary = {
             margins: this.margins,
             containerWidth: this.state.containerWidth,
-            containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
+            containerHeight: this.state.containerHeight - this._removalValueForTextTuncate,
             yAxisElement: this.yAxisElementSecondary,
             yAxisTickFormat: this.props.yAxisTickFormat!,
             yAxisTickCount: this.props.yAxisTickCount!,
@@ -469,10 +439,12 @@ export class CartesianChartBase
         );
       }
 
-      if (chartTypesToCheck.includes(this.props.chartType)) {
+      if (chartTypesWithStringYAxis.includes(this.props.chartType) && this.props.yAxisType === YAxisType.StringAxis) {
         // To create y axis tick values by if specified truncating the rest of the text
         // and showing elipsis or showing the whole string,
         yScalePrimary &&
+          // Note: This function should be invoked within the showYAxisLablesTooltip check,
+          // as its sole purpose is to truncate labels that exceed the noOfCharsToTruncate limit.
           createYAxisLabels(
             this.yAxisElement,
             yScalePrimary,
@@ -542,8 +514,15 @@ export class CartesianChartBase
       svgDimensions.height -
       this.margins.bottom! -
       this.margins.top! -
-      this.state._removalValueForTextTuncate! -
+      this._removalValueForTextTuncate -
       this.titleMargin;
+
+    const commonSvgToolTipProps: ISVGTooltipTextProps = {
+      wrapContent,
+      theme: this.props.theme,
+      showBackground: true,
+      className: this._classNames.svgTooltip,
+    };
     /**
      * We have use the {@link defaultTabbableElement } to fix
      * the Focus not landing on chart while tabbing, instead  goes to legend.
@@ -594,7 +573,7 @@ export class CartesianChartBase
               id={`xAxisGElement${this.idForGraph}`}
               // To add wrap of x axis lables feature, need to remove word height from svg height.
               transform={`translate(0, ${
-                svgDimensions.height - this.margins.bottom! - this.state._removalValueForTextTuncate!
+                svgDimensions.height - this.margins.bottom! - this._removalValueForTextTuncate
               })`}
               className={this._classNames.xAxis}
             />
@@ -609,9 +588,21 @@ export class CartesianChartBase
                   'aria-hidden': true,
                 }}
                 maxWidth={xAxisTitleMaximumAllowedWidth}
-                wrapContent={wrapContent}
-                theme={this.props.theme}
-                showBackground={true}
+                {...commonSvgToolTipProps}
+              />
+            )}
+            {this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '' && (
+              <SVGTooltipText
+                content={this.props.xAxisAnnotation}
+                textProps={{
+                  x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                  y: this.titleMargin + 3,
+                  className: this._classNames.axisAnnotation!,
+                  textAnchor: 'middle',
+                  'aria-hidden': true,
+                }}
+                maxWidth={xAxisTitleMaximumAllowedWidth}
+                {...commonSvgToolTipProps}
               />
             )}
             <g
@@ -644,9 +635,7 @@ export class CartesianChartBase
                   <SVGTooltipText
                     content={this.props.secondaryYAxistitle}
                     textProps={{
-                      x:
-                        (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 +
-                        this.state._removalValueForTextTuncate!,
+                      x: (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 + this._removalValueForTextTuncate,
                       y: this._isRtl
                         ? this.state.startFromX - this.titleMargin
                         : svgDimensions.width - this.margins.right!,
@@ -661,9 +650,7 @@ export class CartesianChartBase
                       'aria-hidden': true,
                     }}
                     maxWidth={yAxisTitleMaximumAllowedHeight}
-                    wrapContent={wrapContent}
-                    theme={this.props.theme}
-                    showBackground={true}
+                    {...commonSvgToolTipProps}
                   />
                 )}
               </g>
@@ -673,9 +660,7 @@ export class CartesianChartBase
               <SVGTooltipText
                 content={this.props.yAxisTitle}
                 textProps={{
-                  x:
-                    (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 +
-                    this.state._removalValueForTextTuncate!,
+                  x: (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 + this._removalValueForTextTuncate,
                   y: this._isRtl
                     ? svgDimensions.width - this.margins.right! / 2 + this.titleMargin
                     : this.margins.left! / 2 - this.titleMargin,
@@ -686,11 +671,33 @@ export class CartesianChartBase
                   'aria-hidden': true,
                 }}
                 maxWidth={yAxisTitleMaximumAllowedHeight}
-                wrapContent={wrapContent}
-                theme={this.props.theme}
-                showBackground={true}
+                {...commonSvgToolTipProps}
               />
             )}
+            {this.props.yAxisAnnotation !== undefined &&
+              this.props.yAxisAnnotation !== '' &&
+              (this.props.secondaryYAxistitle === undefined || this.props.secondaryYAxistitle === '') && (
+                <SVGTooltipText
+                  content={this.props.yAxisAnnotation}
+                  textProps={{
+                    x: (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 + this._removalValueForTextTuncate,
+                    y: this._isRtl
+                      ? this.state.startFromX - this.titleMargin
+                      : svgDimensions.width - this.margins.right!,
+                    textAnchor: 'middle',
+                    transform: `translate(${
+                      this._isRtl
+                        ? this.margins.right! / 2 - this.titleMargin
+                        : this.margins.right! / 2 + this.titleMargin
+                    },
+                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                    className: this._classNames.axisAnnotation!,
+                    'aria-hidden': true,
+                  }}
+                  maxWidth={yAxisTitleMaximumAllowedHeight}
+                  {...commonSvgToolTipProps}
+                />
+              )}
           </svg>
         </FocusZone>
 
@@ -754,7 +761,7 @@ export class CartesianChartBase
             className={this._classNames.calloutContentX}
             {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
           >
-            {convertToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
+            {formatToLocaleString(calloutProps!.hoverXValue, this.props.culture, this.props.useUTC)}
           </div>
         </div>
         <div
@@ -830,8 +837,8 @@ export class CartesianChartBase
       toDrawShape,
     });
 
-    const { culture } = this.props;
-    const yValue = convertToLocaleString(xValue.y, culture);
+    const { culture, useUTC } = this.props;
+    const yValue = formatToLocaleString(xValue.y, culture, useUTC);
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
@@ -853,9 +860,10 @@ export class CartesianChartBase
             <div>
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
-                {convertToLocaleString(
+                {formatToLocaleString(
                   xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
                   culture,
+                  useUTC,
                 )}
               </div>
             </div>
@@ -872,9 +880,11 @@ export class CartesianChartBase
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
               <div key={subcountName} className={_classNames.calloutBlockContainer}>
-                <div className={_classNames.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
+                <div className={_classNames.calloutlegendText}>
+                  {formatToLocaleString(subcountName, culture, useUTC)}
+                </div>
                 <div className={_classNames.calloutContentY}>
-                  {convertToLocaleString(subcounts[subcountName], culture)}
+                  {formatToLocaleString(subcounts[subcountName], culture, useUTC)}
                 </div>
               </div>
             );
@@ -933,7 +943,7 @@ export class CartesianChartBase
       this.props.getGraphData(
         xScale,
         yScalePrimary,
-        this.state.containerHeight - this.state._removalValueForTextTuncate!,
+        this.state.containerHeight - this._removalValueForTextTuncate,
         this.state.containerWidth,
         this.xAxisElement,
         this.yAxisElement,
@@ -946,43 +956,8 @@ export class CartesianChartBase
   };
 
   private _calculateChartMinWidth = (): number => {
-    let labelWidth = 10; // Total padding on the left and right sides of the label
-
-    // Case: rotated labels
-    if (
-      !this.props.wrapXAxisLables &&
-      this.props.rotateXAxisLables &&
-      this.props.xAxisType! === XAxisTypes.StringAxis
-    ) {
-      const longestLabelWidth = calculateLongestLabelWidth(this._tickValues, `.${this._classNames.xAxis} text`);
-      labelWidth += Math.ceil(longestLabelWidth * Math.cos(Math.PI / 4));
-    }
-    // Case: truncated labels
-    else if (this.props.showXAxisLablesTooltip) {
-      const tickValues = this._tickValues.map(val => {
-        const numChars = this.props.noOfCharsToTruncate || 4;
-        return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
-      });
-
-      const longestLabelWidth = calculateLongestLabelWidth(tickValues, `.${this._classNames.xAxis} text`);
-      labelWidth += Math.ceil(longestLabelWidth);
-    }
-    // Case: wrapped labels
-    else if (this.props.wrapXAxisLables) {
-      const words: string[] = [];
-      this._tickValues.forEach((val: string) => {
-        words.push(...val.toString().split(/\s+/));
-      });
-
-      const longestLabelWidth = calculateLongestLabelWidth(words, `.${this._classNames.xAxis} text`);
-      labelWidth += Math.max(Math.ceil(longestLabelWidth), 10);
-    }
-    // Default case
-    else {
-      const longestLabelWidth = calculateLongestLabelWidth(this._tickValues, `.${this._classNames.xAxis} text`);
-      labelWidth += Math.ceil(longestLabelWidth);
-    }
-
+    // Adding 10px for padding on both sides
+    const labelWidth = this._calcMaxLabelWidthWithTransform(this._tickValues) + 10;
     let minChartWidth = this.margins.left! + this.margins.right! + labelWidth * (this._tickValues.length - 1);
 
     if (
@@ -1023,5 +998,91 @@ export class CartesianChartBase
           : 'values')) +
       '. '
     );
+  };
+
+  private _calcMaxLabelWidthWithTransform = (x: (string | number)[]) => {
+    // Case: rotated labels
+    if (
+      !this.props.wrapXAxisLables &&
+      this.props.rotateXAxisLables &&
+      this.props.xAxisType! === XAxisTypes.StringAxis
+    ) {
+      const longestLabelWidth = calculateLongestLabelWidth(x, `.${this._classNames.xAxis} text`);
+      return Math.ceil(longestLabelWidth * Math.cos(Math.PI / 4));
+    }
+
+    // Case: truncated labels
+    if (this.props.showXAxisLablesTooltip) {
+      const tickValues = x.map(val => {
+        const numChars = this.props.noOfCharsToTruncate || 4;
+        return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
+      });
+
+      const longestLabelWidth = calculateLongestLabelWidth(tickValues, `.${this._classNames.xAxis} text`);
+      return Math.ceil(longestLabelWidth);
+    }
+
+    // Case: wrapped labels
+    if (this.props.wrapXAxisLables) {
+      // FIXME: Calculate the max width of lines instead of words. This requires applying
+      // the wrapping transformation earlier to obtain the actual rendered lines.
+      const words: string[] = [];
+      x.forEach((val: string) => {
+        words.push(...val.toString().split(/\s+/));
+      });
+
+      // This approach works well in most cases, since overflow typically occurs only when
+      // a single word exceeds the specified width — otherwise, the text will wrap as expected.
+      const longestLabelWidth = calculateLongestLabelWidth(words, `.${this._classNames.xAxis} text`);
+      return Math.max(Math.ceil(longestLabelWidth), DEFAULT_WRAP_WIDTH);
+    }
+
+    // Default case
+    const longestLabelWidth = calculateLongestLabelWidth(x, `.${this._classNames.xAxis} text`);
+    return Math.ceil(longestLabelWidth);
+  };
+
+  private _transformXAxisLabels = () => {
+    this._removalValueForTextTuncate = 0;
+
+    /*
+     * To enable wrapping of x axis tick values or to display complete x axis tick values,
+     * we need to calculate how much space it needed to render the text.
+     * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
+     * Required space will be calculated first time chart rendering and if any width/height of chart updated.
+     * */
+    if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
+      let maxXAxisLabelWidth: number | undefined;
+      if (this.props.xAxisType === XAxisTypes.StringAxis) {
+        if ((this.props.datasetForXAxisDomain?.length || 0) > 1) {
+          maxXAxisLabelWidth = this._xScale.step();
+        } else {
+          maxXAxisLabelWidth = this.state.containerWidth;
+        }
+      }
+
+      const wrapLabelProps = {
+        node: this.xAxisElement,
+        xAxis: this._xScale,
+        showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
+        noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
+        width: maxXAxisLabelWidth,
+      };
+      this._removalValueForTextTuncate = createWrapOfXLabels(wrapLabelProps) ?? 0;
+    }
+
+    if (
+      !this.props.wrapXAxisLables &&
+      this.props.rotateXAxisLables &&
+      this.props.xAxisType! === XAxisTypes.StringAxis
+    ) {
+      const rotateLabelProps = {
+        node: this.xAxisElement,
+        xAxis: this._xScale,
+      };
+      const rotatedHeight = rotateXAxisLabels(rotateLabelProps) ?? 0;
+      // this.margins.bottom is used as padding here
+      this._removalValueForTextTuncate = rotatedHeight + this.margins.bottom!;
+    }
   };
 }

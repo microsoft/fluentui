@@ -590,8 +590,6 @@ export class BaseDropdown extends FASTElement {
     changeHandler(e: Event): boolean | void;
     checkValidity(): boolean;
     clickHandler(e: PointerEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
     // @internal
     control: HTMLInputElement;
     // @internal
@@ -673,6 +671,10 @@ export class BaseField extends FASTElement {
     changeHandler(e: Event): boolean | void;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
     // @internal
@@ -703,8 +705,12 @@ export class BaseField extends FASTElement {
 // @public
 export class BaseProgressBar extends FASTElement {
     constructor();
+    // (undocumented)
+    connectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
+    // @internal (undocumented)
+    indicator: HTMLElement;
     // @internal
     max?: number;
     // @internal
@@ -712,8 +718,6 @@ export class BaseProgressBar extends FASTElement {
     // @internal
     min?: number;
     protected minChanged(prev: number | undefined, next: number | undefined): void;
-    // @internal
-    get percentComplete(): number;
     validationState: ProgressBarValidationState | null;
     validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
     // @internal
@@ -755,7 +759,7 @@ export class BaseTablist extends FASTElement {
     activeid: string;
     // @internal (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
-    activetab: HTMLElement;
+    activetab: Tab;
     adjust(adjustment: number): void;
     // @internal (undocumented)
     connectedCallback(): void;
@@ -768,8 +772,12 @@ export class BaseTablist extends FASTElement {
     // @internal (undocumented)
     protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
     protected setTabs(): void;
+    // @internal
+    slottedTabs: Node[];
+    // @internal
+    slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
     // @internal (undocumented)
-    tabs: HTMLElement[];
+    tabs: Tab[];
     // @internal (undocumented)
     protected tabsChanged(): void;
 }
@@ -2800,6 +2808,9 @@ export function isDropdownOption(value: Node | null, tagName?: string): value is
 export function isListbox(element?: Node | null, tagName?: string): element is Listbox;
 
 // @public
+export function isTab(element?: Node | null, tagName?: string): element is Tab;
+
+// @public
 export function isTreeItem(element?: Node | null, tagName?: string): element is BaseTreeItem;
 
 // @public
@@ -4528,7 +4539,7 @@ export const zIndexPriority = "var(--zIndexPriority)";
 
 // Warnings were encountered during analysis:
 //
-// dist/dts/accordion-item/accordion-item.d.ts:14:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
+// dist/esm/accordion-item/accordion-item.d.ts:15:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

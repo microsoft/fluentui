@@ -245,7 +245,7 @@ export {
   SwitchStyles,
   SwitchTemplate,
 } from './switch/index.js';
-export { Tab, TabOptions, TabTemplate, TabStyles, TabDefinition } from './tab/index.js';
+export { isTab, Tab, TabOptions, TabTemplate, TabStyles, TabDefinition } from './tab/index.js';
 export { TabPanel, TabPanelTemplate, TabPanelStyles, TabPanelDefinition } from './tab-panel/index.js';
 export {
   Tabs,

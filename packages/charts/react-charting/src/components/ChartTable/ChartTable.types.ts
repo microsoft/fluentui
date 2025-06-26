@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IChart } from '../../types/index';
@@ -15,12 +16,12 @@ export interface IChartTableProps {
   /**
    * 1d or 2d Array of header values.
    */
-  headers: (string | number | boolean | null)[] | (string | number | boolean | null)[][];
+  headers: { value: string | number | boolean | null; style?: React.CSSProperties }[];
 
   /**
    * Array of rows. Each row corresponds to one data entry under each column.
    */
-  rows: (string | number | boolean | null)[][];
+  rows: { value: string | number | boolean | null; style?: React.CSSProperties }[][];
 
   /**
    * Optional width for the table
