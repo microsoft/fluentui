@@ -1,8 +1,7 @@
-import * as React from 'react';
-
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
+import * as React from 'react';
 import { assertSlots } from '@fluentui/react-utilities';
 
 import type { SplitNavItemState, SplitNavItemSlots } from './SplitNavItem.types';
