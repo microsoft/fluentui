@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Shorten pollDuration to 100ms in useIFrameFocus",
-  "packageName": "@fluentui/react-utilities",
-  "email": "xboy2008@live.cn",
-  "dependentChangeType": "patch"
-}

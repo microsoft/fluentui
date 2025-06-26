@@ -2,6 +2,33 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Thu, 26 Jun 2025 14:11:55 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.100",
+      "version": "9.0.0-alpha.100",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "0a4dcce4c5f7f5d6f53aa0b3a9b54a303306c12d",
+            "comment": "fix: Ensure virtualizer recalcs on numItems change"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.1.2",
+            "commit": "2b89e39a253fe3570265284b19d2461b9d37fb86"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-utilities to v9.22.0",
+            "commit": "2b89e39a253fe3570265284b19d2461b9d37fb86"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jun 2025 17:34:00 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.99",
       "version": "9.0.0-alpha.99",
