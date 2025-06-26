@@ -851,7 +851,7 @@ const transformPlotlyJsonToScatterTraceProps = (
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
       const seriesOpacity = getOpacity(series, index);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
-      const lineOptions = getLineOptions(series.line);
+      const lineOptions = !series.mode?.includes('text') ? getLineOptions(series.line) : undefined;
       const legendShape = getLegendShape(series);
 
       const validXYRanges = getValidXYRanges(series);
