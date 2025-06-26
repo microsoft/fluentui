@@ -7,14 +7,12 @@ import type {
 } from './types';
 import * as React from 'react';
 import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import { JSXIntrinsicElements } from '../utils/types';
 
 export type SlotOptions<Props extends UnknownSlotProps> = {
   elementType:
     | React.ComponentType<Props>
-    | (Props extends AsIntrinsicElement<infer As>
-        ? As
-        : // eslint-disable-next-line @typescript-eslint/no-deprecated
-          keyof JSX.IntrinsicElements);
+    | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSXIntrinsicElements);
   defaultProps?: Partial<Props>;
 };
 
