@@ -8,7 +8,7 @@ import type { SplitNavItemState, SplitNavItemSlots } from './SplitNavItem.types'
 /**
  * @internal
  *
- * Helper function to get button slots
+ * Helper function to render button slots
  */
 const renderButtonSlot = (Button?: React.ElementType, ButtonTooltip?: React.ElementType) => {
   if (!Button) {
