@@ -12,7 +12,6 @@ import { useId } from '@fluentui/react-components';
 export const VerticalStackedBarSecondaryYAxis = () => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
-  const [barGapMax, setBarGapMax] = React.useState<number>(2);
   const _widthSliderId = useId('width-slider-');
   const _heightSliderId = useId('height-slider-');
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -186,6 +185,7 @@ export const VerticalStackedBarSecondaryYAxis = () => {
 
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   const lineOptions: LineChartLineOptions = { lineBorderWidth: '2' };
+  const barGapMax = 2;
 
   return (
     <div className="containerDiv">
