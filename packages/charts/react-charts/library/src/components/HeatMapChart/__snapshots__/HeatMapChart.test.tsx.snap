@@ -3109,7 +3109,7 @@ Object {
   >
     <div>
       <div
-        class="fui-FluentProvider fui-FluentProvider34"
+        class="fui-FluentProvider fui-FluentProvider50"
         dir="ltr"
       >
         <div
@@ -3406,7 +3406,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-FluentProvider fui-FluentProvider34"
+      class="fui-FluentProvider fui-FluentProvider50"
       dir="ltr"
     >
       <div

@@ -23,7 +23,7 @@ import {
   calloutData,
   ChartTypes,
   XAxisTypes,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
@@ -366,7 +366,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         id: _tooltipId,
         xAxis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return series;
   }

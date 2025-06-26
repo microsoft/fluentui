@@ -2,6 +2,7 @@ import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModifiedCartesianChartProps, HorizontalBarChartWithAxisDataPoint, HeatMapChartDataPoint } from '../../index';
 import { useCartesianChartStyles } from './useCartesianChartStyles.styles';
+import { select as d3Select } from 'd3-selection';
 import {
   createNumericXAxis,
   createStringXAxis,
@@ -21,7 +22,10 @@ import {
   ChartTypes,
   wrapContent,
   useRtl,
+  truncateString,
+  tooltipOfAxislabels,
 } from '../../utilities/index';
+import { useId } from '@fluentui/react-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { ChartPopover } from './ChartPopover';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -50,6 +54,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _xScale: any;
   let isIntegralDataset: boolean = true;
+  let _tooltipId: string = useId('tooltip_');
 
   const [containerWidth, setContainerWidth] = React.useState<number>(0);
   const [containerHeight, setContainerHeight] = React.useState<number>(0);
@@ -174,14 +179,21 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     points: any[],
     className: string,
   ): number {
+    const formatTickLabel = (str: string) => {
+      if (props.showYAxisLablesTooltip) {
+        return truncateString(str, props.noOfCharsToTruncate || 4);
+      }
+
+      return str;
+    };
     if (chartType === ChartTypes.HeatMapChart) {
       return calculateLongestLabelWidth(
-        points[0]?.data?.map((point: HeatMapChartDataPoint) => point.y),
+        points[0]?.data?.map((point: HeatMapChartDataPoint) => formatTickLabel(`${point.y}`)),
         `.${className} text`,
       );
     } else {
       return calculateLongestLabelWidth(
-        points?.map((point: HorizontalBarChartWithAxisDataPoint) => point.y),
+        points?.map((point: HorizontalBarChartWithAxisDataPoint) => formatTickLabel(`${point.y}`)),
         `.${className} text`,
       );
     }
@@ -266,7 +278,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       yAxisTickCount: props.yAxisTickCount!,
       yMinValue: props.yMinValue || 0,
       yMaxValue: props.yMaxValue || 0,
-      tickPadding: 10,
+      tickPadding: props.showYAxisLablesTooltip ? 15 : 10,
       maxOfYVal: props.maxOfYVal,
       yMinMaxValues: props.getMinMaxOfYAxis
         ? props.getMinMaxOfYAxis(points, props.yAxisType)
@@ -400,21 +412,43 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       );
     }
 
-    /*
-     * To create y axis tick values by if specified
-    truncating the rest of the text and showing elipsis
-    or showing the whole string,
-     * */
-    chartTypesToCheck.includes(props.chartType) &&
+    if (chartTypesToCheck.includes(props.chartType)) {
+      // To create y axis tick values by if specified truncating the rest of the text
+      // and showing elipsis or showing the whole string,
       yScalePrimary &&
-      createYAxisLabels(
-        yAxisElement.current!,
-        yScalePrimary,
-        props.noOfCharsToTruncate || 4,
-        props.showYAxisLablesTooltip || false,
-        startFromX,
-        _useRtl,
-      );
+        createYAxisLabels(
+          yAxisElement.current!,
+          yScalePrimary,
+          props.noOfCharsToTruncate || 4,
+          props.showYAxisLablesTooltip || false,
+          0,
+          _useRtl,
+        );
+
+      // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
+      // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
+      // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with _tooltipId)
+      if (!props.showYAxisLablesTooltip) {
+        try {
+          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
+          //eslint-disable-next-line no-empty
+        } catch (e) {}
+      }
+      // Used to display tooltip at y axis labels.
+      if (props.showYAxisLablesTooltip) {
+        const _yAxisElement = d3Select(yAxisElement.current!).call(yScalePrimary);
+        try {
+          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
+          //eslint-disable-next-line no-empty
+        } catch (e) {}
+        const ytooltipProps = {
+          tooltipCls: classes.tooltip!,
+          id: _tooltipId,
+          axis: yAxisElement,
+        };
+        _yAxisElement && tooltipOfAxislabels(ytooltipProps);
+      }
+    }
 
     // Call back to the chart.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

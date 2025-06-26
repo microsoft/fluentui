@@ -1028,8 +1028,13 @@ Object {
     data-tabster="{\\"root\\":{}}"
   >
     <div
-      class="fui-hbcwa__tooltip"
-      id="HBCWATooltipID_72"
+      class="fui-cart__tooltip"
+      id="tooltip_73"
+      style="opacity: 0;"
+    />
+    <div
+      class="fui-cart__tooltip"
+      id="tooltip_74"
       style="opacity: 0;"
     />
     <div>
@@ -2192,8 +2197,13 @@ Object {
     data-tabster="{\\"root\\":{}}"
   >
     <div
-      class="fui-hbcwa__tooltip"
-      id="HBCWATooltipID_72"
+      class="fui-cart__tooltip"
+      id="tooltip_73"
+      style="opacity: 0;"
+    />
+    <div
+      class="fui-cart__tooltip"
+      id="tooltip_74"
       style="opacity: 0;"
     />
     <div>
@@ -7789,8 +7799,13 @@ Object {
     data-tabster="{\\"root\\":{}}"
   >
     <div
-      class="fui-hbcwa__tooltip"
-      id="HBCWATooltipID_72"
+      class="fui-cart__tooltip"
+      id="tooltip_73"
+      style="opacity: 0;"
+    />
+    <div
+      class="fui-cart__tooltip"
+      id="tooltip_74"
       style="opacity: 0;"
     />
     <div>
