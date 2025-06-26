@@ -56,8 +56,8 @@ export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
 export function asAsync<TProps extends {}>(options: IAsAsyncOptions<TProps>): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TProps & {
-    asyncPlaceholder?: React_2.ElementType<any, keyof React_2.JSX.IntrinsicElements> | undefined;
-}> & React_2.RefAttributes<React_2.ElementType<TProps, keyof React_2.JSX.IntrinsicElements>>>;
+    asyncPlaceholder?: React_2.ElementType | undefined;
+}> & React_2.RefAttributes<React_2.ElementType<TProps>>>;
 
 // @public
 export function assertNever(x: never): never;
