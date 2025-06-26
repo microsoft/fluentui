@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "high contrast fix",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

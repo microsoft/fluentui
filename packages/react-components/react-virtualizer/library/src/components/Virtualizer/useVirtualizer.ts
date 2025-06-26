@@ -297,6 +297,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     return childProgressiveSizes.current[numItems - 1] - childProgressiveSizes.current[lastItemIndex - 1];
   }, [actualIndex, getItemSize, itemSize, numItems, virtualizerLength, gap]);
 
+  // We store the number of items since last render, we will allow an update if the number of items changes
+  const previousNumItems = React.useRef<number>(numItems);
   // Observe intersections of virtualized components
   const { setObserverList } = useIntersectionObserver(
     React.useCallback(
@@ -408,10 +410,16 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         const newStartIndex = Math.min(Math.max(startIndex, 0), maxIndex);
         flushSync(() => {
           // Callback to allow measure functions to check virtualizer length
-          if (newStartIndex + virtualizerLength >= numItems && actualIndex + virtualizerLength >= numItems) {
+          if (
+            previousNumItems.current === numItems &&
+            newStartIndex + virtualizerLength >= numItems &&
+            actualIndex + virtualizerLength >= numItems
+          ) {
             // We've already hit the end, no need to update state.
             return;
           }
+          // We should ensure we update virtualizer calculations if the length changes
+          previousNumItems.current = virtualizerLength;
           updateScrollPosition?.(measurementPos);
           if (actualIndex !== newStartIndex) {
             batchUpdateNewIndex(newStartIndex);

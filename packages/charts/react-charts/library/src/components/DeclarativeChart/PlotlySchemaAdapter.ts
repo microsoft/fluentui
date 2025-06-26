@@ -522,11 +522,12 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const chartData: HorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: PlotData, index: number) => {
       return (series.y as Datum[]).map((yValue: string, i: number) => {
-        const color = getColor(yValue, colorMap, isDarkTheme);
+        const legendName = series.name ?? yValue;
+        const color = getColor(legendName, colorMap, isDarkTheme);
         return {
           x: series.x[i],
           y: yValue,
-          legend: yValue,
+          legend: legendName,
           color,
         } as HorizontalBarChartWithAxisDataPoint;
       });
@@ -539,12 +540,10 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const margin: number = input.layout?.margin?.l ?? 0;
   const padding: number = input.layout?.margin?.pad ?? 0;
   const availableHeight: number = chartHeight - margin - padding;
-  const numberOfBars = input.data.reduce((total: number, item: PlotData) => {
-    return total + (item.y?.length || 0);
-  }, 0);
+  const numberOfRows = new Set(chartData.map(d => d.y)).size || 1;
   const scalingFactor = 0.01;
-  const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
-  const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
+  const gapFactor = 1 / (1 + scalingFactor * numberOfRows);
+  const barHeight = availableHeight / (numberOfRows * (1 + gapFactor));
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 

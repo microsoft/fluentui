@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "negative y value support and fix bar overlapping issue",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}
