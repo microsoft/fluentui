@@ -147,16 +147,16 @@ export type JSXElement = React.ReactElement<
 >;
 
 /**
- * Our own `keyof JSX.IntrinsicElements` type that is compatible with both React 17 and React >=18.
+ * Our own alias for `JSX.IntrinsicElements` type that is compatible with both React 17 and React >=18.
  * Use this type to get the intrinsic elements from React types in order to avoid issues between different React versions.
  */
-export type IntrinsicElements =
+export type JSXIntrinsicElements =
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+  // @ts-ignore - all branches needs to be ignored in order to work with different React versions. This one would throw an error in React 19.
   keyof JSX.IntrinsicElements extends string
     ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      keyof JSX.IntrinsicElements
+      // @ts-ignore - all branches needs to be ignored in order to work with different React versions. This one would throw an error in React 19
+      JSX.IntrinsicElements
     : // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      keyof React.JSX.IntrinsicElements;
+      // @ts-ignore - all branches needs to be ignored in order to work with different React versions. This one would throw an error in React 17
+      React.JSX.IntrinsicElements;
