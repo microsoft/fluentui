@@ -36,10 +36,14 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
     >
       <svg
         aria-label="LineChart. Line chart with 1 lines. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="310"
         role="region"
-        style="display: block;"
         width="108"
       >
         <g
@@ -420,7 +424,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -742,10 +746,14 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
     >
       <svg
         aria-label="LineChart. Line chart with 1 lines. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="310"
         role="region"
-        style="display: block;"
         width="108"
       >
         <g
@@ -1126,7 +1134,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1353,10 +1361,14 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
     >
       <svg
         aria-label="LineChart. Line chart with 1 lines. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="310"
         role="region"
-        style="display: block;"
         width="108"
       >
         <g
@@ -1737,7 +1749,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

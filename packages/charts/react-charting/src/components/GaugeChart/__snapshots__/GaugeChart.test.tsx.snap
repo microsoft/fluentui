@@ -225,7 +225,7 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -1019,7 +1019,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -1743,7 +1743,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -2297,7 +2297,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: center;
                           position: relative;
                         }
@@ -2839,7 +2839,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -3364,7 +3364,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -3790,7 +3790,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -4248,7 +4248,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -4789,7 +4789,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -5351,7 +5351,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }

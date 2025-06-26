@@ -37,13 +37,13 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -274,7 +274,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -535,13 +535,13 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -844,7 +844,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -1105,13 +1105,13 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -1342,7 +1342,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -1603,13 +1603,13 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -1840,7 +1840,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -2101,13 +2101,13 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -2579,13 +2579,13 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -2798,13 +2798,13 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -3035,7 +3035,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -3296,13 +3296,13 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -3515,7 +3515,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -3776,13 +3776,13 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -4013,7 +4013,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -4274,13 +4274,13 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -4511,7 +4511,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -4772,13 +4772,13 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -5009,7 +5009,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }

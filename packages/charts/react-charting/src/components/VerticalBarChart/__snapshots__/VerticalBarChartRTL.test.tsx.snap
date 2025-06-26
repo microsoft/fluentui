@@ -34,10 +34,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="292"
         role="region"
-        style="display: block;"
         width="650"
       >
         <g
@@ -479,7 +483,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -830,10 +834,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="292"
         role="region"
-        style="display: block;"
         width="650"
       >
         <g
@@ -1275,7 +1283,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1639,10 +1647,14 @@ exports[`Theme Change Should reflect theme change 1`] = `
       >
         <svg
           aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
+          class=
+
+              {
+                display: block;
+              }
           focusable="false"
           height="292"
           role="region"
-          style="display: block;"
           width="650"
         >
           <g
@@ -2084,7 +2096,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -2447,10 +2459,14 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="292"
         role="region"
-        style="display: block;"
         width="650"
       >
         <g
@@ -2892,7 +2908,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -10068,10 +10084,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="292"
         role="region"
-        style="display: block;"
         width="650"
       >
         <g
@@ -10513,7 +10533,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -12346,10 +12366,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="292"
         role="region"
-        style="display: block;"
         width="650"
       >
         <g
@@ -12791,7 +12815,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -13142,10 +13166,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. The secondary Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="292"
         role="region"
-        style="display: block;"
         width="650"
       >
         <g
@@ -13717,7 +13745,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -14068,10 +14096,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
     >
       <svg
         aria-label="Vertical bar chart with 4 bars. The X axis displays categories. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="292"
         role="region"
-        style="display: block;"
         width="650"
       >
         <g
@@ -14523,7 +14555,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -14674,10 +14706,14 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="292"
         role="region"
-        style="display: block;"
         width="650"
       >
         <g
@@ -15137,7 +15173,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -15488,10 +15524,14 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="292"
         role="region"
-        style="display: block;"
         width="650"
       >
         <g
@@ -16330,10 +16370,14 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="292"
         role="region"
-        style="display: block;"
         width="650"
       >
         <g

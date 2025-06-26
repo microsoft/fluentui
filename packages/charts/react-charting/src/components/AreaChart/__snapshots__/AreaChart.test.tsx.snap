@@ -35,10 +35,14 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
       >
         <svg
           aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
+          class=
+
+              {
+                display: block;
+              }
           focusable="false"
           height="310"
           role="region"
-          style="display: block;"
           width="0"
         >
           <g
@@ -415,7 +419,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -731,10 +735,14 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
       >
         <svg
           aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
+          class=
+
+              {
+                display: block;
+              }
           focusable="false"
           height="310"
           role="region"
-          style="display: block;"
           width="0"
         >
           <g
@@ -1111,7 +1119,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -1331,10 +1339,14 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
       >
         <svg
           aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
+          class=
+
+              {
+                display: block;
+              }
           focusable="false"
           height="310"
           role="region"
-          style="display: block;"
           width="0"
         >
           <g
@@ -1711,7 +1723,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -1930,10 +1942,14 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
     >
       <svg
         aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="0"
         role="region"
-        style="display: block;"
         width="0"
       >
         <g
@@ -2081,7 +2097,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -2232,10 +2248,14 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
     >
       <svg
         aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="0"
         role="region"
-        style="display: block;"
         width="0"
       >
         <g
@@ -2412,7 +2432,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -2563,10 +2583,14 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
     >
       <svg
         aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="0"
         role="region"
-        style="display: block;"
         width="0"
       >
         <g
@@ -2743,7 +2767,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -2894,10 +2918,14 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
     >
       <svg
         aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="0"
         role="region"
-        style="display: block;"
         width="0"
       >
         <g
@@ -3065,7 +3093,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -3216,10 +3244,14 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
     >
       <svg
         aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="0"
         role="region"
-        style="display: block;"
         width="0"
       >
         <g
@@ -3536,10 +3568,14 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
     >
       <svg
         aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="0"
         role="region"
-        style="display: block;"
         width="0"
       >
         <g
@@ -3708,10 +3744,14 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
     >
       <svg
         aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="0"
         role="region"
-        style="display: block;"
         width="0"
       >
         <g
@@ -3888,7 +3928,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -4039,10 +4079,14 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
     >
       <svg
         aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="0"
         role="region"
-        style="display: block;"
         width="0"
       >
         <g
@@ -4219,7 +4263,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -4370,10 +4414,14 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
     >
       <svg
         aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="0"
         role="region"
-        style="display: block;"
         width="0"
       >
         <g
@@ -4550,7 +4598,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -4701,10 +4749,14 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
     >
       <svg
         aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
         height="0"
         role="region"
-        style="display: block;"
         width="0"
       >
         <g
@@ -4881,7 +4933,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

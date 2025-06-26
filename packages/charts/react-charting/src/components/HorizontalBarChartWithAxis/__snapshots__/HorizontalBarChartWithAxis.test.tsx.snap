@@ -37,13 +37,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
   >
     <svg
       aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -164,7 +164,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -633,13 +633,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
   >
     <svg
       aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -760,7 +760,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -1229,13 +1229,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
   >
     <svg
       aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -1356,7 +1356,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -1825,13 +1825,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
   >
     <svg
       aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -1934,13 +1934,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
   >
     <svg
       aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -2061,7 +2061,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -2218,13 +2218,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
   >
     <svg
       aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
+      className=
+
+          {
+            display: block;
+          }
       height={0}
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
       width={0}
     >
       <g
@@ -2345,7 +2345,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
