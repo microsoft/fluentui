@@ -10,20 +10,20 @@ import type { SplitNavItemState, SplitNavItemSlots } from './SplitNavItem.types'
  *
  * Helper function to get button slots
  */
-const renderButtonSlot = (Slot?: React.ElementType, SlotTooltip?: React.ElementType) => {
-  if (!Slot) {
+const renderButtonSlot = (Button?: React.ElementType, ButtonTooltip?: React.ElementType) => {
+  if (!Button) {
     return null;
   }
 
-  if (SlotTooltip) {
+  if (ButtonTooltip) {
     return (
-      <SlotTooltip>
-        <Slot />
-      </SlotTooltip>
+      <ButtonTooltip>
+        <Button />
+      </ButtonTooltip>
     );
   }
 
-  return <Slot />;
+  return <Button />;
 };
 
 /**
