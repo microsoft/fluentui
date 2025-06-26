@@ -3,6 +3,7 @@ import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNC
 import type {
   ComponentType,
   FunctionComponent,
+  JSXIntrinsicElements,
   NamedExoticComponent,
   PropsWithoutChildren,
   PropsWithoutRef,
@@ -33,8 +34,7 @@ export type SlotShorthandValue = React.ReactElement | string | number | Iterable
  * it shouldn't be used as the type of a slot.
  */
 export type UnknownSlotProps = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'style'> & {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof JSXIntrinsicElements;
   children?: ReactNode;
 };
 
@@ -100,24 +100,13 @@ type EmptyIntrinsicElements =
   | 'wbr';
 
 /**
- * Helper type for {@link Slot}. Modifies `JSX.IntrinsicElements[Type]`:
+ * Helper type for {@link Slot}. Modifies `JSXIntrinsicElements[Type]`:
  * * Removes legacy string ref.
  * * Disallows children for empty tags like 'img'.
  */
-type IntrinsicElementProps<
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  Type extends keyof JSX.IntrinsicElements,
-> = Type extends EmptyIntrinsicElements
-  ? PropsWithoutChildren<
-      React.PropsWithRef<
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        JSX.IntrinsicElements[Type]
-      >
-    >
-  : React.PropsWithRef<
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      JSX.IntrinsicElements[Type]
-    >;
+type IntrinsicElementProps<Type extends keyof JSXIntrinsicElements> = Type extends EmptyIntrinsicElements
+  ? PropsWithoutChildren<React.PropsWithRef<JSXIntrinsicElements[Type]>>
+  : React.PropsWithRef<JSXIntrinsicElements[Type]>;
 
 /**
  * The props type and shorthand value for a slot. Type is either a single intrinsic element like `'div'`,
@@ -142,18 +131,13 @@ type IntrinsicElementProps<
  * ```
  */
 export type Slot<
-  Type extends  // eslint-disable-next-line @typescript-eslint/no-deprecated
-    | keyof JSX.IntrinsicElements
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    | ComponentType<any>
-    | UnknownSlotProps,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  AlternateAs extends keyof JSX.IntrinsicElements = never,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Type extends keyof JSXIntrinsicElements | ComponentType<any> | UnknownSlotProps,
+  AlternateAs extends keyof JSXIntrinsicElements = never,
 > = IsSingleton<Extract<Type, string>> extends true
   ?
       | WithSlotShorthandValue<
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
-          Type extends keyof JSX.IntrinsicElements // Intrinsic elements like `div`
+          Type extends keyof JSXIntrinsicElements // Intrinsic elements like `div`
             ? { as?: Type } & WithSlotRenderFunction<IntrinsicElementProps<Type>>
             : Type extends ComponentType<infer Props> // Component types like `typeof Button`
             ? Props extends UnknownSlotProps
@@ -185,8 +169,7 @@ export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends ne
  * type Example<T> = T extends AsIntrinsicElement<infer As> ? As : never;
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = { as?: As };
+export type AsIntrinsicElement<As extends keyof JSXIntrinsicElements> = { as?: As };
 
 /**
  * Removes SlotShorthandValue and null from the slot type, extracting just the slot's Props object.
@@ -285,10 +268,7 @@ export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> &
      */
     [SLOT_ELEMENT_TYPE_SYMBOL]:
       | ComponentType<Props>
-      | (Props extends AsIntrinsicElement<infer As>
-          ? As
-          : // eslint-disable-next-line @typescript-eslint/no-deprecated
-            keyof JSX.IntrinsicElements);
+      | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSXIntrinsicElements);
     /**
      * @internal
      * The original className prop for the slot, before being modified by the useStyles hook.

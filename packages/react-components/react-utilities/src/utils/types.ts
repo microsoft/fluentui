@@ -166,13 +166,13 @@ export type JSXElement = React.ReactElement<
  * Our own alias for `JSX.IntrinsicElements` type that is compatible with both React 17 and React >=18.
  * Use this type to get the intrinsic elements from React types in order to avoid issues between different React versions.
  */
-export type JSXIntrinsicElements =
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore - all branches needs to be ignored in order to work with different React versions. This one would throw an error in React 19.
-  keyof JSX.IntrinsicElements extends string
-    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore - all branches needs to be ignored in order to work with different React versions. This one would throw an error in React 19
-      JSX.IntrinsicElements
-    : // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore - all branches needs to be ignored in order to work with different React versions. This one would throw an error in React 17
-      React.JSX.IntrinsicElements;
+export type JSXIntrinsicElements = JSX.IntrinsicElements;
+// // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// // @ts-ignore - all branches needs to be ignored in order to work with different React versions. This one would throw an error in React 19.
+// keyof JSX.IntrinsicElements extends string
+//   ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//     // @ts-ignore - all branches needs to be ignored in order to work with different React versions. This one would throw an error in React 19
+//     JSX.IntrinsicElements
+//   : // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//     // @ts-ignore - all branches needs to be ignored in order to work with different React versions. This one would throw an error in React 17
+//     React.JSX.IntrinsicElements;

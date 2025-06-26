@@ -82,7 +82,7 @@ export function getParent(child: Node | null, options?: GetParentOptions): Node 
 
 // @public
 export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className">, ExcludedPropKeys extends Extract<keyof Props, string> = never>({ primarySlotTagName, props, excludedPropNames, }: {
-    primarySlotTagName: keyof JSX.IntrinsicElements;
+    primarySlotTagName: keyof JSXIntrinsicElements;
     props: Props;
     excludedPropNames?: ExcludedPropKeys[] | undefined;
 }) => {
@@ -144,6 +144,12 @@ export function isSlot<Props extends {}>(element: unknown): element is SlotCompo
 
 // @public
 export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | React_2.TouchEvent;
+
+// @public
+export type JSXElement = React_2.ReactElement<any, any>;
+
+// @public
+export type JSXIntrinsicElements = JSX.IntrinsicElements;
 
 // @internal
 export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
@@ -258,7 +264,7 @@ export { SelectionMode_2 as SelectionMode }
 export function setVirtualParent(child: Node, parent?: Node): void;
 
 // @public
-export type Slot<Type extends keyof JSX.IntrinsicElements | ComponentType<any> | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
+export type Slot<Type extends keyof JSXIntrinsicElements | ComponentType<any> | UnknownSlotProps, AlternateAs extends keyof JSXIntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSXIntrinsicElements ? {
     as?: Type;
 } & WithSlotRenderFunction<IntrinsicElementProps<Type>> : Type extends ComponentType<infer Props> ? Props extends UnknownSlotProps ? Props : WithSlotRenderFunction<Props> : Type> | (AlternateAs extends unknown ? {
     as: AlternateAs;
@@ -293,13 +299,13 @@ export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> & Functi
     children?: ReactNode;
 }> & {
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
-    [SLOT_ELEMENT_TYPE_SYMBOL]: ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    [SLOT_ELEMENT_TYPE_SYMBOL]: ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSXIntrinsicElements);
     [SLOT_CLASS_NAME_PROP_SYMBOL]?: string;
 };
 
 // @public (undocumented)
 export type SlotOptions<Props extends UnknownSlotProps> = {
-    elementType: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    elementType: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSXIntrinsicElements);
     defaultProps?: Partial<Props>;
 };
 
@@ -335,7 +341,7 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
 
 // @public
 export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'className' | 'style'> & {
-    as?: keyof JSX.IntrinsicElements;
+    as?: keyof JSXIntrinsicElements;
     children?: ReactNode;
 };
 
