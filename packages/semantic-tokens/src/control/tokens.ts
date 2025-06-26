@@ -23,6 +23,7 @@ import {
   fontFamilyBase,
   fontWeightRegular,
   fontWeightSemibold,
+  spacingVerticalS,
   spacingHorizontalM,
   spacingHorizontalNone,
   spacingHorizontalXXL,
@@ -63,6 +64,7 @@ import {
   colorStatusSuccessBackground1,
   colorStatusSuccessBorder1,
   colorStatusSuccessForeground1,
+  colorNeutralBackground3,
   colorTransparentBackground,
   shadow64,
 } from '../legacy/tokens';
@@ -305,7 +307,7 @@ export const sizeCtrlSmDefault = `var(${sizeCtrlSmDefaultRaw}, 32px)`;
 export const sizeCtrlSmIcon = `var(${sizeCtrlSmIconRaw}, 20px)`;
 export const sizeCtrlLgDefault = `var(${sizeCtrlLgDefaultRaw}, 44px)`;
 export const sizeCtrlLgIcon = `var(${sizeCtrlLgIconRaw}, 24px)`;
-export const paddingContentAlignDefault = `var(${paddingContentAlignDefaultRaw})`;
+export const paddingContentAlignDefault = `var(${paddingContentAlignDefaultRaw}, ${spacingVerticalS})`;
 export const paddingContentAlignOutdentIconOnSubtle = `var(${paddingContentAlignOutdentIconOnSubtleRaw}, ${spacingHorizontalM})`;
 export const paddingContentNone = `var(${paddingContentNoneRaw}, ${spacingHorizontalNone})`;
 export const paddingContentAlignOutdentTextOnSubtle = `var(${paddingContentAlignOutdentTextOnSubtleRaw})`;
@@ -334,7 +336,7 @@ export const gapBetweenContentNone = `var(${gapBetweenContentNoneRaw})`;
 export const gapBetweenContentXxSmall = `var(${gapBetweenContentXxSmallRaw})`;
 export const gapBetweenContentXSmall = `var(${gapBetweenContentXSmallRaw})`;
 export const gapBetweenContentSmall = `var(${gapBetweenContentSmallRaw})`;
-export const gapBetweenCtrlDefault = `var(${gapBetweenCtrlDefaultRaw})`;
+export const gapBetweenCtrlDefault = `var(${gapBetweenCtrlDefaultRaw}, ${spacingHorizontalM})`;
 export const gapBetweenContentMedium = `var(${gapBetweenContentMediumRaw})`;
 export const gapBetweenContentLarge = `var(${gapBetweenContentLargeRaw})`;
 export const gapBetweenContentXLarge = `var(${gapBetweenContentXLargeRaw})`;
@@ -434,12 +436,12 @@ export const statusSuccessTintBackground = `var(${statusSuccessTintBackgroundRaw
 export const statusSuccessTintStroke = `var(${statusSuccessTintStrokeRaw}, ${colorStatusSuccessBorder1})`;
 export const statusSuccessTintForeground = `var(${statusSuccessTintForegroundRaw}, ${colorStatusSuccessForeground1})`;
 export const statusImportantBackground = `var(${statusImportantBackgroundRaw})`;
-export const statusImportantTintBackground = `var(${statusImportantTintBackgroundRaw})`;
+export const statusImportantTintBackground = `var(${statusImportantTintBackgroundRaw}, ${colorNeutralBackground3})`;
 export const statusImportantTintStroke = `var(${statusImportantTintStrokeRaw})`;
 export const statusImportantTintForeground = `var(${statusImportantTintForegroundRaw})`;
 export const statusInformativeBackground = `var(${statusInformativeBackgroundRaw})`;
 export const statusInformativeTintForeground = `var(${statusInformativeTintForegroundRaw})`;
-export const statusInformativeTintStroke = `var(${statusInformativeTintStrokeRaw})`;
+export const statusInformativeTintStroke = `var(${statusInformativeTintStrokeRaw}, ${colorNeutralStroke1})`;
 export const statusInformativeTintBackground = `var(${statusInformativeTintBackgroundRaw})`;
 export const statusAwayForeground = `var(${statusAwayForegroundRaw})`;
 export const statusOofForeground = `var(${statusOofForegroundRaw})`;

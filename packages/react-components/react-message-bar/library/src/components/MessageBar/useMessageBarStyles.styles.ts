@@ -19,19 +19,19 @@ const useRootBaseStyles = makeResetStyles({
   paddingRight: semanticTokens.paddingContentAlignOutdentIconOnSubtle,
   paddingTop: semanticTokens._ctrlMessageBarPaddingVertical,
   paddingBottom: semanticTokens._ctrlMessageBarPaddingVertical,
-  border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens._ctrlMessageBarInfoBorderColor}`,
+  border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.statusInformativeTintStroke}`,
   borderRadius: semanticTokens.cornerCtrlRest,
   alignItems: 'center',
   minHeight: '36px',
   boxSizing: 'border-box',
-  backgroundColor: semanticTokens._ctrlMessageBarInfoBackgroundColor,
+  backgroundColor: semanticTokens.statusImportantTintBackground,
 });
 
 const useIconBaseStyles = makeResetStyles({
   gridArea: 'icon',
   fontSize: semanticTokens.textGlobalBody1FontSize,
   marginRight: semanticTokens.gapInsideCtrlDefault,
-  color: semanticTokens._ctrlMessageBarInfoIconColor,
+  color: semanticTokens.foregroundCtrlIconOnNeutralRest,
   height: semanticTokens.textRampItemHeaderLineHeight,
   display: 'flex',
   alignItems: 'center',
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   rootMultiline: {
     whiteSpace: 'normal',
     alignItems: 'start',
-    paddingTop: semanticTokens._ctrlMessageBarMultilinePaddingTop,
+    paddingTop: semanticTokens._ctrlMessageBarSpacingTop,
     gridTemplateColumns: 'auto 1fr auto',
     gridTemplateAreas: `
       "icon body actions"

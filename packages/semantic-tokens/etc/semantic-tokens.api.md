@@ -2210,37 +2210,13 @@ export const ctrlLiteFilterStrokeWidthSelected = "var(--smtc-ctrl-lite-filter-st
 export const ctrlLiteFilterStrokeWidthSelectedRaw = "--smtc-ctrl-lite-filter-stroke-width-selected";
 
 // @public
-export const _ctrlMessageBarActionsColumnGap = "var(--smtc-gap-between-ctrl-default, var(--spacingHorizontalM))";
-
-// @public
-export const _ctrlMessageBarActionsMultilineMarginBottom = "var(--smtc-padding-content-align-default, var(--spacingVerticalS))";
-
-// @public
-export const _ctrlMessageBarActionsMultilineMarginTop = "var(--smtc-padding-content-align-default, var(--spacingVerticalMNudge))";
-
-// @public
 export const _ctrlMessageBarActionsMultilinePaddingRight = "var(--smtc-padding-content-align-default, var(--spacingVerticalM))";
 
 // @public
 export const _ctrlMessageBarErrorIconColor = "var(--smtc-status-danger-tint-foreground, var(--colorStatusDangerForeground1))";
 
 // @public
-export const _ctrlMessageBarInfoBackgroundColor = "var(--smtc-status-important-tint-background, var(--colorNeutralBackground3))";
-
-// @public
-export const _ctrlMessageBarInfoBorderColor = "var(--smtc-status-informative-tint-stroke, var(--colorNeutralStroke1))";
-
-// @public
-export const _ctrlMessageBarInfoIconColor = "var(--smtc-foreground-ctrl-icon-on-neutral-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground3)))";
-
-// @public
-export const _ctrlMessageBarMultilinePaddingTop = "var(--smtc-padding-content-align-default, var(--spacingVerticalMNudge))";
-
-// @public
 export const _ctrlMessageBarPaddingContentAlignDefault = "var(--smtc-padding-content-align-default, 12px)";
-
-// @public
-export const _ctrlMessageBarPaddingRight = "var(--smtc-gap-between-ctrl-default, var(--spacingHorizontalM))";
 
 // @public
 export const _ctrlMessageBarPaddingVertical = "var(--smtc-padding-content-align-outdent-icon-on-subtle, 0px)";
@@ -2249,7 +2225,7 @@ export const _ctrlMessageBarPaddingVertical = "var(--smtc-padding-content-align-
 export const _ctrlMessageBarReflowSpacerMarginBottom = "var(--smtc-padding-content-align-default, var(--spacingVerticalS))";
 
 // @public
-export const _ctrlMessageBarTitleFontSize = "var(--smtc-text-ramp-item-header-font-size, var(--smtc-text-global-body2-font-size, var(--fontSizeBase300)))";
+export const _ctrlMessageBarSpacingTop = "var(--smtc-padding-content-align-default, var(--spacingVerticalMNudge))";
 
 // @public
 export const _ctrlMessageBarTitleLineHeight = "var(--smtc-text-ramp-item-header-line-height, var(--smtc-text-global-body2-line-height, var(--lineHeightBase300)))";
@@ -2993,7 +2969,7 @@ export const foregroundCtrlIconOnNeutralPressed = "var(--smtc-foreground-ctrl-ic
 export const foregroundCtrlIconOnNeutralPressedRaw = "--smtc-foreground-ctrl-icon-on-neutral-pressed";
 
 // @public (undocumented)
-export const foregroundCtrlIconOnNeutralRest = "var(--smtc-foreground-ctrl-icon-on-neutral-rest, var(--smtc-foreground-ctrl-neutral-primary-rest))";
+export const foregroundCtrlIconOnNeutralRest = "var(--smtc-foreground-ctrl-icon-on-neutral-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground3)))";
 
 // @public (undocumented)
 export const foregroundCtrlIconOnNeutralRestRaw = "--smtc-foreground-ctrl-icon-on-neutral-rest";
@@ -3269,7 +3245,7 @@ export const gapBetweenContentXxSmall = "var(--smtc-gap-between-content-xx-small
 export const gapBetweenContentXxSmallRaw = "--smtc-gap-between-content-xx-small";
 
 // @public (undocumented)
-export const gapBetweenCtrlDefault = "var(--smtc-gap-between-ctrl-default)";
+export const gapBetweenCtrlDefault = "var(--smtc-gap-between-ctrl-default, var(--spacingHorizontalM))";
 
 // @public (undocumented)
 export const gapBetweenCtrlDefaultRaw = "--smtc-gap-between-ctrl-default";
@@ -4105,7 +4081,7 @@ export const paddingCardNestedImage = "var(--smtc-padding-card-nested-image, var
 export const paddingCardNestedImageRaw = "--smtc-padding-card-nested-image";
 
 // @public (undocumented)
-export const paddingContentAlignDefault = "var(--smtc-padding-content-align-default)";
+export const paddingContentAlignDefault = "var(--smtc-padding-content-align-default, var(--spacingVerticalS))";
 
 // @public (undocumented)
 export const paddingContentAlignDefaultRaw = "--smtc-padding-content-align-default";
@@ -4489,7 +4465,7 @@ export const statusImportantStroke = "var(--smtc-status-important-stroke, var(--
 export const statusImportantStrokeRaw = "--smtc-status-important-stroke";
 
 // @public (undocumented)
-export const statusImportantTintBackground = "var(--smtc-status-important-tint-background)";
+export const statusImportantTintBackground = "var(--smtc-status-important-tint-background, var(--colorNeutralBackground3))";
 
 // @public (undocumented)
 export const statusImportantTintBackgroundRaw = "--smtc-status-important-tint-background";
@@ -4537,7 +4513,7 @@ export const statusInformativeTintForeground = "var(--smtc-status-informative-ti
 export const statusInformativeTintForegroundRaw = "--smtc-status-informative-tint-foreground";
 
 // @public (undocumented)
-export const statusInformativeTintStroke = "var(--smtc-status-informative-tint-stroke)";
+export const statusInformativeTintStroke = "var(--smtc-status-informative-tint-stroke, var(--colorNeutralStroke1))";
 
 // @public (undocumented)
 export const statusInformativeTintStrokeRaw = "--smtc-status-informative-tint-stroke";
@@ -5269,7 +5245,7 @@ export const textRampItemBodyLineHeight = "var(--smtc-text-ramp-item-body-line-h
 export const textRampItemBodyLineHeightRaw = "--smtc-text-ramp-item-body-line-height";
 
 // @public (undocumented)
-export const textRampItemHeaderFontSize = "var(--smtc-text-ramp-item-header-font-size, var(--smtc-text-global-body2-font-size))";
+export const textRampItemHeaderFontSize = "var(--smtc-text-ramp-item-header-font-size, var(--smtc-text-global-body2-font-size, var(--fontSizeBase300)))";
 
 // @public (undocumented)
 export const textRampItemHeaderFontSizeRaw = "--smtc-text-ramp-item-header-font-size";

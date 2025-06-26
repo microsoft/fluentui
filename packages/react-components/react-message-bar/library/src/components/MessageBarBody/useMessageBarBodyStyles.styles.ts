@@ -13,7 +13,7 @@ const useRootBaseStyles = makeResetStyles({
   fontWeight: semanticTokens.textStyleDefaultRegularWeight,
   lineHeight: semanticTokens.textRampItemBodyLineHeight,
   gridArea: 'body',
-  paddingRight: semanticTokens._ctrlMessageBarPaddingRight,
+  paddingRight: semanticTokens.gapBetweenCtrlDefault,
 });
 
 /**

@@ -12,7 +12,7 @@ export const messageBarTitleClassNames: SlotClassNames<MessageBarTitleSlots> = {
  */
 const useRootBaseStyles = makeResetStyles({
   fontFamily: semanticTokens.textStyleDefaultHeaderFontFamily,
-  fontSize: semanticTokens._ctrlMessageBarTitleFontSize,
+  fontSize: semanticTokens.textRampItemHeaderFontSize,
   fontWeight: semanticTokens.textStyleDefaultHeaderWeight,
   lineHeight: semanticTokens._ctrlMessageBarTitleLineHeight,
 

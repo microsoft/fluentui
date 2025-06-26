@@ -14,8 +14,8 @@ export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots>
 const useRootBaseStyles = makeResetStyles({
   gridArea: 'secondaryActions',
   display: 'flex',
-  columnGap: semanticTokens._ctrlMessageBarActionsColumnGap,
-  paddingRight: semanticTokens._ctrlMessageBarPaddingRight,
+  columnGap: semanticTokens.gapBetweenCtrlDefault,
+  paddingRight: semanticTokens.gapBetweenCtrlDefault,
 });
 
 const useContainerActionBaseStyles = makeResetStyles({
@@ -25,8 +25,8 @@ const useContainerActionBaseStyles = makeResetStyles({
 const useMultilineStyles = makeStyles({
   root: {
     justifyContent: 'end',
-    marginTop: semanticTokens._ctrlMessageBarActionsMultilineMarginTop,
-    marginBottom: semanticTokens._ctrlMessageBarActionsMultilineMarginBottom,
+    marginTop: semanticTokens._ctrlMessageBarSpacingTop,
+    marginBottom: semanticTokens.paddingContentAlignDefault,
     marginRight: '0px',
     paddingRight: semanticTokens._ctrlMessageBarActionsMultilinePaddingRight,
   },
