@@ -32,6 +32,7 @@ export const VerticalStackedBarAxisTooltip = () => {
   const [height, setHeight] = React.useState<number>(350);
   const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
   const [roundCorners, setRoundCorners] = React.useState<boolean>(false);
+  const [barGapMax, setBarGapMax] = React.useState<number>(2);
 
   const _onBarWidthCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
     setBarWidthEnabled(checked.checked as boolean);
@@ -220,6 +221,7 @@ export const VerticalStackedBarAxisTooltip = () => {
           xAxisOuterPadding={xAxisOuterPaddingEnabled ? xAxisOuterPadding : undefined}
           enableGradient={enableGradient}
           roundCorners={roundCorners}
+          barGapMax={barGapMax}
         />
       </div>
     </div>

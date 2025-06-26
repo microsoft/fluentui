@@ -321,6 +321,7 @@ export const transformPlotlyJsonToVSBCProps = (
     mode: 'plotly',
     ...secondaryYAxisValues,
     hideTickOverlap: true,
+    barGapMax: 2,
   };
 };
 
