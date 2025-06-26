@@ -136,8 +136,24 @@ export type PropsWithoutChildren<P> = 'children' extends keyof P ? DistributiveO
 export type ReactVersionDependent<Modern, Legacy> = {} extends React.ReactNode ? Legacy : Modern;
 
 /**
- * Our own `JSX.Element` type that is compatible with both React 17 and React >=18.
- * Use this type to get the intrinsic elements from React types in order to avoid issues between different React versions.
+ * Our own alias for `JSX.Element` type that is compatible with both React 17 and React >=18.
+ * Use this type when annotating JSX markup in all our code in order to avoid issues between different React versions.
+ *
+ * Example usage:
+ *
+ * BAD:
+ * ```tsx
+ * const renderFoo = (state: FooState) = <div {...props}>Hello World</div>;
+ * // infers
+ * // R17:  declare const renderFoo: (state: FooState) => JSX.Element;
+ * // R18+: declare const renderFoo: (state: FooState) => React.JSX.Element;
+ * ```
+ *
+ * GOOD:
+ * ```tsx
+ * import type { JSXElement } from '@fluentui/react-utilities';
+ * const renderFoo = (state: FooState): JSXElement = <div {...props}>Hello World</div>;
+ * ```
  */
 export type JSXElement = React.ReactElement<
   /* eslint-disable @typescript-eslint/no-explicit-any */
