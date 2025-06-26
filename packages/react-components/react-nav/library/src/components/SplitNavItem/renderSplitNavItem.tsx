@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
