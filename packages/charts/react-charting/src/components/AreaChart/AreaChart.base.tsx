@@ -260,7 +260,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
           ref={this._cartesianChartRef}
           /* eslint-disable react/jsx-no-bind */
-          // eslint-disable-next-line react/no-children-prop
+           
           children={(props: IChildProps) => {
             this._xAxisRectScale = props.xScale;
             const ticks = this._xAxisRectScale.ticks();

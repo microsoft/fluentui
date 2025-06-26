@@ -259,7 +259,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         ref={this._cartesianChartRef}
         tickParams={tickParams}
         /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
+         
         children={(props: IChildProps) => {
           this._xAxisScale = props.xScale;
           this._yAxisScale = props.yScalePrimary;

@@ -774,7 +774,7 @@ export const createStringYAxis = (
  * @param values
  */
 // changing the type to any as it is used by multiple charts with different data types
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 export function calloutData(values: ((ILineChartPoints | IScatterChartPoints) & { index?: number })[]) {
   let combinedResult: ((ILineChartDataPoint | IScatterChartDataPoint) & {
     legend: string;
@@ -974,7 +974,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
 /**
  * This method used for wrapping of y axis labels (tick values).
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 export function createYAxisLabels(
   node: SVGElement | null,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
