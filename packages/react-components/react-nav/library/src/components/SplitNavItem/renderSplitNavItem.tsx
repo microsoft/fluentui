@@ -10,27 +10,20 @@ import type { SplitNavItemState, SplitNavItemSlots } from './SplitNavItem.types'
  *
  * Helper function to get button slots
  */
-const getButtonSlot = (slot: keyof SplitNavItemSlots, state: SplitNavItemState) => {
-  assertSlots<SplitNavItemSlots>(state);
-
-  const Button = state[slot];
-
-  if (!Button) {
+const renderButtonSlot = (Slot?: React.ElementType, SlotTooltip?: React.ElementType) => {
+  if (!Slot) {
     return null;
   }
 
-  const tooltipSlotName = (slot + 'Tooltip') as keyof SplitNavItemSlots;
-  const Tooltip = state[tooltipSlotName];
-
-  if (Tooltip) {
+  if (SlotTooltip) {
     return (
-      <Tooltip>
-        <Button />
-      </Tooltip>
+      <SlotTooltip>
+        <Slot />
+      </SlotTooltip>
     );
   }
 
-  return <Button />;
+  return <Slot />;
 };
 
 /**
@@ -42,9 +35,9 @@ export const renderSplitNavItem_unstable = (state: SplitNavItemState) => {
   return (
     <state.root>
       {state.navItem && <state.navItem />}
-      {getButtonSlot('actionButton', state)}
-      {getButtonSlot('menuButton', state)}
-      {getButtonSlot('toggleButton', state)}
+      {renderButtonSlot(state.actionButton, state.actionButtonTooltip)}
+      {renderButtonSlot(state.menuButton, state.menuButtonTooltip)}
+      {renderButtonSlot(state.toggleButton, state.toggleButtonTooltip)}
     </state.root>
   );
 };
