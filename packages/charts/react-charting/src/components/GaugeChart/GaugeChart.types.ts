@@ -331,4 +331,9 @@ export interface IGaugeChartStyles {
    * Styles for the shape object in the callout
    */
   shapeStyles?: IStyle;
+
+  /**
+   *
+   */
+  chartWrapper?: IStyle;
 }

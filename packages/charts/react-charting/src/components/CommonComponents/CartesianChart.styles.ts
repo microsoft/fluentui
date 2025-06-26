@@ -198,5 +198,8 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         fill: 'Canvas',
       },
     },
+    chart: {
+      display: 'block',
+    },
   };
 };

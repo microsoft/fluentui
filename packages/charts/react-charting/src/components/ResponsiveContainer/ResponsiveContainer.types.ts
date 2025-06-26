@@ -9,7 +9,8 @@ export interface IResponsiveChildProps {
   width?: number;
   height?: number;
   shouldResize?: number;
-  styles?: IStyleFunctionOrObject<{}, { root: IStyle }>;
+  enableReflow?: boolean;
+  styles?: IStyleFunctionOrObject<{}, { root: IStyle; chart: IStyle }>;
 }
 
 /**

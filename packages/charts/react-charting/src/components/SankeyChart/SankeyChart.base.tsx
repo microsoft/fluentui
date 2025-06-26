@@ -855,7 +855,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           in a non-sequential and erratic manner within a 2D grid.
           */}
           <FocusZone direction={FocusZoneDirection.vertical} className={classNames.chartWrapper}>
-            <svg width={width} height={height} id={this._chartId}>
+            <svg width={width} height={height} id={this._chartId} className={classNames.chart}>
               {nodeLinkDomOrderArray.map(item => {
                 if (item.type === 'node') {
                   return (

@@ -151,6 +151,11 @@ export interface ISankeyChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: IStyle;
+
+  /**
+   *
+   */
+  chart?: IStyle;
 }
 
 /**

@@ -70,20 +70,39 @@ export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props =>
     }
 
     return React.Children.map(props.children, child => {
+      const commonStyles = {
+        root: {
+          width: '100%',
+          height: '100%',
+          ...child.props.styles?.root,
+        },
+        chartWrapper: {
+          width: '100%',
+        },
+        chart: {
+          // This overrides the pixel width of svg allowing it to resize properly within flexbox or grid
+          width: '100%',
+          // TODO: Add comment about height
+          ...child.props.styles?.chart,
+        },
+      };
+
       return React.cloneElement<IResponsiveChildProps>(child, {
         width: calculatedWidth,
         height: calculatedHeight,
         shouldResize: (calculatedWidth ?? 0) + (calculatedHeight ?? 0),
+        enableReflow: false,
         styles: {
+          ...commonStyles,
+          subComponentStyles: {
+            cartesianStyles: {
+              ...commonStyles,
+              ...child.props.styles?.subComponentStyles?.cartesianStyles,
+            },
+            ...child.props.styles?.subComponentStyles,
+          },
           // Keep components styles
           ...child.props.styles,
-          root: {
-            ...child.props.styles?.root,
-            // Ensure the child element fills the parent container
-            // https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height
-            width: calculatedWidth,
-            height: calculatedHeight,
-          },
         },
       });
     });
