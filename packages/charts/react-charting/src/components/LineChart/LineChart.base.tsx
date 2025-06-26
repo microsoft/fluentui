@@ -717,15 +717,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       });
     })!;
 
-    if (
-      (!this._xMax && this._xMax !== 0) ||
-      (!this._xMin && this._xMin !== 0) ||
-      this._xMin === Number.NEGATIVE_INFINITY ||
-      this._xMax === Number.POSITIVE_INFINITY
-    ) {
-      this._setXMinMaxValues(this._points);
-    }
-
     const classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
     });
@@ -813,13 +804,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   Math.max(currentMarkerSize ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize : 3.5, 4) +
                   12
                 }
-                fontSize={12}
-                fill={theme?.semanticColors.bodyText}
-                textAnchor="middle"
-                dominantBaseline="middle"
                 className={classNames.markerLabel}
                 opacity={isLegendSelected ? 1 : 0.1}
-                style={{ pointerEvents: 'none' }}
               >
                 {text}
               </text>
@@ -1004,10 +990,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       Math.max(currentMarkerSize ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize : 4, 4) +
                       12
                     }
-                    fontSize={12}
-                    fill={theme?.semanticColors.bodyText}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
                     className={classNames.markerLabel}
                     opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
                   >
@@ -1126,10 +1108,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                           Math.max(currentMarkerSize ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize : 4, 4) +
                           12
                         }
-                        fontSize={12}
-                        fill={theme?.semanticColors.bodyText}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
                         className={classNames.markerLabel}
                         opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
                       >
@@ -1799,20 +1777,16 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     chartType: ChartTypes,
     barWidth?: number,
   ): IDomainNRange => {
-    let sDate: Date;
-    let lDate: Date;
-
-    sDate = d3Min(points, (point: ILineChartPoints) => {
-      return d3Min(point.data, (item: ILineChartDataPoint) => item.x as Date);
-    })!;
-
-    lDate = d3Max(points, (point: ILineChartPoints) => {
-      return d3Max(point.data, (item: ILineChartDataPoint) => item.x as Date);
-    })!;
-
+    this._setXMinMaxValues(points);
     // Include tickValues if present
-    sDate = d3Min([...tickValues, sDate])!;
-    lDate = d3Max([...tickValues, lDate])!;
+    const sDate =
+      tickValues && tickValues.length > 0
+        ? (d3Min([...tickValues, new Date(this._xMin)])! as Date)
+        : new Date(this._xMin);
+    const lDate =
+      tickValues && tickValues.length > 0
+        ? (d3Max([...tickValues, new Date(this._xMax)])! as Date)
+        : new Date(this._xMax);
 
     // Calculate time-based padding (e.g. 10% of the date range)
     const dateRange = lDate.getTime() - sDate.getTime();
