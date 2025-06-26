@@ -11,3 +11,10 @@ export interface UseOverflowContainerReturn<TElement extends HTMLElement>
    */
   containerRef: React.RefObject<TElement>;
 }
+
+export interface OverflowImperativeRef {
+  /**
+   * Used to force an update of the overflow on demand
+   */
+  updateOverflow: () => void;
+}
