@@ -1,0 +1,6 @@
+{
+  "name": "MenuSubmenu",
+  "component": "Menu",
+  "folder": "Menu",
+  "story": "Nested Submenus"
+}
