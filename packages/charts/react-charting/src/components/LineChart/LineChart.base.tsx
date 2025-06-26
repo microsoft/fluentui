@@ -717,7 +717,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       });
     })!;
 
-    if (!this._xMax || !this._xMin || this._xMin === -Infinity || this._xMax === Infinity) {
+    if (
+      (!this._xMax && this._xMax !== 0) ||
+      (!this._xMin && this._xMin !== 0) ||
+      this._xMin === Number.NEGATIVE_INFINITY ||
+      this._xMax === Number.POSITIVE_INFINITY
+    ) {
       this._setXMinMaxValues(this._points);
     }
 
@@ -799,7 +804,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               onBlur={this._handleMouseOut}
               {...this._getClickHandler(this._points[i].data[0].onDataPointClick)}
             />
-            {text && supportsTextMode && (
+            {supportsTextMode && text && (
               <text
                 key={`${circleId}-label`}
                 x={this._xAxisScale(x1)}
@@ -1885,5 +1890,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
     this._xMin = this._isXAxisDateType ? (minVal as Date).getTime() : (minVal as number);
     this._xMax = this._isXAxisDateType ? (maxVal as Date).getTime() : (maxVal as number);
+    this._xMin = this._xMin === Number.NEGATIVE_INFINITY || (!this._xMin && this._xMin !== 0) ? 0 : this._xMin;
+    this._xMax = this._xMax === Number.POSITIVE_INFINITY || (!this._xMax && this._xMax !== 0) ? 0 : this._xMax;
   };
 }
