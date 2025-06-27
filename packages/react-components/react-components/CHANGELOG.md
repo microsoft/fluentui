@@ -1,8 +1,54 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 23 Jun 2025 15:49:46 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jun 2025 13:39:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.66.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.5)
+
+Fri, 27 Jun 2025 13:39:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.4..@fluentui/react-components_v9.66.5)
+
+### Patches
+
+- `@fluentui/react-nav`
+  - fix: move action button to be the first button ([PR #34718](https://github.com/microsoft/fluentui/pull/34718) by marcosvmmoura@gmail.com)
+- `@fluentui/react-positioning`
+  - fix: stop rAF if no mouse movement happening ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by olfedias@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix(focusVisiblePolyfill): Strict mode compat after portal changes ([PR #34700](https://github.com/microsoft/fluentui/pull/34700) by lingfangao@hotmail.com)
+
+## [9.66.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.4)
+
+Thu, 26 Jun 2025 14:11:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.3..@fluentui/react-components_v9.66.4)
+
+### Minor changes
+
+- `@fluentui/react-motion`
+  - Presence enter & exit motions can be used separately with .In & .Out ([PR #33930](https://github.com/microsoft/fluentui/pull/33930) by robertpenner@microsoft.com)
+- `@fluentui/react-nav`
+  - feat: add motion to nav components ([PR #34632](https://github.com/microsoft/fluentui/pull/34632) by marcosvmmoura@gmail.com)
+- `@fluentui/react-utilities`
+  - Shorten pollDuration to 100ms in useIFrameFocus ([PR #34703](https://github.com/microsoft/fluentui/pull/34703) by xboy2008@live.cn)
+
+### Patches
+
+- `@fluentui/react-carousel`
+  - fix: Ensure we destroy carousel API on unmount ([PR #34686](https://github.com/microsoft/fluentui/pull/34686) by mifraser@microsoft.com)
+- `@fluentui/react-charts`
+  - high contrast fix ([PR #34726](https://github.com/microsoft/fluentui/pull/34726) by anushgupta@microsoft.com)
+  - implement stacked hbc with axis and support for negative x values ([PR #34699](https://github.com/microsoft/fluentui/pull/34699) by anushgupta@microsoft.com)
+  - negative y value support and fix bar overlapping issue ([PR #34717](https://github.com/microsoft/fluentui/pull/34717) by anushgupta@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - fix(Scale): update variant parameters to design spec & refactor internally ([PR #34712](https://github.com/microsoft/fluentui/pull/34712) by robertpenner@microsoft.com)
+- `@fluentui/react-nav`
+  - fix: only display actions on hover ([PR #34634](https://github.com/microsoft/fluentui/pull/34634) by marcosvmmoura@gmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: Ensure virtualizer recalcs on numItems change ([PR #34673](https://github.com/microsoft/fluentui/pull/34673) by mifraser@microsoft.com)
 
 ## [9.66.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.3)
 
