@@ -1,6 +1,6 @@
-import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { keyEnter, keySpace } from '@microsoft/fast-web-utilities';
-import { ButtonFormTarget, ButtonType } from './button.options.js';
+import { type ButtonFormTarget, ButtonType } from './button.options.js';
 
 /**
  * A Button Custom HTML Element.
@@ -42,7 +42,15 @@ export class BaseButton extends FASTElement {
    * HTML Attribute: `disabled`
    */
   @attr({ mode: 'boolean' })
-  disabled?: boolean;
+  disabled = false;
+
+  protected disabledChanged() {
+    if (this.disabled) {
+      this.removeAttribute('tabindex');
+    } else {
+      this.tabIndex = Number(this.getAttribute('tabindex') ?? 0);
+    }
+  }
 
   /**
    * Indicates that the button is focusable while disabled.
@@ -53,16 +61,6 @@ export class BaseButton extends FASTElement {
    */
   @attr({ attribute: 'disabled-focusable', mode: 'boolean' })
   public disabledFocusable: boolean = false;
-
-  /**
-   * Sets that the button tabindex attribute
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `tabindex`
-   */
-  @attr({ attribute: 'tabindex', mode: 'fromView', converter: nullableNumberConverter })
-  public override tabIndex: number = 0;
 
   /**
    * Sets the element's internal disabled state when the element is focusable while disabled.
