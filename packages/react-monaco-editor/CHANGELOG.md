@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-monaco-editor
 
-This log was last generated on Mon, 23 Jun 2025 07:19:48 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Jun 2025 07:20:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.7.344](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.7.344)
+
+Tue, 24 Jun 2025 07:20:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.7.343..@fluentui/react-monaco-editor_v1.7.344)
+
+### Patches
+
+- Bump @fluentui/react-charting to v5.24.8 ([PR #34701](https://github.com/microsoft/fluentui/pull/34701) by beachball)
 
 ## [1.7.343](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.7.343)
 

@@ -217,18 +217,31 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   if ((props.enableFirstRenderOptimization && chartContainer.current) || !props.enableFirstRenderOptimization) {
     _isFirstRender.current = false;
     const XAxisParams = {
-      domainNRangeValues: getDomainNRangeValues(
-        points,
-        props.getDomainMargins ? props.getDomainMargins(containerWidth) : margins,
-        containerWidth,
-        chartType,
-        _useRtl,
-        props.xAxisType,
-        props.barwidth!,
-        props.tickValues!,
-        // This is only used for Horizontal Bar Chart with Axis for y as string axis
-        startFromX,
-      ),
+      domainNRangeValues: props.getDomainNRangeValues
+        ? props.getDomainNRangeValues(
+            points,
+            props.getDomainMargins ? props.getDomainMargins(containerWidth) : margins,
+            containerWidth,
+            chartType,
+            _useRtl,
+            props.xAxisType,
+            props.barwidth!,
+            props.tickValues!,
+            // This is only used for Horizontal Bar Chart with Axis for y as string axis
+            startFromX,
+          )
+        : getDomainNRangeValues(
+            points,
+            props.getDomainMargins ? props.getDomainMargins(containerWidth) : margins,
+            containerWidth,
+            chartType,
+            _useRtl,
+            props.xAxisType,
+            props.barwidth!,
+            props.tickValues!,
+            // This is only used for Horizontal Bar Chart with Axis for y as string axis
+            startFromX,
+          ),
       containerHeight: containerHeight - removalValueForTextTuncate!,
       margins: margins,
       xAxisElement: xAxisElement.current!,
@@ -245,7 +258,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     };
 
     const YAxisParams = {
-      margins: margins,
+      margins: props.getYDomainMargins ? props.getYDomainMargins(containerHeight) : margins,
       containerWidth: containerWidth,
       containerHeight: containerHeight - removalValueForTextTuncate!,
       yAxisElement: yAxisElement.current,

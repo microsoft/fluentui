@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 24 Jun 2025 07:20:41 GMT",
+      "tag": "@fluentui/react-charting_v5.24.8",
+      "version": "5.24.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "39380931736a1d9f6b62a990bebb80d05f3b9a15",
+            "comment": "fix(react-charting): Fix legend selection for Scatter charts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Jun 2025 07:19:47 GMT",
       "tag": "@fluentui/react-charting_v5.24.7",
       "version": "5.24.7",

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Mon, 23 Jun 2025 15:49:46 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jun 2025 14:11:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.4)
+
+Thu, 26 Jun 2025 14:11:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.3..@fluentui/react-charts_v9.1.4)
+
+### Patches
+
+- high contrast fix ([PR #34726](https://github.com/microsoft/fluentui/pull/34726) by anushgupta@microsoft.com)
+- implement stacked hbc with axis and support for negative x values ([PR #34699](https://github.com/microsoft/fluentui/pull/34699) by anushgupta@microsoft.com)
+- negative y value support and fix bar overlapping issue ([PR #34717](https://github.com/microsoft/fluentui/pull/34717) by anushgupta@microsoft.com)
+- Bump @fluentui/react-button to v9.5.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-overflow to v9.4.4 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-popover to v9.11.4 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-tabster to v9.25.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.4 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-utilities to v9.22.0 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
 
 ## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.3)
 
