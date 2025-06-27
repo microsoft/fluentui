@@ -26,7 +26,7 @@ import {
   timeProperties,
   dialogProperties,
 } from './properties';
-import { JSXIntrinsicElements } from './types';
+import type { JSXIntrinsicElementKeys } from './types';
 
 const nativeElementMap: Record<string, Record<string, number>> = {
   label: labelProperties,
@@ -92,7 +92,7 @@ export const getPartitionedNativeProps = <
   excludedPropNames,
 }: {
   /** The primary slot's element type (e.g. 'div') */
-  primarySlotTagName: keyof JSXIntrinsicElements;
+  primarySlotTagName: JSXIntrinsicElementKeys;
 
   /** The component's props object */
   props: Props;

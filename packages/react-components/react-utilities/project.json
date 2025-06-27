@@ -4,5 +4,16 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-utilities/src",
   "tags": ["vNext", "platform:web"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "prebuild": {
+      "command": "node -r ../../../scripts/ts-node/src/register scripts/expand-jsx-intrinsic-elements-advanced.ts",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "dependsOn": ["^build", "prebuild"]
+    }
+  }
 }

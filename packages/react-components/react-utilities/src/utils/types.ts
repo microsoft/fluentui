@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXIntrinsicElementKeys } from './generated-types';
 
 /**
  * Helper type that works similar to Omit,
@@ -166,7 +167,7 @@ export type JSXElement = React.ReactElement<
  * Our own alias for `JSX.IntrinsicElements` type that is compatible with both React 17 and React >=18.
  * Use this type to get the intrinsic elements from React types in order to avoid issues between different React versions.
  */
-export type JSXIntrinsicElements = JSX.IntrinsicElements;
+export type JSXIntrinsicElement<Element extends JSXIntrinsicElementKeys> = React.ComponentProps<Element>;
 // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // // @ts-ignore - all branches needs to be ignored in order to work with different React versions. This one would throw an error in React 19.
 // keyof JSX.IntrinsicElements extends string
@@ -176,3 +177,5 @@ export type JSXIntrinsicElements = JSX.IntrinsicElements;
 //   : // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //     // @ts-ignore - all branches needs to be ignored in order to work with different React versions. This one would throw an error in React 17
 //     React.JSX.IntrinsicElements;
+
+export type { JSXIntrinsicElementKeys };
