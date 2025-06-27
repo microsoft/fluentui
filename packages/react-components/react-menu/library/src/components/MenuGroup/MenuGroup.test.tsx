@@ -23,6 +23,7 @@ describe('MenuGroup', () => {
    * Note: see more visual regression tests for MenuGroup in /apps/vr-tests.
    */
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(<MenuGroup>Default MenuGroup</MenuGroup>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

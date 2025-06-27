@@ -7,7 +7,10 @@ import { List } from './List';
 import { ListItem } from '../ListItem';
 import { SelectionItemId } from '@fluentui/react-utilities';
 
-const mount = (element: JSX.Element) => {
+const mount = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

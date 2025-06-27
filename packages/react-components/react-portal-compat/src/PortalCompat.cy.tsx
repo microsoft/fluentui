@@ -5,7 +5,10 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import { PortalCompatProvider } from '@fluentui/react-portal-compat';
 import { usePortalCompat } from '@fluentui/react-portal-compat-context';
 
-const mount = (element: JSX.Element) => {
+const mount = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mountBase(
     <FluentProvider theme={teamsLightTheme}>
       <PortalCompatProvider>{element}</PortalCompatProvider>

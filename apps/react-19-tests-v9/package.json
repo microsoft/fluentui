@@ -13,7 +13,7 @@
     "start": "webpack-dev-server --mode=development",
     "e2e": "npx --yes cypress@latest run --component",
     "e2e:local": "npx --yes cypress@latest open --component",
-    "e2e:integration": "npx --yes cypress@latest run --component --config-file cypress-react-19.config.ts"
+    "e2e:integration": "cypress run --component --config-file cypress-react-19.config.ts"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

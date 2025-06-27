@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: migrate repo to react 18",
+  "packageName": "@fluentui/react-motion",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

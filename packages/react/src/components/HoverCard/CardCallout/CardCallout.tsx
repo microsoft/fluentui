@@ -6,8 +6,9 @@ import { Callout, FocusTrapCallout } from '../../../Callout';
 import type { IBaseCardProps } from '../BaseCard.types';
 import type { ICalloutProps } from '../../../Callout';
 
-export interface ICardCalloutProps extends IBaseCardProps<{}, {}, {}> {
+export interface ICardCalloutProps extends Omit<IBaseCardProps<{}, {}, {}>, 'content'> {
   finalHeight?: number;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   content?: JSX.Element;
 }
 

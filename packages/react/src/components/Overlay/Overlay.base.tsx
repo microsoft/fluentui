@@ -30,6 +30,7 @@ export class OverlayBase extends React.Component<IOverlayProps, {}> {
     !this._allowTouchBodyScroll && enableBodyScroll();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { isDarkThemed: isDark, className, theme, styles } = this.props;
 

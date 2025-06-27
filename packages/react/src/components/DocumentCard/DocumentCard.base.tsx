@@ -34,6 +34,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
   };
 
   public static contextType = WindowContext;
+  public context: any;
 
   private _rootElement = React.createRef<HTMLDivElement>();
   private _classNames: IProcessedStyleSet<IDocumentCardStyles>;
@@ -47,6 +48,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { onClick, onClickHref, children, type, accentColor, styles, theme, className } = this.props;

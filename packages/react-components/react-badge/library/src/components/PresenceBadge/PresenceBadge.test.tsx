@@ -10,6 +10,7 @@ describe('PresenceBadge', () => {
   });
 
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(<PresenceBadge />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

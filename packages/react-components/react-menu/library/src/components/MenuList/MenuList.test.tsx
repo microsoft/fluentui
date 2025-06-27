@@ -25,6 +25,7 @@ describe('MenuList', () => {
    * Note: see more visual regression tests for MenuList in /apps/vr-tests.
    */
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(<MenuList>Default MenuList</MenuList>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

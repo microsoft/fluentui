@@ -39,6 +39,7 @@ export interface IChicletProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Description to render for the component in place of the url.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   description?: React.ReactElement<JSX.Element>;
 
   /**
@@ -69,6 +70,7 @@ export interface IChicletProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Footer to render for the component.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   footer?: React.ReactElement<JSX.Element>;
 
   /**

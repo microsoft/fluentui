@@ -6,7 +6,10 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import { Toaster, ToastTitle, Toast, useToastController, toastClassNames } from '../..';
 import { toastContainerClassNames } from '../ToastContainer/useToastContainerStyles.styles';
 
-const mount = (element: JSX.Element) => {
+const mount = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>, {
     strict: false, // TODO: Disable strict mode for toast tests until it gets fixed
   });

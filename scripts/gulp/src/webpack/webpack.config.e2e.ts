@@ -40,7 +40,7 @@ const webpackConfig: webpack.Configuration = {
     new webpack.DefinePlugin(getDefaultEnvironmentVars(true)),
     new ForkTsCheckerWebpackPlugin({
       typescript: {
-        configFile: paths.e2e('tsconfig.json'),
+        configFile: paths.e2e('tsconfig.e2e.json'),
       },
     }),
     new CopyWebpackPlugin({
@@ -58,6 +58,7 @@ const webpackConfig: webpack.Configuration = {
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: config.webpackAliases,
+    modules: [paths.e2e('node_modules'), 'node_modules'],
   },
   performance: {
     hints: false, // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")

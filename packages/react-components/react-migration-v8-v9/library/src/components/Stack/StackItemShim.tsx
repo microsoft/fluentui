@@ -14,7 +14,8 @@ const stackItemClassNames = {
   root: 'ms-StackItem',
 };
 
-export const StackItemShim = (props: IStackItemProps) => {
+// eslint-disable-next-line @typescript-eslint/no-deprecated
+export const StackItemShim = (props: IStackItemProps): JSX.Element => {
   const { grow, shrink, disableShrink, align, verticalFill, order, className, children } = props;
 
   const styles = useStackItemShimStyles();

@@ -37,6 +37,7 @@ export class EditingItem extends React.Component<IEditingSelectedPeopleItemProps
     this._editingInput.focus();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const itemId = getId();
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
@@ -62,6 +63,7 @@ export class EditingItem extends React.Component<IEditingSelectedPeopleItemProps
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderEditingSuggestions = (): JSX.Element => {
     const FloatingPicker = this.props.onRenderFloatingPicker;
     const floatingPickerProps = this.props.floatingPickerProps;

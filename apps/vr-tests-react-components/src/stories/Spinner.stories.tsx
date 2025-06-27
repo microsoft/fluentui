@@ -26,7 +26,7 @@ const TestWrapperDecoratorPauseAnimation: Decorator = story => (
 // Inverted Spinners are meant to be used over a dark background
 // or photo. This wrapper ensures a dark background so the Spinners
 // are consistently visible.
-const InvertedWrapper: React.FC = ({ children }) => {
+const InvertedWrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return <div style={{ background: tokens.colorBrandBackgroundStatic, padding: '10px' }}>{children}</div>;
 };
 

@@ -4,7 +4,14 @@
     "lib": ["ES2019", "dom"],
     "outDir": "../../../../dist/out-tsc",
     "inlineSources": true,
-    "types": ["static-assets", "environment"]
+    "types": ["static-assets", "environment"],
+    "baseUrl": ".",
+    "paths": {
+      "react": ["../../../../node_modules/@types/react/index.d.ts"],
+      "@fluentui/react-components": ["../../react-components/react-components/src/index.ts"],
+      "@fluentui/react-icons-northstar": ["../../fluentui/react-icons-northstar/src/index.ts"],
+      "@fluentui/react-northstar": ["../../packages/fluentui/react-northstar/src/index.ts"]
+    }
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

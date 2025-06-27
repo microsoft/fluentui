@@ -60,11 +60,11 @@ export const GroupedVerticalBarNegative = () => {
     setHideLabels(checked.checked as boolean);
   };
 
-  const _onRoundCornersChange = React.useCallback(ev => {
+  const _onRoundCornersChange = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchLegendMultiSelect = React.useCallback(ev => {
+  const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setSelectMultipleLegends(ev.currentTarget.checked);
   }, []);
 

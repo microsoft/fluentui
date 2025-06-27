@@ -33,6 +33,7 @@ describe('MenuTrigger', () => {
    * Note: see more visual regression tests for MenuTrigger in /apps/vr-tests.
    */
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(
       <MenuTrigger disableButtonEnhancement>
         <button>Menu trigger</button>

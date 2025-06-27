@@ -119,6 +119,7 @@ export class SuggestionsCore<T extends {}> extends React.Component<ISuggestionsC
     this.scrollSelected();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const {
       onRenderSuggestion,

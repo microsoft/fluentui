@@ -134,6 +134,7 @@ export interface IDetailsRowBaseProps
   /**
    * Callback for rendering a checkbox
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
 
   /**

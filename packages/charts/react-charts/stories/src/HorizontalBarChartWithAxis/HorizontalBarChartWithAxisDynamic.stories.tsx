@@ -110,7 +110,7 @@ export const HorizontalBarWithAxisDynamic = () => {
     setStatusKey(statusKey + 1);
   };
 
-  const _onSwitchRoundCorners = React.useCallback(ev => {
+  const _onSwitchRoundCorners = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
   }, []);
 

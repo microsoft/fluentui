@@ -6,6 +6,7 @@ import type { AriaLiveAnnouncerContextValues, AriaLiveAnnouncerState } from './A
 export const renderAriaLiveAnnouncer_unstable = (
   state: AriaLiveAnnouncerState,
   contextValues: AriaLiveAnnouncerContextValues,
-) => {
+): // eslint-disable-next-line @typescript-eslint/no-deprecated
+JSX.Element => {
   return <AnnounceProvider value={contextValues.announce}>{state.children}</AnnounceProvider>;
 };
