@@ -940,6 +940,9 @@ export const ctrlCardStateRest = "var(--smtc-ctrl-card-state-rest)";
 // @public (undocumented)
 export const ctrlCardStateRestRaw = "--smtc-ctrl-card-state-rest";
 
+// @public
+export const _ctrlCheckboxBorderColorHover = "var(--smtc-stroke-ctrl-on-active-brand-hover, var(--smtc-stroke-ctrl-on-brand-hover, var(--colorCompoundBrandBackgroundHover)))";
+
 // @public (undocumented)
 export const ctrlChoiceBaseBackgroundDisabled = "var(--smtc-ctrl-choice-base-background-disabled, var(--smtc-background-ctrl-outline-disabled, var(--colorTransparentBackground)))";
 

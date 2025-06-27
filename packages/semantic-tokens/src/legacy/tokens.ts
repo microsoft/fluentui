@@ -1,24 +1,9 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundDisabled | `colorNeutralBackgroundDisabled`} design token.
- * @public
- */
-export const colorNeutralBackgroundDisabled = 'var(--colorNeutralBackgroundDisabled)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandBackgroundHover | `colorCompoundBrandBackgroundHover`} design token.
  * @public
  */
 export const colorCompoundBrandBackgroundHover = 'var(--colorCompoundBrandBackgroundHover)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandBackgroundPressed | `colorCompoundBrandBackgroundPressed`} design token.
- * @public
- */
-export const colorCompoundBrandBackgroundPressed = 'var(--colorCompoundBrandBackgroundPressed)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandBackground | `colorCompoundBrandBackground`} design token.
- * @public
- */
-export const colorCompoundBrandBackground = 'var(--colorCompoundBrandBackground)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorBrandBackgroundHover | `colorBrandBackgroundHover`} design token.
  * @public
@@ -125,20 +110,10 @@ export const colorNeutralForeground3 = 'var(--colorNeutralForeground3)';
  */
 export const fontSizeBase300 = 'var(--fontSizeBase300)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeDisabled | `colorNeutralStrokeDisabled`} design token.
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeAccessible | `colorNeutralStrokeAccessible`} design token.
  * @public
  */
-export const colorNeutralStrokeDisabled = 'var(--colorNeutralStrokeDisabled)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalS | `spacingHorizontalS`} design token.
- * @public
- */
-export const spacingHorizontalS = 'var(--spacingHorizontalS)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalS | `spacingVerticalS`} design token.
- * @public
- */
-export const spacingVerticalS = 'var(--spacingVerticalS)';
+export const colorNeutralStrokeAccessible = 'var(--colorNeutralStrokeAccessible)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorStrokeFocus2 | `colorStrokeFocus2`} design token.
  * @public

@@ -85,6 +85,18 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'gapInsideCtrlDefault',
   },
+  _ctrlCheckboxBorderColorHover: {
+    originalToken: 'strokeCtrlOnActiveBrandHover',
+    f2Token: 'colorCompoundBrandBackgroundHover',
+  },
+  _ctrlCheckboxForegroundUncheckedHover: {
+    f2Token: 'colorNeutralForeground2',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlCheckboxForegroundUnchecked: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
   _ctrlDividerForegroundSubtle: {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlHintDefault',

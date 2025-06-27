@@ -99,14 +99,7 @@ import {
   colorNeutralStroke3,
   colorNeutralStroke1,
   colorBrandStroke1,
-  colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
-  colorCompoundBrandBackgroundPressed,
-  colorNeutralBackgroundDisabled,
-  colorNeutralStrokeAccessible,
-  colorNeutralStrokeAccessibleHover,
-  colorNeutralStrokeAccessiblePressed,
-  colorNeutralForegroundDisabled,
   colorNeutralForeground1,
   colorNeutralForeground2,
   colorBrandForeground1,
@@ -526,10 +519,10 @@ export const backgroundLayerPrimaryStop3 = `var(${backgroundLayerPrimaryStop3Raw
 export const backgroundLayerSecondary = `var(${backgroundLayerSecondaryRaw}, var(${backgroundLayerPrimarySolidRaw}))`;
 export const backgroundLayerTertiary = `var(${backgroundLayerTertiaryRaw}, var(${backgroundLayerPrimarySolidRaw}))`;
 export const backgroundCardOnPrimaryDefaultSelected = `var(${backgroundCardOnPrimaryDefaultSelectedRaw}, var(${backgroundCardOnPrimaryDefaultRestRaw}))`;
-export const backgroundCtrlActiveBrandRest = `var(${backgroundCtrlActiveBrandRestRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorCompoundBrandBackground}))`;
+export const backgroundCtrlActiveBrandRest = `var(${backgroundCtrlActiveBrandRestRaw}, var(${backgroundCtrlBrandRestRaw}))`;
 export const backgroundCtrlActiveBrandHover = `var(${backgroundCtrlActiveBrandHoverRaw}, var(${backgroundCtrlBrandHoverRaw}, ${colorCompoundBrandBackgroundHover}))`;
-export const backgroundCtrlActiveBrandPressed = `var(${backgroundCtrlActiveBrandPressedRaw}, var(${backgroundCtrlBrandPressedRaw}, ${colorCompoundBrandBackgroundPressed}))`;
-export const backgroundCtrlActiveBrandDisabled = `var(${backgroundCtrlActiveBrandDisabledRaw}, var(${backgroundCtrlBrandDisabledRaw}, ${colorNeutralBackgroundDisabled}))`;
+export const backgroundCtrlActiveBrandPressed = `var(${backgroundCtrlActiveBrandPressedRaw}, var(${backgroundCtrlBrandPressedRaw}))`;
+export const backgroundCtrlActiveBrandDisabled = `var(${backgroundCtrlActiveBrandDisabledRaw}, var(${backgroundCtrlBrandDisabledRaw}))`;
 export const backgroundCtrlShapeSafeActiveBrandRest = `var(${backgroundCtrlShapeSafeActiveBrandRestRaw}, var(${backgroundCtrlBrandRestRaw}))`;
 export const backgroundCtrlShapeSafeActiveBrandDisabled = `var(${backgroundCtrlShapeSafeActiveBrandDisabledRaw}, var(${backgroundCtrlBrandDisabledRaw}))`;
 export const backgroundCtrlShapeSafeNeutralRest = `var(${backgroundCtrlShapeSafeNeutralRestRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessible}))`;

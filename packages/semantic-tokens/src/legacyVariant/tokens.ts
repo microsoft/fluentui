@@ -41,6 +41,7 @@ import {
   borderRadiusXLarge,
   strokeWidthThin,
   spacingHorizontalSNudge,
+  colorCompoundBrandBackgroundHover,
   colorNeutralForeground3,
   colorTransparentStrokeInteractive,
   colorNeutralBackground3,
@@ -60,26 +61,13 @@ import {
   colorNeutralForeground2Pressed,
   spacingHorizontalXXS,
 } from '../legacy/tokens';
-import {
-  backgroundCtrlSubtleRestRaw,
-  foregroundCtrlHintDefaultRaw,
-  strokeCtrlOnBrandHoverRaw,
-  strokeCtrlOnBrandRestRaw,
-} from '../nullable/variables';
+import { strokeCtrlOnBrandHoverRaw, foregroundCtrlHintDefaultRaw } from '../nullable/variables';
 import {
   foregroundCtrlOnTransparentHoverRaw,
   foregroundCtrlOnTransparentPressedRaw,
   foregroundCtrlOnTransparentRestRaw,
-  paddingCtrlTextBottomRaw,
-  foregroundCtrlOnSubtlePressedRaw,
-  foregroundCtrlNeutralPrimaryPressedRaw,
-  textRampItemBodyFontSizeRaw,
-  textRampItemBodyLineHeightRaw,
   strokeCtrlOnActiveBrandHoverRaw,
-  strokeCtrlOnActiveBrandRestRaw,
-  foregroundCtrlOnSubtleRestRaw,
-  foregroundCtrlOnSubtleHoverRaw,
-  foregroundCtrlNeutralPrimaryHoverRaw,
+  foregroundContentNeutralPrimaryRaw,
 } from '../optional/variables';
 
 /**
@@ -208,6 +196,27 @@ export const _ctrlAvatarPresenceBadgeStrokeWidthSm = `var(${ctrlAvatarPresenceBa
  * please use gapInsideCtrlDefault instead.
  */
 export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${spacingHorizontalSNudge})`;
+/**
+ * This is a legacy variant for strokeCtrlOnActiveBrandHover to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use strokeCtrlOnActiveBrandHover instead.
+ */
+export const _ctrlCheckboxBorderColorHover = `var(${strokeCtrlOnActiveBrandHoverRaw}, var(${strokeCtrlOnBrandHoverRaw}, ${colorCompoundBrandBackgroundHover}))`;
+/**
+ * This is a legacy variant for foregroundContentNeutralPrimary to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundContentNeutralPrimary instead.
+ */
+export const _ctrlCheckboxForegroundUncheckedHover = `var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2}))`;
+/**
+ * This is a legacy variant for foregroundContentNeutralPrimary to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundContentNeutralPrimary instead.
+ */
+export const _ctrlCheckboxForegroundUnchecked = `var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground3}))`;
 /**
  * This is a legacy variant for foregroundCtrlHintDefault to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.

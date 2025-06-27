@@ -3,6 +3,7 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { CheckboxSlots, CheckboxState } from './Checkbox.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
   root: 'fui-Checkbox',
@@ -27,32 +28,32 @@ const useRootBaseClassName = makeResetStyles({
   display: 'inline-flex',
   cursor: 'pointer',
   verticalAlign: 'middle',
-  color: tokens.colorNeutralForeground3,
+  color: semanticTokens._ctrlCheckboxForegroundUnchecked,
   ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 });
 
 const useRootStyles = makeStyles({
   unchecked: {
     ':hover': {
-      color: tokens.colorNeutralForeground2,
+      color: semanticTokens._ctrlCheckboxForegroundUncheckedHover,
       [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessibleHover,
     },
 
     ':active': {
-      color: tokens.colorNeutralForeground1,
+      color: semanticTokens.foregroundContentNeutralPrimary,
       [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessiblePressed,
     },
   },
 
   checked: {
-    color: tokens.colorNeutralForeground1,
+    color: semanticTokens.foregroundContentNeutralPrimary,
     [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackground,
     [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
     [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackground,
 
     ':hover': {
-      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundHover,
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundHover,
+      [vars.indicatorBackgroundColor]: semanticTokens.backgroundCtrlActiveBrandHover,
+      [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxBorderColorHover,
     },
 
     ':active': {
@@ -62,7 +63,7 @@ const useRootStyles = makeStyles({
   },
 
   mixed: {
-    color: tokens.colorNeutralForeground1,
+    color: semanticTokens.foregroundContentNeutralPrimary,
     [vars.indicatorBorderColor]: tokens.colorCompoundBrandStroke,
     [vars.indicatorColor]: tokens.colorCompoundBrandForeground1,
 
@@ -129,7 +130,7 @@ const useIndicatorBaseClassName = makeResetStyles({
 
   color: `var(${vars.indicatorColor})`,
   backgroundColor: `var(${vars.indicatorBackgroundColor})`,
-  borderColor: `var(${vars.indicatorBorderColor}, ${tokens.colorNeutralStrokeAccessible})`,
+  borderColor: `var(${vars.indicatorBorderColor}, ${semanticTokens.ctrlChoiceBaseStrokeRest})`,
   borderStyle: 'solid',
   borderWidth: tokens.strokeWidthThin,
   borderRadius: tokens.borderRadiusSmall,
