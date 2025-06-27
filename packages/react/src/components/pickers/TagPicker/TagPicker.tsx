@@ -12,8 +12,15 @@ import type { ITagPickerProps, ITag, ITagItemProps } from './TagPicker.types';
  */
 export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
   public static defaultProps = {
-    onRenderItem: (props: ITagItemProps) => <TagItem {...props}>{props.item.name}</TagItem>,
-    onRenderSuggestionsItem: (props: ITag) => <TagItemSuggestion>{props.name}</TagItemSuggestion>,
+    onRenderItem: (
+      props: ITagItemProps,
+    ): // eslint-disable-next-line @typescript-eslint/no-deprecated
+    JSX.Element => <TagItem {...props}>{props.item.name}</TagItem>,
+
+    onRenderSuggestionsItem: (
+      props: ITag,
+    ): // eslint-disable-next-line @typescript-eslint/no-deprecated
+    JSX.Element => <TagItemSuggestion>{props.name}</TagItemSuggestion>,
   };
 }
 

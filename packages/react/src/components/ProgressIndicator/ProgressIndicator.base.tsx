@@ -34,7 +34,8 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
     this._descriptionId = id + '-description';
   }
 
-  public render() {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  public render(): JSX.Element {
     const {
       barHeight,
       className,

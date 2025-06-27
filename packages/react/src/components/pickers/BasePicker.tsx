@@ -1009,7 +1009,10 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   }
 
   /** @deprecated use renderCustomAlert instead */
-  protected getSuggestionsAlert(suggestionAlertClassName: string = legacyStyles.screenReaderOnly) {
+  protected getSuggestionsAlert(
+    suggestionAlertClassName: string = legacyStyles.screenReaderOnly,
+  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element | undefined {
     const currentIndex = this.suggestionStore.currentIndex;
     if (this.props.enableSelectedSuggestionAlert) {
       const selectedSuggestion =
@@ -1024,7 +1027,8 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
   }
 
-  protected renderCustomAlert(alertClassName: string = legacyStyles.screenReaderOnly) {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  protected renderCustomAlert(alertClassName: string = legacyStyles.screenReaderOnly): JSX.Element {
     const { suggestionRemovedText = 'removed {0}' } = this.props;
     let removedItemText = '';
 

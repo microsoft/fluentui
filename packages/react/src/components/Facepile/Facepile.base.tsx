@@ -84,20 +84,19 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     );
   }
 
-  protected onRenderAriaDescription() {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  protected onRenderAriaDescription(): JSX.Element | undefined {
     const { ariaDescription } = this.props;
 
     const { _classNames } = this;
 
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
-    return (
-      ariaDescription && (
-        <span className={_classNames.screenReaderOnly} id={this._ariaDescriptionId}>
-          {ariaDescription}
-        </span>
-      )
-    );
+    return ariaDescription ? (
+      <span className={_classNames.screenReaderOnly} id={this._ariaDescriptionId}>
+        {ariaDescription}
+      </span>
+    ) : undefined;
   }
 
   private _onRenderVisiblePersonas(
