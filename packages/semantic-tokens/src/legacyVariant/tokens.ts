@@ -4,6 +4,7 @@ import {
   ctrlAvatarCornerGroupRaw,
   ctrlAvatarPresenceBadgeStrokeWidthRaw,
 } from '../components/avatar/variables';
+import { ctrlChoiceBaseBackgroundDisabledRaw, ctrlChoiceBaseSizeRaw } from '../components/choice/variables';
 import { ctrlFocusInnerStrokeWidthRaw, ctrlFocusOuterStrokeRaw } from '../components/focus/variables';
 import { ctrlInputBackgroundRestRaw } from '../components/input/variables';
 import {
@@ -22,6 +23,9 @@ import {
   gapInsideCtrlDefaultRaw,
   backgroundCtrlNeutralRestRaw,
   foregroundCtrlNeutralSecondaryRestRaw,
+  backgroundCtrlBrandHoverRaw,
+  backgroundCtrlBrandPressedRaw,
+  sizeCtrlIconRaw,
   textGlobalBody3FontSizeRaw,
   textGlobalBody3LineHeightRaw,
   textStyleDefaultRegularWeightRaw,
@@ -47,12 +51,21 @@ import {
   colorNeutralBackground1,
   colorNeutralForeground4,
   colorNeutralForeground3Pressed,
+  colorCompoundBrandForeground1Hover,
+  colorCompoundBrandForeground1Pressed,
+  colorCompoundBrandForeground1,
+  colorNeutralForegroundDisabled,
+  colorNeutralForeground2,
+  spacingVerticalXS,
+  spacingVerticalS,
+  colorCompoundBrandStrokeHover,
+  colorCompoundBrandStrokePressed,
+  colorCompoundBrandStroke,
   colorBrandStroke2Contrast,
   colorBrandStroke1,
   fontSizeBase400,
   lineHeightBase400,
   fontWeightSemibold,
-  spacingVerticalXS,
   colorTransparentStroke,
   spacingVerticalXXS,
   colorNeutralForeground3Hover,
@@ -63,7 +76,9 @@ import {
 import {
   backgroundCtrlSubtleRestRaw,
   foregroundCtrlHintDefaultRaw,
+  backgroundCtrlOutlineDisabledRaw,
   strokeCtrlOnBrandHoverRaw,
+  strokeCtrlOnBrandPressedRaw,
   strokeCtrlOnBrandRestRaw,
 } from '../nullable/variables';
 import {
@@ -73,10 +88,15 @@ import {
   paddingCtrlTextBottomRaw,
   foregroundCtrlOnSubtlePressedRaw,
   foregroundCtrlNeutralPrimaryPressedRaw,
+  backgroundCtrlActiveBrandHoverRaw,
+  backgroundCtrlActiveBrandPressedRaw,
+  backgroundCtrlActiveBrandRestRaw,
+  foregroundContentNeutralPrimaryRaw,
+  strokeCtrlOnActiveBrandHoverRaw,
+  strokeCtrlOnActiveBrandPressedRaw,
+  strokeCtrlOnActiveBrandRestRaw,
   textRampItemBodyFontSizeRaw,
   textRampItemBodyLineHeightRaw,
-  strokeCtrlOnActiveBrandHoverRaw,
-  strokeCtrlOnActiveBrandRestRaw,
   foregroundCtrlOnSubtleRestRaw,
   foregroundCtrlOnSubtleHoverRaw,
   foregroundCtrlNeutralPrimaryHoverRaw,
@@ -250,6 +270,97 @@ export const _ctrlInputNeutralForegroundPlaceholder = `var(${foregroundCtrlNeutr
  * please use foregroundCtrlOnSubtlePressed instead.
  */
 export const _ctrlPersonaTreeIconOnSubtlePressed = `var(${foregroundCtrlOnSubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw}, ${colorNeutralForeground3Pressed}))`;
+/**
+ * This is a legacy variant for backgroundCtrlActiveBrandHover to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use backgroundCtrlActiveBrandHover instead.
+ */
+export const _ctrlRadioBackgroundActiveBrandHover = `var(${backgroundCtrlActiveBrandHoverRaw}, var(${backgroundCtrlBrandHoverRaw}, ${colorCompoundBrandForeground1Hover}))`;
+/**
+ * This is a legacy variant for backgroundCtrlActiveBrandPressed to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use backgroundCtrlActiveBrandPressed instead.
+ */
+export const _ctrlRadioBackgroundActiveBrandPressed = `var(${backgroundCtrlActiveBrandPressedRaw}, var(${backgroundCtrlBrandPressedRaw}, ${colorCompoundBrandForeground1Pressed}))`;
+/**
+ * This is a legacy variant for backgroundCtrlActiveBrandRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use backgroundCtrlActiveBrandRest instead.
+ */
+export const _ctrlRadioBackgroundActiveBrandRest = `var(${backgroundCtrlActiveBrandRestRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorCompoundBrandForeground1}))`;
+/**
+ * This is a legacy variant for ctrlChoiceBaseBackgroundDisabled to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlChoiceBaseBackgroundDisabled instead.
+ */
+export const _ctrlRadioBackgroundDisabled = `var(${ctrlChoiceBaseBackgroundDisabledRaw}, var(${backgroundCtrlOutlineDisabledRaw}, ${colorNeutralForegroundDisabled}))`;
+/**
+ * This is a legacy variant for ctrlChoiceBaseSize to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlChoiceBaseSize instead.
+ */
+export const _ctrlRadioChoiceBaseSize = `var(${ctrlChoiceBaseSizeRaw}, var(${sizeCtrlIconRaw}, 16px))`;
+/**
+ * This is a legacy variant for foregroundContentNeutralPrimary to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundContentNeutralPrimary instead.
+ */
+export const _ctrlRadioForegroundContentDisabled = `var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForegroundDisabled}))`;
+/**
+ * This is a legacy variant for foregroundContentNeutralPrimary to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundContentNeutralPrimary instead.
+ */
+export const _ctrlRadioForegroundContentNeutralHover = `var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2}))`;
+/**
+ * This is a legacy variant for foregroundContentNeutralPrimary to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundContentNeutralPrimary instead.
+ */
+export const _ctrlRadioForegroundContentNeutralRest = `var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground3}))`;
+/**
+ * This is a legacy variant for paddingCtrlTextTop to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextTop instead.
+ */
+export const _ctrlRadioPaddingTextTop = `var(${paddingCtrlTextTopRaw}, ${spacingVerticalXS})`;
+/**
+ * This is a legacy variant for paddingCtrlTextTop to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextTop instead.
+ */
+export const _ctrlRadioPaddingVertical = `var(${paddingCtrlTextTopRaw}, ${spacingVerticalS})`;
+/**
+ * This is a legacy variant for strokeCtrlOnActiveBrandHover to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use strokeCtrlOnActiveBrandHover instead.
+ */
+export const _ctrlRadioStrokeOnActiveBrandHover = `var(${strokeCtrlOnActiveBrandHoverRaw}, var(${strokeCtrlOnBrandHoverRaw}, ${colorCompoundBrandStrokeHover}))`;
+/**
+ * This is a legacy variant for strokeCtrlOnActiveBrandPressed to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use strokeCtrlOnActiveBrandPressed instead.
+ */
+export const _ctrlRadioStrokeOnActiveBrandPressed = `var(${strokeCtrlOnActiveBrandPressedRaw}, var(${strokeCtrlOnBrandPressedRaw}, ${colorCompoundBrandStrokePressed}))`;
+/**
+ * This is a legacy variant for strokeCtrlOnActiveBrandRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use strokeCtrlOnActiveBrandRest instead.
+ */
+export const _ctrlRadioStrokeOnActiveBrandRest = `var(${strokeCtrlOnActiveBrandRestRaw}, var(${strokeCtrlOnBrandRestRaw}, ${colorCompoundBrandStroke}))`;
 /**
  * This is a legacy variant for ctrlProgressBackgroundEmpty to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
