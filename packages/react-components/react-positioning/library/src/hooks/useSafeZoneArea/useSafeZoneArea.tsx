@@ -53,9 +53,8 @@ export function useSafeZoneArea({
   const containerRef = React.useRef<HTMLElement>(null);
   const targetRef = React.useRef<HTMLElement>(null);
 
-  const [setSafeZoneTimeout, clearSafeZoneTimeout] = useTimeout();
-  const [setTargetTimeout, clearTargetTimeout] = useTimeout();
-  const [requestMouseMoveFrame, clearMouseMoveFrame] = useAnimationFrame();
+  const [setSafeZoneCloseTimeout, clearSafeZoneCloseTimeout] = useTimeout();
+  const [requestUpdateFrame, clearUpdateFrame] = useAnimationFrame();
 
   const mouseCoordinatesRef = React.useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
@@ -69,9 +68,7 @@ export function useSafeZoneArea({
     let containerEl: HTMLElement | null = null;
 
     function onContainerMouseEnter() {
-      clearSafeZoneTimeout();
-      clearTargetTimeout();
-
+      clearSafeZoneCloseTimeout();
       stateStore.toggleActive(false);
     }
 
@@ -83,7 +80,7 @@ export function useSafeZoneArea({
       containerEl = el;
       el?.addEventListener('mouseenter', onContainerMouseEnter);
     };
-  }, [clearSafeZoneTimeout, clearTargetTimeout, disabled, stateStore]);
+  }, [clearSafeZoneCloseTimeout, disabled, stateStore]);
 
   const targetListenerRef = React.useMemo(() => {
     if (disabled) {
@@ -101,19 +98,15 @@ export function useSafeZoneArea({
         stateStore.toggleActive(true);
       }
 
-      clearSafeZoneTimeout();
-      clearTargetTimeout();
-
-      setTargetTimeout(() => {
+      setSafeZoneCloseTimeout(() => {
         stateStore.toggleActive(false);
       }, MOUSE_MOVE_TARGET_POLLING_TIMEOUT);
     }
 
     return (el: HTMLElement | null) => {
       if (el === null) {
-        clearMouseMoveFrame();
-        clearSafeZoneTimeout();
-        clearTargetTimeout();
+        clearUpdateFrame();
+        clearSafeZoneCloseTimeout();
 
         targetEl?.removeEventListener('mousemove', onTargetMouseMove);
       }
@@ -121,15 +114,12 @@ export function useSafeZoneArea({
       targetEl = el;
       el?.addEventListener('mousemove', onTargetMouseMove);
     };
-  }, [clearMouseMoveFrame, clearSafeZoneTimeout, clearTargetTimeout, disabled, stateStore, setTargetTimeout]);
+  }, [clearUpdateFrame, clearSafeZoneCloseTimeout, disabled, stateStore, setSafeZoneCloseTimeout]);
 
   const onSvgMouseEnter = useEventCallback((e: React.MouseEvent) => {
     onSafeZoneEnter?.(e);
 
-    clearSafeZoneTimeout();
-    clearTargetTimeout();
-
-    setSafeZoneTimeout(() => {
+    setSafeZoneCloseTimeout(() => {
       stateStore.toggleActive(false);
       onSafeZoneTimeout?.();
     }, timeout);
@@ -158,16 +148,16 @@ export function useSafeZoneArea({
             });
           }
 
-          requestMouseMoveFrame(updateSVGs);
+          requestUpdateFrame(updateSVGs);
         }
 
         updateSVGs();
         return;
       }
 
-      clearMouseMoveFrame();
+      clearUpdateFrame();
     });
-  }, [clearMouseMoveFrame, requestMouseMoveFrame, stateStore]);
+  }, [clearUpdateFrame, requestUpdateFrame, stateStore]);
 
   return {
     containerRef: useMergedRefs(containerRef, containerListenerRef),
