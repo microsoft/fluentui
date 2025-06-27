@@ -261,6 +261,58 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     originalToken: 'paddingCtrlHorizontalDefault',
     rawValue: '8px',
   },
+  _ctrlRadioBackgroundActiveBrandHover: {
+    f2Token: 'colorCompoundBrandForeground1Hover',
+    originalToken: 'backgroundCtrlActiveBrandHover',
+  },
+  _ctrlRadioBackgroundActiveBrandPressed: {
+    f2Token: 'colorCompoundBrandForeground1Pressed',
+    originalToken: 'backgroundCtrlActiveBrandPressed',
+  },
+  _ctrlRadioBackgroundActiveBrandRest: {
+    f2Token: 'colorCompoundBrandForeground1',
+    originalToken: 'backgroundCtrlActiveBrandRest',
+  },
+  _ctrlRadioBackgroundDisabled: {
+    f2Token: 'colorNeutralForegroundDisabled',
+    originalToken: 'ctrlChoiceBaseBackgroundDisabled',
+  },
+  _ctrlRadioChoiceBaseSize: {
+    originalToken: 'ctrlChoiceBaseSize',
+    rawValue: '16px',
+  },
+  _ctrlRadioForegroundContentDisabled: {
+    f2Token: 'colorNeutralForegroundDisabled',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlRadioForegroundContentNeutralHover: {
+    f2Token: 'colorNeutralForeground2',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlRadioForegroundContentNeutralRest: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlRadioPaddingTextTop: {
+    f2Token: 'spacingVerticalXS',
+    originalToken: 'paddingCtrlTextTop',
+  },
+  _ctrlRadioPaddingVertical: {
+    f2Token: 'spacingVerticalS',
+    originalToken: 'paddingCtrlTextTop',
+  },
+  _ctrlRadioStrokeOnActiveBrandHover: {
+    f2Token: 'colorCompoundBrandStrokeHover',
+    originalToken: 'strokeCtrlOnActiveBrandHover',
+  },
+  _ctrlRadioStrokeOnActiveBrandPressed: {
+    f2Token: 'colorCompoundBrandStrokePressed',
+    originalToken: 'strokeCtrlOnActiveBrandPressed',
+  },
+  _ctrlRadioStrokeOnActiveBrandRest: {
+    f2Token: 'colorCompoundBrandStroke',
+    originalToken: 'strokeCtrlOnActiveBrandRest',
+  },
   _ctrlSpinnerBackgroundEmpty: {
     f2Token: 'colorBrandStroke2Contrast',
     originalToken: 'ctrlProgressBackgroundEmpty',

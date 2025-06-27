@@ -1109,7 +1109,7 @@ export const ctrlChoicePaddingVertical = "var(--smtc-ctrl-choice-padding-vertica
 export const ctrlChoicePaddingVerticalRaw = "--smtc-ctrl-choice-padding-vertical";
 
 // @public (undocumented)
-export const ctrlChoiceRadioCorner = "var(--smtc-ctrl-choice-radio-corner, var(--smtc-corner-circular))";
+export const ctrlChoiceRadioCorner = "var(--smtc-ctrl-choice-radio-corner, var(--smtc-corner-circular, var(--borderRadiusCircular)))";
 
 // @public (undocumented)
 export const ctrlChoiceRadioCornerRaw = "--smtc-ctrl-choice-radio-corner";
@@ -1127,7 +1127,7 @@ export const ctrlChoiceRadioDotSizePressed = "var(--smtc-ctrl-choice-radio-dot-s
 export const ctrlChoiceRadioDotSizePressedRaw = "--smtc-ctrl-choice-radio-dot-size-pressed";
 
 // @public (undocumented)
-export const ctrlChoiceRadioDotSizeRest = "var(--smtc-ctrl-choice-radio-dot-size-rest)";
+export const ctrlChoiceRadioDotSizeRest = "var(--smtc-ctrl-choice-radio-dot-size-rest, 16px)";
 
 // @public (undocumented)
 export const ctrlChoiceRadioDotSizeRestRaw = "--smtc-ctrl-choice-radio-dot-size-rest";
@@ -2367,6 +2367,45 @@ export const ctrlProgressSmHeightFilled = "var(--smtc-ctrl-progress-sm-height-fi
 
 // @public (undocumented)
 export const ctrlProgressSmHeightFilledRaw = "--smtc-ctrl-progress-sm-height-filled";
+
+// @public
+export const _ctrlRadioBackgroundActiveBrandHover = "var(--smtc-background-ctrl-active-brand-hover, var(--smtc-background-ctrl-brand-hover, var(--colorCompoundBrandForeground1Hover)))";
+
+// @public
+export const _ctrlRadioBackgroundActiveBrandPressed = "var(--smtc-background-ctrl-active-brand-pressed, var(--smtc-background-ctrl-brand-pressed, var(--colorCompoundBrandForeground1Pressed)))";
+
+// @public
+export const _ctrlRadioBackgroundActiveBrandRest = "var(--smtc-background-ctrl-active-brand-rest, var(--smtc-background-ctrl-brand-rest, var(--colorCompoundBrandForeground1)))";
+
+// @public
+export const _ctrlRadioBackgroundDisabled = "var(--smtc-ctrl-choice-base-background-disabled, var(--smtc-background-ctrl-outline-disabled, var(--colorNeutralForegroundDisabled)))";
+
+// @public
+export const _ctrlRadioChoiceBaseSize = "var(--smtc-ctrl-choice-base-size, var(--smtc-size-ctrl-icon, 16px))";
+
+// @public
+export const _ctrlRadioForegroundContentDisabled = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForegroundDisabled)))";
+
+// @public
+export const _ctrlRadioForegroundContentNeutralHover = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+
+// @public
+export const _ctrlRadioForegroundContentNeutralRest = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground3)))";
+
+// @public
+export const _ctrlRadioPaddingTextTop = "var(--smtc-padding-ctrl-text-top, var(--spacingVerticalXS))";
+
+// @public
+export const _ctrlRadioPaddingVertical = "var(--smtc-padding-ctrl-text-top, var(--spacingVerticalS))";
+
+// @public
+export const _ctrlRadioStrokeOnActiveBrandHover = "var(--smtc-stroke-ctrl-on-active-brand-hover, var(--smtc-stroke-ctrl-on-brand-hover, var(--colorCompoundBrandStrokeHover)))";
+
+// @public
+export const _ctrlRadioStrokeOnActiveBrandPressed = "var(--smtc-stroke-ctrl-on-active-brand-pressed, var(--smtc-stroke-ctrl-on-brand-pressed, var(--colorCompoundBrandStrokePressed)))";
+
+// @public
+export const _ctrlRadioStrokeOnActiveBrandRest = "var(--smtc-stroke-ctrl-on-active-brand-rest, var(--smtc-stroke-ctrl-on-brand-rest, var(--colorCompoundBrandStroke)))";
 
 // @public (undocumented)
 export const ctrlRatingIconForegroundEmpty = "var(--smtc-ctrl-rating-icon-foreground-empty, var(--smtc-ctrl-progress-background-empty, var(--colorNeutralBackground6)))";
