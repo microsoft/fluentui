@@ -82,7 +82,7 @@ export function getParent(child: Node | null, options?: GetParentOptions): Node 
 
 // @public
 export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className">, ExcludedPropKeys extends Extract<keyof Props, string> = never>({ primarySlotTagName, props, excludedPropNames, }: {
-    primarySlotTagName: keyof JSXIntrinsicElements;
+    primarySlotTagName: JSXIntrinsicElementKeys;
     props: Props;
     excludedPropNames?: ExcludedPropKeys[] | undefined;
 }) => {
@@ -149,7 +149,10 @@ export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | Re
 export type JSXElement = React_2.ReactElement<any, any>;
 
 // @public
-export type JSXIntrinsicElements = JSX.IntrinsicElements;
+export type JSXIntrinsicElement<Element extends JSXIntrinsicElementKeys> = React_2.ComponentProps<Element>;
+
+// @public
+export type JSXIntrinsicElementKeys = 'a' | 'abbr' | 'address' | 'animate' | 'animateMotion' | 'animateTransform' | 'area' | 'article' | 'aside' | 'audio' | 'b' | 'base' | 'bdi' | 'bdo' | 'big' | 'blockquote' | 'body' | 'br' | 'button' | 'canvas' | 'caption' | 'circle' | 'cite' | 'clipPath' | 'code' | 'col' | 'colgroup' | 'data' | 'datalist' | 'dd' | 'defs' | 'del' | 'desc' | 'details' | 'dfn' | 'dialog' | 'div' | 'dl' | 'dt' | 'ellipse' | 'em' | 'embed' | 'feBlend' | 'feColorMatrix' | 'feComponentTransfer' | 'feComposite' | 'feConvolveMatrix' | 'feDiffuseLighting' | 'feDisplacementMap' | 'feDistantLight' | 'feDropShadow' | 'feFlood' | 'feFuncA' | 'feFuncB' | 'feFuncG' | 'feFuncR' | 'feGaussianBlur' | 'feImage' | 'feMerge' | 'feMergeNode' | 'feMorphology' | 'feOffset' | 'fePointLight' | 'feSpecularLighting' | 'feSpotLight' | 'feTile' | 'feTurbulence' | 'fieldset' | 'figcaption' | 'figure' | 'filter' | 'footer' | 'foreignObject' | 'form' | 'g' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'head' | 'header' | 'hgroup' | 'hr' | 'html' | 'i' | 'iframe' | 'image' | 'img' | 'input' | 'ins' | 'kbd' | 'keygen' | 'label' | 'legend' | 'li' | 'line' | 'linearGradient' | 'link' | 'main' | 'map' | 'mark' | 'marker' | 'mask' | 'menu' | 'menuitem' | 'meta' | 'metadata' | 'meter' | 'mpath' | 'nav' | 'noindex' | 'noscript' | 'object' | 'ol' | 'optgroup' | 'option' | 'output' | 'p' | 'param' | 'path' | 'pattern' | 'picture' | 'polygon' | 'polyline' | 'pre' | 'progress' | 'q' | 'radialGradient' | 'rect' | 'rp' | 'rt' | 'ruby' | 's' | 'samp' | 'script' | 'section' | 'select' | 'slot' | 'small' | 'source' | 'span' | 'stop' | 'strong' | 'style' | 'sub' | 'summary' | 'sup' | 'svg' | 'switch' | 'symbol' | 'table' | 'tbody' | 'td' | 'template' | 'text' | 'textPath' | 'textarea' | 'tfoot' | 'th' | 'thead' | 'time' | 'title' | 'tr' | 'track' | 'tspan' | 'u' | 'ul' | 'use' | 'var' | 'video' | 'view' | 'wbr' | 'webview';
 
 // @internal
 export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
@@ -264,7 +267,7 @@ export { SelectionMode_2 as SelectionMode }
 export function setVirtualParent(child: Node, parent?: Node): void;
 
 // @public
-export type Slot<Type extends keyof JSXIntrinsicElements | ComponentType<any> | UnknownSlotProps, AlternateAs extends keyof JSXIntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSXIntrinsicElements ? {
+export type Slot<Type extends JSXIntrinsicElementKeys | ComponentType<any> | UnknownSlotProps, AlternateAs extends JSXIntrinsicElementKeys = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends JSXIntrinsicElementKeys ? {
     as?: Type;
 } & WithSlotRenderFunction<IntrinsicElementProps<Type>> : Type extends ComponentType<infer Props> ? Props extends UnknownSlotProps ? Props : WithSlotRenderFunction<Props> : Type> | (AlternateAs extends unknown ? {
     as: AlternateAs;
@@ -299,13 +302,13 @@ export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> & Functi
     children?: ReactNode;
 }> & {
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
-    [SLOT_ELEMENT_TYPE_SYMBOL]: ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSXIntrinsicElements);
+    [SLOT_ELEMENT_TYPE_SYMBOL]: ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : JSXIntrinsicElementKeys);
     [SLOT_CLASS_NAME_PROP_SYMBOL]?: string;
 };
 
 // @public (undocumented)
 export type SlotOptions<Props extends UnknownSlotProps> = {
-    elementType: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSXIntrinsicElements);
+    elementType: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : JSXIntrinsicElementKeys);
     defaultProps?: Partial<Props>;
 };
 
@@ -341,7 +344,7 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
 
 // @public
 export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'className' | 'style'> & {
-    as?: keyof JSXIntrinsicElements;
+    as?: JSXIntrinsicElementKeys;
     children?: ReactNode;
 };
 

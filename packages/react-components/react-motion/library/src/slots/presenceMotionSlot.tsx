@@ -3,7 +3,9 @@ import {
   SLOT_RENDER_FUNCTION_SYMBOL,
   type SlotComponentType,
   type SlotRenderFunction,
+  type JSXIntrinsicElementKeys,
 } from '@fluentui/react-utilities';
+
 import * as React from 'react';
 
 import type { PresenceComponentProps } from '../factories/createPresenceComponent';
