@@ -7,9 +7,14 @@
   "implicitDependencies": [],
   "targets": {
     "prebuild": {
-      "command": "node -r ../../../scripts/ts-node/src/register scripts/expand-jsx-intrinsic-elements.ts",
+      "executor": "nx:run-commands",
       "options": {
-        "cwd": "{projectRoot}"
+        "commands": [
+          "node -r ../../../scripts/ts-node/src/register scripts/expand-jsx-intrinsic-elements.ts",
+          "prettier -w src/utils/generated-types.ts"
+        ],
+        "cwd": "{projectRoot}",
+        "parallel": false
       }
     },
     "build": {
