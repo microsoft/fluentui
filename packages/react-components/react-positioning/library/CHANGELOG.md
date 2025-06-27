@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Thu, 26 Jun 2025 14:11:55 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jun 2025 13:39:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.5)
+
+Fri, 27 Jun 2025 13:39:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.18.4..@fluentui/react-positioning_v9.18.5)
+
+### Patches
+
+- fix: stop rAF if no mouse movement happening ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by olfedias@microsoft.com)
 
 ## [9.18.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.4)
 

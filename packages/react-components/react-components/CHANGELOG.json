@@ -2,6 +2,33 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 27 Jun 2025 13:39:40 GMT",
+      "tag": "@fluentui/react-components_v9.66.5",
+      "version": "9.66.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "1527b08bc5d5b634523688ece52b320a89d83482",
+            "comment": "fix: move action button to be the first button"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a22081a0cf560f862587a4485de93ecebb05f16d",
+            "comment": "fix: stop rAF if no mouse movement happening"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "a6b8ef6bbf59bc8ebc953d43e32f33fdecc1977d",
+            "comment": "fix(focusVisiblePolyfill): Strict mode compat after portal changes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jun 2025 14:11:52 GMT",
       "tag": "@fluentui/react-components_v9.66.4",
       "version": "9.66.4",

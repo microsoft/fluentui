@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-nav
 
-This log was last generated on Thu, 26 Jun 2025 14:11:54 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jun 2025 13:39:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.2.1)
+
+Fri, 27 Jun 2025 13:39:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav_v9.2.0..@fluentui/react-nav_v9.2.1)
+
+### Patches
+
+- fix: move action button to be the first button ([PR #34718](https://github.com/microsoft/fluentui/pull/34718) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-aria to v9.15.3 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-button to v9.5.3 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-drawer to v9.8.5 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-tabster to v9.25.3 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.5 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.2.0)
 

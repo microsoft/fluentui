@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 26 Jun 2025 14:11:52 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jun 2025 13:39:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.66.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.5)
+
+Fri, 27 Jun 2025 13:39:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.4..@fluentui/react-components_v9.66.5)
+
+### Patches
+
+- `@fluentui/react-nav`
+  - fix: move action button to be the first button ([PR #34718](https://github.com/microsoft/fluentui/pull/34718) by marcosvmmoura@gmail.com)
+- `@fluentui/react-positioning`
+  - fix: stop rAF if no mouse movement happening ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by olfedias@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix(focusVisiblePolyfill): Strict mode compat after portal changes ([PR #34700](https://github.com/microsoft/fluentui/pull/34700) by lingfangao@hotmail.com)
 
 ## [9.66.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.4)
 

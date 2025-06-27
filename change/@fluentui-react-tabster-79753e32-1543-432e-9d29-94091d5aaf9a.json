@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(focusVisiblePolyfill): Strict mode compat after portal changes",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
