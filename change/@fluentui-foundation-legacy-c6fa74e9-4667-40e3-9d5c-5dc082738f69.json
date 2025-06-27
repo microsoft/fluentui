@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: mitigate react 18 types breaking changes in non breaking way",
+  "packageName": "@fluentui/foundation-legacy",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
