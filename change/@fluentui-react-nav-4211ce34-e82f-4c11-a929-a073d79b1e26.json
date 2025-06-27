@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: move action button to be the first button",
+  "packageName": "@fluentui/react-nav",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}
