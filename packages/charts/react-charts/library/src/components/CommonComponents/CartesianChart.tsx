@@ -444,7 +444,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         const ytooltipProps = {
           tooltipCls: classes.tooltip!,
           id: _tooltipId,
-          axis: yAxisElement,
+          axis: _yAxisElement,
         };
         _yAxisElement && tooltipOfAxislabels(ytooltipProps);
       }

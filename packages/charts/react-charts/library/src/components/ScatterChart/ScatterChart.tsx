@@ -364,7 +364,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
       xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
