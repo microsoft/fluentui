@@ -3,6 +3,7 @@ import { tokens } from '@fluentui/react-theme';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { RadioSlots, RadioState } from './Radio.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const radioClassNames: SlotClassNames<RadioSlots> = {
   root: 'fui-Radio',
@@ -10,9 +11,6 @@ export const radioClassNames: SlotClassNames<RadioSlots> = {
   input: 'fui-Radio__input',
   label: 'fui-Radio__label',
 };
-
-// The indicator size is used by the indicator and label styles
-const indicatorSize = '16px';
 
 const useRootBaseClassName = makeResetStyles({
   display: 'inline-flex',
@@ -31,11 +29,12 @@ const useInputBaseClassName = makeResetStyles({
   position: 'absolute',
   left: 0,
   top: 0,
-  width: `calc(${indicatorSize} + 2 * ${tokens.spacingHorizontalS})`,
+  width: `calc(${semanticTokens._ctrlRadioChoiceBaseSize} + 2 * ${semanticTokens.ctrlChoicePaddingHorizontal})`,
   height: '100%',
   boxSizing: 'border-box',
   margin: 0,
   opacity: 0,
+  backgroundColor: semanticTokens.ctrlChoiceBaseBackgroundRest,
 
   ':enabled': {
     cursor: 'pointer',
@@ -47,10 +46,10 @@ const useInputBaseClassName = makeResetStyles({
   // Colors for the unchecked state
   ':enabled:not(:checked)': {
     [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForeground3,
+      color: semanticTokens._ctrlRadioForegroundContentNeutralRest,
     },
     [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeAccessible,
+      borderColor: semanticTokens.ctrlChoiceBaseStrokeRest,
       '@media (forced-colors: active)': {
         borderColor: 'ButtonBorder',
       },
@@ -58,19 +57,19 @@ const useInputBaseClassName = makeResetStyles({
 
     ':hover': {
       [`& ~ .${radioClassNames.label}`]: {
-        color: tokens.colorNeutralForeground2,
+        color: semanticTokens._ctrlRadioForegroundContentNeutralHover,
       },
       [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
+        borderColor: semanticTokens.ctrlChoiceBaseStrokeHover,
       },
     },
 
     ':hover:active': {
       [`& ~ .${radioClassNames.label}`]: {
-        color: tokens.colorNeutralForeground1,
+        color: semanticTokens.foregroundContentNeutralPrimary,
       },
       [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
+        borderColor: semanticTokens.ctrlChoiceBaseStrokePressed,
       },
     },
   },
@@ -78,11 +77,11 @@ const useInputBaseClassName = makeResetStyles({
   // Colors for the checked state
   ':enabled:checked': {
     [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForeground1,
+      color: semanticTokens.foregroundContentNeutralPrimary,
     },
     [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorCompoundBrandStroke,
-      color: tokens.colorCompoundBrandForeground1,
+      borderColor: semanticTokens._ctrlRadioStrokeOnActiveBrandRest,
+      color: semanticTokens._ctrlRadioBackgroundActiveBrandRest,
       '@media (forced-colors: active)': {
         borderColor: 'Highlight',
         color: 'Highlight',
@@ -94,15 +93,15 @@ const useInputBaseClassName = makeResetStyles({
 
     ':hover': {
       [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorCompoundBrandStrokeHover,
-        color: tokens.colorCompoundBrandForeground1Hover,
+        borderColor: semanticTokens._ctrlRadioStrokeOnActiveBrandHover,
+        color: semanticTokens._ctrlRadioBackgroundActiveBrandHover,
       },
     },
 
     ':hover:active': {
       [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorCompoundBrandStrokePressed,
-        color: tokens.colorCompoundBrandForeground1Pressed,
+        borderColor: semanticTokens._ctrlRadioStrokeOnActiveBrandPressed,
+        color: semanticTokens._ctrlRadioBackgroundActiveBrandPressed,
       },
     },
   },
@@ -110,15 +109,15 @@ const useInputBaseClassName = makeResetStyles({
   // Colors for the disabled state
   ':disabled': {
     [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: semanticTokens._ctrlRadioForegroundContentDisabled,
       cursor: 'default',
       '@media (forced-colors: active)': {
         color: 'GrayText',
       },
     },
     [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeDisabled,
-      color: tokens.colorNeutralForegroundDisabled,
+      borderColor: semanticTokens.ctrlChoiceBaseStrokeDisabled,
+      color: semanticTokens._ctrlRadioBackgroundDisabled,
       '@media (forced-colors: active)': {
         borderColor: 'GrayText',
         color: 'GrayText',
@@ -133,7 +132,7 @@ const useInputBaseClassName = makeResetStyles({
 const useInputStyles = makeStyles({
   below: {
     width: '100%',
-    height: `calc(${indicatorSize} + 2 * ${tokens.spacingVerticalS})`,
+    height: `calc(${semanticTokens._ctrlRadioChoiceBaseSize} + 2 * ${semanticTokens.ctrlChoicePaddingVertical})`,
   },
 
   // If the indicator has no children, use the ::after pseudo-element for the checked state
@@ -153,8 +152,8 @@ const useInputStyles = makeStyles({
 
 const useIndicatorBaseClassName = makeResetStyles({
   position: 'relative',
-  width: indicatorSize,
-  height: indicatorSize,
+  width: semanticTokens._ctrlRadioChoiceBaseSize,
+  height: semanticTokens._ctrlRadioChoiceBaseSize,
   fontSize: '12px',
   boxSizing: 'border-box',
   flexShrink: 0,
@@ -164,17 +163,17 @@ const useIndicatorBaseClassName = makeResetStyles({
   justifyContent: 'center',
   overflow: 'hidden',
 
-  border: tokens.strokeWidthThin + ' solid',
-  borderRadius: tokens.borderRadiusCircular,
-  margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
+  border: `${semanticTokens.strokeWidthCtrlOutlineRest} solid`,
+  borderRadius: semanticTokens.ctrlChoiceRadioCorner,
+  margin: semanticTokens.ctrlChoicePaddingVertical + ' ' + semanticTokens.ctrlChoicePaddingHorizontal,
   fill: 'currentColor',
   pointerEvents: 'none',
 
   '::after': {
     position: 'absolute',
-    width: indicatorSize,
-    height: indicatorSize,
-    borderRadius: tokens.borderRadiusCircular,
+    width: semanticTokens.ctrlChoiceRadioDotSizeRest,
+    height: semanticTokens.ctrlChoiceRadioDotSizeRest,
+    borderRadius: semanticTokens.ctrlChoiceRadioCorner,
     // Use a transform to avoid pixel rounding errors at 125% DPI
     // https://github.com/microsoft/fluentui/issues/30025
     transform: 'scale(0.625)',
@@ -186,7 +185,7 @@ const useIndicatorBaseClassName = makeResetStyles({
 const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
+    padding: `${semanticTokens._ctrlRadioPaddingVertical} ${tokens.spacingHorizontalS}`,
   },
 
   after: {
@@ -194,12 +193,12 @@ const useLabelStyles = makeStyles({
 
     // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
     // This prevents the label from expanding the height of the Radio, but preserves line height if the label wraps.
-    marginTop: `calc((${indicatorSize} - ${tokens.lineHeightBase300}) / 2)`,
-    marginBottom: `calc((${indicatorSize} - ${tokens.lineHeightBase300}) / 2)`,
+    marginTop: `calc((${semanticTokens._ctrlRadioChoiceBaseSize} - ${semanticTokens.textRampItemBodyLineHeight}) / 2)`,
+    marginBottom: `calc((${semanticTokens._ctrlRadioChoiceBaseSize} - ${semanticTokens.textRampItemBodyLineHeight}) / 2)`,
   },
 
   below: {
-    paddingTop: tokens.spacingVerticalXS,
+    paddingTop: semanticTokens._ctrlRadioPaddingTextTop,
     textAlign: 'center',
   },
 });
