@@ -7,7 +7,7 @@
   "implicitDependencies": [],
   "targets": {
     "prebuild": {
-      "command": "node -r ../../../scripts/ts-node/src/register scripts/expand-jsx-intrinsic-elements-advanced.ts",
+      "command": "node -r ../../../scripts/ts-node/src/register scripts/expand-jsx-intrinsic-elements.ts",
       "options": {
         "cwd": "{projectRoot}"
       }

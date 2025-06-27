@@ -16,11 +16,13 @@ TypeScript declaration files typically preserve type expressions like `keyof JSX
 
 ### 2. `expand-jsx-intrinsic-elements-advanced.ts` (Recommended)
 
+- **TypeChecker-only approach**: Uses TypeScript's compiler API exclusively for type resolution
 - Dynamically extracts from actual React type definitions
 - Supports both React 17 and React 18+ type structures
-- Handles HTML and SVG elements
+- Handles HTML and SVG elements (178+ elements)
 - Provides version detection and detailed logging
-- **Fails if extraction is unsuccessful** (no fallback to static list)
+- **Strict mode**: Fails if extraction is unsuccessful (no fallback to static list)
+- **Early exit optimization**: Stops processing once successful extraction is achieved
 
 ## React Version Compatibility
 
@@ -98,7 +100,7 @@ export type JSXIntrinsicElementKeys =
   | 'article'
   | 'aside'
   | 'audio'
-  // ... 175+ elements total including HTML and SVG
+  // ... 178+ elements total including HTML and SVG
   | 'video'
   | 'view'
   | 'wbr'
@@ -109,10 +111,11 @@ export type JSXIntrinsicElementKeys =
 
 ### Detection Strategy
 
-1. **AST Parsing**: Parses React type definition files to find JSX namespace structures
-2. **Dual Approach**: Checks both global JSX (React 17) and React.JSX (React 18+) patterns
-3. **TypeChecker Fallback**: Uses TypeScript's type checker API if AST parsing fails
-4. **Strict Mode**: Script fails if React types cannot be parsed successfully
+1. **TypeChecker-only Resolution**: Uses TypeScript's compiler API exclusively for type resolution
+2. **Temporary Source File**: Creates temporary TypeScript source with type aliases to query JSX types
+3. **Dual Fallback**: Tries `JSX.IntrinsicElements` first, then `React.JSX.IntrinsicElements` if needed
+4. **Early Exit**: Stops processing once successful extraction is achieved
+5. **Strict Mode**: Script fails if React types cannot be parsed successfully
 
 ### Output Features
 
@@ -128,6 +131,20 @@ export type JSXIntrinsicElementKeys =
 - Version detection for React types
 - Pattern matching for various input formats
 
+### Implementation Details
+
+The advanced script uses a sophisticated TypeChecker-only approach:
+
+1. **Program Creation**: Creates a TypeScript program with React type definitions
+2. **Temporary Source**: Generates a temporary `.tsx` file with type aliases:
+   ```typescript
+   type TestIntrinsicElements = JSX.IntrinsicElements;
+   type TestReactIntrinsicElements = React.JSX.IntrinsicElements;
+   ```
+3. **Type Resolution**: Uses TypeChecker to resolve these aliases to their actual types
+4. **Property Extraction**: Extracts all property names from the resolved IntrinsicElements type
+5. **Early Exit**: Stops processing once the first successful extraction is complete
+
 ## Integration
 
 The transformed types are automatically included in the build process:
@@ -142,8 +159,10 @@ The transformed types are automatically included in the build process:
 1. **Better IntelliSense**: IDEs show actual element names instead of type references
 2. **Faster Type Checking**: No need to resolve `keyof` operations at compile time
 3. **Cross-Version Compatibility**: Works with both React 17 and React 18+ projects
-4. **Comprehensive Coverage**: Includes both HTML and SVG elements
+4. **Comprehensive Coverage**: Includes both HTML and SVG elements (178+ total)
 5. **Maintainable**: Automatically syncs with React type definition updates
+6. **Performance Optimized**: TypeChecker-only approach with early exit for faster execution
+7. **Reliable**: Uses TypeScript's built-in type resolution instead of manual AST parsing
 
 ## Maintenance
 
