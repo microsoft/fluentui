@@ -1032,11 +1032,6 @@ Object {
       id="tooltip_73"
       style="opacity: 0;"
     />
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip_74"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -2199,11 +2194,6 @@ Object {
     <div
       class="fui-cart__tooltip"
       id="tooltip_73"
-      style="opacity: 0;"
-    />
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip_74"
       style="opacity: 0;"
     />
     <div>
@@ -7055,19 +7045,19 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  x="-16"
+                  x="-21"
                 >
                   <tspan
                     data-="String Four"
                     dy="0.32em"
                     id="BaseSpan-0"
-                    x="-16"
+                    x="-21"
                   />
                   <tspan
                     dx="1.5em"
                     dy="0.32"
                     id="showDots-0"
-                    x="-16"
+                    x="-21"
                   >
                     Stri...
                   </tspan>
@@ -7085,19 +7075,19 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  x="-16"
+                  x="-21"
                 >
                   <tspan
                     data-="String Three"
                     dy="0.32em"
                     id="BaseSpan-1"
-                    x="-16"
+                    x="-21"
                   />
                   <tspan
                     dx="1.5em"
                     dy="0.32"
                     id="showDots-1"
-                    x="-16"
+                    x="-21"
                   >
                     Stri...
                   </tspan>
@@ -7115,19 +7105,19 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  x="-16"
+                  x="-21"
                 >
                   <tspan
                     data-="String Two"
                     dy="0.32em"
                     id="BaseSpan-2"
-                    x="-16"
+                    x="-21"
                   />
                   <tspan
                     dx="1.5em"
                     dy="0.32"
                     id="showDots-2"
-                    x="-16"
+                    x="-21"
                   >
                     Stri...
                   </tspan>
@@ -7145,19 +7135,19 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  x="-16"
+                  x="-21"
                 >
                   <tspan
                     data-="String One"
                     dy="0.32em"
                     id="BaseSpan-3"
-                    x="-16"
+                    x="-21"
                   />
                   <tspan
                     dx="1.5em"
                     dy="0.32"
                     id="showDots-3"
-                    x="-16"
+                    x="-21"
                   >
                     Stri...
                   </tspan>
@@ -7267,8 +7257,8 @@ Object {
       </div>
     </div>
     <div
-      class="fui-hbcwa__tooltip"
-      id="HBCWATooltipID_72"
+      class="fui-cart__tooltip"
+      id="tooltip_73"
       style="opacity: 0;"
     />
   </body>,
@@ -7527,19 +7517,19 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                x="-16"
+                x="-21"
               >
                 <tspan
                   data-="String Four"
                   dy="0.32em"
                   id="BaseSpan-0"
-                  x="-16"
+                  x="-21"
                 />
                 <tspan
                   dx="1.5em"
                   dy="0.32"
                   id="showDots-0"
-                  x="-16"
+                  x="-21"
                 >
                   Stri...
                 </tspan>
@@ -7557,19 +7547,19 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                x="-16"
+                x="-21"
               >
                 <tspan
                   data-="String Three"
                   dy="0.32em"
                   id="BaseSpan-1"
-                  x="-16"
+                  x="-21"
                 />
                 <tspan
                   dx="1.5em"
                   dy="0.32"
                   id="showDots-1"
-                  x="-16"
+                  x="-21"
                 >
                   Stri...
                 </tspan>
@@ -7587,19 +7577,19 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                x="-16"
+                x="-21"
               >
                 <tspan
                   data-="String Two"
                   dy="0.32em"
                   id="BaseSpan-2"
-                  x="-16"
+                  x="-21"
                 />
                 <tspan
                   dx="1.5em"
                   dy="0.32"
                   id="showDots-2"
-                  x="-16"
+                  x="-21"
                 >
                   Stri...
                 </tspan>
@@ -7617,19 +7607,19 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                x="-16"
+                x="-21"
               >
                 <tspan
                   data-="String One"
                   dy="0.32em"
                   id="BaseSpan-3"
-                  x="-16"
+                  x="-21"
                 />
                 <tspan
                   dx="1.5em"
                   dy="0.32"
                   id="showDots-3"
-                  x="-16"
+                  x="-21"
                 >
                   Stri...
                 </tspan>
@@ -7801,11 +7791,6 @@ Object {
     <div
       class="fui-cart__tooltip"
       id="tooltip_73"
-      style="opacity: 0;"
-    />
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip_74"
       style="opacity: 0;"
     />
     <div>
