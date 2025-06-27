@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 import { getReactCallbackName } from './getReactCallbackName';
 import type { ReactCallbackName } from './getReactCallbackName';
-import { JSXIntrinsicElements } from './types';
+import type { JSXIntrinsicElementKeys } from './types';
 
 const callbacks: ReactCallbackName[] = [
   'onCopy',
@@ -50,7 +50,7 @@ const callbacks: ReactCallbackName[] = [
 /**
  * React has special handling for some events, this means that they should be called on proper elements.
  */
-const specialElements: Partial<Record<ReactCallbackName, keyof JSXIntrinsicElements>> = {
+const specialElements: Partial<Record<ReactCallbackName, JSXIntrinsicElementKeys>> = {
   onBlur: 'button',
   onFocus: 'button',
   onInvalid: 'input',
