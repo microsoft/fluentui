@@ -1101,10 +1101,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     />
                     {lastSupportsTextMode && lastText && (
                       <text
-                        key={`${circleId}-label`}
-                        x={this._xAxisScale(x1)}
+                        key={`${lastCircleId}-label`}
+                        x={this._xAxisScale(x2)}
                         y={
-                          yScale(y1) +
+                          yScale(y2) +
                           Math.max(currentMarkerSize ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize : 4, 4) +
                           12
                         }
@@ -1864,7 +1864,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
     this._xMin = this._isXAxisDateType ? (minVal as Date).getTime() : (minVal as number);
     this._xMax = this._isXAxisDateType ? (maxVal as Date).getTime() : (maxVal as number);
-    this._xMin = this._xMin === Number.NEGATIVE_INFINITY || (!this._xMin && this._xMin !== 0) ? 0 : this._xMin;
-    this._xMax = this._xMax === Number.POSITIVE_INFINITY || (!this._xMax && this._xMax !== 0) ? 0 : this._xMax;
+    this._xMin = this._xMin === Number.NEGATIVE_INFINITY || !this._xMin ? 0 : this._xMin;
+    this._xMax = this._xMax === Number.POSITIVE_INFINITY || !this._xMax ? 0 : this._xMax;
   };
 }
