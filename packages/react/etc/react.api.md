@@ -723,7 +723,8 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected _getDescribedBy: (items: T[], hasError: boolean) => string;
     // @deprecated (undocumented)
-    protected getSuggestionsAlert(suggestionAlertClassName?: string): React_2.JSX.Element | undefined;
+    protected getSuggestionsAlert(suggestionAlertClassName?: string): // eslint-disable-next-line @typescript-eslint/no-deprecated
+    JSX.Element | undefined;
     // (undocumented)
     protected input: React_2.RefObject<IAutofill>;
     // (undocumented)
@@ -768,7 +769,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
-    protected renderCustomAlert(alertClassName?: string): React_2.JSX.Element;
+    protected renderCustomAlert(alertClassName?: string): JSX.Element;
     // (undocumented)
     protected renderError(className?: string): JSX.Element | null;
     // (undocumented)
@@ -920,7 +921,7 @@ export const ButtonGlobalClassNames: {
 export const ButtonGrid: React_2.FunctionComponent<IButtonGridProps>;
 
 // @public (undocumented)
-export const ButtonGridCell: <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => React_2.JSX.Element;
+export const ButtonGridCell: <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => JSX.Element;
 
 export { buttonProperties }
 
@@ -1095,8 +1096,8 @@ export const CompactPeoplePicker: React_2.FunctionComponent<React_2.PropsWithChi
 // @public
 export class CompactPeoplePickerBase extends BasePeoplePicker {
     static defaultProps: {
-        onRenderItem: (props: IPeoplePickerItemSelectedProps) => React_2.JSX.Element;
-        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => React_2.JSX.Element;
+        onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
+        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => JSX.Element;
         createGenericItem: typeof createGenericItem;
     };
 }
@@ -1151,7 +1152,7 @@ export class ContextualMenuItemBase extends React_2.Component<IContextualMenuIte
     // (undocumented)
     openSubMenu: () => void;
     // (undocumented)
-    render(): React_2.JSX.Element;
+    render(): JSX.Element;
 }
 
 // @public (undocumented)
@@ -1390,7 +1391,7 @@ export class DetailsRowBase extends React_2.Component<IDetailsRowBaseProps, IDet
     static getDerivedStateFromProps(nextProps: IDetailsRowBaseProps, previousState: IDetailsRowState): IDetailsRowState;
     measureCell(index: number, onMeasureDone: (width: number) => void): void;
     // (undocumented)
-    protected _onRenderCheck(props: IDetailsRowCheckProps): React_2.JSX.Element;
+    protected _onRenderCheck(props: IDetailsRowCheckProps): JSX.Element;
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
@@ -1668,7 +1669,7 @@ export class FacepileBase extends React_2.Component<IFacepileProps, {}> {
     // (undocumented)
     static defaultProps: IFacepileProps;
     // (undocumented)
-    protected onRenderAriaDescription(): "" | React_2.JSX.Element | undefined;
+    protected onRenderAriaDescription(): JSX.Element | undefined;
     // (undocumented)
     render(): JSX.Element;
 }
@@ -4097,7 +4098,7 @@ export const Icon: React_2.FunctionComponent<IIconProps>;
 export class IconBase extends React_2.Component<IIconProps, IIconState> {
     constructor(props: IIconProps);
     // (undocumented)
-    render(): React_2.JSX.Element;
+    render(): JSX.Element;
 }
 
 // @public (undocumented)
@@ -9947,7 +9948,7 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     // (undocumented)
     static defaultProps: {
         startIndex: number;
-        onRenderCell: (item: any, index: number, containsFocus: boolean) => React_2.JSX.Element;
+        onRenderCell: (item: any, index: number, containsFocus: boolean) => JSX.Element;
         onRenderCellConditional: undefined;
         renderedWindowsAhead: number;
         renderedWindowsBehind: number;
@@ -9974,8 +9975,8 @@ export const ListPeoplePicker: React_2.FunctionComponent<React_2.PropsWithChildr
 // @public
 export class ListPeoplePickerBase extends MemberListPeoplePicker {
     static defaultProps: {
-        onRenderItem: (props: IPeoplePickerItemSelectedProps) => React_2.JSX.Element;
-        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => React_2.JSX.Element;
+        onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
+        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => JSX.Element;
         createGenericItem: typeof createGenericItem;
     };
 }
@@ -10134,8 +10135,8 @@ export const NormalPeoplePicker: React_2.FunctionComponent<React_2.PropsWithChil
 // @public
 export class NormalPeoplePickerBase extends BasePeoplePicker {
     static defaultProps: {
-        onRenderItem: (props: IPeoplePickerItemSelectedProps) => React_2.JSX.Element;
-        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => React_2.JSX.Element;
+        onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
+        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => JSX.Element;
         createGenericItem: typeof createGenericItem;
     };
 }
@@ -10243,13 +10244,13 @@ export { PartialTheme }
 export const PeoplePickerItem: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<IPeoplePickerItemSelectedProps>>>;
 
 // @public (undocumented)
-export const PeoplePickerItemBase: (props: IPeoplePickerItemSelectedProps) => React_2.JSX.Element;
+export const PeoplePickerItemBase: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
 
 // @public (undocumented)
 export const PeoplePickerItemSuggestion: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<IPeoplePickerItemSuggestionProps>>>;
 
 // @public (undocumented)
-export const PeoplePickerItemSuggestionBase: (props: IPeoplePickerItemSuggestionProps) => React_2.JSX.Element;
+export const PeoplePickerItemSuggestionBase: (props: IPeoplePickerItemSuggestionProps) => JSX.Element;
 
 // @public
 export const Persona: React_2.FunctionComponent<IPersonaProps>;
@@ -10517,7 +10518,7 @@ export class ProgressIndicatorBase extends React_2.Component<IProgressIndicatorP
         width: number;
     };
     // (undocumented)
-    render(): React_2.JSX.Element;
+    render(): JSX.Element;
 }
 
 export { PulsingBeaconAnimationStyles }
@@ -10964,7 +10965,7 @@ export class SpinnerBase extends React_2.Component<ISpinnerProps, any> {
     // (undocumented)
     static defaultProps: ISpinnerProps;
     // (undocumented)
-    render(): React_2.JSX.Element;
+    render(): JSX.Element;
 }
 
 // @public
@@ -11274,13 +11275,13 @@ export { tableProperties }
 export const TagItem: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<ITagItemProps>>>;
 
 // @public (undocumented)
-export const TagItemBase: (props: ITagItemProps) => React_2.JSX.Element;
+export const TagItemBase: (props: ITagItemProps) => JSX.Element;
 
 // @public (undocumented)
 export const TagItemSuggestion: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<ITagItemSuggestionProps>>>;
 
 // @public (undocumented)
-export const TagItemSuggestionBase: (props: ITagItemSuggestionProps) => React_2.JSX.Element;
+export const TagItemSuggestionBase: (props: ITagItemSuggestionProps) => JSX.Element;
 
 // @public (undocumented)
 export const TagPicker: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<ITagPickerProps>>>;
@@ -11289,8 +11290,8 @@ export const TagPicker: React_2.FunctionComponent<React_2.PropsWithChildren<Reac
 export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
     // (undocumented)
     static defaultProps: {
-        onRenderItem: (props: ITagItemProps) => React_2.JSX.Element;
-        onRenderSuggestionsItem: (props: ITag) => React_2.JSX.Element;
+        onRenderItem: (props: ITagItemProps) => JSX.Element;
+        onRenderSuggestionsItem: (props: ITag) => JSX.Element;
     };
 }
 

@@ -105,7 +105,13 @@ const _measureScrollRect = _measurePageRect;
 export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {
   public static defaultProps = {
     startIndex: 0,
-    onRenderCell: (item: any, index: number, containsFocus: boolean) => <>{(item && item.name) || ''}</>,
+
+    onRenderCell: (
+      item: any,
+      index: number,
+      containsFocus: boolean,
+    ): // eslint-disable-next-line @typescript-eslint/no-deprecated
+    JSX.Element => <>{(item && item.name) || ''}</>,
     onRenderCellConditional: undefined,
     renderedWindowsAhead: DEFAULT_RENDERED_WINDOWS_AHEAD,
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND,
