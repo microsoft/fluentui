@@ -1,4 +1,4 @@
-import { makeResetStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { DialogBodySlots, DialogBodyState } from './DialogBody.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { DIALOG_GAP, MEDIA_QUERY_BREAKPOINT_SELECTOR, MEDIA_QUERY_SHORT_SCREEN, SURFACE_PADDING } from '../../contexts';
@@ -29,6 +29,12 @@ const useResetStyles = makeResetStyles({
   },
 });
 
+const useStyles = makeStyles({
+  dynamicViewportRoot: {
+    maxHeight: `calc(100dvh - 2 * ${SURFACE_PADDING})`,
+  },
+});
+
 /**
  * Apply styling to the DialogBody slots based on the state
  */
@@ -36,8 +42,16 @@ export const useDialogBodyStyles_unstable = (state: DialogBodyState): DialogBody
   'use no memo';
 
   const resetStyles = useResetStyles();
+  const styles = useStyles();
 
-  state.root.className = mergeClasses(dialogBodyClassNames.root, resetStyles, state.root.className);
+  state.root.className = mergeClasses(
+    dialogBodyClassNames.root,
+    resetStyles,
+    // This will ensure that if dynamic viewport is supported, the dialog will be sized correctly.
+    // If not, it will be a no-op and fallback to normal viewport.
+    styles.dynamicViewportRoot,
+    state.root.className,
+  );
 
   return state;
 };
