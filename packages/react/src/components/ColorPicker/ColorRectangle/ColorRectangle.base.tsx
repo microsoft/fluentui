@@ -36,6 +36,8 @@ export class ColorRectangleBase
     ariaDescription: 'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.',
   };
 
+  public context: React.ContextType<typeof WindowContext>;
+
   private _disposables: (() => void)[] = [];
   private _root = React.createRef<HTMLDivElement>();
   private _isAdjustingSaturation: boolean = true;

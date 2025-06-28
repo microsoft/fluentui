@@ -481,6 +481,8 @@ export class Autofill extends React_2.Component<IAutofillProps, IAutofillState> 
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     get cursorLocation(): number | null;
@@ -701,6 +703,8 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     protected currentPromise: PromiseLike<any> | undefined;
@@ -814,6 +818,8 @@ export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsLis
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(oldProps: P, oldState: IBaseSelectedItemsListState<IObjectWithKey>): void;
+    // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -1325,6 +1331,8 @@ export class DetailsListBase extends React_2.Component<IDetailsListProps, IDetai
     componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -9821,6 +9829,8 @@ export class KeytipLayerBase extends React_2.Component<IKeytipLayerProps, IKeyti
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: IKeytipLayerProps;
@@ -9930,6 +9940,8 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     componentDidUpdate(previousProps: IListProps, previousState: IListState<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -10100,6 +10112,8 @@ export const Nav: React_2.FunctionComponent<INavProps>;
 export class NavBase extends React_2.Component<INavProps, INavState> implements INav {
     constructor(props: INavProps);
     // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: INavProps;
@@ -10193,6 +10207,8 @@ export class PanelBase extends React_2.Component<IPanelProps, IPanelState> imple
     componentDidUpdate(previousProps: IPanelProps, previousState: IPanelState): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -10646,6 +10662,8 @@ export class ScrollablePaneBase extends React_2.Component<IScrollablePaneProps, 
     // (undocumented)
     get contentContainer(): HTMLDivElement | null;
     // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     forceLayoutUpdate(): void;
@@ -10991,6 +11009,8 @@ export class Sticky extends React_2.Component<IStickyProps, IStickyState> {
     componentDidUpdate(prevProps: IStickyProps, prevState: IStickyState): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: React_2.ContextType<typeof ScrollablePaneContext>;
     // (undocumented)
     static contextType: React_2.Context<IScrollablePaneContext>;
     // (undocumented)
@@ -11415,6 +11435,8 @@ export class TooltipHostBase extends React_2.Component<ITooltipHostProps, IToolt
     componentDidMount(): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
