@@ -87,7 +87,7 @@ export function styled<
 >(
   Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
-  getProps?: (props: TComponentProps) => Partial<TComponentProps>,
+  getProps?: (props: React.PropsWithoutRef<TComponentProps>) => Partial<React.PropsWithoutRef<TComponentProps>>,
   customizable?: ICustomizableProps,
   pure?: boolean,
 ) {
@@ -95,7 +95,7 @@ export function styled<
 
   const { scope, fields = DefaultFields } = customizable;
 
-  const Wrapped = React.forwardRef((props: TComponentProps, forwardedRef: React.Ref<TRef>) => {
+  const Wrapped = React.forwardRef((props: React.PropsWithoutRef<TComponentProps>, forwardedRef: React.Ref<TRef>) => {
     const styles = React.useRef<StyleFunction<TStyleProps, TStyleSet>>();
 
     const settings = useCustomizationSettings(fields, scope);
@@ -130,7 +130,15 @@ export function styled<
 
     styles.current.__shadowConfig__ = useStyled(scope);
 
-    return <Component ref={forwardedRef} {...rest} {...additionalProps} {...props} styles={styles.current} />;
+    return (
+      <Component
+        ref={forwardedRef}
+        {...rest}
+        {...additionalProps}
+        {...(props as TComponentProps)}
+        styles={styles.current}
+      />
+    );
   });
   // Function.prototype.name is an ES6 feature, so the cast to any is required until we're
   // able to drop IE 11 support and compile with ES6 libs
