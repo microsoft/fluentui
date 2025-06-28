@@ -51,6 +51,7 @@ const useStyles = makeStyles({
   sublabel: {
     ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
   needle: {
     fill: tokens.colorNeutralForeground1,
@@ -59,6 +60,7 @@ const useStyles = makeStyles({
   chartTitle: {
     ...typographyStyles.caption1,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
   segment: {
     outline: 'none',

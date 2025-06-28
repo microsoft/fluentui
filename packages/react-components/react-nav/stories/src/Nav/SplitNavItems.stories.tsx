@@ -6,7 +6,6 @@ import {
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
-  NavDrawerProps,
   NavDensity,
   AppItem,
   AppItemStatic,
@@ -91,6 +90,10 @@ const useStyles = makeStyles({
     marginLeft: '8px',
     flexDirection: 'column',
     gridRowGap: tokens.spacingVerticalS,
+  },
+  pinned: {
+    opacity: 1,
+    transform: 'translate3D(0, 0, 0)',
   },
 });
 
@@ -184,7 +187,7 @@ const DemoMenuPopover = () => {
   );
 };
 
-export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
+export const SplitNavItems = () => {
   const styles = useStyles();
 
   const labelId = useId('type-label');
@@ -225,11 +228,14 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
   };
 
   const getToggleButtonProps = (value?: string) => {
+    const isPinned = pinnedValues.includes(value || '');
+
     if (value) {
       return {
-        checked: pinnedValues.includes(value),
+        checked: isPinned,
         onClick: () => handlePinClick(value),
-        icon: pinnedValues.includes(value) ? <Pin /> : <Pin20Regular />,
+        icon: isPinned ? <Pin /> : <Pin20Regular />,
+        className: isPinned ? styles.pinned : '',
       };
     }
   };

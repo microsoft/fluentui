@@ -217,13 +217,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#002050"
-                height="2.45"
+                height="1.225"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="257.65000000000003"
+                y="258.875"
               />
             </g>
             <text
@@ -233,7 +233,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="251.65000000000003"
+              y="252.875"
             >
               2.5
             </text>
@@ -729,13 +729,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#002050"
-                height="2.45"
+                height="1.225"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="257.65000000000003"
+                y="258.875"
               />
             </g>
             <text
@@ -745,7 +745,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="251.65000000000003"
+              y="252.875"
             >
               2.5
             </text>
@@ -3113,7 +3113,106 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         id="yAxisGElementchart_"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -3261,7 +3360,106 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         id="yAxisGElementchart_"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -3409,7 +3607,106 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         id="yAxisGElementchart_"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={3}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={3}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={3}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={3}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -3557,7 +3854,106 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         id="yAxisGElementchart_"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -3705,7 +4101,106 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         id="yAxisGElementchart_"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -3879,7 +4374,106 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         id="yAxisGElementchart_"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -3918,7 +4512,104 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         id="yAxisGElementchart_"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={false}
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={false}
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={false}
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={false}
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -4066,7 +4757,88 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         id="yAxisGElementchart_"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%."
+            data-is-focusable={true}
+            id="0-singleBar"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            tabIndex={0}
+          >
+            <rect
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={42.30769230769231}
+              opacity={1}
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={5.288461538461538}
+              opacity={1}
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%."
+            data-is-focusable={true}
+            id="1-singleBar"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            tabIndex={0}
+          >
+            <rect
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={31.73076923076923}
+              opacity={1}
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={21.153846153846153}
+              opacity={1}
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -4214,7 +4986,106 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         id="yAxisGElementchart_"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -4609,7 +5480,106 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         id="yAxisGElementchart_"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
