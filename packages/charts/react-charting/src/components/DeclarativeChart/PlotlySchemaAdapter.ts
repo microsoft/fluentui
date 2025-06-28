@@ -333,7 +333,11 @@ export const resolveXAxisPoint = (
   return x;
 };
 
-const createColorScale = (layout: Partial<Layout> | undefined, series: Partial<PlotData>) => {
+const createColorScale = (
+  layout: Partial<Layout> | undefined,
+  series: Partial<PlotData>,
+  currentColorScale: ((value: number) => string) | undefined,
+) => {
   if (
     layout?.coloraxis?.colorscale?.length &&
     isArrayOrTypedArray(series.marker?.color) &&
@@ -353,7 +357,7 @@ const createColorScale = (layout: Partial<Layout> | undefined, series: Partial<P
 
     return d3ScaleLinear<string>().domain(scaleDomain).range(scaleColors);
   }
-  return undefined;
+  return currentColorScale;
 };
 
 export const transformPlotlyJsonToDonutProps = (
@@ -437,9 +441,10 @@ export const transformPlotlyJsonToVSBCProps = (
   let yMinValue = 0;
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  let colorScale: ((value: number) => string) | undefined = undefined;
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
-    const colorScale = createColorScale(input.layout, series);
+    colorScale = createColorScale(input.layout, series, colorScale);
 
     const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     // extract bar colors for each series only once
@@ -561,9 +566,10 @@ export const transformPlotlyJsonToGVBCProps = (
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  let colorScale: ((value: number) => string) | undefined = undefined;
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
-    const colorScale = createColorScale(input.layout, series);
+    colorScale = createColorScale(input.layout, series, colorScale);
 
     // extract colors for each series only once
     const extractedColors = extractColor(
@@ -639,13 +645,14 @@ export const transformPlotlyJsonToVBCProps = (
 ): IVerticalBarChartProps => {
   const vbcData: IVerticalBarChartDataPoint[] = [];
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  let colorScale: ((value: number) => string) | undefined = undefined;
 
   input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
     if (!series.x) {
       return;
     }
 
-    const colorScale = createColorScale(input.layout, series);
+    colorScale = createColorScale(input.layout, series, colorScale);
 
     // extract colors for each series only once
     const extractedColors = extractColor(
@@ -932,9 +939,10 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   isDarkTheme?: boolean,
 ): IHorizontalBarChartWithAxisProps => {
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  let colorScale: ((value: number) => string) | undefined = undefined;
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
-      const colorScale = createColorScale(input.layout, series);
+      colorScale = createColorScale(input.layout, series, colorScale);
 
       // extract colors for each series only once
       const extractedColors = extractColor(
