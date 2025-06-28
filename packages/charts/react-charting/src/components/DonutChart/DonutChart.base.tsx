@@ -122,8 +122,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
-      width: this.state._width!,
-      height: this.state._height!,
       color: this.state.color!,
       className: this.props.className!,
     });
@@ -163,6 +161,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             className={this._classNames.chart}
             aria-label={data?.chartTitle}
             ref={(node: SVGElement | null) => this._setViewBox(node)}
+            width={this.state._width}
+            height={this.state._height}
           >
             <Pie
               width={this.state._width!}

@@ -199,8 +199,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       className: this.props.className,
-      chartWidth: width,
-      chartHeight: height - this._legendsHeight,
       chartValueSize,
     });
 
@@ -212,6 +210,8 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             role="region"
             aria-label={this._getChartTitle()}
             onMouseLeave={this._handleMouseOut}
+            width={width}
+            height={height - this._legendsHeight}
           >
             <g transform={`translate(${width / 2}, ${height - (this._margins.bottom + this._legendsHeight)})`}>
               {this.props.chartTitle && (

@@ -1526,12 +1526,13 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                     alignment-adjust: center;
                     box-sizing: content-box;
                     display: block;
-                    height: -40px;
                     overflow: visible;
                     width: 100%;
                   }
               focusable="false"
+              height="-40"
               viewBox="0 0 0 0"
+              width="0"
             >
               <g
                 transform="translate(0, -20)"
@@ -2055,7 +2056,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                 {
                   padding-top: 16px;
-                  width: 0px;
+                  width: 100%;
                 }
           >
             <div
@@ -4361,11 +4362,12 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
 
                   {
                     display: block;
-                    height: -24px;
                     width: 100%;
                   }
               focusable="false"
+              height="-24"
               role="region"
+              width="0"
             >
               <g
                 transform="translate(0, -60)"
@@ -4533,7 +4535,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
             class=
 
                 {
-                  width: 0px;
+                  width: 100%;
                 }
           >
             <div
@@ -19552,12 +19554,13 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                     alignment-adjust: center;
                     box-sizing: content-box;
                     display: block;
-                    height: -40px;
                     overflow: visible;
                     width: 100%;
                   }
               focusable="false"
+              height="-40"
               viewBox="0 0 0 0"
+              width="0"
             >
               <g
                 transform="translate(0, -20)"
@@ -19738,7 +19741,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
 
                 {
                   padding-top: 16px;
-                  width: 0px;
+                  width: 100%;
                 }
           >
             <div
@@ -20234,6 +20237,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   outline: none;
                 }
                 {
+                  overflow: auto;
                   width: 100%;
                 }
             data-focuszone-id="FocusZone36"

@@ -72,18 +72,18 @@ export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props =>
     return React.Children.map(props.children, child => {
       const commonStyles = {
         root: {
+          ...child.props.styles?.root,
           width: '100%',
           height: '100%',
-          ...child.props.styles?.root,
         },
         chartWrapper: {
           width: '100%',
         },
         chart: {
-          // This overrides the pixel width of svg allowing it to resize properly within flexbox or grid
-          width: '100%',
-          // TODO: Add comment about height
           ...child.props.styles?.chart,
+          // This overrides the pixel width of svg allowing it to resize properly within flexbox or grid
+          // TODO: Add comment about height
+          width: '100%',
         },
       };
 
@@ -91,18 +91,17 @@ export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props =>
         width: calculatedWidth,
         height: calculatedHeight,
         shouldResize: (calculatedWidth ?? 0) + (calculatedHeight ?? 0),
-        enableReflow: false,
         styles: {
-          ...commonStyles,
-          subComponentStyles: {
-            cartesianStyles: {
-              ...commonStyles,
-              ...child.props.styles?.subComponentStyles?.cartesianStyles,
-            },
-            ...child.props.styles?.subComponentStyles,
-          },
           // Keep components styles
           ...child.props.styles,
+          ...commonStyles,
+          subComponentStyles: {
+            ...child.props.styles?.subComponentStyles,
+            cartesianStyles: {
+              ...child.props.styles?.subComponentStyles?.cartesianStyles,
+              ...commonStyles,
+            },
+          },
         },
       });
     });

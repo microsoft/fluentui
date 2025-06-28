@@ -35,12 +35,12 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               alignment-adjust: center;
               box-sizing: content-box;
               display: block;
-              height: -40px;
               overflow: visible;
-              width: 0px;
             }
         focusable="false"
+        height="-40"
         viewBox="0 0 0 0"
+        width="0"
       >
         <g
           transform="translate(0, -20)"
@@ -123,7 +123,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
 
           {
             padding-top: 16px;
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -516,12 +516,12 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               alignment-adjust: center;
               box-sizing: content-box;
               display: block;
-              height: -40px;
               overflow: visible;
-              width: 0px;
             }
         focusable="false"
+        height="-40"
         viewBox="0 0 0 0"
+        width="0"
       >
         <g
           transform="translate(0, -20)"
@@ -661,7 +661,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
 
           {
             padding-top: 16px;
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -1054,12 +1054,12 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               alignment-adjust: center;
               box-sizing: content-box;
               display: block;
-              height: -40px;
               overflow: visible;
-              width: 0px;
             }
         focusable="false"
+        height="-40"
         viewBox="0 0 0 0"
+        width="0"
       >
         <g
           transform="translate(0, -20)"
@@ -1199,7 +1199,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
 
           {
             padding-top: 16px;
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -1592,12 +1592,12 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
               alignment-adjust: center;
               box-sizing: content-box;
               display: block;
-              height: -40px;
               overflow: visible;
-              width: 0px;
             }
         focusable="false"
+        height="-40"
         viewBox="0 0 0 0"
+        width="0"
       >
         <g
           transform="translate(0, -20)"
@@ -1767,7 +1767,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
 
           {
             padding-top: 16px;
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -2160,12 +2160,12 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
               alignment-adjust: center;
               box-sizing: content-box;
               display: block;
-              height: -40px;
               overflow: visible;
-              width: 0px;
             }
         focusable="false"
+        height="-40"
         viewBox="0 0 0 0"
+        width="0"
       >
         <g
           transform="translate(0, -20)"
@@ -2248,7 +2248,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
 
           {
             padding-top: 16px;
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -2641,12 +2641,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               alignment-adjust: center;
               box-sizing: content-box;
               display: block;
-              height: -40px;
               overflow: visible;
-              width: 0px;
             }
         focusable="false"
+        height="-40"
         viewBox="0 0 0 0"
+        width="0"
       >
         <g
           transform="translate(0, -20)"
@@ -2728,7 +2728,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 
           {
             padding-top: 16px;
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -3121,12 +3121,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               alignment-adjust: center;
               box-sizing: content-box;
               display: block;
-              height: -40px;
               overflow: visible;
-              width: 0px;
             }
         focusable="false"
+        height="-40"
         viewBox="0 0 0 0"
+        width="0"
       >
         <g
           transform="translate(0, -20)"
@@ -3209,7 +3209,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
 
           {
             padding-top: 16px;
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -3602,12 +3602,12 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               alignment-adjust: center;
               box-sizing: content-box;
               display: block;
-              height: -40px;
               overflow: visible;
-              width: 0px;
             }
         focusable="false"
+        height="-40"
         viewBox="0 0 0 0"
+        width="0"
       >
         <g
           transform="translate(0, -20)"
@@ -3690,7 +3690,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
 
           {
             padding-top: 16px;
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -4083,12 +4083,12 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               alignment-adjust: center;
               box-sizing: content-box;
               display: block;
-              height: -40px;
               overflow: visible;
-              width: 0px;
             }
         focusable="false"
+        height="-40"
         viewBox="0 0 0 0"
+        width="0"
       >
         <g
           transform="translate(0, -20)"
@@ -4205,12 +4205,12 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               alignment-adjust: center;
               box-sizing: content-box;
               display: block;
-              height: -40px;
               overflow: visible;
-              width: 0px;
             }
         focusable="false"
+        height="-40"
         viewBox="0 0 0 0"
+        width="0"
       >
         <g
           transform="translate(0, -20)"
@@ -4293,7 +4293,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 
           {
             padding-top: 16px;
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -4686,12 +4686,12 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               alignment-adjust: center;
               box-sizing: content-box;
               display: block;
-              height: -40px;
               overflow: visible;
-              width: 0px;
             }
         focusable="false"
+        height="-40"
         viewBox="0 0 0 0"
+        width="0"
       >
         <g
           transform="translate(0, -20)"
@@ -4774,7 +4774,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
 
           {
             padding-top: 16px;
-            width: 0px;
+            width: 100%;
           }
     >
       <div
