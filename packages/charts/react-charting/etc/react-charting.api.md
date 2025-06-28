@@ -1305,16 +1305,11 @@ export interface IRefArrayData {
 // @public
 export interface IResponsiveChildProps {
     // (undocumented)
-    enableReflow?: boolean;
-    // (undocumented)
     height?: number;
     // (undocumented)
     shouldResize?: number;
     // (undocumented)
-    styles?: IStyleFunctionOrObject_2<{}, {
-        root: IStyle_2;
-        chart: IStyle_2;
-    }>;
+    styles?: IStyleFunctionOrObject_2<any, any>;
     // (undocumented)
     width?: number;
 }

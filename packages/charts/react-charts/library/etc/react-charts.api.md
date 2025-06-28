@@ -199,6 +199,8 @@ export interface CartesianChartStyleProps {
 // @public
 export interface CartesianChartStyles {
     axisTitle?: string;
+    // (undocumented)
+    chart?: string;
     chartTitle?: string;
     chartWrapper?: string;
     descriptionMessage?: string;
@@ -553,6 +555,8 @@ export interface GaugeChartStyles {
     chart?: string;
     chartTitle?: string;
     chartValue?: string;
+    // (undocumented)
+    chartWrapper?: string;
     descriptionMessage?: string;
     gradientSegment?: string;
     legendsContainer?: string;
@@ -1120,7 +1124,19 @@ export interface ResponsiveChildProps {
     // (undocumented)
     shouldResize?: number;
     // (undocumented)
+    styles?: ResponsiveChildStyles;
+    // (undocumented)
     width?: number;
+}
+
+// @public
+export interface ResponsiveChildStyles {
+    // (undocumented)
+    chart?: string;
+    // (undocumented)
+    chartWrapper?: string;
+    // (undocumented)
+    root?: string;
 }
 
 // @public
@@ -1184,6 +1200,8 @@ export interface SankeyChartStrings {
 
 // @public
 export interface SankeyChartStyles {
+    // (undocumented)
+    chart?: string;
     chartWrapper?: string;
     links?: string;
     nodes?: string;
