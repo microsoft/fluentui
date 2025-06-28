@@ -524,8 +524,10 @@ export const transformPlotlyJsonToVSBCProps = (
     });
   });
 
+  const vsbcData = Object.values(mapXToDataPoints);
+
   return {
-    data: Object.values(mapXToDataPoints),
+    data: vsbcData,
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     barWidth: 'auto',
@@ -541,6 +543,7 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
@@ -606,8 +609,10 @@ export const transformPlotlyJsonToGVBCProps = (
     });
   });
 
+  const gvbcData = Object.values(mapXToDataPoints);
+
   return {
-    data: Object.values(mapXToDataPoints),
+    data: gvbcData,
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     barwidth: 'auto',
@@ -616,6 +621,7 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
+    wrapXAxisLables: typeof gvbcData[0]?.name === 'string',
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
@@ -722,6 +728,7 @@ export const transformPlotlyJsonToVBCProps = (
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
+    wrapXAxisLables: typeof vbcData[0]?.x === 'string',
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
@@ -831,7 +838,8 @@ const transformPlotlyJsonToScatterTraceProps = (
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
       const seriesOpacity = getOpacity(series, index);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
-      const lineOptions = getLineOptions(series.line);
+      // if mode contains 'text', we prioritize showing the text over curving the line
+      const lineOptions = !series.mode?.includes('text') ? getLineOptions(series.line) : undefined;
       const legendShape = getLegendShape(series);
 
       const validXYRanges = getValidXYRanges(series);
@@ -1147,6 +1155,7 @@ export const transformPlotlyJsonToHeatmapProps = (
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    wrapXAxisLables: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps([firstData], input.layout),
   };
@@ -2081,6 +2090,7 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
     const isAxisTypeCategory =
       ax?.type === 'category' || (isStringArray(values) && !isNumberArray(values) && !isDateArray(values));
     if (!isAxisTypeCategory) {
+      result[propName] = 'data';
       return;
     }
 

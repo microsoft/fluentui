@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 18 Jun 2025 17:33:58 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jun 2025 13:39:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.5)
+
+Fri, 27 Jun 2025 13:39:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.18.4..@fluentui/react-positioning_v9.18.5)
+
+### Patches
+
+- fix: stop rAF if no mouse movement happening ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by olfedias@microsoft.com)
+
+## [9.18.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.4)
+
+Thu, 26 Jun 2025 14:11:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.18.3..@fluentui/react-positioning_v9.18.4)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.22.0 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+
+## [9.18.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.3)
+
+Mon, 23 Jun 2025 15:49:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.18.2..@fluentui/react-positioning_v9.18.3)
+
+### Patches
+
+- feat: improve handling of different shapes of rectangles in useSafeZoneArea() ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by olfedias@microsoft.com)
 
 ## [9.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.2)
 
