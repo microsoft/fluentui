@@ -58,6 +58,7 @@ export const fluentOverrides: FluentOverrides = {
   ctrlChoiceBaseStrokeHover: { f2Token: 'colorNeutralStrokeAccessibleHover' },
   ctrlChoiceBaseStrokePressed: { f2Token: 'colorNeutralStrokeAccessiblePressed' },
   ctrlChoiceBaseStrokeRest: { f2Token: 'colorNeutralStrokeAccessible' },
+  ctrlChoiceCheckboxCorner: { f2Token: 'borderRadiusSmall' },
   ctrlChoicePaddingHorizontal: { f2Token: 'spacingHorizontalS' },
   ctrlChoicePaddingVertical: { f2Token: 'spacingVerticalS' },
   ctrlChoiceSwitchCorner: { f2Token: 'borderRadiusCircular' },
@@ -180,6 +181,8 @@ export const fluentOverrides: FluentOverrides = {
   strokeCtrlOnActiveBrandDisabled: { f2Token: 'colorTransparentStrokeDisabled' },
   strokeCtrlOnActiveBrandHover: { f2Token: 'colorStrokeFocus2' },
   strokeCtrlOnActiveBrandPressed: { f2Token: 'colorTransparentStrokeInteractive' },
+  // TODO move this to legacy so we can make a variant
+  // strokeCtrlOnActiveBrandPressed: { f2Token: 'colorCompoundBrandBackgroundPressed' },
   strokeCtrlOnActiveBrandRest: { f2Token: 'colorNeutralForegroundOnBrand' },
   strokeCtrlOnBrandDisabled: { rawValue: 'transparent' },
   strokeCtrlOnBrandHover: { rawValue: 'transparent' },

@@ -13,6 +13,13 @@ import {
 } from '../components/progress/variables';
 import { ctrlSpinnerStrokeWidthRaw } from '../components/spinner/variables';
 import {
+  foregroundCtrlNeutralPrimaryRestRaw,
+  cornerCtrlRestRaw,
+  strokeWidthDefaultRaw,
+  gapInsideCtrlDefaultRaw,
+  backgroundCtrlBrandRestRaw,
+  backgroundCtrlBrandHoverRaw,
+  backgroundCtrlBrandPressedRaw,
   nullColorRaw,
   strokeWidthDefaultRaw,
   backgroundCtrlBrandRestRaw,
@@ -41,7 +48,14 @@ import {
   borderRadiusXLarge,
   strokeWidthThin,
   spacingHorizontalSNudge,
+  colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
+  colorCompoundBrandStroke,
+  colorCompoundBrandForeground1,
+  colorCompoundBrandForeground1Hover,
+  colorCompoundBrandStrokeHover,
+  colorCompoundBrandStrokePressed,
+  colorCompoundBrandForeground1Pressed,
   colorNeutralForeground3,
   colorTransparentStrokeInteractive,
   colorNeutralBackground3,
@@ -68,6 +82,9 @@ import {
   foregroundCtrlOnTransparentRestRaw,
   strokeCtrlOnActiveBrandHoverRaw,
   foregroundContentNeutralPrimaryRaw,
+  backgroundCtrlActiveBrandRestRaw,
+  backgroundCtrlActiveBrandHoverRaw,
+  backgroundCtrlActiveBrandPressedRaw,
 } from '../optional/variables';
 
 /**
@@ -202,7 +219,14 @@ export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${sp
  * This token is not intended for use in new semantic theme implementations
  * please use strokeCtrlOnActiveBrandHover instead.
  */
-export const _ctrlCheckboxBorderColorHover = `var(${strokeCtrlOnActiveBrandHoverRaw}, var(${strokeCtrlOnBrandHoverRaw}, ${colorCompoundBrandBackgroundHover}))`;
+export const _ctrlCheckboxBorderColorChecked = `var(${strokeCtrlOnActiveBrandHoverRaw}, var(${strokeCtrlOnBrandHoverRaw}, ${colorCompoundBrandBackground}))`;
+/**
+ * This is a legacy variant for strokeCtrlOnActiveBrandHover to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use strokeCtrlOnActiveBrandHover instead.
+ */
+export const _ctrlCheckboxBorderColorCheckedHover = `var(${strokeCtrlOnActiveBrandHoverRaw}, var(${strokeCtrlOnBrandHoverRaw}, ${colorCompoundBrandBackgroundHover}))`;
 /**
  * This is a legacy variant for foregroundContentNeutralPrimary to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
@@ -210,6 +234,48 @@ export const _ctrlCheckboxBorderColorHover = `var(${strokeCtrlOnActiveBrandHover
  * please use foregroundContentNeutralPrimary instead.
  */
 export const _ctrlCheckboxForegroundUncheckedHover = `var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2}))`;
+/**
+ * This is a legacy variant for backgroundCtrlActiveBrandRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use backgroundCtrlActiveBrandRest instead.
+ */
+export const _ctrlCheckboxIndicatorBorderColorMixed = `var(${backgroundCtrlActiveBrandRestRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorCompoundBrandStroke}))`;
+/**
+ * This is a legacy variant for backgroundCtrlActiveBrandRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use backgroundCtrlActiveBrandRest instead.
+ */
+export const _ctrlCheckboxIndicatorColorMixed = `var(${backgroundCtrlActiveBrandRestRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorCompoundBrandForeground1}))`;
+/**
+ * This is a legacy variant for backgroundCtrlActiveBrandHover to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use backgroundCtrlActiveBrandHover instead.
+ */
+export const _ctrlCheckboxIndicatorColorMixedHover = `var(${backgroundCtrlActiveBrandHoverRaw}, var(${backgroundCtrlBrandHoverRaw}, ${colorCompoundBrandForeground1Hover}))`;
+/**
+ * This is a legacy variant for backgroundCtrlActiveBrandHover to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use backgroundCtrlActiveBrandHover instead.
+ */
+export const _ctrlCheckboxIndicatorBorderColorMixedHover = `var(${backgroundCtrlActiveBrandHoverRaw}, var(${backgroundCtrlBrandHoverRaw}, ${colorCompoundBrandStrokeHover}))`;
+/**
+ * This is a legacy variant for backgroundCtrlActiveBrandPressed to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use backgroundCtrlActiveBrandPressed instead.
+ */
+export const _ctrlCheckboxIndicatorBorderColorMixedPressed = `var(${backgroundCtrlActiveBrandPressedRaw}, var(${backgroundCtrlBrandPressedRaw}, ${colorCompoundBrandStrokePressed}))`;
+/**
+ * This is a legacy variant for backgroundCtrlActiveBrandPressed to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use backgroundCtrlActiveBrandPressed instead.
+ */
+export const _ctrlCheckboxIndicatorColorMixedPressed = `var(${backgroundCtrlActiveBrandPressedRaw}, var(${backgroundCtrlBrandPressedRaw}, ${colorCompoundBrandForeground1Pressed}))`;
 /**
  * This is a legacy variant for foregroundContentNeutralPrimary to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.

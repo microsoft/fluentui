@@ -943,6 +943,12 @@ export const ctrlCardStateRestRaw = "--smtc-ctrl-card-state-rest";
 // @public
 export const _ctrlCheckboxBorderColorHover = "var(--smtc-stroke-ctrl-on-active-brand-hover, var(--smtc-stroke-ctrl-on-brand-hover, var(--colorCompoundBrandBackgroundHover)))";
 
+// @public
+export const _ctrlCheckboxForegroundUnchecked = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground3)))";
+
+// @public
+export const _ctrlCheckboxForegroundUncheckedHover = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+
 // @public (undocumented)
 export const ctrlChoiceBaseBackgroundDisabled = "var(--smtc-ctrl-choice-base-background-disabled, var(--smtc-background-ctrl-outline-disabled, var(--colorTransparentBackground)))";
 

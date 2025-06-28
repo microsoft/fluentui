@@ -36,45 +36,45 @@ const useRootStyles = makeStyles({
   unchecked: {
     ':hover': {
       color: semanticTokens._ctrlCheckboxForegroundUncheckedHover,
-      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessibleHover,
+      [vars.indicatorBorderColor]: semanticTokens.ctrlChoiceBaseStrokeHover,
     },
 
     ':active': {
       color: semanticTokens.foregroundContentNeutralPrimary,
-      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessiblePressed,
+      [vars.indicatorBorderColor]: semanticTokens.ctrlChoiceBaseStrokePressed,
     },
   },
 
   checked: {
     color: semanticTokens.foregroundContentNeutralPrimary,
-    [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackground,
-    [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
-    [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackground,
+    [vars.indicatorBackgroundColor]: semanticTokens.backgroundCtrlActiveBrandRest,
+    [vars.indicatorColor]: semanticTokens.foregroundCtrlOnActiveBrandRest,
+    [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxBorderColorChecked,
 
     ':hover': {
       [vars.indicatorBackgroundColor]: semanticTokens.backgroundCtrlActiveBrandHover,
-      [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxBorderColorHover,
+      [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxBorderColorCheckedHover,
     },
 
     ':active': {
-      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundPressed,
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundPressed,
+      [vars.indicatorBackgroundColor]: semanticTokens.backgroundCtrlActiveBrandPressed,
+      [vars.indicatorBorderColor]: semanticTokens.strokeCtrlOnActiveBrandPressed,
     },
   },
 
   mixed: {
     color: semanticTokens.foregroundContentNeutralPrimary,
-    [vars.indicatorBorderColor]: tokens.colorCompoundBrandStroke,
-    [vars.indicatorColor]: tokens.colorCompoundBrandForeground1,
+    [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxIndicatorBorderColorMixed,
+    [vars.indicatorColor]: semanticTokens._ctrlCheckboxIndicatorColorMixed,
 
     ':hover': {
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokeHover,
-      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Hover,
+      [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxIndicatorBorderColorMixedHover,
+      [vars.indicatorColor]: semanticTokens._ctrlCheckboxIndicatorColorMixedHover,
     },
 
     ':active': {
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokePressed,
-      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Pressed,
+      [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxIndicatorBorderColorMixedPressed,
+      [vars.indicatorColor]: semanticTokens._ctrlCheckboxIndicatorColorMixedPressed,
     },
   },
 
@@ -132,9 +132,9 @@ const useIndicatorBaseClassName = makeResetStyles({
   backgroundColor: `var(${vars.indicatorBackgroundColor})`,
   borderColor: `var(${vars.indicatorBorderColor}, ${semanticTokens.ctrlChoiceBaseStrokeRest})`,
   borderStyle: 'solid',
-  borderWidth: tokens.strokeWidthThin,
-  borderRadius: tokens.borderRadiusSmall,
-  margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
+  borderWidth: semanticTokens.strokeWidthDefault,
+  borderRadius: semanticTokens.ctrlChoiceCheckboxCorner,
+  margin: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
   fill: 'currentColor',
   pointerEvents: 'none',
 
@@ -150,7 +150,7 @@ const useIndicatorStyles = makeStyles({
     width: indicatorSizeLarge,
   },
 
-  circular: { borderRadius: tokens.borderRadiusCircular },
+  circular: { borderRadius: semanticTokens.cornerCircular },
 });
 
 // Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
@@ -172,12 +172,12 @@ const useLabelStyles = makeStyles({
   // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
   // This prevents the label from expanding the height of the checkbox, but preserves line height if the label wraps.
   medium: {
-    marginTop: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
-    marginBottom: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
+    marginTop: `calc((${indicatorSizeMedium} - ${semanticTokens.textRampItemBodyLineHeight}) / 2)`,
+    marginBottom: `calc((${indicatorSizeMedium} - ${semanticTokens.textRampItemBodyLineHeight}) / 2)`,
   },
   large: {
-    marginTop: `calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
-    marginBottom: `calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
+    marginTop: `calc((${indicatorSizeLarge} - ${semanticTokens.textRampItemBodyLineHeight}) / 2)`,
+    marginBottom: `calc((${indicatorSizeLarge} - ${semanticTokens.textRampItemBodyLineHeight}) / 2)`,
   },
 });
 

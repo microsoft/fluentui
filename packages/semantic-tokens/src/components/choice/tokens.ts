@@ -8,7 +8,12 @@ import {
   sizeCtrlSmIconRaw,
   sizeCtrlLgIconRaw,
 } from '../../control/variables';
-import { colorNeutralStrokeAccessible } from '../../legacy/tokens';
+import {
+  colorNeutralStrokeAccessible,
+  colorNeutralStrokeAccessibleHover,
+  colorNeutralStrokeAccessiblePressed,
+  borderRadiusSmall,
+} from '../../legacy/tokens';
 import {
   spacingHorizontalS,
   spacingVerticalS,
@@ -88,11 +93,11 @@ export const ctrlChoiceBaseBackgroundHover = `var(${ctrlChoiceBaseBackgroundHove
 export const ctrlChoiceBaseBackgroundPressed = `var(${ctrlChoiceBaseBackgroundPressedRaw}, var(${backgroundCtrlOutlinePressedRaw}))`;
 export const ctrlChoiceBaseBackgroundDisabled = `var(${ctrlChoiceBaseBackgroundDisabledRaw}, var(${backgroundCtrlOutlineDisabledRaw}))`;
 export const ctrlChoiceBaseStrokeRest = `var(${ctrlChoiceBaseStrokeRestRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessible}))`;
-export const ctrlChoiceBaseStrokeHover = `var(${ctrlChoiceBaseStrokeHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
-export const ctrlChoiceBaseStrokePressed = `var(${ctrlChoiceBaseStrokePressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
+export const ctrlChoiceBaseStrokeHover = `var(${ctrlChoiceBaseStrokeHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessibleHover}))`;
+export const ctrlChoiceBaseStrokePressed = `var(${ctrlChoiceBaseStrokePressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessiblePressed}))`;
 export const ctrlChoiceBaseStrokeDisabled = `var(${ctrlChoiceBaseStrokeDisabledRaw}, var(${foregroundCtrlNeutralSecondaryDisabledRaw}))`;
 export const ctrlChoiceCheckboxIconSize = `var(${ctrlChoiceCheckboxIconSizeRaw}, var(${sizeCtrlIconSecondaryRaw}))`;
-export const ctrlChoiceCheckboxCorner = `var(${ctrlChoiceCheckboxCornerRaw})`;
+export const ctrlChoiceCheckboxCorner = `var(${ctrlChoiceCheckboxCornerRaw}, ${borderRadiusSmall})`;
 export const ctrlChoiceCheckboxIndeterminateCorner = `var(${ctrlChoiceCheckboxIndeterminateCornerRaw}, var(${cornerCircularRaw}))`;
 export const ctrlChoiceCheckboxIndeterminateWidth = `var(${ctrlChoiceCheckboxIndeterminateWidthRaw})`;
 export const ctrlChoiceCheckboxIndeterminateHeight = `var(${ctrlChoiceCheckboxIndeterminateHeightRaw})`;
