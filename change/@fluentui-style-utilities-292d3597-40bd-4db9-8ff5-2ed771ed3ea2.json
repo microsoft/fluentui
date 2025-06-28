@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "remove deprecated css properties that show up on the v8 docsite",
+  "packageName": "@fluentui/style-utilities",
+  "email": "popatudor@microsoft.com",
+  "dependentChangeType": "patch"
+}

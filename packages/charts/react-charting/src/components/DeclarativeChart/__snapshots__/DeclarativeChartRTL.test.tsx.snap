@@ -60,7 +60,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                       font-size: 10px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    @media screen and (forced-colors: active){& text {
                       fill: CanvasText;
                     }
                     & line {
@@ -68,7 +68,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                       stroke: #323130;
                       width: 1px;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                    @media screen and (forced-colors: active){& line {
                       opacity: 0.1;
                       stroke: CanvasText;
                     }
@@ -279,7 +279,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                       font-size: 10px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    @media screen and (forced-colors: active){& text {
                       fill: CanvasText;
                     }
                     & path {
@@ -289,7 +289,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                       opacity: 0.2;
                       stroke: #323130;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                    @media screen and (forced-colors: active){& line {
                       opacity: 0.1;
                       stroke: CanvasText;
                     }
@@ -1102,7 +1102,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1116,7 +1116,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -1135,7 +1135,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ff9933ff, #ff9933ff);
                                     opacity: ;
                                   }
@@ -1202,7 +1202,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1216,7 +1216,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -1235,7 +1235,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -1302,7 +1302,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1316,7 +1316,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -1335,7 +1335,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -1402,7 +1402,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1416,7 +1416,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -1435,7 +1435,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -2019,7 +2019,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           font-size: 24px;
                           font-weight: 600;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           fill: CanvasText;
                         }
                     dominant-baseline="middle"
@@ -2138,7 +2138,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2152,7 +2152,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -2171,7 +2171,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -2238,7 +2238,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2252,7 +2252,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -2271,7 +2271,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #f7630c, #f7630c);
                                     opacity: ;
                                   }
@@ -2338,7 +2338,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2352,7 +2352,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -2371,7 +2371,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -2438,7 +2438,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2452,7 +2452,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -2471,7 +2471,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -2538,7 +2538,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2552,7 +2552,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -2571,7 +2571,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -2638,7 +2638,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2652,7 +2652,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -2671,7 +2671,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -2738,7 +2738,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2752,7 +2752,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -2771,7 +2771,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -2838,7 +2838,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2852,7 +2852,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -2871,7 +2871,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -2938,7 +2938,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2952,7 +2952,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -2971,7 +2971,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -3038,7 +3038,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3052,7 +3052,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -3071,7 +3071,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -3138,7 +3138,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3152,7 +3152,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -3171,7 +3171,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -3238,7 +3238,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3252,7 +3252,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -3271,7 +3271,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -3338,7 +3338,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3352,7 +3352,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -3371,7 +3371,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -3438,7 +3438,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3452,7 +3452,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -3471,7 +3471,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -3538,7 +3538,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3552,7 +3552,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -3571,7 +3571,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -3638,7 +3638,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3652,7 +3652,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -3671,7 +3671,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -3738,7 +3738,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3752,7 +3752,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -3771,7 +3771,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -3838,7 +3838,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3852,7 +3852,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -3871,7 +3871,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -3938,7 +3938,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3952,7 +3952,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -3971,7 +3971,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -4038,7 +4038,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4052,7 +4052,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -4071,7 +4071,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -4138,7 +4138,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4152,7 +4152,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -4171,7 +4171,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -4238,7 +4238,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4252,7 +4252,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -4271,7 +4271,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -4369,7 +4369,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                         font-size: 12px;
                         font-weight: 600;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      @media screen and (forced-colors: active){& {
                         fill: CanvasText;
                       }
                   role="img"
@@ -4388,7 +4388,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                         font-size: 12px;
                         font-weight: 600;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      @media screen and (forced-colors: active){& {
                         fill: CanvasText;
                       }
                   role="img"
@@ -4481,7 +4481,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                           font-size: 20px;
                           font-weight: 600;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        @media screen and (forced-colors: active){& {
                           fill: CanvasText;
                         }
                     data-is-focusable="true"
@@ -4502,7 +4502,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                         font-size: 12px;
                         font-weight: 600;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      @media screen and (forced-colors: active){& {
                         fill: CanvasText;
                       }
                   data-is-focusable="true"
@@ -4613,7 +4613,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4627,7 +4627,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -4646,7 +4646,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #00ffff, #00ffff);
                                     opacity: ;
                                   }
@@ -4713,7 +4713,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4727,7 +4727,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -4746,7 +4746,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #4169e1, #4169e1);
                                     opacity: ;
                                   }
@@ -4813,7 +4813,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4827,7 +4827,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -4846,7 +4846,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #edebe9, #edebe9);
                                     opacity: ;
                                   }
@@ -4943,7 +4943,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                       font-size: 10px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    @media screen and (forced-colors: active){& text {
                       fill: CanvasText;
                     }
                     & line {
@@ -4951,7 +4951,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                       stroke: #323130;
                       width: 1px;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                    @media screen and (forced-colors: active){& line {
                       opacity: 0.1;
                       stroke: CanvasText;
                     }
@@ -5502,7 +5502,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                       font-size: 10px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    @media screen and (forced-colors: active){& text {
                       fill: CanvasText;
                     }
                     & path {
@@ -5512,7 +5512,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                       opacity: 0.2;
                       stroke: #323130;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                    @media screen and (forced-colors: active){& line {
                       opacity: 0.1;
                       stroke: CanvasText;
                     }
@@ -18978,7 +18978,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                       font-size: 10px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    @media screen and (forced-colors: active){& text {
                       fill: CanvasText;
                     }
                     & line {
@@ -18986,7 +18986,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                       stroke: #323130;
                       width: 1px;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                    @media screen and (forced-colors: active){& line {
                       opacity: 0.1;
                       stroke: CanvasText;
                     }
@@ -19089,7 +19089,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                       font-size: 10px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    @media screen and (forced-colors: active){& text {
                       fill: CanvasText;
                     }
                     & path {
@@ -19099,7 +19099,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                       opacity: 0.2;
                       stroke: #323130;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                    @media screen and (forced-colors: active){& line {
                       opacity: 0.1;
                       stroke: CanvasText;
                     }
@@ -19370,7 +19370,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -19384,7 +19384,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -19403,7 +19403,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ff9933ff, #ff9933ff);
                                     opacity: ;
                                   }
@@ -19470,7 +19470,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -19484,7 +19484,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -19503,7 +19503,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #3780bfff, #3780bfff);
                                     opacity: ;
                                   }
@@ -19570,7 +19570,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -19584,7 +19584,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -19603,7 +19603,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #ffffff, #ffffff);
                                     opacity: 0.6;
                                   }
@@ -19725,7 +19725,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                             font-size: 12px;
                             font-weight: 600;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                          @media screen and (forced-colors: active){& {
                             fill: CanvasText;
                           }
                       dominant-baseline="hanging"
@@ -19766,7 +19766,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                             font-size: 12px;
                             font-weight: 600;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                          @media screen and (forced-colors: active){& {
                             fill: CanvasText;
                           }
                       dominant-baseline="hanging"
@@ -19807,7 +19807,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                             font-size: 12px;
                             font-weight: 600;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                          @media screen and (forced-colors: active){& {
                             fill: CanvasText;
                           }
                       dominant-baseline="auto"
@@ -19848,7 +19848,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                             font-size: 12px;
                             font-weight: 600;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                          @media screen and (forced-colors: active){& {
                             fill: CanvasText;
                           }
                       dominant-baseline="auto"
@@ -19963,7 +19963,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -19977,7 +19977,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -19996,7 +19996,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #febfb3, #febfb3);
                                     opacity: ;
                                   }
@@ -20063,7 +20063,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -20077,7 +20077,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -20096,7 +20096,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #e1396c, #e1396c);
                                     opacity: ;
                                   }
@@ -20163,7 +20163,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -20177,7 +20177,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -20196,7 +20196,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #96d38c, #96d38c);
                                     opacity: ;
                                   }
@@ -20263,7 +20263,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                   outline-color: #605e5c;
                                 }
                                 :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -20277,7 +20277,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   outline-color: #605e5c;
                                 }
                             data-is-focusable="true"
@@ -20296,7 +20296,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                     margin-right: 8px;
                                     width: 12px;
                                   }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                  @media screen and (forced-colors: active){& {
                                     content: linear-gradient(to right, #d0f9b1, #d0f9b1);
                                     opacity: ;
                                   }
@@ -20385,7 +20385,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     {
                       fill: #F5F5F5;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
               >
@@ -20416,7 +20416,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                           margin-right: 8px;
                           margin-top: 4px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                        @media screen and (forced-colors: active){& text {
                           fill: CanvasText;
                         }
                   >
@@ -20460,7 +20460,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     {
                       fill: #F5F5F5;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
               >
@@ -20491,7 +20491,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                           margin-right: 8px;
                           margin-top: 4px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                        @media screen and (forced-colors: active){& text {
                           fill: CanvasText;
                         }
                   >
@@ -20535,7 +20535,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     {
                       fill: #F5F5F5;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
               >
@@ -20566,7 +20566,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                           margin-right: 8px;
                           margin-top: 4px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                        @media screen and (forced-colors: active){& text {
                           fill: CanvasText;
                         }
                   >
@@ -20610,7 +20610,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     {
                       fill: #F5F5F5;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
               >
@@ -20641,7 +20641,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                           margin-right: 8px;
                           margin-top: 4px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                        @media screen and (forced-colors: active){& text {
                           fill: CanvasText;
                         }
                   >
@@ -20685,7 +20685,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     {
                       fill: #F5F5F5;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
               >
@@ -20716,7 +20716,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                           margin-right: 8px;
                           margin-top: 4px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                        @media screen and (forced-colors: active){& text {
                           fill: CanvasText;
                         }
                   >
@@ -20762,7 +20762,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -20808,7 +20808,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -20854,7 +20854,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -20900,7 +20900,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -20946,7 +20946,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -20992,7 +20992,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -21038,7 +21038,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -21084,7 +21084,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -21130,7 +21130,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -21176,7 +21176,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -21222,7 +21222,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -21268,7 +21268,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -21314,7 +21314,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -21360,7 +21360,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -21406,7 +21406,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       stroke-width: 3px;
                       stroke: #000000;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
                 stroke-opacity="1"
@@ -21450,7 +21450,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     {
                       fill: #F5F5F5;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
               >
@@ -21481,7 +21481,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                           margin-right: 8px;
                           margin-top: 4px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                        @media screen and (forced-colors: active){& text {
                           fill: CanvasText;
                         }
                   >
@@ -21525,7 +21525,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     {
                       fill: #F5F5F5;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
               >
@@ -21556,7 +21556,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                           margin-right: 8px;
                           margin-top: 4px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                        @media screen and (forced-colors: active){& text {
                           fill: CanvasText;
                         }
                   >
@@ -21600,7 +21600,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     {
                       fill: #F5F5F5;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: Canvas;
                     }
               >
@@ -21631,7 +21631,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                           margin-right: 8px;
                           margin-top: 4px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                        @media screen and (forced-colors: active){& text {
                           fill: CanvasText;
                         }
                   >

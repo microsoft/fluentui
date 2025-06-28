@@ -26,14 +26,14 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+      @media screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
         border: 1px solid WindowText;
         color: WindowText;
         forced-color-adjust: none;
       }
-      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+      @media screen and (forced-colors: active) and (prefers-color-scheme: light){& {
         border: 1px solid WindowText;
       }
 >
@@ -89,7 +89,7 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
               speak: none;
               text-decoration: inherit;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
               forced-color-adjust: none;
@@ -120,7 +120,7 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
             grid-area: text;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
@@ -173,14 +173,14 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+      @media screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
         border: 1px solid #ff0000;
         color: WindowText;
         forced-color-adjust: none;
       }
-      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+      @media screen and (forced-colors: active) and (prefers-color-scheme: light){& {
         border: 1px solid #e81123;
       }
 >
@@ -236,7 +236,7 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
               speak: none;
               text-decoration: inherit;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
               forced-color-adjust: none;
@@ -267,7 +267,7 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
             grid-area: text;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
@@ -319,14 +319,14 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+      @media screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
         border: 1px solid WindowText;
         color: WindowText;
         forced-color-adjust: none;
       }
-      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+      @media screen and (forced-colors: active) and (prefers-color-scheme: light){& {
         border: 1px solid WindowText;
       }
 >
@@ -382,7 +382,7 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
               speak: none;
               text-decoration: inherit;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
               forced-color-adjust: none;
@@ -413,7 +413,7 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
             grid-area: text;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
@@ -465,14 +465,14 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+      @media screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
         border: 1px solid WindowText;
         color: WindowText;
         forced-color-adjust: none;
       }
-      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+      @media screen and (forced-colors: active) and (prefers-color-scheme: light){& {
         border: 1px solid WindowText;
       }
 >
@@ -528,7 +528,7 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
               speak: none;
               text-decoration: inherit;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
               forced-color-adjust: none;
@@ -559,7 +559,7 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
             grid-area: text;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
@@ -612,14 +612,14 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+      @media screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
         border: 1px solid #ff0000;
         color: WindowText;
         forced-color-adjust: none;
       }
-      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+      @media screen and (forced-colors: active) and (prefers-color-scheme: light){& {
         border: 1px solid #e81123;
       }
 >
@@ -675,7 +675,7 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
               speak: none;
               text-decoration: inherit;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
               forced-color-adjust: none;
@@ -706,7 +706,7 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
             grid-area: text;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
@@ -758,14 +758,14 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+      @media screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
         border: 1px solid WindowText;
         color: WindowText;
         forced-color-adjust: none;
       }
-      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+      @media screen and (forced-colors: active) and (prefers-color-scheme: light){& {
         border: 1px solid WindowText;
       }
 >
@@ -821,7 +821,7 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
               speak: none;
               text-decoration: inherit;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
               forced-color-adjust: none;
@@ -852,7 +852,7 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
             grid-area: text;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
@@ -905,14 +905,14 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+      @media screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
         border: 1px solid #ff0000;
         color: WindowText;
         forced-color-adjust: none;
       }
-      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+      @media screen and (forced-colors: active) and (prefers-color-scheme: light){& {
         border: 1px solid #d83b01;
       }
 >
@@ -968,7 +968,7 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
               speak: none;
               text-decoration: inherit;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
               forced-color-adjust: none;
@@ -999,7 +999,7 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
             grid-area: text;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
@@ -1052,14 +1052,14 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+      @media screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
         border: 1px solid #bad80a;
         color: WindowText;
         forced-color-adjust: none;
       }
-      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+      @media screen and (forced-colors: active) and (prefers-color-scheme: light){& {
         border: 1px solid #107c10;
       }
 >
@@ -1115,7 +1115,7 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
               speak: none;
               text-decoration: inherit;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
               forced-color-adjust: none;
@@ -1146,7 +1146,7 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
             grid-area: text;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
@@ -1199,14 +1199,14 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+      @media screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
         border: 1px solid #fff100;
         color: WindowText;
         forced-color-adjust: none;
       }
-      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+      @media screen and (forced-colors: active) and (prefers-color-scheme: light){& {
         border: 1px solid #966400;
       }
 >
@@ -1262,7 +1262,7 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
               speak: none;
               text-decoration: inherit;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
               forced-color-adjust: none;
@@ -1293,7 +1293,7 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
             grid-area: text;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
@@ -1346,14 +1346,14 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+      @media screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
         border: 1px solid #ff0000;
         color: WindowText;
         forced-color-adjust: none;
       }
-      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+      @media screen and (forced-colors: active) and (prefers-color-scheme: light){& {
         border: 1px solid #d83b01;
       }
 >
@@ -1409,7 +1409,7 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
               speak: none;
               text-decoration: inherit;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
               forced-color-adjust: none;
@@ -1440,7 +1440,7 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
             grid-area: text;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
@@ -1493,14 +1493,14 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+      @media screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
         border: 1px solid #bad80a;
         color: WindowText;
         forced-color-adjust: none;
       }
-      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+      @media screen and (forced-colors: active) and (prefers-color-scheme: light){& {
         border: 1px solid #107c10;
       }
 >
@@ -1556,7 +1556,7 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
               speak: none;
               text-decoration: inherit;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
               forced-color-adjust: none;
@@ -1587,7 +1587,7 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
             grid-area: text;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
@@ -1640,14 +1640,14 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+      @media screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: transparent;
         border: 1px solid #fff100;
         color: WindowText;
         forced-color-adjust: none;
       }
-      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+      @media screen and (forced-colors: active) and (prefers-color-scheme: light){& {
         border: 1px solid #966400;
       }
 >
@@ -1703,7 +1703,7 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
               speak: none;
               text-decoration: inherit;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
               forced-color-adjust: none;
@@ -1734,7 +1734,7 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
             grid-area: text;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+          @media screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }

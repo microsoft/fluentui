@@ -116,7 +116,7 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -135,7 +135,7 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -148,14 +148,14 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+                  @media screen and (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -281,7 +281,7 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -300,7 +300,7 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -313,14 +313,14 @@ exports[`CommandBar deprecated renders commands correctly (snapshot) 1`] = `
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+                  @media screen and (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {

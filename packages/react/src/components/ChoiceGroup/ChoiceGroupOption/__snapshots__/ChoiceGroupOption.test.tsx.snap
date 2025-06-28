@@ -569,7 +569,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:after {
+          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:after {
             border-color: WindowText;
             border-width: 2px;
           }
@@ -590,7 +590,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:after {
+          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:after {
             border-color: WindowText;
             border-width: 2px;
           }
@@ -742,7 +742,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:after {
+          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:after {
             border-color: WindowText;
             border-width: 2px;
           }
@@ -763,7 +763,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:after {
+          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:after {
             border-color: WindowText;
             border-width: 2px;
           }
@@ -842,7 +842,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
+            @media screen and (forced-colors: active){&:before {
               background: Window;
               border-color: Highlight;
               forced-color-adjust: none;
@@ -865,7 +865,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 10px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:after {
+            @media screen and (forced-colors: active){&:after {
               border-color: Highlight;
               forced-color-adjust: none;
             }
@@ -957,7 +957,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
+            @media screen and (forced-colors: active){&:before {
               -ms-high-contrast-adjust: none;
               background: Window;
               border-color: GrayText;
@@ -979,7 +979,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             & .ms-ChoiceFieldLabel {
               color: #a19f9d;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-ChoiceFieldLabel {
+            @media screen and (forced-colors: active){& .ms-ChoiceFieldLabel {
               -ms-high-contrast-adjust: none;
               color: GrayText;
               forced-color-adjust: none;
@@ -1075,7 +1075,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
+            @media screen and (forced-colors: active){&:before {
               -ms-high-contrast-adjust: none;
               background: Window;
               border-color: Highlight;
@@ -1099,14 +1099,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 10px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:after {
+            @media screen and (forced-colors: active){&:after {
               border-color: Highlight;
               forced-color-adjust: none;
             }
             & .ms-ChoiceFieldLabel {
               color: #a19f9d;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-ChoiceFieldLabel {
+            @media screen and (forced-colors: active){& .ms-ChoiceFieldLabel {
               -ms-high-contrast-adjust: none;
               color: GrayText;
               forced-color-adjust: none;
@@ -1373,7 +1373,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:after {
+          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:after {
             border-color: WindowText;
             border-width: 1px;
           }
@@ -1394,7 +1394,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:after {
+          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:after {
             border-color: WindowText;
             border-width: 1px;
           }
@@ -1700,7 +1700,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
+            @media screen and (forced-colors: active){&:before {
               background: Window;
               border-color: Highlight;
               forced-color-adjust: none;
@@ -1723,7 +1723,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 10px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:after {
+            @media screen and (forced-colors: active){&:after {
               border-color: Highlight;
               forced-color-adjust: none;
             }
@@ -1899,7 +1899,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
+            @media screen and (forced-colors: active){&:before {
               -ms-high-contrast-adjust: none;
               background: Window;
               border-color: GrayText;
@@ -1921,7 +1921,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             & .ms-ChoiceFieldLabel {
               color: #a19f9d;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-ChoiceFieldLabel {
+            @media screen and (forced-colors: active){& .ms-ChoiceFieldLabel {
               -ms-high-contrast-adjust: none;
               color: GrayText;
               forced-color-adjust: none;
@@ -1937,7 +1937,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 padding-right: 30px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 color: GrayText;
                 opacity: 1;
               }
