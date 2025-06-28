@@ -17,12 +17,12 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.66.2",
-    "@fluentui/react-context-selector": "^9.2.1",
+    "@fluentui/react-components": "^9.66.5",
+    "@fluentui/react-context-selector": "^9.2.2",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",
     "@fluentui/react-theme": "^9.1.24",
-    "@fluentui/react-utilities": "^9.21.1",
+    "@fluentui/react-utilities": "^9.22.0",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
     "dedent": "^1.2.0",

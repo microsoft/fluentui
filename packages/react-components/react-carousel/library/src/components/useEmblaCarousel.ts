@@ -200,8 +200,6 @@ export function useEmblaCarousel(
 
   const viewportRef: React.RefObject<HTMLDivElement> = React.useRef(null);
   const containerRef: React.RefObject<HTMLDivElement> = React.useMemo(() => {
-    let currentElement: HTMLDivElement | null = null;
-
     const handleVisibilityChange = () => {
       const cardElements = emblaApi.current?.slideNodes();
       const visibleIndexes = emblaApi.current?.slidesInView() ?? [];
@@ -221,21 +219,22 @@ export function useEmblaCarousel(
 
     return {
       set current(newElement: HTMLDivElement | null) {
-        if (currentElement) {
-          emblaApi.current?.off('slidesInView', handleVisibilityChange);
-          emblaApi.current?.off('select', handleIndexChange);
-          emblaApi.current?.off('reInit', handleReinit);
-          emblaApi.current?.off('autoplay:select', handleIndexChange);
-          emblaApi.current?.destroy();
+        if (emblaApi.current) {
+          // Stop autoplay before reinitializing.
+          emblaApi.current.plugins?.().autoplay?.stop();
+          emblaApi.current.off('slidesInView', handleVisibilityChange);
+          emblaApi.current.off('select', handleIndexChange);
+          emblaApi.current.off('reInit', handleReinit);
+          emblaApi.current.off('autoplay:select', handleIndexChange);
+
+          emblaApi.current.destroy();
+          emblaApi.current = null;
         }
 
-        // Use direct viewport if available, else fallback to container (includes Carousel controls).
-        currentElement = viewportRef.current ?? newElement;
-        if (currentElement) {
-          // Stop autoplay before reinitializing.
-          emblaApi.current?.plugins?.().autoplay?.stop();
-          emblaApi.current = EmblaCarousel(
-            currentElement,
+        if (newElement) {
+          const newEmblaApi = EmblaCarousel(
+            // Use direct viewport if available, else fallback to container (includes Carousel controls).
+            viewportRef.current ?? newElement,
             {
               ...DEFAULT_EMBLA_OPTIONS,
               ...emblaOptions.current,
@@ -243,10 +242,12 @@ export function useEmblaCarousel(
             plugins,
           );
 
-          emblaApi.current?.on('reInit', handleReinit);
-          emblaApi.current?.on('slidesInView', handleVisibilityChange);
-          emblaApi.current?.on('select', handleIndexChange);
-          emblaApi.current?.on('autoplay:select', handleIndexChange);
+          newEmblaApi.on('reInit', handleReinit);
+          newEmblaApi.on('slidesInView', handleVisibilityChange);
+          newEmblaApi.on('select', handleIndexChange);
+          newEmblaApi.on('autoplay:select', handleIndexChange);
+
+          emblaApi.current = newEmblaApi;
         }
       },
     };
