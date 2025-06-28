@@ -34,14 +34,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
     >
       <svg
         aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -964,14 +960,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
     >
       <svg
         aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -1907,14 +1899,10 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
-          class=
-
-              {
-                display: block;
-              }
           focusable="false"
           height="292"
           role="region"
+          style="display: block;"
           width="650"
         >
           <g
@@ -2838,14 +2826,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
     >
       <svg
         aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -3768,14 +3752,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
     >
       <svg
         aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -4356,14 +4336,10 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
     >
       <svg
         aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g

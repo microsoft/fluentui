@@ -628,14 +628,10 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
     >
       <svg
         aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -1228,14 +1224,10 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
     >
       <svg
         aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g

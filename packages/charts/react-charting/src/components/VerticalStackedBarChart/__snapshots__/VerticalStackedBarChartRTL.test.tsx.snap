@@ -34,14 +34,10 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
     >
       <svg
         aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -1030,14 +1026,10 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
     >
       <svg
         aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -2026,14 +2018,10 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
     >
       <svg
         aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -3035,14 +3023,10 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
       >
         <svg
           aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-          class=
-
-              {
-                display: block;
-              }
           focusable="false"
           height="292"
           role="region"
+          style="display: block;"
           width="650"
         >
           <g
@@ -9821,14 +9805,10 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
     >
       <svg
         aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -10817,14 +10797,10 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
     >
       <svg
         aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -11514,14 +11490,10 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
     >
       <svg
         aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -12200,14 +12172,10 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     >
       <svg
         aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -12886,14 +12854,10 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     >
       <svg
         aria-label="Vertical bar chart with 2 stacked bars and 1 lines. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g

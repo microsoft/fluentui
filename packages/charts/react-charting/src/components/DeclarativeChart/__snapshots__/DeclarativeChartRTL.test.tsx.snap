@@ -48,12 +48,12 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
               class=
 
                   {
-                    display: block;
                     width: 100%;
                   }
               focusable="false"
               height="-8"
               role="region"
+              style="display: block;"
               width="600"
             >
               <g
@@ -4944,12 +4944,12 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               class=
 
                   {
-                    display: block;
                     width: 100%;
                   }
               focusable="false"
               height="350"
               role="region"
+              style="display: block;"
               width="600"
             >
               <g
@@ -18826,12 +18826,12 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
               class=
 
                   {
-                    display: block;
                     width: 100%;
                   }
               focusable="false"
               height="-8"
               role="region"
+              style="display: block;"
               width="600"
             >
               <g

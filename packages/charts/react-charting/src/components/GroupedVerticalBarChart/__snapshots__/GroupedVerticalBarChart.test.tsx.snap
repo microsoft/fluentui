@@ -34,14 +34,10 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
     >
       <svg
         aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="0"
         role="region"
+        style="display: block;"
         width="0"
       >
         <g
@@ -607,14 +603,10 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
     >
       <svg
         aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="0"
         role="region"
+        style="display: block;"
         width="0"
       >
         <g

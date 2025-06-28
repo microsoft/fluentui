@@ -34,14 +34,10 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
     >
       <svg
         aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g

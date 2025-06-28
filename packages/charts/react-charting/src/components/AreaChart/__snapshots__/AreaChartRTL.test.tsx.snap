@@ -34,14 +34,10 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
     >
       <svg
         aria-label="Area chart multiple negative y value example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -1175,14 +1171,10 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -6173,14 +6165,10 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. The secondary Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -9785,14 +9773,10 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -10939,14 +10923,10 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-          class=
-
-              {
-                display: block;
-              }
           focusable="false"
           height="292"
           role="region"
+          style="display: block;"
           width="650"
         >
           <g
@@ -12081,14 +12061,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -13222,14 +13198,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g

@@ -3918,14 +3918,10 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -4792,14 +4788,10 @@ exports[`Line chart rendering Should render the Line chart with points in multip
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -5668,14 +5660,10 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. The secondary Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -6672,14 +6660,10 @@ exports[`Line chart rendering should render the line chart with all negative y v
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -7546,14 +7530,10 @@ exports[`Line chart rendering should render the line chart with negative y value
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -8438,14 +8418,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -9312,14 +9288,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
     >
       <svg
         aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-        class=
-
-            {
-              display: block;
-            }
         focusable="false"
         height="292"
         role="region"
+        style="display: block;"
         width="650"
       >
         <g
@@ -10199,14 +10171,10 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
       >
         <svg
           aria-label="LineChart. Line chart with 3 lines. The X axis displays values. The Y axis displays values. "
-          class=
-
-              {
-                display: block;
-              }
           focusable="false"
           height="292"
           role="region"
+          style="display: block;"
           width="650"
         >
           <g
