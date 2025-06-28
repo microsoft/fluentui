@@ -53,7 +53,7 @@ import {
   AxisCategoryOrder,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
-import { getId } from '@fluentui/react';
+import { getId, ITheme } from '@fluentui/react';
 import {
   CurveFactory,
   curveLinear as d3CurveLinear,
@@ -1964,4 +1964,10 @@ export const sortAxisCategories = (
   }
 
   return Object.keys(categoryToValues);
+};
+
+export const getInvertedTextColor = (color: string, theme: ITheme | undefined): string => {
+  return color === theme!.semanticColors.bodyText
+    ? theme!.semanticColors.bodyBackground
+    : theme!.semanticColors.bodyText;
 };

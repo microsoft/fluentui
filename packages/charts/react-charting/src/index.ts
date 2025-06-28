@@ -140,6 +140,8 @@ export type {
   IHorizontalBarChartWithAxisStyles,
 } from './HorizontalBarChartWithAxis';
 export { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
+export type { IFunnelChartProps, IFunnelChartStyleProps, IFunnelChartStyles } from './FunnelChart';
+export { FunnelChart } from './FunnelChart';
 export { DataVizPalette, getColorFromToken, getNextColor } from './utilities/colors';
 export { DataVizGradientPalette, getGradientFromToken, getNextGradient } from './utilities/gradients';
 export type { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart';
