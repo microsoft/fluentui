@@ -257,4 +257,9 @@ export interface GaugeChartStyles {
    * Styles for the shape object in the callout
    */
   shapeStyles?: string;
+
+  /**
+   *
+   */
+  chartWrapper?: string;
 }

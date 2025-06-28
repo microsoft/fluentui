@@ -1147,7 +1147,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         in a non-sequential and erratic manner within a 2D grid.
         */}
         <div className={classes.chartWrapper} {..._arrowNavigationAttributes}>
-          <svg width={width} height={height} id={_chartId}>
+          <svg width={width} height={height} id={_chartId} className={classes.chart}>
             {nodeLinkDomOrderArray.map(item => {
               if (item.type === 'node') {
                 return (

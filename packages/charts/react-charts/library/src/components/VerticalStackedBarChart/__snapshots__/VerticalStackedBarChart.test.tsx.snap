@@ -13,6 +13,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
     >
       <svg
         aria-label="Vertical bar chart with 3 stacked bars and 1 lines. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -524,6 +525,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
     >
       <svg
         aria-label="Vertical bar chart with 3 stacked bars and 1 lines. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -1035,6 +1037,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
     >
       <svg
         aria-label="Vertical bar chart with 2 stacked bars. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -1530,6 +1533,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
     >
       <svg
         aria-label="Vertical bar chart with 2 stacked bars. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -2032,6 +2036,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     >
       <svg
         aria-label="Vertical bar chart with 2 stacked bars. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -2534,6 +2539,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     >
       <svg
         aria-label="Vertical bar chart with 2 stacked bars and 1 lines. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -3088,6 +3094,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -3235,6 +3242,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -3382,6 +3390,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -3529,6 +3538,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -3676,6 +3686,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -3849,6 +3860,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -3887,6 +3899,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -4034,6 +4047,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -4181,6 +4195,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -4328,6 +4343,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -4574,6 +4590,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
