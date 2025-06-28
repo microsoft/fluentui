@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 18 Jun 2025 17:34:00 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jun 2025 14:11:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.22.0)
+
+Thu, 26 Jun 2025 14:11:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.21.1..@fluentui/react-utilities_v9.22.0)
+
+### Minor changes
+
+- Shorten pollDuration to 100ms in useIFrameFocus ([PR #34703](https://github.com/microsoft/fluentui/pull/34703) by xboy2008@live.cn)
 
 ## [9.21.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.21.1)
 

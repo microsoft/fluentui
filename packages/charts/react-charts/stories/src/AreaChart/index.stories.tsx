@@ -10,6 +10,7 @@ export { AreaChartMultiple } from './AreaChartMultiple.stories';
 export { AreaChartNegative } from './AreaChartNegative..stories';
 export { AreaChartMultipleNegative } from './AreaChartMultipleNegative.stories';
 export { AreaChartAllNegative } from './AreaChartAllNegative.stories';
+export { AreaChartSecondaryYAxis } from './AreaChartSecondaryYAxis.stories';
 
 export default {
   title: 'Charts/AreaChart',

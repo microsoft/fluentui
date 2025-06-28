@@ -4,7 +4,7 @@ import {
   usePositioning,
   useSafeZoneArea,
   type PositioningProps,
-  type SafeBufferAreaOptions,
+  type UseSafeZoneOptions,
 } from '@fluentui/react-positioning';
 import { Portal } from '@fluentui/react-portal';
 import { FluentProvider } from '@fluentui/react-provider';
@@ -38,17 +38,19 @@ const DebugPointer: React.FC = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        borderRadius: '4px',
-        pointerEvents: 'none',
-        background: 'red',
-        height: '4px',
-        width: '4px',
-        position: 'fixed',
-      }}
-      ref={pointerRef}
-    />
+    <Portal>
+      <div
+        style={{
+          borderRadius: '4px',
+          pointerEvents: 'none',
+          background: 'red',
+          height: '4px',
+          width: '4px',
+          position: 'fixed',
+        }}
+        ref={pointerRef}
+      />
+    </Portal>
   );
 };
 
@@ -73,7 +75,7 @@ const Example = ({
 
   positioning: Pick<PositioningProps, 'align' | 'position' | 'offset'>;
   triggerStyle?: React.CSSProperties;
-} & Pick<SafeBufferAreaOptions, 'onSafeZoneEnter' | 'onSafeZoneLeave' | 'onSafeZoneTimeout' | 'timeout'>) => {
+} & Pick<UseSafeZoneOptions, 'onSafeZoneEnter' | 'onSafeZoneLeave' | 'onSafeZoneTimeout' | 'timeout'>) => {
   const safeZoneArea = useSafeZoneArea({
     debug: true,
     timeout,
@@ -99,11 +101,13 @@ const Example = ({
         ref={useMergedRefs(targetRef, safeZoneArea.targetRef)}
         className="trigger"
         style={{
+          left: 50,
+          top: 150,
+          width: 100,
+          height: 80,
           ...triggerStyle,
           cursor: 'pointer',
           position: 'absolute',
-          width: '100px',
-          height: '80px',
         }}
       >
         TRIGGER
@@ -133,54 +137,60 @@ const Example = ({
 
 describe('useSafeZoneArea', () => {
   it('SVG is visible on hover', () => {
-    mount(
-      <Example
-        triggerStyle={{ left: 50, top: 150 }}
-        popoverHeight={300}
-        positioning={{ align: 'center', position: 'after', offset: { mainAxis: 20 } }}
-      />,
-    );
+    mount(<Example positioning={{ align: 'center', position: 'after', offset: { mainAxis: 20 } }} />);
 
     cy.get('.trigger').realHover({ position: 'center' });
     cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
-    cy.get('[data-safe-zone] svg').should('have.css', 'width', '120px');
+    cy.get('[data-safe-zone] svg').should('have.css', 'width', '314px');
     cy.get('[data-safe-zone] svg').should('have.css', 'height', '344px');
   });
 
-  it('onSafeZoneEnter and onSafeZoneLeave are called', () => {
-    const onSafeZoneEnter = cy.stub().as('onSafeZoneEnter');
-    const onSafeZoneLeave = cy.stub().as('onSafeZoneLeave');
+  ['small-trigger', 'small-container'].forEach(layout => {
+    it(`onSafeZoneEnter and onSafeZoneLeave are called (${layout})`, () => {
+      const onSafeZoneEnter = cy.stub().as('onSafeZoneEnter');
+      const onSafeZoneLeave = cy.stub().as('onSafeZoneLeave');
 
-    mount(
-      <Example
-        triggerStyle={{ left: 50, top: 150 }}
-        popoverHeight={300}
-        positioning={{ align: 'center', position: 'after', offset: { mainAxis: 20 } }}
-        onSafeZoneLeave={onSafeZoneLeave}
-        onSafeZoneEnter={onSafeZoneEnter}
-      />,
-    );
+      mount(
+        <Example
+          positioning={{ align: 'center', position: 'after', offset: { mainAxis: 20 } }}
+          onSafeZoneLeave={onSafeZoneLeave}
+          onSafeZoneEnter={onSafeZoneEnter}
+          {...(layout === 'small-container' && {
+            positioning: { align: 'end', position: 'above' },
+            popoverHeight: 30,
+            popoverWidth: 100,
+            triggerStyle: { width: 300, height: 100 },
+          })}
+        />,
+      );
 
-    cy.get('.trigger').realHover({ position: 'center' });
-    cy.get('.trigger').realMouseMove(10, 10, { position: 'topRight' });
+      if (layout === 'small-container') {
+        cy.get('.trigger').realHover({ position: 'left' });
+        cy.get('.trigger').realMouseMove(100, -10, { position: 'topLeft' });
+      } else {
+        cy.get('.trigger').realHover({ position: 'center' });
+        cy.get('.trigger').realMouseMove(10, 10, { position: 'topRight' });
+      }
 
-    cy.get('@onSafeZoneEnter').should('be.called');
+      cy.get('@onSafeZoneEnter').should('be.called');
 
-    // ---
+      // ---
 
-    cy.get('.trigger').realMouseMove(-50, -10, { position: 'topRight' });
-    cy.get('.trigger').should('be.visible');
+      if (layout === 'small-container') {
+        cy.get('.trigger').realMouseMove(10, -10, { position: 'topLeft' });
+        cy.get('.trigger').should('be.visible');
+      } else {
+        cy.get('.trigger').realMouseMove(-50, -10, { position: 'topRight' });
+        cy.get('.trigger').should('be.visible');
+      }
 
-    cy.get('@onSafeZoneLeave').should('be.called');
+      cy.get('@onSafeZoneLeave').should('be.called');
+    });
   });
 
   it('safe zone is hidden once mouse is over the popover', () => {
     mount(
-      <Example
-        triggerStyle={{ left: 50, top: 150 }}
-        popoverHeight={300}
-        positioning={{ align: 'center', position: 'after', offset: { mainAxis: 20 } }}
-      />,
+      <Example popoverHeight={300} positioning={{ align: 'center', position: 'after', offset: { mainAxis: 20 } }} />,
     );
 
     cy.get('.trigger').realHover({ position: 'center' });
@@ -190,17 +200,44 @@ describe('useSafeZoneArea', () => {
     cy.get('[data-safe-zone]').should('have.css', 'display', 'none');
   });
 
-  it('onSafeZoneTimeout is called after timeout', () => {
-    const onSafeZoneEnter = cy.stub().as('onSafeZoneEnter');
+  it('safe zone is hidden after timeout if mouse is not moving', () => {
     const onSafeZoneTimeout = cy.stub().as('onSafeZoneTimeout');
 
     mount(
       <Example
         popoverHeight={300}
+        onSafeZoneTimeout={onSafeZoneTimeout}
+        positioning={{ align: 'center', position: 'after', offset: { mainAxis: 20 } }}
+        timeout={200}
+      />,
+    );
+
+    cy.get('.trigger').realHover({ position: 'center' });
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+    // Wait for the timeout to finish, safe zone should be hidden
+
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'none');
+
+    // Move again, safe zone should be shown again
+
+    cy.get('.trigger').realHover({ position: 'right' });
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+    // "onSafeZoneTimeout" is not called again since the mouse is still over the target element
+
+    cy.get('@onSafeZoneTimeout').should('not.be.called');
+  });
+
+  it('onSafeZoneTimeout is called after timeout on safe zone enter', () => {
+    const onSafeZoneEnter = cy.stub().as('onSafeZoneEnter');
+    const onSafeZoneTimeout = cy.stub().as('onSafeZoneTimeout');
+
+    mount(
+      <Example
         positioning={{ align: 'center', position: 'after', offset: { mainAxis: 20 } }}
         onSafeZoneEnter={onSafeZoneEnter}
         onSafeZoneTimeout={onSafeZoneTimeout}
-        triggerStyle={{ left: 50, top: 150 }}
         timeout={200}
       />,
     );
