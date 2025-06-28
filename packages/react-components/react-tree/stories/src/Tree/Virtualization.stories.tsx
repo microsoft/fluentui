@@ -49,7 +49,7 @@ type FixedSizeTreeProps = Omit<FlatTreeProps, 'children'> & {
 /**
  * FixedSizeTree is a recomposition of Tree component that uses react-window FixedSizeList to render items.
  */
-const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef((props, ref) => {
+const FixedSizeTree = React.forwardRef<HTMLElement, FixedSizeTreeProps>((props, ref) => {
   const state = useFlatTree_unstable(props, ref);
   useFlatTreeStyles_unstable(state);
   const contextValues = useFlatTreeContextValues_unstable(state);
@@ -68,7 +68,7 @@ const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef(
       </state.root>
     </TreeProvider>
   );
-});
+}) as ForwardRefComponent<FixedSizeTreeProps>;
 
 interface FixedSizeTreeItemProps extends ListChildComponentProps {
   data: HeadlessFlatTreeItem<ItemProps>[];

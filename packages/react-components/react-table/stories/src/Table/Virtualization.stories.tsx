@@ -31,7 +31,7 @@ import {
 type Item = {
   file: {
     label: string;
-    icon: JSX.Element;
+    icon: React.ReactElement;
   };
   author: {
     label: string;
@@ -43,7 +43,7 @@ type Item = {
   };
   lastUpdate: {
     label: string;
-    icon: JSX.Element;
+    icon: React.ReactElement;
   };
 };
 

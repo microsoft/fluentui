@@ -8,7 +8,7 @@ type Item = {
   media: string;
   header: string;
   headerMedia: string;
-  content: string | JSX.Element;
+  content: string | React.ReactElement;
 };
 
 const items: Item[] = [

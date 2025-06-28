@@ -93,7 +93,7 @@ const FadeFastGrowSlow = createMotionComponent([
 export const CreateMotionComponentArrays = () => {
   const classes = useClasses();
 
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
   const ref = React.useRef<HTMLDivElement>(null);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(10);
