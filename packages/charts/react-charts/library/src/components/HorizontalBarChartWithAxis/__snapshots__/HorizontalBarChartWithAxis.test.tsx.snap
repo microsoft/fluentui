@@ -4534,6 +4534,7 @@ Object {
         >
           <svg
             aria-label="Horizontal bar chart with 9 bars. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -5156,6 +5157,7 @@ Object {
       >
         <svg
           aria-label="Horizontal bar chart with 9 bars. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"

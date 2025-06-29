@@ -137,15 +137,19 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     let _maxValue!: number;
     let _segments!: ExtendedSegment[];
     let _calloutAnchor: string = '';
+
+    React.useEffect(() => {
+      if (_rootElem.current) {
+        setWidth(_rootElem.current.clientWidth);
+        setHeight(_rootElem.current.clientHeight);
+      }
+    }, []);
+
     React.useEffect(() => {
       if (prevPropsRef.current) {
         const prevProps = prevPropsRef.current;
         if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
           setSelectedLegends(props.legendProps?.selectedLegends || []);
-        }
-        if (prevProps.height !== props.height || prevProps.width !== props.width) {
-          setWidth(props.width!);
-          setHeight(props.height!);
         }
       }
       prevPropsRef.current = props;
@@ -598,13 +602,13 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         <div className={classes.chartWrapper} {...focusAttributes}>
           <svg
             className={classes.chart}
-            width={props.width}
-            height={props.height! - _legendsHeight}
+            width={_width}
+            height={_height - _legendsHeight}
             role="region"
             aria-label={_getChartTitle()}
             onMouseLeave={_handleMouseOut}
           >
-            <g transform={`translate(${width / 2}, ${height - (_margins.bottom + _legendsHeight)})`}>
+            <g transform={`translate(${_width / 2}, ${_height - (_margins.bottom + _legendsHeight)})`}>
               {props.chartTitle && (
                 <text
                   x={0}

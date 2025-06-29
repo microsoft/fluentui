@@ -798,9 +798,8 @@ export const transformPlotlyJsonToGaugeProps = (
     minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
     maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
     chartValueFormat: () => firstData.value?.toString() ?? '',
-    // FIXME
-    // width: input.layout?.width,
-    // height: input.layout?.height ?? 220,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 220,
     // TODO
     // styles,
     variant: firstData.gauge?.steps?.length ? 'multiple-segments' : 'single-segment',

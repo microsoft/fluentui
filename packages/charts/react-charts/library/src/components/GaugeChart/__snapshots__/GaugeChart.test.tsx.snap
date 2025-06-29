@@ -16,18 +16,19 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
         <svg
           aria-label="Gauge chart with 3 segments. "
           class="fui-gc__chart"
-          height="NaN"
+          height="-24"
           role="region"
+          width="0"
         >
           <g
-            transform="translate(126, 88)"
+            transform="translate(0, -40)"
           >
             <text
               aria-label="Min value: 0"
               class="fui-gc__limits"
               role="img"
               text-anchor="end"
-              x="-74"
+              x="54"
               y="0"
             >
               0
@@ -37,7 +38,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
               class="fui-gc__limits"
               role="img"
               text-anchor="start"
-              x="74"
+              x="-54"
               y="0"
             >
               100
@@ -45,7 +46,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             <path
               aria-label="Low Risk, 0 to 33"
               class="fui-gc__segment"
-              d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
               opacity="1"
@@ -56,7 +57,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             <path
               aria-label="Medium Risk, 33 to 67"
               class="fui-gc__segment"
-              d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
               opacity="1"
@@ -67,7 +68,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             <path
               aria-label="High Risk, 67 to 100"
               class="fui-gc__segment"
-              d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
               opacity="1"
@@ -83,15 +84,15 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
                 class="fui-gc__needle"
                 d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(-52)"
+                transform="translate(72)"
               />
             </g>
             <g>
@@ -99,7 +100,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
                 aria-describedby="tooltip-69"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
-                font-size="24"
+                font-size="20"
                 id="tooltip-host68"
                 text-anchor="middle"
                 x="0"
@@ -298,18 +299,19 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="NaN"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
-          transform="translate(126, 88)"
+          transform="translate(0, -40)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="-74"
+            x="54"
             y="0"
           >
             0
@@ -319,7 +321,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="74"
+            x="-54"
             y="0"
           >
             100
@@ -327,7 +329,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           <path
             aria-label="Low Risk, 0 to 33"
             class="fui-gc__segment"
-            d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
             opacity="1"
@@ -338,7 +340,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           <path
             aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
-            d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+            d="M0,0Z"
             data-is-focusable="false"
             fill="#f7630c"
             opacity="0.1"
@@ -349,7 +351,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           <path
             aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
-            d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+            d="M0,0Z"
             data-is-focusable="false"
             fill="#c50f1f"
             opacity="0.1"
@@ -365,15 +367,15 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
               class="fui-gc__needle"
               d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(-52)"
+              transform="translate(72)"
             />
           </g>
           <g>
@@ -381,7 +383,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
               aria-describedby="tooltip-40"
               aria-hidden="true"
               class="fui-gc__chartValue"
-              font-size="24"
+              font-size="20"
               id="tooltip-host39"
               text-anchor="middle"
               x="0"
@@ -488,18 +490,19 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="NaN"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
-          transform="translate(126, 88)"
+          transform="translate(0, -40)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="-74"
+            x="54"
             y="0"
           >
             0
@@ -509,7 +512,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="74"
+            x="-54"
             y="0"
           >
             100
@@ -517,7 +520,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           <path
             aria-label="Low Risk, 0 to 33"
             class="fui-gc__segment"
-            d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
             opacity="1"
@@ -528,7 +531,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           <path
             aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
-            d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+            d="M0,0Z"
             data-is-focusable="false"
             fill="#f7630c"
             opacity="0.1"
@@ -539,7 +542,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           <path
             aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
-            d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+            d="M0,0Z"
             data-is-focusable="false"
             fill="#c50f1f"
             opacity="0.1"
@@ -555,15 +558,15 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
               class="fui-gc__needle"
               d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(-52)"
+              transform="translate(72)"
             />
           </g>
           <g>
@@ -571,7 +574,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
               aria-describedby="tooltip-37"
               aria-hidden="true"
               class="fui-gc__chartValue"
-              font-size="24"
+              font-size="20"
               id="tooltip-host36"
               text-anchor="middle"
               x="0"
@@ -678,18 +681,19 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="NaN"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
-          transform="translate(126, 88)"
+          transform="translate(0, -40)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="-74"
+            x="54"
             y="0"
           >
             0
@@ -699,7 +703,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="74"
+            x="-54"
             y="0"
           >
             100
@@ -707,7 +711,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           <path
             aria-label="Low Risk, 0 to 33"
             class="fui-gc__segment"
-            d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
             opacity="1"
@@ -718,7 +722,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           <path
             aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
-            d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
             opacity="1"
@@ -729,7 +733,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           <path
             aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
-            d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
             opacity="1"
@@ -745,15 +749,15 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               class="fui-gc__needle"
               d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(-52)"
+              transform="translate(72)"
             />
           </g>
           <g>
@@ -761,7 +765,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               aria-describedby="tooltip-22"
               aria-hidden="true"
               class="fui-gc__chartValue"
-              font-size="24"
+              font-size="20"
               id="tooltip-host21"
               text-anchor="middle"
               x="0"
@@ -973,18 +977,19 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="NaN"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
-          transform="translate(126, 88)"
+          transform="translate(0, -40)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="-74"
+            x="54"
             y="0"
           >
             0
@@ -994,7 +999,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="74"
+            x="-54"
             y="0"
           >
             100
@@ -1002,7 +1007,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           <path
             aria-label="Low Risk, 0 to 33"
             class="fui-gc__segment"
-            d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
             opacity="1"
@@ -1013,7 +1018,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           <path
             aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
-            d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
             opacity="1"
@@ -1024,7 +1029,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           <path
             aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
-            d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
             opacity="1"
@@ -1040,15 +1045,15 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
               class="fui-gc__needle"
               d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(-52)"
+              transform="translate(72)"
             />
           </g>
           <g>
@@ -1056,7 +1061,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
               aria-describedby="tooltip-22"
               aria-hidden="true"
               class="fui-gc__chartValue"
-              font-size="24"
+              font-size="20"
               id="tooltip-host21"
               text-anchor="middle"
               x="0"
@@ -1161,18 +1166,19 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="NaN"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
-          transform="translate(126, 88)"
+          transform="translate(0, -40)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="-74"
+            x="54"
             y="0"
           >
             0
@@ -1182,7 +1188,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="74"
+            x="-54"
             y="0"
           >
             100
@@ -1190,7 +1196,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           <path
             aria-label="Low Risk, 0 to 33"
             class="fui-gc__segment"
-            d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
             opacity="1"
@@ -1201,7 +1207,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           <path
             aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
-            d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
             opacity="1"
@@ -1212,7 +1218,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           <path
             aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
-            d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
             opacity="1"
@@ -1228,15 +1234,15 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
               class="fui-gc__needle"
               d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(-52)"
+              transform="translate(72)"
             />
           </g>
           <g>
@@ -1244,7 +1250,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
               aria-describedby="tooltip-19"
               aria-hidden="true"
               class="fui-gc__chartValue"
-              font-size="24"
+              font-size="20"
               id="tooltip-host18"
               text-anchor="middle"
               x="0"
@@ -1349,18 +1355,19 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="NaN"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
-          transform="translate(126, 88)"
+          transform="translate(0, -40)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="-74"
+            x="54"
             y="0"
           >
             0
@@ -1370,7 +1377,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="74"
+            x="-54"
             y="0"
           >
             100
@@ -1378,7 +1385,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           <path
             aria-label="Low Risk, 0 to 33"
             class="fui-gc__segment"
-            d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
             opacity="1"
@@ -1389,7 +1396,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           <path
             aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
-            d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
             opacity="1"
@@ -1400,7 +1407,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           <path
             aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
-            d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
             opacity="1"
@@ -1416,15 +1423,15 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               class="fui-gc__needle"
               d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(-52)"
+              transform="translate(72)"
             />
           </g>
           <g>
@@ -1432,7 +1439,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               aria-describedby="tooltip-27"
               aria-hidden="true"
               class="fui-gc__chartValue"
-              font-size="24"
+              font-size="20"
               id="tooltip-host26"
               text-anchor="middle"
               x="0"
@@ -1644,18 +1651,19 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="NaN"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
-          transform="translate(126, 88)"
+          transform="translate(0, -40)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="-74"
+            x="54"
             y="0"
           >
             0
@@ -1665,7 +1673,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="74"
+            x="-54"
             y="0"
           >
             100
@@ -1673,7 +1681,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           <path
             aria-label="Low Risk, 0 to 33"
             class="fui-gc__segment"
-            d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
             opacity="1"
@@ -1684,7 +1692,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           <path
             aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
-            d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
             opacity="1"
@@ -1695,7 +1703,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           <path
             aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
-            d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
             opacity="1"
@@ -1711,15 +1719,15 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               class="fui-gc__needle"
               d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(-52)"
+              transform="translate(72)"
             />
           </g>
           <g>
@@ -1727,7 +1735,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               aria-describedby="tooltip-14"
               aria-hidden="true"
               class="fui-gc__chartValue"
-              font-size="24"
+              font-size="20"
               id="tooltip-host13"
               text-anchor="middle"
               x="0"
@@ -1939,18 +1947,19 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
       <svg
         aria-label="Gauge Chart with title. Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="NaN"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
-          transform="translate(126, 113)"
+          transform="translate(0, -40)"
         >
           <text
             aria-hidden="true"
             class="fui-gc__chartTitle"
             text-anchor="middle"
             x="0"
-            y="-81"
+            y="72"
           >
             Gauge Chart with title
           </text>
@@ -1959,7 +1968,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="-74"
+            x="79"
             y="0"
           >
             0
@@ -1969,7 +1978,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="74"
+            x="-79"
             y="0"
           >
             100
@@ -1977,7 +1986,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           <path
             aria-label="Low Risk, 0 to 33"
             class="fui-gc__segment"
-            d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
             opacity="1"
@@ -1988,7 +1997,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           <path
             aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
-            d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
             opacity="1"
@@ -1999,7 +2008,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           <path
             aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
-            d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
             opacity="1"
@@ -2015,15 +2024,15 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
               class="fui-gc__needle"
               d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(-52)"
+              transform="translate(97)"
             />
           </g>
           <g>
@@ -2031,7 +2040,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
               aria-describedby="tooltip-8"
               aria-hidden="true"
               class="fui-gc__chartValue"
-              font-size="24"
+              font-size="20"
               id="tooltip-host7"
               text-anchor="middle"
               x="0"
@@ -2136,18 +2145,19 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="NaN"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
-          transform="translate(126, 88)"
+          transform="translate(0, -40)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="-74"
+            x="54"
             y="0"
           >
             0
@@ -2157,7 +2167,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="74"
+            x="-54"
             y="0"
           >
             100
@@ -2165,7 +2175,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           <path
             aria-label="Low Risk, 0 to 33"
             class="fui-gc__segment"
-            d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
             opacity="1"
@@ -2176,7 +2186,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           <path
             aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
-            d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
             opacity="1"
@@ -2187,7 +2197,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           <path
             aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
-            d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
             opacity="1"
@@ -2203,15 +2213,15 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
               class="fui-gc__needle"
               d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(-52)"
+              transform="translate(72)"
             />
           </g>
           <g>
@@ -2219,7 +2229,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
               aria-describedby="tooltip-5"
               aria-hidden="true"
               class="fui-gc__chartValue"
-              font-size="24"
+              font-size="20"
               id="tooltip-host4"
               text-anchor="middle"
               x="0"
@@ -2324,18 +2334,19 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="NaN"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
-          transform="translate(126, 88)"
+          transform="translate(0, -40)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="-74"
+            x="54"
             y="0"
           >
             0
@@ -2345,7 +2356,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="74"
+            x="-54"
             y="0"
           >
             100
@@ -2353,7 +2364,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           <path
             aria-label="Low Risk, 0 to 33"
             class="fui-gc__segment"
-            d="M-66.88,-1A3,3,0,0,1,-69.875,-4.179A70,70,0,0,1,-39.166,-58.017A3,3,0,0,1,-34.906,-57.058L-29.805,-48.432A3,3,0,0,1,-30.682,-44.436A54,54,0,0,0,-53.867,-3.789A3,3,0,0,1,-56.859,-1Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
             opacity="1"
@@ -2364,7 +2375,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           <path
             aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
-            d="M-33.184,-58.076A3,3,0,0,1,-31.972,-62.272A70,70,0,0,1,31.972,-62.272A3,3,0,0,1,33.184,-58.076L28.083,-49.45A3,3,0,0,1,24.159,-48.294A54,54,0,0,0,-24.159,-48.294A3,3,0,0,1,-28.083,-49.45Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
             opacity="1"
@@ -2375,7 +2386,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           <path
             aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
-            d="M34.906,-57.058A3,3,0,0,1,39.166,-58.017A70,70,0,0,1,69.875,-4.179A3,3,0,0,1,66.88,-1L56.859,-1A3,3,0,0,1,53.867,-3.789A54,54,0,0,0,30.682,-44.436A3,3,0,0,1,29.805,-48.432Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
             opacity="1"
@@ -2391,15 +2402,15 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
               class="fui-gc__needle"
               d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(-52)"
+              transform="translate(72)"
             />
           </g>
           <g>
@@ -2407,7 +2418,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
               aria-describedby="tooltip-11"
               aria-hidden="true"
               class="fui-gc__chartValue"
-              font-size="24"
+              font-size="20"
               id="tooltip-host10"
               text-anchor="middle"
               x="0"
@@ -2512,18 +2523,19 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="NaN"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
-          transform="translate(126, 88)"
+          transform="translate(0, -40)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="-74"
+            x="54"
             y="0"
           >
             0
@@ -2533,7 +2545,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="74"
+            x="-54"
             y="0"
           >
             100
@@ -2541,7 +2553,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           <path
             aria-label="Low Risk, 0 to 33"
             class="fui-gc__segment"
-            d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
             opacity="1"
@@ -2552,7 +2564,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           <path
             aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
-            d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
             opacity="1"
@@ -2563,7 +2575,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           <path
             aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
-            d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+            d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
             opacity="1"
@@ -2579,15 +2591,15 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
               class="fui-gc__needle"
               d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(-52)"
+              transform="translate(72)"
             />
           </g>
           <g>
@@ -2595,7 +2607,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
               aria-describedby="tooltip-2"
               aria-hidden="true"
               class="fui-gc__chartValue"
-              font-size="24"
+              font-size="20"
               id="tooltip-host1"
               text-anchor="middle"
               x="0"
@@ -2705,16 +2717,17 @@ Object {
           <svg
             aria-label="Gauge chart with 3 segments. "
             class="fui-gc__chart"
-            height="NaN"
+            height="-24"
             role="region"
+            width="0"
           >
             <g
-              transform="translate(86, 88)"
+              transform="translate(0, -40)"
             >
               <path
                 aria-label="Low Risk, 0 to 33"
                 class="fui-gc__segment"
-                d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
                 opacity="1"
@@ -2725,7 +2738,7 @@ Object {
               <path
                 aria-label="Medium Risk, 33 to 67"
                 class="fui-gc__segment"
-                d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
                 opacity="1"
@@ -2736,7 +2749,7 @@ Object {
               <path
                 aria-label="High Risk, 67 to 100"
                 class="fui-gc__segment"
-                d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
                 opacity="1"
@@ -2752,15 +2765,15 @@ Object {
                   class="fui-gc__needle"
                   d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
                   role="img"
                   stroke-width="2"
-                  transform="translate(-52)"
+                  transform="translate(72)"
                 />
               </g>
               <g>
@@ -2768,7 +2781,7 @@ Object {
                   aria-describedby="tooltip-78"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
-                  font-size="24"
+                  font-size="20"
                   id="tooltip-host77"
                   text-anchor="middle"
                   x="0"
@@ -2887,16 +2900,17 @@ Object {
         <svg
           aria-label="Gauge chart with 3 segments. "
           class="fui-gc__chart"
-          height="NaN"
+          height="-24"
           role="region"
+          width="0"
         >
           <g
-            transform="translate(86, 88)"
+            transform="translate(0, -40)"
           >
             <path
               aria-label="Low Risk, 0 to 33"
               class="fui-gc__segment"
-              d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
               opacity="1"
@@ -2907,7 +2921,7 @@ Object {
             <path
               aria-label="Medium Risk, 33 to 67"
               class="fui-gc__segment"
-              d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
               opacity="1"
@@ -2918,7 +2932,7 @@ Object {
             <path
               aria-label="High Risk, 67 to 100"
               class="fui-gc__segment"
-              d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
               opacity="1"
@@ -2934,15 +2948,15 @@ Object {
                 class="fui-gc__needle"
                 d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(-52)"
+                transform="translate(72)"
               />
             </g>
             <g>
@@ -2950,7 +2964,7 @@ Object {
                 aria-describedby="tooltip-78"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
-                font-size="24"
+                font-size="20"
                 id="tooltip-host77"
                 text-anchor="middle"
                 x="0"
@@ -3112,18 +3126,19 @@ Object {
           <svg
             aria-label="Gauge chart with 3 segments. "
             class="fui-gc__chart"
-            height="NaN"
+            height="0"
             role="region"
+            width="0"
           >
             <g
-              transform="translate(126, 88)"
+              transform="translate(0, -16)"
             >
               <text
                 aria-label="Min value: 0"
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="end"
-                x="-74"
+                x="52"
                 y="0"
               >
                 0
@@ -3133,7 +3148,7 @@ Object {
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="start"
-                x="74"
+                x="-52"
                 y="0"
               >
                 100
@@ -3141,7 +3156,7 @@ Object {
               <path
                 aria-label="Low Risk, 0 to 33"
                 class="fui-gc__segment"
-                d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
                 opacity="1"
@@ -3152,7 +3167,7 @@ Object {
               <path
                 aria-label="Medium Risk, 33 to 67"
                 class="fui-gc__segment"
-                d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
                 opacity="1"
@@ -3163,7 +3178,7 @@ Object {
               <path
                 aria-label="High Risk, 67 to 100"
                 class="fui-gc__segment"
-                d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
                 opacity="1"
@@ -3179,15 +3194,15 @@ Object {
                   class="fui-gc__needle"
                   d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
                   role="img"
                   stroke-width="2"
-                  transform="translate(-52)"
+                  transform="translate(70)"
                 />
               </g>
               <g>
@@ -3195,7 +3210,7 @@ Object {
                   aria-describedby="tooltip-89"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
-                  font-size="24"
+                  font-size="20"
                   id="tooltip-host88"
                   text-anchor="middle"
                   x="0"
@@ -3240,18 +3255,19 @@ Object {
         <svg
           aria-label="Gauge chart with 3 segments. "
           class="fui-gc__chart"
-          height="NaN"
+          height="0"
           role="region"
+          width="0"
         >
           <g
-            transform="translate(126, 88)"
+            transform="translate(0, -16)"
           >
             <text
               aria-label="Min value: 0"
               class="fui-gc__limits"
               role="img"
               text-anchor="end"
-              x="-74"
+              x="52"
               y="0"
             >
               0
@@ -3261,7 +3277,7 @@ Object {
               class="fui-gc__limits"
               role="img"
               text-anchor="start"
-              x="74"
+              x="-52"
               y="0"
             >
               100
@@ -3269,7 +3285,7 @@ Object {
             <path
               aria-label="Low Risk, 0 to 33"
               class="fui-gc__segment"
-              d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
               opacity="1"
@@ -3280,7 +3296,7 @@ Object {
             <path
               aria-label="Medium Risk, 33 to 67"
               class="fui-gc__segment"
-              d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
               opacity="1"
@@ -3291,7 +3307,7 @@ Object {
             <path
               aria-label="High Risk, 67 to 100"
               class="fui-gc__segment"
-              d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
               opacity="1"
@@ -3307,15 +3323,15 @@ Object {
                 class="fui-gc__needle"
                 d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(-52)"
+                transform="translate(70)"
               />
             </g>
             <g>
@@ -3323,7 +3339,7 @@ Object {
                 aria-describedby="tooltip-89"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
-                font-size="24"
+                font-size="20"
                 id="tooltip-host88"
                 text-anchor="middle"
                 x="0"
@@ -3411,18 +3427,19 @@ Object {
           <svg
             aria-label="Gauge chart with 3 segments. "
             class="fui-gc__chart"
-            height="NaN"
+            height="-24"
             role="region"
+            width="0"
           >
             <g
-              transform="translate(126, 88)"
+              transform="translate(0, -40)"
             >
               <text
                 aria-label="Min value: 0"
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="end"
-                x="-74"
+                x="54"
                 y="0"
               >
                 0
@@ -3432,7 +3449,7 @@ Object {
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="start"
-                x="74"
+                x="-54"
                 y="0"
               >
                 100
@@ -3440,7 +3457,7 @@ Object {
               <path
                 aria-label="Low Risk, 0 to 33"
                 class="fui-gc__segment"
-                d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
                 opacity="1"
@@ -3451,7 +3468,7 @@ Object {
               <path
                 aria-label="Medium Risk, 33 to 67"
                 class="fui-gc__segment"
-                d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
                 opacity="1"
@@ -3462,7 +3479,7 @@ Object {
               <path
                 aria-label="High Risk, 67 to 100"
                 class="fui-gc__segment"
-                d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
                 opacity="1"
@@ -3478,15 +3495,15 @@ Object {
                   class="fui-gc__needle"
                   d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
                   role="img"
                   stroke-width="2"
-                  transform="translate(-52)"
+                  transform="translate(72)"
                 />
               </g>
               <g>
@@ -3494,7 +3511,7 @@ Object {
                   aria-describedby="tooltip-75"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
-                  font-size="24"
+                  font-size="20"
                   id="tooltip-host74"
                   text-anchor="middle"
                   x="0"
@@ -3613,18 +3630,19 @@ Object {
         <svg
           aria-label="Gauge chart with 3 segments. "
           class="fui-gc__chart"
-          height="NaN"
+          height="-24"
           role="region"
+          width="0"
         >
           <g
-            transform="translate(126, 88)"
+            transform="translate(0, -40)"
           >
             <text
               aria-label="Min value: 0"
               class="fui-gc__limits"
               role="img"
               text-anchor="end"
-              x="-74"
+              x="54"
               y="0"
             >
               0
@@ -3634,7 +3652,7 @@ Object {
               class="fui-gc__limits"
               role="img"
               text-anchor="start"
-              x="74"
+              x="-54"
               y="0"
             >
               100
@@ -3642,7 +3660,7 @@ Object {
             <path
               aria-label="Low Risk, 0 to 33"
               class="fui-gc__segment"
-              d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
               opacity="1"
@@ -3653,7 +3671,7 @@ Object {
             <path
               aria-label="Medium Risk, 33 to 67"
               class="fui-gc__segment"
-              d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
               opacity="1"
@@ -3664,7 +3682,7 @@ Object {
             <path
               aria-label="High Risk, 67 to 100"
               class="fui-gc__segment"
-              d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
               opacity="1"
@@ -3680,15 +3698,15 @@ Object {
                 class="fui-gc__needle"
                 d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(-52)"
+                transform="translate(72)"
               />
             </g>
             <g>
@@ -3696,7 +3714,7 @@ Object {
                 aria-describedby="tooltip-75"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
-                font-size="24"
+                font-size="20"
                 id="tooltip-host74"
                 text-anchor="middle"
                 x="0"
@@ -3859,18 +3877,19 @@ Object {
           <svg
             aria-label="Gauge chart with 2 segments. "
             class="fui-gc__chart"
-            height="NaN"
+            height="-24"
             role="region"
+            width="0"
           >
             <g
-              transform="translate(126, 88)"
+              transform="translate(0, -40)"
             >
               <text
                 aria-label="Min value: 0"
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="end"
-                x="-74"
+                x="54"
                 y="0"
               >
                 0
@@ -3880,7 +3899,7 @@ Object {
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="start"
-                x="74"
+                x="-54"
                 y="0"
               >
                 100
@@ -3888,7 +3907,7 @@ Object {
               <path
                 aria-label="Used, 0 to 60"
                 class="fui-gc__segment"
-                d="M-69.993,-1A70,70,0,0,1,20.678,-66.876L15.733,-51.657A54,54,0,0,0,-53.991,-1Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="blue"
                 opacity="1"
@@ -3899,7 +3918,7 @@ Object {
               <path
                 aria-label="Unknown, 60 to 100"
                 class="fui-gc__segment"
-                d="M22.58,-66.258A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,17.635,-51.039Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="neutralLight"
                 opacity="1"
@@ -3915,15 +3934,15 @@ Object {
                   class="fui-gc__needle"
                   d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
                   role="img"
                   stroke-width="2"
-                  transform="translate(-52)"
+                  transform="translate(72)"
                 />
               </g>
               <g>
@@ -3931,7 +3950,7 @@ Object {
                   aria-describedby="tooltip-94"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
-                  font-size="24"
+                  font-size="20"
                   id="tooltip-host93"
                   text-anchor="middle"
                   x="0"
@@ -4031,18 +4050,19 @@ Object {
         <svg
           aria-label="Gauge chart with 2 segments. "
           class="fui-gc__chart"
-          height="NaN"
+          height="-24"
           role="region"
+          width="0"
         >
           <g
-            transform="translate(126, 88)"
+            transform="translate(0, -40)"
           >
             <text
               aria-label="Min value: 0"
               class="fui-gc__limits"
               role="img"
               text-anchor="end"
-              x="-74"
+              x="54"
               y="0"
             >
               0
@@ -4052,7 +4072,7 @@ Object {
               class="fui-gc__limits"
               role="img"
               text-anchor="start"
-              x="74"
+              x="-54"
               y="0"
             >
               100
@@ -4060,7 +4080,7 @@ Object {
             <path
               aria-label="Used, 0 to 60"
               class="fui-gc__segment"
-              d="M-69.993,-1A70,70,0,0,1,20.678,-66.876L15.733,-51.657A54,54,0,0,0,-53.991,-1Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="blue"
               opacity="1"
@@ -4071,7 +4091,7 @@ Object {
             <path
               aria-label="Unknown, 60 to 100"
               class="fui-gc__segment"
-              d="M22.58,-66.258A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,17.635,-51.039Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="neutralLight"
               opacity="1"
@@ -4087,15 +4107,15 @@ Object {
                 class="fui-gc__needle"
                 d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(-52)"
+                transform="translate(72)"
               />
             </g>
             <g>
@@ -4103,7 +4123,7 @@ Object {
                 aria-describedby="tooltip-94"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
-                font-size="24"
+                font-size="20"
                 id="tooltip-host93"
                 text-anchor="middle"
                 x="0"
@@ -4246,18 +4266,19 @@ Object {
           <svg
             aria-label="Riskometer. Gauge chart with 3 segments. "
             class="fui-gc__chart"
-            height="NaN"
+            height="-24"
             role="region"
+            width="0"
           >
             <g
-              transform="translate(126, 113)"
+              transform="translate(0, -40)"
             >
               <text
                 aria-hidden="true"
                 class="fui-gc__chartTitle"
                 text-anchor="middle"
                 x="0"
-                y="-81"
+                y="72"
               >
                 Riskometer
               </text>
@@ -4266,7 +4287,7 @@ Object {
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="end"
-                x="-74"
+                x="79"
                 y="0"
               >
                 0
@@ -4276,7 +4297,7 @@ Object {
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="start"
-                x="74"
+                x="-79"
                 y="0"
               >
                 100
@@ -4284,7 +4305,7 @@ Object {
               <path
                 aria-label="Low Risk, 0 to 33"
                 class="fui-gc__segment"
-                d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
                 opacity="1"
@@ -4295,7 +4316,7 @@ Object {
               <path
                 aria-label="Medium Risk, 33 to 67"
                 class="fui-gc__segment"
-                d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
                 opacity="1"
@@ -4306,7 +4327,7 @@ Object {
               <path
                 aria-label="High Risk, 67 to 100"
                 class="fui-gc__segment"
-                d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
                 opacity="1"
@@ -4322,15 +4343,15 @@ Object {
                   class="fui-gc__needle"
                   d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
                   role="img"
                   stroke-width="2"
-                  transform="translate(-52)"
+                  transform="translate(97)"
                 />
               </g>
               <g>
@@ -4338,7 +4359,7 @@ Object {
                   aria-describedby="tooltip-81"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
-                  font-size="24"
+                  font-size="20"
                   id="tooltip-host80"
                   text-anchor="middle"
                   x="0"
@@ -4457,18 +4478,19 @@ Object {
         <svg
           aria-label="Riskometer. Gauge chart with 3 segments. "
           class="fui-gc__chart"
-          height="NaN"
+          height="-24"
           role="region"
+          width="0"
         >
           <g
-            transform="translate(126, 113)"
+            transform="translate(0, -40)"
           >
             <text
               aria-hidden="true"
               class="fui-gc__chartTitle"
               text-anchor="middle"
               x="0"
-              y="-81"
+              y="72"
             >
               Riskometer
             </text>
@@ -4477,7 +4499,7 @@ Object {
               class="fui-gc__limits"
               role="img"
               text-anchor="end"
-              x="-74"
+              x="79"
               y="0"
             >
               0
@@ -4487,7 +4509,7 @@ Object {
               class="fui-gc__limits"
               role="img"
               text-anchor="start"
-              x="74"
+              x="-79"
               y="0"
             >
               100
@@ -4495,7 +4517,7 @@ Object {
             <path
               aria-label="Low Risk, 0 to 33"
               class="fui-gc__segment"
-              d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
               opacity="1"
@@ -4506,7 +4528,7 @@ Object {
             <path
               aria-label="Medium Risk, 33 to 67"
               class="fui-gc__segment"
-              d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
               opacity="1"
@@ -4517,7 +4539,7 @@ Object {
             <path
               aria-label="High Risk, 67 to 100"
               class="fui-gc__segment"
-              d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
               opacity="1"
@@ -4533,15 +4555,15 @@ Object {
                 class="fui-gc__needle"
                 d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(-52)"
+                transform="translate(97)"
               />
             </g>
             <g>
@@ -4549,7 +4571,7 @@ Object {
                 aria-describedby="tooltip-81"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
-                font-size="24"
+                font-size="20"
                 id="tooltip-host80"
                 text-anchor="middle"
                 x="0"
@@ -4711,18 +4733,19 @@ Object {
           <svg
             aria-label="Gauge chart with 3 segments. "
             class="fui-gc__chart"
-            height="NaN"
+            height="-24"
             role="region"
+            width="0"
           >
             <g
-              transform="translate(126, 88)"
+              transform="translate(0, -40)"
             >
               <text
                 aria-label="Min value: 0"
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="end"
-                x="-74"
+                x="54"
                 y="0"
               >
                 0
@@ -4732,7 +4755,7 @@ Object {
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="start"
-                x="74"
+                x="-54"
                 y="0"
               >
                 100
@@ -4740,7 +4763,7 @@ Object {
               <path
                 aria-label="Low Risk, 0 to 33"
                 class="fui-gc__segment"
-                d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
                 opacity="1"
@@ -4751,7 +4774,7 @@ Object {
               <path
                 aria-label="Medium Risk, 33 to 67"
                 class="fui-gc__segment"
-                d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
                 opacity="1"
@@ -4762,7 +4785,7 @@ Object {
               <path
                 aria-label="High Risk, 67 to 100"
                 class="fui-gc__segment"
-                d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
                 opacity="1"
@@ -4778,15 +4801,15 @@ Object {
                   class="fui-gc__needle"
                   d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
                   role="img"
                   stroke-width="2"
-                  transform="translate(-52)"
+                  transform="translate(72)"
                 />
               </g>
               <g>
@@ -4794,7 +4817,7 @@ Object {
                   aria-describedby="tooltip-91"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
-                  font-size="24"
+                  font-size="20"
                   id="tooltip-host90"
                   text-anchor="middle"
                   x="0"
@@ -4913,18 +4936,19 @@ Object {
         <svg
           aria-label="Gauge chart with 3 segments. "
           class="fui-gc__chart"
-          height="NaN"
+          height="-24"
           role="region"
+          width="0"
         >
           <g
-            transform="translate(126, 88)"
+            transform="translate(0, -40)"
           >
             <text
               aria-label="Min value: 0"
               class="fui-gc__limits"
               role="img"
               text-anchor="end"
-              x="-74"
+              x="54"
               y="0"
             >
               0
@@ -4934,7 +4958,7 @@ Object {
               class="fui-gc__limits"
               role="img"
               text-anchor="start"
-              x="74"
+              x="-54"
               y="0"
             >
               100
@@ -4942,7 +4966,7 @@ Object {
             <path
               aria-label="Low Risk, 0 to 33"
               class="fui-gc__segment"
-              d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
               opacity="1"
@@ -4953,7 +4977,7 @@ Object {
             <path
               aria-label="Medium Risk, 33 to 67"
               class="fui-gc__segment"
-              d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
               opacity="1"
@@ -4964,7 +4988,7 @@ Object {
             <path
               aria-label="High Risk, 67 to 100"
               class="fui-gc__segment"
-              d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
               opacity="1"
@@ -4980,15 +5004,15 @@ Object {
                 class="fui-gc__needle"
                 d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(-52)"
+                transform="translate(72)"
               />
             </g>
             <g>
@@ -4996,7 +5020,7 @@ Object {
                 aria-describedby="tooltip-91"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
-                font-size="24"
+                font-size="20"
                 id="tooltip-host90"
                 text-anchor="middle"
                 x="0"
@@ -5158,18 +5182,19 @@ Object {
           <svg
             aria-label="Gauge chart with 3 segments. "
             class="fui-gc__chart"
-            height="NaN"
+            height="-24"
             role="region"
+            width="0"
           >
             <g
-              transform="translate(126, 88)"
+              transform="translate(0, -60)"
             >
               <text
                 aria-label="Min value: 0"
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="end"
-                x="-74"
+                x="74"
                 y="0"
               >
                 0
@@ -5179,7 +5204,7 @@ Object {
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="start"
-                x="74"
+                x="-74"
                 y="0"
               >
                 100
@@ -5187,7 +5212,7 @@ Object {
               <path
                 aria-label="Low Risk, 0 to 33"
                 class="fui-gc__segment"
-                d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
                 opacity="1"
@@ -5198,7 +5223,7 @@ Object {
               <path
                 aria-label="Medium Risk, 33 to 67"
                 class="fui-gc__segment"
-                d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
                 opacity="1"
@@ -5209,7 +5234,7 @@ Object {
               <path
                 aria-label="High Risk, 67 to 100"
                 class="fui-gc__segment"
-                d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+                d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
                 opacity="1"
@@ -5225,15 +5250,15 @@ Object {
                   class="fui-gc__needle"
                   d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
                   role="img"
                   stroke-width="2"
-                  transform="translate(-52)"
+                  transform="translate(92)"
                 />
               </g>
               <g>
@@ -5241,7 +5266,7 @@ Object {
                   aria-describedby="tooltip-84"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
-                  font-size="24"
+                  font-size="20"
                   id="tooltip-host83"
                   text-anchor="middle"
                   x="0"
@@ -5262,7 +5287,7 @@ Object {
                 x="0"
                 y="4"
               >
-                Low Risk
+                ...
               </text>
               <span
                 hidden=""
@@ -5390,18 +5415,19 @@ Object {
         <svg
           aria-label="Gauge chart with 3 segments. "
           class="fui-gc__chart"
-          height="NaN"
+          height="-24"
           role="region"
+          width="0"
         >
           <g
-            transform="translate(126, 88)"
+            transform="translate(0, -60)"
           >
             <text
               aria-label="Min value: 0"
               class="fui-gc__limits"
               role="img"
               text-anchor="end"
-              x="-74"
+              x="74"
               y="0"
             >
               0
@@ -5411,7 +5437,7 @@ Object {
               class="fui-gc__limits"
               role="img"
               text-anchor="start"
-              x="74"
+              x="-74"
               y="0"
             >
               100
@@ -5419,7 +5445,7 @@ Object {
             <path
               aria-label="Low Risk, 0 to 33"
               class="fui-gc__segment"
-              d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
               opacity="1"
@@ -5430,7 +5456,7 @@ Object {
             <path
               aria-label="Medium Risk, 33 to 67"
               class="fui-gc__segment"
-              d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
               opacity="1"
@@ -5441,7 +5467,7 @@ Object {
             <path
               aria-label="High Risk, 67 to 100"
               class="fui-gc__segment"
-              d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
+              d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
               opacity="1"
@@ -5457,15 +5483,15 @@ Object {
                 class="fui-gc__needle"
                 d="
             M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
+            L -16,-2
+            A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(-52)"
+                transform="translate(92)"
               />
             </g>
             <g>
@@ -5473,7 +5499,7 @@ Object {
                 aria-describedby="tooltip-84"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
-                font-size="24"
+                font-size="20"
                 id="tooltip-host83"
                 text-anchor="middle"
                 x="0"
@@ -5494,7 +5520,7 @@ Object {
               x="0"
               y="4"
             >
-              Low Risk
+              ...
             </text>
             <span
               hidden=""
@@ -5649,7 +5675,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         width="300"
       >
         <g
-          transform="translate(126, 88)"
+          transform="translate(150, 260)"
         >
           <text
             aria-label="Min value: 0"
@@ -5838,7 +5864,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         width="300"
       >
         <g
-          transform="translate(126, 88)"
+          transform="translate(150, 260)"
         >
           <text
             aria-label="Min value: 0"
