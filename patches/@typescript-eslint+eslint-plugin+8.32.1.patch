@@ -1,0 +1,35 @@
+diff --git a/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js b/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
+index 80f8f64..6a1c107 100644
+--- a/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
++++ b/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
+@@ -350,7 +350,30 @@ exports.default = (0, util_1.createRule)({
+                 });
+             }
+         }
++        function checkExportNamedDeclaration(node) {
++            if (node.specifiers.length > 0) {
++                for (const specifier of node.specifiers) {
++                    const isReexport = !!node.source;
++                    // always grab the *local* identifier for symbol resolution
++                    const localNode = specifier.local;
++                    const symbol = services.getSymbolAtLocation(localNode);
++                    const reason = searchForDeprecationInAliasesChain(symbol, true);
++                    if (reason == null) {
++                        continue;
++                    }
++                    const name = specifier.local.type === utils_1.AST_NODE_TYPES.Identifier
++                        ? specifier.local.name
++                        : specifier.local.value;
++                    context.report({
++                        node: isReexport ? specifier.exported : localNode,
++                        messageId: reason ? 'deprecatedWithReason' : 'deprecated',
++                        data: { name, reason },
++                    });
++                }
++            }
++        }
+         return {
++            ExportNamedDeclaration: checkExportNamedDeclaration,
+             Identifier: checkIdentifier,
+             JSXIdentifier(node) {
+                 if (node.parent.type !== utils_1.AST_NODE_TYPES.JSXClosingElement) {
