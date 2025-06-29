@@ -12,6 +12,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -557,6 +558,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -1106,6 +1108,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -1663,6 +1666,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -2208,6 +2212,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -2528,6 +2533,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -2848,6 +2854,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -3100,6 +3107,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -3438,6 +3446,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -3993,6 +4002,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -4548,6 +4558,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -4798,6 +4809,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -5048,6 +5060,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -5298,6 +5311,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -5548,6 +5562,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -5833,6 +5848,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -5930,6 +5946,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -6180,6 +6197,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -6430,6 +6448,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -6680,6 +6699,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {

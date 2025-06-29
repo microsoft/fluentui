@@ -164,7 +164,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -760,7 +760,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -1356,7 +1356,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -2061,7 +2061,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -2345,7 +2345,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }

@@ -129,6 +129,11 @@ export interface CartesianChartStyles {
    * Styles for the svg tooltip
    */
   svgTooltip?: string;
+
+  /**
+   *
+   */
+  chart?: string;
 }
 
 /**

@@ -15,6 +15,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
+            class="fui-sc__chart"
             height="436"
             id="sankeyChart26"
             width="864"
@@ -663,6 +664,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
+          class="fui-sc__chart"
           height="436"
           id="sankeyChart26"
           width="864"
@@ -1370,6 +1372,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
+            class="fui-sc__chart"
             height="436"
             id="sankeyChart32"
             width="864"
@@ -1900,6 +1903,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
+          class="fui-sc__chart"
           height="436"
           id="sankeyChart32"
           width="864"
@@ -2489,6 +2493,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
+            class="fui-sc__chart"
             height="436"
             id="sankeyChart8"
             width="864"
@@ -3535,6 +3540,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
+          class="fui-sc__chart"
           height="436"
           id="sankeyChart8"
           width="864"
@@ -4640,6 +4646,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
+            class="fui-sc__chart"
             height="436"
             id="sankeyChart14"
             width="864"
@@ -5683,6 +5690,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
+          class="fui-sc__chart"
           height="436"
           id="sankeyChart14"
           width="864"
@@ -6785,6 +6793,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
+            class="fui-sc__chart"
             height="436"
             id="sankeyChart20"
             width="864"
@@ -6959,6 +6968,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
+          class="fui-sc__chart"
           height="436"
           id="sankeyChart20"
           width="864"
@@ -7187,6 +7197,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-sc__chart"
         height="436"
         id="sankeyChart2"
         width="864"
@@ -7518,6 +7529,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
+          class="fui-sc__chart"
           height="436"
           id="sankeyChart3"
           width="864"
@@ -7858,6 +7870,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-sc__chart"
         height="436"
         id="sankeyChart2"
         width="864"
@@ -8190,6 +8203,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
+            class="fui-sc__chart"
             height="436"
             id="sankeyChart10"
             width="864"
@@ -8716,6 +8730,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
+          class="fui-sc__chart"
           height="436"
           id="sankeyChart10"
           width="864"
@@ -9301,6 +9316,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
+            class="fui-sc__chart"
             height="436"
             id="sankeyChart16"
             width="864"
@@ -9630,6 +9646,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
+          class="fui-sc__chart"
           height="436"
           id="sankeyChart16"
           width="864"
@@ -10013,6 +10030,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-sc__chart"
         height="436"
         id="sankeyChart2"
         width="864"
@@ -11103,6 +11121,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
         >
           <svg
+            class="fui-sc__chart"
             height="436"
             id="sankeyChart2"
             width="864"
@@ -12148,6 +12167,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
       >
         <svg
+          class="fui-sc__chart"
           height="436"
           id="sankeyChart2"
           width="864"
@@ -13247,6 +13267,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-sc__chart"
         height="436"
         id="sankeyChart2"
         width="864"

@@ -13,6 +13,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
     >
       <svg
         aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -417,6 +418,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
     >
       <svg
         aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -828,6 +830,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
       />
       <svg
         aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -1307,6 +1310,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -1709,6 +1713,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -2170,6 +2175,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -2579,6 +2585,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -3047,6 +3054,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="50"
             style="display: block;"
             width="650"
@@ -3394,6 +3402,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="50"
           style="display: block;"
           width="650"
@@ -3800,6 +3809,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -4202,6 +4212,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -4663,6 +4674,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -5112,6 +5124,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -5620,6 +5633,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -6110,6 +6124,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -6664,6 +6679,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -7066,6 +7082,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"

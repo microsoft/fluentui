@@ -199,19 +199,19 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       className: this.props.className,
-      chartWidth: width,
-      chartHeight: height - this._legendsHeight,
       chartValueSize,
     });
 
     return (
       <div className={this._classNames.root} ref={el => (this._rootElem = el)}>
-        <FocusZone direction={FocusZoneDirection.horizontal}>
+        <FocusZone direction={FocusZoneDirection.horizontal} className={this._classNames.chartWrapper}>
           <svg
             className={this._classNames.chart}
             role="region"
             aria-label={this._getChartTitle()}
             onMouseLeave={this._handleMouseOut}
+            width={width}
+            height={height - this._legendsHeight}
           >
             <g transform={`translate(${width / 2}, ${height - (this._margins.bottom + this._legendsHeight)})`}>
               {this.props.chartTitle && (

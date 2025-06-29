@@ -17,6 +17,7 @@ export const areaChartClassNames: SlotClassNames<AreaChartStyles> = {
   shapeStyles: '',
   chartWrapper: '',
   svgTooltip: '',
+  chart: '',
 };
 
 const useStyles = makeStyles({

@@ -66,4 +66,5 @@ export interface IChartTableStyles {
   table?: IStyle;
   headerCell?: IStyle;
   bodyCell?: IStyle;
+  chart?: IStyle;
 }

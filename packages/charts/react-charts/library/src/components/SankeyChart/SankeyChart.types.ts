@@ -131,6 +131,11 @@ export interface SankeyChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;
+
+  /**
+   *
+   */
+  chart?: string;
 }
 
 /**

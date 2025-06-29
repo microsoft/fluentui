@@ -1,6 +1,16 @@
 import * as React from 'react';
 
 /**
+ * Responsive Child styles
+ * {@docCategory ResponsiveContainer}
+ */
+export interface ResponsiveChildStyles {
+  root?: string;
+  chartWrapper?: string;
+  chart?: string;
+}
+
+/**
  * Responsive Child props
  * {@docCategory ResponsiveContainer}
  */
@@ -8,6 +18,7 @@ export interface ResponsiveChildProps {
   width?: number;
   height?: number;
   shouldResize?: number;
+  styles?: ResponsiveChildStyles;
 }
 
 /**

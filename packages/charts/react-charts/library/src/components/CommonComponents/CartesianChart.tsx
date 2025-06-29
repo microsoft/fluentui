@@ -613,6 +613,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           height={svgDimensions.height}
           aria-label={props.chartTitle}
           style={{ display: 'block' }}
+          className={classes.chart}
           {...svgProps}
         >
           <g

@@ -479,7 +479,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

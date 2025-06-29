@@ -973,7 +973,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1577,7 +1577,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

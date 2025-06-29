@@ -423,7 +423,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -1019,7 +1019,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -1468,7 +1468,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1893,7 +1893,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -2330,7 +2330,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -2747,7 +2747,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -3534,7 +3534,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -4172,7 +4172,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
