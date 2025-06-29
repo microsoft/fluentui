@@ -1,0 +1,75 @@
+diff --git a/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js b/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
+index 80f8f64..6d0dbcd 100644
+--- a/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
++++ b/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
+@@ -153,28 +153,10 @@ exports.default = (0, util_1.createRule)({
+                     return false;
+             }
+         }
+-        function isInsideExportOrImport(node) {
+-            let current = node;
+-            while (true) {
+-                switch (current.type) {
+-                    case utils_1.AST_NODE_TYPES.ExportAllDeclaration:
+-                    case utils_1.AST_NODE_TYPES.ExportNamedDeclaration:
+-                    case utils_1.AST_NODE_TYPES.ImportDeclaration:
+-                        return true;
+-                    case utils_1.AST_NODE_TYPES.ArrowFunctionExpression:
+-                    case utils_1.AST_NODE_TYPES.BlockStatement:
+-                    case utils_1.AST_NODE_TYPES.ClassDeclaration:
+-                    case utils_1.AST_NODE_TYPES.TSInterfaceDeclaration:
+-                    case utils_1.AST_NODE_TYPES.FunctionDeclaration:
+-                    case utils_1.AST_NODE_TYPES.FunctionExpression:
+-                    case utils_1.AST_NODE_TYPES.Program:
+-                    case utils_1.AST_NODE_TYPES.TSUnionType:
+-                    case utils_1.AST_NODE_TYPES.VariableDeclarator:
+-                        return false;
+-                    default:
+-                        current = current.parent;
+-                }
+-            }
++        function isInsideImport(node) {
++            const ancestors = context.sourceCode.getAncestors(node);
++            return ancestors.some(anc => anc.type.includes('Import') &&
++                anc.type !== utils_1.AST_NODE_TYPES.ImportExpression);
+         }
+         function getJsDocDeprecation(symbol) {
+             let jsDocTags;
+@@ -293,7 +275,7 @@ exports.default = (0, util_1.createRule)({
+             return searchForDeprecationInAliasesChain(services.getSymbolAtLocation(node), true);
+         }
+         function checkIdentifier(node) {
+-            if (isDeclaration(node) || isInsideExportOrImport(node)) {
++            if (isDeclaration(node) || isInsideImport(node)) {
+                 return;
+             }
+             const reason = getDeprecationReason(node);
+@@ -351,7 +333,27 @@ exports.default = (0, util_1.createRule)({
+             }
+         }
+         return {
+-            Identifier: checkIdentifier,
++            ExportSpecifier(node) {
++                if (node.exported.type !== utils_1.AST_NODE_TYPES.Identifier) {
++                    return;
++                }
++                const symbol = services.getSymbolAtLocation(node.exported);
++                const aliasDeprecation = getJsDocDeprecation(symbol);
++                if (aliasDeprecation != null) {
++                    return;
++                }
++                checkIdentifier(node.exported);
++            },
++            Identifier(node) {
++                if ([
++                    utils_1.AST_NODE_TYPES.ExportNamedDeclaration,
++                    utils_1.AST_NODE_TYPES.ExportAllDeclaration,
++                    utils_1.AST_NODE_TYPES.ExportSpecifier,
++                ].includes(node.parent.type)) {
++                    return;
++                }
++                checkIdentifier(node);
++            },
+             JSXIdentifier(node) {
+                 if (node.parent.type !== utils_1.AST_NODE_TYPES.JSXClosingElement) {
+                     checkIdentifier(node);
