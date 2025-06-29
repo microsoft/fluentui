@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Wed, 18 Jun 2025 17:34:00 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jun 2025 13:39:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.25.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.25.3)
+
+Fri, 27 Jun 2025 13:39:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.25.2..@fluentui/react-tabster_v9.25.3)
+
+### Patches
+
+- fix(focusVisiblePolyfill): Strict mode compat after portal changes ([PR #34700](https://github.com/microsoft/fluentui/pull/34700) by lingfangao@hotmail.com)
+
+## [9.25.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.25.2)
+
+Thu, 26 Jun 2025 14:11:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.25.1..@fluentui/react-tabster_v9.25.2)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.22.0 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
 
 ## [9.25.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.25.1)
 
