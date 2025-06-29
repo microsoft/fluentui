@@ -28,7 +28,6 @@ const indeterminateIndicator = html.partial(/* html */ `
 export function checkboxTemplate<T extends Checkbox>(options: CheckboxOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template
-      tabindex="${x => (!x.disabled ? 0 : void 0)}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
       @input="${(x, c) => x.inputHandler(c.event as InputEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
