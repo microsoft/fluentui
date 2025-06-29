@@ -312,7 +312,7 @@ export class RadioGroup extends FASTElement {
 
   /**
    * Sets the checked state of all radios when any radio emits a `change` event.
-   *
+   * @internal
    * @param e - the change event
    */
   public changeHandler(e: Event): boolean | void {
@@ -333,9 +333,8 @@ export class RadioGroup extends FASTElement {
 
   /**
    * Checks the radio at the specified index.
-   *
-   * @param index - the index of the radio to check
    * @internal
+   * @param index - the index of the radio to check
    */
   public checkRadio(index: number = this.checkedIndex, shouldEmit: boolean = false): void {
     let checkedIndex = this.checkedIndex;
@@ -369,9 +368,8 @@ export class RadioGroup extends FASTElement {
 
   /**
    * Handles click events for the radio group.
-   *
-   * @param e - the click event
    * @internal
+   * @param e - the click event
    */
   public clickHandler(e: MouseEvent): boolean | void {
     if (this === e.target) {
@@ -384,7 +382,9 @@ export class RadioGroup extends FASTElement {
   constructor() {
     super();
 
+    /** @internal */
     this.elementInternals.role = 'radiogroup';
+    /** @internal */
     this.elementInternals.ariaOrientation = this.orientation ?? RadioGroupOrientation.horizontal;
   }
 
@@ -495,7 +495,7 @@ export class RadioGroup extends FASTElement {
   }
 
   /**
-   *
+   * @internal
    * @param e - the disabled event
    */
   disabledRadioHandler(e: CustomEvent): void {

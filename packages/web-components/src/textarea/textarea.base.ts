@@ -14,6 +14,7 @@ import { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';
  * @csspart control - The internal `<textarea>` element.
  * @fires change - Fires after the control loses focus, if the content has changed.
  * @fires select - Fires when the `select()` method is called.
+ * @fires input - Fires when the user types in the control.
  *
  * @public
  */
