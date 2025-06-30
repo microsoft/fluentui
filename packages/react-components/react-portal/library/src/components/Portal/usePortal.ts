@@ -80,7 +80,7 @@ export const usePortal_unstable = (props: PortalProps): PortalState => {
         setVirtualParent(mountNode, undefined);
       };
     }
-  }, [mountNode]);
+  }, [virtualParentRootRef, mountNode]);
 
   return state;
 };

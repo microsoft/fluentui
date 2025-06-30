@@ -1238,7 +1238,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout79"
+      id="callout106"
     >
       <div
         class="fui-PopoverSurface"
@@ -5096,7 +5096,7 @@ Object {
     </div>
     <div
       class="fui-gvbc**tooltip"
-      id="GVBCTooltipId_46"
+      id="GVBCTooltipId_62"
       style="opacity: 0;"
     />
   </body>,
@@ -5605,7 +5605,7 @@ Object {
   >
     <div
       class="fui-gvbc**tooltip"
-      id="GVBCTooltipId_46"
+      id="GVBCTooltipId_62"
       style="opacity: 0;"
     />
     <div>
@@ -6649,7 +6649,7 @@ Object {
   >
     <div
       class="fui-gvbc**tooltip"
-      id="GVBCTooltipId_46"
+      id="GVBCTooltipId_62"
       style="opacity: 0;"
     />
     <div>

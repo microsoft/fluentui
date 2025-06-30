@@ -28,7 +28,7 @@ import {
   ChartTypes,
   getXAxisType,
   XAxisTypes,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   Points,
   pointTypes,
   getMinMaxOfYAxis,
@@ -890,9 +890,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         const tooltipProps = {
           tooltipCls: classes.tooltip!,
           id: _tooltipId,
-          xAxis: xAxisElement,
+          axis: xAxisElement,
         };
-        xAxisElement && tooltipOfXAxislabels(tooltipProps);
+        xAxisElement && tooltipOfAxislabels(tooltipProps);
       }
       return lines;
     }

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Tue, 17 Jun 2025 07:20:32 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Jun 2025 07:19:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.19)
+
+Mon, 30 Jun 2025 07:19:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.18..@fluentui/chart-utilities_v1.1.19)
+
+### Patches
+
+- fix(react-charting): Add "lines+text" mode to supported list ([PR #34708](https://github.com/microsoft/fluentui/pull/34708) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.18](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.18)
 

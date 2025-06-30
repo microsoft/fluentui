@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { CartesianChartProps, CartesianChartStyles } from './CartesianChart.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -99,6 +99,18 @@ const useStyles = makeStyles({
       fill: 'Canvas',
     },
   },
+  tooltip: {
+    ...typographyStyles.body1,
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.padding(tokens.spacingHorizontalS),
+    position: 'absolute',
+    textAlign: 'center',
+    top: tokens.spacingVerticalNone,
+    backgroundColor: tokens.colorNeutralBackground1,
+    borderRadius: tokens.borderRadiusSmall,
+    pointerEvents: 'none',
+  },
 });
 /**
  * Apply styling to the Carousel slots based on the state
@@ -129,5 +141,6 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
       baseStyles.legendContainer /*props.styles?.legendContainer*/,
     ),
     svgTooltip: mergeClasses(cartesianchartClassNames.svgTooltip, baseStyles.svgTooltip /*props.styles?.svgTooltip*/),
+    tooltip: mergeClasses(cartesianchartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
   };
 };

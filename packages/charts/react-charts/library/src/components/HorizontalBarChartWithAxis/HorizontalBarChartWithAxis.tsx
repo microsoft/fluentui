@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { Legend } from '../../components/Legends/Legends.types';
 import { Legends } from '../../components/Legends/Legends';
 import { useId } from '@fluentui/react-utilities';
-import { useHorizontalBarChartWithAxisStyles } from './useHorizontalBarChartWithAxisStyles.styles';
 import {
   AccessibilityProps,
   HorizontalBarChartWithAxisDataPoint,
@@ -48,7 +46,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   const _refArray: RefArrayData[] = [];
   const _calloutId: string = useId('callout');
   const _isRtl: boolean = useRtl();
-  const _tooltipId: string = useId('HBCWATooltipID_');
   const _xAxisType: XAxisTypes =
     props.data! && props.data!.length > 0
       ? (getTypeOfAxis(props.data![0].x, true) as XAxisTypes)
@@ -67,7 +64,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   let _xMax: number;
   let _calloutAnchorPoint: HorizontalBarChartWithAxisDataPoint | null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let tooltipElement: any;
   let _longestBarPositiveTotalValue: number;
   let _longestBarNegativeTotalValue: number;
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
@@ -110,7 +106,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     [],
   );
 
-  const classes = useHorizontalBarChartWithAxisStyles(props);
   function _adjustProps(): void {
     _points = props.data || [];
     _barHeight = props.barHeight || 32;
@@ -507,41 +502,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function _tooltipOfYAxislabels(ytooltipProps: any) {
-    const { tooltipCls, yAxis, id } = ytooltipProps;
-    if (yAxis === null) {
-      return null;
-    }
-    const div = d3Select('body').append('div').attr('id', id).attr('class', tooltipCls).style('opacity', 0);
-    const aa = yAxis!.selectAll('#BaseSpan')._groups[0];
-    const baseSpanLength = aa && Object.keys(aa)!.length;
-    const originalDataArray: string[] = [];
-    for (let i = 0; i < baseSpanLength; i++) {
-      const originalData = aa[i].dataset && (Object.values(aa[i].dataset)[0] as string);
-      originalDataArray.push(originalData);
-    }
-    const tickObject = yAxis!.selectAll('.tick')._groups[0];
-    const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
-    for (let i = 0; i < tickObjectLength; i++) {
-      const d1 = tickObject[i];
-      d3Select(d1)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .on('mouseover', (event: any, d) => {
-          if (!tooltipElement) {
-            div.style('opacity', 0.9);
-            div
-              .text(originalDataArray[i])
-              .style('left', event.pageX + 'px')
-              .style('top', event.pageY - 28 + 'px');
-          }
-        })
-        .on('mouseout', d => {
-          div.style('opacity', 0);
-        });
-    }
-  }
-
   function _createStringBars(
     containerHeight: number,
     containerWidth: number,
@@ -643,34 +603,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         </React.Fragment>
       );
     });
-
-    // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
-    // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
-    // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with _tooltipId)
-    if (!props.showYAxisLablesTooltip) {
-      try {
-        // eslint-disable-next-line @nx/workspace-no-restricted-globals
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        //eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at y axis labels.
-    if (props.showYAxisLablesTooltip) {
-      const yAxisElement = d3Select(yElement).call(yBarScale);
-      if (!tooltipElement) {
-        try {
-          // eslint-disable-next-line @nx/workspace-no-restricted-globals
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          //eslint-disable-next-line no-empty
-        } catch (e) {}
-      }
-      const ytooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        yAxis: yAxisElement,
-      };
-      yAxisElement && _tooltipOfYAxislabels(ytooltipProps);
-    }
     return bars;
   }
 

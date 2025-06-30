@@ -321,6 +321,7 @@ export const transformPlotlyJsonToVSBCProps = (
     mode: 'plotly',
     ...secondaryYAxisValues,
     hideTickOverlap: true,
+    barGapMax: 2,
   };
 };
 
@@ -561,6 +562,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     height: chartHeight,
     width: input.layout?.width,
     hideTickOverlap: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 
@@ -674,6 +677,8 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): HeatMapC
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     hideTickOverlap: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 
