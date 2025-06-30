@@ -519,7 +519,7 @@ export class BaseCheckbox extends FASTElement {
     clickHandler(e: MouseEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
-    disabled: boolean;
+    disabled?: boolean;
     disabledAttribute?: boolean;
     // @internal
     protected disabledAttributeChanged(prev: boolean | undefined, next: boolean | undefined): void;

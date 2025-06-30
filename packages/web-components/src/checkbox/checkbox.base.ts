@@ -8,13 +8,6 @@ import { toggleState } from '../utils/element-internals.js';
  */
 export class BaseCheckbox extends FASTElement {
   /**
-   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
-   *
-   * @internal
-   */
-  public elementInternals: ElementInternals = this.attachInternals();
-
-  /**
    * Indicates that the element should get focus after the page finishes loading.
    * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/input#autofocus | `autofocus`} attribute
    *
@@ -210,6 +203,13 @@ export class BaseCheckbox extends FASTElement {
   public get form(): HTMLFormElement | null {
     return this.elementInternals.form;
   }
+
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
 
   /**
    * The form-associated flag.
