@@ -50,7 +50,7 @@ export class BaseCheckbox extends FASTElement {
    * @public
    */
   @observable
-  public disabled = false;
+  public disabled?: boolean;
 
   /**
    * Toggles the disabled state when the user changes the `disabled` property.
@@ -348,6 +348,7 @@ export class BaseCheckbox extends FASTElement {
   connectedCallback() {
     super.connectedCallback();
 
+    this.disabled = !!this.disabledAttribute;
     this.setAriaChecked();
     this.setValidity();
   }
