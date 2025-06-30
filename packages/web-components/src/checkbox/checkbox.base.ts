@@ -54,7 +54,11 @@ export class BaseCheckbox extends FASTElement {
     if (this.disabled) {
       this.removeAttribute('tabindex');
     } else {
-      this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) || 0;
+      // If author sets tabindex to a non-positive value, the component should
+      // respect it, otherwise set it to 0 to avoid the anti-pattern of setting
+      // tabindex to a positive number. See details:
+      // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex
+      this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
     }
     this.elementInternals.ariaDisabled = this.disabled ? 'true' : 'false';
     toggleState(this.elementInternals, 'disabled', this.disabled);
