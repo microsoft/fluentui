@@ -65,7 +65,7 @@ export class RadioGroup extends FASTElement {
     if (this.$fastController.isConnected) {
       this.checkedIndex = -1;
       this.radios?.forEach(radio => {
-        radio.disabled = radio.disabledAttribute || this.disabled;
+        radio.disabled = !!radio.disabledAttribute || !!this.disabled;
       });
       this.restrictFocus();
     }
@@ -172,7 +172,7 @@ export class RadioGroup extends FASTElement {
       }
 
       radio.name = this.name ?? radio.name;
-      radio.disabled = this.disabled || !!radio.disabledAttribute;
+      radio.disabled = !!this.disabled || !!radio.disabledAttribute;
     });
 
     if (!this.dirtyState && this.initialValue) {
