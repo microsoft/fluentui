@@ -358,7 +358,7 @@ export const VerticalStackedBarNegative = () => {
               canSelectMultipleLegends: legendMultiSelect,
             }}
             hideLabels={hideLabels}
-            enableReflow={true}
+            reflowProps={{ mode: 'min-width' }}
             yAxisTitle={showAxisTitles ? 'Variation of number of sales' : undefined}
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
             roundCorners={roundCorners}
@@ -382,7 +382,7 @@ export const VerticalStackedBarNegative = () => {
               canSelectMultipleLegends: legendMultiSelect,
             }}
             hideLabels={hideLabels}
-            enableReflow={true}
+            reflowProps={{ mode: 'min-width' }}
             roundCorners={roundCorners}
             roundedTicks={true}
           />

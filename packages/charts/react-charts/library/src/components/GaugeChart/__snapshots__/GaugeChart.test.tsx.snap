@@ -16,19 +16,19 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
         <svg
           aria-label="Gauge chart with 3 segments. "
           class="fui-gc__chart"
-          height="-24"
+          height="-32"
           role="region"
           width="0"
         >
           <g
-            transform="translate(0, -40)"
+            transform="translate(0, -48)"
           >
             <text
               aria-label="Min value: 0"
               class="fui-gc__limits"
               role="img"
               text-anchor="end"
-              x="54"
+              x="62"
               y="0"
             >
               0
@@ -38,7 +38,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
               class="fui-gc__limits"
               role="img"
               text-anchor="start"
-              x="-54"
+              x="-62"
               y="0"
             >
               100
@@ -92,7 +92,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(72)"
+                transform="translate(80)"
               />
             </g>
             <g>
@@ -299,19 +299,19 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="-24"
+        height="-32"
         role="region"
         width="0"
       >
         <g
-          transform="translate(0, -40)"
+          transform="translate(0, -48)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="54"
+            x="62"
             y="0"
           >
             0
@@ -321,7 +321,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="-54"
+            x="-62"
             y="0"
           >
             100
@@ -375,7 +375,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(72)"
+              transform="translate(80)"
             />
           </g>
           <g>
@@ -490,19 +490,19 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="-24"
+        height="-32"
         role="region"
         width="0"
       >
         <g
-          transform="translate(0, -40)"
+          transform="translate(0, -48)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="54"
+            x="62"
             y="0"
           >
             0
@@ -512,7 +512,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="-54"
+            x="-62"
             y="0"
           >
             100
@@ -566,7 +566,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(72)"
+              transform="translate(80)"
             />
           </g>
           <g>
@@ -681,19 +681,19 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="-24"
+        height="-32"
         role="region"
         width="0"
       >
         <g
-          transform="translate(0, -40)"
+          transform="translate(0, -48)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="54"
+            x="62"
             y="0"
           >
             0
@@ -703,7 +703,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="-54"
+            x="-62"
             y="0"
           >
             100
@@ -757,7 +757,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(72)"
+              transform="translate(80)"
             />
           </g>
           <g>
@@ -977,19 +977,19 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="-24"
+        height="-32"
         role="region"
         width="0"
       >
         <g
-          transform="translate(0, -40)"
+          transform="translate(0, -48)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="54"
+            x="62"
             y="0"
           >
             0
@@ -999,7 +999,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="-54"
+            x="-62"
             y="0"
           >
             100
@@ -1053,7 +1053,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(72)"
+              transform="translate(80)"
             />
           </g>
           <g>
@@ -1166,19 +1166,19 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="-24"
+        height="-32"
         role="region"
         width="0"
       >
         <g
-          transform="translate(0, -40)"
+          transform="translate(0, -48)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="54"
+            x="62"
             y="0"
           >
             0
@@ -1188,7 +1188,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="-54"
+            x="-62"
             y="0"
           >
             100
@@ -1242,7 +1242,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(72)"
+              transform="translate(80)"
             />
           </g>
           <g>
@@ -1355,19 +1355,19 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="-24"
+        height="-32"
         role="region"
         width="0"
       >
         <g
-          transform="translate(0, -40)"
+          transform="translate(0, -48)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="54"
+            x="62"
             y="0"
           >
             0
@@ -1377,7 +1377,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="-54"
+            x="-62"
             y="0"
           >
             100
@@ -1431,7 +1431,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(72)"
+              transform="translate(80)"
             />
           </g>
           <g>
@@ -1651,19 +1651,19 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="-24"
+        height="-32"
         role="region"
         width="0"
       >
         <g
-          transform="translate(0, -40)"
+          transform="translate(0, -48)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="54"
+            x="62"
             y="0"
           >
             0
@@ -1673,7 +1673,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="-54"
+            x="-62"
             y="0"
           >
             100
@@ -1727,7 +1727,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(72)"
+              transform="translate(80)"
             />
           </g>
           <g>
@@ -1947,19 +1947,19 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
       <svg
         aria-label="Gauge Chart with title. Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="-24"
+        height="-32"
         role="region"
         width="0"
       >
         <g
-          transform="translate(0, -40)"
+          transform="translate(0, -48)"
         >
           <text
             aria-hidden="true"
             class="fui-gc__chartTitle"
             text-anchor="middle"
             x="0"
-            y="72"
+            y="80"
           >
             Gauge Chart with title
           </text>
@@ -1968,7 +1968,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="79"
+            x="87"
             y="0"
           >
             0
@@ -1978,7 +1978,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="-79"
+            x="-87"
             y="0"
           >
             100
@@ -2032,7 +2032,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(97)"
+              transform="translate(105)"
             />
           </g>
           <g>
@@ -2145,19 +2145,19 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="-24"
+        height="-32"
         role="region"
         width="0"
       >
         <g
-          transform="translate(0, -40)"
+          transform="translate(0, -48)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="54"
+            x="62"
             y="0"
           >
             0
@@ -2167,7 +2167,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="-54"
+            x="-62"
             y="0"
           >
             100
@@ -2221,7 +2221,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(72)"
+              transform="translate(80)"
             />
           </g>
           <g>
@@ -2334,19 +2334,19 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="-24"
+        height="-32"
         role="region"
         width="0"
       >
         <g
-          transform="translate(0, -40)"
+          transform="translate(0, -48)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="54"
+            x="62"
             y="0"
           >
             0
@@ -2356,7 +2356,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="-54"
+            x="-62"
             y="0"
           >
             100
@@ -2410,7 +2410,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(72)"
+              transform="translate(80)"
             />
           </g>
           <g>
@@ -2523,19 +2523,19 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="-24"
+        height="-32"
         role="region"
         width="0"
       >
         <g
-          transform="translate(0, -40)"
+          transform="translate(0, -48)"
         >
           <text
             aria-label="Min value: 0"
             class="fui-gc__limits"
             role="img"
             text-anchor="end"
-            x="54"
+            x="62"
             y="0"
           >
             0
@@ -2545,7 +2545,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
-            x="-54"
+            x="-62"
             y="0"
           >
             100
@@ -2599,7 +2599,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
               data-is-focusable="true"
               role="img"
               stroke-width="2"
-              transform="translate(72)"
+              transform="translate(80)"
             />
           </g>
           <g>
@@ -2717,12 +2717,12 @@ Object {
           <svg
             aria-label="Gauge chart with 3 segments. "
             class="fui-gc__chart"
-            height="-24"
+            height="-32"
             role="region"
             width="0"
           >
             <g
-              transform="translate(0, -40)"
+              transform="translate(0, -48)"
             >
               <path
                 aria-label="Low Risk, 0 to 33"
@@ -2773,7 +2773,7 @@ Object {
                   data-is-focusable="true"
                   role="img"
                   stroke-width="2"
-                  transform="translate(72)"
+                  transform="translate(80)"
                 />
               </g>
               <g>
@@ -2900,12 +2900,12 @@ Object {
         <svg
           aria-label="Gauge chart with 3 segments. "
           class="fui-gc__chart"
-          height="-24"
+          height="-32"
           role="region"
           width="0"
         >
           <g
-            transform="translate(0, -40)"
+            transform="translate(0, -48)"
           >
             <path
               aria-label="Low Risk, 0 to 33"
@@ -2956,7 +2956,7 @@ Object {
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(72)"
+                transform="translate(80)"
               />
             </g>
             <g>
@@ -3427,19 +3427,19 @@ Object {
           <svg
             aria-label="Gauge chart with 3 segments. "
             class="fui-gc__chart"
-            height="-24"
+            height="-32"
             role="region"
             width="0"
           >
             <g
-              transform="translate(0, -40)"
+              transform="translate(0, -48)"
             >
               <text
                 aria-label="Min value: 0"
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="end"
-                x="54"
+                x="62"
                 y="0"
               >
                 0
@@ -3449,7 +3449,7 @@ Object {
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="start"
-                x="-54"
+                x="-62"
                 y="0"
               >
                 100
@@ -3503,7 +3503,7 @@ Object {
                   data-is-focusable="true"
                   role="img"
                   stroke-width="2"
-                  transform="translate(72)"
+                  transform="translate(80)"
                 />
               </g>
               <g>
@@ -3630,19 +3630,19 @@ Object {
         <svg
           aria-label="Gauge chart with 3 segments. "
           class="fui-gc__chart"
-          height="-24"
+          height="-32"
           role="region"
           width="0"
         >
           <g
-            transform="translate(0, -40)"
+            transform="translate(0, -48)"
           >
             <text
               aria-label="Min value: 0"
               class="fui-gc__limits"
               role="img"
               text-anchor="end"
-              x="54"
+              x="62"
               y="0"
             >
               0
@@ -3652,7 +3652,7 @@ Object {
               class="fui-gc__limits"
               role="img"
               text-anchor="start"
-              x="-54"
+              x="-62"
               y="0"
             >
               100
@@ -3706,7 +3706,7 @@ Object {
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(72)"
+                transform="translate(80)"
               />
             </g>
             <g>
@@ -3877,19 +3877,19 @@ Object {
           <svg
             aria-label="Gauge chart with 2 segments. "
             class="fui-gc__chart"
-            height="-24"
+            height="-32"
             role="region"
             width="0"
           >
             <g
-              transform="translate(0, -40)"
+              transform="translate(0, -48)"
             >
               <text
                 aria-label="Min value: 0"
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="end"
-                x="54"
+                x="62"
                 y="0"
               >
                 0
@@ -3899,7 +3899,7 @@ Object {
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="start"
-                x="-54"
+                x="-62"
                 y="0"
               >
                 100
@@ -3942,7 +3942,7 @@ Object {
                   data-is-focusable="true"
                   role="img"
                   stroke-width="2"
-                  transform="translate(72)"
+                  transform="translate(80)"
                 />
               </g>
               <g>
@@ -4050,19 +4050,19 @@ Object {
         <svg
           aria-label="Gauge chart with 2 segments. "
           class="fui-gc__chart"
-          height="-24"
+          height="-32"
           role="region"
           width="0"
         >
           <g
-            transform="translate(0, -40)"
+            transform="translate(0, -48)"
           >
             <text
               aria-label="Min value: 0"
               class="fui-gc__limits"
               role="img"
               text-anchor="end"
-              x="54"
+              x="62"
               y="0"
             >
               0
@@ -4072,7 +4072,7 @@ Object {
               class="fui-gc__limits"
               role="img"
               text-anchor="start"
-              x="-54"
+              x="-62"
               y="0"
             >
               100
@@ -4115,7 +4115,7 @@ Object {
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(72)"
+                transform="translate(80)"
               />
             </g>
             <g>
@@ -4266,19 +4266,19 @@ Object {
           <svg
             aria-label="Riskometer. Gauge chart with 3 segments. "
             class="fui-gc__chart"
-            height="-24"
+            height="-32"
             role="region"
             width="0"
           >
             <g
-              transform="translate(0, -40)"
+              transform="translate(0, -48)"
             >
               <text
                 aria-hidden="true"
                 class="fui-gc__chartTitle"
                 text-anchor="middle"
                 x="0"
-                y="72"
+                y="80"
               >
                 Riskometer
               </text>
@@ -4287,7 +4287,7 @@ Object {
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="end"
-                x="79"
+                x="87"
                 y="0"
               >
                 0
@@ -4297,7 +4297,7 @@ Object {
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="start"
-                x="-79"
+                x="-87"
                 y="0"
               >
                 100
@@ -4351,7 +4351,7 @@ Object {
                   data-is-focusable="true"
                   role="img"
                   stroke-width="2"
-                  transform="translate(97)"
+                  transform="translate(105)"
                 />
               </g>
               <g>
@@ -4478,19 +4478,19 @@ Object {
         <svg
           aria-label="Riskometer. Gauge chart with 3 segments. "
           class="fui-gc__chart"
-          height="-24"
+          height="-32"
           role="region"
           width="0"
         >
           <g
-            transform="translate(0, -40)"
+            transform="translate(0, -48)"
           >
             <text
               aria-hidden="true"
               class="fui-gc__chartTitle"
               text-anchor="middle"
               x="0"
-              y="72"
+              y="80"
             >
               Riskometer
             </text>
@@ -4499,7 +4499,7 @@ Object {
               class="fui-gc__limits"
               role="img"
               text-anchor="end"
-              x="79"
+              x="87"
               y="0"
             >
               0
@@ -4509,7 +4509,7 @@ Object {
               class="fui-gc__limits"
               role="img"
               text-anchor="start"
-              x="-79"
+              x="-87"
               y="0"
             >
               100
@@ -4563,7 +4563,7 @@ Object {
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(97)"
+                transform="translate(105)"
               />
             </g>
             <g>
@@ -4733,19 +4733,19 @@ Object {
           <svg
             aria-label="Gauge chart with 3 segments. "
             class="fui-gc__chart"
-            height="-24"
+            height="-32"
             role="region"
             width="0"
           >
             <g
-              transform="translate(0, -40)"
+              transform="translate(0, -48)"
             >
               <text
                 aria-label="Min value: 0"
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="end"
-                x="54"
+                x="62"
                 y="0"
               >
                 0
@@ -4755,7 +4755,7 @@ Object {
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="start"
-                x="-54"
+                x="-62"
                 y="0"
               >
                 100
@@ -4809,7 +4809,7 @@ Object {
                   data-is-focusable="true"
                   role="img"
                   stroke-width="2"
-                  transform="translate(72)"
+                  transform="translate(80)"
                 />
               </g>
               <g>
@@ -4936,19 +4936,19 @@ Object {
         <svg
           aria-label="Gauge chart with 3 segments. "
           class="fui-gc__chart"
-          height="-24"
+          height="-32"
           role="region"
           width="0"
         >
           <g
-            transform="translate(0, -40)"
+            transform="translate(0, -48)"
           >
             <text
               aria-label="Min value: 0"
               class="fui-gc__limits"
               role="img"
               text-anchor="end"
-              x="54"
+              x="62"
               y="0"
             >
               0
@@ -4958,7 +4958,7 @@ Object {
               class="fui-gc__limits"
               role="img"
               text-anchor="start"
-              x="-54"
+              x="-62"
               y="0"
             >
               100
@@ -5012,7 +5012,7 @@ Object {
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(72)"
+                transform="translate(80)"
               />
             </g>
             <g>
@@ -5182,19 +5182,19 @@ Object {
           <svg
             aria-label="Gauge chart with 3 segments. "
             class="fui-gc__chart"
-            height="-24"
+            height="-32"
             role="region"
             width="0"
           >
             <g
-              transform="translate(0, -60)"
+              transform="translate(0, -68)"
             >
               <text
                 aria-label="Min value: 0"
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="end"
-                x="74"
+                x="82"
                 y="0"
               >
                 0
@@ -5204,7 +5204,7 @@ Object {
                 class="fui-gc__limits"
                 role="img"
                 text-anchor="start"
-                x="-74"
+                x="-82"
                 y="0"
               >
                 100
@@ -5258,7 +5258,7 @@ Object {
                   data-is-focusable="true"
                   role="img"
                   stroke-width="2"
-                  transform="translate(92)"
+                  transform="translate(100)"
                 />
               </g>
               <g>
@@ -5415,19 +5415,19 @@ Object {
         <svg
           aria-label="Gauge chart with 3 segments. "
           class="fui-gc__chart"
-          height="-24"
+          height="-32"
           role="region"
           width="0"
         >
           <g
-            transform="translate(0, -60)"
+            transform="translate(0, -68)"
           >
             <text
               aria-label="Min value: 0"
               class="fui-gc__limits"
               role="img"
               text-anchor="end"
-              x="74"
+              x="82"
               y="0"
             >
               0
@@ -5437,7 +5437,7 @@ Object {
               class="fui-gc__limits"
               role="img"
               text-anchor="start"
-              x="-74"
+              x="-82"
               y="0"
             >
               100
@@ -5491,7 +5491,7 @@ Object {
                 data-is-focusable="true"
                 role="img"
                 stroke-width="2"
-                transform="translate(92)"
+                transform="translate(100)"
               />
             </g>
             <g>
@@ -5670,12 +5670,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="276"
+        height="268"
         role="region"
         width="300"
       >
         <g
-          transform="translate(150, 260)"
+          transform="translate(150, 252)"
         >
           <text
             aria-label="Min value: 0"
@@ -5859,12 +5859,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       <svg
         aria-label="Gauge chart with 3 segments. "
         class="fui-gc__chart"
-        height="276"
+        height="268"
         role="region"
         width="300"
       >
         <g
-          transform="translate(150, 260)"
+          transform="translate(150, 252)"
         >
           <text
             aria-label="Min value: 0"

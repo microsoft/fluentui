@@ -111,7 +111,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       };
     };
     const _margins: { left: number; right: number; top: number; bottom: number } = _getMargins();
-    const _legendsHeight: number = !props.hideLegend ? 24 : 0;
+    const _legendsHeight: number = !props.hideLegend ? 32 : 0;
     const _rootElem = React.useRef<HTMLDivElement | null>(null);
     const _isRTL: boolean = useRtl();
     const [width, setWidth] = React.useState<number>(140 + _getMargins().left + _getMargins().right);

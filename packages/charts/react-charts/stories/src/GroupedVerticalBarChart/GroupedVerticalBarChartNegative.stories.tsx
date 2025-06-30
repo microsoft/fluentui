@@ -334,7 +334,7 @@ export const GroupedVerticalBarNegative = () => {
           isCalloutForStack={selectedCallout === 'StackCallout'}
           barWidth={barWidth}
           hideLabels={hideLabels}
-          enableReflow={true}
+          reflowProps={{ mode: 'min-width' }}
           roundCorners={roundCorners}
           legendProps={{
             canSelectMultipleLegends: selectMultipleLegends,

@@ -13268,9 +13268,9 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
     >
       <svg
         class="fui-sc__chart"
-        height="436"
+        height="468"
         id="sankeyChart2"
-        width="864"
+        width="912"
       >
         <g
           class="fui-sc__nodes"
@@ -13281,7 +13281,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             <rect
               aria-label="node 192.168.42.72 with weight 80"
               fill="#8764B8"
-              height="129.31506849315068"
+              height="131.50684931506842"
               id="nodeBar5-0"
               opacity="1"
               role="img"
@@ -13338,7 +13338,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             <rect
               aria-label="node 172.152.48.13 with weight 78"
               fill="#8764B8"
-              height="126.08219178082172"
+              height="128.2191780821918"
               id="nodeBar5-1"
               opacity="1"
               role="img"
@@ -13347,7 +13347,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               tabindex="0"
               width="124"
               x="48"
-              y="173.31506849315068"
+              y="175.50684931506842"
             />
             <g
               class="fui-sc__nodeTextContainer"
@@ -13365,7 +13365,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   id="nodeBar5-1-name"
                   text-anchor="start"
                   x="48"
-                  y="173.31506849315068"
+                  y="175.50684931506842"
                 >
                   172.152.48.13
                 </text>
@@ -13379,7 +13379,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="173.31506849315068"
+                y="175.50684931506842"
               >
                 78
               </text>
@@ -13395,7 +13395,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             <rect
               aria-label="node 124.360.55.1 with weight 14"
               fill="#8764B8"
-              height="22.630136986301352"
+              height="23.013698630137014"
               id="nodeBar5-2"
               opacity="1"
               role="img"
@@ -13404,7 +13404,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               tabindex="0"
               width="124"
               x="48"
-              y="307.3972602739724"
+              y="311.7260273972602"
             />
           </g>
         </g>
@@ -13417,7 +13417,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             <rect
               aria-label="node 124.124.50.1 with weight 10"
               fill="#8764B8"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar5-4"
               opacity="1"
               role="img"
@@ -13426,7 +13426,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               tabindex="0"
               width="124"
               x="48"
-              y="338.02739726027374"
+              y="342.73972602739724"
             />
           </g>
         </g>
@@ -13439,7 +13439,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             <rect
               aria-label="node 192.564.10.2 with weight 27"
               fill="#8764B8"
-              height="43.643835616438366"
+              height="44.383561643835606"
               id="nodeBar5-3"
               opacity="1"
               role="img"
@@ -13448,7 +13448,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               tabindex="0"
               width="124"
               x="48"
-              y="362.1917808219178"
+              y="367.17808219178085"
             />
             <g
               class="fui-sc__nodeTextContainer"
@@ -13466,7 +13466,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   id="nodeBar5-3-name"
                   text-anchor="start"
                   x="48"
-                  y="362.1917808219178"
+                  y="367.17808219178085"
                 >
                   192.564.10.2
                 </text>
@@ -13480,7 +13480,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="362.1917808219178"
+                y="367.17808219178085"
               >
                 27
               </text>
@@ -13496,7 +13496,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             <rect
               aria-label="node 172.630.89.4 with weight 10"
               fill="#8764B8"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar5-5"
               opacity="1"
               role="img"
@@ -13505,7 +13505,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               tabindex="0"
               width="124"
               x="48"
-              y="413.83561643835617"
+              y="419.56164383561645"
             />
           </g>
         </g>
@@ -13535,7 +13535,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 192.168.42.72 to inbox with weight 80"
-              d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
+              d="M172,36C283,36,283,37.687,394,37.687L394,169.194C283,169.194,283,167.507,172,167.507Z"
               fill-opacity="1"
               id="link1-0"
               role="img"
@@ -13572,7 +13572,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 172.152.48.13 to inbox with weight 50"
-              d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
+              d="M172,175.507C283,175.507,283,169.194,394,169.194L394,251.386C283,251.386,283,257.699,172,257.699Z"
               fill-opacity="1"
               id="link1-1"
               role="img"
@@ -13609,7 +13609,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
-              d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
+              d="M172,257.699C283,257.699,283,274.496,394,274.496L394,320.523C283,320.523,283,303.726,172,303.726Z"
               fill-opacity="1"
               id="link1-2"
               role="img"
@@ -13646,7 +13646,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
-              d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
+              d="M172,311.726C283,311.726,283,320.523,394,320.523L394,343.537C283,343.537,283,334.74,172,334.74Z"
               fill-opacity="1"
               id="link1-3"
               role="img"
@@ -13683,7 +13683,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 124.124.50.1 to Junk Folder with weight 10"
-              d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
+              d="M172,342.74C283,342.74,283,343.537,394,343.537L394,359.975C283,359.975,283,359.178,172,359.178Z"
               fill-opacity="1"
               id="link1-6"
               role="img"
@@ -13720,7 +13720,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Junk Folder with weight 7"
-              d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
+              d="M172,367.178C283,367.178,283,359.975,394,359.975L394,371.482C283,371.482,283,378.685,172,378.685Z"
               fill-opacity="1"
               id="link1-4"
               role="img"
@@ -13757,7 +13757,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Deleted Folder with weight 20"
-              d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
+              d="M172,378.685C283,378.685,283,395.921,394,395.921L394,428.797C283,428.797,283,411.562,172,411.562Z"
               fill-opacity="1"
               id="link1-5"
               role="img"
@@ -13794,7 +13794,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 172.630.89.4 to Junk Folder with weight 10"
-              d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
+              d="M172,419.562C283,419.562,283,371.482,394,371.482L394,387.921C283,387.921,283,436,172,436Z"
               fill-opacity="1"
               id="link1-7"
               role="img"
@@ -13814,7 +13814,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             <rect
               aria-label="node inbox with weight 130"
               fill="#0E7878"
-              height="210.13698630136994"
+              height="213.6986301369863"
               id="nodeBar5-6"
               opacity="1"
               role="img"
@@ -13822,8 +13822,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width="2"
               tabindex="0"
               width="124"
-              x="393.5"
-              y="37.68645072950067"
+              x="394"
+              y="37.6871032162321"
             />
             <g
               class="fui-sc__nodeTextContainer"
@@ -13840,8 +13840,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   font-weight="regular"
                   id="nodeBar5-6-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="37.68645072950067"
+                  x="394"
+                  y="37.6871032162321"
                 >
                   inbox
                 </text>
@@ -13854,8 +13854,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="37.68645072950067"
+                x="394"
+                y="37.6871032162321"
               >
                 130
               </text>
@@ -13871,7 +13871,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             <rect
               aria-label="node Junk Folder with weight 69"
               fill="#0E7878"
-              height="111.53424657534248"
+              height="113.42465753424653"
               id="nodeBar5-7"
               opacity="1"
               role="img"
@@ -13879,8 +13879,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width="2"
               tabindex="0"
               width="124"
-              x="393.5"
-              y="270.8534770168133"
+              x="394"
+              y="274.496046898372"
             />
             <g
               class="fui-sc__nodeTextContainer"
@@ -13897,8 +13897,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   font-weight="regular"
                   id="nodeBar5-7-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="270.8534770168133"
+                  x="394"
+                  y="274.496046898372"
                 >
                   Junk Folder
                 </text>
@@ -13911,8 +13911,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="270.8534770168133"
+                x="394"
+                y="274.496046898372"
               >
                 69
               </text>
@@ -13928,7 +13928,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             <rect
               aria-label="node Deleted Folder with weight 20"
               fill="#0E7878"
-              height="32.32876712328766"
+              height="32.8767123287671"
               id="nodeBar5-8"
               opacity="1"
               role="img"
@@ -13936,8 +13936,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width="2"
               tabindex="0"
               width="124"
-              x="393.5"
-              y="390.3877235921558"
+              x="394"
+              y="395.92070443261855"
             />
             <g
               class="fui-sc__nodeTextContainer"
@@ -13954,8 +13954,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   font-weight="regular"
                   id="nodeBar5-8-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="390.3877235921558"
+                  x="394"
+                  y="395.92070443261855"
                 >
                   Deleted Folder
                 </text>
@@ -13968,8 +13968,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="509.5"
-                y="390.3877235921558"
+                x="510"
+                y="395.92070443261855"
               >
                 20
               </text>
@@ -14002,7 +14002,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from inbox to Clicked with weight 30"
-              d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
+              d="M518,37.687C629,37.687,629,36,740,36L740,85.315C629,85.315,629,87.002,518,87.002Z"
               fill-opacity="1"
               id="link1-8"
               role="img"
@@ -14039,7 +14039,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from inbox to Opened with weight 55"
-              d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
+              d="M518,87.002C629,87.002,629,93.315,740,93.315L740,183.726C629,183.726,629,177.413,518,177.413Z"
               fill-opacity="1"
               id="link1-9"
               role="img"
@@ -14076,7 +14076,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from Junk Folder to  No further action  required with weight 60"
-              d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
+              d="M518,274.496C629,274.496,629,275.194,740,275.194L740,373.825C629,373.825,629,373.126,518,373.126Z"
               fill-opacity="1"
               id="link1-10"
               role="img"
@@ -14113,7 +14113,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from Deleted Folder to  No further action  required with weight 2"
-              d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
+              d="M518,395.921C629,395.921,629,373.825,740,373.825L740,377.112C629,377.112,629,399.208,518,399.208Z"
               fill-opacity="1"
               id="link1-11"
               role="img"
@@ -14133,7 +14133,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             <rect
               aria-label="node Clicked with weight 30"
               fill="#4F6BED"
-              height="48.49315068493148"
+              height="49.315068493150676"
               id="nodeBar5-9"
               opacity="1"
               role="img"
@@ -14141,7 +14141,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width="2"
               tabindex="0"
               width="124"
-              x="739"
+              x="740"
               y="36"
             />
             <g
@@ -14159,7 +14159,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   font-weight="regular"
                   id="nodeBar5-9-name"
                   text-anchor="start"
-                  x="739"
+                  x="740"
                   y="36"
                 >
                   Clicked
@@ -14173,7 +14173,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
+                x="740"
                 y="36"
               >
                 30
@@ -14190,7 +14190,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             <rect
               aria-label="node Opened with weight 55"
               fill="#4F6BED"
-              height="88.90410958904114"
+              height="90.41095890410958"
               id="nodeBar5-10"
               opacity="1"
               role="img"
@@ -14198,8 +14198,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width="2"
               tabindex="0"
               width="124"
-              x="739"
-              y="92.49315068493148"
+              x="740"
+              y="93.31506849315068"
             />
             <g
               class="fui-sc__nodeTextContainer"
@@ -14216,8 +14216,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   font-weight="regular"
                   id="nodeBar5-10-name"
                   text-anchor="start"
-                  x="739"
-                  y="92.49315068493148"
+                  x="740"
+                  y="93.31506849315068"
                 >
                   Opened
                 </text>
@@ -14230,8 +14230,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="92.49315068493148"
+                x="740"
+                y="93.31506849315068"
               >
                 55
               </text>
@@ -14247,7 +14247,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             <rect
               aria-label="node  No further action  required with weight 62"
               fill="#4F6BED"
-              height="100.21917808219177"
+              height="101.91780821917808"
               id="nodeBar5-11"
               opacity="1"
               role="img"
@@ -14255,8 +14255,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width="2"
               tabindex="0"
               width="124"
-              x="739"
-              y="271.54289868025126"
+              x="740"
+              y="275.1944984618674"
             />
             <g
               class="fui-sc__nodeTextContainer"
@@ -14273,8 +14273,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   font-weight="regular"
                   id="nodeBar5-11-name"
                   text-anchor="start"
-                  x="739"
-                  y="271.54289868025126"
+                  x="740"
+                  y="275.1944984618674"
                 >
                    No further action  required
                 </text>
@@ -14287,8 +14287,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="271.54289868025126"
+                x="740"
+                y="275.1944984618674"
               >
                 62
               </text>

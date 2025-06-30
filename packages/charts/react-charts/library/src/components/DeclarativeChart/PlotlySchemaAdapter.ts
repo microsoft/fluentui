@@ -509,7 +509,6 @@ export const transformPlotlyJsonToScatterChartProps = (
       width: input.layout?.width,
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
-      enableReflow: false,
       useUTC: false,
     } as LineChartProps;
   }
