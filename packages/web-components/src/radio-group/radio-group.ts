@@ -172,7 +172,7 @@ export class RadioGroup extends FASTElement {
       }
 
       radio.name = this.name ?? radio.name;
-      radio.disabled = this.disabled || radio.disabledAttribute;
+      radio.disabled = this.disabled || !!radio.disabledAttribute;
     });
 
     if (!this.dirtyState && this.initialValue) {
