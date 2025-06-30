@@ -1,5 +1,5 @@
 diff --git a/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js b/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
-index 80f8f64..69665fd 100644
+index 80f8f64..9cac259 100644
 --- a/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
 +++ b/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
 @@ -153,12 +153,10 @@ exports.default = (0, util_1.createRule)({
@@ -24,53 +24,16 @@ index 80f8f64..69665fd 100644
                      case utils_1.AST_NODE_TYPES.TSUnionType:
                      case utils_1.AST_NODE_TYPES.VariableDeclarator:
                          return false;
-@@ -275,11 +274,13 @@ exports.default = (0, util_1.createRule)({
-                 return getCallLikeDeprecation(callLikeNode);
-             }
-             if (node.parent.type === utils_1.AST_NODE_TYPES.JSXAttribute &&
--                node.type !== utils_1.AST_NODE_TYPES.Super) {
-+                node.type !== utils_1.AST_NODE_TYPES.Super &&
-+                node.type !== utils_1.AST_NODE_TYPES.ExportSpecifier) {
-                 return getJSXAttributeDeprecation(node.parent.parent, node.name);
-             }
-             if (node.parent.type === utils_1.AST_NODE_TYPES.Property &&
--                node.type !== utils_1.AST_NODE_TYPES.Super) {
-+                node.type !== utils_1.AST_NODE_TYPES.Super &&
-+                node.type !== utils_1.AST_NODE_TYPES.ExportSpecifier) {
-                 const property = services
-                     .getTypeAtLocation(node.parent.parent)
-                     .getProperty(node.name);
-@@ -293,7 +294,7 @@ exports.default = (0, util_1.createRule)({
+@@ -293,7 +292,11 @@ exports.default = (0, util_1.createRule)({
              return searchForDeprecationInAliasesChain(services.getSymbolAtLocation(node), true);
          }
          function checkIdentifier(node) {
 -            if (isDeclaration(node) || isInsideExportOrImport(node)) {
++            if (node.parent.type === utils_1.AST_NODE_TYPES.ExportSpecifier &&
++                node.parent.exported === node) {
++                return;
++            }
 +            if (isDeclaration(node) || isInsideImport(node)) {
                  return;
              }
              const reason = getDeprecationReason(node);
-@@ -351,7 +352,13 @@ exports.default = (0, util_1.createRule)({
-             }
-         }
-         return {
--            Identifier: checkIdentifier,
-+            Identifier(node) {
-+                if (node.parent.type === utils_1.AST_NODE_TYPES.ExportSpecifier &&
-+                    node.parent.exported === node) {
-+                    return;
-+                }
-+                checkIdentifier(node);
-+            },
-             JSXIdentifier(node) {
-                 if (node.parent.type !== utils_1.AST_NODE_TYPES.JSXClosingElement) {
-                     checkIdentifier(node);
-@@ -370,5 +377,9 @@ function getReportedNodeName(node) {
-     if (node.type === utils_1.AST_NODE_TYPES.PrivateIdentifier) {
-         return `#${node.name}`;
-     }
-+    if (node.type === utils_1.AST_NODE_TYPES.ExportSpecifier) {
-+        const localNode = node.local;
-+        return localNode.name;
-+    }
-     return node.name;
- }
