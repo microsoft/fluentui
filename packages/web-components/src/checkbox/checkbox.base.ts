@@ -54,7 +54,7 @@ export class BaseCheckbox extends FASTElement {
     if (this.disabled) {
       this.removeAttribute('tabindex');
     } else {
-      this.tabIndex = 0;
+      this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) || 0;
     }
     this.elementInternals.ariaDisabled = this.disabled ? 'true' : 'false';
     toggleState(this.elementInternals, 'disabled', this.disabled);

@@ -48,7 +48,7 @@ export class BaseButton extends FASTElement {
     if (this.disabled) {
       this.removeAttribute('tabindex');
     } else {
-      this.tabIndex = 0;
+      this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) || 0;
     }
   }
 
