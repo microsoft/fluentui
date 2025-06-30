@@ -23,7 +23,7 @@ import {
   calloutData,
   ChartTypes,
   XAxisTypes,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
@@ -75,18 +75,18 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
-  const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
-  const prevPropsRef = React.useRef<ScatterChartProps | null>(null);
+  const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
+  const prevSelectedLegendsRef = React.useRef<string[] | undefined>(undefined);
 
   React.useEffect(() => {
-    if (prevPropsRef.current) {
-      const prevProps = prevPropsRef.current;
-      if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
-        setSelectedLegends(props.legendProps?.selectedLegends || []);
-      }
+    if (
+      prevSelectedLegendsRef.current &&
+      !areArraysEqual(prevSelectedLegendsRef.current, props.legendProps?.selectedLegends)
+    ) {
+      setSelectedLegends(props.legendProps?.selectedLegends || []);
     }
-    prevPropsRef.current = props;
-  }, [props]);
+    prevSelectedLegendsRef.current = props.legendProps?.selectedLegends;
+  }, [props.legendProps?.selectedLegends]);
 
   React.useImperativeHandle(
     props.componentRef,
@@ -364,9 +364,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return series;
   }
@@ -477,7 +477,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
    * This function checks if none of the legends is selected or hovered.*/
 
   function _noLegendHighlighted(): boolean {
-    return selectedLegends.length === 0;
+    return _getHighlightedLegend().length === 0;
   }
 
   function _getHighlightedLegend(): string[] {
@@ -566,7 +566,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       // eslint-disable-next-line react/no-children-prop
       children={(props: ChildProps) => {
         _xAxisScale = props.xScale!;
-        _yAxisScale = props.yScale!;
+        _yAxisScale = props.yScalePrimary!;
         return (
           <>
             <g>
