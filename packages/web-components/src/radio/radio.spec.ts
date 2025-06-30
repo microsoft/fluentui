@@ -26,7 +26,7 @@ test.describe('Radio', () => {
     });
 
     await test.step('ariaDisabled', async () => {
-      await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', "false");
+      await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
 
       await element.evaluate((node: Radio) => (node.disabled = true));
 
