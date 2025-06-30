@@ -1822,6 +1822,8 @@ export {
   _ctrlMessageBarSpacingTop,
   _ctrlMessageBarTitleLineHeight,
   _ctrlPersonaTreeIconOnSubtlePressed,
+  _ctrlSliderBarSizeDefault,
+  _ctrlSliderSmBarSizeDefault,
   _ctrlSpinnerBackgroundEmpty,
   _ctrlSpinnerBackgroundFilled,
   _ctrlSpinnerItemBodyFontSize,

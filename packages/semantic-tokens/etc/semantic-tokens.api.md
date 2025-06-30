@@ -2561,64 +2561,67 @@ export const ctrlSegmentedStrokeRest = "var(--smtc-ctrl-segmented-stroke-rest, v
 export const ctrlSegmentedStrokeRestRaw = "--smtc-ctrl-segmented-stroke-rest";
 
 // @public (undocumented)
-export const ctrlSliderBarCorner = "var(--smtc-ctrl-slider-bar-corner, var(--smtc-corner-circular))";
+export const ctrlSliderBarCorner = "var(--smtc-ctrl-slider-bar-corner, var(--smtc-corner-circular, var(--borderRadiusXLarge)))";
 
 // @public (undocumented)
 export const ctrlSliderBarCornerRaw = "--smtc-ctrl-slider-bar-corner";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundEmptyDisabled = "var(--smtc-ctrl-slider-bar-foreground-empty-disabled, var(--smtc-ctrl-progress-background-empty))";
+export const ctrlSliderBarForegroundEmptyDisabled = "var(--smtc-ctrl-slider-bar-foreground-empty-disabled, var(--smtc-ctrl-progress-background-empty, var(--colorNeutralBackgroundDisabled)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundEmptyDisabledRaw = "--smtc-ctrl-slider-bar-foreground-empty-disabled";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundEmptyHover = "var(--smtc-ctrl-slider-bar-foreground-empty-hover, var(--smtc-ctrl-progress-background-empty))";
+export const ctrlSliderBarForegroundEmptyHover = "var(--smtc-ctrl-slider-bar-foreground-empty-hover, var(--smtc-ctrl-progress-background-empty, var(--colorNeutralStrokeAccessible)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundEmptyHoverRaw = "--smtc-ctrl-slider-bar-foreground-empty-hover";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundEmptyPressed = "var(--smtc-ctrl-slider-bar-foreground-empty-pressed, var(--smtc-ctrl-progress-background-empty))";
+export const ctrlSliderBarForegroundEmptyPressed = "var(--smtc-ctrl-slider-bar-foreground-empty-pressed, var(--smtc-ctrl-progress-background-empty, var(--colorNeutralStrokeAccessible)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundEmptyPressedRaw = "--smtc-ctrl-slider-bar-foreground-empty-pressed";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundEmptyRest = "var(--smtc-ctrl-slider-bar-foreground-empty-rest, var(--smtc-ctrl-progress-background-empty))";
+export const ctrlSliderBarForegroundEmptyRest = "var(--smtc-ctrl-slider-bar-foreground-empty-rest, var(--smtc-ctrl-progress-background-empty, var(--colorNeutralStrokeAccessible)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundEmptyRestRaw = "--smtc-ctrl-slider-bar-foreground-empty-rest";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundFilledDisabled = "var(--smtc-ctrl-slider-bar-foreground-filled-disabled, var(--smtc-background-ctrl-brand-disabled))";
+export const ctrlSliderBarForegroundFilledDisabled = "var(--smtc-ctrl-slider-bar-foreground-filled-disabled, var(--smtc-background-ctrl-brand-disabled, var(--colorNeutralForegroundDisabled)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundFilledDisabledRaw = "--smtc-ctrl-slider-bar-foreground-filled-disabled";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundFilledHover = "var(--smtc-ctrl-slider-bar-foreground-filled-hover, var(--smtc-background-ctrl-brand-hover))";
+export const ctrlSliderBarForegroundFilledHover = "var(--smtc-ctrl-slider-bar-foreground-filled-hover, var(--smtc-background-ctrl-brand-hover, var(--colorCompoundBrandBackgroundHover)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundFilledHoverRaw = "--smtc-ctrl-slider-bar-foreground-filled-hover";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundFilledPressed = "var(--smtc-ctrl-slider-bar-foreground-filled-pressed, var(--smtc-background-ctrl-brand-pressed))";
+export const ctrlSliderBarForegroundFilledPressed = "var(--smtc-ctrl-slider-bar-foreground-filled-pressed, var(--smtc-background-ctrl-brand-pressed, var(--colorCompoundBrandBackgroundPressed)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundFilledPressedRaw = "--smtc-ctrl-slider-bar-foreground-filled-pressed";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundFilledRest = "var(--smtc-ctrl-slider-bar-foreground-filled-rest, var(--smtc-background-ctrl-brand-rest))";
+export const ctrlSliderBarForegroundFilledRest = "var(--smtc-ctrl-slider-bar-foreground-filled-rest, var(--smtc-background-ctrl-brand-rest, var(--colorCompoundBrandBackground)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundFilledRestRaw = "--smtc-ctrl-slider-bar-foreground-filled-rest";
 
 // @public (undocumented)
-export const ctrlSliderBarHeight = "var(--smtc-ctrl-slider-bar-height, var(--smtc-ctrl-progress-height-filled))";
+export const ctrlSliderBarHeight = "var(--smtc-ctrl-slider-bar-height, var(--smtc-ctrl-progress-height-filled, 4px))";
 
 // @public (undocumented)
 export const ctrlSliderBarHeightRaw = "--smtc-ctrl-slider-bar-height";
+
+// @public
+export const _ctrlSliderBarSizeDefault = "var(--smtc-size-ctrl-default, 32px)";
 
 // @public (undocumented)
 export const ctrlSliderLgBarHeight = "var(--smtc-ctrl-slider-lg-bar-height, var(--smtc-ctrl-progress-lg-height-filled))";
@@ -2645,79 +2648,82 @@ export const ctrlSliderLgThumbSizeRest = "var(--smtc-ctrl-slider-lg-thumb-size-r
 export const ctrlSliderLgThumbSizeRestRaw = "--smtc-ctrl-slider-lg-thumb-size-rest";
 
 // @public (undocumented)
-export const ctrlSliderSmBarHeight = "var(--smtc-ctrl-slider-sm-bar-height, var(--smtc-ctrl-progress-sm-height-filled))";
+export const ctrlSliderSmBarHeight = "var(--smtc-ctrl-slider-sm-bar-height, var(--smtc-ctrl-progress-sm-height-filled, 2px))";
 
 // @public (undocumented)
 export const ctrlSliderSmBarHeightRaw = "--smtc-ctrl-slider-sm-bar-height";
 
+// @public
+export const _ctrlSliderSmBarSizeDefault = "var(--smtc-size-ctrl-default, 24px)";
+
 // @public (undocumented)
-export const ctrlSliderSmThumbSizeHover = "var(--smtc-ctrl-slider-sm-thumb-size-hover, var(--smtc-size-ctrl-sm-icon))";
+export const ctrlSliderSmThumbSizeHover = "var(--smtc-ctrl-slider-sm-thumb-size-hover, var(--smtc-size-ctrl-sm-icon, 16px))";
 
 // @public (undocumented)
 export const ctrlSliderSmThumbSizeHoverRaw = "--smtc-ctrl-slider-sm-thumb-size-hover";
 
 // @public (undocumented)
-export const ctrlSliderSmThumbSizePressed = "var(--smtc-ctrl-slider-sm-thumb-size-pressed, var(--smtc-size-ctrl-sm-icon))";
+export const ctrlSliderSmThumbSizePressed = "var(--smtc-ctrl-slider-sm-thumb-size-pressed, var(--smtc-size-ctrl-sm-icon, 16px))";
 
 // @public (undocumented)
 export const ctrlSliderSmThumbSizePressedRaw = "--smtc-ctrl-slider-sm-thumb-size-pressed";
 
 // @public (undocumented)
-export const ctrlSliderSmThumbSizeRest = "var(--smtc-ctrl-slider-sm-thumb-size-rest, var(--smtc-size-ctrl-sm-icon))";
+export const ctrlSliderSmThumbSizeRest = "var(--smtc-ctrl-slider-sm-thumb-size-rest, var(--smtc-size-ctrl-sm-icon, 16px))";
 
 // @public (undocumented)
 export const ctrlSliderSmThumbSizeRestRaw = "--smtc-ctrl-slider-sm-thumb-size-rest";
 
 // @public (undocumented)
-export const ctrlSliderThumbBackgroundDisabled = "var(--smtc-ctrl-slider-thumb-background-disabled, var(--smtc-foreground-ctrl-on-brand-disabled))";
+export const ctrlSliderThumbBackgroundDisabled = "var(--smtc-ctrl-slider-thumb-background-disabled, var(--smtc-foreground-ctrl-on-brand-disabled, var(--colorNeutralForegroundDisabled)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbBackgroundDisabledRaw = "--smtc-ctrl-slider-thumb-background-disabled";
 
 // @public (undocumented)
-export const ctrlSliderThumbBackgroundHover = "var(--smtc-ctrl-slider-thumb-background-hover, var(--smtc-foreground-ctrl-on-brand-rest))";
+export const ctrlSliderThumbBackgroundHover = "var(--smtc-ctrl-slider-thumb-background-hover, var(--smtc-foreground-ctrl-on-brand-rest, var(--colorCompoundBrandBackgroundHover)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbBackgroundHoverRaw = "--smtc-ctrl-slider-thumb-background-hover";
 
 // @public (undocumented)
-export const ctrlSliderThumbBackgroundPressed = "var(--smtc-ctrl-slider-thumb-background-pressed, var(--smtc-foreground-ctrl-on-brand-rest))";
+export const ctrlSliderThumbBackgroundPressed = "var(--smtc-ctrl-slider-thumb-background-pressed, var(--smtc-foreground-ctrl-on-brand-rest, var(--colorCompoundBrandBackgroundPressed)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbBackgroundPressedRaw = "--smtc-ctrl-slider-thumb-background-pressed";
 
 // @public (undocumented)
-export const ctrlSliderThumbBackgroundRest = "var(--smtc-ctrl-slider-thumb-background-rest, var(--smtc-foreground-ctrl-on-brand-rest))";
+export const ctrlSliderThumbBackgroundRest = "var(--smtc-ctrl-slider-thumb-background-rest, var(--smtc-foreground-ctrl-on-brand-rest, var(--colorCompoundBrandBackground)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbBackgroundRestRaw = "--smtc-ctrl-slider-thumb-background-rest";
 
 // @public (undocumented)
-export const ctrlSliderThumbCorner = "var(--smtc-ctrl-slider-thumb-corner, var(--smtc-corner-circular))";
+export const ctrlSliderThumbCorner = "var(--smtc-ctrl-slider-thumb-corner, var(--smtc-corner-circular, var(--borderRadiusCircular)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbCornerRaw = "--smtc-ctrl-slider-thumb-corner";
 
 // @public (undocumented)
-export const ctrlSliderThumbInnerStrokeDisabled = "var(--smtc-ctrl-slider-thumb-inner-stroke-disabled, var(--smtc-background-ctrl-brand-disabled))";
+export const ctrlSliderThumbInnerStrokeDisabled = "var(--smtc-ctrl-slider-thumb-inner-stroke-disabled, var(--smtc-background-ctrl-brand-disabled, var(--colorNeutralBackground1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbInnerStrokeDisabledRaw = "--smtc-ctrl-slider-thumb-inner-stroke-disabled";
 
 // @public (undocumented)
-export const ctrlSliderThumbInnerStrokeHover = "var(--smtc-ctrl-slider-thumb-inner-stroke-hover, var(--smtc-background-ctrl-brand-hover))";
+export const ctrlSliderThumbInnerStrokeHover = "var(--smtc-ctrl-slider-thumb-inner-stroke-hover, var(--smtc-background-ctrl-brand-hover, var(--colorNeutralBackground1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbInnerStrokeHoverRaw = "--smtc-ctrl-slider-thumb-inner-stroke-hover";
 
 // @public (undocumented)
-export const ctrlSliderThumbInnerStrokePressed = "var(--smtc-ctrl-slider-thumb-inner-stroke-pressed, var(--smtc-background-ctrl-brand-pressed))";
+export const ctrlSliderThumbInnerStrokePressed = "var(--smtc-ctrl-slider-thumb-inner-stroke-pressed, var(--smtc-background-ctrl-brand-pressed, var(--colorNeutralBackground1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbInnerStrokePressedRaw = "--smtc-ctrl-slider-thumb-inner-stroke-pressed";
 
 // @public (undocumented)
-export const ctrlSliderThumbInnerStrokeRest = "var(--smtc-ctrl-slider-thumb-inner-stroke-rest, var(--smtc-background-ctrl-brand-rest))";
+export const ctrlSliderThumbInnerStrokeRest = "var(--smtc-ctrl-slider-thumb-inner-stroke-rest, var(--smtc-background-ctrl-brand-rest, var(--colorNeutralBackground1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbInnerStrokeRestRaw = "--smtc-ctrl-slider-thumb-inner-stroke-rest";
@@ -2741,25 +2747,25 @@ export const ctrlSliderThumbInnerStrokeWidthRest = "var(--smtc-ctrl-slider-thumb
 export const ctrlSliderThumbInnerStrokeWidthRestRaw = "--smtc-ctrl-slider-thumb-inner-stroke-width-rest";
 
 // @public (undocumented)
-export const ctrlSliderThumbOuterStrokeDisabled = "var(--smtc-ctrl-slider-thumb-outer-stroke-disabled, var(--smtc-background-ctrl-brand-disabled))";
+export const ctrlSliderThumbOuterStrokeDisabled = "var(--smtc-ctrl-slider-thumb-outer-stroke-disabled, var(--smtc-background-ctrl-brand-disabled, var(--colorNeutralForegroundDisabled)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbOuterStrokeDisabledRaw = "--smtc-ctrl-slider-thumb-outer-stroke-disabled";
 
 // @public (undocumented)
-export const ctrlSliderThumbOuterStrokeHover = "var(--smtc-ctrl-slider-thumb-outer-stroke-hover, var(--smtc-background-ctrl-brand-hover))";
+export const ctrlSliderThumbOuterStrokeHover = "var(--smtc-ctrl-slider-thumb-outer-stroke-hover, var(--smtc-background-ctrl-brand-hover, var(--colorNeutralStroke1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbOuterStrokeHoverRaw = "--smtc-ctrl-slider-thumb-outer-stroke-hover";
 
 // @public (undocumented)
-export const ctrlSliderThumbOuterStrokePressed = "var(--smtc-ctrl-slider-thumb-outer-stroke-pressed, var(--smtc-background-ctrl-brand-pressed))";
+export const ctrlSliderThumbOuterStrokePressed = "var(--smtc-ctrl-slider-thumb-outer-stroke-pressed, var(--smtc-background-ctrl-brand-pressed, var(--colorNeutralStroke1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbOuterStrokePressedRaw = "--smtc-ctrl-slider-thumb-outer-stroke-pressed";
 
 // @public (undocumented)
-export const ctrlSliderThumbOuterStrokeRest = "var(--smtc-ctrl-slider-thumb-outer-stroke-rest, var(--smtc-background-ctrl-brand-rest))";
+export const ctrlSliderThumbOuterStrokeRest = "var(--smtc-ctrl-slider-thumb-outer-stroke-rest, var(--smtc-background-ctrl-brand-rest, var(--colorNeutralStroke1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbOuterStrokeRestRaw = "--smtc-ctrl-slider-thumb-outer-stroke-rest";
@@ -2771,19 +2777,19 @@ export const ctrlSliderThumbOuterStrokeWidth = "var(--smtc-ctrl-slider-thumb-out
 export const ctrlSliderThumbOuterStrokeWidthRaw = "--smtc-ctrl-slider-thumb-outer-stroke-width";
 
 // @public (undocumented)
-export const ctrlSliderThumbSizeHover = "var(--smtc-ctrl-slider-thumb-size-hover, var(--smtc-size-ctrl-icon))";
+export const ctrlSliderThumbSizeHover = "var(--smtc-ctrl-slider-thumb-size-hover, var(--smtc-size-ctrl-icon, 20px))";
 
 // @public (undocumented)
 export const ctrlSliderThumbSizeHoverRaw = "--smtc-ctrl-slider-thumb-size-hover";
 
 // @public (undocumented)
-export const ctrlSliderThumbSizePressed = "var(--smtc-ctrl-slider-thumb-size-pressed, var(--smtc-size-ctrl-icon))";
+export const ctrlSliderThumbSizePressed = "var(--smtc-ctrl-slider-thumb-size-pressed, var(--smtc-size-ctrl-icon, 20px))";
 
 // @public (undocumented)
 export const ctrlSliderThumbSizePressedRaw = "--smtc-ctrl-slider-thumb-size-pressed";
 
 // @public (undocumented)
-export const ctrlSliderThumbSizeRest = "var(--smtc-ctrl-slider-thumb-size-rest, var(--smtc-size-ctrl-icon))";
+export const ctrlSliderThumbSizeRest = "var(--smtc-ctrl-slider-thumb-size-rest, var(--smtc-size-ctrl-icon, 20px))";
 
 // @public (undocumented)
 export const ctrlSliderThumbSizeRestRaw = "--smtc-ctrl-slider-thumb-size-rest";

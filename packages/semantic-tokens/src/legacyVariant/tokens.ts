@@ -30,6 +30,7 @@ import {
   gapBetweenCtrlDefaultRaw,
   paddingContentAlignOutdentIconOnSubtleRaw,
   textGlobalBody2LineHeightRaw,
+  sizeCtrlDefaultRaw,
   textGlobalBody3FontSizeRaw,
   textGlobalBody3LineHeightRaw,
   textStyleDefaultRegularWeightRaw,
@@ -39,7 +40,6 @@ import {
   foregroundCtrlBrandRestRaw,
   paddingCtrlHorizontalDefaultRaw,
   paddingCtrlTextSideRaw,
-  sizeCtrlDefaultRaw,
 } from '../control/variables';
 import {
   colorTransparentBackground,
@@ -395,6 +395,20 @@ export const _ctrlMessageBarTitleLineHeight = `var(${textRampItemHeaderLineHeigh
  * please use foregroundCtrlOnSubtlePressed instead.
  */
 export const _ctrlPersonaTreeIconOnSubtlePressed = `var(${foregroundCtrlOnSubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw}, ${colorNeutralForeground3Pressed}))`;
+/**
+ * This is a legacy variant for sizeCtrlDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use sizeCtrlDefault instead.
+ */
+export const _ctrlSliderBarSizeDefault = `var(${sizeCtrlDefaultRaw}, 32px)`;
+/**
+ * This is a legacy variant for sizeCtrlDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use sizeCtrlDefault instead.
+ */
+export const _ctrlSliderSmBarSizeDefault = `var(${sizeCtrlDefaultRaw}, 24px)`;
 /**
  * This is a legacy variant for ctrlProgressBackgroundEmpty to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.

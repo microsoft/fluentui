@@ -173,6 +173,14 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3Pressed',
     originalToken: 'foregroundCtrlOnSubtlePressed',
   },
+  _ctrlSliderBarSizeDefault: {
+    originalToken: 'sizeCtrlDefault',
+    rawValue: '32px',
+  },
+  _ctrlSliderSmBarSizeDefault: {
+    originalToken: 'sizeCtrlDefault',
+    rawValue: '24px',
+  },
   _ctrlSpinnerBackgroundEmpty: {
     f2Token: 'colorBrandStroke2Contrast',
     originalToken: 'ctrlProgressBackgroundEmpty',
