@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 24 Jun 2025 07:20:41 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Jun 2025 07:19:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.9)
+
+Mon, 30 Jun 2025 07:19:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.8..@fluentui/react-charting_v5.24.9)
+
+### Patches
+
+- fix(react-charting): Adding support for marker texts for modes containing text ([PR #34708](https://github.com/microsoft/fluentui/pull/34708) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.19 ([PR #34731](https://github.com/microsoft/fluentui/pull/34731) by beachball)
 
 ## [5.24.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.8)
 
