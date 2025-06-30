@@ -3121,7 +3121,7 @@ Object {
     },
     "chartTitle": "Scottish Referendum Voters who now want Independence",
   },
-  "enableReflow": true,
+  "enableReflow": false,
   "height": 772,
   "width": undefined,
 }

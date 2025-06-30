@@ -62,6 +62,9 @@ const useStyles = makeStyles({
   chartWrapper: {
     overflow: 'auto',
   },
+  chart: {
+    display: 'block',
+  },
 });
 
 export const useSankeyChartStyles = (props: SankeyChartProps): SankeyChartStyles => {
@@ -81,6 +84,6 @@ export const useSankeyChartStyles = (props: SankeyChartProps): SankeyChartStyles
       props.enableReflow ? baseStyles.chartWrapper : '',
       props.styles?.chartWrapper,
     ),
-    chart: mergeClasses(sankeyChartClassNames.chart, props.styles?.chart),
+    chart: mergeClasses(sankeyChartClassNames.chart, baseStyles.chart, props.styles?.chart),
   };
 };

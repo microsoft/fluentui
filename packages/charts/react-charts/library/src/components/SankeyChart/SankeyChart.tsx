@@ -325,18 +325,16 @@ export function preRenderLayout(
   isRtl: boolean,
 ): { sankey: SankeyLayoutGenerator; height: number; width: number } {
   const { left, right, top, bottom } = margins;
-  const width = containerWidth - right!;
-  const height = containerHeight - bottom! > 0 ? containerHeight - bottom! : 0;
 
   const sankey = d3Sankey()
     .nodeWidth(NODE_WIDTH)
     .extent([
       [left!, top!],
-      [width - 1, height - 6],
+      [containerWidth - right!, containerHeight - bottom!],
     ])
     .nodeAlign(isRtl ? sankeyRight : sankeyJustify);
 
-  return { sankey, height, width };
+  return { sankey, height: containerHeight, width: containerWidth };
 }
 
 const elipsis = '...';
@@ -707,7 +705,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       const nodeValues = valuesOfNodes(transformed.nodes);
       const linkValues = valuesOfLinks(transformed.links);
       adjustOnePercentHeightNodes(nodesInColumn, nodeValues, linkValues);
-      adjustPadding(sankey, height - 6, nodesInColumn);
+      adjustPadding(sankey, containerHeight - _margins.current.top! - _margins.current.bottom!, nodesInColumn);
       // `sankey` is called a second time, probably to re-layout the nodes with the one-percent adjusted weights.
       // NOTE: The second call to `sankey` is required to allow links to be hoverable.
       // Without the second call, the links are not hoverable.

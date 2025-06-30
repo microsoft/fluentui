@@ -127,7 +127,7 @@ export const SankeyChartResponsive = () => {
   return (
     <div className={mergeClasses(classes.resizableArea)}>
       <ResponsiveContainer>
-        <SankeyChart data={data} />
+        <SankeyChart data={data} enableReflow={false} />
       </ResponsiveContainer>
     </div>
   );

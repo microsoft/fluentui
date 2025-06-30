@@ -20397,7 +20397,6 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   outline: none;
                 }
                 {
-                  overflow: auto;
                   width: 100%;
                 }
             data-focuszone-id="FocusZone36"
@@ -20407,12 +20406,13 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               class=
 
                   {
+                    display: block;
                     width: 100%;
                   }
               focusable="false"
-              height="318"
+              height="350"
               id="sankeyChart2"
-              width="552"
+              width="600"
             >
               <g
                 class=
@@ -20431,7 +20431,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     aria-label="node Remain+No – 28 with weight 28"
                     data-is-focusable="true"
                     fill="#f27420"
-                    height="66.98039215686276"
+                    height="68.62745098039218"
                     id="nodeBar37"
                     opacity="1"
                     role="img"
@@ -20506,7 +20506,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     aria-label="node Leave+No – 16 with weight 16"
                     data-is-focusable="true"
                     fill="#4994ce"
-                    height="38.27450980392152"
+                    height="39.21568627450981"
                     id="nodeBar39"
                     opacity="1"
                     role="img"
@@ -20515,7 +20515,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     tabindex="-1"
                     width="124"
                     x="48"
-                    y="110.98039215686276"
+                    y="112.62745098039218"
                   />
                   <g
                     class=
@@ -20543,7 +20543,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         id="nodeBar39-name"
                         text-anchor="start"
                         x="48"
-                        y="110.98039215686276"
+                        y="112.62745098039218"
                       >
                         Leave+No – 16
                       </text>
@@ -20557,7 +20557,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       font-weight="bold"
                       text-anchor="start"
                       x="48"
-                      y="110.98039215686276"
+                      y="112.62745098039218"
                     >
                       16
                     </text>
@@ -20581,7 +20581,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     aria-label="node Remain+Yes – 21 with weight 22"
                     data-is-focusable="true"
                     fill="#fabc13"
-                    height="52.627450980392155"
+                    height="53.92156862745094"
                     id="nodeBar41"
                     opacity="1"
                     role="img"
@@ -20590,7 +20590,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     tabindex="-1"
                     width="124"
                     x="48"
-                    y="157.25490196078428"
+                    y="159.843137254902"
                   />
                   <g
                     class=
@@ -20618,7 +20618,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         id="nodeBar41-name"
                         text-anchor="start"
                         x="48"
-                        y="157.25490196078428"
+                        y="159.843137254902"
                       >
                         Remain+Yes – 21
                       </text>
@@ -20632,7 +20632,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       font-weight="bold"
                       text-anchor="start"
                       x="48"
-                      y="157.25490196078428"
+                      y="159.843137254902"
                     >
                       22
                     </text>
@@ -20656,7 +20656,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     aria-label="node Leave+Yes – 14 with weight 14"
                     data-is-focusable="true"
                     fill="#7fc241"
-                    height="33.49019607843138"
+                    height="34.31372549019608"
                     id="nodeBar43"
                     opacity="1"
                     role="img"
@@ -20665,7 +20665,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     tabindex="-1"
                     width="124"
                     x="48"
-                    y="217.88235294117644"
+                    y="221.76470588235293"
                   />
                   <g
                     class=
@@ -20693,7 +20693,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         id="nodeBar43-name"
                         text-anchor="start"
                         x="48"
-                        y="217.88235294117644"
+                        y="221.76470588235293"
                       >
                         ...
                       </text>
@@ -20707,7 +20707,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       font-weight="bold"
                       text-anchor="start"
                       x="64"
-                      y="217.88235294117644"
+                      y="221.76470588235293"
                     >
                       14
                     </text>
@@ -20731,7 +20731,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     aria-label="node Didn’t vote in at least one referendum – 21 with weight 22"
                     data-is-focusable="true"
                     fill="#d3d3d3"
-                    height="52.62745098039227"
+                    height="53.921568627450995"
                     id="nodeBar45"
                     opacity="1"
                     role="img"
@@ -20740,7 +20740,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     tabindex="-1"
                     width="124"
                     x="48"
-                    y="259.37254901960785"
+                    y="264.078431372549"
                   />
                   <g
                     class=
@@ -20768,7 +20768,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         id="nodeBar45-name"
                         text-anchor="start"
                         x="48"
-                        y="259.37254901960785"
+                        y="264.078431372549"
                       >
                         Didn’t vote in at least one referendum – 21
                       </text>
@@ -20782,7 +20782,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       font-weight="bold"
                       text-anchor="start"
                       x="48"
-                      y="259.37254901960785"
+                      y="264.078431372549"
                     >
                       22
                     </text>
@@ -20823,7 +20823,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Remain+No – 28 to 46 – No with weight 20"
-                    d="M172,36C299.5,36,299.5,47.529,427,47.529L427,95.372C299.5,95.372,299.5,83.843,172,83.843Z"
+                    d="M172,36C300,36,300,47.527,428,47.527L428,96.546C300,96.546,300,85.02,172,85.02Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link53"
@@ -20869,7 +20869,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Remain+No – 28 to 39 – Yes with weight 3"
-                    d="M172,83.843C299.5,83.843,299.5,163.176,427,163.176L427,170.353C299.5,170.353,299.5,91.02,172,91.02Z"
+                    d="M172,85.02C300,85.02,300,165.821,428,165.821L428,173.174C300,173.174,300,92.373,172,92.373Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link54"
@@ -20915,7 +20915,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Remain+No – 28 to 14 – Don’t know / would not vote with weight 5"
-                    d="M172,91.02C299.5,91.02,299.5,264.47,427,264.47L427,276.431C299.5,276.431,299.5,102.98,172,102.98Z"
+                    d="M172,92.373C300,92.373,300,269.409,428,269.409L428,281.664C300,281.664,300,104.627,172,104.627Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link55"
@@ -20961,7 +20961,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Leave+No – 16 to 46 – No with weight 14"
-                    d="M172,110.98C299.5,110.98,299.5,95.372,427,95.372L427,128.862C299.5,128.862,299.5,144.471,172,144.471Z"
+                    d="M172,112.627C300,112.627,300,96.546,428,96.546L428,130.86C300,130.86,300,146.941,172,146.941Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link56"
@@ -21007,7 +21007,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Leave+No – 16 to 39 – Yes with weight 1"
-                    d="M172,144.471C299.5,144.471,299.5,170.353,427,170.353L427,172.745C299.5,172.745,299.5,146.863,172,146.863Z"
+                    d="M172,146.941C300,146.941,300,173.174,428,173.174L428,175.625C300,175.625,300,149.392,172,149.392Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link57"
@@ -21053,7 +21053,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Leave+No – 16 to 14 – Don’t know / would not vote with weight 1"
-                    d="M172,146.863C299.5,146.863,299.5,276.431,427,276.431L427,278.823C299.5,278.823,299.5,149.255,172,149.255Z"
+                    d="M172,149.392C300,149.392,300,281.664,428,281.664L428,284.115C300,284.115,300,151.843,172,151.843Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link58"
@@ -21099,7 +21099,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Remain+Yes – 21 to 46 – No with weight 3"
-                    d="M172,157.255C299.5,157.255,299.5,128.862,427,128.862L427,136.039C299.5,136.039,299.5,164.431,172,164.431Z"
+                    d="M172,159.843C300,159.843,300,130.86,428,130.86L428,138.213C300,138.213,300,167.196,172,167.196Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link59"
@@ -21145,7 +21145,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Remain+Yes – 21 to 39 – Yes with weight 17"
-                    d="M172,164.431C299.5,164.431,299.5,172.745,427,172.745L427,213.411C299.5,213.411,299.5,205.098,172,205.098Z"
+                    d="M172,167.196C300,167.196,300,175.625,428,175.625L428,217.291C300,217.291,300,208.863,172,208.863Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link60"
@@ -21191,7 +21191,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Remain+Yes – 21 to 14 – Don’t know / would not vote with weight 2"
-                    d="M172,205.098C299.5,205.098,299.5,278.823,427,278.823L427,283.607C299.5,283.607,299.5,209.882,172,209.882Z"
+                    d="M172,208.863C300,208.863,300,284.115,428,284.115L428,289.017C300,289.017,300,213.765,172,213.765Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link61"
@@ -21237,7 +21237,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Leave+Yes – 14 to 46 – No with weight 3"
-                    d="M172,217.882C299.5,217.882,299.5,136.039,427,136.039L427,143.215C299.5,143.215,299.5,225.059,172,225.059Z"
+                    d="M172,221.765C300,221.765,300,138.213,428,138.213L428,145.566C300,145.566,300,229.118,172,229.118Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link62"
@@ -21283,7 +21283,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Leave+Yes – 14 to 39 – Yes with weight 9"
-                    d="M172,225.059C299.5,225.059,299.5,213.411,427,213.411L427,234.941C299.5,234.941,299.5,246.588,172,246.588Z"
+                    d="M172,229.118C300,229.118,300,217.291,428,217.291L428,239.35C300,239.35,300,251.176,172,251.176Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link63"
@@ -21329,7 +21329,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Leave+Yes – 14 to 14 – Don’t know / would not vote with weight 2"
-                    d="M172,246.588C299.5,246.588,299.5,283.607,427,283.607L427,288.392C299.5,288.392,299.5,251.373,172,251.373Z"
+                    d="M172,251.176C300,251.176,300,289.017,428,289.017L428,293.919C300,293.919,300,256.078,172,256.078Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link64"
@@ -21375,7 +21375,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Didn’t vote in at least one referendum – 21 to 46 – No with weight 5"
-                    d="M172,259.373C299.5,259.373,299.5,143.215,427,143.215L427,155.176C299.5,155.176,299.5,271.333,172,271.333Z"
+                    d="M172,264.078C300,264.078,300,145.566,428,145.566L428,157.821C300,157.821,300,276.333,172,276.333Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link65"
@@ -21421,7 +21421,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Didn’t vote in at least one referendum – 21 to 39 – Yes with weight 9"
-                    d="M172,271.333C299.5,271.333,299.5,234.941,427,234.941L427,256.47C299.5,256.47,299.5,292.863,172,292.863Z"
+                    d="M172,276.333C300,276.333,300,239.35,428,239.35L428,261.409C300,261.409,300,298.392,172,298.392Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link66"
@@ -21467,7 +21467,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   </defs>
                   <path
                     aria-label="link from Didn’t vote in at least one referendum – 21 to 14 – Don’t know / would not vote with weight 8"
-                    d="M172,292.863C299.5,292.863,299.5,288.392,427,288.392L427,307.529C299.5,307.529,299.5,312,172,312Z"
+                    d="M172,298.392C300,298.392,300,293.919,428,293.919L428,313.527C300,313.527,300,318,172,318Z"
                     data-is-focusable="true"
                     fill-opacity="1"
                     id="link67"
@@ -21496,7 +21496,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     aria-label="node 46 – No with weight 45"
                     data-is-focusable="true"
                     fill="#8a5988"
-                    height="107.64705882352935"
+                    height="110.29411764705881"
                     id="nodeBar47"
                     opacity="1"
                     role="img"
@@ -21504,8 +21504,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     stroke-width="2"
                     tabindex="-1"
                     width="124"
-                    x="427"
-                    y="47.529027244601124"
+                    x="428"
+                    y="47.52666244739552"
                   />
                   <g
                     class=
@@ -21532,8 +21532,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         font-weight="regular"
                         id="nodeBar47-name"
                         text-anchor="start"
-                        x="427"
-                        y="47.529027244601124"
+                        x="428"
+                        y="47.52666244739552"
                       >
                         46 – No
                       </text>
@@ -21546,8 +21546,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       font-size="14"
                       font-weight="bold"
                       text-anchor="start"
-                      x="427"
-                      y="47.529027244601124"
+                      x="428"
+                      y="47.52666244739552"
                     >
                       45
                     </text>
@@ -21571,7 +21571,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     aria-label="node 39 – Yes with weight 39"
                     data-is-focusable="true"
                     fill="#449e9e"
-                    height="93.29411764705884"
+                    height="95.58823529411762"
                     id="nodeBar49"
                     opacity="1"
                     role="img"
@@ -21579,8 +21579,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     stroke-width="2"
                     tabindex="-1"
                     width="124"
-                    x="427"
-                    y="163.17608606813047"
+                    x="428"
+                    y="165.82078009445434"
                   />
                   <g
                     class=
@@ -21607,8 +21607,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         font-weight="regular"
                         id="nodeBar49-name"
                         text-anchor="start"
-                        x="427"
-                        y="163.17608606813047"
+                        x="428"
+                        y="165.82078009445434"
                       >
                         39 – Yes
                       </text>
@@ -21621,8 +21621,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       font-size="14"
                       font-weight="bold"
                       text-anchor="start"
-                      x="427"
-                      y="163.17608606813047"
+                      x="428"
+                      y="165.82078009445434"
                     >
                       39
                     </text>
@@ -21646,7 +21646,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     aria-label="node 14 – Don’t know / would not vote with weight 18"
                     data-is-focusable="true"
                     fill="#d3d3d3"
-                    height="43.05882352941171"
+                    height="44.117647058823536"
                     id="nodeBar51"
                     opacity="1"
                     role="img"
@@ -21654,8 +21654,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     stroke-width="2"
                     tabindex="-1"
                     width="124"
-                    x="427"
-                    y="264.4702037151893"
+                    x="428"
+                    y="269.40901538857196"
                   />
                   <g
                     class=
@@ -21682,8 +21682,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         font-weight="regular"
                         id="nodeBar51-name"
                         text-anchor="start"
-                        x="427"
-                        y="264.4702037151893"
+                        x="428"
+                        y="269.40901538857196"
                       >
                         14 – Don’t know / would not vote
                       </text>
@@ -21696,8 +21696,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       font-size="14"
                       font-weight="bold"
                       text-anchor="start"
-                      x="427"
-                      y="264.4702037151893"
+                      x="428"
+                      y="269.40901538857196"
                     >
                       18
                     </text>

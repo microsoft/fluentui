@@ -732,7 +732,7 @@ export const transformPlotlyJsonToSankeyProps = (
     height: input.layout?.height ?? 468,
     // TODO
     // styles,
-    enableReflow: true,
+    enableReflow: false,
   };
 };
 
