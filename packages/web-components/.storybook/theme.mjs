@@ -20,7 +20,7 @@ export default create({
 
   // Typography
   fontBase:
-      '"Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;',
+    '"Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;',
   fontCode: 'monospace',
 
   // Text colors
@@ -32,4 +32,3 @@ export default create({
   inputTextColor: 'black',
   inputBorderRadius: 4,
 });
-

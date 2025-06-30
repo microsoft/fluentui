@@ -253,21 +253,33 @@ describe('isMonth UTs', () => {
 describe('isArrayOfType UTs', () => {
   test('valid 1D arrays', () => {
     expect(isArrayOfType([1, 2, 3], isNumber)).toBe(true);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect(isArrayOfType(['a', 'b', 'c'], (x: any) => typeof x === 'string')).toBe(true);
+    expect(isArrayOfType(['a', 'b', 'c'], (x: unknown) => typeof x === 'string')).toBe(true);
   });
 
   test('valid 2D arrays', () => {
-    expect(isArrayOfType([[1, 2], [3, 4]], isNumber)).toBe(true);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect(isArrayOfType([['a', 'b'], ['c', 'd']], (x: any) => typeof x === 'string')).toBe(true);
+    expect(
+      isArrayOfType(
+        [
+          [1, 2],
+          [3, 4],
+        ],
+        isNumber,
+      ),
+    ).toBe(true);
+    expect(
+      isArrayOfType(
+        [
+          ['a', 'b'],
+          ['c', 'd'],
+        ],
+        (x: unknown) => typeof x === 'string',
+      ),
+    ).toBe(true);
   });
 
   test('arrays with null values', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect(isArrayOfType([1, null, 3], (x: any) => isNumber(x) || x === null)).toBe(true);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect(isArrayOfType(['a', null, 'c'], (x: any) => typeof x === 'string' || x === null)).toBe(true);
+    expect(isArrayOfType([1, null, 3], (x: unknown) => isNumber(x) || x === null)).toBe(true);
+    expect(isArrayOfType(['a', null, 'c'], (x: unknown) => typeof x === 'string' || x === null)).toBe(true);
   });
 
   test('invalid arrays', () => {
@@ -370,8 +382,24 @@ describe('validate2Dseries UTs', () => {
   });
 
   test('invalid 2D series with nested arrays', () => {
-    expect(validate2Dseries({ x: [[1, 2], [3, 4]], y: [4, 5] })).toBe(false);
-    expect(validate2Dseries({ x: [1, 2, 3], y: [[4, 5], [6, 7]] })).toBe(false);
+    expect(
+      validate2Dseries({
+        x: [
+          [1, 2],
+          [3, 4],
+        ],
+        y: [4, 5],
+      }),
+    ).toBe(false);
+    expect(
+      validate2Dseries({
+        x: [1, 2, 3],
+        y: [
+          [4, 5],
+          [6, 7],
+        ],
+      }),
+    ).toBe(false);
   });
 
   test('empty series', () => {
@@ -427,7 +455,7 @@ describe('sanitizeJson UTs', () => {
       current.next = {};
       current = current.next;
     }
-    
+
     expect(() => sanitizeJson(deepObject)).toThrow('Maximum json depth exceeded');
   });
 
@@ -477,13 +505,15 @@ describe('isArrayOrTypedArray UTs', () => {
 describe('mapFluentChart UTs', () => {
   test('invalid JSON input', () => {
     const input = {
-      data: [{
-        type: 'scatter',
-        mode: 'lines',
-        x: [1, 2, 3],
-        y: [4, 5, 6],
-        text: '<script>alert("test")</script>'
-      }]
+      data: [
+        {
+          type: 'scatter',
+          mode: 'lines',
+          x: [1, 2, 3],
+          y: [4, 5, 6],
+          text: '<script>alert("test")</script>',
+        },
+      ],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true); // sanitizeJson should handle this
@@ -503,7 +533,7 @@ describe('mapFluentChart UTs', () => {
 
   test('pie chart mapping', () => {
     const input = {
-      data: [{ type: 'pie', values: [1, 2, 3], labels: ['A', 'B', 'C'] }]
+      data: [{ type: 'pie', values: [1, 2, 3], labels: ['A', 'B', 'C'] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -514,7 +544,7 @@ describe('mapFluentChart UTs', () => {
 
   test('bar chart mapping - vertical', () => {
     const input = {
-      data: [{ type: 'bar', x: ['A', 'B', 'C'], y: [1, 2, 3] }]
+      data: [{ type: 'bar', x: ['A', 'B', 'C'], y: [1, 2, 3] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -523,7 +553,7 @@ describe('mapFluentChart UTs', () => {
 
   test('bar chart mapping - horizontal', () => {
     const input = {
-      data: [{ type: 'bar', orientation: 'h', x: [1, 2, 3], y: ['A', 'B', 'C'] }]
+      data: [{ type: 'bar', orientation: 'h', x: [1, 2, 3], y: ['A', 'B', 'C'] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -533,7 +563,7 @@ describe('mapFluentChart UTs', () => {
   test('bar chart mapping - grouped', () => {
     const input = {
       data: [{ type: 'bar', x: ['A', 'B', 'C'], y: [1, 2, 3] }],
-      layout: { barmode: 'group' }
+      layout: { barmode: 'group' },
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -542,7 +572,7 @@ describe('mapFluentChart UTs', () => {
 
   test('scatter chart mapping - markers', () => {
     const input = {
-      data: [{ type: 'scatter', mode: 'markers', x: [1, 2, 3], y: [4, 5, 6] }]
+      data: [{ type: 'scatter', mode: 'markers', x: [1, 2, 3], y: [4, 5, 6] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -551,7 +581,7 @@ describe('mapFluentChart UTs', () => {
 
   test('scatter chart mapping - lines', () => {
     const input = {
-      data: [{ type: 'scatter', mode: 'lines', x: [1, 2, 3], y: [4, 5, 6] }]
+      data: [{ type: 'scatter', mode: 'lines', x: [1, 2, 3], y: [4, 5, 6] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -560,7 +590,7 @@ describe('mapFluentChart UTs', () => {
 
   test('scatter chart mapping - area', () => {
     const input = {
-      data: [{ type: 'scatter', mode: 'lines', fill: 'tozeroy', x: [1, 2, 3], y: [4, 5, 6] }]
+      data: [{ type: 'scatter', mode: 'lines', fill: 'tozeroy', x: [1, 2, 3], y: [4, 5, 6] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -569,7 +599,7 @@ describe('mapFluentChart UTs', () => {
 
   test('histogram chart mapping', () => {
     const input = {
-      data: [{ type: 'histogram', x: [1, 2, 3, 4, 5] }]
+      data: [{ type: 'histogram', x: [1, 2, 3, 4, 5] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -578,7 +608,15 @@ describe('mapFluentChart UTs', () => {
 
   test('heatmap chart mapping', () => {
     const input = {
-      data: [{ type: 'heatmap', z: [[1, 2], [3, 4]] }]
+      data: [
+        {
+          type: 'heatmap',
+          z: [
+            [1, 2],
+            [3, 4],
+          ],
+        },
+      ],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -587,11 +625,13 @@ describe('mapFluentChart UTs', () => {
 
   test('sankey chart mapping', () => {
     const input = {
-      data: [{
-        type: 'sankey',
-        node: { label: ['A', 'B', 'C'] },
-        link: { source: [0, 1], target: [1, 2], value: [10, 20] }
-      }]
+      data: [
+        {
+          type: 'sankey',
+          node: { label: ['A', 'B', 'C'] },
+          link: { source: [0, 1], target: [1, 2], value: [10, 20] },
+        },
+      ],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -600,7 +640,7 @@ describe('mapFluentChart UTs', () => {
 
   test('gauge chart mapping', () => {
     const input = {
-      data: [{ type: 'indicator', mode: 'gauge+number', value: 75 }]
+      data: [{ type: 'indicator', mode: 'gauge+number', value: 75 }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -609,7 +649,7 @@ describe('mapFluentChart UTs', () => {
 
   test('scatterpolar chart mapping', () => {
     const input = {
-      data: [{ type: 'scatterpolar', theta: [0, 45, 90], r: [1, 2, 3] }]
+      data: [{ type: 'scatterpolar', theta: [0, 45, 90], r: [1, 2, 3] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -618,11 +658,18 @@ describe('mapFluentChart UTs', () => {
 
   test('table chart mapping', () => {
     const input = {
-      data: [{
-        type: 'table',
-        header: { values: ['Col1', 'Col2'] },
-        cells: { values: [['A', 'B'], [1, 2]] }
-      }]
+      data: [
+        {
+          type: 'table',
+          header: { values: ['Col1', 'Col2'] },
+          cells: {
+            values: [
+              ['A', 'B'],
+              [1, 2],
+            ],
+          },
+        },
+      ],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -631,7 +678,7 @@ describe('mapFluentChart UTs', () => {
 
   test('unsupported chart type', () => {
     const input = {
-      data: [{ type: 'unsupported', x: [1, 2, 3], y: [4, 5, 6] }]
+      data: [{ type: 'unsupported', x: [1, 2, 3], y: [4, 5, 6] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(false);
@@ -641,7 +688,7 @@ describe('mapFluentChart UTs', () => {
   test('log axis type validation', () => {
     const input = {
       data: [{ type: 'scatter', mode: 'lines', x: [1, 2, 3], y: [4, 5, 6] }],
-      layout: { xaxis: { type: 'log' } }
+      layout: { xaxis: { type: 'log' } },
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(false);
@@ -652,8 +699,8 @@ describe('mapFluentChart UTs', () => {
     const input = {
       data: [
         { type: 'scatter', mode: 'lines', x: [1, 2, 3], y: [4, 5, 6] },
-        { type: 'bar', x: ['A', 'B', 'C'], y: [1, 2, 3] }
-      ]
+        { type: 'bar', x: ['A', 'B', 'C'], y: [1, 2, 3] },
+      ],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -664,8 +711,14 @@ describe('mapFluentChart UTs', () => {
     const input = {
       data: [
         { type: 'pie', values: [1, 2, 3], labels: ['A', 'B', 'C'] },
-        { type: 'heatmap', z: [[1, 2], [3, 4]] }
-      ]
+        {
+          type: 'heatmap',
+          z: [
+            [1, 2],
+            [3, 4],
+          ],
+        },
+      ],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -674,7 +727,7 @@ describe('mapFluentChart UTs', () => {
 
   test('invalid scatter mode', () => {
     const input = {
-      data: [{ type: 'scatter', mode: 'invalid_mode', x: [1, 2, 3], y: [4, 5, 6] }]
+      data: [{ type: 'scatter', mode: 'invalid_mode', x: [1, 2, 3], y: [4, 5, 6] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(false);
@@ -683,7 +736,7 @@ describe('mapFluentChart UTs', () => {
 
   test('invalid bar data with base in horizontal mode', () => {
     const input = {
-      data: [{ type: 'bar', orientation: 'h', base: 10, x: [1, 2, 3], y: ['A', 'B', 'C'] }]
+      data: [{ type: 'bar', orientation: 'h', base: 10, x: [1, 2, 3], y: ['A', 'B', 'C'] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(false);
@@ -692,7 +745,15 @@ describe('mapFluentChart UTs', () => {
 
   test('invalid histogram data', () => {
     const input = {
-      data: [{ type: 'histogram', x: [[1, 2], [3, 4]] }] // Invalid 2D array
+      data: [
+        {
+          type: 'histogram',
+          x: [
+            [1, 2],
+            [3, 4],
+          ],
+        },
+      ], // Invalid 2D array
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(false);
@@ -701,7 +762,7 @@ describe('mapFluentChart UTs', () => {
 
   test('invalid scatterpolar data - non-numeric theta', () => {
     const input = {
-      data: [{ type: 'scatterpolar', theta: ['a', 'b', 'c'], r: [1, 2, 3] }]
+      data: [{ type: 'scatterpolar', theta: ['a', 'b', 'c'], r: [1, 2, 3] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(false);
@@ -710,7 +771,7 @@ describe('mapFluentChart UTs', () => {
 
   test('invalid scatterpolar data - non-numeric r', () => {
     const input = {
-      data: [{ type: 'scatterpolar', theta: [0, 45, 90], r: ['a', 'b', 'c'] }]
+      data: [{ type: 'scatterpolar', theta: [0, 45, 90], r: ['a', 'b', 'c'] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(false);
@@ -719,11 +780,13 @@ describe('mapFluentChart UTs', () => {
 
   test('sankey with cycles', () => {
     const input = {
-      data: [{
-        type: 'sankey',
-        node: { label: ['A', 'B', 'C'] },
-        link: { source: [0, 1, 2], target: [1, 2, 0], value: [10, 20, 30] } // Creates a cycle
-      }]
+      data: [
+        {
+          type: 'sankey',
+          node: { label: ['A', 'B', 'C'] },
+          link: { source: [0, 1, 2], target: [1, 2, 0], value: [10, 20, 30] }, // Creates a cycle
+        },
+      ],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(false);
@@ -732,7 +795,7 @@ describe('mapFluentChart UTs', () => {
 
   test('indicator without gauge mode', () => {
     const input = {
-      data: [{ type: 'indicator', mode: 'number', value: 75 }]
+      data: [{ type: 'indicator', mode: 'number', value: 75 }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(false);
@@ -741,7 +804,7 @@ describe('mapFluentChart UTs', () => {
 
   test('scatter with date x-axis', () => {
     const input = {
-      data: [{ type: 'scatter', mode: 'lines', x: ['2023-01-01', '2023-01-02', '2023-01-03'], y: [1, 2, 3] }]
+      data: [{ type: 'scatter', mode: 'lines', x: ['2023-01-01', '2023-01-02', '2023-01-03'], y: [1, 2, 3] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -750,7 +813,7 @@ describe('mapFluentChart UTs', () => {
 
   test('scatter with year x-axis fallback', () => {
     const input = {
-      data: [{ type: 'scatter', mode: 'lines', x: [2020, 2021, 2022], y: [1, 2, 3] }]
+      data: [{ type: 'scatter', mode: 'lines', x: [2020, 2021, 2022], y: [1, 2, 3] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -759,7 +822,7 @@ describe('mapFluentChart UTs', () => {
 
   test('scatter with string y-axis fallback', () => {
     const input = {
-      data: [{ type: 'scatter', mode: 'lines', x: [1, 2, 3], y: ['A', 'B', 'C'] }]
+      data: [{ type: 'scatter', mode: 'lines', x: [1, 2, 3], y: ['A', 'B', 'C'] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true);
@@ -768,7 +831,7 @@ describe('mapFluentChart UTs', () => {
 
   test('area chart with string y-axis should fail', () => {
     const input = {
-      data: [{ type: 'scatter', mode: 'lines', fill: 'tozeroy', x: [1, 2, 3], y: ['A', 'B', 'C'] }]
+      data: [{ type: 'scatter', mode: 'lines', fill: 'tozeroy', x: [1, 2, 3], y: ['A', 'B', 'C'] }],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(false);
@@ -778,7 +841,7 @@ describe('mapFluentChart UTs', () => {
   test('grouped bar chart with string y-axis should fail', () => {
     const input = {
       data: [{ type: 'bar', x: ['A', 'B', 'C'], y: ['X', 'Y', 'Z'] }],
-      layout: { barmode: 'group' }
+      layout: { barmode: 'group' },
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(false);
@@ -790,8 +853,8 @@ describe('mapFluentChart UTs', () => {
       data: [
         { type: 'pie', values: [1, 2, 3], labels: ['A', 'B', 'C'] }, // Valid
         { type: 'scatter', mode: 'invalid_mode', x: [1, 2, 3], y: [4, 5, 6] }, // Invalid
-        { type: 'bar', x: ['A', 'B', 'C'], y: [1, 2, 3] } // Valid
-      ]
+        { type: 'bar', x: ['A', 'B', 'C'], y: [1, 2, 3] }, // Valid
+      ],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(true); // Should be valid with 2 valid traces
@@ -802,8 +865,8 @@ describe('mapFluentChart UTs', () => {
     const input = {
       data: [
         { type: 'scatter', mode: 'invalid_mode', x: [1, 2, 3], y: [4, 5, 6] },
-        { type: 'indicator', mode: 'number', value: 75 }
-      ]
+        { type: 'indicator', mode: 'number', value: 75 },
+      ],
     };
     const result = mapFluentChart(input);
     expect(result.isValid).toBe(false);
