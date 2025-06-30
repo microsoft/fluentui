@@ -174,7 +174,7 @@ describe('getValidSchema UTs', () => {
   });
 });
 
-describe('isNumber UTs', () => {
+describe('isNumber tests', () => {
   test('valid numbers', () => {
     expect(isNumber(42)).toBe(true);
     expect(isNumber(0)).toBe(true);
