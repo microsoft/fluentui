@@ -597,6 +597,69 @@ describe('mapFluentChart UTs', () => {
     expect(result.type).toBe('area');
   });
 
+  test('scatter chart mapping - text+markers', () => {
+    const input = {
+      data: [{ type: 'scatter', mode: 'text+markers', x: [1, 2, 3], y: [4, 5, 6] }],
+    };
+    const result = mapFluentChart(input);
+    expect(result.isValid).toBe(true);
+    expect(result.type).toBe('scatter');
+  });
+
+  test('scatter chart mapping - markers+text', () => {
+    const input = {
+      data: [{ type: 'scatter', mode: 'markers+text', x: [1, 2, 3], y: [4, 5, 6] }],
+    };
+    const result = mapFluentChart(input);
+    expect(result.isValid).toBe(true);
+    expect(result.type).toBe('scatter');
+  });
+
+  test('scatter chart mapping - lines+markers', () => {
+    const input = {
+      data: [{ type: 'scatter', mode: 'lines+markers', x: [1, 2, 3], y: [4, 5, 6] }],
+    };
+    const result = mapFluentChart(input);
+    expect(result.isValid).toBe(true);
+    expect(result.type).toBe('line');
+  });
+
+  test('scatter chart mapping - markers+lines', () => {
+    const input = {
+      data: [{ type: 'scatter', mode: 'markers+lines', x: [1, 2, 3], y: [4, 5, 6] }],
+    };
+    const result = mapFluentChart(input);
+    expect(result.isValid).toBe(true);
+    expect(result.type).toBe('line');
+  });
+
+  test('scatter chart mapping - text+lines+markers', () => {
+    const input = {
+      data: [{ type: 'scatter', mode: 'text+lines+markers', x: [1, 2, 3], y: [4, 5, 6] }],
+    };
+    const result = mapFluentChart(input);
+    expect(result.isValid).toBe(true);
+    expect(result.type).toBe('line');
+  });
+
+  test('scatter chart mapping - text+lines', () => {
+    const input = {
+      data: [{ type: 'scatter', mode: 'text+lines', x: [1, 2, 3], y: [4, 5, 6] }],
+    };
+    const result = mapFluentChart(input);
+    expect(result.isValid).toBe(true);
+    expect(result.type).toBe('line');
+  });
+
+  test('scatter chart mapping - lines+text', () => {
+    const input = {
+      data: [{ type: 'scatter', mode: 'lines+text', x: [1, 2, 3], y: [4, 5, 6] }],
+    };
+    const result = mapFluentChart(input);
+    expect(result.isValid).toBe(true);
+    expect(result.type).toBe('line');
+  });
+
   test('histogram chart mapping', () => {
     const input = {
       data: [{ type: 'histogram', x: [1, 2, 3, 4, 5] }],
