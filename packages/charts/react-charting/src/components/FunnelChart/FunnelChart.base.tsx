@@ -14,6 +14,7 @@ import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IImageExportOptions } from '../../types/index';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
 import { getInvertedTextColor } from '../../utilities/utilities';
+import { getColorContrast } from '../../utilities/colors';
 import {
   getHorizontalFunnelSegmentGeometry,
   getVerticalFunnelSegmentGeometry,
@@ -190,7 +191,11 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     data: IFunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } };
   }) {
     const eventHandlers = _getEventHandlerProps(data);
-    const textColor = getInvertedTextColor(fill, props.theme);
+    let textColor = props.theme!.semanticColors.bodyText;
+    const contrastRatio = getColorContrast(textColor, fill);
+    if (contrastRatio < 3) {
+      textColor = getInvertedTextColor(textColor, props.theme);
+    }
 
     return (
       <g key={key}>
@@ -377,25 +382,22 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     return !(props.data && props.data.length > 0);
   }
 
-  const calloutProps = React.useMemo(
-    () => ({
-      isCalloutVisible,
-      directionalHint: DirectionalHint.topAutoEdge,
-      id: `toolTip${_tooltipId}`,
-      target: refSelected,
-      color: calloutData?.color,
-      XValue: calloutData?.stage,
-      YValue: calloutData?.value,
-      isBeakVisible: false,
-      gapSpace: 15,
-      onDismiss: () => {
-        setIsCalloutVisible(false);
-      },
-      preventDismissOnLostFocus: true,
-      ...props.calloutProps,
-    }),
-    [isCalloutVisible, _tooltipId, refSelected, calloutData, props.calloutProps],
-  );
+  const calloutProps = {
+    isCalloutVisible,
+    directionalHint: DirectionalHint.topAutoEdge,
+    id: `toolTip${_tooltipId}`,
+    target: refSelected,
+    color: calloutData?.color,
+    XValue: calloutData?.stage,
+    YValue: calloutData?.value,
+    isBeakVisible: false,
+    gapSpace: 15,
+    onDismiss: () => {
+      setIsCalloutVisible(false);
+    },
+    preventDismissOnLostFocus: true,
+    ...props.calloutProps,
+  };
 
   const width = props.width || 350;
   const height = props.height || 500;

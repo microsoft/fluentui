@@ -1520,10 +1520,10 @@ function getCategoriesAndValues(series: any): { categories: any[]; values: any[]
   const orientation = series.orientation || 'h';
   const y = series.labels ?? series.y ?? series.stage;
   const x = series.values ?? series.x ?? series.value;
-  const xIsString = isArrayOrTypedArray(x) && x.every((v: any) => typeof v === 'string');
-  const yIsString = isArrayOrTypedArray(y) && y.every((v: any) => typeof v === 'string');
-  const xIsNumber = isArrayOrTypedArray(x) && x.every((v: any) => typeof v === 'number');
-  const yIsNumber = isArrayOrTypedArray(y) && y.every((v: any) => typeof v === 'number');
+  const xIsString = isStringArray(x);
+  const yIsString = isStringArray(y);
+  const xIsNumber = isNumberArray(x);
+  const yIsNumber = isNumberArray(y);
 
   if (orientation === 'h') {
     if (yIsString && xIsNumber) {
@@ -1578,13 +1578,9 @@ export const transformPlotlyJsonToFunnelChartProps = (
       // Always use the first color for the series/category
       const color = resolveColor(extractedColors, 0, category, colorMap, isDarkTheme);
       seriesColors[category] = color;
-    });
 
-    input.data.forEach((series: any, seriesIdx: number) => {
       const labels = series.labels ?? series.y ?? series.stage;
       const values = series.values ?? series.x ?? series.value;
-      const category = series.name || `Category ${seriesIdx + 1}`;
-      const color = seriesColors[category];
 
       if (!isArrayOrTypedArray(labels) || !isArrayOrTypedArray(values)) {
         return;
