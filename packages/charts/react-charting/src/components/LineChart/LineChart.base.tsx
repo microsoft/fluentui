@@ -303,7 +303,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       YValue: this.state.YValue,
       legend: this.state.legendVal,
       color: this.state.lineColor,
-      XValue: this.state.hoverXValue,
+      XValue: this.state.hoverXValue! as string,
       id: `toolTip${this._uniqueCallOutID}`,
       target: this.state.refSelected,
       isBeakVisible: false,
