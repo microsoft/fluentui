@@ -1,16 +1,19 @@
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MessageBarBodySlots, MessageBarBodyState } from './MessageBarBody.types';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const messageBarBodyClassNames: SlotClassNames<MessageBarBodySlots> = {
   root: 'fui-MessageBarBody',
 };
 
 const useRootBaseStyles = makeResetStyles({
-  ...typographyStyles.body1,
+  fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+  fontSize: semanticTokens.textRampItemBodyFontSize,
+  fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+  lineHeight: semanticTokens.textRampItemBodyLineHeight,
   gridArea: 'body',
-  paddingRight: tokens.spacingHorizontalM,
+  paddingRight: semanticTokens.gapBetweenCtrlDefault,
 });
 
 /**

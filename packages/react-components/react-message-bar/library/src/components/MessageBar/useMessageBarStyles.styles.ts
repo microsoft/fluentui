@@ -1,7 +1,7 @@
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MessageBarSlots, MessageBarState } from './MessageBar.types';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const messageBarClassNames: SlotClassNames<MessageBarSlots> = {
   root: 'fui-MessageBar',
@@ -15,26 +15,30 @@ const useRootBaseStyles = makeResetStyles({
   gridTemplateColumns: 'auto 1fr auto auto',
   gridTemplateRows: '1fr',
   gridTemplateAreas: '"icon body secondaryActions actions"',
-  paddingLeft: tokens.spacingHorizontalM,
-  border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-  borderRadius: tokens.borderRadiusMedium,
+  paddingLeft: semanticTokens._ctrlMessageBarPaddingContentAlignDefault,
+  paddingRight: semanticTokens.paddingContentAlignOutdentIconOnSubtle,
+  paddingTop: semanticTokens._ctrlMessageBarPaddingVertical,
+  paddingBottom: semanticTokens._ctrlMessageBarPaddingVertical,
+  border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.statusInformativeTintStroke}`,
+  borderRadius: semanticTokens.cornerCtrlRest,
   alignItems: 'center',
   minHeight: '36px',
   boxSizing: 'border-box',
-  backgroundColor: tokens.colorNeutralBackground3,
+  backgroundColor: semanticTokens.statusImportantTintBackground,
 });
 
 const useIconBaseStyles = makeResetStyles({
   gridArea: 'icon',
-  fontSize: tokens.fontSizeBase500,
-  marginRight: tokens.spacingHorizontalS,
-  color: tokens.colorNeutralForeground3,
+  fontSize: semanticTokens.textGlobalBody1FontSize,
+  marginRight: semanticTokens.gapInsideCtrlDefault,
+  color: semanticTokens.foregroundCtrlIconOnNeutralRest,
+  height: semanticTokens.textRampItemHeaderLineHeight,
   display: 'flex',
   alignItems: 'center',
 });
 
 const useReflowSpacerBaseStyles = makeResetStyles({
-  marginBottom: tokens.spacingVerticalS,
+  marginBottom: semanticTokens._ctrlMessageBarReflowSpacerMarginBottom,
   gridArea: 'secondaryActions',
 });
 
@@ -42,19 +46,12 @@ const useStyles = makeStyles({
   rootMultiline: {
     whiteSpace: 'normal',
     alignItems: 'start',
-    paddingTop: tokens.spacingVerticalMNudge,
+    paddingTop: semanticTokens._ctrlMessageBarSpacingTop,
     gridTemplateColumns: 'auto 1fr auto',
     gridTemplateAreas: `
       "icon body actions"
       "secondaryActions secondaryActions secondaryActions"
     `,
-  },
-
-  secondaryActionsMultiline: {
-    justifyContent: 'end',
-    marginTop: tokens.spacingVerticalMNudge,
-    marginBottom: tokens.spacingVerticalS,
-    marginRight: '0px',
   },
 
   square: {
@@ -67,13 +64,13 @@ const useIconIntentStyles = makeStyles({
     /** already in base reset styles */
   },
   error: {
-    color: tokens.colorStatusDangerForeground1,
+    color: semanticTokens._ctrlMessageBarErrorIconColor,
   },
   warning: {
-    color: tokens.colorStatusWarningForeground3,
+    color: semanticTokens.statusWarningTintForeground,
   },
   success: {
-    color: tokens.colorStatusSuccessForeground1,
+    color: semanticTokens.statusSuccessTintForeground,
   },
 });
 
@@ -82,16 +79,16 @@ const useRootIntentStyles = makeStyles({
     /** already in base reset styles */
   },
   error: {
-    backgroundColor: tokens.colorStatusDangerBackground1,
-    ...shorthands.borderColor(tokens.colorStatusDangerBorder1),
+    backgroundColor: semanticTokens.statusDangerTintBackground,
+    ...shorthands.borderColor(semanticTokens.statusDangerTintStroke),
   },
   warning: {
-    backgroundColor: tokens.colorStatusWarningBackground1,
-    ...shorthands.borderColor(tokens.colorStatusWarningBorder1),
+    backgroundColor: semanticTokens.statusWarningTintBackground,
+    ...shorthands.borderColor(semanticTokens.statusWarningTintStroke),
   },
   success: {
-    backgroundColor: tokens.colorStatusSuccessBackground1,
-    ...shorthands.borderColor(tokens.colorStatusSuccessBorder1),
+    backgroundColor: semanticTokens.statusSuccessTintBackground,
+    ...shorthands.borderColor(semanticTokens.statusSuccessTintStroke),
   },
 });
 
