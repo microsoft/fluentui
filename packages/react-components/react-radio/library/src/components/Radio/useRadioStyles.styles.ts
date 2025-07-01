@@ -34,7 +34,6 @@ const useInputBaseClassName = makeResetStyles({
   boxSizing: 'border-box',
   margin: 0,
   opacity: 0,
-  backgroundColor: semanticTokens.ctrlChoiceBaseBackgroundRest,
 
   ':enabled': {
     cursor: 'pointer',
@@ -157,6 +156,7 @@ const useIndicatorBaseClassName = makeResetStyles({
   fontSize: '12px',
   boxSizing: 'border-box',
   flexShrink: 0,
+  backgroundColor: semanticTokens.ctrlChoiceBaseBackgroundRest,
 
   display: 'flex',
   alignItems: 'center',
@@ -165,7 +165,7 @@ const useIndicatorBaseClassName = makeResetStyles({
 
   border: `${semanticTokens.strokeWidthCtrlOutlineRest} solid`,
   borderRadius: semanticTokens.ctrlChoiceRadioCorner,
-  margin: semanticTokens.ctrlChoicePaddingVertical + ' ' + semanticTokens.ctrlChoicePaddingHorizontal,
+  margin: `${semanticTokens.ctrlChoicePaddingVertical} ${semanticTokens.ctrlChoicePaddingHorizontal}`,
   fill: 'currentColor',
   pointerEvents: 'none',
 
