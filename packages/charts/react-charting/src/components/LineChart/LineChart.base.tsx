@@ -158,12 +158,17 @@ export interface ILineChartState extends IBasestate {
   nearestCircleToHighlight: ILineChartDataPoint | null;
 
   activeLine: number | null;
+
+  YValue: string | number;
+
+  legendVal: string;
 }
 
 export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> implements IChart {
   public static defaultProps: Partial<ILineChartProps> = {
     enableReflow: true,
     useUTC: true,
+    isCalloutForStack: false,
   };
 
   private _points: LineChartDataWithIndex[];
@@ -212,6 +217,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       hoverXValue: '',
       activeLegend: '',
       YValueHover: [],
+      YValue: '',
+      legendVal: '',
       refSelected: '',
       selectedLegend: props.legendProps?.selectedLegend ?? '',
       isCalloutVisible: false,
@@ -293,6 +300,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       directionalHint: DirectionalHint.topAutoEdge,
       YValueHover: this.state.YValueHover,
       hoverXValue: this.state.hoverXValue,
+      YValue: this.state.YValue,
+      legend: this.state.legendVal,
+      color: this.state.lineColor,
+      XValue: this.state.hoverXValue! as string,
       id: `toolTip${this._uniqueCallOutID}`,
       target: this.state.refSelected,
       isBeakVisible: false,
@@ -319,7 +330,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         chartTitle={this._getChartTitle()}
         points={points}
         chartType={ChartTypes.LineChart}
-        isCalloutForStack
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
@@ -771,6 +781,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 circleId,
                 xAxisCalloutAccessibilityData,
                 yScale,
+                legendVal,
+                lineColor,
               )}
               onMouseMove={this._handleHover.bind(
                 this,
@@ -781,6 +793,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 circleId,
                 xAxisCalloutAccessibilityData,
                 yScale,
+                legendVal,
+                lineColor,
               )}
               onMouseOut={this._handleMouseOut}
               strokeWidth={activePoint === circleId ? DEFAULT_LINE_STROKE_SIZE : 0}
@@ -957,6 +971,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     circleId,
                     xAxisCalloutAccessibilityData,
                     yScale,
+                    legendVal,
+                    lineColor,
                   )}
                   onMouseMove={this._handleHover.bind(
                     this,
@@ -967,6 +983,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     circleId,
                     xAxisCalloutAccessibilityData,
                     yScale,
+                    legendVal,
+                    lineColor,
                   )}
                   onMouseOut={this._handleMouseOut}
                   onFocus={() =>
@@ -1012,6 +1030,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   circleId,
                   xAxisCalloutAccessibilityData,
                   yScale,
+                  legendVal,
+                  lineColor,
                 )}
                 onMouseMove={this._handleHover.bind(
                   this,
@@ -1022,6 +1042,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   circleId,
                   xAxisCalloutAccessibilityData,
                   yScale,
+                  legendVal,
+                  lineColor,
                 )}
                 onMouseOut={this._handleMouseOut}
                 onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
@@ -1069,6 +1091,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                         lastCircleId,
                         lastCirlceXCalloutAccessibilityData,
                         yScale,
+                        legendVal,
+                        lineColor,
                       )}
                       onMouseMove={this._handleHover.bind(
                         this,
@@ -1079,6 +1103,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                         lastCircleId,
                         lastCirlceXCalloutAccessibilityData,
                         yScale,
+                        legendVal,
+                        lineColor,
                       )}
                       onMouseOut={this._handleMouseOut}
                       onFocus={() =>
@@ -1130,6 +1156,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       lastCircleId,
                       lastCirlceXCalloutAccessibilityData,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )}
                     onMouseMove={this._handleHover.bind(
                       this,
@@ -1140,6 +1168,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       lastCircleId,
                       lastCirlceXCalloutAccessibilityData,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )}
                     onMouseOut={this._handleMouseOut}
                     onFocus={() =>
@@ -1179,6 +1209,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     lastCircleId,
                     lastCirlceXCalloutAccessibilityData,
                     yScale,
+                    legendVal,
+                    lineColor,
                   )}
                   onMouseMove={this._handleHover.bind(
                     this,
@@ -1189,6 +1221,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     lastCircleId,
                     lastCirlceXCalloutAccessibilityData,
                     yScale,
+                    legendVal,
+                    lineColor,
                   )}
                   onMouseOut={this._handleMouseOut}
                   strokeWidth={0}
@@ -1244,6 +1278,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       circleId,
                       xAxisCalloutAccessibilityData,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )}
                     onMouseMove={this._handleHover.bind(
                       this,
@@ -1254,6 +1290,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       circleId,
                       xAxisCalloutAccessibilityData,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )}
                     onMouseOut={this._handleMouseOut}
                     stroke={lineColor}
@@ -1563,11 +1601,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     circleId: string,
     xAxisCalloutAccessibilityData: IAccessibilityProps | undefined,
     yScale: ScaleLinear<number, number>,
+    legendVal: string,
+    lineColor: string,
     mouseEvent: React.MouseEvent<SVGElement>,
   ) => {
     mouseEvent.persist();
     const formattedData = x instanceof Date ? formatDateToLocaleString(x, this.props.culture, this.props.useUTC) : x;
     const xVal = x instanceof Date ? x.getTime() : x;
+    const yVal = y instanceof Date ? y.getTime() : y;
     const _this = this;
     const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
     // if no points need to be called out then don't show vertical line and callout card
@@ -1584,6 +1625,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           refSelected: `#${circleId}`,
           hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
           YValueHover: found.values,
+          YValue: yVal,
+          legendVal: legendVal!,
+          lineColor: lineColor,
           stackCalloutProps: found!,
           dataPointCalloutProps: found!,
           activePoint: circleId,
