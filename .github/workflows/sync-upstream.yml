@@ -74,29 +74,7 @@ jobs:
           GH_PAT: ${{ secrets.FLUENTUI_ACTION }}
         run: |
           git push https://$GH_PAT@github.com/${GITHUB_REPOSITORY}.git main
-      - name: Create PR if conflicts exist
-        if: steps.check-conflicts.outputs.has_conflicts == 'true'
-        env:
-          GH_PAT: ${{ secrets.FLUENTUI_ACTION }}
-        run: |
-          BRANCH=upstream-sync-${{ steps.date.outputs.date }}
-          git checkout -b $BRANCH
-          git merge upstream/master || true
-          git add .
-          git commit -m "Merge upstream/master with conflicts - needs manual resolution"
-          git push https://$GH_PAT@github.com/${GITHUB_REPOSITORY}.git $BRANCH
-      - name: Create Pull Request
-        if: steps.check-conflicts.outputs.has_conflicts == 'true'
-        uses: repo-sync/pull-request@v2
-        with:
-          source_branch: "upstream-sync-${{ steps.date.outputs.date }}"
-          destination_branch: "main"
-          pr_title: "Sync with upstream/master - Merge Conflicts"
-          pr_body: |
-            This PR was automatically created by the GitHub Actions workflow to sync with upstream.
-            **Merge conflicts detected**
-            Please resolve the conflicts manually and merge this PR.
-          github_token: ${{ secrets.FLUENTUI_ACTION }}
+
 
   # New job to trigger NPDS patch workflow
   trigger-npds-patch:
