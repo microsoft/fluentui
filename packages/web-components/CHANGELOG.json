@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 01 Jul 2025 04:08:27 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.111",
+      "version": "3.0.0-beta.111",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9afbdec18a05a1f8bd20ba560754e5c1aa4dd375",
+            "comment": "refactor: move tabindex logic into JS class"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Jun 2025 04:06:55 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.110",
       "version": "3.0.0-beta.110",
