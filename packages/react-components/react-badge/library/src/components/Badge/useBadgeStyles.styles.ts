@@ -1,5 +1,5 @@
 import { shorthands, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
 import type { BadgeSlots, BadgeState } from './Badge.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import * as semanticTokens from '@fluentui/semantic-tokens';
@@ -11,7 +11,6 @@ export const badgeClassNames: SlotClassNames<BadgeSlots> = {
 
 // The text content of the badge has additional horizontal padding, but there is no `text` slot to add that padding to.
 // Instead, add extra padding to the root, and a negative margin on the icon to "remove" the extra padding on the icon.
-const textPadding = tokens.spacingHorizontalXXS;
 
 const useRootClassName = makeResetStyles({
   display: 'inline-flex',
@@ -46,7 +45,6 @@ const useRootClassName = makeResetStyles({
 
 const useRootStyles = makeStyles({
   fontSmallToTiny: {
-    ...typographyStyles.caption2Strong,
     fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
     fontWeight: semanticTokens._ctrlBadgeTextStyleSemiBoldWeight,
     fontSize: semanticTokens.textRampSmLegalFontSize,
@@ -87,14 +85,14 @@ const useRootStyles = makeStyles({
   'extra-large': {
     minWidth: '32px',
     height: '32px',
-    padding: `0 calc(${tokens.spacingHorizontalSNudge} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
+    padding: `0 calc(${semanticTokens._ctrlBadgeXLPadding} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
   },
 
   // shape
 
   square: { borderRadius: semanticTokens.cornerZero },
   rounded: { borderRadius: semanticTokens.ctrlBadgeCorner },
-  roundedSmallToTiny: { borderRadius: tokens.borderRadiusSmall },
+  roundedSmallToTiny: { borderRadius: semanticTokens._ctrlBadgeSmallTinyCorner },
   circular: {
     // Set by useRootClassName
   },
@@ -134,7 +132,7 @@ const useRootStyles = makeStyles({
     color: tokens.colorNeutralForegroundOnBrand,
   },
   'filled-subtle': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: tokens.colorNeutralBackground1,//come back to this one
     color: tokens.colorNeutralForeground1,
   },
   'filled-success': {
@@ -207,7 +205,7 @@ const useRootStyles = makeStyles({
     ...shorthands.borderColor(semanticTokens.statusSuccessStroke),
   },
   'outline-warning': {
-    color: tokens.colorPaletteYellowForeground2,//come back to this one
+    color: semanticTokens.statusWarningTintForeground,
   },
 
   // appearance: tint
@@ -217,7 +215,7 @@ const useRootStyles = makeStyles({
   },
   'tint-brand': {
     backgroundColor: semanticTokens.statusBrandTintBackground,
-    color: semanticTokens._ctrlBrandStatusBrandTintForeground,
+    color: semanticTokens._ctrlBadgeStatusBrandTintForeground,
     ...shorthands.borderColor(semanticTokens.statusBrandTintStroke),
   },
   'tint-danger': {
@@ -227,7 +225,7 @@ const useRootStyles = makeStyles({
   },
   'tint-important': {
     backgroundColor: semanticTokens.statusImportantTintBackground,
-    color: semanticTokens.ctrlBadgeStatusImportantTintForeground,
+    color: semanticTokens._ctrlBadgeStatusImportantTintForeground,
     ...shorthands.borderColor(semanticTokens.statusImportantTintStroke),
   },
   'tint-informative': {
@@ -250,10 +248,10 @@ const useRootStyles = makeStyles({
     color: semanticTokens._ctrlBadgeStatusSuccessTintForeground,
     ...shorthands.borderColor(semanticTokens.statusSuccessTintStroke),
   },
-  'tint-warning': { //come back to this
-    backgroundColor: tokens.colorPaletteYellowBackground1,
-    color: tokens.colorPaletteYellowForeground1,
-    ...shorthands.borderColor(tokens.colorPaletteYellowBorder1),
+  'tint-warning': {
+    backgroundColor: semanticTokens.statusWarningTintBackground,
+    color: semanticTokens._ctrlBadgeStatusWarningTintForeground,
+    ...shorthands.borderColor(semanticTokens.statusWarningTintStroke),
   },
 });
 
@@ -273,10 +271,10 @@ const useIconStyles = makeStyles({
   },
 
   beforeTextXL: {
-    marginRight: `calc(${tokens.spacingHorizontalXS} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
+    marginRight: `calc(${semanticTokens._ctrlBadgePaddingRightSideXL} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
   },
   afterTextXL: {
-    marginLeft: `calc(${tokens.spacingHorizontalXS} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
+    marginLeft: `calc(${semanticTokens._ctrlBadgePaddingLeftSideXL} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
   },
 
   // size
