@@ -81,6 +81,42 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'strokeWidthThin',
     originalToken: 'ctrlAvatarPresenceBadgeStrokeWidth',
   },
+  _ctrlBadgeNullColor: {
+    f2Token: 'colorTransparentStroke',
+    originalToken: 'nullColor',
+  },
+  _ctrlBadgePaddingTextSide: {
+    f2Token: 'spacingHorizontalXXS',
+    originalToken: 'paddingCtrlTextSide',
+  },
+  _ctrlBadgePaddingRightSide: {
+    f2Token: 'spacingHorizontalXXS',
+    originalToken: 'paddingCtrlTextSide',
+  },
+  _ctrlBadgePaddingLeftSide: {
+    f2Token: 'spacingHorizontalXXS',
+    originalToken: 'paddingCtrlTextSide',
+  },
+  _ctrlBadgeStatusBrandTintForeground: {
+    f2Token: 'colorBrandForeground2',
+    originalToken: 'statusBrandTintForeground',
+  },
+  _ctrlBadgeStatusDangerTintForeground: {
+    f2Token: 'colorPaletteRedForeground1',
+    originalToken: 'statusDangerTintForeground',
+  },
+  _ctrlBadgeStatusImportantTintForeground: {
+    f2Token: 'colorNeutralBackground1',
+    originalToken: 'statusImportantTintForeground',
+  },
+  _ctrlBadgeStatusSuccessTintForeground: {
+    f2Token: 'colorPaletteGreenForeground1',
+    originalToken: 'statusSuccessTintForeground',
+  },
+  _ctrlBadgeTextStyleSemiBoldWeight: {
+    f2Token: 'fontWeightSemibold',
+    originalToken: 'textStyleDefaultRegularWeight',
+  },
   _ctrlButtonGapInsideDefault: {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'gapInsideCtrlDefault',
