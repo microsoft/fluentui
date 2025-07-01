@@ -11,7 +11,6 @@ import type { ButtonOptions } from './button.options.js';
 export function buttonTemplate<T extends Button>(options: ButtonOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template
-      tabindex="${x => (x.disabled ? null : x.tabIndex ?? 0)}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
       @keypress="${(x, c) => x.keypressHandler(c.event as KeyboardEvent)}"
     >

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 24 Jun 2025 04:06:55 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Jul 2025 04:08:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.111](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.111)
+
+Tue, 01 Jul 2025 04:08:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.110..@fluentui/web-components_v3.0.0-beta.111)
+
+### Changes
+
+- refactor: move tabindex logic into JS class ([PR #34741](https://github.com/microsoft/fluentui/pull/34741) by machi@microsoft.com)
 
 ## [3.0.0-beta.110](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.110)
 
