@@ -1,0 +1,86 @@
+name: "NPDS Patch After Sync"
+on:
+  workflow_call:
+  workflow_dispatch:
+jobs:
+  apply-npds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout FluentUI code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Clone NPDS repo from Azure DevOps
+        env:
+          AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
+        run: |
+          git clone https://:$AZURE_DEVOPS_PAT@dev.azure.com/nbsdev/NBS%20Product%20Design/_git/DesignSystem npds-repo
+
+      - name: Verify files exist before copying
+        run: |
+          echo "Checking NPDS file exists..."
+          if [ ! -f "npds-repo/packages/npds-components/src/components/button/button.styles.ts" ]; then
+            echo "NPDS button styles not found!"
+            echo "Available files in npds-repo:"
+            find npds-repo -name "*.styles.ts" | head -10
+            exit 1
+          fi
+
+          echo "Checking FluentUI target file exists..."
+          if [ ! -f "packages/web-components/src/button/button.styles.ts" ]; then
+            echo "FluentUI button styles not found!"
+            exit 1
+          fi
+
+          echo "Both files found, proceeding with copy..."
+
+      - name: Copy NPDS styles and patch Fluent button
+        run: |
+          TARGET_DIR="packages/web-components/src/button"
+          NPDS_SRC="npds-repo/packages/npds-components/src/components/button/button.styles.ts"
+          FLUENT_FILE="$TARGET_DIR/button.styles.ts"
+          NPDS_TARGET="$TARGET_DIR/npds-button-styles.ts"
+
+          # Skip if override already exists
+          if grep -q "NPDS OVERRIDE LAYER" "$FLUENT_FILE"; then
+            echo "NPDS override already present. Skipping patch step."
+            exit 0
+          fi
+
+          # Copy the NPDS button styles to the button folder
+          cp "$NPDS_SRC" "$NPDS_TARGET"
+
+          # Patch Fluent's button.styles.ts
+          sed -i '1iimport { buttonStyles as npdsButtonStyles } from "./npds-button-styles";' "$FLUENT_FILE"
+          sed -i 's/export const styles = css/export const originalButtonStyles = css/' "$FLUENT_FILE"
+          cat << 'EOF' >> "$FLUENT_FILE"
+          // ── NPDS OVERRIDE LAYER ──
+          export const styles = css`
+            ${originalButtonStyles}
+            ${npdsButtonStyles}
+          `;
+          // ────────────────────────
+          EOF
+
+          # Clean up
+          rm -rf npds-repo
+
+      - name: Commit and push NPDS patch
+        env:
+          GH_PAT: ${{ secrets.FLUENTUI_ACTION }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- packages/web-components/src/button/button.styles.ts; then
+            git add packages/web-components/src/button/button.styles.ts packages/web-components/src/button/npds-button-styles.ts
+            git commit -m "chore: layer NPDS button styles"
+            git push https://$GH_PAT@github.com/${GITHUB_REPOSITORY}.git main
+          else
+            echo "No NPDS changes needed."
+          fi
