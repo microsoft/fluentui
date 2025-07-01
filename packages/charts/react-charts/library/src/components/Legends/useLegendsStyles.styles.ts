@@ -34,6 +34,7 @@ const useStyles = makeStyles({
     ...shorthands.border('none'),
     ...shorthands.padding(tokens.spacingHorizontalS),
     textTransform: 'capitalize',
+    minWidth: 0,
     [HighContrastSelector]: {
       color: 'WindowText',
       forcedColorAdjust: 'none',
