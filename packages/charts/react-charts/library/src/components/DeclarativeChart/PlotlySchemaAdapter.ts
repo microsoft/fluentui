@@ -47,6 +47,7 @@ import type {
   SankeyData,
   ScatterLine,
   TypedArray,
+  Data,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOfType,
@@ -155,37 +156,58 @@ export const getColor = (
   return colorMap.current.get(legendLabel) as string;
 };
 
-const getSecondaryYAxisValues = (series: PlotData, layout: Partial<Layout> | undefined) => {
-  const secondaryYAxisValues: SecondaryYAxisValues = {};
-  if (layout && layout.yaxis2 && series.yaxis === 'y2') {
-    secondaryYAxisValues.secondaryYAxistitle =
-      typeof layout.yaxis2.title === 'string'
-        ? layout.yaxis2.title
-        : typeof layout.yaxis2.title?.text === 'string'
-        ? layout.yaxis2.title.text
-        : '';
-    if (layout.yaxis2.range) {
-      secondaryYAxisValues.secondaryYScaleOptions = {
-        yMinValue: layout.yaxis2.range[0],
-        yMaxValue: layout.yaxis2.range[1],
-      };
-    } else {
+const usesSecondaryYScale = (series: Partial<PlotData>): boolean => {
+  return series.yaxis === 'y2';
+};
+
+const getSecondaryYAxisValues = (
+  data: Data[],
+  layout: Partial<Layout> | undefined,
+  maxAllowedMinY?: number,
+  minAllowedMaxY?: number,
+): SecondaryYAxisValues => {
+  let containsSecondaryYAxis = false;
+  let yMinValue: number | undefined;
+  let yMaxValue: number | undefined;
+
+  data.forEach((series: Partial<PlotData>) => {
+    if (usesSecondaryYScale(series)) {
+      containsSecondaryYAxis = true;
       const yValues = series.y as number[];
       if (yValues) {
-        secondaryYAxisValues.secondaryYScaleOptions = {
-          yMinValue: Math.min(...yValues),
-          yMaxValue: Math.max(...yValues),
-        };
+        yMinValue = Math.min(...yValues);
+        yMaxValue = Math.max(...yValues);
       }
     }
+  });
+
+  if (!containsSecondaryYAxis) {
+    return {};
   }
-  secondaryYAxisValues.secondaryYAxistitle =
-    secondaryYAxisValues.secondaryYAxistitle !== '' ? secondaryYAxisValues.secondaryYAxistitle : undefined;
-  secondaryYAxisValues.secondaryYScaleOptions =
-    secondaryYAxisValues.secondaryYScaleOptions && Object.keys(secondaryYAxisValues.secondaryYScaleOptions).length !== 0
-      ? secondaryYAxisValues.secondaryYScaleOptions
-      : undefined;
-  return secondaryYAxisValues;
+
+  if (typeof yMinValue === 'number' && typeof maxAllowedMinY === 'number') {
+    yMinValue = Math.min(yMinValue, maxAllowedMinY);
+  }
+  if (typeof yMaxValue === 'number' && typeof minAllowedMaxY === 'number') {
+    yMaxValue = Math.max(yMaxValue, minAllowedMaxY);
+  }
+  if (layout?.yaxis2?.range) {
+    yMinValue = layout.yaxis2.range[0];
+    yMaxValue = layout.yaxis2.range[1];
+  }
+
+  return {
+    secondaryYAxistitle:
+      typeof layout?.yaxis2?.title === 'string'
+        ? layout.yaxis2.title
+        : typeof layout?.yaxis2?.title?.text === 'string'
+        ? layout.yaxis2.title.text
+        : undefined,
+    secondaryYScaleOptions: {
+      yMinValue,
+      yMaxValue,
+    },
+  };
 };
 
 export const transformPlotlyJsonToDonutProps = (
@@ -246,8 +268,8 @@ export const transformPlotlyJsonToVSBCProps = (
 ): VerticalStackedBarChartProps => {
   const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
   let yMaxValue = 0;
+  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
   let yMinValue = 0;
-  let secondaryYAxisValues: SecondaryYAxisValues = {};
   input.data.forEach((series: PlotData, index1: number) => {
     const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
@@ -263,6 +285,7 @@ export const transformPlotlyJsonToVSBCProps = (
           data: yVal,
           color,
         });
+        yMaxValue = Math.max(yMaxValue, yVal);
       } else if (series.type === 'scatter' || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
@@ -271,13 +294,16 @@ export const transformPlotlyJsonToVSBCProps = (
           y: yVal,
           color,
           ...(lineOptions ? { lineOptions } : {}),
+          useSecondaryYScale: usesSecondaryYScale(series),
         });
+        if (!usesSecondaryYScale(series)) {
+          yMaxValue = Math.max(yMaxValue, yVal);
+        }
       }
 
       yMaxValue = Math.max(yMaxValue, yVal);
       yMinValue = Math.min(yMinValue, yVal);
     });
-    secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
   });
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
@@ -293,9 +319,9 @@ export const transformPlotlyJsonToVSBCProps = (
     xAxisTitle,
     yAxisTitle,
     mode: 'plotly',
-    secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-    secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+    ...secondaryYAxisValues,
     hideTickOverlap: true,
+    barGapMax: 2,
   };
 };
 
@@ -305,7 +331,7 @@ export const transformPlotlyJsonToGVBCProps = (
   isDarkTheme?: boolean,
 ): GroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, GroupedVerticalBarChartData> = {};
-  let secondaryYAxisValues: SecondaryYAxisValues = {};
+  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
   input.data.forEach((series: PlotData, index1: number) => {
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
@@ -321,10 +347,10 @@ export const transformPlotlyJsonToGVBCProps = (
           xAxisCalloutData: x as string,
           color,
           legend,
+          useSecondaryYScale: usesSecondaryYScale(series),
         });
       }
     });
-    secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
   });
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
@@ -338,8 +364,7 @@ export const transformPlotlyJsonToGVBCProps = (
     xAxisTitle,
     yAxisTitle,
     mode: 'plotly',
-    secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-    secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+    ...secondaryYAxisValues,
     hideTickOverlap: true,
   };
 };
@@ -416,7 +441,12 @@ export const transformPlotlyJsonToScatterChartProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): LineChartProps | AreaChartProps => {
-  let secondaryYAxisValues: SecondaryYAxisValues = {};
+  const secondaryYAxisValues = getSecondaryYAxisValues(
+    input.data,
+    input.layout,
+    isAreaChart ? 0 : undefined,
+    isAreaChart ? 0 : undefined,
+  );
   let mode: string = 'tonexty';
   const chartData: LineChartPoints[] = input.data.map((series: PlotData, index: number) => {
     const xValues = series.x as Datum[];
@@ -425,7 +455,6 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isXNumber = isNumberArray(xValues);
     const legend: string = getLegend(series, index);
     const lineColor = getColor(legend, colorMap, isDarkTheme);
-    secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
     const lineOptions = getLineOptions(series.line);
 
@@ -442,6 +471,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       })),
       color: lineColor,
       ...(lineOptions ? { lineOptions } : {}),
+      useSecondaryYScale: usesSecondaryYScale(series),
     } as LineChartPoints;
   });
 
@@ -459,8 +489,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       supportNegativeData: true,
       xAxisTitle,
       yAxisTitle,
-      secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-      secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+      ...secondaryYAxisValues,
       mode,
       width: input.layout?.width,
       height: input.layout?.height ?? 350,
@@ -473,8 +502,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       supportNegativeData: true,
       xAxisTitle,
       yAxisTitle,
-      secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-      secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+      ...secondaryYAxisValues,
       roundedTicks: true,
       yMinValue: yMinMaxValues.startValue,
       yMaxValue: yMinMaxValues.endValue,
@@ -495,11 +523,12 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const chartData: HorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: PlotData, index: number) => {
       return (series.y as Datum[]).map((yValue: string, i: number) => {
-        const color = getColor(yValue, colorMap, isDarkTheme);
+        const legendName = series.name ?? yValue;
+        const color = getColor(legendName, colorMap, isDarkTheme);
         return {
           x: series.x[i],
           y: yValue,
-          legend: yValue,
+          legend: legendName,
           color,
         } as HorizontalBarChartWithAxisDataPoint;
       });
@@ -512,12 +541,10 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const margin: number = input.layout?.margin?.l ?? 0;
   const padding: number = input.layout?.margin?.pad ?? 0;
   const availableHeight: number = chartHeight - margin - padding;
-  const numberOfBars = input.data.reduce((total: number, item: PlotData) => {
-    return total + (item.y?.length || 0);
-  }, 0);
+  const numberOfRows = new Set(chartData.map(d => d.y)).size || 1;
   const scalingFactor = 0.01;
-  const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
-  const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
+  const gapFactor = 1 / (1 + scalingFactor * numberOfRows);
+  const barHeight = availableHeight / (numberOfRows * (1 + gapFactor));
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
@@ -535,6 +562,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     height: chartHeight,
     width: input.layout?.width,
     hideTickOverlap: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 
@@ -648,6 +677,8 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): HeatMapC
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     hideTickOverlap: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 

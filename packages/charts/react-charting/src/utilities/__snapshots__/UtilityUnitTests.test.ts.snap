@@ -1610,7 +1610,7 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
         y="16"
       />
       <tspan
-        dy="1.81em"
+        dy="0.71em"
         id="LessLength"
         x="0"
         y="16"
@@ -1642,7 +1642,7 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
         y="16"
       />
       <tspan
-        dy="1.81em"
+        dy="0.71em"
         id="LessLength"
         x="0"
         y="16"
@@ -1674,7 +1674,7 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
         y="16"
       />
       <tspan
-        dy="1.81em"
+        dy="0.71em"
         id="LessLength"
         x="0"
         y="16"
@@ -1722,7 +1722,7 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
         y="16"
       />
       <tspan
-        dy="1.81em"
+        dy="0.71em"
         id="showDots"
         x="0"
         y="16"
@@ -1754,7 +1754,7 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
         y="16"
       />
       <tspan
-        dy="1.81em"
+        dy="0.71em"
         id="showDots"
         x="0"
         y="16"
@@ -1786,7 +1786,7 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
         y="16"
       />
       <tspan
-        dy="1.81em"
+        dy="0.71em"
         id="showDots"
         x="0"
         y="16"

@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix: progress bar when value is missing in firefox and safari",
+  "comment": "refactor: move tabindex logic into JS class",
   "packageName": "@fluentui/web-components",
   "email": "machi@microsoft.com",
   "dependentChangeType": "patch"

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Wed, 14 May 2025 18:49:17 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jun 2025 14:11:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.6.2)
+
+Thu, 26 Jun 2025 14:11:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.5.0..@fluentui/react-motion-components-preview_v0.6.2)
+
+### Patches
+
+- fix(Scale): update variant parameters to design spec & refactor internally ([PR #34712](https://github.com/microsoft/fluentui/pull/34712) by robertpenner@microsoft.com)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.5.0)
 
