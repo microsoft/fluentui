@@ -458,6 +458,10 @@ export function getNativeProps<T extends Record<string, any>>(
   // return native props.
   // We should be able to do this once this PR is merged: https://github.com/microsoft/TypeScript/pull/26797
 
+  // Guard against invalid `props` values
+  // (These will break `Object.keys()` and result in runtime errors.)
+  if (!props) { return props; }
+
   const isArray = Array.isArray(allowedPropNames);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const result: Record<string, any> = {};
