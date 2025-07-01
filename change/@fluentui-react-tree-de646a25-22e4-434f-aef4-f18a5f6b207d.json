@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: improve High Contrast on focus indicator",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
