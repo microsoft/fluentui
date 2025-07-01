@@ -628,7 +628,7 @@ export interface IFunnelChartProps {
     calloutProps?: Partial<ICalloutProps>;
     chartTitle?: string;
     className?: string;
-    componentRef?: React.RefObject<any>;
+    componentRef?: React_2.RefObject<any>;
     culture?: string;
     // Warning: (ae-forgotten-export) The symbol "IFunnelChartDataPoint" needs to be exported by the entry point index.d.ts
     data: IFunnelChartDataPoint[];

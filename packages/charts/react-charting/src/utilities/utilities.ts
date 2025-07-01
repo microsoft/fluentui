@@ -69,6 +69,7 @@ import {
   getMultiLevelDateTimeFormatOptions,
   handleFloatingPointPrecisionError,
 } from '@fluentui/chart-utilities';
+import { getColorContrast } from './colors';
 
 export const MIN_DOMAIN_MARGIN = 8;
 export const MIN_DONUT_RADIUS = 1;
@@ -1972,3 +1973,12 @@ export const getInvertedTextColor = (color: string, theme: ITheme | undefined): 
     ? theme!.semanticColors.bodyBackground
     : theme!.semanticColors.bodyText;
 };
+
+export function getContrastTextColor(backgroundColor: string, theme: ITheme): string {
+  let textColor = theme.semanticColors.bodyText;
+  const contrastRatio = getColorContrast(textColor, backgroundColor);
+  if (contrastRatio < 3) {
+    textColor = getInvertedTextColor(textColor, theme);
+  }
+  return textColor;
+}

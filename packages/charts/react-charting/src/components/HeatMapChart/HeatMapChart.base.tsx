@@ -32,15 +32,13 @@ import {
   IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxis,
-  resolveCSSVariables,
   sortAxisCategories,
-  getInvertedTextColor,
+  getContrastTextColor,
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
 import { toImage } from '../../utilities/image-export-utils';
-import { getColorContrast } from '../../utilities/colors';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -410,15 +408,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
            * data point such as x, y , value, rectText property of the rectangle
            */
           const dataPointObject = this._dataSet[yAxisDataPoint][index];
-          let styleRules = '';
-          let foregroundColor = this.props.theme!.semanticColors.bodyText;
-          if (this.chartContainer) {
-            styleRules = resolveCSSVariables(this.chartContainer!, foregroundColor);
-          }
-          const contrastRatio = getColorContrast(styleRules, this._colorScale(dataPointObject.value));
-          if (contrastRatio < 3) {
-            foregroundColor = getInvertedTextColor(foregroundColor, this.props.theme);
-          }
+          const foregroundColor = getContrastTextColor(this._colorScale(dataPointObject.value), this.props.theme!);
           rectElement = (
             <g
               key={id}

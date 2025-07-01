@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from '@fluentui/react/lib/Callout';
@@ -85,6 +86,7 @@ export interface IFunnelChartProps {
   /**
    * Reference to the chart component
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   componentRef?: React.RefObject<any>;
 
   /**

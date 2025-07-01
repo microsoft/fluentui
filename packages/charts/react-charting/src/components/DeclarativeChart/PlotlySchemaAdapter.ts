@@ -1516,30 +1516,44 @@ export const transformPlotlyJsonToChartTableProps = (
   };
 };
 
-function getCategoriesAndValues(series: any): { categories: any[]; values: any[] } {
+function getCategoriesAndValues(series: Partial<PlotData>): {
+  categories: (string | number)[];
+  values: (string | number)[];
+} {
   const orientation = series.orientation || 'h';
   const y = series.labels ?? series.y ?? series.stage;
   const x = series.values ?? series.x ?? series.value;
-  const xIsString = isStringArray(x);
-  const yIsString = isStringArray(y);
-  const xIsNumber = isNumberArray(x);
-  const yIsNumber = isNumberArray(y);
+  const xIsString = isStringArray(x as Datum[] | Datum[][] | TypedArray | undefined);
+  const yIsString = isStringArray(y as Datum[] | Datum[][] | TypedArray | undefined);
+  const xIsNumber = isNumberArray(x as Datum[] | Datum[][] | TypedArray | undefined);
+  const yIsNumber = isNumberArray(y as Datum[] | Datum[][] | TypedArray | undefined);
+
+  // Helper to ensure array of (string | number)
+  const toArray = (arr: unknown): (string | number)[] => {
+    if (Array.isArray(arr)) {
+      return arr as (string | number)[];
+    }
+    if (typeof arr === 'string' || typeof arr === 'number') {
+      return [arr];
+    }
+    return [];
+  };
 
   if (orientation === 'h') {
     if (yIsString && xIsNumber) {
-      return { categories: y, values: x };
+      return { categories: toArray(y), values: toArray(x) };
     } else if (xIsString && yIsNumber) {
-      return { categories: x, values: y };
+      return { categories: toArray(x), values: toArray(y) };
     } else {
-      return { categories: yIsString ? y : x, values: yIsString ? x : y };
+      return { categories: yIsString ? toArray(y) : toArray(x), values: yIsString ? toArray(x) : toArray(y) };
     }
   } else {
     if (xIsString && yIsNumber) {
-      return { categories: x, values: y };
+      return { categories: toArray(x), values: toArray(y) };
     } else if (yIsString && xIsNumber) {
-      return { categories: y, values: x };
+      return { categories: toArray(y), values: toArray(x) };
     } else {
-      return { categories: xIsString ? x : y, values: xIsString ? y : x };
+      return { categories: xIsString ? toArray(x) : toArray(y), values: xIsString ? toArray(y) : toArray(x) };
     }
   }
 }
@@ -1558,14 +1572,14 @@ export const transformPlotlyJsonToFunnelChartProps = (
     input.data.length > 1 &&
     input.data.every((series: Partial<PlotData>) => {
       const values = series.values ?? series.x ?? series.value;
-      const labels = series.labels ?? series.y ?? (series as any).stage;
+      const labels = series.labels ?? series.y ?? series.stage;
       return Array.isArray(labels) && Array.isArray(values) && values.length > 1 && labels.length > 1;
     });
 
   if (isStacked) {
     // Assign a color per series/category and use it for all subValues of that category
     const seriesColors: Record<string, string> = {};
-    input.data.forEach((series: any, seriesIdx: number) => {
+    input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
       const category = series.name || `Category ${seriesIdx + 1}`;
       // Use the same color for this category across all stages
       const extractedColors = extractColor(
@@ -1585,23 +1599,27 @@ export const transformPlotlyJsonToFunnelChartProps = (
       if (!isArrayOrTypedArray(labels) || !isArrayOrTypedArray(values)) {
         return;
       }
-
-      labels.forEach((label: string, i: number) => {
-        const stageIndex = funnelData.findIndex(stage => stage.stage === label);
-
-        if (stageIndex === -1) {
-          funnelData.push({
-            stage: label,
-            subValues: [{ category, value: values[i], color }],
-          });
-        } else {
-          funnelData[stageIndex].subValues!.push({ category, value: values[i], color });
-        }
-      });
+      if (labels && isArrayOrTypedArray(labels) && labels.length > 0) {
+        (labels as (string | number)[]).forEach((label: string, i: number) => {
+          const stageIndex = funnelData.findIndex(stage => stage.stage === label);
+          const valueNum = Number((values as (string | number)[])[i]);
+          if (isNaN(valueNum)) {
+            return;
+          }
+          if (stageIndex === -1) {
+            funnelData.push({
+              stage: label,
+              subValues: [{ category, value: valueNum, color }],
+            });
+          } else {
+            funnelData[stageIndex].subValues!.push({ category, value: valueNum, color });
+          }
+        });
+      }
     });
   } else {
     // Non-stacked data handling (multiple series with single-value arrays)
-    input.data.forEach((series: any, seriesIdx: number) => {
+    input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
       const { categories, values } = getCategoriesAndValues(series);
 
       if (!isArrayOrTypedArray(categories) || !isArrayOrTypedArray(values)) {
@@ -1618,9 +1636,13 @@ export const transformPlotlyJsonToFunnelChartProps = (
 
       categories.forEach((label: string, i: number) => {
         const color = resolveColor(extractedColors, i, label, colorMap, isDarkTheme);
+        const valueNum = Number(values[i]);
+        if (isNaN(valueNum)) {
+          return;
+        }
         funnelData.push({
           stage: label,
-          value: values[i],
+          value: valueNum,
           color,
         });
       });
@@ -1631,7 +1653,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
     data: funnelData,
     width: input.layout?.width,
     height: input.layout?.height,
-    orientation: (input.data[0] as any)?.orientation === 'v' ? 'vertical' : 'horizontal',
+    orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'vertical' : 'horizontal',
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
   };
 };

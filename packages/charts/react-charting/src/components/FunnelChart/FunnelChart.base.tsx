@@ -13,8 +13,7 @@ import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IImageExportOptions } from '../../types/index';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
-import { getInvertedTextColor } from '../../utilities/utilities';
-import { getColorContrast } from '../../utilities/colors';
+import { getContrastTextColor } from '../../utilities/utilities';
 import {
   getHorizontalFunnelSegmentGeometry,
   getVerticalFunnelSegmentGeometry,
@@ -191,11 +190,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     data: IFunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } };
   }) {
     const eventHandlers = _getEventHandlerProps(data);
-    let textColor = props.theme!.semanticColors.bodyText;
-    const contrastRatio = getColorContrast(textColor, fill);
-    if (contrastRatio < 3) {
-      textColor = getInvertedTextColor(textColor, props.theme);
-    }
+    const textColor = getContrastTextColor(fill, props.theme!);
 
     return (
       <g key={key}>
