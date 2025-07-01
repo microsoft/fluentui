@@ -96,7 +96,7 @@ export interface ILineChartProps extends ICartesianChartProps {
   lineMode?: 'default' | 'scatter';
 
   /**
-   * To enable callout for individualbar or complete stack.
+   * To enable callout for individual line or complete stack.
    * @default false
    * @type \{boolean \}
    */

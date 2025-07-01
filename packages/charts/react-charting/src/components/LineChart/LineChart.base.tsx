@@ -330,7 +330,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         chartTitle={this._getChartTitle()}
         points={points}
         chartType={ChartTypes.LineChart}
-        isCalloutForStack={this.props.isCalloutForStack}
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
