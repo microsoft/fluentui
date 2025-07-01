@@ -2,6 +2,145 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 27 Jun 2025 13:39:40 GMT",
+      "tag": "@fluentui/react-components_v9.66.5",
+      "version": "9.66.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "1527b08bc5d5b634523688ece52b320a89d83482",
+            "comment": "fix: move action button to be the first button"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a22081a0cf560f862587a4485de93ecebb05f16d",
+            "comment": "fix: stop rAF if no mouse movement happening"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "a6b8ef6bbf59bc8ebc953d43e32f33fdecc1977d",
+            "comment": "fix(focusVisiblePolyfill): Strict mode compat after portal changes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jun 2025 14:11:52 GMT",
+      "tag": "@fluentui/react-components_v9.66.4",
+      "version": "9.66.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "71ddcad113d5d17402abb05c80edf0ebecc6f660",
+            "comment": "fix: Ensure we destroy carousel API on unmount"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "69ed95d1ac5703ca65f5f9dc04938e749235f02b",
+            "comment": "high contrast fix"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d73c885b16b1ee9d615908f3ba79f95b38b55938",
+            "comment": "implement stacked hbc with axis and support for negative x values"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "eb380a1ff0efb181818deb2817a4878f0b9a6da7",
+            "comment": "negative y value support and fix bar overlapping issue"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "f9d8524bd5df6f2b492663ecfa9e57b83f479b6d",
+            "comment": "fix(Scale): update variant parameters to design spec & refactor internally"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "65c65b0e98cbe507263400cfd66112edcb44c273",
+            "comment": "fix: only display actions on hover"
+          }
+        ],
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "3598b2d30d51921401f47301035e29c9b41f6c68",
+            "comment": "Presence enter & exit motions can be used separately with .In & .Out"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "0cd38790be5513dfe292535bf2fcdccf32b8638b",
+            "comment": "feat: add motion to nav components"
+          },
+          {
+            "author": "xboy2008@live.cn",
+            "package": "@fluentui/react-utilities",
+            "commit": "b3e8218f0b635e03c23c1d24fda049a2baa6b872",
+            "comment": "Shorten pollDuration to 100ms in useIFrameFocus"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "0a4dcce4c5f7f5d6f53aa0b3a9b54a303306c12d",
+            "comment": "fix: Ensure virtualizer recalcs on numItems change"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Jun 2025 15:49:46 GMT",
+      "tag": "@fluentui/react-components_v9.66.3",
+      "version": "9.66.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "2e2354bac6eceea41195a8ae40dc4ee654ca2817",
+            "comment": "Add negative y value support in GVBC"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "108833800b70872ee7399de955f4633e164b0f1c",
+            "comment": "add support for negative vsbc"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6ad03ce04b77a80226cff792d4fc5b42e905a73b",
+            "comment": "port v8 changes to v9"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "a00b7d0f205b6178637eddd2e981b5e12efb3df5",
+            "comment": "feat: export usePositioning() & useSafeZoneArea() hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a00b7d0f205b6178637eddd2e981b5e12efb3df5",
+            "comment": "feat: improve handling of different shapes of rectangles in useSafeZoneArea()"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jun 2025 17:33:57 GMT",
       "tag": "@fluentui/react-components_v9.66.2",
       "version": "9.66.2",

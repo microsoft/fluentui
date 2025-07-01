@@ -606,6 +606,7 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
     isCalloutForStack?: boolean;
     maxBarWidth?: number;
     mode?: 'default' | 'plotly';
+    roundCorners?: boolean;
     styles?: GroupedVerticalBarChartStyles;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;
@@ -686,6 +687,7 @@ export interface HeatMapChartProps extends CartesianChartProps {
     domainValuesForColorScale: number[];
     rangeValuesForColorScale: string[];
     showYAxisLables?: boolean;
+    showYAxisLablesTooltip?: boolean;
     sortOrder?: 'none' | 'alphabetical';
     styles?: HeatMapChartStyles;
     xAxisDateFormatString?: string;
@@ -1034,12 +1036,14 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     // (undocumented)
     getAxisData?: any;
     getDomainMargins?: (containerWidth: number) => Margins;
+    getDomainNRangeValues?: (points: HorizontalBarChartWithAxisDataPoint[], margins: Margins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: Margins) => void;
     getMinMaxOfYAxis?: (points: DataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
         startValue: number;
         endValue: number;
     };
+    getYDomainMargins?: (containerHeight: number) => Margins;
     isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;

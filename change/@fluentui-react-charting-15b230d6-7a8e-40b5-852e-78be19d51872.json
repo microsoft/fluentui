@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "make change in createNumericYAxis function in utilities ",
+  "comment": "implement single value callout in line chart",
   "packageName": "@fluentui/react-charting",
   "email": "anushgupta@microsoft.com",
   "dependentChangeType": "patch"
