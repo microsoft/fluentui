@@ -69,7 +69,6 @@ import {
   getMultiLevelDateTimeFormatOptions,
   handleFloatingPointPrecisionError,
 } from '@fluentui/chart-utilities';
-import { getColorContrast } from './colors';
 
 export const MIN_DOMAIN_MARGIN = 8;
 export const MIN_DONUT_RADIUS = 1;

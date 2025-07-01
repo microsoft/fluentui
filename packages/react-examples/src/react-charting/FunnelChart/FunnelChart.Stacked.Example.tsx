@@ -67,7 +67,11 @@ export class FunnelChartStackedExample extends React.Component<{}, IFunnelChartB
       { key: 'vertical', text: 'Vertical' },
     ];
 
-    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px`, textAlign: 'center' };
+    const rootStyle = {
+      width: `${this.state.width}px`,
+      height: `${this.state.height}px`,
+      textAlign: 'center' as const,
+    };
 
     return (
       <>
