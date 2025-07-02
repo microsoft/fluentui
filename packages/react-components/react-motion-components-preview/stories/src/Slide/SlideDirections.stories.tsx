@@ -2,15 +2,15 @@ import * as React from 'react';
 import { makeStyles, tokens, Button } from '@fluentui/react-components';
 import { Slide } from '@fluentui/react-motion-components-preview';
 import SlideDirectionsDescription from './SlideDirections.stories.md';
-import { 
-  ArrowUpFilled, 
-  ArrowDownFilled, 
-  ArrowLeftFilled, 
+import {
+  ArrowUpFilled,
+  ArrowDownFilled,
+  ArrowLeftFilled,
   ArrowRightFilled,
   ArrowUpLeftFilled,
   ArrowUpRightFilled,
   ArrowDownLeftFilled,
-  ArrowDownRightFilled
+  ArrowDownRightFilled,
 } from '@fluentui/react-icons';
 
 const useClasses = makeStyles({
@@ -123,22 +123,26 @@ export const Directions = () => {
     <div className={classes.container}>
       <div className={classes.controls}>
         <div className={classes.directionsGrid}>
-          {directionGrid.flat().map((direction, index) =>
-            direction ? (
-              <Button
-                key={direction}
-                className={classes.directionButton}
-                appearance={selectedDirection === direction ? 'primary' : 'secondary'}
-                onClick={() => handleDirectionClick(direction)}
-              >
-                {React.createElement(directionIcons[direction as keyof typeof directionIcons])}
-              </Button>
-            ) : (
+          {directionGrid.flat().map((direction, index) => {
+            if (direction) {
+              const ArrowIconForDirection = directionIcons[direction as keyof typeof directionIcons];
+              return (
+                <Button
+                  key={direction}
+                  className={classes.directionButton}
+                  appearance={selectedDirection === direction ? 'primary' : 'secondary'}
+                  onClick={() => handleDirectionClick(direction)}
+                >
+                  <ArrowIconForDirection />
+                </Button>
+              );
+            }
+            return (
               <div key={index} className={classes.centerSpace}>
                 <h4>Click</h4>
               </div>
-            ),
-          )}
+            );
+          })}
         </div>
       </div>
 
