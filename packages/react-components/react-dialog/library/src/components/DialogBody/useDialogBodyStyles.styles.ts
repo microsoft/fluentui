@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { DialogBodySlots, DialogBodyState } from './DialogBody.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { DIALOG_GAP, MEDIA_QUERY_BREAKPOINT_SELECTOR, MEDIA_QUERY_SHORT_SCREEN, SURFACE_PADDING } from '../../contexts';
