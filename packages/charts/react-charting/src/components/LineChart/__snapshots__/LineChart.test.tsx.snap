@@ -420,7 +420,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -539,6 +539,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           {
             position: relative;
           }
+      style="display: none;"
     >
       <div
         class=
@@ -588,119 +589,11 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 width: 100%;
               }
           style="outline: none; max-height: 100%;"
-        >
-          <div
-            class=
-
-                {
-                  background-blend-mode: normal, luminosity;
-                  background-color: #ffffff;
-                  display: grid;
-                  overflow: hidden;
-                  padding-bottom: 10px;
-                  padding-left: 16px;
-                  padding-right: 16px;
-                  padding-top: 11px;
-                }
-          >
-            <div
-              class=
-
-                  {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                  }
-            >
-              <div
-                class=
-
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #605e5c;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 12px;
-                      font-weight: 400;
-                      line-height: 16px;
-                      opacity: 0.85;
-                    }
-                data-is-focusable="false"
-                role="text"
-              >
-                20
-              </div>
-            </div>
-            <div>
-              <div
-                data-is-focusable="false"
-                role="text"
-              >
-                <div>
-                  <div
-                    class=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          border-left: 4px solid red;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 16px;
-                          font-weight: 400;
-                          margin-top: 13px;
-                          padding-left: 8px;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          forced-color-adjust: none;
-                        }
-                    id="0_50"
-                  >
-                    <div>
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #605e5c;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              color: CanvasText;
-                            }
-                      >
-                         
-                        metaData1
-                      </div>
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 16px;
-                              font-weight: bold;
-                              line-height: 22px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              color: CanvasText;
-                            }
-                      >
-                        50
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        />
       </div>
+    </div>
+    <div>
+      Loading...
     </div>
   </div>
 </div>
@@ -1126,7 +1019,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1737,7 +1630,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

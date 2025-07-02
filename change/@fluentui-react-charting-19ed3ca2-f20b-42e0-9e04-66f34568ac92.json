@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "make change in createNumericYAxis function in utilities ",
-  "packageName": "@fluentui/react-charting",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

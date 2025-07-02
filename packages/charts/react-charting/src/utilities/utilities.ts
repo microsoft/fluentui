@@ -53,7 +53,7 @@ import {
   AxisCategoryOrder,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
-import { getId } from '@fluentui/react';
+import { getId, ITheme } from '@fluentui/react';
 import {
   CurveFactory,
   curveLinear as d3CurveLinear,
@@ -69,6 +69,7 @@ import {
   getMultiLevelDateTimeFormatOptions,
   handleFloatingPointPrecisionError,
 } from '@fluentui/chart-utilities';
+import { getColorContrast } from './colors';
 
 export const MIN_DOMAIN_MARGIN = 8;
 export const MIN_DONUT_RADIUS = 1;
@@ -1872,7 +1873,7 @@ export function domainRangeOfNumericForScatterChart(
   })!;
 
   let xMax = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data as IScatterChartDataPoint[], (item: ILineChartDataPoint) => {
+    return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
       return item.x as number;
     });
   })!;
@@ -1965,3 +1966,18 @@ export const sortAxisCategories = (
 
   return Object.keys(categoryToValues);
 };
+
+export const getInvertedTextColor = (color: string, theme: ITheme | undefined): string => {
+  return color === theme!.semanticColors.bodyText
+    ? theme!.semanticColors.bodyBackground
+    : theme!.semanticColors.bodyText;
+};
+
+export function getContrastTextColor(backgroundColor: string, theme: ITheme): string {
+  let textColor = theme.semanticColors.bodyText;
+  const contrastRatio = getColorContrast(textColor, backgroundColor);
+  if (contrastRatio < 3) {
+    textColor = getInvertedTextColor(textColor, theme);
+  }
+  return textColor;
+}

@@ -1173,7 +1173,8 @@ export interface PlotData {
     | 'gauge+number'
     | 'gauge+number+delta'
     | 'gauge+delta'
-    | 'markers+text';
+    | 'markers+text'
+    | 'lines+text';
   histfunc: 'count' | 'sum' | 'avg' | 'min' | 'max';
   histnorm: '' | 'percent' | 'probability' | 'density' | 'probability density';
   hoveron: 'points' | 'fills';
@@ -1306,6 +1307,7 @@ export interface PlotData {
   value: number;
   values: Datum[];
   labels: Datum[];
+  stage: string;
   direction: 'clockwise' | 'counterclockwise';
   hole: number;
   rotation: number;

@@ -564,6 +564,7 @@ export class CartesianChartBase
             role="region"
             aria-label={this._getChartDescription()}
             style={{ display: 'block' }}
+            className={this._classNames.chart}
             {...getSecureProps(svgProps)}
           >
             <g
