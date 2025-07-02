@@ -36,7 +36,7 @@ const MoreHorizontalIcon = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegula
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
 };
 
 type LastUpdatedCell = {
@@ -46,7 +46,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
 };
 
 type AuthorCell = {

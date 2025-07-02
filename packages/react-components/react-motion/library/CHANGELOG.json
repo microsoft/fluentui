@@ -2,6 +2,48 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Thu, 26 Jun 2025 14:11:54 GMT",
+      "tag": "@fluentui/react-motion_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "3598b2d30d51921401f47301035e29c9b41f6c68",
+            "comment": "Presence enter & exit motions can be used separately with .In & .Out"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.22.0",
+            "commit": "2b89e39a253fe3570265284b19d2461b9d37fb86"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Jun 2025 17:34:00 GMT",
+      "tag": "@fluentui/react-motion_v9.8.1",
+      "version": "9.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.24.0",
+            "commit": "ddb50b0e9313fe7eb75830a0546d01a2c7fe270b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.21.1",
+            "commit": "ddb50b0e9313fe7eb75830a0546d01a2c7fe270b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Jun 2025 09:43:33 GMT",
       "tag": "@fluentui/react-motion_v9.8.0",
       "version": "9.8.0",

@@ -33,9 +33,7 @@ exports[`TagPicker renders correctly 1`] = `
           width: 1px;
         }
     id="selected-suggestion-alert-id__0"
-  >
-    
-  </div>
+  />
   <span
     hidden={true}
     id="selected-items-id__0-label"
@@ -462,9 +460,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
           width: 1px;
         }
     id="selected-suggestion-alert-id__0"
-  >
-    
-  </div>
+  />
   <span
     hidden={true}
     id="selected-items-id__0-label"

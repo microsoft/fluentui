@@ -1,8 +1,74 @@
 # Change Log - @fluentui/react-nav
 
-This log was last generated on Fri, 13 Jun 2025 12:32:53 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jun 2025 13:39:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.2.1)
+
+Fri, 27 Jun 2025 13:39:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav_v9.2.0..@fluentui/react-nav_v9.2.1)
+
+### Patches
+
+- fix: move action button to be the first button ([PR #34718](https://github.com/microsoft/fluentui/pull/34718) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-aria to v9.15.3 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-button to v9.5.3 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-drawer to v9.8.5 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-tabster to v9.25.3 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.5 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.2.0)
+
+Thu, 26 Jun 2025 14:11:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav_v9.1.3..@fluentui/react-nav_v9.2.0)
+
+### Minor changes
+
+- feat: add motion to nav components ([PR #34632](https://github.com/microsoft/fluentui/pull/34632) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-aria to v9.15.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-button to v9.5.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-divider to v9.3.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-drawer to v9.8.4 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-motion to v9.9.0 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-tabster to v9.25.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.4 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-utilities to v9.22.0 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+
+### Patches
+
+- fix: only display actions on hover ([PR #34634](https://github.com/microsoft/fluentui/pull/34634) by marcosvmmoura@gmail.com)
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.1.3)
+
+Mon, 23 Jun 2025 15:49:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav_v9.1.2..@fluentui/react-nav_v9.1.3)
+
+### Patches
+
+- Bump @fluentui/react-tooltip to v9.7.3 ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by beachball)
+- Bump @fluentui/react-drawer to v9.8.3 ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by beachball)
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.1.2)
+
+Wed, 18 Jun 2025 17:33:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav_v9.1.1..@fluentui/react-nav_v9.1.2)
+
+### Patches
+
+- feat: add support for custom style hooks ([PR #34633](https://github.com/microsoft/fluentui/pull/34633) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-aria to v9.15.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-button to v9.5.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.2 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-divider to v9.3.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-drawer to v9.8.2 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.24.0 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-tabster to v9.25.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-utilities to v9.21.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
 
 ## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.1.1)
 

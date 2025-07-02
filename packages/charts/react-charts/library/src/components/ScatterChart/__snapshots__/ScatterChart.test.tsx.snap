@@ -13,6 +13,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
     >
       <svg
         aria-label="Sales Performance by Category"
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"

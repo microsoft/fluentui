@@ -154,6 +154,7 @@ export class DetailsHeaderBase
     this._events.dispose();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const {
       columns = NO_COLUMNS,
@@ -635,6 +636,7 @@ export class DetailsHeaderBase
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderColumnSizer = ({ columnIndex }: IDetailsColumnProps): JSX.Element | null => {
     const { columns = NO_COLUMNS } = this.props;
     const column = columns[columnIndex];
@@ -662,6 +664,7 @@ export class DetailsHeaderBase
     ) : null;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderColumnDivider(columnIndex: number): JSX.Element | null {
     const { columns = NO_COLUMNS } = this.props;
     const column = columns[columnIndex];
@@ -671,6 +674,7 @@ export class DetailsHeaderBase
       : this._renderColumnSizer({ column, columnIndex });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderDropHint(dropHintIndex: number): JSX.Element {
     const classNames = this._classNames;
     const IconComponent = this.props.useFastIcons ? FontIcon : Icon;
@@ -702,6 +706,7 @@ export class DetailsHeaderBase
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderColumnHeaderTooltip = (tooltipHostProps: ITooltipHostProps): JSX.Element => {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
   };

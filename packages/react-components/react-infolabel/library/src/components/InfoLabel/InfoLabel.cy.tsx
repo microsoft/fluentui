@@ -5,7 +5,10 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import { InfoLabel } from '@fluentui/react-infolabel';
 import { infoButtonClassNames } from '../InfoButton/useInfoButtonStyles.styles';
 
-const mount = (element: JSX.Element) => {
+const mount = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

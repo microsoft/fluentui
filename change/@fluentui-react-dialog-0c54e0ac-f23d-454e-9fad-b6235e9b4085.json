@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore(react-dialog): remove boxShadow on DialogSurfaceMotion",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

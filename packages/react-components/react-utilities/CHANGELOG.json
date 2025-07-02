@@ -2,6 +2,36 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 26 Jun 2025 14:11:55 GMT",
+      "tag": "@fluentui/react-utilities_v9.22.0",
+      "version": "9.22.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "xboy2008@live.cn",
+            "package": "@fluentui/react-utilities",
+            "commit": "b3e8218f0b635e03c23c1d24fda049a2baa6b872",
+            "comment": "Shorten pollDuration to 100ms in useIFrameFocus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Jun 2025 17:34:00 GMT",
+      "tag": "@fluentui/react-utilities_v9.21.1",
+      "version": "9.21.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.24.0",
+            "commit": "ddb50b0e9313fe7eb75830a0546d01a2c7fe270b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Jun 2025 09:43:33 GMT",
       "tag": "@fluentui/react-utilities_v9.21.0",
       "version": "9.21.0",

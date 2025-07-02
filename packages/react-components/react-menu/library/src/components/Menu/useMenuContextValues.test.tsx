@@ -29,7 +29,7 @@ describe('useMenuContextValues_unstable', () => {
         "openOnHover": false,
         "persistOnItemClick": false,
         "setOpen": [Function],
-        "triggerId": "menu1",
+        "triggerId": "menur0",
         "triggerRef": Object {
           "current": null,
         },

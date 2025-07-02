@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LegendsProps } from '../Legends/index';
-import { AccessibilityProps, Chart, Margins } from '../../types/index';
-import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/index';
+import { AccessibilityProps, Chart, Margins, DataPoint, HorizontalBarChartWithAxisDataPoint } from '../../types/index';
+import { ChartTypes, XAxisTypes, YAxisType, IDomainNRange } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartPopoverProps } from './ChartPopover.types';
 /**
@@ -56,6 +56,7 @@ export interface CartesianChartStyleProps {
 
   /**
    * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @deprecated Use `reflowProps` instead.
    */
   enableReflow?: boolean;
 }
@@ -129,6 +130,11 @@ export interface CartesianChartStyles {
    * Styles for the svg tooltip
    */
   svgTooltip?: string;
+
+  /**
+   * Styles for the chart svg element
+   */
+  chart?: string;
 }
 
 /**
@@ -338,7 +344,7 @@ export interface CartesianChartProps {
 
   /**
    * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
-   * @default True for LineChart but False for other charts
+   * @deprecated Use `reflowProps` instead.
    */
   enableReflow?: boolean;
 
@@ -424,7 +430,7 @@ export interface ChildProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   xScale?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  yScale?: any;
+  yScalePrimary?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yScaleSecondary?: any;
   containerHeight?: number;
@@ -554,6 +560,9 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /** Callback method to get extra margins for domain */
   getDomainMargins?: (containerWidth: number) => Margins;
 
+  /** Callback method to get extra margins for Y-axis domain */
+  getYDomainMargins?: (containerHeight: number) => Margins;
+
   /** Padding between each bar/line-point */
   xAxisInnerPadding?: number;
 
@@ -576,4 +585,28 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
    * Used to control the first render cycle Performance optimization code.
    */
   enableFirstRenderOptimization?: boolean;
+
+  /**
+   * Get the min and max values of the y-axis
+   */
+  getMinMaxOfYAxis?: (
+    points: DataPoint[],
+    yAxisType: YAxisType | undefined,
+    useSecondaryYScale?: boolean,
+  ) => { startValue: number; endValue: number };
+
+  /**Add commentMore actions
+   * Get the domain and range values
+   */
+  getDomainNRangeValues?: (
+    points: HorizontalBarChartWithAxisDataPoint[],
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | string[] | undefined,
+    shiftX: number,
+  ) => IDomainNRange;
 }

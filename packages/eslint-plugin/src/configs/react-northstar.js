@@ -82,6 +82,7 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
     'react/no-unused-prop-types': 'off',
     'react/no-unused-state': 'off',
+    'react/no-deprecated': 'warn',
     'react/prefer-stateless-function': 'off',
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
