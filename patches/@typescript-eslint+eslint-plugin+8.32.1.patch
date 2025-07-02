@@ -1,0 +1,39 @@
+diff --git a/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js b/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
+index 80f8f64..9cac259 100644
+--- a/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
++++ b/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
+@@ -153,12 +153,10 @@ exports.default = (0, util_1.createRule)({
+                     return false;
+             }
+         }
+-        function isInsideExportOrImport(node) {
++        function isInsideImport(node) {
+             let current = node;
+             while (true) {
+                 switch (current.type) {
+-                    case utils_1.AST_NODE_TYPES.ExportAllDeclaration:
+-                    case utils_1.AST_NODE_TYPES.ExportNamedDeclaration:
+                     case utils_1.AST_NODE_TYPES.ImportDeclaration:
+                         return true;
+                     case utils_1.AST_NODE_TYPES.ArrowFunctionExpression:
+@@ -168,6 +166,7 @@ exports.default = (0, util_1.createRule)({
+                     case utils_1.AST_NODE_TYPES.FunctionDeclaration:
+                     case utils_1.AST_NODE_TYPES.FunctionExpression:
+                     case utils_1.AST_NODE_TYPES.Program:
++                    case utils_1.AST_NODE_TYPES.ExportSpecifier:
+                     case utils_1.AST_NODE_TYPES.TSUnionType:
+                     case utils_1.AST_NODE_TYPES.VariableDeclarator:
+                         return false;
+@@ -293,7 +292,11 @@ exports.default = (0, util_1.createRule)({
+             return searchForDeprecationInAliasesChain(services.getSymbolAtLocation(node), true);
+         }
+         function checkIdentifier(node) {
+-            if (isDeclaration(node) || isInsideExportOrImport(node)) {
++            if (node.parent.type === utils_1.AST_NODE_TYPES.ExportSpecifier &&
++                node.parent.exported === node) {
++                return;
++            }
++            if (isDeclaration(node) || isInsideImport(node)) {
+                 return;
+             }
+             const reason = getDeprecationReason(node);
