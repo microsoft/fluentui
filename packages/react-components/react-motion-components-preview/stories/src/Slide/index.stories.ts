@@ -5,8 +5,6 @@ export { Default } from './SlideDefault.stories';
 export { Snappy } from './SlideSnappy.stories';
 export { Relaxed } from './SlideRelaxed.stories';
 export { Customization } from './SlideCustomization.stories';
-export { UnitsAndPercentages } from './SlideUnits.stories';
-export { Showcase } from './SlideShowcase.stories';
 export { SequentialAnimation } from './SlideSequential.stories';
 
 export default {
