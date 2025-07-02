@@ -304,7 +304,7 @@ const useRootStyles = makeStyles({
     borderRadius: semanticTokens.cornerCtrlSmRest,
 
     fontSize: semanticTokens.textRampSmItemBodyFontSize,
-    fontWeight: semanticTokens.textCtrlButtonWeightDefault,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
     lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
   },
   smallWithIcon: {
