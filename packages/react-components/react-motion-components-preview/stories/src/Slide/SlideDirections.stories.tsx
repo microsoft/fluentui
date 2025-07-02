@@ -92,10 +92,9 @@ export const Directions = () => {
       <div className={classes.demo}>
         <Slide visible={visible} fromX={slideParams.fromX} fromY={slideParams.fromY}>
           <div className={classes.card}>
-            <h3>Slide Animation</h3>
-            <p>Direction: {selectedDirection}</p>
-            <p>fromX: {slideParams.fromX}</p>
-            <p>fromY: {slideParams.fromY}</p>
+            <p>{selectedDirection}</p>
+            <p>fromX = {slideParams.fromX}</p>
+            <p>fromY = {slideParams.fromY}</p>
           </div>
         </Slide>
       </div>
