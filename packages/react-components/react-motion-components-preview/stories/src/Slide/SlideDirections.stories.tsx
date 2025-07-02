@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Field, makeStyles, tokens, Switch, Button, Dropdown, Option } from '@fluentui/react-components';
+import { Field, makeStyles, tokens, Button, Dropdown, Option } from '@fluentui/react-components';
 import { Slide } from '@fluentui/react-motion-components-preview';
+import SlideDirectionsDescription from './SlideDirections.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -62,29 +63,16 @@ const slideDirections = {
   'Slide from Left (50%)': { fromX: '-50%', fromY: '0%' },
 };
 
-export const Customization = () => {
+export const Directions = () => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
   const [selectedDirection, setSelectedDirection] = React.useState<string>('Slide from Top (px)');
-  const [animateOpacity, setAnimateOpacity] = React.useState<boolean>(true);
 
   const slideParams = slideDirections[selectedDirection as keyof typeof slideDirections];
 
   return (
     <div className={classes.container}>
       <div className={classes.controls}>
-        <Field className={classes.field}>
-          <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
-        </Field>
-        
-        <Field className={classes.field}>
-          <Switch 
-            label="Animate Opacity" 
-            checked={animateOpacity} 
-            onChange={() => setAnimateOpacity(v => !v)} 
-          />
-        </Field>
-
         <Field className={classes.field} label="Slide Direction">
           <Dropdown
             value={selectedDirection}
@@ -98,27 +86,27 @@ export const Customization = () => {
           </Dropdown>
         </Field>
 
-        <Button onClick={() => setVisible(v => !v)}>
-          Toggle Animation
-        </Button>
+        <Button onClick={() => setVisible(v => !v)}>Toggle Animation</Button>
       </div>
 
       <div className={classes.demo}>
-        <Slide
-          visible={visible}
-          fromX={slideParams.fromX}
-          fromY={slideParams.fromY}
-          animateOpacity={animateOpacity}
-        >
+        <Slide visible={visible} fromX={slideParams.fromX} fromY={slideParams.fromY}>
           <div className={classes.card}>
             <h3>Slide Animation</h3>
             <p>Direction: {selectedDirection}</p>
             <p>fromX: {slideParams.fromX}</p>
             <p>fromY: {slideParams.fromY}</p>
-            <p>Opacity: {animateOpacity ? 'Animated' : 'Static'}</p>
           </div>
         </Slide>
       </div>
     </div>
   );
+};
+
+Directions.parameters = {
+  docs: {
+    description: {
+      story: SlideDirectionsDescription,
+    },
+  },
 };
