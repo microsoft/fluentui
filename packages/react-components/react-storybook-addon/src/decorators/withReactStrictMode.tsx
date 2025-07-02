@@ -4,7 +4,11 @@ import { STRICT_MODE_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
 
-export const withReactStrictMode = (StoryFn: () => JSX.Element, context: FluentStoryContext) => {
+export const withReactStrictMode = (
+  StoryFn: () => // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+  context: FluentStoryContext,
+) => {
   if (isDecoratorDisabled(context, 'ReactStrictMode')) {
     return StoryFn();
   }

@@ -2308,9 +2308,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           "width": "auto",
         }
       }
-    >
-      
-    </div>
+    />
     <div
       className=
           ms-DetailsRow-cell
@@ -2374,9 +2372,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           "width": "auto",
         }
       }
-    >
-      
-    </div>
+    />
     <div
       className=
           ms-DetailsRow-cell
@@ -2440,9 +2436,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           "width": "auto",
         }
       }
-    >
-      
-    </div>
+    />
   </div>
 </div>
 `;

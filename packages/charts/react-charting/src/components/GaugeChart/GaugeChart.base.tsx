@@ -659,7 +659,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             className={this._classNames.calloutContentX}
             {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
           >
-            {formatToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
+            {formatToLocaleString(calloutProps!.hoverXValue, this.props.culture) as React.ReactNode}
           </div>
         </div>
         <div
@@ -732,7 +732,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     });
 
     const { culture } = this.props;
-    const yValue = formatToLocaleString(xValue.y, culture);
+    const yValue = formatToLocaleString(xValue.y, culture) as React.ReactNode;
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
@@ -754,10 +754,12 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             <div>
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
-                {formatToLocaleString(
-                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
-                  culture,
-                )}
+                {
+                  formatToLocaleString(
+                    xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
+                    culture,
+                  ) as React.ReactNode
+                }
               </div>
             </div>
           </div>
@@ -773,9 +775,12 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
               <div key={subcountName} className={_classNames.calloutBlockContainer}>
-                <div className={_classNames.calloutlegendText}> {formatToLocaleString(subcountName, culture)}</div>
+                <div className={_classNames.calloutlegendText}>
+                  {' '}
+                  {formatToLocaleString(subcountName, culture) as React.ReactNode}
+                </div>
                 <div className={_classNames.calloutContentY}>
-                  {formatToLocaleString(subcounts[subcountName], culture)}
+                  {formatToLocaleString(subcounts[subcountName], culture) as React.ReactNode}
                 </div>
               </div>
             );

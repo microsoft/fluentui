@@ -17,7 +17,8 @@
     "lib": ["es2015", "dom", "es2015.promise"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "custom-global"],
-    "isolatedModules": true
+    "isolatedModules": true,
+    "skipLibCheck": true
   },
   "include": ["src"]
 }

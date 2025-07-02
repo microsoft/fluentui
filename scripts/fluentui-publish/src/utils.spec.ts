@@ -65,6 +65,7 @@ describe(`utils`, () => {
           "digest",
           "styles",
           "state",
+          "scripts-jest-v0",
         ]
       `);
     });

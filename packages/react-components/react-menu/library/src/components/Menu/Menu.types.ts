@@ -21,6 +21,7 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * Can contain two children including `MenuTrigger` and `MenuPopover`.
      * Alternatively can only contain `MenuPopover` if using a custom `target`.
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     children: [JSX.Element, JSX.Element] | JSX.Element;
 
     /**

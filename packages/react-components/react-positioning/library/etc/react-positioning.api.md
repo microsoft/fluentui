@@ -6,7 +6,7 @@
 
 import type { GriffelStyle } from '@griffel/react';
 import * as React_2 from 'react';
-import { RefObjectFunction } from '@fluentui/react-utilities';
+import type { RefObjectFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';

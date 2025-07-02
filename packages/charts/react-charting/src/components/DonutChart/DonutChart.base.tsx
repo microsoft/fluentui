@@ -116,6 +116,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { data, hideLegend = false } = this.props;
     const points = this._addDefaultColors(data?.chartData);
@@ -277,6 +278,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     node.setAttribute('viewBox', viewbox);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLegends(chartData: IChartDataPoint[]): JSX.Element {
     const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
       const color: string = this.props.enableGradient

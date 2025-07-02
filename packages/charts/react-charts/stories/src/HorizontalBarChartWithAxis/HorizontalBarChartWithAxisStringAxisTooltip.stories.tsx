@@ -12,11 +12,11 @@ export const HorizontalBarWithAxisStringAxisTooltip = () => {
   const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
   const [roundCorners, setRoundCorners] = React.useState<boolean>(false);
 
-  const _onSwitchGradient = React.useCallback(ev => {
+  const _onSwitchGradient = React.useCallback((ev: any) => {
     setEnableGradient(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchRoundedCorners = React.useCallback(ev => {
+  const _onSwitchRoundedCorners = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
   }, []);
 

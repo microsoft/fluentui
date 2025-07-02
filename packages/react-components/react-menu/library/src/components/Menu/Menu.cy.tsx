@@ -26,7 +26,10 @@ import {
   MenuSplitGroup,
 } from '@fluentui/react-menu';
 import type { MenuProps } from '@fluentui/react-menu';
-const mount = (element: JSX.Element) => {
+const mount = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

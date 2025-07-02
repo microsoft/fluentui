@@ -7,7 +7,9 @@
     "@fluentui/react-northstar": "*"
   },
   "devDependencies": {
-    "@fluentui/scripts-gulp": "*"
+    "@fluentui/scripts-gulp": "*",
+    "@types/react": "17.0.44",
+    "@types/react-dom": "17.0.15"
   },
   "publishConfig": {
     "access": "public"

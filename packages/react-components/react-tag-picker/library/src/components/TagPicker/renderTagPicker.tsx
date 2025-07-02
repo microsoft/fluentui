@@ -9,7 +9,12 @@ import { assertSlots } from '@fluentui/react-utilities';
 /**
  * Render the final JSX of Picker
  */
-export const renderTagPicker_unstable = (state: TagPickerState, contexts: TagPickerContextValues) => {
+
+export const renderTagPicker_unstable = (
+  state: TagPickerState,
+  contexts: TagPickerContextValues,
+): // eslint-disable-next-line @typescript-eslint/no-deprecated
+JSX.Element => {
   assertSlots<TagPickerSlots>(state);
   return (
     <TagPickerContextProvider value={contexts.picker}>

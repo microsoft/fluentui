@@ -15,7 +15,7 @@ export const ScatterChartDefault = () => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onToggleMultiLegendSelection = React.useCallback(ev => {
+  const _onToggleMultiLegendSelection = React.useCallback((ev: any) => {
     setSelectMultipleLegends(ev.currentTarget.checked);
   }, []);
 

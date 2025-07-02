@@ -396,7 +396,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               data-is-focusable="true"
               fill="aqua"
               height="49"
-              id="_VBC_bar_191-0"
+              id="_VBC_bar_r5u-0"
               opacity="1"
               role="img"
               rx="0"
@@ -421,7 +421,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               data-is-focusable="true"
               fill="blue"
               height="245"
-              id="_VBC_bar_191-1"
+              id="_VBC_bar_r5u-1"
               opacity="1"
               role="img"
               rx="0"
@@ -446,7 +446,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               data-is-focusable="true"
               fill="navy"
               height="147"
-              id="_VBC_bar_191-2"
+              id="_VBC_bar_r5u-2"
               opacity="1"
               role="img"
               rx="0"
@@ -942,7 +942,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               data-is-focusable="true"
               fill="aqua"
               height="49"
-              id="_VBC_bar_198-0"
+              id="_VBC_bar_r65-0"
               opacity="1"
               role="img"
               rx="0"
@@ -967,7 +967,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               data-is-focusable="true"
               fill="blue"
               height="245"
-              id="_VBC_bar_198-1"
+              id="_VBC_bar_r65-1"
               opacity="1"
               role="img"
               rx="0"
@@ -992,7 +992,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               data-is-focusable="true"
               fill="navy"
               height="147"
-              id="_VBC_bar_198-2"
+              id="_VBC_bar_r65-2"
               opacity="1"
               role="img"
               rx="0"
@@ -1095,7 +1095,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 exports[`Theme Change Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider201"
+    class="fui-FluentProvider fui-FluentProviderr68"
     dir="ltr"
   >
     <div
@@ -1492,7 +1492,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 data-is-focusable="true"
                 fill="aqua"
                 height="49"
-                id="_VBC_bar_206-0"
+                id="_VBC_bar_r6d-0"
                 opacity="1"
                 role="img"
                 rx="0"
@@ -1517,7 +1517,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 data-is-focusable="true"
                 fill="blue"
                 height="245"
-                id="_VBC_bar_206-1"
+                id="_VBC_bar_r6d-1"
                 opacity="1"
                 role="img"
                 rx="0"
@@ -1542,7 +1542,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 data-is-focusable="true"
                 fill="navy"
                 height="147"
-                id="_VBC_bar_206-2"
+                id="_VBC_bar_r6d-2"
                 opacity="1"
                 role="img"
                 rx="0"
@@ -1647,7 +1647,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_VBC_empty210"
+    id="_VBC_emptyr6h"
     role="alert"
     style="opacity: 0;"
   />
@@ -2050,7 +2050,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               data-is-focusable="true"
               fill="aqua"
               height="49"
-              id="_VBC_bar_213-0"
+              id="_VBC_bar_r6k-0"
               opacity="1"
               role="img"
               rx="0"
@@ -2075,7 +2075,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               data-is-focusable="true"
               fill="blue"
               height="245"
-              id="_VBC_bar_213-1"
+              id="_VBC_bar_r6k-1"
               opacity="1"
               role="img"
               rx="0"
@@ -2100,7 +2100,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               data-is-focusable="true"
               fill="navy"
               height="147"
-              id="_VBC_bar_213-2"
+              id="_VBC_bar_r6k-2"
               opacity="1"
               role="img"
               rx="0"
@@ -2398,7 +2398,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="qualitative.1"
               height="51"
-              id="_VBC_bar_26-0"
+              id="_VBC_bar_rp-0"
               opacity="1"
               role="img"
               rx="0"
@@ -2414,7 +2414,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="qualitative.2"
               height="255"
-              id="_VBC_bar_26-1"
+              id="_VBC_bar_rp-1"
               opacity="1"
               role="img"
               rx="0"
@@ -2430,7 +2430,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="qualitative.3"
               height="153"
-              id="_VBC_bar_26-2"
+              id="_VBC_bar_rp-2"
               opacity="1"
               role="img"
               rx="0"
@@ -2719,7 +2719,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="aqua"
               height="51"
-              id="_VBC_bar_5-0"
+              id="_VBC_bar_r4-0"
               opacity="1"
               role="img"
               rx="0"
@@ -2735,7 +2735,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="blue"
               height="255"
-              id="_VBC_bar_5-1"
+              id="_VBC_bar_r4-1"
               opacity="1"
               role="img"
               rx="0"
@@ -2751,7 +2751,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="navy"
               height="153"
-              id="_VBC_bar_5-2"
+              id="_VBC_bar_r4-2"
               opacity="1"
               role="img"
               rx="0"
@@ -2988,7 +2988,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#627CEF"
               height="255"
-              id="_VBC_bar_12-0"
+              id="_VBC_bar_rb-0"
               opacity="1"
               role="img"
               rx="0"
@@ -3006,7 +3006,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#C19C00"
               height="182.14285714285714"
-              id="_VBC_bar_12-1"
+              id="_VBC_bar_rb-1"
               opacity="1"
               role="img"
               rx="0"
@@ -3024,7 +3024,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#E650AF"
               height="138.42857142857142"
-              id="_VBC_bar_12-2"
+              id="_VBC_bar_rb-2"
               opacity="1"
               role="img"
               rx="0"
@@ -3042,7 +3042,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0E7878"
               height="204"
-              id="_VBC_bar_12-3"
+              id="_VBC_bar_rb-3"
               opacity="1"
               role="img"
               rx="0"
@@ -3311,7 +3311,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               data-is-focusable="true"
               fill="qualitative.1"
               height="25.5"
-              id="_VBC_bar_33-0"
+              id="_VBC_bar_r10-0"
               opacity="1"
               role="img"
               rx="0"
@@ -3327,7 +3327,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               data-is-focusable="true"
               fill="qualitative.2"
               height="127.5"
-              id="_VBC_bar_33-1"
+              id="_VBC_bar_r10-1"
               opacity="1"
               role="img"
               rx="0"
@@ -3343,7 +3343,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               data-is-focusable="true"
               fill="qualitative.3"
               height="76.5"
-              id="_VBC_bar_33-2"
+              id="_VBC_bar_r10-2"
               opacity="1"
               role="img"
               rx="0"
@@ -3830,7 +3830,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               data-is-focusable="true"
               fill="aqua"
               height="49"
-              id="_VBC_bar_220-0"
+              id="_VBC_bar_r6r-0"
               opacity="1"
               role="img"
               rx="0"
@@ -3855,7 +3855,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               data-is-focusable="true"
               fill="blue"
               height="245"
-              id="_VBC_bar_220-1"
+              id="_VBC_bar_r6r-1"
               opacity="1"
               role="img"
               rx="0"
@@ -3880,7 +3880,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               data-is-focusable="true"
               fill="navy"
               height="147"
-              id="_VBC_bar_220-2"
+              id="_VBC_bar_r6r-2"
               opacity="1"
               role="img"
               rx="0"
@@ -3982,6 +3982,52 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 Third
               </div>
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fui-cart__calloutContainer"
+      id="calloutr6t"
+    >
+      <div
+        class="fui-PopoverSurface"
+        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        role="group"
+        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+      >
+        <div
+          class="fui-cart__calloutContentRoot"
+        >
+          <div
+            class="fui-cart__calloutDateTimeContainer"
+          >
+            <div
+              class="fui-cart__calloutContentX"
+            >
+              2020/04/30
+               
+            </div>
+          </div>
+          <div
+            class="fui-cart__calloutInfoContainer"
+            style="border-inline-start: 4px solid blue;"
+          >
+            <div
+              class="fui-cart__calloutBlockContainer"
+            >
+              <div
+                class="fui-cart__calloutlegendText"
+              >
+                Second
+              </div>
+              <div
+                class="fui-cart__calloutContentY"
+                style="color: blue;"
+              >
+                50,000
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -4386,7 +4432,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               data-is-focusable="true"
               fill="aqua"
               height="49"
-              id="_VBC_bar_228-0"
+              id="_VBC_bar_r73-0"
               opacity="1"
               role="img"
               rx="0"
@@ -4411,7 +4457,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               data-is-focusable="true"
               fill="blue"
               height="245"
-              id="_VBC_bar_228-1"
+              id="_VBC_bar_r73-1"
               opacity="1"
               role="img"
               rx="0"
@@ -4436,7 +4482,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               data-is-focusable="true"
               fill="navy"
               height="147"
-              id="_VBC_bar_228-2"
+              id="_VBC_bar_r73-2"
               opacity="1"
               role="img"
               rx="0"
@@ -4542,6 +4588,30 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         </div>
       </div>
     </div>
+    <div
+      class="fui-cart__calloutContainer"
+      id="calloutr75"
+    >
+      <div
+        class="fui-PopoverSurface"
+        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        role="group"
+        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+      >
+        <div>
+          <pre>
+            {
+  "x": 10000,
+  "y": 50000,
+  "legend": "Second",
+  "color": "blue",
+  "xAxisCalloutData": "2020/04/30",
+  "yAxisCalloutData": "20%"
+}
+          </pre>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -4584,7 +4654,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_290-0"
+            id="_VBC_bar_r1j-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -4604,7 +4674,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_290-1"
+            id="_VBC_bar_r1j-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -4624,7 +4694,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_290-2"
+            id="_VBC_bar_r1j-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -4835,7 +4905,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_297-0"
+            id="_VBC_bar_r1q-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -4855,7 +4925,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_297-1"
+            id="_VBC_bar_r1q-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -4875,7 +4945,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_297-2"
+            id="_VBC_bar_r1q-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5086,7 +5156,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_304-0"
+            id="_VBC_bar_r21-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5106,7 +5176,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_304-1"
+            id="_VBC_bar_r21-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5126,7 +5196,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_304-2"
+            id="_VBC_bar_r21-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5337,7 +5407,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_243-0"
+            id="_VBC_bar_r4-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5357,7 +5427,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_243-1"
+            id="_VBC_bar_r4-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5377,7 +5447,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_243-2"
+            id="_VBC_bar_r4-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5588,7 +5658,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_263-0"
+            id="_VBC_bar_ro-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5608,7 +5678,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_263-1"
+            id="_VBC_bar_ro-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5628,7 +5698,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_263-2"
+            id="_VBC_bar_ro-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5874,7 +5944,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_250-0"
+            id="_VBC_bar_rb-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5894,7 +5964,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_250-1"
+            id="_VBC_bar_rb-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5914,7 +5984,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_250-2"
+            id="_VBC_bar_rb-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5972,7 +6042,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             data-is-focusable={false}
             fill="aqua"
             height={11}
-            id="_VBC_bar_256-0"
+            id="_VBC_bar_rh-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5992,7 +6062,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             data-is-focusable={false}
             fill="blue"
             height={55}
-            id="_VBC_bar_256-1"
+            id="_VBC_bar_rh-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6012,7 +6082,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             data-is-focusable={false}
             fill="navy"
             height={33}
-            id="_VBC_bar_256-2"
+            id="_VBC_bar_rh-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6223,7 +6293,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_269-0"
+            id="_VBC_bar_ru-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6243,7 +6313,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_269-1"
+            id="_VBC_bar_ru-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6263,7 +6333,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_269-2"
+            id="_VBC_bar_ru-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6474,7 +6544,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             data-is-focusable={true}
             fill="aqua"
             height={NaN}
-            id="_VBC_bar_276-0"
+            id="_VBC_bar_r15-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6494,7 +6564,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             data-is-focusable={true}
             fill="blue"
             height={NaN}
-            id="_VBC_bar_276-1"
+            id="_VBC_bar_r15-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6514,7 +6584,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             data-is-focusable={true}
             fill="navy"
             height={NaN}
-            id="_VBC_bar_276-2"
+            id="_VBC_bar_r15-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6725,7 +6795,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_283-0"
+            id="_VBC_bar_r1c-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6745,7 +6815,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_283-1"
+            id="_VBC_bar_r1c-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6765,7 +6835,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_283-2"
+            id="_VBC_bar_r1c-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}

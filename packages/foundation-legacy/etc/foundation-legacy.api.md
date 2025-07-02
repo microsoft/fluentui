@@ -121,7 +121,7 @@ export interface ISlotOptions<TProps> {
 export type ISlotProp<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never> = TShorthandProp | TProps;
 
 // @public
-export type ISlotRender<TProps> = (props: React_2.PropsWithChildren<TProps>, defaultComponent: React_2.ComponentType<TProps>) => ReturnType<React_2.FunctionComponent<TProps>>;
+export type ISlotRender<TProps> = (props: React_2.PropsWithChildren<TProps>, defaultComponent: React_2.ComponentType<React_2.PropsWithChildren<TProps>>) => ReturnType<React_2.FunctionComponent<React_2.PropsWithChildren<TProps>>>;
 
 // @public
 export type ISlots<TSlots> = {
@@ -192,7 +192,7 @@ export type IViewComponent<TViewProps> = (props: React_2.PropsWithChildren<TView
 export { legacyStyled }
 
 // @public @deprecated
-export const ThemeProvider: React_2.FunctionComponent<IThemeProviderProps>;
+export const ThemeProvider: React_2.FunctionComponent<React_2.PropsWithChildren<IThemeProviderProps>>;
 
 // @public
 export function useControlledState<TProps, TProp extends keyof TProps, TDefaultProp extends keyof TProps>(props: Readonly<TProps>, propName: TProp, options?: IControlledStateOptions<TProps, TProp, TDefaultProp>): [TProps[TProp] | undefined, React_2.Dispatch<React_2.SetStateAction<TProps[TProp]>>];

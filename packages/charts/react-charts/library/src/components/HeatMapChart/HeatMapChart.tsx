@@ -199,7 +199,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
                 transform={`translate(${_xAxisScale.current.bandwidth() / 2}, ${_yAxisScale.current.bandwidth() / 2})`}
                 fill={foregroundColor}
               >
-                {formatToLocaleString(dataPointObject.rectText, props.culture, props.useUTC)}
+                {formatToLocaleString(dataPointObject.rectText, props.culture, props.useUTC) as React.ReactNode}
               </text>
             </g>
           );
