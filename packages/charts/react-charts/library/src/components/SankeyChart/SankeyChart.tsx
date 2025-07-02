@@ -580,15 +580,16 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       // NOTE: Calls to this method trigger a re-render.
       const container = props.parentRef ? props.parentRef : chartContainer.current;
       if (container) {
-        const currentContainerWidth = props.enableReflow
-          ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
-          : container.getBoundingClientRect().width;
+        const currentContainerWidth =
+          props.reflowProps?.mode === 'min-width'
+            ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
+            : container.getBoundingClientRect().width;
         const currentContainerHeight = container.getBoundingClientRect().height;
         setContainerWidth(currentContainerWidth);
         setContainerHeight(currentContainerHeight);
       }
     });
-  }, [_window, props.enableReflow, props.parentRef]);
+  }, [_window, props.reflowProps?.mode, props.parentRef]);
 
   React.useEffect(() => {
     _fitParentContainer();
@@ -1177,6 +1178,3 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
 });
 
 SankeyChart.displayName = 'SankeyChart';
-SankeyChart.defaultProps = {
-  enableReflow: true,
-};

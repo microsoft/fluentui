@@ -81,7 +81,7 @@ export const useSankeyChartStyles = (props: SankeyChartProps): SankeyChartStyles
     toolTip: mergeClasses(sankeyChartClassNames.toolTip, baseStyles.toolTip /*, props.styles?.toolTip*/),
     chartWrapper: mergeClasses(
       sankeyChartClassNames.chartWrapper,
-      props.enableReflow ? baseStyles.chartWrapper : '',
+      props.reflowProps?.mode === 'min-width' ? baseStyles.chartWrapper : '',
       props.styles?.chartWrapper,
     ),
     chart: mergeClasses(sankeyChartClassNames.chart, baseStyles.chart, props.styles?.chart),

@@ -90,7 +90,7 @@ export const SankeyChartResponsive = () => {
 
   return (
     <ResponsiveContainer>
-      <SankeyChart data={data} enableReflow={false} />
+      <SankeyChart data={data} />
     </ResponsiveContainer>
   );
 };

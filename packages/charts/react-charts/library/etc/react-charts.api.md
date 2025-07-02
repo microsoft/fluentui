@@ -136,6 +136,7 @@ export interface CartesianChartProps {
     customDateTimeFormatter?: (dateTime: Date) => string;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
+    // @deprecated
     enableReflow?: boolean;
     height?: number;
     hideLegend?: boolean;
@@ -186,6 +187,7 @@ export interface CartesianChartProps {
 export interface CartesianChartStyleProps {
     className?: string;
     color?: string;
+    // @deprecated
     enableReflow?: boolean;
     height?: number;
     href?: string;
@@ -1182,11 +1184,15 @@ export interface SankeyChartProps {
     componentRef?: RefObject<Chart>;
     culture?: string;
     data: ChartProps;
+    // @deprecated
     enableReflow?: boolean;
     formatNumberOptions?: Intl.NumberFormatOptions;
     height?: number;
     parentRef?: HTMLElement | null;
     pathColor?: string;
+    reflowProps?: {
+        mode: 'none' | 'min-width';
+    };
     shouldResize?: number;
     strings?: SankeyChartStrings;
     styles?: SankeyChartStyles;

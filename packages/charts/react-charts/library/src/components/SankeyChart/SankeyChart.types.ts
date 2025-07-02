@@ -76,7 +76,7 @@ export interface SankeyChartProps {
 
   /**
    * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
-   * @default true
+   * @deprecated Use `reflowProps` instead.
    */
   enableReflow?: boolean;
 
@@ -95,6 +95,18 @@ export interface SankeyChartProps {
    * The prop used to define the culture to localize the numbers and date
    */
   culture?: string;
+
+  /**
+   * Props related to reflow behavior of the chart
+   */
+  reflowProps?: {
+    /**
+     * Determines the reflow behavior of the chart.
+     * When set to `'min-width'`, the chart will not shrink below a certain width and will enable scrolling if it overflows.
+     * @default 'none'
+     */
+    mode: 'none' | 'min-width';
+  };
 }
 
 /**

@@ -56,6 +56,7 @@ export interface CartesianChartStyleProps {
 
   /**
    * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @deprecated Use `reflowProps` instead.
    */
   enableReflow?: boolean;
 }
@@ -343,7 +344,7 @@ export interface CartesianChartProps {
 
   /**
    * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
-   * @default True for LineChart but False for other charts
+   * @deprecated Use `reflowProps` instead.
    */
   enableReflow?: boolean;
 
