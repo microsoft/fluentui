@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 30 Jun 2025 07:19:37 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Jul 2025 07:20:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.10)
+
+Wed, 02 Jul 2025 07:20:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.9..@fluentui/react-charting_v5.24.10)
+
+### Patches
+
+- implement single value callout in line chart ([PR #34757](https://github.com/microsoft/fluentui/pull/34757) by anushgupta@microsoft.com)
+- feat(react-charting): Support for Funnel Chart ([PR #34688](https://github.com/microsoft/fluentui/pull/34688) by email not defined)
+- Bump @fluentui/chart-utilities to v1.1.20 ([PR #34688](https://github.com/microsoft/fluentui/pull/34688) by beachball)
 
 ## [5.24.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.9)
 

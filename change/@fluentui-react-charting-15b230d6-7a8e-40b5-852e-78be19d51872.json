@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "implement single value callout in line chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

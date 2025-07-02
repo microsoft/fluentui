@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Wed, 02 Jul 2025 07:20:11 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.20",
+      "version": "1.1.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/chart-utilities",
+            "commit": "096558dbd97e7f91d95c43b7b0494f9af521819b",
+            "comment": "feat(chart-utilities): Support for Funnel Chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Jun 2025 07:19:36 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.19",
       "version": "1.1.19",
