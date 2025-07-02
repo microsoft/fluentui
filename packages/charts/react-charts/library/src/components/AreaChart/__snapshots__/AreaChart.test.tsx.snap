@@ -13,6 +13,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
     >
       <svg
         aria-label="Area chart multiple negative y value example. Area chart with 3 data series. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -855,6 +856,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -1697,6 +1699,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -2646,6 +2649,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -3498,6 +3502,7 @@ Object {
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -4338,6 +4343,7 @@ Object {
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -5242,6 +5248,7 @@ Object {
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -6082,6 +6089,7 @@ Object {
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -6986,6 +6994,7 @@ Object {
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -7826,6 +7835,7 @@ Object {
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -8725,6 +8735,7 @@ Object {
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -9195,6 +9206,7 @@ Object {
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -9724,6 +9736,7 @@ Object {
         >
           <svg
             aria-label="AreaChart. Area chart with 3 data series. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -10564,6 +10577,7 @@ Object {
       >
         <svg
           aria-label="AreaChart. Area chart with 3 data series. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -11463,6 +11477,7 @@ Object {
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -12303,6 +12318,7 @@ Object {
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -13202,6 +13218,7 @@ Object {
         >
           <svg
             aria-label="AreaChart. Area chart with 1 data series. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -13456,6 +13473,7 @@ Object {
       >
         <svg
           aria-label="AreaChart. Area chart with 1 data series. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -13769,6 +13787,7 @@ Object {
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -14619,6 +14638,7 @@ Object {
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -15528,6 +15548,7 @@ Object {
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. "
+            class="fui-cart__chart"
             height="50"
             style="display: block;"
             width="650"
@@ -16294,6 +16315,7 @@ Object {
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. "
+          class="fui-cart__chart"
           height="50"
           style="display: block;"
           width="650"
@@ -17119,6 +17141,7 @@ Object {
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -17959,6 +17982,7 @@ Object {
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -18858,6 +18882,7 @@ Object {
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -19683,6 +19708,7 @@ Object {
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -20567,6 +20593,7 @@ Object {
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -21357,6 +21384,7 @@ Object {
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -22206,6 +22234,7 @@ Object {
         >
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -23046,6 +23075,7 @@ Object {
       >
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -23940,6 +23970,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -24692,6 +24723,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
     >
       <svg
         aria-label="Area chart multiple example. Area chart with 3 data series. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"

@@ -143,6 +143,9 @@ export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElem
 export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 
 // @public
+export const FunnelChart: React_2.FunctionComponent<IFunnelChartProps>;
+
+// @public
 export const GaugeChart: React_2.FunctionComponent<IGaugeChartProps>;
 
 // @public (undocumented)
@@ -374,6 +377,7 @@ export interface ICartesianChartStyles {
     calloutDateTimeContainer?: IStyle;
     calloutInfoContainer?: IStyle;
     calloutlegendText?: IStyle;
+    chart?: IStyle;
     chartTitle?: IStyle;
     chartWrapper?: IStyle;
     descriptionMessage?: IStyle;
@@ -490,6 +494,8 @@ export interface IChartTableStyles {
     // (undocumented)
     bodyCell?: IStyle;
     // (undocumented)
+    chart?: IStyle;
+    // (undocumented)
     headerCell?: IStyle;
     // (undocumented)
     root?: IStyle;
@@ -598,6 +604,7 @@ export interface IDonutChartStyleProps extends ICartesianChartStyleProps {
 export interface IDonutChartStyles {
     axisAnnotation?: IStyle;
     chart?: IStyle;
+    chartWrapper?: IStyle;
     legendContainer: IStyle;
     root?: IStyle;
 }
@@ -618,6 +625,42 @@ export interface IEventsAnnotationProps {
     mergedLabel: (count: number) => string;
     // (undocumented)
     strokeColor?: string;
+}
+
+// @public
+export interface IFunnelChartProps {
+    calloutProps?: Partial<ICalloutProps>;
+    chartTitle?: string;
+    className?: string;
+    componentRef?: React_2.RefObject<any>;
+    culture?: string;
+    // Warning: (ae-forgotten-export) The symbol "IFunnelChartDataPoint" needs to be exported by the entry point index.d.ts
+    data: IFunnelChartDataPoint[];
+    height?: number;
+    hideLegend?: boolean;
+    legendProps?: Partial<ILegendsProps>;
+    orientation?: 'horizontal' | 'vertical';
+    styles?: IStyleFunctionOrObject<IFunnelChartStyleProps, IFunnelChartStyles>;
+    theme?: ITheme;
+    width?: number;
+}
+
+// @public
+export interface IFunnelChartStyleProps {
+    chartHeight: number;
+    chartWidth: number;
+    className?: string;
+    theme: ITheme;
+}
+
+// @public
+export interface IFunnelChartStyles {
+    chart?: IStyle;
+    root?: IStyle;
+    subComponentStyles: {
+        calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+    };
+    text?: IStyle;
 }
 
 // @public
@@ -682,6 +725,7 @@ export interface IGaugeChartStyles {
     chart?: IStyle;
     chartTitle?: IStyle;
     chartValue?: IStyle;
+    chartWrapper?: IStyle;
     descriptionMessage?: IStyle;
     gradientSegment?: IStyle;
     legendsContainer?: IStyle;
@@ -1302,9 +1346,7 @@ export interface IResponsiveChildProps {
     // (undocumented)
     shouldResize?: number;
     // (undocumented)
-    styles?: IStyleFunctionOrObject_2<{}, {
-        root: IStyle_2;
-    }>;
+    styles?: IStyleFunctionOrObject_2<any, any>;
     // (undocumented)
     width?: number;
 }
@@ -1381,6 +1423,7 @@ export interface ISankeyChartStyleProps {
 // @public
 export interface ISankeyChartStyles {
     calloutContentRoot?: IStyle;
+    chart?: IStyle;
     chartWrapper?: IStyle;
     links?: IStyle;
     nodes?: IStyle;

@@ -509,7 +509,6 @@ export const transformPlotlyJsonToScatterChartProps = (
       width: input.layout?.width,
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
-      enableReflow: false,
       useUTC: false,
     } as LineChartProps;
   }
@@ -732,7 +731,6 @@ export const transformPlotlyJsonToSankeyProps = (
     height: input.layout?.height ?? 468,
     // TODO
     // styles,
-    enableReflow: true,
   };
 };
 
@@ -798,9 +796,8 @@ export const transformPlotlyJsonToGaugeProps = (
     minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
     maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
     chartValueFormat: () => firstData.value?.toString() ?? '',
-    // FIXME
-    // width: input.layout?.width,
-    // height: input.layout?.height ?? 220,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 220,
     // TODO
     // styles,
     variant: firstData.gauge?.steps?.length ? 'multiple-segments' : 'single-segment',

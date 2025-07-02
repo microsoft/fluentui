@@ -420,7 +420,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1019,7 +1019,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1630,7 +1630,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

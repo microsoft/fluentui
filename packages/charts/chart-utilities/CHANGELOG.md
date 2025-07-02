@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Mon, 30 Jun 2025 07:19:36 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Jul 2025 07:20:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.20](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.20)
+
+Wed, 02 Jul 2025 07:20:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.19..@fluentui/chart-utilities_v1.1.20)
+
+### Patches
+
+- feat(chart-utilities): Support for Funnel Chart ([PR #34688](https://github.com/microsoft/fluentui/pull/34688) by email not defined)
 
 ## [1.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.19)
 
