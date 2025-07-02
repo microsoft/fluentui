@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, tokens, Button, Card, CardHeader, CardPreview, Body1, Title3 } from '@fluentui/react-components';
+import { makeStyles, tokens, Button, Card, CardHeader, CardPreview, Body1 } from '@fluentui/react-components';
 import { SlideRelaxed } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
