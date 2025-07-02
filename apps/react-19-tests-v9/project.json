@@ -2,7 +2,7 @@
   "name": "react-19-tests-v9",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "implicitDependencies": [],
+  "implicitDependencies": ["tag:type:stories"],
   "tags": ["vNext"],
   "targets": {
     "type-check:integration": {

@@ -53,7 +53,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: React.ReactElement;
 };
 
 type LastUpdatedCell = {
@@ -63,7 +63,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: React.ReactElement;
 };
 
 type AuthorCell = {
