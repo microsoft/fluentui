@@ -97,11 +97,11 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             </g>
             <g>
               <text
-                aria-describedby="tooltip-69"
+                aria-describedby="tooltip-r24"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host68"
+                id="tooltip-hostr23"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -380,11 +380,11 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           </g>
           <g>
             <text
-              aria-describedby="tooltip-40"
+              aria-describedby="tooltip-r17"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-host39"
+              id="tooltip-hostr16"
               text-anchor="middle"
               x="0"
               y="0"
@@ -571,11 +571,11 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           </g>
           <g>
             <text
-              aria-describedby="tooltip-37"
+              aria-describedby="tooltip-r14"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-host36"
+              id="tooltip-hostr13"
               text-anchor="middle"
               x="0"
               y="0"
@@ -762,11 +762,11 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           </g>
           <g>
             <text
-              aria-describedby="tooltip-22"
+              aria-describedby="tooltip-rl"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-host21"
+              id="tooltip-hostrk"
               text-anchor="middle"
               x="0"
               y="0"
@@ -893,7 +893,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       Low Risk
                     </div>
                     <div
@@ -919,7 +919,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       Medium Risk
                     </div>
                     <div
@@ -945,7 +945,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       High Risk
                     </div>
                     <div
@@ -1058,11 +1058,11 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           </g>
           <g>
             <text
-              aria-describedby="tooltip-22"
+              aria-describedby="tooltip-rl"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-host21"
+              id="tooltip-hostrk"
               text-anchor="middle"
               x="0"
               y="0"
@@ -1247,11 +1247,11 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           </g>
           <g>
             <text
-              aria-describedby="tooltip-19"
+              aria-describedby="tooltip-ri"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-host18"
+              id="tooltip-hostrh"
               text-anchor="middle"
               x="0"
               y="0"
@@ -1436,11 +1436,11 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           </g>
           <g>
             <text
-              aria-describedby="tooltip-27"
+              aria-describedby="tooltip-rq"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-host26"
+              id="tooltip-hostrp"
               text-anchor="middle"
               x="0"
               y="0"
@@ -1567,7 +1567,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       Low Risk
                     </div>
                     <div
@@ -1593,7 +1593,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       Medium Risk
                     </div>
                     <div
@@ -1619,7 +1619,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       High Risk
                     </div>
                     <div
@@ -1732,11 +1732,11 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           </g>
           <g>
             <text
-              aria-describedby="tooltip-14"
+              aria-describedby="tooltip-rd"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-host13"
+              id="tooltip-hostrc"
               text-anchor="middle"
               x="0"
               y="0"
@@ -1863,7 +1863,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       Low Risk
                     </div>
                     <div
@@ -1889,7 +1889,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       Medium Risk
                     </div>
                     <div
@@ -1915,7 +1915,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       High Risk
                     </div>
                     <div
@@ -2037,11 +2037,11 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           </g>
           <g>
             <text
-              aria-describedby="tooltip-8"
+              aria-describedby="tooltip-r7"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-host7"
+              id="tooltip-hostr6"
               text-anchor="middle"
               x="0"
               y="0"
@@ -2226,11 +2226,11 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           </g>
           <g>
             <text
-              aria-describedby="tooltip-5"
+              aria-describedby="tooltip-r4"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-host4"
+              id="tooltip-hostr3"
               text-anchor="middle"
               x="0"
               y="0"
@@ -2415,11 +2415,11 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           </g>
           <g>
             <text
-              aria-describedby="tooltip-11"
+              aria-describedby="tooltip-ra"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-host10"
+              id="tooltip-hostr9"
               text-anchor="middle"
               x="0"
               y="0"
@@ -2604,11 +2604,11 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           </g>
           <g>
             <text
-              aria-describedby="tooltip-2"
+              aria-describedby="tooltip-r1"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-host1"
+              id="tooltip-hostr0"
               text-anchor="middle"
               x="0"
               y="0"
@@ -2778,11 +2778,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-78"
+                  aria-describedby="tooltip-r2d"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host77"
+                  id="tooltip-hostr2c"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -2961,11 +2961,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-78"
+                aria-describedby="tooltip-r2d"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host77"
+                id="tooltip-hostr2c"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -3207,11 +3207,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-89"
+                  aria-describedby="tooltip-r2o"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host88"
+                  id="tooltip-hostr2n"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -3336,11 +3336,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-89"
+                aria-describedby="tooltip-r2o"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host88"
+                id="tooltip-hostr2n"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -3508,11 +3508,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-75"
+                  aria-describedby="tooltip-r2a"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host74"
+                  id="tooltip-hostr29"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -3711,11 +3711,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-75"
+                aria-describedby="tooltip-r2a"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host74"
+                id="tooltip-hostr29"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -3947,11 +3947,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-94"
+                  aria-describedby="tooltip-r2t"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host93"
+                  id="tooltip-hostr2s"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -4120,11 +4120,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-94"
+                aria-describedby="tooltip-r2t"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host93"
+                id="tooltip-hostr2s"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -4356,11 +4356,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-81"
+                  aria-describedby="tooltip-r2g"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host80"
+                  id="tooltip-hostr2f"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -4568,11 +4568,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-81"
+                aria-describedby="tooltip-r2g"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host80"
+                id="tooltip-hostr2f"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -4814,11 +4814,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-91"
+                  aria-describedby="tooltip-r2q"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host90"
+                  id="tooltip-hostr2p"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -5017,11 +5017,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-91"
+                aria-describedby="tooltip-r2q"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host90"
+                id="tooltip-hostr2p"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -5263,11 +5263,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-84"
+                  aria-describedby="tooltip-r2j"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-host83"
+                  id="tooltip-hostr2i"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -5279,10 +5279,10 @@ Object {
                 />
               </g>
               <text
-                aria-describedby="tooltip-86"
+                aria-describedby="tooltip-r2l"
                 class="fui-gc__sublabel"
                 dominant-baseline="hanging"
-                id="tooltip-host85"
+                id="tooltip-hostr2k"
                 text-anchor="middle"
                 x="0"
                 y="4"
@@ -5496,11 +5496,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-84"
+                aria-describedby="tooltip-r2j"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-host83"
+                id="tooltip-hostr2i"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -5512,10 +5512,10 @@ Object {
               />
             </g>
             <text
-              aria-describedby="tooltip-86"
+              aria-describedby="tooltip-r2l"
               class="fui-gc__sublabel"
               dominant-baseline="hanging"
-              id="tooltip-host85"
+              id="tooltip-hostr2k"
               text-anchor="middle"
               x="0"
               y="4"
@@ -5751,11 +5751,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           </g>
           <g>
             <text
-              aria-describedby="tooltip-58"
+              aria-describedby="tooltip-r1p"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="32"
-              id="tooltip-host57"
+              id="tooltip-hostr1o"
               text-anchor="middle"
               x="0"
               y="0"
@@ -5940,11 +5940,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           </g>
           <g>
             <text
-              aria-describedby="tooltip-61"
+              aria-describedby="tooltip-r1s"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="32"
-              id="tooltip-host60"
+              id="tooltip-hostr1r"
               text-anchor="middle"
               x="0"
               y="0"

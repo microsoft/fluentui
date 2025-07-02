@@ -2042,7 +2042,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                     x="0"
                     y="5"
                   >
-                    1
+                    1 
                   </tspan>
                 </text>
               </g>
@@ -19888,7 +19888,6 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                     500
                   </text>
                 </g>
-
               </g>
             </svg>
           </div>
@@ -20431,7 +20430,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     data-is-focusable="true"
                     fill="#f27420"
                     height="68.62745098039218"
-                    id="nodeBar37"
+                    id="nodeBar68"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -20506,7 +20505,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     data-is-focusable="true"
                     fill="#4994ce"
                     height="39.21568627450981"
-                    id="nodeBar39"
+                    id="nodeBar70"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -20581,7 +20580,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     data-is-focusable="true"
                     fill="#fabc13"
                     height="53.92156862745094"
-                    id="nodeBar41"
+                    id="nodeBar72"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -20656,7 +20655,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     data-is-focusable="true"
                     fill="#7fc241"
                     height="34.31372549019608"
-                    id="nodeBar43"
+                    id="nodeBar74"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -20731,7 +20730,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     data-is-focusable="true"
                     fill="#d3d3d3"
                     height="53.921568627450995"
-                    id="nodeBar45"
+                    id="nodeBar76"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -21496,7 +21495,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     data-is-focusable="true"
                     fill="#8a5988"
                     height="110.29411764705881"
-                    id="nodeBar47"
+                    id="nodeBar78"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -21571,7 +21570,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     data-is-focusable="true"
                     fill="#449e9e"
                     height="95.58823529411762"
-                    id="nodeBar49"
+                    id="nodeBar80"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -21646,7 +21645,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     data-is-focusable="true"
                     fill="#d3d3d3"
                     height="44.117647058823536"
-                    id="nodeBar51"
+                    id="nodeBar82"
                     opacity="1"
                     role="img"
                     stroke="#757575"

@@ -159,7 +159,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
 
     const textElement = (
       <text x={isRTL ? funnelWidth - x : x} y={y} textAnchor="middle" alignmentBaseline="middle" fill={textColor}>
-        {formatToLocaleString(value.toString(), props.culture)}
+        {formatToLocaleString(value.toString(), props.culture) as React.ReactNode}
       </text>
     );
 
@@ -200,7 +200,11 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     );
   }
 
-  function _createFunnel(containerHeight: number, containerWidth: number): JSX.Element[] {
+  function _createFunnel(
+    containerHeight: number,
+    containerWidth: number,
+  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element[] {
     const { data } = props;
     const funnelWidth = containerWidth;
     const funnelHeight = containerHeight * 0.8;
@@ -251,7 +255,8 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       funnelHeight: number;
       isRTL: boolean;
     },
-  ): JSX.Element {
+  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element {
     // Ensure stages have subValues for geometry functions
     const stagesWithSubValues = geometryParams.stages.map(s => ({
       ...s,
@@ -295,7 +300,11 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     });
   }
 
-  function _createStackedFunnel(containerHeight: number, containerWidth: number): JSX.Element[] {
+  function _createStackedFunnel(
+    containerHeight: number,
+    containerWidth: number,
+  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element[] {
     const { data } = props;
 
     const stages = data;
@@ -305,6 +314,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     const funnelWidth = containerWidth;
     const funnelHeight = containerHeight * 0.8;
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const paths: JSX.Element[] = [];
 
     const geometryParams = {
@@ -329,7 +339,8 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     return paths;
   }
 
-  function _renderLegends(): JSX.Element {
+  function _renderLegends(): // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element {
     if (props.hideLegend) {
       return <></>;
     }
@@ -440,6 +451,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
   );
 });
 FunnelChartBase.displayName = 'FunnelChart';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 FunnelChartBase.defaultProps = {
   orientation: 'horizontal',
 };
