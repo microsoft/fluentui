@@ -250,6 +250,7 @@ const usePrimaryHighContrastStyles = makeStyles({
 
 export const useSemanticToggleButtonStyles = (_state: unknown): ToggleButtonState => {
   'use no memo';
+
   const state = _state as ToggleButtonState;
 
   const rootCheckedStyles = useRootCheckedStyles();

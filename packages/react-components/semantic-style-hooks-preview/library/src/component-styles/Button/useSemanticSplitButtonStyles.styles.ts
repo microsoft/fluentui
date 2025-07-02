@@ -185,6 +185,7 @@ const useRootStyles = makeStyles({
 
 export const useSemanticSplitButtonStyles = (_state: unknown): SplitButtonState => {
   'use no memo';
+
   const state = _state as SplitButtonState;
 
   const rootStyles = useRootStyles();

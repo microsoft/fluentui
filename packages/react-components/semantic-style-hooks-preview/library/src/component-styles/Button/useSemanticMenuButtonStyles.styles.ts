@@ -114,6 +114,7 @@ const useMenuIconStyles = makeStyles({
 
 export const useSemanticMenuButtonStyles = (_state: unknown): MenuButtonState => {
   'use no memo';
+
   const state = _state as MenuButtonState;
 
   const rootExpandedStyles = useRootExpandedStyles();

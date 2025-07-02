@@ -252,6 +252,7 @@ const useSecondaryContentStyles = makeStyles({
 
 export const useSemanticCompoundButtonStyles = (_state: unknown): CompoundButtonState => {
   'use no memo';
+
   const state = _state as CompoundButtonState;
 
   const rootStyles = useRootStyles();

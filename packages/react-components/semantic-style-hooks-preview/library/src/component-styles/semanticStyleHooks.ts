@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
 import {
   useSemanticButtonStyles,

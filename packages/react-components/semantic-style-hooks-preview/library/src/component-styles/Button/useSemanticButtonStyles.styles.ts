@@ -596,6 +596,7 @@ const useIconStyles = makeStyles({
 
 export const useSemanticButtonStyles = (_state: unknown): ButtonState => {
   'use no memo';
+
   const state = _state as ButtonState;
 
   const rootBaseClassName = useRootBaseClassName();
