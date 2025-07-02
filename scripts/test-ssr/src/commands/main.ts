@@ -15,6 +15,8 @@ import { containsAriaDescriptionWarning, hrToSeconds } from '../utils/helpers';
 import { renderToHTML } from '../utils/renderToHTML';
 import { visitPage } from '../utils/visitPage';
 
+// NOTE: Keeping this for reference, exclusion of stories is now done via CLI --exclude configuration in particular story projects
+// @ts-expect-error
 const EXCLUDED_STORIES = [
   // Portals currently do not support hydration
   // https://github.com/facebook/react/issues/13097
@@ -30,6 +32,7 @@ const EXCLUDED_STORIES = [
 
 type MainParams = {
   stories: string;
+  exclude: string[];
 };
 
 /**
@@ -88,6 +91,8 @@ export async function main(params: MainParams) {
 
   const generateStartTime = process.hrtime();
 
+  const absoluteExcludedStoriesPath = params.exclude.map(excludePath => path.resolve(process.cwd(), excludePath));
+
   const { allowedStories, excludedStories } = glob.sync(params.stories).reduce<{
     allowedStories: string[];
     excludedStories: string[];
@@ -98,7 +103,8 @@ export async function main(params: MainParams) {
       }
 
       const absoluteStoriesPath = path.resolve(process.cwd(), storyPath);
-      const isExcludedPath = match.isMatch(absoluteStoriesPath, EXCLUDED_STORIES);
+
+      const isExcludedPath = match.isMatch(absoluteStoriesPath, absoluteExcludedStoriesPath);
 
       if (isExcludedPath) {
         acc.excludedStories.push(absoluteStoriesPath);
