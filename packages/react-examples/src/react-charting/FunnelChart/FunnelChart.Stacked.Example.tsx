@@ -22,13 +22,6 @@ export class FunnelChartStackedExample extends React.Component<{}, IFunnelChartB
     };
   }
 
-  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ width: parseInt(e.target.value, 10) });
-  };
-  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ height: parseInt(e.target.value, 10) });
-  };
-
   public render(): React.ReactNode {
     const { width, height, hideLegend, orientation, legendMultiSelect } = this.state;
 
@@ -135,14 +128,18 @@ export class FunnelChartStackedExample extends React.Component<{}, IFunnelChartB
     );
   }
 
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: parseInt(e.target.value, 10) });
+  };
+  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ height: parseInt(e.target.value, 10) });
+  };
   private _onToggleHideLegend = (ev: React.MouseEvent<HTMLElement>, checked?: boolean): void => {
     this.setState({ hideLegend: checked! });
   };
-
   private _onToggleLegendMultiSelect = (ev: React.MouseEvent<HTMLElement>, checked?: boolean): void => {
     this.setState({ legendMultiSelect: checked! });
   };
-
   private _onOrientationChange = (
     ev?: React.FormEvent<HTMLElement | HTMLInputElement>,
     option?: IChoiceGroupOption,
