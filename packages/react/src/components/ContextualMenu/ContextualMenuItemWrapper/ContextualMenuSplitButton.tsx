@@ -184,7 +184,6 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       checked: item.checked,
       iconProps: item.iconProps,
       id: this._dismissLabelId,
-      onClick: item.onClick,
       onRenderIcon: item.onRenderIcon,
       data: item.data,
       'data-is-focusable': false,
@@ -196,7 +195,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       <button {...getNativeProps(itemProps, buttonProperties)}>
         <ChildrenRenderer
           data-is-focusable={false}
-          item={itemProps}
+          item={{ ...itemProps, onClick: item.onClick }}
           classNames={classNames}
           index={index}
           onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick : undefined}

@@ -51,6 +51,31 @@ describe('ContextualMenuSplitButton', () => {
       expect(onClickMock).toHaveBeenCalledTimes(1);
       expect(onClickMock.mock.calls[0][0]).toEqual(expect.objectContaining(menuItem));
     });
+
+    it('invokes item.onClick exactly once when splitbutton is clicked', () => {
+      const onClickMock = jest.fn();
+      const { container } = render(
+        <ContextualMenuSplitButton
+          item={{ ...menuItem, canCheck: true, onClick: onClickMock }}
+          classNames={menuClassNames}
+          index={0}
+          focusableElementIndex={0}
+          totalItemCount={1}
+          hasCheckmarks={true}
+          onItemClick={jest.fn()}
+          executeItemClick={onClickMock}
+        />,
+      );
+
+      const itemButton = getBySelector(container, '.splitContainer')!;
+      const checkmarkIcon = getBySelector(container, '.checkmarkIcon')!;
+
+      fireEvent.click(itemButton);
+      expect(onClickMock).toHaveBeenCalledTimes(1);
+
+      fireEvent.click(checkmarkIcon);
+      expect(onClickMock).toHaveBeenCalledTimes(2);
+    });
   });
 });
 
