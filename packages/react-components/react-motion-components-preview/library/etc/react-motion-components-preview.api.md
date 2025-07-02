@@ -50,6 +50,15 @@ export const ScaleRelaxed: PresenceComponent<ScaleVariantParams>;
 // @public (undocumented)
 export const ScaleSnappy: PresenceComponent<ScaleVariantParams>;
 
+// @public
+export const Slide: PresenceComponent<SlideVariantParams>;
+
+// @public (undocumented)
+export const SlideRelaxed: PresenceComponent<SlideVariantParams>;
+
+// @public (undocumented)
+export const SlideSnappy: PresenceComponent<SlideVariantParams>;
+
 // (No @packageDocumentation comment for this package)
 
 ```
