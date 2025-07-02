@@ -108,7 +108,7 @@ export interface IDonutChartStyles {
   axisAnnotation?: IStyle;
 
   /**
-   *
+   * Styles for the chart wrapper div
    */
   chartWrapper?: IStyle;
 }

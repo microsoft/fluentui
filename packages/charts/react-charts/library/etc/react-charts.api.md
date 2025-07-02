@@ -201,7 +201,6 @@ export interface CartesianChartStyleProps {
 // @public
 export interface CartesianChartStyles {
     axisTitle?: string;
-    // (undocumented)
     chart?: string;
     chartTitle?: string;
     chartWrapper?: string;
@@ -557,7 +556,6 @@ export interface GaugeChartStyles {
     chart?: string;
     chartTitle?: string;
     chartValue?: string;
-    // (undocumented)
     chartWrapper?: string;
     descriptionMessage?: string;
     gradientSegment?: string;
@@ -1206,7 +1204,6 @@ export interface SankeyChartStrings {
 
 // @public
 export interface SankeyChartStyles {
-    // (undocumented)
     chart?: string;
     chartWrapper?: string;
     links?: string;

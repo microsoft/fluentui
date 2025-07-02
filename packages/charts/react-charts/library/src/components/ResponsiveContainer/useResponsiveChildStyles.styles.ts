@@ -17,8 +17,8 @@ const useStyles = makeStyles({
     width: '100%',
   },
   chart: {
-    // This overrides the pixel width of svg allowing it to resize properly within flexbox or grid
-    // TODO: Add comment about height
+    // This overrides the pixel width of svg allowing it to resize properly within a flexbox or grid layout.
+    // Note: height is not set to 100% because that causes the charts to resize vertically in an infinite loop.
     width: '100%',
   },
 });

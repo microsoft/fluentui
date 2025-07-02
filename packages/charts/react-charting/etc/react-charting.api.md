@@ -374,7 +374,6 @@ export interface ICartesianChartStyles {
     calloutDateTimeContainer?: IStyle;
     calloutInfoContainer?: IStyle;
     calloutlegendText?: IStyle;
-    // (undocumented)
     chart?: IStyle;
     chartTitle?: IStyle;
     chartWrapper?: IStyle;
@@ -602,7 +601,6 @@ export interface IDonutChartStyleProps extends ICartesianChartStyleProps {
 export interface IDonutChartStyles {
     axisAnnotation?: IStyle;
     chart?: IStyle;
-    // (undocumented)
     chartWrapper?: IStyle;
     legendContainer: IStyle;
     root?: IStyle;
@@ -688,7 +686,6 @@ export interface IGaugeChartStyles {
     chart?: IStyle;
     chartTitle?: IStyle;
     chartValue?: IStyle;
-    // (undocumented)
     chartWrapper?: IStyle;
     descriptionMessage?: IStyle;
     gradientSegment?: IStyle;
@@ -1386,7 +1383,6 @@ export interface ISankeyChartStyleProps {
 // @public
 export interface ISankeyChartStyles {
     calloutContentRoot?: IStyle;
-    // (undocumented)
     chart?: IStyle;
     chartWrapper?: IStyle;
     links?: IStyle;

@@ -77,12 +77,13 @@ export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props =>
           height: '100%',
         },
         chartWrapper: {
+          ...child.props.styles?.chartWrapper,
           width: '100%',
         },
         chart: {
           ...child.props.styles?.chart,
-          // This overrides the pixel width of svg allowing it to resize properly within flexbox or grid
-          // TODO: Add comment about height
+          // This overrides the pixel width of svg allowing it to resize properly within a flexbox or grid layout.
+          // Note: height is not set to 100% because that causes the charts to resize vertically in an infinite loop.
           width: '100%',
         },
       };
@@ -90,11 +91,13 @@ export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props =>
       return React.cloneElement<IResponsiveChildProps>(child, {
         width: calculatedWidth,
         height: calculatedHeight,
+        // For SankeyChart
         shouldResize: (calculatedWidth ?? 0) + (calculatedHeight ?? 0),
         styles: {
           // Keep components styles
           ...child.props.styles,
           ...commonStyles,
+          // For HeatMapChart
           subComponentStyles: {
             ...child.props.styles?.subComponentStyles,
             cartesianStyles: {

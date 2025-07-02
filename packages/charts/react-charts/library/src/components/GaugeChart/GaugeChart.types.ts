@@ -259,7 +259,7 @@ export interface GaugeChartStyles {
   shapeStyles?: string;
 
   /**
-   *
+   * Styles for the chart wrapper div
    */
   chartWrapper?: string;
 }

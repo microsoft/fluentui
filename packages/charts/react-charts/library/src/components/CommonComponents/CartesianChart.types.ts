@@ -132,7 +132,7 @@ export interface CartesianChartStyles {
   svgTooltip?: string;
 
   /**
-   *
+   * Styles for the chart svg element
    */
   chart?: string;
 }

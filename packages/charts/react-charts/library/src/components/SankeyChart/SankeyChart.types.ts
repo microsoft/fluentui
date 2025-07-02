@@ -145,7 +145,7 @@ export interface SankeyChartStyles {
   chartWrapper?: string;
 
   /**
-   *
+   * Styles for the chart svg element
    */
   chart?: string;
 }

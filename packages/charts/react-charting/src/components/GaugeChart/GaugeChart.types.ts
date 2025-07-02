@@ -333,7 +333,7 @@ export interface IGaugeChartStyles {
   shapeStyles?: IStyle;
 
   /**
-   *
+   * Styles for the chart wrapper div
    */
   chartWrapper?: IStyle;
 }

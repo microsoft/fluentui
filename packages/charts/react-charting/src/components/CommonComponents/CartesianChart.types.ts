@@ -196,7 +196,7 @@ export interface ICartesianChartStyles {
   svgTooltip?: IStyle;
 
   /**
-   *
+   * Styles for the chart svg element
    */
   chart?: IStyle;
 }

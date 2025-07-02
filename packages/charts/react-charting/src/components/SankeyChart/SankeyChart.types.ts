@@ -153,7 +153,7 @@ export interface ISankeyChartStyles {
   chartWrapper?: IStyle;
 
   /**
-   *
+   * Styles for the chart svg element
    */
   chart?: IStyle;
 }

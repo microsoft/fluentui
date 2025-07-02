@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getWindow } from '../../utilities/getWindow';
 import { ResponsiveChildProps, ResponsiveContainerProps } from './ResponsiveContainer.types';
 import { useResponsiveChildStyles } from './useResponsiveChildStyles.styles';
+import { mergeClasses } from '@griffel/react';
 
 /**
  * Responsive Container component
@@ -75,8 +76,13 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
       return React.cloneElement<ResponsiveChildProps>(child, {
         width: calculatedWidth,
         height: calculatedHeight,
+        // For SankeyChart
         shouldResize: (calculatedWidth ?? 0) + (calculatedHeight ?? 0),
-        styles: childClasses,
+        styles: {
+          root: mergeClasses(child.props.styles?.root, childClasses.root),
+          chartWrapper: mergeClasses(child.props.styles?.chartWrapper, childClasses.chartWrapper),
+          chart: mergeClasses(child.props.styles?.chart, childClasses.chart),
+        },
       });
     });
   }, [size, props.aspect, props.maxHeight, props.children]);
