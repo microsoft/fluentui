@@ -13,6 +13,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
     >
       <svg
         aria-label="LineChart"
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -472,6 +473,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
     >
       <svg
         aria-label="LineChart"
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -960,6 +962,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
     >
       <svg
         aria-label="LineChart"
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -1420,6 +1423,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
     >
       <svg
         aria-label="LineChart"
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -1890,6 +1894,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="310"
             style="display: block;"
             width="0"
@@ -2347,6 +2352,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"
@@ -2863,6 +2869,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="310"
             style="display: block;"
             width="0"
@@ -3320,6 +3327,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"
@@ -3836,6 +3844,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="310"
             style="display: block;"
             width="0"
@@ -4303,6 +4312,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"
@@ -4829,6 +4839,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="350"
             style="display: block;"
             width="0"
@@ -5212,6 +5223,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="350"
           style="display: block;"
           width="0"
@@ -5654,6 +5666,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="310"
             style="display: block;"
             width="0"
@@ -6111,6 +6124,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"
@@ -6627,6 +6641,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="310"
             style="display: block;"
             width="0"
@@ -7227,6 +7242,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"
@@ -7886,6 +7902,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="310"
             style="display: block;"
             width="0"
@@ -8343,6 +8360,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"
@@ -8854,6 +8872,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
     >
       <svg
         aria-label="LineChart"
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -9367,6 +9386,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
     >
       <svg
         aria-label="LineChart"
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -9884,6 +9904,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"

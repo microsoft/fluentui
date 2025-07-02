@@ -377,6 +377,7 @@ export interface ICartesianChartStyles {
     calloutDateTimeContainer?: IStyle;
     calloutInfoContainer?: IStyle;
     calloutlegendText?: IStyle;
+    chart?: IStyle;
     chartTitle?: IStyle;
     chartWrapper?: IStyle;
     descriptionMessage?: IStyle;
@@ -493,6 +494,8 @@ export interface IChartTableStyles {
     // (undocumented)
     bodyCell?: IStyle;
     // (undocumented)
+    chart?: IStyle;
+    // (undocumented)
     headerCell?: IStyle;
     // (undocumented)
     root?: IStyle;
@@ -601,6 +604,7 @@ export interface IDonutChartStyleProps extends ICartesianChartStyleProps {
 export interface IDonutChartStyles {
     axisAnnotation?: IStyle;
     chart?: IStyle;
+    chartWrapper?: IStyle;
     legendContainer: IStyle;
     root?: IStyle;
 }
@@ -721,6 +725,7 @@ export interface IGaugeChartStyles {
     chart?: IStyle;
     chartTitle?: IStyle;
     chartValue?: IStyle;
+    chartWrapper?: IStyle;
     descriptionMessage?: IStyle;
     gradientSegment?: IStyle;
     legendsContainer?: IStyle;
@@ -1341,9 +1346,7 @@ export interface IResponsiveChildProps {
     // (undocumented)
     shouldResize?: number;
     // (undocumented)
-    styles?: IStyleFunctionOrObject_2<{}, {
-        root: IStyle_2;
-    }>;
+    styles?: IStyleFunctionOrObject_2<any, any>;
     // (undocumented)
     width?: number;
 }
@@ -1420,6 +1423,7 @@ export interface ISankeyChartStyleProps {
 // @public
 export interface ISankeyChartStyles {
     calloutContentRoot?: IStyle;
+    chart?: IStyle;
     chartWrapper?: IStyle;
     links?: IStyle;
     nodes?: IStyle;

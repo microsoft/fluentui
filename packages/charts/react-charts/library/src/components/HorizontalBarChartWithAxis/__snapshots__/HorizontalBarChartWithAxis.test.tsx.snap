@@ -13,6 +13,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
     >
       <svg
         aria-label="Horizontal bar chart with 4 bars. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -565,6 +566,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
     >
       <svg
         aria-label="Horizontal bar chart with 4 bars. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -1044,6 +1046,7 @@ Object {
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -1594,6 +1597,7 @@ Object {
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -2208,6 +2212,7 @@ Object {
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -2758,6 +2763,7 @@ Object {
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -3367,6 +3373,7 @@ Object {
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -3917,6 +3924,7 @@ Object {
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -4526,6 +4534,7 @@ Object {
         >
           <svg
             aria-label="Horizontal bar chart with 9 bars. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -5148,6 +5157,7 @@ Object {
       >
         <svg
           aria-label="Horizontal bar chart with 9 bars. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -5829,6 +5839,7 @@ Object {
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. "
+            class="fui-cart__chart"
             height="50"
             style="display: block;"
             width="650"
@@ -6286,6 +6297,7 @@ Object {
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. "
+          class="fui-cart__chart"
           height="50"
           style="display: block;"
           width="650"
@@ -6802,6 +6814,7 @@ Object {
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -7274,6 +7287,7 @@ Object {
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -7805,6 +7819,7 @@ Object {
         >
           <svg
             aria-label="Horizontal bar chart with 4 bars. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -8272,6 +8287,7 @@ Object {
       >
         <svg
           aria-label="Horizontal bar chart with 4 bars. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"

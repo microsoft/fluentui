@@ -575,7 +575,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1567,7 +1567,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -2559,7 +2559,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -3465,7 +3465,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -10346,7 +10346,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -11239,7 +11239,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

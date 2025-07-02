@@ -21,6 +21,7 @@ export const cartesianchartClassNames: SlotClassNames<CartesianChartStyles> = {
   hover: 'fui-cart__hover',
   tooltip: 'fui-cart__tooltip',
   chartTitle: 'fui-cart__chartTitle',
+  chart: 'fui-cart__chart',
 };
 
 /**
@@ -30,8 +31,8 @@ const useStyles = makeStyles({
   root: {
     ...typographyStyles.body1,
     display: 'flex',
-    width: 'var(--root-width, 100%)',
-    height: 'var(--root-height, 100%)',
+    width: '100%',
+    height: '100%',
     flexDirection: 'column',
     overflow: 'hidden',
   },
@@ -119,11 +120,11 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
   const _useRtl = useRtl();
   const baseStyles = useStyles();
   return {
-    root: mergeClasses(cartesianchartClassNames.root, baseStyles.root /*props.styles?.root*/),
+    root: mergeClasses(cartesianchartClassNames.root, baseStyles.root, props.styles?.root),
     chartWrapper: mergeClasses(
       cartesianchartClassNames.chartWrapper,
-      props.enableReflow ? baseStyles.chartWrapper : '',
-      /* props.styles?.chartWrapper */
+      props.reflowProps?.mode === 'min-width' ? baseStyles.chartWrapper : '',
+      props.styles?.chartWrapper,
     ),
     axisTitle: mergeClasses(cartesianchartClassNames.axisTitle, baseStyles.axisTitle /*props.styles?.axisTitle*/),
     xAxis: mergeClasses(cartesianchartClassNames.xAxis, baseStyles.xAxis /*props.styles?.xAxis*/),
@@ -142,5 +143,6 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
     ),
     svgTooltip: mergeClasses(cartesianchartClassNames.svgTooltip, baseStyles.svgTooltip /*props.styles?.svgTooltip*/),
     tooltip: mergeClasses(cartesianchartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
+    chart: mergeClasses(cartesianchartClassNames.chart, props.styles?.chart),
   };
 };

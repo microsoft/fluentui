@@ -171,7 +171,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     const rootStyles = {
       root: {
         justifyContent: this.props.centerLegends ? 'center' : 'unset',
-        flexWrap: 'wrap',
+        flexWrap: this.props.enabledWrapLines ? 'wrap' : 'nowrap',
       },
     };
     return (

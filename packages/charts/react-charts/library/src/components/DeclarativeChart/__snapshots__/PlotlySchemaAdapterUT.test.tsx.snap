@@ -368,6 +368,7 @@ Object {
   "chartTitle": "",
   "chartValue": 420,
   "chartValueFormat": [Function],
+  "height": 400,
   "maxValue": 500,
   "minValue": undefined,
   "segments": Array [
@@ -384,6 +385,7 @@ Object {
   ],
   "sublabel": "▲ 20",
   "variant": "multiple-segments",
+  "width": 500,
 }
 `;
 
@@ -3119,7 +3121,6 @@ Object {
     },
     "chartTitle": "Scottish Referendum Voters who now want Independence",
   },
-  "enableReflow": true,
   "height": 772,
   "width": undefined,
 }

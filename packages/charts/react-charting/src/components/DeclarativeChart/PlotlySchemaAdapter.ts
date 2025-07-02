@@ -1245,7 +1245,7 @@ export const transformPlotlyJsonToSankeyProps = (
     width: input.layout?.width,
     height: input.layout?.height ?? 468,
     styles,
-    enableReflow: true,
+    enableReflow: false,
   };
 };
 
