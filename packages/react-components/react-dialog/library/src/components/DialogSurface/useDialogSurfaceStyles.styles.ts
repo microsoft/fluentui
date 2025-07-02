@@ -43,6 +43,10 @@ const useRootBaseStyle = makeResetStyles({
   // to ensure dialog will be properly styled when surfaceMotion is opted-out
   boxShadow: tokens.shadow64,
 
+  '@supports (height: 1dvh)': {
+    maxHeight: '100dvh',
+  },
+
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
   },
@@ -68,9 +72,6 @@ const useStyles = makeStyles({
   nestedDialogBackdrop: {
     backgroundColor: tokens.colorTransparentBackground,
   },
-  dynamicViewportRoot: {
-    maxHeight: '100dvh',
-  },
 });
 
 /**
@@ -86,14 +87,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   const backdropBaseStyle = useBackdropBaseStyle();
   const styles = useStyles();
 
-  root.className = mergeClasses(
-    dialogSurfaceClassNames.root,
-    rootBaseStyle,
-    // This will ensure that if dynamic viewport is supported, the dialog will be sized correctly.
-    // If not, it will be a no-op and fallback to normal viewport.
-    styles.dynamicViewportRoot,
-    root.className,
-  );
+  root.className = mergeClasses(dialogSurfaceClassNames.root, rootBaseStyle, root.className);
 
   if (backdrop) {
     backdrop.className = mergeClasses(

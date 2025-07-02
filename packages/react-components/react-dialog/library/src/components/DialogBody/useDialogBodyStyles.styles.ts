@@ -19,6 +19,10 @@ const useResetStyles = makeResetStyles({
   gridTemplateRows: 'auto 1fr',
   gridTemplateColumns: '1fr 1fr auto',
 
+  '@supports (height: 1dvh)': {
+    maxHeight: `calc(100dvh - 2 * ${SURFACE_PADDING})`,
+  },
+
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
     gridTemplateRows: 'auto 1fr auto',
@@ -29,12 +33,6 @@ const useResetStyles = makeResetStyles({
   },
 });
 
-const useStyles = makeStyles({
-  dynamicViewportRoot: {
-    maxHeight: `calc(100dvh - 2 * ${SURFACE_PADDING})`,
-  },
-});
-
 /**
  * Apply styling to the DialogBody slots based on the state
  */
@@ -42,16 +40,8 @@ export const useDialogBodyStyles_unstable = (state: DialogBodyState): DialogBody
   'use no memo';
 
   const resetStyles = useResetStyles();
-  const styles = useStyles();
 
-  state.root.className = mergeClasses(
-    dialogBodyClassNames.root,
-    resetStyles,
-    // This will ensure that if dynamic viewport is supported, the dialog will be sized correctly.
-    // If not, it will be a no-op and fallback to normal viewport.
-    styles.dynamicViewportRoot,
-    state.root.className,
-  );
+  state.root.className = mergeClasses(dialogBodyClassNames.root, resetStyles, state.root.className);
 
   return state;
 };
