@@ -32,12 +32,12 @@ type SlideVariantParams = {
 
 /** Define a presence motion for slide in/out */
 const slidePresenceFn: PresenceMotionFn<SlideVariantParams> = ({
-  duration = motionTokens.durationGentle,
-  easing = motionTokens.curveDecelerateMax,
-  exitDuration = motionTokens.durationNormal,
-  exitEasing = motionTokens.curveAccelerateMax,
+  duration = motionTokens.durationNormal,
+  easing = motionTokens.curveDecelerateMid,
+  exitDuration = duration,
+  exitEasing = motionTokens.curveAccelerateMid,
   fromX = '0px',
-  fromY = '-20px',
+  fromY = '20px',
   animateOpacity = true,
 }) => {
   const enterAtoms = [slideAtom({ direction: 'enter', duration, easing, fromX, fromY })];
@@ -67,9 +67,10 @@ const slidePresenceFn: PresenceMotionFn<SlideVariantParams> = ({
 export const Slide = createPresenceComponent(slidePresenceFn);
 
 export const SlideSnappy = createPresenceComponentVariant(Slide, {
-  duration: motionTokens.durationNormal,
+  easing: motionTokens.curveDecelerateMax,
+  exitEasing: motionTokens.curveAccelerateMax,
 });
 
 export const SlideRelaxed = createPresenceComponentVariant(Slide, {
-  duration: motionTokens.durationSlow,
+  duration: motionTokens.durationGentle,
 });
