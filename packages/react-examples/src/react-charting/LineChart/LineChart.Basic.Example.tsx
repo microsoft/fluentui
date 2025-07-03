@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  IChartProps,
-  ILineChartProps,
-  LineChart,
-  DataVizPalette,
-  ICustomizedCalloutData,
-  ChartHoverCard,
-} from '@fluentui/react-charting';
+import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
@@ -256,17 +249,6 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             yAxisTitle={this.state.showAxisTitles ? 'Different categories of mail flow' : undefined}
             xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
             useUTC={this.state.useUTC}
-            // eslint-disable-next-line react/jsx-no-bind
-            onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
-              props && props.values[0] ? (
-                <ChartHoverCard
-                  XValue={props.x.toString()}
-                  Legend={props.values[0].legend}
-                  YValue={props.values[0].y}
-                  color={props.values[0].y >= 274000 ? props.values[0].color : 'red'}
-                />
-              ) : null
-            }
           />
         </div>
       </div>
