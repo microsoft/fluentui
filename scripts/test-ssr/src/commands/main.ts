@@ -15,8 +15,7 @@ import { containsAriaDescriptionWarning, hrToSeconds } from '../utils/helpers';
 import { renderToHTML } from '../utils/renderToHTML';
 import { visitPage } from '../utils/visitPage';
 
-// NOTE: Keeping this for reference, exclusion of stories is now done via CLI --exclude configuration in particular story projects
-// @ts-expect-error
+// @ts-expect-error - Keeping this for reference, exclusion of stories is now done via CLI --exclude configuration in particular story projects
 const EXCLUDED_STORIES = [
   // Portals currently do not support hydration
   // https://github.com/facebook/react/issues/13097
