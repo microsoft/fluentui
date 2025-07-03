@@ -8,7 +8,10 @@ import { Drawer } from './Drawer';
 import { overlayDrawerClassNames } from '../OverlayDrawer';
 import { inlineDrawerClassNames } from '../InlineDrawer';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

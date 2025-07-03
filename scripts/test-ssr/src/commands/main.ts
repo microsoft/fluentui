@@ -23,6 +23,9 @@ const EXCLUDED_STORIES = [
   // https://github.com/microsoft/fluentui/issues/27338
   '**/react-table/stories/src/DataGrid/Virtualization.stories.tsx',
   '**/react-table/stories/src/Table/Virtualization.stories.tsx',
+  // Portals related
+  // https://github.com/microsoft/fluentui/pull/34737
+  '**/react-tag-picker/stories/**',
 ];
 
 type MainParams = {

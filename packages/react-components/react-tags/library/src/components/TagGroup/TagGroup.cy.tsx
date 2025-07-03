@@ -9,7 +9,10 @@ import { TagGroup } from './TagGroup';
 import { TagGroupProps } from './TagGroup.types';
 import { Tag } from '../Tag/Tag';
 
-const mount = (element: JSX.Element) => {
+const mount = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

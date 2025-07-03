@@ -188,12 +188,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _refArray: IRefArrayData[];
   private margins: IMargins;
   private eventLabelHeight: number = 36;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private lines: JSX.Element[];
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderedColorFillBars: JSX.Element[];
   private _colorFillBars: IColorFillBarsProps[];
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
@@ -278,6 +281,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
@@ -554,6 +558,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     });
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLegends(data: LineChartDataWithIndex[]): JSX.Element {
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
@@ -715,7 +720,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const extraYPixels = yScale(yMin) - yScale(yMin + yPadding);
     return Math.min(extraXPixels, extraYPixels);
   }
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const lines: JSX.Element[] = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
@@ -733,8 +740,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     });
 
     for (let i = this._points.length - 1; i >= 0; i--) {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const linesForLine: JSX.Element[] = [];
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const bordersForLine: JSX.Element[] = [];
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const pointsForLine: JSX.Element[] = [];
 
       const legendVal: string = this._points[i].legend;
@@ -1367,6 +1377,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   private _createColorFillBars = (containerHeight: number) => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const colorFillBars: JSX.Element[] = [];
     if (this.state.isSelectedLegend) {
       this._colorFillBars = this.state.selectedColorBarLegend;

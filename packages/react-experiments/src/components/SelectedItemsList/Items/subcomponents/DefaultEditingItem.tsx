@@ -85,6 +85,7 @@ export type EditingItemInnerFloatingPickerProps<T> = Pick<
  */
 export const DefaultEditingItemInner = <TItem extends any>(
   props: IDefaultEditingItemInnerProps<TItem>,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): JSX.Element => {
   const editingInput = React.useRef<any>();
   const editingFloatingPicker = React.createRef<any>();
@@ -130,6 +131,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // We only want to run this once
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const _renderEditingSuggestions = (): JSX.Element => {
     const FloatingPicker = props.onRenderFloatingPicker;
     if (!FloatingPicker) {

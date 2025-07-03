@@ -9,7 +9,10 @@ import { SwatchPickerRow } from '../SwatchPickerRow';
 import type { SwatchPickerProps, SwatchPickerOnSelectEventHandler } from '../SwatchPicker';
 import { renderSwatchPickerGrid } from '../../utils/renderUtils';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  element: JSX.Element,
+) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

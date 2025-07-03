@@ -459,7 +459,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
               className={classes.calloutContentX}
               {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
             >
-              {formatToLocaleString(calloutProps!.hoverXValue, props.culture)}
+              {formatToLocaleString(calloutProps!.hoverXValue, props.culture) as React.ReactNode}
             </div>
           </div>
           <div className={classes.calloutInfoContainer} style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}>
@@ -521,7 +521,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '16px' };
       const toDrawShape = xValue.index !== undefined && xValue.index !== -1;
       const { culture } = props;
-      const yValue = formatToLocaleString(xValue.y, culture);
+      const yValue = formatToLocaleString(xValue.y, culture) as React.ReactNode;
       if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
         return (
           <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
@@ -548,10 +548,12 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
               <div>
                 <div className={classes.calloutlegendText}> {xValue.legend}</div>
                 <div className={classes.calloutContentY}>
-                  {formatToLocaleString(
-                    xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
-                    culture,
-                  )}
+                  {
+                    formatToLocaleString(
+                      xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
+                      culture,
+                    ) as React.ReactNode
+                  }
                 </div>
               </div>
             </div>
@@ -567,9 +569,12 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             {Object.keys(subcounts).map((subcountName: string) => {
               return (
                 <div key={subcountName} className={classes.calloutBlockContainer}>
-                  <div className={classes.calloutlegendText}> {formatToLocaleString(subcountName, culture)}</div>
+                  <div className={classes.calloutlegendText}>
+                    {' '}
+                    {formatToLocaleString(subcountName, culture) as React.ReactNode}
+                  </div>
                   <div className={classes.calloutContentY}>
-                    {formatToLocaleString(subcounts[subcountName], culture)}
+                    {formatToLocaleString(subcounts[subcountName], culture) as React.ReactNode}
                   </div>
                 </div>
               );

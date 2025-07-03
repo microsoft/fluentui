@@ -15,10 +15,10 @@ export const LineChartAllNegative = () => {
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
   };
-  const _onShapeChange = React.useCallback(ev => {
+  const _onShapeChange = React.useCallback((ev: any) => {
     setAllowMultipleShapes(ev.currentTarget.checked);
   }, []);
-  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
   const _onCheckChange = (ev: React.FormEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {

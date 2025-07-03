@@ -47,6 +47,7 @@ function mockData(count: number, isColumn: boolean = false, customDivider: boole
 // Wrapper function which calls the defaultRenderer with the corresponding params
 function columnDividerWrapper(
   iDetailsColumnProps: IDetailsColumnProps,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null,
 ): any {
   return defaultRenderer(iDetailsColumnProps);
@@ -55,6 +56,7 @@ function columnDividerWrapper(
 // Using a bar sign as a custom divider along with the default divider
 function customColumnDivider(
   iDetailsColumnProps: IDetailsColumnProps,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null,
 ): any {
   return (

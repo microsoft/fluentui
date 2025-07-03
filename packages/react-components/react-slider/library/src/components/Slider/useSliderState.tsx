@@ -37,10 +37,14 @@ export const useSliderState_unstable = (state: SliderState, props: SliderProps) 
     }
   });
 
+  const stepPercent = step && step > 0 ? `${(step * 100) / (max - min)}%` : undefined;
   const rootVariables = {
     [sliderDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
-    [sliderStepsPercentVar]: step && step > 0 ? `${(step * 100) / (max - min)}%` : '',
     [sliderProgressVar]: `${valuePercent}%`,
+    // Set the sliderStepsPercentVar only if defined - fixes SSR errors in React 18
+    ...(stepPercent !== undefined && {
+      [sliderStepsPercentVar]: stepPercent,
+    }),
   };
 
   // Root props

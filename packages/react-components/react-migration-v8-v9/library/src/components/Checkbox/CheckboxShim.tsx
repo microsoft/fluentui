@@ -24,7 +24,10 @@ export const CheckboxShim = React.forwardRef((props, _ref) => {
     focus: () => checkboxRef.current?.focus(),
   }));
 
-  const defaultLabelRenderer = (checkboxProps?: ICheckboxProps): JSX.Element | null => {
+  const defaultLabelRenderer = (
+    checkboxProps?: ICheckboxProps,
+  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element | null => {
     if (!checkboxProps) {
       return null;
     }

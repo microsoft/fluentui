@@ -39,15 +39,15 @@ export const AreaChartBasic = () => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchLegendMultiSelect = React.useCallback(ev => {
+  const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchChartMode = React.useCallback(ev => {
+  const _onSwitchChartMode = React.useCallback((ev: any) => {
     setChangeChartMode(ev.currentTarget.checked);
   }, []);
 

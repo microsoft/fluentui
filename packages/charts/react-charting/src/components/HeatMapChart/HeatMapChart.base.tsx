@@ -388,6 +388,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * attaching dom events to that rectangles
    */
   private _createRectangles = (): React.ReactNode => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const rectangles: JSX.Element[] = [];
     const yAxisDataPoints = this._stringYAxisDataPoints.slice().reverse();
     /**
@@ -397,6 +398,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     yAxisDataPoints.forEach((yAxisDataPoint: string) => {
       let index = 0;
       this._stringXAxisDataPoints.forEach((xAxisDataPoint: string) => {
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         let rectElement: JSX.Element;
         const id = `x${xAxisDataPoint}y${yAxisDataPoint}`;
         if (
@@ -438,7 +440,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
                 transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
                 fill={foregroundColor}
               >
-                {formatToLocaleString(dataPointObject.rectText, this.props.culture, this.props.useUTC)}
+                {
+                  formatToLocaleString(
+                    dataPointObject.rectText,
+                    this.props.culture,
+                    this.props.useUTC,
+                  ) as React.ReactNode
+                }
               </text>
             </g>
           );
@@ -518,6 +526,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       });
     }
   }
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLegendBars = (): JSX.Element => {
     const { data, legendProps } = this.props;
     const legends: ILegend[] = [];

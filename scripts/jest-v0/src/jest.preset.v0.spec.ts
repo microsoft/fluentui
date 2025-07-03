@@ -13,7 +13,7 @@ describe(`v0 preset`, () => {
         moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
         moduleNameMapper: expect.any(Object),
         modulePathIgnorePatterns: expect.any(Array),
-        setupFilesAfterEnv: [`${workspaceRoot}/scripts/jest/src/v0/setupTests.js`],
+        setupFilesAfterEnv: [`${workspaceRoot}/scripts/jest-v0/src/setupTests.js`],
         testRegex: '/test/.*-test\\.tsx?$',
         transform: {
           '^.+\\.tsx?$': 'babel-jest',

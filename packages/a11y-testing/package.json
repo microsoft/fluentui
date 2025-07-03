@@ -19,7 +19,11 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "@testing-library/dom": "8.11.3",
+    "@testing-library/react": "12.1.2",
+    "@types/react": "17.0.44",
+    "@types/react-dom": "17.0.15"
   },
   "dependencies": {
     "tslib": "^2.1.0"
