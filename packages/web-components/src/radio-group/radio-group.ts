@@ -179,10 +179,7 @@ export class RadioGroup extends FASTElement {
       this.value = this.initialValue;
     }
 
-    if (
-      !this.value ||
-      (this.value && typeof this.checkedIndex !== 'number' && checkedIndex >= 0)
-    ) {
+    if (!this.value || (this.value && typeof this.checkedIndex !== 'number' && checkedIndex >= 0)) {
       // TODO: Switch to standard `Array.findLastIndex` when TypeScript 5 is available
       this.checkedIndex = checkedIndex;
     }
