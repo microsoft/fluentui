@@ -470,6 +470,21 @@ export const fontFamilyBase = 'var(--fontFamilyBase)';
  */
 export const fontWeightRegular = 'var(--fontWeightRegular)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandForeground1 | `colorCompoundBrandForeground1`} design token.
+ * @public
+ */
+export const colorCompoundBrandForeground1 = 'var(--colorCompoundBrandForeground1)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandForeground1Hover | `colorCompoundBrandForeground1Hover`} design token.
+ * @public
+ */
+export const colorCompoundBrandForeground1Hover = 'var(--colorCompoundBrandForeground1Hover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandForeground1Pressed | `colorCompoundBrandForeground1Pressed`} design token.
+ * @public
+ */
+export const colorCompoundBrandForeground1Pressed = 'var(--colorCompoundBrandForeground1Pressed)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#strokeWidthThickest | `strokeWidthThickest`} design token.
  * @public
  */
@@ -519,3 +534,8 @@ export const colorNeutralForeground3Hover = 'var(--colorNeutralForeground3Hover)
  * @public
  */
 export const spacingHorizontalXXS = 'var(--spacingHorizontalXXS)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalMNudge | `spacingHorizontalMNudge`} design token.
+ * @public
+ */
+export const spacingHorizontalMNudge = 'var(--spacingHorizontalMNudge)';
