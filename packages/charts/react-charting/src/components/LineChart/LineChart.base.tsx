@@ -1615,11 +1615,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     let hoverDp: ICustomizedCalloutData | undefined = undefined;
 
     if (this.props.isCalloutForStack === false && found?.values) {
-      const yDp = find(found.values, (val: ICustomizedCalloutDataPoint) => val?.y === yVal);
-      if (yDp) {
+      const dp = find(found.values, (val: ICustomizedCalloutDataPoint) => val?.y === yVal);
+      if (dp) {
         hoverDp = {
           x: xVal,
-          values: [yDp],
+          values: [dp],
         };
       }
     }
@@ -1640,7 +1640,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           YValueHover: found.values,
           YValue: yVal,
           legendVal: legendVal!,
-          lineColor: lineColor,
+          lineColor,
           stackCalloutProps: found!,
           dataPointCalloutProps: hoverDp,
           activePoint: circleId,
