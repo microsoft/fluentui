@@ -1968,7 +1968,7 @@
     "@babel/runtime" "^7.10.4"
     react-is "^17.0.2"
 
-"@fluentui/react-icons-northstar@*", "@fluentui/react-icons-northstar@^0.66.5":
+"@fluentui/react-icons-northstar@*", "@fluentui/react-icons-northstar@0.66.5", "@fluentui/react-icons-northstar@^0.66.5":
   version "0.66.5"
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons-northstar/-/react-icons-northstar-0.66.5.tgz#a33765f1c3ac98e1901d9b208d78f42d1ad23cb5"
   integrity sha512-b/0JqY48pb/tGur76DvH9sI9mnPucP1zFZYWH9jy4tcizE6JWgNviSoXuI0JUoj+O63sbj2DMMRlIK2hqMLHgQ==
@@ -2031,7 +2031,7 @@
     "@babel/runtime" "^7.10.4"
     "@fluentui/styles" "^0.66.5"
 
-"@fluentui/react-northstar@*":
+"@fluentui/react-northstar@*", "@fluentui/react-northstar@0.66.5":
   version "0.66.5"
   resolved "https://registry.yarnpkg.com/@fluentui/react-northstar/-/react-northstar-0.66.5.tgz#6b6c9aa76780a1ec0f78204aea72293a59d526a4"
   integrity sha512-Hrp8DWbk2MK+FHjG61MlH8eh8XfT5JX0DEp55OABbmJf9KatwnTzqXUfd4cxWahOsu1cL8miYM2Mrb0rq5uztw==

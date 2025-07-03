@@ -148,9 +148,9 @@
     "@types/node": "20.12.12",
     "@types/prettier": "2.7.2",
     "@types/progress": "2.0.5",
-    "@types/react-frame-component": "4.1.1",
     "@types/react": "18.3.20",
     "@types/react-dom": "18.3.6",
+    "@types/react-frame-component": "4.1.1",
     "@types/react-is": "18.3.1",
     "@types/react-test-renderer": "18.3.1",
     "@types/react-transition-group": "4.4.6",
@@ -328,6 +328,8 @@
     "yargs-unparser": "2.0.0"
   },
   "dependencies": {
+    "@fluentui/react-icons-northstar": "0.66.5",
+    "@fluentui/react-northstar": "0.66.5",
     "copy-to-clipboard": "3.3.1"
   },
   "license": "MIT",
