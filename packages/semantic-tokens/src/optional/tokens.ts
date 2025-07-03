@@ -120,6 +120,9 @@ import {
   colorNeutralForeground3,
   colorNeutralForeground2BrandHover,
   colorNeutralForeground2BrandPressed,
+  colorCompoundBrandForeground1,
+  colorCompoundBrandForeground1Hover,
+  colorCompoundBrandForeground1Pressed,
   colorNeutralForegroundInverted,
   colorNeutralForegroundInvertedHover,
   colorNeutralForegroundInvertedPressed,
@@ -574,9 +577,9 @@ export const foregroundCtrlIconOnSubtlePressed = `var(${foregroundCtrlIconOnSubt
 export const foregroundCtrlIconOnSubtleDisabled = `var(${foregroundCtrlIconOnSubtleDisabledRaw}, var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${colorNeutralForegroundDisabled}))`;
 export const foregroundCtrlOnBrandHover = `var(${foregroundCtrlOnBrandHoverRaw}, var(${foregroundCtrlOnBrandRestRaw}, ${colorNeutralForegroundOnBrand}))`;
 export const foregroundCtrlOnBrandPressed = `var(${foregroundCtrlOnBrandPressedRaw}, var(${foregroundCtrlOnBrandRestRaw}, ${colorNeutralForegroundOnBrand}))`;
-export const foregroundCtrlActiveBrandRest = `var(${foregroundCtrlActiveBrandRestRaw}, var(${foregroundCtrlBrandRestRaw}))`;
-export const foregroundCtrlActiveBrandHover = `var(${foregroundCtrlActiveBrandHoverRaw}, var(${foregroundCtrlBrandHoverRaw}))`;
-export const foregroundCtrlActiveBrandPressed = `var(${foregroundCtrlActiveBrandPressedRaw}, var(${foregroundCtrlBrandPressedRaw}))`;
+export const foregroundCtrlActiveBrandRest = `var(${foregroundCtrlActiveBrandRestRaw}, var(${foregroundCtrlBrandRestRaw}, ${colorCompoundBrandForeground1}))`;
+export const foregroundCtrlActiveBrandHover = `var(${foregroundCtrlActiveBrandHoverRaw}, var(${foregroundCtrlBrandHoverRaw}, ${colorCompoundBrandForeground1Hover}))`;
+export const foregroundCtrlActiveBrandPressed = `var(${foregroundCtrlActiveBrandPressedRaw}, var(${foregroundCtrlBrandPressedRaw}, ${colorCompoundBrandForeground1Pressed}))`;
 export const foregroundCtrlActiveBrandDisabled = `var(${foregroundCtrlActiveBrandDisabledRaw}, var(${foregroundCtrlBrandDisabledRaw}))`;
 export const foregroundCtrlOnActiveBrandRest = `var(${foregroundCtrlOnActiveBrandRestRaw}, var(${foregroundCtrlOnBrandRestRaw}, ${colorNeutralForegroundInverted}))`;
 export const foregroundCtrlOnActiveBrandHover = `var(${foregroundCtrlOnActiveBrandHoverRaw}, var(${foregroundCtrlOnBrandRestRaw}, ${colorNeutralForegroundInvertedHover}))`;

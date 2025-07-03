@@ -2144,7 +2144,7 @@ export const ctrlListPillStretchPaddingHint = "var(--smtc-ctrl-list-pill-stretch
 export const ctrlListPillStretchPaddingHintRaw = "--smtc-ctrl-list-pill-stretch-padding-hint";
 
 // @public (undocumented)
-export const ctrlListPillWidth = "var(--smtc-ctrl-list-pill-width)";
+export const ctrlListPillWidth = "var(--smtc-ctrl-list-pill-width, var(--strokeWidthThicker))";
 
 // @public (undocumented)
 export const ctrlListPillWidthRaw = "--smtc-ctrl-list-pill-width";
@@ -2851,6 +2851,48 @@ export const _ctrlSwitchStrokeOnActiveBrandHover = "var(--smtc-stroke-ctrl-on-ac
 // @public
 export const _ctrlSwitchStrokeOnActiveBrandRest = "var(--smtc-stroke-ctrl-on-active-brand-rest, var(--smtc-stroke-ctrl-on-brand-rest, var(--colorTransparentStroke)))";
 
+// @public
+export const _ctrlTabBackgroundActiveBrandDisabled = "var(--smtc-background-ctrl-active-brand-disabled, var(--smtc-background-ctrl-brand-disabled, var(--colorNeutralForegroundDisabled)))";
+
+// @public
+export const _ctrlTabForegroundActiveBrandHover = "var(--smtc-foreground-ctrl-active-brand-hover, var(--smtc-foreground-ctrl-brand-hover, var(--colorNeutralForeground1Hover)))";
+
+// @public
+export const _ctrlTabForegroundActiveBrandPressed = "var(--smtc-foreground-ctrl-active-brand-pressed, var(--smtc-foreground-ctrl-brand-pressed, var(--colorNeutralForeground1Pressed)))";
+
+// @public
+export const _ctrlTabForegroundActiveBrandRest = "var(--smtc-foreground-ctrl-active-brand-rest, var(--smtc-foreground-ctrl-brand-rest, var(--colorNeutralForeground1)))";
+
+// @public
+export const _ctrlTabForegroundOnSubtleHover = "var(--smtc-foreground-ctrl-icon-on-subtle-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Hover)))";
+
+// @public
+export const _ctrlTabForegroundOnSubtlePressed = "var(--smtc-foreground-ctrl-icon-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Pressed)))";
+
+// @public
+export const _ctrlTabForegroundOnTransparentHover = "var(--smtc-foreground-ctrl-on-transparent-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Hover)))";
+
+// @public
+export const _ctrlTabForegroundOnTransparentPressed = "var(--smtc-foreground-ctrl-on-transparent-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Pressed)))";
+
+// @public
+export const _ctrlTabGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalSNudge))";
+
+// @public
+export const _ctrlTabPaddingHorizontalDefault = "var(--smtc-padding-ctrl-horizontal-default, var(--spacingHorizontalMNudge))";
+
+// @public
+export const _ctrlTabPaddingTextSide = "var(--smtc-padding-ctrl-text-side, var(--spacingHorizontalXXS))";
+
+// @public
+export const _ctrlTabSizeDefault = "var(--smtc-size-ctrl-default, 32px)";
+
+// @public
+export const _ctrlTabSmGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalXXS))";
+
+// @public
+export const _ctrlTabSmPaddingHorizontalDefault = "var(--smtc-padding-ctrl-horizontal-default, var(--spacingHorizontalSNudge))";
+
 // @public (undocumented)
 export const ctrlTooltipBackground = "var(--smtc-ctrl-tooltip-background)";
 
@@ -2930,19 +2972,19 @@ export const foregroundCtrlActiveBrandDisabled = "var(--smtc-foreground-ctrl-act
 export const foregroundCtrlActiveBrandDisabledRaw = "--smtc-foreground-ctrl-active-brand-disabled";
 
 // @public (undocumented)
-export const foregroundCtrlActiveBrandHover = "var(--smtc-foreground-ctrl-active-brand-hover, var(--smtc-foreground-ctrl-brand-hover))";
+export const foregroundCtrlActiveBrandHover = "var(--smtc-foreground-ctrl-active-brand-hover, var(--smtc-foreground-ctrl-brand-hover, var(--colorCompoundBrandForeground1Hover)))";
 
 // @public (undocumented)
 export const foregroundCtrlActiveBrandHoverRaw = "--smtc-foreground-ctrl-active-brand-hover";
 
 // @public (undocumented)
-export const foregroundCtrlActiveBrandPressed = "var(--smtc-foreground-ctrl-active-brand-pressed, var(--smtc-foreground-ctrl-brand-pressed))";
+export const foregroundCtrlActiveBrandPressed = "var(--smtc-foreground-ctrl-active-brand-pressed, var(--smtc-foreground-ctrl-brand-pressed, var(--colorCompoundBrandForeground1Pressed)))";
 
 // @public (undocumented)
 export const foregroundCtrlActiveBrandPressedRaw = "--smtc-foreground-ctrl-active-brand-pressed";
 
 // @public (undocumented)
-export const foregroundCtrlActiveBrandRest = "var(--smtc-foreground-ctrl-active-brand-rest, var(--smtc-foreground-ctrl-brand-rest))";
+export const foregroundCtrlActiveBrandRest = "var(--smtc-foreground-ctrl-active-brand-rest, var(--smtc-foreground-ctrl-brand-rest, var(--colorCompoundBrandForeground1)))";
 
 // @public (undocumented)
 export const foregroundCtrlActiveBrandRestRaw = "--smtc-foreground-ctrl-active-brand-rest";
@@ -5122,7 +5164,7 @@ export const textCtrlWeightDefault = "var(--smtc-text-ctrl-weight-default, var(-
 export const textCtrlWeightDefaultRaw = "--smtc-text-ctrl-weight-default";
 
 // @public (undocumented)
-export const textCtrlWeightSelected = "var(--smtc-text-ctrl-weight-selected)";
+export const textCtrlWeightSelected = "var(--smtc-text-ctrl-weight-selected, var(--fontWeightSemibold))";
 
 // @public (undocumented)
 export const textCtrlWeightSelectedRaw = "--smtc-text-ctrl-weight-selected";

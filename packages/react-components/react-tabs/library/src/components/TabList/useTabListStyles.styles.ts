@@ -1,7 +1,7 @@
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
 import type { TabListSlots, TabListState } from './TabList.types';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const tabListClassNames: SlotClassNames<TabListSlots> = {
   root: 'fui-TabList',
@@ -27,10 +27,10 @@ const useStyles = makeStyles({
     flexDirection: 'column',
   },
   roundedSmall: {
-    gap: tokens.spacingHorizontalSNudge,
+    gap: semanticTokens.gapInsideCtrlLgDefault,
   },
   rounded: {
-    gap: tokens.spacingHorizontalS,
+    gap: semanticTokens.gapInsideCtrlDefault,
   },
 });
 
