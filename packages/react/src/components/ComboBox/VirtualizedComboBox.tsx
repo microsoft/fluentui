@@ -6,6 +6,9 @@ import type { IComboBoxProps, IComboBox, IComboBoxOption } from './ComboBox.type
 import type { IList } from '../../List';
 import type { ISelectableOption } from '../../SelectableOption';
 
+// used for scrolling
+const ITEM_HEIGHT = 36;
+
 export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {
   /** The combo box element */
   private _comboBox = React.createRef<IComboBox>();
@@ -73,6 +76,6 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 
   protected _onScrollToItem = (itemIndex: number): void => {
     // We are using the List component, call scrollToIndex
-    this._list.current && this._list.current.scrollToIndex(itemIndex);
+    this._list.current && this._list.current.scrollToIndex(itemIndex, () => ITEM_HEIGHT);
   };
 }
