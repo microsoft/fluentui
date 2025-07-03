@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 02 Jul 2025 07:20:12 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Jul 2025 07:21:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.11)
+
+Thu, 03 Jul 2025 07:21:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.10..@fluentui/react-charting_v5.24.11)
+
+### Patches
+
+- fix(react-charting): Enable correct datapoint for single datapoint hover behavior for line chart ([PR #34778](https://github.com/microsoft/fluentui/pull/34778) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix: ensure ResponsiveContainer resizes correctly within grid layout ([PR #34728](https://github.com/microsoft/fluentui/pull/34728) by kumarkshitij@microsoft.com)
+- Bump @fluentui/theme-samples to v8.7.210 ([PR #34778](https://github.com/microsoft/fluentui/pull/34778) by beachball)
+- Bump @fluentui/react to v8.123.1 ([PR #34778](https://github.com/microsoft/fluentui/pull/34778) by beachball)
 
 ## [5.24.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.10)
 
