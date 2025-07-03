@@ -346,11 +346,7 @@
     ],
     "nohoist": [
       "**/enzyme",
-      "**/enzyme/**",
-      "**/@wojtekmaj/enzyme-adapter-react-17",
-      "**/@wojtekmaj/enzyme-adapter-react-17/**",
-      "**/enzyme-to-json",
-      "**/enzyme-to-json/**"
+      "**/enzyme/**"
     ]
   },
   "resolutions": {

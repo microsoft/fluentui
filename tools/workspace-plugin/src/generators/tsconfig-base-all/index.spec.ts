@@ -16,14 +16,7 @@ describe('tsconfig-base-all generator', () => {
     jest.spyOn(console, 'log').mockImplementation(noop);
 
     tree = createTreeWithEmptyWorkspace();
-    writeJson(tree, '/tsconfig.base.v0.json', {
-      compilerOptions: {
-        paths: {
-          '@proj/v0-one': ['packages/v0-one/src/index.ts'],
-          '@proj/v0-two': ['packages/v0-two/src/index.ts'],
-        },
-      },
-    });
+
     writeJson(tree, '/tsconfig.base.v8.json', {
       compilerOptions: {
         paths: {
