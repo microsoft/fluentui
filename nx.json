@@ -16,7 +16,10 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"],
-      "cache": true
+      "cache": true,
+      "options": {
+        "enableGriffelRawStyles": true
+      }
     },
     "build-storybook": {
       "dependsOn": [],
