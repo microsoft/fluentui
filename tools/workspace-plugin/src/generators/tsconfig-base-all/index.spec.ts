@@ -52,12 +52,6 @@ describe('tsconfig-base-all generator', () => {
             "@proj/two": Array [
               "packages/two/src/index.ts",
             ],
-            "@proj/v0-one": Array [
-              "packages/v0-one/src/index.ts",
-            ],
-            "@proj/v0-two": Array [
-              "packages/v0-two/src/index.ts",
-            ],
             "@proj/v8-one": Array [
               "packages/v8-one/src/index.ts",
             ],
