@@ -75,6 +75,17 @@ const measureStartMock = measureStart as jest.Mock;
 const measureEndMock = measureEnd as jest.Mock;
 
 describe('Build Executor', () => {
+  beforeEach(() => {
+    // mute api extractor - START
+    jest.spyOn(console, 'log').mockImplementation(() => {
+      return;
+    });
+    jest.spyOn(console, 'warn').mockImplementation(() => {
+      return;
+    });
+    // mute api extractor - END
+  });
+
   it('runs build and api-generation and fails on api update', async () => {
     const loggerLogSpy = jest.spyOn(logger, 'log').mockImplementation(() => {
       return;
@@ -280,17 +291,6 @@ describe('Build Executor', () => {
   }, 60000);
 
   describe(`#enableGriffelRawStyles`, () => {
-    beforeEach(() => {
-      // mute api extractor - START
-      jest.spyOn(console, 'log').mockImplementation(() => {
-        return;
-      });
-      jest.spyOn(console, 'warn').mockImplementation(() => {
-        return;
-      });
-      // mute api extractor - END
-    });
-
     it('generates raw styles files when enableGriffelRawStyles is enabled', async () => {
       const optionsWithRawStyles: BuildExecutorSchema = {
         ...options,
