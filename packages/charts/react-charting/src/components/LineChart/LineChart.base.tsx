@@ -21,6 +21,7 @@ import {
   ILineChartProps,
   ILineChartPoints,
   ICustomizedCalloutData,
+  ICustomizedCalloutDataPoint,
   IMargins,
   IRefArrayData,
   IColorFillBarsProps,
@@ -1622,6 +1623,18 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const yVal = y instanceof Date ? y.getTime() : y;
     const _this = this;
     const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
+    let hoverDp: ICustomizedCalloutData | undefined = undefined;
+
+    if (this.props.isCalloutForStack === false && found?.values) {
+      const dp = find(found.values, (val: ICustomizedCalloutDataPoint) => val?.y === yVal);
+      if (dp) {
+        hoverDp = {
+          x: xVal,
+          values: [dp],
+        };
+      }
+    }
+
     // if no points need to be called out then don't show vertical line and callout card
 
     if (found) {
@@ -1638,9 +1651,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           YValueHover: found.values,
           YValue: yVal,
           legendVal: legendVal!,
-          lineColor: lineColor,
+          lineColor,
           stackCalloutProps: found!,
-          dataPointCalloutProps: found!,
+          dataPointCalloutProps: hoverDp,
           activePoint: circleId,
           xAxisCalloutAccessibilityData,
           nearestCircleToHighlight: null,
