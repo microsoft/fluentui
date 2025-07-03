@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(react-charting): Enable correct datapoint for single datapoint hover behavior",
+  "comment": "fix(react-charting): Enable correct datapoint for single datapoint hover behavior for line chart",
   "packageName": "@fluentui/react-charting",
   "email": "98592573+AtishayMsft@users.noreply.github.com",
   "dependentChangeType": "patch"
