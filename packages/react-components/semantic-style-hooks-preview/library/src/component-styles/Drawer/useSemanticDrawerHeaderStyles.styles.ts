@@ -47,11 +47,11 @@ export const useSemanticDrawerHeaderStyles = (_state: unknown): DrawerHeaderStat
   const rootStyles = useDrawerHeaderStyles();
 
   state.root.className = mergeClasses(
+    state.root.className,
     drawerHeaderClassNames.root,
     styles,
     state.scrollState !== 'none' && rootStyles.separator,
     ['middle', 'bottom'].includes(state.scrollState) && rootStyles.separatorVisible,
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 

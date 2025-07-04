@@ -122,29 +122,29 @@ export const useSemanticMenuButtonStyles = (_state: unknown): MenuButtonState =>
   const menuIconStyles = useMenuIconStyles();
 
   state.root.className = mergeClasses(
+    state.root.className,
     menuButtonClassNames.root,
     state.root['aria-expanded'] && rootExpandedStyles.base,
     state.root['aria-expanded'] && rootExpandedStyles[state.appearance],
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.icon) {
     state.icon.className = mergeClasses(
+      state.icon.className,
       menuButtonClassNames.icon,
       state.root['aria-expanded'] && iconExpandedStyles[state.appearance] && iconExpandedStyles.highContrast,
-      state.icon.className,
       getSlotClassNameProp_unstable(state.icon),
     );
   }
 
   if (state.menuIcon) {
     state.menuIcon.className = mergeClasses(
+      state.menuIcon.className,
       menuButtonClassNames.menuIcon,
       menuIconStyles.base,
       menuIconStyles[state.size],
       !state.iconOnly && menuIconStyles.notIconOnly,
-      state.menuIcon.className,
       getSlotClassNameProp_unstable(state.menuIcon),
     );
   }

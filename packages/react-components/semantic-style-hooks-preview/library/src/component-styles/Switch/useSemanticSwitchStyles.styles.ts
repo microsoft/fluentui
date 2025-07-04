@@ -291,35 +291,35 @@ export const useSemanticSwitchStyles = (_state: unknown): SwitchState => {
   const { label, labelPosition } = state;
 
   state.root.className = mergeClasses(
+    state.root.className,
     switchClassNames.root,
     rootBaseClassName,
     labelPosition === 'above' && rootStyles.vertical,
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 
   state.indicator.className = mergeClasses(
+    state.indicator.className,
     switchClassNames.indicator,
     indicatorBaseClassName,
     label && labelPosition === 'above' && indicatorStyles.labelAbove,
-    state.indicator.className,
     getSlotClassNameProp_unstable(state.indicator),
   );
 
   state.input.className = mergeClasses(
+    state.input.className,
     switchClassNames.input,
     inputBaseClassName,
     label && inputStyles[labelPosition],
-    state.input.className,
     getSlotClassNameProp_unstable(state.input),
   );
 
   if (state.label) {
     state.label.className = mergeClasses(
+      state.label.className,
       switchClassNames.label,
       labelStyles.base,
       labelStyles[labelPosition],
-      state.label.className,
       getSlotClassNameProp_unstable(state.label),
     );
   }

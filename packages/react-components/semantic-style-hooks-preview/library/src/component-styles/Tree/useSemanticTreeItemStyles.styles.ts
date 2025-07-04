@@ -68,10 +68,10 @@ export const useSemanticTreeItemStyles = (_state: unknown): TreeItemState => {
   const { level } = state;
 
   state.root.className = mergeClasses(
+    state.root.className,
     treeItemClassNames.root,
     baseStyles,
     isStaticallyDefinedLevel(level) && styles[`level${level}` as StaticLevelProperty],
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 

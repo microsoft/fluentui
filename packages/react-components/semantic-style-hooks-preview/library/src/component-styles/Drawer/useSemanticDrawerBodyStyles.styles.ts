@@ -35,9 +35,9 @@ export const useSemanticDrawerBodyStyles = (_state: unknown): DrawerBodyState =>
   const styles = useStyles();
 
   state.root.className = mergeClasses(
+    state.root.className,
     drawerBodyClassNames.root,
     styles,
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 

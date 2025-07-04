@@ -24,10 +24,10 @@ export const useSemanticTreeStyles = (_state: unknown): TreeState => {
   const isSubTree = state.level > 1;
 
   state.root.className = mergeClasses(
+    state.root.className,
     treeClassNames.root,
     baseStyles,
     isSubTree && styles.subtree,
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
   return state;

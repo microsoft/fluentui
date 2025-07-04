@@ -108,6 +108,7 @@ export const useSemanticLinkStyles = (_state: unknown): LinkState => {
   const { appearance, disabled, inline, root, backgroundAppearance } = state;
 
   state.root.className = mergeClasses(
+    state.root.className,
     linkClassNames.root,
     styles.root,
     styles.focusIndicator,
@@ -117,7 +118,6 @@ export const useSemanticLinkStyles = (_state: unknown): LinkState => {
     backgroundAppearance === 'inverted' && styles.inverted,
     inline && styles.inline,
     disabled && styles.disabled,
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 

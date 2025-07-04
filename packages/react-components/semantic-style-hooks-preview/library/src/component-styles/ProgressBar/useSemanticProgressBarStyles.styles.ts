@@ -113,16 +113,17 @@ export const useSemanticProgressBarStyles = (_state: unknown): ProgressBarState 
   const barStyles = useBarStyles();
 
   state.root.className = mergeClasses(
+    state.root.className,
     progressBarClassNames.root,
     rootStyles.root,
     rootStyles[shape],
     rootStyles[thickness],
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.bar) {
     state.bar.className = mergeClasses(
+      state.bar.className,
       progressBarClassNames.bar,
       barStyles.base,
       barStyles.brand,
@@ -130,7 +131,6 @@ export const useSemanticProgressBarStyles = (_state: unknown): ProgressBarState 
       value === undefined && barStyles.indeterminate,
       value !== undefined && value > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
       color && value !== undefined && barStyles[color],
-      state.bar.className,
       getSlotClassNameProp_unstable(state.bar),
     );
   }

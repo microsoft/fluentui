@@ -122,54 +122,54 @@ export const useSemanticRatingItemStyles = (_state: unknown): RatingItemState =>
   const indicatorStyles = useIndicatorStyles();
 
   state.root.className = mergeClasses(
+    state.root.className,
     ratingItemClassNames.root,
     styles.root,
     styles[size],
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.halfValueInput) {
     state.halfValueInput.className = mergeClasses(
+      state.halfValueInput.className,
       ratingItemClassNames.halfValueInput,
       inputBaseClassName,
       inputStyles.lowerHalf,
-      state.halfValueInput.className,
       getSlotClassNameProp_unstable(state.halfValueInput),
     );
   }
 
   if (state.fullValueInput) {
     state.fullValueInput.className = mergeClasses(
+      state.fullValueInput.className,
       ratingItemClassNames.fullValueInput,
       inputBaseClassName,
       state.halfValueInput && inputStyles.upperHalf,
-      state.fullValueInput.className,
       getSlotClassNameProp_unstable(state.fullValueInput),
     );
   }
 
   if (state.unselectedIcon) {
     state.unselectedIcon.className = mergeClasses(
+      state.unselectedIcon.className,
       ratingItemClassNames.unselectedIcon,
       indicatorBaseClassName,
       appearance === 'filled' && indicatorStyles.filled,
       color === 'brand' && (appearance === 'filled' ? indicatorStyles.brandFilled : indicatorStyles.brand),
       color === 'marigold' && (appearance === 'filled' ? indicatorStyles.marigoldFilled : indicatorStyles.marigold),
       iconFillWidth === 0.5 && indicatorStyles.upperHalf,
-      state.unselectedIcon.className,
       getSlotClassNameProp_unstable(state.unselectedIcon),
     );
   }
 
   if (state.selectedIcon) {
     state.selectedIcon.className = mergeClasses(
+      state.selectedIcon.className,
       ratingItemClassNames.selectedIcon,
       indicatorBaseClassName,
       color === 'brand' && indicatorStyles.brand,
       color === 'marigold' && indicatorStyles.marigold,
       iconFillWidth === 0.5 && indicatorStyles.lowerHalf,
-      state.selectedIcon.className,
       getSlotClassNameProp_unstable(state.selectedIcon),
     );
   }

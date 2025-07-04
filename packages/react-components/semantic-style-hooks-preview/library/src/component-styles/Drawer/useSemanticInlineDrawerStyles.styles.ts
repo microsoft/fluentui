@@ -66,12 +66,12 @@ export const useSemanticInlineDrawerStyles = (_state: unknown): InlineDrawerStat
   const rootStyles = useDrawerRootStyles();
 
   state.root.className = mergeClasses(
+    state.root.className,
     inlineDrawerClassNames.root,
     resetStyles,
     baseClassNames,
     getSeparatorClass(state, rootStyles),
     rootStyles[state.position],
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 

@@ -252,6 +252,7 @@ export const useSemanticTextareaStyles = (_state: unknown): TextareaState => {
 
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
+    state.root.className,
     textareaClassNames.root,
     rootStyles.base,
     disabled && rootStyles.disabled,
@@ -260,19 +261,18 @@ export const useSemanticTextareaStyles = (_state: unknown): TextareaState => {
     !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && invalid && rootStyles.invalid,
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 
   const textareaStyles = useTextareaStyles();
   const textareaResizeStyles = useTextareaResizeStyles();
   state.textarea.className = mergeClasses(
+    state.textarea.className,
     textareaClassNames.textarea,
     textareaStyles.base,
     textareaStyles[size],
     textareaResizeStyles[resize],
     disabled && textareaStyles.disabled,
-    state.textarea.className,
     getSlotClassNameProp_unstable(state.textarea),
   );
 

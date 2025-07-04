@@ -181,12 +181,12 @@ export const useSemanticTreeItemLayoutStyles = (_state: unknown): TreeItemLayout
   const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
 
   root.className = mergeClasses(
+    root.className,
     treeItemLayoutClassNames.root,
     rootBaseStyles,
     rootStyles[appearance],
     rootStyles[size],
     rootStyles[itemType],
-    root.className,
     getSlotClassNameProp_unstable(root),
   );
 
@@ -194,53 +194,53 @@ export const useSemanticTreeItemLayoutStyles = (_state: unknown): TreeItemLayout
 
   if (expandIcon) {
     expandIcon.className = mergeClasses(
+      expandIcon.className,
       treeItemLayoutClassNames.expandIcon,
       expandIconBaseStyles,
-      expandIcon.className,
       getSlotClassNameProp_unstable(expandIcon),
     );
   }
 
   if (iconBefore) {
     iconBefore.className = mergeClasses(
+      iconBefore.className,
       treeItemLayoutClassNames.iconBefore,
       iconBaseStyles,
       iconBeforeStyles[size],
-      iconBefore.className,
       getSlotClassNameProp_unstable(iconBefore),
     );
   }
 
   if (iconAfter) {
     iconAfter.className = mergeClasses(
+      iconAfter.className,
       treeItemLayoutClassNames.iconAfter,
       iconBaseStyles,
       iconAfterStyles[size],
-      iconAfter.className,
       getSlotClassNameProp_unstable(iconAfter),
     );
   }
 
   if (actions) {
     actions.className = mergeClasses(
+      actions.className,
       treeItemLayoutClassNames.actions,
       actionsBaseStyles,
-      actions.className,
       getSlotClassNameProp_unstable(actions),
     );
   }
   if (aside) {
     aside.className = mergeClasses(
+      aside.className,
       treeItemLayoutClassNames.aside,
       asideBaseStyles,
-      aside.className,
       getSlotClassNameProp_unstable(aside),
     );
   }
   if (selector) {
     selector.className = mergeClasses(
-      treeItemLayoutClassNames.selector,
       selector.className,
+      treeItemLayoutClassNames.selector,
       getSlotClassNameProp_unstable(selector),
     );
   }

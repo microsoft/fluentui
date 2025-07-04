@@ -16,9 +16,9 @@ export const useSemanticFlatTreeStyles = (_state: unknown): FlatTreeState => {
 
   const baseStyles = useBaseStyles();
   state.root.className = mergeClasses(
+    state.root.className,
     flatTreeClassNames.root,
     baseStyles,
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
   return state;

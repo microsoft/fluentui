@@ -57,21 +57,21 @@ export const useSemanticLabelStyles = (_state: unknown): LabelState => {
 
   const styles = useStyles();
   state.root.className = mergeClasses(
+    state.root.className,
     labelClassNames.root,
     styles.root,
     state.disabled && styles.disabled,
     styles[state.size],
     state.weight === 'semibold' && styles.semibold,
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.required) {
     state.required.className = mergeClasses(
+      state.required.className,
       labelClassNames.required,
       styles.required,
       state.disabled && styles.disabled,
-      state.required.className,
       getSlotClassNameProp_unstable(state.required),
     );
   }

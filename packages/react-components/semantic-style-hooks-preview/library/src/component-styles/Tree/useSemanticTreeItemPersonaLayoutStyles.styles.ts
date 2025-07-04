@@ -137,61 +137,66 @@ export const useSemanticTreeItemPersonaLayoutStyles = (_state: unknown): TreeIte
   const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
 
   state.root.className = mergeClasses(
+    state.root.className,
     treeItemPersonaLayoutClassNames.root,
     rootBaseStyles,
     rootStyles[itemType],
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 
-  state.media.className = mergeClasses(treeItemPersonaLayoutClassNames.media, mediaBaseStyles, state.media.className);
+  state.media.className = mergeClasses(
+    state.media.className,
+    treeItemPersonaLayoutClassNames.media,
+    mediaBaseStyles,
+    getSlotClassNameProp_unstable(state.media),
+  );
 
   if (state.main) {
     state.main.className = mergeClasses(
+      state.main.className,
       treeItemPersonaLayoutClassNames.main,
       mainBaseStyles,
       state.description && mainStyles.withDescription,
-      state.main.className,
       getSlotClassNameProp_unstable(state.main),
     );
   }
   if (state.description) {
     state.description.className = mergeClasses(
+      state.description.className,
       treeItemPersonaLayoutClassNames.description,
       descriptionBaseStyles,
-      state.description.className,
       getSlotClassNameProp_unstable(state.description),
     );
   }
   if (state.actions) {
     state.actions.className = mergeClasses(
+      state.actions.className,
       treeItemPersonaLayoutClassNames.actions,
       actionsBaseStyles,
-      state.actions.className,
       getSlotClassNameProp_unstable(state.actions),
     );
   }
   if (state.aside) {
     state.aside.className = mergeClasses(
+      state.aside.className,
       treeItemPersonaLayoutClassNames.aside,
       asideBaseStyles,
-      state.aside.className,
       getSlotClassNameProp_unstable(state.aside),
     );
   }
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(
+      state.expandIcon.className,
       treeItemPersonaLayoutClassNames.expandIcon,
       expandIconBaseStyles,
-      state.expandIcon.className,
       getSlotClassNameProp_unstable(state.expandIcon),
     );
   }
 
   if (state.selector) {
     state.selector.className = mergeClasses(
-      treeItemPersonaLayoutClassNames.selector,
       state.selector.className,
+      treeItemPersonaLayoutClassNames.selector,
       getSlotClassNameProp_unstable(state.selector),
     );
   }

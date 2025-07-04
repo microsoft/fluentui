@@ -48,11 +48,11 @@ export const useSemanticDrawerFooterStyles = (_state: unknown): DrawerFooterStat
   const rootStyles = useDrawerFooterStyles();
 
   state.root.className = mergeClasses(
+    state.root.className,
     drawerFooterClassNames.root,
     styles,
     state.scrollState !== 'none' && rootStyles.separator,
     ['middle', 'top'].includes(state.scrollState) && rootStyles.separatorVisible,
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 

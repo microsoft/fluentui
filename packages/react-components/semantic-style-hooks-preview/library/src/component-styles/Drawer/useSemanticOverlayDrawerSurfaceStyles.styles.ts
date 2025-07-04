@@ -32,9 +32,9 @@ export const useSemanticOverlayDrawerSurfaceStyles = (_state: unknown): DialogSu
 
   if (state.backdrop) {
     state.backdrop.className = mergeClasses(
+      state.backdrop.className,
       backdropResetStyles,
       state.isNestedDialog && backdropStyles.nested,
-      state.backdrop.className,
       getSlotClassNameProp_unstable(state.backdrop),
     );
   }

@@ -259,30 +259,30 @@ export const useSemanticSpinnerStyles = (_state: unknown): SpinnerState => {
   );
   if (state.spinner) {
     state.spinner.className = mergeClasses(
+      state.spinner.className,
       spinnerClassNames.spinner,
       spinnerBaseClassName,
       spinnerStyles[size],
       appearance === 'inverted' && spinnerStyles.inverted,
-      state.spinner.className,
       getSlotClassNameProp_unstable(state.spinner),
     );
   }
   if (state.spinnerTail) {
     state.spinnerTail.className = mergeClasses(
+      state.spinnerTail.className,
       spinnerClassNames.spinnerTail,
       spinnerTailBaseClassName,
       dir === 'rtl' && spinnerStyles.rtlTail,
-      state.spinnerTail.className,
       getSlotClassNameProp_unstable(state.spinnerTail),
     );
   }
   if (state.label) {
     state.label.className = mergeClasses(
+      state.label.className,
       spinnerClassNames.label,
       labelStyles.default,
       labelStyles[size],
       appearance === 'inverted' && labelStyles.inverted,
-      state.label.className,
       getSlotClassNameProp_unstable(state.label),
     );
   }

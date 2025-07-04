@@ -114,6 +114,7 @@ export const useSemanticTextStyles = (_state: unknown): TextState => {
   const styles = useStyles();
 
   state.root.className = mergeClasses(
+    state.root.className,
     textClassNames.root,
     styles.root,
     state.wrap === false && styles.nowrap,
@@ -140,7 +141,6 @@ export const useSemanticTextStyles = (_state: unknown): TextState => {
     state.align === 'center' && styles.alignCenter,
     state.align === 'end' && styles.alignEnd,
     state.align === 'justify' && styles.alignJustify,
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 

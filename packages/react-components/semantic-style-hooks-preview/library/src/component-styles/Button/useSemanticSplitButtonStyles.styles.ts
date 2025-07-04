@@ -194,29 +194,29 @@ export const useSemanticSplitButtonStyles = (_state: unknown): SplitButtonState 
   const { appearance, disabled, disabledFocusable } = state;
 
   state.root.className = mergeClasses(
+    state.root.className,
     splitButtonClassNames.root,
     rootStyles.base,
     appearance && rootStyles[appearance],
     (disabled || disabledFocusable) && rootStyles.disabled,
     (disabled || disabledFocusable) && rootStyles.disabledHighContrast,
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.menuButton) {
     state.menuButton.className = mergeClasses(
+      state.menuButton.className,
       splitButtonClassNames.menuButton,
       focusStyles.menuButton,
-      state.menuButton.className,
       getSlotClassNameProp_unstable(state.menuButton),
     );
   }
 
   if (state.primaryActionButton) {
     state.primaryActionButton.className = mergeClasses(
+      state.primaryActionButton.className,
       splitButtonClassNames.primaryActionButton,
       focusStyles.primaryActionButton,
-      state.primaryActionButton.className,
       getSlotClassNameProp_unstable(state.primaryActionButton),
     );
   }

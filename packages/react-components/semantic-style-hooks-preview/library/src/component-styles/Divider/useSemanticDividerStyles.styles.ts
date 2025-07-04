@@ -243,6 +243,7 @@ export const useSemanticDividerStyles = (_state: unknown): DividerState => {
   const { alignContent, appearance, inset, vertical } = state;
 
   state.root.className = mergeClasses(
+    state.root.className,
     dividerClassNames.root,
 
     // Base styles
@@ -264,16 +265,13 @@ export const useSemanticDividerStyles = (_state: unknown): DividerState => {
     // Childless styles
     state.root.children === undefined && baseStyles.childless,
 
-    // User provided class name
-    state.root.className,
-
     getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.wrapper) {
     state.wrapper.className = mergeClasses(
-      dividerClassNames.wrapper,
       state.wrapper.className,
+      dividerClassNames.wrapper,
       getSlotClassNameProp_unstable(state.wrapper),
     );
   }
