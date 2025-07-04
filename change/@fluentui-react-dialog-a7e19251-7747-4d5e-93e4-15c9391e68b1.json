@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(Dialog): fix mobile viewport issues",
-  "packageName": "@fluentui/react-dialog",
-  "email": "mathis.michel@outlook.de",
-  "dependentChangeType": "patch"
-}
