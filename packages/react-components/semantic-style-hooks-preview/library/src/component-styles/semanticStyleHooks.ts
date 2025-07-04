@@ -6,11 +6,10 @@ import {
   useSemanticMenuButtonStyles,
   useSemanticSplitButtonStyles,
   useSemanticToggleButtonStyles,
-} from './Button/index';
-
-import { useSemanticAccordionHeaderStyles } from './Accordion/index';
-import { useSemanticAvatarStyles } from './Avatar/index';
-import { useSemanticDividerStyles } from './Divider/index';
+} from './Button';
+import { useSemanticAccordionHeaderStyles } from './Accordion';
+import { useSemanticAvatarStyles } from './Avatar';
+import { useSemanticDividerStyles } from './Divider';
 import {
   useSemanticInlineDrawerStyles,
   useSemanticDrawerBodyStyles,
@@ -21,6 +20,7 @@ import {
 import { useSemanticLabelStyles } from './Label';
 import { useSemanticLinkStyles } from './Link';
 import { useSemanticProgressBarStyles } from './ProgressBar/useSemanticProgressBarStyles.styles';
+import { useSemanticRatingDisplayStyles, useSemanticRatingItemStyles } from './Rating';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -47,4 +47,7 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useLinkStyles_unstable: useSemanticLinkStyles,
   // ProgressBar styles
   useProgressBarStyles_unstable: useSemanticProgressBarStyles,
+  // Rating styles
+  useRatingDisplayStyles_unstable: useSemanticRatingDisplayStyles,
+  useRatingItemStyles_unstable: useSemanticRatingItemStyles,
 };

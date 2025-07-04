@@ -1,13 +1,7 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { RatingDisplaySlots, RatingDisplayState } from './RatingDisplay.types';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
-
-export const ratingDisplayClassNames: SlotClassNames<RatingDisplaySlots> = {
-  root: 'fui-RatingDisplay',
-  valueText: 'fui-RatingDisplay__valueText',
-  countText: 'fui-RatingDisplay__countText',
-};
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { ratingDisplayClassNames, type RatingDisplayState } from '@fluentui/react-rating';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 /**
  * Styles for the root slot
@@ -20,24 +14,27 @@ const useRootClassName = makeResetStyles({
 });
 
 const useLabelClassName = makeResetStyles({
-  color: tokens.colorNeutralForeground1,
-  marginLeft: tokens.spacingHorizontalXS,
-  ...typographyStyles.caption1,
+  color: semanticTokens.foregroundCtrlNeutralPrimaryRest,
+  marginLeft: semanticTokens.gapInsideCtrlSmToLabel,
+  fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+  fontSize: semanticTokens.textRampSmItemBodyFontSize,
+  fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+  lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
 });
 
 const useLabelStyles = makeStyles({
   large: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    marginLeft: tokens.spacingHorizontalSNudge,
+    fontSize: semanticTokens.textRampItemBodyFontSize,
+    lineHeight: semanticTokens.textRampItemBodyLineHeight,
+    marginLeft: semanticTokens.gapInsideCtrlToLabel,
   },
   extraLarge: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-    marginLeft: tokens.spacingHorizontalS,
+    fontSize: semanticTokens.textRampLgItemBodyFontSize,
+    lineHeight: semanticTokens.textRampLgItemBodyLineHeight,
+    marginLeft: semanticTokens.gapInsideCtrlLgToLabel,
   },
   strong: {
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: semanticTokens.textStyleDefaultHeaderWeight,
   },
   divider: {
     '::before': {
@@ -49,8 +46,10 @@ const useLabelStyles = makeStyles({
 /**
  * Apply styling to the RatingDisplay slots based on the state
  */
-export const useRatingDisplayStyles_unstable = (state: RatingDisplayState): RatingDisplayState => {
+export const useSemanticRatingDisplayStyles = (_state: unknown): RatingDisplayState => {
   'use no memo';
+
+  const state = _state as RatingDisplayState;
 
   const { size } = state;
   const rootClassName = useRootClassName();
@@ -66,6 +65,7 @@ export const useRatingDisplayStyles_unstable = (state: RatingDisplayState): Rati
       size === 'large' && labelStyles.large,
       size === 'extra-large' && labelStyles.extraLarge,
       state.valueText.className,
+      getSlotClassNameProp_unstable(state.valueText),
     );
   }
   if (state.countText) {
@@ -76,6 +76,7 @@ export const useRatingDisplayStyles_unstable = (state: RatingDisplayState): Rati
       size === 'extra-large' && labelStyles.extraLarge,
       state.valueText && labelStyles.divider,
       state.countText.className,
+      getSlotClassNameProp_unstable(state.countText),
     );
   }
 

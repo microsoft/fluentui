@@ -1,16 +1,9 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import type { RatingItemSlots, RatingItemState } from './RatingItem.types';
-
-export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
-  root: 'fui-RatingItem',
-  selectedIcon: 'fui-RatingItem__selectedIcon',
-  unselectedIcon: 'fui-RatingItem__unselectedIcon',
-  halfValueInput: 'fui-RatingItem__halfValueInput',
-  fullValueInput: 'fui-RatingItem__fullValueInput',
-};
+import { ratingItemClassNames, type RatingItemState } from '@fluentui/react-rating';
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 /**
  * Styles for the root slot
@@ -70,7 +63,7 @@ const useInputStyles = makeStyles({
 const useIndicatorBaseClassName = makeResetStyles({
   display: 'flex',
   overflow: 'hidden',
-  color: tokens.colorNeutralForeground1,
+  color: semanticTokens.ctrlRatingIconForegroundFilled,
   fill: 'currentColor',
   pointerEvents: 'none',
   position: 'absolute',
@@ -98,8 +91,8 @@ const useIndicatorStyles = makeStyles({
     color: tokens.colorPaletteMarigoldBorderActive,
   },
   filled: {
-    color: tokens.colorNeutralBackground6,
-    stroke: tokens.colorTransparentStroke,
+    color: semanticTokens.ctrlRatingIconForegroundEmpty,
+    stroke: semanticTokens.strokeLayer,
     '@media (forced-colors: active)': {
       color: 'Canvas',
       stroke: 'CanvasText',
@@ -116,8 +109,10 @@ const useIndicatorStyles = makeStyles({
 /**
  * Apply styling to the RatingItem slots based on the state
  */
-export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItemState => {
+export const useSemanticRatingItemStyles = (_state: unknown): RatingItemState => {
   'use no memo';
+
+  const state = _state as RatingItemState;
 
   const { color, size, iconFillWidth, appearance } = state;
   const styles = useStyles();
@@ -126,7 +121,13 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
   const indicatorBaseClassName = useIndicatorBaseClassName();
   const indicatorStyles = useIndicatorStyles();
 
-  state.root.className = mergeClasses(ratingItemClassNames.root, styles.root, styles[size], state.root.className);
+  state.root.className = mergeClasses(
+    ratingItemClassNames.root,
+    styles.root,
+    styles[size],
+    state.root.className,
+    getSlotClassNameProp_unstable(state.root),
+  );
 
   if (state.halfValueInput) {
     state.halfValueInput.className = mergeClasses(
@@ -134,6 +135,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
       inputBaseClassName,
       inputStyles.lowerHalf,
       state.halfValueInput.className,
+      getSlotClassNameProp_unstable(state.halfValueInput),
     );
   }
 
@@ -143,6 +145,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
       inputBaseClassName,
       state.halfValueInput && inputStyles.upperHalf,
       state.fullValueInput.className,
+      getSlotClassNameProp_unstable(state.fullValueInput),
     );
   }
 
@@ -155,6 +158,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
       color === 'marigold' && (appearance === 'filled' ? indicatorStyles.marigoldFilled : indicatorStyles.marigold),
       iconFillWidth === 0.5 && indicatorStyles.upperHalf,
       state.unselectedIcon.className,
+      getSlotClassNameProp_unstable(state.unselectedIcon),
     );
   }
 
@@ -166,6 +170,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
       color === 'marigold' && indicatorStyles.marigold,
       iconFillWidth === 0.5 && indicatorStyles.lowerHalf,
       state.selectedIcon.className,
+      getSlotClassNameProp_unstable(state.selectedIcon),
     );
   }
 
