@@ -49,6 +49,7 @@ const createConfig = (customConfig = {}) => {
     moduleNameMapper: {
       '\\.(scss)$': path.resolve(__dirname, './v8/jest-style-mock.js'),
       KeyCodes: path.resolve(__dirname, './v8/jest-mock.js'),
+      enzyme: path.resolve(__dirname, './v8/jest-mock.js'),
       ...jestAliases(),
     },
 
