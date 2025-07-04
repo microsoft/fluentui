@@ -1,27 +1,24 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { TreeSlots, TreeState } from './Tree.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
-
-export const treeClassNames: SlotClassNames<Omit<TreeSlots, 'collapseMotion'>> = {
-  root: 'fui-Tree',
-};
+import { treeClassNames, type TreeState } from '@fluentui/react-tree';
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 const useBaseStyles = makeResetStyles({
   display: 'flex',
   flexDirection: 'column',
-  rowGap: tokens.spacingVerticalXXS,
+  rowGap: semanticTokens._ctrlTreeGapInsideDefault,
 });
 
 const useStyles = makeStyles({
   subtree: {
-    paddingTop: tokens.spacingVerticalXXS,
+    paddingTop: semanticTokens._ctrlTreeGapInsideDefault,
   },
 });
 
-export const useTreeStyles_unstable = (state: TreeState): TreeState => {
+export const useSemanticTreeStyles = (_state: unknown): TreeState => {
   'use no memo';
 
+  const state = _state as TreeState;
   const baseStyles = useBaseStyles();
   const styles = useStyles();
   const isSubTree = state.level > 1;
@@ -31,6 +28,7 @@ export const useTreeStyles_unstable = (state: TreeState): TreeState => {
     baseStyles,
     isSubTree && styles.subtree,
     state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
   return state;
 };

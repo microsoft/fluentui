@@ -25,6 +25,12 @@ import { useSemanticSpinnerStyles } from './Spinner';
 import { useSemanticSwitchStyles } from './Switch';
 import { useSemanticTextStyles } from './Text';
 import { useSemanticTextareaStyles } from './Textarea';
+import {
+  useSemanticFlatTreeStyles,
+  useSemanticTreeItemLayoutStyles,
+  useSemanticTreeItemStyles,
+  useSemanticTreeStyles,
+} from './Tree';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -62,4 +68,9 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useTextStyles_unstable: useSemanticTextStyles,
   // Textarea styles
   useTextareaStyles_unstable: useSemanticTextareaStyles,
+  // Tree styles
+  useFlatTreeStyles_unstable: useSemanticFlatTreeStyles,
+  useTreeStyles_unstable: useSemanticTreeStyles,
+  useTreeItemLayoutStyles_unstable: useSemanticTreeItemLayoutStyles,
+  useTreeItemStyles_unstable: useSemanticTreeItemStyles,
 };

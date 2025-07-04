@@ -1,21 +1,14 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { useTreeContext_unstable } from '../../contexts/treeContext';
-import { treeItemLevelToken } from '../../utils/tokens';
-import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
-
-export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots> = {
-  root: 'fui-TreeItemLayout',
-  iconBefore: 'fui-TreeItemLayout__iconBefore',
-  main: 'fui-TreeItemLayout__main',
-  iconAfter: 'fui-TreeItemLayout__iconAfter',
-  expandIcon: 'fui-TreeItemLayout__expandIcon',
-  aside: 'fui-TreeItemLayout__aside',
-  actions: 'fui-TreeItemLayout__actions',
-  selector: 'fui-TreeItemLayout__selector',
-};
+import { tokens } from '@fluentui/react-theme';
+import {
+  type TreeItemLayoutState,
+  useTreeContext_unstable,
+  treeItemLevelToken,
+  useTreeItemContext_unstable,
+  treeItemLayoutClassNames,
+} from '@fluentui/react-tree';
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 const useRootBaseStyles = makeResetStyles({
   display: 'flex',
@@ -23,20 +16,20 @@ const useRootBaseStyles = makeResetStyles({
   minHeight: '32px',
   boxSizing: 'border-box',
   gridArea: 'layout',
-  ':hover': {
-    color: tokens.colorNeutralForeground2Hover,
-    backgroundColor: tokens.colorSubtleBackgroundHover,
-    // TODO: stop using treeItemLayoutClassNames.expandIcon  for styling
-    [`& .${treeItemLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Hover,
-    },
-  },
   ':active': {
-    color: tokens.colorNeutralForeground2Pressed,
-    backgroundColor: tokens.colorSubtleBackgroundPressed,
+    color: semanticTokens.foregroundCtrlOnSubtlePressed,
+    backgroundColor: semanticTokens.backgroundCtrlSubtlePressed,
     // TODO: stop using treeItemLayoutClassNames.expandIcon for styling
     [`& .${treeItemLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Pressed,
+      color: semanticTokens._ctrlTreeIconOnSubtlePressed,
+    },
+  },
+  ':hover': {
+    color: semanticTokens.foregroundCtrlOnSubtleHover,
+    backgroundColor: semanticTokens.backgroundCtrlSubtleHover,
+    // TODO: stop using treeItemLayoutClassNames.expandIcon  for styling
+    [`& .${treeItemLayoutClassNames.expandIcon}`]: {
+      color: semanticTokens._ctrlTreeIconOnSubtleHover,
     },
   },
 });
@@ -46,17 +39,23 @@ const useRootBaseStyles = makeResetStyles({
  */
 const useRootStyles = makeStyles({
   leaf: {
-    paddingLeft: `calc(var(${treeItemLevelToken}, 1) * ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc(var(${treeItemLevelToken}, 1) * ${semanticTokens.ctrlListIndentLevel1})`,
   },
   branch: {
-    paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${semanticTokens.ctrlListIndentLevel1})`,
   },
   medium: {
-    ...typographyStyles.body1,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontSize: semanticTokens.textRampItemBodyFontSize,
+    lineHeight: semanticTokens.textRampItemBodyLineHeight,
   },
   small: {
     minHeight: '24px',
-    ...typographyStyles.caption1,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontSize: semanticTokens.textRampSmItemBodyFontSize,
+    lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
   },
   // Appearance variations
   subtle: {},
@@ -69,12 +68,15 @@ const useRootStyles = makeStyles({
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: semanticTokens.nullColor,
+    color: semanticTokens.foregroundCtrlOnTransparentRest,
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
+      color: semanticTokens._ctrlTreeOnTransparentHover,
     },
     ':active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
+      color: semanticTokens._ctrlTreeOnTransparentPressed,
     },
   },
 });
@@ -112,7 +114,7 @@ const useExpandIconBaseStyles = makeResetStyles({
   justifyContent: 'center',
   minWidth: '24px',
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground3,
+  color: semanticTokens._ctrlTreeIconOnSubtle,
   flex: `0 0 auto`,
   padding: `${tokens.spacingVerticalXS} 0`,
 });
@@ -121,7 +123,8 @@ const useExpandIconBaseStyles = makeResetStyles({
  * Styles for the content slot
  */
 const useMainBaseStyles = makeResetStyles({
-  padding: `0 ${tokens.spacingHorizontalXXS}`,
+  // padding: `0 ${tokens.spacingHorizontalXXS}`,
+  padding: `${semanticTokens._ctrlTreePaddingTextTop} ${semanticTokens._ctrlTreePaddingTextRight} ${semanticTokens._ctrlTreePaddingTextBottom} ${semanticTokens._ctrlTreePaddingTextLeft}`,
 });
 
 /**
@@ -130,9 +133,9 @@ const useMainBaseStyles = makeResetStyles({
 const useIconBaseStyles = makeResetStyles({
   display: 'flex',
   alignItems: 'center',
-  color: tokens.colorNeutralForeground2,
-  lineHeight: tokens.lineHeightBase500,
-  fontSize: tokens.fontSizeBase500,
+  color: semanticTokens.foregroundCtrlOnSubtleRest,
+  lineHeight: semanticTokens.textGlobalBody1LineHeight,
+  fontSize: semanticTokens.textGlobalBody1FontSize,
 });
 
 const useIconBeforeStyles = makeStyles({
@@ -156,9 +159,10 @@ const useIconAfterStyles = makeStyles({
 /**
  * Apply styling to the TreeItemLayout slots based on the state
  */
-export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): TreeItemLayoutState => {
+export const useSemanticTreeItemLayoutStyles = (_state: unknown): TreeItemLayoutState => {
   'use no memo';
 
+  const state = _state as TreeItemLayoutState;
   const { main, iconAfter, iconBefore, expandIcon, root, aside, actions, selector } = state;
   const rootStyles = useRootStyles();
   const rootBaseStyles = useRootBaseStyles();
@@ -183,6 +187,7 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     rootStyles[size],
     rootStyles[itemType],
     root.className,
+    getSlotClassNameProp_unstable(root),
   );
 
   main.className = mergeClasses(treeItemLayoutClassNames.main, mainBaseStyles, main.className);
@@ -192,6 +197,7 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
       treeItemLayoutClassNames.expandIcon,
       expandIconBaseStyles,
       expandIcon.className,
+      getSlotClassNameProp_unstable(expandIcon),
     );
   }
 
@@ -201,6 +207,7 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
       iconBaseStyles,
       iconBeforeStyles[size],
       iconBefore.className,
+      getSlotClassNameProp_unstable(iconBefore),
     );
   }
 
@@ -210,17 +217,32 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
       iconBaseStyles,
       iconAfterStyles[size],
       iconAfter.className,
+      getSlotClassNameProp_unstable(iconAfter),
     );
   }
 
   if (actions) {
-    actions.className = mergeClasses(treeItemLayoutClassNames.actions, actionsBaseStyles, actions.className);
+    actions.className = mergeClasses(
+      treeItemLayoutClassNames.actions,
+      actionsBaseStyles,
+      actions.className,
+      getSlotClassNameProp_unstable(actions),
+    );
   }
   if (aside) {
-    aside.className = mergeClasses(treeItemLayoutClassNames.aside, asideBaseStyles, aside.className);
+    aside.className = mergeClasses(
+      treeItemLayoutClassNames.aside,
+      asideBaseStyles,
+      aside.className,
+      getSlotClassNameProp_unstable(aside),
+    );
   }
   if (selector) {
-    selector.className = mergeClasses(treeItemLayoutClassNames.selector, selector.className);
+    selector.className = mergeClasses(
+      treeItemLayoutClassNames.selector,
+      selector.className,
+      getSlotClassNameProp_unstable(selector),
+    );
   }
 
   return state;
