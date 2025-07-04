@@ -30,6 +30,7 @@ import {
   useSemanticTreeItemLayoutStyles,
   useSemanticTreeItemStyles,
   useSemanticTreeStyles,
+  useSemanticTreeItemPersonaLayoutStyles,
 } from './Tree';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
@@ -72,5 +73,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useFlatTreeStyles_unstable: useSemanticFlatTreeStyles,
   useTreeStyles_unstable: useSemanticTreeStyles,
   useTreeItemLayoutStyles_unstable: useSemanticTreeItemLayoutStyles,
+  useTreeItemPersonaLayoutStyles_unstable: useSemanticTreeItemPersonaLayoutStyles,
   useTreeItemStyles_unstable: useSemanticTreeItemStyles,
 };

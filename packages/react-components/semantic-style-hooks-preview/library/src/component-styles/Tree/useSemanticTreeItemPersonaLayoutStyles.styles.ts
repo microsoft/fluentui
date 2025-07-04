@@ -1,20 +1,13 @@
-import type { TreeItemPersonaLayoutSlots, TreeItemPersonaLayoutState } from './TreeItemPersonaLayout.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import {
+  treeItemLevelToken,
+  treeItemPersonaLayoutClassNames,
+  useTreeItemContext_unstable,
+  type TreeItemPersonaLayoutState,
+} from '@fluentui/react-tree';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { treeItemLevelToken } from '../../utils/tokens';
-import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
-
-export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutSlots> = {
-  root: 'fui-TreeItemPersonaLayout',
-  media: 'fui-TreeItemPersonaLayout__media',
-  description: 'fui-TreeItemPersonaLayout__description',
-  main: 'fui-TreeItemPersonaLayout__main',
-  expandIcon: 'fui-TreeItemPersonaLayout__expandIcon',
-  aside: 'fui-TreeItemPersonaLayout__aside',
-  actions: 'fui-TreeItemPersonaLayout__actions',
-  selector: 'fui-TreeItemPersonaLayout__selector',
-};
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 const useRootBaseStyles = makeResetStyles({
   display: 'grid',
@@ -27,19 +20,19 @@ const useRootBaseStyles = makeResetStyles({
   alignItems: 'center',
   ...typographyStyles.body1,
   ':active': {
-    color: tokens.colorNeutralForeground2Pressed,
-    backgroundColor: tokens.colorSubtleBackgroundPressed,
+    color: semanticTokens.foregroundCtrlOnSubtlePressed,
+    backgroundColor: semanticTokens.backgroundCtrlSubtlePressed,
     // TODO: stop using treeItemPersonaLayoutClassNames.expandIcon for styling
     [`& .${treeItemPersonaLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Pressed,
+      color: semanticTokens._ctrlPersonaTreeIconOnSubtlePressed,
     },
   },
   ':hover': {
-    color: tokens.colorNeutralForeground2Hover,
-    backgroundColor: tokens.colorSubtleBackgroundHover,
+    color: semanticTokens.foregroundCtrlOnSubtleHover,
+    backgroundColor: semanticTokens.backgroundCtrlSubtleHover,
     // TODO: stop using treeItemPersonaLayoutClassNames.expandIcon  for styling
     [`& .${treeItemPersonaLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Hover,
+      color: semanticTokens._ctrlTreeIconOnSubtleHover,
     },
   },
 });
@@ -49,10 +42,10 @@ const useRootBaseStyles = makeResetStyles({
  */
 const useRootStyles = makeStyles({
   leaf: {
-    paddingLeft: `calc(var(${treeItemLevelToken}, 1) * ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc(var(${treeItemLevelToken}, 1) * ${semanticTokens.ctrlListIndentLevel1})`,
   },
   branch: {
-    paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${semanticTokens.ctrlListIndentLevel1})`,
   },
 });
 
@@ -118,7 +111,7 @@ const useExpandIconBaseStyles = makeResetStyles({
   justifyContent: 'center',
   minWidth: '24px',
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground3,
+  color: semanticTokens._ctrlTreeIconOnSubtle,
   gridArea: 'expandIcon',
   flex: `0 0 auto`,
   padding: `${tokens.spacingVerticalXS} 0`,
@@ -127,11 +120,10 @@ const useExpandIconBaseStyles = makeResetStyles({
 /**
  * Apply styling to the TreeItemPersonaLayout slots based on the state
  */
-export const useTreeItemPersonaLayoutStyles_unstable = (
-  state: TreeItemPersonaLayoutState,
-): TreeItemPersonaLayoutState => {
+export const useSemanticTreeItemPersonaLayoutStyles = (_state: unknown): TreeItemPersonaLayoutState => {
   'use no memo';
 
+  const state = _state as TreeItemPersonaLayoutState;
   const rootBaseStyles = useRootBaseStyles();
   const rootStyles = useRootStyles();
   const mediaBaseStyles = useMediaBaseStyles();
@@ -149,6 +141,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
     rootBaseStyles,
     rootStyles[itemType],
     state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
 
   state.media.className = mergeClasses(treeItemPersonaLayoutClassNames.media, mediaBaseStyles, state.media.className);
@@ -159,6 +152,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
       mainBaseStyles,
       state.description && mainStyles.withDescription,
       state.main.className,
+      getSlotClassNameProp_unstable(state.main),
     );
   }
   if (state.description) {
@@ -166,6 +160,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
       treeItemPersonaLayoutClassNames.description,
       descriptionBaseStyles,
       state.description.className,
+      getSlotClassNameProp_unstable(state.description),
     );
   }
   if (state.actions) {
@@ -173,21 +168,32 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
       treeItemPersonaLayoutClassNames.actions,
       actionsBaseStyles,
       state.actions.className,
+      getSlotClassNameProp_unstable(state.actions),
     );
   }
   if (state.aside) {
-    state.aside.className = mergeClasses(treeItemPersonaLayoutClassNames.aside, asideBaseStyles, state.aside.className);
+    state.aside.className = mergeClasses(
+      treeItemPersonaLayoutClassNames.aside,
+      asideBaseStyles,
+      state.aside.className,
+      getSlotClassNameProp_unstable(state.aside),
+    );
   }
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(
       treeItemPersonaLayoutClassNames.expandIcon,
       expandIconBaseStyles,
       state.expandIcon.className,
+      getSlotClassNameProp_unstable(state.expandIcon),
     );
   }
 
   if (state.selector) {
-    state.selector.className = mergeClasses(treeItemPersonaLayoutClassNames.selector, state.selector.className);
+    state.selector.className = mergeClasses(
+      treeItemPersonaLayoutClassNames.selector,
+      state.selector.className,
+      getSlotClassNameProp_unstable(state.selector),
+    );
   }
 
   return state;
