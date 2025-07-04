@@ -19,6 +19,7 @@ import {
   useSemanticOverlayDrawerSurfaceStyles,
 } from './Drawer';
 import { useSemanticLabelStyles } from './Label';
+import { useSemanticLinkStyles } from './Link';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -41,4 +42,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useOverlayDrawerSurfaceStyles_unstable: useSemanticOverlayDrawerSurfaceStyles,
   // Label styles
   useLabelStyles_unstable: useSemanticLabelStyles,
+  // Link styles
+  useLinkStyles_unstable: useSemanticLinkStyles,
 };
