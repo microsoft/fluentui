@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: move deprecated api explicitly under /deprecated folder",
+  "packageName": "@fluentui/test-utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

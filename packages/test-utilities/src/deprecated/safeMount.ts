@@ -1,7 +1,10 @@
 /* eslint-disable @fluentui/max-len */
+
 import * as React from 'react';
+// @ts-expect-error - we don't have types for enzyme in repo on purpose
 import { mount, ReactWrapper } from 'enzyme';
-import { createTestContainer } from './createTestContainer';
+
+import { createTestContainer } from '../createTestContainer';
 
 /**
  * Calls `mount` from enzyme, calls the callback, and unmounts. This prevents mounted components
@@ -11,8 +14,7 @@ import { createTestContainer } from './createTestContainer';
  *
  * @param content - JSX content to test.
  * @param callback - Function callback which receives the component to use.
- * @param attach - Whether to use a container element which is attached to the document
- * (sometimes needed for event handlers)
+ * @param attach - Whether to use a container element which is attached to the document (sometimes needed for event handlers)
  */
 export function safeMount<
   TComponent extends React.Component,
@@ -24,11 +26,9 @@ export function safeMount<
   attach?: boolean,
 ): void {
   const testContainer = attach ? createTestContainer() : undefined;
-  const wrapper = mount<TComponent, TProps, TState>(
-    // @ts-expect-error - Enzyme types are not compatible with React 18 types.
-    content,
-    { ...(testContainer && { attachTo: testContainer }) },
-  );
+  const wrapper = mount<TComponent, TProps, TState>(content, {
+    ...(testContainer && { attachTo: testContainer }),
+  }) as IReactWrapperInline;
 
   try {
     callback?.(wrapper);
@@ -38,4 +38,9 @@ export function safeMount<
     }
     testContainer?.remove();
   }
+}
+
+interface IReactWrapperInline {
+  exists(): boolean;
+  unmount(): this;
 }
