@@ -168,6 +168,11 @@ export type MenuState = ComponentState<MenuSlots> &
      * the signature remains just to avoid breaking changes
      */
     defaultCheckedValues?: Record<string, string[]>;
+
+    /**
+     * An optional safe zone area to be rendered around the menu
+     */
+    safeZone?: React.ReactElement | null;
   };
 
 export type MenuContextValues = {
@@ -210,6 +215,14 @@ export type MenuOpenChangeData = {
   | {
       type: 'menuTriggerMouseEnter';
       event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuSafeZoneMouseEnter';
+      event: React.MouseEvent;
+    }
+  | {
+      type: 'menuSafeZoneTimeout';
+      event: Event;
     }
   | {
       type: 'menuTriggerMouseLeave';
