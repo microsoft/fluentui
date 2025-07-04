@@ -11,11 +11,14 @@ import {
 import { useSemanticAccordionHeaderStyles } from './Accordion/index';
 import { useSemanticAvatarStyles } from './Avatar/index';
 import { useSemanticDividerStyles } from './Divider/index';
-import { useSemanticInlineDrawerStyles } from './Drawer/useSemanticInlineDrawerStyles.styles';
-import { useSemanticDrawerBodyStyles } from './Drawer/useSemanticDrawerBodyStyles.styles';
-import { useSemanticDrawerFooterStyles } from './Drawer/useSemanticDrawerFooterStyles.styles';
-import { useSemanticDrawerHeaderStyles } from './Drawer/useSemanticDrawerHeaderStyles.styles';
-import { useSemanticOverlayDrawerSurfaceStyles } from './Drawer/useSemanticOverlayDrawerSurfaceStyles.styles';
+import {
+  useSemanticInlineDrawerStyles,
+  useSemanticDrawerBodyStyles,
+  useSemanticDrawerFooterStyles,
+  useSemanticDrawerHeaderStyles,
+  useSemanticOverlayDrawerSurfaceStyles,
+} from './Drawer';
+import { useSemanticLabelStyles } from './Label';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -36,4 +39,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useDrawerFooterStyles_unstable: useSemanticDrawerFooterStyles,
   useDrawerHeaderStyles_unstable: useSemanticDrawerHeaderStyles,
   useOverlayDrawerSurfaceStyles_unstable: useSemanticOverlayDrawerSurfaceStyles,
+  // Label styles
+  useLabelStyles_unstable: useSemanticLabelStyles,
 };

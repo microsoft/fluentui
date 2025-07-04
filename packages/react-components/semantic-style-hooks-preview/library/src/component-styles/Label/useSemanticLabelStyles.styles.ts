@@ -1,47 +1,44 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { LabelSlots, LabelState } from './Label.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-
-export const labelClassNames: SlotClassNames<LabelSlots> = {
-  root: 'fui-Label',
-  required: 'fui-Label__required',
-};
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { labelClassNames, type LabelState } from '@fluentui/react-label';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 /**
  * Styles for the label
  */
 const useStyles = makeStyles({
   root: {
-    fontFamily: tokens.fontFamilyBase,
-    color: tokens.colorNeutralForeground1,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    color: semanticTokens.foregroundContentNeutralPrimary,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
   },
 
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     '@media (forced-colors: active)': {
       color: 'GrayText',
     },
   },
 
   required: {
-    color: tokens.colorPaletteRedForeground3,
+    color: semanticTokens.statusDangerTintForeground,
     paddingLeft: tokens.spacingHorizontalXS,
   },
 
   small: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
+    fontSize: semanticTokens.textGlobalCaption1FontSize,
+    lineHeight: semanticTokens.textGlobalCaption1LineHeight,
   },
 
   medium: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+    fontSize: semanticTokens.textGlobalBody3FontSize,
+    lineHeight: semanticTokens.textGlobalBody3LineHeight,
   },
 
   large: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
+    fontSize: semanticTokens.textGlobalBody2FontSize,
+    lineHeight: semanticTokens.textGlobalBody2LineHeight,
     fontWeight: tokens.fontWeightSemibold,
   },
 
@@ -53,8 +50,10 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Label slots based on the state
  */
-export const useLabelStyles_unstable = (state: LabelState): LabelState => {
+export const useSemanticLabelStyles = (_state: unknown): LabelState => {
   'use no memo';
+
+  const state = _state as LabelState;
 
   const styles = useStyles();
   state.root.className = mergeClasses(
@@ -64,6 +63,7 @@ export const useLabelStyles_unstable = (state: LabelState): LabelState => {
     styles[state.size],
     state.weight === 'semibold' && styles.semibold,
     state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.required) {
@@ -72,6 +72,7 @@ export const useLabelStyles_unstable = (state: LabelState): LabelState => {
       styles.required,
       state.disabled && styles.disabled,
       state.required.className,
+      getSlotClassNameProp_unstable(state.required),
     );
   }
 
