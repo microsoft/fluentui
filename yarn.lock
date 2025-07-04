@@ -1861,7 +1861,7 @@
   resolved "https://registry.yarnpkg.com/@eslint-community/regexpp/-/regexpp-4.12.1.tgz#cfc6cffe39df390a3841cde2abccf92eaa7ae0e0"
   integrity sha512-CCZCDJuduB9OUkFkY2IgppNZMi2lBQgD2qzwXkEia16cge2pijY/aXi96CJMquDMn3nJdlPV1A5KrJEXwfLNzQ==
 
-"@eslint/compat@1.3.0", "@eslint/compat@^1.3.0":
+"@eslint/compat@1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@eslint/compat/-/compat-1.3.0.tgz#ce9dbd81e06c942a9570fbe3c2e10e3103f12c1c"
   integrity sha512-ZBygRBqpDYiIHsN+d1WyHn3TYgzgpzLEcgJUxTATyiInQbKZz6wZb6+ljwdg8xeeOe4v03z6Uh6lELiw0/mVhQ==
@@ -11191,7 +11191,7 @@ eslint-plugin-playwright@2.2.0:
   dependencies:
     globals "^13.23.0"
 
-eslint-plugin-react-compiler@0.0.0-experimental-a97cca1-20240529, eslint-plugin-react-compiler@^0.0.0-experimental-a97cca1-20240529:
+eslint-plugin-react-compiler@0.0.0-experimental-a97cca1-20240529:
   version "0.0.0-experimental-a97cca1-20240529"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-compiler/-/eslint-plugin-react-compiler-0.0.0-experimental-a97cca1-20240529.tgz#3bd69917e04f9fe9e5db2ac5885b5fb7623a846a"
   integrity sha512-njzsfZUekKIFtohmf8UFynUEczq/+riFeXQgtuQjoHGEihArcwdSUmxZZ5yPSqbHjAju3mE807LybaZfiyP7xA==
@@ -12918,7 +12918,7 @@ global@^4.3.0, global@^4.3.1:
     min-document "^2.19.0"
     process "^0.11.10"
 
-globals@13.24.0, globals@^13.23.0, globals@^13.24.0:
+globals@13.24.0, globals@^13.23.0:
   version "13.24.0"
   resolved "https://registry.yarnpkg.com/globals/-/globals-13.24.0.tgz#8432a19d78ce0c1e833949c36adb345400bb1171"
   integrity sha512-AhO5QUcj8llrbG09iWhPU2B204J1xnPeL8kQmVorSsy+Sjj1sk8gIyh6cUocGmH4L0UuhAJy+hJMRA4mgA4mFQ==
