@@ -21,6 +21,7 @@ import { useSemanticLabelStyles } from './Label';
 import { useSemanticLinkStyles } from './Link';
 import { useSemanticProgressBarStyles } from './ProgressBar/useSemanticProgressBarStyles.styles';
 import { useSemanticRatingDisplayStyles, useSemanticRatingItemStyles } from './Rating';
+import { useSemanticSpinnerStyles } from './Spinner';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -50,4 +51,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Rating styles
   useRatingDisplayStyles_unstable: useSemanticRatingDisplayStyles,
   useRatingItemStyles_unstable: useSemanticRatingItemStyles,
+  // Spinner styles
+  useSpinnerStyles_unstable: useSemanticSpinnerStyles,
 };

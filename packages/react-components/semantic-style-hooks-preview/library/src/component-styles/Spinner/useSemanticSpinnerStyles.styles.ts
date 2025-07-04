@@ -1,15 +1,9 @@
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { SpinnerSlots, SpinnerState } from './Spinner.types';
-
-export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
-  root: 'fui-Spinner',
-  spinner: 'fui-Spinner__spinner',
-  spinnerTail: 'fui-Spinner__spinnerTail',
-  label: 'fui-Spinner__label',
-};
+import { spinnerClassNames, type SpinnerState } from '@fluentui/react-spinner';
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 /**
  * CSS variables used internally by Spinner
@@ -23,7 +17,7 @@ const useRootBaseClassName = makeResetStyles({
   alignItems: 'center',
   justifyContent: 'center',
   lineHeight: '0',
-  gap: '8px',
+  gap: semanticTokens.gapInsideCtrlToLabel,
   overflow: 'hidden', // prevents height changes from rotating children
 });
 
@@ -44,8 +38,9 @@ const useSpinnerBaseClassName = makeResetStyles({
     `white calc(100% - var(${vars.strokeWidth})) calc(100% - 1px), ` +
     `transparent 100%)`,
 
-  backgroundColor: tokens.colorBrandStroke2Contrast,
-  color: tokens.colorBrandStroke1,
+  backgroundColor: semanticTokens._ctrlSpinnerBackgroundEmpty,
+
+  color: semanticTokens._ctrlSpinnerBackgroundFilled,
   '@media screen and (forced-colors: active)': {
     backgroundColor: 'HighlightText',
     color: 'Highlight',
@@ -136,95 +131,114 @@ const useSpinnerStyles = makeStyles({
   'extra-tiny': {
     height: '16px',
     width: '16px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    [vars.strokeWidth]: semanticTokens._ctrlSpinnerStrokeSmWidth,
   },
 
   tiny: {
     height: '20px',
     width: '20px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    [vars.strokeWidth]: semanticTokens._ctrlSpinnerStrokeSmWidth,
   },
 
   'extra-small': {
     height: '24px',
     width: '24px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    [vars.strokeWidth]: semanticTokens._ctrlSpinnerStrokeSmWidth,
   },
 
   small: {
     height: '28px',
     width: '28px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    [vars.strokeWidth]: semanticTokens._ctrlSpinnerStrokeSmWidth,
   },
 
   medium: {
     height: '32px',
     width: '32px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    [vars.strokeWidth]: semanticTokens.ctrlSpinnerStrokeWidth,
   },
 
   large: {
     height: '36px',
     width: '36px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    [vars.strokeWidth]: semanticTokens.ctrlSpinnerStrokeWidth,
   },
 
   'extra-large': {
     height: '40px',
     width: '40px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    [vars.strokeWidth]: semanticTokens.ctrlSpinnerStrokeWidth,
   },
 
   huge: {
     height: '44px',
     width: '44px',
-    [vars.strokeWidth]: tokens.strokeWidthThickest,
+    [vars.strokeWidth]: semanticTokens._ctrlSpinnerStrokeLgWidth,
   },
 });
 
 const useLabelStyles = makeStyles({
+  default: {
+    color: semanticTokens.foregroundContentNeutralPrimary,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+  },
   inverted: {
     color: tokens.colorNeutralForegroundStaticInverted,
   },
 
   'extra-tiny': {
-    ...typographyStyles.body1,
+    fontSize: semanticTokens.textGlobalBody3FontSize,
+    lineHeight: semanticTokens.textGlobalBody3LineHeight,
   },
 
   tiny: {
-    ...typographyStyles.body1,
+    fontSize: semanticTokens.textGlobalBody3FontSize,
+    lineHeight: semanticTokens.textGlobalBody3LineHeight,
   },
 
   'extra-small': {
-    ...typographyStyles.body1,
+    fontSize: semanticTokens.textGlobalBody3FontSize,
+    lineHeight: semanticTokens.textGlobalBody3LineHeight,
   },
 
   small: {
-    ...typographyStyles.body1,
+    fontSize: semanticTokens.textGlobalBody3FontSize,
+    lineHeight: semanticTokens.textGlobalBody3LineHeight,
   },
 
   medium: {
-    ...typographyStyles.subtitle2,
+    fontSize: semanticTokens._ctrlSpinnerItemBodyFontSize,
+    fontWeight: semanticTokens._ctrlSpinnerTextStyleRegularWeight,
+    lineHeight: semanticTokens._ctrlSpinnerItemBodyLineHeight,
   },
 
   large: {
-    ...typographyStyles.subtitle2,
+    fontSize: semanticTokens.textRampLgItemBodyFontSize,
+    fontWeight: semanticTokens.textStyleDefaultHeaderWeight,
+    lineHeight: semanticTokens.textRampLgItemBodyLineHeight,
   },
 
   'extra-large': {
-    ...typographyStyles.subtitle2,
+    fontSize: semanticTokens.textRampLgItemBodyFontSize,
+    fontWeight: semanticTokens.textStyleDefaultHeaderWeight,
+    lineHeight: semanticTokens.textRampLgItemBodyLineHeight,
   },
 
   huge: {
-    ...typographyStyles.subtitle1,
+    fontSize: semanticTokens.textGlobalBody1FontSize,
+    fontWeight: semanticTokens.textStyleDefaultHeaderWeight,
+    lineHeight: semanticTokens.textGlobalBody1LineHeight,
   },
 });
 
 /**
  * Apply styling to the Spinner slots based on the state
  */
-export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => {
+export const useSemanticSpinnerStyles = (_state: unknown): SpinnerState => {
   'use no memo';
+
+  const state = _state as SpinnerState;
 
   const { labelPosition, size, appearance } = state;
   const { dir } = useFluent();
@@ -241,6 +255,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     rootBaseClassName,
     (labelPosition === 'above' || labelPosition === 'below') && rootStyles.vertical,
     state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
   if (state.spinner) {
     state.spinner.className = mergeClasses(
@@ -249,6 +264,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
       spinnerStyles[size],
       appearance === 'inverted' && spinnerStyles.inverted,
       state.spinner.className,
+      getSlotClassNameProp_unstable(state.spinner),
     );
   }
   if (state.spinnerTail) {
@@ -257,14 +273,17 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
       spinnerTailBaseClassName,
       dir === 'rtl' && spinnerStyles.rtlTail,
       state.spinnerTail.className,
+      getSlotClassNameProp_unstable(state.spinnerTail),
     );
   }
   if (state.label) {
     state.label.className = mergeClasses(
       spinnerClassNames.label,
+      labelStyles.default,
       labelStyles[size],
       appearance === 'inverted' && labelStyles.inverted,
       state.label.className,
+      getSlotClassNameProp_unstable(state.label),
     );
   }
 
