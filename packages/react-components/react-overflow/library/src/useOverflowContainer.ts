@@ -36,6 +36,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     padding = 10,
     minimumVisible = 0,
     onUpdateItemVisibility = noop,
+    measureGap = false,
   } = options;
 
   const onUpdateOverflow = useEventCallback(update);
@@ -48,6 +49,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
       minimumVisible,
       onUpdateItemVisibility,
       onUpdateOverflow,
+      measureGap,
     }),
     [minimumVisible, onUpdateItemVisibility, overflowAxis, overflowDirection, padding, onUpdateOverflow],
   );
