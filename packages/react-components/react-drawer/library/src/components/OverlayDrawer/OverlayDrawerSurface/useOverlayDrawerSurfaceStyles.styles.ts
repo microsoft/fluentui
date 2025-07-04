@@ -1,7 +1,6 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { DialogSurfaceState } from '@fluentui/react-dialog';
-import * as semanticTokens from '@fluentui/semantic-tokens';
 
 /**
  * Styles for the backdrop slot
@@ -14,7 +13,7 @@ const useBackdropResetStyles = makeResetStyles({
 
 const useBackdropStyles = makeStyles({
   nested: {
-    backgroundColor: semanticTokens.nullColor,
+    backgroundColor: tokens.colorTransparentBackground,
   },
 });
 

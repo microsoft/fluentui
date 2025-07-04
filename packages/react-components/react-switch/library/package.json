@@ -20,22 +20,12 @@
   "dependencies": {
     "@fluentui/react-field": "^9.4.2",
     "@fluentui/react-icons": "^2.0.245",
-<<<<<<< HEAD
     "@fluentui/react-jsx-runtime": "^9.1.4",
     "@fluentui/react-label": "^9.3.2",
     "@fluentui/react-shared-contexts": "^9.24.1",
     "@fluentui/react-tabster": "^9.26.2",
     "@fluentui/react-theme": "^9.2.0",
     "@fluentui/react-utilities": "^9.23.1",
-=======
-    "@fluentui/react-jsx-runtime": "^9.0.54",
-    "@fluentui/react-label": "^9.1.87",
-    "@fluentui/react-shared-contexts": "^9.23.1",
-    "@fluentui/react-tabster": "^9.24.6",
-    "@fluentui/react-theme": "^9.1.24",
-    "@fluentui/react-utilities": "^9.19.0",
-    "@fluentui/semantic-tokens": "0.0.0-alpha.1",
->>>>>>> 068c086870 (update switch to use semantic tokens (#34489))
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },

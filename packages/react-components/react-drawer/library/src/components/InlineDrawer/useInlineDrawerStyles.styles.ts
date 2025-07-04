@@ -1,6 +1,6 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import * as semanticTokens from '@fluentui/semantic-tokens';
+import { tokens } from '@fluentui/react-theme';
 
 import type { InlineDrawerSlots, InlineDrawerState } from './InlineDrawer.types';
 import { drawerCSSVars, drawerDefaultStyles, useDrawerBaseClassNames } from '../../shared/useDrawerBaseStyles.styles';
@@ -17,7 +17,7 @@ const useDrawerResetStyles = makeResetStyles({
 /**
  * Styles for the root slot
  */
-const borderValue = ` ${semanticTokens.strokeWidthDefault} solid ${semanticTokens.strokeFlyout}`;
+const borderValue = `1px solid ${tokens.colorNeutralBackground3}`;
 const useDrawerRootStyles = makeStyles({
   /* Separator */
   separatorStart: { borderRight: borderValue },

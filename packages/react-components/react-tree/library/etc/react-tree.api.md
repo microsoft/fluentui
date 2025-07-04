@@ -192,6 +192,11 @@ export type TreeItemContextValue = {
     checked: TreeSelectionValue;
 };
 
+// @public (undocumented)
+export type TreeItemCSSProperties = React_2.CSSProperties & {
+    [treeItemLevelToken]?: string | number;
+};
+
 // @public
 export const TreeItemLayout: ForwardRefComponent<TreeItemLayoutProps>;
 
