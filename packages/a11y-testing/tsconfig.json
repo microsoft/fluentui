@@ -1,29 +1,19 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "baseUrl": ".",
     "outDir": "lib",
     "target": "es6",
     "module": "commonjs",
+    "strict": true,
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
-    "experimentalDecorators": true,
     "importHelpers": true,
     "noUnusedLocals": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
     "moduleResolution": "node",
-    "skipLibCheck": true,
     "preserveConstEnums": true,
-    "lib": ["es2017", "dom"],
+    "lib": ["ES2019", "DOM"],
     "types": ["jest"],
-    "isolatedModules": true,
-    "paths": {
-      "react/jsx-runtime": ["./node_modules/@types/react/jsx-runtime.d.ts"],
-      "react": ["./node_modules/@types/react/index.d.ts"],
-      "react-dom": ["./node_modules/@types/react-dom/index.d.ts"]
-    }
+    "isolatedModules": true
   },
   "include": ["src"]
 }
