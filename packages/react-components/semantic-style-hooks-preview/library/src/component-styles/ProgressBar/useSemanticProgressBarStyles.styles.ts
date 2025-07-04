@@ -1,21 +1,12 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 import { tokens } from '@fluentui/react-theme';
-import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-
-export const progressBarClassNames: SlotClassNames<ProgressBarSlots> = {
-  root: 'fui-ProgressBar',
-  bar: 'fui-ProgressBar__bar',
-};
+import { progressBarClassNames, type ProgressBarState } from '@fluentui/react-progress';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 // If the percentComplete is near 0, don't animate it.
 // This prevents animations on reset to 0 scenarios.
 const ZERO_THRESHOLD = 0.01;
-
-const barThicknessValues = {
-  medium: '2px',
-  large: '4px',
-};
 
 const indeterminateProgressBar = {
   '0%': {
@@ -32,7 +23,7 @@ const indeterminateProgressBar = {
 const useRootStyles = makeStyles({
   root: {
     display: 'block',
-    backgroundColor: tokens.colorNeutralBackground6,
+    backgroundColor: semanticTokens.ctrlProgressBackgroundEmpty,
     width: '100%',
     overflow: 'hidden',
 
@@ -41,16 +32,16 @@ const useRootStyles = makeStyles({
     },
   },
   rounded: {
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: semanticTokens.ctrlProgressCorner,
   },
   square: {
-    borderRadius: tokens.borderRadiusNone,
+    borderRadius: semanticTokens.cornerZero,
   },
   medium: {
-    height: barThicknessValues.medium,
+    height: semanticTokens.ctrlProgressHeightEmpty,
   },
   large: {
-    height: barThicknessValues.large,
+    height: semanticTokens.ctrlProgressLgHeightEmpty,
   },
 });
 
@@ -63,7 +54,12 @@ const useBarStyles = makeStyles({
       backgroundColor: 'Highlight',
     },
     borderRadius: 'inherit',
-    height: '100%',
+  },
+  medium: {
+    height: semanticTokens.ctrlProgressHeightFilled,
+  },
+  large: {
+    height: semanticTokens.ctrlProgressLgHeightFilled,
   },
   nonZeroDeterminate: {
     transitionProperty: 'width',
@@ -75,9 +71,9 @@ const useBarStyles = makeStyles({
     position: 'relative',
     backgroundImage: `linear-gradient(
       to right,
-      ${tokens.colorNeutralBackground6} 0%,
+      ${semanticTokens.ctrlProgressBackgroundEmpty} 0%,
       ${tokens.colorTransparentBackground} 50%,
-      ${tokens.colorNeutralBackground6} 100%
+      ${semanticTokens.ctrlProgressBackgroundEmpty} 100%
     )`,
     animationName: indeterminateProgressBar,
     animationDuration: '3s',
@@ -90,25 +86,27 @@ const useBarStyles = makeStyles({
   },
 
   brand: {
-    backgroundColor: tokens.colorCompoundBrandBackground,
+    backgroundColor: semanticTokens.ctrlProgressBackgroundFilled,
   },
 
   error: {
-    backgroundColor: tokens.colorPaletteRedBackground3,
+    backgroundColor: semanticTokens.statusDangerBackground,
   },
   warning: {
-    backgroundColor: tokens.colorPaletteDarkOrangeBackground3,
+    backgroundColor: semanticTokens.statusWarningBackground,
   },
   success: {
-    backgroundColor: tokens.colorPaletteGreenBackground3,
+    backgroundColor: semanticTokens.statusSuccessBackground,
   },
 });
 
 /**
  * Apply styling to the ProgressBar slots based on the state
  */
-export const useProgressBarStyles_unstable = (state: ProgressBarState): ProgressBarState => {
+export const useSemanticProgressBarStyles = (_state: unknown): ProgressBarState => {
   'use no memo';
+
+  const state = _state as ProgressBarState;
 
   const { color, max, shape, thickness, value } = state;
   const rootStyles = useRootStyles();
@@ -120,6 +118,7 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
     rootStyles[shape],
     rootStyles[thickness],
     state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.bar) {
@@ -127,10 +126,12 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
       progressBarClassNames.bar,
       barStyles.base,
       barStyles.brand,
+      barStyles[thickness],
       value === undefined && barStyles.indeterminate,
       value !== undefined && value > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
       color && value !== undefined && barStyles[color],
       state.bar.className,
+      getSlotClassNameProp_unstable(state.bar),
     );
   }
 

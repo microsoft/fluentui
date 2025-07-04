@@ -20,6 +20,7 @@ import {
 } from './Drawer';
 import { useSemanticLabelStyles } from './Label';
 import { useSemanticLinkStyles } from './Link';
+import { useSemanticProgressBarStyles } from './ProgressBar/useSemanticProgressBarStyles.styles';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -44,4 +45,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useLabelStyles_unstable: useSemanticLabelStyles,
   // Link styles
   useLinkStyles_unstable: useSemanticLinkStyles,
+  // ProgressBar styles
+  useProgressBarStyles_unstable: useSemanticProgressBarStyles,
 };
