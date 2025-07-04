@@ -10,6 +10,7 @@ import {
 
 import { useSemanticAccordionHeaderStyles } from './Accordion/index';
 import { useSemanticAvatarStyles } from './Avatar/index';
+import { useSemanticDividerStyles } from './Divider/index';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -22,5 +23,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useSplitButtonStyles_unstable: useSemanticSplitButtonStyles,
   useMenuButtonStyles_unstable: useSemanticMenuButtonStyles,
   useCompoundButtonStyles_unstable: useSemanticCompoundButtonStyles,
-  // ... more component style overrides
+  // Divider styles
+  useDividerStyles_unstable: useSemanticDividerStyles,
 };
