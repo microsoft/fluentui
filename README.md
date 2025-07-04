@@ -59,7 +59,9 @@ We have a lot in store for Fluent UI - [Read our announcement here.](https://dev
 
 ## Looking for Fluent UI React Northstar?
 
-Fluent UI React Northstar has been superseded by Fluent UI React Components v9. For more details about Fluent UI React Northstar, see its [README.md](/packages/fluentui/README.md).
+Fluent UI React Northstar has been superseded by Fluent UI React Components v9 and reached End Of Life in July 2025.
+
+For more details about Fluent UI React Northstar, see its [source](https://github.com/microsoft/fluentui/tree/react-v0/packages/fluentui) and [README.md](https://github.com/microsoft/fluentui/tree/react-v0/packages/fluentui/README.md).
 
 ---
 

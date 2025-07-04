@@ -2,20 +2,7 @@
 *.source.json
 *.info.json
 *.tsbuildinfo
-packages/fluentui/*/componentInfo
-packages/fluentui/docs/src/componentInfo
-packages/fluentui/docs/src/componentMenu.json
-packages/fluentui/docs/src/behaviorMenu.json
-packages/fluentui/docs/src/bundleStats.json
-packages/fluentui/docs/src/currentBundleStats.json
-packages/fluentui/docs/src/exampleMenus
-packages/fluentui/docs/src/exampleSources
-packages/fluentui/docs/dist/
-packages/fluentui/ability-attributes/src/schema.ts
-packages/fluentui/e2e/cypress/fixtures/example.json
 stats/
-# northstar README lives in packages/fluentui and is automatically copied to react-northstar during build
-packages/fluentui/react-northstar/README.md
 
 monosize-report.md
 
@@ -104,10 +91,6 @@ _Deploy
 # Commit meta data
 commit.txt
 
-# Webpart typings
-typings/webpart-framework
-typings/webparts
-
 # Configs that contain sensitive information
 TDSDeployConfig.json
 
@@ -145,10 +128,6 @@ package-lock.json
 /apps/public-docsite/flights/
 /homepage/
 /site-manifests/
-
-# Rush files - since we are moving away from it
-/common
-rush.json
 
 # package manifest
 /package-manifest.json

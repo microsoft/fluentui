@@ -5,7 +5,6 @@ module.exports = {
     react: require('./configs/react'),
     imports: require('./configs/imports'),
     'react--legacy': require('./configs/react-legacy'),
-    'react-northstar': require('./configs/react-northstar'),
   },
 
   rules: {

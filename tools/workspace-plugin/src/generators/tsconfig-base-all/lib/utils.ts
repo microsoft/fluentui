@@ -11,7 +11,6 @@ export function createPathAliasesConfig(tree: Tree) {
   const existingTsConfig = tree.exists(tsConfigAllPath) ? readJson(tree, tsConfigAllPath) : null;
 
   const baseConfigs = {
-    v0: readJson(tree, path.join('/tsconfig.base.v0.json')),
     v8: readJson(tree, path.join('/tsconfig.base.v8.json')),
     v9: readJson(tree, path.join('/tsconfig.base.json')),
   };
@@ -28,7 +27,6 @@ export function createPathAliasesConfig(tree: Tree) {
       rootDir: tsConfigBase,
       baseUrl: tsConfigBase,
       paths: {
-        ...baseConfigs.v0.compilerOptions.paths,
         ...baseConfigs.v8.compilerOptions.paths,
         ...baseConfigs.v9.compilerOptions.paths,
       },

@@ -62,9 +62,7 @@ const config = {
         'prettier',
         'schema-utils',
         'react-is',
-        'react-hot-loader',
         'react-test-renderer',
-        'react-vis',
         'tslib',
         'terser',
         'terser-webpack-plugin',
@@ -95,14 +93,6 @@ const config = {
       ],
     },
     {
-      packages: ['@fluentui/react-bindings', '@fluentui/react-northstar'],
-      dependencies: ['@fluentui/dom-utilities'],
-    },
-    {
-      packages: ['@fluentui/react-northstar-emotion-renderer'],
-      dependencies: ['stylis'],
-    },
-    {
       packages: ['@fluentui/react-conformance', '@fluentui/react-conformance-griffel'],
       dependencies: [
         'chalk',
@@ -123,27 +113,6 @@ const config = {
         '@fluentui/a11y-testing',
         // v8 - TODO make this package private, then bump to r18
         '@fluentui/codemods',
-        // v0
-        '@fluentui/react-northstar',
-        '@fluentui/accessibility',
-        '@fluentui/code-sandbox',
-        '@fluentui/digest',
-        '@fluentui/react-bindings',
-        '@fluentui/react-builder',
-        '@fluentui/react-component-event-listener',
-        '@fluentui/react-component-nesting-registry',
-        '@fluentui/react-component-ref',
-        '@fluentui/react-icons-northstar',
-        '@fluentui/react-northstar',
-        '@fluentui/react-northstar-emotion-renderer',
-        '@fluentui/react-northstar-fela-renderer',
-        '@fluentui/react-northstar-prototypes',
-        '@fluentui/react-northstar-prototypes',
-        '@fluentui/react-northstar-styles-renderer',
-        '@fluentui/react-proptypes',
-        '@fluentui/react-telemetry',
-        '@fluentui/state',
-        '@fluentui/styles',
       ],
       dependencies: [
         'react',

@@ -1,7 +1,0 @@
-{
-  "name": "scripts-gulp",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "scripts/gulp/src",
-  "projectType": "library",
-  "tags": ["tools", "react-northstar"]
-}
