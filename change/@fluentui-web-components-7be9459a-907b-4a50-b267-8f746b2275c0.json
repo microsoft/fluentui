@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: initially checked radio should be focusable",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}
