@@ -170,7 +170,7 @@
 }
 
 #storybook-docs .sbdocs-content > div:last-child {
-  margin-bottom: 96px;
+  margin-bottom: 0;
 }
 
 #storybook-docs .docs-story > div {
