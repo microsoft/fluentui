@@ -46,7 +46,7 @@ const useStyles = makeStyles({
     padding: `0 ${tokens.spacingHorizontalM} 0 ${tokens.spacingHorizontalMNudge}`,
     minHeight: '44px',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     cursor: 'pointer',
     ...typographyStyles.body1,
     boxSizing: 'border-box',
