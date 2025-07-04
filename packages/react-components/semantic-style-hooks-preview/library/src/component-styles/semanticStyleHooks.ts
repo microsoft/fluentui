@@ -8,7 +8,12 @@ import {
   useSemanticToggleButtonStyles,
 } from './Button/index';
 
+import { useSemanticAccordionHeaderStyles } from './Accordion/index';
+
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
+  // Accordion styles
+  useAccordionHeaderStyles_unstable: useSemanticAccordionHeaderStyles,
+  // Button styles
   useButtonStyles_unstable: useSemanticButtonStyles,
   useToggleButtonStyles_unstable: useSemanticToggleButtonStyles,
   useSplitButtonStyles_unstable: useSemanticSplitButtonStyles,
