@@ -1,15 +1,8 @@
 import { tokens } from '@fluentui/react-theme';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { AvatarSlots, AvatarState } from './Avatar.types';
-
-export const avatarClassNames: SlotClassNames<AvatarSlots> = {
-  root: 'fui-Avatar',
-  image: 'fui-Avatar__image',
-  initials: 'fui-Avatar__initials',
-  icon: 'fui-Avatar__icon',
-  badge: 'fui-Avatar__badge',
-};
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { avatarClassNames, AvatarState } from '@fluentui/react-avatar';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 // CSS variables used internally in Avatar's styles
 const vars = {
@@ -24,15 +17,15 @@ const useRootClassName = makeResetStyles({
   flexShrink: 0,
   position: 'relative',
   verticalAlign: 'middle',
-  borderRadius: tokens.borderRadiusCircular,
-  fontFamily: tokens.fontFamilyBase,
-  fontWeight: tokens.fontWeightSemibold,
-  fontSize: tokens.fontSizeBase300,
-  width: '32px',
-  height: '32px',
+  borderRadius: semanticTokens.ctrlAvatarCornerItem,
+  fontFamily: semanticTokens.textStyleDefaultHeaderFontFamily,
+  fontWeight: semanticTokens.textStyleDefaultHeaderWeight,
+  fontSize: semanticTokens.ctrlAvatarTextFontSize,
+  width: semanticTokens.ctrlAvatarSize,
+  height: semanticTokens.ctrlAvatarSize,
 
   // ::before is the ring, and ::after is the shadow.
-  // These are not displayed by default; the ring and shadow clases set content: "" to display them when appropriate.
+  // These are not displayed by default; the ring and shadow classes set content: "" to display them when appropriate.
   '::before,::after': {
     position: 'absolute',
     top: 0,
@@ -74,8 +67,8 @@ const useIconInitialsClassName = makeResetStyles({
   left: 0,
   width: '100%',
   height: '100%',
-  lineHeight: '1',
-  border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+  lineHeight: semanticTokens.ctrlAvatarTextLineHeight,
+  border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.strokeLayer}`,
 
   display: 'flex',
   alignItems: 'center',
@@ -103,21 +96,21 @@ const badgeMask = (margin?: string) => {
 
   return (
     `radial-gradient(circle at bottom ${centerOffset} var(${vars.badgeAlign}) ${centerOffset}, ` +
-    `transparent ${innerRadius}, white ${outerRadius})`
+    `transparent ${innerRadius}, ${semanticTokens.ctrlAvatarPresenceBadgeBackgroundBehindBadge} ${outerRadius})`
   );
 };
 
 const useStyles = makeStyles({
-  textCaption2Strong: { fontSize: tokens.fontSizeBase100 },
-  textCaption1Strong: { fontSize: tokens.fontSizeBase200 },
-  textSubtitle2: { fontSize: tokens.fontSizeBase400 },
-  textSubtitle1: { fontSize: tokens.fontSizeBase500 },
-  textTitle3: { fontSize: tokens.fontSizeBase600 },
+  textCaption2Strong: { fontSize: semanticTokens.textGlobalCaption2FontSize },
+  textCaption1Strong: { fontSize: semanticTokens.textGlobalCaption1FontSize },
+  textSubtitle2: { fontSize: semanticTokens.textGlobalBody2FontSize },
+  textSubtitle1: { fontSize: semanticTokens.textGlobalBody1FontSize },
+  textTitle3: { fontSize: semanticTokens.textGlobalSubtitle2FontSize },
 
-  squareSmall: { borderRadius: tokens.borderRadiusSmall },
-  squareMedium: { borderRadius: tokens.borderRadiusMedium },
-  squareLarge: { borderRadius: tokens.borderRadiusLarge },
-  squareXLarge: { borderRadius: tokens.borderRadiusXLarge },
+  squareSmall: { borderRadius: semanticTokens._ctrlAvatarCornerGroupSm },
+  squareMedium: { borderRadius: semanticTokens._ctrlAvatarCornerGroupMd },
+  squareLarge: { borderRadius: semanticTokens._ctrlAvatarCornerGroupLg },
+  squareXLarge: { borderRadius: semanticTokens._ctrlAvatarCornerGroupXLg },
 
   activeOrInactive: {
     transform: 'perspective(1px)', // Work-around for text pixel snapping at the end of the animation
@@ -138,13 +131,13 @@ const useStyles = makeStyles({
     '::before': { maskImage: badgeMask(/*margin =*/ `2 * var(${vars.ringWidth})`) },
   },
   ringThick: {
-    [vars.ringWidth]: tokens.strokeWidthThick,
+    [vars.ringWidth]: semanticTokens._ctrlAvatarActiveRingStrokeWidthSm,
   },
   ringThicker: {
-    [vars.ringWidth]: tokens.strokeWidthThicker,
+    [vars.ringWidth]: semanticTokens._ctrlAvatarActiveRingStrokeWidthMd,
   },
   ringThickest: {
-    [vars.ringWidth]: tokens.strokeWidthThickest,
+    [vars.ringWidth]: semanticTokens._ctrlAvatarActiveRingStrokeWidthLg,
   },
 
   shadow: {
@@ -198,27 +191,27 @@ const useStyles = makeStyles({
   // Badge size: applied to root when there is a badge
   tiny: {
     [vars.badgeRadius]: '3px',
-    [vars.badgeGap]: tokens.strokeWidthThin,
+    [vars.badgeGap]: semanticTokens._ctrlAvatarPresenceBadgeStrokeWidthSm,
   },
   'extra-small': {
     [vars.badgeRadius]: '5px',
-    [vars.badgeGap]: tokens.strokeWidthThin,
+    [vars.badgeGap]: semanticTokens._ctrlAvatarPresenceBadgeStrokeWidthSm,
   },
   small: {
     [vars.badgeRadius]: '6px',
-    [vars.badgeGap]: tokens.strokeWidthThin,
+    [vars.badgeGap]: semanticTokens._ctrlAvatarPresenceBadgeStrokeWidthSm,
   },
   medium: {
     [vars.badgeRadius]: '8px',
-    [vars.badgeGap]: tokens.strokeWidthThin,
+    [vars.badgeGap]: semanticTokens._ctrlAvatarPresenceBadgeStrokeWidthSm,
   },
   large: {
     [vars.badgeRadius]: '10px',
-    [vars.badgeGap]: tokens.strokeWidthThick,
+    [vars.badgeGap]: semanticTokens._ctrlAvatarPresenceBadgeStrokeWidthLg,
   },
   'extra-large': {
     [vars.badgeRadius]: '14px',
-    [vars.badgeGap]: tokens.strokeWidthThick,
+    [vars.badgeGap]: semanticTokens._ctrlAvatarPresenceBadgeStrokeWidthLg,
   },
 
   icon12: { fontSize: '12px' },
@@ -249,8 +242,8 @@ export const useSizeStyles = makeStyles({
 
 const useColorStyles = makeStyles({
   neutral: {
-    color: tokens.colorNeutralForeground3,
-    backgroundColor: tokens.colorNeutralBackground6,
+    color: semanticTokens.ctrlAvatarForeground,
+    backgroundColor: semanticTokens.ctrlAvatarBackground,
   },
   brand: {
     color: tokens.colorNeutralForegroundStaticInverted,
@@ -477,8 +470,10 @@ const useRingColorStyles = makeStyles({
   },
 });
 
-export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
+export const useSemanticAvatarStyles = (_state: unknown): AvatarState => {
   'use no memo';
+
+  const state = _state as AvatarState;
 
   const { size, shape, active, activeAppearance, color } = state;
 
@@ -559,10 +554,20 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
     }
   }
 
-  state.root.className = mergeClasses(avatarClassNames.root, ...rootClasses, state.root.className);
+  state.root.className = mergeClasses(
+    avatarClassNames.root,
+    ...rootClasses,
+    state.root.className,
+    getSlotClassNameProp_unstable(state.root),
+  );
 
   if (state.badge) {
-    state.badge.className = mergeClasses(avatarClassNames.badge, styles.badge, state.badge.className);
+    state.badge.className = mergeClasses(
+      avatarClassNames.badge,
+      styles.badge,
+      state.badge.className,
+      getSlotClassNameProp_unstable(state.badge),
+    );
   }
 
   if (state.image) {
@@ -572,6 +577,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       colorStyles[color],
       state.badge && styles.badgeCutout,
       state.image.className,
+      getSlotClassNameProp_unstable(state.image),
     );
   }
 
@@ -582,6 +588,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       colorStyles[color],
       state.badge && styles.badgeCutout,
       state.initials.className,
+      getSlotClassNameProp_unstable(state.initials),
     );
   }
 
@@ -610,6 +617,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       colorStyles[color],
       state.badge && styles.badgeCutout,
       state.icon.className,
+      getSlotClassNameProp_unstable(state.icon),
     );
   }
 

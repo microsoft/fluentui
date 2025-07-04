@@ -9,10 +9,13 @@ import {
 } from './Button/index';
 
 import { useSemanticAccordionHeaderStyles } from './Accordion/index';
+import { useSemanticAvatarStyles } from './Avatar/index';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
   useAccordionHeaderStyles_unstable: useSemanticAccordionHeaderStyles,
+  // Avatar styles
+  useAvatarStyles_unstable: useSemanticAvatarStyles,
   // Button styles
   useButtonStyles_unstable: useSemanticButtonStyles,
   useToggleButtonStyles_unstable: useSemanticToggleButtonStyles,
