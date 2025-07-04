@@ -2,7 +2,7 @@ import { tokens } from '@fluentui/react-theme';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { useSemanticButtonStyles } from './useSemanticButtonStyles.styles';
-import { compoundButtonClassNames, CompoundButtonState } from '@fluentui/react-button';
+import { compoundButtonClassNames, type CompoundButtonState } from '@fluentui/react-button';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 const useRootStyles = makeStyles({
@@ -264,6 +264,7 @@ export const useSemanticCompoundButtonStyles = (_state: unknown): CompoundButton
   const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, size } = state;
 
   state.root.className = mergeClasses(
+    state.root.className,
     compoundButtonClassNames.root,
 
     // Root styles
@@ -279,34 +280,32 @@ export const useSemanticCompoundButtonStyles = (_state: unknown): CompoundButton
     // Icon-only styles
     iconOnly && rootIconOnlyStyles[size],
 
-    // User provided class name
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 
   state.contentContainer.className = mergeClasses(
+    state.contentContainer.className,
     compoundButtonClassNames.contentContainer,
     contentContainerStyles.base,
-    state.contentContainer.className,
     getSlotClassNameProp_unstable(state.contentContainer),
   );
 
   if (state.icon) {
     state.icon.className = mergeClasses(
+      state.icon.className,
       compoundButtonClassNames.icon,
       iconStyles.base,
       state.root.children !== undefined && state.root.children !== null && iconStyles[iconPosition],
-      state.icon.className,
       getSlotClassNameProp_unstable(state.icon),
     );
   }
 
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
+      state.secondaryContent.className,
       compoundButtonClassNames.secondaryContent,
       secondaryContentStyles.base,
       secondaryContentStyles[size],
-      state.secondaryContent.className,
       getSlotClassNameProp_unstable(state.secondaryContent),
     );
   }

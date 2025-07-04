@@ -4,15 +4,42 @@
 
 ```ts
 
+import { AccordionHeaderState } from '@fluentui/react-accordion';
+import { AvatarState } from '@fluentui/react-avatar';
 import { ButtonState } from '@fluentui/react-button';
 import { CompoundButtonState } from '@fluentui/react-button';
+import { DialogSurfaceState } from '@fluentui/react-dialog';
+import { DividerState } from '@fluentui/react-divider';
+import type { DrawerBodyState } from '@fluentui/react-drawer';
+import { DrawerFooterState } from '@fluentui/react-drawer';
+import { DrawerHeaderState } from '@fluentui/react-drawer';
+import { FlatTreeState } from '@fluentui/react-tree';
 import { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
+import { InlineDrawerState } from '@fluentui/react-drawer';
+import { LabelState } from '@fluentui/react-label';
+import { LinkState } from '@fluentui/react-link';
 import { MenuButtonState } from '@fluentui/react-button';
+import { ProgressBarState } from '@fluentui/react-progress';
+import { RatingDisplayState } from '@fluentui/react-rating';
+import { RatingItemState } from '@fluentui/react-rating';
+import { SpinnerState } from '@fluentui/react-spinner';
 import { SplitButtonState } from '@fluentui/react-button';
+import { SwitchState } from '@fluentui/react-switch';
+import { TextareaState } from '@fluentui/react-textarea';
+import { TextState } from '@fluentui/react-text';
 import { ToggleButtonState } from '@fluentui/react-button';
+import { TreeItemLayoutState } from '@fluentui/react-tree';
+import { TreeItemState } from '@fluentui/react-tree';
+import { TreeState } from '@fluentui/react-tree';
 
 // @public (undocumented)
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks;
+
+// @public
+export const useSemanticAccordionHeaderStyles: (_state: unknown) => AccordionHeaderState;
+
+// @public (undocumented)
+export const useSemanticAvatarStyles: (_state: unknown) => AvatarState;
 
 // @public (undocumented)
 export const useSemanticButtonStyles: (_state: unknown) => ButtonState;
@@ -21,13 +48,70 @@ export const useSemanticButtonStyles: (_state: unknown) => ButtonState;
 export const useSemanticCompoundButtonStyles: (_state: unknown) => CompoundButtonState;
 
 // @public (undocumented)
+export const useSemanticDividerStyles: (_state: unknown) => DividerState;
+
+// @public
+export const useSemanticDrawerBodyStyles: (_state: unknown) => DrawerBodyState;
+
+// @public
+export const useSemanticDrawerFooterStyles: (_state: unknown) => DrawerFooterState;
+
+// @public
+export const useSemanticDrawerHeaderStyles: (_state: unknown) => DrawerHeaderState;
+
+// @public (undocumented)
+export const useSemanticFlatTreeStyles: (_state: unknown) => FlatTreeState;
+
+// @public
+export const useSemanticInlineDrawerStyles: (_state: unknown) => InlineDrawerState;
+
+// @public
+export const useSemanticLabelStyles: (_state: unknown) => LabelState;
+
+// @public (undocumented)
+export const useSemanticLinkStyles: (_state: unknown) => LinkState;
+
+// @public (undocumented)
 export const useSemanticMenuButtonStyles: (_state: unknown) => MenuButtonState;
+
+// @public
+export const useSemanticOverlayDrawerSurfaceStyles: (_state: unknown) => DialogSurfaceState;
+
+// @public
+export const useSemanticProgressBarStyles: (_state: unknown) => ProgressBarState;
+
+// @public
+export const useSemanticRatingDisplayStyles: (_state: unknown) => RatingDisplayState;
+
+// @public
+export const useSemanticRatingItemStyles: (_state: unknown) => RatingItemState;
+
+// @public
+export const useSemanticSpinnerStyles: (_state: unknown) => SpinnerState;
 
 // @public (undocumented)
 export const useSemanticSplitButtonStyles: (_state: unknown) => SplitButtonState;
 
+// @public
+export const useSemanticSwitchStyles: (_state: unknown) => SwitchState;
+
+// @public
+export const useSemanticTextareaStyles: (_state: unknown) => TextareaState;
+
+// @public
+export const useSemanticTextStyles: (_state: unknown) => TextState;
+
 // @public (undocumented)
 export const useSemanticToggleButtonStyles: (_state: unknown) => ToggleButtonState;
+
+// @public
+export const useSemanticTreeItemLayoutStyles: (_state: unknown) => TreeItemLayoutState;
+
+// @public
+export const useSemanticTreeItemStyles: (_state: unknown) => TreeItemState;
+
+// @public (undocumented)
+export const useSemanticTreeStyles: (_state: unknown) => TreeState;
 
 // (No @packageDocumentation comment for this package)
 

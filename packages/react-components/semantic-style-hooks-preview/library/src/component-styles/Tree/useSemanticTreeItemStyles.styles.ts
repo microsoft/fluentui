@@ -1,0 +1,83 @@
+import { GriffelStyle, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import {
+  TreeItemCSSProperties,
+  TreeItemState,
+  treeItemLevelToken,
+  treeItemLayoutClassNames,
+  treeItemPersonaLayoutClassNames,
+  treeItemClassNames,
+} from '@fluentui/react-tree';
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
+
+const useBaseStyles = makeResetStyles({
+  position: 'relative',
+  cursor: 'pointer',
+  display: 'flex',
+  flexDirection: 'column',
+  boxSizing: 'border-box',
+  backgroundColor: semanticTokens.backgroundCtrlSubtleRest,
+  color: semanticTokens.foregroundCtrlOnSubtleRest,
+  paddingRight: semanticTokens.paddingContentNone,
+  // if using createCustomFocusIndicatorStyle then we need to remove default outline styles provided by the browser
+  ':focus': {
+    outlineStyle: 'none',
+  },
+  ':focus-visible': {
+    outlineStyle: 'none',
+  },
+  // This adds the focus outline for the TreeItemLayout element
+  ...createCustomFocusIndicatorStyle(
+    {
+      outlineRadius: semanticTokens.ctrlListCornerRest,
+      borderRadius: semanticTokens.ctrlListCornerRest,
+      boxShadow: `0 0 0 ${semanticTokens._ctrlAccordionFocusInnerStrokeWidth} ${semanticTokens.ctrlFocusInnerStroke}`,
+      outline: `${semanticTokens.ctrlFocusOuterStrokeWidth} solid ${semanticTokens._ctrlAccordionFocusOuterStroke}`,
+      outlineOffset: semanticTokens._ctrlAccordionFocusInnerStrokeWidth,
+    },
+    {
+      customizeSelector: selector =>
+        `${selector} > .${treeItemLayoutClassNames.root}, ${selector} > .${treeItemPersonaLayoutClassNames.root}`,
+    },
+  ),
+});
+
+type StaticLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+type StaticLevelProperty = `level${StaticLevel}`;
+
+const useStyles = makeStyles({
+  ...(Object.fromEntries(
+    Array.from<never, [StaticLevelProperty, TreeItemCSSProperties]>({ length: 10 }, (_, index) => [
+      `level${(index + 1) as StaticLevel}`,
+      { [treeItemLevelToken]: index + 1 },
+    ]),
+  ) as Record<StaticLevelProperty, GriffelStyle>),
+});
+
+/**
+ * Apply styling to the TreeItem slots based on the state
+ */
+export const useSemanticTreeItemStyles = (_state: unknown): TreeItemState => {
+  'use no memo';
+
+  const state = _state as TreeItemState;
+  const baseStyles = useBaseStyles();
+  const styles = useStyles();
+
+  const { level } = state;
+
+  state.root.className = mergeClasses(
+    state.root.className,
+    treeItemClassNames.root,
+    baseStyles,
+    isStaticallyDefinedLevel(level) && styles[`level${level}` as StaticLevelProperty],
+    getSlotClassNameProp_unstable(state.root),
+  );
+
+  return state;
+};
+
+function isStaticallyDefinedLevel(level: number): level is StaticLevel {
+  return level >= 1 && level <= 10;
+}

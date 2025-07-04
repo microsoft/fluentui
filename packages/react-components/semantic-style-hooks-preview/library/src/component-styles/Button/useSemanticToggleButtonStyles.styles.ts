@@ -3,7 +3,7 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import * as semanticTokens from '@fluentui/semantic-tokens';
-import { buttonClassNames, ToggleButtonState, toggleButtonClassNames } from '@fluentui/react-button';
+import { buttonClassNames, type ToggleButtonState, toggleButtonClassNames } from '@fluentui/react-button';
 import { useSemanticButtonStyles } from './useSemanticButtonStyles.styles';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
@@ -261,6 +261,7 @@ export const useSemanticToggleButtonStyles = (_state: unknown): ToggleButtonStat
   const { appearance, checked, disabled, disabledFocusable } = state;
 
   state.root.className = mergeClasses(
+    state.root.className,
     toggleButtonClassNames.root,
 
     // Primary high contrast styles
@@ -276,17 +277,15 @@ export const useSemanticToggleButtonStyles = (_state: unknown): ToggleButtonStat
     (disabled || disabledFocusable) && rootDisabledStyles.base,
     appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
 
-    // User provided class name
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.icon) {
     state.icon.className = mergeClasses(
+      state.icon.className,
       toggleButtonClassNames.icon,
       checked && (appearance === 'subtle' || appearance === 'transparent') && iconCheckedStyles.subtleOrTransparent,
       iconCheckedStyles.highContrast,
-      state.icon.className,
       getSlotClassNameProp_unstable(state.icon),
     );
   }

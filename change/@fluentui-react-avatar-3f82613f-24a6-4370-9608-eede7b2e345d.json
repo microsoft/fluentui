@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "update avatar to use semantic tokens",
-  "packageName": "@fluentui/react-avatar",
-  "email": "rachelyoo@microsoft.com",
-  "dependentChangeType": "patch"
-}

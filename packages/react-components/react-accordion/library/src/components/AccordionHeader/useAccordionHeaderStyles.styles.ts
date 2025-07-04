@@ -1,8 +1,8 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { AccordionHeaderSlots, AccordionHeaderState } from './AccordionHeader.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots> = {
   root: 'fui-AccordionHeader',
@@ -10,8 +10,6 @@ export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots> = {
   expandIcon: 'fui-AccordionHeader__expandIcon',
   icon: 'fui-AccordionHeader__icon',
 };
-
-const paddingCtrlHorizontalDefaultNudge = `max(calc(${semanticTokens.paddingCtrlHorizontalDefault} - 2px), 2px)`;
 
 const useStyles = makeStyles({
   // TODO: this should be extracted to another package
@@ -27,31 +25,16 @@ const useStyles = makeStyles({
     WebkitAppearance: 'button',
     textAlign: 'unset',
   },
-  focusIndicator: createFocusOutlineStyle({
-    style: {
-      outlineRadius: semanticTokens.ctrlListCornerRest,
-      outlineOffset: semanticTokens._ctrlAccordionFocusInnerStrokeWidth,
-      outlineColor: semanticTokens._ctrlAccordionFocusOuterStroke,
-      outlineWidth: semanticTokens.ctrlFocusOuterStrokeWidth,
-    },
-  }),
+  focusIndicator: createFocusOutlineStyle(),
   root: {
-    color: semanticTokens._ctrlAccordionForegroundRest,
-    backgroundColor: semanticTokens._ctrlAccordionBackgroundRest,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorTransparentBackground,
     margin: '0',
-    borderRadius: semanticTokens.ctrlListCornerRest,
-
-    ':hover': {
-      color: semanticTokens._ctrlAccordionForegroundHover,
-    },
-
-    ':hover:active': {
-      color: semanticTokens._ctrlAccordionForegroundPressed,
-    },
+    borderRadius: tokens.borderRadiusMedium,
   },
   rootDisabled: {
     backgroundImage: 'none',
-    color: semanticTokens.foregroundCtrlOnTransparentDisabled,
+    color: tokens.colorNeutralForegroundDisabled,
   },
   rootInline: {
     display: 'inline-block',
@@ -60,63 +43,47 @@ const useStyles = makeStyles({
     position: 'relative',
     width: '100%',
     ...shorthands.borderWidth('0'),
-    padding: `${semanticTokens._ctrlAccordionPaddingTextTop} ${semanticTokens.paddingCtrlHorizontalDefault} ${semanticTokens._ctrlAccordionPaddingTextBottom} ${paddingCtrlHorizontalDefaultNudge}`,
-    minHeight: semanticTokens.sizeCtrlDefault,
+    padding: `0 ${tokens.spacingHorizontalM} 0 ${tokens.spacingHorizontalMNudge}`,
+    minHeight: '44px',
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
-    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
-    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
-    fontSize: semanticTokens.textGlobalBody3FontSize,
-    lineHeight: semanticTokens.textGlobalBody3LineHeight,
+    ...typographyStyles.body1,
     boxSizing: 'border-box',
   },
   buttonSmall: {
-    minHeight: semanticTokens.sizeCtrlSmDefault,
-    fontSize: semanticTokens.textGlobalCaption1FontSize,
-    paddingTop: semanticTokens.paddingCtrlSmTextTop,
-    paddingBottom: semanticTokens.paddingCtrlSmTextBottom,
+    minHeight: '32px',
+    fontSize: tokens.fontSizeBase200,
   },
   buttonLarge: {
-    minHeight: semanticTokens.sizeCtrlLgDefault,
-    lineHeight: semanticTokens.textGlobalBody2LineHeight,
-    fontSize: semanticTokens.textGlobalBody2FontSize,
-    paddingTop: semanticTokens.paddingCtrlLgTextTop,
-    paddingBottom: semanticTokens.paddingCtrlLgTextBottom,
+    lineHeight: tokens.lineHeightBase400,
+    fontSize: tokens.fontSizeBase400,
   },
   buttonExtraLarge: {
-    minHeight: semanticTokens.sizeCtrlLgDefault,
-    lineHeight: semanticTokens.textGlobalBody1LineHeight,
-    fontSize: semanticTokens.textGlobalBody1FontSize,
-    paddingTop: semanticTokens.paddingCtrlLgTextTop,
-    paddingBottom: semanticTokens.paddingCtrlLgTextBottom,
+    lineHeight: tokens.lineHeightBase500,
+    fontSize: tokens.fontSizeBase500,
   },
   buttonInline: {
     display: 'inline-flex',
   },
   buttonExpandIconEndNoIcon: {
-    paddingLeft: semanticTokens.paddingCtrlHorizontalDefault,
+    paddingLeft: tokens.spacingHorizontalM,
   },
   buttonExpandIconEnd: {
-    paddingRight: paddingCtrlHorizontalDefaultNudge,
+    paddingRight: tokens.spacingHorizontalMNudge,
   },
   buttonDisabled: {
     cursor: 'not-allowed',
   },
   expandIcon: {
-    height: semanticTokens.ctrlChoiceBaseSize,
-    width: semanticTokens.ctrlChoiceBaseSize,
+    height: '100%',
     display: 'flex',
     alignItems: 'center',
-    lineHeight: semanticTokens.textGlobalBody1LineHeight,
-    fontSize: semanticTokens.sizeCtrlIcon,
-    '> *': {
-      height: semanticTokens.sizeCtrlIcon,
-      width: semanticTokens.sizeCtrlIcon,
-    },
+    lineHeight: tokens.lineHeightBase500,
+    fontSize: tokens.fontSizeBase500,
   },
   expandIconStart: {
-    paddingRight: semanticTokens.gapInsideCtrlDefault,
+    paddingRight: tokens.spacingHorizontalS,
   },
   expandIconEnd: {
     flexGrow: 1,
@@ -124,15 +91,15 @@ const useStyles = makeStyles({
     flexBasis: '0%',
     display: 'flex',
     justifyContent: 'flex-end',
-    paddingLeft: semanticTokens.gapInsideCtrlDefault,
+    paddingLeft: tokens.spacingHorizontalS,
   },
   icon: {
     height: '100%',
     display: 'flex',
     alignItems: 'center',
-    paddingRight: semanticTokens.gapInsideCtrlDefault,
-    lineHeight: semanticTokens.textGlobalBody1LineHeight,
-    fontSize: semanticTokens.textGlobalBody1FontSize,
+    paddingRight: tokens.spacingHorizontalS,
+    lineHeight: tokens.lineHeightBase500,
+    fontSize: tokens.fontSizeBase500,
   },
 });
 

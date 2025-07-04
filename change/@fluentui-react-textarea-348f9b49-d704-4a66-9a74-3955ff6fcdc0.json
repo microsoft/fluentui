@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix: TextArea changes",
-  "packageName": "@fluentui/react-textarea",
-  "email": "xuehua@microsoft.com",
-  "dependentChangeType": "patch"
-}
