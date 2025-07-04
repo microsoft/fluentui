@@ -1,13 +1,13 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
-import type { InlineDrawerSlots, InlineDrawerState } from './InlineDrawer.types';
-import { drawerCSSVars, drawerDefaultStyles, useDrawerBaseClassNames } from '../../shared/useDrawerBaseStyles.styles';
-
-export const inlineDrawerClassNames: SlotClassNames<Omit<InlineDrawerSlots, 'surfaceMotion'>> = {
-  root: 'fui-InlineDrawer',
-};
+import {
+  drawerCSSVars,
+  drawerDefaultStyles,
+  useSemanticDrawerBaseClassNames,
+} from './useSemanticDrawerBaseStyles.styles';
+import { inlineDrawerClassNames, type InlineDrawerState } from '@fluentui/react-drawer';
 
 const useDrawerResetStyles = makeResetStyles({
   ...drawerDefaultStyles,
@@ -17,7 +17,7 @@ const useDrawerResetStyles = makeResetStyles({
 /**
  * Styles for the root slot
  */
-const borderValue = `1px solid ${tokens.colorNeutralBackground3}`;
+const borderValue = ` ${semanticTokens.strokeWidthDefault} solid ${semanticTokens.strokeFlyout}`;
 const useDrawerRootStyles = makeStyles({
   /* Separator */
   separatorStart: { borderRight: borderValue },
@@ -56,11 +56,13 @@ function getSeparatorClass(state: InlineDrawerState, classNames: ReturnType<type
 /**
  * Apply styling to the InlineDrawer slots based on the state
  */
-export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): InlineDrawerState => {
+export const useSemanticInlineDrawerStyles = (_state: unknown): InlineDrawerState => {
   'use no memo';
 
+  const state = _state as InlineDrawerState;
+
   const resetStyles = useDrawerResetStyles();
-  const baseClassNames = useDrawerBaseClassNames(state);
+  const baseClassNames = useSemanticDrawerBaseClassNames(state);
   const rootStyles = useDrawerRootStyles();
 
   state.root.className = mergeClasses(
@@ -70,6 +72,7 @@ export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): Inline
     getSeparatorClass(state, rootStyles),
     rootStyles[state.position],
     state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
 
   return state;

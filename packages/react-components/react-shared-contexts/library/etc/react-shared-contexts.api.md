@@ -92,6 +92,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
     useDrawerInlineStyles_unstable: CustomStyleHook;
     useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useOverlayDrawerSurfaceStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
     useDropdownStyles_unstable: CustomStyleHook;
     useEmptySwatchStyles_unstable: CustomStyleHook;

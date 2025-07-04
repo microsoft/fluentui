@@ -1,7 +1,6 @@
 import { type GriffelResetStyle, makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-
-import { DrawerBaseState } from './DrawerBase.types';
+import type { DrawerBaseState } from '@fluentui/react-drawer';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 /**
  * CSS variable names used internally for uniform styling in Drawer.
@@ -25,8 +24,8 @@ export const drawerDefaultStyles: GriffelResetStyle = {
   flexDirection: 'column',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
-  backgroundColor: tokens.colorNeutralBackground1,
-  color: tokens.colorNeutralForeground1,
+  backgroundColor: semanticTokens.backgroundFlyoutSolid,
+  color: semanticTokens.foregroundContentNeutralPrimary,
 };
 
 /**
@@ -35,20 +34,26 @@ export const drawerDefaultStyles: GriffelResetStyle = {
 const useDrawerStyles = makeStyles({
   /* Positioning */
   start: {
-    borderRight: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+    borderRight: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.nullColor}`,
 
     left: 0,
     right: 'auto',
+    borderEndEndRadius: semanticTokens.cornerFlyoutRest,
+    borderStartEndRadius: semanticTokens.cornerFlyoutRest,
   },
   end: {
-    borderLeft: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+    borderLeft: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.nullColor}`,
 
     right: 0,
     left: 'auto',
+    borderStartStartRadius: semanticTokens.cornerFlyoutRest,
+    borderEndStartRadius: semanticTokens.cornerFlyoutRest,
   },
   bottom: {
     bottom: 0,
     top: 'auto',
+    borderTopRightRadius: semanticTokens.cornerFlyoutRest,
+    borderTopLeftRadius: semanticTokens.cornerFlyoutRest,
   },
 
   /* Sizes */
@@ -82,7 +87,7 @@ export const useDrawerBottomBaseStyles = makeStyles({
   },
 });
 
-export const useDrawerBaseClassNames = ({ position, size }: DrawerBaseState) => {
+export const useSemanticDrawerBaseClassNames = ({ position, size }: DrawerBaseState) => {
   const baseStyles = useDrawerStyles();
   const bottomBaseStyles = useDrawerBottomBaseStyles();
 

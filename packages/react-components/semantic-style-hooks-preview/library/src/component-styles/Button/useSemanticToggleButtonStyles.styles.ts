@@ -3,7 +3,7 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import * as semanticTokens from '@fluentui/semantic-tokens';
-import { buttonClassNames, ToggleButtonState, toggleButtonClassNames } from '@fluentui/react-button';
+import { buttonClassNames, type ToggleButtonState, toggleButtonClassNames } from '@fluentui/react-button';
 import { useSemanticButtonStyles } from './useSemanticButtonStyles.styles';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 

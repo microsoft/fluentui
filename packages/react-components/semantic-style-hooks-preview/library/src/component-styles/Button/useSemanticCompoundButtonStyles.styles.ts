@@ -2,7 +2,7 @@ import { tokens } from '@fluentui/react-theme';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { useSemanticButtonStyles } from './useSemanticButtonStyles.styles';
-import { compoundButtonClassNames, CompoundButtonState } from '@fluentui/react-button';
+import { compoundButtonClassNames, type CompoundButtonState } from '@fluentui/react-button';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 const useRootStyles = makeStyles({

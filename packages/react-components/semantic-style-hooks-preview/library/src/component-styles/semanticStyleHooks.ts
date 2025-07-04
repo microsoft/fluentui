@@ -11,6 +11,11 @@ import {
 import { useSemanticAccordionHeaderStyles } from './Accordion/index';
 import { useSemanticAvatarStyles } from './Avatar/index';
 import { useSemanticDividerStyles } from './Divider/index';
+import { useSemanticInlineDrawerStyles } from './Drawer/useSemanticInlineDrawerStyles.styles';
+import { useSemanticDrawerBodyStyles } from './Drawer/useSemanticDrawerBodyStyles.styles';
+import { useSemanticDrawerFooterStyles } from './Drawer/useSemanticDrawerFooterStyles.styles';
+import { useSemanticDrawerHeaderStyles } from './Drawer/useSemanticDrawerHeaderStyles.styles';
+import { useSemanticOverlayDrawerSurfaceStyles } from './Drawer/useSemanticOverlayDrawerSurfaceStyles.styles';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -25,4 +30,10 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useCompoundButtonStyles_unstable: useSemanticCompoundButtonStyles,
   // Divider styles
   useDividerStyles_unstable: useSemanticDividerStyles,
+  // Drawer styles
+  useInlineDrawerStyles_unstable: useSemanticInlineDrawerStyles,
+  useDrawerBodyStyles_unstable: useSemanticDrawerBodyStyles,
+  useDrawerFooterStyles_unstable: useSemanticDrawerFooterStyles,
+  useDrawerHeaderStyles_unstable: useSemanticDrawerHeaderStyles,
+  useOverlayDrawerSurfaceStyles_unstable: useSemanticOverlayDrawerSurfaceStyles,
 };

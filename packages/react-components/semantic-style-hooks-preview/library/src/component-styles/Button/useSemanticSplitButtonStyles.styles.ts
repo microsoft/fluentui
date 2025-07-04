@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 import { tokens } from '@fluentui/react-theme';
-import { splitButtonClassNames, SplitButtonState } from '@fluentui/react-button';
+import { splitButtonClassNames, type SplitButtonState } from '@fluentui/react-button';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 // WCAG minimum target size for pointer targets that are immediately adjacent to other targets:

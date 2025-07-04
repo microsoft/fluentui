@@ -65,6 +65,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useDrawerInlineStyles_unstable: CustomStyleHook;
   /** @deprecated Use useOverlayDrawerStyles_unstable instead. */
   useDrawerOverlayStyles_unstable: CustomStyleHook;
+  useOverlayDrawerSurfaceStyles_unstable: CustomStyleHook;
   useDrawerStyles_unstable: CustomStyleHook;
   useDropdownStyles_unstable: CustomStyleHook;
   useEmptySwatchStyles_unstable: CustomStyleHook;

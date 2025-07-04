@@ -3,7 +3,7 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import * as semanticTokens from '@fluentui/semantic-tokens';
-import { buttonClassNames, ButtonState } from '@fluentui/react-button';
+import { buttonClassNames, type ButtonState } from '@fluentui/react-button';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 const iconSpacingVar = '--fui-Button__icon--spacing';

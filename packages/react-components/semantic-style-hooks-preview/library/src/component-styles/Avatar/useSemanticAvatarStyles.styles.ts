@@ -1,7 +1,7 @@
 import { tokens } from '@fluentui/react-theme';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import * as semanticTokens from '@fluentui/semantic-tokens';
-import { avatarClassNames, AvatarState } from '@fluentui/react-avatar';
+import { avatarClassNames, type AvatarState } from '@fluentui/react-avatar';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 // CSS variables used internally in Avatar's styles

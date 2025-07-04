@@ -2,7 +2,7 @@ import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons
 import { tokens } from '@fluentui/react-theme';
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import * as semanticTokens from '@fluentui/semantic-tokens';
-import { menuButtonClassNames, MenuButtonState } from '@fluentui/react-button';
+import { menuButtonClassNames, type MenuButtonState } from '@fluentui/react-button';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import { useSemanticButtonStyles } from './useSemanticButtonStyles.styles';
 

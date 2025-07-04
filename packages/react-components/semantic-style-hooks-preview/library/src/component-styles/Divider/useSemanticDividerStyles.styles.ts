@@ -1,6 +1,6 @@
 import { mergeClasses, shorthands, makeStyles } from '@griffel/react';
 import * as semanticTokens from '@fluentui/semantic-tokens';
-import { dividerClassNames, DividerState } from '@fluentui/react-divider';
+import { dividerClassNames, type DividerState } from '@fluentui/react-divider';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 const useBaseStyles = makeStyles({

@@ -1,16 +1,17 @@
 import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
 import { tokens } from '@fluentui/react-theme';
 import { ProviderContextValue_unstable as FluentProviderContextValue } from '@fluentui/react-shared-contexts';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
-import type { DrawerBaseProps } from './DrawerBase.types';
-import { drawerCSSVars } from './useDrawerBaseStyles.styles';
+import type { DrawerProps } from '@fluentui/react-drawer';
+import { drawerCSSVars } from './useSemanticDrawerBaseStyles.styles';
 
 export type DrawerMotionParams = Required<
-  Pick<DrawerBaseProps, 'size' | 'position'> & Pick<FluentProviderContextValue, 'dir'>
+  Pick<DrawerProps, 'size' | 'position'> & Pick<FluentProviderContextValue, 'dir'>
 >;
-export type OverlayDrawerSurfaceMotionParams = Required<Pick<DrawerBaseProps, 'size'>>;
+export type OverlayDrawerSurfaceMotionParams = Required<Pick<DrawerProps, 'size'>>;
 
-const durations: Record<NonNullable<DrawerBaseProps['size']>, number> = {
+const durations: Record<NonNullable<DrawerProps['size']>, number> = {
   small: motionTokens.durationGentle,
   medium: motionTokens.durationSlow,
   large: motionTokens.durationSlower,
@@ -21,7 +22,7 @@ const durations: Record<NonNullable<DrawerBaseProps['size']>, number> = {
  * @internal
  */
 export function getPositionTransform(
-  position: DrawerBaseProps['position'],
+  position: DrawerProps['position'],
   sizeVar: string,
   dir: FluentProviderContextValue['dir'],
 ) {
@@ -91,7 +92,7 @@ export const OverlayDrawerMotion = createPresenceComponent<DrawerMotionParams>((
     },
     {
       transform: 'translate3d(0, 0, 0)',
-      boxShadow: tokens.shadow64,
+      boxShadow: semanticTokens.shadowFlyout,
       opacity: 1,
     },
   ];
