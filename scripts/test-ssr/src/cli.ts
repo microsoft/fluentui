@@ -11,10 +11,15 @@ const argv = yargs(process.argv.slice(2))
       type: 'string',
     }),
   )
+  .option('exclude', {
+    describe: 'Glob patterns to exclude from testing (can be specified multiple times)',
+    type: 'array',
+    default: [],
+  })
   .demandOption('stories')
   .strict().argv;
 
-main(argv as { stories: string }).catch((err: Error) => {
+main(argv as { stories: string; exclude: string[] }).catch((err: Error) => {
   console.error('');
   console.error(chalk.bgRed.whiteBright(' @fluentui/test-ssr '));
 
