@@ -122,14 +122,6 @@ async function run() {
   } catch {
     console.error('Clearing jest cache failed, likely due to it or a dep not being installed.');
   }
-  try {
-    console.log('\nAttempting to clear gulp-cache...');
-    const cache = require('gulp-cache');
-    cache.clearAll();
-    console.log('...success!');
-  } catch {
-    console.log('Clearing gulp-cache failed, likely due it not being installed.');
-  }
 
   /**
    * @type {string[]}
