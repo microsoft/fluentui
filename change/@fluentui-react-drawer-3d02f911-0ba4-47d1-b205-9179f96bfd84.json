@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement semantic tokens",
-  "packageName": "@fluentui/react-drawer",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement semantic tokens for react-link",
-  "packageName": "@fluentui/react-link",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}
