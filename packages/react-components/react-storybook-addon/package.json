@@ -20,7 +20,6 @@
     "@fluentui/react-provider": "^9.20.6",
     "@fluentui/react-theme": "^9.1.24",
     "@fluentui/semantic-style-hooks-preview": "^0.0.0",
-    "@fluentui/semantic-tokens": "0.0.0-alpha.1",
     "@fluentui/react-shared-contexts": "^9.23.1",
     "@swc/helpers": "^0.5.1"
   },
