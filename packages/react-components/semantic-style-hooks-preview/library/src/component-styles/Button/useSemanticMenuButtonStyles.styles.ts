@@ -1,15 +1,10 @@
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { tokens } from '@fluentui/react-theme';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
-import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
-import type { MenuButtonSlots, MenuButtonState } from './MenuButton.types';
-
-export const menuButtonClassNames: SlotClassNames<MenuButtonSlots> = {
-  root: 'fui-MenuButton',
-  icon: 'fui-MenuButton__icon',
-  menuIcon: 'fui-MenuButton__menuIcon',
-};
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { menuButtonClassNames, MenuButtonState } from '@fluentui/react-button';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
+import { useSemanticButtonStyles } from './useSemanticButtonStyles.styles';
 
 const useRootExpandedStyles = makeStyles({
   base: {
@@ -24,8 +19,22 @@ const useRootExpandedStyles = makeStyles({
   // Appearance variations
   outline: {
     ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-    ...shorthands.borderWidth(tokens.strokeWidthThicker),
+    ...shorthands.borderWidth(semanticTokens.strokeWidthCtrlOutlineSelected),
     color: tokens.colorNeutralForeground1Selected,
+
+    // Ensure state is retained over base hover
+    ':hover': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+      ...shorthands.borderWidth(semanticTokens.strokeWidthCtrlOutlineSelected),
+      color: tokens.colorNeutralForeground1Selected,
+    },
+
+    // Ensure state is retained over base hover active
+    ':hover:active': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+      ...shorthands.borderWidth(semanticTokens.strokeWidthCtrlOutlineSelected),
+      color: tokens.colorNeutralForeground1Selected,
+    },
   },
   primary: {
     backgroundColor: tokens.colorBrandBackgroundSelected,
@@ -81,30 +90,32 @@ const useMenuIconStyles = makeStyles({
   small: {
     fontSize: '12px',
     height: '12px',
-    lineHeight: tokens.lineHeightBase200,
+    lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
     width: '12px',
   },
   medium: {
     fontSize: '12px',
     height: '12px',
-    lineHeight: tokens.lineHeightBase200,
+    lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
     width: '12px',
   },
   large: {
     fontSize: '16px',
     height: '16px',
-    lineHeight: tokens.lineHeightBase400,
+    lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
     width: '16px',
   },
 
   // Not-icon only
   notIconOnly: {
-    marginLeft: tokens.spacingHorizontalXS,
+    marginLeft: semanticTokens.gapInsideCtrlSmDefault,
   },
 });
 
-export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButtonState => {
+export const useSemanticMenuButtonStyles = (_state: unknown): MenuButtonState => {
   'use no memo';
+
+  const state = _state as MenuButtonState;
 
   const rootExpandedStyles = useRootExpandedStyles();
   const iconExpandedStyles = useIconExpandedStyles();
@@ -115,6 +126,7 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
     state.root['aria-expanded'] && rootExpandedStyles.base,
     state.root['aria-expanded'] && rootExpandedStyles[state.appearance],
     state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.icon) {
@@ -122,6 +134,7 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
       menuButtonClassNames.icon,
       state.root['aria-expanded'] && iconExpandedStyles[state.appearance] && iconExpandedStyles.highContrast,
       state.icon.className,
+      getSlotClassNameProp_unstable(state.icon),
     );
   }
 
@@ -132,10 +145,11 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
       menuIconStyles[state.size],
       !state.iconOnly && menuIconStyles.notIconOnly,
       state.menuIcon.className,
+      getSlotClassNameProp_unstable(state.menuIcon),
     );
   }
 
-  useButtonStyles_unstable({ ...state, iconPosition: 'before' });
+  useSemanticButtonStyles({ ...state, iconPosition: 'before' });
 
   return state;
 };

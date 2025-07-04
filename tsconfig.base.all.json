@@ -86,6 +86,9 @@
       "@fluentui/component-selector-preview": [
         "packages/react-components/component-selector-preview/library/src/index.ts"
       ],
+      "@fluentui/component-selector-preview-stories": [
+        "packages/react-components/component-selector-preview/stories/src/index.ts"
+      ],
       "@fluentui/eslint-plugin-react-components": [
         "packages/react-components/eslint-plugin-react-components/src/index.ts"
       ],
@@ -263,14 +266,17 @@
       "@fluentui/react-virtualizer": ["packages/react-components/react-virtualizer/library/src/index.ts"],
       "@fluentui/react-virtualizer-stories": ["packages/react-components/react-virtualizer/stories/src/index.ts"],
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
+      "@fluentui/semantic-style-hooks-preview": [
+        "packages/react-components/semantic-style-hooks-preview/library/src/index.ts"
+      ],
+      "@fluentui/semantic-tokens": ["packages/semantic-tokens/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
-      "@fluentui/semantic-tokens": ["packages/semantic-tokens/src/index.ts"],
       "@fluentui/visual-regression-assert": ["tools/visual-regression-assert/src/index.ts"],
       "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/component-selector-preview-stories": [
-        "packages/react-components/component-selector-preview/stories/src/index.ts"
+      "@fluentui/semantic-style-hooks-preview-stories": [
+        "packages/react-components/semantic-style-hooks-preview/stories/src/index.ts"
       ]
     }
   }

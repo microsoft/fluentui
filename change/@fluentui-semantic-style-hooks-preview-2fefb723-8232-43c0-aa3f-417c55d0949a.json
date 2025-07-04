@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Implement semantic style hooks framework and button example",
+  "packageName": "@fluentui/semantic-style-hooks-preview",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
