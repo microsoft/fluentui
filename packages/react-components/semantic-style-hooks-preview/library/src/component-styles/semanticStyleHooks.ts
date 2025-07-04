@@ -24,6 +24,7 @@ import { useSemanticRatingDisplayStyles, useSemanticRatingItemStyles } from './R
 import { useSemanticSpinnerStyles } from './Spinner';
 import { useSemanticSwitchStyles } from './Switch';
 import { useSemanticTextStyles } from './Text';
+import { useSemanticTextareaStyles } from './Textarea';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -59,4 +60,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useSwitchStyles_unstable: useSemanticSwitchStyles,
   // Text styles
   useTextStyles_unstable: useSemanticTextStyles,
+  // Textarea styles
+  useTextareaStyles_unstable: useSemanticTextareaStyles,
 };
