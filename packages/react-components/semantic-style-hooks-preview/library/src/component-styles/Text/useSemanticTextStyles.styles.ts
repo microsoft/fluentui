@@ -1,21 +1,18 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { TextSlots, TextState } from './Text.types';
-import { SlotClassNames } from '@fluentui/react-utilities';
-
-export const textClassNames: SlotClassNames<TextSlots> = {
-  root: 'fui-Text',
-};
+import { textClassNames, type TextState } from '@fluentui/react-text';
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    fontWeight: tokens.fontWeightRegular,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontSize: semanticTokens.textGlobalBody3FontSize,
+    lineHeight: semanticTokens.textGlobalBody3LineHeight,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
     textAlign: 'start',
     display: 'inline',
     whiteSpace: 'normal',
@@ -45,40 +42,40 @@ const useStyles = makeStyles({
     textDecorationLine: 'line-through underline',
   },
   base100: {
-    fontSize: tokens.fontSizeBase100,
-    lineHeight: tokens.lineHeightBase100,
+    fontSize: semanticTokens.textGlobalCaption2FontSize,
+    lineHeight: semanticTokens.textGlobalCaption2LineHeight,
   },
   base200: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
+    fontSize: semanticTokens.textGlobalCaption1FontSize,
+    lineHeight: semanticTokens.textGlobalCaption1LineHeight,
   },
   base400: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
+    fontSize: semanticTokens.textGlobalBody2FontSize,
+    lineHeight: semanticTokens.textGlobalBody2LineHeight,
   },
   base500: {
-    fontSize: tokens.fontSizeBase500,
-    lineHeight: tokens.lineHeightBase500,
+    fontSize: semanticTokens.textGlobalBody1FontSize,
+    lineHeight: semanticTokens.textGlobalBody1LineHeight,
   },
   base600: {
-    fontSize: tokens.fontSizeBase600,
-    lineHeight: tokens.lineHeightBase600,
+    fontSize: semanticTokens.textGlobalSubtitle2FontSize,
+    lineHeight: semanticTokens.textGlobalSubtitle2LineHeight,
   },
   hero700: {
-    fontSize: tokens.fontSizeHero700,
-    lineHeight: tokens.lineHeightHero700,
+    fontSize: semanticTokens.textGlobalSubtitle1FontSize,
+    lineHeight: semanticTokens.textGlobalSubtitle1LineHeight,
   },
   hero800: {
-    fontSize: tokens.fontSizeHero800,
-    lineHeight: tokens.lineHeightHero800,
+    fontSize: semanticTokens.textGlobalTitle2FontSize,
+    lineHeight: semanticTokens.textGlobalTitle2LineHeight,
   },
   hero900: {
-    fontSize: tokens.fontSizeHero900,
-    lineHeight: tokens.lineHeightHero900,
+    fontSize: semanticTokens.textGlobalTitle1FontSize,
+    lineHeight: semanticTokens.textGlobalTitle1LineHeight,
   },
   hero1000: {
-    fontSize: tokens.fontSizeHero1000,
-    lineHeight: tokens.lineHeightHero1000,
+    fontSize: semanticTokens.textGlobalDisplay2FontSize,
+    lineHeight: semanticTokens.textGlobalDisplay2LineHeight,
   },
   monospace: {
     fontFamily: tokens.fontFamilyMonospace,
@@ -109,8 +106,10 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Text slots based on the state
  */
-export const useTextStyles_unstable = (state: TextState): TextState => {
+export const useSemanticTextStyles = (_state: unknown): TextState => {
   'use no memo';
+
+  const state = _state as TextState;
 
   const styles = useStyles();
 
@@ -142,6 +141,7 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
     state.align === 'end' && styles.alignEnd,
     state.align === 'justify' && styles.alignJustify,
     state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
 
   return state;

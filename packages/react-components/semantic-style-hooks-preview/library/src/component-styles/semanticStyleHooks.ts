@@ -23,6 +23,7 @@ import { useSemanticProgressBarStyles } from './ProgressBar/useSemanticProgressB
 import { useSemanticRatingDisplayStyles, useSemanticRatingItemStyles } from './Rating';
 import { useSemanticSpinnerStyles } from './Spinner';
 import { useSemanticSwitchStyles } from './Switch';
+import { useSemanticTextStyles } from './Text';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -56,4 +57,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useSpinnerStyles_unstable: useSemanticSpinnerStyles,
   // Switch styles
   useSwitchStyles_unstable: useSemanticSwitchStyles,
+  // Text styles
+  useTextStyles_unstable: useSemanticTextStyles,
 };
