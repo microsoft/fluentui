@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Export DrawerBaseState for external usage",
+  "packageName": "@fluentui/react-drawer",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
