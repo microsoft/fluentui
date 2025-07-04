@@ -16,6 +16,8 @@ import { defaultTheme, ThemeIds } from '../theme';
 import { DIR_ID, THEME_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
+import { CustomStyleHooksProvider_unstable as CustomStyleHooksProvider } from '@fluentui/react-shared-contexts';
+import { SEMANTIC_STYLE_HOOKS } from '@fluentui/semantic-style-hooks-preview';
 
 const themes: Record<ThemeIds, Theme> = {
   'web-light': webLightTheme,
@@ -47,7 +49,9 @@ export const withFluentProvider = (StoryFn: () => JSXElement, context: FluentSto
 
   return (
     <FluentProvider theme={theme} dir={dir}>
-      {isVrTest ? StoryFn() : <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>}
+      <CustomStyleHooksProvider value={SEMANTIC_STYLE_HOOKS}>
+        {isVrTest ? StoryFn() : <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>}
+      </CustomStyleHooksProvider>
     </FluentProvider>
   );
 };

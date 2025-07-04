@@ -1,14 +1,9 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 import { tokens } from '@fluentui/react-theme';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { SplitButtonSlots, SplitButtonState } from './SplitButton.types';
-
-export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
-  root: 'fui-SplitButton',
-  menuButton: 'fui-SplitButton__menuButton',
-  primaryActionButton: 'fui-SplitButton__primaryActionButton',
-};
+import { splitButtonClassNames, SplitButtonState } from '@fluentui/react-button';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 // WCAG minimum target size for pointer targets that are immediately adjacent to other targets:
 // https://w3c.github.io/wcag/guidelines/22/#target-size-minimum
@@ -50,22 +45,39 @@ const useRootStyles = makeStyles({
 
   // Appearance variations
   outline: {
-    /* No styles */
-  },
-  primary: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStrokeOnBrand,
+      borderRightColor: semanticTokens.strokeCtrlDividerOnOutline,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeOnBrand,
+        borderRightColor: semanticTokens.strokeCtrlDividerOnOutline,
+      },
+
+      [`& .${splitButtonClassNames.menuButton}`]: { borderLeftWidth: 0 },
+    },
+
+    ':hover:active': {
+      [`& .${splitButtonClassNames.primaryActionButton}`]: {
+        borderRightColor: semanticTokens.strokeCtrlDividerOnOutline,
+      },
+      [`& .${splitButtonClassNames.menuButton}`]: { borderLeftWidth: 0 },
+    },
+  },
+  primary: {
+    [`& .${splitButtonClassNames.primaryActionButton}`]: {
+      borderRightColor: semanticTokens.strokeCtrlDividerOnBrand,
+    },
+
+    ':hover': {
+      [`& .${splitButtonClassNames.primaryActionButton}`]: {
+        borderRightColor: semanticTokens.strokeCtrlDividerOnBrand,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeOnBrand,
+        borderRightColor: semanticTokens.strokeCtrlDividerOnBrand,
       },
     },
 
@@ -92,18 +104,18 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorTransparentBackground,
+      borderRightColor: semanticTokens.strokeCtrlDividerOnSubtle,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorTransparentBackgroundHover,
+        borderRightColor: semanticTokens.strokeCtrlDividerOnSubtle,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorTransparentBackgroundPressed,
+        borderRightColor: semanticTokens.strokeCtrlDividerOnSubtle,
       },
     },
   },
@@ -133,18 +145,18 @@ const useRootStyles = makeStyles({
   // Disabled styles
   disabled: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStrokeDisabled,
+      borderRightColor: semanticTokens.strokeCtrlOnNeutralDisabled,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeDisabled,
+        borderRightColor: semanticTokens.strokeCtrlOnNeutralDisabled,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeDisabled,
+        borderRightColor: semanticTokens.strokeCtrlOnNeutralDisabled,
       },
     },
   },
@@ -171,8 +183,10 @@ const useRootStyles = makeStyles({
   },
 });
 
-export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitButtonState => {
+export const useSemanticSplitButtonStyles = (_state: unknown): SplitButtonState => {
   'use no memo';
+
+  const state = _state as SplitButtonState;
 
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
@@ -186,6 +200,7 @@ export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitBut
     (disabled || disabledFocusable) && rootStyles.disabled,
     (disabled || disabledFocusable) && rootStyles.disabledHighContrast,
     state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.menuButton) {
@@ -193,6 +208,7 @@ export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitBut
       splitButtonClassNames.menuButton,
       focusStyles.menuButton,
       state.menuButton.className,
+      getSlotClassNameProp_unstable(state.menuButton),
     );
   }
 
@@ -201,6 +217,7 @@ export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitBut
       splitButtonClassNames.primaryActionButton,
       focusStyles.primaryActionButton,
       state.primaryActionButton.className,
+      getSlotClassNameProp_unstable(state.primaryActionButton),
     );
   }
 

@@ -338,6 +338,8 @@ packages/react-components/component-selector-preview/library @microsoft/teams-pr
 packages/react-components/component-selector-preview/stories @microsoft/teams-prg
 packages/react-components/react-menu-grid-preview/library @microsoft/teams-prg
 packages/react-components/react-menu-grid-preview/stories @microsoft/teams-prg
+packages/react-components/semantic-style-hooks-preview/library @microsoft/xc-uxe
+packages/react-components/semantic-style-hooks-preview/stories @microsoft/xc-uxe
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components

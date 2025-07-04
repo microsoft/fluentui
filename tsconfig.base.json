@@ -204,6 +204,12 @@
         "packages/react-components/react-utilities-compat/stories/src/index.ts"
       ],
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
+      "@fluentui/semantic-style-hooks-preview": [
+        "packages/react-components/semantic-style-hooks-preview/library/src/index.ts"
+      ],
+      "@fluentui/semantic-style-hooks-preview-stories": [
+        "packages/react-components/semantic-style-hooks-preview/stories/src/index.ts"
+      ],
       "@fluentui/semantic-tokens": ["packages/semantic-tokens/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
