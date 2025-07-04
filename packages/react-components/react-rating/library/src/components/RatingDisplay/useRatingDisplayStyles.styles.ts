@@ -1,7 +1,7 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RatingDisplaySlots, RatingDisplayState } from './RatingDisplay.types';
-import * as semanticTokens from '@fluentui/semantic-tokens';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const ratingDisplayClassNames: SlotClassNames<RatingDisplaySlots> = {
   root: 'fui-RatingDisplay',
@@ -20,27 +20,24 @@ const useRootClassName = makeResetStyles({
 });
 
 const useLabelClassName = makeResetStyles({
-  color: semanticTokens.foregroundCtrlNeutralPrimaryRest,
-  marginLeft: semanticTokens.gapInsideCtrlSmToLabel,
-  fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
-  fontSize: semanticTokens.textRampSmItemBodyFontSize,
-  fontWeight: semanticTokens.textStyleDefaultRegularWeight,
-  lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
+  color: tokens.colorNeutralForeground1,
+  marginLeft: tokens.spacingHorizontalXS,
+  ...typographyStyles.caption1,
 });
 
 const useLabelStyles = makeStyles({
   large: {
-    fontSize: semanticTokens.textRampItemBodyFontSize,
-    lineHeight: semanticTokens.textRampItemBodyLineHeight,
-    marginLeft: semanticTokens.gapInsideCtrlToLabel,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+    marginLeft: tokens.spacingHorizontalSNudge,
   },
   extraLarge: {
-    fontSize: semanticTokens.textRampLgItemBodyFontSize,
-    lineHeight: semanticTokens.textRampLgItemBodyLineHeight,
-    marginLeft: semanticTokens.gapInsideCtrlLgToLabel,
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+    marginLeft: tokens.spacingHorizontalS,
   },
   strong: {
-    fontWeight: semanticTokens.textStyleDefaultHeaderWeight,
+    fontWeight: tokens.fontWeightSemibold,
   },
   divider: {
     '::before': {

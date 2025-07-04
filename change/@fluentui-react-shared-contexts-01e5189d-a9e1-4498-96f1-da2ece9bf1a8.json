@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add DrawerSurfaceStyle custom style hook",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

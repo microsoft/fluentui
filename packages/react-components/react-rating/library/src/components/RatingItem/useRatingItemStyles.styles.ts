@@ -3,7 +3,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { RatingItemSlots, RatingItemState } from './RatingItem.types';
-import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
   root: 'fui-RatingItem',
@@ -71,7 +70,7 @@ const useInputStyles = makeStyles({
 const useIndicatorBaseClassName = makeResetStyles({
   display: 'flex',
   overflow: 'hidden',
-  color: semanticTokens.ctrlRatingIconForegroundFilled,
+  color: tokens.colorNeutralForeground1,
   fill: 'currentColor',
   pointerEvents: 'none',
   position: 'absolute',
@@ -99,8 +98,8 @@ const useIndicatorStyles = makeStyles({
     color: tokens.colorPaletteMarigoldBorderActive,
   },
   filled: {
-    color: semanticTokens.ctrlRatingIconForegroundEmpty,
-    stroke: semanticTokens.strokeLayer,
+    color: tokens.colorNeutralBackground6,
+    stroke: tokens.colorTransparentStroke,
     '@media (forced-colors: active)': {
       color: 'Canvas',
       stroke: 'CanvasText',

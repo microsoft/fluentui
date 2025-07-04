@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: Enable semantic tokens",
+  "comment": "feat: Export TreeItemCSSProperties for external usage",
   "packageName": "@fluentui/react-tree",
   "email": "mifraser@microsoft.com",
   "dependentChangeType": "patch"

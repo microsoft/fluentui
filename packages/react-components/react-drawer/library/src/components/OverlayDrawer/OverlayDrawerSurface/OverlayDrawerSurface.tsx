@@ -8,6 +8,7 @@ import {
 
 import { useOverlayDrawerSurfaceStyles_unstable } from './useOverlayDrawerSurfaceStyles.styles';
 import type { OverlayDrawerSurfaceProps } from './OverlayDrawerSurface.types';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * @internal
@@ -30,6 +31,7 @@ export const OverlayDrawerSurface: ForwardRefComponent<OverlayDrawerSurfaceProps
   const dialogSurfaceContextValues = useDialogSurfaceContextValues_unstable(dialogSurfaceState);
 
   useOverlayDrawerSurfaceStyles_unstable(dialogSurfaceState);
+  useCustomStyleHook_unstable('useOverlayDrawerSurfaceStyles_unstable')(dialogSurfaceState);
 
   return renderDialogSurface_unstable(dialogSurfaceState, dialogSurfaceContextValues);
 });

@@ -3,7 +3,7 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import * as semanticTokens from '@fluentui/semantic-tokens';
-import { buttonClassNames, ButtonState } from '@fluentui/react-button';
+import { buttonClassNames, type ButtonState } from '@fluentui/react-button';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 const iconSpacingVar = '--fui-Button__icon--spacing';
@@ -611,6 +611,7 @@ export const useSemanticButtonStyles = (_state: unknown): ButtonState => {
   const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
 
   state.root.className = mergeClasses(
+    state.root.className,
     buttonClassNames.root,
     rootBaseClassName,
 
@@ -640,18 +641,16 @@ export const useSemanticButtonStyles = (_state: unknown): ButtonState => {
     // Icon-only styles
     iconOnly && rootIconOnlyStyles[size],
 
-    // User provided class name
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.icon) {
     state.icon.className = mergeClasses(
+      state.icon.className,
       buttonClassNames.icon,
       iconBaseClassName,
       !!state.root.children && iconStyles[iconPosition],
       iconStyles[size],
-      state.icon.className,
       getSlotClassNameProp_unstable(state.icon),
     );
   }

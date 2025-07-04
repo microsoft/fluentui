@@ -1,5 +1,4 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import * as semanticTokens from '@fluentui/semantic-tokens';
 import { tokens } from '@fluentui/react-theme';
 import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -12,6 +11,11 @@ export const progressBarClassNames: SlotClassNames<ProgressBarSlots> = {
 // If the percentComplete is near 0, don't animate it.
 // This prevents animations on reset to 0 scenarios.
 const ZERO_THRESHOLD = 0.01;
+
+const barThicknessValues = {
+  medium: '2px',
+  large: '4px',
+};
 
 const indeterminateProgressBar = {
   '0%': {
@@ -28,7 +32,7 @@ const indeterminateProgressBar = {
 const useRootStyles = makeStyles({
   root: {
     display: 'block',
-    backgroundColor: semanticTokens.ctrlProgressBackgroundEmpty,
+    backgroundColor: tokens.colorNeutralBackground6,
     width: '100%',
     overflow: 'hidden',
 
@@ -37,16 +41,16 @@ const useRootStyles = makeStyles({
     },
   },
   rounded: {
-    borderRadius: semanticTokens.ctrlProgressCorner,
+    borderRadius: tokens.borderRadiusMedium,
   },
   square: {
-    borderRadius: semanticTokens.cornerZero,
+    borderRadius: tokens.borderRadiusNone,
   },
   medium: {
-    height: semanticTokens.ctrlProgressHeightEmpty,
+    height: barThicknessValues.medium,
   },
   large: {
-    height: semanticTokens.ctrlProgressLgHeightEmpty,
+    height: barThicknessValues.large,
   },
 });
 
@@ -59,12 +63,7 @@ const useBarStyles = makeStyles({
       backgroundColor: 'Highlight',
     },
     borderRadius: 'inherit',
-  },
-  medium: {
-    height: semanticTokens.ctrlProgressHeightFilled,
-  },
-  large: {
-    height: semanticTokens.ctrlProgressLgHeightFilled,
+    height: '100%',
   },
   nonZeroDeterminate: {
     transitionProperty: 'width',
@@ -76,9 +75,9 @@ const useBarStyles = makeStyles({
     position: 'relative',
     backgroundImage: `linear-gradient(
       to right,
-      ${semanticTokens.ctrlProgressBackgroundEmpty} 0%,
+      ${tokens.colorNeutralBackground6} 0%,
       ${tokens.colorTransparentBackground} 50%,
-      ${semanticTokens.ctrlProgressBackgroundEmpty} 100%
+      ${tokens.colorNeutralBackground6} 100%
     )`,
     animationName: indeterminateProgressBar,
     animationDuration: '3s',
@@ -91,17 +90,17 @@ const useBarStyles = makeStyles({
   },
 
   brand: {
-    backgroundColor: semanticTokens.ctrlProgressBackgroundFilled,
+    backgroundColor: tokens.colorCompoundBrandBackground,
   },
 
   error: {
-    backgroundColor: semanticTokens.statusDangerBackground,
+    backgroundColor: tokens.colorPaletteRedBackground3,
   },
   warning: {
-    backgroundColor: semanticTokens.statusWarningBackground,
+    backgroundColor: tokens.colorPaletteDarkOrangeBackground3,
   },
   success: {
-    backgroundColor: semanticTokens.statusSuccessBackground,
+    backgroundColor: tokens.colorPaletteGreenBackground3,
   },
 });
 
@@ -128,7 +127,6 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
       progressBarClassNames.bar,
       barStyles.base,
       barStyles.brand,
-      barStyles[thickness],
       value === undefined && barStyles.indeterminate,
       value !== undefined && value > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
       color && value !== undefined && barStyles[color],
