@@ -1,9 +1,10 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TabSlots, TabState } from './Tab.types';
 import { useTabAnimatedIndicatorStyles_unstable } from './useTabAnimatedIndicator.styles';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const tabClassNames: SlotClassNames<TabSlots> = {
   root: 'fui-Tab',
@@ -39,145 +40,157 @@ const useRootStyles = makeStyles({
   button: {
     alignItems: 'center',
     border: 'none',
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: semanticTokens.ctrlListCornerRest,
     cursor: 'pointer',
     display: 'grid',
     flexShrink: 0,
     gridAutoFlow: 'column',
     gridTemplateColumns: 'auto',
     gridTemplateRows: 'auto',
-    fontFamily: tokens.fontFamilyBase,
-    lineHeight: tokens.lineHeightBase300,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    lineHeight: semanticTokens.textRampItemBodyLineHeight,
     outlineStyle: 'none',
     position: 'relative',
     overflow: 'hidden',
     textTransform: 'none',
   },
   horizontal: {
+    minHeight: semanticTokens._ctrlTabSizeDefault,
     justifyContent: 'center',
   },
   vertical: {
     justifyContent: 'start',
   },
   smallHorizontal: {
-    columnGap: tokens.spacingHorizontalXXS,
-    padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalSNudge}`,
+    columnGap: semanticTokens._ctrlTabSmGapInsideDefault,
+    padding: `${tokens.spacingVerticalSNudge} ${semanticTokens._ctrlTabSmPaddingHorizontalDefault}`,
   },
   smallVertical: {
     // horizontal spacing is deliberate. This is the gap between icon and content.
-    columnGap: tokens.spacingHorizontalXXS,
-    padding: `${tokens.spacingVerticalXXS} ${tokens.spacingHorizontalSNudge}`,
+    columnGap: semanticTokens._ctrlTabSmGapInsideDefault,
+    padding: `${tokens.spacingVerticalXXS} ${semanticTokens._ctrlTabSmPaddingHorizontalDefault}`,
   },
   mediumHorizontal: {
-    columnGap: tokens.spacingHorizontalSNudge,
-    padding: `${tokens.spacingVerticalM} ${tokens.spacingHorizontalMNudge}`,
+    columnGap: semanticTokens._ctrlTabGapInsideDefault,
+    padding: `${tokens.spacingVerticalM} ${semanticTokens._ctrlTabPaddingHorizontalDefault}`,
   },
   mediumVertical: {
     // horizontal spacing is deliberate. This is the gap between icon and content.
-    columnGap: tokens.spacingHorizontalSNudge,
-    padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalMNudge}`,
+    columnGap: semanticTokens._ctrlTabGapInsideDefault,
+    padding: `${tokens.spacingVerticalSNudge} ${semanticTokens._ctrlTabPaddingHorizontalDefault}`,
   },
   largeHorizontal: {
-    columnGap: tokens.spacingHorizontalSNudge,
-    padding: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalMNudge}`,
+    columnGap: semanticTokens._ctrlTabGapInsideDefault,
+    padding: `${tokens.spacingVerticalL} ${semanticTokens._ctrlTabPaddingHorizontalDefault}`,
   },
   largeVertical: {
     // horizontal spacing is deliberate. This is the gap between icon and content.
-    columnGap: tokens.spacingHorizontalSNudge,
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalMNudge}`,
+    columnGap: semanticTokens._ctrlTabGapInsideDefault,
+    padding: `${semanticTokens.ctrlChoicePaddingVertical} ${semanticTokens._ctrlTabPaddingHorizontalDefault}`,
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: semanticTokens.nullColor,
     ':enabled:hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: semanticTokens.nullColor,
     },
     ':enabled:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: semanticTokens.nullColor,
     },
     [`& .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: semanticTokens.foregroundCtrlOnTransparentRest,
     },
     [`:enabled:hover .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2Hover,
+      color: semanticTokens._ctrlTabForegroundOnTransparentHover,
     },
     [`:enabled:active .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2Pressed,
+      color: semanticTokens._ctrlTabForegroundOnTransparentPressed,
     },
     [`& .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: semanticTokens.foregroundCtrlOnTransparentRest,
     },
     [`:enabled:hover .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground2Hover,
+      color: semanticTokens._ctrlTabForegroundOnTransparentHover,
     },
     [`:enabled:active .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground2Pressed,
+      color: semanticTokens._ctrlTabForegroundOnTransparentPressed,
     },
   },
   subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
+    backgroundColor: semanticTokens.backgroundCtrlSubtleRest,
+    ...shorthands.borderColor(semanticTokens.strokeCtrlOnSubtleRest),
     ':enabled:hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
+      backgroundColor: semanticTokens.backgroundCtrlSubtleHover,
     },
     ':enabled:active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      backgroundColor: semanticTokens.backgroundCtrlSubtlePressed,
     },
     [`& .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: semanticTokens.foregroundCtrlIconOnSubtleRest,
     },
     [`:enabled:hover .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2Hover,
+      color: semanticTokens._ctrlTabForegroundOnSubtleHover,
     },
     [`:enabled:active .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2Pressed,
+      color: semanticTokens._ctrlTabForegroundOnSubtlePressed,
     },
     [`& .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: semanticTokens.foregroundCtrlOnSubtleRest,
     },
     [`:enabled:hover .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground2Hover,
+      color: semanticTokens.foregroundCtrlOnSubtleHover,
     },
     [`:enabled:active .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground2Pressed,
+      color: semanticTokens.foregroundCtrlOnSubtlePressed,
     },
   },
   disabledCursor: {
     cursor: 'not-allowed',
   },
-  disabled: {
-    backgroundColor: tokens.colorTransparentBackground,
+  transparentDisabled: {
+    backgroundColor: semanticTokens.nullColor,
 
     [`& .${tabClassNames.icon}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: semanticTokens.foregroundCtrlOnTransparentDisabled,
     },
     [`& .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: semanticTokens.foregroundCtrlOnTransparentDisabled,
+    },
+  },
+  subtleDisabled: {
+    backgroundColor: semanticTokens.nullColor,
+
+    [`& .${tabClassNames.icon}`]: {
+      color: semanticTokens.foregroundCtrlIconOnSubtleDisabled,
+    },
+    [`& .${tabClassNames.content}`]: {
+      color: semanticTokens.foregroundCtrlOnSubtleDisabled,
     },
   },
   selected: {
     [`& .${tabClassNames.icon}`]: {
-      color: tokens.colorCompoundBrandForeground1,
+      color: semanticTokens.foregroundCtrlActiveBrandRest,
     },
     [`:enabled:hover .${tabClassNames.icon}`]: {
-      color: tokens.colorCompoundBrandForeground1Hover,
+      color: semanticTokens.foregroundCtrlActiveBrandHover,
     },
     [`:enabled:active .${tabClassNames.icon}`]: {
-      color: tokens.colorCompoundBrandForeground1Pressed,
+      color: semanticTokens.foregroundCtrlActiveBrandPressed,
     },
     [`& .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground1,
+      color: semanticTokens._ctrlTabForegroundActiveBrandRest,
     },
     [`:enabled:hover .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground1Hover,
+      color: semanticTokens._ctrlTabForegroundActiveBrandHover,
     },
     [`:enabled:active .${tabClassNames.content}`]: {
-      color: tokens.colorNeutralForeground1Pressed,
+      color: semanticTokens._ctrlTabForegroundActiveBrandPressed,
     },
   },
 });
 
 const useCircularAppearanceStyles = makeStyles({
   base: {
-    borderRadius: tokens.borderRadiusCircular,
+    borderRadius: semanticTokens.cornerCircular,
     [`& .${tabClassNames.icon}`]: {
       color: 'inherit',
     },
@@ -189,58 +202,58 @@ const useCircularAppearanceStyles = makeStyles({
     paddingBlock: `${tokens.spacingVerticalSNudge}`,
   },
   subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
-    border: `solid ${tokens.strokeWidthThin} transparent`,
-    color: tokens.colorNeutralForeground2,
+    backgroundColor: semanticTokens.backgroundCtrlSubtleRest,
+    border: `solid ${semanticTokens.strokeWidthDefault} transparent`,
+    color: semanticTokens.foregroundCtrlOnSubtleRest,
     ':enabled:hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-      border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStroke1Hover}`,
-      color: tokens.colorNeutralForeground2Hover,
+      backgroundColor: semanticTokens.backgroundCtrlSubtleHover,
+      border: `solid ${semanticTokens.strokeWidthDefault} ${semanticTokens.strokeCtrlOnNeutralHover}`,
+      color: semanticTokens.foregroundCtrlOnSubtleHover,
     },
     ':enabled:active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
-      border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStroke1Pressed}`,
-      color: tokens.colorNeutralForeground2Pressed,
+      backgroundColor: semanticTokens.backgroundCtrlSubtlePressed,
+      border: `solid ${semanticTokens.strokeWidthDefault} ${semanticTokens.strokeCtrlOnNeutralPressed}`,
+      color: semanticTokens.foregroundCtrlOnSubtlePressed,
     },
   },
   subtleSelected: {
     backgroundColor: tokens.colorBrandBackground2,
-    border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStroke}`,
+    border: `solid ${semanticTokens.strokeWidthDefault} ${tokens.colorCompoundBrandStroke}`,
     color: tokens.colorBrandForeground2,
     ':enabled:hover': {
       backgroundColor: tokens.colorBrandBackground2Hover,
-      border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStrokeHover}`,
+      border: `solid ${semanticTokens.strokeWidthDefault} ${tokens.colorCompoundBrandStrokeHover}`,
       color: tokens.colorBrandForeground2Hover,
     },
     ':enabled:active': {
       backgroundColor: tokens.colorBrandBackground2Pressed,
-      border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStrokePressed}`,
+      border: `solid ${semanticTokens.strokeWidthDefault} ${tokens.colorCompoundBrandStrokePressed}`,
       color: tokens.colorBrandForeground2Pressed,
     },
     '@media (forced-colors: active)': {
-      border: `solid ${tokens.strokeWidthThin} Highlight`,
+      border: `solid ${semanticTokens.strokeWidthDefault} Highlight`,
     },
   },
   subtleDisabled: {
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForegroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} transparent`,
+    backgroundColor: semanticTokens.backgroundCtrlSubtleRest,
+    color: semanticTokens.foregroundCtrlOnSubtleDisabled,
+    border: `solid ${semanticTokens.strokeWidthDefault} transparent`,
   },
   subtleDisabledSelected: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeDisabled}`,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: semanticTokens.backgroundCtrlActiveBrandDisabled,
+    border: `solid ${semanticTokens.strokeWidthDefault} ${semanticTokens.strokeCtrlOnNeutralDisabled}`,
+    color: semanticTokens.foregroundCtrlOnSubtleDisabled,
   },
   filled: {
     backgroundColor: tokens.colorNeutralBackground3,
-    color: tokens.colorNeutralForeground2,
+    color: semanticTokens.foregroundCtrlNeutralSecondaryRest,
     ':enabled:hover': {
       backgroundColor: tokens.colorNeutralBackground3Hover,
-      color: tokens.colorNeutralForeground2Hover,
+      color: semanticTokens.foregroundCtrlNeutralSecondaryHover,
     },
     ':enabled:active': {
       backgroundColor: tokens.colorNeutralBackground3Pressed,
-      color: tokens.colorNeutralForeground2Pressed,
+      color: semanticTokens.foregroundCtrlNeutralSecondaryPressed,
     },
     '@media (forced-colors: active)': {
       ':enabled:hover': {
@@ -259,15 +272,15 @@ const useCircularAppearanceStyles = makeStyles({
     },
   },
   filledSelected: {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: semanticTokens.backgroundCtrlBrandRest,
+    color: semanticTokens.foregroundCtrlOnBrandRest,
     ':enabled:hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
-      color: tokens.colorNeutralForegroundOnBrand,
+      backgroundColor: semanticTokens.backgroundCtrlBrandHover,
+      color: semanticTokens.foregroundCtrlOnBrandHover,
     },
     ':enabled:active': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
-      color: tokens.colorNeutralForegroundOnBrand,
+      backgroundColor: semanticTokens.backgroundCtrlBrandPressed,
+      color: semanticTokens.foregroundCtrlOnBrandPressed,
     },
     '@media (forced-colors: active)': {
       ':enabled': {
@@ -283,14 +296,14 @@ const useCircularAppearanceStyles = makeStyles({
     },
   },
   filledDisabled: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} transparent`,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: semanticTokens.backgroundCtrlNeutralDisabled,
+    border: `solid ${semanticTokens.strokeWidthDefault} transparent`,
+    color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
   },
   filledDisabledSelected: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeDisabled}`,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: semanticTokens.backgroundCtrlActiveBrandDisabled,
+    border: `solid ${semanticTokens.strokeWidthDefault} ${semanticTokens.strokeCtrlOnNeutralDisabled}`,
+    color: semanticTokens.foregroundCtrlOnActiveBrandDisabled,
   },
 });
 
@@ -304,12 +317,12 @@ const useFocusStyles = makeStyles({
   base: createCustomFocusIndicatorStyle(
     {
       ...shorthands.borderColor('transparent'),
-      outlineWidth: tokens.strokeWidthThick,
+      outlineWidth: semanticTokens.ctrlFocusOuterStrokeWidth,
       outlineColor: 'transparent',
       outlineStyle: 'solid',
       boxShadow: `
       ${tokens.shadow4},
-      0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}
+      0 0 0 ${semanticTokens.ctrlFocusOuterStrokeWidth} ${semanticTokens.ctrlFocusInnerStroke}
     `,
       zIndex: 1,
     },
@@ -318,13 +331,13 @@ const useFocusStyles = makeStyles({
   circular: createCustomFocusIndicatorStyle(
     {
       ...shorthands.borderColor('transparent'),
-      outlineWidth: tokens.strokeWidthThick,
+      outlineWidth: semanticTokens.ctrlFocusOuterStrokeWidth,
       outlineColor: 'transparent',
       outlineStyle: 'solid',
       boxShadow: `
         ${tokens.shadow4},
-        0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2},
-        0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeOnBrand} inset
+        0 0 0 ${semanticTokens.ctrlFocusOuterStrokeWidth} ${semanticTokens.ctrlFocusInnerStroke},
+        0 0 0 ${semanticTokens.ctrlFocusInnerStrokeWidth} ${tokens.colorNeutralStrokeOnBrand} inset
       `,
       zIndex: 1,
     },
@@ -336,14 +349,14 @@ const useFocusStyles = makeStyles({
 const usePendingIndicatorStyles = makeStyles({
   base: {
     ':hover::before': {
-      backgroundColor: tokens.colorNeutralStroke1Hover,
-      borderRadius: tokens.borderRadiusCircular,
+      backgroundColor: semanticTokens.strokeCtrlOnNeutralHover,
+      borderRadius: semanticTokens.cornerCircular,
       content: '""',
       position: 'absolute',
     },
     ':active::before': {
-      backgroundColor: tokens.colorNeutralStroke1Pressed,
-      borderRadius: tokens.borderRadiusCircular,
+      backgroundColor: semanticTokens.strokeCtrlOnNeutralPressed,
+      borderRadius: semanticTokens.cornerCircular,
       content: '""',
       position: 'absolute',
     },
@@ -358,10 +371,10 @@ const usePendingIndicatorStyles = makeStyles({
   },
   disabled: {
     ':hover::before': {
-      backgroundColor: tokens.colorTransparentStroke,
+      backgroundColor: semanticTokens.ctrlFocusOuterStroke,
     },
     ':active::before': {
-      backgroundColor: tokens.colorTransparentStroke,
+      backgroundColor: semanticTokens.ctrlFocusOuterStroke,
     },
     '@media (forced-colors: active)': {
       ':hover::before': {
@@ -385,31 +398,31 @@ const usePendingIndicatorStyles = makeStyles({
       bottom: tokens.spacingVerticalXS,
       left: 0,
       top: tokens.spacingVerticalXS,
-      width: tokens.strokeWidthThicker,
+      width: semanticTokens.ctrlListPillWidth,
     },
   },
   mediumHorizontal: {
     '::before': {
       bottom: 0,
-      height: tokens.strokeWidthThicker,
-      left: tokens.spacingHorizontalM,
-      right: tokens.spacingHorizontalM,
+      height: semanticTokens.ctrlListPillWidth,
+      left: semanticTokens.paddingCtrlHorizontalDefault,
+      right: semanticTokens.paddingCtrlHorizontalDefault,
     },
   },
   mediumVertical: {
     '::before': {
-      bottom: tokens.spacingVerticalS,
+      bottom: semanticTokens.ctrlChoicePaddingVertical,
       left: 0,
-      top: tokens.spacingVerticalS,
-      width: tokens.strokeWidthThicker,
+      top: semanticTokens.ctrlChoicePaddingVertical,
+      width: semanticTokens.ctrlListPillWidth,
     },
   },
   largeHorizontal: {
     '::before': {
       bottom: 0,
-      height: tokens.strokeWidthThicker,
-      left: tokens.spacingHorizontalM,
-      right: tokens.spacingHorizontalM,
+      height: semanticTokens.ctrlListPillWidth,
+      left: semanticTokens.paddingCtrlHorizontalDefault,
+      right: semanticTokens.paddingCtrlHorizontalDefault,
     },
   },
   largeVertical: {
@@ -417,7 +430,7 @@ const usePendingIndicatorStyles = makeStyles({
       bottom: tokens.spacingVerticalMNudge,
       left: 0,
       top: tokens.spacingVerticalMNudge,
-      width: tokens.strokeWidthThicker,
+      width: semanticTokens.ctrlListPillWidth,
     },
   },
 });
@@ -425,21 +438,21 @@ const usePendingIndicatorStyles = makeStyles({
 const useActiveIndicatorStyles = makeStyles({
   base: {
     '::after': {
-      backgroundColor: tokens.colorTransparentStroke,
-      borderRadius: tokens.borderRadiusCircular,
+      backgroundColor: semanticTokens.strokeLayer,
+      borderRadius: semanticTokens.cornerCircular,
       content: '""',
       position: 'absolute',
     },
   },
   selected: {
     '::after': {
-      backgroundColor: tokens.colorCompoundBrandStroke,
+      backgroundColor: semanticTokens.backgroundCtrlActiveBrandRest,
     },
     ':enabled:hover::after': {
-      backgroundColor: tokens.colorCompoundBrandStrokeHover,
+      backgroundColor: semanticTokens.backgroundCtrlActiveBrandHover,
     },
     ':enabled:active::after': {
-      backgroundColor: tokens.colorCompoundBrandStrokePressed,
+      backgroundColor: semanticTokens.backgroundCtrlActiveBrandPressed,
     },
     '@media (forced-colors: active)': {
       '::after': {
@@ -455,7 +468,7 @@ const useActiveIndicatorStyles = makeStyles({
   },
   disabled: {
     '::after': {
-      backgroundColor: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: semanticTokens._ctrlTabBackgroundActiveBrandDisabled,
     },
   },
   smallHorizontal: {
@@ -471,31 +484,31 @@ const useActiveIndicatorStyles = makeStyles({
       bottom: tokens.spacingVerticalXS,
       left: '0',
       top: tokens.spacingVerticalXS,
-      width: tokens.strokeWidthThicker,
+      width: semanticTokens.ctrlListPillWidth,
     },
   },
   mediumHorizontal: {
     '::after': {
       bottom: '0',
-      height: tokens.strokeWidthThicker,
-      left: tokens.spacingHorizontalM,
-      right: tokens.spacingHorizontalM,
+      height: semanticTokens.ctrlListPillWidth,
+      left: semanticTokens.paddingCtrlHorizontalDefault,
+      right: semanticTokens.paddingCtrlHorizontalDefault,
     },
   },
   mediumVertical: {
     '::after': {
-      bottom: tokens.spacingVerticalS,
+      bottom: semanticTokens.ctrlChoicePaddingVertical,
       left: 0,
-      top: tokens.spacingVerticalS,
-      width: tokens.strokeWidthThicker,
+      top: semanticTokens.ctrlChoicePaddingVertical,
+      width: semanticTokens.ctrlListPillWidth,
     },
   },
   largeHorizontal: {
     '::after': {
       bottom: 0,
-      height: tokens.strokeWidthThicker,
-      left: tokens.spacingHorizontalM,
-      right: tokens.spacingHorizontalM,
+      height: semanticTokens.ctrlListPillWidth,
+      left: semanticTokens.paddingCtrlHorizontalDefault,
+      right: semanticTokens.paddingCtrlHorizontalDefault,
     },
   },
   largeVertical: {
@@ -503,7 +516,7 @@ const useActiveIndicatorStyles = makeStyles({
       bottom: tokens.spacingVerticalMNudge,
       left: 0,
       top: tokens.spacingVerticalMNudge,
-      width: tokens.strokeWidthThicker,
+      width: semanticTokens.ctrlListPillWidth,
     },
   },
 });
@@ -529,19 +542,19 @@ const useIconStyles = makeStyles({
   // per design, the small and medium font sizes are the same.
   // the size prop only affects spacing.
   small: {
-    fontSize: '20px',
-    height: '20px',
-    width: '20px',
+    fontSize: semanticTokens.sizeCtrlIcon,
+    height: semanticTokens.sizeCtrlIcon,
+    width: semanticTokens.sizeCtrlIcon,
   },
   medium: {
-    fontSize: '20px',
-    height: '20px',
-    width: '20px',
+    fontSize: semanticTokens.sizeCtrlIcon,
+    height: semanticTokens.sizeCtrlIcon,
+    width: semanticTokens.sizeCtrlIcon,
   },
   large: {
-    fontSize: '24px',
-    height: '24px',
-    width: '24px',
+    fontSize: semanticTokens.sizeCtrlLgIcon,
+    height: semanticTokens.sizeCtrlLgIcon,
+    width: semanticTokens.sizeCtrlLgIcon,
   },
   selected: {
     [`& .${iconClassNames.filled}`]: {
@@ -558,19 +571,31 @@ const useIconStyles = makeStyles({
  */
 const useContentStyles = makeStyles({
   base: {
-    ...typographyStyles.body1,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontSize: semanticTokens.textRampItemBodyFontSize,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+    lineHeight: semanticTokens.textRampItemBodyLineHeight,
     overflow: 'hidden',
     // content padding is the same for medium & small, horizontal & vertical
-    padding: `${tokens.spacingVerticalNone} ${tokens.spacingHorizontalXXS}`,
+    padding: `${semanticTokens.paddingContentNone} ${semanticTokens._ctrlTabPaddingTextSide}`,
   },
   selected: {
-    ...typographyStyles.body1Strong,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontSize: semanticTokens.textRampItemBodyFontSize,
+    fontWeight: semanticTokens.textCtrlWeightSelected,
+    lineHeight: semanticTokens.textRampItemBodyLineHeight,
   },
   large: {
-    ...typographyStyles.body2,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontSize: semanticTokens.textRampLgItemBodyFontSize,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+    lineHeight: semanticTokens.textRampLgItemBodyLineHeight,
   },
   largeSelected: {
-    ...typographyStyles.subtitle2,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontSize: semanticTokens.textRampLgItemBodyFontSize,
+    fontWeight: semanticTokens.textCtrlWeightSelected,
+    lineHeight: semanticTokens.textRampLgItemBodyLineHeight,
   },
   noIconBefore: {
     gridColumnStart: 1,
@@ -697,7 +722,8 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
     !disabled && appearance === 'subtle' && rootStyles.subtle,
     !disabled && appearance === 'transparent' && rootStyles.transparent,
     !disabled && selected && rootStyles.selected,
-    disabled && rootStyles.disabled,
+    disabled && appearance === 'subtle' && rootStyles.subtleDisabled,
+    disabled && appearance === 'transparent' && rootStyles.transparentDisabled,
   ];
 
   slot.className = mergeClasses(
