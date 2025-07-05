@@ -500,15 +500,40 @@ export const colorNeutralForeground4 = 'var(--colorNeutralForeground4)';
  */
 export const colorNeutralForeground3Pressed = 'var(--colorNeutralForeground3Pressed)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke2Contrast | `colorBrandStroke2Contrast`} design token.
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandForeground1Hover | `colorCompoundBrandForeground1Hover`} design token.
  * @public
  */
-export const colorBrandStroke2Contrast = 'var(--colorBrandStroke2Contrast)';
+export const colorCompoundBrandForeground1Hover = 'var(--colorCompoundBrandForeground1Hover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandForeground1Pressed | `colorCompoundBrandForeground1Pressed`} design token.
+ * @public
+ */
+export const colorCompoundBrandForeground1Pressed = 'var(--colorCompoundBrandForeground1Pressed)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandForeground1 | `colorCompoundBrandForeground1`} design token.
+ * @public
+ */
+export const colorCompoundBrandForeground1 = 'var(--colorCompoundBrandForeground1)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalXS | `spacingVerticalXS`} design token.
  * @public
  */
 export const spacingVerticalXS = 'var(--spacingVerticalXS)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStrokeHover | `colorCompoundBrandStrokeHover`} design token.
+ * @public
+ */
+export const colorCompoundBrandStrokeHover = 'var(--colorCompoundBrandStrokeHover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStrokePressed | `colorCompoundBrandStrokePressed`} design token.
+ * @public
+ */
+export const colorCompoundBrandStrokePressed = 'var(--colorCompoundBrandStrokePressed)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke2Contrast | `colorBrandStroke2Contrast`} design token.
+ * @public
+ */
+export const colorBrandStroke2Contrast = 'var(--colorBrandStroke2Contrast)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground3Hover | `colorNeutralForeground3Hover`} design token.
  * @public
