@@ -1,8 +1,8 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
 import type { SliderState, SliderSlots } from './Slider.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const sliderClassNames: SlotClassNames<SliderSlots> = {
   root: 'fui-Slider',
@@ -51,17 +51,29 @@ const useRootStyles = makeStyles({
   },
 
   small: {
-    [sliderThumbSizeVar]: '16px',
+    [sliderThumbSizeVar]: semanticTokens.ctrlSliderSmThumbSizeRest,
     [sliderInnerThumbRadiusVar]: '5px',
-    [sliderRailSizeVar]: '2px',
-    minHeight: '24px',
+    [sliderRailSizeVar]: semanticTokens.ctrlSliderSmBarHeight,
+    minHeight: semanticTokens._ctrlSliderSmBarSizeDefault,
+    ':hover': {
+      [sliderThumbSizeVar]: semanticTokens.ctrlSliderSmThumbSizeHover,
+    },
+    ':active': {
+      [sliderThumbSizeVar]: semanticTokens.ctrlSliderSmThumbSizePressed,
+    },
   },
 
   medium: {
-    [sliderThumbSizeVar]: '20px',
+    [sliderThumbSizeVar]: semanticTokens.ctrlSliderThumbSizeRest,
     [sliderInnerThumbRadiusVar]: '6px',
-    [sliderRailSizeVar]: '4px',
-    minHeight: '32px',
+    [sliderRailSizeVar]: semanticTokens.ctrlSliderBarHeight,
+    minHeight: semanticTokens._ctrlSliderBarSizeDefault,
+    ':hover': {
+      [sliderThumbSizeVar]: semanticTokens.ctrlSliderThumbSizeHover,
+    },
+    ':active': {
+      [sliderThumbSizeVar]: semanticTokens.ctrlSliderThumbSizePressed,
+    },
   },
 
   horizontal: {
@@ -79,16 +91,18 @@ const useRootStyles = makeStyles({
   },
 
   enabled: {
-    [sliderRailColorVar]: tokens.colorNeutralStrokeAccessible,
-    [sliderProgressColorVar]: tokens.colorCompoundBrandBackground,
-    [sliderThumbColorVar]: tokens.colorCompoundBrandBackground,
+    [sliderRailColorVar]: semanticTokens.ctrlSliderBarForegroundEmptyRest,
+    [sliderProgressColorVar]: semanticTokens.ctrlSliderBarForegroundFilledRest,
+    [sliderThumbColorVar]: semanticTokens.ctrlSliderThumbBackgroundRest,
     ':hover': {
-      [sliderThumbColorVar]: tokens.colorCompoundBrandBackgroundHover,
-      [sliderProgressColorVar]: tokens.colorCompoundBrandBackgroundHover,
+      [sliderRailColorVar]: semanticTokens.ctrlSliderBarForegroundEmptyHover,
+      [sliderProgressColorVar]: semanticTokens.ctrlSliderBarForegroundFilledHover,
+      [sliderThumbColorVar]: semanticTokens.ctrlSliderThumbBackgroundHover,
     },
     ':active': {
-      [sliderThumbColorVar]: tokens.colorCompoundBrandBackgroundPressed,
-      [sliderProgressColorVar]: tokens.colorCompoundBrandBackgroundPressed,
+      [sliderRailColorVar]: semanticTokens.ctrlSliderBarForegroundEmptyPressed,
+      [sliderProgressColorVar]: semanticTokens.ctrlSliderBarForegroundFilledPressed,
+      [sliderThumbColorVar]: semanticTokens.ctrlSliderThumbBackgroundPressed,
     },
     '@media (forced-colors: active)': {
       [sliderRailColorVar]: 'CanvasText',
@@ -102,9 +116,9 @@ const useRootStyles = makeStyles({
   },
 
   disabled: {
-    [sliderThumbColorVar]: tokens.colorNeutralForegroundDisabled,
-    [sliderRailColorVar]: tokens.colorNeutralBackgroundDisabled,
-    [sliderProgressColorVar]: tokens.colorNeutralForegroundDisabled,
+    [sliderRailColorVar]: semanticTokens.ctrlSliderBarForegroundEmptyDisabled,
+    [sliderProgressColorVar]: semanticTokens.ctrlSliderBarForegroundFilledDisabled,
+    [sliderThumbColorVar]: semanticTokens.ctrlSliderThumbBackgroundDisabled,
     '@media (forced-colors: active)': {
       [sliderRailColorVar]: 'GrayText',
       [sliderCSSVars.sliderThumbColorVar]: 'GrayText',
@@ -128,7 +142,7 @@ const useRootStyles = makeStyles({
  */
 const useRailStyles = makeStyles({
   rail: {
-    borderRadius: tokens.borderRadiusXLarge,
+    borderRadius: semanticTokens.ctrlSliderBarCorner,
     pointerEvents: 'none',
     gridRowStart: '2',
     gridRowEnd: '2',
@@ -143,9 +157,9 @@ const useRailStyles = makeStyles({
       var(${sliderProgressColorVar}) var(${sliderProgressVar}),
       var(${sliderRailColorVar}) var(${sliderProgressVar})
     )`,
-    outlineWidth: '1px',
+    outlineWidth: semanticTokens.strokeWidthDefault,
     outlineStyle: 'solid',
-    outlineColor: tokens.colorTransparentStroke,
+    outlineColor: semanticTokens.strokeLayer,
     '::before': {
       content: "''",
       position: 'absolute',
@@ -154,8 +168,8 @@ const useRailStyles = makeStyles({
         var(${sliderDirectionVar}),
         #0000 0%,
         #0000 calc(var(${sliderStepsPercentVar}) - 1px),
-        ${tokens.colorNeutralBackground1} calc(var(${sliderStepsPercentVar}) - 1px),
-        ${tokens.colorNeutralBackground1} var(${sliderStepsPercentVar})
+        ${semanticTokens.backgroundCtrlNeutralRest} calc(var(${sliderStepsPercentVar}) - 1px),
+        ${semanticTokens.backgroundCtrlNeutralRest} var(${sliderStepsPercentVar})
       )`,
       // force steps to use HighlightText for high contrast mode
       '@media (forced-colors: active)': {
@@ -210,8 +224,8 @@ const useThumbStyles = makeStyles({
     pointerEvents: 'none',
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
-    borderRadius: tokens.borderRadiusCircular,
-    boxShadow: `0 0 0 calc(var(${sliderThumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
+    borderRadius: semanticTokens.ctrlSliderThumbCorner,
+    boxShadow: `0 0 0 calc(var(${sliderThumbSizeVar}) * .2) ${semanticTokens.ctrlSliderThumbInnerStrokeRest} inset`,
     backgroundColor: `var(${sliderThumbColorVar})`,
     '::before': {
       position: 'absolute',
@@ -219,15 +233,30 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: tokens.borderRadiusCircular,
+      borderRadius: semanticTokens.ctrlSliderThumbCorner,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,
+      border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${semanticTokens.ctrlSliderThumbOuterStrokeRest}`,
     },
   },
   disabled: {
+    boxShadow: `0 0 0 calc(var(${sliderThumbSizeVar}) * .2) ${semanticTokens.ctrlSliderThumbInnerStrokeDisabled} inset`,
     '::before': {
-      border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${tokens.colorNeutralForegroundDisabled}`,
+      border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${semanticTokens.ctrlSliderThumbOuterStrokeDisabled}`,
+    },
+  },
+  enabled: {
+    ':hover': {
+      boxShadow: `0 0 0 calc(var(${sliderThumbSizeVar}) * .2) ${semanticTokens.ctrlSliderThumbInnerStrokeHover} inset`,
+      '::before': {
+        border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${semanticTokens.ctrlSliderThumbOuterStrokeHover}`,
+      },
+    },
+    ':active': {
+      boxShadow: `0 0 0 calc(var(${sliderThumbSizeVar}) * .2) ${semanticTokens.ctrlSliderThumbInnerStrokePressed} inset`,
+      '::before': {
+        border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${semanticTokens.ctrlSliderThumbOuterStrokePressed}`,
+      },
     },
   },
   horizontal: {
