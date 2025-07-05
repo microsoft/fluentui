@@ -24,7 +24,7 @@ import {
   ChartTypes,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   getNextColor,
   getColorFromToken,
   formatDate,
@@ -741,9 +741,9 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
         const tooltipProps = {
           tooltipCls: classes.tooltip!,
           id: _tooltipId,
-          xAxis: xAxisElement,
+          axis: xAxisElement,
         };
-        xAxisElement && tooltipOfXAxislabels(tooltipProps);
+        xAxisElement && tooltipOfAxislabels(tooltipProps);
       }
       return graph;
     }

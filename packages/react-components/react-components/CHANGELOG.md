@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 27 Jun 2025 13:39:40 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Jul 2025 10:02:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.66.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.6)
+
+Fri, 04 Jul 2025 10:02:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.5..@fluentui/react-components_v9.66.6)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - chore(react-dialog): remove boxShadow on DialogSurfaceMotion ([PR #34756](https://github.com/microsoft/fluentui/pull/34756) by bernardo.sunderhus@gmail.com)
+  - fix(Dialog): fix mobile viewport issues ([PR #34691](https://github.com/microsoft/fluentui/pull/34691) by mathis.michel@outlook.de)
+- `@fluentui/react-menu`
+  - feat: integrate useSafeZoneArea() ([PR #34457](https://github.com/microsoft/fluentui/pull/34457) by olfedias@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - chore: migrate repo to react 18 ([PR #34643](https://github.com/microsoft/fluentui/pull/34643) by martinhochel@microsoft.com)
+- `@fluentui/react-portal`
+  - Revert "chore(react-portal): support for React 19" ([PR #34737](https://github.com/microsoft/fluentui/pull/34737) by olfedias@microsoft.com)
+- `@fluentui/react-charts`
+  - fix: ensure ResponsiveContainer resizes correctly within grid layout ([PR #34728](https://github.com/microsoft/fluentui/pull/34728) by kumarkshitij@microsoft.com)
+  - port v8 changes to v9 ([PR #34731](https://github.com/microsoft/fluentui/pull/34731) by anushgupta@microsoft.com)
 
 ## [9.66.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.5)
 

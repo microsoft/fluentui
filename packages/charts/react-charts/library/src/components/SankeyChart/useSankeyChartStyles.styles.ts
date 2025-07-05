@@ -11,13 +11,14 @@ export const sankeyChartClassNames: SlotClassNames<SankeyChartStyles> = {
   nodeTextContainer: 'fui-sc__nodeTextContainer',
   toolTip: 'fui-sc__toolTip',
   chartWrapper: 'fui-sc__chartWrapper',
+  chart: 'fui-sc__chart',
 };
 const useStyles = makeStyles({
   root: {
     ...typographyStyles.body1,
     display: 'flex',
-    width: 'var(--root-width, 100%)',
-    height: 'var(--root-height, 100%)',
+    width: '100%',
+    height: '100%',
     flexDirection: 'column',
     overflow: 'hidden',
   },
@@ -61,13 +62,16 @@ const useStyles = makeStyles({
   chartWrapper: {
     overflow: 'auto',
   },
+  chart: {
+    display: 'block',
+  },
 });
 
 export const useSankeyChartStyles = (props: SankeyChartProps): SankeyChartStyles => {
   const baseStyles = useStyles();
 
   return {
-    root: mergeClasses(sankeyChartClassNames.root, baseStyles.root /*, props.styles?.root*/),
+    root: mergeClasses(sankeyChartClassNames.root, baseStyles.root, props.styles?.root),
     nodes: mergeClasses(sankeyChartClassNames.nodes, baseStyles.nodes /*, props.styles?.nodes*/),
     links: mergeClasses(sankeyChartClassNames.links, baseStyles.links /*, props.styles?.links*/),
     nodeTextContainer: mergeClasses(
@@ -77,7 +81,9 @@ export const useSankeyChartStyles = (props: SankeyChartProps): SankeyChartStyles
     toolTip: mergeClasses(sankeyChartClassNames.toolTip, baseStyles.toolTip /*, props.styles?.toolTip*/),
     chartWrapper: mergeClasses(
       sankeyChartClassNames.chartWrapper,
-      props.enableReflow ? baseStyles.chartWrapper : '' /*, props.styles?.chartWrapper*/,
+      props.reflowProps?.mode === 'min-width' ? baseStyles.chartWrapper : '',
+      props.styles?.chartWrapper,
     ),
+    chart: mergeClasses(sankeyChartClassNames.chart, baseStyles.chart, props.styles?.chart),
   };
 };

@@ -479,7 +479,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1275,7 +1275,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -2084,7 +2084,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -2892,7 +2892,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -10513,7 +10513,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -12791,7 +12791,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -13717,7 +13717,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -14523,7 +14523,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -15137,7 +15137,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

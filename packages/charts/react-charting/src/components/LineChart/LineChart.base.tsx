@@ -21,6 +21,7 @@ import {
   ILineChartProps,
   ILineChartPoints,
   ICustomizedCalloutData,
+  ICustomizedCalloutDataPoint,
   IMargins,
   IRefArrayData,
   IColorFillBarsProps,
@@ -158,12 +159,17 @@ export interface ILineChartState extends IBasestate {
   nearestCircleToHighlight: ILineChartDataPoint | null;
 
   activeLine: number | null;
+
+  YValue: string | number;
+
+  legendVal: string;
 }
 
 export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> implements IChart {
   public static defaultProps: Partial<ILineChartProps> = {
     enableReflow: true,
     useUTC: true,
+    isCalloutForStack: false,
   };
 
   private _points: LineChartDataWithIndex[];
@@ -182,12 +188,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _refArray: IRefArrayData[];
   private margins: IMargins;
   private eventLabelHeight: number = 36;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private lines: JSX.Element[];
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderedColorFillBars: JSX.Element[];
   private _colorFillBars: IColorFillBarsProps[];
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
@@ -212,6 +221,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       hoverXValue: '',
       activeLegend: '',
       YValueHover: [],
+      YValue: '',
+      legendVal: '',
       refSelected: '',
       selectedLegend: props.legendProps?.selectedLegend ?? '',
       isCalloutVisible: false,
@@ -270,6 +281,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
@@ -293,6 +305,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       directionalHint: DirectionalHint.topAutoEdge,
       YValueHover: this.state.YValueHover,
       hoverXValue: this.state.hoverXValue,
+      YValue: this.state.YValue,
+      legend: this.state.legendVal,
+      color: this.state.lineColor,
+      XValue: this.state.hoverXValue! as string,
       id: `toolTip${this._uniqueCallOutID}`,
       target: this.state.refSelected,
       isBeakVisible: false,
@@ -319,7 +335,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         chartTitle={this._getChartTitle()}
         points={points}
         chartType={ChartTypes.LineChart}
-        isCalloutForStack
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
@@ -543,6 +558,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     });
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLegends(data: LineChartDataWithIndex[]): JSX.Element {
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
@@ -704,7 +720,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const extraYPixels = yScale(yMin) - yScale(yMin + yPadding);
     return Math.min(extraXPixels, extraYPixels);
   }
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const lines: JSX.Element[] = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
@@ -722,8 +740,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     });
 
     for (let i = this._points.length - 1; i >= 0; i--) {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const linesForLine: JSX.Element[] = [];
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const bordersForLine: JSX.Element[] = [];
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const pointsForLine: JSX.Element[] = [];
 
       const legendVal: string = this._points[i].legend;
@@ -771,6 +792,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 circleId,
                 xAxisCalloutAccessibilityData,
                 yScale,
+                legendVal,
+                lineColor,
               )}
               onMouseMove={this._handleHover.bind(
                 this,
@@ -781,6 +804,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 circleId,
                 xAxisCalloutAccessibilityData,
                 yScale,
+                legendVal,
+                lineColor,
               )}
               onMouseOut={this._handleMouseOut}
               strokeWidth={activePoint === circleId ? DEFAULT_LINE_STROKE_SIZE : 0}
@@ -957,6 +982,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     circleId,
                     xAxisCalloutAccessibilityData,
                     yScale,
+                    legendVal,
+                    lineColor,
                   )}
                   onMouseMove={this._handleHover.bind(
                     this,
@@ -967,6 +994,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     circleId,
                     xAxisCalloutAccessibilityData,
                     yScale,
+                    legendVal,
+                    lineColor,
                   )}
                   onMouseOut={this._handleMouseOut}
                   onFocus={() =>
@@ -1012,6 +1041,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   circleId,
                   xAxisCalloutAccessibilityData,
                   yScale,
+                  legendVal,
+                  lineColor,
                 )}
                 onMouseMove={this._handleHover.bind(
                   this,
@@ -1022,6 +1053,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   circleId,
                   xAxisCalloutAccessibilityData,
                   yScale,
+                  legendVal,
+                  lineColor,
                 )}
                 onMouseOut={this._handleMouseOut}
                 onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
@@ -1069,6 +1102,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                         lastCircleId,
                         lastCirlceXCalloutAccessibilityData,
                         yScale,
+                        legendVal,
+                        lineColor,
                       )}
                       onMouseMove={this._handleHover.bind(
                         this,
@@ -1079,6 +1114,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                         lastCircleId,
                         lastCirlceXCalloutAccessibilityData,
                         yScale,
+                        legendVal,
+                        lineColor,
                       )}
                       onMouseOut={this._handleMouseOut}
                       onFocus={() =>
@@ -1130,6 +1167,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       lastCircleId,
                       lastCirlceXCalloutAccessibilityData,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )}
                     onMouseMove={this._handleHover.bind(
                       this,
@@ -1140,6 +1179,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       lastCircleId,
                       lastCirlceXCalloutAccessibilityData,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )}
                     onMouseOut={this._handleMouseOut}
                     onFocus={() =>
@@ -1179,6 +1220,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     lastCircleId,
                     lastCirlceXCalloutAccessibilityData,
                     yScale,
+                    legendVal,
+                    lineColor,
                   )}
                   onMouseMove={this._handleHover.bind(
                     this,
@@ -1189,6 +1232,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     lastCircleId,
                     lastCirlceXCalloutAccessibilityData,
                     yScale,
+                    legendVal,
+                    lineColor,
                   )}
                   onMouseOut={this._handleMouseOut}
                   strokeWidth={0}
@@ -1244,6 +1289,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       circleId,
                       xAxisCalloutAccessibilityData,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )}
                     onMouseMove={this._handleHover.bind(
                       this,
@@ -1254,6 +1301,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       circleId,
                       xAxisCalloutAccessibilityData,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )}
                     onMouseOut={this._handleMouseOut}
                     stroke={lineColor}
@@ -1328,6 +1377,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   private _createColorFillBars = (containerHeight: number) => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const colorFillBars: JSX.Element[] = [];
     if (this.state.isSelectedLegend) {
       this._colorFillBars = this.state.selectedColorBarLegend;
@@ -1563,13 +1613,28 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     circleId: string,
     xAxisCalloutAccessibilityData: IAccessibilityProps | undefined,
     yScale: ScaleLinear<number, number>,
+    legendVal: string,
+    lineColor: string,
     mouseEvent: React.MouseEvent<SVGElement>,
   ) => {
     mouseEvent.persist();
     const formattedData = x instanceof Date ? formatDateToLocaleString(x, this.props.culture, this.props.useUTC) : x;
     const xVal = x instanceof Date ? x.getTime() : x;
+    const yVal = y instanceof Date ? y.getTime() : y;
     const _this = this;
     const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
+    let hoverDp: ICustomizedCalloutData | undefined = undefined;
+
+    if (this.props.isCalloutForStack === false && found?.values) {
+      const dp = find(found.values, (val: ICustomizedCalloutDataPoint) => val?.y === yVal);
+      if (dp) {
+        hoverDp = {
+          x: xVal,
+          values: [dp],
+        };
+      }
+    }
+
     // if no points need to be called out then don't show vertical line and callout card
 
     if (found) {
@@ -1584,8 +1649,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           refSelected: `#${circleId}`,
           hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
           YValueHover: found.values,
+          YValue: yVal,
+          legendVal: legendVal!,
+          lineColor,
           stackCalloutProps: found!,
-          dataPointCalloutProps: found!,
+          dataPointCalloutProps: hoverDp,
           activePoint: circleId,
           xAxisCalloutAccessibilityData,
           nearestCircleToHighlight: null,

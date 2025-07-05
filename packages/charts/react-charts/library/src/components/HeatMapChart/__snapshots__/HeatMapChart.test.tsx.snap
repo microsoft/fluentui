@@ -18,6 +18,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -310,6 +311,7 @@ Object {
       >
         <svg
           aria-label="Heat map chart with 4 data points. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -661,6 +663,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -951,6 +954,7 @@ Object {
       >
         <svg
           aria-label="Heat map chart with 4 data points. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -1300,6 +1304,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="50"
             style="display: block;"
             width="650"
@@ -1537,6 +1542,7 @@ Object {
       >
         <svg
           aria-label="Heat map chart with 4 data points. "
+          class="fui-cart__chart"
           height="50"
           style="display: block;"
           width="650"
@@ -1833,6 +1839,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -2125,6 +2132,7 @@ Object {
       >
         <svg
           aria-label="Heat map chart with 4 data points. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -2476,6 +2484,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -2768,6 +2777,7 @@ Object {
       >
         <svg
           aria-label="Heat map chart with 4 data points. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -3109,7 +3119,7 @@ Object {
   >
     <div>
       <div
-        class="fui-FluentProvider fui-FluentProvider34"
+        class="fui-FluentProvider fui-FluentProviderr1h"
         dir="ltr"
       >
         <div
@@ -3123,6 +3133,7 @@ Object {
           >
             <svg
               aria-label="Heat map chart with 4 data points. "
+              class="fui-cart__chart"
               height="300"
               style="display: block;"
               width="650"
@@ -3406,7 +3417,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-FluentProvider fui-FluentProvider34"
+      class="fui-FluentProvider fui-FluentProviderr1h"
       dir="ltr"
     >
       <div
@@ -3420,6 +3431,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -3775,6 +3787,7 @@ Object {
           >
             <svg
               aria-label="Heat map chart with 4 data points. "
+              class="fui-cart__chart"
               height="300"
               style="display: block;"
               width="650"
@@ -4071,6 +4084,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -4418,6 +4432,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
     >
       <svg
         aria-label="Heat map chart with 4 data points. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -4702,6 +4717,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
     >
       <svg
         aria-label="Heat map chart with 4 data points. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"

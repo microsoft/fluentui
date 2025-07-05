@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Fri, 27 Jun 2025 13:39:41 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Jul 2025 10:02:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.13.6)
+
+Fri, 04 Jul 2025 10:02:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.13.5..@fluentui/react-dialog_v9.13.6)
+
+### Patches
+
+- chore(react-dialog): remove boxShadow on DialogSurfaceMotion ([PR #34756](https://github.com/microsoft/fluentui/pull/34756) by bernardo.sunderhus@gmail.com)
+- fix(Dialog): fix mobile viewport issues ([PR #34691](https://github.com/microsoft/fluentui/pull/34691) by mathis.michel@outlook.de)
+- Bump @fluentui/react-portal to v9.6.4 ([PR #34457](https://github.com/microsoft/fluentui/pull/34457) by beachball)
 
 ## [9.13.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.13.5)
 

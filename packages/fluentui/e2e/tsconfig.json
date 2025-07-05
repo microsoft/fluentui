@@ -6,7 +6,8 @@
     "noEmit": true,
     "emitDeclarationOnly": false,
     "module": "esnext",
-    "types": ["node", "webpack-env", "cypress", "cypress-real-events"]
+    "types": ["node", "webpack-env", "cypress", "cypress-real-events"],
+    "typeRoots": ["../../../node_modules", "../../../node_modules/@types"]
   },
-  "include": ["."]
+  "include": ["./tests", "./cypress"]
 }

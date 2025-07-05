@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Fri, 27 Jun 2025 13:39:41 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Jul 2025 10:02:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.6)
+
+Fri, 04 Jul 2025 10:02:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.5..@fluentui/react-charts_v9.1.6)
+
+### Patches
+
+- fix: ensure ResponsiveContainer resizes correctly within grid layout ([PR #34728](https://github.com/microsoft/fluentui/pull/34728) by kumarkshitij@microsoft.com)
+- port v8 changes to v9 ([PR #34731](https://github.com/microsoft/fluentui/pull/34731) by anushgupta@microsoft.com)
+- Bump @fluentui/react-overflow to v9.4.6 ([PR #34457](https://github.com/microsoft/fluentui/pull/34457) by beachball)
+- Bump @fluentui/react-popover to v9.11.6 ([PR #34457](https://github.com/microsoft/fluentui/pull/34457) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.6 ([PR #34457](https://github.com/microsoft/fluentui/pull/34457) by beachball)
 
 ## [9.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.5)
 

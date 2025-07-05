@@ -138,7 +138,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       );
       return (
         <div className={classes.chartTitleRight} {...accessibilityData}>
-          {formatToLocaleString(total, culture)}
+          {formatToLocaleString(total, culture) as React.ReactNode}
         </div>
       );
     }
@@ -151,13 +151,13 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       case 'default':
         return (
           <div className={classes.chartTitleRight} {...accessibilityData}>
-            {formatToLocaleString(x, culture)}
+            {formatToLocaleString(x, culture) as React.ReactNode}
           </div>
         );
       case 'fraction':
         return (
           <div {...accessibilityData}>
-            <span className={classes.chartTitleRight}>{formatToLocaleString(x, culture)}</span>
+            <span className={classes.chartTitleRight}>{formatToLocaleString(x, culture) as React.ReactNode}</span>
             <span className={classes.chartDataTextDenominator}>{' / ' + formatToLocaleString(y, culture)}</span>
           </div>
         );

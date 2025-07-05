@@ -74,6 +74,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     if (!this._isChartEmpty()) {
       this._adjustProps();
@@ -119,7 +120,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         targetRatio,
         showTriangle: !!(benchmarkData || targetData),
       });
-      const getChartData = () => formatToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
+      const getChartData = () =>
+        formatToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture) as React.ReactNode;
 
       return (
         <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
@@ -232,6 +234,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     palette: IPalette,
     benchmarkData?: IChartDataPoint,
     targetData?: IChartDataPoint,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): [JSX.Element[], JSX.Element] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
@@ -435,6 +438,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _generateEmptyBar(barHeight: number, color: string): JSX.Element {
     return (
       <g key={0} className={this._classNames.opacityChangeOnHover}>

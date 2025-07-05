@@ -2,6 +2,41 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Fri, 04 Jul 2025 10:02:47 GMT",
+      "tag": "@fluentui/react-table_v9.17.6",
+      "version": "9.17.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.8.6",
+            "commit": "5067a4850156994fbfc977a3bff5b9f3353078fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.4.6",
+            "commit": "5067a4850156994fbfc977a3bff5b9f3353078fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.4.6",
+            "commit": "5067a4850156994fbfc977a3bff5b9f3353078fd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jun 2025 13:39:41 GMT",
       "tag": "@fluentui/react-table_v9.17.5",
       "version": "9.17.5",

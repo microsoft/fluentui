@@ -7,6 +7,7 @@ import type { IPeoplePickerItemProps } from '../../../../ExtendedPicker';
 
 const styles: any = stylesImport;
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (
   peoplePickerItemProps: IPeoplePickerItemProps,
 ) => {

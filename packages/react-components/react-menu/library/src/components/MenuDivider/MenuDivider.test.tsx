@@ -13,6 +13,7 @@ describe('MenuDivider', () => {
    * Note: see more visual regression tests for MenuDivider in /apps/vr-tests.
    */
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(<MenuDivider>Default MenuDivider</MenuDivider>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

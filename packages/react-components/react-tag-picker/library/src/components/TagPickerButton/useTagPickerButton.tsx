@@ -35,7 +35,10 @@ export const useTagPickerButton_unstable = (
     defaultProps: {
       type: 'button',
       tabIndex: 0,
-      children: value || props.placeholder,
+      children:
+        value ||
+        // @ts-expect-error - FIXME: TS2339: Property 'placeholder' does not exist on type 'TagPickerButtonProps'
+        props.placeholder,
       'aria-controls': open ? popoverId : undefined,
       ref,
     },

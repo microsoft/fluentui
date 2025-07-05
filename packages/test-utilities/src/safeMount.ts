@@ -24,7 +24,11 @@ export function safeMount<
   attach?: boolean,
 ): void {
   const testContainer = attach ? createTestContainer() : undefined;
-  const wrapper = mount<TComponent, TProps, TState>(content, { ...(testContainer && { attachTo: testContainer }) });
+  const wrapper = mount<TComponent, TProps, TState>(
+    // @ts-expect-error - Enzyme types are not compatible with React 18 types.
+    content,
+    { ...(testContainer && { attachTo: testContainer }) },
+  );
 
   try {
     callback?.(wrapper);

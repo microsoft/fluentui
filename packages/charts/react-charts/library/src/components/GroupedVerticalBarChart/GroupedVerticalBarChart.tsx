@@ -10,7 +10,7 @@ import {
   ChartTypes,
   IAxisData,
   getAccessibleDataObject,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   XAxisTypes,
   getTypeOfAxis,
   formatScientificLimitWidth,
@@ -491,9 +491,9 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return (
       <g

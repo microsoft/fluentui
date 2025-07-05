@@ -185,6 +185,7 @@ export const VerticalStackedBarSecondaryYAxis = () => {
 
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   const lineOptions: LineChartLineOptions = { lineBorderWidth: '2' };
+  const barGapMax = 2;
 
   return (
     <div className="containerDiv">
@@ -214,6 +215,7 @@ export const VerticalStackedBarSecondaryYAxis = () => {
           data={data}
           height={height}
           width={width}
+          barGapMax={barGapMax}
           lineOptions={lineOptions}
           hideTickOverlap={true}
           yAxisTitle="Variation of number of sales"

@@ -86,6 +86,7 @@ scripts/generators @microsoft/fluentui-react-build
 scripts/github @microsoft/fluentui-react-build
 scripts/gulp @microsoft/fluentui-react-build @microsoft/teams-prg
 scripts/jest @microsoft/fluentui-react-build
+scripts/jest-v0 @microsoft/fluentui-react-build
 scripts/lint-staged @microsoft/fluentui-react-build
 scripts/monorepo @microsoft/fluentui-react-build
 scripts/package-manager @microsoft/fluentui-react-build
@@ -103,10 +104,11 @@ scripts/webpack @microsoft/fluentui-react-build
 scripts/perf-test-flamegrill @microsoft/fluentui-react-build
 tools/visual-regression-utilities @microsoft/fluentui-react-build
 tools/visual-regression-assert @microsoft/fluentui-react-build
+packages/a11y-testing @microsoft/fluentui-react-build @microsoft/fluentui-northstar
+packages/react-conformance @microsoft/fluentui-react-build
 
 #### Fluent UI N*
 packages/a11y-rules @microsoft/fluentui-northstar
-packages/a11y-testing @microsoft/fluentui-northstar
 packages/fluentui @microsoft/fluentui-northstar
 packages/fluentui/react-northstar/src/components/Chat @microsoft/fluentui-northstar @Hirse
 packages/fluentui/react-northstar/src/themes/teams/components/Chat @microsoft/fluentui-northstar @Hirse
@@ -138,7 +140,6 @@ apps/chart-docsite @microsoft/charting-team
 
 #### Packages
 packages/azure-themes @Jacqueline-ms
-packages/react-conformance @microsoft/fluentui-react-build
 packages/charts/chart-web-components @microsoft/charting-team
 packages/charts/chart-utilities @microsoft/charting-team
 packages/charts/react-charting @microsoft/charting-team

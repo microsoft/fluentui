@@ -1,7 +1,7 @@
 // Due to the react reference, putting these under /types doesn't work well
 
 /* eslint-disable spaced-comment, @fluentui/no-global-react */
-/// <reference types="react" />
+/// <reference path="./node_modules/@types/react" />
 
 declare const __DEV__: boolean;
 declare const __PATH_SEP__: string;

@@ -2062,7 +2062,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

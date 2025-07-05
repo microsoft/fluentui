@@ -23,6 +23,7 @@ const testImage1x1 =
 //   red: '.ms-Persona-initials--red',
 // };
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 const customOnRenderPersonaFunction = (props: IPersonaCoinProps): JSX.Element | null => {
   return <Icon iconName="Dictionary" />;
 };
