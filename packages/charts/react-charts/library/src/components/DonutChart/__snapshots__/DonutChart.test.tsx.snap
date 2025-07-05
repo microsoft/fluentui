@@ -28,6 +28,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               opacity="1"
               role="img"
               style="fill: #E5E5E5; cursor: default;"
+              tabindex="0"
             />
           </g>
           <g>
@@ -40,6 +41,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               opacity="1"
               role="img"
               style="fill: #0078D4; cursor: default;"
+              tabindex="0"
             />
           </g>
           <g>
@@ -52,6 +54,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               opacity="1"
               role="img"
               style="fill: #DADADA; cursor: default;"
+              tabindex="0"
             />
           </g>
         </g>
@@ -171,6 +174,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 opacity="1"
                 role="img"
                 style="fill: #E5E5E5; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -183,6 +187,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 opacity="1"
                 role="img"
                 style="fill: #0078D4; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -195,6 +200,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 opacity="1"
                 role="img"
                 style="fill: #DADADA; cursor: default;"
+                tabindex="0"
               />
             </g>
           </g>
@@ -316,6 +322,7 @@ Object {
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
+                  tabindex="0"
                 />
               </g>
               <g>
@@ -328,6 +335,7 @@ Object {
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
+                  tabindex="0"
                 />
               </g>
               <g>
@@ -340,6 +348,7 @@ Object {
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
+                  tabindex="0"
                 />
               </g>
             </g>
@@ -494,6 +503,7 @@ Object {
                 opacity="1"
                 role="img"
                 style="fill: #E5E5E5; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -506,6 +516,7 @@ Object {
                 opacity="1"
                 role="img"
                 style="fill: #0078D4; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -518,6 +529,7 @@ Object {
                 opacity="1"
                 role="img"
                 style="fill: #DADADA; cursor: default;"
+                tabindex="0"
               />
             </g>
           </g>
@@ -731,6 +743,7 @@ Object {
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
+                  tabindex="0"
                 />
               </g>
               <g>
@@ -743,6 +756,7 @@ Object {
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
+                  tabindex="0"
                 />
               </g>
               <g>
@@ -755,6 +769,7 @@ Object {
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
+                  tabindex="0"
                 />
               </g>
             </g>
@@ -909,6 +924,7 @@ Object {
                 opacity="1"
                 role="img"
                 style="fill: #E5E5E5; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -921,6 +937,7 @@ Object {
                 opacity="1"
                 role="img"
                 style="fill: #0078D4; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -933,6 +950,7 @@ Object {
                 opacity="1"
                 role="img"
                 style="fill: #DADADA; cursor: default;"
+                tabindex="0"
               />
             </g>
           </g>
@@ -1151,6 +1169,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -1173,6 +1192,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -1195,6 +1215,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
         </g>
         
@@ -1399,6 +1420,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
           <text
             aria-hidden={true}
@@ -1431,6 +1453,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
           <text
             aria-hidden={true}
@@ -1463,6 +1486,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
           <text
             aria-hidden={true}
@@ -1677,6 +1701,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
           <text
             aria-hidden={true}
@@ -1709,6 +1734,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
           <text
             aria-hidden={true}
@@ -1741,6 +1767,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
           <text
             aria-hidden={true}
@@ -1955,6 +1982,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -1977,6 +2005,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -1999,6 +2028,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
         </g>
       </g>
@@ -2202,6 +2232,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                 "fill": undefined,
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2224,6 +2255,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                 "fill": undefined,
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2246,6 +2278,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                 "fill": undefined,
               }
             }
+            tabIndex={0}
           />
         </g>
         
@@ -2450,6 +2483,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2472,6 +2506,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2494,6 +2529,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
         </g>
         
@@ -2733,6 +2769,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2755,6 +2792,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2777,6 +2815,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
         </g>
         
@@ -2828,6 +2867,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2850,6 +2890,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2872,6 +2913,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
         </g>
         
@@ -3076,6 +3118,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -3098,6 +3141,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -3120,6 +3164,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
         </g>
         

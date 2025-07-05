@@ -392,7 +392,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="aqua"
               height="49"
               id="_VBC_bar_191-0"
@@ -417,7 +416,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="blue"
               height="245"
               id="_VBC_bar_191-1"
@@ -442,7 +440,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="navy"
               height="147"
               id="_VBC_bar_191-2"
@@ -937,7 +934,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="aqua"
               height="49"
               id="_VBC_bar_198-0"
@@ -962,7 +958,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="blue"
               height="245"
               id="_VBC_bar_198-1"
@@ -987,7 +982,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="navy"
               height="147"
               id="_VBC_bar_198-2"
@@ -1486,7 +1480,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g>
               <rect
                 aria-label="2020/04/30. First, 10%."
-                data-is-focusable="true"
                 fill="aqua"
                 height="49"
                 id="_VBC_bar_206-0"
@@ -1511,7 +1504,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g>
               <rect
                 aria-label="2020/04/30. Second, 20%."
-                data-is-focusable="true"
                 fill="blue"
                 height="245"
                 id="_VBC_bar_206-1"
@@ -1536,7 +1528,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g>
               <rect
                 aria-label="2020/04/30. Third, 37%."
-                data-is-focusable="true"
                 fill="navy"
                 height="147"
                 id="_VBC_bar_206-2"
@@ -2043,7 +2034,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="aqua"
               height="49"
               id="_VBC_bar_213-0"
@@ -2068,7 +2058,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="blue"
               height="245"
               id="_VBC_bar_213-1"
@@ -2093,7 +2082,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="navy"
               height="147"
               id="_VBC_bar_213-2"
@@ -2390,7 +2378,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="qualitative.1"
               height="51"
               id="_VBC_bar_26-0"
@@ -2406,7 +2393,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="qualitative.2"
               height="255"
               id="_VBC_bar_26-1"
@@ -2422,7 +2408,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="qualitative.3"
               height="153"
               id="_VBC_bar_26-2"
@@ -2710,7 +2695,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="aqua"
               height="51"
               id="_VBC_bar_5-0"
@@ -2726,7 +2710,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="blue"
               height="255"
               id="_VBC_bar_5-1"
@@ -2742,7 +2725,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="navy"
               height="153"
               id="_VBC_bar_5-2"
@@ -2978,7 +2960,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="This is a medium long label. . 3500."
-              data-is-focusable="true"
               fill="#627CEF"
               height="255"
               id="_VBC_bar_12-0"
@@ -2996,7 +2977,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="This is a long label This is a long label. 2500."
-              data-is-focusable="true"
               fill="#C19C00"
               height="182.14285714285714"
               id="_VBC_bar_12-1"
@@ -3014,7 +2994,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="This label is as long as the previous one. 1900."
-              data-is-focusable="true"
               fill="#E650AF"
               height="138.42857142857142"
               id="_VBC_bar_12-2"
@@ -3032,7 +3011,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="A short label. 2800."
-              data-is-focusable="true"
               fill="#0E7878"
               height="204"
               id="_VBC_bar_12-3"
@@ -3300,7 +3278,6 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="qualitative.1"
               height="25.5"
               id="_VBC_bar_33-0"
@@ -3316,7 +3293,6 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="qualitative.2"
               height="127.5"
               id="_VBC_bar_33-1"
@@ -3332,7 +3308,6 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="qualitative.3"
               height="76.5"
               id="_VBC_bar_33-2"
@@ -3818,7 +3793,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="aqua"
               height="49"
               id="_VBC_bar_220-0"
@@ -3843,7 +3817,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="blue"
               height="245"
               id="_VBC_bar_220-1"
@@ -3868,7 +3841,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="navy"
               height="147"
               id="_VBC_bar_220-2"
@@ -4373,7 +4345,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="aqua"
               height="49"
               id="_VBC_bar_228-0"
@@ -4398,7 +4369,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="blue"
               height="245"
               id="_VBC_bar_228-1"
@@ -4423,7 +4393,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="navy"
               height="147"
               id="_VBC_bar_228-2"
@@ -4570,7 +4539,6 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
             id="_VBC_bar_290-0"
@@ -4590,7 +4558,6 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
             id="_VBC_bar_290-1"
@@ -4610,7 +4577,6 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
             id="_VBC_bar_290-2"
@@ -4820,7 +4786,6 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
             id="_VBC_bar_297-0"
@@ -4840,7 +4805,6 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
             id="_VBC_bar_297-1"
@@ -4860,7 +4824,6 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
             id="_VBC_bar_297-2"
@@ -5070,7 +5033,6 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
             id="_VBC_bar_304-0"
@@ -5090,7 +5052,6 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
             id="_VBC_bar_304-1"
@@ -5110,7 +5071,6 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
             id="_VBC_bar_304-2"
@@ -5320,7 +5280,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
             id="_VBC_bar_243-0"
@@ -5340,7 +5299,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
             id="_VBC_bar_243-1"
@@ -5360,7 +5318,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
             id="_VBC_bar_243-2"
@@ -5570,7 +5527,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
             id="_VBC_bar_263-0"
@@ -5590,7 +5546,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
             id="_VBC_bar_263-1"
@@ -5610,7 +5565,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
             id="_VBC_bar_263-2"
@@ -5855,7 +5809,6 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
             id="_VBC_bar_250-0"
@@ -5875,7 +5828,6 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
             id="_VBC_bar_250-1"
@@ -5895,7 +5847,6 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
             id="_VBC_bar_250-2"
@@ -5952,7 +5903,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={false}
             fill="aqua"
             height={11}
             id="_VBC_bar_256-0"
@@ -5963,7 +5913,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             opacity={1}
             role="img"
             rx={0}
-            tabIndex={0}
             width={1}
             x={48}
             y={-35}
@@ -5972,7 +5921,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={false}
             fill="blue"
             height={55}
             id="_VBC_bar_256-1"
@@ -5983,7 +5931,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             opacity={1}
             role="img"
             rx={0}
-            tabIndex={0}
             width={1}
             x={18.384615384615387}
             y={-35}
@@ -5992,7 +5939,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={false}
             fill="navy"
             height={33}
             id="_VBC_bar_256-2"
@@ -6003,7 +5949,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             opacity={1}
             role="img"
             rx={0}
-            tabIndex={0}
             width={1}
             x={-26.03846153846154}
             y={-35}
@@ -6202,7 +6147,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
             id="_VBC_bar_269-0"
@@ -6222,7 +6166,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
             id="_VBC_bar_269-1"
@@ -6242,7 +6185,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
             id="_VBC_bar_269-2"
@@ -6452,7 +6394,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={NaN}
             id="_VBC_bar_276-0"
@@ -6472,7 +6413,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={NaN}
             id="_VBC_bar_276-1"
@@ -6492,7 +6432,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={NaN}
             id="_VBC_bar_276-2"
@@ -6702,7 +6641,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
             id="_VBC_bar_283-0"
@@ -6722,7 +6660,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
             id="_VBC_bar_283-1"
@@ -6742,7 +6679,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
             id="_VBC_bar_283-2"

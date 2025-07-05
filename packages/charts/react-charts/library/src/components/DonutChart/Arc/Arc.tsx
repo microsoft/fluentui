@@ -133,7 +133,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           onMouseOver={_hoverOn.bind(this, props.data!.data)}
           onMouseMove={_hoverOn.bind(this, props.data!.data)}
           onMouseLeave={_hoverOff}
-          tabIndex={_shouldHighlightArc(props.data!.data.legend!) || props.activeArc?.length === 0 ? 0 : undefined}
+          tabIndex={_shouldHighlightArc(props.data!.data.legend!) ? 0 : undefined}
           onBlur={_onBlur}
           opacity={opacity}
           onClick={props.data?.data.onClick}

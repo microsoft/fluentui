@@ -552,7 +552,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     Object.keys(lineObject).forEach((item: string, index: number) => {
       lineObject[item].forEach((circlePoint: LinePoint, subIndex: number) => {
         const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
-        const noBarsActive =
+        const noBarsAndLinesActive =
           circlePoint.xItem.chartData.filter(
             dataPoint => _noLegendHighlighted() || _isLegendHighlighted(dataPoint.legend),
           ).length === 0;
@@ -580,7 +580,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             visibility={_getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).visibility}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             ref={e => (circleRef.refElement = e)}
-            {...(noBarsActive && (_noLegendHighlighted() || _isLegendHighlighted(item))
+            {...(noBarsAndLinesActive
               ? {
                   tabIndex: !props.hideTooltip ? 0 : undefined,
                   onFocus: event => _lineFocus(event, circlePoint, circleRef),
