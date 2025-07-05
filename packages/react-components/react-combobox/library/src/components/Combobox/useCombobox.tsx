@@ -76,6 +76,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       ...triggerNativeProps,
     },
     activeDescendantController,
+    disableAutoFocus,
   });
 
   const rootSlot = slot.always(props.root, {
