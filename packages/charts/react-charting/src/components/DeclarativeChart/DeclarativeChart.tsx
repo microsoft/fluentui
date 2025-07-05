@@ -398,6 +398,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   if (chart.type === 'scatterpolar') {
     const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
     plotlyInputWithValidData.data = cartesianProjection.data;
+    plotlyInputWithValidData.layout = cartesianProjection.layout;
     validTracesFilteredIndex.forEach((trace, index) => {
       if (trace.type === 'scatterpolar') {
         validTracesFilteredIndex[index].type = 'line'; // Change type to line for rendering
