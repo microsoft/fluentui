@@ -69,6 +69,7 @@ export type {
   TreeItemValue,
   TreeItemOpenChangeData,
   TreeItemOpenChangeEvent,
+  TreeItemCSSProperties,
 } from './TreeItem';
 
 export { FlatTreeItem } from './FlatTreeItem';

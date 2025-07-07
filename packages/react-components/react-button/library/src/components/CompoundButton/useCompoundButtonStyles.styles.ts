@@ -1,5 +1,4 @@
 import { tokens } from '@fluentui/react-theme';
-import * as semanticTokens from '@fluentui/semantic-tokens';
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -18,18 +17,18 @@ const useRootStyles = makeStyles({
     height: 'auto',
 
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.foregroundCtrlNeutralSecondaryRest,
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.foregroundCtrlNeutralSecondaryHover,
+        color: tokens.colorNeutralForeground2Hover,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.foregroundCtrlNeutralSecondaryPressed,
+        color: tokens.colorNeutralForeground2Pressed,
       },
     },
   },
@@ -57,18 +56,18 @@ const useRootStyles = makeStyles({
   },
   primary: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.foregroundCtrlOnBrandRest,
+      color: tokens.colorNeutralForegroundOnBrand,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.foregroundCtrlOnBrandHover,
+        color: tokens.colorNeutralForegroundOnBrand,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.foregroundCtrlOnBrandPressed,
+        color: tokens.colorNeutralForegroundOnBrand,
       },
     },
 
@@ -83,18 +82,18 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.foregroundCtrlOnSubtleRest,
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.foregroundCtrlOnSubtleHover,
+        color: tokens.colorNeutralForeground2Hover,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.foregroundCtrlOnSubtlePressed,
+        color: tokens.colorNeutralForeground2Pressed,
       },
     },
 
@@ -113,18 +112,18 @@ const useRootStyles = makeStyles({
   },
   transparent: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.foregroundCtrlOnTransparentRest,
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.foregroundCtrlOnTransparentHover,
+        color: tokens.colorNeutralForeground2BrandHover,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.foregroundCtrlOnTransparentPressed,
+        color: tokens.colorNeutralForeground2BrandPressed,
       },
     },
   },
@@ -133,37 +132,37 @@ const useRootStyles = makeStyles({
   small: {
     padding: `${tokens.spacingHorizontalS} ${tokens.spacingHorizontalS} ${tokens.spacingHorizontalMNudge} ${tokens.spacingHorizontalS}`,
 
-    fontSize: semanticTokens.textRampItemBodyFontSize,
-    lineHeight: semanticTokens.textRampItemBodyLineHeight,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
   },
   medium: {
     padding: `14px ${tokens.spacingHorizontalM} ${tokens.spacingHorizontalL} ${tokens.spacingHorizontalM}`,
 
-    fontSize: semanticTokens.textRampItemBodyFontSize,
-    lineHeight: semanticTokens.textRampItemBodyLineHeight,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
   },
   large: {
     padding: `18px ${tokens.spacingHorizontalL} ${tokens.spacingHorizontalXL} ${tokens.spacingHorizontalL}`,
 
-    fontSize: semanticTokens.textRampLgItemBodyFontSize,
-    lineHeight: semanticTokens.textRampLgItemBodyLineHeight,
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
   },
 
   // Disabled styles
   disabled: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
+      color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
   },
@@ -242,18 +241,18 @@ const useSecondaryContentStyles = makeStyles({
   // Base styles
   base: {
     lineHeight: '100%',
-    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+    fontWeight: tokens.fontWeightRegular,
   },
 
   // Size variations
   small: {
-    fontSize: semanticTokens.textRampSmItemBodyFontSize,
+    fontSize: tokens.fontSizeBase200,
   },
   medium: {
-    fontSize: semanticTokens.textRampSmItemBodyFontSize,
+    fontSize: tokens.fontSizeBase200,
   },
   large: {
-    fontSize: semanticTokens.textRampItemBodyFontSize,
+    fontSize: tokens.fontSizeBase300,
   },
 });
 

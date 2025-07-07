@@ -333,6 +333,8 @@ packages/react-components/react-color-picker/library @microsoft/cxe-prg
 packages/react-components/react-color-picker/stories @microsoft/cxe-prg
 packages/react-components/component-selector-preview/library @microsoft/teams-prg
 packages/react-components/component-selector-preview/stories @microsoft/teams-prg
+packages/react-components/semantic-style-hooks-preview/library @microsoft/xc-uxe
+packages/react-components/semantic-style-hooks-preview/stories @microsoft/xc-uxe
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components

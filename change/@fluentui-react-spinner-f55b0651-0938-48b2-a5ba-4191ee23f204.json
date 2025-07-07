@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Enable semantic tokens",
-  "packageName": "@fluentui/react-spinner",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

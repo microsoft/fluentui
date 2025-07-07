@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add semantic tokens",
-  "packageName": "@fluentui/react-text",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

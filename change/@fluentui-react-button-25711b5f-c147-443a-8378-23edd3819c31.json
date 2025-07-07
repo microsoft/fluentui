@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: React-button semantic tokens",
-  "packageName": "@fluentui/react-button",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

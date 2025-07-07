@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Feat: Add semantic tokens to Rating",
-  "packageName": "@fluentui/react-rating",
-  "email": "rachelyoo@microsoft.com",
-  "dependentChangeType": "patch"
-}

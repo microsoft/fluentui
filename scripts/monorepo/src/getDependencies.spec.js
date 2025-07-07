@@ -34,6 +34,11 @@ describe(`#getDependencies`, () => {
         },
         Object {
           "dependencyType": "dependencies",
+          "isTopLevel": true,
+          "name": "semantic-tokens",
+        },
+        Object {
+          "dependencyType": "dependencies",
           "isTopLevel": false,
           "name": "tokens",
         },

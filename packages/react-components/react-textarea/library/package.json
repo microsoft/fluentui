@@ -23,7 +23,6 @@
     "@fluentui/react-theme": "^9.1.24",
     "@fluentui/react-utilities": "^9.19.0",
     "@fluentui/react-jsx-runtime": "^9.0.54",
-    "@fluentui/semantic-tokens": "0.0.0-alpha.1",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },

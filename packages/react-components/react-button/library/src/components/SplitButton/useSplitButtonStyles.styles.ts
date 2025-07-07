@@ -1,9 +1,8 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SplitButtonSlots, SplitButtonState } from './SplitButton.types';
-import * as semanticTokens from '@fluentui/semantic-tokens';
-import { tokens } from '@fluentui/react-theme';
 
 export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
   root: 'fui-SplitButton',
@@ -51,39 +50,22 @@ const useRootStyles = makeStyles({
 
   // Appearance variations
   outline: {
-    [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: semanticTokens.strokeCtrlDividerOnOutline,
-    },
-
-    ':hover': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.strokeCtrlDividerOnOutline,
-      },
-
-      [`& .${splitButtonClassNames.menuButton}`]: { borderLeftWidth: 0 },
-    },
-
-    ':hover:active': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.strokeCtrlDividerOnOutline,
-      },
-      [`& .${splitButtonClassNames.menuButton}`]: { borderLeftWidth: 0 },
-    },
+    /* No styles */
   },
   primary: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: semanticTokens.strokeCtrlDividerOnBrand,
+      borderRightColor: tokens.colorNeutralStrokeOnBrand,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.strokeCtrlDividerOnBrand,
+        borderRightColor: tokens.colorNeutralStrokeOnBrand,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.strokeCtrlDividerOnBrand,
+        borderRightColor: tokens.colorNeutralStrokeOnBrand,
       },
     },
 
@@ -110,18 +92,18 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: semanticTokens.strokeCtrlDividerOnSubtle,
+      borderRightColor: tokens.colorTransparentBackground,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.strokeCtrlDividerOnSubtle,
+        borderRightColor: tokens.colorTransparentBackgroundHover,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.strokeCtrlDividerOnSubtle,
+        borderRightColor: tokens.colorTransparentBackgroundPressed,
       },
     },
   },
@@ -151,18 +133,18 @@ const useRootStyles = makeStyles({
   // Disabled styles
   disabled: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: semanticTokens.strokeCtrlOnNeutralDisabled,
+      borderRightColor: tokens.colorNeutralStrokeDisabled,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.strokeCtrlOnNeutralDisabled,
+        borderRightColor: tokens.colorNeutralStrokeDisabled,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.strokeCtrlOnNeutralDisabled,
+        borderRightColor: tokens.colorNeutralStrokeDisabled,
       },
     },
   },

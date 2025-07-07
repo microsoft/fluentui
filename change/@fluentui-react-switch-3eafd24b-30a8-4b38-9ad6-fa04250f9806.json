@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Feat: Add semantic tokens to Switch",
-  "packageName": "@fluentui/react-switch",
-  "email": "rachelyoo@microsoft.com",
-  "dependentChangeType": "patch"
-}

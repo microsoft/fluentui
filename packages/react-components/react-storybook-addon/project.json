@@ -7,7 +7,12 @@
   "implicitDependencies": [],
   "targets": {
     "build": {
-      "dependsOn": [{ "projects": ["react-aria", "react-provider", "semantic-tokens"], "target": "build" }]
+      "dependsOn": [
+        {
+          "projects": ["react-aria", "react-provider", "semantic-tokens", "semantic-style-hooks-preview"],
+          "target": "build"
+        }
+      ]
     }
   }
 }
