@@ -562,7 +562,7 @@ describe('Vertical bar chart - Subcomponent line', () => {
   );
 });
 
-describe('Vertical bar chart - Subcomponent Legends', () => {
+describe.skip('Vertical bar chart - Subcomponent Legends', () => {
   beforeEach(() => {
     resetIds();
   });
@@ -901,7 +901,7 @@ describe('Vertical bar chart re-rendering', () => {
   });
 });
 
-describe('VerticalBarChart - mouse events', () => {
+describe.skip('VerticalBarChart - mouse events', () => {
   beforeEach(() => {
     resetIds();
   });

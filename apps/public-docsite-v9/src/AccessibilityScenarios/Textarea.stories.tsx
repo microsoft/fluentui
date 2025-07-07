@@ -5,7 +5,12 @@ import { Button, Textarea, Checkbox, Label } from '@fluentui/react-components';
 import { Scenario } from './utils';
 
 import { useForm, Controller, OnSubmit } from 'react-hook-form';
-import { usePubSub, PubSubProvider, Handler } from '@cactuslab/usepubsub';
+import { usePubSub, PubSubProvider as _PubSubProvider, Handler } from '@cactuslab/usepubsub';
+
+// '@cactuslab/usepubsub' doesn't ship React 18 compatible types
+const PubSubProvider = _PubSubProvider as React.FC<
+  React.PropsWithChildren<React.ComponentProps<typeof _PubSubProvider>>
+>;
 
 const generateCustomerId = (): string => {
   let char;
@@ -40,6 +45,7 @@ interface FormValidation {
 interface ValidationMessageProps {
   id: string;
   formValidation: FormValidation;
+  children: React.ReactNode;
 }
 const ValidationMessage: React.FC<ValidationMessageProps> = ({ id, formValidation, children }) => {
   const [isAlerting, setIsAlerting] = React.useState(true);

@@ -3,5 +3,5 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/fluentui-publish/src",
   "projectType": "library",
-  "tags": ["tools"]
+  "tags": ["tools", "react-northstar"]
 }

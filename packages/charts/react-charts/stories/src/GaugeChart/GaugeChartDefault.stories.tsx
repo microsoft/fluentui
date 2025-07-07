@@ -24,15 +24,15 @@ export const GaugeChartBasic = () => {
     setHideMinMax(checked.checked as boolean);
   };
 
-  const _onSwitchGradient = React.useCallback(ev => {
+  const _onSwitchGradient = React.useCallback((ev: any) => {
     setEnableGradient(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchRoundedCorners = React.useCallback(ev => {
+  const _onSwitchRoundedCorners = React.useCallback((ev: any) => {
     setRoundedCorners(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchLegendMultiSelect = React.useCallback(ev => {
+  const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
 

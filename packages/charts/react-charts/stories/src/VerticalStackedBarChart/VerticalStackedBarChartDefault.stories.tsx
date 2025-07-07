@@ -39,7 +39,7 @@ export const VerticalStackedBarDefault = () => {
     setHideLabels(checked.checked as boolean);
   };
 
-  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
     if (ev.currentTarget.checked) {
       setMargins({
@@ -57,11 +57,11 @@ export const VerticalStackedBarDefault = () => {
       });
     }
   }, []);
-  const _onRoundCornersChange = React.useCallback(ev => {
+  const _onRoundCornersChange = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchLegendMultiSelect = React.useCallback(ev => {
+  const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
 
@@ -71,70 +71,70 @@ export const VerticalStackedBarDefault = () => {
       data: 40,
       color: getColorFromToken(DataVizPalette.color11),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '61%',
+      yAxisCalloutData: '40%',
     },
     {
       legend: 'Metadata2',
       data: 5,
       color: 'darkblue',
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '8%',
+      yAxisCalloutData: '5%',
     },
     {
       legend: 'Metadata3',
       data: 20,
       color: getColorFromToken(DataVizPalette.color6),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '31%',
+      yAxisCalloutData: '20%',
     },
     {
       legend: 'Metadata4',
       data: 10,
       color: getColorFromToken(DataVizPalette.color4),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '1%',
+      yAxisCalloutData: '10%',
     },
     {
       legend: 'Metadata5',
       data: 23,
       color: getColorFromToken(DataVizPalette.color5),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '2%',
+      yAxisCalloutData: '23%',
     },
     {
       legend: 'Metadata6',
       data: 0.4,
       color: getColorFromToken(DataVizPalette.color6),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '3%',
+      yAxisCalloutData: '0.4%',
     },
     {
       legend: 'Metadata7',
       data: 0.5,
       color: getColorFromToken(DataVizPalette.color7),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '4%',
+      yAxisCalloutData: '0.5%',
     },
     {
       legend: 'Metadata8',
       data: 0.3,
       color: getColorFromToken(DataVizPalette.color8),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '5%',
+      yAxisCalloutData: '0.3%',
     },
     {
       legend: 'Metadata9',
       data: 0.7,
       color: getColorFromToken(DataVizPalette.color9),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '6%',
+      yAxisCalloutData: '0.7%',
     },
     {
       legend: 'Metadata10',
       data: 0.1,
       color: getColorFromToken(DataVizPalette.color10),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '7%',
+      yAxisCalloutData: '0.1%',
     },
   ];
 

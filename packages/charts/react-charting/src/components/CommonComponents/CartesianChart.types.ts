@@ -195,6 +195,11 @@ export interface ICartesianChartStyles {
    * Styles for the svg tooltip
    */
   svgTooltip?: IStyle;
+
+  /**
+   * Styles for the chart svg element
+   */
+  chart?: IStyle;
 }
 
 /**
@@ -565,6 +570,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Legends of the chart.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   legendBars: JSX.Element | null;
 
   /**

@@ -199,7 +199,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
                 transform={`translate(${_xAxisScale.current.bandwidth() / 2}, ${_yAxisScale.current.bandwidth() / 2})`}
                 fill={foregroundColor}
               >
-                {formatToLocaleString(dataPointObject.rectText, props.culture, props.useUTC)}
+                {formatToLocaleString(dataPointObject.rectText, props.culture, props.useUTC) as React.ReactNode}
               </text>
             </g>
           );
@@ -679,7 +679,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       /* eslint-disable react/jsx-no-bind */
       children={(p: ChildProps) => {
         _xAxisScale.current = p.xScale;
-        _yAxisScale.current = p.yScale;
+        _yAxisScale.current = p.yScalePrimary;
         return _createRectangles();
       }}
     />

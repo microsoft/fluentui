@@ -60,6 +60,8 @@ import {
   getMultiLevelDateTimeFormatOptions,
 } from '@fluentui/chart-utilities';
 
+export const MIN_DOMAIN_MARGIN = 8;
+
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
 
@@ -668,10 +670,10 @@ export function createYAxisForHorizontalBarChartWithAxis(
     yAxisTickCount = 4,
   } = yAxisParams;
 
-  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
+  // maxOfYVal coming from horizontal bar chart with axis (Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
+  const finalYmin = yMinMaxValues.startValue < yMinValue ? Math.min(0, yMinMaxValues.startValue) : yMinValue!;
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
@@ -708,9 +710,9 @@ export function createNumericYAxisForOtherCharts(
   } = yAxisParams;
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
-  const tempVal = maxOfYVal || yMinMaxValues.endValue;
+  const tempVal = maxOfYVal || yMinMaxValues.endValue || 0;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = Math.min(yMinMaxValues.startValue, yMinValue || 0);
+  const finalYmin = Math.min(yMinMaxValues.startValue || 0, yMinValue || 0);
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
   let yMin = finalYmin;
   let yMax = domainValues[domainValues.length - 1];
@@ -764,11 +766,14 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   barWidth: number,
   culture?: string,
 ) => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement } = yAxisParams;
+  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding } = yAxisParams;
 
+  let yAxisPaddingValue = yAxisPadding ?? 0.5;
+  yAxisPaddingValue = yAxisPaddingValue === 1 ? 0.99 : yAxisPaddingValue;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
-    .range([containerHeight - margins.bottom! - barWidth / 2, margins.top! + barWidth / 2]);
+    .range([containerHeight - margins.bottom!, margins.top!])
+    .padding(yAxisPaddingValue);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(dataPoints);
   if (yAxisTickFormat) {
@@ -1125,20 +1130,20 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
  * On hover of the truncated word(at x axis labels tick), a tooltip will be appeared.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function tooltipOfXAxislabels(xAxistooltipProps: any): any {
-  const { tooltipCls, xAxis, id } = xAxistooltipProps;
-  if (xAxis === null) {
+export function tooltipOfAxislabels(axistooltipProps: any) {
+  const { tooltipCls, axis, id } = axistooltipProps;
+  if (axis === null) {
     return null;
   }
   const div = d3Select('body').append('div').attr('id', id).attr('class', tooltipCls).style('opacity', 0);
-  const aa = xAxis!.selectAll('#BaseSpan')._groups[0];
+  const aa = axis!.selectAll('#BaseSpan')._groups[0];
   const baseSpanLength = aa && Object.keys(aa)!.length;
   const originalDataArray: string[] = [];
   for (let i = 0; i < baseSpanLength; i++) {
     const originalData = aa[i].dataset && (Object.values(aa[i].dataset)[0] as string);
     originalDataArray.push(originalData);
   }
-  const tickObject = xAxis!.selectAll('.tick')._groups[0];
+  const tickObject = axis!.selectAll('.tick')._groups[0];
   const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
   for (let i = 0; i < tickObjectLength; i++) {
     const d1 = tickObject[i];
@@ -1246,6 +1251,59 @@ export function domainRangeOfNumericForScatterChart(
 }
 
 /**
+ * Groups HorizontalBarChart With Axis data based on YValue
+ * Used for stacked case
+ * @param {IHorizontalBarChartWithAxisDataPoint[]} chartData
+ * @returns {IHorizontalBarChartWithAxisDataPoint[][]}
+ */
+export function groupChartDataByYValue(
+  chartData: HorizontalBarChartWithAxisDataPoint[],
+): HorizontalBarChartWithAxisDataPoint[][] {
+  const map: Record<string, HorizontalBarChartWithAxisDataPoint[]> = {};
+  chartData.forEach(dataPoint => {
+    const key = dataPoint.y;
+    if (!map[key]) {
+      map[key] = [];
+    }
+    map[key].push(dataPoint);
+  });
+
+  return Object.values(map);
+}
+
+/**
+ * Calculates maximum domain values for Numeric x axis for both positive and negative values
+ * works for Horizontal Bar Chart With axis
+ * @param {HorizontalBarChartWithAxisDataPoint[][]} stackedChartData
+ * @returns {number}
+ */
+export function computeLongestBars(
+  stackedChartData: HorizontalBarChartWithAxisDataPoint[][],
+  X_ORIGIN: number,
+): {
+  longestPositiveBar: number;
+  longestNegativeBar: number;
+} {
+  let longestPositiveBar = 0;
+  let longestNegativeBar = 0;
+
+  stackedChartData.forEach((group: HorizontalBarChartWithAxisDataPoint[]) => {
+    const positiveBarTotal = group.reduce(
+      (acc: number, point: HorizontalBarChartWithAxisDataPoint) => acc + (point.x > 0 ? point.x : 0),
+      X_ORIGIN,
+    );
+    const negativeBarTotal = group.reduce(
+      (acc: number, point: HorizontalBarChartWithAxisDataPoint) => acc + (point.x < 0 ? point.x : 0),
+      X_ORIGIN,
+    );
+
+    longestPositiveBar = Math.max(longestPositiveBar, positiveBarTotal);
+    longestNegativeBar = Math.min(longestNegativeBar, negativeBarTotal);
+  });
+  return { longestPositiveBar, longestNegativeBar };
+}
+
+/**
  * Calculates Domain and range values for Numeric X axis.
  * This method calculates Horizontal Chart with Axis
  * @export
@@ -1261,14 +1319,17 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   containerWidth: number,
   isRTL: boolean,
   shiftX: number,
+  X_ORIGIN?: number,
 ): IDomainNRange {
-  const xMax = d3Max(points, (point: HorizontalBarChartWithAxisDataPoint) => point.x as number)!;
+  const longestBars = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN!);
+  const xMax = longestBars.longestPositiveBar;
+  const xMin = longestBars.longestNegativeBar;
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 
   return isRTL
-    ? { dStartValue: xMax, dEndValue: 0, rStartValue: rMin, rEndValue: rMax }
-    : { dStartValue: 0, dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
+    ? { dStartValue: xMax, dEndValue: Math.min(xMin, X_ORIGIN!), rStartValue: rMin, rEndValue: rMax }
+    : { dStartValue: Math.min(xMin, X_ORIGIN!), dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
 }
 
 /**
@@ -1474,6 +1535,7 @@ export function getDomainNRangeValues(
   barWidth: number,
   tickValues: number[] | Date[] | string[] | undefined,
   shiftX: number,
+  X_ORIGIN?: number,
 ): IDomainNRange {
   let domainNRangeValue: IDomainNRange;
   if (xAxisType === XAxisTypes.NumericAxis) {
@@ -1489,7 +1551,14 @@ export function getDomainNRangeValues(
         domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
         break;
       case ChartTypes.HorizontalBarChartWithAxis:
-        domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, shiftX);
+        domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(
+          points,
+          margins,
+          width,
+          isRTL,
+          shiftX,
+          X_ORIGIN!,
+        );
         break;
       case ChartTypes.ScatterChart:
         domainNRangeValue = domainRangeOfNumericForScatterChart(points, margins, width, isRTL);
@@ -1542,17 +1611,23 @@ export function getDomainNRangeValues(
  * @param {LineChartPoints[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findNumericMinMaxOfY(points: LineChartPoints[]): { startValue: number; endValue: number } {
-  const yMax = d3Max(points, (point: LineChartPoints) => {
-    return d3Max(point.data as LineChartDataPoint[], (item: LineChartDataPoint) => item.y)!;
-  })!;
-  const yMin = d3Min(points, (point: LineChartPoints) => {
-    return d3Min(point.data as LineChartDataPoint[], (item: LineChartDataPoint) => item.y)!;
-  })!;
+export function findNumericMinMaxOfY(
+  points: LineChartPoints[],
+  yAxisType?: YAxisType | undefined,
+  useSecondaryYScale?: boolean,
+): { startValue: number; endValue: number } {
+  const values: number[] = [];
+  points.forEach(point => {
+    if (!useSecondaryYScale === !point.useSecondaryYScale) {
+      point.data.forEach(data => {
+        values.push(data.y);
+      });
+    }
+  });
 
   return {
-    startValue: yMin,
-    endValue: yMax,
+    startValue: d3Min(values)!,
+    endValue: d3Max(values)!,
   };
 }
 
@@ -1575,34 +1650,27 @@ export function findVSBCNumericMinMaxOfY(dataset: DataPoint[]): { startValue: nu
  * @param {VerticalBarChartDataPoint[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findVerticalNumericMinMaxOfY(points: VerticalBarChartDataPoint[]): {
+export function findVerticalNumericMinMaxOfY(
+  points: VerticalBarChartDataPoint[],
+  yAxisType?: YAxisType,
+  useSecondaryYScale?: boolean,
+): {
   startValue: number;
   endValue: number;
 } {
-  const yMax = d3Max(points, (point: VerticalBarChartDataPoint) => {
-    if (point.lineData !== undefined) {
-      if (point.y > point.lineData!.y) {
-        return point.y;
-      } else {
-        return point.lineData!.y;
-      }
-    } else {
-      return point.y;
+  const values: number[] = [];
+  points.forEach(point => {
+    if (!useSecondaryYScale) {
+      values.push(point.y);
     }
-  })!;
-  const yMin = d3Min(points, (point: VerticalBarChartDataPoint) => {
-    if (point.lineData !== undefined) {
-      if (point.y < point.lineData!.y) {
-        return point.y;
-      } else {
-        return point.lineData!.y;
+    if (typeof point.lineData !== 'undefined') {
+      if (!useSecondaryYScale === !point.lineData.useSecondaryYScale) {
+        values.push(point.lineData.y);
       }
-    } else {
-      return point.y;
     }
-  })!;
+  });
 
-  return { startValue: yMin, endValue: yMax };
+  return { startValue: d3Min(values)!, endValue: d3Max(values)! };
 }
 /**
  * Fins the min and max values of the vertical bar chart y axis data point.
@@ -1638,6 +1706,7 @@ export function getMinMaxOfYAxis(
   points: any,
   chartType: ChartTypes,
   yAxisType: YAxisType | undefined = YAxisType.NumericAxis,
+  useSecondaryYScale?: boolean,
 ): { startValue: number; endValue: number } {
   let minMaxValues: { startValue: number; endValue: number };
 
@@ -1645,13 +1714,13 @@ export function getMinMaxOfYAxis(
     case ChartTypes.AreaChart:
     case ChartTypes.LineChart:
     case ChartTypes.ScatterChart:
-      minMaxValues = findNumericMinMaxOfY(points);
+      minMaxValues = findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
       break;
     case ChartTypes.VerticalStackedBarChart:
       minMaxValues = findVSBCNumericMinMaxOfY(points);
       break;
     case ChartTypes.VerticalBarChart:
-      minMaxValues = findVerticalNumericMinMaxOfY(points);
+      minMaxValues = findVerticalNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
       break;
     case ChartTypes.HorizontalBarChartWithAxis:
       minMaxValues = findHBCWANumericMinMaxOfY(points, yAxisType);
@@ -2013,3 +2082,11 @@ export function getCurveFactory(
       return defaultFactory;
   }
 }
+
+export const truncateString = (str: string, maxLength: number, ellipsis = '...'): string => {
+  if (str.length <= maxLength) {
+    return str;
+  }
+
+  return str.slice(0, maxLength) + ellipsis;
+};
