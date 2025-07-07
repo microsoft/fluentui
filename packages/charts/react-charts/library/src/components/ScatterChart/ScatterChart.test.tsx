@@ -111,9 +111,7 @@ function sharedAfterEach() {
   window.requestAnimationFrame = originalRAF;
 }
 
-// FIXME: Fails after upgrade to React 18
-// Exposes issue with using hooks conditionally
-describe.skip('Scatter chart rendering', () => {
+describe('Scatter chart rendering', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
@@ -123,9 +121,7 @@ describe.skip('Scatter chart rendering', () => {
   });
 });
 
-// FIXME: Fails after upgrade to React 18
-// Exposes issue with using hooks conditionally
-describe.skip('ScatterChart- Subcomponent Legends', () => {
+describe('ScatterChart- Subcomponent Legends', () => {
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
     ScatterChart,
