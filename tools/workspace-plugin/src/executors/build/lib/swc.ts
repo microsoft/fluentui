@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile, copyFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 
 import { globSync } from 'fast-glob';
@@ -7,6 +7,7 @@ import { transformFile, type Config } from '@swc/core';
 import { logger, readJsonFile } from '@nx/devkit';
 
 import { type NormalizedOptions } from './shared';
+import { FileProcessor, GriffelRawStylesProcessor, applyFileProcessors } from './file-processor';
 
 // extend @swc/core types by missing apis
 declare module '@swc/core' {
@@ -20,11 +21,25 @@ interface Options {
   outputPath: string;
 }
 
+function createFileProcessors(options: NormalizedOptions): FileProcessor[] {
+  const processors: FileProcessor[] = [];
+
+  if (options.enableGriffelRawStyles) {
+    processors.push(new GriffelRawStylesProcessor());
+  }
+
+  return processors;
+}
+
 export async function compileSwc(options: Options, normalizedOptions: NormalizedOptions) {
   const { outputPath, module } = options;
+  const fileProcessors = createFileProcessors(normalizedOptions);
   const absoluteOutputPath = join(normalizedOptions.absoluteProjectRoot, outputPath);
 
   logger.log(`Compiling with SWC for module:${options.module}...`);
+  if (fileProcessors.length > 0) {
+    logger.log(`Applying ${fileProcessors.length} file processors...`);
+  }
 
   const sourceFiles = globSync(`**/*.{js,ts,tsx}`, { cwd: normalizedOptions.absoluteSourceRoot });
 
@@ -59,9 +74,12 @@ export async function compileSwc(options: Options, normalizedOptions: Normalized
     await mkdir(dirname(compiledFilePath), { recursive: true });
 
     await writeFile(compiledFilePath, resultCode);
+    await applyFileProcessors(compiledFilePath, fileProcessors);
 
     if (result.map) {
-      await writeFile(`${compiledFilePath}.map`, result.map);
+      const mapFilePath = `${compiledFilePath}.map`;
+      await writeFile(mapFilePath, result.map);
+      await applyFileProcessors(mapFilePath, fileProcessors);
     }
   }
 }
