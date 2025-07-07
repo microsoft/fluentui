@@ -399,7 +399,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         <g>
           <rect
             aria-label="10%. 2020/04/30."
-            aria-labelledby="toolTipcalloutr0"
+            aria-labelledby="toolTipcallout1"
             data-is-focusable="true"
             fill="#0078d4"
             height="16"
@@ -413,7 +413,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           />
           <rect
             aria-label="88%. 2020/04/30."
-            aria-labelledby="toolTipcalloutr0"
+            aria-labelledby="toolTipcallout1"
             data-is-focusable="true"
             fill="#002050"
             height="16"
@@ -427,7 +427,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           />
           <rect
             aria-label="37%. 2020/04/30."
-            aria-labelledby="toolTipcalloutr0"
+            aria-labelledby="toolTipcallout1"
             data-is-focusable="true"
             fill="#00188f"
             height="16"
@@ -441,7 +441,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           />
           <rect
             aria-label="20%. 2020/04/30."
-            aria-labelledby="toolTipcalloutr0"
+            aria-labelledby="toolTipcallout1"
             data-is-focusable="true"
             fill="#00bcf2"
             height="16"
@@ -922,7 +922,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         <g>
           <rect
             aria-label="1000. String One."
-            aria-labelledby="toolTipcalloutr4"
+            aria-labelledby="toolTipcallout5"
             data-is-focusable="true"
             fill="#0078d4"
             height="32.714285714285715"
@@ -937,7 +937,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           />
           <rect
             aria-label="5000. String Two."
-            aria-labelledby="toolTipcalloutr4"
+            aria-labelledby="toolTipcallout5"
             data-is-focusable="true"
             fill="#00bcf2"
             height="32.714285714285715"
@@ -952,7 +952,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           />
           <rect
             aria-label="3000. String Three."
-            aria-labelledby="toolTipcalloutr4"
+            aria-labelledby="toolTipcallout5"
             data-is-focusable="true"
             fill="#00188f"
             height="32.714285714285715"
@@ -967,7 +967,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           />
           <rect
             aria-label="2000. String Four."
-            aria-labelledby="toolTipcalloutr4"
+            aria-labelledby="toolTipcallout5"
             data-is-focusable="true"
             fill="#002050"
             height="32.714285714285715"
@@ -1031,7 +1031,7 @@ Object {
   >
     <div
       class="fui-cart__tooltip"
-      id="tooltip_r28"
+      id="tooltip_73"
       style="opacity: 0;"
     />
     <div>
@@ -1432,7 +1432,7 @@ Object {
             <g>
               <rect
                 aria-label="10%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2e"
+                aria-labelledby="toolTipcallout79"
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="16"
@@ -1446,7 +1446,7 @@ Object {
               />
               <rect
                 aria-label="88%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2e"
+                aria-labelledby="toolTipcallout79"
                 data-is-focusable="true"
                 fill="#002050"
                 height="16"
@@ -1460,7 +1460,7 @@ Object {
               />
               <rect
                 aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2e"
+                aria-labelledby="toolTipcallout79"
                 data-is-focusable="true"
                 fill="#00188f"
                 height="16"
@@ -1474,7 +1474,7 @@ Object {
               />
               <rect
                 aria-label="20%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2e"
+                aria-labelledby="toolTipcallout79"
                 data-is-focusable="true"
                 fill="#00bcf2"
                 height="16"
@@ -1983,7 +1983,7 @@ Object {
           <g>
             <rect
               aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2e"
+              aria-labelledby="toolTipcallout79"
               data-is-focusable="true"
               fill="#0078d4"
               height="16"
@@ -1997,7 +1997,7 @@ Object {
             />
             <rect
               aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2e"
+              aria-labelledby="toolTipcallout79"
               data-is-focusable="true"
               fill="#002050"
               height="16"
@@ -2011,7 +2011,7 @@ Object {
             />
             <rect
               aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2e"
+              aria-labelledby="toolTipcallout79"
               data-is-focusable="true"
               fill="#00188f"
               height="16"
@@ -2025,7 +2025,7 @@ Object {
             />
             <rect
               aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2e"
+              aria-labelledby="toolTipcallout79"
               data-is-focusable="true"
               fill="#00bcf2"
               height="16"
@@ -2197,7 +2197,7 @@ Object {
   >
     <div
       class="fui-cart__tooltip"
-      id="tooltip_r28"
+      id="tooltip_73"
       style="opacity: 0;"
     />
     <div>
@@ -2598,7 +2598,7 @@ Object {
             <g>
               <rect
                 aria-label="10%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2i"
+                aria-labelledby="toolTipcallout83"
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="16"
@@ -2612,7 +2612,7 @@ Object {
               />
               <rect
                 aria-label="88%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2i"
+                aria-labelledby="toolTipcallout83"
                 data-is-focusable="true"
                 fill="#002050"
                 height="16"
@@ -2626,7 +2626,7 @@ Object {
               />
               <rect
                 aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2i"
+                aria-labelledby="toolTipcallout83"
                 data-is-focusable="true"
                 fill="#00188f"
                 height="16"
@@ -2640,7 +2640,7 @@ Object {
               />
               <rect
                 aria-label="20%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr2i"
+                aria-labelledby="toolTipcallout83"
                 data-is-focusable="true"
                 fill="#00bcf2"
                 height="16"
@@ -3149,7 +3149,7 @@ Object {
           <g>
             <rect
               aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2i"
+              aria-labelledby="toolTipcallout83"
               data-is-focusable="true"
               fill="#0078d4"
               height="16"
@@ -3163,7 +3163,7 @@ Object {
             />
             <rect
               aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2i"
+              aria-labelledby="toolTipcallout83"
               data-is-focusable="true"
               fill="#002050"
               height="16"
@@ -3177,7 +3177,7 @@ Object {
             />
             <rect
               aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2i"
+              aria-labelledby="toolTipcallout83"
               data-is-focusable="true"
               fill="#00188f"
               height="16"
@@ -3191,7 +3191,7 @@ Object {
             />
             <rect
               aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr2i"
+              aria-labelledby="toolTipcallout83"
               data-is-focusable="true"
               fill="#00bcf2"
               height="16"
@@ -3759,7 +3759,7 @@ Object {
             <g>
               <rect
                 aria-label="10%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr1r"
+                aria-labelledby="toolTipcallout60"
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="16"
@@ -3773,7 +3773,7 @@ Object {
               />
               <rect
                 aria-label="88%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr1r"
+                aria-labelledby="toolTipcallout60"
                 data-is-focusable="true"
                 fill="#002050"
                 height="16"
@@ -3787,7 +3787,7 @@ Object {
               />
               <rect
                 aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr1r"
+                aria-labelledby="toolTipcallout60"
                 data-is-focusable="true"
                 fill="#00188f"
                 height="16"
@@ -3801,7 +3801,7 @@ Object {
               />
               <rect
                 aria-label="20%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr1r"
+                aria-labelledby="toolTipcallout60"
                 data-is-focusable="true"
                 fill="#00bcf2"
                 height="16"
@@ -4310,7 +4310,7 @@ Object {
           <g>
             <rect
               aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr1r"
+              aria-labelledby="toolTipcallout60"
               data-is-focusable="true"
               fill="#0078d4"
               height="16"
@@ -4324,7 +4324,7 @@ Object {
             />
             <rect
               aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr1r"
+              aria-labelledby="toolTipcallout60"
               data-is-focusable="true"
               fill="#002050"
               height="16"
@@ -4338,7 +4338,7 @@ Object {
             />
             <rect
               aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr1r"
+              aria-labelledby="toolTipcallout60"
               data-is-focusable="true"
               fill="#00188f"
               height="16"
@@ -4352,7 +4352,7 @@ Object {
             />
             <rect
               aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr1r"
+              aria-labelledby="toolTipcallout60"
               data-is-focusable="true"
               fill="#00bcf2"
               height="16"
@@ -4932,7 +4932,7 @@ Object {
             <g>
               <rect
                 aria-label="10K. Q1."
-                aria-labelledby="toolTipcalloutr1v"
+                aria-labelledby="toolTipcallout64"
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="45.8"
@@ -4947,7 +4947,7 @@ Object {
               />
               <rect
                 aria-label="-5K. Q1."
-                aria-labelledby="toolTipcalloutr1v"
+                aria-labelledby="toolTipcallout64"
                 data-is-focusable="true"
                 fill="#ff8c00"
                 height="45.8"
@@ -4962,7 +4962,7 @@ Object {
               />
               <rect
                 aria-label="8K. Q1."
-                aria-labelledby="toolTipcalloutr1v"
+                aria-labelledby="toolTipcallout64"
                 data-is-focusable="true"
                 fill="#107c10"
                 height="45.8"
@@ -4977,7 +4977,7 @@ Object {
               />
               <rect
                 aria-label="-7K. Q2."
-                aria-labelledby="toolTipcalloutr1v"
+                aria-labelledby="toolTipcallout64"
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="45.8"
@@ -4992,7 +4992,7 @@ Object {
               />
               <rect
                 aria-label="12K. Q2."
-                aria-labelledby="toolTipcalloutr1v"
+                aria-labelledby="toolTipcallout64"
                 data-is-focusable="true"
                 fill="#ff8c00"
                 height="45.8"
@@ -5007,7 +5007,7 @@ Object {
               />
               <rect
                 aria-label="3K. Q2."
-                aria-labelledby="toolTipcalloutr1v"
+                aria-labelledby="toolTipcallout64"
                 data-is-focusable="true"
                 fill="#107c10"
                 height="45.8"
@@ -5022,7 +5022,7 @@ Object {
               />
               <rect
                 aria-label="15K. Q3."
-                aria-labelledby="toolTipcalloutr1v"
+                aria-labelledby="toolTipcallout64"
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="45.8"
@@ -5037,7 +5037,7 @@ Object {
               />
               <rect
                 aria-label="-4K. Q3."
-                aria-labelledby="toolTipcalloutr1v"
+                aria-labelledby="toolTipcallout64"
                 data-is-focusable="true"
                 fill="#ff8c00"
                 height="45.8"
@@ -5052,7 +5052,7 @@ Object {
               />
               <rect
                 aria-label="5K. Q3."
-                aria-labelledby="toolTipcalloutr1v"
+                aria-labelledby="toolTipcallout64"
                 data-is-focusable="true"
                 fill="#107c10"
                 height="45.8"
@@ -5555,7 +5555,7 @@ Object {
           <g>
             <rect
               aria-label="10K. Q1."
-              aria-labelledby="toolTipcalloutr1v"
+              aria-labelledby="toolTipcallout64"
               data-is-focusable="true"
               fill="#0078d4"
               height="45.8"
@@ -5570,7 +5570,7 @@ Object {
             />
             <rect
               aria-label="-5K. Q1."
-              aria-labelledby="toolTipcalloutr1v"
+              aria-labelledby="toolTipcallout64"
               data-is-focusable="true"
               fill="#ff8c00"
               height="45.8"
@@ -5585,7 +5585,7 @@ Object {
             />
             <rect
               aria-label="8K. Q1."
-              aria-labelledby="toolTipcalloutr1v"
+              aria-labelledby="toolTipcallout64"
               data-is-focusable="true"
               fill="#107c10"
               height="45.8"
@@ -5600,7 +5600,7 @@ Object {
             />
             <rect
               aria-label="-7K. Q2."
-              aria-labelledby="toolTipcalloutr1v"
+              aria-labelledby="toolTipcallout64"
               data-is-focusable="true"
               fill="#0078d4"
               height="45.8"
@@ -5615,7 +5615,7 @@ Object {
             />
             <rect
               aria-label="12K. Q2."
-              aria-labelledby="toolTipcalloutr1v"
+              aria-labelledby="toolTipcallout64"
               data-is-focusable="true"
               fill="#ff8c00"
               height="45.8"
@@ -5630,7 +5630,7 @@ Object {
             />
             <rect
               aria-label="3K. Q2."
-              aria-labelledby="toolTipcalloutr1v"
+              aria-labelledby="toolTipcallout64"
               data-is-focusable="true"
               fill="#107c10"
               height="45.8"
@@ -5645,7 +5645,7 @@ Object {
             />
             <rect
               aria-label="15K. Q3."
-              aria-labelledby="toolTipcalloutr1v"
+              aria-labelledby="toolTipcallout64"
               data-is-focusable="true"
               fill="#0078d4"
               height="45.8"
@@ -5660,7 +5660,7 @@ Object {
             />
             <rect
               aria-label="-4K. Q3."
-              aria-labelledby="toolTipcalloutr1v"
+              aria-labelledby="toolTipcallout64"
               data-is-focusable="true"
               fill="#ff8c00"
               height="45.8"
@@ -5675,7 +5675,7 @@ Object {
             />
             <rect
               aria-label="5K. Q3."
-              aria-labelledby="toolTipcalloutr1v"
+              aria-labelledby="toolTipcallout64"
               data-is-focusable="true"
               fill="#107c10"
               height="45.8"
@@ -6225,7 +6225,7 @@ Object {
             <g>
               <rect
                 aria-label="10%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr23"
+                aria-labelledby="toolTipcallout68"
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="1"
@@ -6239,7 +6239,7 @@ Object {
               />
               <rect
                 aria-label="88%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr23"
+                aria-labelledby="toolTipcallout68"
                 data-is-focusable="true"
                 fill="#002050"
                 height="1"
@@ -6253,7 +6253,7 @@ Object {
               />
               <rect
                 aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr23"
+                aria-labelledby="toolTipcallout68"
                 data-is-focusable="true"
                 fill="#00188f"
                 height="1"
@@ -6267,7 +6267,7 @@ Object {
               />
               <rect
                 aria-label="20%. 2020/04/30."
-                aria-labelledby="toolTipcalloutr23"
+                aria-labelledby="toolTipcallout68"
                 data-is-focusable="true"
                 fill="#00bcf2"
                 height="1"
@@ -6683,7 +6683,7 @@ Object {
           <g>
             <rect
               aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr23"
+              aria-labelledby="toolTipcallout68"
               data-is-focusable="true"
               fill="#0078d4"
               height="1"
@@ -6697,7 +6697,7 @@ Object {
             />
             <rect
               aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr23"
+              aria-labelledby="toolTipcallout68"
               data-is-focusable="true"
               fill="#002050"
               height="1"
@@ -6711,7 +6711,7 @@ Object {
             />
             <rect
               aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr23"
+              aria-labelledby="toolTipcallout68"
               data-is-focusable="true"
               fill="#00188f"
               height="1"
@@ -6725,7 +6725,7 @@ Object {
             />
             <rect
               aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcalloutr23"
+              aria-labelledby="toolTipcallout68"
               data-is-focusable="true"
               fill="#00bcf2"
               height="1"
@@ -7170,7 +7170,7 @@ Object {
             <g>
               <rect
                 aria-label="1000. String One."
-                aria-labelledby="toolTipcalloutr26"
+                aria-labelledby="toolTipcallout71"
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="32.714285714285715"
@@ -7185,7 +7185,7 @@ Object {
               />
               <rect
                 aria-label="5000. String Two."
-                aria-labelledby="toolTipcalloutr26"
+                aria-labelledby="toolTipcallout71"
                 data-is-focusable="true"
                 fill="#00bcf2"
                 height="32.714285714285715"
@@ -7200,7 +7200,7 @@ Object {
               />
               <rect
                 aria-label="3000. String Three."
-                aria-labelledby="toolTipcalloutr26"
+                aria-labelledby="toolTipcallout71"
                 data-is-focusable="true"
                 fill="#00188f"
                 height="32.714285714285715"
@@ -7215,7 +7215,7 @@ Object {
               />
               <rect
                 aria-label="2000. String Four."
-                aria-labelledby="toolTipcalloutr26"
+                aria-labelledby="toolTipcallout71"
                 data-is-focusable="true"
                 fill="#002050"
                 height="32.714285714285715"
@@ -7271,7 +7271,7 @@ Object {
     </div>
     <div
       class="fui-cart__tooltip"
-      id="tooltip_r28"
+      id="tooltip_73"
       style="opacity: 0;"
     />
   </body>,
@@ -7643,7 +7643,7 @@ Object {
           <g>
             <rect
               aria-label="1000. String One."
-              aria-labelledby="toolTipcalloutr26"
+              aria-labelledby="toolTipcallout71"
               data-is-focusable="true"
               fill="#0078d4"
               height="32.714285714285715"
@@ -7658,7 +7658,7 @@ Object {
             />
             <rect
               aria-label="5000. String Two."
-              aria-labelledby="toolTipcalloutr26"
+              aria-labelledby="toolTipcallout71"
               data-is-focusable="true"
               fill="#00bcf2"
               height="32.714285714285715"
@@ -7673,7 +7673,7 @@ Object {
             />
             <rect
               aria-label="3000. String Three."
-              aria-labelledby="toolTipcalloutr26"
+              aria-labelledby="toolTipcallout71"
               data-is-focusable="true"
               fill="#00188f"
               height="32.714285714285715"
@@ -7688,7 +7688,7 @@ Object {
             />
             <rect
               aria-label="2000. String Four."
-              aria-labelledby="toolTipcalloutr26"
+              aria-labelledby="toolTipcallout71"
               data-is-focusable="true"
               fill="#002050"
               height="32.714285714285715"
@@ -7804,7 +7804,7 @@ Object {
   >
     <div
       class="fui-cart__tooltip"
-      id="tooltip_r28"
+      id="tooltip_73"
       style="opacity: 0;"
     />
     <div>
@@ -8175,7 +8175,7 @@ Object {
             <g>
               <rect
                 aria-label="1000. String One."
-                aria-labelledby="toolTipcalloutr2a"
+                aria-labelledby="toolTipcallout75"
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="32.714285714285715"
@@ -8190,7 +8190,7 @@ Object {
               />
               <rect
                 aria-label="5000. String Two."
-                aria-labelledby="toolTipcalloutr2a"
+                aria-labelledby="toolTipcallout75"
                 data-is-focusable="true"
                 fill="#00bcf2"
                 height="32.714285714285715"
@@ -8205,7 +8205,7 @@ Object {
               />
               <rect
                 aria-label="3000. String Three."
-                aria-labelledby="toolTipcalloutr2a"
+                aria-labelledby="toolTipcallout75"
                 data-is-focusable="true"
                 fill="#00188f"
                 height="32.714285714285715"
@@ -8220,7 +8220,7 @@ Object {
               />
               <rect
                 aria-label="2000. String Four."
-                aria-labelledby="toolTipcalloutr2a"
+                aria-labelledby="toolTipcallout75"
                 data-is-focusable="true"
                 fill="#002050"
                 height="32.714285714285715"
@@ -8643,7 +8643,7 @@ Object {
           <g>
             <rect
               aria-label="1000. String One."
-              aria-labelledby="toolTipcalloutr2a"
+              aria-labelledby="toolTipcallout75"
               data-is-focusable="true"
               fill="#0078d4"
               height="32.714285714285715"
@@ -8658,7 +8658,7 @@ Object {
             />
             <rect
               aria-label="5000. String Two."
-              aria-labelledby="toolTipcalloutr2a"
+              aria-labelledby="toolTipcallout75"
               data-is-focusable="true"
               fill="#00bcf2"
               height="32.714285714285715"
@@ -8673,7 +8673,7 @@ Object {
             />
             <rect
               aria-label="3000. String Three."
-              aria-labelledby="toolTipcalloutr2a"
+              aria-labelledby="toolTipcallout75"
               data-is-focusable="true"
               fill="#00188f"
               height="32.714285714285715"
@@ -8688,7 +8688,7 @@ Object {
             />
             <rect
               aria-label="2000. String Four."
-              aria-labelledby="toolTipcalloutr2a"
+              aria-labelledby="toolTipcallout75"
               data-is-focusable="true"
               fill="#002050"
               height="32.714285714285715"

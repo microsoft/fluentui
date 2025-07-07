@@ -1997,52 +1997,6 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         </div>
       </div>
     </div>
-    <div
-      class="fui-cart__calloutContainer"
-      id="calloutr2k"
-    >
-      <div
-        class="fui-PopoverSurface"
-        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
-        role="group"
-        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
-      >
-        <div
-          class="fui-cart__calloutContentRoot"
-        >
-          <div
-            class="fui-cart__calloutDateTimeContainer"
-          >
-            <div
-              class="fui-cart__calloutContentX"
-            >
-              2020/04/30
-               
-            </div>
-          </div>
-          <div
-            class="fui-cart__calloutInfoContainer"
-            style="border-inline-start: 4px solid aqua;"
-          >
-            <div
-              class="fui-cart__calloutBlockContainer"
-            >
-              <div
-                class="fui-cart__calloutlegendText"
-              >
-                Metadata1
-              </div>
-              <div
-                class="fui-cart__calloutContentY"
-                style="color: aqua;"
-              >
-                40%
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 `;
@@ -2544,29 +2498,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         </div>
       </div>
     </div>
-    <div
-      class="fui-cart__calloutContainer"
-      id="calloutr2u"
-    >
-      <div
-        class="fui-PopoverSurface"
-        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
-        role="group"
-        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
-      >
-        <div>
-          <pre>
-            {
-  "legend": "Metadata1",
-  "data": 40,
-  "color": "aqua",
-  "xAxisCalloutData": "2020/04/30",
-  "yAxisCalloutData": "40%"
-}
-          </pre>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 `;
@@ -3017,7 +2948,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             stroke="yellow"
             stroke-width="3"
             transform="translate(0, 0)"
-            visibility="visibility"
+            visibility="hidden"
           />
           <circle
             cx="614"
@@ -3113,50 +3044,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               </div>
             </button>
           </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="fui-cart__calloutContainer"
-      id="calloutr33"
-    >
-      <div
-        class="fui-PopoverSurface"
-        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
-        role="group"
-        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
-      >
-        <div>
-          <pre>
-            {
-  "chartData": [
-    {
-      "legend": "Metadata1",
-      "data": 40,
-      "color": "aqua",
-      "xAxisCalloutData": "2020/04/30",
-      "yAxisCalloutData": "40%"
-    },
-    {
-      "legend": "Metadata2",
-      "data": 5,
-      "color": "navy",
-      "xAxisCalloutData": "2020/04/30",
-      "yAxisCalloutData": "5%"
-    }
-  ],
-  "xAxisPoint": 0,
-  "lineData": [
-    {
-      "y": 15,
-      "legend": "Line1",
-      "color": "yellow",
-      "data": 15,
-      "shouldDrawBorderBottom": true
-    }
-  ]
-}
-          </pre>
         </div>
       </div>
     </div>

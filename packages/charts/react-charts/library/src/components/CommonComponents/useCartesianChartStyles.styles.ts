@@ -95,7 +95,7 @@ const useStyles = makeStyles({
     marginLeft: tokens.spacingHorizontalXL,
   },
   svgTooltip: {
-    fill: tokens.colorNeutralBackground1,
+    fill: tokens.colorNeutralBackground2,
     [HighContrastSelector]: {
       fill: 'Canvas',
     },
