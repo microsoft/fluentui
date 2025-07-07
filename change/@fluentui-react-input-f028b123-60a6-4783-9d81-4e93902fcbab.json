@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fix: Input changes",
+  "packageName": "@fluentui/react-input",
+  "email": "xuehua@microsoft.com",
+  "dependentChangeType": "patch"
+}
