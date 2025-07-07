@@ -262,20 +262,32 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     rawValue: '8px',
   },
   _ctrlRadioBackgroundActiveBrandHover: {
-    f2Token: 'colorCompoundBrandForeground1Hover',
+    f2Token: 'colorTransparentBackground',
     originalToken: 'backgroundCtrlActiveBrandHover',
   },
   _ctrlRadioBackgroundActiveBrandPressed: {
-    f2Token: 'colorCompoundBrandForeground1Pressed',
+    f2Token: 'colorTransparentBackground',
     originalToken: 'backgroundCtrlActiveBrandPressed',
   },
   _ctrlRadioBackgroundActiveBrandRest: {
-    f2Token: 'colorCompoundBrandForeground1',
+    f2Token: 'colorTransparentBackground',
     originalToken: 'backgroundCtrlActiveBrandRest',
   },
-  _ctrlRadioBackgroundDisabled: {
-    f2Token: 'colorNeutralForegroundDisabled',
+  _ctrlRadioBackgroundActiveDisabled: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'backgroundCtrlActiveBrandDisabled',
+  },
+  _ctrlRadioBaseBackgroundDisabled: {
+    f2Token: 'colorTransparentBackground',
     originalToken: 'ctrlChoiceBaseBackgroundDisabled',
+  },
+  _ctrlRadioBaseBackgroundHover: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'ctrlChoiceBaseBackgroundHover',
+  },
+  _ctrlRadioBaseBackgroundPressed: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'ctrlChoiceBaseBackgroundPressed',
   },
   _ctrlRadioChoiceBaseSize: {
     originalToken: 'ctrlChoiceBaseSize',
@@ -292,6 +304,22 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _ctrlRadioForegroundContentNeutralRest: {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlRadioForegroundOnActiveBrandHover: {
+    f2Token: 'colorCompoundBrandForeground1Hover',
+    originalToken: 'foregroundCtrlOnActiveBrandHover',
+  },
+  _ctrlRadioForegroundOnActiveBrandPressed: {
+    f2Token: 'colorCompoundBrandForeground1Pressed',
+    originalToken: 'foregroundCtrlOnActiveBrandPressed',
+  },
+  _ctrlRadioForegroundOnActiveBrandRest: {
+    f2Token: 'colorCompoundBrandForeground1',
+    originalToken: 'foregroundCtrlOnActiveBrandRest',
+  },
+  _ctrlRadioForegroundOnActiveDisabled: {
+    f2Token: 'colorNeutralForegroundDisabled',
+    originalToken: 'foregroundCtrlOnActiveBrandDisabled',
   },
   _ctrlRadioPaddingTextTop: {
     f2Token: 'spacingVerticalXS',

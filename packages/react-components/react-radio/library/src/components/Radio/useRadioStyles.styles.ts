@@ -49,6 +49,7 @@ const useInputBaseClassName = makeResetStyles({
     },
     [`& ~ .${radioClassNames.indicator}`]: {
       borderColor: semanticTokens.ctrlChoiceBaseStrokeRest,
+      backgroundColor: semanticTokens.ctrlChoiceBaseBackgroundRest,
       '@media (forced-colors: active)': {
         borderColor: 'ButtonBorder',
       },
@@ -60,6 +61,7 @@ const useInputBaseClassName = makeResetStyles({
       },
       [`& ~ .${radioClassNames.indicator}`]: {
         borderColor: semanticTokens.ctrlChoiceBaseStrokeHover,
+        backgroundColor: semanticTokens._ctrlRadioBaseBackgroundHover,
       },
     },
 
@@ -69,6 +71,7 @@ const useInputBaseClassName = makeResetStyles({
       },
       [`& ~ .${radioClassNames.indicator}`]: {
         borderColor: semanticTokens.ctrlChoiceBaseStrokePressed,
+        backgroundColor: semanticTokens._ctrlRadioBaseBackgroundPressed,
       },
     },
   },
@@ -80,7 +83,8 @@ const useInputBaseClassName = makeResetStyles({
     },
     [`& ~ .${radioClassNames.indicator}`]: {
       borderColor: semanticTokens._ctrlRadioStrokeOnActiveBrandRest,
-      color: semanticTokens._ctrlRadioBackgroundActiveBrandRest,
+      color: semanticTokens._ctrlRadioForegroundOnActiveBrandRest,
+      backgroundColor: semanticTokens._ctrlRadioBackgroundActiveBrandRest,
       '@media (forced-colors: active)': {
         borderColor: 'Highlight',
         color: 'Highlight',
@@ -93,14 +97,16 @@ const useInputBaseClassName = makeResetStyles({
     ':hover': {
       [`& ~ .${radioClassNames.indicator}`]: {
         borderColor: semanticTokens._ctrlRadioStrokeOnActiveBrandHover,
-        color: semanticTokens._ctrlRadioBackgroundActiveBrandHover,
+        color: semanticTokens._ctrlRadioForegroundOnActiveBrandHover,
+        backgroundColor: semanticTokens._ctrlRadioBackgroundActiveBrandHover,
       },
     },
 
     ':hover:active': {
       [`& ~ .${radioClassNames.indicator}`]: {
         borderColor: semanticTokens._ctrlRadioStrokeOnActiveBrandPressed,
-        color: semanticTokens._ctrlRadioBackgroundActiveBrandPressed,
+        color: semanticTokens._ctrlRadioForegroundOnActiveBrandPressed,
+        backgroundColor: semanticTokens._ctrlRadioBackgroundActiveBrandPressed,
       },
     },
   },
@@ -114,9 +120,19 @@ const useInputBaseClassName = makeResetStyles({
         color: 'GrayText',
       },
     },
+    ':checked': {
+      [`& ~ .${radioClassNames.indicator}`]: {
+        backgroundColor: semanticTokens._ctrlRadioBackgroundActiveDisabled,
+      },
+    },
+    ':not(:checked)': {
+      [`& ~ .${radioClassNames.indicator}`]: {
+        backgroundColor: semanticTokens._ctrlRadioBaseBackgroundDisabled,
+      },
+    },
     [`& ~ .${radioClassNames.indicator}`]: {
       borderColor: semanticTokens.ctrlChoiceBaseStrokeDisabled,
-      color: semanticTokens._ctrlRadioBackgroundDisabled,
+      color: semanticTokens._ctrlRadioForegroundOnActiveDisabled,
       '@media (forced-colors: active)': {
         borderColor: 'GrayText',
         color: 'GrayText',
@@ -156,7 +172,6 @@ const useIndicatorBaseClassName = makeResetStyles({
   fontSize: '12px',
   boxSizing: 'border-box',
   flexShrink: 0,
-  backgroundColor: semanticTokens.ctrlChoiceBaseBackgroundRest,
 
   display: 'flex',
   alignItems: 'center',
