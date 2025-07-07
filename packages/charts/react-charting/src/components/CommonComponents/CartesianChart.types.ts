@@ -10,6 +10,7 @@ import {
   IAccessibilityProps,
   IChart,
   IDataPoint,
+  IGanttChartDataPoint,
   IGroupedVerticalBarChartData,
   IHeatMapChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
@@ -714,7 +715,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
       | IHorizontalBarChartWithAxisDataPoint[]
       | IVerticalBarChartDataPoint[]
       | IDataPoint[]
-      | IScatterChartDataPoint[],
+      | IScatterChartDataPoint[]
+      | IGanttChartDataPoint[],
     yAxisType: YAxisType | undefined,
     useSecondaryYScale?: boolean,
   ) => { startValue: number; endValue: number };
@@ -742,7 +744,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
       | IVerticalStackedBarDataPoint[]
       | IHorizontalBarChartWithAxisDataPoint[]
       | IGroupedVerticalBarChartData[]
-      | IHeatMapChartDataPoint[],
+      | IHeatMapChartDataPoint[]
+      | IGanttChartDataPoint[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,

@@ -143,6 +143,9 @@ export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElem
 export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 
 // @public
+export const GanttChart: React_2.FunctionComponent<IGanttChartProps>;
+
+// @public
 export const GaugeChart: React_2.FunctionComponent<IGaugeChartProps>;
 
 // @public (undocumented)
@@ -618,6 +621,45 @@ export interface IEventsAnnotationProps {
     mergedLabel: (count: number) => string;
     // (undocumented)
     strokeColor?: string;
+}
+
+// @public (undocumented)
+export interface IGanttChartDataPoint {
+    callOutAccessibilityData?: IAccessibilityProps;
+    color?: string;
+    gradient?: [string, string];
+    legend?: string;
+    onClick?: VoidFunction;
+    x: {
+        start: Date;
+        end: Date;
+    };
+    xAxisCalloutData?: string;
+    y: number | string;
+    yAxisCalloutData?: string;
+}
+
+// @public
+export interface IGanttChartProps extends ICartesianChartProps {
+    barHeight?: number;
+    chartTitle?: string;
+    culture?: string;
+    data?: IGanttChartDataPoint[];
+    enableGradient?: boolean;
+    onRenderCalloutPerDataPoint?: IRenderFunction<IGanttChartDataPoint>;
+    roundCorners?: boolean;
+    showYAxisLables?: boolean;
+    showYAxisLablesTooltip?: boolean;
+    styles?: IStyleFunctionOrObject<IGanttChartStyleProps, IGanttChartStyles>;
+    yAxisPadding?: number;
+}
+
+// @public
+export interface IGanttChartStyleProps extends ICartesianChartStyleProps {
+}
+
+// @public
+export interface IGanttChartStyles extends ICartesianChartStyles {
 }
 
 // @public
@@ -1168,10 +1210,10 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getAxisData?: any;
     getDomainMargins?: (containerWidth: number) => IMargins;
     // Warning: (ae-forgotten-export) The symbol "IDomainNRange" needs to be exported by the entry point index.d.ts
-    getDomainNRangeValues: (points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[] | IHorizontalBarChartWithAxisDataPoint[] | IGroupedVerticalBarChartData[] | IHeatMapChartDataPoint[], margins: IMargins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
+    getDomainNRangeValues: (points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[] | IHorizontalBarChartWithAxisDataPoint[] | IGroupedVerticalBarChartData[] | IHeatMapChartDataPoint[] | IGanttChartDataPoint[], margins: IMargins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
-    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[] | IScatterChartDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
+    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[] | IScatterChartDataPoint[] | IGanttChartDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
         startValue: number;
         endValue: number;
     };

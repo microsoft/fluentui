@@ -62,7 +62,7 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
-import { IScatterChartDataPoint, IScatterChartPoints } from '../types/IDataPoint';
+import { IGanttChartDataPoint, IScatterChartDataPoint, IScatterChartPoints } from '../types/IDataPoint';
 import {
   formatDateToLocaleString,
   formatToLocaleString,
@@ -85,6 +85,7 @@ export enum ChartTypes {
   HeatMapChart,
   HorizontalBarChartWithAxis,
   ScatterChart,
+  GanttChart,
 }
 
 export enum XAxisTypes {
@@ -1444,18 +1445,24 @@ export function findVerticalNumericMinMaxOfY(
   return { startValue: d3Min(values)!, endValue: d3Max(values)! };
 }
 /**
- * Fins the min and max values of the vertical bar chart y axis data point.
+ * Fins the min and max values of the horizontal bar chart y axis data point.
  * @export
- * @param {IVerticalBarChartDataPoint[]} points
+ * @param {IHorizontalBarChartWithAxisDataPoint[]|IGanttChartDataPoint[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
 export function findHBCWANumericMinMaxOfY(
-  points: IHorizontalBarChartWithAxisDataPoint[],
+  points: IHorizontalBarChartWithAxisDataPoint[] | IGanttChartDataPoint[],
   yAxisType: YAxisType | undefined,
 ): { startValue: number; endValue: number } {
   if (yAxisType !== undefined && yAxisType === YAxisType.NumericAxis) {
-    const yMax = d3Max(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
-    const yMin = d3Min(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+    const yMax = d3Max(
+      points,
+      (point: IHorizontalBarChartWithAxisDataPoint | IGanttChartDataPoint) => point.y as number,
+    )!;
+    const yMin = d3Min(
+      points,
+      (point: IHorizontalBarChartWithAxisDataPoint | IGanttChartDataPoint) => point.y as number,
+    )!;
     return { startValue: yMin, endValue: yMax };
   }
   return { startValue: 0, endValue: 0 };
