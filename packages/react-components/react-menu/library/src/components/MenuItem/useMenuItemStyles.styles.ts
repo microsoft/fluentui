@@ -147,6 +147,9 @@ const useStyles = makeStyles({
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
+    [`& .${menuItemClassNames.subText}`]: {
+      color: tokens.colorNeutralForegroundDisabled,
+    },
     ':hover': {
       color: tokens.colorNeutralForegroundDisabled,
       backgroundColor: tokens.colorNeutralBackground1,
@@ -160,11 +163,18 @@ const useStyles = makeStyles({
       [`& .${menuItemClassNames.icon}`]: {
         color: tokens.colorNeutralForegroundDisabled,
       },
+      [`& .${menuItemClassNames.subText}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
+      },
     },
 
     ':hover:active': {
       color: tokens.colorNeutralForegroundDisabled,
       backgroundColor: tokens.colorNeutralBackground1,
+
+      [`& .${menuItemClassNames.subText}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
+      },
     },
 
     ':focus': {
@@ -173,12 +183,24 @@ const useStyles = makeStyles({
 
     '@media (forced-colors: active)': {
       color: 'GrayText',
+      [`& .${menuItemClassNames.subText}`]: {
+        color: 'GrayText',
+      },
       ':hover': {
         color: 'GrayText',
         backgroundColor: 'Canvas',
         [`& .${menuItemClassNames.icon}`]: {
           color: 'GrayText',
           backgroundColor: 'Canvas',
+        },
+        [`& .${menuItemClassNames.subText}`]: {
+          color: 'GrayText',
+        },
+      },
+      ':hover:active': {
+        color: 'GrayText',
+        [`& .${menuItemClassNames.subText}`]: {
+          color: 'GrayText',
         },
       },
       ':focus': {
@@ -240,7 +262,8 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
       menuItemClassNames.secondaryContent,
-      !state.disabled && secondaryContentBaseStyles,
+      secondaryContentBaseStyles,
+      state.disabled && styles.disabled,
       state.secondaryContent.className,
       multiline && multilineStyles.secondaryContent,
     );
