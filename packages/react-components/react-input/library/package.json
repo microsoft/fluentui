@@ -21,6 +21,7 @@
   "dependencies": {
     "@fluentui/react-field": "^9.2.6",
     "@fluentui/react-jsx-runtime": "^9.0.54",
+    "@fluentui/semantic-tokens": "0.0.0-alpha.1",
     "@fluentui/react-shared-contexts": "^9.23.1",
     "@fluentui/react-theme": "^9.1.24",
     "@fluentui/react-utilities": "^9.19.0",

@@ -2,6 +2,7 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { InputSlots, InputState } from './Input.types';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const inputClassNames: SlotClassNames<InputSlots> = {
   root: 'fui-Input',
@@ -42,7 +43,7 @@ const useRootClassName = makeResetStyles({
   alignItems: 'center',
   flexWrap: 'nowrap',
   gap: tokens.spacingHorizontalXXS,
-  borderRadius: tokens.borderRadiusMedium, // used for all but underline
+  borderRadius: semanticTokens.cornerCtrlRest, // used for all but underline
   position: 'relative',
   boxSizing: 'border-box',
   verticalAlign: 'middle',
@@ -52,9 +53,9 @@ const useRootClassName = makeResetStyles({
   ...typographyStyles.body1,
 
   // appearance: outline (default)
-  backgroundColor: tokens.colorNeutralBackground1,
-  border: `1px solid ${tokens.colorNeutralStroke1}`,
-  borderBottomColor: tokens.colorNeutralStrokeAccessible,
+  backgroundColor: semanticTokens._ctrlInputBackgroundRestLighter,
+  border: `1px solid ${semanticTokens.ctrlInputStrokeRest}`,
+  borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeRest,
 
   // This is all for the bottom focus border.
   // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
@@ -78,7 +79,7 @@ const useRootClassName = makeResetStyles({
     // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
     // (This could be done without trimming using `background: linear-gradient(...)`, but using
     // borderBottom makes it easier for people to override the color if needed.)
-    borderBottom: `2px solid ${tokens.colorCompoundBrandStroke}`,
+    borderBottom: `2px solid ${semanticTokens.ctrlInputBottomLineStrokeSelected}`,
     clipPath: 'inset(calc(100% - 2px) 0 0 0)',
 
     // Animation for focus OUT
@@ -106,7 +107,7 @@ const useRootClassName = makeResetStyles({
   },
   ':focus-within:active::after': {
     // This is if the user clicks the field again while it's already focused
-    borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+    borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeSelected,
   },
   ':focus-within': {
     outline: '2px solid transparent',
@@ -131,13 +132,16 @@ const useRootStyles = makeStyles({
   },
   outlineInteractive: {
     ':hover': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+      ...shorthands.borderColor(semanticTokens.ctrlInputStrokeHover),
+      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeHover,
+      ':focus-within': {
+        borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeSelected,
+      },
     },
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+      ...shorthands.borderColor(semanticTokens.ctrlInputStrokeSelected),
+      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokePressed,
     },
   },
   underline: {
@@ -155,11 +159,11 @@ const useRootStyles = makeStyles({
   },
   underlineInteractive: {
     ':hover': {
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeHover,
     },
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeSelected,
     },
     '::after': {
       // remove rounded corners from focus underline
@@ -167,40 +171,40 @@ const useRootStyles = makeStyles({
     },
   },
   filled: {
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    ...shorthands.borderColor(semanticTokens.ctrlFocusOuterStroke),
   },
   filledInteractive: {
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':hover,:focus-within': {
       // also handles pressed border color (:active)
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+      ...shorthands.borderColor(semanticTokens._ctrlFocusOuterStrokeInteractive),
     },
   },
   invalid: {
     ':not(:focus-within),:hover:not(:focus-within)': {
-      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+      ...shorthands.borderColor(semanticTokens.ctrlInputBackgroundError),
     },
   },
   'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: semanticTokens._ctrlInputBackgroundRestDarker,
   },
   'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: semanticTokens._ctrlInputBackgroundRestLighter,
   },
   // This shadow appearance is deprecated and will be removed in a future release.
   'filled-darker-shadow': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: semanticTokens._ctrlInputBackgroundRestDarker,
     boxShadow: tokens.shadow2,
   },
   // This shadow appearance is deprecated and will be removed in a future release.
   'filled-lighter-shadow': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: semanticTokens._ctrlInputBackgroundRestLighter,
     boxShadow: tokens.shadow2,
   },
   disabled: {
     cursor: 'not-allowed',
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    ...shorthands.borderColor(semanticTokens.strokeCtrlOnNeutralDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
     },
@@ -240,12 +244,12 @@ const useInputClassName = makeResetStyles({
   minWidth: 0, // required to make the input shrink to fit the wrapper
   borderStyle: 'none', // input itself never has a border (this is handled by inputWrapper)
   padding: `0 ${horizontalPadding.combined.medium}`,
-  color: tokens.colorNeutralForeground1,
+  color: semanticTokens.foregroundContentNeutralPrimary,
   // Use literal "transparent" (not from the theme) to always let the color from the root show through
   backgroundColor: 'transparent',
 
   '::placeholder': {
-    color: tokens.colorNeutralForeground4,
+    color: semanticTokens._ctrlInputNeutralForegroundPlaceholder,
     opacity: 1, // browser style override
   },
 
@@ -289,18 +293,18 @@ const useInputElementStyles = makeStyles({
     paddingRight: horizontalPadding.input.large,
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     backgroundColor: tokens.colorTransparentBackground,
     cursor: 'not-allowed',
     '::placeholder': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     },
   },
 });
 
 const useContentClassName = makeResetStyles({
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground3, // "icon color" in design spec
+  color: semanticTokens.foregroundCtrlIconOnNeutralRest, // "icon color" in design spec
   display: 'flex',
   // special case styling for icons (most common case) to ensure they're centered vertically
   // size: medium (default)
@@ -309,7 +313,7 @@ const useContentClassName = makeResetStyles({
 
 const useContentStyles = makeStyles({
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
   },
   // Ensure resizable icons show up with the proper font size
   small: {

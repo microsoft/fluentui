@@ -109,6 +109,7 @@ export const fluentOverrides: FluentOverrides = {
   foregroundContentNeutralPrimary: { f2Token: 'colorNeutralForeground1' },
   foregroundContentNeutralSecondary: { f2Token: 'colorNeutralForeground2' },
   foregroundCtrlIconOnNeutralDisabled: { f2Token: 'colorNeutralForegroundDisabled' },
+  foregroundCtrlIconOnNeutralRest: { f2Token: 'colorNeutralForeground3' },
   foregroundCtrlIconOnSubtleDisabled: { f2Token: 'colorNeutralForegroundDisabled' },
   foregroundCtrlIconOnSubtleHover: { f2Token: 'colorNeutralForeground2BrandHover' },
   foregroundCtrlIconOnSubtlePressed: { f2Token: 'colorNeutralForeground2BrandPressed' },

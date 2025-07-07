@@ -114,6 +114,7 @@ import {
   colorNeutralForeground1Pressed,
   colorNeutralForeground2Hover,
   colorNeutralForeground2Pressed,
+  colorNeutralForeground3,
   colorNeutralForeground2BrandHover,
   colorNeutralForeground2BrandPressed,
   colorNeutralForegroundInverted,
@@ -556,7 +557,7 @@ export const foregroundCtrlNeutralPrimaryHover = `var(${foregroundCtrlNeutralPri
 export const foregroundCtrlNeutralPrimaryPressed = `var(${foregroundCtrlNeutralPrimaryPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1Pressed}))`;
 export const foregroundCtrlNeutralSecondaryHover = `var(${foregroundCtrlNeutralSecondaryHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground2Hover}))`;
 export const foregroundCtrlNeutralSecondaryPressed = `var(${foregroundCtrlNeutralSecondaryPressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground2Pressed}))`;
-export const foregroundCtrlIconOnNeutralRest = `var(${foregroundCtrlIconOnNeutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}))`;
+export const foregroundCtrlIconOnNeutralRest = `var(${foregroundCtrlIconOnNeutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground3}))`;
 export const foregroundCtrlIconOnNeutralHover = `var(${foregroundCtrlIconOnNeutralHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}))`;
 export const foregroundCtrlIconOnNeutralPressed = `var(${foregroundCtrlIconOnNeutralPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}))`;
 export const foregroundCtrlIconOnNeutralDisabled = `var(${foregroundCtrlIconOnNeutralDisabledRaw}, var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${colorNeutralForegroundDisabled}))`;
