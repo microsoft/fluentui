@@ -17,15 +17,15 @@
     },
     "e2e:integration": {
       "dependsOn": [],
-      "inputs": ["{projectRoot}/cypress-react-18.config.ts", "{workspaceRoot}/packages/react-examples/**/*.e2e.tsx?"]
+      "inputs": ["{projectRoot}/cypress-react-18.config.ts", "{workspaceRoot}/packages/react-examples/**/*.e2e.ts(x)?"]
     },
     "test:integration": {
       "dependsOn": ["^build"],
-      "inputs": ["{projectRoot}/jest-react-18.config.js", "{workspaceRoot}/packages/react/**/*.(test|spec).tsx?"]
+      "inputs": ["{projectRoot}/jest-react-18.config.js", "{workspaceRoot}/packages/react/**/*.(test|spec).ts(x)?"]
     },
     "build:integration": {
       "dependsOn": ["^build"],
-      "inputs": ["{workspaceRoot}/packages/react/**/*.(test|spec).tsx?"]
+      "inputs": ["{workspaceRoot}/packages/react/**/*.(test|spec).ts(x)?"]
     }
   }
 }

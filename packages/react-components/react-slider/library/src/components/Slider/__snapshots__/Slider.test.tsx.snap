@@ -9,7 +9,7 @@ exports[`Slider renders disabled Slider correctly 1`] = `
     <input
       class="fui-Slider__input"
       disabled=""
-      id="slider-1"
+      id="slider-ra"
       max="10"
       min="0"
       type="range"
@@ -33,7 +33,7 @@ exports[`Slider renders horizontal Slider correctly 1`] = `
   >
     <input
       class="fui-Slider__input"
-      id="slider-1"
+      id="slider-r8"
       max="10"
       min="0"
       type="range"
@@ -57,7 +57,7 @@ exports[`Slider renders vertical Slider correctly 1`] = `
   >
     <input
       class="fui-Slider__input"
-      id="slider-1"
+      id="slider-r9"
       max="10"
       min="0"
       orient="vertical"

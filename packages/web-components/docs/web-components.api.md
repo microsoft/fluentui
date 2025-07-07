@@ -480,7 +480,9 @@ export class BaseButton extends FASTElement {
     // (undocumented)
     connectedCallback(): void;
     defaultSlottedContent: HTMLElement[];
-    disabled?: boolean;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
     disabledFocusable: boolean;
     // @internal
     disabledFocusableChanged(previous: boolean, next: boolean): void;
@@ -501,7 +503,6 @@ export class BaseButton extends FASTElement {
     name?: string;
     protected press(): void;
     resetForm(): void;
-    tabIndex: number;
     type: ButtonType;
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
@@ -3278,8 +3279,6 @@ export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationSt
 // @public
 export class Radio extends BaseCheckbox {
     constructor();
-    // (undocumented)
-    connectedCallback(): void;
     // @internal @override
     protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal @override

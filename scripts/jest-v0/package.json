@@ -1,0 +1,14 @@
+{
+  "name": "@fluentui/scripts-jest-v0",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.js",
+  "dependencies": {
+    "@fluentui/scripts-monorepo": "*",
+    "@fluentui/scripts-utils": "*",
+    "enzyme": "3.10.0",
+    "enzyme-to-json": "3.6.2",
+    "@wojtekmaj/enzyme-adapter-react-17": "0.6.7"
+  },
+  "devDependencies": {}
+}

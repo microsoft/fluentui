@@ -11,7 +11,7 @@ type MediaObjectTypes = {
   textAlignment?: 'start' | 'center';
 };
 
-const MediaObject: React.VoidFunctionComponent<MediaObjectTypes> = ({
+const MediaObject: React.FunctionComponent<MediaObjectTypes> = ({
   media,
   text,
   textPosition = 'after',

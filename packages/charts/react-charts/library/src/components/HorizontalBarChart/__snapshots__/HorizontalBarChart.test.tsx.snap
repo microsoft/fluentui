@@ -45,7 +45,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="2020/04/30, 10%."
               class="fui-hbc__barWrapper"
-              data-is-focusable="true"
               fill="#004b50"
               height="12"
               opacity="1"
@@ -58,7 +57,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="13457/15000."
               class="fui-hbc__barWrapper"
-              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -111,7 +109,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="2020/04/30, 5%."
               class="fui-hbc__barWrapper"
-              data-is-focusable="true"
               fill="#5c2d91"
               height="12"
               opacity="1"
@@ -124,7 +121,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="14200/15000."
               class="fui-hbc__barWrapper"
-              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -177,7 +173,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="2020/04/30, 59%."
               class="fui-hbc__barWrapper"
-              data-is-focusable="true"
               fill="#a4262c"
               height="12"
               opacity="1"
@@ -190,7 +185,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="6112/15000."
               class="fui-hbc__barWrapper"
-              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -205,7 +199,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout70"
+      id="calloutr25"
     />
   </div>
 </div>
@@ -256,7 +250,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="2020/04/30, 10%."
               class="fui-hbc__barWrapper"
-              data-is-focusable="true"
               fill="#004b50"
               height="12"
               opacity="1"
@@ -269,7 +262,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="13457/15000."
               class="fui-hbc__barWrapper"
-              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -322,7 +314,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="2020/04/30, 5%."
               class="fui-hbc__barWrapper"
-              data-is-focusable="true"
               fill="#5c2d91"
               height="12"
               opacity="1"
@@ -335,7 +326,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="14200/15000."
               class="fui-hbc__barWrapper"
-              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -388,7 +378,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="2020/04/30, 59%."
               class="fui-hbc__barWrapper"
-              data-is-focusable="true"
               fill="#a4262c"
               height="12"
               opacity="1"
@@ -401,7 +390,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             <rect
               aria-label="6112/15000."
               class="fui-hbc__barWrapper"
-              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -416,7 +404,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout75"
+      id="calloutr2a"
     />
   </div>
 </div>
@@ -425,7 +413,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
 exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider76"
+    class="fui-FluentProvider fui-FluentProviderr2b"
     dir="ltr"
   >
     <div
@@ -471,7 +459,6 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               <rect
                 aria-label="2020/04/30, 10%."
                 class="fui-hbc__barWrapper"
-                data-is-focusable="true"
                 fill="#004b50"
                 height="12"
                 opacity="1"
@@ -484,7 +471,6 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               <rect
                 aria-label="13457/15000."
                 class="fui-hbc__barWrapper"
-                data-is-focusable="false"
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 opacity="1"
@@ -537,7 +523,6 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               <rect
                 aria-label="2020/04/30, 5%."
                 class="fui-hbc__barWrapper"
-                data-is-focusable="true"
                 fill="#5c2d91"
                 height="12"
                 opacity="1"
@@ -550,7 +535,6 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               <rect
                 aria-label="14200/15000."
                 class="fui-hbc__barWrapper"
-                data-is-focusable="false"
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 opacity="1"
@@ -603,7 +587,6 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               <rect
                 aria-label="2020/04/30, 59%."
                 class="fui-hbc__barWrapper"
-                data-is-focusable="true"
                 fill="#a4262c"
                 height="12"
                 opacity="1"
@@ -616,7 +599,6 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               <rect
                 aria-label="6112/15000."
                 class="fui-hbc__barWrapper"
-                data-is-focusable="false"
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 opacity="1"
@@ -631,7 +613,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout81"
+        id="calloutr2g"
       />
     </div>
   </div>
@@ -642,7 +624,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_HBC_empty82"
+    id="_HBC_emptyr2h"
     role="alert"
     style="opacity: 0;"
   />
@@ -695,7 +677,6 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             <rect
               aria-label="2020/04/30, 10%."
               class="fui-hbc__barWrapper"
-              data-is-focusable="true"
               fill="#004b50"
               height="12"
               opacity="1"
@@ -708,7 +689,6 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             <rect
               aria-label="13457/15000."
               class="fui-hbc__barWrapper"
-              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -761,7 +741,6 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             <rect
               aria-label="2020/04/30, 5%."
               class="fui-hbc__barWrapper"
-              data-is-focusable="true"
               fill="#5c2d91"
               height="12"
               opacity="1"
@@ -774,7 +753,6 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             <rect
               aria-label="14200/15000."
               class="fui-hbc__barWrapper"
-              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -827,7 +805,6 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             <rect
               aria-label="2020/04/30, 59%."
               class="fui-hbc__barWrapper"
-              data-is-focusable="true"
               fill="#a4262c"
               height="12"
               opacity="1"
@@ -840,7 +817,6 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             <rect
               aria-label="6112/15000."
               class="fui-hbc__barWrapper"
-              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -855,7 +831,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout86"
+      id="calloutr2l"
     />
   </div>
 </div>
@@ -906,7 +882,6 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             <rect
               aria-label="2020/04/30, 10%."
               class="fui-hbc__barWrapper"
-              data-is-focusable="true"
               fill="#004b50"
               height="12"
               opacity="1"
@@ -919,7 +894,6 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             <rect
               aria-label="13457/15000."
               class="fui-hbc__barWrapper"
-              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -972,7 +946,6 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             <rect
               aria-label="2020/04/30, 5%."
               class="fui-hbc__barWrapper"
-              data-is-focusable="true"
               fill="#5c2d91"
               height="12"
               opacity="1"
@@ -985,7 +958,6 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             <rect
               aria-label="14200/15000."
               class="fui-hbc__barWrapper"
-              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -1038,7 +1010,6 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             <rect
               aria-label="2020/04/30, 59%."
               class="fui-hbc__barWrapper"
-              data-is-focusable="true"
               fill="#a4262c"
               height="12"
               opacity="1"
@@ -1051,7 +1022,6 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             <rect
               aria-label="6112/15000."
               class="fui-hbc__barWrapper"
-              data-is-focusable="false"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
@@ -1066,7 +1036,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout5"
+      id="calloutr4"
     />
   </div>
 </div>
@@ -1115,7 +1085,6 @@ Object {
                 <rect
                   aria-label="2020/04/30, 10%."
                   class="fui-hbc__barWrapper"
-                  data-is-focusable="true"
                   fill="#004b50"
                   height="12"
                   opacity="1"
@@ -1163,7 +1132,6 @@ Object {
                 <rect
                   aria-label="2020/04/30, 5%."
                   class="fui-hbc__barWrapper"
-                  data-is-focusable="true"
                   fill="#5c2d91"
                   height="12"
                   opacity="1"
@@ -1211,7 +1179,6 @@ Object {
                 <rect
                   aria-label="2020/04/30, 59%."
                   class="fui-hbc__barWrapper"
-                  data-is-focusable="true"
                   fill="#a4262c"
                   height="12"
                   opacity="1"
@@ -1228,7 +1195,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout101"
+          id="calloutr34"
         />
       </div>
     </div>
@@ -1239,7 +1206,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-98"
+        id="tooltip-r31"
         role="tooltip"
       >
         one
@@ -1252,7 +1219,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-99"
+        id="tooltip-r32"
         role="tooltip"
       >
         two
@@ -1265,7 +1232,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-100"
+        id="tooltip-r33"
         role="tooltip"
       >
         three
@@ -1309,7 +1276,6 @@ Object {
               <rect
                 aria-label="2020/04/30, 10%."
                 class="fui-hbc__barWrapper"
-                data-is-focusable="true"
                 fill="#004b50"
                 height="12"
                 opacity="1"
@@ -1357,7 +1323,6 @@ Object {
               <rect
                 aria-label="2020/04/30, 5%."
                 class="fui-hbc__barWrapper"
-                data-is-focusable="true"
                 fill="#5c2d91"
                 height="12"
                 opacity="1"
@@ -1405,7 +1370,6 @@ Object {
               <rect
                 aria-label="2020/04/30, 59%."
                 class="fui-hbc__barWrapper"
-                data-is-focusable="true"
                 fill="#a4262c"
                 height="12"
                 opacity="1"
@@ -1422,7 +1386,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout101"
+        id="calloutr34"
       />
     </div>
   </div>,
@@ -1523,7 +1487,6 @@ Object {
                 <rect
                   aria-label="2020/04/30, 10%."
                   class="fui-hbc__barWrapper"
-                  data-is-focusable="true"
                   fill="#004b50"
                   height="12"
                   opacity="1"
@@ -1580,7 +1543,6 @@ Object {
                 <rect
                   aria-label="2020/04/30, 5%."
                   class="fui-hbc__barWrapper"
-                  data-is-focusable="true"
                   fill="#5c2d91"
                   height="12"
                   opacity="1"
@@ -1637,7 +1599,6 @@ Object {
                 <rect
                   aria-label="2020/04/30, 59%."
                   class="fui-hbc__barWrapper"
-                  data-is-focusable="true"
                   fill="#a4262c"
                   height="12"
                   opacity="1"
@@ -1663,7 +1624,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout96"
+          id="calloutr2v"
         />
       </div>
     </div>
@@ -1674,7 +1635,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-93"
+        id="tooltip-r2s"
         role="tooltip"
       >
         one
@@ -1687,7 +1648,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-94"
+        id="tooltip-r2t"
         role="tooltip"
       >
         two
@@ -1700,7 +1661,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-95"
+        id="tooltip-r2u"
         role="tooltip"
       >
         three
@@ -1744,7 +1705,6 @@ Object {
               <rect
                 aria-label="2020/04/30, 10%."
                 class="fui-hbc__barWrapper"
-                data-is-focusable="true"
                 fill="#004b50"
                 height="12"
                 opacity="1"
@@ -1801,7 +1761,6 @@ Object {
               <rect
                 aria-label="2020/04/30, 5%."
                 class="fui-hbc__barWrapper"
-                data-is-focusable="true"
                 fill="#5c2d91"
                 height="12"
                 opacity="1"
@@ -1858,7 +1817,6 @@ Object {
               <rect
                 aria-label="2020/04/30, 59%."
                 class="fui-hbc__barWrapper"
-                data-is-focusable="true"
                 fill="#a4262c"
                 height="12"
                 opacity="1"
@@ -1884,7 +1842,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout96"
+        id="calloutr2v"
       />
     </div>
   </div>,

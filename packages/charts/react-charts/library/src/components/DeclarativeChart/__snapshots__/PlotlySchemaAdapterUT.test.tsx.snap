@@ -368,6 +368,7 @@ Object {
   "chartTitle": "",
   "chartValue": 420,
   "chartValueFormat": [Function],
+  "height": 400,
   "maxValue": 500,
   "minValue": undefined,
   "segments": Array [
@@ -384,6 +385,7 @@ Object {
   ],
   "sublabel": "▲ 20",
   "variant": "multiple-segments",
+  "width": 500,
 }
 `;
 
@@ -2814,6 +2816,7 @@ Object {
   "height": 350,
   "hideLegend": true,
   "hideTickOverlap": true,
+  "noOfCharsToTruncate": 20,
   "rangeValuesForColorScale": Array [
     "rgb(158,1,66)",
     "rgb(213,62,79)",
@@ -2828,6 +2831,7 @@ Object {
     "rgb(94,79,162)",
   ],
   "showYAxisLables": true,
+  "showYAxisLablesTooltip": true,
   "sortOrder": "none",
   "width": undefined,
   "xAxisTitle": "",
@@ -2981,8 +2985,10 @@ Object {
   ],
   "height": 742,
   "hideTickOverlap": true,
+  "noOfCharsToTruncate": 20,
   "secondaryYAxistitle": "",
   "showYAxisLables": true,
+  "showYAxisLablesTooltip": true,
   "width": 850,
   "xAxisTitle": "Votes",
   "yAxisTitle": "Framework",
@@ -3115,7 +3121,6 @@ Object {
     },
     "chartTitle": "Scottish Referendum Voters who now want Independence",
   },
-  "enableReflow": true,
   "height": 772,
   "width": undefined,
 }
@@ -4869,6 +4874,7 @@ Object {
 
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToVSBCProps - Should return VSBC props 1`] = `
 Object {
+  "barGapMax": 2,
   "barWidth": "auto",
   "chartTitle": "",
   "data": Array [

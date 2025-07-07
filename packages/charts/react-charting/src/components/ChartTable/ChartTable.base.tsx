@@ -20,6 +20,7 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
     return toImage(this._rootElem, undefined, this._isRTL, opts);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { headers, rows, width, height, styles, theme } = this.props;
 
@@ -37,7 +38,7 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
         className={classNames.root}
         style={{ height: height ? `${height}px` : '650px', overflow: 'hidden' }}
       >
-        <svg width={width ?? '100%'} height={height ?? '650px'}>
+        <svg width={width ?? '100%'} height={height ?? '650px'} className={classNames.chart}>
           <foreignObject x="0" y="0" width="100%" height="100%">
             <div
               style={{

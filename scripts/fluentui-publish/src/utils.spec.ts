@@ -63,8 +63,12 @@ describe(`utils`, () => {
           "react-builder",
           "code-sandbox",
           "digest",
+          "scripts-fluentui-publish",
           "styles",
           "state",
+          "scripts-dangerjs",
+          "scripts-jest-v0",
+          "scripts-gulp",
         ]
       `);
     });

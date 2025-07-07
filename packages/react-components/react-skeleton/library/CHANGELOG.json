@@ -2,6 +2,63 @@
   "name": "@fluentui/react-skeleton",
   "entries": [
     {
+      "date": "Fri, 04 Jul 2025 10:02:51 GMT",
+      "tag": "@fluentui/react-skeleton_v9.3.6",
+      "version": "9.3.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-field to v9.3.6",
+            "commit": "5067a4850156994fbfc977a3bff5b9f3353078fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Jun 2025 13:39:41 GMT",
+      "tag": "@fluentui/react-skeleton_v9.3.5",
+      "version": "9.3.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-field to v9.3.5",
+            "commit": "a22081a0cf560f862587a4485de93ecebb05f16d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jun 2025 14:11:55 GMT",
+      "tag": "@fluentui/react-skeleton_v9.3.4",
+      "version": "9.3.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-field to v9.3.4",
+            "commit": "2b89e39a253fe3570265284b19d2461b9d37fb86"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.1.2",
+            "commit": "2b89e39a253fe3570265284b19d2461b9d37fb86"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-utilities to v9.22.0",
+            "commit": "2b89e39a253fe3570265284b19d2461b9d37fb86"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Jun 2025 15:49:48 GMT",
       "tag": "@fluentui/react-skeleton_v9.3.3",
       "version": "9.3.3",

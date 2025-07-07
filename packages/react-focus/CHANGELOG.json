@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 03 Jul 2025 07:21:40 GMT",
+      "tag": "@fluentui/react-focus_v8.9.25",
+      "version": "8.9.25",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 May 2025 07:22:04 GMT",
       "tag": "@fluentui/react-focus_v8.9.25",
       "version": "8.9.25",

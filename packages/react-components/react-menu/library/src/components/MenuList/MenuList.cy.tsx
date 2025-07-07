@@ -7,7 +7,10 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import { menuItemSelector, menuSelector } from '../../testing/selectors';
 
 import { MenuList, MenuItem, Menu, MenuTrigger, MenuPopover } from '@fluentui/react-menu';
-const mount = (element: JSX.Element) => {
+const mount = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 describe('MenuList', () => {

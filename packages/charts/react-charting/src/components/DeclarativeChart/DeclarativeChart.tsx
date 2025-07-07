@@ -29,6 +29,7 @@ import {
   getAllupLegendsProps,
   NON_PLOT_KEY_PREFIX,
   SINGLE_REPEAT,
+  transformPlotlyJsonToFunnelChartProps,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { LineChart } from '../LineChart/index';
@@ -43,6 +44,7 @@ import { IChart, IImageExportOptions } from '../../types/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import { ScatterChart } from '../ScatterChart/index';
 import { ChartTable } from '../ChartTable/index';
+import { FunnelChart } from '../FunnelChart/FunnelChart';
 import { ILegendsProps, Legends } from '../Legends/index';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
@@ -57,6 +59,7 @@ const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVertica
 const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
 const ResponsiveScatterChart = withResponsiveContainer(ScatterChart);
 const ResponsiveChartTable = withResponsiveContainer(ChartTable);
+const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
 const DEFAULT_XAXIS = 'x';
@@ -126,6 +129,7 @@ function renderChart<TProps>(
   commonProps: Partial<TProps>,
   cellRow: number,
   cellColumn: number,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): JSX.Element {
   const chartProps = transformer(...transformerArgs);
   return (
@@ -210,6 +214,10 @@ type ChartTypeMap = {
     transformer: typeof transformPlotlyJsonToScatterChartProps;
     renderer: typeof ResponsiveScatterChart;
   } & PreTransformHooks;
+  funnel: {
+    transformer: typeof transformPlotlyJsonToFunnelChartProps;
+    renderer: typeof ResponsiveFunnelChart;
+  } & PreTransformHooks;
   fallback: {
     transformer: typeof transformPlotlyJsonToVSBCProps;
     renderer: typeof ResponsiveVerticalStackedBarChart;
@@ -271,6 +279,10 @@ const chartMap: ChartTypeMap = {
     transformer: transformPlotlyJsonToScatterChartProps,
     renderer: ResponsiveScatterChart,
     preTransformOperation: LineAreaPreTransformOp,
+  },
+  funnel: {
+    transformer: transformPlotlyJsonToFunnelChartProps,
+    renderer: ResponsiveFunnelChart,
   },
   fallback: {
     transformer: transformPlotlyJsonToVSBCProps,
@@ -346,6 +358,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     calloutProps: { layerProps: { eventBubblingEnabled: true } },
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   function createLegends(legendProps: ILegendsProps): JSX.Element {
     // eslint-disable-next-line react/jsx-no-bind
     return <Legends {...legendProps} selectedLegends={activeLegends} onChange={onActiveLegendsChange} />;
@@ -500,6 +513,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   );
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 DeclarativeChart.defaultProps = {
   colorwayType: 'default',
 };

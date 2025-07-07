@@ -36,6 +36,7 @@ describe('MenuItemRadio', () => {
    * Note: see more visual regression tests for MenuItemRadio in /apps/vr-tests.
    */
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(
       <MenuItemRadio name="radio" value="1">
         Default MenuItemRadio

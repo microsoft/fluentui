@@ -22,7 +22,8 @@ export const gaugeChartClassNames: SlotClassNames<GaugeChartStyles> = {
   calloutContentY: 'fui-gc__calloutContentY',
   descriptionMessage: 'fui-gc__descriptionMessage',
   calloutInfoContainer: '',
-  legendsContainer: '',
+  legendsContainer: 'fui-gc__legendsContainer',
+  chartWrapper: 'fui-gc__chartWrapper',
 };
 
 const useStyles = makeStyles({
@@ -31,8 +32,8 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: 'var(--root-width, 100%)',
-    height: 'var(--root-height, 100%)',
+    width: '100%',
+    height: '100%',
   },
   chart: {
     display: 'block',
@@ -50,6 +51,7 @@ const useStyles = makeStyles({
   sublabel: {
     ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
   needle: {
     fill: tokens.colorNeutralForeground1,
@@ -58,6 +60,7 @@ const useStyles = makeStyles({
   chartTitle: {
     ...typographyStyles.caption1,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
   segment: {
     outline: 'none',
@@ -113,6 +116,9 @@ const useStyles = makeStyles({
     paddingTop: '10px',
     borderTop: `1px solid ${tokens.colorNeutralStroke1}`,
   },
+  legendsContainer: {
+    width: '100%',
+  },
 });
 export const useGaugeChartStyles = (props: GaugeChartProps): GaugeChartStyles => {
   const baseStyles = useStyles();
@@ -166,6 +172,12 @@ export const useGaugeChartStyles = (props: GaugeChartProps): GaugeChartStyles =>
       gaugeChartClassNames.descriptionMessage,
       baseStyles.descriptionMessage,
       props.styles?.descriptionMessage,
+    ),
+    chartWrapper: mergeClasses(gaugeChartClassNames.chartWrapper, props.styles?.chartWrapper),
+    legendsContainer: mergeClasses(
+      gaugeChartClassNames.legendsContainer,
+      baseStyles.legendsContainer,
+      props.styles?.legendsContainer,
     ),
   };
 };

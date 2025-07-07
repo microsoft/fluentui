@@ -127,7 +127,6 @@ export const LineChartSecondaryYAxis = () => {
           width={width}
           enablePerfOptimization={true}
           useUTC={true}
-          enableReflow={false}
           hideTickOverlap={true}
           secondaryYScaleOptions={{}}
         />

@@ -247,7 +247,9 @@ const validateScatterData = (data: Partial<PlotData>) => {
     if (!isNumberArray(data.y)) {
       throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
     }
-  } else if (['lines+markers', 'markers+lines', 'text+lines+markers', 'lines', 'text+lines'].includes(mode)) {
+  } else if (
+    ['lines+markers', 'markers+lines', 'text+lines+markers', 'lines', 'text+lines', 'lines+text'].includes(mode)
+  ) {
     if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
       throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
     }
@@ -356,6 +358,7 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
       }
     },
   ],
+  funnel: [data => validateSeriesData(data as Partial<PlotData>, false)],
 };
 
 const DEFAULT_CHART_TYPE = '';
@@ -443,6 +446,9 @@ export const mapFluentChart = (input: any): OutputChartType => {
             }
             return { isValid: true, traceIndex, type: 'verticalstackedbar' };
           }
+        case 'funnel':
+        case 'funnelarea':
+          return { isValid: true, traceIndex, type: 'funnel' };
         case 'scatter':
           const scatterData = traceData as Partial<PlotData>;
           const isAreaChart =
