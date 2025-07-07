@@ -199,6 +199,7 @@ const useStyles = makeStyles({
       },
       ':hover:active': {
         color: 'GrayText',
+        backgroundColor: 'Canvas',
         [`& .${menuItemClassNames.subText}`]: {
           color: 'GrayText',
         },
