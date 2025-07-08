@@ -52,6 +52,7 @@ import {
   areArraysEqual,
   getCurveFactory,
   YAxisType,
+  isScatterPolarSeries,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
@@ -210,6 +211,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _yPaddingSecondary: number = 0;
   private _hasMarkersMode: boolean = false;
   private _isXAxisDateType: boolean = false;
+  private _isScatterPolar: boolean = false;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -342,6 +344,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         getMinMaxOfYAxis={this._getNumericMinMaxOfY}
         getGraphData={this._initializeLineChartData}
         xAxisType={this._isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
+        yMaxValue={this._isScatterPolar ? 1 : undefined}
+        yMinValue={this._isScatterPolar ? -1 : undefined}
         customizedCallout={this._getCustomizedCallout()}
         getDomainNRangeValues={this._getDomainNRangeValues}
         createStringYAxis={createStringYAxis}
@@ -470,6 +474,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       : lineChartData;
     this._hasMarkersMode =
       filteredData?.some((item: ILineChartPoints) => item.lineOptions?.mode?.includes?.('markers')) ?? false;
+    this._isScatterPolar = isScatterPolarSeries(filteredData!);
     return filteredData
       ? filteredData.map((item: ILineChartPoints, index: number) => {
           let color: string;
@@ -819,7 +824,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               onBlur={this._handleMouseOut}
               {...this._getClickHandler(this._points[i].data[0].onDataPointClick)}
             />
-            {supportsTextMode && text && (
+            {!this._isScatterPolar && supportsTextMode && text && (
               <text
                 key={`${circleId}-label`}
                 x={this._xAxisScale(x1)}
@@ -959,7 +964,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
 
           const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
-          const supportsTextMode = this._points[i].lineOptions?.mode?.includes('text');
+          const supportsTextMode = this._points[i].lineOptions?.mode?.includes('text') || this._isScatterPolar;
           const text = this._points[i].data[j - 1].text;
           let currentMarkerSize = this._points[i].data[j - 1].markerSize!;
           pointsForLine.push(
@@ -1009,7 +1014,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   role="img"
                   aria-label={this._points[i].data[j - 1].text ?? this._getAriaLabel(i, j - 1)}
                 />
-                {supportsTextMode && text && (
+                {!this._isScatterPolar && supportsTextMode && text && (
                   <text
                     key={`${circleId}-label`}
                     x={this._xAxisScale(x1)}
@@ -1135,7 +1140,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       role="img"
                       aria-label={this._points[i].data[j].text ?? this._getAriaLabel(i, j)}
                     />
-                    {lastSupportsTextMode && lastText && (
+                    {!this._isScatterPolar && lastSupportsTextMode && lastText && (
                       <text
                         key={`${lastCircleId}-label`}
                         x={this._xAxisScale(x2)}
@@ -1335,6 +1340,38 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             }
           }
         }
+      }
+
+      if (this._isScatterPolar) {
+        // Add one label per unique category at the correct angle
+        const uniqueCategories: string[] = [];
+        this._points[i].data.forEach(pt => {
+          if (pt.text && !uniqueCategories.includes(pt.text)) {
+            uniqueCategories.push(pt.text);
+          }
+        });
+        const numCategories = uniqueCategories.length;
+        uniqueCategories.forEach((cat, idx) => {
+          // Calculate angle and position
+          const angle = ((2 * Math.PI) / numCategories) * idx;
+          // Place label at a fixed radius (e.g., 60% of max chart radius)
+          const r = 0.6;
+          const x = this._xAxisScale(r * Math.cos(angle) - (this._points[i].lineOptions as any)?.originXOffset / 2);
+          const y = yScale(r * Math.sin(angle));
+          pointsForLine.push(
+            <text
+              key={`scatterpolar-label-${cat}`}
+              x={x}
+              y={y}
+              className={classNames.markerLabel}
+              textAnchor="middle"
+              alignmentBaseline="middle"
+              opacity={1}
+            >
+              {cat}
+            </text>,
+          );
+        });
       }
 
       lines.push(

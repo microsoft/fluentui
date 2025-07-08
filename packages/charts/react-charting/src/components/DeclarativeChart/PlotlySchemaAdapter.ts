@@ -853,7 +853,8 @@ const transformPlotlyJsonToScatterTraceProps = (
       const seriesOpacity = getOpacity(series, index);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
       // if mode contains 'text', we prioritize showing the text over curving the line
-      const lineOptions = !series.mode?.includes('text') ? getLineOptions(series.line) : undefined;
+      let lineOptions =
+        !series.mode?.includes('text') && series.type !== 'scatterpolar' ? getLineOptions(series.line) : undefined;
       const legendShape = getLegendShape(series);
 
       const validXYRanges = getValidXYRanges(series);
@@ -882,7 +883,11 @@ const transformPlotlyJsonToScatterTraceProps = (
           color: rgb(seriesColor).copy({ opacity: seriesOpacity }).formatHex8() ?? seriesColor,
           lineOptions: {
             ...(lineOptions ?? {}),
-            mode: series.mode,
+            mode: series.type !== 'scatterpolar' ? series.mode : 'scatterpolar',
+            // originXOffset is not typed on Layout, but may be present in input.layout as a part of projection of
+            // scatter polar coordingates to cartesian coordinates
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            originXOffset: (input.layout as any)?.__polarOriginX,
           },
           useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         } as ILineChartPoints;
@@ -1670,24 +1675,34 @@ export const transformPlotlyJsonToFunnelChartProps = (
 export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
   const projection: PlotlySchema = { ...input };
 
-  // 1. Find the global max radius across all series
+  // 1. Find the global min and max radius across all series
+  let minRadius = 0;
   let maxRadius = 0;
   for (let sindex = 0; sindex < input.data.length; sindex++) {
     const rVals = (input.data[sindex] as Partial<PlotData>).r;
     if (rVals) {
       for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
         if (!isInvalidValue(rVals[ptindex])) {
+          minRadius = Math.min(minRadius, rVals[ptindex] as number);
           maxRadius = Math.max(maxRadius, rVals[ptindex] as number);
         }
       }
     }
   }
 
-  // 2. Project all points and create a perfect square domain
+  // 2. If there are negative radii, compute the shift
+  const radiusShift = minRadius < 0 ? -minRadius : 0;
+
+  // 3. Project all points and create a perfect square domain
   const allX: number[] = [];
   const allY: number[] = [];
+  let originX: number | null = null;
   for (let sindex = 0; sindex < input.data.length; sindex++) {
     const series = input.data[sindex] as Partial<PlotData>;
+    // If scatterpolar, set text to theta values as strings
+    if (series.type === 'scatterpolar' && Array.isArray(series.theta)) {
+      series.text = series.theta.map(v => String(v));
+    }
     series.x = [] as Datum[];
     series.y = [] as Datum[];
     const thetas = series.theta!;
@@ -1706,7 +1721,7 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
         continue;
       }
 
-      // 3. Map theta to angle in radians
+      // 4. Map theta to angle in radians
       let thetaRad;
       if (categorical) {
         const idx = uniqueTheta.indexOf(thetas[ptindex]);
@@ -1715,11 +1730,20 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       } else {
         thetaRad = ((thetas[ptindex] as number) * Math.PI) / 180;
       }
-
-      // 4. Calculate cartesian coordinates (without scaling yet)
+      // 5. Shift only the polar origin (not the cartesian)
       const rawRadius = rVals[ptindex] as number;
-      const x = rawRadius * Math.cos(thetaRad);
-      const y = rawRadius * Math.sin(thetaRad);
+      const polarRadius = rawRadius + radiusShift; // Only for projection
+      // 6. Calculate cartesian coordinates (with shifted polar origin)
+      const x = polarRadius * Math.cos(thetaRad);
+      const y = polarRadius * Math.sin(thetaRad);
+
+      // Calculate the cartesian coordinates of the original polar origin (0,0)
+      // This is the point that should be mapped to (0,0) in cartesian coordinates
+      if (sindex === 0 && ptindex === 0) {
+        // For polar origin (r=0, θ=0), cartesian coordinates are (0,0)
+        // But since we shifted the radius by radiusShift, the cartesian origin is at (radiusShift, 0)
+        originX = radiusShift;
+      }
 
       series.x.push(x);
       series.y.push(y);
@@ -1727,14 +1751,37 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       allY.push(y);
     }
 
+    // Map text to each data point for downstream chart rendering
+    if (series.x && series.y) {
+      (series as any).data = series.x.map((xVal, idx) => ({
+        x: xVal,
+        y: (series.y as number[])[idx],
+        ...(series.text ? { text: (series.text as string[])[idx] } : {}),
+      }));
+    }
+
     projection.data[sindex] = series;
   }
 
-  // 5. Find the maximum absolute value among all x and y
+  // 7. Recenter all cartesian coordinates
+  if (originX !== null) {
+    for (let sindex = 0; sindex < projection.data.length; sindex++) {
+      const series = projection.data[sindex] as Partial<PlotData>;
+      if (series.x && series.y) {
+        series.x = (series.x as number[]).map((v: number) => v - originX!);
+      }
+    }
+    // Also recenter allX for normalization
+    for (let i = 0; i < allX.length; i++) {
+      allX[i] = allX[i] - originX!;
+    }
+  }
+
+  // 8. Find the maximum absolute value among all x and y
   let maxAbs = Math.max(...allX.map(Math.abs), ...allY.map(Math.abs));
   maxAbs = maxAbs === 0 ? 1 : maxAbs;
 
-  // 6. Rescale all points so that the largest |x| or |y| is 0.5
+  // 9. Rescale all points so that the largest |x| or |y| is 0.5
   for (let sindex = 0; sindex < projection.data.length; sindex++) {
     const series = projection.data[sindex] as Partial<PlotData>;
     if (series.x && series.y) {
@@ -1743,13 +1790,15 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
     }
   }
 
-  // 7. Customize layout for perfect square with absolute positioning
+  // 10. Customize layout for perfect square with absolute positioning
   const size = input.layout?.width || input.layout?.height || 500;
   projection.layout = {
     ...projection.layout,
     width: size,
     height: size,
   };
+  // Attach originX as custom properties
+  (projection.layout as any).__polarOriginX = originX;
 
   return projection;
 };

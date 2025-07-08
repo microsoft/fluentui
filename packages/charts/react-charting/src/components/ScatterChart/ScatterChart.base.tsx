@@ -12,6 +12,7 @@ import {
   domainRangeOfNumericForScatterChart,
   domainRangeOfXStringAxis,
   findNumericMinMaxOfY,
+  isScatterPolarSeries,
   YAxisType,
 } from '../../utilities/index';
 import {
@@ -89,6 +90,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const [refSelected, setRefSelected] = React.useState<string>('');
   const prevSelectedLegendsRef = React.useRef<string[] | undefined>(undefined);
+  let _isScatterPolar: boolean = false;
 
   const classNames = getClassNames(props.styles!, {
     theme: props.theme!,
@@ -539,7 +541,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
                 aria-label={_getAriaLabel(i, j)}
                 tabIndex={_points.current?.[i]?.legend !== '' ? 0 : undefined}
               />
-              {text && (
+              {!_isScatterPolar && text && (
                 <text
                   key={`${circleId}-label`}
                   x={_xAxisScale.current?.(x) + _xBandwidth.current}
@@ -552,6 +554,41 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
             </>,
           );
         }
+
+        // If this series originated from scatterpolar, render category labels at equal angles
+        const maybeLineOptions = (_points.current?.[i] as any)?.lineOptions;
+        // Add one label per unique category at the correct angle
+        const uniqueCategories: string[] = [];
+        _points.current[i].data.forEach(pt => {
+          if (pt.text && !uniqueCategories.includes(pt.text)) {
+            uniqueCategories.push(pt.text);
+          }
+        });
+        const numCategories = uniqueCategories.length;
+        uniqueCategories.forEach((cat, idx) => {
+          // Calculate angle and position
+          const angle = ((2 * Math.PI) / numCategories) * idx;
+          // Place label at a fixed radius (e.g., 60% of max chart radius)
+          const r = 0.6;
+          // Use the same scaling as the chart: x = r*cos(angle), y = r*sin(angle)
+          // If originXOffset is present, use it
+          const originXOffset = maybeLineOptions?.originXOffset || 0;
+          const x = _xAxisScale.current(r * Math.cos(angle) - originXOffset / 2) + _xBandwidth.current;
+          const y = _yAxisScale.current(r * Math.sin(angle));
+          pointsForSeries.push(
+            <text
+              key={`scatterpolar-label-${cat}`}
+              x={x}
+              y={y}
+              className={classNames.markerLabel}
+              textAnchor="middle"
+              alignmentBaseline="middle"
+              opacity={1}
+            >
+              {cat}
+            </text>,
+          );
+        });
 
         series.push(
           <g
@@ -623,9 +660,10 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     ) => {
       _xAxisScale.current = xScale;
       _yAxisScale.current = yScale;
+      _isScatterPolar = isScatterPolarSeries(_points.current);
       renderSeries.current = _createPlot(xElement!, containerHeight!);
     },
-    [renderSeries, _xAxisScale, _yAxisScale, _createPlot],
+    [renderSeries, _xAxisScale, _yAxisScale, _isScatterPolar, _createPlot],
   );
 
   /**
@@ -749,6 +787,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}
       componentRef={cartesianChartRef}
+      yMaxValue={1}
+      yMinValue={-1}
       /* eslint-disable react/jsx-no-bind */
       // eslint-disable-next-line react/no-children-prop
       children={(childProps: IChildProps) => {
