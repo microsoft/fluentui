@@ -17,6 +17,7 @@ export {
   useSemanticDrawerHeaderStyles,
   useSemanticOverlayDrawerSurfaceStyles,
 } from './component-styles/Drawer';
+export { useSemanticFieldStyles } from './component-styles/Field';
 export { useSemanticLabelStyles } from './component-styles/Label';
 export { useSemanticLinkStyles } from './component-styles/Link';
 export { useSemanticProgressBarStyles } from './component-styles/ProgressBar/useSemanticProgressBarStyles.styles';

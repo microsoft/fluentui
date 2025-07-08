@@ -191,8 +191,10 @@ export const fluentOverrides: FluentOverrides = {
   foregroundCtrlOnTransparentPressed: { f2Token: 'colorNeutralForeground2BrandPressed' },
   foregroundCtrlOnTransparentRest: { f2Token: 'colorNeutralForeground2' },
   gapBetweenContentSmall: { rawValue: '8px' },
+  gapBetweenContentXSmall: { f2Token: 'spacingVerticalXXS' },
   gapBetweenCtrlDefault: { rawValue: '8px' },
   gapBetweenListItem: { f2Token: 'spacingVerticalXXS' },
+  gapBetweenTextSmall: { f2Token: 'spacingHorizontalXS' },
   gapInsideCtrlDefault: { f2Token: 'spacingHorizontalS' },
   gapInsideCtrlLgDefault: { f2Token: 'spacingHorizontalSNudge' },
   gapInsideCtrlLgToLabel: { f2Token: 'spacingHorizontalS' },
@@ -331,6 +333,7 @@ export const fluentOverrides: FluentOverrides = {
   textRampLgLegalFontSize: { f2Token: 'fontSizeBase200' }, // React-badge uses the same as medium font size for large
   textRampLgLegalLineHeight: { f2Token: 'lineHeightBase200' }, // React-badge uses the same as medium line height for large
   textRampMetadataFontSize: { f2Token: 'fontSizeBase200' }, // should be fontSizeBase100 per Menu design
+  textRampMetadataLineHeight: { f2Token: 'lineHeightBase200' },
   textRampReadingBodyFontSize: { f2Token: 'fontSizeBase300' },
   textRampReadingBodyLineHeight: { f2Token: 'lineHeightBase300' },
   textRampSectionHeaderFontSize: { f2Token: 'fontSizeBase500' },
