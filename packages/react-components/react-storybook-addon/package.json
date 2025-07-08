@@ -16,7 +16,6 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@fluentui/copilot-theme-semantic-tokens-preview": "0.0.0",
     "@fluentui/react-aria": "^9.14.6",
     "@fluentui/react-provider": "^9.20.6",
     "@fluentui/react-theme": "^9.1.24",
@@ -26,6 +25,7 @@
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
+    "@fluentui/copilot-theme-semantic-tokens-preview": "0.0.0",
     "@storybook/components": "^7.6.20",
     "@storybook/manager-api": "^7.6.20",
     "@storybook/react": "^7.6.20",
