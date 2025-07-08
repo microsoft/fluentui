@@ -29,7 +29,7 @@ export const popoverClassNames: SlotClassNames<PopoverComponentStyles> = {
  */
 const useStyles = makeStyles({
   calloutContentRoot: {
-    display: 'contents',
+    display: 'grid',
     overflow: 'hidden',
     ...shorthands.padding('11px 16px 10px 16px'),
     backgroundColor: tokens.colorNeutralBackground1,

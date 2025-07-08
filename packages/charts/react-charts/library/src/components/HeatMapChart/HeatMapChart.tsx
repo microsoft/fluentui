@@ -651,6 +651,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     descriptionMessage,
     clickPosition,
     ...getAccessibleDataObject(callOutAccessibilityData, 'text', false),
+    className: classes.calloutStyles,
   };
   const tickParams = {
     tickValues: props.tickValues,

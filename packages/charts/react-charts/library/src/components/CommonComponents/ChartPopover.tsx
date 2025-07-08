@@ -50,7 +50,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
             _multiValueCallout()}
           {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
           {(!props.customCallout || !props.customCallout.customizedCallout) && !props.isCalloutForStack && (
-            <div className={classes.calloutContentRoot}>
+            <div className={props.className ?? classes.calloutContentRoot}>
               <div className={classes.calloutDateTimeContainer}>
                 <div className={classes.calloutContentX}>{props.XValue} </div>
                 {/*TO DO  if we add time for callout then will use this */}
