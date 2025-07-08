@@ -24,7 +24,7 @@ export const slideAtom = ({
   fromX = '0px',
   fromY = '0px',
 }: SlideAtomParams): AtomMotion => {
-  const keyframes = [{ transform: `translate3d(${fromX}, ${fromY}, 0)` }, { transform: 'translate3d(0, 0, 0)' }];
+  const keyframes = [{ translate: `${fromX} ${fromY}` }, { translate: '0px 0px' }];
   if (direction === 'exit') {
     keyframes.reverse();
   }
