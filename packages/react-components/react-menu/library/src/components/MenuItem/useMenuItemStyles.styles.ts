@@ -147,9 +147,6 @@ const useStyles = makeStyles({
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
-    [`& .${menuItemClassNames.subText}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
-    },
     ':hover': {
       color: tokens.colorNeutralForegroundDisabled,
       backgroundColor: tokens.colorNeutralBackground1,
@@ -183,9 +180,6 @@ const useStyles = makeStyles({
 
     '@media (forced-colors: active)': {
       color: 'GrayText',
-      [`& .${menuItemClassNames.subText}`]: {
-        color: 'GrayText',
-      },
       ':hover': {
         color: 'GrayText',
         backgroundColor: 'Canvas',
@@ -208,6 +202,16 @@ const useStyles = makeStyles({
         color: 'GrayText',
         backgroundColor: 'Canvas',
       },
+    },
+  },
+});
+
+const useSubTextStyles = makeStyles({
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+
+    '@media (forced-colors: active)': {
+      color: 'GrayText',
     },
   },
 });
@@ -239,6 +243,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   const submenuIndicatorBaseStyles = useSubmenuIndicatorBaseStyles();
   const multilineStyles = useMultilineStyles();
   const subtextBaseStyles = useSubtextBaseStyles();
+  const subTextStyles = useSubTextStyles();
   const multiline = !!state.subText;
   state.root.className = mergeClasses(
     menuItemClassNames.root,
@@ -284,7 +289,12 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   }
 
   if (state.subText) {
-    state.subText.className = mergeClasses(menuItemClassNames.subText, state.subText.className, subtextBaseStyles);
+    state.subText.className = mergeClasses(
+      menuItemClassNames.subText,
+      state.disabled && subTextStyles.disabled,
+      state.subText.className,
+      subtextBaseStyles,
+    );
   }
 
   useCheckmarkStyles_unstable(state as MenuItemCheckboxState);
