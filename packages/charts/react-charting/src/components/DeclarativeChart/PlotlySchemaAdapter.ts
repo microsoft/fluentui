@@ -26,6 +26,7 @@ import {
   IVerticalBarChartDataPoint,
   ISankeyChartData,
   ILineChartLineOptions,
+  IGanttChartDataPoint,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -73,6 +74,7 @@ import { getOpacity, extractColor, resolveColor } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
+import { IGanttChartProps } from '../GanttChart/GanttChart.types';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
 export const SINGLE_REPEAT = 'repeat(1, 1fr)';
@@ -1010,6 +1012,82 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     barHeight,
     showYAxisLables: true,
     height: chartHeight,
+    width: input.layout?.width,
+    hideTickOverlap: true,
+    hideLegend,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
+    roundCorners: true,
+    ...getTitles(input.layout),
+    ...getAxisCategoryOrderProps(input.data, input.layout),
+  };
+};
+
+export const transformPlotlyJsonToGanttChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): IGanttChartProps => {
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  let colorScale: ((value: number) => string) | undefined = undefined;
+  const chartData: IGanttChartDataPoint[] = input.data
+    .map((series: Partial<PlotData>, index: number) => {
+      if (
+        input.layout?.coloraxis?.colorscale?.length &&
+        isArrayOrTypedArray(series.marker?.color) &&
+        (series.marker?.color as Color[]).length > 0 &&
+        typeof (series.marker?.color as Color[])?.[0] === 'number'
+      ) {
+        colorScale = createColorScale(input.layout, series);
+      }
+      // extract colors for each series only once
+      const extractedColors = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.marker?.color,
+        colorMap,
+        isDarkTheme,
+      ) as string[] | string | undefined;
+      const legend = legends[index];
+      return (series.y as Datum[])
+        .map((yValue, i: number) => {
+          if (isInvalidValue(series.x?.[i]) || isInvalidValue(yValue)) {
+            return null;
+          }
+          // resolve color for each legend's bars from the colorscale or extracted colors
+          const color = colorScale
+            ? colorScale(
+                isArrayOrTypedArray(series.marker?.color)
+                  ? ((series.marker?.color as Color[])?.[i % (series.marker?.color as Color[]).length] as number)
+                  : 0,
+              )
+            : resolveColor(extractedColors, i, legend, colorMap, isDarkTheme);
+          const opacity = getOpacity(series, i);
+          const startX = new Date(series.base![i] as number | string);
+
+          return {
+            x: {
+              start: startX,
+              end:
+                typeof series.x![i] === 'number'
+                  ? new Date(startX.getTime() + (series.x![i] as number))
+                  : new Date(startX.getTime() + new Date(series.x![i] as string).getTime()),
+            },
+            y: yValue,
+            legend,
+            color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+          } as IGanttChartDataPoint;
+        })
+        .filter(point => point !== null) as IGanttChartDataPoint[];
+    })
+    .flat();
+
+  return {
+    data: chartData,
+    showYAxisLables: true,
+    height: input.layout?.height ?? 450,
     width: input.layout?.width,
     hideTickOverlap: true,
     hideLegend,

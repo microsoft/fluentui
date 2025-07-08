@@ -45,6 +45,7 @@ const chartTypesWithStringYAxis = [
   ChartTypes.HorizontalBarChartWithAxis,
   ChartTypes.HeatMapChart,
   ChartTypes.VerticalStackedBarChart,
+  ChartTypes.GanttChart,
 ];
 
 export interface ICartesianChartState {
@@ -339,6 +340,7 @@ export class CartesianChartBase
             timeFormatLocale,
             customDateTimeFormatter,
             this.props.useUTC,
+            this.props.chartType,
           ));
           break;
         case XAxisTypes.StringAxis:
@@ -347,6 +349,7 @@ export class CartesianChartBase
             this.props.tickParams!,
             this.props.datasetForXAxisDomain!,
             culture,
+            this.props.chartType,
           ));
           break;
         default:

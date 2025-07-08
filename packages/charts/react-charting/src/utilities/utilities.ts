@@ -265,7 +265,7 @@ export function createNumericXAxis(
     .tickPadding(tickPadding)
     .ticks(tickCount)
     .tickFormat(tickFormat);
-  if (chartType === ChartTypes.HorizontalBarChartWithAxis) {
+  if ([ChartTypes.HorizontalBarChartWithAxis, ChartTypes.GanttChart].includes(chartType)) {
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
   if (tickParams.tickValues) {
@@ -401,6 +401,7 @@ export function createDateXAxis(
   timeFormatLocale?: d3TimeLocaleDefinition,
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: boolean,
+  chartType?: ChartTypes,
 ) {
   const {
     domainNRangeValues,
@@ -471,6 +472,9 @@ export function createDateXAxis(
     .tickPadding(tickPadding)
     .ticks(tickCount)
     .tickFormat(tickFormat);
+  if ([ChartTypes.GanttChart].includes(chartType!)) {
+    xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
+  }
 
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues as Date[]) : '';
   if (xAxisElement) {
@@ -496,6 +500,7 @@ export function createStringXAxis(
   tickParams: ITickParams,
   dataset: string[],
   culture?: string,
+  chartType?: ChartTypes,
 ) {
   const {
     domainNRangeValues,
@@ -547,6 +552,9 @@ export function createStringXAxis(
   }
 
   const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).tickValues(tickValues);
+  if ([ChartTypes.GanttChart].includes(chartType!)) {
+    xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
+  }
 
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
