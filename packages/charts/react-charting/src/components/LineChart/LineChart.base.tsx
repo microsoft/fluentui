@@ -57,6 +57,7 @@ import {
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
+import { renderScatterPolarCategoryLabels } from '../../utilities/chartHelpers';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -1343,38 +1344,20 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       }
 
       if (this._isScatterPolar) {
-        // Add one label per unique category at the correct angle
-        const uniqueCategories: string[] = [];
-        this._points[i].data.forEach(pt => {
-          if (pt.text && !uniqueCategories.includes(pt.text)) {
-            uniqueCategories.push(pt.text);
-          }
-        });
-        const numCategories = uniqueCategories.length;
-        uniqueCategories.forEach((cat, idx) => {
-          // Calculate angle and position
-          const angle = ((2 * Math.PI) / numCategories) * idx;
-          // Place label at a fixed radius (e.g., 60% of max chart radius)
-          const r = 0.6;
-          // originXOffset is not typed on ILineChartLineOptions, but may be present for scatterpolar support
-          const originXOffset =
-            (this._points[i].lineOptions as { originXOffset?: number } | undefined)?.originXOffset ?? 0;
-          const x = this._xAxisScale(r * Math.cos(angle) - originXOffset / 2);
-          const y = yScale(r * Math.sin(angle));
-          pointsForLine.push(
-            <text
-              key={`scatterpolar-label-${cat}`}
-              x={x}
-              y={y}
-              className={classNames.markerLabel}
-              textAnchor="middle"
-              alignmentBaseline="middle"
-              opacity={1}
-            >
-              {cat}
-            </text>,
-          );
-        });
+        // If this series originated from scatterpolar, render category labels at equal angles
+        const maybeLineOptions = (this._points[i] as Partial<ILineChartPoints>)?.lineOptions;
+        pointsForLine.push(
+          ...renderScatterPolarCategoryLabels({
+            data: this._points[i].data,
+            xAxisScale: this._xAxisScale,
+            yAxisScale: yScale,
+            className: classNames.markerLabel,
+            maybeLineOptions: maybeLineOptions
+              ? // es-lint-disable-next-line @typescript-eslint/no-explicit-any
+                { originXOffset: (maybeLineOptions as any).originXOffset }
+              : undefined,
+          }),
+        );
       }
 
       lines.push(
