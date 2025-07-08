@@ -1,7 +1,19 @@
 import * as React from 'react';
 import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
+import { makeStyles, mergeClasses, tokens } from '@fluentui/react-components';
+import { HighContrastSelector } from '../../../library/src/utilities/utilities';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+    [HighContrastSelector]: {
+      fill: 'Canvas',
+    },
+  },
+});
 
 export const ScatterChartDate = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
 
@@ -147,6 +159,7 @@ export const ScatterChartDate = () => {
           width={width}
           xAxisTitle={'Date'}
           yAxisTitle={'Number of visitors'}
+          className={mergeClasses(classes.svgTooltip)}
         />
       </div>
     </>

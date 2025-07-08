@@ -1,8 +1,19 @@
 import * as React from 'react';
 import { AreaChart, ChartProps, LineChartDataPoint, LineChartPoints } from '@fluentui/react-charts';
-import { useId } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, tokens, useId } from '@fluentui/react-components';
+import { HighContrastSelector } from '../../../library/src/utilities/utilities';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+    [HighContrastSelector]: {
+      fill: 'Canvas',
+    },
+  },
+});
 
 export const AreaChartSecondaryYAxis = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const _widthSliderId = useId('width-slider-');
@@ -135,6 +146,7 @@ export const AreaChartSecondaryYAxis = () => {
           xAxisTitle="Number of days"
           secondaryYAxistitle="Variation of stock market prices 2"
           secondaryYScaleOptions={{}}
+          className={mergeClasses(classes.svgTooltip)}
         />
       </div>
     </div>

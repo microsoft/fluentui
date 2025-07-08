@@ -8,9 +8,23 @@ import {
   Radio,
   RadioGroup,
   RadioGroupOnChangeData,
+  makeStyles,
+  tokens,
+  mergeClasses,
 } from '@fluentui/react-components';
+import { HighContrastSelector } from '../../../library/src/utilities/utilities';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+    [HighContrastSelector]: {
+      fill: 'Canvas',
+    },
+  },
+});
 
 export const VerticalBarDefault = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [isCalloutselected, setIsCalloutSelected] = React.useState<boolean>(false);
@@ -231,6 +245,7 @@ export const VerticalBarDefault = () => {
                 ? 'Values of each category are shown in the x-axis of the vertical bar chart whose values range from zero to 100,000. The x-axis is divided into 10 equal parts, each part representing 10,000.'
                 : undefined
             }
+            className={mergeClasses(classes.svgTooltip)}
           />
         </div>
       )}
@@ -263,6 +278,7 @@ export const VerticalBarDefault = () => {
             legendProps={{
               canSelectMultipleLegends: selectMultipleLegends,
             }}
+            className={mergeClasses(classes.svgTooltip)}
           />
         </div>
       )}

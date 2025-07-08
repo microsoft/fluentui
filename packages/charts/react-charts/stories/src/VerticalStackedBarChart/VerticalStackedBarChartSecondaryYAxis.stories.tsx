@@ -7,9 +7,20 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts';
-import { useId } from '@fluentui/react-components';
+import { useId, makeStyles, tokens, mergeClasses } from '@fluentui/react-components';
+import { HighContrastSelector } from '../../../library/src/utilities/utilities';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+    [HighContrastSelector]: {
+      fill: 'Canvas',
+    },
+  },
+});
 
 export const VerticalStackedBarSecondaryYAxis = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const _widthSliderId = useId('width-slider-');
@@ -221,6 +232,7 @@ export const VerticalStackedBarSecondaryYAxis = () => {
           yAxisTitle="Variation of number of sales"
           xAxisTitle="Number of days"
           secondaryYScaleOptions={{}}
+          className={mergeClasses(classes.svgTooltip)}
         />
       </div>
     </div>

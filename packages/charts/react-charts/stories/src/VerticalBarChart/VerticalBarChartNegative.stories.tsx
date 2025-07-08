@@ -14,9 +14,23 @@ import {
   Radio,
   RadioGroup,
   RadioGroupOnChangeData,
+  makeStyles,
+  tokens,
+  mergeClasses,
 } from '@fluentui/react-components';
+import { HighContrastSelector } from '../../../library/src/utilities/utilities';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+    [HighContrastSelector]: {
+      fill: 'Canvas',
+    },
+  },
+});
 
 export const VerticalBarNegative = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [isCalloutSelected, setIsCalloutSelected] = React.useState<boolean>(false);
@@ -238,6 +252,7 @@ export const VerticalBarNegative = () => {
             xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
             enableGradient={enableGradient}
             roundCorners={roundCorners}
+            className={mergeClasses(classes.svgTooltip)}
           />
         </div>
       )}
@@ -256,6 +271,7 @@ export const VerticalBarNegative = () => {
             hideLabels={hideLabels}
             enableGradient={enableGradient}
             roundCorners={roundCorners}
+            className={mergeClasses(classes.svgTooltip)}
           />
         </div>
       )}

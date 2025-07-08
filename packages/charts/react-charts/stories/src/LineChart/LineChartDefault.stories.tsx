@@ -1,9 +1,20 @@
 import * as React from 'react';
 import { LineChartProps, LineChart, ChartProps, DataVizPalette } from '@fluentui/react-charts';
-import { Switch, Checkbox } from '@fluentui/react-components';
+import { Switch, Checkbox, makeStyles, tokens, mergeClasses } from '@fluentui/react-components';
 import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
+import { HighContrastSelector } from '../../../library/src/utilities/utilities';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+    [HighContrastSelector]: {
+      fill: 'Canvas',
+    },
+  },
+});
 
 export const LineChartBasic = (props: LineChartProps) => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
@@ -202,6 +213,7 @@ export const LineChartBasic = (props: LineChartProps) => {
             }
             xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
             useUTC={useUTC}
+            className={mergeClasses(classes.svgTooltip)}
           />
         </div>
       )}
@@ -221,6 +233,7 @@ export const LineChartBasic = (props: LineChartProps) => {
             yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
             xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
             useUTC={useUTC}
+            className={mergeClasses(classes.svgTooltip)}
           />
         </div>
       )}

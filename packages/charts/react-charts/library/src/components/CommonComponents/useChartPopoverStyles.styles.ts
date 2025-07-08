@@ -85,7 +85,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
     marginTop: tokens.spacingVerticalMNudge,
     paddingTop: tokens.spacingVerticalMNudge,
-    ...shorthands.borderTop(`1px solid ${tokens.colorNeutralStroke2}`),
+    borderTop: `1px solid ${tokens.colorNeutralStroke2}`,
   },
   ratio: {
     ...typographyStyles.caption2,
