@@ -275,15 +275,15 @@ export const colorNeutralForegroundOnBrand = 'var(--colorNeutralForegroundOnBran
  */
 export const spacingVerticalXXS = 'var(--spacingVerticalXXS)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalSNudge | `spacingHorizontalSNudge`} design token.
- * @public
- */
-export const spacingHorizontalSNudge = 'var(--spacingHorizontalSNudge)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalXS | `spacingHorizontalXS`} design token.
  * @public
  */
 export const spacingHorizontalXS = 'var(--spacingHorizontalXS)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalSNudge | `spacingHorizontalSNudge`} design token.
+ * @public
+ */
+export const spacingHorizontalSNudge = 'var(--spacingHorizontalSNudge)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalNone | `spacingHorizontalNone`} design token.
  * @public
@@ -320,10 +320,20 @@ export const colorPaletteRedForeground3 = 'var(--colorPaletteRedForeground3)';
  */
 export const colorPaletteGreenBackground3 = 'var(--colorPaletteGreenBackground3)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteGreenForeground1 | `colorPaletteGreenForeground1`} design token.
+ * @public
+ */
+export const colorPaletteGreenForeground1 = 'var(--colorPaletteGreenForeground1)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorPaletteDarkOrangeBackground3 | `colorPaletteDarkOrangeBackground3`} design token.
  * @public
  */
 export const colorPaletteDarkOrangeBackground3 = 'var(--colorPaletteDarkOrangeBackground3)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteDarkOrangeForeground1 | `colorPaletteDarkOrangeForeground1`} design token.
+ * @public
+ */
+export const colorPaletteDarkOrangeForeground1 = 'var(--colorPaletteDarkOrangeForeground1)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeOnBrand | `colorNeutralStrokeOnBrand`} design token.
  * @public
@@ -490,6 +500,21 @@ export const borderRadiusSmall = 'var(--borderRadiusSmall)';
  */
 export const borderRadiusXLarge = 'var(--borderRadiusXLarge)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalXS | `spacingVerticalXS`} design token.
+ * @public
+ */
+export const spacingVerticalXS = 'var(--spacingVerticalXS)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalSNudge | `spacingVerticalSNudge`} design token.
+ * @public
+ */
+export const spacingVerticalSNudge = 'var(--spacingVerticalSNudge)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedForeground1 | `colorPaletteRedForeground1`} design token.
+ * @public
+ */
+export const colorPaletteRedForeground1 = 'var(--colorPaletteRedForeground1)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground4 | `colorNeutralForeground4`} design token.
  * @public
  */
@@ -504,11 +529,6 @@ export const colorNeutralForeground3Pressed = 'var(--colorNeutralForeground3Pres
  * @public
  */
 export const colorBrandStroke2Contrast = 'var(--colorBrandStroke2Contrast)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalXS | `spacingVerticalXS`} design token.
- * @public
- */
-export const spacingVerticalXS = 'var(--spacingVerticalXS)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground3Hover | `colorNeutralForeground3Hover`} design token.
  * @public

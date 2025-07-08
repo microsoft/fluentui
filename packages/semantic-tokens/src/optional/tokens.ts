@@ -89,6 +89,7 @@ import {
   fontSizeBase400,
   lineHeightBase400,
   fontWeightSemibold,
+  spacingHorizontalXS,
   spacingVerticalXXS,
   strokeWidthThin,
   strokeWidthThicker,
@@ -476,7 +477,7 @@ export const paddingCtrlTextBottom = `var(${paddingCtrlTextBottomRaw}, var(${pad
 export const paddingCtrlSmTextBottom = `var(${paddingCtrlSmTextBottomRaw}, var(${paddingCtrlSmTextTopRaw}))`;
 export const paddingCtrlLgTextBottom = `var(${paddingCtrlLgTextBottomRaw}, var(${paddingCtrlLgTextTopRaw}))`;
 export const gapBetweenCtrlNested = `var(${gapBetweenCtrlNestedRaw}, var(${paddingCtrlToNestedControlRaw}))`;
-export const gapBetweenTextSmall = `var(${gapBetweenTextSmallRaw}, var(${gapBetweenContentXxSmallRaw}))`;
+export const gapBetweenTextSmall = `var(${gapBetweenTextSmallRaw}, var(${gapBetweenContentXxSmallRaw}, ${spacingHorizontalXS}))`;
 export const gapBetweenCtrlLgNested = `var(${gapBetweenCtrlLgNestedRaw}, var(${paddingCtrlLgToNestedControlRaw}))`;
 export const gapBetweenTextLarge = `var(${gapBetweenTextLargeRaw}, var(${gapBetweenContentXSmallRaw}))`;
 export const gapBetweenCtrlSmNested = `var(${gapBetweenCtrlSmNestedRaw}, var(${paddingCtrlSmToNestedControlRaw}))`;
