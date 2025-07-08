@@ -78,6 +78,10 @@ export const themes: readonly [{
 }, {
     readonly id: "semantic-kumo";
     readonly label: "Semantic Kumo (Experimental)";
+},
+{
+    readonly id: "semantic-copilot-light";
+    readonly label: "Semantic Copilot Light (Experimental)";
 }];
 
 // (No @packageDocumentation comment for this package)

@@ -9,7 +9,13 @@
     "build": {
       "dependsOn": [
         {
-          "projects": ["react-aria", "react-provider", "semantic-tokens", "semantic-style-hooks-preview"],
+          "projects": [
+            "react-aria",
+            "react-provider",
+            "semantic-tokens",
+            "copilot-theme-semantic-tokens-preview",
+            "semantic-style-hooks-preview"
+          ],
           "target": "build"
         }
       ]

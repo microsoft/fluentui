@@ -10,6 +10,7 @@ import {
   webLightTheme,
 } from '@fluentui/react-theme';
 import { kumoSemanticTokens } from '@fluentui/semantic-tokens';
+import { copilotLightThemeSemanticTokens } from '@fluentui/copilot-theme-semantic-tokens-preview';
 import { defaultTheme, ThemeIds } from '../theme';
 import { DIR_ID, THEME_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
@@ -18,8 +19,9 @@ import { SEMANTIC_STYLE_HOOKS } from '@fluentui/semantic-style-hooks-preview';
 
 // TODO: Remove this when merging Semantic tokens to master
 const kumoCustomTheme = { ...webLightTheme, ...kumoSemanticTokens };
+const copilotLightTheme = { ...webLightTheme, ...copilotLightThemeSemanticTokens };
 
-const themes: Record<ThemeIds | 'semantic-kumo', Theme> = {
+const themes: Record<ThemeIds | 'semantic-kumo' | 'semantic-copilot-light', Theme> = {
   'web-light': webLightTheme,
   'web-dark': webDarkTheme,
   'teams-light': teamsLightTheme,
@@ -27,9 +29,10 @@ const themes: Record<ThemeIds | 'semantic-kumo', Theme> = {
   'teams-high-contrast': teamsHighContrastTheme,
   // TODO: Remove this when merging Semantic tokens to master
   'semantic-kumo': kumoCustomTheme,
+  'semantic-copilot-light': copilotLightTheme,
 } as const;
 
-const findTheme = (themeId?: ThemeIds | 'semantic-kumo') => {
+const findTheme = (themeId?: ThemeIds | 'semantic-kumo' | 'semantic-copilot-light') => {
   return themeId ? themes[themeId] : null;
 };
 

@@ -39,11 +39,11 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Avatar styles
   useAvatarStyles_unstable: useSemanticAvatarStyles,
   // Button styles
-  useButtonStyles_unstable: useSemanticButtonStyles,
-  useToggleButtonStyles_unstable: useSemanticToggleButtonStyles,
-  useSplitButtonStyles_unstable: useSemanticSplitButtonStyles,
-  useMenuButtonStyles_unstable: useSemanticMenuButtonStyles,
-  useCompoundButtonStyles_unstable: useSemanticCompoundButtonStyles,
+  useButtonStyles_unstable: useSemanticButtonStyles, // checked, good.
+  useToggleButtonStyles_unstable: useSemanticToggleButtonStyles, // checked, good.
+  useSplitButtonStyles_unstable: useSemanticSplitButtonStyles, //checked, good
+  useMenuButtonStyles_unstable: useSemanticMenuButtonStyles, // Button looks good. MenuPopover still need to be updated
+  useCompoundButtonStyles_unstable: useSemanticCompoundButtonStyles, // checked, good.
   // Divider styles
   useDividerStyles_unstable: useSemanticDividerStyles,
   // Drawer styles

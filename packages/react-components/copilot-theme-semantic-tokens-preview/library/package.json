@@ -25,6 +25,7 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
+    "@fluentui/semantic-tokens": "0.0.0-alpha.1",
     "@fluentui/react-jsx-runtime": "^9.0.54",
     "@fluentui/react-shared-contexts": "^9.23.1",
     "@fluentui/react-theme": "^9.1.24",
