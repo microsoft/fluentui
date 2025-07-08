@@ -263,6 +263,7 @@ export class BaseButton extends FASTElement {
 
   constructor() {
     super();
+    /** @internal */
     this.elementInternals.role = 'button';
   }
 
@@ -336,9 +337,9 @@ export class BaseButton extends FASTElement {
   /**
    * Handles keypress events for the button.
    *
+   * @internal
    * @param e - the keyboard event
    * @returns - the return value of the click handler
-   * @public
    */
   public keypressHandler(e: KeyboardEvent): boolean | void {
     if (e && this.disabledFocusable) {

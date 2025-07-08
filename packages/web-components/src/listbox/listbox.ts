@@ -142,8 +142,8 @@ export class Listbox extends FASTElement {
   /**
    * Sets the `selected` state on a target option when clicked.
    *
+   * @internal
    * @param e - The pointer event
-   * @public
    */
   public clickHandler(e: PointerEvent): boolean | void {
     if (this.dropdown) {
@@ -162,6 +162,7 @@ export class Listbox extends FASTElement {
   constructor() {
     super();
 
+    /** @internal */
     this.elementInternals.role = 'listbox';
   }
 

@@ -6,3 +6,5 @@ dist
 coverage
 # don't lint storybook
 .storybook
+# don't lint the generated types
+types
