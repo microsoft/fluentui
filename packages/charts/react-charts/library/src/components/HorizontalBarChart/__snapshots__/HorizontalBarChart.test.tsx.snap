@@ -199,7 +199,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr25"
+      id="callout70"
     />
   </div>
 </div>
@@ -404,7 +404,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr2a"
+      id="callout75"
     />
   </div>
 </div>
@@ -413,7 +413,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
 exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProviderr2b"
+    class="fui-FluentProvider fui-FluentProvider76"
     dir="ltr"
   >
     <div
@@ -613,7 +613,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="calloutr2g"
+        id="callout81"
       />
     </div>
   </div>
@@ -624,7 +624,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_HBC_emptyr2h"
+    id="_HBC_empty82"
     role="alert"
     style="opacity: 0;"
   />
@@ -831,7 +831,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr2l"
+      id="callout86"
     />
   </div>
 </div>
@@ -1036,7 +1036,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr4"
+      id="callout5"
     />
   </div>
 </div>
@@ -1195,7 +1195,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="calloutr34"
+          id="callout101"
         />
       </div>
     </div>
@@ -1206,7 +1206,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r31"
+        id="tooltip-98"
         role="tooltip"
       >
         one
@@ -1219,7 +1219,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r32"
+        id="tooltip-99"
         role="tooltip"
       >
         two
@@ -1232,7 +1232,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r33"
+        id="tooltip-100"
         role="tooltip"
       >
         three
@@ -1386,7 +1386,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="calloutr34"
+        id="callout101"
       />
     </div>
   </div>,
@@ -1624,7 +1624,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="calloutr2v"
+          id="callout96"
         />
       </div>
     </div>
@@ -1635,7 +1635,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2s"
+        id="tooltip-93"
         role="tooltip"
       >
         one
@@ -1648,7 +1648,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2t"
+        id="tooltip-94"
         role="tooltip"
       >
         two
@@ -1661,7 +1661,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2u"
+        id="tooltip-95"
         role="tooltip"
       >
         three
@@ -1842,7 +1842,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="calloutr2v"
+        id="callout96"
       />
     </div>
   </div>,
