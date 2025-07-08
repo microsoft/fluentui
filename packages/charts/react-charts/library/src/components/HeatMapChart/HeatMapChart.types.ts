@@ -121,5 +121,5 @@ export interface HeatMapChartProps extends CartesianChartProps {
 export interface HeatMapChartStyles extends CartesianChartStyles {
   root?: string;
   text?: string;
-  calloutStyles?: string;
+  calloutContentRoot?: string;
 }

@@ -113,7 +113,8 @@ export const usePopoverStyles_unstable = (props: ChartPopoverProps): PopoverComp
   return {
     calloutContentRoot: mergeClasses(
       popoverClassNames.calloutContentRoot,
-      baseStyles.calloutContentRoot /*props.styles?. calloutContentRoot*/,
+      baseStyles.calloutContentRoot,
+      props.styles?.calloutContentRoot,
     ),
     calloutDateTimeContainer: mergeClasses(
       popoverClassNames.calloutDateTimeContainer,

@@ -244,8 +244,6 @@ export const ChartPopover: React_2.FunctionComponent<ChartPopoverProps>;
 // @public (undocumented)
 export interface ChartPopoverProps {
     // (undocumented)
-    className?: string;
-    // (undocumented)
     clickPosition?: {
         x: number;
         y: number;
@@ -273,6 +271,8 @@ export interface ChartPopoverProps {
     legend?: string | number | Date;
     // (undocumented)
     ratio?: [number, number];
+    // (undocumented)
+    styles?: Partial<PopoverComponentStyles>;
     // (undocumented)
     xAxisCalloutAccessibilityData?: {
         ariaLabel?: string;
@@ -707,7 +707,7 @@ export interface HeatMapChartProps extends CartesianChartProps {
 // @public
 export interface HeatMapChartStyles extends CartesianChartStyles {
     // (undocumented)
-    calloutStyles?: string;
+    calloutContentRoot?: string;
     // (undocumented)
     root?: string;
     // (undocumented)

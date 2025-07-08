@@ -21,7 +21,7 @@ export interface ChartPopoverProps {
   descriptionMessage?: string;
   ratio?: [number, number];
   isCartesian?: boolean;
-  className?: string;
+  styles?: Partial<PopoverComponentStyles>;
 }
 
 export interface PopoverComponentStyles {
