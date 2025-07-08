@@ -34,6 +34,7 @@ import {
 } from '../../utilities/index';
 import { classNamesFunction, DirectionalHint, find, getId, getRTL } from '@fluentui/react';
 import { IImageExportOptions, IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
+import { ILineChartPoints } from '../../types/IDataPoint';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { ScaleLinear } from 'd3-scale';
@@ -90,7 +91,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const [refSelected, setRefSelected] = React.useState<string>('');
   const prevSelectedLegendsRef = React.useRef<string[] | undefined>(undefined);
-  let _isScatterPolar: boolean = false;
+  const _isScatterPolarRef = React.useRef(false);
 
   const classNames = getClassNames(props.styles!, {
     theme: props.theme!,
@@ -541,7 +542,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
                 aria-label={_getAriaLabel(i, j)}
                 tabIndex={_points.current?.[i]?.legend !== '' ? 0 : undefined}
               />
-              {!_isScatterPolar && text && (
+              {!_isScatterPolarRef.current && text && (
                 <text
                   key={`${circleId}-label`}
                   x={_xAxisScale.current?.(x) + _xBandwidth.current}
@@ -556,7 +557,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         }
 
         // If this series originated from scatterpolar, render category labels at equal angles
-        const maybeLineOptions = (_points.current?.[i] as any)?.lineOptions;
+        const maybeLineOptions = (_points.current?.[i] as Partial<ILineChartPoints>)?.lineOptions;
         // Add one label per unique category at the correct angle
         const uniqueCategories: string[] = [];
         _points.current[i].data.forEach(pt => {
@@ -571,8 +572,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           // Place label at a fixed radius (e.g., 60% of max chart radius)
           const r = 0.6;
           // Use the same scaling as the chart: x = r*cos(angle), y = r*sin(angle)
-          // If originXOffset is present, use it
-          const originXOffset = maybeLineOptions?.originXOffset || 0;
+          // originXOffset is not typed on ILineChartLineOptions, but may be present for scatterpolar support
+          const originXOffset = (maybeLineOptions as { originXOffset?: number } | undefined)?.originXOffset || 0;
           const x = _xAxisScale.current(r * Math.cos(angle) - originXOffset / 2) + _xBandwidth.current;
           const y = _yAxisScale.current(r * Math.sin(angle));
           pointsForSeries.push(
@@ -660,10 +661,10 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     ) => {
       _xAxisScale.current = xScale;
       _yAxisScale.current = yScale;
-      _isScatterPolar = isScatterPolarSeries(_points.current);
+      _isScatterPolarRef.current = isScatterPolarSeries(_points.current);
       renderSeries.current = _createPlot(xElement!, containerHeight!);
     },
-    [renderSeries, _xAxisScale, _yAxisScale, _isScatterPolar, _createPlot],
+    [renderSeries, _xAxisScale, _yAxisScale, _createPlot],
   );
 
   /**

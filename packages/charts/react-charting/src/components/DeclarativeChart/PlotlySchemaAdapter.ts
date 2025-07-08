@@ -853,7 +853,7 @@ const transformPlotlyJsonToScatterTraceProps = (
       const seriesOpacity = getOpacity(series, index);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
       // if mode contains 'text', we prioritize showing the text over curving the line
-      let lineOptions =
+      const lineOptions =
         !series.mode?.includes('text') && series.type !== 'scatterpolar' ? getLineOptions(series.line) : undefined;
       const legendShape = getLegendShape(series);
 
@@ -886,8 +886,7 @@ const transformPlotlyJsonToScatterTraceProps = (
             mode: series.type !== 'scatterpolar' ? series.mode : 'scatterpolar',
             // originXOffset is not typed on Layout, but may be present in input.layout as a part of projection of
             // scatter polar coordingates to cartesian coordinates
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            originXOffset: (input.layout as any)?.__polarOriginX,
+            originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
           },
           useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         } as ILineChartPoints;
@@ -1680,7 +1679,7 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
   let maxRadius = 0;
   for (let sindex = 0; sindex < input.data.length; sindex++) {
     const rVals = (input.data[sindex] as Partial<PlotData>).r;
-    if (rVals) {
+    if (rVals && isArrayOrTypedArray(rVals)) {
       for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
         if (!isInvalidValue(rVals[ptindex])) {
           minRadius = Math.min(minRadius, rVals[ptindex] as number);
@@ -1707,6 +1706,12 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
     series.y = [] as Datum[];
     const thetas = series.theta!;
     const rVals = series.r!;
+
+    // Skip if rVals or thetas are not arrays
+    if (!isArrayOrTypedArray(rVals) || !isArrayOrTypedArray(thetas)) {
+      projection.data[sindex] = series;
+      continue;
+    }
 
     // Compute tick positions if categorical
     let uniqueTheta: Datum[] = [];
@@ -1753,7 +1758,7 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
 
     // Map text to each data point for downstream chart rendering
     if (series.x && series.y) {
-      (series as any).data = series.x.map((xVal, idx) => ({
+      (series as { data?: unknown[] }).data = series.x.map((xVal, idx) => ({
         x: xVal,
         y: (series.y as number[])[idx],
         ...(series.text ? { text: (series.text as string[])[idx] } : {}),
@@ -1798,7 +1803,7 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
     height: size,
   };
   // Attach originX as custom properties
-  (projection.layout as any).__polarOriginX = originX;
+  (projection.layout as { __polarOriginX?: number }).__polarOriginX = originX ?? undefined;
 
   return projection;
 };

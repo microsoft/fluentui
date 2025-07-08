@@ -1991,6 +1991,7 @@ export function getContrastTextColor(backgroundColor: string, theme: ITheme): st
  */
 export function isScatterPolarSeries(points: (ILineChartPoints | IScatterChartPoints)[]): boolean {
   return points.some(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     item => typeof (item as any).lineOptions?.mode === 'string' && (item as any).lineOptions.mode === 'scatterpolar',
   );
 }

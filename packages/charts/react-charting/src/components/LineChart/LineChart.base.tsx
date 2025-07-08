@@ -1356,7 +1356,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           const angle = ((2 * Math.PI) / numCategories) * idx;
           // Place label at a fixed radius (e.g., 60% of max chart radius)
           const r = 0.6;
-          const x = this._xAxisScale(r * Math.cos(angle) - (this._points[i].lineOptions as any)?.originXOffset / 2);
+          // originXOffset is not typed on ILineChartLineOptions, but may be present for scatterpolar support
+          const originXOffset =
+            (this._points[i].lineOptions as { originXOffset?: number } | undefined)?.originXOffset ?? 0;
+          const x = this._xAxisScale(r * Math.cos(angle) - originXOffset / 2);
           const y = yScale(r * Math.sin(angle));
           pointsForLine.push(
             <text

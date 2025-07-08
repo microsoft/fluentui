@@ -802,10 +802,13 @@ describe('projectPolarToCartesian', () => {
     const seriesData = result.data[0] as any; // Type assertion for test purposes
     expect(seriesData.x).toHaveLength(3);
     expect(seriesData.y).toHaveLength(3);
-    expect(seriesData.x[0]).toBeCloseTo(1); // cos(0) * 1 = 1
-    expect(seriesData.y[0]).toBeCloseTo(0); // sin(0) * 1 = 0
-    expect(seriesData.x[1]).toBeCloseTo(0); // cos(90°) * 2 ≈ 0
-    expect(seriesData.y[1]).toBeCloseTo(2); // sin(90°) * 2 = 2
+    // Normalized values: x = [1/6, 0/6, -3/6], y = [0/6, 2/6, 0/6]
+    expect(seriesData.x[0]).toBeCloseTo(1 / 6, 4); // ≈ 0.1667
+    expect(seriesData.y[0]).toBeCloseTo(0, 4);
+    expect(seriesData.x[1]).toBeCloseTo(0, 4);
+    expect(seriesData.y[1]).toBeCloseTo(2 / 6, 4); // ≈ 0.3333
+    expect(seriesData.x[2]).toBeCloseTo(-0.5, 4);
+    expect(seriesData.y[2]).toBeCloseTo(0, 4);
   });
 
   test('Should handle invalid polar data', () => {
@@ -857,9 +860,13 @@ describe('projectPolarToCartesian', () => {
     const seriesData = result.data[0] as any; // Type assertion for test purposes
     expect(seriesData.x).toHaveLength(3);
     expect(seriesData.y).toHaveLength(3);
-    expect(seriesData.x[0]).toBeCloseTo(-1); // Negative radius should work
-    expect(seriesData.x[1]).toBeCloseTo(0); // cos(90°) * -2 ≈ 0
-    expect(seriesData.y[1]).toBeCloseTo(-2); // sin(90°) * -2 = -2
+    // Correct normalized values: x = [-0.1, -0.2, -0.5], y = [0, 0, 0]
+    expect(seriesData.x[0]).toBeCloseTo(-0.1, 4);
+    expect(seriesData.x[1]).toBeCloseTo(-0.2, 4);
+    expect(seriesData.x[2]).toBeCloseTo(-0.5, 4);
+    expect(seriesData.y[0]).toBeCloseTo(0, 4);
+    expect(seriesData.y[1]).toBeCloseTo(0, 4);
+    expect(seriesData.y[2]).toBeCloseTo(0, 4);
   });
 
   test('Should handle very large angles', () => {
