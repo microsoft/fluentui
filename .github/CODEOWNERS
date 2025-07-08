@@ -335,6 +335,8 @@ packages/react-components/component-selector-preview/library @microsoft/teams-pr
 packages/react-components/component-selector-preview/stories @microsoft/teams-prg
 packages/react-components/semantic-style-hooks-preview/library @microsoft/xc-uxe
 packages/react-components/semantic-style-hooks-preview/stories @microsoft/xc-uxe
+packages/react-components/copilot-theme-semantic-tokens-preview/library @microsoft/xc-uxe
+packages/react-components/copilot-theme-semantic-tokens-preview/stories @microsoft/xc-uxe
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
