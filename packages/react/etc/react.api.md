@@ -2413,7 +2413,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
     onGetErrorMessage?: (items: T[]) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onInputChange?: (input: string) => string;
-    onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
+    onItemSelected?: (selectedItem?: T) => T | PromiseLike<T | null> | null;
     onRemoveSuggestion?: (item: T) => void;
     onRenderItem?: (props: IPickerItemProps<T>) => JSX.Element;
     onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
