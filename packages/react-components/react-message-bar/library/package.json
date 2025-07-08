@@ -15,7 +15,8 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
-    "@fluentui/scripts-api-extractor": "*"
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
     "@fluentui/react-button": "^9.5.3",
