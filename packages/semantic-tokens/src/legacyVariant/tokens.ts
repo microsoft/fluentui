@@ -20,12 +20,16 @@ import {
   paddingCtrlTextTopRaw,
   cornerCtrlRestRaw,
   gapInsideCtrlDefaultRaw,
-  backgroundCtrlNeutralRestRaw,
   foregroundCtrlNeutralSecondaryRestRaw,
+  gapBetweenContentXSmallRaw,
+  paddingCtrlLgTextTopRaw,
+  paddingCtrlSmTextTopRaw,
+  paddingCtrlTextSideRaw,
+  statusDangerTintForegroundRaw,
+  backgroundCtrlNeutralRestRaw,
   textGlobalBody3FontSizeRaw,
   textGlobalBody3LineHeightRaw,
   textStyleDefaultRegularWeightRaw,
-  paddingCtrlTextSideRaw,
   paddingCtrlHorizontalDefaultRaw,
 } from '../control/variables';
 import {
@@ -42,6 +46,11 @@ import {
   strokeWidthThin,
   spacingHorizontalSNudge,
   colorNeutralForeground3,
+  spacingVerticalXS,
+  spacingVerticalXXS,
+  spacingVerticalSNudge,
+  spacingHorizontalM,
+  colorPaletteRedForeground1,
   colorTransparentStrokeInteractive,
   colorNeutralBackground3,
   colorNeutralBackground1,
@@ -52,9 +61,7 @@ import {
   fontSizeBase400,
   lineHeightBase400,
   fontWeightSemibold,
-  spacingVerticalXS,
   colorTransparentStroke,
-  spacingVerticalXXS,
   colorNeutralForeground3Hover,
   colorNeutralForeground2Hover,
   colorNeutralForeground2Pressed,
@@ -71,6 +78,8 @@ import {
   foregroundCtrlOnTransparentPressedRaw,
   foregroundCtrlOnTransparentRestRaw,
   paddingCtrlTextBottomRaw,
+  paddingCtrlLgTextBottomRaw,
+  paddingCtrlSmTextBottomRaw,
   foregroundCtrlOnSubtlePressedRaw,
   foregroundCtrlNeutralPrimaryPressedRaw,
   textRampItemBodyFontSizeRaw,
@@ -215,6 +224,104 @@ export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${sp
  * please use foregroundCtrlHintDefault instead.
  */
 export const _ctrlDividerForegroundSubtle = `var(${foregroundCtrlHintDefaultRaw}, var(${nullColorRaw}, ${colorNeutralForeground3}))`;
+/**
+ * This is a legacy variant for foregroundCtrlNeutralSecondaryRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlNeutralSecondaryRest instead.
+ */
+export const _ctrlFieldForegroundCtrlNeutralSecondaryRest = `var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground3})`;
+/**
+ * This is a legacy variant for gapBetweenContentXSmall to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use gapBetweenContentXSmall instead.
+ */
+export const _ctrlFieldGapBetweenContentXSmall = `var(${gapBetweenContentXSmallRaw}, ${spacingVerticalXS})`;
+/**
+ * This is a legacy variant for paddingCtrlLgTextBottom to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlLgTextBottom instead.
+ */
+export const _ctrlFieldPaddingCtrlLgTextBottom = `var(${paddingCtrlLgTextBottomRaw}, var(${paddingCtrlLgTextTopRaw}, 1px))`;
+/**
+ * This is a legacy variant for paddingCtrlLgTextBottom to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlLgTextBottom instead.
+ */
+export const _ctrlFieldPaddingCtrlLgTextBottomHorizontal = `var(${paddingCtrlLgTextBottomRaw}, var(${paddingCtrlLgTextTopRaw}, 9px))`;
+/**
+ * This is a legacy variant for paddingCtrlLgTextTop to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlLgTextTop instead.
+ */
+export const _ctrlFieldPaddingCtrlLgTextTop = `var(${paddingCtrlLgTextTopRaw}, 1px)`;
+/**
+ * This is a legacy variant for paddingCtrlLgTextTop to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlLgTextTop instead.
+ */
+export const _ctrlFieldPaddingCtrlLgTextTopHorizontal = `var(${paddingCtrlLgTextTopRaw}, 9px)`;
+/**
+ * This is a legacy variant for paddingCtrlSmTextBottom to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlSmTextBottom instead.
+ */
+export const _ctrlFieldPaddingCtrlSmTextBottom = `var(${paddingCtrlSmTextBottomRaw}, var(${paddingCtrlSmTextTopRaw}, ${spacingVerticalXS}))`;
+/**
+ * This is a legacy variant for paddingCtrlSmTextTop to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlSmTextTop instead.
+ */
+export const _ctrlFieldPaddingCtrlSmTextTop = `var(${paddingCtrlSmTextTopRaw}, ${spacingVerticalXS})`;
+/**
+ * This is a legacy variant for paddingCtrlTextBottom to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextBottom instead.
+ */
+export const _ctrlFieldPaddingCtrlTextBottom = `var(${paddingCtrlTextBottomRaw}, var(${paddingCtrlTextTopRaw}, ${spacingVerticalXXS}))`;
+/**
+ * This is a legacy variant for paddingCtrlTextBottom to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextBottom instead.
+ */
+export const _ctrlFieldPaddingCtrlTextBottomHorizontal = `var(${paddingCtrlTextBottomRaw}, var(${paddingCtrlTextTopRaw}, ${spacingVerticalSNudge}))`;
+/**
+ * This is a legacy variant for paddingCtrlTextSide to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextSide instead.
+ */
+export const _ctrlFieldPaddingCtrlTextSide = `var(${paddingCtrlTextSideRaw}, ${spacingHorizontalM})`;
+/**
+ * This is a legacy variant for paddingCtrlTextTop to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextTop instead.
+ */
+export const _ctrlFieldPaddingCtrlTextTop = `var(${paddingCtrlTextTopRaw}, ${spacingVerticalXXS})`;
+/**
+ * This is a legacy variant for paddingCtrlTextTop to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextTop instead.
+ */
+export const _ctrlFieldPaddingCtrlTextTopHorizontal = `var(${paddingCtrlTextTopRaw}, ${spacingVerticalSNudge})`;
+/**
+ * This is a legacy variant for statusDangerTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusDangerTintForeground instead.
+ */
+export const _ctrlFieldStatusDangerTintForeground = `var(${statusDangerTintForegroundRaw}, ${colorPaletteRedForeground1})`;
 /**
  * This is a legacy variant for ctrlFocusOuterStroke to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.

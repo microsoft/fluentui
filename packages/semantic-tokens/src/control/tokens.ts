@@ -28,6 +28,7 @@ import {
   spacingHorizontalM,
   spacingHorizontalS,
   spacingHorizontalL,
+  spacingVerticalXXS,
   spacingHorizontalXS,
   spacingHorizontalSNudge,
   borderRadiusCircular,
@@ -54,7 +55,9 @@ import {
   colorPaletteRedBackground3,
   colorPaletteRedForeground3,
   colorPaletteDarkOrangeBackground3,
+  colorPaletteDarkOrangeForeground1,
   colorPaletteGreenBackground3,
+  colorPaletteGreenForeground1,
   colorTransparentBackground,
   shadow64,
 } from '../legacy/tokens';
@@ -324,7 +327,7 @@ export const paddingCtrlLgTextTop = `var(${paddingCtrlLgTextTopRaw})`;
 export const paddingCtrlLgToNestedControl = `var(${paddingCtrlLgToNestedControlRaw})`;
 export const gapBetweenContentNone = `var(${gapBetweenContentNoneRaw})`;
 export const gapBetweenContentXxSmall = `var(${gapBetweenContentXxSmallRaw})`;
-export const gapBetweenContentXSmall = `var(${gapBetweenContentXSmallRaw})`;
+export const gapBetweenContentXSmall = `var(${gapBetweenContentXSmallRaw}, ${spacingVerticalXXS})`;
 export const gapBetweenContentSmall = `var(${gapBetweenContentSmallRaw})`;
 export const gapBetweenCtrlDefault = `var(${gapBetweenCtrlDefaultRaw})`;
 export const gapBetweenContentMedium = `var(${gapBetweenContentMediumRaw})`;
@@ -420,11 +423,11 @@ export const statusDangerTintForeground = `var(${statusDangerTintForegroundRaw},
 export const statusWarningBackground = `var(${statusWarningBackgroundRaw}, ${colorPaletteDarkOrangeBackground3})`;
 export const statusWarningTintBackground = `var(${statusWarningTintBackgroundRaw})`;
 export const statusWarningTintStroke = `var(${statusWarningTintStrokeRaw})`;
-export const statusWarningTintForeground = `var(${statusWarningTintForegroundRaw})`;
+export const statusWarningTintForeground = `var(${statusWarningTintForegroundRaw}, ${colorPaletteDarkOrangeForeground1})`;
 export const statusSuccessBackground = `var(${statusSuccessBackgroundRaw}, ${colorPaletteGreenBackground3})`;
 export const statusSuccessTintBackground = `var(${statusSuccessTintBackgroundRaw})`;
 export const statusSuccessTintStroke = `var(${statusSuccessTintStrokeRaw})`;
-export const statusSuccessTintForeground = `var(${statusSuccessTintForegroundRaw})`;
+export const statusSuccessTintForeground = `var(${statusSuccessTintForegroundRaw}, ${colorPaletteGreenForeground1})`;
 export const statusImportantBackground = `var(${statusImportantBackgroundRaw})`;
 export const statusImportantTintBackground = `var(${statusImportantTintBackgroundRaw})`;
 export const statusImportantTintStroke = `var(${statusImportantTintStrokeRaw})`;
