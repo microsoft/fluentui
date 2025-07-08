@@ -1351,7 +1351,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             data: this._points[i].data,
             xAxisScale: this._xAxisScale,
             yAxisScale: yScale,
-            className: classNames.markerLabel,
+            className: classNames.markerLabel || '',
             maybeLineOptions: maybeLineOptions
               ? // es-lint-disable-next-line @typescript-eslint/no-explicit-any
                 { originXOffset: (maybeLineOptions as any).originXOffset }

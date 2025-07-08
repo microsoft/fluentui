@@ -565,7 +565,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
               data: _points.current[i].data,
               xAxisScale: _xAxisScale.current,
               yAxisScale: _yAxisScale.current,
-              className: classNames.markerLabel,
+              className: classNames.markerLabel || '',
               maybeLineOptions: maybeLineOptions
                 ? // es-lint-disable-next-line @typescript-eslint/no-explicit-any
                   { originXOffset: (maybeLineOptions as any).originXOffset }
