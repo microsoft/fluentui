@@ -105,7 +105,7 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
 
   const safeZoneHandle = useSafeZoneArea({
     disabled: !enableSafeZone,
-    timeout: typeof safeZone === 'object' ? safeZone.timeout : 1500,
+    timeout: typeof safeZone === 'object' ? safeZone.timeout : 300,
 
     onSafeZoneEnter: e => {
       setOpen(e, { open: true, keyboard: false, type: 'menuSafeZoneMouseEnter', event: e });
