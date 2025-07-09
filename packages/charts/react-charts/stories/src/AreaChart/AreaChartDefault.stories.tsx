@@ -1,14 +1,10 @@
 import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charts';
-import { Switch, Field, Radio, RadioGroup, makeStyles, tokens, mergeClasses } from '@fluentui/react-components';
-import { HighContrastSelector } from '../../../library/src/utilities/utilities';
+import { Switch, Field, Radio, RadioGroup, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   svgTooltip: {
     fill: tokens.colorNeutralBackground2,
-    [HighContrastSelector]: {
-      fill: 'Canvas',
-    },
   },
 });
 
@@ -270,7 +266,7 @@ export const AreaChartBasic = () => {
               canSelectMultipleLegends: legendMultiSelect,
             }}
             mode={changeChartMode ? 'tozeroy' : 'tonexty'}
-            className={mergeClasses(classes.svgTooltip)}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}
@@ -286,7 +282,7 @@ export const AreaChartBasic = () => {
               canSelectMultipleLegends: legendMultiSelect,
             }}
             mode={changeChartMode ? 'tozeroy' : 'tonexty'}
-            className={mergeClasses(classes.svgTooltip)}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}

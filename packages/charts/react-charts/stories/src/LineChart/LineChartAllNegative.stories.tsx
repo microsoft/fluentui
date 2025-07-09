@@ -1,14 +1,10 @@
 import * as React from 'react';
 import { ChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts';
-import { Switch, Checkbox, CheckboxOnChangeData, makeStyles, tokens, mergeClasses } from '@fluentui/react-components';
-import { HighContrastSelector } from '../../../library/src/utilities/utilities';
+import { Switch, Checkbox, CheckboxOnChangeData, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   svgTooltip: {
     fill: tokens.colorNeutralBackground2,
-    [HighContrastSelector]: {
-      fill: 'Canvas',
-    },
   },
 });
 
@@ -206,7 +202,7 @@ export const LineChartAllNegative = () => {
           yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
           xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
           useUTC={useUTC}
-          className={mergeClasses(classes.svgTooltip)}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </>

@@ -7,15 +7,11 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts';
-import { useId, makeStyles, tokens, mergeClasses } from '@fluentui/react-components';
-import { HighContrastSelector } from '../../../library/src/utilities/utilities';
+import { useId, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   svgTooltip: {
     fill: tokens.colorNeutralBackground2,
-    [HighContrastSelector]: {
-      fill: 'Canvas',
-    },
   },
 });
 
@@ -232,7 +228,7 @@ export const VerticalStackedBarSecondaryYAxis = () => {
           yAxisTitle="Variation of number of sales"
           xAxisTitle="Number of days"
           secondaryYScaleOptions={{}}
-          className={mergeClasses(classes.svgTooltip)}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </div>

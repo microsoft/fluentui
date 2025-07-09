@@ -8,16 +8,11 @@ import {
   RadioGroupOnChangeData,
   makeStyles,
   tokens,
-  mergeClasses,
 } from '@fluentui/react-components';
-import { HighContrastSelector } from '../../../library/src/utilities/utilities';
 
 const useStyles = makeStyles({
   svgTooltip: {
     fill: tokens.colorNeutralBackground2,
-    [HighContrastSelector]: {
-      fill: 'Canvas',
-    },
   },
 });
 
@@ -219,7 +214,7 @@ export const AreaChartNegative = () => {
             enablePerfOptimization={true}
             yAxisTitle={showAxisTitles ? 'Variation of stock market prices' : undefined}
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
-            className={mergeClasses(classes.svgTooltip)}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}
@@ -231,7 +226,7 @@ export const AreaChartNegative = () => {
             width={width}
             data={chartData}
             enablePerfOptimization={true}
-            className={mergeClasses(classes.svgTooltip)}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}

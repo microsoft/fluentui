@@ -1,14 +1,10 @@
 import * as React from 'react';
 import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
-import { makeStyles, mergeClasses, Switch, tokens } from '@fluentui/react-components';
-import { HighContrastSelector } from '../../../library/src/utilities/utilities';
+import { makeStyles, Switch, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   svgTooltip: {
     fill: tokens.colorNeutralBackground2,
-    [HighContrastSelector]: {
-      fill: 'Canvas',
-    },
   },
 });
 
@@ -155,7 +151,7 @@ export const ScatterChartDefault = () => {
           legendProps={{
             canSelectMultipleLegends: selectMultipleLegends,
           }}
-          className={mergeClasses(classes.svgTooltip)}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </>

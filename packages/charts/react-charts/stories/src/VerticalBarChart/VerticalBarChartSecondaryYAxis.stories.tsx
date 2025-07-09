@@ -6,15 +6,11 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts';
-import { useId, tokens, makeStyles, mergeClasses } from '@fluentui/react-components';
-import { HighContrastSelector } from '../../../library/src/utilities/utilities';
+import { useId, tokens, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   svgTooltip: {
     fill: tokens.colorNeutralBackground2,
-    [HighContrastSelector]: {
-      fill: 'Canvas',
-    },
   },
 });
 
@@ -147,7 +143,7 @@ export const VerticalBarSecondaryYAxis = () => {
           yAxisTitle="Values of each category"
           xAxisTitle="Different categories of animals and fruits"
           secondaryYScaleOptions={{}}
-          className={mergeClasses(classes.svgTooltip)}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </div>
