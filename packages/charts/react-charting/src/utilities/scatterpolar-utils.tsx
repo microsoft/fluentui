@@ -11,11 +11,13 @@ export function renderScatterPolarCategoryLabels({
   maybeLineOptions,
 }: {
   data: { text?: string }[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   xAxisScale: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yAxisScale: any;
   className: string;
   maybeLineOptions?: { originXOffset?: number };
-}): JSX.Element[] {
+}): React.JSX.Element[] {
   const uniqueCategories: string[] = [];
   data.forEach(pt => {
     if (pt.text && !uniqueCategories.includes(pt.text)) {

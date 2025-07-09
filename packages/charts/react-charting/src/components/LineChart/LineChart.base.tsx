@@ -57,7 +57,7 @@ import {
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
-import { renderScatterPolarCategoryLabels } from '../../utilities/chartHelpers';
+import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -1353,7 +1353,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             yAxisScale: yScale,
             className: classNames.markerLabel || '',
             maybeLineOptions: maybeLineOptions
-              ? // es-lint-disable-next-line @typescript-eslint/no-explicit-any
+              ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 { originXOffset: (maybeLineOptions as any).originXOffset }
               : undefined,
           }),
