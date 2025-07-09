@@ -17,19 +17,12 @@ export const renderMessageBarActions_unstable = (
   contexts: MessageBarActionsContextValues,
 ) => {
   assertSlots<MessageBarActionsSlots>(state);
-  if (state.layout === 'multiline') {
-    return (
-      <ButtonContextProvider value={contexts.button}>
-        {state.containerAction && <state.containerAction />}
-        <state.root />
-      </ButtonContextProvider>
-    );
-  }
 
   return (
     <ButtonContextProvider value={contexts.button}>
+      {state.layout === 'multiline' && state.containerAction && <state.containerAction key="containerAction" />}
       <state.root />
-      {state.containerAction && <state.containerAction />}
+      {state.layout !== 'multiline' && state.containerAction && <state.containerAction key="containerAction" />}
     </ButtonContextProvider>
   );
 };
