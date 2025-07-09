@@ -7,7 +7,7 @@ import {
 import { fadeAtom } from '../../atoms/fade-atom';
 import { slideAtom } from '../../atoms/slide-atom';
 
-type SlideVariantParams = {
+type SlideParams = {
   /** Time (ms) for the enter transition (slide-in). Defaults to the `durationNormal` value (250 ms). */
   duration?: number;
 
@@ -31,7 +31,7 @@ type SlideVariantParams = {
 };
 
 /** Define a presence motion for slide in/out */
-const slidePresenceFn: PresenceMotionFn<SlideVariantParams> = ({
+const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
   duration = motionTokens.durationNormal,
   easing = motionTokens.curveDecelerateMid,
   exitDuration = duration,
