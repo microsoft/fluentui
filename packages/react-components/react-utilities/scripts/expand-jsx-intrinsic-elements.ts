@@ -2,12 +2,15 @@ import * as ts from 'typescript';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { execSync } from 'node:child_process';
+import { parseArgs } from 'node:util';
 
 // Run the transformation
 if (require.main === module) {
+  const { omitElements, reactTypesPath, targetFile } = processArgs();
   main({
-    reactTypesPath: process.env.REACT_TYPES_PATH || findReactTypesPath(),
-    targetFile: process.env.TARGET_FILE || path.join(__dirname, '../src/utils/generated-types.ts'),
+    omitElements,
+    reactTypesPath,
+    targetFile,
   }).catch(console.error);
 }
 
@@ -17,14 +20,23 @@ export { main };
  * Advanced TypeScript transform script that dynamically extracts the actual keys
  * from JSX.IntrinsicElements by analyzing the React type definitions
  */
-async function main(options: { targetFile: string; reactTypesPath: string }) {
-  const { reactTypesPath, targetFile } = options;
+async function main(options: { targetFile: string; reactTypesPath: string; omitElements: string[] }) {
+  const { reactTypesPath, targetFile, omitElements } = options;
 
   console.log('🔄 Extracting JSX intrinsic element keys from React types...');
   const elementKeys = extractJSXKeysFromReactTypes({ reactTypesPath });
   console.log(`📋 Found ${elementKeys.length} JSX intrinsic elements`);
 
-  const unionString = elementKeys.map(key => `'${key}'`).join(' | ');
+  // Filter out omitted elements
+  const filteredElementKeys = elementKeys.filter(key => !omitElements.includes(key));
+
+  if (omitElements.length > 0) {
+    const omittedCount = elementKeys.length - filteredElementKeys.length;
+    console.log(`🚫 Omitted ${omittedCount} elements: ${omitElements.join(', ')}`);
+    console.log(`✅ Remaining ${filteredElementKeys.length} elements after filtering`);
+  }
+
+  const unionString = filteredElementKeys.map(key => `'${key}'`).join(' | ');
   const JSXIntrinsicElementKeysTypeStatement = `
   /**
   * Unwrapped type for 'keyof JSX.IntrinsicElement'.
@@ -36,6 +48,84 @@ async function main(options: { targetFile: string; reactTypesPath: string }) {
     targetFile,
     types: [JSXIntrinsicElementKeysTypeStatement],
   });
+}
+
+function processArgs() {
+  const root = process.cwd();
+  const { values } = parseArgs({
+    args: process.argv.slice(2),
+    options: {
+      'react-types-path': {
+        type: 'string',
+        short: 'r',
+        description: 'Path to the React types directory',
+      },
+      'target-file': {
+        type: 'string',
+        short: 't',
+        description: 'Output file path',
+      },
+      'omit-elements': {
+        type: 'string',
+        short: 'o',
+        description: 'Comma-separated list of elements to exclude from the generated union',
+      },
+      help: {
+        type: 'boolean',
+        short: 'h',
+        description: 'Show help message',
+      },
+    },
+    allowPositionals: false,
+  });
+
+  // Show help if requested
+  if (values.help) {
+    console.log(`
+Usage: node scripts/expand-jsx-intrinsic-elements.ts --target-file <path> [options]
+
+Options:
+  -t, --target-file <path>         Output file path (required)
+  -r, --react-types-path <path>    Path to the React types directory
+  -o, --omit-elements <elements>   Comma-separated list of elements to exclude to make JSXIntrinsicElements union backwards compatible
+  -h, --help                       Show this help message
+
+Examples:
+  node scripts/expand-jsx-intrinsic-elements.ts --target-file ./generated-types.ts
+  node scripts/expand-jsx-intrinsic-elements.ts --target-file ./custom-types.ts --omit-elements div,span,p
+  node scripts/expand-jsx-intrinsic-elements.ts --target-file ./generated-types.ts --react-types-path /path/to/react/types
+`);
+    process.exit(0);
+  }
+
+  // Validate required arguments
+  if (!values['target-file']) {
+    console.error('❌ Error: --target-file is required');
+    console.error('Use --help for usage information');
+    process.exit(1);
+  }
+
+  // Parse omit elements
+  const omitElements =
+    typeof values['omit-elements'] === 'string'
+      ? values['omit-elements']
+          .split(',')
+          .map(el => el.trim())
+          .filter(el => el.length > 0)
+      : [];
+  const targetFile = path.resolve(root, values['target-file']);
+  const reactTypesPath = values['react-types-path'] || findReactTypesPath();
+
+  console.log('🔧 Parsed CLI arguments:');
+  console.log(`  - React types path: ${reactTypesPath}`);
+  console.log(`  - Target file: ${targetFile}`);
+  console.log(`  - Omit elements: ${omitElements}`);
+
+  return {
+    reactTypesPath,
+    targetFile,
+    omitElements,
+  };
 }
 
 function findReactTypesPath(): string {

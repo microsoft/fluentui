@@ -6,24 +6,6 @@ This directory contains TypeScript transform scripts that extract actual JSX int
 
 TypeScript declaration files typically preserve type expressions like `keyof JSX.IntrinsicElements` rather than expanding them to the actual union of element names. This transformer ensures that consumers of the library get the fully expanded string union for better IntelliSense and type checking.
 
-## Scripts
-
-### 1. `expand-jsx-intrinsic-elements.ts` (Basic)
-
-- Uses a fallback list of known HTML elements
-- Simple pattern matching for transformation
-- Good for scenarios where React types are not available
-
-### 2. `expand-jsx-intrinsic-elements-advanced.ts` (Recommended)
-
-- **TypeChecker-only approach**: Uses TypeScript's compiler API exclusively for type resolution
-- Dynamically extracts from actual React type definitions
-- Supports both React 17 and React 18+ type structures
-- Handles HTML and SVG elements (178+ elements)
-- Provides version detection and detailed logging
-- **Strict mode**: Fails if extraction is unsuccessful (no fallback to static list)
-- **Early exit optimization**: Stops processing once successful extraction is achieved
-
 ## React Version Compatibility
 
 The advanced script handles both React type definition structures:
@@ -56,26 +38,42 @@ declare namespace React {
 
 ## Usage
 
-### Via NPM Scripts (Recommended)
-
 ```bash
-cd packages/react-components/react-utilities
-
-# Basic version with fallback list
-npm run expand-jsx-types
-
-# Advanced version with React type extraction
-npm run expand-jsx-types:advanced
+yarn nx run react-utilities:prebuild
 ```
 
 ### Direct Execution
 
 ```bash
-# Advanced script
-npx tsx scripts/expand-jsx-intrinsic-elements-advanced.ts
+npx tsx scripts/expand-jsx-intrinsic-elements.ts --target-file ./generated-types.ts
+```
 
-# Basic script
-npx tsx scripts/expand-jsx-intrinsic-elements.ts
+### Command Line Arguments
+
+The script supports command line arguments for customization:
+
+- `--target-file, -t`: Output file path (required)
+- `--react-types-path, -r`: Path to the React types directory (auto-detected if not provided)
+- `--omit-elements, -o`: Comma-separated list of elements to exclude from the generated union
+- `--help, -h`: Show help message
+
+#### Examples:
+
+```bash
+# Show help
+npx tsx scripts/expand-jsx-intrinsic-elements.ts --help
+
+# Basic usage with required target file
+npx tsx scripts/expand-jsx-intrinsic-elements.ts --target-file ./generated-types.ts
+
+# Exclude specific elements from the generated union
+npx tsx scripts/expand-jsx-intrinsic-elements.ts --target-file ./generated-types.ts --omit-elements div,span,p
+
+# Use custom React types path
+npx tsx scripts/expand-jsx-intrinsic-elements.ts --target-file ./generated-types.ts --react-types-path /path/to/react/types
+
+# Combine multiple options
+npx tsx scripts/expand-jsx-intrinsic-elements.ts --target-file ./custom-types.ts --omit-elements set,mpath,center,search
 ```
 
 ## Transformation Example
@@ -123,6 +121,8 @@ export type JSXIntrinsicElementKeys =
 - Formatted with each element on a new line for readability
 - Preserves all HTML and SVG elements from React types
 - Maintains exact element names from React type definitions
+- **Element Filtering**: Supports excluding specific elements via `omitElements` option
+- **Detailed Logging**: Shows omitted elements and filtering statistics
 
 ### Error Handling
 
@@ -166,11 +166,8 @@ The transformed types are automatically included in the build process:
 
 ## Maintenance
 
-Run the transformer script whenever:
+Auto updates types via `prebuild` target to insure that:
 
-- React types are updated
+- React types are updated in backwards compatible way
 - New JSX elements are added to React
-- Build process changes affect type generation
-- Manual verification of element completeness is needed
-
-The script can be integrated into CI/CD pipelines to ensure types stay current with React updates.
+- Manual verification of element output is needed after `generate-api` is run
