@@ -31,6 +31,9 @@ const useBaseStyles = makeResetStyles({
   ...createCustomFocusIndicatorStyle(
     {
       outlineRadius: semanticTokens.ctrlListCornerRest,
+      // This focus indicator works for just the focus rect.
+      // But in Copilot Theme, we also need to change the hover back plate
+      // Which is not touched in either these or the base styles
       borderRadius: semanticTokens.ctrlListCornerRest,
       boxShadow: `0 0 0 ${semanticTokens._ctrlAccordionFocusInnerStrokeWidth} ${semanticTokens.ctrlFocusInnerStroke}`,
       outline: `${semanticTokens.ctrlFocusOuterStrokeWidth} solid ${semanticTokens._ctrlAccordionFocusOuterStroke}`,
