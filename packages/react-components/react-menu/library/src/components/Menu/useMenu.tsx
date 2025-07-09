@@ -44,7 +44,7 @@ const submenuFallbackPositions: PositioningShorthandValue[] = [
  *
  * @param props - props from this instance of Menu
  */
-export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean }): MenuState => {
+export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { timeout?: number } }): MenuState => {
   const isSubmenu = useIsSubmenu();
   const {
     hoverDelay = 500,
@@ -105,7 +105,7 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean }): Men
 
   const safeZoneHandle = useSafeZoneArea({
     disabled: !enableSafeZone,
-    timeout: 1000,
+    timeout: typeof safeZone === 'object' ? safeZone.timeout : 1500,
 
     onSafeZoneEnter: e => {
       setOpen(e, { open: true, keyboard: false, type: 'menuSafeZoneMouseEnter', event: e });

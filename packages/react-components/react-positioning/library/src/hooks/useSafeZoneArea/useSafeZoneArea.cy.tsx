@@ -200,6 +200,38 @@ describe('useSafeZoneArea', () => {
     cy.get('[data-safe-zone]').should('have.css', 'display', 'none');
   });
 
+  it('safe zone is stays open as long as mouse keeps moving inside it', () => {
+    const onSafeZoneTimeout = cy.stub().as('onSafeZoneTimeout');
+    cy.clock();
+
+    mount(
+      <Example
+        popoverHeight={300}
+        onSafeZoneTimeout={onSafeZoneTimeout}
+        positioning={{ align: 'center', position: 'after', offset: { mainAxis: 20 } }}
+        timeout={300}
+      />,
+    );
+
+    cy.get('.trigger').realHover({ position: 'right' });
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+    let startX = 10;
+    let startY = 10;
+    for (let i = 0; i < 5; i++) {
+      cy.get('.trigger').realMouseMove(startX, startY, { position: 'topRight' });
+      cy.clock().tick(299);
+      cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+      startX += 1;
+      startY += 1;
+    }
+
+    cy.get('.trigger').realMouseMove(startX, startY, { position: 'topRight' });
+    cy.clock().tick(301);
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+    cy.get('@onSafeZoneTimeout').should('be.called');
+  });
+
   it('safe zone is hidden after timeout if mouse is not moving', () => {
     const onSafeZoneTimeout = cy.stub().as('onSafeZoneTimeout');
 
