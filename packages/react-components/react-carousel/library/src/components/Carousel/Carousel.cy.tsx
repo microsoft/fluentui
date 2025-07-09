@@ -13,6 +13,7 @@ import { Carousel } from './Carousel';
 import { CarouselCard, carouselCardClassNames } from '../CarouselCard/index';
 import { CarouselIndexChangeData } from '../CarouselContext.types';
 import { EventHandler } from '@fluentui/react-utilities';
+import { carouselButtonClassNames } from '../CarouselButton/useCarouselButtonStyles.styles';
 
 const mount = (
   element: // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -21,15 +22,19 @@ const mount = (
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
-const CarouselTest: React.FC<CarouselProps> = props => {
+const CarouselTest: React.FC<CarouselProps & { cardCount?: number }> = props => {
+  const cards = React.useMemo(() => {
+    const elements = [];
+    for (let i = 0; i < (props.cardCount ?? 3); i++) {
+      elements.push(<CarouselCard key={i}>Card {i + 1}</CarouselCard>);
+    }
+    return elements;
+  }, [props.cardCount]);
+
   return (
     <Carousel {...props}>
       <CarouselViewport>
-        <CarouselSlider cardFocus>
-          <CarouselCard>Card 1</CarouselCard>
-          <CarouselCard>Card 2</CarouselCard>
-          <CarouselCard>Card 3</CarouselCard>
-        </CarouselSlider>
+        <CarouselSlider cardFocus>{cards}</CarouselSlider>
       </CarouselViewport>
       <CarouselNavContainer>
         <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
@@ -81,6 +86,22 @@ describe('CarouselControlledIndexTest', () => {
         .get<HTMLElement>(`.${carouselNavButtonClassNames.root}`)
         .eq(controlledActiveIndex + 1);
       nextIndexNavButton.should('have.attr', 'aria-selected', 'true');
+    });
+  });
+
+  it('Non circular carousel should change focus to from prev to next button when bounds are reached', () => {
+    mount(<CarouselTest defaultActiveIndex={1} cardCount={2} circular={false} />);
+
+    const prevButton = cy.get<HTMLElement>(`.${carouselButtonClassNames.root}`).first();
+    const nextButton = cy.get<HTMLElement>(`.${carouselButtonClassNames.root}`).last();
+
+    // Click to previous navigation button and then next navigation button
+    prevButton.click().then(() => {
+      nextButton.should('be.focused').and('not.be.disabled');
+
+      nextButton.click().then(() => {
+        prevButton.should('be.focused').and('not.be.disabled');
+      });
     });
   });
 
