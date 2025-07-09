@@ -32,6 +32,7 @@ import {
   useSemanticTreeStyles,
   useSemanticTreeItemPersonaLayoutStyles,
 } from './Tree';
+import { useSemanticPersonaStyles } from './Persona';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -75,4 +76,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useTreeItemLayoutStyles_unstable: useSemanticTreeItemLayoutStyles,
   useTreeItemPersonaLayoutStyles_unstable: useSemanticTreeItemPersonaLayoutStyles,
   useTreeItemStyles_unstable: useSemanticTreeItemStyles,
+  // Persona styles
+  usePersonaStyles_unstable: useSemanticPersonaStyles,
 };

@@ -35,6 +35,7 @@
     "@fluentui/react-label": "^9.1.87",
     "@fluentui/react-link": "^9.4.6",
     "@fluentui/react-motion": "^9.7.2",
+    "@fluentui/react-persona": "^9.3.6",
     "@fluentui/react-progress": "^9.2.6",
     "@fluentui/react-provider": "^9.20.6",
     "@fluentui/react-rating": "^9.1.6",

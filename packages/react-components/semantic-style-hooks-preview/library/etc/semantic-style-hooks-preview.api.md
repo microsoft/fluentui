@@ -19,6 +19,7 @@ import { InlineDrawerState } from '@fluentui/react-drawer';
 import { LabelState } from '@fluentui/react-label';
 import { LinkState } from '@fluentui/react-link';
 import { MenuButtonState } from '@fluentui/react-button';
+import { PersonaState } from '@fluentui/react-persona';
 import { ProgressBarState } from '@fluentui/react-progress';
 import { RatingDisplayState } from '@fluentui/react-rating';
 import { RatingItemState } from '@fluentui/react-rating';
@@ -76,6 +77,9 @@ export const useSemanticMenuButtonStyles: (_state: unknown) => MenuButtonState;
 
 // @public
 export const useSemanticOverlayDrawerSurfaceStyles: (_state: unknown) => DialogSurfaceState;
+
+// @public
+export const useSemanticPersonaStyles: (_state: unknown) => PersonaState;
 
 // @public
 export const useSemanticProgressBarStyles: (_state: unknown) => ProgressBarState;
