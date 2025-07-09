@@ -177,9 +177,17 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     originalToken: 'sizeCtrlDefault',
     rawValue: '32px',
   },
+  _ctrlSliderPaddingDefault: {
+    originalToken: 'paddingCtrlHorizontalDefault',
+    rawValue: '10px',
+  },
   _ctrlSliderSmBarSizeDefault: {
     originalToken: 'sizeCtrlDefault',
     rawValue: '24px',
+  },
+  _ctrlSliderSmPaddingDefault: {
+    originalToken: 'paddingCtrlHorizontalDefault',
+    rawValue: '8px',
   },
   _ctrlSpinnerBackgroundEmpty: {
     f2Token: 'colorBrandStroke2Contrast',

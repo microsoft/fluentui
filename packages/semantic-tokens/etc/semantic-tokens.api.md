@@ -2647,6 +2647,9 @@ export const ctrlSliderLgThumbSizeRest = "var(--smtc-ctrl-slider-lg-thumb-size-r
 // @public (undocumented)
 export const ctrlSliderLgThumbSizeRestRaw = "--smtc-ctrl-slider-lg-thumb-size-rest";
 
+// @public
+export const _ctrlSliderPaddingDefault = "var(--smtc-padding-ctrl-horizontal-default, 10px)";
+
 // @public (undocumented)
 export const ctrlSliderSmBarHeight = "var(--smtc-ctrl-slider-sm-bar-height, var(--smtc-ctrl-progress-sm-height-filled, 2px))";
 
@@ -2655,6 +2658,9 @@ export const ctrlSliderSmBarHeightRaw = "--smtc-ctrl-slider-sm-bar-height";
 
 // @public
 export const _ctrlSliderSmBarSizeDefault = "var(--smtc-size-ctrl-default, 24px)";
+
+// @public
+export const _ctrlSliderSmPaddingDefault = "var(--smtc-padding-ctrl-horizontal-default, 8px)";
 
 // @public (undocumented)
 export const ctrlSliderSmThumbSizeHover = "var(--smtc-ctrl-slider-sm-thumb-size-hover, var(--smtc-size-ctrl-sm-icon, 16px))";

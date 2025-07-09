@@ -63,6 +63,14 @@ const useRootStyles = makeStyles({
     },
   },
 
+  smallHorizontal: {
+    gridTemplateColumns: `${semanticTokens._ctrlSliderSmPaddingDefault} 1fr ${semanticTokens._ctrlSliderSmPaddingDefault}`,
+  },
+
+  smallVertical: {
+    gridTemplateRows: `${semanticTokens._ctrlSliderSmPaddingDefault} 1fr ${semanticTokens._ctrlSliderSmPaddingDefault}`,
+  },
+
   medium: {
     [sliderThumbSizeVar]: semanticTokens.ctrlSliderThumbSizeRest,
     [sliderInnerThumbRadiusVar]: '6px',
@@ -76,17 +84,23 @@ const useRootStyles = makeStyles({
     },
   },
 
+  mediumHorizontal: {
+    gridTemplateColumns: `${semanticTokens._ctrlSliderPaddingDefault} 1fr ${semanticTokens._ctrlSliderPaddingDefault}`,
+  },
+
+  mediumVertical: {
+    gridTemplateRows: `${semanticTokens._ctrlSliderPaddingDefault} 1fr ${semanticTokens._ctrlSliderPaddingDefault}`,
+  },
+
   horizontal: {
     minWidth: '120px',
     // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
     gridTemplateRows: `1fr var(${sliderThumbSizeVar}) 1fr`,
-    gridTemplateColumns: `1fr calc(100% - var(${sliderThumbSizeVar})) 1fr`,
   },
 
   vertical: {
     minHeight: '120px',
     // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
-    gridTemplateRows: `1fr calc(100% - var(${sliderThumbSizeVar})) 1fr`,
     gridTemplateColumns: `1fr var(${sliderThumbSizeVar}) 1fr`,
   },
 
@@ -318,6 +332,10 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
   const isVertical = state.vertical;
+  const isSmallVertical = state.size === 'small' && isVertical;
+  const isSmallHorizontal = state.size === 'small' && !isVertical;
+  const isMediumVertical = state.size === 'medium' && isVertical;
+  const isMediumHorizontal = state.size === 'medium' && !isVertical;
 
   state.root.className = mergeClasses(
     sliderClassNames.root,
@@ -325,6 +343,10 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     isVertical ? rootStyles.focusIndicatorVertical : rootStyles.focusIndicatorHorizontal,
     rootStyles[state.size!],
     isVertical ? rootStyles.vertical : rootStyles.horizontal,
+    isSmallVertical && rootStyles.smallVertical,
+    isSmallHorizontal && rootStyles.smallHorizontal,
+    isMediumVertical && rootStyles.mediumVertical,
+    isMediumHorizontal && rootStyles.mediumHorizontal,
     state.disabled ? rootStyles.disabled : rootStyles.enabled,
     state.root.className,
   );
