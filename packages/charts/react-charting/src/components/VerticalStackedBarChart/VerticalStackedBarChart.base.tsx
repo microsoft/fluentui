@@ -63,6 +63,9 @@ import {
   calculateLongestLabelWidth,
   YAxisType,
   sortAxisCategories,
+  calcTotalWidth,
+  calcBandwidth,
+  calcRequiredWidth,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
@@ -118,6 +121,7 @@ export class VerticalStackedBarChartBase
   private _points: IVerticalStackedChartProps[];
   private _dataset: IVerticalStackedBarDataPoint[];
   private _xAxisLabels: string[];
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _bars: JSX.Element[];
   private _xAxisType: XAxisTypes;
   private _barWidth: number;
@@ -205,6 +209,7 @@ export class VerticalStackedBarChartBase
       const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
       const { isCalloutForStack = false } = this.props;
       this._dataset = this._createDataSetLayer();
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const legendBars: JSX.Element = this._getLegendData(
         this._points,
         this.props.theme!.palette,
@@ -410,6 +415,7 @@ export class VerticalStackedBarChartBase
     containerHeight: number,
     containerWidth: number,
     yScaleSecondary?: NumericScale,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element => {
     const lineObject: LineObject = this._getFormattedLineData(this.props.data);
     const lines: React.ReactNode[] = [];
@@ -596,6 +602,7 @@ export class VerticalStackedBarChartBase
     this.margins = margins;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderCallout(props?: IVSChartDataPoint): JSX.Element | null {
     return props ? (
       <ChartHoverCard
@@ -635,6 +642,7 @@ export class VerticalStackedBarChartBase
     data: IVerticalStackedChartProps[],
     palette: IPalette,
     lineLegends: LineLegends[],
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element {
     if (this.props.hideLegend) {
       return <></>;
@@ -886,7 +894,7 @@ export class VerticalStackedBarChartBase
   ): {
     readonly gapHeight: number;
     readonly heightValueScale: number;
-    readonly adjustedTotalHeight: number;
+    readonly absStackTotal: number;
   } {
     const { barGapMax = 0 } = this.props;
 
@@ -920,7 +928,7 @@ export class VerticalStackedBarChartBase
     return {
       gapHeight,
       heightValueScale,
-      adjustedTotalHeight: sumOfPercent,
+      absStackTotal: totalData,
     } as const;
   }
 
@@ -930,6 +938,7 @@ export class VerticalStackedBarChartBase
     yBarScale: NumericScale | StringScale,
     containerHeight: number,
     xElement: SVGElement,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element[] => {
     const { barCornerRadius = 0, barMinimumHeight = 0 } = this.props;
     const _isHavingLines = this.props.data.some(
@@ -971,7 +980,7 @@ export class VerticalStackedBarChartBase
         return undefined;
       }
 
-      const { gapHeight, heightValueScale, adjustedTotalHeight } = this._getBarGapAndScale(barsToDisplay, yBarScale);
+      const { gapHeight, heightValueScale, absStackTotal } = this._getBarGapAndScale(barsToDisplay, yBarScale);
 
       if (heightValueScale < 0) {
         return undefined;
@@ -1032,7 +1041,8 @@ export class VerticalStackedBarChartBase
           yPoint = yPositiveStart;
         } else {
           barHeight = Math.abs(heightValueScale * (point.data as number));
-          const minHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
+          // FIXME: The current scaling logic may produce different min and gap heights for each bar stack.
+          const minHeight = Math.max((heightValueScale * absStackTotal) / 100.0, barMinimumHeight);
           if (barHeight < minHeight) {
             barHeight = minHeight;
           }
@@ -1194,6 +1204,7 @@ export class VerticalStackedBarChartBase
       };
       xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     return bars.filter((bar): bar is JSX.Element => !!bar);
   };
 
@@ -1344,10 +1355,7 @@ export class VerticalStackedBarChartBase
     this._domainMargin = MIN_DOMAIN_MARGIN;
 
     /** Total width available to render the bars */
-    const totalWidth =
-      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
-    /** Rate at which the space between the bars changes wrt the bar width */
-    const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+    const totalWidth = calcTotalWidth(containerWidth, this.margins, MIN_DOMAIN_MARGIN);
 
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding, this.props.xAxisPadding)) {
@@ -1359,7 +1367,7 @@ export class VerticalStackedBarChartBase
         // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
-        const reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * this._barWidth;
+        const reqWidth = calcRequiredWidth(this._barWidth, this._xAxisLabels.length, this._xAxisInnerPadding);
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
@@ -1367,18 +1375,15 @@ export class VerticalStackedBarChartBase
         }
       } else if (this.props.mode === 'plotly' && this._xAxisLabels.length > 1) {
         // Calculate the remaining width after rendering bars at their maximum allowable width
-        const bandwidth = totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate);
+        const bandwidth = calcBandwidth(totalWidth, this._xAxisLabels.length, this._xAxisInnerPadding);
         const barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, bandwidth);
-        let reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * barWidth;
+        let reqWidth = calcRequiredWidth(barWidth, this._xAxisLabels.length, this._xAxisInnerPadding);
         const margin1 = (totalWidth - reqWidth) / 2;
 
-        let margin2 = Number.POSITIVE_INFINITY;
-        if (!this.props.hideTickOverlap) {
-          // Calculate the remaining width after accounting for the space required to render x-axis labels
-          const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
-          reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
-          margin2 = (totalWidth - reqWidth) / 2;
-        }
+        // Calculate the remaining width after accounting for the space required to render x-axis labels
+        const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
+        reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
+        const margin2 = (totalWidth - reqWidth) / 2;
 
         this._domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }

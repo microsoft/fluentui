@@ -1,8 +1,10 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
+import { motionTokens } from '@fluentui/react-motion';
+
 import type { SplitNavItemSlots, SplitNavItemState } from './SplitNavItem.types';
 import { navItemTokens, useRootDefaultClassName } from '../sharedNavStyles.styles';
-import { tokens } from '@fluentui/react-theme';
 
 export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   root: 'fui-SplitNavItem',
@@ -21,6 +23,14 @@ export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
 // This links says that makeResetStyles should only be called once per element
 // https://griffel.js.org/react/api/make-reset-styles/#limitations
 
+const { actionButton, toggleButton, menuButton } = splitNavItemClassNames;
+const buttonHoverStyles = {
+  [`& .${actionButton}, & .${toggleButton}, & .${menuButton}`]: {
+    opacity: 1,
+    pointerEvents: 'auto',
+  },
+};
+
 /**
  * Styles for the root slot
  */
@@ -36,7 +46,11 @@ const useSplitNaveItemStyles = makeStyles({
 
     ':hover': {
       backgroundColor: navItemTokens.backgroundColorHover,
+      ...buttonHoverStyles,
     },
+
+    ':focus-within': buttonHoverStyles,
+
     ':active': {
       backgroundColor: navItemTokens.backgroundColorPressed,
     },
@@ -61,6 +75,17 @@ const useSplitNaveItemStyles = makeStyles({
   },
   baseMedium: {
     paddingBlockStart: '9px',
+  },
+
+  baseLarge: {
+    paddingBlockStart: '12px',
+  },
+
+  hoverAction: {
+    opacity: 0,
+    pointerEvents: 'none',
+    transition: `opacity ${motionTokens.durationFast}ms ${motionTokens.curveEasyEase}`,
+    willChange: 'opacity',
   },
 });
 
@@ -92,6 +117,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
     state.actionButton.className = mergeClasses(
       splitNavItemClassNames.actionButton,
       splitNavItemStyles.baseSecondary,
+      splitNavItemStyles.hoverAction,
       state.density === 'medium' && splitNavItemStyles.baseMedium,
       state.actionButton.className,
     );
@@ -101,6 +127,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
     state.toggleButton.className = mergeClasses(
       splitNavItemClassNames.toggleButton,
       splitNavItemStyles.baseSecondary,
+      splitNavItemStyles.hoverAction,
       state.density === 'medium' && splitNavItemStyles.baseMedium,
       state.toggleButton.className,
     );
@@ -110,6 +137,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
     state.menuButton.className = mergeClasses(
       splitNavItemClassNames.menuButton,
       splitNavItemStyles.baseSecondary,
+      splitNavItemStyles.hoverAction,
       state.density === 'medium' && splitNavItemStyles.baseMedium,
       state.menuButton.className,
     );

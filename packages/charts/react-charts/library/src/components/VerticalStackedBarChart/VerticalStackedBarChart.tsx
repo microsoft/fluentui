@@ -35,7 +35,7 @@ import {
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
@@ -96,11 +96,13 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   let _margins: Margins;
   let _lineObject: LineObject;
   let _yMax: number;
+  let _yMin: number;
   let _calloutAnchorPoint: CalloutAnchorPointData | null;
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
+  const Y_ORIGIN: number = 0;
 
   const [selectedLegends, setSelectedLegends] = React.useState(props.legendProps?.selectedLegends || []);
   const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
@@ -359,7 +361,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   function _getAxisData(yAxisData: IAxisData) {
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
       const { yAxisDomainValues: domainValue } = yAxisData;
-      _yMax = Math.max(domainValue[domainValue.length - 1], props.yMaxValue || 0);
+      _yMax = Math.max(domainValue[domainValue.length - 1], props.yMaxValue || Y_ORIGIN);
+      _yMin = Math.min(domainValue[0], props.yMinValue || Y_ORIGIN);
     }
   }
 
@@ -549,6 +552,10 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     Object.keys(lineObject).forEach((item: string, index: number) => {
       lineObject[item].forEach((circlePoint: LinePoint, subIndex: number) => {
         const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
+        const noBarsAndLinesActive =
+          circlePoint.xItem.chartData.filter(
+            dataPoint => _noLegendHighlighted() || _isLegendHighlighted(dataPoint.legend),
+          ).length === 0;
         dots.push(
           <circle
             key={`${index}-${subIndex}-dot`}
@@ -572,11 +579,16 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             strokeWidth={3}
             visibility={_getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).visibility}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-            data-is-focusable={_isLegendHighlighted(item)}
             ref={e => (circleRef.refElement = e)}
-            onFocus={_lineFocus.bind(circlePoint, circleRef)}
-            onBlur={_lineHoverOut}
-            tabIndex={circlePoint.legend !== '' ? 0 : undefined}
+            {...(noBarsAndLinesActive
+              ? {
+                  tabIndex: !props.hideTooltip ? 0 : undefined,
+                  onFocus: event => _lineFocus(event, circlePoint, circleRef),
+                  onBlur: _handleMouseOut,
+                  role: 'img',
+                  'aria-label': _getAriaLabel(circlePoint.xItem, circlePoint as VSChartDataPoint),
+                }
+              : {})}
           />,
         );
       });
@@ -675,7 +687,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     _lineHoverFocus(lineData);
   }
 
-  function _lineFocus(lineData: LinePoint, ref: { refElement: SVGCircleElement | null }) {
+  function _lineFocus(
+    event: React.FocusEvent<SVGCircleElement, Element>,
+    lineData: LinePoint,
+    ref: { refElement: SVGCircleElement | null },
+  ) {
     if (ref.refElement) {
       _lineHoverFocus(lineData);
     }
@@ -709,13 +725,13 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   ): {
     readonly gapHeight: number;
     readonly heightValueScale: number;
-    readonly adjustedTotalHeight: number;
+    readonly absStackTotal: number;
   } {
     const { barGapMax = 0 } = props;
     // When displaying gaps between the bars, the height of each bar is
     // adjusted so that the total of all bars is not changed by the gaps
     const totalData = bars.reduce((iter, value) => iter + Math.abs(value.data), 0);
-    const totalHeight = defaultTotalHeight ?? yBarScale(totalData);
+    const totalHeight = defaultTotalHeight ?? Math.abs(yBarScale(totalData) - yBarScale(Y_ORIGIN));
     let sumOfPercent = 0;
     bars.forEach(point => {
       let value = (Math.abs(point.data) / totalData) * 100;
@@ -731,14 +747,14 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     return {
       gapHeight,
       heightValueScale,
-      adjustedTotalHeight: sumOfPercent,
+      absStackTotal: totalData,
     } as const;
   }
 
   function _getScales(containerHeight: number, containerWidth: number) {
-    const yMax = _yMax;
+    const yDomain = [Math.min(Y_ORIGIN, _yMin), Math.max(Y_ORIGIN, _yMax)];
     const yBarScale = d3ScaleLinear()
-      .domain([0, yMax])
+      .domain(yDomain)
       .range([0, containerHeight - _margins.bottom! - _margins.top!]);
     if (_xAxisType === XAxisTypes.NumericAxis) {
       const xMax = d3Max(_dataset, (point: VerticalStackedBarDataPoint) => point.x as number)!;
@@ -878,7 +894,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     }
 
     const bars = _points.map((singleChartData: VerticalStackedChartProps, indexNumber: number) => {
-      let yPoint = containerHeight - _margins.bottom!;
       const xPoint = xBarScale(
         _xAxisType === XAxisTypes.NumericAxis
           ? (singleChartData.xAxisPoint as number)
@@ -891,24 +906,29 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
       let barTotalValue = 0;
 
-      const barsToDisplay = singleChartData.chartData.filter(point => point.data > 0);
+      const barsToDisplay = singleChartData.chartData.filter(point => point.data !== 0);
 
       if (!barsToDisplay.length) {
         return undefined;
       }
 
-      const { gapHeight, heightValueScale, adjustedTotalHeight } = _getBarGapAndScale(barsToDisplay, yBarScale);
+      const { gapHeight, heightValueScale, absStackTotal } = _getBarGapAndScale(barsToDisplay, yBarScale);
 
       if (heightValueScale < 0) {
         return undefined;
       }
+
+      const yBaseline = containerHeight - _margins.bottom! - yBarScale(Y_ORIGIN);
+      let yPositiveStart = yBaseline;
+      let yNegativeStart = yBaseline;
+      let yPoint = 0;
+      let heightOfLastBar = 0;
 
       const singleBar = barsToDisplay.map((point: VSChartDataPoint, index: number) => {
         const startColor = point.color ? point.color : _colors[index];
         const ref: RefArrayData = {};
         const shouldHighlight = _isLegendHighlighted(point.legend) || _noLegendHighlighted() ? true : false;
         const rectFocusProps = !shouldFocusWholeStack && {
-          'data-is-focusable': !props.hideTooltip && shouldHighlight,
           'aria-label': _getAriaLabel(singleChartData, point),
           onMouseOver: (event: React.MouseEvent<SVGElement, MouseEvent>) =>
             _onRectHover(singleChartData.xAxisPoint, point, startColor, event),
@@ -919,14 +939,26 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           onBlur: _handleMouseOut,
           onClick: (event: React.MouseEvent<SVGElement, MouseEvent>) => _onClick(point, event),
           role: 'img',
+          tabIndex: !props.hideTooltip && shouldHighlight ? 0 : undefined,
         };
 
-        let barHeight = heightValueScale * point.data;
-        if (barHeight < Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight)) {
-          barHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
+        let barHeight = Math.abs(heightValueScale * point.data);
+        // FIXME: The current scaling logic may produce different min and gap heights for each bar stack.
+        const minHeight = Math.max((heightValueScale * absStackTotal) / 100.0, barMinimumHeight);
+        if (barHeight < minHeight) {
+          barHeight = minHeight;
         }
-        yPoint = yPoint - barHeight - (index ? gapHeight : 0);
+        const gapOffset = index ? gapHeight : 0;
+        if (point.data >= Y_ORIGIN) {
+          yPositiveStart -= barHeight + gapOffset;
+          yPoint = yPositiveStart;
+        } else {
+          yPoint = yNegativeStart + gapOffset;
+          yNegativeStart = yPoint + barHeight;
+        }
+
         barTotalValue += point.data;
+        heightOfLastBar = index === barsToDisplay.length - 1 ? barHeight : 0;
 
         if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {
           return (
@@ -976,7 +1008,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       });
       const groupRef: RefArrayData = {};
       const stackFocusProps = shouldFocusWholeStack && {
-        'data-is-focusable': !props.hideTooltip,
         'aria-label': _getAriaLabel(singleChartData),
         onMouseOver: (event: any) => _onStackHover(singleChartData, event),
         onMouseMove: (event: any) => _onStackHover(singleChartData, event),
@@ -985,6 +1016,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         onBlur: _handleMouseOut,
         onClick: (event: any) => _onClick(singleChartData, event),
         role: 'img',
+        tabIndex: !props.hideTooltip ? 0 : undefined,
       };
       let showLabel = false;
       let barLabel = 0;
@@ -1003,18 +1035,14 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
-          <g
-            id={`${indexNumber}-singleBar`}
-            ref={e => (groupRef.refElement = e)}
-            {...stackFocusProps}
-            tabIndex={!props.hideTooltip ? 0 : undefined}
-          >
+          <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
             {singleBar}
           </g>
           {!props.hideLabels && _barWidth >= 16 && showLabel && (
             <text
               x={xPoint + _barWidth / 2}
-              y={yPoint - 6}
+              //if total bar value >=0, show label above top bar, otherwise below bottom bar
+              y={barLabel >= Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
               textAnchor="middle"
               className={classes.barLabel}
               aria-label={`Total: ${barLabel}`}
@@ -1044,9 +1072,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return bars.filter((bar): bar is JSX.Element => !!bar);
   }

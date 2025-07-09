@@ -6,9 +6,16 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts';
-import { useId } from '@fluentui/react-components';
+import { useId, tokens, makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
 
 export const VerticalBarSecondaryYAxis = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const _widthSliderId = useId('width-slider-');
@@ -136,6 +143,7 @@ export const VerticalBarSecondaryYAxis = () => {
           yAxisTitle="Values of each category"
           xAxisTitle="Different categories of animals and fruits"
           secondaryYScaleOptions={{}}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </div>

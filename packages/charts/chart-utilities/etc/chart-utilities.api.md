@@ -1265,7 +1265,7 @@ export interface PlotData {
     // (undocumented)
     marker: Partial<PlotMarker>;
     // (undocumented)
-    mode: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta' | 'markers+text';
+    mode: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta' | 'markers+text' | 'lines+text';
     // (undocumented)
     name: string;
     // (undocumented)
@@ -1298,6 +1298,8 @@ export interface PlotData {
     stackgaps: 'infer zero' | 'interpolate';
     // (undocumented)
     stackgroup: string;
+    // (undocumented)
+    stage: string;
     // (undocumented)
     text: string | string[];
     // (undocumented)

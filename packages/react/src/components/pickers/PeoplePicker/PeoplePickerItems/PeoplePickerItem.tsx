@@ -20,7 +20,8 @@ import type {
 
 const getClassNames = classNamesFunction<IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles>();
 
-export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
+// eslint-disable-next-line @typescript-eslint/no-deprecated
+export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps): JSX.Element => {
   const {
     item,
     onRemoveItem,

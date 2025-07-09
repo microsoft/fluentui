@@ -2,6 +2,336 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 04 Jul 2025 10:02:42 GMT",
+      "tag": "@fluentui/react-components_v9.66.6",
+      "version": "9.66.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "9099bb6ad6320b20b674f53ef9f8682937f460bd",
+            "comment": "chore(react-dialog): remove boxShadow on DialogSurfaceMotion"
+          },
+          {
+            "author": "mathis.michel@outlook.de",
+            "package": "@fluentui/react-dialog",
+            "commit": "5c823ef29ffdbc39b15c7e81ac01e4afd147f8a6",
+            "comment": "fix(Dialog): fix mobile viewport issues"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "5067a4850156994fbfc977a3bff5b9f3353078fd",
+            "comment": "feat: integrate useSafeZoneArea()"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "d59c32aa8e7018ab4005499a3c26f71787c76730",
+            "comment": "Revert \"chore(react-portal): support for React 19\""
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9b211e15af007f2dbba27c9b670c5732bc163cc3",
+            "comment": "fix: ensure ResponsiveContainer resizes correctly within grid layout"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "2eee98645c74001a4b8125c75b3951870ef317a2",
+            "comment": "port v8 changes to v9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Jun 2025 13:39:40 GMT",
+      "tag": "@fluentui/react-components_v9.66.5",
+      "version": "9.66.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "1527b08bc5d5b634523688ece52b320a89d83482",
+            "comment": "fix: move action button to be the first button"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a22081a0cf560f862587a4485de93ecebb05f16d",
+            "comment": "fix: stop rAF if no mouse movement happening"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "a6b8ef6bbf59bc8ebc953d43e32f33fdecc1977d",
+            "comment": "fix(focusVisiblePolyfill): Strict mode compat after portal changes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jun 2025 14:11:52 GMT",
+      "tag": "@fluentui/react-components_v9.66.4",
+      "version": "9.66.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "71ddcad113d5d17402abb05c80edf0ebecc6f660",
+            "comment": "fix: Ensure we destroy carousel API on unmount"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "69ed95d1ac5703ca65f5f9dc04938e749235f02b",
+            "comment": "high contrast fix"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d73c885b16b1ee9d615908f3ba79f95b38b55938",
+            "comment": "implement stacked hbc with axis and support for negative x values"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "eb380a1ff0efb181818deb2817a4878f0b9a6da7",
+            "comment": "negative y value support and fix bar overlapping issue"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "f9d8524bd5df6f2b492663ecfa9e57b83f479b6d",
+            "comment": "fix(Scale): update variant parameters to design spec & refactor internally"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "65c65b0e98cbe507263400cfd66112edcb44c273",
+            "comment": "fix: only display actions on hover"
+          }
+        ],
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "3598b2d30d51921401f47301035e29c9b41f6c68",
+            "comment": "Presence enter & exit motions can be used separately with .In & .Out"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "0cd38790be5513dfe292535bf2fcdccf32b8638b",
+            "comment": "feat: add motion to nav components"
+          },
+          {
+            "author": "xboy2008@live.cn",
+            "package": "@fluentui/react-utilities",
+            "commit": "b3e8218f0b635e03c23c1d24fda049a2baa6b872",
+            "comment": "Shorten pollDuration to 100ms in useIFrameFocus"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "0a4dcce4c5f7f5d6f53aa0b3a9b54a303306c12d",
+            "comment": "fix: Ensure virtualizer recalcs on numItems change"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Jun 2025 15:49:46 GMT",
+      "tag": "@fluentui/react-components_v9.66.3",
+      "version": "9.66.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "2e2354bac6eceea41195a8ae40dc4ee654ca2817",
+            "comment": "Add negative y value support in GVBC"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "108833800b70872ee7399de955f4633e164b0f1c",
+            "comment": "add support for negative vsbc"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6ad03ce04b77a80226cff792d4fc5b42e905a73b",
+            "comment": "port v8 changes to v9"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "a00b7d0f205b6178637eddd2e981b5e12efb3df5",
+            "comment": "feat: export usePositioning() & useSafeZoneArea() hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a00b7d0f205b6178637eddd2e981b5e12efb3df5",
+            "comment": "feat: improve handling of different shapes of rectangles in useSafeZoneArea()"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jun 2025 17:33:57 GMT",
       "tag": "@fluentui/react-components_v9.66.2",
       "version": "9.66.2",

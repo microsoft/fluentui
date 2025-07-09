@@ -7,8 +7,8 @@ export { PositioningConfigurationProvider } from './PositioningConfigurationCont
 
 export { usePositioning } from './usePositioning';
 export { usePositioningMouseTarget } from './usePositioningMouseTarget';
-export { useSafeZoneArea } from './useSafeZoneArea';
-export type { SafeBufferAreaOptions } from './useSafeZoneArea';
+export { useSafeZoneArea } from './hooks/useSafeZoneArea/useSafeZoneArea';
+export type { UseSafeZoneOptions } from './hooks/useSafeZoneArea/useSafeZoneArea';
 export { resolvePositioningShorthand, mergeArrowOffset } from './utils/index';
 
 export type {

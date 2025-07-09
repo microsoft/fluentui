@@ -2,6 +2,66 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Fri, 04 Jul 2025 10:02:46 GMT",
+      "tag": "@fluentui/react-positioning_v9.18.5",
+      "version": "9.18.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Jun 2025 13:39:40 GMT",
+      "tag": "@fluentui/react-positioning_v9.18.5",
+      "version": "9.18.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a22081a0cf560f862587a4485de93ecebb05f16d",
+            "comment": "fix: stop rAF if no mouse movement happening"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jun 2025 14:11:55 GMT",
+      "tag": "@fluentui/react-positioning_v9.18.4",
+      "version": "9.18.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.22.0",
+            "commit": "2b89e39a253fe3570265284b19d2461b9d37fb86"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Jun 2025 15:49:47 GMT",
+      "tag": "@fluentui/react-positioning_v9.18.3",
+      "version": "9.18.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a00b7d0f205b6178637eddd2e981b5e12efb3df5",
+            "comment": "feat: improve handling of different shapes of rectangles in useSafeZoneArea()"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jun 2025 17:33:58 GMT",
       "tag": "@fluentui/react-positioning_v9.18.2",
       "version": "9.18.2",

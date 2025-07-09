@@ -2,6 +2,137 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 03 Jul 2025 07:21:39 GMT",
+      "tag": "@fluentui/react-charting_v5.24.11",
+      "version": "5.24.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ],
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "2ca1051297568031cafccbbd9d25e2a2d35e1ca3",
+            "comment": "fix(react-charting): Enable correct datapoint for single datapoint hover behavior for line chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9b211e15af007f2dbba27c9b670c5732bc163cc3",
+            "comment": "fix: ensure ResponsiveContainer resizes correctly within grid layout"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.210",
+            "commit": "2ca1051297568031cafccbbd9d25e2a2d35e1ca3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.123.1",
+            "commit": "2ca1051297568031cafccbbd9d25e2a2d35e1ca3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Jul 2025 07:20:12 GMT",
+      "tag": "@fluentui/react-charting_v5.24.10",
+      "version": "5.24.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c9a5c5b2f5c2e568f8d184b5b712632ef11b617a",
+            "comment": "implement single value callout in line chart"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-charting",
+            "commit": "096558dbd97e7f91d95c43b7b0494f9af521819b",
+            "comment": "feat(react-charting): Support for Funnel Chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.20",
+            "commit": "096558dbd97e7f91d95c43b7b0494f9af521819b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Jun 2025 07:19:37 GMT",
+      "tag": "@fluentui/react-charting_v5.24.9",
+      "version": "5.24.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "75a5aa640d1a15ba9a558bfdef7051d8edbf3abb",
+            "comment": "fix(react-charting): Adding support for marker texts for modes containing text"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.19",
+            "commit": "2eee98645c74001a4b8125c75b3951870ef317a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Jun 2025 07:20:41 GMT",
+      "tag": "@fluentui/react-charting_v5.24.8",
+      "version": "5.24.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "39380931736a1d9f6b62a990bebb80d05f3b9a15",
+            "comment": "fix(react-charting): Fix legend selection for Scatter charts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Jun 2025 07:19:47 GMT",
+      "tag": "@fluentui/react-charting_v5.24.7",
+      "version": "5.24.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6ad03ce04b77a80226cff792d4fc5b42e905a73b",
+            "comment": "make change in createNumericYAxis function in utilities "
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0c738807f68c72b86739d97f687b9c8e8909a1dc",
+            "comment": "feat: enable wrapping of string x-axis labels in DeclarativeChart + hide overlapping labels based on post-transform width"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "498f99c59857888b523ed4e336e24aa49aa7f042",
+            "comment": "fix: correct bar height rendering for values less than 1 in VSBC"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Jun 2025 07:20:01 GMT",
       "tag": "@fluentui/react-charting_v5.24.6",
       "version": "5.24.6",

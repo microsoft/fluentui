@@ -68,6 +68,7 @@ import {
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
+import { IFunnelChartDataPoint, IFunnelChartProps } from '../FunnelChart/FunnelChart.types';
 import { getOpacity, extractColor, resolveColor } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
@@ -508,8 +509,10 @@ export const transformPlotlyJsonToVSBCProps = (
     });
   });
 
+  const vsbcData = Object.values(mapXToDataPoints);
+
   return {
-    data: Object.values(mapXToDataPoints),
+    data: vsbcData,
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     barWidth: 'auto',
@@ -525,6 +528,7 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
@@ -612,8 +616,10 @@ export const transformPlotlyJsonToGVBCProps = (
     });
   });
 
+  const gvbcData = Object.values(mapXToDataPoints);
+
   return {
-    data: Object.values(mapXToDataPoints),
+    data: gvbcData,
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     barwidth: 'auto',
@@ -622,6 +628,7 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
+    wrapXAxisLables: typeof gvbcData[0]?.name === 'string',
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
@@ -735,6 +742,7 @@ export const transformPlotlyJsonToVBCProps = (
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
+    wrapXAxisLables: typeof vbcData[0]?.x === 'string',
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
@@ -844,7 +852,8 @@ const transformPlotlyJsonToScatterTraceProps = (
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
       const seriesOpacity = getOpacity(series, index);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
-      const lineOptions = getLineOptions(series.line);
+      // if mode contains 'text', we prioritize showing the text over curving the line
+      const lineOptions = !series.mode?.includes('text') ? getLineOptions(series.line) : undefined;
       const legendShape = getLegendShape(series);
 
       const validXYRanges = getValidXYRanges(series);
@@ -1167,6 +1176,7 @@ export const transformPlotlyJsonToHeatmapProps = (
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    wrapXAxisLables: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps([firstData], input.layout),
   };
@@ -1235,7 +1245,7 @@ export const transformPlotlyJsonToSankeyProps = (
     width: input.layout?.width,
     height: input.layout?.height ?? 468,
     styles,
-    enableReflow: true,
+    enableReflow: false,
   };
 };
 
@@ -1512,6 +1522,148 @@ export const transformPlotlyJsonToChartTableProps = (
     width: input.layout?.width,
     height: input.layout?.height,
     styles,
+  };
+};
+
+function getCategoriesAndValues(series: Partial<PlotData>): {
+  categories: (string | number)[];
+  values: (string | number)[];
+} {
+  const orientation = series.orientation || 'h';
+  const y = series.labels ?? series.y ?? series.stage;
+  const x = series.values ?? series.x ?? series.value;
+  const xIsString = isStringArray(x as Datum[] | Datum[][] | TypedArray | undefined);
+  const yIsString = isStringArray(y as Datum[] | Datum[][] | TypedArray | undefined);
+  const xIsNumber = isNumberArray(x as Datum[] | Datum[][] | TypedArray | undefined);
+  const yIsNumber = isNumberArray(y as Datum[] | Datum[][] | TypedArray | undefined);
+
+  // Helper to ensure array of (string | number)
+  const toArray = (arr: unknown): (string | number)[] => {
+    if (Array.isArray(arr)) {
+      return arr as (string | number)[];
+    }
+    if (typeof arr === 'string' || typeof arr === 'number') {
+      return [arr];
+    }
+    return [];
+  };
+
+  if (orientation === 'h') {
+    if (yIsString && xIsNumber) {
+      return { categories: toArray(y), values: toArray(x) };
+    } else if (xIsString && yIsNumber) {
+      return { categories: toArray(x), values: toArray(y) };
+    } else {
+      return { categories: yIsString ? toArray(y) : toArray(x), values: yIsString ? toArray(x) : toArray(y) };
+    }
+  } else {
+    if (xIsString && yIsNumber) {
+      return { categories: toArray(x), values: toArray(y) };
+    } else if (yIsString && xIsNumber) {
+      return { categories: toArray(y), values: toArray(x) };
+    } else {
+      return { categories: xIsString ? toArray(x) : toArray(y), values: xIsString ? toArray(y) : toArray(x) };
+    }
+  }
+}
+
+export const transformPlotlyJsonToFunnelChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): IFunnelChartProps => {
+  const funnelData: IFunnelChartDataPoint[] = [];
+
+  // Determine if data is stacked based on multiple series with multiple values per series
+  const isStacked =
+    input.data.length > 1 &&
+    input.data.every((series: Partial<PlotData>) => {
+      const values = series.values ?? series.x ?? series.value;
+      const labels = series.labels ?? series.y ?? series.stage;
+      return Array.isArray(labels) && Array.isArray(values) && values.length > 1 && labels.length > 1;
+    });
+
+  if (isStacked) {
+    // Assign a color per series/category and use it for all subValues of that category
+    const seriesColors: Record<string, string> = {};
+    input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
+      const category = series.name || `Category ${seriesIdx + 1}`;
+      // Use the same color for this category across all stages
+      const extractedColors = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.marker?.colors ?? series.marker?.color,
+        colorMap,
+        isDarkTheme,
+      );
+      // Always use the first color for the series/category
+      const color = resolveColor(extractedColors, 0, category, colorMap, isDarkTheme);
+      seriesColors[category] = color;
+
+      const labels = series.labels ?? series.y ?? series.stage;
+      const values = series.values ?? series.x ?? series.value;
+
+      if (!isArrayOrTypedArray(labels) || !isArrayOrTypedArray(values)) {
+        return;
+      }
+      if (labels && isArrayOrTypedArray(labels) && labels.length > 0) {
+        (labels as (string | number)[]).forEach((label: string, i: number) => {
+          const stageIndex = funnelData.findIndex(stage => stage.stage === label);
+          const valueNum = Number((values as (string | number)[])[i]);
+          if (isNaN(valueNum)) {
+            return;
+          }
+          if (stageIndex === -1) {
+            funnelData.push({
+              stage: label,
+              subValues: [{ category, value: valueNum, color }],
+            });
+          } else {
+            funnelData[stageIndex].subValues!.push({ category, value: valueNum, color });
+          }
+        });
+      }
+    });
+  } else {
+    // Non-stacked data handling (multiple series with single-value arrays)
+    input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
+      const { categories, values } = getCategoriesAndValues(series);
+
+      if (!isArrayOrTypedArray(categories) || !isArrayOrTypedArray(values)) {
+        return;
+      }
+
+      const extractedColors = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.marker?.colors ?? series.marker?.color,
+        colorMap,
+        isDarkTheme,
+      );
+
+      categories.forEach((label: string, i: number) => {
+        const color = resolveColor(extractedColors, i, label, colorMap, isDarkTheme);
+        const valueNum = Number(values[i]);
+        if (isNaN(valueNum)) {
+          return;
+        }
+        funnelData.push({
+          stage: label,
+          value: valueNum,
+          color,
+        });
+      });
+    });
+  }
+
+  return {
+    data: funnelData,
+    width: input.layout?.width,
+    height: input.layout?.height,
+    orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'vertical' : 'horizontal',
+    hideLegend: isMultiPlot || input.layout?.showlegend === false,
   };
 };
 
@@ -2101,6 +2253,7 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
     const isAxisTypeCategory =
       ax?.type === 'category' || (isStringArray(values) && !isNumberArray(values) && !isDateArray(values));
     if (!isAxisTypeCategory) {
+      result[propName] = 'data';
       return;
     }
 

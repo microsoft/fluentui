@@ -25,8 +25,13 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-gulp": "*",
-    "@fluentui/scripts-jest": "*",
-    "@types/react-frame-component": "^4.1.1"
+    "@fluentui/scripts-jest-v0": "*",
+    "@types/react": "17.0.44",
+    "@types/react-dom": "17.0.15",
+    "@types/react-is": "17.0.7",
+    "@types/react-frame-component": "^4.1.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "peerDependencies": {
     "@babel/standalone": "^7.8.3",

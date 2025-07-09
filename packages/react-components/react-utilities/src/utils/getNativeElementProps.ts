@@ -91,7 +91,8 @@ export const getPartitionedNativeProps = <
   excludedPropNames,
 }: {
   /** The primary slot's element type (e.g. 'div') */
-  primarySlotTagName: keyof JSX.IntrinsicElements;
+  primarySlotTagName: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  keyof JSX.IntrinsicElements;
 
   /** The component's props object */
   props: Props;

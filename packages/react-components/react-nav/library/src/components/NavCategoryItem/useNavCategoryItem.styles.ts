@@ -15,6 +15,7 @@ export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
   root: 'fui-NavCategoryItem',
   icon: 'fui-NavCategoryItem__icon',
   expandIcon: 'fui-NavCategoryItem__expandIcon',
+  expandIconMotion: 'fui-NavCategoryItem__expandIconMotion',
 };
 
 const useExpandIconStyles = makeStyles({

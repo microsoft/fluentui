@@ -1,18 +1,5 @@
-import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
-
-import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
-
-import {
-  menuItemRadioSelector,
-  menuItemCheckboxSelector,
-  menuTriggerSelector,
-  menuItemSelector,
-  menuSelector,
-  menuTriggerId,
-} from '../../testing/selectors';
-
+import { makeStyles } from '@griffel/react';
 import {
   Menu,
   MenuTrigger,
@@ -24,9 +11,34 @@ import {
   MenuGroup,
   MenuGroupHeader,
   MenuSplitGroup,
+  type MenuProps,
+  menuItemClassNames,
 } from '@fluentui/react-menu';
-import type { MenuProps } from '@fluentui/react-menu';
-const mount = (element: JSX.Element) => {
+import { FluentProvider } from '@fluentui/react-provider';
+import { Portal } from '@fluentui/react-portal';
+import { teamsLightTheme } from '@fluentui/react-theme';
+import * as React from 'react';
+
+import {
+  menuItemRadioSelector,
+  menuItemCheckboxSelector,
+  menuTriggerSelector,
+  menuItemSelector,
+  menuSelector,
+  menuTriggerId,
+} from '../../testing/selectors';
+
+// eslint-disable-next-line @griffel/styles-file
+const useStyles = makeStyles({
+  pointerPortal: {
+    zIndex: 10000000,
+  },
+});
+
+const mount = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
@@ -1099,5 +1111,165 @@ describe('Context menu', () => {
       .should('not.exist')
       .get(menuTriggerSelector)
       .should('have.focus');
+  });
+});
+
+/**
+ * Cypress doesn't display the cursor position in the viewport, this component shows a red dot at the mouse position.
+ */
+const DebugPointer: React.FC = () => {
+  const styles = useStyles();
+  const pointerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    function onMouseMove(event: MouseEvent) {
+      if (pointerRef.current) {
+        pointerRef.current.style.left = `${event.x - 2}px`;
+        pointerRef.current.style.top = `${event.y - 2}px`;
+      }
+    }
+
+    window.addEventListener('mousemove', onMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+    };
+  }, []);
+
+  return (
+    <Portal mountNode={{ className: styles.pointerPortal }}>
+      <div
+        style={{
+          borderRadius: '4px',
+          pointerEvents: 'none',
+          background: 'red',
+          height: '4px',
+          width: '4px',
+          position: 'fixed',
+        }}
+        ref={pointerRef}
+      />
+    </Portal>
+  );
+};
+
+const MenuWithSafeZoneExample = () => {
+  // TODO: remove once "safeZone" is enabled by default
+  const menuProps = { safeZone: true } as unknown as MenuProps;
+
+  return (
+    <Menu {...menuProps} open>
+      <MenuTrigger disableButtonEnhancement>
+        <button>root trigger</button>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>item 1</MenuItem>
+          <Menu {...menuProps}>
+            <MenuTrigger>
+              <MenuItem id="item-2">item 2</MenuItem>
+            </MenuTrigger>
+            <MenuPopover>
+              <MenuList>
+                <MenuItem id="secondary-item-2a">secondary item 1A</MenuItem>
+                <MenuItem>secondary item 1B</MenuItem>
+                <MenuItem>secondary item 1C</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+          <Menu {...menuProps}>
+            <MenuTrigger>
+              <MenuItem id="item-3">item 3</MenuItem>
+            </MenuTrigger>
+            <MenuPopover>
+              <MenuList>
+                <MenuItem id="secondary-item-3a">secondary item 1A</MenuItem>
+                <MenuItem>secondary item 1B</MenuItem>
+                <MenuItem>secondary item 1C</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+          <MenuItem id="item-4">item 4</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+describe('safeZone', () => {
+  it('safe zone prevents a submenu from being closed', () => {
+    mount(
+      <>
+        <DebugPointer />
+        <MenuWithSafeZoneExample />
+      </>,
+    );
+
+    cy.get('#item-2').should('be.visible');
+
+    cy.get('#item-2').realHover();
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+    cy.get('#item-4').realHover();
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+    cy.clock(0).then(() => {
+      cy.tick(500);
+      cy.get('#secondary-item-2a').should('be.visible');
+      cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+      cy.tick(2000);
+      cy.get('#secondary-item-2a').should('not.exist');
+      cy.get('[data-safe-zone]').should('not.exist');
+    });
+  });
+
+  it('should not be able to open the menu if the safe zone is clicked', () => {
+    mount(
+      <>
+        <DebugPointer />
+        <MenuWithSafeZoneExample />
+      </>,
+    );
+
+    cy.get('#item-2').should('be.visible');
+
+    cy.get('#item-2').realHover();
+    cy.get('#secondary-item-2a').should('be.visible');
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+    cy.clock(0).then(() => {
+      cy.tick(500);
+      cy.get('#secondary-item-2a').should('be.visible');
+      cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+      cy.get('#secondary-item-2a').realHover();
+      cy.get('[data-safe-zone]').should('have.css', 'display', 'none');
+    });
+  });
+
+  it('another submenu could be opened once a safe zone timeouts', () => {
+    mount(
+      <>
+        <DebugPointer />
+        <MenuWithSafeZoneExample />
+      </>,
+    );
+
+    cy.get('#item-2').should('be.visible');
+
+    cy.get(`#item-2 .${menuItemClassNames.submenuIndicator}`).realHover();
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+    cy.get(`#item-3 .${menuItemClassNames.submenuIndicator}`).realHover();
+    cy.get('#secondary-item-2a').should('be.visible');
+    cy.get('#secondary-item-3a').should('not.exist');
+
+    cy.clock(0).then(() => {
+      cy.tick(2000);
+
+      cy.get('#secondary-item-2a').should('not.exist');
+      cy.get('#secondary-item-3a').should('be.visible');
+    });
   });
 });
