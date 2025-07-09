@@ -378,7 +378,7 @@ Object {
               </div>
               <div
                 class="fui-cart__calloutInfoContainer"
-                style="border-inline-start: 4px solid #E5E5E5;"
+                style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
               >
                 <div
                   class="fui-cart__calloutBlockContainer"
@@ -559,7 +559,7 @@ Object {
             </div>
             <div
               class="fui-cart__calloutInfoContainer"
-              style="border-inline-start: 4px solid #E5E5E5;"
+              style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
             >
               <div
                 class="fui-cart__calloutBlockContainer"
@@ -799,7 +799,7 @@ Object {
               </div>
               <div
                 class="fui-cart__calloutInfoContainer"
-                style="border-inline-start: 4px solid #E5E5E5;"
+                style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
               >
                 <div
                   class="fui-cart__calloutBlockContainer"
@@ -980,7 +980,7 @@ Object {
             </div>
             <div
               class="fui-cart__calloutInfoContainer"
-              style="border-inline-start: 4px solid #E5E5E5;"
+              style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
             >
               <div
                 class="fui-cart__calloutBlockContainer"
