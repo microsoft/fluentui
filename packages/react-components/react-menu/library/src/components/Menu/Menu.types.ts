@@ -143,7 +143,7 @@ export type MenuState = ComponentState<MenuSlots> &
     /**
      * Callback to open/close the popup
      */
-    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
+    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData & { ignoreHoverDelay?: boolean }) => void;
 
     /**
      * Id for the MenuTrigger element for aria relationship

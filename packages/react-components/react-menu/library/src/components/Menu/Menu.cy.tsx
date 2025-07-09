@@ -708,11 +708,11 @@ describe(`Nested Menus`, () => {
   const MenuL22Uncontrolled = () => (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
-        <MenuItem>Editor Layout</MenuItem>
+        <MenuItem id="menu-l2-2-trigger">Editor Layout</MenuItem>
       </MenuTrigger>
 
       <MenuPopover>
-        <MenuList>
+        <MenuList id="menu-l2-2">
           <MenuItem>Split Up</MenuItem>
           <MenuItem>Split Down</MenuItem>
           <MenuItem>Single</MenuItem>
@@ -721,14 +721,14 @@ describe(`Nested Menus`, () => {
     </Menu>
   );
 
-  const MenuL2Uncontrolled = () => (
+  const MenuL21Uncontrolled = () => (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
-        <MenuItem>Appearance</MenuItem>
+        <MenuItem id="menu-l2-1-trigger">Appearance</MenuItem>
       </MenuTrigger>
 
       <MenuPopover>
-        <MenuList>
+        <MenuList id="menu-l2-1">
           <MenuItem>Centered Layout</MenuItem>
           <MenuItem>Zen</MenuItem>
           <MenuItem disabled>Zoom In</MenuItem>
@@ -741,15 +741,15 @@ describe(`Nested Menus`, () => {
   const MenuL1Uncontrolled = () => (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
-        <MenuItem>Preferences</MenuItem>
+        <MenuItem id="menu-l1-trigger">Preferences</MenuItem>
       </MenuTrigger>
 
       <MenuPopover>
-        <MenuList>
+        <MenuList id="menu-l1">
           <MenuItem>Settings</MenuItem>
           <MenuItem>Online Services Settings</MenuItem>
           <MenuItem>Extensions</MenuItem>
-          <MenuL2Uncontrolled />
+          <MenuL21Uncontrolled />
           <MenuL22Uncontrolled />
         </MenuList>
       </MenuPopover>
@@ -764,7 +764,7 @@ describe(`Nested Menus`, () => {
 
       <MenuPopover>
         <MenuList>
-          <MenuItem>New </MenuItem>
+          <MenuItem>New</MenuItem>
           <MenuItem>New Window</MenuItem>
           <MenuItem disabled>Open File</MenuItem>
           <MenuItem>Open Folder</MenuItem>
@@ -773,6 +773,29 @@ describe(`Nested Menus`, () => {
       </MenuPopover>
     </Menu>
   );
+
+  const MenuL21Controlled = () => {
+    const [open, setOpen] = React.useState(false);
+    const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
+      setOpen(data.open);
+    };
+
+    return (
+      <Menu open={open} onOpenChange={onOpenChange}>
+        <MenuTrigger disableButtonEnhancement>
+          <MenuItem id="menu-l2-1-trigger">Editor Layout</MenuItem>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList id="menu-l2-1">
+            <MenuItem>Split Up</MenuItem>
+            <MenuItem>Split Down</MenuItem>
+            <MenuItem>Single</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    );
+  };
 
   const MenuL22Controlled = () => {
     const [open, setOpen] = React.useState(false);
@@ -783,34 +806,11 @@ describe(`Nested Menus`, () => {
     return (
       <Menu open={open} onOpenChange={onOpenChange}>
         <MenuTrigger disableButtonEnhancement>
-          <MenuItem>Editor Layout</MenuItem>
+          <MenuItem id="menu-l2-2-trigger">Appearance</MenuItem>
         </MenuTrigger>
 
         <MenuPopover>
-          <MenuList>
-            <MenuItem>Split Up</MenuItem>
-            <MenuItem>Split Down</MenuItem>
-            <MenuItem>Single</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-    );
-  };
-
-  const MenuL2Controlled = () => {
-    const [open, setOpen] = React.useState(false);
-    const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
-      setOpen(data.open);
-    };
-
-    return (
-      <Menu open={open} onOpenChange={onOpenChange}>
-        <MenuTrigger disableButtonEnhancement>
-          <MenuItem>Appearance</MenuItem>
-        </MenuTrigger>
-
-        <MenuPopover>
-          <MenuList>
+          <MenuList id="menu-l2-2">
             <MenuItem>Centered Layout</MenuItem>
             <MenuItem>Zen</MenuItem>
             <MenuItem disabled>Zoom In</MenuItem>
@@ -830,16 +830,16 @@ describe(`Nested Menus`, () => {
     return (
       <Menu open={open} onOpenChange={onOpenChange}>
         <MenuTrigger disableButtonEnhancement>
-          <MenuItem>Preferences</MenuItem>
+          <MenuItem id="menu-l1-trigger">Preferences</MenuItem>
         </MenuTrigger>
 
         <MenuPopover>
-          <MenuList>
+          <MenuList id="menu-l1">
             <MenuItem>Settings</MenuItem>
             <MenuItem>Online Services Settings</MenuItem>
             <MenuItem>Extensions</MenuItem>
+            <MenuL21Controlled />
             <MenuL22Controlled />
-            <MenuL2Controlled />
           </MenuList>
         </MenuPopover>
       </Menu>
@@ -855,7 +855,7 @@ describe(`Nested Menus`, () => {
 
         <MenuPopover>
           <MenuList>
-            <MenuItem>New </MenuItem>
+            <MenuItem>New</MenuItem>
             <MenuItem>New Window</MenuItem>
             <MenuItem disabled>Open File</MenuItem>
             <MenuItem>Open Folder</MenuItem>
@@ -1038,6 +1038,25 @@ describe(`Nested Menus`, () => {
           .eq(1)
           .realPress(['Shift', 'Tab']);
         cy.contains('Before').should('be.focused').get(menuSelector).should('not.exist');
+      });
+
+      it('respects ".hoverDelay" for opening via hover', () => {
+        mount(<Example />);
+
+        cy.get(menuTriggerSelector).click();
+
+        cy.get('#menu-l1-trigger').realHover();
+        cy.get('#menu-l1').should('be.visible');
+
+        cy.get('#menu-l2-2-trigger').realHover();
+        cy.get('#menu-l2-2').should('be.visible');
+
+        // Quickly hover over the second item to ensure it doesn't open due to the timeout
+        cy.get('#menu-l2-1-trigger').realHover();
+        cy.get('#menu-l2-2-trigger').realHover();
+
+        cy.get('#menu-l2-1').should('not.exist');
+        cy.get('#menu-l2-2').should('be.visible');
       });
     });
   });
