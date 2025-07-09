@@ -1267,7 +1267,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           </div>
           <div
             class="fui-cart__calloutInfoContainer"
-            style="border-inline-start: 4px solid #00bcf2;"
+            style="border-inline-start: 4px solid #00bcf2; margin-top: 11px;"
           >
             <div
               class="fui-cart__calloutBlockContainer"

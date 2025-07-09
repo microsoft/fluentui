@@ -50,7 +50,6 @@ const useStyles = makeStyles({
   },
   calloutBlockContainerCartesian: {
     ...typographyStyles.caption1,
-    marginTop: '13px',
     forcedColorAdjust: 'none',
   },
   calloutBlockContainerNonCartesian: {

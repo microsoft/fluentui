@@ -11078,7 +11078,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </div>
           <div
             class="fui-cart__calloutInfoContainer"
-            style="border-inline-start: 4px solid #8764B8;"
+            style="border-inline-start: 4px solid #8764B8; margin-top: 11px;"
           >
             <div
               class="fui-cart__calloutBlockContainer"
