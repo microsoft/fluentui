@@ -81,9 +81,9 @@ const useRootStyles = makeStyles({
   disabled: {
     cursor: 'default',
 
-    color: tokens.colorNeutralForegroundDisabled,
-    [vars.indicatorBorderColor]: tokens.colorNeutralStrokeDisabled,
-    [vars.indicatorColor]: tokens.colorNeutralForegroundDisabled,
+    color: semanticTokens.foregroundCtrlOnTransparentDisabled,
+    [vars.indicatorBorderColor]: semanticTokens.ctrlChoiceBaseStrokeDisabled,
+    [vars.indicatorColor]: semanticTokens.foregroundCtrlOnActiveBrandDisabled,
 
     '@media (forced-colors: active)': {
       color: 'GrayText',

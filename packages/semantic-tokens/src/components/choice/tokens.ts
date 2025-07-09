@@ -12,6 +12,7 @@ import {
   colorNeutralStrokeAccessible,
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
+  colorNeutralStrokeDisabled,
   borderRadiusSmall,
 } from '../../legacy/tokens';
 import {
@@ -95,7 +96,7 @@ export const ctrlChoiceBaseBackgroundDisabled = `var(${ctrlChoiceBaseBackgroundD
 export const ctrlChoiceBaseStrokeRest = `var(${ctrlChoiceBaseStrokeRestRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessible}))`;
 export const ctrlChoiceBaseStrokeHover = `var(${ctrlChoiceBaseStrokeHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessibleHover}))`;
 export const ctrlChoiceBaseStrokePressed = `var(${ctrlChoiceBaseStrokePressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessiblePressed}))`;
-export const ctrlChoiceBaseStrokeDisabled = `var(${ctrlChoiceBaseStrokeDisabledRaw}, var(${foregroundCtrlNeutralSecondaryDisabledRaw}))`;
+export const ctrlChoiceBaseStrokeDisabled = `var(${ctrlChoiceBaseStrokeDisabledRaw}, var(${foregroundCtrlNeutralSecondaryDisabledRaw}, ${colorNeutralStrokeDisabled}))`;
 export const ctrlChoiceCheckboxIconSize = `var(${ctrlChoiceCheckboxIconSizeRaw}, var(${sizeCtrlIconSecondaryRaw}))`;
 export const ctrlChoiceCheckboxCorner = `var(${ctrlChoiceCheckboxCornerRaw}, ${borderRadiusSmall})`;
 export const ctrlChoiceCheckboxIndeterminateCorner = `var(${ctrlChoiceCheckboxIndeterminateCornerRaw}, var(${cornerCircularRaw}))`;
