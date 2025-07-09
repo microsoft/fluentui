@@ -40,6 +40,14 @@ describe('MessageBar', () => {
   it('Should render MessageActions slots with correct keys', () => {
     mount(<Test />);
 
+    cy.on('uncaught:exception', err => {
+      // Ignore uncaught exceptions from resize observer
+      // These seem to only happen on cypress headed runs
+      if (err.message.includes('ResizeObserver loop completed with undelivered notifications')) {
+        return false;
+      }
+    });
+
     // wait for resize observer to trigger
     cy.wait(1000).get('#action').should('be.focused').get('#containerAction').should('not.be.focused');
   });
