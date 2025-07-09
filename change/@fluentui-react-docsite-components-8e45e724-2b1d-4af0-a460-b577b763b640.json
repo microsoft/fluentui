@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(deps-dev): bump @types/color-check from 0.0.0 to 0.0.2",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
