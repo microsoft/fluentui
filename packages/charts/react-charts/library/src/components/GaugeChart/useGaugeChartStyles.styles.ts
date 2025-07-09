@@ -1,6 +1,6 @@
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { GaugeChartProps, GaugeChartStyles } from './GaugeChart.types';
 
 export const gaugeChartClassNames: SlotClassNames<GaugeChartStyles> = {
