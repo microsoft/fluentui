@@ -37,6 +37,9 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
   useAccordionHeaderStyles_unstable: useSemanticAccordionHeaderStyles,
   // Avatar styles
+  // In semantic theme, square avatars all point to the same token, ctrlAvatarCornerGroupRaw,
+  // so there is no differentiation on size. This will not match Copilot Theme where
+  // larger square avatars have larger radii.
   useAvatarStyles_unstable: useSemanticAvatarStyles,
   // Button styles
   useButtonStyles_unstable: useSemanticButtonStyles, // checked, good.

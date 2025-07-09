@@ -1,10 +1,14 @@
 export const copilotLightThemeSemanticTokens = {
-  'smtc-corner-bezel': '16px',
-  'smtc-corner-card-rest': '24px',
-  'smtc-corner-circular': '9999px',
+  // corner related tokens from kumo that have been updated
   'smtc-corner-ctrl-lg-rest': '8px',
   'smtc-corner-ctrl-rest': '8px',
   'smtc-corner-ctrl-sm-rest': '8px',
+  'smtc-ctrl-list-corner-rest': '8px',
+
+  // other corner related tokens from kumo that have not been updated
+  'smtc-corner-bezel': '16px',
+  'smtc-corner-card-rest': '24px',
+  'smtc-corner-circular': '9999px',
   'smtc-corner-flyout-rest': '20px',
   'smtc-corner-flyout-shell-rest': '24px',
   'smtc-corner-image-in-card': '12px',
