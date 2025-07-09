@@ -63,3 +63,4 @@ export {
   useSemanticMenuSplitGroupStyles,
 } from './component-styles/Menu';
 export { useSemanticRadioStyles } from './component-styles/Radio';
+export { useSemanticPersonaStyles } from './component-styles/Persona';
