@@ -3,6 +3,7 @@ export const copilotLightThemeSemanticTokens = {
   'smtc-corner-ctrl-lg-rest': '8px',
   'smtc-corner-ctrl-rest': '8px',
   'smtc-corner-ctrl-sm-rest': '8px',
+  // intended for this to change tree item hover backplate corner radius, but no dice.
   'smtc-ctrl-list-corner-rest': '8px',
 
   // other corner related tokens from kumo that have not been updated
