@@ -346,8 +346,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         getMinMaxOfYAxis={this._getNumericMinMaxOfY}
         getGraphData={this._initializeLineChartData}
         xAxisType={this._isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
-        yMaxValue={this._isScatterPolar ? 1 : undefined}
-        yMinValue={this._isScatterPolar ? -1 : undefined}
+        {...(this._isScatterPolar ? { yMaxValue: 1, yMinValue: -1 } : {})}
         customizedCallout={this._getCustomizedCallout()}
         getDomainNRangeValues={this._getDomainNRangeValues}
         createStringYAxis={createStringYAxis}
