@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: explicitly add node globals to previously leaking types from enzyme",
+  "packageName": "@fluentui/utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
