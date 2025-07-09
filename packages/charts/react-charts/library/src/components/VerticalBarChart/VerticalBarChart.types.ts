@@ -62,7 +62,7 @@ export interface VerticalBarChartProps extends CartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: VerticalBarChartStyles;
+  styles?: Partial<VerticalBarChartStyles>;
 
   /**
    * The prop used to define the culture to localized the numbers

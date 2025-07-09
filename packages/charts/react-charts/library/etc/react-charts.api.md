@@ -272,6 +272,8 @@ export interface ChartPopoverProps {
     // (undocumented)
     ratio?: [number, number];
     // (undocumented)
+    styles?: Partial<PopoverComponentStyles>;
+    // (undocumented)
     xAxisCalloutAccessibilityData?: {
         ariaLabel?: string;
         data?: string;
@@ -704,6 +706,8 @@ export interface HeatMapChartProps extends CartesianChartProps {
 
 // @public
 export interface HeatMapChartStyles extends CartesianChartStyles {
+    // (undocumented)
+    calloutContentRoot?: string;
     // (undocumented)
     root?: string;
     // (undocumented)
@@ -1330,7 +1334,7 @@ export interface VerticalBarChartProps extends CartesianChartProps {
     mode?: 'default' | 'plotly';
     onRenderCalloutPerDataPoint?: RenderFunction<VerticalBarChartDataPoint>;
     roundCorners?: boolean;
-    styles?: VerticalBarChartStyles;
+    styles?: Partial<VerticalBarChartStyles>;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
@@ -1371,7 +1375,7 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
     onRenderCalloutPerDataPoint?: RenderFunction<VSChartDataPoint>;
     onRenderCalloutPerStack?: RenderFunction<VerticalStackedChartProps>;
     roundCorners?: boolean;
-    styles?: VerticalStackedBarChartStyles;
+    styles?: Partial<VerticalStackedBarChartStyles>;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
     xAxisPadding?: number;

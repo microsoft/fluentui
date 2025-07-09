@@ -401,7 +401,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       });
     }
     // Check if the bar legend is highlighted or no legend is highlighted
-    if (selectedPoint[0].legend && (selectedLegends.includes(selectedPoint[0].legend) || _noLegendHighlighted())) {
+    if (selectedLegends.includes(selectedPoint[0].legend!) || _noLegendHighlighted()) {
       // Add callout data for the bar
       YValueHover.push({
         legend: selectedPoint[0].legend,
