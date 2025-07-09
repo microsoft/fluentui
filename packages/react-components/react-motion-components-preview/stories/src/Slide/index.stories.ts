@@ -1,4 +1,4 @@
-import { DefaultSlide as Slide } from './Slide.stories';
+import { Slide } from '@fluentui/react-motion-components-preview';
 import SlideDescription from './SlideDescription.md';
 
 export { Default } from './SlideDefault.stories';
