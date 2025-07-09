@@ -6,29 +6,7 @@ import {
 } from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
 import { slideAtom } from '../../atoms/slide-atom';
-
-type SlideParams = {
-  /** Time (ms) for the enter transition (slide-in). Defaults to the `durationNormal` value (250 ms). */
-  duration?: number;
-
-  /** Easing curve for the enter transition (slide-in). Defaults to the `curveDecelerateMid` value.  */
-  easing?: string;
-
-  /** Time (ms) for the exit transition (slide-out). Defaults to the `duration` param for symmetry. */
-  exitDuration?: number;
-
-  /** Easing curve for the exit transition (slide-out). Defaults to the `curveAccelerateMid` value.  */
-  exitEasing?: string;
-
-  /** The X translate value with units to animate from. Defaults to `'0px'`. */
-  fromX?: string;
-
-  /** The Y translate value with units to animate from. Defaults to `'20px'`. */
-  fromY?: string;
-
-  /** Whether to animate the opacity. Defaults to `true`. */
-  animateOpacity?: boolean;
-};
+import { SlideParams } from './slide-types';
 
 /** Define a presence motion for slide in/out */
 const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
@@ -39,7 +17,7 @@ const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
   fromX = '0px',
   fromY = '20px',
   animateOpacity = true,
-}) => {
+}: SlideParams) => {
   const enterAtoms = [slideAtom({ direction: 'enter', duration, easing, fromX, fromY })];
   const exitAtoms = [
     slideAtom({
