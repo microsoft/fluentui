@@ -28,7 +28,7 @@
       "dependsOn": ["^build"],
       "inputs": [
         "{projectRoot}/jest-react-18.config.js",
-        "{workspaceRoot}/packages/react-components/**/*.(test|spec).tsx?"
+        "{workspaceRoot}/packages/react-components/**/*.(test|spec).ts(x)?"
       ]
     }
   }

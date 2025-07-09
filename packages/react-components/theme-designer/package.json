@@ -17,7 +17,7 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.66.5",
+    "@fluentui/react-components": "^9.66.6",
     "@fluentui/react-context-selector": "^9.2.2",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",

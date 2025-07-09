@@ -2,6 +2,21 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Fri, 04 Jul 2025 10:02:46 GMT",
+      "tag": "@fluentui/react-portal_v9.6.4",
+      "version": "9.6.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "d59c32aa8e7018ab4005499a3c26f71787c76730",
+            "comment": "Revert \"chore(react-portal): support for React 19\""
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jun 2025 13:39:41 GMT",
       "tag": "@fluentui/react-portal_v9.6.3",
       "version": "9.6.3",

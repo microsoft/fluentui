@@ -2,6 +2,41 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Fri, 04 Jul 2025 10:02:42 GMT",
+      "tag": "@fluentui/react-dialog_v9.13.6",
+      "version": "9.13.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "9099bb6ad6320b20b674f53ef9f8682937f460bd",
+            "comment": "chore(react-dialog): remove boxShadow on DialogSurfaceMotion"
+          },
+          {
+            "author": "mathis.michel@outlook.de",
+            "package": "@fluentui/react-dialog",
+            "commit": "5c823ef29ffdbc39b15c7e81ac01e4afd147f8a6",
+            "comment": "fix(Dialog): fix mobile viewport issues"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-portal to v9.6.4",
+            "commit": "5067a4850156994fbfc977a3bff5b9f3353078fd"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jun 2025 13:39:41 GMT",
       "tag": "@fluentui/react-dialog_v9.13.5",
       "version": "9.13.5",

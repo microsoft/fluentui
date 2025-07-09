@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Fri, 27 Jun 2025 13:39:41 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Jul 2025 10:02:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.6.4)
+
+Fri, 04 Jul 2025 10:02:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.6.3..@fluentui/react-portal_v9.6.4)
+
+### Patches
+
+- Revert "chore(react-portal): support for React 19" ([PR #34737](https://github.com/microsoft/fluentui/pull/34737) by olfedias@microsoft.com)
 
 ## [9.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.6.3)
 

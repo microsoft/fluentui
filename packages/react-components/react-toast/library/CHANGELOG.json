@@ -2,6 +2,21 @@
   "name": "@fluentui/react-toast",
   "entries": [
     {
+      "date": "Fri, 04 Jul 2025 10:02:51 GMT",
+      "tag": "@fluentui/react-toast_v9.5.4",
+      "version": "9.5.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-portal to v9.6.4",
+            "commit": "5067a4850156994fbfc977a3bff5b9f3353078fd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jun 2025 13:39:41 GMT",
       "tag": "@fluentui/react-toast_v9.5.3",
       "version": "9.5.3",

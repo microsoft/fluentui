@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 04 Jul 2025 04:08:39 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.112",
+      "version": "3.0.0-beta.112",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "32098df4c38328469012dec2fa3a684b1d2c6094",
+            "comment": "fix: initially checked radio should be focusable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Jul 2025 04:08:27 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.111",
       "version": "3.0.0-beta.111",

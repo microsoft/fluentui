@@ -47,7 +47,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   }
 
   function _hoverOn(
-    event: React.MouseEvent<SVGRectElement, MouseEvent>,
+    event: React.FocusEvent<SVGRectElement> | React.MouseEvent<SVGRectElement>,
     hoverVal: string | number | Date,
     point: ChartDataPoint,
   ): void {
@@ -57,7 +57,21 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       (_legendHighlighted(point.legend) || _noLegendHighlighted())
     ) {
       _calloutAnchorPoint = point;
-      updatePosition(event.clientX, event.clientY);
+      let x = 0;
+      let y = 0;
+
+      if ('clientX' in event && event.clientX && event.clientY) {
+        // Mouse event
+        x = event.clientX;
+        y = event.clientY;
+      } else {
+        // Focus event
+        const targetRect = (event.target as SVGRectElement).getBoundingClientRect();
+        x = targetRect.left + targetRect.width / 2;
+        y = targetRect.top + targetRect.height / 2;
+      }
+
+      updatePosition(x, y);
       setHoverValue(hoverVal);
       setLineColor(point.color!);
       setLegend(point.legend!);
@@ -295,12 +309,11 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
               : startingPoint[index] + index * barSpacingInPercent
           }%`}
           y={0}
-          data-is-focusable={point.legend !== '' ? true : false}
           width={value + '%'}
           height={_barHeight}
           fill={color}
           onMouseOver={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
-          onFocus={point.legend !== '' ? event => _hoverOn.bind(event, xValue, point) : undefined}
+          onFocus={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
           role="img"
           aria-label={_getAriaLabel(point)}
           onBlur={_hoverOff}

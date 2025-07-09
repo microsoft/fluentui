@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: ensure ResponsiveContainer resizes correctly within grid layout",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

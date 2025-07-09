@@ -179,7 +179,17 @@ export class RadioGroup extends FASTElement {
       this.value = this.initialValue;
     }
 
-    if (!this.value) {
+    if (
+      !this.value ||
+      // This logic covers the case when the RadioGroup doesn't have a `value`
+      // attribute, but does have a checked child Radio. Without this condition,
+      // the checked Radio's value will be assigned to `this.value`, and
+      // `checkedIndex` will be the checked Radio's index, but `this.checkedIndex`
+      // will remain `undefined`, which would cause the RadioGroup to add
+      // `tabindex=-1` to the checked Radio, and effectively makes the whole
+      // RadioGroup unfocusable.
+      (this.value && typeof this.checkedIndex !== 'number' && checkedIndex >= 0)
+    ) {
       // TODO: Switch to standard `Array.findLastIndex` when TypeScript 5 is available
       this.checkedIndex = checkedIndex;
     }

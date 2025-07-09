@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "port v8 changes to v9",
+  "comment": "fix accessibility bugs",
   "packageName": "@fluentui/react-charts",
   "email": "anushgupta@microsoft.com",
   "dependentChangeType": "patch"
