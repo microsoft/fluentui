@@ -70,10 +70,10 @@ npx tsx scripts/expand-jsx-intrinsic-elements.ts --omit-elements div,span,p
 npx tsx scripts/expand-jsx-intrinsic-elements.ts --react-types-path /path/to/react/types
 
 # Combine multiple options
-npx tsx scripts/expand-jsx-intrinsic-elements.ts --omit-elements set,mpath,center --target-file ./custom-types.ts
+npx tsx scripts/expand-jsx-intrinsic-elements.ts --omit-elements set,mpath,center,search --target-file ./custom-types.ts
 ```
 
-**Default omitted elements**: `set`, `mpath`, `center`
+**Default omitted elements**: `set`, `mpath`, `center`, `search`
 
 ## Transformation Example
 

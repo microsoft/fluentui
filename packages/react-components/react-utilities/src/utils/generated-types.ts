@@ -146,7 +146,6 @@ export type JSXIntrinsicElementKeys =
   | 's'
   | 'samp'
   | 'script'
-  | 'search'
   | 'section'
   | 'select'
   | 'slot'

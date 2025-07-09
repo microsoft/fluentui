@@ -86,7 +86,7 @@ Usage: node scripts/expand-jsx-intrinsic-elements.ts [options]
 Options:
   -r, --react-types-path <path>    Path to the React types directory
   -t, --target-file <path>         Output file path (default: ../src/utils/generated-types.ts)
-  -o, --omit-elements <elements>   Comma-separated list of elements to exclude (default: set,mpath,center)
+  -o, --omit-elements <elements>   Comma-separated list of elements to exclude to make JSXIntrinsicElements union backwards compatible (default: set,mpath,center,search)
   -h, --help                       Show this help message
 
 Examples:
@@ -102,7 +102,7 @@ Examples:
   const omitElementsArg = values['omit-elements'];
   const omitElements =
     typeof omitElementsArg === 'undefined'
-      ? ['set', 'mpath', 'center'] // Default when no argument provided
+      ? ['set', 'mpath', 'center', 'search'] // Default when no argument provided
       : omitElementsArg.trim().length === 0
       ? [] // Empty array when empty string provided
       : omitElementsArg
