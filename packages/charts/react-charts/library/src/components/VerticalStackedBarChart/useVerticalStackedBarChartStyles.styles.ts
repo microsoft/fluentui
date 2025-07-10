@@ -17,6 +17,8 @@ export const verticalstackedbarchartClassNames: SlotClassNames<VerticalStackedBa
   chartTitle: '',
   shapeStyles: '',
   chartWrapper: '',
+  svgTooltip: '',
+  chart: '',
 };
 
 const useStyles = makeStyles({

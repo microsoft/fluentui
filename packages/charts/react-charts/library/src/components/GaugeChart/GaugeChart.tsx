@@ -111,7 +111,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       };
     };
     const _margins: { left: number; right: number; top: number; bottom: number } = _getMargins();
-    const _legendsHeight: number = !props.hideLegend ? 24 : 0;
+    const _legendsHeight: number = !props.hideLegend ? 32 : 0;
     const _rootElem = React.useRef<HTMLDivElement | null>(null);
     const _isRTL: boolean = useRtl();
     const [width, setWidth] = React.useState<number>(140 + _getMargins().left + _getMargins().right);
@@ -137,15 +137,19 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     let _maxValue!: number;
     let _segments!: ExtendedSegment[];
     let _calloutAnchor: string = '';
+
+    React.useEffect(() => {
+      if (_rootElem.current) {
+        setWidth(_rootElem.current.clientWidth);
+        setHeight(_rootElem.current.clientHeight);
+      }
+    }, []);
+
     React.useEffect(() => {
       if (prevPropsRef.current) {
         const prevProps = prevPropsRef.current;
         if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
           setSelectedLegends(props.legendProps?.selectedLegends || []);
-        }
-        if (prevProps.height !== props.height || prevProps.width !== props.width) {
-          setWidth(props.width!);
-          setHeight(props.height!);
         }
       }
       prevPropsRef.current = props;
@@ -296,7 +300,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       });
 
       return (
-        <div className={classes.legendsContainer} style={{ width: props.width }}>
+        <div className={classes.legendsContainer}>
           <Legends
             legends={legends}
             centerLegends
@@ -455,7 +459,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
               className={classes.calloutContentX}
               {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
             >
-              {formatToLocaleString(calloutProps!.hoverXValue, props.culture)}
+              {formatToLocaleString(calloutProps!.hoverXValue, props.culture) as React.ReactNode}
             </div>
           </div>
           <div className={classes.calloutInfoContainer} style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}>
@@ -517,7 +521,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '16px' };
       const toDrawShape = xValue.index !== undefined && xValue.index !== -1;
       const { culture } = props;
-      const yValue = formatToLocaleString(xValue.y, culture);
+      const yValue = formatToLocaleString(xValue.y, culture) as React.ReactNode;
       if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
         return (
           <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
@@ -544,10 +548,12 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
               <div>
                 <div className={classes.calloutlegendText}> {xValue.legend}</div>
                 <div className={classes.calloutContentY}>
-                  {formatToLocaleString(
-                    xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
-                    culture,
-                  )}
+                  {
+                    formatToLocaleString(
+                      xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
+                      culture,
+                    ) as React.ReactNode
+                  }
                 </div>
               </div>
             </div>
@@ -563,9 +569,12 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             {Object.keys(subcounts).map((subcountName: string) => {
               return (
                 <div key={subcountName} className={classes.calloutBlockContainer}>
-                  <div className={classes.calloutlegendText}> {formatToLocaleString(subcountName, culture)}</div>
+                  <div className={classes.calloutlegendText}>
+                    {' '}
+                    {formatToLocaleString(subcountName, culture) as React.ReactNode}
+                  </div>
                   <div className={classes.calloutContentY}>
-                    {formatToLocaleString(subcounts[subcountName], culture)}
+                    {formatToLocaleString(subcounts[subcountName], culture) as React.ReactNode}
                   </div>
                 </div>
               );
@@ -594,114 +603,117 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const { arcs } = _processProps();
     const focusAttributes = useFocusableGroup();
     return (
-      <div className={classes.root} ref={el => (_rootElem.current = el)} {...focusAttributes}>
-        <svg
-          className={classes.chart}
-          style={{ width: props.width, height: props.height! - _legendsHeight }}
-          role="region"
-          aria-label={_getChartTitle()}
-          onMouseLeave={_handleMouseOut}
-        >
-          <g transform={`translate(${width / 2}, ${height - (_margins.bottom + _legendsHeight)})`}>
-            {props.chartTitle && (
-              <text
-                x={0}
-                y={-(_outerRadius + TITLE_OFFSET)}
-                textAnchor="middle"
-                className={classes.chartTitle}
-                aria-hidden={true}
+      <div className={classes.root} ref={el => (_rootElem.current = el)}>
+        <div className={classes.chartWrapper} {...focusAttributes}>
+          <svg
+            className={classes.chart}
+            width={_width}
+            height={_height - _legendsHeight}
+            role="region"
+            aria-label={_getChartTitle()}
+            onMouseLeave={_handleMouseOut}
+          >
+            <g transform={`translate(${_width / 2}, ${_height - (_margins.bottom + _legendsHeight)})`}>
+              {props.chartTitle && (
+                <text
+                  x={0}
+                  y={-(_outerRadius + TITLE_OFFSET)}
+                  textAnchor="middle"
+                  className={classes.chartTitle}
+                  aria-hidden={true}
+                >
+                  {props.chartTitle}
+                </text>
+              )}
+              {!props.hideMinMax && (
+                <>
+                  <text
+                    x={(_isRTL ? 1 : -1) * (_outerRadius + LABEL_OFFSET)}
+                    y={0}
+                    textAnchor="end"
+                    className={classes.limits}
+                    role="img"
+                    aria-label={`Min value: ${_minValue}`}
+                  >
+                    {formatScientificLimitWidth(_minValue)}
+                  </text>
+                  <text
+                    x={(_isRTL ? -1 : 1) * (_outerRadius + LABEL_OFFSET)}
+                    y={0}
+                    textAnchor="start"
+                    className={classes.limits}
+                    role="img"
+                    aria-label={`Max value: ${_maxValue}`}
+                  >
+                    {formatScientificLimitWidth(_maxValue)}
+                  </text>
+                </>
+              )}
+              {arcs.map((arc, index) => {
+                const segment = _segments[arc.segmentIndex];
+                return (
+                  <React.Fragment key={index}>
+                    <path
+                      d={arc.d}
+                      strokeWidth={focusedElement === segment.legend ? ARC_PADDING : 0}
+                      className={classes.segment}
+                      fill={segment.color}
+                      opacity={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 1 : 0.1}
+                      {...getAccessibleDataObject(
+                        {
+                          ariaLabel: getSegmentLabel(segment, _minValue, _maxValue, props.variant, true),
+                          ...segment.accessibilityData,
+                        },
+                        'img',
+                        true,
+                      )}
+                      onFocus={e => _handleFocus(e, segment.legend)}
+                      onBlur={_handleBlur}
+                      onMouseEnter={e => _handleMouseOver(e, segment.legend)}
+                      onMouseLeave={e => _handleCalloutDismiss()}
+                      onMouseMove={e => _handleMouseOver(e, segment.legend)}
+                      data-is-focusable={_legendHighlighted(segment.legend) || _noLegendHighlighted()}
+                      tabIndex={segment.legend !== '' ? 0 : undefined}
+                    />
+                  </React.Fragment>
+                );
+              })}
+              {_renderNeedle()}
+              <g
+                onMouseEnter={e => _handleMouseOver(e, 'Chart value')}
+                onMouseMove={e => _handleMouseOver(e, 'Chart value')}
               >
-                {props.chartTitle}
-              </text>
-            )}
-            {!props.hideMinMax && (
-              <>
-                <text
-                  x={(_isRTL ? 1 : -1) * (_outerRadius + LABEL_OFFSET)}
-                  y={0}
-                  textAnchor="end"
-                  className={classes.limits}
-                  role="img"
-                  aria-label={`Min value: ${_minValue}`}
-                >
-                  {formatScientificLimitWidth(_minValue)}
-                </text>
-                <text
-                  x={(_isRTL ? -1 : 1) * (_outerRadius + LABEL_OFFSET)}
-                  y={0}
-                  textAnchor="start"
-                  className={classes.limits}
-                  role="img"
-                  aria-label={`Max value: ${_maxValue}`}
-                >
-                  {formatScientificLimitWidth(_maxValue)}
-                </text>
-              </>
-            )}
-            {arcs.map((arc, index) => {
-              const segment = _segments[arc.segmentIndex];
-              return (
-                <React.Fragment key={index}>
-                  <path
-                    d={arc.d}
-                    strokeWidth={focusedElement === segment.legend ? ARC_PADDING : 0}
-                    className={classes.segment}
-                    fill={segment.color}
-                    opacity={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 1 : 0.1}
-                    {...getAccessibleDataObject(
-                      {
-                        ariaLabel: getSegmentLabel(segment, _minValue, _maxValue, props.variant, true),
-                        ...segment.accessibilityData,
-                      },
-                      'img',
-                      true,
-                    )}
-                    onFocus={e => _handleFocus(e, segment.legend)}
-                    onBlur={_handleBlur}
-                    onMouseEnter={e => _handleMouseOver(e, segment.legend)}
-                    onMouseLeave={e => _handleCalloutDismiss()}
-                    onMouseMove={e => _handleMouseOver(e, segment.legend)}
-                    data-is-focusable={_legendHighlighted(segment.legend) || _noLegendHighlighted()}
-                    tabIndex={segment.legend !== '' ? 0 : undefined}
-                  />
-                </React.Fragment>
-              );
-            })}
-            {_renderNeedle()}
-            <g
-              onMouseEnter={e => _handleMouseOver(e, 'Chart value')}
-              onMouseMove={e => _handleMouseOver(e, 'Chart value')}
-            >
-              <SVGTooltipText
-                content={getChartValueLabel(props.chartValue, _minValue, _maxValue, props.chartValueFormat)}
-                textProps={{
-                  x: 0,
-                  y: 0,
-                  textAnchor: 'middle',
-                  className: classes.chartValue,
-                  fontSize: chartValueSize,
-                  'aria-hidden': 'true',
-                }}
-                maxWidth={_innerRadius * 2 - 24}
-                wrapContent={_wrapContent}
-              />
+                <SVGTooltipText
+                  content={getChartValueLabel(props.chartValue, _minValue, _maxValue, props.chartValueFormat)}
+                  textProps={{
+                    x: 0,
+                    y: 0,
+                    textAnchor: 'middle',
+                    className: classes.chartValue,
+                    fontSize: chartValueSize,
+                    'aria-hidden': 'true',
+                  }}
+                  maxWidth={_innerRadius * 2 - 24}
+                  wrapContent={_wrapContent}
+                />
+              </g>
+              {props.sublabel && (
+                <SVGTooltipText
+                  content={props.sublabel}
+                  textProps={{
+                    x: 0,
+                    y: 4,
+                    textAnchor: 'middle',
+                    dominantBaseline: 'hanging',
+                    className: classes.sublabel,
+                  }}
+                  maxWidth={_innerRadius * 2}
+                  wrapContent={_wrapContent}
+                />
+              )}
             </g>
-            {props.sublabel && (
-              <SVGTooltipText
-                content={props.sublabel}
-                textProps={{
-                  x: 0,
-                  y: 4,
-                  textAnchor: 'middle',
-                  dominantBaseline: 'hanging',
-                  className: classes.sublabel,
-                }}
-                maxWidth={_innerRadius * 2}
-                wrapContent={_wrapContent}
-              />
-            )}
-          </g>
-        </svg>
+          </svg>
+        </div>
         {_renderLegends()}
         {!props.hideTooltip && isPopoverOpen && (
           <ChartPopover

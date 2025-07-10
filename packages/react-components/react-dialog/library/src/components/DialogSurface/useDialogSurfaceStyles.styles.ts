@@ -43,6 +43,10 @@ const useRootBaseStyle = makeResetStyles({
   // to ensure dialog will be properly styled when surfaceMotion is opted-out
   boxShadow: tokens.shadow64,
 
+  '@supports (height: 1dvh)': {
+    maxHeight: '100dvh',
+  },
+
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
   },
@@ -64,7 +68,7 @@ const useBackdropBaseStyle = makeResetStyles({
   position: 'fixed',
 });
 
-const useBackdropStyles = makeStyles({
+const useStyles = makeStyles({
   nestedDialogBackdrop: {
     backgroundColor: tokens.colorTransparentBackground,
   },
@@ -81,7 +85,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   const rootBaseStyle = useRootBaseStyle();
 
   const backdropBaseStyle = useBackdropBaseStyle();
-  const backdropStyles = useBackdropStyles();
+  const styles = useStyles();
 
   root.className = mergeClasses(dialogSurfaceClassNames.root, rootBaseStyle, root.className);
 
@@ -89,7 +93,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
     backdrop.className = mergeClasses(
       dialogSurfaceClassNames.backdrop,
       backdropBaseStyle,
-      isNestedDialog && backdropStyles.nestedDialogBackdrop,
+      isNestedDialog && styles.nestedDialogBackdrop,
       backdrop.className,
     );
   }

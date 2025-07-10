@@ -11,27 +11,6 @@
     "baseUrl": ".",
     "paths": {
       "@fluentui/react-portal-compat-context": ["packages/react-components/react-portal-compat-context/src/index.ts"],
-      "@fluentui/a11y-testing": ["packages/a11y-testing/src/index.ts"],
-      "@fluentui/ability-attributes": ["packages/fluentui/ability-attributes/src/index.ts"],
-      "@fluentui/accessibility": ["packages/fluentui/accessibility/src/index.ts"],
-      "@fluentui/code-sandbox": ["packages/fluentui/code-sandbox/src/index.ts"],
-      "@fluentui/digest": ["packages/fluentui/digest/src/index.ts"],
-      "@fluentui/docs-components": ["packages/fluentui/docs-components/src/index.ts"],
-      "@fluentui/react-bindings": ["packages/fluentui/react-bindings/src/index.ts"],
-      "@fluentui/react-builder": ["packages/fluentui/react-builder/src/index.ts"],
-      "@fluentui/react-component-event-listener": ["packages/fluentui/react-component-event-listener/src/index.ts"],
-      "@fluentui/react-component-nesting-registry": ["packages/fluentui/react-component-nesting-registry/src/index.ts"],
-      "@fluentui/react-component-ref": ["packages/fluentui/react-component-ref/src/index.ts"],
-      "@fluentui/react-icons-northstar": ["packages/fluentui/react-icons-northstar/src/index.ts"],
-      "@fluentui/react-northstar": ["packages/fluentui/react-northstar/src/index.ts"],
-      "@fluentui/react-northstar-emotion-renderer": ["packages/fluentui/react-northstar-emotion-renderer/src/index.ts"],
-      "@fluentui/react-northstar-fela-renderer": ["packages/fluentui/react-northstar-fela-renderer/src/index.ts"],
-      "@fluentui/react-northstar-styles-renderer": ["packages/fluentui/react-northstar-styles-renderer/src/index.ts"],
-      "@fluentui/react-northstar-prototypes": ["packages/fluentui/react-northstar-prototypes/src/index.ts"],
-      "@fluentui/react-telemetry": ["packages/fluentui/react-telemetry/src/index.ts"],
-      "@fluentui/react-proptypes": ["packages/fluentui/react-proptypes/src/index.ts"],
-      "@fluentui/state": ["packages/fluentui/state/src/index.ts"],
-      "@fluentui/styles": ["packages/fluentui/styles/src/index.ts"],
       "@fluentui/api-docs": ["packages/api-docs/src/index.ts"],
       "@fluentui/azure-themes": ["packages/azure-themes/src/index.ts"],
       "@fluentui/codemods": ["packages/codemods/src/index.ts"],
@@ -85,6 +64,9 @@
       ],
       "@fluentui/component-selector-preview": [
         "packages/react-components/component-selector-preview/library/src/index.ts"
+      ],
+      "@fluentui/component-selector-preview-stories": [
+        "packages/react-components/component-selector-preview/stories/src/index.ts"
       ],
       "@fluentui/eslint-plugin-react-components": [
         "packages/react-components/eslint-plugin-react-components/src/index.ts"
@@ -179,8 +161,8 @@
         "packages/react-components/react-motion-components-preview/stories/src/index.ts"
       ],
       "@fluentui/react-motion-stories": ["packages/react-components/react-motion/stories/src/index.ts"],
-      "@fluentui/react-nav-preview": ["packages/react-components/react-nav-preview/library/src/index.ts"],
-      "@fluentui/react-nav-preview-stories": ["packages/react-components/react-nav-preview/stories/src/index.ts"],
+      "@fluentui/react-nav": ["packages/react-components/react-nav/library/src/index.ts"],
+      "@fluentui/react-nav-stories": ["packages/react-components/react-nav/stories/src/index.ts"],
       "@fluentui/react-overflow": ["packages/react-components/react-overflow/library/src/index.ts"],
       "@fluentui/react-overflow-stories": ["packages/react-components/react-overflow/stories/src/index.ts"],
       "@fluentui/react-persona": ["packages/react-components/react-persona/library/src/index.ts"],
@@ -190,7 +172,8 @@
       "@fluentui/react-portal": ["packages/react-components/react-portal/library/src/index.ts"],
       "@fluentui/react-portal-compat": ["packages/react-components/react-portal-compat/src/index.ts"],
       "@fluentui/react-portal-stories": ["packages/react-components/react-portal/stories/src/index.ts"],
-      "@fluentui/react-positioning": ["packages/react-components/react-positioning/src/index.ts"],
+      "@fluentui/react-positioning": ["packages/react-components/react-positioning/library/src/index.ts"],
+      "@fluentui/react-positioning-stories": ["packages/react-components/react-positioning/stories/src/index.ts"],
       "@fluentui/react-progress": ["packages/react-components/react-progress/library/src/index.ts"],
       "@fluentui/react-progress-stories": ["packages/react-components/react-progress/stories/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-components/react-provider/library/src/index.ts"],
@@ -267,10 +250,7 @@
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/visual-regression-assert": ["tools/visual-regression-assert/src/index.ts"],
       "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/component-selector-preview-stories": [
-        "packages/react-components/component-selector-preview/stories/src/index.ts"
-      ]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
     }
   }
 }

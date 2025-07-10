@@ -43,7 +43,7 @@ jobs:
           script: |
             const run = require('./.github/scripts/prepare-vr-screenshots-for-upload');
             const config = {
-              projects: ['vr-tests-web-components', 'vr-tests-react-components', 'vr-tests', 'docs']
+              projects: ['vr-tests-web-components', 'vr-tests-react-components', 'vr-tests']
             };
             const result = await run({github,context,core,config});
             return result;

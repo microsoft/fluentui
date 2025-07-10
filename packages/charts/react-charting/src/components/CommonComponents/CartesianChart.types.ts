@@ -6,6 +6,7 @@ import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import {
+  AxisCategoryOrder,
   IAccessibilityProps,
   IChart,
   IDataPoint,
@@ -14,6 +15,7 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartPoints,
   IMargins,
+  IScatterChartDataPoint,
   IVerticalBarChartDataPoint,
   IVerticalStackedBarDataPoint,
 } from '../../types/index';
@@ -159,9 +161,14 @@ export interface ICartesianChartStyles {
   tooltip?: IStyle;
 
   /**
-   * styles for tooltip
+   * styles for axis title
    */
   axisTitle?: IStyle;
+
+  /**
+   * styles for axis annotation
+   */
+  axisAnnotation?: IStyle;
 
   /**
    * Style for the chart Title.
@@ -182,6 +189,16 @@ export interface ICartesianChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: IStyle;
+
+  /**
+   * Styles for the svg tooltip
+   */
+  svgTooltip?: IStyle;
+
+  /**
+   * Styles for the chart svg element
+   */
+  chart?: IStyle;
 }
 
 /**
@@ -469,6 +486,32 @@ export interface ICartesianChartProps {
    * @default false
    */
   hideTickOverlap?: boolean;
+
+  /**
+   * Prop to set the x axis annotation. Used to display additional information on the x-axis.
+   * This is shown on the top of the chart.
+   * @default undefined
+   */
+  xAxisAnnotation?: string;
+
+  /**
+   * Prop to set the y axis annotation. Used to display additional information on the y-axis.
+   * This is shown on the right side of the chart. Not shown if secondary y-axis is enabled.
+   * @default undefined
+   */
+  yAxisAnnotation?: string;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the x-axis.
+   * @default 'default'
+   */
+  xAxisCategoryOrder?: AxisCategoryOrder;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the y-axis.
+   * @default 'default'
+   */
+  yAxisCategoryOrder?: AxisCategoryOrder;
 }
 
 export interface IYValueHover {
@@ -526,6 +569,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Legends of the chart.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   legendBars: JSX.Element | null;
 
   /**
@@ -671,7 +715,12 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Get the min and max values of the y-axis
    */
   getMinMaxOfYAxis: (
-    points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[],
+    points:
+      | ILineChartPoints[]
+      | IHorizontalBarChartWithAxisDataPoint[]
+      | IVerticalBarChartDataPoint[]
+      | IDataPoint[]
+      | IScatterChartDataPoint[],
     yAxisType: YAxisType | undefined,
     useSecondaryYScale?: boolean,
   ) => { startValue: number; endValue: number };

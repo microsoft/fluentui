@@ -8,12 +8,12 @@
     "type-check:integration": "tsc -p tsconfig.react-17.json --noEmit",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
     "test": "jest --passWithNoTests",
-    "test:integration": "jest --passWithNoTests -c jest-react-17.config.js",
+    "test:integration": "jest --passWithNoTests -u -c jest-react-17.config.js",
     "format": "prettier -w . --ignore-path ../.prettierignore",
     "format:check": "yarn format -c",
     "start": "webpack-dev-server --mode=development",
-    "e2e": "cypress run --component",
-    "e2e:local": "cypress open --component",
+    "e2e": "npx --yes cypress@13 run --component",
+    "e2e:local": "npx --yes cypress@13 open --component",
     "e2e:integration": "npx --yes cypress@13 run --component --config-file cypress-react-17.config.ts"
   },
   "devDependencies": {
@@ -26,7 +26,6 @@
     "@fluentui/react-components": "*",
     "@fluentui/react-datepicker-compat": "*",
     "@fluentui/react-migration-v8-v9": "*",
-    "@fluentui/react-nav-preview": "*",
     "@fluentui/react-timepicker-compat": "*",
     "@cypress/react": "8.0.0",
     "@testing-library/dom": "8.11.3",

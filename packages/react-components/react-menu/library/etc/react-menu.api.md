@@ -42,7 +42,7 @@ export type MenuCheckedValueChangeData = {
 export type MenuCheckedValueChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent;
 
 // @public
-export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange'> & {
+export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'safeZone'> & {
     open: boolean;
     triggerId: string;
     defaultCheckedValues?: Record<string, string[]>;
@@ -277,6 +277,12 @@ export type MenuOpenChangeData = {
     type: 'menuTriggerMouseEnter';
     event: React_2.MouseEvent<HTMLElement>;
 } | {
+    type: 'menuSafeZoneMouseEnter';
+    event: React_2.MouseEvent;
+} | {
+    type: 'menuSafeZoneTimeout';
+    event: Event;
+} | {
     type: 'menuTriggerMouseLeave';
     event: React_2.MouseEvent<HTMLElement>;
 } | {
@@ -328,6 +334,7 @@ export type MenuPopoverSlots = {
 // @public
 export type MenuPopoverState = ComponentState<MenuPopoverSlots> & Pick<PortalProps, 'mountNode'> & {
     inline: boolean;
+    safeZone?: React_2.ReactElement | null;
 };
 
 // @public
@@ -376,11 +383,14 @@ export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'ha
     menuPopoverRef: React_2.MutableRefObject<HTMLElement>;
     menuTrigger: React_2.ReactNode;
     setContextTarget: SetVirtualMouseTarget;
-    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
+    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData & {
+        ignoreHoverDelay?: boolean;
+    }) => void;
     triggerId: string;
     triggerRef: React_2.MutableRefObject<HTMLElement>;
     onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
     defaultCheckedValues?: Record<string, string[]>;
+    safeZone?: React_2.ReactElement | null;
 };
 
 // @public
@@ -395,6 +405,7 @@ export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, 
     onMouseEnter: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseLeave: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseMove: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onMouseOver?: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onContextMenu: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
 }>;
 
@@ -461,7 +472,9 @@ export type UninitializedMenuListState = Omit<MenuListState, 'checkedValues' | '
 export const useCheckmarkStyles_unstable: (state: MenuItemSelectableState & Pick<MenuItemState, 'checkmark'>) => void;
 
 // @public
-export const useMenu_unstable: (props: MenuProps) => MenuState;
+export const useMenu_unstable: (props: MenuProps & {
+    safeZone?: boolean;
+}) => MenuState;
 
 // @public (undocumented)
 export const useMenuContext_unstable: <T>(selector: ContextSelector<MenuContextValue, T>) => T;

@@ -11,7 +11,10 @@ import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNC
 export type SlotOptions<Props extends UnknownSlotProps> = {
   elementType:
     | React.ComponentType<Props>
-    | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    | (Props extends AsIntrinsicElement<infer As>
+        ? As
+        : // eslint-disable-next-line @typescript-eslint/no-deprecated
+          keyof JSX.IntrinsicElements);
   defaultProps?: Partial<Props>;
 };
 
@@ -86,7 +89,7 @@ export function resolveShorthand<Props extends UnknownSlotProps | null | undefin
   if (
     typeof value === 'string' ||
     typeof value === 'number' ||
-    Array.isArray(value) ||
+    isIterable(value) ||
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     React.isValidElement<any>(value)
   ) {
@@ -105,3 +108,7 @@ export function resolveShorthand<Props extends UnknownSlotProps | null | undefin
 
   return value;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isIterable = (value: unknown): value is Iterable<any> =>
+  typeof value === 'object' && value !== null && Symbol.iterator in value;

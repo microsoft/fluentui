@@ -65,7 +65,7 @@ export class RadioGroup extends FASTElement {
     if (this.$fastController.isConnected) {
       this.checkedIndex = -1;
       this.radios?.forEach(radio => {
-        radio.disabled = radio.disabledAttribute || this.disabled;
+        radio.disabled = !!radio.disabledAttribute || !!this.disabled;
       });
       this.restrictFocus();
     }
@@ -172,14 +172,24 @@ export class RadioGroup extends FASTElement {
       }
 
       radio.name = this.name ?? radio.name;
-      radio.disabled = this.disabled || radio.disabledAttribute;
+      radio.disabled = !!this.disabled || !!radio.disabledAttribute;
     });
 
     if (!this.dirtyState && this.initialValue) {
       this.value = this.initialValue;
     }
 
-    if (!this.value) {
+    if (
+      !this.value ||
+      // This logic covers the case when the RadioGroup doesn't have a `value`
+      // attribute, but does have a checked child Radio. Without this condition,
+      // the checked Radio's value will be assigned to `this.value`, and
+      // `checkedIndex` will be the checked Radio's index, but `this.checkedIndex`
+      // will remain `undefined`, which would cause the RadioGroup to add
+      // `tabindex=-1` to the checked Radio, and effectively makes the whole
+      // RadioGroup unfocusable.
+      (this.value && typeof this.checkedIndex !== 'number' && checkedIndex >= 0)
+    ) {
       // TODO: Switch to standard `Array.findLastIndex` when TypeScript 5 is available
       this.checkedIndex = checkedIndex;
     }

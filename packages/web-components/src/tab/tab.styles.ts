@@ -24,7 +24,8 @@ export const styles = css`
 
   :host {
     position: relative;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     cursor: pointer;
     box-sizing: border-box;
     justify-content: center;
@@ -36,6 +37,7 @@ export const styles = css`
     grid-row: 1;
     padding: ${spacingHorizontalM} ${spacingHorizontalMNudge};
     border-radius: ${borderRadiusMedium};
+    gap: 4px;
   }
   :host .tab-content {
     display: inline-flex;
@@ -83,12 +85,6 @@ export const styles = css`
   ::slotted([slot='end']) {
     display: flex;
   }
-  ::slotted([slot='start']) {
-    margin-inline-end: 11px;
-  }
-  ::slotted([slot='end']) {
-    margin-inline-start: 11px;
-  }
   :host([disabled]) {
     cursor: not-allowed;
     fill: ${colorNeutralForegroundDisabled};
@@ -107,6 +103,15 @@ export const styles = css`
     border-radius: ${borderRadiusSmall};
     box-shadow: 0 0 0 3px ${colorStrokeFocus2};
     outline: 1px solid ${colorStrokeFocus1};
+  }
+
+  :host([data-hasIndent]) {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+  }
+
+  :host([data-hasIndent]) .tab-content {
+    grid-column: 2;
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`

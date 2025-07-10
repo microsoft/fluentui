@@ -24,6 +24,7 @@ const CLASSNAME_ADD_INTERVAL = 20; // ms
 
 const defaultOnRenderHeader =
   (classNames: IProcessedStyleSet<IDetailsColumnStyles>) =>
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   (props?: IDetailsColumnProps): JSX.Element | null => {
     if (!props) {
       return null;
@@ -56,6 +57,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     this._events = new EventGroup(this);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const {
       column,
@@ -250,6 +252,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
 
   private _onRenderFilterIcon =
     (classNames: IProcessedStyleSet<IDetailsColumnStyles>) =>
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     (props: IDetailsColumnFilterIconProps): JSX.Element => {
       const { columnProps, ...iconProps } = props;
       const IconComponent = columnProps?.useFastIcons ? FontIcon : Icon;
@@ -257,6 +260,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       return <IconComponent {...iconProps} />;
     };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderColumnHeaderTooltip = (tooltipHostProps: IDetailsColumnRenderTooltipProps): JSX.Element => {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
   };
@@ -324,6 +328,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderAccessibleDescription(): JSX.Element | null {
     const { column, parentId } = this.props;
     const classNames = this._classNames;

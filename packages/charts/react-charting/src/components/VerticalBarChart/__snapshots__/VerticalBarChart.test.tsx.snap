@@ -168,7 +168,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -664,7 +664,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -1160,7 +1160,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -1656,7 +1656,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -2741,7 +2741,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -3237,7 +3237,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -3733,7 +3733,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }
@@ -4229,7 +4229,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                     ms-OverflowSet
                     {
                       display: flex;
-                      flex-wrap: wrap;
+                      flex-wrap: nowrap;
                       justify-content: unset;
                       position: relative;
                     }

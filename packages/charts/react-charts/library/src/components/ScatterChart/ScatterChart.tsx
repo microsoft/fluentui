@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScatterChartProps } from './ScatterChart.types';
-import { useScatterChartStyles_unstable } from './useScatterChartStyles.styles';
+import { useScatterChartStyles } from './useScatterChartStyles.styles';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { Legend, Legends } from '../Legends/index';
@@ -23,7 +23,7 @@ import {
   calloutData,
   ChartTypes,
   XAxisTypes,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
@@ -64,6 +64,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   let xAxisCalloutAccessibilityData: AccessibilityProps = {};
   let _xBandwidth = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
+  const classes = useScatterChartStyles(props);
 
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
@@ -75,18 +76,18 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
-  const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
-  const prevPropsRef = React.useRef<ScatterChartProps | null>(null);
+  const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
+  const prevSelectedLegendsRef = React.useRef<string[] | undefined>(undefined);
 
   React.useEffect(() => {
-    if (prevPropsRef.current) {
-      const prevProps = prevPropsRef.current;
-      if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
-        setSelectedLegends(props.legendProps?.selectedLegends || []);
-      }
+    if (
+      prevSelectedLegendsRef.current &&
+      !areArraysEqual(prevSelectedLegendsRef.current, props.legendProps?.selectedLegends)
+    ) {
+      setSelectedLegends(props.legendProps?.selectedLegends || []);
     }
-    prevPropsRef.current = props;
-  }, [props]);
+    prevSelectedLegendsRef.current = props.legendProps?.selectedLegends;
+  }, [props.legendProps?.selectedLegends]);
 
   React.useImperativeHandle(
     props.componentRef,
@@ -331,7 +332,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
             stroke={seriesColor}
             role="img"
             aria-label={_getAriaLabel(i, j)}
-            tabIndex={_points[i].legend !== '' ? 0 : undefined}
+            tabIndex={isLegendSelected ? 0 : undefined}
           />,
         );
       }
@@ -346,7 +347,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         </g>,
       );
     }
-    const classes = useScatterChartStyles_unstable(props);
     // Removing un wanted tooltip div from DOM, when prop not provided.
     if (!props.showXAxisLablesTooltip) {
       try {
@@ -364,9 +364,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return series;
   }
@@ -477,7 +477,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
    * This function checks if none of the legends is selected or hovered.*/
 
   function _noLegendHighlighted(): boolean {
-    return selectedLegends.length === 0;
+    return _getHighlightedLegend().length === 0;
   }
 
   function _getHighlightedLegend(): string[] {
@@ -566,7 +566,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       // eslint-disable-next-line react/no-children-prop
       children={(props: ChildProps) => {
         _xAxisScale = props.xScale!;
-        _yAxisScale = props.yScale!;
+        _yAxisScale = props.yScalePrimary!;
         return (
           <>
             <g>

@@ -480,7 +480,9 @@ export class BaseButton extends FASTElement {
     // (undocumented)
     connectedCallback(): void;
     defaultSlottedContent: HTMLElement[];
-    disabled?: boolean;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
     disabledFocusable: boolean;
     // @internal
     disabledFocusableChanged(previous: boolean, next: boolean): void;
@@ -501,7 +503,6 @@ export class BaseButton extends FASTElement {
     name?: string;
     protected press(): void;
     resetForm(): void;
-    tabIndex: number;
     type: ButtonType;
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
@@ -590,8 +591,6 @@ export class BaseDropdown extends FASTElement {
     changeHandler(e: Event): boolean | void;
     checkValidity(): boolean;
     clickHandler(e: PointerEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
     // @internal
     control: HTMLInputElement;
     // @internal
@@ -707,8 +706,12 @@ export class BaseField extends FASTElement {
 // @public
 export class BaseProgressBar extends FASTElement {
     constructor();
+    // (undocumented)
+    connectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
+    // @internal (undocumented)
+    indicator: HTMLElement;
     // @internal
     max?: number;
     // @internal
@@ -716,8 +719,6 @@ export class BaseProgressBar extends FASTElement {
     // @internal
     min?: number;
     protected minChanged(prev: number | undefined, next: number | undefined): void;
-    // @internal
-    get percentComplete(): number;
     validationState: ProgressBarValidationState | null;
     validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
     // @internal
@@ -759,7 +760,7 @@ export class BaseTablist extends FASTElement {
     activeid: string;
     // @internal (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
-    activetab: HTMLElement;
+    activetab: Tab;
     adjust(adjustment: number): void;
     // @internal (undocumented)
     connectedCallback(): void;
@@ -772,8 +773,12 @@ export class BaseTablist extends FASTElement {
     // @internal (undocumented)
     protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
     protected setTabs(): void;
+    // @internal
+    slottedTabs: Node[];
+    // @internal
+    slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
     // @internal (undocumented)
-    tabs: HTMLElement[];
+    tabs: Tab[];
     // @internal (undocumented)
     protected tabsChanged(): void;
 }
@@ -2804,6 +2809,9 @@ export function isDropdownOption(value: Node | null, tagName?: string): value is
 export function isListbox(element?: Node | null, tagName?: string): element is Listbox;
 
 // @public
+export function isTab(element?: Node | null, tagName?: string): element is Tab;
+
+// @public
 export function isTreeItem(element?: Node | null, tagName?: string): element is BaseTreeItem;
 
 // @public
@@ -3277,8 +3285,6 @@ export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationSt
 // @public
 export class Radio extends BaseCheckbox {
     constructor();
-    // (undocumented)
-    connectedCallback(): void;
     // @internal @override
     protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal @override

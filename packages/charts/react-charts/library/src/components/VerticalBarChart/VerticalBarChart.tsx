@@ -32,7 +32,7 @@ import {
   XAxisTypes,
   NumericAxis,
   getTypeOfAxis,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
@@ -127,7 +127,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    yScale: any,
+    yScalePrimary: any,
     containerHeight: number = 0,
     containerWidth: number = 0,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -155,7 +155,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => (isStringAxis ? xScale(d.x) + 0.5 * xScale.bandwidth() : xScale(d.x)))
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y((d: any) => (d.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScale(d.y)));
+      .y((d: any) => (d.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScalePrimary(d.y)));
     const shouldHighlight = _legendHighlighted(lineLegendText!) || _noLegendHighlighted() ? true : false;
     const lineBorderWidth = props.lineOptions?.lineBorderWidth
       ? Number.parseFloat(props.lineOptions!.lineBorderWidth!.toString())
@@ -171,7 +171,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           fill="transparent"
           strokeLinecap="square"
           strokeWidth={3 + lineBorderWidth * 2}
-          stroke={tokens.colorNeutralBackground1}
+          className={classes.lineBorder}
         />,
       );
     }
@@ -206,7 +206,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             key={index}
             id={`${_vbcPointId}-${index}`}
             cx={isStringAxis ? xScale(item.x) + 0.5 * xScale.bandwidth() : xScale(item.x)}
-            cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScale(item.y)}
+            cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScalePrimary(item.y)}
             onMouseOver={event =>
               _legendHighlighted(lineLegendText!)
                 ? _lineHover(item.point, event)
@@ -224,8 +224,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             // and avoid conveying duplicate info, make these line points non-focusable.
             data-is-focusable={_legendHighlighted(lineLegendText!)}
             ref={e => (circleRef.refElement = e)}
-            onFocus={_lineFocus.bind(item.point, circleRef)}
+            onFocus={event => _lineFocus(event, item.point, circleRef)}
             onBlur={_handleChartMouseLeave}
+            tabIndex={_legendHighlighted(lineLegendText!) ? 0 : undefined}
           />
         );
       },
@@ -400,7 +401,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       });
     }
     // Check if the bar legend is highlighted or no legend is highlighted
-    if (selectedPoint[0].legend && (selectedLegends.includes(selectedPoint[0].legend) || _noLegendHighlighted())) {
+    if (selectedLegends.includes(selectedPoint[0].legend!) || _noLegendHighlighted()) {
       // Add callout data for the bar
       YValueHover.push({
         legend: selectedPoint[0].legend,
@@ -466,7 +467,12 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  function _onBarFocus(point: VerticalBarChartDataPoint, refArrayIndexNumber: number, color: string): void {
+  function _onBarFocus(
+    event: React.FocusEvent<SVGRectElement, Element>,
+    point: VerticalBarChartDataPoint,
+    refArrayIndexNumber: number,
+    color: string,
+  ): void {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { YValueHover, hoverXValue } = _getCalloutContentForLineAndBar(point);
     _refArray.forEach((obj: RefArrayData, index: number) => {
@@ -496,7 +502,11 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     _lineHoverFocus(point, mouseEvent);
   }
 
-  function _lineFocus(point: VerticalBarChartDataPoint, ref: { refElement: SVGCircleElement | null }) {
+  function _lineFocus(
+    event: React.FocusEvent<SVGCircleElement, Element>,
+    point: VerticalBarChartDataPoint,
+    ref: { refElement: SVGCircleElement | null },
+  ) {
     if (ref.refElement) {
       _lineHoverFocus(point, ref.refElement);
     }
@@ -610,7 +620,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             x={xPoint}
             y={!isHeightNegative ? yPoint : baselineHeight}
             width={_barWidth}
-            data-is-focusable={!props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
@@ -620,10 +629,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             aria-label={_getAriaLabel(point)}
             role="img"
             onMouseLeave={_onBarLeave}
-            onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
+            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
-            tabIndex={point.legend !== '' ? 0 : undefined}
+            tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             opacity={shouldHighlight ? 1 : 0.1}
             rx={props.roundCorners ? 3 : 0}
           />
@@ -650,9 +659,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return bars;
   }
@@ -707,10 +716,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             onMouseLeave={_onBarLeave}
             onBlur={_onBarLeave}
-            data-is-focusable={!props.hideTooltip && shouldHighlight}
-            onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
+            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
-            tabIndex={point.legend !== '' ? 0 : undefined}
+            tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
             opacity={shouldHighlight ? 1 : 0.1}
           />
@@ -738,10 +746,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
         showTooltip: props.showXAxisLablesTooltip,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return bars;
   }
@@ -782,7 +790,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             className={classes.opacityChangeOnHover}
             y={!isHeightNegative ? yPoint : baselineHeight}
             width={_barWidth}
-            data-is-focusable={!props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
@@ -792,10 +799,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             aria-label={_getAriaLabel(point)}
             role="img"
             onMouseLeave={_onBarLeave}
-            onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
+            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
-            tabIndex={point.legend !== '' ? 0 : undefined}
+            tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
             opacity={shouldHighlight ? 1 : 0.1}
           />
@@ -822,9 +829,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return bars;
   }
@@ -967,7 +974,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         className={classes.barLabel}
         aria-hidden={true}
       >
-        {formatScientificLimitWidth(barValue)}
+        {typeof props.yAxisTickFormat === 'function'
+          ? props.yAxisTickFormat(barValue)
+          : formatScientificLimitWidth(barValue)}
       </text>
     );
   }
@@ -1112,7 +1121,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
               <g>
                 {_createLine(
                   props.xScale!,
-                  props.yScale!,
+                  props.yScalePrimary!,
                   props.containerHeight,
                   props.containerWidth,
                   props.yScaleSecondary,

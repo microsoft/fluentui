@@ -63,7 +63,7 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: VerticalStackedBarChartStyles;
+  styles?: Partial<VerticalStackedBarChartStyles>;
 
   /**
    * Define a custom callout renderer for a stack; default is to render per data point
@@ -76,9 +76,9 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
   onRenderCalloutPerDataPoint?: RenderFunction<VSChartDataPoint>;
 
   /**
-   * yMinValue is not supported for bar charts, so only allow "undefined"
+   * yMinValue is supported for bar charts that has only lines
    */
-  yMinValue?: undefined;
+  yMinValue?: number | undefined;
 
   /**
    * Allow hover actions on the legend

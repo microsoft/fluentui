@@ -3,8 +3,11 @@ import { resetIds } from '../../Utilities';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { GroupedVerticalBarChart, IGVBarChartSeriesPoint } from '../../index';
 import { GroupedVerticalBarChartBase } from './GroupedVerticalBarChart.base';
-import { act } from 'react-dom/test-utils';
-import { render, waitFor } from '@testing-library/react';
+
+import { render, waitFor, act } from '@testing-library/react';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
 
 const originalRAF = window.requestAnimationFrame;
 
@@ -166,7 +169,9 @@ describe('GroupedVerticalBarChart - basic props', () => {
     // Simulate mouseover to trigger callout
     const rect = container.querySelector('rect');
     if (rect) {
-      rect.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+      act(() => {
+        rect.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+      });
     }
     await waitFor(() => {
       const hideTooltipDom = container.querySelectorAll('[class^="ms-Layer"]');
@@ -196,7 +201,9 @@ describe('GroupedVerticalBarChart - basic props', () => {
     // Simulate mouseover to trigger callout
     const rect = container.querySelector('rect');
     if (rect) {
-      rect.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+      act(() => {
+        rect.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+      });
     }
     await waitFor(() => {
       const renderedDOM = container.getElementsByClassName('onRenderCalloutPerDataPoint');
@@ -209,7 +216,9 @@ describe('GroupedVerticalBarChart - basic props', () => {
     // Simulate mouseover to trigger callout
     const rect = container.querySelector('rect');
     if (rect) {
-      rect.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+      act(() => {
+        rect.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+      });
     }
     await waitFor(() => {
       const renderedDOM = container.getElementsByClassName('onRenderCalloutPerDataPoint');

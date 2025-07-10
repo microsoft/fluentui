@@ -71,7 +71,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           font-size="10"
           id="xAxisGElementchart_3"
           text-anchor="middle"
-          transform="translate(0, 257)"
+          transform="translate(0, 222)"
         >
           <path
             class="domain"
@@ -167,13 +167,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+            d="M-6,222.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,257.5)"
+            transform="translate(0,222.5)"
           >
             <line
               stroke="currentColor"
@@ -191,7 +191,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,198.25)"
+            transform="translate(0,172)"
           >
             <line
               stroke="currentColor"
@@ -209,7 +209,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,139)"
+            transform="translate(0,121.5)"
           >
             <line
               stroke="currentColor"
@@ -227,7 +227,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,79.75)"
+            transform="translate(0,71)"
           >
             <line
               stroke="currentColor"
@@ -278,12 +278,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="4.74"
+                height="4.040000000000001"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="252.26"
+                y="217.96"
               />
               <rect
                 class=
@@ -293,12 +293,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="2.37"
+                height="1.0100000000000002"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.89"
+                y="216.95000000000002"
               />
             </g>
             <text
@@ -317,7 +317,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.89"
+              y="210.95000000000002"
             >
               2.5
             </text>
@@ -338,12 +338,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="71.1"
+                height="60.6"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="185.9"
+                y="161.4"
               />
               <rect
                 class=
@@ -353,12 +353,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="7.109999999999999"
+                height="6.0600000000000005"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="178.79000000000002"
+                y="155.34"
               />
               <rect
                 class=
@@ -368,12 +368,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00bcf2"
-                height="94.79999999999998"
+                height="80.8"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="83.99000000000004"
+                y="74.54"
               />
             </g>
             <text
@@ -392,7 +392,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="335"
-              y="77.99000000000004"
+              y="68.54"
             >
               73
             </text>
@@ -413,12 +413,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="23.700000000000003"
+                height="20.2"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="233.3"
+                y="201.8"
               />
               <rect
                 class=
@@ -428,12 +428,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="142.20000000000002"
+                height="121.2"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="91.1"
+                y="80.60000000000001"
               />
               <rect
                 class=
@@ -443,12 +443,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00bcf2"
-                height="71.10000000000001"
+                height="60.6"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="19.999999999999986"
+                y="20.000000000000007"
               />
             </g>
             <text
@@ -467,7 +467,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="383"
-              y="13.999999999999986"
+              y="14.000000000000007"
             >
               100
             </text>
@@ -482,8 +482,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(8, 0)"
             x1="279"
             x2="327"
-            y1="157.46000000000004"
-            y2="159.83"
+            y1="137.16000000000003"
+            y2="139.18"
           />
           <line
             opacity="1"
@@ -493,12 +493,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(8, 0)"
             x1="327"
             x2="375"
-            y1="159.83"
+            y1="139.18"
             y2="20"
           />
           <circle
             cx="279"
-            cy="157.46000000000004"
+            cy="137.16000000000003"
             fill="#ffffff"
             opacity="0"
             r="8"
@@ -508,7 +508,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           />
           <circle
             cx="327"
-            cy="159.83"
+            cy="139.18"
             fill="#ffffff"
             opacity="0"
             r="8"
@@ -575,7 +575,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -1063,7 +1063,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           font-size="10"
           id="xAxisGElementchart_3"
           text-anchor="middle"
-          transform="translate(0, 257)"
+          transform="translate(0, 222)"
         >
           <path
             class="domain"
@@ -1159,13 +1159,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+            d="M-6,222.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,257.5)"
+            transform="translate(0,222.5)"
           >
             <line
               stroke="currentColor"
@@ -1183,7 +1183,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,198.25)"
+            transform="translate(0,172)"
           >
             <line
               stroke="currentColor"
@@ -1201,7 +1201,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,139)"
+            transform="translate(0,121.5)"
           >
             <line
               stroke="currentColor"
@@ -1219,7 +1219,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,79.75)"
+            transform="translate(0,71)"
           >
             <line
               stroke="currentColor"
@@ -1270,12 +1270,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="4.74"
+                height="4.040000000000001"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="252.26"
+                y="217.96"
               />
               <rect
                 class=
@@ -1285,12 +1285,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="2.37"
+                height="1.0100000000000002"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.89"
+                y="216.95000000000002"
               />
             </g>
             <text
@@ -1309,7 +1309,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.89"
+              y="210.95000000000002"
             >
               2.5
             </text>
@@ -1330,12 +1330,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="71.1"
+                height="60.6"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="185.9"
+                y="161.4"
               />
               <rect
                 class=
@@ -1345,12 +1345,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="7.109999999999999"
+                height="6.0600000000000005"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="178.79000000000002"
+                y="155.34"
               />
               <rect
                 class=
@@ -1360,12 +1360,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00bcf2"
-                height="94.79999999999998"
+                height="80.8"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="83.99000000000004"
+                y="74.54"
               />
             </g>
             <text
@@ -1384,7 +1384,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="335"
-              y="77.99000000000004"
+              y="68.54"
             >
               73
             </text>
@@ -1405,12 +1405,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="23.700000000000003"
+                height="20.2"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="233.3"
+                y="201.8"
               />
               <rect
                 class=
@@ -1420,12 +1420,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="142.20000000000002"
+                height="121.2"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="91.1"
+                y="80.60000000000001"
               />
               <rect
                 class=
@@ -1435,12 +1435,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00bcf2"
-                height="71.10000000000001"
+                height="60.6"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="19.999999999999986"
+                y="20.000000000000007"
               />
             </g>
             <text
@@ -1459,7 +1459,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="383"
-              y="13.999999999999986"
+              y="14.000000000000007"
             >
               100
             </text>
@@ -1474,8 +1474,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(8, 0)"
             x1="279"
             x2="327"
-            y1="157.46000000000004"
-            y2="159.83"
+            y1="137.16000000000003"
+            y2="139.18"
           />
           <line
             opacity="1"
@@ -1485,12 +1485,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(8, 0)"
             x1="327"
             x2="375"
-            y1="159.83"
+            y1="139.18"
             y2="20"
           />
           <circle
             cx="279"
-            cy="157.46000000000004"
+            cy="137.16000000000003"
             fill="#ffffff"
             opacity="0"
             r="8"
@@ -1500,7 +1500,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           />
           <circle
             cx="327"
-            cy="159.83"
+            cy="139.18"
             fill="#ffffff"
             opacity="0"
             r="8"
@@ -1567,7 +1567,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -2277,12 +2277,12 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                       opacity: ;
                     }
                 fill="#00188f"
-                height="2.37"
+                height="1.185"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.89"
+                y="251.075"
               />
             </g>
             <text
@@ -2301,7 +2301,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.89"
+              y="245.075"
             >
               2.5
             </text>
@@ -2559,7 +2559,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -3465,7 +3465,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: unset;
                           position: relative;
                         }
@@ -10064,12 +10064,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                       opacity: ;
                     }
                 fill="#00188f"
-                height="5.925"
+                height="2.9625"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="251.075"
+                y="254.0375"
               />
             </g>
             <text
@@ -10346,7 +10346,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }
@@ -11239,7 +11239,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: unset;
                         position: relative;
                       }

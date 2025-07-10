@@ -2,6 +2,93 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Wed, 02 Jul 2025 07:20:11 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.20",
+      "version": "1.1.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/chart-utilities",
+            "commit": "096558dbd97e7f91d95c43b7b0494f9af521819b",
+            "comment": "feat(chart-utilities): Support for Funnel Chart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Jun 2025 07:19:36 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.19",
+      "version": "1.1.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "75a5aa640d1a15ba9a558bfdef7051d8edbf3abb",
+            "comment": "fix(react-charting): Add \"lines+text\" mode to supported list"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Jun 2025 07:20:32 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.18",
+      "version": "1.1.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "0e2b75a2b9f3108726359976929d2224e989689c",
+            "comment": "fix(chart-utilities): Add type info to bar validation error message"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "342462151232a909b98d049ec70e356b7470780b",
+            "comment": "fix(chart-utilities): Strongly type TraceInfo"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Jun 2025 07:21:01 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.17",
+      "version": "1.1.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "a73394f7914fc6051e0e6567caa89b6ff6c9799d",
+            "comment": "fix(chart-utilities): Updating plotly converter for scatter chart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Jun 2025 07:20:13 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.16",
+      "version": "1.1.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "3e902f17659ae2f04fbf92f72dba48b5e9c1cad5",
+            "comment": "feat(react-charting): Adding Scatter Chart component"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "4524a28299ce317d53ca354f7c0e202e5a491d04",
+            "comment": "feat(charts): Enable support for rendering different traces individually or as a group"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Jun 2025 07:20:27 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.15",
       "version": "1.1.15",

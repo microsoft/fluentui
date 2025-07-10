@@ -1,8 +1,15 @@
 import * as React from 'react';
 import { ChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts';
-import { Switch, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import { Switch, Checkbox, CheckboxOnChangeData, makeStyles, tokens } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
 
 export const LineChartNegative = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
@@ -15,10 +22,10 @@ export const LineChartNegative = () => {
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
   };
-  const _onShapeChange = React.useCallback(ev => {
+  const _onShapeChange = React.useCallback((ev: any) => {
     setAllowMultipleShapes(ev.currentTarget.checked);
   }, []);
-  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
   const _onCheckChange = (ev: React.FormEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
@@ -195,6 +202,7 @@ export const LineChartNegative = () => {
           yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
           xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
           useUTC={useUTC}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </>

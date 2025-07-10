@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove useEffect storybook/preview-api and directly trigger 'Open in ...' button rendering",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

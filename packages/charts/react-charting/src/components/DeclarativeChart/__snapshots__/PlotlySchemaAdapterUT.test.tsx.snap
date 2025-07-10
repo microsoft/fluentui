@@ -81,6 +81,274 @@ Object {
 }
 `;
 
+exports[`transform Plotly Json To chart Props transformPlotlyJsonToAreaChartProps - Should return area chart props 1`] = `
+Object {
+  "chartTitle": "",
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#ff9933ff",
+        "data": Array [
+          Object {
+            "x": 0,
+            "y": 0.17048910089864067,
+            "yAxisCalloutData": "0.17",
+          },
+          Object {
+            "x": 1,
+            "y": 0.05390702725063046,
+            "yAxisCalloutData": "0.054",
+          },
+          Object {
+            "x": 2,
+            "y": 0.7560889217240573,
+            "yAxisCalloutData": "0.756",
+          },
+          Object {
+            "x": 3,
+            "y": 0.7393313216390578,
+            "yAxisCalloutData": "0.739",
+          },
+          Object {
+            "x": 4,
+            "y": 0.7562979443674754,
+            "yAxisCalloutData": "0.756",
+          },
+          Object {
+            "x": 5,
+            "y": 0.983908108492343,
+            "yAxisCalloutData": "0.984",
+          },
+          Object {
+            "x": 6,
+            "y": 0.4552096139092071,
+            "yAxisCalloutData": "0.455",
+          },
+          Object {
+            "x": 7,
+            "y": 0.751939393026647,
+            "yAxisCalloutData": "0.752",
+          },
+          Object {
+            "x": 8,
+            "y": 0.42441695150031034,
+            "yAxisCalloutData": "0.424",
+          },
+          Object {
+            "x": 9,
+            "y": 0.6119820237450841,
+            "yAxisCalloutData": "0.612",
+          },
+        ],
+        "legend": "a",
+        "legendShape": "default",
+        "lineOptions": Object {
+          "curve": "linear",
+          "mode": "lines",
+        },
+        "useSecondaryYScale": false,
+      },
+      Object {
+        "color": "#3780bfff",
+        "data": Array [
+          Object {
+            "x": 0,
+            "y": 1.0921498980687505,
+            "yAxisCalloutData": "1.092",
+          },
+          Object {
+            "x": 1,
+            "y": 0.628379692444796,
+            "yAxisCalloutData": "0.628",
+          },
+          Object {
+            "x": 2,
+            "y": 1.6804387333467445,
+            "yAxisCalloutData": "1.68",
+          },
+          Object {
+            "x": 3,
+            "y": 1.1741874271317159,
+            "yAxisCalloutData": "1.174",
+          },
+          Object {
+            "x": 4,
+            "y": 1.7098535938519392,
+            "yAxisCalloutData": "1.71",
+          },
+          Object {
+            "x": 5,
+            "y": 1.0165440369832146,
+            "yAxisCalloutData": "1.017",
+          },
+          Object {
+            "x": 6,
+            "y": 0.8201578488720772,
+            "yAxisCalloutData": "0.82",
+          },
+          Object {
+            "x": 7,
+            "y": 1.019179653143562,
+            "yAxisCalloutData": "1.019",
+          },
+          Object {
+            "x": 8,
+            "y": 0.5391840333768539,
+            "yAxisCalloutData": "0.539",
+          },
+          Object {
+            "x": 9,
+            "y": 0.9023036941696878,
+            "yAxisCalloutData": "0.902",
+          },
+        ],
+        "legend": "b",
+        "legendShape": "default",
+        "lineOptions": Object {
+          "curve": "linear",
+          "mode": "lines",
+        },
+        "useSecondaryYScale": false,
+      },
+      Object {
+        "color": "#32ab60ff",
+        "data": Array [
+          Object {
+            "x": 0,
+            "y": 1.5084498776097979,
+            "yAxisCalloutData": "1.508",
+          },
+          Object {
+            "x": 1,
+            "y": 1.0993096327196032,
+            "yAxisCalloutData": "1.099",
+          },
+          Object {
+            "x": 2,
+            "y": 2.5468884763826125,
+            "yAxisCalloutData": "2.547",
+          },
+          Object {
+            "x": 3,
+            "y": 1.3139261978658,
+            "yAxisCalloutData": "1.314",
+          },
+          Object {
+            "x": 4,
+            "y": 1.7288516603693358,
+            "yAxisCalloutData": "1.729",
+          },
+          Object {
+            "x": 5,
+            "y": 1.3500413551768342,
+            "yAxisCalloutData": "1.35",
+          },
+          Object {
+            "x": 6,
+            "y": 1.4111774146124456,
+            "yAxisCalloutData": "1.411",
+          },
+          Object {
+            "x": 7,
+            "y": 1.1245312639069405,
+            "yAxisCalloutData": "1.125",
+          },
+          Object {
+            "x": 8,
+            "y": 1.4068617318281056,
+            "yAxisCalloutData": "1.407",
+          },
+          Object {
+            "x": 9,
+            "y": 0.9236499701488171,
+            "yAxisCalloutData": "0.924",
+          },
+        ],
+        "legend": "c",
+        "legendShape": "default",
+        "lineOptions": Object {
+          "curve": "linear",
+          "mode": "lines",
+        },
+        "useSecondaryYScale": false,
+      },
+      Object {
+        "color": "#800080ff",
+        "data": Array [
+          Object {
+            "x": 0,
+            "y": 1.912915766078795,
+            "yAxisCalloutData": "1.913",
+          },
+          Object {
+            "x": 1,
+            "y": 1.6450103381519354,
+            "yAxisCalloutData": "1.645",
+          },
+          Object {
+            "x": 2,
+            "y": 3.523866933241722,
+            "yAxisCalloutData": "3.524",
+          },
+          Object {
+            "x": 3,
+            "y": 1.656799203492564,
+            "yAxisCalloutData": "1.657",
+          },
+          Object {
+            "x": 4,
+            "y": 2.666064160881149,
+            "yAxisCalloutData": "2.666",
+          },
+          Object {
+            "x": 5,
+            "y": 2.2985767814076814,
+            "yAxisCalloutData": "2.299",
+          },
+          Object {
+            "x": 6,
+            "y": 1.6491300653173326,
+            "yAxisCalloutData": "1.649",
+          },
+          Object {
+            "x": 7,
+            "y": 1.2880873970749964,
+            "yAxisCalloutData": "1.288",
+          },
+          Object {
+            "x": 8,
+            "y": 2.192375146193222,
+            "yAxisCalloutData": "2.192",
+          },
+          Object {
+            "x": 9,
+            "y": 1.6271909616796654,
+            "yAxisCalloutData": "1.627",
+          },
+        ],
+        "legend": "d",
+        "legendShape": "default",
+        "lineOptions": Object {
+          "curve": "linear",
+          "mode": "lines",
+        },
+        "useSecondaryYScale": false,
+      },
+    ],
+  },
+  "height": 350,
+  "hideLegend": false,
+  "hideTickOverlap": true,
+  "mode": "tonexty",
+  "optimizeLargeData": false,
+  "supportNegativeData": true,
+  "useUTC": false,
+  "width": undefined,
+  "xAxisTitle": "",
+  "yAxisTitle": "",
+}
+`;
+
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToDonutProps - Should return donut chart props 1`] = `
 Object {
   "data": Object {
@@ -254,20 +522,22 @@ Object {
       "name": "Jan",
       "series": Array [
         Object {
-          "color": "#ba58c9",
+          "color": "#ba58c9ff",
           "data": 2000,
           "key": "Category A",
           "legend": "Category A",
           "useSecondaryYScale": false,
           "xAxisCalloutData": "Jan",
+          "yAxisCalloutData": "2000",
         },
         Object {
-          "color": "#c19c00",
+          "color": "#c19c00ff",
           "data": 3000,
           "key": "Category B",
           "legend": "Category B",
           "useSecondaryYScale": false,
           "xAxisCalloutData": "Jan",
+          "yAxisCalloutData": "3000",
         },
       ],
     },
@@ -275,20 +545,22 @@ Object {
       "name": "Feb",
       "series": Array [
         Object {
-          "color": "#ba58c9",
+          "color": "#ba58c9ff",
           "data": 2100,
           "key": "Category A",
           "legend": "Category A",
           "useSecondaryYScale": false,
           "xAxisCalloutData": "Feb",
+          "yAxisCalloutData": "2100",
         },
         Object {
-          "color": "#c19c00",
+          "color": "#c19c00ff",
           "data": 3100,
           "key": "Category B",
           "legend": "Category B",
           "useSecondaryYScale": false,
           "xAxisCalloutData": "Feb",
+          "yAxisCalloutData": "3100",
         },
       ],
     },
@@ -296,20 +568,22 @@ Object {
       "name": "Mar",
       "series": Array [
         Object {
-          "color": "#ba58c9",
+          "color": "#ba58c9ff",
           "data": 2200,
           "key": "Category A",
           "legend": "Category A",
           "useSecondaryYScale": false,
           "xAxisCalloutData": "Mar",
+          "yAxisCalloutData": "2200",
         },
         Object {
-          "color": "#c19c00",
+          "color": "#c19c00ff",
           "data": 3200,
           "key": "Category B",
           "legend": "Category B",
           "useSecondaryYScale": false,
           "xAxisCalloutData": "Mar",
+          "yAxisCalloutData": "3200",
         },
       ],
     },
@@ -317,20 +591,22 @@ Object {
       "name": "Apr",
       "series": Array [
         Object {
-          "color": "#ba58c9",
+          "color": "#ba58c9ff",
           "data": 2300,
           "key": "Category A",
           "legend": "Category A",
           "useSecondaryYScale": false,
           "xAxisCalloutData": "Apr",
+          "yAxisCalloutData": "2300",
         },
         Object {
-          "color": "#c19c00",
+          "color": "#c19c00ff",
           "data": 3300,
           "key": "Category B",
           "legend": "Category B",
           "useSecondaryYScale": false,
           "xAxisCalloutData": "Apr",
+          "yAxisCalloutData": "3300",
         },
       ],
     },
@@ -338,20 +614,22 @@ Object {
       "name": "May",
       "series": Array [
         Object {
-          "color": "#ba58c9",
+          "color": "#ba58c9ff",
           "data": 2400,
           "key": "Category A",
           "legend": "Category A",
           "useSecondaryYScale": false,
           "xAxisCalloutData": "May",
+          "yAxisCalloutData": "2400",
         },
         Object {
-          "color": "#c19c00",
+          "color": "#c19c00ff",
           "data": 3400,
           "key": "Category B",
           "legend": "Category B",
           "useSecondaryYScale": false,
           "xAxisCalloutData": "May",
+          "yAxisCalloutData": "3400",
         },
       ],
     },
@@ -362,8 +640,30 @@ Object {
   "mode": "plotly",
   "roundCorners": true,
   "width": 850,
+  "wrapXAxisLables": true,
+  "xAxisCategoryOrder": Array [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+  ],
   "xAxisTitle": "Votes",
+  "yAxisCategoryOrder": Array [
+    2000,
+    2100,
+    2200,
+    2300,
+    2400,
+    3000,
+    3100,
+    3200,
+    3300,
+    3400,
+  ],
   "yAxisTitle": "Framework",
+  "yMaxValue": 23.42061223132087,
+  "yMinValue": -3.301575351429676,
 }
 `;
 
@@ -2844,7 +3144,52 @@ Object {
   "showYAxisLablesTooltip": true,
   "sortOrder": "none",
   "width": undefined,
+  "wrapXAxisLables": true,
+  "xAxisCategoryOrder": Array [
+    "x_0",
+    "x_1",
+    "x_2",
+    "x_3",
+    "x_4",
+    "x_5",
+    "x_6",
+    "x_7",
+    "x_8",
+    "x_9",
+    "x_10",
+    "x_11",
+    "x_12",
+    "x_13",
+    "x_14",
+    "x_15",
+    "x_16",
+    "x_17",
+    "x_18",
+    "x_19",
+  ],
   "xAxisTitle": "",
+  "yAxisCategoryOrder": Array [
+    "y_0",
+    "y_1",
+    "y_2",
+    "y_3",
+    "y_4",
+    "y_5",
+    "y_6",
+    "y_7",
+    "y_8",
+    "y_9",
+    "y_10",
+    "y_11",
+    "y_12",
+    "y_13",
+    "y_14",
+    "y_15",
+    "y_16",
+    "y_17",
+    "y_18",
+    "y_19",
+  ],
   "yAxisTitle": "",
 }
 `;
@@ -2855,142 +3200,142 @@ Object {
   "chartTitle": "PHP Framework Popularity at Work - SitePoint, 2015",
   "data": Array [
     Object {
-      "color": "#c8d1fa",
+      "color": "#b29ad4ff",
       "legend": "Votes",
-      "x": 10,
-      "y": "Aura",
+      "x": 1659,
+      "y": "Laravel",
     },
     Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 11,
-      "y": "Drupal",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 17,
-      "y": "TYPO3 Flow",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 25,
-      "y": "FuelPHP",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 35,
-      "y": "Kohana",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 35,
-      "y": "Typo 3",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 42,
-      "y": "Simple MVC Framework",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 65,
-      "y": "Silex",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 79,
-      "y": "Slim",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 169,
-      "y": "Phalcon",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 203,
-      "y": "We use a CMS for everything",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 243,
-      "y": "No Framework",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 255,
-      "y": "CakePHP",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 274,
-      "y": "Zend Framework 1",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 378,
-      "y": "Company Internal Framework",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 390,
-      "y": "Zend Framework 2",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 407,
-      "y": "Yii 1",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 418,
-      "y": "PHPixie",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 504,
-      "y": "Yii 2",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 597,
-      "y": "CodeIgniter",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 671,
-      "y": "Nette",
-    },
-    Object {
-      "color": "#c8d1fa",
+      "color": "#b29ad4ff",
       "legend": "Votes",
       "x": 1067,
       "y": "Symfony2",
     },
     Object {
-      "color": "#c8d1fa",
+      "color": "#b29ad4ff",
       "legend": "Votes",
-      "x": 1659,
-      "y": "Laravel",
+      "x": 671,
+      "y": "Nette",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 597,
+      "y": "CodeIgniter",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 504,
+      "y": "Yii 2",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 418,
+      "y": "PHPixie",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 407,
+      "y": "Yii 1",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 390,
+      "y": "Zend Framework 2",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 378,
+      "y": "Company Internal Framework",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 274,
+      "y": "Zend Framework 1",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 255,
+      "y": "CakePHP",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 243,
+      "y": "No Framework",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 203,
+      "y": "We use a CMS for everything",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 169,
+      "y": "Phalcon",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 79,
+      "y": "Slim",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 65,
+      "y": "Silex",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 42,
+      "y": "Simple MVC Framework",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 35,
+      "y": "Typo 3",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 35,
+      "y": "Kohana",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 25,
+      "y": "FuelPHP",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 17,
+      "y": "TYPO3 Flow",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 11,
+      "y": "Drupal",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 10,
+      "y": "Aura",
     },
   ],
   "height": 742,
@@ -3002,8 +3347,1593 @@ Object {
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
   "width": 850,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "Votes",
+  "yAxisCategoryOrder": Array [
+    "Laravel",
+    "Symfony2",
+    "Nette",
+    "CodeIgniter",
+    "Yii 2",
+    "PHPixie",
+    "Yii 1",
+    "Zend Framework 2",
+    "Company Internal Framework",
+    "Zend Framework 1",
+    "CakePHP",
+    "No Framework",
+    "We use a CMS for everything",
+    "Phalcon",
+    "Slim",
+    "Silex",
+    "Simple MVC Framework",
+    "Typo 3",
+    "Kohana",
+    "FuelPHP",
+    "TYPO3 Flow",
+    "Drupal",
+    "Aura",
+  ],
   "yAxisTitle": "Framework",
+}
+`;
+
+exports[`transform Plotly Json To chart Props transformPlotlyJsonToLineChartProps - Should return line chart props 1`] = `
+Object {
+  "chartTitle": "",
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#ff9933ff",
+        "data": Array [
+          Object {
+            "x": 2015-01-01T00:00:00.000Z,
+            "y": 0.5353935439391206,
+            "yAxisCalloutData": "0.535",
+          },
+          Object {
+            "x": 2015-01-02T00:00:00.000Z,
+            "y": -0.3510205670171982,
+            "yAxisCalloutData": "-0.351",
+          },
+          Object {
+            "x": 2015-01-03T00:00:00.000Z,
+            "y": -1.3420793330744663,
+            "yAxisCalloutData": "-1.342",
+          },
+          Object {
+            "x": 2015-01-04T00:00:00.000Z,
+            "y": -1.683479706754631,
+            "yAxisCalloutData": "-1.683",
+          },
+          Object {
+            "x": 2015-01-05T00:00:00.000Z,
+            "y": -2.0207368899942826,
+            "yAxisCalloutData": "-2.021",
+          },
+          Object {
+            "x": 2015-01-06T00:00:00.000Z,
+            "y": 0.006604084375472663,
+            "yAxisCalloutData": "0.007",
+          },
+          Object {
+            "x": 2015-01-07T00:00:00.000Z,
+            "y": 0.8037048387382045,
+            "yAxisCalloutData": "0.804",
+          },
+          Object {
+            "x": 2015-01-08T00:00:00.000Z,
+            "y": 1.6685589999803645,
+            "yAxisCalloutData": "1.669",
+          },
+          Object {
+            "x": 2015-01-09T00:00:00.000Z,
+            "y": 1.2683547027403048,
+            "yAxisCalloutData": "1.268",
+          },
+          Object {
+            "x": 2015-01-10T00:00:00.000Z,
+            "y": -1.3330462677331034,
+            "yAxisCalloutData": "-1.333",
+          },
+          Object {
+            "x": 2015-01-11T00:00:00.000Z,
+            "y": -1.8663123665480104,
+            "yAxisCalloutData": "-1.866",
+          },
+          Object {
+            "x": 2015-01-12T00:00:00.000Z,
+            "y": -2.8051461261147357,
+            "yAxisCalloutData": "-2.805",
+          },
+          Object {
+            "x": 2015-01-13T00:00:00.000Z,
+            "y": -4.563508055068453,
+            "yAxisCalloutData": "-4.564",
+          },
+          Object {
+            "x": 2015-01-14T00:00:00.000Z,
+            "y": -3.7591847216910996,
+            "yAxisCalloutData": "-3.759",
+          },
+          Object {
+            "x": 2015-01-15T00:00:00.000Z,
+            "y": -3.5134185618878746,
+            "yAxisCalloutData": "-3.513",
+          },
+          Object {
+            "x": 2015-01-16T00:00:00.000Z,
+            "y": -5.3419268826351995,
+            "yAxisCalloutData": "-5.342",
+          },
+          Object {
+            "x": 2015-01-17T00:00:00.000Z,
+            "y": -3.332156069299614,
+            "yAxisCalloutData": "-3.332",
+          },
+          Object {
+            "x": 2015-01-18T00:00:00.000Z,
+            "y": -3.5678897362109545,
+            "yAxisCalloutData": "-3.568",
+          },
+          Object {
+            "x": 2015-01-19T00:00:00.000Z,
+            "y": -3.8548236009547465,
+            "yAxisCalloutData": "-3.855",
+          },
+          Object {
+            "x": 2015-01-20T00:00:00.000Z,
+            "y": -4.58628192762981,
+            "yAxisCalloutData": "-4.586",
+          },
+          Object {
+            "x": 2015-01-21T00:00:00.000Z,
+            "y": -4.116554826788904,
+            "yAxisCalloutData": "-4.117",
+          },
+          Object {
+            "x": 2015-01-22T00:00:00.000Z,
+            "y": -2.7610003378381496,
+            "yAxisCalloutData": "-2.761",
+          },
+          Object {
+            "x": 2015-01-23T00:00:00.000Z,
+            "y": -2.621859111953831,
+            "yAxisCalloutData": "-2.622",
+          },
+          Object {
+            "x": 2015-01-24T00:00:00.000Z,
+            "y": -2.6349689848833315,
+            "yAxisCalloutData": "-2.635",
+          },
+          Object {
+            "x": 2015-01-25T00:00:00.000Z,
+            "y": -2.0581142585936076,
+            "yAxisCalloutData": "-2.058",
+          },
+          Object {
+            "x": 2015-01-26T00:00:00.000Z,
+            "y": -0.7744078058377932,
+            "yAxisCalloutData": "-0.774",
+          },
+          Object {
+            "x": 2015-01-27T00:00:00.000Z,
+            "y": 0.9002451055355818,
+            "yAxisCalloutData": "0.9",
+          },
+          Object {
+            "x": 2015-01-28T00:00:00.000Z,
+            "y": 0.8373590393039949,
+            "yAxisCalloutData": "0.837",
+          },
+          Object {
+            "x": 2015-01-29T00:00:00.000Z,
+            "y": 0.5532093840234236,
+            "yAxisCalloutData": "0.553",
+          },
+          Object {
+            "x": 2015-01-30T00:00:00.000Z,
+            "y": 1.469976651890828,
+            "yAxisCalloutData": "1.47",
+          },
+          Object {
+            "x": 2015-01-31T00:00:00.000Z,
+            "y": 3.1860367266233904,
+            "yAxisCalloutData": "3.186",
+          },
+          Object {
+            "x": 2015-02-01T00:00:00.000Z,
+            "y": 2.493612510772345,
+            "yAxisCalloutData": "2.494",
+          },
+          Object {
+            "x": 2015-02-02T00:00:00.000Z,
+            "y": 1.9464391258267615,
+            "yAxisCalloutData": "1.946",
+          },
+          Object {
+            "x": 2015-02-03T00:00:00.000Z,
+            "y": 1.8807283125005585,
+            "yAxisCalloutData": "1.881",
+          },
+          Object {
+            "x": 2015-02-04T00:00:00.000Z,
+            "y": 3.0189402685173534,
+            "yAxisCalloutData": "3.019",
+          },
+          Object {
+            "x": 2015-02-05T00:00:00.000Z,
+            "y": 4.556005864163605,
+            "yAxisCalloutData": "4.556",
+          },
+          Object {
+            "x": 2015-02-06T00:00:00.000Z,
+            "y": 5.516442345945973,
+            "yAxisCalloutData": "5.516",
+          },
+          Object {
+            "x": 2015-02-07T00:00:00.000Z,
+            "y": 4.319606652282435,
+            "yAxisCalloutData": "4.32",
+          },
+          Object {
+            "x": 2015-02-08T00:00:00.000Z,
+            "y": 6.845756127344204,
+            "yAxisCalloutData": "6.846",
+          },
+          Object {
+            "x": 2015-02-09T00:00:00.000Z,
+            "y": 7.053236096270982,
+            "yAxisCalloutData": "7.053",
+          },
+          Object {
+            "x": 2015-02-10T00:00:00.000Z,
+            "y": 7.681494725458877,
+            "yAxisCalloutData": "7.681",
+          },
+          Object {
+            "x": 2015-02-11T00:00:00.000Z,
+            "y": 7.526563745782537,
+            "yAxisCalloutData": "7.527",
+          },
+          Object {
+            "x": 2015-02-12T00:00:00.000Z,
+            "y": 8.858342186205558,
+            "yAxisCalloutData": "8.858",
+          },
+          Object {
+            "x": 2015-02-13T00:00:00.000Z,
+            "y": 9.021889375014881,
+            "yAxisCalloutData": "9.022",
+          },
+          Object {
+            "x": 2015-02-14T00:00:00.000Z,
+            "y": 8.209805336778926,
+            "yAxisCalloutData": "8.21",
+          },
+          Object {
+            "x": 2015-02-15T00:00:00.000Z,
+            "y": 9.383959972549016,
+            "yAxisCalloutData": "9.384",
+          },
+          Object {
+            "x": 2015-02-16T00:00:00.000Z,
+            "y": 11.195848970970625,
+            "yAxisCalloutData": "11.196",
+          },
+          Object {
+            "x": 2015-02-17T00:00:00.000Z,
+            "y": 12.561537445362251,
+            "yAxisCalloutData": "12.562",
+          },
+          Object {
+            "x": 2015-02-18T00:00:00.000Z,
+            "y": 14.373511358982237,
+            "yAxisCalloutData": "14.374",
+          },
+          Object {
+            "x": 2015-02-19T00:00:00.000Z,
+            "y": 15.887456275652418,
+            "yAxisCalloutData": "15.887",
+          },
+          Object {
+            "x": 2015-02-20T00:00:00.000Z,
+            "y": 14.491455240251522,
+            "yAxisCalloutData": "14.491",
+          },
+          Object {
+            "x": 2015-02-21T00:00:00.000Z,
+            "y": 15.199461217404735,
+            "yAxisCalloutData": "15.199",
+          },
+          Object {
+            "x": 2015-02-22T00:00:00.000Z,
+            "y": 16.378844807972094,
+            "yAxisCalloutData": "16.379",
+          },
+          Object {
+            "x": 2015-02-23T00:00:00.000Z,
+            "y": 14.348345501207364,
+            "yAxisCalloutData": "14.348",
+          },
+          Object {
+            "x": 2015-02-24T00:00:00.000Z,
+            "y": 14.961597203409823,
+            "yAxisCalloutData": "14.962",
+          },
+          Object {
+            "x": 2015-02-25T00:00:00.000Z,
+            "y": 15.457566696478484,
+            "yAxisCalloutData": "15.458",
+          },
+          Object {
+            "x": 2015-02-26T00:00:00.000Z,
+            "y": 14.942769687687289,
+            "yAxisCalloutData": "14.943",
+          },
+          Object {
+            "x": 2015-02-27T00:00:00.000Z,
+            "y": 15.721527909780036,
+            "yAxisCalloutData": "15.722",
+          },
+          Object {
+            "x": 2015-02-28T00:00:00.000Z,
+            "y": 13.091278962257627,
+            "yAxisCalloutData": "13.091",
+          },
+          Object {
+            "x": 2015-03-01T00:00:00.000Z,
+            "y": 14.295247001092115,
+            "yAxisCalloutData": "14.295",
+          },
+          Object {
+            "x": 2015-03-02T00:00:00.000Z,
+            "y": 15.296655272416865,
+            "yAxisCalloutData": "15.297",
+          },
+          Object {
+            "x": 2015-03-03T00:00:00.000Z,
+            "y": 14.436440585461526,
+            "yAxisCalloutData": "14.436",
+          },
+          Object {
+            "x": 2015-03-04T00:00:00.000Z,
+            "y": 13.912453188370755,
+            "yAxisCalloutData": "13.912",
+          },
+          Object {
+            "x": 2015-03-05T00:00:00.000Z,
+            "y": 12.433861225213807,
+            "yAxisCalloutData": "12.434",
+          },
+          Object {
+            "x": 2015-03-06T00:00:00.000Z,
+            "y": 14.061345247447989,
+            "yAxisCalloutData": "14.061",
+          },
+          Object {
+            "x": 2015-03-07T00:00:00.000Z,
+            "y": 13.326092951912521,
+            "yAxisCalloutData": "13.326",
+          },
+          Object {
+            "x": 2015-03-08T00:00:00.000Z,
+            "y": 13.566974950387175,
+            "yAxisCalloutData": "13.567",
+          },
+          Object {
+            "x": 2015-03-09T00:00:00.000Z,
+            "y": 12.96345607653163,
+            "yAxisCalloutData": "12.963",
+          },
+          Object {
+            "x": 2015-03-10T00:00:00.000Z,
+            "y": 12.205278846692087,
+            "yAxisCalloutData": "12.205",
+          },
+          Object {
+            "x": 2015-03-11T00:00:00.000Z,
+            "y": 11.364010452431279,
+            "yAxisCalloutData": "11.364",
+          },
+          Object {
+            "x": 2015-03-12T00:00:00.000Z,
+            "y": 12.120962982512733,
+            "yAxisCalloutData": "12.121",
+          },
+          Object {
+            "x": 2015-03-13T00:00:00.000Z,
+            "y": 13.570258079014422,
+            "yAxisCalloutData": "13.57",
+          },
+          Object {
+            "x": 2015-03-14T00:00:00.000Z,
+            "y": 14.613857418348378,
+            "yAxisCalloutData": "14.614",
+          },
+          Object {
+            "x": 2015-03-15T00:00:00.000Z,
+            "y": 15.48868026864105,
+            "yAxisCalloutData": "15.489",
+          },
+          Object {
+            "x": 2015-03-16T00:00:00.000Z,
+            "y": 15.421250297066777,
+            "yAxisCalloutData": "15.421",
+          },
+          Object {
+            "x": 2015-03-17T00:00:00.000Z,
+            "y": 16.562957844203055,
+            "yAxisCalloutData": "16.563",
+          },
+          Object {
+            "x": 2015-03-18T00:00:00.000Z,
+            "y": 16.365666723485436,
+            "yAxisCalloutData": "16.366",
+          },
+          Object {
+            "x": 2015-03-19T00:00:00.000Z,
+            "y": 15.848038393086913,
+            "yAxisCalloutData": "15.848",
+          },
+          Object {
+            "x": 2015-03-20T00:00:00.000Z,
+            "y": 16.170083705874156,
+            "yAxisCalloutData": "16.17",
+          },
+          Object {
+            "x": 2015-03-21T00:00:00.000Z,
+            "y": 16.446617416519754,
+            "yAxisCalloutData": "16.447",
+          },
+          Object {
+            "x": 2015-03-22T00:00:00.000Z,
+            "y": 15.024371154281331,
+            "yAxisCalloutData": "15.024",
+          },
+          Object {
+            "x": 2015-03-23T00:00:00.000Z,
+            "y": 14.802238239296665,
+            "yAxisCalloutData": "14.802",
+          },
+          Object {
+            "x": 2015-03-24T00:00:00.000Z,
+            "y": 13.156751496135007,
+            "yAxisCalloutData": "13.157",
+          },
+          Object {
+            "x": 2015-03-25T00:00:00.000Z,
+            "y": 14.06168725142282,
+            "yAxisCalloutData": "14.062",
+          },
+          Object {
+            "x": 2015-03-26T00:00:00.000Z,
+            "y": 14.94588113322983,
+            "yAxisCalloutData": "14.946",
+          },
+          Object {
+            "x": 2015-03-27T00:00:00.000Z,
+            "y": 14.127589669913032,
+            "yAxisCalloutData": "14.128",
+          },
+          Object {
+            "x": 2015-03-28T00:00:00.000Z,
+            "y": 13.885898170515487,
+            "yAxisCalloutData": "13.886",
+          },
+          Object {
+            "x": 2015-03-29T00:00:00.000Z,
+            "y": 13.692030694564533,
+            "yAxisCalloutData": "13.692",
+          },
+          Object {
+            "x": 2015-03-30T00:00:00.000Z,
+            "y": 14.943253908206318,
+            "yAxisCalloutData": "14.943",
+          },
+          Object {
+            "x": 2015-03-31T00:00:00.000Z,
+            "y": 14.529368596515058,
+            "yAxisCalloutData": "14.529",
+          },
+          Object {
+            "x": 2015-04-01T00:00:00.000Z,
+            "y": 14.661473471114782,
+            "yAxisCalloutData": "14.661",
+          },
+          Object {
+            "x": 2015-04-02T00:00:00.000Z,
+            "y": 13.67375983483632,
+            "yAxisCalloutData": "13.674",
+          },
+          Object {
+            "x": 2015-04-03T00:00:00.000Z,
+            "y": 13.382284458918326,
+            "yAxisCalloutData": "13.382",
+          },
+          Object {
+            "x": 2015-04-04T00:00:00.000Z,
+            "y": 12.527287002966496,
+            "yAxisCalloutData": "12.527",
+          },
+          Object {
+            "x": 2015-04-05T00:00:00.000Z,
+            "y": 12.767994473001014,
+            "yAxisCalloutData": "12.768",
+          },
+          Object {
+            "x": 2015-04-06T00:00:00.000Z,
+            "y": 12.651030056419879,
+            "yAxisCalloutData": "12.651",
+          },
+          Object {
+            "x": 2015-04-07T00:00:00.000Z,
+            "y": 12.141617852418765,
+            "yAxisCalloutData": "12.142",
+          },
+          Object {
+            "x": 2015-04-08T00:00:00.000Z,
+            "y": 13.606694447410502,
+            "yAxisCalloutData": "13.607",
+          },
+          Object {
+            "x": 2015-04-09T00:00:00.000Z,
+            "y": 13.923089943159189,
+            "yAxisCalloutData": "13.923",
+          },
+          Object {
+            "x": 2015-04-10T00:00:00.000Z,
+            "y": 14.003348672865656,
+            "yAxisCalloutData": "14.003",
+          },
+        ],
+        "legend": "Trace 0",
+        "legendShape": "default",
+        "lineOptions": Object {
+          "curve": "linear",
+          "mode": "lines",
+        },
+        "useSecondaryYScale": false,
+      },
+      Object {
+        "color": "#3780bfff",
+        "data": Array [
+          Object {
+            "x": 2015-01-01T00:00:00.000Z,
+            "y": -2.58404773330316,
+            "yAxisCalloutData": "-2.584",
+          },
+          Object {
+            "x": 2015-01-02T00:00:00.000Z,
+            "y": -1.9162964761259451,
+            "yAxisCalloutData": "-1.916",
+          },
+          Object {
+            "x": 2015-01-03T00:00:00.000Z,
+            "y": -1.8899798841571565,
+            "yAxisCalloutData": "-1.89",
+          },
+          Object {
+            "x": 2015-01-04T00:00:00.000Z,
+            "y": -1.098466181069551,
+            "yAxisCalloutData": "-1.098",
+          },
+          Object {
+            "x": 2015-01-05T00:00:00.000Z,
+            "y": -1.2161136413159992,
+            "yAxisCalloutData": "-1.216",
+          },
+          Object {
+            "x": 2015-01-06T00:00:00.000Z,
+            "y": -0.9298011508867184,
+            "yAxisCalloutData": "-0.93",
+          },
+          Object {
+            "x": 2015-01-07T00:00:00.000Z,
+            "y": -2.5216450120142193,
+            "yAxisCalloutData": "-2.522",
+          },
+          Object {
+            "x": 2015-01-08T00:00:00.000Z,
+            "y": -1.5547013224314532,
+            "yAxisCalloutData": "-1.555",
+          },
+          Object {
+            "x": 2015-01-09T00:00:00.000Z,
+            "y": -3.1293219775443117,
+            "yAxisCalloutData": "-3.129",
+          },
+          Object {
+            "x": 2015-01-10T00:00:00.000Z,
+            "y": -2.7232351981528025,
+            "yAxisCalloutData": "-2.723",
+          },
+          Object {
+            "x": 2015-01-11T00:00:00.000Z,
+            "y": -1.704449229625379,
+            "yAxisCalloutData": "-1.704",
+          },
+          Object {
+            "x": 2015-01-12T00:00:00.000Z,
+            "y": -1.2702366750752472,
+            "yAxisCalloutData": "-1.27",
+          },
+          Object {
+            "x": 2015-01-13T00:00:00.000Z,
+            "y": -1.7688923656442583,
+            "yAxisCalloutData": "-1.769",
+          },
+          Object {
+            "x": 2015-01-14T00:00:00.000Z,
+            "y": -1.9810878959630682,
+            "yAxisCalloutData": "-1.981",
+          },
+          Object {
+            "x": 2015-01-15T00:00:00.000Z,
+            "y": -1.0881359248000217,
+            "yAxisCalloutData": "-1.088",
+          },
+          Object {
+            "x": 2015-01-16T00:00:00.000Z,
+            "y": -0.5214761704035035,
+            "yAxisCalloutData": "-0.521",
+          },
+          Object {
+            "x": 2015-01-17T00:00:00.000Z,
+            "y": -0.639866394654719,
+            "yAxisCalloutData": "-0.64",
+          },
+          Object {
+            "x": 2015-01-18T00:00:00.000Z,
+            "y": -2.258513886233204,
+            "yAxisCalloutData": "-2.259",
+          },
+          Object {
+            "x": 2015-01-19T00:00:00.000Z,
+            "y": -0.8711892253875131,
+            "yAxisCalloutData": "-0.871",
+          },
+          Object {
+            "x": 2015-01-20T00:00:00.000Z,
+            "y": -0.45426547393253053,
+            "yAxisCalloutData": "-0.454",
+          },
+          Object {
+            "x": 2015-01-21T00:00:00.000Z,
+            "y": -2.4076676391235785,
+            "yAxisCalloutData": "-2.408",
+          },
+          Object {
+            "x": 2015-01-22T00:00:00.000Z,
+            "y": -2.2450025826137097,
+            "yAxisCalloutData": "-2.245",
+          },
+          Object {
+            "x": 2015-01-23T00:00:00.000Z,
+            "y": -2.3488062397069234,
+            "yAxisCalloutData": "-2.349",
+          },
+          Object {
+            "x": 2015-01-24T00:00:00.000Z,
+            "y": -3.2188990647525304,
+            "yAxisCalloutData": "-3.219",
+          },
+          Object {
+            "x": 2015-01-25T00:00:00.000Z,
+            "y": -2.6042445674055594,
+            "yAxisCalloutData": "-2.604",
+          },
+          Object {
+            "x": 2015-01-26T00:00:00.000Z,
+            "y": -2.9702468803291966,
+            "yAxisCalloutData": "-2.97",
+          },
+          Object {
+            "x": 2015-01-27T00:00:00.000Z,
+            "y": -4.139691822816822,
+            "yAxisCalloutData": "-4.14",
+          },
+          Object {
+            "x": 2015-01-28T00:00:00.000Z,
+            "y": -3.9967022316870042,
+            "yAxisCalloutData": "-3.997",
+          },
+          Object {
+            "x": 2015-01-29T00:00:00.000Z,
+            "y": -4.796271521377118,
+            "yAxisCalloutData": "-4.796",
+          },
+          Object {
+            "x": 2015-01-30T00:00:00.000Z,
+            "y": -5.244924380701339,
+            "yAxisCalloutData": "-5.245",
+          },
+          Object {
+            "x": 2015-01-31T00:00:00.000Z,
+            "y": -6.965620503609484,
+            "yAxisCalloutData": "-6.966",
+          },
+          Object {
+            "x": 2015-02-01T00:00:00.000Z,
+            "y": -6.430396926773768,
+            "yAxisCalloutData": "-6.43",
+          },
+          Object {
+            "x": 2015-02-02T00:00:00.000Z,
+            "y": -5.234457265252843,
+            "yAxisCalloutData": "-5.234",
+          },
+          Object {
+            "x": 2015-02-03T00:00:00.000Z,
+            "y": -6.181791776690352,
+            "yAxisCalloutData": "-6.182",
+          },
+          Object {
+            "x": 2015-02-04T00:00:00.000Z,
+            "y": -7.3464387119459085,
+            "yAxisCalloutData": "-7.346",
+          },
+          Object {
+            "x": 2015-02-05T00:00:00.000Z,
+            "y": -7.085650875056526,
+            "yAxisCalloutData": "-7.086",
+          },
+          Object {
+            "x": 2015-02-06T00:00:00.000Z,
+            "y": -6.795217278293396,
+            "yAxisCalloutData": "-6.795",
+          },
+          Object {
+            "x": 2015-02-07T00:00:00.000Z,
+            "y": -6.08725142043377,
+            "yAxisCalloutData": "-6.087",
+          },
+          Object {
+            "x": 2015-02-08T00:00:00.000Z,
+            "y": -5.3416313194169875,
+            "yAxisCalloutData": "-5.342",
+          },
+          Object {
+            "x": 2015-02-09T00:00:00.000Z,
+            "y": -4.900094995211111,
+            "yAxisCalloutData": "-4.9",
+          },
+          Object {
+            "x": 2015-02-10T00:00:00.000Z,
+            "y": -4.715363010029477,
+            "yAxisCalloutData": "-4.715",
+          },
+          Object {
+            "x": 2015-02-11T00:00:00.000Z,
+            "y": -3.6757033584677927,
+            "yAxisCalloutData": "-3.676",
+          },
+          Object {
+            "x": 2015-02-12T00:00:00.000Z,
+            "y": -5.873900613367271,
+            "yAxisCalloutData": "-5.874",
+          },
+          Object {
+            "x": 2015-02-13T00:00:00.000Z,
+            "y": -7.685787089886274,
+            "yAxisCalloutData": "-7.686",
+          },
+          Object {
+            "x": 2015-02-14T00:00:00.000Z,
+            "y": -8.833149292574403,
+            "yAxisCalloutData": "-8.833",
+          },
+          Object {
+            "x": 2015-02-15T00:00:00.000Z,
+            "y": -9.373517123532867,
+            "yAxisCalloutData": "-9.374",
+          },
+          Object {
+            "x": 2015-02-16T00:00:00.000Z,
+            "y": -10.519456187180836,
+            "yAxisCalloutData": "-10.519",
+          },
+          Object {
+            "x": 2015-02-17T00:00:00.000Z,
+            "y": -8.012082850355387,
+            "yAxisCalloutData": "-8.012",
+          },
+          Object {
+            "x": 2015-02-18T00:00:00.000Z,
+            "y": -8.556759031756883,
+            "yAxisCalloutData": "-8.557",
+          },
+          Object {
+            "x": 2015-02-19T00:00:00.000Z,
+            "y": -8.78527769843948,
+            "yAxisCalloutData": "-8.785",
+          },
+          Object {
+            "x": 2015-02-20T00:00:00.000Z,
+            "y": -8.801850250864483,
+            "yAxisCalloutData": "-8.802",
+          },
+          Object {
+            "x": 2015-02-21T00:00:00.000Z,
+            "y": -9.031427690493008,
+            "yAxisCalloutData": "-9.031",
+          },
+          Object {
+            "x": 2015-02-22T00:00:00.000Z,
+            "y": -9.289972806031075,
+            "yAxisCalloutData": "-9.29",
+          },
+          Object {
+            "x": 2015-02-23T00:00:00.000Z,
+            "y": -8.434541044235305,
+            "yAxisCalloutData": "-8.435",
+          },
+          Object {
+            "x": 2015-02-24T00:00:00.000Z,
+            "y": -8.543619303217836,
+            "yAxisCalloutData": "-8.544",
+          },
+          Object {
+            "x": 2015-02-25T00:00:00.000Z,
+            "y": -9.817816201809572,
+            "yAxisCalloutData": "-9.818",
+          },
+          Object {
+            "x": 2015-02-26T00:00:00.000Z,
+            "y": -9.691704922707196,
+            "yAxisCalloutData": "-9.692",
+          },
+          Object {
+            "x": 2015-02-27T00:00:00.000Z,
+            "y": -9.172230718814316,
+            "yAxisCalloutData": "-9.172",
+          },
+          Object {
+            "x": 2015-02-28T00:00:00.000Z,
+            "y": -10.389025830978015,
+            "yAxisCalloutData": "-10.389",
+          },
+          Object {
+            "x": 2015-03-01T00:00:00.000Z,
+            "y": -9.418276522564378,
+            "yAxisCalloutData": "-9.418",
+          },
+          Object {
+            "x": 2015-03-02T00:00:00.000Z,
+            "y": -8.844666134378604,
+            "yAxisCalloutData": "-8.845",
+          },
+          Object {
+            "x": 2015-03-03T00:00:00.000Z,
+            "y": -10.649699554950736,
+            "yAxisCalloutData": "-10.65",
+          },
+          Object {
+            "x": 2015-03-04T00:00:00.000Z,
+            "y": -11.433978738990442,
+            "yAxisCalloutData": "-11.434",
+          },
+          Object {
+            "x": 2015-03-05T00:00:00.000Z,
+            "y": -11.022214964648152,
+            "yAxisCalloutData": "-11.022",
+          },
+          Object {
+            "x": 2015-03-06T00:00:00.000Z,
+            "y": -11.156982299530265,
+            "yAxisCalloutData": "-11.157",
+          },
+          Object {
+            "x": 2015-03-07T00:00:00.000Z,
+            "y": -12.846500605483975,
+            "yAxisCalloutData": "-12.847",
+          },
+          Object {
+            "x": 2015-03-08T00:00:00.000Z,
+            "y": -12.700459270895378,
+            "yAxisCalloutData": "-12.7",
+          },
+          Object {
+            "x": 2015-03-09T00:00:00.000Z,
+            "y": -13.701718476553872,
+            "yAxisCalloutData": "-13.702",
+          },
+          Object {
+            "x": 2015-03-10T00:00:00.000Z,
+            "y": -14.281259852458456,
+            "yAxisCalloutData": "-14.281",
+          },
+          Object {
+            "x": 2015-03-11T00:00:00.000Z,
+            "y": -13.197701892598191,
+            "yAxisCalloutData": "-13.198",
+          },
+          Object {
+            "x": 2015-03-12T00:00:00.000Z,
+            "y": -13.444607930505104,
+            "yAxisCalloutData": "-13.445",
+          },
+          Object {
+            "x": 2015-03-13T00:00:00.000Z,
+            "y": -12.703127086621702,
+            "yAxisCalloutData": "-12.703",
+          },
+          Object {
+            "x": 2015-03-14T00:00:00.000Z,
+            "y": -12.38184968649959,
+            "yAxisCalloutData": "-12.382",
+          },
+          Object {
+            "x": 2015-03-15T00:00:00.000Z,
+            "y": -13.545422038889187,
+            "yAxisCalloutData": "-13.545",
+          },
+          Object {
+            "x": 2015-03-16T00:00:00.000Z,
+            "y": -12.062411162554307,
+            "yAxisCalloutData": "-12.062",
+          },
+          Object {
+            "x": 2015-03-17T00:00:00.000Z,
+            "y": -12.190051993521331,
+            "yAxisCalloutData": "-12.19",
+          },
+          Object {
+            "x": 2015-03-18T00:00:00.000Z,
+            "y": -13.801739083658532,
+            "yAxisCalloutData": "-13.802",
+          },
+          Object {
+            "x": 2015-03-19T00:00:00.000Z,
+            "y": -14.198265394729127,
+            "yAxisCalloutData": "-14.198",
+          },
+          Object {
+            "x": 2015-03-20T00:00:00.000Z,
+            "y": -14.29078542197376,
+            "yAxisCalloutData": "-14.291",
+          },
+          Object {
+            "x": 2015-03-21T00:00:00.000Z,
+            "y": -13.45263060195906,
+            "yAxisCalloutData": "-13.453",
+          },
+          Object {
+            "x": 2015-03-22T00:00:00.000Z,
+            "y": -13.130412206893606,
+            "yAxisCalloutData": "-13.13",
+          },
+          Object {
+            "x": 2015-03-23T00:00:00.000Z,
+            "y": -14.189794518505105,
+            "yAxisCalloutData": "-14.19",
+          },
+          Object {
+            "x": 2015-03-24T00:00:00.000Z,
+            "y": -12.647928857811877,
+            "yAxisCalloutData": "-12.648",
+          },
+          Object {
+            "x": 2015-03-25T00:00:00.000Z,
+            "y": -13.252175401809115,
+            "yAxisCalloutData": "-13.252",
+          },
+          Object {
+            "x": 2015-03-26T00:00:00.000Z,
+            "y": -13.526006774399674,
+            "yAxisCalloutData": "-13.526",
+          },
+          Object {
+            "x": 2015-03-27T00:00:00.000Z,
+            "y": -13.640567463371012,
+            "yAxisCalloutData": "-13.641",
+          },
+          Object {
+            "x": 2015-03-28T00:00:00.000Z,
+            "y": -13.234252510186453,
+            "yAxisCalloutData": "-13.234",
+          },
+          Object {
+            "x": 2015-03-29T00:00:00.000Z,
+            "y": -12.313307209824384,
+            "yAxisCalloutData": "-12.313",
+          },
+          Object {
+            "x": 2015-03-30T00:00:00.000Z,
+            "y": -11.218557557877709,
+            "yAxisCalloutData": "-11.219",
+          },
+          Object {
+            "x": 2015-03-31T00:00:00.000Z,
+            "y": -10.7821947135954,
+            "yAxisCalloutData": "-10.782",
+          },
+          Object {
+            "x": 2015-04-01T00:00:00.000Z,
+            "y": -8.89016408336461,
+            "yAxisCalloutData": "-8.89",
+          },
+          Object {
+            "x": 2015-04-02T00:00:00.000Z,
+            "y": -9.662631443485989,
+            "yAxisCalloutData": "-9.663",
+          },
+          Object {
+            "x": 2015-04-03T00:00:00.000Z,
+            "y": -6.909371824212538,
+            "yAxisCalloutData": "-6.909",
+          },
+          Object {
+            "x": 2015-04-04T00:00:00.000Z,
+            "y": -7.048202688582138,
+            "yAxisCalloutData": "-7.048",
+          },
+          Object {
+            "x": 2015-04-05T00:00:00.000Z,
+            "y": -4.971706592042745,
+            "yAxisCalloutData": "-4.972",
+          },
+          Object {
+            "x": 2015-04-06T00:00:00.000Z,
+            "y": -4.310618310025603,
+            "yAxisCalloutData": "-4.311",
+          },
+          Object {
+            "x": 2015-04-07T00:00:00.000Z,
+            "y": -2.954237793688564,
+            "yAxisCalloutData": "-2.954",
+          },
+          Object {
+            "x": 2015-04-08T00:00:00.000Z,
+            "y": -2.0883264569176156,
+            "yAxisCalloutData": "-2.088",
+          },
+          Object {
+            "x": 2015-04-09T00:00:00.000Z,
+            "y": 1.1805740980198571,
+            "yAxisCalloutData": "1.181",
+          },
+          Object {
+            "x": 2015-04-10T00:00:00.000Z,
+            "y": 0.5040426644599496,
+            "yAxisCalloutData": "0.504",
+          },
+        ],
+        "legend": "Trace 1",
+        "legendShape": "default",
+        "lineOptions": Object {
+          "curve": "linear",
+          "mode": "lines",
+        },
+        "useSecondaryYScale": false,
+      },
+      Object {
+        "color": "#32ab60ff",
+        "data": Array [
+          Object {
+            "x": 2015-01-01T00:00:00.000Z,
+            "y": 0.4661114764240781,
+            "yAxisCalloutData": "0.466",
+          },
+          Object {
+            "x": 2015-01-02T00:00:00.000Z,
+            "y": 1.0610769506804194,
+            "yAxisCalloutData": "1.061",
+          },
+          Object {
+            "x": 2015-01-03T00:00:00.000Z,
+            "y": 1.0620659379275244,
+            "yAxisCalloutData": "1.062",
+          },
+          Object {
+            "x": 2015-01-04T00:00:00.000Z,
+            "y": -0.5603096501263787,
+            "yAxisCalloutData": "-0.56",
+          },
+          Object {
+            "x": 2015-01-05T00:00:00.000Z,
+            "y": -0.22966983294858567,
+            "yAxisCalloutData": "-0.23",
+          },
+          Object {
+            "x": 2015-01-06T00:00:00.000Z,
+            "y": 1.1358334022099883,
+            "yAxisCalloutData": "1.136",
+          },
+          Object {
+            "x": 2015-01-07T00:00:00.000Z,
+            "y": 1.8697838063194905,
+            "yAxisCalloutData": "1.87",
+          },
+          Object {
+            "x": 2015-01-08T00:00:00.000Z,
+            "y": 1.8307593169232188,
+            "yAxisCalloutData": "1.831",
+          },
+          Object {
+            "x": 2015-01-09T00:00:00.000Z,
+            "y": 2.6294937170536055,
+            "yAxisCalloutData": "2.629",
+          },
+          Object {
+            "x": 2015-01-10T00:00:00.000Z,
+            "y": 1.456439760404607,
+            "yAxisCalloutData": "1.456",
+          },
+          Object {
+            "x": 2015-01-11T00:00:00.000Z,
+            "y": 3.571977139947352,
+            "yAxisCalloutData": "3.572",
+          },
+          Object {
+            "x": 2015-01-12T00:00:00.000Z,
+            "y": 3.305623978930223,
+            "yAxisCalloutData": "3.306",
+          },
+          Object {
+            "x": 2015-01-13T00:00:00.000Z,
+            "y": 4.369054542737759,
+            "yAxisCalloutData": "4.369",
+          },
+          Object {
+            "x": 2015-01-14T00:00:00.000Z,
+            "y": 4.134928856846778,
+            "yAxisCalloutData": "4.135",
+          },
+          Object {
+            "x": 2015-01-15T00:00:00.000Z,
+            "y": 2.525747905079978,
+            "yAxisCalloutData": "2.526",
+          },
+          Object {
+            "x": 2015-01-16T00:00:00.000Z,
+            "y": 4.45625041538837,
+            "yAxisCalloutData": "4.456",
+          },
+          Object {
+            "x": 2015-01-17T00:00:00.000Z,
+            "y": 5.331621195457201,
+            "yAxisCalloutData": "5.332",
+          },
+          Object {
+            "x": 2015-01-18T00:00:00.000Z,
+            "y": 5.01722152487662,
+            "yAxisCalloutData": "5.017",
+          },
+          Object {
+            "x": 2015-01-19T00:00:00.000Z,
+            "y": 3.2730061427478807,
+            "yAxisCalloutData": "3.273",
+          },
+          Object {
+            "x": 2015-01-20T00:00:00.000Z,
+            "y": 2.3895586625726164,
+            "yAxisCalloutData": "2.39",
+          },
+          Object {
+            "x": 2015-01-21T00:00:00.000Z,
+            "y": 1.5551868349111646,
+            "yAxisCalloutData": "1.555",
+          },
+          Object {
+            "x": 2015-01-22T00:00:00.000Z,
+            "y": 0.9222137047406664,
+            "yAxisCalloutData": "0.922",
+          },
+          Object {
+            "x": 2015-01-23T00:00:00.000Z,
+            "y": -0.2408476097748915,
+            "yAxisCalloutData": "-0.241",
+          },
+          Object {
+            "x": 2015-01-24T00:00:00.000Z,
+            "y": -0.7735805458656726,
+            "yAxisCalloutData": "-0.774",
+          },
+          Object {
+            "x": 2015-01-25T00:00:00.000Z,
+            "y": -0.8871954038346644,
+            "yAxisCalloutData": "-0.887",
+          },
+          Object {
+            "x": 2015-01-26T00:00:00.000Z,
+            "y": -1.9822438634492547,
+            "yAxisCalloutData": "-1.982",
+          },
+          Object {
+            "x": 2015-01-27T00:00:00.000Z,
+            "y": -0.8886612143982666,
+            "yAxisCalloutData": "-0.889",
+          },
+          Object {
+            "x": 2015-01-28T00:00:00.000Z,
+            "y": -0.7149527896910689,
+            "yAxisCalloutData": "-0.715",
+          },
+          Object {
+            "x": 2015-01-29T00:00:00.000Z,
+            "y": -1.1377284325144619,
+            "yAxisCalloutData": "-1.138",
+          },
+          Object {
+            "x": 2015-01-30T00:00:00.000Z,
+            "y": -1.7585300048885872,
+            "yAxisCalloutData": "-1.759",
+          },
+          Object {
+            "x": 2015-01-31T00:00:00.000Z,
+            "y": -2.8117170543153254,
+            "yAxisCalloutData": "-2.812",
+          },
+          Object {
+            "x": 2015-02-01T00:00:00.000Z,
+            "y": -2.6809842525932175,
+            "yAxisCalloutData": "-2.681",
+          },
+          Object {
+            "x": 2015-02-02T00:00:00.000Z,
+            "y": -1.6457602974924186,
+            "yAxisCalloutData": "-1.646",
+          },
+          Object {
+            "x": 2015-02-03T00:00:00.000Z,
+            "y": -2.1361202183757593,
+            "yAxisCalloutData": "-2.136",
+          },
+          Object {
+            "x": 2015-02-04T00:00:00.000Z,
+            "y": -3.506112394459107,
+            "yAxisCalloutData": "-3.506",
+          },
+          Object {
+            "x": 2015-02-05T00:00:00.000Z,
+            "y": -3.338531391597358,
+            "yAxisCalloutData": "-3.339",
+          },
+          Object {
+            "x": 2015-02-06T00:00:00.000Z,
+            "y": -5.511057758779813,
+            "yAxisCalloutData": "-5.511",
+          },
+          Object {
+            "x": 2015-02-07T00:00:00.000Z,
+            "y": -3.5261371875358676,
+            "yAxisCalloutData": "-3.526",
+          },
+          Object {
+            "x": 2015-02-08T00:00:00.000Z,
+            "y": -4.05255557741406,
+            "yAxisCalloutData": "-4.053",
+          },
+          Object {
+            "x": 2015-02-09T00:00:00.000Z,
+            "y": -5.188415501615373,
+            "yAxisCalloutData": "-5.188",
+          },
+          Object {
+            "x": 2015-02-10T00:00:00.000Z,
+            "y": -6.032557392677557,
+            "yAxisCalloutData": "-6.033",
+          },
+          Object {
+            "x": 2015-02-11T00:00:00.000Z,
+            "y": -5.6858700345353785,
+            "yAxisCalloutData": "-5.686",
+          },
+          Object {
+            "x": 2015-02-12T00:00:00.000Z,
+            "y": -6.667528307767753,
+            "yAxisCalloutData": "-6.668",
+          },
+          Object {
+            "x": 2015-02-13T00:00:00.000Z,
+            "y": -6.733517550988596,
+            "yAxisCalloutData": "-6.734",
+          },
+          Object {
+            "x": 2015-02-14T00:00:00.000Z,
+            "y": -7.0502984033473615,
+            "yAxisCalloutData": "-7.05",
+          },
+          Object {
+            "x": 2015-02-15T00:00:00.000Z,
+            "y": -7.574898212324232,
+            "yAxisCalloutData": "-7.575",
+          },
+          Object {
+            "x": 2015-02-16T00:00:00.000Z,
+            "y": -7.1843491903366,
+            "yAxisCalloutData": "-7.184",
+          },
+          Object {
+            "x": 2015-02-17T00:00:00.000Z,
+            "y": -6.080355259797091,
+            "yAxisCalloutData": "-6.08",
+          },
+          Object {
+            "x": 2015-02-18T00:00:00.000Z,
+            "y": -6.398354606750326,
+            "yAxisCalloutData": "-6.398",
+          },
+          Object {
+            "x": 2015-02-19T00:00:00.000Z,
+            "y": -6.286331305269291,
+            "yAxisCalloutData": "-6.286",
+          },
+          Object {
+            "x": 2015-02-20T00:00:00.000Z,
+            "y": -7.175762338255774,
+            "yAxisCalloutData": "-7.176",
+          },
+          Object {
+            "x": 2015-02-21T00:00:00.000Z,
+            "y": -6.6277002690607105,
+            "yAxisCalloutData": "-6.628",
+          },
+          Object {
+            "x": 2015-02-22T00:00:00.000Z,
+            "y": -6.031655281290095,
+            "yAxisCalloutData": "-6.032",
+          },
+          Object {
+            "x": 2015-02-23T00:00:00.000Z,
+            "y": -5.243102836583583,
+            "yAxisCalloutData": "-5.243",
+          },
+          Object {
+            "x": 2015-02-24T00:00:00.000Z,
+            "y": -4.612608200873672,
+            "yAxisCalloutData": "-4.613",
+          },
+          Object {
+            "x": 2015-02-25T00:00:00.000Z,
+            "y": -5.180512683218164,
+            "yAxisCalloutData": "-5.181",
+          },
+          Object {
+            "x": 2015-02-26T00:00:00.000Z,
+            "y": -5.0321319726702916,
+            "yAxisCalloutData": "-5.032",
+          },
+          Object {
+            "x": 2015-02-27T00:00:00.000Z,
+            "y": -4.567844497333498,
+            "yAxisCalloutData": "-4.568",
+          },
+          Object {
+            "x": 2015-02-28T00:00:00.000Z,
+            "y": -3.347239903958168,
+            "yAxisCalloutData": "-3.347",
+          },
+          Object {
+            "x": 2015-03-01T00:00:00.000Z,
+            "y": -2.5263058621799597,
+            "yAxisCalloutData": "-2.526",
+          },
+          Object {
+            "x": 2015-03-02T00:00:00.000Z,
+            "y": -3.554423668680612,
+            "yAxisCalloutData": "-3.554",
+          },
+          Object {
+            "x": 2015-03-03T00:00:00.000Z,
+            "y": -1.7466537357472816,
+            "yAxisCalloutData": "-1.747",
+          },
+          Object {
+            "x": 2015-03-04T00:00:00.000Z,
+            "y": 0.08618389027480222,
+            "yAxisCalloutData": "0.086",
+          },
+          Object {
+            "x": 2015-03-05T00:00:00.000Z,
+            "y": 1.0223852208396356,
+            "yAxisCalloutData": "1.022",
+          },
+          Object {
+            "x": 2015-03-06T00:00:00.000Z,
+            "y": 2.2260700096326724,
+            "yAxisCalloutData": "2.226",
+          },
+          Object {
+            "x": 2015-03-07T00:00:00.000Z,
+            "y": 2.976731277433707,
+            "yAxisCalloutData": "2.977",
+          },
+          Object {
+            "x": 2015-03-08T00:00:00.000Z,
+            "y": 2.5457541264066235,
+            "yAxisCalloutData": "2.546",
+          },
+          Object {
+            "x": 2015-03-09T00:00:00.000Z,
+            "y": 2.412842465270771,
+            "yAxisCalloutData": "2.413",
+          },
+          Object {
+            "x": 2015-03-10T00:00:00.000Z,
+            "y": 2.1270496073872933,
+            "yAxisCalloutData": "2.127",
+          },
+          Object {
+            "x": 2015-03-11T00:00:00.000Z,
+            "y": 4.350264423349324,
+            "yAxisCalloutData": "4.35",
+          },
+          Object {
+            "x": 2015-03-12T00:00:00.000Z,
+            "y": 3.6000820362032346,
+            "yAxisCalloutData": "3.6",
+          },
+          Object {
+            "x": 2015-03-13T00:00:00.000Z,
+            "y": 3.6547717673422704,
+            "yAxisCalloutData": "3.655",
+          },
+          Object {
+            "x": 2015-03-14T00:00:00.000Z,
+            "y": 4.29856786980301,
+            "yAxisCalloutData": "4.299",
+          },
+          Object {
+            "x": 2015-03-15T00:00:00.000Z,
+            "y": 4.61832134099102,
+            "yAxisCalloutData": "4.618",
+          },
+          Object {
+            "x": 2015-03-16T00:00:00.000Z,
+            "y": 5.1364308299997825,
+            "yAxisCalloutData": "5.136",
+          },
+          Object {
+            "x": 2015-03-17T00:00:00.000Z,
+            "y": 5.647209819441451,
+            "yAxisCalloutData": "5.647",
+          },
+          Object {
+            "x": 2015-03-18T00:00:00.000Z,
+            "y": 6.041357011724418,
+            "yAxisCalloutData": "6.041",
+          },
+          Object {
+            "x": 2015-03-19T00:00:00.000Z,
+            "y": 4.789997568683162,
+            "yAxisCalloutData": "4.79",
+          },
+          Object {
+            "x": 2015-03-20T00:00:00.000Z,
+            "y": 6.041650920258338,
+            "yAxisCalloutData": "6.042",
+          },
+          Object {
+            "x": 2015-03-21T00:00:00.000Z,
+            "y": 5.860878612223213,
+            "yAxisCalloutData": "5.861",
+          },
+          Object {
+            "x": 2015-03-22T00:00:00.000Z,
+            "y": 5.6050673038102214,
+            "yAxisCalloutData": "5.605",
+          },
+          Object {
+            "x": 2015-03-23T00:00:00.000Z,
+            "y": 3.900259274681964,
+            "yAxisCalloutData": "3.9",
+          },
+          Object {
+            "x": 2015-03-24T00:00:00.000Z,
+            "y": 2.1974477295325476,
+            "yAxisCalloutData": "2.197",
+          },
+          Object {
+            "x": 2015-03-25T00:00:00.000Z,
+            "y": 0.979239291658772,
+            "yAxisCalloutData": "0.979",
+          },
+          Object {
+            "x": 2015-03-26T00:00:00.000Z,
+            "y": 0.9769412141062032,
+            "yAxisCalloutData": "0.977",
+          },
+          Object {
+            "x": 2015-03-27T00:00:00.000Z,
+            "y": 1.1215546396840912,
+            "yAxisCalloutData": "1.122",
+          },
+          Object {
+            "x": 2015-03-28T00:00:00.000Z,
+            "y": 1.4131546401228463,
+            "yAxisCalloutData": "1.413",
+          },
+          Object {
+            "x": 2015-03-29T00:00:00.000Z,
+            "y": -0.5715019565360024,
+            "yAxisCalloutData": "-0.572",
+          },
+          Object {
+            "x": 2015-03-30T00:00:00.000Z,
+            "y": -0.4798030419178908,
+            "yAxisCalloutData": "-0.48",
+          },
+          Object {
+            "x": 2015-03-31T00:00:00.000Z,
+            "y": -0.19867316746947167,
+            "yAxisCalloutData": "-0.199",
+          },
+          Object {
+            "x": 2015-04-01T00:00:00.000Z,
+            "y": -1.3237063703965808,
+            "yAxisCalloutData": "-1.324",
+          },
+          Object {
+            "x": 2015-04-02T00:00:00.000Z,
+            "y": -1.5132847802948692,
+            "yAxisCalloutData": "-1.513",
+          },
+          Object {
+            "x": 2015-04-03T00:00:00.000Z,
+            "y": -0.9466159703619573,
+            "yAxisCalloutData": "-0.947",
+          },
+          Object {
+            "x": 2015-04-04T00:00:00.000Z,
+            "y": 1.3543877997088902,
+            "yAxisCalloutData": "1.354",
+          },
+          Object {
+            "x": 2015-04-05T00:00:00.000Z,
+            "y": 1.3745632832250965,
+            "yAxisCalloutData": "1.375",
+          },
+          Object {
+            "x": 2015-04-06T00:00:00.000Z,
+            "y": 1.2843024279329955,
+            "yAxisCalloutData": "1.284",
+          },
+          Object {
+            "x": 2015-04-07T00:00:00.000Z,
+            "y": 1.1384756757773304,
+            "yAxisCalloutData": "1.138",
+          },
+          Object {
+            "x": 2015-04-08T00:00:00.000Z,
+            "y": 1.841477239971831,
+            "yAxisCalloutData": "1.841",
+          },
+          Object {
+            "x": 2015-04-09T00:00:00.000Z,
+            "y": 1.0626945214201182,
+            "yAxisCalloutData": "1.063",
+          },
+          Object {
+            "x": 2015-04-10T00:00:00.000Z,
+            "y": 1.6018849370336259,
+            "yAxisCalloutData": "1.602",
+          },
+        ],
+        "legend": "Trace 2",
+        "legendShape": "default",
+        "lineOptions": Object {
+          "curve": "linear",
+          "mode": "lines",
+        },
+        "useSecondaryYScale": false,
+      },
+    ],
+  },
+  "enableReflow": false,
+  "height": 350,
+  "hideLegend": false,
+  "hideTickOverlap": true,
+  "optimizeLargeData": false,
+  "roundedTicks": true,
+  "supportNegativeData": true,
+  "useUTC": false,
+  "width": undefined,
+  "xAxisTitle": "",
+  "yAxisTitle": "",
+  "yMaxValue": 16.562957844203055,
+  "yMinValue": -14.29078542197376,
 }
 `;
 
@@ -3133,7 +5063,7 @@ Object {
     },
     "chartTitle": "Scottish Referendum Voters who now want Independence",
   },
-  "enableReflow": true,
+  "enableReflow": false,
   "height": 772,
   "styles": Object {
     "root": Object {
@@ -3144,1487 +5074,1562 @@ Object {
 }
 `;
 
-exports[`transform Plotly Json To chart Props transformPlotlyJsonToScatterChartProps - Should return area chart props 1`] = `
+exports[`transform Plotly Json To chart Props transformPlotlyJsonToScatterChartProps - Should return scatter chart props 1`] = `
 Object {
+  "chartTitle": "",
   "data": Object {
-    "chartTitle": "",
-    "lineChartData": Array [
+    "scatterChartData": Array [
       Object {
-        "color": "#ff9933",
-        "data": Array [
-          Object {
-            "x": 0,
-            "y": 0.17048910089864067,
-          },
-          Object {
-            "x": 1,
-            "y": 0.05390702725063046,
-          },
-          Object {
-            "x": 2,
-            "y": 0.7560889217240573,
-          },
-          Object {
-            "x": 3,
-            "y": 0.7393313216390578,
-          },
-          Object {
-            "x": 4,
-            "y": 0.7562979443674754,
-          },
-          Object {
-            "x": 5,
-            "y": 0.983908108492343,
-          },
-          Object {
-            "x": 6,
-            "y": 0.4552096139092071,
-          },
-          Object {
-            "x": 7,
-            "y": 0.751939393026647,
-          },
-          Object {
-            "x": 8,
-            "y": 0.42441695150031034,
-          },
-          Object {
-            "x": 9,
-            "y": 0.6119820237450841,
-          },
-        ],
-        "legend": "a",
-        "legendShape": "default",
-        "lineOptions": Object {
-          "curve": "linear",
-          "mode": "lines",
-        },
-        "useSecondaryYScale": false,
-      },
-      Object {
-        "color": "#3780bf",
-        "data": Array [
-          Object {
-            "x": 0,
-            "y": 1.0921498980687505,
-          },
-          Object {
-            "x": 1,
-            "y": 0.628379692444796,
-          },
-          Object {
-            "x": 2,
-            "y": 1.6804387333467445,
-          },
-          Object {
-            "x": 3,
-            "y": 1.1741874271317159,
-          },
-          Object {
-            "x": 4,
-            "y": 1.7098535938519392,
-          },
-          Object {
-            "x": 5,
-            "y": 1.0165440369832146,
-          },
-          Object {
-            "x": 6,
-            "y": 0.8201578488720772,
-          },
-          Object {
-            "x": 7,
-            "y": 1.019179653143562,
-          },
-          Object {
-            "x": 8,
-            "y": 0.5391840333768539,
-          },
-          Object {
-            "x": 9,
-            "y": 0.9023036941696878,
-          },
-        ],
-        "legend": "b",
-        "legendShape": "default",
-        "lineOptions": Object {
-          "curve": "linear",
-          "mode": "lines",
-        },
-        "useSecondaryYScale": false,
-      },
-      Object {
-        "color": "#32ab60",
-        "data": Array [
-          Object {
-            "x": 0,
-            "y": 1.5084498776097979,
-          },
-          Object {
-            "x": 1,
-            "y": 1.0993096327196032,
-          },
-          Object {
-            "x": 2,
-            "y": 2.5468884763826125,
-          },
-          Object {
-            "x": 3,
-            "y": 1.3139261978658,
-          },
-          Object {
-            "x": 4,
-            "y": 1.7288516603693358,
-          },
-          Object {
-            "x": 5,
-            "y": 1.3500413551768342,
-          },
-          Object {
-            "x": 6,
-            "y": 1.4111774146124456,
-          },
-          Object {
-            "x": 7,
-            "y": 1.1245312639069405,
-          },
-          Object {
-            "x": 8,
-            "y": 1.4068617318281056,
-          },
-          Object {
-            "x": 9,
-            "y": 0.9236499701488171,
-          },
-        ],
-        "legend": "c",
-        "legendShape": "default",
-        "lineOptions": Object {
-          "curve": "linear",
-          "mode": "lines",
-        },
-        "useSecondaryYScale": false,
-      },
-      Object {
-        "color": "#800080",
-        "data": Array [
-          Object {
-            "x": 0,
-            "y": 1.912915766078795,
-          },
-          Object {
-            "x": 1,
-            "y": 1.6450103381519354,
-          },
-          Object {
-            "x": 2,
-            "y": 3.523866933241722,
-          },
-          Object {
-            "x": 3,
-            "y": 1.656799203492564,
-          },
-          Object {
-            "x": 4,
-            "y": 2.666064160881149,
-          },
-          Object {
-            "x": 5,
-            "y": 2.2985767814076814,
-          },
-          Object {
-            "x": 6,
-            "y": 1.6491300653173326,
-          },
-          Object {
-            "x": 7,
-            "y": 1.2880873970749964,
-          },
-          Object {
-            "x": 8,
-            "y": 2.192375146193222,
-          },
-          Object {
-            "x": 9,
-            "y": 1.6271909616796654,
-          },
-        ],
-        "legend": "d",
-        "legendShape": "default",
-        "lineOptions": Object {
-          "curve": "linear",
-          "mode": "lines",
-        },
-        "useSecondaryYScale": false,
-      },
-    ],
-  },
-  "height": 350,
-  "hideLegend": false,
-  "hideTickOverlap": true,
-  "mode": "tonexty",
-  "optimizeLargeData": false,
-  "supportNegativeData": true,
-  "useUTC": false,
-  "width": undefined,
-  "xAxisTitle": "",
-  "yAxisTitle": "",
-}
-`;
-
-exports[`transform Plotly Json To chart Props transformPlotlyJsonToScatterChartProps - Should return line chart props 1`] = `
-Object {
-  "data": Object {
-    "chartTitle": "",
-    "lineChartData": Array [
-      Object {
-        "color": "#ff9933",
+        "color": "#c8d1faff",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
             "y": 0.5353935439391206,
+            "yAxisCalloutData": "0.535",
           },
           Object {
             "x": 2015-01-02T00:00:00.000Z,
             "y": -0.3510205670171982,
+            "yAxisCalloutData": "-0.351",
           },
           Object {
             "x": 2015-01-03T00:00:00.000Z,
             "y": -1.3420793330744663,
+            "yAxisCalloutData": "-1.342",
           },
           Object {
             "x": 2015-01-04T00:00:00.000Z,
             "y": -1.683479706754631,
+            "yAxisCalloutData": "-1.683",
           },
           Object {
             "x": 2015-01-05T00:00:00.000Z,
             "y": -2.0207368899942826,
+            "yAxisCalloutData": "-2.021",
           },
           Object {
             "x": 2015-01-06T00:00:00.000Z,
             "y": 0.006604084375472663,
+            "yAxisCalloutData": "0.007",
           },
           Object {
             "x": 2015-01-07T00:00:00.000Z,
             "y": 0.8037048387382045,
+            "yAxisCalloutData": "0.804",
           },
           Object {
             "x": 2015-01-08T00:00:00.000Z,
             "y": 1.6685589999803645,
+            "yAxisCalloutData": "1.669",
           },
           Object {
             "x": 2015-01-09T00:00:00.000Z,
             "y": 1.2683547027403048,
+            "yAxisCalloutData": "1.268",
           },
           Object {
             "x": 2015-01-10T00:00:00.000Z,
             "y": -1.3330462677331034,
+            "yAxisCalloutData": "-1.333",
           },
           Object {
             "x": 2015-01-11T00:00:00.000Z,
             "y": -1.8663123665480104,
+            "yAxisCalloutData": "-1.866",
           },
           Object {
             "x": 2015-01-12T00:00:00.000Z,
             "y": -2.8051461261147357,
+            "yAxisCalloutData": "-2.805",
           },
           Object {
             "x": 2015-01-13T00:00:00.000Z,
             "y": -4.563508055068453,
+            "yAxisCalloutData": "-4.564",
           },
           Object {
             "x": 2015-01-14T00:00:00.000Z,
             "y": -3.7591847216910996,
+            "yAxisCalloutData": "-3.759",
           },
           Object {
             "x": 2015-01-15T00:00:00.000Z,
             "y": -3.5134185618878746,
+            "yAxisCalloutData": "-3.513",
           },
           Object {
             "x": 2015-01-16T00:00:00.000Z,
             "y": -5.3419268826351995,
+            "yAxisCalloutData": "-5.342",
           },
           Object {
             "x": 2015-01-17T00:00:00.000Z,
             "y": -3.332156069299614,
+            "yAxisCalloutData": "-3.332",
           },
           Object {
             "x": 2015-01-18T00:00:00.000Z,
             "y": -3.5678897362109545,
+            "yAxisCalloutData": "-3.568",
           },
           Object {
             "x": 2015-01-19T00:00:00.000Z,
             "y": -3.8548236009547465,
+            "yAxisCalloutData": "-3.855",
           },
           Object {
             "x": 2015-01-20T00:00:00.000Z,
             "y": -4.58628192762981,
+            "yAxisCalloutData": "-4.586",
           },
           Object {
             "x": 2015-01-21T00:00:00.000Z,
             "y": -4.116554826788904,
+            "yAxisCalloutData": "-4.117",
           },
           Object {
             "x": 2015-01-22T00:00:00.000Z,
             "y": -2.7610003378381496,
+            "yAxisCalloutData": "-2.761",
           },
           Object {
             "x": 2015-01-23T00:00:00.000Z,
             "y": -2.621859111953831,
+            "yAxisCalloutData": "-2.622",
           },
           Object {
             "x": 2015-01-24T00:00:00.000Z,
             "y": -2.6349689848833315,
+            "yAxisCalloutData": "-2.635",
           },
           Object {
             "x": 2015-01-25T00:00:00.000Z,
             "y": -2.0581142585936076,
+            "yAxisCalloutData": "-2.058",
           },
           Object {
             "x": 2015-01-26T00:00:00.000Z,
             "y": -0.7744078058377932,
+            "yAxisCalloutData": "-0.774",
           },
           Object {
             "x": 2015-01-27T00:00:00.000Z,
             "y": 0.9002451055355818,
+            "yAxisCalloutData": "0.9",
           },
           Object {
             "x": 2015-01-28T00:00:00.000Z,
             "y": 0.8373590393039949,
+            "yAxisCalloutData": "0.837",
           },
           Object {
             "x": 2015-01-29T00:00:00.000Z,
             "y": 0.5532093840234236,
+            "yAxisCalloutData": "0.553",
           },
           Object {
             "x": 2015-01-30T00:00:00.000Z,
             "y": 1.469976651890828,
+            "yAxisCalloutData": "1.47",
           },
           Object {
             "x": 2015-01-31T00:00:00.000Z,
             "y": 3.1860367266233904,
+            "yAxisCalloutData": "3.186",
           },
           Object {
             "x": 2015-02-01T00:00:00.000Z,
             "y": 2.493612510772345,
+            "yAxisCalloutData": "2.494",
           },
           Object {
             "x": 2015-02-02T00:00:00.000Z,
             "y": 1.9464391258267615,
+            "yAxisCalloutData": "1.946",
           },
           Object {
             "x": 2015-02-03T00:00:00.000Z,
             "y": 1.8807283125005585,
+            "yAxisCalloutData": "1.881",
           },
           Object {
             "x": 2015-02-04T00:00:00.000Z,
             "y": 3.0189402685173534,
+            "yAxisCalloutData": "3.019",
           },
           Object {
             "x": 2015-02-05T00:00:00.000Z,
             "y": 4.556005864163605,
+            "yAxisCalloutData": "4.556",
           },
           Object {
             "x": 2015-02-06T00:00:00.000Z,
             "y": 5.516442345945973,
+            "yAxisCalloutData": "5.516",
           },
           Object {
             "x": 2015-02-07T00:00:00.000Z,
             "y": 4.319606652282435,
+            "yAxisCalloutData": "4.32",
           },
           Object {
             "x": 2015-02-08T00:00:00.000Z,
             "y": 6.845756127344204,
+            "yAxisCalloutData": "6.846",
           },
           Object {
             "x": 2015-02-09T00:00:00.000Z,
             "y": 7.053236096270982,
+            "yAxisCalloutData": "7.053",
           },
           Object {
             "x": 2015-02-10T00:00:00.000Z,
             "y": 7.681494725458877,
+            "yAxisCalloutData": "7.681",
           },
           Object {
             "x": 2015-02-11T00:00:00.000Z,
             "y": 7.526563745782537,
+            "yAxisCalloutData": "7.527",
           },
           Object {
             "x": 2015-02-12T00:00:00.000Z,
             "y": 8.858342186205558,
+            "yAxisCalloutData": "8.858",
           },
           Object {
             "x": 2015-02-13T00:00:00.000Z,
             "y": 9.021889375014881,
+            "yAxisCalloutData": "9.022",
           },
           Object {
             "x": 2015-02-14T00:00:00.000Z,
             "y": 8.209805336778926,
+            "yAxisCalloutData": "8.21",
           },
           Object {
             "x": 2015-02-15T00:00:00.000Z,
             "y": 9.383959972549016,
+            "yAxisCalloutData": "9.384",
           },
           Object {
             "x": 2015-02-16T00:00:00.000Z,
             "y": 11.195848970970625,
+            "yAxisCalloutData": "11.196",
           },
           Object {
             "x": 2015-02-17T00:00:00.000Z,
             "y": 12.561537445362251,
+            "yAxisCalloutData": "12.562",
           },
           Object {
             "x": 2015-02-18T00:00:00.000Z,
             "y": 14.373511358982237,
+            "yAxisCalloutData": "14.374",
           },
           Object {
             "x": 2015-02-19T00:00:00.000Z,
             "y": 15.887456275652418,
+            "yAxisCalloutData": "15.887",
           },
           Object {
             "x": 2015-02-20T00:00:00.000Z,
             "y": 14.491455240251522,
+            "yAxisCalloutData": "14.491",
           },
           Object {
             "x": 2015-02-21T00:00:00.000Z,
             "y": 15.199461217404735,
+            "yAxisCalloutData": "15.199",
           },
           Object {
             "x": 2015-02-22T00:00:00.000Z,
             "y": 16.378844807972094,
+            "yAxisCalloutData": "16.379",
           },
           Object {
             "x": 2015-02-23T00:00:00.000Z,
             "y": 14.348345501207364,
+            "yAxisCalloutData": "14.348",
           },
           Object {
             "x": 2015-02-24T00:00:00.000Z,
             "y": 14.961597203409823,
+            "yAxisCalloutData": "14.962",
           },
           Object {
             "x": 2015-02-25T00:00:00.000Z,
             "y": 15.457566696478484,
+            "yAxisCalloutData": "15.458",
           },
           Object {
             "x": 2015-02-26T00:00:00.000Z,
             "y": 14.942769687687289,
+            "yAxisCalloutData": "14.943",
           },
           Object {
             "x": 2015-02-27T00:00:00.000Z,
             "y": 15.721527909780036,
+            "yAxisCalloutData": "15.722",
           },
           Object {
             "x": 2015-02-28T00:00:00.000Z,
             "y": 13.091278962257627,
+            "yAxisCalloutData": "13.091",
           },
           Object {
             "x": 2015-03-01T00:00:00.000Z,
             "y": 14.295247001092115,
+            "yAxisCalloutData": "14.295",
           },
           Object {
             "x": 2015-03-02T00:00:00.000Z,
             "y": 15.296655272416865,
+            "yAxisCalloutData": "15.297",
           },
           Object {
             "x": 2015-03-03T00:00:00.000Z,
             "y": 14.436440585461526,
+            "yAxisCalloutData": "14.436",
           },
           Object {
             "x": 2015-03-04T00:00:00.000Z,
             "y": 13.912453188370755,
+            "yAxisCalloutData": "13.912",
           },
           Object {
             "x": 2015-03-05T00:00:00.000Z,
             "y": 12.433861225213807,
+            "yAxisCalloutData": "12.434",
           },
           Object {
             "x": 2015-03-06T00:00:00.000Z,
             "y": 14.061345247447989,
+            "yAxisCalloutData": "14.061",
           },
           Object {
             "x": 2015-03-07T00:00:00.000Z,
             "y": 13.326092951912521,
+            "yAxisCalloutData": "13.326",
           },
           Object {
             "x": 2015-03-08T00:00:00.000Z,
             "y": 13.566974950387175,
+            "yAxisCalloutData": "13.567",
           },
           Object {
             "x": 2015-03-09T00:00:00.000Z,
             "y": 12.96345607653163,
+            "yAxisCalloutData": "12.963",
           },
           Object {
             "x": 2015-03-10T00:00:00.000Z,
             "y": 12.205278846692087,
+            "yAxisCalloutData": "12.205",
           },
           Object {
             "x": 2015-03-11T00:00:00.000Z,
             "y": 11.364010452431279,
+            "yAxisCalloutData": "11.364",
           },
           Object {
             "x": 2015-03-12T00:00:00.000Z,
             "y": 12.120962982512733,
+            "yAxisCalloutData": "12.121",
           },
           Object {
             "x": 2015-03-13T00:00:00.000Z,
             "y": 13.570258079014422,
+            "yAxisCalloutData": "13.57",
           },
           Object {
             "x": 2015-03-14T00:00:00.000Z,
             "y": 14.613857418348378,
+            "yAxisCalloutData": "14.614",
           },
           Object {
             "x": 2015-03-15T00:00:00.000Z,
             "y": 15.48868026864105,
+            "yAxisCalloutData": "15.489",
           },
           Object {
             "x": 2015-03-16T00:00:00.000Z,
             "y": 15.421250297066777,
+            "yAxisCalloutData": "15.421",
           },
           Object {
             "x": 2015-03-17T00:00:00.000Z,
             "y": 16.562957844203055,
+            "yAxisCalloutData": "16.563",
           },
           Object {
             "x": 2015-03-18T00:00:00.000Z,
             "y": 16.365666723485436,
+            "yAxisCalloutData": "16.366",
           },
           Object {
             "x": 2015-03-19T00:00:00.000Z,
             "y": 15.848038393086913,
+            "yAxisCalloutData": "15.848",
           },
           Object {
             "x": 2015-03-20T00:00:00.000Z,
             "y": 16.170083705874156,
+            "yAxisCalloutData": "16.17",
           },
           Object {
             "x": 2015-03-21T00:00:00.000Z,
             "y": 16.446617416519754,
+            "yAxisCalloutData": "16.447",
           },
           Object {
             "x": 2015-03-22T00:00:00.000Z,
             "y": 15.024371154281331,
+            "yAxisCalloutData": "15.024",
           },
           Object {
             "x": 2015-03-23T00:00:00.000Z,
             "y": 14.802238239296665,
+            "yAxisCalloutData": "14.802",
           },
           Object {
             "x": 2015-03-24T00:00:00.000Z,
             "y": 13.156751496135007,
+            "yAxisCalloutData": "13.157",
           },
           Object {
             "x": 2015-03-25T00:00:00.000Z,
             "y": 14.06168725142282,
+            "yAxisCalloutData": "14.062",
           },
           Object {
             "x": 2015-03-26T00:00:00.000Z,
             "y": 14.94588113322983,
+            "yAxisCalloutData": "14.946",
           },
           Object {
             "x": 2015-03-27T00:00:00.000Z,
             "y": 14.127589669913032,
+            "yAxisCalloutData": "14.128",
           },
           Object {
             "x": 2015-03-28T00:00:00.000Z,
             "y": 13.885898170515487,
+            "yAxisCalloutData": "13.886",
           },
           Object {
             "x": 2015-03-29T00:00:00.000Z,
             "y": 13.692030694564533,
+            "yAxisCalloutData": "13.692",
           },
           Object {
             "x": 2015-03-30T00:00:00.000Z,
             "y": 14.943253908206318,
+            "yAxisCalloutData": "14.943",
           },
           Object {
             "x": 2015-03-31T00:00:00.000Z,
             "y": 14.529368596515058,
+            "yAxisCalloutData": "14.529",
           },
           Object {
             "x": 2015-04-01T00:00:00.000Z,
             "y": 14.661473471114782,
+            "yAxisCalloutData": "14.661",
           },
           Object {
             "x": 2015-04-02T00:00:00.000Z,
             "y": 13.67375983483632,
+            "yAxisCalloutData": "13.674",
           },
           Object {
             "x": 2015-04-03T00:00:00.000Z,
             "y": 13.382284458918326,
+            "yAxisCalloutData": "13.382",
           },
           Object {
             "x": 2015-04-04T00:00:00.000Z,
             "y": 12.527287002966496,
+            "yAxisCalloutData": "12.527",
           },
           Object {
             "x": 2015-04-05T00:00:00.000Z,
             "y": 12.767994473001014,
+            "yAxisCalloutData": "12.768",
           },
           Object {
             "x": 2015-04-06T00:00:00.000Z,
             "y": 12.651030056419879,
+            "yAxisCalloutData": "12.651",
           },
           Object {
             "x": 2015-04-07T00:00:00.000Z,
             "y": 12.141617852418765,
+            "yAxisCalloutData": "12.142",
           },
           Object {
             "x": 2015-04-08T00:00:00.000Z,
             "y": 13.606694447410502,
+            "yAxisCalloutData": "13.607",
           },
           Object {
             "x": 2015-04-09T00:00:00.000Z,
             "y": 13.923089943159189,
+            "yAxisCalloutData": "13.923",
           },
           Object {
             "x": 2015-04-10T00:00:00.000Z,
             "y": 14.003348672865656,
+            "yAxisCalloutData": "14.003",
           },
         ],
         "legend": "Trace 0",
-        "legendShape": "default",
+        "legendShape": "circle",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
+          "mode": "markers",
         },
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#3780bf",
+        "color": "#f7addaff",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
             "y": -2.58404773330316,
+            "yAxisCalloutData": "-2.584",
           },
           Object {
             "x": 2015-01-02T00:00:00.000Z,
             "y": -1.9162964761259451,
+            "yAxisCalloutData": "-1.916",
           },
           Object {
             "x": 2015-01-03T00:00:00.000Z,
             "y": -1.8899798841571565,
+            "yAxisCalloutData": "-1.89",
           },
           Object {
             "x": 2015-01-04T00:00:00.000Z,
             "y": -1.098466181069551,
+            "yAxisCalloutData": "-1.098",
           },
           Object {
             "x": 2015-01-05T00:00:00.000Z,
             "y": -1.2161136413159992,
+            "yAxisCalloutData": "-1.216",
           },
           Object {
             "x": 2015-01-06T00:00:00.000Z,
             "y": -0.9298011508867184,
+            "yAxisCalloutData": "-0.93",
           },
           Object {
             "x": 2015-01-07T00:00:00.000Z,
             "y": -2.5216450120142193,
+            "yAxisCalloutData": "-2.522",
           },
           Object {
             "x": 2015-01-08T00:00:00.000Z,
             "y": -1.5547013224314532,
+            "yAxisCalloutData": "-1.555",
           },
           Object {
             "x": 2015-01-09T00:00:00.000Z,
             "y": -3.1293219775443117,
+            "yAxisCalloutData": "-3.129",
           },
           Object {
             "x": 2015-01-10T00:00:00.000Z,
             "y": -2.7232351981528025,
+            "yAxisCalloutData": "-2.723",
           },
           Object {
             "x": 2015-01-11T00:00:00.000Z,
             "y": -1.704449229625379,
+            "yAxisCalloutData": "-1.704",
           },
           Object {
             "x": 2015-01-12T00:00:00.000Z,
             "y": -1.2702366750752472,
+            "yAxisCalloutData": "-1.27",
           },
           Object {
             "x": 2015-01-13T00:00:00.000Z,
             "y": -1.7688923656442583,
+            "yAxisCalloutData": "-1.769",
           },
           Object {
             "x": 2015-01-14T00:00:00.000Z,
             "y": -1.9810878959630682,
+            "yAxisCalloutData": "-1.981",
           },
           Object {
             "x": 2015-01-15T00:00:00.000Z,
             "y": -1.0881359248000217,
+            "yAxisCalloutData": "-1.088",
           },
           Object {
             "x": 2015-01-16T00:00:00.000Z,
             "y": -0.5214761704035035,
+            "yAxisCalloutData": "-0.521",
           },
           Object {
             "x": 2015-01-17T00:00:00.000Z,
             "y": -0.639866394654719,
+            "yAxisCalloutData": "-0.64",
           },
           Object {
             "x": 2015-01-18T00:00:00.000Z,
             "y": -2.258513886233204,
+            "yAxisCalloutData": "-2.259",
           },
           Object {
             "x": 2015-01-19T00:00:00.000Z,
             "y": -0.8711892253875131,
+            "yAxisCalloutData": "-0.871",
           },
           Object {
             "x": 2015-01-20T00:00:00.000Z,
             "y": -0.45426547393253053,
+            "yAxisCalloutData": "-0.454",
           },
           Object {
             "x": 2015-01-21T00:00:00.000Z,
             "y": -2.4076676391235785,
+            "yAxisCalloutData": "-2.408",
           },
           Object {
             "x": 2015-01-22T00:00:00.000Z,
             "y": -2.2450025826137097,
+            "yAxisCalloutData": "-2.245",
           },
           Object {
             "x": 2015-01-23T00:00:00.000Z,
             "y": -2.3488062397069234,
+            "yAxisCalloutData": "-2.349",
           },
           Object {
             "x": 2015-01-24T00:00:00.000Z,
             "y": -3.2188990647525304,
+            "yAxisCalloutData": "-3.219",
           },
           Object {
             "x": 2015-01-25T00:00:00.000Z,
             "y": -2.6042445674055594,
+            "yAxisCalloutData": "-2.604",
           },
           Object {
             "x": 2015-01-26T00:00:00.000Z,
             "y": -2.9702468803291966,
+            "yAxisCalloutData": "-2.97",
           },
           Object {
             "x": 2015-01-27T00:00:00.000Z,
             "y": -4.139691822816822,
+            "yAxisCalloutData": "-4.14",
           },
           Object {
             "x": 2015-01-28T00:00:00.000Z,
             "y": -3.9967022316870042,
+            "yAxisCalloutData": "-3.997",
           },
           Object {
             "x": 2015-01-29T00:00:00.000Z,
             "y": -4.796271521377118,
+            "yAxisCalloutData": "-4.796",
           },
           Object {
             "x": 2015-01-30T00:00:00.000Z,
             "y": -5.244924380701339,
+            "yAxisCalloutData": "-5.245",
           },
           Object {
             "x": 2015-01-31T00:00:00.000Z,
             "y": -6.965620503609484,
+            "yAxisCalloutData": "-6.966",
           },
           Object {
             "x": 2015-02-01T00:00:00.000Z,
             "y": -6.430396926773768,
+            "yAxisCalloutData": "-6.43",
           },
           Object {
             "x": 2015-02-02T00:00:00.000Z,
             "y": -5.234457265252843,
+            "yAxisCalloutData": "-5.234",
           },
           Object {
             "x": 2015-02-03T00:00:00.000Z,
             "y": -6.181791776690352,
+            "yAxisCalloutData": "-6.182",
           },
           Object {
             "x": 2015-02-04T00:00:00.000Z,
             "y": -7.3464387119459085,
+            "yAxisCalloutData": "-7.346",
           },
           Object {
             "x": 2015-02-05T00:00:00.000Z,
             "y": -7.085650875056526,
+            "yAxisCalloutData": "-7.086",
           },
           Object {
             "x": 2015-02-06T00:00:00.000Z,
             "y": -6.795217278293396,
+            "yAxisCalloutData": "-6.795",
           },
           Object {
             "x": 2015-02-07T00:00:00.000Z,
             "y": -6.08725142043377,
+            "yAxisCalloutData": "-6.087",
           },
           Object {
             "x": 2015-02-08T00:00:00.000Z,
             "y": -5.3416313194169875,
+            "yAxisCalloutData": "-5.342",
           },
           Object {
             "x": 2015-02-09T00:00:00.000Z,
             "y": -4.900094995211111,
+            "yAxisCalloutData": "-4.9",
           },
           Object {
             "x": 2015-02-10T00:00:00.000Z,
             "y": -4.715363010029477,
+            "yAxisCalloutData": "-4.715",
           },
           Object {
             "x": 2015-02-11T00:00:00.000Z,
             "y": -3.6757033584677927,
+            "yAxisCalloutData": "-3.676",
           },
           Object {
             "x": 2015-02-12T00:00:00.000Z,
             "y": -5.873900613367271,
+            "yAxisCalloutData": "-5.874",
           },
           Object {
             "x": 2015-02-13T00:00:00.000Z,
             "y": -7.685787089886274,
+            "yAxisCalloutData": "-7.686",
           },
           Object {
             "x": 2015-02-14T00:00:00.000Z,
             "y": -8.833149292574403,
+            "yAxisCalloutData": "-8.833",
           },
           Object {
             "x": 2015-02-15T00:00:00.000Z,
             "y": -9.373517123532867,
+            "yAxisCalloutData": "-9.374",
           },
           Object {
             "x": 2015-02-16T00:00:00.000Z,
             "y": -10.519456187180836,
+            "yAxisCalloutData": "-10.519",
           },
           Object {
             "x": 2015-02-17T00:00:00.000Z,
             "y": -8.012082850355387,
+            "yAxisCalloutData": "-8.012",
           },
           Object {
             "x": 2015-02-18T00:00:00.000Z,
             "y": -8.556759031756883,
+            "yAxisCalloutData": "-8.557",
           },
           Object {
             "x": 2015-02-19T00:00:00.000Z,
             "y": -8.78527769843948,
+            "yAxisCalloutData": "-8.785",
           },
           Object {
             "x": 2015-02-20T00:00:00.000Z,
             "y": -8.801850250864483,
+            "yAxisCalloutData": "-8.802",
           },
           Object {
             "x": 2015-02-21T00:00:00.000Z,
             "y": -9.031427690493008,
+            "yAxisCalloutData": "-9.031",
           },
           Object {
             "x": 2015-02-22T00:00:00.000Z,
             "y": -9.289972806031075,
+            "yAxisCalloutData": "-9.29",
           },
           Object {
             "x": 2015-02-23T00:00:00.000Z,
             "y": -8.434541044235305,
+            "yAxisCalloutData": "-8.435",
           },
           Object {
             "x": 2015-02-24T00:00:00.000Z,
             "y": -8.543619303217836,
+            "yAxisCalloutData": "-8.544",
           },
           Object {
             "x": 2015-02-25T00:00:00.000Z,
             "y": -9.817816201809572,
+            "yAxisCalloutData": "-9.818",
           },
           Object {
             "x": 2015-02-26T00:00:00.000Z,
             "y": -9.691704922707196,
+            "yAxisCalloutData": "-9.692",
           },
           Object {
             "x": 2015-02-27T00:00:00.000Z,
             "y": -9.172230718814316,
+            "yAxisCalloutData": "-9.172",
           },
           Object {
             "x": 2015-02-28T00:00:00.000Z,
             "y": -10.389025830978015,
+            "yAxisCalloutData": "-10.389",
           },
           Object {
             "x": 2015-03-01T00:00:00.000Z,
             "y": -9.418276522564378,
+            "yAxisCalloutData": "-9.418",
           },
           Object {
             "x": 2015-03-02T00:00:00.000Z,
             "y": -8.844666134378604,
+            "yAxisCalloutData": "-8.845",
           },
           Object {
             "x": 2015-03-03T00:00:00.000Z,
             "y": -10.649699554950736,
+            "yAxisCalloutData": "-10.65",
           },
           Object {
             "x": 2015-03-04T00:00:00.000Z,
             "y": -11.433978738990442,
+            "yAxisCalloutData": "-11.434",
           },
           Object {
             "x": 2015-03-05T00:00:00.000Z,
             "y": -11.022214964648152,
+            "yAxisCalloutData": "-11.022",
           },
           Object {
             "x": 2015-03-06T00:00:00.000Z,
             "y": -11.156982299530265,
+            "yAxisCalloutData": "-11.157",
           },
           Object {
             "x": 2015-03-07T00:00:00.000Z,
             "y": -12.846500605483975,
+            "yAxisCalloutData": "-12.847",
           },
           Object {
             "x": 2015-03-08T00:00:00.000Z,
             "y": -12.700459270895378,
+            "yAxisCalloutData": "-12.7",
           },
           Object {
             "x": 2015-03-09T00:00:00.000Z,
             "y": -13.701718476553872,
+            "yAxisCalloutData": "-13.702",
           },
           Object {
             "x": 2015-03-10T00:00:00.000Z,
             "y": -14.281259852458456,
+            "yAxisCalloutData": "-14.281",
           },
           Object {
             "x": 2015-03-11T00:00:00.000Z,
             "y": -13.197701892598191,
+            "yAxisCalloutData": "-13.198",
           },
           Object {
             "x": 2015-03-12T00:00:00.000Z,
             "y": -13.444607930505104,
+            "yAxisCalloutData": "-13.445",
           },
           Object {
             "x": 2015-03-13T00:00:00.000Z,
             "y": -12.703127086621702,
+            "yAxisCalloutData": "-12.703",
           },
           Object {
             "x": 2015-03-14T00:00:00.000Z,
             "y": -12.38184968649959,
+            "yAxisCalloutData": "-12.382",
           },
           Object {
             "x": 2015-03-15T00:00:00.000Z,
             "y": -13.545422038889187,
+            "yAxisCalloutData": "-13.545",
           },
           Object {
             "x": 2015-03-16T00:00:00.000Z,
             "y": -12.062411162554307,
+            "yAxisCalloutData": "-12.062",
           },
           Object {
             "x": 2015-03-17T00:00:00.000Z,
             "y": -12.190051993521331,
+            "yAxisCalloutData": "-12.19",
           },
           Object {
             "x": 2015-03-18T00:00:00.000Z,
             "y": -13.801739083658532,
+            "yAxisCalloutData": "-13.802",
           },
           Object {
             "x": 2015-03-19T00:00:00.000Z,
             "y": -14.198265394729127,
+            "yAxisCalloutData": "-14.198",
           },
           Object {
             "x": 2015-03-20T00:00:00.000Z,
             "y": -14.29078542197376,
+            "yAxisCalloutData": "-14.291",
           },
           Object {
             "x": 2015-03-21T00:00:00.000Z,
             "y": -13.45263060195906,
+            "yAxisCalloutData": "-13.453",
           },
           Object {
             "x": 2015-03-22T00:00:00.000Z,
             "y": -13.130412206893606,
+            "yAxisCalloutData": "-13.13",
           },
           Object {
             "x": 2015-03-23T00:00:00.000Z,
             "y": -14.189794518505105,
+            "yAxisCalloutData": "-14.19",
           },
           Object {
             "x": 2015-03-24T00:00:00.000Z,
             "y": -12.647928857811877,
+            "yAxisCalloutData": "-12.648",
           },
           Object {
             "x": 2015-03-25T00:00:00.000Z,
             "y": -13.252175401809115,
+            "yAxisCalloutData": "-13.252",
           },
           Object {
             "x": 2015-03-26T00:00:00.000Z,
             "y": -13.526006774399674,
+            "yAxisCalloutData": "-13.526",
           },
           Object {
             "x": 2015-03-27T00:00:00.000Z,
             "y": -13.640567463371012,
+            "yAxisCalloutData": "-13.641",
           },
           Object {
             "x": 2015-03-28T00:00:00.000Z,
             "y": -13.234252510186453,
+            "yAxisCalloutData": "-13.234",
           },
           Object {
             "x": 2015-03-29T00:00:00.000Z,
             "y": -12.313307209824384,
+            "yAxisCalloutData": "-12.313",
           },
           Object {
             "x": 2015-03-30T00:00:00.000Z,
             "y": -11.218557557877709,
+            "yAxisCalloutData": "-11.219",
           },
           Object {
             "x": 2015-03-31T00:00:00.000Z,
             "y": -10.7821947135954,
+            "yAxisCalloutData": "-10.782",
           },
           Object {
             "x": 2015-04-01T00:00:00.000Z,
             "y": -8.89016408336461,
+            "yAxisCalloutData": "-8.89",
           },
           Object {
             "x": 2015-04-02T00:00:00.000Z,
             "y": -9.662631443485989,
+            "yAxisCalloutData": "-9.663",
           },
           Object {
             "x": 2015-04-03T00:00:00.000Z,
             "y": -6.909371824212538,
+            "yAxisCalloutData": "-6.909",
           },
           Object {
             "x": 2015-04-04T00:00:00.000Z,
             "y": -7.048202688582138,
+            "yAxisCalloutData": "-7.048",
           },
           Object {
             "x": 2015-04-05T00:00:00.000Z,
             "y": -4.971706592042745,
+            "yAxisCalloutData": "-4.972",
           },
           Object {
             "x": 2015-04-06T00:00:00.000Z,
             "y": -4.310618310025603,
+            "yAxisCalloutData": "-4.311",
           },
           Object {
             "x": 2015-04-07T00:00:00.000Z,
             "y": -2.954237793688564,
+            "yAxisCalloutData": "-2.954",
           },
           Object {
             "x": 2015-04-08T00:00:00.000Z,
             "y": -2.0883264569176156,
+            "yAxisCalloutData": "-2.088",
           },
           Object {
             "x": 2015-04-09T00:00:00.000Z,
             "y": 1.1805740980198571,
+            "yAxisCalloutData": "1.181",
           },
           Object {
             "x": 2015-04-10T00:00:00.000Z,
             "y": 0.5040426644599496,
+            "yAxisCalloutData": "0.504",
           },
         ],
         "legend": "Trace 1",
-        "legendShape": "default",
+        "legendShape": "circle",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
+          "mode": "markers",
         },
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#32ab60",
+        "color": "#9bd9dbff",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
             "y": 0.4661114764240781,
+            "yAxisCalloutData": "0.466",
           },
           Object {
             "x": 2015-01-02T00:00:00.000Z,
             "y": 1.0610769506804194,
+            "yAxisCalloutData": "1.061",
           },
           Object {
             "x": 2015-01-03T00:00:00.000Z,
             "y": 1.0620659379275244,
+            "yAxisCalloutData": "1.062",
           },
           Object {
             "x": 2015-01-04T00:00:00.000Z,
             "y": -0.5603096501263787,
+            "yAxisCalloutData": "-0.56",
           },
           Object {
             "x": 2015-01-05T00:00:00.000Z,
             "y": -0.22966983294858567,
+            "yAxisCalloutData": "-0.23",
           },
           Object {
             "x": 2015-01-06T00:00:00.000Z,
             "y": 1.1358334022099883,
+            "yAxisCalloutData": "1.136",
           },
           Object {
             "x": 2015-01-07T00:00:00.000Z,
             "y": 1.8697838063194905,
+            "yAxisCalloutData": "1.87",
           },
           Object {
             "x": 2015-01-08T00:00:00.000Z,
             "y": 1.8307593169232188,
+            "yAxisCalloutData": "1.831",
           },
           Object {
             "x": 2015-01-09T00:00:00.000Z,
             "y": 2.6294937170536055,
+            "yAxisCalloutData": "2.629",
           },
           Object {
             "x": 2015-01-10T00:00:00.000Z,
             "y": 1.456439760404607,
+            "yAxisCalloutData": "1.456",
           },
           Object {
             "x": 2015-01-11T00:00:00.000Z,
             "y": 3.571977139947352,
+            "yAxisCalloutData": "3.572",
           },
           Object {
             "x": 2015-01-12T00:00:00.000Z,
             "y": 3.305623978930223,
+            "yAxisCalloutData": "3.306",
           },
           Object {
             "x": 2015-01-13T00:00:00.000Z,
             "y": 4.369054542737759,
+            "yAxisCalloutData": "4.369",
           },
           Object {
             "x": 2015-01-14T00:00:00.000Z,
             "y": 4.134928856846778,
+            "yAxisCalloutData": "4.135",
           },
           Object {
             "x": 2015-01-15T00:00:00.000Z,
             "y": 2.525747905079978,
+            "yAxisCalloutData": "2.526",
           },
           Object {
             "x": 2015-01-16T00:00:00.000Z,
             "y": 4.45625041538837,
+            "yAxisCalloutData": "4.456",
           },
           Object {
             "x": 2015-01-17T00:00:00.000Z,
             "y": 5.331621195457201,
+            "yAxisCalloutData": "5.332",
           },
           Object {
             "x": 2015-01-18T00:00:00.000Z,
             "y": 5.01722152487662,
+            "yAxisCalloutData": "5.017",
           },
           Object {
             "x": 2015-01-19T00:00:00.000Z,
             "y": 3.2730061427478807,
+            "yAxisCalloutData": "3.273",
           },
           Object {
             "x": 2015-01-20T00:00:00.000Z,
             "y": 2.3895586625726164,
+            "yAxisCalloutData": "2.39",
           },
           Object {
             "x": 2015-01-21T00:00:00.000Z,
             "y": 1.5551868349111646,
+            "yAxisCalloutData": "1.555",
           },
           Object {
             "x": 2015-01-22T00:00:00.000Z,
             "y": 0.9222137047406664,
+            "yAxisCalloutData": "0.922",
           },
           Object {
             "x": 2015-01-23T00:00:00.000Z,
             "y": -0.2408476097748915,
+            "yAxisCalloutData": "-0.241",
           },
           Object {
             "x": 2015-01-24T00:00:00.000Z,
             "y": -0.7735805458656726,
+            "yAxisCalloutData": "-0.774",
           },
           Object {
             "x": 2015-01-25T00:00:00.000Z,
             "y": -0.8871954038346644,
+            "yAxisCalloutData": "-0.887",
           },
           Object {
             "x": 2015-01-26T00:00:00.000Z,
             "y": -1.9822438634492547,
+            "yAxisCalloutData": "-1.982",
           },
           Object {
             "x": 2015-01-27T00:00:00.000Z,
             "y": -0.8886612143982666,
+            "yAxisCalloutData": "-0.889",
           },
           Object {
             "x": 2015-01-28T00:00:00.000Z,
             "y": -0.7149527896910689,
+            "yAxisCalloutData": "-0.715",
           },
           Object {
             "x": 2015-01-29T00:00:00.000Z,
             "y": -1.1377284325144619,
+            "yAxisCalloutData": "-1.138",
           },
           Object {
             "x": 2015-01-30T00:00:00.000Z,
             "y": -1.7585300048885872,
+            "yAxisCalloutData": "-1.759",
           },
           Object {
             "x": 2015-01-31T00:00:00.000Z,
             "y": -2.8117170543153254,
+            "yAxisCalloutData": "-2.812",
           },
           Object {
             "x": 2015-02-01T00:00:00.000Z,
             "y": -2.6809842525932175,
+            "yAxisCalloutData": "-2.681",
           },
           Object {
             "x": 2015-02-02T00:00:00.000Z,
             "y": -1.6457602974924186,
+            "yAxisCalloutData": "-1.646",
           },
           Object {
             "x": 2015-02-03T00:00:00.000Z,
             "y": -2.1361202183757593,
+            "yAxisCalloutData": "-2.136",
           },
           Object {
             "x": 2015-02-04T00:00:00.000Z,
             "y": -3.506112394459107,
+            "yAxisCalloutData": "-3.506",
           },
           Object {
             "x": 2015-02-05T00:00:00.000Z,
             "y": -3.338531391597358,
+            "yAxisCalloutData": "-3.339",
           },
           Object {
             "x": 2015-02-06T00:00:00.000Z,
             "y": -5.511057758779813,
+            "yAxisCalloutData": "-5.511",
           },
           Object {
             "x": 2015-02-07T00:00:00.000Z,
             "y": -3.5261371875358676,
+            "yAxisCalloutData": "-3.526",
           },
           Object {
             "x": 2015-02-08T00:00:00.000Z,
             "y": -4.05255557741406,
+            "yAxisCalloutData": "-4.053",
           },
           Object {
             "x": 2015-02-09T00:00:00.000Z,
             "y": -5.188415501615373,
+            "yAxisCalloutData": "-5.188",
           },
           Object {
             "x": 2015-02-10T00:00:00.000Z,
             "y": -6.032557392677557,
+            "yAxisCalloutData": "-6.033",
           },
           Object {
             "x": 2015-02-11T00:00:00.000Z,
             "y": -5.6858700345353785,
+            "yAxisCalloutData": "-5.686",
           },
           Object {
             "x": 2015-02-12T00:00:00.000Z,
             "y": -6.667528307767753,
+            "yAxisCalloutData": "-6.668",
           },
           Object {
             "x": 2015-02-13T00:00:00.000Z,
             "y": -6.733517550988596,
+            "yAxisCalloutData": "-6.734",
           },
           Object {
             "x": 2015-02-14T00:00:00.000Z,
             "y": -7.0502984033473615,
+            "yAxisCalloutData": "-7.05",
           },
           Object {
             "x": 2015-02-15T00:00:00.000Z,
             "y": -7.574898212324232,
+            "yAxisCalloutData": "-7.575",
           },
           Object {
             "x": 2015-02-16T00:00:00.000Z,
             "y": -7.1843491903366,
+            "yAxisCalloutData": "-7.184",
           },
           Object {
             "x": 2015-02-17T00:00:00.000Z,
             "y": -6.080355259797091,
+            "yAxisCalloutData": "-6.08",
           },
           Object {
             "x": 2015-02-18T00:00:00.000Z,
             "y": -6.398354606750326,
+            "yAxisCalloutData": "-6.398",
           },
           Object {
             "x": 2015-02-19T00:00:00.000Z,
             "y": -6.286331305269291,
+            "yAxisCalloutData": "-6.286",
           },
           Object {
             "x": 2015-02-20T00:00:00.000Z,
             "y": -7.175762338255774,
+            "yAxisCalloutData": "-7.176",
           },
           Object {
             "x": 2015-02-21T00:00:00.000Z,
             "y": -6.6277002690607105,
+            "yAxisCalloutData": "-6.628",
           },
           Object {
             "x": 2015-02-22T00:00:00.000Z,
             "y": -6.031655281290095,
+            "yAxisCalloutData": "-6.032",
           },
           Object {
             "x": 2015-02-23T00:00:00.000Z,
             "y": -5.243102836583583,
+            "yAxisCalloutData": "-5.243",
           },
           Object {
             "x": 2015-02-24T00:00:00.000Z,
             "y": -4.612608200873672,
+            "yAxisCalloutData": "-4.613",
           },
           Object {
             "x": 2015-02-25T00:00:00.000Z,
             "y": -5.180512683218164,
+            "yAxisCalloutData": "-5.181",
           },
           Object {
             "x": 2015-02-26T00:00:00.000Z,
             "y": -5.0321319726702916,
+            "yAxisCalloutData": "-5.032",
           },
           Object {
             "x": 2015-02-27T00:00:00.000Z,
             "y": -4.567844497333498,
+            "yAxisCalloutData": "-4.568",
           },
           Object {
             "x": 2015-02-28T00:00:00.000Z,
             "y": -3.347239903958168,
+            "yAxisCalloutData": "-3.347",
           },
           Object {
             "x": 2015-03-01T00:00:00.000Z,
             "y": -2.5263058621799597,
+            "yAxisCalloutData": "-2.526",
           },
           Object {
             "x": 2015-03-02T00:00:00.000Z,
             "y": -3.554423668680612,
+            "yAxisCalloutData": "-3.554",
           },
           Object {
             "x": 2015-03-03T00:00:00.000Z,
             "y": -1.7466537357472816,
+            "yAxisCalloutData": "-1.747",
           },
           Object {
             "x": 2015-03-04T00:00:00.000Z,
             "y": 0.08618389027480222,
+            "yAxisCalloutData": "0.086",
           },
           Object {
             "x": 2015-03-05T00:00:00.000Z,
             "y": 1.0223852208396356,
+            "yAxisCalloutData": "1.022",
           },
           Object {
             "x": 2015-03-06T00:00:00.000Z,
             "y": 2.2260700096326724,
+            "yAxisCalloutData": "2.226",
           },
           Object {
             "x": 2015-03-07T00:00:00.000Z,
             "y": 2.976731277433707,
+            "yAxisCalloutData": "2.977",
           },
           Object {
             "x": 2015-03-08T00:00:00.000Z,
             "y": 2.5457541264066235,
+            "yAxisCalloutData": "2.546",
           },
           Object {
             "x": 2015-03-09T00:00:00.000Z,
             "y": 2.412842465270771,
+            "yAxisCalloutData": "2.413",
           },
           Object {
             "x": 2015-03-10T00:00:00.000Z,
             "y": 2.1270496073872933,
+            "yAxisCalloutData": "2.127",
           },
           Object {
             "x": 2015-03-11T00:00:00.000Z,
             "y": 4.350264423349324,
+            "yAxisCalloutData": "4.35",
           },
           Object {
             "x": 2015-03-12T00:00:00.000Z,
             "y": 3.6000820362032346,
+            "yAxisCalloutData": "3.6",
           },
           Object {
             "x": 2015-03-13T00:00:00.000Z,
             "y": 3.6547717673422704,
+            "yAxisCalloutData": "3.655",
           },
           Object {
             "x": 2015-03-14T00:00:00.000Z,
             "y": 4.29856786980301,
+            "yAxisCalloutData": "4.299",
           },
           Object {
             "x": 2015-03-15T00:00:00.000Z,
             "y": 4.61832134099102,
+            "yAxisCalloutData": "4.618",
           },
           Object {
             "x": 2015-03-16T00:00:00.000Z,
             "y": 5.1364308299997825,
+            "yAxisCalloutData": "5.136",
           },
           Object {
             "x": 2015-03-17T00:00:00.000Z,
             "y": 5.647209819441451,
+            "yAxisCalloutData": "5.647",
           },
           Object {
             "x": 2015-03-18T00:00:00.000Z,
             "y": 6.041357011724418,
+            "yAxisCalloutData": "6.041",
           },
           Object {
             "x": 2015-03-19T00:00:00.000Z,
             "y": 4.789997568683162,
+            "yAxisCalloutData": "4.79",
           },
           Object {
             "x": 2015-03-20T00:00:00.000Z,
             "y": 6.041650920258338,
+            "yAxisCalloutData": "6.042",
           },
           Object {
             "x": 2015-03-21T00:00:00.000Z,
             "y": 5.860878612223213,
+            "yAxisCalloutData": "5.861",
           },
           Object {
             "x": 2015-03-22T00:00:00.000Z,
             "y": 5.6050673038102214,
+            "yAxisCalloutData": "5.605",
           },
           Object {
             "x": 2015-03-23T00:00:00.000Z,
             "y": 3.900259274681964,
+            "yAxisCalloutData": "3.9",
           },
           Object {
             "x": 2015-03-24T00:00:00.000Z,
             "y": 2.1974477295325476,
+            "yAxisCalloutData": "2.197",
           },
           Object {
             "x": 2015-03-25T00:00:00.000Z,
             "y": 0.979239291658772,
+            "yAxisCalloutData": "0.979",
           },
           Object {
             "x": 2015-03-26T00:00:00.000Z,
             "y": 0.9769412141062032,
+            "yAxisCalloutData": "0.977",
           },
           Object {
             "x": 2015-03-27T00:00:00.000Z,
             "y": 1.1215546396840912,
+            "yAxisCalloutData": "1.122",
           },
           Object {
             "x": 2015-03-28T00:00:00.000Z,
             "y": 1.4131546401228463,
+            "yAxisCalloutData": "1.413",
           },
           Object {
             "x": 2015-03-29T00:00:00.000Z,
             "y": -0.5715019565360024,
+            "yAxisCalloutData": "-0.572",
           },
           Object {
             "x": 2015-03-30T00:00:00.000Z,
             "y": -0.4798030419178908,
+            "yAxisCalloutData": "-0.48",
           },
           Object {
             "x": 2015-03-31T00:00:00.000Z,
             "y": -0.19867316746947167,
+            "yAxisCalloutData": "-0.199",
           },
           Object {
             "x": 2015-04-01T00:00:00.000Z,
             "y": -1.3237063703965808,
+            "yAxisCalloutData": "-1.324",
           },
           Object {
             "x": 2015-04-02T00:00:00.000Z,
             "y": -1.5132847802948692,
+            "yAxisCalloutData": "-1.513",
           },
           Object {
             "x": 2015-04-03T00:00:00.000Z,
             "y": -0.9466159703619573,
+            "yAxisCalloutData": "-0.947",
           },
           Object {
             "x": 2015-04-04T00:00:00.000Z,
             "y": 1.3543877997088902,
+            "yAxisCalloutData": "1.354",
           },
           Object {
             "x": 2015-04-05T00:00:00.000Z,
             "y": 1.3745632832250965,
+            "yAxisCalloutData": "1.375",
           },
           Object {
             "x": 2015-04-06T00:00:00.000Z,
             "y": 1.2843024279329955,
+            "yAxisCalloutData": "1.284",
           },
           Object {
             "x": 2015-04-07T00:00:00.000Z,
             "y": 1.1384756757773304,
+            "yAxisCalloutData": "1.138",
           },
           Object {
             "x": 2015-04-08T00:00:00.000Z,
             "y": 1.841477239971831,
+            "yAxisCalloutData": "1.841",
           },
           Object {
             "x": 2015-04-09T00:00:00.000Z,
             "y": 1.0626945214201182,
+            "yAxisCalloutData": "1.063",
           },
           Object {
             "x": 2015-04-10T00:00:00.000Z,
             "y": 1.6018849370336259,
+            "yAxisCalloutData": "1.602",
           },
         ],
         "legend": "Trace 2",
-        "legendShape": "default",
+        "legendShape": "circle",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
+          "mode": "markers",
         },
         "useSecondaryYScale": false,
       },
     ],
   },
+  "enableReflow": false,
   "height": 350,
   "hideLegend": false,
   "hideTickOverlap": true,
-  "mode": "tonexty",
   "optimizeLargeData": false,
+  "roundedTicks": true,
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
+  "yMaxValue": 16.562957844203055,
+  "yMinValue": -14.29078542197376,
 }
 `;
 
@@ -4633,266 +6638,266 @@ Object {
   "chartTitle": "",
   "data": Array [
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": -1.75,
       "xAxisCalloutData": "[-2 - -1.5)",
       "y": 3,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": -1.25,
       "xAxisCalloutData": "[-1.5 - -1)",
       "y": 18,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": -0.75,
       "xAxisCalloutData": "[-1 - -0.5)",
       "y": 53,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": -0.25,
       "xAxisCalloutData": "[-0.5 - 0)",
       "y": 87,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 0.25,
       "xAxisCalloutData": "[0 - 0.5)",
       "y": 129,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 0.75,
       "xAxisCalloutData": "[0.5 - 1)",
       "y": 194,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 1.25,
       "xAxisCalloutData": "[1 - 1.5)",
       "y": 188,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 1.75,
       "xAxisCalloutData": "[1.5 - 2)",
       "y": 163,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 2.25,
       "xAxisCalloutData": "[2 - 2.5)",
       "y": 102,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 2.75,
       "xAxisCalloutData": "[2.5 - 3)",
       "y": 44,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 3.25,
       "xAxisCalloutData": "[3 - 3.5)",
       "y": 11,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 3.75,
       "xAxisCalloutData": "[3.5 - 4)",
       "y": 8,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": -2.75,
       "xAxisCalloutData": "[-3 - -2.5)",
       "y": 6,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": -2.25,
       "xAxisCalloutData": "[-2.5 - -2)",
       "y": 11,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": -1.75,
       "xAxisCalloutData": "[-2 - -1.5)",
       "y": 40,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": -1.25,
       "xAxisCalloutData": "[-1.5 - -1)",
       "y": 100,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": -0.75,
       "xAxisCalloutData": "[-1 - -0.5)",
       "y": 158,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": -0.25,
       "xAxisCalloutData": "[-0.5 - 0)",
       "y": 189,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": 0.25,
       "xAxisCalloutData": "[0 - 0.5)",
       "y": 192,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": 0.75,
       "xAxisCalloutData": "[0.5 - 1)",
       "y": 148,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": 1.25,
       "xAxisCalloutData": "[1 - 1.5)",
       "y": 90,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": 1.75,
       "xAxisCalloutData": "[1.5 - 2)",
       "y": 47,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": 2.25,
       "xAxisCalloutData": "[2 - 2.5)",
       "y": 18,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": 2.75,
       "xAxisCalloutData": "[2.5 - 3)",
       "y": 1,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -4.25,
       "xAxisCalloutData": "[-4.5 - -4)",
       "y": 2,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -3.75,
       "xAxisCalloutData": "[-4 - -3.5)",
       "y": 4,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -3.25,
       "xAxisCalloutData": "[-3.5 - -3)",
       "y": 8,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -2.75,
       "xAxisCalloutData": "[-3 - -2.5)",
       "y": 49,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -2.25,
       "xAxisCalloutData": "[-2.5 - -2)",
       "y": 99,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -1.75,
       "xAxisCalloutData": "[-2 - -1.5)",
       "y": 137,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -1.25,
       "xAxisCalloutData": "[-1.5 - -1)",
       "y": 220,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -0.75,
       "xAxisCalloutData": "[-1 - -0.5)",
       "y": 181,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -0.25,
       "xAxisCalloutData": "[-0.5 - 0)",
       "y": 142,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": 0.25,
       "xAxisCalloutData": "[0 - 0.5)",
       "y": 94,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": 0.75,
       "xAxisCalloutData": "[0.5 - 1)",
       "y": 45,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": 1.25,
       "xAxisCalloutData": "[1 - 1.5)",
       "y": 11,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": 1.75,
       "xAxisCalloutData": "[1.5 - 2)",
       "y": 6,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": 2.25,
       "xAxisCalloutData": "[2 - 2.5)",
@@ -4907,7 +6912,10 @@ Object {
   "roundCorners": true,
   "supportNegativeData": true,
   "width": undefined,
+  "wrapXAxisLables": false,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "",
 }
 `;
@@ -4921,14 +6929,16 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#0000ff",
+          "color": "#0000ffff",
           "data": 2000,
           "legend": "Category A",
+          "yAxisCalloutData": "2000",
         },
         Object {
-          "color": "#007f00",
+          "color": "#007f00ff",
           "data": 3000,
           "legend": "Category B",
+          "yAxisCalloutData": "3000",
         },
       ],
       "lineData": Array [],
@@ -4937,14 +6947,16 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#0000ff",
+          "color": "#0000ffff",
           "data": 2100,
           "legend": "Category A",
+          "yAxisCalloutData": "2100",
         },
         Object {
-          "color": "#007f00",
+          "color": "#007f00ff",
           "data": 3100,
           "legend": "Category B",
+          "yAxisCalloutData": "3100",
         },
       ],
       "lineData": Array [],
@@ -4953,14 +6965,16 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#0000ff",
+          "color": "#0000ffff",
           "data": 2200,
           "legend": "Category A",
+          "yAxisCalloutData": "2200",
         },
         Object {
-          "color": "#007f00",
+          "color": "#007f00ff",
           "data": 3200,
           "legend": "Category B",
+          "yAxisCalloutData": "3200",
         },
       ],
       "lineData": Array [],
@@ -4969,14 +6983,16 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#0000ff",
+          "color": "#0000ffff",
           "data": 2300,
           "legend": "Category A",
+          "yAxisCalloutData": "2300",
         },
         Object {
-          "color": "#007f00",
+          "color": "#007f00ff",
           "data": 3300,
           "legend": "Category B",
+          "yAxisCalloutData": "3300",
         },
       ],
       "lineData": Array [],
@@ -4985,14 +7001,16 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#0000ff",
+          "color": "#0000ffff",
           "data": 2400,
           "legend": "Category A",
+          "yAxisCalloutData": "2400",
         },
         Object {
-          "color": "#007f00",
+          "color": "#007f00ff",
           "data": 3400,
           "legend": "Category B",
+          "yAxisCalloutData": "3400",
         },
       ],
       "lineData": Array [],
@@ -5009,7 +7027,16 @@ Object {
   "showYAxisLablesTooltip": true,
   "supportNegativeData": true,
   "width": undefined,
+  "wrapXAxisLables": true,
+  "xAxisCategoryOrder": Array [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+  ],
   "xAxisTitle": "",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "",
   "yMaxValue": 3400,
   "yMinValue": 0,

@@ -32,12 +32,12 @@ import {
   IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxis,
-  resolveCSSVariables,
+  sortAxisCategories,
+  getContrastTextColor,
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
-import { getColorContrast } from '../../utilities/colors';
 import { toImage } from '../../utilities/image-export-utils';
 
 type DataSet = {
@@ -103,6 +103,11 @@ export interface IHeatMapChartState {
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
 export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> implements IChart {
+  public static defaultProps: Partial<IHeatMapChartProps> = {
+    xAxisCategoryOrder: 'default',
+    yAxisCategoryOrder: 'default',
+  };
+
   private _classNames: IProcessedStyleSet<IHeatMapChartStyles>;
   private _stringXAxisDataPoints: string[];
   private _stringYAxisDataPoints: string[];
@@ -377,18 +382,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     });
   };
 
-  private _getInvertedTextColor = (color: string): string => {
-    return color === this.props.theme!.semanticColors.bodyText
-      ? this.props.theme!.semanticColors.bodyBackground
-      : this.props.theme!.semanticColors.bodyText;
-  };
-
   /**
    * This is the function which is responsible for
    * drawing the rectangle in the graph and also
    * attaching dom events to that rectangles
    */
   private _createRectangles = (): React.ReactNode => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const rectangles: JSX.Element[] = [];
     const yAxisDataPoints = this._stringYAxisDataPoints.slice().reverse();
     /**
@@ -398,6 +398,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     yAxisDataPoints.forEach((yAxisDataPoint: string) => {
       let index = 0;
       this._stringXAxisDataPoints.forEach((xAxisDataPoint: string) => {
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         let rectElement: JSX.Element;
         const id = `x${xAxisDataPoint}y${yAxisDataPoint}`;
         if (
@@ -409,15 +410,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
            * data point such as x, y , value, rectText property of the rectangle
            */
           const dataPointObject = this._dataSet[yAxisDataPoint][index];
-          let styleRules = '';
-          let foregroundColor = this.props.theme!.semanticColors.bodyText;
-          if (this.chartContainer) {
-            styleRules = resolveCSSVariables(this.chartContainer!, foregroundColor);
-          }
-          const contrastRatio = getColorContrast(styleRules, this._colorScale(dataPointObject.value));
-          if (contrastRatio < 3) {
-            foregroundColor = this._getInvertedTextColor(foregroundColor);
-          }
+          const foregroundColor = getContrastTextColor(this._colorScale(dataPointObject.value), this.props.theme!);
           rectElement = (
             <g
               key={id}
@@ -447,7 +440,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
                 transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
                 fill={foregroundColor}
               >
-                {formatToLocaleString(dataPointObject.rectText, this.props.culture, this.props.useUTC)}
+                {
+                  formatToLocaleString(
+                    dataPointObject.rectText,
+                    this.props.culture,
+                    this.props.useUTC,
+                  ) as React.ReactNode
+                }
               </text>
             </g>
           );
@@ -527,6 +526,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       });
     }
   }
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLegendBars = (): JSX.Element => {
     const { data, legendProps } = this.props;
     const legends: ILegend[] = [];
@@ -642,42 +642,28 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
      * rectangles and then format the x and y datapoints respectively
      */
     Object.keys(yPoints).forEach((item: string) => {
-      yPoints[item]
-        .sort((a: IHeatMapChartDataPoint, b: IHeatMapChartDataPoint) => {
-          if (this._xAxisType === XAxisTypes.StringAxis) {
-            return this.props.sortOrder === 'none'
-              ? 0
-              : (a.x as string).toLowerCase() > (b.x as string).toLowerCase()
-              ? 1
-              : -1;
-          } else if (this._xAxisType === XAxisTypes.DateAxis) {
-            return (a.x as Date).getTime() - (b.x as Date).getTime();
-          } else if (this._xAxisType === XAxisTypes.NumericAxis) {
-            return +(a.x as string) > +(b.x as string) ? 1 : -1;
-          } else {
-            return a.x > b.x ? 1 : -1;
-          }
-        })
-        .forEach((datapoint: IHeatMapChartDataPoint) => {
-          if (this._xAxisType === XAxisTypes.DateAxis) {
-            datapoint.x = this._getStringFormattedDate(datapoint.x as string, xAxisDateFormatString);
-          }
-          if (this._xAxisType === XAxisTypes.NumericAxis) {
-            datapoint.x = this._getStringFormattedNumber(datapoint.x as string, xAxisNumberFormatString);
-          }
-          if (this._xAxisType === XAxisTypes.StringAxis) {
-            datapoint.x = this._getFormattedLabelForXAxisDataPoint(datapoint.x as string);
-          }
-          if (this._yAxisType === YAxisType.DateAxis) {
-            datapoint.y = this._getStringFormattedDate(datapoint.y as string, yAxisDateFormatString);
-          }
-          if (this._yAxisType === YAxisType.NumericAxis) {
-            datapoint.y = this._getStringFormattedNumber(datapoint.y as string, yAxisNumberFormatString);
-          }
-          if (this._yAxisType === YAxisType.StringAxis) {
-            datapoint.y = this._getFormattedLabelForYAxisDataPoint(datapoint.y as string);
-          }
-        });
+      yPoints[item] = this._getOrderedXPoints(yPoints[item]);
+
+      yPoints[item].forEach((datapoint: IHeatMapChartDataPoint) => {
+        if (this._xAxisType === XAxisTypes.DateAxis) {
+          datapoint.x = this._getStringFormattedDate(datapoint.x as string, xAxisDateFormatString);
+        }
+        if (this._xAxisType === XAxisTypes.NumericAxis) {
+          datapoint.x = this._getStringFormattedNumber(datapoint.x as string, xAxisNumberFormatString);
+        }
+        if (this._xAxisType === XAxisTypes.StringAxis) {
+          datapoint.x = this._getFormattedLabelForXAxisDataPoint(datapoint.x as string);
+        }
+        if (this._yAxisType === YAxisType.DateAxis) {
+          datapoint.y = this._getStringFormattedDate(datapoint.y as string, yAxisDateFormatString);
+        }
+        if (this._yAxisType === YAxisType.NumericAxis) {
+          datapoint.y = this._getStringFormattedNumber(datapoint.y as string, yAxisNumberFormatString);
+        }
+        if (this._yAxisType === YAxisType.StringAxis) {
+          datapoint.y = this._getFormattedLabelForYAxisDataPoint(datapoint.y as string);
+        }
+      });
     });
     /**
      * if  y-axis data points are of type date or number or if we have string formatter,
@@ -728,13 +714,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    */
   private _getXAxisDataPoints = (points: { [key: string]: '1' }): string[] => {
     let xAxisPoints: string[] = [];
-    const unFormattedXAxisDataPoints = Object.keys(points).sort((a: string, b: string) => {
-      if (this._xAxisType === XAxisTypes.DateAxis || this._xAxisType === XAxisTypes.NumericAxis) {
-        return +a - +b;
-      } else {
-        return this.props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
-      }
-    });
+    const unFormattedXAxisDataPoints = this._getOrderedXAxisLabels(points);
     xAxisPoints = unFormattedXAxisDataPoints.map((xPoint: string) => {
       if (this._xAxisType === XAxisTypes.DateAxis) {
         return this._getStringFormattedDate(xPoint, this.props.xAxisDateFormatString);
@@ -755,13 +735,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    */
   private _getYAxisDataPoints = (points: { [key: string]: '1' }): string[] => {
     let yAxisPoints: string[] = [];
-    const unFormattedYAxisDataPoints = Object.keys(points).sort((a: string, b: string) => {
-      if (this._yAxisType === YAxisType.DateAxis || this._yAxisType === YAxisType.NumericAxis) {
-        return +a - +b;
-      } else {
-        return this.props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
-      }
-    });
+    const unFormattedYAxisDataPoints = this._getOrderedYAxisLabels(points);
     yAxisPoints = unFormattedYAxisDataPoints.map((yPoint: string) => {
       if (this._yAxisType === YAxisType.DateAxis) {
         return this._getStringFormattedDate(yPoint, this.props.yAxisDateFormatString);
@@ -841,5 +815,97 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     const { chartTitle } = this.props;
     const numDataPoints = this.props.data.reduce((acc, curr) => acc + curr.data.length, 0);
     return (chartTitle ? `${chartTitle}. ` : '') + `Heat map chart with ${numDataPoints} data points. `;
+  };
+
+  private _getOrderedXAxisLabels = (points: { [key: string]: '1' }) => {
+    if (!this._shouldOrderXAxisLabelsByCategoryOrder()) {
+      // Keep the original ordering logic as the default behavior to ensure backward compatibility
+      return Object.keys(points).sort((a: string, b: string) => {
+        if (this._xAxisType === XAxisTypes.DateAxis || this._xAxisType === XAxisTypes.NumericAxis) {
+          return +a - +b;
+        } else {
+          return this.props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
+        }
+      });
+    }
+
+    return sortAxisCategories(this._mapCategoryToValues(), this.props.xAxisCategoryOrder);
+  };
+
+  private _getOrderedYAxisLabels = (points: { [key: string]: '1' }) => {
+    if (!this._shouldOrderYAxisLabelsByCategoryOrder()) {
+      // Keep the original ordering logic as the default behavior to ensure backward compatibility
+      return Object.keys(points).sort((a: string, b: string) => {
+        if (this._yAxisType === YAxisType.DateAxis || this._yAxisType === YAxisType.NumericAxis) {
+          return +a - +b;
+        } else {
+          return this.props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
+        }
+      });
+    }
+
+    return sortAxisCategories(this._mapCategoryToValues(true), this.props.yAxisCategoryOrder);
+  };
+
+  private _getOrderedXPoints = (xPoints: FlattenData[]) => {
+    if (!this._shouldOrderXAxisLabelsByCategoryOrder()) {
+      return xPoints.sort((a: IHeatMapChartDataPoint, b: IHeatMapChartDataPoint) => {
+        if (this._xAxisType === XAxisTypes.StringAxis) {
+          return this.props.sortOrder === 'none'
+            ? 0
+            : (a.x as string).toLowerCase() > (b.x as string).toLowerCase()
+            ? 1
+            : -1;
+        } else if (this._xAxisType === XAxisTypes.DateAxis) {
+          return (a.x as Date).getTime() - (b.x as Date).getTime();
+        } else if (this._xAxisType === XAxisTypes.NumericAxis) {
+          return +(a.x as string) > +(b.x as string) ? 1 : -1;
+        } else {
+          return a.x > b.x ? 1 : -1;
+        }
+      });
+    }
+
+    const result: FlattenData[] = [];
+
+    const xValueToPoints: Record<string, FlattenData[]> = {};
+    xPoints.forEach(point => {
+      const xValue = point.x as string;
+      if (!xValueToPoints[xValue]) {
+        xValueToPoints[xValue] = [];
+      }
+      xValueToPoints[xValue].push(point);
+    });
+
+    const xAxisLabels = this._getOrderedXAxisLabels({});
+    xAxisLabels.forEach(xValue => {
+      if (xValueToPoints[xValue]) {
+        result.push(...xValueToPoints[xValue]);
+      }
+    });
+
+    return result;
+  };
+
+  private _shouldOrderXAxisLabelsByCategoryOrder = () => {
+    return this._xAxisType === XAxisTypes.StringAxis && this.props.xAxisCategoryOrder !== 'default';
+  };
+
+  private _shouldOrderYAxisLabelsByCategoryOrder = () => {
+    return this._yAxisType === YAxisType.StringAxis && this.props.yAxisCategoryOrder !== 'default';
+  };
+
+  private _mapCategoryToValues = (isYAxis = false) => {
+    const categoryToValues: Record<string, number[]> = {};
+    this.props.data.forEach(item => {
+      item.data.forEach(point => {
+        const category = (isYAxis ? point.y : point.x) as string;
+        if (!categoryToValues[category]) {
+          categoryToValues[category] = [];
+        }
+        categoryToValues[category].push(point.value);
+      });
+    });
+    return categoryToValues;
   };
 }

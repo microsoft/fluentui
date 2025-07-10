@@ -62,7 +62,7 @@ export interface VerticalBarChartProps extends CartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: VerticalBarChartStyles;
+  styles?: Partial<VerticalBarChartStyles>;
 
   /**
    * The prop used to define the culture to localized the numbers
@@ -144,4 +144,9 @@ export interface VerticalBarChartStyles extends CartesianChartStyles {
    * Style for the bar labels
    */
   barLabel: string;
+
+  /**
+   * Styles for line border
+   */
+  lineBorder: string;
 }

@@ -1,7 +1,8 @@
 import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
+import { getAxisTitleStyle } from '../../utilities/index';
 
 export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
-  const { className, width, height, theme } = props;
+  const { className, theme } = props;
   return {
     root: [
       theme.fonts.medium,
@@ -16,8 +17,6 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
       className,
     ],
     chart: {
-      width,
-      height,
       boxSizing: 'content-box',
       overflow: 'visible',
       alignmentAdjust: 'center',
@@ -25,7 +24,8 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
     },
     legendContainer: {
       paddingTop: '16px',
-      width: `${width}px`,
+      width: '100%',
     },
+    axisAnnotation: getAxisTitleStyle(theme, theme.fonts.small),
   };
 };

@@ -14,7 +14,7 @@ Fluent UI React supports many commonly used web browsers such as Google Chrome, 
 
 ## @fluentui/react-components version 9:
 
-- For the full breakdown of the `@fluentui/react-components` browser support matrix and other browser related philosophies we're following, see docsite [here](https://react.fluentui.dev/?path=/docs/concepts-developer-browser-support-matrix--page).
+- For the full breakdown of the `@fluentui/react-components` browser support matrix and other browser related philosophies we're following, see docsite [here](https://react.fluentui.dev/?path=/docs/concepts-developer-browser-support-matrix--docs).
 
 ## Internet Explorer 11 and Microsoft Edge Legacy
 
