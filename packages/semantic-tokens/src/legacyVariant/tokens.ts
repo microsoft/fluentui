@@ -14,7 +14,6 @@ import {
 import { ctrlSpinnerStrokeWidthRaw } from '../components/spinner/variables';
 import {
   nullColorRaw,
-<<<<<<< HEAD
   strokeWidthDefaultRaw,
   backgroundCtrlBrandRestRaw,
   foregroundCtrlNeutralPrimaryRestRaw,
@@ -23,15 +22,13 @@ import {
   gapInsideCtrlDefaultRaw,
   backgroundCtrlNeutralRestRaw,
   foregroundCtrlNeutralSecondaryRestRaw,
+  backgroundCtrlSubtleHoverRaw,
+  backgroundCtrlSubtlePressedRaw,
   textGlobalBody3FontSizeRaw,
   textGlobalBody3LineHeightRaw,
   textStyleDefaultRegularWeightRaw,
   paddingCtrlTextSideRaw,
   paddingCtrlHorizontalDefaultRaw,
-=======
-  backgroundCtrlSubtlePressedRaw,
-  backgroundCtrlSubtleHoverRaw,
->>>>>>> 6cc0d163da (Add semantic tokens to list)
 } from '../control/variables';
 import {
   colorTransparentBackground,
@@ -47,7 +44,6 @@ import {
   strokeWidthThin,
   spacingHorizontalSNudge,
   colorNeutralForeground3,
-<<<<<<< HEAD
   colorTransparentStrokeInteractive,
   colorNeutralBackground3,
   colorNeutralBackground1,
@@ -72,36 +68,21 @@ import {
   strokeCtrlOnBrandHoverRaw,
   strokeCtrlOnBrandRestRaw,
 } from '../nullable/variables';
-=======
-  colorStrokeFocus2,
-  colorNeutralForeground1,
-  colorTransparentBackground,
-} from '../legacy/tokens';
-import { foregroundCtrlHintDefaultRaw, backgroundCtrlSubtleRestRaw } from '../nullable/variables';
->>>>>>> 6cc0d163da (Add semantic tokens to list)
 import {
   foregroundCtrlOnTransparentHoverRaw,
   foregroundCtrlOnTransparentPressedRaw,
   foregroundCtrlOnTransparentRestRaw,
-<<<<<<< HEAD
   paddingCtrlTextBottomRaw,
+  foregroundCtrlOnSubtleHoverRaw,
+  foregroundCtrlNeutralPrimaryHoverRaw,
   foregroundCtrlOnSubtlePressedRaw,
   foregroundCtrlNeutralPrimaryPressedRaw,
+  foregroundCtrlOnSubtleRestRaw,
+  strokeWidthCtrlOutlineRestRaw,
   textRampItemBodyFontSizeRaw,
   textRampItemBodyLineHeightRaw,
   strokeCtrlOnActiveBrandHoverRaw,
   strokeCtrlOnActiveBrandRestRaw,
-  foregroundCtrlOnSubtleRestRaw,
-  foregroundCtrlOnSubtleHoverRaw,
-  foregroundCtrlNeutralPrimaryHoverRaw,
-=======
-  strokeWidthCtrlOutlineRestRaw,
-  foregroundCtrlOnSubtleRestRaw,
-  foregroundCtrlOnSubtleHoverRaw,
-  foregroundCtrlNeutralPrimaryHoverRaw,
-  foregroundCtrlOnSubtlePressedRaw,
-  foregroundCtrlNeutralPrimaryPressedRaw,
->>>>>>> 6cc0d163da (Add semantic tokens to list)
 } from '../optional/variables';
 
 /**
@@ -238,7 +219,6 @@ export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${sp
  */
 export const _ctrlDividerForegroundSubtle = `var(${foregroundCtrlHintDefaultRaw}, var(${nullColorRaw}, ${colorNeutralForeground3}))`;
 /**
-<<<<<<< HEAD
  * This is a legacy variant for ctrlFocusOuterStroke to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations
@@ -266,6 +246,55 @@ export const _ctrlInputBackgroundRestLighter = `var(${ctrlInputBackgroundRestRaw
  * please use foregroundCtrlNeutralSecondaryRest instead.
  */
 export const _ctrlInputNeutralForegroundPlaceholder = `var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground4})`;
+/**
+ * This is a legacy variant for backgroundCtrlSubtleHover to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use backgroundCtrlSubtleHover instead.
+ */
+export const _ctrlListBackgroundColorHover = `var(${backgroundCtrlSubtleHoverRaw}, ${colorTransparentBackground})`;
+/**
+ * This is a legacy variant for backgroundCtrlSubtlePressed to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use backgroundCtrlSubtlePressed instead.
+ */
+export const _ctrlListBackgroundColorPressed = `var(${backgroundCtrlSubtlePressedRaw}, ${colorTransparentBackground})`;
+/**
+ * This is a legacy variant for backgroundCtrlSubtleRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use backgroundCtrlSubtleRest instead.
+ */
+export const _ctrlListBackgroundColorRest = `var(${backgroundCtrlSubtleRestRaw}, var(${nullColorRaw}, ${colorTransparentBackground}))`;
+/**
+ * This is a legacy variant for foregroundCtrlOnSubtleHover to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlOnSubtleHover instead.
+ */
+export const _ctrlListForegroundColorHover = `var(${foregroundCtrlOnSubtleHoverRaw}, var(${foregroundCtrlNeutralPrimaryHoverRaw}, ${colorNeutralForeground1}))`;
+/**
+ * This is a legacy variant for foregroundCtrlOnSubtlePressed to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlOnSubtlePressed instead.
+ */
+export const _ctrlListForegroundColorPressed = `var(${foregroundCtrlOnSubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw}, ${colorNeutralForeground1}))`;
+/**
+ * This is a legacy variant for foregroundCtrlOnSubtleRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlOnSubtleRest instead.
+ */
+export const _ctrlListForegroundColorRest = `var(${foregroundCtrlOnSubtleRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1}))`;
+/**
+ * This is a legacy variant for strokeWidthCtrlOutlineRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use strokeWidthCtrlOutlineRest instead.
+ */
+export const _ctrlListItemStroke = `var(${strokeWidthCtrlOutlineRestRaw}, var(${strokeWidthDefaultRaw}, ${colorStrokeFocus2}))`;
 /**
  * This is a legacy variant for foregroundCtrlOnSubtlePressed to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
@@ -357,43 +386,26 @@ export const _ctrlSwitchStrokeOnActiveBrandRest = `var(${strokeCtrlOnActiveBrand
  * please use gapInsideCtrlDefault instead.
  */
 export const _ctrlTreeGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${spacingVerticalXXS})`;
-=======
- * This is a legacy variant for strokeWidthCtrlOutlineRest to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use strokeWidthCtrlOutlineRest instead.
- */
-export const _ctrlListItemStroke = `var(${strokeWidthCtrlOutlineRestRaw}, var(${strokeWidthDefaultRaw}, ${colorStrokeFocus2}))`;
->>>>>>> 6cc0d163da (Add semantic tokens to list)
 /**
  * This is a legacy variant for foregroundCtrlOnSubtleRest to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations
  * please use foregroundCtrlOnSubtleRest instead.
  */
-<<<<<<< HEAD
 export const _ctrlTreeIconOnSubtle = `var(${foregroundCtrlOnSubtleRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground3}))`;
-=======
-export const _ctrlListForegroundColorRest = `var(${foregroundCtrlOnSubtleRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1}))`;
->>>>>>> 6cc0d163da (Add semantic tokens to list)
 /**
  * This is a legacy variant for foregroundCtrlOnSubtleHover to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations
  * please use foregroundCtrlOnSubtleHover instead.
  */
-<<<<<<< HEAD
 export const _ctrlTreeIconOnSubtleHover = `var(${foregroundCtrlOnSubtleHoverRaw}, var(${foregroundCtrlNeutralPrimaryHoverRaw}, ${colorNeutralForeground3Hover}))`;
-=======
-export const _ctrlListForegroundColorHover = `var(${foregroundCtrlOnSubtleHoverRaw}, var(${foregroundCtrlNeutralPrimaryHoverRaw}, ${colorNeutralForeground1}))`;
->>>>>>> 6cc0d163da (Add semantic tokens to list)
 /**
  * This is a legacy variant for foregroundCtrlOnSubtlePressed to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations
  * please use foregroundCtrlOnSubtlePressed instead.
  */
-<<<<<<< HEAD
 export const _ctrlTreeIconOnSubtlePressed = `var(${foregroundCtrlOnSubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw}, ${colorNeutralForeground3}))`;
 /**
  * This is a legacy variant for foregroundCtrlOnTransparentHover to enable backwards compatibility.
@@ -437,27 +449,3 @@ export const _ctrlTreePaddingTextRight = `var(${paddingCtrlHorizontalDefaultRaw}
  * please use paddingCtrlTextTop instead.
  */
 export const _ctrlTreePaddingTextTop = `var(${paddingCtrlTextTopRaw}, 0px)`;
-=======
-export const _ctrlListForegroundColorPressed = `var(${foregroundCtrlOnSubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw}, ${colorNeutralForeground1}))`;
-/**
- * This is a legacy variant for backgroundCtrlSubtleRest to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use backgroundCtrlSubtleRest instead.
- */
-export const _ctrlListBackgroundColorRest = `var(${backgroundCtrlSubtleRestRaw}, var(${nullColorRaw}, ${colorTransparentBackground}))`;
-/**
- * This is a legacy variant for backgroundCtrlSubtlePressed to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use backgroundCtrlSubtlePressed instead.
- */
-export const _ctrlListBackgroundColorPressed = `var(${backgroundCtrlSubtlePressedRaw}, ${colorTransparentBackground})`;
-/**
- * This is a legacy variant for backgroundCtrlSubtleHover to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use backgroundCtrlSubtleHover instead.
- */
-export const _ctrlListBackgroundColorHover = `var(${backgroundCtrlSubtleHoverRaw}, ${colorTransparentBackground})`;
->>>>>>> 6cc0d163da (Add semantic tokens to list)

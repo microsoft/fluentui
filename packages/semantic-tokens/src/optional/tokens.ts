@@ -99,7 +99,6 @@ import {
   colorNeutralStroke3,
   colorNeutralStroke1,
   colorBrandStroke1,
-<<<<<<< HEAD
   colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
   colorCompoundBrandBackgroundPressed,
@@ -108,9 +107,7 @@ import {
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorNeutralForegroundDisabled,
-=======
   borderRadiusMedium,
->>>>>>> 6cc0d163da (Add semantic tokens to list)
   colorNeutralForeground1,
   colorNeutralForeground2,
   colorBrandForeground1,
