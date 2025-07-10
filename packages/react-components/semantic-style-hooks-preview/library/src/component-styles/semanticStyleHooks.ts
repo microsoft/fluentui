@@ -9,6 +9,7 @@ import {
 } from './Button';
 import { useSemanticAccordionHeaderStyles } from './Accordion';
 import { useSemanticAvatarStyles } from './Avatar';
+import { useSemanticCheckboxStyles } from './Checkbox';
 import { useSemanticDividerStyles } from './Divider';
 import {
   useSemanticInlineDrawerStyles,
@@ -75,4 +76,5 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useTreeItemLayoutStyles_unstable: useSemanticTreeItemLayoutStyles,
   useTreeItemPersonaLayoutStyles_unstable: useSemanticTreeItemPersonaLayoutStyles,
   useTreeItemStyles_unstable: useSemanticTreeItemStyles,
+  useCheckboxStyles_unstable: useSemanticCheckboxStyles,
 };
