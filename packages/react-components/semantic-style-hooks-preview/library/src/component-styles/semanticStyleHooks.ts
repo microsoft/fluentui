@@ -109,5 +109,5 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useMessageBarTitleStyles_unstable: useSemanticMessageBarTitleStyles,
   // Tabs styles
   useTabStyles_unstable: useSemanticTabStyles,
-  // useTabListStyles_unstable: useSemanticTabListStyles,
+  useTabListStyles_unstable: useSemanticTabListStyles,
 };

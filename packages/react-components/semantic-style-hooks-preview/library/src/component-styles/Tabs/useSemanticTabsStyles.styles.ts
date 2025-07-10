@@ -192,8 +192,19 @@ const useCircularAppearanceStyles = makeStyles({
       color: 'inherit',
     },
   },
-  medium: {
-    paddingBlock: `${tokens.spacingVerticalSNudge}`,
+  // medium: {
+  // Note: padding-block does not collapse into the other padding rules when using complex CSS hooks
+  // In order for styles to collapse correctly, they need to be like:like in their usage
+  // For now, we've set to paddingTop/Bottom to ensure they collapse via mediumHorizontal/Vertical
+  // paddingBlock: `${tokens.spacingVerticalSNudge}`,
+  // }
+  mediumHorizontal: {
+    paddingTop: `${tokens.spacingVerticalSNudge}`,
+    paddingBottom: `${tokens.spacingVerticalSNudge}`,
+  },
+  mediumVertical: {
+    paddingLeft: `${tokens.spacingVerticalSNudge}`,
+    paddingRight: `${tokens.spacingVerticalSNudge}`,
   },
   subtle: {
     backgroundColor: semanticTokens.backgroundCtrlSubtleRest,
@@ -700,7 +711,8 @@ export const useSemanticTabButtonStyles_unstable = (state: TabState, slot: TabSt
     circularStyles.base,
     focusStyles.circular,
     // sizes
-    size === 'medium' && circularStyles.medium,
+    size === 'medium' && !vertical && circularStyles.mediumHorizontal,
+    size === 'medium' && vertical && circularStyles.mediumVertical,
     // subtle-circular appearance
     isSubtleCircular && circularStyles.subtle,
     selected && isSubtleCircular && circularStyles.subtleSelected,
