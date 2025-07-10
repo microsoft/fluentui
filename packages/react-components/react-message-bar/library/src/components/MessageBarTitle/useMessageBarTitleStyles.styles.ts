@@ -1,7 +1,7 @@
 import { makeResetStyles, mergeClasses } from '@griffel/react';
+import { typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MessageBarTitleSlots, MessageBarTitleState } from './MessageBarTitle.types';
-import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const messageBarTitleClassNames: SlotClassNames<MessageBarTitleSlots> = {
   root: 'fui-MessageBarTitle',
@@ -11,11 +11,7 @@ export const messageBarTitleClassNames: SlotClassNames<MessageBarTitleSlots> = {
  * Styles for the root slot
  */
 const useRootBaseStyles = makeResetStyles({
-  fontFamily: semanticTokens.textStyleDefaultHeaderFontFamily,
-  fontSize: semanticTokens.textRampItemHeaderFontSize,
-  fontWeight: semanticTokens.textStyleDefaultHeaderWeight,
-  lineHeight: semanticTokens._ctrlMessageBarTitleLineHeight,
-
+  ...typographyStyles.body1Strong,
   '::after': {
     content: '" "',
   },

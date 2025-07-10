@@ -1,7 +1,7 @@
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MessageBarSlots, MessageBarState } from './MessageBar.types';
-import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const messageBarClassNames: SlotClassNames<MessageBarSlots> = {
   root: 'fui-MessageBar',
@@ -15,30 +15,26 @@ const useRootBaseStyles = makeResetStyles({
   gridTemplateColumns: 'auto 1fr auto auto',
   gridTemplateRows: '1fr',
   gridTemplateAreas: '"icon body secondaryActions actions"',
-  paddingLeft: semanticTokens._ctrlMessageBarPaddingContentAlignDefault,
-  paddingRight: semanticTokens.paddingContentAlignOutdentIconOnSubtle,
-  paddingTop: semanticTokens._ctrlMessageBarPaddingVertical,
-  paddingBottom: semanticTokens._ctrlMessageBarPaddingVertical,
-  border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.statusInformativeTintStroke}`,
-  borderRadius: semanticTokens.cornerCtrlRest,
+  paddingLeft: tokens.spacingHorizontalM,
+  border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+  borderRadius: tokens.borderRadiusMedium,
   alignItems: 'center',
   minHeight: '36px',
   boxSizing: 'border-box',
-  backgroundColor: semanticTokens.statusImportantTintBackground,
+  backgroundColor: tokens.colorNeutralBackground3,
 });
 
 const useIconBaseStyles = makeResetStyles({
   gridArea: 'icon',
-  fontSize: semanticTokens.textGlobalBody1FontSize,
-  marginRight: semanticTokens.gapInsideCtrlDefault,
-  color: semanticTokens.foregroundCtrlIconOnNeutralRest,
-  height: semanticTokens.textRampItemHeaderLineHeight,
+  fontSize: tokens.fontSizeBase500,
+  marginRight: tokens.spacingHorizontalS,
+  color: tokens.colorNeutralForeground3,
   display: 'flex',
   alignItems: 'center',
 });
 
 const useReflowSpacerBaseStyles = makeResetStyles({
-  marginBottom: semanticTokens._ctrlMessageBarReflowSpacerMarginBottom,
+  marginBottom: tokens.spacingVerticalS,
   gridArea: 'secondaryActions',
 });
 
@@ -46,12 +42,19 @@ const useStyles = makeStyles({
   rootMultiline: {
     whiteSpace: 'normal',
     alignItems: 'start',
-    paddingTop: semanticTokens._ctrlMessageBarSpacingTop,
+    paddingTop: tokens.spacingVerticalMNudge,
     gridTemplateColumns: 'auto 1fr auto',
     gridTemplateAreas: `
       "icon body actions"
       "secondaryActions secondaryActions secondaryActions"
     `,
+  },
+
+  secondaryActionsMultiline: {
+    justifyContent: 'end',
+    marginTop: tokens.spacingVerticalMNudge,
+    marginBottom: tokens.spacingVerticalS,
+    marginRight: '0px',
   },
 
   square: {
@@ -64,13 +67,13 @@ const useIconIntentStyles = makeStyles({
     /** already in base reset styles */
   },
   error: {
-    color: semanticTokens._ctrlMessageBarErrorIconColor,
+    color: tokens.colorStatusDangerForeground1,
   },
   warning: {
-    color: semanticTokens.statusWarningTintForeground,
+    color: tokens.colorStatusWarningForeground3,
   },
   success: {
-    color: semanticTokens.statusSuccessTintForeground,
+    color: tokens.colorStatusSuccessForeground1,
   },
 });
 
@@ -79,16 +82,16 @@ const useRootIntentStyles = makeStyles({
     /** already in base reset styles */
   },
   error: {
-    backgroundColor: semanticTokens.statusDangerTintBackground,
-    ...shorthands.borderColor(semanticTokens.statusDangerTintStroke),
+    backgroundColor: tokens.colorStatusDangerBackground1,
+    ...shorthands.borderColor(tokens.colorStatusDangerBorder1),
   },
   warning: {
-    backgroundColor: semanticTokens.statusWarningTintBackground,
-    ...shorthands.borderColor(semanticTokens.statusWarningTintStroke),
+    backgroundColor: tokens.colorStatusWarningBackground1,
+    ...shorthands.borderColor(tokens.colorStatusWarningBorder1),
   },
   success: {
-    backgroundColor: semanticTokens.statusSuccessTintBackground,
-    ...shorthands.borderColor(semanticTokens.statusSuccessTintStroke),
+    backgroundColor: tokens.colorStatusSuccessBackground1,
+    ...shorthands.borderColor(tokens.colorStatusSuccessBorder1),
   },
 });
 

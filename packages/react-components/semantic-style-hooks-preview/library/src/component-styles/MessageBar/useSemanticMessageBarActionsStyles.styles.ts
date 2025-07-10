@@ -1,12 +1,7 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
-import type { MessageBarActionsSlots, MessageBarActionsState } from './MessageBarActions.types';
-
-export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots> = {
-  root: 'fui-MessageBarActions',
-  containerAction: 'fui-MessageBarActions__containerAction',
-};
+import { messageBarActionsClassNames, type MessageBarActionsState } from '@fluentui/react-message-bar';
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 /**
  * Styles for the root slot
@@ -14,22 +9,21 @@ export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots>
 const useRootBaseStyles = makeResetStyles({
   gridArea: 'secondaryActions',
   display: 'flex',
-  columnGap: tokens.spacingHorizontalM,
-  paddingRight: tokens.spacingHorizontalM,
+  columnGap: semanticTokens.gapBetweenCtrlDefault,
+  paddingRight: semanticTokens.gapBetweenCtrlDefault,
 });
 
 const useContainerActionBaseStyles = makeResetStyles({
   gridArea: 'actions',
-  paddingRight: tokens.spacingHorizontalM,
 });
 
 const useMultilineStyles = makeStyles({
   root: {
     justifyContent: 'end',
-    marginTop: tokens.spacingVerticalMNudge,
-    marginBottom: tokens.spacingVerticalS,
+    marginTop: semanticTokens._ctrlMessageBarSpacingTop,
+    marginBottom: semanticTokens.paddingContentAlignDefault,
     marginRight: '0px',
-    paddingRight: tokens.spacingVerticalM,
+    paddingRight: semanticTokens._ctrlMessageBarActionsMultilinePaddingRight,
   },
 
   noActions: {
@@ -40,25 +34,28 @@ const useMultilineStyles = makeStyles({
 /**
  * Apply styling to the MessageBarActions slots based on the state
  */
-export const useMessageBarActionsStyles_unstable = (state: MessageBarActionsState): MessageBarActionsState => {
+export const useSemanticMessageBarActionsStyles = (_state: unknown): MessageBarActionsState => {
   'use no memo';
 
+  const state = _state as MessageBarActionsState;
   const rootBaseStyles = useRootBaseStyles();
   const containerActionBaseStyles = useContainerActionBaseStyles();
   const multilineStyles = useMultilineStyles();
   state.root.className = mergeClasses(
+    state.root.className,
     messageBarActionsClassNames.root,
     rootBaseStyles,
     state.layout === 'multiline' && multilineStyles.root,
     !state.hasActions && multilineStyles.noActions,
-    state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.containerAction) {
     state.containerAction.className = mergeClasses(
+      state.containerAction.className,
       messageBarActionsClassNames.containerAction,
       containerActionBaseStyles,
-      state.containerAction.className,
+      getSlotClassNameProp_unstable(state.containerAction),
     );
   }
 

@@ -2240,6 +2240,9 @@ export const _ctrlMessageBarActionsMultilinePaddingRight = "var(--smtc-padding-c
 export const _ctrlMessageBarErrorIconColor = "var(--smtc-status-danger-tint-foreground, var(--colorStatusDangerForeground1))";
 
 // @public
+export const _ctrlMessageBarGapBetweenCtrl = "var(--smtc-gap-between-ctrl-default, var(--spacingHorizontalM))";
+
+// @public
 export const _ctrlMessageBarPaddingContentAlignDefault = "var(--smtc-padding-content-align-default, 12px)";
 
 // @public
@@ -3269,11 +3272,7 @@ export const gapBetweenContentXxSmall = "var(--smtc-gap-between-content-xx-small
 export const gapBetweenContentXxSmallRaw = "--smtc-gap-between-content-xx-small";
 
 // @public (undocumented)
-<<<<<<< HEAD
 export const gapBetweenCtrlDefault = "var(--smtc-gap-between-ctrl-default, 8px)";
-=======
-export const gapBetweenCtrlDefault = "var(--smtc-gap-between-ctrl-default, var(--spacingHorizontalM))";
->>>>>>> 0f3a27c56e (Squish for rebase)
 
 // @public (undocumented)
 export const gapBetweenCtrlDefaultRaw = "--smtc-gap-between-ctrl-default";
