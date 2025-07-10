@@ -4,6 +4,7 @@ import {
   ctrlAvatarCornerGroupRaw,
   ctrlAvatarPresenceBadgeStrokeWidthRaw,
 } from '../components/avatar/variables';
+import { ctrlBadgeCornerRaw, ctrlBadgeLgPaddingRaw } from '../components/badge/variables';
 import { ctrlFocusInnerStrokeWidthRaw, ctrlFocusOuterStrokeRaw } from '../components/focus/variables';
 import { ctrlInputBackgroundRestRaw } from '../components/input/variables';
 import {
@@ -19,13 +20,17 @@ import {
   foregroundCtrlNeutralPrimaryRestRaw,
   paddingCtrlTextTopRaw,
   cornerCtrlRestRaw,
+  paddingCtrlTextSideRaw,
+  foregroundCtrlBrandRestRaw,
+  statusDangerTintForegroundRaw,
+  statusImportantTintForegroundRaw,
+  statusSuccessTintForegroundRaw,
+  textStyleDefaultRegularWeightRaw,
   gapInsideCtrlDefaultRaw,
   backgroundCtrlNeutralRestRaw,
   foregroundCtrlNeutralSecondaryRestRaw,
   textGlobalBody3FontSizeRaw,
   textGlobalBody3LineHeightRaw,
-  textStyleDefaultRegularWeightRaw,
-  paddingCtrlTextSideRaw,
   paddingCtrlHorizontalDefaultRaw,
 } from '../control/variables';
 import {
@@ -40,25 +45,29 @@ import {
   borderRadiusSmall,
   borderRadiusXLarge,
   strokeWidthThin,
+  colorTransparentStroke,
+  spacingHorizontalXXS,
+  spacingHorizontalXS,
+  colorBrandForeground2,
+  colorPaletteRedForeground1,
+  colorNeutralBackground1,
+  colorPaletteGreenForeground1,
+  fontWeightSemibold,
   spacingHorizontalSNudge,
   colorNeutralForeground3,
   colorTransparentStrokeInteractive,
   colorNeutralBackground3,
-  colorNeutralBackground1,
   colorNeutralForeground4,
   colorNeutralForeground3Pressed,
   colorBrandStroke2Contrast,
   colorBrandStroke1,
   fontSizeBase400,
   lineHeightBase400,
-  fontWeightSemibold,
   spacingVerticalXS,
-  colorTransparentStroke,
   spacingVerticalXXS,
   colorNeutralForeground3Hover,
   colorNeutralForeground2Hover,
   colorNeutralForeground2Pressed,
-  spacingHorizontalXXS,
 } from '../legacy/tokens';
 import {
   backgroundCtrlSubtleRestRaw,
@@ -71,6 +80,7 @@ import {
   foregroundCtrlOnTransparentPressedRaw,
   foregroundCtrlOnTransparentRestRaw,
   paddingCtrlTextBottomRaw,
+  statusBrandTintForegroundRaw,
   foregroundCtrlOnSubtlePressedRaw,
   foregroundCtrlNeutralPrimaryPressedRaw,
   textRampItemBodyFontSizeRaw,
@@ -201,6 +211,97 @@ export const _ctrlAvatarPresenceBadgeStrokeWidthLg = `var(${ctrlAvatarPresenceBa
  * please use ctrlAvatarPresenceBadgeStrokeWidth instead.
  */
 export const _ctrlAvatarPresenceBadgeStrokeWidthSm = `var(${ctrlAvatarPresenceBadgeStrokeWidthRaw}, var(${strokeWidthDefaultRaw}, ${strokeWidthThin}))`;
+/**
+ * This is a legacy variant for nullColor to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use nullColor instead.
+ */
+export const _ctrlBadgeNullColor = `var(${nullColorRaw}, ${colorTransparentStroke})`;
+/**
+ * This is a legacy variant for paddingCtrlTextSide to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextSide instead.
+ */
+export const _ctrlBadgePaddingLeftSide = `var(${paddingCtrlTextSideRaw}, ${spacingHorizontalXXS})`;
+/**
+ * This is a legacy variant for paddingCtrlTextSide to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextSide instead.
+ */
+export const _ctrlBadgePaddingLeftSideXL = `var(${paddingCtrlTextSideRaw}, ${spacingHorizontalXS})`;
+/**
+ * This is a legacy variant for paddingCtrlTextSide to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextSide instead.
+ */
+export const _ctrlBadgePaddingRightSide = `var(${paddingCtrlTextSideRaw}, ${spacingHorizontalXXS})`;
+/**
+ * This is a legacy variant for paddingCtrlTextSide to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextSide instead.
+ */
+export const _ctrlBadgePaddingRightSideXL = `var(${paddingCtrlTextSideRaw}, ${spacingHorizontalXS})`;
+/**
+ * This is a legacy variant for paddingCtrlTextSide to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextSide instead.
+ */
+export const _ctrlBadgePaddingTextSide = `var(${paddingCtrlTextSideRaw}, ${spacingHorizontalXXS})`;
+/**
+ * This is a legacy variant for ctrlBadgeCorner to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlBadgeCorner instead.
+ */
+export const _ctrlBadgeSmallTinyCorner = `var(${ctrlBadgeCornerRaw}, ${borderRadiusSmall})`;
+/**
+ * This is a legacy variant for statusBrandTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusBrandTintForeground instead.
+ */
+export const _ctrlBadgeStatusBrandTintForeground = `var(${statusBrandTintForegroundRaw}, var(${foregroundCtrlBrandRestRaw}, ${colorBrandForeground2}))`;
+/**
+ * This is a legacy variant for statusDangerTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusDangerTintForeground instead.
+ */
+export const _ctrlBadgeStatusDangerTintForeground = `var(${statusDangerTintForegroundRaw}, ${colorPaletteRedForeground1})`;
+/**
+ * This is a legacy variant for statusImportantTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusImportantTintForeground instead.
+ */
+export const _ctrlBadgeStatusImportantTintForeground = `var(${statusImportantTintForegroundRaw}, ${colorNeutralBackground1})`;
+/**
+ * This is a legacy variant for statusSuccessTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusSuccessTintForeground instead.
+ */
+export const _ctrlBadgeStatusSuccessTintForeground = `var(${statusSuccessTintForegroundRaw}, ${colorPaletteGreenForeground1})`;
+/**
+ * This is a legacy variant for textStyleDefaultRegularWeight to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use textStyleDefaultRegularWeight instead.
+ */
+export const _ctrlBadgeTextStyleSemiBoldWeight = `var(${textStyleDefaultRegularWeightRaw}, ${fontWeightSemibold})`;
+/**
+ * This is a legacy variant for ctrlBadgeLgPadding to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlBadgeLgPadding instead.
+ */
+export const _ctrlBadgeXLPadding = `var(${ctrlBadgeLgPaddingRaw}, ${spacingHorizontalSNudge})`;
 /**
  * This is a legacy variant for gapInsideCtrlDefault to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
