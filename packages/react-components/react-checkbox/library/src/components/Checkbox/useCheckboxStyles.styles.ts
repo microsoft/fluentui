@@ -3,7 +3,6 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { CheckboxSlots, CheckboxState } from './Checkbox.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
   root: 'fui-Checkbox',
@@ -28,62 +27,62 @@ const useRootBaseClassName = makeResetStyles({
   display: 'inline-flex',
   cursor: 'pointer',
   verticalAlign: 'middle',
-  color: semanticTokens._ctrlCheckboxForegroundUnchecked,
+  color: tokens.colorNeutralForeground3,
   ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 });
 
 const useRootStyles = makeStyles({
   unchecked: {
     ':hover': {
-      color: semanticTokens._ctrlCheckboxForegroundUncheckedHover,
-      [vars.indicatorBorderColor]: semanticTokens.ctrlChoiceBaseStrokeHover,
+      color: tokens.colorNeutralForeground2,
+      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessibleHover,
     },
 
     ':active': {
-      color: semanticTokens.foregroundContentNeutralPrimary,
-      [vars.indicatorBorderColor]: semanticTokens.ctrlChoiceBaseStrokePressed,
+      color: tokens.colorNeutralForeground1,
+      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessiblePressed,
     },
   },
 
   checked: {
-    color: semanticTokens.foregroundContentNeutralPrimary,
-    [vars.indicatorBackgroundColor]: semanticTokens.backgroundCtrlActiveBrandRest,
-    [vars.indicatorColor]: semanticTokens.foregroundCtrlOnActiveBrandRest,
-    [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxBorderColorChecked,
+    color: tokens.colorNeutralForeground1,
+    [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackground,
+    [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
+    [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackground,
 
     ':hover': {
-      [vars.indicatorBackgroundColor]: semanticTokens.backgroundCtrlActiveBrandHover,
-      [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxBorderColorCheckedHover,
+      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundHover,
+      [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundHover,
     },
 
     ':active': {
-      [vars.indicatorBackgroundColor]: semanticTokens.backgroundCtrlActiveBrandPressed,
-      [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxIndicatorBorderColorCheckedPressed,
+      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundPressed,
+      [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundPressed,
     },
   },
 
   mixed: {
-    color: semanticTokens.foregroundContentNeutralPrimary,
-    [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxIndicatorBorderColorMixed,
-    [vars.indicatorColor]: semanticTokens._ctrlCheckboxIndicatorColorMixed,
+    color: tokens.colorNeutralForeground1,
+    [vars.indicatorBorderColor]: tokens.colorCompoundBrandStroke,
+    [vars.indicatorColor]: tokens.colorCompoundBrandForeground1,
 
     ':hover': {
-      [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxIndicatorBorderColorMixedHover,
-      [vars.indicatorColor]: semanticTokens._ctrlCheckboxIndicatorColorMixedHover,
+      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokeHover,
+      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Hover,
     },
 
     ':active': {
-      [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxIndicatorBorderColorMixedPressed,
-      [vars.indicatorColor]: semanticTokens._ctrlCheckboxIndicatorColorMixedPressed,
+      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokePressed,
+      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
 
   disabled: {
     cursor: 'default',
 
-    color: semanticTokens.foregroundCtrlOnTransparentDisabled,
-    [vars.indicatorBorderColor]: semanticTokens.ctrlChoiceBaseStrokeDisabled,
-    [vars.indicatorColor]: semanticTokens.foregroundCtrlOnActiveBrandDisabled,
+    color: tokens.colorNeutralForegroundDisabled,
+    [vars.indicatorBorderColor]: tokens.colorNeutralStrokeDisabled,
+    [vars.indicatorColor]: tokens.colorNeutralForegroundDisabled,
 
     '@media (forced-colors: active)': {
       color: 'GrayText',
@@ -130,11 +129,11 @@ const useIndicatorBaseClassName = makeResetStyles({
 
   color: `var(${vars.indicatorColor})`,
   backgroundColor: `var(${vars.indicatorBackgroundColor})`,
-  borderColor: `var(${vars.indicatorBorderColor}, ${semanticTokens.ctrlChoiceBaseStrokeRest})`,
+  borderColor: `var(${vars.indicatorBorderColor}, ${tokens.colorNeutralStrokeAccessible})`,
   borderStyle: 'solid',
-  borderWidth: semanticTokens.strokeWidthDefault,
-  borderRadius: semanticTokens.ctrlChoiceCheckboxCorner,
-  margin: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
+  borderWidth: tokens.strokeWidthThin,
+  borderRadius: tokens.borderRadiusSmall,
+  margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
   fill: 'currentColor',
   pointerEvents: 'none',
 
@@ -150,7 +149,7 @@ const useIndicatorStyles = makeStyles({
     width: indicatorSizeLarge,
   },
 
-  circular: { borderRadius: semanticTokens.cornerCircular },
+  circular: { borderRadius: tokens.borderRadiusCircular },
 });
 
 // Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
@@ -172,12 +171,12 @@ const useLabelStyles = makeStyles({
   // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
   // This prevents the label from expanding the height of the checkbox, but preserves line height if the label wraps.
   medium: {
-    marginTop: `calc((${indicatorSizeMedium} - ${semanticTokens.textRampItemBodyLineHeight}) / 2)`,
-    marginBottom: `calc((${indicatorSizeMedium} - ${semanticTokens.textRampItemBodyLineHeight}) / 2)`,
+    marginTop: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
+    marginBottom: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
   },
   large: {
-    marginTop: `calc((${indicatorSizeLarge} - ${semanticTokens.textRampItemBodyLineHeight}) / 2)`,
-    marginBottom: `calc((${indicatorSizeLarge} - ${semanticTokens.textRampItemBodyLineHeight}) / 2)`,
+    marginTop: `calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
+    marginBottom: `calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
   },
 });
 
