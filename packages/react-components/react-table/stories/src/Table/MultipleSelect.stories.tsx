@@ -27,7 +27,7 @@ import {
 
 type FileCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: React.ReactElement;
 };
 
 type LastUpdatedCell = {
@@ -37,7 +37,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: React.ReactElement;
 };
 
 type AuthorCell = {
