@@ -23,9 +23,10 @@ import {
   fontFamilyBase,
   fontWeightRegular,
   fontWeightSemibold,
+  spacingVerticalS,
+  spacingHorizontalM,
   spacingHorizontalNone,
   spacingHorizontalXXL,
-  spacingHorizontalM,
   spacingHorizontalS,
   spacingHorizontalL,
   spacingHorizontalXS,
@@ -53,9 +54,18 @@ import {
   colorNeutralForeground2,
   colorNeutralForegroundOnBrand,
   colorPaletteRedBackground3,
+  colorStatusDangerBackground1,
+  colorStatusDangerBorder1,
   colorPaletteRedForeground3,
   colorPaletteDarkOrangeBackground3,
+  colorStatusWarningBackground1,
+  colorStatusWarningBorder1,
+  colorStatusWarningForeground3,
   colorPaletteGreenBackground3,
+  colorStatusSuccessBackground1,
+  colorStatusSuccessBorder1,
+  colorStatusSuccessForeground1,
+  colorNeutralBackground3,
   colorTransparentBackground,
   shadow64,
 } from '../legacy/tokens';
@@ -298,8 +308,8 @@ export const sizeCtrlSmDefault = `var(${sizeCtrlSmDefaultRaw}, 32px)`;
 export const sizeCtrlSmIcon = `var(${sizeCtrlSmIconRaw}, 20px)`;
 export const sizeCtrlLgDefault = `var(${sizeCtrlLgDefaultRaw}, 44px)`;
 export const sizeCtrlLgIcon = `var(${sizeCtrlLgIconRaw}, 24px)`;
-export const paddingContentAlignDefault = `var(${paddingContentAlignDefaultRaw})`;
-export const paddingContentAlignOutdentIconOnSubtle = `var(${paddingContentAlignOutdentIconOnSubtleRaw})`;
+export const paddingContentAlignDefault = `var(${paddingContentAlignDefaultRaw}, ${spacingVerticalS})`;
+export const paddingContentAlignOutdentIconOnSubtle = `var(${paddingContentAlignOutdentIconOnSubtleRaw}, ${spacingHorizontalM})`;
 export const paddingContentNone = `var(${paddingContentNoneRaw}, ${spacingHorizontalNone})`;
 export const paddingContentAlignOutdentTextOnSubtle = `var(${paddingContentAlignOutdentTextOnSubtleRaw})`;
 export const paddingContentXxSmall = `var(${paddingContentXxSmallRaw})`;
@@ -415,24 +425,24 @@ export const iconThemeCtrlDefaultSelected = `var(${iconThemeCtrlDefaultSelectedR
 export const statusBrandTintBackground = `var(${statusBrandTintBackgroundRaw})`;
 export const statusBrandTintStroke = `var(${statusBrandTintStrokeRaw})`;
 export const statusDangerBackground = `var(${statusDangerBackgroundRaw}, ${colorPaletteRedBackground3})`;
-export const statusDangerTintBackground = `var(${statusDangerTintBackgroundRaw})`;
-export const statusDangerTintStroke = `var(${statusDangerTintStrokeRaw})`;
+export const statusDangerTintBackground = `var(${statusDangerTintBackgroundRaw}, ${colorStatusDangerBackground1})`;
+export const statusDangerTintStroke = `var(${statusDangerTintStrokeRaw}, ${colorStatusDangerBorder1})`;
 export const statusDangerTintForeground = `var(${statusDangerTintForegroundRaw}, ${colorPaletteRedForeground3})`;
 export const statusWarningBackground = `var(${statusWarningBackgroundRaw}, ${colorPaletteDarkOrangeBackground3})`;
-export const statusWarningTintBackground = `var(${statusWarningTintBackgroundRaw})`;
-export const statusWarningTintStroke = `var(${statusWarningTintStrokeRaw})`;
-export const statusWarningTintForeground = `var(${statusWarningTintForegroundRaw})`;
+export const statusWarningTintBackground = `var(${statusWarningTintBackgroundRaw}, ${colorStatusWarningBackground1})`;
+export const statusWarningTintStroke = `var(${statusWarningTintStrokeRaw}, ${colorStatusWarningBorder1})`;
+export const statusWarningTintForeground = `var(${statusWarningTintForegroundRaw}, ${colorStatusWarningForeground3})`;
 export const statusSuccessBackground = `var(${statusSuccessBackgroundRaw}, ${colorPaletteGreenBackground3})`;
-export const statusSuccessTintBackground = `var(${statusSuccessTintBackgroundRaw})`;
-export const statusSuccessTintStroke = `var(${statusSuccessTintStrokeRaw})`;
-export const statusSuccessTintForeground = `var(${statusSuccessTintForegroundRaw})`;
+export const statusSuccessTintBackground = `var(${statusSuccessTintBackgroundRaw}, ${colorStatusSuccessBackground1})`;
+export const statusSuccessTintStroke = `var(${statusSuccessTintStrokeRaw}, ${colorStatusSuccessBorder1})`;
+export const statusSuccessTintForeground = `var(${statusSuccessTintForegroundRaw}, ${colorStatusSuccessForeground1})`;
 export const statusImportantBackground = `var(${statusImportantBackgroundRaw})`;
-export const statusImportantTintBackground = `var(${statusImportantTintBackgroundRaw})`;
+export const statusImportantTintBackground = `var(${statusImportantTintBackgroundRaw}, ${colorNeutralBackground3})`;
 export const statusImportantTintStroke = `var(${statusImportantTintStrokeRaw})`;
 export const statusImportantTintForeground = `var(${statusImportantTintForegroundRaw})`;
 export const statusInformativeBackground = `var(${statusInformativeBackgroundRaw})`;
 export const statusInformativeTintForeground = `var(${statusInformativeTintForegroundRaw})`;
-export const statusInformativeTintStroke = `var(${statusInformativeTintStrokeRaw})`;
+export const statusInformativeTintStroke = `var(${statusInformativeTintStrokeRaw}, ${colorNeutralStroke1})`;
 export const statusInformativeTintBackground = `var(${statusInformativeTintBackgroundRaw})`;
 export const statusAwayForeground = `var(${statusAwayForegroundRaw})`;
 export const statusOofForeground = `var(${statusOofForegroundRaw})`;

@@ -41,6 +41,12 @@ import {
   useSemanticDialogSurfaceStyles,
   useSemanticDialogTitleStyles,
 } from './Dialog';
+import {
+  useSemanticMessageBarStyles,
+  useSemanticMessageBarBodyStyles,
+  useSemanticMessageBarActionsStyles,
+  useSemanticMessageBarTitleStyles,
+} from './MessageBar';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -94,4 +100,9 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useDialogContentStyles_unstable: useSemanticDialogContentStyles,
   useDialogSurfaceStyles_unstable: useSemanticDialogSurfaceStyles,
   useDialogTitleStyles_unstable: useSemanticDialogTitleStyles,
+  // MessageBar styles
+  useMessageBarStyles_unstable: useSemanticMessageBarStyles,
+  useMessageBarBodyStyles_unstable: useSemanticMessageBarBodyStyles,
+  useMessageBarActionsStyles_unstable: useSemanticMessageBarActionsStyles,
+  useMessageBarTitleStyles_unstable: useSemanticMessageBarTitleStyles,
 };

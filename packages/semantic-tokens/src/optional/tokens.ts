@@ -86,10 +86,10 @@ import {
   lineHeightBase500,
   fontSizeBase300,
   lineHeightBase300,
+  lineHeightBase400,
   fontSizeBase200,
   lineHeightBase200,
   fontSizeBase400,
-  lineHeightBase400,
   fontWeightSemibold,
   spacingVerticalXXS,
   strokeWidthThin,
@@ -117,6 +117,7 @@ import {
   colorNeutralForeground1Pressed,
   colorNeutralForeground2Hover,
   colorNeutralForeground2Pressed,
+  colorNeutralForeground3,
   colorNeutralForeground2BrandHover,
   colorNeutralForeground2BrandPressed,
   colorNeutralForegroundInverted,
@@ -428,8 +429,8 @@ export const textRampSubsectionHeaderFontSize = `var(${textRampSubsectionHeaderF
 export const textRampSubsectionHeaderLineHeight = `var(${textRampSubsectionHeaderLineHeightRaw}, var(${textGlobalSubtitle2LineHeightRaw}))`;
 export const textRampReadingBodyFontSize = `var(${textRampReadingBodyFontSizeRaw}, var(${textGlobalBody2FontSizeRaw}, ${fontSizeBase300}))`;
 export const textRampReadingBodyLineHeight = `var(${textRampReadingBodyLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}, ${lineHeightBase300}))`;
-export const textRampItemHeaderFontSize = `var(${textRampItemHeaderFontSizeRaw}, var(${textGlobalBody2FontSizeRaw}))`;
-export const textRampItemHeaderLineHeight = `var(${textRampItemHeaderLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}))`;
+export const textRampItemHeaderFontSize = `var(${textRampItemHeaderFontSizeRaw}, var(${textGlobalBody2FontSizeRaw}, ${fontSizeBase300}))`;
+export const textRampItemHeaderLineHeight = `var(${textRampItemHeaderLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}, ${lineHeightBase400}))`;
 export const textRampItemBodyFontSize = `var(${textRampItemBodyFontSizeRaw}, var(${textGlobalBody3FontSizeRaw}, ${fontSizeBase300}))`;
 export const textRampItemBodyLineHeight = `var(${textRampItemBodyLineHeightRaw}, var(${textGlobalBody3LineHeightRaw}, ${lineHeightBase300}))`;
 export const textRampMetadataFontSize = `var(${textRampMetadataFontSizeRaw}, var(${textGlobalCaption1FontSizeRaw}))`;
@@ -559,7 +560,7 @@ export const foregroundCtrlNeutralPrimaryHover = `var(${foregroundCtrlNeutralPri
 export const foregroundCtrlNeutralPrimaryPressed = `var(${foregroundCtrlNeutralPrimaryPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1Pressed}))`;
 export const foregroundCtrlNeutralSecondaryHover = `var(${foregroundCtrlNeutralSecondaryHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground2Hover}))`;
 export const foregroundCtrlNeutralSecondaryPressed = `var(${foregroundCtrlNeutralSecondaryPressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground2Pressed}))`;
-export const foregroundCtrlIconOnNeutralRest = `var(${foregroundCtrlIconOnNeutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}))`;
+export const foregroundCtrlIconOnNeutralRest = `var(${foregroundCtrlIconOnNeutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground3}))`;
 export const foregroundCtrlIconOnNeutralHover = `var(${foregroundCtrlIconOnNeutralHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}))`;
 export const foregroundCtrlIconOnNeutralPressed = `var(${foregroundCtrlIconOnNeutralPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}))`;
 export const foregroundCtrlIconOnNeutralDisabled = `var(${foregroundCtrlIconOnNeutralDisabledRaw}, var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${colorNeutralForegroundDisabled}))`;
