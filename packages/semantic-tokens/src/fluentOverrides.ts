@@ -35,7 +35,9 @@ export const fluentOverrides: FluentOverrides = {
   backgroundCtrlSubtleRest: { f2Token: 'colorSubtleBackground' },
   backgroundFlyoutSolid: { f2Token: 'colorNeutralBackground1' },
   cornerCircular: { f2Token: 'borderRadiusCircular' },
+  cornerCtrlHover: { f2Token: 'borderRadiusMedium' },
   cornerCtrlLgRest: { f2Token: 'borderRadiusMedium' }, // Button uses borderRadiusMedium in all sizes
+  cornerCtrlPressed: { f2Token: 'borderRadiusMedium' },
   cornerCtrlRest: { f2Token: 'borderRadiusMedium' },
   cornerCtrlSmRest: { f2Token: 'borderRadiusMedium' }, // Button uses borderRadiusMedium in all sizes
   cornerFlyoutRest: { rawValue: '0px' },

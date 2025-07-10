@@ -509,7 +509,7 @@ export const cornerCircular = "var(--smtc-corner-circular, var(--borderRadiusCir
 export const cornerCircularRaw = "--smtc-corner-circular";
 
 // @public (undocumented)
-export const cornerCtrlHover = "var(--smtc-corner-ctrl-hover, var(--smtc-corner-ctrl-rest))";
+export const cornerCtrlHover = "var(--smtc-corner-ctrl-hover, var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium)))";
 
 // @public (undocumented)
 export const cornerCtrlHoverRaw = "--smtc-corner-ctrl-hover";
@@ -533,7 +533,7 @@ export const cornerCtrlLgRest = "var(--smtc-corner-ctrl-lg-rest, var(--borderRad
 export const cornerCtrlLgRestRaw = "--smtc-corner-ctrl-lg-rest";
 
 // @public (undocumented)
-export const cornerCtrlPressed = "var(--smtc-corner-ctrl-pressed, var(--smtc-corner-ctrl-rest))";
+export const cornerCtrlPressed = "var(--smtc-corner-ctrl-pressed, var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium)))";
 
 // @public (undocumented)
 export const cornerCtrlPressedRaw = "--smtc-corner-ctrl-pressed";
@@ -1873,6 +1873,15 @@ export const ctrlLinkOnPageUnderlineDashed = "var(--smtc-ctrl-link-on-page-under
 // @public (undocumented)
 export const ctrlLinkOnPageUnderlineDashedRaw = "--smtc-ctrl-link-on-page-underline-dashed";
 
+// @public
+export const _ctrlListBackgroundColorHover = "var(--smtc-background-ctrl-subtle-hover, var(--colorTransparentBackground))";
+
+// @public
+export const _ctrlListBackgroundColorPressed = "var(--smtc-background-ctrl-subtle-pressed, var(--colorTransparentBackground))";
+
+// @public
+export const _ctrlListBackgroundColorRest = "var(--smtc-background-ctrl-subtle-rest, var(--smtc-null-color, var(--colorTransparentBackground)))";
+
 // @public (undocumented)
 export const ctrlListBackgroundSelectedDisabled = "var(--smtc-ctrl-list-background-selected-disabled, var(--smtc-background-ctrl-subtle-disabled))";
 
@@ -1999,6 +2008,15 @@ export const ctrlListCornerRest = "var(--smtc-ctrl-list-corner-rest, var(--smtc-
 // @public (undocumented)
 export const ctrlListCornerRestRaw = "--smtc-ctrl-list-corner-rest";
 
+// @public
+export const _ctrlListForegroundColorHover = "var(--smtc-foreground-ctrl-on-subtle-hover, var(--smtc-foreground-ctrl-neutral-primary-hover, var(--colorNeutralForeground1)))";
+
+// @public
+export const _ctrlListForegroundColorPressed = "var(--smtc-foreground-ctrl-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-pressed, var(--colorNeutralForeground1)))";
+
+// @public
+export const _ctrlListForegroundColorRest = "var(--smtc-foreground-ctrl-on-subtle-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground1)))";
+
 // @public (undocumented)
 export const ctrlListForegroundSelectedDisabled = "var(--smtc-ctrl-list-foreground-selected-disabled, var(--smtc-background-ctrl-subtle-disabled))";
 
@@ -2040,6 +2058,9 @@ export const ctrlListIndentLevel3 = "var(--smtc-ctrl-list-indent-level3)";
 
 // @public (undocumented)
 export const ctrlListIndentLevel3Raw = "--smtc-ctrl-list-indent-level3";
+
+// @public
+export const _ctrlListItemStroke = "var(--smtc-stroke-width-ctrl-outline-rest, var(--smtc-stroke-width-default, var(--colorStrokeFocus2)))";
 
 // @public (undocumented)
 export const ctrlListLgCornerHover = "var(--smtc-ctrl-list-lg-corner-hover, var(--smtc-corner-ctrl-lg-rest))";
