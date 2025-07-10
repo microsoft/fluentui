@@ -4780,7 +4780,7 @@ export const strokeCtrlOnActiveBrandHoverStop2 = "var(--smtc-stroke-ctrl-on-acti
 export const strokeCtrlOnActiveBrandHoverStop2Raw = "--smtc-stroke-ctrl-on-active-brand-hover-stop2";
 
 // @public (undocumented)
-export const strokeCtrlOnActiveBrandPressed = "var(--smtc-stroke-ctrl-on-active-brand-pressed, var(--smtc-stroke-ctrl-on-brand-pressed, var(--colorCompoundBrandBackgroundPressed)))";
+export const strokeCtrlOnActiveBrandPressed = "var(--smtc-stroke-ctrl-on-active-brand-pressed, var(--smtc-stroke-ctrl-on-brand-pressed, var(--colorTransparentStrokeInteractive)))";
 
 // @public (undocumented)
 export const strokeCtrlOnActiveBrandPressedRaw = "--smtc-stroke-ctrl-on-active-brand-pressed";

@@ -13,13 +13,6 @@ import {
 } from '../components/progress/variables';
 import { ctrlSpinnerStrokeWidthRaw } from '../components/spinner/variables';
 import {
-  foregroundCtrlNeutralPrimaryRestRaw,
-  cornerCtrlRestRaw,
-  strokeWidthDefaultRaw,
-  gapInsideCtrlDefaultRaw,
-  backgroundCtrlBrandRestRaw,
-  backgroundCtrlBrandHoverRaw,
-  backgroundCtrlBrandPressedRaw,
   nullColorRaw,
   strokeWidthDefaultRaw,
   backgroundCtrlBrandRestRaw,
@@ -27,6 +20,8 @@ import {
   paddingCtrlTextTopRaw,
   cornerCtrlRestRaw,
   gapInsideCtrlDefaultRaw,
+  backgroundCtrlBrandHoverRaw,
+  backgroundCtrlBrandPressedRaw,
   backgroundCtrlNeutralRestRaw,
   foregroundCtrlNeutralSecondaryRestRaw,
   textGlobalBody3FontSizeRaw,
@@ -50,6 +45,7 @@ import {
   spacingHorizontalSNudge,
   colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
+  colorNeutralForeground2,
   colorCompoundBrandStroke,
   colorCompoundBrandForeground1,
   colorCompoundBrandForeground1Hover,
@@ -75,16 +71,30 @@ import {
   colorNeutralForeground2Pressed,
   spacingHorizontalXXS,
 } from '../legacy/tokens';
-import { strokeCtrlOnBrandHoverRaw, foregroundCtrlHintDefaultRaw } from '../nullable/variables';
+import {
+  backgroundCtrlSubtleRestRaw,
+  strokeCtrlOnBrandHoverRaw,
+  foregroundCtrlHintDefaultRaw,
+  strokeCtrlOnBrandRestRaw,
+} from '../nullable/variables';
 import {
   foregroundCtrlOnTransparentHoverRaw,
   foregroundCtrlOnTransparentPressedRaw,
   foregroundCtrlOnTransparentRestRaw,
+  paddingCtrlTextBottomRaw,
   strokeCtrlOnActiveBrandHoverRaw,
   foregroundContentNeutralPrimaryRaw,
   backgroundCtrlActiveBrandRestRaw,
   backgroundCtrlActiveBrandHoverRaw,
   backgroundCtrlActiveBrandPressedRaw,
+  foregroundCtrlOnSubtlePressedRaw,
+  foregroundCtrlNeutralPrimaryPressedRaw,
+  textRampItemBodyFontSizeRaw,
+  textRampItemBodyLineHeightRaw,
+  strokeCtrlOnActiveBrandRestRaw,
+  foregroundCtrlOnSubtleRestRaw,
+  foregroundCtrlOnSubtleHoverRaw,
+  foregroundCtrlNeutralPrimaryHoverRaw,
 } from '../optional/variables';
 
 /**

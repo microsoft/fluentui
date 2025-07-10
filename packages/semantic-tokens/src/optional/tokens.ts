@@ -94,12 +94,19 @@ import {
   strokeWidthThicker,
   colorNeutralForegroundOnBrand,
   colorStrokeFocus2,
-  colorCompoundBrandBackgroundPressed,
+  colorTransparentStrokeInteractive,
+  colorTransparentStrokeDisabled,
   colorNeutralStroke3,
   colorNeutralStroke1,
   colorBrandStroke1,
   colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
+  colorCompoundBrandBackgroundPressed,
+  colorNeutralBackgroundDisabled,
+  colorNeutralStrokeAccessible,
+  colorNeutralStrokeAccessibleHover,
+  colorNeutralStrokeAccessiblePressed,
+  colorNeutralForegroundDisabled,
   colorNeutralForeground1,
   colorNeutralForeground2,
   colorBrandForeground1,
@@ -110,6 +117,8 @@ import {
   colorNeutralForeground2BrandHover,
   colorNeutralForeground2BrandPressed,
   colorNeutralForegroundInverted,
+  colorNeutralForegroundInvertedHover,
+  colorNeutralForegroundInvertedPressed,
 } from '../legacy/tokens';
 import {
   strokeCardOnPrimaryRestRaw,
@@ -501,8 +510,8 @@ export const strokeCtrlDividerOnActiveBrandDisabled = `var(${strokeCtrlDividerOn
 export const strokeCtrlDividerOnNeutralDisabled = `var(${strokeCtrlDividerOnNeutralDisabledRaw}, var(${strokeCtrlDividerOnNeutralRaw}))`;
 export const strokeCtrlDividerOnOutlineDisabled = `var(${strokeCtrlDividerOnOutlineDisabledRaw}, var(${strokeCtrlDividerOnOutlineRaw}))`;
 export const strokeCtrlOnActiveBrandHover = `var(${strokeCtrlOnActiveBrandHoverRaw}, var(${strokeCtrlOnBrandHoverRaw}, ${colorStrokeFocus2}))`;
-export const strokeCtrlOnActiveBrandPressed = `var(${strokeCtrlOnActiveBrandPressedRaw}, var(${strokeCtrlOnBrandPressedRaw}, ${colorCompoundBrandBackgroundPressed}))`;
-export const strokeCtrlOnActiveBrandDisabled = `var(${strokeCtrlOnActiveBrandDisabledRaw}, var(${strokeCtrlOnBrandDisabledRaw}))`;
+export const strokeCtrlOnActiveBrandPressed = `var(${strokeCtrlOnActiveBrandPressedRaw}, var(${strokeCtrlOnBrandPressedRaw}, ${colorTransparentStrokeInteractive}))`;
+export const strokeCtrlOnActiveBrandDisabled = `var(${strokeCtrlOnActiveBrandDisabledRaw}, var(${strokeCtrlOnBrandDisabledRaw}, ${colorTransparentStrokeDisabled}))`;
 export const strokeCtrlOnActiveBrandRestStop2 = `var(${strokeCtrlOnActiveBrandRestStop2Raw}, var(${strokeCtrlOnBrandRestRaw}))`;
 export const strokeCtrlOnActiveBrandHoverStop2 = `var(${strokeCtrlOnActiveBrandHoverStop2Raw}, var(${strokeCtrlOnBrandRestRaw}))`;
 export const strokeCtrlOnActiveBrandPressedStop2 = `var(${strokeCtrlOnActiveBrandPressedStop2Raw}, var(${strokeCtrlOnBrandPressedRaw}))`;
@@ -520,7 +529,7 @@ export const backgroundCardOnPrimaryDefaultSelected = `var(${backgroundCardOnPri
 export const backgroundCtrlActiveBrandRest = `var(${backgroundCtrlActiveBrandRestRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorCompoundBrandBackground}))`;
 export const backgroundCtrlActiveBrandHover = `var(${backgroundCtrlActiveBrandHoverRaw}, var(${backgroundCtrlBrandHoverRaw}, ${colorCompoundBrandBackgroundHover}))`;
 export const backgroundCtrlActiveBrandPressed = `var(${backgroundCtrlActiveBrandPressedRaw}, var(${backgroundCtrlBrandPressedRaw}, ${colorCompoundBrandBackgroundPressed}))`;
-export const backgroundCtrlActiveBrandDisabled = `var(${backgroundCtrlActiveBrandDisabledRaw}, var(${backgroundCtrlBrandDisabledRaw}))`;
+export const backgroundCtrlActiveBrandDisabled = `var(${backgroundCtrlActiveBrandDisabledRaw}, var(${backgroundCtrlBrandDisabledRaw}, ${colorNeutralBackgroundDisabled}))`;
 export const backgroundCtrlShapeSafeActiveBrandRest = `var(${backgroundCtrlShapeSafeActiveBrandRestRaw}, var(${backgroundCtrlBrandRestRaw}))`;
 export const backgroundCtrlShapeSafeActiveBrandDisabled = `var(${backgroundCtrlShapeSafeActiveBrandDisabledRaw}, var(${backgroundCtrlBrandDisabledRaw}))`;
 export const backgroundCtrlShapeSafeNeutralRest = `var(${backgroundCtrlShapeSafeNeutralRestRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessible}))`;
@@ -566,8 +575,8 @@ export const foregroundCtrlActiveBrandHover = `var(${foregroundCtrlActiveBrandHo
 export const foregroundCtrlActiveBrandPressed = `var(${foregroundCtrlActiveBrandPressedRaw}, var(${foregroundCtrlBrandPressedRaw}))`;
 export const foregroundCtrlActiveBrandDisabled = `var(${foregroundCtrlActiveBrandDisabledRaw}, var(${foregroundCtrlBrandDisabledRaw}))`;
 export const foregroundCtrlOnActiveBrandRest = `var(${foregroundCtrlOnActiveBrandRestRaw}, var(${foregroundCtrlOnBrandRestRaw}, ${colorNeutralForegroundInverted}))`;
-export const foregroundCtrlOnActiveBrandHover = `var(${foregroundCtrlOnActiveBrandHoverRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
-export const foregroundCtrlOnActiveBrandPressed = `var(${foregroundCtrlOnActiveBrandPressedRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
+export const foregroundCtrlOnActiveBrandHover = `var(${foregroundCtrlOnActiveBrandHoverRaw}, var(${foregroundCtrlOnBrandRestRaw}, ${colorNeutralForegroundInvertedHover}))`;
+export const foregroundCtrlOnActiveBrandPressed = `var(${foregroundCtrlOnActiveBrandPressedRaw}, var(${foregroundCtrlOnBrandRestRaw}, ${colorNeutralForegroundInvertedPressed}))`;
 export const foregroundCtrlOnActiveBrandDisabled = `var(${foregroundCtrlOnActiveBrandDisabledRaw}, var(${foregroundCtrlOnBrandDisabledRaw}, ${colorNeutralForegroundDisabled}))`;
 export const foregroundCtrlOnOutlineRest = `var(${foregroundCtrlOnOutlineRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1}))`;
 export const foregroundCtrlOnOutlineHover = `var(${foregroundCtrlOnOutlineHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1Hover}))`;

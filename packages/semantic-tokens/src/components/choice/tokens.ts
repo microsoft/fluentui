@@ -9,13 +9,6 @@ import {
   sizeCtrlLgIconRaw,
 } from '../../control/variables';
 import {
-  colorNeutralStrokeAccessible,
-  colorNeutralStrokeAccessibleHover,
-  colorNeutralStrokeAccessiblePressed,
-  colorNeutralStrokeDisabled,
-  borderRadiusSmall,
-} from '../../legacy/tokens';
-import {
   spacingHorizontalS,
   spacingVerticalS,
   colorTransparentBackground,
@@ -23,6 +16,7 @@ import {
   colorNeutralStrokeAccessible,
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeDisabled,
+  borderRadiusSmall,
   borderRadiusCircular,
 } from '../../legacy/tokens';
 import {
@@ -89,10 +83,10 @@ export const ctrlChoicePaddingHorizontal = `var(${ctrlChoicePaddingHorizontalRaw
 export const ctrlChoicePaddingVertical = `var(${ctrlChoicePaddingVerticalRaw}, ${spacingVerticalS})`;
 export const ctrlChoiceBaseSize = `var(${ctrlChoiceBaseSizeRaw}, var(${sizeCtrlIconRaw}, 20px))`;
 export const ctrlChoiceIconTheme = `var(${ctrlChoiceIconThemeRaw})`;
-export const ctrlChoiceBaseBackgroundRest = `var(${ctrlChoiceBaseBackgroundRestRaw}, var(${backgroundCtrlOutlineRestRaw}))`;
-export const ctrlChoiceBaseBackgroundHover = `var(${ctrlChoiceBaseBackgroundHoverRaw}, var(${backgroundCtrlOutlineHoverRaw}))`;
-export const ctrlChoiceBaseBackgroundPressed = `var(${ctrlChoiceBaseBackgroundPressedRaw}, var(${backgroundCtrlOutlinePressedRaw}))`;
-export const ctrlChoiceBaseBackgroundDisabled = `var(${ctrlChoiceBaseBackgroundDisabledRaw}, var(${backgroundCtrlOutlineDisabledRaw}))`;
+export const ctrlChoiceBaseBackgroundRest = `var(${ctrlChoiceBaseBackgroundRestRaw}, var(${backgroundCtrlOutlineRestRaw}, ${colorTransparentBackground}))`;
+export const ctrlChoiceBaseBackgroundHover = `var(${ctrlChoiceBaseBackgroundHoverRaw}, var(${backgroundCtrlOutlineHoverRaw}, unset))`;
+export const ctrlChoiceBaseBackgroundPressed = `var(${ctrlChoiceBaseBackgroundPressedRaw}, var(${backgroundCtrlOutlinePressedRaw}, ${colorNeutralStrokeAccessiblePressed}))`;
+export const ctrlChoiceBaseBackgroundDisabled = `var(${ctrlChoiceBaseBackgroundDisabledRaw}, var(${backgroundCtrlOutlineDisabledRaw}, ${colorTransparentBackground}))`;
 export const ctrlChoiceBaseStrokeRest = `var(${ctrlChoiceBaseStrokeRestRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessible}))`;
 export const ctrlChoiceBaseStrokeHover = `var(${ctrlChoiceBaseStrokeHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessibleHover}))`;
 export const ctrlChoiceBaseStrokePressed = `var(${ctrlChoiceBaseStrokePressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralStrokeAccessiblePressed}))`;
