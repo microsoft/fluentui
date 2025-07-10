@@ -85,6 +85,54 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'gapInsideCtrlDefault',
   },
+  _ctrlCheckboxBorderColorChecked: {
+    originalToken: 'strokeCtrlOnActiveBrandHover',
+    f2Token: 'colorCompoundBrandBackground',
+  },
+  _ctrlCheckboxBorderColorCheckedHover: {
+    originalToken: 'strokeCtrlOnActiveBrandHover',
+    f2Token: 'colorCompoundBrandBackgroundHover',
+  },
+  _ctrlCheckboxForegroundUncheckedHover: {
+    f2Token: 'colorNeutralForeground2',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  // This border color is set to the same value as the checked border color but it differs in F2.
+  // It was deemed not to be an earned difference so in semantic tokens we're collapsing these state's
+  _ctrlCheckboxIndicatorBorderColorMixed: {
+    f2Token: 'colorCompoundBrandStroke',
+    originalToken: 'backgroundCtrlActiveBrandRest',
+  },
+  _ctrlCheckboxIndicatorBorderColorCheckedPressed: {
+    originalToken: 'strokeCtrlOnActiveBrandPressed',
+    f2Token: 'colorCompoundBrandBackgroundPressed',
+  },
+  // We set this to the same value as the checked background but it differs in F2.
+  // It was deemed not to be an earned difference so in semantic tokens we're collapsing these state's tokens
+  _ctrlCheckboxIndicatorColorMixed: {
+    f2Token: 'colorCompoundBrandForeground1',
+    originalToken: 'backgroundCtrlActiveBrandRest',
+  },
+  _ctrlCheckboxIndicatorColorMixedHover: {
+    f2Token: 'colorCompoundBrandForeground1Hover',
+    originalToken: 'backgroundCtrlActiveBrandHover',
+  },
+  _ctrlCheckboxIndicatorBorderColorMixedHover: {
+    f2Token: 'colorCompoundBrandStrokeHover',
+    originalToken: 'backgroundCtrlActiveBrandHover',
+  },
+  _ctrlCheckboxIndicatorBorderColorMixedPressed: {
+    originalToken: 'backgroundCtrlActiveBrandPressed',
+    f2Token: 'colorCompoundBrandStrokePressed',
+  },
+  _ctrlCheckboxIndicatorColorMixedPressed: {
+    originalToken: 'backgroundCtrlActiveBrandPressed',
+    f2Token: 'colorCompoundBrandForeground1Pressed',
+  },
+  _ctrlCheckboxForegroundUnchecked: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
   _ctrlDividerForegroundSubtle: {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlHintDefault',

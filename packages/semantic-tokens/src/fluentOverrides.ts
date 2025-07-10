@@ -58,6 +58,7 @@ export const fluentOverrides: FluentOverrides = {
   ctrlChoiceBaseStrokeHover: { f2Token: 'colorNeutralStrokeAccessibleHover' },
   ctrlChoiceBaseStrokePressed: { f2Token: 'colorNeutralStrokeAccessiblePressed' },
   ctrlChoiceBaseStrokeRest: { f2Token: 'colorNeutralStrokeAccessible' },
+  ctrlChoiceCheckboxCorner: { f2Token: 'borderRadiusSmall' },
   ctrlChoicePaddingHorizontal: { f2Token: 'spacingHorizontalS' },
   ctrlChoicePaddingVertical: { f2Token: 'spacingVerticalS' },
   ctrlChoiceSwitchCorner: { f2Token: 'borderRadiusCircular' },

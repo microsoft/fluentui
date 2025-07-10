@@ -130,6 +130,11 @@ export const fontSizeBase300 = 'var(--fontSizeBase300)';
  */
 export const colorNeutralStrokeDisabled = 'var(--colorNeutralStrokeDisabled)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadiusSmall | `borderRadiusSmall`} design token.
+ * @public
+ */
+export const borderRadiusSmall = 'var(--borderRadiusSmall)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalS | `spacingHorizontalS`} design token.
  * @public
  */
@@ -480,15 +485,35 @@ export const strokeWidthThickest = 'var(--strokeWidthThickest)';
  */
 export const borderRadiusLarge = 'var(--borderRadiusLarge)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#borderRadiusSmall | `borderRadiusSmall`} design token.
- * @public
- */
-export const borderRadiusSmall = 'var(--borderRadiusSmall)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#borderRadiusXLarge | `borderRadiusXLarge`} design token.
  * @public
  */
 export const borderRadiusXLarge = 'var(--borderRadiusXLarge)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandForeground1 | `colorCompoundBrandForeground1`} design token.
+ * @public
+ */
+export const colorCompoundBrandForeground1 = 'var(--colorCompoundBrandForeground1)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandForeground1Hover | `colorCompoundBrandForeground1Hover`} design token.
+ * @public
+ */
+export const colorCompoundBrandForeground1Hover = 'var(--colorCompoundBrandForeground1Hover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStrokeHover | `colorCompoundBrandStrokeHover`} design token.
+ * @public
+ */
+export const colorCompoundBrandStrokeHover = 'var(--colorCompoundBrandStrokeHover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStrokePressed | `colorCompoundBrandStrokePressed`} design token.
+ * @public
+ */
+export const colorCompoundBrandStrokePressed = 'var(--colorCompoundBrandStrokePressed)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandForeground1Pressed | `colorCompoundBrandForeground1Pressed`} design token.
+ * @public
+ */
+export const colorCompoundBrandForeground1Pressed = 'var(--colorCompoundBrandForeground1Pressed)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground4 | `colorNeutralForeground4`} design token.
  * @public
