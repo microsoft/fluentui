@@ -7,7 +7,7 @@
  */
 
 /**
- * Unwrapped type for 'keyof JSX.IntrinsicElement'. (Backwards compatible with older versions of @types/react)
+ * Unwrapped type for 'keyof JSX.IntrinsicElement'. (Backwards compatible with older versions of '\@types/react')
  */
 export type JSXIntrinsicElementKeysCompat =
   | 'a'

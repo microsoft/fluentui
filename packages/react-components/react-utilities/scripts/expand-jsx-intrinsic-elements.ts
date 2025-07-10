@@ -41,7 +41,7 @@ async function main(options: { targetFile: string; reactTypesPath: string; omitE
 
   const JSXIntrinsicElementKeysTypeStatement = `
   /**
-  * Unwrapped type for 'keyof JSX.IntrinsicElement'. (Backwards compatible with older versions of @types/react)
+  * Unwrapped type for 'keyof JSX.IntrinsicElement'. (Backwards compatible with older versions of '\\@types/react')
   */
   export type JSXIntrinsicElementKeysCompat = ${compat};
   /**
