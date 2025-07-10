@@ -25,6 +25,10 @@ import { LabelState } from '@fluentui/react-label';
 import { LinkState } from '@fluentui/react-link';
 import { ListItemState } from '@fluentui/react-list';
 import { MenuButtonState } from '@fluentui/react-button';
+import { MessageBarActionsState } from '@fluentui/react-message-bar';
+import { MessageBarBodyState } from '@fluentui/react-message-bar';
+import { MessageBarState } from '@fluentui/react-message-bar';
+import { MessageBarTitleState } from '@fluentui/react-message-bar';
 import { ProgressBarState } from '@fluentui/react-progress';
 import { RatingDisplayState } from '@fluentui/react-rating';
 import { RatingItemState } from '@fluentui/react-rating';
@@ -100,6 +104,18 @@ export const useSemanticListItemStyles: (_state: unknown) => ListItemState;
 
 // @public (undocumented)
 export const useSemanticMenuButtonStyles: (_state: unknown) => MenuButtonState;
+
+// @public
+export const useSemanticMessageBarActionsStyles: (_state: unknown) => MessageBarActionsState;
+
+// @public
+export const useSemanticMessageBarBodyStyles: (_state: unknown) => MessageBarBodyState;
+
+// @public
+export const useSemanticMessageBarStyles: (_state: unknown) => MessageBarState;
+
+// @public
+export const useSemanticMessageBarTitleStyles: (_state: unknown) => MessageBarTitleState;
 
 // @public
 export const useSemanticOverlayDrawerSurfaceStyles: (_state: unknown) => DialogSurfaceState;
