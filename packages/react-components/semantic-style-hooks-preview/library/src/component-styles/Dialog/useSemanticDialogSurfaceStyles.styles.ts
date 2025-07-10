@@ -37,6 +37,10 @@ const useRootBaseStyle = makeResetStyles({
   // to ensure dialog will be properly styled when surfaceMotion is opted-out
   boxShadow: semanticTokens.ctrlDialogBaseShadow,
 
+  '@supports (height: 1dvh)': {
+    maxHeight: '100dvh',
+  },
+
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
   },
@@ -58,7 +62,7 @@ const useBackdropBaseStyle = makeResetStyles({
   position: 'fixed',
 });
 
-const useBackdropStyles = makeStyles({
+const useStyles = makeStyles({
   nestedDialogBackdrop: {
     backgroundColor: semanticTokens.nullColor,
   },
@@ -76,7 +80,7 @@ export const useSemanticDialogSurfaceStyles = (_state: unknown): DialogSurfaceSt
   const rootBaseStyle = useRootBaseStyle();
 
   const backdropBaseStyle = useBackdropBaseStyle();
-  const backdropStyles = useBackdropStyles();
+  const styles = useStyles();
 
   root.className = mergeClasses(
     root.className,
@@ -90,7 +94,7 @@ export const useSemanticDialogSurfaceStyles = (_state: unknown): DialogSurfaceSt
       backdrop.className,
       dialogSurfaceClassNames.backdrop,
       backdropBaseStyle,
-      isNestedDialog && backdropStyles.nestedDialogBackdrop,
+      isNestedDialog && styles.nestedDialogBackdrop,
       getSlotClassNameProp_unstable(backdrop),
     );
   }
