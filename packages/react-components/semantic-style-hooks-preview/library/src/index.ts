@@ -39,3 +39,9 @@ export {
   useSemanticDialogSurfaceStyles,
   useSemanticDialogTitleStyles,
 } from './component-styles/Dialog';
+export {
+  useSemanticMessageBarStyles,
+  useSemanticMessageBarBodyStyles,
+  useSemanticMessageBarActionsStyles,
+  useSemanticMessageBarTitleStyles,
+} from './component-styles/MessageBar';
