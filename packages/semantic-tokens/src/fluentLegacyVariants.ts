@@ -87,7 +87,7 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   },
   _ctrlDialogGapBetweenContentMedium: {
     originalToken: 'gapBetweenContentMedium',
-    rawValue: '8px', // should be 24px
+    rawValue: '8px',
   },
   _ctrlDividerForegroundSubtle: {
     f2Token: 'colorNeutralForeground3',
@@ -136,6 +136,38 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _ctrlListItemStroke: {
     f2Token: 'colorStrokeFocus2',
     originalToken: 'strokeWidthCtrlOutlineRest',
+  },
+  _ctrlMessageBarActionsMultilinePaddingRight: {
+    f2Token: 'spacingVerticalM',
+    originalToken: 'paddingContentAlignDefault',
+  },
+  _ctrlMessageBarErrorIconColor: {
+    f2Token: 'colorStatusDangerForeground1',
+    originalToken: 'statusDangerTintForeground',
+  },
+  _ctrlMessageBarGapBetweenCtrl: {
+    f2Token: 'spacingHorizontalM',
+    originalToken: 'gapBetweenCtrlDefault',
+  },
+  _ctrlMessageBarPaddingContentAlignDefault: {
+    originalToken: 'paddingContentAlignDefault',
+    rawValue: '12px',
+  },
+  _ctrlMessageBarPaddingVertical: {
+    originalToken: 'paddingContentAlignOutdentIconOnSubtle',
+    rawValue: '0px',
+  },
+  _ctrlMessageBarReflowSpacerMarginBottom: {
+    f2Token: 'spacingVerticalS',
+    originalToken: 'paddingContentAlignDefault',
+  },
+  _ctrlMessageBarSpacingTop: {
+    f2Token: 'spacingVerticalMNudge',
+    originalToken: 'paddingContentAlignDefault',
+  },
+  _ctrlMessageBarTitleLineHeight: {
+    f2Token: 'lineHeightBase300',
+    originalToken: 'textRampItemHeaderLineHeight',
   },
   _ctrlPersonaTreeIconOnSubtlePressed: {
     f2Token: 'colorNeutralForeground3Pressed',
