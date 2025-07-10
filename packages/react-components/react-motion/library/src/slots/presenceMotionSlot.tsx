@@ -28,6 +28,7 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
    *
    * If you want to override the animation, use the children render function instead.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   as?: keyof JSX.IntrinsicElements;
 
   // TODO: remove once React v18 slot API is modified ComponentProps is not properly adding render function as a
