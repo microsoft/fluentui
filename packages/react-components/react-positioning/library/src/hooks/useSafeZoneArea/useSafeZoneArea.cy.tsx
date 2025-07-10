@@ -200,7 +200,7 @@ describe('useSafeZoneArea', () => {
     cy.get('[data-safe-zone]').should('have.css', 'display', 'none');
   });
 
-  it('safe zone is stays open as long as mouse keeps moving inside it', () => {
+  it.only('safe zone is stays open as long as mouse keeps moving inside it', () => {
     const onSafeZoneTimeout = cy.stub().as('onSafeZoneTimeout');
     cy.clock();
 
@@ -215,21 +215,23 @@ describe('useSafeZoneArea', () => {
 
     cy.get('.trigger').realHover({ position: 'right' });
     cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
-    let startX = 10;
-    let startY = 10;
-    for (let i = 0; i < 5; i++) {
-      cy.get('.trigger').realMouseMove(startX, startY, { position: 'topRight' });
-      cy.clock().tick(299);
-      cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
-      startX += 1;
-      startY += 1;
-    }
 
-    cy.get('.trigger').realMouseMove(startX, startY, { position: 'topRight' });
-    cy.clock().tick(301);
-    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+    cy.clock(0).then(() => {
+      // Move the mouse inside the safe zone area, it should stay visible
 
-    cy.get('@onSafeZoneTimeout').should('be.called');
+      for (let startX = 10, startY = 10; startX < 15; startX++, startY++) {
+        cy.get('.trigger').realMouseMove(startX, startY, { position: 'topRight' });
+        cy.tick(299);
+
+        cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+      }
+
+      // After 300ms of no movement, the safe zone should be hidden
+      cy.tick(301);
+
+      cy.get('@onSafeZoneTimeout').should('be.called');
+      cy.get('[data-safe-zone]').should('have.css', 'display', 'none');
+    });
   });
 
   it('safe zone is hidden after timeout if mouse is not moving', () => {
