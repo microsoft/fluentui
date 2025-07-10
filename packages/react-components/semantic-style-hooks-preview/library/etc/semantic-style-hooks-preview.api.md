@@ -35,6 +35,8 @@ import { RatingItemState } from '@fluentui/react-rating';
 import { SpinnerState } from '@fluentui/react-spinner';
 import { SplitButtonState } from '@fluentui/react-button';
 import { SwitchState } from '@fluentui/react-switch';
+import { TabListState } from '@fluentui/react-tabs';
+import { TabState } from '@fluentui/react-tabs';
 import { TextareaState } from '@fluentui/react-textarea';
 import { TextState } from '@fluentui/react-text';
 import { ToggleButtonState } from '@fluentui/react-button';
@@ -137,6 +139,21 @@ export const useSemanticSplitButtonStyles: (_state: unknown) => SplitButtonState
 
 // @public
 export const useSemanticSwitchStyles: (_state: unknown) => SwitchState;
+
+// @public
+export const useSemanticTabButtonStyles_unstable: (state: TabState, slot: TabState['root']) => TabState;
+
+// @public
+export const useSemanticTabContentStyles_unstable: (state: TabState) => TabState;
+
+// @public
+export const useSemanticTabIndicatorStyles_unstable: (state: TabState) => TabState;
+
+// @public
+export const useSemanticTabListStyles: (_state: unknown) => TabListState;
+
+// @public
+export const useSemanticTabStyles: (_state: unknown) => TabState;
 
 // @public
 export const useSemanticTextareaStyles: (_state: unknown) => TextareaState;
