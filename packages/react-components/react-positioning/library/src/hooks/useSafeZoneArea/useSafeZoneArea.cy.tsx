@@ -200,7 +200,7 @@ describe('useSafeZoneArea', () => {
     cy.get('[data-safe-zone]').should('have.css', 'display', 'none');
   });
 
-  it.only('safe zone is stays open as long as mouse keeps moving inside it', () => {
+  it('safe zone is stays open as long as mouse keeps moving inside it', () => {
     const onSafeZoneTimeout = cy.stub().as('onSafeZoneTimeout');
     cy.clock();
 
