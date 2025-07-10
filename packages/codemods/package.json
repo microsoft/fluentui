@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/codemods",
-  "version": "8.4.27",
-  "description": "Tool enabling easy upgrades to new Fluent UI versions",
+  "version": "8.4.28",
+  "description": "Tool enabling easy upgrades to Fluent UI React v8 version",
   "main": "lib-commonjs/index.js",
   "typings": "lib-commonjs/index.d.ts",
   "bin": {
@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "tslib": "^2.1.0",
-    "react": "17.0.2",
     "ts-morph": "^10.0.1",
     "glob": "^7.1.2",
     "yargs": "^13.3.2"
