@@ -211,7 +211,7 @@ export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrol
     itemSize: number;
     numItems: number;
     children: VirtualizerChildRenderFunction;
-    imperativeRef?: React_2.RefObject<ScrollToInterface>;
+    imperativeRef?: React_2.RefObject<ScrollToInterface | null>;
     enablePagination?: boolean;
 };
 
