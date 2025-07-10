@@ -67,8 +67,8 @@ export const ScrollTo = () => {
         numItems={childLength}
         itemSize={100}
         getItemSize={getItemSizeCallback}
-        imperativeRef={scrollRef as React.RefObject<ScrollToInterface>}
-        imperativeVirtualizerRef={sizeRef as React.RefObject<VirtualizerDataRef>}
+        imperativeRef={scrollRef}
+        imperativeVirtualizerRef={sizeRef}
         container={{
           role: 'list',
           'aria-label': `Virtualized list with ${childLength} children`,
