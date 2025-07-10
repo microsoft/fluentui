@@ -35,6 +35,7 @@
     "@fluentui/react-jsx-runtime": "^9.0.54",
     "@fluentui/react-label": "^9.1.87",
     "@fluentui/react-link": "^9.4.6",
+    "@fluentui/react-list": "^9.1.6",
     "@fluentui/react-motion": "^9.7.2",
     "@fluentui/react-progress": "^9.2.6",
     "@fluentui/react-provider": "^9.20.6",
