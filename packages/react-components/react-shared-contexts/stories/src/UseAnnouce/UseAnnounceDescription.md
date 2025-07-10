@@ -2,6 +2,8 @@
 
 **Note:** This hook requires an aria-live announcer implementation that is configured through the `<AnnounceProvider />`. Define this context near the top level of your application.
 
+For live region debugging information, check our [Debugging Notifications](./?path=/docs/concepts-developer-accessibility-notification-debugging--docs) docs page.
+
 ## useAnnounce
 
 `useAnnounce(message, options)`
