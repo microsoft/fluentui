@@ -965,7 +965,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
 
           const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
-          const supportsTextMode = this._points[i].lineOptions?.mode?.includes('text') || this._isScatterPolar;
+          const supportsTextMode = this._points[i].lineOptions?.mode?.includes('text');
           const text = this._points[i].data[j - 1].text;
           let currentMarkerSize = this._points[i].data[j - 1].markerSize!;
           pointsForLine.push(
@@ -1357,7 +1357,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             yAxisScale: yScale,
             className: classNames.markerLabel || '',
             maybeLineOptions: (this._points[i] as Partial<ILineChartPoints>)?.lineOptions
-              ? { originXOffset: (this._points[i] as any).lineOptions?.originXOffset }
+              ? {
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  originXOffset: (this._points[i] as any).lineOptions?.originXOffset,
+                }
               : undefined,
           }),
         );

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ScaleLinear } from 'd3-scale';
 
 /**
  * Helper to render categorical labels for scatterpolar charts with improved overlap logic across all series
@@ -13,8 +14,8 @@ export function renderScatterPolarCategoryLabels({
   minPixelGap = 40,
 }: {
   allSeriesData: { data: { x: number; y: number; text?: string }[] }[];
-  xAxisScale: any;
-  yAxisScale: any;
+  xAxisScale: ScaleLinear<number, number>;
+  yAxisScale: ScaleLinear<number, number>;
   className: string;
   maybeLineOptions?: { originXOffset?: number };
   minPixelGap?: number;

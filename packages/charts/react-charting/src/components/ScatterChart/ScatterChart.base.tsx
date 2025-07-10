@@ -559,8 +559,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
         if (_isScatterPolarRef.current) {
           // Render category labels for all series at once to avoid overlap
-          const allSeriesData = _points.current.map(series => ({
-            data: series.data
+          const allSeriesData = _points.current.map(s => ({
+            data: s.data
               .filter(pt => typeof pt.x === 'number' && typeof pt.y === 'number')
               .map(pt => ({ x: pt.x as number, y: pt.y as number, text: pt.text })),
           }));
@@ -571,7 +571,11 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
               yAxisScale: _yAxisScale.current,
               className: classNames.markerLabel || '',
               maybeLineOptions: (_points.current?.[i] as Partial<ILineChartPoints>)?.lineOptions
-                ? { originXOffset: (_points.current?.[i] as any).lineOptions?.originXOffset }
+                ? {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    originXOffset: ((_points.current?.[i] as Partial<ILineChartPoints>).lineOptions as any)
+                      ?.originXOffset,
+                  }
                 : undefined,
             }),
           );
