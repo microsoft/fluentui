@@ -31,6 +31,7 @@
     "@fluentui/react-divider": "^9.2.86",
     "@fluentui/react-drawer": "^9.7.8",
     "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-image": "^9.1.84",
     "@fluentui/react-jsx-runtime": "^9.0.54",
     "@fluentui/react-label": "^9.1.87",
     "@fluentui/react-link": "^9.4.6",

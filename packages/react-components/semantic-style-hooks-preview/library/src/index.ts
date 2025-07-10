@@ -30,3 +30,4 @@ export {
   useSemanticTreeItemStyles,
   useSemanticTreeStyles,
 } from './component-styles/Tree';
+export { useSemanticImageStyles } from './component-styles/Image';
