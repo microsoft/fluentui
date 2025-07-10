@@ -250,7 +250,7 @@ const useRootStyles = makeStyles({
   },
   'tint-warning': {
     backgroundColor: semanticTokens.statusWarningTintBackground,
-    color: semanticTokens._ctrlBadgeStatusWarningTintForeground,
+    color: semanticTokens.statusWarningTintForeground,
     ...shorthands.borderColor(semanticTokens.statusWarningTintStroke),
   },
 });

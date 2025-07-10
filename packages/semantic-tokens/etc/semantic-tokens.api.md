@@ -928,9 +928,6 @@ export const _ctrlBadgeStatusImportantTintForeground = "var(--smtc-status-import
 // @public
 export const _ctrlBadgeStatusSuccessTintForeground = "var(--smtc-status-success-tint-foreground, var(--colorPaletteGreenForeground1))";
 
-// @public
-export const _ctrlBadgeStatusWarningTintForeground = "var(--smtc-status-warning-tint-foreground, var(--colorPaletteYellowForeground1))";
-
 // @public (undocumented)
 export const ctrlBadgeTextPaddingBottom = "var(--smtc-ctrl-badge-text-padding-bottom, var(--smtc-ctrl-badge-text-padding-top))";
 
@@ -4618,7 +4615,7 @@ export const statusSuccessTintStroke = "var(--smtc-status-success-tint-stroke, v
 export const statusSuccessTintStrokeRaw = "--smtc-status-success-tint-stroke";
 
 // @public (undocumented)
-export const statusWarningBackground = "var(--smtc-status-warning-background, var(--colorPaletteYellowBackground3))";
+export const statusWarningBackground = "var(--smtc-status-warning-background, var(--colorStatusWarningBackground3))";
 
 // @public (undocumented)
 export const statusWarningBackgroundRaw = "--smtc-status-warning-background";
@@ -4636,19 +4633,19 @@ export const statusWarningStroke = "var(--smtc-status-warning-stroke, var(--smtc
 export const statusWarningStrokeRaw = "--smtc-status-warning-stroke";
 
 // @public (undocumented)
-export const statusWarningTintBackground = "var(--smtc-status-warning-tint-background)";
+export const statusWarningTintBackground = "var(--smtc-status-warning-tint-background, var(--colorStatusWarningBackground1))";
 
 // @public (undocumented)
 export const statusWarningTintBackgroundRaw = "--smtc-status-warning-tint-background";
 
 // @public (undocumented)
-export const statusWarningTintForeground = "var(--smtc-status-warning-tint-foreground, var(--colorPaletteYellowForeground2))";
+export const statusWarningTintForeground = "var(--smtc-status-warning-tint-foreground, var(--colorStatusWarningForeground1))";
 
 // @public (undocumented)
 export const statusWarningTintForegroundRaw = "--smtc-status-warning-tint-foreground";
 
 // @public (undocumented)
-export const statusWarningTintStroke = "var(--smtc-status-warning-tint-stroke, var(--colorPaletteYellowBorder1))";
+export const statusWarningTintStroke = "var(--smtc-status-warning-tint-stroke, var(--colorStatusWarningBorder1))";
 
 // @public (undocumented)
 export const statusWarningTintStrokeRaw = "--smtc-status-warning-tint-stroke";

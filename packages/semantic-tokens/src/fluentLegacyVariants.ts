@@ -125,10 +125,6 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorPaletteGreenForeground1',
     originalToken: 'statusSuccessTintForeground',
   },
-  _ctrlBadgeStatusWarningTintForeground: {
-    f2Token: 'colorPaletteYellowForeground1',
-    originalToken: 'statusWarningTintForeground',
-  },
   _ctrlBadgeTextStyleSemiBoldWeight: {
     f2Token: 'fontWeightSemibold',
     originalToken: 'textStyleDefaultRegularWeight',

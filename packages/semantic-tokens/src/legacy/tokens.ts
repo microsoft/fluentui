@@ -380,30 +380,30 @@ export const colorPaletteGreenForeground3 = 'var(--colorPaletteGreenForeground3)
  */
 export const colorPaletteGreenBorder1 = 'var(--colorPaletteGreenBorder1)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowBackground3 | `colorPaletteYellowBackground3`} design token.
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningBackground3 | `colorStatusWarningBackground3`} design token.
  * @public
  */
-export const colorPaletteYellowBackground3 = 'var(--colorPaletteYellowBackground3)';
+export const colorStatusWarningBackground3 = 'var(--colorStatusWarningBackground3)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground1Static | `colorNeutralForeground1Static`} design token.
  * @public
  */
 export const colorNeutralForeground1Static = 'var(--colorNeutralForeground1Static)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowBackground1 | `colorPaletteYellowBackground1`} design token.
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningBackground1 | `colorStatusWarningBackground1`} design token.
  * @public
  */
-export const colorPaletteYellowBackground1 = 'var(--colorPaletteYellowBackground1)';
+export const colorStatusWarningBackground1 = 'var(--colorStatusWarningBackground1)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowForeground2 | `colorPaletteYellowForeground2`} design token.
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningForeground1 | `colorStatusWarningForeground1`} design token.
  * @public
  */
-export const colorPaletteYellowForeground2 = 'var(--colorPaletteYellowForeground2)';
+export const colorStatusWarningForeground1 = 'var(--colorStatusWarningForeground1)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowBorder1 | `colorPaletteYellowBorder1`} design token.
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningBorder1 | `colorStatusWarningBorder1`} design token.
  * @public
  */
-export const colorPaletteYellowBorder1 = 'var(--colorPaletteYellowBorder1)';
+export const colorStatusWarningBorder1 = 'var(--colorStatusWarningBorder1)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeOnBrand | `colorNeutralStrokeOnBrand`} design token.
  * @public
@@ -579,11 +579,6 @@ export const colorPaletteRedForeground1 = 'var(--colorPaletteRedForeground1)';
  * @public
  */
 export const colorPaletteGreenForeground1 = 'var(--colorPaletteGreenForeground1)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowForeground1 | `colorPaletteYellowForeground1`} design token.
- * @public
- */
-export const colorPaletteYellowForeground1 = 'var(--colorPaletteYellowForeground1)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground4 | `colorNeutralForeground4`} design token.
  * @public

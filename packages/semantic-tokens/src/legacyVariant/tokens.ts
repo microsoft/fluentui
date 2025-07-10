@@ -25,7 +25,6 @@ import {
   statusDangerTintForegroundRaw,
   statusImportantTintForegroundRaw,
   statusSuccessTintForegroundRaw,
-  statusWarningTintForegroundRaw,
   textStyleDefaultRegularWeightRaw,
   gapInsideCtrlDefaultRaw,
   backgroundCtrlNeutralRestRaw,
@@ -53,7 +52,6 @@ import {
   colorPaletteRedForeground1,
   colorNeutralBackground1,
   colorPaletteGreenForeground1,
-  colorPaletteYellowForeground1,
   fontWeightSemibold,
   spacingHorizontalSNudge,
   colorNeutralForeground3,
@@ -290,13 +288,6 @@ export const _ctrlBadgeStatusImportantTintForeground = `var(${statusImportantTin
  * please use statusSuccessTintForeground instead.
  */
 export const _ctrlBadgeStatusSuccessTintForeground = `var(${statusSuccessTintForegroundRaw}, ${colorPaletteGreenForeground1})`;
-/**
- * This is a legacy variant for statusWarningTintForeground to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use statusWarningTintForeground instead.
- */
-export const _ctrlBadgeStatusWarningTintForeground = `var(${statusWarningTintForegroundRaw}, ${colorPaletteYellowForeground1})`;
 /**
  * This is a legacy variant for textStyleDefaultRegularWeight to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.

@@ -57,10 +57,10 @@ import {
   colorPaletteRedBackground1,
   colorPaletteRedBorder1,
   colorPaletteRedForeground3,
-  colorPaletteYellowBackground3,
-  colorPaletteYellowBackground1,
-  colorPaletteYellowBorder1,
-  colorPaletteYellowForeground2,
+  colorStatusWarningBackground3,
+  colorStatusWarningBackground1,
+  colorStatusWarningBorder1,
+  colorStatusWarningForeground1,
   colorPaletteGreenBackground3,
   colorPaletteGreenBackground1,
   colorPaletteGreenBorder1,
@@ -431,10 +431,10 @@ export const statusDangerBackground = `var(${statusDangerBackgroundRaw}, ${color
 export const statusDangerTintBackground = `var(${statusDangerTintBackgroundRaw}, ${colorPaletteRedBackground1})`;
 export const statusDangerTintStroke = `var(${statusDangerTintStrokeRaw}, ${colorPaletteRedBorder1})`;
 export const statusDangerTintForeground = `var(${statusDangerTintForegroundRaw}, ${colorPaletteRedForeground3})`;
-export const statusWarningBackground = `var(${statusWarningBackgroundRaw}, ${colorPaletteYellowBackground3})`;
-export const statusWarningTintBackground = `var(${statusWarningTintBackgroundRaw}, ${colorPaletteYellowBackground1})`;
-export const statusWarningTintStroke = `var(${statusWarningTintStrokeRaw}, ${colorPaletteYellowBorder1})`;
-export const statusWarningTintForeground = `var(${statusWarningTintForegroundRaw}, ${colorPaletteYellowForeground2})`;
+export const statusWarningBackground = `var(${statusWarningBackgroundRaw}, ${colorStatusWarningBackground3})`;
+export const statusWarningTintBackground = `var(${statusWarningTintBackgroundRaw}, ${colorStatusWarningBackground1})`;
+export const statusWarningTintStroke = `var(${statusWarningTintStrokeRaw}, ${colorStatusWarningBorder1})`;
+export const statusWarningTintForeground = `var(${statusWarningTintForegroundRaw}, ${colorStatusWarningForeground1})`;
 export const statusSuccessBackground = `var(${statusSuccessBackgroundRaw}, ${colorPaletteGreenBackground3})`;
 export const statusSuccessTintBackground = `var(${statusSuccessTintBackgroundRaw}, ${colorPaletteGreenBackground1})`;
 export const statusSuccessTintStroke = `var(${statusSuccessTintStrokeRaw}, ${colorPaletteGreenBorder1})`;

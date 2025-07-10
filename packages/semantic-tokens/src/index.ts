@@ -1810,7 +1810,6 @@ export {
   _ctrlBadgeStatusDangerTintForeground,
   _ctrlBadgeStatusImportantTintForeground,
   _ctrlBadgeStatusSuccessTintForeground,
-  _ctrlBadgeStatusWarningTintForeground,
   _ctrlBadgeTextStyleSemiBoldWeight,
   _ctrlBadgeXLPadding,
   _ctrlButtonGapInsideDefault,
