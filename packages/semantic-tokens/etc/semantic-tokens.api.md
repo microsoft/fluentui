@@ -401,7 +401,7 @@ export const backgroundLayerTertiary = "var(--smtc-background-layer-tertiary, va
 export const backgroundLayerTertiaryRaw = "--smtc-background-layer-tertiary";
 
 // @public (undocumented)
-export const backgroundSmoke = "var(--smtc-background-smoke)";
+export const backgroundSmoke = "var(--smtc-background-smoke, var(--colorBackgroundOverlay))";
 
 // @public (undocumented)
 export const backgroundSmokeRaw = "--smtc-background-smoke";
@@ -1451,19 +1451,22 @@ export const ctrlDialogBackground = "var(--smtc-ctrl-dialog-background)";
 export const ctrlDialogBackgroundRaw = "--smtc-ctrl-dialog-background";
 
 // @public (undocumented)
-export const ctrlDialogBaseCorner = "var(--smtc-ctrl-dialog-base-corner, var(--smtc-corner-card-rest))";
+export const ctrlDialogBaseCorner = "var(--smtc-ctrl-dialog-base-corner, var(--smtc-corner-card-rest, var(--borderRadiusXLarge)))";
 
 // @public (undocumented)
 export const ctrlDialogBaseCornerRaw = "--smtc-ctrl-dialog-base-corner";
 
 // @public (undocumented)
-export const ctrlDialogBaseShadow = "var(--smtc-ctrl-dialog-base-shadow)";
+export const ctrlDialogBaseShadow = "var(--smtc-ctrl-dialog-base-shadow, var(--shadow64))";
 
 // @public (undocumented)
 export const ctrlDialogBaseShadowRaw = "--smtc-ctrl-dialog-base-shadow";
 
+// @public
+export const _ctrlDialogGapBetweenContentMedium = "var(--smtc-gap-between-content-medium, 8px)";
+
 // @public (undocumented)
-export const ctrlDialogLayerBackground = "var(--smtc-ctrl-dialog-layer-background, var(--smtc-background-layer-primary-solid))";
+export const ctrlDialogLayerBackground = "var(--smtc-ctrl-dialog-layer-background, var(--smtc-background-layer-primary-solid, var(--colorNeutralBackground1)))";
 
 // @public (undocumented)
 export const ctrlDialogLayerBackgroundRaw = "--smtc-ctrl-dialog-layer-background";
@@ -1475,7 +1478,7 @@ export const ctrlDialogLayerPaddingBottom = "var(--smtc-ctrl-dialog-layer-paddin
 export const ctrlDialogLayerPaddingBottomRaw = "--smtc-ctrl-dialog-layer-padding-bottom";
 
 // @public (undocumented)
-export const ctrlDialogStroke = "var(--smtc-ctrl-dialog-stroke, unset)";
+export const ctrlDialogStroke = "var(--smtc-ctrl-dialog-stroke, var(--smtc-null-color, var(--colorNeutralStroke2)))";
 
 // @public (undocumented)
 export const ctrlDialogStrokeRaw = "--smtc-ctrl-dialog-stroke";
@@ -3215,7 +3218,7 @@ export const gapBetweenContentNone = "var(--smtc-gap-between-content-none)";
 export const gapBetweenContentNoneRaw = "--smtc-gap-between-content-none";
 
 // @public (undocumented)
-export const gapBetweenContentSmall = "var(--smtc-gap-between-content-small)";
+export const gapBetweenContentSmall = "var(--smtc-gap-between-content-small, 8px)";
 
 // @public (undocumented)
 export const gapBetweenContentSmallRaw = "--smtc-gap-between-content-small";
@@ -3245,7 +3248,7 @@ export const gapBetweenContentXxSmall = "var(--smtc-gap-between-content-xx-small
 export const gapBetweenContentXxSmallRaw = "--smtc-gap-between-content-xx-small";
 
 // @public (undocumented)
-export const gapBetweenCtrlDefault = "var(--smtc-gap-between-ctrl-default)";
+export const gapBetweenCtrlDefault = "var(--smtc-gap-between-ctrl-default, 8px)";
 
 // @public (undocumented)
 export const gapBetweenCtrlDefaultRaw = "--smtc-gap-between-ctrl-default";
@@ -5389,25 +5392,25 @@ export const textRampPageHeaderLineHeight = "var(--smtc-text-ramp-page-header-li
 export const textRampPageHeaderLineHeightRaw = "--smtc-text-ramp-page-header-line-height";
 
 // @public (undocumented)
-export const textRampReadingBodyFontSize = "var(--smtc-text-ramp-reading-body-font-size, var(--smtc-text-global-body2-font-size))";
+export const textRampReadingBodyFontSize = "var(--smtc-text-ramp-reading-body-font-size, var(--smtc-text-global-body2-font-size, var(--fontSizeBase300)))";
 
 // @public (undocumented)
 export const textRampReadingBodyFontSizeRaw = "--smtc-text-ramp-reading-body-font-size";
 
 // @public (undocumented)
-export const textRampReadingBodyLineHeight = "var(--smtc-text-ramp-reading-body-line-height, var(--smtc-text-global-body2-line-height))";
+export const textRampReadingBodyLineHeight = "var(--smtc-text-ramp-reading-body-line-height, var(--smtc-text-global-body2-line-height, var(--lineHeightBase300)))";
 
 // @public (undocumented)
 export const textRampReadingBodyLineHeightRaw = "--smtc-text-ramp-reading-body-line-height";
 
 // @public (undocumented)
-export const textRampSectionHeaderFontSize = "var(--smtc-text-ramp-section-header-font-size, var(--smtc-text-global-subtitle1-font-size))";
+export const textRampSectionHeaderFontSize = "var(--smtc-text-ramp-section-header-font-size, var(--smtc-text-global-subtitle1-font-size, var(--fontSizeBase500)))";
 
 // @public (undocumented)
 export const textRampSectionHeaderFontSizeRaw = "--smtc-text-ramp-section-header-font-size";
 
 // @public (undocumented)
-export const textRampSectionHeaderLineHeight = "var(--smtc-text-ramp-section-header-line-height, var(--smtc-text-global-subtitle1-line-height))";
+export const textRampSectionHeaderLineHeight = "var(--smtc-text-ramp-section-header-line-height, var(--smtc-text-global-subtitle1-line-height, var(--lineHeightBase500)))";
 
 // @public (undocumented)
 export const textRampSectionHeaderLineHeightRaw = "--smtc-text-ramp-section-header-line-height";

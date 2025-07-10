@@ -85,6 +85,10 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'gapInsideCtrlDefault',
   },
+  _ctrlDialogGapBetweenContentMedium: {
+    originalToken: 'gapBetweenContentMedium',
+    rawValue: '8px', // should be 24px
+  },
   _ctrlDividerForegroundSubtle: {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlHintDefault',
