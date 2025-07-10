@@ -19,6 +19,7 @@ import { ImageState } from '@fluentui/react-image';
 import { InlineDrawerState } from '@fluentui/react-drawer';
 import { LabelState } from '@fluentui/react-label';
 import { LinkState } from '@fluentui/react-link';
+import { ListItemState } from '@fluentui/react-list';
 import { MenuButtonState } from '@fluentui/react-button';
 import { ProgressBarState } from '@fluentui/react-progress';
 import { RatingDisplayState } from '@fluentui/react-rating';
@@ -74,6 +75,9 @@ export const useSemanticLabelStyles: (_state: unknown) => LabelState;
 
 // @public (undocumented)
 export const useSemanticLinkStyles: (_state: unknown) => LinkState;
+
+// @public
+export const useSemanticListItemStyles: (_state: unknown) => ListItemState;
 
 // @public (undocumented)
 export const useSemanticMenuButtonStyles: (_state: unknown) => MenuButtonState;
