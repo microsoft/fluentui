@@ -10,7 +10,7 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "node -r ../../../scripts/ts-node/src/register scripts/expand-jsx-intrinsic-elements.ts",
+          "node -r ../../../scripts/ts-node/src/register scripts/expand-jsx-intrinsic-elements.ts --target-file ./src/utils/generated-types.ts --omit-elements set,mpath,center,search",
           "prettier -w src/utils/generated-types.ts"
         ],
         "cwd": "{projectRoot}",

@@ -51,6 +51,7 @@ async function main(options: { targetFile: string; reactTypesPath: string; omitE
 }
 
 function processArgs() {
+  const root = process.cwd();
   const { values } = parseArgs({
     args: process.argv.slice(2),
     options: {
@@ -81,38 +82,48 @@ function processArgs() {
   // Show help if requested
   if (values.help) {
     console.log(`
-Usage: node scripts/expand-jsx-intrinsic-elements.ts [options]
+Usage: node scripts/expand-jsx-intrinsic-elements.ts --target-file <path> [options]
 
 Options:
+  -t, --target-file <path>         Output file path (required)
   -r, --react-types-path <path>    Path to the React types directory
-  -t, --target-file <path>         Output file path (default: ../src/utils/generated-types.ts)
-  -o, --omit-elements <elements>   Comma-separated list of elements to exclude to make JSXIntrinsicElements union backwards compatible (default: set,mpath,center,search)
+  -o, --omit-elements <elements>   Comma-separated list of elements to exclude to make JSXIntrinsicElements union backwards compatible
   -h, --help                       Show this help message
 
 Examples:
-  node scripts/expand-jsx-intrinsic-elements.ts
-  node scripts/expand-jsx-intrinsic-elements.ts --omit-elements div,span,p
-  node scripts/expand-jsx-intrinsic-elements.ts --target-file ./custom-types.ts
-  node scripts/expand-jsx-intrinsic-elements.ts --react-types-path /path/to/react/types
+  node scripts/expand-jsx-intrinsic-elements.ts --target-file ./generated-types.ts
+  node scripts/expand-jsx-intrinsic-elements.ts --target-file ./custom-types.ts --omit-elements div,span,p
+  node scripts/expand-jsx-intrinsic-elements.ts --target-file ./generated-types.ts --react-types-path /path/to/react/types
 `);
     process.exit(0);
   }
 
+  // Validate required arguments
+  if (!values['target-file']) {
+    console.error('❌ Error: --target-file is required');
+    console.error('Use --help for usage information');
+    process.exit(1);
+  }
+
   // Parse omit elements
-  const omitElementsArg = values['omit-elements'];
   const omitElements =
-    typeof omitElementsArg === 'undefined'
-      ? ['set', 'mpath', 'center', 'search'] // Default when no argument provided
-      : omitElementsArg.trim().length === 0
-      ? [] // Empty array when empty string provided
-      : omitElementsArg
+    typeof values['omit-elements'] === 'string'
+      ? values['omit-elements']
           .split(',')
           .map(el => el.trim())
-          .filter(el => el.length > 0);
+          .filter(el => el.length > 0)
+      : [];
+  const targetFile = path.resolve(root, values['target-file']);
+  const reactTypesPath = values['react-types-path'] || findReactTypesPath();
+
+  console.log('🔧 Parsed CLI arguments:');
+  console.log(`  - React types path: ${reactTypesPath}`);
+  console.log(`  - Target file: ${targetFile}`);
+  console.log(`  - Omit elements: ${omitElements}`);
 
   return {
-    reactTypesPath: values['react-types-path'] || findReactTypesPath(),
-    targetFile: values['target-file'] || path.join(__dirname, '../src/utils/generated-types.ts'),
+    reactTypesPath,
+    targetFile,
     omitElements,
   };
 }

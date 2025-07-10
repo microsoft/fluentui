@@ -45,15 +45,15 @@ yarn nx run react-utilities:prebuild
 ### Direct Execution
 
 ```bash
-npx tsx scripts/expand-jsx-intrinsic-elements.ts
+npx tsx scripts/expand-jsx-intrinsic-elements.ts --target-file ./generated-types.ts
 ```
 
 ### Command Line Arguments
 
 The script supports command line arguments for customization:
 
+- `--target-file, -t`: Output file path (required)
 - `--react-types-path, -r`: Path to the React types directory (auto-detected if not provided)
-- `--target-file, -t`: Output file path (defaults to `../src/utils/generated-types.ts`)
 - `--omit-elements, -o`: Comma-separated list of elements to exclude from the generated union
 - `--help, -h`: Show help message
 
@@ -63,17 +63,18 @@ The script supports command line arguments for customization:
 # Show help
 npx tsx scripts/expand-jsx-intrinsic-elements.ts --help
 
+# Basic usage with required target file
+npx tsx scripts/expand-jsx-intrinsic-elements.ts --target-file ./generated-types.ts
+
 # Exclude specific elements from the generated union
-npx tsx scripts/expand-jsx-intrinsic-elements.ts --omit-elements div,span,p
+npx tsx scripts/expand-jsx-intrinsic-elements.ts --target-file ./generated-types.ts --omit-elements div,span,p
 
 # Use custom React types path
-npx tsx scripts/expand-jsx-intrinsic-elements.ts --react-types-path /path/to/react/types
+npx tsx scripts/expand-jsx-intrinsic-elements.ts --target-file ./generated-types.ts --react-types-path /path/to/react/types
 
 # Combine multiple options
-npx tsx scripts/expand-jsx-intrinsic-elements.ts --omit-elements set,mpath,center,search --target-file ./custom-types.ts
+npx tsx scripts/expand-jsx-intrinsic-elements.ts --target-file ./custom-types.ts --omit-elements set,mpath,center,search
 ```
-
-**Default omitted elements**: `set`, `mpath`, `center`, `search`
 
 ## Transformation Example
 
@@ -165,11 +166,8 @@ The transformed types are automatically included in the build process:
 
 ## Maintenance
 
-Run the transformer script whenever:
+Auto updates types via `prebuild` target to insure that:
 
-- React types are updated
+- React types are updated in backwards compatible way
 - New JSX elements are added to React
-- Build process changes affect type generation
-- Manual verification of element completeness is needed
-
-The script can be integrated into CI/CD pipelines to ensure types stay current with React updates.
+- Manual verification of element output is needed after `generate-api` is run
