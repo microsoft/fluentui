@@ -1,8 +1,7 @@
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { DialogBodySlots, DialogBodyState } from './DialogBody.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { MEDIA_QUERY_BREAKPOINT_SELECTOR, MEDIA_QUERY_SHORT_SCREEN } from '../../contexts';
-import * as semanticTokens from '@fluentui/semantic-tokens';
+import { DIALOG_GAP, MEDIA_QUERY_BREAKPOINT_SELECTOR, MEDIA_QUERY_SHORT_SCREEN, SURFACE_PADDING } from '../../contexts';
 
 export const dialogBodyClassNames: SlotClassNames<DialogBodySlots> = {
   root: 'fui-DialogBody',
@@ -13,13 +12,16 @@ export const dialogBodyClassNames: SlotClassNames<DialogBodySlots> = {
  */
 const useResetStyles = makeResetStyles({
   overflow: 'unset',
-  rowGap: semanticTokens._ctrlDialogGapBetweenContentMedium,
-  columnGap: semanticTokens.gapBetweenContentSmall,
+  gap: DIALOG_GAP,
   display: 'grid',
-  maxHeight: `calc(100vh - 2 * ${semanticTokens.paddingContentLarge})`,
+  maxHeight: `calc(100vh - 2 * ${SURFACE_PADDING})`,
   boxSizing: 'border-box',
   gridTemplateRows: 'auto 1fr',
   gridTemplateColumns: '1fr 1fr auto',
+
+  '@supports (height: 1dvh)': {
+    maxHeight: `calc(100dvh - 2 * ${SURFACE_PADDING})`,
+  },
 
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',

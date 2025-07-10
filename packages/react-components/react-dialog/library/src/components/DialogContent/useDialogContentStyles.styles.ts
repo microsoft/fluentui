@@ -1,9 +1,8 @@
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { DialogContentSlots, DialogContentState } from './DialogContent.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { MEDIA_QUERY_SHORT_SCREEN } from '../../contexts';
-import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
   root: 'fui-DialogContent',
@@ -15,10 +14,7 @@ export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
 const useStyles = makeResetStyles({
   padding: tokens.strokeWidthThick,
   margin: `calc(${tokens.strokeWidthThick} * -1)`,
-  fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
-  fontSize: semanticTokens.textRampReadingBodyFontSize,
-  fontWeight: semanticTokens.textStyleDefaultRegularWeight,
-  lineHeight: semanticTokens.textRampReadingBodyLineHeight,
+  ...typographyStyles.body1,
   overflowY: 'auto',
   minHeight: '32px',
   boxSizing: 'border-box',

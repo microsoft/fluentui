@@ -32,3 +32,10 @@ export {
 } from './component-styles/Tree';
 export { useSemanticImageStyles } from './component-styles/Image';
 export { useSemanticListItemStyles } from './component-styles/List';
+export {
+  useSemanticDialogActionsStyles,
+  useSemanticDialogBodyStyles,
+  useSemanticDialogContentStyles,
+  useSemanticDialogSurfaceStyles,
+  useSemanticDialogTitleStyles,
+} from './component-styles/Dialog';

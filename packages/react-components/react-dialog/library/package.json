@@ -36,7 +36,6 @@
     "@fluentui/react-tabster": "^9.24.6",
     "@fluentui/react-theme": "^9.1.24",
     "@fluentui/react-portal": "^9.5.6",
-    "@fluentui/semantic-tokens": "0.0.0-alpha.1",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },

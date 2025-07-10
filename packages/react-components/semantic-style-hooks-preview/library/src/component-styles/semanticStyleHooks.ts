@@ -34,6 +34,13 @@ import {
 } from './Tree';
 import { useSemanticImageStyles } from './Image';
 import { useSemanticListItemStyles } from './List';
+import {
+  useSemanticDialogActionsStyles,
+  useSemanticDialogBodyStyles,
+  useSemanticDialogContentStyles,
+  useSemanticDialogSurfaceStyles,
+  useSemanticDialogTitleStyles,
+} from './Dialog';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -81,4 +88,10 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useImageStyles_unstable: useSemanticImageStyles,
   // List styles
   useListItemStyles_unstable: useSemanticListItemStyles,
+  // Dialog
+  useDialogActionsStyles_unstable: useSemanticDialogActionsStyles,
+  useDialogBodyStyles_unstable: useSemanticDialogBodyStyles,
+  useDialogContentStyles_unstable: useSemanticDialogContentStyles,
+  useDialogSurfaceStyles_unstable: useSemanticDialogSurfaceStyles,
+  useDialogTitleStyles_unstable: useSemanticDialogTitleStyles,
 };

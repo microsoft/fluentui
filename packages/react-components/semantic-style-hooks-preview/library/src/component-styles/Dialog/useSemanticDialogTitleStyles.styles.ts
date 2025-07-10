@@ -1,19 +1,17 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { DialogTitleSlots, DialogTitleState } from './DialogTitle.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { typographyStyles } from '@fluentui/react-theme';
+import { dialogTitleClassNames, type DialogTitleState } from '@fluentui/react-dialog';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-
-export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
-  root: 'fui-DialogTitle',
-  action: 'fui-DialogTitle__action',
-};
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 /**
  * Styles for the root slot
  */
 const useRootResetStyles = makeResetStyles({
-  ...typographyStyles.subtitle1,
+  fontFamily: semanticTokens.textStyleDefaultHeaderFontFamily,
+  fontSize: semanticTokens.textRampSectionHeaderFontSize,
+  fontWeight: semanticTokens.textStyleDefaultHeaderWeight,
+  lineHeight: semanticTokens.textRampSectionHeaderLineHeight,
   margin: 0,
   gridRowStart: 1,
   gridRowEnd: 1,
@@ -62,22 +60,29 @@ export const useDialogTitleInternalStyles = makeResetStyles({
 /**
  * Apply styling to the DialogTitle slots based on the state
  */
-export const useDialogTitleStyles_unstable = (state: DialogTitleState): DialogTitleState => {
+export const useSemanticDialogTitleStyles = (_state: unknown): DialogTitleState => {
   'use no memo';
 
+  const state = _state as DialogTitleState;
   const rootResetStyles = useRootResetStyles();
   const actionResetStyles = useActionResetStyles();
   const styles = useStyles();
 
   state.root.className = mergeClasses(
+    state.root.className,
     dialogTitleClassNames.root,
     rootResetStyles,
     !state.action && styles.rootWithoutAction,
-    state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.action) {
-    state.action.className = mergeClasses(dialogTitleClassNames.action, actionResetStyles, state.action.className);
+    state.action.className = mergeClasses(
+      state.action.className,
+      dialogTitleClassNames.action,
+      actionResetStyles,
+      getSlotClassNameProp_unstable(state.action),
+    );
   }
 
   return state;
