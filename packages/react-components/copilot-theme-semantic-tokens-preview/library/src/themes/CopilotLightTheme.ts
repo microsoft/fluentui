@@ -18,7 +18,6 @@ export const copilotLightThemeSemanticTokens = {
   'smtc-corner-toolbar-default': '12px',
   'smtc-corner-window-default': '8px',
   'smtc-corner-zero': '0',
-  'smtc-ctrl-avatar-corner-group': '2px',
   'smtc-ctrl-badge-corner': '6px',
   'smtc-ctrl-badge-lg-corner': '6px',
   'smtc-ctrl-badge-sm-corner': '6px',
