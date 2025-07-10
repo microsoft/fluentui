@@ -953,6 +953,9 @@ export const _ctrlCheckboxForegroundUnchecked = "var(--smtc-foreground-content-n
 export const _ctrlCheckboxForegroundUncheckedHover = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
 
 // @public
+export const _ctrlCheckboxIndicatorBorderColorCheckedPressed = "var(--smtc-stroke-ctrl-on-active-brand-pressed, var(--smtc-stroke-ctrl-on-brand-pressed, var(--colorCompoundBrandBackgroundPressed)))";
+
+// @public
 export const _ctrlCheckboxIndicatorBorderColorMixed = "var(--smtc-background-ctrl-active-brand-rest, var(--smtc-background-ctrl-brand-rest, var(--colorCompoundBrandStroke)))";
 
 // @public

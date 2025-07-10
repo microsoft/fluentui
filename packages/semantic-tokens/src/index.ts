@@ -1804,6 +1804,7 @@ export {
   _ctrlCheckboxBorderColorCheckedHover,
   _ctrlCheckboxForegroundUncheckedHover,
   _ctrlCheckboxIndicatorBorderColorMixed,
+  _ctrlCheckboxIndicatorBorderColorCheckedPressed,
   _ctrlCheckboxIndicatorColorMixed,
   _ctrlCheckboxIndicatorColorMixedHover,
   _ctrlCheckboxIndicatorBorderColorMixedHover,

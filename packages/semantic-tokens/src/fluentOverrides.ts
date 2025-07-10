@@ -181,8 +181,6 @@ export const fluentOverrides: FluentOverrides = {
   strokeCtrlOnActiveBrandDisabled: { f2Token: 'colorTransparentStrokeDisabled' },
   strokeCtrlOnActiveBrandHover: { f2Token: 'colorStrokeFocus2' },
   strokeCtrlOnActiveBrandPressed: { f2Token: 'colorTransparentStrokeInteractive' },
-  // TODO move this to legacy so we can make a variant
-  // strokeCtrlOnActiveBrandPressed: { f2Token: 'colorCompoundBrandBackgroundPressed' },
   strokeCtrlOnActiveBrandRest: { f2Token: 'colorNeutralForegroundOnBrand' },
   strokeCtrlOnBrandDisabled: { rawValue: 'transparent' },
   strokeCtrlOnBrandHover: { rawValue: 'transparent' },

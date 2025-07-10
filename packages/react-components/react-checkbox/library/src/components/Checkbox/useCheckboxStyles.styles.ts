@@ -58,7 +58,7 @@ const useRootStyles = makeStyles({
 
     ':active': {
       [vars.indicatorBackgroundColor]: semanticTokens.backgroundCtrlActiveBrandPressed,
-      [vars.indicatorBorderColor]: semanticTokens.strokeCtrlOnActiveBrandPressed,
+      [vars.indicatorBorderColor]: semanticTokens._ctrlCheckboxIndicatorBorderColorCheckedPressed,
     },
   },
 

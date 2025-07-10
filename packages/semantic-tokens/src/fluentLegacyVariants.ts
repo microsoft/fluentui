@@ -103,6 +103,10 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorCompoundBrandStroke',
     originalToken: 'backgroundCtrlActiveBrandRest',
   },
+  _ctrlCheckboxIndicatorBorderColorCheckedPressed: {
+    originalToken: 'strokeCtrlOnActiveBrandPressed',
+    f2Token: 'colorCompoundBrandBackgroundPressed',
+  },
   // We set this to the same value as the checked background but it differs in F2.
   // It was deemed not to be an earned difference so in semantic tokens we're collapsing these state's tokens
   _ctrlCheckboxIndicatorColorMixed: {
@@ -117,11 +121,11 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorCompoundBrandStrokeHover',
     originalToken: 'backgroundCtrlActiveBrandHover',
   },
-  _ctrlCheckboxIndicatorBorderColorMixedPressed:{
+  _ctrlCheckboxIndicatorBorderColorMixedPressed: {
     originalToken: 'backgroundCtrlActiveBrandPressed',
     f2Token: 'colorCompoundBrandStrokePressed',
   },
-  _ctrlCheckboxIndicatorColorMixedPressed:{
+  _ctrlCheckboxIndicatorColorMixedPressed: {
     originalToken: 'backgroundCtrlActiveBrandPressed',
     f2Token: 'colorCompoundBrandForeground1Pressed',
   },

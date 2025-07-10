@@ -47,6 +47,7 @@ import {
   colorCompoundBrandBackgroundHover,
   colorNeutralForeground2,
   colorCompoundBrandStroke,
+  colorCompoundBrandBackgroundPressed,
   colorCompoundBrandForeground1,
   colorCompoundBrandForeground1Hover,
   colorCompoundBrandStrokeHover,
@@ -74,6 +75,7 @@ import {
 import {
   backgroundCtrlSubtleRestRaw,
   strokeCtrlOnBrandHoverRaw,
+  strokeCtrlOnBrandPressedRaw,
   foregroundCtrlHintDefaultRaw,
   strokeCtrlOnBrandRestRaw,
 } from '../nullable/variables';
@@ -85,6 +87,7 @@ import {
   strokeCtrlOnActiveBrandHoverRaw,
   foregroundContentNeutralPrimaryRaw,
   backgroundCtrlActiveBrandRestRaw,
+  strokeCtrlOnActiveBrandPressedRaw,
   backgroundCtrlActiveBrandHoverRaw,
   backgroundCtrlActiveBrandPressedRaw,
   foregroundCtrlOnSubtlePressedRaw,
@@ -251,6 +254,13 @@ export const _ctrlCheckboxForegroundUncheckedHover = `var(${foregroundContentNeu
  * please use backgroundCtrlActiveBrandRest instead.
  */
 export const _ctrlCheckboxIndicatorBorderColorMixed = `var(${backgroundCtrlActiveBrandRestRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorCompoundBrandStroke}))`;
+/**
+ * This is a legacy variant for strokeCtrlOnActiveBrandPressed to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use strokeCtrlOnActiveBrandPressed instead.
+ */
+export const _ctrlCheckboxIndicatorBorderColorCheckedPressed = `var(${strokeCtrlOnActiveBrandPressedRaw}, var(${strokeCtrlOnBrandPressedRaw}, ${colorCompoundBrandBackgroundPressed}))`;
 /**
  * This is a legacy variant for backgroundCtrlActiveBrandRest to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
