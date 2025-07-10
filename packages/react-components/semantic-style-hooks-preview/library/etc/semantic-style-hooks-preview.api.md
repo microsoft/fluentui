@@ -15,6 +15,7 @@ import { DrawerFooterState } from '@fluentui/react-drawer';
 import { DrawerHeaderState } from '@fluentui/react-drawer';
 import { FlatTreeState } from '@fluentui/react-tree';
 import { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
+import { ImageState } from '@fluentui/react-image';
 import { InlineDrawerState } from '@fluentui/react-drawer';
 import { LabelState } from '@fluentui/react-label';
 import { LinkState } from '@fluentui/react-link';
@@ -61,6 +62,9 @@ export const useSemanticDrawerHeaderStyles: (_state: unknown) => DrawerHeaderSta
 
 // @public (undocumented)
 export const useSemanticFlatTreeStyles: (_state: unknown) => FlatTreeState;
+
+// @public (undocumented)
+export const useSemanticImageStyles: (_state: unknown) => ImageState;
 
 // @public
 export const useSemanticInlineDrawerStyles: (_state: unknown) => InlineDrawerState;
