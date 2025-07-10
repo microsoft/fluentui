@@ -10,6 +10,7 @@ import type { IFocusTrapCalloutProps } from './FocusTrapCallout.types';
  */
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps> = (
   props: IFocusTrapCalloutProps,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): JSX.Element => {
   return (
     <Callout {...props}>

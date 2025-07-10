@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: MessageBarActions renders slots with keys",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

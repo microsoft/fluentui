@@ -136,6 +136,7 @@ export interface CartesianChartProps {
     customDateTimeFormatter?: (dateTime: Date) => string;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
+    // @deprecated
     enableReflow?: boolean;
     height?: number;
     hideLegend?: boolean;
@@ -186,6 +187,7 @@ export interface CartesianChartProps {
 export interface CartesianChartStyleProps {
     className?: string;
     color?: string;
+    // @deprecated
     enableReflow?: boolean;
     height?: number;
     href?: string;
@@ -199,6 +201,7 @@ export interface CartesianChartStyleProps {
 // @public
 export interface CartesianChartStyles {
     axisTitle?: string;
+    chart?: string;
     chartTitle?: string;
     chartWrapper?: string;
     descriptionMessage?: string;
@@ -268,6 +271,8 @@ export interface ChartPopoverProps {
     legend?: string | number | Date;
     // (undocumented)
     ratio?: [number, number];
+    // (undocumented)
+    styles?: Partial<PopoverComponentStyles>;
     // (undocumented)
     xAxisCalloutAccessibilityData?: {
         ariaLabel?: string;
@@ -553,6 +558,7 @@ export interface GaugeChartStyles {
     chart?: string;
     chartTitle?: string;
     chartValue?: string;
+    chartWrapper?: string;
     descriptionMessage?: string;
     gradientSegment?: string;
     legendsContainer?: string;
@@ -687,6 +693,7 @@ export interface HeatMapChartProps extends CartesianChartProps {
     domainValuesForColorScale: number[];
     rangeValuesForColorScale: string[];
     showYAxisLables?: boolean;
+    showYAxisLablesTooltip?: boolean;
     sortOrder?: 'none' | 'alphabetical';
     styles?: HeatMapChartStyles;
     xAxisDateFormatString?: string;
@@ -699,6 +706,8 @@ export interface HeatMapChartProps extends CartesianChartProps {
 
 // @public
 export interface HeatMapChartStyles extends CartesianChartStyles {
+    // (undocumented)
+    calloutContentRoot?: string;
     // (undocumented)
     root?: string;
     // (undocumented)
@@ -1042,6 +1051,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
         startValue: number;
         endValue: number;
     };
+    getYDomainMargins?: (containerHeight: number) => Margins;
     isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;
@@ -1118,7 +1128,19 @@ export interface ResponsiveChildProps {
     // (undocumented)
     shouldResize?: number;
     // (undocumented)
+    styles?: ResponsiveChildStyles;
+    // (undocumented)
     width?: number;
+}
+
+// @public
+export interface ResponsiveChildStyles {
+    // (undocumented)
+    chart?: string;
+    // (undocumented)
+    chartWrapper?: string;
+    // (undocumented)
+    root?: string;
 }
 
 // @public
@@ -1164,11 +1186,15 @@ export interface SankeyChartProps {
     componentRef?: RefObject<Chart>;
     culture?: string;
     data: ChartProps;
+    // @deprecated
     enableReflow?: boolean;
     formatNumberOptions?: Intl.NumberFormatOptions;
     height?: number;
     parentRef?: HTMLElement | null;
     pathColor?: string;
+    reflowProps?: {
+        mode: 'none' | 'min-width';
+    };
     shouldResize?: number;
     strings?: SankeyChartStrings;
     styles?: SankeyChartStyles;
@@ -1182,6 +1208,7 @@ export interface SankeyChartStrings {
 
 // @public
 export interface SankeyChartStyles {
+    chart?: string;
     chartWrapper?: string;
     links?: string;
     nodes?: string;
@@ -1307,7 +1334,7 @@ export interface VerticalBarChartProps extends CartesianChartProps {
     mode?: 'default' | 'plotly';
     onRenderCalloutPerDataPoint?: RenderFunction<VerticalBarChartDataPoint>;
     roundCorners?: boolean;
-    styles?: VerticalBarChartStyles;
+    styles?: Partial<VerticalBarChartStyles>;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
@@ -1348,7 +1375,7 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
     onRenderCalloutPerDataPoint?: RenderFunction<VSChartDataPoint>;
     onRenderCalloutPerStack?: RenderFunction<VerticalStackedChartProps>;
     roundCorners?: boolean;
-    styles?: VerticalStackedBarChartStyles;
+    styles?: Partial<VerticalStackedBarChartStyles>;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
     xAxisPadding?: number;

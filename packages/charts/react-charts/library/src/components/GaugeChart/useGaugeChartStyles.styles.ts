@@ -1,6 +1,6 @@
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { GaugeChartProps, GaugeChartStyles } from './GaugeChart.types';
 
 export const gaugeChartClassNames: SlotClassNames<GaugeChartStyles> = {
@@ -22,7 +22,8 @@ export const gaugeChartClassNames: SlotClassNames<GaugeChartStyles> = {
   calloutContentY: 'fui-gc__calloutContentY',
   descriptionMessage: 'fui-gc__descriptionMessage',
   calloutInfoContainer: '',
-  legendsContainer: '',
+  legendsContainer: 'fui-gc__legendsContainer',
+  chartWrapper: 'fui-gc__chartWrapper',
 };
 
 const useStyles = makeStyles({
@@ -31,8 +32,8 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: 'var(--root-width, 100%)',
-    height: 'var(--root-height, 100%)',
+    width: '100%',
+    height: '100%',
   },
   chart: {
     display: 'block',
@@ -50,6 +51,7 @@ const useStyles = makeStyles({
   sublabel: {
     ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
   needle: {
     fill: tokens.colorNeutralForeground1,
@@ -58,6 +60,7 @@ const useStyles = makeStyles({
   chartTitle: {
     ...typographyStyles.caption1,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
   segment: {
     outline: 'none',
@@ -70,7 +73,6 @@ const useStyles = makeStyles({
   calloutContentRoot: {
     display: 'grid',
     overflow: 'hidden',
-    ...shorthands.padding('11px', '16px', '10px', '16px'),
     backgroundColor: tokens.colorNeutralBackground1,
     backgroundBlendMode: 'normal, luminosity',
   },
@@ -112,6 +114,9 @@ const useStyles = makeStyles({
     marginTop: '10px',
     paddingTop: '10px',
     borderTop: `1px solid ${tokens.colorNeutralStroke1}`,
+  },
+  legendsContainer: {
+    width: '100%',
   },
 });
 export const useGaugeChartStyles = (props: GaugeChartProps): GaugeChartStyles => {
@@ -166,6 +171,12 @@ export const useGaugeChartStyles = (props: GaugeChartProps): GaugeChartStyles =>
       gaugeChartClassNames.descriptionMessage,
       baseStyles.descriptionMessage,
       props.styles?.descriptionMessage,
+    ),
+    chartWrapper: mergeClasses(gaugeChartClassNames.chartWrapper, props.styles?.chartWrapper),
+    legendsContainer: mergeClasses(
+      gaugeChartClassNames.legendsContainer,
+      baseStyles.legendsContainer,
+      props.styles?.legendsContainer,
     ),
   };
 };

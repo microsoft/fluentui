@@ -9,8 +9,8 @@
       "dependsOn": ["^build"],
       "inputs": [
         "{projectRoot}/tsconfig.react-17.json",
-        "{workspaceRoot}/packages/react-components/*/stories/**/*.stories.tsx?",
-        "!{workspaceRoot}/packages/react-components/*/stories/**/index.stories.tsx?",
+        "{workspaceRoot}/packages/react-components/*/stories/**/*.stories.ts(x)?",
+        "!{workspaceRoot}/packages/react-components/*/stories/**/index.stories.ts(x)?",
         "!{workspaceRoot}/packages/react-components/react-migration-v[80]-v9/**",
         "!{workspaceRoot}/packages/react-components/react-[a-z]+-compat/**"
       ]
@@ -19,7 +19,7 @@
       "dependsOn": [],
       "inputs": [
         "{projectRoot}/cypress-react-17.config.ts",
-        "{workspaceRoot}/packages/react-components/**/*.cy.tsx?",
+        "{workspaceRoot}/packages/react-components/**/*.cy.ts(x)?",
         "!{workspaceRoot}/packages/react-components/react-migration-v[80]-v9/**",
         "!{workspaceRoot}/packages/react-components/react-[a-z]+-compat/**"
       ]
@@ -28,7 +28,7 @@
       "dependsOn": ["^build"],
       "inputs": [
         "{projectRoot}/jest-react-17.config.js",
-        "{workspaceRoot}/packages/react-components/**/*.(test|spec).tsx?"
+        "{workspaceRoot}/packages/react-components/**/*.(test|spec).ts(x)?"
       ]
     }
   }

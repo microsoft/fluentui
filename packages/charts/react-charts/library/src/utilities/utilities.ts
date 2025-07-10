@@ -60,6 +60,8 @@ import {
   getMultiLevelDateTimeFormatOptions,
 } from '@fluentui/chart-utilities';
 
+export const MIN_DOMAIN_MARGIN = 8;
+
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
 
@@ -668,10 +670,10 @@ export function createYAxisForHorizontalBarChartWithAxis(
     yAxisTickCount = 4,
   } = yAxisParams;
 
-  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
+  // maxOfYVal coming from horizontal bar chart with axis (Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
+  const finalYmin = yMinMaxValues.startValue < yMinValue ? Math.min(0, yMinMaxValues.startValue) : yMinValue!;
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
@@ -764,11 +766,14 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   barWidth: number,
   culture?: string,
 ) => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement } = yAxisParams;
+  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding } = yAxisParams;
 
+  let yAxisPaddingValue = yAxisPadding ?? 0.5;
+  yAxisPaddingValue = yAxisPaddingValue === 1 ? 0.99 : yAxisPaddingValue;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
-    .range([containerHeight - margins.bottom! - barWidth / 2, margins.top! + barWidth / 2]);
+    .range([containerHeight - margins.bottom!, margins.top!])
+    .padding(yAxisPaddingValue);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(dataPoints);
   if (yAxisTickFormat) {
@@ -1125,20 +1130,20 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
  * On hover of the truncated word(at x axis labels tick), a tooltip will be appeared.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function tooltipOfXAxislabels(xAxistooltipProps: any): any {
-  const { tooltipCls, xAxis, id } = xAxistooltipProps;
-  if (xAxis === null) {
+export function tooltipOfAxislabels(axistooltipProps: any) {
+  const { tooltipCls, axis, id } = axistooltipProps;
+  if (axis === null) {
     return null;
   }
   const div = d3Select('body').append('div').attr('id', id).attr('class', tooltipCls).style('opacity', 0);
-  const aa = xAxis!.selectAll('#BaseSpan')._groups[0];
+  const aa = axis!.selectAll('#BaseSpan')._groups[0];
   const baseSpanLength = aa && Object.keys(aa)!.length;
   const originalDataArray: string[] = [];
   for (let i = 0; i < baseSpanLength; i++) {
     const originalData = aa[i].dataset && (Object.values(aa[i].dataset)[0] as string);
     originalDataArray.push(originalData);
   }
-  const tickObject = xAxis!.selectAll('.tick')._groups[0];
+  const tickObject = axis!.selectAll('.tick')._groups[0];
   const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
   for (let i = 0; i < tickObjectLength; i++) {
     const d1 = tickObject[i];
@@ -2077,3 +2082,11 @@ export function getCurveFactory(
       return defaultFactory;
   }
 }
+
+export const truncateString = (str: string, maxLength: number, ellipsis = '...'): string => {
+  if (str.length <= maxLength) {
+    return str;
+  }
+
+  return str.slice(0, maxLength) + ellipsis;
+};

@@ -11,6 +11,7 @@ const getClassNames = classNamesFunction<ILabelStyleProps, ILabelStyles>({
 });
 
 export class LabelBase extends React.Component<ILabelProps, {}> {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { as: RootType = 'label', children, className, disabled, styles, required, theme } = this.props;
     const classNames = getClassNames(styles, {

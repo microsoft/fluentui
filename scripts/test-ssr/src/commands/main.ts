@@ -15,6 +15,7 @@ import { containsAriaDescriptionWarning, hrToSeconds } from '../utils/helpers';
 import { renderToHTML } from '../utils/renderToHTML';
 import { visitPage } from '../utils/visitPage';
 
+// @ts-expect-error - Keeping this for reference, exclusion of stories is now done via CLI --exclude configuration in particular story projects
 const EXCLUDED_STORIES = [
   // Portals currently do not support hydration
   // https://github.com/facebook/react/issues/13097
@@ -23,10 +24,14 @@ const EXCLUDED_STORIES = [
   // https://github.com/microsoft/fluentui/issues/27338
   '**/react-table/stories/src/DataGrid/Virtualization.stories.tsx',
   '**/react-table/stories/src/Table/Virtualization.stories.tsx',
+  // Portals related
+  // https://github.com/microsoft/fluentui/pull/34737
+  '**/react-tag-picker/stories/**',
 ];
 
 type MainParams = {
   stories: string;
+  exclude: string[];
 };
 
 /**
@@ -63,7 +68,69 @@ function interceptConsoleLogs() {
   };
 }
 
-export async function main(params: MainParams) {
+type StoryFilterResult = {
+  allowedStories: string[];
+  excludedStories: string[];
+};
+
+/**
+ * Filters stories based on glob patterns and exclude patterns, then logs the results.
+ */
+function getStoriesPaths(options: MainParams): StoryFilterResult {
+  const { exclude, stories } = options;
+  const root = process.cwd();
+  const absoluteExcludedStoriesPath = exclude.map(excludePath => path.resolve(root, excludePath));
+
+  const { allowedStories, excludedStories } = glob.sync(stories).reduce<StoryFilterResult>(
+    (acc, storyPath) => {
+      if (storyPath.includes('index.stories.ts')) {
+        return acc;
+      }
+
+      const absoluteStoriesPath = path.resolve(root, storyPath);
+
+      const isExcludedPath = match.isMatch(absoluteStoriesPath, absoluteExcludedStoriesPath);
+
+      if (isExcludedPath) {
+        acc.excludedStories.push(absoluteStoriesPath);
+        return acc;
+      }
+
+      acc.allowedStories.push(absoluteStoriesPath);
+      return acc;
+    },
+    { allowedStories: [], excludedStories: [] },
+  );
+
+  // Log the results
+  if (allowedStories.length > 0) {
+    console.log(chalk.bgBlueBright('📦 Following stories will be bundled:'));
+    console.log(allowedStories.map(filepath => `  - ${path.relative(root, filepath)}`).join('\n'));
+  }
+
+  if (excludedStories.length > 0) {
+    console.log(chalk.bgYellowBright('❌  Following stories were excluded by config:'));
+    console.log(excludedStories.map(filepath => `  - ${path.relative(root, filepath)}`).join('\n'));
+  }
+
+  return { allowedStories, excludedStories };
+}
+
+type BuildPaths = {
+  distDirectory: string;
+  esmEntryPoint: string;
+  cjsEntryPoint: string;
+  cjsOutfile: string;
+  esmOutfile: string;
+  htmlOutfile: string;
+};
+
+/**
+ * Sets up the build directory structure and file paths for SSR testing.
+ * Creates the dist directory if it doesn't exist.
+ * @returns Object containing all the necessary build paths
+ */
+async function setupBuildPaths(): Promise<BuildPaths> {
   /**
    * dist directory cannot be under node_modules in order to make TS path aliases work.
    * @see https://github.com/evanw/esbuild/blob/main/CHANGELOG.md#0180
@@ -81,47 +148,29 @@ export async function main(params: MainParams) {
   const esmOutfile = path.resolve(distDirectory, 'out-esm.js');
   const htmlOutfile = path.resolve(distDirectory, 'index.html');
 
-  // ---
+  return {
+    distDirectory,
+    esmEntryPoint,
+    cjsEntryPoint,
+    cjsOutfile,
+    esmOutfile,
+    htmlOutfile,
+  };
+}
 
-  const generateStartTime = process.hrtime();
-
-  const { allowedStories, excludedStories } = glob.sync(params.stories).reduce<{
-    allowedStories: string[];
-    excludedStories: string[];
-  }>(
-    (acc, storyPath) => {
-      if (storyPath.includes('index.stories.ts')) {
-        return acc;
-      }
-
-      const absoluteStoriesPath = path.resolve(process.cwd(), storyPath);
-      const isExcludedPath = match.isMatch(absoluteStoriesPath, EXCLUDED_STORIES);
-
-      if (isExcludedPath) {
-        acc.excludedStories.push(absoluteStoriesPath);
-        return acc;
-      }
-
-      acc.allowedStories.push(absoluteStoriesPath);
-      return acc;
-    },
-    { allowedStories: [], excludedStories: [] },
-  );
-
-  if (allowedStories.length > 0) {
-    console.log(chalk.bgBlueBright('📦 Following stories were bundled:'));
-    console.log(allowedStories.map(filepath => `  - ${path.relative(process.cwd(), filepath)}`).join('\n'));
-  }
-
-  if (excludedStories.length > 0) {
-    console.log(chalk.bgYellowBright('❌  Following stories were excluded by config:'));
-    console.log(excludedStories.map(filepath => `  - ${path.relative(process.cwd(), filepath)}`).join('\n'));
-  }
+export async function main(params: MainParams) {
+  const { distDirectory, esmEntryPoint, cjsEntryPoint, cjsOutfile, esmOutfile, htmlOutfile } = await setupBuildPaths();
+  const { allowedStories } = getStoriesPaths(params);
 
   if (allowedStories.length === 0) {
     console.log(chalk.bgYellowBright('🏁 No stories to bundle, exiting...'));
     return;
   }
+  // --------------------
+  // GENERATE ENTRY POINTS
+  // --------------------
+
+  const generateStartTime = process.hrtime();
 
   await generateEntryPoints({
     esmEntryPoint,
@@ -135,7 +184,9 @@ export async function main(params: MainParams) {
     ),
   );
 
-  // ---
+  // --------------------
+  // BUILD ASSETS
+  // --------------------
 
   const buildStartTime = process.hrtime();
 
@@ -155,7 +206,9 @@ export async function main(params: MainParams) {
     chalk.bgGreenBright(`📦 Assets were built in ${chalk.bold(hrToSeconds(process.hrtime(buildStartTime)))}`),
   );
 
-  // ---
+  // --------------------
+  // RENDER HTML
+  // --------------------
 
   const renderStartTime = process.hrtime();
   const restoreConsole = interceptConsoleLogs();
@@ -172,7 +225,9 @@ export async function main(params: MainParams) {
 
   console.log(chalk.bgGreenBright(`🔥 Render done in ${chalk.bold(hrToSeconds(process.hrtime(renderStartTime)))}`));
 
-  // ---
+  // ----------------------------------------
+  // LAUNCH BROWSER AND TEST GENERATED OUTPUT
+  // ----------------------------------------
 
   const startTime = process.hrtime();
 

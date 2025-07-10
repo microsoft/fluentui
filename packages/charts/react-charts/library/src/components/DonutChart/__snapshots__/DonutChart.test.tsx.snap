@@ -24,10 +24,11 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               class="fui-donut-arc__root"
               d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
               data-is-focusable="true"
-              id="_Pie_1first20000"
+              id="_Pie_r0first20000"
               opacity="1"
               role="img"
               style="fill: #E5E5E5; cursor: default;"
+              tabindex="0"
             />
           </g>
           <g>
@@ -36,10 +37,11 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               class="fui-donut-arc__root"
               d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
               data-is-focusable="true"
-              id="_Pie_1second39000"
+              id="_Pie_r0second39000"
               opacity="1"
               role="img"
               style="fill: #0078D4; cursor: default;"
+              tabindex="0"
             />
           </g>
           <g>
@@ -48,10 +50,11 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               class="fui-donut-arc__root"
               d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
               data-is-focusable="true"
-              id="_Pie_1third45000"
+              id="_Pie_r0third45000"
               opacity="1"
               role="img"
               style="fill: #DADADA; cursor: default;"
+              tabindex="0"
             />
           </g>
         </g>
@@ -59,7 +62,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout2"
+      id="calloutr1"
     />
     <div
       class="fui-donut__legendContainer"
@@ -142,7 +145,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
 exports[`Donut chart interactions Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider32"
+    class="fui-FluentProvider fui-FluentProviderrv"
     dir="ltr"
   >
     <div
@@ -167,10 +170,11 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 class="fui-donut-arc__root"
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_33first20000"
+                id="_Pie_r10first20000"
                 opacity="1"
                 role="img"
                 style="fill: #E5E5E5; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -179,10 +183,11 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 class="fui-donut-arc__root"
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_33second39000"
+                id="_Pie_r10second39000"
                 opacity="1"
                 role="img"
                 style="fill: #0078D4; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -191,10 +196,11 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 class="fui-donut-arc__root"
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_33third45000"
+                id="_Pie_r10third45000"
                 opacity="1"
                 role="img"
                 style="fill: #DADADA; cursor: default;"
+                tabindex="0"
               />
             </g>
           </g>
@@ -202,7 +208,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout34"
+        id="calloutr11"
       />
       <div
         class="fui-donut__legendContainer"
@@ -312,10 +318,11 @@ Object {
                   class="fui-donut-arc__root"
                   d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_79first20000"
+                  id="_Pie_r1lfirst20000"
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
+                  tabindex="0"
                 />
               </g>
               <g>
@@ -324,10 +331,11 @@ Object {
                   class="fui-donut-arc__root"
                   d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_79second39000"
+                  id="_Pie_r1lsecond39000"
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
+                  tabindex="0"
                 />
               </g>
               <g>
@@ -336,10 +344,11 @@ Object {
                   class="fui-donut-arc__root"
                   d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_79third45000"
+                  id="_Pie_r1lthird45000"
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
+                  tabindex="0"
                 />
               </g>
             </g>
@@ -347,7 +356,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout80"
+          id="calloutr1m"
         >
           <div
             class="fui-PopoverSurface"
@@ -369,7 +378,7 @@ Object {
               </div>
               <div
                 class="fui-cart__calloutInfoContainer"
-                style="border-inline-start: 4px solid #E5E5E5;"
+                style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
               >
                 <div
                   class="fui-cart__calloutBlockContainer"
@@ -490,10 +499,11 @@ Object {
                 class="fui-donut-arc__root"
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_79first20000"
+                id="_Pie_r1lfirst20000"
                 opacity="1"
                 role="img"
                 style="fill: #E5E5E5; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -502,10 +512,11 @@ Object {
                 class="fui-donut-arc__root"
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_79second39000"
+                id="_Pie_r1lsecond39000"
                 opacity="1"
                 role="img"
                 style="fill: #0078D4; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -514,10 +525,11 @@ Object {
                 class="fui-donut-arc__root"
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_79third45000"
+                id="_Pie_r1lthird45000"
                 opacity="1"
                 role="img"
                 style="fill: #DADADA; cursor: default;"
+                tabindex="0"
               />
             </g>
           </g>
@@ -525,7 +537,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout80"
+        id="calloutr1m"
       >
         <div
           class="fui-PopoverSurface"
@@ -547,7 +559,7 @@ Object {
             </div>
             <div
               class="fui-cart__calloutInfoContainer"
-              style="border-inline-start: 4px solid #E5E5E5;"
+              style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
             >
               <div
                 class="fui-cart__calloutBlockContainer"
@@ -727,10 +739,11 @@ Object {
                   class="fui-donut-arc__root"
                   d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_88first20000"
+                  id="_Pie_r1ufirst20000"
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
+                  tabindex="0"
                 />
               </g>
               <g>
@@ -739,10 +752,11 @@ Object {
                   class="fui-donut-arc__root"
                   d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_88second39000"
+                  id="_Pie_r1usecond39000"
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
+                  tabindex="0"
                 />
               </g>
               <g>
@@ -751,10 +765,11 @@ Object {
                   class="fui-donut-arc__root"
                   d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_88third45000"
+                  id="_Pie_r1uthird45000"
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
+                  tabindex="0"
                 />
               </g>
             </g>
@@ -762,7 +777,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout89"
+          id="calloutr1v"
         >
           <div
             class="fui-PopoverSurface"
@@ -784,7 +799,7 @@ Object {
               </div>
               <div
                 class="fui-cart__calloutInfoContainer"
-                style="border-inline-start: 4px solid #E5E5E5;"
+                style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
               >
                 <div
                   class="fui-cart__calloutBlockContainer"
@@ -905,10 +920,11 @@ Object {
                 class="fui-donut-arc__root"
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_88first20000"
+                id="_Pie_r1ufirst20000"
                 opacity="1"
                 role="img"
                 style="fill: #E5E5E5; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -917,10 +933,11 @@ Object {
                 class="fui-donut-arc__root"
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_88second39000"
+                id="_Pie_r1usecond39000"
                 opacity="1"
                 role="img"
                 style="fill: #0078D4; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -929,10 +946,11 @@ Object {
                 class="fui-donut-arc__root"
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_88third45000"
+                id="_Pie_r1uthird45000"
                 opacity="1"
                 role="img"
                 style="fill: #DADADA; cursor: default;"
+                tabindex="0"
               />
             </g>
           </g>
@@ -940,7 +958,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout89"
+        id="calloutr1v"
       >
         <div
           class="fui-PopoverSurface"
@@ -962,7 +980,7 @@ Object {
             </div>
             <div
               class="fui-cart__calloutInfoContainer"
-              style="border-inline-start: 4px solid #E5E5E5;"
+              style="border-inline-start: 4px solid #E5E5E5; margin-top: 11px;"
             >
               <div
                 class="fui-cart__calloutBlockContainer"
@@ -1137,7 +1155,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             className="fui-donut-arc__root"
             d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
             data-is-focusable={true}
-            id="_Pie_61first20000"
+            id="_Pie_rmfirst20000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1151,6 +1169,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -1159,7 +1178,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             className="fui-donut-arc__root"
             d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
             data-is-focusable={true}
-            id="_Pie_61second39000"
+            id="_Pie_rmsecond39000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1173,6 +1192,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -1181,7 +1201,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             className="fui-donut-arc__root"
             d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
             data-is-focusable={true}
-            id="_Pie_61third45000"
+            id="_Pie_rmthird45000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1195,15 +1215,15 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
         </g>
-        
       </g>
     </svg>
   </div>
   <div
     className="fui-cart__calloutContainer"
-    id="callout62"
+    id="calloutrn"
   />
   <div
     className="fui-donut__legendContainer"
@@ -1385,7 +1405,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             className="fui-donut-arc__root"
             d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
             data-is-focusable={true}
-            id="_Pie_55first20000"
+            id="_Pie_rgfirst20000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1399,6 +1419,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
           <text
             aria-hidden={true}
@@ -1417,7 +1438,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             className="fui-donut-arc__root"
             d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
             data-is-focusable={true}
-            id="_Pie_55second39000"
+            id="_Pie_rgsecond39000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1431,6 +1452,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
           <text
             aria-hidden={true}
@@ -1449,7 +1471,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             className="fui-donut-arc__root"
             d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
             data-is-focusable={true}
-            id="_Pie_55third45000"
+            id="_Pie_rgthird45000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1463,6 +1485,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
           <text
             aria-hidden={true}
@@ -1475,13 +1498,12 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             45k
           </text>
         </g>
-        
       </g>
     </svg>
   </div>
   <div
     className="fui-cart__calloutContainer"
-    id="callout56"
+    id="calloutrh"
   />
   <div
     className="fui-donut__legendContainer"
@@ -1663,7 +1685,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             className="fui-donut-arc__root"
             d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
             data-is-focusable={true}
-            id="_Pie_58first20000"
+            id="_Pie_rjfirst20000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1677,6 +1699,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
           <text
             aria-hidden={true}
@@ -1695,7 +1718,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             className="fui-donut-arc__root"
             d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
             data-is-focusable={true}
-            id="_Pie_58second39000"
+            id="_Pie_rjsecond39000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1709,6 +1732,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
           <text
             aria-hidden={true}
@@ -1727,7 +1751,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             className="fui-donut-arc__root"
             d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
             data-is-focusable={true}
-            id="_Pie_58third45000"
+            id="_Pie_rjthird45000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1741,6 +1765,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
           <text
             aria-hidden={true}
@@ -1753,13 +1778,12 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             43%
           </text>
         </g>
-        
       </g>
     </svg>
   </div>
   <div
     className="fui-cart__calloutContainer"
-    id="callout59"
+    id="calloutrk"
   />
   <div
     className="fui-donut__legendContainer"
@@ -1941,7 +1965,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             className="fui-donut-arc__root"
             d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
             data-is-focusable={true}
-            id="_Pie_39first20000"
+            id="_Pie_r0first20000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1955,6 +1979,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -1963,7 +1988,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             className="fui-donut-arc__root"
             d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
             data-is-focusable={true}
-            id="_Pie_39second39000"
+            id="_Pie_r0second39000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1977,6 +2002,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -1985,7 +2011,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             className="fui-donut-arc__root"
             d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
             data-is-focusable={true}
-            id="_Pie_39third45000"
+            id="_Pie_r0third45000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -1999,6 +2025,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
         </g>
       </g>
@@ -2006,7 +2033,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
   </div>
   <div
     className="fui-cart__calloutContainer"
-    id="callout40"
+    id="calloutr1"
   />
   <div
     className="fui-donut__legendContainer"
@@ -2188,7 +2215,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             className="fui-donut-arc__root"
             d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
             data-is-focusable={true}
-            id="_Pie_42first20000"
+            id="_Pie_r3first20000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2202,6 +2229,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                 "fill": undefined,
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2210,7 +2238,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             className="fui-donut-arc__root"
             d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
             data-is-focusable={true}
-            id="_Pie_42second39000"
+            id="_Pie_r3second39000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2224,6 +2252,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                 "fill": undefined,
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2232,7 +2261,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             className="fui-donut-arc__root"
             d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
             data-is-focusable={true}
-            id="_Pie_42third45000"
+            id="_Pie_r3third45000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2246,15 +2275,15 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                 "fill": undefined,
               }
             }
+            tabIndex={0}
           />
         </g>
-        
       </g>
     </svg>
   </div>
   <div
     className="fui-cart__calloutContainer"
-    id="callout43"
+    id="calloutr4"
   />
   <div
     className="fui-donut__legendContainer"
@@ -2436,7 +2465,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             className="fui-donut-arc__root"
             d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
             data-is-focusable={true}
-            id="_Pie_50first20000"
+            id="_Pie_rbfirst20000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2450,6 +2479,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2458,7 +2488,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             className="fui-donut-arc__root"
             d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
             data-is-focusable={true}
-            id="_Pie_50second39000"
+            id="_Pie_rbsecond39000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2472,6 +2502,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2480,7 +2511,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             className="fui-donut-arc__root"
             d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
             data-is-focusable={true}
-            id="_Pie_50third45000"
+            id="_Pie_rbthird45000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2494,15 +2525,15 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
         </g>
-        
       </g>
     </svg>
   </div>
   <div
     className="fui-cart__calloutContainer"
-    id="callout51"
+    id="calloutrc"
   />
   <div
     className="fui-donut__legendContainer"
@@ -2719,7 +2750,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             className="fui-donut-arc__root"
             d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
             data-is-focusable={true}
-            id="_Pie_45first20000"
+            id="_Pie_r6first20000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2733,6 +2764,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2741,7 +2773,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             className="fui-donut-arc__root"
             d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
             data-is-focusable={true}
-            id="_Pie_45second39000"
+            id="_Pie_r6second39000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2755,6 +2787,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2763,7 +2796,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             className="fui-donut-arc__root"
             d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
             data-is-focusable={true}
-            id="_Pie_45third45000"
+            id="_Pie_r6third45000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2777,15 +2810,15 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
         </g>
-        
       </g>
     </svg>
   </div>
   <div
     className="fui-cart__calloutContainer"
-    id="callout46"
+    id="calloutr7"
   />
 </div>
 `;
@@ -2814,7 +2847,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             className="fui-donut-arc__root"
             d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
             data-is-focusable={true}
-            id="_Pie_47first20000"
+            id="_Pie_r8first20000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2828,6 +2861,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2836,7 +2870,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             className="fui-donut-arc__root"
             d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
             data-is-focusable={true}
-            id="_Pie_47second39000"
+            id="_Pie_r8second39000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2850,6 +2884,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -2858,7 +2893,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             className="fui-donut-arc__root"
             d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
             data-is-focusable={true}
-            id="_Pie_47third45000"
+            id="_Pie_r8third45000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -2872,15 +2907,15 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
         </g>
-        
       </g>
     </svg>
   </div>
   <div
     className="fui-cart__calloutContainer"
-    id="callout48"
+    id="calloutr9"
   />
   <div
     className="fui-donut__legendContainer"
@@ -3062,7 +3097,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             className="fui-donut-arc__root"
             d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
             data-is-focusable={true}
-            id="_Pie_52first20000"
+            id="_Pie_rdfirst20000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -3076,6 +3111,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 "fill": "#E5E5E5",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -3084,7 +3120,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             className="fui-donut-arc__root"
             d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
             data-is-focusable={true}
-            id="_Pie_52second39000"
+            id="_Pie_rdsecond39000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -3098,6 +3134,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 "fill": "#0078D4",
               }
             }
+            tabIndex={0}
           />
         </g>
         <g>
@@ -3106,7 +3143,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             className="fui-donut-arc__root"
             d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
             data-is-focusable={true}
-            id="_Pie_52third45000"
+            id="_Pie_rdthird45000"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -3120,15 +3157,15 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 "fill": "#DADADA",
               }
             }
+            tabIndex={0}
           />
         </g>
-        
       </g>
     </svg>
   </div>
   <div
     className="fui-cart__calloutContainer"
-    id="callout53"
+    id="calloutre"
   />
   <div
     className="fui-donut__legendContainer"

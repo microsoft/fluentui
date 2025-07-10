@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charts';
-import { Switch, Field, Radio, RadioGroup } from '@fluentui/react-components';
+import { Switch, Field, Radio, RadioGroup, makeStyles, tokens } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
 
 export const AreaChartBasic = () => {
   const [width, setWidth] = React.useState<number>(700);
@@ -9,6 +15,8 @@ export const AreaChartBasic = () => {
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(true);
   const [legendMultiSelect, setLegendMultiSelect] = React.useState<boolean>(false);
   const [changeChartMode, setChangeChartMode] = React.useState<boolean>(false);
+
+  const classes = useStyles();
 
   React.useEffect(() => {
     const style = document.createElement('style');
@@ -39,15 +47,15 @@ export const AreaChartBasic = () => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchLegendMultiSelect = React.useCallback(ev => {
+  const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchChartMode = React.useCallback(ev => {
+  const _onSwitchChartMode = React.useCallback((ev: any) => {
     setChangeChartMode(ev.currentTarget.checked);
   }, []);
 
@@ -258,6 +266,7 @@ export const AreaChartBasic = () => {
               canSelectMultipleLegends: legendMultiSelect,
             }}
             mode={changeChartMode ? 'tozeroy' : 'tonexty'}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}
@@ -273,6 +282,7 @@ export const AreaChartBasic = () => {
               canSelectMultipleLegends: legendMultiSelect,
             }}
             mode={changeChartMode ? 'tozeroy' : 'tonexty'}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}

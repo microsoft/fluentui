@@ -28,6 +28,7 @@ export class DocumentCardImageBase extends React.Component<IDocumentCardImagePro
     this.state = { imageHasLoaded: false };
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { styles, width, height, imageFit, imageSrc } = this.props;
 
@@ -55,6 +56,7 @@ export class DocumentCardImageBase extends React.Component<IDocumentCardImagePro
     this.setState({ imageHasLoaded: true });
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderCenterIcon(): JSX.Element {
     const { iconProps } = this.props;
     return (
@@ -64,6 +66,7 @@ export class DocumentCardImageBase extends React.Component<IDocumentCardImagePro
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderCornerIcon(): JSX.Element {
     const { iconProps } = this.props;
     return <Icon className={this._classNames.cornerIcon} {...iconProps} />;

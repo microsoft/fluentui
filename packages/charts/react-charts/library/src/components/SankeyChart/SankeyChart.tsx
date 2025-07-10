@@ -325,18 +325,16 @@ export function preRenderLayout(
   isRtl: boolean,
 ): { sankey: SankeyLayoutGenerator; height: number; width: number } {
   const { left, right, top, bottom } = margins;
-  const width = containerWidth - right!;
-  const height = containerHeight - bottom! > 0 ? containerHeight - bottom! : 0;
 
   const sankey = d3Sankey()
     .nodeWidth(NODE_WIDTH)
     .extent([
       [left!, top!],
-      [width - 1, height - 6],
+      [containerWidth - right!, containerHeight - bottom!],
     ])
     .nodeAlign(isRtl ? sankeyRight : sankeyJustify);
 
-  return { sankey, height, width };
+  return { sankey, height: containerHeight, width: containerWidth };
 }
 
 const elipsis = '...';
@@ -582,15 +580,16 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       // NOTE: Calls to this method trigger a re-render.
       const container = props.parentRef ? props.parentRef : chartContainer.current;
       if (container) {
-        const currentContainerWidth = props.enableReflow
-          ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
-          : container.getBoundingClientRect().width;
+        const currentContainerWidth =
+          props.reflowProps?.mode === 'min-width'
+            ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
+            : container.getBoundingClientRect().width;
         const currentContainerHeight = container.getBoundingClientRect().height;
         setContainerWidth(currentContainerWidth);
         setContainerHeight(currentContainerHeight);
       }
     });
-  }, [_window, props.enableReflow, props.parentRef]);
+  }, [_window, props.reflowProps?.mode, props.parentRef]);
 
   React.useEffect(() => {
     _fitParentContainer();
@@ -707,7 +706,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       const nodeValues = valuesOfNodes(transformed.nodes);
       const linkValues = valuesOfLinks(transformed.links);
       adjustOnePercentHeightNodes(nodesInColumn, nodeValues, linkValues);
-      adjustPadding(sankey, height - 6, nodesInColumn);
+      adjustPadding(sankey, containerHeight - _margins.current.top! - _margins.current.bottom!, nodesInColumn);
       // `sankey` is called a second time, probably to re-layout the nodes with the one-percent adjusted weights.
       // NOTE: The second call to `sankey` is required to allow links to be hoverable.
       // Without the second call, the links are not hoverable.
@@ -869,34 +868,29 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _onHover = (singleNode: SNode, mouseEvent: React.MouseEvent<SVGElement>) => {
     mouseEvent.persist();
     _onCloseCallout();
-    if (!selectedState) {
-      const _selectedLinks = getSelectedLinks(singleNode);
-      const _selectedNodes = getSelectedNodes(_selectedLinks);
-      _selectedNodes.push(singleNode);
-      setSelectedState(true);
-      setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
-      setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
-      setSelectedNode(singleNode);
-      updatePosition(mouseEvent.clientX, mouseEvent.clientY);
-      setCalloutVisible(singleNode.y1! - singleNode.y0! < MIN_HEIGHT_FOR_TYPE);
-      setColor(singleNode.color);
-      setXCalloutValue(singleNode.name);
-      setYCalloutValue(_formatNumber(singleNode.actualValue!));
-    }
+    const _selectedLinks = getSelectedLinks(singleNode);
+    const _selectedNodes = getSelectedNodes(_selectedLinks);
+    _selectedNodes.push(singleNode);
+    setSelectedState(true);
+    setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
+    setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
+    setSelectedNode(singleNode);
+    updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+    setCalloutVisible(singleNode.y1! - singleNode.y0! < MIN_HEIGHT_FOR_TYPE);
+    setColor(singleNode.color);
+    setXCalloutValue(singleNode.name);
+    setYCalloutValue(_formatNumber(singleNode.actualValue!));
   };
 
   const _onStreamHover = (mouseEvent: React.MouseEvent<SVGElement>, singleLink: SLink, from: string) => {
     mouseEvent.persist();
     _onCloseCallout();
-    if (!selectedState) {
-      const { selectedLinks: _selectedLinks, selectedNodes: _selectedNodes } =
-        getSelectedLinksforStreamHover(singleLink);
-      setSelectedState(true);
-      setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
-      setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
-      updatePosition(mouseEvent.clientX, mouseEvent.clientY);
-      _linkCalloutAttributes(singleLink, from);
-    }
+    const { selectedLinks: _selectedLinks, selectedNodes: _selectedNodes } = getSelectedLinksforStreamHover(singleLink);
+    setSelectedState(true);
+    setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
+    setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
+    updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+    _linkCalloutAttributes(singleLink, from);
   };
 
   const _onStreamLeave = (singleLink: SLink) => {
@@ -1147,7 +1141,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         in a non-sequential and erratic manner within a 2D grid.
         */}
         <div className={classes.chartWrapper} {..._arrowNavigationAttributes}>
-          <svg width={width} height={height} id={_chartId}>
+          <svg width={width} height={height} id={_chartId} className={classes.chart}>
             {nodeLinkDomOrderArray.map(item => {
               if (item.type === 'node') {
                 return (
@@ -1179,6 +1173,3 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
 });
 
 SankeyChart.displayName = 'SankeyChart';
-SankeyChart.defaultProps = {
-  enableReflow: true,
-};

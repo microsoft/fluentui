@@ -22,6 +22,7 @@ export default {
 };
 
 const LoadThemeTestButton: React.FunctionComponent<{
+  children?: React.ReactNode;
   buttonAs?: React.ElementType;
   buttonProps?: any;
 }> = props => {

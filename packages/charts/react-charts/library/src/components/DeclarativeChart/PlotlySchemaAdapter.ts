@@ -321,6 +321,7 @@ export const transformPlotlyJsonToVSBCProps = (
     mode: 'plotly',
     ...secondaryYAxisValues,
     hideTickOverlap: true,
+    barGapMax: 2,
   };
 };
 
@@ -508,7 +509,6 @@ export const transformPlotlyJsonToScatterChartProps = (
       width: input.layout?.width,
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
-      enableReflow: false,
       useUTC: false,
     } as LineChartProps;
   }
@@ -540,12 +540,10 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const margin: number = input.layout?.margin?.l ?? 0;
   const padding: number = input.layout?.margin?.pad ?? 0;
   const availableHeight: number = chartHeight - margin - padding;
-  const numberOfBars = input.data.reduce((total: number, item: PlotData) => {
-    return total + (item.y?.length || 0);
-  }, 0);
+  const numberOfRows = new Set(chartData.map(d => d.y)).size || 1;
   const scalingFactor = 0.01;
-  const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
-  const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
+  const gapFactor = 1 / (1 + scalingFactor * numberOfRows);
+  const barHeight = availableHeight / (numberOfRows * (1 + gapFactor));
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
@@ -563,6 +561,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     height: chartHeight,
     width: input.layout?.width,
     hideTickOverlap: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 
@@ -676,6 +676,8 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): HeatMapC
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     hideTickOverlap: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 
@@ -729,7 +731,6 @@ export const transformPlotlyJsonToSankeyProps = (
     height: input.layout?.height ?? 468,
     // TODO
     // styles,
-    enableReflow: true,
   };
 };
 
@@ -795,9 +796,8 @@ export const transformPlotlyJsonToGaugeProps = (
     minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
     maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
     chartValueFormat: () => firstData.value?.toString() ?? '',
-    // FIXME
-    // width: input.layout?.width,
-    // height: input.layout?.height ?? 220,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 220,
     // TODO
     // styles,
     variant: firstData.gauge?.steps?.length ? 'multiple-segments' : 'single-segment',

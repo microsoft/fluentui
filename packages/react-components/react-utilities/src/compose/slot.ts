@@ -11,7 +11,10 @@ import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNC
 export type SlotOptions<Props extends UnknownSlotProps> = {
   elementType:
     | React.ComponentType<Props>
-    | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    | (Props extends AsIntrinsicElement<infer As>
+        ? As
+        : // eslint-disable-next-line @typescript-eslint/no-deprecated
+          keyof JSX.IntrinsicElements);
   defaultProps?: Partial<Props>;
 };
 

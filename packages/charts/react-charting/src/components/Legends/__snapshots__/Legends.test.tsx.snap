@@ -40,7 +40,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                   ms-OverflowSet
                   {
                     display: flex;
-                    flex-wrap: wrap;
+                    flex-wrap: nowrap;
                     justify-content: unset;
                     position: relative;
                   }
@@ -1795,7 +1795,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                   ms-OverflowSet
                   {
                     display: flex;
-                    flex-wrap: wrap;
+                    flex-wrap: nowrap;
                     justify-content: unset;
                     position: relative;
                   }
@@ -3550,7 +3550,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                   ms-OverflowSet
                   {
                     display: flex;
-                    flex-wrap: wrap;
+                    flex-wrap: nowrap;
                     justify-content: unset;
                     position: relative;
                   }
@@ -5305,7 +5305,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                   ms-OverflowSet
                   {
                     display: flex;
-                    flex-wrap: wrap;
+                    flex-wrap: nowrap;
                     justify-content: unset;
                     position: relative;
                   }

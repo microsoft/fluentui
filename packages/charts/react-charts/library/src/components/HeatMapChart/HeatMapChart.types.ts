@@ -106,6 +106,12 @@ export interface HeatMapChartProps extends CartesianChartProps {
    * @default alphabetical
    * The prop used to decide order of string axis labels */
   sortOrder?: 'none' | 'alphabetical';
+
+  /**
+   *@default false
+   *Used for to elipse y axis labes and show tooltip on x axis labels
+   */
+  showYAxisLablesTooltip?: boolean;
 }
 
 /**
@@ -115,4 +121,5 @@ export interface HeatMapChartProps extends CartesianChartProps {
 export interface HeatMapChartStyles extends CartesianChartStyles {
   root?: string;
   text?: string;
+  calloutContentRoot?: string;
 }

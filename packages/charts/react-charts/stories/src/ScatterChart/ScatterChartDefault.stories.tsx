@@ -1,8 +1,15 @@
 import * as React from 'react';
 import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
-import { Switch } from '@fluentui/react-components';
+import { makeStyles, Switch, tokens } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
 
 export const ScatterChartDefault = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [selectMultipleLegends, setSelectMultipleLegends] = React.useState<boolean>(false);
@@ -15,7 +22,7 @@ export const ScatterChartDefault = () => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onToggleMultiLegendSelection = React.useCallback(ev => {
+  const _onToggleMultiLegendSelection = React.useCallback((ev: any) => {
     setSelectMultipleLegends(ev.currentTarget.checked);
   }, []);
 
@@ -144,6 +151,7 @@ export const ScatterChartDefault = () => {
           legendProps={{
             canSelectMultipleLegends: selectMultipleLegends,
           }}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </>
