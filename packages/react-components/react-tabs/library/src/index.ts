@@ -3,6 +3,8 @@ export {
   renderTab_unstable,
   Tab,
   tabClassNames,
+  reservedSpaceClassNames,
+  useTabAnimatedIndicatorStyles_unstable,
   useTabButtonStyles_unstable,
   useTabContentStyles_unstable,
   useTabIndicatorStyles_unstable,

@@ -45,3 +45,11 @@ export {
   useSemanticMessageBarActionsStyles,
   useSemanticMessageBarTitleStyles,
 } from './component-styles/MessageBar';
+export {
+  useSemanticTabStyles,
+  useSemanticTabListStyles,
+  // Unstable hooks for internal tab use
+  useSemanticTabButtonStyles_unstable,
+  useSemanticTabContentStyles_unstable,
+  useSemanticTabIndicatorStyles_unstable,
+} from './component-styles/Tabs';
