@@ -195,7 +195,7 @@ export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<Virtualiz
     getItemSize?: (index: number) => number;
     numItems: number;
     children: VirtualizerChildRenderFunction;
-    imperativeRef?: React_2.RefObject<ScrollToInterface>;
+    imperativeRef?: React_2.RefObject<ScrollToInterface | null>;
     enablePagination?: boolean;
     virtualizerContext?: DynamicVirtualizerContextProps;
 };
