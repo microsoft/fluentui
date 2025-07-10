@@ -185,6 +185,7 @@ const useRootStyles = makeStyles({
 const useCircularAppearanceStyles = makeStyles({
   base: {
     borderRadius: semanticTokens.cornerCircular,
+    border: `solid ${semanticTokens.strokeWidthDefault} ${semanticTokens.nullColor}`,
     [`& .${tabClassNames.icon}`]: {
       color: 'inherit',
     },
@@ -245,7 +246,6 @@ const useCircularAppearanceStyles = makeStyles({
   subtleDisabled: {
     backgroundColor: semanticTokens.backgroundCtrlSubtleRest,
     color: semanticTokens.foregroundCtrlOnSubtleDisabled,
-    border: `solid ${semanticTokens.strokeWidthDefault} transparent`,
   },
   subtleDisabledSelected: {
     backgroundColor: semanticTokens.backgroundCtrlActiveBrandDisabled,
@@ -305,7 +305,6 @@ const useCircularAppearanceStyles = makeStyles({
   },
   filledDisabled: {
     backgroundColor: semanticTokens.backgroundCtrlNeutralDisabled,
-    border: `solid ${semanticTokens.strokeWidthDefault} transparent`,
     color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
   },
   filledDisabledSelected: {
