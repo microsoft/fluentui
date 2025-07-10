@@ -558,17 +558,20 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         }
 
         if (_isScatterPolarRef.current) {
-          // If this series originated from scatterpolar, render category labels at equal angles
-          const maybeLineOptions = (_points.current?.[i] as Partial<ILineChartPoints>)?.lineOptions;
+          // Render category labels for all series at once to avoid overlap
+          const allSeriesData = _points.current.map(series => ({
+            data: series.data
+              .filter(pt => typeof pt.x === 'number' && typeof pt.y === 'number')
+              .map(pt => ({ x: pt.x as number, y: pt.y as number, text: pt.text })),
+          }));
           pointsForSeries.push(
             ...renderScatterPolarCategoryLabels({
-              data: _points.current[i].data,
+              allSeriesData,
               xAxisScale: _xAxisScale.current,
               yAxisScale: _yAxisScale.current,
               className: classNames.markerLabel || '',
-              maybeLineOptions: maybeLineOptions
-                ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  { originXOffset: (maybeLineOptions as any).originXOffset }
+              maybeLineOptions: (_points.current?.[i] as Partial<ILineChartPoints>)?.lineOptions
+                ? { originXOffset: (_points.current?.[i] as any).lineOptions?.originXOffset }
                 : undefined,
             }),
           );

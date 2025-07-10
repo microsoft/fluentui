@@ -1,48 +1,69 @@
 import * as React from 'react';
 
 /**
- * Helper to render categorical labels for scatterpolar charts
+ * Helper to render categorical labels for scatterpolar charts with improved overlap logic across all series
+ * Now places labels at equal angles for all unique texts, regardless of data positions.
  */
 export function renderScatterPolarCategoryLabels({
-  data,
+  allSeriesData,
   xAxisScale,
   yAxisScale,
   className,
   maybeLineOptions,
+  minPixelGap = 40,
 }: {
-  data: { text?: string }[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  allSeriesData: { data: { x: number; y: number; text?: string }[] }[];
   xAxisScale: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yAxisScale: any;
   className: string;
   maybeLineOptions?: { originXOffset?: number };
+  minPixelGap?: number;
 }): React.JSX.Element[] {
-  const uniqueCategories: string[] = [];
-  data.forEach(pt => {
-    if (pt.text && !uniqueCategories.includes(pt.text)) {
-      uniqueCategories.push(pt.text);
+  // 1. Aggregate all data points from all series
+  const allLabels: { x: number; y: number; text: string }[] = [];
+  allSeriesData.forEach(series => {
+    series.data.forEach(pt => {
+      if (pt.text) {
+        allLabels.push({ x: pt.x, y: pt.y, text: pt.text });
+      }
+    });
+  });
+
+  // 2. Deduplicate by text (angle label)
+  const uniqueTexts = Array.from(new Set(allLabels.map(l => l.text)));
+
+  // 3. Place labels at equal angles
+  const renderedLabels: React.JSX.Element[] = [];
+  const placedPositions: { x: number; y: number }[] = [];
+  const labelRadius = 0.7; // You can adjust this value for more/less offset
+  const numLabels = uniqueTexts.length;
+
+  uniqueTexts.forEach((text, i) => {
+    const angle = ((2 * Math.PI) / numLabels) * i;
+    const originXOffset = maybeLineOptions?.originXOffset || 0;
+    const x = xAxisScale(labelRadius * Math.cos(angle) - originXOffset / 2);
+    const y = yAxisScale(labelRadius * Math.sin(angle));
+
+    // Check distance from all previously placed labels
+    const isFarEnough = placedPositions.every(pos => Math.sqrt((x - pos.x) ** 2 + (y - pos.y) ** 2) >= minPixelGap);
+
+    if (renderedLabels.length === 0 || isFarEnough) {
+      renderedLabels.push(
+        <text
+          key={`scatterpolar-label-${text}`}
+          x={x}
+          y={y}
+          className={className}
+          textAnchor="middle"
+          alignmentBaseline="middle"
+          opacity={1}
+        >
+          {text}
+        </text>,
+      );
+      placedPositions.push({ x, y });
     }
   });
-  const numCategories = uniqueCategories.length;
-  return uniqueCategories.map((cat, idx) => {
-    const angle = ((2 * Math.PI) / numCategories) * idx;
-    const r = 0.6;
-    const originXOffset = maybeLineOptions?.originXOffset || 0;
-    const x = xAxisScale(r * Math.cos(angle) - originXOffset / 2);
-    const y = yAxisScale(r * Math.sin(angle));
-    return (
-      <text
-        key={`scatterpolar-label-${cat}`}
-        x={x}
-        y={y}
-        className={className}
-        textAnchor="middle"
-        alignmentBaseline="middle"
-        opacity={1}
-      >
-        {cat}
-      </text>
-    );
-  });
+
+  return renderedLabels;
 }
