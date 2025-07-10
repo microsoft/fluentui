@@ -202,7 +202,6 @@ describe('useSafeZoneArea', () => {
 
   it('safe zone is stays open as long as mouse keeps moving inside it', () => {
     const onSafeZoneTimeout = cy.stub().as('onSafeZoneTimeout');
-    cy.clock();
 
     mount(
       <Example
