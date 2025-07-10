@@ -64,7 +64,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the ListItem slots based on the state
  */
-export const useListItemStyles_unstable = (_state: unknown): ListItemState => {
+export const useSemanticListItemStyles = (_state: unknown): ListItemState => {
   'use no memo';
 
   const state = _state as ListItemState;
