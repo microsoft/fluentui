@@ -48,7 +48,7 @@ export const ScrollTo = () => {
           tabIndex: 0,
           style: { maxHeight: '80vh' },
         }}
-        imperativeRef={scrollRef as React.RefObject<ScrollToInterface>}
+        imperativeRef={scrollRef}
       >
         {(index: number) => {
           return (

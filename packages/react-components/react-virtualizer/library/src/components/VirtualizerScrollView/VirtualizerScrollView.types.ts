@@ -41,7 +41,7 @@ export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrol
     /**
      * Imperative ref contains our scrollTo index functionality for user control.
      */
-    imperativeRef?: React.RefObject<ScrollToInterface>;
+    imperativeRef?: React.RefObject<ScrollToInterface | null>;
     /**
      * Imperative ref contains our scrollTo index functionality for user control.
      */
