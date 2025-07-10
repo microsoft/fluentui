@@ -68,7 +68,7 @@ import {
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
-import { getOpacity, extractColor, resolveColor } from './PlotlyColorAdapter';
+import { getOpacity, extractColor, resolveColor, createColorScale } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
@@ -331,33 +331,6 @@ export const resolveXAxisPoint = (
     return x;
   }
   return x;
-};
-
-const createColorScale = (
-  layout: Partial<Layout> | undefined,
-  series: Partial<PlotData>,
-  currentColorScale: ((value: number) => string) | undefined,
-) => {
-  if (
-    layout?.coloraxis?.colorscale?.length &&
-    isArrayOrTypedArray(series.marker?.color) &&
-    (series.marker?.color as Color[]).length > 0 &&
-    typeof (series.marker?.color as Color[])?.[0] === 'number'
-  ) {
-    const scale = layout?.coloraxis?.colorscale as Array<[number, string]>;
-    const colorValues = series.marker?.color as number[];
-    const [dMin, dMax] = [
-      layout?.coloraxis?.cmin ?? Math.min(...colorValues),
-      layout?.coloraxis?.cmax ?? Math.max(...colorValues),
-    ];
-
-    // Normalize colorscale domain to actual data domain
-    const scaleDomain = scale.map(([pos]) => dMin + pos * (dMax - dMin));
-    const scaleColors = scale.map(item => item[1]);
-
-    return d3ScaleLinear<string>().domain(scaleDomain).range(scaleColors);
-  }
-  return currentColorScale;
 };
 
 export const transformPlotlyJsonToDonutProps = (
