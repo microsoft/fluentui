@@ -8,7 +8,11 @@ import { AccordionHeaderState } from '@fluentui/react-accordion';
 import { AvatarState } from '@fluentui/react-avatar';
 import { ButtonState } from '@fluentui/react-button';
 import { CompoundButtonState } from '@fluentui/react-button';
+import { DialogActionsState } from '@fluentui/react-dialog';
+import { DialogBodyState } from '@fluentui/react-dialog';
+import { DialogContentState } from '@fluentui/react-dialog';
 import { DialogSurfaceState } from '@fluentui/react-dialog';
+import { DialogTitleState } from '@fluentui/react-dialog';
 import { DividerState } from '@fluentui/react-divider';
 import type { DrawerBodyState } from '@fluentui/react-drawer';
 import { DrawerFooterState } from '@fluentui/react-drawer';
@@ -48,6 +52,21 @@ export const useSemanticButtonStyles: (_state: unknown) => ButtonState;
 
 // @public (undocumented)
 export const useSemanticCompoundButtonStyles: (_state: unknown) => CompoundButtonState;
+
+// @public
+export const useSemanticDialogActionsStyles: (_state: unknown) => DialogActionsState;
+
+// @public
+export const useSemanticDialogBodyStyles: (_state: unknown) => DialogBodyState;
+
+// @public
+export const useSemanticDialogContentStyles: (_state: unknown) => DialogContentState;
+
+// @public
+export const useSemanticDialogSurfaceStyles: (_state: unknown) => DialogSurfaceState;
+
+// @public
+export const useSemanticDialogTitleStyles: (_state: unknown) => DialogTitleState;
 
 // @public (undocumented)
 export const useSemanticDividerStyles: (_state: unknown) => DividerState;

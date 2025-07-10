@@ -223,6 +223,15 @@ export type DialogTriggerState = {
     children: React_2.ReactElement | null;
 };
 
+// @public (undocumented)
+export const FULLSCREEN_DIALOG_SCROLLBAR_OFFSET = "4px";
+
+// @public (undocumented)
+export const MEDIA_QUERY_BREAKPOINT_SELECTOR = "@media screen and (max-width: 480px)";
+
+// @public (undocumented)
+export const MEDIA_QUERY_SHORT_SCREEN = "@media screen and (max-height: 359px)";
+
 // @public
 export const renderDialog_unstable: (state: DialogState, contextValues: DialogContextValues) => JSX.Element;
 

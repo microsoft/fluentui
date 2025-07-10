@@ -19,6 +19,10 @@ const useResetStyles = makeResetStyles({
   gridTemplateRows: 'auto 1fr',
   gridTemplateColumns: '1fr 1fr auto',
 
+  '@supports (height: 1dvh)': {
+    maxHeight: `calc(100dvh - 2 * ${SURFACE_PADDING})`,
+  },
+
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
     gridTemplateRows: 'auto 1fr auto',
