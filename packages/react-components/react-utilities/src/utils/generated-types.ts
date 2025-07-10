@@ -7,9 +7,9 @@
  */
 
 /**
- * Unwrapped type for 'keyof JSX.IntrinsicElement'.
+ * Unwrapped type for 'keyof JSX.IntrinsicElement'. (Backwards compatible with older versions of '\@types/react')
  */
-export type JSXIntrinsicElementKeys =
+export type JSXIntrinsicElementKeysCompat =
   | 'a'
   | 'abbr'
   | 'address'
@@ -184,3 +184,7 @@ export type JSXIntrinsicElementKeys =
   | 'view'
   | 'wbr'
   | 'webview';
+/**
+ * Unwrapped type for 'keyof JSX.IntrinsicElement'
+ */
+export type JSXIntrinsicElementKeysLatest = 'set' | 'mpath' | 'center' | 'search' | JSXIntrinsicElementKeysCompat;

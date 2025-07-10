@@ -36,18 +36,30 @@ async function main(options: { targetFile: string; reactTypesPath: string; omitE
     console.log(`✅ Remaining ${filteredElementKeys.length} elements after filtering`);
   }
 
-  const unionString = filteredElementKeys.map(key => `'${key}'`).join(' | ');
+  const compat = generateUnionString(filteredElementKeys);
+  const omitted = omitElements.length ? generateUnionString(omitElements) : null;
+
   const JSXIntrinsicElementKeysTypeStatement = `
   /**
-  * Unwrapped type for 'keyof JSX.IntrinsicElement'.
+  * Unwrapped type for 'keyof JSX.IntrinsicElement'. (Backwards compatible with older versions of '\\@types/react')
   */
-  export type JSXIntrinsicElementKeys = ${unionString};
+  export type JSXIntrinsicElementKeysCompat = ${compat};
+  /**
+  * Unwrapped type for 'keyof JSX.IntrinsicElement'
+  */
+  export type JSXIntrinsicElementKeysLatest =
+  ${[omitted, 'JSXIntrinsicElementKeysCompat'].filter(Boolean).join(' | ')};
+
   \n`;
 
   return generateFile({
     targetFile,
     types: [JSXIntrinsicElementKeysTypeStatement],
   });
+
+  function generateUnionString(keys: string[]): string {
+    return keys.map(key => `'${key}'`).join(' | ');
+  }
 }
 
 function processArgs() {
