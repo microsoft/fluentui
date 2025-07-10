@@ -313,4 +313,12 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     originalToken: 'paddingCtrlTextTop',
     rawValue: '0px',
   },
+  _nullBackgroundColorHover: {
+    originalToken: 'nullColor',
+    f2Token: 'colorTransparentBackgroundHover',
+  },
+  _nullBackgroundColorPressed: {
+    originalToken: 'nullColor',
+    f2Token: 'colorTransparentBackgroundPressed',
+  },
 };

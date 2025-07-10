@@ -1857,5 +1857,7 @@ export {
   _ctrlTreePaddingTextLeft,
   _ctrlTreePaddingTextRight,
   _ctrlTreePaddingTextTop,
+  _nullBackgroundColorHover,
+  _nullBackgroundColorPressed,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';

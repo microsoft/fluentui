@@ -82,6 +82,8 @@ import {
   spacingHorizontalXXS,
   spacingVerticalXXS,
   colorNeutralForeground3Hover,
+  colorTransparentBackgroundHover,
+  colorTransparentBackgroundPressed,
 } from '../legacy/tokens';
 import {
   backgroundCtrlSubtleRestRaw,
@@ -638,3 +640,17 @@ export const _ctrlTreePaddingTextRight = `var(${paddingCtrlHorizontalDefaultRaw}
  * please use paddingCtrlTextTop instead.
  */
 export const _ctrlTreePaddingTextTop = `var(${paddingCtrlTextTopRaw}, 0px)`;
+/**
+ * This is a legacy variant for nullColor to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use nullColor instead.
+ */
+export const _nullBackgroundColorHover = `var(${nullColorRaw}, ${colorTransparentBackgroundHover})`;
+/**
+ * This is a legacy variant for nullColor to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use nullColor instead.
+ */
+export const _nullBackgroundColorPressed = `var(${nullColorRaw}, ${colorTransparentBackgroundPressed})`;

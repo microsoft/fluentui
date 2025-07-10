@@ -599,3 +599,13 @@ export const spacingHorizontalXXS = 'var(--spacingHorizontalXXS)';
  * @public
  */
 export const colorNeutralForeground3Hover = 'var(--colorNeutralForeground3Hover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorTransparentBackgroundHover | `colorTransparentBackgroundHover`} design token.
+ * @public
+ */
+export const colorTransparentBackgroundHover = 'var(--colorTransparentBackgroundHover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorTransparentBackgroundPressed | `colorTransparentBackgroundPressed`} design token.
+ * @public
+ */
+export const colorTransparentBackgroundPressed = 'var(--colorTransparentBackgroundPressed)';

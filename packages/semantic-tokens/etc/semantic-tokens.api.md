@@ -4125,6 +4125,12 @@ export const materialMicaThinSolid = "var(--smtc-material-mica-thin-solid, var(-
 // @public (undocumented)
 export const materialMicaThinSolidRaw = "--smtc-material-mica-thin-solid";
 
+// @public
+export const _nullBackgroundColorHover = "var(--smtc-null-color, var(--colorTransparentBackgroundHover))";
+
+// @public
+export const _nullBackgroundColorPressed = "var(--smtc-null-color, var(--colorTransparentBackgroundPressed))";
+
 // @public (undocumented)
 export const nullColor = "var(--smtc-null-color, var(--colorTransparentBackground))";
 

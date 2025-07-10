@@ -85,10 +85,10 @@ const useRootStyles = makeStyles({
   transparent: {
     backgroundColor: semanticTokens.nullColor,
     ':enabled:hover': {
-      backgroundColor: semanticTokens.nullColor,
+      backgroundColor: semanticTokens._nullBackgroundColorHover,
     },
     ':enabled:active': {
-      backgroundColor: semanticTokens.nullColor,
+      backgroundColor: semanticTokens._nullBackgroundColorPressed,
     },
     [`& .${tabClassNames.icon}`]: {
       color: semanticTokens.foregroundCtrlOnTransparentRest,
@@ -219,6 +219,9 @@ const useCircularAppearanceStyles = makeStyles({
       backgroundColor: semanticTokens.backgroundCtrlSubtlePressed,
       border: `solid ${semanticTokens.strokeWidthDefault} ${semanticTokens.strokeCtrlOnNeutralPressed}`,
       color: semanticTokens.foregroundCtrlOnSubtlePressed,
+    },
+    '@media (forced-colors: active)': {
+      border: `solid ${semanticTokens.strokeWidthDefault} Canvas`,
     },
   },
   subtleSelected: {
