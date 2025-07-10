@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: update description and remove react from direct dependencies",
-  "packageName": "@fluentui/codemods",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
