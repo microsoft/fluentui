@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add support for native table elements",
+  "packageName": "@fluentui/react-table",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

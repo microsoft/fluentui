@@ -158,16 +158,21 @@ export const Default = () => {
       getRowId={item => item.file.label}
       focusMode="composite"
       style={{ minWidth: '550px' }}
+      as="table"
     >
-      <DataGridHeader>
-        <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>
-          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
+      <DataGridHeader as="thead">
+        <DataGridRow as="tr" selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' }, as: 'th' }}>
+          {({ renderHeaderCell }) => <DataGridHeaderCell as="th">{renderHeaderCell()}</DataGridHeaderCell>}
         </DataGridRow>
       </DataGridHeader>
-      <DataGridBody<Item>>
+      <DataGridBody<Item> as="tbody">
         {({ item, rowId }) => (
-          <DataGridRow<Item> key={rowId} selectionCell={{ checkboxIndicator: { 'aria-label': 'Select row' } }}>
-            {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+          <DataGridRow<Item>
+            as="tr"
+            key={rowId}
+            selectionCell={{ checkboxIndicator: { 'aria-label': 'Select row' }, as: 'td' }}
+          >
+            {({ renderCell }) => <DataGridCell as="td">{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}
       </DataGridBody>

@@ -111,7 +111,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     {
       role: 'grid',
       as: 'div',
-      noNativeElements: true,
+      noNativeElements: props.as !== 'table',
       ...(focusMode === 'cell' && gridTabsterAttribute),
       ...(focusMode === 'composite' && compositeTabsterAttribute),
       ...props,

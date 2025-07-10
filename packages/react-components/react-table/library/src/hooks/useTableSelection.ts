@@ -30,7 +30,7 @@ export function useTableSelectionState<TItem>(
   options: SelectionHookParams,
 ): TableFeaturesState<TItem> {
   const { items, getRowId } = tableState;
-  const { selectionMode: selectionMode, defaultSelectedItems, selectedItems, onSelectionChange } = options;
+  const { selectionMode, defaultSelectedItems, selectedItems, onSelectionChange } = options;
 
   const [selected, selectionMethods] = useSelection({
     selectionMode,

@@ -56,6 +56,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
 
   const baseState = useTableRow_unstable(
     {
+      as: 'div',
       appearance,
       'aria-selected': selectable ? selected : undefined,
       tabIndex: tabbable && !isHeader ? 0 : undefined,
@@ -64,7 +65,6 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
       onClick,
       onKeyDown,
       children: null,
-      as: 'div',
     },
     ref,
   );
