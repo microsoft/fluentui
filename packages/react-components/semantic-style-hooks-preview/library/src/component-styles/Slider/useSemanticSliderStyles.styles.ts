@@ -1,30 +1,11 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
-import type { SliderState, SliderSlots } from './Slider.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-
-export const sliderClassNames: SlotClassNames<SliderSlots> = {
-  root: 'fui-Slider',
-  rail: 'fui-Slider__rail',
-  thumb: 'fui-Slider__thumb',
-  input: 'fui-Slider__input',
-};
+import { type SliderState, sliderCSSVars, sliderClassNames } from '@fluentui/react-slider';
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 // Internal CSS variables
 const thumbPositionVar = `--fui-Slider__thumb--position`;
-
-export const sliderCSSVars = {
-  sliderDirectionVar: `--fui-Slider--direction`,
-  sliderInnerThumbRadiusVar: `--fui-Slider__inner-thumb--radius`,
-  sliderProgressVar: `--fui-Slider--progress`,
-  sliderProgressColorVar: `--fui-Slider__progress--color`,
-  sliderRailSizeVar: `--fui-Slider__rail--size`,
-  sliderRailColorVar: `--fui-Slider__rail--color`,
-  sliderStepsPercentVar: `--fui-Slider--steps-percent`,
-  sliderThumbColorVar: `--fui-Slider__thumb--color`,
-  sliderThumbSizeVar: `--fui-Slider__thumb--size`,
-};
 
 const {
   sliderDirectionVar,
@@ -51,44 +32,94 @@ const useRootStyles = makeStyles({
   },
 
   small: {
-    [sliderThumbSizeVar]: '16px',
+    [sliderThumbSizeVar]: semanticTokens.ctrlSliderSmThumbSizeRest,
     [sliderInnerThumbRadiusVar]: '5px',
-    [sliderRailSizeVar]: '2px',
-    minHeight: '24px',
+    [sliderRailSizeVar]: semanticTokens.ctrlSliderSmBarHeight,
+    minHeight: semanticTokens._ctrlSliderSmBarSizeDefault,
+    ':hover': {
+      [sliderThumbSizeVar]: semanticTokens.ctrlSliderSmThumbSizeHover,
+    },
+    ':active': {
+      [sliderThumbSizeVar]: semanticTokens.ctrlSliderSmThumbSizePressed,
+    },
+  },
+
+  smallHorizontal: {
+    gridTemplateColumns: `${semanticTokens._ctrlSliderSmPaddingDefault} 1fr ${semanticTokens._ctrlSliderSmPaddingDefault}`,
+  },
+
+  smallVertical: {
+    gridTemplateRows: `${semanticTokens._ctrlSliderSmPaddingDefault} 1fr ${semanticTokens._ctrlSliderSmPaddingDefault}`,
+    minWidth: `Max(${semanticTokens.ctrlSliderSmThumbSizeRest}, ${semanticTokens.ctrlSliderSmThumbSizeHover}, ${semanticTokens.ctrlSliderSmThumbSizePressed})`,
   },
 
   medium: {
-    [sliderThumbSizeVar]: '20px',
+    [sliderThumbSizeVar]: semanticTokens.ctrlSliderThumbSizeRest,
     [sliderInnerThumbRadiusVar]: '6px',
-    [sliderRailSizeVar]: '4px',
-    minHeight: '32px',
+    [sliderRailSizeVar]: semanticTokens.ctrlSliderBarHeight,
+    minHeight: semanticTokens._ctrlSliderBarSizeDefault,
+    ':hover': {
+      [sliderThumbSizeVar]: semanticTokens.ctrlSliderThumbSizeHover,
+    },
+    ':active': {
+      [sliderThumbSizeVar]: semanticTokens.ctrlSliderThumbSizePressed,
+    },
+  },
+
+  // Thumb should not animate on interactions when disabled
+  mediumDisabled: {
+    ':hover': {
+      [sliderThumbSizeVar]: semanticTokens.ctrlSliderThumbSizeRest,
+    },
+    ':active': {
+      [sliderThumbSizeVar]: semanticTokens.ctrlSliderThumbSizeRest,
+    },
+  },
+
+  // Thumb should not animate on interactions when disabled
+  smallDisabled: {
+    ':hover': {
+      [sliderThumbSizeVar]: semanticTokens.ctrlSliderSmThumbSizeRest,
+    },
+    ':active': {
+      [sliderThumbSizeVar]: semanticTokens.ctrlSliderSmThumbSizeRest,
+    },
+  },
+
+  mediumHorizontal: {
+    gridTemplateColumns: `${semanticTokens._ctrlSliderPaddingDefault} 1fr ${semanticTokens._ctrlSliderPaddingDefault}`,
+  },
+
+  mediumVertical: {
+    gridTemplateRows: `${semanticTokens._ctrlSliderPaddingDefault} 1fr ${semanticTokens._ctrlSliderPaddingDefault}`,
+    minWidth: `Max(${semanticTokens.ctrlSliderThumbSizeRest}, ${semanticTokens.ctrlSliderThumbSizeHover}, ${semanticTokens.ctrlSliderThumbSizePressed})`,
   },
 
   horizontal: {
     minWidth: '120px',
     // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
     gridTemplateRows: `1fr var(${sliderThumbSizeVar}) 1fr`,
-    gridTemplateColumns: `1fr calc(100% - var(${sliderThumbSizeVar})) 1fr`,
   },
 
   vertical: {
     minHeight: '120px',
     // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
-    gridTemplateRows: `1fr calc(100% - var(${sliderThumbSizeVar})) 1fr`,
     gridTemplateColumns: `1fr var(${sliderThumbSizeVar}) 1fr`,
   },
 
   enabled: {
-    [sliderRailColorVar]: tokens.colorNeutralStrokeAccessible,
-    [sliderProgressColorVar]: tokens.colorCompoundBrandBackground,
-    [sliderThumbColorVar]: tokens.colorCompoundBrandBackground,
+    [sliderRailColorVar]: semanticTokens.ctrlSliderBarForegroundEmptyRest,
+    [sliderProgressColorVar]: semanticTokens.ctrlSliderBarForegroundFilledRest,
+    [sliderThumbColorVar]: semanticTokens.ctrlSliderThumbBackgroundRest,
     ':hover': {
-      [sliderThumbColorVar]: tokens.colorCompoundBrandBackgroundHover,
-      [sliderProgressColorVar]: tokens.colorCompoundBrandBackgroundHover,
+      [sliderRailColorVar]: semanticTokens.ctrlSliderBarForegroundEmptyHover,
+      [sliderProgressColorVar]: semanticTokens.ctrlSliderBarForegroundFilledHover,
+      [sliderThumbColorVar]: semanticTokens.ctrlSliderThumbBackgroundHover,
     },
     ':active': {
-      [sliderThumbColorVar]: tokens.colorCompoundBrandBackgroundPressed,
-      [sliderProgressColorVar]: tokens.colorCompoundBrandBackgroundPressed,
+      [sliderRailColorVar]: semanticTokens.ctrlSliderBarForegroundEmptyPressed,
+      [sliderProgressColorVar]: semanticTokens.ctrlSliderBarForegroundFilledPressed,
+      [sliderThumbColorVar]: semanticTokens.ctrlSliderThumbBackgroundPressed,
     },
     '@media (forced-colors: active)': {
       [sliderRailColorVar]: 'CanvasText',
@@ -102,9 +133,9 @@ const useRootStyles = makeStyles({
   },
 
   disabled: {
-    [sliderThumbColorVar]: tokens.colorNeutralForegroundDisabled,
-    [sliderRailColorVar]: tokens.colorNeutralBackgroundDisabled,
-    [sliderProgressColorVar]: tokens.colorNeutralForegroundDisabled,
+    [sliderRailColorVar]: semanticTokens.ctrlSliderBarForegroundEmptyDisabled,
+    [sliderProgressColorVar]: semanticTokens.ctrlSliderBarForegroundFilledDisabled,
+    [sliderThumbColorVar]: semanticTokens.ctrlSliderThumbBackgroundDisabled,
     '@media (forced-colors: active)': {
       [sliderRailColorVar]: 'GrayText',
       [sliderCSSVars.sliderThumbColorVar]: 'GrayText',
@@ -114,12 +145,12 @@ const useRootStyles = makeStyles({
 
   focusIndicatorHorizontal: createFocusOutlineStyle({
     selector: 'focus-within',
-    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '-4px', right: '-4px' } },
+    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '8px', right: '8px' } },
   }),
 
   focusIndicatorVertical: createFocusOutlineStyle({
     selector: 'focus-within',
-    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '4px', right: '4px' } },
+    style: { outlineOffset: { top: '6px', bottom: '6px', left: '4px', right: '4px' } },
   }),
 });
 
@@ -128,7 +159,7 @@ const useRootStyles = makeStyles({
  */
 const useRailStyles = makeStyles({
   rail: {
-    borderRadius: tokens.borderRadiusXLarge,
+    borderRadius: semanticTokens.ctrlSliderBarCorner,
     pointerEvents: 'none',
     gridRowStart: '2',
     gridRowEnd: '2',
@@ -143,9 +174,9 @@ const useRailStyles = makeStyles({
       var(${sliderProgressColorVar}) var(${sliderProgressVar}),
       var(${sliderRailColorVar}) var(${sliderProgressVar})
     )`,
-    outlineWidth: '1px',
+    outlineWidth: semanticTokens.strokeWidthDefault,
     outlineStyle: 'solid',
-    outlineColor: tokens.colorTransparentStroke,
+    outlineColor: semanticTokens.strokeLayer,
     '::before': {
       content: "''",
       position: 'absolute',
@@ -154,8 +185,8 @@ const useRailStyles = makeStyles({
         var(${sliderDirectionVar}),
         #0000 0%,
         #0000 calc(var(${sliderStepsPercentVar}) - 1px),
-        ${tokens.colorNeutralBackground1} calc(var(${sliderStepsPercentVar}) - 1px),
-        ${tokens.colorNeutralBackground1} var(${sliderStepsPercentVar})
+        ${semanticTokens.backgroundCtrlNeutralRest} calc(var(${sliderStepsPercentVar}) - 1px),
+        ${semanticTokens.backgroundCtrlNeutralRest} var(${sliderStepsPercentVar})
       )`,
       // force steps to use HighlightText for high contrast mode
       '@media (forced-colors: active)': {
@@ -210,8 +241,8 @@ const useThumbStyles = makeStyles({
     pointerEvents: 'none',
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
-    borderRadius: tokens.borderRadiusCircular,
-    boxShadow: `0 0 0 calc(var(${sliderThumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
+    borderRadius: semanticTokens.ctrlSliderThumbCorner,
+    boxShadow: `0 0 0 calc(var(${sliderThumbSizeVar}) * .2) ${semanticTokens.ctrlSliderThumbInnerStrokeRest} inset`,
     backgroundColor: `var(${sliderThumbColorVar})`,
     '::before': {
       position: 'absolute',
@@ -219,15 +250,30 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: tokens.borderRadiusCircular,
+      borderRadius: semanticTokens.ctrlSliderThumbCorner,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,
+      border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${semanticTokens.ctrlSliderThumbOuterStrokeRest}`,
     },
   },
   disabled: {
+    boxShadow: `0 0 0 calc(var(${sliderThumbSizeVar}) * .2) ${semanticTokens.ctrlSliderThumbInnerStrokeDisabled} inset`,
     '::before': {
-      border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${tokens.colorNeutralForegroundDisabled}`,
+      border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${semanticTokens.ctrlSliderThumbOuterStrokeDisabled}`,
+    },
+  },
+  enabled: {
+    ':hover': {
+      boxShadow: `0 0 0 calc(var(${sliderThumbSizeVar}) * .2) ${semanticTokens.ctrlSliderThumbInnerStrokeHover} inset`,
+      '::before': {
+        border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${semanticTokens.ctrlSliderThumbOuterStrokeHover}`,
+      },
+    },
+    ':active': {
+      boxShadow: `0 0 0 calc(var(${sliderThumbSizeVar}) * .2) ${semanticTokens.ctrlSliderThumbInnerStrokePressed} inset`,
+      '::before': {
+        border: `calc(var(${sliderThumbSizeVar}) * .05) solid ${semanticTokens.ctrlSliderThumbOuterStrokePressed}`,
+      },
     },
   },
   horizontal: {
@@ -281,46 +327,61 @@ const useInputStyles = makeStyles({
 /**
  * Apply styling to the Slider slots based on the state
  */
-export const useSliderStyles_unstable = (state: SliderState): SliderState => {
+export const useSemanticSliderStyles = (_state: unknown): SliderState => {
   'use no memo';
 
+  const state = _state as SliderState;
   const rootStyles = useRootStyles();
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
   const isVertical = state.vertical;
+  const isSmallVertical = state.size === 'small' && isVertical;
+  const isSmallHorizontal = state.size === 'small' && !isVertical;
+  const isMediumVertical = state.size === 'medium' && isVertical;
+  const isMediumHorizontal = state.size === 'medium' && !isVertical;
+  const disabledThumbStyle = state.size === 'small' ? rootStyles.smallDisabled : rootStyles.mediumDisabled;
 
   state.root.className = mergeClasses(
+    state.root.className,
     sliderClassNames.root,
     rootStyles.root,
     isVertical ? rootStyles.focusIndicatorVertical : rootStyles.focusIndicatorHorizontal,
     rootStyles[state.size!],
     isVertical ? rootStyles.vertical : rootStyles.horizontal,
+    isSmallVertical && rootStyles.smallVertical,
+    isSmallHorizontal && rootStyles.smallHorizontal,
+    isMediumVertical && rootStyles.mediumVertical,
+    isMediumHorizontal && rootStyles.mediumHorizontal,
     state.disabled ? rootStyles.disabled : rootStyles.enabled,
-    state.root.className,
+    state.disabled && disabledThumbStyle,
+    getSlotClassNameProp_unstable(state.root),
   );
 
   state.rail.className = mergeClasses(
+    state.rail.className,
     sliderClassNames.rail,
     railStyles.rail,
     isVertical ? railStyles.vertical : railStyles.horizontal,
-    state.rail.className,
+    getSlotClassNameProp_unstable(state.rail),
   );
 
   state.thumb.className = mergeClasses(
+    state.thumb.className,
     sliderClassNames.thumb,
     thumbStyles.thumb,
     isVertical ? thumbStyles.vertical : thumbStyles.horizontal,
     state.disabled && thumbStyles.disabled,
-    state.thumb.className,
+    getSlotClassNameProp_unstable(state.thumb),
   );
 
   state.input.className = mergeClasses(
+    state.input.className,
     sliderClassNames.input,
     inputStyles.input,
     isVertical ? inputStyles.vertical : inputStyles.horizontal,
     state.disabled && inputStyles.disabled,
-    state.input.className,
+    getSlotClassNameProp_unstable(state.input),
   );
 
   return state;

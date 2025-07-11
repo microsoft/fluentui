@@ -32,6 +32,7 @@ import { MessageBarTitleState } from '@fluentui/react-message-bar';
 import { ProgressBarState } from '@fluentui/react-progress';
 import { RatingDisplayState } from '@fluentui/react-rating';
 import { RatingItemState } from '@fluentui/react-rating';
+import { SliderState } from '@fluentui/react-slider';
 import { SpinnerState } from '@fluentui/react-spinner';
 import { SplitButtonState } from '@fluentui/react-button';
 import { SwitchState } from '@fluentui/react-switch';
@@ -130,6 +131,9 @@ export const useSemanticRatingDisplayStyles: (_state: unknown) => RatingDisplayS
 
 // @public
 export const useSemanticRatingItemStyles: (_state: unknown) => RatingItemState;
+
+// @public
+export const useSemanticSliderStyles: (_state: unknown) => SliderState;
 
 // @public
 export const useSemanticSpinnerStyles: (_state: unknown) => SpinnerState;
