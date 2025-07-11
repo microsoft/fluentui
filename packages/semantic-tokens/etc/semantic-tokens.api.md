@@ -2234,30 +2234,6 @@ export const ctrlLiteFilterStrokeWidthSelected = "var(--smtc-ctrl-lite-filter-st
 export const ctrlLiteFilterStrokeWidthSelectedRaw = "--smtc-ctrl-lite-filter-stroke-width-selected";
 
 // @public
-<<<<<<< HEAD
-export const _ctrlMessageBarActionsMultilinePaddingRight = "var(--smtc-padding-content-align-default, var(--spacingVerticalM))";
-
-// @public
-export const _ctrlMessageBarErrorIconColor = "var(--smtc-status-danger-tint-foreground, var(--colorStatusDangerForeground1))";
-
-// @public
-export const _ctrlMessageBarGapBetweenCtrl = "var(--smtc-gap-between-ctrl-default, var(--spacingHorizontalM))";
-
-// @public
-export const _ctrlMessageBarPaddingContentAlignDefault = "var(--smtc-padding-content-align-default, 12px)";
-
-// @public
-export const _ctrlMessageBarPaddingVertical = "var(--smtc-padding-content-align-outdent-icon-on-subtle, 0px)";
-
-// @public
-export const _ctrlMessageBarReflowSpacerMarginBottom = "var(--smtc-padding-content-align-default, var(--spacingVerticalS))";
-
-// @public
-export const _ctrlMessageBarSpacingTop = "var(--smtc-padding-content-align-default, var(--spacingVerticalMNudge))";
-
-// @public
-export const _ctrlMessageBarTitleLineHeight = "var(--smtc-text-ramp-item-header-line-height, var(--smtc-text-global-body2-line-height, var(--lineHeightBase300)))";
-=======
 export const _ctrlMenuGroupHeaderColor = "var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground3))";
 
 // @public
@@ -2310,7 +2286,30 @@ export const _ctrlMenuPopoverShadowFlyout = "var(--smtc-shadow-flyout, var(--sha
 
 // @public
 export const _ctrlMenuPopoverStrokeFlyout = "var(--smtc-stroke-flyout, var(--smtc-null-color, var(--colorTransparentStroke)))";
->>>>>>> 6746de9a03 (update menu to use semantic tokens)
+
+// @public
+export const _ctrlMessageBarActionsMultilinePaddingRight = "var(--smtc-padding-content-align-default, var(--spacingVerticalM))";
+
+// @public
+export const _ctrlMessageBarErrorIconColor = "var(--smtc-status-danger-tint-foreground, var(--colorStatusDangerForeground1))";
+
+// @public
+export const _ctrlMessageBarGapBetweenCtrl = "var(--smtc-gap-between-ctrl-default, var(--spacingHorizontalM))";
+
+// @public
+export const _ctrlMessageBarPaddingContentAlignDefault = "var(--smtc-padding-content-align-default, 12px)";
+
+// @public
+export const _ctrlMessageBarPaddingVertical = "var(--smtc-padding-content-align-outdent-icon-on-subtle, 0px)";
+
+// @public
+export const _ctrlMessageBarReflowSpacerMarginBottom = "var(--smtc-padding-content-align-default, var(--spacingVerticalS))";
+
+// @public
+export const _ctrlMessageBarSpacingTop = "var(--smtc-padding-content-align-default, var(--spacingVerticalMNudge))";
+
+// @public
+export const _ctrlMessageBarTitleLineHeight = "var(--smtc-text-ramp-item-header-line-height, var(--smtc-text-global-body2-line-height, var(--lineHeightBase300)))";
 
 // @public
 export const _ctrlPersonaTreeIconOnSubtlePressed = "var(--smtc-foreground-ctrl-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-pressed, var(--colorNeutralForeground3Pressed)))";

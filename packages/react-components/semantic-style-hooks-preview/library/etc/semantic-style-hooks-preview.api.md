@@ -25,6 +25,12 @@ import { LabelState } from '@fluentui/react-label';
 import { LinkState } from '@fluentui/react-link';
 import { ListItemState } from '@fluentui/react-list';
 import { MenuButtonState } from '@fluentui/react-button';
+import { MenuDividerState } from '@fluentui/react-menu';
+import { MenuGroupHeaderState } from '@fluentui/react-menu';
+import { MenuItemState } from '@fluentui/react-menu';
+import { MenuItemSwitchState } from '@fluentui/react-menu';
+import { MenuPopoverState } from '@fluentui/react-menu';
+import { MenuSplitGroupState } from '@fluentui/react-menu';
 import { MessageBarActionsState } from '@fluentui/react-message-bar';
 import { MessageBarBodyState } from '@fluentui/react-message-bar';
 import { MessageBarState } from '@fluentui/react-message-bar';
@@ -107,6 +113,24 @@ export const useSemanticListItemStyles: (_state: unknown) => ListItemState;
 
 // @public (undocumented)
 export const useSemanticMenuButtonStyles: (_state: unknown) => MenuButtonState;
+
+// @public (undocumented)
+export const useSemanticMenuDividerStyles: (_state: unknown) => MenuDividerState;
+
+// @public (undocumented)
+export const useSemanticMenuGroupHeaderStyles: (_state: unknown) => MenuGroupHeaderState;
+
+// @public
+export const useSemanticMenuItemStyles: (_state: unknown) => MenuItemState;
+
+// @public
+export const useSemanticMenuItemSwitchStyles: (_state: unknown) => MenuItemSwitchState;
+
+// @public
+export const useSemanticMenuPopoverStyles: (_state: unknown) => MenuPopoverState;
+
+// @public
+export const useSemanticMenuSplitGroupStyles: (_state: unknown) => MenuSplitGroupState;
 
 // @public
 export const useSemanticMessageBarActionsStyles: (_state: unknown) => MessageBarActionsState;
