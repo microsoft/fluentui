@@ -50,6 +50,14 @@ import {
 import { useSemanticTabStyles } from './Tabs/useSemanticTabsStyles.styles';
 import { useSemanticTabListStyles } from './Tabs';
 import { useSemanticSliderStyles } from './Slider';
+import {
+  useSemanticMenuDividerStyles,
+  useSemanticMenuItemStyles,
+  useSemanticMenuItemSwitchStyles,
+  useSemanticMenuPopoverStyles,
+  useSemanticMenuSplitGroupStyles,
+} from './Menu';
+import { useSemanticMenuGroupHeaderStyles } from './Menu';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -113,4 +121,11 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useTabListStyles_unstable: useSemanticTabListStyles,
   // Slider styles
   useSliderStyles_unstable: useSemanticSliderStyles,
+  // Menu styles
+  useMenuDividerStyles_unstable: useSemanticMenuDividerStyles,
+  useMenuGroupHeaderStyles_unstable: useSemanticMenuGroupHeaderStyles,
+  useMenuItemStyles_unstable: useSemanticMenuItemStyles,
+  useMenuItemSwitchStyles_unstable: useSemanticMenuItemSwitchStyles,
+  useMenuPopoverStyles_unstable: useSemanticMenuPopoverStyles,
+  useMenuSplitGroupStyles_unstable: useSemanticMenuSplitGroupStyles,
 };
