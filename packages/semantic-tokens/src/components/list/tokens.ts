@@ -13,7 +13,7 @@ import {
   cornerCtrlLgRestRaw,
   paddingCtrlLgHorizontalDefaultRaw,
 } from '../../control/variables';
-import { borderRadiusMedium, spacingHorizontalXXL } from '../../legacy/tokens';
+import { strokeWidthThicker, borderRadiusMedium, spacingHorizontalXXL } from '../../legacy/tokens';
 import {
   backgroundCtrlSubtleRestRaw,
   backgroundCtrlSubtleDisabledRaw,
@@ -75,7 +75,7 @@ import {
   ctrlListShadowSelectedRaw,
 } from './variables';
 
-export const ctrlListPillWidth = `var(${ctrlListPillWidthRaw})`;
+export const ctrlListPillWidth = `var(${ctrlListPillWidthRaw}, ${strokeWidthThicker})`;
 export const ctrlListPillFullWidth = `var(${ctrlListPillFullWidthRaw})`;
 export const ctrlListPillStretchPaddingDefault = `var(${ctrlListPillStretchPaddingDefaultRaw})`;
 export const ctrlListPillStretchPaddingHint = `var(${ctrlListPillStretchPaddingHintRaw})`;

@@ -25,6 +25,11 @@ export const renderTab_unstable: (state: TabState) => JSX.Element;
 export const renderTabList_unstable: (state: TabListState, contextValues: TabListContextValues) => JSX.Element;
 
 // @public (undocumented)
+export const reservedSpaceClassNames: {
+    content: string;
+};
+
+// @public (undocumented)
 export type SelectTabData = {
     value: TabValue;
 };
@@ -122,6 +127,9 @@ export type TabValue = unknown;
 
 // @public
 export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
+
+// @public
+export const useTabAnimatedIndicatorStyles_unstable: (state: TabState) => TabState;
 
 // @public
 export const useTabButtonStyles_unstable: (state: TabState, slot: TabState['root']) => TabState;

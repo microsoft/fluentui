@@ -217,6 +217,62 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorTransparentStroke',
     originalToken: 'strokeCtrlOnActiveBrandRest',
   },
+  _ctrlTabBackgroundActiveBrandDisabled: {
+    f2Token: 'colorNeutralForegroundDisabled',
+    originalToken: 'backgroundCtrlActiveBrandDisabled',
+  },
+  _ctrlTabForegroundActiveBrandHover: {
+    f2Token: 'colorNeutralForeground1Hover',
+    originalToken: 'foregroundCtrlActiveBrandHover',
+  },
+  _ctrlTabForegroundActiveBrandPressed: {
+    f2Token: 'colorNeutralForeground1Pressed',
+    originalToken: 'foregroundCtrlActiveBrandPressed',
+  },
+  _ctrlTabForegroundActiveBrandRest: {
+    f2Token: 'colorNeutralForeground1',
+    originalToken: 'foregroundCtrlActiveBrandRest',
+  },
+  _ctrlTabForegroundOnSubtleHover: {
+    f2Token: 'colorNeutralForeground2Hover',
+    originalToken: 'foregroundCtrlIconOnSubtleHover',
+  },
+  _ctrlTabForegroundOnSubtlePressed: {
+    f2Token: 'colorNeutralForeground2Pressed',
+    originalToken: 'foregroundCtrlIconOnSubtlePressed',
+  },
+  _ctrlTabForegroundOnTransparentHover: {
+    f2Token: 'colorNeutralForeground2Hover',
+    originalToken: 'foregroundCtrlOnTransparentHover',
+  },
+  _ctrlTabForegroundOnTransparentPressed: {
+    f2Token: 'colorNeutralForeground2Pressed',
+    originalToken: 'foregroundCtrlOnTransparentPressed',
+  },
+  _ctrlTabGapInsideDefault: {
+    f2Token: 'spacingHorizontalSNudge',
+    originalToken: 'gapInsideCtrlDefault',
+  },
+  _ctrlTabPaddingHorizontalDefault: {
+    f2Token: 'spacingHorizontalMNudge',
+    originalToken: 'paddingCtrlHorizontalDefault',
+  },
+  _ctrlTabPaddingTextSide: {
+    f2Token: 'spacingHorizontalXXS',
+    originalToken: 'paddingCtrlTextSide',
+  },
+  _ctrlTabSizeDefault: {
+    originalToken: 'sizeCtrlDefault',
+    rawValue: '32px',
+  },
+  _ctrlTabSmGapInsideDefault: {
+    f2Token: 'spacingHorizontalXXS',
+    originalToken: 'gapInsideCtrlDefault',
+  },
+  _ctrlTabSmPaddingHorizontalDefault: {
+    f2Token: 'spacingHorizontalSNudge',
+    originalToken: 'paddingCtrlHorizontalDefault',
+  },
   _ctrlTreeGapInsideDefault: {
     f2Token: 'spacingVerticalXXS',
     originalToken: 'gapInsideCtrlDefault',
@@ -256,5 +312,13 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _ctrlTreePaddingTextTop: {
     originalToken: 'paddingCtrlTextTop',
     rawValue: '0px',
+  },
+  _nullBackgroundColorHover: {
+    f2Token: 'colorTransparentBackgroundHover',
+    originalToken: 'nullColor',
+  },
+  _nullBackgroundColorPressed: {
+    f2Token: 'colorTransparentBackgroundPressed',
+    originalToken: 'nullColor',
   },
 };
