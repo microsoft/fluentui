@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Export reservedSpaceClassNames and useTabAnimatedIndicatorStyles_unstable for style overrides",
+  "packageName": "@fluentui/react-tabs",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

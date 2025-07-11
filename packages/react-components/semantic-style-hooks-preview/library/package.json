@@ -45,6 +45,7 @@
     "@fluentui/react-spinner": "^9.5.11",
     "@fluentui/react-switch": "^9.2.6",
     "@fluentui/react-tabster": "^9.24.6",
+    "@fluentui/react-tabs": "^9.7.6",
     "@fluentui/react-text": "^9.4.36",
     "@fluentui/react-textarea": "^9.4.6",
     "@fluentui/react-theme": "^9.1.24",
