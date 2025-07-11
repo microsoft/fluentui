@@ -177,6 +177,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
             usePageCache={usePageCache}
             onShouldVirtualize={onShouldVirtualize}
             version={version}
+            renderEarly={true}
             {...rootListProps}
           />
         )}
