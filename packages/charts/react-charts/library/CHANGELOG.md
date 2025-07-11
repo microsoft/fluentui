@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Fri, 04 Jul 2025 10:02:50 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jul 2025 15:59:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.7)
+
+Fri, 11 Jul 2025 15:59:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.6..@fluentui/react-charts_v9.1.7)
+
+### Patches
+
+- fix accessibility bugs ([PR #34785](https://github.com/microsoft/fluentui/pull/34785) by anushgupta@microsoft.com)
+- sankey chart callout fix ([PR #34806](https://github.com/microsoft/fluentui/pull/34806) by anushgupta@microsoft.com)
+- fix accessibility issues ([PR #34798](https://github.com/microsoft/fluentui/pull/34798) by anushgupta@microsoft.com)
+- fix(react-charts): Fix hook used conditionally inside a function ([PR #34787](https://github.com/microsoft/fluentui/pull/34787) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/react-overflow to v9.4.7 ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by beachball)
+- Bump @fluentui/react-popover to v9.11.7 ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.7 ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by beachball)
 
 ## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.6)
 

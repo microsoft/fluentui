@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-storybook-addon-export-to-sandbox
 
-This log was last generated on Wed, 14 May 2025 13:28:52 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jul 2025 15:59:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.1.1)
+
+Fri, 11 Jul 2025 15:59:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon-export-to-sandbox_v0.1.0..@fluentui/react-storybook-addon-export-to-sandbox_v0.1.1)
+
+### Patches
+
+- fix: remove useEffect storybook/preview-api and directly trigger 'Open in ...' button rendering ([PR #34792](https://github.com/microsoft/fluentui/pull/34792) by martinhochel@microsoft.com)
 
 ## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.1.0)
 

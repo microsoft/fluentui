@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add timeout configuration to safezone prop",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

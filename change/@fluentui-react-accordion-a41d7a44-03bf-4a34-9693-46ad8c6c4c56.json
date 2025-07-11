@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: adjust accordion header chevron alignment styles",
-  "packageName": "@fluentui/react-accordion",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

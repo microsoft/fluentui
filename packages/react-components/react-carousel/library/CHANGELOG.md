@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-carousel
 
-This log was last generated on Fri, 04 Jul 2025 10:02:51 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jul 2025 15:59:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.7.7)
+
+Fri, 11 Jul 2025 15:59:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.7.6..@fluentui/react-carousel_v9.7.7)
+
+### Patches
+
+- Bump @fluentui/react-tooltip to v9.7.7 ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by beachball)
 
 ## [9.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.7.6)
 

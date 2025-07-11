@@ -2,6 +2,27 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Fri, 11 Jul 2025 15:59:23 GMT",
+      "tag": "@fluentui/react-progress_v9.3.7",
+      "version": "9.3.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "85a550eb721145d8ae7966a9c29ecaf5dc999fd3",
+            "comment": "fix: add subtle animation for indeterminate progress bar when reduced motion mode is enabled"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.3.7",
+            "commit": "0aea3258a8deb968bd8e8f5a4a9c3e8a162b4bc3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 10:02:51 GMT",
       "tag": "@fluentui/react-progress_v9.3.6",
       "version": "9.3.6",
