@@ -25,6 +25,11 @@ export const renderTab_unstable: (state: TabState) => JSX.Element;
 export const renderTabList_unstable: (state: TabListState, contextValues: TabListContextValues) => JSX.Element;
 
 // @public (undocumented)
+export const reservedSpaceClassNames: {
+    content: string;
+};
+
+// @public (undocumented)
 export type SelectTabData = {
     value: TabValue;
 };
