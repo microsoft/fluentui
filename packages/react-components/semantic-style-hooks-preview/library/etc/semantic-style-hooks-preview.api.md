@@ -36,6 +36,7 @@ import { MessageBarBodyState } from '@fluentui/react-message-bar';
 import { MessageBarState } from '@fluentui/react-message-bar';
 import { MessageBarTitleState } from '@fluentui/react-message-bar';
 import { ProgressBarState } from '@fluentui/react-progress';
+import { RadioState } from '@fluentui/react-radio';
 import { RatingDisplayState } from '@fluentui/react-rating';
 import { RatingItemState } from '@fluentui/react-rating';
 import { SliderState } from '@fluentui/react-slider';
@@ -149,6 +150,9 @@ export const useSemanticOverlayDrawerSurfaceStyles: (_state: unknown) => DialogS
 
 // @public
 export const useSemanticProgressBarStyles: (_state: unknown) => ProgressBarState;
+
+// @public
+export const useSemanticRadioStyles: (_state: unknown) => RadioState;
 
 // @public
 export const useSemanticRatingDisplayStyles: (_state: unknown) => RatingDisplayState;

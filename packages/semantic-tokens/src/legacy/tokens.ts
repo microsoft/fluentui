@@ -555,21 +555,6 @@ export const borderRadiusSmall = 'var(--borderRadiusSmall)';
  */
 export const colorNeutralForeground4 = 'var(--colorNeutralForeground4)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalM | `spacingVerticalM`} design token.
- * @public
- */
-export const spacingVerticalM = 'var(--spacingVerticalM)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerForeground1 | `colorStatusDangerForeground1`} design token.
- * @public
- */
-export const colorStatusDangerForeground1 = 'var(--colorStatusDangerForeground1)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalMNudge | `spacingVerticalMNudge`} design token.
- * @public
- */
-export const spacingVerticalMNudge = 'var(--spacingVerticalMNudge)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalSNudge | `spacingVerticalSNudge`} design token.
  * @public
  */
@@ -590,15 +575,40 @@ export const colorNeutralForeground3Pressed = 'var(--colorNeutralForeground3Pres
  */
 export const shadow16 = 'var(--shadow16)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke2Contrast | `colorBrandStroke2Contrast`} design token.
+ * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalM | `spacingVerticalM`} design token.
  * @public
  */
-export const colorBrandStroke2Contrast = 'var(--colorBrandStroke2Contrast)';
+export const spacingVerticalM = 'var(--spacingVerticalM)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerForeground1 | `colorStatusDangerForeground1`} design token.
+ * @public
+ */
+export const colorStatusDangerForeground1 = 'var(--colorStatusDangerForeground1)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalMNudge | `spacingVerticalMNudge`} design token.
+ * @public
+ */
+export const spacingVerticalMNudge = 'var(--spacingVerticalMNudge)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalXS | `spacingVerticalXS`} design token.
  * @public
  */
 export const spacingVerticalXS = 'var(--spacingVerticalXS)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStrokeHover | `colorCompoundBrandStrokeHover`} design token.
+ * @public
+ */
+export const colorCompoundBrandStrokeHover = 'var(--colorCompoundBrandStrokeHover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStrokePressed | `colorCompoundBrandStrokePressed`} design token.
+ * @public
+ */
+export const colorCompoundBrandStrokePressed = 'var(--colorCompoundBrandStrokePressed)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke2Contrast | `colorBrandStroke2Contrast`} design token.
+ * @public
+ */
+export const colorBrandStroke2Contrast = 'var(--colorBrandStroke2Contrast)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalMNudge | `spacingHorizontalMNudge`} design token.
  * @public

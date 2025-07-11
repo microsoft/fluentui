@@ -245,6 +245,86 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3Pressed',
     originalToken: 'foregroundCtrlOnSubtlePressed',
   },
+  _ctrlRadioBackgroundActiveBrandHover: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'backgroundCtrlActiveBrandHover',
+  },
+  _ctrlRadioBackgroundActiveBrandPressed: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'backgroundCtrlActiveBrandPressed',
+  },
+  _ctrlRadioBackgroundActiveBrandRest: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'backgroundCtrlActiveBrandRest',
+  },
+  _ctrlRadioBackgroundActiveDisabled: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'backgroundCtrlActiveBrandDisabled',
+  },
+  _ctrlRadioBaseBackgroundDisabled: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'ctrlChoiceBaseBackgroundDisabled',
+  },
+  _ctrlRadioBaseBackgroundHover: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'ctrlChoiceBaseBackgroundHover',
+  },
+  _ctrlRadioBaseBackgroundPressed: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'ctrlChoiceBaseBackgroundPressed',
+  },
+  _ctrlRadioChoiceBaseSize: {
+    originalToken: 'ctrlChoiceBaseSize',
+    rawValue: '16px',
+  },
+  _ctrlRadioForegroundContentDisabled: {
+    f2Token: 'colorNeutralForegroundDisabled',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlRadioForegroundContentNeutralHover: {
+    f2Token: 'colorNeutralForeground2',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlRadioForegroundContentNeutralRest: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlRadioForegroundOnActiveBrandHover: {
+    f2Token: 'colorCompoundBrandForeground1Hover',
+    originalToken: 'foregroundCtrlOnActiveBrandHover',
+  },
+  _ctrlRadioForegroundOnActiveBrandPressed: {
+    f2Token: 'colorCompoundBrandForeground1Pressed',
+    originalToken: 'foregroundCtrlOnActiveBrandPressed',
+  },
+  _ctrlRadioForegroundOnActiveBrandRest: {
+    f2Token: 'colorCompoundBrandForeground1',
+    originalToken: 'foregroundCtrlOnActiveBrandRest',
+  },
+  _ctrlRadioForegroundOnActiveDisabled: {
+    f2Token: 'colorNeutralForegroundDisabled',
+    originalToken: 'foregroundCtrlOnActiveBrandDisabled',
+  },
+  _ctrlRadioPaddingTextTop: {
+    f2Token: 'spacingVerticalXS',
+    originalToken: 'paddingCtrlTextTop',
+  },
+  _ctrlRadioPaddingVertical: {
+    f2Token: 'spacingVerticalS',
+    originalToken: 'paddingCtrlTextTop',
+  },
+  _ctrlRadioStrokeOnActiveBrandHover: {
+    f2Token: 'colorCompoundBrandStrokeHover',
+    originalToken: 'strokeCtrlOnActiveBrandHover',
+  },
+  _ctrlRadioStrokeOnActiveBrandPressed: {
+    f2Token: 'colorCompoundBrandStrokePressed',
+    originalToken: 'strokeCtrlOnActiveBrandPressed',
+  },
+  _ctrlRadioStrokeOnActiveBrandRest: {
+    f2Token: 'colorCompoundBrandStroke',
+    originalToken: 'strokeCtrlOnActiveBrandRest',
+  },
   _ctrlSliderBarSizeDefault: {
     originalToken: 'sizeCtrlDefault',
     rawValue: '32px',
