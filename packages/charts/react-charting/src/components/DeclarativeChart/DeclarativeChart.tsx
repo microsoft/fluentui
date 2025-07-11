@@ -59,7 +59,8 @@ const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVertica
 const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
 const ResponsiveScatterChart = withResponsiveContainer(ScatterChart);
 const ResponsiveChartTable = withResponsiveContainer(ChartTable);
-const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
+// Removing responsive wrapper for FunnelChart as responsive container is not working with FunnelChart
+//const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
 const DEFAULT_XAXIS = 'x';
@@ -216,7 +217,7 @@ type ChartTypeMap = {
   } & PreTransformHooks;
   funnel: {
     transformer: typeof transformPlotlyJsonToFunnelChartProps;
-    renderer: typeof ResponsiveFunnelChart;
+    renderer: typeof FunnelChart;
   } & PreTransformHooks;
   fallback: {
     transformer: typeof transformPlotlyJsonToVSBCProps;
@@ -282,7 +283,7 @@ const chartMap: ChartTypeMap = {
   },
   funnel: {
     transformer: transformPlotlyJsonToFunnelChartProps,
-    renderer: ResponsiveFunnelChart,
+    renderer: FunnelChart,
   },
   fallback: {
     transformer: transformPlotlyJsonToVSBCProps,
