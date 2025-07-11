@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charting): Fix hover card not coming properly for large data flow",
-  "packageName": "@fluentui/react-charting",
-  "email": "98592573+AtishayMsft@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

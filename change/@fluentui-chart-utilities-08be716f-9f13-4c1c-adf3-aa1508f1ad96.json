@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat(chart-utilities): Support for categorical theta values for scatter polar chart",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
