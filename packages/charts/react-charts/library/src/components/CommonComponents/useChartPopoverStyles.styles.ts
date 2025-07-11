@@ -29,7 +29,7 @@ export const popoverClassNames: SlotClassNames<PopoverComponentStyles> = {
  */
 const useStyles = makeStyles({
   calloutContentRoot: {
-    display: 'contents',
+    display: 'grid',
     overflow: 'hidden',
     ...shorthands.padding('11px 16px 10px 16px'),
     backgroundColor: tokens.colorNeutralBackground1,
@@ -85,7 +85,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
     marginTop: tokens.spacingVerticalMNudge,
     paddingTop: tokens.spacingVerticalMNudge,
-    ...shorthands.borderTop(`1px solid ${tokens.colorNeutralStroke2}`),
+    borderTop: `1px solid ${tokens.colorNeutralStroke2}`,
   },
   ratio: {
     ...typographyStyles.caption2,
@@ -113,7 +113,8 @@ export const usePopoverStyles_unstable = (props: ChartPopoverProps): PopoverComp
   return {
     calloutContentRoot: mergeClasses(
       popoverClassNames.calloutContentRoot,
-      baseStyles.calloutContentRoot /*props.styles?. calloutContentRoot*/,
+      baseStyles.calloutContentRoot,
+      props.styles?.calloutContentRoot,
     ),
     calloutDateTimeContainer: mergeClasses(
       popoverClassNames.calloutDateTimeContainer,

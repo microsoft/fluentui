@@ -43,6 +43,7 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
     return false;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     return (
       <ComboBox
@@ -54,6 +55,7 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   protected _onRenderList = (props: IComboBoxProps): JSX.Element => {
     const { id, onRenderItem } = props;
 

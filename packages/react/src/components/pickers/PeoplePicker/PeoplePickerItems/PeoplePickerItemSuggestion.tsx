@@ -13,7 +13,8 @@ import type {
 
 const getClassNames = classNamesFunction<IPeoplePickerItemSuggestionStyleProps, IPeoplePickerItemSuggestionStyles>();
 
-export const PeoplePickerItemSuggestionBase = (props: IPeoplePickerItemSuggestionProps) => {
+// eslint-disable-next-line @typescript-eslint/no-deprecated
+export const PeoplePickerItemSuggestionBase = (props: IPeoplePickerItemSuggestionProps): JSX.Element => {
   const { personaProps, suggestionsProps, compact, styles, theme, className } = props;
 
   const classNames = getClassNames(styles, {

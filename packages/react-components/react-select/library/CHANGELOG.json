@@ -2,6 +2,21 @@
   "name": "@fluentui/react-select",
   "entries": [
     {
+      "date": "Fri, 04 Jul 2025 10:02:51 GMT",
+      "tag": "@fluentui/react-select_v9.3.6",
+      "version": "9.3.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-field to v9.3.6",
+            "commit": "5067a4850156994fbfc977a3bff5b9f3353078fd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jun 2025 13:39:41 GMT",
       "tag": "@fluentui/react-select_v9.3.5",
       "version": "9.3.5",

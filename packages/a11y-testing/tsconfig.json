@@ -18,7 +18,12 @@
     "preserveConstEnums": true,
     "lib": ["es2017", "dom"],
     "types": ["jest"],
-    "isolatedModules": true
+    "isolatedModules": true,
+    "paths": {
+      "react/jsx-runtime": ["./node_modules/@types/react/jsx-runtime.d.ts"],
+      "react": ["./node_modules/@types/react/index.d.ts"],
+      "react-dom": ["./node_modules/@types/react-dom/index.d.ts"]
+    }
   },
   "include": ["src"]
 }

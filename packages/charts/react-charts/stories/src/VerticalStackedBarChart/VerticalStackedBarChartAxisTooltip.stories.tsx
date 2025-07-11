@@ -67,11 +67,11 @@ export const VerticalStackedBarAxisTooltip = () => {
     setHeight(Number(e.target.value));
   };
 
-  const _onSwitchGradient = React.useCallback(ev => {
+  const _onSwitchGradient = React.useCallback((ev: any) => {
     setEnableGradient(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchRoundedCorners = React.useCallback(ev => {
+  const _onSwitchRoundedCorners = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
   }, []);
 
@@ -101,6 +101,7 @@ export const VerticalStackedBarAxisTooltip = () => {
   ];
 
   const rootStyle = { width: `${width}px`, height: `${height}px` };
+  const barGapMax = 2;
   return (
     <div className="containerDiv">
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px' }}>
@@ -220,6 +221,7 @@ export const VerticalStackedBarAxisTooltip = () => {
           xAxisOuterPadding={xAxisOuterPaddingEnabled ? xAxisOuterPadding : undefined}
           enableGradient={enableGradient}
           roundCorners={roundCorners}
+          barGapMax={barGapMax}
         />
       </div>
     </div>

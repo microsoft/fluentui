@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Fri, 27 Jun 2025 13:39:41 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Jul 2025 10:02:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.11.6)
+
+Fri, 04 Jul 2025 10:02:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.11.5..@fluentui/react-popover_v9.11.6)
+
+### Patches
+
+- Bump @fluentui/react-portal to v9.6.4 ([PR #34457](https://github.com/microsoft/fluentui/pull/34457) by beachball)
 
 ## [9.11.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.11.5)
 

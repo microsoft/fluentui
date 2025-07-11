@@ -7,9 +7,16 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData, Switch } from '@fluentui/react-components';
+import { Checkbox, CheckboxOnChangeData, Switch, makeStyles, tokens } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
 
 export const VerticalStackedBarNegative = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState(650);
   const [height, setHeight] = React.useState(350);
   const [barGapMax, setBarGapMax] = React.useState(2);
@@ -60,7 +67,7 @@ export const VerticalStackedBarNegative = () => {
     setHideLabels(checked.checked as boolean);
   };
 
-  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
     if (ev.currentTarget.checked) {
       setMargins({
@@ -78,11 +85,11 @@ export const VerticalStackedBarNegative = () => {
       });
     }
   }, []);
-  const _onRoundCornersChange = React.useCallback(ev => {
+  const _onRoundCornersChange = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchLegendMultiSelect = React.useCallback(ev => {
+  const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
 
@@ -358,11 +365,12 @@ export const VerticalStackedBarNegative = () => {
               canSelectMultipleLegends: legendMultiSelect,
             }}
             hideLabels={hideLabels}
-            enableReflow={true}
+            reflowProps={{ mode: 'min-width' }}
             yAxisTitle={showAxisTitles ? 'Variation of number of sales' : undefined}
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
             roundCorners={roundCorners}
             roundedTicks={true}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}
@@ -382,9 +390,10 @@ export const VerticalStackedBarNegative = () => {
               canSelectMultipleLegends: legendMultiSelect,
             }}
             hideLabels={hideLabels}
-            enableReflow={true}
+            reflowProps={{ mode: 'min-width' }}
             roundCorners={roundCorners}
             roundedTicks={true}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}

@@ -1299,6 +1299,8 @@ export interface PlotData {
     // (undocumented)
     stackgroup: string;
     // (undocumented)
+    stage: string;
+    // (undocumented)
     text: string | string[];
     // (undocumented)
     textangle: 'auto' | number;

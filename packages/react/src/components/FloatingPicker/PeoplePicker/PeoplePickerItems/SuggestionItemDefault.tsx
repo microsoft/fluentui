@@ -8,6 +8,7 @@ import type { IBasePickerSuggestionsProps, ISuggestionItemProps } from '../../..
 export const SuggestionItemNormal: (
   persona: IPersonaProps,
   suggestionProps?: IBasePickerSuggestionsProps,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ) => JSX.Element = (personaProps: IPersonaProps, suggestionItemProps?: ISuggestionItemProps<IPersonaProps>) => {
   return (
     <div className={css('ms-PeoplePicker-personaContent', stylesImport.peoplePickerPersonaContent)}>

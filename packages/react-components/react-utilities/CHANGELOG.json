@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Fri, 04 Jul 2025 10:02:49 GMT",
+      "tag": "@fluentui/react-utilities_v9.22.0",
+      "version": "9.22.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jun 2025 14:11:55 GMT",
       "tag": "@fluentui/react-utilities_v9.22.0",
       "version": "9.22.0",

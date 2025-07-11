@@ -2,6 +2,35 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Fri, 04 Jul 2025 10:02:44 GMT",
+      "tag": "@fluentui/react-menu_v9.17.6",
+      "version": "9.17.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "5067a4850156994fbfc977a3bff5b9f3353078fd",
+            "comment": "feat: integrate useSafeZoneArea()"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.6.4",
+            "commit": "5067a4850156994fbfc977a3bff5b9f3353078fd"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jun 2025 13:39:41 GMT",
       "tag": "@fluentui/react-menu_v9.17.5",
       "version": "9.17.5",

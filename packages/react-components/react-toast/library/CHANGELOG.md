@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-toast
 
-This log was last generated on Fri, 27 Jun 2025 13:39:41 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Jul 2025 10:02:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.5.4)
+
+Fri, 04 Jul 2025 10:02:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.5.3..@fluentui/react-toast_v9.5.4)
+
+### Patches
+
+- Bump @fluentui/react-portal to v9.6.4 ([PR #34457](https://github.com/microsoft/fluentui/pull/34457) by beachball)
 
 ## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.5.3)
 
