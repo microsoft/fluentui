@@ -23,6 +23,12 @@
       "@fluentui/component-selector-preview-stories": [
         "packages/react-components/component-selector-preview/stories/src/index.ts"
       ],
+      "@fluentui/copilot-theme-semantic-tokens-preview": [
+        "packages/react-components/copilot-theme-semantic-tokens-preview/library/src/index.ts"
+      ],
+      "@fluentui/copilot-theme-semantic-tokens-preview-stories": [
+        "packages/react-components/copilot-theme-semantic-tokens-preview/stories/src/index.ts"
+      ],
       "@fluentui/eslint-plugin-react-components": [
         "packages/react-components/eslint-plugin-react-components/src/index.ts"
       ],

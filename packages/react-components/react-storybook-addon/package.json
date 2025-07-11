@@ -25,6 +25,7 @@
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
+    "@fluentui/copilot-theme-semantic-tokens-preview": "0.0.0",
     "@storybook/components": "^7.6.20",
     "@storybook/manager-api": "^7.6.20",
     "@storybook/react": "^7.6.20",

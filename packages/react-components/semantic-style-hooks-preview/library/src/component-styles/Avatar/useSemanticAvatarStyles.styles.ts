@@ -555,39 +555,39 @@ export const useSemanticAvatarStyles = (_state: unknown): AvatarState => {
   }
 
   state.root.className = mergeClasses(
+    state.root.className,
     avatarClassNames.root,
     ...rootClasses,
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.badge) {
     state.badge.className = mergeClasses(
+      state.badge.className,
       avatarClassNames.badge,
       styles.badge,
-      state.badge.className,
       getSlotClassNameProp_unstable(state.badge),
     );
   }
 
   if (state.image) {
     state.image.className = mergeClasses(
+      state.image.className,
       avatarClassNames.image,
       imageClassName,
       colorStyles[color],
       state.badge && styles.badgeCutout,
-      state.image.className,
       getSlotClassNameProp_unstable(state.image),
     );
   }
 
   if (state.initials) {
     state.initials.className = mergeClasses(
+      state.initials.className,
       avatarClassNames.initials,
       iconInitialsClassName,
       colorStyles[color],
       state.badge && styles.badgeCutout,
-      state.initials.className,
       getSlotClassNameProp_unstable(state.initials),
     );
   }
@@ -611,12 +611,13 @@ export const useSemanticAvatarStyles = (_state: unknown): AvatarState => {
     }
 
     state.icon.className = mergeClasses(
+      state.icon.className,
       avatarClassNames.icon,
       iconInitialsClassName,
       iconSizeClass,
       colorStyles[color],
       state.badge && styles.badgeCutout,
-      state.icon.className,
+
       getSlotClassNameProp_unstable(state.icon),
     );
   }
