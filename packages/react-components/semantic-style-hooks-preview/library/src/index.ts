@@ -53,3 +53,4 @@ export {
   useSemanticTabContentStyles_unstable,
   useSemanticTabIndicatorStyles_unstable,
 } from './component-styles/Tabs';
+export { useSemanticSliderStyles } from './component-styles/Slider';

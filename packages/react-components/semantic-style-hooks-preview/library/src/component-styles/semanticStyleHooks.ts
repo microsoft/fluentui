@@ -48,7 +48,8 @@ import {
   useSemanticMessageBarTitleStyles,
 } from './MessageBar';
 import { useSemanticTabStyles } from './Tabs/useSemanticTabsStyles.styles';
-import { useSemanticTabListStyles } from './Tabs/index';
+import { useSemanticTabListStyles } from './Tabs';
+import { useSemanticSliderStyles } from './Slider';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -110,4 +111,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Tabs styles
   useTabStyles_unstable: useSemanticTabStyles,
   useTabListStyles_unstable: useSemanticTabListStyles,
+  // Slider styles
+  useSliderStyles_unstable: useSemanticSliderStyles,
 };
