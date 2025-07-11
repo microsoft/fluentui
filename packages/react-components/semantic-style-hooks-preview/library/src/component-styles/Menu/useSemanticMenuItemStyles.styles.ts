@@ -161,11 +161,17 @@ const useStyles = makeStyles({
       [`& .${menuItemClassNames.icon}`]: {
         color: semanticTokens.foregroundCtrlIconOnSubtleDisabled,
       },
+      [`& .${menuItemClassNames.subText}`]: {
+        color: semanticTokens.foregroundCtrlIconOnSubtleDisabled,
+      },
     },
 
     ':hover:active': {
       color: semanticTokens.foregroundCtrlOnSubtleDisabled,
       backgroundColor: semanticTokens.backgroundCtrlSubtleDisabled,
+      [`& .${menuItemClassNames.subText}`]: {
+        color: semanticTokens.foregroundCtrlIconOnSubtleDisabled,
+      },
     },
 
     ':focus': {
@@ -181,11 +187,31 @@ const useStyles = makeStyles({
           color: 'GrayText',
           backgroundColor: 'Canvas',
         },
+        [`& .${menuItemClassNames.subText}`]: {
+          color: 'GrayText',
+        },
+      },
+      ':hover:active': {
+        color: 'GrayText',
+        backgroundColor: 'Canvas',
+        [`& .${menuItemClassNames.subText}`]: {
+          color: 'GrayText',
+        },
       },
       ':focus': {
         color: 'GrayText',
         backgroundColor: 'Canvas',
       },
+    },
+  },
+});
+
+const useSubTextStyles = makeStyles({
+  disabled: {
+    color: semanticTokens.foregroundCtrlIconOnSubtleDisabled,
+
+    '@media (forced-colors: active)': {
+      color: 'GrayText',
     },
   },
 });
@@ -218,6 +244,7 @@ export const useSemanticMenuItemStyles = (_state: unknown): MenuItemState => {
   const submenuIndicatorBaseStyles = useSubmenuIndicatorBaseStyles();
   const multilineStyles = useMultilineStyles();
   const subtextBaseStyles = useSubtextBaseStyles();
+  const subTextStyles = useSubTextStyles();
   const multiline = !!state.subText;
   state.root.className = mergeClasses(
     state.root.className,
@@ -250,7 +277,8 @@ export const useSemanticMenuItemStyles = (_state: unknown): MenuItemState => {
     state.secondaryContent.className = mergeClasses(
       state.secondaryContent.className,
       menuItemClassNames.secondaryContent,
-      !state.disabled && secondaryContentBaseStyles,
+      secondaryContentBaseStyles,
+      state.disabled && styles.disabled,
       multiline && multilineStyles.secondaryContent,
       getSlotClassNameProp_unstable(state.secondaryContent),
     );
@@ -279,6 +307,7 @@ export const useSemanticMenuItemStyles = (_state: unknown): MenuItemState => {
     state.subText.className = mergeClasses(
       state.subText.className,
       menuItemClassNames.subText,
+      state.disabled && subTextStyles.disabled,
       subtextBaseStyles,
       getSlotClassNameProp_unstable(state.subText),
     );
