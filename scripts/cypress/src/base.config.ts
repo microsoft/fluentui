@@ -79,7 +79,7 @@ const projectSupportDir = path.relative(projectRoot, sharedConfigSupportRootDir)
 export const baseConfig = defineConfig({
   video: false,
   component: {
-    specPattern: [path.join(projectRoot, '**/*.e2e.tsx'), path.join(process.cwd(), '**/*.cy.tsx')],
+    specPattern: [path.join(projectRoot, '**/*.e2e.tsx'), path.join(projectRoot, '**/*.cy.tsx')],
     devServer: {
       framework: 'react',
       bundler: 'webpack',
