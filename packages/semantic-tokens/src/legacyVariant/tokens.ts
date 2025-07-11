@@ -6,6 +6,7 @@ import {
 } from '../components/avatar/variables';
 import { ctrlFocusInnerStrokeWidthRaw, ctrlFocusOuterStrokeRaw } from '../components/focus/variables';
 import { ctrlInputBackgroundRestRaw } from '../components/input/variables';
+import { ctrlListIndentLevel1Raw } from '../components/list/variables';
 import {
   ctrlProgressBackgroundEmptyRaw,
   ctrlProgressBackgroundFilledRaw,
@@ -30,16 +31,18 @@ import {
   gapBetweenCtrlDefaultRaw,
   paddingContentAlignOutdentIconOnSubtleRaw,
   textGlobalBody2LineHeightRaw,
+  textStyleDefaultRegularWeightRaw,
   sizeCtrlDefaultRaw,
   paddingCtrlHorizontalDefaultRaw,
+  paddingCtrlTextSideRaw,
   textGlobalBody3FontSizeRaw,
+  cornerFlyoutRestRaw,
+  shadowFlyoutRaw,
   textGlobalBody3LineHeightRaw,
-  textStyleDefaultRegularWeightRaw,
   backgroundCtrlBrandDisabledRaw,
   foregroundCtrlBrandHoverRaw,
   foregroundCtrlBrandPressedRaw,
   foregroundCtrlBrandRestRaw,
-  paddingCtrlTextSideRaw,
 } from '../control/variables';
 import {
   colorTransparentBackground,
@@ -65,14 +68,18 @@ import {
   spacingVerticalS,
   spacingVerticalMNudge,
   lineHeightBase300,
+  fontWeightSemibold,
+  spacingVerticalSNudge,
+  fontSizeBase200,
+  colorNeutralForeground3Hover,
   colorNeutralForeground3Pressed,
+  shadow16,
+  colorTransparentStroke,
   colorBrandStroke2Contrast,
   colorBrandStroke1,
   fontSizeBase400,
   lineHeightBase400,
-  fontWeightSemibold,
   spacingVerticalXS,
-  colorTransparentStroke,
   colorNeutralForegroundDisabled,
   colorNeutralForeground1Hover,
   colorNeutralForeground1Pressed,
@@ -81,13 +88,13 @@ import {
   spacingHorizontalMNudge,
   spacingHorizontalXXS,
   spacingVerticalXXS,
-  colorNeutralForeground3Hover,
   colorTransparentBackgroundHover,
   colorTransparentBackgroundPressed,
 } from '../legacy/tokens';
 import {
   backgroundCtrlSubtleRestRaw,
   foregroundCtrlHintDefaultRaw,
+  strokeFlyoutRaw,
   strokeCtrlOnBrandHoverRaw,
   strokeCtrlOnBrandRestRaw,
 } from '../nullable/variables';
@@ -104,6 +111,8 @@ import {
   strokeWidthCtrlOutlineRestRaw,
   textRampItemHeaderLineHeightRaw,
   textRampItemBodyFontSizeRaw,
+  foregroundCtrlNeutralSecondaryHoverRaw,
+  foregroundCtrlNeutralSecondaryPressedRaw,
   textRampItemBodyLineHeightRaw,
   strokeCtrlOnActiveBrandHoverRaw,
   strokeCtrlOnActiveBrandRestRaw,
@@ -388,6 +397,132 @@ export const _ctrlMessageBarSpacingTop = `var(${paddingContentAlignDefaultRaw}, 
  * please use textRampItemHeaderLineHeight instead.
  */
 export const _ctrlMessageBarTitleLineHeight = `var(${textRampItemHeaderLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}, ${lineHeightBase300}))`;
+/**
+ * This is a legacy variant for foregroundCtrlNeutralSecondaryRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlNeutralSecondaryRest instead.
+ */
+export const _ctrlMenuGroupHeaderColor = `var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground3})`;
+/**
+ * This is a legacy variant for textStyleDefaultRegularWeight to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use textStyleDefaultRegularWeight instead.
+ */
+export const _ctrlMenuGroupHeaderFontWeight = `var(${textStyleDefaultRegularWeightRaw}, ${fontWeightSemibold})`;
+/**
+ * This is a legacy variant for sizeCtrlDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use sizeCtrlDefault instead.
+ */
+export const _ctrlMenuGroupHeaderHeight = `var(${sizeCtrlDefaultRaw}, 32px)`;
+/**
+ * This is a legacy variant for paddingCtrlHorizontalDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlHorizontalDefault instead.
+ */
+export const _ctrlMenuGroupHeaderPaddingHorizontal = `var(${paddingCtrlHorizontalDefaultRaw}, 8px)`;
+/**
+ * This is a legacy variant for paddingCtrlTextSide to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextSide instead.
+ */
+export const _ctrlMenuItemContentPaddingX = `var(${paddingCtrlTextSideRaw}, 2px)`;
+/**
+ * This is a legacy variant for gapInsideCtrlDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use gapInsideCtrlDefault instead.
+ */
+export const _ctrlMenuItemGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, 4px)`;
+/**
+ * This is a legacy variant for paddingCtrlTextBottom to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextBottom instead.
+ */
+export const _ctrlMenuItemPaddingBottom = `var(${paddingCtrlTextBottomRaw}, var(${paddingCtrlTextTopRaw}, ${spacingVerticalSNudge}))`;
+/**
+ * This is a legacy variant for paddingCtrlTextTop to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextTop instead.
+ */
+export const _ctrlMenuItemPaddingTop = `var(${paddingCtrlTextTopRaw}, ${spacingVerticalSNudge})`;
+/**
+ * This is a legacy variant for ctrlListIndentLevel1 to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlListIndentLevel1 instead.
+ */
+export const _ctrlMenuItemPaddingX = `var(${ctrlListIndentLevel1Raw}, var(${paddingCtrlHorizontalDefaultRaw}, ${spacingVerticalSNudge}))`;
+/**
+ * This is a legacy variant for textRampItemBodyFontSize to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use textRampItemBodyFontSize instead.
+ */
+export const _ctrlMenuItemSecondaryContentFontSize = `var(${textRampItemBodyFontSizeRaw}, var(${textGlobalBody3FontSizeRaw}, ${fontSizeBase200}))`;
+/**
+ * This is a legacy variant for foregroundCtrlNeutralSecondaryHover to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlNeutralSecondaryHover instead.
+ */
+export const _ctrlMenuItemSecondaryContentForegroundHover = `var(${foregroundCtrlNeutralSecondaryHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground3Hover}))`;
+/**
+ * This is a legacy variant for foregroundCtrlNeutralSecondaryRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlNeutralSecondaryRest instead.
+ */
+export const _ctrlMenuItemSecondaryContentForegroundRest = `var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground3})`;
+/**
+ * This is a legacy variant for sizeCtrlDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use sizeCtrlDefault instead.
+ */
+export const _ctrlMenuItemSizeDefault = `var(${sizeCtrlDefaultRaw}, 32px)`;
+/**
+ * This is a legacy variant for foregroundCtrlNeutralSecondaryHover to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlNeutralSecondaryHover instead.
+ */
+export const _ctrlMenuItemSubTextForegroundHover = `var(${foregroundCtrlNeutralSecondaryHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground3Hover}))`;
+/**
+ * This is a legacy variant for foregroundCtrlNeutralSecondaryPressed to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlNeutralSecondaryPressed instead.
+ */
+export const _ctrlMenuItemSubTextForegroundPressed = `var(${foregroundCtrlNeutralSecondaryPressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground3Pressed}))`;
+/**
+ * This is a legacy variant for cornerFlyoutRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use cornerFlyoutRest instead.
+ */
+export const _ctrlMenuPopoverCornerFlyoutRest = `var(${cornerFlyoutRestRaw}, ${borderRadiusMedium})`;
+/**
+ * This is a legacy variant for shadowFlyout to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use shadowFlyout instead.
+ */
+export const _ctrlMenuPopoverShadowFlyout = `var(${shadowFlyoutRaw}, ${shadow16})`;
+/**
+ * This is a legacy variant for strokeFlyout to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use strokeFlyout instead.
+ */
+export const _ctrlMenuPopoverStrokeFlyout = `var(${strokeFlyoutRaw}, var(${nullColorRaw}, ${colorTransparentStroke}))`;
 /**
  * This is a legacy variant for foregroundCtrlOnSubtlePressed to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
