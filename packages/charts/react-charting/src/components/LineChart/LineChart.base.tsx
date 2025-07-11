@@ -53,10 +53,12 @@ import {
   areArraysEqual,
   getCurveFactory,
   YAxisType,
+  isScatterPolarSeries,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
+import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -211,6 +213,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _yPaddingSecondary: number = 0;
   private _hasMarkersMode: boolean = false;
   private _isXAxisDateType: boolean = false;
+  private _isScatterPolar: boolean = false;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -343,6 +346,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         getMinMaxOfYAxis={this._getNumericMinMaxOfY}
         getGraphData={this._initializeLineChartData}
         xAxisType={this._isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
+        {...(this._isScatterPolar ? { yMaxValue: 1, yMinValue: -1 } : {})}
         customizedCallout={this._getCustomizedCallout()}
         getDomainNRangeValues={this._getDomainNRangeValues}
         createStringYAxis={createStringYAxis}
@@ -471,6 +475,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       : lineChartData;
     this._hasMarkersMode =
       filteredData?.some((item: ILineChartPoints) => item.lineOptions?.mode?.includes?.('markers')) ?? false;
+    this._isScatterPolar = isScatterPolarSeries(filteredData!);
     return filteredData
       ? filteredData.map((item: ILineChartPoints, index: number) => {
           let color: string;
@@ -820,7 +825,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               onBlur={this._handleMouseOut}
               {...this._getClickHandler(this._points[i].data[0].onDataPointClick)}
             />
-            {supportsTextMode && text && (
+            {!this._isScatterPolar && supportsTextMode && text && (
               <text
                 key={`${circleId}-label`}
                 x={this._xAxisScale(x1)}
@@ -1010,7 +1015,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   role="img"
                   aria-label={this._points[i].data[j - 1].text ?? this._getAriaLabel(i, j - 1)}
                 />
-                {supportsTextMode && text && (
+                {!this._isScatterPolar && supportsTextMode && text && (
                   <text
                     key={`${circleId}-label`}
                     x={this._xAxisScale(x1)}
@@ -1136,7 +1141,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       role="img"
                       aria-label={this._points[i].data[j].text ?? this._getAriaLabel(i, j)}
                     />
-                    {lastSupportsTextMode && lastText && (
+                    {!this._isScatterPolar && lastSupportsTextMode && lastText && (
                       <text
                         key={`${lastCircleId}-label`}
                         x={this._xAxisScale(x2)}
@@ -1336,6 +1341,29 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             }
           }
         }
+      }
+
+      if (this._isScatterPolar) {
+        // Render category labels for all series at once to avoid overlap
+        const allSeriesData = this._points.map(series => ({
+          data: series.data
+            .filter(pt => typeof pt.x === 'number' && typeof pt.y === 'number')
+            .map(pt => ({ x: pt.x as number, y: pt.y as number, text: pt.text })),
+        }));
+        pointsForLine.push(
+          ...renderScatterPolarCategoryLabels({
+            allSeriesData,
+            xAxisScale: this._xAxisScale,
+            yAxisScale: yScale,
+            className: classNames.markerLabel || '',
+            maybeLineOptions: (this._points[i] as Partial<ILineChartPoints>)?.lineOptions
+              ? {
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  originXOffset: (this._points[i] as any).lineOptions?.originXOffset,
+                }
+              : undefined,
+          }),
+        );
       }
 
       lines.push(

@@ -1147,6 +1147,7 @@ export function domainRangeOfNumericForAreaChart(
   width: number,
   isRTL: boolean,
 ): IDomainNRange {
+  const isScatterPolar = isScatterPolarSeries(points);
   const xMin = d3Min(points, (point: ILineChartPoints) => {
     return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number)!;
   })!;
@@ -1161,8 +1162,8 @@ export function domainRangeOfNumericForAreaChart(
   const rEndValue = width - margins.right!;
 
   return isRTL
-    ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
-    : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
+    ? { dStartValue: isScatterPolar ? 1 : xMax, dEndValue: isScatterPolar ? -1 : xMin, rStartValue, rEndValue }
+    : { dStartValue: isScatterPolar ? -1 : xMin, dEndValue: isScatterPolar ? 1 : xMax, rStartValue, rEndValue };
 }
 
 /**
@@ -1868,6 +1869,7 @@ export function domainRangeOfNumericForScatterChart(
   width: number,
   isRTL: boolean,
 ): IDomainNRange {
+  const isScatterPolar = isScatterPolarSeries(points);
   let xMin = d3Min(points, (point: ILineChartPoints) => {
     return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as number)!;
   })!;
@@ -1886,8 +1888,8 @@ export function domainRangeOfNumericForScatterChart(
   const rEndValue = width - margins.right!;
 
   return isRTL
-    ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
-    : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
+    ? { dStartValue: isScatterPolar ? 1 : xMax, dEndValue: isScatterPolar ? -1 : xMin, rStartValue, rEndValue }
+    : { dStartValue: isScatterPolar ? -1 : xMin, dEndValue: isScatterPolar ? 1 : xMax, rStartValue, rEndValue };
 }
 
 export const truncateString = (str: string, maxLength: number, ellipsis = '...'): string => {
@@ -1980,4 +1982,16 @@ export function getContrastTextColor(backgroundColor: string, theme: ITheme): st
     textColor = getInvertedTextColor(textColor, theme);
   }
   return textColor;
+}
+
+/**
+ * Utility function to check if an array of points is scatterpolar
+ * @param points - Array of chart points
+ * @returns true if any point has lineOptions.mode as 'scatterpolar'
+ */
+export function isScatterPolarSeries(points: (ILineChartPoints | IScatterChartPoints)[]): boolean {
+  return points.some(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    item => typeof (item as any).lineOptions?.mode === 'string' && (item as any).lineOptions.mode === 'scatterpolar',
+  );
 }
