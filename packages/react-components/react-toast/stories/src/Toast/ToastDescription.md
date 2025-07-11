@@ -15,6 +15,8 @@ is simply a layout component.
 > available on a permanent surface too. One of the ways to do this in an application is to implement a notification
 > centre.
 
+For live region debugging help, check our [Debugging Notifications](./?path=/docs/concepts-developer-accessibility-notification-debugging--docs) docs page.
+
 ## Best practices
 
 ### Do
