@@ -87,8 +87,7 @@ const cardData = [
 
 export const CardsDemo = () => {
   const classes = useClasses();
-  const cardIds = cardData.map(card => card.id);
-  const [visibleCards, setVisibleCards] = React.useState<Set<number>>(new Set(cardIds));
+  const [visibleCards, setVisibleCards] = React.useState<Set<number>>(() => new Set(cardData.map(card => card.id)));
 
   const toggleCard = (cardId: number) => {
     setVisibleCards(prev => {
