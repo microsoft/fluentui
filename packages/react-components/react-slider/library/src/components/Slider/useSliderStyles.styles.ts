@@ -114,12 +114,12 @@ const useRootStyles = makeStyles({
 
   focusIndicatorHorizontal: createFocusOutlineStyle({
     selector: 'focus-within',
-    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '-4px', right: '-4px' } },
+    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '8px', right: '8px' } },
   }),
 
   focusIndicatorVertical: createFocusOutlineStyle({
     selector: 'focus-within',
-    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '4px', right: '4px' } },
+    style: { outlineOffset: { top: '6px', bottom: '6px', left: '4px', right: '4px' } },
   }),
 });
 
