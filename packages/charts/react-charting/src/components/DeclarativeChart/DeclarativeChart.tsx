@@ -61,7 +61,8 @@ const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVertica
 const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
 const ResponsiveScatterChart = withResponsiveContainer(ScatterChart);
 const ResponsiveChartTable = withResponsiveContainer(ChartTable);
-const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
+// Removing responsive wrapper for FunnelChart as responsive container is not working with FunnelChart
+//const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
 const ResponsiveGanttChart = withResponsiveContainer(GanttChart);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
@@ -219,7 +220,7 @@ type ChartTypeMap = {
   } & PreTransformHooks;
   funnel: {
     transformer: typeof transformPlotlyJsonToFunnelChartProps;
-    renderer: typeof ResponsiveFunnelChart;
+    renderer: typeof FunnelChart;
   } & PreTransformHooks;
   gantt: {
     transformer: typeof transformPlotlyJsonToGanttChartProps;
@@ -289,7 +290,7 @@ const chartMap: ChartTypeMap = {
   },
   funnel: {
     transformer: transformPlotlyJsonToFunnelChartProps,
-    renderer: ResponsiveFunnelChart,
+    renderer: FunnelChart,
   },
   gantt: {
     transformer: transformPlotlyJsonToGanttChartProps,
@@ -409,9 +410,17 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   if (chart.type === 'scatterpolar') {
     const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
     plotlyInputWithValidData.data = cartesianProjection.data;
+    plotlyInputWithValidData.layout = cartesianProjection.layout;
     validTracesFilteredIndex.forEach((trace, index) => {
       if (trace.type === 'scatterpolar') {
-        validTracesFilteredIndex[index].type = 'line'; // Change type to line for rendering
+        const mode = (plotlyInputWithValidData.data[index] as PlotData)?.mode ?? '';
+        if (mode.includes('line')) {
+          validTracesFilteredIndex[index].type = 'line';
+        } else if (mode.includes('markers')) {
+          validTracesFilteredIndex[index].type = 'scatter';
+        } else {
+          validTracesFilteredIndex[index].type = 'line';
+        }
       }
     });
   }

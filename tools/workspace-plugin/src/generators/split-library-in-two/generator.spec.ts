@@ -327,7 +327,7 @@ describe('split-library-in-two generator', () => {
 
 function setup(tree: Tree) {
   setupCodeowners(tree, { content: '' });
-  writeJson(tree, 'tsconfig.base.v0.json', { compilerOptions: { paths: {} } });
+
   writeJson(tree, 'tsconfig.base.v8.json', { compilerOptions: { paths: {} } });
   writeJson(tree, 'tsconfig.base.all.json', { compilerOptions: { paths: {} } });
 

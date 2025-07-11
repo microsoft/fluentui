@@ -12,6 +12,7 @@ import {
   domainRangeOfNumericForScatterChart,
   domainRangeOfXStringAxis,
   findNumericMinMaxOfY,
+  isScatterPolarSeries,
   YAxisType,
 } from '../../utilities/index';
 import {
@@ -33,9 +34,11 @@ import {
 } from '../../utilities/index';
 import { classNamesFunction, DirectionalHint, find, getId, getRTL } from '@fluentui/react';
 import { IImageExportOptions, IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
+import { ILineChartPoints } from '../../types/IDataPoint';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { ScaleLinear } from 'd3-scale';
+import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -89,6 +92,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const [refSelected, setRefSelected] = React.useState<string>('');
   const prevSelectedLegendsRef = React.useRef<string[] | undefined>(undefined);
+  const _isScatterPolarRef = React.useRef(false);
 
   const classNames = getClassNames(props.styles!, {
     theme: props.theme!,
@@ -433,29 +437,19 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       let xMax: number = 0;
       if (_xAxisType === XAxisTypes.StringAxis) {
         _xBandwidth.current = _xAxisScale.current?.bandwidth() / 2;
-      } else if (_xAxisType === XAxisTypes.DateAxis) {
-        xMin = d3Min(_points.current, (point: IScatterChartPoints) => {
-          return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as Date)!;
-        })!.getTime();
-
-        xMax = d3Max(_points.current, (point: IScatterChartPoints) => {
-          return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
-            return item.x as Date;
-          });
-        })!.getTime();
-
-        xPadding = (xMax - xMin) * 0.1;
       } else {
-        xMin = d3Min(_points.current, (point: IScatterChartPoints) => {
-          return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as number)!;
-        })!;
+        const isDate = _xAxisType === XAxisTypes.DateAxis;
+        const getX = (item: IScatterChartDataPoint) => (isDate ? (item.x as Date) : (item.x as number));
 
-        xMax = d3Max(_points.current, (point: IScatterChartPoints) => {
-          return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
-            return item.x as number;
-          });
-        })!;
+        const minVal = d3Min(_points.current, (point: IScatterChartPoints) =>
+          d3Min(point.data as IScatterChartDataPoint[], getX),
+        );
+        const maxVal = d3Max(_points.current, (point: IScatterChartPoints) =>
+          d3Max(point.data as IScatterChartDataPoint[], getX),
+        );
 
+        xMin = isDate ? (minVal as Date).getTime() : (minVal as number);
+        xMax = isDate ? (maxVal as Date).getTime() : (maxVal as number);
         xPadding = (xMax - xMin) * 0.1;
       }
 
@@ -539,7 +533,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
                 aria-label={_getAriaLabel(i, j)}
                 tabIndex={_points.current?.[i]?.legend !== '' ? 0 : undefined}
               />
-              {text && (
+              {!_isScatterPolarRef.current && text && (
                 <text
                   key={`${circleId}-label`}
                   x={_xAxisScale.current?.(x) + _xBandwidth.current}
@@ -550,6 +544,30 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
                 </text>
               )}
             </>,
+          );
+        }
+
+        if (_isScatterPolarRef.current) {
+          // Render category labels for all series at once to avoid overlap
+          const allSeriesData = _points.current.map(s => ({
+            data: s.data
+              .filter(pt => typeof pt.x === 'number' && typeof pt.y === 'number')
+              .map(pt => ({ x: pt.x as number, y: pt.y as number, text: pt.text })),
+          }));
+          pointsForSeries.push(
+            ...renderScatterPolarCategoryLabels({
+              allSeriesData,
+              xAxisScale: _xAxisScale.current,
+              yAxisScale: _yAxisScale.current,
+              className: classNames.markerLabel || '',
+              maybeLineOptions: (_points.current?.[i] as Partial<ILineChartPoints>)?.lineOptions
+                ? {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    originXOffset: ((_points.current?.[i] as Partial<ILineChartPoints>).lineOptions as any)
+                      ?.originXOffset,
+                  }
+                : undefined,
+            }),
           );
         }
 
@@ -623,6 +641,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     ) => {
       _xAxisScale.current = xScale;
       _yAxisScale.current = yScale;
+      _isScatterPolarRef.current = isScatterPolarSeries(_points.current);
       renderSeries.current = _createPlot(xElement!, containerHeight!);
     },
     [renderSeries, _xAxisScale, _yAxisScale, _createPlot],
@@ -749,6 +768,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}
       componentRef={cartesianChartRef}
+      {...(_isScatterPolarRef.current ? { yMaxValue: 1, yMinValue: -1 } : {})}
       /* eslint-disable react/jsx-no-bind */
       // eslint-disable-next-line react/no-children-prop
       children={(childProps: IChildProps) => {

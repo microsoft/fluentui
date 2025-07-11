@@ -828,8 +828,7 @@ describe('mapFluentChart UTs', () => {
       data: [{ type: 'scatterpolar', theta: ['a', 'b', 'c'], r: [1, 2, 3] }],
     };
     const result = mapFluentChart(input);
-    expect(result.isValid).toBe(false);
-    expect(result.errorMessage).toContain('Non numeric theta values');
+    expect(result.isValid).toBe(true);
   });
 
   test('invalid scatterpolar data - non-numeric r', () => {

@@ -351,8 +351,8 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
   scatter: [data => validateScatterData(data as Partial<PlotData>)],
   scatterpolar: [
     data => {
-      if (!isNumberArray((data as Partial<PlotData>).theta)) {
-        throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, Non numeric theta values`);
+      if (!isNumberArray((data as Partial<PlotData>).theta) && !isStringArray((data as Partial<PlotData>).theta)) {
+        throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, theta values must be array of numbers or strings`);
       }
       if (!isNumberArray((data as Partial<PlotData>).r)) {
         throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, Non numeric r values`);

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 03 Jul 2025 07:21:39 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jul 2025 07:20:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.12)
+
+Fri, 11 Jul 2025 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.11..@fluentui/react-charting_v5.24.12)
+
+### Patches
+
+- feat(react-charting): Support for categorical theta values for scatter polar chart ([PR #34682](https://github.com/microsoft/fluentui/pull/34682) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Fix hover card not coming properly for large data flow ([PR #34816](https://github.com/microsoft/fluentui/pull/34816) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.21 ([PR #34682](https://github.com/microsoft/fluentui/pull/34682) by beachball)
 
 ## [5.24.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.11)
 

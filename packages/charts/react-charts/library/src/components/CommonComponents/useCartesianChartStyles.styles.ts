@@ -141,7 +141,7 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
       cartesianchartClassNames.legendContainer,
       baseStyles.legendContainer /*props.styles?.legendContainer*/,
     ),
-    svgTooltip: mergeClasses(cartesianchartClassNames.svgTooltip, baseStyles.svgTooltip /*props.styles?.svgTooltip*/),
+    svgTooltip: mergeClasses(cartesianchartClassNames.svgTooltip, baseStyles.svgTooltip, props.styles?.svgTooltip),
     tooltip: mergeClasses(cartesianchartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
     chart: mergeClasses(cartesianchartClassNames.chart, props.styles?.chart),
   };

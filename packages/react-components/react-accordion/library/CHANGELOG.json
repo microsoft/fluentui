@@ -2,6 +2,21 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Fri, 11 Jul 2025 15:59:20 GMT",
+      "tag": "@fluentui/react-accordion_v9.7.4",
+      "version": "9.7.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "a394dfe8c7e175c9f6df286416326aa0a63aeccb",
+            "comment": "fix: adjust accordion header chevron alignment styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 10:02:49 GMT",
       "tag": "@fluentui/react-accordion_v9.7.3",
       "version": "9.7.3",

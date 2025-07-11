@@ -2,6 +2,21 @@
   "name": "@fluentui/react-message-bar",
   "entries": [
     {
+      "date": "Fri, 11 Jul 2025 15:59:22 GMT",
+      "tag": "@fluentui/react-message-bar_v9.5.4",
+      "version": "9.5.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "0decca9ac45ed143d649dc407cf975be03e356b2",
+            "comment": "fix: MessageBarActions renders slots with keys"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jun 2025 13:39:41 GMT",
       "tag": "@fluentui/react-message-bar_v9.5.3",
       "version": "9.5.3",

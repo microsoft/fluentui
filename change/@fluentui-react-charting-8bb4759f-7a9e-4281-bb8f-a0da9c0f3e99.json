@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-charting): Disable responsive container for funnel in Declarative Chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

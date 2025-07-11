@@ -2022,7 +2022,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           </div>
           <div
             class="fui-cart__calloutInfoContainer"
-            style="border-inline-start: 4px solid aqua;"
+            style="border-inline-start: 4px solid aqua; margin-top: 11px;"
           >
             <div
               class="fui-cart__calloutBlockContainer"

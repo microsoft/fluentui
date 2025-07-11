@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Fri, 27 Jun 2025 13:39:41 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jul 2025 15:59:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.7.4)
+
+Fri, 11 Jul 2025 15:59:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.7.3..@fluentui/react-accordion_v9.7.4)
+
+### Patches
+
+- fix: adjust accordion header chevron alignment styles ([PR #34616](https://github.com/microsoft/fluentui/pull/34616) by dmytrokirpa@microsoft.com)
 
 ## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.7.3)
 
