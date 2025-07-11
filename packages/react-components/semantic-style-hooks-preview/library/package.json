@@ -42,6 +42,7 @@
     "@fluentui/react-positioning": "^9.16.7",
     "@fluentui/react-progress": "^9.2.6",
     "@fluentui/react-provider": "^9.20.6",
+    "@fluentui/react-radio": "^9.3.6",
     "@fluentui/react-rating": "^9.1.6",
     "@fluentui/react-shared-contexts": "^9.23.1",
     "@fluentui/react-slider": "^9.3.7",

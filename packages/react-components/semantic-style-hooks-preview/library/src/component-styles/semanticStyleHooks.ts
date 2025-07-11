@@ -58,6 +58,7 @@ import {
   useSemanticMenuSplitGroupStyles,
 } from './Menu';
 import { useSemanticMenuGroupHeaderStyles } from './Menu';
+import { useSemanticRadioStyles } from './Radio';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -128,4 +129,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useMenuItemSwitchStyles_unstable: useSemanticMenuItemSwitchStyles,
   useMenuPopoverStyles_unstable: useSemanticMenuPopoverStyles,
   useMenuSplitGroupStyles_unstable: useSemanticMenuSplitGroupStyles,
+  // Radio styles
+  useRadioStyles_unstable: useSemanticRadioStyles,
 };
