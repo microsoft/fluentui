@@ -15,7 +15,8 @@ export type FluentChart =
   | 'scatterpolar'
   | 'sankey'
   | 'table'
-  | 'verticalstackedbar';
+  | 'verticalstackedbar'
+  | 'gantt';
 
 export type TraceInfo = {
   index: number;
@@ -224,7 +225,7 @@ const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean
 
 const validateBarData = (data: Partial<PlotData>) => {
   if (data.orientation === 'h' && data.base !== undefined) {
-    throw new Error(`${UNSUPPORTED_MSG_PREFIX} Gantt`);
+    // do something
   } else if (data.orientation === 'h' && isNumberArray(data.x)) {
     validateSeriesData(data, false);
   } else if (!isNumberArray(data.y) && !isStringArray(data.y)) {
@@ -435,7 +436,9 @@ export const mapFluentChart = (input: any): OutputChartType => {
           return { isValid: true, traceIndex, type: 'table' };
         case 'bar':
           const barData = traceData as Partial<PlotData>;
-          if (barData.orientation === 'h' && isNumberArray(barData.x)) {
+          if (barData.orientation === 'h' && barData.base !== undefined) {
+            return { isValid: true, traceIndex, type: 'gantt' };
+          } else if (barData.orientation === 'h' && isNumberArray(barData.x)) {
             return { isValid: true, traceIndex, type: 'horizontalbar' };
           } else {
             if (['group', 'overlay'].includes(validSchema?.layout?.barmode!)) {

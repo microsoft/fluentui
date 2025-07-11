@@ -387,7 +387,7 @@ export interface ErrorOptions {
 }
 
 // @public (undocumented)
-export type FluentChart = 'area' | 'composite' | 'donut' | 'fallback' | 'gauge' | 'groupedverticalbar' | 'heatmap' | 'horizontalbar' | 'line' | 'scatter' | 'scatterpolar' | 'sankey' | 'table' | 'verticalstackedbar';
+export type FluentChart = 'area' | 'composite' | 'donut' | 'fallback' | 'gauge' | 'groupedverticalbar' | 'heatmap' | 'horizontalbar' | 'line' | 'scatter' | 'scatterpolar' | 'sankey' | 'table' | 'verticalstackedbar' | 'gantt';
 
 // @public (undocumented)
 export interface Font {
