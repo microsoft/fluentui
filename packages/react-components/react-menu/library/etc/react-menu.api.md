@@ -473,7 +473,9 @@ export const useCheckmarkStyles_unstable: (state: MenuItemSelectableState & Pick
 
 // @public
 export const useMenu_unstable: (props: MenuProps & {
-    safeZone?: boolean;
+    safeZone?: boolean | {
+        timeout?: number;
+    };
 }) => MenuState;
 
 // @public (undocumented)
