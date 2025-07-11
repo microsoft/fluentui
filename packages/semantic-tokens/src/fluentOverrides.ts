@@ -63,6 +63,8 @@ export const fluentOverrides: FluentOverrides = {
   ctrlChoiceBaseStrokeRest: { f2Token: 'colorNeutralStrokeAccessible' },
   ctrlChoicePaddingHorizontal: { f2Token: 'spacingHorizontalS' },
   ctrlChoicePaddingVertical: { f2Token: 'spacingVerticalS' },
+  ctrlChoiceRadioCorner: { f2Token: 'borderRadiusCircular' },
+  ctrlChoiceRadioDotSizeRest: { rawValue: '16px' },
   ctrlChoiceSwitchCorner: { f2Token: 'borderRadiusCircular' },
   ctrlChoiceSwitchHeight: { rawValue: '20px' },
   ctrlChoiceSwitchPaddingHover: { rawValue: '1px' },

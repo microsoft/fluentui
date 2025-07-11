@@ -62,3 +62,4 @@ export {
   useSemanticMenuPopoverStyles,
   useSemanticMenuSplitGroupStyles,
 } from './component-styles/Menu';
+export { useSemanticRadioStyles } from './component-styles/Radio';
