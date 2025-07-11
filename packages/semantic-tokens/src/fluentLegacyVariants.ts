@@ -314,11 +314,11 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     rawValue: '0px',
   },
   _nullBackgroundColorHover: {
-    originalToken: 'nullColor',
     f2Token: 'colorTransparentBackgroundHover',
+    originalToken: 'nullColor',
   },
   _nullBackgroundColorPressed: {
-    originalToken: 'nullColor',
     f2Token: 'colorTransparentBackgroundPressed',
+    originalToken: 'nullColor',
   },
 };
