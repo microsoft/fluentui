@@ -297,11 +297,11 @@ export const fluentOverrides: FluentOverrides = {
   textRampItemHeaderLineHeight: { f2Token: 'lineHeightBase400' },
   textRampLgItemBodyFontSize: { f2Token: 'fontSizeBase400' },
   textRampLgItemBodyLineHeight: { f2Token: 'lineHeightBase400' },
+  textRampMetadataFontSize: { f2Token: 'fontSizeBase200' }, // should be fontSizeBase100 per Menu design
   textRampReadingBodyFontSize: { f2Token: 'fontSizeBase300' },
   textRampReadingBodyLineHeight: { f2Token: 'lineHeightBase300' },
   textRampSectionHeaderFontSize: { f2Token: 'fontSizeBase500' },
   textRampSectionHeaderLineHeight: { f2Token: 'lineHeightBase500' },
-  textRampMetadataFontSize: { f2Token: 'fontSizeBase200' }, // should be fontSizeBase100 per Menu design
   textRampSmItemBodyFontSize: { f2Token: 'fontSizeBase200' },
   textRampSmItemBodyLineHeight: { f2Token: 'lineHeightBase200' },
   textStyleDefaultHeaderFontFamily: { f2Token: 'fontFamilyBase' },
