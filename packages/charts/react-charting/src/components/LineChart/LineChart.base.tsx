@@ -169,7 +169,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   public static defaultProps: Partial<ILineChartProps> = {
     enableReflow: true,
     useUTC: true,
-    isCalloutForStack: false,
+    isCalloutForStack: true,
   };
 
   private _points: LineChartDataWithIndex[];
