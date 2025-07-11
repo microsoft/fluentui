@@ -7,7 +7,9 @@ export type SwatchProps = ImageSwatchProps | ColorSwatchProps;
 export type SwatchPickerGridProps = {
   items: SwatchProps[];
   columnCount: number;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   renderRow?: (props: { children: JSX.Element[]; rowId: string | number }) => JSX.Element;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   renderSwatch?: (item: SwatchProps) => JSX.Element;
 };
 

@@ -33,6 +33,7 @@ export type SlotShorthandValue = React.ReactElement | string | number | Iterable
  * it shouldn't be used as the type of a slot.
  */
 export type UnknownSlotProps = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'style'> & {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   as?: keyof JSX.IntrinsicElements;
   children?: ReactNode;
 };
@@ -146,6 +147,7 @@ export type Slot<
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     | ComponentType<any>
     | UnknownSlotProps,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   AlternateAs extends keyof JSX.IntrinsicElements = never,
 > = IsSingleton<Extract<Type, string>> extends true
   ?
@@ -183,6 +185,7 @@ export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends ne
  * type Example<T> = T extends AsIntrinsicElement<infer As> ? As : never;
  * ```
  */
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = { as?: As };
 
 /**
