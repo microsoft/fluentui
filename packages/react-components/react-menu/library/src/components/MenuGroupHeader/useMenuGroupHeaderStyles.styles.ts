@@ -1,7 +1,7 @@
 import { mergeClasses, makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type { MenuGroupHeaderSlots, MenuGroupHeaderState } from './MenuGroupHeader.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const menuGroupHeaderClassNames: SlotClassNames<MenuGroupHeaderSlots> = {
   root: 'fui-MenuGroupHeader',
@@ -9,12 +9,12 @@ export const menuGroupHeaderClassNames: SlotClassNames<MenuGroupHeaderSlots> = {
 
 const useStyles = makeStyles({
   root: {
-    fontSize: semanticTokens.textRampMetadataFontSize,
-    color: semanticTokens._ctrlMenuGroupHeaderColor,
-    paddingLeft: semanticTokens._ctrlMenuGroupHeaderPaddingHorizontal,
-    paddingRight: semanticTokens._ctrlMenuGroupHeaderPaddingHorizontal,
-    fontWeight: semanticTokens._ctrlMenuGroupHeaderFontWeight,
-    height: semanticTokens._ctrlMenuGroupHeaderHeight,
+    fontSize: tokens.fontSizeBase200,
+    color: tokens.colorNeutralForeground3,
+    paddingLeft: '8px',
+    paddingRight: '8px',
+    fontWeight: tokens.fontWeightSemibold,
+    height: '32px',
     display: 'flex',
     alignItems: 'center',
   },

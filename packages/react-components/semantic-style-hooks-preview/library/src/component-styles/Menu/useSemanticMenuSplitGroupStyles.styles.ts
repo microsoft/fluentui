@@ -1,14 +1,10 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-import { menuItemClassNames } from '../MenuItem/useMenuItemStyles.styles';
-import type { MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { menuItemClassNames, menuSplitGroupClassNames, type MenuSplitGroupState } from '@fluentui/react-menu';
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 export const menuSplitGroupMultilineAttr = 'data-multiline';
 
-export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots> = {
-  root: 'fui-MenuSplitGroup',
-};
 /**
  * Styles for the root slot
  * TODO - remove the use of nested combinators to style child menu items
@@ -30,9 +26,9 @@ const useStyles = makeStyles({
       paddingLeft: 0,
       '::before': {
         content: '""',
-        width: tokens.strokeWidthThin,
+        width: semanticTokens.strokeWidthDefault,
         height: '20px',
-        backgroundColor: tokens.colorNeutralStroke1,
+        backgroundColor: semanticTokens.strokeCtrlOnNeutralRest,
       },
     },
   },
@@ -41,10 +37,16 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the MenuSplitGroup slots based on the state
  */
-export const useMenuSplitGroupStyles_unstable = (state: MenuSplitGroupState): MenuSplitGroupState => {
+export const useSemanticMenuSplitGroupStyles = (_state: unknown): MenuSplitGroupState => {
   'use no memo';
 
+  const state = _state as MenuSplitGroupState;
   const styles = useStyles();
-  state.root.className = mergeClasses(menuSplitGroupClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    state.root.className,
+    menuSplitGroupClassNames.root,
+    styles.root,
+    getSlotClassNameProp_unstable(state.root),
+  );
   return state;
 };

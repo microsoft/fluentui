@@ -1,44 +1,39 @@
 import { mergeClasses, makeStyles, makeResetStyles } from '@griffel/react';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { useCheckmarkStyles_unstable } from '../../selectable/index';
-import type { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
-import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-
-export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
-  root: 'fui-MenuItem',
-  icon: 'fui-MenuItem__icon',
-  checkmark: 'fui-MenuItem__checkmark',
-  submenuIndicator: 'fui-MenuItem__submenuIndicator',
-  content: 'fui-MenuItem__content',
-  secondaryContent: 'fui-MenuItem__secondaryContent',
-  subText: 'fui-MenuItem__subText',
-};
+import {
+  useCheckmarkStyles_unstable,
+  type MenuItemState,
+  type MenuItemCheckboxState,
+  menuItemClassNames,
+} from '@fluentui/react-menu';
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 const useRootBaseStyles = makeResetStyles({
-  borderRadius: tokens.borderRadiusMedium,
+  borderRadius: semanticTokens.ctrlListCornerRest,
+  borderWidth: semanticTokens.strokeWidthDefault,
   position: 'relative',
-  color: tokens.colorNeutralForeground2,
-  backgroundColor: tokens.colorNeutralBackground1,
-  paddingRight: tokens.spacingVerticalSNudge, // 6px
-  paddingLeft: tokens.spacingVerticalSNudge,
-  paddingTop: tokens.spacingVerticalSNudge,
-  paddingBottom: tokens.spacingVerticalSNudge,
+  color: semanticTokens.foregroundCtrlOnSubtleRest,
+  backgroundColor: semanticTokens.backgroundCtrlSubtleRest,
+  paddingRight: semanticTokens._ctrlMenuItemPaddingX,
+  paddingLeft: semanticTokens._ctrlMenuItemPaddingX,
+  paddingTop: semanticTokens._ctrlMenuItemPaddingTop,
+  paddingBottom: semanticTokens._ctrlMenuItemPaddingBottom,
   boxSizing: 'border-box',
   maxWidth: '290px',
-  minHeight: '32px',
+  minHeight: semanticTokens._ctrlMenuItemSizeDefault,
   flexShrink: 0,
   display: 'flex',
   alignItems: 'start',
-  fontSize: tokens.fontSizeBase300,
+  fontSize: semanticTokens.textRampItemBodyFontSize,
   cursor: 'pointer',
-  gap: '4px',
+  gap: semanticTokens._ctrlMenuItemGapInsideDefault,
 
   ':hover': {
-    backgroundColor: tokens.colorNeutralBackground1Hover,
-    color: tokens.colorNeutralForeground2Hover,
+    backgroundColor: semanticTokens.backgroundCtrlSubtleHover,
+    color: semanticTokens.foregroundCtrlOnSubtleHover,
+    borderRadius: semanticTokens.ctrlListCornerHover,
 
     [`& .${iconFilledClassName}`]: {
       display: 'inline',
@@ -47,20 +42,20 @@ const useRootBaseStyles = makeResetStyles({
       display: 'none',
     },
     [`& .${menuItemClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2BrandSelected,
+      color: semanticTokens.foregroundCtrlIconOnSubtleHover,
     },
 
     [`& .${menuItemClassNames.subText}`]: {
-      color: tokens.colorNeutralForeground3Hover,
+      color: semanticTokens._ctrlMenuItemSubTextForegroundHover,
     },
   },
 
   ':hover:active': {
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
-    color: tokens.colorNeutralForeground2Pressed,
+    backgroundColor: semanticTokens.backgroundCtrlSubtlePressed,
+    color: semanticTokens.foregroundCtrlOnSubtlePressed,
 
     [`& .${menuItemClassNames.subText}`]: {
-      color: tokens.colorNeutralForeground3Pressed,
+      color: semanticTokens._ctrlMenuItemSubTextForegroundPressed,
     },
   },
 
@@ -79,30 +74,32 @@ const useRootBaseStyles = makeResetStyles({
 });
 
 const useContentBaseStyles = makeResetStyles({
-  paddingLeft: '2px',
-  paddingRight: '2px',
+  paddingLeft: semanticTokens._ctrlMenuItemContentPaddingX,
+  paddingRight: semanticTokens._ctrlMenuItemContentPaddingX,
   backgroundColor: 'transparent',
   flexGrow: 1,
 });
 
 const useSecondaryContentBaseStyles = makeResetStyles({
-  paddingLeft: '2px',
-  paddingRight: '2px',
-  ...typographyStyles.caption1,
-  lineHeight: tokens.lineHeightBase300,
-  color: tokens.colorNeutralForeground3,
+  paddingLeft: semanticTokens._ctrlMenuItemContentPaddingX,
+  paddingRight: semanticTokens._ctrlMenuItemContentPaddingX,
+  fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+  fontSize: semanticTokens._ctrlMenuItemSecondaryContentFontSize,
+  fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+  lineHeight: semanticTokens.textGlobalBody3LineHeight,
+  color: semanticTokens._ctrlMenuItemSecondaryContentForegroundRest,
   ':hover': {
-    color: tokens.colorNeutralForeground3Hover,
+    color: semanticTokens._ctrlMenuItemSecondaryContentForegroundHover,
   },
   ':focus': {
-    color: tokens.colorNeutralForeground3Hover,
+    color: semanticTokens._ctrlMenuItemSecondaryContentForegroundHover,
   },
 });
 
 const useIconBaseStyles = makeResetStyles({
-  width: '20px',
-  height: '20px',
-  fontSize: '20px',
+  width: semanticTokens.sizeCtrlIcon,
+  height: semanticTokens.sizeCtrlIcon,
+  fontSize: semanticTokens.sizeCtrlIcon,
   lineHeight: 0,
   alignItems: 'center',
   display: 'inline-flex',
@@ -111,9 +108,9 @@ const useIconBaseStyles = makeResetStyles({
 });
 
 const useSubmenuIndicatorBaseStyles = makeResetStyles({
-  width: '20px',
-  height: '20px',
-  fontSize: '20px',
+  width: semanticTokens.sizeCtrlIconSecondary,
+  height: semanticTokens.sizeCtrlIconSecondary,
+  fontSize: semanticTokens.sizeCtrlIconSecondary,
   lineHeight: 0,
   alignItems: 'center',
   display: 'inline-flex',
@@ -121,8 +118,11 @@ const useSubmenuIndicatorBaseStyles = makeResetStyles({
 });
 
 const useSubtextBaseStyles = makeResetStyles({
-  ...typographyStyles.caption2,
-  color: tokens.colorNeutralForeground3,
+  fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+  fontSize: semanticTokens.textGlobalCaption2FontSize,
+  fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+  lineHeight: semanticTokens.textGlobalCaption2LineHeight,
+  color: semanticTokens._ctrlMenuItemSecondaryContentForegroundRest,
 });
 
 const useStyles = makeStyles({
@@ -140,16 +140,17 @@ const useStyles = makeStyles({
     paddingLeft: 0,
     '::before': {
       content: '""',
-      width: tokens.strokeWidthThin,
+      width: semanticTokens.strokeWidthDefault,
       height: '24px',
-      backgroundColor: tokens.colorNeutralStroke1,
+      backgroundColor: semanticTokens.strokeCtrlOnNeutralRest,
     },
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: semanticTokens.foregroundCtrlOnSubtleDisabled,
+    backgroundColor: semanticTokens.backgroundCtrlSubtleDisabled,
     ':hover': {
-      color: tokens.colorNeutralForegroundDisabled,
-      backgroundColor: tokens.colorNeutralBackground1,
+      color: semanticTokens.foregroundCtrlOnSubtleDisabled,
+      backgroundColor: semanticTokens.backgroundCtrlSubtleDisabled,
       cursor: 'not-allowed',
       [`& .${iconFilledClassName}`]: {
         display: 'none',
@@ -158,24 +159,17 @@ const useStyles = makeStyles({
         display: 'inline',
       },
       [`& .${menuItemClassNames.icon}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-      },
-      [`& .${menuItemClassNames.subText}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
+        color: semanticTokens.foregroundCtrlIconOnSubtleDisabled,
       },
     },
 
     ':hover:active': {
-      color: tokens.colorNeutralForegroundDisabled,
-      backgroundColor: tokens.colorNeutralBackground1,
-
-      [`& .${menuItemClassNames.subText}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-      },
+      color: semanticTokens.foregroundCtrlOnSubtleDisabled,
+      backgroundColor: semanticTokens.backgroundCtrlSubtleDisabled,
     },
 
     ':focus': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: semanticTokens.foregroundCtrlOnSubtleDisabled,
     },
 
     '@media (forced-colors: active)': {
@@ -187,31 +181,11 @@ const useStyles = makeStyles({
           color: 'GrayText',
           backgroundColor: 'Canvas',
         },
-        [`& .${menuItemClassNames.subText}`]: {
-          color: 'GrayText',
-        },
-      },
-      ':hover:active': {
-        color: 'GrayText',
-        backgroundColor: 'Canvas',
-        [`& .${menuItemClassNames.subText}`]: {
-          color: 'GrayText',
-        },
       },
       ':focus': {
         color: 'GrayText',
         backgroundColor: 'Canvas',
       },
-    },
-  },
-});
-
-const useSubTextStyles = makeStyles({
-  disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-
-    '@media (forced-colors: active)': {
-      color: 'GrayText',
     },
   },
 });
@@ -232,9 +206,10 @@ const useMultilineStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState => {
+export const useSemanticMenuItemStyles = (_state: unknown): MenuItemState => {
   'use no memo';
 
+  const state = _state as MenuItemState;
   const styles = useStyles();
   const rootBaseStyles = useRootBaseStyles();
   const contentBaseStyles = useContentBaseStyles();
@@ -243,57 +218,69 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   const submenuIndicatorBaseStyles = useSubmenuIndicatorBaseStyles();
   const multilineStyles = useMultilineStyles();
   const subtextBaseStyles = useSubtextBaseStyles();
-  const subTextStyles = useSubTextStyles();
   const multiline = !!state.subText;
   state.root.className = mergeClasses(
+    state.root.className,
     menuItemClassNames.root,
     rootBaseStyles,
     state.disabled && styles.disabled,
-    state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
 
   if (state.content) {
     state.content.className = mergeClasses(
+      state.content.className,
       menuItemClassNames.content,
       contentBaseStyles,
-      state.content.className,
       multiline && multilineStyles.content,
+      getSlotClassNameProp_unstable(state.content),
     );
   }
 
   if (state.checkmark) {
-    state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, styles.checkmark, state.checkmark.className);
+    state.checkmark.className = mergeClasses(
+      state.checkmark.className,
+      menuItemClassNames.checkmark,
+      styles.checkmark,
+      getSlotClassNameProp_unstable(state.checkmark),
+    );
   }
 
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
-      menuItemClassNames.secondaryContent,
-      secondaryContentBaseStyles,
-      state.disabled && styles.disabled,
       state.secondaryContent.className,
+      menuItemClassNames.secondaryContent,
+      !state.disabled && secondaryContentBaseStyles,
       multiline && multilineStyles.secondaryContent,
+      getSlotClassNameProp_unstable(state.secondaryContent),
     );
   }
 
   if (state.icon) {
-    state.icon.className = mergeClasses(menuItemClassNames.icon, iconBaseStyles, state.icon.className);
+    state.icon.className = mergeClasses(
+      state.icon.className,
+      menuItemClassNames.icon,
+      iconBaseStyles,
+      getSlotClassNameProp_unstable(state.icon),
+    );
   }
 
   if (state.submenuIndicator) {
     state.submenuIndicator.className = mergeClasses(
+      state.submenuIndicator.className,
       menuItemClassNames.submenuIndicator,
       submenuIndicatorBaseStyles,
-      state.submenuIndicator.className,
       multiline && multilineStyles.submenuIndicator,
+      getSlotClassNameProp_unstable(state.submenuIndicator),
     );
   }
 
   if (state.subText) {
     state.subText.className = mergeClasses(
-      menuItemClassNames.subText,
-      state.disabled && subTextStyles.disabled,
       state.subText.className,
+      menuItemClassNames.subText,
       subtextBaseStyles,
+      getSlotClassNameProp_unstable(state.subText),
     );
   }
 

@@ -3,7 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import { type SlotClassNames } from '@fluentui/react-utilities';
 import type { MenuItemSwitchSlots, MenuItemSwitchState } from './MenuItemSwitch.types';
 import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles.styles';
-import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const menuItemSwitchClassNames: SlotClassNames<MenuItemSwitchSlots> = {
   root: 'fui-MenuItemSwitch',
@@ -16,46 +15,40 @@ export const menuItemSwitchClassNames: SlotClassNames<MenuItemSwitchSlots> = {
 
 export const circleFilledClassName = 'fui-MenuItemSwitch__switchIndicator__circleFilled';
 
-const thumbHeight = `calc(${semanticTokens.ctrlChoiceSwitchHeight} - (${semanticTokens.ctrlChoiceSwitchPaddingRest} * 2))`;
+// Thumb and track sizes used by the component.
+const spaceBetweenThumbAndTrack = 2;
+const trackHeight = 20;
+const trackWidth = 40;
+const thumbSize = trackHeight - spaceBetweenThumbAndTrack;
 
 const useSwitchIndicatorBaseClassName = makeResetStyles({
-  borderRadius: semanticTokens.ctrlChoiceSwitchCorner,
-  border: `${semanticTokens.strokeWidthCtrlOutlineRest} solid ${semanticTokens.ctrlChoiceBaseStrokeRest}`,
+  borderRadius: tokens.borderRadiusCircular,
+  border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
   lineHeight: 0,
   boxSizing: 'border-box',
   fill: 'currentColor',
   flexShrink: 0,
-  height: semanticTokens.ctrlChoiceSwitchHeight,
+  fontSize: `${thumbSize}px`,
+  height: `${trackHeight}px`,
   transitionDuration: tokens.durationNormal,
   transitionTimingFunction: tokens.curveEasyEase,
   transitionProperty: 'background, border, color',
-  width: semanticTokens.ctrlChoiceSwitchWidth,
-  marginRight: semanticTokens.gapInsideCtrlSmDefault,
-  color: semanticTokens.backgroundCtrlShapeSafeNeutralRest,
+  width: `${trackWidth}px`,
+  marginRight: tokens.spacingHorizontalXS,
 
   '@media screen and (prefers-reduced-motion: reduce)': {
     transitionDuration: '0.01ms',
   },
 
-  '> *': {
-    position: 'relative',
-    height: thumbHeight,
-    width: semanticTokens.ctrlChoiceSwitchThumbWidthRest,
-    fontSize: thumbHeight,
-    top: `calc(50% - ${thumbHeight} / 2)`,
-    transitionDuration: tokens.durationNormal,
-    transitionTimingFunction: tokens.curveEasyEase,
-    transitionProperty: 'transform',
-  },
-
+  color: tokens.colorNeutralStrokeAccessible,
   ':hover': {
-    color: semanticTokens.backgroundCtrlShapeSafeNeutralHover,
-    borderColor: semanticTokens.ctrlChoiceBaseStrokeHover,
+    color: tokens.colorNeutralStrokeAccessibleHover,
+    borderColor: tokens.colorNeutralStrokeAccessibleHover,
   },
 
   ':hover:active': {
-    color: semanticTokens.backgroundCtrlShapeSafeNeutralPressed,
-    borderColor: semanticTokens.ctrlChoiceBaseStrokePressed,
+    color: tokens.colorNeutralStrokeAccessiblePressed,
+    borderColor: tokens.colorNeutralStrokeAccessiblePressed,
   },
   [`& .${circleFilledClassName}`]: {
     transitionDuration: tokens.durationNormal,
@@ -71,27 +64,23 @@ const useSwitchIndicatorBaseClassName = makeResetStyles({
 const useSwitchIndicatorStyles = makeStyles({
   checked: {
     [`& .${circleFilledClassName}`]: {
-      transform: `translateX(calc(${semanticTokens.ctrlChoiceSwitchWidth} - ${semanticTokens.ctrlChoiceSwitchThumbWidthRest} - ${semanticTokens.ctrlChoiceSwitchPaddingRest}))`,
-      ':dir(rtl)': {
-        // Inverse animation for RTL (Griffel doesn't support flipping CSSVars)
-        transform: `translateX(calc(-1 * (${semanticTokens.ctrlChoiceSwitchWidth} - ${semanticTokens.ctrlChoiceSwitchThumbWidthRest} - ${semanticTokens.ctrlChoiceSwitchPaddingRest})))`,
-      },
+      transform: `translateX(${trackWidth - thumbSize - spaceBetweenThumbAndTrack}px)`,
     },
 
-    backgroundColor: semanticTokens.backgroundCtrlActiveBrandRest,
-    color: semanticTokens.foregroundCtrlOnActiveBrandRest,
-    ...shorthands.borderColor(semanticTokens.strokeCtrlOnBrandRest),
+    backgroundColor: tokens.colorCompoundBrandBackground,
+    color: tokens.colorNeutralForegroundInverted,
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
 
     ':hover': {
-      color: semanticTokens.foregroundCtrlOnActiveBrandHover,
-      backgroundColor: semanticTokens.backgroundCtrlActiveBrandHover,
-      ...shorthands.borderColor(semanticTokens._ctrlSwitchStrokeOnActiveBrandHover),
+      color: tokens.colorNeutralForegroundInverted,
+      backgroundColor: tokens.colorCompoundBrandBackgroundHover,
+      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
 
     ':hover:active': {
-      color: semanticTokens.foregroundCtrlOnActiveBrandPressed,
-      backgroundColor: semanticTokens.backgroundCtrlActiveBrandPressed,
-      ...shorthands.borderColor(semanticTokens.strokeCtrlOnActiveBrandPressed),
+      color: tokens.colorNeutralForegroundInverted,
+      backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
+      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
   },
 });
@@ -146,6 +135,7 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
   useMenuItemStyles_unstable({
     ...state,
     components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...state.components,
       checkmark: 'span',
       submenuIndicator: 'span',
