@@ -868,34 +868,29 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _onHover = (singleNode: SNode, mouseEvent: React.MouseEvent<SVGElement>) => {
     mouseEvent.persist();
     _onCloseCallout();
-    if (!selectedState) {
-      const _selectedLinks = getSelectedLinks(singleNode);
-      const _selectedNodes = getSelectedNodes(_selectedLinks);
-      _selectedNodes.push(singleNode);
-      setSelectedState(true);
-      setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
-      setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
-      setSelectedNode(singleNode);
-      updatePosition(mouseEvent.clientX, mouseEvent.clientY);
-      setCalloutVisible(singleNode.y1! - singleNode.y0! < MIN_HEIGHT_FOR_TYPE);
-      setColor(singleNode.color);
-      setXCalloutValue(singleNode.name);
-      setYCalloutValue(_formatNumber(singleNode.actualValue!));
-    }
+    const _selectedLinks = getSelectedLinks(singleNode);
+    const _selectedNodes = getSelectedNodes(_selectedLinks);
+    _selectedNodes.push(singleNode);
+    setSelectedState(true);
+    setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
+    setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
+    setSelectedNode(singleNode);
+    updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+    setCalloutVisible(singleNode.y1! - singleNode.y0! < MIN_HEIGHT_FOR_TYPE);
+    setColor(singleNode.color);
+    setXCalloutValue(singleNode.name);
+    setYCalloutValue(_formatNumber(singleNode.actualValue!));
   };
 
   const _onStreamHover = (mouseEvent: React.MouseEvent<SVGElement>, singleLink: SLink, from: string) => {
     mouseEvent.persist();
     _onCloseCallout();
-    if (!selectedState) {
-      const { selectedLinks: _selectedLinks, selectedNodes: _selectedNodes } =
-        getSelectedLinksforStreamHover(singleLink);
-      setSelectedState(true);
-      setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
-      setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
-      updatePosition(mouseEvent.clientX, mouseEvent.clientY);
-      _linkCalloutAttributes(singleLink, from);
-    }
+    const { selectedLinks: _selectedLinks, selectedNodes: _selectedNodes } = getSelectedLinksforStreamHover(singleLink);
+    setSelectedState(true);
+    setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
+    setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
+    updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+    _linkCalloutAttributes(singleLink, from);
   };
 
   const _onStreamLeave = (singleLink: SLink) => {

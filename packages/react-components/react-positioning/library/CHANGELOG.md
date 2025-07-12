@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 27 Jun 2025 13:39:40 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jul 2025 15:59:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.19.0)
+
+Fri, 11 Jul 2025 15:59:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.18.5..@fluentui/react-positioning_v9.19.0)
+
+### Minor changes
+
+- feat: SafeZone restarts timeout on mouse move ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by lingfangao@hotmail.com)
 
 ## [9.18.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.5)
 

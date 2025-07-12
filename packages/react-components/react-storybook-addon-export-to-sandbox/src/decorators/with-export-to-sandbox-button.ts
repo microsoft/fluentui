@@ -1,4 +1,3 @@
-import { useEffect } from '@storybook/preview-api';
 import { addDemoActionButton } from '../sandbox-factory';
 
 import { StoryContext } from '../types';
@@ -8,11 +7,9 @@ export const withExportToSandboxButton = (
   JSX.Element,
   context: StoryContext,
 ) => {
-  useEffect(() => {
-    if (context.viewMode === 'docs') {
-      addDemoActionButton(context);
-    }
-  }, [context]);
+  if (context.viewMode === 'docs') {
+    addDemoActionButton(context);
+  }
 
   return storyFn(context);
 };

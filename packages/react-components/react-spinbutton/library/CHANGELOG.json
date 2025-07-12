@@ -2,6 +2,21 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Fri, 11 Jul 2025 15:59:24 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.4.7",
+      "version": "9.4.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-field to v9.3.7",
+            "commit": "0aea3258a8deb968bd8e8f5a4a9c3e8a162b4bc3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 10:02:51 GMT",
       "tag": "@fluentui/react-spinbutton_v9.4.6",
       "version": "9.4.6",

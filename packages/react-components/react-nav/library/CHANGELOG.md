@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-nav
 
-This log was last generated on Fri, 04 Jul 2025 10:02:45 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jul 2025 15:59:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.2.3)
+
+Fri, 11 Jul 2025 15:59:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav_v9.2.2..@fluentui/react-nav_v9.2.3)
+
+### Patches
+
+- Bump @fluentui/react-drawer to v9.8.7 ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.7 ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by beachball)
 
 ## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.2.2)
 

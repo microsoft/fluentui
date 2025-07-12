@@ -364,6 +364,8 @@ function buildBundleSizeTarget(
     command: `${config.pmc.exec} monosize measure`,
     options: { cwd: projectRoot },
     inputs: [
+      `{workspaceRoot}/monosize.config.mjs`,
+      `{projectRoot}/monosize.config.mjs`,
       `{projectRoot}/bundle-size`,
       `{projectRoot}/src/**/*.tsx?`,
       { externalDependencies: ['monosize', 'monosize-bundler-webpack'] },

@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "Fluent UI tests for a11y patterns.",
   "private": true,
-  "main": "lib-commonjs/src/index.js",
-  "typings": "lib-commonjs/src/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "typings": "lib-commonjs/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -19,11 +19,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@testing-library/dom": "8.11.3",
-    "@testing-library/react": "12.1.2",
-    "@types/react": "17.0.44",
-    "@types/react-dom": "17.0.15"
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "tslib": "^2.1.0"

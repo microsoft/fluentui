@@ -20,8 +20,6 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
         '@fluentui/theme-designer',
         // Exclude non v9 stories
         '@fluentui/react',
-        '@fluentui/react-northstar',
-        '@fluentui/react-icons-northstar',
         // Exclude the package as we are including only the `Nav` component stories from the package below.
         '@fluentui/react-nav',
       ],

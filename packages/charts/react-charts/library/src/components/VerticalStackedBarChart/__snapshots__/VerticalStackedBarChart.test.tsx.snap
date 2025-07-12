@@ -196,7 +196,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g>
             <g
               aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
-              data-is-focusable="true"
               id="0-singleBar"
               role="img"
               tabindex="0"
@@ -241,7 +240,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g>
             <g
               aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
-              data-is-focusable="true"
               id="1-singleBar"
               role="img"
               tabindex="0"
@@ -298,7 +296,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g>
             <g
               aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
-              data-is-focusable="true"
               id="2-singleBar"
               role="img"
               tabindex="0"
@@ -379,36 +376,30 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <circle
             cx="279"
             cy="162.10000000000002"
-            data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
-            tabindex="0"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="327"
             cy="164.55"
-            data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
-            tabindex="0"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
-            data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
-            tabindex="0"
             transform="translate(8, 0)"
             visibility="hidden"
           />
@@ -708,7 +699,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g>
             <g
               aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
-              data-is-focusable="true"
               id="0-singleBar"
               role="img"
               tabindex="0"
@@ -753,7 +743,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g>
             <g
               aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
-              data-is-focusable="true"
               id="1-singleBar"
               role="img"
               tabindex="0"
@@ -810,7 +799,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g>
             <g
               aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
-              data-is-focusable="true"
               id="2-singleBar"
               role="img"
               tabindex="0"
@@ -891,36 +879,30 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <circle
             cx="279"
             cy="162.10000000000002"
-            data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
-            tabindex="0"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="327"
             cy="164.55"
-            data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
-            tabindex="0"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
-            data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
-            tabindex="0"
             transform="translate(8, 0)"
             visibility="hidden"
           />
@@ -1364,18 +1346,17 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           <g>
             <g
               id="0-singleBar"
-              tabindex="0"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 40%."
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                data-is-focusable="true"
                 fill="aqua"
                 height="188.46153846153845"
                 opacity="1"
                 role="img"
                 rx="0"
+                tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
@@ -1385,12 +1366,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 aria-label="2020/04/30. Metadata2, 5%."
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                data-is-focusable="true"
                 fill="navy"
                 height="23.557692307692307"
                 opacity="1"
                 role="img"
                 rx="0"
+                tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
@@ -1412,18 +1393,17 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           <g>
             <g
               id="1-singleBar"
-              tabindex="0"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 30%."
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                data-is-focusable="true"
                 fill="aqua"
                 height="141.34615384615384"
                 opacity="1"
                 role="img"
                 rx="0"
+                tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
@@ -1433,12 +1413,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 aria-label="2020/04/30. Metadata2, 20%."
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                data-is-focusable="true"
                 fill="navy"
                 height="94.23076923076923"
                 opacity="1"
                 role="img"
                 rx="0"
+                tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
@@ -1860,18 +1840,17 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           <g>
             <g
               id="0-singleBar"
-              tabindex="0"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 40%."
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                data-is-focusable="true"
                 fill="aqua"
                 height="188.46153846153845"
                 opacity="1"
                 role="img"
                 rx="0"
+                tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
@@ -1881,12 +1860,12 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 aria-label="2020/04/30. Metadata2, 5%."
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                data-is-focusable="true"
                 fill="navy"
                 height="23.557692307692307"
                 opacity="1"
                 role="img"
                 rx="0"
+                tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
@@ -1908,18 +1887,17 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           <g>
             <g
               id="1-singleBar"
-              tabindex="0"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 30%."
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                data-is-focusable="true"
                 fill="aqua"
                 height="141.34615384615384"
                 opacity="1"
                 role="img"
                 rx="0"
+                tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
@@ -1929,12 +1907,12 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 aria-label="2020/04/30. Metadata2, 20%."
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                data-is-focusable="true"
                 fill="navy"
                 height="94.23076923076923"
                 opacity="1"
                 role="img"
                 rx="0"
+                tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
@@ -2044,7 +2022,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           </div>
           <div
             class="fui-cart__calloutInfoContainer"
-            style="border-inline-start: 4px solid aqua;"
+            style="border-inline-start: 4px solid aqua; margin-top: 11px;"
           >
             <div
               class="fui-cart__calloutBlockContainer"
@@ -2409,18 +2387,17 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g>
             <g
               id="0-singleBar"
-              tabindex="0"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 40%."
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                data-is-focusable="true"
                 fill="aqua"
                 height="188.46153846153845"
                 opacity="1"
                 role="img"
                 rx="0"
+                tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
@@ -2430,12 +2407,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 aria-label="2020/04/30. Metadata2, 5%."
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                data-is-focusable="true"
                 fill="navy"
                 height="23.557692307692307"
                 opacity="1"
                 role="img"
                 rx="0"
+                tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
@@ -2457,18 +2434,17 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g>
             <g
               id="1-singleBar"
-              tabindex="0"
             >
               <rect
                 aria-label="2020/04/30. Metadata1, 30%."
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                data-is-focusable="true"
                 fill="aqua"
                 height="141.34615384615384"
                 opacity="1"
                 role="img"
                 rx="0"
+                tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
@@ -2478,12 +2454,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 aria-label="2020/04/30. Metadata2, 20%."
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                data-is-focusable="true"
                 fill="navy"
                 height="94.23076923076923"
                 opacity="1"
                 role="img"
                 rx="0"
+                tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
@@ -2935,7 +2911,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g>
             <g
               aria-label="0. Metadata1, 40%. Metadata2, 5%. Line1, 15."
-              data-is-focusable="true"
               id="0-singleBar"
               role="img"
               tabindex="0"
@@ -2980,7 +2955,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g>
             <g
               aria-label="20. Metadata1, 30%. Metadata2, 20%. Line1, 30."
-              data-is-focusable="true"
               id="1-singleBar"
               role="img"
               tabindex="0"
@@ -3038,24 +3012,20 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <circle
             cx="56"
             cy="194.3269230769231"
-            data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
             stroke="yellow"
             stroke-width="3"
-            tabindex="0"
             transform="translate(0, 0)"
             visibility="visibility"
           />
           <circle
             cx="614"
             cy="123.65384615384616"
-            data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
             stroke="yellow"
             stroke-width="3"
-            tabindex="0"
             transform="translate(0, 0)"
             visibility="hidden"
           />
@@ -3230,13 +3200,11 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         <g>
           <g
             id="0-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={42.30769230769231}
               onBlur={[Function]}
@@ -3248,6 +3216,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -3257,7 +3226,6 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               aria-label="2020/04/30. Metadata2, 5%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={5.288461538461538}
               onBlur={[Function]}
@@ -3269,6 +3237,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -3279,13 +3248,11 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         <g>
           <g
             id="1-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={31.73076923076923}
               onBlur={[Function]}
@@ -3297,6 +3264,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -3306,7 +3274,6 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               aria-label="2020/04/30. Metadata2, 20%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={21.153846153846153}
               onBlur={[Function]}
@@ -3318,6 +3285,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -3477,13 +3445,11 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         <g>
           <g
             id="0-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={42.30769230769231}
               onBlur={[Function]}
@@ -3495,6 +3461,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -3504,7 +3471,6 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               aria-label="2020/04/30. Metadata2, 5%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={5.288461538461538}
               onBlur={[Function]}
@@ -3516,6 +3482,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -3526,13 +3493,11 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         <g>
           <g
             id="1-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={31.73076923076923}
               onBlur={[Function]}
@@ -3544,6 +3509,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -3553,7 +3519,6 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               aria-label="2020/04/30. Metadata2, 20%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={21.153846153846153}
               onBlur={[Function]}
@@ -3565,6 +3530,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -3724,13 +3690,11 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         <g>
           <g
             id="0-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={42.30769230769231}
               onBlur={[Function]}
@@ -3742,6 +3706,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               opacity={1}
               role="img"
               rx={3}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -3751,7 +3716,6 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               aria-label="2020/04/30. Metadata2, 5%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={5.288461538461538}
               onBlur={[Function]}
@@ -3763,6 +3727,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               opacity={1}
               role="img"
               rx={3}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -3773,13 +3738,11 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         <g>
           <g
             id="1-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={31.73076923076923}
               onBlur={[Function]}
@@ -3791,6 +3754,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               opacity={1}
               role="img"
               rx={3}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -3800,7 +3764,6 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               aria-label="2020/04/30. Metadata2, 20%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={21.153846153846153}
               onBlur={[Function]}
@@ -3812,6 +3775,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               opacity={1}
               role="img"
               rx={3}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -3971,13 +3935,11 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         <g>
           <g
             id="0-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={42.30769230769231}
               onBlur={[Function]}
@@ -3989,6 +3951,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -3998,7 +3961,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               aria-label="2020/04/30. Metadata2, 5%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={5.288461538461538}
               onBlur={[Function]}
@@ -4010,6 +3972,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -4020,13 +3983,11 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         <g>
           <g
             id="1-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={31.73076923076923}
               onBlur={[Function]}
@@ -4038,6 +3999,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -4047,7 +4009,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               aria-label="2020/04/30. Metadata2, 20%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={21.153846153846153}
               onBlur={[Function]}
@@ -4059,6 +4020,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -4218,13 +4180,11 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         <g>
           <g
             id="0-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={42.30769230769231}
               onBlur={[Function]}
@@ -4236,6 +4196,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -4245,7 +4206,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               aria-label="2020/04/30. Metadata2, 5%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={5.288461538461538}
               onBlur={[Function]}
@@ -4257,6 +4217,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -4267,13 +4228,11 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         <g>
           <g
             id="1-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={31.73076923076923}
               onBlur={[Function]}
@@ -4285,6 +4244,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -4294,7 +4254,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               aria-label="2020/04/30. Metadata2, 20%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={21.153846153846153}
               onBlur={[Function]}
@@ -4306,6 +4265,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -4491,13 +4451,11 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         <g>
           <g
             id="0-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={42.30769230769231}
               onBlur={[Function]}
@@ -4509,6 +4467,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -4518,7 +4477,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               aria-label="2020/04/30. Metadata2, 5%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={5.288461538461538}
               onBlur={[Function]}
@@ -4530,6 +4488,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -4540,13 +4499,11 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         <g>
           <g
             id="1-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={31.73076923076923}
               onBlur={[Function]}
@@ -4558,6 +4515,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -4567,7 +4525,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               aria-label="2020/04/30. Metadata2, 20%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={21.153846153846153}
               onBlur={[Function]}
@@ -4579,6 +4536,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -4634,7 +4592,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               aria-label="2020/04/30. Metadata1, 40%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={false}
               fill="aqua"
               height={42.30769230769231}
               onBlur={[Function]}
@@ -4655,7 +4612,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               aria-label="2020/04/30. Metadata2, 5%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={false}
               fill="navy"
               height={5.288461538461538}
               onBlur={[Function]}
@@ -4682,7 +4638,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               aria-label="2020/04/30. Metadata1, 30%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={false}
               fill="aqua"
               height={31.73076923076923}
               onBlur={[Function]}
@@ -4703,7 +4658,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               aria-label="2020/04/30. Metadata2, 20%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={false}
               fill="navy"
               height={21.153846153846153}
               onBlur={[Function]}
@@ -4874,7 +4828,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         <g>
           <g
             aria-label="0. Metadata1, 40%. Metadata2, 5%."
-            data-is-focusable={true}
             id="0-singleBar"
             onBlur={[Function]}
             onClick={[Function]}
@@ -4914,7 +4867,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         <g>
           <g
             aria-label="20. Metadata1, 30%. Metadata2, 20%."
-            data-is-focusable={true}
             id="1-singleBar"
             onBlur={[Function]}
             onClick={[Function]}
@@ -5103,13 +5055,11 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         <g>
           <g
             id="0-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={42.30769230769231}
               onBlur={[Function]}
@@ -5121,6 +5071,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -5130,7 +5081,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               aria-label="2020/04/30. Metadata2, 5%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={5.288461538461538}
               onBlur={[Function]}
@@ -5142,6 +5092,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -5152,13 +5103,11 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         <g>
           <g
             id="1-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={31.73076923076923}
               onBlur={[Function]}
@@ -5170,6 +5119,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -5179,7 +5129,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               aria-label="2020/04/30. Metadata2, 20%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={21.153846153846153}
               onBlur={[Function]}
@@ -5191,6 +5140,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -5350,13 +5300,11 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         <g>
           <g
             id="0-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={NaN}
               onBlur={[Function]}
@@ -5368,6 +5316,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -5377,7 +5326,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               aria-label="2020/04/30. Metadata2, 5%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={NaN}
               onBlur={[Function]}
@@ -5389,6 +5337,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -5399,13 +5348,11 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         <g>
           <g
             id="1-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={NaN}
               onBlur={[Function]}
@@ -5417,6 +5364,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -5426,7 +5374,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               aria-label="2020/04/30. Metadata2, 20%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={NaN}
               onBlur={[Function]}
@@ -5438,6 +5385,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -5597,13 +5545,11 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         <g>
           <g
             id="0-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={42.30769230769231}
               onBlur={[Function]}
@@ -5615,6 +5561,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -5624,7 +5571,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               aria-label="2020/04/30. Metadata2, 5%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={5.288461538461538}
               onBlur={[Function]}
@@ -5636,6 +5582,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
@@ -5646,13 +5593,11 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         <g>
           <g
             id="1-singleBar"
-            tabIndex={0}
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="aqua"
               height={31.73076923076923}
               onBlur={[Function]}
@@ -5664,6 +5609,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
@@ -5673,7 +5619,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               aria-label="2020/04/30. Metadata2, 20%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
-              data-is-focusable={true}
               fill="navy"
               height={21.153846153846153}
               onBlur={[Function]}
@@ -5685,6 +5630,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               opacity={1}
               role="img"
               rx={0}
+              tabIndex={0}
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}

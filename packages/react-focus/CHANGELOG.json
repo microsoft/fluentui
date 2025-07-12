@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 10 Jul 2025 07:19:40 GMT",
+      "tag": "@fluentui/react-focus_v8.9.25",
+      "version": "8.9.25",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "4291969387141914ba673d01e1272d002c5e0349",
+            "comment": "chore: explicitly add node globals to previously leaking types from enzyme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Jul 2025 07:21:40 GMT",
       "tag": "@fluentui/react-focus_v8.9.25",
       "version": "8.9.25",

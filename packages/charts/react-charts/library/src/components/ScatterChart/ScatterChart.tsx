@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScatterChartProps } from './ScatterChart.types';
-import { useScatterChartStyles_unstable } from './useScatterChartStyles.styles';
+import { useScatterChartStyles } from './useScatterChartStyles.styles';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { Legend, Legends } from '../Legends/index';
@@ -64,7 +64,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   let xAxisCalloutAccessibilityData: AccessibilityProps = {};
   let _xBandwidth = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
-  const classes = useScatterChartStyles_unstable(props);
+  const classes = useScatterChartStyles(props);
 
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
@@ -347,7 +347,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         </g>,
       );
     }
-
     // Removing un wanted tooltip div from DOM, when prop not provided.
     if (!props.showXAxisLablesTooltip) {
       try {

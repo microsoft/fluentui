@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-charting): Remove duplicate code to reduce size",
+  "packageName": "@fluentui/react-charting",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

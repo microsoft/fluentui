@@ -7,9 +7,16 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData, Switch } from '@fluentui/react-components';
+import { Checkbox, CheckboxOnChangeData, Switch, tokens, makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
 
 export const VerticalStackedBarDefault = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState(650);
   const [height, setHeight] = React.useState(350);
   const [showLine, setShowLine] = React.useState(true);
@@ -343,6 +350,7 @@ export const VerticalStackedBarDefault = () => {
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
             roundCorners={roundCorners}
             roundedTicks={true}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}
@@ -364,6 +372,7 @@ export const VerticalStackedBarDefault = () => {
             hideLabels={hideLabels}
             roundCorners={roundCorners}
             roundedTicks={true}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}
