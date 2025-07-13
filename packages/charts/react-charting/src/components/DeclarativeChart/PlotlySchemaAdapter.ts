@@ -999,14 +999,8 @@ export const transformPlotlyJsonToGanttChartProps = (
   let colorScale: ((value: number) => string) | undefined = undefined;
   const chartData: IGanttChartDataPoint[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
-      if (
-        input.layout?.coloraxis?.colorscale?.length &&
-        isArrayOrTypedArray(series.marker?.color) &&
-        (series.marker?.color as Color[]).length > 0 &&
-        typeof (series.marker?.color as Color[])?.[0] === 'number'
-      ) {
-        colorScale = createColorScale(input.layout, series, colorScale);
-      }
+      colorScale = createColorScale(input.layout, series, colorScale);
+
       // extract colors for each series only once
       const extractedColors = extractColor(
         input.layout?.template?.layout?.colorway,
@@ -1016,9 +1010,15 @@ export const transformPlotlyJsonToGanttChartProps = (
         isDarkTheme,
       ) as string[] | string | undefined;
       const legend = legends[index];
+      const isXDate = input.layout?.xaxis?.type === 'date' || isDateArray(series.x);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const convertXValueToNumber = (value: any) => {
+        return isInvalidValue(value) ? 0 : isXDate ? new Date(value as string | number).getTime() : (value as number);
+      };
+
       return (series.y as Datum[])
-        .map((yValue, i: number) => {
-          if (isInvalidValue(series.x?.[i]) || isInvalidValue(yValue)) {
+        .map((yVal, i: number) => {
+          if (isInvalidValue(yVal)) {
             return null;
           }
           // resolve color for each legend's bars from the colorscale or extracted colors
@@ -1030,17 +1030,15 @@ export const transformPlotlyJsonToGanttChartProps = (
               )
             : resolveColor(extractedColors, i, legend, colorMap, isDarkTheme);
           const opacity = getOpacity(series, i);
-          const startX = new Date(series.base![i] as number | string);
+          const base = convertXValueToNumber(series.base?.[i]);
+          const xVal = convertXValueToNumber(series.x?.[i]);
 
           return {
             x: {
-              start: startX,
-              end:
-                typeof series.x![i] === 'number'
-                  ? new Date(startX.getTime() + (series.x![i] as number))
-                  : new Date(startX.getTime() + new Date(series.x![i] as string).getTime()),
+              start: isXDate ? new Date(base) : base,
+              end: isXDate ? new Date(base + xVal) : base + xVal,
             },
-            y: yValue,
+            y: yVal,
             legend,
             color: rgb(color).copy({ opacity }).formatHex8() ?? color,
           } as IGanttChartDataPoint;
@@ -1052,7 +1050,7 @@ export const transformPlotlyJsonToGanttChartProps = (
   return {
     data: chartData,
     showYAxisLables: true,
-    height: input.layout?.height ?? 450,
+    height: input.layout?.height ?? 350,
     width: input.layout?.width,
     hideTickOverlap: true,
     hideLegend,

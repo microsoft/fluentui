@@ -224,9 +224,18 @@ const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean
 };
 
 const validateBarData = (data: Partial<PlotData>) => {
-  if (data.orientation === 'h' && data.base !== undefined) {
-    // do something
-  } else if (data.orientation === 'h' && isNumberArray(data.x)) {
+  if (data.orientation === 'h') {
+    if (isStringArray(data.x) && !isDateArray(data.x)) {
+      throw new Error(
+        `${UNSUPPORTED_MSG_PREFIX} ${data.type}, orientation: ${data.orientation}, string x values not supported.`,
+      );
+    }
+    if (!canMapToGantt(data) && isDateArray(data.x)) {
+      throw new Error(
+        `${UNSUPPORTED_MSG_PREFIX} ${data.type}, orientation: ${data.orientation}` +
+          `, date x values not supported in HBWA.`,
+      );
+    }
     validateSeriesData(data, false);
   } else if (!isNumberArray(data.y) && !isStringArray(data.y)) {
     throw new Error(`Non numeric or string Y values encountered, type: ${typeof data.y}`);
@@ -436,9 +445,10 @@ export const mapFluentChart = (input: any): OutputChartType => {
           return { isValid: true, traceIndex, type: 'table' };
         case 'bar':
           const barData = traceData as Partial<PlotData>;
-          if (barData.orientation === 'h' && barData.base !== undefined) {
-            return { isValid: true, traceIndex, type: 'gantt' };
-          } else if (barData.orientation === 'h' && isNumberArray(barData.x)) {
+          if (barData.orientation === 'h') {
+            if (canMapToGantt(barData)) {
+              return { isValid: true, traceIndex, type: 'gantt' };
+            }
             return { isValid: true, traceIndex, type: 'horizontalbar' };
           } else {
             if (['group', 'overlay'].includes(validSchema?.layout?.barmode!)) {
@@ -538,4 +548,8 @@ export const mapFluentChart = (input: any): OutputChartType => {
   } catch (error) {
     return { isValid: false, errorMessage: `Invalid plotly schema: ${error}` };
   }
+};
+
+const canMapToGantt = (data: Partial<PlotData>) => {
+  return isDateArray(data.base) || isNumberArray(data.base);
 };
