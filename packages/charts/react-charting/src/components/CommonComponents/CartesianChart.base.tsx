@@ -349,7 +349,6 @@ export class CartesianChartBase
             this.props.tickParams!,
             this.props.datasetForXAxisDomain!,
             culture,
-            this.props.chartType,
           ));
           break;
         default:

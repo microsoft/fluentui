@@ -500,7 +500,6 @@ export function createStringXAxis(
   tickParams: ITickParams,
   dataset: string[],
   culture?: string,
-  chartType?: ChartTypes,
 ) {
   const {
     domainNRangeValues,
@@ -552,9 +551,6 @@ export function createStringXAxis(
   }
 
   const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).tickValues(tickValues);
-  if ([ChartTypes.GanttChart].includes(chartType!)) {
-    xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
-  }
 
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
