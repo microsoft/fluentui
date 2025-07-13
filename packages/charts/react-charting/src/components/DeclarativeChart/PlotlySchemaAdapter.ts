@@ -1005,7 +1005,7 @@ export const transformPlotlyJsonToGanttChartProps = (
         (series.marker?.color as Color[]).length > 0 &&
         typeof (series.marker?.color as Color[])?.[0] === 'number'
       ) {
-        colorScale = createColorScale(input.layout, series);
+        colorScale = createColorScale(input.layout, series, colorScale);
       }
       // extract colors for each series only once
       const extractedColors = extractColor(
