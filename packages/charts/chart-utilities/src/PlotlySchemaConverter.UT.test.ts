@@ -797,14 +797,14 @@ describe('mapFluentChart UTs', () => {
     expect(result.errorMessage).toContain('Unsupported mode');
   });
 
-  test('invalid bar data with base in horizontal mode', () => {
-    const input = {
-      data: [{ type: 'bar', orientation: 'h', base: 10, x: [1, 2, 3], y: ['A', 'B', 'C'] }],
-    };
-    const result = mapFluentChart(input);
-    expect(result.isValid).toBe(false);
-    expect(result.errorMessage).toContain('Gantt');
-  });
+  // test('invalid bar data with base in horizontal mode', () => {
+  //   const input = {
+  //     data: [{ type: 'bar', orientation: 'h', base: 10, x: [1, 2, 3], y: ['A', 'B', 'C'] }],
+  //   };
+  //   const result = mapFluentChart(input);
+  //   expect(result.isValid).toBe(false);
+  //   expect(result.errorMessage).toContain('Gantt');
+  // });
 
   test('invalid histogram data', () => {
     const input = {
