@@ -357,7 +357,7 @@ function getMultiLevelD3DateFormatter(
   return formatter;
 }
 
-function getDateFormatLevel(date: Date, useUTC?: boolean) {
+export function getDateFormatLevel(date: Date, useUTC?: boolean) {
   const timeSecond = useUTC ? d3UtcSecond : d3TimeSecond;
   const timeMinute = useUTC ? d3UtcMinute : d3TimeMinute;
   const timeHour = useUTC ? d3UtcHour : d3TimeHour;

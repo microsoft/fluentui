@@ -4,7 +4,7 @@ import { ScaleLinear, ScaleBand, ScaleTime } from 'd3-scale';
 import { DirectionalHint, FocusZoneDirection, getId, getRTL } from '@fluentui/react';
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { IMargins, IChart, IImageExportOptions, IGanttChartDataPoint } from '../../types/IDataPoint';
-import { CartesianChart, IChildProps } from '../CommonComponents/index';
+import { CartesianChart } from '../CommonComponents/index';
 import { IGanttChartProps } from './GanttChart.types';
 import {
   ChartHoverCard,
@@ -24,9 +24,10 @@ import {
   calculateAppropriateBarWidth,
   getColorFromToken,
   getScalePadding,
+  getDateFormatLevel,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
-import { formatDateToLocaleString } from '@fluentui/chart-utilities';
+import { formatDateToLocaleString, getMultiLevelDateTimeFormatOptions } from '@fluentui/chart-utilities';
 
 type NumberScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
@@ -35,13 +36,12 @@ type DateScale = ScaleTime<Date, number>;
 export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.forwardRef<
   HTMLDivElement,
   IGanttChartProps
->((props, forwardedRef) => {
+>(({ useUTC = true, yAxisCategoryOrder = 'default', ...props }, forwardedRef) => {
   const _points = React.useRef<IGanttChartDataPoint[]>([]);
   const _barHeight = React.useRef<number>(0);
   const _calloutId = React.useRef<string>(getId('callout'));
   const margins = React.useRef<IMargins>({});
-  const _isRtl: boolean = getRTL();
-  const _bars = React.useRef<JSX.Element[]>([]);
+  const _bars = React.useRef<React.JSX.Element[]>([]);
   const _xAxisType = React.useRef<XAxisTypes>(XAxisTypes.DateAxis);
   const _yAxisType = React.useRef<YAxisType>(YAxisType.StringAxis);
   const _calloutAnchorPoint = React.useRef<IGanttChartDataPoint | null>(null);
@@ -76,40 +76,43 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     () => ({
       chartContainer: _cartesianChartRef.current?.chartContainer ?? null,
       toImage: (opts?: IImageExportOptions): Promise<string> => {
-        return toImage(_cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRtl, opts);
+        return toImage(_cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, getRTL(), opts);
       },
     }),
     [],
   );
 
-  function _getDomainNRangeValues(
-    points: IGanttChartDataPoint[],
-    margins: IMargins,
-    containerWidth: number,
-    chartType: ChartTypes,
-    isRTL: boolean,
-    xAxisType: XAxisTypes,
-    barWidth: number,
-    tickValues: Date[] | number[] | undefined,
-    shiftX: number,
-  ): IDomainNRange {
-    const xValues: Date[] = [];
-    points.forEach(point => {
-      xValues.push(point.x.start, point.x.end);
-    });
+  const _getDomainNRangeValues = React.useCallback(
+    (
+      points: IGanttChartDataPoint[],
+      _margins: IMargins,
+      containerWidth: number,
+      chartType: ChartTypes,
+      isRTL: boolean,
+      xAxisType: XAxisTypes,
+      barWidth: number,
+      tickValues: Date[] | number[] | undefined,
+      shiftX: number,
+    ): IDomainNRange => {
+      const xValues: Date[] = [];
+      points.forEach(point => {
+        xValues.push(point.x.start, point.x.end);
+      });
 
-    const xMin = d3Min(xValues) || 0;
-    const xMax = d3Max(xValues) || 0;
+      const xMin = d3Min(xValues) || 0;
+      const xMax = d3Max(xValues) || 0;
 
-    return {
-      dStartValue: isRTL ? xMax : xMin,
-      dEndValue: isRTL ? xMin : xMax,
-      rStartValue: margins.left! + (isRTL ? 0 : shiftX),
-      rEndValue: containerWidth - margins.right! - (isRTL ? shiftX : 0),
-    };
-  }
+      return {
+        dStartValue: isRTL ? xMax : xMin,
+        dEndValue: isRTL ? xMin : xMax,
+        rStartValue: _margins.left! + (isRTL ? 0 : shiftX),
+        rEndValue: containerWidth - _margins.right! - (isRTL ? shiftX : 0),
+      };
+    },
+    [],
+  );
 
-  function _adjustProps(): void {
+  const _adjustProps = (): void => {
     _points.current = _addDefaultColors(props.data);
     _barHeight.current = Math.max(props.barHeight || 24, 1);
 
@@ -119,13 +122,13 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     }
 
     _yAxisPadding.current = getScalePadding(props.yAxisPadding, undefined, 1 / 2);
-  }
+  };
 
-  function _getMargins(_margins: IMargins) {
+  const _getMargins = React.useCallback((_margins: IMargins) => {
     margins.current = _margins;
-  }
+  }, []);
 
-  function _renderContentForOnlyBars(point: IGanttChartDataPoint): JSX.Element {
+  const _renderContentForOnlyBars = (point: IGanttChartDataPoint): React.JSX.Element => {
     return (
       <ChartHoverCard
         XValue={point.yAxisCalloutData || point.y.toString()}
@@ -135,36 +138,201 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
         culture={props.culture}
       />
     );
-  }
+  };
 
-  function _renderCallout(props?: IGanttChartDataPoint): JSX.Element | null {
-    return props ? _renderContentForOnlyBars(props) : null;
-  }
+  const _renderCallout = (point?: IGanttChartDataPoint): React.JSX.Element | null => {
+    return point ? _renderContentForOnlyBars(point) : null;
+  };
 
-  function _getCustomizedCallout() {
+  const _getCustomizedCallout = () => {
     return props.onRenderCalloutPerDataPoint
       ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps, _renderCallout)
       : null;
-  }
+  };
 
-  function _getGraphData(
-    xScale: DateScale,
-    yScale: NumberScale | StringScale,
-    containerHeight: number,
-    containerWidth: number,
-    xAxisElement: SVGElement | null,
-    yAxisElement: SVGElement | null,
-  ) {
-    return (_bars.current = _createBars(xScale, yScale));
-  }
+  const _getFormattedXValue = React.useCallback(
+    (point: IGanttChartDataPoint): string => {
+      let formattedStartX: string;
+      let formattedEndX: string;
 
-  function _onBarHover(point: IGanttChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>): void {
-    _showCallout(mouseEvent.currentTarget, point);
-  }
+      if (_xAxisType.current === XAxisTypes.DateAxis) {
+        let lowestFormatLevel = 100;
+        let highestFormatLevel = -1;
+        _points.current.forEach(p => {
+          const formatLevel1 = getDateFormatLevel(p.x.start, useUTC);
+          const formatLevel2 = getDateFormatLevel(p.x.end, useUTC);
+          const minFormatLevel = Math.min(formatLevel1, formatLevel2);
+          const maxFormatLevel = Math.max(formatLevel1, formatLevel2);
 
-  function _onBarLeave(): void {}
+          if (maxFormatLevel > highestFormatLevel) {
+            highestFormatLevel = maxFormatLevel;
+          }
+          if (minFormatLevel < lowestFormatLevel) {
+            lowestFormatLevel = minFormatLevel;
+          }
+        });
 
-  function _handleChartMouseLeave(): void {
+        const formatOptions = getMultiLevelDateTimeFormatOptions(lowestFormatLevel, highestFormatLevel);
+        formattedStartX = formatDateToLocaleString(point.x.start, props.culture, useUTC, false, formatOptions);
+        formattedEndX = formatDateToLocaleString(point.x.end, props.culture, useUTC, false, formatOptions);
+      } else {
+        formattedStartX = point.x.start.toString();
+        formattedEndX = point.x.end.toString();
+      }
+
+      return `${formattedStartX} - ${formattedEndX}`;
+    },
+    [props.culture, useUTC],
+  );
+
+  const _getAriaLabel = React.useCallback(
+    (point: IGanttChartDataPoint): string => {
+      const xValue = point.xAxisCalloutData || _getFormattedXValue(point);
+      const yValue = point.yAxisCalloutData || point.y;
+      return point.callOutAccessibilityData?.ariaLabel || `${yValue}. ` + `${xValue}.`;
+    },
+    [_getFormattedXValue],
+  );
+
+  const _getHighlightedLegend = React.useCallback(() => {
+    return selectedLegends.length > 0 ? selectedLegends : hoveredLegend ? [hoveredLegend] : [];
+  }, [hoveredLegend, selectedLegends]);
+
+  /**
+   * This function checks if the given legend is highlighted or not.
+   * A legend can be highlighted in 2 ways:
+   * 1. selection: if the user clicks on it
+   * 2. hovering: if there is no selected legend and the user hovers over it
+   */
+  const _legendHighlighted = React.useCallback(
+    (legend: string | undefined) => {
+      return _getHighlightedLegend().includes(`${legend}`);
+    },
+    [_getHighlightedLegend],
+  );
+
+  /**
+   * This function checks if none of the legends is selected or hovered.
+   */
+  const _noLegendHighlighted = React.useCallback(() => {
+    return _getHighlightedLegend().length === 0;
+  }, [_getHighlightedLegend]);
+
+  const _showCallout = React.useCallback(
+    (target: SVGElement, point: IGanttChartDataPoint) => {
+      if (!(_noLegendHighlighted() || _legendHighlighted(point.legend)) || _calloutAnchorPoint.current === point) {
+        return;
+      }
+
+      _calloutAnchorPoint.current = point;
+      setCalloutTarget(target);
+      setCalloutVisible(true);
+      setCalloutLegend(point.legend!);
+      setCalloutColor(point.color!);
+      setXCalloutValue(point.yAxisCalloutData || point.y.toString());
+      setYCalloutValue(point.xAxisCalloutData! || _getFormattedXValue(point));
+      setDataPointCalloutProps(point);
+    },
+    [_getFormattedXValue, _legendHighlighted, _noLegendHighlighted],
+  );
+
+  const _onBarFocus = React.useCallback(
+    (point: IGanttChartDataPoint, focusEvent: React.FocusEvent<SVGElement>): void => {
+      _showCallout(focusEvent.currentTarget, point);
+    },
+    [_showCallout],
+  );
+
+  const _onBarHover = React.useCallback(
+    (point: IGanttChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>): void => {
+      _showCallout(mouseEvent.currentTarget, point);
+    },
+    [_showCallout],
+  );
+
+  const _createBars = React.useCallback(
+    (xScale: DateScale, yScale: NumberScale | StringScale): React.JSX.Element[] => {
+      const bars = _points.current.map((point: IGanttChartDataPoint, index: number) => {
+        const shouldHighlight = _noLegendHighlighted() || _legendHighlighted(point.legend);
+
+        let startColor = point.color!;
+        let endColor = startColor;
+        if (props.enableGradient) {
+          startColor = point.gradient![0];
+          endColor = point.gradient![1];
+        }
+        const gradientId = `${_gradientId.current}_${index}`;
+
+        const startX = xScale(point.x.start);
+        const endX = xScale(point.x.end);
+        const y =
+          (_yAxisType.current === YAxisType.StringAxis
+            ? (yScale as StringScale)(point.y as string)! + (yScale as StringScale).bandwidth() / 2
+            : (yScale as NumberScale)(point.y as number)) -
+          _barHeight.current / 2;
+
+        return (
+          <React.Fragment key={index}>
+            {props.enableGradient && (
+              <defs>
+                <linearGradient id={gradientId}>
+                  <stop offset="0" stopColor={startColor} />
+                  <stop offset="100%" stopColor={endColor} />
+                </linearGradient>
+              </defs>
+            )}
+            <rect
+              x={Math.min(startX, endX)}
+              y={y}
+              width={Math.abs(endX - startX)}
+              height={_barHeight.current}
+              rx={props.roundCorners ? 3 : 0}
+              fill={props.enableGradient ? `url(#${gradientId})` : startColor}
+              opacity={shouldHighlight ? 1 : 0.1}
+              onClick={point.onClick}
+              onMouseOver={event => _onBarHover(point, event)}
+              onMouseLeave={_onBarLeave}
+              onFocus={event => _onBarFocus(point, event)}
+              onBlur={_onBarLeave}
+              data-is-focusable={shouldHighlight}
+              role="img"
+              aria-label={_getAriaLabel(point)}
+            />
+          </React.Fragment>
+        );
+      });
+      return bars;
+    },
+    [
+      _getAriaLabel,
+      _legendHighlighted,
+      _noLegendHighlighted,
+      _onBarFocus,
+      _onBarHover,
+      props.enableGradient,
+      props.roundCorners,
+    ],
+  );
+
+  const _getGraphData = React.useCallback(
+    (
+      xScale: DateScale,
+      yScale: NumberScale | StringScale,
+      containerHeight: number,
+      containerWidth: number,
+      xAxisElement: SVGElement | null,
+      yAxisElement: SVGElement | null,
+    ) => {
+      return (_bars.current = _createBars(xScale, yScale));
+    },
+    [_createBars],
+  );
+
+  const _onBarLeave = (): void => {
+    // do nothing
+  };
+
+  const _handleChartMouseLeave = React.useCallback((): void => {
     _calloutAnchorPoint.current = null;
     setCalloutTarget(null);
     setCalloutVisible(false);
@@ -173,93 +341,21 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     setXCalloutValue('');
     setYCalloutValue('');
     setDataPointCalloutProps(undefined);
-  }
+  }, []);
 
-  function _onBarFocus(point: IGanttChartDataPoint, focusEvent: React.FocusEvent<SVGElement>): void {
-    _showCallout(focusEvent.currentTarget, point);
-  }
-
-  function _closeCallout() {
+  const _closeCallout = () => {
     setCalloutVisible(false);
-  }
+  };
 
-  function _showCallout(target: SVGElement, point: IGanttChartDataPoint) {
-    if (!(_noLegendHighlighted() || _legendHighlighted(point.legend)) || _calloutAnchorPoint.current === point) {
-      return;
-    }
-
-    _calloutAnchorPoint.current = point;
-    setCalloutTarget(target);
-    setCalloutVisible(true);
-    setCalloutLegend(point.legend!);
-    setCalloutColor(point.color!);
-    setXCalloutValue(point.yAxisCalloutData || point.y.toString());
-    setYCalloutValue(point.xAxisCalloutData! || _getFormattedXValue(point));
-    setDataPointCalloutProps(point);
-  }
-
-  function _createBars(xScale: DateScale, yScale: NumberScale | StringScale): JSX.Element[] {
-    const bars = _points.current.map((point: IGanttChartDataPoint, index: number) => {
-      const shouldHighlight = _noLegendHighlighted() || _legendHighlighted(point.legend);
-
-      let startColor = point.color!;
-      let endColor = startColor;
-      if (props.enableGradient) {
-        startColor = point.gradient![0];
-        endColor = point.gradient![1];
-      }
-      const gradientId = `${_gradientId.current}_${index}`;
-
-      const startX = xScale(point.x.start);
-      const endX = xScale(point.x.end);
-      const y =
-        (_yAxisType.current === YAxisType.StringAxis
-          ? (yScale as StringScale)(point.y as string)! + (yScale as StringScale).bandwidth() / 2
-          : (yScale as NumberScale)(point.y as number)) -
-        _barHeight.current / 2;
-
-      return (
-        <React.Fragment key={index}>
-          {props.enableGradient && (
-            <defs>
-              <linearGradient id={gradientId}>
-                <stop offset="0" stopColor={startColor} />
-                <stop offset="100%" stopColor={endColor} />
-              </linearGradient>
-            </defs>
-          )}
-          <rect
-            x={Math.min(startX, endX)}
-            y={y}
-            width={Math.abs(endX - startX)}
-            height={_barHeight.current}
-            rx={props.roundCorners ? 3 : 0}
-            fill={props.enableGradient ? `url(#${gradientId})` : startColor}
-            opacity={shouldHighlight ? 1 : 0.1}
-            onClick={point.onClick}
-            onMouseOver={event => _onBarHover(point, event)}
-            onMouseLeave={_onBarLeave}
-            onFocus={event => _onBarFocus(point, event)}
-            onBlur={_onBarLeave}
-            data-is-focusable={shouldHighlight}
-            role="img"
-            aria-label={_getAriaLabel(point)}
-          />
-        </React.Fragment>
-      );
-    });
-    return bars;
-  }
-
-  function _onLegendHover(legend: string): void {
+  const _onLegendHover = (legend: string): void => {
     setHoveredLegend(legend);
-  }
+  };
 
-  function _onLegendLeave(): void {
+  const _onLegendLeave = (): void => {
     setHoveredLegend('');
-  }
+  };
 
-  function _getLegendData(): JSX.Element {
+  const _getLegendData = (): React.JSX.Element => {
     const actions: ILegend[] = [];
 
     Object.keys(_legendColorMap.current).forEach((legendTitle: string) => {
@@ -291,34 +387,13 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       />
     );
     return legends;
-  }
+  };
 
-  /**
-   * This function checks if the given legend is highlighted or not.
-   * A legend can be highlighted in 2 ways:
-   * 1. selection: if the user clicks on it
-   * 2. hovering: if there is no selected legend and the user hovers over it
-   */
-  function _legendHighlighted(legend: string | undefined) {
-    return _getHighlightedLegend().includes(`${legend}`);
-  }
-
-  /**
-   * This function checks if none of the legends is selected or hovered.
-   */
-  function _noLegendHighlighted() {
-    return _getHighlightedLegend().length === 0;
-  }
-
-  function _getHighlightedLegend() {
-    return selectedLegends.length > 0 ? selectedLegends : hoveredLegend ? [hoveredLegend] : [];
-  }
-
-  function _onLegendSelectionChange(
+  const _onLegendSelectionChange = (
     _selectedLegends: string[],
     event: React.MouseEvent<HTMLButtonElement>,
     currentLegend?: ILegend,
-  ): void {
+  ): void => {
     if (props.legendProps?.canSelectMultipleLegends) {
       setSelectedLegends(_selectedLegends);
     } else {
@@ -327,69 +402,66 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     if (props.legendProps?.onChange) {
       props.legendProps.onChange(_selectedLegends, event, currentLegend);
     }
-  }
+  };
 
-  function _getAriaLabel(point: IGanttChartDataPoint): string {
-    const xValue = point.xAxisCalloutData || _getFormattedXValue(point);
-    const yValue = point.yAxisCalloutData || point.y;
-    return point.callOutAccessibilityData?.ariaLabel || `${yValue}. ` + `${xValue}.`;
-  }
-
-  function _getChartTitle(): string {
+  const _getChartTitle = (): string => {
     const { chartTitle } = props;
     return (chartTitle ? `${chartTitle}. ` : '') + `Gantt chart with ${_points.current.length} bars. `;
-  }
+  };
 
-  function _isChartEmpty(): boolean {
+  const _isChartEmpty = (): boolean => {
     return !(props.data && props.data.length > 0);
-  }
+  };
 
-  function _getYDomainMargins(containerHeight: number): IMargins {
-    _domainMargin.current = MIN_DOMAIN_MARGIN;
+  const _getYDomainMargins = React.useCallback(
+    (containerHeight: number): IMargins => {
+      _domainMargin.current = MIN_DOMAIN_MARGIN;
 
-    const ySet = new Set<string | number>();
-    _points.current.forEach((point: IGanttChartDataPoint) => {
-      ySet.add(point.y);
-    });
-    const uniqueY = Array.from(ySet);
+      const ySet = new Set<string | number>();
+      _points.current.forEach((point: IGanttChartDataPoint) => {
+        ySet.add(point.y);
+      });
+      const uniqueY = Array.from(ySet);
 
-    /** Total height available to render the bars */
-    const totalHeight =
-      containerHeight - (margins.current.top! + MIN_DOMAIN_MARGIN) - (margins.current.bottom! + MIN_DOMAIN_MARGIN);
+      /** Total height available to render the bars */
+      const totalHeight =
+        containerHeight - (margins.current.top! + MIN_DOMAIN_MARGIN) - (margins.current.bottom! + MIN_DOMAIN_MARGIN);
 
-    if (_yAxisType.current !== YAxisType.StringAxis) {
-      _barHeight.current = Math.max(
-        props.barHeight ||
-          calculateAppropriateBarWidth(uniqueY as number[] | Date[], totalHeight, _yAxisPadding.current),
-        1,
-      );
-      _domainMargin.current += _barHeight.current / 2;
-    }
+      if (_yAxisType.current !== YAxisType.StringAxis) {
+        _barHeight.current = Math.max(
+          props.barHeight ||
+            calculateAppropriateBarWidth(uniqueY as number[] | Date[], totalHeight, _yAxisPadding.current),
+          1,
+        );
+        _domainMargin.current += _barHeight.current / 2;
+      }
 
-    return {
-      ...margins.current,
-      top: margins.current.top! + _domainMargin.current,
-      bottom: margins.current.bottom! + _domainMargin.current,
-    };
-  }
+      return {
+        ...margins.current,
+        top: margins.current.top! + _domainMargin.current,
+        bottom: margins.current.bottom! + _domainMargin.current,
+      };
+    },
+    [props.barHeight],
+  );
 
-  function _getOrderedYAxisLabels() {
-    return sortAxisCategories(_mapCategoryToValues(), props.yAxisCategoryOrder);
-  }
+  const _getOrderedYAxisLabels = () => {
+    return sortAxisCategories(_mapCategoryToValues(), yAxisCategoryOrder);
+  };
 
-  function _mapCategoryToValues() {
+  const _mapCategoryToValues = () => {
     const categoryToValues: Record<string, number[]> = {};
     _points.current.forEach(point => {
       if (!categoryToValues[point.y]) {
         categoryToValues[point.y] = [];
       }
       // FIXME
-      // categoryToValues[point.y].push(point.x);
+      // categoryToValues[point.y].push(point.x.end - point.x.start);
     });
     return categoryToValues;
-  }
+  };
 
-  function _addDefaultColors(data?: IGanttChartDataPoint[]): IGanttChartDataPoint[] {
+  const _addDefaultColors = (data?: IGanttChartDataPoint[]): IGanttChartDataPoint[] => {
     _legendColorMap.current = {};
     let colorIndex = 0;
 
@@ -419,30 +491,19 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
         };
       }) ?? []
     );
-  }
+  };
 
-  function _getFormattedXValue(point: IGanttChartDataPoint): string {
-    let formattedStartX: string;
-    let formattedEndX: string;
-
-    if (_xAxisType.current === XAxisTypes.DateAxis) {
-      formattedStartX = formatDateToLocaleString(point.x.start, props.culture, props.useUTC);
-      formattedEndX = formatDateToLocaleString(point.x.end, props.culture, props.useUTC);
-    } else {
-      formattedStartX = point.x.start.toString();
-      formattedEndX = point.x.end.toString();
-    }
-
-    return `${formattedStartX} - ${formattedEndX}`;
-  }
+  const _renderBars = React.useCallback(() => {
+    return <g>{_bars.current}</g>;
+  }, []);
 
   if (!_isChartEmpty()) {
     _adjustProps();
 
     const yAxisLabels = _getOrderedYAxisLabels();
-    const legendBars: JSX.Element = _getLegendData();
+    const legendBars: React.JSX.Element = _getLegendData();
     const calloutProps = {
-      isCalloutVisible: isCalloutVisible,
+      isCalloutVisible,
       directionalHint: DirectionalHint.topAutoEdge,
       id: `toolTip${_calloutId.current}`,
       target: calloutTarget,
@@ -485,13 +546,8 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
         getGraphData={_getGraphData}
         onChartMouseLeave={_handleChartMouseLeave}
         ref={_cartesianChartRef}
-        children={(props: IChildProps) => {
-          return (
-            <>
-              <g>{_bars.current}</g>
-            </>
-          );
-        }}
+        useUTC={useUTC}
+        children={_renderBars}
       />
     );
   } else {
@@ -506,6 +562,4 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
   }
 });
 
-GanttChartBase.defaultProps = {
-  yAxisCategoryOrder: 'default',
-};
+GanttChartBase.displayName = 'GanttChart';

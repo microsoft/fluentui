@@ -72,7 +72,7 @@ describe('GanttChart rendering and behavior tests', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should truncate y-axis tick labels and display tooltip on hover when showYAxisLablesTooltip is true', async () => {
+  it('should display tooltip on truncated y-axis tick labels hover when showYAxisLablesTooltip is true', async () => {
     render(<GanttChart data={ganttDataWithLongY} showYAxisLablesTooltip={true} />);
     expect(screen.queryByText('Site Preparation')).toBeNull();
 
