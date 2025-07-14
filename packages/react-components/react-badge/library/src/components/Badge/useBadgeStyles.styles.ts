@@ -20,8 +20,8 @@ const useRootClassName = makeResetStyles({
   position: 'relative',
   fontFamily: semanticTokens.textStyleDefaultHeaderFontFamily,
   fontWeight: semanticTokens.textStyleDefaultHeaderWeight,
-  fontSize: semanticTokens.textRampLegalFontSize, //fix
-  lineHeight: semanticTokens.textRampLegalLineHeight, //fix
+  fontSize: semanticTokens.textRampLegalFontSize,
+  lineHeight: semanticTokens.textRampLegalLineHeight,
   height: '20px',
   minWidth: '20px',
   padding: `0 calc(${semanticTokens.ctrlBadgePadding} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
@@ -78,11 +78,15 @@ const useRootStyles = makeStyles({
     // Set by useRootClassName
   },
   large: {
+    fontSize: semanticTokens.textRampLgLegalFontSize,
+    lineHeight: semanticTokens.textRampLgLegalLineHeight,
     minWidth: '24px',
     height: '24px',
     padding: `0 calc(${semanticTokens.ctrlBadgeLgPadding} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
   },
   'extra-large': {
+    fontSize: semanticTokens.textRampLgLegalFontSize,
+    lineHeight: semanticTokens.textRampLgLegalLineHeight,
     minWidth: '32px',
     height: '32px',
     padding: `0 calc(${semanticTokens._ctrlBadgeXLPadding} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
