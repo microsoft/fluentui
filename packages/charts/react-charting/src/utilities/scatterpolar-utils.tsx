@@ -17,7 +17,7 @@ export function renderScatterPolarCategoryLabels({
   xAxisScale: ScaleLinear<number, number>;
   yAxisScale: ScaleLinear<number, number>;
   className: string;
-  maybeLineOptions?: { originXOffset?: number };
+  maybeLineOptions?: { originXOffset?: number; direction?: 'clockwise' | 'counterclockwise'; rotation?: number };
   minPixelGap?: number;
 }): React.JSX.Element[] {
   // 1. Aggregate all data points from all series
@@ -39,8 +39,12 @@ export function renderScatterPolarCategoryLabels({
   const labelRadius = 0.7; // You can adjust this value for more/less offset
   const numLabels = uniqueTexts.length;
 
+  // Respect schema or prop rotation and direction (default ccw, 0°)
+  const dirMultiplier = maybeLineOptions?.direction === 'clockwise' ? -1 : 1;
+  const rotationRad = ((maybeLineOptions?.rotation ?? 0) * Math.PI) / 180;
+
   uniqueTexts.forEach((text, i) => {
-    const angle = ((2 * Math.PI) / numLabels) * i;
+    const angle = rotationRad + dirMultiplier * ((2 * Math.PI) / numLabels) * i;
     const originXOffset = maybeLineOptions?.originXOffset || 0;
     const x = xAxisScale(labelRadius * Math.cos(angle) - originXOffset / 2);
     const y = yAxisScale(labelRadius * Math.sin(angle));

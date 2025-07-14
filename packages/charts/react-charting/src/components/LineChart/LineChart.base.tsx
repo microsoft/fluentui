@@ -1356,12 +1356,17 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             xAxisScale: this._xAxisScale,
             yAxisScale: yScale,
             className: classNames.markerLabel || '',
-            maybeLineOptions: (this._points[i] as Partial<ILineChartPoints>)?.lineOptions
-              ? {
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  originXOffset: (this._points[i] as any).lineOptions?.originXOffset,
-                }
-              : undefined,
+            maybeLineOptions: (() => {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const lineOpts = (this._points[i] as Partial<ILineChartPoints>)?.lineOptions as any;
+              return lineOpts
+                ? {
+                    originXOffset: lineOpts.originXOffset,
+                    direction: lineOpts.direction,
+                    rotation: lineOpts.rotation,
+                  }
+                : undefined;
+            })(),
           }),
         );
       }

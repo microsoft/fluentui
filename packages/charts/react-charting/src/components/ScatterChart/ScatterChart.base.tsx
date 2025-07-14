@@ -560,13 +560,17 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
               xAxisScale: _xAxisScale.current,
               yAxisScale: _yAxisScale.current,
               className: classNames.markerLabel || '',
-              maybeLineOptions: (_points.current?.[i] as Partial<ILineChartPoints>)?.lineOptions
-                ? {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    originXOffset: ((_points.current?.[i] as Partial<ILineChartPoints>).lineOptions as any)
-                      ?.originXOffset,
-                  }
-                : undefined,
+              maybeLineOptions: (() => {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const lineOpts = (_points.current?.[i] as Partial<ILineChartPoints>)?.lineOptions as any;
+                return lineOpts
+                  ? {
+                      originXOffset: lineOpts.originXOffset,
+                      direction: lineOpts.direction,
+                      rotation: lineOpts.rotation,
+                    }
+                  : undefined;
+              })(),
             }),
           );
         }
