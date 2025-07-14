@@ -1,26 +1,29 @@
 export type CollapseOrientation = 'horizontal' | 'vertical';
 
-export type CollapseParams = {
-  /** Time (ms) for the enter transition (expand). Defaults to the `durationNormal` value (200 ms). */
-  duration?: number;
-
-  /** Easing curve for the enter transition (expand). Defaults to the `curveEasyEaseMax` value. */
+/** Common properties shared by all collapse components */
+type CollapseBaseParams = {
+  /** Easing curve for the enter transition. Defaults to the `curveEasyEaseMax` value. */
   easing?: string;
 
-  /** Time (ms) for the exit transition (collapse). Defaults to the `duration` param for symmetry. */
-  exitDuration?: number;
-
-  /** Easing curve for the exit transition (collapse). Defaults to the `easing` param for symmetry. */
+  /** Easing curve for the exit transition. Defaults to the `easing` param for symmetry. */
   exitEasing?: string;
-
-  /** Whether to animate the opacity. Defaults to `true`. */
-  animateOpacity?: boolean;
 
   /** The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height. */
   orientation?: CollapseOrientation;
+
+  /** Whether to animate the opacity. Defaults to `true`. */
+  animateOpacity?: boolean;
 };
 
-export type CollapseDelayedParams = {
+export type CollapseParams = CollapseBaseParams & {
+  /** Time (ms) for the enter transition (expand). Defaults to the `durationNormal` value (200 ms). */
+  duration?: number;
+
+  /** Time (ms) for the exit transition (collapse). Defaults to the `duration` param for symmetry. */
+  exitDuration?: number;
+};
+
+export type CollapseDelayedParams = CollapseBaseParams & {
   /** Time (ms) for the size expand. Defaults to the `durationNormal` value (200 ms). */
   sizeDuration?: number;
 
@@ -38,16 +41,4 @@ export type CollapseDelayedParams = {
 
   /** Time (ms) between the fade-out start and the size collapse start. Defaults to `0`. */
   exitDelay?: number;
-
-  /** Easing curve for the enter transition, shared by size and opacity. Defaults to the `curveEasyEaseMax` value. */
-  easing?: string;
-
-  /** Easing curve for the exit transition, shared by size and opacity. Defaults to the `easing` param. */
-  exitEasing?: string;
-
-  /** Whether to animate the opacity. Defaults to `true`. */
-  animateOpacity?: boolean;
-
-  /** The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height. */
-  orientation?: CollapseOrientation;
 };
