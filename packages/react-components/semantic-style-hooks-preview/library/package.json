@@ -40,6 +40,7 @@
     "@fluentui/react-menu": "^9.16.6",
     "@fluentui/react-message-bar": "^9.4.7",
     "@fluentui/react-positioning": "^9.16.7",
+    "@fluentui/react-persona": "^9.3.6",
     "@fluentui/react-progress": "^9.2.6",
     "@fluentui/react-provider": "^9.20.6",
     "@fluentui/react-radio": "^9.3.6",

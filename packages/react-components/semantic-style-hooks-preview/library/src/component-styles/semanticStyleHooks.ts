@@ -59,6 +59,7 @@ import {
 } from './Menu';
 import { useSemanticMenuGroupHeaderStyles } from './Menu';
 import { useSemanticRadioStyles } from './Radio';
+import { useSemanticPersonaStyles } from './Persona';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -131,4 +132,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useMenuSplitGroupStyles_unstable: useSemanticMenuSplitGroupStyles,
   // Radio styles
   useRadioStyles_unstable: useSemanticRadioStyles,
+  // Persona styles
+  usePersonaStyles_unstable: useSemanticPersonaStyles,
 };
