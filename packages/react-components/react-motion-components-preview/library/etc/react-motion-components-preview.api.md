@@ -19,12 +19,6 @@ export const CollapseRelaxed: PresenceComponent<CollapseParams>;
 export const CollapseSnappy: PresenceComponent<CollapseParams>;
 
 // @public
-export const createCollapseDelayedPresence: PresenceMotionFnCreator<CollapseDelayedVariantParams, CollapseRuntimeParams>;
-
-// @public
-export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantParams, CollapseRuntimeParams>;
-
-// @public
 export const Fade: PresenceComponent<FadeVariantParams>;
 
 // @public (undocumented)
