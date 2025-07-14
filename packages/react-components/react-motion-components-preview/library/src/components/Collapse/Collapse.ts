@@ -57,22 +57,16 @@ function createCollapseAtoms({
     exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitOpacityDuration, easing: exitEasing }));
   }
 
-  const sizeExitConfig = { orientation, duration: exitSizeDuration, easing: exitEasing, element };
-  const whitespaceExitConfig = {
-    direction: 'exit' as const,
-    orientation,
-    duration: exitSizeDuration,
-    easing: exitEasing,
-  };
-
-  if (exitDelay > 0) {
-    exitAtoms.push(
-      { ...sizeExitAtom(sizeExitConfig), delay: exitDelay },
-      { ...whitespaceAtom(whitespaceExitConfig), delay: exitDelay },
-    );
-  } else {
-    exitAtoms.push(sizeExitAtom(sizeExitConfig), whitespaceAtom(whitespaceExitConfig));
-  }
+  exitAtoms.push(
+    sizeExitAtom({ orientation, duration: exitSizeDuration, easing: exitEasing, element, delay: exitDelay }),
+    whitespaceAtom({
+      direction: 'exit',
+      orientation,
+      duration: exitSizeDuration,
+      easing: exitEasing,
+      delay: exitDelay,
+    }),
+  );
 
   return {
     enter: enterAtoms,
