@@ -138,7 +138,7 @@ export const Directions = () => {
               );
             }
             return (
-              <div key={index} className={classes.centerSpace}>
+              <div key="center" className={classes.centerSpace}>
                 <h4>Click</h4>
               </div>
             );
