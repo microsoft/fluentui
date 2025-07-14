@@ -37,16 +37,11 @@ function createCollapseAtoms({
   ];
   // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
   if (animateOpacity) {
-    const fadeEnterAtom = fadeAtom({ direction: 'enter', duration: opacityDuration, easing });
-    if (delay > 0) {
-      enterAtoms.push({
-        ...fadeEnterAtom,
-        delay,
-        fill: 'both',
-      });
-    } else {
-      enterAtoms.push(fadeEnterAtom);
-    }
+    enterAtoms.push({
+      ...fadeAtom({ direction: 'enter', duration: opacityDuration, easing }),
+      delay,
+      fill: 'both',
+    });
   }
 
   // ----- EXIT -----
