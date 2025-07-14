@@ -7,6 +7,7 @@
 import { AccordionHeaderState } from '@fluentui/react-accordion';
 import { AvatarState } from '@fluentui/react-avatar';
 import { ButtonState } from '@fluentui/react-button';
+import { CheckboxState } from '@fluentui/react-checkbox';
 import { CompoundButtonState } from '@fluentui/react-button';
 import { DialogActionsState } from '@fluentui/react-dialog';
 import { DialogBodyState } from '@fluentui/react-dialog';
@@ -64,6 +65,9 @@ export const useSemanticAvatarStyles: (_state: unknown) => AvatarState;
 
 // @public (undocumented)
 export const useSemanticButtonStyles: (_state: unknown) => ButtonState;
+
+// @public
+export const useSemanticCheckboxStyles: (_state: unknown) => CheckboxState;
 
 // @public (undocumented)
 export const useSemanticCompoundButtonStyles: (_state: unknown) => CompoundButtonState;
