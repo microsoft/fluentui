@@ -40,8 +40,6 @@ const useClasses = makeStyles({
     gridTemplateColumns: 'repeat(3, 1fr)',
     gridTemplateRows: 'repeat(3, 1fr)',
     gap: '6px',
-    // width: '150px',
-    // height: '150px',
   },
   directionButton: {
     height: '44px',
