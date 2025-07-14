@@ -26,6 +26,7 @@ import {
   IVerticalBarChartDataPoint,
   ISankeyChartData,
   ILineChartLineOptions,
+  IGanttChartDataPoint,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -73,6 +74,7 @@ import { getOpacity, extractColor, resolveColor, createColorScale } from './Plot
 import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
+import { IGanttChartProps } from '../GanttChart/GanttChart.types';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
 export const SINGLE_REPEAT = 'repeat(1, 1fr)';
@@ -981,6 +983,81 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundCorners: true,
+    ...getTitles(input.layout),
+    ...getAxisCategoryOrderProps(input.data, input.layout),
+  };
+};
+
+export const transformPlotlyJsonToGanttChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): IGanttChartProps => {
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  let colorScale: ((value: number) => string) | undefined = undefined;
+  const chartData: IGanttChartDataPoint[] = input.data
+    .map((series: Partial<PlotData>, index: number) => {
+      colorScale = createColorScale(input.layout, series, colorScale);
+
+      // extract colors for each series only once
+      const extractedColors = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.marker?.color,
+        colorMap,
+        isDarkTheme,
+      ) as string[] | string | undefined;
+      const legend = legends[index];
+      const isXDate = input.layout?.xaxis?.type === 'date' || isDateArray(series.x);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const convertXValueToNumber = (value: any) => {
+        return isInvalidValue(value) ? 0 : isXDate ? new Date(value as string | number).getTime() : (value as number);
+      };
+
+      return (series.y as Datum[])
+        .map((yVal, i: number) => {
+          if (isInvalidValue(yVal)) {
+            return null;
+          }
+          // resolve color for each legend's bars from the colorscale or extracted colors
+          const color = colorScale
+            ? colorScale(
+                isArrayOrTypedArray(series.marker?.color)
+                  ? ((series.marker?.color as Color[])?.[i % (series.marker?.color as Color[]).length] as number)
+                  : 0,
+              )
+            : resolveColor(extractedColors, i, legend, colorMap, isDarkTheme);
+          const opacity = getOpacity(series, i);
+          const base = convertXValueToNumber(series.base?.[i]);
+          const xVal = convertXValueToNumber(series.x?.[i]);
+
+          return {
+            x: {
+              start: isXDate ? new Date(base) : base,
+              end: isXDate ? new Date(base + xVal) : base + xVal,
+            },
+            y: yVal,
+            legend,
+            color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+          } as IGanttChartDataPoint;
+        })
+        .filter(point => point !== null) as IGanttChartDataPoint[];
+    })
+    .flat();
+
+  return {
+    data: chartData,
+    showYAxisLables: true,
+    height: input.layout?.height ?? 350,
+    width: input.layout?.width,
+    hideTickOverlap: true,
+    hideLegend,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
+    roundCorners: true,
+    useUTC: false,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
   };

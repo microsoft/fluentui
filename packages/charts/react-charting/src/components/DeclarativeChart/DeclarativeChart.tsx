@@ -30,6 +30,7 @@ import {
   NON_PLOT_KEY_PREFIX,
   SINGLE_REPEAT,
   transformPlotlyJsonToFunnelChartProps,
+  transformPlotlyJsonToGanttChartProps,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { LineChart } from '../LineChart/index';
@@ -45,6 +46,7 @@ import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveCo
 import { ScatterChart } from '../ScatterChart/index';
 import { ChartTable } from '../ChartTable/index';
 import { FunnelChart } from '../FunnelChart/FunnelChart';
+import { GanttChart } from '../GanttChart/index';
 import { ILegendsProps, Legends } from '../Legends/index';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
@@ -61,6 +63,7 @@ const ResponsiveScatterChart = withResponsiveContainer(ScatterChart);
 const ResponsiveChartTable = withResponsiveContainer(ChartTable);
 // Removing responsive wrapper for FunnelChart as responsive container is not working with FunnelChart
 //const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
+const ResponsiveGanttChart = withResponsiveContainer(GanttChart);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
 const DEFAULT_XAXIS = 'x';
@@ -219,6 +222,10 @@ type ChartTypeMap = {
     transformer: typeof transformPlotlyJsonToFunnelChartProps;
     renderer: typeof FunnelChart;
   } & PreTransformHooks;
+  gantt: {
+    transformer: typeof transformPlotlyJsonToGanttChartProps;
+    renderer: typeof ResponsiveGanttChart;
+  } & PreTransformHooks;
   fallback: {
     transformer: typeof transformPlotlyJsonToVSBCProps;
     renderer: typeof ResponsiveVerticalStackedBarChart;
@@ -284,6 +291,10 @@ const chartMap: ChartTypeMap = {
   funnel: {
     transformer: transformPlotlyJsonToFunnelChartProps,
     renderer: FunnelChart,
+  },
+  gantt: {
+    transformer: transformPlotlyJsonToGanttChartProps,
+    renderer: ResponsiveGanttChart,
   },
   fallback: {
     transformer: transformPlotlyJsonToVSBCProps,
