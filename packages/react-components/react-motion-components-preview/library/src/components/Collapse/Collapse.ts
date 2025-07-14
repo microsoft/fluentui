@@ -9,6 +9,87 @@ import type { CollapseDelayedParams, CollapseParams } from './collapse-types';
 import { sizeEnterAtom, sizeExitAtom, whitespaceAtom } from './collapse-atoms';
 import { fadeAtom } from '../../atoms/fade-atom';
 
+/** Internal helper to create collapse atoms with shared logic */
+function createCollapseAtoms({
+  element,
+  orientation,
+  animateOpacity,
+
+  // Enter params
+  sizeDuration,
+  opacityDuration = sizeDuration,
+  easing,
+  delay = 0,
+
+  // Exit params
+  exitSizeDuration,
+  exitOpacityDuration = exitSizeDuration,
+  exitEasing,
+  exitDelay = 0,
+}: {
+  element: HTMLElement;
+  orientation: 'horizontal' | 'vertical';
+  animateOpacity: boolean;
+  sizeDuration: number;
+  opacityDuration?: number;
+  easing: string;
+  delay?: number;
+  exitSizeDuration: number;
+  exitOpacityDuration?: number;
+  exitEasing: string;
+  exitDelay?: number;
+}) {
+  // ----- ENTER -----
+  // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
+  const enterAtoms: AtomMotion[] = [
+    sizeEnterAtom({ orientation, duration: sizeDuration, easing, element }),
+    whitespaceAtom({ direction: 'enter', orientation, duration: sizeDuration, easing }),
+  ];
+  // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
+  if (animateOpacity) {
+    const fadeEnterAtom = fadeAtom({ direction: 'enter', duration: opacityDuration, easing });
+    if (delay > 0) {
+      enterAtoms.push({
+        ...fadeEnterAtom,
+        delay: delay,
+        fill: 'both',
+      });
+    } else {
+      enterAtoms.push(fadeEnterAtom);
+    }
+  }
+
+  // ----- EXIT -----
+  // The exit transition is an array of up to 3 motion atoms: opacity, size and whitespace.
+  const exitAtoms: AtomMotion[] = [];
+  // Fade out only if animateOpacity is true. Otherwise, leave opacity unaffected.
+  if (animateOpacity) {
+    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitOpacityDuration, easing: exitEasing }));
+  }
+
+  const sizeExitConfig = { orientation, duration: exitSizeDuration, easing: exitEasing, element };
+  const whitespaceExitConfig = {
+    direction: 'exit' as const,
+    orientation,
+    duration: exitSizeDuration,
+    easing: exitEasing,
+  };
+
+  if (exitDelay > 0) {
+    exitAtoms.push(
+      { ...sizeExitAtom(sizeExitConfig), delay: exitDelay },
+      { ...whitespaceAtom(whitespaceExitConfig), delay: exitDelay },
+    );
+  } else {
+    exitAtoms.push(sizeExitAtom(sizeExitConfig), whitespaceAtom(whitespaceExitConfig));
+  }
+
+  return {
+    enter: enterAtoms,
+    exit: exitAtoms,
+  };
+}
+
 /** Define a presence motion for collapse/expand */
 const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   element,
@@ -19,33 +100,17 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   animateOpacity = true,
   orientation = 'vertical',
 }) => {
-  // ----- ENTER -----
-  // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
-  const enterAtoms: AtomMotion[] = [
-    sizeEnterAtom({ orientation, duration, easing, element }),
-    whitespaceAtom({ direction: 'enter', orientation, duration, easing }),
-  ];
-  // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
-  if (animateOpacity) {
-    enterAtoms.push(fadeAtom({ direction: 'enter', duration, easing }));
-  }
-
-  // ----- EXIT -----
-  // The exit transition is an array of up to 3 motion atoms: opacity, size and whitespace.
-  const exitAtoms: AtomMotion[] = [];
-  // Fade out only if animateOpacity is true. Otherwise, leave opacity unaffected.
-  if (animateOpacity) {
-    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing }));
-  }
-  exitAtoms.push(
-    sizeExitAtom({ orientation, duration: exitDuration, easing: exitEasing, element }),
-    whitespaceAtom({ direction: 'exit', orientation, duration: exitDuration, easing: exitEasing }),
-  );
-
-  return {
-    enter: enterAtoms,
-    exit: exitAtoms,
-  };
+  return createCollapseAtoms({
+    element,
+    orientation,
+    animateOpacity,
+    sizeDuration: duration,
+    opacityDuration: duration,
+    easing,
+    exitSizeDuration: exitDuration,
+    exitOpacityDuration: exitDuration,
+    exitEasing,
+  });
 };
 
 /** Define a presence motion for collapse/expand that can stagger the size and opacity motions by a given delay */
@@ -62,43 +127,19 @@ const collapseDelayedPresenceFn: PresenceMotionFn<CollapseDelayedParams> = ({
   animateOpacity = true,
   orientation = 'vertical',
 }) => {
-  // ----- ENTER -----
-  // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
-  const enterAtoms: AtomMotion[] = [
-    sizeEnterAtom({ orientation, duration: sizeDuration, easing, element }),
-    whitespaceAtom({ direction: 'enter', orientation, duration: sizeDuration, easing }),
-  ];
-  // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
-  if (animateOpacity) {
-    enterAtoms.push({
-      ...fadeAtom({ direction: 'enter', duration: opacityDuration, easing }),
-      delay: delay,
-      fill: 'both',
-    });
-  }
-
-  // ----- EXIT -----
-  // The exit transition is an array of up to 3 motion atoms: opacity, size and whitespace.
-  const exitAtoms: AtomMotion[] = [];
-  // Fade out only if animateOpacity is true. Otherwise, leave opacity unaffected.
-  if (animateOpacity) {
-    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitOpacityDuration, easing: exitEasing }));
-  }
-  exitAtoms.push(
-    sizeExitAtom({ orientation, duration: exitSizeDuration, easing: exitEasing, element, delay: exitDelay }),
-    whitespaceAtom({
-      direction: 'exit',
-      orientation,
-      duration: exitSizeDuration,
-      easing: exitEasing,
-      delay: exitDelay,
-    }),
-  );
-
-  return {
-    enter: enterAtoms,
-    exit: exitAtoms,
-  };
+  return createCollapseAtoms({
+    element,
+    orientation,
+    animateOpacity,
+    sizeDuration,
+    opacityDuration,
+    easing,
+    delay: delay,
+    exitSizeDuration,
+    exitOpacityDuration,
+    exitEasing,
+    exitDelay: exitDelay,
+  });
 };
 
 /** A React component that applies collapse/expand transitions to its children. */
