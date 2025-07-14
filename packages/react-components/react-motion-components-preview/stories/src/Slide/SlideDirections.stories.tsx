@@ -63,6 +63,7 @@ const useClasses = makeStyles({
     minWidth: '300px',
     minHeight: '200px',
     flex: '1 1 300px',
+    overflow: 'hidden',
   },
   card: {
     padding: '20px',
