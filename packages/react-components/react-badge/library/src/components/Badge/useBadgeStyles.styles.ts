@@ -1,7 +1,8 @@
 import { shorthands, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
 import type { BadgeSlots, BadgeState } from './Badge.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const badgeClassNames: SlotClassNames<BadgeSlots> = {
   root: 'fui-Badge',
@@ -10,7 +11,6 @@ export const badgeClassNames: SlotClassNames<BadgeSlots> = {
 
 // The text content of the badge has additional horizontal padding, but there is no `text` slot to add that padding to.
 // Instead, add extra padding to the root, and a negative margin on the icon to "remove" the extra padding on the icon.
-const textPadding = tokens.spacingHorizontalXXS;
 
 const useRootClassName = makeResetStyles({
   display: 'inline-flex',
@@ -18,13 +18,16 @@ const useRootClassName = makeResetStyles({
   alignItems: 'center',
   justifyContent: 'center',
   position: 'relative',
-  ...typographyStyles.caption1Strong,
+  fontFamily: semanticTokens.textStyleDefaultHeaderFontFamily,
+  fontWeight: semanticTokens.textStyleDefaultHeaderWeight,
+  fontSize: semanticTokens.textRampLegalFontSize, //fix
+  lineHeight: semanticTokens.textRampLegalLineHeight, //fix
   height: '20px',
   minWidth: '20px',
-  padding: `0 calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
-  borderRadius: tokens.borderRadiusCircular,
+  padding: `0 calc(${semanticTokens.ctrlBadgePadding} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
+  borderRadius: semanticTokens.cornerCircular,
   // Use a transparent stroke (rather than no border) so the border is visible in high contrast
-  borderColor: tokens.colorTransparentStroke,
+  borderColor: semanticTokens._ctrlBadgeNullColor,
 
   '::after': {
     content: '""',
@@ -35,14 +38,17 @@ const useRootClassName = makeResetStyles({
     right: 0,
     borderStyle: 'solid',
     borderColor: 'inherit',
-    borderWidth: tokens.strokeWidthThin,
+    borderWidth: semanticTokens.strokeWidthDefault,
     borderRadius: 'inherit',
   },
 });
 
 const useRootStyles = makeStyles({
   fontSmallToTiny: {
-    ...typographyStyles.caption2Strong,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontWeight: semanticTokens._ctrlBadgeTextStyleSemiBoldWeight,
+    fontSize: semanticTokens.textRampSmLegalFontSize,
+    lineHeight: semanticTokens.textRampSmLegalLineHeight,
   },
 
   // size
@@ -66,7 +72,7 @@ const useRootStyles = makeStyles({
   small: {
     minWidth: '16px',
     height: '16px',
-    padding: `0 calc(${tokens.spacingHorizontalXXS} + ${textPadding})`,
+    padding: `0 calc(${semanticTokens.ctrlBadgeSmPadding} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
   },
   medium: {
     // Set by useRootClassName
@@ -74,19 +80,19 @@ const useRootStyles = makeStyles({
   large: {
     minWidth: '24px',
     height: '24px',
-    padding: `0 calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
+    padding: `0 calc(${semanticTokens.ctrlBadgeLgPadding} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
   },
   'extra-large': {
     minWidth: '32px',
     height: '32px',
-    padding: `0 calc(${tokens.spacingHorizontalSNudge} + ${textPadding})`,
+    padding: `0 calc(${semanticTokens._ctrlBadgeXLPadding} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
   },
 
   // shape
 
-  square: { borderRadius: tokens.borderRadiusNone },
-  rounded: { borderRadius: tokens.borderRadiusMedium },
-  roundedSmallToTiny: { borderRadius: tokens.borderRadiusSmall },
+  square: { borderRadius: semanticTokens.cornerZero },
+  rounded: { borderRadius: semanticTokens.ctrlBadgeCorner },
+  roundedSmallToTiny: { borderRadius: semanticTokens._ctrlBadgeSmallTinyCorner },
   circular: {
     // Set by useRootClassName
   },
@@ -106,36 +112,36 @@ const useRootStyles = makeStyles({
     // Set by useRootClassName
   },
   'filled-brand': {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: semanticTokens.statusBrandBackground,
+    color: semanticTokens.statusBrandForeground,
   },
   'filled-danger': {
-    backgroundColor: tokens.colorPaletteRedBackground3,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: semanticTokens.statusDangerBackground,
+    color: semanticTokens.statusDangerForeground,
   },
   'filled-important': {
-    backgroundColor: tokens.colorNeutralForeground1,
-    color: tokens.colorNeutralBackground1,
+    backgroundColor: semanticTokens.statusImportantBackground,
+    color: semanticTokens.statusImportantForeground,
   },
   'filled-informative': {
-    backgroundColor: tokens.colorNeutralBackground5,
-    color: tokens.colorNeutralForeground3,
+    backgroundColor: semanticTokens.statusInformativeBackground,
+    color: semanticTokens.statusInformativeForeground,
   },
   'filled-severe': {
-    backgroundColor: tokens.colorPaletteDarkOrangeBackground3,
+    backgroundColor: tokens.colorPaletteDarkOrangeBackground3, //come back to this one
     color: tokens.colorNeutralForegroundOnBrand,
   },
   'filled-subtle': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: tokens.colorNeutralBackground1, //come back to this one
     color: tokens.colorNeutralForeground1,
   },
   'filled-success': {
-    backgroundColor: tokens.colorPaletteGreenBackground3,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: semanticTokens.statusSuccessBackground,
+    color: semanticTokens.statusSuccessForeground,
   },
   'filled-warning': {
-    backgroundColor: tokens.colorPaletteYellowBackground3,
-    color: tokens.colorNeutralForeground1Static,
+    backgroundColor: semanticTokens._ctrlBadgeStatusWarningBackground,
+    color: semanticTokens.statusWarningForeground,
   },
 
   // appearance: ghost
@@ -144,28 +150,28 @@ const useRootStyles = makeStyles({
     // No shared colors between ghost appearances
   },
   'ghost-brand': {
-    color: tokens.colorBrandForeground1,
+    color: semanticTokens.statusBrandTintForeground,
   },
   'ghost-danger': {
-    color: tokens.colorPaletteRedForeground3,
+    color: semanticTokens.statusDangerTintForeground,
   },
   'ghost-important': {
-    color: tokens.colorNeutralForeground1,
+    color: semanticTokens.statusImportantTintForeground,
   },
   'ghost-informative': {
-    color: tokens.colorNeutralForeground3,
+    color: semanticTokens.statusInformativeTintForeground,
   },
   'ghost-severe': {
-    color: tokens.colorPaletteDarkOrangeForeground3,
+    color: tokens.colorPaletteDarkOrangeForeground3, //come back to this one
   },
   'ghost-subtle': {
-    color: tokens.colorNeutralForegroundStaticInverted,
+    color: tokens.colorNeutralForegroundStaticInverted, //come back to this one
   },
   'ghost-success': {
-    color: tokens.colorPaletteGreenForeground3,
+    color: semanticTokens._ctrlBadgeStatusSuccessTintForeground3,
   },
   'ghost-warning': {
-    color: tokens.colorPaletteYellowForeground2,
+    color: semanticTokens._ctrlBadgeStatusWarningTintForeground2,
   },
 
   // appearance: outline
@@ -174,32 +180,32 @@ const useRootStyles = makeStyles({
     ...shorthands.borderColor('currentColor'),
   },
   'outline-brand': {
-    color: tokens.colorBrandForeground1,
+    color: semanticTokens.statusBrandTintForeground,
   },
   'outline-danger': {
-    color: tokens.colorPaletteRedForeground3,
-    ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    color: semanticTokens.statusDangerTintForeground,
+    ...shorthands.borderColor(semanticTokens.statusDangerStroke),
   },
   'outline-important': {
-    color: tokens.colorNeutralForeground3,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
+    color: semanticTokens.statusImportantTintForeground,
+    ...shorthands.borderColor(semanticTokens.statusImportantStroke),
   },
   'outline-informative': {
-    color: tokens.colorNeutralForeground3,
-    ...shorthands.borderColor(tokens.colorNeutralStroke2),
+    color: semanticTokens.statusInformativeTintForeground,
+    ...shorthands.borderColor(semanticTokens.statusInformativeStroke),
   },
   'outline-severe': {
-    color: tokens.colorPaletteDarkOrangeForeground3,
+    color: tokens.colorPaletteDarkOrangeForeground3, //come back to this one
   },
   'outline-subtle': {
-    color: tokens.colorNeutralForegroundStaticInverted,
+    color: tokens.colorNeutralForegroundStaticInverted, //come back to this one
   },
   'outline-success': {
-    color: tokens.colorPaletteGreenForeground3,
-    ...shorthands.borderColor(tokens.colorPaletteGreenBorder2),
+    color: semanticTokens._ctrlBadgeStatusSuccessTintForeground3,
+    ...shorthands.borderColor(semanticTokens.statusSuccessStroke),
   },
   'outline-warning': {
-    color: tokens.colorPaletteYellowForeground2,
+    color: semanticTokens._ctrlBadgeStatusWarningTintForeground2,
   },
 
   // appearance: tint
@@ -208,67 +214,69 @@ const useRootStyles = makeStyles({
     // No shared colors between tint appearances
   },
   'tint-brand': {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
-    ...shorthands.borderColor(tokens.colorBrandStroke2),
+    backgroundColor: semanticTokens.statusBrandTintBackground,
+    color: semanticTokens._ctrlBadgeStatusBrandTintForeground,
+    ...shorthands.borderColor(semanticTokens.statusBrandTintStroke),
   },
   'tint-danger': {
-    backgroundColor: tokens.colorPaletteRedBackground1,
-    color: tokens.colorPaletteRedForeground1,
-    ...shorthands.borderColor(tokens.colorPaletteRedBorder1),
+    backgroundColor: semanticTokens._ctrlBadgeStatusDangerTintBackground,
+    color: semanticTokens._ctrlBadgeStatusDangerTintForeground,
+    ...shorthands.borderColor(semanticTokens._ctrlBadgeStatusDangerTintStroke),
   },
   'tint-important': {
-    backgroundColor: tokens.colorNeutralForeground3,
-    color: tokens.colorNeutralBackground1,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    backgroundColor: semanticTokens._ctrlBadgeStatusImportantTintBackground,
+    color: semanticTokens._ctrlBadgeStatusImportantTintForeground,
+    ...shorthands.borderColor(semanticTokens.statusImportantTintStroke),
   },
   'tint-informative': {
-    backgroundColor: tokens.colorNeutralBackground4,
-    color: tokens.colorNeutralForeground3,
-    ...shorthands.borderColor(tokens.colorNeutralStroke2),
+    backgroundColor: semanticTokens.statusInformativeTintBackground,
+    color: semanticTokens.statusInformativeTintForeground,
+    ...shorthands.borderColor(semanticTokens._ctrlBadgeStatusInformativeTintStroke),
   },
   'tint-severe': {
+    //come back to this
     backgroundColor: tokens.colorPaletteDarkOrangeBackground1,
     color: tokens.colorPaletteDarkOrangeForeground1,
     ...shorthands.borderColor(tokens.colorPaletteDarkOrangeBorder1),
   },
   'tint-subtle': {
+    //come back to this
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground3,
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
   },
   'tint-success': {
-    backgroundColor: tokens.colorPaletteGreenBackground1,
-    color: tokens.colorPaletteGreenForeground1,
-    ...shorthands.borderColor(tokens.colorPaletteGreenBorder1),
+    backgroundColor: semanticTokens._ctrlBadgeStatusSuccessTintBackground,
+    color: semanticTokens._ctrlBadgeStatusSuccessTintForeground,
+    ...shorthands.borderColor(semanticTokens._ctrlBadgeStatusSuccessTintStroke),
   },
   'tint-warning': {
-    backgroundColor: tokens.colorPaletteYellowBackground1,
-    color: tokens.colorPaletteYellowForeground1,
-    ...shorthands.borderColor(tokens.colorPaletteYellowBorder1),
+    backgroundColor: semanticTokens._ctrlBadgeStatusWarningTintBackground,
+    color: semanticTokens._ctrlBadgeStatusWarningTintForeground,
+    ...shorthands.borderColor(semanticTokens._ctrlBadgeStatusWarningTintStroke),
   },
 });
 
 const useIconRootClassName = makeResetStyles({
   display: 'flex',
   lineHeight: '1',
-  margin: `0 calc(-1 * ${textPadding})`, // Remove text padding added to root
+  margin: `0 calc(-1 * ${semanticTokens._ctrlBadgePaddingTextSide})`, // Remove text padding added to root
   fontSize: '12px',
 });
 
 const useIconStyles = makeStyles({
   beforeText: {
-    marginRight: `calc(${tokens.spacingHorizontalXXS} + ${textPadding})`,
+    marginRight: `calc(${semanticTokens._ctrlBadgePaddingRightSide} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
   },
   afterText: {
-    marginLeft: `calc(${tokens.spacingHorizontalXXS} + ${textPadding})`,
+    marginLeft: `calc(${semanticTokens._ctrlBadgePaddingLeftSide} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
   },
 
   beforeTextXL: {
-    marginRight: `calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
+    marginRight: `calc(${semanticTokens._ctrlBadgePaddingRightSideXL} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
   },
   afterTextXL: {
-    marginLeft: `calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
+    marginLeft: `calc(${semanticTokens._ctrlBadgePaddingLeftSideXL} + ${semanticTokens._ctrlBadgePaddingTextSide})`,
   },
 
   // size

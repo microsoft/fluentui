@@ -1,3 +1,5 @@
+import { _ctrlBadgeStatusSuccessTintForeground } from './legacyVariant/tokens';
+
 export type LegacyFluentVariantValue =
   | {
       originalToken: string;
@@ -80,6 +82,62 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _ctrlAvatarPresenceBadgeStrokeWidthSm: {
     f2Token: 'strokeWidthThin',
     originalToken: 'ctrlAvatarPresenceBadgeStrokeWidth',
+  },
+  _ctrlBadgeNullColor: {
+    f2Token: 'colorTransparentStroke',
+    originalToken: 'nullColor',
+  },
+  _ctrlBadgePaddingLeftSide: {
+    f2Token: 'spacingHorizontalXXS',
+    originalToken: 'paddingCtrlTextSide',
+  },
+  _ctrlBadgePaddingLeftSideXL: {
+    f2Token: 'spacingHorizontalXS',
+    originalToken: 'paddingCtrlTextSide',
+  },
+  _ctrlBadgePaddingRightSide: {
+    f2Token: 'spacingHorizontalXXS',
+    originalToken: 'paddingCtrlTextSide',
+  },
+  _ctrlBadgePaddingRightSideXL: {
+    f2Token: 'spacingHorizontalXS',
+    originalToken: 'paddingCtrlTextSide',
+  },
+  _ctrlBadgePaddingTextSide: {
+    f2Token: 'spacingHorizontalXXS',
+    originalToken: 'paddingCtrlTextSide',
+  },
+  _ctrlBadgeSmallTinyCorner: {
+    f2Token: 'borderRadiusSmall',
+    originalToken: 'ctrlBadgeCorner',
+  },
+  _ctrlBadgeStatusBrandTintForeground: {
+    f2Token: 'colorBrandForeground2',
+    originalToken: 'statusBrandTintForeground',
+  },
+  _ctrlBadgeStatusDangerTintForeground: {
+    f2Token: 'colorPaletteRedForeground1',
+    originalToken: 'statusDangerTintForeground',
+  },
+  _ctrlBadgeStatusImportantTintForeground: {
+    f2Token: 'colorNeutralBackground1',
+    originalToken: 'statusImportantTintForeground',
+  },
+  _ctrlBadgeStatusSuccessTintForeground: {
+    f2Token: 'colorPaletteGreenForeground1',
+    originalToken: 'statusSuccessTintForeground',
+  },
+  _ctrlBadgeStatusWarningTintForeground: {
+    f2Token: 'colorPaletteYellowForeground1',
+    originalToken: 'statusWarningTintForeground',
+  },
+  _ctrlBadgeTextStyleSemiBoldWeight: {
+    f2Token: 'fontWeightSemibold',
+    originalToken: 'textStyleDefaultRegularWeight',
+  },
+  _ctrlBadgeXLPadding: {
+    f2Token: 'spacingHorizontalSNudge',
+    originalToken: 'ctrlBadgeLgPadding',
   },
   _ctrlButtonGapInsideDefault: {
     f2Token: 'spacingHorizontalSNudge',
@@ -532,5 +590,49 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _nullBackgroundColorPressed: {
     f2Token: 'colorTransparentBackgroundPressed',
     originalToken: 'nullColor',
+  },
+  _ctrlBadgeStatusDangerTintBackground: {
+    f2Token: 'colorPaletteRedBackground1',
+    originalToken: 'statusDangerTintBackground',
+  },
+  _ctrlBadgeStatusDangerTintStroke: {
+    f2Token: 'colorPaletteRedBorder1',
+    originalToken: 'statusDangerTintStroke',
+  },
+  _ctrlBadgeStatusImportantTintBackground: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'statusImportantTintBackground',
+  },
+  _ctrlBadgeStatusInformativeTintStroke: {
+    f2Token: 'colorNeutralStroke2',
+    originalToken: 'statusInformativeTintStroke',
+  },
+  _ctrlBadgeStatusSuccessTintBackground: {
+    f2Token: 'colorPaletteGreenBackground1',
+    originalToken: 'statusSuccessTintBackground',
+  },
+  _ctrlBadgeStatusSuccessTintForeground3: {
+    f2Token: 'colorPaletteGreenForeground3',
+    originalToken: 'statusSuccessTintForeground',
+  },
+  _ctrlBadgeStatusSuccessTintStroke: {
+    f2Token: 'colorPaletteGreenBorder1',
+    originalToken: 'statusSuccessTintStroke',
+  },
+  _ctrlBadgeStatusWarningBackground: {
+    f2Token: 'colorPaletteYellowBackground3',
+    originalToken: 'statusWarningBackground',
+  },
+  _ctrlBadgeStatusWarningTintBackground: {
+    f2Token: 'colorPaletteYellowBackground1',
+    originalToken: 'statusWarningTintBackground',
+  },
+  _ctrlBadgeStatusWarningTintForeground2: {
+    f2Token: 'colorPaletteYellowForeground2',
+    originalToken: 'statusWarningTintForeground',
+  },
+  _ctrlBadgeStatusWarningTintStroke: {
+    f2Token: 'colorPaletteYellowBorder1',
+    originalToken: 'statusWarningTintStroke',
   },
 };
