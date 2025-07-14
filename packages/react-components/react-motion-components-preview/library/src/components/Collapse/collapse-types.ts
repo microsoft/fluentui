@@ -20,8 +20,7 @@ export type CollapseParams = {
   orientation?: CollapseOrientation;
 };
 
-// Keep the existing types for backward compatibility with CollapseDelayed
-export type CollapseDelayedVariantParams = {
+export type CollapseDelayedParams = {
   /** Time (ms) for the size expand. Defaults to the `durationNormal` value (200 ms). */
   enterSizeDuration?: number;
 
@@ -45,9 +44,7 @@ export type CollapseDelayedVariantParams = {
 
   /** Easing curve for the exit transition, shared by size and opacity. Defaults to the `enterEasing` param. */
   exitEasing?: string;
-};
 
-export type CollapseRuntimeParams = {
   /** Whether to animate the opacity. Defaults to `true`. */
   animateOpacity?: boolean;
 

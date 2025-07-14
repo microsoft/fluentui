@@ -6,7 +6,7 @@ import {
   AtomMotion,
 } from '@fluentui/react-motion';
 import type { PresenceMotionFnCreator } from '../../types';
-import type { CollapseDelayedVariantParams, CollapseRuntimeParams, CollapseParams } from './collapse-types';
+import type { CollapseDelayedParams, CollapseParams } from './collapse-types';
 import { sizeEnterAtom, sizeExitAtom, whitespaceAtom } from './collapse-atoms';
 import { fadeAtom } from '../../atoms/fade-atom';
 
@@ -49,62 +49,89 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   };
 };
 
-/** Define a presence motion for collapse/expand that can stagger the size and opacity motions by a given delay. */
+/** Define a presence motion for collapse/expand that can stagger the size and opacity motions by a given delay */
+const collapseDelayedPresenceFn: PresenceMotionFn<CollapseDelayedParams> = ({
+  element,
+  enterSizeDuration = motionTokens.durationNormal,
+  enterOpacityDuration = enterSizeDuration, // in sync with size duration by default
+  enterEasing = motionTokens.curveEasyEaseMax,
+  enterDelay = 0,
+  exitSizeDuration = enterSizeDuration,
+  exitOpacityDuration = enterOpacityDuration,
+  exitEasing = enterEasing,
+  exitDelay = 0,
+  animateOpacity = true,
+  orientation = 'vertical',
+}) => {
+  // ----- ENTER -----
+  // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
+  const enterAtoms: AtomMotion[] = [
+    sizeEnterAtom({ orientation, duration: enterSizeDuration, easing: enterEasing, element }),
+    whitespaceAtom({ direction: 'enter', orientation, duration: enterSizeDuration, easing: enterEasing }),
+  ];
+  // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
+  if (animateOpacity) {
+    enterAtoms.push({
+      ...fadeAtom({ direction: 'enter', duration: enterOpacityDuration, easing: enterEasing }),
+      delay: enterDelay,
+      fill: 'both',
+    });
+  }
+
+  // ----- EXIT -----
+  // The exit transition is an array of up to 3 motion atoms: opacity, size and whitespace.
+  const exitAtoms: AtomMotion[] = [];
+  // Fade out only if animateOpacity is true. Otherwise, leave opacity unaffected.
+  if (animateOpacity) {
+    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitOpacityDuration, easing: exitEasing }));
+  }
+  exitAtoms.push(
+    sizeExitAtom({ orientation, duration: exitSizeDuration, easing: exitEasing, element, delay: exitDelay }),
+    whitespaceAtom({
+      direction: 'exit',
+      orientation,
+      duration: exitSizeDuration,
+      easing: exitEasing,
+      delay: exitDelay,
+    }),
+  );
+
+  return {
+    enter: enterAtoms,
+    exit: exitAtoms,
+  };
+};
+
+// For backward compatibility - creates a collapse presence function that works with the old pattern
 export const createCollapseDelayedPresence: PresenceMotionFnCreator<
-  CollapseDelayedVariantParams,
-  CollapseRuntimeParams
+  Omit<CollapseDelayedParams, 'animateOpacity' | 'orientation'>,
+  Pick<CollapseDelayedParams, 'animateOpacity' | 'orientation'>
 > =
   ({
-    // enter
     enterSizeDuration = motionTokens.durationNormal,
-    enterOpacityDuration = enterSizeDuration, // in sync with size duration by default
+    enterOpacityDuration = enterSizeDuration,
     enterEasing = motionTokens.curveEasyEaseMax,
     enterDelay = 0,
-
-    // exit: durations and easing default to enter values for symmetry
     exitSizeDuration = enterSizeDuration,
     exitOpacityDuration = enterOpacityDuration,
     exitEasing = enterEasing,
     exitDelay = 0,
   } = {}) =>
   ({ element, animateOpacity = true, orientation = 'vertical' }) => {
-    // ----- ENTER -----
-    // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
-    const enterAtoms: AtomMotion[] = [
-      sizeEnterAtom({ orientation, duration: enterSizeDuration, easing: enterEasing, element }),
-      whitespaceAtom({ direction: 'enter', orientation, duration: enterSizeDuration, easing: enterEasing }),
-    ];
-    // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
-    if (animateOpacity) {
-      enterAtoms.push({
-        ...fadeAtom({ direction: 'enter', duration: enterOpacityDuration, easing: enterEasing }),
-        delay: enterDelay,
-        fill: 'both',
-      });
-    }
-
-    // ----- EXIT -----
-    // The exit transition is an array of up to 3 motion atoms: opacity, size and whitespace.
-    const exitAtoms: AtomMotion[] = [];
-    // Fade out only if animateOpacity is true. Otherwise, leave opacity unaffected.
-    if (animateOpacity) {
-      exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitOpacityDuration, easing: exitEasing }));
-    }
-    exitAtoms.push(
-      sizeExitAtom({ orientation, duration: exitSizeDuration, easing: exitEasing, element, delay: exitDelay }),
-      whitespaceAtom({
-        direction: 'exit',
-        orientation,
-        duration: exitSizeDuration,
-        easing: exitEasing,
-        delay: exitDelay,
-      }),
-    );
-
-    return {
-      enter: enterAtoms,
-      exit: exitAtoms,
-    };
+    // Use the new presence function with the provided parameters
+    return collapseDelayedPresenceFn({
+      element,
+      enterSizeDuration,
+      enterOpacityDuration,
+      enterEasing,
+      enterDelay,
+      exitSizeDuration,
+      exitOpacityDuration,
+      exitEasing,
+      exitDelay,
+      animateOpacity,
+      orientation,
+    });
   };
 
 // For backward compatibility - creates a collapse presence function that works with the old pattern
@@ -137,12 +164,5 @@ export const CollapseRelaxed = createPresenceComponentVariant(Collapse, {
   duration: motionTokens.durationSlower,
 });
 
-export const CollapseDelayed = createPresenceComponent(
-  createCollapseDelayedPresence({
-    enterSizeDuration: motionTokens.durationNormal,
-    enterOpacityDuration: motionTokens.durationSlower,
-    enterDelay: motionTokens.durationNormal,
-    exitDelay: motionTokens.durationSlower,
-    enterEasing: motionTokens.curveEasyEase,
-  }),
-);
+/** A React component that applies collapse/expand transitions with staggered timing to its children. */
+export const CollapseDelayed = createPresenceComponent(collapseDelayedPresenceFn);
