@@ -15,6 +15,7 @@ export const hbcClassNames: SlotClassNames<HorizontalBarChartStyles> = {
   chartTitleLeft: 'fui-hbc__chartTitleLeft',
   chartTitleRight: 'fui-hbc__chartTitleRight',
   chartDataTextDenominator: 'fui-hbc__textDenom',
+  chartAnnotationText: 'fui-hbc__chartAnnotationText',
   benchmarkContainer: 'fui-hbc__benchmark',
   triangle: 'fui-hbc__triangle',
   barLabel: 'fui-hbc__barLabel',
@@ -70,6 +71,10 @@ const useStyles = makeStyles({
     ...typographyStyles.body1,
     color: tokens.colorNeutralForeground1,
   },
+  chartAnnotationText: {
+    ...typographyStyles.caption2,
+    color: tokens.colorNeutralForeground1,
+  },
   benchmarkContainer: {
     position: 'relative',
     height: '7px',
@@ -104,14 +109,14 @@ const useStyles = makeStyles({
  * Apply styling to the Carousel slots based on the state
  */
 export const useHorizontalBarChartStyles = (props: HorizontalBarChartProps): HorizontalBarChartStyles => {
-  const { className, showTriangle, variant, hideLabels } = props; // ToDo - width, barHeight is non enumerable. Need to be used inline.
+  const { className, showTriangle, variant, hideLabels, showAnnotationsInPercentage } = props; // ToDo - width, barHeight is non enumerable. Need to be used inline.
   const baseStyles = useStyles();
 
   return {
     root: mergeClasses(hbcClassNames.root, baseStyles.root, className, props.styles?.root),
     items: mergeClasses(
       hbcClassNames.items,
-      showTriangle || variant === HorizontalBarChartVariant.AbsoluteScale
+      showTriangle || variant === HorizontalBarChartVariant.AbsoluteScale || showAnnotationsInPercentage
         ? baseStyles.items16pMargin
         : baseStyles.items10pMargin,
       props.styles?.items,
@@ -136,6 +141,11 @@ export const useHorizontalBarChartStyles = (props: HorizontalBarChartProps): Hor
       hbcClassNames.chartDataTextDenominator,
       baseStyles.chartDataTextDenominator,
       props.styles?.chartDataTextDenominator,
+    ),
+    chartAnnotationText: mergeClasses(
+      hbcClassNames.chartAnnotationText,
+      baseStyles.chartAnnotationText,
+      props.styles?.chartAnnotationText,
     ),
     benchmarkContainer: mergeClasses(
       hbcClassNames.benchmarkContainer,
