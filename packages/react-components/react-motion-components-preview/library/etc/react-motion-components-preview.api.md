@@ -4,9 +4,7 @@
 
 ```ts
 
-import type { MotionParam } from '@fluentui/react-motion';
 import { PresenceComponent } from '@fluentui/react-motion';
-import type { PresenceMotionFn } from '@fluentui/react-motion';
 
 // @public
 export const Collapse: PresenceComponent<CollapseParams>;
@@ -19,12 +17,6 @@ export const CollapseRelaxed: PresenceComponent<CollapseParams>;
 
 // @public (undocumented)
 export const CollapseSnappy: PresenceComponent<CollapseParams>;
-
-// @public (undocumented)
-export const createCollapseDelayedPresence: PresenceMotionFnCreator<Omit<CollapseDelayedParams, 'animateOpacity' | 'orientation'>, Pick<CollapseDelayedParams, 'animateOpacity' | 'orientation'>>;
-
-// @public (undocumented)
-export const createCollapsePresence: PresenceMotionFnCreator<Pick<CollapseParams, 'duration' | 'easing' | 'exitDuration' | 'exitEasing'>, Pick<CollapseParams, 'animateOpacity' | 'orientation'>>;
 
 // @public
 export const createCollapseDelayedPresence: PresenceMotionFnCreator<CollapseDelayedVariantParams, CollapseRuntimeParams>;

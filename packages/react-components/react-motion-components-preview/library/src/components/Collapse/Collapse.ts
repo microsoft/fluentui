@@ -5,7 +5,6 @@ import {
   createPresenceComponentVariant,
   AtomMotion,
 } from '@fluentui/react-motion';
-import type { PresenceMotionFnCreator } from '../../types';
 import type { CollapseDelayedParams, CollapseParams } from './collapse-types';
 import { sizeEnterAtom, sizeExitAtom, whitespaceAtom } from './collapse-atoms';
 import { fadeAtom } from '../../atoms/fade-atom';
@@ -66,13 +65,13 @@ const collapseDelayedPresenceFn: PresenceMotionFn<CollapseDelayedParams> = ({
   // ----- ENTER -----
   // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
   const enterAtoms: AtomMotion[] = [
-    sizeEnterAtom({ orientation, duration: sizeDuration, easing: easing, element }),
-    whitespaceAtom({ direction: 'enter', orientation, duration: sizeDuration, easing: easing }),
+    sizeEnterAtom({ orientation, duration: sizeDuration, easing, element }),
+    whitespaceAtom({ direction: 'enter', orientation, duration: sizeDuration, easing }),
   ];
   // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
   if (animateOpacity) {
     enterAtoms.push({
-      ...fadeAtom({ direction: 'enter', duration: opacityDuration, easing: easing }),
+      ...fadeAtom({ direction: 'enter', duration: opacityDuration, easing }),
       delay: delay,
       fill: 'both',
     });
@@ -102,57 +101,6 @@ const collapseDelayedPresenceFn: PresenceMotionFn<CollapseDelayedParams> = ({
   };
 };
 
-// For backward compatibility - creates a collapse presence function that works with the old pattern
-export const createCollapseDelayedPresence: PresenceMotionFnCreator<
-  Omit<CollapseDelayedParams, 'animateOpacity' | 'orientation'>,
-  Pick<CollapseDelayedParams, 'animateOpacity' | 'orientation'>
-> =
-  ({
-    sizeDuration = motionTokens.durationNormal,
-    opacityDuration = sizeDuration,
-    easing = motionTokens.curveEasyEaseMax,
-    delay = 0,
-    exitSizeDuration = sizeDuration,
-    exitOpacityDuration = opacityDuration,
-    exitEasing = easing,
-    exitDelay = 0,
-  } = {}) =>
-  ({ element, animateOpacity = true, orientation = 'vertical' }) => {
-    // Use the new presence function with the provided parameters
-    return collapseDelayedPresenceFn({
-      element,
-      sizeDuration,
-      opacityDuration,
-      easing,
-      delay,
-      exitSizeDuration,
-      exitOpacityDuration,
-      exitEasing,
-      exitDelay,
-      animateOpacity,
-      orientation,
-    });
-  };
-
-// For backward compatibility - creates a collapse presence function that works with the old pattern
-export const createCollapsePresence: PresenceMotionFnCreator<
-  Pick<CollapseParams, 'duration' | 'easing' | 'exitDuration' | 'exitEasing'>,
-  Pick<CollapseParams, 'animateOpacity' | 'orientation'>
-> = ({
-  duration = motionTokens.durationNormal,
-  easing = motionTokens.curveEasyEaseMax,
-  exitDuration = duration,
-  exitEasing = easing,
-} = {}) =>
-  // Implement a regular collapse as a special case of the delayed collapse,
-  // where the delays are zero, and the size and opacity durations are equal.
-  createCollapseDelayedPresence({
-    sizeDuration: duration,
-    easing: easing,
-    exitSizeDuration: exitDuration,
-    exitEasing,
-  });
-
 /** A React component that applies collapse/expand transitions to its children. */
 export const Collapse = createPresenceComponent(collapsePresenceFn);
 
@@ -165,4 +113,10 @@ export const CollapseRelaxed = createPresenceComponentVariant(Collapse, {
 });
 
 /** A React component that applies collapse/expand transitions with staggered timing to its children. */
-export const CollapseDelayed = createPresenceComponent(collapseDelayedPresenceFn);
+export const CollapseDelayed = createPresenceComponentVariant(createPresenceComponent(collapseDelayedPresenceFn), {
+  sizeDuration: motionTokens.durationNormal,
+  opacityDuration: motionTokens.durationSlower,
+  easing: motionTokens.curveEasyEase,
+  delay: motionTokens.durationNormal,
+  exitDelay: motionTokens.durationSlower,
+});
