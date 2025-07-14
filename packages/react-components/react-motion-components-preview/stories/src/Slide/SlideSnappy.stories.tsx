@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
 import { SlideSnappy } from '@fluentui/react-motion-components-preview';
 
+import description from './SlideSnappy.stories.md';
+
 const useClasses = makeStyles({
   container: {
     display: 'grid',
@@ -54,4 +56,12 @@ export const Snappy = () => {
       </SlideSnappy>
     </div>
   );
+};
+
+Snappy.parameters = {
+  docs: {
+    description: {
+      story: description,
+    },
+  },
 };

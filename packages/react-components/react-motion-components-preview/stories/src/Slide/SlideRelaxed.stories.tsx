@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
 import { SlideRelaxed } from '@fluentui/react-motion-components-preview';
 
+import description from './SlideRelaxed.stories.md';
+
 const useClasses = makeStyles({
   container: {
     display: 'grid',
@@ -54,4 +56,12 @@ export const Relaxed = () => {
       </SlideRelaxed>
     </div>
   );
+};
+
+Relaxed.parameters = {
+  docs: {
+    description: {
+      story: description,
+    },
+  },
 };
