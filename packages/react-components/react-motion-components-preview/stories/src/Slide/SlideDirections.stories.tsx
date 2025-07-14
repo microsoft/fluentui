@@ -103,7 +103,7 @@ const directionIcons = {
 export const Directions = () => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
-  const [selectedDirection, setSelectedDirection] = React.useState<string>('Top');
+  const [selectedDirection, setSelectedDirection] = React.useState<keyof typeof slideDirections>('Top');
 
   const slideParams = slideDirections[selectedDirection as keyof typeof slideDirections];
 
