@@ -11,6 +11,7 @@ import {
   ArrowUpRightFilled,
   ArrowDownLeftFilled,
   ArrowDownRightFilled,
+  FluentIcon,
 } from '@fluentui/react-icons';
 
 const useClasses = makeStyles({
@@ -89,7 +90,7 @@ const slideDirections = {
   'Top-Left': { fromX: '-100%', fromY: '-100%' },
 };
 
-const directionIcons = {
+const directionIcons: Record<keyof typeof slideDirections, FluentIcon> = {
   Top: ArrowUpFilled,
   'Top-Right': ArrowUpRightFilled,
   Right: ArrowRightFilled,
