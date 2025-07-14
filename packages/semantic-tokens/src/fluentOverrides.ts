@@ -340,4 +340,6 @@ export const fluentOverrides: FluentOverrides = {
   textStyleDefaultRegularFontFamily: { f2Token: 'fontFamilyBase' },
   textStyleDefaultRegularLetterSpacing: { rawValue: '0' },
   textStyleDefaultRegularWeight: { f2Token: 'fontWeightRegular' },
+  textRampLgLegalFontSize: { f2Token: 'fontSizeBase200' }, // React-badge uses the same as medium font size for large
+  textRampLgLegalLineHeight: { f2Token: 'lineHeightBase200' }, // React-badge uses the same as medium line height for large
 };

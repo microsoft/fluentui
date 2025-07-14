@@ -115,21 +115,65 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorBrandForeground2',
     originalToken: 'statusBrandTintForeground',
   },
+  _ctrlBadgeStatusDangerTintBackground: {
+    f2Token: 'colorPaletteRedBackground1',
+    originalToken: 'statusDangerTintBackground',
+  },
   _ctrlBadgeStatusDangerTintForeground: {
     f2Token: 'colorPaletteRedForeground1',
     originalToken: 'statusDangerTintForeground',
+  },
+  _ctrlBadgeStatusDangerTintStroke: {
+    f2Token: 'colorPaletteRedBorder1',
+    originalToken: 'statusDangerTintStroke',
+  },
+  _ctrlBadgeStatusImportantTintBackground: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'statusImportantTintBackground',
   },
   _ctrlBadgeStatusImportantTintForeground: {
     f2Token: 'colorNeutralBackground1',
     originalToken: 'statusImportantTintForeground',
   },
+  _ctrlBadgeStatusInformativeTintStroke: {
+    f2Token: 'colorNeutralStroke2',
+    originalToken: 'statusInformativeTintStroke',
+  },
+  _ctrlBadgeStatusSuccessTintBackground: {
+    f2Token: 'colorPaletteGreenBackground1',
+    originalToken: 'statusSuccessTintBackground',
+  },
   _ctrlBadgeStatusSuccessTintForeground: {
     f2Token: 'colorPaletteGreenForeground1',
     originalToken: 'statusSuccessTintForeground',
   },
+  _ctrlBadgeStatusSuccessTintForeground3: {
+    f2Token: 'colorPaletteGreenForeground3',
+    originalToken: 'statusSuccessTintForeground',
+  },
+  _ctrlBadgeStatusSuccessTintStroke: {
+    f2Token: 'colorPaletteGreenBorder1',
+    originalToken: 'statusSuccessTintStroke',
+  },
+  _ctrlBadgeStatusWarningBackground: {
+    f2Token: 'colorPaletteYellowBackground3',
+    originalToken: 'statusWarningBackground',
+  },
+  _ctrlBadgeStatusWarningTintBackground: {
+    f2Token: 'colorPaletteYellowBackground1',
+    originalToken: 'statusWarningTintBackground',
+  },
   _ctrlBadgeStatusWarningTintForeground: {
     f2Token: 'colorPaletteYellowForeground1',
     originalToken: 'statusWarningTintForeground',
+  },
+  _ctrlBadgeStatusWarningTintForeground2: {
+    f2Token: 'colorPaletteYellowForeground2',
+    originalToken: 'statusWarningTintForeground',
+  },
+  _ctrlBadgeStatusWarningTintStroke: {
+    f2Token: 'colorPaletteYellowBorder1',
+    originalToken: 'statusWarningTintStroke',
   },
   _ctrlBadgeTextStyleSemiBoldWeight: {
     f2Token: 'fontWeightSemibold',
@@ -590,49 +634,5 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _nullBackgroundColorPressed: {
     f2Token: 'colorTransparentBackgroundPressed',
     originalToken: 'nullColor',
-  },
-  _ctrlBadgeStatusDangerTintBackground: {
-    f2Token: 'colorPaletteRedBackground1',
-    originalToken: 'statusDangerTintBackground',
-  },
-  _ctrlBadgeStatusDangerTintStroke: {
-    f2Token: 'colorPaletteRedBorder1',
-    originalToken: 'statusDangerTintStroke',
-  },
-  _ctrlBadgeStatusImportantTintBackground: {
-    f2Token: 'colorNeutralForeground3',
-    originalToken: 'statusImportantTintBackground',
-  },
-  _ctrlBadgeStatusInformativeTintStroke: {
-    f2Token: 'colorNeutralStroke2',
-    originalToken: 'statusInformativeTintStroke',
-  },
-  _ctrlBadgeStatusSuccessTintBackground: {
-    f2Token: 'colorPaletteGreenBackground1',
-    originalToken: 'statusSuccessTintBackground',
-  },
-  _ctrlBadgeStatusSuccessTintForeground3: {
-    f2Token: 'colorPaletteGreenForeground3',
-    originalToken: 'statusSuccessTintForeground',
-  },
-  _ctrlBadgeStatusSuccessTintStroke: {
-    f2Token: 'colorPaletteGreenBorder1',
-    originalToken: 'statusSuccessTintStroke',
-  },
-  _ctrlBadgeStatusWarningBackground: {
-    f2Token: 'colorPaletteYellowBackground3',
-    originalToken: 'statusWarningBackground',
-  },
-  _ctrlBadgeStatusWarningTintBackground: {
-    f2Token: 'colorPaletteYellowBackground1',
-    originalToken: 'statusWarningTintBackground',
-  },
-  _ctrlBadgeStatusWarningTintForeground2: {
-    f2Token: 'colorPaletteYellowForeground2',
-    originalToken: 'statusWarningTintForeground',
-  },
-  _ctrlBadgeStatusWarningTintStroke: {
-    f2Token: 'colorPaletteYellowBorder1',
-    originalToken: 'statusWarningTintStroke',
   },
 };

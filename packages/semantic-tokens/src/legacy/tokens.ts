@@ -590,20 +590,65 @@ export const borderRadiusLarge = 'var(--borderRadiusLarge)';
  */
 export const colorBrandForeground2 = 'var(--colorBrandForeground2)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedBackground1 | `colorPaletteRedBackground1`} design token.
+ * @public
+ */
+export const colorPaletteRedBackground1 = 'var(--colorPaletteRedBackground1)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedForeground1 | `colorPaletteRedForeground1`} design token.
  * @public
  */
 export const colorPaletteRedForeground1 = 'var(--colorPaletteRedForeground1)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedBorder1 | `colorPaletteRedBorder1`} design token.
+ * @public
+ */
+export const colorPaletteRedBorder1 = 'var(--colorPaletteRedBorder1)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteGreenBackground1 | `colorPaletteGreenBackground1`} design token.
+ * @public
+ */
+export const colorPaletteGreenBackground1 = 'var(--colorPaletteGreenBackground1)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorPaletteGreenForeground1 | `colorPaletteGreenForeground1`} design token.
  * @public
  */
 export const colorPaletteGreenForeground1 = 'var(--colorPaletteGreenForeground1)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteGreenForeground3 | `colorPaletteGreenForeground3`} design token.
+ * @public
+ */
+export const colorPaletteGreenForeground3 = 'var(--colorPaletteGreenForeground3)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteGreenBorder1 | `colorPaletteGreenBorder1`} design token.
+ * @public
+ */
+export const colorPaletteGreenBorder1 = 'var(--colorPaletteGreenBorder1)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowBackground3 | `colorPaletteYellowBackground3`} design token.
+ * @public
+ */
+export const colorPaletteYellowBackground3 = 'var(--colorPaletteYellowBackground3)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowBackground1 | `colorPaletteYellowBackground1`} design token.
+ * @public
+ */
+export const colorPaletteYellowBackground1 = 'var(--colorPaletteYellowBackground1)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowForeground1 | `colorPaletteYellowForeground1`} design token.
  * @public
  */
 export const colorPaletteYellowForeground1 = 'var(--colorPaletteYellowForeground1)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowForeground2 | `colorPaletteYellowForeground2`} design token.
+ * @public
+ */
+export const colorPaletteYellowForeground2 = 'var(--colorPaletteYellowForeground2)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowBorder1 | `colorPaletteYellowBorder1`} design token.
+ * @public
+ */
+export const colorPaletteYellowBorder1 = 'var(--colorPaletteYellowBorder1)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStrokeHover | `colorCompoundBrandStrokeHover`} design token.
  * @public
@@ -679,48 +724,3 @@ export const colorTransparentBackgroundHover = 'var(--colorTransparentBackground
  * @public
  */
 export const colorTransparentBackgroundPressed = 'var(--colorTransparentBackgroundPressed)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedBackground1 | `colorPaletteRedBackground1`} design token.
- * @public
- */
-export const colorPaletteRedBackground1 = 'var(--colorPaletteRedBackground1)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedBorder1 | `colorPaletteRedBorder1`} design token.
- * @public
- */
-export const colorPaletteRedBorder1 = 'var(--colorPaletteRedBorder1)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteGreenBackground1 | `colorPaletteGreenBackground1`} design token.
- * @public
- */
-export const colorPaletteGreenBackground1 = 'var(--colorPaletteGreenBackground1)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteGreenForeground3 | `colorPaletteGreenForeground3`} design token.
- * @public
- */
-export const colorPaletteGreenForeground3 = 'var(--colorPaletteGreenForeground3)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteGreenBorder1 | `colorPaletteGreenBorder1`} design token.
- * @public
- */
-export const colorPaletteGreenBorder1 = 'var(--colorPaletteGreenBorder1)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowBackground3 | `colorPaletteYellowBackground3`} design token.
- * @public
- */
-export const colorPaletteYellowBackground3 = 'var(--colorPaletteYellowBackground3)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowBackground1 | `colorPaletteYellowBackground1`} design token.
- * @public
- */
-export const colorPaletteYellowBackground1 = 'var(--colorPaletteYellowBackground1)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowForeground2 | `colorPaletteYellowForeground2`} design token.
- * @public
- */
-export const colorPaletteYellowForeground2 = 'var(--colorPaletteYellowForeground2)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteYellowBorder1 | `colorPaletteYellowBorder1`} design token.
- * @public
- */
-export const colorPaletteYellowBorder1 = 'var(--colorPaletteYellowBorder1)';
