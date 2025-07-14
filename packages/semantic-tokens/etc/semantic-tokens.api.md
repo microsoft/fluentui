@@ -940,6 +940,39 @@ export const ctrlCardStateRest = "var(--smtc-ctrl-card-state-rest)";
 // @public (undocumented)
 export const ctrlCardStateRestRaw = "--smtc-ctrl-card-state-rest";
 
+// @public
+export const _ctrlCheckboxBorderColorChecked = "var(--smtc-stroke-ctrl-on-active-brand-hover, var(--smtc-stroke-ctrl-on-brand-hover, var(--colorCompoundBrandBackground)))";
+
+// @public
+export const _ctrlCheckboxBorderColorCheckedHover = "var(--smtc-stroke-ctrl-on-active-brand-hover, var(--smtc-stroke-ctrl-on-brand-hover, var(--colorCompoundBrandBackgroundHover)))";
+
+// @public
+export const _ctrlCheckboxForegroundUnchecked = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground3)))";
+
+// @public
+export const _ctrlCheckboxForegroundUncheckedHover = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+
+// @public
+export const _ctrlCheckboxIndicatorBorderColorCheckedPressed = "var(--smtc-stroke-ctrl-on-active-brand-pressed, var(--smtc-stroke-ctrl-on-brand-pressed, var(--colorCompoundBrandBackgroundPressed)))";
+
+// @public
+export const _ctrlCheckboxIndicatorBorderColorMixed = "var(--smtc-background-ctrl-active-brand-rest, var(--smtc-background-ctrl-brand-rest, var(--colorCompoundBrandStroke)))";
+
+// @public
+export const _ctrlCheckboxIndicatorBorderColorMixedHover = "var(--smtc-background-ctrl-active-brand-hover, var(--smtc-background-ctrl-brand-hover, var(--colorCompoundBrandStrokeHover)))";
+
+// @public
+export const _ctrlCheckboxIndicatorBorderColorMixedPressed = "var(--smtc-background-ctrl-active-brand-pressed, var(--smtc-background-ctrl-brand-pressed, var(--colorCompoundBrandStrokePressed)))";
+
+// @public
+export const _ctrlCheckboxIndicatorColorMixed = "var(--smtc-background-ctrl-active-brand-rest, var(--smtc-background-ctrl-brand-rest, var(--colorCompoundBrandForeground1)))";
+
+// @public
+export const _ctrlCheckboxIndicatorColorMixedHover = "var(--smtc-background-ctrl-active-brand-hover, var(--smtc-background-ctrl-brand-hover, var(--colorCompoundBrandForeground1Hover)))";
+
+// @public
+export const _ctrlCheckboxIndicatorColorMixedPressed = "var(--smtc-background-ctrl-active-brand-pressed, var(--smtc-background-ctrl-brand-pressed, var(--colorCompoundBrandForeground1Pressed)))";
+
 // @public (undocumented)
 export const ctrlChoiceBaseBackgroundDisabled = "var(--smtc-ctrl-choice-base-background-disabled, var(--smtc-background-ctrl-outline-disabled, var(--colorTransparentBackground)))";
 
@@ -995,7 +1028,7 @@ export const ctrlChoiceBaseStrokeRest = "var(--smtc-ctrl-choice-base-stroke-rest
 export const ctrlChoiceBaseStrokeRestRaw = "--smtc-ctrl-choice-base-stroke-rest";
 
 // @public (undocumented)
-export const ctrlChoiceCheckboxCorner = "var(--smtc-ctrl-choice-checkbox-corner)";
+export const ctrlChoiceCheckboxCorner = "var(--smtc-ctrl-choice-checkbox-corner, var(--borderRadiusSmall))";
 
 // @public (undocumented)
 export const ctrlChoiceCheckboxCornerRaw = "--smtc-ctrl-choice-checkbox-corner";

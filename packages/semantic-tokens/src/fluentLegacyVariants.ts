@@ -85,6 +85,50 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'gapInsideCtrlDefault',
   },
+  _ctrlCheckboxBorderColorChecked: {
+    f2Token: 'colorCompoundBrandBackground',
+    originalToken: 'strokeCtrlOnActiveBrandHover',
+  },
+  _ctrlCheckboxBorderColorCheckedHover: {
+    f2Token: 'colorCompoundBrandBackgroundHover',
+    originalToken: 'strokeCtrlOnActiveBrandHover',
+  },
+  _ctrlCheckboxForegroundUnchecked: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlCheckboxForegroundUncheckedHover: {
+    f2Token: 'colorNeutralForeground2',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlCheckboxIndicatorBorderColorCheckedPressed: {
+    f2Token: 'colorCompoundBrandBackgroundPressed',
+    originalToken: 'strokeCtrlOnActiveBrandPressed',
+  },
+  _ctrlCheckboxIndicatorBorderColorMixed: {
+    f2Token: 'colorCompoundBrandStroke',
+    originalToken: 'backgroundCtrlActiveBrandRest',
+  },
+  _ctrlCheckboxIndicatorBorderColorMixedHover: {
+    f2Token: 'colorCompoundBrandStrokeHover',
+    originalToken: 'backgroundCtrlActiveBrandHover',
+  },
+  _ctrlCheckboxIndicatorBorderColorMixedPressed: {
+    f2Token: 'colorCompoundBrandStrokePressed',
+    originalToken: 'backgroundCtrlActiveBrandPressed',
+  },
+  _ctrlCheckboxIndicatorColorMixed: {
+    f2Token: 'colorCompoundBrandForeground1',
+    originalToken: 'backgroundCtrlActiveBrandRest',
+  },
+  _ctrlCheckboxIndicatorColorMixedHover: {
+    f2Token: 'colorCompoundBrandForeground1Hover',
+    originalToken: 'backgroundCtrlActiveBrandHover',
+  },
+  _ctrlCheckboxIndicatorColorMixedPressed: {
+    f2Token: 'colorCompoundBrandForeground1Pressed',
+    originalToken: 'backgroundCtrlActiveBrandPressed',
+  },
   _ctrlDialogGapBetweenContentMedium: {
     originalToken: 'gapBetweenContentMedium',
     rawValue: '8px',
