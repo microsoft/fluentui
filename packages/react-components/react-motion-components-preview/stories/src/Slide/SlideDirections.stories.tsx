@@ -28,11 +28,9 @@ const useClasses = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     gap: '15px',
-    // border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
     padding: '20px',
-    // minWidth: '250px',
     flex: '0 0 auto',
   },
   directionsGrid: {
@@ -99,6 +97,13 @@ const directionIcons: Record<keyof typeof slideDirections, FluentIcon> = {
   'Top-Left': ArrowUpLeftFilled,
 };
 
+// Create the grid layout with buttons positioned according to direction
+const directionGrid = [
+  ['Top-Left', 'Top', 'Top-Right'],
+  ['Left', null, 'Right'],
+  ['Bottom-Left', 'Bottom', 'Bottom-Right'],
+];
+
 export const Directions = () => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
@@ -106,23 +111,16 @@ export const Directions = () => {
 
   const slideParams = slideDirections[selectedDirection as keyof typeof slideDirections];
 
-  const handleDirectionClick = (direction: string) => {
+  const handleDirectionClick = (direction: keyof typeof slideDirections) => {
     setSelectedDirection(direction);
     setVisible(v => !v);
   };
-
-  // Create the grid layout with buttons positioned according to direction
-  const directionGrid = [
-    ['Top-Left', 'Top', 'Top-Right'],
-    ['Left', null, 'Right'],
-    ['Bottom-Left', 'Bottom', 'Bottom-Right'],
-  ];
 
   return (
     <div className={classes.container}>
       <div className={classes.controls}>
         <div className={classes.directionsGrid}>
-          {directionGrid.flatMap((direction, index) => {
+          {directionGrid.flat().map(direction => {
             if (direction) {
               const ArrowIconForDirection = directionIcons[direction as keyof typeof directionIcons];
               return (
@@ -130,7 +128,7 @@ export const Directions = () => {
                   key={direction}
                   className={classes.directionButton}
                   appearance={selectedDirection === direction ? 'primary' : 'secondary'}
-                  onClick={() => handleDirectionClick(direction)}
+                  onClick={() => handleDirectionClick(direction as keyof typeof directionIcons)}
                 >
                   <ArrowIconForDirection />
                 </Button>
