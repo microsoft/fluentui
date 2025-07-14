@@ -19,26 +19,16 @@ function createCollapseAtoms({
   sizeDuration,
   opacityDuration = sizeDuration,
   easing,
-  delay = 0,
+  delay,
 
   // Exit params
   exitSizeDuration,
   exitOpacityDuration = exitSizeDuration,
   exitEasing,
-  exitDelay = 0,
+  exitDelay,
 }: {
   element: HTMLElement;
-  orientation: 'horizontal' | 'vertical';
-  animateOpacity: boolean;
-  sizeDuration: number;
-  opacityDuration?: number;
-  easing: string;
-  delay?: number;
-  exitSizeDuration: number;
-  exitOpacityDuration?: number;
-  exitEasing: string;
-  exitDelay?: number;
-}) {
+} & Required<CollapseDelayedParams>) {
   // ----- ENTER -----
   // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
   const enterAtoms: AtomMotion[] = [
@@ -110,6 +100,8 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
     exitSizeDuration: exitDuration,
     exitOpacityDuration: exitDuration,
     exitEasing,
+    delay: 0,
+    exitDelay: 0,
   });
 };
 
@@ -117,13 +109,13 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
 const collapseDelayedPresenceFn: PresenceMotionFn<CollapseDelayedParams> = ({
   element,
   sizeDuration = motionTokens.durationNormal,
-  opacityDuration = sizeDuration, // in sync with size duration by default
-  easing = motionTokens.curveEasyEaseMax,
-  delay = 0,
+  opacityDuration = motionTokens.durationSlower,
+  easing = motionTokens.curveEasyEase,
+  delay = motionTokens.durationNormal,
   exitSizeDuration = sizeDuration,
   exitOpacityDuration = opacityDuration,
   exitEasing = easing,
-  exitDelay = 0,
+  exitDelay = motionTokens.durationSlower,
   animateOpacity = true,
   orientation = 'vertical',
 }) => {
@@ -134,11 +126,11 @@ const collapseDelayedPresenceFn: PresenceMotionFn<CollapseDelayedParams> = ({
     sizeDuration,
     opacityDuration,
     easing,
-    delay: delay,
+    delay,
     exitSizeDuration,
     exitOpacityDuration,
     exitEasing,
-    exitDelay: exitDelay,
+    exitDelay,
   });
 };
 
@@ -154,10 +146,4 @@ export const CollapseRelaxed = createPresenceComponentVariant(Collapse, {
 });
 
 /** A React component that applies collapse/expand transitions with staggered timing to its children. */
-export const CollapseDelayed = createPresenceComponentVariant(createPresenceComponent(collapseDelayedPresenceFn), {
-  sizeDuration: motionTokens.durationNormal,
-  opacityDuration: motionTokens.durationSlower,
-  easing: motionTokens.curveEasyEase,
-  delay: motionTokens.durationNormal,
-  exitDelay: motionTokens.durationSlower,
-});
+export const CollapseDelayed = createPresenceComponent(collapseDelayedPresenceFn);
