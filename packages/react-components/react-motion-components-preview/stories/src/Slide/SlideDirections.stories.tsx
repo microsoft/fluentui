@@ -123,7 +123,7 @@ export const Directions = () => {
     <div className={classes.container}>
       <div className={classes.controls}>
         <div className={classes.directionsGrid}>
-          {directionGrid.flat().map((direction, index) => {
+          {directionGrid.flatMap((direction, index) => {
             if (direction) {
               const ArrowIconForDirection = directionIcons[direction as keyof typeof directionIcons];
               return (
