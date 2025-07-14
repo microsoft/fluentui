@@ -64,3 +64,4 @@ export {
 } from './component-styles/Menu';
 export { useSemanticRadioStyles } from './component-styles/Radio';
 export { useSemanticPersonaStyles } from './component-styles/Persona';
+export { useSemanticCheckboxStyles } from './component-styles/Checkbox';
