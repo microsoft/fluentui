@@ -674,8 +674,8 @@ export interface IGanttChartDataPoint {
     legend?: string;
     onClick?: VoidFunction;
     x: {
-        start: Date;
-        end: Date;
+        start: Date | number;
+        end: Date | number;
     };
     xAxisCalloutData?: string;
     y: number | string;

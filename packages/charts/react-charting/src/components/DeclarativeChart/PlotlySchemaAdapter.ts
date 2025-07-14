@@ -1057,6 +1057,7 @@ export const transformPlotlyJsonToGanttChartProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundCorners: true,
+    useUTC: false,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
   };

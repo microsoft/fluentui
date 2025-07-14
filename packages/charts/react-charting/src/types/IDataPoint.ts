@@ -1010,8 +1010,8 @@ export interface IGanttChartDataPoint {
    * Dependent value of the data point, rendered along the x-axis.
    */
   x: {
-    start: Date;
-    end: Date;
+    start: Date | number;
+    end: Date | number;
   };
 
   /**

@@ -37,7 +37,6 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
   HTMLDivElement,
   IGanttChartProps
 >(({ useUTC = true, yAxisCategoryOrder = 'default', ...props }, forwardedRef) => {
-  const _points = React.useRef<IGanttChartDataPoint[]>([]);
   const _barHeight = React.useRef<number>(0);
   const _calloutId = React.useRef<string>(getId('callout'));
   const margins = React.useRef<IMargins>({});
@@ -82,6 +81,55 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     [],
   );
 
+  const _points = React.useMemo(() => {
+    _legendColorMap.current = {};
+    let colorIndex = 0;
+
+    return (
+      props.data?.map(point => {
+        const legend = `${point.legend}`;
+        if (!_legendColorMap.current[legend]) {
+          let startColor = point.color
+            ? getColorFromToken(point.color, props.theme?.isInverted)
+            : getNextColor(colorIndex, 0, props.theme?.isInverted);
+          let endColor = startColor;
+
+          if (props.enableGradient) {
+            const nextGradient = getNextGradient(colorIndex, 0, props.theme?.isInverted);
+            startColor = point.gradient?.[0] || nextGradient[0];
+            endColor = point.gradient?.[1] || nextGradient[1];
+          }
+
+          _legendColorMap.current[legend] = [startColor, endColor];
+          colorIndex += 1;
+        }
+
+        return {
+          ...point,
+          color: _legendColorMap.current[legend][0],
+          ...(props.enableGradient ? { gradient: _legendColorMap.current[legend] } : {}),
+        };
+      }) ?? []
+    );
+  }, [props.data, props.theme?.isInverted, props.enableGradient]);
+
+  const _dateFormatOptions = React.useMemo(() => {
+    if (_xAxisType.current !== XAxisTypes.DateAxis) {
+      return undefined;
+    }
+
+    let lowestFormatLevel = 100;
+    let highestFormatLevel = -1;
+    _points.forEach(p => {
+      const startFormatLevel = getDateFormatLevel(p.x.start as Date, useUTC);
+      const endFormatLevel = getDateFormatLevel(p.x.end as Date, useUTC);
+      lowestFormatLevel = Math.min(lowestFormatLevel, startFormatLevel, endFormatLevel);
+      highestFormatLevel = Math.max(highestFormatLevel, startFormatLevel, endFormatLevel);
+    });
+
+    return getMultiLevelDateTimeFormatOptions(lowestFormatLevel, highestFormatLevel);
+  }, [useUTC, _points]);
+
   const _getDomainNRangeValues = React.useCallback(
     (
       points: IGanttChartDataPoint[],
@@ -94,7 +142,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       tickValues: Date[] | number[] | undefined,
       shiftX: number,
     ): IDomainNRange => {
-      const xValues: Date[] = [];
+      const xValues: (Date | number)[] = [];
       points.forEach(point => {
         xValues.push(point.x.start, point.x.end);
       });
@@ -113,7 +161,6 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
   );
 
   const _adjustProps = (): void => {
-    _points.current = _addDefaultColors(props.data);
     _barHeight.current = Math.max(props.barHeight || 24, 1);
 
     if (props.data && props.data.length > 0) {
@@ -156,25 +203,14 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       let formattedEndX: string;
 
       if (_xAxisType.current === XAxisTypes.DateAxis) {
-        let lowestFormatLevel = 100;
-        let highestFormatLevel = -1;
-        _points.current.forEach(p => {
-          const formatLevel1 = getDateFormatLevel(p.x.start, useUTC);
-          const formatLevel2 = getDateFormatLevel(p.x.end, useUTC);
-          const minFormatLevel = Math.min(formatLevel1, formatLevel2);
-          const maxFormatLevel = Math.max(formatLevel1, formatLevel2);
-
-          if (maxFormatLevel > highestFormatLevel) {
-            highestFormatLevel = maxFormatLevel;
-          }
-          if (minFormatLevel < lowestFormatLevel) {
-            lowestFormatLevel = minFormatLevel;
-          }
-        });
-
-        const formatOptions = getMultiLevelDateTimeFormatOptions(lowestFormatLevel, highestFormatLevel);
-        formattedStartX = formatDateToLocaleString(point.x.start, props.culture, useUTC, false, formatOptions);
-        formattedEndX = formatDateToLocaleString(point.x.end, props.culture, useUTC, false, formatOptions);
+        formattedStartX = formatDateToLocaleString(
+          point.x.start as Date,
+          props.culture,
+          useUTC,
+          false,
+          _dateFormatOptions,
+        );
+        formattedEndX = formatDateToLocaleString(point.x.end as Date, props.culture, useUTC, false, _dateFormatOptions);
       } else {
         formattedStartX = point.x.start.toString();
         formattedEndX = point.x.end.toString();
@@ -182,7 +218,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
 
       return `${formattedStartX} - ${formattedEndX}`;
     },
-    [props.culture, useUTC],
+    [props.culture, useUTC, _dateFormatOptions],
   );
 
   const _getAriaLabel = React.useCallback(
@@ -251,8 +287,8 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
   );
 
   const _createBars = React.useCallback(
-    (xScale: DateScale, yScale: NumberScale | StringScale): React.JSX.Element[] => {
-      const bars = _points.current.map((point: IGanttChartDataPoint, index: number) => {
+    (xScale: DateScale | NumberScale, yScale: NumberScale | StringScale): React.JSX.Element[] => {
+      const bars = _points.map((point: IGanttChartDataPoint, index: number) => {
         const shouldHighlight = _noLegendHighlighted() || _legendHighlighted(point.legend);
 
         let startColor = point.color!;
@@ -311,12 +347,13 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       _onBarHover,
       props.enableGradient,
       props.roundCorners,
+      _points,
     ],
   );
 
   const _getGraphData = React.useCallback(
     (
-      xScale: DateScale,
+      xScale: DateScale | NumberScale,
       yScale: NumberScale | StringScale,
       containerHeight: number,
       containerWidth: number,
@@ -406,7 +443,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
 
   const _getChartTitle = (): string => {
     const { chartTitle } = props;
-    return (chartTitle ? `${chartTitle}. ` : '') + `Gantt chart with ${_points.current.length} bars. `;
+    return (chartTitle ? `${chartTitle}. ` : '') + `Gantt chart with ${_points.length} bars. `;
   };
 
   const _isChartEmpty = (): boolean => {
@@ -418,7 +455,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       _domainMargin.current = MIN_DOMAIN_MARGIN;
 
       const ySet = new Set<string | number>();
-      _points.current.forEach((point: IGanttChartDataPoint) => {
+      _points.forEach((point: IGanttChartDataPoint) => {
         ySet.add(point.y);
       });
       const uniqueY = Array.from(ySet);
@@ -442,7 +479,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
         bottom: margins.current.bottom! + _domainMargin.current,
       };
     },
-    [props.barHeight],
+    [props.barHeight, _points],
   );
 
   const _getOrderedYAxisLabels = () => {
@@ -451,7 +488,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
 
   const _mapCategoryToValues = () => {
     const categoryToValues: Record<string, number[]> = {};
-    _points.current.forEach(point => {
+    _points.forEach(point => {
       if (!categoryToValues[point.y]) {
         categoryToValues[point.y] = [];
       }
@@ -459,38 +496,6 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       // categoryToValues[point.y].push(point.x.end - point.x.start);
     });
     return categoryToValues;
-  };
-
-  const _addDefaultColors = (data?: IGanttChartDataPoint[]): IGanttChartDataPoint[] => {
-    _legendColorMap.current = {};
-    let colorIndex = 0;
-
-    return (
-      data?.map(point => {
-        const legend = `${point.legend}`;
-        if (!_legendColorMap.current[legend]) {
-          let startColor = point.color
-            ? getColorFromToken(point.color, props.theme?.isInverted)
-            : getNextColor(colorIndex, 0, props.theme?.isInverted);
-          let endColor = startColor;
-
-          if (props.enableGradient) {
-            const nextGradient = getNextGradient(colorIndex, 0, props.theme?.isInverted);
-            startColor = point.gradient?.[0] || nextGradient[0];
-            endColor = point.gradient?.[1] || nextGradient[1];
-          }
-
-          _legendColorMap.current[legend] = [startColor, endColor];
-          colorIndex += 1;
-        }
-
-        return {
-          ...point,
-          color: _legendColorMap.current[legend][0],
-          ...(props.enableGradient ? { gradient: _legendColorMap.current[legend] } : {}),
-        };
-      }) ?? []
-    );
   };
 
   const _renderBars = React.useCallback(() => {
@@ -527,7 +532,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
         {...props}
         yAxisPadding={_yAxisPadding.current}
         chartTitle={_getChartTitle()}
-        points={_points.current}
+        points={_points}
         chartType={ChartTypes.GanttChart}
         xAxisType={_xAxisType.current}
         yAxisType={_yAxisType.current}
