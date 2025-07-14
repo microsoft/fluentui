@@ -13,6 +13,8 @@ import { SankeyGraph } from 'd3-sankey';
 import { SankeyLayout } from 'd3-sankey';
 import { SankeyLink } from 'd3-sankey';
 import { SankeyNode } from 'd3-sankey';
+import { ScaleBand } from 'd3-scale';
+import { ScaleLinear } from 'd3-scale';
 import { SVGProps } from 'react';
 import { TimeLocaleDefinition } from 'd3-time-format';
 
@@ -1037,6 +1039,8 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     chartTitle?: string;
     chartType: ChartTypes;
     children(props: ChildProps): React_2.ReactNode;
+    createStringYAxis: (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean, barWidth: number | undefined, chartType?: ChartTypes) => ScaleBand<string>;
+    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, chartType: ChartTypes, useSecondaryYScale?: boolean, roundedTicks?: boolean) => ScaleLinear<number, number, never>;
     culture?: string;
     customizedCallout?: any;
     datasetForXAxisDomain?: string[];
@@ -1044,10 +1048,10 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     // (undocumented)
     getAxisData?: any;
     getDomainMargins?: (containerWidth: number) => Margins;
-    getDomainNRangeValues?: (points: HorizontalBarChartWithAxisDataPoint[], margins: Margins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
+    getDomainNRangeValues: (points: LineChartPoints[] | VerticalBarChartDataPoint[] | VerticalStackedBarDataPoint[] | HorizontalBarChartWithAxisDataPoint[] | GroupedVerticalBarChartData[] | HeatMapChartDataPoint[], margins: Margins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: Margins) => void;
-    getMinMaxOfYAxis?: (points: DataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
+    getMinMaxOfYAxis: (points: LineChartPoints[] | HorizontalBarChartWithAxisDataPoint[] | VerticalBarChartDataPoint[] | DataPoint[] | ScatterChartDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
         startValue: number;
         endValue: number;
     };
