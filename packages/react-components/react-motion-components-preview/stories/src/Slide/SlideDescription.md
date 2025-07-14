@@ -8,7 +8,7 @@ import { Slide } from '@fluentui/react-motion-components-preview';
 function Component({ visible }) {
   return (
     <Slide visible={visible}>
-      <div style={{ background: 'lightblue' }}>Content</div>
+      <div>Content</div>
     </Slide>
   );
 }
