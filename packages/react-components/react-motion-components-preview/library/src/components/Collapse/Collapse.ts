@@ -41,7 +41,7 @@ function createCollapseAtoms({
     if (delay > 0) {
       enterAtoms.push({
         ...fadeEnterAtom,
-        delay: delay,
+        delay,
         fill: 'both',
       });
     } else {
@@ -145,5 +145,5 @@ export const CollapseRelaxed = createPresenceComponentVariant(Collapse, {
   duration: motionTokens.durationSlower,
 });
 
-/** A React component that applies collapse/expand transitions with staggered timing to its children. */
+/** A React component that applies collapse/expand transitions with delayed fade to its children. */
 export const CollapseDelayed = createPresenceComponent(collapseDelayedPresenceFn);
