@@ -1877,7 +1877,7 @@ export const ctrlInputBottomLineStrokeWidthPressed = "var(--smtc-ctrl-input-bott
 export const ctrlInputBottomLineStrokeWidthPressedRaw = "--smtc-ctrl-input-bottom-line-stroke-width-pressed";
 
 // @public (undocumented)
-export const ctrlInputBottomLineStrokeWidthRest = "var(--smtc-ctrl-input-bottom-line-stroke-width-rest, var(--smtc-stroke-width-default))";
+export const ctrlInputBottomLineStrokeWidthRest = "var(--smtc-ctrl-input-bottom-line-stroke-width-rest, var(--smtc-stroke-width-default, var(--strokeWidthThin)))";
 
 // @public (undocumented)
 export const ctrlInputBottomLineStrokeWidthRestRaw = "--smtc-ctrl-input-bottom-line-stroke-width-rest";
@@ -1892,7 +1892,7 @@ export const ctrlInputBottomLineStrokeWidthSelectedRaw = "--smtc-ctrl-input-bott
 export const _ctrlInputNeutralForegroundPlaceholder = "var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground4))";
 
 // @public (undocumented)
-export const ctrlInputStrokeDisabled = "var(--smtc-ctrl-input-stroke-disabled, var(--smtc-stroke-ctrl-on-outline-disabled))";
+export const ctrlInputStrokeDisabled = "var(--smtc-ctrl-input-stroke-disabled, var(--smtc-stroke-ctrl-on-outline-disabled, var(--colorNeutralStrokeDisabled)))";
 
 // @public (undocumented)
 export const ctrlInputStrokeDisabledRaw = "--smtc-ctrl-input-stroke-disabled";
@@ -1940,7 +1940,7 @@ export const ctrlInputStrokeWidthPressed = "var(--smtc-ctrl-input-stroke-width-p
 export const ctrlInputStrokeWidthPressedRaw = "--smtc-ctrl-input-stroke-width-pressed";
 
 // @public (undocumented)
-export const ctrlInputStrokeWidthRest = "var(--smtc-ctrl-input-stroke-width-rest, var(--smtc-stroke-width-default))";
+export const ctrlInputStrokeWidthRest = "var(--smtc-ctrl-input-stroke-width-rest, var(--smtc-stroke-width-default, var(--strokeWidthThin)))";
 
 // @public (undocumented)
 export const ctrlInputStrokeWidthRestRaw = "--smtc-ctrl-input-stroke-width-rest";
@@ -3084,6 +3084,36 @@ export const ctrlSliderThumbSizeRest = "var(--smtc-ctrl-slider-thumb-size-rest, 
 
 // @public (undocumented)
 export const ctrlSliderThumbSizeRestRaw = "--smtc-ctrl-slider-thumb-size-rest";
+
+// @public
+export const _ctrlSpinButtonBackgroundDisabled = "var(--smtc-ctrl-input-background-disabled, var(--smtc-background-ctrl-neutral-disabled, var(--colorTransparentBackground)))";
+
+// @public
+export const _ctrlSpinButtonForegroundOnSubtleHover = "var(--smtc-foreground-ctrl-on-subtle-hover, var(--smtc-foreground-ctrl-neutral-primary-hover, var(--colorNeutralForeground3Hover)))";
+
+// @public
+export const _ctrlSpinButtonForegroundOnSubtlePressed = "var(--smtc-foreground-ctrl-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-pressed, var(--colorNeutralForeground3Pressed)))";
+
+// @public
+export const _ctrlSpinButtonNeutralSecondaryRest = "var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground4))";
+
+// @public
+export const _ctrlSpinButtonOnSubtleRest = "var(--smtc-foreground-ctrl-on-subtle-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground3)))";
+
+// @public
+export const _ctrlSpinButtonPaddingHorizontal = "var(--smtc-padding-ctrl-horizontal-default, var(--spacingHorizontalMNudge))";
+
+// @public
+export const _ctrlSpinButtonPaddingSmHorizontal = "var(--smtc-padding-ctrl-sm-horizontal-default, 5px)";
+
+// @public
+export const _ctrlSpinButtonSizeDefault = "var(--smtc-size-ctrl-default, 32px)";
+
+// @public
+export const _ctrlSpinButtonSizeIconSecondary = "var(--smtc-size-ctrl-icon-secondary, 16px)";
+
+// @public
+export const _ctrlSpinButtonSizeSmDefault = "var(--smtc-size-ctrl-sm-default, 24px)";
 
 // @public
 export const _ctrlSpinnerBackgroundEmpty = "var(--smtc-ctrl-progress-background-empty, var(--colorBrandStroke2Contrast))";
