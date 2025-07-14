@@ -33,22 +33,22 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<CollapseDela
 export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantParams, CollapseRuntimeParams>;
 
 // @public
-export const Fade: PresenceComponent<FadeVariantParams>;
+export const Fade: PresenceComponent<FadeParams>;
 
 // @public (undocumented)
-export const FadeRelaxed: PresenceComponent<FadeVariantParams>;
+export const FadeRelaxed: PresenceComponent<FadeParams>;
 
 // @public (undocumented)
-export const FadeSnappy: PresenceComponent<FadeVariantParams>;
+export const FadeSnappy: PresenceComponent<FadeParams>;
 
 // @public
-export const Scale: PresenceComponent<ScaleVariantParams>;
+export const Scale: PresenceComponent<ScaleParams>;
 
 // @public (undocumented)
-export const ScaleRelaxed: PresenceComponent<ScaleVariantParams>;
+export const ScaleRelaxed: PresenceComponent<ScaleParams>;
 
 // @public (undocumented)
-export const ScaleSnappy: PresenceComponent<ScaleVariantParams>;
+export const ScaleSnappy: PresenceComponent<ScaleParams>;
 
 // @public
 export const Slide: PresenceComponent<SlideParams>;
