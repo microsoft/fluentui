@@ -9,22 +9,22 @@ import { PresenceComponent } from '@fluentui/react-motion';
 import type { PresenceMotionFn } from '@fluentui/react-motion';
 
 // @public
-export const Collapse: PresenceComponent<CollapseRuntimeParams>;
+export const Collapse: PresenceComponent<CollapseParams>;
+
+// @public
+export const CollapseDelayed: PresenceComponent<CollapseDelayedParams>;
 
 // @public (undocumented)
-export const CollapseDelayed: PresenceComponent<CollapseRuntimeParams>;
+export const CollapseRelaxed: PresenceComponent<CollapseParams>;
 
 // @public (undocumented)
-export const CollapseRelaxed: PresenceComponent<CollapseRuntimeParams>;
+export const CollapseSnappy: PresenceComponent<CollapseParams>;
 
 // @public (undocumented)
-export type CollapseRuntimeParams = {
-    animateOpacity?: boolean;
-    orientation?: CollapseOrientation;
-};
+export const createCollapseDelayedPresence: PresenceMotionFnCreator<Omit<CollapseDelayedParams, 'animateOpacity' | 'orientation'>, Pick<CollapseDelayedParams, 'animateOpacity' | 'orientation'>>;
 
 // @public (undocumented)
-export const CollapseSnappy: PresenceComponent<CollapseRuntimeParams>;
+export const createCollapsePresence: PresenceMotionFnCreator<Pick<CollapseParams, 'duration' | 'easing' | 'exitDuration' | 'exitEasing'>, Pick<CollapseParams, 'animateOpacity' | 'orientation'>>;
 
 // @public
 export const createCollapseDelayedPresence: PresenceMotionFnCreator<CollapseDelayedVariantParams, CollapseRuntimeParams>;

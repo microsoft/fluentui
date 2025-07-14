@@ -22,27 +22,27 @@ export type CollapseParams = {
 
 export type CollapseDelayedParams = {
   /** Time (ms) for the size expand. Defaults to the `durationNormal` value (200 ms). */
-  enterSizeDuration?: number;
+  sizeDuration?: number;
 
-  /** Time (ms) for the fade-in. Defaults to the `enterSizeDuration` param, to sync fade-in with expand. */
-  enterOpacityDuration?: number;
+  /** Time (ms) for the fade-in. Defaults to the `sizeDuration` param, to sync fade-in with expand. */
+  opacityDuration?: number;
 
-  /** Time (ms) for the size collapse. Defaults to the `enterSizeDuration` param, for temporal symmetry. */
+  /** Time (ms) for the size collapse. Defaults to the `sizeDuration` param, for temporal symmetry. */
   exitSizeDuration?: number;
 
   /** Time (ms) for the fade-out. Defaults to the `exitSizeDuration` param, to sync the fade-out with the collapse. */
   exitOpacityDuration?: number;
 
   /** Time (ms) between the size expand start and the fade-in start. Defaults to `0`. */
-  enterDelay?: number;
+  delay?: number;
 
   /** Time (ms) between the fade-out start and the size collapse start. Defaults to `0`. */
   exitDelay?: number;
 
   /** Easing curve for the enter transition, shared by size and opacity. Defaults to the `curveEasyEaseMax` value. */
-  enterEasing?: string;
+  easing?: string;
 
-  /** Easing curve for the exit transition, shared by size and opacity. Defaults to the `enterEasing` param. */
+  /** Easing curve for the exit transition, shared by size and opacity. Defaults to the `easing` param. */
   exitEasing?: string;
 
   /** Whether to animate the opacity. Defaults to `true`. */

@@ -52,13 +52,13 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
 /** Define a presence motion for collapse/expand that can stagger the size and opacity motions by a given delay */
 const collapseDelayedPresenceFn: PresenceMotionFn<CollapseDelayedParams> = ({
   element,
-  enterSizeDuration = motionTokens.durationNormal,
-  enterOpacityDuration = enterSizeDuration, // in sync with size duration by default
-  enterEasing = motionTokens.curveEasyEaseMax,
-  enterDelay = 0,
-  exitSizeDuration = enterSizeDuration,
-  exitOpacityDuration = enterOpacityDuration,
-  exitEasing = enterEasing,
+  sizeDuration = motionTokens.durationNormal,
+  opacityDuration = sizeDuration, // in sync with size duration by default
+  easing = motionTokens.curveEasyEaseMax,
+  delay = 0,
+  exitSizeDuration = sizeDuration,
+  exitOpacityDuration = opacityDuration,
+  exitEasing = easing,
   exitDelay = 0,
   animateOpacity = true,
   orientation = 'vertical',
@@ -66,14 +66,14 @@ const collapseDelayedPresenceFn: PresenceMotionFn<CollapseDelayedParams> = ({
   // ----- ENTER -----
   // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
   const enterAtoms: AtomMotion[] = [
-    sizeEnterAtom({ orientation, duration: enterSizeDuration, easing: enterEasing, element }),
-    whitespaceAtom({ direction: 'enter', orientation, duration: enterSizeDuration, easing: enterEasing }),
+    sizeEnterAtom({ orientation, duration: sizeDuration, easing: easing, element }),
+    whitespaceAtom({ direction: 'enter', orientation, duration: sizeDuration, easing: easing }),
   ];
   // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
   if (animateOpacity) {
     enterAtoms.push({
-      ...fadeAtom({ direction: 'enter', duration: enterOpacityDuration, easing: enterEasing }),
-      delay: enterDelay,
+      ...fadeAtom({ direction: 'enter', duration: opacityDuration, easing: easing }),
+      delay: delay,
       fill: 'both',
     });
   }
@@ -108,23 +108,23 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<
   Pick<CollapseDelayedParams, 'animateOpacity' | 'orientation'>
 > =
   ({
-    enterSizeDuration = motionTokens.durationNormal,
-    enterOpacityDuration = enterSizeDuration,
-    enterEasing = motionTokens.curveEasyEaseMax,
-    enterDelay = 0,
-    exitSizeDuration = enterSizeDuration,
-    exitOpacityDuration = enterOpacityDuration,
-    exitEasing = enterEasing,
+    sizeDuration = motionTokens.durationNormal,
+    opacityDuration = sizeDuration,
+    easing = motionTokens.curveEasyEaseMax,
+    delay = 0,
+    exitSizeDuration = sizeDuration,
+    exitOpacityDuration = opacityDuration,
+    exitEasing = easing,
     exitDelay = 0,
   } = {}) =>
   ({ element, animateOpacity = true, orientation = 'vertical' }) => {
     // Use the new presence function with the provided parameters
     return collapseDelayedPresenceFn({
       element,
-      enterSizeDuration,
-      enterOpacityDuration,
-      enterEasing,
-      enterDelay,
+      sizeDuration,
+      opacityDuration,
+      easing,
+      delay,
       exitSizeDuration,
       exitOpacityDuration,
       exitEasing,
@@ -147,8 +147,8 @@ export const createCollapsePresence: PresenceMotionFnCreator<
   // Implement a regular collapse as a special case of the delayed collapse,
   // where the delays are zero, and the size and opacity durations are equal.
   createCollapseDelayedPresence({
-    enterSizeDuration: duration,
-    enterEasing: easing,
+    sizeDuration: duration,
+    easing: easing,
     exitSizeDuration: exitDuration,
     exitEasing,
   });
