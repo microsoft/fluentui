@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: map horizontal bar trace with appropriate base to gantt chart",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
