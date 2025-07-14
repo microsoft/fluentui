@@ -1752,6 +1752,12 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
     const thetas = series.theta!;
     const rVals = series.r!;
 
+    // Skip if rVals or thetas are not arrays
+    if (!isArrayOrTypedArray(rVals) || !isArrayOrTypedArray(thetas)) {
+      projection.data[sindex] = series;
+      continue;
+    }
+
     // retrieve polar axis settings
     const dirMultiplier = input.layout?.polar?.angularaxis?.direction === 'clockwise' ? -1 : 1;
     const rotationRad = ((input.layout?.polar?.angularaxis?.rotation ?? 0) * Math.PI) / 180;
