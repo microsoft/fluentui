@@ -58,7 +58,7 @@ import {
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
-import { extractMaybeLineOptions, renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
+import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
