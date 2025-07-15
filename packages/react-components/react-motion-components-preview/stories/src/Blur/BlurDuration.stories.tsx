@@ -36,9 +36,9 @@ const useClasses = makeStyles({
   },
 });
 
-const durationOptions = [
-  { label: 'Fast (200ms)', duration: 200, exitDuration: 200 },
-  { label: 'Slow (800ms)', duration: 800, exitDuration: 800 },
+const durationOptions: Array<{ label: string; duration: number; exitDuration?: number }> = [
+  { label: 'Fast (200ms)', duration: 200 },
+  { label: 'Slow (800ms)', duration: 800 },
   { label: 'Mixed (200ms enter, 800ms exit)', duration: 200, exitDuration: 800 },
 ];
 
@@ -70,7 +70,13 @@ export const Duration = () => {
                 <div>
                   Enter: {option.duration}ms
                   <br />
-                  Exit: {option.exitDuration}ms
+                  Exit: {option.exitDuration ?? option.duration}ms
+                  {!option.exitDuration && (
+                    <>
+                      <br />
+                      <small>(Exit defaults to Enter duration)</small>
+                    </>
+                  )}
                 </div>
               </div>
             </Blur>
