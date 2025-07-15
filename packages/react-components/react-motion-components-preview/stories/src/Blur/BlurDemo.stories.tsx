@@ -44,9 +44,15 @@ const useClasses = makeStyles({
 });
 
 const images = [
-  { gradient: 'repeating-linear-gradient(45deg, #4a90e2 0px, #4a90e2 20px, #7b68ee 20px, #7b68ee 40px)' },
-  { gradient: 'repeating-linear-gradient(135deg, #ff6b6b 0px, #ff6b6b 20px, #ffa726 20px, #ffa726 40px)' },
-  { gradient: 'repeating-linear-gradient(225deg, #4ecdc4 0px, #4ecdc4 20px, #26a69a 20px, #26a69a 40px)' },
+  {
+    gradient: `repeating-linear-gradient(45deg, ${tokens.colorPaletteBlueBorderActive} 0px, ${tokens.colorPaletteBlueBorderActive} 20px, ${tokens.colorPaletteBlueForeground2} 20px, ${tokens.colorPaletteBlueForeground2} 40px)`,
+  },
+  {
+    gradient: `repeating-linear-gradient(135deg, ${tokens.colorPaletteRedBorderActive} 0px, ${tokens.colorPaletteRedBorderActive} 20px, ${tokens.colorPaletteRedForeground2} 20px, ${tokens.colorPaletteRedForeground2} 40px)`,
+  },
+  {
+    gradient: `repeating-linear-gradient(225deg, ${tokens.colorPaletteTealBorderActive} 0px, ${tokens.colorPaletteTealBorderActive} 20px, ${tokens.colorPaletteTealForeground2} 20px, ${tokens.colorPaletteTealForeground2} 40px)`,
+  },
 ];
 
 export const LayeredBlurDemo = () => {
