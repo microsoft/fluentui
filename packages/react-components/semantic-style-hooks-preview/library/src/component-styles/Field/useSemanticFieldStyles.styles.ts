@@ -167,7 +167,12 @@ export const useSemanticFieldStyles = (_state: unknown): FieldState => {
   }
 
   if (state.hint) {
-    state.hint.className = mergeClasses(fieldClassNames.hint, secondaryTextBaseClassName, state.hint.className);
+    state.hint.className = mergeClasses(
+      state.hint.className,
+      fieldClassNames.hint,
+      secondaryTextBaseClassName,
+      getSlotClassNameProp_unstable(state.hint),
+    );
   }
 
   return state;

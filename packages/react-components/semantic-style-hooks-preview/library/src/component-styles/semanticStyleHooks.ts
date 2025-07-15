@@ -18,7 +18,7 @@ import {
   useSemanticDrawerHeaderStyles,
   useSemanticOverlayDrawerSurfaceStyles,
 } from './Drawer';
-import { useSemanticFieldStyles } from './Field/useSemanticFieldStyles.styles';
+import { useSemanticFieldStyles } from './Field';
 import { useSemanticLabelStyles } from './Label';
 import { useSemanticLinkStyles } from './Link';
 import { useSemanticProgressBarStyles } from './ProgressBar/useSemanticProgressBarStyles.styles';
