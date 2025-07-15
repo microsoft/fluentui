@@ -132,6 +132,10 @@ export function useSafeZoneArea({
   });
 
   const onSvgMouseMove = useEventCallback((e: React.MouseEvent) => {
+    setSafeZoneCloseTimeout(() => {
+      stateStore.toggleActive(false);
+      onSafeZoneTimeout?.();
+    }, timeout);
     onSafeZoneMove?.(e);
   });
 

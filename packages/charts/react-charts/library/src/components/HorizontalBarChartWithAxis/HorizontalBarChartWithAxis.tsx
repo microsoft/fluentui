@@ -26,13 +26,16 @@ import {
   StringAxis,
   getTypeOfAxis,
   getNextColor,
+  findHBCWANumericMinMaxOfY,
+  createYAxisForHorizontalBarChartWithAxis,
+  IDomainNRange,
+  domainRangeOfNumericForHorizontalBarChartWithAxis,
+  createStringYAxisForHorizontalBarChartWithAxis,
   areArraysEqual,
   useRtl,
   DataVizPalette,
   getColorFromToken,
   computeLongestBars,
-  IDomainNRange,
-  domainRangeOfNumericForHorizontalBarChartWithAxis,
   groupChartDataByYValue,
   MIN_DOMAIN_MARGIN,
 } from '../../utilities/index';
@@ -801,6 +804,9 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
+        createYAxis={createYAxisForHorizontalBarChartWithAxis}
+        createStringYAxis={createStringYAxisForHorizontalBarChartWithAxis}
+        getMinMaxOfYAxis={findHBCWANumericMinMaxOfY}
         barwidth={_barHeight}
         getmargins={_getMargins}
         getYDomainMargins={_getDomainMarginsForHorizontalBarChart}

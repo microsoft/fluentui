@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 04 Jul 2025 10:02:44 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jul 2025 15:59:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.18.0)
+
+Fri, 11 Jul 2025 15:59:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.17.6..@fluentui/react-menu_v9.18.0)
+
+### Minor changes
+
+- feat: Add timeout configuration to safezone prop ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by lingfangao@hotmail.com)
+- Bump @fluentui/react-positioning to v9.19.0 ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by beachball)
+
+### Patches
+
+- fix(react-menu): Fix disabled styles for secondaryContent and subText ([PR #34795](https://github.com/microsoft/fluentui/pull/34795) by jiangemma@microsoft.com)
+- fix: resolve regression with ".hoverDelay" handling ([PR #34793](https://github.com/microsoft/fluentui/pull/34793) by olfedias@microsoft.com)
 
 ## [9.17.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.17.6)
 

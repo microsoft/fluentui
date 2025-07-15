@@ -33,6 +33,11 @@ import {
   getCurveFactory,
   find,
   findNumericMinMaxOfY,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfNumericForAreaChart,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  createStringYAxis,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { Legend, Legends } from '../Legends/index';
@@ -135,6 +140,35 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     );
 
     const classes = useAreaChartStyles(props);
+
+    function _getDomainNRangeValues(
+      points: LineChartPoints[],
+      margins: Margins,
+      width: number,
+      chartType: ChartTypes,
+      isRTL: boolean,
+      xAxisType: XAxisTypes,
+      barWidth: number,
+      tickValues: Date[] | number[] | undefined,
+    ) {
+      let domainNRangeValue: IDomainNRange;
+      if (xAxisType === XAxisTypes.NumericAxis) {
+        domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
+      } else if (xAxisType === XAxisTypes.DateAxis) {
+        domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+          points,
+          margins,
+          width,
+          isRTL,
+          tickValues! as Date[],
+          chartType,
+          barWidth,
+        );
+      } else {
+        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+      }
+      return domainNRangeValue;
+    }
 
     function _getMargins(margins: Margins) {
       _margins = margins;
@@ -910,12 +944,16 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           chartType={ChartTypes.AreaChart}
           calloutProps={calloutProps}
           legendBars={legends}
+          createYAxis={createNumericYAxis}
           xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
           tickParams={tickParams}
           maxOfYVal={data.maxOfYVal}
           getGraphData={_getGraphData}
+          getDomainNRangeValues={_getDomainNRangeValues}
+          createStringYAxis={createStringYAxis}
           getmargins={_getMargins}
           onChartMouseLeave={_handleChartMouseLeave}
+          getMinMaxOfYAxis={findNumericMinMaxOfY}
           enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
           componentRef={cartesianChartRef}
           /* eslint-disable react/jsx-no-bind */

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-message-bar
 
-This log was last generated on Fri, 27 Jun 2025 13:39:41 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jul 2025 15:59:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.5.4)
+
+Fri, 11 Jul 2025 15:59:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.5.3..@fluentui/react-message-bar_v9.5.4)
+
+### Patches
+
+- fix: MessageBarActions renders slots with keys ([PR #34801](https://github.com/microsoft/fluentui/pull/34801) by lingfangao@hotmail.com)
 
 ## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.5.3)
 

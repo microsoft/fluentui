@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-menu): Fix disabled styles for secondaryContent and subText",
-  "packageName": "@fluentui/react-menu",
-  "email": "jiangemma@microsoft.com",
-  "dependentChangeType": "patch"
-}

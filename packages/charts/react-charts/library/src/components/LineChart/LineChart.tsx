@@ -31,10 +31,15 @@ import {
   tooltipOfAxislabels,
   Points,
   pointTypes,
-  getMinMaxOfYAxis,
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
+  findNumericMinMaxOfY,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfNumericForAreaChart,
+  createStringYAxis,
   useRtl,
   formatDate,
   getCurveFactory,
@@ -200,6 +205,36 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       }),
       [],
     );
+
+    function _getDomainNRangeValues(
+      points: LineChartPoints[],
+      margins: Margins,
+      width: number,
+      chartType: ChartTypes,
+      isRTL: boolean,
+      xAxisType: XAxisTypes,
+      barWidth: number,
+      tickValues: Date[] | number[] | undefined,
+      shiftX: number,
+    ) {
+      let domainNRangeValue: IDomainNRange;
+      if (xAxisType === XAxisTypes.NumericAxis) {
+        domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
+      } else if (xAxisType === XAxisTypes.DateAxis) {
+        domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+          points,
+          margins,
+          width,
+          isRTL,
+          tickValues! as Date[],
+          chartType,
+          barWidth,
+        );
+      } else {
+        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+      }
+      return domainNRangeValue;
+    }
 
     function _injectIndexPropertyInLineChartData(
       lineChartData?: LineChartPoints[],
@@ -905,7 +940,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         _colorFillBars.current = props.colorFillBars!;
       }
 
-      const yMinMaxValues = getMinMaxOfYAxis(_points, ChartTypes.LineChart);
+      const yMinMaxValues = findNumericMinMaxOfY(_points);
       const FILL_Y_PADDING = 3;
       for (let i = 0; i < _colorFillBars.current.length; i++) {
         const colorFillBar = _colorFillBars.current[i];
@@ -1347,9 +1382,13 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
+        createYAxis={createNumericYAxis}
         getmargins={_getMargins}
+        getMinMaxOfYAxis={findNumericMinMaxOfY}
         getGraphData={_initializeLineChartData}
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
+        getDomainNRangeValues={_getDomainNRangeValues}
+        createStringYAxis={createStringYAxis}
         onChartMouseLeave={_handleChartMouseLeave}
         enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
         componentRef={cartesianChartRef}

@@ -9,6 +9,11 @@ import {
   resolveCSSVariables,
   XAxisTypes,
   YAxisType,
+  createNumericYAxis,
+  IMargins,
+  IDomainNRange,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { CartesianChart, ChartPopoverProps, ChildProps } from '../CommonComponents/index';
@@ -69,6 +74,30 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     }),
     [],
   );
+
+  function _getMinMaxOfYAxis() {
+    return { startValue: 0, endValue: 0 };
+  }
+
+  function _getDomainNRangeValues(
+    points: HeatMapChartDataPoint[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  }
 
   const _getXandY = (): { x: string | Date | number; y: string | Date | number } => {
     let x: string | Date | number = '';
@@ -668,8 +697,12 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       xAxisType={XAxisTypes.StringAxis}
       yAxisType={YAxisType.StringAxis}
       calloutProps={calloutProps}
+      createYAxis={createNumericYAxis}
       datasetForXAxisDomain={_stringXAxisDataPoints.current}
       stringDatasetForYAxisDomain={_stringYAxisDataPoints.current}
+      createStringYAxis={createStringYAxis}
+      getDomainNRangeValues={_getDomainNRangeValues}
+      getMinMaxOfYAxis={_getMinMaxOfYAxis}
       getmargins={_getMargins}
       xAxisTickCount={_stringXAxisDataPoints.current.length}
       xAxistickSize={0}

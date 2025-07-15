@@ -408,56 +408,35 @@ const createYAxisParams = (yAxisParams?: Partial<utils.IYAxisParams>): utils.IYA
   };
 };
 
-describe('createYAxis', () => {
-  it('should render y-axis labels correctly for horizontal bar chart with axis', () => {
-    const yAxisParams = createYAxisParams();
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxis(yAxisParams, false, axisData, utils.ChartTypes.HorizontalBarChartWithAxis, 16, false);
-    expect(yAxisParams.yAxisElement).toMatchSnapshot();
-  });
-
-  it('should render y-axis labels correctly for other charts', () => {
-    const yAxisParams = createYAxisParams();
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxis(yAxisParams, false, axisData, utils.ChartTypes.VerticalBarChart, 16, false);
-    expect(yAxisParams.yAxisElement).toMatchSnapshot();
-  });
-});
-
 describe('createYAxisForHorizontalBarChartWithAxis', () => {
   it('should render y-axis labels correctly with specific min and max tick values', () => {
     const yAxisParams = createYAxisParams({ yMaxValue: 10, yMinValue: 1 });
     delete yAxisParams.yMinMaxValues;
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false, axisData, 16);
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with specific tick padding value', () => {
     const yAxisParams = createYAxisParams({ tickPadding: 5 });
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false, axisData, 16);
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a specific number of ticks', () => {
     const yAxisParams = createYAxisParams({ yAxisTickCount: 2 });
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false, axisData, 16);
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, true, axisData, 16);
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a custom tick format', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: (domainValue: number) => `₹${domainValue}` });
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false, axisData, 16);
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
@@ -467,21 +446,21 @@ describe('createNumericYAxisForOtherCharts', () => {
     const yAxisParams = createYAxisParams({ yMaxValue: 10, yMinValue: 1, maxOfYVal: 5 });
     delete yAxisParams.yMinMaxValues;
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createNumericYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.VerticalBarChart);
+    utils.createNumericYAxis(yAxisParams, false, axisData, false, utils.ChartTypes.VerticalBarChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with specific tick padding value', () => {
     const yAxisParams = createYAxisParams({ tickPadding: 5 });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createNumericYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
+    utils.createNumericYAxis(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a specific number of ticks', () => {
     const yAxisParams = createYAxisParams({ yAxisTickCount: 3 });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createNumericYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.VerticalBarChart);
+    utils.createNumericYAxis(yAxisParams, false, axisData, false, utils.ChartTypes.VerticalBarChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
@@ -491,35 +470,35 @@ describe('createNumericYAxisForOtherCharts', () => {
       eventLabelHeight: 20,
     });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createNumericYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
+    utils.createNumericYAxis(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createNumericYAxisForOtherCharts(yAxisParams, true, axisData, false, utils.ChartTypes.VerticalBarChart);
+    utils.createNumericYAxis(yAxisParams, true, axisData, false, utils.ChartTypes.VerticalBarChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for secondary scale', () => {
     const yAxisParams = createYAxisParams();
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createNumericYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart, true);
+    utils.createNumericYAxis(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for secondary scale when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createNumericYAxisForOtherCharts(yAxisParams, true, axisData, false, utils.ChartTypes.VerticalBarChart, true);
+    utils.createNumericYAxis(yAxisParams, true, axisData, false, utils.ChartTypes.VerticalBarChart, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a custom tick format', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: d3Format('$') });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createNumericYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
+    utils.createNumericYAxis(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
@@ -529,13 +508,13 @@ describe('createStringYAxis', () => {
 
   it('should render y-axis labels correctly for horizontal bar chart with axis', () => {
     const yAxisParams = createYAxisParams();
-    utils.createStringYAxis(yAxisParams, dataPoints, false, utils.ChartTypes.HorizontalBarChartWithAxis, 16);
+    utils.createStringYAxisForHorizontalBarChartWithAxis(yAxisParams, dataPoints, false, 16);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for other charts', () => {
     const yAxisParams = createYAxisParams();
-    utils.createStringYAxis(yAxisParams, dataPoints, false, utils.ChartTypes.VerticalBarChart, undefined);
+    utils.createStringYAxis(yAxisParams, dataPoints, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
@@ -562,30 +541,30 @@ describe('createStringYAxisForHorizontalBarChartWithAxis', () => {
   });
 });
 
-describe('createStringYAxisForOtherCharts', () => {
+describe('createStringYAxis', () => {
   const dataPoints: string[] = ['label 1', 'label 2', 'label 3'];
 
   it('should render y-axis labels correctly with specific tick padding value', () => {
     const yAxisParams = createYAxisParams({ tickPadding: 5 });
-    utils.createStringYAxisForOtherCharts(yAxisParams, dataPoints, false);
+    utils.createStringYAxis(yAxisParams, dataPoints, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for specific padding values', () => {
     const yAxisParams = createYAxisParams({ yAxisPadding: 0.5 });
-    utils.createStringYAxisForOtherCharts(yAxisParams, dataPoints, false);
+    utils.createStringYAxis(yAxisParams, dataPoints, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
-    utils.createStringYAxisForOtherCharts(yAxisParams, dataPoints, true);
+    utils.createStringYAxis(yAxisParams, dataPoints, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a custom tick format', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: (value: string) => `Y-axis ${value}` });
-    utils.createStringYAxisForOtherCharts(yAxisParams, dataPoints, false);
+    utils.createStringYAxis(yAxisParams, dataPoints, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
@@ -766,23 +745,23 @@ describe('createYAxisLabels', () => {
   });
 
   it('should terminate when no node is provided', () => {
-    expect(utils.createYAxisLabels(null, undefined, 20, false, 0, false)).toBeUndefined();
+    expect(utils.createYAxisLabels(null, undefined, 20, false, false)).toBeUndefined();
   });
 
   it('should retain full y-axis labels when truncateLabel is false', () => {
-    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, 0, false);
+    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it(`should truncate y-axis labels when their length exceeds noOfCharsToTruncate
   and truncateLabel is true`, () => {
-    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 10, true, 0, false);
+    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 10, true, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   // FIXME - non deterministic snapshots causing master pipeline breaks
   it.skip('should offset y-axis labels when layout direction is RTL', () => {
-    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, 15, true);
+    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
@@ -1056,12 +1035,12 @@ describe('domainRageOfVerticalNumeric', () => {
   };
 
   it('should return domain and range values correctly for numeric x-axis', () => {
-    const result = utils.domainRageOfVerticalNumeric(points, margins, 100, false, 16);
+    const result = utils.domainRangeOfVerticalNumeric(points, margins, 100, false, 16);
     matchResult(result);
   });
 
   it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
-    const result = utils.domainRageOfVerticalNumeric(points, margins, 100, true, 16);
+    const result = utils.domainRangeOfVerticalNumeric(points, margins, 100, true, 16);
     matchResult(result);
   });
 });
@@ -1084,17 +1063,7 @@ describe('getDomainNRangeValues', () => {
         ],
       },
     ];
-    const result = utils.getDomainNRangeValues(
-      points,
-      margins,
-      100,
-      utils.ChartTypes.AreaChart,
-      false,
-      utils.XAxisTypes.NumericAxis,
-      16,
-      undefined,
-      1,
-    );
+    const result = utils.domainRangeOfNumericForAreaChart(points, margins, 100, false);
     matchResult(result);
   });
 
@@ -1103,17 +1072,7 @@ describe('getDomainNRangeValues', () => {
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];
-    const result = utils.getDomainNRangeValues(
-      points,
-      margins,
-      100,
-      utils.ChartTypes.VerticalStackedBarChart,
-      false,
-      utils.XAxisTypes.NumericAxis,
-      16,
-      undefined,
-      1,
-    );
+    const result = utils.domainRangeOfVSBCNumeric(points, margins, 100, false, 16);
     matchResult(result);
   });
 
@@ -1122,17 +1081,7 @@ describe('getDomainNRangeValues', () => {
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];
-    const result = utils.getDomainNRangeValues(
-      points,
-      margins,
-      100,
-      utils.ChartTypes.VerticalBarChart,
-      false,
-      utils.XAxisTypes.NumericAxis,
-      16,
-      undefined,
-      1,
-    );
+    const result = utils.domainRangeOfVerticalNumeric(points, margins, 100, false, 16);
     matchResult(result);
   });
 
@@ -1141,33 +1090,7 @@ describe('getDomainNRangeValues', () => {
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];
-    const result = utils.getDomainNRangeValues(
-      points,
-      margins,
-      100,
-      utils.ChartTypes.HorizontalBarChartWithAxis,
-      false,
-      utils.XAxisTypes.NumericAxis,
-      16,
-      undefined,
-      1,
-      X_ORIGIN,
-    );
-    matchResult(result);
-  });
-
-  it("should return empty domain and range values for charts that don't support numeric x-axis", () => {
-    const result = utils.getDomainNRangeValues(
-      [],
-      margins,
-      100,
-      utils.ChartTypes.GroupedVerticalBarChart,
-      false,
-      utils.XAxisTypes.NumericAxis,
-      16,
-      undefined,
-      1,
-    );
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, 16);
     matchResult(result);
   });
 
@@ -1181,62 +1104,33 @@ describe('getDomainNRangeValues', () => {
         ],
       },
     ];
-    const result = utils.getDomainNRangeValues(
+    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
       points,
       margins,
       100,
-      utils.ChartTypes.AreaChart,
       false,
-      utils.XAxisTypes.DateAxis,
-      16,
       undefined,
-      1,
+      utils.ChartTypes.AreaChart,
+      16,
     );
     matchResult(result);
   });
 
   it("should return empty domain and range values for charts that don't support date x-axis", () => {
-    const result = utils.getDomainNRangeValues(
+    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
       [],
       margins,
       100,
-      utils.ChartTypes.GroupedVerticalBarChart,
       false,
-      utils.XAxisTypes.DateAxis,
-      16,
       undefined,
-      1,
+      utils.ChartTypes.GroupedVerticalBarChart,
+      16,
     );
     matchResult(result);
   });
 
   it('should return domain and range values correctly for charts with string x-axis', () => {
-    const result = utils.getDomainNRangeValues(
-      [],
-      margins,
-      100,
-      utils.ChartTypes.VerticalStackedBarChart,
-      false,
-      utils.XAxisTypes.StringAxis,
-      16,
-      undefined,
-      1,
-    );
-    matchResult(result);
-  });
-
-  it("should return empty domain and range values for charts that don't support string x-axis", () => {
-    const result = utils.getDomainNRangeValues(
-      [],
-      margins,
-      100,
-      utils.ChartTypes.LineChart,
-      false,
-      utils.XAxisTypes.StringAxis,
-      16,
-      undefined,
-      1,
-    );
+    const result = utils.domainRangeOfXStringAxis(margins, 100, false);
     matchResult(result);
   });
 });
@@ -1315,7 +1209,7 @@ describe('getMinMaxOfYAxis', () => {
         ],
       },
     ];
-    const result = utils.getMinMaxOfYAxis(points, utils.ChartTypes.AreaChart);
+    const result = utils.findNumericMinMaxOfY(points);
     matchResult(result);
   });
 
@@ -1324,7 +1218,7 @@ describe('getMinMaxOfYAxis', () => {
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];
-    const result = utils.getMinMaxOfYAxis(points, utils.ChartTypes.VerticalStackedBarChart);
+    const result = utils.findVSBCNumericMinMaxOfY(points);
     matchResult(result);
   });
 
@@ -1333,7 +1227,7 @@ describe('getMinMaxOfYAxis', () => {
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];
-    const result = utils.getMinMaxOfYAxis(points, utils.ChartTypes.VerticalBarChart);
+    const result = utils.findVerticalNumericMinMaxOfY(points);
     matchResult(result);
   });
 
@@ -1342,12 +1236,7 @@ describe('getMinMaxOfYAxis', () => {
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];
-    const result = utils.getMinMaxOfYAxis(points, utils.ChartTypes.HorizontalBarChartWithAxis);
-    matchResult(result);
-  });
-
-  it('should return empty minimum and maximum values for other charts', () => {
-    const result = utils.getMinMaxOfYAxis([], utils.ChartTypes.HeatMapChart);
+    const result = utils.findHBCWANumericMinMaxOfY(points, utils.YAxisType.NumericAxis);
     matchResult(result);
   });
 });

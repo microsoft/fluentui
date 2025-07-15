@@ -1,8 +1,27 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Wed, 02 Jul 2025 07:20:11 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Jul 2025 07:21:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.22](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.22)
+
+Mon, 14 Jul 2025 07:21:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.21..@fluentui/chart-utilities_v1.1.22)
+
+### Patches
+
+- feat: map horizontal bar trace with appropriate base to gantt chart ([PR #34791](https://github.com/microsoft/fluentui/pull/34791) by kumarkshitij@microsoft.com)
+- fix(chart-utilities): Adding field in decode handler ([PR #34820](https://github.com/microsoft/fluentui/pull/34820) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.21](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.21)
+
+Fri, 11 Jul 2025 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.20..@fluentui/chart-utilities_v1.1.21)
+
+### Patches
+
+- feat(chart-utilities): Support for categorical theta values for scatter polar chart ([PR #34682](https://github.com/microsoft/fluentui/pull/34682) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.20](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.20)
 

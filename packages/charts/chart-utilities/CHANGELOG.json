@@ -2,6 +2,42 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Mon, 14 Jul 2025 07:21:14 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.22",
+      "version": "1.1.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "d90622f34a244cbd10e3df2b3e93ab4c18e40956",
+            "comment": "feat: map horizontal bar trace with appropriate base to gantt chart"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "52f4b5557aec6cfc1b6520d21b55ba1ca407e9b0",
+            "comment": "fix(chart-utilities): Adding field in decode handler"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Jul 2025 07:20:30 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.21",
+      "version": "1.1.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "b0468a68a12b53a3866735c2b9f6b6c7a0534ebd",
+            "comment": "feat(chart-utilities): Support for categorical theta values for scatter polar chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Jul 2025 07:20:11 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.20",
       "version": "1.1.20",

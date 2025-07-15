@@ -2,6 +2,57 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Fri, 11 Jul 2025 15:59:20 GMT",
+      "tag": "@fluentui/react-charts_v9.1.7",
+      "version": "9.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "938a069ea4e0c460050e0dc147b9786e144cb6d3",
+            "comment": "fix accessibility bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "1fc2a1ddd89ff3b3bc7665e7b85de3c20c9b5c3e",
+            "comment": "sankey chart callout fix"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a8439274731ec7188bad83c29266733be484f507",
+            "comment": "fix accessibility issues"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "0325b812a82757e4d221d63b652e206fef5b659d",
+            "comment": "fix(react-charts): Fix hook used conditionally inside a function"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-overflow to v9.4.7",
+            "commit": "0aea3258a8deb968bd8e8f5a4a9c3e8a162b4bc3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-popover to v9.11.7",
+            "commit": "0aea3258a8deb968bd8e8f5a4a9c3e8a162b4bc3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tooltip to v9.7.7",
+            "commit": "0aea3258a8deb968bd8e8f5a4a9c3e8a162b4bc3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 10:02:50 GMT",
       "tag": "@fluentui/react-charts_v9.1.6",
       "version": "9.1.6",

@@ -26,6 +26,7 @@ import {
   IVerticalBarChartDataPoint,
   ISankeyChartData,
   ILineChartLineOptions,
+  IGanttChartDataPoint,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -69,10 +70,11 @@ import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { IFunnelChartDataPoint, IFunnelChartProps } from '../FunnelChart/FunnelChart.types';
-import { getOpacity, extractColor, resolveColor } from './PlotlyColorAdapter';
+import { getOpacity, extractColor, resolveColor, createColorScale } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
+import { IGanttChartProps } from '../GanttChart/GanttChart.types';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
 export const SINGLE_REPEAT = 'repeat(1, 1fr)';
@@ -418,14 +420,8 @@ export const transformPlotlyJsonToVSBCProps = (
   let colorScale: ((value: number) => string) | undefined = undefined;
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
-    if (
-      input.layout?.coloraxis?.colorscale?.length &&
-      isArrayOrTypedArray(series.marker?.color) &&
-      (series.marker?.color as Color[]).length > 0 &&
-      typeof (series.marker?.color as Color[])?.[0] === 'number'
-    ) {
-      colorScale = createColorScale(input.layout, series);
-    }
+    colorScale = createColorScale(input.layout, series, colorScale);
+
     const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     // extract bar colors for each series only once
     const extractedBarColors = extractColor(
@@ -536,21 +532,6 @@ export const transformPlotlyJsonToVSBCProps = (
   };
 };
 
-const createColorScale = (layout: Partial<Layout>, series: Partial<PlotData>) => {
-  const scale = layout?.coloraxis?.colorscale as Array<[number, string]>;
-  const colorValues = series.marker?.color as number[];
-  const [dMin, dMax] = [
-    layout?.coloraxis?.cmin ?? Math.min(...colorValues),
-    layout?.coloraxis?.cmax ?? Math.max(...colorValues),
-  ];
-
-  // Normalize colorscale domain to actual data domain
-  const scaleDomain = scale.map(([pos]) => dMin + pos * (dMax - dMin));
-  const scaleColors = scale.map(item => item[1]);
-
-  return d3ScaleLinear<string>().domain(scaleDomain).range(scaleColors);
-};
-
 export const transformPlotlyJsonToGVBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
@@ -564,14 +545,8 @@ export const transformPlotlyJsonToGVBCProps = (
   let colorScale: ((value: number) => string) | undefined = undefined;
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
-    if (
-      input.layout?.coloraxis?.colorscale?.length &&
-      isArrayOrTypedArray(series.marker?.color) &&
-      (series.marker?.color as Color[]).length > 0 &&
-      typeof (series.marker?.color as Color[])?.[0] === 'number'
-    ) {
-      colorScale = createColorScale(input.layout, series);
-    }
+    colorScale = createColorScale(input.layout, series, colorScale);
+
     // extract colors for each series only once
     const extractedColors = extractColor(
       input.layout?.template?.layout?.colorway,
@@ -653,14 +628,8 @@ export const transformPlotlyJsonToVBCProps = (
       return;
     }
 
-    if (
-      input.layout?.coloraxis?.colorscale?.length &&
-      isArrayOrTypedArray(series.marker?.color) &&
-      (series.marker?.color as Color[]).length > 0 &&
-      typeof (series.marker?.color as Color[])?.[0] === 'number'
-    ) {
-      colorScale = createColorScale(input.layout, series);
-    }
+    colorScale = createColorScale(input.layout, series, colorScale);
+
     // extract colors for each series only once
     const extractedColors = extractColor(
       input.layout?.template?.layout?.colorway,
@@ -853,7 +822,8 @@ const transformPlotlyJsonToScatterTraceProps = (
       const seriesOpacity = getOpacity(series, index);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
       // if mode contains 'text', we prioritize showing the text over curving the line
-      const lineOptions = !series.mode?.includes('text') ? getLineOptions(series.line) : undefined;
+      const lineOptions =
+        !series.mode?.includes('text') && series.type !== 'scatterpolar' ? getLineOptions(series.line) : undefined;
       const legendShape = getLegendShape(series);
 
       const validXYRanges = getValidXYRanges(series);
@@ -882,7 +852,10 @@ const transformPlotlyJsonToScatterTraceProps = (
           color: rgb(seriesColor).copy({ opacity: seriesOpacity }).formatHex8() ?? seriesColor,
           lineOptions: {
             ...(lineOptions ?? {}),
-            mode: series.mode,
+            mode: series.type !== 'scatterpolar' ? series.mode : 'scatterpolar',
+            // originXOffset is not typed on Layout, but may be present in input.layout as a part of projection of
+            // scatter polar coordingates to cartesian coordinates
+            originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
           },
           useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         } as ILineChartPoints;
@@ -949,14 +922,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   let colorScale: ((value: number) => string) | undefined = undefined;
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
-      if (
-        input.layout?.coloraxis?.colorscale?.length &&
-        isArrayOrTypedArray(series.marker?.color) &&
-        (series.marker?.color as Color[]).length > 0 &&
-        typeof (series.marker?.color as Color[])?.[0] === 'number'
-      ) {
-        colorScale = createColorScale(input.layout, series);
-      }
+      colorScale = createColorScale(input.layout, series, colorScale);
+
       // extract colors for each series only once
       const extractedColors = extractColor(
         input.layout?.template?.layout?.colorway,
@@ -1016,6 +983,81 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundCorners: true,
+    ...getTitles(input.layout),
+    ...getAxisCategoryOrderProps(input.data, input.layout),
+  };
+};
+
+export const transformPlotlyJsonToGanttChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): IGanttChartProps => {
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  let colorScale: ((value: number) => string) | undefined = undefined;
+  const chartData: IGanttChartDataPoint[] = input.data
+    .map((series: Partial<PlotData>, index: number) => {
+      colorScale = createColorScale(input.layout, series, colorScale);
+
+      // extract colors for each series only once
+      const extractedColors = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.marker?.color,
+        colorMap,
+        isDarkTheme,
+      ) as string[] | string | undefined;
+      const legend = legends[index];
+      const isXDate = input.layout?.xaxis?.type === 'date' || isDateArray(series.x);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const convertXValueToNumber = (value: any) => {
+        return isInvalidValue(value) ? 0 : isXDate ? new Date(value as string | number).getTime() : (value as number);
+      };
+
+      return (series.y as Datum[])
+        .map((yVal, i: number) => {
+          if (isInvalidValue(yVal)) {
+            return null;
+          }
+          // resolve color for each legend's bars from the colorscale or extracted colors
+          const color = colorScale
+            ? colorScale(
+                isArrayOrTypedArray(series.marker?.color)
+                  ? ((series.marker?.color as Color[])?.[i % (series.marker?.color as Color[]).length] as number)
+                  : 0,
+              )
+            : resolveColor(extractedColors, i, legend, colorMap, isDarkTheme);
+          const opacity = getOpacity(series, i);
+          const base = convertXValueToNumber(series.base?.[i]);
+          const xVal = convertXValueToNumber(series.x?.[i]);
+
+          return {
+            x: {
+              start: isXDate ? new Date(base) : base,
+              end: isXDate ? new Date(base + xVal) : base + xVal,
+            },
+            y: yVal,
+            legend,
+            color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+          } as IGanttChartDataPoint;
+        })
+        .filter(point => point !== null) as IGanttChartDataPoint[];
+    })
+    .flat();
+
+  return {
+    data: chartData,
+    showYAxisLables: true,
+    height: input.layout?.height ?? 350,
+    width: input.layout?.width,
+    hideTickOverlap: true,
+    hideLegend,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
+    roundCorners: true,
+    useUTC: false,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
   };
@@ -1669,22 +1711,137 @@ export const transformPlotlyJsonToFunnelChartProps = (
 
 export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
   const projection: PlotlySchema = { ...input };
+
+  // 1. Find the global min and max radius across all series
+  let minRadius = 0;
+  let maxRadius = 0;
+  for (let sindex = 0; sindex < input.data.length; sindex++) {
+    const rVals = (input.data[sindex] as Partial<PlotData>).r;
+    if (rVals && isArrayOrTypedArray(rVals)) {
+      for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
+        if (!isInvalidValue(rVals[ptindex])) {
+          minRadius = Math.min(minRadius, rVals[ptindex] as number);
+          maxRadius = Math.max(maxRadius, rVals[ptindex] as number);
+        }
+      }
+    }
+  }
+
+  // 2. If there are negative radii, compute the shift
+  const radiusShift = minRadius < 0 ? -minRadius : 0;
+
+  // 3. Project all points and create a perfect square domain
+  const allX: number[] = [];
+  const allY: number[] = [];
+  let originX: number | null = null;
   for (let sindex = 0; sindex < input.data.length; sindex++) {
     const series = input.data[sindex] as Partial<PlotData>;
+    // If scatterpolar, set text to theta values as strings
+    if (series.type === 'scatterpolar' && Array.isArray(series.theta)) {
+      series.text = series.theta.map(v => String(v));
+    }
     series.x = [] as Datum[];
     series.y = [] as Datum[];
-    for (let ptindex = 0; ptindex < (series.r?.length ?? 0); ptindex++) {
-      if (isInvalidValue(series.theta?.[ptindex]) || isInvalidValue(series.r?.[ptindex])) {
+    const thetas = series.theta!;
+    const rVals = series.r!;
+
+    // Skip if rVals or thetas are not arrays
+    if (!isArrayOrTypedArray(rVals) || !isArrayOrTypedArray(thetas)) {
+      projection.data[sindex] = series;
+      continue;
+    }
+
+    // Compute tick positions if categorical
+    let uniqueTheta: Datum[] = [];
+    let categorical = false;
+    if (!isNumberArray(thetas)) {
+      uniqueTheta = Array.from(new Set(thetas));
+      categorical = true;
+    }
+
+    for (let ptindex = 0; ptindex < rVals.length; ptindex++) {
+      if (isInvalidValue(thetas?.[ptindex]) || isInvalidValue(rVals?.[ptindex])) {
         continue;
       }
 
-      const thetaRad = ((series.theta![ptindex] as number) * Math.PI) / 180;
-      const radius = series.r![ptindex] as number;
-      series.x.push(radius * Math.cos(thetaRad));
-      series.y.push(radius * Math.sin(thetaRad));
+      // 4. Map theta to angle in radians
+      let thetaRad;
+      if (categorical) {
+        const idx = uniqueTheta.indexOf(thetas[ptindex]);
+        const step = (2 * Math.PI) / uniqueTheta.length;
+        thetaRad = idx * step;
+      } else {
+        thetaRad = ((thetas[ptindex] as number) * Math.PI) / 180;
+      }
+      // 5. Shift only the polar origin (not the cartesian)
+      const rawRadius = rVals[ptindex] as number;
+      const polarRadius = rawRadius + radiusShift; // Only for projection
+      // 6. Calculate cartesian coordinates (with shifted polar origin)
+      const x = polarRadius * Math.cos(thetaRad);
+      const y = polarRadius * Math.sin(thetaRad);
+
+      // Calculate the cartesian coordinates of the original polar origin (0,0)
+      // This is the point that should be mapped to (0,0) in cartesian coordinates
+      if (sindex === 0 && ptindex === 0) {
+        // For polar origin (r=0, θ=0), cartesian coordinates are (0,0)
+        // But since we shifted the radius by radiusShift, the cartesian origin is at (radiusShift, 0)
+        originX = radiusShift;
+      }
+
+      series.x.push(x);
+      series.y.push(y);
+      allX.push(x);
+      allY.push(y);
     }
+
+    // Map text to each data point for downstream chart rendering
+    if (series.x && series.y) {
+      (series as { data?: unknown[] }).data = series.x.map((xVal, idx) => ({
+        x: xVal,
+        y: (series.y as number[])[idx],
+        ...(series.text ? { text: (series.text as string[])[idx] } : {}),
+      }));
+    }
+
     projection.data[sindex] = series;
   }
+
+  // 7. Recenter all cartesian coordinates
+  if (originX !== null) {
+    for (let sindex = 0; sindex < projection.data.length; sindex++) {
+      const series = projection.data[sindex] as Partial<PlotData>;
+      if (series.x && series.y) {
+        series.x = (series.x as number[]).map((v: number) => v - originX!);
+      }
+    }
+    // Also recenter allX for normalization
+    for (let i = 0; i < allX.length; i++) {
+      allX[i] = allX[i] - originX!;
+    }
+  }
+
+  // 8. Find the maximum absolute value among all x and y
+  let maxAbs = Math.max(...allX.map(Math.abs), ...allY.map(Math.abs));
+  maxAbs = maxAbs === 0 ? 1 : maxAbs;
+
+  // 9. Rescale all points so that the largest |x| or |y| is 0.5
+  for (let sindex = 0; sindex < projection.data.length; sindex++) {
+    const series = projection.data[sindex] as Partial<PlotData>;
+    if (series.x && series.y) {
+      series.x = (series.x as number[]).map((v: number) => v / (2 * maxAbs));
+      series.y = (series.y as number[]).map((v: number) => v / (2 * maxAbs));
+    }
+  }
+
+  // 10. Customize layout for perfect square with absolute positioning
+  const size = input.layout?.width || input.layout?.height || 500;
+  projection.layout = {
+    ...projection.layout,
+    width: size,
+    height: size,
+  };
+  // Attach originX as custom properties
+  (projection.layout as { __polarOriginX?: number }).__polarOriginX = originX ?? undefined;
 
   return projection;
 };

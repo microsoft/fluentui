@@ -2,6 +2,41 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Fri, 11 Jul 2025 15:59:22 GMT",
+      "tag": "@fluentui/react-menu_v9.18.0",
+      "version": "9.18.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "124147f8360ee4e42f75123901d34e3313d1b16f",
+            "comment": "fix(react-menu): Fix disabled styles for secondaryContent and subText"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "d12ce05c64cfca6f27d1710d2434e555492741cf",
+            "comment": "fix: resolve regression with \".hoverDelay\" handling"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "0aea3258a8deb968bd8e8f5a4a9c3e8a162b4bc3",
+            "comment": "feat: Add timeout configuration to safezone prop"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.19.0",
+            "commit": "0aea3258a8deb968bd8e8f5a4a9c3e8a162b4bc3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 10:02:44 GMT",
       "tag": "@fluentui/react-menu_v9.17.6",
       "version": "9.17.6",

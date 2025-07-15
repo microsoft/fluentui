@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add subtle animation for indeterminate progress bar when reduced motion mode is enabled",
-  "packageName": "@fluentui/react-progress",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
