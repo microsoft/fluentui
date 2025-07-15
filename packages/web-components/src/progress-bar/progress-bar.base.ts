@@ -79,7 +79,9 @@ export class BaseProgressBar extends FASTElement {
 
   /**
    * The maximum value
+   *
    * @internal
+   * @remarks
    * HTML Attribute: `max`
    */
   @attr({ converter: nullableNumberConverter })
@@ -100,6 +102,7 @@ export class BaseProgressBar extends FASTElement {
   public constructor() {
     super();
 
+    /** @internal */
     this.elementInternals.role = 'progressbar';
   }
 
