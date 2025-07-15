@@ -20,13 +20,13 @@ const useClasses = makeStyles({
     width: '250px',
     height: '180px',
     padding: '20px',
-    border: `${tokens.strokeWidthThinner} solid ${tokens.colorNeutralStroke1}`,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     backgroundColor: tokens.colorNeutralBackground1,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: tokens.fontSizeBase300,
+    fontSize: tokens.fontSizeBase400,
     textAlign: 'center',
     backgroundImage:
       'linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%), linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%)',
@@ -59,8 +59,8 @@ export const Opacity = () => {
 
       <div className={classes.container}>
         <div className={classes.example}>
-          <h3>With Opacity Animation</h3>
-          <p>Blur + Fade (default)</p>
+          {/* <h3>With Opacity Animation</h3> */}
+          {/* <p>Blur + Fade (default)</p> */}
           <Button onClick={() => setWithOpacityVisible(prev => !prev)}>{withOpacityVisible ? 'Hide' : 'Show'}</Button>
           <Blur visible={withOpacityVisible} animateOpacity={true}>
             <div className={classes.card}>
@@ -75,8 +75,8 @@ export const Opacity = () => {
         </div>
 
         <div className={classes.example}>
-          <h3>Blur Only</h3>
-          <p>No opacity animation</p>
+          {/* <h3>Blur Only</h3> */}
+          {/* <p>No opacity animation</p> */}
           <Button onClick={() => setWithoutOpacityVisible(prev => !prev)}>
             {withoutOpacityVisible ? 'Hide' : 'Show'}
           </Button>

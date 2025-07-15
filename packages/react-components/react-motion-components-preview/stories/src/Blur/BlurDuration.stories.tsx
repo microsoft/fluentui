@@ -20,7 +20,7 @@ const useClasses = makeStyles({
     width: '200px',
     height: '120px',
     padding: '20px',
-    border: `${tokens.strokeWidthThinner} solid ${tokens.colorNeutralStroke1}`,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     backgroundColor: tokens.colorNeutralBackground1,
     display: 'flex',
@@ -38,8 +38,7 @@ const useClasses = makeStyles({
 
 const durationOptions = [
   { label: 'Fast (200ms)', duration: 200, exitDuration: 200 },
-  { label: 'Normal (500ms)', duration: 500, exitDuration: 500 },
-  { label: 'Slow (1000ms)', duration: 1000, exitDuration: 1000 },
+  { label: 'Slow (800ms)', duration: 800, exitDuration: 800 },
   { label: 'Mixed (200ms enter, 800ms exit)', duration: 200, exitDuration: 800 },
 ];
 

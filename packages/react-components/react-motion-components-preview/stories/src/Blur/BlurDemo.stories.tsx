@@ -50,9 +50,6 @@ const images = [
   {
     gradient: `repeating-linear-gradient(135deg, ${tokens.colorPaletteRedBorderActive} 0px, ${tokens.colorPaletteRedBorderActive} 20px, ${tokens.colorPaletteRedForeground2} 20px, ${tokens.colorPaletteRedForeground2} 40px)`,
   },
-  {
-    gradient: `repeating-linear-gradient(225deg, ${tokens.colorPaletteTealBorderActive} 0px, ${tokens.colorPaletteTealBorderActive} 20px, ${tokens.colorPaletteTealForeground2} 20px, ${tokens.colorPaletteTealForeground2} 40px)`,
-  },
 ];
 
 export const LayeredBlurDemo = () => {
