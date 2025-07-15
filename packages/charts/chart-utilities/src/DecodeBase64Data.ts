@@ -96,7 +96,7 @@ function decodeBdataInDict(d: any): void {
 }
 
 // Helper to reshape a flat array into the given shape (e.g., [rows, cols])
-function reshapeArray(data: number[], shape: number[]): number[] | number[][] | number[][][] {
+export function reshapeArray(data: number[], shape: number[]): number[] | number[][] | number[][][] {
   if (shape.length === 1) {
     return data;
   }
