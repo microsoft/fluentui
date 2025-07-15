@@ -259,6 +259,7 @@
     "parse-diff": "0.7.1",
     "patch-package": "8.0.0",
     "path-browserify": "1.0.1",
+    "playwright": "1.49.1",
     "plop": "2.6.0",
     "portfinder": "1.0.28",
     "postcss": "8.4.31",
