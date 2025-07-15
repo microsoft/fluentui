@@ -68,6 +68,12 @@ export interface IGanttChartProps extends ICartesianChartProps {
    * The prop used to enable rounded corners for the bars.
    */
   roundCorners?: boolean;
+
+  /**
+   * Maximum height of a bar, in pixels.
+   * @default 24
+   */
+  maxBarHeight?: number;
 }
 
 /**

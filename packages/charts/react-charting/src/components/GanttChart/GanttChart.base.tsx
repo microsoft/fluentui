@@ -4,7 +4,7 @@ import { ScaleLinear, ScaleBand, ScaleTime } from 'd3-scale';
 import { DirectionalHint, FocusZoneDirection, getId, getRTL } from '@fluentui/react';
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { IMargins, IChart, IImageExportOptions, IGanttChartDataPoint } from '../../types/IDataPoint';
-import { CartesianChart } from '../CommonComponents/index';
+import { CartesianChart, IModifiedCartesianChartProps } from '../CommonComponents/index';
 import { IGanttChartProps } from './GanttChart.types';
 import {
   ChartHoverCard,
@@ -33,23 +33,21 @@ type NumberScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
 type DateScale = ScaleTime<Date, number>;
 
+const DEFAULT_BAR_HEIGHT = 24;
+const MIN_BAR_HEIGHT = 1;
+
 export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.forwardRef<
   HTMLDivElement,
   IGanttChartProps
->(({ useUTC = true, yAxisCategoryOrder = 'default', ...props }, forwardedRef) => {
-  const _barHeight = React.useRef<number>(0);
+>(({ useUTC = true, yAxisCategoryOrder = 'default', maxBarHeight = 24, ...props }, forwardedRef) => {
+  const _barHeight = React.useRef<number>(0); // 1
   const _calloutId = React.useRef<string>(getId('callout'));
   const margins = React.useRef<IMargins>({});
-  const _bars = React.useRef<React.JSX.Element[]>([]);
-  const _xAxisType = React.useRef<XAxisTypes>(XAxisTypes.DateAxis);
-  const _yAxisType = React.useRef<YAxisType>(YAxisType.StringAxis);
   const _calloutAnchorPoint = React.useRef<IGanttChartDataPoint | null>(null);
   const _cartesianChartRef = React.useRef<IChart>(null);
   const _legendsRef = React.useRef<ILegendContainer>(null);
-  const _domainMargin = React.useRef<number>(MIN_DOMAIN_MARGIN);
-  const _yAxisPadding = React.useRef<number>(0);
   const _emptyChartId = React.useRef<string>(getId('Gantt_empty'));
-  const _legendColorMap = React.useRef<Record<string, [string, string]>>({});
+  const _legendColorMap = React.useRef<Record<string, [string, string]>>({}); // 5
   const _gradientId = React.useRef<string>(getId('Gantt_gradient'));
   const prevProps = React.useRef<Partial<IGanttChartProps>>({});
 
@@ -113,8 +111,26 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     );
   }, [props.data, props.theme?.isInverted, props.enableGradient]);
 
+  const _xAxisType = React.useMemo(() => {
+    if (_points.length > 0) {
+      return getTypeOfAxis(_points[0].x.start, true) as XAxisTypes;
+    }
+    return XAxisTypes.DateAxis;
+  }, [_points]);
+
+  const _yAxisType = React.useMemo(() => {
+    if (_points.length > 0) {
+      return getTypeOfAxis(_points[0].y, false) as YAxisType;
+    }
+    return YAxisType.StringAxis;
+  }, [_points]);
+
+  const _yAxisPadding = React.useMemo(() => {
+    return getScalePadding(props.yAxisPadding, undefined, 1 / 2);
+  }, [props.yAxisPadding]);
+
   const _dateFormatOptions = React.useMemo(() => {
-    if (_xAxisType.current !== XAxisTypes.DateAxis) {
+    if (_xAxisType !== XAxisTypes.DateAxis) {
       return undefined;
     }
 
@@ -128,7 +144,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     });
 
     return getMultiLevelDateTimeFormatOptions(lowestFormatLevel, highestFormatLevel);
-  }, [useUTC, _points]);
+  }, [useUTC, _points, _xAxisType]);
 
   const _getDomainNRangeValues = React.useCallback(
     (
@@ -160,40 +176,25 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     [],
   );
 
-  const _adjustProps = (): void => {
-    _barHeight.current = Math.max(props.barHeight || 24, 1);
-
-    if (props.data && props.data.length > 0) {
-      _xAxisType.current = getTypeOfAxis(props.data[0].x.start, true) as XAxisTypes;
-      _yAxisType.current = getTypeOfAxis(props.data[0].y, false) as YAxisType;
-    }
-
-    _yAxisPadding.current = getScalePadding(props.yAxisPadding, undefined, 1 / 2);
-  };
-
   const _getMargins = React.useCallback((_margins: IMargins) => {
     margins.current = _margins;
   }, []);
 
-  const _renderContentForOnlyBars = (point: IGanttChartDataPoint): React.JSX.Element => {
-    return (
-      <ChartHoverCard
-        XValue={point.yAxisCalloutData || point.y.toString()}
-        Legend={point.legend}
-        YValue={point.xAxisCalloutData || _getFormattedXValue(point)}
-        color={point.color}
-        culture={props.culture}
-      />
-    );
-  };
-
-  const _renderCallout = (point?: IGanttChartDataPoint): React.JSX.Element | null => {
-    return point ? _renderContentForOnlyBars(point) : null;
-  };
-
   const _getCustomizedCallout = () => {
+    const _defaultRender = (point?: IGanttChartDataPoint): React.JSX.Element | null => {
+      return point ? (
+        <ChartHoverCard
+          XValue={point.yAxisCalloutData || point.y.toString()}
+          Legend={point.legend}
+          YValue={point.xAxisCalloutData || _getFormattedXValue(point)}
+          color={point.color}
+          culture={props.culture}
+        />
+      ) : null;
+    };
+
     return props.onRenderCalloutPerDataPoint
-      ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps, _renderCallout)
+      ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps, _defaultRender)
       : null;
   };
 
@@ -202,7 +203,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       let formattedStartX: string;
       let formattedEndX: string;
 
-      if (_xAxisType.current === XAxisTypes.DateAxis) {
+      if (_xAxisType === XAxisTypes.DateAxis) {
         formattedStartX = formatDateToLocaleString(
           point.x.start as Date,
           props.culture,
@@ -218,14 +219,17 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
 
       return `${formattedStartX} - ${formattedEndX}`;
     },
-    [props.culture, useUTC, _dateFormatOptions],
+    [props.culture, useUTC, _dateFormatOptions, _xAxisType],
   );
 
   const _getAriaLabel = React.useCallback(
     (point: IGanttChartDataPoint): string => {
       const xValue = point.xAxisCalloutData || _getFormattedXValue(point);
       const yValue = point.yAxisCalloutData || point.y;
-      return point.callOutAccessibilityData?.ariaLabel || `${yValue}. ` + `${xValue}.`;
+      return (
+        point.callOutAccessibilityData?.ariaLabel ||
+        `${yValue}. ` + (point.legend ? `${point.legend}, ` : '') + `${xValue}.`
+      );
     },
     [_getFormattedXValue],
   );
@@ -287,57 +291,71 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
   );
 
   const _createBars = React.useCallback(
-    (xScale: DateScale | NumberScale, yScale: NumberScale | StringScale): React.JSX.Element[] => {
+    ({
+      xScale,
+      yScalePrimary: yScale,
+    }: {
+      xScale: DateScale | NumberScale;
+      yScalePrimary: NumberScale | StringScale;
+    }): React.JSX.Element => {
+      const getGradientId = (legend: string | undefined) => {
+        return `${_gradientId.current}_${legend}`;
+      };
+
+      const gradientDefs: React.JSX.Element[] = [];
+      if (props.enableGradient) {
+        Object.keys(_legendColorMap.current).forEach((legend: string, index: number) => {
+          const [startColor, endColor] = _legendColorMap.current[legend];
+          gradientDefs.push(
+            <linearGradient key={index} id={getGradientId(legend)}>
+              <stop offset="0" stopColor={startColor} />
+              <stop offset="100%" stopColor={endColor} />
+            </linearGradient>,
+          );
+        });
+      }
+
+      let scaleBandwidth = 0;
+      if (_yAxisType === YAxisType.StringAxis) {
+        scaleBandwidth = (yScale as StringScale).bandwidth();
+        _barHeight.current = _getBarHeight(scaleBandwidth);
+      }
+
       const bars = _points.map((point: IGanttChartDataPoint, index: number) => {
+        const rectStartX = xScale(point.x.start);
+        const rectEndX = xScale(point.x.end);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const rectY = yScale(point.y as any)! + (scaleBandwidth - _barHeight.current) / 2;
+
         const shouldHighlight = _noLegendHighlighted() || _legendHighlighted(point.legend);
 
-        let startColor = point.color!;
-        let endColor = startColor;
-        if (props.enableGradient) {
-          startColor = point.gradient![0];
-          endColor = point.gradient![1];
-        }
-        const gradientId = `${_gradientId.current}_${index}`;
-
-        const startX = xScale(point.x.start);
-        const endX = xScale(point.x.end);
-        const y =
-          (_yAxisType.current === YAxisType.StringAxis
-            ? (yScale as StringScale)(point.y as string)! + (yScale as StringScale).bandwidth() / 2
-            : (yScale as NumberScale)(point.y as number)) -
-          _barHeight.current / 2;
-
         return (
-          <React.Fragment key={index}>
-            {props.enableGradient && (
-              <defs>
-                <linearGradient id={gradientId}>
-                  <stop offset="0" stopColor={startColor} />
-                  <stop offset="100%" stopColor={endColor} />
-                </linearGradient>
-              </defs>
-            )}
-            <rect
-              x={Math.min(startX, endX)}
-              y={y}
-              width={Math.abs(endX - startX)}
-              height={_barHeight.current}
-              rx={props.roundCorners ? 3 : 0}
-              fill={props.enableGradient ? `url(#${gradientId})` : startColor}
-              opacity={shouldHighlight ? 1 : 0.1}
-              onClick={point.onClick}
-              onMouseOver={event => _onBarHover(point, event)}
-              onMouseLeave={_onBarLeave}
-              onFocus={event => _onBarFocus(point, event)}
-              onBlur={_onBarLeave}
-              data-is-focusable={shouldHighlight}
-              role="img"
-              aria-label={_getAriaLabel(point)}
-            />
-          </React.Fragment>
+          <rect
+            key={index}
+            x={Math.min(rectStartX, rectEndX)}
+            y={rectY}
+            width={Math.abs(rectEndX - rectStartX)}
+            height={_barHeight.current}
+            rx={props.roundCorners ? 3 : 0}
+            fill={props.enableGradient ? `url(#${getGradientId(point.legend)})` : point.color}
+            opacity={shouldHighlight ? 1 : 0.1}
+            onClick={point.onClick}
+            onMouseOver={event => _onBarHover(point, event)}
+            onMouseLeave={_onBarLeave}
+            onFocus={event => _onBarFocus(point, event)}
+            onBlur={_onBarLeave}
+            data-is-focusable={shouldHighlight}
+            role="img"
+            aria-label={_getAriaLabel(point)}
+          />
         );
       });
-      return bars;
+      return (
+        <g>
+          {gradientDefs.length > 0 ? <defs>{gradientDefs}</defs> : null}
+          {bars}
+        </g>
+      );
     },
     [
       _getAriaLabel,
@@ -348,21 +366,8 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       props.enableGradient,
       props.roundCorners,
       _points,
+      _yAxisType,
     ],
-  );
-
-  const _getGraphData = React.useCallback(
-    (
-      xScale: DateScale | NumberScale,
-      yScale: NumberScale | StringScale,
-      containerHeight: number,
-      containerWidth: number,
-      xAxisElement: SVGElement | null,
-      yAxisElement: SVGElement | null,
-    ) => {
-      return (_bars.current = _createBars(xScale, yScale));
-    },
-    [_createBars],
   );
 
   const _onBarLeave = (): void => {
@@ -443,7 +448,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
 
   const _getChartTitle = (): string => {
     const { chartTitle } = props;
-    return (chartTitle ? `${chartTitle}. ` : '') + `Gantt chart with ${_points.length} bars. `;
+    return (chartTitle ? `${chartTitle}. ` : '') + `Gantt chart with ${_points.length} data points. `;
   };
 
   const _isChartEmpty = (): boolean => {
@@ -452,7 +457,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
 
   const _getYDomainMargins = React.useCallback(
     (containerHeight: number): IMargins => {
-      _domainMargin.current = MIN_DOMAIN_MARGIN;
+      let domainMargin = MIN_DOMAIN_MARGIN;
 
       const ySet = new Set<string | number>();
       _points.forEach((point: IGanttChartDataPoint) => {
@@ -464,26 +469,32 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       const totalHeight =
         containerHeight - (margins.current.top! + MIN_DOMAIN_MARGIN) - (margins.current.bottom! + MIN_DOMAIN_MARGIN);
 
-      if (_yAxisType.current !== YAxisType.StringAxis) {
-        _barHeight.current = Math.max(
-          props.barHeight ||
-            calculateAppropriateBarWidth(uniqueY as number[] | Date[], totalHeight, _yAxisPadding.current),
-          1,
+      if (_yAxisType !== YAxisType.StringAxis) {
+        _barHeight.current = _getBarHeight(
+          calculateAppropriateBarWidth(uniqueY as number[] | Date[], totalHeight, _yAxisPadding),
         );
-        _domainMargin.current += _barHeight.current / 2;
+        domainMargin += _barHeight.current / 2;
       }
 
       return {
         ...margins.current,
-        top: margins.current.top! + _domainMargin.current,
-        bottom: margins.current.bottom! + _domainMargin.current,
+        top: margins.current.top! + domainMargin,
+        bottom: margins.current.bottom! + domainMargin,
       };
     },
-    [props.barHeight, _points],
+    [props.barHeight, _points, _yAxisType, _yAxisPadding],
   );
 
   const _getOrderedYAxisLabels = () => {
-    return sortAxisCategories(_mapCategoryToValues(), yAxisCategoryOrder);
+    if (_yAxisType !== YAxisType.StringAxis) {
+      return [];
+    }
+
+    const categoryToValues = _mapCategoryToValues();
+    if (yAxisCategoryOrder === 'default') {
+      return Object.keys(categoryToValues).reverse();
+    }
+    return sortAxisCategories(categoryToValues, yAxisCategoryOrder);
   };
 
   const _mapCategoryToValues = () => {
@@ -492,22 +503,32 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       if (!categoryToValues[point.y]) {
         categoryToValues[point.y] = [];
       }
-      // FIXME
-      // categoryToValues[point.y].push(point.x.end - point.x.start);
+      categoryToValues[point.y].push(+point.x.end - +point.x.start);
     });
     return categoryToValues;
   };
 
-  const _renderBars = React.useCallback(() => {
-    return <g>{_bars.current}</g>;
-  }, []);
+  const _getBarHeight = React.useCallback(
+    (adjustedValue: number): number => {
+      let barHeight: number;
+      if (typeof props.barHeight === 'number') {
+        barHeight = props.barHeight;
+      } else {
+        barHeight = adjustedValue;
+      }
+      if (typeof maxBarHeight === 'number') {
+        barHeight = Math.min(barHeight, maxBarHeight);
+      }
+      barHeight = Math.max(barHeight, MIN_BAR_HEIGHT);
+      return barHeight;
+    },
+    [props.barHeight, maxBarHeight],
+  );
 
   if (!_isChartEmpty()) {
-    _adjustProps();
+    _barHeight.current = _getBarHeight(DEFAULT_BAR_HEIGHT);
 
-    const yAxisLabels = _getOrderedYAxisLabels();
-    const legendBars: React.JSX.Element = _getLegendData();
-    const calloutProps = {
+    const calloutProps: IModifiedCartesianChartProps['calloutProps'] = {
       isCalloutVisible,
       directionalHint: DirectionalHint.topAutoEdge,
       id: `toolTip${_calloutId.current}`,
@@ -522,7 +543,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       preventDismissOnLostFocus: true,
       ...props.calloutProps,
     };
-    const tickParams = {
+    const tickParams: IModifiedCartesianChartProps['tickParams'] = {
       tickValues: props.tickValues,
       tickFormat: props.tickFormat,
     };
@@ -530,16 +551,16 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     return (
       <CartesianChart
         {...props}
-        yAxisPadding={_yAxisPadding.current}
+        yAxisPadding={_yAxisPadding}
         chartTitle={_getChartTitle()}
         points={_points}
         chartType={ChartTypes.GanttChart}
-        xAxisType={_xAxisType.current}
-        yAxisType={_yAxisType.current}
-        stringDatasetForYAxisDomain={yAxisLabels}
+        xAxisType={_xAxisType}
+        yAxisType={_yAxisType}
+        stringDatasetForYAxisDomain={_getOrderedYAxisLabels()}
         calloutProps={calloutProps}
         tickParams={tickParams}
-        legendBars={legendBars}
+        legendBars={_getLegendData()}
         createYAxis={createYAxisForHorizontalBarChartWithAxis}
         getDomainNRangeValues={_getDomainNRangeValues}
         createStringYAxis={createStringYAxisForHorizontalBarChartWithAxis}
@@ -548,11 +569,10 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
         customizedCallout={_getCustomizedCallout()}
         getmargins={_getMargins}
         getYDomainMargins={_getYDomainMargins}
-        getGraphData={_getGraphData}
         onChartMouseLeave={_handleChartMouseLeave}
         ref={_cartesianChartRef}
         useUTC={useUTC}
-        children={_renderBars}
+        children={_createBars}
       />
     );
   } else {

@@ -689,6 +689,7 @@ export interface IGanttChartProps extends ICartesianChartProps {
     culture?: string;
     data?: IGanttChartDataPoint[];
     enableGradient?: boolean;
+    maxBarHeight?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IGanttChartDataPoint>;
     roundCorners?: boolean;
     showYAxisLables?: boolean;

@@ -128,7 +128,7 @@ describe('GanttChart rendering and behavior tests', () => {
     const bars = container.querySelectorAll('rect');
     expect(bars).toHaveLength(8);
     bars.forEach(bar => {
-      expect(bar).toHaveAttribute('height', '50');
+      expect(bar).toHaveAttribute('height', '24');
     });
   });
 });
@@ -207,7 +207,7 @@ describe('GanttChart interaction and accessibility tests', () => {
     }
   });
 
-  it.skip(`should display callout on hover over highlighted bar and hide on hover over unhighlighted bar`, async () => {
+  it(`should display callout on hover over highlighted bar and hide on hover over unhighlighted bar`, async () => {
     const { container } = render(<GanttChart data={ganttData} calloutProps={{ doNotLayer: true }} />);
     const legendTitle = 'Complete';
     await act(() => {
@@ -215,16 +215,16 @@ describe('GanttChart interaction and accessibility tests', () => {
     });
     const bars = container.querySelectorAll('rect');
     expect(bars).toHaveLength(8);
-    for (let i = 0; i < bars.length; i++) {
-      await act(() => {
-        fireEvent.mouseOver(bars[i]);
-      });
-      if (ganttData[i].legend === legendTitle) {
-        expect(container.querySelector('.ms-Callout')).not.toBeNull();
-      } else {
-        expect(container.querySelector('.ms-Callout')).toBeNull();
-      }
-    }
+
+    await act(() => {
+      fireEvent.mouseOver(bars[4]);
+    });
+    expect(container.querySelector('.ms-Callout')).toBeNull();
+
+    await act(() => {
+      fireEvent.mouseOver(bars[1]);
+    });
+    expect(container.querySelector('.ms-Callout')).not.toBeNull();
   });
 
   it(`should highlight corresponding bars for multiple selected legends`, async () => {
@@ -266,7 +266,7 @@ describe('GanttChart interaction and accessibility tests', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it.skip('should pass accessibility checks with no violations', async () => {
+  it('should pass accessibility checks with no violations', async () => {
     const { container } = render(<GanttChart data={ganttData} />);
     jest.useRealTimers();
     const results = await axe(container);

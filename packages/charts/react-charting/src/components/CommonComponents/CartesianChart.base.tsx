@@ -444,30 +444,21 @@ export class CartesianChartBase
       }
 
       if (chartTypesWithStringYAxis.includes(this.props.chartType) && this.props.yAxisType === YAxisType.StringAxis) {
-        // To create y axis tick values by if specified truncating the rest of the text
-        // and showing elipsis or showing the whole string,
-        yScalePrimary &&
-          // Note: This function should be invoked within the showYAxisLablesTooltip check,
-          // as its sole purpose is to truncate labels that exceed the noOfCharsToTruncate limit.
-          createYAxisLabels(
-            this.yAxisElement,
-            yScalePrimary,
-            this.props.noOfCharsToTruncate || 4,
-            this.props.showYAxisLablesTooltip || false,
-            this._isRtl,
-          );
-
-        // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
-        // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
-        // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with this._tooltipId)
-        if (!this.props.showYAxisLablesTooltip) {
-          try {
-            document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-            //eslint-disable-next-line no-empty
-          } catch (e) {}
-        }
         // Used to display tooltip at y axis labels.
         if (this.props.showYAxisLablesTooltip) {
+          // To create y axis tick values by if specified truncating the rest of the text
+          // and showing elipsis or showing the whole string,
+          yScalePrimary &&
+            // Note: This function should be invoked within the showYAxisLablesTooltip check,
+            // as its sole purpose is to truncate labels that exceed the noOfCharsToTruncate limit.
+            createYAxisLabels(
+              this.yAxisElement,
+              yScalePrimary,
+              this.props.noOfCharsToTruncate || 4,
+              this.props.showYAxisLablesTooltip || false,
+              this._isRtl,
+            );
+
           const yAxisElement = d3Select(this.yAxisElement).call(yScalePrimary);
           try {
             document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
@@ -479,6 +470,15 @@ export class CartesianChartBase
             axis: yAxisElement,
           };
           yAxisElement && tooltipOfAxislabels(ytooltipProps);
+        }
+        // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
+        // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
+        // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with this._tooltipId)
+        if (!this.props.showYAxisLablesTooltip) {
+          try {
+            document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+            //eslint-disable-next-line no-empty
+          } catch (e) {}
         }
       }
 
