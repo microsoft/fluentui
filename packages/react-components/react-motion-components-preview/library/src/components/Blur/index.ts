@@ -1,2 +1,2 @@
-export { Blur, BlurSnappy, BlurRelaxed } from './Blur';
+export { Blur } from './Blur';
 export type { BlurParams } from './blur-types';
