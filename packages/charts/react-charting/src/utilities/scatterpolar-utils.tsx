@@ -72,3 +72,22 @@ export function renderScatterPolarCategoryLabels({
 
   return renderedLabels;
 }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function extractMaybeLineOptions(lineOptions: any):
+  | {
+      originXOffset?: number;
+      direction?: 'clockwise' | 'counterclockwise';
+      rotation?: number;
+    }
+  | undefined {
+  return lineOptions
+    ? {
+        originXOffset: lineOptions.originXOffset,
+        direction:
+          lineOptions.direction === 'clockwise' || lineOptions.direction === 'counterclockwise'
+            ? lineOptions.direction
+            : undefined,
+        rotation: lineOptions.rotation,
+      }
+    : undefined;
+}

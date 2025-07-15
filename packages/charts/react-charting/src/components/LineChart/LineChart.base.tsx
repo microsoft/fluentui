@@ -58,7 +58,7 @@ import {
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
-import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
+import { extractMaybeLineOptions, renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -1356,17 +1356,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             xAxisScale: this._xAxisScale,
             yAxisScale: yScale,
             className: classNames.markerLabel || '',
-            maybeLineOptions: (() => {
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              const lineOpts = (this._points[i] as Partial<ILineChartPoints>)?.lineOptions as any;
-              return lineOpts
-                ? {
-                    originXOffset: lineOpts.originXOffset,
-                    direction: lineOpts.direction,
-                    rotation: lineOpts.rotation,
-                  }
-                : undefined;
-            })(),
+            maybeLineOptions: extractMaybeLineOptions((this._points[i] as Partial<ILineChartPoints>)?.lineOptions),
           }),
         );
       }

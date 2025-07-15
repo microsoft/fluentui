@@ -38,7 +38,7 @@ import { ILineChartPoints } from '../../types/IDataPoint';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { ScaleLinear } from 'd3-scale';
-import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
+import { renderScatterPolarCategoryLabels, extractMaybeLineOptions } from '../../utilities/scatterpolar-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -560,17 +560,9 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
               xAxisScale: _xAxisScale.current,
               yAxisScale: _yAxisScale.current,
               className: classNames.markerLabel || '',
-              maybeLineOptions: (() => {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                const lineOpts = (_points.current?.[i] as Partial<ILineChartPoints>)?.lineOptions as any;
-                return lineOpts
-                  ? {
-                      originXOffset: lineOpts.originXOffset,
-                      direction: lineOpts.direction,
-                      rotation: lineOpts.rotation,
-                    }
-                  : undefined;
-              })(),
+              maybeLineOptions: extractMaybeLineOptions(
+                (_points.current?.[i] as Partial<ILineChartPoints>)?.lineOptions,
+              ),
             }),
           );
         }

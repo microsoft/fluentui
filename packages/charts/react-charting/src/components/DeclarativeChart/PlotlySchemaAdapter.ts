@@ -1760,7 +1760,7 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
 
     // retrieve polar axis settings
     const dirMultiplier = input.layout?.polar?.angularaxis?.direction === 'clockwise' ? -1 : 1;
-    const rotationRad = ((input.layout?.polar?.angularaxis?.rotation ?? 0) * Math.PI) / 180;
+    const startAngleInRad = ((input.layout?.polar?.angularaxis?.rotation ?? 0) * Math.PI) / 180;
 
     // Compute tick positions if categorical
     let uniqueTheta: Datum[] = [];
@@ -1780,9 +1780,9 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       if (categorical) {
         const idx = uniqueTheta.indexOf(thetas[ptindex]);
         const step = (2 * Math.PI) / uniqueTheta.length;
-        thetaRad = rotationRad + dirMultiplier * idx * step;
+        thetaRad = startAngleInRad + dirMultiplier * idx * step;
       } else {
-        thetaRad = rotationRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
+        thetaRad = startAngleInRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
       }
       // 5. Shift only the polar origin (not the cartesian)
       const rawRadius = rVals[ptindex] as number;
