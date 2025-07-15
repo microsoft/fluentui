@@ -234,6 +234,7 @@ export const fluentOverrides: FluentOverrides = {
   statusBrandTintStroke: { f2Token: 'colorBrandStroke2' },
   statusDangerBackground: { f2Token: 'colorPaletteRedBackground3' },
   statusDangerForeground: { f2Token: 'colorNeutralForegroundOnBrand' },
+  statusAwayForeground: { f2Token: 'colorPaletteMarigoldBackground3' },
   statusDangerStroke: { f2Token: 'colorPaletteRedBorder2' },
   statusDangerTintBackground: { f2Token: 'colorStatusDangerBackground1' },
   statusDangerTintForeground: { f2Token: 'colorPaletteRedForeground3' },

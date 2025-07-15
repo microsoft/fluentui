@@ -5602,13 +5602,13 @@ export const textRampLgItemHeaderLineHeight = "var(--smtc-text-ramp-lg-item-head
 export const textRampLgItemHeaderLineHeightRaw = "--smtc-text-ramp-lg-item-header-line-height";
 
 // @public (undocumented)
-export const textRampLgLegalFontSize = "var(--smtc-text-ramp-lg-legal-font-size, var(--smtc-text-global-caption1-font-size))";
+export const textRampLgLegalFontSize = "var(--smtc-text-ramp-lg-legal-font-size, var(--smtc-text-global-caption1-font-size, var(--fontSizeBase200)))";
 
 // @public (undocumented)
 export const textRampLgLegalFontSizeRaw = "--smtc-text-ramp-lg-legal-font-size";
 
 // @public (undocumented)
-export const textRampLgLegalLineHeight = "var(--smtc-text-ramp-lg-legal-line-height, var(--smtc-text-global-caption1-line-height))";
+export const textRampLgLegalLineHeight = "var(--smtc-text-ramp-lg-legal-line-height, var(--smtc-text-global-caption1-line-height, var(--lineHeightBase200)))";
 
 // @public (undocumented)
 export const textRampLgLegalLineHeightRaw = "--smtc-text-ramp-lg-legal-line-height";

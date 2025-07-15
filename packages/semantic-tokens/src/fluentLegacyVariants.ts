@@ -635,4 +635,12 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorTransparentBackgroundPressed',
     originalToken: 'nullColor',
   },
+  _ctrlBadgeStatusBusyTintForeground: {
+    f2Token: 'colorPaletteRedBackground3',
+    originalToken: 'statusDangerTintForeground',
+  },
+  _ctrlBadgeStatusAvailableTintForeground: {
+    f2Token: 'colorPaletteLightGreenForeground3',
+    originalToken: 'statusSuccessTintForeground',
+  },
 };

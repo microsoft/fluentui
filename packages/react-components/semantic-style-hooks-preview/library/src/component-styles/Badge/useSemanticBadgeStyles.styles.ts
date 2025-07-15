@@ -1,13 +1,8 @@
 import { shorthands, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { BadgeSlots, BadgeState } from './Badge.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { badgeClassNames, type BadgeState } from '@fluentui/react-badge';
 import * as semanticTokens from '@fluentui/semantic-tokens';
-
-export const badgeClassNames: SlotClassNames<BadgeSlots> = {
-  root: 'fui-Badge',
-  icon: 'fui-Badge__icon',
-};
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 // The text content of the badge has additional horizontal padding, but there is no `text` slot to add that padding to.
 // Instead, add extra padding to the root, and a negative margin on the icon to "remove" the extra padding on the icon.
@@ -132,11 +127,11 @@ const useRootStyles = makeStyles({
     color: semanticTokens.statusInformativeForeground,
   },
   'filled-severe': {
-    backgroundColor: tokens.colorPaletteDarkOrangeBackground3, //come back to this one
+    backgroundColor: tokens.colorPaletteDarkOrangeBackground3, // Missing semantic token equivalent
     color: tokens.colorNeutralForegroundOnBrand,
   },
   'filled-subtle': {
-    backgroundColor: tokens.colorNeutralBackground1, //come back to this one
+    backgroundColor: tokens.colorNeutralBackground1, // Missing semantic token equivalent
     color: tokens.colorNeutralForeground1,
   },
   'filled-success': {
@@ -166,10 +161,10 @@ const useRootStyles = makeStyles({
     color: semanticTokens.statusInformativeTintForeground,
   },
   'ghost-severe': {
-    color: tokens.colorPaletteDarkOrangeForeground3, //come back to this one
+    color: tokens.colorPaletteDarkOrangeForeground3, // Missing semantic token equivalent
   },
   'ghost-subtle': {
-    color: tokens.colorNeutralForegroundStaticInverted, //come back to this one
+    color: tokens.colorNeutralForegroundStaticInverted, // Missing semantic token equivalents
   },
   'ghost-success': {
     color: semanticTokens._ctrlBadgeStatusSuccessTintForeground3,
@@ -199,10 +194,10 @@ const useRootStyles = makeStyles({
     ...shorthands.borderColor(semanticTokens.statusInformativeStroke),
   },
   'outline-severe': {
-    color: tokens.colorPaletteDarkOrangeForeground3, //come back to this one
+    color: tokens.colorPaletteDarkOrangeForeground3, // Missing semantic token equivalent
   },
   'outline-subtle': {
-    color: tokens.colorNeutralForegroundStaticInverted, //come back to this one
+    color: tokens.colorNeutralForegroundStaticInverted, // Missing semantic token equivalent
   },
   'outline-success': {
     color: semanticTokens._ctrlBadgeStatusSuccessTintForeground3,
@@ -308,15 +303,17 @@ const useIconStyles = makeStyles({
 /**
  * Applies style classnames to slots
  */
-export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
+export const useSemanticBadgeStyles = (_state: unknown): BadgeState => {
   'use no memo';
 
+  const state = _state as BadgeState;
   const rootClassName = useRootClassName();
   const rootStyles = useRootStyles();
 
   const smallToTiny = state.size === 'small' || state.size === 'extra-small' || state.size === 'tiny';
 
   state.root.className = mergeClasses(
+    state.root.className,
     badgeClassNames.root,
     rootClassName,
     smallToTiny && rootStyles.fontSmallToTiny,
@@ -326,7 +323,7 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
     state.appearance === 'ghost' && rootStyles.borderGhost,
     rootStyles[state.appearance],
     rootStyles[`${state.appearance}-${state.color}` as const],
-    state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
 
   const iconRootClassName = useIconRootClassName();
@@ -342,11 +339,12 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
     }
 
     state.icon.className = mergeClasses(
+      state.icon.className,
       badgeClassNames.icon,
       iconRootClassName,
       iconPositionClass,
       iconStyles[state.size],
-      state.icon.className,
+      getSlotClassNameProp_unstable(state.icon),
     );
   }
 

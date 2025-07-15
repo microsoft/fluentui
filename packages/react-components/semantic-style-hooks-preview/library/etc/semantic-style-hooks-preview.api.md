@@ -6,6 +6,7 @@
 
 import { AccordionHeaderState } from '@fluentui/react-accordion';
 import { AvatarState } from '@fluentui/react-avatar';
+import { BadgeState } from '@fluentui/react-badge';
 import { ButtonState } from '@fluentui/react-button';
 import { CheckboxState } from '@fluentui/react-checkbox';
 import { CompoundButtonState } from '@fluentui/react-button';
@@ -62,6 +63,9 @@ export const useSemanticAccordionHeaderStyles: (_state: unknown) => AccordionHea
 
 // @public (undocumented)
 export const useSemanticAvatarStyles: (_state: unknown) => AvatarState;
+
+// @public
+export const useSemanticBadgeStyles: (_state: unknown) => BadgeState;
 
 // @public (undocumented)
 export const useSemanticButtonStyles: (_state: unknown) => ButtonState;

@@ -139,6 +139,8 @@ import {
   spacingVerticalXXS,
   colorTransparentBackgroundHover,
   colorTransparentBackgroundPressed,
+  colorPaletteRedBackground3,
+  colorPaletteLightGreenForeground3,
 } from '../legacy/tokens';
 import {
   backgroundCtrlSubtleRestRaw,
@@ -1272,3 +1274,17 @@ export const _nullBackgroundColorHover = `var(${nullColorRaw}, ${colorTransparen
  * please use nullColor instead.
  */
 export const _nullBackgroundColorPressed = `var(${nullColorRaw}, ${colorTransparentBackgroundPressed})`;
+/**
+ * This is a legacy variant for statusDangerTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusDangerTintForeground instead.
+ */
+export const _ctrlBadgeStatusBusyTintForeground = `var(${statusDangerTintForegroundRaw}, ${colorPaletteRedBackground3})`;
+/**
+ * This is a legacy variant for statusSuccessTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusSuccessTintForeground instead.
+ */
+export const _ctrlBadgeStatusAvailableTintForeground = `var(${statusSuccessTintForegroundRaw}, ${colorPaletteLightGreenForeground3})`;

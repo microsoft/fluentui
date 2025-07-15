@@ -1937,5 +1937,7 @@ export {
   _ctrlTreePaddingTextTop,
   _nullBackgroundColorHover,
   _nullBackgroundColorPressed,
+  _ctrlBadgeStatusBusyTintForeground,
+  _ctrlBadgeStatusAvailableTintForeground,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';

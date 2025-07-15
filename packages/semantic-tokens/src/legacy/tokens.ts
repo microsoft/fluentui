@@ -360,6 +360,11 @@ export const colorBrandStroke2 = 'var(--colorBrandStroke2)';
  */
 export const colorPaletteRedBackground3 = 'var(--colorPaletteRedBackground3)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteMarigoldBackground3 | `colorPaletteMarigoldBackground3`} design token.
+ * @public
+ */
+export const colorPaletteMarigoldBackground3 = 'var(--colorPaletteMarigoldBackground3)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerBackground1 | `colorStatusDangerBackground1`} design token.
  * @public
  */
@@ -724,3 +729,8 @@ export const colorTransparentBackgroundHover = 'var(--colorTransparentBackground
  * @public
  */
 export const colorTransparentBackgroundPressed = 'var(--colorTransparentBackgroundPressed)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteLightGreenForeground3 | `colorPaletteLightGreenForeground3`} design token.
+ * @public
+ */
+export const colorPaletteLightGreenForeground3 = 'var(--colorPaletteLightGreenForeground3)';

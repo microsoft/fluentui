@@ -72,6 +72,7 @@ import {
   colorNeutralBackground5,
   colorNeutralForeground3,
   colorNeutralBackground4,
+  colorPaletteMarigoldBackground3,
   colorTransparentBackground,
   shadow64,
 } from '../legacy/tokens';
@@ -450,7 +451,7 @@ export const statusInformativeBackground = `var(${statusInformativeBackgroundRaw
 export const statusInformativeTintForeground = `var(${statusInformativeTintForegroundRaw}, ${colorNeutralForeground3})`;
 export const statusInformativeTintStroke = `var(${statusInformativeTintStrokeRaw}, ${colorNeutralStroke1})`;
 export const statusInformativeTintBackground = `var(${statusInformativeTintBackgroundRaw}, ${colorNeutralBackground4})`;
-export const statusAwayForeground = `var(${statusAwayForegroundRaw})`;
+export const statusAwayForeground = `var(${statusAwayForegroundRaw}, ${colorPaletteMarigoldBackground3})`;
 export const statusOofForeground = `var(${statusOofForegroundRaw})`;
 export const aiBrandStop1 = `var(${aiBrandStop1Raw})`;
 export const aiBrandStop2 = `var(${aiBrandStop2Raw})`;
