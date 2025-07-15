@@ -3,6 +3,8 @@ export type { MenuContextValue } from './contexts/menuContext';
 export { MenuTriggerContextProvider, useMenuTriggerContext_unstable } from './contexts/menuTriggerContext';
 export { MenuGroupContextProvider, useMenuGroupContext_unstable } from './contexts/menuGroupContext';
 export type { MenuGroupContextValue } from './contexts/menuGroupContext';
+export { MenuGridProvider, useMenuGridContext_unstable } from './contexts/menuGridContext';
+export type { MenuGridContextValue } from './contexts/menuGridContext';
 export { MenuListProvider, useMenuListContext_unstable } from './contexts/menuListContext';
 export type { MenuListContextValue } from './contexts/menuListContext';
 
@@ -67,6 +69,17 @@ export {
   useMenuItemRadio_unstable,
 } from './MenuItemRadio';
 export type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio';
+
+export {
+  MenuGrid,
+  menuGridClassNames,
+  renderMenuGrid_unstable,
+  useMenuGridContextValues_unstable,
+  useMenuGridStyles_unstable,
+  useMenuGrid_unstable,
+} from './MenuGrid';
+export type { MenuGridContextValues, MenuGridProps, MenuGridSlots, MenuGridState } from './MenuGrid';
+
 export {
   MenuList,
   menuListClassNames,
