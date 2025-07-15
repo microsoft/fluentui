@@ -3897,6 +3897,97 @@ Object {
 }
 `;
 
+exports[`getDomainNRangeValues should return domain and range values correctly for charts with string x-axis 1`] = `
+Object {
+  "dEndValue": 0,
+  "dStartValue": 0,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`getDomainNRangeValues should return domain and range values correctly for horizontal bar chart with numeric x-axis 1`] = `
+Object {
+  "dEndValue": NaN,
+  "dStartValue": NaN,
+  "rEndValue": 90,
+  "rStartValue": 21,
+}
+`;
+
+exports[`getDomainNRangeValues should return domain and range values correctly for line chart with date x-axis 1`] = `
+Object {
+  "dEndValue": 2021-01-03T00:00:00.000Z,
+  "dStartValue": 2021-01-02T00:00:00.000Z,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`getDomainNRangeValues should return domain and range values correctly for line chart with numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 10,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`getDomainNRangeValues should return domain and range values correctly for vertical bar chart with numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 10,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`getDomainNRangeValues should return domain and range values correctly for vertical stacked bar chart with numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 10,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`getDomainNRangeValues should return empty domain and range values for charts that don't support date x-axis 1`] = `
+Object {
+  "dEndValue": undefined,
+  "dStartValue": undefined,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`getMinMaxOfYAxis should return minimum and maximum values for horizontal bar chart with numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`getMinMaxOfYAxis should return minimum and maximum values for line chart with numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`getMinMaxOfYAxis should return minimum and maximum values for vertical bar chart with numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`getMinMaxOfYAxis should return minimum and maximum values for vertical stacked bar chart with numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
 exports[`getUnique should return an array of data points with unique values
 determined by the provided comparison key 1`] = `
 Array [

@@ -45,7 +45,7 @@ import {
   findVerticalNumericMinMaxOfY,
   createNumericYAxis,
   IDomainNRange,
-  domainRageOfVerticalNumeric,
+  domainRangeOfVerticalNumeric,
   domainRangeOfDateForAreaLineVerticalBarChart,
   domainRangeOfXStringAxis,
   createStringYAxis,
@@ -144,7 +144,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   ) {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
+      domainNRangeValue = domainRangeOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
     } else if (xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
         points,

@@ -1438,7 +1438,7 @@ export function domainRangeOfDateForScatterChart(
  * @param {number} barWidth
  * @returns {IDomainNRange}
  */
-export function domainRageOfVerticalNumeric(
+export function domainRangeOfVerticalNumeric(
   points: DataPoint[],
   margins: IMargins,
   containerWidth: number,

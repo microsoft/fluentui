@@ -1035,12 +1035,102 @@ describe('domainRageOfVerticalNumeric', () => {
   };
 
   it('should return domain and range values correctly for numeric x-axis', () => {
-    const result = utils.domainRageOfVerticalNumeric(points, margins, 100, false, 16);
+    const result = utils.domainRangeOfVerticalNumeric(points, margins, 100, false, 16);
     matchResult(result);
   });
 
   it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
-    const result = utils.domainRageOfVerticalNumeric(points, margins, 100, true, 16);
+    const result = utils.domainRangeOfVerticalNumeric(points, margins, 100, true, 16);
+    matchResult(result);
+  });
+});
+
+describe('getDomainNRangeValues', () => {
+  const margins: utils.IMargins = {
+    left: 5,
+    right: 10,
+    top: 0,
+    bottom: 0,
+  };
+
+  it('should return domain and range values correctly for line chart with numeric x-axis', () => {
+    const points: LineChartPoints[] = [
+      {
+        legend: 'Line 1',
+        data: [
+          { x: 10, y: 20 },
+          { x: 30, y: 40 },
+        ],
+      },
+    ];
+    const result = utils.domainRangeOfNumericForAreaChart(points, margins, 100, false);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for vertical stacked bar chart with numeric x-axis', () => {
+    const points: DataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.domainRangeOfVSBCNumeric(points, margins, 100, false, 16);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for vertical bar chart with numeric x-axis', () => {
+    const points: DataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.domainRangeOfVerticalNumeric(points, margins, 100, false, 16);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for horizontal bar chart with numeric x-axis', () => {
+    const points: HorizontalBarChartWithAxisDataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, 16);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for line chart with date x-axis', () => {
+    const points: LineChartPoints[] = [
+      {
+        legend: 'Line 1',
+        data: [
+          { x: new Date(Date.UTC(2021, 0, 3)), y: 10 },
+          { x: new Date(Date.UTC(2021, 0, 2)), y: 20 },
+        ],
+      },
+    ];
+    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+      points,
+      margins,
+      100,
+      false,
+      undefined,
+      utils.ChartTypes.AreaChart,
+      16,
+    );
+    matchResult(result);
+  });
+
+  it("should return empty domain and range values for charts that don't support date x-axis", () => {
+    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+      [],
+      margins,
+      100,
+      false,
+      undefined,
+      utils.ChartTypes.GroupedVerticalBarChart,
+      16,
+    );
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for charts with string x-axis', () => {
+    const result = utils.domainRangeOfXStringAxis(margins, 100, false);
     matchResult(result);
   });
 });
@@ -1099,6 +1189,49 @@ describe('findHBCWANumericMinMaxOfY', () => {
   });
 
   it('should return minimum and maximum values for numeric y-axis', () => {
+    const points: HorizontalBarChartWithAxisDataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.findHBCWANumericMinMaxOfY(points, utils.YAxisType.NumericAxis);
+    matchResult(result);
+  });
+});
+
+describe('getMinMaxOfYAxis', () => {
+  it('should return minimum and maximum values for line chart with numeric y-axis', () => {
+    const points: LineChartPoints[] = [
+      {
+        legend: 'Line 1',
+        data: [
+          { x: 10, y: 20 },
+          { x: 30, y: 40 },
+        ],
+      },
+    ];
+    const result = utils.findNumericMinMaxOfY(points);
+    matchResult(result);
+  });
+
+  it('should return minimum and maximum values for vertical stacked bar chart with numeric y-axis', () => {
+    const points: DataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.findVSBCNumericMinMaxOfY(points);
+    matchResult(result);
+  });
+
+  it('should return minimum and maximum values for vertical bar chart with numeric y-axis', () => {
+    const points: VerticalBarChartDataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.findVerticalNumericMinMaxOfY(points);
+    matchResult(result);
+  });
+
+  it('should return minimum and maximum values for horizontal bar chart with numeric y-axis', () => {
     const points: HorizontalBarChartWithAxisDataPoint[] = [
       { x: 10, y: 20 },
       { x: 30, y: 40 },
