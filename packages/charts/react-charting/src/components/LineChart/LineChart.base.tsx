@@ -1356,7 +1356,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             xAxisScale: this._xAxisScale,
             yAxisScale: yScale,
             className: classNames.markerLabel || '',
-            maybeLineOptions: extractMaybeLineOptions((this._points[i] as Partial<ILineChartPoints>)?.lineOptions),
+            lineOptions: (this._points[i] as Partial<ILineChartPoints>)?.lineOptions,
           }),
         );
       }

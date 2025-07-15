@@ -10,16 +10,19 @@ export function renderScatterPolarCategoryLabels({
   xAxisScale,
   yAxisScale,
   className,
-  maybeLineOptions,
+  lineOptions,
   minPixelGap = 40,
 }: {
   allSeriesData: { data: { x: number; y: number; text?: string }[] }[];
   xAxisScale: ScaleLinear<number, number>;
   yAxisScale: ScaleLinear<number, number>;
   className: string;
-  maybeLineOptions?: { originXOffset?: number; direction?: 'clockwise' | 'counterclockwise'; rotation?: number };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  lineOptions?: any;
   minPixelGap?: number;
 }): React.JSX.Element[] {
+  const maybeLineOptions = extractMaybeLineOptions(lineOptions);
+
   // 1. Aggregate all data points from all series
   const allLabels: { x: number; y: number; text: string }[] = [];
   allSeriesData.forEach(series => {
