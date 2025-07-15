@@ -6,5 +6,10 @@
   "dependencies": {
     "@fluentui/scripts-monorepo": "*"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/turndown": "^5.0.5",
+    "playwright": "^1.44.1",
+    "turndown": "^7.2.0",
+    "turndown-plugin-gfm": "^1.0.2"
+  }
 }
