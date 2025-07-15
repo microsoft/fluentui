@@ -1,35 +1,28 @@
-import { spawn } from 'node:child_process';
 import { mkdir, rm, writeFile } from 'node:fs/promises';
-import http from 'node:http';
 import { join } from 'node:path';
 import { cwd } from 'node:process';
 
-import { type Browser, chromium } from 'playwright';
+import express from 'express';
+import { type BrowserContext, chromium } from 'playwright';
 import Turndown from 'turndown';
 // @ts-expect-error - No types available for this package
 import { strikethrough, tables, taskListItems } from 'turndown-plugin-gfm';
 import yargs from 'yargs';
 
+// Start the script
 main();
-
-/**
- * Disable HTML escaping for the Turndown service.
- *
- * https://github.com/mixmark-io/turndown?tab=readme-ov-file#overriding-turndownserviceprototypeescape
- **/
-Turndown.prototype.escape = (str: string) => str;
 
 /**
  * Main entry point for the LLM docs generator script.
  * Orchestrates argument parsing, data extraction, and docs writing.
  */
-async function main(): Promise<void> {
+async function main() {
   try {
     console.log(`━━ Storybook LLM Docs Generator ━━`);
-    const { distPath, baseUrl, port } = processArgs();
+    const { distPath, baseUrl } = processArgs();
     console.log(`ℹ️ Storybook dist path: ${distPath}`);
 
-    const data = await extractStorybookData(distPath, port);
+    const data = await extractStorybookData(distPath);
 
     // Write llms.txt file
     await writeSummaryFile(distPath, baseUrl, data);
@@ -43,6 +36,53 @@ async function main(): Promise<void> {
     console.error(error);
     process.exit(1);
   }
+}
+
+/**
+ * Processes CLI arguments for `distPath` and `port`.
+ */
+function processArgs() {
+  const argv = yargs(process.argv)
+    .usage('CLI to generate LLMs docs for Storybook docs')
+    .option('distPath', {
+      type: 'string',
+      demandOption: true,
+      describe: 'Relative path to the Storybook distribution folder',
+    })
+    .option('baseUrl', {
+      type: 'string',
+      default: 'https://react.fluentui.dev',
+      describe: 'Base URL for the Storybook docs',
+    })
+    .alias('h', 'help')
+    .version(false).argv;
+
+  return {
+    distPath: join(cwd(), argv.distPath),
+    baseUrl: argv.baseUrl,
+  };
+}
+
+/**
+ * Starts a static file server using Express
+ */
+function startStaticServer(distPath: string) {
+  const app = express();
+  // Enable CORS for all responses
+  app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+  });
+  app.use(express.static(distPath));
+
+  return new Promise<{ server: ReturnType<typeof app.listen>; url: string }>((resolve, reject) => {
+    const server = app.listen(0, () => {
+      const address = server.address();
+      const port = typeof address === 'object' && address ? address.port : 0;
+      resolve({ server, url: `http://localhost:${port}` });
+    });
+    server.on('error', reject);
+  });
 }
 
 type StorybookStoreItem = {
@@ -94,116 +134,21 @@ type ComponentProp = {
 };
 
 /**
- * Processes CLI arguments for `distPath` and `port`.
- */
-function processArgs() {
-  const argv = yargs(process.argv)
-    .usage('CLI to generate LLMs docs for Storybook docs')
-    .option('distPath', {
-      type: 'string',
-      demandOption: true,
-      describe: 'Relative path to the Storybook distribution folder',
-    })
-    .option('baseUrl', {
-      type: 'string',
-      default: 'https://react.fluentui.dev',
-      describe: 'Base URL for the Storybook docs',
-    })
-    .option('port', {
-      type: 'number',
-      default: 6006,
-      describe: 'Port to serve Storybook static build on',
-    })
-    .alias('h', 'help')
-    .version(false).argv;
-
-  return {
-    distPath: join(cwd(), argv.distPath),
-    baseUrl: argv.baseUrl,
-    port: argv.port,
-  };
-}
-
-/**
- * Finds a free port (if default is taken)
- */
-async function findFreePort(startPort: number): Promise<number> {
-  function check(port: number): Promise<boolean> {
-    return new Promise(resolve => {
-      const server = http.createServer();
-      server.listen(port, () => {
-        server.close(() => resolve(true));
-      });
-      server.on('error', () => resolve(false));
-    });
-  }
-  let port = startPort;
-  while (!(await check(port))) {
-    port++;
-    if (port > startPort + 100) {
-      throw new Error('Could not find a free port');
-    }
-  }
-  return port;
-}
-
-/**
- * Starts `npx serve` as a child process
- */
-async function startStaticServer(
-  distPath: string,
-  port: number,
-): Promise<{ proc: ReturnType<typeof spawn>; url: string }> {
-  return new Promise((resolve, reject) => {
-    findFreePort(port).then(freePort => {
-      const proc = spawn('npx', ['serve', distPath, '-l', freePort.toString(), '--no-clipboard'], {
-        stdio: 'ignore',
-        detached: true,
-      });
-      const url = `http://localhost:${freePort}`;
-      // Wait for server to be ready
-      let attempts = 0;
-      const maxAttempts = 30;
-      const wait = () => new Promise(res => setTimeout(res, 500));
-      async function poll() {
-        while (attempts < maxAttempts) {
-          try {
-            await new Promise((res, rej) => {
-              http
-                .get(url, resp => (resp.statusCode === 200 ? res(true) : rej(new Error('Not ready'))))
-                .on('error', rej);
-            });
-            return resolve({ proc, url });
-          } catch {
-            attempts++;
-            await wait();
-          }
-        }
-        reject(new Error('Static server did not start in time'));
-      }
-      poll();
-    });
-  });
-}
-
-/**
  * Extracts all Storybook data, builds the section hierarchy, and handles `docsOnly` markdown extraction.
  * Returns the full section tree for further processing.
  */
-async function extractStorybookData(distPath: string, port: number): Promise<StorybookStoreItem[]> {
+async function extractStorybookData(distPath: string) {
   // Start static server
-  console.log(`▶️ Starting static server with npx serve...`);
-  const { proc: serverProc, url: serverUrl } = await startStaticServer(distPath, port);
+  console.log(`▶️ Starting static server with Express...`);
+  const { server: staticServer, url: serverUrl } = await startStaticServer(distPath);
   console.log(`✔️ Static server running at ${serverUrl}`);
 
   // Ensure server is killed on exit
   const cleanup = () => {
     try {
-      if (serverProc.pid) {
-        process.kill(serverProc.pid);
-      }
+      staticServer.close();
     } catch {
-      // intentionally empty: process may already be dead
+      // intentionally empty: server may already be closed
     }
   };
   process.on('exit', cleanup);
@@ -217,20 +162,24 @@ async function extractStorybookData(distPath: string, port: number): Promise<Sto
   });
 
   const browser = await chromium.launch();
+  const context = await browser.newContext({ bypassCSP: true });
 
   try {
     // Extract all stories from Storybook store
-    const storeItems = await extractAllStoriesFromStorybook(browser, serverUrl);
+    const storeItems = await extractAllStoriesFromStorybook(context, serverUrl);
 
-    // Extract content for all `docsOnly/mdx` stories
+    // Extract content for all MDX pages
     for (const storeItem of storeItems) {
       for (const story of Object.values(storeItem.stories)) {
         if (story.parameters?.docsOnly) {
-          const docsOnlyUrl = `${serverUrl}/iframe?id=${story.id.replace('--page', '--docs')}&viewMode=docs`;
-          story.parameters.fullSource = await extractDocsOnlyMarkdownWithBrowser(docsOnlyUrl, browser);
+          const pageUrl = `${serverUrl}/iframe.html?id=${story.id.replace('--page', '--docs')}&viewMode=docs`;
+          story.parameters.fullSource = await extractMDXStoryContentWithBrowser(pageUrl, context);
         }
       }
     }
+
+    // Write raw stories to file for debugging
+    // await writeFile(join(__dirname, 'story-source-raw.json'), JSON.stringify(storeItems, null, 2));
 
     console.log(`✔️ Extracted ${storeItems.length} stories from Storybook store.`);
 
@@ -247,6 +196,13 @@ async function extractStorybookData(distPath: string, port: number): Promise<Sto
  * Converts HTML content to markdown.
  */
 async function convertHtmlToMarkdown(htmlContent: string) {
+  /**
+   * Disable HTML escaping for the Turndown service.
+   *
+   * https://github.com/mixmark-io/turndown?tab=readme-ov-file#overriding-turndownserviceprototypeescape
+   **/
+  Turndown.prototype.escape = (str: string) => str;
+
   const turndown = new Turndown({
     headingStyle: 'atx',
     hr: '---',
@@ -278,14 +234,17 @@ async function convertHtmlToMarkdown(htmlContent: string) {
         }
       }
 
-      if (content.trim().startsWith('```')) {
-        return content;
+      const normalizedContent = content.trim();
+
+      if (normalizedContent.startsWith('```')) {
+        return normalizedContent;
       }
 
-      return `\`\`\`${language}\n${content.trim()}\n\`\`\``;
+      return `\`\`\`${language}\n${normalizedContent}\n\`\`\``;
     },
   });
 
+  // Remove unnecessary anchor links
   turndown.addRule('removeAnchorLinks', {
     filter(node) {
       return (
@@ -299,6 +258,7 @@ async function convertHtmlToMarkdown(htmlContent: string) {
     replacement: () => '',
   });
 
+  // Remove other unnecessary elements
   turndown.addRule('removeElements', {
     filter: ['button', 'style', 'script', 'img'],
     replacement: () => '',
@@ -318,11 +278,11 @@ async function convertHtmlToMarkdown(htmlContent: string) {
 }
 
 /**
- * Extracts `docsOnly` markdown from a given URL using a browser.
+ * Extracts `MDX` story content from a given URL using a browser.
  */
-async function extractDocsOnlyMarkdownWithBrowser(url: string, browser: Browser): Promise<string> {
+async function extractMDXStoryContentWithBrowser(url: string, context: BrowserContext) {
   try {
-    const page = await browser.newPage();
+    const page = await context.newPage();
     console.log(`Extracting: "${url}"`);
     await page.goto(url);
     await page.waitForSelector('.sbdocs-content', { state: 'attached', timeout: 2000 });
@@ -344,42 +304,42 @@ async function writeSummaryFile(distPath: string, serverUrl: string, storeItems:
   console.log(`✅ LLMs docs summary written to ${join(distPath, 'llms.txt')}`);
 }
 
+// Add a type for the summary tree node
+interface SummaryTreeNode {
+  children: Record<string, SummaryTreeNode>;
+  item?: StorybookStoreItem;
+}
+
 /**
  * Generates the summary file content from the storeItems array.
  */
-// Add a type for the summary tree node
-interface SummaryTreeNode {
-  __children: Record<string, SummaryTreeNode>;
-  __item?: StorybookStoreItem;
-}
-
-function generateSummaryContent(serverUrl: string, storeItems: StorybookStoreItem[]): string[] {
+function generateSummaryContent(serverUrl: string, storeItems: StorybookStoreItem[]) {
   // Build a tree structure for summary
-  const root: SummaryTreeNode = { __children: {} };
+  const root: SummaryTreeNode = { children: {} };
   for (const item of storeItems) {
     const parts = item.meta.title.split('/').filter(Boolean);
     let node = root;
     for (let i = 0; i < parts.length; i++) {
       const part = parts[i];
-      if (!node.__children[part]) {
-        node.__children[part] = { __children: {} };
+      if (!node.children[part]) {
+        node.children[part] = { children: {} };
       }
       if (i === parts.length - 1) {
-        node.__children[part].__item = item;
+        node.children[part].item = item;
       }
-      node = node.__children[part];
+      node = node.children[part];
     }
   }
   // Recursively generate summary lines
-  function walk(node: Record<string, SummaryTreeNode>, level = 0, parentPath: string[] = []): string[] {
+  function walk(node: Record<string, SummaryTreeNode>, level = 0, parentPath: string[] = []) {
     let lines: string[] = [];
     for (const key of Object.keys(node)) {
-      if (key === '__children' || key === '__item') {
+      if (key === 'children' || key === 'item') {
         continue;
       }
       const entry = node[key];
-      const item: StorybookStoreItem | undefined = entry.__item;
-      const hasChildren = Object.keys(entry.__children).length > 0;
+      const item: StorybookStoreItem | undefined = entry.item;
+      const hasChildren = Object.keys(entry.children).length > 0;
       const currentPath = [...parentPath, key];
 
       if (hasChildren) {
@@ -397,7 +357,7 @@ function generateSummaryContent(serverUrl: string, storeItems: StorybookStoreIte
           lines.push(`#### ${key}`);
           lines.push('');
         }
-        lines = lines.concat(walk(entry.__children, level + 1, currentPath));
+        lines = lines.concat(walk(entry.children, level + 1, currentPath));
       } else if (item) {
         // Only output a single entry for the leaf
         const fileName = `${item.meta.id}.txt`;
@@ -419,13 +379,13 @@ function generateSummaryContent(serverUrl: string, storeItems: StorybookStoreIte
     '> **Note:** This summary only outlines available sections. For a detailed description of every section/component, see the dedicated file linked for each entry below.',
     '',
   ];
-  summary.push(...walk(root.__children));
+  summary.push(...walk(root.children));
   return summary;
 }
 
 /**
- * Writes full markdown files for all components from storeItems.
- * For docsOnly items, render only fullSource. For others, render title, description, props, and examples.
+ * Writes full markdown files for all components from `storeItems`.
+ * For MDX pages, render only `fullSource`. For others, render title, description, props, and examples.
  */
 async function writeFullFiles(storeItems: StorybookStoreItem[], distPath: string) {
   const llmsDir = join(distPath, 'llms');
@@ -444,7 +404,7 @@ async function writeFullFiles(storeItems: StorybookStoreItem[], distPath: string
 /**
  * Generates the full markdown content for a given storybook story.
  */
-function generateFullFileContentFromStory(storeItem: StorybookStoreItem): string[] {
+function generateFullFileContentFromStory(storeItem: StorybookStoreItem) {
   const isDocsOnly = Object.values(storeItem.stories).every(s => s.parameters?.docsOnly);
 
   if (isDocsOnly) {
@@ -476,13 +436,11 @@ function generateFullFileContentFromStory(storeItem: StorybookStoreItem): string
     }
     content.push('');
   }
-  const examples = Object.values(storeItem.stories)
-    .filter(s => !s.parameters?.docsOnly)
-    .map(s => ({
-      title: s.name,
-      description: s.parameters?.docs?.description?.story,
-      source: s.parameters?.fullSource,
-    }));
+  const examples = Object.values(storeItem.stories).map(s => ({
+    title: s.name,
+    description: s.parameters?.docs?.description?.story,
+    source: s.parameters?.fullSource,
+  }));
   if (examples.length > 0) {
     content.push('## Examples');
     content.push('');
@@ -518,7 +476,7 @@ function stringifyPropType(type: ComponentProp['type']): string {
     const t = type as { name: string; value?: unknown; type?: string };
     // Handle enums, unions, arrays, etc.
     if (t.name === 'enum' && Array.isArray(t.value)) {
-      return t.value.map(v => (typeof v.value === 'string' ? v.value : JSON.stringify(v.value))).join(' | ');
+      return `\`${t.value.map(v => (typeof v.value === 'string' ? v.value : JSON.stringify(v.value))).join('| ')}\``;
     }
     if (t.name === 'union' && Array.isArray(t.value)) {
       return t.value.map(v => stringifyPropType(v)).join(' | ');
@@ -535,25 +493,23 @@ function stringifyPropType(type: ComponentProp['type']): string {
   return JSON.stringify(type);
 }
 
-// --- STORYBOOK EXTRACTION ---
-
 /**
  * Extracts all stories from Storybook.
  */
-async function extractAllStoriesFromStorybook(browser: Browser, baseUrl: string): Promise<StorybookStoreItem[]> {
-  const page = await browser.newPage();
-  await page.goto(`${baseUrl}/iframe`);
-  // Wait for story store to be ready
+async function extractAllStoriesFromStorybook(context: BrowserContext, baseUrl: string) {
+  const page = await context.newPage();
+  await page.goto(`${baseUrl}/iframe.html`);
+  // Wait for the page to load
   await page.waitForFunction(() => {
-    // @ts-expect-error - Storybook store is not typed
-    return window.__STORYBOOK_STORY_STORE__ && typeof window.__STORYBOOK_STORY_STORE__.cacheAllCSFFiles === 'function';
+    // @ts-expect-error - Storybook Client API is not typed
+    return window.__STORYBOOK_CLIENT_API__;
   });
   // Extract all stories
   const stories: StorybookStoreItem[] = await page.evaluate(async () => {
-    // @ts-expect-error - Storybook store is not typed
-    await window.__STORYBOOK_STORY_STORE__.cacheAllCSFFiles();
-    // @ts-expect-error - Storybook store is not typed
-    return Object.values(window.__STORYBOOK_STORY_STORE__.cachedCSFFiles);
+    // @ts-expect-error - Storybook Client API is not typed
+    await window.__STORYBOOK_CLIENT_API__.storyStore.cacheAllCSFFiles();
+    // @ts-expect-error - Storybook Client API is not typed
+    return Object.values(window.__STORYBOOK_CLIENT_API__.storyStore.cachedCSFFiles);
   });
   await page.close();
   return stories;
@@ -562,14 +518,14 @@ async function extractAllStoriesFromStorybook(browser: Browser, baseUrl: string)
 /**
  * Extracts the description from a storybook story.
  */
-function extractStoryDescription(story: StorybookStoreItem): string | undefined {
+function extractStoryDescription(story: StorybookStoreItem) {
   return story.meta.parameters?.docs?.description?.component || undefined;
 }
 
 /**
  * Extracts the props from a storybook story.
  */
-function extractStoryProps(story: StorybookStoreItem): ComponentProp[] | undefined {
+function extractStoryProps(story: StorybookStoreItem) {
   const docgen = story.meta.component?.__docgenInfo;
   if (!docgen || !docgen.props) {
     return undefined;
