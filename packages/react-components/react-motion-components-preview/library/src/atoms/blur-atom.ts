@@ -19,7 +19,7 @@ export const blurAtom = ({
   direction,
   duration,
   easing = motionTokens.curveLinear,
-  fromRadius = '20px',
+  fromRadius = '10px',
 }: BlurAtomParams): AtomMotion => {
   const keyframes = [{ filter: `blur(${fromRadius})` }, { filter: 'blur(0px)' }];
   if (direction === 'exit') {

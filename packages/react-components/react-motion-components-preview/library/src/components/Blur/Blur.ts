@@ -5,14 +5,14 @@ import { BlurParams } from './blur-types';
 
 /** Define a presence motion for blur in/out */
 const blurPresenceFn: PresenceMotionFn<BlurParams> = ({
-  fromRadius: fromRadius = '20px',
+  fromRadius = '10px',
   duration = motionTokens.durationSlow,
   easing = motionTokens.curveDecelerateMin,
   exitDuration = duration,
   exitEasing = motionTokens.curveAccelerateMin,
   animateOpacity = true,
 }) => {
-  const enterAtoms = [blurAtom({ direction: 'enter', duration, easing, fromRadius: fromRadius })];
+  const enterAtoms = [blurAtom({ direction: 'enter', duration, easing, fromRadius })];
   const exitAtoms = [
     blurAtom({
       direction: 'exit',
