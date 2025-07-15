@@ -23,7 +23,7 @@ const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
       direction: 'exit',
       duration: exitDuration,
       easing: exitEasing,
-      fromScale: fromScale,
+      fromScale,
     }),
   ];
 
