@@ -63,16 +63,26 @@ import { useSemanticRadioStyles } from './Radio';
 import { useSemanticPersonaStyles } from './Persona';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
-  // Accordion styles
-  useAccordionHeaderStyles_unstable: useSemanticAccordionHeaderStyles,
-  // Avatar styles
+  /////////////////////
+  // These styles were changed in the copilot theme
+  /////////////////////
+
+  // In semantic theme, square avatars all point to the same token, ctrlAvatarCornerGroupRaw,
+  // so there is no differentiation on size. This will not match Copilot Theme where
+  // larger square avatars have larger radii.
   useAvatarStyles_unstable: useSemanticAvatarStyles,
-  // Button styles
-  useButtonStyles_unstable: useSemanticButtonStyles,
-  useToggleButtonStyles_unstable: useSemanticToggleButtonStyles,
-  useSplitButtonStyles_unstable: useSemanticSplitButtonStyles,
-  useMenuButtonStyles_unstable: useSemanticMenuButtonStyles,
-  useCompoundButtonStyles_unstable: useSemanticCompoundButtonStyles,
+  useButtonStyles_unstable: useSemanticButtonStyles, // checked, good.
+  useToggleButtonStyles_unstable: useSemanticToggleButtonStyles, // checked, good.
+  useSplitButtonStyles_unstable: useSemanticSplitButtonStyles, //checked, good
+  useMenuButtonStyles_unstable: useSemanticMenuButtonStyles, // Button looks good. MenuPopover still need to be updated
+  useCompoundButtonStyles_unstable: useSemanticCompoundButtonStyles, // checked, good.
+  useTextareaStyles_unstable: useSemanticTextareaStyles, //checked, good.
+  useTreeItemLayoutStyles_unstable: useSemanticTreeItemLayoutStyles, // Not clear or possible to change the corner radius of the hover back plate.
+
+  /////////////////////
+  // These styles were NOT changed in the copilot theme
+  /////////////////////
+  useAccordionHeaderStyles_unstable: useSemanticAccordionHeaderStyles,
   // Divider styles
   useDividerStyles_unstable: useSemanticDividerStyles,
   // Drawer styles
@@ -96,12 +106,10 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useSwitchStyles_unstable: useSemanticSwitchStyles,
   // Text styles
   useTextStyles_unstable: useSemanticTextStyles,
-  // Textarea styles
-  useTextareaStyles_unstable: useSemanticTextareaStyles,
+
   // Tree styles
   useFlatTreeStyles_unstable: useSemanticFlatTreeStyles,
   useTreeStyles_unstable: useSemanticTreeStyles,
-  useTreeItemLayoutStyles_unstable: useSemanticTreeItemLayoutStyles,
   useTreeItemPersonaLayoutStyles_unstable: useSemanticTreeItemPersonaLayoutStyles,
   useTreeItemStyles_unstable: useSemanticTreeItemStyles,
   // Image styles
