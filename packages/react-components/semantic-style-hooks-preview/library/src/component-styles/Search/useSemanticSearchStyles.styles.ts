@@ -3,6 +3,8 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useInputStyles_unstable } from '@fluentui/react-input';
 import type { SearchBoxSlots, SearchBoxState } from '@fluentui/react-search'
+import * as semanticTokens from '@fluentui/semantic-tokens';
+
 
 export const searchBoxClassNames: SlotClassNames<SearchBoxSlots> = {
     root: 'fui-SearchBox',
@@ -83,7 +85,7 @@ const useContentAfterStyles = makeStyles({
 
 const useDismissClassName = makeResetStyles({
     boxSizing: 'border-box',
-    color: tokens.colorNeutralForeground3, // "icon color" in design spec
+    color: semanticTokens.foregroundCtrlIconOnNeutralRest, // "icon color" in design spec
     display: 'flex',
     // special case styling for icons (most common case) to ensure they're centered vertically
     // size: medium (default)
@@ -93,7 +95,7 @@ const useDismissClassName = makeResetStyles({
 
 const useDismissStyles = makeStyles({
     disabled: {
-        color: tokens.colorNeutralForegroundDisabled,
+        color: semanticTokens.backgroundCtrlSubtleRest,
     },
     // Ensure resizable icons show up with the proper font size
     small: {
