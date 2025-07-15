@@ -1,16 +1,7 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { FieldSlots, FieldState } from '@fluentui/react-field';
+import { type FieldState, fieldClassNames } from '@fluentui/react-field';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import * as semanticTokens from '@fluentui/semantic-tokens';
-
-export const fieldClassNames: SlotClassNames<FieldSlots> = {
-  root: `fui-Field`,
-  label: `fui-Field__label`,
-  validationMessage: `fui-Field__validationMessage`,
-  validationMessageIcon: `fui-Field__validationMessageIcon`,
-  hint: `fui-Field__hint`,
-};
 
 // Size of the icon in the validation message
 const iconSize = '12px';
