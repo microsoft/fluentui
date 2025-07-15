@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
-    "lib": ["ES2019"],
+    "lib": ["ES2019", "DOM"],
     "outDir": "../../dist/out-tsc",
     "types": ["node", "jest"]
   },
