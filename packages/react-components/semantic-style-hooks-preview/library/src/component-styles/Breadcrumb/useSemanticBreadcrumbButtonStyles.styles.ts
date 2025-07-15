@@ -1,7 +1,8 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { breadcrumbButtonClassNames, type BreadcrumbButtonState } from '@fluentui/react-breadcrumb';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
-import { useButtonStyles_unstable, buttonClassNames } from '@fluentui/react-button';
+import { buttonClassNames } from '@fluentui/react-button';
+import { useSemanticButtonStyles } from '../Button/useSemanticButtonStyles.styles';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 
@@ -149,7 +150,7 @@ export const useSemanticBreadcrumbButtonStyles = (_state: unknown): BreadcrumbBu
     );
   }
 
-  useButtonStyles_unstable(state);
+  useSemanticButtonStyles(state);
 
   return state;
 };
