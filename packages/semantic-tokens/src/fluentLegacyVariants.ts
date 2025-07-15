@@ -191,6 +191,18 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'ctrlBadgeLgPadding',
   },
+  _ctrlBreadcrumbSizeDefault: {
+    originalToken: 'sizeCtrlDefault',
+    rawValue: '32px',
+  },
+  _ctrlBreadcrumbSizeLgDefault: {
+    originalToken: 'sizeCtrlLgDefault',
+    rawValue: '40px',
+  },
+  _ctrlBreadcrumbSizeSmIcon: {
+    originalToken: 'sizeCtrlSmIcon',
+    rawValue: '16px',
+  },
   _ctrlButtonGapInsideDefault: {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'gapInsideCtrlDefault',

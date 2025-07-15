@@ -27,6 +27,7 @@
     "@fluentui/react-accordion": "^9.6.8",
     "@fluentui/react-avatar": "^9.7.6",
     "@fluentui/react-badge": "^9.2.54",
+    "@fluentui/react-breadcrumb": "^9.1.6",
     "@fluentui/react-button": "^9.4.6",
     "@fluentui/react-checkbox": "^9.3.6",
     "@fluentui/react-dialog": "^9.12.8",
