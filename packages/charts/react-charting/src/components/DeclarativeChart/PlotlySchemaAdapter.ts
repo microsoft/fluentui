@@ -855,7 +855,14 @@ const transformPlotlyJsonToScatterTraceProps = (
             mode: series.type !== 'scatterpolar' ? series.mode : 'scatterpolar',
             // originXOffset is not typed on Layout, but may be present in input.layout as a part of projection of
             // scatter polar coordingates to cartesian coordinates
-            originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
+
+            ...(series.type === 'scatterpolar'
+              ? {
+                  originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
+                  direction: input.layout?.polar?.angularaxis?.direction,
+                  rotation: input.layout?.polar?.angularaxis?.rotation,
+                }
+              : {}),
           },
           useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         } as ILineChartPoints;
@@ -1751,6 +1758,10 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       continue;
     }
 
+    // retrieve polar axis settings
+    const dirMultiplier = input.layout?.polar?.angularaxis?.direction === 'clockwise' ? -1 : 1;
+    const startAngleInRad = ((input.layout?.polar?.angularaxis?.rotation ?? 0) * Math.PI) / 180;
+
     // Compute tick positions if categorical
     let uniqueTheta: Datum[] = [];
     let categorical = false;
@@ -1765,13 +1776,13 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       }
 
       // 4. Map theta to angle in radians
-      let thetaRad;
+      let thetaRad: number;
       if (categorical) {
         const idx = uniqueTheta.indexOf(thetas[ptindex]);
         const step = (2 * Math.PI) / uniqueTheta.length;
-        thetaRad = idx * step;
+        thetaRad = startAngleInRad + dirMultiplier * idx * step;
       } else {
-        thetaRad = ((thetas[ptindex] as number) * Math.PI) / 180;
+        thetaRad = startAngleInRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
       }
       // 5. Shift only the polar origin (not the cartesian)
       const rawRadius = rVals[ptindex] as number;
