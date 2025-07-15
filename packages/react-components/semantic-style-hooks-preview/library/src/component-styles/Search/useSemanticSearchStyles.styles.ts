@@ -1,5 +1,5 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import {getSlotClassNameProp_unstable, SlotClassNames} from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useInputStyles_unstable } from '@fluentui/react-input';
 import type { SearchBoxSlots, SearchBoxState } from '@fluentui/react-search'
@@ -126,10 +126,11 @@ export const useSemanticSearchBoxStyles = (_state: unknown): SearchBoxState => {
     const dismissStyles = useDismissStyles();
 
     state.root.className = mergeClasses(
+        state.root.className,
         searchBoxClassNames.root,
         rootStyles[size],
         !focused && rootStyles.unfocusedNoContentAfter,
-        state.root.className,
+        getSlotClassNameProp_unstable(state.root),
     );
     state.input.className = mergeClasses(
         searchBoxClassNames.input,
