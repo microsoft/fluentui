@@ -61,12 +61,16 @@ import {
 import { useSemanticMenuGroupHeaderStyles } from './Menu';
 import { useSemanticRadioStyles } from './Radio';
 import { useSemanticPersonaStyles } from './Persona';
+import { useSemanticBadgeStyles, useSemanticPresenceBadgeStyles } from './Badge';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
   useAccordionHeaderStyles_unstable: useSemanticAccordionHeaderStyles,
   // Avatar styles
   useAvatarStyles_unstable: useSemanticAvatarStyles,
+  // Badge styles
+  useBadgeStyles_unstable: useSemanticBadgeStyles,
+  usePresenceBadgeStyles_unstable: useSemanticPresenceBadgeStyles,
   // Button styles
   useButtonStyles_unstable: useSemanticButtonStyles,
   useToggleButtonStyles_unstable: useSemanticToggleButtonStyles,

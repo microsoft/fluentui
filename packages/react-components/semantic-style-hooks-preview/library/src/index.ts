@@ -6,6 +6,7 @@ export {
   useSemanticSplitButtonStyles,
   useSemanticToggleButtonStyles,
 } from './component-styles//Button';
+export { useSemanticBadgeStyles, useSemanticPresenceBadgeStyles } from './component-styles/Badge';
 export { useSemanticAccordionHeaderStyles } from './component-styles/Accordion';
 export { useSemanticAvatarStyles } from './component-styles/Avatar';
 export { useSemanticDividerStyles } from './component-styles/Divider';
