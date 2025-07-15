@@ -1,11 +1,12 @@
-import { writeFile, mkdir, rm } from 'node:fs/promises';
+import { spawn } from 'node:child_process';
+import { mkdir, rm, writeFile } from 'node:fs/promises';
+import http from 'node:http';
 import { join } from 'node:path';
 import { cwd } from 'node:process';
-import { spawn } from 'node:child_process';
-import http from 'node:http';
-import { chromium, type Browser } from 'playwright';
+
+import { type Browser, chromium } from 'playwright';
 import Turndown from 'turndown';
-// @ts-ignore - No types available for this package
+// @ts-expect-error - No types available for this package
 import { strikethrough, tables, taskListItems } from 'turndown-plugin-gfm';
 import yargs from 'yargs';
 
@@ -139,7 +140,9 @@ async function findFreePort(startPort: number): Promise<number> {
   let port = startPort;
   while (!(await check(port))) {
     port++;
-    if (port > startPort + 100) throw new Error('Could not find a free port');
+    if (port > startPort + 100) {
+      throw new Error('Could not find a free port');
+    }
   }
   return port;
 }
@@ -147,33 +150,39 @@ async function findFreePort(startPort: number): Promise<number> {
 /**
  * Starts `npx serve` as a child process
  */
-async function startStaticServer(distPath: string, port: number): Promise<{ proc: any; url: string }> {
-  return new Promise(async (resolve, reject) => {
-    const freePort = await findFreePort(port);
-    const proc = spawn('npx', ['serve', distPath, '-l', freePort.toString(), '--no-clipboard'], {
-      stdio: 'ignore',
-      detached: true,
-    });
-    const url = `http://localhost:${freePort}`;
-    // Wait for server to be ready
-    let attempts = 0;
-    const maxAttempts = 30;
-    const wait = () => new Promise(res => setTimeout(res, 500));
-    async function poll() {
-      while (attempts < maxAttempts) {
-        try {
-          await new Promise((res, rej) => {
-            http.get(url, resp => (resp.statusCode === 200 ? res(true) : rej())).on('error', rej);
-          });
-          return resolve({ proc, url });
-        } catch {
-          attempts++;
-          await wait();
+async function startStaticServer(
+  distPath: string,
+  port: number,
+): Promise<{ proc: ReturnType<typeof spawn>; url: string }> {
+  return new Promise((resolve, reject) => {
+    findFreePort(port).then(freePort => {
+      const proc = spawn('npx', ['serve', distPath, '-l', freePort.toString(), '--no-clipboard'], {
+        stdio: 'ignore',
+        detached: true,
+      });
+      const url = `http://localhost:${freePort}`;
+      // Wait for server to be ready
+      let attempts = 0;
+      const maxAttempts = 30;
+      const wait = () => new Promise(res => setTimeout(res, 500));
+      async function poll() {
+        while (attempts < maxAttempts) {
+          try {
+            await new Promise((res, rej) => {
+              http
+                .get(url, resp => (resp.statusCode === 200 ? res(true) : rej(new Error('Not ready'))))
+                .on('error', rej);
+            });
+            return resolve({ proc, url });
+          } catch {
+            attempts++;
+            await wait();
+          }
         }
+        reject(new Error('Static server did not start in time'));
       }
-      reject(new Error('Static server did not start in time'));
-    }
-    poll();
+      poll();
+    });
   });
 }
 
@@ -190,8 +199,12 @@ async function extractStorybookData(distPath: string, port: number): Promise<Sto
   // Ensure server is killed on exit
   const cleanup = () => {
     try {
-      process.kill(-serverProc.pid);
-    } catch {}
+      if (serverProc.pid) {
+        process.kill(serverProc.pid);
+      }
+    } catch {
+      // intentionally empty: process may already be dead
+    }
   };
   process.on('exit', cleanup);
   process.on('SIGINT', () => {
@@ -219,15 +232,14 @@ async function extractStorybookData(distPath: string, port: number): Promise<Sto
       }
     }
 
-    // Write raw stories to file for debugging
-    // await writeFile(join(__dirname, 'story-source-raw.json'), JSON.stringify(storeItems, null, 2));
-
     console.log(`✔️ Extracted ${storeItems.length} stories from Storybook store.`);
 
     return storeItems;
   } finally {
     cleanup();
-    if (browser) await browser.close();
+    if (browser) {
+      await browser.close();
+    }
   }
 }
 
@@ -279,7 +291,7 @@ async function convertHtmlToMarkdown(htmlContent: string) {
       return (
         node.tagName === 'A' &&
         (node.getAttribute('href') === null ||
-          node.getAttribute('href').startsWith('#') ||
+          node.getAttribute('href')?.startsWith('#') ||
           node.getAttribute('aria-hidden') === 'true' ||
           node.getAttribute('tabindex') === '-1')
       );
@@ -288,7 +300,7 @@ async function convertHtmlToMarkdown(htmlContent: string) {
   });
 
   turndown.addRule('removeElements', {
-    filter: ['button', 'style', 'script', 'img', 'svg'],
+    filter: ['button', 'style', 'script', 'img'],
     replacement: () => '',
   });
 
@@ -311,7 +323,7 @@ async function convertHtmlToMarkdown(htmlContent: string) {
 async function extractDocsOnlyMarkdownWithBrowser(url: string, browser: Browser): Promise<string> {
   try {
     const page = await browser.newPage();
-    console.log(`📄 Extracting: ${url}`);
+    console.log(`Extracting: "${url}"`);
     await page.goto(url);
     await page.waitForSelector('.sbdocs-content', { state: 'attached', timeout: 2000 });
     const html = await page.locator('.sbdocs-content').innerHTML();
@@ -335,26 +347,36 @@ async function writeSummaryFile(distPath: string, serverUrl: string, storeItems:
 /**
  * Generates the summary file content from the storeItems array.
  */
+// Add a type for the summary tree node
+interface SummaryTreeNode {
+  __children: Record<string, SummaryTreeNode>;
+  __item?: StorybookStoreItem;
+}
+
 function generateSummaryContent(serverUrl: string, storeItems: StorybookStoreItem[]): string[] {
   // Build a tree structure for summary
-  const tree: Record<string, any> = {};
+  const root: SummaryTreeNode = { __children: {} };
   for (const item of storeItems) {
     const parts = item.meta.title.split('/').filter(Boolean);
-    let node = tree;
+    let node = root;
     for (let i = 0; i < parts.length; i++) {
       const part = parts[i];
-      if (!node[part]) node[part] = { __children: {} };
-      if (i === parts.length - 1) {
-        node[part].__item = item;
+      if (!node.__children[part]) {
+        node.__children[part] = { __children: {} };
       }
-      node = node[part].__children;
+      if (i === parts.length - 1) {
+        node.__children[part].__item = item;
+      }
+      node = node.__children[part];
     }
   }
   // Recursively generate summary lines
-  function walk(node: any, level = 0, parentPath: string[] = []): string[] {
+  function walk(node: Record<string, SummaryTreeNode>, level = 0, parentPath: string[] = []): string[] {
     let lines: string[] = [];
     for (const key of Object.keys(node)) {
-      if (key === '__children' || key === '__item') continue;
+      if (key === '__children' || key === '__item') {
+        continue;
+      }
       const entry = node[key];
       const item: StorybookStoreItem | undefined = entry.__item;
       const hasChildren = Object.keys(entry.__children).length > 0;
@@ -397,7 +419,7 @@ function generateSummaryContent(serverUrl: string, storeItems: StorybookStoreIte
     '> **Note:** This summary only outlines available sections. For a detailed description of every section/component, see the dedicated file linked for each entry below.',
     '',
   ];
-  summary.push(...walk(tree));
+  summary.push(...walk(root.__children));
   return summary;
 }
 
@@ -447,9 +469,9 @@ function generateFullFileContentFromStory(storeItem: StorybookStoreItem): string
     content.push('|------|------|----------|---------|-------------|');
     for (const prop of props) {
       content.push(
-        `| \`${prop.name}\` | \`${prop.type}\` | ${prop.required ? 'Yes' : 'No'} | ${prop.defaultValue ?? ''} | ${
-          prop.description?.replace(/\n/g, ' ') ?? ''
-        } |`,
+        `| \`${prop.name}\` | \`${stringifyPropType(prop.type)}\` | ${prop.required ? 'Yes' : 'No'} | ${
+          prop.defaultValue ?? ''
+        } | ${prop.description?.replace(/\n/g, ' ') ?? ''} |`,
       );
     }
     content.push('');
@@ -482,6 +504,37 @@ function generateFullFileContentFromStory(storeItem: StorybookStoreItem): string
   return content;
 }
 
+/**
+ * Converts a docgen type object to a readable string for markdown tables.
+ */
+function stringifyPropType(type: ComponentProp['type']): string {
+  if (!type) {
+    return '';
+  }
+  if (typeof type === 'string') {
+    return type;
+  }
+  if (typeof type === 'object' && type !== null && 'name' in type && typeof type.name === 'string') {
+    const t = type as { name: string; value?: unknown; type?: string };
+    // Handle enums, unions, arrays, etc.
+    if (t.name === 'enum' && Array.isArray(t.value)) {
+      return t.value.map(v => (typeof v.value === 'string' ? v.value : JSON.stringify(v.value))).join(' | ');
+    }
+    if (t.name === 'union' && Array.isArray(t.value)) {
+      return t.value.map(v => stringifyPropType(v)).join(' | ');
+    }
+    if (t.name === 'array' && t.value) {
+      return `${stringifyPropType(t.value)}[]`;
+    }
+    if (t.name === 'signature' && t.type === 'function') {
+      // Function signature
+      return 'function';
+    }
+    return t.name;
+  }
+  return JSON.stringify(type);
+}
+
 // --- STORYBOOK EXTRACTION ---
 
 /**
@@ -492,14 +545,14 @@ async function extractAllStoriesFromStorybook(browser: Browser, baseUrl: string)
   await page.goto(`${baseUrl}/iframe`);
   // Wait for story store to be ready
   await page.waitForFunction(() => {
-    // @ts-ignore
+    // @ts-expect-error - Storybook store is not typed
     return window.__STORYBOOK_STORY_STORE__ && typeof window.__STORYBOOK_STORY_STORE__.cacheAllCSFFiles === 'function';
   });
   // Extract all stories
   const stories: StorybookStoreItem[] = await page.evaluate(async () => {
-    // @ts-ignore
+    // @ts-expect-error - Storybook store is not typed
     await window.__STORYBOOK_STORY_STORE__.cacheAllCSFFiles();
-    // @ts-ignore
+    // @ts-expect-error - Storybook store is not typed
     return Object.values(window.__STORYBOOK_STORY_STORE__.cachedCSFFiles);
   });
   await page.close();
@@ -518,10 +571,14 @@ function extractStoryDescription(story: StorybookStoreItem): string | undefined 
  */
 function extractStoryProps(story: StorybookStoreItem): ComponentProp[] | undefined {
   const docgen = story.meta.component?.__docgenInfo;
-  if (!docgen || !docgen.props) return undefined;
+  if (!docgen || !docgen.props) {
+    return undefined;
+  }
   const props: ComponentProp[] = [];
   for (const [name, arg] of Object.entries(docgen.props)) {
-    if (name === 'children') continue;
+    if (name === 'children') {
+      continue;
+    }
     props.push({
       name,
       description: arg.description || '',
