@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, tokens, Button } from '@fluentui/react-components';
+import { makeStyles, tokens, Button, motionTokens } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurDurationDescription from './BlurDuration.stories.md';
 
@@ -37,9 +37,13 @@ const useClasses = makeStyles({
 });
 
 const durationOptions: Array<{ label: string; duration: number; exitDuration?: number }> = [
-  { label: 'Fast (200ms)', duration: 200 },
-  { label: 'Slow (800ms)', duration: 800 },
-  { label: 'Mixed (200ms enter, 800ms exit)', duration: 200, exitDuration: 800 },
+  { label: `Fast (${motionTokens.durationFast}ms)`, duration: motionTokens.durationFast },
+  { label: `Ultra Slow (${motionTokens.durationUltraSlow}ms)`, duration: motionTokens.durationUltraSlow },
+  {
+    label: `Mixed (${motionTokens.durationFast}ms enter, ${motionTokens.durationUltraSlow}ms exit)`,
+    duration: motionTokens.durationFast,
+    exitDuration: motionTokens.durationUltraSlow,
+  },
 ];
 
 export const Duration = () => {

@@ -5,22 +5,31 @@ import { Blur } from '@fluentui/react-motion-components-preview';
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplate: `"controls ." "card card" / 1fr 1fr`,
-    gap: '20px 10px',
+    gridTemplateColumns: 'minmax(200px, 1fr) 2fr',
+    gridTemplateAreas: '"controls content"',
+    gap: '20px',
+    padding: '20px',
+  },
+  content: {
+    gridArea: 'content',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   card: {
-    gridArea: 'card',
-    padding: '10px',
+    padding: '20px',
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+    backgroundColor: tokens.colorNeutralBackground1,
+    maxWidth: '400px',
   },
   controls: {
+    gridArea: 'controls',
     display: 'flex',
     flexDirection: 'column',
-    gridArea: 'controls',
-
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
-    padding: '10px',
+    padding: '20px',
   },
   field: {
     flex: 1,
@@ -47,11 +56,13 @@ export const Default = () => {
         </Field>
       </div>
 
-      <Blur visible={visible}>
-        <div className={classes.card}>
-          <LoremIpsum />
-        </div>
-      </Blur>
+      <div className={classes.content}>
+        <Blur visible={visible}>
+          <div className={classes.card}>
+            <LoremIpsum />
+          </div>
+        </Blur>
+      </div>
     </div>
   );
 };

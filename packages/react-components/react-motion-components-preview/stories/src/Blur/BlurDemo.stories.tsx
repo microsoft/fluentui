@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, tokens, Button, Card, CardHeader, CardPreview } from '@fluentui/react-components';
+import { makeStyles, tokens, Button } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurDemoDescription from './BlurDemo.stories.md';
 
@@ -40,6 +40,26 @@ const useClasses = makeStyles({
     display: 'flex',
     gap: '10px',
     flexWrap: 'wrap',
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
+    fontSize: tokens.fontSizeBase300,
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  overlayButton: {
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    padding: '8px 16px',
+    borderRadius: tokens.borderRadiusMedium,
+    border: '1px solid rgba(255, 255, 255, 0.2)',
   },
 });
 
@@ -86,32 +106,8 @@ export const LayeredBlurDemo = () => {
 
               {/* "Click to reveal" button - starts clear, blurs/fades out when clicked */}
               <Blur visible={!revealedImages[index]} fromRadius="10px" animateOpacity={true}>
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white',
-                    fontSize: tokens.fontSizeBase300,
-                    fontWeight: tokens.fontWeightSemibold,
-                  }}
-                >
-                  <div
-                    style={{
-                      backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                      padding: '8px 16px',
-                      borderRadius: tokens.borderRadiusMedium,
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                    }}
-                  >
-                    Click to reveal
-                  </div>
+                <div className={classes.overlay}>
+                  <div className={classes.overlayButton}>Click to reveal</div>
                 </div>
               </Blur>
             </div>

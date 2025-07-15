@@ -28,8 +28,10 @@ const useClasses = makeStyles({
     justifyContent: 'center',
     fontSize: tokens.fontSizeBase400,
     textAlign: 'center',
-    backgroundImage:
-      'linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%), linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%)',
+    backgroundImage: `
+      linear-gradient(45deg, ${tokens.colorNeutralBackground3} 25%, transparent 25%, transparent 75%, ${tokens.colorNeutralBackground3} 75%),
+      linear-gradient(45deg, ${tokens.colorNeutralBackground3} 25%, transparent 25%, transparent 75%, ${tokens.colorNeutralBackground3} 75%)
+    `,
     backgroundSize: '20px 20px',
     backgroundPosition: '0 0, 10px 10px',
   },
