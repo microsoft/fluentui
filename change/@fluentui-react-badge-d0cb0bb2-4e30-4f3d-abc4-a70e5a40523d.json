@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Feat: Add semantic tokens to Badge\"",
-  "packageName": "@fluentui/react-badge",
-  "email": "terynkum@microsoft.com",
-  "dependentChangeType": "patch"
-}
