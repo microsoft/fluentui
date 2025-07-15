@@ -5,7 +5,7 @@ export { Default } from './BlurDefault.stories';
 export { Radius } from './BlurRadius.stories';
 export { Duration } from './BlurDuration.stories';
 export { Opacity } from './BlurOpacity.stories';
-export { Demo } from './BlurDemo.stories';
+export { LayeredBlurDemo } from './BlurDemo.stories';
 
 export default {
   title: 'Motion/Components (preview)/Blur',

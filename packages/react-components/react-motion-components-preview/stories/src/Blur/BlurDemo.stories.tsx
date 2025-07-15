@@ -49,7 +49,7 @@ const images = [
   { gradient: 'repeating-linear-gradient(225deg, #4ecdc4 0px, #4ecdc4 20px, #26a69a 20px, #26a69a 40px)' },
 ];
 
-export const Demo = () => {
+export const LayeredBlurDemo = () => {
   const classes = useClasses();
 
   // Image Gallery Demo
@@ -68,10 +68,8 @@ export const Demo = () => {
 
   return (
     <div className={classes.container}>
-      {/* Image Gallery Demo */}
+      {/* Layered Blur Demo */}
       <div className={classes.demoSection}>
-        <h3>Image Gallery Reveal</h3>
-        <p>Click on images to reveal them with blur transition</p>
         <div className={classes.controls}>
           <Button onClick={toggleAll}>{allRevealed ? 'Hide All' : 'Reveal All'}</Button>
         </div>
@@ -121,7 +119,7 @@ export const Demo = () => {
   );
 };
 
-Demo.parameters = {
+LayeredBlurDemo.parameters = {
   docs: {
     description: {
       story: BlurDemoDescription,
