@@ -1,5 +1,4 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
 import { presenceBadgeClassNames, type PresenceBadgeState, type PresenceBadgeStatus } from '@fluentui/react-badge';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
@@ -48,22 +47,22 @@ const useStyles = makeStyles({
     color: semanticTokens.statusInformativeTintForeground,
   },
   statusOutOfOffice: {
-    color: tokens.colorPaletteBerryForeground3,
+    color: semanticTokens.statusOofForeground,
   },
   statusUnknown: {
-    color: tokens.colorNeutralForeground3,
+    color: semanticTokens.statusInformativeForeground,
   },
   outOfOffice: {
-    color: tokens.colorNeutralBackground1,
+    color: semanticTokens.statusImportantForeground,
   },
   outOfOfficeAvailable: {
-    color: tokens.colorPaletteLightGreenForeground3,
+    color: semanticTokens._ctrlBadgeStatusAvailableTintForeground,
   },
   outOfOfficeBusy: {
-    color: tokens.colorPaletteRedBackground3,
+    color: semanticTokens._ctrlBadgeStatusBusyTintForeground,
   },
   outOfOfficeUnknown: {
-    color: tokens.colorNeutralForeground3,
+    color: semanticTokens.statusInformativeForeground,
   },
 
   // Icons are not resizeable, and these sizes are currently missing

@@ -227,6 +227,7 @@ export const fluentOverrides: FluentOverrides = {
   sizeCtrlLgIcon: { rawValue: '24px' },
   sizeCtrlSmDefault: { rawValue: '32px' },
   sizeCtrlSmIcon: { rawValue: '20px' },
+  statusAwayForeground: { f2Token: 'colorPaletteMarigoldBackground3' },
   statusBrandBackground: { f2Token: 'colorBrandBackground' },
   statusBrandForeground: { f2Token: 'colorNeutralForegroundOnBrand' },
   statusBrandTintBackground: { f2Token: 'colorBrandBackground2' },
@@ -234,7 +235,6 @@ export const fluentOverrides: FluentOverrides = {
   statusBrandTintStroke: { f2Token: 'colorBrandStroke2' },
   statusDangerBackground: { f2Token: 'colorPaletteRedBackground3' },
   statusDangerForeground: { f2Token: 'colorNeutralForegroundOnBrand' },
-  statusAwayForeground: { f2Token: 'colorPaletteMarigoldBackground3' },
   statusDangerStroke: { f2Token: 'colorPaletteRedBorder2' },
   statusDangerTintBackground: { f2Token: 'colorStatusDangerBackground1' },
   statusDangerTintForeground: { f2Token: 'colorPaletteRedForeground3' },
@@ -251,6 +251,7 @@ export const fluentOverrides: FluentOverrides = {
   statusInformativeTintBackground: { f2Token: 'colorNeutralBackground4' },
   statusInformativeTintForeground: { f2Token: 'colorNeutralForeground3' },
   statusInformativeTintStroke: { f2Token: 'colorNeutralStroke1' },
+  statusOofForeground: { f2Token: 'colorPaletteBerryForeground3' },
   statusSuccessBackground: { f2Token: 'colorPaletteGreenBackground3' },
   statusSuccessForeground: { f2Token: 'colorNeutralForegroundOnBrand' },
   statusSuccessStroke: { f2Token: 'colorPaletteGreenBorder2' },
@@ -327,6 +328,8 @@ export const fluentOverrides: FluentOverrides = {
   textRampLegalLineHeight: { f2Token: 'lineHeightBase200' },
   textRampLgItemBodyFontSize: { f2Token: 'fontSizeBase400' },
   textRampLgItemBodyLineHeight: { f2Token: 'lineHeightBase400' },
+  textRampLgLegalFontSize: { f2Token: 'fontSizeBase200' }, // React-badge uses the same as medium font size for large
+  textRampLgLegalLineHeight: { f2Token: 'lineHeightBase200' }, // React-badge uses the same as medium line height for large
   textRampMetadataFontSize: { f2Token: 'fontSizeBase200' }, // should be fontSizeBase100 per Menu design
   textRampReadingBodyFontSize: { f2Token: 'fontSizeBase300' },
   textRampReadingBodyLineHeight: { f2Token: 'lineHeightBase300' },
@@ -341,6 +344,4 @@ export const fluentOverrides: FluentOverrides = {
   textStyleDefaultRegularFontFamily: { f2Token: 'fontFamilyBase' },
   textStyleDefaultRegularLetterSpacing: { rawValue: '0' },
   textStyleDefaultRegularWeight: { f2Token: 'fontWeightRegular' },
-  textRampLgLegalFontSize: { f2Token: 'fontSizeBase200' }, // React-badge uses the same as medium font size for large
-  textRampLgLegalLineHeight: { f2Token: 'lineHeightBase200' }, // React-badge uses the same as medium line height for large
 };

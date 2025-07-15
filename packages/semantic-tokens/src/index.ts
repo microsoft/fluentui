@@ -1806,7 +1806,9 @@ export {
   _ctrlBadgePaddingRightSideXL,
   _ctrlBadgePaddingTextSide,
   _ctrlBadgeSmallTinyCorner,
+  _ctrlBadgeStatusAvailableTintForeground,
   _ctrlBadgeStatusBrandTintForeground,
+  _ctrlBadgeStatusBusyTintForeground,
   _ctrlBadgeStatusDangerTintBackground,
   _ctrlBadgeStatusDangerTintForeground,
   _ctrlBadgeStatusDangerTintStroke,
@@ -1937,7 +1939,5 @@ export {
   _ctrlTreePaddingTextTop,
   _nullBackgroundColorHover,
   _nullBackgroundColorPressed,
-  _ctrlBadgeStatusBusyTintForeground,
-  _ctrlBadgeStatusAvailableTintForeground,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';

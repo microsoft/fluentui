@@ -111,9 +111,17 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'borderRadiusSmall',
     originalToken: 'ctrlBadgeCorner',
   },
+  _ctrlBadgeStatusAvailableTintForeground: {
+    f2Token: 'colorPaletteLightGreenForeground3',
+    originalToken: 'statusSuccessTintForeground',
+  },
   _ctrlBadgeStatusBrandTintForeground: {
     f2Token: 'colorBrandForeground2',
     originalToken: 'statusBrandTintForeground',
+  },
+  _ctrlBadgeStatusBusyTintForeground: {
+    f2Token: 'colorPaletteRedBackground3',
+    originalToken: 'statusDangerTintForeground',
   },
   _ctrlBadgeStatusDangerTintBackground: {
     f2Token: 'colorPaletteRedBackground1',
@@ -634,13 +642,5 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _nullBackgroundColorPressed: {
     f2Token: 'colorTransparentBackgroundPressed',
     originalToken: 'nullColor',
-  },
-  _ctrlBadgeStatusBusyTintForeground: {
-    f2Token: 'colorPaletteRedBackground3',
-    originalToken: 'statusDangerTintForeground',
-  },
-  _ctrlBadgeStatusAvailableTintForeground: {
-    f2Token: 'colorPaletteLightGreenForeground3',
-    originalToken: 'statusSuccessTintForeground',
   },
 };
