@@ -62,6 +62,7 @@ import { useSemanticMenuGroupHeaderStyles } from './Menu';
 import { useSemanticRadioStyles } from './Radio';
 import { useSemanticPersonaStyles } from './Persona';
 import { useSemanticBadgeStyles, useSemanticPresenceBadgeStyles } from './Badge';
+import { useSemanticSearchBoxStyles } from './Search'
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -139,6 +140,8 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useRadioStyles_unstable: useSemanticRadioStyles,
   // Persona styles
   usePersonaStyles_unstable: useSemanticPersonaStyles,
+  // Search styles
+  useSearchBoxStyles_unstable: useSemanticSearchBoxStyles,
   // Checkbox styles
   useCheckboxStyles_unstable: useSemanticCheckboxStyles,
 };
