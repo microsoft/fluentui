@@ -7,7 +7,9 @@
     "@fluentui/scripts-monorepo": "*"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
     "@types/turndown": "^5.0.5",
+    "express": "^4.21.2",
     "playwright": "^1.49.1",
     "turndown": "^7.2.0",
     "turndown-plugin-gfm": "^1.0.2"
