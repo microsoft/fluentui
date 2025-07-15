@@ -66,3 +66,9 @@ export {
 export { useSemanticRadioStyles } from './component-styles/Radio';
 export { useSemanticPersonaStyles } from './component-styles/Persona';
 export { useSemanticCheckboxStyles } from './component-styles/Checkbox';
+export {
+  useSemanticBreadcrumbStyles,
+  useSemanticBreadcrumbButtonStyles,
+  useSemanticBreadcrumbDividerStyles,
+  useSemanticBreadcrumbItemStyles,
+} from './component-styles/Breadcrumb';

@@ -995,6 +995,15 @@ export const ctrlBooleanSelectionHint = "var(--smtc-ctrl-boolean-selection-hint)
 export const ctrlBooleanSelectionHintRaw = "--smtc-ctrl-boolean-selection-hint";
 
 // @public
+export const _ctrlBreadcrumbSizeDefault = "var(--smtc-size-ctrl-default, 32px)";
+
+// @public
+export const _ctrlBreadcrumbSizeLgDefault = "var(--smtc-size-ctrl-lg-default, 40px)";
+
+// @public
+export const _ctrlBreadcrumbSizeSmIcon = "var(--smtc-size-ctrl-sm-icon, 16px)";
+
+// @public
 export const _ctrlButtonGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalSNudge))";
 
 // @public (undocumented)
