@@ -1,4 +1,5 @@
 import { PlotlySchema } from './PlotlySchema';
+import { isArrayOrTypedArray } from './PlotlySchemaConverter';
 
 function addBase64Padding(s: string): string {
   const paddingNeeded = (4 - (s.length % 4)) % 4;
@@ -94,6 +95,29 @@ function decodeBdataInDict(d: any): void {
   }
 }
 
+// Helper to reshape a flat array into the given shape (e.g., [rows, cols])
+export function reshapeArray(data: number[], shape: number[]): number[] | number[][] | number[][][] {
+  if (shape.length === 1) {
+    return data;
+  }
+  if (shape.length === 2) {
+    const [rows, cols] = shape;
+    const result: number[][] = [];
+    for (let r = 0; r < rows; r++) {
+      result.push(data.slice(r * cols, (r + 1) * cols));
+    }
+    return result;
+  }
+  // For higher dimensions, recursively reshape
+  const [dim, ...rest] = shape;
+  const step = data.length / dim;
+  const result: number[][][] = [];
+  for (let i = 0; i < dim; i++) {
+    result.push(reshapeArray(data.slice(i * step, (i + 1) * step), rest) as number[][]);
+  }
+  return result;
+}
+
 // Function to process a PlotlySchema object
 export function decodeBase64Fields(plotlySchema: PlotlySchema): PlotlySchema {
   // Create a deep copy of the original data
@@ -113,7 +137,36 @@ export function decodeBase64Fields(plotlySchema: PlotlySchema): PlotlySchema {
           'bdata' in (item[key as keyof typeof item] as Record<string, number[]>)
         ) {
           const bdata = (item[key as keyof typeof item] as { bdata: number[] }).bdata;
-          (item[key as keyof typeof item] as number[]) = bdata as number[];
+          let shape = (item[key as keyof typeof item] as { shape?: string | number[] }).shape;
+          // convert to an array if shape is a string
+          if (typeof shape === 'string') {
+            let parsedShape: number[] | undefined = undefined;
+            try {
+              // Try to parse as JSON array
+              parsedShape = JSON.parse(shape);
+              if (!isArrayOrTypedArray(parsedShape)) {
+                parsedShape = undefined;
+              }
+            } catch (error) {
+              // If JSON.parse fails, try to parse as comma-separated numbers
+              const parts = shape.split(',').map(s => Number(s.trim()));
+              if (parts.every(n => !isNaN(n))) {
+                parsedShape = parts;
+              } else {
+                shape = undefined; // If parsing fails, set shape to undefined
+              }
+            }
+            shape = parsedShape;
+          }
+          // If shape exists, decode bdata into that shape
+          if (shape !== undefined && isArrayOrTypedArray(shape)) {
+            (item[key as keyof typeof item] as number[] | number[][] | number[][][]) = reshapeArray(
+              bdata,
+              shape as number[],
+            );
+          } else {
+            (item[key as keyof typeof item] as number[]) = bdata as number[];
+          }
         }
       });
     }
