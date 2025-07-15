@@ -89,6 +89,8 @@ import {
   lineHeightBase400,
   fontSizeBase200,
   lineHeightBase200,
+  fontSizeBase100,
+  lineHeightBase100,
   fontSizeBase400,
   fontWeightSemibold,
   spacingVerticalXXS,
@@ -127,6 +129,11 @@ import {
   colorNeutralForegroundInvertedHover,
   colorNeutralForegroundInvertedPressed,
   colorNeutralBackground1,
+  colorBrandBackground,
+  colorPaletteRedBorder2,
+  colorNeutralForeground1Static,
+  colorPaletteGreenBorder2,
+  colorNeutralStroke2,
 } from '../legacy/tokens';
 import {
   strokeCardOnPrimaryRestRaw,
@@ -439,8 +446,8 @@ export const textRampItemBodyFontSize = `var(${textRampItemBodyFontSizeRaw}, var
 export const textRampItemBodyLineHeight = `var(${textRampItemBodyLineHeightRaw}, var(${textGlobalBody3LineHeightRaw}, ${lineHeightBase300}))`;
 export const textRampMetadataFontSize = `var(${textRampMetadataFontSizeRaw}, var(${textGlobalCaption1FontSizeRaw}, ${fontSizeBase200}))`;
 export const textRampMetadataLineHeight = `var(${textRampMetadataLineHeightRaw}, var(${textGlobalCaption1LineHeightRaw}))`;
-export const textRampLegalFontSize = `var(${textRampLegalFontSizeRaw}, var(${textGlobalCaption2FontSizeRaw}))`;
-export const textRampLegalLineHeight = `var(${textRampLegalLineHeightRaw}, var(${textGlobalCaption2LineHeightRaw}))`;
+export const textRampLegalFontSize = `var(${textRampLegalFontSizeRaw}, var(${textGlobalCaption2FontSizeRaw}, ${fontSizeBase200}))`;
+export const textRampLegalLineHeight = `var(${textRampLegalLineHeightRaw}, var(${textGlobalCaption2LineHeightRaw}, ${lineHeightBase200}))`;
 export const textRampSmPageHeaderFontSize = `var(${textRampSmPageHeaderFontSizeRaw}, var(${textGlobalSubtitle1FontSizeRaw}))`;
 export const textRampSmPageHeaderLineHeight = `var(${textRampSmPageHeaderLineHeightRaw}, var(${textGlobalSubtitle1LineHeightRaw}))`;
 export const textRampSmSectionHeaderFontSize = `var(${textRampSmSectionHeaderFontSizeRaw}, var(${textGlobalSubtitle2FontSizeRaw}))`;
@@ -455,8 +462,8 @@ export const textRampSmItemBodyFontSize = `var(${textRampSmItemBodyFontSizeRaw},
 export const textRampSmItemBodyLineHeight = `var(${textRampSmItemBodyLineHeightRaw}, var(${textGlobalCaption1LineHeightRaw}, ${lineHeightBase200}))`;
 export const textRampSmMetadataFontSize = `var(${textRampSmMetadataFontSizeRaw}, var(${textGlobalCaption1FontSizeRaw}))`;
 export const textRampSmMetadataLineHeight = `var(${textRampSmMetadataLineHeightRaw}, var(${textGlobalCaption1LineHeightRaw}))`;
-export const textRampSmLegalFontSize = `var(${textRampSmLegalFontSizeRaw}, var(${textGlobalCaption2FontSizeRaw}))`;
-export const textRampSmLegalLineHeight = `var(${textRampSmLegalLineHeightRaw}, var(${textGlobalCaption2LineHeightRaw}))`;
+export const textRampSmLegalFontSize = `var(${textRampSmLegalFontSizeRaw}, var(${textGlobalCaption2FontSizeRaw}, ${fontSizeBase100}))`;
+export const textRampSmLegalLineHeight = `var(${textRampSmLegalLineHeightRaw}, var(${textGlobalCaption2LineHeightRaw}, ${lineHeightBase100}))`;
 export const textRampLgPageHeaderFontSize = `var(${textRampLgPageHeaderFontSizeRaw}, var(${textGlobalTitle1FontSizeRaw}))`;
 export const textRampLgPageHeaderLineHeight = `var(${textRampLgPageHeaderLineHeightRaw}, var(${textGlobalTitle1LineHeightRaw}))`;
 export const textRampLgSectionHeaderFontSize = `var(${textRampLgSectionHeaderFontSizeRaw}, var(${textGlobalTitle2FontSizeRaw}))`;
@@ -471,8 +478,8 @@ export const textRampLgItemBodyFontSize = `var(${textRampLgItemBodyFontSizeRaw},
 export const textRampLgItemBodyLineHeight = `var(${textRampLgItemBodyLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}, ${lineHeightBase400}))`;
 export const textRampLgMetadataFontSize = `var(${textRampLgMetadataFontSizeRaw}, var(${textGlobalBody3FontSizeRaw}))`;
 export const textRampLgMetadataLineHeight = `var(${textRampLgMetadataLineHeightRaw}, var(${textGlobalBody3LineHeightRaw}))`;
-export const textRampLgLegalFontSize = `var(${textRampLgLegalFontSizeRaw}, var(${textGlobalCaption1FontSizeRaw}))`;
-export const textRampLgLegalLineHeight = `var(${textRampLgLegalLineHeightRaw}, var(${textGlobalCaption1LineHeightRaw}))`;
+export const textRampLgLegalFontSize = `var(${textRampLgLegalFontSizeRaw}, var(${textGlobalCaption1FontSizeRaw}, ${fontSizeBase200}))`;
+export const textRampLgLegalLineHeight = `var(${textRampLgLegalLineHeightRaw}, var(${textGlobalCaption1LineHeightRaw}, ${lineHeightBase200}))`;
 export const textCtrlWeightDefault = `var(${textCtrlWeightDefaultRaw}, var(${textStyleDefaultRegularWeightRaw}))`;
 export const textCtrlButtonWeightDefault = `var(${textCtrlButtonWeightDefaultRaw}, var(${textStyleDefaultRegularWeightRaw}, ${fontWeightSemibold}))`;
 export const textCtrlButtonWeightSelected = `var(${textCtrlButtonWeightSelectedRaw}, var(${textCtrlWeightSelectedRaw}))`;
@@ -618,20 +625,20 @@ export const iconThemeCtrlSubtlePressed = `var(${iconThemeCtrlSubtlePressedRaw},
 export const iconThemeCtrlSubtleSelected = `var(${iconThemeCtrlSubtleSelectedRaw}, var(${iconThemeCtrlDefaultSelectedRaw}))`;
 export const iconThemeCtrlChevronDefault = `var(${iconThemeCtrlChevronDefaultRaw}, var(${iconThemeCtrlDefaultRestRaw}))`;
 export const iconThemeCtrlChevronSelected = `var(${iconThemeCtrlChevronSelectedRaw}, var(${iconThemeCtrlDefaultSelectedRaw}))`;
-export const statusBrandBackground = `var(${statusBrandBackgroundRaw}, var(${backgroundCtrlBrandRestRaw}))`;
+export const statusBrandBackground = `var(${statusBrandBackgroundRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorBrandBackground}))`;
 export const statusBrandStroke = `var(${statusBrandStrokeRaw}, var(${backgroundCtrlBrandRestRaw}))`;
-export const statusBrandForeground = `var(${statusBrandForegroundRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
-export const statusBrandTintForeground = `var(${statusBrandTintForegroundRaw}, var(${foregroundCtrlBrandRestRaw}))`;
-export const statusDangerStroke = `var(${statusDangerStrokeRaw}, var(${statusDangerBackgroundRaw}))`;
-export const statusDangerForeground = `var(${statusDangerForegroundRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
+export const statusBrandForeground = `var(${statusBrandForegroundRaw}, var(${foregroundCtrlOnBrandRestRaw}, ${colorNeutralForegroundOnBrand}))`;
+export const statusBrandTintForeground = `var(${statusBrandTintForegroundRaw}, var(${foregroundCtrlBrandRestRaw}, ${colorBrandForeground1}))`;
+export const statusDangerStroke = `var(${statusDangerStrokeRaw}, var(${statusDangerBackgroundRaw}, ${colorPaletteRedBorder2}))`;
+export const statusDangerForeground = `var(${statusDangerForegroundRaw}, var(${foregroundCtrlOnBrandRestRaw}, ${colorNeutralForegroundOnBrand}))`;
 export const statusWarningStroke = `var(${statusWarningStrokeRaw}, var(${statusWarningBackgroundRaw}))`;
-export const statusWarningForeground = `var(${statusWarningForegroundRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
-export const statusSuccessStroke = `var(${statusSuccessStrokeRaw}, var(${statusSuccessBackgroundRaw}))`;
-export const statusSuccessForeground = `var(${statusSuccessForegroundRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
-export const statusImportantStroke = `var(${statusImportantStrokeRaw}, var(${statusImportantBackgroundRaw}))`;
-export const statusImportantForeground = `var(${statusImportantForegroundRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
-export const statusInformativeStroke = `var(${statusInformativeStrokeRaw}, var(${statusInformativeBackgroundRaw}))`;
-export const statusInformativeForeground = `var(${statusInformativeForegroundRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
+export const statusWarningForeground = `var(${statusWarningForegroundRaw}, var(${foregroundCtrlOnBrandRestRaw}, ${colorNeutralForeground1Static}))`;
+export const statusSuccessStroke = `var(${statusSuccessStrokeRaw}, var(${statusSuccessBackgroundRaw}, ${colorPaletteGreenBorder2}))`;
+export const statusSuccessForeground = `var(${statusSuccessForegroundRaw}, var(${foregroundCtrlOnBrandRestRaw}, ${colorNeutralForegroundOnBrand}))`;
+export const statusImportantStroke = `var(${statusImportantStrokeRaw}, var(${statusImportantBackgroundRaw}, ${colorNeutralStrokeAccessible}))`;
+export const statusImportantForeground = `var(${statusImportantForegroundRaw}, var(${foregroundCtrlOnBrandRestRaw}, ${colorNeutralBackground1}))`;
+export const statusInformativeStroke = `var(${statusInformativeStrokeRaw}, var(${statusInformativeBackgroundRaw}, ${colorNeutralStroke2}))`;
+export const statusInformativeForeground = `var(${statusInformativeForegroundRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground3}))`;
 export const statusNeutralStroke = `var(${statusNeutralStrokeRaw}, var(${statusNeutralBackgroundRaw}))`;
 export const statusNeutralForeground = `var(${statusNeutralForegroundRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
 export const statusNeutralTintForeground = `var(${statusNeutralTintForegroundRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
