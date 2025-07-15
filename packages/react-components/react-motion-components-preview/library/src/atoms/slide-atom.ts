@@ -9,7 +9,7 @@ interface SlideAtomParams {
 }
 
 /**
- * Generates a motion atom object for a slide in or slide out.
+ * Generates a motion atom object for a slide-in or slide-out.
  * @param direction - The functional direction of the motion: 'enter' or 'exit'.
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
@@ -22,7 +22,7 @@ export const slideAtom = ({
   duration,
   easing = motionTokens.curveLinear,
   fromX = '0px',
-  fromY = '0px',
+  fromY = '20px',
 }: SlideAtomParams): AtomMotion => {
   const keyframes = [{ translate: `${fromX} ${fromY}` }, { translate: '0px 0px' }];
   if (direction === 'exit') {

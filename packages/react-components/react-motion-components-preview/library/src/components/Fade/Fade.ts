@@ -5,23 +5,10 @@ import {
   createPresenceComponentVariant,
 } from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
-
-type FadeVariantParams = {
-  /** Time (ms) for the enter transition (fade-in). Defaults to the `durationNormal` value (200 ms). */
-  duration?: number;
-
-  /** Easing curve for the enter transition (fade-in). Defaults to the `curveEasyEase` value.  */
-  easing?: string;
-
-  /** Time (ms) for the exit transition (fade-out). Defaults to the `duration` param for symmetry. */
-  exitDuration?: number;
-
-  /** Easing curve for the exit transition (fade-out). Defaults to the `easing` param for symmetry.  */
-  exitEasing?: string;
-};
+import { FadeParams } from './fade-types';
 
 /** Define a presence motion for fade in/out  */
-export const fadePresenceFn: PresenceMotionFn<FadeVariantParams> = ({
+export const fadePresenceFn: PresenceMotionFn<FadeParams> = ({
   duration = motionTokens.durationNormal,
   easing = motionTokens.curveEasyEase,
   exitDuration = duration,
