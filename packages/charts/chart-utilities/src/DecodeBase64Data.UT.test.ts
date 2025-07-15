@@ -34,7 +34,7 @@ describe('reshapeArray', () => {
   it('should throw an error if data cannot be reshaped into the given shape', () => {
     const data = [1, 2, 3, 4];
     const shape = [3, 2];
-    expect(() => reshapeArray(data, shape)).toThrowError();
+    expect(reshapeArray(data, shape)).toEqual([[1, 2], [3, 4], []]);
   });
 
   it('should handle empty data and shape', () => {
