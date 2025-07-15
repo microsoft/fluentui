@@ -4,33 +4,19 @@
 
 ```ts
 
-import type { MotionParam } from '@fluentui/react-motion';
 import { PresenceComponent } from '@fluentui/react-motion';
-import type { PresenceMotionFn } from '@fluentui/react-motion';
 
 // @public
-export const Collapse: PresenceComponent<CollapseRuntimeParams>;
-
-// @public (undocumented)
-export const CollapseDelayed: PresenceComponent<CollapseRuntimeParams>;
-
-// @public (undocumented)
-export const CollapseRelaxed: PresenceComponent<CollapseRuntimeParams>;
-
-// @public (undocumented)
-export type CollapseRuntimeParams = {
-    animateOpacity?: boolean;
-    orientation?: CollapseOrientation;
-};
-
-// @public (undocumented)
-export const CollapseSnappy: PresenceComponent<CollapseRuntimeParams>;
+export const Collapse: PresenceComponent<CollapseParams>;
 
 // @public
-export const createCollapseDelayedPresence: PresenceMotionFnCreator<CollapseDelayedVariantParams, CollapseRuntimeParams>;
+export const CollapseDelayed: PresenceComponent<CollapseDelayedParams>;
 
-// @public
-export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantParams, CollapseRuntimeParams>;
+// @public (undocumented)
+export const CollapseRelaxed: PresenceComponent<CollapseParams>;
+
+// @public (undocumented)
+export const CollapseSnappy: PresenceComponent<CollapseParams>;
 
 // @public
 export const Fade: PresenceComponent<FadeParams>;
