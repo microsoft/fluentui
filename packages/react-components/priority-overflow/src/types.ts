@@ -83,6 +83,12 @@ export interface ObserveOptions {
    * Callback when item visibility is updated
    */
   onUpdateOverflow: OnUpdateOverflow;
+
+  /**
+   * The library will read the gap spacing between overflow items when calculating available space
+   * NOTE: The library will deliberately not read the spacing between end elements and the container
+   */
+  measureGap?: boolean;
 }
 
 /**

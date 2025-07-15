@@ -934,7 +934,7 @@ export {
   useOverflowVisibility,
 } from '@fluentui/react-overflow';
 
-export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
+export type { OverflowProps, OverflowItemProps, OverflowImperativeRef } from '@fluentui/react-overflow';
 
 export {
   Toolbar,
