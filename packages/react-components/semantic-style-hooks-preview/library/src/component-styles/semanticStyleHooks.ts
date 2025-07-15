@@ -71,6 +71,14 @@ import {
 } from './Breadcrumb';
 import { useSemanticSpinButtonStyles } from './SpinButton';
 import { useSemanticInputStyles } from './Input/useSemanticInputStyles.styles';
+import {
+  useSemanticToolbarStyles,
+  useSemanticToolbarButtonStyles,
+  useSemanticToolbarDividerStyles,
+  useSemanticToolbarGroupStyles,
+  useSemanticToolbarRadioButtonStyles,
+  useSemanticToolbarToggleButtonStyles,
+} from './Toolbar';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -161,4 +169,11 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useSpinButtonStyles_unstable: useSemanticSpinButtonStyles,
   // Input styles
   useInputStyles_unstable: useSemanticInputStyles,
+  // Toolbar styles
+  useToolbarStyles_unstable: useSemanticToolbarStyles,
+  useToolbarButtonStyles_unstable: useSemanticToolbarButtonStyles,
+  useToolbarDividerStyles_unstable: useSemanticToolbarDividerStyles,
+  useToolbarGroupStyles_unstable: useSemanticToolbarGroupStyles,
+  useToolbarRadioButtonStyles_unstable: useSemanticToolbarRadioButtonStyles,
+  useToolbarToggleButtonStyles_unstable: useSemanticToolbarToggleButtonStyles,
 };
