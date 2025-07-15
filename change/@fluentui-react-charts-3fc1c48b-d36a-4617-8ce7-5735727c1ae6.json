@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "hbc focus ring fix",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}
