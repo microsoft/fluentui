@@ -43,6 +43,9 @@ import {
   statusWarningTintForegroundRaw,
   statusWarningTintStrokeRaw,
   textStyleDefaultRegularWeightRaw,
+  sizeCtrlDefaultRaw,
+  sizeCtrlLgDefaultRaw,
+  sizeCtrlSmIconRaw,
   gapInsideCtrlDefaultRaw,
   backgroundCtrlBrandHoverRaw,
   backgroundCtrlBrandPressedRaw,
@@ -51,7 +54,6 @@ import {
   foregroundCtrlNeutralSecondaryRestRaw,
   backgroundCtrlSubtleHoverRaw,
   backgroundCtrlSubtlePressedRaw,
-  sizeCtrlDefaultRaw,
   paddingCtrlHorizontalDefaultRaw,
   textGlobalBody3FontSizeRaw,
   cornerFlyoutRestRaw,
@@ -497,6 +499,27 @@ export const _ctrlBadgeTextStyleSemiBoldWeight = `var(${textStyleDefaultRegularW
  * please use ctrlBadgeLgPadding instead.
  */
 export const _ctrlBadgeXLPadding = `var(${ctrlBadgeLgPaddingRaw}, ${spacingHorizontalSNudge})`;
+/**
+ * This is a legacy variant for sizeCtrlDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use sizeCtrlDefault instead.
+ */
+export const _ctrlBreadcrumbSizeDefault = `var(${sizeCtrlDefaultRaw}, 32px)`;
+/**
+ * This is a legacy variant for sizeCtrlLgDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use sizeCtrlLgDefault instead.
+ */
+export const _ctrlBreadcrumbSizeLgDefault = `var(${sizeCtrlLgDefaultRaw}, 40px)`;
+/**
+ * This is a legacy variant for sizeCtrlSmIcon to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use sizeCtrlSmIcon instead.
+ */
+export const _ctrlBreadcrumbSizeSmIcon = `var(${sizeCtrlSmIconRaw}, 16px)`;
 /**
  * This is a legacy variant for gapInsideCtrlDefault to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
