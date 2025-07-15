@@ -917,7 +917,13 @@ export const ctrlBadgeSmTextPaddingTop = "var(--smtc-ctrl-badge-sm-text-padding-
 export const ctrlBadgeSmTextPaddingTopRaw = "--smtc-ctrl-badge-sm-text-padding-top";
 
 // @public
+export const _ctrlBadgeStatusAvailableTintForeground = "var(--smtc-status-success-tint-foreground, var(--colorPaletteLightGreenForeground3))";
+
+// @public
 export const _ctrlBadgeStatusBrandTintForeground = "var(--smtc-status-brand-tint-foreground, var(--smtc-foreground-ctrl-brand-rest, var(--colorBrandForeground2)))";
+
+// @public
+export const _ctrlBadgeStatusBusyTintForeground = "var(--smtc-status-danger-tint-foreground, var(--colorPaletteRedBackground3))";
 
 // @public
 export const _ctrlBadgeStatusDangerTintBackground = "var(--smtc-status-danger-tint-background, var(--colorPaletteRedBackground1))";
@@ -4678,7 +4684,7 @@ export const sizeCtrlSmIcon = "var(--smtc-size-ctrl-sm-icon, 20px)";
 export const sizeCtrlSmIconRaw = "--smtc-size-ctrl-sm-icon";
 
 // @public (undocumented)
-export const statusAwayForeground = "var(--smtc-status-away-foreground)";
+export const statusAwayForeground = "var(--smtc-status-away-foreground, var(--colorPaletteMarigoldBackground3))";
 
 // @public (undocumented)
 export const statusAwayForegroundRaw = "--smtc-status-away-foreground";
@@ -4864,7 +4870,7 @@ export const statusNeutralTintStroke = "var(--smtc-status-neutral-tint-stroke)";
 export const statusNeutralTintStrokeRaw = "--smtc-status-neutral-tint-stroke";
 
 // @public (undocumented)
-export const statusOofForeground = "var(--smtc-status-oof-foreground)";
+export const statusOofForeground = "var(--smtc-status-oof-foreground, var(--colorPaletteBerryForeground3))";
 
 // @public (undocumented)
 export const statusOofForegroundRaw = "--smtc-status-oof-foreground";
