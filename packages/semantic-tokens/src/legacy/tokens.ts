@@ -690,6 +690,11 @@ export const spacingVerticalSNudge = 'var(--spacingVerticalSNudge)';
  */
 export const colorPaletteDarkOrangeForeground1 = 'var(--colorPaletteDarkOrangeForeground1)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground2BrandSelected | `colorNeutralForeground2BrandSelected`} design token.
+ * @public
+ */
+export const colorNeutralForeground2BrandSelected = 'var(--colorNeutralForeground2BrandSelected)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground4 | `colorNeutralForeground4`} design token.
  * @public
  */

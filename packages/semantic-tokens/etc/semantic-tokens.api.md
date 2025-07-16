@@ -1786,6 +1786,9 @@ export const ctrlFocusOuterStrokeWidth = "var(--smtc-ctrl-focus-outer-stroke-wid
 // @public (undocumented)
 export const ctrlFocusOuterStrokeWidthRaw = "--smtc-ctrl-focus-outer-stroke-width";
 
+// @public
+export const _ctrlInfoLabelForegroundColorSelected = "var(--smtc-foreground-ctrl-active-brand-rest, var(--smtc-foreground-ctrl-brand-rest, var(--colorNeutralForeground2BrandSelected)))";
+
 // @public (undocumented)
 export const ctrlInputBackgroundDisabled = "var(--smtc-ctrl-input-background-disabled, var(--smtc-background-ctrl-neutral-disabled, var(--colorNeutralBackgroundDisabled)))";
 
