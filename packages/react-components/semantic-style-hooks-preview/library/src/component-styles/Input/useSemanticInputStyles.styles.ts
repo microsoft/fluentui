@@ -106,7 +106,7 @@ const useRootClassName = makeResetStyles({
   },
   ':focus-within:active::after': {
     // This is if the user clicks the field again while it's already focused
-    borderBottomColor: semanticTokens.ctrlInputBottomLineStrokePressed,
+    borderBottomColor: semanticTokens._ctrlInputBottomLineStrokeBrandPressed,
   },
   ':focus-within': {
     outline: '2px solid transparent',
@@ -140,7 +140,7 @@ const useRootStyles = makeStyles({
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
       ...shorthands.borderColor(semanticTokens.ctrlInputStrokePressed),
-      borderBottomColor: semanticTokens._ctrlInputBottomLineStrokeBrandPressed,
+      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokePressed,
     },
   },
   underline: {

@@ -1,5 +1,3 @@
-import { _ctrlBadgeStatusSuccessTintForeground } from './legacyVariant/tokens';
-
 export type LegacyFluentVariantValue =
   | {
       originalToken: string;
@@ -759,7 +757,6 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorTransparentBackgroundPressed',
     originalToken: 'nullColor',
   },
-
   _ctrlInputBottomLineStrokeBrandPressed: {
     f2Token: 'colorCompoundBrandStrokePressed',
     originalToken: 'ctrlInputBottomLineStrokePressed',
