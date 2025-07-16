@@ -10,6 +10,9 @@ import { EventHandler } from '@fluentui/react-utilities';
 function expectListboxItemSelected(item: HTMLElement, selected: boolean) {
   expect(item.getAttribute('aria-selected')).toBe(selected.toString());
 }
+function expectListboxItemAriaDisabledValue(item: HTMLElement, expected: any) {
+  expect(item.getAttribute('aria-disabled')).toBe(expected);
+}
 
 describe('List', () => {
   isConformant({
@@ -372,12 +375,15 @@ describe('List', () => {
       function interactWithFirstElement(
         interaction: (firstItem: HTMLElement) => void,
         customAction?: EventHandler<ListItemActionEventData>,
+        disabledSelection?: boolean,
       ) {
         const onAction = jest.fn(customAction);
 
         const result = render(
           <List selectionMode="multiselect">
-            <ListItem onAction={onAction}>First ListItem</ListItem>
+            <ListItem onAction={customAction ? onAction : undefined} disabledSelection={disabledSelection}>
+              First ListItem
+            </ListItem>
             <ListItem>Second ListItem</ListItem>
           </List>,
         );
@@ -391,7 +397,10 @@ describe('List', () => {
       }
 
       it('Click should trigger selection and onAction callback by default', () => {
-        const { listItem, onAction } = interactWithFirstElement(item => item.click());
+        const { listItem, onAction } = interactWithFirstElement(
+          item => item.click(),
+          () => null,
+        );
         expect(onAction).toHaveBeenCalledTimes(1);
         expectListboxItemSelected(listItem, true);
       });
@@ -411,6 +420,23 @@ describe('List', () => {
         });
         expect(onAction).not.toHaveBeenCalled();
         expectListboxItemSelected(listItem, true);
+      });
+
+      it('Click should not toggle selection if disabledSelection is true, aria-disabled should be true', () => {
+        const { listItem } = interactWithFirstElement(item => item.click(), undefined, true);
+        expectListboxItemSelected(listItem, false);
+        expectListboxItemAriaDisabledValue(listItem, 'true');
+      });
+
+      it('Click should not toggle selection if disabledSelection is true, aria-disabled should be false when custom action is present', () => {
+        const { listItem, onAction } = interactWithFirstElement(
+          item => item.click(),
+          () => null,
+          true,
+        );
+        expect(onAction).toHaveBeenCalledTimes(1);
+        expectListboxItemSelected(listItem, false);
+        expectListboxItemAriaDisabledValue(listItem, null);
       });
     });
   });

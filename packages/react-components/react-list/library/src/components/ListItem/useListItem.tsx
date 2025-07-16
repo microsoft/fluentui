@@ -193,6 +193,7 @@ export const useListItem_unstable = (
       id: String(value),
       ...(isSelectionModeEnabled && {
         'aria-selected': isSelected,
+        'aria-disabled': (disabledSelection && !onAction) || undefined,
       }),
       ...props,
       ...tabsterAttributes,
