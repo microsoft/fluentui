@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { createContext } from '@fluentui/react-context-selector';
-import type { Context } from '@fluentui/react-context-selector';
 import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
-export const MenuGridContext: Context<MenuGridContextValue> = createContext<MenuGridContextValue | undefined>(
+export const MenuGridContext = React.createContext<MenuGridContextValue | undefined>(
   undefined,
-) as Context<MenuGridContextValue>;
+) as React.Context<MenuGridContextValue>;
 
 const menuGridContextDefaultValue: MenuGridContextValue = {
   tableRowTabsterAttribute: null,
