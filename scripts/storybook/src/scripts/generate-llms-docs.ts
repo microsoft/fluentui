@@ -404,7 +404,7 @@ export function generateFullFileContentFromStory(item: StorybookStoreItem) {
     content.push('');
 
     for (const [name, subcomponent] of Object.entries(item.meta.subcomponents)) {
-      const docgen = subcomponent.__docgenInfo;
+      const docgen = subcomponent?.__docgenInfo;
       if (!docgen) {
         continue;
       }
@@ -415,11 +415,11 @@ export function generateFullFileContentFromStory(item: StorybookStoreItem) {
       content.push(docgen.description ?? '');
       content.push('');
 
-      const props = extractComponentProps(subcomponent);
-      if (props.length > 0) {
+      const subcomponentProps = extractComponentProps(subcomponent);
+      if (subcomponentProps.length > 0) {
         content.push('#### Props');
         content.push('');
-        content.push(...generateComponentPropsTable(props));
+        content.push(...generateComponentPropsTable(subcomponentProps));
         content.push('');
       }
     }
