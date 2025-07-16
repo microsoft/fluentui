@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 16 Jul 2025 07:20:17 GMT",
+      "tag": "@fluentui/react-charting_v5.24.14",
+      "version": "5.24.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "4d91e1c33b3fa4c2401db99d02ea747ddcf1aa93",
+            "comment": "fix(react-charting): Align labels and points according to given directions and rotation in schema"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "abb16ff5cf2f59943be39b7e36e419b34aac7ca4",
+            "comment": "fix(react-charting): Support min max for VSBC in plotly"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.23",
+            "commit": "abb16ff5cf2f59943be39b7e36e419b34aac7ca4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Jul 2025 07:21:15 GMT",
       "tag": "@fluentui/react-charting_v5.24.13",
       "version": "5.24.13",
