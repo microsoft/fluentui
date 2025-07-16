@@ -75,16 +75,18 @@ const measureStartMock = measureStart as jest.Mock;
 const measureEndMock = measureEnd as jest.Mock;
 
 describe('Build Executor', () => {
-  it('runs build and api-generation and fails on api update', async () => {
+  beforeEach(() => {
     // mute api extractor - START
-    jest.spyOn(console, 'warn').mockImplementation(() => {
-      return;
-    });
     jest.spyOn(console, 'log').mockImplementation(() => {
       return;
     });
+    jest.spyOn(console, 'warn').mockImplementation(() => {
+      return;
+    });
     // mute api extractor - END
+  });
 
+  it('runs build and api-generation and fails on api update', async () => {
     const loggerLogSpy = jest.spyOn(logger, 'log').mockImplementation(() => {
       return;
     });
@@ -287,4 +289,92 @@ describe('Build Executor', () => {
       process.env.CI = existingEnvVariableCi;
     }
   }, 60000);
+
+  describe(`#enableGriffelRawStyles`, () => {
+    it('generates raw styles files when enableGriffelRawStyles is enabled', async () => {
+      const optionsWithRawStyles: BuildExecutorSchema = {
+        ...options,
+        enableGriffelRawStyles: true,
+      };
+
+      const output = await executor(optionsWithRawStyles, context);
+      expect(output.success).toBe(true);
+
+      // =====================
+      // assert raw styles files are generated
+      // =====================
+      expect(existsSync(join(workspaceRoot, 'libs/proj/lib/greeter.styles.raw.js'))).toBe(true);
+      expect(existsSync(join(workspaceRoot, 'libs/proj/lib/greeter.styles.raw.js.map'))).toBe(true);
+      expect(existsSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.raw.js'))).toBe(true);
+      expect(existsSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.raw.js.map'))).toBe(true);
+
+      // =====================
+      // assert raw styles content matches the original SWC-compiled styles (before Griffel transformation)
+      // =====================
+      expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.styles.raw.js'), 'utf-8')).toMatchInlineSnapshot(`
+      "import { makeStyles } from '@griffel/react';
+      export const useStyles = makeStyles({
+          root: {
+              color: 'red'
+          }
+      });
+      "
+    `);
+      expect(readFileSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.raw.js'), 'utf-8'))
+        .toMatchInlineSnapshot(`
+      "\\"use strict\\";
+      Object.defineProperty(exports, \\"__esModule\\", {
+          value: true
+      });
+      Object.defineProperty(exports, \\"useStyles\\", {
+          enumerable: true,
+          get: function() {
+              return useStyles;
+          }
+      });
+      const _react = require(\\"@griffel/react\\");
+      const useStyles = (0, _react.makeStyles)({
+          root: {
+              color: 'red'
+          }
+      });
+      "
+    `);
+
+      // =====================
+      // showcase that babel transformation creates invalid source map - which differs with raw styles source maps produced by SWC-compiled source maps (before Griffel transformation)
+      // =====================
+      const originalMapContent = readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.styles.js.map'), 'utf-8');
+      const rawMapContent = readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.styles.raw.js.map'), 'utf-8');
+      expect(rawMapContent).not.toBe(originalMapContent);
+
+      const originalMapContentCommonjs = readFileSync(
+        join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.js.map'),
+        'utf-8',
+      );
+      const rawMapContentCommonjs = readFileSync(
+        join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.raw.js.map'),
+        'utf-8',
+      );
+      expect(rawMapContentCommonjs).not.toBe(originalMapContentCommonjs);
+    }, 60000);
+
+    it('does not generate raw styles files when enableGriffelRawStyles is disabled', async () => {
+      const optionsWithoutRawStyles: BuildExecutorSchema = {
+        ...options,
+        enableGriffelRawStyles: false,
+      };
+
+      const output = await executor(optionsWithoutRawStyles, context);
+      expect(output.success).toBe(true);
+
+      // =====================
+      // assert raw styles files are NOT generated
+      // =====================
+      expect(existsSync(join(workspaceRoot, 'libs/proj/lib/greeter.styles.raw.js'))).toBe(false);
+      expect(existsSync(join(workspaceRoot, 'libs/proj/lib/greeter.styles.raw.js.map'))).toBe(false);
+      expect(existsSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.raw.js'))).toBe(false);
+      expect(existsSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.raw.js.map'))).toBe(false);
+    }, 60000);
+  });
 });
