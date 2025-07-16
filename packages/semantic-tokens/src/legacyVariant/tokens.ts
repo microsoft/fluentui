@@ -1466,7 +1466,7 @@ export const _ctrlTooltipPaddingTop = `var(${paddingCtrlTextTopRaw}, 4px)`;
  * This token is not intended for use in new semantic theme implementations
  * please use ctrlTooltipShadow instead.
  */
-export const __ctrlTooltipShadow = `var(${ctrlTooltipShadowRaw}, var(${ctrlFabShadowRestRaw}, drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 4px 8px var(--colorNeutralShadowKey))))`;
+export const _ctrlTooltipShadow = `var(${ctrlTooltipShadowRaw}, var(${ctrlFabShadowRestRaw}, drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 4px 8px var(--colorNeutralShadowKey))))`;
 /**
  * This is a legacy variant for gapInsideCtrlDefault to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.

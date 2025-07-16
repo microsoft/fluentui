@@ -401,7 +401,7 @@ export const backgroundLayerTertiary = "var(--smtc-background-layer-tertiary, va
 export const backgroundLayerTertiaryRaw = "--smtc-background-layer-tertiary";
 
 // @public (undocumented)
-export const backgroundSmoke = "var(--smtc-background-smoke)";
+export const backgroundSmoke = "var(--smtc-background-smoke, var(--colorBackgroundOverlay))";
 
 // @public (undocumented)
 export const backgroundSmokeRaw = "--smtc-background-smoke";
@@ -509,7 +509,7 @@ export const cornerCircular = "var(--smtc-corner-circular, var(--borderRadiusCir
 export const cornerCircularRaw = "--smtc-corner-circular";
 
 // @public (undocumented)
-export const cornerCtrlHover = "var(--smtc-corner-ctrl-hover, var(--smtc-corner-ctrl-rest))";
+export const cornerCtrlHover = "var(--smtc-corner-ctrl-hover, var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium)))";
 
 // @public (undocumented)
 export const cornerCtrlHoverRaw = "--smtc-corner-ctrl-hover";
@@ -533,7 +533,7 @@ export const cornerCtrlLgRest = "var(--smtc-corner-ctrl-lg-rest, var(--borderRad
 export const cornerCtrlLgRestRaw = "--smtc-corner-ctrl-lg-rest";
 
 // @public (undocumented)
-export const cornerCtrlPressed = "var(--smtc-corner-ctrl-pressed, var(--smtc-corner-ctrl-rest))";
+export const cornerCtrlPressed = "var(--smtc-corner-ctrl-pressed, var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium)))";
 
 // @public (undocumented)
 export const cornerCtrlPressedRaw = "--smtc-corner-ctrl-pressed";
@@ -1030,6 +1030,39 @@ export const ctrlCardStateRest = "var(--smtc-ctrl-card-state-rest)";
 // @public (undocumented)
 export const ctrlCardStateRestRaw = "--smtc-ctrl-card-state-rest";
 
+// @public
+export const _ctrlCheckboxBorderColorChecked = "var(--smtc-stroke-ctrl-on-active-brand-hover, var(--smtc-stroke-ctrl-on-brand-hover, var(--colorCompoundBrandBackground)))";
+
+// @public
+export const _ctrlCheckboxBorderColorCheckedHover = "var(--smtc-stroke-ctrl-on-active-brand-hover, var(--smtc-stroke-ctrl-on-brand-hover, var(--colorCompoundBrandBackgroundHover)))";
+
+// @public
+export const _ctrlCheckboxForegroundUnchecked = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground3)))";
+
+// @public
+export const _ctrlCheckboxForegroundUncheckedHover = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+
+// @public
+export const _ctrlCheckboxIndicatorBorderColorCheckedPressed = "var(--smtc-stroke-ctrl-on-active-brand-pressed, var(--smtc-stroke-ctrl-on-brand-pressed, var(--colorCompoundBrandBackgroundPressed)))";
+
+// @public
+export const _ctrlCheckboxIndicatorBorderColorMixed = "var(--smtc-background-ctrl-active-brand-rest, var(--smtc-background-ctrl-brand-rest, var(--colorCompoundBrandStroke)))";
+
+// @public
+export const _ctrlCheckboxIndicatorBorderColorMixedHover = "var(--smtc-background-ctrl-active-brand-hover, var(--smtc-background-ctrl-brand-hover, var(--colorCompoundBrandStrokeHover)))";
+
+// @public
+export const _ctrlCheckboxIndicatorBorderColorMixedPressed = "var(--smtc-background-ctrl-active-brand-pressed, var(--smtc-background-ctrl-brand-pressed, var(--colorCompoundBrandStrokePressed)))";
+
+// @public
+export const _ctrlCheckboxIndicatorColorMixed = "var(--smtc-background-ctrl-active-brand-rest, var(--smtc-background-ctrl-brand-rest, var(--colorCompoundBrandForeground1)))";
+
+// @public
+export const _ctrlCheckboxIndicatorColorMixedHover = "var(--smtc-background-ctrl-active-brand-hover, var(--smtc-background-ctrl-brand-hover, var(--colorCompoundBrandForeground1Hover)))";
+
+// @public
+export const _ctrlCheckboxIndicatorColorMixedPressed = "var(--smtc-background-ctrl-active-brand-pressed, var(--smtc-background-ctrl-brand-pressed, var(--colorCompoundBrandForeground1Pressed)))";
+
 // @public (undocumented)
 export const ctrlChoiceBaseBackgroundDisabled = "var(--smtc-ctrl-choice-base-background-disabled, var(--smtc-background-ctrl-outline-disabled, var(--colorTransparentBackground)))";
 
@@ -1085,7 +1118,7 @@ export const ctrlChoiceBaseStrokeRest = "var(--smtc-ctrl-choice-base-stroke-rest
 export const ctrlChoiceBaseStrokeRestRaw = "--smtc-ctrl-choice-base-stroke-rest";
 
 // @public (undocumented)
-export const ctrlChoiceCheckboxCorner = "var(--smtc-ctrl-choice-checkbox-corner)";
+export const ctrlChoiceCheckboxCorner = "var(--smtc-ctrl-choice-checkbox-corner, var(--borderRadiusSmall))";
 
 // @public (undocumented)
 export const ctrlChoiceCheckboxCornerRaw = "--smtc-ctrl-choice-checkbox-corner";
@@ -1199,7 +1232,7 @@ export const ctrlChoicePaddingVertical = "var(--smtc-ctrl-choice-padding-vertica
 export const ctrlChoicePaddingVerticalRaw = "--smtc-ctrl-choice-padding-vertical";
 
 // @public (undocumented)
-export const ctrlChoiceRadioCorner = "var(--smtc-ctrl-choice-radio-corner, var(--smtc-corner-circular))";
+export const ctrlChoiceRadioCorner = "var(--smtc-ctrl-choice-radio-corner, var(--smtc-corner-circular, var(--borderRadiusCircular)))";
 
 // @public (undocumented)
 export const ctrlChoiceRadioCornerRaw = "--smtc-ctrl-choice-radio-corner";
@@ -1217,7 +1250,7 @@ export const ctrlChoiceRadioDotSizePressed = "var(--smtc-ctrl-choice-radio-dot-s
 export const ctrlChoiceRadioDotSizePressedRaw = "--smtc-ctrl-choice-radio-dot-size-pressed";
 
 // @public (undocumented)
-export const ctrlChoiceRadioDotSizeRest = "var(--smtc-ctrl-choice-radio-dot-size-rest)";
+export const ctrlChoiceRadioDotSizeRest = "var(--smtc-ctrl-choice-radio-dot-size-rest, 16px)";
 
 // @public (undocumented)
 export const ctrlChoiceRadioDotSizeRestRaw = "--smtc-ctrl-choice-radio-dot-size-rest";
@@ -1541,19 +1574,22 @@ export const ctrlDialogBackground = "var(--smtc-ctrl-dialog-background)";
 export const ctrlDialogBackgroundRaw = "--smtc-ctrl-dialog-background";
 
 // @public (undocumented)
-export const ctrlDialogBaseCorner = "var(--smtc-ctrl-dialog-base-corner, var(--smtc-corner-card-rest))";
+export const ctrlDialogBaseCorner = "var(--smtc-ctrl-dialog-base-corner, var(--smtc-corner-card-rest, var(--borderRadiusXLarge)))";
 
 // @public (undocumented)
 export const ctrlDialogBaseCornerRaw = "--smtc-ctrl-dialog-base-corner";
 
 // @public (undocumented)
-export const ctrlDialogBaseShadow = "var(--smtc-ctrl-dialog-base-shadow)";
+export const ctrlDialogBaseShadow = "var(--smtc-ctrl-dialog-base-shadow, var(--shadow64))";
 
 // @public (undocumented)
 export const ctrlDialogBaseShadowRaw = "--smtc-ctrl-dialog-base-shadow";
 
+// @public
+export const _ctrlDialogGapBetweenContentMedium = "var(--smtc-gap-between-content-medium, 8px)";
+
 // @public (undocumented)
-export const ctrlDialogLayerBackground = "var(--smtc-ctrl-dialog-layer-background, var(--smtc-background-layer-primary-solid))";
+export const ctrlDialogLayerBackground = "var(--smtc-ctrl-dialog-layer-background, var(--smtc-background-layer-primary-solid, var(--colorNeutralBackground1)))";
 
 // @public (undocumented)
 export const ctrlDialogLayerBackgroundRaw = "--smtc-ctrl-dialog-layer-background";
@@ -1565,7 +1601,7 @@ export const ctrlDialogLayerPaddingBottom = "var(--smtc-ctrl-dialog-layer-paddin
 export const ctrlDialogLayerPaddingBottomRaw = "--smtc-ctrl-dialog-layer-padding-bottom";
 
 // @public (undocumented)
-export const ctrlDialogStroke = "var(--smtc-ctrl-dialog-stroke, unset)";
+export const ctrlDialogStroke = "var(--smtc-ctrl-dialog-stroke, var(--smtc-null-color, var(--colorNeutralStroke2)))";
 
 // @public (undocumented)
 export const ctrlDialogStrokeRaw = "--smtc-ctrl-dialog-stroke";
@@ -2014,6 +2050,15 @@ export const ctrlLinkOnPageUnderlineDashed = "var(--smtc-ctrl-link-on-page-under
 // @public (undocumented)
 export const ctrlLinkOnPageUnderlineDashedRaw = "--smtc-ctrl-link-on-page-underline-dashed";
 
+// @public
+export const _ctrlListBackgroundColorHover = "var(--smtc-background-ctrl-subtle-hover, var(--colorTransparentBackground))";
+
+// @public
+export const _ctrlListBackgroundColorPressed = "var(--smtc-background-ctrl-subtle-pressed, var(--colorTransparentBackground))";
+
+// @public
+export const _ctrlListBackgroundColorRest = "var(--smtc-background-ctrl-subtle-rest, var(--smtc-null-color, var(--colorTransparentBackground)))";
+
 // @public (undocumented)
 export const ctrlListBackgroundSelectedDisabled = "var(--smtc-ctrl-list-background-selected-disabled, var(--smtc-background-ctrl-subtle-disabled))";
 
@@ -2123,7 +2168,7 @@ export const ctrlListChoiceStrokeSelectedRest = "var(--smtc-ctrl-list-choice-str
 export const ctrlListChoiceStrokeSelectedRestRaw = "--smtc-ctrl-list-choice-stroke-selected-rest";
 
 // @public (undocumented)
-export const ctrlListCornerHover = "var(--smtc-ctrl-list-corner-hover, var(--smtc-corner-ctrl-rest))";
+export const ctrlListCornerHover = "var(--smtc-ctrl-list-corner-hover, var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium)))";
 
 // @public (undocumented)
 export const ctrlListCornerHoverRaw = "--smtc-ctrl-list-corner-hover";
@@ -2139,6 +2184,15 @@ export const ctrlListCornerRest = "var(--smtc-ctrl-list-corner-rest, var(--smtc-
 
 // @public (undocumented)
 export const ctrlListCornerRestRaw = "--smtc-ctrl-list-corner-rest";
+
+// @public
+export const _ctrlListForegroundColorHover = "var(--smtc-foreground-ctrl-on-subtle-hover, var(--smtc-foreground-ctrl-neutral-primary-hover, var(--colorNeutralForeground1)))";
+
+// @public
+export const _ctrlListForegroundColorPressed = "var(--smtc-foreground-ctrl-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-pressed, var(--colorNeutralForeground1)))";
+
+// @public
+export const _ctrlListForegroundColorRest = "var(--smtc-foreground-ctrl-on-subtle-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground1)))";
 
 // @public (undocumented)
 export const ctrlListForegroundSelectedDisabled = "var(--smtc-ctrl-list-foreground-selected-disabled, var(--smtc-background-ctrl-subtle-disabled))";
@@ -2181,6 +2235,9 @@ export const ctrlListIndentLevel3 = "var(--smtc-ctrl-list-indent-level3)";
 
 // @public (undocumented)
 export const ctrlListIndentLevel3Raw = "--smtc-ctrl-list-indent-level3";
+
+// @public
+export const _ctrlListItemStroke = "var(--smtc-stroke-width-ctrl-outline-rest, var(--smtc-stroke-width-default, var(--colorStrokeFocus2)))";
 
 // @public (undocumented)
 export const ctrlListLgCornerHover = "var(--smtc-ctrl-list-lg-corner-hover, var(--smtc-corner-ctrl-lg-rest))";
@@ -2261,7 +2318,7 @@ export const ctrlListPillStretchPaddingHint = "var(--smtc-ctrl-list-pill-stretch
 export const ctrlListPillStretchPaddingHintRaw = "--smtc-ctrl-list-pill-stretch-padding-hint";
 
 // @public (undocumented)
-export const ctrlListPillWidth = "var(--smtc-ctrl-list-pill-width)";
+export const ctrlListPillWidth = "var(--smtc-ctrl-list-pill-width, var(--strokeWidthThicker))";
 
 // @public (undocumented)
 export const ctrlListPillWidthRaw = "--smtc-ctrl-list-pill-width";
@@ -2351,6 +2408,84 @@ export const ctrlLiteFilterStrokeWidthSelected = "var(--smtc-ctrl-lite-filter-st
 export const ctrlLiteFilterStrokeWidthSelectedRaw = "--smtc-ctrl-lite-filter-stroke-width-selected";
 
 // @public
+export const _ctrlMenuGroupHeaderColor = "var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground3))";
+
+// @public
+export const _ctrlMenuGroupHeaderFontWeight = "var(--smtc-text-style-default-regular-weight, var(--fontWeightSemibold))";
+
+// @public
+export const _ctrlMenuGroupHeaderHeight = "var(--smtc-size-ctrl-default, 32px)";
+
+// @public
+export const _ctrlMenuGroupHeaderPaddingHorizontal = "var(--smtc-padding-ctrl-horizontal-default, 8px)";
+
+// @public
+export const _ctrlMenuItemContentPaddingX = "var(--smtc-padding-ctrl-text-side, 2px)";
+
+// @public
+export const _ctrlMenuItemGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, 4px)";
+
+// @public
+export const _ctrlMenuItemPaddingBottom = "var(--smtc-padding-ctrl-text-bottom, var(--smtc-padding-ctrl-text-top, var(--spacingVerticalSNudge)))";
+
+// @public
+export const _ctrlMenuItemPaddingTop = "var(--smtc-padding-ctrl-text-top, var(--spacingVerticalSNudge))";
+
+// @public
+export const _ctrlMenuItemPaddingX = "var(--smtc-ctrl-list-indent-level1, var(--smtc-padding-ctrl-horizontal-default, var(--spacingVerticalSNudge)))";
+
+// @public
+export const _ctrlMenuItemSecondaryContentFontSize = "var(--smtc-text-ramp-item-body-font-size, var(--smtc-text-global-body3-font-size, var(--fontSizeBase200)))";
+
+// @public
+export const _ctrlMenuItemSecondaryContentForegroundHover = "var(--smtc-foreground-ctrl-neutral-secondary-hover, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground3Hover)))";
+
+// @public
+export const _ctrlMenuItemSecondaryContentForegroundRest = "var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground3))";
+
+// @public
+export const _ctrlMenuItemSizeDefault = "var(--smtc-size-ctrl-default, 32px)";
+
+// @public
+export const _ctrlMenuItemSubTextForegroundHover = "var(--smtc-foreground-ctrl-neutral-secondary-hover, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground3Hover)))";
+
+// @public
+export const _ctrlMenuItemSubTextForegroundPressed = "var(--smtc-foreground-ctrl-neutral-secondary-pressed, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground3Pressed)))";
+
+// @public
+export const _ctrlMenuPopoverCornerFlyoutRest = "var(--smtc-corner-flyout-rest, var(--borderRadiusMedium))";
+
+// @public
+export const _ctrlMenuPopoverShadowFlyout = "var(--smtc-shadow-flyout, var(--shadow16))";
+
+// @public
+export const _ctrlMenuPopoverStrokeFlyout = "var(--smtc-stroke-flyout, var(--smtc-null-color, var(--colorTransparentStroke)))";
+
+// @public
+export const _ctrlMessageBarActionsMultilinePaddingRight = "var(--smtc-padding-content-align-default, var(--spacingVerticalM))";
+
+// @public
+export const _ctrlMessageBarErrorIconColor = "var(--smtc-status-danger-tint-foreground, var(--colorStatusDangerForeground1))";
+
+// @public
+export const _ctrlMessageBarGapBetweenCtrl = "var(--smtc-gap-between-ctrl-default, var(--spacingHorizontalM))";
+
+// @public
+export const _ctrlMessageBarPaddingContentAlignDefault = "var(--smtc-padding-content-align-default, 12px)";
+
+// @public
+export const _ctrlMessageBarPaddingVertical = "var(--smtc-padding-content-align-outdent-icon-on-subtle, 0px)";
+
+// @public
+export const _ctrlMessageBarReflowSpacerMarginBottom = "var(--smtc-padding-content-align-default, var(--spacingVerticalS))";
+
+// @public
+export const _ctrlMessageBarSpacingTop = "var(--smtc-padding-content-align-default, var(--spacingVerticalMNudge))";
+
+// @public
+export const _ctrlMessageBarTitleLineHeight = "var(--smtc-text-ramp-item-header-line-height, var(--smtc-text-global-body2-line-height, var(--lineHeightBase300)))";
+
+// @public
 export const _ctrlPersonaTreeIconOnSubtlePressed = "var(--smtc-foreground-ctrl-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-pressed, var(--colorNeutralForeground3Pressed)))";
 
 // @public (undocumented)
@@ -2406,6 +2541,66 @@ export const ctrlProgressSmHeightFilled = "var(--smtc-ctrl-progress-sm-height-fi
 
 // @public (undocumented)
 export const ctrlProgressSmHeightFilledRaw = "--smtc-ctrl-progress-sm-height-filled";
+
+// @public
+export const _ctrlRadioBackgroundActiveBrandHover = "var(--smtc-background-ctrl-active-brand-hover, var(--smtc-background-ctrl-brand-hover, var(--colorTransparentBackground)))";
+
+// @public
+export const _ctrlRadioBackgroundActiveBrandPressed = "var(--smtc-background-ctrl-active-brand-pressed, var(--smtc-background-ctrl-brand-pressed, var(--colorTransparentBackground)))";
+
+// @public
+export const _ctrlRadioBackgroundActiveBrandRest = "var(--smtc-background-ctrl-active-brand-rest, var(--smtc-background-ctrl-brand-rest, var(--colorTransparentBackground)))";
+
+// @public
+export const _ctrlRadioBackgroundActiveDisabled = "var(--smtc-background-ctrl-active-brand-disabled, var(--smtc-background-ctrl-brand-disabled, var(--colorTransparentBackground)))";
+
+// @public
+export const _ctrlRadioBaseBackgroundDisabled = "var(--smtc-ctrl-choice-base-background-disabled, var(--smtc-background-ctrl-outline-disabled, var(--colorTransparentBackground)))";
+
+// @public
+export const _ctrlRadioBaseBackgroundHover = "var(--smtc-ctrl-choice-base-background-hover, var(--smtc-background-ctrl-outline-hover, var(--colorTransparentBackground)))";
+
+// @public
+export const _ctrlRadioBaseBackgroundPressed = "var(--smtc-ctrl-choice-base-background-pressed, var(--smtc-background-ctrl-outline-pressed, var(--colorTransparentBackground)))";
+
+// @public
+export const _ctrlRadioChoiceBaseSize = "var(--smtc-ctrl-choice-base-size, var(--smtc-size-ctrl-icon, 16px))";
+
+// @public
+export const _ctrlRadioForegroundContentDisabled = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForegroundDisabled)))";
+
+// @public
+export const _ctrlRadioForegroundContentNeutralHover = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+
+// @public
+export const _ctrlRadioForegroundContentNeutralRest = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground3)))";
+
+// @public
+export const _ctrlRadioForegroundOnActiveBrandHover = "var(--smtc-foreground-ctrl-on-active-brand-hover, var(--smtc-foreground-ctrl-on-brand-rest, var(--colorCompoundBrandForeground1Hover)))";
+
+// @public
+export const _ctrlRadioForegroundOnActiveBrandPressed = "var(--smtc-foreground-ctrl-on-active-brand-pressed, var(--smtc-foreground-ctrl-on-brand-rest, var(--colorCompoundBrandForeground1Pressed)))";
+
+// @public
+export const _ctrlRadioForegroundOnActiveBrandRest = "var(--smtc-foreground-ctrl-on-active-brand-rest, var(--smtc-foreground-ctrl-on-brand-rest, var(--colorCompoundBrandForeground1)))";
+
+// @public
+export const _ctrlRadioForegroundOnActiveDisabled = "var(--smtc-foreground-ctrl-on-active-brand-disabled, var(--smtc-foreground-ctrl-on-brand-disabled, var(--colorNeutralForegroundDisabled)))";
+
+// @public
+export const _ctrlRadioPaddingTextTop = "var(--smtc-padding-ctrl-text-top, var(--spacingVerticalXS))";
+
+// @public
+export const _ctrlRadioPaddingVertical = "var(--smtc-padding-ctrl-text-top, var(--spacingVerticalS))";
+
+// @public
+export const _ctrlRadioStrokeOnActiveBrandHover = "var(--smtc-stroke-ctrl-on-active-brand-hover, var(--smtc-stroke-ctrl-on-brand-hover, var(--colorCompoundBrandStrokeHover)))";
+
+// @public
+export const _ctrlRadioStrokeOnActiveBrandPressed = "var(--smtc-stroke-ctrl-on-active-brand-pressed, var(--smtc-stroke-ctrl-on-brand-pressed, var(--colorCompoundBrandStrokePressed)))";
+
+// @public
+export const _ctrlRadioStrokeOnActiveBrandRest = "var(--smtc-stroke-ctrl-on-active-brand-rest, var(--smtc-stroke-ctrl-on-brand-rest, var(--colorCompoundBrandStroke)))";
 
 // @public (undocumented)
 export const ctrlRatingIconForegroundEmpty = "var(--smtc-ctrl-rating-icon-foreground-empty, var(--smtc-ctrl-progress-background-empty, var(--colorNeutralBackground6)))";
@@ -2654,64 +2849,67 @@ export const ctrlSegmentedStrokeRest = "var(--smtc-ctrl-segmented-stroke-rest, v
 export const ctrlSegmentedStrokeRestRaw = "--smtc-ctrl-segmented-stroke-rest";
 
 // @public (undocumented)
-export const ctrlSliderBarCorner = "var(--smtc-ctrl-slider-bar-corner, var(--smtc-corner-circular))";
+export const ctrlSliderBarCorner = "var(--smtc-ctrl-slider-bar-corner, var(--smtc-corner-circular, var(--borderRadiusXLarge)))";
 
 // @public (undocumented)
 export const ctrlSliderBarCornerRaw = "--smtc-ctrl-slider-bar-corner";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundEmptyDisabled = "var(--smtc-ctrl-slider-bar-foreground-empty-disabled, var(--smtc-ctrl-progress-background-empty))";
+export const ctrlSliderBarForegroundEmptyDisabled = "var(--smtc-ctrl-slider-bar-foreground-empty-disabled, var(--smtc-ctrl-progress-background-empty, var(--colorNeutralBackgroundDisabled)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundEmptyDisabledRaw = "--smtc-ctrl-slider-bar-foreground-empty-disabled";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundEmptyHover = "var(--smtc-ctrl-slider-bar-foreground-empty-hover, var(--smtc-ctrl-progress-background-empty))";
+export const ctrlSliderBarForegroundEmptyHover = "var(--smtc-ctrl-slider-bar-foreground-empty-hover, var(--smtc-ctrl-progress-background-empty, var(--colorNeutralStrokeAccessible)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundEmptyHoverRaw = "--smtc-ctrl-slider-bar-foreground-empty-hover";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundEmptyPressed = "var(--smtc-ctrl-slider-bar-foreground-empty-pressed, var(--smtc-ctrl-progress-background-empty))";
+export const ctrlSliderBarForegroundEmptyPressed = "var(--smtc-ctrl-slider-bar-foreground-empty-pressed, var(--smtc-ctrl-progress-background-empty, var(--colorNeutralStrokeAccessible)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundEmptyPressedRaw = "--smtc-ctrl-slider-bar-foreground-empty-pressed";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundEmptyRest = "var(--smtc-ctrl-slider-bar-foreground-empty-rest, var(--smtc-ctrl-progress-background-empty))";
+export const ctrlSliderBarForegroundEmptyRest = "var(--smtc-ctrl-slider-bar-foreground-empty-rest, var(--smtc-ctrl-progress-background-empty, var(--colorNeutralStrokeAccessible)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundEmptyRestRaw = "--smtc-ctrl-slider-bar-foreground-empty-rest";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundFilledDisabled = "var(--smtc-ctrl-slider-bar-foreground-filled-disabled, var(--smtc-background-ctrl-brand-disabled))";
+export const ctrlSliderBarForegroundFilledDisabled = "var(--smtc-ctrl-slider-bar-foreground-filled-disabled, var(--smtc-background-ctrl-brand-disabled, var(--colorNeutralForegroundDisabled)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundFilledDisabledRaw = "--smtc-ctrl-slider-bar-foreground-filled-disabled";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundFilledHover = "var(--smtc-ctrl-slider-bar-foreground-filled-hover, var(--smtc-background-ctrl-brand-hover))";
+export const ctrlSliderBarForegroundFilledHover = "var(--smtc-ctrl-slider-bar-foreground-filled-hover, var(--smtc-background-ctrl-brand-hover, var(--colorCompoundBrandBackgroundHover)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundFilledHoverRaw = "--smtc-ctrl-slider-bar-foreground-filled-hover";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundFilledPressed = "var(--smtc-ctrl-slider-bar-foreground-filled-pressed, var(--smtc-background-ctrl-brand-pressed))";
+export const ctrlSliderBarForegroundFilledPressed = "var(--smtc-ctrl-slider-bar-foreground-filled-pressed, var(--smtc-background-ctrl-brand-pressed, var(--colorCompoundBrandBackgroundPressed)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundFilledPressedRaw = "--smtc-ctrl-slider-bar-foreground-filled-pressed";
 
 // @public (undocumented)
-export const ctrlSliderBarForegroundFilledRest = "var(--smtc-ctrl-slider-bar-foreground-filled-rest, var(--smtc-background-ctrl-brand-rest))";
+export const ctrlSliderBarForegroundFilledRest = "var(--smtc-ctrl-slider-bar-foreground-filled-rest, var(--smtc-background-ctrl-brand-rest, var(--colorCompoundBrandBackground)))";
 
 // @public (undocumented)
 export const ctrlSliderBarForegroundFilledRestRaw = "--smtc-ctrl-slider-bar-foreground-filled-rest";
 
 // @public (undocumented)
-export const ctrlSliderBarHeight = "var(--smtc-ctrl-slider-bar-height, var(--smtc-ctrl-progress-height-filled))";
+export const ctrlSliderBarHeight = "var(--smtc-ctrl-slider-bar-height, var(--smtc-ctrl-progress-height-filled, 4px))";
 
 // @public (undocumented)
 export const ctrlSliderBarHeightRaw = "--smtc-ctrl-slider-bar-height";
+
+// @public
+export const _ctrlSliderBarSizeDefault = "var(--smtc-size-ctrl-default, 32px)";
 
 // @public (undocumented)
 export const ctrlSliderLgBarHeight = "var(--smtc-ctrl-slider-lg-bar-height, var(--smtc-ctrl-progress-lg-height-filled))";
@@ -2737,80 +2935,89 @@ export const ctrlSliderLgThumbSizeRest = "var(--smtc-ctrl-slider-lg-thumb-size-r
 // @public (undocumented)
 export const ctrlSliderLgThumbSizeRestRaw = "--smtc-ctrl-slider-lg-thumb-size-rest";
 
+// @public
+export const _ctrlSliderPaddingDefault = "var(--smtc-padding-ctrl-horizontal-default, 10px)";
+
 // @public (undocumented)
-export const ctrlSliderSmBarHeight = "var(--smtc-ctrl-slider-sm-bar-height, var(--smtc-ctrl-progress-sm-height-filled))";
+export const ctrlSliderSmBarHeight = "var(--smtc-ctrl-slider-sm-bar-height, var(--smtc-ctrl-progress-sm-height-filled, 2px))";
 
 // @public (undocumented)
 export const ctrlSliderSmBarHeightRaw = "--smtc-ctrl-slider-sm-bar-height";
 
+// @public
+export const _ctrlSliderSmBarSizeDefault = "var(--smtc-size-ctrl-default, 24px)";
+
+// @public
+export const _ctrlSliderSmPaddingDefault = "var(--smtc-padding-ctrl-horizontal-default, 8px)";
+
 // @public (undocumented)
-export const ctrlSliderSmThumbSizeHover = "var(--smtc-ctrl-slider-sm-thumb-size-hover, var(--smtc-size-ctrl-sm-icon))";
+export const ctrlSliderSmThumbSizeHover = "var(--smtc-ctrl-slider-sm-thumb-size-hover, var(--smtc-size-ctrl-sm-icon, 16px))";
 
 // @public (undocumented)
 export const ctrlSliderSmThumbSizeHoverRaw = "--smtc-ctrl-slider-sm-thumb-size-hover";
 
 // @public (undocumented)
-export const ctrlSliderSmThumbSizePressed = "var(--smtc-ctrl-slider-sm-thumb-size-pressed, var(--smtc-size-ctrl-sm-icon))";
+export const ctrlSliderSmThumbSizePressed = "var(--smtc-ctrl-slider-sm-thumb-size-pressed, var(--smtc-size-ctrl-sm-icon, 16px))";
 
 // @public (undocumented)
 export const ctrlSliderSmThumbSizePressedRaw = "--smtc-ctrl-slider-sm-thumb-size-pressed";
 
 // @public (undocumented)
-export const ctrlSliderSmThumbSizeRest = "var(--smtc-ctrl-slider-sm-thumb-size-rest, var(--smtc-size-ctrl-sm-icon))";
+export const ctrlSliderSmThumbSizeRest = "var(--smtc-ctrl-slider-sm-thumb-size-rest, var(--smtc-size-ctrl-sm-icon, 16px))";
 
 // @public (undocumented)
 export const ctrlSliderSmThumbSizeRestRaw = "--smtc-ctrl-slider-sm-thumb-size-rest";
 
 // @public (undocumented)
-export const ctrlSliderThumbBackgroundDisabled = "var(--smtc-ctrl-slider-thumb-background-disabled, var(--smtc-foreground-ctrl-on-brand-disabled))";
+export const ctrlSliderThumbBackgroundDisabled = "var(--smtc-ctrl-slider-thumb-background-disabled, var(--smtc-foreground-ctrl-on-brand-disabled, var(--colorNeutralForegroundDisabled)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbBackgroundDisabledRaw = "--smtc-ctrl-slider-thumb-background-disabled";
 
 // @public (undocumented)
-export const ctrlSliderThumbBackgroundHover = "var(--smtc-ctrl-slider-thumb-background-hover, var(--smtc-foreground-ctrl-on-brand-rest))";
+export const ctrlSliderThumbBackgroundHover = "var(--smtc-ctrl-slider-thumb-background-hover, var(--smtc-foreground-ctrl-on-brand-rest, var(--colorCompoundBrandBackgroundHover)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbBackgroundHoverRaw = "--smtc-ctrl-slider-thumb-background-hover";
 
 // @public (undocumented)
-export const ctrlSliderThumbBackgroundPressed = "var(--smtc-ctrl-slider-thumb-background-pressed, var(--smtc-foreground-ctrl-on-brand-rest))";
+export const ctrlSliderThumbBackgroundPressed = "var(--smtc-ctrl-slider-thumb-background-pressed, var(--smtc-foreground-ctrl-on-brand-rest, var(--colorCompoundBrandBackgroundPressed)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbBackgroundPressedRaw = "--smtc-ctrl-slider-thumb-background-pressed";
 
 // @public (undocumented)
-export const ctrlSliderThumbBackgroundRest = "var(--smtc-ctrl-slider-thumb-background-rest, var(--smtc-foreground-ctrl-on-brand-rest))";
+export const ctrlSliderThumbBackgroundRest = "var(--smtc-ctrl-slider-thumb-background-rest, var(--smtc-foreground-ctrl-on-brand-rest, var(--colorCompoundBrandBackground)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbBackgroundRestRaw = "--smtc-ctrl-slider-thumb-background-rest";
 
 // @public (undocumented)
-export const ctrlSliderThumbCorner = "var(--smtc-ctrl-slider-thumb-corner, var(--smtc-corner-circular))";
+export const ctrlSliderThumbCorner = "var(--smtc-ctrl-slider-thumb-corner, var(--smtc-corner-circular, var(--borderRadiusCircular)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbCornerRaw = "--smtc-ctrl-slider-thumb-corner";
 
 // @public (undocumented)
-export const ctrlSliderThumbInnerStrokeDisabled = "var(--smtc-ctrl-slider-thumb-inner-stroke-disabled, var(--smtc-background-ctrl-brand-disabled))";
+export const ctrlSliderThumbInnerStrokeDisabled = "var(--smtc-ctrl-slider-thumb-inner-stroke-disabled, var(--smtc-background-ctrl-brand-disabled, var(--colorNeutralBackground1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbInnerStrokeDisabledRaw = "--smtc-ctrl-slider-thumb-inner-stroke-disabled";
 
 // @public (undocumented)
-export const ctrlSliderThumbInnerStrokeHover = "var(--smtc-ctrl-slider-thumb-inner-stroke-hover, var(--smtc-background-ctrl-brand-hover))";
+export const ctrlSliderThumbInnerStrokeHover = "var(--smtc-ctrl-slider-thumb-inner-stroke-hover, var(--smtc-background-ctrl-brand-hover, var(--colorNeutralBackground1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbInnerStrokeHoverRaw = "--smtc-ctrl-slider-thumb-inner-stroke-hover";
 
 // @public (undocumented)
-export const ctrlSliderThumbInnerStrokePressed = "var(--smtc-ctrl-slider-thumb-inner-stroke-pressed, var(--smtc-background-ctrl-brand-pressed))";
+export const ctrlSliderThumbInnerStrokePressed = "var(--smtc-ctrl-slider-thumb-inner-stroke-pressed, var(--smtc-background-ctrl-brand-pressed, var(--colorNeutralBackground1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbInnerStrokePressedRaw = "--smtc-ctrl-slider-thumb-inner-stroke-pressed";
 
 // @public (undocumented)
-export const ctrlSliderThumbInnerStrokeRest = "var(--smtc-ctrl-slider-thumb-inner-stroke-rest, var(--smtc-background-ctrl-brand-rest))";
+export const ctrlSliderThumbInnerStrokeRest = "var(--smtc-ctrl-slider-thumb-inner-stroke-rest, var(--smtc-background-ctrl-brand-rest, var(--colorNeutralBackground1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbInnerStrokeRestRaw = "--smtc-ctrl-slider-thumb-inner-stroke-rest";
@@ -2834,25 +3041,25 @@ export const ctrlSliderThumbInnerStrokeWidthRest = "var(--smtc-ctrl-slider-thumb
 export const ctrlSliderThumbInnerStrokeWidthRestRaw = "--smtc-ctrl-slider-thumb-inner-stroke-width-rest";
 
 // @public (undocumented)
-export const ctrlSliderThumbOuterStrokeDisabled = "var(--smtc-ctrl-slider-thumb-outer-stroke-disabled, var(--smtc-background-ctrl-brand-disabled))";
+export const ctrlSliderThumbOuterStrokeDisabled = "var(--smtc-ctrl-slider-thumb-outer-stroke-disabled, var(--smtc-background-ctrl-brand-disabled, var(--colorNeutralForegroundDisabled)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbOuterStrokeDisabledRaw = "--smtc-ctrl-slider-thumb-outer-stroke-disabled";
 
 // @public (undocumented)
-export const ctrlSliderThumbOuterStrokeHover = "var(--smtc-ctrl-slider-thumb-outer-stroke-hover, var(--smtc-background-ctrl-brand-hover))";
+export const ctrlSliderThumbOuterStrokeHover = "var(--smtc-ctrl-slider-thumb-outer-stroke-hover, var(--smtc-background-ctrl-brand-hover, var(--colorNeutralStroke1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbOuterStrokeHoverRaw = "--smtc-ctrl-slider-thumb-outer-stroke-hover";
 
 // @public (undocumented)
-export const ctrlSliderThumbOuterStrokePressed = "var(--smtc-ctrl-slider-thumb-outer-stroke-pressed, var(--smtc-background-ctrl-brand-pressed))";
+export const ctrlSliderThumbOuterStrokePressed = "var(--smtc-ctrl-slider-thumb-outer-stroke-pressed, var(--smtc-background-ctrl-brand-pressed, var(--colorNeutralStroke1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbOuterStrokePressedRaw = "--smtc-ctrl-slider-thumb-outer-stroke-pressed";
 
 // @public (undocumented)
-export const ctrlSliderThumbOuterStrokeRest = "var(--smtc-ctrl-slider-thumb-outer-stroke-rest, var(--smtc-background-ctrl-brand-rest))";
+export const ctrlSliderThumbOuterStrokeRest = "var(--smtc-ctrl-slider-thumb-outer-stroke-rest, var(--smtc-background-ctrl-brand-rest, var(--colorNeutralStroke1)))";
 
 // @public (undocumented)
 export const ctrlSliderThumbOuterStrokeRestRaw = "--smtc-ctrl-slider-thumb-outer-stroke-rest";
@@ -2864,19 +3071,19 @@ export const ctrlSliderThumbOuterStrokeWidth = "var(--smtc-ctrl-slider-thumb-out
 export const ctrlSliderThumbOuterStrokeWidthRaw = "--smtc-ctrl-slider-thumb-outer-stroke-width";
 
 // @public (undocumented)
-export const ctrlSliderThumbSizeHover = "var(--smtc-ctrl-slider-thumb-size-hover, var(--smtc-size-ctrl-icon))";
+export const ctrlSliderThumbSizeHover = "var(--smtc-ctrl-slider-thumb-size-hover, var(--smtc-size-ctrl-icon, 20px))";
 
 // @public (undocumented)
 export const ctrlSliderThumbSizeHoverRaw = "--smtc-ctrl-slider-thumb-size-hover";
 
 // @public (undocumented)
-export const ctrlSliderThumbSizePressed = "var(--smtc-ctrl-slider-thumb-size-pressed, var(--smtc-size-ctrl-icon))";
+export const ctrlSliderThumbSizePressed = "var(--smtc-ctrl-slider-thumb-size-pressed, var(--smtc-size-ctrl-icon, 20px))";
 
 // @public (undocumented)
 export const ctrlSliderThumbSizePressedRaw = "--smtc-ctrl-slider-thumb-size-pressed";
 
 // @public (undocumented)
-export const ctrlSliderThumbSizeRest = "var(--smtc-ctrl-slider-thumb-size-rest, var(--smtc-size-ctrl-icon))";
+export const ctrlSliderThumbSizeRest = "var(--smtc-ctrl-slider-thumb-size-rest, var(--smtc-size-ctrl-icon, 20px))";
 
 // @public (undocumented)
 export const ctrlSliderThumbSizeRestRaw = "--smtc-ctrl-slider-thumb-size-rest";
@@ -2974,26 +3181,83 @@ export const _ctrlSwitchStrokeOnActiveBrandHover = "var(--smtc-stroke-ctrl-on-ac
 // @public
 export const _ctrlSwitchStrokeOnActiveBrandRest = "var(--smtc-stroke-ctrl-on-active-brand-rest, var(--smtc-stroke-ctrl-on-brand-rest, var(--colorTransparentStroke)))";
 
+// @public
+export const _ctrlTabBackgroundActiveBrandDisabled = "var(--smtc-background-ctrl-active-brand-disabled, var(--smtc-background-ctrl-brand-disabled, var(--colorNeutralForegroundDisabled)))";
+
+// @public
+export const _ctrlTabForegroundActiveBrandHover = "var(--smtc-foreground-ctrl-active-brand-hover, var(--smtc-foreground-ctrl-brand-hover, var(--colorNeutralForeground1Hover)))";
+
+// @public
+export const _ctrlTabForegroundActiveBrandPressed = "var(--smtc-foreground-ctrl-active-brand-pressed, var(--smtc-foreground-ctrl-brand-pressed, var(--colorNeutralForeground1Pressed)))";
+
+// @public
+export const _ctrlTabForegroundActiveBrandRest = "var(--smtc-foreground-ctrl-active-brand-rest, var(--smtc-foreground-ctrl-brand-rest, var(--colorNeutralForeground1)))";
+
+// @public
+export const _ctrlTabForegroundOnSubtleHover = "var(--smtc-foreground-ctrl-icon-on-subtle-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Hover)))";
+
+// @public
+export const _ctrlTabForegroundOnSubtlePressed = "var(--smtc-foreground-ctrl-icon-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Pressed)))";
+
+// @public
+export const _ctrlTabForegroundOnTransparentHover = "var(--smtc-foreground-ctrl-on-transparent-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Hover)))";
+
+// @public
+export const _ctrlTabForegroundOnTransparentPressed = "var(--smtc-foreground-ctrl-on-transparent-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Pressed)))";
+
+// @public
+export const _ctrlTabGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalSNudge))";
+
+// @public
+export const _ctrlTabPaddingHorizontalDefault = "var(--smtc-padding-ctrl-horizontal-default, var(--spacingHorizontalMNudge))";
+
+// @public
+export const _ctrlTabPaddingTextSide = "var(--smtc-padding-ctrl-text-side, var(--spacingHorizontalXXS))";
+
+// @public
+export const _ctrlTabSizeDefault = "var(--smtc-size-ctrl-default, 32px)";
+
+// @public
+export const _ctrlTabSmGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalXXS))";
+
+// @public
+export const _ctrlTabSmPaddingHorizontalDefault = "var(--smtc-padding-ctrl-horizontal-default, var(--spacingHorizontalSNudge))";
+
 // @public (undocumented)
-export const ctrlTooltipBackground = "var(--smtc-ctrl-tooltip-background)";
+export const ctrlTooltipBackground = "var(--smtc-ctrl-tooltip-background, var(--colorNeutralBackground1))";
 
 // @public (undocumented)
 export const ctrlTooltipBackgroundRaw = "--smtc-ctrl-tooltip-background";
 
 // @public (undocumented)
-export const ctrlTooltipCorner = "var(--smtc-ctrl-tooltip-corner, var(--smtc-corner-ctrl-rest))";
+export const ctrlTooltipCorner = "var(--smtc-ctrl-tooltip-corner, var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium)))";
 
 // @public (undocumented)
 export const ctrlTooltipCornerRaw = "--smtc-ctrl-tooltip-corner";
 
 // @public (undocumented)
-export const ctrlTooltipForeground = "var(--smtc-ctrl-tooltip-foreground)";
+export const ctrlTooltipForeground = "var(--smtc-ctrl-tooltip-foreground, var(--colorNeutralForeground1))";
 
 // @public (undocumented)
 export const ctrlTooltipForegroundRaw = "--smtc-ctrl-tooltip-foreground";
 
+// @public
+export const _ctrlTooltipPaddingBottom = "var(--smtc-padding-ctrl-text-bottom, var(--smtc-padding-ctrl-text-top, 6px))";
+
+// @public
+export const _ctrlTooltipPaddingLeft = "var(--smtc-padding-ctrl-horizontal-default, 11px )";
+
+// @public
+export const _ctrlTooltipPaddingRight = "var(--smtc-padding-ctrl-horizontal-default, 11px)";
+
+// @public
+export const _ctrlTooltipPaddingTop = "var(--smtc-padding-ctrl-text-top, 4px)";
+
 // @public (undocumented)
-export const ctrlTooltipShadow = "var(--smtc-ctrl-tooltip-shadow, var(--smtc-ctrl-fab-shadow-rest))";
+export const ctrlTooltipShadow = "var(--smtc-ctrl-tooltip-shadow, var(--smtc-ctrl-fab-shadow-rest, drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 4px 8px var(--colorNeutralShadowKey))))";
+
+// @public
+export const _ctrlTooltipShadow = "var(--smtc-ctrl-tooltip-shadow, var(--smtc-ctrl-fab-shadow-rest, drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 4px 8px var(--colorNeutralShadowKey))))";
 
 // @public (undocumented)
 export const ctrlTooltipShadowRaw = "--smtc-ctrl-tooltip-shadow";
@@ -3053,19 +3317,19 @@ export const foregroundCtrlActiveBrandDisabled = "var(--smtc-foreground-ctrl-act
 export const foregroundCtrlActiveBrandDisabledRaw = "--smtc-foreground-ctrl-active-brand-disabled";
 
 // @public (undocumented)
-export const foregroundCtrlActiveBrandHover = "var(--smtc-foreground-ctrl-active-brand-hover, var(--smtc-foreground-ctrl-brand-hover))";
+export const foregroundCtrlActiveBrandHover = "var(--smtc-foreground-ctrl-active-brand-hover, var(--smtc-foreground-ctrl-brand-hover, var(--colorCompoundBrandForeground1Hover)))";
 
 // @public (undocumented)
 export const foregroundCtrlActiveBrandHoverRaw = "--smtc-foreground-ctrl-active-brand-hover";
 
 // @public (undocumented)
-export const foregroundCtrlActiveBrandPressed = "var(--smtc-foreground-ctrl-active-brand-pressed, var(--smtc-foreground-ctrl-brand-pressed))";
+export const foregroundCtrlActiveBrandPressed = "var(--smtc-foreground-ctrl-active-brand-pressed, var(--smtc-foreground-ctrl-brand-pressed, var(--colorCompoundBrandForeground1Pressed)))";
 
 // @public (undocumented)
 export const foregroundCtrlActiveBrandPressedRaw = "--smtc-foreground-ctrl-active-brand-pressed";
 
 // @public (undocumented)
-export const foregroundCtrlActiveBrandRest = "var(--smtc-foreground-ctrl-active-brand-rest, var(--smtc-foreground-ctrl-brand-rest))";
+export const foregroundCtrlActiveBrandRest = "var(--smtc-foreground-ctrl-active-brand-rest, var(--smtc-foreground-ctrl-brand-rest, var(--colorCompoundBrandForeground1)))";
 
 // @public (undocumented)
 export const foregroundCtrlActiveBrandRestRaw = "--smtc-foreground-ctrl-active-brand-rest";
@@ -3119,7 +3383,7 @@ export const foregroundCtrlIconOnNeutralPressed = "var(--smtc-foreground-ctrl-ic
 export const foregroundCtrlIconOnNeutralPressedRaw = "--smtc-foreground-ctrl-icon-on-neutral-pressed";
 
 // @public (undocumented)
-export const foregroundCtrlIconOnNeutralRest = "var(--smtc-foreground-ctrl-icon-on-neutral-rest, var(--smtc-foreground-ctrl-neutral-primary-rest))";
+export const foregroundCtrlIconOnNeutralRest = "var(--smtc-foreground-ctrl-icon-on-neutral-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground3)))";
 
 // @public (undocumented)
 export const foregroundCtrlIconOnNeutralRestRaw = "--smtc-foreground-ctrl-icon-on-neutral-rest";
@@ -3365,7 +3629,7 @@ export const gapBetweenContentNone = "var(--smtc-gap-between-content-none)";
 export const gapBetweenContentNoneRaw = "--smtc-gap-between-content-none";
 
 // @public (undocumented)
-export const gapBetweenContentSmall = "var(--smtc-gap-between-content-small)";
+export const gapBetweenContentSmall = "var(--smtc-gap-between-content-small, 8px)";
 
 // @public (undocumented)
 export const gapBetweenContentSmallRaw = "--smtc-gap-between-content-small";
@@ -3395,7 +3659,7 @@ export const gapBetweenContentXxSmall = "var(--smtc-gap-between-content-xx-small
 export const gapBetweenContentXxSmallRaw = "--smtc-gap-between-content-xx-small";
 
 // @public (undocumented)
-export const gapBetweenCtrlDefault = "var(--smtc-gap-between-ctrl-default)";
+export const gapBetweenCtrlDefault = "var(--smtc-gap-between-ctrl-default, 8px)";
 
 // @public (undocumented)
 export const gapBetweenCtrlDefaultRaw = "--smtc-gap-between-ctrl-default";
@@ -4123,7 +4387,7 @@ export const materialAcrylicDefaultLumBlend = "var(--smtc-material-acrylic-defau
 export const materialAcrylicDefaultLumBlendRaw = "--smtc-material-acrylic-default-lum-blend";
 
 // @public (undocumented)
-export const materialAcrylicDefaultSolid = "var(--smtc-material-acrylic-default-solid, var(--smtc-background-layer-primary-solid))";
+export const materialAcrylicDefaultSolid = "var(--smtc-material-acrylic-default-solid, var(--smtc-background-layer-primary-solid, var(--colorNeutralBackground1)))";
 
 // @public (undocumented)
 export const materialAcrylicDefaultSolidRaw = "--smtc-material-acrylic-default-solid";
@@ -4206,6 +4470,12 @@ export const materialMicaThinSolid = "var(--smtc-material-mica-thin-solid, var(-
 // @public (undocumented)
 export const materialMicaThinSolidRaw = "--smtc-material-mica-thin-solid";
 
+// @public
+export const _nullBackgroundColorHover = "var(--smtc-null-color, var(--colorTransparentBackgroundHover))";
+
+// @public
+export const _nullBackgroundColorPressed = "var(--smtc-null-color, var(--colorTransparentBackgroundPressed))";
+
 // @public (undocumented)
 export const nullColor = "var(--smtc-null-color, var(--colorTransparentBackground))";
 
@@ -4231,13 +4501,13 @@ export const paddingCardNestedImage = "var(--smtc-padding-card-nested-image, var
 export const paddingCardNestedImageRaw = "--smtc-padding-card-nested-image";
 
 // @public (undocumented)
-export const paddingContentAlignDefault = "var(--smtc-padding-content-align-default)";
+export const paddingContentAlignDefault = "var(--smtc-padding-content-align-default, var(--spacingVerticalS))";
 
 // @public (undocumented)
 export const paddingContentAlignDefaultRaw = "--smtc-padding-content-align-default";
 
 // @public (undocumented)
-export const paddingContentAlignOutdentIconOnSubtle = "var(--smtc-padding-content-align-outdent-icon-on-subtle)";
+export const paddingContentAlignOutdentIconOnSubtle = "var(--smtc-padding-content-align-outdent-icon-on-subtle, var(--spacingHorizontalM))";
 
 // @public (undocumented)
 export const paddingContentAlignOutdentIconOnSubtleRaw = "--smtc-padding-content-align-outdent-icon-on-subtle";
@@ -4399,7 +4669,7 @@ export const paddingCtrlToNestedControl = "var(--smtc-padding-ctrl-to-nested-con
 export const paddingCtrlToNestedControlRaw = "--smtc-padding-ctrl-to-nested-control";
 
 // @public (undocumented)
-export const paddingFlyoutDefault = "var(--smtc-padding-flyout-default, var(--smtc-padding-content-align-outdent-text-on-subtle))";
+export const paddingFlyoutDefault = "var(--smtc-padding-flyout-default, var(--smtc-padding-content-align-outdent-text-on-subtle, 4px))";
 
 // @public (undocumented)
 export const paddingFlyoutDefaultRaw = "--smtc-padding-flyout-default";
@@ -4489,7 +4759,7 @@ export const sizeCtrlIcon = "var(--smtc-size-ctrl-icon, 20px)";
 export const sizeCtrlIconRaw = "--smtc-size-ctrl-icon";
 
 // @public (undocumented)
-export const sizeCtrlIconSecondary = "var(--smtc-size-ctrl-icon-secondary)";
+export const sizeCtrlIconSecondary = "var(--smtc-size-ctrl-icon-secondary, 20px)";
 
 // @public (undocumented)
 export const sizeCtrlIconSecondaryRaw = "--smtc-size-ctrl-icon-secondary";
@@ -4579,7 +4849,7 @@ export const statusDangerStroke = "var(--smtc-status-danger-stroke, var(--smtc-s
 export const statusDangerStrokeRaw = "--smtc-status-danger-stroke";
 
 // @public (undocumented)
-export const statusDangerTintBackground = "var(--smtc-status-danger-tint-background)";
+export const statusDangerTintBackground = "var(--smtc-status-danger-tint-background, var(--colorStatusDangerBackground1))";
 
 // @public (undocumented)
 export const statusDangerTintBackgroundRaw = "--smtc-status-danger-tint-background";
@@ -4591,7 +4861,7 @@ export const statusDangerTintForeground = "var(--smtc-status-danger-tint-foregro
 export const statusDangerTintForegroundRaw = "--smtc-status-danger-tint-foreground";
 
 // @public (undocumented)
-export const statusDangerTintStroke = "var(--smtc-status-danger-tint-stroke)";
+export const statusDangerTintStroke = "var(--smtc-status-danger-tint-stroke, var(--colorStatusDangerBorder1))";
 
 // @public (undocumented)
 export const statusDangerTintStrokeRaw = "--smtc-status-danger-tint-stroke";
@@ -4615,7 +4885,7 @@ export const statusImportantStroke = "var(--smtc-status-important-stroke, var(--
 export const statusImportantStrokeRaw = "--smtc-status-important-stroke";
 
 // @public (undocumented)
-export const statusImportantTintBackground = "var(--smtc-status-important-tint-background)";
+export const statusImportantTintBackground = "var(--smtc-status-important-tint-background, var(--colorNeutralBackground3))";
 
 // @public (undocumented)
 export const statusImportantTintBackgroundRaw = "--smtc-status-important-tint-background";
@@ -4663,7 +4933,7 @@ export const statusInformativeTintForeground = "var(--smtc-status-informative-ti
 export const statusInformativeTintForegroundRaw = "--smtc-status-informative-tint-foreground";
 
 // @public (undocumented)
-export const statusInformativeTintStroke = "var(--smtc-status-informative-tint-stroke)";
+export const statusInformativeTintStroke = "var(--smtc-status-informative-tint-stroke, var(--colorNeutralStroke1))";
 
 // @public (undocumented)
 export const statusInformativeTintStrokeRaw = "--smtc-status-informative-tint-stroke";
@@ -4729,19 +4999,19 @@ export const statusSuccessStroke = "var(--smtc-status-success-stroke, var(--smtc
 export const statusSuccessStrokeRaw = "--smtc-status-success-stroke";
 
 // @public (undocumented)
-export const statusSuccessTintBackground = "var(--smtc-status-success-tint-background)";
+export const statusSuccessTintBackground = "var(--smtc-status-success-tint-background, var(--colorStatusSuccessBackground1))";
 
 // @public (undocumented)
 export const statusSuccessTintBackgroundRaw = "--smtc-status-success-tint-background";
 
 // @public (undocumented)
-export const statusSuccessTintForeground = "var(--smtc-status-success-tint-foreground)";
+export const statusSuccessTintForeground = "var(--smtc-status-success-tint-foreground, var(--colorStatusSuccessForeground1))";
 
 // @public (undocumented)
 export const statusSuccessTintForegroundRaw = "--smtc-status-success-tint-foreground";
 
 // @public (undocumented)
-export const statusSuccessTintStroke = "var(--smtc-status-success-tint-stroke)";
+export const statusSuccessTintStroke = "var(--smtc-status-success-tint-stroke, var(--colorStatusSuccessBorder1))";
 
 // @public (undocumented)
 export const statusSuccessTintStrokeRaw = "--smtc-status-success-tint-stroke";
@@ -4765,19 +5035,19 @@ export const statusWarningStroke = "var(--smtc-status-warning-stroke, var(--smtc
 export const statusWarningStrokeRaw = "--smtc-status-warning-stroke";
 
 // @public (undocumented)
-export const statusWarningTintBackground = "var(--smtc-status-warning-tint-background)";
+export const statusWarningTintBackground = "var(--smtc-status-warning-tint-background, var(--colorStatusWarningBackground1))";
 
 // @public (undocumented)
 export const statusWarningTintBackgroundRaw = "--smtc-status-warning-tint-background";
 
 // @public (undocumented)
-export const statusWarningTintForeground = "var(--smtc-status-warning-tint-foreground)";
+export const statusWarningTintForeground = "var(--smtc-status-warning-tint-foreground, var(--colorStatusWarningForeground3))";
 
 // @public (undocumented)
 export const statusWarningTintForegroundRaw = "--smtc-status-warning-tint-foreground";
 
 // @public (undocumented)
-export const statusWarningTintStroke = "var(--smtc-status-warning-tint-stroke)";
+export const statusWarningTintStroke = "var(--smtc-status-warning-tint-stroke, var(--colorStatusWarningBorder1))";
 
 // @public (undocumented)
 export const statusWarningTintStrokeRaw = "--smtc-status-warning-tint-stroke";
@@ -5245,7 +5515,7 @@ export const textCtrlWeightDefault = "var(--smtc-text-ctrl-weight-default, var(-
 export const textCtrlWeightDefaultRaw = "--smtc-text-ctrl-weight-default";
 
 // @public (undocumented)
-export const textCtrlWeightSelected = "var(--smtc-text-ctrl-weight-selected)";
+export const textCtrlWeightSelected = "var(--smtc-text-ctrl-weight-selected, var(--fontWeightSemibold))";
 
 // @public (undocumented)
 export const textCtrlWeightSelectedRaw = "--smtc-text-ctrl-weight-selected";
@@ -5395,13 +5665,13 @@ export const textRampItemBodyLineHeight = "var(--smtc-text-ramp-item-body-line-h
 export const textRampItemBodyLineHeightRaw = "--smtc-text-ramp-item-body-line-height";
 
 // @public (undocumented)
-export const textRampItemHeaderFontSize = "var(--smtc-text-ramp-item-header-font-size, var(--smtc-text-global-body2-font-size))";
+export const textRampItemHeaderFontSize = "var(--smtc-text-ramp-item-header-font-size, var(--smtc-text-global-body2-font-size, var(--fontSizeBase300)))";
 
 // @public (undocumented)
 export const textRampItemHeaderFontSizeRaw = "--smtc-text-ramp-item-header-font-size";
 
 // @public (undocumented)
-export const textRampItemHeaderLineHeight = "var(--smtc-text-ramp-item-header-line-height, var(--smtc-text-global-body2-line-height))";
+export const textRampItemHeaderLineHeight = "var(--smtc-text-ramp-item-header-line-height, var(--smtc-text-global-body2-line-height, var(--lineHeightBase400)))";
 
 // @public (undocumented)
 export const textRampItemHeaderLineHeightRaw = "--smtc-text-ramp-item-header-line-height";
@@ -5515,7 +5785,7 @@ export const textRampLgSubsectionHeaderLineHeight = "var(--smtc-text-ramp-lg-sub
 export const textRampLgSubsectionHeaderLineHeightRaw = "--smtc-text-ramp-lg-subsection-header-line-height";
 
 // @public (undocumented)
-export const textRampMetadataFontSize = "var(--smtc-text-ramp-metadata-font-size, var(--smtc-text-global-caption1-font-size))";
+export const textRampMetadataFontSize = "var(--smtc-text-ramp-metadata-font-size, var(--smtc-text-global-caption1-font-size, var(--fontSizeBase200)))";
 
 // @public (undocumented)
 export const textRampMetadataFontSizeRaw = "--smtc-text-ramp-metadata-font-size";
@@ -5539,25 +5809,25 @@ export const textRampPageHeaderLineHeight = "var(--smtc-text-ramp-page-header-li
 export const textRampPageHeaderLineHeightRaw = "--smtc-text-ramp-page-header-line-height";
 
 // @public (undocumented)
-export const textRampReadingBodyFontSize = "var(--smtc-text-ramp-reading-body-font-size, var(--smtc-text-global-body2-font-size))";
+export const textRampReadingBodyFontSize = "var(--smtc-text-ramp-reading-body-font-size, var(--smtc-text-global-body2-font-size, var(--fontSizeBase300)))";
 
 // @public (undocumented)
 export const textRampReadingBodyFontSizeRaw = "--smtc-text-ramp-reading-body-font-size";
 
 // @public (undocumented)
-export const textRampReadingBodyLineHeight = "var(--smtc-text-ramp-reading-body-line-height, var(--smtc-text-global-body2-line-height))";
+export const textRampReadingBodyLineHeight = "var(--smtc-text-ramp-reading-body-line-height, var(--smtc-text-global-body2-line-height, var(--lineHeightBase300)))";
 
 // @public (undocumented)
 export const textRampReadingBodyLineHeightRaw = "--smtc-text-ramp-reading-body-line-height";
 
 // @public (undocumented)
-export const textRampSectionHeaderFontSize = "var(--smtc-text-ramp-section-header-font-size, var(--smtc-text-global-subtitle1-font-size))";
+export const textRampSectionHeaderFontSize = "var(--smtc-text-ramp-section-header-font-size, var(--smtc-text-global-subtitle1-font-size, var(--fontSizeBase500)))";
 
 // @public (undocumented)
 export const textRampSectionHeaderFontSizeRaw = "--smtc-text-ramp-section-header-font-size";
 
 // @public (undocumented)
-export const textRampSectionHeaderLineHeight = "var(--smtc-text-ramp-section-header-line-height, var(--smtc-text-global-subtitle1-line-height))";
+export const textRampSectionHeaderLineHeight = "var(--smtc-text-ramp-section-header-line-height, var(--smtc-text-global-subtitle1-line-height, var(--lineHeightBase500)))";
 
 // @public (undocumented)
 export const textRampSectionHeaderLineHeightRaw = "--smtc-text-ramp-section-header-line-height";
