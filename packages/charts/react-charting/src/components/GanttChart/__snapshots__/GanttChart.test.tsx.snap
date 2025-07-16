@@ -17,10 +17,10 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -29,7 +29,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -69,7 +69,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -233,7 +233,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -456,7 +456,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -872,10 +872,10 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -884,7 +884,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -924,7 +924,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -1016,7 +1016,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(59, 0)"
         >
@@ -1307,7 +1307,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1650,10 +1650,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -1662,7 +1662,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1702,7 +1702,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -1866,7 +1866,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -2089,7 +2089,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2445,10 +2445,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             overflow: hidden;
             width: 100%;
           }
-      id="chart_6"
+      id="chart_8"
     >
       <div
-        id="defaultTabbableElement_7"
+        id="defaultTabbableElement_9"
       />
       <div
         class=
@@ -2457,7 +2457,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               outline: none;
             }
 
-        data-focuszone-id="FocusZone9"
+        data-focuszone-id="FocusZone11"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -2497,7 +2497,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="xAxisGElementchart_6"
+            id="xAxisGElementchart_8"
             text-anchor="middle"
             transform="translate(0, -43)"
           >
@@ -2661,7 +2661,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementchart_6"
+            id="yAxisGElementchart_8"
             text-anchor="end"
             transform="translate(40, 0)"
           >
@@ -2884,7 +2884,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone10"
+                  data-focuszone-id="FocusZone12"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -3228,10 +3228,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -3240,7 +3240,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -3280,7 +3280,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -3447,7 +3447,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="start"
           transform="translate(560, 0)"
         >
@@ -3670,7 +3670,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -4013,10 +4013,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -4025,7 +4025,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -4065,7 +4065,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -4211,7 +4211,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -4412,7 +4412,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -5055,10 +5055,10 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -5067,7 +5067,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -5107,7 +5107,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -5271,7 +5271,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -5352,7 +5352,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
         <g>
           <defs>
             <lineargradient
-              id="Gantt_gradient2_Complete"
+              id="legend2_gradient"
             >
               <stop
                 offset="0"
@@ -5364,7 +5364,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               />
             </lineargradient>
             <lineargradient
-              id="Gantt_gradient2_Incomplete"
+              id="legend3_gradient"
             >
               <stop
                 offset="0"
@@ -5376,7 +5376,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               />
             </lineargradient>
             <lineargradient
-              id="Gantt_gradient2_Not Started"
+              id="legend4_gradient"
             >
               <stop
                 offset="0"
@@ -5391,7 +5391,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             data-is-focusable="true"
-            fill="url(#Gantt_gradient2_Complete)"
+            fill="url(#legend2_gradient)"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -5404,7 +5404,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <rect
             aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
-            fill="url(#Gantt_gradient2_Complete)"
+            fill="url(#legend2_gradient)"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -5417,7 +5417,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <rect
             aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
             data-is-focusable="true"
-            fill="url(#Gantt_gradient2_Complete)"
+            fill="url(#legend2_gradient)"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -5430,7 +5430,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <rect
             aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
             data-is-focusable="true"
-            fill="url(#Gantt_gradient2_Incomplete)"
+            fill="url(#legend3_gradient)"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -5443,7 +5443,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <rect
             aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
-            fill="url(#Gantt_gradient2_Not Started)"
+            fill="url(#legend4_gradient)"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -5456,7 +5456,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <rect
             aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
             data-is-focusable="true"
-            fill="url(#Gantt_gradient2_Not Started)"
+            fill="url(#legend4_gradient)"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -5469,7 +5469,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <rect
             aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
             data-is-focusable="true"
-            fill="url(#Gantt_gradient2_Not Started)"
+            fill="url(#legend4_gradient)"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -5482,7 +5482,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <rect
             aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
             data-is-focusable="true"
-            fill="url(#Gantt_gradient2_Not Started)"
+            fill="url(#legend4_gradient)"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -5532,7 +5532,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -5875,10 +5875,10 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -5887,7 +5887,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -5927,7 +5927,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -6091,7 +6091,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -6314,7 +6314,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -6657,10 +6657,10 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -6669,7 +6669,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -6709,7 +6709,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -6873,7 +6873,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -7096,7 +7096,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -7599,10 +7599,10 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -7611,7 +7611,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -7651,7 +7651,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -7743,7 +7743,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -8138,7 +8138,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >

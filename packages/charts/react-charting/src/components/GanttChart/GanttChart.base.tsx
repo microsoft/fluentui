@@ -47,8 +47,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
   const _cartesianChartRef = React.useRef<IChart>(null);
   const _legendsRef = React.useRef<ILegendContainer>(null);
   const _emptyChartId = React.useRef<string>(getId('Gantt_empty'));
-  const _legendColorMap = React.useRef<Record<string, [string, string]>>({}); // 5
-  const _gradientId = React.useRef<string>(getId('Gantt_gradient'));
+  const _legendColorMap = React.useRef<Record<string, { id: string; startColor: string; endColor: string }>>({}); // 5
   const prevProps = React.useRef<Partial<IGanttChartProps>>({});
 
   const [calloutColor, setCalloutColor] = React.useState<string>('');
@@ -98,14 +97,15 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
             endColor = point.gradient?.[1] || nextGradient[1];
           }
 
-          _legendColorMap.current[legend] = [startColor, endColor];
+          _legendColorMap.current[legend] = { id: getId('legend'), startColor, endColor };
           colorIndex += 1;
         }
 
+        const { startColor, endColor } = _legendColorMap.current[legend];
         return {
           ...point,
-          color: _legendColorMap.current[legend][0],
-          ...(props.enableGradient ? { gradient: _legendColorMap.current[legend] } : {}),
+          color: startColor,
+          ...(props.enableGradient ? { gradient: [startColor, endColor] as [string, string] } : {}),
         };
       }) ?? []
     );
@@ -336,13 +336,14 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       yScalePrimary: NumberScale | StringScale;
     }): React.JSX.Element => {
       const getGradientId = (legend: string | undefined) => {
-        return `${_gradientId.current}_${legend}`;
+        const legendId = _legendColorMap.current[`${legend}`].id;
+        return `${legendId}_gradient`;
       };
 
       const gradientDefs: React.JSX.Element[] = [];
       if (props.enableGradient) {
         Object.keys(_legendColorMap.current).forEach((legend: string, index: number) => {
-          const [startColor, endColor] = _legendColorMap.current[legend];
+          const { startColor, endColor } = _legendColorMap.current[legend];
           gradientDefs.push(
             <linearGradient key={index} id={getGradientId(legend)}>
               <stop offset="0" stopColor={startColor} />
@@ -437,7 +438,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     Object.keys(_legendColorMap.current).forEach((legendTitle: string) => {
       const legend: ILegend = {
         title: legendTitle,
-        color: _legendColorMap.current[legendTitle][0],
+        color: _legendColorMap.current[legendTitle].startColor,
         hoverAction: () => {
           _handleChartMouseLeave();
           _onLegendHover(legendTitle);
