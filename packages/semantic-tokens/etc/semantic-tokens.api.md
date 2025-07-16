@@ -1753,6 +1753,12 @@ export const _ctrlFieldPaddingCtrlTextTopHorizontal = "var(--smtc-padding-ctrl-t
 // @public
 export const _ctrlFieldStatusDangerTintForeground = "var(--smtc-status-danger-tint-foreground, var(--colorPaletteRedForeground1))";
 
+// @public
+export const _ctrlFieldStatusSuccessTintForeground = "var(--smtc-status-success-tint-foreground, var(--colorPaletteGreenForeground1))";
+
+// @public
+export const _ctrlFieldStatusWarningTintForeground = "var(--smtc-status-warning-tint-foreground, var(--colorPaletteDarkOrangeForeground1))";
+
 // @public (undocumented)
 export const ctrlFocusInnerStroke = "var(--smtc-ctrl-focus-inner-stroke, var(--colorStrokeFocus2))";
 
@@ -4951,11 +4957,7 @@ export const statusSuccessTintBackground = "var(--smtc-status-success-tint-backg
 export const statusSuccessTintBackgroundRaw = "--smtc-status-success-tint-background";
 
 // @public (undocumented)
-<<<<<<< HEAD
 export const statusSuccessTintForeground = "var(--smtc-status-success-tint-foreground, var(--colorStatusSuccessForeground1))";
-=======
-export const statusSuccessTintForeground = "var(--smtc-status-success-tint-foreground, var(--colorPaletteGreenForeground1))";
->>>>>>> e3fc9346dd (implemented semantic tokens for field component)
 
 // @public (undocumented)
 export const statusSuccessTintForegroundRaw = "--smtc-status-success-tint-foreground";
@@ -4991,11 +4993,7 @@ export const statusWarningTintBackground = "var(--smtc-status-warning-tint-backg
 export const statusWarningTintBackgroundRaw = "--smtc-status-warning-tint-background";
 
 // @public (undocumented)
-<<<<<<< HEAD
 export const statusWarningTintForeground = "var(--smtc-status-warning-tint-foreground, var(--colorStatusWarningForeground3))";
-=======
-export const statusWarningTintForeground = "var(--smtc-status-warning-tint-foreground, var(--colorPaletteDarkOrangeForeground1))";
->>>>>>> e3fc9346dd (implemented semantic tokens for field component)
 
 // @public (undocumented)
 export const statusWarningTintForegroundRaw = "--smtc-status-warning-tint-foreground";
@@ -5745,7 +5743,7 @@ export const textRampMetadataFontSize = "var(--smtc-text-ramp-metadata-font-size
 export const textRampMetadataFontSizeRaw = "--smtc-text-ramp-metadata-font-size";
 
 // @public (undocumented)
-export const textRampMetadataLineHeight = "var(--smtc-text-ramp-metadata-line-height, var(--smtc-text-global-caption1-line-height))";
+export const textRampMetadataLineHeight = "var(--smtc-text-ramp-metadata-line-height, var(--smtc-text-global-caption1-line-height, var(--lineHeightBase200)))";
 
 // @public (undocumented)
 export const textRampMetadataLineHeightRaw = "--smtc-text-ramp-metadata-line-height";
