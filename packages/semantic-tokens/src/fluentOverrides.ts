@@ -93,7 +93,7 @@ export const fluentOverrides: FluentOverrides = {
   ctrlInputBackgroundRest: { f2Token: 'colorNeutralBackground1' },
   ctrlInputBackgroundSelected: { f2Token: 'colorNeutralBackground1' },
   ctrlInputBottomLineStrokeHover: { f2Token: 'colorNeutralStrokeAccessibleHover' },
-  ctrlInputBottomLineStrokePressed: { f2Token: 'colorCompoundBrandStrokePressed' },
+  ctrlInputBottomLineStrokePressed: { f2Token: 'colorNeutralStrokeAccessiblePressed' },
   ctrlInputBottomLineStrokeRest: { f2Token: 'colorNeutralStrokeAccessible' },
   ctrlInputBottomLineStrokeSelected: { f2Token: 'colorCompoundBrandStroke' },
   ctrlInputBottomLineStrokeWidthRest: { f2Token: 'strokeWidthThin' },

@@ -1850,7 +1850,7 @@ export const ctrlInputBottomLineStrokeHoverRaw = "--smtc-ctrl-input-bottom-line-
 export const ctrlInputBottomLineStrokePressed = "var(--smtc-ctrl-input-bottom-line-stroke-pressed, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorCompoundBrandStrokePressed)))";
 
 // @public
-export const _ctrlInputBottomLineStrokePressedAccessible = "var(--smtc-ctrl-input-bottom-line-stroke-pressed, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralStrokeAccessiblePressed)))";
+export const ctrlInputBottomLineStrokePressed = "var(--smtc-ctrl-input-bottom-line-stroke-pressed, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralStrokeAccessiblePressed)))";
 
 // @public (undocumented)
 export const ctrlInputBottomLineStrokePressedRaw = "--smtc-ctrl-input-bottom-line-stroke-pressed";
