@@ -527,6 +527,7 @@ export const transformPlotlyJsonToVSBCProps = (
     wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getYMinMaxValues(input.data[0], input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
   };
@@ -855,14 +856,7 @@ const transformPlotlyJsonToScatterTraceProps = (
             mode: series.type !== 'scatterpolar' ? series.mode : 'scatterpolar',
             // originXOffset is not typed on Layout, but may be present in input.layout as a part of projection of
             // scatter polar coordingates to cartesian coordinates
-
-            ...(series.type === 'scatterpolar'
-              ? {
-                  originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
-                  direction: input.layout?.polar?.angularaxis?.direction,
-                  rotation: input.layout?.polar?.angularaxis?.rotation,
-                }
-              : {}),
+            originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
           },
           useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         } as ILineChartPoints;
@@ -1758,10 +1752,6 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       continue;
     }
 
-    // retrieve polar axis settings
-    const dirMultiplier = input.layout?.polar?.angularaxis?.direction === 'clockwise' ? -1 : 1;
-    const startAngleInRad = ((input.layout?.polar?.angularaxis?.rotation ?? 0) * Math.PI) / 180;
-
     // Compute tick positions if categorical
     let uniqueTheta: Datum[] = [];
     let categorical = false;
@@ -1776,13 +1766,13 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       }
 
       // 4. Map theta to angle in radians
-      let thetaRad: number;
+      let thetaRad;
       if (categorical) {
         const idx = uniqueTheta.indexOf(thetas[ptindex]);
         const step = (2 * Math.PI) / uniqueTheta.length;
-        thetaRad = startAngleInRad + dirMultiplier * idx * step;
+        thetaRad = idx * step;
       } else {
-        thetaRad = startAngleInRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
+        thetaRad = ((thetas[ptindex] as number) * Math.PI) / 180;
       }
       // 5. Shift only the polar origin (not the cartesian)
       const rawRadius = rVals[ptindex] as number;
