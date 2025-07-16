@@ -335,6 +335,10 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralBackground1',
     originalToken: 'ctrlInputBackgroundRest',
   },
+  _ctrlInputBottomLineStrokePressedAccessible: {
+    f2Token: 'colorNeutralStrokeAccessiblePressed',
+    originalToken: 'ctrlInputBottomLineStrokePressed',
+  },
   _ctrlInputNeutralForegroundPlaceholder: {
     f2Token: 'colorNeutralForeground4',
     originalToken: 'foregroundCtrlNeutralSecondaryRest',

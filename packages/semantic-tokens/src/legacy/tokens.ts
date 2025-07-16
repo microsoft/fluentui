@@ -195,6 +195,11 @@ export const colorTransparentStroke = 'var(--colorTransparentStroke)';
  */
 export const colorPaletteRedBorder2 = 'var(--colorPaletteRedBorder2)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStrokePressed | `colorCompoundBrandStrokePressed`} design token.
+ * @public
+ */
+export const colorCompoundBrandStrokePressed = 'var(--colorCompoundBrandStrokePressed)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStroke | `colorCompoundBrandStroke`} design token.
  * @public
  */
@@ -669,11 +674,6 @@ export const colorPaletteYellowBorder1 = 'var(--colorPaletteYellowBorder1)';
  * @public
  */
 export const colorCompoundBrandStrokeHover = 'var(--colorCompoundBrandStrokeHover)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStrokePressed | `colorCompoundBrandStrokePressed`} design token.
- * @public
- */
-export const colorCompoundBrandStrokePressed = 'var(--colorCompoundBrandStrokePressed)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalXS | `spacingVerticalXS`} design token.
  * @public

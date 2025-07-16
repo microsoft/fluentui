@@ -1,14 +1,14 @@
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { InputSlots, InputState } from './Input.types';
+import { inputClassNames, type InputState } from '@fluentui/react-input';
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
-export const inputClassNames: SlotClassNames<InputSlots> = {
-  root: 'fui-Input',
-  input: 'fui-Input__input',
-  contentBefore: 'fui-Input__contentBefore',
-  contentAfter: 'fui-Input__contentAfter',
-};
+// Maintaining the correct corner radius:
+// Use the whole border-radius as the height and only put radii on the bottom corners.
+// (Otherwise the radius would be automatically reduced to fit available space.)
+// max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
+const inputBottomFocusBorderStroke = `max(${semanticTokens.ctrlInputBottomLineStrokeWidthSelected}, ${semanticTokens.cornerCtrlRest})`;
 
 // TODO(sharing) should these be shared somewhere?
 const fieldHeights = {
@@ -42,7 +42,7 @@ const useRootClassName = makeResetStyles({
   alignItems: 'center',
   flexWrap: 'nowrap',
   gap: tokens.spacingHorizontalXXS,
-  borderRadius: tokens.borderRadiusMedium, // used for all but underline
+  borderRadius: semanticTokens.cornerCtrlRest, // used for all but underline
   position: 'relative',
   boxSizing: 'border-box',
   verticalAlign: 'middle',
@@ -52,9 +52,9 @@ const useRootClassName = makeResetStyles({
   ...typographyStyles.body1,
 
   // appearance: outline (default)
-  backgroundColor: tokens.colorNeutralBackground1,
-  border: `1px solid ${tokens.colorNeutralStroke1}`,
-  borderBottomColor: tokens.colorNeutralStrokeAccessible,
+  backgroundColor: semanticTokens._ctrlInputBackgroundRestLighter,
+  border: `1px solid ${semanticTokens.ctrlInputStrokeRest}`,
+  borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeRest,
 
   // This is all for the bottom focus border.
   // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
@@ -70,15 +70,15 @@ const useRootClassName = makeResetStyles({
     // Use the whole border-radius as the height and only put radii on the bottom corners.
     // (Otherwise the radius would be automatically reduced to fit available space.)
     // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
-    height: `max(2px, ${tokens.borderRadiusMedium})`,
-    borderBottomLeftRadius: tokens.borderRadiusMedium,
-    borderBottomRightRadius: tokens.borderRadiusMedium,
+    height: inputBottomFocusBorderStroke,
+    borderBottomLeftRadius: semanticTokens.cornerCtrlRest,
+    borderBottomRightRadius: semanticTokens.cornerCtrlRest,
 
     // Flat 2px border:
     // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
     // (This could be done without trimming using `background: linear-gradient(...)`, but using
     // borderBottom makes it easier for people to override the color if needed.)
-    borderBottom: `2px solid ${tokens.colorCompoundBrandStroke}`,
+    borderBottom: `2px solid ${semanticTokens.ctrlInputBottomLineStrokeSelected}`,
     clipPath: 'inset(calc(100% - 2px) 0 0 0)',
 
     // Animation for focus OUT
@@ -106,7 +106,7 @@ const useRootClassName = makeResetStyles({
   },
   ':focus-within:active::after': {
     // This is if the user clicks the field again while it's already focused
-    borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+    borderBottomColor: semanticTokens.ctrlInputBottomLineStrokePressed,
   },
   ':focus-within': {
     outline: '2px solid transparent',
@@ -131,17 +131,20 @@ const useRootStyles = makeStyles({
   },
   outlineInteractive: {
     ':hover': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+      ...shorthands.borderColor(semanticTokens.ctrlInputStrokeHover),
+      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeHover,
+      ':focus-within': {
+        borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeSelected,
+      },
     },
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+      ...shorthands.borderColor(semanticTokens.ctrlInputStrokePressed),
+      borderBottomColor: semanticTokens._ctrlInputBottomLineStrokePressedAccessible,
     },
   },
   underline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: semanticTokens.nullColor,
     borderRadius: '0', // corners look strange if rounded
     // border is specified in rootBaseStyles, but we only want a bottom border here
     borderTopStyle: 'none',
@@ -155,11 +158,11 @@ const useRootStyles = makeStyles({
   },
   underlineInteractive: {
     ':hover': {
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeHover,
     },
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeSelected,
     },
     '::after': {
       // remove rounded corners from focus underline
@@ -167,40 +170,40 @@ const useRootStyles = makeStyles({
     },
   },
   filled: {
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    ...shorthands.borderColor(semanticTokens.ctrlFocusOuterStroke),
   },
   filledInteractive: {
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':hover,:focus-within': {
       // also handles pressed border color (:active)
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+      ...shorthands.borderColor(semanticTokens._ctrlFocusOuterStrokeInteractive),
     },
   },
   invalid: {
     ':not(:focus-within),:hover:not(:focus-within)': {
-      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+      ...shorthands.borderColor(semanticTokens.ctrlInputBackgroundError),
     },
   },
   'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: semanticTokens._ctrlInputBackgroundRestDarker,
   },
   'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: semanticTokens._ctrlInputBackgroundRestLighter,
   },
   // This shadow appearance is deprecated and will be removed in a future release.
   'filled-darker-shadow': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: semanticTokens._ctrlInputBackgroundRestDarker,
     boxShadow: tokens.shadow2,
   },
   // This shadow appearance is deprecated and will be removed in a future release.
   'filled-lighter-shadow': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: semanticTokens._ctrlInputBackgroundRestLighter,
     boxShadow: tokens.shadow2,
   },
   disabled: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    backgroundColor: semanticTokens.nullColor,
+    ...shorthands.borderColor(semanticTokens.strokeCtrlOnNeutralDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
     },
@@ -240,12 +243,12 @@ const useInputClassName = makeResetStyles({
   minWidth: 0, // required to make the input shrink to fit the wrapper
   borderStyle: 'none', // input itself never has a border (this is handled by inputWrapper)
   padding: `0 ${horizontalPadding.combined.medium}`,
-  color: tokens.colorNeutralForeground1,
+  color: semanticTokens.foregroundContentNeutralPrimary,
   // Use literal "transparent" (not from the theme) to always let the color from the root show through
   backgroundColor: 'transparent',
 
   '::placeholder': {
-    color: tokens.colorNeutralForeground4,
+    color: semanticTokens._ctrlInputNeutralForegroundPlaceholder,
     opacity: 1, // browser style override
   },
 
@@ -289,18 +292,18 @@ const useInputElementStyles = makeStyles({
     paddingRight: horizontalPadding.input.large,
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    backgroundColor: tokens.colorTransparentBackground,
+    color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
+    backgroundColor: semanticTokens.nullColor,
     cursor: 'not-allowed',
     '::placeholder': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     },
   },
 });
 
 const useContentClassName = makeResetStyles({
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground3, // "icon color" in design spec
+  color: semanticTokens.foregroundCtrlIconOnNeutralRest, // "icon color" in design spec
   display: 'flex',
   // special case styling for icons (most common case) to ensure they're centered vertically
   // size: medium (default)
@@ -309,7 +312,7 @@ const useContentClassName = makeResetStyles({
 
 const useContentStyles = makeStyles({
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
   },
   // Ensure resizable icons show up with the proper font size
   small: {
@@ -326,9 +329,10 @@ const useContentStyles = makeStyles({
 /**
  * Apply styling to the Input slots based on the state
  */
-export const useInputStyles_unstable = (state: InputState): InputState => {
+export const useSemanticInputStyles = (_state: unknown): InputState => {
   'use no memo';
 
+  const state = _state as InputState;
   const { size, appearance } = state;
   const disabled = state.input.disabled;
   const invalid = `${state.input['aria-invalid']}` === 'true';
@@ -339,6 +343,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   const contentStyles = useContentStyles();
 
   state.root.className = mergeClasses(
+    state.root.className,
     inputClassNames.root,
     useRootClassName(),
     rootStyles[size],
@@ -351,32 +356,35 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     filled && rootStyles.filled,
     !disabled && invalid && rootStyles.invalid,
     disabled && rootStyles.disabled,
-    state.root.className,
+    getSlotClassNameProp_unstable(state.root),
   );
 
   state.input.className = mergeClasses(
+    state.input.className,
     inputClassNames.input,
     useInputClassName(),
     inputStyles[size],
     state.contentBefore && inputStyles[`${size}WithContentBefore`],
     state.contentAfter && inputStyles[`${size}WithContentAfter`],
     disabled && inputStyles.disabled,
-    state.input.className,
+    getSlotClassNameProp_unstable(state.input),
   );
 
   const contentClasses = [useContentClassName(), disabled && contentStyles.disabled, contentStyles[size]];
   if (state.contentBefore) {
     state.contentBefore.className = mergeClasses(
+      state.contentBefore.className,
       inputClassNames.contentBefore,
       ...contentClasses,
-      state.contentBefore.className,
+      getSlotClassNameProp_unstable(state.contentBefore),
     );
   }
   if (state.contentAfter) {
     state.contentAfter.className = mergeClasses(
+      state.contentAfter.className,
       inputClassNames.contentAfter,
       ...contentClasses,
-      state.contentAfter.className,
+      getSlotClassNameProp_unstable(state.contentAfter),
     );
   }
 
