@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
-import { TooltipState } from '@fluentui/react-tooltip';
+import type { TooltipState } from '@fluentui/react-tooltip';
 import { tokens } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({

@@ -729,6 +729,11 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     originalToken: 'paddingCtrlTextTop',
     rawValue: '4px',
   },
+  _ctrlTooltipShadow: {
+    rawValue:
+      'drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 4px 8px var(--colorNeutralShadowKey))',
+    originalToken: 'ctrlTooltipShadow',
+  },
   _ctrlTreeGapInsideDefault: {
     f2Token: 'spacingVerticalXXS',
     originalToken: 'gapInsideCtrlDefault',
