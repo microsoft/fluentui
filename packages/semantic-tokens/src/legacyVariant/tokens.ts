@@ -12,7 +12,7 @@ import {
   ctrlChoiceBaseSizeRaw,
 } from '../components/choice/variables';
 import { ctrlFocusInnerStrokeWidthRaw, ctrlFocusOuterStrokeRaw } from '../components/focus/variables';
-import { ctrlInputBackgroundRestRaw } from '../components/input/variables';
+import { ctrlInputBackgroundRestRaw, ctrlInputBackgroundDisabledRaw } from '../components/input/variables';
 import { ctrlListIndentLevel1Raw } from '../components/list/variables';
 import {
   ctrlProgressBackgroundEmptyRaw,
@@ -69,6 +69,10 @@ import {
   sizeCtrlIconRaw,
   foregroundCtrlOnBrandRestRaw,
   foregroundCtrlOnBrandDisabledRaw,
+  backgroundCtrlNeutralDisabledRaw,
+  paddingCtrlSmHorizontalDefaultRaw,
+  sizeCtrlIconSecondaryRaw,
+  sizeCtrlSmDefaultRaw,
   textGlobalBody3LineHeightRaw,
   foregroundCtrlBrandHoverRaw,
   foregroundCtrlBrandPressedRaw,
@@ -122,6 +126,7 @@ import {
   spacingVerticalXXS,
   spacingVerticalSNudge,
   spacingHorizontalM,
+  colorPaletteDarkOrangeForeground1,
   colorTransparentStrokeInteractive,
   colorNeutralBackground3,
   colorNeutralForeground4,
@@ -135,6 +140,7 @@ import {
   spacingVerticalMNudge,
   lineHeightBase300,
   colorNeutralForegroundDisabled,
+  spacingHorizontalMNudge,
   colorBrandStroke2Contrast,
   colorBrandStroke1,
   fontSizeBase400,
@@ -143,10 +149,8 @@ import {
   colorNeutralForeground1Pressed,
   colorNeutralForeground2Hover,
   colorNeutralForeground2Pressed,
-  spacingHorizontalMNudge,
   colorTransparentBackgroundHover,
   colorTransparentBackgroundPressed,
-  colorPaletteDarkOrangeForeground1,
 } from '../legacy/tokens';
 import {
   backgroundCtrlSubtleRestRaw,
@@ -723,6 +727,20 @@ export const _ctrlFieldPaddingCtrlTextTopHorizontal = `var(${paddingCtrlTextTopR
  */
 export const _ctrlFieldStatusDangerTintForeground = `var(${statusDangerTintForegroundRaw}, ${colorPaletteRedForeground1})`;
 /**
+ * This is a legacy variant for statusSuccessTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusSuccessTintForeground instead.
+ */
+export const _ctrlFieldStatusSuccessTintForeground = `var(${statusSuccessTintForegroundRaw}, ${colorPaletteGreenForeground1})`;
+/**
+ * This is a legacy variant for statusWarningTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusWarningTintForeground instead.
+ */
+export const _ctrlFieldStatusWarningTintForeground = `var(${statusWarningTintForegroundRaw}, ${colorPaletteDarkOrangeForeground1})`;
+/**
  * This is a legacy variant for ctrlFocusOuterStroke to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations
@@ -1157,6 +1175,76 @@ export const _ctrlSliderSmBarSizeDefault = `var(${sizeCtrlDefaultRaw}, 24px)`;
  */
 export const _ctrlSliderSmPaddingDefault = `var(${paddingCtrlHorizontalDefaultRaw}, 8px)`;
 /**
+ * This is a legacy variant for ctrlInputBackgroundDisabled to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlInputBackgroundDisabled instead.
+ */
+export const _ctrlSpinButtonBackgroundDisabled = `var(${ctrlInputBackgroundDisabledRaw}, var(${backgroundCtrlNeutralDisabledRaw}, ${colorTransparentBackground}))`;
+/**
+ * This is a legacy variant for foregroundCtrlOnSubtleHover to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlOnSubtleHover instead.
+ */
+export const _ctrlSpinButtonForegroundOnSubtleHover = `var(${foregroundCtrlOnSubtleHoverRaw}, var(${foregroundCtrlNeutralPrimaryHoverRaw}, ${colorNeutralForeground3Hover}))`;
+/**
+ * This is a legacy variant for foregroundCtrlOnSubtlePressed to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlOnSubtlePressed instead.
+ */
+export const _ctrlSpinButtonForegroundOnSubtlePressed = `var(${foregroundCtrlOnSubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw}, ${colorNeutralForeground3Pressed}))`;
+/**
+ * This is a legacy variant for foregroundCtrlNeutralSecondaryRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlNeutralSecondaryRest instead.
+ */
+export const _ctrlSpinButtonNeutralSecondaryRest = `var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground4})`;
+/**
+ * This is a legacy variant for foregroundCtrlOnSubtleRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlOnSubtleRest instead.
+ */
+export const _ctrlSpinButtonOnSubtleRest = `var(${foregroundCtrlOnSubtleRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground3}))`;
+/**
+ * This is a legacy variant for paddingCtrlHorizontalDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlHorizontalDefault instead.
+ */
+export const _ctrlSpinButtonPaddingHorizontal = `var(${paddingCtrlHorizontalDefaultRaw}, ${spacingHorizontalMNudge})`;
+/**
+ * This is a legacy variant for paddingCtrlSmHorizontalDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlSmHorizontalDefault instead.
+ */
+export const _ctrlSpinButtonPaddingSmHorizontal = `var(${paddingCtrlSmHorizontalDefaultRaw}, 5px)`;
+/**
+ * This is a legacy variant for sizeCtrlDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use sizeCtrlDefault instead.
+ */
+export const _ctrlSpinButtonSizeDefault = `var(${sizeCtrlDefaultRaw}, 32px)`;
+/**
+ * This is a legacy variant for sizeCtrlIconSecondary to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use sizeCtrlIconSecondary instead.
+ */
+export const _ctrlSpinButtonSizeIconSecondary = `var(${sizeCtrlIconSecondaryRaw}, 16px)`;
+/**
+ * This is a legacy variant for sizeCtrlSmDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use sizeCtrlSmDefault instead.
+ */
+export const _ctrlSpinButtonSizeSmDefault = `var(${sizeCtrlSmDefaultRaw}, 24px)`;
+/**
  * This is a legacy variant for ctrlProgressBackgroundEmpty to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations
@@ -1415,17 +1503,3 @@ export const _nullBackgroundColorHover = `var(${nullColorRaw}, ${colorTransparen
  * please use nullColor instead.
  */
 export const _nullBackgroundColorPressed = `var(${nullColorRaw}, ${colorTransparentBackgroundPressed})`;
-/**
- * This is a legacy variant for statusSuccessTintForeground to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use statusSuccessTintForeground instead.
- */
-export const _ctrlFieldStatusSuccessTintForeground = `var(${statusSuccessTintForegroundRaw}, ${colorPaletteGreenForeground1})`;
-/**
- * This is a legacy variant for statusWarningTintForeground to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use statusWarningTintForeground instead.
- */
-export const _ctrlFieldStatusWarningTintForeground = `var(${statusWarningTintForegroundRaw}, ${colorPaletteDarkOrangeForeground1})`;

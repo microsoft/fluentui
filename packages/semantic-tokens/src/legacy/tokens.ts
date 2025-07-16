@@ -685,6 +685,11 @@ export const spacingVerticalXS = 'var(--spacingVerticalXS)';
  */
 export const spacingVerticalSNudge = 'var(--spacingVerticalSNudge)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteDarkOrangeForeground1 | `colorPaletteDarkOrangeForeground1`} design token.
+ * @public
+ */
+export const colorPaletteDarkOrangeForeground1 = 'var(--colorPaletteDarkOrangeForeground1)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground4 | `colorNeutralForeground4`} design token.
  * @public
  */
@@ -720,15 +725,15 @@ export const colorStatusDangerForeground1 = 'var(--colorStatusDangerForeground1)
  */
 export const spacingVerticalMNudge = 'var(--spacingVerticalMNudge)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke2Contrast | `colorBrandStroke2Contrast`} design token.
- * @public
- */
-export const colorBrandStroke2Contrast = 'var(--colorBrandStroke2Contrast)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalMNudge | `spacingHorizontalMNudge`} design token.
  * @public
  */
 export const spacingHorizontalMNudge = 'var(--spacingHorizontalMNudge)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke2Contrast | `colorBrandStroke2Contrast`} design token.
+ * @public
+ */
+export const colorBrandStroke2Contrast = 'var(--colorBrandStroke2Contrast)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorTransparentBackgroundHover | `colorTransparentBackgroundHover`} design token.
  * @public
@@ -739,8 +744,3 @@ export const colorTransparentBackgroundHover = 'var(--colorTransparentBackground
  * @public
  */
 export const colorTransparentBackgroundPressed = 'var(--colorTransparentBackgroundPressed)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorPaletteDarkOrangeForeground1 | `colorPaletteDarkOrangeForeground1`} design token.
- * @public
- */
-export const colorPaletteDarkOrangeForeground1 = 'var(--colorPaletteDarkOrangeForeground1)';

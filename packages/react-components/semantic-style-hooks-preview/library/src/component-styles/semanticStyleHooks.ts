@@ -69,6 +69,7 @@ import {
   useSemanticBreadcrumbDividerStyles,
   useSemanticBreadcrumbItemStyles,
 } from './Breadcrumb';
+import { useSemanticSpinButtonStyles } from './SpinButton';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -155,4 +156,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useBreadcrumbButtonStyles_unstable: useSemanticBreadcrumbButtonStyles,
   useBreadcrumbDividerStyles_unstable: useSemanticBreadcrumbDividerStyles,
   useBreadcrumbItemStyles_unstable: useSemanticBreadcrumbItemStyles,
+  // SpinButton styles
+  useSpinButtonStyles_unstable: useSemanticSpinButtonStyles,
 };
