@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: suppress deprecation errors",
+  "packageName": "@fluentui/test-utilities",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}
