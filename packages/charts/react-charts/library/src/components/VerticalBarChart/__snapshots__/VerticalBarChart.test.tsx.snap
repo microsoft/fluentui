@@ -3983,7 +3983,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           </div>
           <div
             class="fui-cart__calloutInfoContainer"
-            style="border-inline-start: 4px solid blue;"
+            style="border-inline-start: 4px solid blue; margin-top: 11px;"
           >
             <div
               class="fui-cart__calloutBlockContainer"

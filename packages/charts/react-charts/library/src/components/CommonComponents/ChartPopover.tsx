@@ -64,6 +64,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
                     alignItems: 'flex-end',
                   }),
                   borderInlineStart: `4px solid ${props.color}`,
+                  marginTop: '11px',
                 }}
               >
                 <div className={classes.calloutBlockContainer}>

@@ -1,7 +1,0 @@
-{
-  "name": "scripts-types_enzyme",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "scripts/types_enzyme/src",
-  "projectType": "library",
-  "tags": ["tools"]
-}

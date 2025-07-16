@@ -62,7 +62,7 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
-import { IScatterChartDataPoint, IScatterChartPoints } from '../types/IDataPoint';
+import { IGanttChartDataPoint, IScatterChartDataPoint, IScatterChartPoints } from '../types/IDataPoint';
 import {
   formatDateToLocaleString,
   formatToLocaleString,
@@ -86,6 +86,7 @@ export enum ChartTypes {
   HeatMapChart,
   HorizontalBarChartWithAxis,
   ScatterChart,
+  GanttChart,
 }
 
 export enum XAxisTypes {
@@ -264,7 +265,7 @@ export function createNumericXAxis(
     .tickPadding(tickPadding)
     .ticks(tickCount)
     .tickFormat(tickFormat);
-  if (chartType === ChartTypes.HorizontalBarChartWithAxis) {
+  if ([ChartTypes.HorizontalBarChartWithAxis, ChartTypes.GanttChart].includes(chartType)) {
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
   if (tickParams.tickValues) {
@@ -356,7 +357,7 @@ function getMultiLevelD3DateFormatter(
   return formatter;
 }
 
-function getDateFormatLevel(date: Date, useUTC?: boolean) {
+export function getDateFormatLevel(date: Date, useUTC?: boolean) {
   const timeSecond = useUTC ? d3UtcSecond : d3TimeSecond;
   const timeMinute = useUTC ? d3UtcMinute : d3TimeMinute;
   const timeHour = useUTC ? d3UtcHour : d3TimeHour;
@@ -400,6 +401,7 @@ export function createDateXAxis(
   timeFormatLocale?: d3TimeLocaleDefinition,
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: boolean,
+  chartType?: ChartTypes,
 ) {
   const {
     domainNRangeValues,
@@ -470,6 +472,9 @@ export function createDateXAxis(
     .tickPadding(tickPadding)
     .ticks(tickCount)
     .tickFormat(tickFormat);
+  if ([ChartTypes.GanttChart].includes(chartType!)) {
+    xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
+  }
 
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues as Date[]) : '';
   if (xAxisElement) {
@@ -1147,6 +1152,7 @@ export function domainRangeOfNumericForAreaChart(
   width: number,
   isRTL: boolean,
 ): IDomainNRange {
+  const isScatterPolar = isScatterPolarSeries(points);
   const xMin = d3Min(points, (point: ILineChartPoints) => {
     return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number)!;
   })!;
@@ -1161,8 +1167,8 @@ export function domainRangeOfNumericForAreaChart(
   const rEndValue = width - margins.right!;
 
   return isRTL
-    ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
-    : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
+    ? { dStartValue: isScatterPolar ? 1 : xMax, dEndValue: isScatterPolar ? -1 : xMin, rStartValue, rEndValue }
+    : { dStartValue: isScatterPolar ? -1 : xMin, dEndValue: isScatterPolar ? 1 : xMax, rStartValue, rEndValue };
 }
 
 /**
@@ -1444,18 +1450,24 @@ export function findVerticalNumericMinMaxOfY(
   return { startValue: d3Min(values)!, endValue: d3Max(values)! };
 }
 /**
- * Fins the min and max values of the vertical bar chart y axis data point.
+ * Fins the min and max values of the horizontal bar chart y axis data point.
  * @export
- * @param {IVerticalBarChartDataPoint[]} points
+ * @param {IHorizontalBarChartWithAxisDataPoint[]|IGanttChartDataPoint[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
 export function findHBCWANumericMinMaxOfY(
-  points: IHorizontalBarChartWithAxisDataPoint[],
+  points: IHorizontalBarChartWithAxisDataPoint[] | IGanttChartDataPoint[],
   yAxisType: YAxisType | undefined,
 ): { startValue: number; endValue: number } {
   if (yAxisType !== undefined && yAxisType === YAxisType.NumericAxis) {
-    const yMax = d3Max(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
-    const yMin = d3Min(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+    const yMax = d3Max(
+      points,
+      (point: IHorizontalBarChartWithAxisDataPoint | IGanttChartDataPoint) => point.y as number,
+    )!;
+    const yMin = d3Min(
+      points,
+      (point: IHorizontalBarChartWithAxisDataPoint | IGanttChartDataPoint) => point.y as number,
+    )!;
     return { startValue: yMin, endValue: yMax };
   }
   return { startValue: 0, endValue: 0 };
@@ -1868,6 +1880,7 @@ export function domainRangeOfNumericForScatterChart(
   width: number,
   isRTL: boolean,
 ): IDomainNRange {
+  const isScatterPolar = isScatterPolarSeries(points);
   let xMin = d3Min(points, (point: ILineChartPoints) => {
     return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as number)!;
   })!;
@@ -1886,8 +1899,8 @@ export function domainRangeOfNumericForScatterChart(
   const rEndValue = width - margins.right!;
 
   return isRTL
-    ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
-    : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
+    ? { dStartValue: isScatterPolar ? 1 : xMax, dEndValue: isScatterPolar ? -1 : xMin, rStartValue, rEndValue }
+    : { dStartValue: isScatterPolar ? -1 : xMin, dEndValue: isScatterPolar ? 1 : xMax, rStartValue, rEndValue };
 }
 
 export const truncateString = (str: string, maxLength: number, ellipsis = '...'): string => {
@@ -1980,4 +1993,16 @@ export function getContrastTextColor(backgroundColor: string, theme: ITheme): st
     textColor = getInvertedTextColor(textColor, theme);
   }
   return textColor;
+}
+
+/**
+ * Utility function to check if an array of points is scatterpolar
+ * @param points - Array of chart points
+ * @returns true if any point has lineOptions.mode as 'scatterpolar'
+ */
+export function isScatterPolarSeries(points: (ILineChartPoints | IScatterChartPoints)[]): boolean {
+  return points.some(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    item => typeof (item as any).lineOptions?.mode === 'string' && (item as any).lineOptions.mode === 'scatterpolar',
+  );
 }

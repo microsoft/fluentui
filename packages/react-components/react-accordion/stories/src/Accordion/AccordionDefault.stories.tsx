@@ -4,9 +4,17 @@ import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@flue
 export const Default = () => (
   <Accordion>
     <AccordionItem value="1">
-      <AccordionHeader>Accordion Header 1</AccordionHeader>
+      <AccordionHeader>
+        {' '}
+        This is a very very very long heading. This is a very very very long heading. This is a very very very long
+        heading. This is a very very very long heading.
+      </AccordionHeader>
       <AccordionPanel>
-        <div>Accordion Panel 1</div>
+        <div>
+          {' '}
+          This is a very very very long heading. This is a very very very long heading. This is a very very very long
+          heading. This is a very very very long heading.
+        </div>
       </AccordionPanel>
     </AccordionItem>
     <AccordionItem value="2">

@@ -2,6 +2,97 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 11 Jul 2025 15:59:20 GMT",
+      "tag": "@fluentui/react-components_v9.66.7",
+      "version": "9.66.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "a394dfe8c7e175c9f6df286416326aa0a63aeccb",
+            "comment": "fix: adjust accordion header chevron alignment styles"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "938a069ea4e0c460050e0dc147b9786e144cb6d3",
+            "comment": "fix accessibility bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "1fc2a1ddd89ff3b3bc7665e7b85de3c20c9b5c3e",
+            "comment": "sankey chart callout fix"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a8439274731ec7188bad83c29266733be484f507",
+            "comment": "fix accessibility issues"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "0325b812a82757e4d221d63b652e206fef5b659d",
+            "comment": "fix(react-charts): Fix hook used conditionally inside a function"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "124147f8360ee4e42f75123901d34e3313d1b16f",
+            "comment": "fix(react-menu): Fix disabled styles for secondaryContent and subText"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "d12ce05c64cfca6f27d1710d2434e555492741cf",
+            "comment": "fix: resolve regression with \".hoverDelay\" handling"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "0decca9ac45ed143d649dc407cf975be03e356b2",
+            "comment": "fix: MessageBarActions renders slots with keys"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "85a550eb721145d8ae7966a9c29ecaf5dc999fd3",
+            "comment": "fix: add subtle animation for indeterminate progress bar when reduced motion mode is enabled"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "4bc988d1f2659f3a010ddd19e1c85d0732478068",
+            "comment": "fix: remove useEffect storybook/preview-api and directly trigger 'Open in ...' button rendering"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "0aea3258a8deb968bd8e8f5a4a9c3e8a162b4bc3",
+            "comment": "feat: Add timeout configuration to safezone prop"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "0aea3258a8deb968bd8e8f5a4a9c3e8a162b4bc3",
+            "comment": "feat: SafeZone restarts timeout on mouse move"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "6bc17a001b95f77310778223612ede0fb3869346",
+            "comment": "chore: re-generate api.md after v0 source removal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 10:02:42 GMT",
       "tag": "@fluentui/react-components_v9.66.6",
       "version": "9.66.6",

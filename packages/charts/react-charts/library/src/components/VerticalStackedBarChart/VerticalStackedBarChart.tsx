@@ -49,6 +49,12 @@ import {
   getColorFromToken,
   findVSBCNumericMinMaxOfY,
   YAxisType,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfVSBCNumeric,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -446,6 +452,36 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       shouldFocusStackOnly = isCalloutForStack;
     }
     return shouldFocusStackOnly;
+  }
+
+  function _getDomainNRangeValues(
+    points: DataPoint[],
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+        points,
+        margins,
+        width,
+        isRTL,
+        tickValues! as Date[],
+        chartType,
+        barWidth,
+      );
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
   }
 
   function _getFormattedLineData(data: VerticalStackedChartProps[]): LineObject {
@@ -1143,10 +1179,13 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         xAxisType={_xAxisType}
         getMinMaxOfYAxis={_getMinMaxOfYAxis}
         calloutProps={calloutProps}
+        createYAxis={createNumericYAxis}
         tickParams={tickParams}
         legendBars={legendBars}
         datasetForXAxisDomain={_xAxisLabels}
         isCalloutForStack={shouldFocusWholeStack}
+        getDomainNRangeValues={_getDomainNRangeValues}
+        createStringYAxis={createStringYAxis}
         barwidth={_barWidth}
         getmargins={_getMargins}
         getGraphData={_getGraphData}

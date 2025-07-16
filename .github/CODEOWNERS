@@ -107,12 +107,6 @@ tools/visual-regression-assert @microsoft/fluentui-react-build
 packages/a11y-testing @microsoft/fluentui-react-build @microsoft/fluentui-northstar
 packages/react-conformance @microsoft/fluentui-react-build
 
-#### Fluent UI N*
-packages/a11y-rules @microsoft/fluentui-northstar
-packages/fluentui @microsoft/fluentui-northstar
-packages/fluentui/react-northstar/src/components/Chat @microsoft/fluentui-northstar @Hirse
-packages/fluentui/react-northstar/src/themes/teams/components/Chat @microsoft/fluentui-northstar @Hirse
-
 #### Web Components
 packages/web-components @microsoft/fui-wc
 

@@ -1,8 +1,15 @@
 import * as React from 'react';
 import { ChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts';
-import { Switch, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import { Switch, Checkbox, CheckboxOnChangeData, makeStyles, tokens } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
 
 export const LineChartAllNegative = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
@@ -195,6 +202,7 @@ export const LineChartAllNegative = () => {
           yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
           xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
           useUTC={useUTC}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </>

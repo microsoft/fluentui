@@ -46,7 +46,8 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   }, [findFirstFocusable, menuPopoverRef]);
 
   const openedWithKeyboardRef = React.useRef(false);
-  const hasMouseMoved = React.useRef(false);
+  const openedViaSafeZoneRef = React.useRef(false);
+  const hasMouseMovedRef = React.useRef(false);
 
   const { dir } = useFluent();
   const OpenArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
@@ -60,7 +61,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const safeZoneHandlerRef = useOnMenuSafeZoneTimeout(
     useEventCallback(() => {
       if (isSubmenu) {
-        hasMouseMoved.current = true;
+        openedViaSafeZoneRef.current = true;
       }
     }),
   );
@@ -112,8 +113,14 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     if (isTargetDisabled(event)) {
       return;
     }
-    if (openOnHover && hasMouseMoved.current) {
-      setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseEnter', event });
+
+    if (openOnHover) {
+      if (hasMouseMovedRef.current) {
+        setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseEnter', event });
+      } else if (openedViaSafeZoneRef.current) {
+        setOpen(event, { open: true, keyboard: false, ignoreHoverDelay: true, type: 'menuTriggerMouseEnter', event });
+        openedViaSafeZoneRef.current = false;
+      }
     }
   };
 
@@ -124,9 +131,9 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     if (isTargetDisabled(event)) {
       return;
     }
-    if (openOnHover && !hasMouseMoved.current) {
+    if (openOnHover && !hasMouseMovedRef.current) {
       setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseMove', event });
-      hasMouseMoved.current = true;
+      hasMouseMovedRef.current = true;
     }
   };
 

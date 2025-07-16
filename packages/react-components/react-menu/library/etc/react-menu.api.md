@@ -383,7 +383,9 @@ export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'ha
     menuPopoverRef: React_2.MutableRefObject<HTMLElement>;
     menuTrigger: React_2.ReactNode;
     setContextTarget: SetVirtualMouseTarget;
-    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
+    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData & {
+        ignoreHoverDelay?: boolean;
+    }) => void;
     triggerId: string;
     triggerRef: React_2.MutableRefObject<HTMLElement>;
     onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
@@ -471,7 +473,9 @@ export const useCheckmarkStyles_unstable: (state: MenuItemSelectableState & Pick
 
 // @public
 export const useMenu_unstable: (props: MenuProps & {
-    safeZone?: boolean;
+    safeZone?: boolean | {
+        timeout?: number;
+    };
 }) => MenuState;
 
 // @public (undocumented)
