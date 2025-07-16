@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: enable griffel raw styles",
+  "packageName": "@fluentui/react-nav",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: enable griffel raw styles",
+  "packageName": "@fluentui/react-portal",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
