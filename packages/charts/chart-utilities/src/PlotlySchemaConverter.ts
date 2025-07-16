@@ -238,9 +238,16 @@ const validateBarData = (data: Partial<PlotData>) => {
     }
     validateSeriesData(data, false);
   } else if (!isNumberArray(data.y) && !isStringArray(data.y)) {
-    throw new Error(`Non numeric or string Y values encountered, type: ${typeof data.y}`);
+    let hierarchyInfo = '';
+    if (Array.isArray(data.y) && typeof data.y[0] === 'object' && data.y[0] !== null) {
+      const numHierarchies = data.y.length;
+      const hierarchyLengths = data.y.map((obj: any) => (obj && typeof obj === 'object' ? Object.keys(obj).length : 0));
+      hierarchyInfo = `; y object hierarchies: ${numHierarchies}; hierarchy lengths: [${hierarchyLengths.join(', ')}]`;
+    }
+    throw new Error(`Non numeric or string Y values encountered, type: ${typeof data.y}${hierarchyInfo}`);
   }
 };
+
 const isScatterMarkers = (mode: string): boolean => {
   return ['markers', 'text+markers', 'markers+text'].includes(mode);
 };
