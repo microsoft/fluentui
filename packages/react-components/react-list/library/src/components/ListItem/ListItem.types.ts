@@ -18,6 +18,7 @@ export type ListItemActionEventData = EventData<typeof ListItemActionEventName, 
 export type ListItemProps = ComponentProps<ListItemSlots> & {
   value?: ListItemValue;
   onAction?: EventHandler<ListItemActionEventData>;
+  disabledSelection?: boolean;
 };
 
 /**

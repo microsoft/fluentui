@@ -44,8 +44,15 @@ export const SingleActionSelectionDifferentPrimary = () => {
       selectedItems={selectedItems}
       onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
     >
-      {items.map(({ name, avatar }) => (
-        <ListItem key={name} value={name} aria-label={name} onAction={onAction} checkmark={{ 'aria-label': name }}>
+      {items.map(({ name, avatar }, i) => (
+        <ListItem
+          key={name}
+          value={name}
+          aria-label={name}
+          onAction={onAction}
+          checkmark={{ 'aria-label': name }}
+          disabledSelection={i % 2 === 1}
+        >
           <Persona
             name={name}
             secondaryText="Available"
