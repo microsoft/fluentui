@@ -1862,6 +1862,7 @@ export {
   _ctrlFocusOuterStrokeInteractive,
   _ctrlInputBackgroundRestDarker,
   _ctrlInputBackgroundRestLighter,
+  _ctrlInputBottomLineStrokeBrandPressed,
   _ctrlInputNeutralForegroundPlaceholder,
   _ctrlListBackgroundColorHover,
   _ctrlListBackgroundColorPressed,

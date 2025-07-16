@@ -1828,6 +1828,9 @@ export const ctrlInputBackgroundSelected = "var(--smtc-ctrl-input-background-sel
 // @public (undocumented)
 export const ctrlInputBackgroundSelectedRaw = "--smtc-ctrl-input-background-selected";
 
+// @public
+export const _ctrlInputBottomLineStrokeBrandPressed = "var(--smtc-ctrl-input-bottom-line-stroke-pressed, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorCompoundBrandStrokePressed)))";
+
 // @public (undocumented)
 export const ctrlInputBottomLineStrokeDisabled = "var(--smtc-ctrl-input-bottom-line-stroke-disabled, unset)";
 

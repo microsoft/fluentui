@@ -12,7 +12,11 @@ import {
   ctrlChoiceBaseSizeRaw,
 } from '../components/choice/variables';
 import { ctrlFocusInnerStrokeWidthRaw, ctrlFocusOuterStrokeRaw } from '../components/focus/variables';
-import { ctrlInputBackgroundRestRaw, ctrlInputBackgroundDisabledRaw } from '../components/input/variables';
+import {
+  ctrlInputBackgroundRestRaw,
+  ctrlInputBottomLineStrokePressedRaw,
+  ctrlInputBackgroundDisabledRaw,
+} from '../components/input/variables';
 import { ctrlListIndentLevel1Raw } from '../components/list/variables';
 import {
   ctrlProgressBackgroundEmptyRaw,
@@ -761,6 +765,13 @@ export const _ctrlInputBackgroundRestDarker = `var(${ctrlInputBackgroundRestRaw}
  * please use ctrlInputBackgroundRest instead.
  */
 export const _ctrlInputBackgroundRestLighter = `var(${ctrlInputBackgroundRestRaw}, var(${backgroundCtrlNeutralRestRaw}, ${colorNeutralBackground1}))`;
+/**
+ * This is a legacy variant for ctrlInputBottomLineStrokePressed to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlInputBottomLineStrokePressed instead.
+ */
+export const _ctrlInputBottomLineStrokeBrandPressed = `var(${ctrlInputBottomLineStrokePressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorCompoundBrandStrokePressed}))`;
 /**
  * This is a legacy variant for foregroundCtrlNeutralSecondaryRest to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
