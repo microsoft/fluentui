@@ -333,6 +333,10 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralBackground1',
     originalToken: 'ctrlInputBackgroundRest',
   },
+  _ctrlInputBottomLineStrokeBrandPressed: {
+    f2Token: 'colorCompoundBrandStrokePressed',
+    originalToken: 'ctrlInputBottomLineStrokePressed',
+  },
   _ctrlInputNeutralForegroundPlaceholder: {
     f2Token: 'colorNeutralForeground4',
     originalToken: 'foregroundCtrlNeutralSecondaryRest',
@@ -756,9 +760,5 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _nullBackgroundColorPressed: {
     f2Token: 'colorTransparentBackgroundPressed',
     originalToken: 'nullColor',
-  },
-  _ctrlInputBottomLineStrokeBrandPressed: {
-    f2Token: 'colorCompoundBrandStrokePressed',
-    originalToken: 'ctrlInputBottomLineStrokePressed',
   },
 };

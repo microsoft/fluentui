@@ -1862,6 +1862,7 @@ export {
   _ctrlFocusOuterStrokeInteractive,
   _ctrlInputBackgroundRestDarker,
   _ctrlInputBackgroundRestLighter,
+  _ctrlInputBottomLineStrokeBrandPressed,
   _ctrlInputNeutralForegroundPlaceholder,
   _ctrlListBackgroundColorHover,
   _ctrlListBackgroundColorPressed,
@@ -1968,6 +1969,5 @@ export {
   _ctrlTreePaddingTextTop,
   _nullBackgroundColorHover,
   _nullBackgroundColorPressed,
-  _ctrlInputBottomLineStrokeBrandPressed,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';
