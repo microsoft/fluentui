@@ -527,6 +527,7 @@ export const transformPlotlyJsonToVSBCProps = (
     wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getYMinMaxValues(input.data[0], input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
   };
