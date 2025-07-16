@@ -315,6 +315,14 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorPaletteRedForeground1',
     originalToken: 'statusDangerTintForeground',
   },
+  _ctrlFieldStatusSuccessTintForeground: {
+    f2Token: 'colorPaletteGreenForeground1',
+    originalToken: 'statusSuccessTintForeground',
+  },
+  _ctrlFieldStatusWarningTintForeground: {
+    f2Token: 'colorPaletteDarkOrangeForeground1',
+    originalToken: 'statusWarningTintForeground',
+  },
   _ctrlFocusOuterStrokeInteractive: {
     f2Token: 'colorTransparentStrokeInteractive',
     originalToken: 'ctrlFocusOuterStroke',
@@ -710,13 +718,5 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _nullBackgroundColorPressed: {
     f2Token: 'colorTransparentBackgroundPressed',
     originalToken: 'nullColor',
-  },
-  _ctrlFieldStatusSuccessTintForeground: {
-    f2Token: 'colorPaletteGreenForeground1',
-    originalToken: 'statusSuccessTintForeground',
-  },
-  _ctrlFieldStatusWarningTintForeground: {
-    f2Token: 'colorPaletteDarkOrangeForeground1',
-    originalToken: 'statusWarningTintForeground',
   },
 };
