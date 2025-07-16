@@ -29,6 +29,7 @@ import {
   spacingHorizontalXXL,
   spacingHorizontalS,
   spacingHorizontalL,
+  spacingVerticalXXS,
   spacingHorizontalXS,
   spacingHorizontalSNudge,
   borderRadiusCircular,
@@ -343,7 +344,7 @@ export const paddingCtrlLgTextTop = `var(${paddingCtrlLgTextTopRaw})`;
 export const paddingCtrlLgToNestedControl = `var(${paddingCtrlLgToNestedControlRaw})`;
 export const gapBetweenContentNone = `var(${gapBetweenContentNoneRaw})`;
 export const gapBetweenContentXxSmall = `var(${gapBetweenContentXxSmallRaw})`;
-export const gapBetweenContentXSmall = `var(${gapBetweenContentXSmallRaw})`;
+export const gapBetweenContentXSmall = `var(${gapBetweenContentXSmallRaw}, ${spacingVerticalXXS})`;
 export const gapBetweenContentSmall = `var(${gapBetweenContentSmallRaw}, 8px)`;
 export const gapBetweenCtrlDefault = `var(${gapBetweenCtrlDefaultRaw}, 8px)`;
 export const gapBetweenContentMedium = `var(${gapBetweenContentMediumRaw})`;

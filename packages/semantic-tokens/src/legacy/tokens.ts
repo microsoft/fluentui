@@ -675,15 +675,20 @@ export const colorCompoundBrandStrokeHover = 'var(--colorCompoundBrandStrokeHove
  */
 export const colorCompoundBrandStrokePressed = 'var(--colorCompoundBrandStrokePressed)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground4 | `colorNeutralForeground4`} design token.
+ * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalXS | `spacingVerticalXS`} design token.
  * @public
  */
-export const colorNeutralForeground4 = 'var(--colorNeutralForeground4)';
+export const spacingVerticalXS = 'var(--spacingVerticalXS)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalSNudge | `spacingVerticalSNudge`} design token.
  * @public
  */
 export const spacingVerticalSNudge = 'var(--spacingVerticalSNudge)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground4 | `colorNeutralForeground4`} design token.
+ * @public
+ */
+export const colorNeutralForeground4 = 'var(--colorNeutralForeground4)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground3Hover | `colorNeutralForeground3Hover`} design token.
  * @public
@@ -715,11 +720,6 @@ export const colorStatusDangerForeground1 = 'var(--colorStatusDangerForeground1)
  */
 export const spacingVerticalMNudge = 'var(--spacingVerticalMNudge)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalXS | `spacingVerticalXS`} design token.
- * @public
- */
-export const spacingVerticalXS = 'var(--spacingVerticalXS)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke2Contrast | `colorBrandStroke2Contrast`} design token.
  * @public
  */
@@ -739,3 +739,8 @@ export const colorTransparentBackgroundHover = 'var(--colorTransparentBackground
  * @public
  */
 export const colorTransparentBackgroundPressed = 'var(--colorTransparentBackgroundPressed)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteDarkOrangeForeground1 | `colorPaletteDarkOrangeForeground1`} design token.
+ * @public
+ */
+export const colorPaletteDarkOrangeForeground1 = 'var(--colorPaletteDarkOrangeForeground1)';

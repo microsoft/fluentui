@@ -93,6 +93,7 @@ import {
   lineHeightBase100,
   fontSizeBase400,
   fontWeightSemibold,
+  spacingHorizontalXS,
   spacingVerticalXXS,
   strokeWidthThin,
   strokeWidthThicker,
@@ -445,7 +446,7 @@ export const textRampItemHeaderLineHeight = `var(${textRampItemHeaderLineHeightR
 export const textRampItemBodyFontSize = `var(${textRampItemBodyFontSizeRaw}, var(${textGlobalBody3FontSizeRaw}, ${fontSizeBase300}))`;
 export const textRampItemBodyLineHeight = `var(${textRampItemBodyLineHeightRaw}, var(${textGlobalBody3LineHeightRaw}, ${lineHeightBase300}))`;
 export const textRampMetadataFontSize = `var(${textRampMetadataFontSizeRaw}, var(${textGlobalCaption1FontSizeRaw}, ${fontSizeBase200}))`;
-export const textRampMetadataLineHeight = `var(${textRampMetadataLineHeightRaw}, var(${textGlobalCaption1LineHeightRaw}))`;
+export const textRampMetadataLineHeight = `var(${textRampMetadataLineHeightRaw}, var(${textGlobalCaption1LineHeightRaw}, ${lineHeightBase200}))`;
 export const textRampLegalFontSize = `var(${textRampLegalFontSizeRaw}, var(${textGlobalCaption2FontSizeRaw}, ${fontSizeBase200}))`;
 export const textRampLegalLineHeight = `var(${textRampLegalLineHeightRaw}, var(${textGlobalCaption2LineHeightRaw}, ${lineHeightBase200}))`;
 export const textRampSmPageHeaderFontSize = `var(${textRampSmPageHeaderFontSizeRaw}, var(${textGlobalSubtitle1FontSizeRaw}))`;
@@ -491,7 +492,7 @@ export const paddingCtrlTextBottom = `var(${paddingCtrlTextBottomRaw}, var(${pad
 export const paddingCtrlSmTextBottom = `var(${paddingCtrlSmTextBottomRaw}, var(${paddingCtrlSmTextTopRaw}))`;
 export const paddingCtrlLgTextBottom = `var(${paddingCtrlLgTextBottomRaw}, var(${paddingCtrlLgTextTopRaw}))`;
 export const gapBetweenCtrlNested = `var(${gapBetweenCtrlNestedRaw}, var(${paddingCtrlToNestedControlRaw}))`;
-export const gapBetweenTextSmall = `var(${gapBetweenTextSmallRaw}, var(${gapBetweenContentXxSmallRaw}))`;
+export const gapBetweenTextSmall = `var(${gapBetweenTextSmallRaw}, var(${gapBetweenContentXxSmallRaw}, ${spacingHorizontalXS}))`;
 export const gapBetweenCtrlLgNested = `var(${gapBetweenCtrlLgNestedRaw}, var(${paddingCtrlLgToNestedControlRaw}))`;
 export const gapBetweenTextLarge = `var(${gapBetweenTextLargeRaw}, var(${gapBetweenContentXSmallRaw}))`;
 export const gapBetweenCtrlSmNested = `var(${gapBetweenCtrlSmNestedRaw}, var(${paddingCtrlSmToNestedControlRaw}))`;

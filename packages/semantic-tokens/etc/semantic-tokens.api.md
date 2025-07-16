@@ -1711,6 +1711,54 @@ export const ctrlFabShadowRest = "var(--smtc-ctrl-fab-shadow-rest)";
 // @public (undocumented)
 export const ctrlFabShadowRestRaw = "--smtc-ctrl-fab-shadow-rest";
 
+// @public
+export const _ctrlFieldForegroundCtrlNeutralSecondaryRest = "var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground3))";
+
+// @public
+export const _ctrlFieldGapBetweenContentXSmall = "var(--smtc-gap-between-content-x-small, var(--spacingVerticalXS))";
+
+// @public
+export const _ctrlFieldPaddingCtrlLgTextBottom = "var(--smtc-padding-ctrl-lg-text-bottom, var(--smtc-padding-ctrl-lg-text-top, 1px))";
+
+// @public
+export const _ctrlFieldPaddingCtrlLgTextBottomHorizontal = "var(--smtc-padding-ctrl-lg-text-bottom, var(--smtc-padding-ctrl-lg-text-top, 9px))";
+
+// @public
+export const _ctrlFieldPaddingCtrlLgTextTop = "var(--smtc-padding-ctrl-lg-text-top, 1px)";
+
+// @public
+export const _ctrlFieldPaddingCtrlLgTextTopHorizontal = "var(--smtc-padding-ctrl-lg-text-top, 9px)";
+
+// @public
+export const _ctrlFieldPaddingCtrlSmTextBottom = "var(--smtc-padding-ctrl-sm-text-bottom, var(--smtc-padding-ctrl-sm-text-top, var(--spacingVerticalXS)))";
+
+// @public
+export const _ctrlFieldPaddingCtrlSmTextTop = "var(--smtc-padding-ctrl-sm-text-top, var(--spacingVerticalXS))";
+
+// @public
+export const _ctrlFieldPaddingCtrlTextBottom = "var(--smtc-padding-ctrl-text-bottom, var(--smtc-padding-ctrl-text-top, var(--spacingVerticalXXS)))";
+
+// @public
+export const _ctrlFieldPaddingCtrlTextBottomHorizontal = "var(--smtc-padding-ctrl-text-bottom, var(--smtc-padding-ctrl-text-top, var(--spacingVerticalSNudge)))";
+
+// @public
+export const _ctrlFieldPaddingCtrlTextSide = "var(--smtc-padding-ctrl-text-side, var(--spacingHorizontalM))";
+
+// @public
+export const _ctrlFieldPaddingCtrlTextTop = "var(--smtc-padding-ctrl-text-top, var(--spacingVerticalXXS))";
+
+// @public
+export const _ctrlFieldPaddingCtrlTextTopHorizontal = "var(--smtc-padding-ctrl-text-top, var(--spacingVerticalSNudge))";
+
+// @public
+export const _ctrlFieldStatusDangerTintForeground = "var(--smtc-status-danger-tint-foreground, var(--colorPaletteRedForeground1))";
+
+// @public
+export const _ctrlFieldStatusSuccessTintForeground = "var(--smtc-status-success-tint-foreground, var(--colorPaletteGreenForeground1))";
+
+// @public
+export const _ctrlFieldStatusWarningTintForeground = "var(--smtc-status-warning-tint-foreground, var(--colorPaletteDarkOrangeForeground1))";
+
 // @public (undocumented)
 export const ctrlFocusInnerStroke = "var(--smtc-ctrl-focus-inner-stroke, var(--colorStrokeFocus2))";
 
@@ -3545,7 +3593,7 @@ export const gapBetweenContentXLarge = "var(--smtc-gap-between-content-x-large)"
 export const gapBetweenContentXLargeRaw = "--smtc-gap-between-content-x-large";
 
 // @public (undocumented)
-export const gapBetweenContentXSmall = "var(--smtc-gap-between-content-x-small)";
+export const gapBetweenContentXSmall = "var(--smtc-gap-between-content-x-small, var(--spacingVerticalXXS))";
 
 // @public (undocumented)
 export const gapBetweenContentXSmallRaw = "--smtc-gap-between-content-x-small";
@@ -3611,7 +3659,7 @@ export const gapBetweenTextLarge = "var(--smtc-gap-between-text-large, var(--smt
 export const gapBetweenTextLargeRaw = "--smtc-gap-between-text-large";
 
 // @public (undocumented)
-export const gapBetweenTextSmall = "var(--smtc-gap-between-text-small, var(--smtc-gap-between-content-xx-small))";
+export const gapBetweenTextSmall = "var(--smtc-gap-between-text-small, var(--smtc-gap-between-content-xx-small, var(--spacingHorizontalXS)))";
 
 // @public (undocumented)
 export const gapBetweenTextSmallRaw = "--smtc-gap-between-text-small";
@@ -5695,7 +5743,7 @@ export const textRampMetadataFontSize = "var(--smtc-text-ramp-metadata-font-size
 export const textRampMetadataFontSizeRaw = "--smtc-text-ramp-metadata-font-size";
 
 // @public (undocumented)
-export const textRampMetadataLineHeight = "var(--smtc-text-ramp-metadata-line-height, var(--smtc-text-global-caption1-line-height))";
+export const textRampMetadataLineHeight = "var(--smtc-text-ramp-metadata-line-height, var(--smtc-text-global-caption1-line-height, var(--lineHeightBase200)))";
 
 // @public (undocumented)
 export const textRampMetadataLineHeightRaw = "--smtc-text-ramp-metadata-line-height";
