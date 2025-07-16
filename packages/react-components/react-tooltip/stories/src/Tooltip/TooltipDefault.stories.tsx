@@ -5,7 +5,7 @@ import { SlideTextRegular } from '@fluentui/react-icons';
 import type { TooltipProps } from '@fluentui/react-components';
 
 export const Default = (props: Partial<TooltipProps>) => (
-  <Tooltip visible={true} content="Example tooltip" relationship="label" {...props}>
+  <Tooltip content="Example tooltip" relationship="label" {...props}>
     <Button icon={<SlideTextRegular />} size="large" />
   </Tooltip>
 );
