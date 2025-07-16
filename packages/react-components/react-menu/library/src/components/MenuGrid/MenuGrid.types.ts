@@ -1,4 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { TabsterDOMAttribute } from '@fluentui/react-tabster';
+
 import type { MenuGridContextValue } from '../../contexts/menuGridContext';
 
 export type MenuGridSlots = {
@@ -7,7 +9,12 @@ export type MenuGridSlots = {
 
 export type MenuGridProps = ComponentProps<MenuGridSlots> & {};
 
-export type MenuGridState = ComponentState<MenuGridSlots>;
+export type MenuGridState = ComponentState<MenuGridSlots> & {
+  /**
+   * Tabster row attributes applied to the `MenuGridRow` components
+   */
+  tableRowTabsterAttribute: TabsterDOMAttribute | null;
+};
 
 export type MenuGridContextValues = {
   menuGrid: MenuGridContextValue;

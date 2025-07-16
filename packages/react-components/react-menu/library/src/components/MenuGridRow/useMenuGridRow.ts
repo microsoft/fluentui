@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import { useTableCompositeNavigation } from '@fluentui/react-components';
-import type { MenuGridProps, MenuGridState } from './MenuGrid.types';
+
+import { useMenuGridContext_unstable } from '../../contexts/menuGridContext';
+import { MenuGridRowProps, MenuGridRowState } from './MenuGridRow.types';
 
 /**
- * Returns the props and state required to render the component
+ * Given user props, returns state and render function for a MenuGridRow.
  */
-export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLElement>): MenuGridState => {
-  const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useTableCompositeNavigation();
+export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<HTMLElement>): MenuGridRowState {
+  const { tableRowTabsterAttribute } = useMenuGridContext_unstable();
 
   return {
     components: {
@@ -19,13 +20,12 @@ export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLEl
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: ref as React.Ref<HTMLDivElement>,
-        role: 'grid',
-        onKeyDown: onTableKeyDown,
-        ...tableTabsterAttribute,
+        role: 'row',
+        tabIndex: 0,
+        ...tableRowTabsterAttribute,
         ...props,
       }),
       { elementType: 'div' },
     ),
-    tableRowTabsterAttribute,
   };
-};
+}

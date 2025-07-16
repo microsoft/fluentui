@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { makeStyles, tokens } from '@fluentui/react-components';
-import { MenuGrid, MenuGridCell } from '@fluentui/react-menu';
+import { Button, makeStyles, tokens } from '@fluentui/react-components';
+import { MenuGrid, MenuGridCell, MenuGridRow } from '@fluentui/react-menu';
 
 const useMenuListContainerStyles = makeStyles({
   container: {
@@ -20,9 +20,24 @@ export const Default = () => {
   return (
     <div className={styles.container}>
       <MenuGrid>
-        <MenuGridCell>Cut</MenuGridCell>
-        <MenuGridCell>Paste</MenuGridCell>
-        <MenuGridCell>Edit</MenuGridCell>
+        <MenuGridRow>
+          <MenuGridCell>First row</MenuGridCell>
+          <MenuGridCell>
+            <Button>First cell first action</Button>
+          </MenuGridCell>
+          <MenuGridCell>
+            <Button>First row second action</Button>
+          </MenuGridCell>
+        </MenuGridRow>
+        <MenuGridRow>
+          <MenuGridCell>Second row</MenuGridCell>
+          <MenuGridCell>
+            <Button>Second cell first action</Button>
+          </MenuGridCell>
+          <MenuGridCell>
+            <Button>Second row second action</Button>
+          </MenuGridCell>
+        </MenuGridRow>
       </MenuGrid>
     </div>
   );
