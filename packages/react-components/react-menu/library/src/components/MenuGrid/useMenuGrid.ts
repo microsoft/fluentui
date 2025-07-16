@@ -51,7 +51,7 @@ export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLEl
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
-        role: 'menu',
+        role: 'grid',
         ...focusAttributes,
         ...props,
       }),
