@@ -19,6 +19,6 @@ export type MenuGridContextValue = {
   tableRowTabsterAttribute: TabsterDOMAttribute | null;
 };
 
-export const MenuGridProvider = MenuGridContext.Provider;
+export const MenuGridContextProvider = MenuGridContext.Provider;
 
 export const useMenuGridContext_unstable = () => React.useContext(MenuGridContext) ?? menuGridContextDefaultValue;

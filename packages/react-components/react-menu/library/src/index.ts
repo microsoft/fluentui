@@ -3,7 +3,7 @@ export type { MenuContextValue } from './contexts/menuContext';
 export { MenuTriggerContextProvider, useMenuTriggerContext_unstable } from './contexts/menuTriggerContext';
 export { MenuGroupContextProvider, useMenuGroupContext_unstable } from './contexts/menuGroupContext';
 export type { MenuGroupContextValue } from './contexts/menuGroupContext';
-export { MenuGridProvider, useMenuGridContext_unstable } from './contexts/menuGridContext';
+export { MenuGridContextProvider, useMenuGridContext_unstable } from './contexts/menuGridContext';
 export type { MenuGridContextValue } from './contexts/menuGridContext';
 export { MenuGridCellContextProvider, useMenuGridCellContext_unstable } from './contexts/menuGridCellContext';
 export type { MenuGridCellContextValue } from './contexts/menuGridCellContext';
