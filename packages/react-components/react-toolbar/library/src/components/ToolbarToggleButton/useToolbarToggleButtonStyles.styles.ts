@@ -21,7 +21,6 @@ const useBaseStyles = makeStyles({
 export const useToolbarToggleButtonStyles_unstable = (state: ToolbarToggleButtonState): ToolbarToggleButtonState => {
   'use no memo';
 
-  useToggleButtonStyles_unstable(state);
   const toggleButtonStyles = useBaseStyles();
 
   state.root.className = mergeClasses(state.checked && toggleButtonStyles.selected, state.root.className);
@@ -29,6 +28,8 @@ export const useToolbarToggleButtonStyles_unstable = (state: ToolbarToggleButton
   if (state.icon) {
     state.icon.className = mergeClasses(state.checked && toggleButtonStyles.iconSelected, state.icon.className);
   }
+
+  useToggleButtonStyles_unstable(state);
 
   return state;
 };
