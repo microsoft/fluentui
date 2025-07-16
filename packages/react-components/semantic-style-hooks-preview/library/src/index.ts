@@ -73,3 +73,4 @@ export {
   useSemanticBreadcrumbDividerStyles,
   useSemanticBreadcrumbItemStyles,
 } from './component-styles/Breadcrumb';
+export { useSemanticSpinButtonStyles } from './component-styles/SpinButton';

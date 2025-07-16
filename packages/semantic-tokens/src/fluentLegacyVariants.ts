@@ -571,6 +571,46 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     originalToken: 'paddingCtrlHorizontalDefault',
     rawValue: '8px',
   },
+  _ctrlSpinButtonBackgroundDisabled: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'ctrlInputBackgroundDisabled',
+  },
+  _ctrlSpinButtonForegroundOnSubtleHover: {
+    f2Token: 'colorNeutralForeground3Hover',
+    originalToken: 'foregroundCtrlOnSubtleHover',
+  },
+  _ctrlSpinButtonForegroundOnSubtlePressed: {
+    f2Token: 'colorNeutralForeground3Pressed',
+    originalToken: 'foregroundCtrlOnSubtlePressed',
+  },
+  _ctrlSpinButtonNeutralSecondaryRest: {
+    f2Token: 'colorNeutralForeground4',
+    originalToken: 'foregroundCtrlNeutralSecondaryRest',
+  },
+  _ctrlSpinButtonOnSubtleRest: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'foregroundCtrlOnSubtleRest',
+  },
+  _ctrlSpinButtonPaddingHorizontal: {
+    f2Token: 'spacingHorizontalMNudge',
+    originalToken: 'paddingCtrlHorizontalDefault',
+  },
+  _ctrlSpinButtonPaddingSmHorizontal: {
+    originalToken: 'paddingCtrlSmHorizontalDefault',
+    rawValue: '5px',
+  },
+  _ctrlSpinButtonSizeDefault: {
+    originalToken: 'sizeCtrlDefault',
+    rawValue: '32px',
+  },
+  _ctrlSpinButtonSizeIconSecondary: {
+    originalToken: 'sizeCtrlIconSecondary',
+    rawValue: '16px',
+  },
+  _ctrlSpinButtonSizeSmDefault: {
+    originalToken: 'sizeCtrlSmDefault',
+    rawValue: '24px',
+  },
   _ctrlSpinnerBackgroundEmpty: {
     f2Token: 'colorBrandStroke2Contrast',
     originalToken: 'ctrlProgressBackgroundEmpty',
