@@ -1008,6 +1008,7 @@ export type AxisCategoryOrder =
 export interface IGanttChartDataPoint {
   /**
    * Dependent value of the data point, rendered along the x-axis.
+   * `start` and `end` represent the beginning and end of the data point.
    */
   x: {
     start: Date | number;
@@ -1038,14 +1039,12 @@ export interface IGanttChartDataPoint {
   gradient?: [string, string];
 
   /**
-   * Callout data for x axis
-   * This is an optional prop, If haven;t given legend will take
+   * Optional label shown in place of `x` in the callout.
    */
   xAxisCalloutData?: string;
 
   /**
-   * Callout data for y axis
-   * This is an optional prop, If haven't given data will take
+   * Optional label shown in place of `y` in the callout.
    */
   yAxisCalloutData?: string;
 

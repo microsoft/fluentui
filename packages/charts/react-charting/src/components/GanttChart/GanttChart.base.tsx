@@ -59,7 +59,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
   const [xCalloutValue, setXCalloutValue] = React.useState<string>('');
   const [yCalloutValue, setYCalloutValue] = React.useState<string>('');
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
-  const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<IGanttChartDataPoint>();
+  const [calloutDataPoint, setCalloutDataPoint] = React.useState<IGanttChartDataPoint>();
 
   React.useEffect(() => {
     if (!areArraysEqual(prevProps.current.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
@@ -180,24 +180,6 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     margins.current = _margins;
   }, []);
 
-  const _getCustomizedCallout = () => {
-    const _defaultRender = (point?: IGanttChartDataPoint): React.JSX.Element | null => {
-      return point ? (
-        <ChartHoverCard
-          XValue={point.yAxisCalloutData || point.y.toString()}
-          Legend={point.legend}
-          YValue={point.xAxisCalloutData || _getFormattedXValue(point)}
-          color={point.color}
-          culture={props.culture}
-        />
-      ) : null;
-    };
-
-    return props.onRenderCalloutPerDataPoint
-      ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps, _defaultRender)
-      : null;
-  };
-
   const _getFormattedXValue = React.useCallback(
     (point: IGanttChartDataPoint): string => {
       let formattedStartX: string;
@@ -221,6 +203,25 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     },
     [props.culture, useUTC, _dateFormatOptions, _xAxisType],
   );
+
+  const _getCustomizedCallout = React.useCallback(() => {
+    const _defaultRender = (point?: IGanttChartDataPoint): React.JSX.Element | null => {
+      return point ? (
+        <ChartHoverCard
+          XValue={point.yAxisCalloutData || point.y.toString()}
+          Legend={point.legend}
+          YValue={point.xAxisCalloutData || _getFormattedXValue(point)}
+          color={point.color}
+          culture={props.culture}
+        />
+      ) : null;
+    };
+
+    return props.onRenderCalloutPerDataPoint
+      ? props.onRenderCalloutPerDataPoint(calloutDataPoint, _defaultRender)
+      : null;
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [_getFormattedXValue, calloutDataPoint, props.culture, props.onRenderCalloutPerDataPoint]);
 
   const _getAriaLabel = React.useCallback(
     (point: IGanttChartDataPoint): string => {
@@ -271,7 +272,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       setCalloutColor(point.color!);
       setXCalloutValue(point.yAxisCalloutData || point.y.toString());
       setYCalloutValue(point.xAxisCalloutData! || _getFormattedXValue(point));
-      setDataPointCalloutProps(point);
+      setCalloutDataPoint(point);
     },
     [_getFormattedXValue, _legendHighlighted, _noLegendHighlighted],
   );
@@ -288,6 +289,42 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       _showCallout(mouseEvent.currentTarget, point);
     },
     [_showCallout],
+  );
+
+  const _onBarLeave = React.useCallback((): void => {
+    // do nothing
+  }, []);
+
+  const _handleChartMouseLeave = React.useCallback((): void => {
+    _calloutAnchorPoint.current = null;
+    setCalloutTarget(null);
+    setCalloutVisible(false);
+    setCalloutLegend('');
+    setCalloutColor('');
+    setXCalloutValue('');
+    setYCalloutValue('');
+    setCalloutDataPoint(undefined);
+  }, []);
+
+  const _closeCallout = React.useCallback(() => {
+    setCalloutVisible(false);
+  }, []);
+
+  const _getBarHeight = React.useCallback(
+    (adjustedValue: number): number => {
+      let barHeight: number;
+      if (typeof props.barHeight === 'number') {
+        barHeight = props.barHeight;
+      } else {
+        barHeight = adjustedValue;
+      }
+      if (typeof maxBarHeight === 'number') {
+        barHeight = Math.min(barHeight, maxBarHeight);
+      }
+      barHeight = Math.max(barHeight, MIN_BAR_HEIGHT);
+      return barHeight;
+    },
+    [maxBarHeight, props.barHeight],
   );
 
   const _createBars = React.useCallback(
@@ -359,45 +396,42 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     },
     [
       _getAriaLabel,
+      _getBarHeight,
       _legendHighlighted,
       _noLegendHighlighted,
       _onBarFocus,
       _onBarHover,
-      props.enableGradient,
-      props.roundCorners,
+      _onBarLeave,
       _points,
       _yAxisType,
+      props.enableGradient,
+      props.roundCorners,
     ],
   );
 
-  const _onBarLeave = (): void => {
-    // do nothing
-  };
-
-  const _handleChartMouseLeave = React.useCallback((): void => {
-    _calloutAnchorPoint.current = null;
-    setCalloutTarget(null);
-    setCalloutVisible(false);
-    setCalloutLegend('');
-    setCalloutColor('');
-    setXCalloutValue('');
-    setYCalloutValue('');
-    setDataPointCalloutProps(undefined);
+  const _onLegendHover = React.useCallback((legend: string): void => {
+    setHoveredLegend(legend);
   }, []);
 
-  const _closeCallout = () => {
-    setCalloutVisible(false);
-  };
-
-  const _onLegendHover = (legend: string): void => {
-    setHoveredLegend(legend);
-  };
-
-  const _onLegendLeave = (): void => {
+  const _onLegendLeave = React.useCallback((): void => {
     setHoveredLegend('');
-  };
+  }, []);
 
-  const _getLegendData = (): React.JSX.Element => {
+  const _onLegendSelectionChange = React.useCallback(
+    (_selectedLegends: string[], event: React.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend): void => {
+      if (props.legendProps?.canSelectMultipleLegends) {
+        setSelectedLegends(_selectedLegends);
+      } else {
+        setSelectedLegends(_selectedLegends.slice(-1));
+      }
+      if (props.legendProps?.onChange) {
+        props.legendProps.onChange(_selectedLegends, event, currentLegend);
+      }
+    },
+    [props.legendProps],
+  );
+
+  const _getLegendData = React.useCallback((): React.JSX.Element => {
     const actions: ILegend[] = [];
 
     Object.keys(_legendColorMap.current).forEach((legendTitle: string) => {
@@ -429,31 +463,25 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       />
     );
     return legends;
-  };
+  }, [
+    _handleChartMouseLeave,
+    _onLegendHover,
+    _onLegendLeave,
+    _onLegendSelectionChange,
+    props.enabledLegendsWrapLines,
+    props.focusZonePropsForLegendsInHoverCard,
+    props.legendProps,
+    props.legendsOverflowProps,
+    props.legendsOverflowText,
+  ]);
 
-  const _onLegendSelectionChange = (
-    _selectedLegends: string[],
-    event: React.MouseEvent<HTMLButtonElement>,
-    currentLegend?: ILegend,
-  ): void => {
-    if (props.legendProps?.canSelectMultipleLegends) {
-      setSelectedLegends(_selectedLegends);
-    } else {
-      setSelectedLegends(_selectedLegends.slice(-1));
-    }
-    if (props.legendProps?.onChange) {
-      props.legendProps.onChange(_selectedLegends, event, currentLegend);
-    }
-  };
+  const _getChartTitle = React.useCallback((): string => {
+    return (props.chartTitle ? `${props.chartTitle}. ` : '') + `Gantt chart with ${_points.length} data points. `;
+  }, [_points.length, props.chartTitle]);
 
-  const _getChartTitle = (): string => {
-    const { chartTitle } = props;
-    return (chartTitle ? `${chartTitle}. ` : '') + `Gantt chart with ${_points.length} data points. `;
-  };
-
-  const _isChartEmpty = (): boolean => {
-    return !(props.data && props.data.length > 0);
-  };
+  const _isChartEmpty = React.useCallback((): boolean => {
+    return _points.length === 0;
+  }, [_points.length]);
 
   const _getYDomainMargins = React.useCallback(
     (containerHeight: number): IMargins => {
@@ -482,10 +510,21 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
         bottom: margins.current.bottom! + domainMargin,
       };
     },
-    [props.barHeight, _points, _yAxisType, _yAxisPadding],
+    [_getBarHeight, _points, _yAxisPadding, _yAxisType],
   );
 
-  const _getOrderedYAxisLabels = () => {
+  const _mapCategoryToValues = React.useCallback(() => {
+    const categoryToValues: Record<string, number[]> = {};
+    _points.forEach(point => {
+      if (!categoryToValues[point.y]) {
+        categoryToValues[point.y] = [];
+      }
+      categoryToValues[point.y].push(+point.x.end - +point.x.start);
+    });
+    return categoryToValues;
+  }, [_points]);
+
+  const _getOrderedYAxisLabels = React.useCallback(() => {
     if (_yAxisType !== YAxisType.StringAxis) {
       return [];
     }
@@ -495,35 +534,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       return Object.keys(categoryToValues).reverse();
     }
     return sortAxisCategories(categoryToValues, yAxisCategoryOrder);
-  };
-
-  const _mapCategoryToValues = () => {
-    const categoryToValues: Record<string, number[]> = {};
-    _points.forEach(point => {
-      if (!categoryToValues[point.y]) {
-        categoryToValues[point.y] = [];
-      }
-      categoryToValues[point.y].push(+point.x.end - +point.x.start);
-    });
-    return categoryToValues;
-  };
-
-  const _getBarHeight = React.useCallback(
-    (adjustedValue: number): number => {
-      let barHeight: number;
-      if (typeof props.barHeight === 'number') {
-        barHeight = props.barHeight;
-      } else {
-        barHeight = adjustedValue;
-      }
-      if (typeof maxBarHeight === 'number') {
-        barHeight = Math.min(barHeight, maxBarHeight);
-      }
-      barHeight = Math.max(barHeight, MIN_BAR_HEIGHT);
-      return barHeight;
-    },
-    [props.barHeight, maxBarHeight],
-  );
+  }, [_mapCategoryToValues, _yAxisType, yAxisCategoryOrder]);
 
   if (!_isChartEmpty()) {
     _barHeight.current = _getBarHeight(DEFAULT_BAR_HEIGHT);
@@ -565,7 +576,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
         getDomainNRangeValues={_getDomainNRangeValues}
         createStringYAxis={createStringYAxisForHorizontalBarChartWithAxis}
         getMinMaxOfYAxis={findHBCWANumericMinMaxOfY}
-        focusZoneDirection={FocusZoneDirection.vertical}
+        focusZoneDirection={FocusZoneDirection.bidirectional}
         customizedCallout={_getCustomizedCallout()}
         getmargins={_getMargins}
         getYDomainMargins={_getYDomainMargins}

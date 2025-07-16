@@ -12,65 +12,70 @@ import {
  */
 export interface IGanttChartProps extends ICartesianChartProps {
   /**
-   * Data to render in the chart.
+   * An array of data points to be rendered in the chart.
    */
   data?: IGanttChartDataPoint[];
 
   /**
-   * Define a custom callout renderer for a data point.
+   * Callback function to render a custom callout for each data point.
    */
   onRenderCalloutPerDataPoint?: IRenderFunction<IGanttChartDataPoint>;
 
   /**
-   * Width of each bar in the chart.
+   * Height of each bar, in pixels.
    */
   barHeight?: number;
 
   /**
-   * chart title for the chart
+   * Title of the chart.
    */
   chartTitle?: string;
 
   /**
-   * Call to provide customized styling that will layer on top of the variant rules.
+   * Custom styles that are applied on top of the default chart styles.
    */
   styles?: IStyleFunctionOrObject<IGanttChartStyleProps, IGanttChartStyles>;
 
   /**
-   * The prop used to define the culture to localized the numbers
+   * Locale identifier string used to format numbers and dates according to the specified culture.
+   * Example: 'en-US', 'fr-FR'.
    */
   culture?: string;
 
   /**
-   * it's padding between bar's or lines in the graph
+   * Padding between bars as a fraction of the [step](https://d3js.org/d3-scale/band#band_step).
+   * Takes a number in the range [0, 1].
+   * @default 1/2
    */
   yAxisPadding?: number;
 
   /**
-   *@default false
-   *Used for to elipse y axis labes and show tooltip on x axis labels
+   * If true, truncates y-axis tick labels longer than `noOfCharsToTruncate` with ellipses
+   * and displays them in a tooltip on hover.
+   * @default false
    */
   showYAxisLablesTooltip?: boolean;
 
   /**
-   *@default false
-   *Used for showing complete y axis lables   */
+   * If true, renders full y-axis tick labels without truncation.
+   * @default false
+   */
   showYAxisLables?: boolean;
 
   /**
+   * If true, enables gradient fills for the bars.
    * @default false
-   * The prop used to enable gradient fill color for the chart.
    */
   enableGradient?: boolean;
 
   /**
+   * If true, applies rounded corners to the bars.
    * @default false
-   * The prop used to enable rounded corners for the bars.
    */
   roundCorners?: boolean;
 
   /**
-   * Maximum height of a bar, in pixels.
+   * Maximum height of each bar, in pixels.
    * @default 24
    */
   maxBarHeight?: number;

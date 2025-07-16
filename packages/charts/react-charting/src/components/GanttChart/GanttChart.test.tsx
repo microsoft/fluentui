@@ -72,16 +72,6 @@ describe('GanttChart rendering and behavior tests', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should display tooltip on truncated y-axis tick labels hover when showYAxisLablesTooltip is true', async () => {
-    render(<GanttChart data={ganttDataWithLongY} showYAxisLablesTooltip={true} />);
-    expect(screen.queryByText('Site Preparation')).toBeNull();
-
-    await act(() => {
-      fireEvent.mouseOver(screen.getByText('Site...'));
-    });
-    expect(screen.queryByText('Site Preparation')).not.toBeNull();
-  });
-
   it('should render bars with gradient fill when enableGradient is true', () => {
     const { container } = render(<GanttChart data={ganttData} enableGradient={true} />);
     expect(container).toMatchSnapshot();
@@ -123,17 +113,36 @@ describe('GanttChart rendering and behavior tests', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render bars with the specified height when barHeight is set', () => {
-    const { container } = render(<GanttChart data={ganttData} barHeight={50} />);
+  it('should render bars with the specified barHeight when it is within the maxBarHeight', () => {
+    const { container } = render(<GanttChart data={ganttData} barHeight={10} maxBarHeight={30} />);
     const bars = container.querySelectorAll('rect');
     expect(bars).toHaveLength(8);
     bars.forEach(bar => {
-      expect(bar).toHaveAttribute('height', '24');
+      expect(bar).toHaveAttribute('height', '10');
+    });
+  });
+
+  it('should cap the bar height to maxBarHeight when barHeight exceeds it', () => {
+    const { container } = render(<GanttChart data={ganttData} barHeight={50} maxBarHeight={30} />);
+    const bars = container.querySelectorAll('rect');
+    expect(bars).toHaveLength(8);
+    bars.forEach(bar => {
+      expect(bar).toHaveAttribute('height', '30');
     });
   });
 });
 
 describe('GanttChart interaction and accessibility tests', () => {
+  it('should display full y-axis tick label on hover when showYAxisLablesTooltip is true', async () => {
+    render(<GanttChart data={ganttDataWithLongY} showYAxisLablesTooltip={true} />);
+    expect(screen.queryByText('Site Preparation')).toBeNull();
+
+    await act(() => {
+      fireEvent.mouseOver(screen.getByText('Site...'));
+    });
+    expect(screen.queryByText('Site Preparation')).not.toBeNull();
+  });
+
   it(`should display callout on bar hover and hide it on mouse leave from the chart`, async () => {
     const { container } = render(<GanttChart data={ganttData} calloutProps={{ doNotLayer: true }} />);
     const bar = container.querySelector('rect')!;
@@ -207,7 +216,7 @@ describe('GanttChart interaction and accessibility tests', () => {
     }
   });
 
-  it(`should display callout on hover over highlighted bar and hide on hover over unhighlighted bar`, async () => {
+  it(`should display callouts only for highlighted bars`, async () => {
     const { container } = render(<GanttChart data={ganttData} calloutProps={{ doNotLayer: true }} />);
     const legendTitle = 'Complete';
     await act(() => {
