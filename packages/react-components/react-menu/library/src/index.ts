@@ -5,6 +5,8 @@ export { MenuGroupContextProvider, useMenuGroupContext_unstable } from './contex
 export type { MenuGroupContextValue } from './contexts/menuGroupContext';
 export { MenuGridProvider, useMenuGridContext_unstable } from './contexts/menuGridContext';
 export type { MenuGridContextValue } from './contexts/menuGridContext';
+export { MenuGridCellContextProvider, useMenuGridCellContext_unstable } from './contexts/menuGridCellContext';
+export type { MenuGridCellContextValue } from './contexts/menuGridCellContext';
 export { MenuListProvider, useMenuListContext_unstable } from './contexts/menuListContext';
 export type { MenuListContextValue } from './contexts/menuListContext';
 
@@ -79,6 +81,20 @@ export {
   useMenuGrid_unstable,
 } from './MenuGrid';
 export type { MenuGridContextValues, MenuGridProps, MenuGridSlots, MenuGridState } from './MenuGrid';
+export {
+  MenuGridCell,
+  menuGridCellClassNames,
+  renderMenuGridCell_unstable,
+  useMenuGridCellContextValues_unstable,
+  useMenuGridCellStyles_unstable,
+  useMenuGridCell_unstable,
+} from './MenuGridCell';
+export type {
+  MenuGridCellContextValues,
+  MenuGridCellProps,
+  MenuGridCellSlots,
+  MenuGridCellState,
+} from './MenuGridCell';
 
 export {
   MenuList,

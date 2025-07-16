@@ -16,7 +16,7 @@ import type { MenuGridProps, MenuGridState } from './MenuGrid.types';
 export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLElement>): MenuGridState => {
   const { targetDocument } = useFluent();
   const hasMenuContext = useHasParentContext(MenuContext);
-  const focusAttributes = useArrowNavigationGroup({ circular: true });
+  const focusAttributes = useArrowNavigationGroup({ axis: 'grid' });
 
   const innerRef = React.useRef<HTMLElement>(null);
 
