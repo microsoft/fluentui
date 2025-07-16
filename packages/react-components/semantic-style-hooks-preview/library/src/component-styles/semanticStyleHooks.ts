@@ -18,6 +18,7 @@ import {
   useSemanticDrawerHeaderStyles,
   useSemanticOverlayDrawerSurfaceStyles,
 } from './Drawer';
+import { useSemanticFieldStyles } from './Field';
 import { useSemanticLabelStyles } from './Label';
 import { useSemanticLinkStyles } from './Link';
 import { useSemanticProgressBarStyles } from './ProgressBar/useSemanticProgressBarStyles.styles';
@@ -91,6 +92,8 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useDrawerFooterStyles_unstable: useSemanticDrawerFooterStyles,
   useDrawerHeaderStyles_unstable: useSemanticDrawerHeaderStyles,
   useOverlayDrawerSurfaceStyles_unstable: useSemanticOverlayDrawerSurfaceStyles,
+  //Field styles
+  useFieldStyles_unstable: useSemanticFieldStyles,
   // Label styles
   useLabelStyles_unstable: useSemanticLabelStyles,
   // Link styles
