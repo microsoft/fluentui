@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Fri, 11 Jul 2025 15:59:20 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Jul 2025 13:52:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.8)
+
+Wed, 16 Jul 2025 13:52:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.7..@fluentui/react-charts_v9.1.8)
+
+### Patches
+
+- hbc focus ring fix ([PR #34832](https://github.com/microsoft/fluentui/pull/34832) by anushgupta@microsoft.com)
+- refactor utilities to reduce monosize of components ([PR #34823](https://github.com/microsoft/fluentui/pull/34823) by anushgupta@microsoft.com)
 
 ## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.7)
 

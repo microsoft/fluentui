@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: suppress deprecation errors",
-  "packageName": "@fluentui/react-motion",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}

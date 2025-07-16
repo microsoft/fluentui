@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: properly apply overrides in ToolbarRadioButton, ToolbarToggleButton & ToolbarButton",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
