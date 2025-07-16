@@ -154,6 +154,19 @@ export const fluentOverrides: FluentOverrides = {
   ctrlSliderThumbSizePressed: { rawValue: '20px' },
   ctrlSliderThumbSizeRest: { rawValue: '20px' },
   ctrlSpinnerStrokeWidth: { f2Token: 'strokeWidthThicker' },
+  ctrlTooltipBackground: {
+    f2Token: 'colorNeutralBackground1',
+  },
+  ctrlTooltipCorner: {
+    f2Token: 'borderRadiusMedium',
+  },
+  ctrlTooltipForeground: {
+    f2Token: 'colorNeutralForeground1',
+  },
+  ctrlTooltipShadow: {
+    rawValue:
+      `drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) ` + `drop-shadow(0 4px 8px var(--colorNeutralShadowKey))`,
+  },
   foregroundContentBrandPrimary: { f2Token: 'colorBrandForeground1' },
   foregroundContentNeutralPrimary: { f2Token: 'colorNeutralForeground1' },
   foregroundContentNeutralSecondary: { f2Token: 'colorNeutralForeground2' },
@@ -335,8 +348,8 @@ export const fluentOverrides: FluentOverrides = {
   textRampLgItemBodyLineHeight: { f2Token: 'lineHeightBase400' },
   textRampLgLegalFontSize: { f2Token: 'fontSizeBase200' }, // React-badge uses the same as medium font size for large
   textRampLgLegalLineHeight: { f2Token: 'lineHeightBase200' }, // React-badge uses the same as medium line height for large
-  textRampMetadataFontSize: { f2Token: 'fontSizeBase200' }, // should be fontSizeBase100 per Menu design
   textRampMetadataLineHeight: { f2Token: 'lineHeightBase200' },
+  textRampMetadataFontSize: { f2Token: 'fontSizeBase200' }, // should be fontSizeBase100 per Menu design
   textRampReadingBodyFontSize: { f2Token: 'fontSizeBase300' },
   textRampReadingBodyLineHeight: { f2Token: 'lineHeightBase300' },
   textRampSectionHeaderFontSize: { f2Token: 'fontSizeBase500' },

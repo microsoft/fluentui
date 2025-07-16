@@ -713,6 +713,22 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'paddingCtrlHorizontalDefault',
   },
+  _ctrlTooltipPaddingBottom: {
+    originalToken: 'paddingCtrlTextBottom',
+    rawValue: '6px',
+  },
+  _ctrlTooltipPaddingLeft: {
+    originalToken: 'paddingCtrlHorizontalDefault',
+    rawValue: '11px ',
+  },
+  _ctrlTooltipPaddingRight: {
+    originalToken: 'paddingCtrlHorizontalDefault',
+    rawValue: '11px',
+  },
+  _ctrlTooltipPaddingTop: {
+    originalToken: 'paddingCtrlTextTop',
+    rawValue: '4px',
+  },
   _ctrlTreeGapInsideDefault: {
     f2Token: 'spacingVerticalXXS',
     originalToken: 'gapInsideCtrlDefault',
