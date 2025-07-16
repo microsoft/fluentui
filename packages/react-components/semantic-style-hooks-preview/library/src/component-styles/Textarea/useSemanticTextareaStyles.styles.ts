@@ -84,7 +84,7 @@ const useRootStyles = makeStyles({
     },
     ':focus-within:active::after': {
       // This is if the user clicks the field again while it's already focused
-      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeSelected,
+      borderBottomColor: semanticTokens._ctrlInputBottomLineStrokeBrandPressed,
     },
     ':focus-within': {
       outlineWidth: semanticTokens.ctrlFocusOuterStrokeWidth,

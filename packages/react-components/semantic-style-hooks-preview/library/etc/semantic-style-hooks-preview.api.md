@@ -28,6 +28,7 @@ import { FlatTreeState } from '@fluentui/react-tree';
 import { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
 import { ImageState } from '@fluentui/react-image';
 import { InlineDrawerState } from '@fluentui/react-drawer';
+import { InputState } from '@fluentui/react-input';
 import { LabelState } from '@fluentui/react-label';
 import { LinkState } from '@fluentui/react-link';
 import { ListItemState } from '@fluentui/react-list';
@@ -133,6 +134,9 @@ export const useSemanticImageStyles: (_state: unknown) => ImageState;
 
 // @public
 export const useSemanticInlineDrawerStyles: (_state: unknown) => InlineDrawerState;
+
+// @public
+export const useSemanticInputStyles: (_state: unknown) => InputState;
 
 // @public
 export const useSemanticLabelStyles: (_state: unknown) => LabelState;
