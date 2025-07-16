@@ -186,8 +186,14 @@ const useCircularAppearanceStyles = makeStyles({
       color: 'inherit',
     },
   },
+  small: {
+    paddingBlock: `calc(${tokens.spacingVerticalXXS} - 1px)`,
+  },
   medium: {
-    paddingBlock: `${tokens.spacingVerticalSNudge}`,
+    paddingBlock: `calc(${tokens.spacingVerticalSNudge} - 1px)`,
+  },
+  large: {
+    paddingBlock: `calc(${tokens.spacingVerticalS} - 1px)`,
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
@@ -680,7 +686,9 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
     circularStyles.base,
     focusStyles.circular,
     // sizes
+    size === 'small' && circularStyles.small,
     size === 'medium' && circularStyles.medium,
+    size === 'large' && circularStyles.large,
     // subtle-circular appearance
     isSubtleCircular && circularStyles.subtle,
     selected && isSubtleCircular && circularStyles.subtleSelected,
