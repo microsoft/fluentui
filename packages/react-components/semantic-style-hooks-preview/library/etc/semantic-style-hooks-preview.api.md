@@ -23,6 +23,7 @@ import { DividerState } from '@fluentui/react-divider';
 import type { DrawerBodyState } from '@fluentui/react-drawer';
 import { DrawerFooterState } from '@fluentui/react-drawer';
 import { DrawerHeaderState } from '@fluentui/react-drawer';
+import { FieldState } from '@fluentui/react-field';
 import { FlatTreeState } from '@fluentui/react-tree';
 import { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
 import { ImageState } from '@fluentui/react-image';
@@ -119,6 +120,9 @@ export const useSemanticDrawerFooterStyles: (_state: unknown) => DrawerFooterSta
 
 // @public
 export const useSemanticDrawerHeaderStyles: (_state: unknown) => DrawerHeaderState;
+
+// @public
+export const useSemanticFieldStyles: (_state: unknown) => FieldState;
 
 // @public (undocumented)
 export const useSemanticFlatTreeStyles: (_state: unknown) => FlatTreeState;

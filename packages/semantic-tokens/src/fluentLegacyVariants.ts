@@ -259,6 +259,70 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlHintDefault',
   },
+  _ctrlFieldForegroundCtrlNeutralSecondaryRest: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'foregroundCtrlNeutralSecondaryRest',
+  },
+  _ctrlFieldGapBetweenContentXSmall: {
+    f2Token: 'spacingVerticalXS',
+    originalToken: 'gapBetweenContentXSmall',
+  },
+  _ctrlFieldPaddingCtrlLgTextBottom: {
+    originalToken: 'paddingCtrlLgTextBottom',
+    rawValue: '1px',
+  },
+  _ctrlFieldPaddingCtrlLgTextBottomHorizontal: {
+    originalToken: 'paddingCtrlLgTextBottom',
+    rawValue: '9px',
+  },
+  _ctrlFieldPaddingCtrlLgTextTop: {
+    originalToken: 'paddingCtrlLgTextTop',
+    rawValue: '1px',
+  },
+  _ctrlFieldPaddingCtrlLgTextTopHorizontal: {
+    originalToken: 'paddingCtrlLgTextTop',
+    rawValue: '9px',
+  },
+  _ctrlFieldPaddingCtrlSmTextBottom: {
+    f2Token: 'spacingVerticalXS',
+    originalToken: 'paddingCtrlSmTextBottom',
+  },
+  _ctrlFieldPaddingCtrlSmTextTop: {
+    f2Token: 'spacingVerticalXS',
+    originalToken: 'paddingCtrlSmTextTop',
+  },
+  _ctrlFieldPaddingCtrlTextBottom: {
+    f2Token: 'spacingVerticalXXS',
+    originalToken: 'paddingCtrlTextBottom',
+  },
+  _ctrlFieldPaddingCtrlTextBottomHorizontal: {
+    f2Token: 'spacingVerticalSNudge',
+    originalToken: 'paddingCtrlTextBottom',
+  },
+  _ctrlFieldPaddingCtrlTextSide: {
+    f2Token: 'spacingHorizontalM',
+    originalToken: 'paddingCtrlTextSide',
+  },
+  _ctrlFieldPaddingCtrlTextTop: {
+    f2Token: 'spacingVerticalXXS',
+    originalToken: 'paddingCtrlTextTop',
+  },
+  _ctrlFieldPaddingCtrlTextTopHorizontal: {
+    f2Token: 'spacingVerticalSNudge',
+    originalToken: 'paddingCtrlTextTop',
+  },
+  _ctrlFieldStatusDangerTintForeground: {
+    f2Token: 'colorPaletteRedForeground1',
+    originalToken: 'statusDangerTintForeground',
+  },
+  _ctrlFieldStatusSuccessTintForeground: {
+    f2Token: 'colorPaletteGreenForeground1',
+    originalToken: 'statusSuccessTintForeground',
+  },
+  _ctrlFieldStatusWarningTintForeground: {
+    f2Token: 'colorPaletteDarkOrangeForeground1',
+    originalToken: 'statusWarningTintForeground',
+  },
   _ctrlFocusOuterStrokeInteractive: {
     f2Token: 'colorTransparentStrokeInteractive',
     originalToken: 'ctrlFocusOuterStroke',
