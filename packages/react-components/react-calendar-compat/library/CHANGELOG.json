@@ -2,6 +2,21 @@
   "name": "@fluentui/react-calendar-compat",
   "entries": [
     {
+      "date": "Wed, 16 Jul 2025 13:52:46 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.3.3",
+      "version": "0.3.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 10:02:50 GMT",
       "tag": "@fluentui/react-calendar-compat_v0.3.3",
       "version": "0.3.3",

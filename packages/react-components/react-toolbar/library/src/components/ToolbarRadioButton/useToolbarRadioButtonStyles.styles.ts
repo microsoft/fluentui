@@ -21,14 +21,15 @@ const useBaseStyles = makeStyles({
 export const useToolbarRadioButtonStyles_unstable = (state: ToolbarRadioButtonState): ToolbarRadioButtonState => {
   'use no memo';
 
-  useToggleButtonStyles_unstable(state);
   const toggleButtonStyles = useBaseStyles();
 
-  state.root.className = mergeClasses(state.root.className, state.checked && toggleButtonStyles.selected);
+  state.root.className = mergeClasses(state.checked && toggleButtonStyles.selected, state.root.className);
 
   if (state.icon) {
-    state.icon.className = mergeClasses(state.icon.className, state.checked && toggleButtonStyles.iconSelected);
+    state.icon.className = mergeClasses(state.checked && toggleButtonStyles.iconSelected, state.icon.className);
   }
+
+  useToggleButtonStyles_unstable(state);
 
   return state;
 };

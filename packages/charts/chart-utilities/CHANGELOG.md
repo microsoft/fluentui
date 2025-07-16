@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Mon, 14 Jul 2025 07:21:14 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Jul 2025 07:20:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.23](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.23)
+
+Wed, 16 Jul 2025 07:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.22..@fluentui/chart-utilities_v1.1.23)
+
+### Patches
+
+- fix(chart-utilities): Decode data in provided shape if present in schema ([PR #34826](https://github.com/microsoft/fluentui/pull/34826) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.22](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.22)
 

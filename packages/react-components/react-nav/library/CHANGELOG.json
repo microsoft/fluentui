@@ -2,6 +2,21 @@
   "name": "@fluentui/react-nav",
   "entries": [
     {
+      "date": "Wed, 16 Jul 2025 13:52:50 GMT",
+      "tag": "@fluentui/react-nav_v9.2.4",
+      "version": "9.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-drawer to v9.8.8",
+            "commit": "f4286818c03a3de299eae4bda26f19b608adb1a6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Jul 2025 15:59:24 GMT",
       "tag": "@fluentui/react-nav_v9.2.3",
       "version": "9.2.3",

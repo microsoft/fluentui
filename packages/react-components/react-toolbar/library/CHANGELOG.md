@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Fri, 11 Jul 2025 15:59:24 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Jul 2025 13:52:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.5.8)
+
+Wed, 16 Jul 2025 13:52:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.5.7..@fluentui/react-toolbar_v9.5.8)
+
+### Patches
+
+- fix: properly apply overrides in ToolbarRadioButton, ToolbarToggleButton & ToolbarButton ([PR #34849](https://github.com/microsoft/fluentui/pull/34849) by olfedias@microsoft.com)
 
 ## [9.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.5.7)
 

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Wed, 16 Jul 2025 13:52:47 GMT",
+      "tag": "@fluentui/react-charts_v9.1.8",
+      "version": "9.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6813c36fb6ef92d19b825c28fe7117208c33b443",
+            "comment": "hbc focus ring fix"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "183965115932f82ccc19f5368be4182bfd2e9bc7",
+            "comment": "refactor utilities to reduce monosize of components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Jul 2025 15:59:20 GMT",
       "tag": "@fluentui/react-charts_v9.1.7",
       "version": "9.1.7",

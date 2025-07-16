@@ -2,6 +2,21 @@
   "name": "@fluentui/react-drawer",
   "entries": [
     {
+      "date": "Wed, 16 Jul 2025 13:52:50 GMT",
+      "tag": "@fluentui/react-drawer_v9.8.8",
+      "version": "9.8.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.13.8",
+            "commit": "f4286818c03a3de299eae4bda26f19b608adb1a6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Jul 2025 15:59:24 GMT",
       "tag": "@fluentui/react-drawer_v9.8.7",
       "version": "9.8.7",

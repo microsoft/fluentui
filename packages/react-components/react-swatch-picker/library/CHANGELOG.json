@@ -2,6 +2,21 @@
   "name": "@fluentui/react-swatch-picker",
   "entries": [
     {
+      "date": "Wed, 16 Jul 2025 13:52:49 GMT",
+      "tag": "@fluentui/react-swatch-picker_v9.3.7",
+      "version": "9.3.7",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Jul 2025 15:59:24 GMT",
       "tag": "@fluentui/react-swatch-picker_v9.3.7",
       "version": "9.3.7",

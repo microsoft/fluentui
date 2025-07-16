@@ -2,6 +2,21 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Wed, 16 Jul 2025 13:52:49 GMT",
+      "tag": "@fluentui/react-toolbar_v9.5.8",
+      "version": "9.5.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "f4286818c03a3de299eae4bda26f19b608adb1a6",
+            "comment": "fix: properly apply overrides in ToolbarRadioButton, ToolbarToggleButton & ToolbarButton"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Jul 2025 15:59:24 GMT",
       "tag": "@fluentui/react-toolbar_v9.5.7",
       "version": "9.5.7",
