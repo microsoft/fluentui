@@ -61,8 +61,6 @@ export const Opacity = () => {
 
       <div className={classes.container}>
         <div className={classes.example}>
-          {/* <h3>With Opacity Animation</h3> */}
-          {/* <p>Blur + Fade (default)</p> */}
           <Button onClick={() => setWithOpacityVisible(prev => !prev)}>{withOpacityVisible ? 'Hide' : 'Show'}</Button>
           <Blur visible={withOpacityVisible} animateOpacity={true}>
             <div className={classes.card}>
@@ -77,8 +75,6 @@ export const Opacity = () => {
         </div>
 
         <div className={classes.example}>
-          {/* <h3>Blur Only</h3> */}
-          {/* <p>No opacity animation</p> */}
           <Button onClick={() => setWithoutOpacityVisible(prev => !prev)}>
             {withoutOpacityVisible ? 'Hide' : 'Show'}
           </Button>

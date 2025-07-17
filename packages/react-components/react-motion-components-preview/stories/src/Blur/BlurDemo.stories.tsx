@@ -47,19 +47,19 @@ const useClasses = makeStyles({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    backgroundColor: tokens.colorBackgroundOverlay,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'white',
+    color: tokens.colorNeutralForegroundInverted,
     fontSize: tokens.fontSizeBase300,
     fontWeight: tokens.fontWeightSemibold,
   },
   overlayButton: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: tokens.colorSubtleBackgroundInverted,
     padding: '8px 16px',
     borderRadius: tokens.borderRadiusMedium,
-    border: '1px solid rgba(255, 255, 255, 0.2)',
+    border: `1px solid ${tokens.colorNeutralStrokeAlpha2}`,
   },
 });
 
