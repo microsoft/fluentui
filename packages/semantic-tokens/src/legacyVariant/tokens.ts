@@ -1431,6 +1431,34 @@ export const _ctrlTabSmGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${spa
  */
 export const _ctrlTabSmPaddingHorizontalDefault = `var(${paddingCtrlHorizontalDefaultRaw}, ${spacingHorizontalSNudge})`;
 /**
+ * This is a legacy variant for paddingCtrlTextBottom to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextBottom instead.
+ */
+export const _ctrlTooltipPaddingBottom = `var(${paddingCtrlTextBottomRaw}, var(${paddingCtrlTextTopRaw}, 6px))`;
+/**
+ * This is a legacy variant for paddingCtrlHorizontalDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlHorizontalDefault instead.
+ */
+export const _ctrlTooltipPaddingLeft = `var(${paddingCtrlHorizontalDefaultRaw}, 11px )`;
+/**
+ * This is a legacy variant for paddingCtrlHorizontalDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlHorizontalDefault instead.
+ */
+export const _ctrlTooltipPaddingRight = `var(${paddingCtrlHorizontalDefaultRaw}, 11px)`;
+/**
+ * This is a legacy variant for paddingCtrlTextTop to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextTop instead.
+ */
+export const _ctrlTooltipPaddingTop = `var(${paddingCtrlTextTopRaw}, 4px)`;
+/**
  * This is a legacy variant for gapInsideCtrlDefault to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations

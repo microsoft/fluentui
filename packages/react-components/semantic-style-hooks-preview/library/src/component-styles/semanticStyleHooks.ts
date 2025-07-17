@@ -79,6 +79,7 @@ import {
   useSemanticToolbarRadioButtonStyles,
   useSemanticToolbarToggleButtonStyles,
 } from './Toolbar';
+import { useSemanticTooltipStyles } from './Tooltip';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -142,9 +143,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useMessageBarBodyStyles_unstable: useSemanticMessageBarBodyStyles,
   useMessageBarActionsStyles_unstable: useSemanticMessageBarActionsStyles,
   useMessageBarTitleStyles_unstable: useSemanticMessageBarTitleStyles,
-  // Tabs styles
-  useTabStyles_unstable: useSemanticTabStyles,
-  useTabListStyles_unstable: useSemanticTabListStyles,
   // Slider styles
   useSliderStyles_unstable: useSemanticSliderStyles,
   // Menu styles
@@ -176,4 +174,9 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useToolbarGroupStyles_unstable: useSemanticToolbarGroupStyles,
   useToolbarRadioButtonStyles_unstable: useSemanticToolbarRadioButtonStyles,
   useToolbarToggleButtonStyles_unstable: useSemanticToolbarToggleButtonStyles,
+  // Tabs styles
+  useTabStyles_unstable: useSemanticTabStyles,
+  useTabListStyles_unstable: useSemanticTabListStyles,
+  //Tooltip styles
+  useTooltipStyles_unstable: useSemanticTooltipStyles,
 };
