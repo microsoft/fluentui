@@ -59,6 +59,11 @@ import { TabState } from '@fluentui/react-tabs';
 import { TextareaState } from '@fluentui/react-textarea';
 import { TextState } from '@fluentui/react-text';
 import { ToggleButtonState } from '@fluentui/react-button';
+import { ToolbarDividerState } from '@fluentui/react-toolbar';
+import { ToolbarGroupState } from '@fluentui/react-toolbar';
+import { ToolbarRadioButtonState } from '@fluentui/react-toolbar';
+import { ToolbarState } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonState } from '@fluentui/react-toolbar';
 import { TreeItemLayoutState } from '@fluentui/react-tree';
 import { TreeItemState } from '@fluentui/react-tree';
 import { TreeState } from '@fluentui/react-tree';
@@ -239,6 +244,24 @@ export const useSemanticTextStyles: (_state: unknown) => TextState;
 
 // @public (undocumented)
 export const useSemanticToggleButtonStyles: (_state: unknown) => ToggleButtonState;
+
+// @public
+export const useSemanticToolbarButtonStyles: (_state: unknown) => void;
+
+// @public
+export const useSemanticToolbarDividerStyles: (_state: unknown) => ToolbarDividerState;
+
+// @public
+export const useSemanticToolbarGroupStyles: (_state: unknown) => ToolbarGroupState;
+
+// @public
+export const useSemanticToolbarRadioButtonStyles: (_state: unknown) => ToolbarRadioButtonState;
+
+// @public
+export const useSemanticToolbarStyles: (_state: unknown) => ToolbarState;
+
+// @public
+export const useSemanticToolbarToggleButtonStyles: (_state: unknown) => ToolbarToggleButtonState;
 
 // @public
 export const useSemanticTreeItemLayoutStyles: (_state: unknown) => TreeItemLayoutState;

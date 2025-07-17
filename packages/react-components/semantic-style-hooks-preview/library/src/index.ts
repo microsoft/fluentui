@@ -75,3 +75,11 @@ export {
 } from './component-styles/Breadcrumb';
 export { useSemanticSpinButtonStyles } from './component-styles/SpinButton';
 export { useSemanticInputStyles } from './component-styles/Input';
+export {
+  useSemanticToolbarStyles,
+  useSemanticToolbarButtonStyles,
+  useSemanticToolbarDividerStyles,
+  useSemanticToolbarGroupStyles,
+  useSemanticToolbarRadioButtonStyles,
+  useSemanticToolbarToggleButtonStyles,
+} from './component-styles/Toolbar';
