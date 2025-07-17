@@ -325,6 +325,10 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorTransparentStrokeInteractive',
     originalToken: 'ctrlFocusOuterStroke',
   },
+  _ctrlInfoLabelForegroundColorSelected: {
+    f2Token: 'colorNeutralForeground2BrandSelected',
+    originalToken: 'foregroundCtrlActiveBrandRest',
+  },
   _ctrlInputBackgroundRestDarker: {
     f2Token: 'colorNeutralBackground3',
     originalToken: 'ctrlInputBackgroundRest',
