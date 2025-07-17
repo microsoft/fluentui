@@ -13,6 +13,7 @@ export { Underline } from './TextUnderline.stories';
 export { StrikeThrough } from './TextStrikeThrough.stories';
 export { Truncate } from './TextTruncate.stories';
 export { Alignment } from './TextAlignment.stories';
+export { Provider as TextProvider } from './TextProvider.stories';
 
 export default {
   title: 'Components/Text',
