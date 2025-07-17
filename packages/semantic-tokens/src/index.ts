@@ -1860,6 +1860,7 @@ export {
   _ctrlFieldStatusSuccessTintForeground,
   _ctrlFieldStatusWarningTintForeground,
   _ctrlFocusOuterStrokeInteractive,
+  _ctrlInfoLabelForegroundColorSelected,
   _ctrlInputBackgroundRestDarker,
   _ctrlInputBackgroundRestLighter,
   _ctrlInputBottomLineStrokeBrandPressed,

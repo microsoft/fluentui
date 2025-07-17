@@ -83,3 +83,4 @@ export {
   useSemanticToolbarRadioButtonStyles,
   useSemanticToolbarToggleButtonStyles,
 } from './component-styles/Toolbar';
+export { useSemanticInfoButtonStyles, useSemanticInfoLabelStyles } from './component-styles/InfoLabel';
