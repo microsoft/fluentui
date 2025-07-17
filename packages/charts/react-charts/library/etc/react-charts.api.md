@@ -512,6 +512,52 @@ export interface ExtendedSegment extends GaugeChartSegment {
 }
 
 // @public (undocumented)
+export const FunnelChart: React_2.FunctionComponent<FunnelChartProps>;
+
+// @public
+export interface FunnelChartDataPoint {
+    color?: string;
+    stage: string | number;
+    subValues?: Array<{
+        category: string;
+        value: number;
+        color: string;
+    }>;
+    value?: number;
+}
+
+// @public
+export interface FunnelChartProps {
+    calloutProps?: ChartPopoverProps;
+    chartTitle?: string;
+    className?: string;
+    componentRef?: React_2.RefObject<any>;
+    culture?: string;
+    data: FunnelChartDataPoint[];
+    height?: number;
+    hideLegend?: boolean;
+    legendProps?: Partial<LegendsProps>;
+    orientation?: 'horizontal' | 'vertical';
+    styles?: FunnelChartStyles;
+    width?: number;
+}
+
+// @public
+export interface FunnelChartStyleProps {
+    chartHeight: number;
+    chartWidth: number;
+    className?: string;
+}
+
+// @public
+export interface FunnelChartStyles {
+    calloutContentRoot?: string;
+    chart?: string;
+    root?: string;
+    text?: string;
+}
+
+// @public (undocumented)
 export const GaugeChart: React_2.FunctionComponent<GaugeChartProps>;
 
 // @public
@@ -586,6 +632,12 @@ export const getColorContrast: (c1: string, c2: string) => number;
 
 // @public (undocumented)
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
+
+// @public (undocumented)
+export function getContrastTextColor(backgroundColor: string, isDarkTheme?: boolean): string;
+
+// @public (undocumented)
+export const getInvertedTextColor: (color: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
 export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;
