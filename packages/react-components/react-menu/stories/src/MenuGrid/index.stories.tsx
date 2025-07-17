@@ -1,4 +1,4 @@
-import { MenuGrid, MenuGridCell, MenuGridRow, MenuGridRowGroup } from '@fluentui/react-menu';
+import { MenuGrid, MenuGridCell, MenuGridRow, MenuGridRowGroup, MenuGridRowGroupHeader } from '@fluentui/react-menu';
 import descriptionMd from './MenuGridDescription.md';
 
 export { Default } from './MenuGridDefault.stories';
@@ -11,6 +11,7 @@ export default {
     MenuGridCell,
     MenuGridRow,
     MenuGridRowGroup,
+    MenuGridRowGroupHeader,
   },
   parameters: {
     docs: {

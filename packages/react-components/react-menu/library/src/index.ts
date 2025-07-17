@@ -14,6 +14,11 @@ export {
   useMenuGridRowGroupContext_unstable,
 } from './contexts/menuGridRowGroupContext';
 export type { MenuGridRowGroupContextValue } from './contexts/menuGridRowGroupContext';
+export {
+  MenuGridRowGroupHeaderContextProvider,
+  useMenuGridRowGroupHeaderContext_unstable,
+} from './contexts/menuGridRowGroupHeaderContext';
+export type { MenuGridRowGroupHeaderContextValue } from './contexts/menuGridRowGroupHeaderContext';
 export { MenuListProvider, useMenuListContext_unstable } from './contexts/menuListContext';
 export type { MenuListContextValue } from './contexts/menuListContext';
 
@@ -125,6 +130,20 @@ export type {
   MenuGridRowGroupSlots,
   MenuGridRowGroupState,
 } from './MenuGridRowGroup';
+export {
+  MenuGridRowGroupHeader,
+  menuGridRowGroupHeaderClassNames,
+  renderMenuGridRowGroupHeader_unstable,
+  useMenuGridRowGroupHeaderContextValues_unstable,
+  useMenuGridRowGroupHeaderStyles_unstable,
+  useMenuGridRowGroupHeader_unstable,
+} from './MenuGridRowGroupHeader';
+export type {
+  MenuGridRowGroupHeaderContextValues,
+  MenuGridRowGroupHeaderProps,
+  MenuGridRowGroupHeaderSlots,
+  MenuGridRowGroupHeaderState,
+} from './MenuGridRowGroupHeader';
 
 export {
   MenuList,

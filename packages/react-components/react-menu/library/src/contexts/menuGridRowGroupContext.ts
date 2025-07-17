@@ -4,12 +4,19 @@ const MenuGridRowGroupContext = React.createContext<MenuGridRowGroupContextValue
   undefined,
 ) as React.Context<MenuGridRowGroupContextValue>;
 
-const menuGridRowGroupContextDefaultValue: MenuGridRowGroupContextValue = {};
+const menuGridRowGroupContextDefaultValue: MenuGridRowGroupContextValue = {
+  headerId: '',
+};
 
 /**
- * Context
+ * Context used to guarantee correct aria-relationship between header
  */
-export type MenuGridRowGroupContextValue = {};
+export type MenuGridRowGroupContextValue = {
+  /**
+   * Element id applied to the `MenuGridRowGroupHeader` component
+   */
+  headerId: string;
+};
 
 export const MenuGridRowGroupContextProvider = MenuGridRowGroupContext.Provider;
 export const useMenuGridRowGroupContext_unstable = () =>

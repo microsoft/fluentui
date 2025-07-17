@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { Button, makeStyles, tokens } from '@fluentui/react-components';
-import { MenuGrid, MenuGridCell, MenuGridRow, MenuGridRowGroup } from '@fluentui/react-menu';
+import { MenuGrid, MenuGridCell, MenuGridRow, MenuGridRowGroup, MenuGridRowGroupHeader } from '@fluentui/react-menu';
+
+const items = {
+  people: ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'],
+  agentsAndBots: ['Facilitator', 'Copilot'],
+};
 
 const useMenuListContainerStyles = makeStyles({
   container: {
@@ -21,24 +26,32 @@ export const Default = () => {
     <div className={styles.container}>
       <MenuGrid>
         <MenuGridRowGroup>
-          <MenuGridRow>
-            <MenuGridCell>First row</MenuGridCell>
-            <MenuGridCell>
-              <Button>First cell first action</Button>
-            </MenuGridCell>
-            <MenuGridCell>
-              <Button>First row second action</Button>
-            </MenuGridCell>
-          </MenuGridRow>
-          <MenuGridRow>
-            <MenuGridCell>Second row</MenuGridCell>
-            <MenuGridCell>
-              <Button>Second cell first action</Button>
-            </MenuGridCell>
-            <MenuGridCell>
-              <Button>Second row second action</Button>
-            </MenuGridCell>
-          </MenuGridRow>
+          <MenuGridRowGroupHeader>People</MenuGridRowGroupHeader>
+          {items.people.map((name, index) => (
+            <MenuGridRow key={index} aria-label={name}>
+              <MenuGridCell>{name}</MenuGridCell>
+              <MenuGridCell>
+                <Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>
+              </MenuGridCell>
+              <MenuGridCell>
+                <Button>Remove {name}</Button>
+              </MenuGridCell>
+            </MenuGridRow>
+          ))}
+        </MenuGridRowGroup>
+        <MenuGridRowGroup>
+          <MenuGridRowGroupHeader>Agents and bots</MenuGridRowGroupHeader>
+          {items.agentsAndBots.map((name, index) => (
+            <MenuGridRow key={index} aria-label={name}>
+              <MenuGridCell>{name}</MenuGridCell>
+              <MenuGridCell>
+                <Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>
+              </MenuGridCell>
+              <MenuGridCell>
+                <Button>Remove {name}</Button>
+              </MenuGridCell>
+            </MenuGridRow>
+          ))}
         </MenuGridRowGroup>
       </MenuGrid>
     </div>
