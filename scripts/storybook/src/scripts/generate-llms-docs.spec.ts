@@ -22,6 +22,7 @@ const mockStoreItems: StorybookStoreItem[] = [
       id: 'concepts-introduction',
       title: 'Concepts/Introduction',
       parameters: {
+        fileName: 'concepts-introduction.mdx',
         docs: {},
       },
     },
@@ -30,6 +31,7 @@ const mockStoreItems: StorybookStoreItem[] = [
         id: 'concepts-introduction--page',
         name: 'Page',
         parameters: {
+          docs: {},
           docsOnly: true,
           fullSource:
             "# Fluent UI React Componentsv9.66.6\n\n# What's new\n\nLightweight components for smaller bundle size and faster performance.\n\nNew tokens system for frictionless cohesion across OS themes.\n\nNew assets to level up Teams add-ins and M365 experiences.\n\n# Overview\n\nFluent UI React Components is a set of UI components and utilities resulting from an effort to converge the set of React based component libraries in production today: `@fluentui/react` and `@fluentui/react-northstar`.\n\nEach component is designed to adhere to the following standards:\n\n-   **Customizable**: Fluent-styled components by default, but easy to integrate your own brand and theme\n-   **Performance**: Optimized for render performance\n-   **Bundle size**: Refactored and slimmed down components that allow you to include the packages and dependencies you need\n-   **Accessibility**: WCAG 2.1 compliant and tested by trusted testers\n-   **Design to Code**: Stay up to date with Fluent Design Language changes via Design Tokens\n\n# Questions?\n\nReach out to the Fluent UI React team on [GitHub][1]\n\n[1]: https://github.com/microsoft/fluentui",
@@ -44,6 +46,7 @@ const mockStoreItems: StorybookStoreItem[] = [
       id: 'concepts-developer-quick-start',
       title: 'Concepts/Developer/Quick Start',
       parameters: {
+        fileName: 'concepts-developer-quick-start.mdx',
         docs: {},
       },
     },
@@ -66,7 +69,17 @@ const mockStoreItems: StorybookStoreItem[] = [
     meta: {
       id: 'components-accordion',
       title: 'Components/Accordion',
+      parameters: {
+        fileName: 'components-accordion.tsx',
+        docs: {
+          description: {
+            component:
+              'An accordion allows users to toggle the display of content by expanding or collapsing sections.\n',
+          },
+        },
+      },
       component: {
+        displayName: 'Accordion',
         __docgenInfo: {
           props: {
             as: {
@@ -380,14 +393,6 @@ const mockStoreItems: StorybookStoreItem[] = [
           },
         },
       },
-      parameters: {
-        docs: {
-          description: {
-            component:
-              'An accordion allows users to toggle the display of content by expanding or collapsing sections.\n',
-          },
-        },
-      },
     },
     stories: {
       'components-accordion--collapsible': {
@@ -421,6 +426,7 @@ const mockStoreItems: StorybookStoreItem[] = [
         id: 'components-accordion--default',
         name: 'Default',
         parameters: {
+          docs: {},
           fullSource:
             'import * as React from "react";\nimport {\n  Accordion,\n  AccordionHeader,\n  AccordionItem,\n  AccordionPanel,\n} from "@fluentui/react-components";\n\nexport const Default = () => (\n  <Accordion>\n    <AccordionItem value="1">\n      <AccordionHeader>\n        {" "}\n        This is a very very very long heading. This is a very very very long\n        heading. This is a very very very long heading. This is a very very very\n        long heading.\n      </AccordionHeader>\n      <AccordionPanel>\n        <div>\n          {" "}\n          This is a very very very long heading. This is a very very very long\n          heading. This is a very very very long heading. This is a very very\n          very long heading.\n        </div>\n      </AccordionPanel>\n    </AccordionItem>\n    <AccordionItem value="2">\n      <AccordionHeader>Accordion Header 2</AccordionHeader>\n      <AccordionPanel>\n        <div>Accordion Panel 2</div>\n      </AccordionPanel>\n    </AccordionItem>\n    <AccordionItem value="3">\n      <AccordionHeader>Accordion Header 3</AccordionHeader>\n      <AccordionPanel>\n        <div>Accordion Panel 3</div>\n      </AccordionPanel>\n    </AccordionItem>\n  </Accordion>\n);\n',
         },
@@ -596,7 +602,7 @@ describe('generate-llms-docs', () => {
 </span>
 <span class=""></span><span class="token keyword module">import</span><span class=""> </span><span class="token imports maybe-class-name">App</span><span class=""> </span><span class="token keyword module">from</span><span class=""> </span><span class="token string">'./App'</span><span class="token punctuation">;</span><span class="">
 </span>
-<span class=""></span><span class="token keyword">const</span><span class=""> root </span><span class="token operator">=</span><span class=""> </span><span class="token function">createRoot</span><span class="token punctuation">(</span><span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="">
+<span class=""></span><span class="token keyword">const</span><span class=""> root </span><span class="token operator">=</span><span class=""> </span><span class="token function">createRoot</span><span class="token punctuation">(</span><span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="">
 </span>
 <span class="">root</span><span class="token punctuation">.</span><span class="token method function property-access">render</span><span class="token punctuation">(</span><span class="">
 </span><span class="">  </span><span class="token tag punctuation">&lt;</span><span class="token tag class-name">FluentProvider</span><span class="token tag"> </span><span class="token tag attr-name">theme</span><span class="token tag script language-javascript script-punctuation punctuation">=</span><span class="token tag script language-javascript punctuation">{</span><span class="token tag script language-javascript">webLightTheme</span><span class="token tag script language-javascript punctuation">}</span><span class="token tag punctuation">&gt;</span><span class="token plain-text">
@@ -688,7 +694,7 @@ describe('generate-llms-docs', () => {
         import { createRoot } from 'react-dom/client';
         import { FluentProvider, webLightTheme } from '@fluentui/react-components';
         import App from './App';
-        const root = createRoot(document.getElementById('root'));
+        const root = createRoot(document.getElementById('root');
         root.render(
           <FluentProvider theme={webLightTheme}>
             <App />
