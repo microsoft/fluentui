@@ -9,41 +9,166 @@ import Turndown from 'turndown';
 import { strikethrough, tables, taskListItems } from 'turndown-plugin-gfm';
 import yargs from 'yargs';
 
-// Start the script
-if (require.main === module) {
-  main();
+/**
+ * CLI arguments
+ */
+export type Args = {
+  /**
+   * Relative path to the Storybook distribution folder
+   */
+  distPath: string;
+  /**
+   * Base URL for the Storybook docs
+   */
+  baseUrl: string;
+  /**
+   * Title for the llms.txt file
+   */
+  summaryTitle?: string;
+  /**
+   * Description for the llms.txt file
+   */
+  summaryDescription?: string;
+  /**
+   * Array of composed Storybook refs (objects with id, title, url).
+   * Used to reference external Storybook docs.
+   */
+  refs?: StorybookRef[];
+};
+
+/**
+ * Storybook store item, contains component/page metadata and stories.
+ */
+export type StorybookStoreItem = {
+  meta: StorybookStoreItemMeta;
+  stories: Record<string, StorybookStoreItemStory>;
+};
+
+/**
+ * Storybook store item metadata
+ */
+export type StorybookStoreItemMeta = {
+  id: string;
+  title: string;
+  parameters: {
+    fileName: string;
+    docs?: {
+      description?: {
+        component?: string;
+        story?: string;
+      };
+    };
+  };
+  component?: StorybookComponent;
+  subcomponents?: Record<string, StorybookComponent>;
+};
+
+/**
+ * Storybook store item story, contains story metadata like name, parameters, etc.
+ */
+export type StorybookStoreItemStory = {
+  id: string;
+  name: string;
+  parameters: {
+    docs: {
+      description?: {
+        component?: string;
+        story?: string;
+      };
+    };
+    fullSource?: string;
+    docsOnly?: boolean;
+  };
+};
+
+/**
+ * Storybook component metadata, contains component name, description, props, etc.
+ */
+export type StorybookComponent = {
+  displayName: string;
+  __docgenInfo?: {
+    description?: string;
+    displayName?: string;
+    props?: Record<string, StorybookComponentProp> | null;
+  };
+};
+
+/**
+ * Storybook component prop metadata, contains prop name, description, type, etc.
+ */
+export type StorybookComponentProp = {
+  defaultValue?: { value: string } | string | null;
+  description?: string;
+  name: string;
+  required?: boolean;
+  type?: {
+    name?: string;
+    value?: { value: string }[];
+  };
+};
+
+/**
+ * Composed Storybook ref, used to link to other Storybook docs.
+ * see: https://storybook.js.org/docs/sharing/storybook-composition
+ *
+ * @example
+ * ```ts
+ * { id: 'charts-v9', title: 'Fluent UI Charts v9', url: 'https://charts.fluentui.dev' }
+ * ```
+ */
+export type StorybookRef = { title: string; url: string; sourceUrl?: string };
+
+/**
+ * Data extracted from Storybook
+ */
+export type StorybookData = {
+  refs: StorybookRef[];
+  storyStoreItems: StorybookStoreItem[];
+};
+
+/**
+ * Type guard for StorybookRef
+ */
+function isStorybookRef(obj: unknown): obj is StorybookRef {
+  return (
+    !!obj &&
+    typeof obj === 'object' &&
+    'title' in obj &&
+    typeof obj.title === 'string' &&
+    'url' in obj &&
+    typeof obj.url === 'string'
+  );
 }
 
 /**
- * Main entry point for the LLM docs generator script.
- * Orchestrates argument parsing, data extraction, and docs writing.
+ * Parses refs from CLI arguments.
  */
-async function main() {
-  try {
-    console.log(`━━ Storybook LLM Docs Generator ━━`);
-    const args = processArgs();
-    console.log(`ℹ️ Storybook dist path: ${args.distPath}`);
-
-    const data = await extractStorybookData(args);
-
-    // Write llms.txt file
-    await writeSummaryFile(args, data);
-
-    // Write per component/page files
-    await writeFullDocsFiles(args, data);
-
-    console.log(`✅ LLMs docs generation complete.`);
-  } catch (error) {
-    console.error(`❌ LLMs docs generation failed.`);
-    console.error(error);
-    process.exit(1);
+function parseRefs(refs: unknown[]): StorybookRef[] {
+  if (Array.isArray(refs)) {
+    return refs
+      .map(ref => {
+        if (typeof ref === 'string') {
+          try {
+            return JSON.parse(ref);
+          } catch {
+            return null;
+          }
+        }
+        return ref;
+      })
+      .filter(isStorybookRef);
   }
+
+  return [];
 }
 
 /**
- * Processes CLI arguments for `distPath` and `port`.
+ * Processes CLI arguments for `distPath`, `refs`, and other options.
+ *
+ * Users are encouraged to provide a yargs-compatible config file (e.g., llms.config.js)
+ * that exports all needed options, including a normalized refs array if desired.
  */
-function processArgs() {
+function processArgs(): Required<Args> {
   const argv = yargs(process.argv)
     .usage('CLI to generate LLMs docs for Storybook docs')
     .option('distPath', {
@@ -51,20 +176,26 @@ function processArgs() {
       demandOption: true,
       describe: 'Relative path to the Storybook distribution folder',
     })
+    .option('baseUrl', {
+      type: 'string',
+      default: '/',
+      describe: 'Base URL for the Storybook docs',
+    })
     .option('summaryTitle', {
       type: 'string',
-      default: 'Fluent UI React v9',
+      default: 'Summary',
       describe: 'Title for the summary file',
     })
     .option('summaryDescription', {
       type: 'string',
-      default: "Fluent UI React is a library of React components that implement Microsoft's Fluent Design System.",
+      default: '',
       describe: 'Description for the summary file',
     })
-    .option('baseUrl', {
-      type: 'string',
-      default: 'https://react.fluentui.dev',
-      describe: 'Base URL for the Storybook docs',
+    .option('refs', {
+      type: 'array',
+      default: [],
+      demandOption: false,
+      describe: 'Array of composed Storybook refs (objects with id, title, url)',
     })
     .config()
     .alias('h', 'help')
@@ -75,10 +206,9 @@ function processArgs() {
     baseUrl: argv.baseUrl,
     summaryTitle: argv.summaryTitle,
     summaryDescription: argv.summaryDescription,
+    refs: parseRefs(argv.refs),
   };
 }
-
-export type Args = ReturnType<typeof processArgs>;
 
 /**
  * Starts a static file server using Express
@@ -86,7 +216,7 @@ export type Args = ReturnType<typeof processArgs>;
 function startStaticServer(distPath: string) {
   const app = express();
   // Enable CORS for all responses
-  app.use((req, res, next) => {
+  app.use((_, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
   });
@@ -102,64 +232,17 @@ function startStaticServer(distPath: string) {
   });
 }
 
-export type StorybookStoreItem = {
-  meta: StorybookStoreItemMeta;
-  stories: Record<string, StorybookStoreItemStory>;
-};
-
-export type StorybookStoreItemMeta = {
-  id: string;
-  title: string;
-  parameters?: {
-    docs?: {
-      description?: {
-        component?: string;
-        story?: string;
-      };
-    };
-  };
-  component?: Component;
-  subcomponents?: Record<string, Component>;
-};
-
-export type StorybookStoreItemStory = {
-  id: string;
-  name: string;
-  parameters?: {
-    docs?: {
-      description?: {
-        story?: string;
-      };
-    };
-    fullSource?: string;
-    docsOnly?: boolean;
-  };
-};
-
-export type Component = {
-  displayName?: string;
-  __docgenInfo?: {
-    description?: string;
-    displayName?: string;
-    props?: Record<string, ComponentProp> | null;
-  };
-};
-
-export type ComponentProp = {
-  defaultValue?: { value: string } | string | null;
-  description?: string;
-  name: string;
-  required?: boolean;
-  type?: {
-    name?: string;
-    value?: { value: string }[];
-  };
-};
-
 /**
  * Extracts data for all stories, including `MDX` stories.
+ * refs are now provided by the user/config, not parsed internally.
  */
-async function extractStorybookData({ distPath }: Args) {
+async function extractStorybookData({
+  distPath,
+  refs,
+}: {
+  distPath: string;
+  refs: StorybookRef[];
+}): Promise<StorybookData> {
   // Start static server
   console.log(`▶️ Starting static server with Express...`);
   const { server: staticServer, url: serverUrl } = await startStaticServer(distPath);
@@ -192,20 +275,34 @@ async function extractStorybookData({ distPath }: Args) {
 
     // Extract content for all MDX pages
     for (const item of storeItems) {
-      for (const story of Object.values(item.stories)) {
-        if (story.parameters?.docsOnly) {
-          const pageUrl = `${serverUrl}/iframe.html?id=${story.id.replace('--page', '--docs')}&viewMode=docs`;
-          story.parameters.fullSource = await extractMDXStoryContentWithBrowser(pageUrl, context);
+      const stories = Object.values(item.stories);
+
+      if (stories.length > 0) {
+        for (const story of stories) {
+          if (story.parameters?.docsOnly) {
+            const pageUrl = `${serverUrl}/iframe.html?id=${story.id.replace('--page', '--docs')}`;
+            story.parameters.fullSource = await extractMDXStoryContentWithBrowser(pageUrl, context);
+          }
         }
+      } else if (item.meta.parameters.fileName.endsWith('.mdx')) {
+        const pageUrl = `${serverUrl}/iframe.html?id=${item.meta.id.replace('--page', '--docs')}`;
+        item.stories[`${item.meta.id}`] = {
+          id: item.meta.id,
+          name: item.meta.title,
+          parameters: {
+            fullSource: await extractMDXStoryContentWithBrowser(pageUrl, context),
+            docsOnly: true,
+            docs: {},
+          },
+        };
       }
     }
 
-    // Write raw stories to file for debugging
-    await writeFile(join(__dirname, 'story-source-raw.json'), JSON.stringify(storeItems, null, 2));
+    // await writeFile(join(__dirname, 'story-source-raw.json'), JSON.stringify(storeItems, null, 2));
 
     console.log(`✔️ Extracted ${storeItems.length} stories from Storybook store.`);
 
-    return storeItems;
+    return { refs, storyStoreItems: storeItems };
   } finally {
     cleanup();
     if (browser) {
@@ -287,16 +384,7 @@ export async function convertHtmlToMarkdown(htmlContent: string) {
   });
 
   // Convert to markdown
-  const markdown = turndown.turndown(htmlContent);
-
-  // Post-process to clean up formatting
-  return markdown;
-  // .replace(/\n\s*\n\s*\n/g, '\n\n') // Normalize multiple newlines
-  // .replace(/^\s+|\s+$/g, '') // Trim whitespace
-  // .replace(/\n\n```/g, '\n\n```') // Proper spacing before code blocks
-  // .replace(/```\n\n/g, '```\n\n') // Proper spacing after code blocks
-  // .replace(/\n\n#+/g, '\n\n#') // Clean up heading spacing
-  // .replace(/\n\n-/g, '\n\n-'); // Clean up list spacing
+  return turndown.turndown(htmlContent);
 }
 
 /**
@@ -320,7 +408,7 @@ async function extractMDXStoryContentWithBrowser(url: string, context: BrowserCo
 /**
  * Writes the summary file for all store items.
  */
-async function writeSummaryFile(args: Args, data: StorybookStoreItem[]) {
+async function writeSummaryFile(args: Required<Args>, data: StorybookData) {
   const summaryContent = generateSummaryContent(args, data);
   await writeFile(join(args.distPath, 'llms.txt'), summaryContent.join('\n'));
   console.log(`✅ LLMs docs summary written to ${join(args.distPath, 'llms.txt')}`);
@@ -330,25 +418,37 @@ async function writeSummaryFile(args: Args, data: StorybookStoreItem[]) {
  * Generates the summary file content from the storeItems array.
  */
 export function generateSummaryContent(
-  { summaryTitle, summaryDescription, baseUrl }: Args,
-  storeItems: StorybookStoreItem[],
+  { summaryTitle, summaryDescription, baseUrl }: Required<Args>,
+  data: StorybookData,
 ) {
-  // Header
+  // Initialize summary array with header content
   const summary: string[] = [
     `# ${summaryTitle}`,
     '',
-    summaryDescription,
+    '> **Note:** This is a summary overview using the LLMs.txt format (https://llmstxt.org/). Each section links to its full documentation file in plain text (.txt) format. Click any link below to view the detailed documentation for that section.',
     '',
-    '> **Note:** This summary only outlines available sections. For a detailed description of every section/component, see the dedicated file linked for each entry below.',
+    summaryDescription,
     '',
   ];
 
-  for (const item of storeItems) {
+  // Adds links to all components/pages
+  for (const item of data.storyStoreItems) {
     let description = item.meta.parameters?.docs?.description?.component || '';
     if (description) {
-      description = ` - ${description.split('\n')[0]}`;
+      description = `: ${description.split('\n')[0]}`;
     }
     summary.push(`- [${item.meta.title}](${baseUrl}/llms/${item.meta.id}.txt)${description}`);
+  }
+
+  // Adds links to all composed Storybook
+  if (data.refs && data.refs.length > 0) {
+    summary.push('');
+    summary.push('## Optional');
+    summary.push('');
+    for (const ref of data.refs) {
+      summary.push(`- [${ref.title}](${ref.url.replace(/\/$/, '')}/llms.txt)`);
+    }
+    summary.push('');
   }
 
   return summary;
@@ -358,14 +458,14 @@ export function generateSummaryContent(
  * Writes full markdown files for all components from `storeItems`.
  * For MDX pages, render only `fullSource`. For others, render title, description, props, and examples.
  */
-async function writeFullDocsFiles({ distPath }: Args, storeItems: StorybookStoreItem[]) {
+async function writeFullDocsFiles({ distPath }: Required<Args>, data: StorybookData) {
   const llmsDir = join(distPath, 'llms');
 
   // Clean up `llms` directory
   await rm(llmsDir, { recursive: true, force: true });
   await mkdir(llmsDir, { recursive: true });
 
-  for (const item of storeItems) {
+  for (const item of data.storyStoreItems) {
     const filePath = join(llmsDir, `${item.meta.id}.txt`);
     const content = generateFullFileContentFromStory(item);
     await writeFile(filePath, content.join('\n'));
@@ -454,7 +554,7 @@ export function generateFullFileContentFromStory(item: StorybookStoreItem) {
 /**
  * Converts a docgen type object to a readable string for markdown tables.
  */
-function stringifyPropType(type: ComponentProp['type']): string {
+function stringifyPropType(type: StorybookComponentProp['type']): string {
   if (!type) {
     return '';
   }
@@ -470,7 +570,7 @@ function stringifyPropType(type: ComponentProp['type']): string {
       return type.value.map(v => (typeof v.value === 'string' ? v.value : JSON.stringify(v.value))).join(' ');
     }
     if (type.name === 'array' && type.value) {
-      return `${stringifyPropType(type.value as ComponentProp['type'])}[]`;
+      return `${stringifyPropType(type.value as StorybookComponentProp['type'])}[]`;
     }
     if (type.name === 'signature' && type.value?.[0]?.value === 'function') {
       // Function signature
@@ -503,7 +603,38 @@ async function extractAllStoriesFromStorybook(context: BrowserContext, baseUrl: 
   return stories;
 }
 
-function generateComponentPropsTable(props: ComponentProp[]): string[] {
+/**
+ * Extracts the description from a storybook story.
+ */
+function extractStoryDescription(story: StorybookStoreItem) {
+  return story.meta.parameters?.docs?.description?.component || undefined;
+}
+
+/**
+ * Extracts the props from a storybook story.
+ */
+function extractComponentProps(component?: StorybookComponent) {
+  const docgen = component?.__docgenInfo;
+  if (!docgen || !docgen.props) {
+    return [];
+  }
+  const props: StorybookComponentProp[] = [];
+  for (const [name, arg] of Object.entries(docgen.props)) {
+    if (name === 'children') {
+      continue;
+    }
+    props.push({
+      name,
+      description: arg.description || '',
+      type: arg.type,
+      defaultValue: typeof arg.defaultValue === 'string' ? arg.defaultValue : arg.defaultValue?.value || '',
+      required: arg.required,
+    });
+  }
+  return props;
+}
+
+function generateComponentPropsTable(props: StorybookComponentProp[]): string[] {
   const content: string[] = [];
 
   if (props.length === 0) {
@@ -529,33 +660,33 @@ function generateComponentPropsTable(props: ComponentProp[]): string[] {
   return content;
 }
 
-/**
- * Extracts the description from a storybook story.
- */
-function extractStoryDescription(story: StorybookStoreItem) {
-  return story.meta.parameters?.docs?.description?.component || undefined;
+// Start the script
+if (require.main === module) {
+  main();
 }
 
 /**
- * Extracts the props from a storybook story.
+ * Main entry point for the LLM docs generator script.
+ * Orchestrates argument parsing, data extraction, and docs writing.
  */
-function extractComponentProps(component?: Component) {
-  const docgen = component?.__docgenInfo;
-  if (!docgen || !docgen.props) {
-    return [];
+async function main() {
+  try {
+    console.log(`━━ Storybook LLM Docs Generator ━━`);
+    const args = processArgs();
+    console.log(`ℹ️ Storybook dist path: ${args.distPath}`);
+
+    const data = await extractStorybookData(args);
+
+    // Write llms.txt file
+    await writeSummaryFile(args, data);
+
+    // Write per component/page files
+    await writeFullDocsFiles(args, data);
+
+    console.log(`✅ LLMs docs generation complete.`);
+  } catch (error) {
+    console.error(`❌ LLMs docs generation failed.`);
+    console.error(error);
+    process.exit(1);
   }
-  const props: ComponentProp[] = [];
-  for (const [name, arg] of Object.entries(docgen.props)) {
-    if (name === 'children') {
-      continue;
-    }
-    props.push({
-      name,
-      description: arg.description || '',
-      type: arg.type,
-      defaultValue: typeof arg.defaultValue === 'string' ? arg.defaultValue : arg.defaultValue?.value || '',
-      required: arg.required,
-    });
-  }
-  return props;
 }
