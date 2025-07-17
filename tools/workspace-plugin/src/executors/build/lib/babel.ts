@@ -62,6 +62,8 @@ export async function compileWithGriffelStylesAOT(options: NormalizedOptions) {
     return compileSwc(outputConfig, {
       ...options,
       absoluteSourceRoot: overriddenAbsoluteSourceRoot,
+      // If this flag is enabled, the raw styles are already emitted, stop processing them again.
+      enableGriffelRawStyles: false,
     });
   });
 

@@ -1,4 +1,5 @@
 import { mkdir, writeFile, copyFile } from 'node:fs/promises';
+import { writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 import { globSync } from 'fast-glob';
@@ -7,7 +8,6 @@ import { transformFile, type Config } from '@swc/core';
 import { logger, readJsonFile } from '@nx/devkit';
 
 import { type NormalizedOptions } from './shared';
-import { FileProcessor, GriffelRawStylesProcessor, applyFileProcessors } from './file-processor';
 
 // extend @swc/core types by missing apis
 declare module '@swc/core' {
@@ -21,24 +21,13 @@ interface Options {
   outputPath: string;
 }
 
-function createFileProcessors(options: NormalizedOptions): FileProcessor[] {
-  const processors: FileProcessor[] = [];
-
-  if (options.enableGriffelRawStyles) {
-    processors.push(new GriffelRawStylesProcessor());
-  }
-
-  return processors;
-}
-
 export async function compileSwc(options: Options, normalizedOptions: NormalizedOptions) {
   const { outputPath, module } = options;
-  const fileProcessors = createFileProcessors(normalizedOptions);
   const absoluteOutputPath = join(normalizedOptions.absoluteProjectRoot, outputPath);
 
   logger.log(`Compiling with SWC for module:${options.module}...`);
-  if (fileProcessors.length > 0) {
-    logger.log(`Applying ${fileProcessors.length} file processors...`);
+  if (normalizedOptions.enableGriffelRawStyles) {
+    console.log('💅 RAW styles output enabled');
   }
 
   const sourceFiles = globSync(`**/*.{js,ts,tsx}`, { cwd: normalizedOptions.absoluteSourceRoot });
@@ -74,12 +63,29 @@ export async function compileSwc(options: Options, normalizedOptions: Normalized
     await mkdir(dirname(compiledFilePath), { recursive: true });
 
     await writeFile(compiledFilePath, resultCode);
-    await applyFileProcessors(compiledFilePath, fileProcessors);
+    await createStyleRawOutput(compiledFilePath, normalizedOptions.enableGriffelRawStyles);
 
     if (result.map) {
       const mapFilePath = `${compiledFilePath}.map`;
       await writeFile(mapFilePath, result.map);
-      await applyFileProcessors(mapFilePath, fileProcessors);
+      await createStyleRawOutput(mapFilePath, normalizedOptions.enableGriffelRawStyles);
     }
   }
+}
+
+/**
+ *
+ * @param filePath
+ * @param enableGriffelRawStyles
+ * @returns
+ * @description Creates a raw styles output file if the original file is a Griffel styles file and the enableGriffelRawStyles option is true.
+ * The raw styles file is created by copying the original file and renaming it with a .raw suffix.
+ */
+async function createStyleRawOutput(filePath: string, enableGriffelRawStyles: boolean): Promise<void> {
+  if (!(enableGriffelRawStyles && filePath.includes('.styles.js'))) {
+    return;
+  }
+  const rawFilePath = filePath.replace('.styles.', '.styles.raw.');
+  await copyFile(filePath, rawFilePath);
+  logger.verbose(`raw style: created ${rawFilePath}`);
 }
