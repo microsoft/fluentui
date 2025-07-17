@@ -98,7 +98,7 @@ export const LayeredBlurDemo = () => {
         </div>
         <div className={classes.imageGallery}>
           {images.map((image, index) => (
-            <div key={index} className={classes.imageCard} onClick={() => toggleImage(index)}>
+            <div key={image} className={classes.imageCard} onClick={() => toggleImage(index)}>
               {/* Background with blur effect - starts blurred, becomes clear when revealed */}
               <Blur visible={revealedImages[index]} fromRadius="5px" animateOpacity={false}>
                 <div className={classes.imageBackground} style={{ backgroundImage: image.gradient }} />
