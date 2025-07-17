@@ -348,8 +348,8 @@ export const fluentOverrides: FluentOverrides = {
   textRampLgItemBodyLineHeight: { f2Token: 'lineHeightBase400' },
   textRampLgLegalFontSize: { f2Token: 'fontSizeBase200' }, // React-badge uses the same as medium font size for large
   textRampLgLegalLineHeight: { f2Token: 'lineHeightBase200' }, // React-badge uses the same as medium line height for large
-  textRampMetadataLineHeight: { f2Token: 'lineHeightBase200' },
   textRampMetadataFontSize: { f2Token: 'fontSizeBase200' }, // should be fontSizeBase100 per Menu design
+  textRampMetadataLineHeight: { f2Token: 'lineHeightBase200' },
   textRampReadingBodyFontSize: { f2Token: 'fontSizeBase300' },
   textRampReadingBodyLineHeight: { f2Token: 'lineHeightBase300' },
   textRampSectionHeaderFontSize: { f2Token: 'fontSizeBase500' },
