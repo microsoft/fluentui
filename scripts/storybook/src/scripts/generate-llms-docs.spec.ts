@@ -1,13 +1,19 @@
 import { convertHtmlToMarkdown, generateFullFileContentFromStory, generateSummaryContent } from './generate-llms-docs';
-import type { Args, StorybookStoreItem } from './generate-llms-docs';
+import type { Args, StorybookData, StorybookStoreItem } from './generate-llms-docs';
 
-const mockArgs: Args = {
+const mockArgs = {
   summaryTitle: 'Fluent UI React v9',
   summaryDescription:
     "Fluent UI React is a library of React components that implement Microsoft's Fluent Design System.",
   baseUrl: 'https://react.fluentui.dev',
   distPath: 'dist/storybook',
-};
+  refs: [
+    {
+      title: 'Charts v9',
+      url: 'https://charts.fluentui.dev',
+    },
+  ],
+} satisfies Args;
 
 const mockStoreItems: StorybookStoreItem[] = [
   // MDX story
@@ -46,6 +52,7 @@ const mockStoreItems: StorybookStoreItem[] = [
         id: 'concepts-developer-quick-start--page',
         name: 'Page',
         parameters: {
+          docs: {},
           docsOnly: true,
           fullSource:
             "## Install\n\nFluent UI should be installed as a `dependency` of your app.\n\n```sh\nyarn add @fluentui/react-components\n```\n\n# Setup\n\nFluent UI components are styled using CSS in JS. This technique requires a style renderer which inserts CSS into DOM when needed. React context is used to provide the style renderer.\n\nPlace a `<FluentProvider />` at the root of your app and pass theme as a prop.\n\n# React 18\n\n```jsx\nimport React from 'react';\nimport { createRoot } from 'react-dom/client';\nimport { FluentProvider, webLightTheme } from '@fluentui/react-components';\nimport App from './App';\nconst root = createRoot(document.getElementById('root'));\nroot.render(\n  <FluentProvider theme={webLightTheme}>\n    <App />\n  </FluentProvider>,\n);\n```\n\n# React 17\n\n```jsx\nimport React from 'react';\nimport ReactDOM from 'react-dom';\nimport { FluentProvider, webLightTheme } from '@fluentui/react-components';\nimport App from './App';\nReactDOM.render(\n  <FluentProvider theme={webLightTheme}>\n    <App />\n  </FluentProvider>,\n  document.getElementById('root'),\n);\n```\n\n# Usage\n\nThat's it. You can now use Fluent UI components in your app.\n\n```jsx\nimport React from 'react';\nimport { Button } from '@fluentui/react-components';\nexport default () => <Button appearance=\"primary\">Get started</Button>;\n```\n\n# Strict mode\n\nWe are aware of some strict mode bugs when using Fluent UI v9 in React 18. These bugs only show up in strict mode, and they will not stop the rest of your app from running. You can [track the bugs on Github][1] and learn how they will affect your application.\n\n# SSR with Next.js\n\nTo avoid strict mode hydration issues, you can disable strict mode in your Next.js app by adding the following configuration to your `next.config.js` file:\n\n```js\nmodule.exports = {\n  reactStrictMode: false,\n};\n```\n\n[1]: https://github.com/microsoft/fluentui/issues?q=is%3Aopen+is%3Aissue+label%3A%22Area%3A+Strict+Mode%22+label%3A%22React+18%22",
@@ -541,6 +548,11 @@ const mockStoreItems: StorybookStoreItem[] = [
     },
   },
 ];
+
+const mockStorybookData: StorybookData = {
+  refs: [],
+  storyStoreItems: mockStoreItems,
+};
 
 describe('generate-llms-docs', () => {
   describe('convertHtmlToMarkdown', () => {
@@ -1433,18 +1445,18 @@ describe('generate-llms-docs', () => {
 
   describe('generateSummaryContent', () => {
     it('should generate summary content', () => {
-      const summaryContent = generateSummaryContent(mockArgs, mockStoreItems);
+      const summaryContent = generateSummaryContent(mockArgs, mockStorybookData);
 
       expect(summaryContent.join('\n')).toMatchInlineSnapshot(`
         "# Fluent UI React v9
 
-        Fluent UI React is a library of React components that implement Microsoft's Fluent Design System.
+        > **Note:** This is a summary overview using the LLMs.txt format (https://llmstxt.org/). Each section links to its full documentation file in plain text (.txt) format. Click any link below to view the detailed documentation for that section.
 
-        > **Note:** This summary only outlines available sections. For a detailed description of every section/component, see the dedicated file linked for each entry below.
+        Fluent UI React is a library of React components that implement Microsoft's Fluent Design System.
 
         - [Concepts/Introduction](https://react.fluentui.dev/llms/concepts-introduction.txt)
         - [Concepts/Developer/Quick Start](https://react.fluentui.dev/llms/concepts-developer-quick-start.txt)
-        - [Components/Accordion](https://react.fluentui.dev/llms/components-accordion.txt) - An accordion allows users to toggle the display of content by expanding or collapsing sections."
+        - [Components/Accordion](https://react.fluentui.dev/llms/components-accordion.txt): An accordion allows users to toggle the display of content by expanding or collapsing sections."
       `);
     });
   });
