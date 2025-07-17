@@ -10,7 +10,9 @@ const storybookConfig = require('./.storybook/main');
  */
 module.exports = {
   distPath: './dist/storybook',
-  baseUrl: 'https://react.fluentui.dev',
+  // baseUrl: 'https://react.fluentui.dev',
+  // TODO: revert this to the correct url before merging
+  baseUrl: 'https://fluentuipr.z22.web.core.windows.net/pull/34838/public-docsite-v9/storybook',
   summaryTitle: 'Fluent UI React v9',
   summaryDescription:
     "Fluent UI React is a library of React components that implement Microsoft's [Fluent Design System](https://fluent2.microsoft.design).",
