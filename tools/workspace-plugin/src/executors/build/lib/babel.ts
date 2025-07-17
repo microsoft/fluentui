@@ -128,10 +128,7 @@ async function babel(esmModuleOutput: NormalizedOptions['moduleOutput'][number],
 
 /**
  *
- * @param filePath
- * @param enableGriffelRawStyles
- * @returns
- * @description Creates a raw styles output file if the original file is a Griffel styles file and the enableGriffelRawStyles option is true.
+ * Creates a raw styles output file if the original file is a Griffel styles file and the enableGriffelRawStyles option is true.
  * The raw styles file is created by copying the original file and renaming it with a .raw suffix.
  */
 async function createStyleRawOutput(filePath: string): Promise<void> {
