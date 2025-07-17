@@ -65,9 +65,11 @@ const useClasses = makeStyles({
 
 const images = [
   {
+    id: 'blue-gradient',
     gradient: `repeating-linear-gradient(45deg, ${tokens.colorPaletteBlueBorderActive} 0px, ${tokens.colorPaletteBlueBorderActive} 20px, ${tokens.colorPaletteBlueForeground2} 20px, ${tokens.colorPaletteBlueForeground2} 40px)`,
   },
   {
+    id: 'red-gradient',
     gradient: `repeating-linear-gradient(135deg, ${tokens.colorPaletteRedBorderActive} 0px, ${tokens.colorPaletteRedBorderActive} 20px, ${tokens.colorPaletteRedForeground2} 20px, ${tokens.colorPaletteRedForeground2} 40px)`,
   },
 ];
@@ -98,7 +100,7 @@ export const LayeredBlurDemo = () => {
         </div>
         <div className={classes.imageGallery}>
           {images.map((image, index) => (
-            <div key={image} className={classes.imageCard} onClick={() => toggleImage(index)}>
+            <div key={image.id} className={classes.imageCard} onClick={() => toggleImage(index)}>
               {/* Background with blur effect - starts blurred, becomes clear when revealed */}
               <Blur visible={revealedImages[index]} fromRadius="5px" animateOpacity={false}>
                 <div className={classes.imageBackground} style={{ backgroundImage: image.gradient }} />
