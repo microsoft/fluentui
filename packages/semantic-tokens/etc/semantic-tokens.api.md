@@ -3224,25 +3224,37 @@ export const _ctrlTabSmGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, v
 export const _ctrlTabSmPaddingHorizontalDefault = "var(--smtc-padding-ctrl-horizontal-default, var(--spacingHorizontalSNudge))";
 
 // @public (undocumented)
-export const ctrlTooltipBackground = "var(--smtc-ctrl-tooltip-background)";
+export const ctrlTooltipBackground = "var(--smtc-ctrl-tooltip-background, var(--colorNeutralBackground1))";
 
 // @public (undocumented)
 export const ctrlTooltipBackgroundRaw = "--smtc-ctrl-tooltip-background";
 
 // @public (undocumented)
-export const ctrlTooltipCorner = "var(--smtc-ctrl-tooltip-corner, var(--smtc-corner-ctrl-rest))";
+export const ctrlTooltipCorner = "var(--smtc-ctrl-tooltip-corner, var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium)))";
 
 // @public (undocumented)
 export const ctrlTooltipCornerRaw = "--smtc-ctrl-tooltip-corner";
 
 // @public (undocumented)
-export const ctrlTooltipForeground = "var(--smtc-ctrl-tooltip-foreground)";
+export const ctrlTooltipForeground = "var(--smtc-ctrl-tooltip-foreground, var(--colorNeutralForeground1))";
 
 // @public (undocumented)
 export const ctrlTooltipForegroundRaw = "--smtc-ctrl-tooltip-foreground";
 
+// @public
+export const _ctrlTooltipPaddingBottom = "var(--smtc-padding-ctrl-text-bottom, var(--smtc-padding-ctrl-text-top, 6px))";
+
+// @public
+export const _ctrlTooltipPaddingLeft = "var(--smtc-padding-ctrl-horizontal-default, 11px )";
+
+// @public
+export const _ctrlTooltipPaddingRight = "var(--smtc-padding-ctrl-horizontal-default, 11px)";
+
+// @public
+export const _ctrlTooltipPaddingTop = "var(--smtc-padding-ctrl-text-top, 4px)";
+
 // @public (undocumented)
-export const ctrlTooltipShadow = "var(--smtc-ctrl-tooltip-shadow, var(--smtc-ctrl-fab-shadow-rest))";
+export const ctrlTooltipShadow = "var(--smtc-ctrl-tooltip-shadow, var(--smtc-ctrl-fab-shadow-rest, drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 4px 8px var(--colorNeutralShadowKey))))";
 
 // @public (undocumented)
 export const ctrlTooltipShadowRaw = "--smtc-ctrl-tooltip-shadow";
