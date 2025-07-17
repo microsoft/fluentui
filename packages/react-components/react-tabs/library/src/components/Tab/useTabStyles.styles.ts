@@ -187,13 +187,13 @@ const useCircularAppearanceStyles = makeStyles({
     },
   },
   small: {
-    paddingBlock: `calc(${tokens.spacingVerticalXXS} - 1px)`,
+    paddingBlock: `calc(${tokens.spacingVerticalXXS} - ${tokens.strokeWidthThin})`,
   },
   medium: {
-    paddingBlock: `calc(${tokens.spacingVerticalSNudge} - 1px)`,
+    paddingBlock: `calc(${tokens.spacingVerticalSNudge} - ${tokens.strokeWidthThin})`,
   },
   large: {
-    paddingBlock: `calc(${tokens.spacingVerticalS} - 1px)`,
+    paddingBlock: `calc(${tokens.spacingVerticalS} - ${tokens.strokeWidthThin})`,
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
