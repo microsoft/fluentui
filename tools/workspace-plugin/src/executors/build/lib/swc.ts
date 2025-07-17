@@ -21,14 +21,16 @@ interface Options {
   outputPath: string;
 }
 
-export async function compileSwc(options: Options, normalizedOptions: NormalizedOptions) {
+export async function compileSwc(
+  options: Options,
+  normalizedOptions: NormalizedOptions,
+  transforms?: Array<Transform>,
+) {
   const { outputPath, module } = options;
   const absoluteOutputPath = join(normalizedOptions.absoluteProjectRoot, outputPath);
 
   logger.log(`Compiling with SWC for module:${options.module}...`);
-  if (normalizedOptions.enableGriffelRawStyles) {
-    console.log('💅 RAW styles output enabled');
-  }
+  logger.verbose(`Applying transforms: ${transforms ? transforms.length : 0}`);
 
   const sourceFiles = globSync(`**/*.{js,ts,tsx}`, { cwd: normalizedOptions.absoluteSourceRoot });
 
@@ -63,29 +65,23 @@ export async function compileSwc(options: Options, normalizedOptions: Normalized
     await mkdir(dirname(compiledFilePath), { recursive: true });
 
     await writeFile(compiledFilePath, resultCode);
-    await createStyleRawOutput(compiledFilePath, normalizedOptions.enableGriffelRawStyles);
+    await applyTransforms(compiledFilePath, transforms);
 
     if (result.map) {
       const mapFilePath = `${compiledFilePath}.map`;
       await writeFile(mapFilePath, result.map);
-      await createStyleRawOutput(mapFilePath, normalizedOptions.enableGriffelRawStyles);
+      await applyTransforms(mapFilePath, transforms);
     }
   }
 }
 
-/**
- *
- * @param filePath
- * @param enableGriffelRawStyles
- * @returns
- * @description Creates a raw styles output file if the original file is a Griffel styles file and the enableGriffelRawStyles option is true.
- * The raw styles file is created by copying the original file and renaming it with a .raw suffix.
- */
-async function createStyleRawOutput(filePath: string, enableGriffelRawStyles: boolean): Promise<void> {
-  if (!(enableGriffelRawStyles && filePath.includes('.styles.js'))) {
+type Transform = (filePath: string) => Promise<void>;
+async function applyTransforms(filePath: string, transforms?: Array<Transform>): Promise<void> {
+  if (!transforms || !Array.isArray(transforms) || transforms.length === 0) {
     return;
   }
-  const rawFilePath = filePath.replace('.styles.', '.styles.raw.');
-  await copyFile(filePath, rawFilePath);
-  logger.verbose(`raw style: created ${rawFilePath}`);
+
+  for (const transform of transforms) {
+    await transform(filePath);
+  }
 }
