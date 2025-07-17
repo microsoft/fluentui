@@ -1265,7 +1265,7 @@ export interface PlotData {
     // (undocumented)
     marker: Partial<PlotMarker>;
     // (undocumented)
-    mode: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta' | 'markers+text' | 'lines+text';
+    mode: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta' | 'markers+text' | 'lines+text' | 'lines+markers+text';
     // (undocumented)
     name: string;
     // (undocumented)
