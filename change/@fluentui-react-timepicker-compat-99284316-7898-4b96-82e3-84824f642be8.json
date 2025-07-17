@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: enable griffel raw styles",
+  "packageName": "@fluentui/react-timepicker-compat",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
