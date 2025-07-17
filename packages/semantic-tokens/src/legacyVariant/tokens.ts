@@ -132,6 +132,7 @@ import {
   spacingHorizontalM,
   colorPaletteDarkOrangeForeground1,
   colorTransparentStrokeInteractive,
+  colorNeutralForeground2BrandSelected,
   colorNeutralBackground3,
   colorNeutralForeground4,
   fontSizeBase200,
@@ -181,6 +182,7 @@ import {
   backgroundCtrlActiveBrandPressedRaw,
   paddingCtrlLgTextBottomRaw,
   paddingCtrlSmTextBottomRaw,
+  foregroundCtrlActiveBrandRestRaw,
   foregroundCtrlOnSubtleHoverRaw,
   foregroundCtrlNeutralPrimaryHoverRaw,
   foregroundCtrlOnSubtlePressedRaw,
@@ -200,7 +202,6 @@ import {
   textRampItemBodyLineHeightRaw,
   foregroundCtrlActiveBrandHoverRaw,
   foregroundCtrlActiveBrandPressedRaw,
-  foregroundCtrlActiveBrandRestRaw,
   foregroundCtrlIconOnSubtleHoverRaw,
   foregroundCtrlIconOnSubtlePressedRaw,
 } from '../optional/variables';
@@ -751,6 +752,13 @@ export const _ctrlFieldStatusWarningTintForeground = `var(${statusWarningTintFor
  * please use ctrlFocusOuterStroke instead.
  */
 export const _ctrlFocusOuterStrokeInteractive = `var(${ctrlFocusOuterStrokeRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorTransparentStrokeInteractive}))`;
+/**
+ * This is a legacy variant for foregroundCtrlActiveBrandRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlActiveBrandRest instead.
+ */
+export const _ctrlInfoLabelForegroundColorSelected = `var(${foregroundCtrlActiveBrandRestRaw}, var(${foregroundCtrlBrandRestRaw}, ${colorNeutralForeground2BrandSelected}))`;
 /**
  * This is a legacy variant for ctrlInputBackgroundRest to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.

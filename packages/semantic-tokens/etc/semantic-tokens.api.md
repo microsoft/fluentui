@@ -263,13 +263,13 @@ export const backgroundCtrlOutlineDisabled = "var(--smtc-background-ctrl-outline
 export const backgroundCtrlOutlineDisabledRaw = "--smtc-background-ctrl-outline-disabled";
 
 // @public (undocumented)
-export const backgroundCtrlOutlineHover = "var(--smtc-background-ctrl-outline-hover, var(--smtc-null-color, var(--colorTransparentBackground)))";
+export const backgroundCtrlOutlineHover = "var(--smtc-background-ctrl-outline-hover, var(--smtc-null-color, var(--colorTransparentBackgroundHover)))";
 
 // @public (undocumented)
 export const backgroundCtrlOutlineHoverRaw = "--smtc-background-ctrl-outline-hover";
 
 // @public (undocumented)
-export const backgroundCtrlOutlinePressed = "var(--smtc-background-ctrl-outline-pressed, var(--smtc-null-color, var(--colorTransparentBackground)))";
+export const backgroundCtrlOutlinePressed = "var(--smtc-background-ctrl-outline-pressed, var(--smtc-null-color, var(--colorTransparentBackgroundPressed)))";
 
 // @public (undocumented)
 export const backgroundCtrlOutlinePressedRaw = "--smtc-background-ctrl-outline-pressed";
@@ -1785,6 +1785,9 @@ export const ctrlFocusOuterStrokeWidth = "var(--smtc-ctrl-focus-outer-stroke-wid
 
 // @public (undocumented)
 export const ctrlFocusOuterStrokeWidthRaw = "--smtc-ctrl-focus-outer-stroke-width";
+
+// @public
+export const _ctrlInfoLabelForegroundColorSelected = "var(--smtc-foreground-ctrl-active-brand-rest, var(--smtc-foreground-ctrl-brand-rest, var(--colorNeutralForeground2BrandSelected)))";
 
 // @public (undocumented)
 export const ctrlInputBackgroundDisabled = "var(--smtc-ctrl-input-background-disabled, var(--smtc-background-ctrl-neutral-disabled, var(--colorNeutralBackgroundDisabled)))";

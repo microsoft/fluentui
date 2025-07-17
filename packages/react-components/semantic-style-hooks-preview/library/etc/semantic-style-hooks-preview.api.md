@@ -27,6 +27,8 @@ import { FieldState } from '@fluentui/react-field';
 import { FlatTreeState } from '@fluentui/react-tree';
 import { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
 import { ImageState } from '@fluentui/react-image';
+import { InfoButtonState } from '@fluentui/react-infolabel';
+import { InfoLabelState } from '@fluentui/react-infolabel';
 import { InlineDrawerState } from '@fluentui/react-drawer';
 import { InputState } from '@fluentui/react-input';
 import { LabelState } from '@fluentui/react-label';
@@ -136,6 +138,12 @@ export const useSemanticFlatTreeStyles: (_state: unknown) => FlatTreeState;
 
 // @public (undocumented)
 export const useSemanticImageStyles: (_state: unknown) => ImageState;
+
+// @public
+export const useSemanticInfoButtonStyles: (_state: unknown) => InfoButtonState;
+
+// @public
+export const useSemanticInfoLabelStyles: (_state: unknown) => InfoLabelState;
 
 // @public
 export const useSemanticInlineDrawerStyles: (_state: unknown) => InlineDrawerState;

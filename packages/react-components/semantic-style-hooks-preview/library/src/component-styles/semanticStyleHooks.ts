@@ -80,6 +80,7 @@ import {
   useSemanticToolbarToggleButtonStyles,
 } from './Toolbar';
 import { useSemanticTooltipStyles } from './Tooltip';
+import { useSemanticInfoButtonStyles, useSemanticInfoLabelStyles } from './InfoLabel';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -179,4 +180,7 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useTabListStyles_unstable: useSemanticTabListStyles,
   //Tooltip styles
   useTooltipStyles_unstable: useSemanticTooltipStyles,
+  // InfoLabel styles
+  useInfoButtonStyles_unstable: useSemanticInfoButtonStyles,
+  useInfoLabelStyles_unstable: useSemanticInfoLabelStyles,
 };
