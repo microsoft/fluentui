@@ -1961,7 +1961,6 @@ export {
   _ctrlTooltipPaddingLeft,
   _ctrlTooltipPaddingRight,
   _ctrlTooltipPaddingTop,
-  _ctrlTooltipShadow,
   _ctrlTreeGapInsideDefault,
   _ctrlTreeIconOnSubtle,
   _ctrlTreeIconOnSubtleHover,

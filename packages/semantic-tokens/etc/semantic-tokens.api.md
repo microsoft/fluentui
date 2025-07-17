@@ -3256,9 +3256,6 @@ export const _ctrlTooltipPaddingTop = "var(--smtc-padding-ctrl-text-top, 4px)";
 // @public (undocumented)
 export const ctrlTooltipShadow = "var(--smtc-ctrl-tooltip-shadow, var(--smtc-ctrl-fab-shadow-rest, drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 4px 8px var(--colorNeutralShadowKey))))";
 
-// @public
-export const _ctrlTooltipShadow = "var(--smtc-ctrl-tooltip-shadow, var(--smtc-ctrl-fab-shadow-rest, drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 4px 8px var(--colorNeutralShadowKey))))";
-
 // @public (undocumented)
 export const ctrlTooltipShadowRaw = "--smtc-ctrl-tooltip-shadow";
 

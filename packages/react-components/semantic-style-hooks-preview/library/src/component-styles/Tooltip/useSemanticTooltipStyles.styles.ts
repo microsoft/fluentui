@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     fontSize: semanticTokens.textRampMetadataFontSize,
     lineHeight: semanticTokens.textRampMetadataLineHeight,
 
-    filter: semanticTokens._ctrlTooltipShadow,
+    filter: semanticTokens.ctrlTooltipShadow,
   },
   visible: {
     display: 'block',
