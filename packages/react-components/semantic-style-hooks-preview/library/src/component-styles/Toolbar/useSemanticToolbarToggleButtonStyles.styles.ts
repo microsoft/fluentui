@@ -1,6 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
+import { useSemanticToggleButtonStyles } from '../Button/useSemanticToggleButtonStyles.styles';
 import { type ToolbarToggleButtonState } from '@fluentui/react-toolbar';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
@@ -24,7 +24,7 @@ export const useSemanticToolbarToggleButtonStyles = (_state: unknown): ToolbarTo
 
   const state = _state as ToolbarToggleButtonState;
 
-  useToggleButtonStyles_unstable(state);
+  useSemanticToggleButtonStyles(state);
   const toggleButtonStyles = useBaseStyles();
 
   state.root.className = mergeClasses(

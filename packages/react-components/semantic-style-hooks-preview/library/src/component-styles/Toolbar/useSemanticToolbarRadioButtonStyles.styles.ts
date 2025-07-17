@@ -1,6 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
+import { useSemanticToggleButtonStyles } from '../Button/useSemanticToggleButtonStyles.styles';
 import { type ToolbarRadioButtonState } from '@fluentui/react-toolbar';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
@@ -24,7 +24,7 @@ export const useSemanticToolbarRadioButtonStyles = (_state: unknown): ToolbarRad
 
   const state = _state as ToolbarRadioButtonState;
 
-  useToggleButtonStyles_unstable(state);
+  useSemanticToggleButtonStyles(state);
   const toggleButtonStyles = useBaseStyles();
 
   state.root.className = mergeClasses(

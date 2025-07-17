@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { useButtonStyles_unstable } from '@fluentui/react-button';
+import { useSemanticButtonStyles } from '../Button/useSemanticButtonStyles.styles';
 import { type ToolbarButtonState } from '@fluentui/react-toolbar';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import * as semanticTokens from '@fluentui/semantic-tokens';
@@ -22,7 +22,7 @@ export const useSemanticToolbarButtonStyles = (_state: unknown) => {
 
   const state = _state as ToolbarButtonState;
 
-  useButtonStyles_unstable(state);
+  useSemanticButtonStyles(state);
   const buttonStyles = useBaseStyles();
 
   state.root.className = mergeClasses(
