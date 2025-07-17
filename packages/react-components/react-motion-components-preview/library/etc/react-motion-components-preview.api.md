@@ -7,6 +7,9 @@
 import { PresenceComponent } from '@fluentui/react-motion';
 
 // @public
+export const Blur: PresenceComponent<BlurParams>;
+
+// @public
 export const Collapse: PresenceComponent<CollapseParams>;
 
 // @public
