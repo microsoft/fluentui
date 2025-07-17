@@ -146,6 +146,32 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     return getMultiLevelDateTimeFormatOptions(lowestFormatLevel, highestFormatLevel);
   }, [useUTC, _points, _xAxisType]);
 
+  const _mapYValueToXValues = React.useCallback(() => {
+    const yValueToXValues: Record<string, number[]> = {};
+    _points.forEach(point => {
+      if (!yValueToXValues[point.y]) {
+        yValueToXValues[point.y] = [];
+      }
+      yValueToXValues[point.y].push(+point.x.end - +point.x.start);
+    });
+    return yValueToXValues;
+  }, [_points]);
+
+  const _getOrderedYAxisLabels = React.useCallback(() => {
+    const yValueToXValues = _mapYValueToXValues();
+
+    if (_yAxisType !== YAxisType.StringAxis) {
+      return Object.keys(yValueToXValues).sort((a, b) => +a - +b);
+    }
+
+    if (yAxisCategoryOrder === 'default') {
+      return Object.keys(yValueToXValues).reverse();
+    }
+    return sortAxisCategories(yValueToXValues, yAxisCategoryOrder);
+  }, [_mapYValueToXValues, _yAxisType, yAxisCategoryOrder]);
+
+  const _yAxisLabels = React.useMemo(() => _getOrderedYAxisLabels(), [_getOrderedYAxisLabels]);
+
   const _getDomainNRangeValues = React.useCallback(
     (
       points: IGanttChartDataPoint[],
@@ -327,6 +353,27 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     [maxBarHeight, props.barHeight],
   );
 
+  const _getOrderedDataPoints = React.useCallback(() => {
+    const result: IGanttChartDataPoint[] = [];
+
+    const yValueToPoints: Record<string, IGanttChartDataPoint[]> = {};
+    _points.forEach(point => {
+      if (!yValueToPoints[point.y]) {
+        yValueToPoints[point.y] = [];
+      }
+      yValueToPoints[point.y].push(point);
+    });
+
+    for (let i = _yAxisLabels.length - 1; i >= 0; i--) {
+      const yValue = _yAxisLabels[i];
+      if (yValueToPoints[yValue]) {
+        result.push(...yValueToPoints[yValue].sort((a, b) => +a.x.start - +b.x.start));
+      }
+    }
+
+    return result;
+  }, [_points, _yAxisLabels]);
+
   const _createBars = React.useCallback(
     ({
       xScale,
@@ -359,7 +406,8 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
         _barHeight.current = _getBarHeight(scaleBandwidth);
       }
 
-      const bars = _points.map((point: IGanttChartDataPoint, index: number) => {
+      const points = _getOrderedDataPoints();
+      const bars = points.map((point: IGanttChartDataPoint, index: number) => {
         const rectStartX = xScale(point.x.start);
         const rectEndX = xScale(point.x.end);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -398,12 +446,12 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     [
       _getAriaLabel,
       _getBarHeight,
+      _getOrderedDataPoints,
       _legendHighlighted,
       _noLegendHighlighted,
       _onBarFocus,
       _onBarHover,
       _onBarLeave,
-      _points,
       _yAxisType,
       props.enableGradient,
       props.roundCorners,
@@ -514,29 +562,6 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     [_getBarHeight, _points, _yAxisPadding, _yAxisType],
   );
 
-  const _mapCategoryToValues = React.useCallback(() => {
-    const categoryToValues: Record<string, number[]> = {};
-    _points.forEach(point => {
-      if (!categoryToValues[point.y]) {
-        categoryToValues[point.y] = [];
-      }
-      categoryToValues[point.y].push(+point.x.end - +point.x.start);
-    });
-    return categoryToValues;
-  }, [_points]);
-
-  const _getOrderedYAxisLabels = React.useCallback(() => {
-    if (_yAxisType !== YAxisType.StringAxis) {
-      return [];
-    }
-
-    const categoryToValues = _mapCategoryToValues();
-    if (yAxisCategoryOrder === 'default') {
-      return Object.keys(categoryToValues).reverse();
-    }
-    return sortAxisCategories(categoryToValues, yAxisCategoryOrder);
-  }, [_mapCategoryToValues, _yAxisType, yAxisCategoryOrder]);
-
   if (!_isChartEmpty()) {
     _barHeight.current = _getBarHeight(DEFAULT_BAR_HEIGHT);
 
@@ -569,7 +594,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
         chartType={ChartTypes.GanttChart}
         xAxisType={_xAxisType}
         yAxisType={_yAxisType}
-        stringDatasetForYAxisDomain={_getOrderedYAxisLabels()}
+        stringDatasetForYAxisDomain={_yAxisLabels}
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={_getLegendData()}

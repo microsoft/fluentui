@@ -326,9 +326,35 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             y="10.444444444444443"
           />
           <rect
+            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+            data-is-focusable="true"
+            fill="#f7630c"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="83.53591160220995"
+            x="174.25414364640883"
+            y="10.444444444444443"
+          />
+          <rect
             aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
             fill="#107c10"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="92.48618784530387"
+            x="87.73480662983425"
+            y="-7.111111111111114"
+          />
+          <rect
+            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+            data-is-focusable="true"
+            fill="#c50f1f"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -350,32 +376,6 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             width="176.0220994475138"
             x="78.78453038674033"
             y="-24.66666666666667"
-          />
-          <rect
-            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
-            data-is-focusable="true"
-            fill="#f7630c"
-            height="8.777777777777779"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="83.53591160220995"
-            x="174.25414364640883"
-            y="10.444444444444443"
-          />
-          <rect
-            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
-            data-is-focusable="true"
-            fill="#c50f1f"
-            height="8.777777777777779"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="92.48618784530387"
-            x="87.73480662983425"
-            y="-7.111111111111114"
           />
           <rect
             aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
@@ -1959,9 +1959,35 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="10.444444444444443"
           />
           <rect
+            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+            data-is-focusable="true"
+            fill="#f7630c"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="83.53591160220995"
+            x="174.25414364640883"
+            y="10.444444444444443"
+          />
+          <rect
             aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
             fill="#107c10"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="92.48618784530387"
+            x="87.73480662983425"
+            y="-7.111111111111114"
+          />
+          <rect
+            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+            data-is-focusable="true"
+            fill="#c50f1f"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -1983,32 +2009,6 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             width="176.0220994475138"
             x="78.78453038674033"
             y="-24.66666666666667"
-          />
-          <rect
-            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
-            data-is-focusable="true"
-            fill="#f7630c"
-            height="8.777777777777779"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="83.53591160220995"
-            x="174.25414364640883"
-            y="10.444444444444443"
-          />
-          <rect
-            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
-            data-is-focusable="true"
-            fill="#c50f1f"
-            height="8.777777777777779"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="92.48618784530387"
-            x="87.73480662983425"
-            y="-7.111111111111114"
           />
           <rect
             aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
@@ -2754,9 +2754,35 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               y="10.444444444444443"
             />
             <rect
+              aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+              data-is-focusable="true"
+              fill="#f87528"
+              height="8.777777777777779"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="-1"
+              width="83.53591160220995"
+              x="174.25414364640883"
+              y="10.444444444444443"
+            />
+            <rect
               aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
               data-is-focusable="true"
               fill="#54b054"
+              height="8.777777777777779"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="-1"
+              width="92.48618784530387"
+              x="87.73480662983425"
+              y="-7.111111111111114"
+            />
+            <rect
+              aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+              data-is-focusable="true"
+              fill="#dc626d"
               height="8.777777777777779"
               opacity="1"
               role="img"
@@ -2778,32 +2804,6 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               width="176.0220994475138"
               x="78.78453038674033"
               y="-24.66666666666667"
-            />
-            <rect
-              aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
-              data-is-focusable="true"
-              fill="#f87528"
-              height="8.777777777777779"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="83.53591160220995"
-              x="174.25414364640883"
-              y="10.444444444444443"
-            />
-            <rect
-              aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
-              data-is-focusable="true"
-              fill="#dc626d"
-              height="8.777777777777779"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="92.48618784530387"
-              x="87.73480662983425"
-              y="-7.111111111111114"
             />
             <rect
               aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
@@ -3540,9 +3540,35 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="10.444444444444443"
           />
           <rect
+            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+            data-is-focusable="true"
+            fill="#f7630c"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="83.53591160220992"
+            x="342.2099447513812"
+            y="10.444444444444443"
+          />
+          <rect
             aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
             fill="#107c10"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="92.4861878453039"
+            x="419.7790055248619"
+            y="-7.111111111111114"
+          />
+          <rect
+            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+            data-is-focusable="true"
+            fill="#c50f1f"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -3564,32 +3590,6 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             width="176.02209944751382"
             x="345.1933701657458"
             y="-24.66666666666667"
-          />
-          <rect
-            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
-            data-is-focusable="true"
-            fill="#f7630c"
-            height="8.777777777777779"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="83.53591160220992"
-            x="342.2099447513812"
-            y="10.444444444444443"
-          />
-          <rect
-            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
-            data-is-focusable="true"
-            fill="#c50f1f"
-            height="8.777777777777779"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="92.4861878453039"
-            x="419.7790055248619"
-            y="-7.111111111111114"
           />
           <rect
             aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
@@ -4295,56 +4295,17 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
         </g>
         <g>
           <rect
-            aria-label="1. HR, 01/01/2021 - 01/10/2022."
+            aria-label="6. Legal, 03/05/2022 - 03/15/2022."
             data-is-focusable="true"
-            fill="#637cefff"
+            fill="#3a96ddff"
             height="1"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
-            width="443.86813186813185"
-            x="40"
-            y="-38.66666666666667"
-          />
-          <rect
-            aria-label="2. Finance, 01/15/2022 - 01/20/2022."
-            data-is-focusable="true"
-            fill="#f7630cff"
-            height="1"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="5.934065934065984"
-            x="489.8021978021978"
-            y="-25.333333333333336"
-          />
-          <rect
-            aria-label="3. IT, 02/01/2022 - 02/08/2022."
-            data-is-focusable="true"
-            fill="#57811bff"
-            height="1"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="8.307692307692207"
-            x="509.978021978022"
-            y="-12"
-          />
-          <rect
-            aria-label="4. Operations, 02/10/2022 - 02/20/2022."
-            data-is-focusable="true"
-            fill="#9373c0ff"
-            height="1"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
             width="11.868131868131854"
-            x="520.6593406593406"
-            y="1.3333333333333321"
+            x="547.9560439560439"
+            y="28"
           />
           <rect
             aria-label="5. Customer Support, 03/01/2022 - 03/10/2022."
@@ -4360,17 +4321,56 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="14.666666666666668"
           />
           <rect
-            aria-label="6. Legal, 03/05/2022 - 03/15/2022."
+            aria-label="4. Operations, 02/10/2022 - 02/20/2022."
             data-is-focusable="true"
-            fill="#3a96ddff"
+            fill="#9373c0ff"
             height="1"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="11.868131868131854"
-            x="547.9560439560439"
-            y="28"
+            x="520.6593406593406"
+            y="1.3333333333333321"
+          />
+          <rect
+            aria-label="3. IT, 02/01/2022 - 02/08/2022."
+            data-is-focusable="true"
+            fill="#57811bff"
+            height="1"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="8.307692307692207"
+            x="509.978021978022"
+            y="-12"
+          />
+          <rect
+            aria-label="2. Finance, 01/15/2022 - 01/20/2022."
+            data-is-focusable="true"
+            fill="#f7630cff"
+            height="1"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="5.934065934065984"
+            x="489.8021978021978"
+            y="-25.333333333333336"
+          />
+          <rect
+            aria-label="1. HR, 01/01/2021 - 01/10/2022."
+            data-is-focusable="true"
+            fill="#637cefff"
+            height="1"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="443.86813186813185"
+            x="40"
+            y="-38.66666666666667"
           />
         </g>
       </svg>
@@ -5402,9 +5402,35 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             y="10.444444444444443"
           />
           <rect
+            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+            data-is-focusable="true"
+            fill="url(#legend3_gradient)"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="83.53591160220995"
+            x="174.25414364640883"
+            y="10.444444444444443"
+          />
+          <rect
             aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
             fill="url(#legend2_gradient)"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="92.48618784530387"
+            x="87.73480662983425"
+            y="-7.111111111111114"
+          />
+          <rect
+            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+            data-is-focusable="true"
+            fill="url(#legend4_gradient)"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -5426,32 +5452,6 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             width="176.0220994475138"
             x="78.78453038674033"
             y="-24.66666666666667"
-          />
-          <rect
-            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
-            data-is-focusable="true"
-            fill="url(#legend3_gradient)"
-            height="8.777777777777779"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="83.53591160220995"
-            x="174.25414364640883"
-            y="10.444444444444443"
-          />
-          <rect
-            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
-            data-is-focusable="true"
-            fill="url(#legend4_gradient)"
-            height="8.777777777777779"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="92.48618784530387"
-            x="87.73480662983425"
-            y="-7.111111111111114"
           />
           <rect
             aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
@@ -6184,9 +6184,35 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             y="10.444444444444443"
           />
           <rect
+            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+            data-is-focusable="true"
+            fill="#f7630c"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="3"
+            tabindex="-1"
+            width="83.53591160220995"
+            x="174.25414364640883"
+            y="10.444444444444443"
+          />
+          <rect
             aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
             fill="#107c10"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="3"
+            tabindex="-1"
+            width="92.48618784530387"
+            x="87.73480662983425"
+            y="-7.111111111111114"
+          />
+          <rect
+            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+            data-is-focusable="true"
+            fill="#c50f1f"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -6208,32 +6234,6 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             width="176.0220994475138"
             x="78.78453038674033"
             y="-24.66666666666667"
-          />
-          <rect
-            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
-            data-is-focusable="true"
-            fill="#f7630c"
-            height="8.777777777777779"
-            opacity="1"
-            role="img"
-            rx="3"
-            tabindex="-1"
-            width="83.53591160220995"
-            x="174.25414364640883"
-            y="10.444444444444443"
-          />
-          <rect
-            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
-            data-is-focusable="true"
-            fill="#c50f1f"
-            height="8.777777777777779"
-            opacity="1"
-            role="img"
-            rx="3"
-            tabindex="-1"
-            width="92.48618784530387"
-            x="87.73480662983425"
-            y="-7.111111111111114"
           />
           <rect
             aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
@@ -6966,9 +6966,35 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             y="10.444444444444443"
           />
           <rect
+            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+            data-is-focusable="true"
+            fill="#f7630c"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="83.53591160220995"
+            x="174.25414364640883"
+            y="10.444444444444443"
+          />
+          <rect
             aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
             fill="#107c10"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="92.48618784530387"
+            x="87.73480662983425"
+            y="-7.111111111111114"
+          />
+          <rect
+            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
+            data-is-focusable="true"
+            fill="#c50f1f"
             height="8.777777777777779"
             opacity="1"
             role="img"
@@ -6990,32 +7016,6 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             width="176.0220994475138"
             x="78.78453038674033"
             y="-24.66666666666667"
-          />
-          <rect
-            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
-            data-is-focusable="true"
-            fill="#f7630c"
-            height="8.777777777777779"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="83.53591160220995"
-            x="174.25414364640883"
-            y="10.444444444444443"
-          />
-          <rect
-            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
-            data-is-focusable="true"
-            fill="#c50f1f"
-            height="8.777777777777779"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="92.48618784530387"
-            x="87.73480662983425"
-            y="-7.111111111111114"
           />
           <rect
             aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."

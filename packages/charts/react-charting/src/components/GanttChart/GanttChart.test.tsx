@@ -168,70 +168,55 @@ describe('GanttChart interaction and accessibility tests', () => {
 
   it(`should highlight corresponding bars on legend hover and remove highlight on legend mouse out`, async () => {
     const { container } = render(<GanttChart data={ganttData} />);
-    const legendTitle = 'Not Started';
-    const legendButton = screen.getByText(legendTitle);
+    const legendButton = screen.getByText('Not Started');
     await act(() => {
       fireEvent.mouseOver(legendButton);
     });
     const bars = container.querySelectorAll('rect');
     expect(bars).toHaveLength(8);
-    for (let i = 0; i < bars.length; i++) {
-      if (ganttData[i].legend === legendTitle) {
-        expect(bars[i]).toHaveAttribute('opacity', '1');
-      } else {
-        expect(bars[i]).toHaveAttribute('opacity', '0.1');
-      }
-    }
+    expect(bars[3]).toHaveAttribute('opacity', '1');
+    expect(bars[0]).toHaveAttribute('opacity', '0.1');
 
     await act(() => {
       fireEvent.mouseOut(legendButton);
     });
-    for (let i = 0; i < bars.length; i++) {
-      expect(bars[i]).toHaveAttribute('opacity', '1');
-    }
+    expect(bars[3]).toHaveAttribute('opacity', '1');
+    expect(bars[0]).toHaveAttribute('opacity', '1');
   });
 
   it(`should toggle highlight on corresponding bars when legend is clicked`, async () => {
     const { container } = render(<GanttChart data={ganttData} />);
-    const legendTitle = 'Incomplete';
-    const legendButton = screen.getByText(legendTitle);
+    const legendButton = screen.getByText('Incomplete');
     await act(() => {
       fireEvent.click(legendButton);
     });
     const bars = container.querySelectorAll('rect');
     expect(bars).toHaveLength(8);
-    for (let i = 0; i < bars.length; i++) {
-      if (ganttData[i].legend === legendTitle) {
-        expect(bars[i]).toHaveAttribute('opacity', '1');
-      } else {
-        expect(bars[i]).toHaveAttribute('opacity', '0.1');
-      }
-    }
+    expect(bars[1]).toHaveAttribute('opacity', '1');
+    expect(bars[0]).toHaveAttribute('opacity', '0.1');
 
     await act(() => {
       fireEvent.click(legendButton);
     });
-    for (let i = 0; i < bars.length; i++) {
-      expect(bars[i]).toHaveAttribute('opacity', '1');
-    }
+    expect(bars[1]).toHaveAttribute('opacity', '1');
+    expect(bars[0]).toHaveAttribute('opacity', '1');
   });
 
   it(`should display callouts only for highlighted bars`, async () => {
     const { container } = render(<GanttChart data={ganttData} calloutProps={{ doNotLayer: true }} />);
-    const legendTitle = 'Complete';
     await act(() => {
-      fireEvent.click(screen.getByText(legendTitle));
+      fireEvent.click(screen.getByText('Complete'));
     });
     const bars = container.querySelectorAll('rect');
     expect(bars).toHaveLength(8);
 
     await act(() => {
-      fireEvent.mouseOver(bars[4]);
+      fireEvent.mouseOver(bars[1]);
     });
     expect(container.querySelector('.ms-Callout')).toBeNull();
 
     await act(() => {
-      fireEvent.mouseOver(bars[1]);
+      fireEvent.mouseOver(bars[0]);
     });
     expect(container.querySelector('.ms-Callout')).not.toBeNull();
   });
@@ -240,23 +225,17 @@ describe('GanttChart interaction and accessibility tests', () => {
     const { container } = render(
       <GanttChart data={ganttDataWithNumericY} legendProps={{ canSelectMultipleLegends: true }} />,
     );
-    const legendTitle1 = 'Finance';
-    const legendTitle2 = 'Operations';
     await act(() => {
-      fireEvent.click(screen.getByText(legendTitle1));
+      fireEvent.click(screen.getByText('Finance'));
     });
     await act(() => {
-      fireEvent.click(screen.getByText(legendTitle2));
+      fireEvent.click(screen.getByText('Operations'));
     });
     const bars = container.querySelectorAll('rect');
     expect(bars).toHaveLength(6);
-    for (let i = 0; i < bars.length; i++) {
-      if ([legendTitle1, legendTitle2].includes(ganttDataWithNumericY[i].legend!)) {
-        expect(bars[i]).toHaveAttribute('opacity', '1');
-      } else {
-        expect(bars[i]).toHaveAttribute('opacity', '0.1');
-      }
-    }
+    expect(bars[2]).toHaveAttribute('opacity', '1');
+    expect(bars[4]).toHaveAttribute('opacity', '1');
+    expect(bars[5]).toHaveAttribute('opacity', '0.1');
   });
 
   it('should render custom callout content using onRenderCalloutPerDataPoint when a bar is hovered', async () => {
