@@ -119,10 +119,11 @@ export const useSemanticInfoButtonStyles = (_state: unknown): InfoButtonState =>
   const popoverSurfaceStyles = usePopoverSurfaceStyles();
 
   state.info.className = mergeClasses(
+    state.info.className,
     infoButtonClassNames.info,
     popoverSurfaceStyles.base,
     size === 'large' ? popoverSurfaceStyles.large : popoverSurfaceStyles.smallMedium,
-    state.info.className,
+    getSlotClassNameProp_unstable(state.info),
   );
 
   state.root.className = mergeClasses(

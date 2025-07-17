@@ -35,10 +35,19 @@ export const useSemanticInfoLabelStyles = (_state: unknown): InfoLabelState => {
 
   const state = _state as InfoLabelState;
 
-  state.root.className = mergeClasses(infoLabelClassNames.root, state.root.className);
+  state.root.className = mergeClasses(
+    state.root.className,
+    infoLabelClassNames.root,
+    getSlotClassNameProp_unstable(state.root),
+  );
 
   const labelStyles = useLabelStyles();
-  state.label.className = mergeClasses(infoLabelClassNames.label, labelStyles.base, state.label.className);
+  state.label.className = mergeClasses(
+    state.label.className,
+    infoLabelClassNames.label,
+    labelStyles.base,
+    getSlotClassNameProp_unstable(state.label),
+  );
 
   const infoButtonStyles = useInfoButtonStyles();
   if (state.infoButton) {
