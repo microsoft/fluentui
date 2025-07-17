@@ -8,7 +8,16 @@ import { fadeAtom } from '../../atoms/fade-atom';
 import { scaleAtom } from '../../atoms/scale-atom';
 import { ScaleParams } from './scale-types';
 
-/** Define a presence motion for scale in/out */
+/**
+ * Define a presence motion for scale in/out
+ *
+ * @param duration - Time (ms) for the enter transition (scale-in). Defaults to the `durationGentle` value (250 ms).
+ * @param easing - Easing curve for the enter transition (scale-in). Defaults to the `curveDecelerateMax` value.
+ * @param exitDuration - Time (ms) for the exit transition (scale-out). Defaults to the `durationNormal` value (200 ms).
+ * @param exitEasing - Easing curve for the exit transition (scale-out). Defaults to the `curveAccelerateMax` value.
+ * @param fromScale - The scale value to animate from. Defaults to `0.9`.
+ * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
+ */
 const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
   duration = motionTokens.durationGentle,
   easing = motionTokens.curveDecelerateMax,

@@ -8,7 +8,17 @@ import { fadeAtom } from '../../atoms/fade-atom';
 import { slideAtom } from '../../atoms/slide-atom';
 import { SlideParams } from './slide-types';
 
-/** Define a presence motion for slide in/out */
+/**
+ * Define a presence motion for slide in/out
+ *
+ * @param duration - Time (ms) for the enter transition (slide-in). Defaults to the `durationNormal` value (200 ms).
+ * @param easing - Easing curve for the enter transition (slide-in). Defaults to the `curveDecelerateMid` value.
+ * @param exitDuration - Time (ms) for the exit transition (slide-out). Defaults to the `duration` param for symmetry.
+ * @param exitEasing - Easing curve for the exit transition (slide-out). Defaults to the `curveAccelerateMid` value.
+ * @param fromX - The X translate value with units to animate from. Defaults to `'0px'`.
+ * @param fromY - The Y translate value with units to animate from. Defaults to `'20px'`.
+ * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
+ */
 const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
   duration = motionTokens.durationNormal,
   easing = motionTokens.curveDecelerateMid,
