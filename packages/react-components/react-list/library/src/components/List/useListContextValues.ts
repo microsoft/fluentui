@@ -5,12 +5,17 @@ export function useListContextValues_unstable(state: ListState): ListContextValu
 
   const listContext = {
     selection,
-    listItemRole,
     navigationMode,
     validateListItem,
   };
 
+  const synchronousContext = {
+    listItemRole,
+    navigationMode,
+  };
+
   return {
     listContext,
+    synchronousContext,
   };
 }

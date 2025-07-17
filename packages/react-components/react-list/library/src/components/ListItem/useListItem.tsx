@@ -19,7 +19,7 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import type { ListItemProps, ListItemState } from './ListItem.types';
-import { useListContext_unstable } from '../List/listContext';
+import { useSynchronousListContext, useListContext_unstable } from '../List/listContext';
 import { Enter, Space, ArrowUp, ArrowDown, ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
 import {
@@ -47,10 +47,11 @@ export const useListItem_unstable = (
   const { value = id, onKeyDown, onClick, tabIndex, role, onAction } = props;
 
   const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
-  const navigationMode = useListContext_unstable(ctx => ctx.navigationMode);
+
+  const { navigationMode, listItemRole } = useSynchronousListContext();
+
   const isSelectionEnabled = useListContext_unstable(ctx => !!ctx.selection);
   const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
-  const listItemRole = useListContext_unstable(ctx => ctx.listItemRole);
   const validateListItem = useListContext_unstable(ctx => ctx.validateListItem);
 
   const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
@@ -78,7 +79,7 @@ export const useListItem_unstable = (
     if (rootRef.current) {
       validateListItem(rootRef.current);
     }
-  }, [validateListItem]);
+  }, []);
 
   const triggerAction = (e: React.MouseEvent | React.KeyboardEvent) => {
     const actionEvent = createListItemActionEvent(e);
