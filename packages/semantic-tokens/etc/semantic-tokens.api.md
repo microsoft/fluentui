@@ -263,13 +263,13 @@ export const backgroundCtrlOutlineDisabled = "var(--smtc-background-ctrl-outline
 export const backgroundCtrlOutlineDisabledRaw = "--smtc-background-ctrl-outline-disabled";
 
 // @public (undocumented)
-export const backgroundCtrlOutlineHover = "var(--smtc-background-ctrl-outline-hover, var(--smtc-null-color, var(--colorTransparentBackground)))";
+export const backgroundCtrlOutlineHover = "var(--smtc-background-ctrl-outline-hover, var(--smtc-null-color, var(--colorTransparentBackgroundHover)))";
 
 // @public (undocumented)
 export const backgroundCtrlOutlineHoverRaw = "--smtc-background-ctrl-outline-hover";
 
 // @public (undocumented)
-export const backgroundCtrlOutlinePressed = "var(--smtc-background-ctrl-outline-pressed, var(--smtc-null-color, var(--colorTransparentBackground)))";
+export const backgroundCtrlOutlinePressed = "var(--smtc-background-ctrl-outline-pressed, var(--smtc-null-color, var(--colorTransparentBackgroundPressed)))";
 
 // @public (undocumented)
 export const backgroundCtrlOutlinePressedRaw = "--smtc-background-ctrl-outline-pressed";

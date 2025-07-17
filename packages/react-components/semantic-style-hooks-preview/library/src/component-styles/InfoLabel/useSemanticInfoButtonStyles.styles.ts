@@ -34,7 +34,7 @@ const useButtonStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: semanticTokens.nullColor,
+      backgroundColor: semanticTokens.backgroundCtrlOutlineHover,
       color: semanticTokens.foregroundCtrlOnTransparentHover,
       cursor: 'pointer',
 
@@ -46,7 +46,7 @@ const useButtonStyles = makeStyles({
       },
     },
     ':hover:active': {
-      backgroundColor: semanticTokens.nullColor,
+      backgroundColor: semanticTokens.backgroundCtrlOutlinePressed,
       color: semanticTokens.foregroundCtrlOnTransparentPressed,
     },
   },

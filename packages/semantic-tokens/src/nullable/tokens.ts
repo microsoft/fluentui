@@ -8,6 +8,8 @@ import {
   colorNeutralStroke1Pressed,
   colorNeutralStrokeDisabled,
   colorTransparentBackground,
+  colorTransparentBackgroundHover,
+  colorTransparentBackgroundPressed,
   colorSubtleBackground,
 } from '../legacy/tokens';
 import {
@@ -93,8 +95,8 @@ export const strokeCardOnSecondaryHover = `var(${strokeCardOnSecondaryHoverRaw},
 export const strokeCardOnSecondaryPressed = `var(${strokeCardOnSecondaryPressedRaw}, unset)`;
 export const strokeCardOnSecondaryDisabled = `var(${strokeCardOnSecondaryDisabledRaw}, unset)`;
 export const backgroundCtrlOutlineRest = `var(${backgroundCtrlOutlineRestRaw}, var(${nullColorRaw}, ${colorTransparentBackground}))`;
-export const backgroundCtrlOutlineHover = `var(${backgroundCtrlOutlineHoverRaw}, var(${nullColorRaw}, ${colorTransparentBackground}))`;
-export const backgroundCtrlOutlinePressed = `var(${backgroundCtrlOutlinePressedRaw}, var(${nullColorRaw}, ${colorTransparentBackground}))`;
+export const backgroundCtrlOutlineHover = `var(${backgroundCtrlOutlineHoverRaw}, var(${nullColorRaw}, ${colorTransparentBackgroundHover}))`;
+export const backgroundCtrlOutlinePressed = `var(${backgroundCtrlOutlinePressedRaw}, var(${nullColorRaw}, ${colorTransparentBackgroundPressed}))`;
 export const backgroundCtrlOutlineDisabled = `var(${backgroundCtrlOutlineDisabledRaw}, unset)`;
 export const backgroundCtrlSubtleRest = `var(${backgroundCtrlSubtleRestRaw}, var(${nullColorRaw}, ${colorSubtleBackground}))`;
 export const backgroundCtrlSubtleDisabled = `var(${backgroundCtrlSubtleDisabledRaw}, var(${nullColorRaw}, ${colorTransparentBackground}))`;

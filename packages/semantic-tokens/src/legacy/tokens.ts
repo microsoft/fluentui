@@ -50,6 +50,16 @@ export const colorNeutralBackground1Pressed = 'var(--colorNeutralBackground1Pres
  */
 export const colorNeutralBackground1 = 'var(--colorNeutralBackground1)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorTransparentBackgroundHover | `colorTransparentBackgroundHover`} design token.
+ * @public
+ */
+export const colorTransparentBackgroundHover = 'var(--colorTransparentBackgroundHover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorTransparentBackgroundPressed | `colorTransparentBackgroundPressed`} design token.
+ * @public
+ */
+export const colorTransparentBackgroundPressed = 'var(--colorTransparentBackgroundPressed)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorTransparentBackground | `colorTransparentBackground`} design token.
  * @public
  */
@@ -739,13 +749,3 @@ export const spacingHorizontalMNudge = 'var(--spacingHorizontalMNudge)';
  * @public
  */
 export const colorBrandStroke2Contrast = 'var(--colorBrandStroke2Contrast)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorTransparentBackgroundHover | `colorTransparentBackgroundHover`} design token.
- * @public
- */
-export const colorTransparentBackgroundHover = 'var(--colorTransparentBackgroundHover)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorTransparentBackgroundPressed | `colorTransparentBackgroundPressed`} design token.
- * @public
- */
-export const colorTransparentBackgroundPressed = 'var(--colorTransparentBackgroundPressed)';
