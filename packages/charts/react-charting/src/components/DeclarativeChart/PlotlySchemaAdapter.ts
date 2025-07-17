@@ -1013,7 +1013,7 @@ export const transformPlotlyJsonToGanttChartProps = (
       const isXDate = input.layout?.xaxis?.type === 'date' || isDateArray(series.x);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const convertXValueToNumber = (value: any) => {
-        return isInvalidValue(value) ? 0 : isXDate ? new Date(value as string | number).getTime() : (value as number);
+        return isInvalidValue(value) ? 0 : isXDate ? +parseLocalDate(value) : +value;
       };
 
       return (series.y as Datum[])
@@ -2422,7 +2422,7 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
 
     if (!ax?.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
       const categoriesInTraceOrder = Array.from(new Set(values as string[]));
-      result[propName] = categoriesInTraceOrder;
+      result[propName] = ax?.autorange === 'reversed' ? categoriesInTraceOrder.reverse() : categoriesInTraceOrder;
       return;
     }
 
@@ -2430,4 +2430,20 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
   });
 
   return result;
+};
+
+const isoDateRegex = /^\d{4}(-\d{2}(-\d{2})?)?(T\d{2}:\d{2}(:\d{2}(\.\d{1,9})?)?(Z)?)?$/;
+
+const parseLocalDate = (value: string | number) => {
+  if (typeof value === 'string') {
+    const match = value.match(isoDateRegex);
+    if (match) {
+      if (!match[3]) {
+        value += 'T00:00';
+      } else if (match[6]) {
+        value = value.replace('Z', '');
+      }
+    }
+  }
+  return new Date(value);
 };
