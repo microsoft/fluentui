@@ -49,3 +49,11 @@ export type PresenceEasing = {
   /** Easing curve for the exit transition. Defaults to the `easing` param for symmetry. */
   exitEasing?: string;
 };
+
+/**
+ * Common opacity animation parameter for motion components.
+ */
+export type AnimateOpacity = {
+  /** Whether to animate the opacity. Defaults to `true`. */
+  animateOpacity?: boolean;
+};

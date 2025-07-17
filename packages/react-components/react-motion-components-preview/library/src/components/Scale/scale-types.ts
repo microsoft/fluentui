@@ -1,10 +1,8 @@
-import type { PresenceDuration, PresenceEasing } from '../../types';
+import type { PresenceDuration, PresenceEasing, AnimateOpacity } from '../../types';
 
 export type ScaleParams = PresenceDuration &
-  PresenceEasing & {
+  PresenceEasing &
+  AnimateOpacity & {
     /** The scale value to animate from. Defaults to `0.9`. */
     fromScale?: number;
-
-    /** Whether to animate the opacity. Defaults to `true`. */
-    animateOpacity?: boolean;
   };
