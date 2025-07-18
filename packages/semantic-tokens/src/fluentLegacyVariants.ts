@@ -717,7 +717,7 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'paddingCtrlHorizontalDefault',
   },
-    _ctrlToastBackgroundFlyoutLumBlend: {
+  _ctrlToastBackgroundFlyoutLumBlend: {
     f2Token: 'colorNeutralBackgroundInverted',
     originalToken: 'backgroundFlyoutLumBlend',
   },
@@ -769,7 +769,7 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     originalToken: 'textRampItemHeaderLineHeight',
     rawValue: '20px',
   },
-   _ctrlToastTitleCtrlLinkForegroundBrandRest: {
+  _ctrlToastTitleCtrlLinkForegroundBrandRest: {
     f2Token: 'colorBrandForeground1',
     originalToken: 'ctrlLinkForegroundBrandRest',
   },
