@@ -125,21 +125,29 @@ const useModernElementFactory: UseElementFactory = options => {
     return new Proxy({} as HTMLDivElement, {
       get(_, property: keyof HTMLDivElement) {
         // Heads up!
+        // `createPortal()` performs a check for `nodeType` property to determine if the mount node is a valid DOM node
+        // before mounting the portal. We hardcode the value to `Node.ELEMENT_NODE` to pass this check and avoid
+        // premature node creation
+        if (property === 'nodeType') {
+          return Node.ELEMENT_NODE;
+        }
+
+        // Heads up!
         // We intercept the `remove()` method to remove the mount node only when portal has been unmounted already.
         if (property === 'remove') {
           const targetElement = elementFactory.get(targetNode, false);
 
           if (targetElement) {
-            // If the mountElement has children, the portal is still mounted
+            // If the mountElement has children, the portal is still mounted, otherwise we can dispose of it
             const portalHasNoChildren = targetElement.childNodes.length === 0;
 
             if (portalHasNoChildren) {
-              return targetElement.remove.bind(targetElement);
+              elementFactory.dispose();
             }
           }
 
           return () => {
-            // If the mountElement has children, ignore the remove call
+            // Always return a no-op function to avoid errors in the code
           };
         }
 
@@ -153,8 +161,15 @@ const useModernElementFactory: UseElementFactory = options => {
         return targetProperty;
       },
 
-      set(_, property: keyof HTMLDivElement, value) {
-        const targetElement = elementFactory.get(targetNode, true);
+      set(_, property: keyof HTMLDivElement | '_virtual' | 'focusVisible', value) {
+        const ignoredProperty = property === '_virtual' || property === 'focusVisible';
+
+        if (ignoredProperty) {
+          // We ignore the `_virtual` and `focusVisible` properties to avoid conflicts with the proxy
+          return true;
+        }
+
+        const targetElement = elementFactory.get(targetNode, ignoredProperty);
 
         if (targetElement) {
           Object.assign(targetElement, { [property]: value });
@@ -165,12 +180,6 @@ const useModernElementFactory: UseElementFactory = options => {
       },
     });
   }, [elementFactory, targetNode, options.disabled]);
-
-  React.useEffect(() => {
-    return () => {
-      elementProxy?.remove();
-    };
-  }, [elementProxy]);
 
   useInsertionEffect!(() => {
     if (!elementProxy) {
@@ -190,6 +199,12 @@ const useModernElementFactory: UseElementFactory = options => {
       elementProxy.removeAttribute('dir');
     };
   }, [className, dir, elementProxy, focusVisibleRef]);
+
+  React.useEffect(() => {
+    return () => {
+      elementProxy?.remove();
+    };
+  }, [elementProxy]);
 
   return elementProxy;
 };
