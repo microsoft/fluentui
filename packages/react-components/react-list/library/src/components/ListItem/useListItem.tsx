@@ -79,7 +79,7 @@ export const useListItem_unstable = (
     if (rootRef.current) {
       validateListItem(rootRef.current);
     }
-  }, []);
+  }, [validateListItem]);
 
   const triggerAction = (e: React.MouseEvent | React.KeyboardEvent) => {
     const actionEvent = createListItemActionEvent(e);
