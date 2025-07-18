@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Fri, 27 Jun 2025 13:39:41 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.22.0)
+
+Thu, 17 Jul 2025 13:49:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.21.3..@fluentui/react-provider_v9.22.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-tabster to v9.26.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
 
 ## [9.21.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.21.3)
 

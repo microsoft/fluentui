@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 16 Jul 2025 07:20:17 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Jul 2025 07:19:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.15)
+
+Fri, 18 Jul 2025 07:19:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.14..@fluentui/react-charting_v5.24.15)
+
+### Patches
+
+- fix: resolve minor Gantt chart bugs and optimize logic ([PR #34841](https://github.com/microsoft/fluentui/pull/34841) by kumarkshitij@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.24 ([PR #34841](https://github.com/microsoft/fluentui/pull/34841) by beachball)
 
 ## [5.24.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.14)
 

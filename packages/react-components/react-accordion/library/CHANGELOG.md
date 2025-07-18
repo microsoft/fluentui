@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Wed, 16 Jul 2025 13:52:50 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.8.0)
+
+Thu, 17 Jul 2025 13:49:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.7.5..@fluentui/react-accordion_v9.8.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-aria to v9.15.4 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-tabster to v9.26.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
 
 ## [9.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.7.5)
 

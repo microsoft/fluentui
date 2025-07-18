@@ -225,7 +225,7 @@ const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean
 
 const validateBarData = (data: Partial<PlotData>) => {
   if (data.orientation === 'h') {
-    if (isStringArray(data.x) && !isDateArray(data.x)) {
+    if (!isNumberArray(data.x) && !isDateArray(data.x)) {
       throw new Error(
         `${UNSUPPORTED_MSG_PREFIX} ${data.type}, orientation: ${data.orientation}, string x values not supported.`,
       );

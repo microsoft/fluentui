@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Thu, 17 Jul 2025 13:49:48 GMT",
+      "tag": "@fluentui/react-tabster_v9.26.0",
+      "version": "9.26.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jun 2025 13:39:40 GMT",
       "tag": "@fluentui/react-tabster_v9.25.3",
       "version": "9.25.3",

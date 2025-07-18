@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Thu, 17 Jul 2025 07:19:56 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.207",
+      "version": "8.14.207",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Jul 2025 07:21:40 GMT",
       "tag": "@fluentui/react-experiments_v8.14.207",
       "version": "8.14.207",
