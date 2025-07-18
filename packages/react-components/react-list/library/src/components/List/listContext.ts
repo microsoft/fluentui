@@ -1,6 +1,6 @@
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
-import { SynchronousListContextValue, ListContextValue } from './List.types';
+import { ListSynchronousContextValue, ListContextValue } from './List.types';
 import * as React from 'react';
 
 export const listContextDefaultValue: ListContextValue = {
@@ -23,11 +23,11 @@ export const useListContext_unstable = <T>(selector: ContextSelector<ListContext
 // This results in issues with element/role validation, as the ListItem component has not been updated yet
 // when the validation happens.
 // https://github.com/microsoft/fluentui/issues/34467
-const SynchronousListContext = React.createContext<SynchronousListContextValue | undefined>(undefined);
+const ListSynchronousContext = React.createContext<ListSynchronousContextValue | undefined>(undefined);
 
-export const SynchronousListContextProvider = SynchronousListContext.Provider;
-export const useSynchronousListContext = () =>
-  React.useContext(SynchronousListContext) || {
+export const ListSynchronousContextProvider = ListSynchronousContext.Provider;
+export const useListSynchronousContext = () =>
+  React.useContext(ListSynchronousContext) || {
     navigationMode: undefined,
     listItemRole: 'listitem',
   };

@@ -3,7 +3,7 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { ListState, ListSlots, ListContextValues } from './List.types';
-import { ListContextProvider, SynchronousListContextProvider } from './listContext';
+import { ListContextProvider, ListSynchronousContextProvider } from './listContext';
 
 /**
  * Render the final JSX of List
@@ -13,9 +13,9 @@ export const renderList_unstable = (state: ListState, contextValues: ListContext
 
   return (
     <ListContextProvider value={contextValues.listContext}>
-      <SynchronousListContextProvider value={contextValues.synchronousContext}>
+      <ListSynchronousContextProvider value={contextValues.synchronousContext}>
         <state.root />
-      </SynchronousListContextProvider>
+      </ListSynchronousContextProvider>
     </ListContextProvider>
   );
 };

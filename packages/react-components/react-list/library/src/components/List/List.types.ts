@@ -37,17 +37,17 @@ export type ListContextValue = {
   validateListItem: (listItemElement: HTMLElement) => void;
 };
 
-export type SynchronousListContextValue = {
+export type ListSynchronousContextValue = {
   navigationMode: ListNavigationMode | undefined;
   listItemRole: string;
 };
 
 export type ListContextValues = {
   listContext: ListContextValue;
-  synchronousContext: SynchronousListContextValue;
+  synchronousContext: ListSynchronousContextValue;
 };
 
 /**
  * State used in rendering List
  */
-export type ListState = ComponentState<ListSlots> & ListContextValue & SynchronousListContextValue;
+export type ListState = ComponentState<ListSlots> & ListContextValue & ListSynchronousContextValue;
