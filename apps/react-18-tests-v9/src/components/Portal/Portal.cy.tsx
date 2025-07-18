@@ -65,4 +65,27 @@ describe('Portal', () => {
     cy.get('body').children().should('have.length', 1);
     cy.get('body').children().first().should('have.attr', 'data-cy-root');
   });
+
+  it('empty portal renders as expected', () => {
+    mount(<Portal />);
+
+    cy.get('body > [data-portal-node="true"]').should('exist');
+    cy.get('body > [data-portal-node="true"]').should('be.empty');
+  });
+
+  it('remounting the portal should not cause issues', () => {
+    mount(<TestComponent />);
+
+    // Open the portal
+    cy.get('#trigger').realClick();
+    cy.get('body > [data-portal-node="true"]').should('exist');
+
+    // Close the portal
+    cy.get('#trigger').realClick();
+    cy.get('body > [data-portal-node="true"]').should('not.exist');
+
+    // Open the portal again
+    cy.get('#trigger').realClick();
+    cy.get('body > [data-portal-node="true"]').should('exist');
+  });
 });
