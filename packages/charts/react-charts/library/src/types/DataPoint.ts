@@ -156,6 +156,12 @@ export interface ChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: AccessibilityProps;
+
+  /**
+   * Annotation information for the data point
+   * This is an optional prop, If not provided, no additional information will be displayed.
+   */
+  annotationInformation?: string[];
 }
 
 /**

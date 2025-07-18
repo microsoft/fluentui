@@ -41,6 +41,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [selectedLegend, setSelectedLegend] = React.useState<string>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
+  const rectRef = React.useRef<SVGRectElement | null>(null);
 
   function _refCallback(element: SVGGElement, legendTitle: string | undefined): void {
     _refArray.push({ index: legendTitle, refElement: element });
@@ -142,6 +143,12 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   }
 
   function _getDefaultTextData(data: ChartProps): JSX.Element {
+    const chartDataMode = props.chartDataMode || 'default';
+    // In case we want to hide the chart data text, we return early
+    if (chartDataMode === 'hidden') {
+      return <></>;
+    }
+
     const { culture } = props;
     const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData!, 'text', false);
     if (!isSingleBar) {
@@ -156,7 +163,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         </div>
       );
     }
-    const chartDataMode = props.chartDataMode || 'default';
+
     const chartData: ChartDataPoint = data!.chartData![0];
     const x = chartData.horizontalBarChartdata!.x;
     const y = chartData.horizontalBarChartdata!.total!;
@@ -204,6 +211,169 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     );
   }
 
+  function _createAnnotatedBars(data: ChartProps): JSX.Element[] {
+    const chartData = data.chartData ?? [];
+    const noOfSegments = chartData.length;
+    const totalMarginPercent = barSpacingInPercent * (noOfSegments - 1);
+    const segmentStarts: number[] = [];
+    const defaultColors: string[] = [
+      tokens.colorPaletteBlueForeground2,
+      tokens.colorPaletteCornflowerForeground2,
+      tokens.colorPaletteDarkGreenForeground2,
+      tokens.colorPaletteNavyForeground2,
+      tokens.colorPaletteDarkOrangeForeground2,
+    ];
+
+    // Total value of all segments in the bar
+    const totalBarXValue = chartData.reduce((acc, point) => {
+      const x = point.horizontalBarChartdata?.x;
+      return acc + (typeof x === 'number' ? x : 0);
+    }, 0);
+
+    const totalMarginValue = (totalMarginPercent * totalBarXValue) / 100;
+    const MIN_WIDTH_PX = 35; // min visible width in pixels
+
+    const containerWidth = props.containerWidth ?? 600; // fallback if unknown
+    const minSegmentMinWidthPercent = (MIN_WIDTH_PX / containerWidth) * 100;
+    let minSegmentValueDisplayed = (minSegmentMinWidthPercent / 100) * totalBarXValue;
+
+    // Find the sum of deviations for segments below the minimum value
+    const underMinDeviations = chartData.reduce((acc, point) => {
+      const value = point.horizontalBarChartdata?.x ?? 0;
+      if (value < minSegmentValueDisplayed) {
+        return acc + (minSegmentValueDisplayed - value);
+      }
+      return acc;
+    }, 0);
+
+    // Find the sum of deviations for segments above the minimum value
+    const overMinTotalDeviations = chartData.reduce((acc, point) => {
+      const value = point.horizontalBarChartdata?.x ?? 0;
+      if (value > minSegmentValueDisplayed) {
+        return acc + (value - minSegmentValueDisplayed);
+      }
+      return acc;
+    }, 0);
+
+    // Scale the portion of the segments larger than the minimum to reclaim space for the segments less
+    // than the minimum and the space needed for the margins
+    let scale = (overMinTotalDeviations - underMinDeviations - totalMarginValue) / overMinTotalDeviations;
+
+    // If the segment count at min. width overflows, fall back to shrinking below the minimum with all segments the same size
+    if (scale < 0) {
+      scale = 0;
+      // Don't let the segments scale below 1 margin worth of space, falling back to allowing horizontal overflow
+      minSegmentValueDisplayed = Math.max(totalBarXValue - totalMarginValue, totalMarginValue * 2) / noOfSegments;
+    }
+
+    // Normalize your chart data such that:
+    // Small segments (value < minSegmentValueDisplayed) are raised to the minimum threshold.
+    // Large segments (value >= minSegmentValueDisplayed) are scaled down using a scale factor:
+
+    const adjustedSegments = chartData.map(point => {
+      const originalValue = point.horizontalBarChartdata?.x ?? 0;
+      // Percent of original
+      const originalPercent = totalBarXValue > 0 ? (originalValue * 100) / totalBarXValue : 0;
+      // Adjust value
+      const adjustedValue =
+        originalValue < minSegmentValueDisplayed
+          ? minSegmentValueDisplayed
+          : (originalValue - minSegmentValueDisplayed) * scale + minSegmentValueDisplayed;
+      // Adjusted percent
+      const adjustedPercent = totalBarXValue > 0 ? (adjustedValue * 100) / totalBarXValue : 0;
+      return {
+        originalValue,
+        originalPercent,
+        adjustedValue,
+        adjustedPercent,
+      };
+    });
+
+    let prevPosition = 0;
+
+    const annotatedBars = adjustedSegments!.map((segment, index) => {
+      const point = chartData![index];
+      const color = point.color ?? defaultColors[Math.floor(Math.random() * 4)];
+      const xValue = point.horizontalBarChartdata!.x;
+      const isLegendSelected: boolean = _legendHighlighted(point.legend) || _noLegendHighlighted();
+
+      segmentStarts.push(prevPosition);
+      prevPosition += segment.adjustedPercent;
+
+      const barX = _isRTL
+        ? 100 - segmentStarts[index] - segment.adjustedPercent - index * barSpacingInPercent
+        : segmentStarts[index] + index * barSpacingInPercent;
+
+      const labelX = barX + segment.adjustedPercent / 2;
+      const labelY = _barHeight + 12;
+
+      // We want the text offset a bit more for double digits and less for single digits if an icon to be displayed
+      const offsetForAnnotationValue = props.displayAnnotationIcon ? (segment.adjustedPercent <= 9 ? 1 : 2) : 0;
+
+      const MIN_VISIBLE_WIDTH = 25; // px
+      // inside your render loop
+      const segmentWidthPx = (segment.adjustedPercent / 100) * (props?.containerWidth ?? 0);
+
+      return (
+        <React.Fragment key={index}>
+          <rect
+            ref={rectRef}
+            x={`${barX}%`}
+            y={0}
+            width={segment.adjustedPercent + '%'}
+            height={_barHeight}
+            fill={color}
+            onMouseOver={
+              props.allowHoverOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
+            }
+            onFocus={
+              props.allowHoverOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
+            }
+            role="img"
+            aria-label={_getAriaLabel(point)}
+            onBlur={_hoverOff}
+            onMouseLeave={_hoverOff}
+            className={classes.barWrapper}
+            opacity={isLegendSelected ? 1 : 0.1}
+            tabIndex={point.legend !== '' ? 0 : undefined}
+          />
+          {/* Render the annotation text and icon if the segment is wide enough
+          or only the text if there is no annotation icon to be displayed*/}
+          {(segmentWidthPx >= MIN_VISIBLE_WIDTH || !props.displayAnnotationIcon) && (
+            <g>
+              <text
+                x={`${labelX - offsetForAnnotationValue}%`}
+                y={labelY}
+                textAnchor="middle"
+                aria-hidden={true}
+                className={classes.chartAnnotationText}
+              >
+                {segment.originalValue === 0 ? '0%' : `${Math.max(1, Math.round(segment.originalPercent))}%`}
+              </text>
+
+              {props.displayAnnotationIcon && (
+                <foreignObject x={`${labelX + 0.5}%`} y={labelY - 13} width="16" height="16">
+                  <div>{props.displayAnnotationIcon(point, index)}</div>
+                </foreignObject>
+              )}
+            </g>
+          )}
+          {props.displayAnnotationIcon && segmentWidthPx < MIN_VISIBLE_WIDTH && (
+            <g>
+              {props.displayAnnotationIcon && (
+                <foreignObject x={`${labelX - 1}%`} y={labelY - 13} width="16" height="16">
+                  <div>{props.displayAnnotationIcon(point, index)}</div>
+                </foreignObject>
+              )}
+            </g>
+          )}
+        </React.Fragment>
+      );
+    });
+
+    return annotatedBars;
+  }
+
   /**
    * This functions returns an array of <rect> elements, which form the bars
    * For each bar an x value, and a width needs to be specified
@@ -230,6 +400,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         acc + (point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0),
       0,
     );
+
     let prevPosition = 0;
     let value = 0;
 
@@ -324,6 +495,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         />
       );
     });
+
     return bars;
   }
 
@@ -408,7 +580,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         // Hide right side text of chart title for absolute-scale variant
         const chartDataText =
           props.variant === HorizontalBarChartVariant.AbsoluteScale ? null : _getChartDataText(points!);
-        const bars = _createBars(points!);
+        const bars = props.showAnnotationsInPercentage ? _createAnnotatedBars(points!) : _createBars(points!);
         const keyVal = _uniqLineText + '_' + index;
         // ToDo - Showtriangle property is per data series. How to account for it in the new stylesheet
         /*         const classes = useHorizontalBarChartStyles(props.styles!, {

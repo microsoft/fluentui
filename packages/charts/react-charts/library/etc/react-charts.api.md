@@ -225,10 +225,11 @@ export interface Chart {
 }
 
 // @public
-export type ChartDataMode = 'default' | 'fraction' | 'percentage';
+export type ChartDataMode = 'default' | 'fraction' | 'percentage' | 'hidden';
 
 // @public (undocumented)
 export interface ChartDataPoint {
+    annotationInformation?: string[];
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     data?: number;
@@ -721,14 +722,18 @@ export const HorizontalBarChart: React_2.FunctionComponent<HorizontalBarChartPro
 
 // @public
 export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivElement> {
+    allowHoverOnSegment?: boolean;
     barHeight?: number;
     calloutProps?: ChartPopoverProps;
     calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     chartDataMode?: ChartDataMode;
     className?: string;
     color?: string;
+    containerWidth?: number;
     culture?: string;
     data?: ChartProps[];
+    // (undocumented)
+    displayAnnotationIcon?: (segment: ChartDataPoint, index: number) => React_2.ReactNode;
     hideLabels?: boolean;
     hideRatio?: boolean[];
     hideTooltip?: boolean;
@@ -737,6 +742,7 @@ export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivEl
     // (undocumented)
     legendsOverflowText?: any;
     onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSX.Element | undefined;
+    showAnnotationsInPercentage?: boolean;
     showTriangle?: boolean;
     styles?: HorizontalBarChartStyles;
     variant?: HorizontalBarChartVariant;
@@ -749,6 +755,7 @@ export interface HorizontalBarChartStyles {
     barWrapper: string;
     benchmarkContainer: string;
     chart: string;
+    chartAnnotationText: string;
     chartDataTextDenominator: string;
     chartTitle: string;
     chartTitleLeft: string;
@@ -1252,6 +1259,13 @@ export interface ScatterChartStyles extends CartesianChartStyles {
 export interface Schema {
     plotlySchema: any;
 }
+
+// @public (undocumented)
+export type segment = {
+    percent: number;
+    adjustedPercent: number;
+    rawValue: number;
+};
 
 // @public (undocumented)
 export const Shape: React_2.FunctionComponent<ShapeProps>;
