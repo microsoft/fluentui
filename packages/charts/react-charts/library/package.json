@@ -37,7 +37,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/chart-utilities": "^1.1.23",
+    "@fluentui/chart-utilities": "^1.1.24",
     "@fluentui/react-button": "^9.6.0",
     "@fluentui/react-jsx-runtime": "^9.1.2",
     "@fluentui/react-overflow": "^9.5.0",

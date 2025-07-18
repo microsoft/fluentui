@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Fri, 18 Jul 2025 07:19:59 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.24",
+      "version": "1.1.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "8bdaf976f78b536e4692e1e5950d465b476c32e8",
+            "comment": "fix: correct check for string x-values in horizontal bar trace"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Jul 2025 07:20:17 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.23",
       "version": "1.1.23",

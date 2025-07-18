@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: resolve minor Gantt chart bugs and optimize logic",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
