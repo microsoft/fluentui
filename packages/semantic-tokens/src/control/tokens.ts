@@ -71,7 +71,6 @@ import {
   colorNeutralBackground3,
   colorTransparentStroke,
   colorNeutralBackground5,
-  colorNeutralForeground3,
   colorNeutralBackground4,
   colorPaletteMarigoldBackground3,
   colorPaletteBerryForeground3,
@@ -323,7 +322,7 @@ export const paddingContentNone = `var(${paddingContentNoneRaw}, ${spacingHorizo
 export const paddingContentAlignOutdentTextOnSubtle = `var(${paddingContentAlignOutdentTextOnSubtleRaw})`;
 export const paddingContentXxSmall = `var(${paddingContentXxSmallRaw})`;
 export const paddingContentXSmall = `var(${paddingContentXSmallRaw})`;
-export const paddingContentSmall = `var(${paddingContentSmallRaw})`;
+export const paddingContentSmall = `var(${paddingContentSmallRaw}, 12px)`;
 export const paddingContentMedium = `var(${paddingContentMediumRaw})`;
 export const paddingContentLarge = `var(${paddingContentLargeRaw}, ${spacingHorizontalXXL})`;
 export const paddingContentXLarge = `var(${paddingContentXLargeRaw})`;
@@ -351,7 +350,7 @@ export const gapBetweenContentMedium = `var(${gapBetweenContentMediumRaw})`;
 export const gapBetweenContentLarge = `var(${gapBetweenContentLargeRaw})`;
 export const gapBetweenContentXLarge = `var(${gapBetweenContentXLargeRaw})`;
 export const gapBetweenContentXxLarge = `var(${gapBetweenContentXxLargeRaw})`;
-export const gapBetweenCtrlLgDefault = `var(${gapBetweenCtrlLgDefaultRaw})`;
+export const gapBetweenCtrlLgDefault = `var(${gapBetweenCtrlLgDefaultRaw}, 16px)`;
 export const gapBetweenCtrlSmDefault = `var(${gapBetweenCtrlSmDefaultRaw})`;
 export const gapInsideCtrlDefault = `var(${gapInsideCtrlDefaultRaw}, ${spacingHorizontalS})`;
 export const gapInsideCtrlSmDefault = `var(${gapInsideCtrlSmDefaultRaw}, ${spacingHorizontalXS})`;
@@ -405,7 +404,7 @@ export const backgroundCtrlNeutralPressed = `var(${backgroundCtrlNeutralPressedR
 export const backgroundCtrlNeutralDisabled = `var(${backgroundCtrlNeutralDisabledRaw}, ${colorNeutralBackgroundDisabled})`;
 export const backgroundCtrlSubtleHover = `var(${backgroundCtrlSubtleHoverRaw}, ${colorSubtleBackgroundHover})`;
 export const backgroundCtrlSubtlePressed = `var(${backgroundCtrlSubtlePressedRaw}, ${colorSubtleBackgroundPressed})`;
-export const backgroundFlyoutLumBlend = `var(${backgroundFlyoutLumBlendRaw})`;
+export const backgroundFlyoutLumBlend = `var(${backgroundFlyoutLumBlendRaw}, ${colorNeutralBackground1})`;
 export const backgroundFlyoutColorBlend = `var(${backgroundFlyoutColorBlendRaw})`;
 export const cornerZero = `var(${cornerZeroRaw}, ${borderRadiusNone})`;
 export const cornerBezel = `var(${cornerBezelRaw})`;
@@ -450,7 +449,7 @@ export const statusImportantTintBackground = `var(${statusImportantTintBackgroun
 export const statusImportantTintStroke = `var(${statusImportantTintStrokeRaw}, ${colorTransparentStroke})`;
 export const statusImportantTintForeground = `var(${statusImportantTintForegroundRaw}, ${colorNeutralForeground1})`;
 export const statusInformativeBackground = `var(${statusInformativeBackgroundRaw}, ${colorNeutralBackground5})`;
-export const statusInformativeTintForeground = `var(${statusInformativeTintForegroundRaw}, ${colorNeutralForeground3})`;
+export const statusInformativeTintForeground = `var(${statusInformativeTintForegroundRaw}, ${colorNeutralForeground2})`;
 export const statusInformativeTintStroke = `var(${statusInformativeTintStrokeRaw}, ${colorNeutralStroke1})`;
 export const statusInformativeTintBackground = `var(${statusInformativeTintBackgroundRaw}, ${colorNeutralBackground4})`;
 export const statusAwayForeground = `var(${statusAwayForegroundRaw}, ${colorPaletteMarigoldBackground3})`;
