@@ -1569,7 +1569,9 @@ export const transformPlotlyJsonToChartTableProps = (
   return {
     headers: normalizeHeaders(
       tableData.header?.values ?? [],
-      tableData.header?.font ? tableData.header : input.layout?.template?.data?.table![0].header,
+      tableData.header && Object.keys(tableData.header).length > 0
+        ? tableData.header
+        : input.layout?.template?.data?.table![0].header,
     ),
     rows,
     width: input.layout?.width,
