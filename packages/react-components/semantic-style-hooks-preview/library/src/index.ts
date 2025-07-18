@@ -84,3 +84,10 @@ export {
   useSemanticToolbarToggleButtonStyles,
 } from './component-styles/Toolbar';
 export { useSemanticInfoButtonStyles, useSemanticInfoLabelStyles } from './component-styles/InfoLabel';
+export {
+  useSemanticToastBodyStyles,
+  useSemanticToastContainerStyles,
+  useSemanticToastFooterStyles,
+  useSemanticToastStyles,
+  useSemanticToastTitleStyles,
+} from './component-styles/Toast';

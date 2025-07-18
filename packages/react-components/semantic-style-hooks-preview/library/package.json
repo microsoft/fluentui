@@ -61,6 +61,7 @@
     "@fluentui/react-text": "^9.4.36",
     "@fluentui/react-textarea": "^9.4.6",
     "@fluentui/react-theme": "^9.1.24",
+    "@fluentui/react-toast": "^9.4.8",
     "@fluentui/react-toolbar": "^9.4.5",
     "@fluentui/react-tooltip": "^9.6.6",
     "@fluentui/react-tree": "^9.10.9",
