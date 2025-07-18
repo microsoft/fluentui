@@ -17,6 +17,7 @@ import {
   ctrlInputBottomLineStrokePressedRaw,
   ctrlInputBackgroundDisabledRaw,
 } from '../components/input/variables';
+import { ctrlLinkForegroundBrandRestRaw } from '../components/link/variables';
 import { ctrlListIndentLevel1Raw } from '../components/list/variables';
 import {
   ctrlProgressBackgroundEmptyRaw,
@@ -80,6 +81,10 @@ import {
   textGlobalBody3LineHeightRaw,
   foregroundCtrlBrandHoverRaw,
   foregroundCtrlBrandPressedRaw,
+  backgroundFlyoutLumBlendRaw,
+  paddingContentSmallRaw,
+  textGlobalBody2FontSizeRaw,
+  statusInformativeTintForegroundRaw,
 } from '../control/variables';
 import {
   colorTransparentBackground,
@@ -154,6 +159,16 @@ import {
   colorNeutralForeground1Pressed,
   colorNeutralForeground2Hover,
   colorNeutralForeground2Pressed,
+  colorNeutralBackgroundInverted,
+  colorNeutralForegroundInverted2,
+  shadow8,
+  colorBrandForeground1,
+  colorBrandForegroundInverted,
+  colorNeutralForegroundInverted,
+  colorStatusDangerForegroundInverted,
+  colorStatusSuccessForegroundInverted,
+  colorStatusWarningForeground1,
+  colorStatusWarningForegroundInverted,
   colorTransparentBackgroundHover,
   colorTransparentBackgroundPressed,
 } from '../legacy/tokens';
@@ -204,6 +219,8 @@ import {
   foregroundCtrlActiveBrandPressedRaw,
   foregroundCtrlIconOnSubtleHoverRaw,
   foregroundCtrlIconOnSubtlePressedRaw,
+  foregroundContentNeutralSecondaryRaw,
+  textRampItemHeaderFontSizeRaw,
 } from '../optional/variables';
 
 /**
@@ -1438,6 +1455,181 @@ export const _ctrlTabSmGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${spa
  * please use paddingCtrlHorizontalDefault instead.
  */
 export const _ctrlTabSmPaddingHorizontalDefault = `var(${paddingCtrlHorizontalDefaultRaw}, ${spacingHorizontalSNudge})`;
+/**
+ * This is a legacy variant for backgroundFlyoutLumBlend to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use backgroundFlyoutLumBlend instead.
+ */
+export const _ctrlToastBackgroundFlyoutLumBlend = `var(${backgroundFlyoutLumBlendRaw}, ${colorNeutralBackgroundInverted})`;
+/**
+ * This is a legacy variant for foregroundContentNeutralPrimary to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundContentNeutralPrimary instead.
+ */
+export const _ctrlToastBodyForegroundContentNeutralPrimary = `var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForegroundInverted2}))`;
+/**
+ * This is a legacy variant for foregroundContentNeutralSecondary to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundContentNeutralSecondary instead.
+ */
+export const _ctrlToastBodyForegroundContentNeutralSecondary = `var(${foregroundContentNeutralSecondaryRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForegroundInverted2}))`;
+/**
+ * This is a legacy variant for ctrlFocusOuterStroke to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlFocusOuterStroke instead.
+ */
+export const _ctrlToastContainerCtrlFocusOuterStroke = `var(${ctrlFocusOuterStrokeRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorStrokeFocus2}))`;
+/**
+ * This is a legacy variant for cornerFlyoutRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use cornerFlyoutRest instead.
+ */
+export const _ctrlToastContainerFlyoutRest = `var(${cornerFlyoutRestRaw}, ${borderRadiusMedium})`;
+/**
+ * This is a legacy variant for cornerFlyoutRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use cornerFlyoutRest instead.
+ */
+export const _ctrlToastCornerFlyoutRest = `var(${cornerFlyoutRestRaw}, ${borderRadiusMedium})`;
+/**
+ * This is a legacy variant for gapBetweenCtrlDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use gapBetweenCtrlDefault instead.
+ */
+export const _ctrlToastFooterGapBetweenCtrlDefault = `var(${gapBetweenCtrlDefaultRaw}, 14px)`;
+/**
+ * This is a legacy variant for paddingContentSmall to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingContentSmall instead.
+ */
+export const _ctrlToastFooterPaddingContentSmall = `var(${paddingContentSmallRaw}, 16px)`;
+/**
+ * This is a legacy variant for foregroundContentNeutralPrimary to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundContentNeutralPrimary instead.
+ */
+export const _ctrlToastForegroundContentNeutralPrimary = `var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForegroundInverted2}))`;
+/**
+ * This is a legacy variant for shadowFlyout to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use shadowFlyout instead.
+ */
+export const _ctrlToastShadowFlyout = `var(${shadowFlyoutRaw}, ${shadow8})`;
+/**
+ * This is a legacy variant for strokeFlyout to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use strokeFlyout instead.
+ */
+export const _ctrlToastStrokeFlyout = `var(${strokeFlyoutRaw}, var(${nullColorRaw}, ${colorTransparentStroke}))`;
+/**
+ * This is a legacy variant for textRampItemHeaderFontSize to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use textRampItemHeaderFontSize instead.
+ */
+export const _ctrlToastTextRampItemHeaderFontSize = `var(${textRampItemHeaderFontSizeRaw}, var(${textGlobalBody2FontSizeRaw}, 16px))`;
+/**
+ * This is a legacy variant for textRampItemHeaderLineHeight to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use textRampItemHeaderLineHeight instead.
+ */
+export const _ctrlToastTextRampItemHeaderLineHeight = `var(${textRampItemHeaderLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}, 20px))`;
+/**
+ * This is a legacy variant for ctrlLinkForegroundBrandRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlLinkForegroundBrandRest instead.
+ */
+export const _ctrlToastTitleCtrlLinkForegroundBrandRest = `var(${ctrlLinkForegroundBrandRestRaw}, var(${foregroundCtrlBrandRestRaw}, ${colorBrandForeground1}))`;
+/**
+ * This is a legacy variant for ctrlLinkForegroundBrandRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlLinkForegroundBrandRest instead.
+ */
+export const _ctrlToastTitleCtrlLinkForegroundBrandRestInverted = `var(${ctrlLinkForegroundBrandRestRaw}, var(${foregroundCtrlBrandRestRaw}, ${colorBrandForegroundInverted}))`;
+/**
+ * This is a legacy variant for foregroundContentNeutralPrimary to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundContentNeutralPrimary instead.
+ */
+export const _ctrlToastTitleForegroundContentNeutralPrimary = `var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForegroundInverted2}))`;
+/**
+ * This is a legacy variant for foregroundContentNeutralPrimary to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundContentNeutralPrimary instead.
+ */
+export const _ctrlToastTitleForegroundContentNeutralPrimaryMedia = `var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForegroundInverted}))`;
+/**
+ * This is a legacy variant for gapBetweenCtrlDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use gapBetweenCtrlDefault instead.
+ */
+export const _ctrlToastTitleGapBetweenCtrlDefault = `var(${gapBetweenCtrlDefaultRaw}, 12px)`;
+/**
+ * This is a legacy variant for statusDangerTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusDangerTintForeground instead.
+ */
+export const _ctrlToastTitleStatusDangerTintForeground = `var(${statusDangerTintForegroundRaw}, ${colorStatusDangerForeground1})`;
+/**
+ * This is a legacy variant for statusDangerTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusDangerTintForeground instead.
+ */
+export const _ctrlToastTitleStatusDangerTintForegroundInverted = `var(${statusDangerTintForegroundRaw}, ${colorStatusDangerForegroundInverted})`;
+/**
+ * This is a legacy variant for statusInformativeTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusInformativeTintForeground instead.
+ */
+export const _ctrlToastTitleStatusInformativeTintForeground = `var(${statusInformativeTintForegroundRaw}, ${colorNeutralForeground3})`;
+/**
+ * This is a legacy variant for statusInformativeTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusInformativeTintForeground instead.
+ */
+export const _ctrlToastTitleStatusInformativeTintForegroundInverted = `var(${statusInformativeTintForegroundRaw}, ${colorNeutralForegroundInverted2})`;
+/**
+ * This is a legacy variant for statusSuccessTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusSuccessTintForeground instead.
+ */
+export const _ctrlToastTitleStatusSuccessTintForegroundInverted = `var(${statusSuccessTintForegroundRaw}, ${colorStatusSuccessForegroundInverted})`;
+/**
+ * This is a legacy variant for statusWarningTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusWarningTintForeground instead.
+ */
+export const _ctrlToastTitleStatusWarningTintForeground = `var(${statusWarningTintForegroundRaw}, ${colorStatusWarningForeground1})`;
+/**
+ * This is a legacy variant for statusWarningTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusWarningTintForeground instead.
+ */
+export const _ctrlToastTitleStatusWarningTintForegroundInverted = `var(${statusWarningTintForegroundRaw}, ${colorStatusWarningForegroundInverted})`;
 /**
  * This is a legacy variant for paddingCtrlTextBottom to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.

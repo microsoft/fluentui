@@ -353,7 +353,7 @@ export const backgroundFlyoutColorBlend = "var(--smtc-background-flyout-color-bl
 export const backgroundFlyoutColorBlendRaw = "--smtc-background-flyout-color-blend";
 
 // @public (undocumented)
-export const backgroundFlyoutLumBlend = "var(--smtc-background-flyout-lum-blend)";
+export const backgroundFlyoutLumBlend = "var(--smtc-background-flyout-lum-blend, var(--colorNeutralBackground1))";
 
 // @public (undocumented)
 export const backgroundFlyoutLumBlendRaw = "--smtc-background-flyout-lum-blend";
@@ -3226,6 +3226,81 @@ export const _ctrlTabSmGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, v
 // @public
 export const _ctrlTabSmPaddingHorizontalDefault = "var(--smtc-padding-ctrl-horizontal-default, var(--spacingHorizontalSNudge))";
 
+// @public
+export const _ctrlToastBackgroundFlyoutLumBlend = "var(--smtc-background-flyout-lum-blend, var(--colorNeutralBackgroundInverted))";
+
+// @public
+export const _ctrlToastBodyForegroundContentNeutralPrimary = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForegroundInverted2)))";
+
+// @public
+export const _ctrlToastBodyForegroundContentNeutralSecondary = "var(--smtc-foreground-content-neutral-secondary, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForegroundInverted2)))";
+
+// @public
+export const _ctrlToastContainerCtrlFocusOuterStroke = "var(--smtc-ctrl-focus-outer-stroke, var(--smtc-background-ctrl-brand-rest, var(--colorStrokeFocus2)))";
+
+// @public
+export const _ctrlToastContainerFlyoutRest = "var(--smtc-corner-flyout-rest, var(--borderRadiusMedium))";
+
+// @public
+export const _ctrlToastCornerFlyoutRest = "var(--smtc-corner-flyout-rest, var(--borderRadiusMedium))";
+
+// @public
+export const _ctrlToastFooterGapBetweenCtrlDefault = "var(--smtc-gap-between-ctrl-default, 14px)";
+
+// @public
+export const _ctrlToastFooterPaddingContentSmall = "var(--smtc-padding-content-small, 16px)";
+
+// @public
+export const _ctrlToastForegroundContentNeutralPrimary = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForegroundInverted2)))";
+
+// @public
+export const _ctrlToastShadowFlyout = "var(--smtc-shadow-flyout, var(--shadow8))";
+
+// @public
+export const _ctrlToastStrokeFlyout = "var(--smtc-stroke-flyout, var(--smtc-null-color, var(--colorTransparentStroke)))";
+
+// @public
+export const _ctrlToastTextRampItemHeaderFontSize = "var(--smtc-text-ramp-item-header-font-size, var(--smtc-text-global-body2-font-size, 16px))";
+
+// @public
+export const _ctrlToastTextRampItemHeaderLineHeight = "var(--smtc-text-ramp-item-header-line-height, var(--smtc-text-global-body2-line-height, 20px))";
+
+// @public
+export const _ctrlToastTitleCtrlLinkForegroundBrandRest = "var(--smtc-ctrl-link-foreground-brand-rest, var(--smtc-foreground-ctrl-brand-rest, var(--colorBrandForeground1)))";
+
+// @public
+export const _ctrlToastTitleCtrlLinkForegroundBrandRestInverted = "var(--smtc-ctrl-link-foreground-brand-rest, var(--smtc-foreground-ctrl-brand-rest, var(--colorBrandForegroundInverted)))";
+
+// @public
+export const _ctrlToastTitleForegroundContentNeutralPrimary = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForegroundInverted2)))";
+
+// @public
+export const _ctrlToastTitleForegroundContentNeutralPrimaryMedia = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForegroundInverted)))";
+
+// @public
+export const _ctrlToastTitleGapBetweenCtrlDefault = "var(--smtc-gap-between-ctrl-default, 12px)";
+
+// @public
+export const _ctrlToastTitleStatusDangerTintForeground = "var(--smtc-status-danger-tint-foreground, var(--colorStatusDangerForeground1))";
+
+// @public
+export const _ctrlToastTitleStatusDangerTintForegroundInverted = "var(--smtc-status-danger-tint-foreground, var(--colorStatusDangerForegroundInverted))";
+
+// @public
+export const _ctrlToastTitleStatusInformativeTintForeground = "var(--smtc-status-informative-tint-foreground, var(--colorNeutralForeground3))";
+
+// @public
+export const _ctrlToastTitleStatusInformativeTintForegroundInverted = "var(--smtc-status-informative-tint-foreground, var(--colorNeutralForegroundInverted2))";
+
+// @public
+export const _ctrlToastTitleStatusSuccessTintForegroundInverted = "var(--smtc-status-success-tint-foreground, var(--colorStatusSuccessForegroundInverted))";
+
+// @public
+export const _ctrlToastTitleStatusWarningTintForeground = "var(--smtc-status-warning-tint-foreground, var(--colorStatusWarningForeground1))";
+
+// @public
+export const _ctrlToastTitleStatusWarningTintForegroundInverted = "var(--smtc-status-warning-tint-foreground, var(--colorStatusWarningForegroundInverted))";
+
 // @public (undocumented)
 export const ctrlTooltipBackground = "var(--smtc-ctrl-tooltip-background, var(--colorNeutralBackground1))";
 
@@ -3665,7 +3740,7 @@ export const gapBetweenCtrlDefault = "var(--smtc-gap-between-ctrl-default, 8px)"
 export const gapBetweenCtrlDefaultRaw = "--smtc-gap-between-ctrl-default";
 
 // @public (undocumented)
-export const gapBetweenCtrlLgDefault = "var(--smtc-gap-between-ctrl-lg-default)";
+export const gapBetweenCtrlLgDefault = "var(--smtc-gap-between-ctrl-lg-default, 16px)";
 
 // @public (undocumented)
 export const gapBetweenCtrlLgDefaultRaw = "--smtc-gap-between-ctrl-lg-default";
@@ -4537,7 +4612,7 @@ export const paddingContentNone = "var(--smtc-padding-content-none, var(--spacin
 export const paddingContentNoneRaw = "--smtc-padding-content-none";
 
 // @public (undocumented)
-export const paddingContentSmall = "var(--smtc-padding-content-small)";
+export const paddingContentSmall = "var(--smtc-padding-content-small, 12px)";
 
 // @public (undocumented)
 export const paddingContentSmallRaw = "--smtc-padding-content-small";
@@ -4927,7 +5002,7 @@ export const statusInformativeTintBackground = "var(--smtc-status-informative-ti
 export const statusInformativeTintBackgroundRaw = "--smtc-status-informative-tint-background";
 
 // @public (undocumented)
-export const statusInformativeTintForeground = "var(--smtc-status-informative-tint-foreground, var(--colorNeutralForeground3))";
+export const statusInformativeTintForeground = "var(--smtc-status-informative-tint-foreground, var(--colorNeutralForeground2))";
 
 // @public (undocumented)
 export const statusInformativeTintForegroundRaw = "--smtc-status-informative-tint-foreground";

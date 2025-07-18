@@ -717,6 +717,106 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'paddingCtrlHorizontalDefault',
   },
+    _ctrlToastBackgroundFlyoutLumBlend: {
+    f2Token: 'colorNeutralBackgroundInverted',
+    originalToken: 'backgroundFlyoutLumBlend',
+  },
+  _ctrlToastBodyForegroundContentNeutralPrimary: {
+    f2Token: 'colorNeutralForegroundInverted2',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlToastBodyForegroundContentNeutralSecondary: {
+    f2Token: 'colorNeutralForegroundInverted2',
+    originalToken: 'foregroundContentNeutralSecondary',
+  },
+  _ctrlToastContainerCtrlFocusOuterStroke: {
+    f2Token: 'colorStrokeFocus2',
+    originalToken: 'ctrlFocusOuterStroke',
+  },
+  _ctrlToastContainerFlyoutRest: {
+    f2Token: 'borderRadiusMedium',
+    originalToken: 'cornerFlyoutRest',
+  },
+  _ctrlToastCornerFlyoutRest: {
+    f2Token: 'borderRadiusMedium',
+    originalToken: 'cornerFlyoutRest',
+  },
+  _ctrlToastFooterGapBetweenCtrlDefault: {
+    originalToken: 'gapBetweenCtrlDefault',
+    rawValue: '14px',
+  },
+  _ctrlToastFooterPaddingContentSmall: {
+    originalToken: 'paddingContentSmall',
+    rawValue: '16px',
+  },
+  _ctrlToastForegroundContentNeutralPrimary: {
+    f2Token: 'colorNeutralForegroundInverted2',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlToastShadowFlyout: {
+    f2Token: 'shadow8',
+    originalToken: 'shadowFlyout',
+  },
+  _ctrlToastStrokeFlyout: {
+    f2Token: 'colorTransparentStroke',
+    originalToken: 'strokeFlyout',
+  },
+  _ctrlToastTextRampItemHeaderFontSize: {
+    originalToken: 'textRampItemHeaderFontSize',
+    rawValue: '16px',
+  },
+  _ctrlToastTextRampItemHeaderLineHeight: {
+    originalToken: 'textRampItemHeaderLineHeight',
+    rawValue: '20px',
+  },
+   _ctrlToastTitleCtrlLinkForegroundBrandRest: {
+    f2Token: 'colorBrandForeground1',
+    originalToken: 'ctrlLinkForegroundBrandRest',
+  },
+  _ctrlToastTitleCtrlLinkForegroundBrandRestInverted: {
+    f2Token: 'colorBrandForegroundInverted',
+    originalToken: 'ctrlLinkForegroundBrandRest',
+  },
+  _ctrlToastTitleForegroundContentNeutralPrimary: {
+    f2Token: 'colorNeutralForegroundInverted2',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlToastTitleForegroundContentNeutralPrimaryMedia: {
+    f2Token: 'colorNeutralForegroundInverted',
+    originalToken: 'foregroundContentNeutralPrimary',
+  },
+  _ctrlToastTitleGapBetweenCtrlDefault: {
+    originalToken: 'gapBetweenCtrlDefault',
+    rawValue: '12px',
+  },
+  _ctrlToastTitleStatusDangerTintForeground: {
+    f2Token: 'colorStatusDangerForeground1',
+    originalToken: 'statusDangerTintForeground',
+  },
+  _ctrlToastTitleStatusDangerTintForegroundInverted: {
+    f2Token: 'colorStatusDangerForegroundInverted',
+    originalToken: 'statusDangerTintForeground',
+  },
+  _ctrlToastTitleStatusInformativeTintForeground: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'statusInformativeTintForeground',
+  },
+  _ctrlToastTitleStatusInformativeTintForegroundInverted: {
+    f2Token: 'colorNeutralForegroundInverted2',
+    originalToken: 'statusInformativeTintForeground',
+  },
+  _ctrlToastTitleStatusSuccessTintForegroundInverted: {
+    f2Token: 'colorStatusSuccessForegroundInverted',
+    originalToken: 'statusSuccessTintForeground',
+  },
+  _ctrlToastTitleStatusWarningTintForeground: {
+    f2Token: 'colorStatusWarningForeground1',
+    originalToken: 'statusWarningTintForeground',
+  },
+  _ctrlToastTitleStatusWarningTintForegroundInverted: {
+    f2Token: 'colorStatusWarningForegroundInverted',
+    originalToken: 'statusWarningTintForeground',
+  },
   _ctrlTooltipPaddingBottom: {
     originalToken: 'paddingCtrlTextBottom',
     rawValue: '6px',

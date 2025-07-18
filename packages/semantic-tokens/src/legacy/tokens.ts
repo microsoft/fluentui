@@ -749,3 +749,43 @@ export const spacingHorizontalMNudge = 'var(--spacingHorizontalMNudge)';
  * @public
  */
 export const colorBrandStroke2Contrast = 'var(--colorBrandStroke2Contrast)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundInverted | `colorNeutralBackgroundInverted`} design token.
+ * @public
+ */
+export const colorNeutralBackgroundInverted = 'var(--colorNeutralBackgroundInverted)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForegroundInverted2 | `colorNeutralForegroundInverted2`} design token.
+ * @public
+ */
+export const colorNeutralForegroundInverted2 = 'var(--colorNeutralForegroundInverted2)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#shadow8 | `shadow8`} design token.
+ * @public
+ */
+export const shadow8 = 'var(--shadow8)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandForegroundInverted | `colorBrandForegroundInverted`} design token.
+ * @public
+ */
+export const colorBrandForegroundInverted = 'var(--colorBrandForegroundInverted)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerForegroundInverted | `colorStatusDangerForegroundInverted`} design token.
+ * @public
+ */
+export const colorStatusDangerForegroundInverted = 'var(--colorStatusDangerForegroundInverted)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusSuccessForegroundInverted | `colorStatusSuccessForegroundInverted`} design token.
+ * @public
+ */
+export const colorStatusSuccessForegroundInverted = 'var(--colorStatusSuccessForegroundInverted)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningForeground1 | `colorStatusWarningForeground1`} design token.
+ * @public
+ */
+export const colorStatusWarningForeground1 = 'var(--colorStatusWarningForeground1)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningForegroundInverted | `colorStatusWarningForegroundInverted`} design token.
+ * @public
+ */
+export const colorStatusWarningForegroundInverted = 'var(--colorStatusWarningForegroundInverted)';

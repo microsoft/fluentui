@@ -81,6 +81,13 @@ import {
 } from './Toolbar';
 import { useSemanticTooltipStyles } from './Tooltip';
 import { useSemanticInfoButtonStyles, useSemanticInfoLabelStyles } from './InfoLabel';
+import {
+  useSemanticToastContainerStyles,
+  useSemanticToastBodyStyles,
+  useSemanticToastFooterStyles,
+  useSemanticToastStyles,
+  useSemanticToastTitleStyles,
+} from './Toast';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -183,4 +190,10 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // InfoLabel styles
   useInfoButtonStyles_unstable: useSemanticInfoButtonStyles,
   useInfoLabelStyles_unstable: useSemanticInfoLabelStyles,
+  //Toast styles
+  useToastBodyStyles_unstable: useSemanticToastBodyStyles,
+  useToastContainerStyles_unstable: useSemanticToastContainerStyles,
+  useToastFooterStyles_unstable: useSemanticToastFooterStyles,
+  useToastStyles_unstable: useSemanticToastStyles,
+  useToastTitleStyles_unstable: useSemanticToastTitleStyles,
 };
