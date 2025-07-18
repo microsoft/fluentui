@@ -64,6 +64,21 @@ export type ToastBodyState = ComponentState<ToastBodySlots> & {
 // @public (undocumented)
 export const toastClassNames: SlotClassNames<ToastSlots>;
 
+// @public (undocumented)
+export const toastContainerClassNames: SlotClassNames<ToastContainerSlots>;
+
+// @public
+export type ToastContainerState = ComponentState<ToastContainerSlots> & Pick<ToastContainerProps, 'remove' | 'close' | 'updateId' | 'visible' | 'intent'> & Pick<ToastContainerContextValue, 'titleId' | 'bodyId'> & {
+    transitionTimeout: number;
+    timerTimeout: number;
+    running: boolean;
+    onTransitionEntering: () => void;
+    nodeRef: React_2.Ref<HTMLDivElement>;
+    onMotionFinish?: (event: null, data: {
+        direction: 'enter' | 'exit';
+    }) => void;
+};
+
 // @public
 export const Toaster: React_2.FC<ToasterProps>;
 
