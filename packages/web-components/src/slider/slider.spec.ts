@@ -638,7 +638,11 @@ test.describe('Slider', () => {
   });
 
   test.describe('thumb position', () => {
-    test('should follow pointer event coordinates in horizontal orientation', async ({ fastPage, page, browserName }) => {
+    test('should follow pointer event coordinates in horizontal orientation', async ({
+      fastPage,
+      page,
+      browserName,
+    }) => {
       const { element } = fastPage;
 
       const track = element.locator('.track');
@@ -669,7 +673,11 @@ test.describe('Slider', () => {
       }
     });
 
-    test('should follow pointer event coordinates in horizontal orientation in RTL', async ({ fastPage, page, browserName }) => {
+    test('should follow pointer event coordinates in horizontal orientation in RTL', async ({
+      fastPage,
+      page,
+      browserName,
+    }) => {
       await fastPage.setTemplate({
         attributes: {
           dir: 'rtl',
@@ -741,7 +749,11 @@ test.describe('Slider', () => {
       }
     });
 
-    test('should follow pointer event coordinates in vertical orientation in RTL', async ({ fastPage, page, browserName }) => {
+    test('should follow pointer event coordinates in vertical orientation in RTL', async ({
+      fastPage,
+      page,
+      browserName,
+    }) => {
       const { element } = fastPage;
       await fastPage.setTemplate({
         attributes: {
