@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ListContextValues, ListState } from './List.types';
 
 export function useListContextValues_unstable(state: ListState): ListContextValues {
@@ -9,10 +10,13 @@ export function useListContextValues_unstable(state: ListState): ListContextValu
     validateListItem,
   };
 
-  const synchronousContext = {
-    listItemRole,
-    navigationMode,
-  };
+  const synchronousContext = React.useMemo(
+    () => ({
+      listItemRole,
+      navigationMode,
+    }),
+    [listItemRole, navigationMode],
+  );
 
   return {
     listContext,
