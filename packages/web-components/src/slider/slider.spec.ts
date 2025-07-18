@@ -664,7 +664,7 @@ test.describe('Slider', () => {
       await page.mouse.move(thumbMoveToX, thumbCenterY);
       await page.mouse.up();
 
-      await expect(element).toHaveJSProperty("valueAsNumber", 40);
+      await expect(element).toHaveJSProperty('valueAsNumber', 40);
 
       thumbBox = (await thumb.boundingBox()) as BoundingBox;
       expect(thumbBox).not.toBeNull();
@@ -675,7 +675,7 @@ test.describe('Slider', () => {
     test('should follow pointer event coordinates in horizontal orientation in RTL', async ({ fastPage, page }) => {
       await fastPage.setTemplate({
         attributes: {
-          dir: "rtl",
+          dir: 'rtl',
         },
       });
 
@@ -704,7 +704,7 @@ test.describe('Slider', () => {
       await page.mouse.move(thumbMoveToX, thumbCenterY);
       await page.mouse.up();
 
-      await expect(element).toHaveJSProperty("valueAsNumber", 60);
+      await expect(element).toHaveJSProperty('valueAsNumber', 60);
 
       thumbBox = (await thumb.boundingBox()) as BoundingBox;
       expect(thumbBox).not.toBeNull();
@@ -742,7 +742,7 @@ test.describe('Slider', () => {
       await page.mouse.move(thumbCenterX, thumbMoveToY);
       await page.mouse.up();
 
-      await expect(element).toHaveJSProperty("valueAsNumber", 80);
+      await expect(element).toHaveJSProperty('valueAsNumber', 80);
 
       thumbBox = (await thumb.boundingBox()) as BoundingBox;
       expect(thumbBox).not.toBeNull();
@@ -750,14 +750,13 @@ test.describe('Slider', () => {
       expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbMoveToY);
     });
 
-
     test('should follow pointer event coordinates in vertical orientation in RTL', async ({ fastPage, page }) => {
       const { element } = fastPage;
       await fastPage.setTemplate({
         attributes: {
           orientation: 'vertical',
           dir: 'rtl',
-        }
+        },
       });
       const elementBox = (await element.boundingBox()) as BoundingBox;
 
@@ -786,7 +785,7 @@ test.describe('Slider', () => {
       await page.mouse.move(thumbCenterX, thumbMoveToY);
       await page.mouse.up();
 
-      await expect(element).toHaveJSProperty("valueAsNumber", 80);
+      await expect(element).toHaveJSProperty('valueAsNumber', 80);
 
       thumbBox = (await thumb.boundingBox()) as BoundingBox;
       expect(thumbBox).not.toBeNull();
