@@ -23,10 +23,11 @@ export const useListContext_unstable = <T>(selector: ContextSelector<ListContext
 // This results in issues with element/role validation, as the ListItem component has not been updated yet
 // when the validation happens.
 // https://github.com/microsoft/fluentui/issues/34467
-const SynchronousListContext = React.createContext<SynchronousListContextValue>({
-  navigationMode: undefined,
-  listItemRole: 'listitem',
-});
+const SynchronousListContext = React.createContext<SynchronousListContextValue | undefined>(undefined);
 
 export const SynchronousListContextProvider = SynchronousListContext.Provider;
-export const useSynchronousListContext = () => React.useContext(SynchronousListContext);
+export const useSynchronousListContext = () =>
+  React.useContext(SynchronousListContext) || {
+    navigationMode: undefined,
+    listItemRole: 'listitem',
+  };
