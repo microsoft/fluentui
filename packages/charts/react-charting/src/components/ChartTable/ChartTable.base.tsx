@@ -10,7 +10,9 @@ import { ITheme } from '@fluentui/react';
 
 function invertHexColor(hex: string, theme: ITheme): string {
   const color = d3.color(hex);
-  if (!color) return theme.semanticColors.bodyText!;
+  if (!color) {
+    return theme.semanticColors.bodyText!;
+  }
   const rgb = color.rgb();
   return d3.rgb(255 - rgb.r, 255 - rgb.g, 255 - rgb.b).formatHex();
 }
@@ -22,7 +24,9 @@ function getSafeTextColor(theme: ITheme, foreground?: string, background?: strin
   const fg = d3.color(foreground || fallbackColor)!;
   const bg = d3.color(background || fallbackBg)!;
   const contrast = getColorContrast(fg.formatHex(), bg.formatHex());
-  if (contrast >= 3) return fg.formatHex();
+  if (contrast >= 3) {
+    return fg.formatHex();
+  }
 
   const inverted = invertHexColor(fg.formatHex(), theme);
   const invertedContrast = getColorContrast(inverted, bg.formatHex());
