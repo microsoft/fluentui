@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Feat: Add support for disabling selection per item",
+  "packageName": "@fluentui/react-list",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}
