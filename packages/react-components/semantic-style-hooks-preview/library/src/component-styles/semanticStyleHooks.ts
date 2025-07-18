@@ -81,6 +81,25 @@ import {
 } from './Toolbar';
 import { useSemanticTooltipStyles } from './Tooltip';
 import { useSemanticInfoButtonStyles, useSemanticInfoLabelStyles } from './InfoLabel';
+import {
+  useSemanticDataGridStyles,
+  useSemanticDataGridBodyStyles,
+  useSemanticDataGridCellStyles,
+  useSemanticDataGridHeaderStyles,
+  useSemanticDataGridHeaderCellStyles,
+  useSemanticDataGridRowStyles,
+  useSemanticDataGridSelectionCellStyles,
+  useSemanticTableStyles,
+  useSemanticTableBodyStyles,
+  useSemanticTableCellStyles,
+  useSemanticTableCellActionsStyles,
+  useSemanticTableCellLayoutStyles,
+  useSemanticTableHeaderStyles,
+  useSemanticTableHeaderCellStyles,
+  useSemanticTableResizeHandleStyles,
+  useSemanticTableRowStyles,
+  useSemanticTableSelectionCellStyles,
+} from './Table';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -183,4 +202,22 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // InfoLabel styles
   useInfoButtonStyles_unstable: useSemanticInfoButtonStyles,
   useInfoLabelStyles_unstable: useSemanticInfoLabelStyles,
+  // Table styles
+  useDataGridStyles_unstable: useSemanticDataGridStyles,
+  useDataGridBodyStyles_unstable: useSemanticDataGridBodyStyles,
+  useDataGridCellStyles_unstable: useSemanticDataGridCellStyles,
+  useDataGridHeaderStyles_unstable: useSemanticDataGridHeaderStyles,
+  useDataGridHeaderCellStyles_unstable: useSemanticDataGridHeaderCellStyles,
+  useDataGridRowStyles_unstable: useSemanticDataGridRowStyles,
+  useDataGridSelectionCellStyles_unstable: useSemanticDataGridSelectionCellStyles,
+  useTableStyles_unstable: useSemanticTableStyles,
+  useTableBodyStyles_unstable: useSemanticTableBodyStyles,
+  useTableCellStyles_unstable: useSemanticTableCellStyles,
+  useTableCellActionsStyles_unstable: useSemanticTableCellActionsStyles,
+  useTableCellLayoutStyles_unstable: useSemanticTableCellLayoutStyles,
+  useTableHeaderStyles_unstable: useSemanticTableHeaderStyles,
+  useTableHeaderCellStyles_unstable: useSemanticTableHeaderCellStyles,
+  useTableResizeHandleStyles_unstable: useSemanticTableResizeHandleStyles,
+  useTableRowStyles_unstable: useSemanticTableRowStyles,
+  useTableSelectionCellStyles_unstable: useSemanticTableSelectionCellStyles,
 };

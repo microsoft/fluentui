@@ -84,3 +84,22 @@ export {
   useSemanticToolbarToggleButtonStyles,
 } from './component-styles/Toolbar';
 export { useSemanticInfoButtonStyles, useSemanticInfoLabelStyles } from './component-styles/InfoLabel';
+export {
+  useSemanticDataGridStyles,
+  useSemanticDataGridBodyStyles,
+  useSemanticDataGridCellStyles,
+  useSemanticDataGridHeaderStyles,
+  useSemanticDataGridHeaderCellStyles,
+  useSemanticDataGridRowStyles,
+  useSemanticDataGridSelectionCellStyles,
+  useSemanticTableStyles,
+  useSemanticTableBodyStyles,
+  useSemanticTableCellStyles,
+  useSemanticTableCellActionsStyles,
+  useSemanticTableCellLayoutStyles,
+  useSemanticTableHeaderStyles,
+  useSemanticTableHeaderCellStyles,
+  useSemanticTableResizeHandleStyles,
+  useSemanticTableRowStyles,
+  useSemanticTableSelectionCellStyles,
+} from './component-styles/Table';
