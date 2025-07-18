@@ -440,7 +440,8 @@ export interface ILineChartLineOptions extends React.SVGProps<SVGPathElement> {
     | 'gauge+number+delta'
     | 'gauge+delta'
     | 'markers+text'
-    | 'lines+text';
+    | 'lines+text'
+    | 'lines+markers+text';
 }
 
 /**
