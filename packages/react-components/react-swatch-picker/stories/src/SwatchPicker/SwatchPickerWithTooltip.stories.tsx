@@ -54,8 +54,8 @@ export const SwatchPickerWithTooltip = () => {
         {renderSwatchPickerGrid({
           items: colors,
           columnCount: 3,
-          renderSwatch: (item: SwatchProps) => (
-            <ColorSwatchWithTooltip key={item.value} color={item.color ?? ''} {...item} />
+          renderSwatch: ({ color = '', ...item }: SwatchProps) => (
+            <ColorSwatchWithTooltip key={item.value} color={color} {...item} />
           ),
         })}
       </SwatchPicker>
