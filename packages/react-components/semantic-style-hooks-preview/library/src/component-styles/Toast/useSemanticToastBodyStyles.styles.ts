@@ -38,6 +38,7 @@ const useInvertedStyles = makeStyles({
  */
 export const useSemanticToastBodyStyles = (_state: unknown): ToastBodyState => {
   'use no memo';
+
   const state = _state as ToastBodyState;
   const rootBaseClassName = useRootBaseClassName();
   const subtitleBaseClassName = useSubtitleBaseClassName();

@@ -1,5 +1,5 @@
 import { makeResetStyles, mergeClasses } from '@griffel/react';
-import {toastFooterClassNames, type ToastFooterState } from '@fluentui/react-toast';
+import { toastFooterClassNames, type ToastFooterState } from '@fluentui/react-toast';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
@@ -24,7 +24,12 @@ export const useSemanticToastFooterStyles = (_state: unknown): ToastFooterState 
   const state = _state as ToastFooterState;
 
   const rootBaseClassName = useRootBaseClassName();
-  state.root.className = mergeClasses(state.root.className, toastFooterClassNames.root, rootBaseClassName, getSlotClassNameProp_unstable(state.root));
+  state.root.className = mergeClasses(
+    state.root.className,
+    toastFooterClassNames.root,
+    rootBaseClassName,
+    getSlotClassNameProp_unstable(state.root),
+  );
 
   return state;
 };

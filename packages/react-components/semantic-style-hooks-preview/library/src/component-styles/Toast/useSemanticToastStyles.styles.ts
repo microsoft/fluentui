@@ -14,7 +14,7 @@ const useRootBaseClassName = makeResetStyles({
   lineHeight: semanticTokens._ctrlToastTextRampItemHeaderLineHeight,
   fontWeight: semanticTokens.textStyleDefaultHeaderWeight,
   color: semanticTokens.foregroundContentNeutralPrimary,
-  backgroundColor: semanticTokens.backgroundFlyoutLumBlend
+  backgroundColor: semanticTokens.backgroundFlyoutLumBlend,
 });
 
 const useStyles = makeStyles({

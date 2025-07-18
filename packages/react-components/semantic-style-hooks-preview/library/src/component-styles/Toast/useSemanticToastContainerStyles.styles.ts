@@ -4,7 +4,6 @@ import { toastContainerClassNames, type ToastContainerState } from '@fluentui/re
 import * as semanticTokens from '@fluentui/semantic-tokens';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
-
 const useRootBaseClassName = makeResetStyles({
   boxSizing: 'border-box',
   marginTop: semanticTokens.gapBetweenCtrlLgDefault,
@@ -24,7 +23,12 @@ export const useSemanticToastContainerStyles = (_state: unknown): ToastContainer
   const state = _state as ToastContainerState;
 
   const rootBaseClassName = useRootBaseClassName();
-  state.root.className = mergeClasses(state.root.className, toastContainerClassNames.root, rootBaseClassName, getSlotClassNameProp_unstable(state.root));
+  state.root.className = mergeClasses(
+    state.root.className,
+    toastContainerClassNames.root,
+    rootBaseClassName,
+    getSlotClassNameProp_unstable(state.root),
+  );
 
   return state;
 };
