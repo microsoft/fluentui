@@ -47,7 +47,7 @@ describe('Portal', () => {
   it('should create an element in the body', () => {
     mount(<TestComponent />);
 
-    cy.get('#trigger').focus().realClick();
+    cy.get('#trigger').realClick();
     cy.get('body > [data-portal-node="true"]').should('have.length', 1);
     cy.get('body > [data-portal-node="true"]').first().should('contain.text', 'Test Button');
   });
@@ -56,12 +56,35 @@ describe('Portal', () => {
     mount(<TestComponent />);
 
     // Open the portal
-    cy.get('#trigger').focus().realClick();
+    cy.get('#trigger').realClick();
     cy.get('body').children().should('have.length', 2); // One for the [data-cy-root], one for the portal
 
     // Close the portal
-    cy.get('#trigger').focus().realClick();
+    cy.get('#trigger').realClick();
     cy.get('body').children().should('have.length', 1);
     cy.get('body').children().first().should('have.attr', 'data-cy-root');
+  });
+
+  it('empty portal renders as expected', () => {
+    mount(<Portal />);
+
+    cy.get('body > [data-portal-node="true"]').should('exist');
+    cy.get('body > [data-portal-node="true"]').should('be.empty');
+  });
+
+  it('remounting the portal should not cause issues', () => {
+    mount(<TestComponent />);
+
+    // Open the portal
+    cy.get('#trigger').realClick();
+    cy.get('body > [data-portal-node="true"]').should('exist');
+
+    // Close the portal
+    cy.get('#trigger').realClick();
+    cy.get('body > [data-portal-node="true"]').should('not.exist');
+
+    // Open the portal again
+    cy.get('#trigger').realClick();
+    cy.get('body > [data-portal-node="true"]').should('exist');
   });
 });
