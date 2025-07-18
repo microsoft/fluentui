@@ -165,8 +165,30 @@ export const ChangelogRenderer: React.FC<ChangelogRendererProps> = ({ changelog 
         const featureMatch = line.match(/^\s+- (.+)$/);
         if (featureMatch) {
           const description = featureMatch[1];
-          // Extract just the feature description without PR links and attribution
-          const cleanDescription = description.replace(/\s*\([^)]*\)\s*by\s+[^\s]+@[^\s]+/, '').trim();
+          // Extract the feature description and preserve PR links
+          let fullDescription = description.replace(/\s+by\s+[^\s]+@[^\s]+\)$/, ')').trim();
+
+          // Try multiple PR link formats
+          // Format 1: ([PR #34456](https://github.com/microsoft/fluentui/pull/34456))
+          fullDescription = fullDescription.replace(
+            /\(\[PR #(\d+)\]\(https:\/\/github\.com\/microsoft\/fluentui\/pull\/(\d+)\)\)/g,
+            '(<a href="https://github.com/microsoft/fluentui/pull/$2" target="_blank" rel="noopener noreferrer">PR #$1</a>)',
+          );
+
+          // Format 2: [PR #34456](https://github.com/microsoft/fluentui/pull/34456)
+          fullDescription = fullDescription.replace(
+            /\[PR #(\d+)\]\(https:\/\/github\.com\/microsoft\/fluentui\/pull\/(\d+)\)/g,
+            '<a href="https://github.com/microsoft/fluentui/pull/$2" target="_blank" rel="noopener noreferrer">PR #$1</a>',
+          );
+
+          // Format 3: (#34456)
+          fullDescription = fullDescription.replace(
+            /\(#(\d+)\)/g,
+            '(<a href="https://github.com/microsoft/fluentui/pull/$1" target="_blank" rel="noopener noreferrer">#$1</a>)',
+          );
+
+          // Create a clean version for deduplication (without PR links) - be more specific about what to remove
+          const cleanDescription = fullDescription.replace(/\s*\(<a[^>]*>.*?<\/a>\)/, '').trim();
           if (cleanDescription && currentPackage) {
             if (features.has(cleanDescription)) {
               // Add to existing packages list
@@ -174,7 +196,7 @@ export const ChangelogRenderer: React.FC<ChangelogRendererProps> = ({ changelog 
             } else {
               // First occurrence
               features.set(cleanDescription, {
-                fullDescription: cleanDescription,
+                fullDescription,
                 packages: [currentPackage],
               });
             }
@@ -204,7 +226,9 @@ export const ChangelogRenderer: React.FC<ChangelogRendererProps> = ({ changelog 
       existingFeatures.map(feature => {
         // Extract clean description from feature (remove package prefix if present)
         const match = feature.match(/^<strong>@fluentui\/[^:]+:<\/strong>\s*(.+)$/);
-        return match ? match[1] : feature;
+        const cleanFeature = match ? match[1] : feature;
+        // Remove HTML PR links for comparison
+        return cleanFeature.replace(/\s*\(<a[^>]*>.*?<\/a>\)/, '').trim();
       }),
     );
 
@@ -232,8 +256,30 @@ export const ChangelogRenderer: React.FC<ChangelogRendererProps> = ({ changelog 
         const bugFixMatch = line.match(/^\s+- (.+)$/);
         if (bugFixMatch) {
           const description = bugFixMatch[1];
-          // Extract just the bug fix description without PR links and attribution
-          const cleanDescription = description.replace(/\s*\([^)]*\)\s*by\s+[^\s]+@[^\s]+/, '').trim();
+          // Extract the bug fix description and preserve PR links
+          let fullDescription = description.replace(/\s+by\s+[^\s]+@[^\s]+\)$/, ')').trim();
+
+          // Try multiple PR link formats
+          // Format 1: ([PR #34456](https://github.com/microsoft/fluentui/pull/34456))
+          fullDescription = fullDescription.replace(
+            /\(\[PR #(\d+)\]\(https:\/\/github\.com\/microsoft\/fluentui\/pull\/(\d+)\)\)/g,
+            '(<a href="https://github.com/microsoft/fluentui/pull/$2" target="_blank" rel="noopener noreferrer">PR #$1</a>)',
+          );
+
+          // Format 2: [PR #34456](https://github.com/microsoft/fluentui/pull/34456)
+          fullDescription = fullDescription.replace(
+            /\[PR #(\d+)\]\(https:\/\/github\.com\/microsoft\/fluentui\/pull\/(\d+)\)/g,
+            '<a href="https://github.com/microsoft/fluentui/pull/$2" target="_blank" rel="noopener noreferrer">PR #$1</a>',
+          );
+
+          // Format 3: (#34456)
+          fullDescription = fullDescription.replace(
+            /\(#(\d+)\)/g,
+            '(<a href="https://github.com/microsoft/fluentui/pull/$1" target="_blank" rel="noopener noreferrer">#$1</a>)',
+          );
+
+          // Create a clean version for deduplication (without PR links) - be more specific about what to remove
+          const cleanDescription = fullDescription.replace(/\s*\(<a[^>]*>.*?<\/a>\)/, '').trim();
 
           // Only add if it's not empty, not already in features, and not already in bugFixes
           if (cleanDescription && currentPackage && !existingFeatureDescriptions.has(cleanDescription)) {
@@ -243,7 +289,7 @@ export const ChangelogRenderer: React.FC<ChangelogRendererProps> = ({ changelog 
             } else {
               // First occurrence
               bugFixes.set(cleanDescription, {
-                fullDescription: cleanDescription,
+                fullDescription,
                 packages: [currentPackage],
               });
             }
