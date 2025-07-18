@@ -1021,7 +1021,7 @@ export const transformPlotlyJsonToGanttChartProps = (
       const isXDate = input.layout?.xaxis?.type === 'date' || isDateArray(series.x);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const convertXValueToNumber = (value: any) => {
-        return isInvalidValue(value) ? 0 : isXDate ? new Date(value as string | number).getTime() : (value as number);
+        return isInvalidValue(value) ? 0 : isXDate ? +parseLocalDate(value) : +value;
       };
 
       return (series.y as Datum[])
@@ -2434,7 +2434,7 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
 
     if (!ax?.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
       const categoriesInTraceOrder = Array.from(new Set(values as string[]));
-      result[propName] = categoriesInTraceOrder;
+      result[propName] = ax?.autorange === 'reversed' ? categoriesInTraceOrder.reverse() : categoriesInTraceOrder;
       return;
     }
 
@@ -2442,4 +2442,32 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
   });
 
   return result;
+};
+
+/**
+ * This is experimental. Use it only with valid datetime strings to verify if they conform to the ISO 8601 format.
+ */
+const isoDateRegex = /^\d{4}(-\d{2}(-\d{2})?)?(T\d{2}:\d{2}(:\d{2}(\.\d{1,9})?)?(Z)?)?$/;
+
+/**
+ * We want to display localized date and time in the charts, so the useUTC prop is set to false.
+ * But this can sometimes cause the formatters to display the datetime incorrectly.
+ * To work around this issue, we use this function to adjust datetime strings so that they are always interpreted
+ * as local time, allowing the formatters to produce the correct output.
+ *
+ * FIXME: The formatters should always produce a clear and accurate localized output, regardless of the
+ * format used to create the date object.
+ */
+const parseLocalDate = (value: string | number) => {
+  if (typeof value === 'string') {
+    const match = value.match(isoDateRegex);
+    if (match) {
+      if (!match[3]) {
+        value += 'T00:00';
+      } else if (match[6]) {
+        value = value.replace('Z', '');
+      }
+    }
+  }
+  return new Date(value);
 };
