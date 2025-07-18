@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "fix(react-list): Do not crash during roles/elements validation",
+  "comment": "fix(react-list): Dont crash in dev mode when navigation mode is changed",
   "packageName": "@fluentui/react-list",
   "email": "jirivyhnalek@microsoft.com",
   "dependentChangeType": "patch"
