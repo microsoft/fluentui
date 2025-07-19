@@ -56,7 +56,7 @@ export const FocusableTooltipText: React.FunctionComponent<IFocusableTooltipText
   }, [async, checkTextOverflow, getTargetElement]);
 
   return (
-    <div className={props.className} tabIndex={0}>
+    <div className={props.className}>
       <Tooltip content={props.content} relationship="description">
         <span {...getAccessibleDataObject(props.accessibilityData)} ref={tooltipChild} data-is-focusable={textOverflow}>
           {props.content}

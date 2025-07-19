@@ -4,6 +4,8 @@ import { BaseCheckbox } from '../checkbox/checkbox.base.js';
  * A Radio Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#radio | ARIA `radio` role}.
  *
+ * @tag fluent-radio
+ *
  * @slot checked-indicator - The checked indicator slot
  * @fires change - Emits a custom change event when the checked state changes
  * @fires input - Emits a custom input event when the checked state changes
@@ -11,12 +13,6 @@ import { BaseCheckbox } from '../checkbox/checkbox.base.js';
  * @public
  */
 export class Radio extends BaseCheckbox {
-  connectedCallback() {
-    super.connectedCallback();
-
-    this.tabIndex = this.disabled ? -1 : 0;
-  }
-
   constructor() {
     super();
     this.elementInternals.role = 'radio';
@@ -32,10 +28,6 @@ export class Radio extends BaseCheckbox {
    */
   protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
     super.disabledChanged(prev, next);
-    if (next) {
-      this.tabIndex = -1;
-    }
-
     this.$emit('disabled', next, { bubbles: true });
   }
 

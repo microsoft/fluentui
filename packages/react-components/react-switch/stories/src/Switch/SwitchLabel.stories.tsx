@@ -10,21 +10,21 @@ const wrapperStyle: React.CSSProperties = {
 export const Label = () => {
   const [checked, setChecked] = React.useState(false);
   const onChange = React.useCallback(
-    ev => {
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
       setChecked(ev.currentTarget.checked);
     },
     [setChecked],
   );
   const [checked2, setChecked2] = React.useState(false);
   const onChange2 = React.useCallback(
-    ev => {
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
       setChecked2(ev.currentTarget.checked);
     },
     [setChecked2],
   );
   const [checked3, setChecked3] = React.useState(false);
   const onChange3 = React.useCallback(
-    ev => {
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
       setChecked3(ev.currentTarget.checked);
     },
     [setChecked3],

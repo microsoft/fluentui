@@ -1,4 +1,5 @@
 import { PlotlySchema } from './PlotlySchema';
+import { isArrayOrTypedArray } from './PlotlySchemaConverter';
 
 function addBase64Padding(s: string): string {
   const paddingNeeded = (4 - (s.length % 4)) % 4;
@@ -55,9 +56,9 @@ function decodeBase64(value: string, dtype: string): any {
       case 'f8':
         return Array.from(new Float64Array(decodedBytes.buffer));
       case 'i8':
-        return Array.from(new BigInt64Array(decodedBytes.buffer));
+        return Array.from(new Int32Array(decodedBytes.buffer)); // BigInt64Array is supported ES2020 onwards
       case 'u8':
-        return Array.from(new BigUint64Array(decodedBytes.buffer));
+        return Array.from(new Uint32Array(decodedBytes.buffer));
       case 'i4':
         return Array.from(new Int32Array(decodedBytes.buffer));
       case 'i2':
@@ -94,6 +95,29 @@ function decodeBdataInDict(d: any): void {
   }
 }
 
+// Helper to reshape a flat array into the given shape (e.g., [rows, cols])
+export function reshapeArray(data: number[], shape: number[]): number[] | number[][] | number[][][] {
+  if (shape.length === 1) {
+    return data;
+  }
+  if (shape.length === 2) {
+    const [rows, cols] = shape;
+    const result: number[][] = [];
+    for (let r = 0; r < rows; r++) {
+      result.push(data.slice(r * cols, (r + 1) * cols));
+    }
+    return result;
+  }
+  // For higher dimensions, recursively reshape
+  const [dim, ...rest] = shape;
+  const step = data.length / dim;
+  const result: number[][][] = [];
+  for (let i = 0; i < dim; i++) {
+    result.push(reshapeArray(data.slice(i * step, (i + 1) * step), rest) as number[][]);
+  }
+  return result;
+}
+
 // Function to process a PlotlySchema object
 export function decodeBase64Fields(plotlySchema: PlotlySchema): PlotlySchema {
   // Create a deep copy of the original data
@@ -104,32 +128,50 @@ export function decodeBase64Fields(plotlySchema: PlotlySchema): PlotlySchema {
 
   // Check if the data has changed
   if (JSON.stringify(plotlySchema.data) !== JSON.stringify(originalData)) {
-    let isNan = false;
-
     // Overwrite the 'y', 'x', or 'z' value with the decoded 'bdata'
     for (const item of plotlySchema.data || []) {
-      ['y', 'x', 'z'].forEach(key => {
+      ['y', 'x', 'z', 'r', 'theta', 'values'].forEach(key => {
         if (
           item[key as keyof typeof item] &&
           typeof item[key as keyof typeof item] === 'object' &&
           'bdata' in (item[key as keyof typeof item] as Record<string, number[]>)
         ) {
           const bdata = (item[key as keyof typeof item] as { bdata: number[] }).bdata;
-          if (Array.isArray(bdata) && bdata.some(x => typeof x === 'number' && isNaN(x))) {
-            isNan = true;
+          let shape = (item[key as keyof typeof item] as { shape?: string | number[] }).shape;
+          // convert to an array if shape is a string
+          if (typeof shape === 'string') {
+            let parsedShape: number[] | undefined = undefined;
+            try {
+              // Try to parse as JSON array
+              parsedShape = JSON.parse(shape);
+              if (!isArrayOrTypedArray(parsedShape)) {
+                parsedShape = undefined;
+              }
+            } catch (error) {
+              // If JSON.parse fails, try to parse as comma-separated numbers
+              const parts = shape.split(',').map(s => Number(s.trim()));
+              if (parts.every(n => !isNaN(n))) {
+                parsedShape = parts;
+              } else {
+                shape = undefined; // If parsing fails, set shape to undefined
+              }
+            }
+            shape = parsedShape;
+          }
+          // If shape exists, decode bdata into that shape
+          if (shape !== undefined && isArrayOrTypedArray(shape)) {
+            (item[key as keyof typeof item] as number[] | number[][] | number[][][]) = reshapeArray(
+              bdata,
+              shape as number[],
+            );
           } else {
             (item[key as keyof typeof item] as number[]) = bdata as number[];
           }
         }
       });
-      if (isNan) {
-        break;
-      }
     }
 
-    if (!isNan) {
-      return plotlySchema; // Return the decoded data
-    }
+    return plotlySchema; // Return the decoded data
   }
 
   plotlySchema.data = originalData; // Restore the original data if no changes were made

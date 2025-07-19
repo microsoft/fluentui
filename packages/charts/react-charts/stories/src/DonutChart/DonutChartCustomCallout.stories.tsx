@@ -29,7 +29,8 @@ export const DonutChartCustomCallout = () => {
     },
   ];
 
-  const _onTogglePopoverCheckChange = React.useCallback(ev => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const _onTogglePopoverCheckChange = React.useCallback((ev: any) => {
     setUseCustomPopover(ev.currentTarget.checked);
   }, []);
 
@@ -48,7 +49,10 @@ export const DonutChartCustomCallout = () => {
     };
   };
 
-  const customPopover = (props: ChartDataPoint): JSX.Element | undefined => {
+  const customPopover = (
+    props: ChartDataPoint,
+  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element | undefined => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : 'Y Value';
     const xValue = props ? props.xAxisCalloutData! : 'X Value';
     const legend = props ? props.legend : 'Legend';

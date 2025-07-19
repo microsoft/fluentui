@@ -34,7 +34,7 @@
     "@fluentui/react-divider": "*",
     "@fluentui/react-drawer": "*",
     "@fluentui/react-field": "*",
-    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-icons": "^2.0.306",
     "@fluentui/react-image": "*",
     "@fluentui/react-infolabel": "*",
     "@fluentui/react-input": "*",
@@ -71,8 +71,8 @@
     "@fluentui/react-tree": "*",
     "@fluentui/react-utilities": "*",
     "@griffel/react": "^1.5.22",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "tslib": "^2.1.0",
     "@fluentui/react-breadcrumb": "*",
     "@fluentui/react-rating": "*",
@@ -81,6 +81,7 @@
     "@fluentui/react-tag-picker": "*",
     "@fluentui/react-carousel": "*",
     "@fluentui/react-list": "*",
-    "@fluentui/react-color-picker": "*"
+    "@fluentui/react-color-picker": "*",
+    "@fluentui/react-nav": "*"
   }
 }

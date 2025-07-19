@@ -3,8 +3,10 @@ import type { Listbox } from '../listbox/listbox.js';
 import { isListbox } from '../listbox/listbox.options.js';
 import type { DropdownOption } from '../option/option.js';
 import { isDropdownOption } from '../option/option.options.js';
+import { getDirection } from '../utils/direction.js';
 import { toggleState } from '../utils/element-internals.js';
 import { getLanguage } from '../utils/language.js';
+import { AnchorPositioningCSSSupported } from '../utils/support.js';
 import { uniqueId } from '../utils/unique-id.js';
 import { DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.template.js';
@@ -221,6 +223,7 @@ export class BaseDropdown extends FASTElement {
     if (next) {
       next.dropdown = this;
       next.popover = 'manual';
+      next.tabIndex = -1;
       this.listboxSlot.assign(next);
       const notifier = Observable.getNotifier(this);
       notifier.subscribe(next);
@@ -235,7 +238,17 @@ export class BaseDropdown extends FASTElement {
           .forEach((x, i) => {
             x.selected = this.multiple || i === 0;
           });
+
+        this.setValidity();
       });
+
+      if (AnchorPositioningCSSSupported) {
+        // The `anchor-name` property seems to not be isolated between instances in Safari Technology Preview 220 (18.4).
+        // It's unclear if the spec requires the `anchor-name` to be unique when styled on the `:host`.
+        const anchorName = uniqueId('--dropdown-anchor-');
+        this.style.setProperty('anchor-name', anchorName);
+        this.listbox.style.setProperty('position-anchor', anchorName);
+      }
     }
   }
 
@@ -317,12 +330,9 @@ export class BaseDropdown extends FASTElement {
     this.elementInternals.ariaExpanded = next ? 'true' : 'false';
     this.activeIndex = this.selectedIndex ?? -1;
 
-    if (next) {
-      BaseDropdown.AnchorPositionFallbackObserver?.observe(this.listbox);
-      return;
+    if (!AnchorPositioningCSSSupported) {
+      this.anchorPositionFallback(next);
     }
-
-    BaseDropdown.AnchorPositionFallbackObserver?.unobserve(this.listbox);
   }
 
   /**
@@ -384,6 +394,46 @@ export class BaseDropdown extends FASTElement {
   public controlSlot!: HTMLSlotElement;
 
   /**
+   * An abort controller to remove scroll and resize event listeners when the dropdown is closed or disconnected. Used
+   * when the browser does not support CSS anchor positioning.
+   *
+   * @internal
+   */
+  private debounceController?: AbortController;
+
+  /**
+   * Repositions the listbox to align with the control element. Used when the browser does not support CSS anchor
+   * positioning.
+   *
+   * @internal
+   */
+  private repositionListbox = () => {
+    if (this.frameId) {
+      cancelAnimationFrame(this.frameId);
+    }
+
+    this.frameId = requestAnimationFrame(() => {
+      const controlRect = this.getBoundingClientRect();
+      const right = window.innerWidth - controlRect.right;
+      const left = controlRect.left;
+
+      this.listbox.style.minWidth = `${controlRect.width}px`;
+      this.listbox.style.top = `${controlRect.top}px`;
+
+      if (
+        left + controlRect.width > window.innerWidth ||
+        (getDirection(this) === 'rtl' && right - controlRect.width > 0)
+      ) {
+        this.listbox.style.right = `${right}px`;
+        this.listbox.style.left = 'unset';
+      } else {
+        this.listbox.style.left = `${left}px`;
+        this.listbox.style.right = 'unset';
+      }
+    });
+  };
+
+  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
@@ -407,25 +457,11 @@ export class BaseDropdown extends FASTElement {
   public static formAssociated = true;
 
   /**
-   * Resets the form value to its initial value when the form is reset.
+   * The ID of the frame used for repositioning the listbox when the browser does not support CSS anchor positioning.
    *
    * @internal
    */
-  formResetCallback(): void {
-    this.enabledOptions.forEach((x, i) => {
-      if (this.multiple) {
-        x.selected = !!x.defaultSelected;
-        return;
-      }
-
-      if (!x.defaultSelected) {
-        x.selected = false;
-        return;
-      }
-
-      this.selectOption(i);
-    });
-  }
+  private frameId?: number;
 
   /**
    * A reference to the first freeform option, if present.
@@ -443,6 +479,15 @@ export class BaseDropdown extends FASTElement {
    */
   private get isCombobox(): boolean {
     return this.type === DropdownType.combobox;
+  }
+
+  /**
+   * A reference to all associated label elements.
+   *
+   * @public
+   */
+  public get labels(): ReadonlyArray<Node> {
+    return Object.freeze(Array.from(this.elementInternals.labels));
   }
 
   /**
@@ -495,7 +540,7 @@ export class BaseDropdown extends FASTElement {
    *
    * @internal
    */
-  private validationFallbackMessage!: string;
+  private _validationFallbackMessage!: string;
 
   /**
    * The validation message. Uses the browser's default validation message for native checkboxes if not otherwise
@@ -508,16 +553,32 @@ export class BaseDropdown extends FASTElement {
       return this.elementInternals.validationMessage;
     }
 
-    if (!this.validationFallbackMessage) {
+    if (!this._validationFallbackMessage) {
       const validationMessageFallbackControl = document.createElement('input');
       validationMessageFallbackControl.type = 'radio';
+      validationMessageFallbackControl.name = 'validation-message-fallback';
       validationMessageFallbackControl.required = true;
       validationMessageFallbackControl.checked = false;
 
-      this.validationFallbackMessage = validationMessageFallbackControl.validationMessage;
+      this._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
     }
 
-    return this.validationFallbackMessage;
+    if (!this.disabled && this.required && this.listbox.selectedOptions.length === 0) {
+      return this._validationFallbackMessage;
+    }
+
+    return '';
+  }
+
+  /**
+   * The element's validity state.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validity | `ElementInternals.validity`} property.
+   */
+  public get validity(): ValidityState {
+    return this.elementInternals.validity;
   }
 
   /**
@@ -539,6 +600,17 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * Determines if the control can be submitted for constraint validation.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/willValidate | `ElementInternals.willValidate`} property.
+   */
+  public get willValidate(): boolean {
+    return this.elementInternals.willValidate;
+  }
+
+  /**
    * Handles the change events for the dropdown.
    *
    * @param e - the event object
@@ -557,6 +629,17 @@ export class BaseDropdown extends FASTElement {
     this.selectOption(optionIndex, true);
 
     return true;
+  }
+
+  /**
+   * Checks the validity of the element and returns the result.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/checkValidity | `HTMLInputElement.checkValidity()`} method.
+   */
+  public checkValidity(): boolean {
+    return this.elementInternals.checkValidity();
   }
 
   /**
@@ -662,6 +745,29 @@ export class BaseDropdown extends FASTElement {
     }
 
     return true;
+  }
+
+  /**
+   * Resets the form value to its initial value when the form is reset.
+   *
+   * @internal
+   */
+  formResetCallback(): void {
+    this.enabledOptions.forEach((x, i) => {
+      if (this.multiple) {
+        x.selected = !!x.defaultSelected;
+        return;
+      }
+
+      if (!x.defaultSelected) {
+        x.selected = false;
+        return;
+      }
+
+      this.selectOption(i);
+    });
+
+    this.setValidity();
   }
 
   /**
@@ -813,6 +919,17 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * Reports the validity of the element.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/reportValidity | `HTMLInputElement.reportValidity()`} method.
+   */
+  public reportValidity(): boolean {
+    return this.elementInternals.reportValidity();
+  }
+
+  /**
    * Selects an option by index.
    *
    * @param index - The index of the option to select.
@@ -852,7 +969,7 @@ export class BaseDropdown extends FASTElement {
       this.elementInternals.setValidity(
         { valueMissing, ...flags },
         message ?? this.validationMessage,
-        anchor ?? this.listbox.enabledOptions[0],
+        anchor ?? this.control,
       );
     }
   }
@@ -885,13 +1002,9 @@ export class BaseDropdown extends FASTElement {
     this.freeformOption.hidden = false;
   }
 
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.anchorPositionFallback();
-  }
-
   disconnectedCallback(): void {
-    BaseDropdown.AnchorPositionFallbackObserver?.unobserve(this.listbox);
+    BaseDropdown.AnchorPositionFallbackObserver?.disconnect();
+    this.debounceController?.abort();
 
     super.disconnectedCallback();
   }
@@ -916,25 +1029,53 @@ export class BaseDropdown extends FASTElement {
    *
    * @internal
    */
-  private anchorPositionFallback(): void {
-    BaseDropdown.AnchorPositionFallbackObserver =
-      BaseDropdown.AnchorPositionFallbackObserver ??
-      new IntersectionObserver(
+  private anchorPositionFallback(shouldObserve?: boolean): void {
+    if (!BaseDropdown.AnchorPositionFallbackObserver) {
+      BaseDropdown.AnchorPositionFallbackObserver = new IntersectionObserver(
         (entries: IntersectionObserverEntry[]): void => {
           entries.forEach(({ boundingClientRect, isIntersecting, target }) => {
-            if (isListbox(target) && !isIntersecting) {
+            if (isListbox(target)) {
               if (boundingClientRect.bottom > window.innerHeight) {
-                toggleState(target.dropdown!.elementInternals, 'flip-block', true);
+                toggleState(target.elementInternals, 'flip-block', true);
                 return;
               }
 
               if (boundingClientRect.top < 0) {
-                toggleState(target.dropdown!.elementInternals, 'flip-block', false);
+                toggleState(target.elementInternals, 'flip-block', false);
               }
             }
           });
         },
         { threshold: 1 },
       );
+    }
+
+    if (shouldObserve) {
+      this.debounceController = new AbortController();
+      BaseDropdown.AnchorPositionFallbackObserver.observe(this.listbox);
+
+      window.addEventListener('scroll', this.repositionListbox, {
+        passive: true,
+        capture: true,
+        signal: this.debounceController.signal,
+      });
+
+      window.addEventListener('resize', this.repositionListbox, {
+        passive: true,
+        signal: this.debounceController.signal,
+      });
+
+      this.repositionListbox();
+
+      return;
+    }
+
+    BaseDropdown.AnchorPositionFallbackObserver.unobserve(this.listbox);
+    this.debounceController?.abort();
+
+    if (this.frameId) {
+      cancelAnimationFrame(this.frameId);
+      this.frameId = undefined;
+    }
   }
 }

@@ -1,12 +1,23 @@
 import * as React from 'react';
 import { ScatterChartProps } from './ScatterChart.types';
-import { useScatterChartStyles_unstable } from './useScatterChartStyles.styles';
+import { useScatterChartStyles } from './useScatterChartStyles.styles';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { Legend, Legends } from '../Legends/index';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
-import { find } from '../../utilities/index';
+import {
+  areArraysEqual,
+  createNumericYAxis,
+  createStringYAxis,
+  domainRangeOfDateForScatterChart,
+  domainRangeOfNumericForScatterChart,
+  domainRangeOfXStringAxis,
+  find,
+  findNumericMinMaxOfY,
+  IDomainNRange,
+  YAxisType,
+} from '../../utilities/index';
 import {
   AccessibilityProps,
   CartesianChart,
@@ -15,15 +26,15 @@ import {
   CustomizedCalloutData,
   Margins,
   RefArrayData,
-  ColorFillBarsProps,
   ScatterChartDataPoint,
+  Chart,
 } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 import {
   calloutData,
   ChartTypes,
   XAxisTypes,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
@@ -63,11 +74,12 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   let _xAxisLabels: string[] = [];
   let xAxisCalloutAccessibilityData: AccessibilityProps = {};
   let _xBandwidth = 0;
+  const cartesianChartRef = React.useRef<Chart>(null);
+  const classes = useScatterChartStyles(props);
 
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
   const [YValueHover, setYValueHover] = React.useState<[]>([]);
-  const [selectedLegend, setSelectedLegend] = React.useState<string>('');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedLegendPoints, setSelectedLegendPoints] = React.useState<any[]>([]);
   const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
@@ -75,6 +87,26 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+  const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
+  const prevSelectedLegendsRef = React.useRef<string[] | undefined>(undefined);
+
+  React.useEffect(() => {
+    if (
+      prevSelectedLegendsRef.current &&
+      !areArraysEqual(prevSelectedLegendsRef.current, props.legendProps?.selectedLegends)
+    ) {
+      setSelectedLegends(props.legendProps?.selectedLegends || []);
+    }
+    prevSelectedLegendsRef.current = props.legendProps?.selectedLegends;
+  }, [props.legendProps?.selectedLegends]);
+
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+    }),
+    [],
+  );
 
   const _xAxisType: XAxisTypes =
     props.data.lineChartData! &&
@@ -130,6 +162,43 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     }
   }
 
+  function _getNumericMinMaxOfY(
+    points: LineChartPoints[],
+    yAxisType?: YAxisType,
+  ): { startValue: number; endValue: number } {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType);
+    let yPadding = 0;
+    yPadding = (endValue - startValue) * 0.1;
+
+    return {
+      startValue: startValue - yPadding,
+      endValue: endValue + yPadding,
+    };
+  }
+
+  function _getDomainNRangeValues(
+    points: any,
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfNumericForScatterChart(points, margins, width, isRTL);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForScatterChart(points, margins, width, isRTL, tickValues! as Date[]);
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  }
+
   function _getMargins(_margins: Margins) {
     margins = _margins;
   }
@@ -146,28 +215,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     renderSeries = _createPlot(xElement!, containerHeight!);
   }
 
-  function _handleSingleLegendSelectionAction(scatterChartItem: ScatterChartDataWithIndex | ColorFillBarsProps) {
-    if (selectedLegend === scatterChartItem.legend) {
-      setSelectedLegend('');
-      _handleLegendClick(scatterChartItem, null);
-    } else {
-      setSelectedLegend(scatterChartItem.legend);
-      _handleLegendClick(scatterChartItem, scatterChartItem.legend);
-    }
-  }
-
   function _onHoverCardHide() {
     setSelectedLegendPoints([]);
     setIsSelectedLegend(false);
-  }
-
-  function _handleLegendClick(
-    scatterChartItem: ScatterChartDataWithIndex | ColorFillBarsProps,
-    selectedLegend: string | null | string[],
-  ): void {
-    if (scatterChartItem.onLegendClick) {
-      scatterChartItem.onLegendClick(selectedLegend);
-    }
   }
 
   function _createLegends(data: ScatterChartDataWithIndex[]): JSX.Element {
@@ -179,13 +229,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       const legend: Legend = {
         title: point.legend!,
         color,
-        action: () => {
-          if (isLegendMultiSelectEnabled) {
-            _handleMultipleSeriesLegendSelectionAction(point);
-          } else {
-            _handleSingleLegendSelectionAction(point);
-          }
-        },
         onMouseOutAction: () => {
           setActiveLegend('');
         },
@@ -207,8 +250,26 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         overflowText={props.legendsOverflowText}
         {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: _onHoverCardHide })}
         {...props.legendProps}
+        selectedLegends={selectedLegends}
+        onChange={_onLegendSelectionChange}
       />
     );
+  }
+
+  function _onLegendSelectionChange(
+    legendsSelected: string[],
+    event: React.MouseEvent<HTMLButtonElement>,
+    currentLegend?: Legend,
+  ): void {
+    if (props.legendProps?.canSelectMultipleLegends) {
+      setSelectedLegends(legendsSelected);
+    } else {
+      setSelectedLegends(legendsSelected.slice(-1));
+    }
+
+    if (props.legendProps?.onChange) {
+      props.legendProps.onChange(legendsSelected, event, currentLegend);
+    }
   }
 
   function _getPointFill(seriesColor: string, pointId: string, pointIndex: number, isLastPoint: boolean) {
@@ -311,7 +372,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
               _handleHover(x, y, verticaLineHeight, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData, event)
             }
             onMouseOut={_handleMouseOut}
-            onFocus={() => _handleFocus(seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+            onFocus={event =>
+              _handleFocus(event, seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
+            }
             onBlur={_handleMouseOut}
             {..._getClickHandler(_points[i].data[j].onDataPointClick)}
             opacity={isLegendSelected && !currentPointHidden ? 1 : 0.1}
@@ -319,7 +382,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
             stroke={seriesColor}
             role="img"
             aria-label={_getAriaLabel(i, j)}
-            tabIndex={_points[i].legend !== '' ? 0 : undefined}
+            tabIndex={isLegendSelected ? 0 : undefined}
           />,
         );
       }
@@ -334,7 +397,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         </g>,
       );
     }
-    const classes = useScatterChartStyles_unstable(props);
     // Removing un wanted tooltip div from DOM, when prop not provided.
     if (!props.showXAxisLablesTooltip) {
       try {
@@ -352,21 +414,28 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return series;
   }
 
   function _handleFocus(
+    event: React.FocusEvent<SVGCircleElement, Element>,
     seriesId: string,
     x: number | Date | string,
-
     xAxisCalloutData: string | undefined,
     circleId: string,
     xAxisCalloutAccessibilityData?: AccessibilityProps,
   ) {
+    let cx = 0;
+    let cy = 0;
+
+    const targetRect = (event.target as SVGCircleElement).getBoundingClientRect();
+    cx = targetRect.left + targetRect.width / 2;
+    cy = targetRect.top + targetRect.height / 2;
+    updatePosition(cx, cy);
     _uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
     const xVal = x instanceof Date ? x.getTime() : x;
@@ -451,59 +520,25 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     }
   }
 
-  function _handleMultipleSeriesLegendSelectionAction(selectedSeries: ScatterChartDataWithIndex) {
-    const selectedSeriesIndex = selectedLegendPoints.reduce((acc, series, index) => {
-      if (acc > -1 || series.legend !== selectedSeries.legend) {
-        return acc;
-      } else {
-        return index;
-      }
-    }, -1);
-
-    let selectedSerieses: ScatterChartDataWithIndex[];
-    if (selectedSeriesIndex === -1) {
-      selectedSerieses = [...selectedLegendPoints, selectedSeries];
-    } else {
-      selectedSerieses = selectedLegendPoints
-        .slice(0, selectedSeriesIndex)
-        .concat(selectedLegendPoints.slice(selectedSeriesIndex + 1));
-    }
-
-    const areAllSeriesLegendsSelected = props.data && selectedSerieses.length === props.data.lineChartData!.length;
-
-    if (areAllSeriesLegendsSelected || !selectedSerieses.length) {
-      // Clear all legends if no legends including color fill bar legends are selected
-      _clearMultipleLegendSelections();
-    } else {
-      // Otherwise, set state when one or more legends are selected, including color fill bar legends
-      setSelectedLegendPoints(selectedSerieses);
-      setIsSelectedLegend(true);
-    }
-
-    const selectedLegendTitlesToPass = selectedSerieses.map((series: ScatterChartDataWithIndex) => series.legend);
-    _handleLegendClick(selectedSeries, selectedLegendTitlesToPass);
-  }
-
-  function _clearMultipleLegendSelections() {
-    setSelectedLegendPoints([]);
-    setIsSelectedLegend(false);
-  }
-
   /**
    * This function checks if the given legend is highlighted or not.
    * A legend can be highlighted in 2 ways:
    * 1. selection: if the user clicks on it
    * 2. hovering: if there is no selected legend and the user hovers over it*/
 
-  function _legendHighlighted(legend: string) {
-    return selectedLegend === legend || (selectedLegend === '' && activeLegend === legend);
+  function _legendHighlighted(legend: string): boolean {
+    return _getHighlightedLegend().includes(legend);
   }
 
   /**
    * This function checks if none of the legends is selected or hovered.*/
 
-  function _noLegendHighlighted() {
-    return selectedLegend === '' && activeLegend === '';
+  function _noLegendHighlighted(): boolean {
+    return _getHighlightedLegend().length === 0;
+  }
+
+  function _getHighlightedLegend(): string[] {
+    return selectedLegends.length > 0 ? selectedLegends : activeLegend ? [activeLegend] : [];
   }
 
   function _getAriaLabel(seriesIndex: number, pointIndex: number): string {
@@ -580,14 +615,19 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       getmargins={_getMargins}
       getGraphData={_initializeScatterChartData}
       xAxisType={_xAxisType}
+      getMinMaxOfYAxis={_getNumericMinMaxOfY}
+      getDomainNRangeValues={_getDomainNRangeValues}
+      createYAxis={createNumericYAxis}
+      createStringYAxis={createStringYAxis}
       onChartMouseLeave={_handleChartMouseLeave}
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}
+      componentRef={cartesianChartRef}
       /* eslint-disable react/jsx-no-bind */
       // eslint-disable-next-line react/no-children-prop
       children={(props: ChildProps) => {
         _xAxisScale = props.xScale!;
-        _yAxisScale = props.yScale!;
+        _yAxisScale = props.yScalePrimary!;
         return (
           <>
             <g>

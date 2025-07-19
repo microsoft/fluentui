@@ -3,25 +3,67 @@
 /* eslint-disable no-var */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, merge as d3Merge } from 'd3-array';
+import {
+  bin as d3Bin,
+  extent as d3Extent,
+  sum as d3Sum,
+  min as d3Min,
+  max as d3Max,
+  range as d3Range,
+  Bin,
+} from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { format as d3Format, precisionFixed as d3PrecisionFixed } from 'd3-format';
 import { DonutChartProps } from '../DonutChart/index';
-import { ChartDataPoint, ChartProps, LineChartPoints, VerticalBarChartDataPoint } from '../../types/DataPoint';
+import {
+  ChartDataPoint,
+  ChartProps,
+  HorizontalBarChartWithAxisDataPoint,
+  LineChartPoints,
+  VerticalStackedChartProps,
+  HeatMapChartData,
+  HeatMapChartDataPoint,
+  GroupedVerticalBarChartData,
+  VerticalBarChartDataPoint,
+  SankeyChartData,
+  LineChartLineOptions,
+} from '../../types/DataPoint';
+import { SankeyChartProps } from '../SankeyChart/index';
+import { VerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
+import { HorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
 import { LineChartProps } from '../LineChart/index';
-import { getNextColor } from '../../utilities/colors';
+import { AreaChartProps } from '../AreaChart/index';
+import { HeatMapChartProps } from '../HeatMapChart/index';
+import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
+import { GaugeChartProps, GaugeChartSegment } from '../GaugeChart/index';
+import { GroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChartProps } from '../VerticalBarChart/index';
 import { findNumericMinMaxOfY } from '../../utilities/utilities';
-import { Layout, PlotlySchema, PieData, PlotData } from './PlotlySchema';
-import type { Datum, TypedArray } from './PlotlySchema';
-import { timeParse } from 'd3-time-format';
+import type {
+  Datum,
+  Layout,
+  PlotlySchema,
+  PieData,
+  PlotData,
+  SankeyData,
+  ScatterLine,
+  TypedArray,
+  Data,
+} from '@fluentui/chart-utilities';
+import {
+  isArrayOfType,
+  isArrayOrTypedArray,
+  isDate,
+  isDateArray,
+  isNumberArray,
+  isYearArray,
+} from '@fluentui/chart-utilities';
+import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 
 interface SecondaryYAxisValues {
   secondaryYAxistitle?: string;
   secondaryYScaleOptions?: { yMinValue?: number; yMaxValue?: number };
 }
 
-const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'histogram'];
 const dashOptions = {
   dot: {
     strokeDasharray: '1, 5',
@@ -60,81 +102,8 @@ const dashOptions = {
     lineBorderWidth: '4',
   },
 } as const;
-const isDate = (value: any): boolean => {
-  const parsedDate = new Date(Date.parse(value));
-  if (isNaN(parsedDate.getTime())) {
-    return false;
-  }
-  const parsedYear = parsedDate.getFullYear();
-  const yearInString = /\b\d{4}\b/.test(value);
-  if (!yearInString && (parsedYear === 2000 || parsedYear === 2001)) {
-    return false;
-  }
-  return true;
-};
 
-const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
-
-const isMonth = (possiblyMonthValue: any): boolean => {
-  const parseFullMonth = timeParse('%B');
-  const parseShortMonth = timeParse('%b');
-  return parseFullMonth(possiblyMonthValue) !== null || parseShortMonth(possiblyMonthValue) !== null;
-};
-
-const isArrayOfType = (
-  plotCoordinates: Datum[] | Datum[][] | TypedArray | undefined,
-  typeCheck: (datum: any, ...args: any[]) => boolean,
-  ...args: any[]
-): boolean => {
-  if (!isArrayOrTypedArray(plotCoordinates)) {
-    return false;
-  }
-
-  if (plotCoordinates!.length === 0) {
-    return false;
-  }
-
-  if (Array.isArray(plotCoordinates![0])) {
-    // Handle 2D array
-    return (plotCoordinates as Datum[][]).every(innerArray => innerArray.every(datum => typeCheck(datum, ...args)));
-  } else {
-    // Handle 1D array
-    return (plotCoordinates as Datum[]).every(datum => typeCheck(datum, ...args));
-  }
-};
-
-export const isDateArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  return isArrayOfType(data, isDate);
-};
-
-export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  return isArrayOfType(data, isNumber);
-};
-
-export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  return isArrayOfType(data, isMonth);
-};
-
-export const isLineData = (data: Partial<PlotData>): boolean => {
-  return (
-    !SUPPORTED_PLOT_TYPES.includes(`${data.type}`) &&
-    Array.isArray(data.x) &&
-    isArrayOfType(data.y, (value: any) => typeof value === 'number') &&
-    data.x.length > 0 &&
-    data.x.length === data.y!.length
-  );
-};
-
-const invalidate2Dseries = (series: PlotData, chartType: string): void => {
-  if (series.x?.length > 0 && Array.isArray(series.x[0])) {
-    throw new Error(`transform to ${chartType}:: 2D x array not supported`);
-  }
-  if (series.y?.length > 0 && Array.isArray(series.y[0])) {
-    throw new Error(`transform to ${chartType}:: 2D y array not supported`);
-  }
-};
-
-const getLegend = (series: PlotData, index: number): string => {
+const getLegend = (series: Partial<PlotData>, index: number): string => {
   return series.name || `Series ${index + 1}`;
 };
 
@@ -147,7 +116,7 @@ function getTitles(layout: Partial<Layout> | undefined) {
   return titles;
 }
 
-export const updateXValues = (xValues: Datum[] | Datum[][] | TypedArray): any[] => {
+export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any[] => {
   const presentYear = new Date().getFullYear();
   if (xValues.length > 0 && Array.isArray(xValues[0])) {
     throw new Error('updateXValues:: 2D array not supported');
@@ -187,37 +156,58 @@ export const getColor = (
   return colorMap.current.get(legendLabel) as string;
 };
 
-const getSecondaryYAxisValues = (series: PlotData, layout: Partial<Layout> | undefined) => {
-  const secondaryYAxisValues: SecondaryYAxisValues = {};
-  if (layout && layout.yaxis2 && series.yaxis === 'y2') {
-    secondaryYAxisValues.secondaryYAxistitle =
-      typeof layout.yaxis2.title === 'string'
-        ? layout.yaxis2.title
-        : typeof layout.yaxis2.title?.text === 'string'
-        ? layout.yaxis2.title.text
-        : '';
-    if (layout.yaxis2.range) {
-      secondaryYAxisValues.secondaryYScaleOptions = {
-        yMinValue: layout.yaxis2.range[0],
-        yMaxValue: layout.yaxis2.range[1],
-      };
-    } else {
+const usesSecondaryYScale = (series: Partial<PlotData>): boolean => {
+  return series.yaxis === 'y2';
+};
+
+const getSecondaryYAxisValues = (
+  data: Data[],
+  layout: Partial<Layout> | undefined,
+  maxAllowedMinY?: number,
+  minAllowedMaxY?: number,
+): SecondaryYAxisValues => {
+  let containsSecondaryYAxis = false;
+  let yMinValue: number | undefined;
+  let yMaxValue: number | undefined;
+
+  data.forEach((series: Partial<PlotData>) => {
+    if (usesSecondaryYScale(series)) {
+      containsSecondaryYAxis = true;
       const yValues = series.y as number[];
       if (yValues) {
-        secondaryYAxisValues.secondaryYScaleOptions = {
-          yMinValue: Math.min(...yValues),
-          yMaxValue: Math.max(...yValues),
-        };
+        yMinValue = Math.min(...yValues);
+        yMaxValue = Math.max(...yValues);
       }
     }
+  });
+
+  if (!containsSecondaryYAxis) {
+    return {};
   }
-  secondaryYAxisValues.secondaryYAxistitle =
-    secondaryYAxisValues.secondaryYAxistitle !== '' ? secondaryYAxisValues.secondaryYAxistitle : undefined;
-  secondaryYAxisValues.secondaryYScaleOptions =
-    secondaryYAxisValues.secondaryYScaleOptions && Object.keys(secondaryYAxisValues.secondaryYScaleOptions).length !== 0
-      ? secondaryYAxisValues.secondaryYScaleOptions
-      : undefined;
-  return secondaryYAxisValues;
+
+  if (typeof yMinValue === 'number' && typeof maxAllowedMinY === 'number') {
+    yMinValue = Math.min(yMinValue, maxAllowedMinY);
+  }
+  if (typeof yMaxValue === 'number' && typeof minAllowedMaxY === 'number') {
+    yMaxValue = Math.max(yMaxValue, minAllowedMaxY);
+  }
+  if (layout?.yaxis2?.range) {
+    yMinValue = layout.yaxis2.range[0];
+    yMaxValue = layout.yaxis2.range[1];
+  }
+
+  return {
+    secondaryYAxistitle:
+      typeof layout?.yaxis2?.title === 'string'
+        ? layout.yaxis2.title
+        : typeof layout?.yaxis2?.title?.text === 'string'
+        ? layout.yaxis2.title.text
+        : undefined,
+    secondaryYScaleOptions: {
+      yMinValue,
+      yMaxValue,
+    },
+  };
 };
 
 export const transformPlotlyJsonToDonutProps = (
@@ -227,13 +217,21 @@ export const transformPlotlyJsonToDonutProps = (
 ): DonutChartProps => {
   const firstData = input.data[0] as PieData;
 
-  const donutData = firstData.labels?.map((label: string, index: number): ChartDataPoint => {
+  const mapLegendToDataPoint: Record<string, ChartDataPoint> = {};
+  firstData.labels?.forEach((label: string, index: number) => {
     const color = getColor(label, colorMap, isDarkTheme);
-    return {
-      legend: label,
-      data: firstData.values?.[index] as number, //ToDo how to handle string data?
-      color,
-    };
+    //ToDo how to handle string data?
+    const value = typeof firstData.values?.[index] === 'number' ? (firstData.values[index] as number) : 1;
+
+    if (!mapLegendToDataPoint[label]) {
+      mapLegendToDataPoint[label] = {
+        legend: label,
+        data: value,
+        color,
+      };
+    } else {
+      mapLegendToDataPoint[label].data! += value;
+    }
   });
 
   const width: number = input.layout?.width ?? 440;
@@ -251,14 +249,123 @@ export const transformPlotlyJsonToDonutProps = (
   return {
     data: {
       chartTitle,
-      chartData: donutData,
+      chartData: Object.values(mapLegendToDataPoint),
     },
     hideLegend: input.layout?.showlegend === false ? true : false,
-    width,
+    width: input.layout?.width,
     height,
     innerRadius,
     hideLabels,
     showLabelsInPercent: firstData.textinfo ? ['percent', 'label+percent'].includes(firstData.textinfo) : true,
+  };
+};
+
+export const transformPlotlyJsonToVSBCProps = (
+  input: PlotlySchema,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+  fallbackVSBC?: boolean,
+): VerticalStackedBarChartProps => {
+  const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
+  let yMaxValue = 0;
+  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
+  let yMinValue = 0;
+  input.data.forEach((series: PlotData, index1: number) => {
+    const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
+    (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
+      if (!mapXToDataPoints[x]) {
+        mapXToDataPoints[x] = { xAxisPoint: isXYearCategory ? x.toString() : x, chartData: [], lineData: [] };
+      }
+      const legend: string = getLegend(series, index1);
+      const yVal: number = (series.y?.[index2] as number) ?? 0;
+      if (series.type === 'bar') {
+        const color = getColor(legend, colorMap, isDarkTheme);
+        mapXToDataPoints[x].chartData.push({
+          legend,
+          data: yVal,
+          color,
+        });
+        yMaxValue = Math.max(yMaxValue, yVal);
+      } else if (series.type === 'scatter' || !!fallbackVSBC) {
+        const color = getColor(legend, colorMap, isDarkTheme);
+        const lineOptions = getLineOptions(series.line);
+        mapXToDataPoints[x].lineData!.push({
+          legend,
+          y: yVal,
+          color,
+          ...(lineOptions ? { lineOptions } : {}),
+          useSecondaryYScale: usesSecondaryYScale(series),
+        });
+        if (!usesSecondaryYScale(series)) {
+          yMaxValue = Math.max(yMaxValue, yVal);
+        }
+      }
+
+      yMaxValue = Math.max(yMaxValue, yVal);
+      yMinValue = Math.min(yMinValue, yVal);
+    });
+  });
+
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
+
+  return {
+    data: Object.values(mapXToDataPoints),
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
+    barWidth: 'auto',
+    yMaxValue,
+    yMinValue,
+    chartTitle,
+    xAxisTitle,
+    yAxisTitle,
+    mode: 'plotly',
+    ...secondaryYAxisValues,
+    hideTickOverlap: true,
+    barGapMax: 2,
+  };
+};
+
+export const transformPlotlyJsonToGVBCProps = (
+  input: PlotlySchema,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): GroupedVerticalBarChartProps => {
+  const mapXToDataPoints: Record<string, GroupedVerticalBarChartData> = {};
+  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
+  input.data.forEach((series: PlotData, index1: number) => {
+    (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
+      if (!mapXToDataPoints[x]) {
+        mapXToDataPoints[x] = { name: x.toString(), series: [] };
+      }
+      if (series.type === 'bar') {
+        const legend: string = getLegend(series, index1);
+        const color = getColor(legend, colorMap, isDarkTheme);
+
+        mapXToDataPoints[x].series.push({
+          key: legend,
+          data: (series.y?.[index2] as number) ?? 0,
+          xAxisCalloutData: x as string,
+          color,
+          legend,
+          useSecondaryYScale: usesSecondaryYScale(series),
+        });
+      }
+    });
+  });
+
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
+
+  return {
+    data: Object.values(mapXToDataPoints),
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
+    barWidth: 'auto',
+    chartTitle,
+    xAxisTitle,
+    yAxisTitle,
+    mode: 'plotly',
+    ...secondaryYAxisValues,
+    hideTickOverlap: true,
   };
 };
 
@@ -269,72 +376,47 @@ export const transformPlotlyJsonToVBCProps = (
 ): VerticalBarChartProps => {
   const vbcData: VerticalBarChartDataPoint[] = [];
 
-  input.data.forEach((series: PlotData, index: number) => {
-    invalidate2Dseries(series, 'VBC');
-
+  input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
     if (!series.x) {
       return;
     }
 
-    const scale = d3ScaleLinear()
-      .domain(d3Extent<number>(series.x as number[]) as [number, number])
-      .nice();
-    let [xMin, xMax] = scale.domain();
+    const isXString = isStringArray(series.x);
+    const xBins = createBins(series.x, series.xbins?.start, series.xbins?.end, series.xbins?.size);
+    const yBins: number[][] = xBins.map(() => []);
+    let total = 0;
 
-    xMin = typeof series.xbins?.start === 'number' ? series.xbins.start : xMin;
-    xMax = typeof series.xbins?.end === 'number' ? series.xbins.end : xMax;
-
-    const bin = d3Bin().domain([xMin, xMax]);
-
-    if (typeof series.xbins?.size === 'number') {
-      const thresholds: number[] = [];
-      let th = xMin;
-      const precision = d3PrecisionFixed(series.xbins.size);
-      const format = d3Format(`.${precision}f`);
-
-      while (th < xMax + series.xbins.size) {
-        thresholds.push(parseFloat(format(th)));
-        th += series.xbins.size;
+    series.x.forEach((xVal, index) => {
+      const binIdx = findBinIndex(xBins, xVal as string | number | null, isXString);
+      if (binIdx !== -1) {
+        yBins[binIdx].push((series.y?.[index] as number | null | undefined) ?? 1);
       }
+    });
 
-      xMin = thresholds[0];
-      xMax = thresholds[thresholds.length - 1];
-      bin.domain([xMin, xMax]).thresholds(thresholds);
-    }
+    const y = yBins.map(bin => {
+      const yVal = calculateHistFunc(series.histfunc, bin);
+      total += yVal;
+      return yVal;
+    });
 
-    const buckets = bin(series.x as number[]);
-    // If the start or end of xbins is specified, then the number of datapoints may become less than x.length
-    const totalDataPoints = d3Merge(buckets).length;
-
-    buckets.forEach(bucket => {
-      const legend: string = getLegend(series, index);
+    xBins.forEach((bin, index) => {
+      const legend: string = getLegend(series, seriesIdx);
       const color: string = getColor(legend, colorMap, isDarkTheme);
-      let y = bucket.length;
-
-      if (series.histnorm === 'percent') {
-        y = (bucket.length / totalDataPoints) * 100;
-      } else if (series.histnorm === 'probability') {
-        y = bucket.length / totalDataPoints;
-      } else if (series.histnorm === 'density') {
-        y = bucket.x0 === bucket.x1 ? 0 : bucket.length / (bucket.x1! - bucket.x0!);
-      } else if (series.histnorm === 'probability density') {
-        y = bucket.x0 === bucket.x1 ? 0 : bucket.length / (totalDataPoints * (bucket.x1! - bucket.x0!));
-      } else if (series.histfunc === 'sum') {
-        y = d3Sum(bucket);
-      } else if (series.histfunc === 'avg') {
-        y = bucket.length === 0 ? 0 : d3Sum(bucket) / bucket.length;
-      } else if (series.histfunc === 'min') {
-        y = d3Min(bucket)!;
-      } else if (series.histfunc === 'max') {
-        y = d3Max(bucket)!;
-      }
+      const yVal = calculateHistNorm(
+        series.histnorm,
+        y[index],
+        total,
+        isXString ? bin.length : getBinSize(bin as Bin<number, number>),
+      );
 
       vbcData.push({
-        x: (bucket.x1! + bucket.x0!) / 2,
-        y,
+        x: isXString ? bin.join(', ') : getBinCenter(bin as Bin<number, number>),
+        y: yVal,
         legend,
         color,
-        xAxisCalloutData: `[${bucket.x0} - ${bucket.x1})`,
+        ...(isXString
+          ? {}
+          : { xAxisCalloutData: `[${(bin as Bin<number, number>).x0} - ${(bin as Bin<number, number>).x1})` }),
       });
     });
   });
@@ -343,11 +425,12 @@ export const transformPlotlyJsonToVBCProps = (
 
   return {
     data: vbcData,
-    // width: layout?.width,
-    // height: layout?.height,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
     chartTitle,
     xAxisTitle,
     yAxisTitle,
+    mode: 'plotly',
     hideTickOverlap: true,
   };
 };
@@ -357,28 +440,38 @@ export const transformPlotlyJsonToScatterChartProps = (
   isAreaChart: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
-): LineChartProps => {
-  let secondaryYAxisValues: SecondaryYAxisValues = {};
+): LineChartProps | AreaChartProps => {
+  const secondaryYAxisValues = getSecondaryYAxisValues(
+    input.data,
+    input.layout,
+    isAreaChart ? 0 : undefined,
+    isAreaChart ? 0 : undefined,
+  );
+  let mode: string = 'tonexty';
   const chartData: LineChartPoints[] = input.data.map((series: PlotData, index: number) => {
-    invalidate2Dseries(series, 'Scatter');
     const xValues = series.x as Datum[];
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const legend: string = getLegend(series, index);
     const lineColor = getColor(legend, colorMap, isDarkTheme);
-    secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
+    mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
+    const lineOptions = getLineOptions(series.line);
 
     return {
       legend,
-      ...(series.line?.dash && dashOptions[series.line.dash]
-        ? { lineOptions: { ...dashOptions[series.line.dash] } }
-        : {}),
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
+        ...(Array.isArray(series.marker?.size)
+          ? { markerSize: series.marker.size[i] }
+          : typeof series.marker?.size === 'number'
+          ? { markerSize: series.marker.size }
+          : {}),
       })),
       color: lineColor,
+      ...(lineOptions ? { lineOptions } : {}),
+      useSecondaryYScale: usesSecondaryYScale(series),
     } as LineChartPoints;
   });
 
@@ -390,48 +483,326 @@ export const transformPlotlyJsonToScatterChartProps = (
     lineChartData: chartData,
   };
 
-  return {
-    data: chartProps,
-    supportNegativeData: true,
-    xAxisTitle,
-    yAxisTitle,
-    secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-    secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
-    roundedTicks: true,
-    yMinValue: yMinMaxValues.startValue,
-    yMaxValue: yMinMaxValues.endValue,
-    hideTickOverlap: true,
-  } as LineChartProps;
+  if (isAreaChart) {
+    return {
+      data: chartProps,
+      supportNegativeData: true,
+      xAxisTitle,
+      yAxisTitle,
+      ...secondaryYAxisValues,
+      mode,
+      width: input.layout?.width,
+      height: input.layout?.height ?? 350,
+      hideTickOverlap: true,
+      useUTC: false,
+    } as AreaChartProps;
+  } else {
+    return {
+      data: chartProps,
+      supportNegativeData: true,
+      xAxisTitle,
+      yAxisTitle,
+      ...secondaryYAxisValues,
+      roundedTicks: true,
+      yMinValue: yMinMaxValues.startValue,
+      yMaxValue: yMinMaxValues.endValue,
+      width: input.layout?.width,
+      height: input.layout?.height ?? 350,
+      hideTickOverlap: true,
+      useUTC: false,
+    } as LineChartProps;
+  }
 };
 
-const MAX_DEPTH = 15;
-export const sanitizeJson = (jsonObject: any, depth: number = 0): any => {
-  if (depth > MAX_DEPTH) {
-    throw new Error('Maximum json depth exceeded');
+export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
+  input: PlotlySchema,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): HorizontalBarChartWithAxisProps => {
+  const chartData: HorizontalBarChartWithAxisDataPoint[] = input.data
+    .map((series: PlotData, index: number) => {
+      return (series.y as Datum[]).map((yValue: string, i: number) => {
+        const legendName = series.name ?? yValue;
+        const color = getColor(legendName, colorMap, isDarkTheme);
+        return {
+          x: series.x[i],
+          y: yValue,
+          legend: legendName,
+          color,
+        } as HorizontalBarChartWithAxisDataPoint;
+      });
+    })
+    .flat()
+    //reversing the order to invert the Y bars order as required by plotly.
+    .reverse();
+
+  const chartHeight: number = input.layout?.height ?? 450;
+  const margin: number = input.layout?.margin?.l ?? 0;
+  const padding: number = input.layout?.margin?.pad ?? 0;
+  const availableHeight: number = chartHeight - margin - padding;
+  const numberOfRows = new Set(chartData.map(d => d.y)).size || 1;
+  const scalingFactor = 0.01;
+  const gapFactor = 1 / (1 + scalingFactor * numberOfRows);
+  const barHeight = availableHeight / (numberOfRows * (1 + gapFactor));
+
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
+
+  return {
+    data: chartData,
+    chartTitle,
+    xAxisTitle,
+    yAxisTitle,
+    secondaryYAxistitle:
+      typeof input.layout?.yaxis2?.title === 'string'
+        ? input.layout?.yaxis2?.title
+        : input.layout?.yaxis2?.title?.text || '',
+    barHeight,
+    showYAxisLables: true,
+    height: chartHeight,
+    width: input.layout?.width,
+    hideTickOverlap: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
+  };
+};
+
+export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): HeatMapChartProps => {
+  const firstData = input.data[0] as Partial<PlotData>;
+  const heatmapDataPoints: HeatMapChartDataPoint[] = [];
+  let zMin = Number.POSITIVE_INFINITY;
+  let zMax = Number.NEGATIVE_INFINITY;
+
+  if (firstData.type === 'histogram2d') {
+    const isXString = isStringArray(firstData.x);
+    const isYString = isStringArray(firstData.y);
+    const xBins = createBins(firstData.x, firstData.xbins?.start, firstData.xbins?.end, firstData.xbins?.size);
+    const yBins = createBins(firstData.y, firstData.ybins?.start, firstData.ybins?.end, firstData.ybins?.size);
+    const zBins: number[][][] = yBins.map(() => xBins.map(() => []));
+    let total = 0;
+
+    firstData.x?.forEach((xVal, index) => {
+      const xBinIdx = findBinIndex(xBins, xVal as string | number | null, isXString);
+      const yBinIdx = findBinIndex(yBins, firstData.y?.[index] as string | number | null | undefined, isYString);
+
+      if (xBinIdx !== -1 && yBinIdx !== -1) {
+        zBins[yBinIdx][xBinIdx].push((firstData.z?.[index] as number | null | undefined) ?? 1);
+      }
+    });
+
+    const z = zBins.map(row => {
+      return row.map(bin => {
+        const zVal = calculateHistFunc(firstData.histfunc, bin);
+        total += zVal;
+        return zVal;
+      });
+    });
+
+    xBins.forEach((xBin, xIdx) => {
+      yBins.forEach((yBin, yIdx) => {
+        const zVal = calculateHistNorm(
+          firstData.histnorm,
+          z[yIdx][xIdx],
+          total,
+          isXString ? xBin.length : getBinSize(xBin as Bin<number, number>),
+          isYString ? yBin.length : getBinSize(yBin as Bin<number, number>),
+        );
+
+        heatmapDataPoints.push({
+          x: isXString ? xBin.join(', ') : getBinCenter(xBin as Bin<number, number>),
+          y: isYString ? yBin.join(', ') : getBinCenter(yBin as Bin<number, number>),
+          value: zVal,
+          rectText: zVal,
+        });
+
+        if (typeof zVal === 'number') {
+          zMin = Math.min(zMin, zVal);
+          zMax = Math.max(zMax, zVal);
+        }
+      });
+    });
+  } else {
+    (firstData.x as Datum[])?.forEach((xVal, xIdx: number) => {
+      firstData.y?.forEach((yVal: any, yIdx: number) => {
+        const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
+
+        heatmapDataPoints.push({
+          x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
+          y: input.layout?.yaxis?.type === 'date' ? (yVal as Date) : yVal,
+          value: zVal,
+          rectText: zVal,
+        });
+
+        if (typeof zVal === 'number') {
+          zMin = Math.min(zMin, zVal);
+          zMax = Math.max(zMax, zVal);
+        }
+      });
+    });
   }
 
-  if (typeof jsonObject === 'object' && jsonObject !== null) {
-    for (const key in jsonObject) {
-      if (jsonObject.hasOwnProperty(key)) {
-        if (typeof jsonObject[key] === 'string') {
-          jsonObject[key] = jsonObject[key].replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        } else {
-          jsonObject[key] = sanitizeJson(jsonObject[key], depth + 1);
-        }
-      }
+  const heatmapData: HeatMapChartData = {
+    legend: firstData.name ?? '',
+    data: heatmapDataPoints,
+    value: 0,
+  };
+
+  // Initialize domain and range to default values
+  const defaultDomain = [zMin, (zMax + zMin) / 2, zMax];
+  const defaultRange = [
+    getColorFromToken(DataVizPalette.color1),
+    getColorFromToken(DataVizPalette.color2),
+    getColorFromToken(DataVizPalette.color3),
+  ];
+  const domainValuesForColorScale: number[] = Array.isArray(firstData.colorscale)
+    ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[0] * (zMax - zMin) + zMin)
+    : defaultDomain;
+
+  const rangeValuesForColorScale: string[] = Array.isArray(firstData.colorscale)
+    ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[1])
+    : defaultRange;
+
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
+
+  return {
+    data: [heatmapData],
+    domainValuesForColorScale,
+    rangeValuesForColorScale,
+    hideLegend: true,
+    showYAxisLables: true,
+    chartTitle,
+    xAxisTitle,
+    yAxisTitle,
+    sortOrder: 'none',
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
+    hideTickOverlap: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
+  };
+};
+
+export const transformPlotlyJsonToSankeyProps = (
+  input: PlotlySchema,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): SankeyChartProps => {
+  const { link, node } = input.data[0] as SankeyData;
+  const validLinks = (link?.value ?? [])
+    .map((val: number, index: number) => ({
+      value: val,
+      source: link?.source![index],
+      target: link?.target![index],
+    }))
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    // Filter out negative nodes, unequal nodes and self-references (circular links)
+    .filter(x => x.source >= 0 && x.target >= 0 && x.source !== x.target);
+
+  const sankeyChartData = {
+    nodes: node.label?.map((label: string, index: number) => {
+      const color = getColor(label, colorMap, isDarkTheme);
+
+      return {
+        nodeId: index,
+        name: label,
+        color,
+      };
+    }),
+    links: validLinks.map((validLink: any, index: number) => {
+      return {
+        ...validLink,
+      };
+    }),
+  } as SankeyChartData;
+
+  // const styles: SankeyChartProps['styles'] = {
+  //   root: {
+  //     ...(input.layout?.font?.size ? { fontSize: input.layout.font?.size } : {}),
+  //   },
+  // };
+
+  const { chartTitle } = getTitles(input.layout);
+
+  return {
+    data: {
+      chartTitle,
+      SankeyChartData: sankeyChartData,
+    },
+    width: input.layout?.width,
+    height: input.layout?.height ?? 468,
+    // TODO
+    // styles,
+  };
+};
+
+export const transformPlotlyJsonToGaugeProps = (
+  input: PlotlySchema,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): GaugeChartProps => {
+  const firstData = input.data[0] as PlotData;
+
+  const segments = firstData.gauge?.steps?.length
+    ? firstData.gauge.steps.map((step: any, index: number): GaugeChartSegment => {
+        const legend = step.name || `Segment ${index + 1}`;
+        const color = getColor(legend, colorMap, isDarkTheme);
+        return {
+          legend,
+          size: step.range?.[1] - step.range?.[0],
+          color,
+        };
+      })
+    : [
+        {
+          legend: 'Current',
+          size: firstData.value ?? 0 - (firstData.gauge?.axis?.range?.[0] ?? 0),
+          color: getColor('Current', colorMap, isDarkTheme),
+        },
+        {
+          legend: 'Target',
+          size: (firstData.gauge?.axis?.range?.[1] ?? 100) - (firstData.value ?? 0),
+          color: DataVizPalette.disabled,
+        },
+      ];
+
+  let sublabel: string | undefined;
+  // let sublabelColor: string | undefined;
+  if (firstData.delta?.reference) {
+    const diff = firstData.value - firstData.delta.reference;
+    if (diff >= 0) {
+      sublabel = `\u25B2 ${diff}`;
+      // const color = getColorFromToken(DataVizPalette.success, isDarkTheme);
+      // sublabelColor = color;
+    } else {
+      sublabel = `\u25BC ${Math.abs(diff)}`;
+      // const color = getColorFromToken(DataVizPalette.error, isDarkTheme);
+      // sublabelColor = color;
     }
   }
 
-  return jsonObject;
+  // const styles: GaugeChartProps['styles'] = {
+  //   sublabel: {
+  //     fill: sublabelColor,
+  //   },
+  // };
+
+  const { chartTitle } = getTitles(input.layout);
+
+  return {
+    segments,
+    chartValue: firstData.value ?? 0,
+    chartTitle,
+    sublabel,
+    // range values can be null
+    minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
+    maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
+    chartValueFormat: () => firstData.value?.toString() ?? '',
+    width: input.layout?.width,
+    height: input.layout?.height ?? 220,
+    // TODO
+    // styles,
+    variant: firstData.gauge?.steps?.length ? 'multiple-segments' : 'single-segment',
+  };
 };
-
-function isTypedArray(a: any) {
-  return ArrayBuffer.isView(a) && !(a instanceof DataView);
-}
-
-export function isArrayOrTypedArray(a: any) {
-  return Array.isArray(a) || isTypedArray(a);
-}
 
 function isPlainObject(obj: any) {
   return (
@@ -475,3 +846,147 @@ function crawlIntoTrace(container: any, i: number, astrPartial: any) {
     }
   }
 }
+
+function getLineOptions(line: Partial<ScatterLine> | undefined): LineChartLineOptions | undefined {
+  if (!line) {
+    return;
+  }
+
+  let lineOptions: LineChartLineOptions = {};
+  if (line.dash) {
+    lineOptions = { ...lineOptions, ...dashOptions[line.dash] };
+  }
+
+  switch (line.shape) {
+    case 'spline':
+      const smoothing = typeof line.smoothing === 'number' ? line.smoothing : 1;
+      lineOptions.curve = d3CurveCardinal.tension(1 - smoothing / 1.3);
+      break;
+    case 'hv':
+      lineOptions.curve = 'stepAfter';
+      break;
+    case 'vh':
+      lineOptions.curve = 'stepBefore';
+      break;
+    case 'hvh':
+      lineOptions.curve = 'step';
+      break;
+    default:
+      lineOptions.curve = 'linear';
+  }
+
+  return Object.keys(lineOptions).length > 0 ? lineOptions : undefined;
+}
+
+const isStringArray = (arr: any) => {
+  return isArrayOfType(arr, (value: any) => typeof value === 'string');
+};
+
+// TODO: Use binary search to find the appropriate bin for numeric value.
+const findBinIndex = (
+  bins: string[][] | Bin<number, number>[],
+  value: string | number | null | undefined,
+  isString: boolean,
+) => {
+  if (typeof value === 'undefined' || value === null) {
+    return -1;
+  }
+
+  return isString
+    ? (bins as string[][]).findIndex(bin => bin.includes(value as string))
+    : (bins as Bin<number, number>[]).findIndex(bin => (value as number) >= bin.x0! && (value as number) < bin.x1!);
+};
+
+const getBinSize = (bin: Bin<number, number>) => {
+  return bin.x1! - bin.x0!;
+};
+
+const getBinCenter = (bin: Bin<number, number>) => {
+  return (bin.x1! + bin.x0!) / 2;
+};
+
+// TODO: Add support for date axes
+const createBins = (
+  data: TypedArray | Datum[] | Datum[][] | undefined,
+  binStart?: number | string,
+  binEnd?: number | string,
+  binSize?: number | string,
+) => {
+  if (!data || data.length === 0) {
+    return [];
+  }
+
+  if (isStringArray(data)) {
+    const categories = Array.from(new Set(data as string[]));
+    const start = typeof binStart === 'number' ? Math.ceil(binStart) : 0;
+    const stop = typeof binEnd === 'number' ? Math.floor(binEnd) + 1 : categories.length;
+    const step = typeof binSize === 'number' ? binSize : 1;
+
+    return d3Range(start, stop, step).map(i => categories.slice(i, i + step));
+  }
+
+  const scale = d3ScaleLinear()
+    .domain(d3Extent<number>(data as number[]) as [number, number])
+    .nice();
+  let [minVal, maxVal] = scale.domain();
+
+  minVal = typeof binStart === 'number' ? binStart : minVal;
+  maxVal = typeof binEnd === 'number' ? binEnd : maxVal;
+
+  const binGenerator = d3Bin().domain([minVal, maxVal]);
+
+  if (typeof binSize === 'number') {
+    const thresholds: number[] = [];
+    let th = minVal;
+    const tolerance = 1 / Math.pow(10, binSize.toString().split('.')[1]?.length ?? 0);
+
+    while (maxVal + binSize - th > tolerance) {
+      thresholds.push(th);
+      th += binSize;
+    }
+
+    minVal = thresholds[0];
+    maxVal = thresholds[thresholds.length - 1];
+    binGenerator.domain([minVal, maxVal]).thresholds(thresholds);
+  }
+
+  // NOTE: The last bin generated by d3Bin often has identical x0 and x1 values (both inclusive) and
+  // can be ignored if the highest value is already included in the previous bin.
+  return binGenerator(data as number[]);
+};
+
+const calculateHistFunc = (histfunc: PlotData['histfunc'] | undefined, bin: number[]) => {
+  switch (histfunc) {
+    case 'sum':
+      return d3Sum(bin);
+    case 'avg':
+      return bin.length === 0 ? 0 : d3Sum(bin) / bin.length;
+    case 'min':
+      return d3Min(bin) ?? 0;
+    case 'max':
+      return d3Max(bin) ?? 0;
+    default:
+      return bin.length;
+  }
+};
+
+const calculateHistNorm = (
+  histnorm: PlotData['histnorm'] | undefined,
+  value: number,
+  total: number,
+  dx: number,
+  dy: number = 1,
+) => {
+  switch (histnorm) {
+    case 'percent':
+      return total === 0 ? 0 : (value / total) * 100;
+    case 'probability':
+      return total === 0 ? 0 : value / total;
+    case 'density':
+      return dx * dy === 0 ? 0 : value / (dx * dy);
+    case 'probability density':
+      return total * dx * dy === 0 ? 0 : value / (total * dx * dy);
+    default:
+      return value;
+  }
+};

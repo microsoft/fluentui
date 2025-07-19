@@ -4,6 +4,8 @@ import {
   HorizontalBarChartWithAxisDataPoint,
   VSChartDataPoint,
   VerticalStackedChartProps,
+  VerticalBarChartDataPoint,
+  DataVizPalette,
 } from '../index';
 
 export const chartPointsVBC = [
@@ -227,5 +229,59 @@ export const chartPointsWithAxisToolTipHBCWA: HorizontalBarChartWithAxisDataPoin
     x: 4000,
     y: 2000,
     color: 'blue',
+  },
+];
+
+export const allNegativeChartPointsVBC: VerticalBarChartDataPoint[] = [
+  {
+    x: 0,
+    y: -10000,
+    legend: 'First',
+    color: DataVizPalette.color1,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '10%',
+  },
+  {
+    x: 10000,
+    y: -50000,
+    legend: 'Second',
+    color: DataVizPalette.color2,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '20%',
+  },
+  {
+    x: 25000,
+    y: -30000,
+    legend: 'Third',
+    color: DataVizPalette.color3,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '37%',
+  },
+];
+
+export const negativeChartPointsVBC: VerticalBarChartDataPoint[] = [
+  {
+    x: 0,
+    y: 10000,
+    legend: 'First',
+    color: DataVizPalette.color1,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '10%',
+  },
+  {
+    x: 10000,
+    y: -50000,
+    legend: 'Second',
+    color: DataVizPalette.color2,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '20%',
+  },
+  {
+    x: 25000,
+    y: 30000,
+    legend: 'Third',
+    color: DataVizPalette.color3,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '37%',
   },
 ];

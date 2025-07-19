@@ -4,7 +4,7 @@ import { Pie } from './Pie/index';
 import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { getColorFromToken, getNextColor } from '../../utilities/index';
 import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
@@ -118,7 +118,14 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       return legends;
     }
 
-    function _focusCallback(data: ChartDataPoint, id: string, element: SVGPathElement): void {
+    function _focusCallback(data: ChartDataPoint, id: string, e: React.FocusEvent<SVGPathElement>): void {
+      let cx = 0;
+      let cy = 0;
+
+      const targetRect = (e.target as SVGPathElement).getBoundingClientRect();
+      cx = targetRect.left + targetRect.width / 2;
+      cy = targetRect.top + targetRect.height / 2;
+      updatePosition(cx, cy);
       setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
       setValue(data.data!.toString());
       setLegend(data.legend);
@@ -172,7 +179,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     }
 
     function _toLocaleString(data: string | number | undefined) {
-      const localeString = convertToLocaleString(data, props.culture);
+      const localeString = formatToLocaleString(data, props.culture);
       if (!localeString) {
         return data;
       }
@@ -268,7 +275,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const donutMarginVertical = props.hideLabels ? 0 : 40;
     const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical) / 2;
     const chartData = _elevateToMinimums(points.filter((d: ChartDataPoint) => d.data! >= 0));
-    const valueInsideDonut = _valueInsideDonut(props.valueInsideDonut!, chartData!);
+    const valueInsideDonut = props.innerRadius !== 0 ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
     const focusAttributes = useFocusableGroup();
     return !_isChartEmpty() ? (
       <div

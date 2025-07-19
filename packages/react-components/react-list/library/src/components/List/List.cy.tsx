@@ -7,7 +7,10 @@ import { List } from './List';
 import { ListItem } from '../ListItem';
 import { SelectionItemId } from '@fluentui/react-utilities';
 
-const mount = (element: JSX.Element) => {
+const mount = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
@@ -85,11 +88,14 @@ type SelectionTestListProps = {
 const SelectionTestList = ({ selectionMode, defaultSelectedItems, controlled }: SelectionTestListProps) => {
   const [selectedItems, setSelectedItems] = React.useState(defaultSelectedItems || []);
 
-  const onChange = React.useCallback((_, { selectedItems: selected }) => {
-    setSelectedItems(selected);
-  }, []);
+  const onChange = React.useCallback(
+    (_: React.SyntheticEvent | Event, { selectedItems: selected }: { selectedItems: SelectionItemId[] }) => {
+      setSelectedItems(selected);
+    },
+    [],
+  );
 
-  const onSelectLastClick = React.useCallback(_ => {
+  const onSelectLastClick = React.useCallback(() => {
     setSelectedItems(['list-item-3']);
   }, []);
 

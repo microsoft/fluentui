@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/eslint-plugin-react-components",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "ESLint plugin and custom rules for Fluent UI components v9",
   "main": "./lib-commonjs/index.js",
   "module": "./lib/index.js",
@@ -11,7 +11,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@typescript-eslint/rule-tester": "8.19.1",
     "eslint-plugin-eslint-plugin": "6.4.0"
   },
   "dependencies": {

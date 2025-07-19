@@ -20,6 +20,9 @@ export const legendClassNames: SlotClassNames<LegendsStyles> = {
 
 const useStyles = makeStyles({
   root: {
+    // FIXME: Removing this style allows the legend container in responsive donut chart to resize
+    // properly (horizontally) within a flexbox or grid layout. But it causes vertical resizing issues
+    // in responsive charts where legends consist of multiple words.
     whiteSpace: 'nowrap',
     width: '100%',
     alignItems: 'center',
@@ -34,6 +37,9 @@ const useStyles = makeStyles({
     ...shorthands.border('none'),
     ...shorthands.padding(tokens.spacingHorizontalS),
     textTransform: 'capitalize',
+    // The default min-width is 64px. Setting it to 0 allows the legend container in responsive
+    // cartesian charts to resize properly within a flexbox or grid layout.
+    minWidth: 0,
     [HighContrastSelector]: {
       color: 'WindowText',
       forcedColorAdjust: 'none',
@@ -70,10 +76,7 @@ const useStyles = makeStyles({
   text: {
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground1,
-    [HighContrastSelector]: {
-      color: 'WindowText',
-      forcedColorAdjust: 'none',
-    },
+    forcedColorAdjust: 'auto',
   },
   // TO DO Add props when these styles are used in the component
   hoverChange: {

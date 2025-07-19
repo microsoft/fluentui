@@ -24,22 +24,22 @@ export const GaugeChartBasic = () => {
     setHideMinMax(checked.checked as boolean);
   };
 
-  const _onSwitchGradient = React.useCallback(ev => {
+  const _onSwitchGradient = React.useCallback((ev: any) => {
     setEnableGradient(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchRoundedCorners = React.useCallback(ev => {
+  const _onSwitchRoundedCorners = React.useCallback((ev: any) => {
     setRoundedCorners(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchLegendMultiSelect = React.useCallback(ev => {
+  const _onSwitchLegendMultiSelect = React.useCallback((ev: any) => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
 
   return (
     <>
       <div style={{ display: 'flex', gap: '20px' }}>
-        <div>
+        <div style={{ display: 'flex' }}>
           <label htmlFor="width-slider">Width:</label>
           <input
             type="range"
@@ -52,7 +52,7 @@ export const GaugeChartBasic = () => {
           />
           <span>{width}</span>
         </div>
-        <div>
+        <div style={{ display: 'flex' }}>
           <label htmlFor="height-slider">Height:</label>
           <input
             type="range"
@@ -65,7 +65,7 @@ export const GaugeChartBasic = () => {
           />
           <span>{height}</span>
         </div>
-        <div>
+        <div style={{ display: 'flex' }}>
           <label htmlFor="value-slider">Current value:</label>
           <input
             type="range"

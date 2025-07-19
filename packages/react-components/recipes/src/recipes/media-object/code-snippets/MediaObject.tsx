@@ -11,7 +11,7 @@ type MediaObjectTypes = {
   textAlignment?: 'start' | 'center';
 };
 
-const MediaObject: React.VoidFunctionComponent<MediaObjectTypes> = ({
+const MediaObject: React.FunctionComponent<MediaObjectTypes> = ({
   media,
   text,
   textPosition = 'after',
@@ -40,7 +40,7 @@ const MediaObject: React.VoidFunctionComponent<MediaObjectTypes> = ({
   );
 };
 
-const Legend: React.FC<{ colorClassName: string }> = ({ children, colorClassName }) => {
+const Legend: React.FC<{ children?: React.ReactNode; colorClassName: string }> = ({ children, colorClassName }) => {
   const skeletonStyles = useSkeletonStyles();
   return (
     <div className={skeletonStyles.legend}>

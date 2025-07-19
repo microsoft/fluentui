@@ -21,6 +21,7 @@ describe('Badge', () => {
    * Note: see more visual regression tests for Badge in /apps/vr-tests.
    */
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(<Badge>Default Badge</Badge>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

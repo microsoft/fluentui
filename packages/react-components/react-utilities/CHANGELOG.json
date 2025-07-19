@@ -2,6 +2,126 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 16 Jul 2025 13:52:49 GMT",
+      "tag": "@fluentui/react-utilities_v9.22.0",
+      "version": "9.22.0",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jul 2025 10:02:49 GMT",
+      "tag": "@fluentui/react-utilities_v9.22.0",
+      "version": "9.22.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jun 2025 14:11:55 GMT",
+      "tag": "@fluentui/react-utilities_v9.22.0",
+      "version": "9.22.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "xboy2008@live.cn",
+            "package": "@fluentui/react-utilities",
+            "commit": "b3e8218f0b635e03c23c1d24fda049a2baa6b872",
+            "comment": "Shorten pollDuration to 100ms in useIFrameFocus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Jun 2025 17:34:00 GMT",
+      "tag": "@fluentui/react-utilities_v9.21.1",
+      "version": "9.21.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.24.0",
+            "commit": "ddb50b0e9313fe7eb75830a0546d01a2c7fe270b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Jun 2025 09:43:33 GMT",
+      "tag": "@fluentui/react-utilities_v9.21.0",
+      "version": "9.21.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "feat: react 18 support for slots api"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jun 2025 22:31:58 GMT",
+      "tag": "@fluentui/react-utilities_v9.20.0",
+      "version": "9.20.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "005e4f11aafd06c797b84b03b427424e740018d9",
+            "comment": "chore: disable lint error on React.RefAttibute within getIntrinsicElementProps"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Jun 2025 13:15:17 GMT",
+      "tag": "@fluentui/react-utilities_v9.20.0",
+      "version": "9.20.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "82db061493527440f473c6c6480305f8afe293be",
+            "comment": "feat: add custom RefAttributes interface which is used within ForwardRefComponent to mitigate breaking changes shipped as patch release in @types/react@18.2.61"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Apr 2025 19:42:06 GMT",
+      "tag": "@fluentui/react-utilities_v9.19.0",
+      "version": "9.19.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff",
+            "comment": "Add getSlotClassNameProp_unstable function to allow custom style hooks to preserve the original className while overriding the component default className."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Mar 2025 21:12:51 GMT",
       "tag": "@fluentui/react-utilities_v9.18.23",
       "version": "9.18.23",

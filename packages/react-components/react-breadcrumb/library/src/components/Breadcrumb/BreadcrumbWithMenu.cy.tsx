@@ -16,7 +16,10 @@ import { Menu, MenuList, MenuItemLink, MenuPopover, MenuTrigger, MenuItem } from
 import { useIsOverflowItemVisible, useOverflowMenu } from '@fluentui/react-overflow';
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

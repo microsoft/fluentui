@@ -37,9 +37,7 @@ const config = {
         '@rnx-kit/eslint-plugin',
         '@swc/helpers',
         '@types/react-test-renderer',
-        '@typescript-eslint/eslint-plugin',
-        '@typescript-eslint/utils',
-        '@typescript-eslint/parser',
+        'typescript-eslint',
         '@microsoft/load-themed-styles',
         'babel-loader',
         'chalk',
@@ -64,9 +62,7 @@ const config = {
         'prettier',
         'schema-utils',
         'react-is',
-        'react-hot-loader',
         'react-test-renderer',
-        'react-vis',
         'tslib',
         'terser',
         'terser-webpack-plugin',
@@ -97,16 +93,39 @@ const config = {
       ],
     },
     {
-      packages: ['@fluentui/react-bindings', '@fluentui/react-northstar'],
-      dependencies: ['@fluentui/dom-utilities'],
+      packages: ['@fluentui/react-conformance', '@fluentui/react-conformance-griffel'],
+      dependencies: [
+        'chalk',
+        // TODO: remove once modern yarn is used as v1 contains a bug that forces linking @types/react v17 within react-conformance node_modules which causes build issues
+        '@types/react',
+      ],
     },
     {
-      packages: ['@fluentui/react-northstar-emotion-renderer'],
-      dependencies: ['stylis'],
+      packages: ['@fluentui/test-utilities'],
+      dependencies: [
+        // test utilities uses enzyme and thus needs to be forcer to use react types v17
+        '@types/react',
+      ],
     },
     {
-      packages: ['@fluentui/react-conformance'],
-      dependencies: ['chalk'],
+      packages: [
+        // hybrid package use for v0 and react-button test in v9
+        '@fluentui/a11y-testing',
+        // v8 - TODO make this package private, then bump to r18
+        '@fluentui/codemods',
+      ],
+      dependencies: [
+        'react',
+        'react-dom',
+        'react-frame-component',
+        '@types/react-frame-component',
+        '@testing-library/dom',
+        '@testing-library/react',
+        '@types/react',
+        '@types/react-dom',
+        '@types/react-is',
+        '@types/react-transition-group',
+      ],
     },
   ],
 };

@@ -1,6 +1,6 @@
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { GaugeChartProps, GaugeChartStyles } from './GaugeChart.types';
 
 export const gaugeChartClassNames: SlotClassNames<GaugeChartStyles> = {
@@ -22,7 +22,8 @@ export const gaugeChartClassNames: SlotClassNames<GaugeChartStyles> = {
   calloutContentY: 'fui-gc__calloutContentY',
   descriptionMessage: 'fui-gc__descriptionMessage',
   calloutInfoContainer: '',
-  legendsContainer: '',
+  legendsContainer: 'fui-gc__legendsContainer',
+  chartWrapper: 'fui-gc__chartWrapper',
 };
 
 const useStyles = makeStyles({
@@ -40,14 +41,17 @@ const useStyles = makeStyles({
   limits: {
     ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
   chartValue: {
     fontWeight: tokens.fontWeightSemibold,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
   sublabel: {
     ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
   needle: {
     fill: tokens.colorNeutralForeground1,
@@ -56,6 +60,7 @@ const useStyles = makeStyles({
   chartTitle: {
     ...typographyStyles.caption1,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
   segment: {
     outline: 'none',
@@ -68,7 +73,6 @@ const useStyles = makeStyles({
   calloutContentRoot: {
     display: 'grid',
     overflow: 'hidden',
-    ...shorthands.padding('11px', '16px', '10px', '16px'),
     backgroundColor: tokens.colorNeutralBackground1,
     backgroundBlendMode: 'normal, luminosity',
   },
@@ -81,7 +85,6 @@ const useStyles = makeStyles({
     ...typographyStyles.caption1,
     lineHeight: '16px',
     opacity: '0.85',
-    color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainer: {
     ...typographyStyles.body1Strong,
@@ -89,6 +92,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     paddingLeft: '8px',
     display: 'block',
+    forcedColorAdjust: 'none',
   },
   shapeStyles: {
     marginRight: '8px',
@@ -97,10 +101,12 @@ const useStyles = makeStyles({
     ...typographyStyles.caption1,
     lineHeight: '16px',
     color: tokens.colorNeutralForeground2,
+    forcedColorAdjust: 'auto',
   },
   calloutContentY: {
     ...typographyStyles.body1Strong,
     lineHeight: '22px',
+    forcedColorAdjust: 'auto',
   },
   descriptionMessage: {
     ...typographyStyles.caption1,
@@ -109,30 +115,68 @@ const useStyles = makeStyles({
     paddingTop: '10px',
     borderTop: `1px solid ${tokens.colorNeutralStroke1}`,
   },
+  legendsContainer: {
+    width: '100%',
+  },
 });
 export const useGaugeChartStyles = (props: GaugeChartProps): GaugeChartStyles => {
   const baseStyles = useStyles();
 
   return {
-    root: mergeClasses(gaugeChartClassNames.root, baseStyles.root),
-    chart: mergeClasses(gaugeChartClassNames.chart, baseStyles.chart),
-    limits: mergeClasses(gaugeChartClassNames.limits, baseStyles.limits),
-    chartValue: mergeClasses(gaugeChartClassNames.chartValue, baseStyles.chartValue),
-    sublabel: mergeClasses(gaugeChartClassNames.sublabel, baseStyles.sublabel),
-    needle: mergeClasses(gaugeChartClassNames.needle, baseStyles.needle),
-    chartTitle: mergeClasses(gaugeChartClassNames.chartTitle, baseStyles.chartTitle),
-    segment: mergeClasses(gaugeChartClassNames.segment, baseStyles.segment),
-    gradientSegment: mergeClasses(gaugeChartClassNames.gradientSegment, baseStyles.gradientSegment),
-    calloutContentRoot: mergeClasses(gaugeChartClassNames.calloutContentRoot, baseStyles.calloutContentRoot),
+    root: mergeClasses(gaugeChartClassNames.root, baseStyles.root, props.styles?.root),
+    chart: mergeClasses(gaugeChartClassNames.chart, baseStyles.chart, props.styles?.chart),
+    limits: mergeClasses(gaugeChartClassNames.limits, baseStyles.limits, props.styles?.limits),
+    chartValue: mergeClasses(gaugeChartClassNames.chartValue, baseStyles.chartValue, props.styles?.chartValue),
+    sublabel: mergeClasses(gaugeChartClassNames.sublabel, baseStyles.sublabel, props.styles?.sublabel),
+    needle: mergeClasses(gaugeChartClassNames.needle, baseStyles.needle, props.styles?.needle),
+    chartTitle: mergeClasses(gaugeChartClassNames.chartTitle, baseStyles.chartTitle, props.styles?.chartTitle),
+    segment: mergeClasses(gaugeChartClassNames.segment, baseStyles.segment, props.styles?.segment),
+    gradientSegment: mergeClasses(
+      gaugeChartClassNames.gradientSegment,
+      baseStyles.gradientSegment,
+      props.styles?.gradientSegment,
+    ),
+    calloutContentRoot: mergeClasses(
+      gaugeChartClassNames.calloutContentRoot,
+      baseStyles.calloutContentRoot,
+      props.styles?.calloutContentRoot,
+    ),
     calloutDateTimeContainer: mergeClasses(
       gaugeChartClassNames.calloutDateTimeContainer,
       baseStyles.calloutDateTimeContainer,
+      props.styles?.calloutDateTimeContainer,
     ),
-    calloutContentX: mergeClasses(gaugeChartClassNames.calloutContentX, baseStyles.calloutContentX),
-    calloutBlockContainer: mergeClasses(gaugeChartClassNames.calloutBlockContainer, baseStyles.calloutBlockContainer),
-    shapeStyles: mergeClasses(gaugeChartClassNames.shapeStyles, baseStyles.shapeStyles),
-    calloutlegendText: mergeClasses(gaugeChartClassNames.calloutlegendText, baseStyles.calloutlegendText),
-    calloutContentY: mergeClasses(gaugeChartClassNames.calloutContentY, baseStyles.calloutContentY),
-    descriptionMessage: mergeClasses(gaugeChartClassNames.descriptionMessage, baseStyles.descriptionMessage),
+    calloutContentX: mergeClasses(
+      gaugeChartClassNames.calloutContentX,
+      baseStyles.calloutContentX,
+      props.styles?.calloutContentX,
+    ),
+    calloutBlockContainer: mergeClasses(
+      gaugeChartClassNames.calloutBlockContainer,
+      baseStyles.calloutBlockContainer,
+      props.styles?.calloutBlockContainer,
+    ),
+    shapeStyles: mergeClasses(gaugeChartClassNames.shapeStyles, baseStyles.shapeStyles, props.styles?.shapeStyles),
+    calloutlegendText: mergeClasses(
+      gaugeChartClassNames.calloutlegendText,
+      baseStyles.calloutlegendText,
+      props.styles?.calloutlegendText,
+    ),
+    calloutContentY: mergeClasses(
+      gaugeChartClassNames.calloutContentY,
+      baseStyles.calloutContentY,
+      props.styles?.calloutContentY,
+    ),
+    descriptionMessage: mergeClasses(
+      gaugeChartClassNames.descriptionMessage,
+      baseStyles.descriptionMessage,
+      props.styles?.descriptionMessage,
+    ),
+    chartWrapper: mergeClasses(gaugeChartClassNames.chartWrapper, props.styles?.chartWrapper),
+    legendsContainer: mergeClasses(
+      gaugeChartClassNames.legendsContainer,
+      baseStyles.legendsContainer,
+      props.styles?.legendsContainer,
+    ),
   };
 };

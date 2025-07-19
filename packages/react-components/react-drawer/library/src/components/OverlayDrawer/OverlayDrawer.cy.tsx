@@ -8,11 +8,14 @@ import { OverlayDrawer } from './OverlayDrawer';
 import { OverlayDrawerProps } from './OverlayDrawer.types';
 import { overlayDrawerClassNames } from './useOverlayDrawerStyles.styles';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
-const LongPageContent = ({ children }: React.PropsWithChildren<{}>) => (
+const LongPageContent = ({ children }: { children?: React.ReactNode }) => (
   <>
     {Array.from({ length: 10 }).map((_, index) => (
       <p key={index}>

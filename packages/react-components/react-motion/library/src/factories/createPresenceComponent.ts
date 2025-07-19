@@ -1,4 +1,4 @@
-import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
+import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
@@ -6,7 +6,7 @@ import { useAnimateAtoms } from '../hooks/useAnimateAtoms';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useMountedState } from '../hooks/useMountedState';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
-import { getChildElement } from '../utils/getChildElement';
+import { useChildElement } from '../utils/useChildElement';
 import type {
   MotionParam,
   PresenceMotion,
@@ -16,6 +16,7 @@ import type {
   AnimationHandle,
 } from '../types';
 import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
+import { createMotionComponent, MotionComponentProps } from './createMotionComponent';
 
 /**
  * @internal A private symbol to store the motion definition on the component for variants.
@@ -77,6 +78,8 @@ export type PresenceComponentProps = {
 export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = {
   (props: PresenceComponentProps & MotionParams): React.ReactElement | null;
   [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
+  In: React.FC<MotionComponentProps & MotionParams>;
+  Out: React.FC<MotionComponentProps & MotionParams>;
 };
 
 const INTERRUPTABLE_MOTION_SYMBOL = Symbol.for('interruptablePresence');
@@ -107,11 +110,9 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       const params = _rest as Exclude<typeof merged, PresenceComponentProps | typeof itemContext>;
 
       const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
-      const child = getChildElement(children);
+      const [child, childRef] = useChildElement(children, mounted);
 
       const handleRef = useMotionImperativeRef(imperativeRef);
-      const elementRef = React.useRef<HTMLElement>();
-      const ref = useMergedRefs(elementRef, child.ref);
       const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams; skipMotions: boolean }>({
         appear,
         params,
@@ -146,7 +147,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
       useIsomorphicLayoutEffect(
         () => {
-          const element = elementRef.current;
+          const element = childRef.current;
 
           if (!element) {
             return;
@@ -223,11 +224,20 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         },
         // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [animateAtoms, handleRef, isReducedMotion, handleMotionFinish, handleMotionStart, handleMotionCancel, visible],
+        [
+          animateAtoms,
+          childRef,
+          handleRef,
+          isReducedMotion,
+          handleMotionFinish,
+          handleMotionStart,
+          handleMotionCancel,
+          visible,
+        ],
       );
 
       if (mounted) {
-        return React.cloneElement(child, { ref });
+        return child;
       }
 
       return null;
@@ -236,6 +246,21 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       // Heads up!
       // Always normalize it to a function to simplify types
       [MOTION_DEFINITION]: typeof value === 'function' ? value : () => value,
+    },
+    {
+      // Wrap `enter` in its own motion component as a static method, e.g. <Fade.In>
+      In: createMotionComponent(
+        // If we have a motion function, wrap it to forward the runtime params and pick `enter`.
+        // Otherwise, pass the `enter` motion object directly.
+        typeof value === 'function' ? (...args: Parameters<typeof value>) => value(...args).enter : value.enter,
+      ),
+
+      // Wrap `exit` in its own motion component as a static method, e.g. <Fade.Out>
+      Out: createMotionComponent(
+        // If we have a motion function, wrap it to forward the runtime params and pick `exit`.
+        // Otherwise, pass the `exit` motion object directly.
+        typeof value === 'function' ? (...args: Parameters<typeof value>) => value(...args).exit : value.exit,
+      ),
     },
   );
 }

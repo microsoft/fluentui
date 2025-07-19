@@ -4,7 +4,11 @@
     "lib": ["ES2019", "dom"],
     "outDir": "../../../../dist/out-tsc",
     "inlineSources": true,
-    "types": ["static-assets", "environment"]
+    "types": ["static-assets", "environment"],
+    "baseUrl": ".",
+    "paths": {
+      "react": ["../../../../node_modules/@types/react/index.d.ts"]
+    }
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

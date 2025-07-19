@@ -11,6 +11,9 @@ export { LineChartCustomLocaleDateAxis } from './LineChartCustomLocaleDateAxis.s
 export { LineChartEvents } from './LineChartEvents.stories';
 export { LineChartGaps } from './LineChartGaps.stories';
 export { LineChartLargeData } from './LineChartLargeData.stories';
+export { LineChartNegative } from './LineChartNegative.stories';
+export { LineChartAllNegative } from './LineChartAllNegative.stories';
+export { LineChartSecondaryYAxis } from './LineChartSecondaryYAxis.stories';
 
 export default {
   title: 'Charts/LineChart',

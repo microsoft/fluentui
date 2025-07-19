@@ -59,4 +59,19 @@ describe('focus visible polyfill', () => {
     dispose();
     expect(button.hasAttribute(FOCUS_VISIBLE_ATTR)).toBe(false);
   });
+
+  it('should add focus visible attribute on active element when modality changes', () => {
+    const scope = document.createElement('div');
+    const button = document.createElement('button');
+    scope.append(button);
+    document.body.append(scope);
+
+    const dispose = applyFocusVisiblePolyfill(scope, window);
+
+    button.focus();
+    fireEvent.keyDown(window);
+
+    expect(button.hasAttribute(FOCUS_VISIBLE_ATTR)).toBe(true);
+    dispose();
+  });
 });

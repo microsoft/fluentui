@@ -1,4 +1,4 @@
-import type { ExtractSlotProps, Slot, UnionToIntersection } from '@fluentui/react-utilities';
+import type { DistributiveOmit, ExtractSlotProps, Slot, UnionToIntersection } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 export type ARIAButtonType = 'button' | 'a' | 'div';
@@ -18,8 +18,12 @@ export type ARIAButtonElementIntersection<AlternateAs extends 'a' | 'div' = 'a' 
 /**
  * Props expected by `useARIAButtonProps` hooks
  */
-export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = React.PropsWithRef<
-  JSX.IntrinsicElements[Type]
+export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = DistributiveOmit<
+  React.PropsWithRef<
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    JSX.IntrinsicElements[Type]
+  >,
+  'children'
 > & {
   disabled?: boolean;
   /**
@@ -45,18 +49,24 @@ export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> =
 export type ARIAButtonAlteredProps<Type extends ARIAButtonType> =
   | (Type extends 'button'
       ? Pick<
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           JSX.IntrinsicElements['button'],
           'onClick' | 'onKeyDown' | 'onKeyUp' | 'disabled' | 'aria-disabled' | 'tabIndex'
         >
       : never)
   | (Type extends 'a'
       ? Pick<
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           JSX.IntrinsicElements['a'],
           'onClick' | 'onKeyDown' | 'onKeyUp' | 'aria-disabled' | 'tabIndex' | 'role' | 'href'
         >
       : never)
   | (Type extends 'div'
-      ? Pick<JSX.IntrinsicElements['div'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'aria-disabled' | 'tabIndex' | 'role'>
+      ? Pick<
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          JSX.IntrinsicElements['div'],
+          'onClick' | 'onKeyDown' | 'onKeyUp' | 'aria-disabled' | 'tabIndex' | 'role'
+        >
       : never);
 
 /**

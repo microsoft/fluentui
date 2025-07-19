@@ -9,7 +9,8 @@ const rootSubtreeContextValue: SubtreeContextValue = {
   contextType: 'subtree',
 };
 
-export const TreeProvider = (props: React.ProviderProps<TreeContextValue | SubtreeContextValue>) => {
+// eslint-disable-next-line @typescript-eslint/no-deprecated
+export const TreeProvider = (props: React.ProviderProps<TreeContextValue | SubtreeContextValue>): JSX.Element => {
   if (props.value.contextType === 'subtree') {
     return <SubtreeContext.Provider value={props.value}>{props.children}</SubtreeContext.Provider>;
   }
@@ -26,7 +27,8 @@ export type TreeRootResetProps = {
   children?: React.ReactNode;
 };
 
-export const TreeRootReset = (props: TreeRootResetProps) => (
+// eslint-disable-next-line @typescript-eslint/no-deprecated
+export const TreeRootReset = (props: TreeRootResetProps): JSX.Element => (
   <SubtreeContext.Provider value={undefined as unknown as SubtreeContextValue}>
     {props.children}
   </SubtreeContext.Provider>

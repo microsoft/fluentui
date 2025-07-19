@@ -10,7 +10,7 @@ import { PortalCompatProvider, useProviderThemeClasses } from './PortalCompatPro
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {};
 
-const TestWrapperWithMultipleClasses: React.FC = props => {
+const TestWrapperWithMultipleClasses: React.FC<{ children?: React.ReactNode }> = props => {
   // Creates a second className with CSS variables
   const { styleTagId } = useFluentProviderThemeStyleTag({
     theme: { borderRadiusCircular: '50px' },
@@ -32,7 +32,7 @@ describe('useProviderThemeClasses', () => {
 
   it('handles classes from FluentProvider', () => {
     const { result } = renderHook(() => useProviderThemeClasses(), {
-      wrapper: props => (
+      wrapper: (props: { children?: React.ReactNode }) => (
         <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
         </FluentProvider>
@@ -41,7 +41,7 @@ describe('useProviderThemeClasses', () => {
 
     expect(result.current).toMatchInlineSnapshot(`
       Array [
-        "fui-FluentProvider1",
+        "fui-FluentProviderr0",
       ]
     `);
   });
@@ -53,15 +53,15 @@ describe('useProviderThemeClasses', () => {
 
     expect(result.current).toMatchInlineSnapshot(`
       Array [
-        "fui-FluentProvider2",
-        "fui-FluentProvider1",
+        "fui-FluentProviderr2",
+        "fui-FluentProviderr1",
       ]
     `);
   });
 
   it('handles classes with custom ID prefix', () => {
     const { result } = renderHook(() => useProviderThemeClasses(), {
-      wrapper: props => (
+      wrapper: (props: { children?: React.ReactNode }) => (
         <IdPrefixProvider value="custom1-">
           <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
             <PortalCompatProvider>{props.children}</PortalCompatProvider>
@@ -72,14 +72,14 @@ describe('useProviderThemeClasses', () => {
 
     expect(result.current).toMatchInlineSnapshot(`
       Array [
-        "custom1-fui-FluentProvider1",
+        "custom1-fui-FluentProviderr3",
       ]
     `);
   });
 
   it('handles classes with a React 18 compatible ID', () => {
     const { result } = renderHook(() => useProviderThemeClasses(), {
-      wrapper: props => (
+      wrapper: (props: { children?: React.ReactNode }) => (
         <ThemeClassNameProvider value="fui-FluentProviderR1a">
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
         </ThemeClassNameProvider>
@@ -95,7 +95,7 @@ describe('useProviderThemeClasses', () => {
 
   it('returns only proper classes', () => {
     const { result } = renderHook(() => useProviderThemeClasses(), {
-      wrapper: props => (
+      wrapper: (props: { children?: React.ReactNode }) => (
         <ThemeClassNameProvider value="foo bar baz">
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
         </ThemeClassNameProvider>
@@ -133,7 +133,7 @@ describe('PortalCompatProvider', () => {
   it('during register adds a className from "ThemeClassNameContext" context', () => {
     const element = document.createElement('div');
     const { result } = renderHook(() => usePortalCompat(), {
-      wrapper: props => (
+      wrapper: (props: { children?: React.ReactNode }) => (
         <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
         </FluentProvider>
@@ -143,7 +143,7 @@ describe('PortalCompatProvider', () => {
     expect(result.current(element)).toBeInstanceOf(Function);
     expect(element.classList).toMatchInlineSnapshot(`
       DOMTokenList {
-        "0": "fui-FluentProvider1",
+        "0": "fui-FluentProviderr4",
       }
     `);
   });
@@ -157,8 +157,8 @@ describe('PortalCompatProvider', () => {
     expect(result.current(element)).toBeInstanceOf(Function);
     expect(element.classList).toMatchInlineSnapshot(`
       DOMTokenList {
-        "0": "fui-FluentProvider2",
-        "1": "fui-FluentProvider1",
+        "0": "fui-FluentProviderr6",
+        "1": "fui-FluentProviderr5",
       }
     `);
   });
@@ -167,7 +167,7 @@ describe('PortalCompatProvider', () => {
     const element = document.createElement('div');
 
     const { result } = renderHook(() => usePortalCompat(), {
-      wrapper: props => (
+      wrapper: (props: { children?: React.ReactNode }) => (
         <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
         </FluentProvider>
@@ -177,7 +177,7 @@ describe('PortalCompatProvider', () => {
 
     expect(element.classList).toMatchInlineSnapshot(`
       DOMTokenList {
-        "0": "fui-FluentProvider1",
+        "0": "fui-FluentProviderr7",
       }
     `);
     expect(unregister).toBeInstanceOf(Function);

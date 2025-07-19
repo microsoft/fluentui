@@ -24,6 +24,7 @@ export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, 
     onMouseEnter: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseLeave: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseMove: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onMouseOver?: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onContextMenu: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     /* eslint-enable @nx/workspace-consistent-callback-type */
   }

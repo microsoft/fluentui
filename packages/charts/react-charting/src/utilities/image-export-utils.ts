@@ -27,10 +27,20 @@ export function toImage(
     try {
       const background =
         typeof opts.background === 'string' ? resolveCSSVariables(chartContainer, opts.background) : 'transparent';
-      const svg = toSVG(chartContainer, legendsToSvgCallback, isRTL, background);
 
-      const svgData = new XMLSerializer().serializeToString(svg.node);
-      const svgDataUrl = 'data:image/svg+xml;base64,' + btoa(unescapePonyfill(encodeURIComponent(svgData)));
+      const svg = toSVG(chartContainer, legendsToSvgCallback, isRTL, background);
+      if (!svg.node) {
+        return reject(new Error('SVG node is null'));
+      }
+
+      let svgData = new XMLSerializer().serializeToString(svg.node);
+      // This node is already detached from the DOM, so there's no need to call remove() on it.
+      // Just clear the reference.
+      svg.node = null;
+
+      let svgDataUrl = 'data:image/svg+xml;base64,' + btoa(unescapePonyfill(encodeURIComponent(svgData)));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      svgData = null as any;
 
       svgToPng(svgDataUrl, {
         width: opts.width || svg.width,
@@ -39,14 +49,35 @@ export function toImage(
       })
         .then(resolve)
         .catch(reject);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      svgDataUrl = null as any;
     } catch (err) {
       return reject(err);
     }
   });
 }
 
-const SVG_STYLE_PROPERTIES = ['display', 'fill', 'fill-opacity', 'opacity', 'stroke', 'stroke-width', 'transform'];
-const SVG_TEXT_STYLE_PROPERTIES = ['font-family', 'font-size', 'font-weight', 'text-anchor'];
+const SVG_STYLE_PROPERTIES = [
+  'display',
+  'fill',
+  'fill-opacity',
+  'opacity',
+  'stroke',
+  'stroke-width',
+  'transform',
+  'border-collapse',
+];
+const SVG_TEXT_STYLE_PROPERTIES = [
+  'font-family',
+  'font-size',
+  'font-weight',
+  'text-anchor',
+  'background-color',
+  'color',
+  'padding',
+  'text-align',
+  'border',
+];
 
 function toSVG(
   chartContainer: HTMLElement,
@@ -59,20 +90,30 @@ function toSVG(
     throw new Error('SVG not found');
   }
 
-  const clonedSvg = d3Select(svg.cloneNode(true) as SVGSVGElement)
+  let clonedSvg = d3Select(svg.cloneNode(true) as SVGSVGElement)
     .attr('width', null)
     .attr('height', null)
     .attr('viewBox', null);
-  const svgElements = svg.getElementsByTagName('*');
-  const clonedSvgElements = clonedSvg.node()!.getElementsByTagName('*');
+  let svgElements = svg.getElementsByTagName('*');
+  let clonedSvgElements = clonedSvg.node()!.getElementsByTagName('*');
+
+  const TEXT_ELEMENTS = ['text'];
+  const TABLE_ELEMENTS = ['table', 'thead', 'tbody', 'tr', 'th', 'td'];
 
   for (let i = 0; i < svgElements.length; i++) {
-    if (svgElements[i].tagName.toLowerCase() === 'text') {
+    const tag = svgElements[i].tagName.toLowerCase();
+
+    if (TEXT_ELEMENTS.includes(tag) || TABLE_ELEMENTS.includes(tag)) {
       copyStyle([...SVG_STYLE_PROPERTIES, ...SVG_TEXT_STYLE_PROPERTIES], svgElements[i], clonedSvgElements[i]);
     } else {
       copyStyle(SVG_STYLE_PROPERTIES, svgElements[i], clonedSvgElements[i]);
     }
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  svgElements = null as any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  clonedSvgElements = null as any;
 
   const { width: svgWidth, height: svgHeight } = svg.getBoundingClientRect();
   const legendGroup =
@@ -99,11 +140,15 @@ function toSVG(
     .attr('viewBox', `0 0 ${w1} ${h1}`)
     .attr('direction', isRTL ? 'rtl' : 'ltr');
 
-  return {
-    node: clonedSvg.node()!,
+  const result = {
+    node: clonedSvg.node(),
     width: w1,
     height: h1,
   };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  clonedSvg = null as any;
+
+  return result;
 }
 
 const LEGEND_TEXT_STYLE_PROPERTIES_MAP = {

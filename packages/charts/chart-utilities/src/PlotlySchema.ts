@@ -295,9 +295,24 @@ export interface PlotlySchema {
   config?: Partial<Config>;
 }
 
+export interface ColorAxis {
+  colorscale?: Array<[number, string]>;
+  cmin?: number;
+  cmax?: number;
+  colorbar?: {
+    title?: string | { text: string };
+    thickness?: number;
+    len?: number;
+    outlinewidth?: number;
+  };
+  reversescale?: boolean;
+  showscale?: boolean;
+}
+
 // Layout
 export interface Layout {
   colorway: string[];
+  piecolorway: string[];
   title:
     | string
     | Partial<{
@@ -419,6 +434,14 @@ export interface Layout {
   datarevision: number | string;
   editrevision: number | string;
   selectionrevision: number | string;
+  colorscale:
+    | Array<[number, string]>
+    | Partial<{
+        diverging: Array<[number, string]>;
+        sequential: Array<[number, string]>;
+        sequentialminus: Array<[number, string]>;
+      }>;
+  coloraxis: Partial<ColorAxis>;
 }
 
 export interface Legend extends Label {
@@ -1149,7 +1172,10 @@ export interface PlotData {
     | 'number+delta'
     | 'gauge+number'
     | 'gauge+number+delta'
-    | 'gauge+delta';
+    | 'gauge+delta'
+    | 'markers+text'
+    | 'lines+text'
+    | 'lines+markers+text';
   histfunc: 'count' | 'sum' | 'avg' | 'min' | 'max';
   histnorm: '' | 'percent' | 'probability' | 'density' | 'probability density';
   hoveron: 'points' | 'fills';
@@ -1274,9 +1300,15 @@ export interface PlotData {
     end: number | string;
     size: number | string;
   };
+  ybins: {
+    start: number | string;
+    end: number | string;
+    size: number | string;
+  };
   value: number;
   values: Datum[];
   labels: Datum[];
+  stage: string;
   direction: 'clockwise' | 'counterclockwise';
   hole: number;
   rotation: number;
@@ -1319,6 +1351,64 @@ export interface PlotData {
   uirevision: string | number;
   uid: string;
   base: Datum[] | Datum[][] | TypedArray;
+  header?: {
+    align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+    fill?: {
+      color?: Color | Color[];
+    };
+    font?: {
+      family?: string | string[];
+      size?: number | number[];
+      color?: Color | Color[];
+    };
+    values: (string | number | boolean | null)[];
+  };
+  cells?: {
+    align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+    fill?: {
+      color?: Color | Color[];
+    };
+    font?: {
+      family?: string | string[];
+      size?: number | number[];
+      color?: Color | Color[];
+    };
+    values: (string | number | boolean | null)[][];
+    format: string | string[];
+    prefix: string | string[];
+    suffix: string | string[];
+  };
+}
+
+export interface TableData {
+  type: 'table';
+  header?: {
+    align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+    fill?: {
+      color?: Color | Color[];
+    };
+    font?: {
+      family?: string | string[];
+      size?: number | number[];
+      color?: Color | Color[];
+    };
+    values: (string | number | boolean | null)[];
+  };
+  cells?: {
+    align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+    fill?: {
+      color?: Color | Color[];
+    };
+    font?: {
+      family?: string | string[];
+      size?: number | number[];
+      color?: Color | Color[];
+    };
+    values: (string | number | boolean | null)[][];
+    format: string | string[];
+    prefix: string | string[];
+    suffix: string | string[];
+  };
 }
 
 /**
@@ -1622,7 +1712,7 @@ export interface Annotations extends Label {
   text: string;
 
   /** Sets the angle at which the `text` is drawn with respect to the horizontal. */
-  textangle: string;
+  textangle: string | number;
 
   /**
    * Sets an explicit width for the text box. null (default) lets the

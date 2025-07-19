@@ -5,7 +5,7 @@ import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
 import { getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { Shape } from '../Legends/shape';
 import { usePopoverStyles_unstable } from './useChartPopoverStyles.styles';
 import { YValueHover } from './CartesianChart.types';
@@ -63,24 +63,30 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
                     display: 'flex',
                     alignItems: 'flex-end',
                   }),
-                  borderLeft: `4px solid ${props.color}`,
+                  borderInlineStart: `4px solid ${props.color}`,
+                  marginTop: '11px',
                 }}
               >
                 <div className={classes.calloutBlockContainer}>
-                  <div className={classes.calloutlegendText}>{convertToLocaleString(legend, props.culture)}</div>
+                  <div className={classes.calloutlegendText}>
+                    {formatToLocaleString(legend, props.culture) as React.ReactNode}
+                  </div>
                   <div
                     className={classes.calloutContentY}
                     style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
                   >
-                    {convertToLocaleString(YValue, props.culture)}
+                    {formatToLocaleString(YValue, props.culture) as React.ReactNode}
                   </div>
                 </div>
                 {!!props.ratio && (
                   <div className={classes.ratio}>
                     <>
-                      <span className={classes.numerator}>{convertToLocaleString(props.ratio[0], props.culture)}</span>/
+                      <span className={classes.numerator}>
+                        {formatToLocaleString(props.ratio[0], props.culture) as React.ReactNode}
+                      </span>
+                      /
                       <span className={classes.denominator}>
-                        {convertToLocaleString(props.ratio[1], props.culture)}
+                        {formatToLocaleString(props.ratio[1], props.culture) as React.ReactNode}
                       </span>
                     </>
                   </div>
@@ -109,7 +115,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
             className={classes.calloutContentX}
             {...getAccessibleDataObject(props!.xAxisCalloutAccessibilityData, 'text', false)}
           >
-            {convertToLocaleString(props!.hoverXValue, props.culture)}
+            {formatToLocaleString(props!.hoverXValue, props.culture) as React.ReactNode}
           </div>
         </div>
         <div style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}>
@@ -171,7 +177,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
     const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '16px' };
     const toDrawShape = xValue.index !== undefined && xValue.index !== -1;
     const { culture } = props;
-    const yValue = convertToLocaleString(xValue.y, culture);
+    const yValue = formatToLocaleString(xValue.y, culture) as React.ReactNode;
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
@@ -187,7 +193,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
               marginTop: props.XValue ? '13px' : 'unset',
               ...(!toDrawShape
                 ? {
-                    borderLeft: `4px solid ${xValue.color}`,
+                    borderInlineStart: `4px solid ${xValue.color}`,
                   }
                 : {}),
             }}
@@ -211,10 +217,12 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
             >
               <div className={classes.calloutlegendText}> {xValue.legend}</div>
               <div className={classes.calloutContentY}>
-                {convertToLocaleString(
-                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
-                  culture,
-                )}
+                {
+                  formatToLocaleString(
+                    xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
+                    culture,
+                  ) as React.ReactNode
+                }
               </div>
             </div>
           </div>
@@ -230,12 +238,15 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
               <div key={subcountName} className={classes.calloutBlockContainer}>
-                <div className={classes.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
+                <div className={classes.calloutlegendText}>
+                  {' '}
+                  {formatToLocaleString(subcountName, culture) as React.ReactNode}
+                </div>
                 <div
                   className={classes.calloutContentY}
                   style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
                 >
-                  {convertToLocaleString(subcounts[subcountName], culture)}
+                  {formatToLocaleString(subcounts[subcountName], culture) as React.ReactNode}
                 </div>
               </div>
             );

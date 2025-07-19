@@ -13,10 +13,10 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   ChartHoverCard,
-  formatValueWithSIPrefix,
+  formatScientificLimitWidth,
   getAccessibleDataObject,
   getNextGradient,
 } from '../../utilities/index';
@@ -98,6 +98,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     if (!this._isChartEmpty()) {
       const { data, theme, culture } = this.props;
@@ -118,6 +119,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
       this._longestBarTotalValue = this._computeLongestBarTotalValue();
 
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
         const singleChartBars = this._createBarsAndLegends(
           singleChartData!,
@@ -192,6 +194,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     hideDenominator: boolean,
     href?: string,
     barNo?: number,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
@@ -364,7 +367,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             aria-label={`Total: ${barLabel}`}
             role="img"
           >
-            {formatValueWithSIPrefix(barLabel)}
+            {formatScientificLimitWidth(barLabel)}
           </text>,
         );
       }
@@ -411,7 +414,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const showNumber =
       this.props.variant !== MultiStackedBarChartVariant.AbsoluteScale && !hideNumber && data!.chartData!.length === 1;
 
-    const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
+    const getChartData = () =>
+      formatToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture) as React.ReactNode;
     return (
       <div className={this._classNames.singleChartRoot}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
@@ -428,7 +432,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
                 <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                 {!hideDenominator && (
                   <span className={this._classNames.ratioDenominator}>
-                    {' / ' + convertToLocaleString(barTotalValue, culture)}
+                    {' / ' + formatToLocaleString(barTotalValue, culture)}
                   </span>
                 )}
               </div>
@@ -494,6 +498,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getLegendData = (data: IChartProps[], hideRatio: boolean[], palette: IPalette): JSX.Element => {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];

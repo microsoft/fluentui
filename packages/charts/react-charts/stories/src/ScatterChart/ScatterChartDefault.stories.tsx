@@ -1,16 +1,30 @@
 import * as React from 'react';
 import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
+import { makeStyles, Switch, tokens } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
 
 export const ScatterChartDefault = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
+  const [selectMultipleLegends, setSelectMultipleLegends] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
   };
+
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
   };
+
+  const _onToggleMultiLegendSelection = React.useCallback((ev: any) => {
+    setSelectMultipleLegends(ev.currentTarget.checked);
+  }, []);
 
   const data: ChartProps = {
     chartTitle: 'Project Revenue and Transactions Over Time',
@@ -92,30 +106,40 @@ export const ScatterChartDefault = () => {
   };
 
   const rootStyle = { width: `${width}px`, height: `${height}px` };
+
   return (
     <>
       <text>Scatter chart numeric x example.</text>
       <br />
-      <label htmlFor="changeWidth">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={200}
-        max={1000}
-        onChange={_onWidthChange}
-        id="changeWidth"
-        aria-valuetext={`ChangeWidthSlider${width}`}
-      />
-      <label htmlFor="changeHeight">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={200}
-        max={1000}
-        id="changeHeight"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
-      />
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="changeWidth">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={200}
+          max={1000}
+          onChange={_onWidthChange}
+          id="changeWidth"
+          aria-valuetext={`ChangeWidthSlider${width}`}
+        />
+        <label htmlFor="changeHeight">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={200}
+          max={1000}
+          id="changeHeight"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightslider${height}`}
+        />
+      </div>
+      <div style={{ marginBottom: '10px' }}>
+        <Switch
+          label="Select Multiple Legends"
+          checked={selectMultipleLegends}
+          onChange={_onToggleMultiLegendSelection}
+        />
+      </div>
       <div style={rootStyle}>
         <ScatterChart
           culture={window.navigator.language}
@@ -124,11 +148,16 @@ export const ScatterChartDefault = () => {
           width={width}
           xAxisTitle={'Days since project start'}
           yAxisTitle={'Revenue in dollars'}
+          legendProps={{
+            canSelectMultipleLegends: selectMultipleLegends,
+          }}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </>
   );
 };
+
 ScatterChartDefault.parameters = {
   docs: {
     description: {},

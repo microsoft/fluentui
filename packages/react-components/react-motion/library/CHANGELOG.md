@@ -1,8 +1,65 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Thu, 27 Mar 2025 21:12:51 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jun 2025 14:11:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.9.0)
+
+Thu, 26 Jun 2025 14:11:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.8.1..@fluentui/react-motion_v9.9.0)
+
+### Minor changes
+
+- Presence enter & exit motions can be used separately with .In & .Out ([PR #33930](https://github.com/microsoft/fluentui/pull/33930) by robertpenner@microsoft.com)
+- Bump @fluentui/react-utilities to v9.22.0 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+
+## [9.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.8.1)
+
+Wed, 18 Jun 2025 17:34:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.8.0..@fluentui/react-motion_v9.8.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.24.0 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-utilities to v9.21.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.8.0)
+
+Thu, 12 Jun 2025 09:43:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.7.4..@fluentui/react-motion_v9.8.0)
+
+### Minor changes
+
+- Bump @fluentui/react-utilities to v9.21.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+
+## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.7.4)
+
+Fri, 06 Jun 2025 13:15:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.7.3..@fluentui/react-motion_v9.7.4)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.20.0 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.7.3)
+
+Wed, 14 May 2025 18:49:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.7.2..@fluentui/react-motion_v9.7.3)
+
+### Patches
+
+- Export child context ([PR #34449](https://github.com/microsoft/fluentui/pull/34449) by charles.assuncao@microsoft.com)
+
+## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.7.2)
+
+Wed, 16 Apr 2025 19:42:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.7.1..@fluentui/react-motion_v9.7.2)
+
+### Patches
+
+- fix: improve element validation to work with React 19 ([PR #34164](https://github.com/microsoft/fluentui/pull/34164) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.19.0 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
 
 ## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.7.1)
 

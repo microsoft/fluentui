@@ -64,6 +64,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     this._events.dispose();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element | null {
     const {
       item,
@@ -95,7 +96,10 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
     return (
       <KeytipData keytipProps={keytipProps} disabled={isItemDisabled(item)}>
-        {(keytipAttributes: any): JSX.Element => (
+        {(
+          keytipAttributes: any,
+        ): // eslint-disable-next-line @typescript-eslint/no-deprecated
+        JSX.Element => (
           <div
             data-ktp-target={keytipAttributes['data-ktp-target']}
             ref={(splitButton: HTMLDivElement) => (this._splitButton = splitButton)}
@@ -184,7 +188,6 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       checked: item.checked,
       iconProps: item.iconProps,
       id: this._dismissLabelId,
-      onClick: item.onClick,
       onRenderIcon: item.onRenderIcon,
       data: item.data,
       'data-is-focusable': false,
@@ -196,7 +199,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       <button {...getNativeProps(itemProps, buttonProperties)}>
         <ChildrenRenderer
           data-is-focusable={false}
-          item={itemProps}
+          item={{ ...itemProps, onClick: item.onClick }}
           classNames={classNames}
           index={index}
           onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick : undefined}
@@ -210,8 +213,12 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   private _renderSplitDivider(item: IContextualMenuItem) {
     const getDividerClassNames =
       item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    return <VerticalDivider getClassNames={getDividerClassNames} />;
+    return (
+      <VerticalDivider
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        getClassNames={getDividerClassNames}
+      />
+    );
   }
 
   private _renderSplitIconButton(

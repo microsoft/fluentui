@@ -10,7 +10,6 @@ import {
   colorPaletteRedBackground3,
   colorTransparentBackground,
 } from '../theme/design-tokens.js';
-import { errorState, largeState, squareState, successState, warningState } from '../styles/states/index.js';
 
 /** ProgressBar styles
  * @public
@@ -25,13 +24,20 @@ export const styles = css`
     background-color: ${colorNeutralBackground6};
     border-radius: ${borderRadiusMedium};
     contain: content;
+
+    @supports (width: attr(value type(<number>))) {
+      --max: attr(max type(<number>), 100);
+      --min: attr(min type(<number>), 0);
+      --value: attr(value type(<number>), 0);
+      --indicator-width: clamp(0%, calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), 100%);
+    }
   }
 
-  :host(${largeState}) {
+  :host([thickness='large']) {
     height: 4px;
   }
 
-  :host(${squareState}) {
+  :host([shape='square']) {
     border-radius: ${borderRadiusNone};
   }
 
@@ -43,6 +49,10 @@ export const styles = css`
 
   :host([value]) .indicator {
     transition: all 0.2s ease-in-out;
+
+    @supports (width: attr(value type(<number>))) {
+      width: var(--indicator-width);
+    }
   }
 
   :host(:not([value])) .indicator {
@@ -60,15 +70,15 @@ export const styles = css`
     animation-iteration-count: infinite;
   }
 
-  :host(${errorState}) .indicator {
+  :host([validation-state='error']) .indicator {
     background-color: ${colorPaletteRedBackground3};
   }
 
-  :host(${warningState}) .indicator {
+  :host([validation-state='warning']) .indicator {
     background-color: ${colorPaletteDarkOrangeBackground3};
   }
 
-  :host(${successState}) .indicator {
+  :host([validation-state='success']) .indicator {
     background-color: ${colorPaletteGreenBackground3};
   }
 
@@ -99,7 +109,7 @@ export const styles = css`
       background-color: CanvasText;
     }
     .indicator,
-    :host(:is(${successState}, ${warningState}, ${errorState})) .indicator {
+    :host(:is([validation-state='success'], [validation-state='warning'], [validation-state='error'])) .indicator {
       background-color: Highlight;
     }
   `),

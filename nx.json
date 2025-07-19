@@ -123,14 +123,7 @@
     ]
   },
   "release": {
-    "projectsRelationship": "independent",
-    "groups": {
-      "northstar": {
-        "releaseTagPattern": "@fluentui/react-northstar_v{version}",
-        "projectsRelationship": "fixed",
-        "projects": ["packages/fluentui/*"]
-      }
-    }
+    "projectsRelationship": "independent"
   },
   "parallel": 3,
   "useInferencePlugins": false,
@@ -155,5 +148,6 @@
         "packages/react-components/**/*"
       ]
     }
-  ]
+  ],
+  "useLegacyCache": true
 }

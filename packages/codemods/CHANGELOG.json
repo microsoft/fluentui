@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Thu, 10 Jul 2025 07:19:40 GMT",
+      "tag": "@fluentui/codemods_v8.4.28",
+      "version": "8.4.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "c4783620ecbf4669972d2b185282e3814d7c0a54",
+            "comment": "chore: update description and remove react from direct dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Jan 2025 07:21:45 GMT",
       "tag": "@fluentui/codemods_v8.4.27",
       "version": "8.4.27",

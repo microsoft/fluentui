@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useHorizontalBarChartStyles } from './useHorizontalBarChartStyles.styles';
 import { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData, HorizontalBarChartVariant } from './index';
-import { convertToLocaleString } from '../../utilities/locale-util';
-import { formatValueWithSIPrefix, getAccessibleDataObject, useRtl } from '../../utilities/index';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
+import { formatScientificLimitWidth, getAccessibleDataObject, useRtl } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useFocusableGroup } from '@fluentui/react-tabster';
@@ -21,7 +21,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   HorizontalBarChartProps
 >((props, forwardedRef) => {
   const legendContainer = React.useRef<HTMLDivElement | null>(null);
-  const _uniqLineText: string = '_HorizontalLine_' + Math.random().toString(36).substring(7);
+  const _uniqLineText: string = useId('_HorizontalLine_');
   const _refArray: RefArrayData[] = [];
   const _isRTL: boolean = useRtl();
   const barChartSvgRef: React.RefObject<SVGSVGElement> = React.createRef<SVGSVGElement>();
@@ -47,7 +47,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   }
 
   function _hoverOn(
-    event: React.MouseEvent<SVGRectElement, MouseEvent>,
+    event: React.FocusEvent<SVGRectElement> | React.MouseEvent<SVGRectElement>,
     hoverVal: string | number | Date,
     point: ChartDataPoint,
   ): void {
@@ -57,7 +57,21 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       (_legendHighlighted(point.legend) || _noLegendHighlighted())
     ) {
       _calloutAnchorPoint = point;
-      updatePosition(event.clientX, event.clientY);
+      let x = 0;
+      let y = 0;
+
+      if ('clientX' in event && event.clientX && event.clientY) {
+        // Mouse event
+        x = event.clientX;
+        y = event.clientY;
+      } else {
+        // Focus event
+        const targetRect = (event.target as SVGRectElement).getBoundingClientRect();
+        x = targetRect.left + targetRect.width / 2;
+        y = targetRect.top + targetRect.height / 2;
+      }
+
+      updatePosition(x, y);
       setHoverValue(hoverVal);
       setLineColor(point.color!);
       setLegend(point.legend!);
@@ -138,7 +152,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       );
       return (
         <div className={classes.chartTitleRight} {...accessibilityData}>
-          {convertToLocaleString(total, culture)}
+          {formatToLocaleString(total, culture) as React.ReactNode}
         </div>
       );
     }
@@ -151,18 +165,18 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       case 'default':
         return (
           <div className={classes.chartTitleRight} {...accessibilityData}>
-            {convertToLocaleString(x, culture)}
+            {formatToLocaleString(x, culture) as React.ReactNode}
           </div>
         );
       case 'fraction':
         return (
           <div {...accessibilityData}>
-            <span className={classes.chartTitleRight}>{convertToLocaleString(x, culture)}</span>
-            <span className={classes.chartDataTextDenominator}>{' / ' + convertToLocaleString(y, culture)}</span>
+            <span className={classes.chartTitleRight}>{formatToLocaleString(x, culture) as React.ReactNode}</span>
+            <span className={classes.chartDataTextDenominator}>{' / ' + formatToLocaleString(y, culture)}</span>
           </div>
         );
       case 'percentage':
-        const dataRatioPercentage = `${convertToLocaleString(Math.round((x / y) * 100), culture)}%`;
+        const dataRatioPercentage = `${formatToLocaleString(Math.round((x / y) * 100), culture)}%`;
         return (
           <div className={classes.chartTitleRight} {...accessibilityData}>
             {dataRatioPercentage}
@@ -281,7 +295,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             className={classes.barLabel}
             aria-hidden={true}
           >
-            {formatValueWithSIPrefix(barValue)}
+            {formatScientificLimitWidth(barValue)}
           </text>
         );
       }
@@ -295,12 +309,11 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
               : startingPoint[index] + index * barSpacingInPercent
           }%`}
           y={0}
-          data-is-focusable={point.legend !== '' ? true : false}
           width={value + '%'}
           height={_barHeight}
           fill={color}
           onMouseOver={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
-          onFocus={point.legend !== '' ? event => _hoverOn.bind(event, xValue, point) : undefined}
+          onFocus={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
           role="img"
           aria-label={_getAriaLabel(point)}
           onBlur={_hoverOff}
@@ -421,7 +434,6 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
               <svg ref={barChartSvgRef} className={classes.chart} aria-label={points!.chartTitle}>
                 <g
                   id={keyVal}
-                  key={keyVal}
                   ref={(e: SVGGElement) => {
                     _refCallback(e, points!.chartData![0].legend);
                   }}

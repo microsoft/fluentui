@@ -125,6 +125,7 @@ export const HoverCardTargetExample: React.FunctionComponent = () => {
         items={items}
         columns={columns}
         onRenderItemColumn={onRenderItemColumn}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         ariaLabel="Hover card DetailsList test"
       />
     </ThemeProvider>

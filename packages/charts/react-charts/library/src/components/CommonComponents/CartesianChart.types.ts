@@ -1,9 +1,22 @@
 import * as React from 'react';
 import { LegendsProps } from '../Legends/index';
-import { AccessibilityProps, Chart, Margins } from '../../types/index';
-import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/index';
+import {
+  AccessibilityProps,
+  Chart,
+  Margins,
+  DataPoint,
+  HorizontalBarChartWithAxisDataPoint,
+  GroupedVerticalBarChartData,
+  HeatMapChartDataPoint,
+  LineChartPoints,
+  VerticalBarChartDataPoint,
+  VerticalStackedBarDataPoint,
+  ScatterChartDataPoint,
+} from '../../types/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartPopoverProps } from './ChartPopover.types';
+import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisType } from '../../utilities/utilities';
+import { ScaleBand, ScaleLinear } from 'd3-scale';
 /**
  * Cartesian Chart style properties
  * {@docCategory CartesianChart}
@@ -53,6 +66,12 @@ export interface CartesianChartStyleProps {
    * boolean flag which determines if shape is drawn in callout
    */
   toDrawShape?: boolean;
+
+  /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @deprecated Use `reflowProps` instead.
+   */
+  enableReflow?: boolean;
 }
 
 /**
@@ -86,54 +105,9 @@ export interface CartesianChartStyles {
   hover?: string;
 
   /**
-   * styles for callout root-content
-   */
-  calloutContentRoot?: string;
-
-  /**
-   * styles for callout x-content
-   */
-  calloutContentX?: string;
-
-  /**
-   * styles for callout y-content
-   */
-  calloutContentY?: string;
-
-  /**
    * styles for description message
    */
   descriptionMessage?: string;
-
-  /**
-   * styles for callout Date time container
-   */
-  calloutDateTimeContainer?: string;
-
-  /**
-   * styles for callout info container
-   */
-  calloutInfoContainer?: string;
-
-  /**
-   * styles for callout block container
-   */
-  calloutBlockContainer?: string;
-
-  /**
-   * Styles for callout block container when toDrawShape is false
-   */
-  calloutBlockContainertoDrawShapefalse?: string;
-
-  /**
-   * Styles for callout block container when toDrawShape is true
-   */
-  calloutBlockContainertoDrawShapetrue?: string;
-
-  /**
-   * styles for callout legend text
-   */
-  calloutlegendText?: string;
 
   /**
    * styles for tooltip
@@ -164,6 +138,16 @@ export interface CartesianChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;
+
+  /**
+   * Styles for the svg tooltip
+   */
+  svgTooltip?: string;
+
+  /**
+   * Styles for the chart svg element
+   */
+  chart?: string;
 }
 
 /**
@@ -372,6 +356,12 @@ export interface CartesianChartProps {
   svgProps?: React.SVGProps<SVGSVGElement>;
 
   /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @deprecated Use `reflowProps` instead.
+   */
+  enableReflow?: boolean;
+
+  /**
    * Props related to reflow behavior of the chart
    */
   reflowProps?: {
@@ -414,8 +404,14 @@ export interface CartesianChartProps {
   useUTC?: string | boolean;
 
   /**
-   * Determines whether overlapping x-axis tick labels should be hidden.
    * @default false
+   * The prop used to decide rounded ticks on y axis
+   */
+  roundedTicks?: boolean;
+
+  /**
+   * Determines whether overlapping x-axis tick labels should be hidden.
+   * @default true
    */
   hideTickOverlap?: boolean;
 
@@ -447,7 +443,7 @@ export interface ChildProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   xScale?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  yScale?: any;
+  yScalePrimary?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yScaleSecondary?: any;
   containerHeight?: number;
@@ -577,6 +573,9 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /** Callback method to get extra margins for domain */
   getDomainMargins?: (containerWidth: number) => Margins;
 
+  /** Callback method to get extra margins for Y-axis domain */
+  getYDomainMargins?: (containerHeight: number) => Margins;
+
   /** Padding between each bar/line-point */
   xAxisInnerPadding?: number;
 
@@ -599,4 +598,63 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
    * Used to control the first render cycle Performance optimization code.
    */
   enableFirstRenderOptimization?: boolean;
+
+  /**
+   * Get the min and max values of the y-axis
+   */
+  getMinMaxOfYAxis: (
+    points:
+      | LineChartPoints[]
+      | HorizontalBarChartWithAxisDataPoint[]
+      | VerticalBarChartDataPoint[]
+      | DataPoint[]
+      | ScatterChartDataPoint[],
+    yAxisType: YAxisType | undefined,
+    useSecondaryYScale?: boolean,
+  ) => { startValue: number; endValue: number };
+
+  /**
+   * Create the y-axis
+   */
+  createYAxis: (
+    yAxisParams: IYAxisParams,
+    isRtl: boolean,
+    axisData: IAxisData,
+    isIntegralDataset: boolean,
+    chartType: ChartTypes,
+    useSecondaryYScale?: boolean,
+    roundedTicks?: boolean,
+  ) => ScaleLinear<number, number, never>;
+
+  /**
+   * Get the domain and range values
+   */
+  getDomainNRangeValues: (
+    points:
+      | LineChartPoints[]
+      | VerticalBarChartDataPoint[]
+      | VerticalStackedBarDataPoint[]
+      | HorizontalBarChartWithAxisDataPoint[]
+      | GroupedVerticalBarChartData[]
+      | HeatMapChartDataPoint[],
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | string[] | undefined,
+    shiftX: number,
+  ) => IDomainNRange;
+
+  /**
+   * Create the string y-axis
+   */
+  createStringYAxis: (
+    yAxisParams: IYAxisParams,
+    dataPoints: string[],
+    isRtl: boolean,
+    barWidth: number | undefined,
+    chartType?: ChartTypes,
+  ) => ScaleBand<string>;
 }

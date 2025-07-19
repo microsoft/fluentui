@@ -62,7 +62,7 @@ export interface VerticalBarChartProps extends CartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: VerticalBarChartStyles;
+  styles?: Partial<VerticalBarChartStyles>;
 
   /**
    * The prop used to define the culture to localized the numbers
@@ -104,6 +104,24 @@ export interface VerticalBarChartProps extends CartesianChartProps {
    * Only applicable to string x-axis.
    */
   xAxisOuterPadding?: number;
+
+  /**
+   * @default false
+   * The prop used to enable gradient fill color for the chart.
+   */
+  enableGradient?: boolean;
+
+  /**
+   * @default false
+   * The prop used to enable rounded corners for the chart.
+   */
+  roundCorners?: boolean;
+
+  /**
+   * Specifies the mode of the chart.
+   * @default 'default'
+   */
+  mode?: 'default' | 'plotly';
 }
 
 /**
@@ -126,4 +144,9 @@ export interface VerticalBarChartStyles extends CartesianChartStyles {
    * Style for the bar labels
    */
   barLabel: string;
+
+  /**
+   * Styles for line border
+   */
+  lineBorder: string;
 }

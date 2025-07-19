@@ -79,6 +79,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
   private _events: EventGroup;
 
   constructor(props: ITileProps, context: any) {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 
     initializeComponentRef(this);
@@ -94,8 +95,8 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     const isModal = !!selection && !!selection.isModal && selection.isModal();
 
     this.state = {
-      isSelected: isSelected,
-      isModal: isModal,
+      isSelected,
+      isModal,
     };
 
     this._events = new EventGroup(this);
@@ -112,8 +113,8 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       const isModal = !!nextSelection && nextSelection.isModal && nextSelection.isModal();
 
       this.setState({
-        isSelected: isSelected,
-        isModal: isModal,
+        isSelected,
+        isModal,
       });
     }
   }
@@ -146,6 +147,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     this._events.dispose();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const {
       children,
@@ -290,13 +292,13 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         ) : null}
         {isSelectable
           ? this._onRenderCheck({
-              isSelected: isSelected,
+              isSelected,
             })
           : null}
       </div>
     );
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderBackground = (backgroundProps?: ITileBackgroundProps): JSX.Element | null => {
     if (!backgroundProps) {
       return null;
@@ -321,6 +323,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     ) : null;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderForeground = (foregroundProps?: ITileForegroundProps): JSX.Element | null => {
     if (!foregroundProps) {
       return null;
@@ -348,7 +351,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       </span>
     ) : null;
   };
-
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderNameplate = (nameplateProps?: ITileNameplateProps): JSX.Element | null => {
     if (!nameplateProps) {
       return null;
@@ -380,6 +383,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     ) : null;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderCheck({ isSelected }: { isSelected: boolean }): JSX.Element {
     const { toggleSelectionAriaLabel } = this.props;
 
@@ -406,14 +410,15 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     const isModal = !!selection && !!selection.isModal && selection.isModal();
 
     this.setState({
-      isSelected: isSelected,
-      isModal: isModal,
+      isSelected,
+      isModal,
     });
   };
 }
 
 export type { ITileLayout };
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export function getTileLayout(tileElement: JSX.Element): ITileLayout {
   const tileProps: ITileProps = tileElement.props;
 
@@ -453,6 +458,7 @@ function getTileLayoutFromProps(tileProps: ITileProps): ITileLayout {
   };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export function renderTileWithLayout(tileElement: JSX.Element, props: Partial<ITileProps>): JSX.Element {
   const Tag = tileElement.type;
 

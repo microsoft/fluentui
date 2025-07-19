@@ -13,21 +13,14 @@ export const scatterChartClassNames: SlotClassNames<ScatterChartStyles> = {
   yAxis: 'fui-line__yAxis',
   legendContainer: 'fui-line__legendContainer',
   hover: 'fui-line__hover',
-  calloutContentRoot: 'fui-line__calloutContentRoot',
-  calloutContentX: 'fui-line__calloutContentX',
-  calloutContentY: 'fui-line__calloutContentY',
   descriptionMessage: 'fui-line__descriptionMessage',
-  calloutDateTimeContainer: 'fui-line__calloutDateTimeContainer',
-  calloutInfoContainer: 'fui-line__calloutInfoContainer',
-  calloutBlockContainer: 'fui-line__calloutBlockContainer',
-  calloutlegendText: 'fui-line__calloutLegendText',
   axisTitle: 'fui-line__axisTitle',
   chartTitle: 'fui-line__chartTitle',
   opacityChangeOnHover: 'fui-line__opacityChangeOnHover',
   shapeStyles: 'fui-line__shapeStyles',
   chartWrapper: 'fui-line__chartWrapper',
-  calloutBlockContainertoDrawShapefalse: '', // Not used so marked as empty. ToDo - How to configure inheritence properly
-  calloutBlockContainertoDrawShapetrue: '', // Not used so marked as empty. ToDo - How to configure inheritence properly
+  svgTooltip: '',
+  chart: '',
 };
 
 /**
@@ -50,7 +43,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useScatterChartStyles_unstable = (props: ScatterChartProps): ScatterChartStyles => {
+export const useScatterChartStyles = (props: ScatterChartProps): ScatterChartStyles => {
   const baseStyles = useStyles();
   return {
     tooltip: mergeClasses(scatterChartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),

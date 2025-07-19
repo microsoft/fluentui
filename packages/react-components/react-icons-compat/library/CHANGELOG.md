@@ -1,8 +1,68 @@
 # Change Log - @fluentui/react-icons-compat
 
-This log was last generated on Thu, 27 Mar 2025 21:12:51 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-compat_v0.2.3)
+
+Thu, 17 Jul 2025 13:49:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-compat_v0.2.2..@fluentui/react-icons-compat_v0.2.3)
+
+### Patches
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+
+## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-compat_v0.2.2)
+
+Thu, 26 Jun 2025 14:11:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-compat_v0.2.1..@fluentui/react-icons-compat_v0.2.2)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.1.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-utilities to v9.22.0 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+
+## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-compat_v0.2.1)
+
+Wed, 18 Jun 2025 17:34:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-compat_v0.2.0..@fluentui/react-icons-compat_v0.2.1)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.1.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.24.0 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-utilities to v9.21.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-compat_v0.2.0)
+
+Thu, 12 Jun 2025 09:43:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-compat_v0.1.13..@fluentui/react-icons-compat_v0.2.0)
+
+### Minor changes
+
+- Bump @fluentui/react-jsx-runtime to v9.1.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-utilities to v9.21.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+
+## [0.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-compat_v0.1.13)
+
+Fri, 06 Jun 2025 13:15:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-compat_v0.1.12..@fluentui/react-icons-compat_v0.1.13)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.55 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-utilities to v9.20.0 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+
+## [0.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-compat_v0.1.12)
+
+Wed, 16 Apr 2025 19:42:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-compat_v0.1.11..@fluentui/react-icons-compat_v0.1.12)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.54 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-utilities to v9.19.0 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
 
 ## [0.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-compat_v0.1.11)
 
