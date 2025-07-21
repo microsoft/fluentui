@@ -419,7 +419,6 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
           isPopoverOpen={isPopoverOpen}
           color={calloutProps?.color}
           isCartesian={false}
-          //isCalloutForStack={isStacked}
         />
       )}
       {_renderLegends()}
