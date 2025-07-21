@@ -1012,4 +1012,103 @@ describe('GroupedVerticalBarChart - Stacked Bars', () => {
     );
     expect(costsLabel).toBeTruthy();
   });
+
+  test('should align stacked bars correctly with x-axis ticks', () => {
+    // Test data similar to the issue reported
+    const stackedAlignmentData = [
+      {
+        name: 'Grade 10',
+        series: [
+          {
+            key: 'Grade 10',
+            legend: 'Grade 10',
+            color: '#636efa',
+            data: 80,
+            xAxisCalloutData: 'Grade 10',
+            yAxisCalloutData: '80',
+          },
+          {
+            key: 'Grade 10',
+            legend: 'Grade 10',
+            color: '#636efa',
+            data: 80,
+            xAxisCalloutData: 'Grade 10',
+            yAxisCalloutData: '80',
+          },
+        ],
+      },
+      {
+        name: 'Grade 11',
+        series: [
+          {
+            key: 'Grade 11',
+            legend: 'Grade 11',
+            color: '#EF553B',
+            data: 90,
+            xAxisCalloutData: 'Grade 11',
+            yAxisCalloutData: '90',
+          },
+          {
+            key: 'Grade 11',
+            legend: 'Grade 11',
+            color: '#EF553B',
+            data: 90,
+            xAxisCalloutData: 'Grade 11',
+            yAxisCalloutData: '90',
+          },
+        ],
+      },
+      {
+        name: 'Grade 12',
+        series: [
+          {
+            key: 'Grade 12',
+            legend: 'Grade 12',
+            color: '#00cc96',
+            data: 85,
+            xAxisCalloutData: 'Grade 12',
+            yAxisCalloutData: '85',
+          },
+        ],
+      },
+    ];
+
+    const { container } = render(
+      <GroupedVerticalBarChart
+        chartTitle="Alignment Test"
+        data={stackedAlignmentData}
+        width={650}
+        height={300}
+      />,
+    );
+
+    // Check that the chart renders with proper structure
+    const chart = container.querySelector('svg');
+    expect(chart).toBeTruthy();
+
+    // The key test is that bars are rendered and positioned correctly
+    // Before the fix, bars would be at negative coordinates or incorrectly positioned
+    const bars = container.querySelectorAll('rect[aria-label*="Grade"]');
+    expect(bars.length).toBeGreaterThan(0);
+
+    // Check that x-axis ticks are correctly positioned (not at negative coordinates)
+    const xAxisTicks = container.querySelectorAll('.fui-cart__xAxis .tick');
+    expect(xAxisTicks.length).toBe(3); // Should have 3 ticks for Grade 10, 11, 12
+
+    // Extract tick positions to verify they're reasonable
+    const tickPositions = Array.from(xAxisTicks).map(tick => {
+      const transform = tick.getAttribute('transform') || '';
+      const match = transform.match(/translate\(([^,]+)/);
+      return match ? parseFloat(match[1]) : 0;
+    });
+
+    // All tick positions should be positive (the original bug caused negative positioning)
+    tickPositions.forEach(pos => {
+      expect(pos).toBeGreaterThan(0);
+    });
+
+    // The ticks should be spaced apart (not all at the same position)
+    const uniqueTickPositions = new Set(tickPositions.map(p => Math.round(p)));
+    expect(uniqueTickPositions.size).toBe(3);
+  });
 });

@@ -33,14 +33,14 @@ import {
   CartesianChart,
   Margins,
   Legend,
-  RefArrayData,
+  // RefArrayData,
   GroupedVerticalBarChartProps,
   GroupedVerticalBarChartData,
   GVBarChartSeriesPoint,
   Legends,
   YValueHover,
-  DataVizPalette,
-  getColorFromToken,
+  // DataVizPalette,
+  // getColorFromToken,
   ChartPopoverProps,
   Chart,
 } from '../../index';
@@ -80,7 +80,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _datasetForBars: any[] = [];
   let _margins: Margins = { top: 0, right: 0, bottom: 0, left: 0 };
   let _groupedVerticalBarGraph: JSX.Element[] = [];
-  let _refArray: RefArrayData[] = [];
+  // let _refArray: RefArrayData[] = [];
   let _yMax: number = 0;
   let _calloutAnchorPoint: GVBarChartSeriesPoint | null = null;
   let _barWidth: number = 0;
@@ -89,7 +89,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _xAxisOuterPadding: number = 0;
   let _legendColorMap: Record<string, [string, string]> = {};
   const cartesianChartRef = React.useRef<Chart>(null);
-  const Y_ORIGIN: number = 0;
+  // const Y_ORIGIN: number = 0;
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -442,14 +442,23 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     const singleGroup: JSX.Element[] = [];
     const barLabelsForGroup: JSX.Element[] = [];
 
+    // Get the actual legends present at this x-axis point
+    const presentLegends = Object.keys(singleSet).filter(key => key !== 'xAxisPoint' && key !== 'indexNum' && key !== 'groupSeries' && key !== 'stackCallOutAccessibilityData');
+    const effectiveGroupWidth = (presentLegends.length + (presentLegends.length - 1) * BAR_GAP_RATE) * _barWidth;
+    
     _legends.forEach((legendTitle: string, legendIndex: number) => {
       const barPoints = singleSet[legendTitle];
       if (barPoints) {
         const yBarScale = barPoints[0].useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
 
-        // To align the centers of the generated bandwidth and the calculated one when they differ,
-        // use the following addend.
-        const xPoint = xScale1(legendTitle) + (xScale1.bandwidth() - _barWidth) / 2;
+        // For stacked bars, center the single bar group in the available space
+        // Instead of using the global legend position, use the local position within present legends
+        const localScale = d3ScaleBand()
+          .domain(presentLegends)
+          .range(_useRtl ? [effectiveGroupWidth, 0] : [0, effectiveGroupWidth])
+          .paddingInner(X1_INNER_PADDING);
+        
+        const xPoint = (localScale(legendTitle) ?? 0) + (localScale.bandwidth() - _barWidth) / 2;
         const isLegendActive = _legendHighlighted(legendTitle) || _noLegendHighlighted();
         const barOpacity = isLegendActive ? '' : '0.1';
         let startColor = barPoints[0].color;
@@ -530,7 +539,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     return (
       <g
         key={singleSet.indexNum}
-        transform={`translate(${xScale0(singleSet.xAxisPoint) + (xScale0.bandwidth() - _groupWidth) / 2}, 0)`}
+        transform={`translate(${xScale0(singleSet.xAxisPoint) + (xScale0.bandwidth() - effectiveGroupWidth) / 2}, 0)`}
       >
         {singleGroup}
         {barLabelsForGroup}
