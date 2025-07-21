@@ -137,15 +137,16 @@ export const useSemanticAccordionHeaderStyles = (_state: unknown): AccordionHead
 
   const styles = useStyles();
   state.root.className = mergeClasses(
+    state.root.className,
     accordionHeaderClassNames.root,
     styles.root,
     state.inline && styles.rootInline,
     state.disabled && styles.rootDisabled,
-    state.root.className,
     getSlotClassNameProp_unstable(state.root),
   );
 
   state.button.className = mergeClasses(
+    state.button.className,
     accordionHeaderClassNames.button,
     styles.resetButton,
     styles.button,
@@ -157,26 +158,25 @@ export const useSemanticAccordionHeaderStyles = (_state: unknown): AccordionHead
     state.size === 'large' && styles.buttonLarge,
     state.size === 'extra-large' && styles.buttonExtraLarge,
     state.disabled && styles.buttonDisabled,
-    state.button.className,
     getSlotClassNameProp_unstable(state.button),
   );
 
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(
+      state.expandIcon.className,
       accordionHeaderClassNames.expandIcon,
       styles.expandIcon,
       state.expandIconPosition === 'start' && styles.expandIconStart,
       state.expandIconPosition === 'end' && styles.expandIconEnd,
-      state.expandIcon.className,
       getSlotClassNameProp_unstable(state.expandIcon),
     );
   }
 
   if (state.icon) {
     state.icon.className = mergeClasses(
+      state.icon.className,
       accordionHeaderClassNames.icon,
       styles.icon,
-      state.icon.className,
       getSlotClassNameProp_unstable(state.icon),
     );
   }
