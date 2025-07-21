@@ -1,48 +1,42 @@
 import * as React from 'react';
-import { makeStyles, tokens, MenuList, MenuItem, Menu, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
+import { MenuGrid, MenuGridCell, MenuGridRow } from '@fluentui/react-menu';
 
-const useMenuListContainerStyles = makeStyles({
-  container: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    minWidth: '128px',
-    minHeight: '48px',
-    maxWidth: '300px',
-    width: 'max-content',
-    boxShadow: `${tokens.shadow16}`,
-    paddingTop: '4px',
-    paddingBottom: '4px',
-  },
-});
+const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'];
 
 export const WithSubmenu = () => {
-  const styles = useMenuListContainerStyles();
   return (
-    <div className={styles.container}>
-      <MenuList>
-        <MenuItem>Cut</MenuItem>
-        <MenuItem>Paste</MenuItem>
-        <MenuItem>Edit</MenuItem>
-        <Menu>
-          <MenuTrigger disableButtonEnhancement>
-            <MenuItem>Preferences</MenuItem>
-          </MenuTrigger>
-          <MenuPopover>
-            <MenuList>
-              <MenuItem>Cut</MenuItem>
-              <MenuItem>Paste</MenuItem>
-              <MenuItem>Edit</MenuItem>
-            </MenuList>
-          </MenuPopover>
-        </Menu>
-      </MenuList>
-    </div>
+    <MenuGrid>
+      {items.map((name, index) => (
+        <MenuGridRow key={index} aria-label={name}>
+          <MenuGridCell>{name}</MenuGridCell>
+          <MenuGridCell>
+            <Menu positioning={{ autoSize: true }}>
+              <MenuTrigger disableButtonEnhancement>
+                <Button>More actions</Button>
+              </MenuTrigger>
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem>Show profile </MenuItem>
+                  <MenuItem>Audio call</MenuItem>
+                  <MenuItem>Video call</MenuItem>
+                  <MenuItem>Remove</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          </MenuGridCell>
+        </MenuGridRow>
+      ))}
+    </MenuGrid>
   );
 };
 
 WithSubmenu.parameters = {
   docs: {
     description: {
-      story: ['A `MenuGrid` row can open a submenu using a button provided as one of the row actions'].join('\n'),
+      story: [
+        'If you need to provide a submenu for a `MenuGrid` item, use a menu button, e.g. "More actions", placed into its own `MenuGridCell`',
+      ].join('\n'),
     },
   },
 };
