@@ -3482,14 +3482,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
 exports[`AreaChart - mouse events Should render callout correctly on mouseover 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
-    <div
-      class="fui-ac__tooltip"
-      id="AreaChartTooltipIDr5i"
-      style="opacity: 0;"
-    />
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -3503,9 +3496,9 @@ Object {
           <svg
             aria-label="Area chart multiple example. Area chart with 3 data series. "
             class="fui-cart__chart"
-            height="300"
+            height="310"
             style="display: block;"
-            width="650"
+            width="0"
           >
             <g
               class="fui-cart__xAxis"
@@ -3514,11 +3507,11 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
-                d="M40.5,6V0.5H630.5V6"
+                d="M40.5,6V0.5H-19.5V6"
                 stroke="currentColor"
               />
               <g
@@ -3542,61 +3535,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(106.05555555555556,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  25
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(171.61111111111111,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  30
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(237.16666666666669,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  35
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(302.72222222222223,0)"
+                transform="translate(13.833333333333332,0)"
               >
                 <line
                   stroke="currentColor"
@@ -3614,61 +3553,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(368.27777777777777,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  45
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(433.8333333333333,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  50
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(499.3888888888889,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  55
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(564.9444444444445,0)"
+                transform="translate(-12.833333333333332,0)"
               >
                 <line
                   stroke="currentColor"
@@ -3683,24 +3568,6 @@ Object {
                   60
                 </text>
               </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(630.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  65
-                </text>
-              </g>
             </g>
             <g
               class="fui-cart__yAxis"
@@ -3713,23 +3580,23 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,265.5H0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,265.5)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   0
                 </text>
@@ -3737,17 +3604,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,204.25)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   37
                 </text>
@@ -3755,17 +3622,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,143)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   74
                 </text>
@@ -3773,17 +3640,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,81.75)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   111
                 </text>
@@ -3795,13 +3662,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   148
                 </text>
@@ -3810,55 +3677,55 @@ Object {
             <g>
               <rect
                 fill="transparent"
-                height="280"
-                id="rectangler8g"
-                width="630"
+                height="290"
+                id="rectangler3"
+                width="-20"
               />
             </g>
             <g>
               <path
-                d="M40,250.101C61.852,245.963,83.704,241.824,105.556,241.824C127.407,241.824,149.259,241.824,171.111,241.824C192.963,241.824,214.815,226.926,236.667,226.926C258.519,226.926,280.37,231.892,302.222,231.892C324.074,231.892,345.926,213.682,367.778,213.682C389.63,213.682,411.481,215.89,433.333,216.993C455.185,218.097,477.037,220.304,498.889,220.304C520.741,220.304,542.593,210.372,564.444,203.75C586.296,197.128,608.148,188.851,630,180.574"
+                d="M40,259.493C37.778,255.186,35.556,250.878,33.333,250.878C31.111,250.878,28.889,250.878,26.667,250.878C24.444,250.878,22.222,235.372,20,235.372C17.778,235.372,15.556,240.541,13.333,240.541C11.111,240.541,8.889,221.588,6.667,221.588C4.444,221.588,2.222,223.885,0,225.034C-2.222,226.182,-4.444,228.48,-6.667,228.48C-8.889,228.48,-11.111,218.142,-13.333,211.25C-15.556,204.358,-17.778,195.743,-20,187.128"
                 fill="transparent"
-                id="0-line-areaChart_r8d"
+                id="0-line-areaChart_r0"
                 opacity="0.3"
                 stroke="green"
                 stroke-width="3"
               />
               <path
-                d="M40,250.101C61.852,245.963,83.704,241.824,105.556,241.824C127.407,241.824,149.259,241.824,171.111,241.824C192.963,241.824,214.815,226.926,236.667,226.926C258.519,226.926,280.37,231.892,302.222,231.892C324.074,231.892,345.926,213.682,367.778,213.682C389.63,213.682,411.481,215.89,433.333,216.993C455.185,218.097,477.037,220.304,498.889,220.304C520.741,220.304,542.593,210.372,564.444,203.75C586.296,197.128,608.148,188.851,630,180.574L630,265C608.148,265,586.296,265,564.444,265C542.593,265,520.741,265,498.889,265C477.037,265,455.185,265,433.333,265C411.481,265,389.63,265,367.778,265C345.926,265,324.074,265,302.222,265C280.37,265,258.519,265,236.667,265C214.815,265,192.963,265,171.111,265C149.259,265,127.407,265,105.556,265C83.704,265,61.852,265,40,265Z"
+                d="M40,259.493C37.778,255.186,35.556,250.878,33.333,250.878C31.111,250.878,28.889,250.878,26.667,250.878C24.444,250.878,22.222,235.372,20,235.372C17.778,235.372,15.556,240.541,13.333,240.541C11.111,240.541,8.889,221.588,6.667,221.588C4.444,221.588,2.222,223.885,0,225.034C-2.222,226.182,-4.444,228.48,-6.667,228.48C-8.889,228.48,-11.111,218.142,-13.333,211.25C-15.556,204.358,-17.778,195.743,-20,187.128L-20,275C-17.778,275,-15.556,275,-13.333,275C-11.111,275,-8.889,275,-6.667,275C-4.444,275,-2.222,275,0,275C2.222,275,4.444,275,6.667,275C8.889,275,11.111,275,13.333,275C15.556,275,17.778,275,20,275C22.222,275,24.444,275,26.667,275C28.889,275,31.111,275,33.333,275C35.556,275,37.778,275,40,275Z"
                 fill="green"
                 fill-opacity="0.7"
-                id="0-graph-areaChart_r8d"
+                id="0-graph-areaChart_r0"
                 opacity="1"
               />
               <path
-                d="M40,215.338C61.852,207.889,83.704,200.439,105.556,200.439C127.407,200.439,149.259,225.27,171.111,225.27C192.963,225.27,214.815,211.475,236.667,210.372C258.519,209.268,280.37,209.82,302.222,208.716C324.074,207.613,345.926,183.885,367.778,183.885C389.63,183.885,411.481,202.095,433.333,202.095C455.185,202.095,477.037,182.23,498.889,182.23C520.741,182.23,542.593,192.162,564.444,192.162C586.296,192.162,608.148,140.845,630,89.527"
+                d="M40,223.311C37.778,215.557,35.556,207.804,33.333,207.804C31.111,207.804,28.889,233.649,26.667,233.649C24.444,233.649,22.222,219.291,20,218.142C17.778,216.993,15.556,217.568,13.333,216.419C11.111,215.27,8.889,190.574,6.667,190.574C4.444,190.574,2.222,209.527,0,209.527C-2.222,209.527,-4.444,188.851,-6.667,188.851C-8.889,188.851,-11.111,199.189,-13.333,199.189C-15.556,199.189,-17.778,145.777,-20,92.365"
                 fill="transparent"
-                id="1-line-areaChart_r8d"
+                id="1-line-areaChart_r0"
                 opacity="0.3"
                 stroke="yellow"
                 stroke-width="3"
               />
               <path
-                d="M40,215.338C61.852,207.889,83.704,200.439,105.556,200.439C127.407,200.439,149.259,225.27,171.111,225.27C192.963,225.27,214.815,211.475,236.667,210.372C258.519,209.268,280.37,209.82,302.222,208.716C324.074,207.613,345.926,183.885,367.778,183.885C389.63,183.885,411.481,202.095,433.333,202.095C455.185,202.095,477.037,182.23,498.889,182.23C520.741,182.23,542.593,192.162,564.444,192.162C586.296,192.162,608.148,140.845,630,89.527L630,180.574C608.148,188.851,586.296,197.128,564.444,203.75C542.593,210.372,520.741,220.304,498.889,220.304C477.037,220.304,455.185,218.097,433.333,216.993C411.481,215.89,389.63,213.682,367.778,213.682C345.926,213.682,324.074,231.892,302.222,231.892C280.37,231.892,258.519,226.926,236.667,226.926C214.815,226.926,192.963,241.824,171.111,241.824C149.259,241.824,127.407,241.824,105.556,241.824C83.704,241.824,61.852,245.963,40,250.101Z"
+                d="M40,223.311C37.778,215.557,35.556,207.804,33.333,207.804C31.111,207.804,28.889,233.649,26.667,233.649C24.444,233.649,22.222,219.291,20,218.142C17.778,216.993,15.556,217.568,13.333,216.419C11.111,215.27,8.889,190.574,6.667,190.574C4.444,190.574,2.222,209.527,0,209.527C-2.222,209.527,-4.444,188.851,-6.667,188.851C-8.889,188.851,-11.111,199.189,-13.333,199.189C-15.556,199.189,-17.778,145.777,-20,92.365L-20,187.128C-17.778,195.743,-15.556,204.358,-13.333,211.25C-11.111,218.142,-8.889,228.48,-6.667,228.48C-4.444,228.48,-2.222,226.182,0,225.034C2.222,223.885,4.444,221.588,6.667,221.588C8.889,221.588,11.111,240.541,13.333,240.541C15.556,240.541,17.778,235.372,20,235.372C22.222,235.372,24.444,250.878,26.667,250.878C28.889,250.878,31.111,250.878,33.333,250.878C35.556,250.878,37.778,255.186,40,259.493Z"
                 fill="yellow"
                 fill-opacity="0.7"
-                id="1-graph-areaChart_r8d"
+                id="1-graph-areaChart_r0"
                 opacity="1"
               />
               <path
-                d="M40,165.676C61.852,154.088,83.704,142.5,105.556,142.5C127.407,142.5,149.259,170.642,171.111,170.642C192.963,170.642,214.815,144.155,236.667,144.155C258.519,144.155,280.37,192.162,302.222,192.162C324.074,192.162,345.926,117.669,367.778,117.669C389.63,117.669,411.481,145.811,433.333,145.811C455.185,145.811,477.037,124.842,498.889,116.014C520.741,107.185,542.593,108.288,564.444,92.838C586.296,77.387,608.148,50.349,630,23.311"
+                d="M40,171.622C37.778,159.561,35.556,147.5,33.333,147.5C31.111,147.5,28.889,176.791,26.667,176.791C24.444,176.791,22.222,149.223,20,149.223C17.778,149.223,15.556,199.189,13.333,199.189C11.111,199.189,8.889,121.655,6.667,121.655C4.444,121.655,2.222,150.946,0,150.946C-2.222,150.946,-4.444,129.122,-6.667,119.932C-8.889,110.743,-11.111,111.892,-13.333,95.811C-15.556,79.73,-17.778,51.588,-20,23.446"
                 fill="transparent"
-                id="2-line-areaChart_r8d"
+                id="2-line-areaChart_r0"
                 opacity="0.3"
                 stroke="blue"
                 stroke-width="3"
               />
               <path
-                d="M40,165.676C61.852,154.088,83.704,142.5,105.556,142.5C127.407,142.5,149.259,170.642,171.111,170.642C192.963,170.642,214.815,144.155,236.667,144.155C258.519,144.155,280.37,192.162,302.222,192.162C324.074,192.162,345.926,117.669,367.778,117.669C389.63,117.669,411.481,145.811,433.333,145.811C455.185,145.811,477.037,124.842,498.889,116.014C520.741,107.185,542.593,108.288,564.444,92.838C586.296,77.387,608.148,50.349,630,23.311L630,89.527C608.148,140.845,586.296,192.162,564.444,192.162C542.593,192.162,520.741,182.23,498.889,182.23C477.037,182.23,455.185,202.095,433.333,202.095C411.481,202.095,389.63,183.885,367.778,183.885C345.926,183.885,324.074,207.613,302.222,208.716C280.37,209.82,258.519,209.268,236.667,210.372C214.815,211.475,192.963,225.27,171.111,225.27C149.259,225.27,127.407,200.439,105.556,200.439C83.704,200.439,61.852,207.889,40,215.338Z"
+                d="M40,171.622C37.778,159.561,35.556,147.5,33.333,147.5C31.111,147.5,28.889,176.791,26.667,176.791C24.444,176.791,22.222,149.223,20,149.223C17.778,149.223,15.556,199.189,13.333,199.189C11.111,199.189,8.889,121.655,6.667,121.655C4.444,121.655,2.222,150.946,0,150.946C-2.222,150.946,-4.444,129.122,-6.667,119.932C-8.889,110.743,-11.111,111.892,-13.333,95.811C-15.556,79.73,-17.778,51.588,-20,23.446L-20,92.365C-17.778,145.777,-15.556,199.189,-13.333,199.189C-11.111,199.189,-8.889,188.851,-6.667,188.851C-4.444,188.851,-2.222,209.527,0,209.527C2.222,209.527,4.444,190.574,6.667,190.574C8.889,190.574,11.111,215.27,13.333,216.419C15.556,217.568,17.778,216.993,20,218.142C22.222,219.291,24.444,233.649,26.667,233.649C28.889,233.649,31.111,207.804,33.333,207.804C35.556,207.804,37.778,215.557,40,223.311Z"
                 fill="blue"
                 fill-opacity="0.7"
-                id="2-graph-areaChart_r8d"
+                id="2-graph-areaChart_r0"
                 opacity="1"
               />
               <g
@@ -3869,10 +3736,10 @@ Object {
                 <circle
                   aria-label="20. legend1, 9."
                   cx="40"
-                  cy="250.10135135135135"
-                  fill="var(--colorNeutralBackground1)"
-                  id="circler8f_0"
-                  r="8"
+                  cy="259.4932432432432"
+                  fill="green"
+                  id="circler2_0"
+                  r="0"
                   role="img"
                   stroke="green"
                   stroke-width="3"
@@ -3880,10 +3747,10 @@ Object {
                 />
                 <circle
                   aria-label="25. legend1, 14."
-                  cx="105.55555555555556"
-                  cy="241.82432432432432"
+                  cx="33.333333333333336"
+                  cy="250.8783783783784"
                   fill="green"
-                  id="circler8f_1"
+                  id="circler2_1"
                   r="0"
                   role="img"
                   stroke="green"
@@ -3892,10 +3759,10 @@ Object {
                 />
                 <circle
                   aria-label="30. legend1, 14."
-                  cx="171.11111111111111"
-                  cy="241.82432432432432"
+                  cx="26.666666666666664"
+                  cy="250.8783783783784"
                   fill="green"
-                  id="circler8f_2"
+                  id="circler2_2"
                   r="0"
                   role="img"
                   stroke="green"
@@ -3904,10 +3771,10 @@ Object {
                 />
                 <circle
                   aria-label="35. legend1, 23."
-                  cx="236.66666666666669"
-                  cy="226.92567567567568"
+                  cx="20.000000000000007"
+                  cy="235.3716216216216"
                   fill="green"
-                  id="circler8f_3"
+                  id="circler2_3"
                   r="0"
                   role="img"
                   stroke="green"
@@ -3916,10 +3783,10 @@ Object {
                 />
                 <circle
                   aria-label="40. legend1, 20."
-                  cx="302.22222222222223"
-                  cy="231.8918918918919"
+                  cx="13.333333333333332"
+                  cy="240.54054054054055"
                   fill="green"
-                  id="circler8f_4"
+                  id="circler2_4"
                   r="0"
                   role="img"
                   stroke="green"
@@ -3928,10 +3795,10 @@ Object {
                 />
                 <circle
                   aria-label="45. legend1, 31."
-                  cx="367.77777777777777"
-                  cy="213.68243243243245"
+                  cx="6.666666666666668"
+                  cy="221.58783783783784"
                   fill="green"
-                  id="circler8f_5"
+                  id="circler2_5"
                   r="0"
                   role="img"
                   stroke="green"
@@ -3940,11 +3807,11 @@ Object {
                 />
                 <circle
                   aria-label="50. legend1, 29."
-                  cx="433.3333333333333"
-                  cy="216.99324324324323"
-                  fill="green"
-                  id="circler8f_6"
-                  r="0"
+                  cx="3.552713678800501e-15"
+                  cy="225.03378378378378"
+                  fill="var(--colorNeutralBackground1)"
+                  id="circler2_6"
+                  r="8"
                   role="img"
                   stroke="green"
                   stroke-width="3"
@@ -3952,10 +3819,10 @@ Object {
                 />
                 <circle
                   aria-label="55. legend1, 27."
-                  cx="498.8888888888889"
-                  cy="220.30405405405403"
+                  cx="-6.666666666666666"
+                  cy="228.4797297297297"
                   fill="green"
-                  id="circler8f_7"
+                  id="circler2_7"
                   r="0"
                   role="img"
                   stroke="green"
@@ -3964,10 +3831,10 @@ Object {
                 />
                 <circle
                   aria-label="60. legend1, 37."
-                  cx="564.4444444444445"
-                  cy="203.75"
+                  cx="-13.333333333333332"
+                  cy="211.25"
                   fill="green"
-                  id="circler8f_8"
+                  id="circler2_8"
                   r="0"
                   role="img"
                   stroke="green"
@@ -3976,10 +3843,10 @@ Object {
                 />
                 <circle
                   aria-label="65. legend1, 51."
-                  cx="630"
-                  cy="180.57432432432435"
+                  cx="-20"
+                  cy="187.12837837837841"
                   fill="green"
-                  id="circler8f_9"
+                  id="circler2_9"
                   r="0"
                   role="img"
                   stroke="green"
@@ -3995,10 +3862,10 @@ Object {
                 <circle
                   aria-label="20. legend2, 21."
                   cx="40"
-                  cy="215.33783783783784"
-                  fill="var(--colorNeutralBackground1)"
-                  id="circler8f_10"
-                  r="8"
+                  cy="223.3108108108108"
+                  fill="yellow"
+                  id="circler2_10"
+                  r="0"
                   role="img"
                   stroke="yellow"
                   stroke-width="3"
@@ -4006,10 +3873,10 @@ Object {
                 />
                 <circle
                   aria-label="25. legend2, 25."
-                  cx="105.55555555555556"
-                  cy="200.4391891891892"
+                  cx="33.333333333333336"
+                  cy="207.80405405405406"
                   fill="yellow"
-                  id="circler8f_11"
+                  id="circler2_11"
                   r="0"
                   role="img"
                   stroke="yellow"
@@ -4018,10 +3885,10 @@ Object {
                 />
                 <circle
                   aria-label="30. legend2, 10."
-                  cx="171.11111111111111"
-                  cy="225.2702702702703"
+                  cx="26.666666666666664"
+                  cy="233.64864864864865"
                   fill="yellow"
-                  id="circler8f_12"
+                  id="circler2_12"
                   r="0"
                   role="img"
                   stroke="yellow"
@@ -4030,10 +3897,10 @@ Object {
                 />
                 <circle
                   aria-label="35. legend2, 10."
-                  cx="236.66666666666669"
-                  cy="210.3716216216216"
+                  cx="20.000000000000007"
+                  cy="218.14189189189187"
                   fill="yellow"
-                  id="circler8f_13"
+                  id="circler2_13"
                   r="0"
                   role="img"
                   stroke="yellow"
@@ -4042,10 +3909,10 @@ Object {
                 />
                 <circle
                   aria-label="40. legend2, 14."
-                  cx="302.22222222222223"
-                  cy="208.7162162162162"
+                  cx="13.333333333333332"
+                  cy="216.4189189189189"
                   fill="yellow"
-                  id="circler8f_14"
+                  id="circler2_14"
                   r="0"
                   role="img"
                   stroke="yellow"
@@ -4054,10 +3921,10 @@ Object {
                 />
                 <circle
                   aria-label="45. legend2, 18."
-                  cx="367.77777777777777"
-                  cy="183.8851351351351"
+                  cx="6.666666666666668"
+                  cy="190.5743243243243"
                   fill="yellow"
-                  id="circler8f_15"
+                  id="circler2_15"
                   r="0"
                   role="img"
                   stroke="yellow"
@@ -4066,11 +3933,11 @@ Object {
                 />
                 <circle
                   aria-label="50. legend2, 9."
-                  cx="433.3333333333333"
-                  cy="202.09459459459458"
-                  fill="yellow"
-                  id="circler8f_16"
-                  r="0"
+                  cx="3.552713678800501e-15"
+                  cy="209.527027027027"
+                  fill="var(--colorNeutralBackground1)"
+                  id="circler2_16"
+                  r="8"
                   role="img"
                   stroke="yellow"
                   stroke-width="3"
@@ -4078,10 +3945,10 @@ Object {
                 />
                 <circle
                   aria-label="55. legend2, 23."
-                  cx="498.8888888888889"
-                  cy="182.2297297297297"
+                  cx="-6.666666666666666"
+                  cy="188.85135135135135"
                   fill="yellow"
-                  id="circler8f_17"
+                  id="circler2_17"
                   r="0"
                   role="img"
                   stroke="yellow"
@@ -4090,10 +3957,10 @@ Object {
                 />
                 <circle
                   aria-label="60. legend2, 7."
-                  cx="564.4444444444445"
-                  cy="192.16216216216213"
+                  cx="-13.333333333333332"
+                  cy="199.18918918918916"
                   fill="yellow"
-                  id="circler8f_18"
+                  id="circler2_18"
                   r="0"
                   role="img"
                   stroke="yellow"
@@ -4102,10 +3969,10 @@ Object {
                 />
                 <circle
                   aria-label="65. legend2, 55."
-                  cx="630"
-                  cy="89.52702702702702"
+                  cx="-20"
+                  cy="92.36486486486486"
                   fill="yellow"
-                  id="circler8f_19"
+                  id="circler2_19"
                   r="0"
                   role="img"
                   stroke="yellow"
@@ -4121,10 +3988,10 @@ Object {
                 <circle
                   aria-label="20. legend3, 30."
                   cx="40"
-                  cy="165.67567567567565"
-                  fill="var(--colorNeutralBackground1)"
-                  id="circler8f_20"
-                  r="8"
+                  cy="171.62162162162159"
+                  fill="blue"
+                  id="circler2_20"
+                  r="0"
                   role="img"
                   stroke="blue"
                   stroke-width="3"
@@ -4132,10 +3999,10 @@ Object {
                 />
                 <circle
                   aria-label="25. legend3, 35."
-                  cx="105.55555555555556"
-                  cy="142.5"
+                  cx="33.333333333333336"
+                  cy="147.5"
                   fill="blue"
-                  id="circler8f_21"
+                  id="circler2_21"
                   r="0"
                   role="img"
                   stroke="blue"
@@ -4144,10 +4011,10 @@ Object {
                 />
                 <circle
                   aria-label="30. legend3, 33."
-                  cx="171.11111111111111"
-                  cy="170.6418918918919"
+                  cx="26.666666666666664"
+                  cy="176.79054054054055"
                   fill="blue"
-                  id="circler8f_22"
+                  id="circler2_22"
                   r="0"
                   role="img"
                   stroke="blue"
@@ -4156,10 +4023,10 @@ Object {
                 />
                 <circle
                   aria-label="35. legend3, 40."
-                  cx="236.66666666666669"
-                  cy="144.15540540540542"
+                  cx="20.000000000000007"
+                  cy="149.222972972973"
                   fill="blue"
-                  id="circler8f_23"
+                  id="circler2_23"
                   r="0"
                   role="img"
                   stroke="blue"
@@ -4168,10 +4035,10 @@ Object {
                 />
                 <circle
                   aria-label="40. legend3, 10."
-                  cx="302.22222222222223"
-                  cy="192.16216216216213"
+                  cx="13.333333333333332"
+                  cy="199.18918918918916"
                   fill="blue"
-                  id="circler8f_24"
+                  id="circler2_24"
                   r="0"
                   role="img"
                   stroke="blue"
@@ -4180,10 +4047,10 @@ Object {
                 />
                 <circle
                   aria-label="45. legend3, 40."
-                  cx="367.77777777777777"
-                  cy="117.66891891891893"
+                  cx="6.666666666666668"
+                  cy="121.65540540540542"
                   fill="blue"
-                  id="circler8f_25"
+                  id="circler2_25"
                   r="0"
                   role="img"
                   stroke="blue"
@@ -4192,11 +4059,11 @@ Object {
                 />
                 <circle
                   aria-label="50. legend3, 34."
-                  cx="433.3333333333333"
-                  cy="145.8108108108108"
-                  fill="blue"
-                  id="circler8f_26"
-                  r="0"
+                  cx="3.552713678800501e-15"
+                  cy="150.94594594594594"
+                  fill="var(--colorNeutralBackground1)"
+                  id="circler2_26"
+                  r="8"
                   role="img"
                   stroke="blue"
                   stroke-width="3"
@@ -4204,10 +4071,10 @@ Object {
                 />
                 <circle
                   aria-label="55. legend3, 40."
-                  cx="498.8888888888889"
-                  cy="116.01351351351352"
+                  cx="-6.666666666666666"
+                  cy="119.93243243243244"
                   fill="blue"
-                  id="circler8f_27"
+                  id="circler2_27"
                   r="0"
                   role="img"
                   stroke="blue"
@@ -4216,10 +4083,10 @@ Object {
                 />
                 <circle
                   aria-label="60. legend3, 60."
-                  cx="564.4444444444445"
-                  cy="92.83783783783782"
+                  cx="-13.333333333333332"
+                  cy="95.81081081081079"
                   fill="blue"
-                  id="circler8f_28"
+                  id="circler2_28"
                   r="0"
                   role="img"
                   stroke="blue"
@@ -4228,10 +4095,10 @@ Object {
                 />
                 <circle
                   aria-label="65. legend3, 40."
-                  cx="630"
-                  cy="23.310810810810803"
+                  cx="-20"
+                  cy="23.445945945945937"
                   fill="blue"
-                  id="circler8f_29"
+                  id="circler2_29"
                   r="0"
                   role="img"
                   stroke="blue"
@@ -4240,16 +4107,16 @@ Object {
                 />
               </g>
               <line
-                id="verticalLine_r8e"
+                id="verticalLine_r1"
                 opacity="0.5"
                 stroke="blue"
                 stroke-dasharray="5.5"
                 stroke-width="1"
                 visibility="visibility"
-                x1="40"
-                x2="40"
+                x1="3.552713678800501e-15"
+                x2="3.552713678800501e-15"
                 y1="0"
-                y2="300"
+                y2="310"
               />
             </g>
           </svg>
@@ -4344,9 +4211,9 @@ Object {
         <svg
           aria-label="Area chart multiple example. Area chart with 3 data series. "
           class="fui-cart__chart"
-          height="300"
+          height="310"
           style="display: block;"
-          width="650"
+          width="0"
         >
           <g
             class="fui-cart__xAxis"
@@ -4355,11 +4222,11 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
-              d="M40.5,6V0.5H630.5V6"
+              d="M40.5,6V0.5H-19.5V6"
               stroke="currentColor"
             />
             <g
@@ -4383,61 +4250,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(106.05555555555556,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                25
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(171.61111111111111,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                30
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(237.16666666666669,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                35
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(302.72222222222223,0)"
+              transform="translate(13.833333333333332,0)"
             >
               <line
                 stroke="currentColor"
@@ -4455,61 +4268,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(368.27777777777777,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                45
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(433.8333333333333,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                50
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(499.3888888888889,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                55
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(564.9444444444445,0)"
+              transform="translate(-12.833333333333332,0)"
             >
               <line
                 stroke="currentColor"
@@ -4524,24 +4283,6 @@ Object {
                 60
               </text>
             </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(630.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                65
-              </text>
-            </g>
           </g>
           <g
             class="fui-cart__yAxis"
@@ -4554,23 +4295,23 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,265.5H0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,265.5)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 0
               </text>
@@ -4578,17 +4319,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,204.25)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 37
               </text>
@@ -4596,17 +4337,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,143)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 74
               </text>
@@ -4614,17 +4355,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,81.75)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 111
               </text>
@@ -4636,13 +4377,13 @@ Object {
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 148
               </text>
@@ -4651,55 +4392,55 @@ Object {
           <g>
             <rect
               fill="transparent"
-              height="280"
-              id="rectangler8g"
-              width="630"
+              height="290"
+              id="rectangler3"
+              width="-20"
             />
           </g>
           <g>
             <path
-              d="M40,250.101C61.852,245.963,83.704,241.824,105.556,241.824C127.407,241.824,149.259,241.824,171.111,241.824C192.963,241.824,214.815,226.926,236.667,226.926C258.519,226.926,280.37,231.892,302.222,231.892C324.074,231.892,345.926,213.682,367.778,213.682C389.63,213.682,411.481,215.89,433.333,216.993C455.185,218.097,477.037,220.304,498.889,220.304C520.741,220.304,542.593,210.372,564.444,203.75C586.296,197.128,608.148,188.851,630,180.574"
+              d="M40,259.493C37.778,255.186,35.556,250.878,33.333,250.878C31.111,250.878,28.889,250.878,26.667,250.878C24.444,250.878,22.222,235.372,20,235.372C17.778,235.372,15.556,240.541,13.333,240.541C11.111,240.541,8.889,221.588,6.667,221.588C4.444,221.588,2.222,223.885,0,225.034C-2.222,226.182,-4.444,228.48,-6.667,228.48C-8.889,228.48,-11.111,218.142,-13.333,211.25C-15.556,204.358,-17.778,195.743,-20,187.128"
               fill="transparent"
-              id="0-line-areaChart_r8d"
+              id="0-line-areaChart_r0"
               opacity="0.3"
               stroke="green"
               stroke-width="3"
             />
             <path
-              d="M40,250.101C61.852,245.963,83.704,241.824,105.556,241.824C127.407,241.824,149.259,241.824,171.111,241.824C192.963,241.824,214.815,226.926,236.667,226.926C258.519,226.926,280.37,231.892,302.222,231.892C324.074,231.892,345.926,213.682,367.778,213.682C389.63,213.682,411.481,215.89,433.333,216.993C455.185,218.097,477.037,220.304,498.889,220.304C520.741,220.304,542.593,210.372,564.444,203.75C586.296,197.128,608.148,188.851,630,180.574L630,265C608.148,265,586.296,265,564.444,265C542.593,265,520.741,265,498.889,265C477.037,265,455.185,265,433.333,265C411.481,265,389.63,265,367.778,265C345.926,265,324.074,265,302.222,265C280.37,265,258.519,265,236.667,265C214.815,265,192.963,265,171.111,265C149.259,265,127.407,265,105.556,265C83.704,265,61.852,265,40,265Z"
+              d="M40,259.493C37.778,255.186,35.556,250.878,33.333,250.878C31.111,250.878,28.889,250.878,26.667,250.878C24.444,250.878,22.222,235.372,20,235.372C17.778,235.372,15.556,240.541,13.333,240.541C11.111,240.541,8.889,221.588,6.667,221.588C4.444,221.588,2.222,223.885,0,225.034C-2.222,226.182,-4.444,228.48,-6.667,228.48C-8.889,228.48,-11.111,218.142,-13.333,211.25C-15.556,204.358,-17.778,195.743,-20,187.128L-20,275C-17.778,275,-15.556,275,-13.333,275C-11.111,275,-8.889,275,-6.667,275C-4.444,275,-2.222,275,0,275C2.222,275,4.444,275,6.667,275C8.889,275,11.111,275,13.333,275C15.556,275,17.778,275,20,275C22.222,275,24.444,275,26.667,275C28.889,275,31.111,275,33.333,275C35.556,275,37.778,275,40,275Z"
               fill="green"
               fill-opacity="0.7"
-              id="0-graph-areaChart_r8d"
+              id="0-graph-areaChart_r0"
               opacity="1"
             />
             <path
-              d="M40,215.338C61.852,207.889,83.704,200.439,105.556,200.439C127.407,200.439,149.259,225.27,171.111,225.27C192.963,225.27,214.815,211.475,236.667,210.372C258.519,209.268,280.37,209.82,302.222,208.716C324.074,207.613,345.926,183.885,367.778,183.885C389.63,183.885,411.481,202.095,433.333,202.095C455.185,202.095,477.037,182.23,498.889,182.23C520.741,182.23,542.593,192.162,564.444,192.162C586.296,192.162,608.148,140.845,630,89.527"
+              d="M40,223.311C37.778,215.557,35.556,207.804,33.333,207.804C31.111,207.804,28.889,233.649,26.667,233.649C24.444,233.649,22.222,219.291,20,218.142C17.778,216.993,15.556,217.568,13.333,216.419C11.111,215.27,8.889,190.574,6.667,190.574C4.444,190.574,2.222,209.527,0,209.527C-2.222,209.527,-4.444,188.851,-6.667,188.851C-8.889,188.851,-11.111,199.189,-13.333,199.189C-15.556,199.189,-17.778,145.777,-20,92.365"
               fill="transparent"
-              id="1-line-areaChart_r8d"
+              id="1-line-areaChart_r0"
               opacity="0.3"
               stroke="yellow"
               stroke-width="3"
             />
             <path
-              d="M40,215.338C61.852,207.889,83.704,200.439,105.556,200.439C127.407,200.439,149.259,225.27,171.111,225.27C192.963,225.27,214.815,211.475,236.667,210.372C258.519,209.268,280.37,209.82,302.222,208.716C324.074,207.613,345.926,183.885,367.778,183.885C389.63,183.885,411.481,202.095,433.333,202.095C455.185,202.095,477.037,182.23,498.889,182.23C520.741,182.23,542.593,192.162,564.444,192.162C586.296,192.162,608.148,140.845,630,89.527L630,180.574C608.148,188.851,586.296,197.128,564.444,203.75C542.593,210.372,520.741,220.304,498.889,220.304C477.037,220.304,455.185,218.097,433.333,216.993C411.481,215.89,389.63,213.682,367.778,213.682C345.926,213.682,324.074,231.892,302.222,231.892C280.37,231.892,258.519,226.926,236.667,226.926C214.815,226.926,192.963,241.824,171.111,241.824C149.259,241.824,127.407,241.824,105.556,241.824C83.704,241.824,61.852,245.963,40,250.101Z"
+              d="M40,223.311C37.778,215.557,35.556,207.804,33.333,207.804C31.111,207.804,28.889,233.649,26.667,233.649C24.444,233.649,22.222,219.291,20,218.142C17.778,216.993,15.556,217.568,13.333,216.419C11.111,215.27,8.889,190.574,6.667,190.574C4.444,190.574,2.222,209.527,0,209.527C-2.222,209.527,-4.444,188.851,-6.667,188.851C-8.889,188.851,-11.111,199.189,-13.333,199.189C-15.556,199.189,-17.778,145.777,-20,92.365L-20,187.128C-17.778,195.743,-15.556,204.358,-13.333,211.25C-11.111,218.142,-8.889,228.48,-6.667,228.48C-4.444,228.48,-2.222,226.182,0,225.034C2.222,223.885,4.444,221.588,6.667,221.588C8.889,221.588,11.111,240.541,13.333,240.541C15.556,240.541,17.778,235.372,20,235.372C22.222,235.372,24.444,250.878,26.667,250.878C28.889,250.878,31.111,250.878,33.333,250.878C35.556,250.878,37.778,255.186,40,259.493Z"
               fill="yellow"
               fill-opacity="0.7"
-              id="1-graph-areaChart_r8d"
+              id="1-graph-areaChart_r0"
               opacity="1"
             />
             <path
-              d="M40,165.676C61.852,154.088,83.704,142.5,105.556,142.5C127.407,142.5,149.259,170.642,171.111,170.642C192.963,170.642,214.815,144.155,236.667,144.155C258.519,144.155,280.37,192.162,302.222,192.162C324.074,192.162,345.926,117.669,367.778,117.669C389.63,117.669,411.481,145.811,433.333,145.811C455.185,145.811,477.037,124.842,498.889,116.014C520.741,107.185,542.593,108.288,564.444,92.838C586.296,77.387,608.148,50.349,630,23.311"
+              d="M40,171.622C37.778,159.561,35.556,147.5,33.333,147.5C31.111,147.5,28.889,176.791,26.667,176.791C24.444,176.791,22.222,149.223,20,149.223C17.778,149.223,15.556,199.189,13.333,199.189C11.111,199.189,8.889,121.655,6.667,121.655C4.444,121.655,2.222,150.946,0,150.946C-2.222,150.946,-4.444,129.122,-6.667,119.932C-8.889,110.743,-11.111,111.892,-13.333,95.811C-15.556,79.73,-17.778,51.588,-20,23.446"
               fill="transparent"
-              id="2-line-areaChart_r8d"
+              id="2-line-areaChart_r0"
               opacity="0.3"
               stroke="blue"
               stroke-width="3"
             />
             <path
-              d="M40,165.676C61.852,154.088,83.704,142.5,105.556,142.5C127.407,142.5,149.259,170.642,171.111,170.642C192.963,170.642,214.815,144.155,236.667,144.155C258.519,144.155,280.37,192.162,302.222,192.162C324.074,192.162,345.926,117.669,367.778,117.669C389.63,117.669,411.481,145.811,433.333,145.811C455.185,145.811,477.037,124.842,498.889,116.014C520.741,107.185,542.593,108.288,564.444,92.838C586.296,77.387,608.148,50.349,630,23.311L630,89.527C608.148,140.845,586.296,192.162,564.444,192.162C542.593,192.162,520.741,182.23,498.889,182.23C477.037,182.23,455.185,202.095,433.333,202.095C411.481,202.095,389.63,183.885,367.778,183.885C345.926,183.885,324.074,207.613,302.222,208.716C280.37,209.82,258.519,209.268,236.667,210.372C214.815,211.475,192.963,225.27,171.111,225.27C149.259,225.27,127.407,200.439,105.556,200.439C83.704,200.439,61.852,207.889,40,215.338Z"
+              d="M40,171.622C37.778,159.561,35.556,147.5,33.333,147.5C31.111,147.5,28.889,176.791,26.667,176.791C24.444,176.791,22.222,149.223,20,149.223C17.778,149.223,15.556,199.189,13.333,199.189C11.111,199.189,8.889,121.655,6.667,121.655C4.444,121.655,2.222,150.946,0,150.946C-2.222,150.946,-4.444,129.122,-6.667,119.932C-8.889,110.743,-11.111,111.892,-13.333,95.811C-15.556,79.73,-17.778,51.588,-20,23.446L-20,92.365C-17.778,145.777,-15.556,199.189,-13.333,199.189C-11.111,199.189,-8.889,188.851,-6.667,188.851C-4.444,188.851,-2.222,209.527,0,209.527C2.222,209.527,4.444,190.574,6.667,190.574C8.889,190.574,11.111,215.27,13.333,216.419C15.556,217.568,17.778,216.993,20,218.142C22.222,219.291,24.444,233.649,26.667,233.649C28.889,233.649,31.111,207.804,33.333,207.804C35.556,207.804,37.778,215.557,40,223.311Z"
               fill="blue"
               fill-opacity="0.7"
-              id="2-graph-areaChart_r8d"
+              id="2-graph-areaChart_r0"
               opacity="1"
             />
             <g
@@ -4710,10 +4451,10 @@ Object {
               <circle
                 aria-label="20. legend1, 9."
                 cx="40"
-                cy="250.10135135135135"
-                fill="var(--colorNeutralBackground1)"
-                id="circler8f_0"
-                r="8"
+                cy="259.4932432432432"
+                fill="green"
+                id="circler2_0"
+                r="0"
                 role="img"
                 stroke="green"
                 stroke-width="3"
@@ -4721,10 +4462,10 @@ Object {
               />
               <circle
                 aria-label="25. legend1, 14."
-                cx="105.55555555555556"
-                cy="241.82432432432432"
+                cx="33.333333333333336"
+                cy="250.8783783783784"
                 fill="green"
-                id="circler8f_1"
+                id="circler2_1"
                 r="0"
                 role="img"
                 stroke="green"
@@ -4733,10 +4474,10 @@ Object {
               />
               <circle
                 aria-label="30. legend1, 14."
-                cx="171.11111111111111"
-                cy="241.82432432432432"
+                cx="26.666666666666664"
+                cy="250.8783783783784"
                 fill="green"
-                id="circler8f_2"
+                id="circler2_2"
                 r="0"
                 role="img"
                 stroke="green"
@@ -4745,10 +4486,10 @@ Object {
               />
               <circle
                 aria-label="35. legend1, 23."
-                cx="236.66666666666669"
-                cy="226.92567567567568"
+                cx="20.000000000000007"
+                cy="235.3716216216216"
                 fill="green"
-                id="circler8f_3"
+                id="circler2_3"
                 r="0"
                 role="img"
                 stroke="green"
@@ -4757,10 +4498,10 @@ Object {
               />
               <circle
                 aria-label="40. legend1, 20."
-                cx="302.22222222222223"
-                cy="231.8918918918919"
+                cx="13.333333333333332"
+                cy="240.54054054054055"
                 fill="green"
-                id="circler8f_4"
+                id="circler2_4"
                 r="0"
                 role="img"
                 stroke="green"
@@ -4769,10 +4510,10 @@ Object {
               />
               <circle
                 aria-label="45. legend1, 31."
-                cx="367.77777777777777"
-                cy="213.68243243243245"
+                cx="6.666666666666668"
+                cy="221.58783783783784"
                 fill="green"
-                id="circler8f_5"
+                id="circler2_5"
                 r="0"
                 role="img"
                 stroke="green"
@@ -4781,11 +4522,11 @@ Object {
               />
               <circle
                 aria-label="50. legend1, 29."
-                cx="433.3333333333333"
-                cy="216.99324324324323"
-                fill="green"
-                id="circler8f_6"
-                r="0"
+                cx="3.552713678800501e-15"
+                cy="225.03378378378378"
+                fill="var(--colorNeutralBackground1)"
+                id="circler2_6"
+                r="8"
                 role="img"
                 stroke="green"
                 stroke-width="3"
@@ -4793,10 +4534,10 @@ Object {
               />
               <circle
                 aria-label="55. legend1, 27."
-                cx="498.8888888888889"
-                cy="220.30405405405403"
+                cx="-6.666666666666666"
+                cy="228.4797297297297"
                 fill="green"
-                id="circler8f_7"
+                id="circler2_7"
                 r="0"
                 role="img"
                 stroke="green"
@@ -4805,10 +4546,10 @@ Object {
               />
               <circle
                 aria-label="60. legend1, 37."
-                cx="564.4444444444445"
-                cy="203.75"
+                cx="-13.333333333333332"
+                cy="211.25"
                 fill="green"
-                id="circler8f_8"
+                id="circler2_8"
                 r="0"
                 role="img"
                 stroke="green"
@@ -4817,10 +4558,10 @@ Object {
               />
               <circle
                 aria-label="65. legend1, 51."
-                cx="630"
-                cy="180.57432432432435"
+                cx="-20"
+                cy="187.12837837837841"
                 fill="green"
-                id="circler8f_9"
+                id="circler2_9"
                 r="0"
                 role="img"
                 stroke="green"
@@ -4836,10 +4577,10 @@ Object {
               <circle
                 aria-label="20. legend2, 21."
                 cx="40"
-                cy="215.33783783783784"
-                fill="var(--colorNeutralBackground1)"
-                id="circler8f_10"
-                r="8"
+                cy="223.3108108108108"
+                fill="yellow"
+                id="circler2_10"
+                r="0"
                 role="img"
                 stroke="yellow"
                 stroke-width="3"
@@ -4847,10 +4588,10 @@ Object {
               />
               <circle
                 aria-label="25. legend2, 25."
-                cx="105.55555555555556"
-                cy="200.4391891891892"
+                cx="33.333333333333336"
+                cy="207.80405405405406"
                 fill="yellow"
-                id="circler8f_11"
+                id="circler2_11"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -4859,10 +4600,10 @@ Object {
               />
               <circle
                 aria-label="30. legend2, 10."
-                cx="171.11111111111111"
-                cy="225.2702702702703"
+                cx="26.666666666666664"
+                cy="233.64864864864865"
                 fill="yellow"
-                id="circler8f_12"
+                id="circler2_12"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -4871,10 +4612,10 @@ Object {
               />
               <circle
                 aria-label="35. legend2, 10."
-                cx="236.66666666666669"
-                cy="210.3716216216216"
+                cx="20.000000000000007"
+                cy="218.14189189189187"
                 fill="yellow"
-                id="circler8f_13"
+                id="circler2_13"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -4883,10 +4624,10 @@ Object {
               />
               <circle
                 aria-label="40. legend2, 14."
-                cx="302.22222222222223"
-                cy="208.7162162162162"
+                cx="13.333333333333332"
+                cy="216.4189189189189"
                 fill="yellow"
-                id="circler8f_14"
+                id="circler2_14"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -4895,10 +4636,10 @@ Object {
               />
               <circle
                 aria-label="45. legend2, 18."
-                cx="367.77777777777777"
-                cy="183.8851351351351"
+                cx="6.666666666666668"
+                cy="190.5743243243243"
                 fill="yellow"
-                id="circler8f_15"
+                id="circler2_15"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -4907,11 +4648,11 @@ Object {
               />
               <circle
                 aria-label="50. legend2, 9."
-                cx="433.3333333333333"
-                cy="202.09459459459458"
-                fill="yellow"
-                id="circler8f_16"
-                r="0"
+                cx="3.552713678800501e-15"
+                cy="209.527027027027"
+                fill="var(--colorNeutralBackground1)"
+                id="circler2_16"
+                r="8"
                 role="img"
                 stroke="yellow"
                 stroke-width="3"
@@ -4919,10 +4660,10 @@ Object {
               />
               <circle
                 aria-label="55. legend2, 23."
-                cx="498.8888888888889"
-                cy="182.2297297297297"
+                cx="-6.666666666666666"
+                cy="188.85135135135135"
                 fill="yellow"
-                id="circler8f_17"
+                id="circler2_17"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -4931,10 +4672,10 @@ Object {
               />
               <circle
                 aria-label="60. legend2, 7."
-                cx="564.4444444444445"
-                cy="192.16216216216213"
+                cx="-13.333333333333332"
+                cy="199.18918918918916"
                 fill="yellow"
-                id="circler8f_18"
+                id="circler2_18"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -4943,10 +4684,10 @@ Object {
               />
               <circle
                 aria-label="65. legend2, 55."
-                cx="630"
-                cy="89.52702702702702"
+                cx="-20"
+                cy="92.36486486486486"
                 fill="yellow"
-                id="circler8f_19"
+                id="circler2_19"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -4962,10 +4703,10 @@ Object {
               <circle
                 aria-label="20. legend3, 30."
                 cx="40"
-                cy="165.67567567567565"
-                fill="var(--colorNeutralBackground1)"
-                id="circler8f_20"
-                r="8"
+                cy="171.62162162162159"
+                fill="blue"
+                id="circler2_20"
+                r="0"
                 role="img"
                 stroke="blue"
                 stroke-width="3"
@@ -4973,10 +4714,10 @@ Object {
               />
               <circle
                 aria-label="25. legend3, 35."
-                cx="105.55555555555556"
-                cy="142.5"
+                cx="33.333333333333336"
+                cy="147.5"
                 fill="blue"
-                id="circler8f_21"
+                id="circler2_21"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -4985,10 +4726,10 @@ Object {
               />
               <circle
                 aria-label="30. legend3, 33."
-                cx="171.11111111111111"
-                cy="170.6418918918919"
+                cx="26.666666666666664"
+                cy="176.79054054054055"
                 fill="blue"
-                id="circler8f_22"
+                id="circler2_22"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -4997,10 +4738,10 @@ Object {
               />
               <circle
                 aria-label="35. legend3, 40."
-                cx="236.66666666666669"
-                cy="144.15540540540542"
+                cx="20.000000000000007"
+                cy="149.222972972973"
                 fill="blue"
-                id="circler8f_23"
+                id="circler2_23"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -5009,10 +4750,10 @@ Object {
               />
               <circle
                 aria-label="40. legend3, 10."
-                cx="302.22222222222223"
-                cy="192.16216216216213"
+                cx="13.333333333333332"
+                cy="199.18918918918916"
                 fill="blue"
-                id="circler8f_24"
+                id="circler2_24"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -5021,10 +4762,10 @@ Object {
               />
               <circle
                 aria-label="45. legend3, 40."
-                cx="367.77777777777777"
-                cy="117.66891891891893"
+                cx="6.666666666666668"
+                cy="121.65540540540542"
                 fill="blue"
-                id="circler8f_25"
+                id="circler2_25"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -5033,11 +4774,11 @@ Object {
               />
               <circle
                 aria-label="50. legend3, 34."
-                cx="433.3333333333333"
-                cy="145.8108108108108"
-                fill="blue"
-                id="circler8f_26"
-                r="0"
+                cx="3.552713678800501e-15"
+                cy="150.94594594594594"
+                fill="var(--colorNeutralBackground1)"
+                id="circler2_26"
+                r="8"
                 role="img"
                 stroke="blue"
                 stroke-width="3"
@@ -5045,10 +4786,10 @@ Object {
               />
               <circle
                 aria-label="55. legend3, 40."
-                cx="498.8888888888889"
-                cy="116.01351351351352"
+                cx="-6.666666666666666"
+                cy="119.93243243243244"
                 fill="blue"
-                id="circler8f_27"
+                id="circler2_27"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -5057,10 +4798,10 @@ Object {
               />
               <circle
                 aria-label="60. legend3, 60."
-                cx="564.4444444444445"
-                cy="92.83783783783782"
+                cx="-13.333333333333332"
+                cy="95.81081081081079"
                 fill="blue"
-                id="circler8f_28"
+                id="circler2_28"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -5069,10 +4810,10 @@ Object {
               />
               <circle
                 aria-label="65. legend3, 40."
-                cx="630"
-                cy="23.310810810810803"
+                cx="-20"
+                cy="23.445945945945937"
                 fill="blue"
-                id="circler8f_29"
+                id="circler2_29"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -5081,16 +4822,16 @@ Object {
               />
             </g>
             <line
-              id="verticalLine_r8e"
+              id="verticalLine_r1"
               opacity="0.5"
               stroke="blue"
               stroke-dasharray="5.5"
               stroke-width="1"
               visibility="visibility"
-              x1="40"
-              x2="40"
+              x1="3.552713678800501e-15"
+              x2="3.552713678800501e-15"
               y1="0"
-              y2="300"
+              y2="310"
             />
           </g>
         </svg>

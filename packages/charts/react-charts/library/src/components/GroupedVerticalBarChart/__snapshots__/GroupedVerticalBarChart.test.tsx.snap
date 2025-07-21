@@ -819,9 +819,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
       <svg
         aria-label="Vertical bar chart with 3 groups of 2 bars each. "
         class="fui-cart__chart"
-        height="300"
+        height="310"
         style="display: block;"
-        width="650"
+        width="0"
       >
         <g
           class="fui-cart__xAxis"
@@ -830,67 +830,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, 265)"
+          transform="translate(0, 275)"
         >
           <path
             class="domain"
-            d="M252.83333333333331,6V0.5H418.1666666666667V6"
+            d="M48.5,6V0.5H-27.5V6"
             stroke="currentColor"
           />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(269.22222222222223,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Metadata info multi lines text Completed
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(335,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Meta Data2
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(400.7777777777778,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Single line text 
-            </text>
-          </g>
         </g>
         <g
           class="fui-cart__yAxis"
@@ -903,23 +849,23 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         >
           <path
             class="domain"
-            d="M-6,265.5H0.5V20.5H-6"
+            d="M-6,275.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,265.5)"
+            transform="translate(0,275.5)"
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-60"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="-70"
             >
               0
             </text>
@@ -927,17 +873,17 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,204.25)"
+            transform="translate(0,211.75)"
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-60"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="-70"
             >
               12.5k
             </text>
@@ -945,17 +891,17 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,143)"
+            transform="translate(0,148)"
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-60"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="-70"
             >
               25k
             </text>
@@ -963,17 +909,17 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,81.75)"
+            transform="translate(0,84.25)"
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-60"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="-70"
             >
               37.5k
             </text>
@@ -985,13 +931,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-60"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="-70"
             >
               50k
             </text>
@@ -999,148 +945,94 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         </g>
         <g>
           <g
-            transform="translate(252.33333333333331, 0)"
+            transform="translate(48, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
               fill="#00bcf2"
-              height="161.7"
+              height="168.3"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
-              width="16"
+              width="9.677419354838708"
               x="0"
-              y="103.30000000000001"
+              y="106.69999999999999"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
               class="fui-gvbc**opacityChangeOnHover"
               fill="#0078d4"
-              height="215.6"
+              height="224.4"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
-              width="16"
-              x="17.77777777777778"
-              y="49.400000000000006"
+              width="9.677419354838708"
+              x="10.752688172043008"
+              y="50.599999999999994"
             />
-            <text
-              aria-hidden="true"
-              class="fui-gvbc**barLabel"
-              text-anchor="middle"
-              x="8"
-              y="97.30000000000001"
-            >
-              33k
-            </text>
-            <text
-              aria-hidden="true"
-              class="fui-gvbc**barLabel"
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="43.400000000000006"
-            >
-              44k
-            </text>
           </g>
           <g
-            transform="translate(318.1111111111111, 0)"
+            transform="translate(87.78494623655914, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
               fill="#00bcf2"
-              height="161.7"
+              height="168.3"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
-              width="16"
+              width="9.677419354838708"
               x="0"
-              y="103.30000000000001"
+              y="106.69999999999999"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
               class="fui-gvbc**opacityChangeOnHover"
               fill="#0078d4"
-              height="14.700000000000017"
+              height="15.300000000000011"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
-              width="16"
-              x="17.77777777777778"
-              y="250.29999999999998"
+              width="9.677419354838708"
+              x="10.752688172043008"
+              y="259.7"
             />
-            <text
-              aria-hidden="true"
-              class="fui-gvbc**barLabel"
-              text-anchor="middle"
-              x="8"
-              y="97.30000000000001"
-            >
-              33k
-            </text>
-            <text
-              aria-hidden="true"
-              class="fui-gvbc**barLabel"
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="244.29999999999998"
-            >
-              3k
-            </text>
           </g>
           <g
-            transform="translate(383.8888888888889, 0)"
+            transform="translate(127.56989247311827, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
               class="fui-gvbc**opacityChangeOnHover"
               fill="#00bcf2"
-              height="68.60000000000002"
+              height="71.4"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
-              width="16"
+              width="9.677419354838708"
               x="0"
-              y="196.39999999999998"
+              y="203.6"
             />
             <rect
               aria-label="2020/06/30. MetaData4, 50%."
               class="fui-gvbc**opacityChangeOnHover"
               fill="#0078d4"
-              height="245"
+              height="255"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
-              width="16"
-              x="17.77777777777778"
+              width="9.677419354838708"
+              x="10.752688172043008"
               y="20"
             />
-            <text
-              aria-hidden="true"
-              class="fui-gvbc**barLabel"
-              text-anchor="middle"
-              x="8"
-              y="190.39999999999998"
-            >
-              14k
-            </text>
-            <text
-              aria-hidden="true"
-              class="fui-gvbc**barLabel"
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="14"
-            >
-              50k
-            </text>
           </g>
         </g>
       </svg>
@@ -1223,16 +1115,16 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr39"
+      id="calloutr4"
     >
       <div
         class="fui-PopoverSurface"
         data-popper-escaped=""
-        data-popper-placement="bottom"
+        data-popper-placement="top"
         data-popper-reference-hidden=""
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
-        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: -10px; width: -10px; overflow-x: auto; max-height: -20px; height: -20px; overflow-y: auto; transform: translate(0px, 0px);"
+        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: 0px; max-height: -20px; height: -20px; overflow-y: auto; transform: translate(0px, -20px);"
       >
         <div
           class="fui-cart__calloutContentRoot"
@@ -1277,9 +1169,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
 exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChart correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -1293,9 +1183,9 @@ Object {
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
             class="fui-cart__chart"
-            height="300"
+            height="310"
             style="display: block;"
-            width="650"
+            width="0"
           >
             <g
               class="fui-cart__xAxis"
@@ -1304,67 +1194,13 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
-                d="M252.83333333333331,6V0.5H418.1666666666667V6"
+                d="M48.5,6V0.5H-27.5V6"
                 stroke="currentColor"
               />
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(269.22222222222223,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Metadata info multi lines text Completed
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(335,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Meta Data2
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(400.7777777777778,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Single line text 
-                </text>
-              </g>
             </g>
             <g
               class="fui-cart__yAxis"
@@ -1377,23 +1213,23 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,265.5H0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,265.5)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   0
                 </text>
@@ -1401,17 +1237,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,204.25)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   12.5k
                 </text>
@@ -1419,17 +1255,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,143)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   25k
                 </text>
@@ -1437,17 +1273,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,81.75)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   37.5k
                 </text>
@@ -1459,13 +1295,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   50k
                 </text>
@@ -1473,148 +1309,94 @@ Object {
             </g>
             <g>
               <g
-                transform="translate(252.33333333333331, 0)"
+                transform="translate(48, 0)"
               >
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="161.7"
+                  height="168.3"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="103.30000000000001"
+                  y="106.69999999999999"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="215.6"
+                  height="224.4"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="49.400000000000006"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="50.599999999999994"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="97.30000000000001"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="43.400000000000006"
-                >
-                  44k
-                </text>
               </g>
               <g
-                transform="translate(318.1111111111111, 0)"
+                transform="translate(87.78494623655914, 0)"
               >
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="161.7"
+                  height="168.3"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="103.30000000000001"
+                  y="106.69999999999999"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="14.700000000000017"
+                  height="15.300000000000011"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="250.29999999999998"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="259.7"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="97.30000000000001"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="244.29999999999998"
-                >
-                  3k
-                </text>
               </g>
               <g
-                transform="translate(383.8888888888889, 0)"
+                transform="translate(127.56989247311827, 0)"
               >
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="68.60000000000002"
+                  height="71.4"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="196.39999999999998"
+                  y="203.6"
                 />
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="245"
+                  height="255"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
                   y="20"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="190.39999999999998"
-                >
-                  14k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="14"
-                >
-                  50k
-                </text>
               </g>
             </g>
           </svg>
@@ -1690,9 +1472,9 @@ Object {
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
           class="fui-cart__chart"
-          height="300"
+          height="310"
           style="display: block;"
-          width="650"
+          width="0"
         >
           <g
             class="fui-cart__xAxis"
@@ -1701,67 +1483,13 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
-              d="M252.83333333333331,6V0.5H418.1666666666667V6"
+              d="M48.5,6V0.5H-27.5V6"
               stroke="currentColor"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(269.22222222222223,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Metadata info multi lines text Completed
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Meta Data2
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(400.7777777777778,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Single line text 
-              </text>
-            </g>
           </g>
           <g
             class="fui-cart__yAxis"
@@ -1774,23 +1502,23 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,265.5H0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,265.5)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 0
               </text>
@@ -1798,17 +1526,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,204.25)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 12.5k
               </text>
@@ -1816,17 +1544,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,143)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 25k
               </text>
@@ -1834,17 +1562,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,81.75)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 37.5k
               </text>
@@ -1856,13 +1584,13 @@ Object {
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 50k
               </text>
@@ -1870,148 +1598,94 @@ Object {
           </g>
           <g>
             <g
-              transform="translate(252.33333333333331, 0)"
+              transform="translate(48, 0)"
             >
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="161.7"
+                height="168.3"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="103.30000000000001"
+                y="106.69999999999999"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="215.6"
+                height="224.4"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="49.400000000000006"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="50.599999999999994"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="97.30000000000001"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="43.400000000000006"
-              >
-                44k
-              </text>
             </g>
             <g
-              transform="translate(318.1111111111111, 0)"
+              transform="translate(87.78494623655914, 0)"
             >
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="161.7"
+                height="168.3"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="103.30000000000001"
+                y="106.69999999999999"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="14.700000000000017"
+                height="15.300000000000011"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="250.29999999999998"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="259.7"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="97.30000000000001"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="244.29999999999998"
-              >
-                3k
-              </text>
             </g>
             <g
-              transform="translate(383.8888888888889, 0)"
+              transform="translate(127.56989247311827, 0)"
             >
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="68.60000000000002"
+                height="71.4"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="196.39999999999998"
+                y="203.6"
               />
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="245"
+                height="255"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
+                width="9.677419354838708"
+                x="10.752688172043008"
                 y="20"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="190.39999999999998"
-              >
-                14k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="14"
-              >
-                50k
-              </text>
             </g>
           </g>
         </svg>
@@ -2130,9 +1804,7 @@ Object {
 exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -2146,9 +1818,9 @@ Object {
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
             class="fui-cart__chart"
-            height="300"
+            height="310"
             style="display: block;"
-            width="650"
+            width="0"
           >
             <g
               class="fui-cart__xAxis"
@@ -2157,67 +1829,13 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
-                d="M252.83333333333331,6V0.5H418.1666666666667V6"
+                d="M48.5,6V0.5H-27.5V6"
                 stroke="currentColor"
               />
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(269.22222222222223,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Metadata info multi lines text Completed
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(335,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Meta Data2
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(400.7777777777778,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Single line text 
-                </text>
-              </g>
             </g>
             <g
               class="fui-cart__yAxis"
@@ -2230,23 +1848,23 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,265.5H0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,265.5)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   0
                 </text>
@@ -2254,17 +1872,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,204.25)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   12.5k
                 </text>
@@ -2272,17 +1890,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,143)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   25k
                 </text>
@@ -2290,17 +1908,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,81.75)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   37.5k
                 </text>
@@ -2312,13 +1930,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   50k
                 </text>
@@ -2326,148 +1944,94 @@ Object {
             </g>
             <g>
               <g
-                transform="translate(252.33333333333331, 0)"
+                transform="translate(48, 0)"
               >
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="161.7"
+                  height="168.3"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="103.30000000000001"
+                  y="106.69999999999999"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="215.6"
+                  height="224.4"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="49.400000000000006"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="50.599999999999994"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="97.30000000000001"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="43.400000000000006"
-                >
-                  44k
-                </text>
               </g>
               <g
-                transform="translate(318.1111111111111, 0)"
+                transform="translate(87.78494623655914, 0)"
               >
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="161.7"
+                  height="168.3"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="103.30000000000001"
+                  y="106.69999999999999"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="14.700000000000017"
+                  height="15.300000000000011"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="250.29999999999998"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="259.7"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="97.30000000000001"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="244.29999999999998"
-                >
-                  3k
-                </text>
               </g>
               <g
-                transform="translate(383.8888888888889, 0)"
+                transform="translate(127.56989247311827, 0)"
               >
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="68.60000000000002"
+                  height="71.4"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="196.39999999999998"
+                  y="203.6"
                 />
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="245"
+                  height="255"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
                   y="20"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="190.39999999999998"
-                >
-                  14k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="14"
-                >
-                  50k
-                </text>
               </g>
             </g>
           </svg>
@@ -2550,9 +2114,9 @@ Object {
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
           class="fui-cart__chart"
-          height="300"
+          height="310"
           style="display: block;"
-          width="650"
+          width="0"
         >
           <g
             class="fui-cart__xAxis"
@@ -2561,67 +2125,13 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
-              d="M252.83333333333331,6V0.5H418.1666666666667V6"
+              d="M48.5,6V0.5H-27.5V6"
               stroke="currentColor"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(269.22222222222223,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Metadata info multi lines text Completed
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Meta Data2
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(400.7777777777778,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Single line text 
-              </text>
-            </g>
           </g>
           <g
             class="fui-cart__yAxis"
@@ -2634,23 +2144,23 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,265.5H0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,265.5)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 0
               </text>
@@ -2658,17 +2168,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,204.25)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 12.5k
               </text>
@@ -2676,17 +2186,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,143)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 25k
               </text>
@@ -2694,17 +2204,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,81.75)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 37.5k
               </text>
@@ -2716,13 +2226,13 @@ Object {
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 50k
               </text>
@@ -2730,148 +2240,94 @@ Object {
           </g>
           <g>
             <g
-              transform="translate(252.33333333333331, 0)"
+              transform="translate(48, 0)"
             >
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="161.7"
+                height="168.3"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="103.30000000000001"
+                y="106.69999999999999"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="215.6"
+                height="224.4"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="49.400000000000006"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="50.599999999999994"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="97.30000000000001"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="43.400000000000006"
-              >
-                44k
-              </text>
             </g>
             <g
-              transform="translate(318.1111111111111, 0)"
+              transform="translate(87.78494623655914, 0)"
             >
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="161.7"
+                height="168.3"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="103.30000000000001"
+                y="106.69999999999999"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="14.700000000000017"
+                height="15.300000000000011"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="250.29999999999998"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="259.7"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="97.30000000000001"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="244.29999999999998"
-              >
-                3k
-              </text>
             </g>
             <g
-              transform="translate(383.8888888888889, 0)"
+              transform="translate(127.56989247311827, 0)"
             >
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="68.60000000000002"
+                height="71.4"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="196.39999999999998"
+                y="203.6"
               />
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="245"
+                height="255"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
+                width="9.677419354838708"
+                x="10.752688172043008"
                 y="20"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="190.39999999999998"
-              >
-                14k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="14"
-              >
-                50k
-              </text>
             </g>
           </g>
         </svg>
@@ -2997,9 +2453,7 @@ Object {
 exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -3013,9 +2467,9 @@ Object {
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
             class="fui-cart__chart"
-            height="50"
+            height="350"
             style="display: block;"
-            width="650"
+            width="0"
           >
             <g
               class="fui-cart__xAxis"
@@ -3024,67 +2478,13 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 15)"
+              transform="translate(0, 315)"
             >
               <path
                 class="domain"
-                d="M252.83333333333331,6V0.5H418.1666666666667V6"
+                d="M48.5,6V0.5H-27.5V6"
                 stroke="currentColor"
               />
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(269.22222222222223,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Metadata info multi lines text Completed
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(335,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Meta Data2
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(400.7777777777778,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Single line text 
-                </text>
-              </g>
             </g>
             <g
               class="fui-cart__yAxis"
@@ -3097,23 +2497,23 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,15.5H0.5V20.5H-6"
+                d="M-6,315.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,15.5)"
+                transform="translate(0,315.5)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   0
                 </text>
@@ -3121,17 +2521,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,16.75)"
+                transform="translate(0,241.75)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   12.5k
                 </text>
@@ -3139,17 +2539,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,18)"
+                transform="translate(0,168)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   25k
                 </text>
@@ -3157,17 +2557,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,19.25)"
+                transform="translate(0,94.25)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   37.5k
                 </text>
@@ -3179,13 +2579,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   50k
                 </text>
@@ -3193,148 +2593,94 @@ Object {
             </g>
             <g>
               <g
-                transform="translate(252.33333333333331, 0)"
+                transform="translate(48, 0)"
               >
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="1"
+                  height="194.7"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="14"
+                  y="120.30000000000001"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="1"
+                  height="259.6"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="14"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="55.39999999999998"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="8"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="8"
-                >
-                  44k
-                </text>
               </g>
               <g
-                transform="translate(318.1111111111111, 0)"
+                transform="translate(87.78494623655914, 0)"
               >
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="1"
+                  height="194.7"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="14"
+                  y="120.30000000000001"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="1"
+                  height="17.700000000000045"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="14"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="297.29999999999995"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="8"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="8"
-                >
-                  3k
-                </text>
               </g>
               <g
-                transform="translate(383.8888888888889, 0)"
+                transform="translate(127.56989247311827, 0)"
               >
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="1"
+                  height="82.60000000000002"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="14"
+                  y="232.39999999999998"
                 />
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="1"
+                  height="295"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="14"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="20"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="8"
-                >
-                  14k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="8"
-                >
-                  50k
-                </text>
               </g>
             </g>
           </svg>
@@ -3355,9 +2701,9 @@ Object {
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
           class="fui-cart__chart"
-          height="50"
+          height="350"
           style="display: block;"
-          width="650"
+          width="0"
         >
           <g
             class="fui-cart__xAxis"
@@ -3366,67 +2712,13 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 15)"
+            transform="translate(0, 315)"
           >
             <path
               class="domain"
-              d="M252.83333333333331,6V0.5H418.1666666666667V6"
+              d="M48.5,6V0.5H-27.5V6"
               stroke="currentColor"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(269.22222222222223,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Metadata info multi lines text Completed
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Meta Data2
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(400.7777777777778,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Single line text 
-              </text>
-            </g>
           </g>
           <g
             class="fui-cart__yAxis"
@@ -3439,23 +2731,23 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,15.5H0.5V20.5H-6"
+              d="M-6,315.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,15.5)"
+              transform="translate(0,315.5)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 0
               </text>
@@ -3463,17 +2755,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,16.75)"
+              transform="translate(0,241.75)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 12.5k
               </text>
@@ -3481,17 +2773,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,18)"
+              transform="translate(0,168)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 25k
               </text>
@@ -3499,17 +2791,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,19.25)"
+              transform="translate(0,94.25)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 37.5k
               </text>
@@ -3521,13 +2813,13 @@ Object {
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 50k
               </text>
@@ -3535,148 +2827,94 @@ Object {
           </g>
           <g>
             <g
-              transform="translate(252.33333333333331, 0)"
+              transform="translate(48, 0)"
             >
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="1"
+                height="194.7"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="14"
+                y="120.30000000000001"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="1"
+                height="259.6"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="14"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="55.39999999999998"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="8"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="8"
-              >
-                44k
-              </text>
             </g>
             <g
-              transform="translate(318.1111111111111, 0)"
+              transform="translate(87.78494623655914, 0)"
             >
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="1"
+                height="194.7"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="14"
+                y="120.30000000000001"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="1"
+                height="17.700000000000045"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="14"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="297.29999999999995"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="8"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="8"
-              >
-                3k
-              </text>
             </g>
             <g
-              transform="translate(383.8888888888889, 0)"
+              transform="translate(127.56989247311827, 0)"
             >
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="1"
+                height="82.60000000000002"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="14"
+                y="232.39999999999998"
               />
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="1"
+                height="295"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="14"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="20"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="8"
-              >
-                14k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="8"
-              >
-                50k
-              </text>
             </g>
           </g>
         </svg>
@@ -3740,9 +2978,7 @@ Object {
 exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -3756,9 +2992,9 @@ Object {
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
             class="fui-cart__chart"
-            height="300"
+            height="310"
             style="display: block;"
-            width="650"
+            width="0"
           >
             <g
               class="fui-cart__xAxis"
@@ -3767,67 +3003,13 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
-                d="M252.83333333333331,6V0.5H418.1666666666667V6"
+                d="M48.5,6V0.5H-27.5V6"
                 stroke="currentColor"
               />
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(269.22222222222223,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Metadata info multi lines text Completed
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(335,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Meta Data2
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(400.7777777777778,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Single line text 
-                </text>
-              </g>
             </g>
             <g
               class="fui-cart__yAxis"
@@ -3840,23 +3022,23 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,265.5H0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,265.5)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   0
                 </text>
@@ -3864,17 +3046,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,204.25)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   12.5k
                 </text>
@@ -3882,17 +3064,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,143)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   25k
                 </text>
@@ -3900,17 +3082,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,81.75)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   37.5k
                 </text>
@@ -3922,13 +3104,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   50k
                 </text>
@@ -3936,148 +3118,94 @@ Object {
             </g>
             <g>
               <g
-                transform="translate(252.33333333333331, 0)"
+                transform="translate(48, 0)"
               >
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="161.7"
+                  height="168.3"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="103.30000000000001"
+                  y="106.69999999999999"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="215.6"
+                  height="224.4"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="49.400000000000006"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="50.599999999999994"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="97.30000000000001"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="43.400000000000006"
-                >
-                  44k
-                </text>
               </g>
               <g
-                transform="translate(318.1111111111111, 0)"
+                transform="translate(87.78494623655914, 0)"
               >
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="161.7"
+                  height="168.3"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="103.30000000000001"
+                  y="106.69999999999999"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="14.700000000000017"
+                  height="15.300000000000011"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="250.29999999999998"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="259.7"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="97.30000000000001"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="244.29999999999998"
-                >
-                  3k
-                </text>
               </g>
               <g
-                transform="translate(383.8888888888889, 0)"
+                transform="translate(127.56989247311827, 0)"
               >
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="68.60000000000002"
+                  height="71.4"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="196.39999999999998"
+                  y="203.6"
                 />
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="245"
+                  height="255"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
                   y="20"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="190.39999999999998"
-                >
-                  14k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="14"
-                >
-                  50k
-                </text>
               </g>
             </g>
           </svg>
@@ -4153,9 +3281,9 @@ Object {
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
           class="fui-cart__chart"
-          height="300"
+          height="310"
           style="display: block;"
-          width="650"
+          width="0"
         >
           <g
             class="fui-cart__xAxis"
@@ -4164,67 +3292,13 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
-              d="M252.83333333333331,6V0.5H418.1666666666667V6"
+              d="M48.5,6V0.5H-27.5V6"
               stroke="currentColor"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(269.22222222222223,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Metadata info multi lines text Completed
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Meta Data2
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(400.7777777777778,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Single line text 
-              </text>
-            </g>
           </g>
           <g
             class="fui-cart__yAxis"
@@ -4237,23 +3311,23 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,265.5H0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,265.5)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 0
               </text>
@@ -4261,17 +3335,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,204.25)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 12.5k
               </text>
@@ -4279,17 +3353,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,143)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 25k
               </text>
@@ -4297,17 +3371,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,81.75)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 37.5k
               </text>
@@ -4319,13 +3393,13 @@ Object {
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 50k
               </text>
@@ -4333,148 +3407,94 @@ Object {
           </g>
           <g>
             <g
-              transform="translate(252.33333333333331, 0)"
+              transform="translate(48, 0)"
             >
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="161.7"
+                height="168.3"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="103.30000000000001"
+                y="106.69999999999999"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="215.6"
+                height="224.4"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="49.400000000000006"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="50.599999999999994"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="97.30000000000001"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="43.400000000000006"
-              >
-                44k
-              </text>
             </g>
             <g
-              transform="translate(318.1111111111111, 0)"
+              transform="translate(87.78494623655914, 0)"
             >
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="161.7"
+                height="168.3"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="103.30000000000001"
+                y="106.69999999999999"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="14.700000000000017"
+                height="15.300000000000011"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="250.29999999999998"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="259.7"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="97.30000000000001"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="244.29999999999998"
-              >
-                3k
-              </text>
             </g>
             <g
-              transform="translate(383.8888888888889, 0)"
+              transform="translate(127.56989247311827, 0)"
             >
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="68.60000000000002"
+                height="71.4"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="196.39999999999998"
+                y="203.6"
               />
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="245"
+                height="255"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
+                width="9.677419354838708"
+                x="10.752688172043008"
                 y="20"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="190.39999999999998"
-              >
-                14k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="14"
-              >
-                50k
-              </text>
             </g>
           </g>
         </svg>
@@ -4593,9 +3613,7 @@ Object {
 exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div>
       <div
         class="fui-cart__root"
@@ -4609,9 +3627,9 @@ Object {
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
             class="fui-cart__chart"
-            height="300"
+            height="310"
             style="display: block;"
-            width="650"
+            width="0"
           >
             <g
               class="fui-cart__xAxis"
@@ -4620,17 +3638,17 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
-                d="M252.83333333333331,6V0.5H418.1666666666667V6"
+                d="M48.5,6V0.5H-27.5V6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(269.22222222222223,0)"
+                transform="translate(40.236559139784944,0)"
               >
                 <line
                   stroke="currentColor"
@@ -4662,7 +3680,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(335,0)"
+                transform="translate(9.999999999999996,0)"
               >
                 <line
                   stroke="currentColor"
@@ -4694,7 +3712,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(400.7777777777778,0)"
+                transform="translate(-20.236559139784948,0)"
               >
                 <line
                   stroke="currentColor"
@@ -4735,23 +3753,23 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,265.5H0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,265.5)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   0
                 </text>
@@ -4759,17 +3777,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,204.25)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   12.5k
                 </text>
@@ -4777,17 +3795,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,143)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   25k
                 </text>
@@ -4795,17 +3813,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,81.75)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   37.5k
                 </text>
@@ -4817,13 +3835,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   50k
                 </text>
@@ -4831,148 +3849,94 @@ Object {
             </g>
             <g>
               <g
-                transform="translate(252.33333333333331, 0)"
+                transform="translate(48, 0)"
               >
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="161.7"
+                  height="168.3"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="103.30000000000001"
+                  y="106.69999999999999"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="215.6"
+                  height="224.4"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="49.400000000000006"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="50.599999999999994"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="97.30000000000001"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="43.400000000000006"
-                >
-                  44k
-                </text>
               </g>
               <g
-                transform="translate(318.1111111111111, 0)"
+                transform="translate(87.78494623655914, 0)"
               >
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="161.7"
+                  height="168.3"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="103.30000000000001"
+                  y="106.69999999999999"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="14.700000000000017"
+                  height="15.300000000000011"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="250.29999999999998"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="259.7"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="97.30000000000001"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="244.29999999999998"
-                >
-                  3k
-                </text>
               </g>
               <g
-                transform="translate(383.8888888888889, 0)"
+                transform="translate(127.56989247311827, 0)"
               >
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="68.60000000000002"
+                  height="71.4"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="196.39999999999998"
+                  y="203.6"
                 />
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="245"
+                  height="255"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
                   y="20"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="190.39999999999998"
-                >
-                  14k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="14"
-                >
-                  50k
-                </text>
               </g>
             </g>
           </svg>
@@ -5036,7 +4000,7 @@ Object {
     </div>
     <div
       class="fui-gvbc**tooltip"
-      id="GVBCTooltipId_r1t"
+      id="GVBCTooltipId_re"
       style="opacity: 0;"
     />
   </body>,
@@ -5053,9 +4017,9 @@ Object {
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
           class="fui-cart__chart"
-          height="300"
+          height="310"
           style="display: block;"
-          width="650"
+          width="0"
         >
           <g
             class="fui-cart__xAxis"
@@ -5064,17 +4028,17 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
-              d="M252.83333333333331,6V0.5H418.1666666666667V6"
+              d="M48.5,6V0.5H-27.5V6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(269.22222222222223,0)"
+              transform="translate(40.236559139784944,0)"
             >
               <line
                 stroke="currentColor"
@@ -5106,7 +4070,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(335,0)"
+              transform="translate(9.999999999999996,0)"
             >
               <line
                 stroke="currentColor"
@@ -5138,7 +4102,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(400.7777777777778,0)"
+              transform="translate(-20.236559139784948,0)"
             >
               <line
                 stroke="currentColor"
@@ -5179,23 +4143,23 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,265.5H0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,265.5)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 0
               </text>
@@ -5203,17 +4167,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,204.25)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 12.5k
               </text>
@@ -5221,17 +4185,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,143)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 25k
               </text>
@@ -5239,17 +4203,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,81.75)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 37.5k
               </text>
@@ -5261,13 +4225,13 @@ Object {
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 50k
               </text>
@@ -5275,148 +4239,94 @@ Object {
           </g>
           <g>
             <g
-              transform="translate(252.33333333333331, 0)"
+              transform="translate(48, 0)"
             >
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="161.7"
+                height="168.3"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="103.30000000000001"
+                y="106.69999999999999"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="215.6"
+                height="224.4"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="49.400000000000006"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="50.599999999999994"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="97.30000000000001"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="43.400000000000006"
-              >
-                44k
-              </text>
             </g>
             <g
-              transform="translate(318.1111111111111, 0)"
+              transform="translate(87.78494623655914, 0)"
             >
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="161.7"
+                height="168.3"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="103.30000000000001"
+                y="106.69999999999999"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="14.700000000000017"
+                height="15.300000000000011"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="250.29999999999998"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="259.7"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="97.30000000000001"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="244.29999999999998"
-              >
-                3k
-              </text>
             </g>
             <g
-              transform="translate(383.8888888888889, 0)"
+              transform="translate(127.56989247311827, 0)"
             >
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="68.60000000000002"
+                height="71.4"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="196.39999999999998"
+                y="203.6"
               />
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="245"
+                height="255"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
+                width="9.677419354838708"
+                x="10.752688172043008"
                 y="20"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="190.39999999999998"
-              >
-                14k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="14"
-              >
-                50k
-              </text>
             </g>
           </g>
         </svg>
@@ -5535,12 +4445,10 @@ Object {
 exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div
       class="fui-gvbc**tooltip"
-      id="GVBCTooltipId_r1t"
+      id="GVBCTooltipId_re"
       style="opacity: 0;"
     />
     <div>
@@ -5556,9 +4464,9 @@ Object {
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
             class="fui-cart__chart"
-            height="300"
+            height="310"
             style="display: block;"
-            width="650"
+            width="0"
           >
             <g
               class="fui-cart__xAxis"
@@ -5567,17 +4475,17 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 217)"
+              transform="translate(0, 227)"
             >
               <path
                 class="domain"
-                d="M252.83333333333331,6V0.5H418.1666666666667V6"
+                d="M48.5,6V0.5H-27.5V6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(269.22222222222223,0)"
+                transform="translate(40.236559139784944,0)"
               >
                 <line
                   stroke="currentColor"
@@ -5643,7 +4551,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(335,0)"
+                transform="translate(9.999999999999996,0)"
               >
                 <line
                   stroke="currentColor"
@@ -5677,7 +4585,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(400.7777777777778,0)"
+                transform="translate(-20.236559139784948,0)"
               >
                 <line
                   stroke="currentColor"
@@ -5728,23 +4636,23 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,217.5H0.5V20.5H-6"
+                d="M-6,227.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,217.5)"
+                transform="translate(0,227.5)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   0
                 </text>
@@ -5752,17 +4660,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,168.25)"
+                transform="translate(0,175.75)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   12.5k
                 </text>
@@ -5770,17 +4678,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,119)"
+                transform="translate(0,124)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   25k
                 </text>
@@ -5788,17 +4696,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,69.75)"
+                transform="translate(0,72.25)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   37.5k
                 </text>
@@ -5810,13 +4718,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   50k
                 </text>
@@ -5824,148 +4732,94 @@ Object {
             </g>
             <g>
               <g
-                transform="translate(252.33333333333331, 0)"
+                transform="translate(48, 0)"
               >
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="130.02"
+                  height="136.62"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="86.97999999999999"
+                  y="90.38"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="173.36"
+                  height="182.16"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="43.639999999999986"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="44.84"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="80.97999999999999"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="37.639999999999986"
-                >
-                  44k
-                </text>
               </g>
               <g
-                transform="translate(318.1111111111111, 0)"
+                transform="translate(87.78494623655914, 0)"
               >
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="130.02"
+                  height="136.62"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="86.97999999999999"
+                  y="90.38"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="11.820000000000022"
+                  height="12.420000000000016"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="205.17999999999998"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="214.57999999999998"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="80.97999999999999"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="199.17999999999998"
-                >
-                  3k
-                </text>
               </g>
               <g
-                transform="translate(383.8888888888889, 0)"
+                transform="translate(127.56989247311827, 0)"
               >
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="55.160000000000025"
+                  height="57.96000000000001"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="161.83999999999997"
+                  y="169.04"
                 />
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="197"
+                  height="207"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
                   y="20"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="155.83999999999997"
-                >
-                  14k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="14"
-                >
-                  50k
-                </text>
               </g>
             </g>
           </svg>
@@ -6041,9 +4895,9 @@ Object {
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
           class="fui-cart__chart"
-          height="300"
+          height="310"
           style="display: block;"
-          width="650"
+          width="0"
         >
           <g
             class="fui-cart__xAxis"
@@ -6052,17 +4906,17 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 217)"
+            transform="translate(0, 227)"
           >
             <path
               class="domain"
-              d="M252.83333333333331,6V0.5H418.1666666666667V6"
+              d="M48.5,6V0.5H-27.5V6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(269.22222222222223,0)"
+              transform="translate(40.236559139784944,0)"
             >
               <line
                 stroke="currentColor"
@@ -6128,7 +4982,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(335,0)"
+              transform="translate(9.999999999999996,0)"
             >
               <line
                 stroke="currentColor"
@@ -6162,7 +5016,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(400.7777777777778,0)"
+              transform="translate(-20.236559139784948,0)"
             >
               <line
                 stroke="currentColor"
@@ -6213,23 +5067,23 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,217.5H0.5V20.5H-6"
+              d="M-6,227.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,217.5)"
+              transform="translate(0,227.5)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 0
               </text>
@@ -6237,17 +5091,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,168.25)"
+              transform="translate(0,175.75)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 12.5k
               </text>
@@ -6255,17 +5109,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,119)"
+              transform="translate(0,124)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 25k
               </text>
@@ -6273,17 +5127,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,69.75)"
+              transform="translate(0,72.25)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 37.5k
               </text>
@@ -6295,13 +5149,13 @@ Object {
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 50k
               </text>
@@ -6309,148 +5163,94 @@ Object {
           </g>
           <g>
             <g
-              transform="translate(252.33333333333331, 0)"
+              transform="translate(48, 0)"
             >
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="130.02"
+                height="136.62"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="86.97999999999999"
+                y="90.38"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="173.36"
+                height="182.16"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="43.639999999999986"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="44.84"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="80.97999999999999"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="37.639999999999986"
-              >
-                44k
-              </text>
             </g>
             <g
-              transform="translate(318.1111111111111, 0)"
+              transform="translate(87.78494623655914, 0)"
             >
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="130.02"
+                height="136.62"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="86.97999999999999"
+                y="90.38"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="11.820000000000022"
+                height="12.420000000000016"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="205.17999999999998"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="214.57999999999998"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="80.97999999999999"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="199.17999999999998"
-              >
-                3k
-              </text>
             </g>
             <g
-              transform="translate(383.8888888888889, 0)"
+              transform="translate(127.56989247311827, 0)"
             >
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="55.160000000000025"
+                height="57.96000000000001"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="161.83999999999997"
+                y="169.04"
               />
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="197"
+                height="207"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
+                width="9.677419354838708"
+                x="10.752688172043008"
                 y="20"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="155.83999999999997"
-              >
-                14k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="14"
-              >
-                50k
-              </text>
             </g>
           </g>
         </svg>
@@ -6569,12 +5369,10 @@ Object {
 exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
+  "baseElement": <body>
     <div
       class="fui-gvbc**tooltip"
-      id="GVBCTooltipId_r1t"
+      id="GVBCTooltipId_re"
       style="opacity: 0;"
     />
     <div>
@@ -6590,9 +5388,9 @@ Object {
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
             class="fui-cart__chart"
-            height="300"
+            height="310"
             style="display: block;"
-            width="650"
+            width="0"
           >
             <g
               class="fui-cart__xAxis"
@@ -6601,67 +5399,13 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
-                d="M252.83333333333331,6V0.5H418.1666666666667V6"
+                d="M48.5,6V0.5H-27.5V6"
                 stroke="currentColor"
               />
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(269.22222222222223,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Metadata info multi lines text Completed
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(335,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Meta Data2
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(400.7777777777778,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  Single line text 
-                </text>
-              </g>
             </g>
             <g
               class="fui-cart__yAxis"
@@ -6674,23 +5418,23 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,265.5H0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,265.5)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   /%d
                 </text>
@@ -6698,17 +5442,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,204.25)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   /%d
                 </text>
@@ -6716,17 +5460,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,143)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   /%d
                 </text>
@@ -6734,17 +5478,17 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,81.75)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   /%d
                 </text>
@@ -6756,13 +5500,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  x2="590"
+                  x2="-60"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  x="-10"
+                  x="-70"
                 >
                   /%d
                 </text>
@@ -6770,148 +5514,94 @@ Object {
             </g>
             <g>
               <g
-                transform="translate(252.33333333333331, 0)"
+                transform="translate(48, 0)"
               >
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="161.7"
+                  height="168.3"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="103.30000000000001"
+                  y="106.69999999999999"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="215.6"
+                  height="224.4"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="49.400000000000006"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="50.599999999999994"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="97.30000000000001"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="43.400000000000006"
-                >
-                  44k
-                </text>
               </g>
               <g
-                transform="translate(318.1111111111111, 0)"
+                transform="translate(87.78494623655914, 0)"
               >
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="161.7"
+                  height="168.3"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="103.30000000000001"
+                  y="106.69999999999999"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="14.700000000000017"
+                  height="15.300000000000011"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
-                  y="250.29999999999998"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
+                  y="259.7"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="97.30000000000001"
-                >
-                  33k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="244.29999999999998"
-                >
-                  3k
-                </text>
               </g>
               <g
-                transform="translate(383.8888888888889, 0)"
+                transform="translate(127.56989247311827, 0)"
               >
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#00bcf2"
-                  height="68.60000000000002"
+                  height="71.4"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
+                  width="9.677419354838708"
                   x="0"
-                  y="196.39999999999998"
+                  y="203.6"
                 />
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
                   fill="#0078d4"
-                  height="245"
+                  height="255"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
-                  width="16"
-                  x="17.77777777777778"
+                  width="9.677419354838708"
+                  x="10.752688172043008"
                   y="20"
                 />
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="8"
-                  y="190.39999999999998"
-                >
-                  14k
-                </text>
-                <text
-                  aria-hidden="true"
-                  class="fui-gvbc**barLabel"
-                  text-anchor="middle"
-                  x="25.77777777777778"
-                  y="14"
-                >
-                  50k
-                </text>
               </g>
             </g>
           </svg>
@@ -6987,9 +5677,9 @@ Object {
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
           class="fui-cart__chart"
-          height="300"
+          height="310"
           style="display: block;"
-          width="650"
+          width="0"
         >
           <g
             class="fui-cart__xAxis"
@@ -6998,67 +5688,13 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
-              d="M252.83333333333331,6V0.5H418.1666666666667V6"
+              d="M48.5,6V0.5H-27.5V6"
               stroke="currentColor"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(269.22222222222223,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Metadata info multi lines text Completed
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Meta Data2
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(400.7777777777778,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Single line text 
-              </text>
-            </g>
           </g>
           <g
             class="fui-cart__yAxis"
@@ -7071,23 +5707,23 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,265.5H0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,265.5)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 /%d
               </text>
@@ -7095,17 +5731,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,204.25)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 /%d
               </text>
@@ -7113,17 +5749,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,143)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 /%d
               </text>
@@ -7131,17 +5767,17 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,81.75)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 /%d
               </text>
@@ -7153,13 +5789,13 @@ Object {
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-60"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="-70"
               >
                 /%d
               </text>
@@ -7167,148 +5803,94 @@ Object {
           </g>
           <g>
             <g
-              transform="translate(252.33333333333331, 0)"
+              transform="translate(48, 0)"
             >
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="161.7"
+                height="168.3"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="103.30000000000001"
+                y="106.69999999999999"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="215.6"
+                height="224.4"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="49.400000000000006"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="50.599999999999994"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="97.30000000000001"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="43.400000000000006"
-              >
-                44k
-              </text>
             </g>
             <g
-              transform="translate(318.1111111111111, 0)"
+              transform="translate(87.78494623655914, 0)"
             >
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="161.7"
+                height="168.3"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="103.30000000000001"
+                y="106.69999999999999"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="14.700000000000017"
+                height="15.300000000000011"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
-                y="250.29999999999998"
+                width="9.677419354838708"
+                x="10.752688172043008"
+                y="259.7"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="97.30000000000001"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="244.29999999999998"
-              >
-                3k
-              </text>
             </g>
             <g
-              transform="translate(383.8888888888889, 0)"
+              transform="translate(127.56989247311827, 0)"
             >
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#00bcf2"
-                height="68.60000000000002"
+                height="71.4"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
+                width="9.677419354838708"
                 x="0"
-                y="196.39999999999998"
+                y="203.6"
               />
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
                 fill="#0078d4"
-                height="245"
+                height="255"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="17.77777777777778"
+                width="9.677419354838708"
+                x="10.752688172043008"
                 y="20"
               />
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="8"
-                y="190.39999999999998"
-              >
-                14k
-              </text>
-              <text
-                aria-hidden="true"
-                class="fui-gvbc**barLabel"
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="14"
-              >
-                50k
-              </text>
             </g>
           </g>
         </svg>

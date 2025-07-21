@@ -289,6 +289,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     } else {
+      // Use the passed margins parameter which includes domain adjustments from _getDomainMargins
       domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
     }
     return domainNRangeValue;
@@ -540,8 +541,10 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   // For grouped vertical bar chart, First need to define total scale (from start to end)
   // From that need to define scale for single group of bars - done by createX1Scale
   const _createX0Scale = (containerWidth: number) => {
-    const startPos = _margins.left! + _domainMargin;
-    const endPos = containerWidth! - _margins.right! - _domainMargin;
+    // Get the domain-adjusted margins that are consistent with the x-axis scale
+    const adjustedMargins = _getDomainMargins(containerWidth);
+    const startPos = adjustedMargins.left!;
+    const endPos = containerWidth! - adjustedMargins.right!;
     
     // Ensure we have a valid range (end must be greater than start)
     const validEndPos = Math.max(endPos, startPos + 100); // Minimum 100px range

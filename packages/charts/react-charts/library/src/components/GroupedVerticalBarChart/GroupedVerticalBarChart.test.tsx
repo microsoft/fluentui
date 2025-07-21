@@ -767,6 +767,64 @@ describe('GroupedVerticalBarChart - Alignment Fix', () => {
     },
   ];
 
+  const stackedBarData: GroupedVerticalBarChartData[] = [
+    {
+      name: 'Grade 10',
+      series: [
+        {
+          key: 'Grade 10',
+          legend: 'Grade 10',
+          color: '#636efa',
+          data: 80,
+          xAxisCalloutData: 'Grade 10',
+          yAxisCalloutData: '80',
+        },
+        {
+          key: 'Grade 10',
+          legend: 'Grade 10',
+          color: '#636efa',
+          data: 80,
+          xAxisCalloutData: 'Grade 10',
+          yAxisCalloutData: '80',
+        },
+      ],
+    },
+    {
+      name: 'Grade 11',
+      series: [
+        {
+          key: 'Grade 11',
+          legend: 'Grade 11',
+          color: '#EF553B',
+          data: 90,
+          xAxisCalloutData: 'Grade 11',
+          yAxisCalloutData: '90',
+        },
+        {
+          key: 'Grade 11',
+          legend: 'Grade 11',
+          color: '#EF553B',
+          data: 90,
+          xAxisCalloutData: 'Grade 11',
+          yAxisCalloutData: '90',
+        },
+      ],
+    },
+    {
+      name: 'Grade 12',
+      series: [
+        {
+          key: 'Grade 12',
+          legend: 'Grade 12',
+          color: '#00cc96',
+          data: 85,
+          xAxisCalloutData: 'Grade 12',
+          yAxisCalloutData: '85',
+        },
+      ],
+    },
+  ];
+
   testWithWait(
     'Should align bars correctly with x-axis ticks for single bar per group',
     GroupedVerticalBarChart,
@@ -807,6 +865,63 @@ describe('GroupedVerticalBarChart - Alignment Fix', () => {
       // Verify positions are in ascending order (left to right)
       const sortedPositions = [...groupPositions].sort((a, b) => a - b);
       expect(groupPositions).toEqual(sortedPositions);
+    },
+  );
+
+  testWithWait(
+    'Should align stacked bars correctly with x-axis ticks',
+    GroupedVerticalBarChart,
+    { data: stackedBarData, width: 800, height: 500 },
+    container => {
+      // Get bar group positions for stacked data
+      const chartContent = container.querySelector('.fui-cart__chart');
+      const barGroups = chartContent?.querySelectorAll('g[transform*="translate"] rect');
+      const parentGroups = new Set<Element>();
+      
+      // Get the parent groups of the rect elements
+      barGroups?.forEach((rect) => {
+        const parentGroup = rect.parentElement;
+        if (parentGroup && parentGroup.getAttribute('transform')?.includes('translate')) {
+          parentGroups.add(parentGroup);
+        }
+      });
+
+      const groupPositions: number[] = [];
+      parentGroups.forEach((group) => {
+        const transform = group.getAttribute('transform');
+        if (transform && transform.match(/translate\(([0-9.-]+),\s*0\)/)) {
+          const match = transform.match(/translate\(([0-9.-]+),\s*0\)/);
+          if (match) {
+            groupPositions.push(parseFloat(match[1]));
+          }
+        }
+      });
+
+      // Verify that no groups are positioned at negative coordinates (off-screen)
+      const negativePositions = groupPositions.filter(pos => pos < 0);
+      expect(negativePositions).toHaveLength(0);
+      
+      // Verify we have the expected number of groups
+      expect(groupPositions).toHaveLength(3);
+      
+      // Verify positions are in ascending order (left to right)
+      const sortedPositions = [...groupPositions].sort((a, b) => a - b);
+      expect(groupPositions).toEqual(sortedPositions);
+      
+      // Check that bars have reasonable spacing between them
+      if (groupPositions.length >= 2) {
+        const spacing1 = groupPositions[1] - groupPositions[0];
+        const spacing2 = groupPositions[2] - groupPositions[1];
+        
+        // Spacing should be positive and reasonably consistent
+        expect(spacing1).toBeGreaterThan(0);
+        expect(spacing2).toBeGreaterThan(0);
+        
+        // Spacing should be within reasonable bounds (within 20% of each other)
+        const avgSpacing = (spacing1 + spacing2) / 2;
+        expect(Math.abs(spacing1 - avgSpacing) / avgSpacing).toBeLessThanOrEqual(0.2);
+        expect(Math.abs(spacing2 - avgSpacing) / avgSpacing).toBeLessThanOrEqual(0.2);
+      }
     },
   );
 });

@@ -318,7 +318,7 @@ Object {
                   class="fui-donut-arc__root"
                   d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_r1lfirst20000"
+                  id="_Pie_r0first20000"
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
@@ -331,7 +331,7 @@ Object {
                   class="fui-donut-arc__root"
                   d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_r1lsecond39000"
+                  id="_Pie_r0second39000"
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
@@ -344,7 +344,7 @@ Object {
                   class="fui-donut-arc__root"
                   d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_r1lthird45000"
+                  id="_Pie_r0third45000"
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
@@ -356,7 +356,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="calloutr1m"
+          id="calloutr1"
         >
           <div
             class="fui-PopoverSurface"
@@ -499,7 +499,7 @@ Object {
                 class="fui-donut-arc__root"
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_r1lfirst20000"
+                id="_Pie_r0first20000"
                 opacity="1"
                 role="img"
                 style="fill: #E5E5E5; cursor: default;"
@@ -512,7 +512,7 @@ Object {
                 class="fui-donut-arc__root"
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_r1lsecond39000"
+                id="_Pie_r0second39000"
                 opacity="1"
                 role="img"
                 style="fill: #0078D4; cursor: default;"
@@ -525,7 +525,7 @@ Object {
                 class="fui-donut-arc__root"
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 data-is-focusable="true"
-                id="_Pie_r1lthird45000"
+                id="_Pie_r0third45000"
                 opacity="1"
                 role="img"
                 style="fill: #DADADA; cursor: default;"
@@ -537,7 +537,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="calloutr1m"
+        id="calloutr1"
       >
         <div
           class="fui-PopoverSurface"
