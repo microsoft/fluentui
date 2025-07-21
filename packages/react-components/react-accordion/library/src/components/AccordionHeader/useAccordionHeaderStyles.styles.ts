@@ -46,7 +46,7 @@ const useStyles = makeStyles({
     padding: `0 ${tokens.spacingHorizontalM} 0 ${tokens.spacingHorizontalMNudge}`,
     minHeight: '44px',
     display: 'flex',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     cursor: 'pointer',
     ...typographyStyles.body1,
     boxSizing: 'border-box',
@@ -79,7 +79,7 @@ const useStyles = makeStyles({
     height: '100%',
     display: 'flex',
     alignItems: 'center',
-    lineHeight: tokens.lineHeightBase500,
+    // lineHeight: tokens.lineHeightBase500,
     fontSize: tokens.fontSizeBase500,
   },
   expandIconStart: {
@@ -98,7 +98,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     paddingRight: tokens.spacingHorizontalS,
-    lineHeight: tokens.lineHeightBase500,
+    // lineHeight: tokens.lineHeightBase500,
     fontSize: tokens.fontSizeBase500,
   },
 });

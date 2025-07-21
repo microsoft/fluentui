@@ -142,7 +142,7 @@ export const DisabledHighContrast = getStoryVariant(Disabled, HIGH_CONTRAST);
 export const MultilineHeading = () => (
   <Accordion>
     <AccordionItem value={0}>
-      <AccordionHeader>
+      <AccordionHeader icon="🎉">
         Multi-line heading with a lot of text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
       </AccordionHeader>
@@ -154,7 +154,7 @@ export const MultilineHeading = () => (
       </AccordionPanel>
     </AccordionItem>
     <AccordionItem value={1}>
-      <AccordionHeader>Single-line heading</AccordionHeader>
+      <AccordionHeader icon="🎉">Single-line heading</AccordionHeader>
       <AccordionPanel>
         <div>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur
