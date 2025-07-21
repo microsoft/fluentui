@@ -540,12 +540,18 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   // For grouped vertical bar chart, First need to define total scale (from start to end)
   // From that need to define scale for single group of bars - done by createX1Scale
   const _createX0Scale = (containerWidth: number) => {
+    const startPos = _margins.left! + _domainMargin;
+    const endPos = containerWidth! - _margins.right! - _domainMargin;
+    
+    // Ensure we have a valid range (end must be greater than start)
+    const validEndPos = Math.max(endPos, startPos + 100); // Minimum 100px range
+    
     const x0Axis = d3ScaleBand()
       .domain(xAxisLabels)
       .range(
         _useRtl
-          ? [containerWidth! - _margins.right! - _domainMargin, _margins.left! + _domainMargin]
-          : [_margins.left! + _domainMargin, containerWidth! - _margins.right! - _domainMargin],
+          ? [validEndPos, startPos]
+          : [startPos, validEndPos],
       )
       .paddingInner(_xAxisInnerPadding)
       .paddingOuter(_xAxisOuterPadding);

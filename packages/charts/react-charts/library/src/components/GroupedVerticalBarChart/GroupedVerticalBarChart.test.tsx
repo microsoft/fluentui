@@ -724,6 +724,93 @@ describe('Render empty chart aria label div when chart is empty', () => {
   });
 });
 
+describe('GroupedVerticalBarChart - Alignment Fix', () => {
+  const singleBarPerGroupData: GroupedVerticalBarChartData[] = [
+    {
+      name: 'Grade 10',
+      series: [
+        {
+          key: 'grade10_data',
+          data: 150,
+          color: '#3b82f6',
+          legend: 'Students',
+          xAxisCalloutData: 'Grade 10',
+          yAxisCalloutData: '150',
+        },
+      ],
+    },
+    {
+      name: 'Grade 11', 
+      series: [
+        {
+          key: 'grade11_data',
+          data: 168,
+          color: '#ef4444',
+          legend: 'Students',
+          xAxisCalloutData: 'Grade 11',
+          yAxisCalloutData: '168',
+        },
+      ],
+    },
+    {
+      name: 'Grade 12',
+      series: [
+        {
+          key: 'grade12_data',
+          data: 84,
+          color: '#10b981',
+          legend: 'Students',
+          xAxisCalloutData: 'Grade 12',
+          yAxisCalloutData: '84',
+        },
+      ],
+    },
+  ];
+
+  testWithWait(
+    'Should align bars correctly with x-axis ticks for single bar per group',
+    GroupedVerticalBarChart,
+    { data: singleBarPerGroupData, width: 600, height: 400 },
+    container => {
+      // Get bar group positions (excluding the axis groups)
+      // Look for groups that contain rect elements (actual bars)
+      const chartContent = container.querySelector('.fui-cart__chart');
+      const barGroups = chartContent?.querySelectorAll('g[transform*="translate"] rect');
+      const parentGroups = new Set<Element>();
+      
+      // Get the parent groups of the rect elements
+      barGroups?.forEach((rect) => {
+        const parentGroup = rect.parentElement;
+        if (parentGroup && parentGroup.getAttribute('transform')?.includes('translate')) {
+          parentGroups.add(parentGroup);
+        }
+      });
+
+      const groupPositions: number[] = [];
+      parentGroups.forEach((group) => {
+        const transform = group.getAttribute('transform');
+        if (transform && transform.match(/translate\(([0-9.-]+),\s*0\)/)) {
+          const match = transform.match(/translate\(([0-9.-]+),\s*0\)/);
+          if (match) {
+            groupPositions.push(parseFloat(match[1]));
+          }
+        }
+      });
+
+      // Verify that no groups are positioned at negative coordinates (off-screen)
+      const negativePositions = groupPositions.filter(pos => pos < 0);
+      expect(negativePositions).toHaveLength(0);
+      
+      // Verify we have the expected number of groups
+      expect(groupPositions).toHaveLength(3);
+      
+      // Verify positions are in ascending order (left to right)
+      const sortedPositions = [...groupPositions].sort((a, b) => a - b);
+      expect(groupPositions).toEqual(sortedPositions);
+    },
+  );
+});
+
 describe('GroupedVerticalBarChart - Stacked Bars', () => {
   const stackedTestData: GroupedVerticalBarChartData[] = [
     {
