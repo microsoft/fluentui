@@ -2511,7 +2511,7 @@ const getBarProps = (
   if (typeof padding === 'undefined') {
     return {};
   }
-  console.log(padding);
+
   if (isHorizontal) {
     return {
       maxBarHeight: 1000,
