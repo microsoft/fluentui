@@ -126,6 +126,11 @@ export interface ChartDataPoint {
   horizontalBarChartdata?: HorizontalDataPoint;
 
   /**
+   * additional annotation information per data point of the bar chart
+   */
+  annotation?: () => React.ReactNode;
+
+  /**
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;

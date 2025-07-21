@@ -14555,7 +14555,8 @@ Object {
               style="display: flex; flex-wrap: wrap; overflow: auto;"
             >
               <div
-                style="flex: 0 1 auto; margin: 4px;"
+                class="fui-legend__legendContainer"
+                id="0"
               >
                 <button
                   aria-label="legend1"
@@ -14577,7 +14578,8 @@ Object {
                 </button>
               </div>
               <div
-                style="flex: 0 1 auto; margin: 4px;"
+                class="fui-legend__legendContainer"
+                id="1"
               >
                 <button
                   aria-label="legend2"
@@ -14599,7 +14601,8 @@ Object {
                 </button>
               </div>
               <div
-                style="flex: 0 1 auto; margin: 4px;"
+                class="fui-legend__legendContainer"
+                id="2"
               >
                 <button
                   aria-label="legend3"
@@ -15406,7 +15409,8 @@ Object {
             style="display: flex; flex-wrap: wrap; overflow: auto;"
           >
             <div
-              style="flex: 0 1 auto; margin: 4px;"
+              class="fui-legend__legendContainer"
+              id="0"
             >
               <button
                 aria-label="legend1"
@@ -15428,7 +15432,8 @@ Object {
               </button>
             </div>
             <div
-              style="flex: 0 1 auto; margin: 4px;"
+              class="fui-legend__legendContainer"
+              id="1"
             >
               <button
                 aria-label="legend2"
@@ -15450,7 +15455,8 @@ Object {
               </button>
             </div>
             <div
-              style="flex: 0 1 auto; margin: 4px;"
+              class="fui-legend__legendContainer"
+              id="2"
             >
               <button
                 aria-label="legend3"

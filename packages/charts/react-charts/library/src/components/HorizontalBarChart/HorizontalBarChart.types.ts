@@ -195,7 +195,7 @@ export interface HorizontalBarChartStyles {
  * percentage: show the percentage of (datapoint.x/datapoint.y)%
  * {@docCategory HorizontalBarChart}
  */
-export type ChartDataMode = 'default' | 'fraction' | 'percentage';
+export type ChartDataMode = 'default' | 'fraction' | 'percentage' | 'legendInline';
 
 /**
  * {@docCategory HorizontalBarChart}

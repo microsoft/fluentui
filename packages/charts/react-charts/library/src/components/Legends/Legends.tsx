@@ -22,6 +22,7 @@ interface LegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   opacity?: number;
   stripePattern?: boolean;
   isLineLegendInBarChart?: boolean;
+  legendAnnotation?: () => React.ReactNode;
 }
 
 interface LegendMap {
@@ -122,8 +123,13 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
         >
           <div className={classes.resizableArea} style={{ display: 'flex', flexWrap: 'wrap', overflow: 'auto' }}>
             {dataToRender.map((item, id) => (
-              <div key={id} style={{ flex: '0 1 auto', margin: '4px' }}>
+              <div className={classes.legendContainer} key={id} id={id.toString()}>
                 {_renderButton(item)}
+                {item.legendAnnotation && (
+                  <div className={''} key={`${id}-annotation`}>
+                    {item.legendAnnotation()}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -157,6 +163,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           isLineLegendInBarChart: legend.isLineLegendInBarChart,
           opacity: legend.opacity,
           key: index,
+          legendAnnotation: legend.legendAnnotation,
         };
       });
       return dataItems;

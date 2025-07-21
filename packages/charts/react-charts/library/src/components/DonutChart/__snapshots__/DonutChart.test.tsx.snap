@@ -2562,12 +2562,8 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         }
       >
         <div
-          style={
-            Object {
-              "flex": "0 1 auto",
-              "margin": "4px",
-            }
-          }
+          className="fui-legend__legendContainer"
+          id="0"
         >
           <button
             aria-label="first"
@@ -2615,12 +2611,8 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           </button>
         </div>
         <div
-          style={
-            Object {
-              "flex": "0 1 auto",
-              "margin": "4px",
-            }
-          }
+          className="fui-legend__legendContainer"
+          id="1"
         >
           <button
             aria-label="second"
@@ -2668,12 +2660,8 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           </button>
         </div>
         <div
-          style={
-            Object {
-              "flex": "0 1 auto",
-              "margin": "4px",
-            }
-          }
+          className="fui-legend__legendContainer"
+          id="2"
         >
           <button
             aria-label="third"

@@ -13,7 +13,7 @@ const chartPoints: ChartProps[] = [
     chartTitle: 'one',
     chartData: [
       {
-        legend: 'one',
+        legend: 'one.one',
         horizontalBarChartdata: { x: 1543, total: 15000 },
         color: '#004b50',
         xAxisCalloutData: '2020/04/30',
@@ -62,6 +62,30 @@ const chartPointsWithBenchMark: ChartProps[] = [
   },
 ];
 
+const chartPointsForStackedInlineLegend: ChartProps[] = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      { legend: 'one.one', horizontalBarChartdata: { x: 10, total: 100 }, color: '#004b50' },
+      { legend: 'one.two', horizontalBarChartdata: { x: 90, total: 100 }, color: '#a4262c' },
+    ],
+  },
+  {
+    chartTitle: 'two',
+    chartData: [
+      { legend: 'two.one', horizontalBarChartdata: { x: 30, total: 200 }, color: '#5c2d91' },
+      { legend: 'two.two', horizontalBarChartdata: { x: 170, total: 200 }, color: '#a4262c' },
+    ],
+  },
+  {
+    chartTitle: 'three',
+    chartData: [
+      { legend: 'three.one', horizontalBarChartdata: { x: 15, total: 50 }, color: '#a4262c' },
+      { legend: 'three.two', horizontalBarChartdata: { x: 35, total: 50 }, color: '#5c2d91' },
+    ],
+  },
+];
+
 describe('Horizontal bar chart rendering', () => {
   beforeEach(() => {
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
@@ -74,6 +98,16 @@ describe('Horizontal bar chart rendering', () => {
     'Should render the Horizontal bar chart legend with string data',
     HorizontalBarChart,
     { data: chartPoints },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the Horizontal bar chart with inline legends',
+    HorizontalBarChart,
+    { data: chartPointsForStackedInlineLegend, chartDataMode: 'legendInline' },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -175,6 +209,19 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
       expect(screen.queryByText('10%')).not.toBeNull();
       expect(screen.queryByText('5%')).not.toBeNull();
       expect(screen.queryByText('59%')).not.toBeNull();
+    },
+  );
+
+  testWithWait(
+    'Should not render the bars right side value when chartDataMode is legendInline',
+    HorizontalBarChart,
+    { data: chartPoints, chartDataMode: 'legendInline' },
+    container => {
+      // Assert
+      expect(screen.queryByText('10%')).toBeNull();
+      expect(screen.queryByText('5%')).toBeNull();
+      expect(screen.queryByText('59%')).toBeNull();
+      expect(getByClass(container, /fui-hbc__textDenom/i)).toHaveLength(0);
     },
   );
 

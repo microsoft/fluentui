@@ -26,9 +26,11 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   const _isRTL: boolean = useRtl();
   const barChartSvgRef: React.RefObject<SVGSVGElement> = React.createRef<SVGSVGElement>();
   const _emptyChartId: string = useId('_HBC_empty');
+  const _isLegendInline: boolean = props.chartDataMode === 'legendInline';
   let _barHeight: number;
   let _calloutAnchorPoint: ChartDataPoint | null;
   let isSingleBar: boolean = true;
+  let _showToolTipOnSegment: boolean = !props.hideTooltip;
 
   const [hoverValue, setHoverValue] = React.useState<string | number | Date | null>('');
   const [lineColor, setLineColor] = React.useState<string>('');
@@ -108,6 +110,37 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     //)
   };
 
+  function _createInlineLegends(barChartDataRow: ChartProps): JSX.Element {
+    const legendItems: Legend[] =
+      barChartDataRow.chartData?.map(dataPoint => {
+        const legend = dataPoint.legend ?? '';
+        const color = dataPoint.color ?? '';
+        const annotation = dataPoint.annotation ? dataPoint.annotation({}) : null;
+
+        return {
+          title: legend,
+          color,
+          action: () => setSelectedLegend(selectedLegend === legend ? '' : legend),
+          hoverAction: () => {
+            _handleChartMouseLeave();
+            setActiveLegend(legend);
+          },
+          onMouseOutAction: () => setActiveLegend(''),
+          legendAnnotation: () => annotation,
+        };
+      }) ?? [];
+
+    return (
+      <Legends
+        legends={legendItems}
+        enabledWrapLines={true}
+        centerLegends={false}
+        overflowText={props.legendsOverflowText}
+        {...props.legendProps}
+      />
+    );
+  }
+
   function _createLegends(chartProps: ChartProps[]): JSX.Element {
     const legendItems: Legend[] = [];
     chartProps.forEach((point: ChartProps) => {
@@ -142,6 +175,12 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   }
 
   function _getDefaultTextData(data: ChartProps): JSX.Element {
+    const chartDataMode = props.chartDataMode || 'default';
+
+    if (chartDataMode === 'legendInline') {
+      return <></>; // No text data for legendInline mode
+    }
+
     const { culture } = props;
     const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData!, 'text', false);
     if (!isSingleBar) {
@@ -156,7 +195,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         </div>
       );
     }
-    const chartDataMode = props.chartDataMode || 'default';
+
     const chartData: ChartDataPoint = data!.chartData![0];
     const x = chartData.horizontalBarChartdata!.x;
     const y = chartData.horizontalBarChartdata!.total!;
@@ -312,8 +351,10 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
           width={value + '%'}
           height={_barHeight}
           fill={color}
-          onMouseOver={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
-          onFocus={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
+          onMouseOver={
+            _showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
+          }
+          onFocus={_showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
           role="img"
           aria-label={_getAriaLabel(point)}
           onBlur={_hoverOff}
@@ -449,6 +490,11 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
                   {bars}
                 </g>
               </svg>
+              {_isLegendInline && (
+                <div ref={(e: HTMLDivElement) => (legendContainer.current = e)} className={classes.legendContainer}>
+                  {_createInlineLegends(points!)}
+                </div>
+              )}
             </div>
           </div>
         );
@@ -473,7 +519,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         }}
         isCartesian={false}
       />
-      {!isSingleBar && (
+      {!isSingleBar && !_isLegendInline && (
         <div ref={(e: HTMLDivElement) => (legendContainer.current = e)} className={classes.legendContainer}>
           {legendButtons}
         </div>

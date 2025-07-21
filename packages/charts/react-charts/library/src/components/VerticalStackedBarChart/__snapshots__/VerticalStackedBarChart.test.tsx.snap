@@ -1951,7 +1951,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
+            id="0"
           >
             <button
               aria-label="Metadata1"
@@ -1973,7 +1974,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
+            id="1"
           >
             <button
               aria-label="Metadata2"
@@ -2498,7 +2500,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
+            id="0"
           >
             <button
               aria-label="Metadata1"
@@ -2520,7 +2523,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
+            id="1"
           >
             <button
               aria-label="Metadata2"
@@ -3048,7 +3052,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
+            id="0"
           >
             <button
               aria-label="Line1"
@@ -3070,7 +3075,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
+            id="1"
           >
             <button
               aria-label="Metadata1"
@@ -3092,7 +3098,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
+            id="2"
           >
             <button
               aria-label="Metadata2"
@@ -4304,12 +4311,8 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         }
       >
         <div
-          style={
-            Object {
-              "flex": "0 1 auto",
-              "margin": "4px",
-            }
-          }
+          className="fui-legend__legendContainer"
+          id="0"
         >
           <button
             aria-label="Metadata1"
@@ -4357,12 +4360,8 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           </button>
         </div>
         <div
-          style={
-            Object {
-              "flex": "0 1 auto",
-              "margin": "4px",
-            }
-          }
+          className="fui-legend__legendContainer"
+          id="1"
         >
           <button
             aria-label="Metadata2"

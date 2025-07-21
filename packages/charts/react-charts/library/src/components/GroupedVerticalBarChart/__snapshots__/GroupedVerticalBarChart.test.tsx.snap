@@ -2524,7 +2524,8 @@ Object {
               style="display: flex; flex-wrap: wrap; overflow: auto;"
             >
               <div
-                style="flex: 0 1 auto; margin: 4px;"
+                class="fui-legend__legendContainer"
+                id="0"
               >
                 <button
                   aria-label="MetaData1"
@@ -2546,7 +2547,8 @@ Object {
                 </button>
               </div>
               <div
-                style="flex: 0 1 auto; margin: 4px;"
+                class="fui-legend__legendContainer"
+                id="1"
               >
                 <button
                   aria-label="MetaData4"
@@ -2934,7 +2936,8 @@ Object {
             style="display: flex; flex-wrap: wrap; overflow: auto;"
           >
             <div
-              style="flex: 0 1 auto; margin: 4px;"
+              class="fui-legend__legendContainer"
+              id="0"
             >
               <button
                 aria-label="MetaData1"
@@ -2956,7 +2959,8 @@ Object {
               </button>
             </div>
             <div
-              style="flex: 0 1 auto; margin: 4px;"
+              class="fui-legend__legendContainer"
+              id="1"
             >
               <button
                 aria-label="MetaData4"

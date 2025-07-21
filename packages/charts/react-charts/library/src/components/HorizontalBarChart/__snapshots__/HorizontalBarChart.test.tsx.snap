@@ -199,7 +199,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr25"
+      id="calloutr2f"
     />
   </div>
 </div>
@@ -404,7 +404,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr2a"
+      id="calloutr2k"
     />
   </div>
 </div>
@@ -413,7 +413,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
 exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProviderr2b"
+    class="fui-FluentProvider fui-FluentProviderr2l"
     dir="ltr"
   >
     <div
@@ -613,7 +613,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="calloutr2g"
+        id="calloutr2q"
       />
     </div>
   </div>
@@ -624,7 +624,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_HBC_emptyr2h"
+    id="_HBC_emptyr2r"
     role="alert"
     style="opacity: 0;"
   />
@@ -831,7 +831,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr2l"
+      id="calloutr2v"
     />
   </div>
 </div>
@@ -1042,6 +1042,403 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
 </div>
 `;
 
+exports[`Horizontal bar chart rendering Should render the Horizontal bar chart with inline legends 1`] = `
+<div>
+  <div
+    class="fui-hbc__root"
+  >
+    <div>
+      <div
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      >
+        <div
+          class="fui-hbc__chartTitle"
+        >
+          <div
+            class="fui-hbc__chartTitleLeft"
+            tabindex="0"
+          >
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              one
+            </span>
+            <span
+              hidden=""
+            />
+          </div>
+        </div>
+        <svg
+          aria-label="one"
+          class="fui-hbc__chart"
+        >
+          <g
+            id="_HorizontalLine_lllllm_0"
+          >
+            <rect
+              aria-label="one.one, 10/100."
+              class="fui-hbc__barWrapper"
+              fill="#004b50"
+              height="12"
+              opacity="1"
+              role="img"
+              tabindex="0"
+              width="10%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="one.two, 90/100."
+              class="fui-hbc__barWrapper"
+              fill="#a4262c"
+              height="12"
+              opacity="1"
+              role="img"
+              tabindex="0"
+              width="90%"
+              x="10%"
+              y="0"
+            />
+          </g>
+        </svg>
+        <div
+          class="fui-hbc__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+            style="justify-content: unset; flex-wrap: wrap;"
+          >
+            <div
+              class="fui-legend__resizableArea"
+              style="display: flex; flex-wrap: wrap; overflow: auto;"
+            >
+              <div
+                class="fui-legend__legendContainer"
+                id="0"
+              >
+                <button
+                  aria-label="one.one"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #004b50; --rect-borderColor: #004b50;"
+                  type="button"
+                >
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 75, 80); border-color: #004b50; --rect-content-high-contrast: linear-gradient(to right, #004b50, #004b50);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    one.one
+                  </div>
+                </button>
+                <div
+                  class=""
+                />
+              </div>
+              <div
+                class="fui-legend__legendContainer"
+                id="1"
+              >
+                <button
+                  aria-label="one.two"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #a4262c; --rect-borderColor: #a4262c;"
+                  type="button"
+                >
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(164, 38, 44); border-color: #a4262c; --rect-content-high-contrast: linear-gradient(to right, #a4262c, #a4262c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    one.two
+                  </div>
+                </button>
+                <div
+                  class=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      >
+        <div
+          class="fui-hbc__chartTitle"
+        >
+          <div
+            class="fui-hbc__chartTitleLeft"
+            tabindex="0"
+          >
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              two
+            </span>
+            <span
+              hidden=""
+            />
+          </div>
+        </div>
+        <svg
+          aria-label="two"
+          class="fui-hbc__chart"
+        >
+          <g
+            id="_HorizontalLine_lllllm_1"
+          >
+            <rect
+              aria-label="two.one, 30/200."
+              class="fui-hbc__barWrapper"
+              fill="#5c2d91"
+              height="12"
+              opacity="1"
+              role="img"
+              tabindex="0"
+              width="15%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="two.two, 170/200."
+              class="fui-hbc__barWrapper"
+              fill="#a4262c"
+              height="12"
+              opacity="1"
+              role="img"
+              tabindex="0"
+              width="85%"
+              x="15%"
+              y="0"
+            />
+          </g>
+        </svg>
+        <div
+          class="fui-hbc__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+            style="justify-content: unset; flex-wrap: wrap;"
+          >
+            <div
+              class="fui-legend__resizableArea"
+              style="display: flex; flex-wrap: wrap; overflow: auto;"
+            >
+              <div
+                class="fui-legend__legendContainer"
+                id="0"
+              >
+                <button
+                  aria-label="two.one"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #5c2d91; --rect-borderColor: #5c2d91;"
+                  type="button"
+                >
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(92, 45, 145); border-color: #5c2d91; --rect-content-high-contrast: linear-gradient(to right, #5c2d91, #5c2d91);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    two.one
+                  </div>
+                </button>
+                <div
+                  class=""
+                />
+              </div>
+              <div
+                class="fui-legend__legendContainer"
+                id="1"
+              >
+                <button
+                  aria-label="two.two"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #a4262c; --rect-borderColor: #a4262c;"
+                  type="button"
+                >
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(164, 38, 44); border-color: #a4262c; --rect-content-high-contrast: linear-gradient(to right, #a4262c, #a4262c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    two.two
+                  </div>
+                </button>
+                <div
+                  class=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      >
+        <div
+          class="fui-hbc__chartTitle"
+        >
+          <div
+            class="fui-hbc__chartTitleLeft"
+            tabindex="0"
+          >
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              three
+            </span>
+            <span
+              hidden=""
+            />
+          </div>
+        </div>
+        <svg
+          aria-label="three"
+          class="fui-hbc__chart"
+        >
+          <g
+            id="_HorizontalLine_lllllm_2"
+          >
+            <rect
+              aria-label="three.one, 15/50."
+              class="fui-hbc__barWrapper"
+              fill="#a4262c"
+              height="12"
+              opacity="1"
+              role="img"
+              tabindex="0"
+              width="30%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="three.two, 35/50."
+              class="fui-hbc__barWrapper"
+              fill="#5c2d91"
+              height="12"
+              opacity="1"
+              role="img"
+              tabindex="0"
+              width="70%"
+              x="30%"
+              y="0"
+            />
+          </g>
+        </svg>
+        <div
+          class="fui-hbc__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+            style="justify-content: unset; flex-wrap: wrap;"
+          >
+            <div
+              class="fui-legend__resizableArea"
+              style="display: flex; flex-wrap: wrap; overflow: auto;"
+            >
+              <div
+                class="fui-legend__legendContainer"
+                id="0"
+              >
+                <button
+                  aria-label="three.one"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #a4262c; --rect-borderColor: #a4262c;"
+                  type="button"
+                >
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(164, 38, 44); border-color: #a4262c; --rect-content-high-contrast: linear-gradient(to right, #a4262c, #a4262c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    three.one
+                  </div>
+                </button>
+                <div
+                  class=""
+                />
+              </div>
+              <div
+                class="fui-legend__legendContainer"
+                id="1"
+              >
+                <button
+                  aria-label="three.two"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #5c2d91; --rect-borderColor: #5c2d91;"
+                  type="button"
+                >
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(92, 45, 145); border-color: #5c2d91; --rect-content-high-contrast: linear-gradient(to right, #5c2d91, #5c2d91);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    three.two
+                  </div>
+                </button>
+                <div
+                  class=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fui-cart__calloutContainer"
+      id="calloutr9"
+    />
+  </div>
+</div>
+`;
+
 exports[`HorizontalBarChart snapShot testing Should not render bar labels in absolute-scale variant 1`] = `
 Object {
   "asFragment": [Function],
@@ -1195,7 +1592,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="calloutr34"
+          id="calloutr3e"
         />
       </div>
     </div>
@@ -1206,7 +1603,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r31"
+        id="tooltip-r3b"
         role="tooltip"
       >
         one
@@ -1219,7 +1616,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r32"
+        id="tooltip-r3c"
         role="tooltip"
       >
         two
@@ -1232,7 +1629,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r33"
+        id="tooltip-r3d"
         role="tooltip"
       >
         three
@@ -1386,7 +1783,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="calloutr34"
+        id="calloutr3e"
       />
     </div>
   </div>,
@@ -1624,7 +2021,7 @@ Object {
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="calloutr2v"
+          id="calloutr39"
         />
       </div>
     </div>
@@ -1635,7 +2032,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2s"
+        id="tooltip-r36"
         role="tooltip"
       >
         one
@@ -1648,7 +2045,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2t"
+        id="tooltip-r37"
         role="tooltip"
       >
         two
@@ -1661,7 +2058,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2u"
+        id="tooltip-r38"
         role="tooltip"
       >
         three
@@ -1842,7 +2239,7 @@ Object {
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="calloutr2v"
+        id="calloutr39"
       />
     </div>
   </div>,
