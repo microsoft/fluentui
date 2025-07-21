@@ -100,6 +100,13 @@ import {
   useSemanticTableRowStyles,
   useSemanticTableSelectionCellStyles,
 } from './Table';
+import {
+  useSemanticToastContainerStyles,
+  useSemanticToastBodyStyles,
+  useSemanticToastFooterStyles,
+  useSemanticToastStyles,
+  useSemanticToastTitleStyles,
+} from './Toast';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -220,4 +227,10 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useTableResizeHandleStyles_unstable: useSemanticTableResizeHandleStyles,
   useTableRowStyles_unstable: useSemanticTableRowStyles,
   useTableSelectionCellStyles_unstable: useSemanticTableSelectionCellStyles,
+  //Toast styles
+  useToastBodyStyles_unstable: useSemanticToastBodyStyles,
+  useToastContainerStyles_unstable: useSemanticToastContainerStyles,
+  useToastFooterStyles_unstable: useSemanticToastFooterStyles,
+  useToastStyles_unstable: useSemanticToastStyles,
+  useToastTitleStyles_unstable: useSemanticToastTitleStyles,
 };

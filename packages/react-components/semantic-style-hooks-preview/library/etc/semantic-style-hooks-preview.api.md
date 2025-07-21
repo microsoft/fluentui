@@ -77,6 +77,11 @@ import { TabListState } from '@fluentui/react-tabs';
 import { TabState } from '@fluentui/react-tabs';
 import { TextareaState } from '@fluentui/react-textarea';
 import { TextState } from '@fluentui/react-text';
+import { ToastBodyState } from '@fluentui/react-toast';
+import { ToastContainerState } from '@fluentui/react-toast';
+import { ToastFooterState } from '@fluentui/react-toast';
+import { ToastState } from '@fluentui/react-toast';
+import { ToastTitleState } from '@fluentui/react-toast';
 import { ToggleButtonState } from '@fluentui/react-button';
 import { ToolbarDividerState } from '@fluentui/react-toolbar';
 import { ToolbarGroupState } from '@fluentui/react-toolbar';
@@ -317,6 +322,21 @@ export const useSemanticTextareaStyles: (_state: unknown) => TextareaState;
 
 // @public
 export const useSemanticTextStyles: (_state: unknown) => TextState;
+
+// @public
+export const useSemanticToastBodyStyles: (_state: unknown) => ToastBodyState;
+
+// @public
+export const useSemanticToastContainerStyles: (_state: unknown) => ToastContainerState;
+
+// @public
+export const useSemanticToastFooterStyles: (_state: unknown) => ToastFooterState;
+
+// @public
+export const useSemanticToastStyles: (_state: unknown) => ToastState;
+
+// @public
+export const useSemanticToastTitleStyles: (_state: unknown) => ToastTitleState;
 
 // @public (undocumented)
 export const useSemanticToggleButtonStyles: (_state: unknown) => ToggleButtonState;

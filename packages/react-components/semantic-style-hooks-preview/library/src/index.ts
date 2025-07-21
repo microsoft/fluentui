@@ -103,3 +103,10 @@ export {
   useSemanticTableRowStyles,
   useSemanticTableSelectionCellStyles,
 } from './component-styles/Table';
+export {
+  useSemanticToastBodyStyles,
+  useSemanticToastContainerStyles,
+  useSemanticToastFooterStyles,
+  useSemanticToastStyles,
+  useSemanticToastTitleStyles,
+} from './component-styles/Toast';
