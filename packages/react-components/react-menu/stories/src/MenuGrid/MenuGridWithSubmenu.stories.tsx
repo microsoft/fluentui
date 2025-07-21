@@ -8,7 +8,7 @@ const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel'
 const Submenu = () => {
   const [open, setOpen] = React.useState(false);
   const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
-    if (e.type === 'keydown' && (e as KeyboardEvent).key === 'ArrowDown') {
+    if (data.type === 'menuTriggerKeyDown' && (e as KeyboardEvent).key === 'ArrowDown') {
       return;
     }
     setOpen(data.open);
