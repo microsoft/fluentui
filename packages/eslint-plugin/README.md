@@ -10,7 +10,6 @@ Usage: in your [ESLint config file](https://eslint.org/docs/user-guide/configuri
 - `node`: node specific configuration for fluentui vNext
 - `react--legacy`: react specific configuration for fluentui v7,8
 - `node--legacy`: node specific configuration for fluentui v7,8
-- `react-northstar`: For `@fluentui/react-northstar` and related packages
 - `imports`: auto import statements sorting configuration
 
 Helpers for customizing configuration are exported under a `configHelpers` object.
