@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 18 Jul 2025 07:19:59 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jul 2025 07:21:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.16)
+
+Mon, 21 Jul 2025 07:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.15..@fluentui/react-charting_v5.24.16)
+
+### Patches
+
+- feat(react-charting): Support additional modes ([PR #34860](https://github.com/microsoft/fluentui/pull/34860) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.25 ([commit](https://github.com/microsoft/fluentui/commit/456db10a952bf6bf36213bc8926f4dfd140b5df3) by beachball)
 
 ## [5.24.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.15)
 
