@@ -18,11 +18,14 @@ function invertHexColor(hex: string, theme: ITheme): string {
 }
 
 function getSafeBackgroundColor(theme: ITheme, foreground?: string, background?: string): string {
-  const fallbackFg = theme.semanticColors.bodyText!;
-  const fallbackBg = theme.semanticColors.bodyBackground!;
+  const fallbackFg = theme.semanticColors.bodyText;
+  const fallbackBg = theme.semanticColors.bodyBackground;
 
-  const fg = d3.color(foreground || fallbackFg)!;
-  const bg = d3.color(background || fallbackBg)!;
+  const fg = d3.color(foreground || fallbackFg);
+  const bg = d3.color(background || fallbackBg);
+  if (!fg || !bg) {
+    return fallbackBg;
+  }
   const contrast = getColorContrast(fg.formatHex(), bg.formatHex());
   if (contrast >= 3) {
     return bg.formatHex();
