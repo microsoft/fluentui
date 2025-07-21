@@ -302,9 +302,9 @@ export function getSegmentTextProps({
   textY: number;
   value: number;
   culture: string | undefined;
-  onMouseOver: (event: React.MouseEvent<SVGElement>) => void;
-  onMouseMove: (event: React.MouseEvent<SVGElement>) => void;
-  onMouseOut: () => void;
+  onMouseOver: ((event: React.MouseEvent<SVGElement>) => void) | undefined;
+  onMouseMove: ((event: React.MouseEvent<SVGElement>) => void) | undefined;
+  onMouseOut: (() => void) | undefined;
 }) {
   return {
     show: availableWidth > minTextWidth && availableWidth > 0,
