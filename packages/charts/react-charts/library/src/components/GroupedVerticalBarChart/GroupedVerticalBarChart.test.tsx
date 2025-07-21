@@ -723,3 +723,91 @@ describe('Render empty chart aria label div when chart is empty', () => {
     expect(renderedDOM!.length).toBe(1);
   });
 });
+
+describe('GroupedVerticalBarChart - Stacked Bars', () => {
+  const stackedTestData: GroupedVerticalBarChartData[] = [
+    {
+      name: '2020',
+      series: [
+        {
+          key: 'series1',
+          data: 20,
+          color: 'blue',
+          legend: 'Revenue', // Multiple points with same legend will stack
+          xAxisCalloutData: '2020',
+          yAxisCalloutData: '20',
+        },
+        {
+          key: 'series2', 
+          data: 30,
+          color: 'blue',
+          legend: 'Revenue', // Same legend - should stack on top of the first one
+          xAxisCalloutData: '2020',
+          yAxisCalloutData: '30',
+        },
+        {
+          key: 'series3',
+          data: 10,
+          color: 'red', 
+          legend: 'Costs', // Different legend - separate bar
+          xAxisCalloutData: '2020',
+          yAxisCalloutData: '10',
+        },
+      ],
+    },
+  ];
+
+  it('Should render stacked bars for points with same legend', () => {
+    updateChartWidthAndHeight();
+    const { container } = render(
+      <GroupedVerticalBarChart 
+        data={stackedTestData}
+        maxBarWidth={50}
+      />
+    );
+    
+    // Check that we have bars rendered
+    const bars = container.querySelectorAll('rect[role="img"]');
+    
+    // Should have 3 bars total - 2 for Revenue (stacked) and 1 for Costs
+    expect(bars.length).toBe(3);
+    
+    // Check that bars with same legend (Revenue) are stacked vertically
+    const revenueBars = Array.from(bars).filter(bar => 
+      bar.getAttribute('fill') === 'blue'
+    );
+    expect(revenueBars.length).toBe(2);
+    
+    // The second Revenue bar should be positioned above the first one
+    const bar1Y = parseFloat(revenueBars[0].getAttribute('y') || '0');
+    const bar2Y = parseFloat(revenueBars[1].getAttribute('y') || '0');
+    expect(bar2Y).toBeLessThan(bar1Y); // Higher bars have smaller y values
+  });
+
+  it('Should show aggregated total in label for stacked bars', () => {
+    updateChartWidthAndHeight();
+    const { container } = render(
+      <GroupedVerticalBarChart 
+        data={stackedTestData}
+        maxBarWidth={100}
+        barWidth={50}
+        hideLabels={false}
+      />
+    );
+    
+    // Check for text labels - should include bar labels with class "fui-gvbc**barLabel"
+    const barLabels = container.querySelectorAll('text.fui-gvbc\\*\\*barLabel');
+    
+    // Should show the total value (20 + 30 = 50) for Revenue bars
+    const revenueLabel = Array.from(barLabels).find(label => 
+      label.textContent === '50'
+    );
+    expect(revenueLabel).toBeTruthy();
+    
+    // Should show individual value (10) for Costs bar 
+    const costsLabel = Array.from(barLabels).find(label =>
+      label.textContent === '10'
+    );
+    expect(costsLabel).toBeTruthy();
+  });
+});

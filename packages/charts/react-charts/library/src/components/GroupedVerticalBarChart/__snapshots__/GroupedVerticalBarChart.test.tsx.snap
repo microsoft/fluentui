@@ -220,7 +220,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               tabindex="0"
               width="16"
               x="17.77777777777778"
-              y="48.400000000000006"
+              y="49.400000000000006"
             />
             <text
               aria-hidden="true"
@@ -236,7 +236,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="25.77777777777778"
-              y="42.400000000000006"
+              y="43.400000000000006"
             >
               44k
             </text>
@@ -268,7 +268,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               tabindex="0"
               width="16"
               x="17.77777777777778"
-              y="249.29999999999998"
+              y="250.29999999999998"
             />
             <text
               aria-hidden="true"
@@ -284,7 +284,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="25.77777777777778"
-              y="243.29999999999998"
+              y="244.29999999999998"
             >
               3k
             </text>
@@ -316,7 +316,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               tabindex="0"
               width="16"
               x="17.77777777777778"
-              y="19"
+              y="20"
             />
             <text
               aria-hidden="true"
@@ -332,7 +332,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="25.77777777777778"
-              y="13"
+              y="14"
             >
               50k
             </text>
@@ -619,7 +619,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               tabindex="0"
               width="16"
               x="17.77777777777778"
-              y="48.400000000000006"
+              y="49.400000000000006"
             />
             <text
               aria-hidden="true"
@@ -635,7 +635,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="25.77777777777778"
-              y="42.400000000000006"
+              y="43.400000000000006"
             >
               44k
             </text>
@@ -667,7 +667,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               tabindex="0"
               width="16"
               x="17.77777777777778"
-              y="249.29999999999998"
+              y="250.29999999999998"
             />
             <text
               aria-hidden="true"
@@ -683,7 +683,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="25.77777777777778"
-              y="243.29999999999998"
+              y="244.29999999999998"
             >
               3k
             </text>
@@ -715,7 +715,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               tabindex="0"
               width="16"
               x="17.77777777777778"
-              y="19"
+              y="20"
             />
             <text
               aria-hidden="true"
@@ -731,7 +731,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="25.77777777777778"
-              y="13"
+              y="14"
             >
               50k
             </text>
@@ -1025,7 +1025,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               tabindex="0"
               width="16"
               x="17.77777777777778"
-              y="48.400000000000006"
+              y="49.400000000000006"
             />
             <text
               aria-hidden="true"
@@ -1041,7 +1041,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="25.77777777777778"
-              y="42.400000000000006"
+              y="43.400000000000006"
             >
               44k
             </text>
@@ -1073,7 +1073,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               tabindex="0"
               width="16"
               x="17.77777777777778"
-              y="249.29999999999998"
+              y="250.29999999999998"
             />
             <text
               aria-hidden="true"
@@ -1089,7 +1089,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="25.77777777777778"
-              y="243.29999999999998"
+              y="244.29999999999998"
             >
               3k
             </text>
@@ -1121,7 +1121,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               tabindex="0"
               width="16"
               x="17.77777777777778"
-              y="19"
+              y="20"
             />
             <text
               aria-hidden="true"
@@ -1137,7 +1137,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="25.77777777777778"
-              y="13"
+              y="14"
             >
               50k
             </text>
@@ -1499,7 +1499,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="48.400000000000006"
+                  y="49.400000000000006"
                 />
                 <text
                   aria-hidden="true"
@@ -1515,7 +1515,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="42.400000000000006"
+                  y="43.400000000000006"
                 >
                   44k
                 </text>
@@ -1547,7 +1547,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="249.29999999999998"
+                  y="250.29999999999998"
                 />
                 <text
                   aria-hidden="true"
@@ -1563,7 +1563,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="243.29999999999998"
+                  y="244.29999999999998"
                 >
                   3k
                 </text>
@@ -1595,7 +1595,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="19"
+                  y="20"
                 />
                 <text
                   aria-hidden="true"
@@ -1611,7 +1611,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="13"
+                  y="14"
                 >
                   50k
                 </text>
@@ -1896,7 +1896,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="48.400000000000006"
+                y="49.400000000000006"
               />
               <text
                 aria-hidden="true"
@@ -1912,7 +1912,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="42.400000000000006"
+                y="43.400000000000006"
               >
                 44k
               </text>
@@ -1944,7 +1944,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="249.29999999999998"
+                y="250.29999999999998"
               />
               <text
                 aria-hidden="true"
@@ -1960,7 +1960,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="243.29999999999998"
+                y="244.29999999999998"
               >
                 3k
               </text>
@@ -1992,7 +1992,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="19"
+                y="20"
               />
               <text
                 aria-hidden="true"
@@ -2008,7 +2008,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="13"
+                y="14"
               >
                 50k
               </text>
@@ -2352,7 +2352,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="48.400000000000006"
+                  y="49.400000000000006"
                 />
                 <text
                   aria-hidden="true"
@@ -2368,7 +2368,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="42.400000000000006"
+                  y="43.400000000000006"
                 >
                   44k
                 </text>
@@ -2400,7 +2400,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="249.29999999999998"
+                  y="250.29999999999998"
                 />
                 <text
                   aria-hidden="true"
@@ -2416,7 +2416,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="243.29999999999998"
+                  y="244.29999999999998"
                 >
                   3k
                 </text>
@@ -2448,7 +2448,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="19"
+                  y="20"
                 />
                 <text
                   aria-hidden="true"
@@ -2464,7 +2464,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="13"
+                  y="14"
                 >
                   50k
                 </text>
@@ -2756,7 +2756,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="48.400000000000006"
+                y="49.400000000000006"
               />
               <text
                 aria-hidden="true"
@@ -2772,7 +2772,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="42.400000000000006"
+                y="43.400000000000006"
               >
                 44k
               </text>
@@ -2804,7 +2804,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="249.29999999999998"
+                y="250.29999999999998"
               />
               <text
                 aria-hidden="true"
@@ -2820,7 +2820,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="243.29999999999998"
+                y="244.29999999999998"
               >
                 3k
               </text>
@@ -2852,7 +2852,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="19"
+                y="20"
               />
               <text
                 aria-hidden="true"
@@ -2868,7 +2868,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="13"
+                y="14"
               >
                 50k
               </text>
@@ -3219,7 +3219,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="13"
+                  y="14"
                 />
                 <text
                   aria-hidden="true"
@@ -3235,7 +3235,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="7"
+                  y="8"
                 >
                   44k
                 </text>
@@ -3267,7 +3267,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="13"
+                  y="14"
                 />
                 <text
                   aria-hidden="true"
@@ -3283,7 +3283,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="7"
+                  y="8"
                 >
                   3k
                 </text>
@@ -3315,7 +3315,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="13"
+                  y="14"
                 />
                 <text
                   aria-hidden="true"
@@ -3331,7 +3331,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="7"
+                  y="8"
                 >
                   50k
                 </text>
@@ -3561,7 +3561,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="13"
+                y="14"
               />
               <text
                 aria-hidden="true"
@@ -3577,7 +3577,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="7"
+                y="8"
               >
                 44k
               </text>
@@ -3609,7 +3609,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="13"
+                y="14"
               />
               <text
                 aria-hidden="true"
@@ -3625,7 +3625,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="7"
+                y="8"
               >
                 3k
               </text>
@@ -3657,7 +3657,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="13"
+                y="14"
               />
               <text
                 aria-hidden="true"
@@ -3673,7 +3673,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="7"
+                y="8"
               >
                 50k
               </text>
@@ -3962,7 +3962,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="48.400000000000006"
+                  y="49.400000000000006"
                 />
                 <text
                   aria-hidden="true"
@@ -3978,7 +3978,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="42.400000000000006"
+                  y="43.400000000000006"
                 >
                   44k
                 </text>
@@ -4010,7 +4010,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="249.29999999999998"
+                  y="250.29999999999998"
                 />
                 <text
                   aria-hidden="true"
@@ -4026,7 +4026,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="243.29999999999998"
+                  y="244.29999999999998"
                 >
                   3k
                 </text>
@@ -4058,7 +4058,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="19"
+                  y="20"
                 />
                 <text
                   aria-hidden="true"
@@ -4074,7 +4074,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="13"
+                  y="14"
                 >
                   50k
                 </text>
@@ -4359,7 +4359,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="48.400000000000006"
+                y="49.400000000000006"
               />
               <text
                 aria-hidden="true"
@@ -4375,7 +4375,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="42.400000000000006"
+                y="43.400000000000006"
               >
                 44k
               </text>
@@ -4407,7 +4407,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="249.29999999999998"
+                y="250.29999999999998"
               />
               <text
                 aria-hidden="true"
@@ -4423,7 +4423,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="243.29999999999998"
+                y="244.29999999999998"
               >
                 3k
               </text>
@@ -4455,7 +4455,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="19"
+                y="20"
               />
               <text
                 aria-hidden="true"
@@ -4471,7 +4471,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="13"
+                y="14"
               >
                 50k
               </text>
@@ -4857,7 +4857,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="48.400000000000006"
+                  y="49.400000000000006"
                 />
                 <text
                   aria-hidden="true"
@@ -4873,7 +4873,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="42.400000000000006"
+                  y="43.400000000000006"
                 >
                   44k
                 </text>
@@ -4905,7 +4905,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="249.29999999999998"
+                  y="250.29999999999998"
                 />
                 <text
                   aria-hidden="true"
@@ -4921,7 +4921,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="243.29999999999998"
+                  y="244.29999999999998"
                 >
                   3k
                 </text>
@@ -4953,7 +4953,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="19"
+                  y="20"
                 />
                 <text
                   aria-hidden="true"
@@ -4969,7 +4969,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="13"
+                  y="14"
                 >
                   50k
                 </text>
@@ -5301,7 +5301,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="48.400000000000006"
+                y="49.400000000000006"
               />
               <text
                 aria-hidden="true"
@@ -5317,7 +5317,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="42.400000000000006"
+                y="43.400000000000006"
               >
                 44k
               </text>
@@ -5349,7 +5349,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="249.29999999999998"
+                y="250.29999999999998"
               />
               <text
                 aria-hidden="true"
@@ -5365,7 +5365,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="243.29999999999998"
+                y="244.29999999999998"
               >
                 3k
               </text>
@@ -5397,7 +5397,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="19"
+                y="20"
               />
               <text
                 aria-hidden="true"
@@ -5413,7 +5413,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="13"
+                y="14"
               >
                 50k
               </text>
@@ -5850,7 +5850,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="42.639999999999986"
+                  y="43.639999999999986"
                 />
                 <text
                   aria-hidden="true"
@@ -5866,7 +5866,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="36.639999999999986"
+                  y="37.639999999999986"
                 >
                   44k
                 </text>
@@ -5898,7 +5898,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="204.17999999999998"
+                  y="205.17999999999998"
                 />
                 <text
                   aria-hidden="true"
@@ -5914,7 +5914,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="198.17999999999998"
+                  y="199.17999999999998"
                 >
                   3k
                 </text>
@@ -5946,7 +5946,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="19"
+                  y="20"
                 />
                 <text
                   aria-hidden="true"
@@ -5962,7 +5962,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="13"
+                  y="14"
                 >
                   50k
                 </text>
@@ -6335,7 +6335,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="42.639999999999986"
+                y="43.639999999999986"
               />
               <text
                 aria-hidden="true"
@@ -6351,7 +6351,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="36.639999999999986"
+                y="37.639999999999986"
               >
                 44k
               </text>
@@ -6383,7 +6383,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="204.17999999999998"
+                y="205.17999999999998"
               />
               <text
                 aria-hidden="true"
@@ -6399,7 +6399,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="198.17999999999998"
+                y="199.17999999999998"
               >
                 3k
               </text>
@@ -6431,7 +6431,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="19"
+                y="20"
               />
               <text
                 aria-hidden="true"
@@ -6447,7 +6447,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="13"
+                y="14"
               >
                 50k
               </text>
@@ -6796,7 +6796,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="48.400000000000006"
+                  y="49.400000000000006"
                 />
                 <text
                   aria-hidden="true"
@@ -6812,7 +6812,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="42.400000000000006"
+                  y="43.400000000000006"
                 >
                   44k
                 </text>
@@ -6844,7 +6844,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="249.29999999999998"
+                  y="250.29999999999998"
                 />
                 <text
                   aria-hidden="true"
@@ -6860,7 +6860,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="243.29999999999998"
+                  y="244.29999999999998"
                 >
                   3k
                 </text>
@@ -6892,7 +6892,7 @@ Object {
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="19"
+                  y="20"
                 />
                 <text
                   aria-hidden="true"
@@ -6908,7 +6908,7 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="13"
+                  y="14"
                 >
                   50k
                 </text>
@@ -7193,7 +7193,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="48.400000000000006"
+                y="49.400000000000006"
               />
               <text
                 aria-hidden="true"
@@ -7209,7 +7209,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="42.400000000000006"
+                y="43.400000000000006"
               >
                 44k
               </text>
@@ -7241,7 +7241,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="249.29999999999998"
+                y="250.29999999999998"
               />
               <text
                 aria-hidden="true"
@@ -7257,7 +7257,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="243.29999999999998"
+                y="244.29999999999998"
               >
                 3k
               </text>
@@ -7289,7 +7289,7 @@ Object {
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="19"
+                y="20"
               />
               <text
                 aria-hidden="true"
@@ -7305,7 +7305,7 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="13"
+                y="14"
               >
                 50k
               </text>
