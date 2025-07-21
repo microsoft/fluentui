@@ -33,6 +33,11 @@ import {
   getCurveFactory,
   find,
   findNumericMinMaxOfY,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfNumericForAreaChart,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  createStringYAxis,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { Legend, Legends } from '../Legends/index';
@@ -135,6 +140,35 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     );
 
     const classes = useAreaChartStyles(props);
+
+    function _getDomainNRangeValues(
+      points: LineChartPoints[],
+      margins: Margins,
+      width: number,
+      chartType: ChartTypes,
+      isRTL: boolean,
+      xAxisType: XAxisTypes,
+      barWidth: number,
+      tickValues: Date[] | number[] | undefined,
+    ) {
+      let domainNRangeValue: IDomainNRange;
+      if (xAxisType === XAxisTypes.NumericAxis) {
+        domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
+      } else if (xAxisType === XAxisTypes.DateAxis) {
+        domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+          points,
+          margins,
+          width,
+          isRTL,
+          tickValues! as Date[],
+          chartType,
+          barWidth,
+        );
+      } else {
+        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+      }
+      return domainNRangeValue;
+    }
 
     function _getMargins(margins: Margins) {
       _margins = margins;
@@ -604,6 +638,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
                 opacity={layerOpacity}
                 fillOpacity={_getOpacity(points[index]!.legend)}
                 onMouseMove={event => _onRectMouseMove(event)}
+                onFocus={event => _handleFocus(event, index, 0, `${_circleId}_${index}`)}
                 onMouseOut={_onRectMouseOut}
                 onMouseOver={event => _onRectMouseMove(event)}
               />
@@ -667,7 +702,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
                     onMouseOut={_onRectMouseOut}
                     onMouseOver={event => _onRectMouseMove(event)}
                     onClick={() => _onDataPointClick(points[index]!.data[pointIndex].onDataPointClick!)}
-                    onFocus={() => _handleFocus(index, pointIndex, circleId)}
+                    onFocus={event => _handleFocus(event, index, pointIndex, circleId)}
                     onBlur={_handleBlur}
                     {...getSecureProps(pointOptions)}
                     r={_getCircleRadius(xDataPoint, circleRadius, circleId, legend)}
@@ -697,6 +732,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
                   fill={_updateCircleFillColor(xDataPoint, lineColor, circleId)}
                   onMouseOut={_onRectMouseOut}
                   onMouseOver={event => _onRectMouseMove(event)}
+                  onFocus={event => _handleFocus(event, index, pointIndex, circleId)}
                   onClick={() => _onDataPointClick(points[index]!.data[pointIndex].onDataPointClick!)}
                   {...getSecureProps(pointOptions)}
                   r={_getCircleRadius(xDataPoint, circleRadius, circleId, legend)}
@@ -800,7 +836,20 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
         : [];
     }
 
-    function _handleFocus(lineIndex: number, pointIndex: number, circleId: string) {
+    function _handleFocus(
+      event: React.FocusEvent<SVGCircleElement, Element>,
+      lineIndex: number,
+      pointIndex: number,
+      circleId: string,
+    ) {
+      let cx = 0;
+      let cy = 0;
+
+      const targetRect = (event.target as SVGCircleElement).getBoundingClientRect();
+      cx = targetRect.left + targetRect.width / 2;
+      cy = targetRect.top + targetRect.height / 2;
+      _updatePosition(cx, cy);
+
       const { x, y, xAxisCalloutData } = props.data.lineChartData![lineIndex].data[pointIndex];
       const formattedDate = x instanceof Date ? formatDate(x, props.useUTC) : x;
       const modifiedXVal = x instanceof Date ? x.getTime() : x;
@@ -910,12 +959,16 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           chartType={ChartTypes.AreaChart}
           calloutProps={calloutProps}
           legendBars={legends}
+          createYAxis={createNumericYAxis}
           xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
           tickParams={tickParams}
           maxOfYVal={data.maxOfYVal}
           getGraphData={_getGraphData}
+          getDomainNRangeValues={_getDomainNRangeValues}
+          createStringYAxis={createStringYAxis}
           getmargins={_getMargins}
           onChartMouseLeave={_handleChartMouseLeave}
+          getMinMaxOfYAxis={findNumericMinMaxOfY}
           enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
           componentRef={cartesianChartRef}
           /* eslint-disable react/jsx-no-bind */

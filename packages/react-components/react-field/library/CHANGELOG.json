@@ -2,6 +2,27 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Thu, 17 Jul 2025 13:49:38 GMT",
+      "tag": "@fluentui/react-field_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.3.0",
+            "commit": "23bbd701b365043a9f22a8d754d751cd1ec088aa"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jun 2025 14:11:55 GMT",
       "tag": "@fluentui/react-field_v9.3.4",
       "version": "9.3.4",

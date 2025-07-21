@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 14 Jul 2025 07:21:15 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jul 2025 07:21:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.16)
+
+Mon, 21 Jul 2025 07:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.15..@fluentui/react-charting_v5.24.16)
+
+### Patches
+
+- feat(react-charting): Support additional modes ([PR #34860](https://github.com/microsoft/fluentui/pull/34860) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.25 ([commit](https://github.com/microsoft/fluentui/commit/456db10a952bf6bf36213bc8926f4dfd140b5df3) by beachball)
+
+## [5.24.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.15)
+
+Fri, 18 Jul 2025 07:19:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.14..@fluentui/react-charting_v5.24.15)
+
+### Patches
+
+- fix: resolve minor Gantt chart bugs and optimize logic ([PR #34841](https://github.com/microsoft/fluentui/pull/34841) by kumarkshitij@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.24 ([PR #34841](https://github.com/microsoft/fluentui/pull/34841) by beachball)
+
+## [5.24.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.14)
+
+Wed, 16 Jul 2025 07:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.13..@fluentui/react-charting_v5.24.14)
+
+### Patches
+
+- fix(react-charting): Align labels and points according to given directions and rotation in schema ([PR #34828](https://github.com/microsoft/fluentui/pull/34828) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Support min max for VSBC in plotly ([PR #34846](https://github.com/microsoft/fluentui/pull/34846) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.23 ([PR #34846](https://github.com/microsoft/fluentui/pull/34846) by beachball)
 
 ## [5.24.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.13)
 

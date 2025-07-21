@@ -17,6 +17,10 @@ import {
   getScalePadding,
   getBarWidth,
   isScalePaddingDefined,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
   getNextColor,
   areArraysEqual,
   calculateLongestLabelWidth,
@@ -255,6 +259,26 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     return { startValue: d3Min(values)!, endValue: d3Max(values)! };
   }
 
+  function _getDomainNRangeValues(
+    points: GroupedVerticalBarChartData[],
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  }
+
   // The maxOfYVal prop is only required for the primary y-axis, so yMax should be calculated
   // using only the data points associated with the primary y-axis.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -365,11 +389,19 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const onBarFocus = (
+    event: React.FocusEvent<SVGRectElement, Element>,
     pointData: GVBarChartSeriesPoint,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     groupData: any,
     refArrayIndexNumber: number,
   ): void => {
+    let x = 0;
+    let y = 0;
+
+    const targetRect = (event.target as SVGRectElement).getBoundingClientRect();
+    x = targetRect.left + targetRect.width / 2;
+    y = targetRect.top + targetRect.height / 2;
+    updatePosition(x, y);
     _refArray.forEach((obj: RefArrayData, index: number) => {
       if (obj.index === pointData.legend && refArrayIndexNumber === index) {
         setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(pointData.legend));
@@ -440,17 +472,16 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               width={_barWidth}
               x={xPoint}
               y={yPoint}
-              data-is-focusable={!props.hideTooltip && (_legendHighlighted(pointData.legend) || _noLegendHighlighted())}
               opacity={_getOpacity(pointData.legend)}
               ref={(e: SVGRectElement | null) => {
                 _refCallback(e!, pointData.legend, refIndexNumber);
               }}
               fill={startColor}
               rx={0}
-              onMouseOver={onBarHover.bind(null, pointData, singleSet)}
-              onMouseMove={onBarHover.bind(null, pointData, singleSet)}
+              onMouseOver={event => onBarHover(pointData, singleSet, event)}
+              onMouseMove={event => onBarHover(pointData, singleSet, event)}
               onMouseOut={_onBarLeave}
-              onFocus={onBarFocus.bind(null, pointData, singleSet, refIndexNumber)}
+              onFocus={event => onBarFocus(event, pointData, singleSet, refIndexNumber)}
               onBlur={_onBarLeave}
               onClick={pointData.onClick}
               aria-label={getAriaLabel(pointData, singleSet.xAxisPoint)}
@@ -649,10 +680,13 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       chartTitle={_getChartTitle()}
       points={_datasetForBars}
       chartType={ChartTypes.GroupedVerticalBarChart}
+      getDomainNRangeValues={_getDomainNRangeValues}
       getMinMaxOfYAxis={_getMinMaxOfYAxis}
+      createStringYAxis={createStringYAxis}
       calloutProps={calloutProps}
       legendBars={legends}
       xAxisType={_xAxisType}
+      createYAxis={createNumericYAxis}
       datasetForXAxisDomain={_xAxisLabels}
       tickParams={tickParams}
       tickPadding={props.tickPadding || 5}

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Fri, 27 Jun 2025 13:39:41 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.3.4)
+
+Thu, 17 Jul 2025 13:49:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.3.3..@fluentui/react-calendar-compat_v0.3.4)
+
+### Patches
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-tabster to v9.26.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
 
 ## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.3.3)
 

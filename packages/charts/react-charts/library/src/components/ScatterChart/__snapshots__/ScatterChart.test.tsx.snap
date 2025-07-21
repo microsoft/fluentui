@@ -170,7 +170,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               fill="currentColor"
               x="-10"
             >
-              15k
+              16.3k
             </text>
           </g>
           <g
@@ -188,7 +188,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               fill="currentColor"
               x="-10"
             >
-              30k
+              32.6k
             </text>
           </g>
           <g
@@ -206,7 +206,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               fill="currentColor"
               x="-10"
             >
-              45k
+              48.9k
             </text>
           </g>
           <g
@@ -224,7 +224,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               fill="currentColor"
               x="-10"
             >
-              60k
+              65.2k
             </text>
           </g>
         </g>
@@ -247,12 +247,12 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               <circle
                 aria-label="Electronics. Region 2, 60000."
                 cx="103.62745098039215"
-                cy="42.27272727272728"
+                cy="60.03625209146681"
                 data-is-focusable="true"
                 fill="#00bcf2"
                 id="circler0_1_0"
                 opacity="1"
-                r="19.30303030303031"
+                r="17.76352481873954"
                 role="img"
                 stroke="#00bcf2"
                 tabindex="0"
@@ -260,12 +260,12 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               <circle
                 aria-label="Furniture. Region 2, 25000."
                 cx="219.31372549019608"
-                cy="172.1969696969697"
+                cy="179.5984383714445"
                 data-is-focusable="true"
                 fill="#00bcf2"
                 id="circler0_1_1"
                 opacity="1"
-                r="11.581818181818187"
+                r="10.658114891243724"
                 role="img"
                 stroke="#00bcf2"
                 tabindex="0"
@@ -273,12 +273,12 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               <circle
                 aria-label="Clothing. Region 2, 22000."
                 cx="334.99999999999994"
-                cy="183.33333333333334"
+                cy="189.84662576687117"
                 data-is-focusable="true"
                 fill="#00bcf2"
                 id="circler0_1_2"
                 opacity="1"
-                r="10.294949494949499"
+                r="9.473879903327754"
                 role="img"
                 stroke="#00bcf2"
                 tabindex="0"
@@ -286,12 +286,12 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               <circle
                 aria-label="Toys. Region 2, 12000."
                 cx="450.68627450980387"
-                cy="220.45454545454544"
+                cy="224.00725041829335"
                 data-is-focusable="true"
                 fill="#00bcf2"
                 id="circler0_1_3"
                 opacity="1"
-                r="7.721212121212124"
+                r="7.105409927495816"
                 role="img"
                 stroke="#00bcf2"
                 tabindex="0"
@@ -299,12 +299,12 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               <circle
                 aria-label="Books. Region 2, 8000."
                 cx="566.3725490196077"
-                cy="235.3030303030303"
+                cy="237.67150027886223"
                 data-is-focusable="true"
                 fill="#00bcf2"
                 id="circler0_1_4"
                 opacity="1"
-                r="3.860606060606062"
+                r="3.552704963747908"
                 role="img"
                 stroke="#00bcf2"
                 tabindex="0"
@@ -317,12 +317,12 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               <circle
                 aria-label="Electronics. Region 1, 50000."
                 cx="103.62745098039215"
-                cy="79.3939393939394"
+                cy="94.19687674288902"
                 data-is-focusable="true"
                 fill="#0078d4"
                 id="circler0_0_0"
                 opacity="1"
-                r="16.085858585858592"
+                r="14.802937348949618"
                 role="img"
                 stroke="#0078d4"
                 tabindex="0"
@@ -330,12 +330,12 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               <circle
                 aria-label="Furniture. Region 1, 30000."
                 cx="219.31372549019608"
-                cy="153.63636363636363"
+                cy="162.5181260457334"
                 data-is-focusable="true"
                 fill="#0078d4"
                 id="circler0_0_1"
                 opacity="1"
-                r="12.868686868686874"
+                r="11.842349879159693"
                 role="img"
                 stroke="#0078d4"
                 tabindex="0"
@@ -343,12 +343,12 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               <circle
                 aria-label="Clothing. Region 1, 20000."
                 cx="334.99999999999994"
-                cy="190.75757575757578"
+                cy="196.67875069715564"
                 data-is-focusable="true"
                 fill="#0078d4"
                 id="circler0_0_2"
                 opacity="1"
-                r="9.651515151515156"
+                r="8.88176240936977"
                 role="img"
                 stroke="#0078d4"
                 tabindex="0"
@@ -356,12 +356,12 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               <circle
                 aria-label="Toys. Region 1, 15000."
                 cx="450.68627450980387"
-                cy="209.3181818181818"
+                cy="213.75906302286668"
                 data-is-focusable="true"
                 fill="#0078d4"
                 id="circler0_0_3"
                 opacity="1"
-                r="6.434343434343437"
+                r="5.9211749395798465"
                 role="img"
                 stroke="#0078d4"
                 tabindex="0"
@@ -369,12 +369,12 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               <circle
                 aria-label="Books. Region 1, 10000."
                 cx="566.3725490196077"
-                cy="227.87878787878788"
+                cy="230.83937534857782"
                 data-is-focusable="true"
                 fill="#0078d4"
                 id="circler0_0_4"
                 opacity="1"
-                r="5.1474747474747495"
+                r="4.736939951663877"
                 role="img"
                 stroke="#0078d4"
                 tabindex="0"

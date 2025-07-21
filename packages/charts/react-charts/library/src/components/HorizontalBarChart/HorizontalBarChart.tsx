@@ -21,7 +21,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   HorizontalBarChartProps
 >((props, forwardedRef) => {
   const legendContainer = React.useRef<HTMLDivElement | null>(null);
-  const _uniqLineText: string = '_HorizontalLine_' + Math.random().toString(36).substring(7);
+  const _uniqLineText: string = useId('_HorizontalLine_');
   const _refArray: RefArrayData[] = [];
   const _isRTL: boolean = useRtl();
   const barChartSvgRef: React.RefObject<SVGSVGElement> = React.createRef<SVGSVGElement>();
@@ -434,7 +434,6 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
               <svg ref={barChartSvgRef} className={classes.chart} aria-label={points!.chartTitle}>
                 <g
                   id={keyVal}
-                  key={keyVal}
                   ref={(e: SVGGElement) => {
                     _refCallback(e, points!.chartData![0].legend);
                   }}

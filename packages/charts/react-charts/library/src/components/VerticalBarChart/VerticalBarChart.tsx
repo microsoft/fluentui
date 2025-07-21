@@ -24,6 +24,7 @@ import {
   YValueHover,
   ChartPopover,
   Chart,
+  DataPoint,
 } from '../../index';
 import {
   ChartTypes,
@@ -41,6 +42,13 @@ import {
   useRtl,
   areArraysEqual,
   calculateLongestLabelWidth,
+  findVerticalNumericMinMaxOfY,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfVerticalNumeric,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -122,6 +130,36 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     }
     prevPropsRef.current = props;
   }, [props, prevPropsRef, _adjustProps]);
+
+  function _getDomainNRangeValues(
+    points: DataPoint[],
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+        points,
+        margins,
+        width,
+        isRTL,
+        tickValues! as Date[],
+        chartType,
+        barWidth,
+      );
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  }
 
   function _createLine(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -473,6 +511,13 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     refArrayIndexNumber: number,
     color: string,
   ): void {
+    let x = 0;
+    let y = 0;
+
+    const targetRect = (event.target as SVGRectElement).getBoundingClientRect();
+    x = targetRect.left + targetRect.width / 2;
+    y = targetRect.top + targetRect.height / 2;
+    updatePosition(x, y);
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { YValueHover, hoverXValue } = _getCalloutContentForLineAndBar(point);
     _refArray.forEach((obj: RefArrayData, index: number) => {
@@ -1095,14 +1140,18 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       points={_points}
       chartType={ChartTypes.VerticalBarChart}
       xAxisType={_xAxisType}
+      createYAxis={createNumericYAxis}
       calloutProps={calloutProps}
       tickParams={tickParams}
       {...(_isHavingLine && _noLegendHighlighted() && { isCalloutForStack: true })}
       legendBars={legendBars}
       datasetForXAxisDomain={_xAxisLabels}
       barwidth={_barWidth}
+      createStringYAxis={createStringYAxis}
       getmargins={_getMargins}
+      getMinMaxOfYAxis={findVerticalNumericMinMaxOfY}
       getGraphData={_getGraphData}
+      getDomainNRangeValues={_getDomainNRangeValues}
       getAxisData={_getAxisData}
       onChartMouseLeave={_handleChartMouseLeave}
       getDomainMargins={_getDomainMargins}

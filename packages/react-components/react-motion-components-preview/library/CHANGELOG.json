@@ -2,6 +2,33 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Wed, 16 Jul 2025 13:52:47 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "0390c60c88c5ce232c63670e1c9a2ff1b4853cb1",
+            "comment": "refactor(Collapse): make consistent with other motion components"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "57cf606591172a42b4b107c0b91c9ab63aaae176",
+            "comment": "feat(motion): add Slide presence motion component"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "d9e4426535cd4bd4f8069c0acdbd9d5c6f6c4611",
+            "comment": "refactor(motion): apply consistent patterns across Fade and Scale"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jun 2025 14:11:54 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.6.2",
       "version": "0.6.2",

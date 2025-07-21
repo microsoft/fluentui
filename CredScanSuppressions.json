@@ -22,14 +22,6 @@
       "_justification": "External dependency node-ipc, not shipping these files"
     },
     {
-      "file": "node_modules/danger/node_modules/agent-base/test/ssl-cert-snakeoil.key",
-      "_justification": "External dependency danger has dependency agent-base with test certs, not shipping these files"
-    },
-    {
-      "file": "node_modules/danger/node_modules/http-proxy-agent/test/ssl-cert-snakeoil.key",
-      "_justification": "External dependency danger has dependency http-proxy-agent with test certs, not shipping these files"
-    },
-    {
       "file": "node_modules/rollup-plugin-filesize/node_modules/node-gyp/test/fixtures/server.key",
       "_justification": "External dependency rollup-plugin-filesize has dependency node-gyp with test certs, not shipping these files"
     },

@@ -7,12 +7,8 @@ import {
   createNumericXAxis,
   createStringXAxis,
   IAxisData,
-  getDomainNRangeValues,
   createDateXAxis,
-  createYAxis,
-  createStringYAxis,
   IMargins,
-  getMinMaxOfYAxis,
   XAxisTypes,
   YAxisType,
   createWrapOfXLabels,
@@ -229,31 +225,18 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   if ((props.enableFirstRenderOptimization && chartContainer.current) || !props.enableFirstRenderOptimization) {
     _isFirstRender.current = false;
     const XAxisParams = {
-      domainNRangeValues: props.getDomainNRangeValues
-        ? props.getDomainNRangeValues(
-            points,
-            props.getDomainMargins ? props.getDomainMargins(containerWidth) : margins,
-            containerWidth,
-            chartType,
-            _useRtl,
-            props.xAxisType,
-            props.barwidth!,
-            props.tickValues!,
-            // This is only used for Horizontal Bar Chart with Axis for y as string axis
-            startFromX,
-          )
-        : getDomainNRangeValues(
-            points,
-            props.getDomainMargins ? props.getDomainMargins(containerWidth) : margins,
-            containerWidth,
-            chartType,
-            _useRtl,
-            props.xAxisType,
-            props.barwidth!,
-            props.tickValues!,
-            // This is only used for Horizontal Bar Chart with Axis for y as string axis
-            startFromX,
-          ),
+      domainNRangeValues: props.getDomainNRangeValues(
+        points,
+        props.getDomainMargins ? props.getDomainMargins(containerWidth) : margins,
+        containerWidth,
+        chartType,
+        _useRtl,
+        props.xAxisType,
+        props.barwidth!,
+        props.tickValues!,
+        // This is only used for Horizontal Bar Chart with Axis for y as string axis
+        startFromX,
+      ),
       containerHeight: containerHeight - removalValueForTextTuncate!,
       margins: margins,
       xAxisElement: xAxisElement.current!,
@@ -280,9 +263,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       yMaxValue: props.yMaxValue || 0,
       tickPadding: props.showYAxisLablesTooltip ? 15 : 10,
       maxOfYVal: props.maxOfYVal,
-      yMinMaxValues: props.getMinMaxOfYAxis
-        ? props.getMinMaxOfYAxis(points, props.yAxisType)
-        : getMinMaxOfYAxis(points, chartType, props.yAxisType),
+      yMinMaxValues: props.getMinMaxOfYAxis(points, props.yAxisType),
       // please note these padding default values must be consistent in here
       // and the parent chart(HBWA/Vertical etc..) for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
@@ -358,14 +339,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     let yScaleSecondary: any;
     const axisData: IAxisData = { yAxisDomainValues: [] };
     if (props.yAxisType && props.yAxisType === YAxisType.StringAxis) {
-      yScalePrimary = createStringYAxis(
-        YAxisParams,
-        props.stringDatasetForYAxisDomain!,
-        _useRtl,
-        props.chartType,
-        props.barwidth,
-        culture,
-      );
+      yScalePrimary = props.createStringYAxis(YAxisParams, props.stringDatasetForYAxisDomain!, _useRtl, props.barwidth);
     } else {
       // TODO: Since the scale domain values are now computed independently for both the primary and
       // secondary y-axes, the yMinValue and yMaxValue props are no longer necessary for accurately
@@ -383,30 +357,26 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           yMinValue: props.secondaryYScaleOptions?.yMinValue || 0,
           yMaxValue: props.secondaryYScaleOptions?.yMaxValue ?? 100,
           tickPadding: 10,
-          yMinMaxValues: props.getMinMaxOfYAxis
-            ? props.getMinMaxOfYAxis(points, props.yAxisType, true)
-            : getMinMaxOfYAxis(points, props.chartType, props.yAxisType, true),
+          yMinMaxValues: props.getMinMaxOfYAxis(points, props.yAxisType, true),
           yAxisPadding: props.yAxisPadding,
         };
 
-        yScaleSecondary = createYAxis(
+        yScaleSecondary = props.createYAxis(
           YAxisParamsSecondary,
           _useRtl,
           axisData,
-          chartType,
-          props.barwidth!,
           isIntegralDataset,
+          chartType,
           true,
           props.roundedTicks!,
         );
       }
-      yScalePrimary = createYAxis(
+      yScalePrimary = props.createYAxis(
         YAxisParams,
         _useRtl,
         axisData,
-        chartType,
-        props.barwidth!,
         isIntegralDataset,
+        chartType,
         false,
         props.roundedTicks!,
       );
@@ -421,7 +391,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           yScalePrimary,
           props.noOfCharsToTruncate || 4,
           props.showYAxisLablesTooltip || false,
-          0,
           _useRtl,
         );
 

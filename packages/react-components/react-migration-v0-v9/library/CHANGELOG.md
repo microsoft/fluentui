@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-migration-v0-v9
 
-This log was last generated on Fri, 11 Jul 2025 15:59:23 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.5.0)
+
+Thu, 17 Jul 2025 13:49:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.4.8..@fluentui/react-migration-v0-v9_v9.5.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-aria to v9.15.4 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-components to v9.67.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-tabster to v9.26.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+
+## [9.4.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.4.8)
+
+Wed, 16 Jul 2025 13:52:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.4.7..@fluentui/react-migration-v0-v9_v9.4.8)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.66.8 ([PR #34849](https://github.com/microsoft/fluentui/pull/34849) by beachball)
 
 ## [9.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.4.7)
 

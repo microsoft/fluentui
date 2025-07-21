@@ -10,16 +10,19 @@ export function renderScatterPolarCategoryLabels({
   xAxisScale,
   yAxisScale,
   className,
-  maybeLineOptions,
+  lineOptions,
   minPixelGap = 40,
 }: {
   allSeriesData: { data: { x: number; y: number; text?: string }[] }[];
   xAxisScale: ScaleLinear<number, number>;
   yAxisScale: ScaleLinear<number, number>;
   className: string;
-  maybeLineOptions?: { originXOffset?: number };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  lineOptions?: any;
   minPixelGap?: number;
 }): React.JSX.Element[] {
+  const maybeLineOptions = extractMaybeLineOptions(lineOptions);
+
   // 1. Aggregate all data points from all series
   const allLabels: { x: number; y: number; text: string }[] = [];
   allSeriesData.forEach(series => {
@@ -39,8 +42,12 @@ export function renderScatterPolarCategoryLabels({
   const labelRadius = 0.7; // You can adjust this value for more/less offset
   const numLabels = uniqueTexts.length;
 
+  // Respect schema or prop rotation and direction (default ccw, 0°)
+  const dirMultiplier = maybeLineOptions?.direction === 'clockwise' ? -1 : 1;
+  const rotationRad = ((maybeLineOptions?.rotation ?? 0) * Math.PI) / 180;
+
   uniqueTexts.forEach((text, i) => {
-    const angle = ((2 * Math.PI) / numLabels) * i;
+    const angle = rotationRad + dirMultiplier * ((2 * Math.PI) / numLabels) * i;
     const originXOffset = maybeLineOptions?.originXOffset || 0;
     const x = xAxisScale(labelRadius * Math.cos(angle) - originXOffset / 2);
     const y = yAxisScale(labelRadius * Math.sin(angle));
@@ -67,4 +74,23 @@ export function renderScatterPolarCategoryLabels({
   });
 
   return renderedLabels;
+}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function extractMaybeLineOptions(lineOptions: any):
+  | {
+      originXOffset?: number;
+      direction?: 'clockwise' | 'counterclockwise';
+      rotation?: number;
+    }
+  | undefined {
+  return lineOptions
+    ? {
+        originXOffset: lineOptions.originXOffset,
+        direction:
+          lineOptions.direction === 'clockwise' || lineOptions.direction === 'counterclockwise'
+            ? lineOptions.direction
+            : undefined,
+        rotation: lineOptions.rotation,
+      }
+    : undefined;
 }

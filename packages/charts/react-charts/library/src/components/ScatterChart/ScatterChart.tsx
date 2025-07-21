@@ -6,7 +6,18 @@ import { select as d3Select } from 'd3-selection';
 import { Legend, Legends } from '../Legends/index';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
-import { areArraysEqual, find } from '../../utilities/index';
+import {
+  areArraysEqual,
+  createNumericYAxis,
+  createStringYAxis,
+  domainRangeOfDateForScatterChart,
+  domainRangeOfNumericForScatterChart,
+  domainRangeOfXStringAxis,
+  find,
+  findNumericMinMaxOfY,
+  IDomainNRange,
+  YAxisType,
+} from '../../utilities/index';
 import {
   AccessibilityProps,
   CartesianChart,
@@ -149,6 +160,43 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       setClickPosition({ x: newX, y: newY });
       setPopoverOpen(true);
     }
+  }
+
+  function _getNumericMinMaxOfY(
+    points: LineChartPoints[],
+    yAxisType?: YAxisType,
+  ): { startValue: number; endValue: number } {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType);
+    let yPadding = 0;
+    yPadding = (endValue - startValue) * 0.1;
+
+    return {
+      startValue: startValue - yPadding,
+      endValue: endValue + yPadding,
+    };
+  }
+
+  function _getDomainNRangeValues(
+    points: any,
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfNumericForScatterChart(points, margins, width, isRTL);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForScatterChart(points, margins, width, isRTL, tickValues! as Date[]);
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
   }
 
   function _getMargins(_margins: Margins) {
@@ -324,7 +372,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
               _handleHover(x, y, verticaLineHeight, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData, event)
             }
             onMouseOut={_handleMouseOut}
-            onFocus={() => _handleFocus(seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+            onFocus={event =>
+              _handleFocus(event, seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
+            }
             onBlur={_handleMouseOut}
             {..._getClickHandler(_points[i].data[j].onDataPointClick)}
             opacity={isLegendSelected && !currentPointHidden ? 1 : 0.1}
@@ -372,13 +422,20 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   }
 
   function _handleFocus(
+    event: React.FocusEvent<SVGCircleElement, Element>,
     seriesId: string,
     x: number | Date | string,
-
     xAxisCalloutData: string | undefined,
     circleId: string,
     xAxisCalloutAccessibilityData?: AccessibilityProps,
   ) {
+    let cx = 0;
+    let cy = 0;
+
+    const targetRect = (event.target as SVGCircleElement).getBoundingClientRect();
+    cx = targetRect.left + targetRect.width / 2;
+    cy = targetRect.top + targetRect.height / 2;
+    updatePosition(cx, cy);
     _uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
     const xVal = x instanceof Date ? x.getTime() : x;
@@ -558,6 +615,10 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       getmargins={_getMargins}
       getGraphData={_initializeScatterChartData}
       xAxisType={_xAxisType}
+      getMinMaxOfYAxis={_getNumericMinMaxOfY}
+      getDomainNRangeValues={_getDomainNRangeValues}
+      createYAxis={createNumericYAxis}
+      createStringYAxis={createStringYAxis}
       onChartMouseLeave={_handleChartMouseLeave}
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}

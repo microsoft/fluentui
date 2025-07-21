@@ -225,7 +225,7 @@ const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean
 
 const validateBarData = (data: Partial<PlotData>) => {
   if (data.orientation === 'h') {
-    if (isStringArray(data.x) && !isDateArray(data.x)) {
+    if (!isNumberArray(data.x) && !isDateArray(data.x)) {
       throw new Error(
         `${UNSUPPORTED_MSG_PREFIX} ${data.type}, orientation: ${data.orientation}, string x values not supported.`,
       );
@@ -242,7 +242,7 @@ const validateBarData = (data: Partial<PlotData>) => {
   }
 };
 const isScatterMarkers = (mode: string): boolean => {
-  return ['markers', 'text+markers', 'markers+text'].includes(mode);
+  return ['markers', 'text+markers', 'markers+text', 'text'].includes(mode);
 };
 
 const validateScatterData = (data: Partial<PlotData>) => {
@@ -258,7 +258,15 @@ const validateScatterData = (data: Partial<PlotData>) => {
       throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
     }
   } else if (
-    ['lines+markers', 'markers+lines', 'text+lines+markers', 'lines', 'text+lines', 'lines+text'].includes(mode)
+    [
+      'lines+markers',
+      'markers+lines',
+      'text+lines+markers',
+      'lines',
+      'text+lines',
+      'lines+text',
+      'lines+markers+text',
+    ].includes(mode)
   ) {
     if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
       throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);

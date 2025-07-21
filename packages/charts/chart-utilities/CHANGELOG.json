@@ -2,6 +2,51 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Mon, 21 Jul 2025 07:21:21 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.25",
+      "version": "1.1.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "598962e4c4dfb8316fb496e0e33e7cc35dcfc92d",
+            "comment": "feat(chart-utilities): Support additional modes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jul 2025 07:19:59 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.24",
+      "version": "1.1.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "8bdaf976f78b536e4692e1e5950d465b476c32e8",
+            "comment": "fix: correct check for string x-values in horizontal bar trace"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Jul 2025 07:20:17 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.23",
+      "version": "1.1.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "3d98e388d02e385dc1e93ce8d57d60476c4067ef",
+            "comment": "fix(chart-utilities): Decode data in provided shape if present in schema"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Jul 2025 07:21:14 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.22",
       "version": "1.1.22",

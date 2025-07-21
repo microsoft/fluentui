@@ -527,6 +527,7 @@ export const transformPlotlyJsonToVSBCProps = (
     wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getYMinMaxValues(input.data[0], input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
   };
@@ -778,12 +779,14 @@ const transformPlotlyJsonToScatterTraceProps = (
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps | IScatterChartProps => {
   const isScatterMarkers = [
+    'text',
     'markers',
     'text+markers',
     'markers+text',
     'lines+markers',
     'markers+line',
     'text+lines+markers',
+    'lines+markers+text',
   ].includes((input.data[0] as PlotData)?.mode);
   const isAreaChart = chartType === 'area';
   const isScatterChart = chartType === 'scatter';
@@ -855,7 +858,14 @@ const transformPlotlyJsonToScatterTraceProps = (
             mode: series.type !== 'scatterpolar' ? series.mode : 'scatterpolar',
             // originXOffset is not typed on Layout, but may be present in input.layout as a part of projection of
             // scatter polar coordingates to cartesian coordinates
-            originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
+
+            ...(series.type === 'scatterpolar'
+              ? {
+                  originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
+                  direction: input.layout?.polar?.angularaxis?.direction,
+                  rotation: input.layout?.polar?.angularaxis?.rotation,
+                }
+              : {}),
           },
           useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         } as ILineChartPoints;
@@ -1013,7 +1023,7 @@ export const transformPlotlyJsonToGanttChartProps = (
       const isXDate = input.layout?.xaxis?.type === 'date' || isDateArray(series.x);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const convertXValueToNumber = (value: any) => {
-        return isInvalidValue(value) ? 0 : isXDate ? new Date(value as string | number).getTime() : (value as number);
+        return isInvalidValue(value) ? 0 : isXDate ? +parseLocalDate(value) : +value;
       };
 
       return (series.y as Datum[])
@@ -1751,6 +1761,10 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       continue;
     }
 
+    // retrieve polar axis settings
+    const dirMultiplier = input.layout?.polar?.angularaxis?.direction === 'clockwise' ? -1 : 1;
+    const startAngleInRad = ((input.layout?.polar?.angularaxis?.rotation ?? 0) * Math.PI) / 180;
+
     // Compute tick positions if categorical
     let uniqueTheta: Datum[] = [];
     let categorical = false;
@@ -1765,13 +1779,13 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       }
 
       // 4. Map theta to angle in radians
-      let thetaRad;
+      let thetaRad: number;
       if (categorical) {
         const idx = uniqueTheta.indexOf(thetas[ptindex]);
         const step = (2 * Math.PI) / uniqueTheta.length;
-        thetaRad = idx * step;
+        thetaRad = startAngleInRad + dirMultiplier * idx * step;
       } else {
-        thetaRad = ((thetas[ptindex] as number) * Math.PI) / 180;
+        thetaRad = startAngleInRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
       }
       // 5. Shift only the polar origin (not the cartesian)
       const rawRadius = rVals[ptindex] as number;
@@ -2422,7 +2436,7 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
 
     if (!ax?.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
       const categoriesInTraceOrder = Array.from(new Set(values as string[]));
-      result[propName] = categoriesInTraceOrder;
+      result[propName] = ax?.autorange === 'reversed' ? categoriesInTraceOrder.reverse() : categoriesInTraceOrder;
       return;
     }
 
@@ -2430,4 +2444,32 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
   });
 
   return result;
+};
+
+/**
+ * This is experimental. Use it only with valid datetime strings to verify if they conform to the ISO 8601 format.
+ */
+const isoDateRegex = /^\d{4}(-\d{2}(-\d{2})?)?(T\d{2}:\d{2}(:\d{2}(\.\d{1,9})?)?(Z)?)?$/;
+
+/**
+ * We want to display localized date and time in the charts, so the useUTC prop is set to false.
+ * But this can sometimes cause the formatters to display the datetime incorrectly.
+ * To work around this issue, we use this function to adjust datetime strings so that they are always interpreted
+ * as local time, allowing the formatters to produce the correct output.
+ *
+ * FIXME: The formatters should always produce a clear and accurate localized output, regardless of the
+ * format used to create the date object.
+ */
+const parseLocalDate = (value: string | number) => {
+  if (typeof value === 'string') {
+    const match = value.match(isoDateRegex);
+    if (match) {
+      if (!match[3]) {
+        value += 'T00:00';
+      } else if (match[6]) {
+        value = value.replace('Z', '');
+      }
+    }
+  }
+  return new Date(value);
 };

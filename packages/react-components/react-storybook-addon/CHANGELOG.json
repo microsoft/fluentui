@@ -2,6 +2,27 @@
   "name": "@fluentui/react-storybook-addon",
   "entries": [
     {
+      "date": "Thu, 17 Jul 2025 13:49:52 GMT",
+      "tag": "@fluentui/react-storybook-addon_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-aria to v9.15.4",
+            "commit": "23bbd701b365043a9f22a8d754d751cd1ec088aa"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-provider to v9.22.0",
+            "commit": "23bbd701b365043a9f22a8d754d751cd1ec088aa"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 10:02:47 GMT",
       "tag": "@fluentui/react-storybook-addon_v0.2.3",
       "version": "0.2.3",
