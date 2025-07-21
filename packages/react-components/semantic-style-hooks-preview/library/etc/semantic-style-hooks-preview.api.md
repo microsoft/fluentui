@@ -14,6 +14,13 @@ import { BreadcrumbState } from '@fluentui/react-breadcrumb';
 import { ButtonState } from '@fluentui/react-button';
 import { CheckboxState } from '@fluentui/react-checkbox';
 import { CompoundButtonState } from '@fluentui/react-button';
+import { DataGridBodyState } from '@fluentui/react-table';
+import { DataGridCellState } from '@fluentui/react-table';
+import { DataGridHeaderCellState } from '@fluentui/react-table';
+import { DataGridHeaderState } from '@fluentui/react-table';
+import { DataGridRowState } from '@fluentui/react-table';
+import { DataGridSelectionCellState } from '@fluentui/react-table';
+import { DataGridState } from '@fluentui/react-table';
 import { DialogActionsState } from '@fluentui/react-dialog';
 import { DialogBodyState } from '@fluentui/react-dialog';
 import { DialogContentState } from '@fluentui/react-dialog';
@@ -56,6 +63,16 @@ import { SpinButtonState } from '@fluentui/react-spinbutton';
 import { SpinnerState } from '@fluentui/react-spinner';
 import { SplitButtonState } from '@fluentui/react-button';
 import { SwitchState } from '@fluentui/react-switch';
+import { TableBodyState } from '@fluentui/react-table';
+import { TableCellActionsState } from '@fluentui/react-table';
+import { TableCellLayoutState } from '@fluentui/react-table';
+import { TableCellState } from '@fluentui/react-table';
+import { TableHeaderCellState } from '@fluentui/react-table';
+import { TableHeaderState } from '@fluentui/react-table';
+import { TableResizeHandleState } from '@fluentui/react-table';
+import { TableRowState } from '@fluentui/react-table';
+import { TableSelectionCellState } from '@fluentui/react-table';
+import { TableState } from '@fluentui/react-table';
 import { TabListState } from '@fluentui/react-tabs';
 import { TabState } from '@fluentui/react-tabs';
 import { TextareaState } from '@fluentui/react-textarea';
@@ -107,6 +124,27 @@ export const useSemanticCheckboxStyles: (_state: unknown) => CheckboxState;
 
 // @public (undocumented)
 export const useSemanticCompoundButtonStyles: (_state: unknown) => CompoundButtonState;
+
+// @public
+export const useSemanticDataGridBodyStyles: (_state: unknown) => DataGridBodyState;
+
+// @public
+export const useSemanticDataGridCellStyles: (_state: unknown) => DataGridCellState;
+
+// @public
+export const useSemanticDataGridHeaderCellStyles: (_state: unknown) => DataGridHeaderCellState;
+
+// @public
+export const useSemanticDataGridHeaderStyles: (_state: unknown) => DataGridHeaderState;
+
+// @public
+export const useSemanticDataGridRowStyles: (_state: unknown) => DataGridRowState;
+
+// @public
+export const useSemanticDataGridSelectionCellStyles: (_state: unknown) => DataGridSelectionCellState;
+
+// @public
+export const useSemanticDataGridStyles: (_state: unknown) => DataGridState;
 
 // @public
 export const useSemanticDialogActionsStyles: (_state: unknown) => DialogActionsState;
@@ -242,6 +280,36 @@ export const useSemanticTabContentStyles_unstable: (state: TabState) => TabState
 
 // @public
 export const useSemanticTabIndicatorStyles_unstable: (state: TabState) => TabState;
+
+// @public
+export const useSemanticTableBodyStyles: (_state: unknown) => TableBodyState;
+
+// @public
+export const useSemanticTableCellActionsStyles: (_state: unknown) => TableCellActionsState;
+
+// @public
+export const useSemanticTableCellLayoutStyles: (_state: unknown) => TableCellLayoutState;
+
+// @public
+export const useSemanticTableCellStyles: (_state: unknown) => TableCellState;
+
+// @public
+export const useSemanticTableHeaderCellStyles: (_state: unknown) => TableHeaderCellState;
+
+// @public
+export const useSemanticTableHeaderStyles: (_state: unknown) => TableHeaderState;
+
+// @public
+export const useSemanticTableResizeHandleStyles: (_state: unknown) => TableResizeHandleState;
+
+// @public
+export const useSemanticTableRowStyles: (_state: unknown) => TableRowState;
+
+// @public
+export const useSemanticTableSelectionCellStyles: (_state: unknown) => TableSelectionCellState;
+
+// @public
+export const useSemanticTableStyles: (_state: unknown) => TableState;
 
 // @public
 export const useSemanticTabListStyles: (_state: unknown) => TabListState;
