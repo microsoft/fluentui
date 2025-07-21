@@ -1999,7 +1999,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr3"
+      id="calloutr2k"
     >
       <div
         class="fui-PopoverSurface"

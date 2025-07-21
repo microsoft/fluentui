@@ -33,14 +33,11 @@ import {
   CartesianChart,
   Margins,
   Legend,
-  // RefArrayData,
   GroupedVerticalBarChartProps,
   GroupedVerticalBarChartData,
   GVBarChartSeriesPoint,
   Legends,
   YValueHover,
-  // DataVizPalette,
-  // getColorFromToken,
   ChartPopoverProps,
   Chart,
 } from '../../index';
@@ -80,7 +77,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _datasetForBars: any[] = [];
   let _margins: Margins = { top: 0, right: 0, bottom: 0, left: 0 };
   let _groupedVerticalBarGraph: JSX.Element[] = [];
-  // let _refArray: RefArrayData[] = [];
   let _yMax: number = 0;
   let _calloutAnchorPoint: GVBarChartSeriesPoint | null = null;
   let _barWidth: number = 0;
@@ -89,7 +85,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _xAxisOuterPadding: number = 0;
   let _legendColorMap: Record<string, [string, string]> = {};
   const cartesianChartRef = React.useRef<Chart>(null);
-  // const Y_ORIGIN: number = 0;
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -391,7 +386,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const _onBarLeave = (): void => {
-    /**/
   };
 
   const _handleChartMouseLeave = (): void => {

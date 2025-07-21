@@ -445,7 +445,6 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
     GroupedVerticalBarChart,
     { data: chartPoints },
     container => {
-      //const legends = getByClass(container, /legend-/i);
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.mouseOver(legends[0]);
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
