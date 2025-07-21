@@ -2,6 +2,21 @@
   "name": "@fluentui/test-utilities",
   "entries": [
     {
+      "date": "Thu, 17 Jul 2025 07:19:56 GMT",
+      "tag": "@fluentui/test-utilities_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/test-utilities",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Jul 2025 07:19:40 GMT",
       "tag": "@fluentui/test-utilities_v8.4.0",
       "version": "8.4.0",

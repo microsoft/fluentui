@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icons-compat
 
-This log was last generated on Thu, 26 Jun 2025 14:11:55 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-compat_v0.2.3)
+
+Thu, 17 Jul 2025 13:49:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-compat_v0.2.2..@fluentui/react-icons-compat_v0.2.3)
+
+### Patches
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
 
 ## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-compat_v0.2.2)
 

@@ -1,4 +1,5 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile, copyFile } from 'node:fs/promises';
+import { writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 import { globSync } from 'fast-glob';
@@ -20,11 +21,16 @@ interface Options {
   outputPath: string;
 }
 
-export async function compileSwc(options: Options, normalizedOptions: NormalizedOptions) {
+export async function compileSwc(
+  options: Options,
+  normalizedOptions: NormalizedOptions,
+  transforms?: Array<Transform>,
+) {
   const { outputPath, module } = options;
   const absoluteOutputPath = join(normalizedOptions.absoluteProjectRoot, outputPath);
 
   logger.log(`Compiling with SWC for module:${options.module}...`);
+  logger.verbose(`Applying transforms: ${transforms ? transforms.length : 0}`);
 
   const sourceFiles = globSync(`**/*.{js,ts,tsx}`, { cwd: normalizedOptions.absoluteSourceRoot });
 
@@ -59,9 +65,23 @@ export async function compileSwc(options: Options, normalizedOptions: Normalized
     await mkdir(dirname(compiledFilePath), { recursive: true });
 
     await writeFile(compiledFilePath, resultCode);
+    await applyTransforms(compiledFilePath, transforms);
 
     if (result.map) {
-      await writeFile(`${compiledFilePath}.map`, result.map);
+      const mapFilePath = `${compiledFilePath}.map`;
+      await writeFile(mapFilePath, result.map);
+      await applyTransforms(mapFilePath, transforms);
     }
+  }
+}
+
+type Transform = (filePath: string) => Promise<void>;
+async function applyTransforms(filePath: string, transforms?: Array<Transform>): Promise<void> {
+  if (!transforms || !Array.isArray(transforms) || transforms.length === 0) {
+    return;
+  }
+
+  for (const transform of transforms) {
+    await transform(filePath);
   }
 }

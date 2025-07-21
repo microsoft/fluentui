@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-tag-picker
 
-This log was last generated on Fri, 11 Jul 2025 15:59:24 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.7.0)
+
+Thu, 17 Jul 2025 13:49:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker_v9.6.7..@fluentui/react-tag-picker_v9.7.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-portal to v9.7.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-tabster to v9.26.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-aria to v9.15.4 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-combobox to v9.16.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-tags to v9.7.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-positioning to v9.20.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-field to v9.4.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
 
 ## [9.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.6.7)
 

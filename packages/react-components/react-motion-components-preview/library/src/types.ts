@@ -27,3 +27,33 @@ export type PresenceMotionFnCreator<
   MotionVariantParams extends Record<string, MotionParam> = {},
   MotionRuntimeParams extends Record<string, MotionParam> = {},
 > = (variantParams?: MotionVariantParams) => PresenceMotionFn<MotionRuntimeParams>;
+
+/**
+ * Common duration parameters for presence motion components.
+ */
+export type PresenceDuration = {
+  /** Time (ms) for the enter transition. */
+  duration?: number;
+
+  /** Time (ms) for the exit transition. Defaults to the `duration` param for symmetry. */
+  exitDuration?: number;
+};
+
+/**
+ * Common easing parameters for presence motion components.
+ */
+export type PresenceEasing = {
+  /** Easing curve for the enter transition. */
+  easing?: string;
+
+  /** Easing curve for the exit transition. Defaults to the `easing` param for symmetry. */
+  exitEasing?: string;
+};
+
+/**
+ * Common opacity animation parameter for motion components.
+ */
+export type AnimateOpacity = {
+  /** Whether to animate the opacity. Defaults to `true`. */
+  animateOpacity?: boolean;
+};

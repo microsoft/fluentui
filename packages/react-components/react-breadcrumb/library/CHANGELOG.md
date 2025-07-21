@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-breadcrumb
 
-This log was last generated on Fri, 27 Jun 2025 13:39:41 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb_v9.3.0)
+
+Thu, 17 Jul 2025 13:49:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb_v9.2.5..@fluentui/react-breadcrumb_v9.3.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-aria to v9.15.4 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-button to v9.6.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-link to v9.6.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-tabster to v9.26.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
 
 ## [9.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb_v9.2.5)
 

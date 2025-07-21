@@ -1,27 +1,15 @@
+import type { PresenceDuration, PresenceEasing, AnimateOpacity } from '../../types';
+
 export type CollapseOrientation = 'horizontal' | 'vertical';
 
 /** Common properties shared by all collapse components */
-type CollapseBaseParams = {
-  /** Easing curve for the enter transition. Defaults to the `curveEasyEaseMax` value. */
-  easing?: string;
+type CollapseBaseParams = PresenceEasing &
+  AnimateOpacity & {
+    /** The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height. */
+    orientation?: CollapseOrientation;
+  };
 
-  /** Easing curve for the exit transition. Defaults to the `easing` param for symmetry. */
-  exitEasing?: string;
-
-  /** The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height. */
-  orientation?: CollapseOrientation;
-
-  /** Whether to animate the opacity. Defaults to `true`. */
-  animateOpacity?: boolean;
-};
-
-export type CollapseParams = CollapseBaseParams & {
-  /** Time (ms) for the enter transition (expand). Defaults to the `durationNormal` value (200 ms). */
-  duration?: number;
-
-  /** Time (ms) for the exit transition (collapse). Defaults to the `duration` param for symmetry. */
-  exitDuration?: number;
-};
+export type CollapseParams = CollapseBaseParams & PresenceDuration;
 
 export type CollapseDelayedParams = CollapseBaseParams & {
   /** Time (ms) for the size expand. Defaults to the `durationNormal` value (200 ms). */

@@ -3956,19 +3956,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="String Four"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                String Four
-              </tspan>
+              String Four
             </text>
           </g>
           <g
@@ -3985,19 +3973,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="String Three"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                String Three
-              </tspan>
+              String Three
             </text>
           </g>
           <g
@@ -4014,19 +3990,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="String Two"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                String Two
-              </tspan>
+              String Two
             </text>
           </g>
           <g
@@ -4043,19 +4007,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="String One"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                String One
-              </tspan>
+              String One
             </text>
           </g>
         </g>

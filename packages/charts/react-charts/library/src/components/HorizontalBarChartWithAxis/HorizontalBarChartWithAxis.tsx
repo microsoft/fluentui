@@ -271,7 +271,19 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   }
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  function _onBarFocus(point: HorizontalBarChartWithAxisDataPoint, refArrayIndexNumber: number, color: string): void {
+  function _onBarFocus(
+    event: React.FocusEvent<SVGRectElement, Element>,
+    point: HorizontalBarChartWithAxisDataPoint,
+    refArrayIndexNumber: number,
+    color: string,
+  ): void {
+    let cx = 0;
+    let cy = 0;
+
+    const targetRect = (event.target as SVGRectElement).getBoundingClientRect();
+    cx = targetRect.left + targetRect.width / 2;
+    cy = targetRect.top + targetRect.height / 2;
+    _updatePosition(cx, cy);
     if ((isLegendSelected === false || _isLegendHighlighted(point.legend)) && _calloutAnchorPoint !== point) {
       // eslint-disable-next-line @typescript-eslint/no-shadow
       _refArray.forEach((obj: RefArrayData, index: number) => {
@@ -432,7 +444,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             role="img"
             aria-labelledby={`toolTip${_calloutId}`}
             onMouseLeave={_onBarLeave}
-            onFocus={() => _onBarFocus(point, index, startColor)}
+            onFocus={event => _onBarFocus(event, point, index, startColor)}
             onBlur={_onBarLeave}
             fill={startColor}
             opacity={shouldHighlight ? 1 : 0.1}
@@ -599,7 +611,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             onBlur={_onBarLeave}
             data-is-focusable={shouldHighlight}
             opacity={shouldHighlight ? 1 : 0.1}
-            onFocus={() => _onBarFocus(point, index, startColor)}
+            onFocus={event => _onBarFocus(event, point, index, startColor)}
             fill={startColor}
             tabIndex={point.legend !== '' ? 0 : undefined}
           />

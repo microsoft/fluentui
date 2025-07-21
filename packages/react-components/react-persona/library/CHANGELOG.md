@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Fri, 11 Jul 2025 15:59:24 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.5.0)
+
+Thu, 17 Jul 2025 13:49:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.4.7..@fluentui/react-persona_v9.5.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-avatar to v9.9.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-badge to v9.4.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
 
 ## [9.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.4.7)
 

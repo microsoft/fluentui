@@ -2,6 +2,60 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Thu, 17 Jul 2025 13:49:51 GMT",
+      "tag": "@fluentui/react-toolbar_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-button to v9.6.0",
+            "commit": "23bbd701b365043a9f22a8d754d751cd1ec088aa"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-divider to v9.4.0",
+            "commit": "23bbd701b365043a9f22a8d754d751cd1ec088aa"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-radio to v9.5.0",
+            "commit": "23bbd701b365043a9f22a8d754d751cd1ec088aa"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-tabster to v9.26.0",
+            "commit": "23bbd701b365043a9f22a8d754d751cd1ec088aa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Jul 2025 13:52:49 GMT",
+      "tag": "@fluentui/react-toolbar_v9.5.8",
+      "version": "9.5.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "f4286818c03a3de299eae4bda26f19b608adb1a6",
+            "comment": "fix: properly apply overrides in ToolbarRadioButton, ToolbarToggleButton & ToolbarButton"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Jul 2025 15:59:24 GMT",
       "tag": "@fluentui/react-toolbar_v9.5.7",
       "version": "9.5.7",

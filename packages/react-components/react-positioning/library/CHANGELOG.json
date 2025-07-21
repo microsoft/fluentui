@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Thu, 17 Jul 2025 13:49:44 GMT",
+      "tag": "@fluentui/react-positioning_v9.20.0",
+      "version": "9.20.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Jul 2025 15:59:23 GMT",
       "tag": "@fluentui/react-positioning_v9.19.0",
       "version": "9.19.0",

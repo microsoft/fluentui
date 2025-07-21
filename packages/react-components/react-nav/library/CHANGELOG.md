@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-nav
 
-This log was last generated on Fri, 11 Jul 2025 15:59:24 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.3.0)
+
+Thu, 17 Jul 2025 13:49:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav_v9.2.4..@fluentui/react-nav_v9.3.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-aria to v9.15.4 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-button to v9.6.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-divider to v9.4.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-drawer to v9.9.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-tabster to v9.26.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-tooltip to v9.8.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+
+## [9.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.2.4)
+
+Wed, 16 Jul 2025 13:52:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav_v9.2.3..@fluentui/react-nav_v9.2.4)
+
+### Patches
+
+- Bump @fluentui/react-drawer to v9.8.8 ([PR #34849](https://github.com/microsoft/fluentui/pull/34849) by beachball)
 
 ## [9.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.2.3)
 

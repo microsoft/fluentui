@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Fri, 04 Jul 2025 10:02:42 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.14.0)
+
+Thu, 17 Jul 2025 13:49:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.13.8..@fluentui/react-dialog_v9.14.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-aria to v9.15.4 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-tabster to v9.26.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-portal to v9.7.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+
+## [9.13.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.13.8)
+
+Wed, 16 Jul 2025 13:52:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.13.6..@fluentui/react-dialog_v9.13.8)
+
+### Patches
+
+- Bump @fluentui/react-motion-components-preview to v0.7.0 ([PR #34849](https://github.com/microsoft/fluentui/pull/34849) by beachball)
 
 ## [9.13.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.13.6)
 

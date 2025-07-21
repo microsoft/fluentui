@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Fri, 11 Jul 2025 15:59:24 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.12.0)
+
+Thu, 17 Jul 2025 13:49:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.11.8..@fluentui/react-tree_v9.12.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-aria to v9.15.4 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-avatar to v9.9.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-button to v9.6.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-checkbox to v9.5.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-radio to v9.5.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-tabster to v9.26.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+
+## [9.11.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.11.8)
+
+Wed, 16 Jul 2025 13:52:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.11.7..@fluentui/react-tree_v9.11.8)
+
+### Patches
+
+- Bump @fluentui/react-motion-components-preview to v0.7.0 ([PR #34849](https://github.com/microsoft/fluentui/pull/34849) by beachball)
 
 ## [9.11.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.11.7)
 

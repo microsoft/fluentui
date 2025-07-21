@@ -45,6 +45,9 @@ export const styles = css`
     background-color: ${colorTransparentBackground};
     border: 1px solid ${colorNeutralStrokeAccessible};
     border-radius: ${borderRadiusCircular};
+  }
+
+  :host(:enabled) {
     cursor: pointer;
   }
 

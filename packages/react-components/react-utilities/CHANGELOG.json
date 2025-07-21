@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 16 Jul 2025 13:52:49 GMT",
+      "tag": "@fluentui/react-utilities_v9.22.0",
+      "version": "9.22.0",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 10:02:49 GMT",
       "tag": "@fluentui/react-utilities_v9.22.0",
       "version": "9.22.0",

@@ -198,6 +198,7 @@ function buildWorkspaceTargets(
           { module: 'commonjs', outputPath: 'lib-commonjs' },
           tags.includes('ships-amd') ? { module: 'amd', outputPath: 'lib-amd' } : null,
         ].filter(Boolean) as BuildExecutorSchema['moduleOutput'],
+        enableGriffelRawStyles: true,
         // NOTE: assets should be set per project needs
         // assets: [],
       } satisfies BuildExecutorSchema,

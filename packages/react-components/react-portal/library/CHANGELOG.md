@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Fri, 04 Jul 2025 10:02:46 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.7.0)
+
+Thu, 17 Jul 2025 13:49:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.6.4..@fluentui/react-portal_v9.7.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-tabster to v9.26.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
 
 ## [9.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.6.4)
 
