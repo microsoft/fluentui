@@ -29,7 +29,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
       .value((d: any) => d.data)
       .padAngle(0);
 
-    function _focusCallback(data: ChartDataPoint, id: string, e: React.FocusEvent<SVGPathElement>): void {
+    function _focusCallback(data: ChartDataPoint, id: string, e: SVGPathElement): void {
       props.onFocusCallback!(data, id, e);
     }
 

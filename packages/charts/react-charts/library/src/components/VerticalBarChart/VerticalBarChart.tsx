@@ -262,9 +262,8 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             // and avoid conveying duplicate info, make these line points non-focusable.
             data-is-focusable={_legendHighlighted(lineLegendText!)}
             ref={e => (circleRef.refElement = e)}
-            onFocus={event => _lineFocus(event, item.point, circleRef)}
+            onFocus={_lineFocus.bind(item.point, circleRef)}
             onBlur={_handleChartMouseLeave}
-            tabIndex={_legendHighlighted(lineLegendText!) ? 0 : undefined}
           />
         );
       },
@@ -505,19 +504,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  function _onBarFocus(
-    event: React.FocusEvent<SVGRectElement, Element>,
-    point: VerticalBarChartDataPoint,
-    refArrayIndexNumber: number,
-    color: string,
-  ): void {
-    let x = 0;
-    let y = 0;
-
-    const targetRect = (event.target as SVGRectElement).getBoundingClientRect();
-    x = targetRect.left + targetRect.width / 2;
-    y = targetRect.top + targetRect.height / 2;
-    updatePosition(x, y);
+  function _onBarFocus(point: VerticalBarChartDataPoint, refArrayIndexNumber: number, color: string): void {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { YValueHover, hoverXValue } = _getCalloutContentForLineAndBar(point);
     _refArray.forEach((obj: RefArrayData, index: number) => {
@@ -547,11 +534,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     _lineHoverFocus(point, mouseEvent);
   }
 
-  function _lineFocus(
-    event: React.FocusEvent<SVGCircleElement, Element>,
-    point: VerticalBarChartDataPoint,
-    ref: { refElement: SVGCircleElement | null },
-  ) {
+  function _lineFocus(point: VerticalBarChartDataPoint, ref: { refElement: SVGCircleElement | null }) {
     if (ref.refElement) {
       _lineHoverFocus(point, ref.refElement);
     }
@@ -665,6 +648,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             x={xPoint}
             y={!isHeightNegative ? yPoint : baselineHeight}
             width={_barWidth}
+            data-is-focusable={!props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
@@ -674,10 +658,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             aria-label={_getAriaLabel(point)}
             role="img"
             onMouseLeave={_onBarLeave}
-            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
+            onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
-            tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
+            tabIndex={point.legend !== '' ? 0 : undefined}
             opacity={shouldHighlight ? 1 : 0.1}
             rx={props.roundCorners ? 3 : 0}
           />
@@ -761,9 +745,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             onMouseLeave={_onBarLeave}
             onBlur={_onBarLeave}
-            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
+            data-is-focusable={!props.hideTooltip && shouldHighlight}
+            onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
-            tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
+            tabIndex={point.legend !== '' ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
             opacity={shouldHighlight ? 1 : 0.1}
           />
@@ -835,6 +820,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             className={classes.opacityChangeOnHover}
             y={!isHeightNegative ? yPoint : baselineHeight}
             width={_barWidth}
+            data-is-focusable={!props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
@@ -844,10 +830,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             aria-label={_getAriaLabel(point)}
             role="img"
             onMouseLeave={_onBarLeave}
-            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
+            onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
-            tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
+            tabIndex={point.legend !== '' ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
             opacity={shouldHighlight ? 1 : 0.1}
           />
