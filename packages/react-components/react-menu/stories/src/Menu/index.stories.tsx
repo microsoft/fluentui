@@ -13,6 +13,7 @@ import {
   MenuSplitGroup,
   MenuTrigger,
 } from '@fluentui/react-components';
+import { MenuGrid, MenuGridCell, MenuGridRow, MenuGridRowGroup, MenuGridRowGroupHeader } from '@fluentui/react-menu';
 
 import descriptionMd from './MenuDescription.md';
 import bestPracticesMd from './MenuBestPractices.md';
@@ -42,6 +43,7 @@ export { RenderFunctionTrigger } from './MenuRenderFunctionTrigger.stories';
 export { MemoizedMenuItems } from './MenuMemoizedMenuItems.stories';
 export { SplitMenuItem } from './MenuSplitMenuItem.stories';
 export { MenuTriggerWithTooltip } from './MenuTriggerWithTooltip.stories';
+export { ComplexMenu } from './MenuComplexMenu.stories';
 
 export default {
   title: 'Components/Menu/Menu',
@@ -59,6 +61,11 @@ export default {
     MenuSplitGroup,
     MenuTrigger,
     MenuItemSwitch,
+    MenuGrid,
+    MenuGridCell,
+    MenuGridRow,
+    MenuGridRowGroup,
+    MenuGridRowGroupHeader,
   },
   parameters: {
     docs: {
