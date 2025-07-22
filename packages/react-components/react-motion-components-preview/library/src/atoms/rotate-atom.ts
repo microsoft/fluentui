@@ -1,0 +1,50 @@
+import { AtomMotion, PresenceDirection, motionTokens } from '@fluentui/react-motion';
+
+export type Axis3D = 'x' | 'y' | 'z';
+
+interface RotateAtomParams {
+  direction: PresenceDirection;
+  duration: number;
+  easing?: string;
+  axis?: Axis3D;
+  enterAngle?: number;
+  exitAngle?: number;
+}
+
+const createRotateValue = (axis: Axis3D, angle: number): string => {
+  return `${axis} ${angle}deg`;
+};
+
+/**
+ * Generates a motion atom object for a rotation around a single axis.
+ * @param direction - The functional direction of the motion: 'enter' or 'exit'.
+ * @param duration - The duration of the motion in milliseconds.
+ * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
+ * @param axis - The axis of rotation: 'X', 'Y', or 'Z'. Defaults to 'Y'.
+ * @param enterAngle - The starting rotation angle in degrees. Defaults to -90.
+ * @param exitAngle - The ending rotation angle in degrees. Defaults to the negation of `enterAngle`.
+ * @returns A motion atom object with rotate keyframes and the supplied duration and easing.
+ */
+export const rotateAtom = ({
+  direction,
+  duration,
+  easing = motionTokens.curveLinear,
+  axis = 'y',
+  enterAngle = -90,
+  exitAngle = -enterAngle,
+}: RotateAtomParams): AtomMotion => {
+  let fromAngle = enterAngle;
+  let toAngle = 0;
+
+  if (direction === 'exit') {
+    fromAngle = 0;
+    toAngle = exitAngle;
+  }
+  const keyframes = [{ rotate: createRotateValue(axis, fromAngle) }, { rotate: createRotateValue(axis, toAngle) }];
+
+  return {
+    keyframes,
+    duration,
+    easing,
+  };
+};
