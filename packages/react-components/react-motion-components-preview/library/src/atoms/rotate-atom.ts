@@ -12,7 +12,7 @@ interface RotateAtomParams {
 }
 
 const createRotateValue = (axis: Axis3D, angle: number): string => {
-  return `${axis} ${angle}deg`;
+  return `${axis.toLowerCase()} ${angle}deg`;
 };
 
 /**
