@@ -1461,7 +1461,7 @@ export const transformPlotlyJsonToChartTableProps = (
       let fontColor: React.CSSProperties['color'] | undefined;
 
       if (Array.isArray(fontColorRaw)) {
-        const colorEntry = fontColorRaw[colIndex];
+        const colorEntry = fontColorRaw[colIndex] ?? fontColorRaw[0];
         if (Array.isArray(colorEntry)) {
           fontColor = typeof colorEntry[0] === 'string' ? colorEntry[0] : undefined;
         } else if (typeof colorEntry === 'string') {
@@ -1475,17 +1475,24 @@ export const transformPlotlyJsonToChartTableProps = (
       let fontSize: React.CSSProperties['fontSize'] | undefined;
 
       if (Array.isArray(fontSizeRaw)) {
-        fontSize = Array.isArray(fontSizeRaw[0]) ? fontSizeRaw[0][colIndex] : fontSizeRaw[colIndex];
+        const fontSizeEntry = fontSizeRaw[colIndex] ?? fontSizeRaw[0];
+        fontSize = Array.isArray(fontSizeRaw[0])
+          ? fontSizeRaw[0][colIndex] ?? fontSizeRaw[0][0]
+          : typeof fontSizeEntry === 'number'
+          ? fontSizeEntry
+          : undefined;
       } else if (typeof fontSizeRaw === 'number') {
         fontSize = fontSizeRaw;
       }
 
       const updatedColIndex = colIndex >= 1 ? 1 : 0;
       const fillColorRaw = header?.fill?.color;
-      const backgroundColor = Array.isArray(fillColorRaw) ? fillColorRaw[updatedColIndex] : fillColorRaw;
+      const backgroundColor = Array.isArray(fillColorRaw)
+        ? fillColorRaw[updatedColIndex] ?? fillColorRaw[0]
+        : fillColorRaw;
 
       const textAlignRaw = header?.align;
-      const textAlign = Array.isArray(textAlignRaw) ? textAlignRaw[colIndex] : textAlignRaw;
+      const textAlign = Array.isArray(textAlignRaw) ? textAlignRaw[colIndex] ?? textAlignRaw[0] : textAlignRaw;
 
       const style: React.CSSProperties = {
         ...(typeof fontColor === 'string' ? { color: fontColor } : {}),
@@ -1515,7 +1522,7 @@ export const transformPlotlyJsonToChartTableProps = (
       const rawFontColor = cells?.font?.color;
       let fontColor: React.CSSProperties['color'] | undefined;
       if (Array.isArray(rawFontColor)) {
-        const entry = rawFontColor[colIndex];
+        const entry = rawFontColor[colIndex] ?? rawFontColor[0];
         const colorValue = Array.isArray(entry) ? entry[rowIndex] : entry;
         fontColor = typeof colorValue === 'string' ? colorValue : undefined;
       } else if (typeof rawFontColor === 'string') {
@@ -1525,7 +1532,7 @@ export const transformPlotlyJsonToChartTableProps = (
       const rawFontSize = cells?.font?.size;
       let fontSize: React.CSSProperties['fontSize'] | undefined;
       if (Array.isArray(rawFontSize)) {
-        const entry = rawFontSize[colIndex];
+        const entry = rawFontSize[colIndex] ?? rawFontSize[0];
         const fontSizeValue = Array.isArray(entry) ? entry[rowIndex] : entry;
         fontSize = typeof fontSizeValue === 'number' ? fontSizeValue : undefined;
       } else if (typeof rawFontSize === 'number') {
@@ -1536,14 +1543,14 @@ export const transformPlotlyJsonToChartTableProps = (
       const rawBackgroundColor = cells?.fill?.color;
       let backgroundColor: React.CSSProperties['backgroundColor'] | undefined;
       if (Array.isArray(rawBackgroundColor)) {
-        const entry = rawBackgroundColor[updatedColIndex];
+        const entry = rawBackgroundColor[updatedColIndex] ?? rawBackgroundColor[0];
         const colorValue = Array.isArray(entry) ? entry[rowIndex] : entry;
         backgroundColor = typeof colorValue === 'string' ? colorValue : undefined;
       } else if (typeof rawBackgroundColor === 'string') {
         backgroundColor = rawBackgroundColor;
       }
 
-      const rawTextAlign = Array.isArray(cells?.align) ? cells.align[colIndex] : cells?.align;
+      const rawTextAlign = Array.isArray(cells?.align) ? cells.align[colIndex] ?? cells.align[0] : cells?.align;
       const textAlign = rawTextAlign as React.CSSProperties['textAlign'] | undefined;
 
       const style: React.CSSProperties = {

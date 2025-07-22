@@ -62,6 +62,28 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
     if (!headers || headers.length === 0) {
       return <div>No data available</div>;
     }
+    const bgColorSet = new Set<string>();
+    headers.forEach(header => {
+      const bg = header?.style?.backgroundColor;
+      const normalized = d3.color(bg || '')?.formatHex();
+      if (normalized) {
+        bgColorSet.add(normalized);
+      }
+    });
+    let sharedBackgroundColor: string | undefined;
+    let useSharedBackground = false;
+
+    if (bgColorSet.size === 1 || bgColorSet.size === 2) {
+      const candidateBg = bgColorSet.size === 1 ? Array.from(bgColorSet)[0] : Array.from(bgColorSet)[1];
+      for (const header of headers) {
+        const fg = header?.style?.color;
+        if (fg && getColorContrast(fg, candidateBg) >= 3) {
+          sharedBackgroundColor = candidateBg;
+          useSharedBackground = true;
+          break;
+        }
+      }
+    }
 
     return (
       <div
@@ -90,7 +112,10 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
                       const style = { ...header?.style };
                       const fg = style.color;
                       const bg = style.backgroundColor;
-                      if (fg || bg) {
+
+                      if (useSharedBackground) {
+                        style.backgroundColor = sharedBackgroundColor;
+                      } else if (fg || bg) {
                         style.backgroundColor = getSafeBackgroundColor(theme!, fg, bg);
                       }
                       return (
