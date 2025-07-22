@@ -1261,9 +1261,9 @@ export class VerticalStackedBarChartBase
     containerWidth: number,
     xElement: SVGElement | null,
   ) => {
-    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
+    const { yBarScale } = this._getScales(containerHeight, containerWidth);
     return (this._bars = this._createBar(
-      xBarScale,
+      xScale,
       this._yAxisType === YAxisType.StringAxis ? yScale : yBarScale,
       containerHeight,
       xElement!,
