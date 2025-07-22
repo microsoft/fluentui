@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 21 Jul 2025 04:07:39 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.113",
+      "version": "3.0.0-beta.113",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "eddafeab690be93419049cdfcc1af124dc06e788",
+            "comment": "fix: remove unnecessary tabindex logic from switch template"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "493a28819075697d2a95546924971dcda3a94c86",
+            "comment": "fix: vertical slider in rtl has the opposite value than the visual"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 04:08:39 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.112",
       "version": "3.0.0-beta.112",

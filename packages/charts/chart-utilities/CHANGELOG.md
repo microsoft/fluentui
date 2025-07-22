@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Fri, 18 Jul 2025 07:19:59 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jul 2025 07:21:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.25](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.25)
+
+Mon, 21 Jul 2025 07:21:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.24..@fluentui/chart-utilities_v1.1.25)
+
+### Patches
+
+- feat(chart-utilities): Support additional modes ([PR #34860](https://github.com/microsoft/fluentui/pull/34860) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.24](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.24)
 

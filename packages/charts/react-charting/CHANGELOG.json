@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 21 Jul 2025 07:21:22 GMT",
+      "tag": "@fluentui/react-charting_v5.24.16",
+      "version": "5.24.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "598962e4c4dfb8316fb496e0e33e7cc35dcfc92d",
+            "comment": "feat(react-charting): Support additional modes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.25",
+            "commit": "456db10a952bf6bf36213bc8926f4dfd140b5df3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Jul 2025 07:19:59 GMT",
       "tag": "@fluentui/react-charting_v5.24.15",
       "version": "5.24.15",
