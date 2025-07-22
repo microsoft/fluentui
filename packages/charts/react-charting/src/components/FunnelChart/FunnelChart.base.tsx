@@ -210,7 +210,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     opacity,
     textProps,
     data,
-    tabIndex,
+    isFocusable,
   }: {
     key: string | number;
     pathD: string;
@@ -223,14 +223,14 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       value: number;
     };
     data: IFunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } };
-    tabIndex?: number;
+    isFocusable?: boolean;
   }) {
     const eventHandlers = _getEventHandlerProps(data, opacity);
     const textColor = getContrastTextColor(fill, props.theme!);
 
     return (
       <g key={key}>
-        <path d={pathD} fill={fill} opacity={opacity} {...eventHandlers} tabIndex={tabIndex} />
+        <path d={pathD} fill={fill} opacity={opacity} {...eventHandlers} data-is-focusable={isFocusable} />
         {textProps && <g {...eventHandlers}>{_renderSegmentText({ ...textProps, textColor })}</g>}
       </g>
     );
@@ -270,7 +270,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
         opacity: legendHighlighted(d.stage as string) || noLegendHighlighted() ? 1 : 0.1,
         textProps,
         data: d,
-        tabIndex: legendHighlighted(d.stage as string) || noLegendHighlighted() ? 0 : -1,
+        isFocusable: legendHighlighted(d.stage as string) || noLegendHighlighted() ? true : false,
       });
     });
   }
@@ -334,8 +334,10 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
         (isStackedFunnelData(props.data) && legendHighlighted(subValue.category)) || noLegendHighlighted() ? 1 : 0.1,
       textProps,
       data: { stage: stage.stage as string, subValue },
-      tabIndex:
-        (isStackedFunnelData(props.data) && legendHighlighted(subValue.category)) || noLegendHighlighted() ? 0 : -1,
+      isFocusable:
+        (isStackedFunnelData(props.data) && legendHighlighted(subValue.category)) || noLegendHighlighted()
+          ? true
+          : false,
     });
   }
 
