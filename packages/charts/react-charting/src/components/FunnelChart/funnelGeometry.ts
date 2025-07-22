@@ -131,7 +131,7 @@ export function getHorizontalFunnelSegmentGeometry({
   return { pathD, textX, textY, availableWidth };
 }
 
-export function getStackedHorizontalFunnelSegmentGeometry({
+export function getStackedVerticalFunnelSegmentGeometry({
   i,
   k,
   stages,
@@ -199,7 +199,7 @@ export function getStackedHorizontalFunnelSegmentGeometry({
   return { pathD, textX, textY, availableWidth };
 }
 
-export function getStackedVerticalFunnelSegmentGeometry({
+export function getStackedHorizontalFunnelSegmentGeometry({
   i,
   k,
   stages,

@@ -302,13 +302,13 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
 
     const geom =
       props.orientation === 'vertical'
-        ? getStackedHorizontalFunnelSegmentGeometry({
+        ? getStackedVerticalFunnelSegmentGeometry({
             ...geometryParams,
             stages: stagesWithSubValues,
             i: stageIndex,
             k: subValueIndex,
           })
-        : getStackedVerticalFunnelSegmentGeometry({
+        : getStackedHorizontalFunnelSegmentGeometry({
             ...geometryParams,
             stages: stagesWithSubValues,
             i: stageIndex,
