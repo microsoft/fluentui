@@ -64,7 +64,8 @@ const patterns = [
     description: 'Classic Y-axis rotation',
     icon: '↔️',
     color: tokens.colorPaletteBlueForeground2,
-    rotation: { fromY: 180 },
+    axis: 'Y' as const,
+    enterAngle: 180,
     easing: 'ease-out',
     duration: 600,
   },
@@ -74,7 +75,8 @@ const patterns = [
     description: 'X-axis rotation',
     icon: '↕️',
     color: tokens.colorPaletteGreenForeground2,
-    rotation: { fromX: 180 },
+    axis: 'X' as const,
+    enterAngle: 180,
     easing: 'ease-out',
     duration: 600,
   },
@@ -84,19 +86,10 @@ const patterns = [
     description: 'Z-axis rotation',
     icon: '🔄',
     color: tokens.colorPaletteRedForeground2,
-    rotation: { fromZ: 360 },
+    axis: 'Z' as const,
+    enterAngle: 360,
     easing: 'ease-in-out',
     duration: 800,
-  },
-  {
-    id: 'tumble',
-    name: 'Tumble',
-    description: 'Multi-axis rotation',
-    icon: '🎲',
-    color: tokens.colorPalettePurpleForeground2,
-    rotation: { fromX: 180, fromY: 180 },
-    easing: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-    duration: 1000,
   },
   {
     id: 'wobble',
@@ -104,7 +97,8 @@ const patterns = [
     description: 'Gentle X-axis tilt',
     icon: '〰️',
     color: tokens.colorPaletteYellowForeground2,
-    rotation: { fromX: 15 },
+    axis: 'X' as const,
+    enterAngle: 15,
     easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
     duration: 400,
   },
@@ -114,7 +108,8 @@ const patterns = [
     description: 'Slight Y-axis reveal',
     icon: '👀',
     color: tokens.colorPaletteTealForeground2,
-    rotation: { fromY: -15 },
+    axis: 'Y' as const,
+    enterAngle: -15,
     easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
     duration: 400,
   },
@@ -124,19 +119,10 @@ const patterns = [
     description: 'Accordion-style fold',
     icon: '📄',
     color: tokens.colorPaletteDarkOrangeForeground2,
-    rotation: { fromX: -90 },
+    axis: 'X' as const,
+    enterAngle: -90,
     easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
     duration: 500,
-  },
-  {
-    id: 'twist',
-    name: 'Twist',
-    description: 'Diagonal rotation',
-    icon: '🌪️',
-    color: tokens.colorPalettePinkForeground2,
-    rotation: { fromX: 45, fromZ: 45 },
-    easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-    duration: 700,
   },
 ];
 
@@ -199,9 +185,8 @@ export const CommonPatterns = () => {
           <div key={pattern.id}>
             <Rotate
               visible={activePatterns.has(pattern.id)}
-              fromX={pattern.rotation.fromX || 0}
-              fromY={pattern.rotation.fromY || 0}
-              fromZ={pattern.rotation.fromZ || 0}
+              axis={pattern.axis}
+              enterAngle={pattern.enterAngle}
               duration={pattern.duration}
               easing={pattern.easing}
             >
@@ -228,7 +213,7 @@ CommonPatterns.parameters = {
   docs: {
     description: {
       story:
-        'A collection of common rotation patterns that you can use as starting points for your own animations. Each pattern demonstrates different combinations of rotation axes and easing curves.',
+        'A collection of common single-axis rotation patterns that you can use as starting points for your own animations. Each pattern demonstrates rotation around a specific axis (X, Y, or Z) with different easing curves.',
     },
   },
 };

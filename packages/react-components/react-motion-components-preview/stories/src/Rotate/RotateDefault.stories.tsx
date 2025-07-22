@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Field, makeStyles, tokens, Switch, useId, Label, Slider } from '@fluentui/react-components';
+import { Field, makeStyles, tokens, Switch, useId, Label, Slider, RadioGroup, Radio } from '@fluentui/react-components';
 import { Rotate, RotateParams } from '@fluentui/react-motion-components-preview';
 
 // import description from './ExperimentsRotate.stories.md';
@@ -49,15 +49,12 @@ export const Default = (props: RotateParams) => {
   const [autoplay, setAutoplay] = React.useState<boolean>(false);
   const [perspective, setPerspective] = React.useState<string>('1000px');
   const [duration, setDuration] = React.useState<number>(500);
-  const [fromX, setFromX] = React.useState<number>(0);
-  const [fromY, setFromY] = React.useState<number>(-90);
-  const [fromZ, setFromZ] = React.useState<number>(0);
+  const [axis, setAxis] = React.useState<'X' | 'Y' | 'Z'>('Y');
+  const [enterAngle, setEnterAngle] = React.useState<number>(-90);
 
   const perspectiveSliderId = useId();
   const durationSliderId = useId();
-  const fromXSliderId = useId();
-  const fromYSliderId = useId();
-  const fromZSliderId = useId();
+  const enterAngleSliderId = useId();
 
   const perspectiveMin = 200;
   const perspectiveMax = 2000;
@@ -93,46 +90,29 @@ export const Default = (props: RotateParams) => {
           />
         </Field>
 
-        <label htmlFor={fromXSliderId}>fromX: {fromX}°</label>
-        <div className={classes.sliderWrapper}>
-          <Label aria-hidden>{angleMin}</Label>
-          <Slider
-            min={angleMin}
-            max={angleMax}
-            defaultValue={fromX}
-            id={fromXSliderId}
-            onChange={(_, data) => {
-              setFromX(data.value);
-            }}
-          />
-          <Label aria-hidden>{angleMax}</Label>
-        </div>
+        <Field className={classes.field}>
+          <Label>Rotation Axis</Label>
+          <RadioGroup 
+            value={axis} 
+            onChange={(_, data) => setAxis(data.value as 'X' | 'Y' | 'Z')}
+            layout="horizontal"
+          >
+            <Radio value="X" label="X" />
+            <Radio value="Y" label="Y" />
+            <Radio value="Z" label="Z" />
+          </RadioGroup>
+        </Field>
 
-        <label htmlFor={fromYSliderId}>fromY: {fromY}°</label>
+        <label htmlFor={enterAngleSliderId}>Enter Angle: {enterAngle}°</label>
         <div className={classes.sliderWrapper}>
           <Label aria-hidden>{angleMin}</Label>
           <Slider
             min={angleMin}
             max={angleMax}
-            defaultValue={fromY}
-            id={fromYSliderId}
+            defaultValue={enterAngle}
+            id={enterAngleSliderId}
             onChange={(_, data) => {
-              setFromY(data.value);
-            }}
-          />
-          <Label aria-hidden>{angleMax}</Label>
-        </div>
-
-        <label htmlFor={fromZSliderId}>fromZ: {fromZ}°</label>
-        <div className={classes.sliderWrapper}>
-          <Label aria-hidden>{angleMin}</Label>
-          <Slider
-            min={angleMin}
-            max={angleMax}
-            defaultValue={fromZ}
-            id={fromZSliderId}
-            onChange={(_, data) => {
-              setFromZ(data.value);
+              setEnterAngle(data.value);
             }}
           />
           <Label aria-hidden>{angleMax}</Label>
@@ -171,9 +151,8 @@ export const Default = (props: RotateParams) => {
 
       <Rotate
         visible={visible}
-        fromX={fromX}
-        fromY={fromY}
-        fromZ={fromZ}
+        axis={axis}
+        enterAngle={enterAngle}
         duration={duration}
         easing={curveSpringRelaxed}
         onMotionFinish={() => autoplay && setVisible(v => !v)}
