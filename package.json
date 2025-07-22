@@ -102,7 +102,6 @@
     "@storybook/react": "7.6.20",
     "@storybook/react-webpack5": "7.6.20",
     "@storybook/theming": "7.6.20",
-    "@stylistic/eslint-plugin": "4.4.1",
     "@swc/cli": "0.3.14",
     "@swc/core": "1.5.7",
     "@swc/helpers": "0.5.1",
