@@ -151,11 +151,11 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       return {
         culture: props.culture,
         onMouseOver:
-          opacity == 1
+          opacity === 1
             ? (event: React.MouseEvent<SVGElement>) => _handleStackedHover(data.stage, data.subValue, event)
             : undefined,
         onMouseMove:
-          opacity == 1
+          opacity === 1
             ? (event: React.MouseEvent<SVGElement>) => _handleStackedHover(data.stage, data.subValue, event)
             : undefined,
         onFocus: (event: React.FocusEvent<SVGPathElement>) => _handleStackedFocus(data.stage, data.subValue, event),
@@ -165,8 +165,8 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     } else {
       return {
         culture: props.culture,
-        onMouseOver: opacity == 1 ? (event: React.MouseEvent<SVGElement>) => _handleHover(data, event) : undefined,
-        onMouseMove: opacity == 1 ? (event: React.MouseEvent<SVGElement>) => _handleHover(data, event) : undefined,
+        onMouseOver: opacity === 1 ? (event: React.MouseEvent<SVGElement>) => _handleHover(data, event) : undefined,
+        onMouseMove: opacity === 1 ? (event: React.MouseEvent<SVGElement>) => _handleHover(data, event) : undefined,
         onFocus: (event: React.FocusEvent<SVGPathElement>) => _handleFocus(data, event),
         onBlur: () => _handleMouseOut(),
         onMouseOut: () => _handleMouseOut(),
