@@ -3,21 +3,13 @@ const core = require('../core');
 const compat = require('eslint-plugin-compat');
 const tseslint = require('typescript-eslint');
 
-const { getNamingConventionRule, testFiles, storyFiles } = require('../../utils/configHelpers');
+const { testFiles, storyFiles } = require('../../utils/configHelpers');
 
 /** @type {import('typescript-eslint').ConfigArray} */
 module.exports = tseslint.config(
   ...core,
   {
-    languageOptions: {
-      parser: tseslint.parser,
-    },
     rules: {
-      /**
-       * `@typescript-eslint`plugin eslint rules
-       * @see https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin
-       */
-      ...getNamingConventionRule(),
       '@fluentui/max-len': 'off',
       '@typescript-eslint/triple-slash-reference': ['error', { lib: 'always', path: 'never', types: 'never' }],
     },

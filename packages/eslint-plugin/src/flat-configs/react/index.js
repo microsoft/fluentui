@@ -23,6 +23,11 @@ module.exports = tseslint.config(
   ...reactConfig,
   {
     files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+      },
+    },
     plugins: {
       'react-compiler': reactCompilerPlugin,
       get ['@fluentui']() {

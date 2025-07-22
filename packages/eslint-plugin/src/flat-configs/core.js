@@ -12,15 +12,15 @@ const { globalIgnores } = require('eslint/config');
 const airbnbConfig = require('eslint-config-airbnb-extended/legacy');
 
 const IGNORES = [
-  'coverage',
-  'dist',
-  'dist-storybook',
-  'etc',
-  'lib',
-  'lib-amd',
-  'lib-commonjs',
-  'temp',
-  'bundle-size',
+  '**/coverage',
+  '**/dist',
+  '**/dist-storybook',
+  '**/etc',
+  '**/lib',
+  '**/lib-amd',
+  '**/lib-commonjs',
+  '**/temp',
+  '**/bundle-size',
   '**/__snapshots__',
   '**/*.scss.ts',
 ];
@@ -231,19 +231,27 @@ module.exports = tseslint.config(
       },
     },
     rules: {
-      ...fluentRules,
       ...coreRules,
       ...disabledRules,
-      ...importRules,
+      ...typescriptRules,
       ...rnxRules,
+      ...fluentRules,
       ...jsDocRules,
+      ...importRules,
     },
   },
   {
     files: ['**/*.{ts,tsx}'],
     extends: [tseslint.configs.eslintRecommended],
+    languageOptions: {
+      parser: tseslint.parser,
+    },
     rules: {
-      ...typescriptRules,
+      /**
+       * `@typescript-eslint`plugin eslint rules
+       * @see https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin
+       */
+      ...configHelpers.getNamingConventionRule(),
       '@typescript-eslint/ban-ts-comment': 'error',
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
@@ -276,9 +284,6 @@ module.exports = tseslint.config(
       'no-empty-function': 'off',
       'no-shadow': 'off',
       'no-unused-vars': 'off',
-    },
-    languageOptions: {
-      parser: tseslint.parser,
     },
     settings: {
       'import/resolver': {

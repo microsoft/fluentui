@@ -30,7 +30,7 @@ const __internal = {
     react: shouldRegister
       ? {
           files: ['**/src/**/*.{ts,tsx}'],
-          ignores: ['*.{test,spec,cy,stories}.{ts,tsx}'],
+          ignores: ['**/*.{test,spec,cy,stories}.{ts,tsx}'],
           /** @type {import('eslint').Linter.RulesRecord} */
           rules: {
             '@nx/workspace-consistent-callback-type': 'error',
