@@ -73,6 +73,16 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
     let sharedBackgroundColor: string | undefined;
     let useSharedBackground = false;
 
+    /*
+    If we have only one or two unique background colors, we can consider using a shared background color
+    for the table headers. This is to ensure better contrast with the foreground text.
+    For size 1, we will consider that as default color if it satisfies the contrast ratio.
+    There could also be a scenario where backgroundcolor array is of size 2, for eg: ["dimsgray", "gray"],
+    which will assign 1st column header bg color to dimsgray and rest to gray. so our logic of shared background
+    color won't run here. So will consider for size 2 as well.
+    For size greater than this, we will consider that user wants different colors and will let color contrast fail
+    if any.
+    */
     if (bgColorSet.size === 1 || bgColorSet.size === 2) {
       const candidateBg = bgColorSet.size === 1 ? Array.from(bgColorSet)[0] : Array.from(bgColorSet)[1];
       for (const header of headers) {
