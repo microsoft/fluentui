@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Field, makeStyles, tokens, Switch, useId, Label, Slider, RadioGroup, Radio } from '@fluentui/react-components';
-import { Rotate, RotateParams } from '@fluentui/react-motion-components-preview';
+import { Rotate } from '@fluentui/react-motion-components-preview';
+import { Axis3D } from '../../../library/src/atoms/rotate-atom';
 
 // import description from './ExperimentsRotate.stories.md';
 
@@ -10,6 +11,7 @@ const useClasses = makeStyles({
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
     gap: '20px 10px',
     // perspective: '1000px',
+    overflow: 'clip',
   },
   card: {
     gridArea: 'card',
@@ -42,14 +44,13 @@ const LoremIpsum = () => (
   </>
 );
 
-// export const Default = (props: React.PropsWithChildren<typeof Rotate>) => {
-export const Default = (props: RotateParams) => {
+export const Default = (props: React.ComponentProps<typeof Rotate>) => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
   const [autoplay, setAutoplay] = React.useState<boolean>(false);
   const [perspective, setPerspective] = React.useState<string>('1000px');
   const [duration, setDuration] = React.useState<number>(500);
-  const [axis, setAxis] = React.useState<'X' | 'Y' | 'Z'>('Y');
+  const [axis, setAxis] = React.useState<Axis3D>('y');
   const [enterAngle, setEnterAngle] = React.useState<number>(-90);
 
   const perspectiveSliderId = useId();
@@ -92,14 +93,10 @@ export const Default = (props: RotateParams) => {
 
         <Field className={classes.field}>
           <Label>Rotation Axis</Label>
-          <RadioGroup 
-            value={axis} 
-            onChange={(_, data) => setAxis(data.value as 'X' | 'Y' | 'Z')}
-            layout="horizontal"
-          >
-            <Radio value="X" label="X" />
-            <Radio value="Y" label="Y" />
-            <Radio value="Z" label="Z" />
+          <RadioGroup value={axis} onChange={(_, data) => setAxis(data.value as Axis3D)} layout="horizontal">
+            <Radio value="x" label="x" />
+            <Radio value="y" label="y" />
+            <Radio value="z" label="z" />
           </RadioGroup>
         </Field>
 

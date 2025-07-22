@@ -1,60 +1,20 @@
 import { AtomMotion, createPresenceComponent, motionTokens, PresenceMotionFn } from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
-import { rotateAtom, Axis3D } from '../../atoms/rotate-atom';
+import { rotateAtom } from '../../atoms/rotate-atom';
+import { RotateParams } from './rotate-types';
 
 /**
- * Parameters for configuring the Rotate motion.
+ * Define a presence motion for rotate in/out
+ *
+ * @param duration - Time (ms) for the enter transition (rotate-in). Defaults to the `durationGentle` value.
+ * @param easing - Easing curve for the enter transition (rotate-in). Defaults to the `curveDecelerateMax` value.
+ * @param exitDuration - Time (ms) for the exit transition (rotate-out). Defaults to the `duration` param for symmetry.
+ * @param exitEasing - Easing curve for the exit transition (rotate-out). Defaults to the `curveAccelerateMax` value.
+ * @param axis - The axis of rotation: 'x', 'y', or 'z'. Defaults to 'y'.
+ * @param enterAngle - The starting rotation angle in degrees. Defaults to -90.
+ * @param exitAngle - The ending rotation angle in degrees. Defaults to the negation of `enterAngle`.
+ * @param animateOpacity - Whether to animate the opacity during the rotation. Defaults to `true`.
  */
-export type RotateParams = {
-  /**
-   * Time (ms) for the enter transition (rotate-in).
-   * Defaults to `motionTokens.durationGentle`.
-   */
-  duration?: number;
-
-  /**
-   * Easing curve for the enter transition (rotate-in).
-   * Defaults to `motionTokens.curveDecelerateMax`.
-   */
-  easing?: string;
-
-  /**
-   * Time (ms) for the exit transition (rotate-out).
-   * Defaults to the value of `duration`.
-   */
-  exitDuration?: number;
-
-  /**
-   * Easing curve for the exit transition (rotate-out).
-   * Defaults to `motionTokens.curveAccelerateMax`.
-   */
-  exitEasing?: string;
-
-  /**
-   * The axis of rotation: 'X', 'Y', or 'Z'.
-   * Defaults to 'Y'.
-   */
-  axis?: Axis3D;
-
-  /**
-   * The starting rotation angle in degrees.
-   * Defaults to -90.
-   */
-  enterAngle?: number;
-
-  /**
-   * The ending rotation angle in degrees.
-   * Defaults to the negation of `enterAngle`.
-   */
-  exitAngle?: number;
-
-  /**
-   * Whether to animate the opacity during the rotation.
-   * Defaults to `true`.
-   */
-  animateOpacity?: boolean;
-};
-
 const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
   axis = 'y',
   enterAngle = -90,
@@ -98,5 +58,5 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
   };
 };
 
-// Create a presence motion component to rotate an element around a single axis (X, Y, or Z).
+// Create a presence motion component to rotate an element around a single axis (x, y, or z).
 export const Rotate = createPresenceComponent(rotatePresenceFn);
