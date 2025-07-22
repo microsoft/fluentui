@@ -18,7 +18,7 @@ export type RotateParams = {
   easing?: string;
 
   /**
-   * Time (ms) for the enter transition (rotate-in).
+   * Time (ms) for the exit transition (rotate-out).
    * Defaults to the value of `duration`.
    */
   exitDuration?: number;
@@ -30,22 +30,40 @@ export type RotateParams = {
   exitEasing?: string;
 
   /**
-   * The axis to rotate around. Can be 'X', 'Y', or 'Z'.
-   * Defaults to 'Y'.
+   * The starting X-axis rotation angle, in degrees.
+   * Defaults to 0.
    */
-  axis?: 'X' | 'Y' | 'Z';
+  fromX?: number;
 
   /**
-   * The starting angle for the rotation, in degrees.
+   * The starting Y-axis rotation angle, in degrees.
    * Defaults to -90.
    */
-  fromAngle?: number;
+  fromY?: number;
 
   /**
-   * The ending angle for the rotation, in degrees.
-   * Defaults to the negation of `fromAngle`.
+   * The starting Z-axis rotation angle, in degrees.
+   * Defaults to 0.
    */
-  toAngle?: number;
+  fromZ?: number;
+
+  /**
+   * The ending X-axis rotation angle, in degrees.
+   * Defaults to the negation of `fromX`.
+   */
+  toX?: number;
+
+  /**
+   * The ending Y-axis rotation angle, in degrees.
+   * Defaults to the negation of `fromY`.
+   */
+  toY?: number;
+
+  /**
+   * The ending Z-axis rotation angle, in degrees.
+   * Defaults to the negation of `fromZ`.
+   */
+  toZ?: number;
 
   /**
    * Whether to animate the opacity during the rotation.
@@ -54,22 +72,30 @@ export type RotateParams = {
   animateOpacity?: boolean;
 };
 
-const vectorsByAxis = {
-  X: '1, 0, 0',
-  Y: '0, 1, 0',
-  Z: '0, 0, 1',
-};
+const createRotateValue = (x: number, y: number, z: number): string => {
+  const rotations = [];
 
-const rotate3dStr = (axis: 'X' | 'Y' | 'Z', angle: number): string => {
-  const axisVector = vectorsByAxis[axis];
-  return `rotate3d(${axisVector}, ${angle}deg)`;
+  if (x !== 0) {
+    rotations.push(`x ${x}deg`);
+  }
+  if (y !== 0) {
+    rotations.push(`y ${y}deg`);
+  }
+  if (z !== 0) {
+    rotations.push(`z ${z}deg`);
+  }
+
+  return rotations.length > 0 ? rotations.join(' ') : '0deg';
 };
 
 const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
   // element,
-  axis = 'Y',
-  fromAngle = -90,
-  toAngle = -fromAngle,
+  fromX = 0,
+  fromY = -90,
+  fromZ = 0,
+  toX = -fromX,
+  toY = -fromY,
+  toZ = -fromZ,
   duration = motionTokens.durationGentle,
   exitDuration = duration,
   easing = motionTokens.curveDecelerateMax,
@@ -78,7 +104,7 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
 }: RotateParams) => {
   const enterAtoms: AtomMotion[] = [
     {
-      keyframes: [{ transform: rotate3dStr(axis, fromAngle) }, { transform: rotate3dStr(axis, 0) }],
+      keyframes: [{ rotate: createRotateValue(fromX, fromY, fromZ) }, { rotate: createRotateValue(0, 0, 0) }],
       duration,
       easing,
     },
@@ -86,7 +112,7 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
 
   const exitAtoms: AtomMotion[] = [
     {
-      keyframes: [{ transform: rotate3dStr(axis, 0) }, { transform: rotate3dStr(axis, toAngle) }],
+      keyframes: [{ rotate: createRotateValue(0, 0, 0) }, { rotate: createRotateValue(toX, toY, toZ) }],
       duration: exitDuration,
       easing: exitEasing,
     },
@@ -103,5 +129,5 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
   };
 };
 
-// Create a presence motion component to rotate an element from one angle to another, around the X, Y or Z axis.
+// Create a presence motion component to rotate an element around the X, Y, and/or Z axes.
 export const Rotate = createPresenceComponent(rotatePresenceFn);

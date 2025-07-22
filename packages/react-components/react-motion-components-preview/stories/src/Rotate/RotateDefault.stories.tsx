@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Field, makeStyles, tokens, Switch, useId, Label, Slider, Select } from '@fluentui/react-components';
+import { Field, makeStyles, tokens, Switch, useId, Label, Slider } from '@fluentui/react-components';
 import { Rotate, RotateParams } from '@fluentui/react-motion-components-preview';
 
 // import description from './ExperimentsRotate.stories.md';
@@ -46,17 +46,25 @@ const LoremIpsum = () => (
 export const Default = (props: RotateParams) => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
-  const [axis, setAxis] = React.useState<'X' | 'Y' | 'Z'>('X');
   const [autoplay, setAutoplay] = React.useState<boolean>(false);
   const [perspective, setPerspective] = React.useState<string>('1000px');
   const [duration, setDuration] = React.useState<number>(500);
+  const [fromX, setFromX] = React.useState<number>(0);
+  const [fromY, setFromY] = React.useState<number>(-90);
+  const [fromZ, setFromZ] = React.useState<number>(0);
+
   const perspectiveSliderId = useId();
   const durationSliderId = useId();
-  const axisSelectId = useId();
+  const fromXSliderId = useId();
+  const fromYSliderId = useId();
+  const fromZSliderId = useId();
+
   const perspectiveMin = 200;
   const perspectiveMax = 2000;
   const durationMin = 50;
   const durationMax = 1000;
+  const angleMin = -180;
+  const angleMax = 180;
 
   const curveSpringRelaxed = `linear(
     0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
@@ -85,12 +93,50 @@ export const Default = (props: RotateParams) => {
           />
         </Field>
 
-        <label htmlFor={axisSelectId}>axis</label>
-        <Select id={axisSelectId} onChange={(_, data) => setAxis(data.value as 'X' | 'Y' | 'Z')} defaultValue={axis}>
-          <option>X</option>
-          <option>Y</option>
-          <option>Z</option>
-        </Select>
+        <label htmlFor={fromXSliderId}>fromX: {fromX}°</label>
+        <div className={classes.sliderWrapper}>
+          <Label aria-hidden>{angleMin}</Label>
+          <Slider
+            min={angleMin}
+            max={angleMax}
+            defaultValue={fromX}
+            id={fromXSliderId}
+            onChange={(_, data) => {
+              setFromX(data.value);
+            }}
+          />
+          <Label aria-hidden>{angleMax}</Label>
+        </div>
+
+        <label htmlFor={fromYSliderId}>fromY: {fromY}°</label>
+        <div className={classes.sliderWrapper}>
+          <Label aria-hidden>{angleMin}</Label>
+          <Slider
+            min={angleMin}
+            max={angleMax}
+            defaultValue={fromY}
+            id={fromYSliderId}
+            onChange={(_, data) => {
+              setFromY(data.value);
+            }}
+          />
+          <Label aria-hidden>{angleMax}</Label>
+        </div>
+
+        <label htmlFor={fromZSliderId}>fromZ: {fromZ}°</label>
+        <div className={classes.sliderWrapper}>
+          <Label aria-hidden>{angleMin}</Label>
+          <Slider
+            min={angleMin}
+            max={angleMax}
+            defaultValue={fromZ}
+            id={fromZSliderId}
+            onChange={(_, data) => {
+              setFromZ(data.value);
+            }}
+          />
+          <Label aria-hidden>{angleMax}</Label>
+        </div>
 
         <Label htmlFor={durationSliderId}>duration: {duration}</Label>
         <div className={classes.sliderWrapper}>
@@ -125,7 +171,9 @@ export const Default = (props: RotateParams) => {
 
       <Rotate
         visible={visible}
-        axis={axis}
+        fromX={fromX}
+        fromY={fromY}
+        fromZ={fromZ}
         duration={duration}
         easing={curveSpringRelaxed}
         onMotionFinish={() => autoplay && setVisible(v => !v)}

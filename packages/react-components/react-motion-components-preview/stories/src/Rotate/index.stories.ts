@@ -1,11 +1,8 @@
 import { Default as Rotate } from './RotateDefault.stories';
-// import SlideDescription from './SlideDescription.md';
+import RotateDescription from './RotateDescription.md';
 
 export { Default } from './RotateDefault.stories';
-// export { Snappy } from './SlideSnappy.stories';
-// export { Relaxed } from './SlideRelaxed.stories';
-// export { Directions } from './SlideDirections.stories';
-// export { CardsDemo } from './SlideCardsDemo.stories';
+export { CommonPatterns } from './RotateCommonPatterns.stories';
 
 export default {
   title: 'Motion/Components (preview)/Rotate',
@@ -13,7 +10,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        // component: SlideDescription,
+        component: RotateDescription,
       },
     },
   },
