@@ -18,13 +18,16 @@ const v9PackageDeps = Object.keys(configHelpers.getPackageJson({ root, name: 're
 );
 
 /** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config([
+module.exports = tseslint.config(
   ...baseConfig,
   ...reactConfig,
   {
     files: ['**/*.{ts,tsx}'],
     plugins: {
       'react-compiler': reactCompilerPlugin,
+      get ['@fluentui']() {
+        return require('../../index');
+      },
     },
     rules: {
       'jsdoc/check-tag-names': [
@@ -65,7 +68,7 @@ module.exports = tseslint.config([
     },
   },
   {
-    files: ['**/*.cy.{ts,tsx,js}', 'isConformant.{ts,tsx,js}'],
+    files: ['**/*.cy.{ts,tsx,js}', '**/isConformant.{ts,tsx,js}'],
     rules: {
       'import/no-extraneous-dependencies': 'off',
       'react/jsx-no-bind': 'off',
@@ -79,4 +82,4 @@ module.exports = tseslint.config([
     },
   },
   __internal.overrides.react,
-]);
+);

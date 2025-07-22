@@ -4,15 +4,12 @@ const globals = require('globals');
 const configHelpers = require('../utils/configHelpers');
 const importPlugin = require('eslint-plugin-import');
 const rnxPlugin = require('@rnx-kit/eslint-plugin');
-const fluentuiPlugin = require('../index');
 const jestPlugin = require('eslint-plugin-jest');
 const jsDocPlugin = require('eslint-plugin-jsdoc');
-const airbnbPlugin = require('eslint-config-airbnb');
+const prettierConfig = require('eslint-config-prettier/flat');
 const { __internal } = require('../internal-flat');
-const { FlatCompat } = require('@eslint/eslintrc');
 const { globalIgnores } = require('eslint/config');
-
-const compat = new FlatCompat({});
+const airbnbConfig = require('eslint-config-airbnb-extended/legacy');
 
 const IGNORES = [
   'coverage',
@@ -22,7 +19,6 @@ const IGNORES = [
   'lib',
   'lib-amd',
   'lib-commonjs',
-  'node_modules',
   'temp',
   'bundle-size',
   '**/__snapshots__',
@@ -188,16 +184,26 @@ const importRules = {
   'import/export': 'off',
 };
 
-const airbnbConfig = compat.extends('airbnb/base');
+/** @type {import("eslint").Linter.RulesRecord} */
+const typeAwareRules = {
+  /**
+   * plugin: https://github.com/gund/eslint-plugin-deprecation
+   */
+  '@typescript-eslint/no-deprecated': 'error',
+};
 
 /** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config([
+module.exports = tseslint.config(
   globalIgnores(IGNORES),
+  ...airbnbConfig.configs.base.legacy,
+  importPlugin.flatConfigs.typescript,
+  prettierConfig,
   {
-    extends: [airbnbConfig],
     plugins: {
-      '@fluentui': fluentuiPlugin,
-      airbnb: airbnbPlugin,
+      '@typescript-eslint': tseslint.plugin,
+      get ['@fluentui']() {
+        return require('../index');
+      },
       '@rnx-kit': rnxPlugin,
       import: importPlugin,
       jsdoc: /** @type {import('eslint').ESLint.Plugin} */ (jsDocPlugin),
@@ -221,26 +227,23 @@ module.exports = tseslint.config([
     languageOptions: {
       globals: {
         ...globals.browser,
+        ...globals.jest,
       },
     },
     rules: {
+      ...fluentRules,
       ...coreRules,
       ...disabledRules,
       ...importRules,
-      ...fluentRules,
       ...rnxRules,
       ...jsDocRules,
     },
   },
   {
     files: ['**/*.{ts,tsx}'],
-    extends: [importPlugin.flatConfigs.typescript],
-    plugins: {
-      '@typescript-eslint': tseslint.plugin,
-    },
+    extends: [tseslint.configs.eslintRecommended],
     rules: {
       ...typescriptRules,
-      '@typescript-eslint/no-deprecated': 'error',
       '@typescript-eslint/ban-ts-comment': 'error',
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
@@ -288,6 +291,17 @@ module.exports = tseslint.config([
     },
   },
   {
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+      },
+    },
+    rules: {
+      ...typeAwareRules,
+    },
+  },
+  {
     files: [...configHelpers.testFiles],
     plugins: {
       jest: jestPlugin,
@@ -332,4 +346,4 @@ module.exports = tseslint.config([
       'import/no-extraneous-dependencies': 'off',
     },
   },
-]);
+);

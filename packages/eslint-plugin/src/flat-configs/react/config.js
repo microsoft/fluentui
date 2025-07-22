@@ -8,7 +8,7 @@ const tseslint = require('typescript-eslint');
 const { fixupPluginRules } = require('@eslint/compat');
 
 /** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config([
+module.exports = tseslint.config(
   {
     files: ['**/*.{jsx,tsx}'],
     plugins: {
@@ -163,4 +163,4 @@ module.exports = tseslint.config([
       'react/jsx-no-bind': 'off',
     },
   },
-]);
+);

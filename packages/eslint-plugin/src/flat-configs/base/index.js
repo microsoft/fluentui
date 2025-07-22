@@ -6,9 +6,12 @@ const tseslint = require('typescript-eslint');
 const { getNamingConventionRule, testFiles, storyFiles } = require('../../utils/configHelpers');
 
 /** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config([
+module.exports = tseslint.config(
+  ...core,
   {
-    extends: [core],
+    languageOptions: {
+      parser: tseslint.parser,
+    },
     rules: {
       /**
        * `@typescript-eslint`plugin eslint rules
@@ -47,4 +50,4 @@ module.exports = tseslint.config([
       ],
     },
   },
-]);
+);

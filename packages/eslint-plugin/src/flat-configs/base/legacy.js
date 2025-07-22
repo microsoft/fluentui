@@ -4,9 +4,9 @@ const tseslint = require('typescript-eslint');
 const { getNamingConventionRule } = require('../../utils/configHelpers');
 
 /** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config([
+module.exports = tseslint.config(
+  ...core,
   {
-    extends: [core],
     rules: {
       /**
        * `@typescript-eslint`plugin eslint rules
@@ -22,4 +22,4 @@ module.exports = tseslint.config([
       '@rnx-kit/no-export-all': ['warn', { expand: 'all' }],
     },
   },
-]);
+);

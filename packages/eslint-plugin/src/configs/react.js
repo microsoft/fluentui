@@ -28,7 +28,7 @@ module.exports = {
         jsxTags: true,
       },
     ],
-    '@fluentui/ban-instanceof-html-element': ['error'],
+    // '@fluentui/ban-instanceof-html-element': ['error'],
     '@fluentui/no-context-default-value': [
       'error',
       {

@@ -1,5 +1,5 @@
 const restrictedGlobals = require('./utils/restricted-globals');
-const nxPlugin = require.resolve('@nx/eslint-plugin');
+const nxPlugin = require('@nx/eslint-plugin');
 
 function shouldRegisterInternal() {
   try {

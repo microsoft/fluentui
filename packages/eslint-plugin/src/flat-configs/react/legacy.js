@@ -6,7 +6,7 @@ const tseslint = require('typescript-eslint');
 const { reactLegacy: restrictedGlobals } = require('../../utils/restricted-globals');
 
 /** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config([
+module.exports = tseslint.config(
   {
     extends: [baseLegacyConfig, reactConfig],
     rules: {
@@ -23,4 +23,4 @@ module.exports = tseslint.config([
       'react/jsx-no-bind': 'off',
     },
   },
-]);
+);
