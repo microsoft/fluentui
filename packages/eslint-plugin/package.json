@@ -14,7 +14,6 @@
     "@griffel/eslint-plugin": "^2.0.0",
     "@rnx-kit/eslint-plugin": "^0.8.4",
     "@nx/eslint-plugin": "20.8.1",
-    "@stylistic/eslint-plugin": "4.4.1",
     "@typescript-eslint/type-utils": "^8.38.0",
     "@typescript-eslint/utils": "^8.38.0",
     "eslint-config-airbnb": "^18.2.1",
