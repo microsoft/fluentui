@@ -236,7 +236,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
 
     return data.map((d, i) => {
       const geometryProps =
-        props.orientation === 'horizontal'
+        props.orientation === 'vertical'
           ? getHorizontalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL })
           : getVerticalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL });
 
@@ -289,7 +289,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
       subValues: s.subValues || [],
     }));
     const geom =
-      props.orientation === 'horizontal'
+      props.orientation === 'vertical'
         ? getStackedHorizontalFunnelSegmentGeometry({
             ...geometryParams,
             stages: stagesWithSubValues,
@@ -478,5 +478,5 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
 FunnelChart.displayName = 'FunnelChart';
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 FunnelChart.defaultProps = {
-  orientation: 'horizontal',
+  orientation: 'vertical',
 };
