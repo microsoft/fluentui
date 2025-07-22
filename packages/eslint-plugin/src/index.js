@@ -17,10 +17,10 @@ const rules = {
 /** @type {Record<string, import('eslint').Linter.LegacyConfig>} */
 const legacy = {
   node: require('./configs/node'),
-  'node-legacy': require('./configs/node-legacy'),
+  'node--legacy': require('./configs/node-legacy'),
   react: require('./configs/react'),
   imports: require('./configs/imports'),
-  'react-legacy': require('./configs/react-legacy'),
+  'react--legacy': require('./configs/react-legacy'),
 };
 
 /** @type {Record<string, import('typescript-eslint').ConfigArray>} */
