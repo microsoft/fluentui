@@ -25,7 +25,7 @@ interface IStage {
   subValues: ISubValue[];
 }
 
-export function getHorizontalFunnelSegmentGeometry({
+export function getVerticalFunnelSegmentGeometry({
   d,
   i,
   data,
@@ -69,7 +69,7 @@ export function getHorizontalFunnelSegmentGeometry({
   return { pathD, textX, textY, availableWidth };
 }
 
-export function getVerticalFunnelSegmentGeometry({
+export function getHorizontalFunnelSegmentGeometry({
   d,
   i,
   data,

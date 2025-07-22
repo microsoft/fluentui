@@ -248,8 +248,8 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     return data.map((d, i) => {
       const geometryProps =
         props.orientation === 'vertical'
-          ? getHorizontalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL })
-          : getVerticalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL });
+          ? getVerticalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL })
+          : getHorizontalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL });
 
       const { pathD, textX, textY, availableWidth } = geometryProps;
       const minTextWidth = 16;
