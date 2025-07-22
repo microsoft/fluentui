@@ -1,5 +1,6 @@
 import { AtomMotion, createPresenceComponent, motionTokens, PresenceMotionFn } from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
+import { rotateAtom, Axis3D } from '../../atoms/rotate-atom';
 
 /**
  * Parameters for configuring the Rotate motion.
@@ -30,40 +31,22 @@ export type RotateParams = {
   exitEasing?: string;
 
   /**
-   * The starting X-axis rotation angle, in degrees.
-   * Defaults to 0.
+   * The axis of rotation: 'X', 'Y', or 'Z'.
+   * Defaults to 'Y'.
    */
-  fromX?: number;
+  axis?: Axis3D;
 
   /**
-   * The starting Y-axis rotation angle, in degrees.
+   * The starting rotation angle in degrees.
    * Defaults to -90.
    */
-  fromY?: number;
+  enterAngle?: number;
 
   /**
-   * The starting Z-axis rotation angle, in degrees.
-   * Defaults to 0.
+   * The ending rotation angle in degrees.
+   * Defaults to the negation of `enterAngle`.
    */
-  fromZ?: number;
-
-  /**
-   * The ending X-axis rotation angle, in degrees.
-   * Defaults to the negation of `fromX`.
-   */
-  toX?: number;
-
-  /**
-   * The ending Y-axis rotation angle, in degrees.
-   * Defaults to the negation of `fromY`.
-   */
-  toY?: number;
-
-  /**
-   * The ending Z-axis rotation angle, in degrees.
-   * Defaults to the negation of `fromZ`.
-   */
-  toZ?: number;
+  exitAngle?: number;
 
   /**
    * Whether to animate the opacity during the rotation.
@@ -72,30 +55,10 @@ export type RotateParams = {
   animateOpacity?: boolean;
 };
 
-const createRotateValue = (x: number, y: number, z: number): string => {
-  const rotations = [];
-
-  if (x !== 0) {
-    rotations.push(`x ${x}deg`);
-  }
-  if (y !== 0) {
-    rotations.push(`y ${y}deg`);
-  }
-  if (z !== 0) {
-    rotations.push(`z ${z}deg`);
-  }
-
-  return rotations.length > 0 ? rotations.join(' ') : '0deg';
-};
-
 const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
-  // element,
-  fromX = 0,
-  fromY = -90,
-  fromZ = 0,
-  toX = -fromX,
-  toY = -fromY,
-  toZ = -fromZ,
+  axis = 'y',
+  enterAngle = -90,
+  exitAngle = -enterAngle,
   duration = motionTokens.durationGentle,
   exitDuration = duration,
   easing = motionTokens.curveDecelerateMax,
@@ -103,19 +66,25 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
   animateOpacity = true,
 }: RotateParams) => {
   const enterAtoms: AtomMotion[] = [
-    {
-      keyframes: [{ rotate: createRotateValue(fromX, fromY, fromZ) }, { rotate: createRotateValue(0, 0, 0) }],
+    rotateAtom({
+      direction: 'enter',
       duration,
       easing,
-    },
+      axis,
+      enterAngle,
+      exitAngle,
+    }),
   ];
 
   const exitAtoms: AtomMotion[] = [
-    {
-      keyframes: [{ rotate: createRotateValue(0, 0, 0) }, { rotate: createRotateValue(toX, toY, toZ) }],
+    rotateAtom({
+      direction: 'exit',
       duration: exitDuration,
       easing: exitEasing,
-    },
+      axis,
+      enterAngle,
+      exitAngle,
+    }),
   ];
 
   if (animateOpacity) {
@@ -129,5 +98,5 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
   };
 };
 
-// Create a presence motion component to rotate an element around the X, Y, and/or Z axes.
+// Create a presence motion component to rotate an element around a single axis (X, Y, or Z).
 export const Rotate = createPresenceComponent(rotatePresenceFn);
