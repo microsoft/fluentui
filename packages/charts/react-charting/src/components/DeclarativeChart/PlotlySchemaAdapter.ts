@@ -2523,6 +2523,6 @@ const getBarProps = (
     barWidth: 'auto',
     maxBarWidth: 1000,
     xAxisInnerPadding: padding,
-    xAxisOuterPadding: padding,
+    xAxisOuterPadding: padding / 2,
   };
 };
