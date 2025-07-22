@@ -530,6 +530,7 @@ export const transformPlotlyJsonToVSBCProps = (
     ...getYMinMaxValues(input.data[0], input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
+    ...getBarProps(input.data, input.layout),
   };
 };
 
@@ -610,6 +611,7 @@ export const transformPlotlyJsonToGVBCProps = (
     ...getYMinMaxValues(input.data[0], input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
+    ...getBarProps(input.data, input.layout),
   };
 };
 
@@ -995,6 +997,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     roundCorners: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getBarProps(input.data, input.layout, true),
   };
 };
 
@@ -1070,6 +1073,7 @@ export const transformPlotlyJsonToGanttChartProps = (
     useUTC: false,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getBarProps(input.data, input.layout, true),
   };
 };
 
@@ -2472,4 +2476,53 @@ const parseLocalDate = (value: string | number) => {
     }
   }
   return new Date(value);
+};
+
+const getBarProps = (
+  data: Data[],
+  layout: Partial<Layout> | undefined,
+  isHorizontal?: boolean,
+):
+  | Pick<
+      IVerticalBarChartProps,
+      'barWidth' | 'maxBarWidth' | 'xAxisInnerPadding' | 'xAxisOuterPadding' | 'xAxisPadding'
+    >
+  | Pick<IGanttChartProps, 'barHeight' | 'maxBarHeight' | 'yAxisPadding'> => {
+  let padding: number | undefined;
+
+  if (typeof layout?.bargap === 'number') {
+    padding = layout.bargap;
+  }
+
+  const plotlyBarWidths = data
+    .map((series: Partial<PlotData>) => {
+      if (series.type === 'bar' && (isArrayOrTypedArray(series.width) || typeof series.width === 'number')) {
+        return series.width;
+      }
+      return [];
+    })
+    .flat();
+  const maxPlotlyBarWidth = d3Max(plotlyBarWidths as number[]);
+  if (typeof maxPlotlyBarWidth === 'number') {
+    padding = 1 - maxPlotlyBarWidth;
+    padding = Math.max(0, Math.min(padding, 1));
+  }
+
+  if (typeof padding === 'undefined') {
+    return {};
+  }
+
+  if (isHorizontal) {
+    return {
+      maxBarHeight: 1000,
+      yAxisPadding: padding,
+    };
+  }
+
+  return {
+    barWidth: 'auto',
+    maxBarWidth: 1000,
+    xAxisInnerPadding: padding,
+    xAxisOuterPadding: padding / 2,
+  };
 };
