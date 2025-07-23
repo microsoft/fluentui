@@ -110,3 +110,4 @@ export {
   useSemanticToastStyles,
   useSemanticToastTitleStyles,
 } from './component-styles/Toast';
+export { useSemanticSearchBoxStyles } from './component-styles/Search';

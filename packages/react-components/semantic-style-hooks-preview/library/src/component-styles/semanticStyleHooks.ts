@@ -107,6 +107,7 @@ import {
   useSemanticToastStyles,
   useSemanticToastTitleStyles,
 } from './Toast';
+import { useSemanticSearchBoxStyles } from './Search';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -183,6 +184,8 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useRadioStyles_unstable: useSemanticRadioStyles,
   // Persona styles
   usePersonaStyles_unstable: useSemanticPersonaStyles,
+  // Search styles
+  useSearchBoxStyles_unstable: useSemanticSearchBoxStyles,
   // Checkbox styles
   useCheckboxStyles_unstable: useSemanticCheckboxStyles,
   // Breadcrumb styles
