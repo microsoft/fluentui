@@ -14,14 +14,10 @@ const useResetStyles = makeResetStyles({
   overflow: 'unset',
   gap: DIALOG_GAP,
   display: 'grid',
-  maxHeight: `calc(100vh - 2 * ${SURFACE_PADDING})`,
+  maxHeight: [`calc(100vh - 2 * ${SURFACE_PADDING})`, `calc(100dvh - 2 * ${SURFACE_PADDING})`],
   boxSizing: 'border-box',
   gridTemplateRows: 'auto 1fr',
   gridTemplateColumns: '1fr 1fr auto',
-
-  '@supports (height: 1dvh)': {
-    maxHeight: `calc(100dvh - 2 * ${SURFACE_PADDING})`,
-  },
 
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
