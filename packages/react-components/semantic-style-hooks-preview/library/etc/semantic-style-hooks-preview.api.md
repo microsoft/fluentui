@@ -58,6 +58,7 @@ import { ProgressBarState } from '@fluentui/react-progress';
 import { RadioState } from '@fluentui/react-radio';
 import { RatingDisplayState } from '@fluentui/react-rating';
 import { RatingItemState } from '@fluentui/react-rating';
+import { SearchBoxState } from '@fluentui/react-search';
 import { SliderState } from '@fluentui/react-slider';
 import { SpinButtonState } from '@fluentui/react-spinbutton';
 import { SpinnerState } from '@fluentui/react-spinner';
@@ -256,6 +257,9 @@ export const useSemanticRatingDisplayStyles: (_state: unknown) => RatingDisplayS
 
 // @public
 export const useSemanticRatingItemStyles: (_state: unknown) => RatingItemState;
+
+// @public
+export const useSemanticSearchBoxStyles: (_state: unknown) => SearchBoxState;
 
 // @public
 export const useSemanticSliderStyles: (_state: unknown) => SliderState;
