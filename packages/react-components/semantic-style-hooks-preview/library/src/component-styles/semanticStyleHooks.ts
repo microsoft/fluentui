@@ -108,6 +108,20 @@ import {
   useSemanticToastTitleStyles,
 } from './Toast';
 import { useSemanticSearchBoxStyles } from './Search';
+import {
+  useSemanticTeachingPopoverBodyStyles,
+  useSemanticTeachingPopoverCarouselCardStyles,
+  useSemanticTeachingPopoverCarouselFooterButtonStyles,
+  useSemanticTeachingPopoverCarouselFooterStyles,
+  useSemanticTeachingPopoverCarouselNavButtonStyles,
+  useSemanticTeachingPopoverCarouselNavStyles,
+  useSemanticTeachingPopoverCarouselPageCountStyles,
+  useSemanticTeachingPopoverCarouselStyles,
+  useSemanticTeachingPopoverFooterStyles,
+  useSemanticTeachingPopoverHeaderStyles,
+  useSemanticTeachingPopoverSurfaceStyles,
+  useSemanticTeachingPopoverTitleStyles,
+} from './TeachingPopover';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Accordion styles
@@ -236,4 +250,17 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useToastFooterStyles_unstable: useSemanticToastFooterStyles,
   useToastStyles_unstable: useSemanticToastStyles,
   useToastTitleStyles_unstable: useSemanticToastTitleStyles,
+  // TeachingPopover styles
+  useTeachingPopoverBodyStyles_unstable: useSemanticTeachingPopoverBodyStyles,
+  useTeachingPopoverCarouselCardStyles_unstable: useSemanticTeachingPopoverCarouselCardStyles,
+  useTeachingPopoverCarouselFooterButtonStyles_unstable: useSemanticTeachingPopoverCarouselFooterButtonStyles,
+  useTeachingPopoverCarouselFooterStyles_unstable: useSemanticTeachingPopoverCarouselFooterStyles,
+  useTeachingPopoverCarouselNavButtonStyles_unstable: useSemanticTeachingPopoverCarouselNavButtonStyles,
+  useTeachingPopoverCarouselNavStyles_unstable: useSemanticTeachingPopoverCarouselNavStyles,
+  useTeachingPopoverCarouselPageCountStyles_unstable: useSemanticTeachingPopoverCarouselPageCountStyles,
+  useTeachingPopoverCarouselStyles_unstable: useSemanticTeachingPopoverCarouselStyles,
+  useTeachingPopoverFooterStyles_unstable: useSemanticTeachingPopoverFooterStyles,
+  useTeachingPopoverHeaderStyles_unstable: useSemanticTeachingPopoverHeaderStyles,
+  useTeachingPopoverSurfaceStyles_unstable: useSemanticTeachingPopoverSurfaceStyles,
+  useTeachingPopoverTitleStyles_unstable: useSemanticTeachingPopoverTitleStyles,
 };
