@@ -237,8 +237,18 @@ export class VerticalStackedBarChartBase
         ...this.props.calloutProps,
         ...getAccessibleDataObject(this.state.callOutAccessibilityData),
       };
+      // For DateAxis, provide actual data dates as tick values to prevent .nice() adjustment
+      const getTickValues = () => {
+        if (this._xAxisType === XAxisTypes.DateAxis && !this.props.tickValues) {
+          const uniqueDatesSet = new Set(this._dataset.map(dataPoint => dataPoint.x));
+          const uniqueDates = Array.from(uniqueDatesSet);
+          return uniqueDates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime()).map(x => new Date(x));
+        }
+        return this.props.tickValues;
+      };
+
       const tickParams = {
-        tickValues: this.props.tickValues,
+        tickValues: getTickValues(),
         tickFormat: this.props.tickFormat,
       };
 
