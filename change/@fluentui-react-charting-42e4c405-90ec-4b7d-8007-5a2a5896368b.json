@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "focus handling in funnel chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}
