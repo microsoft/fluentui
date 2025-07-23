@@ -49,11 +49,8 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_hasDefault,
   } = options;
-  const tabster = useTabster();
 
-  if (tabster) {
-    getMover(tabster);
-  }
+  useTabster(getMover);
 
   return useTabsterAttributes({
     mover: {

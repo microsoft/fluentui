@@ -21,11 +21,7 @@ const TestMotion = jest.fn(
 const TestComponent: React.FC<TestComponentProps> = props => {
   const state: TestComponentState = {
     components: {
-      // TODO: remove once React v18 slot API is modified
-      // This is a problem at the moment due to UnknownSlotProps assumption
-      // that `children` property is `ReactNode`, which in this case is not valid
-      // as PresenceComponentProps['children'] is `ReactElement`
-      presenceMotion: TestMotion as React.FC<PresenceMotionSlotProps>,
+      presenceMotion: TestMotion,
     },
     presenceMotion: presenceMotionSlot(props.presenceMotion, {
       elementType: TestMotion,

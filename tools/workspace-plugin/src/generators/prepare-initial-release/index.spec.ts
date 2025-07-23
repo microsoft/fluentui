@@ -9,7 +9,7 @@ import {
   readJson,
   updateJson,
   installPackagesTask,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import childProcess from 'child_process';
 import path from 'node:path';
 
@@ -73,7 +73,6 @@ describe('prepare-initial-release generator', () => {
     );
     tree.write(codeownersPath, `foo/bar @org/all\n`);
     writeJson<TsConfig>(tree, 'tsconfig.base.v8.json', { compilerOptions: { paths: {} } });
-    writeJson<TsConfig>(tree, 'tsconfig.base.v0.json', { compilerOptions: { paths: {} } });
     writeJson<TsConfig>(tree, 'tsconfig.base.all.json', { compilerOptions: { paths: {} } });
   });
 

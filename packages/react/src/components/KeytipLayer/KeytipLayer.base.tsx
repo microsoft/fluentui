@@ -66,6 +66,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   };
 
   public static contextType = WindowContext;
+  public context: any;
 
   private _events: EventGroup;
   private _async: Async;
@@ -83,6 +84,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   private _keyHandled = false;
 
   constructor(props: IKeytipLayerProps, context: any) {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 
     initializeComponentRef(this);
@@ -110,6 +112,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     this._events.on(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, this._onPersistedKeytipExecute);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { content, styles } = this.props;
 

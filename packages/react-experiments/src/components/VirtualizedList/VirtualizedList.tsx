@@ -39,6 +39,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
   private _events: EventGroup;
 
   constructor(props: IVirtualizedListProps<TItem>, context: IScrollContainerContext) {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 
     this._events = new EventGroup(this);
@@ -84,6 +85,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { className } = this.props;
     const { items } = this.state;
@@ -103,7 +105,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
       this.context.scrollContainer.observe(ref);
     }
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderItems(scrollTop: number, viewportHeight: number): (JSX.Element | null)[] {
     const { itemHeight, items, itemOverdraw = 2 } = this.props;
 
@@ -136,9 +138,10 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
 
     return this._renderRanges(ranges);
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderRanges(ranges: IRange[]): (JSX.Element | null)[] {
     const { items, onRenderItem } = this.props;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const result: (JSX.Element | null)[] = [];
 
     // Assume ranges are sorted.
@@ -174,6 +177,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     return result;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderSpacerItem(numberOfItems: number, index: number): JSX.Element {
     const { itemHeight, items = [], spacerItemTagName: ItemTag = 'div' } = this.props;
 

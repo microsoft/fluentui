@@ -102,6 +102,20 @@ const KeyCodes = {
   singleQuote: 222,
 };
 
+const enzymeMessage = 'enzyme is forbidden to use in tests. Use @testing-library/react instead.';
+const enzyme = {
+  exists() {
+    throw new Error(enzymeMessage);
+  },
+  mount() {
+    throw new Error(enzymeMessage);
+  },
+  unmount() {
+    throw new Error(enzymeMessage);
+  },
+};
+
 module.exports = {
   KeyCodes,
+  enzyme,
 };

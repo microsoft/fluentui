@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix callout position issues",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

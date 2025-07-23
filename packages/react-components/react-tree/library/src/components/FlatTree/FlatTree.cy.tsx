@@ -16,7 +16,10 @@ import {
 import { Button } from '@fluentui/react-button';
 import { flattenTreeFromElement } from '../../testing/flattenTreeFromElement';
 
-const mount = (element: JSX.Element) => {
+const mount = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
@@ -434,7 +437,7 @@ describe('FlatTree', () => {
         />,
       );
       cy.window().then(win => {
-        expect(win.console.error).to.be.callCount(1);
+        expect(win.console.error).to.be.called;
       });
     });
     it('should change selection when selecting a closed branch', () => {

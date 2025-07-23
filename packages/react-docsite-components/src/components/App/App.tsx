@@ -22,7 +22,7 @@ export interface IAppState {
 const getClassNames = classNamesFunction<IAppStyleProps, IAppStyles>();
 
 @withResponsiveMode
-export class AppBase extends React.Component<IAppProps, IAppState> {
+export class AppBase extends React.Component<React.PropsWithChildren<IAppProps>, IAppState> {
   public state: IAppState = { isMenuVisible: false, isMenuClosing: false };
   private _classNames: IProcessedStyleSet<IAppStyles>;
   private _showOnlyExamples: boolean;

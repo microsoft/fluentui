@@ -23,6 +23,8 @@ module.exports = {
     'jsdoc/check-tag-names': [
       'error',
       {
+        // Allow TSDoc tags
+        definedTags: ['remarks'],
         jsxTags: true,
       },
     ],
@@ -35,6 +37,18 @@ module.exports = {
       },
     ],
     'react-compiler/react-compiler': ['error'],
+    '@typescript-eslint/no-restricted-types': [
+      'error',
+      {
+        types: {
+          'React.RefAttributes': {
+            message:
+              '`React.RefAttributes` is leaking string starting @types/react@18.2.61 creating invalid type contracts. Use `RefAttributes` from @fluentui/react-utilities instead',
+            fixWith: 'RefAttributes',
+          },
+        },
+      },
+    ],
   },
   overrides: [
     // Enable rules requiring type info only for appropriate files/circumstances

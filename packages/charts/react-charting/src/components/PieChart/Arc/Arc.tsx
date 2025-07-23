@@ -5,7 +5,7 @@ import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities
 import { getStyles } from './Arc.styles';
 import { wrapContent } from '../../../utilities/utilities';
 import { SVGTooltipText } from '../../../utilities/SVGTooltipText';
-import { convertToLocaleString } from '../../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
@@ -32,6 +32,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     _updateChart(newProps);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { arc } = this.props;
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
@@ -63,6 +64,7 @@ export class LabeledArc extends Arc {
     this._arcId = getId('piechart_arc');
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { data, culture } = this.props;
     const gap = 4;
@@ -80,7 +82,7 @@ export class LabeledArc extends Arc {
 
     const angle = ((data?.startAngle || 0) + (data?.endAngle || 0)) / 2;
 
-    const content = `${data?.data.x}-${convertToLocaleString(data?.data.y, culture)}`;
+    const content = `${data?.data.x}-${formatToLocaleString(data?.data.y, culture)}`;
 
     return (
       <g
@@ -100,7 +102,7 @@ export class LabeledArc extends Arc {
             y: labelY + (angle > Math.PI / 2 && angle < (3 * Math.PI) / 2 ? 10 : -10),
             dominantBaseline: angle > Math.PI / 2 && angle < (3 * Math.PI) / 2 ? 'hanging' : 'auto',
             textAnchor: (!this._isRTL && angle > Math.PI) || (this._isRTL && angle < Math.PI) ? 'end' : 'start',
-            'aria-label': `${data?.data.x}-${convertToLocaleString(data?.data.y, culture)}`,
+            'aria-label': `${data?.data.x}-${formatToLocaleString(data?.data.y, culture)}`,
             className: classNames.arcText,
           }}
           isTooltipVisibleProp={this.state.isArcFocused}

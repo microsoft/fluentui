@@ -7,6 +7,8 @@ import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
  * A Checkbox Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#checkbox | ARIA checkbox }.
  *
+ * @tag fluent-checkbox
+ *
  * @slot checked-indicator - The checked indicator
  * @slot indeterminate-indicator - The indeterminate indicator
  * @fires change - Emits a custom change event when the checked state changes
@@ -46,17 +48,6 @@ export class Checkbox extends BaseCheckbox {
   public shape?: CheckboxShape;
 
   /**
-   * Applies shape states when the `shape` property changes.
-   *
-   * @param prev - the previous shape value
-   * @param next - the next shape value
-   * @internal
-   */
-  protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined) {
-    swapStates(this.elementInternals, prev, next, CheckboxShape);
-  }
-
-  /**
    * Indicates the size of the control.
    *
    * @public
@@ -65,17 +56,6 @@ export class Checkbox extends BaseCheckbox {
    */
   @attr
   public size?: CheckboxSize;
-
-  /**
-   * Applies size states when the `size` property changes.
-   *
-   * @param prev - the previous state
-   * @param next - the next state
-   * @internal
-   */
-  protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined) {
-    swapStates(this.elementInternals, prev, next, CheckboxSize);
-  }
 
   constructor() {
     super();

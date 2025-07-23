@@ -1,57 +1,62 @@
-import { motionTokens, createPresenceComponent } from '@fluentui/react-motion';
-import { PresenceMotionFnCreator } from '../../types';
-import { ScaleRuntimeParams_unstable, ScaleVariantParams_unstable } from './Scale.types';
+import {
+  motionTokens,
+  createPresenceComponent,
+  PresenceMotionFn,
+  createPresenceComponentVariant,
+} from '@fluentui/react-motion';
+import { fadeAtom } from '../../atoms/fade-atom';
+import { scaleAtom } from '../../atoms/scale-atom';
+import { ScaleParams } from './scale-types';
 
-/** Define a presence motion for scale in/out */
-export const createScalePresence: PresenceMotionFnCreator<ScaleVariantParams_unstable, ScaleRuntimeParams_unstable> =
-  ({
-    enterDuration = motionTokens.durationGentle,
-    enterEasing = motionTokens.curveDecelerateMax,
-    exitDuration = motionTokens.durationNormal,
-    exitEasing = motionTokens.curveAccelerateMax,
-  } = {}) =>
-  ({ animateOpacity = true }) => {
-    const fromOpacity = animateOpacity ? 0 : 1;
-    const toOpacity = 1;
-    const fromScale = 0.9; // Could be a custom param in the future
-    const toScale = 1;
+/**
+ * Define a presence motion for scale in/out
+ *
+ * @param duration - Time (ms) for the enter transition (scale-in). Defaults to the `durationGentle` value (250 ms).
+ * @param easing - Easing curve for the enter transition (scale-in). Defaults to the `curveDecelerateMax` value.
+ * @param exitDuration - Time (ms) for the exit transition (scale-out). Defaults to the `durationNormal` value (200 ms).
+ * @param exitEasing - Easing curve for the exit transition (scale-out). Defaults to the `curveAccelerateMax` value.
+ * @param fromScale - The scale value to animate from. Defaults to `0.9`.
+ * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
+ */
+const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
+  duration = motionTokens.durationGentle,
+  easing = motionTokens.curveDecelerateMax,
+  exitDuration = motionTokens.durationNormal,
+  exitEasing = motionTokens.curveAccelerateMax,
+  fromScale = 0.9,
+  animateOpacity = true,
+}) => {
+  const enterAtoms = [scaleAtom({ direction: 'enter', duration, easing, fromScale: fromScale })];
+  const exitAtoms = [
+    scaleAtom({
+      direction: 'exit',
+      duration: exitDuration,
+      easing: exitEasing,
+      fromScale,
+    }),
+  ];
 
-    const enterKeyframes = [
-      { opacity: fromOpacity, transform: `scale3d(${fromScale}, ${fromScale}, 1)`, visibility: 'visible' },
-      { opacity: toOpacity, transform: `scale3d(${toScale}, ${toScale}, 1)` },
-    ];
+  // Only add fade atoms if animateOpacity is true.
+  if (animateOpacity) {
+    enterAtoms.push(fadeAtom({ direction: 'enter', duration, easing }));
+    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing }));
+  }
 
-    const exitKeyframes = [
-      { opacity: toOpacity, transform: `scale3d(${toScale}, ${toScale}, 1)` },
-      { opacity: fromOpacity, transform: `scale3d(${fromScale}, ${fromScale}, 1)`, visibility: 'hidden' },
-    ];
-    return {
-      enter: {
-        duration: enterDuration,
-        easing: enterEasing,
-        keyframes: enterKeyframes,
-      },
-      exit: { duration: exitDuration, easing: exitEasing, keyframes: exitKeyframes },
-    };
+  return {
+    enter: enterAtoms,
+    exit: exitAtoms,
   };
+};
 
 /** A React component that applies scale in/out transitions to its children. */
-export const Scale = createPresenceComponent(createScalePresence());
+export const Scale = createPresenceComponent(scalePresenceFn);
 
-export const ScaleSnappy = createPresenceComponent(
-  createScalePresence({
-    enterDuration: motionTokens.durationNormal,
-    enterEasing: motionTokens.curveDecelerateMax,
-    exitDuration: motionTokens.durationFast,
-    exitEasing: motionTokens.curveAccelerateMax,
-  }),
-);
+export const ScaleSnappy = createPresenceComponentVariant(Scale, {
+  duration: motionTokens.durationNormal,
+  exitDuration: motionTokens.durationFast,
+});
 
-export const ScaleRelaxed = createPresenceComponent(
-  createScalePresence({
-    enterDuration: motionTokens.durationSlow,
-    enterEasing: motionTokens.curveDecelerateMax,
-    exitDuration: motionTokens.durationGentle,
-    exitEasing: motionTokens.curveAccelerateMax,
-  }),
-);
+export const ScaleRelaxed = createPresenceComponentVariant(Scale, {
+  duration: motionTokens.durationSlow,
+  exitDuration: motionTokens.durationGentle,
+});

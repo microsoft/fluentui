@@ -11,7 +11,7 @@
     "start": "storybook dev",
     "test": "just-scripts test",
     "type-check": "tsc -p . --noEmit --baseUrl .",
-    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --bailOnStoriesError"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -25,9 +25,8 @@
     "@fluentui/react-button": "*",
     "@fluentui/react-calendar-compat": "*",
     "@fluentui/react-card": "*",
-    "@fluentui/react-charts-preview": "*",
+    "@fluentui/react-charts": "*",
     "@fluentui/react-checkbox": "*",
-    "@fluentui/react-color-picker-preview": "*",
     "@fluentui/react-combobox": "*",
     "@fluentui/react-context-selector": "*",
     "@fluentui/react-datepicker-compat": "*",
@@ -35,7 +34,7 @@
     "@fluentui/react-divider": "*",
     "@fluentui/react-drawer": "*",
     "@fluentui/react-field": "*",
-    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-icons": "^2.0.306",
     "@fluentui/react-image": "*",
     "@fluentui/react-infolabel": "*",
     "@fluentui/react-input": "*",
@@ -72,8 +71,8 @@
     "@fluentui/react-tree": "*",
     "@fluentui/react-utilities": "*",
     "@griffel/react": "^1.5.22",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "tslib": "^2.1.0",
     "@fluentui/react-breadcrumb": "*",
     "@fluentui/react-rating": "*",
@@ -81,6 +80,8 @@
     "@fluentui/react-teaching-popover": "*",
     "@fluentui/react-tag-picker": "*",
     "@fluentui/react-carousel": "*",
-    "@fluentui/react-list": "*"
+    "@fluentui/react-list": "*",
+    "@fluentui/react-color-picker": "*",
+    "@fluentui/react-nav": "*"
   }
 }

@@ -11,6 +11,7 @@
         "$source": "argv",
         "index": 0
       },
+      "pattern": "^[a-zA-Z].*$",
       "x-prompt": "For which project do you want to add bundle-size configuration?",
       "x-dropdown": "projects"
     },

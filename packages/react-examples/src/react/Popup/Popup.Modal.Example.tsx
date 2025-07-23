@@ -34,6 +34,7 @@ export const PopupModalExample: React.FunctionComponent = () => {
             role="dialog"
             aria-modal="true"
             onDismiss={hidePopup}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             enableAriaHiddenSiblings={true}
           >
             <Overlay onClick={hidePopup} />

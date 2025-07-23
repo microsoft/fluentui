@@ -32,10 +32,15 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
-        height="436"
+        height="468"
         id="sankeyChart2"
-        width="864"
+        width="912"
       >
         <g
           class=
@@ -43,8 +48,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -54,7 +59,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               aria-label="node 192.168.42.72 with weight 80"
               data-is-focusable="true"
               fill="#757575"
-              height="237.53846153846155"
+              height="241.23076923076923"
               id="nodeBar5"
               opacity="1"
               role="img"
@@ -74,8 +79,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -118,8 +123,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -129,7 +134,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               aria-label="node 172.152.48.13 with weight 50"
               data-is-focusable="true"
               fill="#8764B8"
-              height="148.46153846153845"
+              height="150.76923076923077"
               id="nodeBar7"
               opacity="1"
               role="img"
@@ -138,7 +143,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               tabindex="-1"
               width="124"
               x="48"
-              y="281.53846153846155"
+              y="285.2307692307692"
             />
             <g
               class=
@@ -149,8 +154,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -166,7 +171,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                   id="nodeBar7-name"
                   text-anchor="start"
                   x="48"
-                  y="281.53846153846155"
+                  y="285.2307692307692"
                 >
                   172.152.48.13
                 </text>
@@ -180,7 +185,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="281.53846153846155"
+                y="285.2307692307692"
               >
                 50
               </text>
@@ -195,8 +200,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                 stroke-width: 3px;
                 stroke: #000000;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
           stroke-opacity="1"
         >
@@ -221,7 +226,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
             </defs>
             <path
               aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
-              d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
+              d="M172,36C456,36,456,36,740,36L740,277.231C456,277.231,456,277.231,172,277.231Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link13"
@@ -241,8 +246,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                 stroke-width: 3px;
                 stroke: #000000;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
           stroke-opacity="1"
         >
@@ -267,7 +272,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
             </defs>
             <path
               aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
-              d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
+              d="M172,285.231C456,285.231,456,285.231,740,285.231L740,436C456,436,456,436,172,436Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link14"
@@ -285,8 +290,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -296,7 +301,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               aria-label="node 124.360.55.1 with weight 80"
               data-is-focusable="true"
               fill="#757575"
-              height="237.53846153846155"
+              height="241.23076923076923"
               id="nodeBar9"
               opacity="1"
               role="img"
@@ -304,7 +309,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
+              x="740"
               y="36"
             />
             <g
@@ -316,8 +321,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -332,7 +337,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                   font-weight="regular"
                   id="nodeBar9-name"
                   text-anchor="start"
-                  x="739"
+                  x="740"
                   y="36"
                 >
                   124.360.55.1
@@ -346,7 +351,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
+                x="740"
                 y="36"
               >
                 80
@@ -360,8 +365,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -371,7 +376,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               aria-label="node 192.564.10.2 with weight 50"
               data-is-focusable="true"
               fill="#8764B8"
-              height="148.46153846153845"
+              height="150.76923076923077"
               id="nodeBar11"
               opacity="1"
               role="img"
@@ -379,8 +384,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="281.53846153846155"
+              x="740"
+              y="285.2307692307692"
             />
             <g
               class=
@@ -391,8 +396,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -407,8 +412,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                   font-weight="regular"
                   id="nodeBar11-name"
                   text-anchor="start"
-                  x="739"
-                  y="281.53846153846155"
+                  x="740"
+                  y="285.2307692307692"
                 >
                   192.564.10.2
                 </text>
@@ -421,8 +426,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="281.53846153846155"
+                x="740"
+                y="285.2307692307692"
               >
                 50
               </text>
@@ -480,10 +485,15 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
+          class=
+
+              {
+                display: block;
+              }
           focusable="false"
-          height="436"
+          height="468"
           id="sankeyChart5"
-          width="864"
+          width="912"
         >
           <g
             class=
@@ -491,8 +501,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -502,7 +512,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 aria-label="node 192.168.42.72 with weight 80"
                 data-is-focusable="true"
                 fill="#757575"
-                height="237.53846153846155"
+                height="241.23076923076923"
                 id="nodeBar8"
                 opacity="1"
                 role="img"
@@ -522,8 +532,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -566,8 +576,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -577,7 +587,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 aria-label="node 172.152.48.13 with weight 50"
                 data-is-focusable="true"
                 fill="#8764B8"
-                height="148.46153846153845"
+                height="150.76923076923077"
                 id="nodeBar10"
                 opacity="1"
                 role="img"
@@ -586,7 +596,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 tabindex="-1"
                 width="124"
                 x="48"
-                y="281.53846153846155"
+                y="285.2307692307692"
               />
               <g
                 class=
@@ -597,8 +607,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -614,7 +624,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                     id="nodeBar10-name"
                     text-anchor="start"
                     x="48"
-                    y="281.53846153846155"
+                    y="285.2307692307692"
                   >
                     172.152.48.13
                   </text>
@@ -628,7 +638,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                   font-weight="bold"
                   text-anchor="start"
                   x="48"
-                  y="281.53846153846155"
+                  y="285.2307692307692"
                 >
                   50
                 </text>
@@ -643,8 +653,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                   stroke-width: 3px;
                   stroke: #ffffff;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -669,7 +679,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
               </defs>
               <path
                 aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
-                d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
+                d="M172,36C456,36,456,36,740,36L740,277.231C456,277.231,456,277.231,172,277.231Z"
                 data-is-focusable="true"
                 fill-opacity="1"
                 id="link16"
@@ -689,8 +699,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                   stroke-width: 3px;
                   stroke: #ffffff;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -715,7 +725,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
               </defs>
               <path
                 aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
-                d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
+                d="M172,285.231C456,285.231,456,285.231,740,285.231L740,436C456,436,456,436,172,436Z"
                 data-is-focusable="true"
                 fill-opacity="1"
                 id="link17"
@@ -733,8 +743,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -744,7 +754,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 aria-label="node 124.360.55.1 with weight 80"
                 data-is-focusable="true"
                 fill="#757575"
-                height="237.53846153846155"
+                height="241.23076923076923"
                 id="nodeBar12"
                 opacity="1"
                 role="img"
@@ -752,7 +762,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 stroke-width="2"
                 tabindex="-1"
                 width="124"
-                x="739"
+                x="740"
                 y="36"
               />
               <g
@@ -764,8 +774,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -780,7 +790,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                     font-weight="regular"
                     id="nodeBar12-name"
                     text-anchor="start"
-                    x="739"
+                    x="740"
                     y="36"
                   >
                     124.360.55.1
@@ -794,7 +804,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                   font-size="14"
                   font-weight="bold"
                   text-anchor="start"
-                  x="739"
+                  x="740"
                   y="36"
                 >
                   80
@@ -808,8 +818,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -819,7 +829,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 aria-label="node 192.564.10.2 with weight 50"
                 data-is-focusable="true"
                 fill="#8764B8"
-                height="148.46153846153845"
+                height="150.76923076923077"
                 id="nodeBar14"
                 opacity="1"
                 role="img"
@@ -827,8 +837,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 stroke-width="2"
                 tabindex="-1"
                 width="124"
-                x="739"
-                y="281.53846153846155"
+                x="740"
+                y="285.2307692307692"
               />
               <g
                 class=
@@ -839,8 +849,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -855,8 +865,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                     font-weight="regular"
                     id="nodeBar14-name"
                     text-anchor="start"
-                    x="739"
-                    y="281.53846153846155"
+                    x="740"
+                    y="285.2307692307692"
                   >
                     192.564.10.2
                   </text>
@@ -869,8 +879,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                   font-size="14"
                   font-weight="bold"
                   text-anchor="start"
-                  x="739"
-                  y="281.53846153846155"
+                  x="740"
+                  y="285.2307692307692"
                 >
                   50
                 </text>
@@ -928,10 +938,15 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
-        height="436"
+        height="468"
         id="sankeyChart2"
-        width="864"
+        width="912"
       >
         <g
           class=
@@ -939,8 +954,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -950,7 +965,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               aria-label="node 192.168.42.72 with weight 80"
               data-is-focusable="true"
               fill="#757575"
-              height="237.53846153846155"
+              height="241.23076923076923"
               id="nodeBar5"
               opacity="1"
               role="img"
@@ -970,8 +985,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -1014,8 +1029,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -1025,7 +1040,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               aria-label="node 172.152.48.13 with weight 50"
               data-is-focusable="true"
               fill="#8764B8"
-              height="148.46153846153845"
+              height="150.76923076923077"
               id="nodeBar7"
               opacity="1"
               role="img"
@@ -1034,7 +1049,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               tabindex="-1"
               width="124"
               x="48"
-              y="281.53846153846155"
+              y="285.2307692307692"
             />
             <g
               class=
@@ -1045,8 +1060,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -1062,7 +1077,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   id="nodeBar7-name"
                   text-anchor="start"
                   x="48"
-                  y="281.53846153846155"
+                  y="285.2307692307692"
                 >
                   172.152.48.13
                 </text>
@@ -1076,7 +1091,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="281.53846153846155"
+                y="285.2307692307692"
               >
                 50
               </text>
@@ -1091,8 +1106,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                 stroke-width: 3px;
                 stroke: #000000;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
           stroke-opacity="1"
         >
@@ -1117,7 +1132,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             </defs>
             <path
               aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
-              d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
+              d="M172,36C456,36,456,36,740,36L740,277.231C456,277.231,456,277.231,172,277.231Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link13"
@@ -1137,8 +1152,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                 stroke-width: 3px;
                 stroke: #000000;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
           stroke-opacity="1"
         >
@@ -1163,7 +1178,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             </defs>
             <path
               aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
-              d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
+              d="M172,285.231C456,285.231,456,285.231,740,285.231L740,436C456,436,456,436,172,436Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link14"
@@ -1181,8 +1196,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -1192,7 +1207,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               aria-label="node 124.360.55.1 with weight 80"
               data-is-focusable="true"
               fill="#757575"
-              height="237.53846153846155"
+              height="241.23076923076923"
               id="nodeBar9"
               opacity="1"
               role="img"
@@ -1200,7 +1215,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
+              x="740"
               y="36"
             />
             <g
@@ -1212,8 +1227,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -1228,7 +1243,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   font-weight="regular"
                   id="nodeBar9-name"
                   text-anchor="start"
-                  x="739"
+                  x="740"
                   y="36"
                 >
                   124.360.55.1
@@ -1242,7 +1257,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
+                x="740"
                 y="36"
               >
                 80
@@ -1256,8 +1271,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -1267,7 +1282,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               aria-label="node 192.564.10.2 with weight 50"
               data-is-focusable="true"
               fill="#8764B8"
-              height="148.46153846153845"
+              height="150.76923076923077"
               id="nodeBar11"
               opacity="1"
               role="img"
@@ -1275,8 +1290,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="281.53846153846155"
+              x="740"
+              y="285.2307692307692"
             />
             <g
               class=
@@ -1287,8 +1302,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -1303,8 +1318,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   font-weight="regular"
                   id="nodeBar11-name"
                   text-anchor="start"
-                  x="739"
-                  y="281.53846153846155"
+                  x="740"
+                  y="285.2307692307692"
                 >
                   192.564.10.2
                 </text>
@@ -1317,8 +1332,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="281.53846153846155"
+                x="740"
+                y="285.2307692307692"
               >
                 50
               </text>

@@ -174,6 +174,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const {
       className,
@@ -316,6 +317,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         {...focusZoneProps}
         {...groupedListRowProps}
         direction={focusZoneDirection}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         elementRef={this._root}
         componentRef={this._focusZone}
         role={role}
@@ -414,7 +416,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     return !!this._focusZone.current?.focus(forceIntoFirstElement);
   }
 
-  protected _onRenderCheck(props: IDetailsRowCheckProps) {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  protected _onRenderCheck(props: IDetailsRowCheckProps): JSX.Element {
     return <DetailsRowCheck {...props} />;
   }
 

@@ -40,6 +40,7 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
         <ColorPicker
           color={color}
           onChange={this._updateColor}
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           alphaSliderHidden={alphaSliderHidden}
           showPreview={showPreview}
           styles={colorPickerStyles}

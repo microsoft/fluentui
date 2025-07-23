@@ -139,7 +139,7 @@ export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, 
     };
 
     return (
-      <>
+      <div className="containerDiv">
         <div>
           <label htmlFor="ChangeWidth_Styled">Width:</label>
           <input
@@ -257,7 +257,7 @@ export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, 
             useUTC={false}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

@@ -20,7 +20,7 @@ const shadowRoot: Root = createProxy({}, '@fluentui/react-components', ({ childr
   <ShadowRootProvider root={root}>{children}</ShadowRootProvider>
 ));
 
-export const ShadowRoot: React.FC = props => (
+export const ShadowRoot: React.FC<{ children?: React.ReactNode }> = props => (
   <div
     style={{
       border: '3px dotted orange',

@@ -1,0 +1,75 @@
+name: VRT Baseline
+on:
+  push:
+    branches:
+      # Why only master - https://github.com/microsoft/fluentui/pull/34072#discussion_r2011220032
+      - master
+
+env:
+  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+
+permissions:
+  contents: 'read'
+  actions: 'read'
+  id-token: write
+
+jobs:
+  generate_vrt_screenshots:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    name: Upload VRT Baseline
+    runs-on: macos-14-xlarge
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn playwright install --with-deps
+
+      - name: Run VR tests (generate screenshots)
+        run: yarn nx run-many -t test-vr --nxBail
+
+      - name: Prepare VR screenshots for upload
+        uses: actions/github-script@v7
+        id: screenshots_root
+        with:
+          script: |
+            const run = require('./.github/scripts/prepare-vr-screenshots-for-upload');
+            const config = {
+              projects: ['vr-tests-web-components', 'vr-tests-react-components', 'vr-tests']
+            };
+            const result = await run({github,context,core,config});
+            return result;
+          result-encoding: string
+
+      - name: Login via Azure CLI
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
+        with:
+          client-id: ${{ secrets.AZURE_VRT_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Run baseline
+        env:
+          # this is explicity needed as github token is not available in CLI context
+          GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_VRT_CLIENT_ID }}
+        run: |
+          npx vr-approval-cli@0.5.1 run-diff \
+            --screenshotsDirectory "${{steps.screenshots_root.outputs.result}}" \
+            --buildType release \
+            --ciDefinitionId 'vrt-baseline.yml' \
+            --clientType "FLUENTUI" \
+            --groupName "Fluent UI" \
+            --locationPrefix 'fluentui-github' \
+            --locationPostfix 'vrscreenshots-github' \
+            --threshold '0.04' \
+            --pipelineId '301' \
+            --cumThreshold '1'

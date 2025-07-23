@@ -1,5 +1,5 @@
 import { IArcStyleProps, IArcStyles } from './Arc.types';
-import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
+import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
 
 export const getStyles = (props: IArcStyleProps): IArcStyles => {
   const { solidFill, gradientFill, href, theme, opacity } = props;
@@ -31,6 +31,11 @@ export const getStyles = (props: IArcStyleProps): IArcStyles => {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
+      selectors: {
+        [HighContrastSelector]: {
+          fill: 'CanvasText',
+        },
+      },
     },
   };
 };

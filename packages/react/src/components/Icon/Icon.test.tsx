@@ -14,7 +14,13 @@ describe('Icon', () => {
   });
 
   it('sets Icon name with ariaLabel', () => {
-    const component = renderer.create(<Icon iconName="CompassNW" ariaLabel="asdf" />);
+    const component = renderer.create(
+      <Icon
+        iconName="CompassNW"
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        ariaLabel="asdf"
+      />,
+    );
     const iconInstance = component.root.findByType('i');
 
     expect(iconInstance.props.role).toBe('img');

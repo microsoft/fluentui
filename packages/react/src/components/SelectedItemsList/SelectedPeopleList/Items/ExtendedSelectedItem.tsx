@@ -21,6 +21,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
     this.state = { contextualMenuVisible: false };
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { item, onExpandItem, onRemoveItem, removeButtonAriaLabel, index, selected } = this.props;
     const itemId = getId();
@@ -51,6 +52,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
           <div className={css('ms-PickerItem-content', styles.itemContent)} id={'selectedItemPersona-' + itemId}>
             <Persona
               {...item}
+              // eslint-disable-next-line @typescript-eslint/no-deprecated
               onRenderCoin={this.props.renderPersonaCoin}
               onRenderPrimaryText={this.props.renderPrimaryText}
               size={PersonaSize.size32}

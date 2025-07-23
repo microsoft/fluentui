@@ -6,7 +6,7 @@ import { AccordionItemProvider } from '../../contexts/accordionItem';
 import { mockAccordionItemContextValue } from '../../testing/mockContextValue';
 
 describe('AccordionPanel', () => {
-  const Wrapper: React.FC = props => (
+  const Wrapper: React.FC<{ children?: React.ReactNode }> = props => (
     <AccordionItemProvider
       value={mockAccordionItemContextValue({
         open: true,
@@ -26,6 +26,7 @@ describe('AccordionPanel', () => {
    * Note: see more visual regression tests for AccordionPanel in /apps/vr-tests.
    */
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(<AccordionPanel>Default AccordionPanel</AccordionPanel>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

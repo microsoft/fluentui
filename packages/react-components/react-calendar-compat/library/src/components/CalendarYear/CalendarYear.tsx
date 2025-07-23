@@ -13,6 +13,8 @@ import type {
 const CELL_COUNT = 12;
 const CELLS_PER_ROW = 4;
 
+/* eslint-disable react-compiler/react-compiler */
+
 const DefaultCalendarYearStrings: CalendarYearStrings = {
   prevRangeAriaLabel: undefined,
   nextRangeAriaLabel: undefined,
@@ -112,9 +114,12 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
     componentRef,
   } = props;
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const selectedCellRef = React.useRef<CalendarYearGridCell>(null);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const currentCellRef = React.useRef<CalendarYearGridCell>(null);
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   React.useImperativeHandle(
     componentRef,
     () => ({
@@ -145,6 +150,7 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
     );
   };
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const classNames = useCalendarYearStyles_unstable({
     className,
     animateBackwards,

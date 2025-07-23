@@ -1,11 +1,17 @@
 import * as React from 'react';
-import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
-import { DistributiveOmit, ReplaceNullWithUndefined } from '../utils/types';
+import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import type {
+  ComponentType,
+  FunctionComponent,
+  NamedExoticComponent,
+  PropsWithoutChildren,
+  PropsWithoutRef,
+  ReactNode,
+  ReactVersionDependent,
+  ReplaceNullWithUndefined,
+} from '../utils/types';
 
-export type SlotRenderFunction<Props> = (
-  Component: React.ElementType<Props>,
-  props: Omit<Props, 'as'>,
-) => React.ReactNode;
+export type SlotRenderFunction<Props> = (Component: React.ElementType<Props>, props: Omit<Props, 'as'>) => ReactNode;
 
 /**
  * Matches any component's Slots type (such as ButtonSlots).
@@ -18,7 +24,7 @@ export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandVal
 /**
  * The shorthand value of a slot allows specifying its child
  */
-export type SlotShorthandValue = React.ReactChild | React.ReactNode[] | React.ReactPortal;
+export type SlotShorthandValue = React.ReactElement | string | number | Iterable<ReactNode> | React.ReactPortal;
 
 /**
  * Matches any slot props type.
@@ -26,8 +32,10 @@ export type SlotShorthandValue = React.ReactChild | React.ReactNode[] | React.Re
  * This should ONLY be used in type templates as in `extends UnknownSlotProps`;
  * it shouldn't be used as the type of a slot.
  */
-export type UnknownSlotProps = Pick<React.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+export type UnknownSlotProps = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'style'> & {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   as?: keyof JSX.IntrinsicElements;
+  children?: ReactNode;
 };
 
 /**
@@ -38,12 +46,37 @@ type WithSlotShorthandValue<Props> =
   | ('children' extends keyof Props ? Extract<SlotShorthandValue, Props['children']> : never);
 
 /**
+ * @internal
  * Helper type for {@link Slot}. Takes the props we want to support for a slot and adds the ability for `children`
  * to be a render function that takes those props.
+ *
+ * Notes: For React 17 and earlier, `children` can be a render function that returns a ReactNode.
+ * For React 18 and later, `children` can be any value, as React.ReactNode is a more strict type and does not allow functions anymore.
+ * This means that the render functions need to be asserted as `SlotRenderFunction<Props>` for React 18 and later.
+ *
+ * @example
+ * ```tsx
+ * // For React 17 and earlier:
+ * <Component slot={{ children: (Component, props) => <Component {...props} /> }} />
+ *
+ * // For React 18 and later:
+ * <Component slot={{ children: (Component, props) => <Component {...props} /> as SlotRenderFunction<SlotProps> }} />
+ * ```
  */
-type WithSlotRenderFunction<Props> = Props & {
-  children?: ('children' extends keyof Props ? Props['children'] : never) | SlotRenderFunction<Props>;
+export type WithSlotRenderFunction<Props> = PropsWithoutChildren<Props> & {
+  children?: 'children' extends keyof Props
+    ? ReactVersionDependent<ReactNode, Props['children'] | SlotRenderFunction<Props>>
+    : never;
 };
+
+/**
+ * @internal
+ */
+export type WithoutSlotRenderFunction<Props> = Props extends unknown
+  ? 'children' extends keyof Props
+    ? Omit<Props, 'children'> & { children?: Exclude<Props['children'], Function> }
+    : Props
+  : never;
 
 /**
  * HTML element types that are not allowed to have children.
@@ -71,9 +104,20 @@ type EmptyIntrinsicElements =
  * * Removes legacy string ref.
  * * Disallows children for empty tags like 'img'.
  */
-type IntrinsicElementProps<Type extends keyof JSX.IntrinsicElements> = Type extends EmptyIntrinsicElements
-  ? PropsWithoutChildren<React.PropsWithRef<JSX.IntrinsicElements[Type]>>
-  : React.PropsWithRef<JSX.IntrinsicElements[Type]>;
+type IntrinsicElementProps<
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  Type extends keyof JSX.IntrinsicElements,
+> = Type extends EmptyIntrinsicElements
+  ? PropsWithoutChildren<
+      React.PropsWithRef<
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        JSX.IntrinsicElements[Type]
+      >
+    >
+  : React.PropsWithRef<
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      JSX.IntrinsicElements[Type]
+    >;
 
 /**
  * The props type and shorthand value for a slot. Type is either a single intrinsic element like `'div'`,
@@ -98,20 +142,28 @@ type IntrinsicElementProps<Type extends keyof JSX.IntrinsicElements> = Type exte
  * ```
  */
 export type Slot<
-  Type extends keyof JSX.IntrinsicElements | React.ComponentType | React.VoidFunctionComponent | UnknownSlotProps,
+  Type extends  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    | keyof JSX.IntrinsicElements
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    | ComponentType<any>
+    | UnknownSlotProps,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   AlternateAs extends keyof JSX.IntrinsicElements = never,
 > = IsSingleton<Extract<Type, string>> extends true
   ?
       | WithSlotShorthandValue<
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           Type extends keyof JSX.IntrinsicElements // Intrinsic elements like `div`
             ? { as?: Type } & WithSlotRenderFunction<IntrinsicElementProps<Type>>
-            : Type extends React.ComponentType<infer Props> // Component types like `typeof Button`
-            ? WithSlotRenderFunction<Props>
+            : Type extends ComponentType<infer Props> // Component types like `typeof Button`
+            ? Props extends UnknownSlotProps
+              ? Props
+              : WithSlotRenderFunction<Props>
             : Type // Props types like `ButtonProps`
         >
-      | {
-          [As in AlternateAs]: { as: As } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
-        }[AlternateAs]
+      | (AlternateAs extends unknown
+          ? { as: AlternateAs } & WithSlotRenderFunction<IntrinsicElementProps<AlternateAs>>
+          : never)
       | null
   : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
@@ -133,25 +185,8 @@ export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends ne
  * type Example<T> = T extends AsIntrinsicElement<infer As> ? As : never;
  * ```
  */
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = { as?: As };
-
-/**
- * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
- * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
- *
- * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
- * types, to prevent unions from being expanded.
- */
-export type PropsWithoutRef<P> = 'ref' extends keyof P ? DistributiveOmit<P, 'ref'> : P;
-
-/**
- * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
- * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
- *
- * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
- * types, to prevent unions from being expanded.
- */
-export type PropsWithoutChildren<P> = 'children' extends keyof P ? DistributiveOmit<P, 'children'> : P;
 
 /**
  * Removes SlotShorthandValue and null from the slot type, extracting just the slot's Props object.
@@ -164,30 +199,33 @@ export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefin
  */
 export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> =
   // Include a prop for each slot (see note below about the Omit)
+  // Note: the `Omit<Slots, Primary & 'root'>` here is a little tricky. Here's what it's doing:
+  // * If the Primary slot is 'root', then omit the `root` slot prop.
+  // * Otherwise, don't omit any props: include *both* the Primary and `root` props.
+  //   We need both props to allow the user to specify native props for either slot because the `root` slot is
+  //   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
   Omit<Slots, Primary & 'root'> &
     // Include all of the props of the primary slot inline in the component's props
     PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
-
-// Note: the `Omit<Slots, Primary & 'root'>` above is a little tricky. Here's what it's doing:
-// * If the Primary slot is 'root', then omit the `root` slot prop.
-// * Otherwise, don't omit any props: include *both* the Primary and `root` props.
-//   We need both props to allow the user to specify native props for either slot because the `root` slot is
-//   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
 
 /**
  * Defines the State object of a component given its slots.
  */
 export type ComponentState<Slots extends SlotPropsRecord> = {
+  /**
+   * @deprecated
+   * The base element type for each slot.
+   * This property is deprecated and will be removed in a future version.
+   * The slot base element type is declared through `slot.*(slotShorthand, {elementType: ElementType})` instead.
+   */
   components: {
-    [Key in keyof Slots]-?:
-      | React.ComponentType<ExtractSlotProps<Slots[Key]>>
-      | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    [Key in keyof Slots]-?: React.ElementType;
   };
 } & {
   // Include a prop for each slot, with the shorthand resolved to a props object
   // The root slot can never be null, so also exclude null from it
   [Key in keyof Slots]: ReplaceNullWithUndefined<
-    Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>
+    WithoutSlotRenderFunction<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>
   >;
 };
 
@@ -216,15 +254,14 @@ export type InferredElementRefType<Props> = ObscureEventName extends keyof Props
 
 /**
  * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
+ *
+ * @remarks
+ * {@link React.RefAttributes} is {@link https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/69756 | leaking string references} into `forwardRef` components
+ *  after introducing {@link https://github.com/DefinitelyTyped/DefinitelyTyped/pull/68720 | RefAttributes Type Extension}, which shipped in `@types/react@18.2.61`
+ * - `forwardRef` component do not support string refs.
+ * - uses custom `RefAttributes` which is compatible with all React versions enforcing no `string` allowance.
  */
-export type ForwardRefComponent<Props> = React.ForwardRefExoticComponent<
-  Props & React.RefAttributes<InferredElementRefType<Props>>
->;
-// A definition like this would also work, but typescript is more likely to unnecessarily expand
-// the props type with this version (and it's likely much more expensive to evaluate)
-// export type ForwardRefComponent<Props> = Props extends React.DOMAttributes<infer Element>
-//   ? React.ForwardRefExoticComponent<Props> & React.RefAttributes<Element>
-//   : never;
+export type ForwardRefComponent<Props> = NamedExoticComponent<Props & RefAttributes<InferredElementRefType<Props>>>;
 
 /**
  * Helper type to correctly define the slot class names object.
@@ -237,22 +274,27 @@ export type SlotClassNames<Slots> = {
  * A definition of a slot, as a component, very similar to how a React component is declared,
  * but with some additional metadata that is used to determine how to render the slot.
  */
-export type SlotComponentType<Props> = Props & {
-  /**
-   * **NOTE**: Slot components are not callable.
-   */
-  (props: React.PropsWithChildren<{}>): React.ReactElement | null;
-  /**
-   * @internal
-   */
-  [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
-  /**
-   * @internal
-   */
-  [SLOT_ELEMENT_TYPE_SYMBOL]:
-    | React.ComponentType<Props>
-    | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-};
+export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> &
+  FunctionComponent<{ children?: ReactNode }> & {
+    /**
+     * @internal
+     */
+    [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
+    /**
+     * @internal
+     */
+    [SLOT_ELEMENT_TYPE_SYMBOL]:
+      | ComponentType<Props>
+      | (Props extends AsIntrinsicElement<infer As>
+          ? As
+          : // eslint-disable-next-line @typescript-eslint/no-deprecated
+            keyof JSX.IntrinsicElements);
+    /**
+     * @internal
+     * The original className prop for the slot, before being modified by the useStyles hook.
+     */
+    [SLOT_CLASS_NAME_PROP_SYMBOL]?: string;
+  };
 
 /**
  * Data type for event handlers. It makes data a discriminated union, where each object requires `event` and `type` property.
@@ -284,3 +326,24 @@ export type EventHandler<TData extends EventData<string, unknown>> = (
   ev: React.SyntheticEvent | Event,
   data: TData,
 ) => void;
+
+/**
+ * This type should be used in place of `React.RefAttributes<T>` in all components that specify `ref` prop.
+ *
+ * If user is using React 18 types `>=18.2.61`, they will run into type issues of incompatible refs, using this type mitigates this issues across react type versions.
+ *
+ * @remarks
+ *
+ * React 18 types introduced Type Expansion Change to the `RefAttributes` interface as patch release.
+ * These changes were released in `@types/react@18.2.61` (replacing ref with `LegacyRef`, which leaks `string` into the union type, causing breaking changes between v8/v9 libraries):
+ *  - {@link https://github.com/DefinitelyTyped/DefinitelyTyped/pull/68720 | PR }
+ *  - {@link https://app.unpkg.com/@types/react@18.2.61/files/index.d.ts | shipped definitions }
+ *
+ *
+ * In React 19 types this was "reverted" back to the original `Ref<T>` type.
+ * In order to maintain compatibility with React 17,18,19, we are forced to use our own version of `RefAttributes`.
+ *
+ */
+export interface RefAttributes<T> extends React.Attributes {
+  ref?: React.Ref<T> | undefined;
+}

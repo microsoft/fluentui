@@ -7,6 +7,7 @@ import {
   useArrowNavigationGroup,
   useFocusableGroup,
   useMergedTabsterAttributes_unstable,
+  type TabsterDOMAttribute,
 } from '@fluentui/react-tabster';
 import {
   elementContains,
@@ -18,7 +19,7 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import type { ListItemProps, ListItemState } from './ListItem.types';
-import { useListContext_unstable } from '../List/listContext';
+import { useListSynchronousContext, useListContext_unstable } from '../List/listContext';
 import { Enter, Space, ArrowUp, ArrowDown, ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
 import {
@@ -46,10 +47,11 @@ export const useListItem_unstable = (
   const { value = id, onKeyDown, onClick, tabIndex, role, onAction } = props;
 
   const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
-  const navigationMode = useListContext_unstable(ctx => ctx.navigationMode);
+
+  const { navigationMode, listItemRole } = useListSynchronousContext();
+
   const isSelectionEnabled = useListContext_unstable(ctx => !!ctx.selection);
   const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
-  const listItemRole = useListContext_unstable(ctx => ctx.listItemRole);
   const validateListItem = useListContext_unstable(ctx => ctx.validateListItem);
 
   const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
@@ -179,6 +181,7 @@ export const useListItem_unstable = (
   const tabsterAttributes = useMergedTabsterAttributes_unstable(
     focusableItems ? arrowNavigationAttributes : {},
     focusableGroupAttrs,
+    props as Partial<TabsterDOMAttribute>,
   );
 
   const root = slot.always(
@@ -190,8 +193,8 @@ export const useListItem_unstable = (
       ...(isSelectionEnabled && {
         'aria-selected': isSelected,
       }),
-      ...tabsterAttributes,
       ...props,
+      ...tabsterAttributes,
       onKeyDown: handleKeyDown,
       onClick: isSelectionEnabled || onClick || onAction ? handleClick : undefined,
     }),

@@ -21,6 +21,7 @@ const imageStyling = mergeStyles({
 export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
   private _classNames: { [key in keyof IChicletCardStyles]: string };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { onClick, title, className, footer, theme, styles, url } = this.props;
 
@@ -43,7 +44,7 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
       </div>
     );
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderPreview(): JSX.Element {
     const { image, imageAlt, preview } = this.props;
 

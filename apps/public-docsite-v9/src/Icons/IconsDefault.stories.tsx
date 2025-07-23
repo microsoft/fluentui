@@ -19,14 +19,14 @@ export const Default = () => {
   return (
     <>
       <div className={classes.container}>
-        <SendRegular className={classes.icon24} />
-        <SendRegular className={classes.icon32} />
-        <SendRegular className={classes.icon48} />
+        <SendRegular className={classes.icon24} aria-label="SendRegular size 24" />
+        <SendRegular className={classes.icon32} aria-label="SendRegular size 32" />
+        <SendRegular className={classes.icon48} aria-label="SendRegular size 48" />
       </div>
       <div className={classes.container}>
-        <SendFilled className={classes.icon24} />
-        <SendFilled className={classes.icon32} />
-        <SendFilled className={classes.icon48} />
+        <SendFilled className={classes.icon24} aria-label="SendFilled size 24" />
+        <SendFilled className={classes.icon32} aria-label="SendFilled size 32" />
+        <SendFilled className={classes.icon48} aria-label="SendFilled size 48" />
       </div>
     </>
   );

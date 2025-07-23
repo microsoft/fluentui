@@ -477,9 +477,11 @@ export class Autofill extends React_2.Component<IAutofillProps, IAutofillState> 
     // Warning: (ae-forgotten-export) The symbol "ICursorLocation" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
-    componentDidUpdate(_: any, previousState: IAutofillState, cursor: ICursorLocation | null): void;
+    componentDidUpdate(_: any, _1: any, cursor: ICursorLocation | null): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: any;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -701,6 +703,8 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: any;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     protected currentPromise: PromiseLike<any> | undefined;
@@ -719,7 +723,8 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected _getDescribedBy: (items: T[], hasError: boolean) => string;
     // @deprecated (undocumented)
-    protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
+    protected getSuggestionsAlert(suggestionAlertClassName?: string): // eslint-disable-next-line @typescript-eslint/no-deprecated
+    JSX.Element | undefined;
     // (undocumented)
     protected input: React_2.RefObject<IAutofill>;
     // (undocumented)
@@ -772,7 +777,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected renderLabel(inputId: string, styles: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> | undefined): JSX.Element | null;
     // (undocumented)
-    protected renderSuggestions(): JSX.Element | null;
+    protected renderSuggestions(styles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles> | undefined): JSX.Element | null;
     // (undocumented)
     protected resetFocus(index?: number): void;
     // (undocumented)
@@ -814,6 +819,8 @@ export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsLis
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(oldProps: P, oldState: IBaseSelectedItemsListState<IObjectWithKey>): void;
+    // (undocumented)
+    context: any;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -1084,7 +1091,7 @@ export const CommandButton: typeof ActionButton;
 export { CommunicationColors }
 
 // @public (undocumented)
-export const CompactPeoplePicker: React_2.FunctionComponent<IPeoplePickerProps>;
+export const CompactPeoplePicker: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<IPeoplePickerProps>>>;
 
 // @public
 export class CompactPeoplePickerBase extends BasePeoplePicker {
@@ -1326,6 +1333,8 @@ export class DetailsListBase extends React_2.Component<IDetailsListProps, IDetai
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: any;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: {
@@ -1390,7 +1399,7 @@ export class DetailsRowBase extends React_2.Component<IDetailsRowBaseProps, IDet
 }
 
 // @public (undocumented)
-export const DetailsRowCheck: React_2.FunctionComponent<IDetailsRowCheckProps>;
+export const DetailsRowCheck: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<IDetailsRowCheckProps>>>;
 
 // @public
 export const DetailsRowFields: React_2.FunctionComponent<IDetailsRowFieldsProps>;
@@ -1660,7 +1669,7 @@ export class FacepileBase extends React_2.Component<IFacepileProps, {}> {
     // (undocumented)
     static defaultProps: IFacepileProps;
     // (undocumented)
-    protected onRenderAriaDescription(): "" | JSX.Element | undefined;
+    protected onRenderAriaDescription(): JSX.Element | undefined;
     // (undocumented)
     render(): JSX.Element;
 }
@@ -1831,7 +1840,7 @@ export { getFocusOutlineStyle }
 export { getFocusStyle }
 
 // @public
-export const getFontIcon: (iconName: string, className?: string, ariaLabel?: string) => React_2.ReactElement<any, any> | null;
+export const getFontIcon: (iconName: string, className?: string, ariaLabel?: string) => React_2.ReactNode;
 
 // @public
 export function getFullColorString(color: IColor): string;
@@ -5200,7 +5209,7 @@ export interface IDocumentCardActionsProps extends React_2.ClassAttributes<Docum
     componentRef?: IRefObject<IDocumentCardActions>;
     styles?: IStyleFunctionOrObject<IDocumentCardActionsStyleProps, IDocumentCardActionsStyles>;
     theme?: ITheme;
-    views?: Number;
+    views?: number;
 }
 
 // @public (undocumented)
@@ -7768,7 +7777,7 @@ export interface IPivotProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     headersOnly?: boolean;
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
-    onLinkClick?: (item?: PivotItem, ev?: React_2.MouseEvent<HTMLElement>) => void;
+    onLinkClick?: (item?: PivotItem, ev?: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>) => void;
     overflowAriaLabel?: string;
     overflowBehavior?: 'none' | 'menu';
     overflowButtonAs?: IComponentAs<IButtonProps>;
@@ -9821,6 +9830,8 @@ export class KeytipLayerBase extends React_2.Component<IKeytipLayerProps, IKeyti
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: any;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: IKeytipLayerProps;
@@ -9931,6 +9942,8 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: any;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: {
@@ -9957,7 +9970,7 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
 }
 
 // @public (undocumented)
-export const ListPeoplePicker: React_2.FunctionComponent<IPeoplePickerProps>;
+export const ListPeoplePicker: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<IPeoplePickerProps>>>;
 
 // @public
 export class ListPeoplePickerBase extends MemberListPeoplePicker {
@@ -10100,6 +10113,8 @@ export const Nav: React_2.FunctionComponent<INavProps>;
 export class NavBase extends React_2.Component<INavProps, INavState> implements INav {
     constructor(props: INavProps);
     // (undocumented)
+    context: any;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: INavProps;
@@ -10115,7 +10130,7 @@ export { NeutralColors }
 export { normalize }
 
 // @public (undocumented)
-export const NormalPeoplePicker: React_2.FunctionComponent<IPeoplePickerProps>;
+export const NormalPeoplePicker: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<IPeoplePickerProps>>>;
 
 // @public
 export class NormalPeoplePickerBase extends BasePeoplePicker {
@@ -10194,6 +10209,8 @@ export class PanelBase extends React_2.Component<IPanelProps, IPanelState> imple
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: any;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: IPanelProps;
@@ -10224,13 +10241,13 @@ export enum PanelType {
 export { PartialTheme }
 
 // @public (undocumented)
-export const PeoplePickerItem: React_2.FunctionComponent<IPeoplePickerItemSelectedProps>;
+export const PeoplePickerItem: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<IPeoplePickerItemSelectedProps>>>;
 
 // @public (undocumented)
 export const PeoplePickerItemBase: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
 
 // @public (undocumented)
-export const PeoplePickerItemSuggestion: React_2.FunctionComponent<IPeoplePickerItemSuggestionProps>;
+export const PeoplePickerItemSuggestion: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<IPeoplePickerItemSuggestionProps>>>;
 
 // @public (undocumented)
 export const PeoplePickerItemSuggestionBase: (props: IPeoplePickerItemSuggestionProps) => JSX.Element;
@@ -10646,6 +10663,8 @@ export class ScrollablePaneBase extends React_2.Component<IScrollablePaneProps, 
     // (undocumented)
     get contentContainer(): HTMLDivElement | null;
     // (undocumented)
+    context: any;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     forceLayoutUpdate(): void;
@@ -10992,6 +11011,8 @@ export class Sticky extends React_2.Component<IStickyProps, IStickyState> {
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: any;
+    // (undocumented)
     static contextType: React_2.Context<IScrollablePaneContext>;
     // (undocumented)
     static defaultProps: IStickyProps;
@@ -11251,19 +11272,19 @@ export const SwatchColorPickerBase: React_2.FunctionComponent<ISwatchColorPicker
 export { tableProperties }
 
 // @public (undocumented)
-export const TagItem: React_2.FunctionComponent<ITagItemProps>;
+export const TagItem: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<ITagItemProps>>>;
 
 // @public (undocumented)
 export const TagItemBase: (props: ITagItemProps) => JSX.Element;
 
 // @public (undocumented)
-export const TagItemSuggestion: React_2.FunctionComponent<ITagItemSuggestionProps>;
+export const TagItemSuggestion: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<ITagItemSuggestionProps>>>;
 
 // @public (undocumented)
 export const TagItemSuggestionBase: (props: ITagItemSuggestionProps) => JSX.Element;
 
 // @public (undocumented)
-export const TagPicker: React_2.FunctionComponent<ITagPickerProps>;
+export const TagPicker: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<ITagPickerProps>>>;
 
 // @public (undocumented)
 export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
@@ -11415,6 +11436,8 @@ export class TooltipHostBase extends React_2.Component<ITooltipHostProps, IToolt
     componentDidMount(): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: any;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
