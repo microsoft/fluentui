@@ -73,6 +73,12 @@ export const themes: readonly [{
     readonly id: "teams-dark";
     readonly label: "Teams Dark";
 }, {
+    readonly id: "teams-light-v3";
+    readonly label: "Teams Light V3";
+}, {
+    readonly id: "teams-dark-v3";
+    readonly label: "Teams Dark V3";
+}, {
     readonly id: "teams-high-contrast";
     readonly label: "Teams High Contrast";
 }];
