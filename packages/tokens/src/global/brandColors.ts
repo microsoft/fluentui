@@ -56,3 +56,22 @@ export const brandOffice: BrandVariants = {
   150: `#f4beaa`,
   160: `#f9dcd1`,
 };
+
+export const brandTeamsV3: BrandVariants = {
+  10: `#29274f`,
+  20: `#2f2a5e`,
+  30: `#352e70`,
+  40: `#3b3185`,
+  50: `#44359e`,
+  60: `#4d3aba`,
+  70: `#5a40db`,
+  80: `#654cf5`,
+  90: `#7769fa`,
+  100: `#887dff`,
+  110: `#9791ff`,
+  120: `#aba8ff`,
+  130: `#bab8ff`,
+  140: `#c8c7ff`,
+  150: `#dcdbff`,
+  160: `#e8e8ff`,
+};
