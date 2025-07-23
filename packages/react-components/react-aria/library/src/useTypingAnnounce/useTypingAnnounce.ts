@@ -16,14 +16,14 @@ const valueMutationOptions = {
   attributeFilter: ['value'],
 };
 
-interface useTypingAnnounceReturn<TInputElement extends HTMLElement = HTMLElement> {
+interface TypingAnnounceReturn<TInputElement extends HTMLElement = HTMLElement> {
   typingAnnounce: AriaLiveAnnounceFn;
   inputRef: React.RefObject<TInputElement>;
 }
 
 export function useTypingAnnounce<
   TInputElement extends HTMLElement = HTMLElement,
->(): useTypingAnnounceReturn<TInputElement> {
+>(): TypingAnnounceReturn<TInputElement> {
   const { targetDocument } = useFluent();
   const { announce } = useAnnounce();
 
@@ -58,7 +58,7 @@ export function useTypingAnnounce<
         observer.current && callback([], observer.current);
       }, 500);
     },
-    [callback, inputRef, setTypingTimeout, targetDocument],
+    [callback, inputRef, setTypingTimeout],
   );
 
   React.useEffect(() => {
