@@ -142,6 +142,7 @@
       "@fluentui/react-list": ["packages/react-components/react-list/library/src/index.ts"],
       "@fluentui/react-list-stories": ["packages/react-components/react-list/stories/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/library/src/index.ts"],
+      "@fluentui/react-menu-grid-preview": ["packages/react-components/react-menu-grid-preview/library/src/index.ts"],
       "@fluentui/react-menu-stories": ["packages/react-components/react-menu/stories/src/index.ts"],
       "@fluentui/react-message-bar": ["packages/react-components/react-message-bar/library/src/index.ts"],
       "@fluentui/react-message-bar-stories": ["packages/react-components/react-message-bar/stories/src/index.ts"],
@@ -250,7 +251,10 @@
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/visual-regression-assert": ["tools/visual-regression-assert/src/index.ts"],
       "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
+      "@fluentui/react-menu-grid-preview-stories": [
+        "packages/react-components/react-menu-grid-preview/stories/src/index.ts"
+      ]
     }
   }
 }
