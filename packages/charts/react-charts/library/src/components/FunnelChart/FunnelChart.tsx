@@ -1,19 +1,13 @@
 import * as React from 'react';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
-import {
-  IFunnelChartDataPoint,
-  IFunnelChartProps,
-  IFunnelChartStyleProps,
-  IFunnelChartStyles,
-} from './FunnelChart.types';
-import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ILegend, ILegendContainer, Legends } from '../Legends/index';
-import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
+import { useId } from '@fluentui/react-utilities';
+import { useRtl } from '../../utilities/index';
+import { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
+import { Legend, Legends } from '../Legends/index';
+import { useFocusableGroup } from '@fluentui/react-tabster';
+import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { IImageExportOptions } from '../../types/index';
-import { toImage as convertToImage } from '../../utilities/image-export-utils';
-import { getContrastTextColor } from '../../utilities/utilities';
+import { getContrastTextColor } from '../../utilities/colors';
+import { useFunnelChartStyles } from './useFunnelChartStyles.styles';
 import {
   getHorizontalFunnelSegmentGeometry,
   getVerticalFunnelSegmentGeometry,
@@ -21,24 +15,21 @@ import {
   getStackedHorizontalFunnelSegmentGeometry,
   getStackedVerticalFunnelSegmentGeometry,
 } from './funnelGeometry';
+import { ChartPopoverProps } from '../../index';
 
-const getClassNames = classNamesFunction<IFunnelChartStyleProps, IFunnelChartStyles>();
-
-export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React.forwardRef<
+export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forwardRef<
   HTMLDivElement,
-  IFunnelChartProps
+  FunnelChartProps
 >((props, forwardedRef) => {
-  const _tooltipId: string = getId('FunnelChartTooltipId_');
-  const _emptyChartId: string = getId('_FunnelChart_empty');
-  const isRTL = getRTL();
+  const _emptyChartId: string = useId('_FunnelChart_empty');
+  const isRTL = useRtl();
 
   const [hoveredStage, setHoveredStage] = React.useState<string | null>(null);
-  const [isCalloutVisible, setIsCalloutVisible] = React.useState(false);
-  const [calloutData, setCalloutData] = React.useState<IFunnelChartDataPoint | null>(null);
-  const [refSelected, setRefSelected] = React.useState<SVGElement | null>(null);
+  const [calloutData, setCalloutData] = React.useState<FunnelChartDataPoint | null>(null);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
+  const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
+  const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const chartContainerRef = React.useRef<HTMLDivElement | null>(null);
-  const legendsRef = React.useRef<ILegendContainer | null>(null);
   const isStacked = isStackedFunnelData(props.data);
 
   React.useEffect(() => {
@@ -47,30 +38,24 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     }
   }, [props.legendProps?.selectedLegends]);
 
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      chartContainer: chartContainerRef ?? null,
-      toImage: (opts?: IImageExportOptions): Promise<string> => {
-        return convertToImage(chartContainerRef.current, legendsRef.current?.toSVG, getRTL(), opts);
-      },
-    }),
-    [],
-  );
-
-  function _handleHover(data: IFunnelChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>) {
+  function _handleHover(data: FunnelChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>) {
     mouseEvent?.persist();
-    setHoveredStage(data.stage as string);
+    updatePosition(mouseEvent.clientX, mouseEvent.clientY);
     setCalloutData(data);
-    setIsCalloutVisible(true);
-    setRefSelected(mouseEvent.currentTarget);
+    setPopoverOpen(true);
   }
 
-  function _handleFocus(data: IFunnelChartDataPoint, focusEvent: React.FocusEvent<SVGPathElement>) {
+  function _handleFocus(data: FunnelChartDataPoint, focusEvent: React.FocusEvent<SVGPathElement>) {
     focusEvent?.persist();
+    let x = 0;
+    let y = 0;
+    const targetRect = (focusEvent.target as SVGPathElement).getBoundingClientRect();
+    x = targetRect.left + targetRect.width / 2;
+    y = targetRect.top + targetRect.height / 2;
+
+    updatePosition(x, y);
     setCalloutData(data);
-    setIsCalloutVisible(true);
-    setRefSelected(focusEvent.currentTarget);
+    setPopoverOpen(true);
   }
 
   function _handleStackedHover(
@@ -79,15 +64,14 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     mouseEvent: React.MouseEvent<SVGElement>,
   ) {
     mouseEvent?.persist();
-    setHoveredStage(subValue.category);
+    updatePosition(mouseEvent.clientX, mouseEvent.clientY);
     setCalloutData({
       stage,
       value: subValue.value,
       color: subValue.color,
       category: subValue.category,
-    } as IFunnelChartDataPoint);
-    setIsCalloutVisible(true);
-    setRefSelected(mouseEvent.currentTarget);
+    } as FunnelChartDataPoint);
+    setPopoverOpen(true);
   }
 
   function _handleStackedFocus(
@@ -96,27 +80,32 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     focusEvent: React.FocusEvent<SVGPathElement>,
   ) {
     focusEvent?.persist();
+    let x = 0;
+    let y = 0;
+    const targetRect = (focusEvent.target as SVGPathElement).getBoundingClientRect();
+    x = targetRect.left + targetRect.width / 2;
+    y = targetRect.top + targetRect.height / 2;
+
+    updatePosition(x, y);
     setCalloutData({
       stage,
       value: subValue.value,
       color: subValue.color,
       category: subValue.category,
-    } as IFunnelChartDataPoint);
-    setIsCalloutVisible(true);
-    setRefSelected(focusEvent.currentTarget);
+    } as FunnelChartDataPoint);
+    setPopoverOpen(true);
   }
 
   function _handleMouseOut() {
     setHoveredStage(null);
-    setIsCalloutVisible(false);
+    setPopoverOpen(false);
     setCalloutData(null);
-    setRefSelected(null);
   }
 
   function _onLegendSelectionChange(
     legendsSelected: string[],
     event: React.MouseEvent<HTMLButtonElement>,
-    currentLegend?: ILegend,
+    currentLegend?: Legend,
   ): void {
     if (props.legendProps?.canSelectMultipleLegends) {
       setSelectedLegends(legendsSelected);
@@ -144,18 +133,18 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
   }
 
   function _getEventHandlerProps(
-    data: IFunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } },
+    data: FunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } },
     opacity?: number,
   ) {
     if ('subValue' in data) {
       return {
         culture: props.culture,
         onMouseOver:
-          opacity === 1
+          opacity == 1
             ? (event: React.MouseEvent<SVGElement>) => _handleStackedHover(data.stage, data.subValue, event)
             : undefined,
         onMouseMove:
-          opacity === 1
+          opacity == 1
             ? (event: React.MouseEvent<SVGElement>) => _handleStackedHover(data.stage, data.subValue, event)
             : undefined,
         onFocus: (event: React.FocusEvent<SVGPathElement>) => _handleStackedFocus(data.stage, data.subValue, event),
@@ -165,8 +154,8 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     } else {
       return {
         culture: props.culture,
-        onMouseOver: opacity === 1 ? (event: React.MouseEvent<SVGElement>) => _handleHover(data, event) : undefined,
-        onMouseMove: opacity === 1 ? (event: React.MouseEvent<SVGElement>) => _handleHover(data, event) : undefined,
+        onMouseOver: opacity == 1 ? (event: React.MouseEvent<SVGElement>) => _handleHover(data, event) : undefined,
+        onMouseMove: opacity == 1 ? (event: React.MouseEvent<SVGElement>) => _handleHover(data, event) : undefined,
         onFocus: (event: React.FocusEvent<SVGPathElement>) => _handleFocus(data, event),
         onBlur: () => _handleMouseOut(),
         onMouseOut: () => _handleMouseOut(),
@@ -210,7 +199,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     opacity,
     textProps,
     data,
-    isFocusable,
+    tabIndex,
   }: {
     key: string | number;
     pathD: string;
@@ -222,15 +211,15 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       y: number;
       value: number;
     };
-    data: IFunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } };
-    isFocusable?: boolean;
+    data: FunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } };
+    tabIndex?: number;
   }) {
     const eventHandlers = _getEventHandlerProps(data, opacity);
-    const textColor = getContrastTextColor(fill, props.theme!);
+    const textColor = getContrastTextColor(fill);
 
     return (
       <g key={key}>
-        <path d={pathD} fill={fill} opacity={opacity} {...eventHandlers} data-is-focusable={isFocusable} />
+        <path d={pathD} fill={fill} opacity={opacity} {...eventHandlers} tabIndex={tabIndex} />
         {textProps && <g {...eventHandlers}>{_renderSegmentText({ ...textProps, textColor })}</g>}
       </g>
     );
@@ -270,22 +259,22 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
         opacity: legendHighlighted(d.stage as string) || noLegendHighlighted() ? 1 : 0.1,
         textProps,
         data: d,
-        isFocusable: legendHighlighted(d.stage as string) || noLegendHighlighted() ? true : false,
+        tabIndex: legendHighlighted(d.stage as string) || noLegendHighlighted() ? 0 : undefined,
       });
     });
   }
 
-  function isStackedFunnelData(data: IFunnelChartDataPoint[]): boolean {
+  function isStackedFunnelData(data: FunnelChartDataPoint[]): boolean {
     return Array.isArray(data) && data.every(stage => Array.isArray(stage.subValues));
   }
 
   function _renderStackedSegment(
-    stage: IFunnelChartDataPoint,
+    stage: FunnelChartDataPoint,
     subValue: { value: number; color: string; category: string },
     stageIndex: number,
     subValueIndex: number,
     geometryParams: {
-      stages: IFunnelChartDataPoint[];
+      stages: FunnelChartDataPoint[];
       totals: number[];
       maxTotal: number;
       funnelWidth: number;
@@ -299,7 +288,6 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       ...s,
       subValues: s.subValues || [],
     }));
-
     const geom =
       props.orientation === 'vertical'
         ? getStackedVerticalFunnelSegmentGeometry({
@@ -334,10 +322,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
         (isStackedFunnelData(props.data) && legendHighlighted(subValue.category)) || noLegendHighlighted() ? 1 : 0.1,
       textProps,
       data: { stage: stage.stage as string, subValue },
-      isFocusable:
-        (isStackedFunnelData(props.data) && legendHighlighted(subValue.category)) || noLegendHighlighted()
-          ? true
-          : false,
+      tabIndex: legendHighlighted(subValue.category) || noLegendHighlighted() ? 0 : undefined,
     });
   }
 
@@ -385,12 +370,12 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     if (props.hideLegend) {
       return <></>;
     }
-    let legends: ILegend[];
+    let legends: Legend[];
 
     if (isStacked) {
       // Collect unique categories and their color
       const categoryMap: Record<string, string> = {};
-      props.data.forEach((stage: IFunnelChartDataPoint) => {
+      props.data.forEach((stage: FunnelChartDataPoint) => {
         (stage.subValues || []).forEach(sub => {
           if (!(sub.category in categoryMap)) {
             categoryMap[sub.category] = sub.color;
@@ -404,7 +389,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
         onMouseOutAction: () => setHoveredStage(null),
       }));
     } else {
-      legends = props.data.map((d: IFunnelChartDataPoint) => ({
+      legends = props.data.map((d: FunnelChartDataPoint) => ({
         title: d.stage as string,
         color: d.color!,
         hoverAction: () => setHoveredStage(d.stage as string),
@@ -415,7 +400,6 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     return (
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Legends
-          ref={legendsRef}
           legends={legends}
           centerLegends={true}
           onChange={_onLegendSelectionChangeCallback}
@@ -429,70 +413,70 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     return !(props.data && props.data.length > 0);
   }
 
-  const calloutProps = {
-    isCalloutVisible,
-    directionalHint: DirectionalHint.topAutoEdge,
-    id: `toolTip${_tooltipId}`,
-    target: refSelected,
-    color: calloutData?.color,
-    XValue: calloutData?.stage,
-    YValue: calloutData?.value,
-    isBeakVisible: false,
-    gapSpace: 15,
-    onDismiss: () => {
-      setIsCalloutVisible(false);
-    },
-    preventDismissOnLostFocus: true,
+  function updatePosition(newX: number, newY: number) {
+    const threshold = 1; // Set a threshold for movement
+    const { x, y } = clickPosition;
+    // Calculate the distance moved
+    const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
+    // Update the position only if the distance moved is greater than the threshold
+    if (distance > threshold) {
+      setClickPosition({ x: newX, y: newY });
+      setPopoverOpen(true);
+    }
+  }
+
+  const classes = useFunnelChartStyles(props);
+
+  const calloutProps: ChartPopoverProps = {
     ...props.calloutProps,
+    color: calloutData?.color,
+    hoverXValue: calloutData?.stage,
+    YValue: calloutData?.value,
   };
 
   const width = props.width || 350;
   const height = props.height || 500;
-  const classNames = getClassNames(props.styles!, {
-    theme: props.theme!,
-    className: props.className,
-    chartWidth: width,
-    chartHeight: height,
-  });
 
   const funnelMarginTop = 40;
   const funnelWidth = width * 0.8;
   const funnelOffsetX = (width - funnelWidth) / 2;
+  const focusAttributes = useFocusableGroup();
 
   return !_isChartEmpty() ? (
-    <div ref={chartContainerRef} className={classNames.root}>
-      <FocusZone direction={FocusZoneDirection.horizontal}>
-        <svg width={width} height={height} className={classNames.chart} role={'img'} aria-label={props.chartTitle}>
-          <g
-            transform={
-              isRTL
-                ? `translate(${funnelOffsetX + funnelWidth}, ${funnelMarginTop}) scale(-1,1)`
-                : `translate(${funnelOffsetX}, ${funnelMarginTop})`
-            }
-          >
-            {isStacked
-              ? _createStackedFunnel(height - funnelMarginTop, funnelWidth)
-              : _createFunnel(height - funnelMarginTop, funnelWidth)}
-          </g>
-          {isCalloutVisible && (
-            <Callout {...calloutProps}>
-              <ChartHoverCard
-                XValue={calloutProps?.XValue as string}
-                YValue={calloutProps?.YValue}
-                color={calloutProps?.color}
-              />
-            </Callout>
-          )}
-        </svg>
-      </FocusZone>
+    <div ref={chartContainerRef} className={classes.root} {...focusAttributes}>
+      <svg width={width} height={height} className={classes.chart} role={'img'} aria-label={props.chartTitle}>
+        <g
+          transform={
+            isRTL
+              ? `translate(${funnelOffsetX + funnelWidth}, ${funnelMarginTop}) scale(-1,1)`
+              : `translate(${funnelOffsetX}, ${funnelMarginTop})`
+          }
+        >
+          {isStacked
+            ? _createStackedFunnel(height - funnelMarginTop, funnelWidth)
+            : _createFunnel(height - funnelMarginTop, funnelWidth)}
+        </g>
+      </svg>
+      {isPopoverOpen && (
+        <ChartPopover
+          {...props.calloutProps}
+          XValue={calloutProps?.hoverXValue as string}
+          yCalloutValue={calloutProps?.YValue as string}
+          culture={props.culture ?? 'en-us'}
+          clickPosition={clickPosition}
+          isPopoverOpen={isPopoverOpen}
+          color={calloutProps?.color}
+          isCartesian={false}
+        />
+      )}
       {_renderLegends()}
     </div>
   ) : (
     <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
   );
 });
-FunnelChartBase.displayName = 'FunnelChart';
+FunnelChart.displayName = 'FunnelChart';
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-FunnelChartBase.defaultProps = {
+FunnelChart.defaultProps = {
   orientation: 'vertical',
 };

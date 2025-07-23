@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 23 Jul 2025 07:20:40 GMT",
+      "tag": "@fluentui/react-charting_v5.24.17",
+      "version": "5.24.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "008224c21535e62891750a692d62eb9fb14f62e8",
+            "comment": "focus handling in funnel chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "80f4b9d4f6eefda53f7c0d38743c78f898f28e24",
+            "comment": "fix: respect bargap and width properties in plotly bar traces"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "85c1501faaf4e7e9977c5f3b8148ed87c016d0c2",
+            "comment": "fix white color issue in chart table"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Jul 2025 07:21:22 GMT",
       "tag": "@fluentui/react-charting_v5.24.16",
       "version": "5.24.16",

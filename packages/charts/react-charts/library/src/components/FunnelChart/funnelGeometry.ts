@@ -1,28 +1,28 @@
 import * as React from 'react';
-import { IFunnelChartDataPoint } from './FunnelChart.types';
+import { FunnelChartDataPoint } from './FunnelChart.types';
 
-export interface IFunnelSegmentGeometry {
+export interface FunnelSegmentGeometry {
   pathD: string;
   textX: number;
   textY: number;
   availableWidth: number;
 }
 
-export interface IStackedFunnelSegmentGeometry {
+export interface StackedFunnelSegmentGeometry {
   pathD: string;
   textX: number;
   textY: number;
   availableWidth: number;
 }
 
-interface ISubValue {
+interface SubValue {
   category: string;
   value: number;
   color: string;
 }
 
-interface IStage {
-  subValues: ISubValue[];
+interface Stage {
+  subValues: SubValue[];
 }
 
 export function getVerticalFunnelSegmentGeometry({
@@ -33,13 +33,13 @@ export function getVerticalFunnelSegmentGeometry({
   funnelHeight,
   isRTL,
 }: {
-  d: IFunnelChartDataPoint;
+  d: FunnelChartDataPoint;
   i: number;
-  data: IFunnelChartDataPoint[];
+  data: FunnelChartDataPoint[];
   funnelWidth: number;
   funnelHeight: number;
   isRTL: boolean;
-}): IFunnelSegmentGeometry {
+}): FunnelSegmentGeometry {
   const segmentHeight = funnelHeight / data.length;
   const widthScale = (value: number) => (value / Math.max(...data.map(dataPoint => dataPoint.value!))) * funnelWidth;
   const topWidth = widthScale(d.value!);
@@ -77,13 +77,13 @@ export function getHorizontalFunnelSegmentGeometry({
   funnelHeight,
   isRTL,
 }: {
-  d: IFunnelChartDataPoint;
+  d: FunnelChartDataPoint;
   i: number;
-  data: IFunnelChartDataPoint[];
+  data: FunnelChartDataPoint[];
   funnelWidth: number;
   funnelHeight: number;
   isRTL: boolean;
-}): IFunnelSegmentGeometry {
+}): FunnelSegmentGeometry {
   const segmentWidth = funnelWidth / data.length;
   const heightScale = (value: number) => (value / Math.max(...data.map(dataPoint => dataPoint.value!))) * funnelHeight;
   const leftHeight = heightScale(d.value!);
@@ -142,12 +142,12 @@ export function getStackedVerticalFunnelSegmentGeometry({
 }: {
   i: number;
   k: number;
-  stages: IStage[];
+  stages: Stage[];
   totals: number[];
   maxTotal: number;
   funnelWidth: number;
   funnelHeight: number;
-}): IStackedFunnelSegmentGeometry {
+}): StackedFunnelSegmentGeometry {
   const segmentHeight = funnelHeight / stages.length;
   const cur = stages[i];
   const next = stages[i + 1] || { subValues: [] };
@@ -158,14 +158,14 @@ export function getStackedVerticalFunnelSegmentGeometry({
   let cumBot = 0;
   for (let idx = 0; idx < k; idx++) {
     const v = cur.subValues[idx];
-    const vNext = next.subValues?.find((x: ISubValue) => x.category === v.category);
+    const vNext = next.subValues?.find((x: SubValue) => x.category === v.category);
     const val = v.value;
     const nextVal = vNext ? vNext.value : 0;
     cumTop += (val / curTotal) * (curTotal / maxTotal) * funnelWidth;
     cumBot += (nextVal / nextTotal || 0) * (nextTotal / maxTotal) * funnelWidth;
   }
   const v = cur.subValues[k];
-  const vNext = next.subValues?.find((x: ISubValue) => x.category === v.category);
+  const vNext = next.subValues?.find((x: SubValue) => x.category === v.category);
   const val = v.value;
   const nextVal = vNext ? vNext.value : 0;
   const topW = (val / curTotal) * (curTotal / maxTotal) * funnelWidth;
@@ -210,12 +210,12 @@ export function getStackedHorizontalFunnelSegmentGeometry({
 }: {
   i: number;
   k: number;
-  stages: IStage[];
+  stages: Stage[];
   totals: number[];
   maxTotal: number;
   funnelWidth: number;
   funnelHeight: number;
-}): IStackedFunnelSegmentGeometry {
+}): StackedFunnelSegmentGeometry {
   const segmentWidth = funnelWidth / stages.length;
   const cur = stages[i];
   const next = stages[i + 1] || { subValues: [] };
@@ -226,14 +226,14 @@ export function getStackedHorizontalFunnelSegmentGeometry({
   let cumBot = 0;
   for (let idx = 0; idx < k; idx++) {
     const v = cur.subValues[idx];
-    const vNext = next.subValues?.find((x: ISubValue) => x.category === v.category);
+    const vNext = next.subValues?.find((x: SubValue) => x.category === v.category);
     const val = v.value;
     const nextVal = vNext ? vNext.value : 0;
     cumTop += (val / curTotal) * (curTotal / maxTotal) * funnelHeight;
     cumBot += (nextVal / nextTotal || 0) * (nextTotal / maxTotal) * funnelHeight;
   }
   const v = cur.subValues[k];
-  const vNext = next.subValues?.find((x: ISubValue) => x.category === v.category);
+  const vNext = next.subValues?.find((x: SubValue) => x.category === v.category);
   const val = v.value;
   const nextVal = vNext ? vNext.value : 0;
   const topH = (val / curTotal) * (curTotal / maxTotal) * funnelHeight;
@@ -304,7 +304,7 @@ export function getSegmentTextProps({
   culture: string | undefined;
   onMouseOver: ((event: React.MouseEvent<SVGElement>) => void) | undefined;
   onMouseMove: ((event: React.MouseEvent<SVGElement>) => void) | undefined;
-  onMouseOut: () => void;
+  onMouseOut: (() => void) | undefined;
 }) {
   return {
     show: availableWidth > minTextWidth && availableWidth > 0,
