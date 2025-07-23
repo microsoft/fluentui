@@ -51,6 +51,7 @@
     "@fluentui/react-provider": "^9.20.6",
     "@fluentui/react-radio": "^9.3.6",
     "@fluentui/react-rating": "^9.1.6",
+    "@fluentui/react-search": "^9.1.6",
     "@fluentui/react-shared-contexts": "^9.23.1",
     "@fluentui/react-slider": "^9.3.7",
     "@fluentui/react-spinbutton": "^9.3.6",
