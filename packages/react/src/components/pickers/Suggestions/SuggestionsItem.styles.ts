@@ -85,6 +85,9 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
           ':hover': {
             color: semanticColors.menuItemTextHovered,
           },
+          '.ms-Button-flexContainer': {
+            width: '100%',
+          },
         },
       },
       suggested && [
@@ -107,7 +110,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
     closeButton: [
       classNames.closeButton,
       {
-        display: 'none',
+        // display: 'none',
         color: palette.neutralSecondary,
         padding: '0 4px',
         height: 'auto',

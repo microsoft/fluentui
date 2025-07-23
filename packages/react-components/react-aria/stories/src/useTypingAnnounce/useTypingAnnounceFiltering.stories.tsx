@@ -38,13 +38,12 @@ const sampleItems = [
 ];
 
 export const Filtering = () => {
-  const inputRef = React.useRef<HTMLInputElement>(null);
   const [results, setResults] = React.useState<string[]>([]);
   const styles = useStyles();
 
   const announceId = useId('filter');
 
-  const { typingAnnounce } = useTypingAnnounce(inputRef);
+  const { typingAnnounce, inputRef } = useTypingAnnounce<HTMLInputElement>();
 
   const onChange = (_, data: any) => {
     const searchString = data.value.trim().toLowerCase();

@@ -3,11 +3,10 @@ import { AriaLiveAnnouncer, Field, Input, useId } from '@fluentui/react-componen
 import { useTypingAnnounce } from '../../../library/src/useTypingAnnounce/useTypingAnnounce';
 
 export const Default = () => {
-  const inputRef = React.useRef<HTMLInputElement>(null);
   const [overLimit, setOverLimit] = React.useState(false);
   const announceId = useId('charLimit');
 
-  const { typingAnnounce } = useTypingAnnounce(inputRef);
+  const { typingAnnounce, inputRef } = useTypingAnnounce<HTMLInputElement>();
 
   const onChange = (_, data: any) => {
     setOverLimit(data.value.length > 20);

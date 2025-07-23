@@ -27,18 +27,18 @@ const charCountMessage = (count: number) => {
 };
 
 export const ContentEditable = () => {
-  const inputRef = React.useRef<HTMLSpanElement>(null);
   const [count, setCount] = React.useState(0);
   const styles = useStyles();
 
   const announceId = useId('charCount');
 
-  const { typingAnnounce } = useTypingAnnounce(inputRef);
+  const { typingAnnounce, inputRef } = useTypingAnnounce();
 
-  const onInput = ev => {
-    setCount(ev.target.textContent.length);
+  const onInput = (ev: React.FormEvent<HTMLSpanElement>) => {
+    const charCount = (ev.target as HTMLSpanElement).textContent?.length ?? 0;
+    setCount(charCount);
 
-    const message = charCountMessage(ev.target.textContent.length);
+    const message = charCountMessage(charCount);
     if (message) {
       // pass typingAnnounce a batchId to ensure new charCount updates override old ones
       typingAnnounce(message, { batchId: announceId });

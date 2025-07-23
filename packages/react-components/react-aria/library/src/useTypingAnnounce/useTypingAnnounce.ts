@@ -16,10 +16,18 @@ const valueMutationOptions = {
   attributeFilter: ['value'],
 };
 
-export const useTypingAnnounce = (inputEl: React.RefObject<HTMLElement>): { typingAnnounce: AriaLiveAnnounceFn } => {
+interface useTypingAnnounceReturn<TInputElement extends HTMLElement = HTMLElement> {
+  typingAnnounce: AriaLiveAnnounceFn;
+  inputRef: React.RefObject<TInputElement>;
+}
+
+export function useTypingAnnounce<
+  TInputElement extends HTMLElement = HTMLElement,
+>(): useTypingAnnounceReturn<TInputElement> {
   const { targetDocument } = useFluent();
   const { announce } = useAnnounce();
 
+  const inputRef = React.useRef<TInputElement>(null);
   const observer = React.useRef<MutationObserver>();
   const [setTypingTimeout, clearTypingTimeout] = useTimeout();
   const messageQueue = React.useRef<Message[]>([]);
@@ -40,26 +48,37 @@ export const useTypingAnnounce = (inputEl: React.RefObject<HTMLElement>): { typi
 
   const typingAnnounce: AriaLiveAnnounceFn = React.useCallback(
     (message: string, options: AnnounceOptions = {}) => {
-      const win = targetDocument?.defaultView;
-      if (!win || !inputEl?.current) {
-        return;
-      }
-
       messageQueue.current.push({ message, options });
 
-      if (!observer.current) {
-        // create mutation observer if it doesn't exist
-        observer.current = new win.MutationObserver(callback);
+      if (inputRef.current && observer.current) {
+        observer.current.observe(inputRef.current, valueMutationOptions);
       }
-
-      observer.current.observe(inputEl.current, valueMutationOptions);
 
       setTypingTimeout(() => {
         observer.current && callback([], observer.current);
       }, 500);
     },
-    [callback, inputEl, setTypingTimeout, targetDocument],
+    [callback, inputRef, setTypingTimeout, targetDocument],
   );
 
-  return { typingAnnounce };
-};
+  React.useEffect(() => {
+    const win = targetDocument?.defaultView;
+    if (!win) {
+      return;
+    }
+
+    if (!observer.current) {
+      observer.current = new win.MutationObserver(callback);
+    }
+
+    return () => {
+      // Clean up the observer when the component unmounts
+      if (observer.current) {
+        observer.current.disconnect();
+        clearTypingTimeout();
+      }
+    };
+  }, [callback, clearTypingTimeout, targetDocument]);
+
+  return { typingAnnounce, inputRef };
+}
