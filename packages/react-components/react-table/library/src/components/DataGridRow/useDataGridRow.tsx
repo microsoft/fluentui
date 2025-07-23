@@ -72,12 +72,18 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
   return {
     ...baseState,
     components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...baseState.components,
       selectionCell: DataGridSelectionCell,
     },
     selectionCell: slot.optional(props.selectionCell, {
       renderByDefault: selectable,
       elementType: DataGridSelectionCell,
+      defaultProps: {
+        radioIndicator: {
+          disabled: isHeader,
+        },
+      },
     }),
     renderCell: props.children,
     columnDefs,

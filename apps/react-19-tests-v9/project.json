@@ -1,0 +1,35 @@
+{
+  "name": "react-19-tests-v9",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "implicitDependencies": [],
+  "tags": ["vNext"],
+  "targets": {
+    "type-check:integration": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "{projectRoot}/tsconfig.react-19.json",
+        "{workspaceRoot}/packages/react-components/*/stories/**/*.stories.ts(x)?",
+        "!{workspaceRoot}/packages/react-components/*/stories/**/index.stories.ts(x)?",
+        "!{workspaceRoot}/packages/react-components/react-migration-v[80]-v9/**",
+        "!{workspaceRoot}/packages/react-components/react-[a-z]+-compat/**"
+      ]
+    },
+    "e2e:integration": {
+      "dependsOn": [],
+      "inputs": [
+        "{projectRoot}/cypress-react-19.config.ts",
+        "{workspaceRoot}/packages/react-components/**/*.cy.ts(x)?",
+        "!{workspaceRoot}/packages/react-components/react-migration-v[80]-v9/**",
+        "!{workspaceRoot}/packages/react-components/react-[a-z]+-compat/**"
+      ]
+    },
+    "test:integration": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "{projectRoot}/jest-react-19.config.js",
+        "{workspaceRoot}/packages/react-components/**/*.(test|spec).ts(x)?"
+      ]
+    }
+  }
+}

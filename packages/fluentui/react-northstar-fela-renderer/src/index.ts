@@ -1,1 +1,0 @@
-export { createFelaRenderer } from './createFelaRenderer';

@@ -51,6 +51,15 @@ export class BaseCheckbox extends FASTElement {
    * @internal
    */
   protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    if (this.disabled) {
+      this.removeAttribute('tabindex');
+    } else {
+      // If author sets tabindex to a non-positive value, the component should
+      // respect it, otherwise set it to 0 to avoid the anti-pattern of setting
+      // tabindex to a positive number. See details:
+      // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex
+      this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
+    }
     this.elementInternals.ariaDisabled = this.disabled ? 'true' : 'false';
     toggleState(this.elementInternals, 'disabled', this.disabled);
   }
@@ -130,6 +139,15 @@ export class BaseCheckbox extends FASTElement {
   protected initialValueChanged(prev: string, next: string): void {
     this._value = next;
   }
+
+  /**
+   * Tracks whether the space key was pressed down while the checkbox was focused.
+   * This is used to prevent inadvertently checking a required, unchecked checkbox when the space key is pressed on a
+   * submit button and field validation is triggered.
+   *
+   * @internal
+   */
+  private _keydownPressed: boolean = false;
 
   /**
    * The name of the element. This element's value will be surfaced during form submission under the provided name.
@@ -334,6 +352,7 @@ export class BaseCheckbox extends FASTElement {
   connectedCallback() {
     super.connectedCallback();
 
+    this.disabled = !!this.disabledAttribute;
     this.setAriaChecked();
     this.setValidity();
   }
@@ -352,7 +371,8 @@ export class BaseCheckbox extends FASTElement {
   }
 
   /**
-   * Prevents scrolling when the user presses the space key.
+   * Prevents scrolling when the user presses the space key, and sets a flag to indicate that the space key was pressed
+   * down while the checkbox was focused.
    *
    * @param e - the event object
    * @internal
@@ -361,6 +381,8 @@ export class BaseCheckbox extends FASTElement {
     if (e.key !== ' ') {
       return true;
     }
+
+    this._keydownPressed = true;
   }
 
   /**
@@ -370,10 +392,11 @@ export class BaseCheckbox extends FASTElement {
    * @internal
    */
   public keyupHandler(e: KeyboardEvent): boolean | void {
-    if (e.key !== ' ') {
+    if (!this._keydownPressed || e.key !== ' ') {
       return true;
     }
 
+    this._keydownPressed = false;
     this.click();
   }
 

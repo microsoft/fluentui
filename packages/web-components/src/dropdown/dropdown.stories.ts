@@ -1,4 +1,5 @@
-import { html, repeat } from '@microsoft/fast-element';
+import { html, ref, repeat } from '@microsoft/fast-element';
+
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { DropdownOption as FluentOption } from '../option/option.js';
 import type { Dropdown as FluentDropdown } from './dropdown.js';
@@ -19,6 +20,8 @@ const dropdownTemplate = html<StoryArgs<FluentDropdown>>`
     appearance="${story => story.appearance}"
     ?disabled="${story => story.disabled}"
     ?multiple="${story => story.multiple}"
+    ?required="${story => story.required}"
+    name="${story => story.name}"
     size="${story => story.size}"
     id="${story => story.id}"
     placeholder="${story => story.placeholder}"
@@ -32,7 +35,22 @@ const dropdownTemplate = html<StoryArgs<FluentDropdown>>`
 const storyTemplate = html<StoryArgs<FluentDropdown>>`
   <fluent-field ?disabled="${story => story.disabled}">
     <label slot="label">${story => story.placeholder}</label>
-    ${dropdownTemplate}
+    <fluent-dropdown
+      slot="input"
+      appearance="${story => story.appearance}"
+      ?disabled="${story => story.disabled}"
+      ?multiple="${story => story.multiple}"
+      ?required="${story => story.required}"
+      name="${story => story.name}"
+      size="${story => story.size}"
+      id="${story => story.id}"
+      placeholder="${story => story.placeholder}"
+      slot="${story => story.slot}"
+      type="${story => story.type}"
+      ${ref('dropdown')}
+    >
+      <fluent-listbox>${repeat(story => story.slottedContent?.(), optionTemplate)}</fluent-listbox>
+    </fluent-dropdown>
   </fluent-field>
 `;
 
@@ -425,4 +443,38 @@ export const ManyOptions: Story = {
         'Zimbabwe',
       ].map(value => ({ slottedContent: () => value })),
   },
+};
+
+export const Required: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <form
+      @reset="${story => story.successMessage.toggleAttribute('hidden', true)}"
+      @submit="${story => story.dropdown.checkValidity() && story.successMessage.toggleAttribute('hidden', false)}"
+    >
+      ${storyTemplate}
+      <br />
+      <div>
+        <fluent-button type="submit" appearance="primary">Submit</fluent-button>
+        <fluent-button id="reset-button" type="reset" ${ref('resetButton')}>Reset</fluent-button>
+      </div>
+      <span id="success-message" hidden ${ref('successMessage')}>Form submitted successfully!</span>
+    </form>
+  `),
+  args: {
+    ...Default.args,
+    name: 'fruit',
+    required: true,
+    multiple: true,
+  },
+};
+
+export const OverflowScroll: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <div style="height: 300px; width: 50vw; overflow: scroll; outline: 1px solid black;">
+      <div style="height: 400px;">Scroll down to see the dropdown ↓</div>
+      ${storyTemplate}
+      <div style="height: 400px;"></div>
+    </div>
+  `),
+  args: { ...Default.args },
 };

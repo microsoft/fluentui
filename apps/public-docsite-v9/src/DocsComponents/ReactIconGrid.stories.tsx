@@ -118,7 +118,7 @@ const renderIconCell = (itemProps: GridChildComponentProps & { data: IconCellDat
   }
 
   return (
-    <div aria-label={Icon.displayName} style={style}>
+    <div style={style}>
       <div className={classes.iconCell}>
         <div className={classes.iconCopyButton}>
           <Button
@@ -128,7 +128,7 @@ const renderIconCell = (itemProps: GridChildComponentProps & { data: IconCellDat
             title="Copy icon name to clipboard"
           />
         </div>
-        <Icon className={classes.iconGlyph} />
+        <Icon className={classes.iconGlyph} aria-label={Icon.displayName} />
         <div className={classes.iconCode}>
           <code>{Icon.displayName}</code>
         </div>
@@ -227,7 +227,7 @@ const ReactIconGrid = () => {
               className: classes.radioLabel,
               children: (
                 <>
-                  What icon set to use? Check <Link href="/?path=/docs/icons-overview--page">docs</Link>
+                  What icon set to use? Check <Link href="/?path=/docs/icons-overview--docs">docs</Link>
                 </>
               ),
             }}

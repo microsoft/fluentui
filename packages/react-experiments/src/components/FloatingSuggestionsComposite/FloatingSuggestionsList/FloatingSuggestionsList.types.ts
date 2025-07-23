@@ -13,6 +13,7 @@ export interface IFloatingSuggestionsListProps<T> {
   className?: string;
   suggestionsItemClassName?: string;
   suggestionsHeaderText?: string;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderItem?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSX.Element;
   onItemClick?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
   onSuggestionRemove?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
@@ -23,7 +24,9 @@ export interface IFloatingSuggestionsListProps<T> {
   ariaLabel?: string;
   removeItemAriaLabel?: string;
   id?: string | number;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderHeader?: (suggestionItems?: IFloatingSuggestionItemProps<T>[], suggestionsHeaderText?: string) => JSX.Element;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderFooter?: (suggestionItems?: IFloatingSuggestionItemProps<T>[]) => JSX.Element;
   suggestionsContainerAriaLabel?: string;
   selectedSuggestionIndex?: number;

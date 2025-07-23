@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const { eslintConstants } = require('@fluentui/scripts-monorepo');
-const { ESLint } = require('eslint');
+const { LegacyESLint: ESLint } = require('eslint/use-at-your-own-risk');
 const micromatch = require('micromatch');
 
 /**
@@ -24,7 +24,8 @@ async function run() {
   /** @type {{scripts?:Record<string,string>}} */
   const packageJson = JSON.parse(fs.readFileSync(path.join(packagePath, 'package.json'), 'utf-8'));
   const lintScript = packageJson.scripts?.lint ?? '';
-  /** @type {import('eslint').ESLint} */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  /** @type {ESLint} */
   let eslint;
   /** @type {string} */
   let includePattern;
@@ -35,12 +36,14 @@ async function run() {
     // segment here, the glob needs to start with the absolute package path in case someone has named
     // the directory containing all their git repos "src".)
     includePattern = path.join(packagePath, eslintConstants.directory, '**', `*{${eslintConstants.extensions}}`);
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     eslint = new ESLint({ fix: true, cache: true });
   } else {
     // Otherwise, look for the --ext option to determine extensions
     const extensionsMatch = lintScript.match(/--ext (\S+)/);
     const extensions = extensionsMatch ? extensionsMatch[1] : '.js';
     includePattern = `**/${extensions.includes(',') ? `*{${extensions}}` : `*${extensions}`}`;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     eslint = new ESLint({ fix: true, cache: lintScript.includes('--cache') });
   }
 
@@ -51,7 +54,7 @@ async function run() {
 
   // Filter out ignored files (2-step process due to isPathIgnored returning a promise)
   const ignoreResults = await Promise.all(files.map(f => eslint.isPathIgnored(f)));
-  const filteredFiles = files.filter((f, i) => !ignoreResults[i]);
+  const filteredFiles = files.filter((_, i) => !ignoreResults[i]);
 
   if (filteredFiles.length === 0) {
     return;
@@ -61,6 +64,7 @@ async function run() {
   const results = await eslint.lintFiles(filteredFiles);
   const hasSeverityError = results.some(lintResult => lintResult.errorCount > 0);
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   await ESLint.outputFixes(results);
 
   // Format results

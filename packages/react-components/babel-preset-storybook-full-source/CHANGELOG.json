@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/babel-preset-storybook-full-source",
+  "entries": [
+    {
+      "date": "Tue, 01 Apr 2025 15:20:47 GMT",
+      "tag": "@fluentui/babel-preset-storybook-full-source_v0.0.1",
+      "version": "0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/babel-preset-storybook-full-source",
+            "commit": "1cccd44e20f24027b648bd1267fbfe41b5c63012",
+            "comment": "feat: release to npm"
+          }
+        ]
+      }
+    }
+  ]
+}

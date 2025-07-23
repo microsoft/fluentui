@@ -45,6 +45,24 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
     };
   }
 
+  public componentDidMount(): void {
+    const style = document.createElement('style');
+    const focusStylingCSS = `
+    .containerDiv [contentEditable=true]:focus,
+    .containerDiv [tabindex]:focus,
+    .containerDiv area[href]:focus,
+    .containerDiv button:focus,
+    .containerDiv iframe:focus,
+    .containerDiv input:focus,
+    .containerDiv select:focus,
+    .containerDiv textarea:focus {
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+    `;
+    style.appendChild(document.createTextNode(focusStylingCSS));
+    document.head.appendChild(style);
+  }
+
   public render(): JSX.Element {
     return <div key={'id_VBC'}>{this._basicExample()}</div>;
   }
@@ -107,21 +125,70 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         data: 40,
         color: getColorFromToken(DataVizPalette.color1),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '61%',
+        yAxisCalloutData: '40%',
       },
       {
         legend: 'Metadata2',
         data: 5,
         color: getColorFromToken(DataVizPalette.color2),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '8%',
+        yAxisCalloutData: '5%',
       },
       {
         legend: 'Metadata3',
         data: 20,
         color: getColorFromToken(DataVizPalette.color3),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '31%',
+        yAxisCalloutData: '20%',
+      },
+      {
+        legend: 'Metadata4',
+        data: 10,
+        color: getColorFromToken(DataVizPalette.color4),
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '10%',
+      },
+      {
+        legend: 'Metadata5',
+        data: 23,
+        color: getColorFromToken(DataVizPalette.color5),
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '23%',
+      },
+      {
+        legend: 'Metadata6',
+        data: 0.4,
+        color: getColorFromToken(DataVizPalette.color6),
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '0.4%',
+      },
+      {
+        legend: 'Metadata7',
+        data: 0.5,
+        color: getColorFromToken(DataVizPalette.color7),
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '0.5%',
+      },
+      {
+        legend: 'Metadata8',
+        data: 0.3,
+        color: getColorFromToken(DataVizPalette.color8),
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '0.3%',
+      },
+      {
+        legend: 'Metadata9',
+        data: 0.7,
+        color: getColorFromToken(DataVizPalette.color9),
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '0.7%',
+      },
+      {
+        legend: 'Metadata10',
+        data: 0.1,
+        color: getColorFromToken(DataVizPalette.color10),
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '0.1%',
       },
     ];
 
@@ -257,7 +324,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"
@@ -341,6 +408,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
               enableGradient={this.state.enableGradient}
               roundCorners={this.state.roundCorners}
+              roundedTicks={true}
             />
           </div>
         )}
@@ -363,10 +431,11 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               enableReflow={true}
               enableGradient={this.state.enableGradient}
               roundCorners={this.state.roundCorners}
+              roundedTicks={true}
             />
           </div>
         )}
-      </>
+      </div>
     );
   }
 }

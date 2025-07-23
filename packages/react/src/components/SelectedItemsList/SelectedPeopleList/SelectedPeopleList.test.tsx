@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
+import { render, act } from '@testing-library/react';
 import { isConformant } from '../../../common/isConformant';
 
 import { SelectedPeopleList } from './SelectedPeopleList';
@@ -72,36 +72,33 @@ describe('SelectedPeopleList', () => {
       const ref = React.createRef<SelectedPeopleList>();
 
       // EditingItem has unlisted constraints on being mounted on an actual DOM.
-      // so we can't render it with `renderer` and expect the internal state of the EditingItem to be
-      // initialized
-      const root = document.createElement('div');
-      ReactDOM.render(
-        <SelectedPeopleList ref={ref} editMenuItemText="REMOVE" getEditingItemText={getEditingItemText} />,
-        root,
-      );
+      render(<SelectedPeopleList ref={ref} editMenuItemText="REMOVE" getEditingItemText={getEditingItemText} />);
+
       expect(ref.current).not.toBeNull();
       const picker = ref.current;
       if (picker === null) {
         throw new Error('already checked ref instance was not null');
       }
-      picker.addItems([
-        {
-          key: 'person-A',
-          text: 'Person A',
-          isValid: true,
-          isEditing: true,
-        },
-        {
-          key: 'person-B',
-          text: 'Person B',
-          isValid: true,
-        },
-      ]);
+      act(() => {
+        picker.addItems([
+          {
+            key: 'person-A',
+            text: 'Person A',
+            isValid: true,
+            isEditing: true,
+          },
+          {
+            key: 'person-B',
+            text: 'Person B',
+            isValid: true,
+          },
+        ]);
+      });
 
       const result = picker.render();
       expect(result).toBeInstanceOf(Array);
-      expect(result[0].key).toBe('person-A');
-      expect(result[1].key).toBe('person-B');
+      expect(result![0].key).toBe('person-A');
+      expect(result![1].key).toBe('person-B');
     });
   });
 });

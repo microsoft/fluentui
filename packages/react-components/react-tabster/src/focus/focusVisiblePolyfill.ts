@@ -56,6 +56,8 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
   keyborg.subscribe(isNavigatingWithKeyboard => {
     if (!isNavigatingWithKeyboard) {
       disposeCurrentElement();
+    } else {
+      registerElementIfNavigating(targetWindow.document.activeElement);
     }
   });
 
@@ -88,7 +90,7 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
 
     scope.removeEventListener(KEYBORG_FOCUSIN, keyborgListener as ListenerOverride);
     scope.removeEventListener('focusout', blurListener);
-    delete (scope as HTMLElementWithFocusVisibleScope).focusVisible;
+    (scope as HTMLElementWithFocusVisibleScope).focusVisible = undefined;
 
     disposeKeyborg(keyborg);
   };

@@ -98,7 +98,7 @@ export class TreeChartThreeLayerLongExample extends React.Component<{}, ITreeSta
   };
   private _createTreeChart(): JSX.Element {
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"
@@ -115,7 +115,7 @@ export class TreeChartThreeLayerLongExample extends React.Component<{}, ITreeSta
           treeTraversal={TreeTraverse.preOrder}
           layoutWidth={this.state?._layoutWidth}
         />
-      </>
+      </div>
     );
   }
 }

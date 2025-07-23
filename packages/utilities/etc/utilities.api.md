@@ -56,7 +56,7 @@ export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
 export function asAsync<TProps extends {}>(options: IAsAsyncOptions<TProps>): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TProps & {
-    asyncPlaceholder?: React_2.ElementType<any> | undefined;
+    asyncPlaceholder?: React_2.ElementType | undefined;
 }> & React_2.RefAttributes<React_2.ElementType<TProps>>>;
 
 // @public
@@ -321,6 +321,7 @@ export const FocusRectsProvider: React_2.FC<FocusRectsProviderProps>;
 export type FocusRectsProviderProps = {
     providerRef: React_2.RefObject<HTMLElement>;
     layerRoot?: boolean;
+    children?: React_2.ReactNode;
 };
 
 // @public
@@ -1055,6 +1056,7 @@ export const MergeStylesRootProvider: React_2.FC<MergeStylesRootProviderProps>;
 
 // @public (undocumented)
 export type MergeStylesRootProviderProps = {
+    children?: React_2.ReactNode;
     stylesheets?: Map<string, ExtendedCSSStyleSheet>;
     window?: Window;
     useAdoptedStylesheetEx?: AdoptedStylesheetExHook;
@@ -1087,6 +1089,7 @@ export const MergeStylesShadowRootProvider: React_2.FC<MergeStylesShadowRootProv
 
 // @public (undocumented)
 export type MergeStylesShadowRootProviderProps = {
+    children?: React_2.ReactNode;
     shadowRoot?: ShadowRoot | null;
 };
 
@@ -1310,10 +1313,10 @@ export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): bo
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap', doc?: Document): boolean;
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSetBase>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.FunctionComponent<TComponentProps>;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSetBase>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<React_2.PropsWithChildren<TComponentProps>>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: React_2.PropsWithoutRef<TComponentProps>) => Partial<React_2.PropsWithoutRef<TComponentProps>>, customizable?: ICustomizableProps, pure?: boolean): React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<TComponentProps>>>;
 
 // @public (undocumented)
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React_2.RefAttributes<TRef>, TStyleProps, TStyleSet extends IStyleSetBase, TRef = unknown>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TComponentProps> & React_2.RefAttributes<TRef>>;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React_2.RefAttributes<TRef>, TStyleProps, TStyleSet extends IStyleSetBase, TRef = unknown>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<React_2.PropsWithChildren<TComponentProps>>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: React_2.PropsWithoutRef<TComponentProps>) => Partial<React_2.PropsWithoutRef<TComponentProps>>, customizable?: ICustomizableProps, pure?: boolean): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TComponentProps> & React_2.RefAttributes<TRef>>;
 
 // @public (undocumented)
 export type StyleFunction<TStyleProps, TStyleSet extends IStyleSetBase> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {

@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.86",
+  "version": "3.0.0-beta.113",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -20,52 +20,24 @@
   "unpkg": "dist/web-components.min.js",
   "files": [
     "*.md",
-    "dist/dts/",
     "dist/esm/",
     "dist/*.js",
-    "dist/*.d.ts"
+    "dist/*.d.ts",
+    "custom-elements.json"
   ],
   "exports": {
-    ".": {
-      "types": "./dist/dts/index.d.ts",
-      "default": "./dist/esm/index.js"
-    },
-    "./utilities.js": {
-      "types": "./dist/dts/utils/index.d.ts",
-      "default": "./dist/esm/utils/index.js"
-    },
-    "./*/base.js": {
-      "types": "./dist/dts/*/*.base.d.ts",
-      "default": "./dist/esm/*/*.base.js"
-    },
-    "./*/define.js": {
-      "types": "./dist/dts/*/*.define.d.ts",
-      "default": "./dist/esm/*/*.define.js"
-    },
-    "./*/definition.js": {
-      "types": "./dist/dts/*/*.definition.d.ts",
-      "default": "./dist/esm/*/*.definition.js"
-    },
-    "./*/options.js": {
-      "types": "./dist/dts/*/*.options.d.ts",
-      "default": "./dist/esm/*/*.options.js"
-    },
-    "./*/styles.js": {
-      "types": "./dist/dts/*/*.styles.d.ts",
-      "default": "./dist/esm/*/*.styles.js"
-    },
-    "./*/template.js": {
-      "types": "./dist/dts/*/*.template.d.ts",
-      "default": "./dist/esm/*/*.template.js"
-    },
-    "./*/index.js": {
-      "types": "./dist/dts/*/index.d.ts",
-      "default": "./dist/esm/*/index.js"
-    },
-    "./*.js": {
-      "types": "./dist/dts/*/define.d.ts",
-      "default": "./dist/esm/*/define.js"
-    },
+    ".": "./dist/esm/index.js",
+    "./utilities.js": "./dist/esm/utils/index.js",
+    "./theme/*.js": "./dist/esm/theme/*.js",
+    "./*/base.js": "./dist/esm/*/*.base.js",
+    "./*/define.js": "./dist/esm/*/define.js",
+    "./*/definition.js": "./dist/esm/*/*.definition.js",
+    "./*/options.js": "./dist/esm/*/*.options.js",
+    "./*/styles.js": "./dist/esm/*/*.styles.js",
+    "./*/template.js": "./dist/esm/*/*.template.js",
+    "./*/index.js": "./dist/esm/*/index.js",
+    "./*.js": "./dist/esm/*/define.js",
+    "./custom-elements.json": "./custom-elements.json",
     "./package.json": "./package.json"
   },
   "sideEffects": [
@@ -76,6 +48,7 @@
     "./dist/web-components.min.js"
   ],
   "scripts": {
+    "analyze": "cem analyze",
     "verify-packaging": "node ./scripts/verify-packaging",
     "type-check": "node ./scripts/type-check",
     "benchmark": "yarn clean && yarn compile:benchmark && yarn compile && node ./scripts/run-benchmarks",
@@ -83,10 +56,10 @@
     "compile:benchmark": "rollup -c rollup.bench.js",
     "clean": "node ./scripts/clean dist",
     "generate-api": "api-extractor run --local",
-    "build": "yarn compile && yarn rollup -c && yarn generate-api",
-    "lint": "eslint . --ext .ts",
+    "build": "yarn compile && yarn rollup -c && yarn generate-api && yarn analyze",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "format": "prettier -w src/**/*.{ts,html} --ignore-path ../../.prettierignore",
+    "format": "prettier -w src/**/*.{ts,html} src/*.{ts,html} --ignore-path ../../.prettierignore",
     "format:check": "yarn format -c",
     "code-style": "yarn format:check && yarn lint",
     "start": "yarn start-storybook -p 6006 --docs",
@@ -96,11 +69,16 @@
     "e2e:local": "node ./scripts/e2e.js --ui"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "0.10.4",
     "@fluentui/scripts-api-extractor": "*",
     "@microsoft/fast-element": "2.0.0",
-    "@tensile-perf/web-components": "~0.2.0",
+    "@tensile-perf/web-components": "~0.2.2",
     "@storybook/html": "7.6.20",
     "@storybook/html-webpack5": "7.6.20",
+    "@wc-toolkit/cem-validator": "1.0.3",
+    "@wc-toolkit/cem-inheritance": "1.0.4",
+    "@wc-toolkit/module-path-resolver": "1.0.0",
+    "@wc-toolkit/type-parser": "1.0.3",
     "chromedriver": "^125.0.0"
   },
   "dependencies": {
@@ -119,5 +97,6 @@
       "patch"
     ],
     "tag": "beta"
-  }
+  },
+  "customElements": "./custom-elements.json"
 }

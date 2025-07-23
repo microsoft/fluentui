@@ -1,15 +1,13 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options.js';
 import type { Tree as FluentTree } from './tree.js';
 
-type TreeStoryArgs = Args & FluentTree;
-type TreeStoryMeta = Meta<TreeStoryArgs>;
+type Story = StoryObj<FluentTree>;
 
-const storyTemplate = html<TreeStoryArgs>`
+const storyTemplate = html<StoryArgs<FluentTree>>`
   <fluent-tree size="${x => x.size}" appearance="${x => x.appearance}">
-    <fluent-tree-item>
+    <fluent-tree-item expanded>
       Item 1
       <fluent-tree-item>
         <span slot="start">
@@ -86,7 +84,6 @@ const storyTemplate = html<TreeStoryArgs>`
       <svg
         slot="aside"
         fill="red"
-        class="___12fm75w f1w7gpdv fez10in fg4l7m0"
         aria-hidden="true"
         width="16"
         height="16"
@@ -98,11 +95,11 @@ const storyTemplate = html<TreeStoryArgs>`
           fill="red"
         ></path>
       </svg>
-      <fluent-tree-item expanded>
+      <fluent-tree-item>
         Item 2-1
         <fluent-tree-item>
           Item 2-1-1
-          <fluent-tree-item>Item 2-1-1-1</fluent-tree-item>
+          <fluent-tree-item selected>Item 2-1-1-1</fluent-tree-item>
           <fluent-tree-item>Item 2-1-1-1</fluent-tree-item>
         </fluent-tree-item>
         <fluent-tree-item>Item 2-1-2</fluent-tree-item>
@@ -115,9 +112,11 @@ const storyTemplate = html<TreeStoryArgs>`
 
 export default {
   title: 'Components/Tree',
+  component: 'tree',
+  render: renderComponent(storyTemplate),
   args: {
-    size: 'medium',
-    appearance: 'subtle',
+    size: TreeItemSize.medium,
+    appearance: TreeItemAppearance.subtle,
   },
   argTypes: {
     slottedContent: {
@@ -149,6 +148,24 @@ export default {
       category: 'attributes',
     },
   },
-} as TreeStoryMeta;
+} as Meta<FluentTree>;
 
-export const Tree = renderComponent(storyTemplate).bind({});
+export const Default: Story = {};
+
+export const Small: Story = {
+  args: {
+    size: TreeItemSize.small,
+  },
+};
+
+export const SubtleAlpha: Story = {
+  args: {
+    appearance: TreeItemAppearance.subtleAlpha,
+  },
+};
+
+export const Transparent: Story = {
+  args: {
+    appearance: TreeItemAppearance.transparent,
+  },
+};

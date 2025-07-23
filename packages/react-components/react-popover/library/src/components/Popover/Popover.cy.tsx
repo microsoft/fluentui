@@ -7,7 +7,10 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-menu';
 import type { PopoverProps } from '@fluentui/react-popover';
-const mount = (element: JSX.Element) => {
+const mount = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
@@ -381,6 +384,7 @@ describe('Popover', () => {
 
       it('should work as inertTrapFocus when set to false', () => {
         mount(
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           <Popover legacyTrapFocus={false} trapFocus>
             <PopoverTrigger disableButtonEnhancement>
               <button>Popover trigger</button>

@@ -17,6 +17,7 @@ export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, opti
 
 function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIconOptions>): void {
   const iconTypes: string[] = Object.keys(FileTypeIconMap);
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const fileTypeIcons: { [key: string]: JSX.Element } = {};
 
   iconTypes.forEach((type: string) => {

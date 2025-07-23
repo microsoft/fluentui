@@ -1,5 +1,6 @@
 import { ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
-import { HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
+import { HighContrastSelector } from '@fluentui/react/lib/Styling';
+import { getTooltipStyle } from '../../utilities/index';
 
 export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => {
   const { className, theme, pathColor, enableReflow } = props;
@@ -21,37 +22,26 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
       fill: theme ? theme.semanticColors.bodyBackground : '#F5F5F5',
       strokeWidth: 3,
       selectors: {
-        [HighContrastSelectorBlack]: {
-          fill: '#000000',
+        [HighContrastSelector]: {
+          fill: 'Canvas',
         },
       },
     },
     nodes: {
       fill: '#F5F5F5',
       selectors: {
-        [HighContrastSelectorBlack]: {
-          fill: '#000000',
+        [HighContrastSelector]: {
+          fill: 'Canvas',
         },
       },
     },
-    toolTip: {
-      ...props.theme!.fonts.medium,
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '8px',
-      position: 'absolute',
-      textAlign: 'center',
-      top: '0px',
-      background: props.theme!.semanticColors.bodyBackground,
-      borderRadius: '2px',
-      pointerEvents: 'none',
-    },
+    toolTip: getTooltipStyle(props.theme!),
     nodeTextContainer: {
       selectors: {
         text: {
           selectors: {
-            [HighContrastSelectorBlack]: {
-              fill: 'rgb(179, 179, 179)',
+            [HighContrastSelector]: {
+              fill: 'CanvasText',
             },
           },
         },
@@ -67,6 +57,9 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
     },
     chartWrapper: {
       ...(enableReflow ? { overflow: 'auto' } : {}),
+    },
+    chart: {
+      display: 'block',
     },
   };
 };

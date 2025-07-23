@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import { render, fireEvent, act, screen } from '@testing-library/react';
 import * as renderer from 'react-test-renderer';
 import { resetIds } from '@fluentui/utilities';
 import { people } from '@fluentui/example-data';
@@ -34,19 +33,18 @@ describe('PeoplePicker', () => {
 
   it('can search for, select people and remove them', () => {
     jest.useFakeTimers();
-    const root = document.createElement('div');
-    document.body.appendChild(root);
-
     const picker = React.createRef<IBasePicker<IPersonaProps>>();
 
-    ReactDOM.render(<NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} componentRef={picker} />, root);
+    render(<NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} componentRef={picker} />);
 
-    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    input.focus();
+    const input = screen.getByRole('combobox') as HTMLInputElement;
+    act(() => {
+      input.focus();
+    });
     input.value = 'Valentyna';
 
-    ReactTestUtils.Simulate.input(input);
-    ReactTestUtils.act(() => {
+    fireEvent.input(input);
+    act(() => {
       jest.runAllTimers();
     });
 
@@ -56,7 +54,7 @@ describe('PeoplePicker', () => {
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     expect(suggestionOptions.length).toEqual(1);
 
-    ReactTestUtils.Simulate.click(suggestionOptions[0]);
+    fireEvent.click(suggestionOptions[0]);
     const currentPicker = picker.current!.items;
     expect(currentPicker).toHaveLength(1);
     expect(currentPicker![0].text).toEqual('Valentyna Lovrique');
@@ -64,27 +62,22 @@ describe('PeoplePicker', () => {
     const removeButton = document.querySelector('.ms-PickerItem-removeButton') as HTMLButtonElement;
     expect(removeButton).toBeTruthy();
 
-    ReactTestUtils.Simulate.click(removeButton);
+    fireEvent.click(removeButton);
     const currentPickerAfterRemove = picker.current!.items;
     expect(currentPickerAfterRemove).toHaveLength(0);
-
-    ReactDOM.unmountComponentAtNode(root);
   });
 
   it('cannot remove people when disabled', () => {
-    const root = document.createElement('div');
-    document.body.appendChild(root);
-
     const picker = React.createRef<IBasePicker<IPersonaProps>>();
     const selectedPeople = people.splice(0, 1);
-    ReactDOM.render(
+
+    render(
       <NormalPeoplePicker
         onResolveSuggestions={onResolveSuggestions}
         componentRef={picker}
         disabled={true}
         defaultSelectedItems={selectedPeople}
       />,
-      root,
     );
 
     const currentPicker = picker.current!.items;
@@ -93,17 +86,15 @@ describe('PeoplePicker', () => {
     const removeButton = document.querySelector('.ms-PickerItem-removeButton') as HTMLButtonElement;
     expect(removeButton).toBeTruthy();
 
-    ReactTestUtils.Simulate.click(removeButton);
+    fireEvent.click(removeButton);
     const currentPickerAfterClick = picker.current!.items;
     expect(currentPickerAfterClick).toHaveLength(1);
-
-    ReactDOM.unmountComponentAtNode(root);
   });
 
   isConformant({
     Component: NormalPeoplePicker,
     displayName: 'NormalPeoplePicker',
-    // Problem: Doesn’t handle ref.
+    // Problem: Doesn't handle ref.
     // Solution: Add a ref to the root element.
     disabledTests: ['has-top-level-file', 'name-matches-filename', 'component-has-root-ref', 'component-handles-ref'],
   });

@@ -4,17 +4,7 @@ import {
   typographyBody2Styles,
   typographyCaption1Styles,
 } from '../styles/partials/typography.partials.js';
-import {
-  filledDarkerState,
-  filledLighterState,
-  flipBlockState,
-  largeState,
-  openState,
-  outlineState,
-  placeholderShownState,
-  smallState,
-  transparentState,
-} from '../styles/states/index.js';
+import { flipBlockState, openState, placeholderShownState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   borderRadiusNone,
@@ -98,13 +88,13 @@ export const styles = css`
     ${typographyBody1Styles}
   }
 
-  :host(${smallState}) .control {
+  :host([size='small']) .control {
     column-gap: ${spacingHorizontalXXS};
     padding: ${spacingVerticalXS} ${spacingHorizontalSNudge};
     ${typographyCaption1Styles}
   }
 
-  :host(${largeState}) .control {
+  :host([size='large']) .control {
     column-gap: ${spacingHorizontalS};
     padding: ${spacingVerticalS} ${spacingHorizontalM};
     ${typographyBody2Styles}
@@ -134,11 +124,11 @@ export const styles = css`
     width: 20px;
   }
 
-  :host(${smallState}) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+  :host([size='small']) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
     width: 16px;
   }
 
-  :host(${largeState}) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+  :host([size='large']) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
     width: 24px;
   }
 
@@ -167,49 +157,49 @@ export const styles = css`
     transition-timing-function: ${curveAccelerateMid};
   }
 
-  :host(:where(${outlineState}, ${transparentState})) .control::before {
+  :host(:where([appearance='outline'], [appearance='transparent'])) .control::before {
     background-color: ${colorNeutralStrokeAccessible};
   }
 
-  :host(${transparentState}) .control {
+  :host([appearance='transparent']) .control {
     --control-border-color: ${colorTransparentStrokeInteractive};
     background-color: ${colorTransparentBackground};
     border-radius: ${borderRadiusNone};
   }
 
-  :host(${outlineState}) .control {
+  :host([appearance='outline']) .control {
     --control-border-color: ${colorNeutralStroke1};
   }
 
-  :host(${outlineState}) .control:hover {
+  :host([appearance='outline']) .control:hover {
     --control-border-color: ${colorNeutralStroke1Hover};
   }
 
-  :host(:where(${outlineState}, ${transparentState})) .control:hover::before {
+  :host(:where([appearance='outline'], [appearance='transparent'])) .control:hover::before {
     background-color: ${colorNeutralStrokeAccessibleHover};
   }
 
-  :host(${outlineState}) .control:hover::after {
+  :host([appearance='outline']) .control:hover::after {
     background-color: ${colorCompoundBrandBackgroundHover};
   }
 
-  :host(${outlineState}) .control:active {
+  :host([appearance='outline']) .control:active {
     --control-border-color: ${colorNeutralStroke1Pressed};
   }
 
-  :host(:where(${outlineState}, ${transparentState})) .control:active::before {
+  :host(:where([appearance='outline'], [appearance='transparent'])) .control:active::before {
     background-color: ${colorNeutralStrokeAccessiblePressed};
   }
 
-  :host(:where(${outlineState}, ${transparentState})) .control:active::after {
+  :host(:where([appearance='outline'], [appearance='transparent'])) .control:active::after {
     background-color: ${colorCompoundBrandBackgroundPressed};
   }
 
-  :host(${filledDarkerState}) .control {
+  :host([appearance='filled-darker']) .control {
     background-color: ${colorNeutralBackground3};
   }
 
-  :host(:where(${filledLighterState}, ${filledDarkerState})) .control {
+  :host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control {
     --control-border-color: ${colorTransparentStroke};
   }
 
@@ -230,38 +220,22 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
   }
 
-  ::slotted([popover]) {
-    inset: unset;
-    position: absolute;
-    position-anchor: --dropdown-trigger;
-    position-area: block-end span-inline-end;
-    position-try-fallbacks: flip-inline, flip-block, block-start;
-    max-height: var(--listbox-max-height, calc(50vh - anchor-size(self-block)));
-    min-width: anchor-size(width);
-    overflow: auto;
-  }
-
   ::slotted([popover]:not(:popover-open)) {
     display: none;
   }
 
   @supports not (anchor-name: --anchor) {
-    ::slotted([popover]) {
-      margin-block-start: calc(${lineHeightBase300} + (${spacingVerticalSNudge} * 2) + ${strokeWidthThin});
-      max-height: 50vh;
+    :host {
+      --listbox-max-height: 50vh;
+      --margin-offset: calc(${lineHeightBase300} + (${spacingVerticalSNudge} * 2) + ${strokeWidthThin});
     }
 
-    :host(${smallState}) ::slotted([popover]) {
-      margin-block-start: calc(${lineHeightBase200} + (${spacingVerticalXS} * 2) + ${strokeWidthThin});
+    :host([size='small']) {
+      --margin-offset: calc(${lineHeightBase200} + (${spacingVerticalXS} * 2) + ${strokeWidthThin});
     }
 
-    :host(${largeState}) ::slotted([popover]) {
-      margin-block-start: calc(${lineHeightBase400} + (${spacingVerticalS} * 2) + ${strokeWidthThin});
-    }
-
-    :host(${flipBlockState}) ::slotted([popover]) {
-      margin-block-start: revert;
-      transform: translate(0, -100%);
+    :host([size='large']) {
+      --margin-offset: calc(${lineHeightBase400} + (${spacingVerticalS} * 2) + ${strokeWidthThin});
     }
   }
 `;

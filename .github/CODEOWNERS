@@ -86,6 +86,7 @@ scripts/generators @microsoft/fluentui-react-build
 scripts/github @microsoft/fluentui-react-build
 scripts/gulp @microsoft/fluentui-react-build @microsoft/teams-prg
 scripts/jest @microsoft/fluentui-react-build
+scripts/jest-v0 @microsoft/fluentui-react-build
 scripts/lint-staged @microsoft/fluentui-react-build
 scripts/monorepo @microsoft/fluentui-react-build
 scripts/package-manager @microsoft/fluentui-react-build
@@ -101,13 +102,10 @@ scripts/update-release-notes @microsoft/fluentui-react-build
 scripts/utils @microsoft/fluentui-react-build
 scripts/webpack @microsoft/fluentui-react-build
 scripts/perf-test-flamegrill @microsoft/fluentui-react-build
-
-#### Fluent UI N*
-packages/a11y-rules @microsoft/fluentui-northstar
-packages/a11y-testing @microsoft/fluentui-northstar
-packages/fluentui @microsoft/fluentui-northstar
-packages/fluentui/react-northstar/src/components/Chat @microsoft/fluentui-northstar @Hirse
-packages/fluentui/react-northstar/src/themes/teams/components/Chat @microsoft/fluentui-northstar @Hirse
+tools/visual-regression-utilities @microsoft/fluentui-react-build
+tools/visual-regression-assert @microsoft/fluentui-react-build
+packages/a11y-testing @microsoft/fluentui-react-build @microsoft/fluentui-northstar
+packages/react-conformance @microsoft/fluentui-react-build
 
 #### Web Components
 packages/web-components @microsoft/fui-wc
@@ -128,17 +126,20 @@ apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
-apps/react-18-tests-v8 @microsoft/cxe-red @micahgodbolt
+apps/react-17-tests-v9 @microsoft/fluentui-react-build
+apps/react-18-tests-v8 @microsoft/fluentui-react-build
 apps/react-18-tests-v9 @microsoft/fluentui-react-build
+apps/react-19-tests-v9 @microsoft/fluentui-react-build
 apps/chart-docsite @microsoft/charting-team
 
 #### Packages
 packages/azure-themes @Jacqueline-ms
-packages/react-conformance @microsoft/fluentui-react-build
 packages/charts/chart-web-components @microsoft/charting-team
+packages/charts/chart-utilities @microsoft/charting-team
 packages/charts/react-charting @microsoft/charting-team
-packages/charts/react-charts-preview/library @microsoft/charting-team
-packages/charts/react-charts-preview/stories @microsoft/charting-team
+packages/charts/react-charts @microsoft/charting-team
+packages/charts/react-charts/library @microsoft/charting-team
+packages/charts/react-charts/stories @microsoft/charting-team
 packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
 packages/foundation-legacy @microsoft/cxe-red @khmakoto
@@ -165,6 +166,8 @@ packages/react-icons-mdl2 @microsoft/cxe-red
 packages/react-icons-mdl2-branded @microsoft/cxe-red
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
+packages/react-components/react-positioning/library @microsoft/teams-prg
+packages/react-components/react-positioning/stories @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg
 packages/react-components/react-overflow/library @microsoft/teams-prg
 packages/react-components/react-overflow/stories @microsoft/teams-prg
@@ -193,36 +196,36 @@ common/_common.scss @microsoft/cxe-red @phkuo
 
 ## vNext packages
 packages/react-components/keyboard-keys @microsoft/teams-prg
-packages/react-components/react-accordion/library @microsoft/cxe-prg
-packages/react-components/react-accordion/stories @microsoft/cxe-prg
-packages/react-components/react-avatar/library @microsoft/cxe-prg
-packages/react-components/react-avatar/stories @microsoft/cxe-prg
-packages/react-components/react-badge/library @microsoft/cxe-prg
-packages/react-components/react-badge/stories @microsoft/cxe-prg
-packages/react-components/react-button/library @microsoft/cxe-red @khmakoto
-packages/react-components/react-button/stories @microsoft/cxe-red @khmakoto
+packages/react-components/react-accordion/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-accordion/stories @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-avatar/library @microsoft/cxe-prg @ValentinaKozlova
+packages/react-components/react-avatar/stories @microsoft/cxe-prg @ValentinaKozlova
+packages/react-components/react-badge/library @microsoft/cxe-prg @dmytrokirpa
+packages/react-components/react-badge/stories @microsoft/cxe-prg @dmytrokirpa
+packages/react-components/react-button/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-button/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-card/library @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-card/stories @microsoft/cxe-prg @marcosmoura
-packages/react-components/react-checkbox/library @microsoft/cxe-prg
-packages/react-components/react-checkbox/stories @microsoft/cxe-prg
-packages/react-components/react-combobox/library @microsoft/cxe-prg @microsoft/teams-prg
-packages/react-components/react-combobox/stories @microsoft/cxe-prg @microsoft/teams-prg
+packages/react-components/react-checkbox/library @microsoft/cxe-prg @mainframev
+packages/react-components/react-checkbox/stories @microsoft/cxe-prg @mainframev
+packages/react-components/react-combobox/library @microsoft/cxe-prg @microsoft/teams-prg @dmytrokirpa
+packages/react-components/react-combobox/stories @microsoft/cxe-prg @microsoft/teams-prg @dmytrokirpa
 packages/react-components/react-components @microsoft/fluentui-react
 packages/react-components/react-dialog/library @microsoft/teams-prg
 packages/react-components/react-dialog/stories @microsoft/teams-prg
-packages/react-components/react-divider/library @microsoft/cxe-prg
-packages/react-components/react-divider/stories @microsoft/cxe-prg
-packages/react-components/react-field/library @microsoft/cxe-prg
-packages/react-components/react-field/stories @microsoft/cxe-prg
+packages/react-components/react-divider/library @microsoft/cxe-prg @dmytrokirpa
+packages/react-components/react-divider/stories @microsoft/cxe-prg @dmytrokirpa
+packages/react-components/react-field/library @microsoft/cxe-prg @dmytrokirpa
+packages/react-components/react-field/stories @microsoft/cxe-prg @dmytrokirpa
 packages/react-focus @microsoft/cxe-red @khmakoto
 packages/react-components/react-image/library @microsoft/cxe-prg
 packages/react-components/react-image/stories @microsoft/cxe-prg
-packages/react-components/react-input/library @microsoft/cxe-prg
-packages/react-components/react-input/stories @microsoft/cxe-prg
-packages/react-components/react-label/library @microsoft/cxe-prg
-packages/react-components/react-label/stories @microsoft/cxe-prg
-packages/react-components/react-link/library @microsoft/cxe-prg
-packages/react-components/react-link/stories @microsoft/cxe-prg
+packages/react-components/react-input/library @microsoft/cxe-prg @dmytrokirpa
+packages/react-components/react-input/stories @microsoft/cxe-prg @dmytrokirpa
+packages/react-components/react-label/library @microsoft/cxe-prg @ValentinaKozlova
+packages/react-components/react-label/stories @microsoft/cxe-prg @ValentinaKozlova
+packages/react-components/react-link/library @microsoft/cxe-prg @mainframev
+packages/react-components/react-link/stories @microsoft/cxe-prg @mainframev
 packages/react-components/react-menu/library @microsoft/teams-prg
 packages/react-components/react-menu/stories @microsoft/teams-prg
 packages/react-components/react-popover/library @microsoft/teams-prg
@@ -233,24 +236,24 @@ packages/react-components/react-provider/library @microsoft/teams-prg
 packages/react-components/react-provider/stories @microsoft/teams-prg
 packages/react-components/react-radio/library @microsoft/cxe-red @behowell @spmonahan
 packages/react-components/react-radio/stories @microsoft/cxe-red @behowell @spmonahan
-packages/react-components/react-select/library @microsoft/cxe-prg
-packages/react-components/react-select/stories @microsoft/cxe-prg
-packages/react-components/react-slider/library @microsoft/cxe-prg
-packages/react-components/react-slider/stories @microsoft/cxe-prg
-packages/react-components/react-spinbutton/library @microsoft/cxe-prg
-packages/react-components/react-spinbutton/stories @microsoft/cxe-prg
-packages/react-components/react-spinner/library @microsoft/cxe-prg
-packages/react-components/react-spinner/stories @microsoft/cxe-prg
-packages/react-components/react-switch/library @microsoft/cxe-prg
-packages/react-components/react-switch/stories @microsoft/cxe-prg
+packages/react-components/react-select/library @microsoft/cxe-prg @mainframev
+packages/react-components/react-select/stories @microsoft/cxe-prg @mainframev
+packages/react-components/react-slider/library @microsoft/cxe-prg @dmytrokirpa
+packages/react-components/react-slider/stories @microsoft/cxe-prg @dmytrokirpa
+packages/react-components/react-spinbutton/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-spinbutton/stories @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-spinner/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-spinner/stories @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-switch/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-switch/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-tabs/library @microsoft/cxe-prg @dmytrokirpa
 packages/react-components/react-tabs/stories @microsoft/cxe-prg @dmytrokirpa
 packages/react-components/react-text/library @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-text/stories @microsoft/cxe-prg @marcosmoura
-packages/react-components/react-textarea/library @microsoft/cxe-prg
-packages/react-components/react-textarea/stories @microsoft/cxe-prg
-packages/react-components/react-tooltip/library @microsoft/cxe-prg
-packages/react-components/react-tooltip/stories @microsoft/cxe-prg
+packages/react-components/react-textarea/library @microsoft/cxe-prg @mainframev
+packages/react-components/react-textarea/stories @microsoft/cxe-prg @mainframev
+packages/react-components/react-tooltip/library @microsoft/cxe-prg @mainframev
+packages/react-components/react-tooltip/stories @microsoft/cxe-prg @mainframev
 packages/react-components/react-toolbar/library @microsoft/teams-prg @chpalac @ling1726
 packages/react-components/react-toolbar/stories @microsoft/teams-prg @chpalac @ling1726
 packages/react-components/react-portal-compat @microsoft/teams-prg
@@ -261,25 +264,25 @@ packages/react-components/global-context @microsoft/teams-prg
 packages/react-components/babel-preset-global-context @microsoft/teams-prg
 packages/react-components/react-table/library @microsoft/teams-prg
 packages/react-components/react-table/stories @microsoft/teams-prg
-packages/react-components/react-progress/library @microsoft/cxe-prg
-packages/react-components/react-progress/stories @microsoft/cxe-prg
-packages/react-components/react-persona/library @microsoft/cxe-prg
-packages/react-components/react-persona/stories @microsoft/cxe-prg
+packages/react-components/react-progress/library @microsoft/cxe-prg @dmytrokirpa
+packages/react-components/react-progress/stories @microsoft/cxe-prg @dmytrokirpa
+packages/react-components/react-persona/library @microsoft/cxe-prg @mainframev
+packages/react-components/react-persona/stories @microsoft/cxe-prg @mainframev
 packages/react-components/react-tree/library @microsoft/teams-prg
 packages/react-components/react-tree/stories @microsoft/teams-prg
 packages/react-components/react-virtualizer/library @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-virtualizer/stories @microsoft/xc-uxe @Mitch-At-Work
-packages/react-components/react-skeleton/library @microsoft/cxe-prg
-packages/react-components/react-skeleton/stories @microsoft/cxe-prg
+packages/react-components/react-skeleton/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-skeleton/stories @microsoft/cxe-prg @marcosmoura
 packages/tokens @microsoft/teams-prg
-packages/react-components/react-tags/library @microsoft/cxe-prg @microsoft/teams-prg
-packages/react-components/react-tags/stories @microsoft/cxe-prg @microsoft/teams-prg
+packages/react-components/react-tags/library @microsoft/cxe-prg @microsoft/teams-prg @ValentinaKozlova
+packages/react-components/react-tags/stories @microsoft/cxe-prg @microsoft/teams-prg @ValentinaKozlova
 packages/react-components/react-migration-v0-v9/library @microsoft/teams-prg
 packages/react-components/react-migration-v0-v9/stories @microsoft/teams-prg
-packages/react-components/react-datepicker-compat/library @microsoft/cxe-prg
-packages/react-components/react-datepicker-compat/stories @microsoft/cxe-prg
-packages/react-components/react-migration-v8-v9/library @microsoft/cxe-prg @geoffcoxmsft
-packages/react-components/react-migration-v8-v9/stories @microsoft/cxe-prg @geoffcoxmsft
+packages/react-components/react-datepicker-compat/library @microsoft/cxe-prg @ValentinaKozlova
+packages/react-components/react-datepicker-compat/stories @microsoft/cxe-prg @ValentinaKozlova
+packages/react-components/react-migration-v8-v9/library @microsoft/cxe-prg @geoffcoxmsft @dmytrokirpa
+packages/react-components/react-migration-v8-v9/stories @microsoft/cxe-prg @geoffcoxmsft @dmytrokirpa
 packages/react-components/react-breadcrumb/library @microsoft/cxe-prg
 packages/react-components/react-breadcrumb/stories @microsoft/cxe-prg
 packages/react-components/react-drawer/library @microsoft/cxe-prg @marcosmoura
@@ -289,21 +292,21 @@ packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
 packages/react-components/react-toast/library @microsoft/teams-prg
 packages/react-components/react-toast/stories @microsoft/teams-prg
-packages/react-components/react-search/library @microsoft/cxe-prg
-packages/react-components/react-search/stories @microsoft/cxe-prg
+packages/react-components/react-search/library @microsoft/cxe-prg @ValentinaKozlova
+packages/react-components/react-search/stories @microsoft/cxe-prg @ValentinaKozlova
 packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopillow
-packages/react-components/react-nav-preview/library @microsoft/cxe-red @microsoft/xc-uxe @mltejera
-packages/react-components/react-nav-preview/stories @microsoft/cxe-red @microsoft/xc-uxe @mltejera
+packages/react-components/react-nav/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-nav/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-message-bar/library @microsoft/teams-prg
 packages/react-components/react-message-bar/stories @microsoft/teams-prg
-packages/react-components/react-rating/library @microsoft/cxe-prg
-packages/react-components/react-rating/stories @microsoft/cxe-prg
+packages/react-components/react-rating/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-rating/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-swatch-picker/library @microsoft/cxe-prg
 packages/react-components/react-swatch-picker/stories @microsoft/cxe-prg
-packages/react-components/react-calendar-compat/library @microsoft/cxe-prg
-packages/react-components/react-calendar-compat/stories @microsoft/cxe-prg
-packages/react-components/react-infolabel/library @microsoft/cxe-prg
-packages/react-components/react-infolabel/stories @microsoft/cxe-prg
+packages/react-components/react-calendar-compat/library @microsoft/cxe-prg @ValentinaKozlova
+packages/react-components/react-calendar-compat/stories @microsoft/cxe-prg @ValentinaKozlova
+packages/react-components/react-infolabel/library @microsoft/cxe-prg @mainframev
+packages/react-components/react-infolabel/stories @microsoft/cxe-prg @mainframev
 packages/react-components/react-list/library @microsoft/teams-prg
 packages/react-components/react-list/stories @microsoft/teams-prg
 packages/react-components/react-motion/library @microsoft/teams-prg @microsoft/fluent-motion-framework
@@ -312,8 +315,8 @@ packages/react-components/react-teaching-popover/library @microsoft/xc-uxe @Mitc
 packages/react-components/react-teaching-popover/stories @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-timepicker-compat/library @microsoft/teams-prg
 packages/react-components/react-timepicker-compat/stories @microsoft/teams-prg
-packages/react-components/react-icons-compat/library @microsoft/cxe-red @tomi-msft
-packages/react-components/react-icons-compat/stories @microsoft/cxe-red @tomi-msft
+packages/react-components/react-icons-compat/library @microsoft/cxe-red
+packages/react-components/react-icons-compat/stories @microsoft/cxe-red
 packages/react-components/react-tag-picker/library @microsoft/teams-prg
 packages/react-components/react-tag-picker/stories @microsoft/teams-prg
 packages/react-components/react-carousel/library @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
@@ -323,8 +326,12 @@ packages/react-components/react-motion-components-preview/library @microsoft/flu
 packages/react-components/react-motion-components-preview/stories @microsoft/fluent-motion-framework
 packages/react-components/react-utilities-compat/library @microsoft/cxe-prg
 packages/react-components/react-utilities-compat/stories @microsoft/cxe-prg
-packages/react-components/react-color-picker-preview/library @microsoft/cxe-prg
-packages/react-components/react-color-picker-preview/stories @microsoft/cxe-prg
+packages/react-components/react-color-picker/library @microsoft/cxe-prg
+packages/react-components/react-color-picker/stories @microsoft/cxe-prg
+packages/react-components/component-selector-preview/library @microsoft/teams-prg
+packages/react-components/component-selector-preview/stories @microsoft/teams-prg
+packages/react-components/react-menu-grid-preview/library @microsoft/teams-prg
+packages/react-components/react-menu-grid-preview/stories @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components

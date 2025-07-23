@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { render } from '@testing-library/react';
 
 import { getReactCallbackName } from './getReactCallbackName';
 import type { ReactCallbackName } from './getReactCallbackName';
@@ -49,7 +49,13 @@ const callbacks: ReactCallbackName[] = [
 /**
  * React has special handling for some events, this means that they should be called on proper elements.
  */
-const specialElements: Partial<Record<ReactCallbackName, keyof JSX.IntrinsicElements>> = {
+const specialElements: Partial<
+  Record<
+    ReactCallbackName,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    keyof JSX.IntrinsicElements
+  >
+> = {
   onBlur: 'button',
   onFocus: 'button',
   onInvalid: 'input',
@@ -110,7 +116,7 @@ describe('getReactCallbackName', () => {
         }),
       });
 
-    ReactDOM.render(<Component />, element);
+    const { unmount } = render(<Component />, { container: element });
     const testElement = document.querySelector<HTMLElement>('#test-el')!;
 
     if (specialSimulators[callbackName]) {
@@ -119,7 +125,7 @@ describe('getReactCallbackName', () => {
       testElement.dispatchEvent(new Event(eventName, { bubbles: true }));
     }
 
-    ReactDOM.unmountComponentAtNode(element);
+    unmount();
     document.body.removeChild(element);
 
     expect(bubbleEventSpy).toHaveBeenCalledTimes(1);

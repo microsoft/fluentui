@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { getNextChildMapping } from '../utils/groups/getNextChildMapping';
 import { getChildMapping } from '../utils/groups/getChildMapping';
 import type { PresenceGroupChildMapping } from '../utils/groups/types';
@@ -34,6 +33,7 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
   }
 
   constructor(props: PresenceGroupProps, context: unknown) {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 
     this.state = {
@@ -67,7 +67,8 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
     this.mounted = false;
   }
 
-  render() {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  render(): JSX.Element {
     return (
       <>
         {Object.entries(this.state.childMapping).map(([childKey, childProps]) => (

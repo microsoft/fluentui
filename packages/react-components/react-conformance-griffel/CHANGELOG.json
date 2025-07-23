@@ -2,6 +2,42 @@
   "name": "@fluentui/react-conformance-griffel",
   "entries": [
     {
+      "date": "Fri, 04 Jul 2025 10:02:42 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 May 2025 13:28:52 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "0d3f8da91e559a2d761cf1690472cf11ba5ac004",
+            "comment": "feat: add react 18 support"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.20.0",
+            "commit": "2531fe60450b3933f98e722894f81feac03e7ae5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2025 18:33:36 GMT",
       "tag": "@fluentui/react-conformance-griffel_v9.0.13",
       "version": "9.0.13",

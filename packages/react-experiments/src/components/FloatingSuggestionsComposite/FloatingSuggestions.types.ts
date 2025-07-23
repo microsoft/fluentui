@@ -31,6 +31,7 @@ export interface IBaseFloatingSuggestionsProps<T> {
   /**
    * Custom component to render suggestion
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderSuggestion?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSX.Element;
   /**
    * Callback function on remove of suggestion from list
@@ -44,11 +45,13 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * Custom header renderer which takes suggestions and headertext if passed
    * Going forward, this should accept the user defined type as parameter
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderHeader?: (suggestionItems?: IFloatingSuggestionItemProps<T>[], suggestionsHeaderText?: string) => JSX.Element;
   /**
    * Custom footer renderer which takes suggestions as param
    * Going forward, this should accept the user defined type as param
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderFooter?: (suggestionItems?: IFloatingSuggestionItemProps<T>[]) => JSX.Element;
   /**
    * Callback when the callout dismiss is called

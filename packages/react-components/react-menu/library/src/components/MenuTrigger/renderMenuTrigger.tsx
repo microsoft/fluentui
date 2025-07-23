@@ -7,6 +7,9 @@ import type { MenuTriggerState } from './MenuTrigger.types';
  *
  * Only renders children
  */
-export const renderMenuTrigger_unstable = (state: MenuTriggerState) => {
+export const renderMenuTrigger_unstable = (
+  state: MenuTriggerState,
+): // eslint-disable-next-line @typescript-eslint/no-deprecated
+JSX.Element => {
   return <MenuTriggerContextProvider value={state.isSubmenu}>{state.children}</MenuTriggerContextProvider>;
 };

@@ -59,6 +59,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
       elementClassNames: string,
       renderFunction: IRenderFunction<IPersonaProps> | undefined,
       defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined,
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
     ): JSX.Element | undefined => {
       const content = renderFunction && renderFunction(props, defaultRenderFunction);
       return content ? (
@@ -77,7 +78,8 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
       // return default render behavior for valid text or undefined
       return text
         ? tooltip
-          ? (): JSX.Element => {
+          ? // eslint-disable-next-line @typescript-eslint/no-deprecated
+            (): JSX.Element => {
               // default onRender behavior
               return (
                 <TooltipHost
@@ -93,6 +95,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
         : undefined;
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const onInternalRenderPersonaCoin = (providedCoinProps: IPersonaCoinProps): JSX.Element | null => {
       return <PersonaCoin {...providedCoinProps} />;
     };
@@ -153,6 +156,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
       initialsColor,
       initialsTextColor,
       onPhotoLoadingStateChange,
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       onRenderCoin,
       onRenderInitials,
       presence,

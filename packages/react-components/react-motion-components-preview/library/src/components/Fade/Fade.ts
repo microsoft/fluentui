@@ -1,35 +1,35 @@
-import { motionTokens, createPresenceComponent } from '@fluentui/react-motion';
-import type { PresenceMotionCreator } from '../../types';
+import {
+  motionTokens,
+  createPresenceComponent,
+  PresenceMotionFn,
+  createPresenceComponentVariant,
+} from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
+import { FadeParams } from './fade-types';
 
-type FadeVariantParams = {
-  /** Time (ms) for the enter transition (fade-in). Defaults to the `durationNormal` value (200 ms). */
-  enterDuration?: number;
-
-  /** Easing curve for the enter transition (fade-in). Defaults to the `easeEase` value.  */
-  enterEasing?: string;
-
-  /** Time (ms) for the exit transition (fade-out). Defaults to the `enterDuration` param for symmetry. */
-  exitDuration?: number;
-
-  /** Easing curve for the exit transition (fade-out). Defaults to the `enterEasing` param for symmetry.  */
-  exitEasing?: string;
+/**
+ * Define a presence motion for fade in/out
+ *
+ * @param duration - Time (ms) for the enter transition (fade-in). Defaults to the `durationNormal` value (200 ms).
+ * @param easing - Easing curve for the enter transition (fade-in). Defaults to the `curveEasyEase` value.
+ * @param exitDuration - Time (ms) for the exit transition (fade-out). Defaults to the `duration` param for symmetry.
+ * @param exitEasing - Easing curve for the exit transition (fade-out). Defaults to the `easing` param for symmetry.
+ */
+export const fadePresenceFn: PresenceMotionFn<FadeParams> = ({
+  duration = motionTokens.durationNormal,
+  easing = motionTokens.curveEasyEase,
+  exitDuration = duration,
+  exitEasing = easing,
+}) => {
+  return {
+    enter: fadeAtom({ direction: 'enter', duration, easing }),
+    exit: fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing }),
+  };
 };
 
-/** Define a presence motion for fade in/out  */
-export const createFadePresence: PresenceMotionCreator<FadeVariantParams> = ({
-  enterDuration = motionTokens.durationNormal,
-  enterEasing = motionTokens.curveEasyEase,
-  exitDuration = enterDuration,
-  exitEasing = enterEasing,
-} = {}) => ({
-  enter: fadeAtom({ direction: 'enter', duration: enterDuration, easing: enterEasing }),
-  exit: fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing }),
-});
-
 /** A React component that applies fade in/out transitions to its children. */
-export const Fade = createPresenceComponent(createFadePresence());
+export const Fade = createPresenceComponent(fadePresenceFn);
 
-export const FadeSnappy = createPresenceComponent(createFadePresence({ enterDuration: motionTokens.durationFast }));
+export const FadeSnappy = createPresenceComponentVariant(Fade, { duration: motionTokens.durationFast });
 
-export const FadeRelaxed = createPresenceComponent(createFadePresence({ enterDuration: motionTokens.durationGentle }));
+export const FadeRelaxed = createPresenceComponentVariant(Fade, { duration: motionTokens.durationGentle });
