@@ -416,7 +416,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         const mode = (plotlyInputWithValidData.data[index] as PlotData)?.mode ?? '';
         if (mode.includes('line')) {
           validTracesFilteredIndex[index].type = 'line';
-        } else if (mode.includes('markers')) {
+        } else if (mode.includes('markers') || mode === 'text') {
           validTracesFilteredIndex[index].type = 'scatter';
         } else {
           validTracesFilteredIndex[index].type = 'line';

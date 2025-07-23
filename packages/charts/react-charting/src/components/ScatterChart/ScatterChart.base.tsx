@@ -539,7 +539,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
               </>,
             );
           }
-          if ((!_isScatterPolarRef.current || _isTextMode) && text) {
+          if (_isTextMode && text) {
             pointsForSeries.push(
               <text
                 key={`${circleId}-label`}
