@@ -10,25 +10,25 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-// @public
+// @public @deprecated
 export type DynamicVirtualizerContextProps = Required<VirtualizerContextProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface IndexedResizeCallbackElement {
     // (undocumented)
     handleResize: () => void;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const renderVirtualizer_unstable: (state: VirtualizerState) => JSX.Element;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const renderVirtualizerScrollView_unstable: (state: VirtualizerScrollViewState) => JSX.Element;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const renderVirtualizerScrollViewDynamic_unstable: (state: VirtualizerScrollViewDynamicState) => JSX.Element;
 
-// @public
+// @public @deprecated
 export interface ResizeCallbackWithRef {
     // (undocumented)
     (entries: ResizeObserverEntry[], observer: ResizeObserver, scrollRef?: React_2.MutableRefObject<HTMLElement | null>): void;
@@ -69,7 +69,7 @@ export type ScrollToItemStaticParams = {
     behavior?: ScrollBehavior;
 };
 
-// @public
+// @public @deprecated
 export const useDynamicVirtualizerMeasure: <TElement extends HTMLElement>(virtualizerProps: VirtualizerMeasureDynamicProps) => {
     virtualizerLength: number;
     bufferItems: number;
@@ -79,14 +79,14 @@ export const useDynamicVirtualizerMeasure: <TElement extends HTMLElement>(virtua
     updateScrollPosition: (scrollPosition: number) => void;
 };
 
-// @public
+// @public @deprecated
 export const useIntersectionObserver: (callback: IntersectionObserverCallback, options?: IntersectionObserverInit) => {
     setObserverList: React_2.Dispatch<React_2.SetStateAction<Element[] | undefined>>;
     setObserverInit: (newInit: IntersectionObserverInit | undefined) => void;
     observer: React_2.MutableRefObject<IntersectionObserver | undefined>;
 };
 
-// @public
+// @public @deprecated
 export function useMeasureList<TElement extends HTMLElement & IndexedResizeCallbackElement = HTMLElement & IndexedResizeCallbackElement>(currentIndex: number, refLength: number, totalLength: number, defaultItemSize: number): {
     widthArray: React_2.MutableRefObject<any[]>;
     heightArray: React_2.MutableRefObject<any[]>;
@@ -95,10 +95,10 @@ export function useMeasureList<TElement extends HTMLElement & IndexedResizeCallb
     sizeUpdateCount: number;
 };
 
-// @public
+// @public @deprecated
 export const useResizeObserverRef_unstable: (resizeCallback: ResizeCallbackWithRef) => (instance: HTMLElement | HTMLDivElement | null) => void;
 
-// @public
+// @public @deprecated
 export const useStaticVirtualizerMeasure: <TElement extends HTMLElement>(virtualizerProps: VirtualizerMeasureProps) => {
     virtualizerLength: number;
     bufferItems: number;
@@ -107,47 +107,47 @@ export const useStaticVirtualizerMeasure: <TElement extends HTMLElement>(virtual
     containerSizeRef: React_2.MutableRefObject<number>;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const useVirtualizerContext_unstable: () => VirtualizerContextProps;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps): VirtualizerScrollViewState;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export function useVirtualizerScrollViewDynamic_unstable(props: VirtualizerScrollViewDynamicProps): VirtualizerScrollViewDynamicState;
 
-// @public
+// @public @deprecated
 export const useVirtualizerScrollViewDynamicStyles_unstable: (state: VirtualizerScrollViewDynamicState) => VirtualizerScrollViewDynamicState;
 
-// @public
+// @public @deprecated
 export const useVirtualizerScrollViewStyles_unstable: (state: VirtualizerScrollViewState) => VirtualizerScrollViewState;
 
-// @public
+// @public @deprecated
 export const useVirtualizerStyles_unstable: (state: VirtualizerState) => VirtualizerState;
 
-// @public
+// @public @deprecated
 export const Virtualizer: React_2.FC<VirtualizerProps>;
 
-// @public
+// @public @deprecated
 export type VirtualizerChildRenderFunction = (index: number, isScrolling: boolean) => React_2.ReactNode;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const virtualizerClassNames: SlotClassNames<VirtualizerSlots>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type VirtualizerContextProps = {
     contextIndex: number;
     setContextIndex: (index: number) => void;
     childProgressiveSizes?: React_2.MutableRefObject<number[]>;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const VirtualizerContextProvider: React_2.Provider<VirtualizerContextProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type VirtualizerDataRef = {
     progressiveSizes: React_2.RefObject<number[]>;
     nodeSizes: React_2.RefObject<number[]>;
@@ -155,7 +155,7 @@ export type VirtualizerDataRef = {
     currentIndex: React_2.RefObject<number>;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type VirtualizerMeasureDynamicProps = {
     defaultItemSize: number;
     virtualizerContext: DynamicVirtualizerContextProps;
@@ -166,7 +166,7 @@ export type VirtualizerMeasureDynamicProps = {
     bufferSize?: number;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type VirtualizerMeasureProps = {
     defaultItemSize: number;
     direction?: 'vertical' | 'horizontal';
@@ -174,22 +174,22 @@ export type VirtualizerMeasureProps = {
     bufferSize?: number;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;
 
-// @public
+// @public @deprecated
 export const VirtualizerScrollView: React_2.FC<VirtualizerScrollViewProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const virtualizerScrollViewClassNames: SlotClassNames<VirtualizerScrollViewSlots>;
 
-// @public
+// @public @deprecated
 export const VirtualizerScrollViewDynamic: React_2.FC<VirtualizerScrollViewDynamicProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const virtualizerScrollViewDynamicClassNames: SlotClassNames<VirtualizerScrollViewDynamicSlots>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex' | 'virtualizerContext'>> & {
     itemSize: number;
     getItemSize?: (index: number) => number;
@@ -200,13 +200,13 @@ export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<Virtualiz
     virtualizerContext?: DynamicVirtualizerContextProps;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type VirtualizerScrollViewDynamicSlots = VirtualizerScrollViewSlots;
 
 // @public (undocumented)
 export type VirtualizerScrollViewDynamicState = ComponentState<VirtualizerScrollViewDynamicSlots> & VirtualizerConfigState;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex' | 'imperativeVirtualizerRef'>> & {
     itemSize: number;
     numItems: number;
@@ -215,15 +215,15 @@ export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrol
     enablePagination?: boolean;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type VirtualizerScrollViewSlots = VirtualizerSlots & {
     container: NonNullable<Slot<'div'>>;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type VirtualizerScrollViewState = ComponentState<VirtualizerScrollViewSlots> & VirtualizerConfigState;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type VirtualizerSlots = {
     before: NonNullable<Slot<'div', 'td'>>;
     beforeContainer: NonNullable<Slot<'div', 'tr'>>;
@@ -231,7 +231,7 @@ export type VirtualizerSlots = {
     afterContainer: NonNullable<Slot<'div', 'tr'>>;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type VirtualizerState = ComponentState<VirtualizerSlots> & VirtualizerConfigState;
 
 // (No @packageDocumentation comment for this package)

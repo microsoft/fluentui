@@ -6,6 +6,9 @@ import { useVirtualizerContextState_unstable } from '../../Utilities';
 import { slot, useTimeout } from '@fluentui/react-utilities';
 import { flushSync } from 'react-dom';
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
   'use no memo';
 
