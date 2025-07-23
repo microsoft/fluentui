@@ -437,10 +437,7 @@ export class GroupedVerticalBarChartBase
     const barLabelsForGroup: JSX.Element[] = [];
 
     // Get the actual legends present at this x-axis point
-    const presentLegends = Object.keys(singleSet).filter(
-      key =>
-        key !== 'xAxisPoint' && key !== 'indexNum' && key !== 'groupSeries' && key !== 'stackCallOutAccessibilityData',
-    );
+    const presentLegends = Object.keys(singleSet).filter(key => key in this._legendColorMap);
     const effectiveGroupWidth = calcRequiredWidth(this._barWidth, presentLegends.length, X1_INNER_PADDING);
 
     this._legends.forEach((legendTitle: string, legendIndex: number) => {
