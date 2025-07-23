@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs';
 
 # Debugging screen reader notifications and live regions
 
-Live region notifications are one of the most temperamental accessibility features, compounded by how difficult they are to debug. A significant part of their functionality is handled within screen reader implementations, and is both undocumented and differs between screen readers.
+Live region notifications are one of the most temperamental accessibility features, compounded by how difficult they are to debug. A significant part of their functionality is handled within screen reader implementations, and is both undocumented and differs between screen readers. Differences between browsers also tend to be loosely spec'd and undocumented, which means every possible browser + screen reader combination may have unique bugs.
 
 This docs page helps outline a set of steps to determine whether a bug is an authoring issue, a screen reader implementation issue, or not a bug at all.
 
@@ -14,7 +14,9 @@ This doc uses "live region" and "notification" mostly interchangeably; live regi
 
 If a live region change is not getting read by a screen reader, first check if the screen reader is instead reading other information at the same time (concurrent focus changes or typing are common causes of this). If this is happening, there is a good chance that the live region is functioning as expected but the output is being overridden.
 
-> **Note:** even if a screen reader is reading something else while failing to read a notification, it's still possible that there is also another issue with the live region implementation. It's worth going through other debugging steps to ensure this is not the case. Alternatively: if you test with multiple screen readers and at least one screen reader is correctly reading the live region while another only reads other information, it is very likely that the problem is caused by speech queue overrides.
+For example: VoiceOver on macOS will sometimes re-read information about the currently-focused element immediately after a user interaction, interrupting live region announcements. This can happen fractions of a second after a live region is triggered, making it difficult to debug. If this is happening, look for a flash of live region text output in the visual VoiceOver helper, test with other screen readers, and run through the other debugging steps to ensure there are no other issues present.
+
+> **Note:** even if a screen reader is reading something else while failing to read a notification, it's still possible that there is also another issue with the live region implementation. It's worth going through other debugging steps to ensure this is not the case. Alternatively: if you test with multiple screen readers and at least one other screen reader is correctly reading the live region, it is very likely that the problem is caused by speech queue overrides.
 
 If the screen reader is otherwise silent and the notification is still not being read, then move on to step 2.
 
@@ -37,12 +39,13 @@ If the interaction is designed to occur while a user is typing, try using our [`
 This step is relatively quick, so it's better to check before moving on to debugging the live region's DOM directly.
 
 1. Is a modal open?
-   If anything with `role=dialog` or `aria-modal="true"` is currently open on the page, it may block live region updates coming from outside the modal. This is true for some (but not all!) screen readers.
-2. Check our [Fluent known issues wiki](https://dev.azure.com/microsoftdesign/fluent-ui/_wiki/wikis/fluent-ui.wiki/334/Fluent-v9-known-issues) for any other browser, screen reader, or platform accessibility bugs affecting live regions.
+   If anything with `role=dialog` or `aria-modal="true"` is currently open on the page, it may block live region updates coming from outside the modal. This is true for VoiceOver but not windows screen readers, at the time of writing.
+2. Does the same text get announced multiple times? Does it work the first time but not subsequent times? Some (but not all) screen readers will filter out repeat identical messages. If this is the case, work through Step 3 to verify the text is really getting inserted into the live region; if it is, this is likely the issue.
+3. Check our [Fluent known issues wiki](https://dev.azure.com/microsoftdesign/fluent-ui/_wiki/wikis/fluent-ui.wiki/334/Fluent-v9-known-issues) for any other browser, screen reader, or platform accessibility bugs affecting live regions.
 
 ## Step 3: verify the live region's DOM is updating correctly
 
-> NOTE: the Fluent v9 `useAnnounce` hook + `AriaLiveAnnouncer` makes use of the new proposed `document.ariaNotify` feature on browsers where it is available. On those browsers, it will not insert a live region in the DOM. Currently that includes Edge and Chrome Canary (not yet in stable). To check whether this is the case, look at whether `document.ariaNotify` is a function in the console of the browser you are testing in. If it is, and if you are using the Fluent `useAnnounce` hook, skip this step.
+> NOTE: the Fluent v9 `useAnnounce` hook + `AriaLiveAnnouncer` makes use of the new proposed `document.ariaNotify` feature on browsers where it is available. On those browsers, it will not insert a live region in the DOM. Currently that includes Edge Canary and Chrome Canary (not yet in stable). To check whether this is the case, look at whether `document.ariaNotify` is a function in the console of the browser you are testing in. If it is, and if you are using the Fluent `AriaLiveAnnouncer`, skip this step.
 
 ### Does the live region exist in the DOM?
 
@@ -87,11 +90,11 @@ Live region behavior is closely tied to the nature and timing of DOM updates to 
 
    These _must_ already exist in the DOM before the text you want read is inserted. If using Fluent's `AriaLiveAnnouncer` + `useAnnounce`, this will be handled for you. If using a custom live region node, check that it is not inserted into the DOM along with the text you want announced.
 
-### Observing live region changes
+### Observing live region changes directly in the browser
 
-Often it's useful to be able to log the DOM mutations happening to a live region node. Since some screen-reader-only live regions quickly remove text after it's inserted to prevent invisible text from hanging around, this can be difficult to do by just looking at the Elements pane in browser dev tools. This is also true of the Fluent `AriaLiveAnnouncer` implementation.
+Often it's useful to be able to log the DOM mutations happening to a live region node in a live site. Since some screen-reader-only live regions quickly remove text after it's inserted to prevent invisible text from hanging around, this can be difficult to do by just looking at the Elements pane in browser dev tools. This is also true of the Fluent `AriaLiveAnnouncer` implementation.
 
-To debug this, you can use a `MutationObserver` and log child mutations to the console to check that the expected text is being correctly inserted. This is best done directly on the live site showing the bug using browser dev tools, since live regions especially can differ between environments. To do so, follow these steps:
+To debug this, you can use a `MutationObserver` and log child mutations to the console to check that the expected text is being correctly inserted. This is best done directly on the live site where the bug occurs, since live regions especially can differ between environments. To do so, follow these steps:
 
 1. Save the live region node as a global variable from the Elements pane
 2. Copy the function below to create a MutationObserver into the console (or write your own, if desired)
@@ -127,6 +130,21 @@ function observeElement(element) {
 }
 ```
 
+### Introspecting the AriaLiveAnnouncer implementation
+
+If you are working directly inside of the Fluent AI or Fluent UI repos, it may make sense to add breakpoints or console logs directly in our implementation. Navigate directly to the file where useAnnounce is implemented (`useDomAnnounce.ts` in `react-components/react-aria`) and add breakpoints or logs directly in the code.
+
+It is also possible to do this directly in the browser by finding `useDomAnnounce.ts` in the Sources tab.
+
+### What to do
+
+If you are experiencing an issue with either a live region not existing at all or not updating, the cause could be in any number of places. If using the Fluent `AriaLiveAnnouncer` + `useAnnounce`, a few things to check include:
+
+- Use React dev tools to check that the `AriaLiveAnnouncer` component exists as an ancestor of the component calling `useAnnounce` (in the React tree, not the DOM tree)
+- Check that the `announce` function is not just the default stub function (i.e. it is actually pulling the full implementation from `AriaLiveAnnouncer`; the default is a `() => undefined` stub).
+- If the expected live region does exist in the DOM but is not updating when `announce()` is called, try calling `announce('hardcoded string')` somewhere else in the same file.
+- Move on to step 4.
+
 ## Step 4: reach out to the Fluent team or another accessibility SME
 
-If you've made it this far without finding any issues and are stuck, it's probably time to reach out to either the Fluent team (if using our implementation), or another accessibility SME (if using a custom live region).
+If you've made it this far without finding any issues and are stuck, it's probably time to reach out to either the Fluent team (if using our implementation), book a slot in our [accessibility office hours](https://aka.ms/a11yFluentOfficeHours), or contact another accessibility SME (if using a custom live region).
