@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "deprecate: react-virtualizer in process of moving to fluentui-contrib",
+  "packageName": "@fluentui/react-components",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
