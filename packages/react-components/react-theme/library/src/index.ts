@@ -1,7 +1,9 @@
 export {
   teamsDarkTheme,
+  teamsDarkV3Theme,
   teamsHighContrastTheme,
   teamsLightTheme,
+  teamsLightV3Theme,
   webDarkTheme,
   webLightTheme,
   createDarkTheme,
