@@ -414,8 +414,12 @@ export function createDateXAxis(
   const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
   xAxisScale
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
-    .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
-    .nice();
+    .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
+
+  // Don't apply .nice() for vertical stacked bar charts to maintain exact domain alignment
+  if (chartType !== ChartTypes.VerticalStackedBarChart) {
+    xAxisScale.nice();
+  }
 
   let tickCount = xAxisCount ?? 6;
 
@@ -1348,6 +1352,14 @@ export function domainRangeOfDateForAreaLineVerticalBarChart(
     lDate = d3Max(points as any[], point => point.x as Date)!;
   }
 
+  // For vertical stacked bar charts, normalize domain to first of month to match tick values and bar positioning
+  // for a larger span
+  if (chartType === ChartTypes.VerticalStackedBarChart) {
+    const { normalizedSDate, normalizedLDate } = getNormalizedDate(sDate, lDate);
+    sDate = normalizedSDate;
+    lDate = normalizedLDate;
+  }
+
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;
 
@@ -2017,4 +2029,22 @@ export function isTextMode(points: (ILineChartPoints | IScatterChartPoints)[]): 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     item => typeof (item as any).lineOptions?.mode === 'string' && (item as any).lineOptions.mode === 'text',
   );
+}
+
+export function getNormalizedDate(sDate: Date, lDate: Date): { normalizedSDate: Date; normalizedLDate: Date } {
+  const timeDiff = lDate.getTime() - sDate.getTime();
+  const daysDiff = timeDiff / (1000 * 60 * 60 * 24);
+
+  let normalizedSDate = sDate;
+  let normalizedLDate = lDate;
+
+  // Only normalize to first of month for longer time spans
+  if (daysDiff > 45) {
+    normalizedSDate = new Date(sDate.getFullYear(), sDate.getMonth(), 1);
+    normalizedLDate = new Date(lDate.getFullYear(), lDate.getMonth(), 1);
+  }
+  return {
+    normalizedSDate,
+    normalizedLDate,
+  };
 }

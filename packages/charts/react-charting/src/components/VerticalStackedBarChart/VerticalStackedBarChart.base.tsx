@@ -66,6 +66,7 @@ import {
   calcTotalWidth,
   calcBandwidth,
   calcRequiredWidth,
+  getNormalizedDate,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
@@ -237,18 +238,9 @@ export class VerticalStackedBarChartBase
         ...this.props.calloutProps,
         ...getAccessibleDataObject(this.state.callOutAccessibilityData),
       };
-      // For DateAxis, provide actual data dates as tick values to prevent .nice() adjustment
-      const getTickValues = () => {
-        if (this._xAxisType === XAxisTypes.DateAxis && !this.props.tickValues) {
-          const uniqueDatesSet = new Set(this._dataset.map(dataPoint => dataPoint.x));
-          const uniqueDates = Array.from(uniqueDatesSet);
-          return uniqueDates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime()).map(x => new Date(x));
-        }
-        return this.props.tickValues;
-      };
 
       const tickParams = {
-        tickValues: getTickValues(),
+        tickValues: this.props.tickValues,
         tickFormat: this.props.tickFormat,
       };
 
@@ -963,12 +955,29 @@ export class VerticalStackedBarChartBase
     }
 
     const bars = this._points.map((singleChartData: IVerticalStackedChartProps, indexNumber: number) => {
+      let xAxisPoint = singleChartData.xAxisPoint;
+
+      // For date axis, apply the same smart normalization logic
+      if (this._xAxisType === XAxisTypes.DateAxis) {
+        const sDate = d3Min(this._dataset, (point: IVerticalStackedBarDataPoint) => point.x as Date)!;
+        const lDate = d3Max(this._dataset, (point: IVerticalStackedBarDataPoint) => point.x as Date)!;
+        const { normalizedSDate, normalizedLDate } = getNormalizedDate(sDate, lDate);
+
+        // Apply normalization to the current data point if normalization was applied to domain
+        if (normalizedSDate.getTime() !== sDate.getTime() || normalizedLDate.getTime() !== lDate.getTime()) {
+          xAxisPoint = new Date(
+            (singleChartData.xAxisPoint as Date).getFullYear(),
+            (singleChartData.xAxisPoint as Date).getMonth(),
+            1,
+          );
+        }
+      }
       const xPoint = xBarScale(
         this._xAxisType === XAxisTypes.NumericAxis
-          ? (singleChartData.xAxisPoint as number)
+          ? (xAxisPoint as number)
           : this._xAxisType === XAxisTypes.DateAxis
-          ? (singleChartData.xAxisPoint as Date)
-          : (singleChartData.xAxisPoint as string),
+          ? xAxisPoint
+          : (xAxisPoint as string),
       );
       const xScaleBandwidthTranslate =
         this._xAxisType !== XAxisTypes.StringAxis ? -this._barWidth / 2 : (xBarScale.bandwidth() - this._barWidth) / 2;
@@ -1243,9 +1252,12 @@ export class VerticalStackedBarChartBase
       const lDate = d3Max(this._dataset, (point: IVerticalStackedBarDataPoint) => {
         return point.x as Date;
       })!;
+
+      const { normalizedSDate, normalizedLDate } = getNormalizedDate(sDate, lDate);
+
       const xBarScale = this.props.useUTC ? d3ScaleUtc() : d3ScaleTime();
       xBarScale
-        .domain(this._isRtl ? [lDate, sDate] : [sDate, lDate])
+        .domain(this._isRtl ? [normalizedLDate, normalizedSDate] : [normalizedSDate, normalizedLDate])
         .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin]);
 
       return { xBarScale, yBarScale };
@@ -1271,9 +1283,9 @@ export class VerticalStackedBarChartBase
     containerWidth: number,
     xElement: SVGElement | null,
   ) => {
-    const { yBarScale } = this._getScales(containerHeight, containerWidth);
+    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     return (this._bars = this._createBar(
-      xScale,
+      xBarScale,
       this._yAxisType === YAxisType.StringAxis ? yScale : yBarScale,
       containerHeight,
       xElement!,
