@@ -1751,7 +1751,6 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       series.theta.forEach(theta => allThetaValues.add(String(theta)));
     }
   }
-  const globalScatterPolarText = Array.from(allThetaValues).sort();
 
   // Project all points and create a perfect square domain
   const allX: number[] = [];
@@ -1761,7 +1760,7 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
     const series = input.data[sindex] as Partial<PlotData>;
     // If scatterpolar, set __scatterPolarText to all unique theta values for equal spacing
     if (isArrayOrTypedArray(series.theta)) {
-      (series as { __scatterPolarText: string[] }).__scatterPolarText = globalScatterPolarText;
+      (series as { __scatterPolarText: string[] }).__scatterPolarText = Array.from(allThetaValues);
     }
     series.x = [] as Datum[];
     series.y = [] as Datum[];
