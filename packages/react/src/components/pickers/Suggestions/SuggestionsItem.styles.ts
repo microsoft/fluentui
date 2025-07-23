@@ -110,7 +110,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
     closeButton: [
       classNames.closeButton,
       {
-        display: 'none',
+        // display: 'none',
         color: palette.neutralSecondary,
         padding: '0 4px',
         height: 'auto',
