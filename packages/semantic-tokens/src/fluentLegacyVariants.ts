@@ -481,7 +481,7 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3Pressed',
     originalToken: 'foregroundCtrlOnSubtlePressed',
   },
-  _ctrlPopoverPaddingContentLarge:{
+  _ctrlPopoverPaddingContentLarge: {
     originalToken: 'paddingContentLarge',
     rawValue: '20px',
   },
