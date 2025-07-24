@@ -21,7 +21,10 @@ const useStyles = makeStyles({
     backgroundColor: semanticTokens.backgroundFlyoutSolid,
     borderRadius: semanticTokens.cornerCtrlRest,
     border: `1px solid ${semanticTokens.strokeLayer}`,
-    ...typographyStyles.body1,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontSize: semanticTokens.textGlobalBody3FontSize,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+    lineHeight: semanticTokens.textGlobalBody3LineHeight,
     ...createSlideStyles(10),
 
     // TODO need to add versions of tokens.alias.shadow.shadow16, etc. that work with filter
