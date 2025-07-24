@@ -436,14 +436,22 @@ export class GroupedVerticalBarChartBase
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const barLabelsForGroup: JSX.Element[] = [];
 
+    // Get the actual legends present at this x-axis point
+    const presentLegends = Object.keys(singleSet).filter(key => key in this._legendColorMap);
+    const effectiveGroupWidth = calcRequiredWidth(this._barWidth, presentLegends.length, X1_INNER_PADDING);
+
+    // For stacked bars, center the single bar group in the available space
+    // Instead of using the global legend position, use the local position within present legends
+    const localScale = d3ScaleBand()
+      .domain(presentLegends)
+      .range(this._isRtl ? [effectiveGroupWidth, 0] : [0, effectiveGroupWidth])
+      .paddingInner(X1_INNER_PADDING);
     this._legends.forEach((legendTitle: string, legendIndex: number) => {
       const barPoints = singleSet[legendTitle];
       if (barPoints) {
         const yBarScale = barPoints[0].useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
 
-        // To align the centers of the generated bandwidth and the calculated one when they differ,
-        // use the following addend.
-        const xPoint = xScale1(legendTitle) + (xScale1.bandwidth() - this._barWidth) / 2;
+        const xPoint = (localScale(legendTitle) ?? 0) + (localScale.bandwidth() - this._barWidth) / 2;
         const isLegendActive = this._legendHighlighted(legendTitle) || this._noLegendHighlighted();
         const barOpacity = isLegendActive ? '' : '0.1';
 
@@ -545,7 +553,7 @@ export class GroupedVerticalBarChartBase
     return (
       <g
         key={singleSet.indexNum}
-        transform={`translate(${xScale0(singleSet.xAxisPoint) + (xScale0.bandwidth() - this._groupWidth) / 2}, 0)`}
+        transform={`translate(${xScale0(singleSet.xAxisPoint) + (xScale0.bandwidth() - effectiveGroupWidth) / 2}, 0)`}
       >
         {singleGroup}
         {barLabelsForGroup}
