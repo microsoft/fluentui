@@ -70,6 +70,7 @@ import {
   gapBetweenCtrlDefaultRaw,
   paddingContentAlignOutdentIconOnSubtleRaw,
   textGlobalBody2LineHeightRaw,
+  paddingContentLargeRaw,
   backgroundCtrlBrandDisabledRaw,
   sizeCtrlIconRaw,
   foregroundCtrlOnBrandRestRaw,
@@ -1042,6 +1043,20 @@ export const _ctrlMessageBarTitleLineHeight = `var(${textRampItemHeaderLineHeigh
  * please use foregroundCtrlOnSubtlePressed instead.
  */
 export const _ctrlPersonaTreeIconOnSubtlePressed = `var(${foregroundCtrlOnSubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw}, ${colorNeutralForeground3Pressed}))`;
+/**
+ * This is a legacy variant for paddingContentLarge to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingContentLarge instead.
+ */
+export const _ctrlPopoverPaddingContentLarge = `var(${paddingContentLargeRaw}, 20px)`;
+/**
+ * This is a legacy variant for shadowFlyout to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use shadowFlyout instead.
+ */
+export const _ctrlPopoverShadowFilter = `var(${shadowFlyoutRaw}, drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 8px 16px var(--colorNeutralShadowKey)))`;
 /**
  * This is a legacy variant for backgroundCtrlActiveBrandHover to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.

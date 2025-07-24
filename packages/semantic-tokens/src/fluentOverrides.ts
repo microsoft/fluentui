@@ -224,6 +224,7 @@ export const fluentOverrides: FluentOverrides = {
   paddingContentAlignDefault: { f2Token: 'spacingVerticalS' },
   paddingContentAlignOutdentIconOnSubtle: { f2Token: 'spacingHorizontalM' },
   paddingContentLarge: { f2Token: 'spacingHorizontalXXL' },
+  paddingContentMedium: { rawValue: '16px' },
   paddingContentNone: { f2Token: 'spacingHorizontalNone' },
   paddingContentSmall: { rawValue: '12px' },
   paddingCtrlHorizontalDefault: { f2Token: 'spacingHorizontalM' },

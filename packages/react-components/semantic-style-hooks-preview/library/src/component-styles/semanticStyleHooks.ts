@@ -70,6 +70,7 @@ import {
   useSemanticBreadcrumbItemStyles,
 } from './Breadcrumb';
 import { useSemanticSpinButtonStyles } from './SpinButton';
+import { useSemanticPopoverSurfaceStyles } from './Popover';
 import { useSemanticInputStyles } from './Input/useSemanticInputStyles.styles';
 import {
   useSemanticToolbarStyles,
@@ -198,6 +199,8 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useRadioStyles_unstable: useSemanticRadioStyles,
   // Persona styles
   usePersonaStyles_unstable: useSemanticPersonaStyles,
+  // Popover styles
+  usePopoverSurfaceStyles_unstable: useSemanticPopoverSurfaceStyles,
   // Search styles
   useSearchBoxStyles_unstable: useSemanticSearchBoxStyles,
   // Checkbox styles
