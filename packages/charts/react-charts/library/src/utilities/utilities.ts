@@ -74,6 +74,8 @@ export enum ChartTypes {
   HeatMapChart,
   HorizontalBarChartWithAxis,
   ScatterChart,
+  FunnelChart,
+  GanttChart,
 }
 
 export enum XAxisTypes {
