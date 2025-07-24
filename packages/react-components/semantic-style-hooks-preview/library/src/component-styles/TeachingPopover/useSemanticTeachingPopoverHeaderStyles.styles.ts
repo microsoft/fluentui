@@ -1,5 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { teachingPopoverHeaderClassNames, type TeachingPopoverHeaderState } from '@fluentui/react-teaching-popover';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
