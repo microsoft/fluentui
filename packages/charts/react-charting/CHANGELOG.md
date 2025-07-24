@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 21 Jul 2025 07:21:22 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Jul 2025 07:20:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.17)
+
+Wed, 23 Jul 2025 07:20:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.16..@fluentui/react-charting_v5.24.17)
+
+### Patches
+
+- focus handling in funnel chart ([PR #34890](https://github.com/microsoft/fluentui/pull/34890) by anushgupta@microsoft.com)
+- fix: respect bargap and width properties in plotly bar traces ([PR #34887](https://github.com/microsoft/fluentui/pull/34887) by kumarkshitij@microsoft.com)
+- fix white color issue in chart table ([PR #34865](https://github.com/microsoft/fluentui/pull/34865) by anushgupta@microsoft.com)
 
 ## [5.24.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.16)
 
