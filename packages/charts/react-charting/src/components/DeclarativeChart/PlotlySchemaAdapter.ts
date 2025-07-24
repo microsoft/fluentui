@@ -1730,7 +1730,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
     data: funnelData,
     width: input.layout?.width,
     height: input.layout?.height,
-    orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'vertical' : 'horizontal',
+    orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'horizontal' : 'vertical',
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
   };
 };
