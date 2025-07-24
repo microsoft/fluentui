@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { createArrowHeightStyles, createArrowStyles, createSlideStyles } from '@fluentui/react-positioning';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
 import type { PopoverSize, PopoverSurfaceState } from '@fluentui/react-popover';
 import { popoverSurfaceClassNames } from '@fluentui/react-popover';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
