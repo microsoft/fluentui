@@ -355,16 +355,6 @@ export const spacingHorizontalNone = 'var(--spacingHorizontalNone)';
  */
 export const spacingHorizontalL = 'var(--spacingHorizontalL)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralShadowAmbient | `colorNeutralShadowAmbient`} design token.
- * @public
- */
-export const colorNeutralShadowAmbient = 'var(--colorNeutralShadowAmbient)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralShadowKey | `colorNeutralShadowKey`} design token.
- * @public
- */
-export const colorNeutralShadowKey = 'var(--colorNeutralShadowKey)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#colorPaletteMarigoldBackground3 | `colorPaletteMarigoldBackground3`} design token.
  * @public
  */
