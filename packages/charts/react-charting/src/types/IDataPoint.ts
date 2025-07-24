@@ -1059,3 +1059,8 @@ export interface IGanttChartDataPoint {
    */
   callOutAccessibilityData?: IAccessibilityProps;
 }
+
+/**
+ *
+ */
+export type AxisScale = 'default' | 'log';

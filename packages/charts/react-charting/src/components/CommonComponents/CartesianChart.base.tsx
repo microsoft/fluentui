@@ -329,6 +329,7 @@ export class CartesianChartBase
             this.props.tickParams!,
             this.props.chartType,
             culture,
+            this.props.xAxisScale,
           ));
           break;
         case XAxisTypes.DateAxis:
@@ -357,6 +358,7 @@ export class CartesianChartBase
             this.props.tickParams!,
             this.props.chartType,
             culture,
+            this.props.xAxisScale,
           ));
       }
       this._xScale = xScale;
@@ -430,6 +432,7 @@ export class CartesianChartBase
             true,
             this.props.supportNegativeData!,
             this.props.roundedTicks!,
+            this.props.secondaryYAxisScale,
           );
         }
         yScalePrimary = this.props.createYAxis(
@@ -440,6 +443,7 @@ export class CartesianChartBase
           false,
           this.props.supportNegativeData!,
           this.props.roundedTicks!,
+          this.props.yAxisScale,
         );
       }
 

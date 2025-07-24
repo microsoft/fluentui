@@ -13,6 +13,7 @@ import {
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
   scaleTime as d3ScaleTime,
+  scaleLog as d3ScaleLog,
   NumberValue,
 } from 'd3-scale';
 import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
@@ -62,7 +63,7 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
-import { IGanttChartDataPoint, IScatterChartDataPoint, IScatterChartPoints } from '../types/IDataPoint';
+import { AxisScale, IGanttChartDataPoint, IScatterChartDataPoint, IScatterChartPoints } from '../types/IDataPoint';
 import {
   formatDateToLocaleString,
   formatToLocaleString,
@@ -230,6 +231,7 @@ export function createNumericXAxis(
   tickParams: ITickParams,
   chartType: ChartTypes,
   culture?: string,
+  scale?: AxisScale,
 ) {
   const {
     domainNRangeValues,
@@ -241,7 +243,7 @@ export function createNumericXAxis(
     hideTickOverlap,
     calcMaxLabelWidth,
   } = xAxisParams;
-  const xAxisScale = d3ScaleLinear()
+  const xAxisScale = (scale === 'log' ? d3ScaleLog() : d3ScaleLinear())
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   showRoundOffXTickValues && xAxisScale.nice();
@@ -626,7 +628,16 @@ export function prepareDatapoints(
   return dataPointsArray;
 }
 
-export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
+export function createYAxisForHorizontalBarChartWithAxis(
+  yAxisParams: IYAxisParams,
+  isRtl: boolean,
+  axisData?: IAxisData,
+  isIntegralDataset?: boolean,
+  useSecondaryYScale: boolean = false,
+  supportNegativeData: boolean = false,
+  roundedTicks: boolean = false,
+  scale?: AxisScale,
+) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
     yAxisElement = null,
@@ -644,7 +655,7 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = yMinMaxValues.startValue < yMinValue ? Math.min(0, yMinMaxValues.startValue) : yMinValue!;
-  const yAxisScale = d3ScaleLinear()
+  const yAxisScale = (scale === 'log' ? d3ScaleLog() : d3ScaleLinear())
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
@@ -662,6 +673,7 @@ export function createNumericYAxis(
   useSecondaryYScale: boolean = false,
   supportNegativeData: boolean = false,
   roundedTicks: boolean = false,
+  scale?: AxisScale,
 ) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -688,7 +700,7 @@ export function createNumericYAxis(
     ? 0
     : yMinValue!;
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
-  const yAxisScale = d3ScaleLinear()
+  const yAxisScale = (scale === 'log' ? d3ScaleLog() : d3ScaleLinear())
     .domain([supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis =

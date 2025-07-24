@@ -530,6 +530,7 @@ export const transformPlotlyJsonToVSBCProps = (
     ...getYMinMaxValues(input.data[0], input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
+    ...getAxisScales(input.layout),
   };
 };
 
@@ -902,6 +903,7 @@ const transformPlotlyJsonToScatterTraceProps = (
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
+    ...getAxisScales(input.layout),
   };
 
   if (isAreaChart) {
@@ -995,6 +997,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     roundCorners: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getAxisScales(input.layout),
   };
 };
 
@@ -1070,6 +1073,7 @@ export const transformPlotlyJsonToGanttChartProps = (
     useUTC: false,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getAxisScales(input.layout),
   };
 };
 
@@ -2472,4 +2476,14 @@ const parseLocalDate = (value: string | number) => {
     }
   }
   return new Date(value);
+};
+
+const getAxisScales = (
+  layout: Partial<Layout> | undefined,
+): Pick<ICartesianChartProps, 'xAxisScale' | 'yAxisScale' | 'secondaryYAxisScale'> => {
+  return {
+    xAxisScale: layout?.xaxis?.type === 'log' ? 'log' : 'default',
+    yAxisScale: layout?.yaxis?.type === 'log' ? 'log' : 'default',
+    secondaryYAxisScale: layout?.yaxis2?.type === 'log' ? 'log' : 'default',
+  };
 };

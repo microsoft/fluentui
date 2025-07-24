@@ -1,4 +1,4 @@
-import type { Datum, TypedArray, PlotData, PlotlySchema, Data, Layout, SankeyData } from './PlotlySchema';
+import type { Datum, TypedArray, PlotData, PlotlySchema, Data, SankeyData } from './PlotlySchema';
 import { decodeBase64Fields } from './DecodeBase64Data';
 
 export type FluentChart =
@@ -279,16 +279,6 @@ const validateScatterData = (data: Partial<PlotData>) => {
   }
 };
 
-const invalidateLogAxisType = (layout: Partial<Layout> | undefined): boolean => {
-  const isLogAxisType =
-    layout?.xaxis?.type === 'log' ||
-    layout?.yaxis?.type === 'log' ||
-    layout?.yaxis2?.type === 'log' ||
-    layout?.xaxis2?.type === 'log';
-
-  return isLogAxisType;
-};
-
 /**
  * Detects cycles in Sankey chart data.
  * @param nodes Array of node labels.
@@ -423,10 +413,6 @@ export const mapFluentChart = (input: any): OutputChartType => {
       validSchema = decodeBase64Fields(validSchema);
     } catch (error) {
       return { isValid: false, errorMessage: `Failed to decode plotly schema: ${error}` };
-    }
-
-    if (invalidateLogAxisType(validSchema.layout)) {
-      return { isValid: false, errorMessage: 'Log axis type is not supported' };
     }
 
     const validTraces = getValidTraces(validSchema.data);
