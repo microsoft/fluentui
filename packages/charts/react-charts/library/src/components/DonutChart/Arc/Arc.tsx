@@ -111,6 +111,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
           onFocus={_onFocus.bind(this, props.data!.data, id)}
           data-is-focusable={props.activeArc === props.data!.data.legend || props.activeArc === ''}
+          tabIndex={0}
           onMouseOver={_hoverOn.bind(this, props.data!.data)}
           onMouseMove={_hoverOn.bind(this, props.data!.data)}
           onMouseLeave={_hoverOff}
