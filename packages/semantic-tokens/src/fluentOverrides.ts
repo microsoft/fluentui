@@ -155,15 +155,9 @@ export const fluentOverrides: FluentOverrides = {
   ctrlSliderThumbSizePressed: { rawValue: '20px' },
   ctrlSliderThumbSizeRest: { rawValue: '20px' },
   ctrlSpinnerStrokeWidth: { f2Token: 'strokeWidthThicker' },
-  ctrlTooltipBackground: {
-    f2Token: 'colorNeutralBackground1',
-  },
-  ctrlTooltipCorner: {
-    f2Token: 'borderRadiusMedium',
-  },
-  ctrlTooltipForeground: {
-    f2Token: 'colorNeutralForeground1',
-  },
+  ctrlTooltipBackground: { f2Token: 'colorNeutralBackground1' },
+  ctrlTooltipCorner: { f2Token: 'borderRadiusMedium' },
+  ctrlTooltipForeground: { f2Token: 'colorNeutralForeground1' },
   ctrlTooltipShadow: {
     rawValue:
       `drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) ` + `drop-shadow(0 4px 8px var(--colorNeutralShadowKey))`,
@@ -224,6 +218,7 @@ export const fluentOverrides: FluentOverrides = {
   paddingContentAlignDefault: { f2Token: 'spacingVerticalS' },
   paddingContentAlignOutdentIconOnSubtle: { f2Token: 'spacingHorizontalM' },
   paddingContentLarge: { f2Token: 'spacingHorizontalXXL' },
+  paddingContentMedium: { rawValue: '16px' },
   paddingContentNone: { f2Token: 'spacingHorizontalNone' },
   paddingContentSmall: { rawValue: '12px' },
   paddingCtrlHorizontalDefault: { f2Token: 'spacingHorizontalM' },

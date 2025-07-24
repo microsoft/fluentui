@@ -1899,6 +1899,8 @@ export {
   _ctrlMessageBarSpacingTop,
   _ctrlMessageBarTitleLineHeight,
   _ctrlPersonaTreeIconOnSubtlePressed,
+  _ctrlPopoverPaddingContentLarge,
+  _ctrlPopoverShadowFilter,
   _ctrlRadioBackgroundActiveBrandHover,
   _ctrlRadioBackgroundActiveBrandPressed,
   _ctrlRadioBackgroundActiveBrandRest,

@@ -2491,6 +2491,12 @@ export const _ctrlMessageBarTitleLineHeight = "var(--smtc-text-ramp-item-header-
 // @public
 export const _ctrlPersonaTreeIconOnSubtlePressed = "var(--smtc-foreground-ctrl-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-pressed, var(--colorNeutralForeground3Pressed)))";
 
+// @public
+export const _ctrlPopoverPaddingContentLarge = "var(--smtc-padding-content-large, 20px)";
+
+// @public
+export const _ctrlPopoverShadowFilter = "var(--smtc-shadow-flyout, drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 8px 16px var(--colorNeutralShadowKey)))";
+
 // @public (undocumented)
 export const ctrlProgressBackgroundEmpty = "var(--smtc-ctrl-progress-background-empty, var(--colorNeutralBackground6))";
 
@@ -4603,7 +4609,7 @@ export const paddingContentLarge = "var(--smtc-padding-content-large, var(--spac
 export const paddingContentLargeRaw = "--smtc-padding-content-large";
 
 // @public (undocumented)
-export const paddingContentMedium = "var(--smtc-padding-content-medium)";
+export const paddingContentMedium = "var(--smtc-padding-content-medium, 16px)";
 
 // @public (undocumented)
 export const paddingContentMediumRaw = "--smtc-padding-content-medium";

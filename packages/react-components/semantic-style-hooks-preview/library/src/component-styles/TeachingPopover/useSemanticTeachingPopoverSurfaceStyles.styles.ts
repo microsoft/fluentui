@@ -1,8 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import { teachingPopoverSurfaceClassNames, type TeachingPopoverSurfaceState } from '@fluentui/react-teaching-popover';
-import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
-// import { useSemanticPopoverSurfaceStyles } from '../Popover';
+import { useSemanticPopoverSurfaceStyles } from '../Popover';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 
 const useStyles = makeStyles({
@@ -32,8 +31,7 @@ export const useSemanticTeachingPopoverSurfaceStyles = (_state: unknown): Teachi
     getSlotClassNameProp_unstable(state.root),
   );
 
-  const updatedState = usePopoverSurfaceStyles_unstable(state);
-  // const updatedState = useSemanticPopoverSurfaceStyles(state);
+  const updatedState = useSemanticPopoverSurfaceStyles(state);
 
   return updatedState;
 };
