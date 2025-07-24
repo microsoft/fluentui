@@ -440,17 +440,16 @@ export class GroupedVerticalBarChartBase
     const presentLegends = Object.keys(singleSet).filter(key => key in this._legendColorMap);
     const effectiveGroupWidth = calcRequiredWidth(this._barWidth, presentLegends.length, X1_INNER_PADDING);
 
+    // For stacked bars, center the single bar group in the available space
+    // Instead of using the global legend position, use the local position within present legends
+    const localScale = d3ScaleBand()
+      .domain(presentLegends)
+      .range(this._isRtl ? [effectiveGroupWidth, 0] : [0, effectiveGroupWidth])
+      .paddingInner(X1_INNER_PADDING);
     this._legends.forEach((legendTitle: string, legendIndex: number) => {
       const barPoints = singleSet[legendTitle];
       if (barPoints) {
         const yBarScale = barPoints[0].useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
-
-        // For stacked bars, center the single bar group in the available space
-        // Instead of using the global legend position, use the local position within present legends
-        const localScale = d3ScaleBand()
-          .domain(presentLegends)
-          .range(this._isRtl ? [effectiveGroupWidth, 0] : [0, effectiveGroupWidth])
-          .paddingInner(X1_INNER_PADDING);
 
         const xPoint = (localScale(legendTitle) ?? 0) + (localScale.bandwidth() - this._barWidth) / 2;
         const isLegendActive = this._legendHighlighted(legendTitle) || this._noLegendHighlighted();
