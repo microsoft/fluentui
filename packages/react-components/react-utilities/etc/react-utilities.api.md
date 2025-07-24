@@ -151,7 +151,7 @@ export type JSXElement = React_2.ReactElement<any, any>;
 // @public
 export type JSXIntrinsicElement<Element extends JSXIntrinsicElementKeys> = React_2.ComponentProps<Element>;
 
-// @public (undocumented)
+// @public
 export type JSXIntrinsicElementKeys = ReactVersionDependent<JSXIntrinsicElementKeysLatest, JSXIntrinsicElementKeysCompat>;
 
 // @internal
