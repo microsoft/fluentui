@@ -3227,6 +3227,9 @@ export const _ctrlTabSmGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, v
 export const _ctrlTabSmPaddingHorizontalDefault = "var(--smtc-padding-ctrl-horizontal-default, var(--spacingHorizontalSNudge))";
 
 // @public
+export const _ctrlTeachingPopoverSurfaceCorner = "var(--smtc-corner-flyout-rest, var(--borderRadiusXLarge))";
+
+// @public
 export const _ctrlToastBackgroundFlyoutLumBlend = "var(--smtc-background-flyout-lum-blend, var(--colorNeutralBackgroundInverted))";
 
 // @public
