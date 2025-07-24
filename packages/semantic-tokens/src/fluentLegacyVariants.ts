@@ -481,6 +481,14 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3Pressed',
     originalToken: 'foregroundCtrlOnSubtlePressed',
   },
+  _ctrlPopoverPaddingContentLarge: {
+    originalToken: 'paddingContentLarge',
+    rawValue: '20px',
+  },
+  _ctrlPopoverShadowFilter: {
+    originalToken: 'shadowFlyout',
+    rawValue: `drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 8px 16px var(--colorNeutralShadowKey))`,
+  },
   _ctrlRadioBackgroundActiveBrandHover: {
     f2Token: 'colorTransparentBackground',
     originalToken: 'backgroundCtrlActiveBrandHover',
