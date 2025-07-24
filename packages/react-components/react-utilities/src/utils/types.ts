@@ -163,6 +163,10 @@ export type JSXElement = React.ReactElement<
   /* eslint-enable @typescript-eslint/no-explicit-any */
 >;
 
+/**
+ * Union of all intrinsic element keys in React.
+ * Based on the React version, it will either be the latest set of intrinsic elements or the legacy set.
+ */
 export type JSXIntrinsicElementKeys = ReactVersionDependent<
   JSXIntrinsicElementKeysLatest,
   JSXIntrinsicElementKeysCompat
