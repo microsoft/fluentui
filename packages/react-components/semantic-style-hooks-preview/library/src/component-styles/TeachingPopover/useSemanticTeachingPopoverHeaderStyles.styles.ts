@@ -24,7 +24,6 @@ const useStyles = makeStyles({
   dismissButton: {
     color: semanticTokens.foregroundContentNeutralSecondary,
     position: 'relative',
-    border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.strokeLayer}`,
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
@@ -34,16 +33,9 @@ const useStyles = makeStyles({
     lineHeight: semanticTokens.textRampItemBodyLineHeight,
     backgroundColor: semanticTokens.nullColor,
     boxSizing: 'border-box',
-    borderTopRightRadius: semanticTokens.cornerZero,
-    borderBottomRightRadius: semanticTokens.cornerZero,
-    borderRightStyle: 'none',
     marginInlineStart: 'auto',
     padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXS}`,
-    ...createCustomFocusIndicatorStyle({
-      outline: `${semanticTokens.ctrlFocusOuterStrokeWidth} solid ${semanticTokens.ctrlFocusInnerStroke}`,
-      borderRadius: semanticTokens.cornerCtrlRest,
-      ...shorthands.borderColor(semanticTokens.nullColor),
-    }),
+    border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.strokeLayer}`,
   },
   dismissBrand: {
     color: semanticTokens.foregroundCtrlOnBrandRest,
