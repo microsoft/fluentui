@@ -1,6 +1,6 @@
 # @fluentui/react-virtualizer
 
-**This package has been deprecated and moved to the [Fluent UI contributor repo](https://github.com/microsoft/fluentui-contrib) for stable release**
+**This package has been deprecated and moved to the [Fluent UI contributor repo](https://github.com/microsoft/fluentui-contrib/tree/main/packages/react-virtualizer) for stable release**
 
 **Virtualizer components for [Fluent UI React](https://react.fluentui.dev/)**
 

@@ -1,4 +1,4 @@
-// eslint-disable @typescript-eslint/no-deprecated
+/* eslint @typescript-eslint/no-deprecated: 0 */
 import * as React from 'react';
 import { Combobox, Option, makeStyles, useId, useMergedRefs, useTimeout } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
