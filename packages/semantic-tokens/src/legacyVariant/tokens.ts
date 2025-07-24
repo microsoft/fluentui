@@ -1456,6 +1456,13 @@ export const _ctrlTabSmGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${spa
  */
 export const _ctrlTabSmPaddingHorizontalDefault = `var(${paddingCtrlHorizontalDefaultRaw}, ${spacingHorizontalSNudge})`;
 /**
+ * This is a legacy variant for cornerFlyoutRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use cornerFlyoutRest instead.
+ */
+export const _ctrlTeachingPopoverSurfaceCorner = `var(${cornerFlyoutRestRaw}, ${borderRadiusXLarge})`;
+/**
  * This is a legacy variant for backgroundFlyoutLumBlend to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations

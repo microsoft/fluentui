@@ -1958,6 +1958,7 @@ export {
   _ctrlTabSizeDefault,
   _ctrlTabSmGapInsideDefault,
   _ctrlTabSmPaddingHorizontalDefault,
+  _ctrlTeachingPopoverSurfaceCorner,
   _ctrlToastBackgroundFlyoutLumBlend,
   _ctrlToastBodyForegroundContentNeutralPrimary,
   _ctrlToastBodyForegroundContentNeutralSecondary,

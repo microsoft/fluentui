@@ -76,6 +76,18 @@ import { TableSelectionCellState } from '@fluentui/react-table';
 import { TableState } from '@fluentui/react-table';
 import { TabListState } from '@fluentui/react-tabs';
 import { TabState } from '@fluentui/react-tabs';
+import { TeachingPopoverBodyState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselCardState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselFooterButtonState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselFooterState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavButtonState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCountState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverFooterState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverHeaderState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverSurfaceState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTitleState } from '@fluentui/react-teaching-popover';
 import { TextareaState } from '@fluentui/react-textarea';
 import { TextState } from '@fluentui/react-text';
 import { ToastBodyState } from '@fluentui/react-toast';
@@ -320,6 +332,42 @@ export const useSemanticTabListStyles: (_state: unknown) => TabListState;
 
 // @public
 export const useSemanticTabStyles: (_state: unknown) => TabState;
+
+// @public
+export const useSemanticTeachingPopoverBodyStyles: (_state: unknown) => TeachingPopoverBodyState;
+
+// @public
+export const useSemanticTeachingPopoverCarouselCardStyles: (_state: unknown) => TeachingPopoverCarouselCardState;
+
+// @public
+export const useSemanticTeachingPopoverCarouselFooterButtonStyles: (_state: unknown) => TeachingPopoverCarouselFooterButtonState;
+
+// @public
+export const useSemanticTeachingPopoverCarouselFooterStyles: (_state: unknown) => TeachingPopoverCarouselFooterState;
+
+// @public
+export const useSemanticTeachingPopoverCarouselNavButtonStyles: (_state: unknown) => TeachingPopoverCarouselNavButtonState;
+
+// @public
+export const useSemanticTeachingPopoverCarouselNavStyles: (_state: unknown) => TeachingPopoverCarouselNavState;
+
+// @public
+export const useSemanticTeachingPopoverCarouselPageCountStyles: (_state: unknown) => TeachingPopoverCarouselPageCountState;
+
+// @public
+export const useSemanticTeachingPopoverCarouselStyles: (_state: unknown) => TeachingPopoverCarouselState;
+
+// @public
+export const useSemanticTeachingPopoverFooterStyles: (_state: unknown) => TeachingPopoverFooterState;
+
+// @public
+export const useSemanticTeachingPopoverHeaderStyles: (_state: unknown) => TeachingPopoverHeaderState;
+
+// @public
+export const useSemanticTeachingPopoverSurfaceStyles: (_state: unknown) => TeachingPopoverSurfaceState;
+
+// @public
+export const useSemanticTeachingPopoverTitleStyles: (_state: unknown) => TeachingPopoverTitleState;
 
 // @public
 export const useSemanticTextareaStyles: (_state: unknown) => TextareaState;

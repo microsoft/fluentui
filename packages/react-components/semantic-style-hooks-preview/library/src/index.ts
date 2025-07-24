@@ -111,3 +111,17 @@ export {
   useSemanticToastTitleStyles,
 } from './component-styles/Toast';
 export { useSemanticSearchBoxStyles } from './component-styles/Search';
+export {
+  useSemanticTeachingPopoverBodyStyles,
+  useSemanticTeachingPopoverCarouselCardStyles,
+  useSemanticTeachingPopoverCarouselFooterButtonStyles,
+  useSemanticTeachingPopoverCarouselFooterStyles,
+  useSemanticTeachingPopoverCarouselNavButtonStyles,
+  useSemanticTeachingPopoverCarouselNavStyles,
+  useSemanticTeachingPopoverCarouselPageCountStyles,
+  useSemanticTeachingPopoverCarouselStyles,
+  useSemanticTeachingPopoverFooterStyles,
+  useSemanticTeachingPopoverHeaderStyles,
+  useSemanticTeachingPopoverSurfaceStyles,
+  useSemanticTeachingPopoverTitleStyles,
+} from './component-styles/TeachingPopover';

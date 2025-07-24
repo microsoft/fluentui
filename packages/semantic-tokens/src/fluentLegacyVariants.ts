@@ -717,6 +717,10 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'paddingCtrlHorizontalDefault',
   },
+  _ctrlTeachingPopoverSurfaceCorner: {
+    f2Token: 'borderRadiusXLarge',
+    originalToken: 'cornerFlyoutRest',
+  },
   _ctrlToastBackgroundFlyoutLumBlend: {
     f2Token: 'colorNeutralBackgroundInverted',
     originalToken: 'backgroundFlyoutLumBlend',
