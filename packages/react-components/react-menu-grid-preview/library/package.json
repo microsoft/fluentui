@@ -25,6 +25,9 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
+    "@fluentui/react-menu": "^9.19.0",
+    "@fluentui/react-table": "^9.18.0",
+    "@fluentui/react-tabster": "^9.26.0",
     "@fluentui/react-jsx-runtime": "^9.1.2",
     "@fluentui/react-shared-contexts": "^9.24.0",
     "@fluentui/react-theme": "^9.1.24",
