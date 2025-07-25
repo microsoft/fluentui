@@ -11,6 +11,7 @@ const data: GanttChartDataPoint[] = [
     y: 'Job A',
     legend: 'Alex',
     color: DataVizPalette.color1,
+    gradient: ['#4760D5', '#637CEF'],
   },
   {
     x: {
@@ -20,6 +21,7 @@ const data: GanttChartDataPoint[] = [
     y: 'Job B',
     legend: 'Alex',
     color: DataVizPalette.color1,
+    gradient: ['#4760D5', '#637CEF'],
   },
   {
     x: {
@@ -29,6 +31,7 @@ const data: GanttChartDataPoint[] = [
     y: 'Job C',
     legend: 'Max',
     color: DataVizPalette.color2,
+    gradient: ['#E61C99', '#EE5FB7'],
   },
 ];
 

@@ -40,7 +40,8 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     const _barHeight = React.useRef<number>(DEFAULT_BAR_HEIGHT);
     const _margins = React.useRef<Margins>({});
     const _calloutAnchorPoint = React.useRef<GanttChartDataPoint | null>(null);
-    const _emptyChartId = React.useRef<string>(useId('Gantt_empty'));
+    const _emptyChartId = useId('Gantt_empty');
+    const _legendId = useId('gantt_legend');
     const _legendMap = React.useRef<Record<string, { id: string; startColor: string; endColor: string }>>({});
     const _prevProps = React.useRef<Partial<GanttChartProps>>({});
 
@@ -71,7 +72,13 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
           if (!_legendMap.current[legend]) {
             let startColor = point.color ? getColorFromToken(point.color) : getNextColor(colorIndex, 0);
             let endColor = startColor;
-            _legendMap.current[legend] = { id: useId('legend'), startColor, endColor };
+
+            if (props.enableGradient) {
+              startColor = point.gradient?.[0]!;
+              endColor = point.gradient?.[1]!;
+            }
+
+            _legendMap.current[legend] = { id: `${_legendId}_${colorIndex}`, startColor, endColor };
             colorIndex += 1;
           }
 
@@ -411,7 +418,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
               onMouseLeave={_onBarLeave}
               onFocus={(event: React.FocusEvent<SVGElement>) => _onBarFocus(point, event)}
               onBlur={_onBarLeave}
-              data-is-focusable={shouldHighlight}
+              tabIndex={shouldHighlight ? 0 : -1}
               role="img"
               aria-label={_getAriaLabel(point)}
             />
@@ -596,12 +603,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
       );
     } else {
       return (
-        <div
-          id={_emptyChartId.current}
-          role={'alert'}
-          style={{ opacity: '0' }}
-          aria-label={'Graph has no data to display'}
-        />
+        <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
       );
     }
   },
