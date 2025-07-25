@@ -1,5 +1,4 @@
 import {
-  DataVizGradientPalette,
   ChartDataPoint,
   ChartProps,
   HorizontalBarChartWithAxisDataPoint,
@@ -8,7 +7,6 @@ import {
   VerticalStackedChartProps,
   VerticalBarChartDataPoint,
   DataVizPalette,
-  getGradientFromToken,
 } from '../index';
 
 export const chartPointsVBC = [
@@ -298,7 +296,7 @@ export const ganttData: GanttChartDataPoint[] = [
     y: 'Job-1',
     legend: 'Complete',
     color: DataVizPalette.success,
-    gradient: getGradientFromToken(DataVizGradientPalette.success),
+    gradient: ['#0C5E0C', '#107C10'],
   },
   {
     x: {
@@ -308,7 +306,7 @@ export const ganttData: GanttChartDataPoint[] = [
     y: 'Job-2',
     legend: 'Complete',
     color: DataVizPalette.success,
-    gradient: getGradientFromToken(DataVizGradientPalette.success),
+    gradient: ['#0C5E0C', '#107C10'],
   },
   {
     x: {
@@ -318,7 +316,7 @@ export const ganttData: GanttChartDataPoint[] = [
     y: 'Job-4',
     legend: 'Complete',
     color: DataVizPalette.success,
-    gradient: getGradientFromToken(DataVizGradientPalette.success),
+    gradient: ['#0C5E0C', '#107C10'],
   },
   {
     x: {
@@ -328,7 +326,7 @@ export const ganttData: GanttChartDataPoint[] = [
     y: 'Job-1',
     legend: 'Incomplete',
     color: DataVizPalette.warning,
-    gradient: getGradientFromToken(DataVizGradientPalette.warning),
+    gradient: ['#DE590B', '#F7630C'],
   },
   {
     x: {
@@ -338,7 +336,7 @@ export const ganttData: GanttChartDataPoint[] = [
     y: 'Job-2',
     legend: 'Not Started',
     color: DataVizPalette.error,
-    gradient: getGradientFromToken(DataVizGradientPalette.error),
+    gradient: ['#B10E1C', '#CC2635'],
   },
   {
     x: {
@@ -348,7 +346,7 @@ export const ganttData: GanttChartDataPoint[] = [
     y: 'Job-3',
     legend: 'Not Started',
     color: DataVizPalette.error,
-    gradient: getGradientFromToken(DataVizGradientPalette.error),
+    gradient: ['#B10E1C', '#CC2635'],
   },
   {
     x: {
@@ -358,7 +356,7 @@ export const ganttData: GanttChartDataPoint[] = [
     y: 'Job-3',
     legend: 'Not Started',
     color: DataVizPalette.error,
-    gradient: getGradientFromToken(DataVizGradientPalette.error),
+    gradient: ['#B10E1C', '#CC2635'],
   },
   {
     x: {
@@ -368,7 +366,7 @@ export const ganttData: GanttChartDataPoint[] = [
     y: 'Job-3',
     legend: 'Not Started',
     color: DataVizPalette.error,
-    gradient: getGradientFromToken(DataVizGradientPalette.error),
+    gradient: ['#B10E1C', '#CC2635'],
   },
 ];
 
