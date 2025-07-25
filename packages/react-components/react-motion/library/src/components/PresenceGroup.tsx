@@ -33,7 +33,7 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
     };
   }
 
-  constructor(props: PresenceGroupProps, context: unknown) {
+  constructor(props: PresenceGroupProps, context?: unknown) {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 

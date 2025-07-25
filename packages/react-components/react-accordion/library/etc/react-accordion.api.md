@@ -149,7 +149,7 @@ export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
 };
 
 // @public (undocumented)
-export type AccordionProps<Value = AccordionItemValue> = ComponentProps<AccordionSlots> & {
+export type AccordionProps<Value = AccordionItemValue> = Omit<ComponentProps<AccordionSlots>, 'onToggle'> & {
     defaultOpenItems?: Value | Value[];
     collapsible?: boolean;
     multiple?: boolean;
