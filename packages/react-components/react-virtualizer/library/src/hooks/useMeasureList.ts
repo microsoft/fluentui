@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export interface IndexedResizeCallbackElement {
   handleResize: () => void;
 }
@@ -10,6 +13,7 @@ export interface IndexedResizeCallbackElement {
  * `width` - element width ref (0 by default),
  * `height` - element height ref (0 by default),
  * `measureElementRef` - a ref function to be passed as `ref` to the element you want to measure
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export function useMeasureList<
   TElement extends HTMLElement & IndexedResizeCallbackElement = HTMLElement & IndexedResizeCallbackElement,
@@ -127,6 +131,7 @@ export function useMeasureList<
  * @param targetDocument - document to use to create the ResizeObserver
  * @param callback  - https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/ResizeObserver#callback
  * @returns a ResizeObserver instance or null if the global does not exist on the document
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export function createResizeObserverFromDocument(
   targetDocument: Document | null | undefined,

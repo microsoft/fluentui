@@ -10,6 +10,7 @@ import { useMutationObserver } from './useMutationObserver';
  * @param ltrRootMargin the margin to be processed and flipped if required
  * @param target target element that will have its current reading direction determined
  * @returns the corrected rootMargin (if it was necessary to correct)
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export const getRTLRootMargin = (
   ltrRootMargin: string,
@@ -47,8 +48,8 @@ export const getRTLRootMargin = (
  * enough to trigger a callback).
  * @returns An array containing a callback to update the list of Elements the observer should listen to, a callback to
  * update the init options of the IntersectionObserver and a ref to the IntersectionObserver instance itself.
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
-
 export const useIntersectionObserver = (
   callback: IntersectionObserverCallback,
   options?: IntersectionObserverInit,
