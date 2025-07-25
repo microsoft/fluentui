@@ -864,8 +864,8 @@ const transformPlotlyJsonToScatterTraceProps = (
                   originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
                   direction: input.layout?.polar?.angularaxis?.direction,
                   rotation: input.layout?.polar?.angularaxis?.rotation,
-                  scatterPolarText: (series as { __scatterPolarText: string[] }).__scatterPolarText
-                    ? (series as { __scatterPolarText: string[] }).__scatterPolarText
+                  axisLabel: (series as { __axisLabel: string[] }).__axisLabel
+                    ? (series as { __axisLabel: string[] }).__axisLabel
                     : {},
                 }
               : {}),
@@ -1758,9 +1758,9 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
   let originX: number | null = null;
   for (let sindex = 0; sindex < input.data.length; sindex++) {
     const series = input.data[sindex] as Partial<PlotData>;
-    // If scatterpolar, set __scatterPolarText to all unique theta values for equal spacing
+    // If scatterpolar, set __axisLabel to all unique theta values for equal spacing
     if (isArrayOrTypedArray(series.theta)) {
-      (series as { __scatterPolarText: string[] }).__scatterPolarText = Array.from(allThetaValues);
+      (series as { __axisLabel: string[] }).__axisLabel = Array.from(allThetaValues);
     }
     series.x = [] as Datum[];
     series.y = [] as Datum[];

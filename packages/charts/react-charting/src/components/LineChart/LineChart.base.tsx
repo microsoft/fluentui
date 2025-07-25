@@ -1344,15 +1344,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       }
 
       if (this._isScatterPolar) {
-        // Render category labels for all series at once to avoid overlap
-        const allSeriesData = this._points.map(series => ({
-          data: series.data
-            .filter(pt => typeof pt.x === 'number' && typeof pt.y === 'number')
-            .map(pt => ({ x: pt.x as number, y: pt.y as number, text: pt.text })),
-        }));
         pointsForLine.push(
           ...renderScatterPolarCategoryLabels({
-            allSeriesData,
             xAxisScale: this._xAxisScale,
             yAxisScale: yScale,
             className: classNames.markerLabel || '',

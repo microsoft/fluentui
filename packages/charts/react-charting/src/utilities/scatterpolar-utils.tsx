@@ -6,14 +6,12 @@ import { ScaleLinear } from 'd3-scale';
  * Now places labels at equal angles for all unique texts, regardless of data positions.
  */
 export function renderScatterPolarCategoryLabels({
-  allSeriesData,
   xAxisScale,
   yAxisScale,
   className,
   lineOptions,
   minPixelGap = 40,
 }: {
-  allSeriesData: { data: { x: number; y: number; text?: string }[] }[];
   xAxisScale: ScaleLinear<number, number>;
   yAxisScale: ScaleLinear<number, number>;
   className: string;
@@ -23,8 +21,8 @@ export function renderScatterPolarCategoryLabels({
 }): React.JSX.Element[] {
   const maybeLineOptions = extractMaybeLineOptions(lineOptions);
 
-  // Always use scatterPolarText from lineOptions to display the labels
-  const uniqueTexts: string[] = maybeLineOptions?.scatterPolarText ?? [];
+  // Always use axisLabel from lineOptions to display the labels
+  const uniqueTexts: string[] = maybeLineOptions?.axisLabel ?? [];
 
   // Place labels at equal angles
   const renderedLabels: React.JSX.Element[] = [];
@@ -71,7 +69,7 @@ export function extractMaybeLineOptions(lineOptions: any):
       originXOffset?: number;
       direction?: 'clockwise' | 'counterclockwise';
       rotation?: number;
-      scatterPolarText?: string[];
+      axisLabel?: string[];
     }
   | undefined {
   return lineOptions
@@ -82,7 +80,7 @@ export function extractMaybeLineOptions(lineOptions: any):
             ? lineOptions.direction
             : undefined,
         rotation: lineOptions.rotation,
-        scatterPolarText: Array.isArray(lineOptions.scatterPolarText) ? lineOptions.scatterPolarText : undefined,
+        axisLabel: Array.isArray(lineOptions.axisLabel) ? lineOptions.axisLabel : undefined,
       }
     : undefined;
 }
