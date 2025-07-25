@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 25 Jul 2025 07:20:42 GMT",
+      "tag": "@fluentui/react-charting_v5.24.18",
+      "version": "5.24.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "fb3328eb40ef68cc45f297f71cff417fcbb5ff13",
+            "comment": "fix funnel chart alignment"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "493257a4ad2140fc56a6f74b496f782561770de9",
+            "comment": "fix(react-charting): Fix alignment issue of stacked grouped vertical bar charts."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Jul 2025 07:20:40 GMT",
       "tag": "@fluentui/react-charting_v5.24.17",
       "version": "5.24.17",

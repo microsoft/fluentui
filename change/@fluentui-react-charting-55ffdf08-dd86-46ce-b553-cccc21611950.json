@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix funnel chart alignment",
-  "packageName": "@fluentui/react-charting",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

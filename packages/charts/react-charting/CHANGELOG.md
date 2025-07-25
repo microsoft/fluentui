@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 23 Jul 2025 07:20:40 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Jul 2025 07:20:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.18)
+
+Fri, 25 Jul 2025 07:20:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.17..@fluentui/react-charting_v5.24.18)
+
+### Patches
+
+- fix funnel chart alignment ([PR #34903](https://github.com/microsoft/fluentui/pull/34903) by anushgupta@microsoft.com)
+- fix(react-charting): Fix alignment issue of stacked grouped vertical bar charts. ([PR #34882](https://github.com/microsoft/fluentui/pull/34882) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.24.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.17)
 
