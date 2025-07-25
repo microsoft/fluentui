@@ -840,3 +840,97 @@ interface SLinkExtra {
 
 export type SNode = SankeyNode<SNodeExtra, SLinkExtra>;
 export type SLink = SankeyLink<SNodeExtra, SLinkExtra>;
+
+/**
+ * Specifies the ordering options for axis categories in Cartesian charts.
+ *
+ * - `'default'`: Uses the original order before custom ordering was supported.
+ *   In some charts, this behaves the same as `'data'`.
+ * - `'data'`: Preserves the order of categories as provided in the input data.
+ * - `string[]`: Explicitly defines the custom order of categories as an array of category names.
+ * - `'category ascending' | 'category descending'`: Orders categories alphanumerically.
+ * - `'total ascending' | 'total descending'`: Orders categories by the total of their associated values.
+ * - `'min ascending' | 'min descending'`: Orders by the minimum value within each category.
+ * - `'max ascending' | 'max descending'`: Orders by the maximum value within each category.
+ * - `'sum ascending' | 'sum descending'`: Orders by the sum of values for each category (same as 'total').
+ * - `'mean ascending' | 'mean descending'`: Orders by the average of values in each category.
+ * - `'median ascending' | 'median descending'`: Orders by the median value of each category.
+ *
+ * {@docCategory CartesianChart}
+ */
+export type AxisCategoryOrder =
+  | 'default'
+  | 'data'
+  | string[]
+  | 'category ascending'
+  | 'category descending'
+  | 'total ascending'
+  | 'total descending'
+  | 'min ascending'
+  | 'min descending'
+  | 'max ascending'
+  | 'max descending'
+  | 'sum ascending'
+  | 'sum descending'
+  | 'mean ascending'
+  | 'mean descending'
+  | 'median ascending'
+  | 'median descending';
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface GanttChartDataPoint {
+  /**
+   * Dependent value of the data point, rendered along the x-axis.
+   */
+  x: {
+    start: Date | number;
+    end: Date | number;
+  };
+
+  /**
+   * Independent value of the data point, rendered along the y-axis.
+   * If y is a number, then each y-coordinate is plotted at its y-coordinate.
+   * If y is a string, then the data is evenly spaced along the y-axis.
+   */
+  y: number | string;
+
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend?: string;
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+
+  /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
+
+  /**
+   * Callout data for x axis
+   * This is an optional prop, If haven;t given legend will take
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   * This is an optional prop, If haven't given data will take
+   */
+  yAxisCalloutData?: string;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: AccessibilityProps;
+}

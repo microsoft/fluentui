@@ -1,11 +1,14 @@
 import {
+  DataVizGradientPalette,
   ChartDataPoint,
   ChartProps,
   HorizontalBarChartWithAxisDataPoint,
   VSChartDataPoint,
+  GanttChartDataPoint,
   VerticalStackedChartProps,
   VerticalBarChartDataPoint,
   DataVizPalette,
+  getGradientFromToken,
 } from '../index';
 
 export const chartPointsVBC = [
@@ -283,5 +286,220 @@ export const negativeChartPointsVBC: VerticalBarChartDataPoint[] = [
     color: DataVizPalette.color3,
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '37%',
+  },
+];
+
+export const ganttData: GanttChartDataPoint[] = [
+  {
+    x: {
+      start: new Date('2017-01-01'),
+      end: new Date('2017-02-02'),
+    },
+    y: 'Job-1',
+    legend: 'Complete',
+    color: DataVizPalette.success,
+    gradient: getGradientFromToken(DataVizGradientPalette.success),
+  },
+  {
+    x: {
+      start: new Date('2017-01-17'),
+      end: new Date('2017-02-17'),
+    },
+    y: 'Job-2',
+    legend: 'Complete',
+    color: DataVizPalette.success,
+    gradient: getGradientFromToken(DataVizGradientPalette.success),
+  },
+  {
+    x: {
+      start: new Date('2017-01-14'),
+      end: new Date('2017-03-14'),
+    },
+    y: 'Job-4',
+    legend: 'Complete',
+    color: DataVizPalette.success,
+    gradient: getGradientFromToken(DataVizGradientPalette.success),
+  },
+  {
+    x: {
+      start: new Date('2017-02-15'),
+      end: new Date('2017-03-15'),
+    },
+    y: 'Job-1',
+    legend: 'Incomplete',
+    color: DataVizPalette.warning,
+    gradient: getGradientFromToken(DataVizGradientPalette.warning),
+  },
+  {
+    x: {
+      start: new Date('2017-01-17'),
+      end: new Date('2017-02-17'),
+    },
+    y: 'Job-2',
+    legend: 'Not Started',
+    color: DataVizPalette.error,
+    gradient: getGradientFromToken(DataVizGradientPalette.error),
+  },
+  {
+    x: {
+      start: new Date('2017-03-10'),
+      end: new Date('2017-03-20'),
+    },
+    y: 'Job-3',
+    legend: 'Not Started',
+    color: DataVizPalette.error,
+    gradient: getGradientFromToken(DataVizGradientPalette.error),
+  },
+  {
+    x: {
+      start: new Date('2017-04-01'),
+      end: new Date('2017-04-20'),
+    },
+    y: 'Job-3',
+    legend: 'Not Started',
+    color: DataVizPalette.error,
+    gradient: getGradientFromToken(DataVizGradientPalette.error),
+  },
+  {
+    x: {
+      start: new Date('2017-05-18'),
+      end: new Date(new Date('2017-06-18')),
+    },
+    y: 'Job-3',
+    legend: 'Not Started',
+    color: DataVizPalette.error,
+    gradient: getGradientFromToken(DataVizGradientPalette.error),
+  },
+];
+
+export const ganttDataWithLongY: GanttChartDataPoint[] = [
+  {
+    x: {
+      start: new Date('2024-05-01'),
+      end: new Date('2024-05-07'),
+    },
+    y: 'Site Preparation',
+    legend: 'No',
+    color: '#637cefff',
+  },
+  {
+    x: {
+      start: new Date('2024-05-08'),
+      end: new Date('2024-05-21'),
+    },
+    y: 'Foundation Work',
+    legend: 'No',
+    color: '#637cefff',
+  },
+  {
+    x: {
+      start: new Date('2024-05-22'),
+      end: new Date('2024-06-02'),
+    },
+    y: 'Framing',
+    legend: 'No',
+    color: '#637cefff',
+  },
+  {
+    x: {
+      start: new Date('2024-06-03'),
+      end: new Date('2024-06-09'),
+    },
+    y: 'Roof Installation',
+    legend: 'No',
+    color: '#637cefff',
+  },
+  {
+    x: {
+      start: new Date('2024-06-10'),
+      end: new Date('2024-06-23'),
+    },
+    y: 'Plumbing/Electrical',
+    legend: 'No',
+    color: '#637cefff',
+  },
+  {
+    x: {
+      start: new Date('2024-07-08'),
+      end: new Date('2024-07-17'),
+    },
+    y: 'Exterior Finishing',
+    legend: 'No',
+    color: '#637cefff',
+  },
+  {
+    x: {
+      start: new Date('2024-06-24'),
+      end: new Date('2024-07-07'),
+    },
+    y: 'Interior Finishing',
+    legend: 'Yes (Phase 1)',
+    color: '#f7630cff',
+  },
+  {
+    x: {
+      start: new Date('2024-07-18'),
+      end: new Date('2024-07-24'),
+    },
+    y: 'Final Inspections',
+    legend: 'Yes (Phase 2)',
+    color: '#57811bff',
+  },
+];
+
+export const ganttDataWithNumericY: GanttChartDataPoint[] = [
+  {
+    x: {
+      start: new Date('2021-01-01'),
+      end: new Date('2022-01-10'),
+    },
+    y: 1,
+    legend: 'HR',
+    color: '#637cefff',
+  },
+  {
+    x: {
+      start: new Date('2022-01-15'),
+      end: new Date('2022-01-20'),
+    },
+    y: 2,
+    legend: 'Finance',
+    color: '#f7630cff',
+  },
+  {
+    x: {
+      start: new Date('2022-02-01'),
+      end: new Date('2022-02-08'),
+    },
+    y: 3,
+    legend: 'IT',
+    color: '#57811bff',
+  },
+  {
+    x: {
+      start: new Date('2022-02-10'),
+      end: new Date('2022-02-20'),
+    },
+    y: 4,
+    legend: 'Operations',
+    color: '#9373c0ff',
+  },
+  {
+    x: {
+      start: new Date('2022-03-01'),
+      end: new Date('2022-03-10'),
+    },
+    y: 5,
+    legend: 'Customer Support',
+    color: '#ca5010ff',
+  },
+  {
+    x: {
+      start: new Date('2022-03-05'),
+      end: new Date('2022-03-15'),
+    },
+    y: 6,
+    legend: 'Legal',
+    color: '#3a96ddff',
   },
 ];

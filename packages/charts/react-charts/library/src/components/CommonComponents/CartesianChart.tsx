@@ -59,7 +59,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   const [startFromX, setStartFromX] = React.useState<number>(0);
   const [prevProps, setPrevProps] = React.useState<ModifiedCartesianChartProps | null>(null);
 
-  const chartTypesToCheck = [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart];
+  const chartTypesToCheck = [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart, ChartTypes.GanttChart];
   /**
    * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
    * So that, in RTL, left margins becomes right margins and viceversa.
@@ -291,6 +291,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           timeFormatLocale,
           customDateTimeFormatter,
           props.useUTC,
+          props.chartType,
         ));
         break;
       case XAxisTypes.StringAxis:
