@@ -17,15 +17,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "generate-api": "just-scripts generate-api",
-    "start": "yarn storybook",
-    "storybook": "yarn --cwd ../stories storybook",
-    "test": "jest --passWithNoTests",
-    "type-check": "just-scripts type-check"
-  },
   "syncpack": {
     "dependencyTypes": []
   },
@@ -33,8 +24,7 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
     "@fluentui/chart-utilities": "^1.1.25",

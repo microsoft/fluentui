@@ -145,7 +145,8 @@
         "packages/eslint-plugin/**",
         "packages/tokens/**",
         "packages/react-conformance/**",
-        "packages/react-components/**/*"
+        "packages/react-components/**/*",
+        "packages/charts/react-charts/*"
       ]
     }
   ],

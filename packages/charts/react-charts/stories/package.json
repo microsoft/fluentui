@@ -2,14 +2,6 @@
   "name": "@fluentui/react-charts-stories",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "start": "yarn storybook",
-    "storybook": "storybook dev",
-    "type-check": "just-scripts type-check",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint src/",
-    "format": "just-scripts prettier",
-    "test-ssr": "test-ssr \"./src/**/*.stories.ssr.tsx\""
-  },
   "devDependencies": {
     "d3-format": "^3.0.0",
     "d3-time-format": "^3.0.0",
