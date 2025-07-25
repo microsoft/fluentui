@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DataVizPalette, GanttChart, GanttChartDataPoint } from '@fluentui/react-charts';
-import { Switch, Slider } from '@fluentui/react-components';
+import { Switch } from '@fluentui/react-components';
 
 const data: GanttChartDataPoint[] = [
   {
@@ -67,24 +67,26 @@ export const GanttChartBasic = () => {
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20 }}>
         <div>
           <label htmlFor="width-slider">Width:</label>
-          <Slider
-            id="width-slider"
+          <input
+            type="range"
+            value={width}
             min={0}
             max={1000}
-            value={width}
-            onChange={(_, v) => setWidth(Number(v))}
+            id="width-slider"
+            onChange={e => setWidth(parseInt(e.target.value, 10))}
             aria-valuetext={`Width: ${width}`}
           />
           <span>{width}</span>
         </div>
         <div>
           <label htmlFor="height-slider">Height:</label>
-          <Slider
-            id="height-slider"
+          <input
+            type="range"
+            value={height}
             min={0}
             max={1000}
-            value={height}
-            onChange={(_, v) => setHeight(Number(v))}
+            id="height-slider"
+            onChange={e => setHeight(parseInt(e.target.value, 10))}
             aria-valuetext={`Height: ${height}`}
           />
           <span>{height}</span>
@@ -94,14 +96,14 @@ export const GanttChartBasic = () => {
         <div>
           <Switch
             checked={enableGradient}
-            onChange={(_, data) => setEnableGradient(data.checked)}
+            onChange={(_, val) => setEnableGradient(val.checked)}
             label="Enable Gradient"
           />
         </div>
         <div>
           <Switch
             checked={roundedCorners}
-            onChange={(_, data) => setRoundedCorners(data.checked)}
+            onChange={(_, val) => setRoundedCorners(val.checked)}
             label="Rounded Corners"
           />
         </div>

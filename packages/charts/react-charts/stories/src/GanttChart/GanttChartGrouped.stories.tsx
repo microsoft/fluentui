@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 import { DataVizPalette, GanttChart, GanttChartDataPoint } from '@fluentui/react-charts';
 import { Switch, makeStyles, shorthands } from '@fluentui/react-components';
 
@@ -113,11 +112,11 @@ const useStyles = makeStyles({
 
 export const GanttChartGrouped = () => {
   const styles = useStyles();
-  const [width, setWidth] = useState(600);
-  const [height, setHeight] = useState(350);
-  const [enableGradient, setEnableGradient] = useState(false);
-  const [roundedCorners, setRoundedCorners] = useState(false);
-  const [legendMultiSelect, setLegendMultiSelect] = useState(false);
+  const [width, setWidth] = React.useState(600);
+  const [height, setHeight] = React.useState(350);
+  const [enableGradient, setEnableGradient] = React.useState(false);
+  const [roundedCorners, setRoundedCorners] = React.useState(false);
+  const [legendMultiSelect, setLegendMultiSelect] = React.useState(false);
 
   return (
     <div className={styles.container}>
@@ -153,17 +152,17 @@ export const GanttChartGrouped = () => {
         <Switch
           label="Enable Gradient"
           checked={enableGradient}
-          onChange={(_, data) => setEnableGradient(!!data.checked)}
+          onChange={(_, val) => setEnableGradient(!!val.checked)}
         />
         <Switch
           label="Rounded Corners"
           checked={roundedCorners}
-          onChange={(_, data) => setRoundedCorners(!!data.checked)}
+          onChange={(_, val) => setRoundedCorners(!!val.checked)}
         />
         <Switch
           label="Select Multiple Legends"
           checked={legendMultiSelect}
-          onChange={(_, data) => setLegendMultiSelect(!!data.checked)}
+          onChange={(_, val) => setLegendMultiSelect(!!val.checked)}
         />
       </div>
       <div className={styles.chartWrapper} style={{ width, height }}>
