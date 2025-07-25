@@ -10,7 +10,7 @@ import {
 
 export const ExpandIcon = () => {
   const [openItem, setOpenItems] = React.useState(0);
-  const handleToggle: AccordionToggleEventHandler = React.useCallback((_, data) => {
+  const handleToggle = React.useCallback<AccordionToggleEventHandler>((_, data) => {
     setOpenItems(data.value as number);
   }, []);
   return (
