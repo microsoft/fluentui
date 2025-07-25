@@ -8,8 +8,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Virtualizer ScrollView
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
-
 export const VirtualizerScrollViewDynamic: React.FC<VirtualizerScrollViewDynamicProps> = (
   props: VirtualizerScrollViewDynamicProps,
   context: React.Context<VirtualizerContextProps>,

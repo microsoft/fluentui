@@ -69,7 +69,17 @@ function createCollapseAtoms({
   };
 }
 
-/** Define a presence motion for collapse/expand */
+/**
+ * Define a presence motion for collapse/expand
+ *
+ * @param element - The element to apply the collapse motion to
+ * @param duration - Time (ms) for the enter transition (expand). Defaults to the `durationNormal` value (200 ms)
+ * @param easing - Easing curve for the enter transition. Defaults to the `curveEasyEaseMax` value
+ * @param exitDuration - Time (ms) for the exit transition (collapse). Defaults to the `duration` param for symmetry
+ * @param exitEasing - Easing curve for the exit transition. Defaults to the `easing` param for symmetry
+ * @param animateOpacity - Whether to animate the opacity. Defaults to `true`
+ * @param orientation - The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height
+ */
 const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   element,
   duration = motionTokens.durationNormal,
@@ -94,7 +104,21 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   });
 };
 
-/** Define a presence motion for collapse/expand that can stagger the size and opacity motions by a given delay */
+/**
+ * Define a presence motion for collapse/expand that can stagger the size and opacity motions by a given delay
+ *
+ * @param element - The element to apply the collapse motion to
+ * @param sizeDuration - Time (ms) for the size expand. Defaults to the `durationNormal` value (200 ms)
+ * @param opacityDuration - Time (ms) for the fade-in. Defaults to the `durationSlower` value (400 ms)
+ * @param easing - Easing curve for the enter transition. Defaults to the `curveEasyEase` value
+ * @param delay - Time (ms) between the size expand start and the fade-in start. Defaults to the `durationNormal` value (200 ms)
+ * @param exitSizeDuration - Time (ms) for the size collapse. Defaults to the `sizeDuration` param for temporal symmetry
+ * @param exitOpacityDuration - Time (ms) for the fade-out. Defaults to the `opacityDuration` param for temporal symmetry
+ * @param exitEasing - Easing curve for the exit transition. Defaults to the `easing` param for symmetry
+ * @param exitDelay - Time (ms) between the fade-out start and the size collapse start. Defaults to the `durationSlower` value (400 ms)
+ * @param animateOpacity - Whether to animate the opacity. Defaults to `true`
+ * @param orientation - The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height
+ */
 const collapseDelayedPresenceFn: PresenceMotionFn<CollapseDelayedParams> = ({
   element,
   sizeDuration = motionTokens.durationNormal,

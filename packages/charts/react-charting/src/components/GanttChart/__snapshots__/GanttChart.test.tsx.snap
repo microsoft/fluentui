@@ -17,10 +17,10 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -29,11 +29,11 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Gantt chart with 8 bars. The X axis displays time. The Y axis displays categories. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         focusable="false"
         height="-8"
         role="region"
@@ -69,7 +69,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -233,7 +233,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -256,19 +256,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-1"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-1
-              </tspan>
+              Job-3
             </text>
           </g>
           <g
@@ -285,19 +273,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-2"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-2
-              </tspan>
+              Job-4
             </text>
           </g>
           <g
@@ -314,19 +290,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-4"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-4
-              </tspan>
+              Job-2
             </text>
           </g>
           <g
@@ -343,126 +307,114 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-3"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-3
-              </tspan>
+              Job-1
             </text>
           </g>
         </g>
         <g>
           <rect
-            aria-label="Job-1. 01/01/2017 - 02/02/2017."
+            aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             data-is-focusable="true"
             fill="#107c10"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
             x="40"
-            y="-49.83333333333334"
+            y="10.444444444444443"
           />
           <rect
-            aria-label="Job-2. 01/17/2017 - 02/17/2017."
-            data-is-focusable="true"
-            fill="#107c10"
-            height="24"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="92.48618784530387"
-            x="87.73480662983425"
-            y="-32.277777777777786"
-          />
-          <rect
-            aria-label="Job-4. 01/14/2017 - 03/14/2017."
-            data-is-focusable="true"
-            fill="#107c10"
-            height="24"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="176.0220994475138"
-            x="78.78453038674033"
-            y="-14.722222222222225"
-          />
-          <rect
-            aria-label="Job-1. 02/15/2017 - 03/15/2017."
+            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
             data-is-focusable="true"
             fill="#f7630c"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="83.53591160220995"
             x="174.25414364640883"
-            y="-49.83333333333334"
+            y="10.444444444444443"
           />
           <rect
-            aria-label="Job-2. 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
-            fill="#c50f1f"
-            height="24"
+            fill="#107c10"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-32.277777777777786"
+            y="-7.111111111111114"
           />
           <rect
-            aria-label="Job-3. 03/10/2017 - 03/20/2017."
+            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="92.48618784530387"
+            x="87.73480662983425"
+            y="-7.111111111111114"
+          />
+          <rect
+            aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+            data-is-focusable="true"
+            fill="#107c10"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="176.0220994475138"
+            x="78.78453038674033"
+            y="-24.66666666666667"
+          />
+          <rect
+            aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+            data-is-focusable="true"
+            fill="#c50f1f"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="29.834254143646376"
             x="242.8729281767956"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
           <rect
-            aria-label="Job-3. 04/01/2017 - 04/20/2017."
+            aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="56.685082872928206"
             x="308.50828729281767"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
           <rect
-            aria-label="Job-3. 05/18/2017 - 06/18/2017."
+            aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="92.48618784530385"
             x="448.7292817679558"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
         </g>
       </svg>
@@ -504,7 +456,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -920,10 +872,10 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -932,11 +884,11 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Gantt chart with 8 bars. The X axis displays time. The Y axis displays categories. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         focusable="false"
         height="-8"
         role="region"
@@ -972,7 +924,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -1064,7 +1016,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(59, 0)"
         >
@@ -1087,19 +1039,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Site Preparation"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Site Preparation
-              </tspan>
+              Final Inspections
             </text>
           </g>
           <g
@@ -1116,19 +1056,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Foundation Work"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Foundation Work
-              </tspan>
+              Interior Finishing
             </text>
           </g>
           <g
@@ -1145,19 +1073,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Framing"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Framing
-              </tspan>
+              Exterior Finishing
             </text>
           </g>
           <g
@@ -1174,19 +1090,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Roof Installation"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Roof Installation
-              </tspan>
+              Plumbing/Electrical
             </text>
           </g>
           <g
@@ -1203,19 +1107,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Plumbing/Electrical"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Plumbing/Electrical
-              </tspan>
+              Roof Installation
             </text>
           </g>
           <g
@@ -1232,19 +1124,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Exterior Finishing"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Exterior Finishing
-              </tspan>
+              Framing
             </text>
           </g>
           <g
@@ -1261,19 +1141,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Interior Finishing"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Interior Finishing
-              </tspan>
+              Foundation Work
             </text>
           </g>
           <g
@@ -1290,126 +1158,114 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Final Inspections"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Final Inspections
-              </tspan>
+              Site Preparation
             </text>
           </g>
         </g>
         <g>
           <rect
-            aria-label="Site Preparation. May 01 - May 07."
+            aria-label="Site Preparation. No, May 01 - May 07."
             data-is-focusable="true"
             fill="#637cefff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="34.35164835164835"
             x="76.17582417582418"
-            y="-56.02941176470589"
+            y="18.705882352941174"
           />
           <rect
-            aria-label="Foundation Work. May 08 - May 21."
+            aria-label="Foundation Work. No, May 08 - May 21."
             data-is-focusable="true"
             fill="#637cefff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="74.42857142857144"
             x="116.25274725274724"
-            y="-46.735294117647065"
+            y="9.411764705882348"
           />
           <rect
-            aria-label="Framing. May 22 - Jun 02."
+            aria-label="Framing. No, May 22 - Jun 02."
             data-is-focusable="true"
             fill="#637cefff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="62.978021978022014"
             x="196.4065934065934"
-            y="-37.44117647058824"
+            y="0.117647058823529"
           />
           <rect
-            aria-label="Roof Installation. Jun 03 - Jun 09."
+            aria-label="Roof Installation. No, Jun 03 - Jun 09."
             data-is-focusable="true"
             fill="#637cefff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="34.35164835164835"
             x="265.1098901098901"
-            y="-28.147058823529417"
+            y="-9.176470588235297"
           />
           <rect
-            aria-label="Plumbing/Electrical. Jun 10 - Jun 23."
+            aria-label="Plumbing/Electrical. No, Jun 10 - Jun 23."
             data-is-focusable="true"
             fill="#637cefff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="74.42857142857144"
             x="305.1868131868132"
-            y="-18.85294117647059"
+            y="-18.470588235294123"
           />
           <rect
-            aria-label="Exterior Finishing. Jul 08 - Jul 17."
+            aria-label="Exterior Finishing. No, Jul 08 - Jul 17."
             data-is-focusable="true"
             fill="#637cefff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="51.527472527472526"
             x="465.4945054945055"
-            y="-9.558823529411764"
+            y="-27.764705882352946"
           />
           <rect
-            aria-label="Interior Finishing. Jun 24 - Jul 07."
+            aria-label="Interior Finishing. Yes (Phase 1), Jun 24 - Jul 07."
             data-is-focusable="true"
             fill="#f7630cff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="74.4285714285715"
             x="385.34065934065933"
-            y="-0.26470588235294557"
+            y="-37.05882352941177"
           />
           <rect
-            aria-label="Final Inspections. Jul 18 - Jul 24."
+            aria-label="Final Inspections. Yes (Phase 2), Jul 18 - Jul 24."
             data-is-focusable="true"
             fill="#57811bff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="34.351648351648464"
             x="522.7472527472527"
-            y="9.02941176470588"
+            y="-46.352941176470594"
           />
         </g>
       </svg>
@@ -1451,7 +1307,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1794,10 +1650,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -1806,11 +1662,11 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Gantt chart with 8 bars. The X axis displays time. The Y axis displays categories. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         focusable="false"
         height="-8"
         role="region"
@@ -1846,7 +1702,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -2010,7 +1866,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -2033,19 +1889,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-1"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-1
-              </tspan>
+              Job-3
             </text>
           </g>
           <g
@@ -2062,19 +1906,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-2"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-2
-              </tspan>
+              Job-4
             </text>
           </g>
           <g
@@ -2091,19 +1923,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-4"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-4
-              </tspan>
+              Job-2
             </text>
           </g>
           <g
@@ -2120,126 +1940,114 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-3"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-3
-              </tspan>
+              Job-1
             </text>
           </g>
         </g>
         <g>
           <rect
-            aria-label="Job-1. 01/01/2017 - 02/02/2017."
+            aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             data-is-focusable="true"
             fill="#107c10"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
             x="40"
-            y="-49.83333333333334"
+            y="10.444444444444443"
           />
           <rect
-            aria-label="Job-2. 01/17/2017 - 02/17/2017."
-            data-is-focusable="true"
-            fill="#107c10"
-            height="24"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="92.48618784530387"
-            x="87.73480662983425"
-            y="-32.277777777777786"
-          />
-          <rect
-            aria-label="Job-4. 01/14/2017 - 03/14/2017."
-            data-is-focusable="true"
-            fill="#107c10"
-            height="24"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="176.0220994475138"
-            x="78.78453038674033"
-            y="-14.722222222222225"
-          />
-          <rect
-            aria-label="Job-1. 02/15/2017 - 03/15/2017."
+            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
             data-is-focusable="true"
             fill="#f7630c"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="83.53591160220995"
             x="174.25414364640883"
-            y="-49.83333333333334"
+            y="10.444444444444443"
           />
           <rect
-            aria-label="Job-2. 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
-            fill="#c50f1f"
-            height="24"
+            fill="#107c10"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-32.277777777777786"
+            y="-7.111111111111114"
           />
           <rect
-            aria-label="Job-3. 03/10/2017 - 03/20/2017."
+            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="92.48618784530387"
+            x="87.73480662983425"
+            y="-7.111111111111114"
+          />
+          <rect
+            aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+            data-is-focusable="true"
+            fill="#107c10"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="176.0220994475138"
+            x="78.78453038674033"
+            y="-24.66666666666667"
+          />
+          <rect
+            aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+            data-is-focusable="true"
+            fill="#c50f1f"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="29.834254143646376"
             x="242.8729281767956"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
           <rect
-            aria-label="Job-3. 04/01/2017 - 04/20/2017."
+            aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="56.685082872928206"
             x="308.50828729281767"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
           <rect
-            aria-label="Job-3. 05/18/2017 - 06/18/2017."
+            aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="92.48618784530385"
             x="448.7292817679558"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
         </g>
       </svg>
@@ -2281,7 +2089,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2637,10 +2445,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             overflow: hidden;
             width: 100%;
           }
-      id="chart_6"
+      id="chart_8"
     >
       <div
-        id="defaultTabbableElement_7"
+        id="defaultTabbableElement_9"
       />
       <div
         class=
@@ -2649,11 +2457,11 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               outline: none;
             }
 
-        data-focuszone-id="FocusZone9"
+        data-focuszone-id="FocusZone11"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
-          aria-label="Gantt chart with 8 bars. The X axis displays time. The Y axis displays categories. "
+          aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
           focusable="false"
           height="-8"
           role="region"
@@ -2689,7 +2497,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="xAxisGElementchart_6"
+            id="xAxisGElementchart_8"
             text-anchor="middle"
             transform="translate(0, -43)"
           >
@@ -2853,7 +2661,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementchart_6"
+            id="yAxisGElementchart_8"
             text-anchor="end"
             transform="translate(40, 0)"
           >
@@ -2876,19 +2684,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 fill="currentColor"
                 x="-16"
               >
-                <tspan
-                  data-="Job-1"
-                  dy="0.32em"
-                  id="BaseSpan"
-                  x="-16"
-                />
-                <tspan
-                  dx="0em"
-                  id="LessLength"
-                  x="-16"
-                >
-                  Job-1
-                </tspan>
+                Job-3
               </text>
             </g>
             <g
@@ -2905,19 +2701,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 fill="currentColor"
                 x="-16"
               >
-                <tspan
-                  data-="Job-2"
-                  dy="0.32em"
-                  id="BaseSpan"
-                  x="-16"
-                />
-                <tspan
-                  dx="0em"
-                  id="LessLength"
-                  x="-16"
-                >
-                  Job-2
-                </tspan>
+                Job-4
               </text>
             </g>
             <g
@@ -2934,19 +2718,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 fill="currentColor"
                 x="-16"
               >
-                <tspan
-                  data-="Job-4"
-                  dy="0.32em"
-                  id="BaseSpan"
-                  x="-16"
-                />
-                <tspan
-                  dx="0em"
-                  id="LessLength"
-                  x="-16"
-                >
-                  Job-4
-                </tspan>
+                Job-2
               </text>
             </g>
             <g
@@ -2963,126 +2735,114 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 fill="currentColor"
                 x="-16"
               >
-                <tspan
-                  data-="Job-3"
-                  dy="0.32em"
-                  id="BaseSpan"
-                  x="-16"
-                />
-                <tspan
-                  dx="0em"
-                  id="LessLength"
-                  x="-16"
-                >
-                  Job-3
-                </tspan>
+                Job-1
               </text>
             </g>
           </g>
           <g>
             <rect
-              aria-label="Job-1. 01/01/2017 - 02/02/2017."
+              aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
               data-is-focusable="true"
               fill="#54b054"
-              height="24"
+              height="8.777777777777779"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="95.4696132596685"
               x="40"
-              y="-49.83333333333334"
+              y="10.444444444444443"
             />
             <rect
-              aria-label="Job-2. 01/17/2017 - 02/17/2017."
-              data-is-focusable="true"
-              fill="#54b054"
-              height="24"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="92.48618784530387"
-              x="87.73480662983425"
-              y="-32.277777777777786"
-            />
-            <rect
-              aria-label="Job-4. 01/14/2017 - 03/14/2017."
-              data-is-focusable="true"
-              fill="#54b054"
-              height="24"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="176.0220994475138"
-              x="78.78453038674033"
-              y="-14.722222222222225"
-            />
-            <rect
-              aria-label="Job-1. 02/15/2017 - 03/15/2017."
+              aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
               data-is-focusable="true"
               fill="#f87528"
-              height="24"
+              height="8.777777777777779"
               opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
               width="83.53591160220995"
               x="174.25414364640883"
-              y="-49.83333333333334"
+              y="10.444444444444443"
             />
             <rect
-              aria-label="Job-2. 01/17/2017 - 02/17/2017."
+              aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
               data-is-focusable="true"
-              fill="#dc626d"
-              height="24"
+              fill="#54b054"
+              height="8.777777777777779"
               opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
               width="92.48618784530387"
               x="87.73480662983425"
-              y="-32.277777777777786"
+              y="-7.111111111111114"
             />
             <rect
-              aria-label="Job-3. 03/10/2017 - 03/20/2017."
+              aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
               data-is-focusable="true"
               fill="#dc626d"
-              height="24"
+              height="8.777777777777779"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="-1"
+              width="92.48618784530387"
+              x="87.73480662983425"
+              y="-7.111111111111114"
+            />
+            <rect
+              aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+              data-is-focusable="true"
+              fill="#54b054"
+              height="8.777777777777779"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="-1"
+              width="176.0220994475138"
+              x="78.78453038674033"
+              y="-24.66666666666667"
+            />
+            <rect
+              aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+              data-is-focusable="true"
+              fill="#dc626d"
+              height="8.777777777777779"
               opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
               width="29.834254143646376"
               x="242.8729281767956"
-              y="2.833333333333332"
+              y="-42.22222222222223"
             />
             <rect
-              aria-label="Job-3. 04/01/2017 - 04/20/2017."
+              aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
               data-is-focusable="true"
               fill="#dc626d"
-              height="24"
+              height="8.777777777777779"
               opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
               width="56.685082872928206"
               x="308.50828729281767"
-              y="2.833333333333332"
+              y="-42.22222222222223"
             />
             <rect
-              aria-label="Job-3. 05/18/2017 - 06/18/2017."
+              aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
               data-is-focusable="true"
               fill="#dc626d"
-              height="24"
+              height="8.777777777777779"
               opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
               width="92.48618784530385"
               x="448.7292817679558"
-              y="2.833333333333332"
+              y="-42.22222222222223"
             />
           </g>
         </svg>
@@ -3124,7 +2884,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone10"
+                  data-focuszone-id="FocusZone12"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -3468,10 +3228,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -3480,11 +3240,11 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Gantt chart with 8 bars. The X axis displays time. The Y axis displays categories. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         focusable="false"
         height="-8"
         role="region"
@@ -3520,7 +3280,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -3687,7 +3447,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="start"
           transform="translate(560, 0)"
         >
@@ -3710,19 +3470,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="currentColor"
               x="16"
             >
-              <tspan
-                data-="Job-1"
-                dy="0.32em"
-                id="BaseSpan"
-                x="16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="16"
-              >
-                Job-1
-              </tspan>
+              Job-3
             </text>
           </g>
           <g
@@ -3739,19 +3487,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="currentColor"
               x="16"
             >
-              <tspan
-                data-="Job-2"
-                dy="0.32em"
-                id="BaseSpan"
-                x="16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="16"
-              >
-                Job-2
-              </tspan>
+              Job-4
             </text>
           </g>
           <g
@@ -3768,19 +3504,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="currentColor"
               x="16"
             >
-              <tspan
-                data-="Job-4"
-                dy="0.32em"
-                id="BaseSpan"
-                x="16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="16"
-              >
-                Job-4
-              </tspan>
+              Job-2
             </text>
           </g>
           <g
@@ -3797,126 +3521,114 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="currentColor"
               x="16"
             >
-              <tspan
-                data-="Job-3"
-                dy="0.32em"
-                id="BaseSpan"
-                x="16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="16"
-              >
-                Job-3
-              </tspan>
+              Job-1
             </text>
           </g>
         </g>
         <g>
           <rect
-            aria-label="Job-1. 01/01/2017 - 02/02/2017."
+            aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             data-is-focusable="true"
             fill="#107c10"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
             x="464.5303867403315"
-            y="-49.83333333333334"
+            y="10.444444444444443"
           />
           <rect
-            aria-label="Job-2. 01/17/2017 - 02/17/2017."
-            data-is-focusable="true"
-            fill="#107c10"
-            height="24"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="92.4861878453039"
-            x="419.7790055248619"
-            y="-32.277777777777786"
-          />
-          <rect
-            aria-label="Job-4. 01/14/2017 - 03/14/2017."
-            data-is-focusable="true"
-            fill="#107c10"
-            height="24"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="176.02209944751382"
-            x="345.1933701657458"
-            y="-14.722222222222225"
-          />
-          <rect
-            aria-label="Job-1. 02/15/2017 - 03/15/2017."
+            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
             data-is-focusable="true"
             fill="#f7630c"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="83.53591160220992"
             x="342.2099447513812"
-            y="-49.83333333333334"
+            y="10.444444444444443"
           />
           <rect
-            aria-label="Job-2. 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
-            fill="#c50f1f"
-            height="24"
+            fill="#107c10"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="92.4861878453039"
             x="419.7790055248619"
-            y="-32.277777777777786"
+            y="-7.111111111111114"
           />
           <rect
-            aria-label="Job-3. 03/10/2017 - 03/20/2017."
+            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="92.4861878453039"
+            x="419.7790055248619"
+            y="-7.111111111111114"
+          />
+          <rect
+            aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+            data-is-focusable="true"
+            fill="#107c10"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="176.02209944751382"
+            x="345.1933701657458"
+            y="-24.66666666666667"
+          />
+          <rect
+            aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+            data-is-focusable="true"
+            fill="#c50f1f"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="29.83425414364649"
             x="327.29281767955797"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
           <rect
-            aria-label="Job-3. 04/01/2017 - 04/20/2017."
+            aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="56.685082872928206"
             x="234.80662983425412"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
           <rect
-            aria-label="Job-3. 05/18/2017 - 06/18/2017."
+            aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="92.48618784530385"
             x="58.78453038674035"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
         </g>
       </svg>
@@ -3958,7 +3670,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -4301,10 +4013,10 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_8"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_9"
     />
     <div
       class=
@@ -4313,11 +4025,11 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Gantt chart with 6 bars. The X axis displays time. The Y axis displays values. "
+        aria-label="Gantt chart with 6 data points. The X axis displays time. The Y axis displays values. "
         focusable="false"
         height="-8"
         role="region"
@@ -4353,7 +4065,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_8"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -4499,7 +4211,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_8"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -4583,59 +4295,20 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
         </g>
         <g>
           <rect
-            aria-label="1. 01/01/2021 - 01/10/2022."
+            aria-label="6. Legal, 03/05/2022 - 03/15/2022."
             data-is-focusable="true"
-            fill="#637cefff"
+            fill="#3a96ddff"
             height="1"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
-            width="443.86813186813185"
-            x="40"
-            y="-38.66666666666667"
-          />
-          <rect
-            aria-label="2. 01/15/2022 - 01/20/2022."
-            data-is-focusable="true"
-            fill="#f7630cff"
-            height="1"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="5.934065934065984"
-            x="489.8021978021978"
-            y="-25.333333333333336"
-          />
-          <rect
-            aria-label="3. 02/01/2022 - 02/08/2022."
-            data-is-focusable="true"
-            fill="#57811bff"
-            height="1"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="8.307692307692207"
-            x="509.978021978022"
-            y="-12"
-          />
-          <rect
-            aria-label="4. 02/10/2022 - 02/20/2022."
-            data-is-focusable="true"
-            fill="#9373c0ff"
-            height="1"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
             width="11.868131868131854"
-            x="520.6593406593406"
-            y="1.3333333333333321"
+            x="547.9560439560439"
+            y="28"
           />
           <rect
-            aria-label="5. 03/01/2022 - 03/10/2022."
+            aria-label="5. Customer Support, 03/01/2022 - 03/10/2022."
             data-is-focusable="true"
             fill="#ca5010ff"
             height="1"
@@ -4648,17 +4321,56 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             y="14.666666666666668"
           />
           <rect
-            aria-label="6. 03/05/2022 - 03/15/2022."
+            aria-label="4. Operations, 02/10/2022 - 02/20/2022."
             data-is-focusable="true"
-            fill="#3a96ddff"
+            fill="#9373c0ff"
             height="1"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="11.868131868131854"
-            x="547.9560439560439"
-            y="28"
+            x="520.6593406593406"
+            y="1.3333333333333321"
+          />
+          <rect
+            aria-label="3. IT, 02/01/2022 - 02/08/2022."
+            data-is-focusable="true"
+            fill="#57811bff"
+            height="1"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="8.307692307692207"
+            x="509.978021978022"
+            y="-12"
+          />
+          <rect
+            aria-label="2. Finance, 01/15/2022 - 01/20/2022."
+            data-is-focusable="true"
+            fill="#f7630cff"
+            height="1"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="5.934065934065984"
+            x="489.8021978021978"
+            y="-25.333333333333336"
+          />
+          <rect
+            aria-label="1. HR, 01/01/2021 - 01/10/2022."
+            data-is-focusable="true"
+            fill="#637cefff"
+            height="1"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="443.86813186813185"
+            x="40"
+            y="-38.66666666666667"
           />
         </g>
       </svg>
@@ -4700,7 +4412,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -5343,10 +5055,10 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -5355,11 +5067,11 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Gantt chart with 8 bars. The X axis displays time. The Y axis displays categories. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         focusable="false"
         height="-8"
         role="region"
@@ -5395,7 +5107,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -5559,7 +5271,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -5582,19 +5294,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-1"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-1
-              </tspan>
+              Job-3
             </text>
           </g>
           <g
@@ -5611,19 +5311,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-2"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-2
-              </tspan>
+              Job-4
             </text>
           </g>
           <g
@@ -5640,19 +5328,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-4"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-4
-              </tspan>
+              Job-2
             </text>
           </g>
           <g
@@ -5669,26 +5345,14 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-3"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-3
-              </tspan>
+              Job-1
             </text>
           </g>
         </g>
         <g>
           <defs>
             <lineargradient
-              id="Gantt_gradient2_0"
+              id="legend2_gradient"
             >
               <stop
                 offset="0"
@@ -5699,77 +5363,8 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
                 stop-color="#107C10"
               />
             </lineargradient>
-          </defs>
-          <rect
-            aria-label="Job-1. 01/01/2017 - 02/02/2017."
-            data-is-focusable="true"
-            fill="url(#Gantt_gradient2_0)"
-            height="24"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="0"
-            width="95.4696132596685"
-            x="40"
-            y="-49.83333333333334"
-          />
-          <defs>
             <lineargradient
-              id="Gantt_gradient2_1"
-            >
-              <stop
-                offset="0"
-                stop-color="#0C5E0C"
-              />
-              <stop
-                offset="100%"
-                stop-color="#107C10"
-              />
-            </lineargradient>
-          </defs>
-          <rect
-            aria-label="Job-2. 01/17/2017 - 02/17/2017."
-            data-is-focusable="true"
-            fill="url(#Gantt_gradient2_1)"
-            height="24"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="92.48618784530387"
-            x="87.73480662983425"
-            y="-32.277777777777786"
-          />
-          <defs>
-            <lineargradient
-              id="Gantt_gradient2_2"
-            >
-              <stop
-                offset="0"
-                stop-color="#0C5E0C"
-              />
-              <stop
-                offset="100%"
-                stop-color="#107C10"
-              />
-            </lineargradient>
-          </defs>
-          <rect
-            aria-label="Job-4. 01/14/2017 - 03/14/2017."
-            data-is-focusable="true"
-            fill="url(#Gantt_gradient2_2)"
-            height="24"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="176.0220994475138"
-            x="78.78453038674033"
-            y="-14.722222222222225"
-          />
-          <defs>
-            <lineargradient
-              id="Gantt_gradient2_3"
+              id="legend3_gradient"
             >
               <stop
                 offset="0"
@@ -5780,127 +5375,122 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
                 stop-color="#F7630C"
               />
             </lineargradient>
+            <lineargradient
+              id="legend4_gradient"
+            >
+              <stop
+                offset="0"
+                stop-color="#B10E1C"
+              />
+              <stop
+                offset="100%"
+                stop-color="#CC2635"
+              />
+            </lineargradient>
           </defs>
           <rect
-            aria-label="Job-1. 02/15/2017 - 03/15/2017."
+            aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             data-is-focusable="true"
-            fill="url(#Gantt_gradient2_3)"
-            height="24"
+            fill="url(#legend2_gradient)"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="0"
+            width="95.4696132596685"
+            x="40"
+            y="10.444444444444443"
+          />
+          <rect
+            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
+            data-is-focusable="true"
+            fill="url(#legend3_gradient)"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="83.53591160220995"
             x="174.25414364640883"
-            y="-49.83333333333334"
+            y="10.444444444444443"
           />
-          <defs>
-            <lineargradient
-              id="Gantt_gradient2_4"
-            >
-              <stop
-                offset="0"
-                stop-color="#B10E1C"
-              />
-              <stop
-                offset="100%"
-                stop-color="#CC2635"
-              />
-            </lineargradient>
-          </defs>
           <rect
-            aria-label="Job-2. 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
-            fill="url(#Gantt_gradient2_4)"
-            height="24"
+            fill="url(#legend2_gradient)"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-32.277777777777786"
+            y="-7.111111111111114"
           />
-          <defs>
-            <lineargradient
-              id="Gantt_gradient2_5"
-            >
-              <stop
-                offset="0"
-                stop-color="#B10E1C"
-              />
-              <stop
-                offset="100%"
-                stop-color="#CC2635"
-              />
-            </lineargradient>
-          </defs>
           <rect
-            aria-label="Job-3. 03/10/2017 - 03/20/2017."
+            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
-            fill="url(#Gantt_gradient2_5)"
-            height="24"
+            fill="url(#legend4_gradient)"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="92.48618784530387"
+            x="87.73480662983425"
+            y="-7.111111111111114"
+          />
+          <rect
+            aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+            data-is-focusable="true"
+            fill="url(#legend2_gradient)"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="176.0220994475138"
+            x="78.78453038674033"
+            y="-24.66666666666667"
+          />
+          <rect
+            aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+            data-is-focusable="true"
+            fill="url(#legend4_gradient)"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="29.834254143646376"
             x="242.8729281767956"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
-          <defs>
-            <lineargradient
-              id="Gantt_gradient2_6"
-            >
-              <stop
-                offset="0"
-                stop-color="#B10E1C"
-              />
-              <stop
-                offset="100%"
-                stop-color="#CC2635"
-              />
-            </lineargradient>
-          </defs>
           <rect
-            aria-label="Job-3. 04/01/2017 - 04/20/2017."
+            aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
             data-is-focusable="true"
-            fill="url(#Gantt_gradient2_6)"
-            height="24"
+            fill="url(#legend4_gradient)"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="56.685082872928206"
             x="308.50828729281767"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
-          <defs>
-            <lineargradient
-              id="Gantt_gradient2_7"
-            >
-              <stop
-                offset="0"
-                stop-color="#B10E1C"
-              />
-              <stop
-                offset="100%"
-                stop-color="#CC2635"
-              />
-            </lineargradient>
-          </defs>
           <rect
-            aria-label="Job-3. 05/18/2017 - 06/18/2017."
+            aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
             data-is-focusable="true"
-            fill="url(#Gantt_gradient2_7)"
-            height="24"
+            fill="url(#legend4_gradient)"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="92.48618784530385"
             x="448.7292817679558"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
         </g>
       </svg>
@@ -5942,7 +5532,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -6285,10 +5875,10 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -6297,11 +5887,11 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Gantt chart with 8 bars. The X axis displays time. The Y axis displays categories. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         focusable="false"
         height="-8"
         role="region"
@@ -6337,7 +5927,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -6501,7 +6091,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -6524,19 +6114,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-1"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-1
-              </tspan>
+              Job-3
             </text>
           </g>
           <g
@@ -6553,19 +6131,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-2"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-2
-              </tspan>
+              Job-4
             </text>
           </g>
           <g
@@ -6582,19 +6148,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-4"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-4
-              </tspan>
+              Job-2
             </text>
           </g>
           <g
@@ -6611,126 +6165,114 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-3"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-3
-              </tspan>
+              Job-1
             </text>
           </g>
         </g>
         <g>
           <rect
-            aria-label="Job-1. 01/01/2017 - 02/02/2017."
+            aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             data-is-focusable="true"
             fill="#107c10"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="3"
             tabindex="0"
             width="95.4696132596685"
             x="40"
-            y="-49.83333333333334"
+            y="10.444444444444443"
           />
           <rect
-            aria-label="Job-2. 01/17/2017 - 02/17/2017."
-            data-is-focusable="true"
-            fill="#107c10"
-            height="24"
-            opacity="1"
-            role="img"
-            rx="3"
-            tabindex="-1"
-            width="92.48618784530387"
-            x="87.73480662983425"
-            y="-32.277777777777786"
-          />
-          <rect
-            aria-label="Job-4. 01/14/2017 - 03/14/2017."
-            data-is-focusable="true"
-            fill="#107c10"
-            height="24"
-            opacity="1"
-            role="img"
-            rx="3"
-            tabindex="-1"
-            width="176.0220994475138"
-            x="78.78453038674033"
-            y="-14.722222222222225"
-          />
-          <rect
-            aria-label="Job-1. 02/15/2017 - 03/15/2017."
+            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
             data-is-focusable="true"
             fill="#f7630c"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="3"
             tabindex="-1"
             width="83.53591160220995"
             x="174.25414364640883"
-            y="-49.83333333333334"
+            y="10.444444444444443"
           />
           <rect
-            aria-label="Job-2. 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
-            fill="#c50f1f"
-            height="24"
+            fill="#107c10"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="3"
             tabindex="-1"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-32.277777777777786"
+            y="-7.111111111111114"
           />
           <rect
-            aria-label="Job-3. 03/10/2017 - 03/20/2017."
+            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="3"
+            tabindex="-1"
+            width="92.48618784530387"
+            x="87.73480662983425"
+            y="-7.111111111111114"
+          />
+          <rect
+            aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+            data-is-focusable="true"
+            fill="#107c10"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="3"
+            tabindex="-1"
+            width="176.0220994475138"
+            x="78.78453038674033"
+            y="-24.66666666666667"
+          />
+          <rect
+            aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+            data-is-focusable="true"
+            fill="#c50f1f"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="3"
             tabindex="-1"
             width="29.834254143646376"
             x="242.8729281767956"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
           <rect
-            aria-label="Job-3. 04/01/2017 - 04/20/2017."
+            aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="3"
             tabindex="-1"
             width="56.685082872928206"
             x="308.50828729281767"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
           <rect
-            aria-label="Job-3. 05/18/2017 - 06/18/2017."
+            aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="3"
             tabindex="-1"
             width="92.48618784530385"
             x="448.7292817679558"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
         </g>
       </svg>
@@ -6772,7 +6314,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -7115,10 +6657,10 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -7127,11 +6669,11 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Gantt chart with 8 bars. The X axis displays time. The Y axis displays categories. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         focusable="false"
         height="-8"
         role="region"
@@ -7167,7 +6709,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -7331,7 +6873,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -7354,19 +6896,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-1"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-1
-              </tspan>
+              Job-3
             </text>
           </g>
           <g
@@ -7383,19 +6913,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-2"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-2
-              </tspan>
+              Job-4
             </text>
           </g>
           <g
@@ -7412,19 +6930,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-4"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-4
-              </tspan>
+              Job-2
             </text>
           </g>
           <g
@@ -7441,126 +6947,114 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               fill="currentColor"
               x="-16"
             >
-              <tspan
-                data-="Job-3"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                Job-3
-              </tspan>
+              Job-1
             </text>
           </g>
         </g>
         <g>
           <rect
-            aria-label="Job-1. 01/01/2017 - 02/02/2017."
+            aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             data-is-focusable="true"
             fill="#107c10"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
             x="40"
-            y="-49.83333333333334"
+            y="10.444444444444443"
           />
           <rect
-            aria-label="Job-2. 01/17/2017 - 02/17/2017."
-            data-is-focusable="true"
-            fill="#107c10"
-            height="24"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="92.48618784530387"
-            x="87.73480662983425"
-            y="-32.277777777777786"
-          />
-          <rect
-            aria-label="Job-4. 01/14/2017 - 03/14/2017."
-            data-is-focusable="true"
-            fill="#107c10"
-            height="24"
-            opacity="1"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="176.0220994475138"
-            x="78.78453038674033"
-            y="-14.722222222222225"
-          />
-          <rect
-            aria-label="Job-1. 02/15/2017 - 03/15/2017."
+            aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
             data-is-focusable="true"
             fill="#f7630c"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="83.53591160220995"
             x="174.25414364640883"
-            y="-49.83333333333334"
+            y="10.444444444444443"
           />
           <rect
-            aria-label="Job-2. 01/17/2017 - 02/17/2017."
+            aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
-            fill="#c50f1f"
-            height="24"
+            fill="#107c10"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-32.277777777777786"
+            y="-7.111111111111114"
           />
           <rect
-            aria-label="Job-3. 03/10/2017 - 03/20/2017."
+            aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="92.48618784530387"
+            x="87.73480662983425"
+            y="-7.111111111111114"
+          />
+          <rect
+            aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
+            data-is-focusable="true"
+            fill="#107c10"
+            height="8.777777777777779"
+            opacity="1"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="176.0220994475138"
+            x="78.78453038674033"
+            y="-24.66666666666667"
+          />
+          <rect
+            aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
+            data-is-focusable="true"
+            fill="#c50f1f"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="29.834254143646376"
             x="242.8729281767956"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
           <rect
-            aria-label="Job-3. 04/01/2017 - 04/20/2017."
+            aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="56.685082872928206"
             x="308.50828729281767"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
           <rect
-            aria-label="Job-3. 05/18/2017 - 06/18/2017."
+            aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
             data-is-focusable="true"
             fill="#c50f1f"
-            height="24"
+            height="8.777777777777779"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="92.48618784530385"
             x="448.7292817679558"
-            y="2.833333333333332"
+            y="-42.22222222222223"
           />
         </g>
       </svg>
@@ -7602,7 +7096,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -8105,10 +7599,10 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_5"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_6"
     />
     <div
       class=
@@ -8117,11 +7611,11 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             outline: none;
           }
 
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Gantt chart with 8 bars. The X axis displays time. The Y axis displays categories. "
+        aria-label="Gantt chart with 8 data points. The X axis displays time. The Y axis displays categories. "
         focusable="false"
         height="-8"
         role="region"
@@ -8157,7 +7651,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_5"
           text-anchor="middle"
           transform="translate(0, -43)"
         >
@@ -8249,7 +7743,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_5"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -8273,7 +7767,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x="-16"
             >
               <tspan
-                data-="Site Preparation"
+                data-="Final Inspections"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -8284,7 +7778,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
                 id="showDots"
                 x="-16"
               >
-                Site...
+                Fina...
               </tspan>
             </text>
           </g>
@@ -8292,156 +7786,6 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             class="tick"
             opacity="1"
             transform="translate(0,-34.735294117647065)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              dy="0.32em"
-              fill="currentColor"
-              x="-16"
-            >
-              <tspan
-                data-="Foundation Work"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots"
-                x="-16"
-              >
-                Foun...
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,-25.44117647058824)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              dy="0.32em"
-              fill="currentColor"
-              x="-16"
-            >
-              <tspan
-                data-="Framing"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots"
-                x="-16"
-              >
-                Fram...
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,-16.147058823529417)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              dy="0.32em"
-              fill="currentColor"
-              x="-16"
-            >
-              <tspan
-                data-="Roof Installation"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots"
-                x="-16"
-              >
-                Roof...
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,-6.8529411764705905)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              dy="0.32em"
-              fill="currentColor"
-              x="-16"
-            >
-              <tspan
-                data-="Plumbing/Electrical"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots"
-                x="-16"
-              >
-                Plum...
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,2.441176470588235)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              dy="0.32em"
-              fill="currentColor"
-              x="-16"
-            >
-              <tspan
-                data-="Exterior Finishing"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots"
-                x="-16"
-              >
-                Exte...
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,11.735294117647054)"
           >
             <line
               stroke="currentColor"
@@ -8471,6 +7815,156 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           <g
             class="tick"
             opacity="1"
+            transform="translate(0,-25.44117647058824)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              <tspan
+                data-="Exterior Finishing"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-16"
+              />
+              <tspan
+                dx="0em"
+                dy="0.32em"
+                id="showDots"
+                x="-16"
+              >
+                Exte...
+              </tspan>
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,-16.147058823529417)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              <tspan
+                data-="Plumbing/Electrical"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-16"
+              />
+              <tspan
+                dx="0em"
+                dy="0.32em"
+                id="showDots"
+                x="-16"
+              >
+                Plum...
+              </tspan>
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,-6.8529411764705905)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              <tspan
+                data-="Roof Installation"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-16"
+              />
+              <tspan
+                dx="0em"
+                dy="0.32em"
+                id="showDots"
+                x="-16"
+              >
+                Roof...
+              </tspan>
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,2.441176470588235)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              <tspan
+                data-="Framing"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-16"
+              />
+              <tspan
+                dx="0em"
+                dy="0.32em"
+                id="showDots"
+                x="-16"
+              >
+                Fram...
+              </tspan>
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,11.735294117647054)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              <tspan
+                data-="Foundation Work"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-16"
+              />
+              <tspan
+                dx="0em"
+                dy="0.32em"
+                id="showDots"
+                x="-16"
+              >
+                Foun...
+              </tspan>
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
             transform="translate(0,21.02941176470588)"
           >
             <line
@@ -8483,7 +7977,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x="-16"
             >
               <tspan
-                data-="Final Inspections"
+                data-="Site Preparation"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -8494,115 +7988,115 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
                 id="showDots"
                 x="-16"
               >
-                Fina...
+                Site...
               </tspan>
             </text>
           </g>
         </g>
         <g>
           <rect
-            aria-label="Site Preparation. May 01 - May 07."
+            aria-label="Site Preparation. No, May 01 - May 07."
             data-is-focusable="true"
             fill="#637cefff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="35.604395604395606"
             x="57.802197802197796"
-            y="-56.02941176470589"
+            y="18.705882352941174"
           />
           <rect
-            aria-label="Foundation Work. May 08 - May 21."
+            aria-label="Foundation Work. No, May 08 - May 21."
             data-is-focusable="true"
             fill="#637cefff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="77.14285714285715"
             x="99.34065934065934"
-            y="-46.735294117647065"
+            y="9.411764705882348"
           />
           <rect
-            aria-label="Framing. May 22 - Jun 02."
+            aria-label="Framing. No, May 22 - Jun 02."
             data-is-focusable="true"
             fill="#637cefff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="65.27472527472528"
             x="182.41758241758242"
-            y="-37.44117647058824"
+            y="0.117647058823529"
           />
           <rect
-            aria-label="Roof Installation. Jun 03 - Jun 09."
+            aria-label="Roof Installation. No, Jun 03 - Jun 09."
             data-is-focusable="true"
             fill="#637cefff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="35.60439560439562"
             x="253.6263736263736"
-            y="-28.147058823529417"
+            y="-9.176470588235297"
           />
           <rect
-            aria-label="Plumbing/Electrical. Jun 10 - Jun 23."
+            aria-label="Plumbing/Electrical. No, Jun 10 - Jun 23."
             data-is-focusable="true"
             fill="#637cefff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="77.14285714285717"
             x="295.16483516483515"
-            y="-18.85294117647059"
+            y="-18.470588235294123"
           />
           <rect
-            aria-label="Exterior Finishing. Jul 08 - Jul 17."
+            aria-label="Exterior Finishing. No, Jul 08 - Jul 17."
             data-is-focusable="true"
             fill="#637cefff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="53.4065934065934"
             x="461.31868131868134"
-            y="-9.558823529411764"
+            y="-27.764705882352946"
           />
           <rect
-            aria-label="Interior Finishing. Jun 24 - Jul 07."
+            aria-label="Interior Finishing. Yes (Phase 1), Jun 24 - Jul 07."
             data-is-focusable="true"
             fill="#f7630cff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="77.14285714285717"
             x="378.24175824175825"
-            y="-0.26470588235294557"
+            y="-37.05882352941177"
           />
           <rect
-            aria-label="Final Inspections. Jul 18 - Jul 24."
+            aria-label="Final Inspections. Yes (Phase 2), Jul 18 - Jul 24."
             data-is-focusable="true"
             fill="#57811bff"
-            height="24"
+            height="4.647058823529412"
             opacity="1"
             role="img"
             rx="0"
             tabindex="-1"
             width="35.60439560439568"
             x="520.6593406593406"
-            y="9.02941176470588"
+            y="-46.352941176470594"
           />
         </g>
       </svg>
@@ -8644,7 +8138,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone7"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >

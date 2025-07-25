@@ -3,6 +3,9 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 
 const { useRef, useEffect } = React;
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export const useMutationObserver = (
   target: Element | Document | undefined,
   callback: MutationCallback,

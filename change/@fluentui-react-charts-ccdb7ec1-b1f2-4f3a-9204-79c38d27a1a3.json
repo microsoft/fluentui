@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "funnel chart in v9",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

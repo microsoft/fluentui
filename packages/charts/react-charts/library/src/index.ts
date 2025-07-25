@@ -18,3 +18,4 @@ export * from './AreaChart';
 export * from './HorizontalBarChartWithAxis';
 export * from './HeatMapChart';
 export * from './SankeyChart';
+export * from './FunnelChart';

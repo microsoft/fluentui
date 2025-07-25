@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: enable griffel raw styles",
-  "packageName": "@fluentui/react-card",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

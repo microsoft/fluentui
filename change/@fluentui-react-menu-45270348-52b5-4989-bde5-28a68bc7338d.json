@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add event.isDefaultPrevented() to `onKeyDown`",
+  "packageName": "@fluentui/react-menu",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: enable griffel raw styles",
-  "packageName": "@fluentui/react-migration-v8-v9",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

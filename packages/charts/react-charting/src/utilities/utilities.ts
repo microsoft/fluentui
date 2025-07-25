@@ -2006,3 +2006,15 @@ export function isScatterPolarSeries(points: (ILineChartPoints | IScatterChartPo
     item => typeof (item as any).lineOptions?.mode === 'string' && (item as any).lineOptions.mode === 'scatterpolar',
   );
 }
+
+/**
+ * Utility function to check if an array of points contains mode as 'text' only
+ * @param points - Array of chart points
+ * @returns true if any point has lineOptions.mode as 'text'
+ */
+export function isTextMode(points: (ILineChartPoints | IScatterChartPoints)[]): boolean {
+  return points.some(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    item => typeof (item as any).lineOptions?.mode === 'string' && (item as any).lineOptions.mode === 'text',
+  );
+}

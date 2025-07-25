@@ -6,7 +6,8 @@ import { useTimeout } from '@fluentui/react-utilities';
  * Optional hook that will enable pagination on the virtualizer so that it 'autoscrolls' to an items exact position
  * Sizes are uniform/static, we round to the nearest item on long scrolls
  * On short scrolls, we will go at minimum to the next/previous item so that arrow pagination works
- * All VirtualizerStaticPaginationProps can be grabbed from Virtualizer hooks externally and passed in
+ * All VirtualizerStaticPaginationProps can be grabbed from Virtualizer hooks externally and passed in/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export const useStaticVirtualizerPagination = (
   virtualizerProps: VirtualizerStaticPaginationProps,

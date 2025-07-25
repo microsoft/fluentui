@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "deprecate: react-virtualizer moving to fluentui-contrib",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

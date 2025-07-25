@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-message-bar
 
-This log was last generated on Fri, 11 Jul 2025 15:59:22 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.0)
+
+Thu, 17 Jul 2025 13:49:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.5.4..@fluentui/react-message-bar_v9.6.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-button to v9.6.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-link to v9.6.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
 
 ## [9.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.5.4)
 

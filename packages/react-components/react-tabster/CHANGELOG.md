@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Fri, 27 Jun 2025 13:39:40 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.26.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.0)
+
+Thu, 17 Jul 2025 13:49:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.25.3..@fluentui/react-tabster_v9.26.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
 
 ## [9.25.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.25.3)
 

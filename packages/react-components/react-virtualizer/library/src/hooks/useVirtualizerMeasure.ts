@@ -5,6 +5,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 
 /**
  * React hook that measures virtualized space based on a static size to ensure optimized virtualization length.
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
   virtualizerProps: VirtualizerMeasureProps,

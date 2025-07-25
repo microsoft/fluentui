@@ -2,6 +2,9 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { VirtualizerContextProps } from '../../Utilities';
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerSlots = {
   /**
    * The intersection observed 'before' element will detect when scrolling towards the beginning.
@@ -21,6 +24,9 @@ export type VirtualizerSlots = {
   afterContainer: NonNullable<Slot<'div', 'tr'>>;
 };
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerConfigState = {
   /**
    * The current virtualized array of children to show in the DOM.
@@ -71,14 +77,21 @@ export type VirtualizerConfigState = {
   childProgressiveSizes: React.MutableRefObject<number[]>;
 };
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerState = ComponentState<VirtualizerSlots> & VirtualizerConfigState;
 
 /**
  * The main child render method of Virtualization
  * isScrolling will only be enabled when enableScrollLoad is set to true.
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export type VirtualizerChildRenderFunction = (index: number, isScrolling: boolean) => React.ReactNode;
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerDataRef = {
   progressiveSizes: React.RefObject<number[]>;
   nodeSizes: React.RefObject<number[]>;
@@ -86,6 +99,9 @@ export type VirtualizerDataRef = {
   currentIndex: React.RefObject<number>;
 };
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerConfigProps = {
   /**
    * Child render function.
@@ -206,4 +222,7 @@ export type VirtualizerConfigProps = {
   gap?: number;
 };
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;

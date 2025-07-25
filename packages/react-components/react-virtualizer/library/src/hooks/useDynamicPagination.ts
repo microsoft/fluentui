@@ -7,6 +7,7 @@ import { useTimeout } from '@fluentui/react-utilities';
  * Sizes are dynamic so we require a progressive sizing array (passed in from Dynamic virtualizer hooks)
  * On short scrolls, we will go at minimum to the next/previous item so that arrow pagination works
  * All VirtualizerDynamicPaginationProps can be grabbed from dynamic Virtualizer hooks externally and passed in
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export const useDynamicVirtualizerPagination = (
   virtualizerProps: VirtualizerDynamicPaginationProps,

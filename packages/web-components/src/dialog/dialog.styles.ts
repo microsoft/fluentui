@@ -34,7 +34,7 @@ export const styles = css`
       border: none;
       box-shadow: ${shadow64};
       color: ${colorNeutralForeground1};
-      max-height: calc(-48px + 100vh);
+      max-height: 100vh;
       padding: 0;
       width: 100%;
       max-width: 600px;
@@ -45,6 +45,12 @@ export const styles = css`
       position: fixed;
       z-index: 2;
       overflow: auto;
+    }
+
+    @supports (max-height: 1dvh) {
+      dialog {
+        max-height: 100dvh;
+      }
     }
   }
 

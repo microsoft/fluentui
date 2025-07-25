@@ -115,7 +115,9 @@ describe('Build Executor', () => {
     ]);
 
     expect(loggerVerboseSpy.mock.calls.flat()).toEqual([
+      `Applying transforms: 0`,
       `babel: transformed ${workspaceRoot}/libs/proj/lib/greeter.styles.js`,
+      `Applying transforms: 0`,
     ]);
 
     expect(rmMock.mock.calls.flat()).toEqual([
@@ -292,6 +294,9 @@ describe('Build Executor', () => {
 
   describe(`#enableGriffelRawStyles`, () => {
     it('generates raw styles files when enableGriffelRawStyles is enabled', async () => {
+      const loggerLogSpy = jest.spyOn(logger, 'log').mockImplementation(() => {
+        return;
+      });
       const optionsWithRawStyles: BuildExecutorSchema = {
         ...options,
         enableGriffelRawStyles: true,
@@ -299,6 +304,8 @@ describe('Build Executor', () => {
 
       const output = await executor(optionsWithRawStyles, context);
       expect(output.success).toBe(true);
+
+      expect(loggerLogSpy.mock.calls.flat()).toContain('💅 Griffel RAW styles output enabled');
 
       // =====================
       // assert raw styles files are generated
@@ -360,6 +367,9 @@ describe('Build Executor', () => {
     }, 60000);
 
     it('does not generate raw styles files when enableGriffelRawStyles is disabled', async () => {
+      const loggerLogSpy = jest.spyOn(logger, 'log').mockImplementation(() => {
+        return;
+      });
       const optionsWithoutRawStyles: BuildExecutorSchema = {
         ...options,
         enableGriffelRawStyles: false,
@@ -367,6 +377,8 @@ describe('Build Executor', () => {
 
       const output = await executor(optionsWithoutRawStyles, context);
       expect(output.success).toBe(true);
+
+      expect(loggerLogSpy.mock.calls.flat()).not.toContain('💅 Griffel RAW styles output enabled');
 
       // =====================
       // assert raw styles files are NOT generated
