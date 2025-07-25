@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+import { FluentProvider } from '@fluentui/react-provider';
 import { render, screen, fireEvent, act, cleanup, queryAllByAttribute } from '@testing-library/react';
-import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider, resetIds, setRTL } from '@fluentui/react';
+import { webDarkTheme } from '@fluentui/react-theme';
+import { resetIds, setRTL } from '@fluentui/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { GanttChart } from './index';
 import { ganttData, ganttDataWithLongY, ganttDataWithNumericY } from '../../utilities/test-data';
@@ -48,9 +49,9 @@ describe('GanttChart rendering and behavior tests', () => {
 
   it('should render GanttChart correctly in dark theme', () => {
     const { container } = render(
-      <ThemeProvider theme={DarkTheme}>
+      <FluentProvider theme={webDarkTheme}>
         <GanttChart data={ganttData} />
-      </ThemeProvider>,
+      </FluentProvider>,
     );
     expect(container).toMatchSnapshot();
   });
