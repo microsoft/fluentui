@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add custom JSX.* types that are compatible with various react major versions",
+  "packageName": "@fluentui/react-utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
