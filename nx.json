@@ -146,7 +146,7 @@
         "packages/tokens/**",
         "packages/react-conformance/**",
         "packages/react-components/**/*",
-        "packages/charts/react-charts/*"
+        "packages/charts/react-charts/**/*"
       ]
     }
   ],
