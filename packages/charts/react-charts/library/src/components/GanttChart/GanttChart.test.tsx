@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { render, screen, fireEvent, act, cleanup, queryAllByAttribute } from '@testing-library/react';
 import { webDarkTheme } from '@fluentui/react-theme';
-import { resetIds, setRTL } from '@fluentui/react';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { GanttChart } from './index';
 import { ganttData, ganttDataWithLongY, ganttDataWithNumericY } from '../../utilities/test-data';
@@ -31,7 +31,7 @@ function updateChartWidthAndHeight() {
 }
 
 beforeEach(() => {
-  resetIds();
+  resetIdsForTests();
   updateChartWidthAndHeight();
 });
 
@@ -57,10 +57,12 @@ describe('GanttChart rendering and behavior tests', () => {
   });
 
   it('should render GanttChart correctly when the layout direction is RTL', () => {
-    setRTL(true);
-    const { container } = render(<GanttChart data={ganttData} />);
-    expect(container).toMatchSnapshot();
-    setRTL(false);
+    let wrapper = render(
+      <div dir="rtl">
+        <GanttChart data={ganttData} />
+      </div>,
+    );
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should display full y-axis tick labels when showYAxisLables is true', () => {
