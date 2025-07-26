@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons-compat",
   "entries": [
     {
+      "date": "Thu, 17 Jul 2025 13:49:39 GMT",
+      "tag": "@fluentui/react-icons-compat_v0.2.3",
+      "version": "0.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 10:02:43 GMT",
       "tag": "@fluentui/react-icons-compat_v0.2.2",
       "version": "0.2.2",

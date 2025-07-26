@@ -17,6 +17,10 @@ import {
   getScalePadding,
   getBarWidth,
   isScalePaddingDefined,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
   getNextColor,
   areArraysEqual,
   calculateLongestLabelWidth,
@@ -253,6 +257,26 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     });
 
     return { startValue: d3Min(values)!, endValue: d3Max(values)! };
+  }
+
+  function _getDomainNRangeValues(
+    points: GroupedVerticalBarChartData[],
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
   }
 
   // The maxOfYVal prop is only required for the primary y-axis, so yMax should be calculated
@@ -649,10 +673,13 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       chartTitle={_getChartTitle()}
       points={_datasetForBars}
       chartType={ChartTypes.GroupedVerticalBarChart}
+      getDomainNRangeValues={_getDomainNRangeValues}
       getMinMaxOfYAxis={_getMinMaxOfYAxis}
+      createStringYAxis={createStringYAxis}
       calloutProps={calloutProps}
       legendBars={legends}
       xAxisType={_xAxisType}
+      createYAxis={createNumericYAxis}
       datasetForXAxisDomain={_xAxisLabels}
       tickParams={tickParams}
       tickPadding={props.tickPadding || 5}

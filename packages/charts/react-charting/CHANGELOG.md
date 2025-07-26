@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 11 Jul 2025 07:20:30 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Jul 2025 07:20:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.14)
+
+Wed, 16 Jul 2025 07:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.13..@fluentui/react-charting_v5.24.14)
+
+### Patches
+
+- fix(react-charting): Align labels and points according to given directions and rotation in schema ([PR #34828](https://github.com/microsoft/fluentui/pull/34828) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Support min max for VSBC in plotly ([PR #34846](https://github.com/microsoft/fluentui/pull/34846) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.23 ([PR #34846](https://github.com/microsoft/fluentui/pull/34846) by beachball)
+
+## [5.24.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.13)
+
+Mon, 14 Jul 2025 07:21:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.12..@fluentui/react-charting_v5.24.13)
+
+### Patches
+
+- feat: add GanttChart ([PR #34791](https://github.com/microsoft/fluentui/pull/34791) by kumarkshitij@microsoft.com)
+- fix(react-charting): Disable responsive container for funnel in Declarative Chart ([PR #34821](https://github.com/microsoft/fluentui/pull/34821) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(react-charting): Remove duplicate code to reduce size ([PR #34809](https://github.com/microsoft/fluentui/pull/34809) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.22 ([PR #34791](https://github.com/microsoft/fluentui/pull/34791) by beachball)
 
 ## [5.24.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.12)
 

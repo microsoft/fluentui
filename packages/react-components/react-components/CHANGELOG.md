@@ -1,8 +1,157 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 11 Jul 2025 15:59:20 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.67.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.67.0)
+
+Thu, 17 Jul 2025 13:49:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.8..@fluentui/react-components_v9.67.0)
+
+### Minor changes
+
+- `@fluentui/react-accordion`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-badge`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-button`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-card`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-carousel`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-checkbox`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-color-picker`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-combobox`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-components`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-dialog`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-divider`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-drawer`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-field`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-image`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-infolabel`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-label`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-link`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-list`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-message-bar`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-nav`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-overflow`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-persona`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-popover`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-portal`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-progress`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-provider`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-radio`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-rating`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-search`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-select`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-skeleton`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-slider`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-spinner`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-table`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-tabs`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-tags`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-text`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-textarea`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-toast`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-toolbar`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-tooltip`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-tree`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-calendar-compat`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+
+## [9.66.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.8)
+
+Wed, 16 Jul 2025 13:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.7..@fluentui/react-components_v9.66.8)
+
+### Minor changes
+
+- `@fluentui/react-motion-components-preview`
+  - refactor(Collapse): make consistent with other motion components ([PR #34831](https://github.com/microsoft/fluentui/pull/34831) by robertpenner@microsoft.com)
+  - feat(motion): add Slide presence motion component ([PR #34774](https://github.com/microsoft/fluentui/pull/34774) by robertpenner@microsoft.com)
+  - refactor(motion): apply consistent patterns across Fade and Scale ([PR #34830](https://github.com/microsoft/fluentui/pull/34830) by robertpenner@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - hbc focus ring fix ([PR #34832](https://github.com/microsoft/fluentui/pull/34832) by anushgupta@microsoft.com)
+  - refactor utilities to reduce monosize of components ([PR #34823](https://github.com/microsoft/fluentui/pull/34823) by anushgupta@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: properly apply overrides in ToolbarRadioButton, ToolbarToggleButton & ToolbarButton ([PR #34849](https://github.com/microsoft/fluentui/pull/34849) by olfedias@microsoft.com)
 
 ## [9.66.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.7)
 

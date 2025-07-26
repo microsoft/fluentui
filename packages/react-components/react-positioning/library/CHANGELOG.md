@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 11 Jul 2025 15:59:23 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.20.0)
+
+Thu, 17 Jul 2025 13:49:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.19.0..@fluentui/react-positioning_v9.20.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
 
 ## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.19.0)
 

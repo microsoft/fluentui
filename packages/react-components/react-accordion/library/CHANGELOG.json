@@ -2,6 +2,48 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Thu, 17 Jul 2025 13:49:33 GMT",
+      "tag": "@fluentui/react-accordion_v9.8.0",
+      "version": "9.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-aria to v9.15.4",
+            "commit": "23bbd701b365043a9f22a8d754d751cd1ec088aa"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-tabster to v9.26.0",
+            "commit": "23bbd701b365043a9f22a8d754d751cd1ec088aa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Jul 2025 13:52:50 GMT",
+      "tag": "@fluentui/react-accordion_v9.7.5",
+      "version": "9.7.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.7.0",
+            "commit": "f4286818c03a3de299eae4bda26f19b608adb1a6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Jul 2025 15:59:20 GMT",
       "tag": "@fluentui/react-accordion_v9.7.4",
       "version": "9.7.4",

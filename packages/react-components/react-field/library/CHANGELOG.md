@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Thu, 26 Jun 2025 14:11:55 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jul 2025 13:49:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.4.0)
+
+Thu, 17 Jul 2025 13:49:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.3.4..@fluentui/react-field_v9.4.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-label to v9.3.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
 
 ## [9.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.3.4)
 

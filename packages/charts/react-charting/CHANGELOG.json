@@ -2,6 +2,81 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 17 Jul 2025 07:19:55 GMT",
+      "tag": "@fluentui/react-charting_v5.24.14",
+      "version": "5.24.14",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Jul 2025 07:20:17 GMT",
+      "tag": "@fluentui/react-charting_v5.24.14",
+      "version": "5.24.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "4d91e1c33b3fa4c2401db99d02ea747ddcf1aa93",
+            "comment": "fix(react-charting): Align labels and points according to given directions and rotation in schema"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "abb16ff5cf2f59943be39b7e36e419b34aac7ca4",
+            "comment": "fix(react-charting): Support min max for VSBC in plotly"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.23",
+            "commit": "abb16ff5cf2f59943be39b7e36e419b34aac7ca4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Jul 2025 07:21:15 GMT",
+      "tag": "@fluentui/react-charting_v5.24.13",
+      "version": "5.24.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "d90622f34a244cbd10e3df2b3e93ab4c18e40956",
+            "comment": "feat: add GanttChart"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "1e508e5c7556c25075290b89fc7ed5ec93eeca14",
+            "comment": "fix(react-charting): Disable responsive container for funnel in Declarative Chart"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "4f6179c28bb0043a6d6b6f9830edd5ec95f5d4a3",
+            "comment": "fix(react-charting): Remove duplicate code to reduce size"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.22",
+            "commit": "d90622f34a244cbd10e3df2b3e93ab4c18e40956"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Jul 2025 07:20:30 GMT",
       "tag": "@fluentui/react-charting_v5.24.12",
       "version": "5.24.12",
