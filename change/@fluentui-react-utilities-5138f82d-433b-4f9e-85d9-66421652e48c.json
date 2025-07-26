@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add react 19 support for portals",
+  "packageName": "@fluentui/react-utilities",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
