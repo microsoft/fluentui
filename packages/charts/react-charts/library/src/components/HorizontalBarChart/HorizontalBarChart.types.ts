@@ -115,6 +115,26 @@ export interface HorizontalBarChartProps extends React.RefAttributes<HTMLDivElem
    * Define a custom callout props override
    */
   calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
+
+  /**
+   * prop to show annotations on the chart
+   */
+  showAnnotationsInPercentage?: boolean;
+
+  /**
+   * show the callout on hover
+   * @default true
+   */
+  allowHoverOnSegment?: boolean;
+
+  // renderAnnotationAddon?: (index: number) => JSX.Element;
+  displayAnnotationIcon?: (segment: ChartDataPoint, index: number) => React.ReactNode;
+
+  /**
+   * Width of the container that holds the chart
+   * Used to calculate segment widths
+   */
+  containerWidth?: number;
 }
 
 /**
@@ -163,6 +183,11 @@ export interface HorizontalBarChartStyles {
   chartDataTextDenominator: string;
 
   /**
+   * Style for the chart annotation text.
+   */
+  chartAnnotationText: string;
+
+  /**
    * Style for the benchmark container
    */
   benchmarkContainer: string;
@@ -193,9 +218,10 @@ export interface HorizontalBarChartStyles {
  * default: show the datapoint.x value
  * fraction: show the fraction of datapoint.x/datapoint.y
  * percentage: show the percentage of (datapoint.x/datapoint.y)%
+ * hidden: do not show the chart data text in the top right side of the bars
  * {@docCategory HorizontalBarChart}
  */
-export type ChartDataMode = 'default' | 'fraction' | 'percentage';
+export type ChartDataMode = 'default' | 'fraction' | 'percentage' | 'hidden';
 
 /**
  * {@docCategory HorizontalBarChart}
@@ -204,3 +230,9 @@ export enum HorizontalBarChartVariant {
   PartToWhole = 'part-to-whole',
   AbsoluteScale = 'absolute-scale',
 }
+
+export type segment = {
+  percent: number;
+  adjustedPercent: number;
+  rawValue: number;
+};
