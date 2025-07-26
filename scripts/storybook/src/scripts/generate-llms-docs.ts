@@ -1,9 +1,9 @@
-import { mkdir, rm, writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { mkdir, rm, writeFile, readFile } from 'node:fs/promises';
+import { join, resolve, extname } from 'node:path';
 import { cwd } from 'node:process';
+import { existsSync } from 'node:fs';
 
-import express from 'express';
-import { type BrowserContext, chromium } from 'playwright';
+import { type BrowserContext, type Page, chromium } from 'playwright';
 import Turndown from 'turndown';
 // @ts-expect-error - No types available for this package
 import { strikethrough, tables, taskListItems } from 'turndown-plugin-gfm';
@@ -211,30 +211,84 @@ function processArgs(): Required<Args> {
 }
 
 /**
- * Starts a static file server using Express
+ * Get content type based on file extension
  */
-function startStaticServer(distPath: string) {
-  const app = express();
-  // Enable CORS for all responses
-  app.use((_, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    next();
-  });
-  app.use(express.static(distPath));
+function getContentType(ext: string): string {
+  const contentTypes: Record<string, string> = {
+    '.html': 'text/html',
+    '.js': 'application/javascript',
+    '.css': 'text/css',
+    '.json': 'application/json',
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.gif': 'image/gif',
+    '.svg': 'image/svg+xml',
+    '.ico': 'image/x-icon',
+    '.woff': 'font/woff',
+    '.woff2': 'font/woff2',
+    '.ttf': 'font/ttf',
+    '.eot': 'application/vnd.ms-fontobject',
+  };
 
-  return new Promise<{ server: ReturnType<typeof app.listen>; url: string }>((resolve, reject) => {
-    const server = app.listen(0, () => {
-      const address = server.address();
-      const port = typeof address === 'object' && address ? address.port : 0;
-      resolve({ server, url: `http://localhost:${port}` });
-    });
-    server.on('error', reject);
+  return contentTypes[ext] || 'application/octet-stream';
+}
+
+/**
+ * Sets up static file serving using Playwright's page.route
+ */
+async function setupStaticRouting(page: Page, distPath: string) {
+  await page.route('**/*', async route => {
+    const url = new URL(route.request().url());
+    let filePath = url.pathname;
+
+    // Remove leading slash and resolve relative to distPath
+    if (filePath.startsWith('/')) {
+      filePath = filePath.substring(1);
+    }
+
+    // If no file extension, try to serve index.html
+    if (!extname(filePath)) {
+      filePath = join(filePath, 'index.html');
+    }
+
+    const fullPath = resolve(distPath, filePath);
+
+    try {
+      // Security check: ensure file is within distPath
+      if (existsSync(fullPath) && fullPath.startsWith(resolve(distPath))) {
+        const content = await readFile(fullPath);
+        const contentType = getContentType(extname(fullPath));
+
+        await route.fulfill({
+          status: 200,
+          contentType,
+          body: content,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          },
+        });
+      } else {
+        await route.fulfill({
+          status: 404,
+          body: 'File not found',
+        });
+      }
+    } catch (error) {
+      console.error(`Error serving file ${fullPath}:`, error);
+      await route.fulfill({
+        status: 500,
+        body: 'Internal server error',
+      });
+    }
   });
 }
 
 /**
  * Extracts data for all stories, including `MDX` stories.
- * refs are now provided by the user/config, not parsed internally.
+ * Now uses Playwright routing instead of Express server.
  */
 async function extractStorybookData({
   distPath,
@@ -243,35 +297,16 @@ async function extractStorybookData({
   distPath: string;
   refs: StorybookRef[];
 }): Promise<StorybookData> {
-  // Start static server
-  console.log(`▶️ Starting static server with Express...`);
-  const { server: staticServer, url: serverUrl } = await startStaticServer(distPath);
-  console.log(`✔️ Static server running at ${serverUrl}`);
-
-  // Ensure server is killed on exit
-  const cleanup = () => {
-    try {
-      staticServer.close();
-    } catch {
-      // intentionally empty: server may already be closed
-    }
-  };
-  process.on('exit', cleanup);
-  process.on('SIGINT', () => {
-    cleanup();
-    process.exit(1);
-  });
-  process.on('SIGTERM', () => {
-    cleanup();
-    process.exit(1);
-  });
+  console.log(`▶️ Setting up Playwright with static file routing...`);
 
   const browser = await chromium.launch();
   const context = await browser.newContext({ bypassCSP: true });
 
   try {
+    console.log(`✔️ Static file routing configured for ${distPath}`);
+
     // Extract all stories from Storybook store
-    const storeItems = await extractAllStoriesFromStorybook(context, serverUrl);
+    const storeItems = await extractAllStoriesFromStorybook(context, distPath);
 
     // Extract content for all MDX pages
     for (const item of storeItems) {
@@ -280,17 +315,17 @@ async function extractStorybookData({
       if (stories.length > 0) {
         for (const story of stories) {
           if (story.parameters?.docsOnly) {
-            const pageUrl = `${serverUrl}/iframe.html?id=${story.id.replace('--page', '--docs')}`;
-            story.parameters.fullSource = await extractMDXStoryContentWithBrowser(pageUrl, context);
+            const pageUrl = `http://localhost/iframe.html?id=${story.id.replace('--page', '--docs')}`;
+            story.parameters.fullSource = await extractMDXStoryContentWithBrowser(pageUrl, context, distPath);
           }
         }
       } else if (item.meta.parameters.fileName.endsWith('.mdx')) {
-        const pageUrl = `${serverUrl}/iframe.html?id=${item.meta.id.replace('--page', '--docs')}`;
+        const pageUrl = `http://localhost/iframe.html?id=${item.meta.id.replace('--page', '--docs')}`;
         item.stories[`${item.meta.id}`] = {
           id: item.meta.id,
           name: item.meta.title,
           parameters: {
-            fullSource: await extractMDXStoryContentWithBrowser(pageUrl, context),
+            fullSource: await extractMDXStoryContentWithBrowser(pageUrl, context, distPath),
             docsOnly: true,
             docs: {},
           },
@@ -298,16 +333,63 @@ async function extractStorybookData({
       }
     }
 
-    // await writeFile(join(__dirname, 'story-source-raw.json'), JSON.stringify(storeItems, null, 2));
-
     console.log(`✔️ Extracted ${storeItems.length} stories from Storybook store.`);
 
     return { refs, storyStoreItems: storeItems };
   } finally {
-    cleanup();
     if (browser) {
       await browser.close();
     }
+  }
+}
+
+/**
+ * Extracts all stories from Storybook Client API store.
+ */
+async function extractAllStoriesFromStorybook(context: BrowserContext, distPath: string) {
+  const page = await context.newPage();
+
+  // Set up static file routing for this page
+  await setupStaticRouting(page, distPath);
+
+  await page.goto(`http://localhost/iframe.html`);
+
+  // Wait for the Storybook Client API to be loaded
+  await page.waitForFunction(() => {
+    // @ts-expect-error - Storybook Client API is not typed
+    return window.__STORYBOOK_CLIENT_API__;
+  });
+
+  const stories: StorybookStoreItem[] = await page.evaluate(async () => {
+    // @ts-expect-error - Storybook Client API is not typed
+    await window.__STORYBOOK_CLIENT_API__.storyStore.cacheAllCSFFiles();
+    // @ts-expect-error - Storybook Client API is not typed
+    return Object.values(window.__STORYBOOK_CLIENT_API__.storyStore.cachedCSFFiles);
+  });
+
+  await page.close();
+  return stories;
+}
+
+/**
+ * Extracts `MDX` story content from a given URL using a browser.
+ */
+async function extractMDXStoryContentWithBrowser(url: string, context: BrowserContext, distPath: string) {
+  try {
+    const page = await context.newPage();
+
+    // Set up routing for this page
+    await setupStaticRouting(page, distPath);
+
+    console.log(`Extracting: "${url}"`);
+    await page.goto(url);
+    await page.waitForSelector('.sbdocs-content', { state: 'attached', timeout: 2000 });
+    const html = await page.locator('.sbdocs-content').innerHTML();
+    await page.close();
+    return convertHtmlToMarkdown(html);
+  } catch (error) {
+    console.error(`❌ Failed to extract: ${url}`, error);
+    return '';
   }
 }
 
@@ -385,24 +467,6 @@ export async function convertHtmlToMarkdown(htmlContent: string) {
 
   // Convert to markdown
   return turndown.turndown(htmlContent);
-}
-
-/**
- * Extracts `MDX` story content from a given URL using a browser.
- */
-async function extractMDXStoryContentWithBrowser(url: string, context: BrowserContext) {
-  try {
-    const page = await context.newPage();
-    console.log(`Extracting: "${url}"`);
-    await page.goto(url);
-    await page.waitForSelector('.sbdocs-content', { state: 'attached', timeout: 2000 });
-    const html = await page.locator('.sbdocs-content').innerHTML();
-    await page.close();
-    return convertHtmlToMarkdown(html);
-  } catch (error) {
-    console.error(`❌ Failed to extract: ${url}`, error);
-    return '';
-  }
 }
 
 /**
@@ -579,28 +643,6 @@ function stringifyPropType(type: StorybookComponentProp['type']): string {
     return type.name;
   }
   return JSON.stringify(type);
-}
-
-/**
- * Extracts all stories from Storybook Client API store.
- */
-async function extractAllStoriesFromStorybook(context: BrowserContext, baseUrl: string) {
-  const page = await context.newPage();
-  await page.goto(`${baseUrl}/iframe.html`);
-  // Wait for the Storybook Client API to be loaded
-  await page.waitForFunction(() => {
-    // @ts-expect-error - Storybook Client API is not typed
-    return window.__STORYBOOK_CLIENT_API__;
-  });
-
-  const stories: StorybookStoreItem[] = await page.evaluate(async () => {
-    // @ts-expect-error - Storybook Client API is not typed
-    await window.__STORYBOOK_CLIENT_API__.storyStore.cacheAllCSFFiles();
-    // @ts-expect-error - Storybook Client API is not typed
-    return Object.values(window.__STORYBOOK_CLIENT_API__.storyStore.cachedCSFFiles);
-  });
-  await page.close();
-  return stories;
 }
 
 /**
