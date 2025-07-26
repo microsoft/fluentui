@@ -163,13 +163,12 @@ const useModernElementFactory: UseElementFactory = options => {
 
       set(_, property: keyof HTMLDivElement | '_virtual' | 'focusVisible', value) {
         const ignoredProperty = property === '_virtual' || property === 'focusVisible';
+        const targetElement = elementFactory.get(targetNode, false);
 
-        if (ignoredProperty) {
+        if (ignoredProperty && !targetElement) {
           // We ignore the `_virtual` and `focusVisible` properties to avoid conflicts with the proxy
           return true;
         }
-
-        const targetElement = elementFactory.get(targetNode, ignoredProperty);
 
         if (targetElement) {
           Object.assign(targetElement, { [property]: value });
