@@ -15,23 +15,28 @@ import yargs from 'yargs';
 export type Args = {
   /**
    * Relative path to the Storybook distribution folder
+   * @example `--distPath "storybook-static"`
    */
   distPath: string;
   /**
    * Base URL for the Storybook docs
+   * @example `--baseUrl "https://storybook.fluentui.dev/"`
    */
   baseUrl: string;
   /**
    * Title for the llms.txt file
+   * @example `--summaryTitle "Fluent UI Components and Pages"`
    */
   summaryTitle?: string;
   /**
    * Description for the llms.txt file
+   * @example `--summaryDescription "This file contains the LLMs documentation for all components and pages."`
    */
   summaryDescription?: string;
   /**
-   * Array of composed Storybook refs (objects with id, title, url).
+   * Array of composed Storybook refs.
    * Used to reference external Storybook docs.
+   * @example `--refs "{title:'foo', url:'www'}"`
    */
   refs?: StorybookRef[];
 };
@@ -75,7 +80,13 @@ export type StorybookStoreItemStory = {
         component?: string;
         story?: string;
       };
+      source?: {
+        originalSource?: string;
+      };
     };
+    /**
+     * This field is specific to FluentUI, and provided by the `@fluentui/storybook-addon` package.
+     */
     fullSource?: string;
     docsOnly?: boolean;
   };
@@ -125,6 +136,24 @@ export type StorybookData = {
   refs: StorybookRef[];
   storyStoreItems: StorybookStoreItem[];
 };
+
+/**
+ * Storybook Client API store, contains methods to cache CSF files and cached items.
+ */
+type StorybookStoryStore = {
+  cacheAllCSFFiles: () => Promise<void>;
+  cachedCSFFiles: Record<string, StorybookStoreItem>;
+};
+
+declare global {
+  interface Window {
+    /**
+     * Storybook Client API, contains story store and other metadata.
+     * `storyStore` is used for Storybook 7, `storyStoreValue` for >= 8.
+     */
+    __STORYBOOK_PREVIEW__?: { storyStore: StorybookStoryStore } | { storyStoreValue: StorybookStoryStore };
+  }
+}
 
 /**
  * Type guard for StorybookRef
@@ -193,8 +222,7 @@ function processArgs(): Required<Args> {
     })
     .option('refs', {
       type: 'array',
-      default: [],
-      demandOption: false,
+      default: [] as StorybookRef[],
       describe: 'Array of composed Storybook refs (objects with id, title, url)',
     })
     .config()
@@ -356,15 +384,23 @@ async function extractAllStoriesFromStorybook(context: BrowserContext, distPath:
 
   // Wait for the Storybook Client API to be loaded
   await page.waitForFunction(() => {
-    // @ts-expect-error - Storybook Client API is not typed
-    return window.__STORYBOOK_CLIENT_API__;
+    return window.__STORYBOOK_PREVIEW__;
   });
 
   const stories: StorybookStoreItem[] = await page.evaluate(async () => {
-    // @ts-expect-error - Storybook Client API is not typed
-    await window.__STORYBOOK_CLIENT_API__.storyStore.cacheAllCSFFiles();
-    // @ts-expect-error - Storybook Client API is not typed
-    return Object.values(window.__STORYBOOK_CLIENT_API__.storyStore.cachedCSFFiles);
+    const preview = window.__STORYBOOK_PREVIEW__;
+    let storyStore: StorybookStoryStore | undefined;
+
+    if (preview && 'storyStore' in preview && preview.storyStore) {
+      storyStore = preview.storyStore;
+    } else if (preview && 'storyStoreValue' in preview && preview.storyStoreValue) {
+      storyStore = preview.storyStoreValue;
+    } else {
+      throw new Error('Unable to find Storybook story store');
+    }
+
+    await storyStore.cacheAllCSFFiles();
+    return Object.values(storyStore.cachedCSFFiles);
   });
 
   await page.close();
@@ -467,6 +503,15 @@ export async function convertHtmlToMarkdown(htmlContent: string) {
 
   // Convert to markdown
   return turndown.turndown(htmlContent);
+}
+
+/**
+ * Writes the Storybook data to a JSON file.
+ */
+async function writeStorybookDataToFile({ distPath }: Required<Args>, data: StorybookData) {
+  const filePath = join(distPath, 'storybook-story-store-data.json');
+  await writeFile(filePath, JSON.stringify(data, null, 2));
+  console.log(`✅ Storybook data written to ${filePath}`);
 }
 
 /**
@@ -592,7 +637,7 @@ export function generateFullFileContentFromStory(item: StorybookStoreItem) {
   const examples = Object.values(item.stories).map(s => ({
     title: s.name,
     description: s.parameters?.docs?.description?.story,
-    source: s.parameters?.fullSource,
+    source: s.parameters?.fullSource ?? s.parameters.docs?.source?.originalSource,
   }));
   if (examples.length > 0) {
     content.push('## Examples');
@@ -718,6 +763,9 @@ async function main() {
     console.log(`ℹ️ Storybook dist path: ${args.distPath}`);
 
     const data = await extractStorybookData(args);
+
+    // Write storybook data to file (useful for debugging)
+    await writeStorybookDataToFile(args, data);
 
     // Write llms.txt file
     await writeSummaryFile(args, data);
