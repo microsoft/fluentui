@@ -562,184 +562,101 @@ const mockStorybookData: StorybookData = {
 
 describe('generate-llms-docs', () => {
   describe('convertHtmlToMarkdown', () => {
-    it('should convert html to markdown', async () => {
+    it('should convert html code blocks to markdown', async () => {
       const html = `
-<div class="sbdocs sbdocs-content css-qa4clq">
-  <h2 id="install" class="css-wzniqs">
-    <a aria-hidden="true" href="#install" tabindex="-1" target="_self" class="css-1ofkq6d">
-      <svg viewBox="0 0 14 14" width="14px" height="14px" class="css-149xqrd">
-        <path d="M11.84 2.16a2.25 2.25 0 0 0-3.18 0l-2.5 2.5c-.88.88-.88 2.3 0 3.18a.5.5 0 0 1-.7.7 3.25 3.25 0 0 1 0-4.59l2.5-2.5a3.25 3.25 0 0 1 4.59 4.6L10.48 8.1c.04-.44.01-.89-.09-1.32l1.45-1.45c.88-.88.88-2.3 0-3.18Z"></path>
-        <path d="M3.6 7.2c-.1-.42-.12-.87-.08-1.31L1.45 7.95a3.25 3.25 0 1 0 4.6 4.6l2.5-2.5a3.25 3.25 0 0 0 0-4.6.5.5 0 0 0-.7.7c.87.89.87 2.31 0 3.2l-2.5 2.5a2.25 2.25 0 1 1-3.2-3.2l1.46-1.44Z"></path>
-      </svg>
-    </a>
-    Install
-  </h2>
-  <p>Fluent UI should be installed as a <code class="css-1kwwth4">dependency</code> of your app.</p>
-  <pre><div class="docblock-source sb-unstyled css-12u9f4"><div dir="ltr" scrollbarsize="6" offset="2" class="css-1dnv2kn" style="position: relative; --radix-scroll-area-corner-width: 0px; --radix-scroll-area-corner-height: 0px;"><style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style><div data-radix-scroll-area-viewport="" class="css-uwwqev" style="overflow: scroll;"><div style="min-width: 100%; display: table;"><pre class="prismjs css-4zr3vl"><div class="language-sh css-1lwmlsb" style="white-space: pre;"><span class="">yarn add @fluentui/react-components</span></div></pre></div></div></div><div class="css-11xgcgt"><button class="css-1fdphfk">Copy</button></div></div></pre>
+  <pre><div class="docblock-source sb-unstyled css-12u9f4"><div dir="ltr" scrollbarsize="6" offset="2" class="css-1dnv2kn" style="position: relative;"><div data-radix-scroll-area-viewport="" class="css-uwwqev" style="overflow: scroll;"><div style="min-width: 100%; display: table;"><pre class="prismjs css-4zr3vl"><div class="language-sh css-1lwmlsb" style="white-space: pre;"><span class="">yarn add @fluentui/react-components</span></div></pre></div></div></div><div class="css-11xgcgt"><button class="css-1fdphfk">Copy</button></div></div></pre>
+      `;
+      const markdown = await convertHtmlToMarkdown(html);
+      expect(markdown).toContain('```sh');
+      expect(markdown).toContain('yarn add @fluentui/react-components');
+      expect(markdown).toContain('```');
+    });
+
+    it('should convert html subheadings to markdown', async () => {
+      const html = `
   <h2 id="setup" class="css-wzniqs">
-    <a aria-hidden="true" href="#setup" tabindex="-1" target="_self" class="css-1ofkq6d">
-      <svg viewBox="0 0 14 14" width="14px" height="14px" class="css-149xqrd">
-        <path d="M11.84 2.16a2.25 2.25 0 0 0-3.18 0l-2.5 2.5c-.88.88-.88 2.3 0 3.18a.5.5 0 0 1-.7.7 3.25 3.25 0 0 1 0-4.59l2.5-2.5a3.25 3.25 0 0 1 4.59 4.6L10.48 8.1c.04-.44.01-.89-.09-1.32l1.45-1.45c.88-.88.88-2.3 0-3.18Z"></path>
-        <path d="M3.6 7.2c-.1-.42-.12-.87-.08-1.31L1.45 7.95a3.25 3.25 0 1 0 4.6 4.6l2.5-2.5a3.25 3.25 0 0 0 0-4.6.5.5 0 0 0-.7.7c.87.89.87 2.31 0 3.2l-2.5 2.5a2.25 2.25 0 1 1-3.2-3.2l1.46-1.44Z"></path>
-      </svg>
-    </a>
+    <a aria-hidden="true" href="#setup" tabindex="-1" target="_self" class="css-1ofkq6d"></a>
     Setup
   </h2>
-  <p>Fluent UI components are styled using CSS in JS. This technique requires a style renderer which inserts CSS into DOM when needed. React context is used to provide the style renderer.</p>
-  <p>Place a <code class="css-1kwwth4">&lt;FluentProvider /&gt;</code> at the root of your app and pass theme as a prop.</p>
   <h3 id="react-18" class="css-wzniqs">
-    <a aria-hidden="true" href="#react-18" tabindex="-1" target="_self" class="css-1ofkq6d">
-      <svg viewBox="0 0 14 14" width="14px" height="14px" class="css-149xqrd">
-        <path d="M11.84 2.16a2.25 2.25 0 0 0-3.18 0l-2.5 2.5c-.88.88-.88 2.3 0 3.18a.5.5 0 0 1-.7.7 3.25 3.25 0 0 1 0-4.59l2.5-2.5a3.25 3.25 0 0 1 4.59 4.6L10.48 8.1c.04-.44.01-.89-.09-1.32l1.45-1.45c.88-.88.88-2.3 0-3.18Z"></path>
-        <path d="M3.6 7.2c-.1-.42-.12-.87-.08-1.31L1.45 7.95a3.25 3.25 0 1 0 4.6 4.6l2.5-2.5a3.25 3.25 0 0 0 0-4.6.5.5 0 0 0-.7.7c.87.89.87 2.31 0 3.2l-2.5 2.5a2.25 2.25 0 1 1-3.2-3.2l1.46-1.44Z"></path>
-      </svg>
-    </a>
+    <a aria-hidden="true" href="#react-18" tabindex="-1" target="_self" class="css-1ofkq6d"></a>
     React 18
   </h3>
-  <pre><div class="docblock-source sb-unstyled css-12u9f4"><div dir="ltr" scrollbarsize="6" offset="2" class="css-1dnv2kn" style="position: relative; --radix-scroll-area-corner-width: 0px; --radix-scroll-area-corner-height: 0px;"><style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style><div data-radix-scroll-area-viewport="" class="css-uwwqev" style="overflow: scroll;"><div style="min-width: 100%; display: table;"><pre class="prismjs css-4zr3vl"><div class="language-jsx css-1lwmlsb" style="white-space: pre;"><span class="token keyword module">import</span><span class=""> </span><span class="token imports maybe-class-name">React</span><span class=""> </span><span class="token keyword module">from</span><span class=""> </span><span class="token string">'react'</span><span class="token punctuation">;</span><span class="">
-</span><span class=""></span><span class="token keyword module">import</span><span class=""> </span><span class="token imports punctuation">{</span><span class="token imports"> createRoot </span><span class="token imports punctuation">}</span><span class=""> </span><span class="token keyword module">from</span><span class=""> </span><span class="token string">'react-dom/client'</span><span class="token punctuation">;</span><span class="">
-</span><span class=""></span><span class="token keyword module">import</span><span class=""> </span><span class="token imports punctuation">{</span><span class="token imports"> </span><span class="token imports maybe-class-name">FluentProvider</span><span class="token imports punctuation">,</span><span class="token imports"> webLightTheme </span><span class="token imports punctuation">}</span><span class=""> </span><span class="token keyword module">from</span><span class=""> </span><span class="token string">'@fluentui/react-components'</span><span class="token punctuation">;</span><span class="">
-</span>
-<span class=""></span><span class="token keyword module">import</span><span class=""> </span><span class="token imports maybe-class-name">App</span><span class=""> </span><span class="token keyword module">from</span><span class=""> </span><span class="token string">'./App'</span><span class="token punctuation">;</span><span class="">
-</span>
-<span class=""></span><span class="token keyword">const</span><span class=""> root </span><span class="token operator">=</span><span class=""> </span><span class="token function">createRoot</span><span class="token punctuation">(</span><span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="">
-</span>
-<span class="">root</span><span class="token punctuation">.</span><span class="token method function property-access">render</span><span class="token punctuation">(</span><span class="">
-</span><span class="">  </span><span class="token tag punctuation">&lt;</span><span class="token tag class-name">FluentProvider</span><span class="token tag"> </span><span class="token tag attr-name">theme</span><span class="token tag script language-javascript script-punctuation punctuation">=</span><span class="token tag script language-javascript punctuation">{</span><span class="token tag script language-javascript">webLightTheme</span><span class="token tag script language-javascript punctuation">}</span><span class="token tag punctuation">&gt;</span><span class="token plain-text">
-</span><span class="token plain-text">    </span><span class="token tag punctuation">&lt;</span><span class="token tag class-name">App</span><span class="token tag"> </span><span class="token tag punctuation">/&gt;</span><span class="token plain-text">
-</span><span class="token plain-text">  </span><span class="token tag punctuation">&lt;/</span><span class="token tag class-name">FluentProvider</span><span class="token tag punctuation">&gt;</span><span class="token punctuation">,</span><span class="">
-</span><span class=""></span><span class="token punctuation">)</span><span class="token punctuation">;</span></div></pre></div></div></div><div class="css-11xgcgt"><button class="css-1fdphfk">Copy</button></div></div></pre>
-  <h3 id="react-17" class="css-wzniqs">
-    <a aria-hidden="true" href="#react-17" tabindex="-1" target="_self" class="css-1ofkq6d">
-      <svg viewBox="0 0 14 14" width="14px" height="14px" class="css-149xqrd">
-        <path d="M11.84 2.16a2.25 2.25 0 0 0-3.18 0l-2.5 2.5c-.88.88-.88 2.3 0 3.18a.5.5 0 0 1-.7.7 3.25 3.25 0 0 1 0-4.59l2.5-2.5a3.25 3.25 0 0 1 4.59 4.6L10.48 8.1c.04-.44.01-.89-.09-1.32l1.45-1.45c.88-.88.88-2.3 0-3.18Z"></path>
-        <path d="M3.6 7.2c-.1-.42-.12-.87-.08-1.31L1.45 7.95a3.25 3.25 0 1 0 4.6 4.6l2.5-2.5a3.25 3.25 0 0 0 0-4.6.5.5 0 0 0-.7.7c.87.89.87 2.31 0 3.2l-2.5 2.5a2.25 2.25 0 1 1-3.2-3.2l1.46-1.44Z"></path>
-      </svg>
-    </a>
-    React 17
-  </h3>
-  <pre><div class="docblock-source sb-unstyled css-12u9f4"><div dir="ltr" scrollbarsize="6" offset="2" class="css-1dnv2kn" style="position: relative; --radix-scroll-area-corner-width: 0px; --radix-scroll-area-corner-height: 0px;"><style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style><div data-radix-scroll-area-viewport="" class="css-uwwqev" style="overflow: scroll;"><div style="min-width: 100%; display: table;"><pre class="prismjs css-4zr3vl"><div class="language-jsx css-1lwmlsb" style="white-space: pre;"><span class="token keyword module">import</span><span class=""> </span><span class="token imports maybe-class-name">React</span><span class=""> </span><span class="token keyword module">from</span><span class=""> </span><span class="token string">'react'</span><span class="token punctuation">;</span><span class="">
-</span><span class=""></span><span class="token keyword module">import</span><span class=""> </span><span class="token imports maybe-class-name">ReactDOM</span><span class=""> </span><span class="token keyword module">from</span><span class=""> </span><span class="token string">'react-dom'</span><span class="token punctuation">;</span><span class="">
-</span><span class=""></span><span class="token keyword module">import</span><span class=""> </span><span class="token imports punctuation">{</span><span class="token imports"> </span><span class="token imports maybe-class-name">FluentProvider</span><span class="token imports punctuation">,</span><span class="token imports"> webLightTheme </span><span class="token imports punctuation">}</span><span class=""> </span><span class="token keyword module">from</span><span class=""> </span><span class="token string">'@fluentui/react-components'</span><span class="token punctuation">;</span><span class="">
-</span>
-<span class=""></span><span class="token keyword module">import</span><span class=""> </span><span class="token imports maybe-class-name">App</span><span class=""> </span><span class="token keyword module">from</span><span class=""> </span><span class="token string">'./App'</span><span class="token punctuation">;</span><span class="">
-</span>
-<span class=""></span><span class="token maybe-class-name">ReactDOM</span><span class="token punctuation">.</span><span class="token method function property-access">render</span><span class="token punctuation">(</span><span class="">
-</span><span class="">  </span><span class="token tag punctuation">&lt;</span><span class="token tag class-name">FluentProvider</span><span class="token tag"> </span><span class="token tag attr-name">theme</span><span class="token tag script language-javascript script-punctuation punctuation">=</span><span class="token tag script language-javascript punctuation">{</span><span class="token tag script language-javascript">webLightTheme</span><span class="token tag script language-javascript punctuation">}</span><span class="token tag punctuation">&gt;</span><span class="token plain-text">
-</span><span class="token plain-text">    </span><span class="token tag punctuation">&lt;</span><span class="token tag class-name">App</span><span class="token tag"> </span><span class="token tag punctuation">/&gt;</span><span class="token plain-text">
-</span><span class="token plain-text">  </span><span class="token tag punctuation">&lt;/</span><span class="token tag class-name">FluentProvider</span><span class="token tag punctuation">&gt;</span><span class="token punctuation">,</span><span class="">
-</span><span class="">  </span><span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="">
-</span><span class=""></span><span class="token punctuation">)</span><span class="token punctuation">;</span></div></pre></div></div></div><div class="css-11xgcgt"><button class="css-1fdphfk">Copy</button></div></div></pre>
-  <h2 id="usage" class="css-wzniqs">
-    <a aria-hidden="true" href="#usage" tabindex="-1" target="_self" class="css-1ofkq6d">
-      <svg viewBox="0 0 14 14" width="14px" height="14px" class="css-149xqrd">
-        <path d="M11.84 2.16a2.25 2.25 0 0 0-3.18 0l-2.5 2.5c-.88.88-.88 2.3 0 3.18a.5.5 0 0 1-.7.7 3.25 3.25 0 0 1 0-4.59l2.5-2.5a3.25 3.25 0 0 1 4.59 4.6L10.48 8.1c.04-.44.01-.89-.09-1.32l1.45-1.45c.88-.88.88-2.3 0-3.18Z"></path>
-        <path d="M3.6 7.2c-.1-.42-.12-.87-.08-1.31L1.45 7.95a3.25 3.25 0 1 0 4.6 4.6l2.5-2.5a3.25 3.25 0 0 0 0-4.6.5.5 0 0 0-.7.7c.87.89.87 2.31 0 3.2l-2.5 2.5a2.25 2.25 0 1 1-3.2-3.2l1.46-1.44Z"></path>
-      </svg>
-    </a>
-    Usage
-  </h2>
-  <p>That's it. You can now use Fluent UI components in your app.</p>
-  <pre><div class="docblock-source sb-unstyled css-12u9f4"><div dir="ltr" scrollbarsize="6" offset="2" class="css-1dnv2kn" style="position: relative; --radix-scroll-area-corner-width: 0px; --radix-scroll-area-corner-height: 0px;"><style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style><div data-radix-scroll-area-viewport="" class="css-uwwqev" style="overflow: scroll;"><div style="min-width: 100%; display: table;"><pre class="prismjs css-4zr3vl"><div class="language-jsx css-1lwmlsb" style="white-space: pre;"><span class="token keyword module">import</span><span class=""> </span><span class="token imports maybe-class-name">React</span><span class=""> </span><span class="token keyword module">from</span><span class=""> </span><span class="token string">'react'</span><span class="token punctuation">;</span><span class="">
-</span><span class=""></span><span class="token keyword module">import</span><span class=""> </span><span class="token imports punctuation">{</span><span class="token imports"> </span><span class="token imports maybe-class-name">Button</span><span class="token imports"> </span><span class="token imports punctuation">}</span><span class=""> </span><span class="token keyword module">from</span><span class=""> </span><span class="token string">'@fluentui/react-components'</span><span class="token punctuation">;</span><span class="">
-</span>
-<span></span><span class="token keyword module">export</span><span> </span><span class="token keyword module">default</span><span> </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span> </span><span class="token arrow operator">=&gt;</span><span> </span><span class="token tag punctuation">&lt;</span><span class="token tag class-name">Button</span><span class="token tag"> </span><span class="token tag attr-name">appearance</span><span class="token tag attr-value punctuation attr-equals">=</span><span class="token tag attr-value punctuation">"</span><span class="token tag attr-value">primary</span><span class="token tag attr-value punctuation">"</span><span class="token tag punctuation">&gt;</span><span class="token plain-text">Get started</span><span class="token tag punctuation">&lt;/</span><span class="token tag class-name">Button</span><span class="token tag punctuation">&gt;</span><span class="token punctuation">;</span></div></pre></div></div></div><div><button>Copy</button></div></div></pre>
-  <h3 id="strict-mode">
-    <a aria-hidden="true" href="#strict-mode" tabindex="-1" target="_self">
-      <svg viewBox="0 0 14 14" width="14px" height="14px">
-        <path d="M11.84 2.16a2.25 2.25 0 0 0-3.18 0l-2.5 2.5c-.88.88-.88 2.3 0 3.18a.5.5 0 0 1-.7.7 3.25 3.25 0 0 1 0-4.59l2.5-2.5a3.25 3.25 0 0 1 4.59 4.6L10.48 8.1c.04-.44.01-.89-.09-1.32l1.45-1.45c.88-.88.88-2.3 0-3.18Z"></path>
-        <path d="M3.6 7.2c-.1-.42-.12-.87-.08-1.31L1.45 7.95a3.25 3.25 0 1 0 4.6 4.6l2.5-2.5a3.25 3.25 0 0 0 0-4.6.5.5 0 0 0-.7.7c.87.89.87 2.31 0 3.2l-2.5 2.5a2.25 2.25 0 1 1-3.2-3.2l1.46-1.44Z"></path>
-      </svg>
-    </a>
-    Strict mode
-  </h3>
-  <p>We are aware of some strict mode bugs when using Fluent UI v9 in React 18. These bugs only show up in strict mode, and they will not stop the rest of your app from running.
-    You can <a href="https://github.com/microsoft/fluentui/issues?q=is%3Aopen+is%3Aissue+label%3A%22Area%3A+Strict+Mode%22+label%3A%22React+18%22" target="_blank" rel="nofollow noopener noreferrer">track the bugs on Github</a> and learn how they will affect your application.
-  </p>
   <h4 id="ssr-with-nextjs">
-    <a aria-hidden="true" href="#ssr-with-nextjs" tabindex="-1" target="_self">
-      <svg viewBox="0 0 14 14" width="14px" height="14px">
-        <path d="M11.84 2.16a2.25 2.25 0 0 0-3.18 0l-2.5 2.5c-.88.88-.88 2.3 0 3.18a.5.5 0 0 1-.7.7 3.25 3.25 0 0 1 0-4.59l2.5-2.5a3.25 3.25 0 0 1 4.59 4.6L10.48 8.1c.04-.44.01-.89-.09-1.32l1.45-1.45c.88-.88.88-2.3 0-3.18Z"></path>
-        <path d="M3.6 7.2c-.1-.42-.12-.87-.08-1.31L1.45 7.95a3.25 3.25 0 1 0 4.6 4.6l2.5-2.5a3.25 3.25 0 0 0 0-4.6.5.5 0 0 0-.7.7c.87.89.87 2.31 0 3.2l-2.5 2.5a2.25 2.25 0 1 1-3.2-3.2l1.46-1.44Z"></path>
-      </svg>
-    </a>
+    <a aria-hidden="true" href="#ssr-with-nextjs" tabindex="-1" target="_self"></a>
     SSR with Next.js
   </h4>
-  <p>To avoid strict mode hydration issues, you can disable strict mode in your Next.js app by adding the following configuration to your <code>next.config.js</code> file:</p>
-  <pre><div class="docblock-source sb-unstyled"><div dir="ltr" scrollbarsize="6" offset="2" style="position: relative; --radix-scroll-area-corner-width: 0px; --radix-scroll-area-corner-height: 0px;"><style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style><div data-radix-scroll-area-viewport="" style="overflow: scroll;"><div style="min-width: 100%; display: table;"><pre class="prismjs"><div class="language-js" style="white-space: pre;"><span>module</span><span class="token punctuation">.</span><span class="token property-access">exports</span><span> </span><span class="token operator">=</span><span> </span><span class="token punctuation">{</span><span>
-</span><span>  </span><span class="token literal-property property">reactStrictMode</span><span class="token operator">:</span><span> </span><span class="token boolean">false</span><span class="token punctuation">,</span><span>
-</span><span></span><span class="token punctuation">}</span><span class="token punctuation">;</span></div></pre></div></div></div><div><button>Copy</button></div></div></pre>
-</div>
+      `;
+      const markdown = await convertHtmlToMarkdown(html);
+      expect(markdown).toContain('## Setup');
+      expect(markdown).toContain('### React 18');
+      expect(markdown).toContain('#### SSR with Next.js');
+    });
+
+    it('should remove copy buttons and other irrelevant elements', async () => {
+      const html = `
+  <pre>
+    <div class="docblock-source sb-unstyled css-12u9f4">
+    <div>
+      <button class="css-1fdphfk">Copy</button>
+    </div>
+    </div>
+  </pre>
+      `;
+      const markdown = await convertHtmlToMarkdown(html);
+      expect(markdown).not.toContain('Copy');
+      expect(markdown).not.toContain('<button');
+    });
+
+    it('should convert html paragraphs and inline code to markdown', async () => {
+      const html = `
+  <p>Fluent UI should be installed as a <code class="css-1kwwth4">dependency</code> of your app.</p>
+  <p>Place a <code class="css-1kwwth4">&lt;FluentProvider /&gt;</code> at the root of your app and pass theme as a prop.</p>
+      `;
+      const markdown = await convertHtmlToMarkdown(html);
+      expect(markdown).toContain('Fluent UI should be installed as a `dependency` of your app.');
+      expect(markdown).toContain('Place a `<FluentProvider />` at the root of your app and pass theme as a prop.');
+    });
+
+    it('should convert html links to markdown', async () => {
+      const html = `
+  <p>You can <a href="https://github.com/microsoft/fluentui/issues?q=is%3Aopen+is%3Aissue+label%3A%22Area%3A+Strict+Mode%22+label%3A%22React+18%22" target="_blank" rel="nofollow noopener noreferrer">track the bugs on Github</a> and learn how they will affect your application.</p>
+      `;
+      const markdown = await convertHtmlToMarkdown(html);
+      expect(markdown).toContain(
+        '[track the bugs on Github](https://github.com/microsoft/fluentui/issues?q=is%3Aopen+is%3Aissue+label%3A%22Area%3A+Strict+Mode%22+label%3A%22React+18%22)',
+      );
+    });
+
+    it('should convert a full html doc to markdown', async () => {
+      const html = `
+  <div class="sbdocs sbdocs-content css-qa4clq">
+    <h2 id="install" class="css-wzniqs">
+    <a aria-hidden="true" href="#install" tabindex="-1" target="_self" class="css-1ofkq6d"></a>
+    Install
+    </h2>
+    <p>Fluent UI should be installed as a <code class="css-1kwwth4">dependency</code> of your app.</p>
+    <pre><div class="docblock-source sb-unstyled css-12u9f4"><div dir="ltr"><div data-radix-scroll-area-viewport=""><div style="min-width: 100%; display: table;"><pre class="prismjs css-4zr3vl"><div class="language-sh css-1lwmlsb" style="white-space: pre;"><span class="">yarn add @fluentui/react-components</span></div></pre></div></div></div></div><div class="css-11xgcgt"><button class="css-1fdphfk">Copy</button></div></div></pre>
+    <h2 id="usage" class="css-wzniqs">
+    <a aria-hidden="true" href="#usage" tabindex="-1" target="_self" class="css-1ofkq6d"></a>
+    Usage
+    </h2>
+    <p>That's it. You can now use Fluent UI components in your app.</p>
+  </div>
       `;
       const markdown = await convertHtmlToMarkdown(html);
       expect(markdown).toMatchInlineSnapshot(`
-        "## Install
+  "## Install
 
-        Fluent UI should be installed as a \`dependency\` of your app.
+  Fluent UI should be installed as a \`dependency\` of your app.
 
-        \`\`\`sh
-        yarn add @fluentui/react-components
-        \`\`\`
+  \`\`\`sh
+  yarn add @fluentui/react-components
+  \`\`\`
 
-        ## Setup
+  ## Usage
 
-        Fluent UI components are styled using CSS in JS. This technique requires a style renderer which inserts CSS into DOM when needed. React context is used to provide the style renderer.
-
-        Place a \`<FluentProvider />\` at the root of your app and pass theme as a prop.
-
-        ### React 18
-
-        \`\`\`jsx
-        import React from 'react';
-        import { createRoot } from 'react-dom/client';
-        import { FluentProvider, webLightTheme } from '@fluentui/react-components';
-        import App from './App';
-        const root = createRoot(document.getElementById('root');
-        root.render(
-          <FluentProvider theme={webLightTheme}>
-            <App />
-          </FluentProvider>,
-        );
-        \`\`\`
-
-        ### React 17
-
-        \`\`\`jsx
-        import React from 'react';
-        import ReactDOM from 'react-dom';
-        import { FluentProvider, webLightTheme } from '@fluentui/react-components';
-        import App from './App';
-        ReactDOM.render(
-          <FluentProvider theme={webLightTheme}>
-            <App />
-          </FluentProvider>,
-          document.getElementById('root'),
-        );
-        \`\`\`
-
-        ## Usage
-
-        That's it. You can now use Fluent UI components in your app.
-
-        \`\`\`jsx
-        import React from 'react';
-        import { Button } from '@fluentui/react-components';
-        export default () => <Button appearance=\\"primary\\">Get started</Button>;
-        \`\`\`
-
-        ### Strict mode
-
-        We are aware of some strict mode bugs when using Fluent UI v9 in React 18. These bugs only show up in strict mode, and they will not stop the rest of your app from running. You can [track the bugs on Github](https://github.com/microsoft/fluentui/issues?q=is%3Aopen+is%3Aissue+label%3A%22Area%3A+Strict+Mode%22+label%3A%22React+18%22) and learn how they will affect your application.
-
-        #### SSR with Next.js
-
-        To avoid strict mode hydration issues, you can disable strict mode in your Next.js app by adding the following configuration to your \`next.config.js\` file:
-
-        \`\`\`js
-        module.exports = {
-          reactStrictMode: false,
-        };
-        \`\`\`"
+  That's it. You can now use Fluent UI components in your app."
       `);
     });
   });
