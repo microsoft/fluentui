@@ -32,7 +32,6 @@ const useClasses = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     '&:hover': {
       transform: 'translateY(-2px)',
-      backgroundColor: tokens.colorNeutralBackground1,
     },
   },
   patternCard: {
@@ -43,7 +42,14 @@ const useClasses = makeStyles({
     justifyContent: 'center',
     gap: tokens.spacingVerticalS,
     border: `2px solid ${tokens.colorNeutralStroke1}`,
-    backgroundColor: tokens.colorNeutralBackground1,
+    // Removing shadows because they are not accurate for 3D rotations
+    boxShadow: 'none !important', // Force remove shadow with !important
+    '&::before': {
+      display: 'none', // Remove any pseudo-element shadows
+    },
+    '&::after': {
+      display: 'none', // Remove any pseudo-element shadows
+    },
   },
   patternTitle: {
     color: tokens.colorNeutralForeground1,
@@ -173,7 +179,6 @@ export const CardFlip = () => {
               <Card
                 className={classes.patternCard}
                 onClick={() => togglePattern(pattern.id)}
-                appearance="outline"
                 role="button"
                 tabIndex={0}
                 aria-label={`Toggle ${pattern.name} rotation`}
