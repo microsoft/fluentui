@@ -7,7 +7,10 @@
   "targets": {
     "build-storybook": {
       "dependsOn": [
-        { "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox"], "target": "build" }
+        {
+          "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
+          "target": "build"
+        }
       ]
     }
   }

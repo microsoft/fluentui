@@ -44,7 +44,7 @@ jobs:
       - run: yarn install --frozen-lockfile
 
       - name: Install Playwright Browsers
-        run: yarn playwright install
+        run: yarn playwright install --with-deps
 
       - name: Bundle
         run: yarn nx affected -t bundle --nxBail
