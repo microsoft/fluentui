@@ -17,10 +17,10 @@ run `yarn install`
 
 ### Step 2:
 
-Go to the `packages/charts/react-charts` directory:
+Go to the `packages/charts/react-charts/library` directory:
 run `yarn build` to build the v9 charting components.
 
 ### Step 3:
 
 Run the local Storybook server:
-run `yarn start` to run the local Storybook server for the v9 charting components.
+run `yarn start` from `packages/charts/react-charts/library` to run the local Storybook server for the v9 charting components.
