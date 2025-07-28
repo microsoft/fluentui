@@ -11,7 +11,7 @@ export { Default } from './MenuGridDefault.stories';
 export { WithSubmenu } from './MenuGridWithSubmenu.stories';
 
 export default {
-  title: 'Components/Menu/MenuGrid',
+  title: 'Preview Components/Menu/MenuGrid',
   component: MenuGrid,
   subcomponents: {
     MenuGridCell,
