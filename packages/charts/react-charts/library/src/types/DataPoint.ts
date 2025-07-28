@@ -142,7 +142,7 @@ export interface ChartDataPoint {
 
   /**
    * Callout data for x axis
-   * This is an optional prop, If haven;t given legend will take
+   * This is an optional prop, If haven't given legend will take
    */
   xAxisCalloutData?: string;
 
@@ -186,7 +186,7 @@ export interface VerticalBarChartDataPoint {
 
   /**
    * Callout data for x axis
-   * This is an optional prop, If haven;t given legend will take
+   * This is an optional prop, If haven't given legend will take
    */
   xAxisCalloutData?: string;
 
@@ -240,7 +240,7 @@ export interface HorizontalBarChartWithAxisDataPoint {
 
   /**
    * Callout data for x axis
-   * This is an optional prop, If haven;t given legend will take
+   * This is an optional prop, If haven't given legend will take
    */
   xAxisCalloutData?: string;
 
@@ -559,7 +559,7 @@ export interface VSChartDataPoint {
 
   /**
    * Callout data for x axis
-   * This is an optional prop, If haven;t given legend will take
+   * This is an optional prop, If haven't given legend will take
    */
   xAxisCalloutData?: string;
 
@@ -658,7 +658,7 @@ export interface GVBarChartSeriesPoint {
 
   /**
    * Callout data for x axis
-   * This is an optional prop, If haven;t given legend will take
+   * This is an optional prop, If haven't given legend will take
    */
   xAxisCalloutData?: string;
 
@@ -914,7 +914,7 @@ export interface GanttChartDataPoint {
 
   /**
    * Callout data for x axis
-   * This is an optional prop, If haven;t given legend will take
+   * This is an optional prop, If haven't given legend will take
    */
   xAxisCalloutData?: string;
 

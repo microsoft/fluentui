@@ -1510,9 +1510,9 @@ export function findVSBCNumericMinMaxOfY(dataset: DataPoint[]): { startValue: nu
 }
 
 /**
- * Fins the min and max values of the horizontal bar chart y axis data point.
+ * Finds the min and max values of the vertical bar chart y axis data point.
  * @export
- *  @param {HorizontalBarChartWithAxisDataPoint[]|GanttChartDataPoint[]} points
+ * @param {VerticalBarChartDataPoint[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
 export function findVerticalNumericMinMaxOfY(
@@ -1538,9 +1538,9 @@ export function findVerticalNumericMinMaxOfY(
   return { startValue: d3Min(values)!, endValue: d3Max(values)! };
 }
 /**
- * Fins the min and max values of the vertical bar chart y axis data point.
+ * Finds the min and max values of the horizontal bar chart y axis data point.
  * @export
- * @param {VerticalBarChartDataPoint[]} points
+ * @param {HorizontalBarChartWithAxisDataPoint[]|GanttChartDataPoint[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
 export function findHBCWANumericMinMaxOfY(
