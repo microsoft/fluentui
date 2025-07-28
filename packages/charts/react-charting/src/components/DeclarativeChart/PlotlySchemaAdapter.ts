@@ -866,6 +866,9 @@ const transformPlotlyJsonToScatterTraceProps = (
                   originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
                   direction: input.layout?.polar?.angularaxis?.direction,
                   rotation: input.layout?.polar?.angularaxis?.rotation,
+                  axisLabel: (series as { __axisLabel: string[] }).__axisLabel
+                    ? (series as { __axisLabel: string[] }).__axisLabel
+                    : {},
                 }
               : {}),
           },
@@ -1738,7 +1741,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
 export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
   const projection: PlotlySchema = { ...input };
 
-  // 1. Find the global min and max radius across all series
+  // Find the global min and max radius across all series
   let minRadius = 0;
   let maxRadius = 0;
   for (let sindex = 0; sindex < input.data.length; sindex++) {
@@ -1753,18 +1756,27 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
     }
   }
 
-  // 2. If there are negative radii, compute the shift
+  // If there are negative radii, compute the shift
   const radiusShift = minRadius < 0 ? -minRadius : 0;
 
-  // 3. Project all points and create a perfect square domain
+  // Collect all unique theta values from all scatterpolar series for equal spacing
+  const allThetaValues: Set<string> = new Set();
+  for (let sindex = 0; sindex < input.data.length; sindex++) {
+    const series = input.data[sindex] as Partial<PlotData>;
+    if (series.theta && isArrayOrTypedArray(series.theta)) {
+      series.theta.forEach(theta => allThetaValues.add(String(theta)));
+    }
+  }
+
+  // Project all points and create a perfect square domain
   const allX: number[] = [];
   const allY: number[] = [];
   let originX: number | null = null;
   for (let sindex = 0; sindex < input.data.length; sindex++) {
     const series = input.data[sindex] as Partial<PlotData>;
-    // If scatterpolar, set text to theta values as strings
-    if (series.type === 'scatterpolar' && Array.isArray(series.theta)) {
-      series.text = series.theta.map(v => String(v));
+    // If scatterpolar, set __axisLabel to all unique theta values for equal spacing
+    if (isArrayOrTypedArray(series.theta)) {
+      (series as { __axisLabel: string[] }).__axisLabel = Array.from(allThetaValues);
     }
     series.x = [] as Datum[];
     series.y = [] as Datum[];
@@ -1794,7 +1806,7 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
         continue;
       }
 
-      // 4. Map theta to angle in radians
+      // Map theta to angle in radians
       let thetaRad: number;
       if (categorical) {
         const idx = uniqueTheta.indexOf(thetas[ptindex]);
@@ -1803,10 +1815,10 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       } else {
         thetaRad = startAngleInRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
       }
-      // 5. Shift only the polar origin (not the cartesian)
+      // Shift only the polar origin (not the cartesian)
       const rawRadius = rVals[ptindex] as number;
       const polarRadius = rawRadius + radiusShift; // Only for projection
-      // 6. Calculate cartesian coordinates (with shifted polar origin)
+      // Calculate cartesian coordinates (with shifted polar origin)
       const x = polarRadius * Math.cos(thetaRad);
       const y = polarRadius * Math.sin(thetaRad);
 
