@@ -118,14 +118,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       return legends;
     }
 
-    function _focusCallback(data: ChartDataPoint, id: string, e: React.FocusEvent<SVGPathElement>): void {
-      let cx = 0;
-      let cy = 0;
-
-      const targetRect = (e.target as SVGPathElement).getBoundingClientRect();
-      cx = targetRect.left + targetRect.width / 2;
-      cy = targetRect.top + targetRect.height / 2;
-      updatePosition(cx, cy);
+    function _focusCallback(data: ChartDataPoint, id: string, element: SVGPathElement): void {
       setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
       setValue(data.data!.toString());
       setLegend(data.legend);

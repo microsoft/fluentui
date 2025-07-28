@@ -1,0 +1,15 @@
+{
+  "browser": "chrome",
+  "headless": false,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "userDataDir": null,
+  "isolated": false,
+  "contextOptions": {
+    "ignoreHTTPSErrors": false
+  },
+  "screenshotDir": "./screenshots",
+  "screenshotDelay": 15000
+}

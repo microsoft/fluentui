@@ -588,10 +588,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     Object.keys(lineObject).forEach((item: string, index: number) => {
       lineObject[item].forEach((circlePoint: LinePoint, subIndex: number) => {
         const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
-        const noBarsAndLinesActive =
-          circlePoint.xItem.chartData.filter(
-            dataPoint => _noLegendHighlighted() || _isLegendHighlighted(dataPoint.legend),
-          ).length === 0;
         dots.push(
           <circle
             key={`${index}-${subIndex}-dot`}
@@ -615,16 +611,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             strokeWidth={3}
             visibility={_getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).visibility}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+            data-is-focusable={_isLegendHighlighted(item)}
             ref={e => (circleRef.refElement = e)}
-            {...(noBarsAndLinesActive
-              ? {
-                  tabIndex: !props.hideTooltip ? 0 : undefined,
-                  onFocus: event => _lineFocus(event, circlePoint, circleRef),
-                  onBlur: _handleMouseOut,
-                  role: 'img',
-                  'aria-label': _getAriaLabel(circlePoint.xItem, circlePoint as VSChartDataPoint),
-                }
-              : {})}
+            onFocus={_lineFocus.bind(circlePoint, circleRef)}
+            onBlur={_lineHoverOut}
+            tabIndex={circlePoint.legend !== '' ? 0 : undefined}
           />,
         );
       });
@@ -723,11 +714,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     _lineHoverFocus(lineData);
   }
 
-  function _lineFocus(
-    event: React.FocusEvent<SVGCircleElement, Element>,
-    lineData: LinePoint,
-    ref: { refElement: SVGCircleElement | null },
-  ) {
+  function _lineFocus(lineData: LinePoint, ref: { refElement: SVGCircleElement | null }) {
     if (ref.refElement) {
       _lineHoverFocus(lineData);
     }
@@ -969,6 +956,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         const ref: RefArrayData = {};
         const shouldHighlight = _isLegendHighlighted(point.legend) || _noLegendHighlighted() ? true : false;
         const rectFocusProps = !shouldFocusWholeStack && {
+          'data-is-focusable': !props.hideTooltip && shouldHighlight,
           'aria-label': _getAriaLabel(singleChartData, point),
           onMouseOver: (event: React.MouseEvent<SVGElement, MouseEvent>) =>
             _onRectHover(singleChartData.xAxisPoint, point, startColor, event),
@@ -979,7 +967,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           onBlur: _handleMouseOut,
           onClick: (event: React.MouseEvent<SVGElement, MouseEvent>) => _onClick(point, event),
           role: 'img',
-          tabIndex: !props.hideTooltip && shouldHighlight ? 0 : undefined,
         };
 
         let barHeight = Math.abs(heightValueScale * point.data);
@@ -1048,6 +1035,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       });
       const groupRef: RefArrayData = {};
       const stackFocusProps = shouldFocusWholeStack && {
+        'data-is-focusable': !props.hideTooltip,
         'aria-label': _getAriaLabel(singleChartData),
         onMouseOver: (event: any) => _onStackHover(singleChartData, event),
         onMouseMove: (event: any) => _onStackHover(singleChartData, event),
@@ -1056,7 +1044,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         onBlur: _handleMouseOut,
         onClick: (event: any) => _onClick(singleChartData, event),
         role: 'img',
-        tabIndex: !props.hideTooltip ? 0 : undefined,
       };
       let showLabel = false;
       let barLabel = 0;
@@ -1075,7 +1062,12 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
-          <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
+          <g
+            id={`${indexNumber}-singleBar`}
+            ref={e => (groupRef.refElement = e)}
+            {...stackFocusProps}
+            tabIndex={!props.hideTooltip ? 0 : undefined}
+          >
             {singleBar}
           </g>
           {!props.hideLabels && _barWidth >= 16 && showLabel && (

@@ -532,9 +532,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               ref={(e: SVGCircleElement | null) => {
                 _refCallback(e!, circleId);
               }}
-              onFocus={event =>
-                _handleFocus(event, circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
-              }
+              onFocus={() => _handleFocus(circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
               onBlur={_handleMouseOut}
               {..._getClickHandler(_points[i].data[0].onDataPointClick)}
             />,
@@ -693,9 +691,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                   )
                 }
                 onMouseOut={_handleMouseOut}
-                onFocus={event =>
-                  _handleFocus(event, lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
-                }
+                onFocus={() => _handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
                 onBlur={_handleMouseOut}
                 {..._getClickHandler(_points[i].data[j - 1].onDataPointClick)}
                 opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
@@ -749,15 +745,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       )
                     }
                     onMouseOut={_handleMouseOut}
-                    onFocus={event =>
-                      _handleFocus(
-                        event,
-                        lineId,
-                        x2,
-                        lastCirlceXCallout,
-                        lastCircleId,
-                        lastCirlceXCalloutAccessibilityData,
-                      )
+                    onFocus={() =>
+                      _handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId, lastCirlceXCalloutAccessibilityData)
                     }
                     onBlur={_handleMouseOut}
                     {..._getClickHandler(_points[i].data[j].onDataPointClick)}
@@ -801,9 +790,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         event,
                         yScale,
                       )
-                    }
-                    onFocus={event =>
-                      _handleFocus(event, circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
                     }
                     onMouseOut={_handleMouseOut}
                     strokeWidth={0}
@@ -1118,7 +1104,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     };
 
     function _handleFocus(
-      event: React.FocusEvent<SVGCircleElement | SVGPathElement, Element>,
       lineId: string,
       x: number | Date,
 
@@ -1126,13 +1111,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       circleId: string,
       xAxisCalloutAccessibilityData?: AccessibilityProps,
     ) {
-      let cx = 0;
-      let cy = 0;
-
-      const targetRect = (event.target as SVGCircleElement | SVGPathElement).getBoundingClientRect();
-      cx = targetRect.left + targetRect.width / 2;
-      cy = targetRect.top + targetRect.height / 2;
-      updatePosition(cx, cy);
       _uniqueCallOutID = circleId;
       const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
       const xVal = x instanceof Date ? x.getTime() : x;

@@ -389,19 +389,11 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const onBarFocus = (
-    event: React.FocusEvent<SVGRectElement, Element>,
     pointData: GVBarChartSeriesPoint,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     groupData: any,
     refArrayIndexNumber: number,
   ): void => {
-    let x = 0;
-    let y = 0;
-
-    const targetRect = (event.target as SVGRectElement).getBoundingClientRect();
-    x = targetRect.left + targetRect.width / 2;
-    y = targetRect.top + targetRect.height / 2;
-    updatePosition(x, y);
     _refArray.forEach((obj: RefArrayData, index: number) => {
       if (obj.index === pointData.legend && refArrayIndexNumber === index) {
         setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(pointData.legend));
@@ -472,16 +464,17 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               width={_barWidth}
               x={xPoint}
               y={yPoint}
+              data-is-focusable={!props.hideTooltip && (_legendHighlighted(pointData.legend) || _noLegendHighlighted())}
               opacity={_getOpacity(pointData.legend)}
               ref={(e: SVGRectElement | null) => {
                 _refCallback(e!, pointData.legend, refIndexNumber);
               }}
               fill={startColor}
               rx={0}
-              onMouseOver={event => onBarHover(pointData, singleSet, event)}
-              onMouseMove={event => onBarHover(pointData, singleSet, event)}
+              onMouseOver={onBarHover.bind(null, pointData, singleSet)}
+              onMouseMove={onBarHover.bind(null, pointData, singleSet)}
               onMouseOut={_onBarLeave}
-              onFocus={event => onBarFocus(event, pointData, singleSet, refIndexNumber)}
+              onFocus={onBarFocus.bind(null, pointData, singleSet, refIndexNumber)}
               onBlur={_onBarLeave}
               onClick={pointData.onClick}
               aria-label={getAriaLabel(pointData, singleSet.xAxisPoint)}
