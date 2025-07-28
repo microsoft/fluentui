@@ -30,6 +30,9 @@ export const FadeRelaxed: PresenceComponent<FadeParams>;
 // @public (undocumented)
 export const FadeSnappy: PresenceComponent<FadeParams>;
 
+// @public (undocumented)
+export const Rotate: PresenceComponent<RotateParams>;
+
 // @public
 export const Scale: PresenceComponent<ScaleParams>;
 
