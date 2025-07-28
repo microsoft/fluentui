@@ -28,6 +28,8 @@ import {
   Legends,
   Chart,
   DataPoint,
+  ImageExportOptions,
+  LegendContainer,
 } from '../../index';
 import {
   ChartTypes,
@@ -56,6 +58,7 @@ import {
   domainRangeOfXStringAxis,
   createStringYAxis,
 } from '../../utilities/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
@@ -109,6 +112,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   let _xAxisOuterPadding: number = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
   const Y_ORIGIN: number = 0;
+  const _legendsRef = React.useRef<LegendContainer>(null);
 
   const [selectedLegends, setSelectedLegends] = React.useState(props.legendProps?.selectedLegends || []);
   const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
@@ -144,6 +148,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     props.componentRef,
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRtl, opts);
+      },
     }),
     [],
   );
@@ -211,6 +218,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         overflowText={props.legendsOverflowText}
         {...props.legendProps}
         onChange={_onLegendSelectionChange}
+        legendRef={_legendsRef}
       />
     );
   }

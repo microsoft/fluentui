@@ -25,6 +25,8 @@ import {
   ChartPopover,
   Chart,
   DataPoint,
+  ImageExportOptions,
+  LegendContainer,
 } from '../../index';
 import {
   ChartTypes,
@@ -50,6 +52,7 @@ import {
   domainRangeOfXStringAxis,
   createStringYAxis,
 } from '../../utilities/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -93,6 +96,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   let _xAxisOuterPadding: number = 0;
   type ColorScale = (_p?: number) => string;
   const cartesianChartRef = React.useRef<Chart>(null);
+  const _legendsRef = React.useRef<LegendContainer>(null);
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -114,6 +118,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     props.componentRef,
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _useRtl, opts);
+      },
     }),
     [],
   );
@@ -937,6 +944,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         {...props.legendProps}
         selectedLegends={selectedLegends}
         onChange={_onLegendSelectionChange}
+        legendRef={_legendsRef}
       />
     );
     return legends;

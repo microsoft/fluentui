@@ -232,6 +232,11 @@ export interface LegendsProps {
    * The shape for the legend.
    */
   shape?: LegendShape;
+
+  /**
+   * Callback to access the public methods and properties of the component.
+   */
+  legendRef?: React.RefObject<LegendContainer>;
 }
 
 /**
@@ -242,3 +247,17 @@ export interface LegendsProps {
  * {@docCategory Legends}
  */
 export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
+
+/**
+ * {@docCategory Legends}
+ */
+export interface LegendContainer {
+  toSVG: (
+    svgWidth: number,
+    isRTL?: boolean,
+  ) => {
+    node: SVGGElement | null;
+    width: number;
+    height: number;
+  };
+}

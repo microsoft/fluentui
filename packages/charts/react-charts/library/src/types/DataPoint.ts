@@ -755,6 +755,17 @@ export interface CustomizedCalloutData {
  */
 export interface Chart {
   chartContainer: HTMLElement | null;
+  toImage?: (opts?: ImageExportOptions) => Promise<string>;
+}
+
+/**
+ * {@docCategory Chart}
+ */
+export interface ImageExportOptions {
+  width?: number;
+  height?: number;
+  scale?: number;
+  background?: string;
 }
 
 export interface HeatMapChartDataPoint {
