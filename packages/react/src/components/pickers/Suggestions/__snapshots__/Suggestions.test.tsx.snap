@@ -161,6 +161,9 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-0"
           onClick={[Function]}
@@ -315,6 +318,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-1"
@@ -471,6 +477,9 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-2"
           onClick={[Function]}
@@ -625,6 +634,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-3"
@@ -781,6 +793,9 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-4"
           onClick={[Function]}
@@ -935,6 +950,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-5"
@@ -1091,6 +1109,9 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-6"
           onClick={[Function]}
@@ -1245,6 +1266,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-7"
@@ -1401,6 +1425,9 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-8"
           onClick={[Function]}
@@ -1555,6 +1582,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-9"
@@ -1711,6 +1741,9 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-10"
           onClick={[Function]}
@@ -1865,6 +1898,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-11"
@@ -2021,6 +2057,9 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-12"
           onClick={[Function]}
@@ -2176,6 +2215,9 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-13"
           onClick={[Function]}
@@ -2330,6 +2372,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-14"
@@ -2542,6 +2587,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-0"
           onClick={[Function]}
@@ -2696,6 +2744,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-1"
@@ -2852,6 +2903,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-2"
           onClick={[Function]}
@@ -3006,6 +3060,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-3"
@@ -3162,6 +3219,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-4"
           onClick={[Function]}
@@ -3316,6 +3376,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-5"
@@ -3472,6 +3535,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-6"
           onClick={[Function]}
@@ -3626,6 +3692,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-7"
@@ -3782,6 +3851,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-8"
           onClick={[Function]}
@@ -3936,6 +4008,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-9"
@@ -4092,6 +4167,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-10"
           onClick={[Function]}
@@ -4246,6 +4324,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-11"
@@ -4402,6 +4483,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-12"
           onClick={[Function]}
@@ -4557,6 +4641,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-13"
           onClick={[Function]}
@@ -4711,6 +4798,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-14"
@@ -4885,6 +4975,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-0"
           onClick={[Function]}
@@ -5039,6 +5132,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-1"
@@ -5195,6 +5291,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-2"
           onClick={[Function]}
@@ -5349,6 +5448,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-3"
@@ -5505,6 +5607,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-4"
           onClick={[Function]}
@@ -5659,6 +5764,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-5"
@@ -5815,6 +5923,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-6"
           onClick={[Function]}
@@ -5969,6 +6080,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-7"
@@ -6149,6 +6263,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-8"
           onClick={[Function]}
@@ -6303,6 +6420,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-9"
@@ -6459,6 +6579,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-10"
           onClick={[Function]}
@@ -6613,6 +6736,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-11"
@@ -6769,6 +6895,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-12"
           onClick={[Function]}
@@ -6924,6 +7053,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
+              & .ms-Button-flexContainer {
+                width: 100%;
+              }
           data-is-focusable={true}
           id="sug-13"
           onClick={[Function]}
@@ -7078,6 +7210,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              & .ms-Button-flexContainer {
+                width: 100%;
               }
           data-is-focusable={true}
           id="sug-14"
