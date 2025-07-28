@@ -1,17 +1,7 @@
 import * as React from 'react';
-import {
-  makeStyles,
-  tokens,
-  Button,
-  Card,
-  CardHeader,
-  CardPreview,
-  Body1,
-  Title3,
-  Caption1,
-} from '@fluentui/react-components';
+import { makeStyles, tokens, Button, Card, Title3, Body2, Caption1, motionTokens } from '@fluentui/react-components';
 import { Rotate } from '@fluentui/react-motion-components-preview';
-import { Star20Filled, ThumbLike20Filled, Eye20Filled } from '@fluentui/react-icons';
+import { RotateParams } from '../../../library/src/components/Rotate/rotate-types';
 
 const useClasses = makeStyles({
   container: {
@@ -19,188 +9,176 @@ const useClasses = makeStyles({
     flexDirection: 'column',
     gap: '20px',
     padding: '20px',
-    maxWidth: '900px',
+    maxWidth: '1000px',
+    perspective: '500px',
   },
   controls: {
     display: 'flex',
     gap: '10px',
     alignItems: 'center',
+    flexWrap: 'wrap',
     marginBottom: '20px',
   },
-  cardGrid: {
+  patternsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
     gap: '20px',
-    perspective: '1000px',
+    perspective: '800px',
   },
-  cardContainer: {
-    position: 'relative',
-    height: '200px',
-  },
-  card: {
-    height: '100%',
-    cursor: 'pointer',
-    transition: 'transform 0.2s',
-    '&:hover': {
-      transform: 'translateY(-2px)',
-      boxShadow: tokens.shadow28,
-    },
-  },
-  cardPreview: {
-    height: '120px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: tokens.fontSizeBase600,
-    position: 'relative',
-  },
-  cardBack: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `1px solid ${tokens.colorNeutralStroke2}`,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: tokens.spacingVerticalM,
-    height: '100%',
+  patternCard: {
+    height: '140px',
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
     justifyContent: 'center',
-    alignItems: 'center',
     gap: tokens.spacingVerticalS,
+    cursor: 'pointer',
+    transition: 'transform 0.2s ease',
+    '&:hover': {
+      transform: 'translateY(-2px)',
+      boxShadow: tokens.shadow16,
+    },
   },
-  stats: {
-    display: 'flex',
-    gap: tokens.spacingHorizontalS,
-    alignItems: 'center',
+  patternTitle: {
+    color: tokens.colorNeutralForeground1,
   },
-  statItem: {
+  patternDescription: {
+    color: tokens.colorNeutralForeground2,
+    textAlign: 'center',
+  },
+  demoIcon: {
+    width: '48px',
+    height: '48px',
+    borderRadius: tokens.borderRadiusMedium,
     display: 'flex',
     alignItems: 'center',
-    gap: tokens.spacingHorizontalXS,
+    justifyContent: 'center',
+    fontSize: '24px',
+    fontWeight: 'bold',
+    color: tokens.colorNeutralForegroundOnBrand,
   },
 });
 
-const cardData = [
+const curveSpringRelaxed = `linear(0.000 0.000%, 0.06073 1.000%, 0.1215 2.000%, 0.1822 3.000%, 0.2429 4.000%, 0.3036 5.000%, 0.3644 6.000%, 0.4251 7.000%, 0.4858 8.000%, 0.5465 9.000%, 0.6073 10.00%, 0.6680 11.00%, 0.7287 12.00%, 0.7895 13.00%, 0.8502 14.00%, 0.9109 15.00%, 0.9716 16.00%, 1.031 17.00%, 1.085 18.00%, 1.131 19.00%, 1.168 20.00%, 1.198 21.00%, 1.220 22.00%, 1.234 23.00%, 1.241 24.00%, 1.242 25.00%, 1.236 26.00%, 1.226 27.00%, 1.211 28.00%, 1.192 29.00%, 1.171 30.00%, 1.148 31.00%, 1.124 32.00%, 1.099 33.00%, 1.074 34.00%, 1.050 35.00%, 1.028 36.00%, 1.007 37.00%, 0.9880 38.00%, 0.9714 39.00%, 0.9572 40.00%, 0.9455 41.00%, 0.9364 42.00%, 0.9298 43.00%, 0.9255 44.00%, 0.9235 45.00%, 0.9236 46.00%, 0.9255 47.00%, 0.9291 48.00%, 0.9339 49.00%, 0.9399 50.00%, 0.9467 51.00%, 0.9541 52.00%, 0.9618 53.00%, 0.9697 54.00%, 0.9774 55.00%, 0.9849 56.00%, 0.9920 57.00%, 0.9986 58.00%, 1.004 59.00%, 1.010 60.00%, 1.014 61.00%, 1.018 62.00%, 1.020 63.00%, 1.022 64.00%, 1.024 65.00%, 1.024 66.00%, 1.024 67.00%, 1.023 68.00%, 1.022 69.00%, 1.021 70.00%, 1.019 71.00%, 1.017 72.00%, 1.014 73.00%, 1.012 74.00%, 1.009 75.00%, 1.007 76.00%, 1.004 77.00%, 1.002 78.00%, 1.000 79.00%, 0.9984 80.00%, 0.9968 81.00%, 0.9954 82.00%, 0.9943 83.00%, 0.9935 84.00%, 0.9929 85.00%, 0.9925 86.00%, 0.9923 87.00%, 0.9924 88.00%, 0.9926 89.00%, 0.9930 90.00%, 0.9935 91.00%, 0.9941 92.00%, 0.9948 93.00%, 0.9956 94.00%, 0.9964 95.00%, 0.9972 96.00%, 0.9979 97.00%, 0.9987 98.00%, 0.9994 99.00%, 1.000 100.0%)`;
+
+type RotatePattern = {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  color: string;
+  axis: Required<RotateParams['axis']>;
+  angle: Required<RotateParams['angle']>;
+  duration: Required<RotateParams['duration']>;
+  easing: Required<RotateParams['easing']>;
+  exitEasing: Required<RotateParams['easing']>;
+  exitDuration: Required<RotateParams['duration']>;
+};
+
+const patterns: RotatePattern[] = [
   {
-    id: 1,
-    title: 'Design System',
-    subtitle: 'Fluent UI Components',
-    color: tokens.colorPaletteBlueBackground2,
-    stats: { likes: 324, views: 1205, rating: 4.8 },
-    description: 'A comprehensive design system for modern applications',
+    id: 'flip-horizontal',
+    name: 'Horizontal Flip',
+    description: 'Y-axis rotation',
+    icon: '↔️',
+    color: tokens.colorPaletteBlueForeground2,
+    axis: 'y',
+    angle: 180,
+    easing: curveSpringRelaxed,
+    exitEasing: motionTokens.curveDecelerateMid,
+    duration: 2000,
+    exitDuration: motionTokens.durationUltraSlow,
   },
   {
-    id: 2,
-    title: 'React Motion',
-    subtitle: 'Animation Library',
-    color: tokens.colorPaletteGreenBackground2,
-    stats: { likes: 156, views: 892, rating: 4.6 },
-    description: 'Smooth and performant animations for React components',
+    id: 'flip-vertical',
+    name: 'Vertical Flip',
+    description: 'X-axis rotation',
+    icon: '↕️',
+    color: tokens.colorPaletteGreenForeground2,
+    axis: 'x',
+    angle: 180,
+    easing: curveSpringRelaxed,
+    exitEasing: motionTokens.curveDecelerateMid,
+    duration: 2000,
+    exitDuration: motionTokens.durationUltraSlow,
   },
   {
-    id: 3,
-    title: 'TypeScript',
-    subtitle: 'Type Safety',
-    color: tokens.colorPalettePurpleBackground2,
-    stats: { likes: 445, views: 2103, rating: 4.9 },
-    description: 'Strongly typed JavaScript for better development experience',
+    id: 'spin',
+    name: 'Spin',
+    description: 'Z-axis rotation',
+    icon: '🔄',
+    color: tokens.colorPaletteRedForeground2,
+    axis: 'z',
+    angle: 180,
+    easing: curveSpringRelaxed,
+    exitEasing: motionTokens.curveDecelerateMid,
+    duration: 2000,
+    exitDuration: motionTokens.durationUltraSlow,
   },
 ];
 
 export const CardFlip = () => {
   const classes = useClasses();
-  const [flippedCards, setFlippedCards] = React.useState<Set<number>>(new Set());
-  const [autoFlip, setAutoFlip] = React.useState(false);
+  const [activePatterns, setActivePatterns] = React.useState<Set<string>>(new Set(patterns.map(p => p.id)));
 
-  const toggleCard = (cardId: number) => {
-    setFlippedCards(prev => {
+  const togglePattern = (patternId: string) => {
+    setActivePatterns(prev => {
       const newSet = new Set(prev);
-      if (newSet.has(cardId)) {
-        newSet.delete(cardId);
+      if (newSet.has(patternId)) {
+        newSet.delete(patternId);
       } else {
-        newSet.add(cardId);
+        newSet.add(patternId);
       }
       return newSet;
     });
   };
 
-  const flipAllCards = () => {
-    if (flippedCards.size === cardData.length) {
-      setFlippedCards(new Set());
+  const toggleAllPatterns = () => {
+    if (activePatterns.size === patterns.length) {
+      // All are showing, so hide all
+      setActivePatterns(new Set());
     } else {
-      setFlippedCards(new Set(cardData.map(card => card.id)));
+      // Some or none are showing, so show all
+      setActivePatterns(new Set(patterns.map(p => p.id)));
     }
   };
 
-  React.useEffect(() => {
-    if (!autoFlip) return;
-
-    const interval = setInterval(() => {
-      const randomCard = cardData[Math.floor(Math.random() * cardData.length)];
-      toggleCard(randomCard.id);
-    }, 1500);
-
-    return () => clearInterval(interval);
-  }, [autoFlip]);
+  const allPatternsVisible = activePatterns.size === patterns.length;
 
   return (
     <div className={classes.container}>
       <div className={classes.controls}>
-        <Button appearance="primary" onClick={flipAllCards}>
-          {flippedCards.size === cardData.length ? 'Flip All Back' : 'Flip All Cards'}
-        </Button>
-        <Button appearance={autoFlip ? 'primary' : 'secondary'} onClick={() => setAutoFlip(!autoFlip)}>
-          {autoFlip ? 'Stop Auto Flip' : 'Auto Flip'}
-        </Button>
+        <Button onClick={toggleAllPatterns}>{allPatternsVisible ? 'Hide All' : 'Show All'}</Button>
       </div>
 
-      <div className={classes.cardGrid}>
-        {cardData.map(card => (
-          <div key={card.id} className={classes.cardContainer}>
+      <div className={classes.patternsGrid}>
+        {patterns.map(pattern => (
+          <div key={pattern.id}>
             <Rotate
-              visible={!flippedCards.has(card.id)}
-              axis="Y"
-              angle={0}
-              exitAngle={180}
-              duration={600}
-              easing="cubic-bezier(0.4, 0, 0.2, 1)"
+              visible={activePatterns.has(pattern.id)}
+              axis={pattern.axis}
+              angle={pattern.angle}
+              duration={pattern.duration}
+              easing={pattern.easing}
+              exitEasing={pattern.exitEasing}
+              exitDuration={pattern.exitDuration}
+              animateOpacity={false}
             >
-              <Card className={classes.card} onClick={() => toggleCard(card.id)}>
-                <CardPreview className={classes.cardPreview} style={{ backgroundColor: card.color }}>
-                  <Title3>{card.title}</Title3>
-                </CardPreview>
-                <CardHeader header={<Body1>{card.title}</Body1>} description={<Caption1>{card.subtitle}</Caption1>} />
-              </Card>
-            </Rotate>
-
-            <Rotate
-              visible={flippedCards.has(card.id)}
-              axis="Y"
-              angle={-180}
-              exitAngle={0}
-              duration={600}
-              easing="cubic-bezier(0.4, 0, 0.2, 1)"
-            >
-              <div className={classes.cardBack} onClick={() => toggleCard(card.id)}>
-                <Title3>{card.title}</Title3>
-                <Body1 style={{ textAlign: 'center', margin: tokens.spacingVerticalM }}>{card.description}</Body1>
-                <div className={classes.stats}>
-                  <div className={classes.statItem}>
-                    <ThumbLike20Filled color={tokens.colorPaletteRedForeground2} />
-                    <Caption1>{card.stats.likes}</Caption1>
-                  </div>
-                  <div className={classes.statItem}>
-                    <Eye20Filled color={tokens.colorPaletteBlueForeground2} />
-                    <Caption1>{card.stats.views}</Caption1>
-                  </div>
-                  <div className={classes.statItem}>
-                    <Star20Filled color={tokens.colorPaletteYellowForeground2} />
-                    <Caption1>{card.stats.rating}</Caption1>
-                  </div>
+              <Card className={classes.patternCard} onClick={() => togglePattern(pattern.id)}>
+                <div className={classes.demoIcon} style={{ backgroundColor: pattern.color }}>
+                  {pattern.icon}
                 </div>
-              </div>
+                <Title3 className={classes.patternTitle}>{pattern.name}</Title3>
+                <Caption1 className={classes.patternDescription}>{pattern.description}</Caption1>
+              </Card>
             </Rotate>
           </div>
         ))}
       </div>
+
+      <Body2 style={{ textAlign: 'center', color: tokens.colorNeutralForeground2, marginTop: '20px' }}>
+        Click any pattern to see its rotation effect, or use the controls above to see them all in sequence
+      </Body2>
     </div>
   );
 };
@@ -209,7 +187,7 @@ CardFlip.parameters = {
   docs: {
     description: {
       story:
-        'Demonstrates card flip animations using Y-axis rotation. Click cards to flip them and reveal additional information on the back.',
+        'A collection of common single-axis rotation patterns that you can use as starting points for your own animations. Each pattern demonstrates rotation around a specific axis (X, Y, or Z) with spring-relaxed easing.',
     },
   },
 };
