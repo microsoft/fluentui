@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, tokens, Button, Card, Title3, Body2, Caption1, motionTokens } from '@fluentui/react-components';
+import { makeStyles, tokens, Button, Card, Title3, Caption1, motionTokens } from '@fluentui/react-components';
 import { Rotate } from '@fluentui/react-motion-components-preview';
 import { RotateParams } from '../../../library/src/components/Rotate/rotate-types';
 
@@ -26,20 +26,22 @@ const useClasses = makeStyles({
   cardWrapper: {
     perspective: '800px',
     perspectiveOrigin: 'center center',
+    height: '140px',
+    cursor: 'pointer',
+    transition: 'transform 0.2s ease',
+    borderRadius: tokens.borderRadiusMedium,
+    '&:hover': {
+      transform: 'translateY(-2px)',
+    },
   },
   patternCard: {
-    height: '140px',
+    height: '100%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     gap: tokens.spacingVerticalS,
-    cursor: 'pointer',
-    transition: 'transform 0.2s ease',
-    '&:hover': {
-      transform: 'translateY(-2px)',
-      boxShadow: tokens.shadow16,
-    },
+    border: `2px solid ${tokens.colorNeutralStroke1}`,
   },
   patternTitle: {
     color: tokens.colorNeutralForeground1,
