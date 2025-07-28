@@ -10,6 +10,7 @@ import {
   RadioGroup,
   Radio,
   motionTokens,
+  Button,
 } from '@fluentui/react-components';
 import { Rotate } from '@fluentui/react-motion-components-preview';
 import { Axis3D } from '../../../library/src/atoms/rotate-atom';
@@ -20,30 +21,68 @@ const useClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
-    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`, // 20px 10px
-    // perspective: '1000px',
+    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
     overflow: 'clip',
   },
   card: {
     gridArea: 'card',
-    padding: tokens.spacingHorizontalMNudge, // 10px
+    padding: tokens.spacingHorizontalMNudge,
   },
   controls: {
     display: 'flex',
     flexDirection: 'column',
     gridArea: 'controls',
-
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
-    padding: tokens.spacingHorizontalMNudge, // 10px
+    padding: tokens.spacingHorizontalL,
+    gap: tokens.spacingVerticalL,
+  },
+  controlSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalM,
+  },
+  sectionHeader: {
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightSemibold,
+    color: tokens.colorNeutralForeground2,
+    marginBottom: tokens.spacingVerticalXS,
+    borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
+    paddingBottom: tokens.spacingVerticalXS,
+  },
+  toggleGroup: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: tokens.spacingHorizontalM,
+  },
+  ctaButton: {
+    flex: 1,
   },
   field: {
-    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalXS,
+  },
+  sliderField: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalXS,
   },
   sliderWrapper: {
     display: 'flex',
     alignItems: 'center',
+    gap: tokens.spacingHorizontalS,
+  },
+  sliderLabel: {
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightMedium,
+    color: tokens.colorNeutralForeground1,
+  },
+  valueDisplay: {
+    fontSize: tokens.fontSizeBase100,
+    color: tokens.colorNeutralForeground2,
+    fontFamily: tokens.fontFamilyMonospace,
   },
 });
 
@@ -78,75 +117,94 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
   return (
     <div className={classes.container} style={{ perspective }}>
       <div className={classes.controls}>
-        <Field className={classes.field}>
-          <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
-        </Field>
-
-        <Field className={classes.field}>
-          <Switch
-            label="Autoplay"
-            checked={autoplay}
-            onChange={() => {
-              if (!autoplay) {
-                setVisible(!visible);
-              }
-              return setAutoplay(v => !v);
-            }}
-          />
-        </Field>
-
-        <Field className={classes.field}>
-          <Label>Rotation Axis</Label>
-          <RadioGroup value={axis} onChange={(_, data) => setAxis(data.value as Axis3D)} layout="horizontal">
-            <Radio value="x" label="x" />
-            <Radio value="y" label="y" />
-            <Radio value="z" label="z" />
-          </RadioGroup>
-        </Field>
-
-        <label htmlFor={enterAngleSliderId}>Enter Angle: {angle}°</label>
-        <div className={classes.sliderWrapper}>
-          <Label aria-hidden>{angleMin}</Label>
-          <Slider
-            min={angleMin}
-            max={angleMax}
-            defaultValue={angle}
-            id={enterAngleSliderId}
-            onChange={(_, data) => {
-              setEnterAngle(data.value);
-            }}
-          />
-          <Label aria-hidden>{angleMax}</Label>
+        {/* Animation Controls Section */}
+        <div className={classes.controlSection}>
+          <div className={classes.toggleGroup}>
+            <Button className={classes.ctaButton} appearance="primary" size="large" onClick={() => setVisible(v => !v)}>
+              {visible ? 'Hide' : 'Show'}
+            </Button>
+            <Field>
+              <Switch
+                label="Autoplay"
+                checked={autoplay}
+                onChange={() => {
+                  if (!autoplay) {
+                    setVisible(!visible);
+                  }
+                  return setAutoplay(v => !v);
+                }}
+              />
+            </Field>
+          </div>
         </div>
 
-        <Label htmlFor={durationSliderId}>duration: {duration}</Label>
-        <div className={classes.sliderWrapper}>
-          <Label aria-hidden>{durationMin}</Label>
-          <Slider
-            min={durationMin}
-            max={durationMax}
-            defaultValue={motionTokens.durationUltraSlow} // 500ms
-            id={durationSliderId}
-            onChange={(_, data) => {
-              setDuration(data.value);
-            }}
-          />
-          <Label aria-hidden>{durationMax}</Label>
+        {/* Rotation Settings Section */}
+        <div className={classes.controlSection}>
+          <Field className={classes.field}>
+            <Label className={classes.sliderLabel}>Rotation Axis</Label>
+            <RadioGroup value={axis} onChange={(_, data) => setAxis(data.value as Axis3D)} layout="horizontal">
+              <Radio value="x" label="X-axis" />
+              <Radio value="y" label="Y-axis" />
+              <Radio value="z" label="Z-axis" />
+            </RadioGroup>
+          </Field>
+
+          <Field className={classes.sliderField}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Label htmlFor={enterAngleSliderId} className={classes.sliderLabel}>
+                Enter Angle
+              </Label>
+              <span className={classes.valueDisplay}>{angle}°</span>
+            </div>
+            <Slider
+              min={angleMin}
+              max={angleMax}
+              defaultValue={angle}
+              id={enterAngleSliderId}
+              onChange={(_, data) => {
+                setEnterAngle(data.value);
+              }}
+            />
+          </Field>
         </div>
 
-        <Label htmlFor={perspectiveSliderId}>perspective: {perspective}</Label>
-        <div className={classes.sliderWrapper}>
-          <Label aria-hidden>{perspectiveMin}</Label>
-          <Slider
-            min={perspectiveMin}
-            max={perspectiveMax}
-            defaultValue={1000}
-            id={perspectiveSliderId}
-            onChange={(_, data) => {
-              setPerspective(`${data.value}px`);
-            }}
-          />
-          <Label aria-hidden>{perspectiveMax}</Label>
+        {/* Timing & Perspective Section */}
+        <div className={classes.controlSection}>
+          <Field className={classes.sliderField}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Label htmlFor={durationSliderId} className={classes.sliderLabel}>
+                Duration
+              </Label>
+              <span className={classes.valueDisplay}>{duration}ms</span>
+            </div>
+            <Slider
+              min={durationMin}
+              max={durationMax}
+              defaultValue={motionTokens.durationUltraSlow}
+              id={durationSliderId}
+              onChange={(_, data) => {
+                setDuration(data.value);
+              }}
+            />
+          </Field>
+
+          <Field className={classes.sliderField}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Label htmlFor={perspectiveSliderId} className={classes.sliderLabel}>
+                Perspective
+              </Label>
+              <span className={classes.valueDisplay}>{perspective}</span>
+            </div>
+            <Slider
+              min={perspectiveMin}
+              max={perspectiveMax}
+              defaultValue={1000}
+              id={perspectiveSliderId}
+              onChange={(_, data) => {
+                setPerspective(`${data.value}px`);
+              }}
+            />
+          </Field>
         </div>
       </div>
 
