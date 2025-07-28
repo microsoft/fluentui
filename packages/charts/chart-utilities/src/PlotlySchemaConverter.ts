@@ -366,6 +366,7 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
     },
   ],
   scatter: [data => validateScatterData(data as Partial<PlotData>)],
+  scattergl: [data => validateScatterData(data as Partial<PlotData>)],
   scatterpolar: [
     data => {
       if (!isNumberArray((data as Partial<PlotData>).theta) && !isStringArray((data as Partial<PlotData>).theta)) {
@@ -471,6 +472,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
         case 'funnelarea':
           return { isValid: true, traceIndex, type: 'funnel' };
         case 'scatter':
+        case 'scattergl':
           const scatterData = traceData as Partial<PlotData>;
           const isAreaChart =
             scatterData.fill === 'tonexty' || scatterData.fill === 'tozeroy' || !!scatterData.stackgroup;
