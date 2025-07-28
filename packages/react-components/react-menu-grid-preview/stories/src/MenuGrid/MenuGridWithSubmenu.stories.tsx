@@ -1,23 +1,19 @@
 import * as React from 'react';
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
-import type { MenuProps } from '@fluentui/react-components';
 import { MenuGrid, MenuGridCell, MenuGridRow } from '@fluentui/react-menu-grid-preview';
 
 const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'];
 
 const Submenu = () => {
-  const [open, setOpen] = React.useState(false);
-  const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
-    if (data.type === 'menuTriggerKeyDown' && (e as KeyboardEvent).key === 'ArrowDown') {
-      return;
-    }
-    setOpen(data.open);
-  };
-
   return (
-    <Menu open={open} onOpenChange={onOpenChange} positioning={{ autoSize: true }}>
+    <Menu positioning={{ autoSize: true }}>
       <MenuTrigger disableButtonEnhancement>
-        <Button>More actions</Button>
+        <Button onKeyDown={(event) => {
+if (event.key === 'ArrowDown') {
+  // Prevent arrow down from opening the menu to enable navigation in grid instead
+  event.preventDefault();
+}
+        }}>More actions</Button>
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
