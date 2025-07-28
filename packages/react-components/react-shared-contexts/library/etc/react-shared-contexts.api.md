@@ -114,6 +114,11 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useListboxStyles_unstable: CustomStyleHook;
     useMenuButtonStyles_unstable: CustomStyleHook;
     useMenuDividerStyles_unstable: CustomStyleHook;
+    useMenuGridStyles_unstable: CustomStyleHook;
+    useMenuGridCellStyles_unstable: CustomStyleHook;
+    useMenuGridRowStyles_unstable: CustomStyleHook;
+    useMenuGridRowGroupStyles_unstable: CustomStyleHook;
+    useMenuGridRowGroupHeaderStyles_unstable: CustomStyleHook;
     useMenuGroupHeaderStyles_unstable: CustomStyleHook;
     useMenuGroupStyles_unstable: CustomStyleHook;
     useMenuItemCheckboxStyles_unstable: CustomStyleHook;
@@ -310,6 +315,11 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useListboxStyles_unstable: CustomStyleHook;
     useMenuButtonStyles_unstable: CustomStyleHook;
     useMenuDividerStyles_unstable: CustomStyleHook;
+    useMenuGridStyles_unstable: CustomStyleHook;
+    useMenuGridCellStyles_unstable: CustomStyleHook;
+    useMenuGridRowStyles_unstable: CustomStyleHook;
+    useMenuGridRowGroupStyles_unstable: CustomStyleHook;
+    useMenuGridRowGroupHeaderStyles_unstable: CustomStyleHook;
     useMenuGroupHeaderStyles_unstable: CustomStyleHook;
     useMenuGroupStyles_unstable: CustomStyleHook;
     useMenuItemCheckboxStyles_unstable: CustomStyleHook;
@@ -506,6 +516,11 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useListboxStyles_unstable: CustomStyleHook;
     useMenuButtonStyles_unstable: CustomStyleHook;
     useMenuDividerStyles_unstable: CustomStyleHook;
+    useMenuGridStyles_unstable: CustomStyleHook;
+    useMenuGridCellStyles_unstable: CustomStyleHook;
+    useMenuGridRowStyles_unstable: CustomStyleHook;
+    useMenuGridRowGroupStyles_unstable: CustomStyleHook;
+    useMenuGridRowGroupHeaderStyles_unstable: CustomStyleHook;
     useMenuGroupHeaderStyles_unstable: CustomStyleHook;
     useMenuGroupStyles_unstable: CustomStyleHook;
     useMenuItemCheckboxStyles_unstable: CustomStyleHook;
