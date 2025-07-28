@@ -2,6 +2,33 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Mon, 28 Jul 2025 18:48:21 GMT",
+      "tag": "@fluentui/react-textarea_v9.6.1",
+      "version": "9.6.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-field to v9.4.1",
+            "commit": "27822054c223a560c0b49ec0b9079f628776e498"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-utilities to v9.23.0",
+            "commit": "27822054c223a560c0b49ec0b9079f628776e498"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.1.3",
+            "commit": "27822054c223a560c0b49ec0b9079f628776e498"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Jul 2025 13:49:50 GMT",
       "tag": "@fluentui/react-textarea_v9.6.0",
       "version": "9.6.0",
