@@ -8,12 +8,16 @@ const Submenu = () => {
   return (
     <Menu positioning={{ autoSize: true }}>
       <MenuTrigger disableButtonEnhancement>
-        <Button onKeyDown={(event) => {
-if (event.key === 'ArrowDown') {
-  // Prevent arrow down from opening the menu to enable navigation in grid instead
-  event.preventDefault();
-}
-        }}>More actions</Button>
+        <Button
+          onKeyDown={event => {
+            if (event.key === 'ArrowDown') {
+              // Prevent arrow down from opening the menu to enable navigation in grid instead
+              event.preventDefault();
+            }
+          }}
+        >
+          More actions
+        </Button>
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
