@@ -28,10 +28,10 @@ const useClasses = makeStyles({
     perspectiveOrigin: 'center center',
     height: '140px',
     cursor: 'pointer',
-    transition: 'transform 0.2s ease',
     borderRadius: tokens.borderRadiusMedium,
+    transition: `scale ${motionTokens.durationSlow}ms ${motionTokens.curveDecelerateMid}`,
     '&:hover': {
-      transform: 'translateY(-2px)',
+      scale: '105%',
     },
   },
   patternCard: {
@@ -155,11 +155,15 @@ export const CardFlip = () => {
     }
   };
 
+  const getToggleButtonText = () => {
+    return activePatterns.size === patterns.length ? 'Flip to Back' : 'Flip to Front';
+  };
+
   return (
     <div className={classes.container}>
       <div className={classes.controls}>
         <Button onClick={toggleAllPatterns} aria-label="Toggle all rotation patterns">
-          Flip All
+          {getToggleButtonText()}
         </Button>
       </div>
 
