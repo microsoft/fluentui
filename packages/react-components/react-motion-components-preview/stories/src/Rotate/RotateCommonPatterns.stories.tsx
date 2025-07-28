@@ -1,6 +1,28 @@
 import * as React from 'react';
 import { makeStyles, tokens, Button, Card, Title3, Body2, Caption1 } from '@fluentui/react-components';
 import { Rotate } from '@fluentui/react-motion-components-preview';
+import { RotateParams } from '../../../library/src/components/Rotate/rotate-types';
+
+type RotatePattern = {
+  /** Unique identifier for the pattern */
+  id: string;
+  /** Display name of the pattern */
+  name: string;
+  /** Description of what the pattern does */
+  description: string;
+  /** Emoji icon for visual representation */
+  icon: string;
+  /** Background color for the demo card */
+  color: string;
+  /** The axis of rotation: 'x', 'y', or 'z' - matches Rotate component */
+  axis: Required<RotateParams['axis']>;
+  /** The starting rotation angle in degrees - matches Rotate component */
+  angle: Required<RotateParams['angle']>;
+  /** Time (ms) for the animation - matches Rotate component */
+  duration: Required<RotateParams['duration']>;
+  /** Easing curve for the animation - matches Rotate component */
+  easing: Required<RotateParams['easing']>;
+};
 
 const useClasses = makeStyles({
   container: {
@@ -57,17 +79,19 @@ const useClasses = makeStyles({
   },
 });
 
-const patterns = [
+const curveSpringRelaxed = `linear(0.000 0.000%, 0.06073 1.000%, 0.1215 2.000%, 0.1822 3.000%, 0.2429 4.000%, 0.3036 5.000%, 0.3644 6.000%, 0.4251 7.000%, 0.4858 8.000%, 0.5465 9.000%, 0.6073 10.00%, 0.6680 11.00%, 0.7287 12.00%, 0.7895 13.00%, 0.8502 14.00%, 0.9109 15.00%, 0.9716 16.00%, 1.031 17.00%, 1.085 18.00%, 1.131 19.00%, 1.168 20.00%, 1.198 21.00%, 1.220 22.00%, 1.234 23.00%, 1.241 24.00%, 1.242 25.00%, 1.236 26.00%, 1.226 27.00%, 1.211 28.00%, 1.192 29.00%, 1.171 30.00%, 1.148 31.00%, 1.124 32.00%, 1.099 33.00%, 1.074 34.00%, 1.050 35.00%, 1.028 36.00%, 1.007 37.00%, 0.9880 38.00%, 0.9714 39.00%, 0.9572 40.00%, 0.9455 41.00%, 0.9364 42.00%, 0.9298 43.00%, 0.9255 44.00%, 0.9235 45.00%, 0.9236 46.00%, 0.9255 47.00%, 0.9291 48.00%, 0.9339 49.00%, 0.9399 50.00%, 0.9467 51.00%, 0.9541 52.00%, 0.9618 53.00%, 0.9697 54.00%, 0.9774 55.00%, 0.9849 56.00%, 0.9920 57.00%, 0.9986 58.00%, 1.004 59.00%, 1.010 60.00%, 1.014 61.00%, 1.018 62.00%, 1.020 63.00%, 1.022 64.00%, 1.024 65.00%, 1.024 66.00%, 1.024 67.00%, 1.023 68.00%, 1.022 69.00%, 1.021 70.00%, 1.019 71.00%, 1.017 72.00%, 1.014 73.00%, 1.012 74.00%, 1.009 75.00%, 1.007 76.00%, 1.004 77.00%, 1.002 78.00%, 1.000 79.00%, 0.9984 80.00%, 0.9968 81.00%, 0.9954 82.00%, 0.9943 83.00%, 0.9935 84.00%, 0.9929 85.00%, 0.9925 86.00%, 0.9923 87.00%, 0.9924 88.00%, 0.9926 89.00%, 0.9930 90.00%, 0.9935 91.00%, 0.9941 92.00%, 0.9948 93.00%, 0.9956 94.00%, 0.9964 95.00%, 0.9972 96.00%, 0.9979 97.00%, 0.9987 98.00%, 0.9994 99.00%, 1.000 100.0%)`;
+
+const patterns: RotatePattern[] = [
   {
     id: 'flip-horizontal',
     name: 'Horizontal Flip',
     description: 'Classic Y-axis rotation',
     icon: '↔️',
     color: tokens.colorPaletteBlueForeground2,
-    axis: 'Y' as const,
-    angle: 180,
-    easing: 'ease-out',
-    duration: 600,
+    axis: 'y',
+    angle: 90,
+    easing: curveSpringRelaxed,
+    duration: 2000,
   },
   {
     id: 'flip-vertical',
@@ -75,10 +99,10 @@ const patterns = [
     description: 'X-axis rotation',
     icon: '↕️',
     color: tokens.colorPaletteGreenForeground2,
-    axis: 'X' as const,
-    angle: 180,
-    easing: 'ease-out',
-    duration: 600,
+    axis: 'x',
+    angle: 90,
+    easing: curveSpringRelaxed,
+    duration: 2000,
   },
   {
     id: 'spin',
@@ -86,43 +110,10 @@ const patterns = [
     description: 'Z-axis rotation',
     icon: '🔄',
     color: tokens.colorPaletteRedForeground2,
-    axis: 'Z' as const,
-    angle: 360,
-    easing: 'ease-in-out',
-    duration: 800,
-  },
-  {
-    id: 'wobble',
-    name: 'Wobble',
-    description: 'Gentle X-axis tilt',
-    icon: '〰️',
-    color: tokens.colorPaletteYellowForeground2,
-    axis: 'X' as const,
-    angle: 15,
-    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-    duration: 400,
-  },
-  {
-    id: 'peek',
-    name: 'Peek',
-    description: 'Slight Y-axis reveal',
-    icon: '👀',
-    color: tokens.colorPaletteTealForeground2,
-    axis: 'Y' as const,
-    angle: -15,
-    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-    duration: 400,
-  },
-  {
-    id: 'fold',
-    name: 'Fold',
-    description: 'Accordion-style fold',
-    icon: '📄',
-    color: tokens.colorPaletteDarkOrangeForeground2,
-    axis: 'X' as const,
-    angle: -90,
-    easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-    duration: 500,
+    axis: 'z',
+    angle: 90,
+    easing: curveSpringRelaxed,
+    duration: 2000,
   },
 ];
 
@@ -213,7 +204,7 @@ CommonPatterns.parameters = {
   docs: {
     description: {
       story:
-        'A collection of common single-axis rotation patterns that you can use as starting points for your own animations. Each pattern demonstrates rotation around a specific axis (X, Y, or Z) with different easing curves.',
+        'A collection of common single-axis rotation patterns that you can use as starting points for your own animations. Each pattern demonstrates rotation around a specific axis (X, Y, or Z) with spring-relaxed easing.',
     },
   },
 };
