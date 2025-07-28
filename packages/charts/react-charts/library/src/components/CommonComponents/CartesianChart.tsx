@@ -20,6 +20,7 @@ import {
   useRtl,
   truncateString,
   tooltipOfAxislabels,
+  getSecureProps,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
@@ -585,7 +586,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           aria-label={props.chartTitle}
           style={{ display: 'block' }}
           className={classes.chart}
-          {...svgProps}
+          {...getSecureProps(svgProps)}
         >
           <g
             ref={(e: SVGSVGElement | null) => {
