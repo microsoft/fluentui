@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { AriaLiveAnnouncer, Field, Input, makeStyles, tokens, useId } from '@fluentui/react-components';
+import type { InputProps } from '@fluentui/react-components';
 import { useTypingAnnounce } from '../../../library/src/useTypingAnnounce/useTypingAnnounce';
 
 const useStyles = makeStyles({
@@ -45,7 +46,7 @@ export const Filtering = () => {
 
   const { typingAnnounce, inputRef } = useTypingAnnounce<HTMLInputElement>();
 
-  const onChange = (_, data: any) => {
+  const onChange: InputProps['onChange'] = (_, data) => {
     const searchString = data.value.trim().toLowerCase();
     const filteredItems = searchString.length
       ? sampleItems.filter(item => item.toLowerCase().includes(searchString))
