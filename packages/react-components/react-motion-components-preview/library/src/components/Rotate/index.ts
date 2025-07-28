@@ -1,1 +1,1 @@
-export { Rotate, type RotateParams } from './Rotate';
+export { Rotate } from './Rotate';
