@@ -14,11 +14,11 @@ export type RotateParams = PresenceDuration &
      * The starting rotation angle in degrees.
      * Defaults to -90.
      */
-    enterAngle?: number;
+    angle?: number;
 
     /**
      * The ending rotation angle in degrees.
-     * Defaults to the negation of `enterAngle`.
+     * Defaults to the negation of `angle`.
      */
     exitAngle?: number;
   };

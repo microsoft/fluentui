@@ -158,7 +158,7 @@ export const CardFlip = () => {
             <Rotate
               visible={!flippedCards.has(card.id)}
               axis="Y"
-              enterAngle={0}
+              angle={0}
               exitAngle={180}
               duration={600}
               easing="cubic-bezier(0.4, 0, 0.2, 1)"
@@ -174,7 +174,7 @@ export const CardFlip = () => {
             <Rotate
               visible={flippedCards.has(card.id)}
               axis="Y"
-              enterAngle={-180}
+              angle={-180}
               exitAngle={0}
               duration={600}
               easing="cubic-bezier(0.4, 0, 0.2, 1)"
