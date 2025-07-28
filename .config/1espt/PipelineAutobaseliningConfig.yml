@@ -82,3 +82,23 @@ pipelines:
           lastModifiedDate: 2025-05-14
         armory:
           lastModifiedDate: 2025-05-14
+  228:
+    retail:
+      binary:
+        credscan:
+          lastModifiedDate: 2025-07-28
+        binskim:
+          lastModifiedDate: 2025-07-28
+        spotbugs:
+          lastModifiedDate: 2025-07-28
+      source:
+        credscan:
+          lastModifiedDate: 2025-07-28
+        eslint:
+          lastModifiedDate: 2025-07-28
+        psscriptanalyzer:
+          lastModifiedDate: 2025-07-28
+        armory:
+          lastModifiedDate: 2025-07-28
+        accessibilityinsights:
+          lastModifiedDate: 2025-07-28
