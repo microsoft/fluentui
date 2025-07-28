@@ -1,242 +1,19 @@
 import { mkdir, rm, writeFile, readFile } from 'node:fs/promises';
 import { join, resolve, extname } from 'node:path';
-import { cwd } from 'node:process';
 import { existsSync } from 'node:fs';
 
 import { type BrowserContext, type Page, chromium } from 'playwright';
 import Turndown from 'turndown';
 // @ts-expect-error - No types available for this package
 import { strikethrough, tables, taskListItems } from 'turndown-plugin-gfm';
-import yargs from 'yargs';
 
-/**
- * CLI arguments
- */
-export type Args = {
-  /**
-   * Relative path to the Storybook distribution folder
-   * @example `--distPath "storybook-static"`
-   */
-  distPath: string;
-  /**
-   * Base URL for the Storybook docs
-   * @example `--baseUrl "https://storybook.fluentui.dev/"`
-   */
-  baseUrl: string;
-  /**
-   * Title for the llms.txt file
-   * @example `--summaryTitle "Fluent UI Components and Pages"`
-   */
-  summaryTitle?: string;
-  /**
-   * Description for the llms.txt file
-   * @example `--summaryDescription "This file contains the LLMs documentation for all components and pages."`
-   */
-  summaryDescription?: string;
-  /**
-   * Array of composed Storybook refs.
-   * Used to reference external Storybook docs.
-   * @example `--refs "{title:'foo', url:'www'}"`
-   */
-  refs?: StorybookRef[];
-};
-
-/**
- * Storybook store item, contains component/page metadata and stories.
- */
-export type StorybookStoreItem = {
-  meta: StorybookStoreItemMeta;
-  stories: Record<string, StorybookStoreItemStory>;
-};
-
-/**
- * Storybook store item metadata
- */
-export type StorybookStoreItemMeta = {
-  id: string;
-  title: string;
-  parameters: {
-    fileName: string;
-    docs?: {
-      description?: {
-        component?: string;
-        story?: string;
-      };
-    };
-  };
-  component?: StorybookComponent;
-  subcomponents?: Record<string, StorybookComponent>;
-};
-
-/**
- * Storybook store item story, contains story metadata like name, parameters, etc.
- */
-export type StorybookStoreItemStory = {
-  id: string;
-  name: string;
-  parameters: {
-    docs: {
-      description?: {
-        component?: string;
-        story?: string;
-      };
-      source?: {
-        originalSource?: string;
-      };
-    };
-    /**
-     * This field is specific to FluentUI, and provided by the `@fluentui/storybook-addon` package.
-     */
-    fullSource?: string;
-    docsOnly?: boolean;
-  };
-};
-
-/**
- * Storybook component metadata, contains component name, description, props, etc.
- */
-export type StorybookComponent = {
-  displayName: string;
-  __docgenInfo?: {
-    description?: string;
-    displayName?: string;
-    props?: Record<string, StorybookComponentProp> | null;
-  };
-};
-
-/**
- * Storybook component prop metadata, contains prop name, description, type, etc.
- */
-export type StorybookComponentProp = {
-  defaultValue?: { value: string } | string | null;
-  description?: string;
-  name: string;
-  required?: boolean;
-  type?: {
-    name?: string;
-    value?: { value: string }[];
-  };
-};
-
-/**
- * Composed Storybook ref, used to link to other Storybook docs.
- * see: https://storybook.js.org/docs/sharing/storybook-composition
- *
- * @example
- * ```ts
- * { id: 'charts-v9', title: 'Fluent UI Charts v9', url: 'https://charts.fluentui.dev' }
- * ```
- */
-export type StorybookRef = { title: string; url: string; sourceUrl?: string };
-
-/**
- * Data extracted from Storybook
- */
-export type StorybookData = {
-  refs: StorybookRef[];
-  storyStoreItems: StorybookStoreItem[];
-};
-
-/**
- * Storybook Client API store, contains methods to cache CSF files and cached items.
- */
-type StorybookStoryStore = {
-  cacheAllCSFFiles: () => Promise<void>;
-  cachedCSFFiles: Record<string, StorybookStoreItem>;
-};
-
-declare global {
-  interface Window {
-    /**
-     * Storybook Client API, contains story store and other metadata.
-     * `storyStore` is used for Storybook 7, `storyStoreValue` for >= 8.
-     */
-    __STORYBOOK_PREVIEW__?: { storyStore: StorybookStoryStore } | { storyStoreValue: StorybookStoryStore };
-  }
-}
-
-/**
- * Type guard for StorybookRef
- */
-function isStorybookRef(obj: unknown): obj is StorybookRef {
-  return (
-    !!obj &&
-    typeof obj === 'object' &&
-    'title' in obj &&
-    typeof obj.title === 'string' &&
-    'url' in obj &&
-    typeof obj.url === 'string'
-  );
-}
-
-/**
- * Parses refs from CLI arguments.
- */
-function parseRefs(refs: unknown[]): StorybookRef[] {
-  if (Array.isArray(refs)) {
-    return refs
-      .map(ref => {
-        if (typeof ref === 'string') {
-          try {
-            return JSON.parse(ref);
-          } catch {
-            return null;
-          }
-        }
-        return ref;
-      })
-      .filter(isStorybookRef);
-  }
-
-  return [];
-}
-
-/**
- * Processes CLI arguments for `distPath`, `refs`, and other options.
- *
- * Users are encouraged to provide a yargs-compatible config file (e.g., llms.config.js)
- * that exports all needed options, including a normalized refs array if desired.
- */
-function processArgs(): Required<Args> {
-  const argv = yargs(process.argv)
-    .usage('CLI to generate LLMs docs for Storybook docs')
-    .option('distPath', {
-      type: 'string',
-      demandOption: true,
-      describe: 'Relative path to the Storybook distribution folder',
-    })
-    .option('baseUrl', {
-      type: 'string',
-      default: '/',
-      describe: 'Base URL for the Storybook docs',
-    })
-    .option('summaryTitle', {
-      type: 'string',
-      default: 'Summary',
-      describe: 'Title for the summary file',
-    })
-    .option('summaryDescription', {
-      type: 'string',
-      default: '',
-      describe: 'Description for the summary file',
-    })
-    .option('refs', {
-      type: 'array',
-      default: [] as StorybookRef[],
-      describe: 'Array of composed Storybook refs (objects with id, title, url)',
-    })
-    .config()
-    .alias('h', 'help')
-    .version(false).argv;
-
-  return {
-    distPath: join(cwd(), argv.distPath),
-    baseUrl: argv.baseUrl,
-    summaryTitle: argv.summaryTitle,
-    summaryDescription: argv.summaryDescription,
-    refs: parseRefs(argv.refs),
-  };
-}
+import type {
+  Args,
+  StorybookComponentProp,
+  StorybookComponent,
+  StorybookStoreItem,
+  StorybookStoryStore,
+} from './types';
 
 /**
  * Get content type based on file extension
@@ -318,13 +95,7 @@ async function setupStaticRouting(page: Page, distPath: string) {
  * Extracts data for all stories, including `MDX` stories.
  * Now uses Playwright routing instead of Express server.
  */
-async function extractStorybookData({
-  distPath,
-  refs,
-}: {
-  distPath: string;
-  refs: StorybookRef[];
-}): Promise<StorybookData> {
+export async function extractStorybookData({ distPath }: Args): Promise<StorybookStoreItem[]> {
   console.log(`▶️ Setting up Playwright with static file routing...`);
 
   const browser = await chromium.launch();
@@ -363,11 +134,21 @@ async function extractStorybookData({
 
     console.log(`✔️ Extracted ${storeItems.length} stories from Storybook store.`);
 
-    return { refs, storyStoreItems: storeItems };
+    return storeItems;
   } finally {
     if (browser) {
       await browser.close();
     }
+  }
+}
+
+declare global {
+  interface Window {
+    /**
+     * Storybook Client API, contains story store and other metadata.
+     * `storyStore` is used for Storybook 7, `storyStoreValue` for >= 8.
+     */
+    __STORYBOOK_PREVIEW__?: { storyStore: StorybookStoryStore } | { storyStoreValue: StorybookStoryStore };
   }
 }
 
@@ -391,9 +172,12 @@ async function extractAllStoriesFromStorybook(context: BrowserContext, distPath:
     const preview = window.__STORYBOOK_PREVIEW__;
     let storyStore: StorybookStoryStore | undefined;
 
+    // Storybook 7 uses `storyStore`
     if (preview && 'storyStore' in preview && preview.storyStore) {
       storyStore = preview.storyStore;
-    } else if (preview && 'storyStoreValue' in preview && preview.storyStoreValue) {
+    }
+    // Storybook 8+ uses `storyStoreValue`
+    else if (preview && 'storyStoreValue' in preview && preview.storyStoreValue) {
       storyStore = preview.storyStoreValue;
     } else {
       throw new Error('Unable to find Storybook story store');
@@ -506,18 +290,9 @@ export async function convertHtmlToMarkdown(htmlContent: string) {
 }
 
 /**
- * Writes the Storybook data to a JSON file.
- */
-async function writeStorybookDataToFile({ distPath }: Required<Args>, data: StorybookData) {
-  const filePath = join(distPath, 'storybook-story-store-data.json');
-  await writeFile(filePath, JSON.stringify(data, null, 2));
-  console.log(`✅ Storybook data written to ${filePath}`);
-}
-
-/**
  * Writes the summary file for all store items.
  */
-async function writeSummaryFile(args: Required<Args>, data: StorybookData) {
+export async function writeSummaryFile(args: Required<Args>, data: StorybookStoreItem[]) {
   const summaryContent = generateSummaryContent(args, data);
   await writeFile(join(args.distPath, 'llms.txt'), summaryContent.join('\n'));
   console.log(`✅ LLMs docs summary written to ${join(args.distPath, 'llms.txt')}`);
@@ -527,8 +302,8 @@ async function writeSummaryFile(args: Required<Args>, data: StorybookData) {
  * Generates the summary file content from the storeItems array.
  */
 export function generateSummaryContent(
-  { summaryTitle, summaryDescription, baseUrl }: Required<Args>,
-  data: StorybookData,
+  { summaryTitle, summaryDescription, baseUrl, refs }: Required<Args>,
+  data: StorybookStoreItem[],
 ) {
   // Initialize summary array with header content
   const summary: string[] = [
@@ -541,7 +316,7 @@ export function generateSummaryContent(
   ];
 
   // Adds links to all components/pages
-  for (const item of data.storyStoreItems) {
+  for (const item of data) {
     let description = item.meta.parameters?.docs?.description?.component || '';
     if (description) {
       description = `: ${description.split('\n')[0]}`;
@@ -550,11 +325,11 @@ export function generateSummaryContent(
   }
 
   // Adds links to all composed Storybook
-  if (data.refs && data.refs.length > 0) {
+  if (refs && refs.length > 0) {
     summary.push('');
     summary.push('## Optional');
     summary.push('');
-    for (const ref of data.refs) {
+    for (const ref of refs) {
       summary.push(`- [${ref.title}](${ref.url.replace(/\/$/, '')}/llms.txt)`);
     }
     summary.push('');
@@ -567,14 +342,14 @@ export function generateSummaryContent(
  * Writes full markdown files for all components from `storeItems`.
  * For MDX pages, render only `fullSource`. For others, render title, description, props, and examples.
  */
-async function writeFullDocsFiles({ distPath }: Required<Args>, data: StorybookData) {
+export async function writeFullDocsFiles({ distPath }: Required<Args>, data: StorybookStoreItem[]) {
   const llmsDir = join(distPath, 'llms');
 
   // Clean up `llms` directory
   await rm(llmsDir, { recursive: true, force: true });
   await mkdir(llmsDir, { recursive: true });
 
-  for (const item of data.storyStoreItems) {
+  for (const item of data) {
     const filePath = join(llmsDir, `${item.meta.id}.txt`);
     const content = generateFullFileContentFromStory(item);
     await writeFile(filePath, content.join('\n'));
@@ -745,38 +520,4 @@ function generateComponentPropsTable(props: StorybookComponentProp[]): string[] 
   content.push('');
 
   return content;
-}
-
-// Start the script
-if (require.main === module) {
-  main();
-}
-
-/**
- * Main entry point for the LLM docs generator script.
- * Orchestrates argument parsing, data extraction, and docs writing.
- */
-async function main() {
-  try {
-    console.log(`━━ Storybook LLM Docs Generator ━━`);
-    const args = processArgs();
-    console.log(`ℹ️ Storybook dist path: ${args.distPath}`);
-
-    const data = await extractStorybookData(args);
-
-    // Write storybook data to file (useful for debugging)
-    await writeStorybookDataToFile(args, data);
-
-    // Write llms.txt file
-    await writeSummaryFile(args, data);
-
-    // Write per component/page files
-    await writeFullDocsFiles(args, data);
-
-    console.log(`✅ LLMs docs generation complete.`);
-  } catch (error) {
-    console.error(`❌ LLMs docs generation failed.`);
-    console.error(error);
-    process.exit(1);
-  }
 }
