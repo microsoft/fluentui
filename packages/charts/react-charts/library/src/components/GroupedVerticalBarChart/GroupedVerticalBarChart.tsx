@@ -244,7 +244,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   const legends: JSX.Element = _getLegendData(points!);
   _adjustProps();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-anyAdd commentMore actions
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Add commentMore actions
   function _getMinMaxOfYAxis(datasetForBars: any, yAxisType?: YAxisType, useSecondaryYScale?: boolean) {
     const values: number[] = [];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

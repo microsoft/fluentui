@@ -222,6 +222,8 @@ describe('Donut Chart - axe-core', () => {
   });
 });
 
+/* eslint-disable @typescript-eslint/no-deprecated */
+
 describe('DonutChart snapShot testing', () => {
   it('renders DonutChart correctly', () => {
     let component = renderer.create(<DonutChart data={chartPointsDC} innerRadius={55} />);
@@ -275,11 +277,13 @@ describe('DonutChart snapShot testing', () => {
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
   it('Should elevate all smaller values to minimums', () => {
     let component = renderer.create(<DonutChart data={chartPointsDCElevateMinimums} />);
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
+  /* eslint-enable @typescript-eslint/no-deprecated */
 });
 
 describe('DonutChart - basic props', () => {
