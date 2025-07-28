@@ -5,7 +5,7 @@ import { useMenuGridCellContextValues_unstable } from './useMenuGridCellContextV
 import type { MenuGridCellProps } from './MenuGridCell.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useMenuGridCellStyles_unstable } from './useMenuGridCellStyles.styles';
-// import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a MenuGridCell, using the `useMenuGridCell_unstable` hook.
@@ -15,8 +15,7 @@ export const MenuGridCell: ForwardRefComponent<MenuGridCellProps> = React.forwar
   const contextValues = useMenuGridCellContextValues_unstable(state);
 
   useMenuGridCellStyles_unstable(state);
-
-  // useCustomStyleHook_unstable('useMenuGridCellStyles_unstable')(state);
+  useCustomStyleHook_unstable('useMenuGridCellStyles_unstable')(state);
 
   return renderMenuGridCell_unstable(state, contextValues);
 });

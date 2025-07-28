@@ -5,7 +5,7 @@ import { useMenuGridRowGroupContextValues_unstable } from './useMenuGridRowGroup
 import type { MenuGridRowGroupProps } from './MenuGridRowGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useMenuGridRowGroupStyles_unstable } from './useMenuGridRowGroupStyles.styles';
-// import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a MenuGridRowGroup, using the `useMenuGridRowGroup_unstable` hook.
@@ -15,8 +15,7 @@ export const MenuGridRowGroup: ForwardRefComponent<MenuGridRowGroupProps> = Reac
   const contextValues = useMenuGridRowGroupContextValues_unstable(state);
 
   useMenuGridRowGroupStyles_unstable(state);
-
-  // useCustomStyleHook_unstable('useMenuGridRowGroupStyles_unstable')(state);
+  useCustomStyleHook_unstable('useMenuGridRowGroupStyles_unstable')(state);
 
   return renderMenuGridRowGroup_unstable(state, contextValues);
 });
