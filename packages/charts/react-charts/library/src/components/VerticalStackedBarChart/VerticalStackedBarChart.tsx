@@ -890,7 +890,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       }
     } else {
       const data = (props.data?.map(point => point.xAxisPoint) as number[] | Date[] | undefined) || [];
-      _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, calculateAppropriateBarWidth(data, totalWidth));
+      _barWidth = getBarWidth(
+        props.barWidth,
+        props.maxBarWidth,
+        calculateAppropriateBarWidth(data, totalWidth, _xAxisInnerPadding),
+      );
       _domainMargin = MIN_DOMAIN_MARGIN + _barWidth / 2;
     }
 

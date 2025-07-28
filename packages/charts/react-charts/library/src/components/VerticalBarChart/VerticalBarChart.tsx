@@ -1074,7 +1074,11 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         }
       });
       const data = Object.values(uniqueX) as number[] | Date[];
-      _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, calculateAppropriateBarWidth(data, totalWidth));
+      _barWidth = getBarWidth(
+        props.barWidth,
+        props.maxBarWidth,
+        calculateAppropriateBarWidth(data, totalWidth, _xAxisInnerPadding),
+      );
       _domainMargin = MIN_DOMAIN_MARGIN + _barWidth / 2;
     }
 
