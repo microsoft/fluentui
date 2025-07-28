@@ -7,21 +7,21 @@ const useClasses = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
-    padding: '20px',
+    gap: tokens.spacingVerticalXL, // 20px
+    padding: tokens.spacingVerticalXL, // 20px
     maxWidth: '1000px',
   },
   controls: {
     display: 'flex',
-    gap: '10px',
+    gap: tokens.spacingHorizontalMNudge, // 10px
     alignItems: 'center',
     flexWrap: 'wrap',
-    marginBottom: '20px',
+    marginBottom: tokens.spacingVerticalXL, // 20px
   },
   patternsGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-    gap: '20px',
+    gap: tokens.spacingVerticalXL, // 20px
   },
   cardWrapper: {
     perspective: '500px',
@@ -92,7 +92,7 @@ const patterns: RotatePattern[] = [
     angle: 180,
     easing: curveSpringRelaxed,
     exitEasing: motionTokens.curveDecelerateMid,
-    duration: 2000,
+    duration: motionTokens.durationUltraSlow * 4, // 2000ms = 500ms * 4
     exitDuration: motionTokens.durationUltraSlow,
   },
   {
@@ -105,7 +105,7 @@ const patterns: RotatePattern[] = [
     angle: 180,
     easing: curveSpringRelaxed,
     exitEasing: motionTokens.curveDecelerateMid,
-    duration: 2000,
+    duration: motionTokens.durationUltraSlow * 4, // 2000ms = 500ms * 4
     exitDuration: motionTokens.durationUltraSlow,
   },
   {
@@ -118,7 +118,7 @@ const patterns: RotatePattern[] = [
     angle: 180,
     easing: curveSpringRelaxed,
     exitEasing: motionTokens.curveDecelerateMid,
-    duration: 2000,
+    duration: motionTokens.durationUltraSlow * 4, // 2000ms = 500ms * 4
     exitDuration: motionTokens.durationUltraSlow,
   },
 ];
@@ -152,7 +152,9 @@ export const CardFlip = () => {
   return (
     <div className={classes.container}>
       <div className={classes.controls}>
-        <Button onClick={toggleAllPatterns}>Flip All</Button>
+        <Button onClick={toggleAllPatterns} aria-label="Toggle all rotation patterns">
+          Flip All
+        </Button>
       </div>
 
       <div className={classes.patternsGrid}>
@@ -168,7 +170,20 @@ export const CardFlip = () => {
               exitDuration={pattern.exitDuration}
               animateOpacity={false}
             >
-              <Card className={classes.patternCard} onClick={() => togglePattern(pattern.id)} appearance="outline">
+              <Card
+                className={classes.patternCard}
+                onClick={() => togglePattern(pattern.id)}
+                appearance="outline"
+                role="button"
+                tabIndex={0}
+                aria-label={`Toggle ${pattern.name} rotation`}
+                onKeyDown={e => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    togglePattern(pattern.id);
+                  }
+                }}
+              >
                 <div className={classes.demoIcon} style={{ backgroundColor: pattern.color }}>
                   {pattern.icon}
                 </div>

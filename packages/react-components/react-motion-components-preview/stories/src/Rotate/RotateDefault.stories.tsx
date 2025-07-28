@@ -1,5 +1,16 @@
 import * as React from 'react';
-import { Field, makeStyles, tokens, Switch, useId, Label, Slider, RadioGroup, Radio } from '@fluentui/react-components';
+import {
+  Field,
+  makeStyles,
+  tokens,
+  Switch,
+  useId,
+  Label,
+  Slider,
+  RadioGroup,
+  Radio,
+  motionTokens,
+} from '@fluentui/react-components';
 import { Rotate } from '@fluentui/react-motion-components-preview';
 import { Axis3D } from '../../../library/src/atoms/rotate-atom';
 
@@ -9,13 +20,13 @@ const useClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
-    gap: '20px 10px',
+    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`, // 20px 10px
     // perspective: '1000px',
     overflow: 'clip',
   },
   card: {
     gridArea: 'card',
-    padding: '10px',
+    padding: tokens.spacingHorizontalMNudge, // 10px
   },
   controls: {
     display: 'flex',
@@ -25,7 +36,7 @@ const useClasses = makeStyles({
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
-    padding: '10px',
+    padding: tokens.spacingHorizontalMNudge, // 10px
   },
   field: {
     flex: 1,
@@ -49,7 +60,7 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
   const [visible, setVisible] = React.useState<boolean>(false);
   const [autoplay, setAutoplay] = React.useState<boolean>(false);
   const [perspective, setPerspective] = React.useState<string>('1000px');
-  const [duration, setDuration] = React.useState<number>(500);
+  const [duration, setDuration] = React.useState<number>(motionTokens.durationUltraSlow); // 500ms
   const [axis, setAxis] = React.useState<Axis3D>('y');
   const [angle, setEnterAngle] = React.useState<number>(-90);
 
@@ -59,8 +70,8 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
 
   const perspectiveMin = 200;
   const perspectiveMax = 2000;
-  const durationMin = 50;
-  const durationMax = 1000;
+  const durationMin = motionTokens.durationUltraFast; // 50ms
+  const durationMax = motionTokens.durationUltraSlow * 2; // 1000ms
   const angleMin = -180;
   const angleMax = 180;
 
@@ -114,7 +125,7 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
           <Slider
             min={durationMin}
             max={durationMax}
-            defaultValue={duration}
+            defaultValue={motionTokens.durationUltraSlow} // 500ms
             id={durationSliderId}
             onChange={(_, data) => {
               setDuration(data.value);
