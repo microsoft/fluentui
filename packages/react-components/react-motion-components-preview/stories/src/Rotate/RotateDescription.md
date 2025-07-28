@@ -7,7 +7,7 @@ import { Rotate } from '@fluentui/react-motion-components-preview';
 
 function Component({ visible }) {
   return (
-    <Rotate visible={visible} fromY={-90} duration={600}>
+    <Rotate visible={visible} axis="x" angle={45}>
       <div>Content</div>
     </Rotate>
   );

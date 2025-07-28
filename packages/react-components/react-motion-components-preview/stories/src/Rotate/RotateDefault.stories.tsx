@@ -51,7 +51,7 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
   const [perspective, setPerspective] = React.useState<string>('1000px');
   const [duration, setDuration] = React.useState<number>(500);
   const [axis, setAxis] = React.useState<Axis3D>('y');
-  const [enterAngle, setEnterAngle] = React.useState<number>(-90);
+  const [angle, setEnterAngle] = React.useState<number>(-90);
 
   const perspectiveSliderId = useId();
   const durationSliderId = useId();
@@ -100,13 +100,13 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
           </RadioGroup>
         </Field>
 
-        <label htmlFor={enterAngleSliderId}>Enter Angle: {enterAngle}°</label>
+        <label htmlFor={enterAngleSliderId}>Enter Angle: {angle}°</label>
         <div className={classes.sliderWrapper}>
           <Label aria-hidden>{angleMin}</Label>
           <Slider
             min={angleMin}
             max={angleMax}
-            defaultValue={enterAngle}
+            defaultValue={angle}
             id={enterAngleSliderId}
             onChange={(_, data) => {
               setEnterAngle(data.value);
@@ -149,7 +149,7 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
       <Rotate
         visible={visible}
         axis={axis}
-        enterAngle={enterAngle}
+        angle={angle}
         duration={duration}
         easing={curveSpringRelaxed}
         onMotionFinish={() => autoplay && setVisible(v => !v)}

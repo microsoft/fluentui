@@ -65,7 +65,7 @@ const patterns = [
     icon: '↔️',
     color: tokens.colorPaletteBlueForeground2,
     axis: 'Y' as const,
-    enterAngle: 180,
+    angle: 180,
     easing: 'ease-out',
     duration: 600,
   },
@@ -76,7 +76,7 @@ const patterns = [
     icon: '↕️',
     color: tokens.colorPaletteGreenForeground2,
     axis: 'X' as const,
-    enterAngle: 180,
+    angle: 180,
     easing: 'ease-out',
     duration: 600,
   },
@@ -87,7 +87,7 @@ const patterns = [
     icon: '🔄',
     color: tokens.colorPaletteRedForeground2,
     axis: 'Z' as const,
-    enterAngle: 360,
+    angle: 360,
     easing: 'ease-in-out',
     duration: 800,
   },
@@ -98,7 +98,7 @@ const patterns = [
     icon: '〰️',
     color: tokens.colorPaletteYellowForeground2,
     axis: 'X' as const,
-    enterAngle: 15,
+    angle: 15,
     easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
     duration: 400,
   },
@@ -109,7 +109,7 @@ const patterns = [
     icon: '👀',
     color: tokens.colorPaletteTealForeground2,
     axis: 'Y' as const,
-    enterAngle: -15,
+    angle: -15,
     easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
     duration: 400,
   },
@@ -120,7 +120,7 @@ const patterns = [
     icon: '📄',
     color: tokens.colorPaletteDarkOrangeForeground2,
     axis: 'X' as const,
-    enterAngle: -90,
+    angle: -90,
     easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
     duration: 500,
   },
@@ -186,7 +186,7 @@ export const CommonPatterns = () => {
             <Rotate
               visible={activePatterns.has(pattern.id)}
               axis={pattern.axis}
-              enterAngle={pattern.enterAngle}
+              angle={pattern.angle}
               duration={pattern.duration}
               easing={pattern.easing}
             >
