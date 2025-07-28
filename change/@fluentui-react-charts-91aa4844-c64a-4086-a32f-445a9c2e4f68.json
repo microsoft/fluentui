@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "mitigate xss vulnerabilities",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

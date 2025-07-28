@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions",
-  "packageName": "@fluentui/react-motion",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
