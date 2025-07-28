@@ -10,7 +10,6 @@ const useClasses = makeStyles({
     gap: '20px',
     padding: '20px',
     maxWidth: '1000px',
-    perspective: '500px',
   },
   controls: {
     display: 'flex',
@@ -23,7 +22,10 @@ const useClasses = makeStyles({
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
     gap: '20px',
+  },
+  cardWrapper: {
     perspective: '800px',
+    perspectiveOrigin: 'center center',
   },
   patternCard: {
     height: '140px',
@@ -143,17 +145,15 @@ export const CardFlip = () => {
     }
   };
 
-  const allPatternsVisible = activePatterns.size === patterns.length;
-
   return (
     <div className={classes.container}>
       <div className={classes.controls}>
-        <Button onClick={toggleAllPatterns}>{allPatternsVisible ? 'Hide All' : 'Show All'}</Button>
+        <Button onClick={toggleAllPatterns}>Flip All</Button>
       </div>
 
       <div className={classes.patternsGrid}>
         {patterns.map(pattern => (
-          <div key={pattern.id}>
+          <div key={pattern.id} className={classes.cardWrapper}>
             <Rotate
               visible={activePatterns.has(pattern.id)}
               axis={pattern.axis}
@@ -175,10 +175,6 @@ export const CardFlip = () => {
           </div>
         ))}
       </div>
-
-      <Body2 style={{ textAlign: 'center', color: tokens.colorNeutralForeground2, marginTop: '20px' }}>
-        Click any pattern to see its rotation effect, or use the controls above to see them all in sequence
-      </Body2>
     </div>
   );
 };
@@ -187,7 +183,7 @@ CardFlip.parameters = {
   docs: {
     description: {
       story:
-        'A collection of common single-axis rotation patterns that you can use as starting points for your own animations. Each pattern demonstrates rotation around a specific axis (X, Y, or Z) with spring-relaxed easing.',
+        'Each card rotates around a specific axis (X, Y, or Z) with different easing and durations for the enter and exit transitions.',
     },
   },
 };
