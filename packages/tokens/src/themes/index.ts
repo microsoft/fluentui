@@ -1,8 +1,8 @@
 export {
   teamsDarkTheme,
-  teamsDarkV3Theme,
+  teamsDarkV21Theme,
   teamsHighContrastTheme,
   teamsLightTheme,
-  teamsLightV3Theme,
+  teamsLightV21Theme,
 } from './teams/index';
 export { webDarkTheme, webLightTheme } from './web/index';

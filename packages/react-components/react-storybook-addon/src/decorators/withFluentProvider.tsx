@@ -4,10 +4,10 @@ import { FluentProvider } from '@fluentui/react-provider';
 import {
   Theme,
   teamsDarkTheme,
-  teamsDarkV3Theme,
+  teamsDarkV21Theme,
   teamsHighContrastTheme,
   teamsLightTheme,
-  teamsLightV3Theme,
+  teamsLightV21Theme,
   webDarkTheme,
   webLightTheme,
 } from '@fluentui/react-theme';
@@ -22,8 +22,8 @@ const themes: Record<ThemeIds, Theme> = {
   'teams-light': teamsLightTheme,
   'teams-dark': teamsDarkTheme,
   'teams-high-contrast': teamsHighContrastTheme,
-  'teams-light-v3': teamsLightV3Theme,
-  'teams-dark-v3': teamsDarkV3Theme,
+  'teams-light-v21': teamsLightV21Theme,
+  'teams-dark-v21': teamsDarkV21Theme,
 } as const;
 
 const findTheme = (themeId?: ThemeIds) => {

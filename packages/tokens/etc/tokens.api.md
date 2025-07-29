@@ -443,7 +443,7 @@ export type StrokeWidthTokens = {
 export const teamsDarkTheme: Theme;
 
 // @public (undocumented)
-export const teamsDarkV3Theme: Theme;
+export const teamsDarkV21Theme: Theme;
 
 // @public (undocumented)
 export const teamsHighContrastTheme: Theme;
@@ -452,7 +452,7 @@ export const teamsHighContrastTheme: Theme;
 export const teamsLightTheme: Theme;
 
 // @public (undocumented)
-export const teamsLightV3Theme: Theme;
+export const teamsLightV21Theme: Theme;
 
 // @public (undocumented)
 export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorStatusTokens & ColorTokens & ZIndexTokens;

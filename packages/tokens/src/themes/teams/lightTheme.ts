@@ -1,5 +1,5 @@
 import { createLightTheme } from '../../utils/createLightTheme';
-import { brandTeams, brandTeamsV3 } from '../../global/brandColors';
+import { brandTeams, brandTeamsV21 } from '../../global/brandColors';
 import type { Theme } from '../../types';
 import { fontFamilies } from '../../alias/teamsFontFamilies';
 
@@ -8,7 +8,7 @@ export const teamsLightTheme: Theme = {
   ...fontFamilies,
 };
 
-export const teamsLightV3Theme: Theme = {
-  ...createLightTheme(brandTeamsV3),
+export const teamsLightV21Theme: Theme = {
+  ...createLightTheme(brandTeamsV21),
   ...fontFamilies,
 };

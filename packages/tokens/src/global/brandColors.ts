@@ -57,7 +57,7 @@ export const brandOffice: BrandVariants = {
   160: `#f9dcd1`,
 };
 
-export const brandTeamsV3: BrandVariants = {
+export const brandTeamsV21: BrandVariants = {
   10: `#29274f`,
   20: `#2f2a5e`,
   30: `#352e70`,
