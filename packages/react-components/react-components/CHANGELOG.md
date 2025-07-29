@@ -1,8 +1,49 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 17 Jul 2025 13:49:33 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jul 2025 18:48:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.68.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.68.0)
+
+Mon, 28 Jul 2025 18:48:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.67.0..@fluentui/react-components_v9.68.0)
+
+### Minor changes
+
+- `@fluentui/react-aria`
+  - feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
+- `@fluentui/react-components`
+  - deprecate: react-virtualizer in process of moving to fluentui-contrib ([PR #34899](https://github.com/microsoft/fluentui/pull/34899) by mifraser@microsoft.com)
+- `@fluentui/react-list`
+  - fix(react-list): Dont crash in dev mode when navigation mode is changed ([PR #34613](https://github.com/microsoft/fluentui/pull/34613) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - feat(motion): add Fade presence motion component ([PR #34839](https://github.com/microsoft/fluentui/pull/34839) by robertpenner@microsoft.com)
+- `@fluentui/react-motion`
+  - feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: add custom JSX.* types that are compatible with various react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - fix callout position issues ([PR #34868](https://github.com/microsoft/fluentui/pull/34868) by anushgupta@microsoft.com)
+  - mitigate xss vulnerabilities ([PR #34920](https://github.com/microsoft/fluentui/pull/34920) by anushgupta@microsoft.com)
+  - Add Gantt chart in v9 ([PR #34909](https://github.com/microsoft/fluentui/pull/34909) by anushgupta@microsoft.com)
+  - funnel chart in v9 ([PR #34866](https://github.com/microsoft/fluentui/pull/34866) by anushgupta@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: add event.isDefaultPrevented() to `onKeyDown` ([PR #34905](https://github.com/microsoft/fluentui/pull/34905) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: adjust circular sizes to Figma spec ([PR #34859](https://github.com/microsoft/fluentui/pull/34859) by vgenaev@gmail.com)
+- `@fluentui/react-accordion`
+  - revert: adjust accordion header chevron alignment styles #34616 ([PR #34893](https://github.com/microsoft/fluentui/pull/34893) by dmytrokirpa@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - deprecate: react-virtualizer moving to fluentui-contrib ([PR #34899](https://github.com/microsoft/fluentui/pull/34899) by mifraser@microsoft.com)
 
 ## [9.67.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.67.0)
 

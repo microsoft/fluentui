@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 29 Jul 2025 07:20:56 GMT",
+      "tag": "@fluentui/react-charting_v5.24.20",
+      "version": "5.24.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "2270462b84f5713a30faf19474bb4e18abe49ab7",
+            "comment": "fix(react-charting): Disable responsive container for heatmap in Declarative Chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.26",
+            "commit": "2270462b84f5713a30faf19474bb4e18abe49ab7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Jul 2025 07:22:06 GMT",
       "tag": "@fluentui/react-charting_v5.24.19",
       "version": "5.24.19",

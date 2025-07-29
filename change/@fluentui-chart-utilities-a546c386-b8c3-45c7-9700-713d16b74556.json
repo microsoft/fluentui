@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat(chart-utilities): Routing scattergl charts to scatter charts",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
