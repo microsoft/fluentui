@@ -27,6 +27,7 @@ import {
   transformPlotlyJsonToGaugeProps,
   transformPlotlyJsonToGVBCProps,
   transformPlotlyJsonToVBCProps,
+  projectPolarToCartesian,
 } from './PlotlySchemaAdapter';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
@@ -306,6 +307,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'area':
     case 'line':
     case 'fallback':
+    case 'scatterpolar':
+      if (chart.type === 'scatterpolar') {
+        const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
+        plotlyInputWithValidData.data = cartesianProjection.data;
+      }
       // Need recheck for area chart as we don't have ability to check for valid months in previous step
       const isAreaChart = plotlyInputWithValidData.data.some(
         (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy' || !!series.stackgroup,

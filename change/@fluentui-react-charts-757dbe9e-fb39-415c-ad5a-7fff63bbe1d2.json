@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add support for scatter polar trace type",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}
