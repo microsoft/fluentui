@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "funnel chart in v9",
+  "comment": "add histogram mode to vbc",
   "packageName": "@fluentui/react-charts",
   "email": "anushgupta@microsoft.com",
   "dependentChangeType": "patch"

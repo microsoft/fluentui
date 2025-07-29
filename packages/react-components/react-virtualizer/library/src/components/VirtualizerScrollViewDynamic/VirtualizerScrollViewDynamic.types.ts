@@ -9,8 +9,14 @@ import type {
 import type { VirtualizerScrollViewSlots } from '../VirtualizerScrollView/VirtualizerScrollView.types';
 import type { DynamicVirtualizerContextProps, ScrollToInterface } from '../../Utilities';
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerScrollViewDynamicSlots = VirtualizerScrollViewSlots;
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> &
   Partial<
     Omit<

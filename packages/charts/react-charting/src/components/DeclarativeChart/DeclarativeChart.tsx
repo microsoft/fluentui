@@ -54,7 +54,6 @@ const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStacke
 const ResponsiveLineChart = withResponsiveContainer(LineChart);
 const ResponsiveHorizontalBarChartWithAxis = withResponsiveContainer(HorizontalBarChartWithAxis);
 const ResponsiveAreaChart = withResponsiveContainer(AreaChart);
-const ResponsiveHeatMapChart = withResponsiveContainer(HeatMapChart);
 const ResponsiveSankeyChart = withResponsiveContainer(SankeyChart);
 const ResponsiveGaugeChart = withResponsiveContainer(GaugeChart);
 const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVerticalBarChart);
@@ -196,7 +195,7 @@ type ChartTypeMap = {
   } & PreTransformHooks;
   heatmap: {
     transformer: typeof transformPlotlyJsonToHeatmapProps;
-    renderer: typeof ResponsiveHeatMapChart;
+    renderer: typeof HeatMapChart;
   } & PreTransformHooks;
   gauge: {
     transformer: typeof transformPlotlyJsonToGaugeProps;
@@ -263,7 +262,7 @@ const chartMap: ChartTypeMap = {
   },
   heatmap: {
     transformer: transformPlotlyJsonToHeatmapProps,
-    renderer: ResponsiveHeatMapChart,
+    renderer: HeatMapChart,
   },
   gauge: {
     transformer: transformPlotlyJsonToGaugeProps,
@@ -416,7 +415,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         const mode = (plotlyInputWithValidData.data[index] as PlotData)?.mode ?? '';
         if (mode.includes('line')) {
           validTracesFilteredIndex[index].type = 'line';
-        } else if (mode.includes('markers')) {
+        } else if (mode.includes('markers') || mode === 'text') {
           validTracesFilteredIndex[index].type = 'scatter';
         } else {
           validTracesFilteredIndex[index].type = 'line';

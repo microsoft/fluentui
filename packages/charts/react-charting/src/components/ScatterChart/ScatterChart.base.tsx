@@ -539,7 +539,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
               </>,
             );
           }
-          if ((!_isScatterPolarRef.current || _isTextMode) && text) {
+          if (_isTextMode && text) {
             pointsForSeries.push(
               <text
                 key={`${circleId}-label`}
@@ -554,15 +554,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         }
 
         if (_isScatterPolarRef.current) {
-          // Render category labels for all series at once to avoid overlap
-          const allSeriesData = _points.current.map(s => ({
-            data: s.data
-              .filter(pt => typeof pt.x === 'number' && typeof pt.y === 'number')
-              .map(pt => ({ x: pt.x as number, y: pt.y as number, text: pt.text })),
-          }));
           pointsForSeries.push(
             ...renderScatterPolarCategoryLabels({
-              allSeriesData,
               xAxisScale: _xAxisScale.current,
               yAxisScale: _yAxisScale.current,
               className: classNames.markerLabel || '',

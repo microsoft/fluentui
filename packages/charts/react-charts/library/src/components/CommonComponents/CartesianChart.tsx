@@ -20,6 +20,7 @@ import {
   useRtl,
   truncateString,
   tooltipOfAxislabels,
+  getSecureProps,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
@@ -59,7 +60,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   const [startFromX, setStartFromX] = React.useState<number>(0);
   const [prevProps, setPrevProps] = React.useState<ModifiedCartesianChartProps | null>(null);
 
-  const chartTypesToCheck = [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart];
+  const chartTypesToCheck = [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart, ChartTypes.GanttChart];
   /**
    * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
    * So that, in RTL, left margins becomes right margins and viceversa.
@@ -240,7 +241,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       containerHeight: containerHeight - removalValueForTextTuncate!,
       margins: margins,
       xAxisElement: xAxisElement.current!,
-      showRoundOffXTickValues: true,
+      showRoundOffXTickValues: props.showRoundOffXTickValues ?? true,
       xAxisCount: props.xAxisTickCount,
       xAxistickSize: props.xAxistickSize,
       tickPadding: props.tickPadding || props.showXAxisLablesTooltip ? 5 : 10,
@@ -291,6 +292,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           timeFormatLocale,
           customDateTimeFormatter,
           props.useUTC,
+          props.chartType,
         ));
         break;
       case XAxisTypes.StringAxis:
@@ -383,17 +385,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     }
 
     if (chartTypesToCheck.includes(props.chartType)) {
-      // To create y axis tick values by if specified truncating the rest of the text
-      // and showing elipsis or showing the whole string,
-      yScalePrimary &&
-        createYAxisLabels(
-          yAxisElement.current!,
-          yScalePrimary,
-          props.noOfCharsToTruncate || 4,
-          props.showYAxisLablesTooltip || false,
-          _useRtl,
-        );
-
       // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
       // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
       // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with _tooltipId)
@@ -405,6 +396,18 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       }
       // Used to display tooltip at y axis labels.
       if (props.showYAxisLablesTooltip) {
+        // To create y axis tick values by if specified truncating the rest of the text
+        // and showing elipsis or showing the whole string,
+        yScalePrimary &&
+          // Note: This function should be invoked within the showYAxisLablesTooltip check,
+          // as its sole purpose is to truncate labels that exceed the noOfCharsToTruncate limit.
+          createYAxisLabels(
+            yAxisElement.current!,
+            yScalePrimary,
+            props.noOfCharsToTruncate || 4,
+            props.showYAxisLablesTooltip || false,
+            _useRtl,
+          );
         const _yAxisElement = d3Select(yAxisElement.current!).call(yScalePrimary);
         try {
           document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
@@ -583,7 +586,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           aria-label={props.chartTitle}
           style={{ display: 'block' }}
           className={classes.chart}
-          {...svgProps}
+          {...getSecureProps(svgProps)}
         >
           <g
             ref={(e: SVGSVGElement | null) => {

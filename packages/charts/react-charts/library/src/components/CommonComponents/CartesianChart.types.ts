@@ -12,6 +12,8 @@ import {
   VerticalBarChartDataPoint,
   VerticalStackedBarDataPoint,
   ScatterChartDataPoint,
+  GanttChartDataPoint,
+  AxisCategoryOrder,
 } from '../../types/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartPopoverProps } from './ChartPopover.types';
@@ -426,6 +428,32 @@ export interface CartesianChartProps {
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<Chart>;
+
+  /**
+   * Prop to set the x axis annotation. Used to display additional information on the x-axis.
+   * This is shown on the top of the chart.
+   * @default undefined
+   */
+  xAxisAnnotation?: string;
+
+  /**
+   * Prop to set the y axis annotation. Used to display additional information on the y-axis.
+   * This is shown on the right side of the chart. Not shown if secondary y-axis is enabled.
+   * @default undefined
+   */
+  yAxisAnnotation?: string;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the x-axis.
+   * @default 'default'
+   */
+  xAxisCategoryOrder?: AxisCategoryOrder;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the y-axis.
+   * @default 'default'
+   */
+  yAxisCategoryOrder?: AxisCategoryOrder;
 }
 
 export interface YValueHover {
@@ -608,7 +636,8 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
       | HorizontalBarChartWithAxisDataPoint[]
       | VerticalBarChartDataPoint[]
       | DataPoint[]
-      | ScatterChartDataPoint[],
+      | ScatterChartDataPoint[]
+      | GanttChartDataPoint[],
     yAxisType: YAxisType | undefined,
     useSecondaryYScale?: boolean,
   ) => { startValue: number; endValue: number };
@@ -636,7 +665,8 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
       | VerticalStackedBarDataPoint[]
       | HorizontalBarChartWithAxisDataPoint[]
       | GroupedVerticalBarChartData[]
-      | HeatMapChartDataPoint[],
+      | HeatMapChartDataPoint[]
+      | GanttChartDataPoint[],
     margins: Margins,
     width: number,
     chartType: ChartTypes,
@@ -657,4 +687,10 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     barWidth: number | undefined,
     chartType?: ChartTypes,
   ) => ScaleBand<string>;
+
+  /**
+   * Controls whether the numeric x-axis domain should be extended to start and end at nice rounded values.
+   * @default true
+   */
+  showRoundOffXTickValues?: boolean;
 }

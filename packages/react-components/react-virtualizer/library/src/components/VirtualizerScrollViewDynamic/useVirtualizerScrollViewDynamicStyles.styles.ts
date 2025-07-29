@@ -8,6 +8,9 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 
 const virtualizerScrollViewDynamicClassName = 'fui-Virtualizer-Scroll-View-Dynamic';
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export const virtualizerScrollViewDynamicClassNames: SlotClassNames<VirtualizerScrollViewDynamicSlots> = {
   ...virtualizerClassNames,
   container: `${virtualizerScrollViewDynamicClassName}__container`,
@@ -39,6 +42,7 @@ const useStyles = makeStyles({
 
 /**
  * Apply styling to the Virtualizer states
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export const useVirtualizerScrollViewDynamicStyles_unstable = (
   state: VirtualizerScrollViewDynamicState,
