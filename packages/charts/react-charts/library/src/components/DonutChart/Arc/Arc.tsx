@@ -22,8 +22,8 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       _updateChart(props);
     }, [props]);
 
-    function _onFocus(data: ChartDataPoint, id: string): void {
-      props.onFocusCallback!(data, id, currentRef.current);
+    function _onFocus(data: ChartDataPoint, id: string, event: React.FocusEvent<SVGPathElement, Element>): void {
+      props.onFocusCallback!(data, id, event, currentRef.current);
     }
 
     function _hoverOn(data: ChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {
@@ -128,10 +128,10 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           }
           className={classes.root}
           style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
-          onFocus={_onFocus.bind(this, props.data!.data, id)}
+          onFocus={event => _onFocus(props.data!.data, id, event)}
           data-is-focusable={props.activeArc === props.data!.data.legend || props.activeArc === ''}
-          onMouseOver={_hoverOn.bind(this, props.data!.data)}
-          onMouseMove={_hoverOn.bind(this, props.data!.data)}
+          onMouseOver={event => _hoverOn(props.data!.data, event)}
+          onMouseMove={event => _hoverOn(props.data!.data, event)}
           onMouseLeave={_hoverOff}
           tabIndex={_shouldHighlightArc(props.data!.data.legend!) ? 0 : undefined}
           onBlur={_onBlur}

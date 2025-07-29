@@ -372,7 +372,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
               _handleHover(x, y, verticaLineHeight, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData, event)
             }
             onMouseOut={_handleMouseOut}
-            onFocus={() => _handleFocus(seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+            onFocus={event =>
+              _handleFocus(event, seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
+            }
             onBlur={_handleMouseOut}
             {..._getClickHandler(_points[i].data[j].onDataPointClick)}
             opacity={isLegendSelected && !currentPointHidden ? 1 : 0.1}
@@ -420,13 +422,20 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   }
 
   function _handleFocus(
+    event: React.FocusEvent<SVGCircleElement, Element>,
     seriesId: string,
     x: number | Date | string,
-
     xAxisCalloutData: string | undefined,
     circleId: string,
     xAxisCalloutAccessibilityData?: AccessibilityProps,
   ) {
+    let cx = 0;
+    let cy = 0;
+
+    const targetRect = (event.target as SVGCircleElement).getBoundingClientRect();
+    cx = targetRect.left + targetRect.width / 2;
+    cy = targetRect.top + targetRect.height / 2;
+    updatePosition(cx, cy);
     _uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
     const xVal = x instanceof Date ? x.getTime() : x;

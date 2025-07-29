@@ -13,6 +13,7 @@ import {
   domainRangeOfXStringAxis,
   findNumericMinMaxOfY,
   isScatterPolarSeries,
+  isTextMode,
   YAxisType,
 } from '../../utilities/index';
 import {
@@ -93,6 +94,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const [refSelected, setRefSelected] = React.useState<string>('');
   const prevSelectedLegendsRef = React.useRef<string[] | undefined>(undefined);
   const _isScatterPolarRef = React.useRef(false);
+  const _isTextMode = React.useRef(false);
 
   const classNames = getClassNames(props.styles!, {
     theme: props.theme!,
@@ -491,72 +493,69 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
           const currentPointHidden = _points.current?.[i]?.hideNonActiveDots && activePoint !== circleId;
           const text = _points.current?.[i].data[j]?.text;
-          pointsForSeries.push(
-            <>
-              <circle
-                id={circleId}
-                key={circleId}
-                r={Math.max(circleRadius, 4)}
-                cx={_xAxisScale.current?.(x) + _xBandwidth.current}
-                cy={_yAxisScale.current?.(y)}
-                data-is-focusable={isLegendSelected}
-                onMouseOver={(event: React.MouseEvent<SVGElement>) =>
-                  _handleHover(
-                    x,
-                    y,
-                    verticaLineHeight,
-                    xAxisCalloutData,
-                    circleId,
-                    xAxisCalloutAccessibilityData,
-                    event,
-                  )
-                }
-                onMouseMove={(event: React.MouseEvent<SVGElement>) =>
-                  _handleHover(
-                    x,
-                    y,
-                    verticaLineHeight,
-                    xAxisCalloutData,
-                    circleId,
-                    xAxisCalloutAccessibilityData,
-                    event,
-                  )
-                }
-                onMouseOut={_handleMouseOut}
-                onFocus={() => _handleFocus(seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
-                onBlur={_handleMouseOut}
-                {..._getClickHandler(_points.current?.[i]?.data[j]?.onDataPointClick)}
-                opacity={isLegendSelected && !currentPointHidden ? 1 : 0.1}
-                fill={_getPointFill(seriesColor, circleId)}
-                stroke={seriesColor}
-                role="img"
-                aria-label={_getAriaLabel(i, j)}
-                tabIndex={_points.current?.[i]?.legend !== '' ? 0 : undefined}
-              />
-              {!_isScatterPolarRef.current && text && (
-                <text
-                  key={`${circleId}-label`}
-                  x={_xAxisScale.current?.(x) + _xBandwidth.current}
-                  y={_yAxisScale.current?.(y) + Math.max(circleRadius + 12, 16)}
-                  className={classNames.markerLabel}
-                >
-                  {text}
-                </text>
-              )}
-            </>,
-          );
+          if (!_isTextMode.current) {
+            pointsForSeries.push(
+              <>
+                <circle
+                  id={circleId}
+                  key={circleId}
+                  r={Math.max(circleRadius, 4)}
+                  cx={_xAxisScale.current?.(x) + _xBandwidth.current}
+                  cy={_yAxisScale.current?.(y)}
+                  data-is-focusable={isLegendSelected}
+                  onMouseOver={(event: React.MouseEvent<SVGElement>) =>
+                    _handleHover(
+                      x,
+                      y,
+                      verticaLineHeight,
+                      xAxisCalloutData,
+                      circleId,
+                      xAxisCalloutAccessibilityData,
+                      event,
+                    )
+                  }
+                  onMouseMove={(event: React.MouseEvent<SVGElement>) =>
+                    _handleHover(
+                      x,
+                      y,
+                      verticaLineHeight,
+                      xAxisCalloutData,
+                      circleId,
+                      xAxisCalloutAccessibilityData,
+                      event,
+                    )
+                  }
+                  onMouseOut={_handleMouseOut}
+                  onFocus={() => _handleFocus(seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+                  onBlur={_handleMouseOut}
+                  {..._getClickHandler(_points.current?.[i]?.data[j]?.onDataPointClick)}
+                  opacity={isLegendSelected && !currentPointHidden ? 1 : 0.1}
+                  fill={_getPointFill(seriesColor, circleId)}
+                  stroke={seriesColor}
+                  role="img"
+                  aria-label={_getAriaLabel(i, j)}
+                  tabIndex={_points.current?.[i]?.legend !== '' ? 0 : undefined}
+                />
+              </>,
+            );
+          }
+          if (_isTextMode && text) {
+            pointsForSeries.push(
+              <text
+                key={`${circleId}-label`}
+                x={_xAxisScale.current?.(x) + _xBandwidth.current}
+                y={_yAxisScale.current?.(y) + Math.max(circleRadius + 12, 16)}
+                className={classNames.markerLabel}
+              >
+                {text}
+              </text>,
+            );
+          }
         }
 
         if (_isScatterPolarRef.current) {
-          // Render category labels for all series at once to avoid overlap
-          const allSeriesData = _points.current.map(s => ({
-            data: s.data
-              .filter(pt => typeof pt.x === 'number' && typeof pt.y === 'number')
-              .map(pt => ({ x: pt.x as number, y: pt.y as number, text: pt.text })),
-          }));
           pointsForSeries.push(
             ...renderScatterPolarCategoryLabels({
-              allSeriesData,
               xAxisScale: _xAxisScale.current,
               yAxisScale: _yAxisScale.current,
               className: classNames.markerLabel || '',
@@ -636,6 +635,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       _xAxisScale.current = xScale;
       _yAxisScale.current = yScale;
       _isScatterPolarRef.current = isScatterPolarSeries(_points.current);
+      _isTextMode.current = isTextMode(_points.current);
       renderSeries.current = _createPlot(xElement!, containerHeight!);
     },
     [renderSeries, _xAxisScale, _yAxisScale, _createPlot],
@@ -706,7 +706,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   // reduce computation cost by only creating legendBars
   // if when hideLegend is false.
   // NOTE: they are rendered only when hideLegend is false in CartesianChart.
-  if (!props.hideLegend) {
+  if (!props.hideLegend && !_isTextMode.current) {
     legendBars = _createLegends(_points.current!); // ToDo: Memoize legends to improve performance.
   }
   const calloutProps = {

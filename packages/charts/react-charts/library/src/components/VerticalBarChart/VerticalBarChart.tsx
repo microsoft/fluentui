@@ -511,6 +511,13 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     refArrayIndexNumber: number,
     color: string,
   ): void {
+    let x = 0;
+    let y = 0;
+
+    const targetRect = (event.target as SVGRectElement).getBoundingClientRect();
+    x = targetRect.left + targetRect.width / 2;
+    y = targetRect.top + targetRect.height / 2;
+    updatePosition(x, y);
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { YValueHover, hoverXValue } = _getCalloutContentForLineAndBar(point);
     _refArray.forEach((obj: RefArrayData, index: number) => {
@@ -1067,7 +1074,11 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         }
       });
       const data = Object.values(uniqueX) as number[] | Date[];
-      _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, calculateAppropriateBarWidth(data, totalWidth));
+      _barWidth = getBarWidth(
+        props.barWidth,
+        props.maxBarWidth,
+        calculateAppropriateBarWidth(data, totalWidth, _xAxisInnerPadding),
+      );
       _domainMargin = MIN_DOMAIN_MARGIN + _barWidth / 2;
     }
 

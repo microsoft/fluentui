@@ -2,6 +2,21 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Mon, 28 Jul 2025 18:48:19 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "61c6eafa0a1c30eb4edf4add53dfa97c3099e78e",
+            "comment": "feat(motion): add Fade presence motion component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Jul 2025 13:52:47 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.7.0",
       "version": "0.7.0",

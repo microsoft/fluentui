@@ -3,7 +3,9 @@ import {
   SLOT_RENDER_FUNCTION_SYMBOL,
   type SlotComponentType,
   type SlotRenderFunction,
+  type JSXIntrinsicElementKeys,
 } from '@fluentui/react-utilities';
+
 import * as React from 'react';
 
 import type { PresenceComponentProps } from '../factories/createPresenceComponent';
@@ -28,8 +30,7 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
    *
    * If you want to override the animation, use the children render function instead.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  as?: keyof JSX.IntrinsicElements;
+  as?: JSXIntrinsicElementKeys;
 
   // TODO: remove once React v18 slot API is modified ComponentProps is not properly adding render function as a
   //       possible value for children

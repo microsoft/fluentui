@@ -760,19 +760,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               fill="currentColor"
               x="-10"
             >
-              <tspan
-                data-="10"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-10"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-10"
-              >
-                10
-              </tspan>
+              10
             </text>
           </g>
           <g
@@ -789,19 +777,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               fill="currentColor"
               x="-10"
             >
-              <tspan
-                data-="20"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-10"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-10"
-              >
-                20
-              </tspan>
+              20
             </text>
           </g>
         </g>
@@ -1356,19 +1332,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               fill="currentColor"
               x="-10"
             >
-              <tspan
-                data-="yPoint p1"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-10"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-10"
-              >
-                yPoint p1
-              </tspan>
+              yPoint p1
             </text>
           </g>
           <g
@@ -1385,19 +1349,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               fill="currentColor"
               x="-10"
             >
-              <tspan
-                data-="yPoint p2"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-10"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-10"
-              >
-                yPoint p2
-              </tspan>
+              yPoint p2
             </text>
           </g>
         </g>

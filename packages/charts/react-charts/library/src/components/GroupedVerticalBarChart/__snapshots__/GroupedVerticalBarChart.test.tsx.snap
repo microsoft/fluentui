@@ -199,7 +199,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="161.7"
               opacity=""
@@ -213,7 +212,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="215.6"
               opacity=""
@@ -249,7 +247,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="161.7"
               opacity=""
@@ -263,7 +260,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="14.700000000000017"
               opacity=""
@@ -299,7 +295,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="68.60000000000002"
               opacity=""
@@ -313,7 +308,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/06/30. MetaData4, 50%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="245"
               opacity=""
@@ -604,7 +598,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="161.7"
               opacity=""
@@ -618,7 +611,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="215.6"
               opacity=""
@@ -654,7 +646,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="161.7"
               opacity=""
@@ -668,7 +659,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="14.700000000000017"
               opacity=""
@@ -704,7 +694,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="68.60000000000002"
               opacity=""
@@ -718,7 +707,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/06/30. MetaData4, 50%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="245"
               opacity=""
@@ -1016,7 +1004,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="161.7"
               opacity=""
@@ -1030,7 +1017,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="215.6"
               opacity=""
@@ -1066,7 +1052,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="161.7"
               opacity=""
@@ -1080,7 +1065,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="14.700000000000017"
               opacity=""
@@ -1116,7 +1100,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
               height="68.60000000000002"
               opacity=""
@@ -1130,7 +1113,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             <rect
               aria-label="2020/06/30. MetaData4, 50%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="245"
               opacity=""
@@ -1496,7 +1478,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="161.7"
                   opacity=""
@@ -1510,7 +1491,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="215.6"
                   opacity=""
@@ -1546,7 +1526,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="161.7"
                   opacity=""
@@ -1560,7 +1539,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="14.700000000000017"
                   opacity=""
@@ -1596,7 +1574,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="68.60000000000002"
                   opacity=""
@@ -1610,7 +1587,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="245"
                   opacity=""
@@ -1899,7 +1875,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="161.7"
                 opacity=""
@@ -1913,7 +1888,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="215.6"
                 opacity=""
@@ -1949,7 +1923,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="161.7"
                 opacity=""
@@ -1963,7 +1936,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="14.700000000000017"
                 opacity=""
@@ -1999,7 +1971,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="68.60000000000002"
                 opacity=""
@@ -2013,7 +1984,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="245"
                 opacity=""
@@ -2361,7 +2331,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="161.7"
                   opacity=""
@@ -2375,7 +2344,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="215.6"
                   opacity=""
@@ -2411,7 +2379,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="161.7"
                   opacity=""
@@ -2425,7 +2392,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="14.700000000000017"
                   opacity=""
@@ -2461,7 +2427,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="68.60000000000002"
                   opacity=""
@@ -2475,7 +2440,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="245"
                   opacity=""
@@ -2771,7 +2735,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="161.7"
                 opacity=""
@@ -2785,7 +2748,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="215.6"
                 opacity=""
@@ -2821,7 +2783,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="161.7"
                 opacity=""
@@ -2835,7 +2796,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="14.700000000000017"
                 opacity=""
@@ -2871,7 +2831,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="68.60000000000002"
                 opacity=""
@@ -2885,7 +2844,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="245"
                 opacity=""
@@ -3240,7 +3198,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="1"
                   opacity=""
@@ -3254,7 +3211,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="1"
                   opacity=""
@@ -3290,7 +3246,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="1"
                   opacity=""
@@ -3304,7 +3259,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="1"
                   opacity=""
@@ -3340,7 +3294,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="1"
                   opacity=""
@@ -3354,7 +3307,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="1"
                   opacity=""
@@ -3588,7 +3540,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="1"
                 opacity=""
@@ -3602,7 +3553,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="1"
                 opacity=""
@@ -3638,7 +3588,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="1"
                 opacity=""
@@ -3652,7 +3601,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="1"
                 opacity=""
@@ -3688,7 +3636,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="1"
                 opacity=""
@@ -3702,7 +3649,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="1"
                 opacity=""
@@ -3995,7 +3941,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="false"
                   fill="#00bcf2"
                   height="161.7"
                   opacity=""
@@ -4009,7 +3954,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="false"
                   fill="#0078d4"
                   height="215.6"
                   opacity=""
@@ -4045,7 +3989,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="false"
                   fill="#00bcf2"
                   height="161.7"
                   opacity=""
@@ -4059,7 +4002,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="false"
                   fill="#0078d4"
                   height="14.700000000000017"
                   opacity=""
@@ -4095,7 +4037,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="false"
                   fill="#00bcf2"
                   height="68.60000000000002"
                   opacity=""
@@ -4109,7 +4050,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="false"
                   fill="#0078d4"
                   height="245"
                   opacity=""
@@ -4398,7 +4338,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="false"
                 fill="#00bcf2"
                 height="161.7"
                 opacity=""
@@ -4412,7 +4351,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="false"
                 fill="#0078d4"
                 height="215.6"
                 opacity=""
@@ -4448,7 +4386,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="false"
                 fill="#00bcf2"
                 height="161.7"
                 opacity=""
@@ -4462,7 +4399,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="false"
                 fill="#0078d4"
                 height="14.700000000000017"
                 opacity=""
@@ -4498,7 +4434,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="false"
                 fill="#00bcf2"
                 height="68.60000000000002"
                 opacity=""
@@ -4512,7 +4447,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="false"
                 fill="#0078d4"
                 height="245"
                 opacity=""
@@ -4902,7 +4836,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="161.7"
                   opacity=""
@@ -4916,7 +4849,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="215.6"
                   opacity=""
@@ -4952,7 +4884,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="161.7"
                   opacity=""
@@ -4966,7 +4897,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="14.700000000000017"
                   opacity=""
@@ -5002,7 +4932,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="68.60000000000002"
                   opacity=""
@@ -5016,7 +4945,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="245"
                   opacity=""
@@ -5352,7 +5280,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="161.7"
                 opacity=""
@@ -5366,7 +5293,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="215.6"
                 opacity=""
@@ -5402,7 +5328,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="161.7"
                 opacity=""
@@ -5416,7 +5341,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="14.700000000000017"
                 opacity=""
@@ -5452,7 +5376,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="68.60000000000002"
                 opacity=""
@@ -5466,7 +5389,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="245"
                 opacity=""
@@ -5907,7 +5829,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="130.02"
                   opacity=""
@@ -5921,7 +5842,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="173.36"
                   opacity=""
@@ -5957,7 +5877,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="130.02"
                   opacity=""
@@ -5971,7 +5890,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="11.820000000000022"
                   opacity=""
@@ -6007,7 +5925,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="55.160000000000025"
                   opacity=""
@@ -6021,7 +5938,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="197"
                   opacity=""
@@ -6398,7 +6314,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="130.02"
                 opacity=""
@@ -6412,7 +6327,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="173.36"
                 opacity=""
@@ -6448,7 +6362,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="130.02"
                 opacity=""
@@ -6462,7 +6375,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="11.820000000000022"
                 opacity=""
@@ -6498,7 +6410,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="55.160000000000025"
                 opacity=""
@@ -6512,7 +6423,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="197"
                 opacity=""
@@ -6865,7 +6775,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="161.7"
                   opacity=""
@@ -6879,7 +6788,6 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="215.6"
                   opacity=""
@@ -6915,7 +6823,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="161.7"
                   opacity=""
@@ -6929,7 +6836,6 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="14.700000000000017"
                   opacity=""
@@ -6965,7 +6871,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
                   height="68.60000000000002"
                   opacity=""
@@ -6979,7 +6884,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="245"
                   opacity=""
@@ -7268,7 +7172,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="161.7"
                 opacity=""
@@ -7282,7 +7185,6 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="215.6"
                 opacity=""
@@ -7318,7 +7220,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="161.7"
                 opacity=""
@@ -7332,7 +7233,6 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="14.700000000000017"
                 opacity=""
@@ -7368,7 +7268,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
                 height="68.60000000000002"
                 opacity=""
@@ -7382,7 +7281,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="245"
                 opacity=""

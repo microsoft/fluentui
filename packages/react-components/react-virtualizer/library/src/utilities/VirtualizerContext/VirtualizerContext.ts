@@ -5,12 +5,21 @@ const VirtualizerContext = React.createContext<VirtualizerContextProps | undefin
   undefined,
 ) as React.Context<VirtualizerContextProps>;
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export const VirtualizerContextProvider = VirtualizerContext.Provider;
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export const useVirtualizerContext_unstable = () => {
   return React.useContext(VirtualizerContext);
 };
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export const useVirtualizerContextState_unstable = (
   passedContext?: VirtualizerContextProps,
 ): DynamicVirtualizerContextProps => {

@@ -530,6 +530,7 @@ export const transformPlotlyJsonToVSBCProps = (
     ...getYMinMaxValues(input.data[0], input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
+    ...getBarProps(input.data, input.layout),
   };
 };
 
@@ -610,6 +611,7 @@ export const transformPlotlyJsonToGVBCProps = (
     ...getYMinMaxValues(input.data[0], input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
+    ...getBarProps(input.data, input.layout),
   };
 };
 
@@ -779,12 +781,14 @@ const transformPlotlyJsonToScatterTraceProps = (
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps | IScatterChartProps => {
   const isScatterMarkers = [
+    'text',
     'markers',
     'text+markers',
     'markers+text',
     'lines+markers',
     'markers+line',
     'text+lines+markers',
+    'lines+markers+text',
   ].includes((input.data[0] as PlotData)?.mode);
   const isAreaChart = chartType === 'area';
   const isScatterChart = chartType === 'scatter';
@@ -862,6 +866,9 @@ const transformPlotlyJsonToScatterTraceProps = (
                   originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
                   direction: input.layout?.polar?.angularaxis?.direction,
                   rotation: input.layout?.polar?.angularaxis?.rotation,
+                  axisLabel: (series as { __axisLabel: string[] }).__axisLabel
+                    ? (series as { __axisLabel: string[] }).__axisLabel
+                    : {},
                 }
               : {}),
           },
@@ -993,6 +1000,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     roundCorners: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getBarProps(input.data, input.layout, true),
   };
 };
 
@@ -1021,7 +1029,7 @@ export const transformPlotlyJsonToGanttChartProps = (
       const isXDate = input.layout?.xaxis?.type === 'date' || isDateArray(series.x);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const convertXValueToNumber = (value: any) => {
-        return isInvalidValue(value) ? 0 : isXDate ? new Date(value as string | number).getTime() : (value as number);
+        return isInvalidValue(value) ? 0 : isXDate ? +parseLocalDate(value) : +value;
       };
 
       return (series.y as Datum[])
@@ -1068,6 +1076,7 @@ export const transformPlotlyJsonToGanttChartProps = (
     useUTC: false,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getBarProps(input.data, input.layout, true),
   };
 };
 
@@ -1461,7 +1470,7 @@ export const transformPlotlyJsonToChartTableProps = (
       let fontColor: React.CSSProperties['color'] | undefined;
 
       if (Array.isArray(fontColorRaw)) {
-        const colorEntry = fontColorRaw[colIndex];
+        const colorEntry = fontColorRaw[colIndex] ?? fontColorRaw[0];
         if (Array.isArray(colorEntry)) {
           fontColor = typeof colorEntry[0] === 'string' ? colorEntry[0] : undefined;
         } else if (typeof colorEntry === 'string') {
@@ -1475,17 +1484,24 @@ export const transformPlotlyJsonToChartTableProps = (
       let fontSize: React.CSSProperties['fontSize'] | undefined;
 
       if (Array.isArray(fontSizeRaw)) {
-        fontSize = Array.isArray(fontSizeRaw[0]) ? fontSizeRaw[0][colIndex] : fontSizeRaw[colIndex];
+        const fontSizeEntry = fontSizeRaw[colIndex] ?? fontSizeRaw[0];
+        fontSize = Array.isArray(fontSizeRaw[0])
+          ? fontSizeRaw[0][colIndex] ?? fontSizeRaw[0][0]
+          : typeof fontSizeEntry === 'number'
+          ? fontSizeEntry
+          : undefined;
       } else if (typeof fontSizeRaw === 'number') {
         fontSize = fontSizeRaw;
       }
 
       const updatedColIndex = colIndex >= 1 ? 1 : 0;
       const fillColorRaw = header?.fill?.color;
-      const backgroundColor = Array.isArray(fillColorRaw) ? fillColorRaw[updatedColIndex] : fillColorRaw;
+      const backgroundColor = Array.isArray(fillColorRaw)
+        ? fillColorRaw[updatedColIndex] ?? fillColorRaw[0]
+        : fillColorRaw;
 
       const textAlignRaw = header?.align;
-      const textAlign = Array.isArray(textAlignRaw) ? textAlignRaw[colIndex] : textAlignRaw;
+      const textAlign = Array.isArray(textAlignRaw) ? textAlignRaw[colIndex] ?? textAlignRaw[0] : textAlignRaw;
 
       const style: React.CSSProperties = {
         ...(typeof fontColor === 'string' ? { color: fontColor } : {}),
@@ -1498,7 +1514,10 @@ export const transformPlotlyJsonToChartTableProps = (
     });
   };
   const columns = tableData.cells?.values ?? [];
-  const cells = tableData.cells!.font ? tableData.cells! : input.layout?.template?.data?.table![0].cells;
+  const cells =
+    tableData.cells && Object.keys(tableData.cells).length > 0
+      ? tableData.cells
+      : input.layout?.template?.data?.table?.[0]?.cells;
   const rows = columns[0].map((_, rowIndex: number) =>
     columns.map((col, colIndex) => {
       const cellValue = col[rowIndex];
@@ -1512,7 +1531,7 @@ export const transformPlotlyJsonToChartTableProps = (
       const rawFontColor = cells?.font?.color;
       let fontColor: React.CSSProperties['color'] | undefined;
       if (Array.isArray(rawFontColor)) {
-        const entry = rawFontColor[colIndex];
+        const entry = rawFontColor[colIndex] ?? rawFontColor[0];
         const colorValue = Array.isArray(entry) ? entry[rowIndex] : entry;
         fontColor = typeof colorValue === 'string' ? colorValue : undefined;
       } else if (typeof rawFontColor === 'string') {
@@ -1522,7 +1541,7 @@ export const transformPlotlyJsonToChartTableProps = (
       const rawFontSize = cells?.font?.size;
       let fontSize: React.CSSProperties['fontSize'] | undefined;
       if (Array.isArray(rawFontSize)) {
-        const entry = rawFontSize[colIndex];
+        const entry = rawFontSize[colIndex] ?? rawFontSize[0];
         const fontSizeValue = Array.isArray(entry) ? entry[rowIndex] : entry;
         fontSize = typeof fontSizeValue === 'number' ? fontSizeValue : undefined;
       } else if (typeof rawFontSize === 'number') {
@@ -1533,14 +1552,14 @@ export const transformPlotlyJsonToChartTableProps = (
       const rawBackgroundColor = cells?.fill?.color;
       let backgroundColor: React.CSSProperties['backgroundColor'] | undefined;
       if (Array.isArray(rawBackgroundColor)) {
-        const entry = rawBackgroundColor[updatedColIndex];
+        const entry = rawBackgroundColor[updatedColIndex] ?? rawBackgroundColor[0];
         const colorValue = Array.isArray(entry) ? entry[rowIndex] : entry;
         backgroundColor = typeof colorValue === 'string' ? colorValue : undefined;
       } else if (typeof rawBackgroundColor === 'string') {
         backgroundColor = rawBackgroundColor;
       }
 
-      const rawTextAlign = Array.isArray(cells?.align) ? cells.align[colIndex] : cells?.align;
+      const rawTextAlign = Array.isArray(cells?.align) ? cells.align[colIndex] ?? cells.align[0] : cells?.align;
       const textAlign = rawTextAlign as React.CSSProperties['textAlign'] | undefined;
 
       const style: React.CSSProperties = {
@@ -1566,7 +1585,9 @@ export const transformPlotlyJsonToChartTableProps = (
   return {
     headers: normalizeHeaders(
       tableData.header?.values ?? [],
-      tableData.header?.font ? tableData.header : input.layout?.template?.data?.table![0].header,
+      tableData.header && Object.keys(tableData.header).length > 0
+        ? tableData.header
+        : input.layout?.template?.data?.table![0].header,
     ),
     rows,
     width: input.layout?.width,
@@ -1712,7 +1733,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
     data: funnelData,
     width: input.layout?.width,
     height: input.layout?.height,
-    orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'vertical' : 'horizontal',
+    orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'horizontal' : 'vertical',
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
   };
 };
@@ -1720,7 +1741,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
 export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
   const projection: PlotlySchema = { ...input };
 
-  // 1. Find the global min and max radius across all series
+  // Find the global min and max radius across all series
   let minRadius = 0;
   let maxRadius = 0;
   for (let sindex = 0; sindex < input.data.length; sindex++) {
@@ -1735,18 +1756,27 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
     }
   }
 
-  // 2. If there are negative radii, compute the shift
+  // If there are negative radii, compute the shift
   const radiusShift = minRadius < 0 ? -minRadius : 0;
 
-  // 3. Project all points and create a perfect square domain
+  // Collect all unique theta values from all scatterpolar series for equal spacing
+  const allThetaValues: Set<string> = new Set();
+  for (let sindex = 0; sindex < input.data.length; sindex++) {
+    const series = input.data[sindex] as Partial<PlotData>;
+    if (series.theta && isArrayOrTypedArray(series.theta)) {
+      series.theta.forEach(theta => allThetaValues.add(String(theta)));
+    }
+  }
+
+  // Project all points and create a perfect square domain
   const allX: number[] = [];
   const allY: number[] = [];
   let originX: number | null = null;
   for (let sindex = 0; sindex < input.data.length; sindex++) {
     const series = input.data[sindex] as Partial<PlotData>;
-    // If scatterpolar, set text to theta values as strings
-    if (series.type === 'scatterpolar' && Array.isArray(series.theta)) {
-      series.text = series.theta.map(v => String(v));
+    // If scatterpolar, set __axisLabel to all unique theta values for equal spacing
+    if (isArrayOrTypedArray(series.theta)) {
+      (series as { __axisLabel: string[] }).__axisLabel = Array.from(allThetaValues);
     }
     series.x = [] as Datum[];
     series.y = [] as Datum[];
@@ -1776,7 +1806,7 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
         continue;
       }
 
-      // 4. Map theta to angle in radians
+      // Map theta to angle in radians
       let thetaRad: number;
       if (categorical) {
         const idx = uniqueTheta.indexOf(thetas[ptindex]);
@@ -1785,10 +1815,10 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       } else {
         thetaRad = startAngleInRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
       }
-      // 5. Shift only the polar origin (not the cartesian)
+      // Shift only the polar origin (not the cartesian)
       const rawRadius = rVals[ptindex] as number;
       const polarRadius = rawRadius + radiusShift; // Only for projection
-      // 6. Calculate cartesian coordinates (with shifted polar origin)
+      // Calculate cartesian coordinates (with shifted polar origin)
       const x = polarRadius * Math.cos(thetaRad);
       const y = polarRadius * Math.sin(thetaRad);
 
@@ -2434,7 +2464,7 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
 
     if (!ax?.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
       const categoriesInTraceOrder = Array.from(new Set(values as string[]));
-      result[propName] = categoriesInTraceOrder;
+      result[propName] = ax?.autorange === 'reversed' ? categoriesInTraceOrder.reverse() : categoriesInTraceOrder;
       return;
     }
 
@@ -2442,4 +2472,81 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
   });
 
   return result;
+};
+
+/**
+ * This is experimental. Use it only with valid datetime strings to verify if they conform to the ISO 8601 format.
+ */
+const isoDateRegex = /^\d{4}(-\d{2}(-\d{2})?)?(T\d{2}:\d{2}(:\d{2}(\.\d{1,9})?)?(Z)?)?$/;
+
+/**
+ * We want to display localized date and time in the charts, so the useUTC prop is set to false.
+ * But this can sometimes cause the formatters to display the datetime incorrectly.
+ * To work around this issue, we use this function to adjust datetime strings so that they are always interpreted
+ * as local time, allowing the formatters to produce the correct output.
+ *
+ * FIXME: The formatters should always produce a clear and accurate localized output, regardless of the
+ * format used to create the date object.
+ */
+const parseLocalDate = (value: string | number) => {
+  if (typeof value === 'string') {
+    const match = value.match(isoDateRegex);
+    if (match) {
+      if (!match[3]) {
+        value += 'T00:00';
+      } else if (match[6]) {
+        value = value.replace('Z', '');
+      }
+    }
+  }
+  return new Date(value);
+};
+
+const getBarProps = (
+  data: Data[],
+  layout: Partial<Layout> | undefined,
+  isHorizontal?: boolean,
+):
+  | Pick<
+      IVerticalBarChartProps,
+      'barWidth' | 'maxBarWidth' | 'xAxisInnerPadding' | 'xAxisOuterPadding' | 'xAxisPadding'
+    >
+  | Pick<IGanttChartProps, 'barHeight' | 'maxBarHeight' | 'yAxisPadding'> => {
+  let padding: number | undefined;
+
+  if (typeof layout?.bargap === 'number') {
+    padding = layout.bargap;
+  }
+
+  const plotlyBarWidths = data
+    .map((series: Partial<PlotData>) => {
+      if (series.type === 'bar' && (isArrayOrTypedArray(series.width) || typeof series.width === 'number')) {
+        return series.width;
+      }
+      return [];
+    })
+    .flat();
+  const maxPlotlyBarWidth = d3Max(plotlyBarWidths as number[]);
+  if (typeof maxPlotlyBarWidth === 'number') {
+    padding = 1 - maxPlotlyBarWidth;
+    padding = Math.max(0, Math.min(padding, 1));
+  }
+
+  if (typeof padding === 'undefined') {
+    return {};
+  }
+
+  if (isHorizontal) {
+    return {
+      maxBarHeight: 1000,
+      yAxisPadding: padding,
+    };
+  }
+
+  return {
+    barWidth: 'auto',
+    maxBarWidth: 1000,
+    xAxisInnerPadding: padding,
+    xAxisOuterPadding: padding / 2,
+  };
 };
