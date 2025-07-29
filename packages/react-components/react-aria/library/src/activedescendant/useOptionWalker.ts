@@ -30,6 +30,7 @@ export function useOptionWalker<TListboxElement extends HTMLElement>(options: Us
         treeWalkerRef.current = targetDocument.createTreeWalker(el, NodeFilter.SHOW_ELEMENT, optionFilter);
       } else {
         listboxRef.current = null;
+        treeWalkerRef.current = null;
       }
     },
     [targetDocument, optionFilter],
