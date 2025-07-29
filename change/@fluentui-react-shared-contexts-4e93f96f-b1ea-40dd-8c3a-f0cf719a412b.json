@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add custom style hooks.",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "adam.samec@gmail.com",
+  "dependentChangeType": "patch"
+}
