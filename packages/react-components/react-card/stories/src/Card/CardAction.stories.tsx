@@ -10,6 +10,7 @@ import {
   Link,
   makeStyles,
   Subtitle1,
+  Text,
   tokens,
 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular, Open16Regular } from '@fluentui/react-icons';
@@ -111,8 +112,8 @@ export const WithAction = () => {
           <CardHeader
             image={<img src={resolveAsset('pptx.png')} width="32px" height="32px" alt="Microsoft PowerPoint logo" />}
             header={
-              <Body1>
-                <b>App Name</b>
+              <Body1 as="h5" style={{ margin: 0, fontWeight: 'bold' }}>
+                App Name
               </Body1>
             }
             description={<Caption1>Developer</Caption1>}
@@ -145,9 +146,11 @@ export const WithAction = () => {
           <CardHeader
             image={<img src={resolveAsset('pptx.png')} width="32px" height="32px" alt="Microsoft PowerPoint logo" />}
             header={
-              <Link href="https://www.microsoft.com/" target="_blank" ref={linkRef} className={styles.link}>
-                <b>App Name</b>
-              </Link>
+              <Text as="h5" style={{ margin: 0 }}>
+                <Link href="https://www.microsoft.com/" target="_blank" ref={linkRef} className={styles.link}>
+                  <b>App Name</b>
+                </Link>
+              </Text>
             }
             description={<Caption1>Developer</Caption1>}
             action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}

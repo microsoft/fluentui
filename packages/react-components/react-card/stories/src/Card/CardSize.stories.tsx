@@ -69,7 +69,11 @@ const CardExample = (props: CardProps) => {
       </header>
 
       <CardHeader
-        header={<Text weight="semibold">Alert in Teams when a new document is uploaded in channel</Text>}
+        header={
+          <Text as="h5" weight="semibold" style={{ margin: 0 }}>
+            Alert in Teams when a new document is uploaded in channel
+          </Text>
+        }
         description={<Caption1 className={styles.caption}>By Microsoft</Caption1>}
       />
 
