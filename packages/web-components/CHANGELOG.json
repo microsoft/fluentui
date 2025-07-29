@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 25 Jul 2025 04:07:23 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.114",
+      "version": "3.0.0-beta.114",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "286ce2b6005c3d2580f6af9188ef7e73a7de91c9",
+            "comment": "a11y: remove vertical margins on dialog to support 400% zoom"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Jul 2025 04:07:39 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.113",
       "version": "3.0.0-beta.113",

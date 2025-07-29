@@ -4,6 +4,7 @@
 
 ```ts
 
+import { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { SlotComponentType } from '@fluentui/react-utilities';
 import { SlotRenderFunction } from '@fluentui/react-utilities';
@@ -166,7 +167,7 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
 
 // @public (undocumented)
 export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<PresenceComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart'> & {
-    as?: keyof JSX.IntrinsicElements;
+    as?: JSXIntrinsicElementKeys;
     children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & {
         children: React_2.ReactElement;
     }>;
