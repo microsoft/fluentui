@@ -11,7 +11,9 @@ import {
   domainRangeOfDateForScatterChart,
   domainRangeOfNumericForScatterChart,
   domainRangeOfXStringAxis,
+  filterPointsForLogScale,
   findNumericMinMaxOfY,
+  getPadding,
   isScatterPolarSeries,
   isTextMode,
   YAxisType,
@@ -38,7 +40,6 @@ import { IImageExportOptions, IScatterChartDataPoint, IScatterChartPoints } from
 import { ILineChartPoints } from '../../types/IDataPoint';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
-import { ScaleLinear } from 'd3-scale';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -399,19 +400,52 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     [_points, props.culture, props.useUTC],
   );
 
-  function _getRangeForScatterMarkerSize(
-    yScale: ScaleLinear<number, number>,
-    yPadding: number,
-    xMin: number,
-    xMax: number,
-    xPadding: number,
-  ): number {
-    const extraXPixels = getRTL()
-      ? _xAxisScale.current?.(xMax - xPadding) - _xAxisScale.current?.(xMax)
-      : _xAxisScale.current?.(xMin + xPadding) - _xAxisScale.current?.(xMin);
+  function _getRangeForScatterMarkerSize(): number {
+    const filterXPoints = (item: IScatterChartDataPoint) => filterPointsForLogScale(item.x, props.xAxisScale);
+    const xMin = d3Min(_points.current, (point: IScatterChartPoints) =>
+      d3Min(
+        point.data.filter(filterXPoints) as IScatterChartDataPoint[],
+        (item: IScatterChartDataPoint) => item.x as number,
+      ),
+    )!;
+    const xMax = d3Max(_points.current, (point: IScatterChartPoints) =>
+      d3Max(
+        point.data.filter(filterXPoints) as IScatterChartDataPoint[],
+        (item: IScatterChartDataPoint) => item.x as number,
+      ),
+    )!;
+    let scaleXMin: number;
+    let scaleXMax: number;
+    if (getRTL()) {
+      [scaleXMax, scaleXMin] = _xAxisScale.current.domain();
+    } else {
+      [scaleXMin, scaleXMax] = _xAxisScale.current.domain();
+    }
+    const xPadding = { start: xMin - scaleXMin, end: scaleXMax - xMax };
+    const extraXPixels = Math.min(
+      Math.abs(_xAxisScale.current(xMin + xPadding.start) - _xAxisScale.current(xMin)),
+      Math.abs(_xAxisScale.current(xMax) - _xAxisScale.current(xMax - xPadding.end)),
+    );
 
-    const yMin = yScale.domain()[0];
-    const extraYPixels = yScale(yMin) - yScale(yMin + yPadding);
+    const filterYPoints = (item: IScatterChartDataPoint) => filterPointsForLogScale(item.y, props.yAxisScale);
+    const yMax = d3Max(_points.current, (point: IScatterChartPoints) => {
+      return d3Max(
+        point.data.filter(filterYPoints) as IScatterChartDataPoint[],
+        (item: IScatterChartDataPoint) => item.y,
+      )!;
+    })!;
+    const yMin = d3Min(_points.current, (point: IScatterChartPoints) => {
+      return d3Min(
+        point.data.filter(filterYPoints) as IScatterChartDataPoint[],
+        (item: IScatterChartDataPoint) => item.y,
+      )!;
+    })!;
+    const [scaleYMin, scaleYMax] = _yAxisScale.current.domain();
+    const yPadding = { start: yMin - scaleYMin, end: scaleYMax - yMax };
+    const extraYPixels = Math.min(
+      _yAxisScale.current(yMin) - _yAxisScale.current(yMin + yPadding.start),
+      _yAxisScale.current(yMax - yPadding.end) - _yAxisScale.current(yMax),
+    );
     return Math.min(extraXPixels, extraYPixels);
   }
 
@@ -426,33 +460,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         _points.current = _injectIndexPropertyInScatterChartData(props.data.scatterChartData);
       }
 
-      const yMax = d3Max(_points.current, (point: IScatterChartPoints) => {
-        return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.y)!;
-      })!;
-      const yMin = d3Min(_points.current, (point: IScatterChartPoints) => {
-        return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.y)!;
-      })!;
-      const yPadding = (yMax - yMin) * 0.1;
-
-      let xPadding = 0;
-      let xMin: number = 0;
-      let xMax: number = 0;
       if (_xAxisType === XAxisTypes.StringAxis) {
         _xBandwidth.current = _xAxisScale.current?.bandwidth() / 2;
-      } else {
-        const isDate = _xAxisType === XAxisTypes.DateAxis;
-        const getX = (item: IScatterChartDataPoint) => (isDate ? (item.x as Date) : (item.x as number));
-
-        const minVal = d3Min(_points.current, (point: IScatterChartPoints) =>
-          d3Min(point.data as IScatterChartDataPoint[], getX),
-        );
-        const maxVal = d3Max(_points.current, (point: IScatterChartPoints) =>
-          d3Max(point.data as IScatterChartDataPoint[], getX),
-        );
-
-        xMin = isDate ? (minVal as Date).getTime() : (minVal as number);
-        xMax = isDate ? (maxVal as Date).getTime() : (maxVal as number);
-        xPadding = (xMax - xMin) * 0.1;
       }
 
       const maxMarkerSize = d3Max(_points.current, (point: IScatterChartPoints) => {
@@ -460,6 +469,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           return item.markerSize as number;
         });
       })!;
+      const extraMaxPixels = _xAxisType !== XAxisTypes.StringAxis ? _getRangeForScatterMarkerSize() : 0;
 
       for (let i = _points.current?.length - 1; i >= 0; i--) {
         // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -470,14 +480,16 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         const verticaLineHeight = containerHeight - (margins.current?.bottom ?? 0) + 6;
 
         for (let j = 0; j < _points.current?.[i]?.data?.length; j++) {
+          const { x, y, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points.current?.[i]?.data[j];
+          const xPoint = _xAxisScale.current?.(x);
+          const yPoint = _yAxisScale.current?.(y);
+          if (!Number.isFinite(xPoint) || !Number.isFinite(yPoint)) {
+            continue;
+          }
+
           const seriesId = `${_seriesId}_${i}_${j}`;
           const circleId = `${_circleId}_${i}_${j}`;
-          const { x, y, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points.current?.[i]?.data[j];
           const pointMarkerSize = (_points.current?.[i]?.data[j] as IScatterChartDataPoint).markerSize;
-          const extraMaxPixels =
-            _xAxisType !== XAxisTypes.StringAxis
-              ? _getRangeForScatterMarkerSize(_yAxisScale.current, yPadding, xMin, xMax, xPadding)
-              : 0;
           const minPixel = 4;
           const maxPixel = 16;
           const circleRadius =
@@ -500,8 +512,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
                   id={circleId}
                   key={circleId}
                   r={Math.max(circleRadius, 4)}
-                  cx={_xAxisScale.current?.(x) + _xBandwidth.current}
-                  cy={_yAxisScale.current?.(y)}
+                  cx={xPoint + _xBandwidth.current}
+                  cy={yPoint}
                   data-is-focusable={isLegendSelected}
                   onMouseOver={(event: React.MouseEvent<SVGElement>) =>
                     _handleHover(
@@ -543,8 +555,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
             pointsForSeries.push(
               <text
                 key={`${circleId}-label`}
-                x={_xAxisScale.current?.(x) + _xBandwidth.current}
-                y={_yAxisScale.current?.(y) + Math.max(circleRadius + 12, 16)}
+                x={xPoint + _xBandwidth.current}
+                y={yPoint + Math.max(circleRadius + 12, 16)}
                 className={classNames.markerLabel}
               >
                 {text}
@@ -680,13 +692,12 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     yAxisType?: YAxisType,
   ): { startValue: number; endValue: number } {
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType);
-    let yPadding = 0;
-    yPadding = (endValue - startValue) * 0.1;
+    const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType, undefined, props.yAxisScale);
+    const yPadding = getPadding(startValue, endValue, true, props.yAxisScale);
 
     return {
-      startValue: startValue - yPadding,
-      endValue: endValue + yPadding,
+      startValue: startValue - yPadding.start,
+      endValue: endValue + yPadding.end,
     };
   }
 

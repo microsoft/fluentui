@@ -691,15 +691,31 @@ export function createNumericYAxis(
     ? 0
     : yMinValue!;
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
+
+  let scaleDomain: number[] = [];
+  if (scale === 'log') {
+    let domainStart = yMinMaxValues.startValue;
+    let domainEnd = yMinMaxValues.endValue;
+    if (yMinValue > 0) {
+      domainStart = Math.min(domainStart, yMinValue);
+    }
+    if (yMaxValue > 0) {
+      domainEnd = Math.max(domainEnd, yMaxValue);
+    }
+    scaleDomain = [domainStart, domainEnd];
+  } else {
+    scaleDomain = [supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]];
+  }
+
   const yAxisScale = createNumericScale(scale)
-    .domain([supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]])
+    .domain(scaleDomain)
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis
-    .tickPadding(tickPadding)
-    .tickValues(domainValues)
-    .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+  const yAxis = axis.tickPadding(tickPadding).tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+  if (scale !== 'log') {
+    yAxis.tickValues(domainValues);
+  }
 
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
@@ -1157,7 +1173,7 @@ export function domainRangeOfNumericForAreaChart(
   scale?: AxisScale,
 ): IDomainNRange {
   const isScatterPolar = isScatterPolarSeries(points);
-  const filterPoints = (item: ILineChartDataPoint) => scale !== 'log' || (item.x as number) > 0;
+  const filterPoints = (item: ILineChartDataPoint) => filterPointsForLogScale(item.x, scale);
   const xMin = d3Min(points, (point: ILineChartPoints) => {
     return d3Min(point.data.filter(filterPoints), (item: ILineChartDataPoint) => item.x as number)!;
   })!;
@@ -1249,9 +1265,9 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   shiftX: number,
   X_ORIGIN: number,
 ): IDomainNRange {
-  const { longestPositiveBar, longestNegativeBar } = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN);
-  const xMax = longestPositiveBar;
-  const xMin = longestNegativeBar;
+  const longestBars = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN);
+  const xMax = longestBars.longestPositiveBar;
+  const xMin = longestBars.longestNegativeBar;
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 
@@ -1397,12 +1413,15 @@ export function findNumericMinMaxOfY(
   points: ILineChartPoints[] | IScatterChartPoints[],
   yAxisType?: YAxisType,
   useSecondaryYScale?: boolean,
+  scale?: AxisScale,
 ): { startValue: number; endValue: number } {
   const values: number[] = [];
   points.forEach(point => {
     if (!useSecondaryYScale === !point.useSecondaryYScale) {
       point.data.forEach(data => {
-        values.push(data.y);
+        if (filterPointsForLogScale(data.y, scale)) {
+          values.push(data.y);
+        }
       });
     }
   });
@@ -1887,7 +1906,7 @@ export function domainRangeOfNumericForScatterChart(
   scale?: AxisScale,
 ): IDomainNRange {
   const isScatterPolar = isScatterPolarSeries(points);
-  const filterPoints = (item: IScatterChartDataPoint) => scale !== 'log' || (item.x as number) > 0;
+  const filterPoints = (item: IScatterChartDataPoint) => filterPointsForLogScale(item.x, scale);
   let xMin = d3Min(points, (point: ILineChartPoints) => {
     return d3Min(
       point.data.filter(filterPoints) as IScatterChartDataPoint[],
@@ -1901,9 +1920,9 @@ export function domainRangeOfNumericForScatterChart(
     });
   })!;
 
-  const xPadding = scale === 'log' ? 0 : (xMax - xMin) * 0.1;
-  xMin = xMin - xPadding;
-  xMax = xMax + xPadding;
+  const xPadding = getPadding(xMin, xMax, true, scale);
+  xMin = xMin - xPadding.start;
+  xMax = xMax + xPadding.end;
 
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;
@@ -2035,4 +2054,42 @@ const createNumericScale = (type: AxisScale | undefined) => {
   } else {
     return d3ScaleLinear();
   }
+};
+
+export const getPadding = (minValue: number, maxValue: number, isNumeric: boolean, scale: AxisScale | undefined) => {
+  if (isNumeric && scale === 'log') {
+    return {
+      start: minValue * 0.5,
+      end: maxValue,
+    };
+  }
+
+  const defaultPadding = (maxValue - minValue) * 0.1;
+  return {
+    start: defaultPadding,
+    end: defaultPadding,
+  };
+};
+
+// export const getPaddingInverse = (
+//   minValueWithPadding: number,
+//   maxValueWithPadding: number,
+//   isNumeric: boolean,
+//   scale: AxisScale | undefined,
+// ) => {
+//   if (isNumeric && scale === 'log') {
+//     return {
+//       start: minValueWithPadding * 9,
+//       end: maxValueWithPadding * 0.9,
+//     };
+//   }
+
+//   return {
+//     start: (maxValueWithPadding - minValueWithPadding) * (1 / 12),
+//     end: (maxValueWithPadding - minValueWithPadding) * (1 / 12),
+//   };
+// };
+
+export const filterPointsForLogScale = (value: any, scale: AxisScale | undefined) => {
+  return typeof value !== 'number' || scale !== 'log' || value > 0;
 };

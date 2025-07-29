@@ -443,7 +443,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         barWidth,
       );
     } else if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
+      domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL, this.props.xAxisScale);
     } else if (xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
         points,
