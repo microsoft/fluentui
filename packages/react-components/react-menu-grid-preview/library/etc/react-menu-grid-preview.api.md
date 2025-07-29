@@ -24,17 +24,6 @@ export const MenuGridCell: ForwardRefComponent<MenuGridCellProps>;
 export const menuGridCellClassNames: SlotClassNames<MenuGridCellSlots>;
 
 // @public (undocumented)
-export const MenuGridCellContextProvider: React_2.Provider<MenuGridCellContextValue>;
-
-// @public
-export type MenuGridCellContextValue = {};
-
-// @public (undocumented)
-export type MenuGridCellContextValues = {
-    menuGridCell: MenuGridCellContextValue;
-};
-
-// @public (undocumented)
 export type MenuGridCellProps = ComponentProps<MenuGridCellSlots>;
 
 // @public (undocumented)
@@ -70,17 +59,6 @@ export const MenuGridRow: ForwardRefComponent<MenuGridRowProps>;
 // @public (undocumented)
 export const menuGridRowClassNames: SlotClassNames<MenuGridRowSlots>;
 
-// @public (undocumented)
-export const MenuGridRowContextProvider: React_2.Provider<MenuGridRowContextValue>;
-
-// @public
-export type MenuGridRowContextValue = {};
-
-// @public (undocumented)
-export type MenuGridRowContextValues = {
-    menuGridRow: MenuGridRowContextValue;
-};
-
 // @public
 export const MenuGridRowGroup: ForwardRefComponent<MenuGridRowGroupProps>;
 
@@ -105,17 +83,6 @@ export const MenuGridRowGroupHeader: ForwardRefComponent<MenuGridRowGroupHeaderP
 
 // @public (undocumented)
 export const menuGridRowGroupHeaderClassNames: SlotClassNames<MenuGridRowGroupHeaderSlots>;
-
-// @public (undocumented)
-export const MenuGridRowGroupHeaderContextProvider: React_2.Provider<MenuGridRowGroupHeaderContextValue>;
-
-// @public
-export type MenuGridRowGroupHeaderContextValue = {};
-
-// @public (undocumented)
-export type MenuGridRowGroupHeaderContextValues = {
-    menuGridRowGroupHeader: MenuGridRowGroupHeaderContextValue;
-};
 
 // @public (undocumented)
 export type MenuGridRowGroupHeaderProps = ComponentProps<MenuGridRowGroupHeaderSlots>;
@@ -166,28 +133,22 @@ export type MenuGridState = ComponentState<MenuGridSlots> & {
 export const renderMenuGrid_unstable: (state: MenuGridState, contextValues: MenuGridContextValues) => JSX.Element;
 
 // @public
-export const renderMenuGridCell_unstable: (state: MenuGridCellState, contextValues: MenuGridCellContextValues) => JSX.Element;
+export const renderMenuGridCell_unstable: (state: MenuGridCellState) => JSX.Element;
 
 // @public
-export const renderMenuGridRow_unstable: (state: MenuGridRowState, contextValues: MenuGridRowContextValues) => JSX.Element;
+export const renderMenuGridRow_unstable: (state: MenuGridRowState) => JSX.Element;
 
 // @public
 export const renderMenuGridRowGroup_unstable: (state: MenuGridRowGroupState, contextValues: MenuGridRowGroupContextValues) => JSX.Element;
 
 // @public
-export const renderMenuGridRowGroupHeader_unstable: (state: MenuGridRowGroupHeaderState, contextValues: MenuGridRowGroupHeaderContextValues) => JSX.Element;
+export const renderMenuGridRowGroupHeader_unstable: (state: MenuGridRowGroupHeaderState) => JSX.Element;
 
 // @public
 export const useMenuGrid_unstable: (props: MenuGridProps, ref: React_2.Ref<HTMLDivElement>) => MenuGridState;
 
 // @public
 export function useMenuGridCell_unstable(props: MenuGridCellProps, ref: React_2.Ref<HTMLDivElement>): MenuGridCellState;
-
-// @public (undocumented)
-export const useMenuGridCellContext_unstable: () => MenuGridCellContextValue;
-
-// @public (undocumented)
-export function useMenuGridCellContextValues_unstable(state: MenuGridCellState): MenuGridCellContextValues;
 
 // @public (undocumented)
 export const useMenuGridCellStyles_unstable: (state: MenuGridCellState) => MenuGridCellState;
@@ -201,12 +162,6 @@ export function useMenuGridContextValues_unstable(state: MenuGridState): MenuGri
 // @public
 export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React_2.Ref<HTMLDivElement>): MenuGridRowState;
 
-// @public (undocumented)
-export const useMenuGridRowContext_unstable: () => MenuGridRowContextValue;
-
-// @public (undocumented)
-export function useMenuGridRowContextValues_unstable(state: MenuGridRowState): MenuGridRowContextValues;
-
 // @public
 export function useMenuGridRowGroup_unstable(props: MenuGridRowGroupProps, ref: React_2.Ref<HTMLDivElement>): MenuGridRowGroupState;
 
@@ -218,12 +173,6 @@ export function useMenuGridRowGroupContextValues_unstable(state: MenuGridRowGrou
 
 // @public
 export function useMenuGridRowGroupHeader_unstable(props: MenuGridRowGroupHeaderProps, ref: React_2.Ref<HTMLDivElement>): MenuGridRowGroupHeaderState;
-
-// @public (undocumented)
-export const useMenuGridRowGroupHeaderContext_unstable: () => MenuGridRowGroupHeaderContextValue;
-
-// @public (undocumented)
-export function useMenuGridRowGroupHeaderContextValues_unstable(state: MenuGridRowGroupHeaderState): MenuGridRowGroupHeaderContextValues;
 
 // @public (undocumented)
 export const useMenuGridRowGroupHeaderStyles_unstable: (state: MenuGridRowGroupHeaderState) => MenuGridRowGroupHeaderState;

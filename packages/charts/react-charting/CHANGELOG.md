@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 28 Jul 2025 07:22:06 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Jul 2025 07:20:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.20)
+
+Tue, 29 Jul 2025 07:20:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.19..@fluentui/react-charting_v5.24.20)
+
+### Patches
+
+- fix(react-charting): Disable responsive container for heatmap in Declarative Chart ([PR #34931](https://github.com/microsoft/fluentui/pull/34931) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.26 ([PR #34931](https://github.com/microsoft/fluentui/pull/34931) by beachball)
 
 ## [5.24.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.19)
 

@@ -687,4 +687,10 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     barWidth: number | undefined,
     chartType?: ChartTypes,
   ) => ScaleBand<string>;
+
+  /**
+   * Controls whether the numeric x-axis domain should be extended to start and end at nice rounded values.
+   * @default true
+   */
+  showRoundOffXTickValues?: boolean;
 }

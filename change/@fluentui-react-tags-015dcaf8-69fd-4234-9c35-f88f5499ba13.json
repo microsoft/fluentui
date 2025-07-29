@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add aria-pressed semantics to selectable Tag, remove default aria-pressed from InteractionTag",
+  "packageName": "@fluentui/react-tags",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

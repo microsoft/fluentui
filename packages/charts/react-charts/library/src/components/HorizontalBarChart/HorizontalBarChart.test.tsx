@@ -13,7 +13,7 @@ const chartPoints: ChartProps[] = [
     chartTitle: 'one',
     chartData: [
       {
-        legend: 'one',
+        legend: 'one.one',
         horizontalBarChartdata: { x: 1543, total: 15000 },
         color: '#004b50',
         xAxisCalloutData: '2020/04/30',
@@ -61,6 +61,57 @@ const chartPointsWithBenchMark: ChartProps[] = [
     chartData: [{ legend: 'three', data: 5, horizontalBarChartdata: { x: 15, total: 50 }, color: '#a4262c' }],
   },
 ];
+const showText = (count: number) => (
+  <div>
+    <span>{count}</span>
+  </div>
+);
+const chartPointsForStackedInlineLegend = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      { legend: 'one.one', horizontalBarChartdata: { x: 10, total: 100 }, color: '#004b50' },
+      { legend: 'one.two', horizontalBarChartdata: { x: 90, total: 100 }, color: '#a4262c' },
+    ],
+    legendProps: {
+      enabledWrapLines: true,
+      legends: [
+        {
+          legendAnnotation: () => showText(60),
+          title: 'Legend 1',
+          color: '#a4262c',
+        },
+        {
+          legendAnnotation: () => showText(40),
+          title: 'Legend 2',
+          color: '#5c2d91',
+        },
+      ],
+    },
+  },
+  {
+    chartTitle: 'two',
+    chartData: [
+      { legend: 'two.one', horizontalBarChartdata: { x: 30, total: 200 }, color: '#5c2d91' },
+      { legend: 'two.two', horizontalBarChartdata: { x: 170, total: 200 }, color: '#a4262c' },
+    ],
+    legendProps: {
+      enabledWrapLines: true,
+      legends: [
+        {
+          legendAnnotation: () => showText(20),
+          title: 'Legend 1',
+          color: '#a4262c',
+        },
+        {
+          legendAnnotation: () => showText(30),
+          title: 'Legend 2',
+          color: '#5c2d91',
+        },
+      ],
+    },
+  },
+];
 
 describe('Horizontal bar chart rendering', () => {
   beforeEach(() => {
@@ -79,6 +130,17 @@ describe('Horizontal bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+
+  chartPointsForStackedInlineLegend.forEach((rowData, rowIndex) => {
+    testWithoutWait(
+      `Should render HorizontalBarChart for row ${rowIndex} with inline legends`,
+      HorizontalBarChart,
+      { data: [rowData], chartDataMode: 'hidden', legendProps: rowData.legendProps },
+      container => {
+        expect(container).toMatchSnapshot();
+      },
+    );
+  });
 });
 
 describe('Horizontal bar chart - Subcomponent bar', () => {
@@ -175,6 +237,19 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
       expect(screen.queryByText('10%')).not.toBeNull();
       expect(screen.queryByText('5%')).not.toBeNull();
       expect(screen.queryByText('59%')).not.toBeNull();
+    },
+  );
+
+  testWithWait(
+    'Should not render the bars right side value when chartDataMode is hidden',
+    HorizontalBarChart,
+    { data: chartPoints, chartDataMode: 'hidden' },
+    container => {
+      // Assert
+      expect(screen.queryByText('10%')).toBeNull();
+      expect(screen.queryByText('5%')).toBeNull();
+      expect(screen.queryByText('59%')).toBeNull();
+      expect(getByClass(container, /fui-hbc__textDenom/i)).toHaveLength(0);
     },
   );
 

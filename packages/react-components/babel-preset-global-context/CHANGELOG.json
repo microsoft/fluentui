@@ -2,6 +2,21 @@
   "name": "@fluentui/babel-preset-global-context",
   "entries": [
     {
+      "date": "Mon, 28 Jul 2025 18:48:21 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.88",
+      "version": "9.0.0-beta.88",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.88",
+            "commit": "27822054c223a560c0b49ec0b9079f628776e498"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jun 2025 14:11:55 GMT",
       "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.87",
       "version": "9.0.0-beta.87",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Thu, 26 Jun 2025 14:11:54 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jul 2025 18:48:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.10.0)
+
+Mon, 28 Jul 2025 18:48:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.9.0..@fluentui/react-motion_v9.10.0)
+
+### Minor changes
+
+- feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.23.0 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
 
 ## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.9.0)
 

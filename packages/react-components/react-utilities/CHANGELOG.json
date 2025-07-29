@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Mon, 28 Jul 2025 18:48:20 GMT",
+      "tag": "@fluentui/react-utilities_v9.23.0",
+      "version": "9.23.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: add custom JSX.* types that are compatible with various react major versions"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Jul 2025 13:52:49 GMT",
       "tag": "@fluentui/react-utilities_v9.22.0",
       "version": "9.22.0",

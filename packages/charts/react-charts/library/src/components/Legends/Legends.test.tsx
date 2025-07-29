@@ -96,6 +96,7 @@ const focusZonePropsInHoverCard = {
   'aria-label': 'Legend 1 selected',
 };
 
+/* eslint-disable @typescript-eslint/no-deprecated */
 describe('Legends snapShot testing', () => {
   it('renders Legends correctly', () => {
     const component = renderer.create(<Legends legends={legends} />);
@@ -121,6 +122,8 @@ describe('Legends snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 });
+
+/* eslint-enable @typescript-eslint/no-deprecated */
 
 describe('Legends - basic props', () => {
   it('Should not mount legends when empty', () => {

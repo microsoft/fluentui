@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "funnel chart in v9",
+  "comment": "GVBC FIX",
   "packageName": "@fluentui/react-charts",
   "email": "anushgupta@microsoft.com",
   "dependentChangeType": "patch"

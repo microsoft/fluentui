@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Brand ramp update",
+  "packageName": "@fluentui/tokens",
+  "email": "jukapsia@microsoft.com",
+  "dependentChangeType": "patch"
+}

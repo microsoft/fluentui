@@ -16,6 +16,8 @@ export const legendClassNames: SlotClassNames<LegendsStyles> = {
   text: 'fui-legend__text',
   hoverChange: 'fui-legend__hoverChange',
   resizableArea: 'fui-legend__resizableArea',
+  legendContainer: 'fui-legend__legendContainer',
+  annotation: 'fui-legend__annotation',
 };
 
 const useStyles = makeStyles({
@@ -99,6 +101,15 @@ const useStyles = makeStyles({
       ...shorthands.borderLeft('-2px'),
     },
   },
+  legendContainer: {
+    flex: '0 1 auto',
+    margin: '4px',
+  },
+  annotation: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '4px',
+  },
 });
 
 export const useLegendStyles = (props: LegendsProps): LegendsStyles => {
@@ -114,5 +125,11 @@ export const useLegendStyles = (props: LegendsProps): LegendsStyles => {
     text: mergeClasses(legendClassNames.text, baseStyles.text, props.styles?.text),
     hoverChange: mergeClasses(legendClassNames.hoverChange, baseStyles.hoverChange, props.styles?.hoverChange),
     resizableArea: mergeClasses(legendClassNames.resizableArea, baseStyles.resizableArea, props.styles?.resizableArea),
+    legendContainer: mergeClasses(
+      legendClassNames.legendContainer,
+      baseStyles.legendContainer,
+      props.styles?.legendContainer,
+    ),
+    annotation: mergeClasses(legendClassNames.annotation, baseStyles.annotation, props.styles?.annotation),
   };
 };
