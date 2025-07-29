@@ -4,16 +4,9 @@ import { existsSync } from 'node:fs';
 
 import { type BrowserContext, type Page, chromium } from 'playwright';
 import Turndown from 'turndown';
-// @ts-expect-error - No types available for this package
 import { strikethrough, tables, taskListItems } from 'turndown-plugin-gfm';
 
-import type {
-  Args,
-  StorybookComponentProp,
-  StorybookComponent,
-  StorybookStoreItem,
-  StorybookStoryStore,
-} from './types';
+import type { Args, StorybookComponentProp, StorybookComponent, StorybookStoreItem, StorybookGlobals } from './types';
 
 /**
  * Get content type based on file extension
@@ -142,14 +135,28 @@ export async function extractStorybookData({ distPath }: Args): Promise<Storyboo
   }
 }
 
-declare global {
-  interface Window {
-    /**
-     * Storybook Client API, contains story store and other metadata.
-     * `storyStore` is used for Storybook 7, `storyStoreValue` for >= 8.
-     */
-    __STORYBOOK_PREVIEW__?: { storyStore: StorybookStoryStore } | { storyStoreValue: StorybookStoryStore };
+/**
+ * Retrieves the Storybook story store from the global window object.
+ *
+ * @param window Storybook globals object
+ * @throws If unable to find Storybook preview or story store
+ */
+function getStoryStore(window: StorybookGlobals) {
+  const preview = window.__STORYBOOK_PREVIEW__;
+
+  if (!preview) {
+    throw new Error('Unable to find Storybook preview');
   }
+
+  if ('storyStore' in preview && preview.storyStore) {
+    return preview.storyStore;
+  }
+
+  if ('storyStoreValue' in preview && preview.storyStoreValue) {
+    return preview.storyStoreValue;
+  }
+
+  throw new Error('Unable to find Storybook story store');
 }
 
 /**
@@ -165,24 +172,11 @@ async function extractAllStoriesFromStorybook(context: BrowserContext, distPath:
 
   // Wait for the Storybook Client API to be loaded
   await page.waitForFunction(() => {
-    return window.__STORYBOOK_PREVIEW__;
+    return (window as StorybookGlobals).__STORYBOOK_PREVIEW__;
   });
 
   const stories: StorybookStoreItem[] = await page.evaluate(async () => {
-    const preview = window.__STORYBOOK_PREVIEW__;
-    let storyStore: StorybookStoryStore | undefined;
-
-    // Storybook 7 uses `storyStore`
-    if (preview && 'storyStore' in preview && preview.storyStore) {
-      storyStore = preview.storyStore;
-    }
-    // Storybook 8+ uses `storyStoreValue`
-    else if (preview && 'storyStoreValue' in preview && preview.storyStoreValue) {
-      storyStore = preview.storyStoreValue;
-    } else {
-      throw new Error('Unable to find Storybook story store');
-    }
-
+    const storyStore = getStoryStore(window);
     await storyStore.cacheAllCSFFiles();
     return Object.values(storyStore.cachedCSFFiles);
   });
@@ -302,7 +296,7 @@ export async function writeSummaryFile(args: Required<Args>, data: StorybookStor
  * Generates the summary file content from the storeItems array.
  */
 export function generateSummaryContent(
-  { summaryTitle, summaryDescription, baseUrl, refs }: Required<Args>,
+  { summaryTitle, summaryDescription, summaryBaseUrl: baseUrl, refs }: Required<Args>,
   data: StorybookStoreItem[],
 ) {
   // Initialize summary array with header content

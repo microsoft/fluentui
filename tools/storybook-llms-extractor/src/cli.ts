@@ -79,7 +79,7 @@ async function processArgs(): Promise<Required<Args>> {
       demandOption: true,
       describe: 'Relative path to the Storybook distribution folder',
     })
-    .option('baseUrl', {
+    .option('summaryBaseUrl', {
       type: 'string',
       default: '/',
       describe: 'Base URL for the Storybook docs',

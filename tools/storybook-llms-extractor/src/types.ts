@@ -8,10 +8,10 @@ export type Args = {
    */
   distPath: string;
   /**
-   * Base URL for the Storybook docs
-   * @example `--baseUrl "https://storybook.fluentui.dev/"`
+   * Storybook deployed URL for the summary docs
+   * @example `--summaryBaseUrl "https://storybook.fluentui.dev/"`
    */
-  baseUrl: string;
+  summaryBaseUrl: string;
   /**
    * Title for the llms.txt file
    * @example `--summaryTitle "Fluent UI Components and Pages"`
@@ -121,7 +121,18 @@ export type StorybookRef = { title: string; url: string; sourceUrl?: string };
 /**
  * Storybook Client API store, contains methods to cache CSF files and cached items.
  */
-export type StorybookStoryStore = {
+type StorybookStoryStore = {
   cacheAllCSFFiles: () => Promise<void>;
   cachedCSFFiles: Record<string, StorybookStoreItem>;
 };
+
+/**
+ * Storybook Client API store, contains methods to cache CSF files.
+ */
+export interface StorybookGlobals extends Window {
+  /**
+   * Storybook Client API, contains story store and other metadata.
+   * `storyStore` is used for Storybook 7, `storyStoreValue` for >= 8.
+   */
+  __STORYBOOK_PREVIEW__?: { storyStore: StorybookStoryStore } | { storyStoreValue: StorybookStoryStore };
+}
