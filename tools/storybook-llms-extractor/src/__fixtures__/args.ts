@@ -4,7 +4,7 @@ export const argsWithRefs = {
   summaryTitle: 'Fluent UI React v9',
   summaryDescription:
     "Fluent UI React is a library of React components that implement Microsoft's Fluent Design System.",
-  baseUrl: 'https://react.fluentui.dev',
+  summaryBaseUrl: 'https://react.fluentui.dev',
   distPath: 'dist/storybook',
   refs: [
     {
