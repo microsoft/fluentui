@@ -1,5 +1,4 @@
 export type {
-  MenuGridRowGroupHeaderContextValues,
   MenuGridRowGroupHeaderProps,
   MenuGridRowGroupHeaderSlots,
   MenuGridRowGroupHeaderState,
@@ -8,7 +7,6 @@ export {
   MenuGridRowGroupHeader,
   menuGridRowGroupHeaderClassNames,
   renderMenuGridRowGroupHeader_unstable,
-  useMenuGridRowGroupHeaderContextValues_unstable,
   useMenuGridRowGroupHeaderStyles_unstable,
   useMenuGridRowGroupHeader_unstable,
 } from './components/MenuGridRowGroupHeader/index';
