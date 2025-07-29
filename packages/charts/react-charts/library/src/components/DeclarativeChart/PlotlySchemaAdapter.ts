@@ -535,6 +535,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
         } as HorizontalBarChartWithAxisDataPoint;
       });
     })
+    .reverse()
     .flat()
     //reversing the order to invert the Y bars order as required by plotly.
     .reverse();

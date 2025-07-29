@@ -443,73 +443,75 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       const refIndexNumber = singleSet.indexNum * tempDataSet.length + index;
       const pointData = singleSet[datasetKey];
       const yBarScale = pointData.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
-      // To align the centers of the generated bandwidth and the calculated one when they differ,
-      // use the following addend.
-      const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - _barWidth) / 2;
-      const startColor = pointData.color ? pointData.color : getNextColor(index, 0);
+      if (pointData) {
+        // To align the centers of the generated bandwidth and the calculated one when they differ,
+        // use the following addend.
+        const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - _barWidth) / 2;
+        const startColor = pointData.color ? pointData.color : getNextColor(index, 0);
 
-      const yBaseline = yBarScale(Y_ORIGIN);
-      let yPositiveStart = yBaseline;
-      let yNegativeStart = yBaseline;
-      let yPoint = Y_ORIGIN;
+        const yBaseline = yBarScale(Y_ORIGIN);
+        let yPositiveStart = yBaseline;
+        let yNegativeStart = yBaseline;
+        let yPoint = Y_ORIGIN;
 
-      const barGap = (VERTICAL_BAR_GAP / 2) * (index > 0 ? 2 : 0);
-      const height = Math.max(yBarScale(Y_ORIGIN) - yBarScale(Math.abs(pointData.data)), MIN_BAR_HEIGHT);
-      if (pointData.data >= Y_ORIGIN) {
-        yPositiveStart -= height + barGap;
-        yPoint = yPositiveStart;
-      } else {
-        yPoint = yNegativeStart + barGap;
-        yNegativeStart = yPoint + height;
-      }
-      // Not rendering data with 0.
-      pointData.data &&
-        singleGroup.push(
-          <React.Fragment key={`${singleSet.indexNum}-${index}`}>
-            <rect
-              className={classes.opacityChangeOnHover}
-              height={height}
-              width={_barWidth}
-              x={xPoint}
-              y={yPoint}
-              opacity={_getOpacity(pointData.legend)}
-              ref={(e: SVGRectElement | null) => {
-                _refCallback(e!, pointData.legend, refIndexNumber);
-              }}
-              fill={startColor}
-              rx={0}
-              onMouseOver={event => onBarHover(pointData, singleSet, event)}
-              onMouseMove={event => onBarHover(pointData, singleSet, event)}
-              onMouseOut={_onBarLeave}
-              onFocus={event => onBarFocus(event, pointData, singleSet, refIndexNumber)}
-              onBlur={_onBarLeave}
-              onClick={pointData.onClick}
-              aria-label={getAriaLabel(pointData, singleSet.xAxisPoint)}
-              tabIndex={_legendHighlighted(pointData.legend) || _noLegendHighlighted() ? 0 : undefined}
-              role="img"
-            />
-          </React.Fragment>,
-        );
-      if (
+        const barGap = (VERTICAL_BAR_GAP / 2) * (index > 0 ? 2 : 0);
+        const height = Math.max(yBarScale(Y_ORIGIN) - yBarScale(Math.abs(pointData.data)), MIN_BAR_HEIGHT);
+        if (pointData.data >= Y_ORIGIN) {
+          yPositiveStart -= height + barGap;
+          yPoint = yPositiveStart;
+        } else {
+          yPoint = yNegativeStart + barGap;
+          yNegativeStart = yPoint + height;
+        }
+        // Not rendering data with 0.
         pointData.data &&
-        !props.hideLabels &&
-        _barWidth >= 16 &&
-        (_legendHighlighted(pointData.legend) || _noLegendHighlighted())
-      ) {
-        barLabelsForGroup.push(
-          <text
-            key={`${singleSet.indexNum}-${index}`}
-            x={xPoint + _barWidth / 2}
-            y={pointData.data >= Y_ORIGIN ? yPositiveStart - 6 : yNegativeStart + 12}
-            textAnchor="middle"
-            className={classes.barLabel}
-            aria-hidden={true}
-          >
-            {typeof props.yAxisTickFormat === 'function'
-              ? props.yAxisTickFormat(pointData.data)
-              : formatScientificLimitWidth(pointData.data)}
-          </text>,
-        );
+          singleGroup.push(
+            <React.Fragment key={`${singleSet.indexNum}-${index}`}>
+              <rect
+                className={classes.opacityChangeOnHover}
+                height={height}
+                width={_barWidth}
+                x={xPoint}
+                y={yPoint}
+                opacity={_getOpacity(pointData.legend)}
+                ref={(e: SVGRectElement | null) => {
+                  _refCallback(e!, pointData.legend, refIndexNumber);
+                }}
+                fill={startColor}
+                rx={0}
+                onMouseOver={event => onBarHover(pointData, singleSet, event)}
+                onMouseMove={event => onBarHover(pointData, singleSet, event)}
+                onMouseOut={_onBarLeave}
+                onFocus={event => onBarFocus(event, pointData, singleSet, refIndexNumber)}
+                onBlur={_onBarLeave}
+                onClick={pointData.onClick}
+                aria-label={getAriaLabel(pointData, singleSet.xAxisPoint)}
+                tabIndex={_legendHighlighted(pointData.legend) || _noLegendHighlighted() ? 0 : undefined}
+                role="img"
+              />
+            </React.Fragment>,
+          );
+        if (
+          pointData.data &&
+          !props.hideLabels &&
+          _barWidth >= 16 &&
+          (_legendHighlighted(pointData.legend) || _noLegendHighlighted())
+        ) {
+          barLabelsForGroup.push(
+            <text
+              key={`${singleSet.indexNum}-${index}`}
+              x={xPoint + _barWidth / 2}
+              y={pointData.data >= Y_ORIGIN ? yPositiveStart - 6 : yNegativeStart + 12}
+              textAnchor="middle"
+              className={classes.barLabel}
+              aria-hidden={true}
+            >
+              {typeof props.yAxisTickFormat === 'function'
+                ? props.yAxisTickFormat(pointData.data)
+                : formatScientificLimitWidth(pointData.data)}
+            </text>,
+          );
+        }
       }
     });
     // Used to display tooltip at x axis labels.
