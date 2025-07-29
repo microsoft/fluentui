@@ -177,7 +177,13 @@ async function extractAllStoriesFromStorybook(context: BrowserContext, distPath:
 
   const stories: StorybookStoreItem[] = await page.evaluate(async () => {
     const storyStore = getStoryStore(window);
+
     await storyStore.cacheAllCSFFiles();
+
+    if (!storyStore.cachedCSFFiles) {
+      throw new Error('Unable to find cached CSF files in Storybook store');
+    }
+
     return Object.values(storyStore.cachedCSFFiles);
   });
 

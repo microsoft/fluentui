@@ -122,8 +122,15 @@ export type StorybookRef = { title: string; url: string; sourceUrl?: string };
  * Storybook Client API store, contains methods to cache CSF files and cached items.
  */
 type StorybookStoryStore = {
+  /**
+   * Caches all CSF files in the Storybook store.
+   * This method must be called before accessing `cachedCSFFiles`.
+   */
   cacheAllCSFFiles: () => Promise<void>;
-  cachedCSFFiles: Record<string, StorybookStoreItem>;
+  /**
+   * CSF files become available after `cacheAllCSFFiles()` is resolved.
+   **/
+  cachedCSFFiles?: Record<string, StorybookStoreItem>;
 };
 
 /**
