@@ -136,30 +136,6 @@ export async function extractStorybookData({ distPath }: Args): Promise<Storyboo
 }
 
 /**
- * Retrieves the Storybook story store from the global window object.
- *
- * @param window Storybook globals object
- * @throws If unable to find Storybook preview or story store
- */
-function getStoryStore(window: StorybookGlobals) {
-  const preview = window.__STORYBOOK_PREVIEW__;
-
-  if (!preview) {
-    throw new Error('Unable to find Storybook preview');
-  }
-
-  if ('storyStore' in preview && preview.storyStore) {
-    return preview.storyStore;
-  }
-
-  if ('storyStoreValue' in preview && preview.storyStoreValue) {
-    return preview.storyStoreValue;
-  }
-
-  throw new Error('Unable to find Storybook story store');
-}
-
-/**
  * Extracts all stories from Storybook Client API store.
  */
 async function extractAllStoriesFromStorybook(context: BrowserContext, distPath: string) {
@@ -176,6 +152,30 @@ async function extractAllStoriesFromStorybook(context: BrowserContext, distPath:
   });
 
   const stories: StorybookStoreItem[] = await page.evaluate(async () => {
+    /**
+     * Retrieves the Storybook story store from the global window object.
+     *
+     * @param window Storybook globals object
+     * @throws If unable to find Storybook preview or story store
+     */
+    const getStoryStore = (window: StorybookGlobals) => {
+      const preview = window.__STORYBOOK_PREVIEW__;
+
+      if (!preview) {
+        throw new Error('Unable to find Storybook preview');
+      }
+
+      if ('storyStore' in preview && preview.storyStore) {
+        return preview.storyStore;
+      }
+
+      if ('storyStoreValue' in preview && preview.storyStoreValue) {
+        return preview.storyStoreValue;
+      }
+
+      throw new Error('Unable to find Storybook story store');
+    };
+
     const storyStore = getStoryStore(window);
 
     await storyStore.cacheAllCSFFiles();
