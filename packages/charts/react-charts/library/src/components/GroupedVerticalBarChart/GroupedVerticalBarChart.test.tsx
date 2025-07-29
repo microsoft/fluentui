@@ -445,7 +445,6 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
     GroupedVerticalBarChart,
     { data: chartPoints },
     container => {
-      //const legends = getByClass(container, /legend-/i);
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.mouseOver(legends[0]);
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
@@ -721,5 +720,394 @@ describe('Render empty chart aria label div when chart is empty', () => {
     let wrapper = render(<GroupedVerticalBarChart data={emptyChartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
+  });
+});
+
+describe('GroupedVerticalBarChart - Alignment Fix', () => {
+  const singleBarPerGroupData: GroupedVerticalBarChartData[] = [
+    {
+      name: 'Grade 10',
+      series: [
+        {
+          key: 'grade10_data',
+          data: 150,
+          color: '#3b82f6',
+          legend: 'Students',
+          xAxisCalloutData: 'Grade 10',
+          yAxisCalloutData: '150',
+        },
+      ],
+    },
+    {
+      name: 'Grade 11', 
+      series: [
+        {
+          key: 'grade11_data',
+          data: 168,
+          color: '#ef4444',
+          legend: 'Students',
+          xAxisCalloutData: 'Grade 11',
+          yAxisCalloutData: '168',
+        },
+      ],
+    },
+    {
+      name: 'Grade 12',
+      series: [
+        {
+          key: 'grade12_data',
+          data: 84,
+          color: '#10b981',
+          legend: 'Students',
+          xAxisCalloutData: 'Grade 12',
+          yAxisCalloutData: '84',
+        },
+      ],
+    },
+  ];
+
+  const stackedBarData: GroupedVerticalBarChartData[] = [
+    {
+      name: 'Grade 10',
+      series: [
+        {
+          key: 'Grade 10',
+          legend: 'Grade 10',
+          color: '#636efa',
+          data: 80,
+          xAxisCalloutData: 'Grade 10',
+          yAxisCalloutData: '80',
+        },
+        {
+          key: 'Grade 10',
+          legend: 'Grade 10',
+          color: '#636efa',
+          data: 80,
+          xAxisCalloutData: 'Grade 10',
+          yAxisCalloutData: '80',
+        },
+      ],
+    },
+    {
+      name: 'Grade 11',
+      series: [
+        {
+          key: 'Grade 11',
+          legend: 'Grade 11',
+          color: '#EF553B',
+          data: 90,
+          xAxisCalloutData: 'Grade 11',
+          yAxisCalloutData: '90',
+        },
+        {
+          key: 'Grade 11',
+          legend: 'Grade 11',
+          color: '#EF553B',
+          data: 90,
+          xAxisCalloutData: 'Grade 11',
+          yAxisCalloutData: '90',
+        },
+      ],
+    },
+    {
+      name: 'Grade 12',
+      series: [
+        {
+          key: 'Grade 12',
+          legend: 'Grade 12',
+          color: '#00cc96',
+          data: 85,
+          xAxisCalloutData: 'Grade 12',
+          yAxisCalloutData: '85',
+        },
+      ],
+    },
+  ];
+
+  testWithWait(
+    'Should align bars correctly with x-axis ticks for single bar per group',
+    GroupedVerticalBarChart,
+    { data: singleBarPerGroupData, width: 600, height: 400 },
+    container => {
+      // Get bar group positions (excluding the axis groups)
+      // Look for groups that contain rect elements (actual bars)
+      const chartContent = container.querySelector('.fui-cart__chart');
+      const barGroups = chartContent?.querySelectorAll('g[transform*="translate"] rect');
+      const parentGroups = new Set<Element>();
+      
+      // Get the parent groups of the rect elements
+      barGroups?.forEach((rect) => {
+        const parentGroup = rect.parentElement;
+        if (parentGroup && parentGroup.getAttribute('transform')?.includes('translate')) {
+          parentGroups.add(parentGroup);
+        }
+      });
+
+      const groupPositions: number[] = [];
+      parentGroups.forEach((group) => {
+        const transform = group.getAttribute('transform');
+        if (transform && transform.match(/translate\(([0-9.-]+),\s*0\)/)) {
+          const match = transform.match(/translate\(([0-9.-]+),\s*0\)/);
+          if (match) {
+            groupPositions.push(parseFloat(match[1]));
+          }
+        }
+      });
+
+      // Verify that no groups are positioned at negative coordinates (off-screen)
+      const negativePositions = groupPositions.filter(pos => pos < 0);
+      expect(negativePositions).toHaveLength(0);
+      
+      // Verify we have the expected number of groups
+      expect(groupPositions).toHaveLength(3);
+      
+      // Verify positions are in ascending order (left to right)
+      const sortedPositions = [...groupPositions].sort((a, b) => a - b);
+      expect(groupPositions).toEqual(sortedPositions);
+    },
+  );
+
+  testWithWait(
+    'Should align stacked bars correctly with x-axis ticks',
+    GroupedVerticalBarChart,
+    { data: stackedBarData, width: 800, height: 500 },
+    container => {
+      // Get bar group positions for stacked data
+      const chartContent = container.querySelector('.fui-cart__chart');
+      const barGroups = chartContent?.querySelectorAll('g[transform*="translate"] rect');
+      const parentGroups = new Set<Element>();
+      
+      // Get the parent groups of the rect elements
+      barGroups?.forEach((rect) => {
+        const parentGroup = rect.parentElement;
+        if (parentGroup && parentGroup.getAttribute('transform')?.includes('translate')) {
+          parentGroups.add(parentGroup);
+        }
+      });
+
+      const groupPositions: number[] = [];
+      parentGroups.forEach((group) => {
+        const transform = group.getAttribute('transform');
+        if (transform && transform.match(/translate\(([0-9.-]+),\s*0\)/)) {
+          const match = transform.match(/translate\(([0-9.-]+),\s*0\)/);
+          if (match) {
+            groupPositions.push(parseFloat(match[1]));
+          }
+        }
+      });
+
+      // Verify that no groups are positioned at negative coordinates (off-screen)
+      const negativePositions = groupPositions.filter(pos => pos < 0);
+      expect(negativePositions).toHaveLength(0);
+      
+      // Verify we have the expected number of groups
+      expect(groupPositions).toHaveLength(3);
+      
+      // Verify positions are in ascending order (left to right)
+      const sortedPositions = [...groupPositions].sort((a, b) => a - b);
+      expect(groupPositions).toEqual(sortedPositions);
+      
+      // Check that bars have reasonable spacing between them
+      if (groupPositions.length >= 2) {
+        const spacing1 = groupPositions[1] - groupPositions[0];
+        const spacing2 = groupPositions[2] - groupPositions[1];
+        
+        // Spacing should be positive and reasonably consistent
+        expect(spacing1).toBeGreaterThan(0);
+        expect(spacing2).toBeGreaterThan(0);
+        
+        // Spacing should be within reasonable bounds (within 20% of each other)
+        const avgSpacing = (spacing1 + spacing2) / 2;
+        expect(Math.abs(spacing1 - avgSpacing) / avgSpacing).toBeLessThanOrEqual(0.2);
+        expect(Math.abs(spacing2 - avgSpacing) / avgSpacing).toBeLessThanOrEqual(0.2);
+      }
+    },
+  );
+});
+
+describe('GroupedVerticalBarChart - Stacked Bars', () => {
+  const stackedTestData: GroupedVerticalBarChartData[] = [
+    {
+      name: '2020',
+      series: [
+        {
+          key: 'series1',
+          data: 20,
+          color: 'blue',
+          legend: 'Revenue', // Multiple points with same legend will stack
+          xAxisCalloutData: '2020',
+          yAxisCalloutData: '20',
+        },
+        {
+          key: 'series2', 
+          data: 30,
+          color: 'blue',
+          legend: 'Revenue', // Same legend - should stack on top of the first one
+          xAxisCalloutData: '2020',
+          yAxisCalloutData: '30',
+        },
+        {
+          key: 'series3',
+          data: 10,
+          color: 'red', 
+          legend: 'Costs', // Different legend - separate bar
+          xAxisCalloutData: '2020',
+          yAxisCalloutData: '10',
+        },
+      ],
+    },
+  ];
+
+  it('Should render stacked bars for points with same legend', () => {
+    updateChartWidthAndHeight();
+    const { container } = render(
+      <GroupedVerticalBarChart 
+        data={stackedTestData}
+        maxBarWidth={50}
+      />
+    );
+    
+    // Check that we have bars rendered
+    const bars = container.querySelectorAll('rect[role="img"]');
+    
+    // Should have 3 bars total - 2 for Revenue (stacked) and 1 for Costs
+    expect(bars.length).toBe(3);
+    
+    // Check that bars with same legend (Revenue) are stacked vertically
+    const revenueBars = Array.from(bars).filter(bar => 
+      bar.getAttribute('fill') === 'blue'
+    );
+    expect(revenueBars.length).toBe(2);
+    
+    // The second Revenue bar should be positioned above the first one
+    const bar1Y = parseFloat(revenueBars[0].getAttribute('y') || '0');
+    const bar2Y = parseFloat(revenueBars[1].getAttribute('y') || '0');
+    expect(bar2Y).toBeLessThan(bar1Y); // Higher bars have smaller y values
+  });
+
+  it('Should show aggregated total in label for stacked bars', () => {
+    updateChartWidthAndHeight();
+    const { container } = render(
+      <GroupedVerticalBarChart 
+        data={stackedTestData}
+        maxBarWidth={100}
+        barWidth={50}
+        hideLabels={false}
+      />
+    );
+    
+    // Check for text labels - should include bar labels with class "fui-gvbc**barLabel"
+    const barLabels = container.querySelectorAll('text.fui-gvbc\\*\\*barLabel');
+    
+    // Should show the total value (20 + 30 = 50) for Revenue bars
+    const revenueLabel = Array.from(barLabels).find(label => 
+      label.textContent === '50'
+    );
+    expect(revenueLabel).toBeTruthy();
+    
+    // Should show individual value (10) for Costs bar 
+    const costsLabel = Array.from(barLabels).find(label =>
+      label.textContent === '10'
+    );
+    expect(costsLabel).toBeTruthy();
+  });
+
+  test('should align stacked bars correctly with x-axis ticks', () => {
+    // Test data similar to the issue reported
+    const stackedAlignmentData = [
+      {
+        name: 'Grade 10',
+        series: [
+          {
+            key: 'Grade 10',
+            legend: 'Grade 10',
+            color: '#636efa',
+            data: 80,
+            xAxisCalloutData: 'Grade 10',
+            yAxisCalloutData: '80',
+          },
+          {
+            key: 'Grade 10',
+            legend: 'Grade 10',
+            color: '#636efa',
+            data: 80,
+            xAxisCalloutData: 'Grade 10',
+            yAxisCalloutData: '80',
+          },
+        ],
+      },
+      {
+        name: 'Grade 11',
+        series: [
+          {
+            key: 'Grade 11',
+            legend: 'Grade 11',
+            color: '#EF553B',
+            data: 90,
+            xAxisCalloutData: 'Grade 11',
+            yAxisCalloutData: '90',
+          },
+          {
+            key: 'Grade 11',
+            legend: 'Grade 11',
+            color: '#EF553B',
+            data: 90,
+            xAxisCalloutData: 'Grade 11',
+            yAxisCalloutData: '90',
+          },
+        ],
+      },
+      {
+        name: 'Grade 12',
+        series: [
+          {
+            key: 'Grade 12',
+            legend: 'Grade 12',
+            color: '#00cc96',
+            data: 85,
+            xAxisCalloutData: 'Grade 12',
+            yAxisCalloutData: '85',
+          },
+        ],
+      },
+    ];
+
+    const { container } = render(
+      <GroupedVerticalBarChart
+        chartTitle="Alignment Test"
+        data={stackedAlignmentData}
+        width={650}
+        height={300}
+      />,
+    );
+
+    // Check that the chart renders with proper structure
+    const chart = container.querySelector('svg');
+    expect(chart).toBeTruthy();
+
+    // The key test is that bars are rendered and positioned correctly
+    // Before the fix, bars would be at negative coordinates or incorrectly positioned
+    const bars = container.querySelectorAll('rect[aria-label*="Grade"]');
+    expect(bars.length).toBeGreaterThan(0);
+
+    // Check that x-axis ticks are correctly positioned (not at negative coordinates)
+    const xAxisTicks = container.querySelectorAll('.fui-cart__xAxis .tick');
+    expect(xAxisTicks.length).toBe(3); // Should have 3 ticks for Grade 10, 11, 12
+
+    // Extract tick positions to verify they're reasonable
+    const tickPositions = Array.from(xAxisTicks).map(tick => {
+      const transform = tick.getAttribute('transform') || '';
+      const match = transform.match(/translate\(([^,]+)/);
+      return match ? parseFloat(match[1]) : 0;
+    });
+
+    // All tick positions should be positive (the original bug caused negative positioning)
+    tickPositions.forEach(pos => {
+      expect(pos).toBeGreaterThan(0);
+    });
+
+    // The ticks should be spaced apart (not all at the same position)
+    const uniqueTickPositions = new Set(tickPositions.map(p => Math.round(p)));
+    expect(uniqueTickPositions.size).toBe(3);
   });
 });
