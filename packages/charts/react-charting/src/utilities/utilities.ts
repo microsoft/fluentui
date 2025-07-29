@@ -628,16 +628,7 @@ export function prepareDatapoints(
   return dataPointsArray;
 }
 
-export function createYAxisForHorizontalBarChartWithAxis(
-  yAxisParams: IYAxisParams,
-  isRtl: boolean,
-  axisData?: IAxisData,
-  isIntegralDataset?: boolean,
-  useSecondaryYScale: boolean = false,
-  supportNegativeData: boolean = false,
-  roundedTicks: boolean = false,
-  scale?: AxisScale,
-) {
+export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
     yAxisElement = null,
@@ -655,7 +646,7 @@ export function createYAxisForHorizontalBarChartWithAxis(
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = yMinMaxValues.startValue < yMinValue ? Math.min(0, yMinMaxValues.startValue) : yMinValue!;
-  const yAxisScale = createNumericScale(scale)
+  const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
@@ -1218,11 +1209,9 @@ export function computeLongestBars(
 ): {
   longestPositiveBar: number;
   longestNegativeBar: number;
-  shortestPositiveBar: number;
 } {
   let longestPositiveBar = 0;
   let longestNegativeBar = 0;
-  let shortestPositiveBar = Number.MAX_VALUE;
 
   stackedChartData.forEach((group: IHorizontalBarChartWithAxisDataPoint[]) => {
     const positiveBarTotal = group.reduce(
@@ -1237,10 +1226,9 @@ export function computeLongestBars(
 
     longestPositiveBar = Math.max(longestPositiveBar, positiveBarTotal);
     longestNegativeBar = Math.min(longestNegativeBar, negativeBarTotal);
-    shortestPositiveBar = Math.min(shortestPositiveBar, positiveBarTotal);
   });
 
-  return { longestPositiveBar, longestNegativeBar, shortestPositiveBar };
+  return { longestPositiveBar, longestNegativeBar };
 }
 
 /**
@@ -1260,14 +1248,10 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   isRTL: boolean,
   shiftX: number,
   X_ORIGIN: number,
-  scale?: AxisScale,
 ): IDomainNRange {
-  const { longestPositiveBar, longestNegativeBar, shortestPositiveBar } = computeLongestBars(
-    groupChartDataByYValue(points),
-    X_ORIGIN,
-  );
+  const { longestPositiveBar, longestNegativeBar } = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN);
   const xMax = longestPositiveBar;
-  const xMin = scale === 'log' ? shortestPositiveBar : longestNegativeBar;
+  const xMin = longestNegativeBar;
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 
@@ -1311,11 +1295,9 @@ export function domainRangeOfVSBCNumeric(
   width: number,
   isRTL: boolean,
   barWidth: number,
-  scale?: AxisScale,
 ): IDomainNRange {
-  const filterPoints = (point: IDataPoint) => scale !== 'log' || (point.x as number) > 0;
-  const xMin = d3Min(points.filter(filterPoints), (point: IDataPoint) => point.x as number)!;
-  const xMax = d3Max(points.filter(filterPoints), (point: IDataPoint) => point.x as number)!;
+  const xMin = d3Min(points, (point: IDataPoint) => point.x as number)!;
+  const xMax = d3Max(points, (point: IDataPoint) => point.x as number)!;
   const rMax = margins.left!;
   const rMin = width - margins.right!;
   return isRTL
@@ -1394,11 +1376,9 @@ export function domainRageOfVerticalNumeric(
   containerWidth: number,
   isRTL: boolean,
   barWidth: number,
-  scale?: AxisScale,
 ): IDomainNRange {
-  const filterPoints = (point: IVerticalBarChartDataPoint) => scale !== 'log' || (point.x as number) > 0;
-  const xMax = d3Max(points.filter(filterPoints), (point: IVerticalBarChartDataPoint) => point.x as number)!;
-  const xMin = d3Min(points.filter(filterPoints), (point: IVerticalBarChartDataPoint) => point.x as number)!;
+  const xMax = d3Max(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
+  const xMin = d3Min(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
   const rMin = margins.left!;
   const rMax = containerWidth - margins.right!;
 

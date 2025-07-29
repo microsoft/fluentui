@@ -94,7 +94,7 @@ export class HorizontalBarChartWithAxisBase
   private _legendsRef: React.RefObject<ILegendContainer>;
   private _longestBarPositiveTotalValue: number;
   private _longestBarNegativeTotalValue: number;
-  private readonly X_ORIGIN: number = 1;
+  private readonly X_ORIGIN: number = 0;
   private _domainMargin: number;
   private _yAxisPadding: number;
 
@@ -244,7 +244,6 @@ export class HorizontalBarChartWithAxisBase
         isRTL,
         shiftX,
         this.X_ORIGIN,
-        this.props.xAxisScale,
       );
     } else {
       domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };

@@ -322,7 +322,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL, this.props.xAxisScale);
+      domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
     } else if (xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
         points,
