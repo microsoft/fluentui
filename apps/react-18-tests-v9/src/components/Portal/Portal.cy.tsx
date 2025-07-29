@@ -70,7 +70,12 @@ describe('Portal', () => {
     mount(<Portal />);
 
     cy.get('body > [data-portal-node="true"]').should('exist');
-    cy.get('body > [data-portal-node="true"]').should('be.empty');
+    // Check that the portal is empty (has no children except the <span hidden /> element)
+    cy.get('body > [data-portal-node="true"]')
+      .children()
+      .should('have.length', 1)
+      .first()
+      .should('match', 'span[hidden]');
   });
 
   it('remounting the portal should not cause issues', () => {
