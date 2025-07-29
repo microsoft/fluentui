@@ -8,11 +8,14 @@ import {
   CutFilled,
   ClipboardPasteRegular,
   ClipboardPasteFilled,
+  DeleteFilled,
+  DeleteRegular,
 } from '@fluentui/react-icons';
 
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 const CutIcon = bundleIcon(CutFilled, CutRegular);
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const DeleteIcon = bundleIcon(DeleteFilled, DeleteRegular);
 
 export const MultilineItems = () => {
   return (
@@ -28,8 +31,11 @@ export const MultilineItems = () => {
           <MenuItem subText="Paste from clipboard" icon={<PasteIcon />}>
             Paste
           </MenuItem>
-          <MenuItem subText="Edit file" icon={<EditIcon />}>
+          <MenuItem subText="Edit file" icon={<EditIcon />} disabled>
             Edit
+          </MenuItem>
+          <MenuItem subText="Delete file" icon={<DeleteIcon />}>
+            Delete
           </MenuItem>
         </MenuList>
       </MenuPopover>

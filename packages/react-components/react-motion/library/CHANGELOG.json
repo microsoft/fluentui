@@ -2,6 +2,129 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Mon, 28 Jul 2025 18:48:20 GMT",
+      "tag": "@fluentui/react-motion_v9.10.0",
+      "version": "9.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.23.0",
+            "commit": "27822054c223a560c0b49ec0b9079f628776e498"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Jul 2025 13:52:48 GMT",
+      "tag": "@fluentui/react-motion_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-motion",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jul 2025 10:02:45 GMT",
+      "tag": "@fluentui/react-motion_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jun 2025 14:11:54 GMT",
+      "tag": "@fluentui/react-motion_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "3598b2d30d51921401f47301035e29c9b41f6c68",
+            "comment": "Presence enter & exit motions can be used separately with .In & .Out"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.22.0",
+            "commit": "2b89e39a253fe3570265284b19d2461b9d37fb86"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Jun 2025 17:34:00 GMT",
+      "tag": "@fluentui/react-motion_v9.8.1",
+      "version": "9.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.24.0",
+            "commit": "ddb50b0e9313fe7eb75830a0546d01a2c7fe270b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.21.1",
+            "commit": "ddb50b0e9313fe7eb75830a0546d01a2c7fe270b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Jun 2025 09:43:33 GMT",
+      "tag": "@fluentui/react-motion_v9.8.0",
+      "version": "9.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.21.0",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Jun 2025 13:15:17 GMT",
+      "tag": "@fluentui/react-motion_v9.7.4",
+      "version": "9.7.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.20.0",
+            "commit": "82db061493527440f473c6c6480305f8afe293be"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 May 2025 18:49:18 GMT",
       "tag": "@fluentui/react-motion_v9.7.3",
       "version": "9.7.3",

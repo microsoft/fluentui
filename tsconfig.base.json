@@ -97,6 +97,10 @@
       "@fluentui/react-list": ["packages/react-components/react-list/library/src/index.ts"],
       "@fluentui/react-list-stories": ["packages/react-components/react-list/stories/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/library/src/index.ts"],
+      "@fluentui/react-menu-grid-preview": ["packages/react-components/react-menu-grid-preview/library/src/index.ts"],
+      "@fluentui/react-menu-grid-preview-stories": [
+        "packages/react-components/react-menu-grid-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-menu-stories": ["packages/react-components/react-menu/stories/src/index.ts"],
       "@fluentui/react-message-bar": ["packages/react-components/react-message-bar/library/src/index.ts"],
       "@fluentui/react-message-bar-stories": ["packages/react-components/react-message-bar/stories/src/index.ts"],
@@ -116,8 +120,8 @@
         "packages/react-components/react-motion-components-preview/stories/src/index.ts"
       ],
       "@fluentui/react-motion-stories": ["packages/react-components/react-motion/stories/src/index.ts"],
-      "@fluentui/react-nav-preview": ["packages/react-components/react-nav-preview/library/src/index.ts"],
-      "@fluentui/react-nav-preview-stories": ["packages/react-components/react-nav-preview/stories/src/index.ts"],
+      "@fluentui/react-nav": ["packages/react-components/react-nav/library/src/index.ts"],
+      "@fluentui/react-nav-stories": ["packages/react-components/react-nav/stories/src/index.ts"],
       "@fluentui/react-overflow": ["packages/react-components/react-overflow/library/src/index.ts"],
       "@fluentui/react-overflow-stories": ["packages/react-components/react-overflow/stories/src/index.ts"],
       "@fluentui/react-persona": ["packages/react-components/react-persona/library/src/index.ts"],
@@ -128,7 +132,8 @@
       "@fluentui/react-portal-compat": ["packages/react-components/react-portal-compat/src/index.ts"],
       "@fluentui/react-portal-compat-context": ["packages/react-components/react-portal-compat-context/src/index.ts"],
       "@fluentui/react-portal-stories": ["packages/react-components/react-portal/stories/src/index.ts"],
-      "@fluentui/react-positioning": ["packages/react-components/react-positioning/src/index.ts"],
+      "@fluentui/react-positioning": ["packages/react-components/react-positioning/library/src/index.ts"],
+      "@fluentui/react-positioning-stories": ["packages/react-components/react-positioning/stories/src/index.ts"],
       "@fluentui/react-progress": ["packages/react-components/react-progress/library/src/index.ts"],
       "@fluentui/react-progress-stories": ["packages/react-components/react-progress/stories/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-components/react-provider/library/src/index.ts"],

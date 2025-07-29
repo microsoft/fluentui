@@ -2,6 +2,65 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Mon, 28 Jul 2025 07:22:06 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.208",
+      "version": "8.14.208",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.123.2",
+            "commit": "a108b452eb0dde43a13925641b7fcab53a385dd5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Jul 2025 07:19:56 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.207",
+      "version": "8.14.207",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Jul 2025 07:21:40 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.207",
+      "version": "8.14.207",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.123.1",
+            "commit": "2ca1051297568031cafccbbd9d25e2a2d35e1ca3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.29",
+            "commit": "2ca1051297568031cafccbbd9d25e2a2d35e1ca3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 May 2025 07:21:46 GMT",
       "tag": "@fluentui/react-experiments_v8.14.206",
       "version": "8.14.206",

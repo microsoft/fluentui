@@ -123,14 +123,7 @@
     ]
   },
   "release": {
-    "projectsRelationship": "independent",
-    "groups": {
-      "northstar": {
-        "releaseTagPattern": "@fluentui/react-northstar_v{version}",
-        "projectsRelationship": "fixed",
-        "projects": ["packages/fluentui/*"]
-      }
-    }
+    "projectsRelationship": "independent"
   },
   "parallel": 3,
   "useInferencePlugins": false,
@@ -152,7 +145,8 @@
         "packages/eslint-plugin/**",
         "packages/tokens/**",
         "packages/react-conformance/**",
-        "packages/react-components/**/*"
+        "packages/react-components/**/*",
+        "packages/charts/react-charts/**/*"
       ]
     }
   ],

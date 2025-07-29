@@ -227,7 +227,7 @@ const ReactIconGrid = () => {
               className: classes.radioLabel,
               children: (
                 <>
-                  What icon set to use? Check <Link href="/?path=/docs/icons-overview--page">docs</Link>
+                  What icon set to use? Check <Link href="/?path=/docs/icons-overview--docs">docs</Link>
                 </>
               ),
             }}

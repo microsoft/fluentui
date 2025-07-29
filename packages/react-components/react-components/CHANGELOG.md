@@ -1,8 +1,420 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 14 May 2025 18:49:15 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jul 2025 18:48:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.68.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.68.0)
+
+Mon, 28 Jul 2025 18:48:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.67.0..@fluentui/react-components_v9.68.0)
+
+### Minor changes
+
+- `@fluentui/react-aria`
+  - feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
+- `@fluentui/react-components`
+  - deprecate: react-virtualizer in process of moving to fluentui-contrib ([PR #34899](https://github.com/microsoft/fluentui/pull/34899) by mifraser@microsoft.com)
+- `@fluentui/react-list`
+  - fix(react-list): Dont crash in dev mode when navigation mode is changed ([PR #34613](https://github.com/microsoft/fluentui/pull/34613) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - feat(motion): add Fade presence motion component ([PR #34839](https://github.com/microsoft/fluentui/pull/34839) by robertpenner@microsoft.com)
+- `@fluentui/react-motion`
+  - feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: add custom JSX.* types that are compatible with various react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - fix callout position issues ([PR #34868](https://github.com/microsoft/fluentui/pull/34868) by anushgupta@microsoft.com)
+  - mitigate xss vulnerabilities ([PR #34920](https://github.com/microsoft/fluentui/pull/34920) by anushgupta@microsoft.com)
+  - Add Gantt chart in v9 ([PR #34909](https://github.com/microsoft/fluentui/pull/34909) by anushgupta@microsoft.com)
+  - funnel chart in v9 ([PR #34866](https://github.com/microsoft/fluentui/pull/34866) by anushgupta@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: add event.isDefaultPrevented() to `onKeyDown` ([PR #34905](https://github.com/microsoft/fluentui/pull/34905) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: adjust circular sizes to Figma spec ([PR #34859](https://github.com/microsoft/fluentui/pull/34859) by vgenaev@gmail.com)
+- `@fluentui/react-accordion`
+  - revert: adjust accordion header chevron alignment styles #34616 ([PR #34893](https://github.com/microsoft/fluentui/pull/34893) by dmytrokirpa@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - deprecate: react-virtualizer moving to fluentui-contrib ([PR #34899](https://github.com/microsoft/fluentui/pull/34899) by mifraser@microsoft.com)
+
+## [9.67.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.67.0)
+
+Thu, 17 Jul 2025 13:49:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.8..@fluentui/react-components_v9.67.0)
+
+### Minor changes
+
+- `@fluentui/react-accordion`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-badge`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-button`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-card`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-carousel`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-checkbox`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-color-picker`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-combobox`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-components`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-dialog`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-divider`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-drawer`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-field`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-image`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-infolabel`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-label`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-link`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-list`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-message-bar`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-nav`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-overflow`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-persona`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-popover`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-portal`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-progress`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-provider`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-radio`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-rating`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-search`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-select`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-skeleton`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-slider`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-spinner`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-table`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-tabs`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-tags`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-text`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-textarea`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-toast`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-toolbar`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-tooltip`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-tree`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-calendar-compat`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+
+## [9.66.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.8)
+
+Wed, 16 Jul 2025 13:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.7..@fluentui/react-components_v9.66.8)
+
+### Minor changes
+
+- `@fluentui/react-motion-components-preview`
+  - refactor(Collapse): make consistent with other motion components ([PR #34831](https://github.com/microsoft/fluentui/pull/34831) by robertpenner@microsoft.com)
+  - feat(motion): add Slide presence motion component ([PR #34774](https://github.com/microsoft/fluentui/pull/34774) by robertpenner@microsoft.com)
+  - refactor(motion): apply consistent patterns across Fade and Scale ([PR #34830](https://github.com/microsoft/fluentui/pull/34830) by robertpenner@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - hbc focus ring fix ([PR #34832](https://github.com/microsoft/fluentui/pull/34832) by anushgupta@microsoft.com)
+  - refactor utilities to reduce monosize of components ([PR #34823](https://github.com/microsoft/fluentui/pull/34823) by anushgupta@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: properly apply overrides in ToolbarRadioButton, ToolbarToggleButton & ToolbarButton ([PR #34849](https://github.com/microsoft/fluentui/pull/34849) by olfedias@microsoft.com)
+
+## [9.66.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.7)
+
+Fri, 11 Jul 2025 15:59:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.6..@fluentui/react-components_v9.66.7)
+
+### Minor changes
+
+- `@fluentui/react-menu`
+  - feat: Add timeout configuration to safezone prop ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - feat: SafeZone restarts timeout on mouse move ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - fix: adjust accordion header chevron alignment styles ([PR #34616](https://github.com/microsoft/fluentui/pull/34616) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - fix accessibility bugs ([PR #34785](https://github.com/microsoft/fluentui/pull/34785) by anushgupta@microsoft.com)
+  - sankey chart callout fix ([PR #34806](https://github.com/microsoft/fluentui/pull/34806) by anushgupta@microsoft.com)
+  - fix accessibility issues ([PR #34798](https://github.com/microsoft/fluentui/pull/34798) by anushgupta@microsoft.com)
+  - fix(react-charts): Fix hook used conditionally inside a function ([PR #34787](https://github.com/microsoft/fluentui/pull/34787) by 98592573+AtishayMsft@users.noreply.github.com)
+- `@fluentui/react-menu`
+  - fix(react-menu): Fix disabled styles for secondaryContent and subText ([PR #34795](https://github.com/microsoft/fluentui/pull/34795) by jiangemma@microsoft.com)
+  - fix: resolve regression with ".hoverDelay" handling ([PR #34793](https://github.com/microsoft/fluentui/pull/34793) by olfedias@microsoft.com)
+- `@fluentui/react-message-bar`
+  - fix: MessageBarActions renders slots with keys ([PR #34801](https://github.com/microsoft/fluentui/pull/34801) by lingfangao@hotmail.com)
+- `@fluentui/react-progress`
+  - fix: add subtle animation for indeterminate progress bar when reduced motion mode is enabled ([PR #34667](https://github.com/microsoft/fluentui/pull/34667) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-storybook-addon-export-to-sandbox`
+  - fix: remove useEffect storybook/preview-api and directly trigger 'Open in ...' button rendering ([PR #34792](https://github.com/microsoft/fluentui/pull/34792) by martinhochel@microsoft.com)
+
+## [9.66.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.6)
+
+Fri, 04 Jul 2025 10:02:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.5..@fluentui/react-components_v9.66.6)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - chore(react-dialog): remove boxShadow on DialogSurfaceMotion ([PR #34756](https://github.com/microsoft/fluentui/pull/34756) by bernardo.sunderhus@gmail.com)
+  - fix(Dialog): fix mobile viewport issues ([PR #34691](https://github.com/microsoft/fluentui/pull/34691) by mathis.michel@outlook.de)
+- `@fluentui/react-menu`
+  - feat: integrate useSafeZoneArea() ([PR #34457](https://github.com/microsoft/fluentui/pull/34457) by olfedias@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - chore: migrate repo to react 18 ([PR #34643](https://github.com/microsoft/fluentui/pull/34643) by martinhochel@microsoft.com)
+- `@fluentui/react-portal`
+  - Revert "chore(react-portal): support for React 19" ([PR #34737](https://github.com/microsoft/fluentui/pull/34737) by olfedias@microsoft.com)
+- `@fluentui/react-charts`
+  - fix: ensure ResponsiveContainer resizes correctly within grid layout ([PR #34728](https://github.com/microsoft/fluentui/pull/34728) by kumarkshitij@microsoft.com)
+  - port v8 changes to v9 ([PR #34731](https://github.com/microsoft/fluentui/pull/34731) by anushgupta@microsoft.com)
+
+## [9.66.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.5)
+
+Fri, 27 Jun 2025 13:39:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.4..@fluentui/react-components_v9.66.5)
+
+### Patches
+
+- `@fluentui/react-nav`
+  - fix: move action button to be the first button ([PR #34718](https://github.com/microsoft/fluentui/pull/34718) by marcosvmmoura@gmail.com)
+- `@fluentui/react-positioning`
+  - fix: stop rAF if no mouse movement happening ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by olfedias@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix(focusVisiblePolyfill): Strict mode compat after portal changes ([PR #34700](https://github.com/microsoft/fluentui/pull/34700) by lingfangao@hotmail.com)
+
+## [9.66.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.4)
+
+Thu, 26 Jun 2025 14:11:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.3..@fluentui/react-components_v9.66.4)
+
+### Minor changes
+
+- `@fluentui/react-motion`
+  - Presence enter & exit motions can be used separately with .In & .Out ([PR #33930](https://github.com/microsoft/fluentui/pull/33930) by robertpenner@microsoft.com)
+- `@fluentui/react-nav`
+  - feat: add motion to nav components ([PR #34632](https://github.com/microsoft/fluentui/pull/34632) by marcosvmmoura@gmail.com)
+- `@fluentui/react-utilities`
+  - Shorten pollDuration to 100ms in useIFrameFocus ([PR #34703](https://github.com/microsoft/fluentui/pull/34703) by xboy2008@live.cn)
+
+### Patches
+
+- `@fluentui/react-carousel`
+  - fix: Ensure we destroy carousel API on unmount ([PR #34686](https://github.com/microsoft/fluentui/pull/34686) by mifraser@microsoft.com)
+- `@fluentui/react-charts`
+  - high contrast fix ([PR #34726](https://github.com/microsoft/fluentui/pull/34726) by anushgupta@microsoft.com)
+  - implement stacked hbc with axis and support for negative x values ([PR #34699](https://github.com/microsoft/fluentui/pull/34699) by anushgupta@microsoft.com)
+  - negative y value support and fix bar overlapping issue ([PR #34717](https://github.com/microsoft/fluentui/pull/34717) by anushgupta@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - fix(Scale): update variant parameters to design spec & refactor internally ([PR #34712](https://github.com/microsoft/fluentui/pull/34712) by robertpenner@microsoft.com)
+- `@fluentui/react-nav`
+  - fix: only display actions on hover ([PR #34634](https://github.com/microsoft/fluentui/pull/34634) by marcosvmmoura@gmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: Ensure virtualizer recalcs on numItems change ([PR #34673](https://github.com/microsoft/fluentui/pull/34673) by mifraser@microsoft.com)
+
+## [9.66.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.3)
+
+Mon, 23 Jun 2025 15:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.2..@fluentui/react-components_v9.66.3)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - Add negative y value support in GVBC ([PR #34687](https://github.com/microsoft/fluentui/pull/34687) by anushgupta@microsoft.com)
+  - add support for negative vsbc ([PR #34668](https://github.com/microsoft/fluentui/pull/34668) by anushgupta@microsoft.com)
+  - port v8 changes to v9 ([PR #34665](https://github.com/microsoft/fluentui/pull/34665) by anushgupta@microsoft.com)
+- `@fluentui/react-components`
+  - feat: export usePositioning() & useSafeZoneArea() hooks ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: improve handling of different shapes of rectangles in useSafeZoneArea() ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by olfedias@microsoft.com)
+
+## [9.66.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.2)
+
+Wed, 18 Jun 2025 17:33:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.1..@fluentui/react-components_v9.66.2)
+
+### Minor changes
+
+- `@fluentui/react-shared-contexts`
+  - feat: add support for custom style hooks for nav components ([PR #34633](https://github.com/microsoft/fluentui/pull/34633) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - chore (react-charts): Remove enzyme dependency for tests ([PR #34595](https://github.com/microsoft/fluentui/pull/34595) by 98592573+AtishayMsft@users.noreply.github.com)
+  - fix (react-charts): Update traceinfo property structure ([PR #34652](https://github.com/microsoft/fluentui/pull/34652) by 98592573+AtishayMsft@users.noreply.github.com)
+  - fix(react-charts): Consume y axis tick format for bar labels ([PR #34653](https://github.com/microsoft/fluentui/pull/34653) by 98592573+AtishayMsft@users.noreply.github.com)
+  - fix(react-charts): Fix svg tooltip background alignment ([PR #34663](https://github.com/microsoft/fluentui/pull/34663) by 98592573+AtishayMsft@users.noreply.github.com)
+  - port v8 fixes to v9 ([PR #34670](https://github.com/microsoft/fluentui/pull/34670) by anushgupta@microsoft.com)
+  - Charts made responsive ([PR #34641](https://github.com/microsoft/fluentui/pull/34641) by anushgupta@microsoft.com)
+- `@fluentui/react-nav`
+  - feat: add support for custom style hooks ([PR #34633](https://github.com/microsoft/fluentui/pull/34633) by marcosvmmoura@gmail.com)
+- `@fluentui/react-carousel`
+  - fix: Ensure documentDownListener is removed on unmount ([PR #34661](https://github.com/microsoft/fluentui/pull/34661) by mifraser@microsoft.com)
+
+## [9.66.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.1)
+
+Fri, 13 Jun 2025 12:32:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.0..@fluentui/react-components_v9.66.1)
+
+### Patches
+
+- `@fluentui/react-positioning`
+  - fix: update logic for triggering updates ([PR #34639](https://github.com/microsoft/fluentui/pull/34639) by olfedias@microsoft.com)
+- `@fluentui/react-skeleton`
+  - Allow the skeleton root to be a span in addition to a div ([PR #34563](https://github.com/microsoft/fluentui/pull/34563) by nathansokol@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - chore(react-tag-picker): ensure no toggle behaviour when re-selecting already selected data ([PR #33344](https://github.com/microsoft/fluentui/pull/33344) by bernardo.sunderhus@gmail.com)
+
+## [9.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.0)
+
+Thu, 12 Jun 2025 09:43:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.65.0..@fluentui/react-components_v9.66.0)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - feat: react 18 support for slots api ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-aria`
+  - chore: adjust types to support react 18 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - line border and axis title background fix ([PR #34621](https://github.com/microsoft/fluentui/pull/34621) by anushgupta@microsoft.com)
+
+## [9.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.65.0)
+
+Wed, 11 Jun 2025 22:31:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.64.1..@fluentui/react-components_v9.65.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: add @fluentui/react-nav to suite ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by marcosvmmoura@gmail.com)
+- `@fluentui/react-nav`
+  - feat: release stable ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - Fix GaugeChart so it can merge customer provided styles to the chart ([PR #34604](https://github.com/microsoft/fluentui/pull/34604) by emhkimm@gmail.com)
+  - fix(react-charts): Move isMonth function to chart-utilities ([PR #34626](https://github.com/microsoft/fluentui/pull/34626) by 98592573+AtishayMsft@users.noreply.github.com)
+  - fix accessibility bugs ([PR #34609](https://github.com/microsoft/fluentui/pull/34609) by anushgupta@microsoft.com)
+- `@fluentui/react-color-picker`
+  - docs: removed text from preview stage ([PR #34612](https://github.com/microsoft/fluentui/pull/34612) by vkozlova@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: implement useSafeZoneArea() hook ([PR #34445](https://github.com/microsoft/fluentui/pull/34445) by olfedias@microsoft.com)
+- `@fluentui/react-tags`
+  - fix: selected Tag and InteractionTag styles are visible in high contrast mode ([PR #34620](https://github.com/microsoft/fluentui/pull/34620) by sarah.higley@microsoft.com)
+
+## [9.64.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.64.1)
+
+Fri, 06 Jun 2025 13:15:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.64.0..@fluentui/react-components_v9.64.1)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - feat: add custom RefAttributes interface which is used within ForwardRefComponent to mitigate breaking changes shipped as patch release in @types/react@18.2.61 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by martinhochel@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-calendar-compat`
+  - fix: aria-label for year selection ([PR #34536](https://github.com/microsoft/fluentui/pull/34536) by v.kozlova13@gmail.com)
+- `@fluentui/react-charts`
+  - feat(react-charts): Improve formatting and numeric and date labels ([PR #34562](https://github.com/microsoft/fluentui/pull/34562) by 98592573+AtishayMsft@users.noreply.github.com)
+- `@fluentui/react-nav-preview`
+  - fix: Change Nav icon display animations to opacity animations ([PR #34452](https://github.com/microsoft/fluentui/pull/34452) by jiangemma@microsoft.com)
+  - fix: focus borders being cut-off ([PR #34565](https://github.com/microsoft/fluentui/pull/34565) by marcosvmmoura@gmail.com)
+- `@fluentui/react-slider`
+  - fix: adjust focus outline offset ([PR #34538](https://github.com/microsoft/fluentui/pull/34538) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-table`
+  - fix(DataGridSelectionCell): should not use `aria-checked` on gridcell ([PR #34503](https://github.com/microsoft/fluentui/pull/34503) by lingfangao@hotmail.com)
+  - fix: Single select should not render header selection indicator ([PR #33752](https://github.com/microsoft/fluentui/pull/33752) by lingfangao@hotmail.com)
+- `@fluentui/react-tabster`
+  - Bumping Tabster to 8.5.5 ([PR #34395](https://github.com/microsoft/fluentui/pull/34395) by marata@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: re-introduce active state style to TreeItemLayout ([PR #34558](https://github.com/microsoft/fluentui/pull/34558) by bernardo.sunderhus@gmail.com)
 
 ## [9.64.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.64.0)
 

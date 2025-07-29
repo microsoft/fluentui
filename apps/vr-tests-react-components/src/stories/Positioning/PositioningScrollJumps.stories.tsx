@@ -180,7 +180,7 @@ const Controller: React.FC<React.PropsWithChildren<{}>> = props => {
   );
 };
 
-const Target: React.FC = props => {
+const Target: React.FC<{ children?: React.ReactNode }> = props => {
   const open = useContextSelector(Context, v => v!.open);
   const setOpen = useContextSelector(Context, v => v!.setOpen);
   const targetRef = useContextSelector(Context, v => v!.targetRef);
@@ -192,7 +192,7 @@ const Target: React.FC = props => {
   });
 };
 
-const Container: React.FC = props => {
+const Container: React.FC<{ children?: React.ReactNode }> = props => {
   const containerRef = useContextSelector(Context, v => v!.containerRef);
 
   return ReactDOM.createPortal(

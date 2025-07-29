@@ -16,10 +16,15 @@ export const legendClassNames: SlotClassNames<LegendsStyles> = {
   text: 'fui-legend__text',
   hoverChange: 'fui-legend__hoverChange',
   resizableArea: 'fui-legend__resizableArea',
+  legendContainer: 'fui-legend__legendContainer',
+  annotation: 'fui-legend__annotation',
 };
 
 const useStyles = makeStyles({
   root: {
+    // FIXME: Removing this style allows the legend container in responsive donut chart to resize
+    // properly (horizontally) within a flexbox or grid layout. But it causes vertical resizing issues
+    // in responsive charts where legends consist of multiple words.
     whiteSpace: 'nowrap',
     width: '100%',
     alignItems: 'center',
@@ -34,6 +39,9 @@ const useStyles = makeStyles({
     ...shorthands.border('none'),
     ...shorthands.padding(tokens.spacingHorizontalS),
     textTransform: 'capitalize',
+    // The default min-width is 64px. Setting it to 0 allows the legend container in responsive
+    // cartesian charts to resize properly within a flexbox or grid layout.
+    minWidth: 0,
     [HighContrastSelector]: {
       color: 'WindowText',
       forcedColorAdjust: 'none',
@@ -93,6 +101,15 @@ const useStyles = makeStyles({
       ...shorthands.borderLeft('-2px'),
     },
   },
+  legendContainer: {
+    flex: '0 1 auto',
+    margin: '4px',
+  },
+  annotation: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '4px',
+  },
 });
 
 export const useLegendStyles = (props: LegendsProps): LegendsStyles => {
@@ -108,5 +125,11 @@ export const useLegendStyles = (props: LegendsProps): LegendsStyles => {
     text: mergeClasses(legendClassNames.text, baseStyles.text, props.styles?.text),
     hoverChange: mergeClasses(legendClassNames.hoverChange, baseStyles.hoverChange, props.styles?.hoverChange),
     resizableArea: mergeClasses(legendClassNames.resizableArea, baseStyles.resizableArea, props.styles?.resizableArea),
+    legendContainer: mergeClasses(
+      legendClassNames.legendContainer,
+      baseStyles.legendContainer,
+      props.styles?.legendContainer,
+    ),
+    annotation: mergeClasses(legendClassNames.annotation, baseStyles.annotation, props.styles?.annotation),
   };
 };

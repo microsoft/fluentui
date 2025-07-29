@@ -1,8 +1,110 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Wed, 04 Jun 2025 07:20:27 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Jul 2025 07:20:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.26](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.26)
+
+Tue, 29 Jul 2025 07:20:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.25..@fluentui/chart-utilities_v1.1.26)
+
+### Patches
+
+- feat(chart-utilities): Routing scattergl charts to scatter charts ([PR #34919](https://github.com/microsoft/fluentui/pull/34919) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.25](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.25)
+
+Mon, 21 Jul 2025 07:21:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.24..@fluentui/chart-utilities_v1.1.25)
+
+### Patches
+
+- feat(chart-utilities): Support additional modes ([PR #34860](https://github.com/microsoft/fluentui/pull/34860) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.24](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.24)
+
+Fri, 18 Jul 2025 07:19:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.23..@fluentui/chart-utilities_v1.1.24)
+
+### Patches
+
+- fix: correct check for string x-values in horizontal bar trace ([PR #34841](https://github.com/microsoft/fluentui/pull/34841) by kumarkshitij@microsoft.com)
+
+## [1.1.23](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.23)
+
+Wed, 16 Jul 2025 07:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.22..@fluentui/chart-utilities_v1.1.23)
+
+### Patches
+
+- fix(chart-utilities): Decode data in provided shape if present in schema ([PR #34826](https://github.com/microsoft/fluentui/pull/34826) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.22](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.22)
+
+Mon, 14 Jul 2025 07:21:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.21..@fluentui/chart-utilities_v1.1.22)
+
+### Patches
+
+- feat: map horizontal bar trace with appropriate base to gantt chart ([PR #34791](https://github.com/microsoft/fluentui/pull/34791) by kumarkshitij@microsoft.com)
+- fix(chart-utilities): Adding field in decode handler ([PR #34820](https://github.com/microsoft/fluentui/pull/34820) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.21](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.21)
+
+Fri, 11 Jul 2025 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.20..@fluentui/chart-utilities_v1.1.21)
+
+### Patches
+
+- feat(chart-utilities): Support for categorical theta values for scatter polar chart ([PR #34682](https://github.com/microsoft/fluentui/pull/34682) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.20](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.20)
+
+Wed, 02 Jul 2025 07:20:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.19..@fluentui/chart-utilities_v1.1.20)
+
+### Patches
+
+- feat(chart-utilities): Support for Funnel Chart ([PR #34688](https://github.com/microsoft/fluentui/pull/34688) by email not defined)
+
+## [1.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.19)
+
+Mon, 30 Jun 2025 07:19:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.18..@fluentui/chart-utilities_v1.1.19)
+
+### Patches
+
+- fix(react-charting): Add "lines+text" mode to supported list ([PR #34708](https://github.com/microsoft/fluentui/pull/34708) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.18](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.18)
+
+Tue, 17 Jun 2025 07:20:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.17..@fluentui/chart-utilities_v1.1.18)
+
+### Patches
+
+- fix(chart-utilities): Add type info to bar validation error message ([PR #34653](https://github.com/microsoft/fluentui/pull/34653) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(chart-utilities): Strongly type TraceInfo ([PR #34652](https://github.com/microsoft/fluentui/pull/34652) by 98592573+AtishayMsft@users.noreply.github.com)
+
+## [1.1.17](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.17)
+
+Fri, 13 Jun 2025 07:21:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.16..@fluentui/chart-utilities_v1.1.17)
+
+### Patches
+
+- fix(chart-utilities): Updating plotly converter for scatter chart ([PR #34628](https://github.com/microsoft/fluentui/pull/34628) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.16)
+
+Thu, 12 Jun 2025 07:20:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.15..@fluentui/chart-utilities_v1.1.16)
+
+### Patches
+
+- feat(react-charting): Adding Scatter Chart component ([PR #34374](https://github.com/microsoft/fluentui/pull/34374) by 120183316+srmukher@users.noreply.github.com)
+- feat(charts): Enable support for rendering different traces individually or as a group ([PR #34626](https://github.com/microsoft/fluentui/pull/34626) by 98592573+AtishayMsft@users.noreply.github.com)
 
 ## [1.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.15)
 

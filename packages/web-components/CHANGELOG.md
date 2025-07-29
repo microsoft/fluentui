@@ -1,8 +1,73 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 02 Jun 2025 04:07:10 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Jul 2025 04:07:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.114](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.114)
+
+Fri, 25 Jul 2025 04:07:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.113..@fluentui/web-components_v3.0.0-beta.114)
+
+### Changes
+
+- a11y: remove vertical margins on dialog to support 400% zoom ([PR #34906](https://github.com/microsoft/fluentui/pull/34906) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.113](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.113)
+
+Mon, 21 Jul 2025 04:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.112..@fluentui/web-components_v3.0.0-beta.113)
+
+### Changes
+
+- fix: remove unnecessary tabindex logic from switch template ([PR #34877](https://github.com/microsoft/fluentui/pull/34877) by machi@microsoft.com)
+- fix: vertical slider in rtl has the opposite value than the visual ([PR #34876](https://github.com/microsoft/fluentui/pull/34876) by machi@microsoft.com)
+
+## [3.0.0-beta.112](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.112)
+
+Fri, 04 Jul 2025 04:08:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.111..@fluentui/web-components_v3.0.0-beta.112)
+
+### Changes
+
+- fix: initially checked radio should be focusable ([PR #34776](https://github.com/microsoft/fluentui/pull/34776) by machi@microsoft.com)
+
+## [3.0.0-beta.111](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.111)
+
+Tue, 01 Jul 2025 04:08:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.110..@fluentui/web-components_v3.0.0-beta.111)
+
+### Changes
+
+- refactor: move tabindex logic into JS class ([PR #34741](https://github.com/microsoft/fluentui/pull/34741) by machi@microsoft.com)
+
+## [3.0.0-beta.110](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.110)
+
+Tue, 24 Jun 2025 04:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.109..@fluentui/web-components_v3.0.0-beta.110)
+
+### Changes
+
+- fix start and end slot for tabs ([PR #34704](https://github.com/microsoft/fluentui/pull/34704) by jes@microsoft.com)
+- fix(dropdown): add anchor positioning fallback logic ([PR #34647](https://github.com/microsoft/fluentui/pull/34647) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.109](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.109)
+
+Fri, 20 Jun 2025 04:06:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.108..@fluentui/web-components_v3.0.0-beta.109)
+
+### Changes
+
+- fix: progress bar when value is missing in firefox and safari ([PR #34684](https://github.com/microsoft/fluentui/pull/34684) by machi@microsoft.com)
+
+## [3.0.0-beta.108](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.108)
+
+Thu, 19 Jun 2025 04:06:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.107..@fluentui/web-components_v3.0.0-beta.108)
+
+### Changes
+
+- refactor: use css attr func to calculate progress indicator width ([PR #34674](https://github.com/microsoft/fluentui/pull/34674) by machi@microsoft.com)
 
 ## [3.0.0-beta.107](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.107)
 

@@ -51,7 +51,10 @@ const options: IDropdownOption[] = [
   { key: 'sankeychart', text: 'Sankey Chart' },
   { key: 'verticalbarchart', text: 'VerticalBar Chart' },
   { key: 'verticalbar_histogramchart', text: 'VerticalBar Histogram Chart' },
+  { key: 'scatterchart', text: 'Scatter Chart' },
   { key: 'chart_table', text: 'Chart Table' },
+  { key: 'funnelchart', text: 'Funnel Chart' },
+  { key: 'ganttchart', text: 'Gantt Chart' },
 ];
 
 const colorOptions: IDropdownOption[] = [
@@ -71,7 +74,10 @@ const schemas: any[] = [
   { key: 'sankeychart', schema: require('./schema/fluent_sankey.json') },
   { key: 'verticalbarchart', schema: require('./schema/fluent_verticalbar.json') },
   { key: 'verticalbar_histogramchart', schema: require('./schema/fluent_verticalbar_histogram.json') },
+  { key: 'scatterchart', schema: require('./schema/fluent_scatter.json') },
   { key: 'chart_table', schema: require('./schema/fluent_table.json') },
+  { key: 'funnelchart', schema: require('./schema/fluent_funnel.json') },
+  { key: 'ganttchart', schema: require('./schema/fluent_gantt.json') },
 ];
 
 const dropdownStyles = { dropdown: { width: 200 } };
@@ -99,7 +105,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     this.state = {
       selectedChoice: defaultselection,
       selectedLegends: JSON.stringify(selectedLegends),
-      fluentDataVizColorPalette: 'builtin',
+      fluentDataVizColorPalette: 'default',
     };
 
     this._declarativeChartRef = React.createRef();

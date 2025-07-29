@@ -300,19 +300,7 @@ export interface ILineDataInVerticalBarChart {
 /**
  * {@docCategory IChartData}
  */
-export interface ILineChartDataPoint {
-  /**
-   * Independent value of the data point, rendered along the x-axis.
-   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
-   * If data type on x is Date, then the data is spaced evenly by d3-scale
-   */
-  x: number | Date;
-
-  /**
-   * Dependent value of the data point, rendered along the y-axis.
-   */
-  y: number;
-
+export interface IBaseDataPoint {
   /**
    * Defines the function that is executed on clicking  line
    */
@@ -352,6 +340,23 @@ export interface ILineChartDataPoint {
    * text labels of marker points
    */
   text?: string;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface ILineChartDataPoint extends IBaseDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
+   * If data type on x is Date, then the data is spaced evenly by d3-scale
+   */
+  x: number | Date;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
 }
 
 /**
@@ -434,7 +439,9 @@ export interface ILineChartLineOptions extends React.SVGProps<SVGPathElement> {
     | 'gauge+number'
     | 'gauge+number+delta'
     | 'gauge+delta'
-    | 'markers+text';
+    | 'markers+text'
+    | 'lines+text'
+    | 'lines+markers+text';
 }
 
 /**
@@ -526,6 +533,11 @@ export interface IChartProps {
    * data for the points in the line chart
    */
   lineChartData?: ILineChartPoints[];
+
+  /**
+   * data for the points in the scatter chart
+   */
+  scatterChartData?: IScatterChartPoints[];
 
   /**
    * data for the points in the line chart
@@ -890,4 +902,160 @@ export interface IImageExportOptions {
   height?: number;
   scale?: number;
   background?: string;
+}
+
+/**
+ * {@docCategory IChartData}
+ * ScatterChartDataPoint interface.
+ */
+export interface IScatterChartDataPoint extends IBaseDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   */
+  x: number | Date | string;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface IScatterChartPoints {
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend: string;
+
+  /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+
+  /**
+   * dataPoints for the line chart
+   */
+  data: IScatterChartDataPoint[];
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+
+  /**
+   * opacity for chart fill color
+   */
+  opacity?: number;
+
+  /**
+   * hide dots for points that are not active
+   */
+  hideNonActiveDots?: boolean;
+
+  /**
+   * Defines the function that is executed on clicking this legend
+   */
+  onLegendClick?: (selectedLegend: string | null | string[]) => void;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
+}
+
+/**
+ * Specifies the ordering options for axis categories in Cartesian charts.
+ *
+ * - `'default'`: Uses the original order before custom ordering was supported.
+ *   In some charts, this behaves the same as `'data'`.
+ * - `'data'`: Preserves the order of categories as provided in the input data.
+ * - `string[]`: Explicitly defines the custom order of categories as an array of category names.
+ * - `'category ascending' | 'category descending'`: Orders categories alphanumerically.
+ * - `'total ascending' | 'total descending'`: Orders categories by the total of their associated values.
+ * - `'min ascending' | 'min descending'`: Orders by the minimum value within each category.
+ * - `'max ascending' | 'max descending'`: Orders by the maximum value within each category.
+ * - `'sum ascending' | 'sum descending'`: Orders by the sum of values for each category (same as 'total').
+ * - `'mean ascending' | 'mean descending'`: Orders by the average of values in each category.
+ * - `'median ascending' | 'median descending'`: Orders by the median value of each category.
+ *
+ * {@docCategory CartesianChart}
+ */
+export type AxisCategoryOrder =
+  | 'default'
+  | 'data'
+  | string[]
+  | 'category ascending'
+  | 'category descending'
+  | 'total ascending'
+  | 'total descending'
+  | 'min ascending'
+  | 'min descending'
+  | 'max ascending'
+  | 'max descending'
+  | 'sum ascending'
+  | 'sum descending'
+  | 'mean ascending'
+  | 'mean descending'
+  | 'median ascending'
+  | 'median descending';
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface IGanttChartDataPoint {
+  /**
+   * Dependent value of the data point, rendered along the x-axis.
+   * `start` and `end` represent the beginning and end of the data point.
+   */
+  x: {
+    start: Date | number;
+    end: Date | number;
+  };
+
+  /**
+   * Independent value of the data point, rendered along the y-axis.
+   * If y is a number, then each y-coordinate is plotted at its y-coordinate.
+   * If y is a string, then the data is evenly spaced along the y-axis.
+   */
+  y: number | string;
+
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend?: string;
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+
+  /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
+
+  /**
+   * Optional label shown in place of `x` in the callout.
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Optional label shown in place of `y` in the callout.
+   */
+  yAxisCalloutData?: string;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }

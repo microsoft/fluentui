@@ -1,9 +1,24 @@
 import * as React from 'react';
 import { LegendsProps } from '../Legends/index';
-import { AccessibilityProps, Chart, Margins } from '../../types/index';
-import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/index';
+import {
+  AccessibilityProps,
+  Chart,
+  Margins,
+  DataPoint,
+  HorizontalBarChartWithAxisDataPoint,
+  GroupedVerticalBarChartData,
+  HeatMapChartDataPoint,
+  LineChartPoints,
+  VerticalBarChartDataPoint,
+  VerticalStackedBarDataPoint,
+  ScatterChartDataPoint,
+  GanttChartDataPoint,
+  AxisCategoryOrder,
+} from '../../types/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartPopoverProps } from './ChartPopover.types';
+import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisType } from '../../utilities/utilities';
+import { ScaleBand, ScaleLinear } from 'd3-scale';
 /**
  * Cartesian Chart style properties
  * {@docCategory CartesianChart}
@@ -53,6 +68,12 @@ export interface CartesianChartStyleProps {
    * boolean flag which determines if shape is drawn in callout
    */
   toDrawShape?: boolean;
+
+  /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @deprecated Use `reflowProps` instead.
+   */
+  enableReflow?: boolean;
 }
 
 /**
@@ -119,6 +140,16 @@ export interface CartesianChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;
+
+  /**
+   * Styles for the svg tooltip
+   */
+  svgTooltip?: string;
+
+  /**
+   * Styles for the chart svg element
+   */
+  chart?: string;
 }
 
 /**
@@ -327,6 +358,12 @@ export interface CartesianChartProps {
   svgProps?: React.SVGProps<SVGSVGElement>;
 
   /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @deprecated Use `reflowProps` instead.
+   */
+  enableReflow?: boolean;
+
+  /**
    * Props related to reflow behavior of the chart
    */
   reflowProps?: {
@@ -391,6 +428,32 @@ export interface CartesianChartProps {
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<Chart>;
+
+  /**
+   * Prop to set the x axis annotation. Used to display additional information on the x-axis.
+   * This is shown on the top of the chart.
+   * @default undefined
+   */
+  xAxisAnnotation?: string;
+
+  /**
+   * Prop to set the y axis annotation. Used to display additional information on the y-axis.
+   * This is shown on the right side of the chart. Not shown if secondary y-axis is enabled.
+   * @default undefined
+   */
+  yAxisAnnotation?: string;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the x-axis.
+   * @default 'default'
+   */
+  xAxisCategoryOrder?: AxisCategoryOrder;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the y-axis.
+   * @default 'default'
+   */
+  yAxisCategoryOrder?: AxisCategoryOrder;
 }
 
 export interface YValueHover {
@@ -408,7 +471,7 @@ export interface ChildProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   xScale?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  yScale?: any;
+  yScalePrimary?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yScaleSecondary?: any;
   containerHeight?: number;
@@ -538,6 +601,9 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /** Callback method to get extra margins for domain */
   getDomainMargins?: (containerWidth: number) => Margins;
 
+  /** Callback method to get extra margins for Y-axis domain */
+  getYDomainMargins?: (containerHeight: number) => Margins;
+
   /** Padding between each bar/line-point */
   xAxisInnerPadding?: number;
 
@@ -560,4 +626,71 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
    * Used to control the first render cycle Performance optimization code.
    */
   enableFirstRenderOptimization?: boolean;
+
+  /**
+   * Get the min and max values of the y-axis
+   */
+  getMinMaxOfYAxis: (
+    points:
+      | LineChartPoints[]
+      | HorizontalBarChartWithAxisDataPoint[]
+      | VerticalBarChartDataPoint[]
+      | DataPoint[]
+      | ScatterChartDataPoint[]
+      | GanttChartDataPoint[],
+    yAxisType: YAxisType | undefined,
+    useSecondaryYScale?: boolean,
+  ) => { startValue: number; endValue: number };
+
+  /**
+   * Create the y-axis
+   */
+  createYAxis: (
+    yAxisParams: IYAxisParams,
+    isRtl: boolean,
+    axisData: IAxisData,
+    isIntegralDataset: boolean,
+    chartType: ChartTypes,
+    useSecondaryYScale?: boolean,
+    roundedTicks?: boolean,
+  ) => ScaleLinear<number, number, never>;
+
+  /**
+   * Get the domain and range values
+   */
+  getDomainNRangeValues: (
+    points:
+      | LineChartPoints[]
+      | VerticalBarChartDataPoint[]
+      | VerticalStackedBarDataPoint[]
+      | HorizontalBarChartWithAxisDataPoint[]
+      | GroupedVerticalBarChartData[]
+      | HeatMapChartDataPoint[]
+      | GanttChartDataPoint[],
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | string[] | undefined,
+    shiftX: number,
+  ) => IDomainNRange;
+
+  /**
+   * Create the string y-axis
+   */
+  createStringYAxis: (
+    yAxisParams: IYAxisParams,
+    dataPoints: string[],
+    isRtl: boolean,
+    barWidth: number | undefined,
+    chartType?: ChartTypes,
+  ) => ScaleBand<string>;
+
+  /**
+   * Controls whether the numeric x-axis domain should be extended to start and end at nice rounded values.
+   * @default true
+   */
+  showRoundOffXTickValues?: boolean;
 }

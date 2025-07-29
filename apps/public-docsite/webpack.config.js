@@ -52,7 +52,12 @@ module.exports = function (env, argv) {
         // to ensure we get a consistent version.
 
         resolve: {
-          alias: getResolveAlias(true /*useLib*/),
+          alias: {
+            ...getResolveAlias(true /*useLib*/),
+            // react-monaco-editor dynamically loads @types/react via proprietary webpack require.ensure,
+            // this doesn't work starting @types/react@17.0.48 as the types package introduced Export Maps
+            '@types/react/index.d.ts': path.resolve(__dirname, '../../node_modules/@types/react/index.d.ts'),
+          },
         },
       },
       { outDir },

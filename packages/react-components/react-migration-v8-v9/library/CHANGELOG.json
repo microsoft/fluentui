@@ -2,6 +2,239 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Mon, 28 Jul 2025 18:48:21 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.9.1",
+      "version": "9.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.68.0",
+            "commit": "27822054c223a560c0b49ec0b9079f628776e498"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Jul 2025 13:49:42 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.67.0",
+            "commit": "23bbd701b365043a9f22a8d754d751cd1ec088aa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Jul 2025 13:52:50 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.8.8",
+      "version": "9.8.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.66.8",
+            "commit": "f4286818c03a3de299eae4bda26f19b608adb1a6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Jul 2025 15:59:24 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.8.7",
+      "version": "9.8.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.66.7",
+            "commit": "0aea3258a8deb968bd8e8f5a4a9c3e8a162b4bc3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jul 2025 10:02:45 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.8.6",
+      "version": "9.8.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.66.6",
+            "commit": "5067a4850156994fbfc977a3bff5b9f3353078fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Jun 2025 13:39:41 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.8.5",
+      "version": "9.8.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.66.5",
+            "commit": "a22081a0cf560f862587a4485de93ecebb05f16d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jun 2025 14:11:55 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.8.4",
+      "version": "9.8.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.66.4",
+            "commit": "2b89e39a253fe3570265284b19d2461b9d37fb86"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Jun 2025 15:49:48 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.8.3",
+      "version": "9.8.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.66.3",
+            "commit": "a00b7d0f205b6178637eddd2e981b5e12efb3df5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Jun 2025 17:34:00 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.8.2",
+      "version": "9.8.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.66.2",
+            "commit": "ddb50b0e9313fe7eb75830a0546d01a2c7fe270b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Jun 2025 12:32:51 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.8.1",
+      "version": "9.8.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "bddec9d2567439f2639fedbd1856bcc910620aa5",
+            "comment": "docs: fix incorrect url path"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.66.1",
+            "commit": "d41da5857f1332ef8d6b24ce3234070b67a20179"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Jun 2025 09:43:31 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.8.0",
+      "version": "9.8.0",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          }
+        ],
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.66.0",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jun 2025 22:31:57 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.7.13",
+      "version": "9.7.13",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "005e4f11aafd06c797b84b03b427424e740018d9",
+            "comment": "fix: use custom RefAttributes instead of React.RefAttributes"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.65.0",
+            "commit": "9d5f9de4e1811302df0c15c31412856329fe9333"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Jun 2025 13:15:17 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.7.12",
+      "version": "9.7.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.64.1",
+            "commit": "82db061493527440f473c6c6480305f8afe293be"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 May 2025 18:49:20 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.7.11",
       "version": "9.7.11",

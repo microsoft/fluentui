@@ -12,6 +12,8 @@ import type { ComponentProps as ComponentProps_2 } from '@fluentui/react-utiliti
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { GriffelStyle } from '@fluentui/react-components';
+import type { JSXIntrinsicElement } from '@fluentui/react-utilities';
+import type { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
 import { ObjectOf } from '@fluentui/react-northstar';
 import type { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React_2 from 'react';
@@ -21,7 +23,6 @@ import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities
 import { Slot } from '@fluentui/react-components';
 import { Slot as Slot_2 } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Attachment: React_2.ForwardRefExoticComponent<AttachmentProps & React_2.RefAttributes<HTMLDivElement>>;
@@ -157,12 +158,10 @@ export const input: {
 // @public (undocumented)
 export const ItemLayout: React_2.ForwardRefExoticComponent<Omit<ItemLayoutSlots, "root"> & Omit<{
     as?: "div" | undefined;
-} & Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
+} & Omit<Omit<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & {
     ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-} & {
-    children?: React_2.ReactNode | SlotRenderFunction<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
-    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-    }>;
+}, "children"> & {
+    children?: any;
 }, "ref"> & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
@@ -290,7 +289,7 @@ export const useFlexStyles: () => Record<"flex" | "fill" | "inline" | "column" |
 export const useGridStyles: () => Record<"grid" | "onlyRows" | "rows1" | "rows2" | "rows3" | "columns1" | "columns2" | "columns3" | "columnsDefault", string>;
 
 // @public (undocumented)
-export const useItemLayoutStyles: () => Record<"header" | "root" | "contentMedia" | "contentWrapper" | "headerMedia" | "startMedia" | "endMedia", string>;
+export const useItemLayoutStyles: () => Record<"root" | "header" | "contentMedia" | "contentWrapper" | "headerMedia" | "startMedia" | "endMedia", string>;
 
 // @public
 export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement>) => ListState;

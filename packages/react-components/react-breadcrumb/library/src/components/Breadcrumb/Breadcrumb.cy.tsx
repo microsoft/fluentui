@@ -8,7 +8,10 @@ import { BreadcrumbItem } from '../BreadcrumbItem';
 import { BreadcrumbButton } from '../BreadcrumbButton';
 import type { BreadcrumbProps } from '../Breadcrumb';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

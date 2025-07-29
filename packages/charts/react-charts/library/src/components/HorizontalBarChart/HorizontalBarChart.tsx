@@ -21,7 +21,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   HorizontalBarChartProps
 >((props, forwardedRef) => {
   const legendContainer = React.useRef<HTMLDivElement | null>(null);
-  const _uniqLineText: string = '_HorizontalLine_' + Math.random().toString(36).substring(7);
+  const _uniqLineText: string = useId('_HorizontalLine_');
   const _refArray: RefArrayData[] = [];
   const _isRTL: boolean = useRtl();
   const barChartSvgRef: React.RefObject<SVGSVGElement> = React.createRef<SVGSVGElement>();
@@ -29,6 +29,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   let _barHeight: number;
   let _calloutAnchorPoint: ChartDataPoint | null;
   let isSingleBar: boolean = true;
+  let _showToolTipOnSegment: boolean = !props.hideTooltip;
 
   const [hoverValue, setHoverValue] = React.useState<string | number | Date | null>('');
   const [lineColor, setLineColor] = React.useState<string>('');
@@ -47,7 +48,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   }
 
   function _hoverOn(
-    event: React.MouseEvent<SVGRectElement, MouseEvent>,
+    event: React.FocusEvent<SVGRectElement> | React.MouseEvent<SVGRectElement>,
     hoverVal: string | number | Date,
     point: ChartDataPoint,
   ): void {
@@ -57,7 +58,21 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       (_legendHighlighted(point.legend) || _noLegendHighlighted())
     ) {
       _calloutAnchorPoint = point;
-      updatePosition(event.clientX, event.clientY);
+      let x = 0;
+      let y = 0;
+
+      if ('clientX' in event && event.clientX && event.clientY) {
+        // Mouse event
+        x = event.clientX;
+        y = event.clientY;
+      } else {
+        // Focus event
+        const targetRect = (event.target as SVGRectElement).getBoundingClientRect();
+        x = targetRect.left + targetRect.width / 2;
+        y = targetRect.top + targetRect.height / 2;
+      }
+
+      updatePosition(x, y);
       setHoverValue(hoverVal);
       setLineColor(point.color!);
       setLegend(point.legend!);
@@ -95,39 +110,37 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   };
 
   function _createLegends(chartProps: ChartProps[]): JSX.Element {
-    const legendItems: Legend[] = [];
-    chartProps.forEach((point: ChartProps) => {
-      point.chartData!.forEach((dataPoint: ChartDataPoint) => {
-        const color: string = dataPoint.color!;
-        // mapping data to the format Legends component needs
-        const legendItem: Legend = {
-          title: dataPoint.legend!,
-          color,
-          action: () => {
-            if (selectedLegend === dataPoint.legend) {
-              setSelectedLegend('');
-            } else {
-              setSelectedLegend(dataPoint.legend!);
-            }
-          },
-          hoverAction: () => {
-            _handleChartMouseLeave();
-            setActiveLegend(dataPoint.legend!);
-          },
-          onMouseOutAction: () => {
-            setActiveLegend('');
-          },
-        };
-        legendItems.push(legendItem);
-      });
-    });
-    const legends = (
+    const legendItems: Legend[] = chartProps.flatMap(
+      point =>
+        point.chartData?.map((dataPoint): Legend => {
+          const legend = dataPoint.legend ?? '';
+          const color = dataPoint.color ?? '';
+
+          return {
+            title: legend,
+            color,
+            action: () => setSelectedLegend(selectedLegend === legend ? '' : legend),
+            hoverAction: () => {
+              _handleChartMouseLeave();
+              setActiveLegend(legend);
+            },
+            onMouseOutAction: () => setActiveLegend(''),
+          };
+        }) ?? [],
+    );
+
+    return (
       <Legends legends={legendItems} centerLegends overflowText={props.legendsOverflowText} {...props.legendProps} />
     );
-    return legends;
   }
 
   function _getDefaultTextData(data: ChartProps): JSX.Element {
+    const chartDataMode = props.chartDataMode || 'default';
+
+    if (chartDataMode === 'hidden') {
+      return <></>; // No text data for hidden mode
+    }
+
     const { culture } = props;
     const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData!, 'text', false);
     if (!isSingleBar) {
@@ -138,11 +151,11 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       );
       return (
         <div className={classes.chartTitleRight} {...accessibilityData}>
-          {formatToLocaleString(total, culture)}
+          {formatToLocaleString(total, culture) as React.ReactNode}
         </div>
       );
     }
-    const chartDataMode = props.chartDataMode || 'default';
+
     const chartData: ChartDataPoint = data!.chartData![0];
     const x = chartData.horizontalBarChartdata!.x;
     const y = chartData.horizontalBarChartdata!.total!;
@@ -151,13 +164,13 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       case 'default':
         return (
           <div className={classes.chartTitleRight} {...accessibilityData}>
-            {formatToLocaleString(x, culture)}
+            {formatToLocaleString(x, culture) as React.ReactNode}
           </div>
         );
       case 'fraction':
         return (
           <div {...accessibilityData}>
-            <span className={classes.chartTitleRight}>{formatToLocaleString(x, culture)}</span>
+            <span className={classes.chartTitleRight}>{formatToLocaleString(x, culture) as React.ReactNode}</span>
             <span className={classes.chartDataTextDenominator}>{' / ' + formatToLocaleString(y, culture)}</span>
           </div>
         );
@@ -295,12 +308,13 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
               : startingPoint[index] + index * barSpacingInPercent
           }%`}
           y={0}
-          data-is-focusable={point.legend !== '' ? true : false}
           width={value + '%'}
           height={_barHeight}
           fill={color}
-          onMouseOver={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
-          onFocus={point.legend !== '' ? event => _hoverOn.bind(event, xValue, point) : undefined}
+          onMouseOver={
+            _showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
+          }
+          onFocus={_showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
           role="img"
           aria-label={_getAriaLabel(point)}
           onBlur={_hoverOff}
@@ -379,8 +393,9 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         } else {
           datapoint = 0;
         }
-        isSingleBar =
-          points.chartData!.length === 1 || (points.chartData!.length > 1 && points.chartData![1].legend === '');
+        isSingleBar = props.showLegendForSinglePointBar
+          ? false
+          : points.chartData!.length === 1 || (points.chartData!.length > 1 && points.chartData![1].legend === '');
         if (isSingleBar) {
           points.chartData![1] = {
             legend: '',
@@ -421,7 +436,6 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
               <svg ref={barChartSvgRef} className={classes.chart} aria-label={points!.chartTitle}>
                 <g
                   id={keyVal}
-                  key={keyVal}
                   ref={(e: SVGGElement) => {
                     _refCallback(e, points!.chartData![0].legend);
                   }}

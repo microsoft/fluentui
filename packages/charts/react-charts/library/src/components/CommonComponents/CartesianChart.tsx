@@ -2,16 +2,13 @@ import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModifiedCartesianChartProps, HorizontalBarChartWithAxisDataPoint, HeatMapChartDataPoint } from '../../index';
 import { useCartesianChartStyles } from './useCartesianChartStyles.styles';
+import { select as d3Select } from 'd3-selection';
 import {
   createNumericXAxis,
   createStringXAxis,
   IAxisData,
-  getDomainNRangeValues,
   createDateXAxis,
-  createYAxis,
-  createStringYAxis,
   IMargins,
-  getMinMaxOfYAxis,
   XAxisTypes,
   YAxisType,
   createWrapOfXLabels,
@@ -21,7 +18,11 @@ import {
   ChartTypes,
   wrapContent,
   useRtl,
+  truncateString,
+  tooltipOfAxislabels,
+  getSecureProps,
 } from '../../utilities/index';
+import { useId } from '@fluentui/react-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { ChartPopover } from './ChartPopover';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -50,6 +51,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _xScale: any;
   let isIntegralDataset: boolean = true;
+  let _tooltipId: string = useId('tooltip_');
 
   const [containerWidth, setContainerWidth] = React.useState<number>(0);
   const [containerHeight, setContainerHeight] = React.useState<number>(0);
@@ -58,7 +60,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   const [startFromX, setStartFromX] = React.useState<number>(0);
   const [prevProps, setPrevProps] = React.useState<ModifiedCartesianChartProps | null>(null);
 
-  const chartTypesToCheck = [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart];
+  const chartTypesToCheck = [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart, ChartTypes.GanttChart];
   /**
    * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
    * So that, in RTL, left margins becomes right margins and viceversa.
@@ -174,14 +176,21 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     points: any[],
     className: string,
   ): number {
+    const formatTickLabel = (str: string) => {
+      if (props.showYAxisLablesTooltip) {
+        return truncateString(str, props.noOfCharsToTruncate || 4);
+      }
+
+      return str;
+    };
     if (chartType === ChartTypes.HeatMapChart) {
       return calculateLongestLabelWidth(
-        points[0]?.data?.map((point: HeatMapChartDataPoint) => point.y),
+        points[0]?.data?.map((point: HeatMapChartDataPoint) => formatTickLabel(`${point.y}`)),
         `.${className} text`,
       );
     } else {
       return calculateLongestLabelWidth(
-        points?.map((point: HorizontalBarChartWithAxisDataPoint) => point.y),
+        points?.map((point: HorizontalBarChartWithAxisDataPoint) => formatTickLabel(`${point.y}`)),
         `.${className} text`,
       );
     }
@@ -217,7 +226,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   if ((props.enableFirstRenderOptimization && chartContainer.current) || !props.enableFirstRenderOptimization) {
     _isFirstRender.current = false;
     const XAxisParams = {
-      domainNRangeValues: getDomainNRangeValues(
+      domainNRangeValues: props.getDomainNRangeValues(
         points,
         props.getDomainMargins ? props.getDomainMargins(containerWidth) : margins,
         containerWidth,
@@ -232,7 +241,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       containerHeight: containerHeight - removalValueForTextTuncate!,
       margins: margins,
       xAxisElement: xAxisElement.current!,
-      showRoundOffXTickValues: true,
+      showRoundOffXTickValues: props.showRoundOffXTickValues ?? true,
       xAxisCount: props.xAxisTickCount,
       xAxistickSize: props.xAxistickSize,
       tickPadding: props.tickPadding || props.showXAxisLablesTooltip ? 5 : 10,
@@ -245,7 +254,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     };
 
     const YAxisParams = {
-      margins: margins,
+      margins: props.getYDomainMargins ? props.getYDomainMargins(containerHeight) : margins,
       containerWidth: containerWidth,
       containerHeight: containerHeight - removalValueForTextTuncate!,
       yAxisElement: yAxisElement.current,
@@ -253,9 +262,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       yAxisTickCount: props.yAxisTickCount!,
       yMinValue: props.yMinValue || 0,
       yMaxValue: props.yMaxValue || 0,
-      tickPadding: 10,
+      tickPadding: props.showYAxisLablesTooltip ? 15 : 10,
       maxOfYVal: props.maxOfYVal,
-      yMinMaxValues: getMinMaxOfYAxis(points, chartType, props.yAxisType),
+      yMinMaxValues: props.getMinMaxOfYAxis(points, props.yAxisType),
       // please note these padding default values must be consistent in here
       // and the parent chart(HBWA/Vertical etc..) for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
@@ -283,6 +292,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           timeFormatLocale,
           customDateTimeFormatter,
           props.useUTC,
+          props.chartType,
         ));
         break;
       case XAxisTypes.StringAxis:
@@ -326,20 +336,18 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
      * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let yScale: any;
+    let yScalePrimary: any;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let yScaleSecondary: any;
     const axisData: IAxisData = { yAxisDomainValues: [] };
     if (props.yAxisType && props.yAxisType === YAxisType.StringAxis) {
-      yScale = createStringYAxis(
-        YAxisParams,
-        props.stringDatasetForYAxisDomain!,
-        _useRtl,
-        props.chartType,
-        props.barwidth,
-        culture,
-      );
+      yScalePrimary = props.createStringYAxis(YAxisParams, props.stringDatasetForYAxisDomain!, _useRtl, props.barwidth);
     } else {
+      // TODO: Since the scale domain values are now computed independently for both the primary and
+      // secondary y-axes, the yMinValue and yMaxValue props are no longer necessary for accurately
+      // rendering the secondary y-axis. Therefore, rather than checking the secondaryYScaleOptions
+      // prop to determine whether to create a secondary y-axis, it's more appropriate to check if any
+      // data points are assigned to use the secondary y-scale.
       if (props?.secondaryYScaleOptions) {
         const YAxisParamsSecondary = {
           margins: margins,
@@ -351,71 +359,91 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           yMinValue: props.secondaryYScaleOptions?.yMinValue || 0,
           yMaxValue: props.secondaryYScaleOptions?.yMaxValue ?? 100,
           tickPadding: 10,
-          maxOfYVal: props.secondaryYScaleOptions?.yMaxValue ?? 100,
-          yMinMaxValues: getMinMaxOfYAxis(points, chartType),
+          yMinMaxValues: props.getMinMaxOfYAxis(points, props.yAxisType, true),
           yAxisPadding: props.yAxisPadding,
         };
 
-        yScaleSecondary = createYAxis(
+        yScaleSecondary = props.createYAxis(
           YAxisParamsSecondary,
           _useRtl,
           axisData,
-          chartType,
-          props.barwidth!,
           isIntegralDataset,
+          chartType,
           true,
           props.roundedTicks!,
         );
       }
-      yScale = createYAxis(
+      yScalePrimary = props.createYAxis(
         YAxisParams,
         _useRtl,
         axisData,
-        chartType,
-        props.barwidth!,
         isIntegralDataset,
+        chartType,
         false,
         props.roundedTicks!,
       );
     }
 
-    /*
-     * To create y axis tick values by if specified
-    truncating the rest of the text and showing elipsis
-    or showing the whole string,
-     * */
-    chartTypesToCheck.includes(props.chartType) &&
-      yScale &&
-      createYAxisLabels(
-        yAxisElement.current!,
-        yScale,
-        props.noOfCharsToTruncate || 4,
-        props.showYAxisLablesTooltip || false,
-        startFromX,
-        _useRtl,
-      );
+    if (chartTypesToCheck.includes(props.chartType)) {
+      // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
+      // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
+      // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with _tooltipId)
+      if (!props.showYAxisLablesTooltip) {
+        try {
+          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
+          //eslint-disable-next-line no-empty
+        } catch (e) {}
+      }
+      // Used to display tooltip at y axis labels.
+      if (props.showYAxisLablesTooltip) {
+        // To create y axis tick values by if specified truncating the rest of the text
+        // and showing elipsis or showing the whole string,
+        yScalePrimary &&
+          // Note: This function should be invoked within the showYAxisLablesTooltip check,
+          // as its sole purpose is to truncate labels that exceed the noOfCharsToTruncate limit.
+          createYAxisLabels(
+            yAxisElement.current!,
+            yScalePrimary,
+            props.noOfCharsToTruncate || 4,
+            props.showYAxisLablesTooltip || false,
+            _useRtl,
+          );
+        const _yAxisElement = d3Select(yAxisElement.current!).call(yScalePrimary);
+        try {
+          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
+          //eslint-disable-next-line no-empty
+        } catch (e) {}
+        const ytooltipProps = {
+          tooltipCls: classes.tooltip!,
+          id: _tooltipId,
+          axis: _yAxisElement,
+        };
+        _yAxisElement && tooltipOfAxislabels(ytooltipProps);
+      }
+    }
 
     // Call back to the chart.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const _getData = (xScale: any, yScale: any) => {
+    const _getData = (xScale: any, yScalePrimary: any, yScaleSecondary: any) => {
       props.getGraphData &&
         props.getGraphData(
           xScale,
-          yScale,
+          yScalePrimary,
           containerHeight - removalValueForTextTuncate!,
           containerWidth,
           xAxisElement.current,
           yAxisElement.current,
+          yScaleSecondary,
         );
     };
 
     props.getAxisData && props.getAxisData(axisData);
     // Callback function for chart, returns axis
-    _getData(xScale, yScale);
+    _getData(xScale, yScalePrimary, yScaleSecondary);
 
     children = props.children({
       xScale,
-      yScale,
+      yScalePrimary,
       yScaleSecondary,
       containerHeight,
       containerWidth,
@@ -557,7 +585,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           height={svgDimensions.height}
           aria-label={props.chartTitle}
           style={{ display: 'block' }}
-          {...svgProps}
+          className={classes.chart}
+          {...getSecureProps(svgProps)}
         >
           <g
             ref={(e: SVGSVGElement | null) => {
@@ -580,6 +609,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               maxWidth={xAxisTitleMaximumAllowedWidth}
               wrapContent={wrapContent}
               showBackground={true}
+              className={classes.svgTooltip}
             />
           )}
           <g
@@ -620,6 +650,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                   maxWidth={yAxisTitleMaximumAllowedHeight}
                   wrapContent={wrapContent}
                   showBackground={true}
+                  className={classes.svgTooltip}
                 />
               )}
             </g>
@@ -630,9 +661,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               content={props.yAxisTitle}
               textProps={{
                 x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + removalValueForTextTuncate!,
-                y: _useRtl
-                  ? svgDimensions.width - margins.right! / 2 + titleMargin
-                  : margins.left! / 2 + startFromX - titleMargin,
+                y: _useRtl ? svgDimensions.width - margins.right! / 2 + titleMargin : margins.left! / 2 - titleMargin,
                 textAnchor: 'middle',
                 transform: `translate(0,
                  ${svgDimensions.height - margins.bottom! - margins.top! - titleMargin})rotate(-90)`,
@@ -641,6 +670,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               maxWidth={yAxisTitleMaximumAllowedHeight}
               wrapContent={wrapContent}
               showBackground={true}
+              className={classes.svgTooltip}
             />
           )}
         </svg>

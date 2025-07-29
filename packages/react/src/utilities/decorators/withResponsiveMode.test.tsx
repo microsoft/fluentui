@@ -5,6 +5,7 @@ import { setResponsiveMode, withResponsiveMode, ResponsiveMode } from './withRes
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 @withResponsiveMode
 class Example extends React.Component<any, any> {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     return <div />;
   }

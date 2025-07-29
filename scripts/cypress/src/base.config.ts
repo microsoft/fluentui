@@ -64,17 +64,30 @@ interface BaseConfig extends Cypress.ConfigOptions {
   };
 }
 
+const projectRoot = process.cwd();
+/**
+ * Programmatically create relative support support path, because Cypress bug
+ * @see https://github.com/cypress-io/cypress/issues/31819
+ *
+ * This is a workaround for the issue where Cypress does not resolve the paths correctly, as it
+ * internally prepend the __dirname, making them invalid
+ *
+ */
+const sharedConfigSupportRootDir = path.join(__dirname, './support');
+const projectSupportDir = path.relative(projectRoot, sharedConfigSupportRootDir);
+
 export const baseConfig = defineConfig({
   video: false,
   component: {
-    specPattern: [path.join(process.cwd(), '**/*.e2e.tsx'), path.join(process.cwd(), '**/*.cy.tsx')],
+    specPattern: [path.join(projectRoot, '**/*.e2e.tsx'), path.join(projectRoot, '**/*.cy.tsx')],
     devServer: {
       framework: 'react',
       bundler: 'webpack',
       webpackConfig: cypressWebpackConfig(),
     },
-    supportFile: path.join(__dirname, './support/component.js'),
-    indexHtmlFile: path.join(__dirname, './support/component-index.html'),
+
+    supportFile: path.join(projectSupportDir, './component.js'),
+    indexHtmlFile: path.join(projectSupportDir, './component-index.html'),
   },
   retries: {
     runMode: 2,

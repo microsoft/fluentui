@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { color as d3Color } from 'd3-color';
-import type { PieColors, Color } from '@fluentui/chart-utilities';
+import type { PieColors, Color, PlotData, Layout } from '@fluentui/chart-utilities';
 import { isArrayOrTypedArray } from '@fluentui/chart-utilities';
 import { areArraysEqual } from '../../utilities/utilities';
 import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
+import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 
 type PlotlyColorway = 'plotly' | 'others';
 
@@ -131,7 +132,7 @@ export const resolveColor = (
   isDarkTheme?: boolean,
 ): string => {
   let color = '';
-  if (extractedColors && isArrayOrTypedArray(extractedColors) && extractedColors[index]) {
+  if (extractedColors && isArrayOrTypedArray(extractedColors) && extractedColors.length > 0) {
     color = extractedColors[index % extractedColors.length];
   } else if (typeof extractedColors === 'string') {
     color = extractedColors;
@@ -139,4 +140,39 @@ export const resolveColor = (
     color = getColor(legend, colorMap, isDarkTheme);
   }
   return color;
+};
+
+export const getOpacity = (series: Partial<PlotData>, index: number): number => {
+  return series.marker?.opacity
+    ? isArrayOrTypedArray(series.marker?.opacity)
+      ? (series.marker?.opacity as number[])[index % (series.marker?.opacity as number[]).length]
+      : (series.marker?.opacity as number)
+    : series.opacity ?? 1;
+};
+
+export const createColorScale = (
+  layout: Partial<Layout> | undefined,
+  series: Partial<PlotData>,
+  currentColorScale: ((value: number) => string) | undefined,
+) => {
+  if (
+    layout?.coloraxis?.colorscale?.length &&
+    isArrayOrTypedArray(series.marker?.color) &&
+    (series.marker?.color as Color[]).length > 0 &&
+    typeof (series.marker?.color as Color[])?.[0] === 'number'
+  ) {
+    const scale = layout?.coloraxis?.colorscale as Array<[number, string]>;
+    const colorValues = series.marker?.color as number[];
+    const [dMin, dMax] = [
+      layout?.coloraxis?.cmin ?? Math.min(...colorValues),
+      layout?.coloraxis?.cmax ?? Math.max(...colorValues),
+    ];
+
+    // Normalize colorscale domain to actual data domain
+    const scaleDomain = scale.map(([pos]) => dMin + pos * (dMax - dMin));
+    const scaleColors = scale.map(item => item[1]);
+
+    return d3ScaleLinear<string>().domain(scaleDomain).range(scaleColors);
+  }
+  return currentColorScale;
 };

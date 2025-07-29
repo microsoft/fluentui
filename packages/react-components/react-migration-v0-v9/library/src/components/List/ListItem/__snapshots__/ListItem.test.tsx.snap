@@ -4,7 +4,7 @@ exports[`ListItem renders a default state 1`] = `
 <div>
   <li
     class="fui-ListItem"
-    id="listItem7"
+    id="listItemr6"
     role="listitem"
   >
     <div

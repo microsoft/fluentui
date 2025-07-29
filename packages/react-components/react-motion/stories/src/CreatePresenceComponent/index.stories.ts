@@ -6,6 +6,7 @@ import { CreatePresenceComponentDefault } from './CreatePresenceComponentDefault
 export { CreatePresenceComponentDefault as Default } from './CreatePresenceComponentDefault.stories';
 
 export { CreatePresenceComponentFactory as createPresenceComponent } from './CreatePresenceComponentFactory.stories';
+export { CreatePresenceComponentInAndOut as InAndOut } from './CreatePresenceComponentInAndOut.stories';
 
 export { CreatePresenceComponentAppear as appear } from './CreatePresenceComponentAppear.stories';
 export { CreatePresenceComponentReducedMotion as reducedMotion } from './CreatePresenceComponentReducedMotion.stories';

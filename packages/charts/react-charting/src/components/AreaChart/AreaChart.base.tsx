@@ -44,6 +44,7 @@ import {
   getSecureProps,
   areArraysEqual,
   getCurveFactory,
+  YAxisType,
 } from '../../utilities/index';
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -130,6 +131,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _uniqueCallOutID: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _data: any;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _chart: JSX.Element[];
   private margins: IMargins;
   private _rectId: string;
@@ -202,6 +204,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     if (!this._isChartEmpty()) {
       const { lineChartData } = this.props.data;
@@ -215,6 +218,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       this._colors = colors;
       this._opacity = opacity;
       this._data = data.renderData;
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const legends: JSX.Element = this._getLegendData(points);
 
       const tickParams = {
@@ -253,7 +257,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           getDomainNRangeValues={this._getDomainNRangeValues}
           createStringYAxis={createStringYAxis}
           getmargins={this._getMargins}
-          getMinMaxOfYAxis={findNumericMinMaxOfY}
+          getMinMaxOfYAxis={this._getMinMaxOfYAxis}
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
           enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
@@ -302,6 +306,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
     return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, getRTL(), opts);
   };
+
+  private _getMinMaxOfYAxis = (points: ILineChartPoints[], yAxisType: YAxisType, useSecondaryYScale: boolean) =>
+    findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
 
   private _getDomainNRangeValues = (
     points: ILineChartPoints[],
@@ -730,6 +737,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getLegendData = (points: ILineChartPoints[]): JSX.Element => {
     const data = points;
     const actions: ILegend[] = [];
@@ -835,10 +843,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     yScalePrimary: ScaleLinear<number, number>,
     yScaleSecondary: ScaleLinear<number, number> | undefined,
     xElement: SVGElement,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element[] => {
     const points = this._addDefaultColors(this.props.data.lineChartData);
     const { pointOptions, pointLineOptions } = this.props.data;
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const graph: JSX.Element[] = [];
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

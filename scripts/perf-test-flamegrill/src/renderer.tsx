@@ -27,11 +27,14 @@ export function render(scenarios: Scenarios) {
 
     if (renderType === 'virtual-rerender' || renderType === 'virtual-rerender-with-unmount') {
       for (let i = 0; i < iterations - 1; i++) {
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         ReactDOM.render(<PerfTestScenario />, div);
         if (renderType === 'virtual-rerender-with-unmount') {
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           ReactDOM.unmountComponentAtNode(div);
         }
       }
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ReactDOM.render(<PerfTestScenario />, div, () => div.appendChild(renderFinishedMarker));
     } else {
       // TODO: This seems to increase React (unstable_runWithPriority) render consumption from 4% to 72%!
@@ -40,6 +43,7 @@ export function render(scenarios: Scenarios) {
       // TODO: Using React Fragments increases React (unstable_runWithPriority) render consumption from 4% to 26%.
       // It'd be interesting to root cause why at some point.
       // ReactDOM.render(<>{Array.from({ length: iterations }, () => (scenarios[scenario]))}</>, div);
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ReactDOM.render(
         <PerfTestDecorator>
           {Array.from({ length: iterations }, () => (

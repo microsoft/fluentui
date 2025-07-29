@@ -10,6 +10,7 @@ exports[`MenuTrigger renders a default state 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseMove={[Function]}
+  onMouseOver={[Function]}
 >
   Menu trigger
 </button>

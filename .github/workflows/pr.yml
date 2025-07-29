@@ -35,7 +35,7 @@ jobs:
           fetch-depth: 0
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4.3.0
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
         with:
           main-branch-name: 'master'
 
@@ -104,7 +104,7 @@ jobs:
           fetch-depth: 0
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4.3.0
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
         with:
           main-branch-name: 'master'
 
@@ -195,7 +195,12 @@ jobs:
           echo "- E2E: ${{ steps.e2e.outcome }}" >> $GITHUB_STEP_SUMMARY
           echo "- Test: ${{ steps.test.outcome }}" >> $GITHUB_STEP_SUMMARY
 
-          if [[ "${{ steps.type-check.outcome }}" == "success" && "${{ steps.e2e.outcome }}" == "success" && "${{ steps.test.outcome }}" == "success" ]]; then
+          # Treat skipped steps as successful since they indicate no affected projects
+          type_check_success=$([[ "${{ steps.type-check.outcome }}" == "success" || "${{ steps.type-check.outcome }}" == "skipped" ]] && echo "true" || echo "false")
+          e2e_success=$([[ "${{ steps.e2e.outcome }}" == "success" || "${{ steps.e2e.outcome }}" == "skipped" ]] && echo "true" || echo "false")
+          test_success=$([[ "${{ steps.test.outcome }}" == "success" || "${{ steps.test.outcome }}" == "skipped" ]] && echo "true" || echo "false")
+
+          if [[ "$type_check_success" == "true" && "$e2e_success" == "true" && "$test_success" == "true" ]]; then
             echo "✅ React ${{ matrix.react }} / v${{ matrix.fluentui }} integration tests passed"
             exit 0
           else
@@ -222,7 +227,7 @@ jobs:
           fetch-depth: 0
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4.3.0
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
         with:
           main-branch-name: 'master'
 

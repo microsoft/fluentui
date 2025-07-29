@@ -1,26 +1,31 @@
 import * as React from 'react';
 import { useGroupedVerticalBarChartStyles_unstable } from './useGroupedVerticalBarChartStyles.styles';
-import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { Axis as D3Axis } from 'd3-axis';
-import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
+import { max as d3Max, min as d3Min } from 'd3-array';
+import { ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 
 import { useId } from '@fluentui/react-utilities';
 import {
   ChartTypes,
   IAxisData,
   getAccessibleDataObject,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   XAxisTypes,
   getTypeOfAxis,
   formatScientificLimitWidth,
   getScalePadding,
   getBarWidth,
   isScalePaddingDefined,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
   getNextColor,
   areArraysEqual,
   calculateLongestLabelWidth,
   useRtl,
+  YAxisType,
 } from '../../utilities/index';
 
 import {
@@ -49,6 +54,8 @@ const X1_INNER_PADDING = 0.1;
 // => space_between_bars = (x1_inner_padding / (1 - x1_inner_padding)) * bar_width
 /** Rate at which the space between the bars in a group changes wrt the bar width */
 const BAR_GAP_RATE = X1_INNER_PADDING / (1 - X1_INNER_PADDING);
+const VERTICAL_BAR_GAP = 1;
+const MIN_BAR_HEIGHT = 1;
 
 // This interface used for - While forming datapoints from given prop "data" in code
 interface GVDataPoint {
@@ -68,7 +75,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   const _emptyChartId: string = useId('_GVBC_empty');
   const _useRtl: boolean = useRtl();
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
-  let _dataset: GVDataPoint[] = [];
   let _keys: string[] = [];
   let _xAxisLabels: string[] = [];
   let _datasetForBars: any[] = [];
@@ -82,6 +88,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
+  const Y_ORIGIN: number = 0;
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -152,7 +159,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       datasetForBars.push(singleDatasetPointForBars);
       dataset.push(singleDatasetPoint);
     });
-    _dataset = dataset;
     return datasetForBars;
   };
 
@@ -238,8 +244,45 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   const legends: JSX.Element = _getLegendData(points!);
   _adjustProps();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Add commentMore actions
+  function _getMinMaxOfYAxis(datasetForBars: any, yAxisType?: YAxisType, useSecondaryYScale?: boolean) {
+    const values: number[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    datasetForBars.forEach((data: any) => {
+      data.groupSeries.forEach((point: GVBarChartSeriesPoint) => {
+        if (!useSecondaryYScale === !point.useSecondaryYScale) {
+          values.push(point.data);
+        }
+      });
+    });
+
+    return { startValue: d3Min(values)!, endValue: d3Max(values)! };
+  }
+
+  function _getDomainNRangeValues(
+    points: GroupedVerticalBarChartData[],
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  }
+
+  // The maxOfYVal prop is only required for the primary y-axis, so yMax should be calculated
+  // using only the data points associated with the primary y-axis.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const yMax = d3Max(_dataset, (point: any) => d3Max(_keys, (key: string) => point[key]));
+  const yMax = _getMinMaxOfYAxis(_datasetForBars).endValue;
   _yMax = Math.max(yMax, props.yMaxValue || 0);
 
   const calloutProps: ChartPopoverProps = {
@@ -263,10 +306,12 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
   const _getGraphData = (
     xScale: StringAxis | NumericAxis,
-    yScale: NumericAxis,
+    yScalePrimary: ScaleLinear<number, number>,
     containerHeight: number,
     containerWidth: number,
     xElement?: SVGElement | null,
+    yAxisElement?: SVGElement | null,
+    yScaleSecondary?: ScaleLinear<number, number>,
   ) => {
     const xScale0 = _createX0Scale(containerWidth);
 
@@ -282,7 +327,9 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     const xScale1 = _createX1Scale();
     const allGroupsBars: JSX.Element[] = [];
     _datasetForBars.forEach((singleSet: GVSingleDataPoint) => {
-      allGroupsBars.push(_buildGraph(singleSet, xScale0, xScale1, containerHeight, xElement!));
+      allGroupsBars.push(
+        _buildGraph(singleSet, xScale0, xScale1, yScalePrimary, yScaleSecondary, containerHeight, xElement!),
+      );
     });
     _groupedVerticalBarGraph = allGroupsBars;
   };
@@ -342,11 +389,19 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const onBarFocus = (
+    event: React.FocusEvent<SVGRectElement, Element>,
     pointData: GVBarChartSeriesPoint,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     groupData: any,
     refArrayIndexNumber: number,
   ): void => {
+    let x = 0;
+    let y = 0;
+
+    const targetRect = (event.target as SVGRectElement).getBoundingClientRect();
+    x = targetRect.left + targetRect.width / 2;
+    y = targetRect.top + targetRect.height / 2;
+    updatePosition(x, y);
     _refArray.forEach((obj: RefArrayData, index: number) => {
       if (obj.index === pointData.legend && refArrayIndexNumber === index) {
         setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(pointData.legend));
@@ -375,73 +430,88 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     xScale0: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale1: any,
+    yScalePrimary: ScaleLinear<number, number>,
+    yScaleSecondary: ScaleLinear<number, number> | undefined,
     containerHeight: number,
     xElement: SVGElement,
   ): JSX.Element => {
     const singleGroup: JSX.Element[] = [];
     const barLabelsForGroup: JSX.Element[] = [];
 
-    const yBarScale = d3ScaleLinear()
-      .domain([0, yMax])
-      .range([0, containerHeight! - _margins.bottom! - _margins.top!]);
-
     const tempDataSet = Object.keys(datasetForBars[0]).splice(0, keys.length);
     tempDataSet.forEach((datasetKey: string, index: number) => {
       const refIndexNumber = singleSet.indexNum * tempDataSet.length + index;
       const pointData = singleSet[datasetKey];
-      // To align the centers of the generated bandwidth and the calculated one when they differ,
-      // use the following addend.
-      const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - _barWidth) / 2;
-      const yPoint = Math.max(containerHeight! - _margins.bottom! - yBarScale(pointData.data), 0);
-      const startColor = pointData.color ? pointData.color : getNextColor(index, 0);
+      const yBarScale = pointData.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
+      if (pointData) {
+        // To align the centers of the generated bandwidth and the calculated one when they differ,
+        // use the following addend.
+        const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - _barWidth) / 2;
+        const startColor = pointData.color ? pointData.color : getNextColor(index, 0);
 
-      // Not rendering data with 0.
-      pointData.data &&
-        singleGroup.push(
-          <React.Fragment key={`${singleSet.indexNum}-${index}`}>
-            <rect
-              className={classes.opacityChangeOnHover}
-              height={Math.max(yBarScale(pointData.data), 0)}
-              width={_barWidth}
-              x={xPoint}
-              y={yPoint}
-              data-is-focusable={!props.hideTooltip && (_legendHighlighted(pointData.legend) || _noLegendHighlighted())}
-              opacity={_getOpacity(pointData.legend)}
-              ref={(e: SVGRectElement | null) => {
-                _refCallback(e!, pointData.legend, refIndexNumber);
-              }}
-              fill={startColor}
-              rx={0}
-              onMouseOver={onBarHover.bind(null, pointData, singleSet)}
-              onMouseMove={onBarHover.bind(null, pointData, singleSet)}
-              onMouseOut={_onBarLeave}
-              onFocus={onBarFocus.bind(null, pointData, singleSet, refIndexNumber)}
-              onBlur={_onBarLeave}
-              onClick={pointData.onClick}
-              aria-label={getAriaLabel(pointData, singleSet.xAxisPoint)}
-              tabIndex={pointData.legend !== '' ? 0 : undefined}
-              role="img"
-            />
-          </React.Fragment>,
-        );
-      if (
+        const yBaseline = yBarScale(Y_ORIGIN);
+        let yPositiveStart = yBaseline;
+        let yNegativeStart = yBaseline;
+        let yPoint = Y_ORIGIN;
+
+        const barGap = (VERTICAL_BAR_GAP / 2) * (index > 0 ? 2 : 0);
+        const height = Math.max(yBarScale(Y_ORIGIN) - yBarScale(Math.abs(pointData.data)), MIN_BAR_HEIGHT);
+        if (pointData.data >= Y_ORIGIN) {
+          yPositiveStart -= height + barGap;
+          yPoint = yPositiveStart;
+        } else {
+          yPoint = yNegativeStart + barGap;
+          yNegativeStart = yPoint + height;
+        }
+        // Not rendering data with 0.
         pointData.data &&
-        !props.hideLabels &&
-        _barWidth >= 16 &&
-        (_legendHighlighted(pointData.legend) || _noLegendHighlighted())
-      ) {
-        barLabelsForGroup.push(
-          <text
-            key={`${singleSet.indexNum}-${index}`}
-            x={xPoint + _barWidth / 2}
-            y={yPoint - 6}
-            textAnchor="middle"
-            className={classes.barLabel}
-            aria-hidden={true}
-          >
-            {formatScientificLimitWidth(pointData.data)}
-          </text>,
-        );
+          singleGroup.push(
+            <React.Fragment key={`${singleSet.indexNum}-${index}`}>
+              <rect
+                className={classes.opacityChangeOnHover}
+                height={height}
+                width={_barWidth}
+                x={xPoint}
+                y={yPoint}
+                opacity={_getOpacity(pointData.legend)}
+                ref={(e: SVGRectElement | null) => {
+                  _refCallback(e!, pointData.legend, refIndexNumber);
+                }}
+                fill={startColor}
+                rx={0}
+                onMouseOver={event => onBarHover(pointData, singleSet, event)}
+                onMouseMove={event => onBarHover(pointData, singleSet, event)}
+                onMouseOut={_onBarLeave}
+                onFocus={event => onBarFocus(event, pointData, singleSet, refIndexNumber)}
+                onBlur={_onBarLeave}
+                onClick={pointData.onClick}
+                aria-label={getAriaLabel(pointData, singleSet.xAxisPoint)}
+                tabIndex={_legendHighlighted(pointData.legend) || _noLegendHighlighted() ? 0 : undefined}
+                role="img"
+              />
+            </React.Fragment>,
+          );
+        if (
+          pointData.data &&
+          !props.hideLabels &&
+          _barWidth >= 16 &&
+          (_legendHighlighted(pointData.legend) || _noLegendHighlighted())
+        ) {
+          barLabelsForGroup.push(
+            <text
+              key={`${singleSet.indexNum}-${index}`}
+              x={xPoint + _barWidth / 2}
+              y={pointData.data >= Y_ORIGIN ? yPositiveStart - 6 : yNegativeStart + 12}
+              textAnchor="middle"
+              className={classes.barLabel}
+              aria-hidden={true}
+            >
+              {typeof props.yAxisTickFormat === 'function'
+                ? props.yAxisTickFormat(pointData.data)
+                : formatScientificLimitWidth(pointData.data)}
+            </text>,
+          );
+        }
       }
     });
     // Used to display tooltip at x axis labels.
@@ -454,9 +524,9 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return (
       <g
@@ -575,10 +645,13 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         let reqWidth = (xAxisLabels.length + (xAxisLabels.length - 1) * groupGapRate) * groupWidth;
         const margin1 = (totalWidth - reqWidth) / 2;
 
-        // Calculate the remaining width after accounting for the space required to render x-axis labels
-        const step = calculateLongestLabelWidth(xAxisLabels) + 20;
-        reqWidth = (xAxisLabels.length - _xAxisInnerPadding) * step;
-        const margin2 = (totalWidth - reqWidth) / 2;
+        let margin2 = Number.POSITIVE_INFINITY;
+        if (!props.hideTickOverlap) {
+          // Calculate the remaining width after accounting for the space required to render x-axis labels
+          const step = calculateLongestLabelWidth(_xAxisLabels) + 20;
+          reqWidth = (_xAxisLabels.length - _xAxisInnerPadding) * step;
+          margin2 = (totalWidth - reqWidth) / 2;
+        }
 
         _domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
@@ -612,9 +685,13 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       chartTitle={_getChartTitle()}
       points={_datasetForBars}
       chartType={ChartTypes.GroupedVerticalBarChart}
+      getDomainNRangeValues={_getDomainNRangeValues}
+      getMinMaxOfYAxis={_getMinMaxOfYAxis}
+      createStringYAxis={createStringYAxis}
       calloutProps={calloutProps}
       legendBars={legends}
       xAxisType={_xAxisType}
+      createYAxis={createNumericYAxis}
       datasetForXAxisDomain={_xAxisLabels}
       tickParams={tickParams}
       tickPadding={props.tickPadding || 5}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(DataGridSelectionCell): should not use `aria-checked` on gridcell",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

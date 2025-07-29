@@ -31,7 +31,10 @@ const useStyles = makeStyles({
     display: 'block',
     overflow: 'visible',
   },
-  legendContainer: { paddingTop: tokens.spacingVerticalL },
+  legendContainer: {
+    paddingTop: tokens.spacingVerticalL,
+    width: '100%',
+  },
 });
 
 /**
@@ -49,6 +52,6 @@ export const useDonutChartStyles = (props: DonutChartProps): DonutChartStyles =>
       baseStyles.legendContainer,
       props.styles?.legendContainer,
     ),
-    chartWrapper: donutClassNames.chartWrapper,
+    chartWrapper: mergeClasses(donutClassNames.chartWrapper, props.styles?.chartWrapper),
   };
 };

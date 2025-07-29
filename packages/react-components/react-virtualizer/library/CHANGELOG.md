@@ -1,8 +1,61 @@
 # Change Log - @fluentui/react-virtualizer
 
-This log was last generated on Wed, 16 Apr 2025 19:42:06 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jul 2025 18:48:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.101)
+
+Mon, 28 Jul 2025 18:48:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.100..@fluentui/react-virtualizer_v9.0.0-alpha.101)
+
+### Changes
+
+- deprecate: react-virtualizer moving to fluentui-contrib ([PR #34899](https://github.com/microsoft/fluentui/pull/34899) by mifraser@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.1.3 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-utilities to v9.23.0 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+
+## [9.0.0-alpha.100](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.100)
+
+Thu, 26 Jun 2025 14:11:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.99..@fluentui/react-virtualizer_v9.0.0-alpha.100)
+
+### Changes
+
+- fix: Ensure virtualizer recalcs on numItems change ([PR #34673](https://github.com/microsoft/fluentui/pull/34673) by mifraser@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.1.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-utilities to v9.22.0 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+
+## [9.0.0-alpha.99](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.99)
+
+Wed, 18 Jun 2025 17:34:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.98..@fluentui/react-virtualizer_v9.0.0-alpha.99)
+
+### Changes
+
+- Bump @fluentui/react-jsx-runtime to v9.1.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-utilities to v9.21.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.24.0 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+
+## [9.0.0-alpha.98](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.98)
+
+Thu, 12 Jun 2025 09:43:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.97..@fluentui/react-virtualizer_v9.0.0-alpha.98)
+
+### Changes
+
+- Bump @fluentui/react-jsx-runtime to v9.1.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-utilities to v9.21.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+
+## [9.0.0-alpha.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.97)
+
+Fri, 06 Jun 2025 13:15:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.96..@fluentui/react-virtualizer_v9.0.0-alpha.97)
+
+### Changes
+
+- Bump @fluentui/react-jsx-runtime to v9.0.55 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-utilities to v9.20.0 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
 
 ## [9.0.0-alpha.96](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.96)
 

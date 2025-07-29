@@ -2,6 +2,1355 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 28 Jul 2025 18:48:16 GMT",
+      "tag": "@fluentui/react-components_v9.68.0",
+      "version": "9.68.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "0fd55307020d8be2399db8b88ab5da9e78202ab1",
+            "comment": "deprecate: react-virtualizer in process of moving to fluentui-contrib"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "1cf477588a8d5fdc41208a7a7f753ba0306caa15",
+            "comment": "fix(react-list): Dont crash in dev mode when navigation mode is changed"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "61c6eafa0a1c30eb4edf4add53dfa97c3099e78e",
+            "comment": "feat(motion): add Fade presence motion component"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: add custom JSX.* types that are compatible with various react major versions"
+          }
+        ],
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "89bbbd09f2a14fc95399c2bf7eb6e3e0abad5846",
+            "comment": "fix callout position issues"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d94634a5272e3ca83a2a17d03a1d33611b9140bb",
+            "comment": "mitigate xss vulnerabilities"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e41c077dc4bab9ad3ea2380a70b30fc4b28bc46c",
+            "comment": "Add Gantt chart in v9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "7005d8f675a3e6a67b06a4135145f5a4cbbbc694",
+            "comment": "funnel chart in v9"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "13e9d5663d32fd91ff71a876bb6c3cbf54e0b39b",
+            "comment": "feat: add event.isDefaultPrevented() to `onKeyDown`"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "5cf70b3c5ef2eec4c253e4e60761e3cdde6436a3",
+            "comment": "fix: adjust circular sizes to Figma spec"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "78d8369d838e43f5b259527cdc24c88da2b57db2",
+            "comment": "revert: adjust accordion header chevron alignment styles #34616"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "0fd55307020d8be2399db8b88ab5da9e78202ab1",
+            "comment": "deprecate: react-virtualizer moving to fluentui-contrib"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Jul 2025 13:49:33 GMT",
+      "tag": "@fluentui/react-components_v9.67.0",
+      "version": "9.67.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "df356bab134ed204a65eb75843ee685227227ca3",
+            "comment": "feat: enable griffel raw styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Jul 2025 13:52:46 GMT",
+      "tag": "@fluentui/react-components_v9.66.8",
+      "version": "9.66.8",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-motion",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          }
+        ],
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6813c36fb6ef92d19b825c28fe7117208c33b443",
+            "comment": "hbc focus ring fix"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "183965115932f82ccc19f5368be4182bfd2e9bc7",
+            "comment": "refactor utilities to reduce monosize of components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "f4286818c03a3de299eae4bda26f19b608adb1a6",
+            "comment": "fix: properly apply overrides in ToolbarRadioButton, ToolbarToggleButton & ToolbarButton"
+          }
+        ],
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "0390c60c88c5ce232c63670e1c9a2ff1b4853cb1",
+            "comment": "refactor(Collapse): make consistent with other motion components"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "57cf606591172a42b4b107c0b91c9ab63aaae176",
+            "comment": "feat(motion): add Slide presence motion component"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "d9e4426535cd4bd4f8069c0acdbd9d5c6f6c4611",
+            "comment": "refactor(motion): apply consistent patterns across Fade and Scale"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Jul 2025 15:59:20 GMT",
+      "tag": "@fluentui/react-components_v9.66.7",
+      "version": "9.66.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "a394dfe8c7e175c9f6df286416326aa0a63aeccb",
+            "comment": "fix: adjust accordion header chevron alignment styles"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "938a069ea4e0c460050e0dc147b9786e144cb6d3",
+            "comment": "fix accessibility bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "1fc2a1ddd89ff3b3bc7665e7b85de3c20c9b5c3e",
+            "comment": "sankey chart callout fix"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a8439274731ec7188bad83c29266733be484f507",
+            "comment": "fix accessibility issues"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "0325b812a82757e4d221d63b652e206fef5b659d",
+            "comment": "fix(react-charts): Fix hook used conditionally inside a function"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "124147f8360ee4e42f75123901d34e3313d1b16f",
+            "comment": "fix(react-menu): Fix disabled styles for secondaryContent and subText"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "d12ce05c64cfca6f27d1710d2434e555492741cf",
+            "comment": "fix: resolve regression with \".hoverDelay\" handling"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "0decca9ac45ed143d649dc407cf975be03e356b2",
+            "comment": "fix: MessageBarActions renders slots with keys"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "85a550eb721145d8ae7966a9c29ecaf5dc999fd3",
+            "comment": "fix: add subtle animation for indeterminate progress bar when reduced motion mode is enabled"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "4bc988d1f2659f3a010ddd19e1c85d0732478068",
+            "comment": "fix: remove useEffect storybook/preview-api and directly trigger 'Open in ...' button rendering"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "0aea3258a8deb968bd8e8f5a4a9c3e8a162b4bc3",
+            "comment": "feat: Add timeout configuration to safezone prop"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "0aea3258a8deb968bd8e8f5a4a9c3e8a162b4bc3",
+            "comment": "feat: SafeZone restarts timeout on mouse move"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "6bc17a001b95f77310778223612ede0fb3869346",
+            "comment": "chore: re-generate api.md after v0 source removal"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jul 2025 10:02:42 GMT",
+      "tag": "@fluentui/react-components_v9.66.6",
+      "version": "9.66.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "9099bb6ad6320b20b674f53ef9f8682937f460bd",
+            "comment": "chore(react-dialog): remove boxShadow on DialogSurfaceMotion"
+          },
+          {
+            "author": "mathis.michel@outlook.de",
+            "package": "@fluentui/react-dialog",
+            "commit": "5c823ef29ffdbc39b15c7e81ac01e4afd147f8a6",
+            "comment": "fix(Dialog): fix mobile viewport issues"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "5067a4850156994fbfc977a3bff5b9f3353078fd",
+            "comment": "feat: integrate useSafeZoneArea()"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "d59c32aa8e7018ab4005499a3c26f71787c76730",
+            "comment": "Revert \"chore(react-portal): support for React 19\""
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9b211e15af007f2dbba27c9b670c5732bc163cc3",
+            "comment": "fix: ensure ResponsiveContainer resizes correctly within grid layout"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "2eee98645c74001a4b8125c75b3951870ef317a2",
+            "comment": "port v8 changes to v9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Jun 2025 13:39:40 GMT",
+      "tag": "@fluentui/react-components_v9.66.5",
+      "version": "9.66.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "1527b08bc5d5b634523688ece52b320a89d83482",
+            "comment": "fix: move action button to be the first button"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a22081a0cf560f862587a4485de93ecebb05f16d",
+            "comment": "fix: stop rAF if no mouse movement happening"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "a6b8ef6bbf59bc8ebc953d43e32f33fdecc1977d",
+            "comment": "fix(focusVisiblePolyfill): Strict mode compat after portal changes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jun 2025 14:11:52 GMT",
+      "tag": "@fluentui/react-components_v9.66.4",
+      "version": "9.66.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "71ddcad113d5d17402abb05c80edf0ebecc6f660",
+            "comment": "fix: Ensure we destroy carousel API on unmount"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "69ed95d1ac5703ca65f5f9dc04938e749235f02b",
+            "comment": "high contrast fix"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d73c885b16b1ee9d615908f3ba79f95b38b55938",
+            "comment": "implement stacked hbc with axis and support for negative x values"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "eb380a1ff0efb181818deb2817a4878f0b9a6da7",
+            "comment": "negative y value support and fix bar overlapping issue"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "f9d8524bd5df6f2b492663ecfa9e57b83f479b6d",
+            "comment": "fix(Scale): update variant parameters to design spec & refactor internally"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "65c65b0e98cbe507263400cfd66112edcb44c273",
+            "comment": "fix: only display actions on hover"
+          }
+        ],
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "3598b2d30d51921401f47301035e29c9b41f6c68",
+            "comment": "Presence enter & exit motions can be used separately with .In & .Out"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "0cd38790be5513dfe292535bf2fcdccf32b8638b",
+            "comment": "feat: add motion to nav components"
+          },
+          {
+            "author": "xboy2008@live.cn",
+            "package": "@fluentui/react-utilities",
+            "commit": "b3e8218f0b635e03c23c1d24fda049a2baa6b872",
+            "comment": "Shorten pollDuration to 100ms in useIFrameFocus"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "0a4dcce4c5f7f5d6f53aa0b3a9b54a303306c12d",
+            "comment": "fix: Ensure virtualizer recalcs on numItems change"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Jun 2025 15:49:46 GMT",
+      "tag": "@fluentui/react-components_v9.66.3",
+      "version": "9.66.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "2e2354bac6eceea41195a8ae40dc4ee654ca2817",
+            "comment": "Add negative y value support in GVBC"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "108833800b70872ee7399de955f4633e164b0f1c",
+            "comment": "add support for negative vsbc"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6ad03ce04b77a80226cff792d4fc5b42e905a73b",
+            "comment": "port v8 changes to v9"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "a00b7d0f205b6178637eddd2e981b5e12efb3df5",
+            "comment": "feat: export usePositioning() & useSafeZoneArea() hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a00b7d0f205b6178637eddd2e981b5e12efb3df5",
+            "comment": "feat: improve handling of different shapes of rectangles in useSafeZoneArea()"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Jun 2025 17:33:57 GMT",
+      "tag": "@fluentui/react-components_v9.66.2",
+      "version": "9.66.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c47fda213ca7f4b7fc81298a59cc19180408dad5",
+            "comment": "chore (react-charts): Remove enzyme dependency for tests"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "342462151232a909b98d049ec70e356b7470780b",
+            "comment": "fix (react-charts): Update traceinfo property structure"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "0e2b75a2b9f3108726359976929d2224e989689c",
+            "comment": "fix(react-charts): Consume y axis tick format for bar labels"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "654d9e63cf2ea8cda5279677b5535c047a5a0de4",
+            "comment": "fix(react-charts): Fix svg tooltip background alignment"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d3507e2bc96148b0f91fd8b26a841d1bdab12a1a",
+            "comment": "port v8 fixes to v9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b252829a5f24ea26b8b0d4f3814857bc28f31c2f",
+            "comment": "Charts made responsive"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "cd6eba709691ea2d8d7d391b1b76c46646a44ef5",
+            "comment": "feat: add support for custom style hooks"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "d4c2e78c80518ca8eccf5a9d95a3d5801d05538c",
+            "comment": "fix: Ensure documentDownListener is removed on unmount"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "89cf76e7bf5e8e47ea506443b3b7fcdeb0571125",
+            "comment": "chore: add Storybook setup"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "cd6eba709691ea2d8d7d391b1b76c46646a44ef5",
+            "comment": "feat: add support for custom style hooks for nav components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Jun 2025 12:32:51 GMT",
+      "tag": "@fluentui/react-components_v9.66.1",
+      "version": "9.66.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "bddec9d2567439f2639fedbd1856bcc910620aa5",
+            "comment": "docs: fix incorrect url path"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "bddec9d2567439f2639fedbd1856bcc910620aa5",
+            "comment": "docs: fix incorrect url path"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "d41da5857f1332ef8d6b24ce3234070b67a20179",
+            "comment": "fix: update logic for triggering updates"
+          },
+          {
+            "author": "nathansokol@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "1a693a71094d5cac094f05ede2af07d0152b7993",
+            "comment": "Allow the skeleton root to be a span in addition to a div"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "00e5beedfa9f906807f3d646034ec2597349b41a",
+            "comment": "chore(react-tag-picker): ensure no toggle behaviour when re-selecting already selected data"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Jun 2025 09:43:29 GMT",
+      "tag": "@fluentui/react-components_v9.66.0",
+      "version": "9.66.0",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "96ebe14eefb14c65b03856f17ffc03e8120cdea7",
+            "comment": "line border and axis title background fix"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "feat: react 18 support for slots api"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jun 2025 22:31:55 GMT",
+      "tag": "@fluentui/react-components_v9.65.0",
+      "version": "9.65.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "emhkimm@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9e67df3b44cb10c2833d1921a00417140ad78da8",
+            "comment": "Fix GaugeChart so it can merge customer provided styles to the chart"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "4524a28299ce317d53ca354f7c0e202e5a491d04",
+            "comment": "fix(react-charts): Move isMonth function to chart-utilities"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "711fcf8ccf6626c026ca610048842b5a0f270cb0",
+            "comment": "fix accessibility bugs"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "aba3aae2ca7ebcd53f1cc84893e440a6acf00fcc",
+            "comment": "docs: removed text from preview stage"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "da0eefbc899cb2fa59b77a82ec390c9522a8bc7b",
+            "comment": "feat: implement useSafeZoneArea() hook"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "9e102f3a40605603472c4055acc53511c851868d",
+            "comment": "fix: selected Tag and InteractionTag styles are visible in high contrast mode"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "9d5f9de4e1811302df0c15c31412856329fe9333",
+            "comment": "feat: add @fluentui/react-nav to suite"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "9d5f9de4e1811302df0c15c31412856329fe9333",
+            "comment": "feat: release stable"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "005e4f11aafd06c797b84b03b427424e740018d9",
+            "comment": "fix: use custom RefAttributes instead of React.RefAttributes"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "005e4f11aafd06c797b84b03b427424e740018d9",
+            "comment": "chore: disable lint error on React.RefAttibute within getIntrinsicElementProps"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Jun 2025 13:15:13 GMT",
+      "tag": "@fluentui/react-components_v9.64.1",
+      "version": "9.64.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "26b88c5905e75041d030617754f372873e086b20",
+            "comment": "fix: aria-label for year selection"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "0ac3d6be1e465b781c601b22b6a20358bbbcb4a9",
+            "comment": "feat(react-charts): Improve formatting and numeric and date labels"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "3c10831c5273837162504c1f887b031c1039472a",
+            "comment": "fix: Change Nav icon display animations to opacity animations"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "44cad034475803533a2b659ae02adab213c8d4e7",
+            "comment": "fix: focus borders being cut-off"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "6cd4bc4d68e89744e5ff3561fad61c6ad27b191b",
+            "comment": "fix: adjust focus outline offset"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "e315242df9e1bde691323a65edcf3e8eb38bf57b",
+            "comment": "fix(DataGridSelectionCell): should not use `aria-checked` on gridcell"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "bf416eb40d5a9f1cba50cb4edb77a263d4378af7",
+            "comment": "fix: Single select should not render header selection indicator"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "09c3aaf09b750218f3a6958184483377813d0af7",
+            "comment": "Bumping Tabster to 8.5.5"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "3d9448b4bb08be3aafc786bb44edf86d93168756",
+            "comment": "chore: re-introduce active state style to TreeItemLayout"
+          }
+        ],
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "dd9736c6a590dbbf4cae2619e0dd396e019036a5",
+            "comment": "fix: react 18 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "dd9736c6a590dbbf4cae2619e0dd396e019036a5",
+            "comment": "fix: react 18 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "dd9736c6a590dbbf4cae2619e0dd396e019036a5",
+            "comment": "fix: react 18 type issues"
+          }
+        ],
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "82db061493527440f473c6c6480305f8afe293be",
+            "comment": "feat: add custom RefAttributes interface which is used within ForwardRefComponent to mitigate breaking changes shipped as patch release in @types/react@18.2.61"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 May 2025 18:49:15 GMT",
       "tag": "@fluentui/react-components_v9.64.0",
       "version": "9.64.0",

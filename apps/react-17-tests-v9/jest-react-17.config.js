@@ -21,6 +21,18 @@ const config = {
   },
   displayName: 'react-17-tests-v9-integration',
   roots: createRoots(),
+  testPathIgnorePatterns: [
+    // default jest config
+    '/node_modules/',
+
+    // ignore tests that use React 18 APIs not present in React 17
+
+    /**  {@link file://./../../packages/react-components/react-provider/library/src/components/FluentProvider/FluentProvider-hydrate.test.tsx} */
+    'components/FluentProvider/FluentProvider-hydrate.test.tsx',
+  ],
+  // Keeps Jest from using too much memory as GC gets invokes more often, makes tests slower
+  // https://stackoverflow.com/a/75857711
+  workerIdleMemoryLimit: '1024MB',
 };
 
 module.exports = config;
@@ -31,7 +43,11 @@ module.exports = config;
  */
 function createRoots() {
   const rootDir = path.resolve(__dirname, '../../packages/react-components');
-  return findValidPackagePaths(rootDir);
+  const roots = findValidPackagePaths(rootDir);
+
+  console.info(`Creating Jest Testing roots: ${roots.join('\n')}`);
+
+  return roots;
 
   /**
    * Recursively finds valid package paths that don't have excluded tags
@@ -54,8 +70,8 @@ function createRoots() {
         validPaths = validPaths.concat(findValidPackagePaths(fullPath));
       }
     }
-
-    return validPaths;
+    // Sort for consistent ordering
+    return validPaths.sort();
   }
 
   /**

@@ -18,6 +18,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -99,22 +100,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -129,22 +117,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
@@ -310,6 +285,7 @@ Object {
       >
         <svg
           aria-label="Heat map chart with 4 data points. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -391,22 +367,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p1"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  p1
-                </tspan>
+                p1
               </text>
             </g>
             <g
@@ -421,22 +384,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  p2
-                </tspan>
+                p2
               </text>
             </g>
           </g>
@@ -661,6 +611,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -742,22 +693,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -772,22 +710,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
@@ -951,6 +876,7 @@ Object {
       >
         <svg
           aria-label="Heat map chart with 4 data points. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -1032,22 +958,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p1"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  p1
-                </tspan>
+                p1
               </text>
             </g>
             <g
@@ -1062,22 +975,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  p2
-                </tspan>
+                p2
               </text>
             </g>
           </g>
@@ -1300,6 +1200,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="50"
             style="display: block;"
             width="650"
@@ -1381,22 +1282,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -1411,22 +1299,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
@@ -1537,6 +1412,7 @@ Object {
       >
         <svg
           aria-label="Heat map chart with 4 data points. "
+          class="fui-cart__chart"
           height="50"
           style="display: block;"
           width="650"
@@ -1618,22 +1494,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p1"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  p1
-                </tspan>
+                p1
               </text>
             </g>
             <g
@@ -1648,22 +1511,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  p2
-                </tspan>
+                p2
               </text>
             </g>
           </g>
@@ -1833,6 +1683,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -1914,22 +1765,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -1944,22 +1782,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
@@ -2125,6 +1950,7 @@ Object {
       >
         <svg
           aria-label="Heat map chart with 4 data points. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -2206,22 +2032,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p1"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  p1
-                </tspan>
+                p1
               </text>
             </g>
             <g
@@ -2236,22 +2049,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  p2
-                </tspan>
+                p2
               </text>
             </g>
           </g>
@@ -2476,6 +2276,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -2557,22 +2358,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="/%d"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    /%d
-                  </tspan>
+                  /%d
                 </text>
               </g>
               <g
@@ -2587,22 +2375,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="/%d"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    /%d
-                  </tspan>
+                  /%d
                 </text>
               </g>
             </g>
@@ -2768,6 +2543,7 @@ Object {
       >
         <svg
           aria-label="Heat map chart with 4 data points. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -2849,22 +2625,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="/%d"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  /%d
-                </tspan>
+                /%d
               </text>
             </g>
             <g
@@ -2879,22 +2642,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="/%d"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  /%d
-                </tspan>
+                /%d
               </text>
             </g>
           </g>
@@ -3109,7 +2859,7 @@ Object {
   >
     <div>
       <div
-        class="fui-FluentProvider fui-FluentProvider34"
+        class="fui-FluentProvider fui-FluentProviderr1h"
         dir="ltr"
       >
         <div
@@ -3123,6 +2873,7 @@ Object {
           >
             <svg
               aria-label="Heat map chart with 4 data points. "
+              class="fui-cart__chart"
               height="300"
               style="display: block;"
               width="650"
@@ -3204,22 +2955,9 @@ Object {
                   <text
                     dy="0.32em"
                     fill="currentColor"
-                    text-align="start"
                     x="-10"
                   >
-                    <tspan
-                      data-="p1"
-                      dy="0.32em"
-                      id="BaseSpan-0"
-                      x="-10"
-                    />
-                    <tspan
-                      dx="1em"
-                      id="LessLength-0"
-                      x="-10"
-                    >
-                      p1
-                    </tspan>
+                    p1
                   </text>
                 </g>
                 <g
@@ -3234,22 +2972,9 @@ Object {
                   <text
                     dy="0.32em"
                     fill="currentColor"
-                    text-align="start"
                     x="-10"
                   >
-                    <tspan
-                      data-="p2"
-                      dy="0.32em"
-                      id="BaseSpan-1"
-                      x="-10"
-                    />
-                    <tspan
-                      dx="1em"
-                      id="LessLength-1"
-                      x="-10"
-                    >
-                      p2
-                    </tspan>
+                    p2
                   </text>
                 </g>
               </g>
@@ -3406,7 +3131,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-FluentProvider fui-FluentProvider34"
+      class="fui-FluentProvider fui-FluentProviderr1h"
       dir="ltr"
     >
       <div
@@ -3420,6 +3145,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -3501,22 +3227,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -3531,22 +3244,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
@@ -3775,6 +3475,7 @@ Object {
           >
             <svg
               aria-label="Heat map chart with 4 data points. "
+              class="fui-cart__chart"
               height="300"
               style="display: block;"
               width="650"
@@ -3856,22 +3557,9 @@ Object {
                   <text
                     dy="0.32em"
                     fill="currentColor"
-                    text-align="start"
                     x="-10"
                   >
-                    <tspan
-                      data-="p1"
-                      dy="0.32em"
-                      id="BaseSpan-0"
-                      x="-10"
-                    />
-                    <tspan
-                      dx="1em"
-                      id="LessLength-0"
-                      x="-10"
-                    >
-                      p1
-                    </tspan>
+                    p1
                   </text>
                 </g>
                 <g
@@ -3886,22 +3574,9 @@ Object {
                   <text
                     dy="0.32em"
                     fill="currentColor"
-                    text-align="start"
                     x="-10"
                   >
-                    <tspan
-                      data-="p2"
-                      dy="0.32em"
-                      id="BaseSpan-1"
-                      x="-10"
-                    />
-                    <tspan
-                      dx="1em"
-                      id="LessLength-1"
-                      x="-10"
-                    >
-                      p2
-                    </tspan>
+                    p2
                   </text>
                 </g>
               </g>
@@ -4071,6 +3746,7 @@ Object {
         >
           <svg
             aria-label="Heat map chart with 4 data points. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -4152,22 +3828,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -4182,22 +3845,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
@@ -4418,6 +4068,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
     >
       <svg
         aria-label="Heat map chart with 4 data points. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -4499,22 +4150,9 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
-              <tspan
-                data-="10"
-                dy="0.32em"
-                id="BaseSpan-0"
-                x="-10"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-0"
-                x="-10"
-              >
-                10
-              </tspan>
+              10
             </text>
           </g>
           <g
@@ -4529,22 +4167,9 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
-              <tspan
-                data-="20"
-                dy="0.32em"
-                id="BaseSpan-1"
-                x="-10"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-1"
-                x="-10"
-              >
-                20
-              </tspan>
+              20
             </text>
           </g>
         </g>
@@ -4702,6 +4327,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
     >
       <svg
         aria-label="Heat map chart with 4 data points. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -4783,22 +4409,9 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
-              <tspan
-                data-="yPoint p1"
-                dy="0.32em"
-                id="BaseSpan-0"
-                x="-10"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-0"
-                x="-10"
-              >
-                yPoint p1
-              </tspan>
+              yPoint p1
             </text>
           </g>
           <g
@@ -4813,22 +4426,9 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
-              <tspan
-                data-="yPoint p2"
-                dy="0.32em"
-                id="BaseSpan-1"
-                x="-10"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-1"
-                x="-10"
-              >
-                yPoint p2
-              </tspan>
+              yPoint p2
             </text>
           </g>
         </g>

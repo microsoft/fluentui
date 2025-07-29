@@ -116,14 +116,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { data, hideLegend = false } = this.props;
     const points = this._addDefaultColors(data?.chartData);
 
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
-      width: this.state._width!,
-      height: this.state._height!,
       color: this.state.color!,
       className: this.props.className!,
     });
@@ -144,37 +143,51 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
         onMouseLeave={this._handleChartMouseLeave}
       >
-        <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.all}>
-          <div>
-            <svg
-              className={this._classNames.chart}
-              aria-label={data?.chartTitle}
-              ref={(node: SVGElement | null) => this._setViewBox(node)}
-            >
-              <Pie
-                width={this.state._width!}
-                height={this.state._height!}
-                outerRadius={outerRadius}
-                innerRadius={this.props.innerRadius!}
-                data={chartData!}
-                enableGradient={this.props.enableGradient}
-                roundCorners={this.props.roundCorners}
-                onFocusCallback={this._focusCallback}
-                hoverOnCallback={this._hoverCallback}
-                hoverLeaveCallback={this._hoverLeave}
-                uniqText={this._uniqText}
-                onBlurCallback={this._onBlur}
-                activeArc={this._getHighlightedLegend()}
-                focusedArcId={this.state.focusedArcId || ''}
-                href={this.props.href!}
-                calloutId={this._calloutId}
-                valueInsideDonut={this._toLocaleString(valueInsideDonut)}
-                theme={this.props.theme!}
-                showLabelsInPercent={this.props.showLabelsInPercent}
-                hideLabels={this.props.hideLabels}
-              />
-            </svg>
-          </div>
+        {this.props.xAxisAnnotation && (
+          <text
+            className={this._classNames.axisAnnotation}
+            x={this.state._width! / 2}
+            y={this.state._height! - 10}
+            textAnchor="middle"
+          >
+            {this.props.xAxisAnnotation}
+          </text>
+        )}
+        <FocusZone
+          direction={FocusZoneDirection.horizontal}
+          handleTabKey={FocusZoneTabbableElements.all}
+          className={this._classNames.chartWrapper}
+        >
+          <svg
+            className={this._classNames.chart}
+            aria-label={data?.chartTitle}
+            ref={(node: SVGElement | null) => this._setViewBox(node)}
+            width={this.state._width}
+            height={this.state._height}
+          >
+            <Pie
+              width={this.state._width!}
+              height={this.state._height!}
+              outerRadius={outerRadius}
+              innerRadius={this.props.innerRadius!}
+              data={chartData!}
+              enableGradient={this.props.enableGradient}
+              roundCorners={this.props.roundCorners}
+              onFocusCallback={this._focusCallback}
+              hoverOnCallback={this._hoverCallback}
+              hoverLeaveCallback={this._hoverLeave}
+              uniqText={this._uniqText}
+              onBlurCallback={this._onBlur}
+              activeArc={this._getHighlightedLegend()}
+              focusedArcId={this.state.focusedArcId || ''}
+              href={this.props.href!}
+              calloutId={this._calloutId}
+              valueInsideDonut={this._toLocaleString(valueInsideDonut)}
+              theme={this.props.theme!}
+              showLabelsInPercent={this.props.showLabelsInPercent}
+              hideLabels={this.props.hideLabels}
+            />
+          </svg>
         </FocusZone>
         <Callout
           target={this._currentHoverElement}
@@ -265,6 +278,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     node.setAttribute('viewBox', viewbox);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLegends(chartData: IChartDataPoint[]): JSX.Element {
     const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
       const color: string = this.props.enableGradient

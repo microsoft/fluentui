@@ -1,12 +1,23 @@
 import * as React from 'react';
 import { ScatterChartProps } from './ScatterChart.types';
-import { useScatterChartStyles_unstable } from './useScatterChartStyles.styles';
+import { useScatterChartStyles } from './useScatterChartStyles.styles';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { Legend, Legends } from '../Legends/index';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
-import { areArraysEqual, find } from '../../utilities/index';
+import {
+  areArraysEqual,
+  createNumericYAxis,
+  createStringYAxis,
+  domainRangeOfDateForScatterChart,
+  domainRangeOfNumericForScatterChart,
+  domainRangeOfXStringAxis,
+  find,
+  findNumericMinMaxOfY,
+  IDomainNRange,
+  YAxisType,
+} from '../../utilities/index';
 import {
   AccessibilityProps,
   CartesianChart,
@@ -23,7 +34,7 @@ import {
   calloutData,
   ChartTypes,
   XAxisTypes,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
@@ -64,6 +75,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   let xAxisCalloutAccessibilityData: AccessibilityProps = {};
   let _xBandwidth = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
+  const classes = useScatterChartStyles(props);
 
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
@@ -75,18 +87,18 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
-  const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
-  const prevPropsRef = React.useRef<ScatterChartProps | null>(null);
+  const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
+  const prevSelectedLegendsRef = React.useRef<string[] | undefined>(undefined);
 
   React.useEffect(() => {
-    if (prevPropsRef.current) {
-      const prevProps = prevPropsRef.current;
-      if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
-        setSelectedLegends(props.legendProps?.selectedLegends || []);
-      }
+    if (
+      prevSelectedLegendsRef.current &&
+      !areArraysEqual(prevSelectedLegendsRef.current, props.legendProps?.selectedLegends)
+    ) {
+      setSelectedLegends(props.legendProps?.selectedLegends || []);
     }
-    prevPropsRef.current = props;
-  }, [props]);
+    prevSelectedLegendsRef.current = props.legendProps?.selectedLegends;
+  }, [props.legendProps?.selectedLegends]);
 
   React.useImperativeHandle(
     props.componentRef,
@@ -148,6 +160,43 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       setClickPosition({ x: newX, y: newY });
       setPopoverOpen(true);
     }
+  }
+
+  function _getNumericMinMaxOfY(
+    points: LineChartPoints[],
+    yAxisType?: YAxisType,
+  ): { startValue: number; endValue: number } {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType);
+    let yPadding = 0;
+    yPadding = (endValue - startValue) * 0.1;
+
+    return {
+      startValue: startValue - yPadding,
+      endValue: endValue + yPadding,
+    };
+  }
+
+  function _getDomainNRangeValues(
+    points: any,
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfNumericForScatterChart(points, margins, width, isRTL);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForScatterChart(points, margins, width, isRTL, tickValues! as Date[]);
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
   }
 
   function _getMargins(_margins: Margins) {
@@ -323,7 +372,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
               _handleHover(x, y, verticaLineHeight, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData, event)
             }
             onMouseOut={_handleMouseOut}
-            onFocus={() => _handleFocus(seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+            onFocus={event =>
+              _handleFocus(event, seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
+            }
             onBlur={_handleMouseOut}
             {..._getClickHandler(_points[i].data[j].onDataPointClick)}
             opacity={isLegendSelected && !currentPointHidden ? 1 : 0.1}
@@ -331,7 +382,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
             stroke={seriesColor}
             role="img"
             aria-label={_getAriaLabel(i, j)}
-            tabIndex={_points[i].legend !== '' ? 0 : undefined}
+            tabIndex={isLegendSelected ? 0 : undefined}
           />,
         );
       }
@@ -346,7 +397,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         </g>,
       );
     }
-    const classes = useScatterChartStyles_unstable(props);
     // Removing un wanted tooltip div from DOM, when prop not provided.
     if (!props.showXAxisLablesTooltip) {
       try {
@@ -364,21 +414,28 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return series;
   }
 
   function _handleFocus(
+    event: React.FocusEvent<SVGCircleElement, Element>,
     seriesId: string,
     x: number | Date | string,
-
     xAxisCalloutData: string | undefined,
     circleId: string,
     xAxisCalloutAccessibilityData?: AccessibilityProps,
   ) {
+    let cx = 0;
+    let cy = 0;
+
+    const targetRect = (event.target as SVGCircleElement).getBoundingClientRect();
+    cx = targetRect.left + targetRect.width / 2;
+    cy = targetRect.top + targetRect.height / 2;
+    updatePosition(cx, cy);
     _uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
     const xVal = x instanceof Date ? x.getTime() : x;
@@ -477,7 +534,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
    * This function checks if none of the legends is selected or hovered.*/
 
   function _noLegendHighlighted(): boolean {
-    return selectedLegends.length === 0;
+    return _getHighlightedLegend().length === 0;
   }
 
   function _getHighlightedLegend(): string[] {
@@ -558,6 +615,10 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       getmargins={_getMargins}
       getGraphData={_initializeScatterChartData}
       xAxisType={_xAxisType}
+      getMinMaxOfYAxis={_getNumericMinMaxOfY}
+      getDomainNRangeValues={_getDomainNRangeValues}
+      createYAxis={createNumericYAxis}
+      createStringYAxis={createStringYAxis}
       onChartMouseLeave={_handleChartMouseLeave}
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}
@@ -566,7 +627,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       // eslint-disable-next-line react/no-children-prop
       children={(props: ChildProps) => {
         _xAxisScale = props.xScale!;
-        _yAxisScale = props.yScale!;
+        _yAxisScale = props.yScalePrimary!;
         return (
           <>
             <g>

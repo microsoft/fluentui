@@ -1,5 +1,3 @@
-jest.mock('react-dom');
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { resetIds } from '../../Utilities';

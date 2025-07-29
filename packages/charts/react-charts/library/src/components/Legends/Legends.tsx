@@ -8,6 +8,7 @@ import { Overflow, OverflowItem } from '@fluentui/react-overflow';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { OverflowMenu } from './OverflowMenu';
 import { tokens } from '@fluentui/react-theme';
+import { mergeClasses } from '@griffel/react';
 
 // This is an internal interface used for rendering the legends with unique key
 interface LegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -22,6 +23,7 @@ interface LegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   opacity?: number;
   stripePattern?: boolean;
   isLineLegendInBarChart?: boolean;
+  legendAnnotation?: () => React.ReactNode;
 }
 
 interface LegendMap {
@@ -121,9 +123,13 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           className={classes.root}
         >
           <div className={classes.resizableArea} style={{ display: 'flex', flexWrap: 'wrap', overflow: 'auto' }}>
-            {dataToRender.map((item, id) => (
-              <div key={id} style={{ flex: '0 1 auto', margin: '4px' }}>
+            {dataToRender.map(item => (
+              <div
+                className={mergeClasses(classes.legendContainer, item.legendAnnotation && classes.annotation)}
+                key={item.key}
+              >
                 {_renderButton(item)}
+                {item.legendAnnotation && <div>{item.legendAnnotation()}</div>}
               </div>
             ))}
           </div>
@@ -157,6 +163,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           isLineLegendInBarChart: legend.isLineLegendInBarChart,
           opacity: legend.opacity,
           key: index,
+          legendAnnotation: legend.legendAnnotation,
         };
       });
       return dataItems;

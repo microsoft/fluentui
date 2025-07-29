@@ -22,6 +22,8 @@ const { Timezone } = require('../../../scripts/constants');
 const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
 
 beforeAll(() => {
   // https://github.com/jsdom/jsdom/issues/3368
@@ -867,6 +869,7 @@ describe('VerticalBarChart - accessibility', () => {
   });
 });
 
+/* eslint-disable @typescript-eslint/no-deprecated */
 describe('VerticalBarChart snapShot testing', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
@@ -931,6 +934,7 @@ describe('VerticalBarChart snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 });
+/* eslint-enable @typescript-eslint/no-deprecated */
 
 describe('VerticalBarChart - basic props', () => {
   afterEach(sharedAfterEach);

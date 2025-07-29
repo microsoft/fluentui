@@ -3,6 +3,9 @@ import { VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 const virtualizerClassName = 'fui-Virtualizer';
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export const virtualizerClassNames: SlotClassNames<VirtualizerSlots> = {
   before: `${virtualizerClassName}__before`,
   beforeContainer: `${virtualizerClassName}__beforeContainer`,
@@ -28,6 +31,7 @@ const useStyles = makeStyles({
 
 /**
  * Apply styling to the Virtualizer states
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export const useVirtualizerStyles_unstable = (state: VirtualizerState): VirtualizerState => {
   'use no memo';

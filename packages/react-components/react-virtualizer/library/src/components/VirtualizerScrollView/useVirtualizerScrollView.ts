@@ -7,6 +7,9 @@ import { scrollToItemStatic } from '../../Utilities';
 import type { VirtualizerDataRef } from '../Virtualizer/Virtualizer.types';
 import { useStaticVirtualizerPagination } from '../../hooks/useStaticPagination';
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps): VirtualizerScrollViewState {
   const { imperativeRef, itemSize, numItems, axis = 'vertical', reversed, enablePagination = false } = props;
   const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
@@ -68,6 +71,7 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
   return {
     ...virtualizerState,
     components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...virtualizerState.components,
       container: 'div',
     },

@@ -30,6 +30,7 @@ export const useOnMenuMouseEnter = (options: UseOnClickOrScrollOutsideOptions) =
     // someMenu is a parent -> will always not be contained because no vParent
     // someMenu is the current popover -> it will contain itself
     const isOutsidePopover = !elementContains(popoverRef.current ?? null, someMenuPopover);
+
     if (isOutsidePopover && !disabled) {
       callback(ev);
     }

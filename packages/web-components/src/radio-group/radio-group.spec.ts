@@ -190,6 +190,21 @@ test.describe('RadioGroup', () => {
     await expect(radios.nth(0)).toHaveAttribute('tabindex', '0');
   });
 
+  test('should set tabindex of 0 to a child radio that’s initially checked', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const radios = element.locator('fluent-radio');
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <fluent-radio value="foo"></fluent-radio>
+        <fluent-radio value="bar" checked></fluent-radio>
+        <fluent-radio value="baz"></fluent-radio>
+      `,
+    });
+
+    await expect(radios.nth(1)).toHaveAttribute('tabindex', '0');
+  });
+
   test('should check the first radio with a matching `value`', async ({ fastPage }) => {
     const { element } = fastPage;
     const radios = element.locator('fluent-radio');

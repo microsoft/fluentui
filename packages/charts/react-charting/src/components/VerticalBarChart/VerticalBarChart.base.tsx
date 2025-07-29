@@ -54,6 +54,10 @@ import {
   getNextGradient,
   areArraysEqual,
   calculateLongestLabelWidth,
+  sortAxisCategories,
+  calcTotalWidth,
+  calcBandwidth,
+  calcRequiredWidth,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { ILegendContainer } from '../Legends/index';
@@ -89,6 +93,7 @@ export class VerticalBarChartBase
   public static defaultProps: Partial<IVerticalBarChartProps> = {
     maxBarWidth: 24,
     useUTC: true,
+    xAxisCategoryOrder: 'default',
   };
 
   private _points: IVerticalBarChartDataPoint[];
@@ -99,6 +104,7 @@ export class VerticalBarChartBase
   private _calloutId: string;
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _bars: JSX.Element[];
   private _xAxisLabels: string[];
   private _yMax: number;
@@ -137,10 +143,6 @@ export class VerticalBarChartBase
     this._calloutId = getId('callout');
     this._tooltipId = getId('VCTooltipID_');
     this._refArray = [];
-    this._xAxisType =
-      this.props.data! && this.props.data!.length > 0
-        ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
-        : XAxisTypes.StringAxis;
     this._emptyChartId = getId('_VBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
     this._cartesianChartRef = React.createRef();
@@ -155,9 +157,10 @@ export class VerticalBarChartBase
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     this._adjustProps();
-    this._xAxisLabels = this._points.map((point: IVerticalBarChartDataPoint) => point.x as string);
+    this._xAxisLabels = this._getOrderedXAxisLabels();
     this._yMax = Math.max(
       d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
       this.props.yMaxValue || 0,
@@ -166,6 +169,7 @@ export class VerticalBarChartBase
       d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
       this.props.yMinValue || 0,
     );
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -315,6 +319,7 @@ export class VerticalBarChartBase
     const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = this.props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const line: JSX.Element[] = [];
     data &&
       data.forEach((item: IVerticalBarChartDataPoint, index: number) => {
@@ -445,16 +450,23 @@ export class VerticalBarChartBase
   };
 
   private _adjustProps(): void {
+    this._xAxisType =
+      this.props.data! && this.props.data!.length > 0
+        ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
+        : XAxisTypes.StringAxis;
     this._points = this.props.data || [];
     this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, undefined, this.props.mode);
     const { palette } = this.props.theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
     this._isHavingLine = this._checkForLine();
-    this._xAxisInnerPadding = getScalePadding(
-      this.props.xAxisInnerPadding,
-      this.props.xAxisPadding,
-      this.props.mode === 'histogram' ? 0 : this._xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
-    );
+    this._xAxisInnerPadding =
+      this.props.mode === 'histogram'
+        ? 0
+        : getScalePadding(
+            this.props.xAxisInnerPadding,
+            this.props.xAxisPadding,
+            this._xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
+          );
     this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding, this.props.xAxisPadding, 0);
   }
 
@@ -462,8 +474,10 @@ export class VerticalBarChartBase
     this.margins = margins;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderContentForBothLineAndBars = (point: IVerticalBarChartDataPoint): JSX.Element => {
     const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const content: JSX.Element[] = YValueHover.map((item: IYValueHover, index: number) => {
       return (
         <ChartHoverCard
@@ -478,6 +492,7 @@ export class VerticalBarChartBase
     });
     return <>{content}</>;
   };
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderContentForOnlyBars = (props: IVerticalBarChartDataPoint): JSX.Element => {
     const { useSingleColor = false } = this.props;
     return (
@@ -493,6 +508,7 @@ export class VerticalBarChartBase
     );
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderCallout = (props?: IVerticalBarChartDataPoint): JSX.Element | null => {
     return props
       ? this._isHavingLine
@@ -764,6 +780,7 @@ export class VerticalBarChartBase
         : Math.max(Math.abs(yMax - yReferencePoint), Math.abs(yMin - yReferencePoint));
     return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
   }
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
@@ -874,6 +891,7 @@ export class VerticalBarChartBase
     return bars;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
@@ -990,6 +1008,7 @@ export class VerticalBarChartBase
     return bars;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
@@ -1118,6 +1137,7 @@ export class VerticalBarChartBase
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getLegendData = (data: IVerticalBarChartDataPoint[], palette: IPalette): JSX.Element => {
     const { theme, useSingleColor } = this.props;
     const { lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
@@ -1265,7 +1285,9 @@ export class VerticalBarChartBase
         className={this._classNames.barLabel}
         aria-hidden={true}
       >
-        {formatScientificLimitWidth(barValue)}
+        {typeof this.props.yAxisTickFormat === 'function'
+          ? this.props.yAxisTickFormat(barValue)
+          : formatScientificLimitWidth(barValue)}
       </text>
     );
   }
@@ -1284,11 +1306,7 @@ export class VerticalBarChartBase
     const uniqueX = Object.values(mapX);
 
     /** Total width available to render the bars */
-    const totalWidth =
-      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
-    /** Rate at which the space between the bars changes wrt the bar width */
-    const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
-    const numBars = uniqueX.length + (uniqueX.length - 1) * barGapRate;
+    const totalWidth = calcTotalWidth(containerWidth, this.margins, MIN_DOMAIN_MARGIN);
 
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding, this.props.xAxisPadding)) {
@@ -1300,7 +1318,7 @@ export class VerticalBarChartBase
         // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
-        const reqWidth = numBars * this._barWidth;
+        const reqWidth = calcRequiredWidth(this._barWidth, uniqueX.length, this._xAxisInnerPadding);
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
@@ -1308,13 +1326,15 @@ export class VerticalBarChartBase
         }
       } else if (['plotly', 'histogram'].includes(this.props.mode!) && uniqueX.length > 1) {
         // Calculate the remaining width after rendering bars at their maximum allowable width
-        const bandwidth = totalWidth / numBars;
+        const bandwidth = calcBandwidth(totalWidth, uniqueX.length, this._xAxisInnerPadding);
         const barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, bandwidth, this.props.mode);
-        let reqWidth = numBars * barWidth;
+        let reqWidth = calcRequiredWidth(barWidth, uniqueX.length, this._xAxisInnerPadding);
         const margin1 = (totalWidth - reqWidth) / 2;
 
         let margin2 = Number.POSITIVE_INFINITY;
-        if (!this.props.hideTickOverlap) {
+        // This logic may introduce gaps between histogram bars when the barWidth is restricted.
+        // So disable it for histogram mode.
+        if (this.props.mode !== 'histogram') {
           // Calculate the remaining width after accounting for the space required to render x-axis labels
           const step = calculateLongestLabelWidth(uniqueX as string[]) + 20;
           reqWidth = (uniqueX.length - this._xAxisInnerPadding) * step;
@@ -1329,7 +1349,7 @@ export class VerticalBarChartBase
         // This only works if the bin centers are consistent across all legend groups; otherwise,
         // the calculated domainMargin may be too small.
         const barWidth = this.props.maxBarWidth!;
-        const reqWidth = numBars * barWidth;
+        const reqWidth = calcRequiredWidth(barWidth, uniqueX.length, this._xAxisInnerPadding);
         this._domainMargin += Math.max(0, (totalWidth - reqWidth) / 2);
       }
 
@@ -1346,7 +1366,7 @@ export class VerticalBarChartBase
         this.props.maxBarWidth,
         calculateAppropriateBarWidth(
           uniqueX as number[] | Date[],
-          totalWidth - 2 * (this._domainMargin - MIN_DOMAIN_MARGIN),
+          calcTotalWidth(containerWidth, this.margins, this._domainMargin),
           this._xAxisInnerPadding,
         ),
         this.props.mode,
@@ -1373,5 +1393,28 @@ export class VerticalBarChartBase
       (this._isHavingLine ? ' and 1 line' : '') +
       '. '
     );
+  };
+
+  private _getOrderedXAxisLabels = () => {
+    if (this._xAxisType !== XAxisTypes.StringAxis) {
+      return [];
+    }
+
+    return sortAxisCategories(this._mapCategoryToValues(), this.props.xAxisCategoryOrder);
+  };
+
+  private _mapCategoryToValues = () => {
+    const categoryToValues: Record<string, number[]> = {};
+    this._points.forEach(point => {
+      const xValue = point.x as string;
+      if (!categoryToValues[xValue]) {
+        categoryToValues[xValue] = [];
+      }
+      categoryToValues[xValue].push(point.y);
+      if (point.lineData) {
+        categoryToValues[xValue].push(point.lineData.y);
+      }
+    });
+    return categoryToValues;
   };
 }

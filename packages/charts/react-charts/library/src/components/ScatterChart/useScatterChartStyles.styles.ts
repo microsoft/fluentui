@@ -19,6 +19,8 @@ export const scatterChartClassNames: SlotClassNames<ScatterChartStyles> = {
   opacityChangeOnHover: 'fui-line__opacityChangeOnHover',
   shapeStyles: 'fui-line__shapeStyles',
   chartWrapper: 'fui-line__chartWrapper',
+  svgTooltip: '',
+  chart: '',
 };
 
 /**
@@ -41,7 +43,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useScatterChartStyles_unstable = (props: ScatterChartProps): ScatterChartStyles => {
+export const useScatterChartStyles = (props: ScatterChartProps): ScatterChartStyles => {
   const baseStyles = useStyles();
   return {
     tooltip: mergeClasses(scatterChartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),

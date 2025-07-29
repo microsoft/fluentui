@@ -1,8 +1,205 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Wed, 14 May 2025 18:49:16 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jul 2025 18:48:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.10)
+
+Mon, 28 Jul 2025 18:48:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.9..@fluentui/react-charts_v9.1.10)
+
+### Patches
+
+- fix callout position issues ([PR #34868](https://github.com/microsoft/fluentui/pull/34868) by anushgupta@microsoft.com)
+- mitigate xss vulnerabilities ([PR #34920](https://github.com/microsoft/fluentui/pull/34920) by anushgupta@microsoft.com)
+- Add Gantt chart in v9 ([PR #34909](https://github.com/microsoft/fluentui/pull/34909) by anushgupta@microsoft.com)
+- funnel chart in v9 ([PR #34866](https://github.com/microsoft/fluentui/pull/34866) by anushgupta@microsoft.com)
+- Bump @fluentui/react-button to v9.6.1 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.3 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-overflow to v9.5.1 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-popover to v9.12.1 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-tabster to v9.26.1 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-tooltip to v9.8.1 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-utilities to v9.23.0 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+
+## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.9)
+
+Thu, 17 Jul 2025 13:49:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.8..@fluentui/react-charts_v9.1.9)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.6.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-overflow to v9.5.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-popover to v9.12.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-tabster to v9.26.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+- Bump @fluentui/react-tooltip to v9.8.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.8)
+
+Wed, 16 Jul 2025 13:52:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.7..@fluentui/react-charts_v9.1.8)
+
+### Patches
+
+- hbc focus ring fix ([PR #34832](https://github.com/microsoft/fluentui/pull/34832) by anushgupta@microsoft.com)
+- refactor utilities to reduce monosize of components ([PR #34823](https://github.com/microsoft/fluentui/pull/34823) by anushgupta@microsoft.com)
+
+## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.7)
+
+Fri, 11 Jul 2025 15:59:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.6..@fluentui/react-charts_v9.1.7)
+
+### Patches
+
+- fix accessibility bugs ([PR #34785](https://github.com/microsoft/fluentui/pull/34785) by anushgupta@microsoft.com)
+- sankey chart callout fix ([PR #34806](https://github.com/microsoft/fluentui/pull/34806) by anushgupta@microsoft.com)
+- fix accessibility issues ([PR #34798](https://github.com/microsoft/fluentui/pull/34798) by anushgupta@microsoft.com)
+- fix(react-charts): Fix hook used conditionally inside a function ([PR #34787](https://github.com/microsoft/fluentui/pull/34787) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/react-overflow to v9.4.7 ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by beachball)
+- Bump @fluentui/react-popover to v9.11.7 ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.7 ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by beachball)
+
+## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.6)
+
+Fri, 04 Jul 2025 10:02:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.5..@fluentui/react-charts_v9.1.6)
+
+### Patches
+
+- fix: ensure ResponsiveContainer resizes correctly within grid layout ([PR #34728](https://github.com/microsoft/fluentui/pull/34728) by kumarkshitij@microsoft.com)
+- port v8 changes to v9 ([PR #34731](https://github.com/microsoft/fluentui/pull/34731) by anushgupta@microsoft.com)
+- Bump @fluentui/react-overflow to v9.4.6 ([PR #34457](https://github.com/microsoft/fluentui/pull/34457) by beachball)
+- Bump @fluentui/react-popover to v9.11.6 ([PR #34457](https://github.com/microsoft/fluentui/pull/34457) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.6 ([PR #34457](https://github.com/microsoft/fluentui/pull/34457) by beachball)
+
+## [9.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.5)
+
+Fri, 27 Jun 2025 13:39:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.4..@fluentui/react-charts_v9.1.5)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.5.3 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-overflow to v9.4.5 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-popover to v9.11.5 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-tabster to v9.25.3 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.5 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.4)
+
+Thu, 26 Jun 2025 14:11:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.3..@fluentui/react-charts_v9.1.4)
+
+### Patches
+
+- high contrast fix ([PR #34726](https://github.com/microsoft/fluentui/pull/34726) by anushgupta@microsoft.com)
+- implement stacked hbc with axis and support for negative x values ([PR #34699](https://github.com/microsoft/fluentui/pull/34699) by anushgupta@microsoft.com)
+- negative y value support and fix bar overlapping issue ([PR #34717](https://github.com/microsoft/fluentui/pull/34717) by anushgupta@microsoft.com)
+- Bump @fluentui/react-button to v9.5.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-overflow to v9.4.4 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-popover to v9.11.4 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-tabster to v9.25.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.4 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-utilities to v9.22.0 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.3)
+
+Mon, 23 Jun 2025 15:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.2..@fluentui/react-charts_v9.1.3)
+
+### Patches
+
+- Add negative y value support in GVBC ([PR #34687](https://github.com/microsoft/fluentui/pull/34687) by anushgupta@microsoft.com)
+- add support for negative vsbc ([PR #34668](https://github.com/microsoft/fluentui/pull/34668) by anushgupta@microsoft.com)
+- port v8 changes to v9 ([PR #34665](https://github.com/microsoft/fluentui/pull/34665) by anushgupta@microsoft.com)
+- Bump @fluentui/react-overflow to v9.4.3 ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by beachball)
+- Bump @fluentui/react-popover to v9.11.3 ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.3 ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by beachball)
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.2)
+
+Wed, 18 Jun 2025 17:33:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.1..@fluentui/react-charts_v9.1.2)
+
+### Patches
+
+- chore (react-charts): Remove enzyme dependency for tests ([PR #34595](https://github.com/microsoft/fluentui/pull/34595) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix (react-charts): Update traceinfo property structure ([PR #34652](https://github.com/microsoft/fluentui/pull/34652) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(react-charts): Consume y axis tick format for bar labels ([PR #34653](https://github.com/microsoft/fluentui/pull/34653) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(react-charts): Fix svg tooltip background alignment ([PR #34663](https://github.com/microsoft/fluentui/pull/34663) by 98592573+AtishayMsft@users.noreply.github.com)
+- port v8 fixes to v9 ([PR #34670](https://github.com/microsoft/fluentui/pull/34670) by anushgupta@microsoft.com)
+- Charts made responsive ([PR #34641](https://github.com/microsoft/fluentui/pull/34641) by anushgupta@microsoft.com)
+- Bump @fluentui/react-button to v9.5.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-overflow to v9.4.2 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-popover to v9.11.2 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.24.0 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-tabster to v9.25.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.2 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-utilities to v9.21.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.1)
+
+Fri, 13 Jun 2025 12:32:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.0..@fluentui/react-charts_v9.1.1)
+
+### Patches
+
+- Bump @fluentui/react-overflow to v9.4.1 ([PR #34639](https://github.com/microsoft/fluentui/pull/34639) by beachball)
+- Bump @fluentui/react-popover to v9.11.1 ([PR #34639](https://github.com/microsoft/fluentui/pull/34639) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.1 ([PR #34639](https://github.com/microsoft/fluentui/pull/34639) by beachball)
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.0)
+
+Thu, 12 Jun 2025 09:43:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.0.7..@fluentui/react-charts_v9.1.0)
+
+### Minor changes
+
+- Bump @fluentui/react-button to v9.5.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-overflow to v9.4.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-popover to v9.11.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-tabster to v9.25.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-utilities to v9.21.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+
+### Patches
+
+- line border and axis title background fix ([PR #34621](https://github.com/microsoft/fluentui/pull/34621) by anushgupta@microsoft.com)
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.0.7)
+
+Wed, 11 Jun 2025 22:31:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.0.6..@fluentui/react-charts_v9.0.7)
+
+### Patches
+
+- Fix GaugeChart so it can merge customer provided styles to the chart ([PR #34604](https://github.com/microsoft/fluentui/pull/34604) by emhkimm@gmail.com)
+- fix(react-charts): Move isMonth function to chart-utilities ([PR #34626](https://github.com/microsoft/fluentui/pull/34626) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix accessibility bugs ([PR #34609](https://github.com/microsoft/fluentui/pull/34609) by anushgupta@microsoft.com)
+- Bump @fluentui/react-overflow to v9.3.9 ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by beachball)
+- Bump @fluentui/react-popover to v9.10.9 ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by beachball)
+- Bump @fluentui/react-tooltip to v9.6.9 ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by beachball)
+
+## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.0.6)
+
+Fri, 06 Jun 2025 13:15:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.0.5..@fluentui/react-charts_v9.0.6)
+
+### Patches
+
+- feat(react-charts): Improve formatting and numeric and date labels ([PR #34562](https://github.com/microsoft/fluentui/pull/34562) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/react-button to v9.4.8 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.55 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-overflow to v9.3.8 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-popover to v9.10.8 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-tabster to v9.24.8 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-tooltip to v9.6.8 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-utilities to v9.20.0 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
 
 ## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.0.5)
 

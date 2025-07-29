@@ -1,8 +1,83 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Wed, 14 May 2025 18:49:19 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jul 2025 18:48:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.22.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.22.1)
+
+Mon, 28 Jul 2025 18:48:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.22.0..@fluentui/react-provider_v9.22.1)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.26.1 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-utilities to v9.23.0 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.3 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+
+## [9.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.22.0)
+
+Thu, 17 Jul 2025 13:49:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.21.3..@fluentui/react-provider_v9.22.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+- Bump @fluentui/react-tabster to v9.26.0 ([PR #34862](https://github.com/microsoft/fluentui/pull/34862) by beachball)
+
+## [9.21.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.21.3)
+
+Fri, 27 Jun 2025 13:39:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.21.2..@fluentui/react-provider_v9.21.3)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.25.3 ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by beachball)
+
+## [9.21.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.21.2)
+
+Thu, 26 Jun 2025 14:11:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.21.1..@fluentui/react-provider_v9.21.2)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.25.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-utilities to v9.22.0 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.2 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+
+## [9.21.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.21.1)
+
+Wed, 18 Jun 2025 17:34:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.21.0..@fluentui/react-provider_v9.21.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.24.0 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-tabster to v9.25.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-utilities to v9.21.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.1 ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by beachball)
+
+## [9.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.21.0)
+
+Thu, 12 Jun 2025 09:43:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.20.8..@fluentui/react-provider_v9.21.0)
+
+### Minor changes
+
+- Bump @fluentui/react-tabster to v9.25.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-utilities to v9.21.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+
+## [9.20.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.20.8)
+
+Fri, 06 Jun 2025 13:15:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.20.7..@fluentui/react-provider_v9.20.8)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.24.8 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-utilities to v9.20.0 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.55 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
 
 ## [9.20.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.20.7)
 

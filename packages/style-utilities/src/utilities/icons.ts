@@ -5,7 +5,10 @@ import type { IRawStyle, IFontFace } from '@fluentui/merge-styles';
 export interface IIconSubset {
   fontFace?: IFontFace;
   icons: {
-    [key: string]: string | JSX.Element;
+    [key: string]:
+      | string
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      | JSX.Element;
   };
 
   style?: IRawStyle;

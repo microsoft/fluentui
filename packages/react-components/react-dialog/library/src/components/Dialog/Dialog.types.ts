@@ -99,6 +99,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * Can contain two children including `DialogTrigger` and `DialogSurface`.
    * Alternatively can only contain `DialogSurface` if using trigger outside dialog, or controlling state.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   children: [JSX.Element, JSX.Element] | JSX.Element;
   /**
    * Enables standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
