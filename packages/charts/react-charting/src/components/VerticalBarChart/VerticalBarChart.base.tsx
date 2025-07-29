@@ -285,7 +285,7 @@ export class VerticalBarChartBase
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
+      domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!, this.props.xAxisScale);
     } else if (xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
         points,

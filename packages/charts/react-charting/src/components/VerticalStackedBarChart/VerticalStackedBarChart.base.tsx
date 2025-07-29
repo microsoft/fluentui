@@ -352,7 +352,7 @@ export class VerticalStackedBarChartBase
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
+      domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!, this.props.xAxisScale);
     } else if (xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
         points,

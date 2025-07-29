@@ -772,8 +772,7 @@ describe('mapFluentChart UTs', () => {
       layout: { xaxis: { type: 'log' } },
     };
     const result = mapFluentChart(input);
-    expect(result.isValid).toBe(false);
-    expect(result.errorMessage).toBe('Log axis type is not supported');
+    expect(result.isValid).toBe(true);
   });
 
   test('composite chart with multiple types', () => {

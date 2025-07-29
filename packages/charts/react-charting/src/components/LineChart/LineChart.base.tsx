@@ -1913,7 +1913,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._setXMinMaxValues(points);
 
     if (this._hasMarkersMode) {
-      this._xPadding = (this._xMax - this._xMin) * 0.1;
+      this._xPadding = this.props.xAxisScale === 'log' ? 0 : (this._xMax - this._xMin) * 0.1;
     }
     const rStartValue = margins.left!;
     const rEndValue = width - margins.right!;
@@ -1949,9 +1949,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _setXMinMaxValues = (points: ILineChartPoints[]) => {
     const getX = (item: ILineChartDataPoint) => (this._isXAxisDateType ? (item.x as Date) : (item.x as number));
+    const filterPoints = (item: ILineChartDataPoint) =>
+      this._isXAxisDateType || this.props.xAxisScale !== 'log' || (item.x as number) > 0;
 
-    const minVal = d3Min(points, (point: ILineChartPoints) => d3Min(point.data as ILineChartDataPoint[], getX));
-    const maxVal = d3Max(points, (point: ILineChartPoints) => d3Max(point.data as ILineChartDataPoint[], getX));
+    const minVal = d3Min(points, (point: ILineChartPoints) =>
+      d3Min(point.data.filter(filterPoints) as ILineChartDataPoint[], getX),
+    );
+    const maxVal = d3Max(points, (point: ILineChartPoints) =>
+      d3Max(point.data.filter(filterPoints) as ILineChartDataPoint[], getX),
+    );
 
     this._xMin = this._isXAxisDateType ? (minVal as Date).getTime() : (minVal as number);
     this._xMax = this._isXAxisDateType ? (maxVal as Date).getTime() : (maxVal as number);

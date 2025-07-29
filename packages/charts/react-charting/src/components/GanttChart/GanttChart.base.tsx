@@ -186,7 +186,13 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     ): IDomainNRange => {
       const xValues: (Date | number)[] = [];
       points.forEach(point => {
-        xValues.push(point.x.start, point.x.end);
+        if (
+          xAxisType !== XAxisTypes.NumericAxis ||
+          props.xAxisScale !== 'log' ||
+          Math.min(point.x.start as number, point.x.end as number) > 0
+        ) {
+          xValues.push(point.x.start, point.x.end);
+        }
       });
 
       const xMin = d3Min(xValues) || 0;

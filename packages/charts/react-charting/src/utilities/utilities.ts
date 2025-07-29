@@ -243,7 +243,7 @@ export function createNumericXAxis(
     hideTickOverlap,
     calcMaxLabelWidth,
   } = xAxisParams;
-  const xAxisScale = (scale === 'log' ? d3ScaleLog() : d3ScaleLinear())
+  const xAxisScale = createNumericScale(scale)
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   showRoundOffXTickValues && xAxisScale.nice();
@@ -655,7 +655,7 @@ export function createYAxisForHorizontalBarChartWithAxis(
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = yMinMaxValues.startValue < yMinValue ? Math.min(0, yMinMaxValues.startValue) : yMinValue!;
-  const yAxisScale = (scale === 'log' ? d3ScaleLog() : d3ScaleLinear())
+  const yAxisScale = createNumericScale(scale)
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
@@ -700,7 +700,7 @@ export function createNumericYAxis(
     ? 0
     : yMinValue!;
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
-  const yAxisScale = (scale === 'log' ? d3ScaleLog() : d3ScaleLinear())
+  const yAxisScale = createNumericScale(scale)
     .domain([supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis =
@@ -1163,14 +1163,16 @@ export function domainRangeOfNumericForAreaChart(
   margins: IMargins,
   width: number,
   isRTL: boolean,
+  scale?: AxisScale,
 ): IDomainNRange {
   const isScatterPolar = isScatterPolarSeries(points);
+  const filterPoints = (item: ILineChartDataPoint) => scale !== 'log' || (item.x as number) > 0;
   const xMin = d3Min(points, (point: ILineChartPoints) => {
-    return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number)!;
+    return d3Min(point.data.filter(filterPoints), (item: ILineChartDataPoint) => item.x as number)!;
   })!;
 
   const xMax = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data, (item: ILineChartDataPoint) => {
+    return d3Max(point.data.filter(filterPoints), (item: ILineChartDataPoint) => {
       return item.x as number;
     });
   })!;
@@ -1216,9 +1218,11 @@ export function computeLongestBars(
 ): {
   longestPositiveBar: number;
   longestNegativeBar: number;
+  shortestPositiveBar: number;
 } {
   let longestPositiveBar = 0;
   let longestNegativeBar = 0;
+  let shortestPositiveBar = Number.MAX_VALUE;
 
   stackedChartData.forEach((group: IHorizontalBarChartWithAxisDataPoint[]) => {
     const positiveBarTotal = group.reduce(
@@ -1233,9 +1237,10 @@ export function computeLongestBars(
 
     longestPositiveBar = Math.max(longestPositiveBar, positiveBarTotal);
     longestNegativeBar = Math.min(longestNegativeBar, negativeBarTotal);
+    shortestPositiveBar = Math.min(shortestPositiveBar, positiveBarTotal);
   });
 
-  return { longestPositiveBar, longestNegativeBar };
+  return { longestPositiveBar, longestNegativeBar, shortestPositiveBar };
 }
 
 /**
@@ -1255,10 +1260,14 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   isRTL: boolean,
   shiftX: number,
   X_ORIGIN: number,
+  scale?: AxisScale,
 ): IDomainNRange {
-  const longestBars = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN);
-  const xMax = longestBars.longestPositiveBar;
-  const xMin = longestBars.longestNegativeBar;
+  const { longestPositiveBar, longestNegativeBar, shortestPositiveBar } = computeLongestBars(
+    groupChartDataByYValue(points),
+    X_ORIGIN,
+  );
+  const xMax = longestPositiveBar;
+  const xMin = scale === 'log' ? shortestPositiveBar : longestNegativeBar;
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 
@@ -1302,9 +1311,11 @@ export function domainRangeOfVSBCNumeric(
   width: number,
   isRTL: boolean,
   barWidth: number,
+  scale?: AxisScale,
 ): IDomainNRange {
-  const xMin = d3Min(points, (point: IDataPoint) => point.x as number)!;
-  const xMax = d3Max(points, (point: IDataPoint) => point.x as number)!;
+  const filterPoints = (point: IDataPoint) => scale !== 'log' || (point.x as number) > 0;
+  const xMin = d3Min(points.filter(filterPoints), (point: IDataPoint) => point.x as number)!;
+  const xMax = d3Max(points.filter(filterPoints), (point: IDataPoint) => point.x as number)!;
   const rMax = margins.left!;
   const rMin = width - margins.right!;
   return isRTL
@@ -1383,9 +1394,11 @@ export function domainRageOfVerticalNumeric(
   containerWidth: number,
   isRTL: boolean,
   barWidth: number,
+  scale?: AxisScale,
 ): IDomainNRange {
-  const xMax = d3Max(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
-  const xMin = d3Min(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
+  const filterPoints = (point: IVerticalBarChartDataPoint) => scale !== 'log' || (point.x as number) > 0;
+  const xMax = d3Max(points.filter(filterPoints), (point: IVerticalBarChartDataPoint) => point.x as number)!;
+  const xMin = d3Min(points.filter(filterPoints), (point: IVerticalBarChartDataPoint) => point.x as number)!;
   const rMin = margins.left!;
   const rMax = containerWidth - margins.right!;
 
@@ -1891,19 +1904,24 @@ export function domainRangeOfNumericForScatterChart(
   margins: IMargins,
   width: number,
   isRTL: boolean,
+  scale?: AxisScale,
 ): IDomainNRange {
   const isScatterPolar = isScatterPolarSeries(points);
+  const filterPoints = (item: IScatterChartDataPoint) => scale !== 'log' || (item.x as number) > 0;
   let xMin = d3Min(points, (point: ILineChartPoints) => {
-    return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as number)!;
+    return d3Min(
+      point.data.filter(filterPoints) as IScatterChartDataPoint[],
+      (item: IScatterChartDataPoint) => item.x as number,
+    )!;
   })!;
 
   let xMax = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
+    return d3Max(point.data.filter(filterPoints) as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
       return item.x as number;
     });
   })!;
 
-  const xPadding = (xMax - xMin) * 0.1;
+  const xPadding = scale === 'log' ? 0 : (xMax - xMin) * 0.1;
   xMin = xMin - xPadding;
   xMax = xMax + xPadding;
 
@@ -2030,3 +2048,11 @@ export function isTextMode(points: (ILineChartPoints | IScatterChartPoints)[]): 
     item => typeof (item as any).lineOptions?.mode === 'string' && (item as any).lineOptions.mode === 'text',
   );
 }
+
+const createNumericScale = (type: AxisScale | undefined) => {
+  if (type === 'log') {
+    return d3ScaleLog();
+  } else {
+    return d3ScaleLinear();
+  }
+};

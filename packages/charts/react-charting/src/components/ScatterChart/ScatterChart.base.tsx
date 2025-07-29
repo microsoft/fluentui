@@ -263,7 +263,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       tickValues: number[] | Date[] | string[] | undefined,
     ) => {
       if (xAxisType === XAxisTypes.NumericAxis) {
-        return domainRangeOfNumericForScatterChart(points, domainMargins, width, isRTL);
+        return domainRangeOfNumericForScatterChart(points, domainMargins, width, isRTL, props.xAxisScale);
       } else if (xAxisType === XAxisTypes.DateAxis) {
         return domainRangeOfDateForScatterChart(points, domainMargins, width, isRTL, tickValues! as Date[]);
       }
