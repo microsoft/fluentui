@@ -28,7 +28,6 @@
     "../../packages/react-components/**/index.stories.ts",
     "../../packages/react-components/react-migration-v0-v9/**",
     "../../packages/react-components/react-migration-v8-v9/**",
-    "../../packages/react-components/react-*-compat/**",
     "../../**/*.spec.tsx",
     "../../**/*.test.tsx",
     "../../**/src/testing/**"
