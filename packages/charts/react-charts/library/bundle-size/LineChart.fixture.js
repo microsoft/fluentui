@@ -1,4 +1,4 @@
-import { LineChart } from '@fluentui/react-charting';
+import { LineChart } from '@fluentui/react-charts';
 
 console.log(LineChart);
 
