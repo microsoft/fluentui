@@ -19,6 +19,8 @@ export interface FluentGlobals extends Args {
     [STRICT_MODE_ID]?: boolean;
     // (undocumented)
     [THEME_ID]?: ThemeIds;
+    // (undocumented)
+    [TOKEN_ID]?: 'semantic' | 'legacy';
 }
 
 // @public
@@ -33,6 +35,8 @@ export interface FluentParameters extends Parameters_2 {
     reactStorybookAddon?: {
         disabledDecorators: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'];
     };
+    // (undocumented)
+    token?: 'semantic' | 'legacy';
 }
 
 // @public (undocumented)
@@ -47,6 +51,7 @@ export interface FluentStoryContext extends StoryContext {
 export function parameters(options?: FluentParameters): {
     dir: string;
     fluentTheme: string;
+    token: string;
     mode: string;
     reactStorybookAddon?: {
         disabledDecorators: ["AriaLive" | "FluentProvider" | "ReactStrictMode"];

@@ -1,9 +1,10 @@
 import { addons, types } from '@storybook/manager-api';
 
-import { ADDON_ID, DIR_ID, STRICT_MODE_ID, THEME_ID } from '../constants';
+import { ADDON_ID, DIR_ID, STRICT_MODE_ID, THEME_ID, TOKEN_ID } from '../constants';
 import { ThemePicker } from '../components/ThemePicker';
 import { ReactStrictMode } from '../components/ReactStrictMode';
 import { DirectionSwitch } from '../components/DirectionSwitch';
+import { TokensSwitch } from '../components/TokensSwitch';
 
 addons.register(ADDON_ID, () => {
   addons.add(THEME_ID, {
@@ -12,6 +13,13 @@ addons.register(ADDON_ID, () => {
     type: types.TOOL,
     match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
     render: ThemePicker,
+  });
+  addons.add(TOKEN_ID, {
+    title: 'Tokens Switch',
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    type: types.TOOL,
+    match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
+    render: TokensSwitch,
   });
   addons.add(DIR_ID, {
     title: 'Direction Switch',
