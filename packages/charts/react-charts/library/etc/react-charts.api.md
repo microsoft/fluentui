@@ -1436,7 +1436,7 @@ export interface VerticalBarChartProps extends CartesianChartProps {
     lineLegendText?: string;
     lineOptions?: LineChartLineOptions;
     maxBarWidth?: number;
-    mode?: 'default' | 'plotly';
+    mode?: 'default' | 'plotly' | 'histogram';
     onRenderCalloutPerDataPoint?: RenderFunction<VerticalBarChartDataPoint>;
     roundCorners?: boolean;
     styles?: Partial<VerticalBarChartStyles>;

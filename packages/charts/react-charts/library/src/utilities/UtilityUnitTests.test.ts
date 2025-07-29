@@ -159,6 +159,7 @@ const createXAxisParams = (xAxisParams?: CreateXAxisParams): utils.IXAxisParams 
       bottom: 0,
       ...xAxisParams?.margins,
     },
+    calcMaxLabelWidth: utils.calculateLongestLabelWidth,
   };
 };
 const convertXAxisResultToJson = (

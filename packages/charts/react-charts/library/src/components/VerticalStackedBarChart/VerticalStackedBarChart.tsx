@@ -55,6 +55,9 @@ import {
   domainRangeOfVSBCNumeric,
   domainRangeOfXStringAxis,
   createStringYAxis,
+  calcTotalWidth,
+  calcBandwidth,
+  calcRequiredWidth,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -853,10 +856,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   function _getDomainMargins(containerWidth: number): Margins {
     _domainMargin = MIN_DOMAIN_MARGIN;
 
-    /** Total width available to render the bars */
-    const totalWidth = containerWidth - (_margins.left! + MIN_DOMAIN_MARGIN) - (_margins.right! + MIN_DOMAIN_MARGIN);
-    /** Rate at which the space between the bars changes wrt the bar width */
-    const barGapRate = _xAxisInnerPadding / (1 - _xAxisInnerPadding);
+    const totalWidth = calcTotalWidth(containerWidth, _margins, MIN_DOMAIN_MARGIN);
 
     if (_xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(props.xAxisOuterPadding, props.xAxisPadding)) {
@@ -868,7 +868,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         // the following calculations don't use the previous bar width.
         _barWidth = getBarWidth(props.barWidth, props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
-        const reqWidth = (_xAxisLabels.length + (_xAxisLabels.length - 1) * barGapRate) * _barWidth;
+        const reqWidth = calcRequiredWidth(_barWidth, _xAxisLabels.length, _xAxisInnerPadding);
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
@@ -876,9 +876,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         }
       } else if (props.mode === 'plotly' && _xAxisLabels.length > 1) {
         // Calculate the remaining width after rendering bars at their maximum allowable width
-        const bandwidth = totalWidth / (_xAxisLabels.length + (_xAxisLabels.length - 1) * barGapRate);
+        const bandwidth = calcBandwidth(totalWidth, _xAxisLabels.length, _xAxisInnerPadding);
         const barWidth = getBarWidth(props.barWidth, props.maxBarWidth, bandwidth);
-        let reqWidth = (_xAxisLabels.length + (_xAxisLabels.length - 1) * barGapRate) * barWidth;
+        let reqWidth = calcRequiredWidth(barWidth, _xAxisLabels.length, _xAxisInnerPadding);
         const margin1 = (totalWidth - reqWidth) / 2;
 
         // Calculate the remaining width after accounting for the space required to render x-axis labels

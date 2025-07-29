@@ -307,9 +307,10 @@ export const transformPlotlyJsonToVSBCProps = (
   });
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
+  const vsbcData = Object.values(mapXToDataPoints);
 
   return {
-    data: Object.values(mapXToDataPoints),
+    data: vsbcData,
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     barWidth: 'auto',
@@ -320,6 +321,7 @@ export const transformPlotlyJsonToVSBCProps = (
     yAxisTitle,
     mode: 'plotly',
     ...secondaryYAxisValues,
+    wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
     hideTickOverlap: true,
     barGapMax: 2,
   };
@@ -354,9 +356,10 @@ export const transformPlotlyJsonToGVBCProps = (
   });
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
+  const gvbcData = Object.values(mapXToDataPoints);
 
   return {
-    data: Object.values(mapXToDataPoints),
+    data: gvbcData,
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     barWidth: 'auto',
@@ -366,6 +369,7 @@ export const transformPlotlyJsonToGVBCProps = (
     mode: 'plotly',
     ...secondaryYAxisValues,
     hideTickOverlap: true,
+    wrapXAxisLables: typeof gvbcData[0]?.name === 'string',
   };
 };
 
@@ -432,6 +436,7 @@ export const transformPlotlyJsonToVBCProps = (
     yAxisTitle,
     mode: 'plotly',
     hideTickOverlap: true,
+    wrapXAxisLables: typeof vbcData[0]?.x === 'string',
   };
 };
 
@@ -678,6 +683,7 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): HeatMapC
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    wrapXAxisLables: true,
   };
 };
 
