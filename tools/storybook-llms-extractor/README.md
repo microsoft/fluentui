@@ -31,7 +31,7 @@ yarn add @fluentui/storybook-llms-extractor
 Extract documentation from a Storybook build:
 
 ```bash
-storybook-llms-extractor --distPath "storybook-static" --baseUrl "https://storybook.example.com"
+storybook-llms-extractor --distPath "storybook-static" --summaryBaseUrl "https://storybook.example.com"
 ```
 
 ### CLI Options
@@ -39,7 +39,7 @@ storybook-llms-extractor --distPath "storybook-static" --baseUrl "https://storyb
 | Option                 | Type   | Required | Default   | Description                                        |
 | ---------------------- | ------ | -------- | --------- | -------------------------------------------------- |
 | `--distPath`           | string | Yes      | -         | Relative path to the Storybook distribution folder |
-| `--baseUrl`            | string | No       | `/`       | Base URL for the Storybook docs                    |
+| `--summaryBaseUrl`     | string | No       | `/`       | Base URL for the Storybook docs                    |
 | `--summaryTitle`       | string | No       | `Summary` | Title for the summary file                         |
 | `--summaryDescription` | string | No       | `""`      | Description for the summary file                   |
 | `--refs`               | array  | No       | `[]`      | Array of composed Storybook refs                   |
@@ -51,7 +51,7 @@ You can use a configuration file (e.g., `llms.config.js`) for complex setups:
 ```javascript
 module.exports = {
   distPath: 'storybook-static',
-  baseUrl: 'https://react.fluentui.dev',
+  summaryBaseUrl: 'https://react.fluentui.dev',
   summaryTitle: 'Fluent UI React v9',
   summaryDescription: 'Fluent UI React components documentation',
   refs: [
@@ -135,7 +135,7 @@ A button triggers an action or event.
   run: npm run build-storybook
 
 - name: Generate LLM Docs
-  run: npx storybook-llms-extractor --distPath storybook-static --baseUrl ${{ env.DEPLOY_URL }}
+  run: npx storybook-llms-extractor --distPath storybook-static --summaryBaseUrl ${{ env.DEPLOY_URL }}
 ````
 
 ### With Composed Storybooks
@@ -145,7 +145,7 @@ If you have multiple Storybook instances, you can reference them:
 ```bash
 storybook-llms-extractor \
   --distPath "storybook-static" \
-  --baseUrl "https://main.storybook.dev" \
+  --summaryBaseUrl "https://main.storybook.dev" \
   --refs '{"title":"Charts","url":"https://charts.storybook.dev"}' \
   --refs '{"title":"Icons","url":"https://icons.storybook.dev"}'
 ```

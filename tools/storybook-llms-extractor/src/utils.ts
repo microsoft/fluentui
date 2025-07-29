@@ -302,7 +302,7 @@ export async function writeSummaryFile(args: Required<Args>, data: StorybookStor
  * Generates the summary file content from the storeItems array.
  */
 export function generateSummaryContent(
-  { summaryTitle, summaryDescription, summaryBaseUrl: baseUrl, refs }: Required<Args>,
+  { summaryTitle, summaryDescription, summaryBaseUrl, refs }: Required<Args>,
   data: StorybookStoreItem[],
 ) {
   // Initialize summary array with header content
@@ -321,7 +321,7 @@ export function generateSummaryContent(
     if (description) {
       description = `: ${description.split('\n')[0]}`;
     }
-    summary.push(`- [${item.meta.title}](${baseUrl}/llms/${item.meta.id}.txt)${description}`);
+    summary.push(`- [${item.meta.title}](${summaryBaseUrl}/llms/${item.meta.id}.txt)${description}`);
   }
 
   // Adds links to all composed Storybook
