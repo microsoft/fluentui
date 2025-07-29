@@ -9,7 +9,7 @@ const menuGridRowGroupContextDefaultValue: MenuGridRowGroupContextValue = {
 };
 
 /**
- * Context used to guarantee correct aria-relationship between header
+ * Context used to guarantee correct aria-relationship between row group and header
  */
 export type MenuGridRowGroupContextValue = {
   /**

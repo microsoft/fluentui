@@ -6,12 +6,6 @@ export {
 } from './contexts/menuGridRowGroupContext';
 export type { MenuGridRowGroupContextValue } from './contexts/menuGridRowGroupContext';
 export {
-  MenuGridRowGroupHeaderContextProvider,
-  useMenuGridRowGroupHeaderContext_unstable,
-} from './contexts/menuGridRowGroupHeaderContext';
-export type { MenuGridRowGroupHeaderContextValue } from './contexts/menuGridRowGroupHeaderContext';
-
-export {
   MenuGrid,
   menuGridClassNames,
   renderMenuGrid_unstable,
@@ -54,12 +48,10 @@ export {
   MenuGridRowGroupHeader,
   menuGridRowGroupHeaderClassNames,
   renderMenuGridRowGroupHeader_unstable,
-  useMenuGridRowGroupHeaderContextValues_unstable,
   useMenuGridRowGroupHeaderStyles_unstable,
   useMenuGridRowGroupHeader_unstable,
 } from './MenuGridRowGroupHeader';
 export type {
-  MenuGridRowGroupHeaderContextValues,
   MenuGridRowGroupHeaderProps,
   MenuGridRowGroupHeaderSlots,
   MenuGridRowGroupHeaderState,

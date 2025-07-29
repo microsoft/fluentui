@@ -85,17 +85,6 @@ export const MenuGridRowGroupHeader: ForwardRefComponent<MenuGridRowGroupHeaderP
 export const menuGridRowGroupHeaderClassNames: SlotClassNames<MenuGridRowGroupHeaderSlots>;
 
 // @public (undocumented)
-export const MenuGridRowGroupHeaderContextProvider: React_2.Provider<MenuGridRowGroupHeaderContextValue>;
-
-// @public
-export type MenuGridRowGroupHeaderContextValue = {};
-
-// @public (undocumented)
-export type MenuGridRowGroupHeaderContextValues = {
-    menuGridRowGroupHeader: MenuGridRowGroupHeaderContextValue;
-};
-
-// @public (undocumented)
 export type MenuGridRowGroupHeaderProps = ComponentProps<MenuGridRowGroupHeaderSlots>;
 
 // @public (undocumented)
@@ -153,7 +142,7 @@ export const renderMenuGridRow_unstable: (state: MenuGridRowState) => JSX.Elemen
 export const renderMenuGridRowGroup_unstable: (state: MenuGridRowGroupState, contextValues: MenuGridRowGroupContextValues) => JSX.Element;
 
 // @public
-export const renderMenuGridRowGroupHeader_unstable: (state: MenuGridRowGroupHeaderState, contextValues: MenuGridRowGroupHeaderContextValues) => JSX.Element;
+export const renderMenuGridRowGroupHeader_unstable: (state: MenuGridRowGroupHeaderState) => JSX.Element;
 
 // @public
 export const useMenuGrid_unstable: (props: MenuGridProps, ref: React_2.Ref<HTMLDivElement>) => MenuGridState;
@@ -184,12 +173,6 @@ export function useMenuGridRowGroupContextValues_unstable(state: MenuGridRowGrou
 
 // @public
 export function useMenuGridRowGroupHeader_unstable(props: MenuGridRowGroupHeaderProps, ref: React_2.Ref<HTMLDivElement>): MenuGridRowGroupHeaderState;
-
-// @public (undocumented)
-export const useMenuGridRowGroupHeaderContext_unstable: () => MenuGridRowGroupHeaderContextValue;
-
-// @public (undocumented)
-export function useMenuGridRowGroupHeaderContextValues_unstable(state: MenuGridRowGroupHeaderState): MenuGridRowGroupHeaderContextValues;
 
 // @public (undocumented)
 export const useMenuGridRowGroupHeaderStyles_unstable: (state: MenuGridRowGroupHeaderState) => MenuGridRowGroupHeaderState;
