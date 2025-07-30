@@ -1127,6 +1127,7 @@ export interface LineDataInVerticalStackedBarChart {
     data?: number;
     // (undocumented)
     legend: string;
+    legendShape?: LegendShape;
     lineOptions?: LineChartLineOptions;
     useSecondaryYScale?: boolean;
     // (undocumented)

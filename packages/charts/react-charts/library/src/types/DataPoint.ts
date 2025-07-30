@@ -617,6 +617,11 @@ export interface LineDataInVerticalStackedBarChart {
   color: string;
   legend: string;
   /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+  /**
    * Data to show in callout
    */
   data?: number;
