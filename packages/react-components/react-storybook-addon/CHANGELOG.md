@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-storybook-addon
 
-This log was last generated on Wed, 30 Jul 2025 13:10:55 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jul 2025 16:55:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.3.1)
+
+Wed, 30 Jul 2025 16:55:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.3.0..@fluentui/react-storybook-addon_v0.3.1)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.16.2 ([PR #34945](https://github.com/microsoft/fluentui/pull/34945) by beachball)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.3.0)
 

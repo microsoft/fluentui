@@ -2,6 +2,21 @@
   "name": "@fluentui/global-context",
   "entries": [
     {
+      "date": "Wed, 30 Jul 2025 16:55:41 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.89",
+      "version": "9.0.0-beta.89",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 13:10:57 GMT",
       "tag": "@fluentui/global-context_v9.0.0-beta.89",
       "version": "9.0.0-beta.89",

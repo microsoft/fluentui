@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Wed, 30 Jul 2025 13:10:57 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jul 2025 16:55:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.16.2)
+
+Wed, 30 Jul 2025 16:55:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.16.1..@fluentui/react-aria_v9.16.2)
+
+### Patches
+
+- fix: release TreeWalker reference ([PR #34945](https://github.com/microsoft/fluentui/pull/34945) by seanmonahan@microsoft.com)
 
 ## [9.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.16.1)
 

@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Wed, 30 Jul 2025 13:10:55 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jul 2025 16:55:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.2.1)
+
+Wed, 30 Jul 2025 16:55:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.2.0..@fluentui/react-charts_v9.2.1)
+
+### Patches
+
+- make legends of dotted lines dotted ([PR #34947](https://github.com/microsoft/fluentui/pull/34947) by anushgupta@microsoft.com)
+- support hidelegend property from plotly schema ([PR #34946](https://github.com/microsoft/fluentui/pull/34946) by anushgupta@microsoft.com)
+- Bump @fluentui/react-button to v9.6.3 ([PR #34945](https://github.com/microsoft/fluentui/pull/34945) by beachball)
+- Bump @fluentui/react-overflow to v9.5.3 ([PR #34945](https://github.com/microsoft/fluentui/pull/34945) by beachball)
+- Bump @fluentui/react-popover to v9.12.3 ([PR #34945](https://github.com/microsoft/fluentui/pull/34945) by beachball)
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.2.0)
 

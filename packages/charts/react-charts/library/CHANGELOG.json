@@ -2,6 +2,53 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Wed, 30 Jul 2025 16:55:44 GMT",
+      "tag": "@fluentui/react-charts_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ],
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "849f09879917b11bfb4058c49464293dd72833e2",
+            "comment": "make legends of dotted lines dotted"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "827895d6a8ac7ace358e07807003869936ab97f8",
+            "comment": "support hidelegend property from plotly schema"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-button to v9.6.3",
+            "commit": "1d61f9fdc8fb416dfefc27ceed104cbf11592d56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-overflow to v9.5.3",
+            "commit": "1d61f9fdc8fb416dfefc27ceed104cbf11592d56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-popover to v9.12.3",
+            "commit": "1d61f9fdc8fb416dfefc27ceed104cbf11592d56"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 13:10:55 GMT",
       "tag": "@fluentui/react-charts_v9.2.0",
       "version": "9.2.0",

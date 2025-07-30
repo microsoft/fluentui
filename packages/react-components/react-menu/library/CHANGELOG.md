@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Wed, 30 Jul 2025 13:10:57 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jul 2025 16:55:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.19.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.19.3)
+
+Wed, 30 Jul 2025 16:55:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.19.2..@fluentui/react-menu_v9.19.3)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.16.2 ([PR #34945](https://github.com/microsoft/fluentui/pull/34945) by beachball)
 
 ## [9.19.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.19.2)
 

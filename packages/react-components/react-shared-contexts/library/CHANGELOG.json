@@ -2,6 +2,21 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Wed, 30 Jul 2025 16:55:33 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.24.1",
+      "version": "9.24.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 13:10:57 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.24.1",
       "version": "9.24.1",

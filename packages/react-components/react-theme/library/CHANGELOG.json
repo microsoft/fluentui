@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Wed, 30 Jul 2025 16:55:38 GMT",
+      "tag": "@fluentui/react-theme_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 13:10:56 GMT",
       "tag": "@fluentui/react-theme_v9.2.0",
       "version": "9.2.0",

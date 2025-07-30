@@ -2,6 +2,29 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Wed, 30 Jul 2025 16:55:41 GMT",
+      "tag": "@fluentui/react-accordion_v9.8.3",
+      "version": "9.8.3",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-aria to v9.16.2",
+            "commit": "1d61f9fdc8fb416dfefc27ceed104cbf11592d56"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 13:10:57 GMT",
       "tag": "@fluentui/react-accordion_v9.8.2",
       "version": "9.8.2",

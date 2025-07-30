@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: release TreeWalker reference",
-  "packageName": "@fluentui/react-aria",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
