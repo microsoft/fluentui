@@ -2,6 +2,39 @@
   "name": "@fluentui/react-storybook-addon",
   "entries": [
     {
+      "date": "Wed, 30 Jul 2025 13:10:55 GMT",
+      "tag": "@fluentui/react-storybook-addon_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "c847809beaf412a97d993be0a2b525fd92216346",
+            "comment": "Add new brand ramp version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-aria to v9.16.1",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-provider to v9.22.2",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-theme to v9.2.0",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Jul 2025 18:48:21 GMT",
       "tag": "@fluentui/react-storybook-addon_v0.2.5",
       "version": "0.2.5",

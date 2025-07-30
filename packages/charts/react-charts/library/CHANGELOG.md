@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Mon, 28 Jul 2025 18:48:17 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jul 2025 13:10:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.2.0)
+
+Wed, 30 Jul 2025 13:10:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.1.10..@fluentui/react-charts_v9.2.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34912](https://github.com/microsoft/fluentui/pull/34912) by martinhochel@microsoft.com)
+- Bump @fluentui/react-button to v9.6.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.4 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-overflow to v9.5.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-popover to v9.12.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.24.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-tabster to v9.26.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-theme to v9.2.0 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-tooltip to v9.8.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-utilities to v9.23.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+
+### Patches
+
+- GVBC FIX ([PR #34932](https://github.com/microsoft/fluentui/pull/34932) by anushgupta@microsoft.com)
+- Adding a variation of horizontal stacked bar chart with inline legends that accept optiona annotation JSX from client to be displayed next the legend items. Also an option to hide the hover callout card. ([PR #34895](https://github.com/microsoft/fluentui/pull/34895) by aknowles@microsoft.com)
+- support image export in v9 charts ([PR #34929](https://github.com/microsoft/fluentui/pull/34929) by anushgupta@microsoft.com)
+- add histogram mode to vbc ([PR #34930](https://github.com/microsoft/fluentui/pull/34930) by anushgupta@microsoft.com)
+- add support for scatter polar trace type ([PR #34933](https://github.com/microsoft/fluentui/pull/34933) by anushgupta@microsoft.com)
 
 ## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.1.10)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "support image export in v9 charts",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
