@@ -249,15 +249,15 @@ export function createNumericXAxis(
   showRoundOffXTickValues && xAxisScale.nice();
 
   let tickCount = xAxisCount ?? 6;
-  const tickFormat = (domainValue: NumberValue, _index: number) => {
+  const tickFormat = (domainValue: NumberValue, _index: number, defaultFormat?: (val: NumberValue) => string) => {
     if (tickParams.tickFormat) {
       return d3Format(tickParams.tickFormat)(domainValue);
     }
     const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
-    return formatToLocaleString(xAxisValue, culture) as string;
+    return defaultFormat?.(xAxisValue) === '' ? '' : (formatToLocaleString(xAxisValue, culture) as string);
   };
   if (hideTickOverlap && typeof xAxisCount === 'undefined') {
-    const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map(tickFormat)) + 20;
+    const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map((v, i) => tickFormat(v, i))) + 20;
     const [start, end] = xAxisScale.range();
     tickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
   }
@@ -266,7 +266,7 @@ export function createNumericXAxis(
     .tickSize(xAxistickSize)
     .tickPadding(tickPadding)
     .ticks(tickCount)
-    .tickFormat(tickFormat);
+    .tickFormat((v, i) => tickFormat(v, i, xAxisScale.tickFormat(tickCount)));
   if ([ChartTypes.HorizontalBarChartWithAxis, ChartTypes.GanttChart].includes(chartType)) {
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
@@ -682,17 +682,8 @@ export function createNumericYAxis(
     eventLabelHeight,
   } = yAxisParams;
 
-  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
-  const tempVal = maxOfYVal || yMinMaxValues.endValue || 0;
-  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = supportNegativeData
-    ? Math.min(yMinMaxValues.startValue || 0, yMinValue || 0)
-    : yMinMaxValues.startValue < yMinValue
-    ? 0
-    : yMinValue!;
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
-
-  let scaleDomain: number[] = [];
+  let scaleDomain: number[];
+  let domainValues: number[];
   if (scale === 'log') {
     let domainStart = yMinMaxValues.startValue;
     let domainEnd = yMinMaxValues.endValue;
@@ -704,18 +695,38 @@ export function createNumericYAxis(
     }
     scaleDomain = [domainStart, domainEnd];
   } else {
+    // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
+    const tempVal = maxOfYVal || yMinMaxValues.endValue || 0;
+    const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
+    const finalYmin = supportNegativeData
+      ? Math.min(yMinMaxValues.startValue || 0, yMinValue || 0)
+      : yMinMaxValues.startValue < yMinValue
+      ? 0
+      : yMinValue!;
+
+    domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
     scaleDomain = [supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]];
   }
 
   const yAxisScale = createNumericScale(scale)
     .domain(scaleDomain)
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
+
+  if (scale === 'log') {
+    domainValues = [];
+    yAxisScale.ticks().forEach(t => {
+      if (yAxisScale.tickFormat(yAxisTickCount)(t) !== '') {
+        domainValues.push(t);
+      }
+    });
+  }
+
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis.tickPadding(tickPadding).tickSizeInner(-(containerWidth - margins.left! - margins.right!));
-  if (scale !== 'log') {
-    yAxis.tickValues(domainValues);
-  }
+  const yAxis = axis
+    .tickPadding(tickPadding)
+    .tickValues(domainValues)
+    .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
 
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
