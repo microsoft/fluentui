@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "port v8 changes to v9",
+  "comment": "support for stacked grouped vertical bar chart+ enable wrapping of string x-axis labels in declarative chart+ hide overlapping labels based on post transform width",
   "packageName": "@fluentui/react-charts",
   "email": "anushgupta@microsoft.com",
   "dependentChangeType": "patch"
