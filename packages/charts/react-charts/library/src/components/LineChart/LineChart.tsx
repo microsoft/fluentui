@@ -4,7 +4,7 @@ import { useLineChartStyles } from './useLineChartStyles.styles';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
-import { Legend, Legends } from '../Legends/index';
+import { Legend, Legends, LegendContainer } from '../Legends/index';
 import { line as d3Line } from 'd3-shape';
 import { useId } from '@fluentui/react-utilities';
 import { find } from '../../utilities/index';
@@ -20,6 +20,7 @@ import {
   LineChartGap,
   LineChartDataPoint,
   Chart,
+  ImageExportOptions,
 } from '../../index';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { tokens } from '@fluentui/react-theme';
@@ -45,6 +46,7 @@ import {
   getCurveFactory,
 } from '../../utilities/index';
 import { ScaleLinear } from 'd3-scale';
+import { toImage } from '../../utilities/image-export-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 enum PointSize {
@@ -161,6 +163,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     let xAxisCalloutAccessibilityData: AccessibilityProps = {};
     const cartesianChartRef = React.useRef<Chart>(null);
     let _yScaleSecondary: ScaleLinear<number, number> | undefined;
+    const _legendsRef = React.useRef<LegendContainer>(null);
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -202,6 +205,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       props.componentRef,
       () => ({
         chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+        toImage: (opts?: ImageExportOptions): Promise<string> => {
+          return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRTL, opts);
+        },
       }),
       [],
     );
@@ -399,6 +405,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           overflowText={props.legendsOverflowText}
           {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: _onHoverCardHide })}
           {...props.legendProps}
+          legendRef={_legendsRef}
         />
       );
     }

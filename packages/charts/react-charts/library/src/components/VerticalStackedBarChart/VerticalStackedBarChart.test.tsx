@@ -759,6 +759,7 @@ describe('Vertical Stacked Bar Chart - axe-core', () => {
   });
 });
 
+/* eslint-disable @typescript-eslint/no-deprecated */
 describe('VerticalStackedBarChart snapShot testing', () => {
   beforeEach(sharedBeforeEach);
 
@@ -828,6 +829,7 @@ describe('VerticalStackedBarChart snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 });
+/* eslint-enable @typescript-eslint/no-deprecated */
 
 describe('VerticalStackedBarChart - basic props', () => {
   beforeEach(sharedBeforeEach);

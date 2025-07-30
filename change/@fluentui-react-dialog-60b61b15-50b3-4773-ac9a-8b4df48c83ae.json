@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: DialogSurface and DialogBody height respects custom maxHeight styles by replacing @supports rules with Griffel fallback arrays",
+  "packageName": "@fluentui/react-dialog",
+  "email": "198982749+Copilot@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

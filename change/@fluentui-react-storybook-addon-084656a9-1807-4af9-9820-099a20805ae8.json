@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add new brand ramp version",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "jukapsia@microsoft.com",
+  "dependentChangeType": "patch"
+}

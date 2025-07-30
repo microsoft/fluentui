@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
-import { Legend } from '../../components/Legends/Legends.types';
+import { Legend, LegendContainer } from '../../components/Legends/Legends.types';
 import { Legends } from '../../components/Legends/Legends';
 import { useId } from '@fluentui/react-utilities';
 import {
@@ -11,6 +11,7 @@ import {
   Margins,
   ChartPopoverProps,
   Chart,
+  ImageExportOptions,
 } from '../../index';
 import { ChildProps } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
@@ -40,6 +41,7 @@ import {
   MIN_DOMAIN_MARGIN,
 } from '../../utilities/index';
 import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
+import { toImage } from '../../utilities/image-export-utils';
 type ColorScale = (_p?: number) => string;
 
 export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarChartWithAxisProps> = React.forwardRef<
@@ -73,6 +75,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   let _yAxisPadding: number = props.yAxisPadding ?? 0.5;
   const cartesianChartRef = React.useRef<Chart>(null);
   const X_ORIGIN: number = 0;
+  const _legendsRef = React.useRef<LegendContainer>(null);
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -105,6 +108,9 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     props.componentRef,
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRtl, opts);
+      },
     }),
     [],
   );
@@ -670,6 +676,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         overflowText={props.legendsOverflowText}
         {...props.legendProps}
         onChange={_onLegendSelectionChange}
+        legendRef={_legendsRef}
       />
     );
     return legends;

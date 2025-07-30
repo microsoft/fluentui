@@ -17,6 +17,7 @@ import {
   findNumericMinMaxOfY,
   IDomainNRange,
   YAxisType,
+  useRtl,
 } from '../../utilities/index';
 import {
   AccessibilityProps,
@@ -28,6 +29,8 @@ import {
   RefArrayData,
   ScatterChartDataPoint,
   Chart,
+  ImageExportOptions,
+  LegendContainer,
 } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 import {
@@ -40,6 +43,7 @@ import {
   getColorFromToken,
   formatDate,
 } from '../../utilities/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -76,6 +80,8 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   let _xBandwidth = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
   const classes = useScatterChartStyles(props);
+  const _legendsRef = React.useRef<LegendContainer>(null);
+  const _isRTL: boolean = useRtl();
 
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
@@ -104,6 +110,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     props.componentRef,
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRTL, opts);
+      },
     }),
     [],
   );
@@ -252,6 +261,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         {...props.legendProps}
         selectedLegends={selectedLegends}
         onChange={_onLegendSelectionChange}
+        legendRef={_legendsRef}
       />
     );
   }

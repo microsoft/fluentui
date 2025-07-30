@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adding a variation of horizontal stacked bar chart with inline legends that accept optiona annotation JSX from client to be displayed next the legend items. Also an option to hide the hover callout card.",
+  "packageName": "@fluentui/react-charts",
+  "email": "aknowles@microsoft.com",
+  "dependentChangeType": "patch"
+}

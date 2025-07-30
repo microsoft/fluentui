@@ -28,6 +28,8 @@ import {
   Legends,
   Chart,
   DataPoint,
+  ImageExportOptions,
+  LegendContainer,
 } from '../../index';
 import {
   ChartTypes,
@@ -56,6 +58,7 @@ import {
   domainRangeOfXStringAxis,
   createStringYAxis,
 } from '../../utilities/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
@@ -109,6 +112,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   let _xAxisOuterPadding: number = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
   const Y_ORIGIN: number = 0;
+  const _legendsRef = React.useRef<LegendContainer>(null);
 
   const [selectedLegends, setSelectedLegends] = React.useState(props.legendProps?.selectedLegends || []);
   const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
@@ -144,6 +148,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     props.componentRef,
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRtl, opts);
+      },
     }),
     [],
   );
@@ -211,6 +218,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         overflowText={props.legendsOverflowText}
         {...props.legendProps}
         onChange={_onLegendSelectionChange}
+        legendRef={_legendsRef}
       />
     );
   }
@@ -305,7 +313,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     _colors = defaultColors;
     _xAxisType = getTypeOfAxis(props.data[0].xAxisPoint, true) as XAxisTypes;
     _lineObject = _getFormattedLineData(props.data);
-    _xAxisInnerPadding = getScalePadding(props.xAxisInnerPadding, props.xAxisPadding, 2 / 3);
+    _xAxisInnerPadding = getScalePadding(
+      props.xAxisInnerPadding,
+      props.xAxisPadding,
+      _xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
+    );
     _xAxisOuterPadding = getScalePadding(props.xAxisOuterPadding, props.xAxisPadding, 0);
   }
 
@@ -798,9 +810,10 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
       const xBarScale = d3ScaleLinear()
         .domain(_isRtl ? [xMax, xMin] : [xMin, xMax])
-        .nice()
         .range([_margins.left! + _domainMargin, containerWidth - _margins.right! - _domainMargin]);
-
+      if (!isScalePaddingDefined(props.xAxisInnerPadding, props.xAxisPadding)) {
+        xBarScale.nice();
+      }
       return { xBarScale, yBarScale };
     }
     if (_xAxisType === XAxisTypes.DateAxis) {
@@ -881,10 +894,13 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         let reqWidth = (_xAxisLabels.length + (_xAxisLabels.length - 1) * barGapRate) * barWidth;
         const margin1 = (totalWidth - reqWidth) / 2;
 
-        // Calculate the remaining width after accounting for the space required to render x-axis labels
-        const step = calculateLongestLabelWidth(_xAxisLabels) + 20;
-        reqWidth = (_xAxisLabels.length - _xAxisInnerPadding) * step;
-        const margin2 = (totalWidth - reqWidth) / 2;
+        let margin2 = Number.POSITIVE_INFINITY;
+        if (!props.hideTickOverlap) {
+          // Calculate the remaining width after accounting for the space required to render x-axis labels
+          const step = calculateLongestLabelWidth(_xAxisLabels) + 20;
+          reqWidth = (_xAxisLabels.length - _xAxisInnerPadding) * step;
+          margin2 = (totalWidth - reqWidth) / 2;
+        }
 
         _domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
@@ -1201,6 +1217,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           xAxisOuterPadding: _xAxisOuterPadding,
         })}
         componentRef={cartesianChartRef}
+        showRoundOffXTickValues={!isScalePaddingDefined(props.xAxisInnerPadding, props.xAxisPadding)}
         /* eslint-disable react/jsx-no-bind */
         children={(props: ChildProps) => {
           return (
