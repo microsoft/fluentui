@@ -43,7 +43,10 @@ import {
   getColorFromToken,
   ChartPopoverProps,
   Chart,
+  ImageExportOptions,
+  LegendContainer,
 } from '../../index';
+import { toImage } from '../../utilities/image-export-utils';
 
 type StringAxis = D3Axis<string>;
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -89,6 +92,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _xAxisOuterPadding: number = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
   const Y_ORIGIN: number = 0;
+  const _legendsRef = React.useRef<LegendContainer>(null);
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -116,6 +120,9 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     props.componentRef,
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _useRtl, opts);
+      },
     }),
     [],
   );
@@ -231,6 +238,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         overflowText={props.legendsOverflowText}
         {...props.legendProps}
         onChange={onLegendSelectionChange}
+        legendRef={_legendsRef}
       />
     );
   };

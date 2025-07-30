@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { HeatMapChartProps } from './HeatMapChart.types';
-import { AccessibilityProps, Chart, HeatMapChartData, HeatMapChartDataPoint, Margins } from '../../types/index';
+import {
+  AccessibilityProps,
+  Chart,
+  HeatMapChartData,
+  HeatMapChartDataPoint,
+  Margins,
+  ImageExportOptions,
+} from '../../types/index';
 import {
   ChartTypes,
   getAccessibleDataObject,
@@ -14,16 +21,18 @@ import {
   IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxis,
+  useRtl,
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { CartesianChart, ChartPopoverProps, ChildProps } from '../CommonComponents/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useHeatMapChartStyles } from './useHeatMapChartStyles.styles';
-import { Legend, Legends } from '../Legends/index';
+import { Legend, Legends, LegendContainer } from '../Legends/index';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
+import { toImage } from '../../utilities/image-export-utils';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -55,6 +64,8 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
   const _emptyChartId = useId('_HeatMap_empty');
   const _margins = React.useRef<Margins>({});
   const cartesianChartRef = React.useRef<Chart>(null);
+  const _legendsRef = React.useRef<LegendContainer>(null);
+  const _isRtl = useRtl();
 
   const [selectedLegend, setSelectedLegend] = React.useState<string>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
@@ -71,6 +82,9 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     props.componentRef,
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRtl, opts);
+      },
     }),
     [],
   );
@@ -323,7 +337,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       };
       legends.push(legend);
     });
-    return <Legends {...legendProps} legends={legends} />;
+    return <Legends {...legendProps} legends={legends} legendRef={_legendsRef} />;
   };
 
   const _getColorScale = () => {

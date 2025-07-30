@@ -229,6 +229,8 @@ export interface CartesianChartStyles {
 export interface Chart {
     // (undocumented)
     chartContainer: HTMLElement | null;
+    // (undocumented)
+    toImage?: (opts?: ImageExportOptions) => Promise<string>;
 }
 
 // @public
@@ -960,6 +962,16 @@ export interface Legend {
 }
 
 // @public (undocumented)
+export interface LegendContainer {
+    // (undocumented)
+    toSVG: (svgWidth: number, isRTL?: boolean) => {
+        node: SVGGElement | null;
+        width: number;
+        height: number;
+    };
+}
+
+// @public (undocumented)
 export interface LegendDataItem {
     legendColor: string;
     legendText: string | number;
@@ -980,6 +992,7 @@ export interface LegendsProps {
     defaultSelectedLegend?: string;
     defaultSelectedLegends?: string[];
     enabledWrapLines?: boolean;
+    legendRef?: React_2.RefObject<LegendContainer>;
     legends: Legend[];
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
 import { useRtl } from '../../utilities/index';
 import { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
-import { Legend, Legends } from '../Legends/index';
+import { Legend, Legends, LegendContainer } from '../Legends/index';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
@@ -15,7 +15,8 @@ import {
   getStackedHorizontalFunnelSegmentGeometry,
   getStackedVerticalFunnelSegmentGeometry,
 } from './funnelGeometry';
-import { ChartPopoverProps } from '../../index';
+import { ChartPopoverProps, ImageExportOptions } from '../../index';
+import { toImage } from '../../utilities/image-export-utils';
 
 export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forwardRef<
   HTMLDivElement,
@@ -31,12 +32,23 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const chartContainerRef = React.useRef<HTMLDivElement | null>(null);
   const isStacked = isStackedFunnelData(props.data);
+  const _legendsRef = React.useRef<LegendContainer>(null);
 
   React.useEffect(() => {
     if (props.legendProps?.selectedLegends) {
       setSelectedLegends(props.legendProps.selectedLegends);
     }
   }, [props.legendProps?.selectedLegends]);
+
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(chartContainerRef.current, _legendsRef.current?.toSVG, isRTL, opts);
+      },
+    }),
+    [],
+  );
 
   function _handleHover(data: FunnelChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>) {
     mouseEvent?.persist();
@@ -404,6 +416,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
           centerLegends={true}
           onChange={_onLegendSelectionChangeCallback}
           {...props.legendProps}
+          legendRef={_legendsRef}
         />
       </div>
     );
