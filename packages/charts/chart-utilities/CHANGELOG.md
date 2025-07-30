@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Mon, 21 Jul 2025 07:21:21 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Jul 2025 07:20:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.26](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.26)
+
+Tue, 29 Jul 2025 07:20:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.25..@fluentui/chart-utilities_v1.1.26)
+
+### Patches
+
+- feat(chart-utilities): Routing scattergl charts to scatter charts ([PR #34919](https://github.com/microsoft/fluentui/pull/34919) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.25](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.25)
 

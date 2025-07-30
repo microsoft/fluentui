@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Wed, 16 Jul 2025 13:52:47 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jul 2025 18:48:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.8.0)
+
+Mon, 28 Jul 2025 18:48:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.7.0..@fluentui/react-motion-components-preview_v0.8.0)
+
+### Minor changes
+
+- feat(motion): add Fade presence motion component ([PR #34839](https://github.com/microsoft/fluentui/pull/34839) by robertpenner@microsoft.com)
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.7.0)
 

@@ -2,6 +2,109 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 28 Jul 2025 18:48:16 GMT",
+      "tag": "@fluentui/react-components_v9.68.0",
+      "version": "9.68.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "0fd55307020d8be2399db8b88ab5da9e78202ab1",
+            "comment": "deprecate: react-virtualizer in process of moving to fluentui-contrib"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "1cf477588a8d5fdc41208a7a7f753ba0306caa15",
+            "comment": "fix(react-list): Dont crash in dev mode when navigation mode is changed"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "61c6eafa0a1c30eb4edf4add53dfa97c3099e78e",
+            "comment": "feat(motion): add Fade presence motion component"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: add custom JSX.* types that are compatible with various react major versions"
+          }
+        ],
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "89bbbd09f2a14fc95399c2bf7eb6e3e0abad5846",
+            "comment": "fix callout position issues"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d94634a5272e3ca83a2a17d03a1d33611b9140bb",
+            "comment": "mitigate xss vulnerabilities"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e41c077dc4bab9ad3ea2380a70b30fc4b28bc46c",
+            "comment": "Add Gantt chart in v9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "7005d8f675a3e6a67b06a4135145f5a4cbbbc694",
+            "comment": "funnel chart in v9"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "13e9d5663d32fd91ff71a876bb6c3cbf54e0b39b",
+            "comment": "feat: add event.isDefaultPrevented() to `onKeyDown`"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "5cf70b3c5ef2eec4c253e4e60761e3cdde6436a3",
+            "comment": "fix: adjust circular sizes to Figma spec"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "78d8369d838e43f5b259527cdc24c88da2b57db2",
+            "comment": "revert: adjust accordion header chevron alignment styles #34616"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "0fd55307020d8be2399db8b88ab5da9e78202ab1",
+            "comment": "deprecate: react-virtualizer moving to fluentui-contrib"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Jul 2025 13:49:33 GMT",
       "tag": "@fluentui/react-components_v9.67.0",
       "version": "9.67.0",

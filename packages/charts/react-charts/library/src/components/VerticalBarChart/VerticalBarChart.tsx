@@ -314,7 +314,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
 
   function _adjustProps(): void {
     _points = props.data || [];
-    _barWidth = getBarWidth(props.barWidth, props.maxBarWidth);
+    _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, undefined, props.mode);
     const defaultColors: string[] = [
       tokens.colorPaletteBlueForeground2,
       tokens.colorPaletteCornflowerForeground2,
@@ -324,7 +324,11 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     ];
     _colors = props.colors || defaultColors;
     _isHavingLine = _checkForLine();
-    _xAxisInnerPadding = getScalePadding(props.xAxisInnerPadding, props.xAxisPadding, 2 / 3);
+    _xAxisInnerPadding = getScalePadding(
+      props.xAxisInnerPadding,
+      props.xAxisPadding,
+      props.mode === 'histogram' ? 0 : _xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
+    );
     _xAxisOuterPadding = getScalePadding(props.xAxisOuterPadding, props.xAxisPadding, 0);
   }
 
@@ -598,8 +602,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const xMin = d3Min(_points, (point: VerticalBarChartDataPoint) => point.x as number)!;
       xBarScale = d3ScaleLinear()
         .domain(_useRtl ? [xMax, xMin] : [xMin, xMax])
-        .nice()
         .range([margins.left! + _domainMargin, containerWidth - margins.right! - _domainMargin]);
+      if (!isScalePaddingDefined(props.xAxisInnerPadding, props.xAxisPadding) && props.mode !== 'histogram') {
+        xBarScale.nice();
+      }
     } else if (_xAxisType === XAxisTypes.DateAxis) {
       const sDate = d3Min(_points, (point: VerticalBarChartDataPoint) => point.x as Date)!;
       const lDate = d3Max(_points, (point: VerticalBarChartDataPoint) => point.x as Date)!;
@@ -747,7 +753,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       // Setting the bar width here is safe because there are no dependencies earlier in the code
       // that rely on the width of bars in vertical bar charts with string x-axis.
-      _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, xBarScale.bandwidth());
+      _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, xBarScale.bandwidth(), props.mode);
       return (
         <g
           key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
@@ -1037,57 +1043,84 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   function _getDomainMargins(containerWidth: number): Margins {
     _domainMargin = MIN_DOMAIN_MARGIN;
 
+    const mapX: Record<string, number | string | Date> = {};
+    props.data?.forEach(point => {
+      if (point.x instanceof Date) {
+        mapX[point.x.getTime()] = point.x;
+      } else {
+        mapX[point.x] = point.x;
+      }
+    });
+    const uniqueX = Object.values(mapX);
+
     /** Total width available to render the bars */
     const totalWidth = containerWidth - (margins.left! + MIN_DOMAIN_MARGIN) - (margins.right! + MIN_DOMAIN_MARGIN);
     /** Rate at which the space between the bars changes wrt the bar width */
     const barGapRate = _xAxisInnerPadding / (1 - _xAxisInnerPadding);
+    const numBars = uniqueX.length + (uniqueX.length - 1) * barGapRate;
 
     if (_xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(props.xAxisOuterPadding, props.xAxisPadding)) {
         // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
         // to adjust the space before the first bar and after the last bar.
         _domainMargin = 0;
-      } else if (props.barWidth !== 'auto') {
+      } else if (props.barWidth !== 'auto' && props.mode !== 'histogram') {
         // Update the bar width so that when CartesianChart rerenders,
         // the following calculations don't use the previous bar width.
         _barWidth = getBarWidth(props.barWidth, props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
-        const reqWidth = (_xAxisLabels.length + (_xAxisLabels.length - 1) * barGapRate) * _barWidth;
+        const reqWidth = numBars * _barWidth;
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
           _domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
-      } else if (props.mode === 'plotly' && _xAxisLabels.length > 1) {
+      } else if (['plotly', 'histogram'].includes(props.mode!) && uniqueX.length > 1) {
         // Calculate the remaining width after rendering bars at their maximum allowable width
-        const bandwidth = totalWidth / (_xAxisLabels.length + (_xAxisLabels.length - 1) * barGapRate);
-        const barWidth = getBarWidth(props.barWidth, props.maxBarWidth, bandwidth);
-        let reqWidth = (_xAxisLabels.length + (_xAxisLabels.length - 1) * barGapRate) * barWidth;
+        const bandwidth = totalWidth / numBars;
+        const barWidth = getBarWidth(props.barWidth, props.maxBarWidth, bandwidth, props.mode);
+        let reqWidth = numBars * barWidth;
         const margin1 = (totalWidth - reqWidth) / 2;
 
-        // Calculate the remaining width after accounting for the space required to render x-axis labels
-        const step = calculateLongestLabelWidth(_xAxisLabels) + 20;
-        reqWidth = (_xAxisLabels.length - _xAxisInnerPadding) * step;
-        const margin2 = (totalWidth - reqWidth) / 2;
+        let margin2 = Number.POSITIVE_INFINITY;
+        if (!props.hideTickOverlap) {
+          // Calculate the remaining width after accounting for the space required to render x-axis labels
+          const step = calculateLongestLabelWidth(uniqueX as string[]) + 20;
+          reqWidth = (uniqueX.length - _xAxisInnerPadding) * step;
+          margin2 = (totalWidth - reqWidth) / 2;
+        }
 
         _domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
     } else {
-      const uniqueX: Record<number, number | Date> = {};
-      props.data?.forEach(point => {
-        if (point.x instanceof Date) {
-          uniqueX[point.x.getTime()] = point.x;
-        } else {
-          uniqueX[point.x as number] = point.x as number;
-        }
-      });
-      const data = Object.values(uniqueX) as number[] | Date[];
+      if (props.mode === 'histogram') {
+        // Try center-aligning the bars to eliminate any gaps caused by a restricted barWidth.
+        // This only works if the bin centers are consistent across all legend groups; otherwise,
+        // the calculated domainMargin may be too small.
+        const barWidth = props.maxBarWidth!;
+        const reqWidth = numBars * barWidth;
+        _domainMargin += Math.max(0, (totalWidth - reqWidth) / 2);
+      }
+
+      // The histogram may appear distorted when bin centers/sizes vary across different legend groups.
+      // Currently, we calculate the appropriate bar width using the closest unique x-values to make
+      // the bars of the same legend group adjacent. But these x-values can come from different legend groups
+      // and result in misleading visuals. Even if we compute bar widths separately within each group,
+      // we still lack support for rendering bars with different widths and must use the minimum width,
+      // which can cause the same issue.
+      // Solution: Instead of estimating the appropriate bar width, render each bar to span the full range
+      // of its corresponding bin explicitly.
       _barWidth = getBarWidth(
         props.barWidth,
         props.maxBarWidth,
-        calculateAppropriateBarWidth(data, totalWidth, _xAxisInnerPadding),
+        calculateAppropriateBarWidth(
+          uniqueX as number[] | Date[],
+          totalWidth - 2 * (_domainMargin - MIN_DOMAIN_MARGIN),
+          _xAxisInnerPadding,
+        ),
+        props.mode,
       );
-      _domainMargin = MIN_DOMAIN_MARGIN + _barWidth / 2;
+      _domainMargin += _barWidth / 2;
     }
 
     return {
@@ -1172,6 +1205,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         xAxisOuterPadding: _xAxisOuterPadding,
       })}
       componentRef={cartesianChartRef}
+      showRoundOffXTickValues={
+        !isScalePaddingDefined(props.xAxisInnerPadding, props.xAxisPadding) && props.mode !== 'histogram'
+      }
       /* eslint-disable react/jsx-no-bind */
       // eslint-disable-next-line react/no-children-prop
       children={(props: ChildProps) => {

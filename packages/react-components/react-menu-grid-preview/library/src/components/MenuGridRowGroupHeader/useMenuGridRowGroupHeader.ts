@@ -9,7 +9,7 @@ import { MenuGridRowGroupHeaderProps, MenuGridRowGroupHeaderState } from './Menu
  */
 export function useMenuGridRowGroupHeader_unstable(
   props: MenuGridRowGroupHeaderProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): MenuGridRowGroupHeaderState {
   const { headerId: id } = useMenuGridRowGroupContext_unstable();
 
@@ -19,10 +19,7 @@ export function useMenuGridRowGroupHeader_unstable(
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: ref as React.Ref<HTMLDivElement>,
+        ref,
         role: 'presentation',
         id,
         'aria-hidden': true,
