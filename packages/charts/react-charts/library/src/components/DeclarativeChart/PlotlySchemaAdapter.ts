@@ -103,10 +103,6 @@ const dashOptions = {
   },
 } as const;
 
-const getLegend = (series: Partial<PlotData>, index: number): string => {
-  return series.name || `Series ${index + 1}`;
-};
-
 function getTitles(layout: Partial<Layout> | undefined) {
   const titles = {
     chartTitle: typeof layout?.title === 'string' ? layout.title : layout?.title?.text ?? '',
@@ -269,6 +265,7 @@ export const transformPlotlyJsonToVSBCProps = (
   const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
   let yMaxValue = 0;
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   let yMinValue = 0;
   input.data.forEach((series: PlotData, index1: number) => {
     const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
@@ -276,7 +273,7 @@ export const transformPlotlyJsonToVSBCProps = (
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { xAxisPoint: isXYearCategory ? x.toString() : x, chartData: [], lineData: [] };
       }
-      const legend: string = getLegend(series, index1);
+      const legend: string = legends[index1];
       const yVal: number = (series.y?.[index2] as number) ?? 0;
       if (series.type === 'bar') {
         const color = getColor(legend, colorMap, isDarkTheme);
@@ -322,6 +319,7 @@ export const transformPlotlyJsonToVSBCProps = (
     ...secondaryYAxisValues,
     hideTickOverlap: true,
     barGapMax: 2,
+    hideLegend,
   };
 };
 
@@ -332,13 +330,14 @@ export const transformPlotlyJsonToGVBCProps = (
 ): GroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, GroupedVerticalBarChartData> = {};
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   input.data.forEach((series: PlotData, index1: number) => {
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
       }
       if (series.type === 'bar') {
-        const legend: string = getLegend(series, index1);
+        const legend: string = legends[index1];
         const color = getColor(legend, colorMap, isDarkTheme);
 
         mapXToDataPoints[x].series.push({
@@ -366,6 +365,7 @@ export const transformPlotlyJsonToGVBCProps = (
     mode: 'plotly',
     ...secondaryYAxisValues,
     hideTickOverlap: true,
+    hideLegend,
   };
 };
 
@@ -375,6 +375,7 @@ export const transformPlotlyJsonToVBCProps = (
   isDarkTheme?: boolean,
 ): VerticalBarChartProps => {
   const vbcData: VerticalBarChartDataPoint[] = [];
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
 
   input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
     if (!series.x) {
@@ -402,7 +403,7 @@ export const transformPlotlyJsonToVBCProps = (
     });
 
     xBins.forEach((bin, index) => {
-      const legend: string = getLegend(series, seriesIdx);
+      const legend: string = legends[seriesIdx];
       const color: string = getColor(legend, colorMap, isDarkTheme);
       const yVal = calculateHistNorm(
         series.histnorm,
@@ -435,6 +436,7 @@ export const transformPlotlyJsonToVBCProps = (
     mode: 'histogram',
     hideTickOverlap: true,
     maxBarWidth: 50,
+    hideLegend,
   };
 };
 
@@ -451,12 +453,13 @@ export const transformPlotlyJsonToScatterChartProps = (
     isAreaChart ? 0 : undefined,
   );
   let mode: string = 'tonexty';
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   const chartData: LineChartPoints[] = input.data.map((series: PlotData, index: number) => {
     const xValues = series.x as Datum[];
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
-    const legend: string = getLegend(series, index);
+    const legend: string = legends[index];
     const lineColor = getColor(legend, colorMap, isDarkTheme);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
     const lineOptions = getLineOptions(series.line);
@@ -498,6 +501,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
       useUTC: false,
+      hideLegend,
     } as AreaChartProps;
   } else {
     return {
@@ -513,6 +517,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
       useUTC: false,
+      hideLegend,
     } as LineChartProps;
   }
 };
@@ -522,15 +527,16 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): HorizontalBarChartWithAxisProps => {
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   const chartData: HorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: PlotData, index: number) => {
+      const legend = legends[index];
+      const color = getColor(legend, colorMap, isDarkTheme);
       return (series.y as Datum[]).map((yValue: string, i: number) => {
-        const legendName = series.name ?? yValue;
-        const color = getColor(legendName, colorMap, isDarkTheme);
         return {
           x: series.x[i],
           y: yValue,
-          legend: legendName,
+          legend,
           color,
         } as HorizontalBarChartWithAxisDataPoint;
       });
@@ -567,6 +573,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    hideLegend,
   };
 };
 
@@ -1027,4 +1034,22 @@ const getPrecision = (value: number) => {
 const precisionRound = (value: number, precision: number) => {
   const factor = Math.pow(10, precision);
   return Math.round(value * factor) / factor;
+};
+
+const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
+  const legends: string[] = [];
+  if (data.length === 1) {
+    legends.push(data[0].name || '');
+  } else {
+    data.forEach((series, index) => {
+      legends.push(series.name || `Series ${index + 1}`);
+    });
+  }
+
+  const hideLegends = data.every((series: Partial<PlotData>) => series.showlegend === false);
+
+  return {
+    legends,
+    hideLegend: layout?.showlegend === false ? true : hideLegends,
+  };
 };
