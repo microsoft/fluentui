@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-theme';
 import { kumoSemanticTokens } from '@fluentui/semantic-tokens';
 import { defaultTheme, ThemeIds } from '../theme';
-import { DIR_ID, THEME_ID } from '../constants';
+import { DIR_ID, THEME_ID, TOKEN_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
 import { SEMANTIC_STYLE_HOOKS } from '@fluentui/semantic-style-hooks-preview';
@@ -46,9 +46,13 @@ export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentSt
   const globalTheme = findTheme(globals[THEME_ID]);
   const paramTheme = findTheme(parameters.fluentTheme);
   const theme = paramTheme ?? globalTheme ?? themes[defaultTheme.id];
+  const tokenType = globals[TOKEN_ID] ?? 'semantic';
+
+  // Only use semantic style hooks when in semantic mode
+  const customStyleHooks = tokenType === 'semantic' ? SEMANTIC_STYLE_HOOKS : undefined;
 
   return (
-    <FluentProvider theme={theme} dir={dir} customStyleHooks_unstable={SEMANTIC_STYLE_HOOKS}>
+    <FluentProvider theme={theme} dir={dir} customStyleHooks_unstable={customStyleHooks}>
       {isVrTest ? StoryFn() : <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>}
     </FluentProvider>
   );
