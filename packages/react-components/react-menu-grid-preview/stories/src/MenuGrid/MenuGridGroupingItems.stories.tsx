@@ -7,6 +7,7 @@ import {
   MenuGridRowGroup,
   MenuGridRowGroupHeader,
 } from '@fluentui/react-menu-grid-preview';
+import { DeleteRegular, GlobePersonRegular } from '@fluentui/react-icons';
 
 const items = {
   people: ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'],
@@ -27,11 +28,11 @@ export const GroupingItems = () => {
               <MenuGridRow key={index} aria-label={name}>
                 <MenuGridCell>{name}</MenuGridCell>
                 <MenuGridCell>
-                  <Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>
+                  <Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>
                 </MenuGridCell>
                 <MenuGridCell>
-                  <Button>Remove {name}</Button>
-                </MenuGridCell>
+                  <Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>
+                 </MenuGridCell>
               </MenuGridRow>
             ))}
           </MenuGridRowGroup>
@@ -41,11 +42,11 @@ export const GroupingItems = () => {
               <MenuGridRow key={index} aria-label={name}>
                 <MenuGridCell>{name}</MenuGridCell>
                 <MenuGridCell>
-                  <Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>
+                  <Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>
                 </MenuGridCell>
                 <MenuGridCell>
-                  <Button>Remove {name}</Button>
-                </MenuGridCell>
+                  <Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>
+               </MenuGridCell>
               </MenuGridRow>
             ))}
           </MenuGridRowGroup>
