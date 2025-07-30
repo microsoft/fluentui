@@ -13,9 +13,10 @@ import {
 import type { PreparedStory, Renderer, SBEnumType } from '@storybook/types';
 import { makeStyles, shorthands, tokens, Link, Text } from '@fluentui/react-components';
 import { InfoFilled } from '@fluentui/react-icons';
-import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
+import { DIR_ID, THEME_ID, TOKEN_ID, themes } from '@fluentui/react-storybook-addon';
 import { DirSwitch } from './DirSwitch.stories';
 import { ThemePicker } from './ThemePicker.stories';
+import { TokenSwitch } from './TokenSwitch.stories';
 import { Toc, nameToHash } from './Toc.stories';
 
 type PrimaryStory = PreparedStory<Renderer>;
@@ -281,6 +282,7 @@ export const FluentDocsPage = () => {
   assertStoryMetaValues(primaryStory);
 
   const dir = primaryStoryContext.parameters?.dir ?? primaryStoryContext.globals?.[DIR_ID] ?? 'ltr';
+  const token = primaryStoryContext.parameters?.token ?? primaryStoryContext.globals?.[TOKEN_ID] ?? 'semantic';
   const selectedTheme = themes.find(theme => theme.id === primaryStoryContext.globals![THEME_ID]);
 
   const hideArgsTable = Boolean(primaryStoryContext.parameters?.docs?.hideArgsTable);
@@ -308,6 +310,7 @@ export const FluentDocsPage = () => {
           <div className={styles.globalTogglesContainer}>
             <ThemePicker selectedThemeId={selectedTheme?.id} />
             <DirSwitch dir={dir} />
+            <TokenSwitch token={token} />
           </div>
           <Subtitle />
           <div className={styles.description}>

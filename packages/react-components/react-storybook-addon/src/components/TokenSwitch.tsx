@@ -10,13 +10,13 @@ const Monospace = styled.span({
   letterSpacing: '-0.05em',
 });
 
-export const TokensSwitch = () => {
+export const TokenSwitch = () => {
   const [globals, updateGlobals] = useGlobals();
 
   const token = globals[TOKEN_ID] ?? 'semantic';
   const isSemantic = token === 'semantic';
 
-  const toggleTokens = React.useCallback(
+  const toggleToken = React.useCallback(
     () =>
       updateGlobals({
         [TOKEN_ID]: isSemantic ? 'legacy' : 'semantic',
@@ -25,7 +25,7 @@ export const TokensSwitch = () => {
   );
 
   return (
-    <IconButton key={TOKEN_ID} title="Change Tokens" onClick={toggleTokens}>
+    <IconButton key={TOKEN_ID} title="Change Token" onClick={toggleToken}>
       <div>
         Tokens: <Monospace>{token.toUpperCase()}</Monospace>
       </div>

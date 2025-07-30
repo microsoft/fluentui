@@ -85,6 +85,9 @@ export const themes: readonly [{
     readonly label: "Semantic Kumo (Experimental)";
 }];
 
+// @public (undocumented)
+export const TOKEN_ID: "storybook_fluentui-react-addon_token";
+
 // (No @packageDocumentation comment for this package)
 
 ```
