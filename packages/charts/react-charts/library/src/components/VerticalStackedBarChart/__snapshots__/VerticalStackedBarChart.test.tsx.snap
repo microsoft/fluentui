@@ -1059,7 +1059,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           <g
             class="tick"
             opacity="1"
-            transform="translate(112.30000000000001,0)"
+            transform="translate(196,0)"
           >
             <line
               stroke="currentColor"
@@ -1071,61 +1071,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               fill="currentColor"
               y="16"
             >
-              2
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(168.10000000000002,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              4
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(223.89999999999998,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              6
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(279.70000000000005,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              8
+              5
             </text>
           </g>
           <g
@@ -1149,7 +1095,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           <g
             class="tick"
             opacity="1"
-            transform="translate(391.29999999999995,0)"
+            transform="translate(475,0)"
           >
             <line
               stroke="currentColor"
@@ -1161,61 +1107,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               fill="currentColor"
               y="16"
             >
-              12
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(447.09999999999997,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              14
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(502.90000000000003,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              16
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(558.7,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              18
+              15
             </text>
           </g>
           <g
@@ -1553,7 +1445,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           <g
             class="tick"
             opacity="1"
-            transform="translate(112.30000000000001,0)"
+            transform="translate(196,0)"
           >
             <line
               stroke="currentColor"
@@ -1565,61 +1457,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               fill="currentColor"
               y="16"
             >
-              2
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(168.10000000000002,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              4
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(223.89999999999998,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              6
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(279.70000000000005,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              8
+              5
             </text>
           </g>
           <g
@@ -1643,7 +1481,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           <g
             class="tick"
             opacity="1"
-            transform="translate(391.29999999999995,0)"
+            transform="translate(475,0)"
           >
             <line
               stroke="currentColor"
@@ -1655,61 +1493,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               fill="currentColor"
               y="16"
             >
-              12
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(447.09999999999997,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              14
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(502.90000000000003,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              16
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(558.7,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              18
+              15
             </text>
           </g>
           <g
@@ -2100,7 +1884,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(112.30000000000001,0)"
+            transform="translate(196,0)"
           >
             <line
               stroke="currentColor"
@@ -2112,61 +1896,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="currentColor"
               y="16"
             >
-              2
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(168.10000000000002,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              4
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(223.89999999999998,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              6
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(279.70000000000005,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              8
+              5
             </text>
           </g>
           <g
@@ -2190,7 +1920,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(391.29999999999995,0)"
+            transform="translate(475,0)"
           >
             <line
               stroke="currentColor"
@@ -2202,61 +1932,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="currentColor"
               y="16"
             >
-              12
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(447.09999999999997,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              14
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(502.90000000000003,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              16
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(558.7,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              18
+              15
             </text>
           </g>
           <g
@@ -2624,7 +2300,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(112.30000000000001,0)"
+            transform="translate(196,0)"
           >
             <line
               stroke="currentColor"
@@ -2636,61 +2312,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="currentColor"
               y="16"
             >
-              2
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(168.10000000000002,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              4
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(223.89999999999998,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              6
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(279.70000000000005,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              8
+              5
             </text>
           </g>
           <g
@@ -2714,7 +2336,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(391.29999999999995,0)"
+            transform="translate(475,0)"
           >
             <line
               stroke="currentColor"
@@ -2726,61 +2348,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="currentColor"
               y="16"
             >
-              12
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(447.09999999999997,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              14
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(502.90000000000003,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              16
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(558.7,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              18
+              15
             </text>
           </g>
           <g

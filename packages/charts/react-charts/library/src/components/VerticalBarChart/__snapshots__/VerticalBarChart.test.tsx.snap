@@ -28,13 +28,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         >
           <path
             class="domain"
-            d="M56.5,6V0.5H614.5V6"
+            d="M64.5,6V0.5H606.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(56.5,0)"
+            transform="translate(64.5,0)"
           >
             <line
               stroke="currentColor"
@@ -52,7 +52,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(99.42307692307693,0)"
+            transform="translate(168.73076923076923,0)"
           >
             <line
               stroke="currentColor"
@@ -64,67 +64,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               fill="currentColor"
               y="16"
             >
-              2000
+              5000
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(142.34615384615387,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              4000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(185.26923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              6000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(228.1923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              8000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(271.11538461538464,0)"
+            transform="translate(272.96153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -142,7 +88,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(314.03846153846155,0)"
+            transform="translate(377.1923076923077,0)"
           >
             <line
               stroke="currentColor"
@@ -154,67 +100,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               fill="currentColor"
               y="16"
             >
-              12,000
+              15,000
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(356.96153846153845,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              14,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(399.8846153846154,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              16,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(442.8076923076923,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              18,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(485.7307692307692,0)"
+            transform="translate(481.42307692307696,0)"
           >
             <line
               stroke="currentColor"
@@ -232,7 +124,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(528.6538461538462,0)"
+            transform="translate(585.6538461538462,0)"
           >
             <line
               stroke="currentColor"
@@ -244,43 +136,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               fill="currentColor"
               y="16"
             >
-              22,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(571.5769230769231,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              24,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(614.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              26,000
+              25,000
             </text>
           </g>
         </g>
@@ -401,14 +257,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               rx="0"
               tabindex="0"
               width="16"
-              x="48"
+              x="56"
               y="216"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="56"
+              x="64"
               y="210"
             >
               10k
@@ -425,14 +281,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               rx="0"
               tabindex="0"
               width="16"
-              x="262.61538461538464"
+              x="264.46153846153845"
               y="20"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="270.61538461538464"
+              x="272.46153846153845"
               y="14"
             >
               50k
@@ -449,14 +305,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               rx="0"
               tabindex="0"
               width="16"
-              x="584.5384615384615"
+              x="577.1538461538462"
               y="118"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="592.5384615384615"
+              x="585.1538461538462"
               y="112"
             >
               30k
@@ -571,13 +427,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         >
           <path
             class="domain"
-            d="M56.5,6V0.5H614.5V6"
+            d="M64.5,6V0.5H606.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(56.5,0)"
+            transform="translate(64.5,0)"
           >
             <line
               stroke="currentColor"
@@ -595,7 +451,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(99.42307692307693,0)"
+            transform="translate(168.73076923076923,0)"
           >
             <line
               stroke="currentColor"
@@ -607,67 +463,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               fill="currentColor"
               y="16"
             >
-              2000
+              5000
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(142.34615384615387,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              4000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(185.26923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              6000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(228.1923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              8000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(271.11538461538464,0)"
+            transform="translate(272.96153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -685,7 +487,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(314.03846153846155,0)"
+            transform="translate(377.1923076923077,0)"
           >
             <line
               stroke="currentColor"
@@ -697,67 +499,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               fill="currentColor"
               y="16"
             >
-              12,000
+              15,000
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(356.96153846153845,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              14,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(399.8846153846154,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              16,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(442.8076923076923,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              18,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(485.7307692307692,0)"
+            transform="translate(481.42307692307696,0)"
           >
             <line
               stroke="currentColor"
@@ -775,7 +523,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(528.6538461538462,0)"
+            transform="translate(585.6538461538462,0)"
           >
             <line
               stroke="currentColor"
@@ -787,43 +535,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               fill="currentColor"
               y="16"
             >
-              22,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(571.5769230769231,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              24,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(614.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              26,000
+              25,000
             </text>
           </g>
         </g>
@@ -944,14 +656,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               rx="0"
               tabindex="0"
               width="16"
-              x="48"
+              x="56"
               y="216"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="56"
+              x="64"
               y="210"
             >
               10k
@@ -968,14 +680,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               rx="0"
               tabindex="0"
               width="16"
-              x="262.61538461538464"
+              x="264.46153846153845"
               y="20"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="270.61538461538464"
+              x="272.46153846153845"
               y="14"
             >
               50k
@@ -992,14 +704,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               rx="0"
               tabindex="0"
               width="16"
-              x="584.5384615384615"
+              x="577.1538461538462"
               y="118"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="592.5384615384615"
+              x="585.1538461538462"
               y="112"
             >
               30k
@@ -1118,13 +830,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
           >
             <path
               class="domain"
-              d="M56.5,6V0.5H614.5V6"
+              d="M64.5,6V0.5H606.5V6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(56.5,0)"
+              transform="translate(64.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -1142,7 +854,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(99.42307692307693,0)"
+              transform="translate(168.73076923076923,0)"
             >
               <line
                 stroke="currentColor"
@@ -1154,67 +866,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 fill="currentColor"
                 y="16"
               >
-                2000
+                5000
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(142.34615384615387,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                4000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(185.26923076923077,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                6000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(228.1923076923077,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                8000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(271.11538461538464,0)"
+              transform="translate(272.96153846153845,0)"
             >
               <line
                 stroke="currentColor"
@@ -1232,7 +890,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(314.03846153846155,0)"
+              transform="translate(377.1923076923077,0)"
             >
               <line
                 stroke="currentColor"
@@ -1244,67 +902,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 fill="currentColor"
                 y="16"
               >
-                12,000
+                15,000
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(356.96153846153845,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                14,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(399.8846153846154,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                16,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(442.8076923076923,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                18,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(485.7307692307692,0)"
+              transform="translate(481.42307692307696,0)"
             >
               <line
                 stroke="currentColor"
@@ -1322,7 +926,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(528.6538461538462,0)"
+              transform="translate(585.6538461538462,0)"
             >
               <line
                 stroke="currentColor"
@@ -1334,43 +938,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 fill="currentColor"
                 y="16"
               >
-                22,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(571.5769230769231,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                24,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(614.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                26,000
+                25,000
               </text>
             </g>
           </g>
@@ -1491,14 +1059,14 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 rx="0"
                 tabindex="0"
                 width="16"
-                x="48"
+                x="56"
                 y="216"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
-                x="56"
+                x="64"
                 y="210"
               >
                 10k
@@ -1515,14 +1083,14 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 rx="0"
                 tabindex="0"
                 width="16"
-                x="262.61538461538464"
+                x="264.46153846153845"
                 y="20"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
-                x="270.61538461538464"
+                x="272.46153846153845"
                 y="14"
               >
                 50k
@@ -1539,14 +1107,14 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 rx="0"
                 tabindex="0"
                 width="16"
-                x="584.5384615384615"
+                x="577.1538461538462"
                 y="118"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
-                x="592.5384615384615"
+                x="585.1538461538462"
                 y="112"
               >
                 30k
@@ -1673,13 +1241,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
         >
           <path
             class="domain"
-            d="M56.5,6V0.5H614.5V6"
+            d="M64.5,6V0.5H606.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(56.5,0)"
+            transform="translate(64.5,0)"
           >
             <line
               stroke="currentColor"
@@ -1697,7 +1265,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(99.42307692307693,0)"
+            transform="translate(168.73076923076923,0)"
           >
             <line
               stroke="currentColor"
@@ -1709,67 +1277,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               fill="currentColor"
               y="16"
             >
-              2000
+              5000
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(142.34615384615387,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              4000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(185.26923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              6000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(228.1923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              8000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(271.11538461538464,0)"
+            transform="translate(272.96153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -1787,7 +1301,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(314.03846153846155,0)"
+            transform="translate(377.1923076923077,0)"
           >
             <line
               stroke="currentColor"
@@ -1799,67 +1313,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               fill="currentColor"
               y="16"
             >
-              12,000
+              15,000
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(356.96153846153845,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              14,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(399.8846153846154,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              16,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(442.8076923076923,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              18,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(485.7307692307692,0)"
+            transform="translate(481.42307692307696,0)"
           >
             <line
               stroke="currentColor"
@@ -1877,7 +1337,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(528.6538461538462,0)"
+            transform="translate(585.6538461538462,0)"
           >
             <line
               stroke="currentColor"
@@ -1889,43 +1349,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               fill="currentColor"
               y="16"
             >
-              22,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(571.5769230769231,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              24,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(614.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              26,000
+              25,000
             </text>
           </g>
         </g>
@@ -2046,14 +1470,14 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               rx="0"
               tabindex="0"
               width="16"
-              x="48"
+              x="56"
               y="216"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="56"
+              x="64"
               y="210"
             >
               10k
@@ -2070,14 +1494,14 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               rx="0"
               tabindex="0"
               width="16"
-              x="262.61538461538464"
+              x="264.46153846153845"
               y="20"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="270.61538461538464"
+              x="272.46153846153845"
               y="14"
             >
               50k
@@ -2094,14 +1518,14 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               rx="0"
               tabindex="0"
               width="16"
-              x="584.5384615384615"
+              x="577.1538461538462"
               y="118"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="592.5384615384615"
+              x="585.1538461538462"
               y="112"
             >
               30k
@@ -2216,13 +1640,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         >
           <path
             class="domain"
-            d="M49,6V0.5H-28V6"
+            d="M49.5,6V0.5H-28.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(49,0)"
+            transform="translate(49.5,0)"
           >
             <line
               stroke="currentColor"
@@ -2240,7 +1664,25 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(19.384615384615387,0)"
+            transform="translate(34.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              5000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(19.5,0)"
           >
             <line
               stroke="currentColor"
@@ -2258,7 +1700,25 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(-10.230769230769234,0)"
+            transform="translate(4.5000000000000036,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              15,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-10.500000000000005,0)"
           >
             <line
               stroke="currentColor"
@@ -2271,6 +1731,24 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               y="16"
             >
               20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-25.500000000000004,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              25,000
             </text>
           </g>
         </g>
@@ -2391,7 +1869,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               rx="0"
               tabindex="0"
               width="1"
-              x="48"
+              x="48.5"
               y="20"
             />
           </g>
@@ -2406,7 +1884,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               rx="0"
               tabindex="0"
               width="1"
-              x="18.384615384615387"
+              x="18.5"
               y="20"
             />
           </g>
@@ -2421,7 +1899,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               rx="0"
               tabindex="0"
               width="1"
-              x="-26.03846153846154"
+              x="-26.500000000000004"
               y="20"
             />
           </g>
@@ -2534,13 +2012,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         >
           <path
             class="domain"
-            d="M49,6V0.5H-28V6"
+            d="M49.5,6V0.5H-28.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(49,0)"
+            transform="translate(49.5,0)"
           >
             <line
               stroke="currentColor"
@@ -2558,7 +2036,25 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(19.384615384615387,0)"
+            transform="translate(34.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              5000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(19.5,0)"
           >
             <line
               stroke="currentColor"
@@ -2576,7 +2072,25 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(-10.230769230769234,0)"
+            transform="translate(4.5000000000000036,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              15,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-10.500000000000005,0)"
           >
             <line
               stroke="currentColor"
@@ -2589,6 +2103,24 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               y="16"
             >
               20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-25.500000000000004,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              25,000
             </text>
           </g>
         </g>
@@ -2709,7 +2241,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               rx="0"
               tabindex="0"
               width="1"
-              x="48"
+              x="48.5"
               y="224"
             />
           </g>
@@ -2724,7 +2256,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               rx="0"
               tabindex="0"
               width="1"
-              x="18.384615384615387"
+              x="18.5"
               y="20"
             />
           </g>
@@ -2739,7 +2271,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               rx="0"
               tabindex="0"
               width="1"
-              x="-26.03846153846154"
+              x="-26.500000000000004"
               y="122"
             />
           </g>
@@ -2855,6 +2387,78 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             d="M48.5,6V0.5H-27.5V6"
             stroke="currentColor"
           />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(44.2,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              This is a medium long label. 
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(21.400000000000002,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              This is a long label This is a long label
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-1.3999999999999986,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              This label is as long as the previous one
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-24.2,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              A short label
+            </text>
+          </g>
         </g>
         <g
           class="fui-cart__yAxis"
@@ -3101,13 +2705,13 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
         >
           <path
             class="domain"
-            d="M49,6V0.5H-28V6"
+            d="M49.5,6V0.5H-28.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(49,0)"
+            transform="translate(49.5,0)"
           >
             <line
               stroke="currentColor"
@@ -3125,7 +2729,25 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(19.384615384615387,0)"
+            transform="translate(34.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              5000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(19.5,0)"
           >
             <line
               stroke="currentColor"
@@ -3143,7 +2765,25 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(-10.230769230769234,0)"
+            transform="translate(4.5000000000000036,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              15,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-10.500000000000005,0)"
           >
             <line
               stroke="currentColor"
@@ -3156,6 +2796,24 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               y="16"
             >
               20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-25.500000000000004,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              25,000
             </text>
           </g>
         </g>
@@ -3294,7 +2952,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               rx="0"
               tabindex="0"
               width="1"
-              x="48"
+              x="48.5"
               y="96.5"
             />
           </g>
@@ -3309,7 +2967,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               rx="0"
               tabindex="0"
               width="1"
-              x="18.384615384615387"
+              x="18.5"
               y="122"
             />
           </g>
@@ -3324,7 +2982,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               rx="0"
               tabindex="0"
               width="1"
-              x="-26.03846153846154"
+              x="-26.500000000000004"
               y="45.5"
             />
           </g>
@@ -3437,13 +3095,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         >
           <path
             class="domain"
-            d="M56.5,6V0.5H614.5V6"
+            d="M64.5,6V0.5H606.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(56.5,0)"
+            transform="translate(64.5,0)"
           >
             <line
               stroke="currentColor"
@@ -3461,7 +3119,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(99.42307692307693,0)"
+            transform="translate(168.73076923076923,0)"
           >
             <line
               stroke="currentColor"
@@ -3473,67 +3131,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               fill="currentColor"
               y="16"
             >
-              2000
+              5000
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(142.34615384615387,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              4000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(185.26923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              6000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(228.1923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              8000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(271.11538461538464,0)"
+            transform="translate(272.96153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -3551,7 +3155,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(314.03846153846155,0)"
+            transform="translate(377.1923076923077,0)"
           >
             <line
               stroke="currentColor"
@@ -3563,67 +3167,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               fill="currentColor"
               y="16"
             >
-              12,000
+              15,000
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(356.96153846153845,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              14,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(399.8846153846154,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              16,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(442.8076923076923,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              18,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(485.7307692307692,0)"
+            transform="translate(481.42307692307696,0)"
           >
             <line
               stroke="currentColor"
@@ -3641,7 +3191,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(528.6538461538462,0)"
+            transform="translate(585.6538461538462,0)"
           >
             <line
               stroke="currentColor"
@@ -3653,43 +3203,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               fill="currentColor"
               y="16"
             >
-              22,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(571.5769230769231,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              24,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(614.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              26,000
+              25,000
             </text>
           </g>
         </g>
@@ -3810,14 +3324,14 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               rx="0"
               tabindex="0"
               width="16"
-              x="48"
+              x="56"
               y="216"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="56"
+              x="64"
               y="210"
             >
               10k
@@ -3834,14 +3348,14 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               rx="0"
               tabindex="0"
               width="16"
-              x="262.61538461538464"
+              x="264.46153846153845"
               y="20"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="270.61538461538464"
+              x="272.46153846153845"
               y="14"
             >
               50k
@@ -3858,14 +3372,14 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               rx="0"
               tabindex="0"
               width="16"
-              x="584.5384615384615"
+              x="577.1538461538462"
               y="118"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="592.5384615384615"
+              x="585.1538461538462"
               y="112"
             >
               30k
@@ -4036,13 +3550,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         >
           <path
             class="domain"
-            d="M56.5,6V0.5H614.5V6"
+            d="M64.5,6V0.5H606.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(56.5,0)"
+            transform="translate(64.5,0)"
           >
             <line
               stroke="currentColor"
@@ -4060,7 +3574,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(99.42307692307693,0)"
+            transform="translate(168.73076923076923,0)"
           >
             <line
               stroke="currentColor"
@@ -4072,67 +3586,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               fill="currentColor"
               y="16"
             >
-              2000
+              5000
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(142.34615384615387,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              4000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(185.26923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              6000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(228.1923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              8000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(271.11538461538464,0)"
+            transform="translate(272.96153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -4150,7 +3610,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(314.03846153846155,0)"
+            transform="translate(377.1923076923077,0)"
           >
             <line
               stroke="currentColor"
@@ -4162,67 +3622,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               fill="currentColor"
               y="16"
             >
-              12,000
+              15,000
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(356.96153846153845,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              14,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(399.8846153846154,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              16,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(442.8076923076923,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              18,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(485.7307692307692,0)"
+            transform="translate(481.42307692307696,0)"
           >
             <line
               stroke="currentColor"
@@ -4240,7 +3646,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(528.6538461538462,0)"
+            transform="translate(585.6538461538462,0)"
           >
             <line
               stroke="currentColor"
@@ -4252,43 +3658,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               fill="currentColor"
               y="16"
             >
-              22,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(571.5769230769231,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              24,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(614.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              26,000
+              25,000
             </text>
           </g>
         </g>
@@ -4409,14 +3779,14 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               rx="0"
               tabindex="0"
               width="16"
-              x="48"
+              x="56"
               y="216"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="56"
+              x="64"
               y="210"
             >
               10k
@@ -4433,14 +3803,14 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               rx="0"
               tabindex="0"
               width="16"
-              x="262.61538461538464"
+              x="264.46153846153845"
               y="20"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="270.61538461538464"
+              x="272.46153846153845"
               y="14"
             >
               50k
@@ -4457,14 +3827,14 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               rx="0"
               tabindex="0"
               width="16"
-              x="584.5384615384615"
+              x="577.1538461538462"
               y="118"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="592.5384615384615"
+              x="585.1538461538462"
               y="112"
             >
               30k
@@ -4632,7 +4002,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
@@ -4651,7 +4021,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
@@ -4670,7 +4040,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -4880,7 +4250,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
@@ -4899,7 +4269,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
@@ -4918,7 +4288,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -5128,7 +4498,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             rx={3}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
@@ -5147,7 +4517,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             rx={3}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
@@ -5166,7 +4536,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             rx={3}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -5376,7 +4746,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
@@ -5395,7 +4765,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
@@ -5414,7 +4784,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -5624,7 +4994,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
@@ -5643,7 +5013,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
@@ -5662,7 +5032,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -5892,7 +5262,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
@@ -5911,7 +5281,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
@@ -5930,7 +5300,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -5986,7 +5356,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             role="img"
             rx={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
@@ -6004,7 +5374,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             role="img"
             rx={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
@@ -6022,7 +5392,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             role="img"
             rx={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -6232,7 +5602,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
@@ -6251,7 +5621,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
@@ -6270,7 +5640,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -6457,7 +5827,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
       <g
         className="fui-cart__xAxis"
         id="xAxisGElementchart_"
-        transform="translate(0, NaN)"
+        transform="translate(0, -35)"
       />
       <g
         className="fui-cart__yAxis"
@@ -6469,7 +5839,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
-            height={NaN}
+            height={11}
             id="_VBC_bar_r15-0"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -6480,15 +5850,15 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
-            y={NaN}
+            x={48.5}
+            y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
-            height={NaN}
+            height={55}
             id="_VBC_bar_r15-1"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -6499,15 +5869,15 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
-            y={NaN}
+            x={18.5}
+            y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
-            height={NaN}
+            height={33}
             id="_VBC_bar_r15-2"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -6518,8 +5888,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
-            y={NaN}
+            x={-26.500000000000004}
+            y={-35}
           />
         </g>
       </g>
@@ -6728,7 +6098,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
@@ -6747,7 +6117,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
@@ -6766,7 +6136,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
