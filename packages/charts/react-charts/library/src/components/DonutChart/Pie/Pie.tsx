@@ -46,7 +46,13 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function arcGenerator(d: any, i: number, focusData: any, href?: string): JSX.Element {
+    function arcGenerator(
+      d: any,
+      i: number,
+      focusData: any,
+      href?: string,
+    ): // eslint-disable-next-line @typescript-eslint/no-deprecated
+    JSX.Element {
       const color = d && d.data && d.data.color;
       return (
         <Arc

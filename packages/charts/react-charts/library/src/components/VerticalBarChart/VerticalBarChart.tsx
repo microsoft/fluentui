@@ -310,7 +310,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
 
   function _adjustProps(): void {
     _points = props.data || [];
-    _barWidth = getBarWidth(props.barWidth, props.maxBarWidth);
+    _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, undefined, props.mode);
     const defaultColors: string[] = [
       tokens.colorPaletteBlueForeground2,
       tokens.colorPaletteCornflowerForeground2,
@@ -601,8 +601,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const xMin = d3Min(_points, (point: VerticalBarChartDataPoint) => point.x as number)!;
       xBarScale = d3ScaleLinear()
         .domain(_useRtl ? [xMax, xMin] : [xMin, xMax])
-        .nice()
         .range([margins.left! + _domainMargin, containerWidth - margins.right! - _domainMargin]);
+      if (!isScalePaddingDefined(props.xAxisInnerPadding, props.xAxisPadding) && props.mode !== 'histogram') {
+        xBarScale.nice();
+      }
     } else if (_xAxisType === XAxisTypes.DateAxis) {
       const sDate = d3Min(_points, (point: VerticalBarChartDataPoint) => point.x as Date)!;
       const lDate = d3Max(_points, (point: VerticalBarChartDataPoint) => point.x as Date)!;
@@ -750,7 +752,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       // Setting the bar width here is safe because there are no dependencies earlier in the code
       // that rely on the width of bars in vertical bar charts with string x-axis.
-      _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, xBarScale.bandwidth());
+      _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, xBarScale.bandwidth(), props.mode);
       return (
         <g
           key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
@@ -1116,6 +1118,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         props.mode,
       );
       _domainMargin += _barWidth / 2;
+      _domainMargin += _barWidth / 2;
     }
 
     return {
@@ -1200,6 +1203,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         xAxisOuterPadding: _xAxisOuterPadding,
       })}
       componentRef={cartesianChartRef}
+      showRoundOffXTickValues={
+        !isScalePaddingDefined(props.xAxisInnerPadding, props.xAxisPadding) && props.mode !== 'histogram'
+      }
       /* eslint-disable react/jsx-no-bind */
       // eslint-disable-next-line react/no-children-prop
       children={(props: ChildProps) => {

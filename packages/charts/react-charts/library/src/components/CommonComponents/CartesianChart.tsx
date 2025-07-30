@@ -234,7 +234,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       containerHeight: containerHeight - _removalValueForTextTuncate,
       margins: margins,
       xAxisElement: xAxisElement.current!,
-      showRoundOffXTickValues: true,
+      showRoundOffXTickValues: props.showRoundOffXTickValues ?? true,
       xAxisCount: props.xAxisTickCount,
       xAxistickSize: props.xAxistickSize,
       tickPadding: props.tickPadding || props.showXAxisLablesTooltip ? 5 : 10,

@@ -232,7 +232,7 @@ export interface Chart {
 }
 
 // @public
-export type ChartDataMode = 'default' | 'fraction' | 'percentage';
+export type ChartDataMode = 'default' | 'fraction' | 'percentage' | 'hidden';
 
 // @public (undocumented)
 export interface ChartDataPoint {
@@ -838,6 +838,7 @@ export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivEl
     // (undocumented)
     legendsOverflowText?: any;
     onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSX.Element | undefined;
+    showLegendForSinglePointBar?: boolean;
     showTriangle?: boolean;
     styles?: HorizontalBarChartStyles;
     variant?: HorizontalBarChartVariant;
@@ -948,6 +949,7 @@ export interface Legend {
     color: string;
     hoverAction?: VoidFunction;
     isLineLegendInBarChart?: boolean;
+    legendAnnotation?: () => React_2.ReactNode;
     // (undocumented)
     nativeButtonProps?: React_2.ButtonHTMLAttributes<HTMLButtonElement>;
     onMouseOutAction?: (isLegendFocused?: boolean) => void;
@@ -990,8 +992,11 @@ export interface LegendsProps {
 
 // @public
 export interface LegendsStyles {
+    annotation?: string;
     hoverChange?: string;
     legend?: string;
+    // (undocumented)
+    legendContainer?: string;
     rect?: string;
     resizableArea?: string;
     root?: string;
@@ -1162,6 +1167,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
     points: any;
+    showRoundOffXTickValues?: boolean;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];

@@ -256,7 +256,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   const legendBars: JSX.Element = _getLegendData(points);
   _adjustProps();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-anyAdd commentMore actions
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Add commentMore actions
   function _getMinMaxOfYAxis(datasetForBars: any, yAxisType?: YAxisType, useSecondaryYScale?: boolean) {
     const values: number[] = [];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -653,10 +653,13 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         let reqWidth = calcRequiredWidth(groupWidth, _xAxisLabels.length, _xAxisInnerPadding);
         const margin1 = (totalWidth - reqWidth) / 2;
 
-        // Calculate the remaining width after accounting for the space required to render x-axis labels
-        const step = calculateLongestLabelWidth(xAxisLabels) + 20;
-        reqWidth = (xAxisLabels.length - _xAxisInnerPadding) * step;
-        const margin2 = (totalWidth - reqWidth) / 2;
+        let margin2 = Number.POSITIVE_INFINITY;
+        if (!props.hideTickOverlap) {
+          // Calculate the remaining width after accounting for the space required to render x-axis labels
+          const step = calculateLongestLabelWidth(_xAxisLabels) + 20;
+          reqWidth = (_xAxisLabels.length - _xAxisInnerPadding) * step;
+          margin2 = (totalWidth - reqWidth) / 2;
+        }
 
         _domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
