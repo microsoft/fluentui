@@ -2,6 +2,45 @@
   "name": "@fluentui/react-calendar-compat",
   "entries": [
     {
+      "date": "Wed, 30 Jul 2025 13:10:57 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.3.6",
+      "version": "0.3.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.1.4",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.24.1",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.26.2",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-theme to v9.2.0",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-utilities to v9.23.1",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Jul 2025 18:48:21 GMT",
       "tag": "@fluentui/react-calendar-compat_v0.3.5",
       "version": "0.3.5",

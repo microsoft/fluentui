@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Mon, 28 Jul 2025 18:48:21 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jul 2025 13:10:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.14.2)
+
+Wed, 30 Jul 2025 13:10:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.14.1..@fluentui/react-dialog_v9.14.2)
+
+### Patches
+
+- fix: DialogSurface and DialogBody height respects custom maxHeight styles by replacing @supports rules with Griffel fallback arrays ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by 198982749+Copilot@users.noreply.github.com)
+- Bump @fluentui/react-utilities to v9.23.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.4 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.4 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-motion to v9.10.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.8.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.24.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-aria to v9.16.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-tabster to v9.26.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-theme to v9.2.0 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-portal to v9.7.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
 
 ## [9.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.14.1)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "GVBC FIX",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

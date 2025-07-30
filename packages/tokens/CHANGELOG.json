@@ -2,6 +2,21 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Wed, 30 Jul 2025 13:10:56 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.22",
+      "version": "1.0.0-alpha.22",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "c847809beaf412a97d993be0a2b525fd92216346",
+            "comment": "Brand ramp update"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Dec 2024 16:26:46 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.21",
       "version": "1.0.0-alpha.21",

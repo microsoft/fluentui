@@ -2,6 +2,57 @@
   "name": "@fluentui/react-list",
   "entries": [
     {
+      "date": "Wed, 30 Jul 2025 13:10:57 GMT",
+      "tag": "@fluentui/react-list_v9.4.1",
+      "version": "9.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list",
+            "comment": "Bump @fluentui/react-checkbox to v9.5.2",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.4",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.1.4",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list",
+            "comment": "Bump @fluentui/react-tabster to v9.26.2",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list",
+            "comment": "Bump @fluentui/react-theme to v9.2.0",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list",
+            "comment": "Bump @fluentui/react-utilities to v9.23.1",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.24.1",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Jul 2025 18:48:18 GMT",
       "tag": "@fluentui/react-list_v9.4.0",
       "version": "9.4.0",

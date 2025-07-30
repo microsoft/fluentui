@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-storybook-addon
 
-This log was last generated on Mon, 28 Jul 2025 18:48:21 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jul 2025 13:10:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.3.0)
+
+Wed, 30 Jul 2025 13:10:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.2.5..@fluentui/react-storybook-addon_v0.3.0)
+
+### Minor changes
+
+- Add new brand ramp version ([PR #34900](https://github.com/microsoft/fluentui/pull/34900) by jukapsia@microsoft.com)
+- Bump @fluentui/react-aria to v9.16.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-provider to v9.22.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-theme to v9.2.0 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
 
 ## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.2.5)
 
