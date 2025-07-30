@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { CartesianChartStyleProps } from '../CommonComponents/index';
 import { ChartProps, ChartDataPoint, Chart } from './index';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
@@ -32,7 +33,7 @@ export interface DonutChartProps {
   /**
    * Define a custom callout renderer for a data point
    */
-  onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSX.Element | undefined;
+  onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSXElement | undefined;
 
   /**
    * Define a custom callout props override
