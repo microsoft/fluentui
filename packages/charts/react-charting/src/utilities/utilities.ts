@@ -682,8 +682,17 @@ export function createNumericYAxis(
     eventLabelHeight,
   } = yAxisParams;
 
-  let scaleDomain: number[];
-  let domainValues: number[];
+  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
+  const tempVal = maxOfYVal || yMinMaxValues.endValue || 0;
+  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
+  const finalYmin = supportNegativeData
+    ? Math.min(yMinMaxValues.startValue || 0, yMinValue || 0)
+    : yMinMaxValues.startValue < yMinValue
+    ? 0
+    : yMinValue!;
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
+  let scaleDomain = [supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]];
+
   if (scale === 'log') {
     let domainStart = yMinMaxValues.startValue;
     let domainEnd = yMinMaxValues.endValue;
@@ -694,41 +703,25 @@ export function createNumericYAxis(
       domainEnd = Math.max(domainEnd, yMaxValue);
     }
     scaleDomain = [domainStart, domainEnd];
-  } else {
-    // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
-    const tempVal = maxOfYVal || yMinMaxValues.endValue || 0;
-    const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-    const finalYmin = supportNegativeData
-      ? Math.min(yMinMaxValues.startValue || 0, yMinValue || 0)
-      : yMinMaxValues.startValue < yMinValue
-      ? 0
-      : yMinValue!;
-
-    domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
-    scaleDomain = [supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]];
   }
 
   const yAxisScale = createNumericScale(scale)
     .domain(scaleDomain)
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
-
-  if (scale === 'log') {
-    domainValues = [];
-    yAxisScale.ticks().forEach(t => {
-      if (yAxisScale.tickFormat(yAxisTickCount)(t) !== '') {
-        domainValues.push(t);
-      }
-    });
-  }
-
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis
-    .tickPadding(tickPadding)
-    .tickValues(domainValues)
-    .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+  const yAxis = axis.tickPadding(tickPadding).tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+  if (scale !== 'log') {
+    yAxis.tickValues(domainValues);
+  }
 
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
+  const tickFormat = (domainValue: NumberValue, index: number, defaultFormat?: (val: NumberValue) => string) => {
+    const value = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
+    return defaultFormat?.(value) === '' ? '' : defaultYAxisTickFormatter(value);
+  };
+  yAxisTickFormat
+    ? yAxis.tickFormat(yAxisTickFormat)
+    : yAxis.tickFormat((v, i) => tickFormat(v, i, yAxisScale.tickFormat(yAxisTickCount)));
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
@@ -1866,6 +1859,7 @@ export function domainRangeOfDateForScatterChart(
   width: number,
   isRTL: boolean,
   tickValues: Date[] = [],
+  scale?: AxisScale,
 ): IDomainNRange {
   let sDate: Date;
   let lDate: Date;
@@ -1882,9 +1876,9 @@ export function domainRangeOfDateForScatterChart(
     });
   })!;
 
-  const xPadding = (lDate.getTime() - sDate.getTime()) * 0.1;
-  sDate = new Date(sDate.getTime() - xPadding);
-  lDate = new Date(lDate.getTime() + xPadding);
+  const xPadding = getPadding(sDate.getTime(), lDate.getTime(), scale);
+  sDate = new Date(sDate.getTime() - xPadding.start);
+  lDate = new Date(lDate.getTime() + xPadding.end);
   // Need to draw graph with given small and large date
   // (Which Involves customization of date axis tick values)
   // That may be Either from given graph data or from prop 'tickValues' date values.
@@ -1931,7 +1925,7 @@ export function domainRangeOfNumericForScatterChart(
     });
   })!;
 
-  const xPadding = getPadding(xMin, xMax, true, scale);
+  const xPadding = getPadding(xMin, xMax, scale);
   xMin = xMin - xPadding.start;
   xMax = xMax + xPadding.end;
 
@@ -2067,8 +2061,8 @@ const createNumericScale = (type: AxisScale | undefined) => {
   }
 };
 
-export const getPadding = (minValue: number, maxValue: number, isNumeric: boolean, scale: AxisScale | undefined) => {
-  if (isNumeric && scale === 'log') {
+export const getPadding = (minValue: number, maxValue: number, scale: AxisScale | undefined) => {
+  if (scale === 'log') {
     return {
       start: minValue * 0.5,
       end: maxValue,
@@ -2081,25 +2075,6 @@ export const getPadding = (minValue: number, maxValue: number, isNumeric: boolea
     end: defaultPadding,
   };
 };
-
-// export const getPaddingInverse = (
-//   minValueWithPadding: number,
-//   maxValueWithPadding: number,
-//   isNumeric: boolean,
-//   scale: AxisScale | undefined,
-// ) => {
-//   if (isNumeric && scale === 'log') {
-//     return {
-//       start: minValueWithPadding * 9,
-//       end: maxValueWithPadding * 0.9,
-//     };
-//   }
-
-//   return {
-//     start: (maxValueWithPadding - minValueWithPadding) * (1 / 12),
-//     end: (maxValueWithPadding - minValueWithPadding) * (1 / 12),
-//   };
-// };
 
 export const filterPointsForLogScale = (value: any, scale: AxisScale | undefined) => {
   return typeof value !== 'number' || scale !== 'log' || value > 0;
