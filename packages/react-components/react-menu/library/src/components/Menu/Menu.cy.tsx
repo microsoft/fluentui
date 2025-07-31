@@ -1,5 +1,6 @@
 import { mount as mountBase } from '@cypress/react';
 import { makeStyles } from '@griffel/react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   Menu,
   MenuTrigger,
@@ -35,10 +36,7 @@ const useStyles = makeStyles({
   },
 });
 
-const mount = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

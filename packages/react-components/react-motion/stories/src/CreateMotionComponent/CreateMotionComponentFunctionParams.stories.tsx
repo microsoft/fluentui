@@ -91,8 +91,8 @@ const Scale = createMotionComponent<{ startFrom?: number }>(({ startFrom = 0.5 }
 export const CreateMotionComponentFunctionParams = () => {
   const classes = useClasses();
 
-  const motionBRef = React.useRef<MotionImperativeRef>();
-  const motionARef = React.useRef<MotionImperativeRef>();
+  const motionBRef = React.useRef<MotionImperativeRef>(null);
+  const motionARef = React.useRef<MotionImperativeRef>(null);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(20);
 

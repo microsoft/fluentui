@@ -46,6 +46,16 @@ export interface LegendsStyles {
    * Style for the area that is resizable
    */
   resizableArea?: string;
+
+  /*
+   * Style for the container that holds the legend and any optional JSX annotation from client is used
+   */
+  legendContainer?: string;
+
+  /**
+   * Style for the annotation that is used in the legend
+   */
+  annotation?: string;
 }
 
 /**
@@ -103,6 +113,11 @@ export interface Legend {
    *  native button props for the legend button
    */
   nativeButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+  /**
+   * The annotation for the legend, function returning a React node
+   */
+  legendAnnotation?: () => React.ReactNode;
 }
 
 /**
@@ -232,6 +247,11 @@ export interface LegendsProps {
    * The shape for the legend.
    */
   shape?: LegendShape;
+
+  /**
+   * Callback to access the public methods and properties of the component.
+   */
+  legendRef?: React.RefObject<LegendContainer>;
 }
 
 /**
@@ -242,3 +262,17 @@ export interface LegendsProps {
  * {@docCategory Legends}
  */
 export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
+
+/**
+ * {@docCategory Legends}
+ */
+export interface LegendContainer {
+  toSVG: (
+    svgWidth: number,
+    isRTL?: boolean,
+  ) => {
+    node: SVGGElement | null;
+    width: number;
+    height: number;
+  };
+}

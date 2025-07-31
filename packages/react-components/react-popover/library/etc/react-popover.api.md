@@ -11,6 +11,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
@@ -44,7 +45,7 @@ export type PopoverContextValue = Pick<PopoverState, 'open' | 'toggleOpen' | 'se
 // @public
 export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     appearance?: 'brand' | 'inverted';
-    children: [JSX.Element, JSX.Element] | JSX.Element;
+    children: [JSXElement, JSXElement] | JSXElement;
     closeOnScroll?: boolean;
     defaultOpen?: boolean;
     inline?: boolean;
@@ -125,7 +126,7 @@ export type PopoverTriggerState = {
 };
 
 // @public
-export const renderPopover_unstable: (state: PopoverState) => JSX.Element;
+export const renderPopover_unstable: (state: PopoverState) => JSXElement;
 
 // @public
 export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSX.Element;

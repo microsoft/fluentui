@@ -131,7 +131,7 @@ const VideoPreviews: React.FC<{
   );
 };
 
-const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
+const getNativeElementsList = (elements: SBEnumType['value']): React.ReactElement => {
   const elementsArr = elements?.map((el, idx) => [
     <code key={idx}>{`<${el}>`}</code>,
     idx !== elements.length - 1 ? ', ' : ' ',

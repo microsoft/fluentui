@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { getNextChildMapping } from '../utils/groups/getNextChildMapping';
 import { getChildMapping } from '../utils/groups/getChildMapping';
 import type { PresenceGroupChildMapping } from '../utils/groups/types';
@@ -32,7 +33,7 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
     };
   }
 
-  constructor(props: PresenceGroupProps, context: unknown) {
+  constructor(props: PresenceGroupProps, context?: unknown) {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 
@@ -66,9 +67,7 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
   componentWillUnmount() {
     this.mounted = false;
   }
-
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  render(): JSX.Element {
+  render(): JSXElement {
     return (
       <>
         {Object.entries(this.state.childMapping).map(([childKey, childProps]) => (

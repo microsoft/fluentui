@@ -6,12 +6,13 @@ import { sum as d3Sum } from 'd3-array';
 import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
 import { Selection as D3Selection, select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
-import { Margins, SLink, SNode } from '../../types/DataPoint';
+import { Margins, SLink, SNode, ImageExportOptions } from '../../types/DataPoint';
 import { SankeyChartData, SankeyChartProps } from './SankeyChart.types';
 import { useSankeyChartStyles } from './useSankeyChartStyles.styles';
 import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { format } from '../../utilities/string';
+import { toImage } from '../../utilities/image-export-utils';
 
 const PADDING_PERCENTAGE = 0.3;
 
@@ -571,6 +572,9 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
     props.componentRef,
     () => ({
       chartContainer: chartContainer.current,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(chartContainer.current, undefined, _isRtl, opts);
+      },
     }),
     [],
   );

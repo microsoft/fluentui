@@ -103,10 +103,6 @@ const dashOptions = {
   },
 } as const;
 
-const getLegend = (series: Partial<PlotData>, index: number): string => {
-  return series.name || `Series ${index + 1}`;
-};
-
 function getTitles(layout: Partial<Layout> | undefined) {
   const titles = {
     chartTitle: typeof layout?.title === 'string' ? layout.title : layout?.title?.text ?? '',
@@ -269,6 +265,7 @@ export const transformPlotlyJsonToVSBCProps = (
   const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
   let yMaxValue = 0;
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   let yMinValue = 0;
   input.data.forEach((series: PlotData, index1: number) => {
     const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
@@ -276,7 +273,7 @@ export const transformPlotlyJsonToVSBCProps = (
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { xAxisPoint: isXYearCategory ? x.toString() : x, chartData: [], lineData: [] };
       }
-      const legend: string = getLegend(series, index1);
+      const legend: string = legends[index1];
       const yVal: number = (series.y?.[index2] as number) ?? 0;
       if (series.type === 'bar') {
         const color = getColor(legend, colorMap, isDarkTheme);
@@ -289,8 +286,12 @@ export const transformPlotlyJsonToVSBCProps = (
       } else if (series.type === 'scatter' || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
+        const dashType = series.line?.dash || 'solid';
+        const legendShape =
+          dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
         mapXToDataPoints[x].lineData!.push({
           legend,
+          legendShape,
           y: yVal,
           color,
           ...(lineOptions ? { lineOptions } : {}),
@@ -322,6 +323,7 @@ export const transformPlotlyJsonToVSBCProps = (
     ...secondaryYAxisValues,
     hideTickOverlap: true,
     barGapMax: 2,
+    hideLegend,
   };
 };
 
@@ -332,13 +334,14 @@ export const transformPlotlyJsonToGVBCProps = (
 ): GroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, GroupedVerticalBarChartData> = {};
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   input.data.forEach((series: PlotData, index1: number) => {
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
       }
       if (series.type === 'bar') {
-        const legend: string = getLegend(series, index1);
+        const legend: string = legends[index1];
         const color = getColor(legend, colorMap, isDarkTheme);
 
         mapXToDataPoints[x].series.push({
@@ -366,6 +369,7 @@ export const transformPlotlyJsonToGVBCProps = (
     mode: 'plotly',
     ...secondaryYAxisValues,
     hideTickOverlap: true,
+    hideLegend,
   };
 };
 
@@ -375,6 +379,7 @@ export const transformPlotlyJsonToVBCProps = (
   isDarkTheme?: boolean,
 ): VerticalBarChartProps => {
   const vbcData: VerticalBarChartDataPoint[] = [];
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
 
   input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
     if (!series.x) {
@@ -382,6 +387,8 @@ export const transformPlotlyJsonToVBCProps = (
     }
 
     const isXString = isStringArray(series.x);
+    // TODO: In case of a single bin, add an empty bin of the same size to prevent the
+    // default bar width from being used and ensure the bar spans the full intended range.
     const xBins = createBins(series.x, series.xbins?.start, series.xbins?.end, series.xbins?.size);
     const yBins: number[][] = xBins.map(() => []);
     let total = 0;
@@ -400,7 +407,7 @@ export const transformPlotlyJsonToVBCProps = (
     });
 
     xBins.forEach((bin, index) => {
-      const legend: string = getLegend(series, seriesIdx);
+      const legend: string = legends[seriesIdx];
       const color: string = getColor(legend, colorMap, isDarkTheme);
       const yVal = calculateHistNorm(
         series.histnorm,
@@ -430,8 +437,10 @@ export const transformPlotlyJsonToVBCProps = (
     chartTitle,
     xAxisTitle,
     yAxisTitle,
-    mode: 'plotly',
+    mode: 'histogram',
     hideTickOverlap: true,
+    maxBarWidth: 50,
+    hideLegend,
   };
 };
 
@@ -448,18 +457,22 @@ export const transformPlotlyJsonToScatterChartProps = (
     isAreaChart ? 0 : undefined,
   );
   let mode: string = 'tonexty';
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   const chartData: LineChartPoints[] = input.data.map((series: PlotData, index: number) => {
     const xValues = series.x as Datum[];
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
-    const legend: string = getLegend(series, index);
+    const legend: string = legends[index];
     const lineColor = getColor(legend, colorMap, isDarkTheme);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
     const lineOptions = getLineOptions(series.line);
+    const dashType = series.line?.dash || 'solid';
+    const legendShape = dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
 
     return {
       legend,
+      legendShape,
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
@@ -495,6 +508,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
       useUTC: false,
+      hideLegend,
     } as AreaChartProps;
   } else {
     return {
@@ -510,6 +524,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
       useUTC: false,
+      hideLegend,
     } as LineChartProps;
   }
 };
@@ -519,19 +534,21 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): HorizontalBarChartWithAxisProps => {
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   const chartData: HorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: PlotData, index: number) => {
+      const legend = legends[index];
+      const color = getColor(legend, colorMap, isDarkTheme);
       return (series.y as Datum[]).map((yValue: string, i: number) => {
-        const legendName = series.name ?? yValue;
-        const color = getColor(legendName, colorMap, isDarkTheme);
         return {
           x: series.x[i],
           y: yValue,
-          legend: legendName,
+          legend,
           color,
         } as HorizontalBarChartWithAxisDataPoint;
       });
     })
+    .reverse()
     .flat()
     //reversing the order to invert the Y bars order as required by plotly.
     .reverse();
@@ -563,6 +580,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    hideLegend,
   };
 };
 
@@ -804,6 +822,24 @@ export const transformPlotlyJsonToGaugeProps = (
   };
 };
 
+export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
+  const projection: PlotlySchema = { ...input };
+  for (let sindex = 0; sindex < input.data.length; sindex++) {
+    const series: PlotData = input.data[sindex] as PlotData;
+    series.x = [];
+    series.y = [];
+    for (let ptindex = 0; ptindex < series.r.length; ptindex++) {
+      const thetaRad = ((series.theta[ptindex] as number) * Math.PI) / 180;
+      const radius = series.r[ptindex] as number;
+      series.x[ptindex] = radius * Math.cos(thetaRad);
+      series.y[ptindex] = radius * Math.sin(thetaRad);
+    }
+    projection.data[sindex] = series;
+  }
+
+  return projection;
+};
+
 function isPlainObject(obj: any) {
   return (
     Object.prototype.toString.call(obj) === '[object Object]' &&
@@ -894,7 +930,11 @@ const findBinIndex = (
 
   return isString
     ? (bins as string[][]).findIndex(bin => bin.includes(value as string))
-    : (bins as Bin<number, number>[]).findIndex(bin => (value as number) >= bin.x0! && (value as number) < bin.x1!);
+    : (bins as Bin<number, number>[]).findIndex(
+        (bin, index) =>
+          (value as number) >= bin.x0! &&
+          (index === bins.length - 1 ? (value as number) <= bin.x1! : (value as number) < bin.x1!),
+      );
 };
 
 const getBinSize = (bin: Bin<number, number>) => {
@@ -935,23 +975,26 @@ const createBins = (
 
   const binGenerator = d3Bin().domain([minVal, maxVal]);
 
-  if (typeof binSize === 'number') {
+  if (typeof binSize === 'number' && binSize > 0) {
     const thresholds: number[] = [];
-    let th = minVal;
-    const tolerance = 1 / Math.pow(10, binSize.toString().split('.')[1]?.length ?? 0);
+    const precision = Math.max(getPrecision(minVal), getPrecision(binSize));
+    let th = precisionRound(minVal, precision);
 
-    while (maxVal + binSize - th > tolerance) {
+    while (th < precisionRound(maxVal + binSize, precision)) {
       thresholds.push(th);
-      th += binSize;
+      th = precisionRound(th + binSize, precision);
     }
 
     minVal = thresholds[0];
     maxVal = thresholds[thresholds.length - 1];
     binGenerator.domain([minVal, maxVal]).thresholds(thresholds);
-  }
 
-  // NOTE: The last bin generated by d3Bin often has identical x0 and x1 values (both inclusive) and
-  // can be ignored if the highest value is already included in the previous bin.
+    // When the domain ends at the last threshold (maxVal), d3Bin creates an extra final bin where
+    // both x0 and x1 are equal to maxVal and inclusive. The previous bin also has x1 equal to maxVal,
+    // but it is exclusive. To maintain consistent bin widths, remove the final bin,
+    // making the previous bin the last one, with both x0 and x1 inclusive.
+    return binGenerator(data as number[]).slice(0, -1);
+  }
   return binGenerator(data as number[]);
 };
 
@@ -989,4 +1032,31 @@ const calculateHistNorm = (
     default:
       return value;
   }
+};
+
+const getPrecision = (value: number) => {
+  return value.toString().split('.')[1]?.length ?? 0;
+};
+
+const precisionRound = (value: number, precision: number) => {
+  const factor = Math.pow(10, precision);
+  return Math.round(value * factor) / factor;
+};
+
+const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
+  const legends: string[] = [];
+  if (data.length === 1) {
+    legends.push(data[0].name || '');
+  } else {
+    data.forEach((series, index) => {
+      legends.push(series.name || `Series ${index + 1}`);
+    });
+  }
+
+  const hideLegends = data.every((series: Partial<PlotData>) => series.showlegend === false);
+
+  return {
+    legends,
+    hideLegend: layout?.showlegend === false ? true : hideLegends,
+  };
 };

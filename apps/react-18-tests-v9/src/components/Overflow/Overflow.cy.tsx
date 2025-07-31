@@ -17,6 +17,7 @@ import {
   useIsOverflowItemVisible,
   useOverflowMenu,
 } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import { Provider } from '../Provider/Provider';
 
@@ -89,7 +90,7 @@ const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
   );
 };
 
-const mount = (element: React.JSX.Element) => {
+const mount = (element: JSXElement) => {
   mountBase(<Provider>{element}</Provider>);
 };
 

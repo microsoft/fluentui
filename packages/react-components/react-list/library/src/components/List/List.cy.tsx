@@ -5,12 +5,9 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { List } from './List';
 import { ListItem } from '../ListItem';
-import { SelectionItemId } from '@fluentui/react-utilities';
+import type { JSXElement, SelectionItemId } from '@fluentui/react-utilities';
 
-const mount = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

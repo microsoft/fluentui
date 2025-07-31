@@ -5,6 +5,7 @@
 ```ts
 
 import type { GriffelStyle } from '@griffel/react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { RefObjectFunction } from '@fluentui/react-utilities';
 
@@ -139,7 +140,7 @@ export const usePositioningMouseTarget: (initialState?: PositioningVirtualElemen
 export function useSafeZoneArea({ debug, disabled, onSafeZoneEnter, onSafeZoneMove, onSafeZoneLeave, onSafeZoneTimeout, timeout, }?: UseSafeZoneOptions): {
     containerRef: RefObjectFunction<HTMLElement>;
     targetRef: RefObjectFunction<HTMLElement>;
-    elementToRender: JSX.Element | null;
+    elementToRender: JSXElement | null;
 };
 
 // @public (undocumented)

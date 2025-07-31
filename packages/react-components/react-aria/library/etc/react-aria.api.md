@@ -7,6 +7,7 @@
 import type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { JSXIntrinsicElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
@@ -104,7 +105,7 @@ export type AriaLiveAnnouncerState = {
 };
 
 // @public (undocumented)
-export const renderAriaLiveAnnouncer_unstable: (state: AriaLiveAnnouncerState, contextValues: AriaLiveAnnouncerContextValues) => JSX.Element;
+export const renderAriaLiveAnnouncer_unstable: (state: AriaLiveAnnouncerState, contextValues: AriaLiveAnnouncerContextValues) => JSXElement;
 
 // @public (undocumented)
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(options: ActiveDescendantOptions): UseActiveDescendantReturn<TActiveParentElement, TListboxElement>;

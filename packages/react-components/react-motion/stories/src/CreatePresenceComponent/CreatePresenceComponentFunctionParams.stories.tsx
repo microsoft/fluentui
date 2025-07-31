@@ -94,8 +94,8 @@ const Scale = createPresenceComponent<{ startFrom?: number }>(({ startFrom = 0.5
 export const CreatePresenceComponentFunctionParams = () => {
   const classes = useClasses();
 
-  const motionBRef = React.useRef<MotionImperativeRef>();
-  const motionARef = React.useRef<MotionImperativeRef>();
+  const motionBRef = React.useRef<MotionImperativeRef>(null);
+  const motionARef = React.useRef<MotionImperativeRef>(null);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(true);

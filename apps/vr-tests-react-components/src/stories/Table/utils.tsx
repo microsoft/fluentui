@@ -29,10 +29,11 @@ import {
   createTableColumn,
 } from '@fluentui/react-table';
 import { Button } from '@fluentui/react-button';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -42,7 +43,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {

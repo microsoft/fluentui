@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { Data, PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
 import {
   decodeBase64Fields,
@@ -27,6 +28,7 @@ import {
   transformPlotlyJsonToGaugeProps,
   transformPlotlyJsonToGVBCProps,
   transformPlotlyJsonToVBCProps,
+  projectPolarToCartesian,
 } from './PlotlySchemaAdapter';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
@@ -38,8 +40,7 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
-import { ImageExportOptions, toImage } from './imageExporter';
-import { Chart } from '../../types/index';
+import { Chart, ImageExportOptions } from '../../types/index';
 import { ScatterChart } from '../ScatterChart/index';
 
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
@@ -175,7 +176,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     componentRef: chartRef,
   };
 
-  const renderLineAreaScatter = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
+  const renderLineAreaScatter = (plotlyData: Data[], isAreaChart: boolean): JSXElement => {
     const isScatterMarkers = (plotlyData[0] as PlotData)?.mode === 'markers';
     const chartProps: LineChartProps | AreaChartProps = {
       ...transformPlotlyJsonToScatterChartProps(
@@ -228,11 +229,20 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   };
 
   // TODO
-  const exportAsImage = React.useCallback((opts?: ImageExportOptions) => {
-    return toImage(chartRef.current?.chartContainer, {
-      background: tokens.colorNeutralBackground1,
-      scale: 5,
-      ...opts,
+  const exportAsImage = React.useCallback((opts?: ImageExportOptions): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      if (!chartRef.current || typeof chartRef.current.toImage !== 'function') {
+        return reject(Error('Chart cannot be exported as image'));
+      }
+
+      chartRef.current
+        .toImage({
+          background: tokens.colorNeutralBackground1,
+          scale: 5,
+          ...opts,
+        })
+        .then(resolve)
+        .catch(reject);
     });
   }, []);
 
@@ -306,6 +316,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'area':
     case 'line':
     case 'fallback':
+    case 'scatterpolar':
+      if (chart.type === 'scatterpolar') {
+        const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
+        plotlyInputWithValidData.data = cartesianProjection.data;
+      }
       // Need recheck for area chart as we don't have ability to check for valid months in previous step
       const isAreaChart = plotlyInputWithValidData.data.some(
         (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy' || !!series.stackgroup,

@@ -49,7 +49,7 @@ const FadeEnter = createMotionComponent({
 
 export const CreateMotionComponentDefault = (props: MotionComponentProps) => {
   const classes = useClasses();
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
 
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.

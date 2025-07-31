@@ -15,10 +15,12 @@ import {
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
-import { Legend, LegendShape, Legends, Shape } from '../Legends/index';
+import { Legend, LegendShape, Legends, Shape, LegendContainer } from '../Legends/index';
 import { GaugeChartVariant, GaugeValueFormat, GaugeChartProps, GaugeChartSegment } from './GaugeChart.types';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
+import { ImageExportOptions } from '../../types/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 const GAUGE_MARGIN = 16;
 const LABEL_WIDTH = 36;
@@ -101,6 +103,7 @@ export interface ExtendedSegment extends GaugeChartSegment {
 
 export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwardRef<HTMLDivElement, GaugeChartProps>(
   (props, forwardedRef) => {
+    const _legendsRef = React.useRef<LegendContainer>(null);
     const _getMargins = () => {
       const { hideMinMax, chartTitle, sublabel } = props;
       return {
@@ -159,6 +162,9 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       props.componentRef,
       () => ({
         chartContainer: _rootElem.current,
+        toImage: (opts?: ImageExportOptions): Promise<string> => {
+          return toImage(_rootElem.current, _legendsRef.current?.toSVG, _isRTL, opts);
+        },
       }),
       [],
     );
@@ -307,6 +313,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             {...props.legendProps}
             // eslint-disable-next-line react/jsx-no-bind
             onChange={_onLegendSelectionChange}
+            legendRef={_legendsRef}
           />
         </div>
       );

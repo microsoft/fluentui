@@ -7,7 +7,7 @@ import { MenuGridRowProps, MenuGridRowState } from './MenuGridRow.types';
 /**
  * Given user props, returns state and render function for a MenuGridRow.
  */
-export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<HTMLElement>): MenuGridRowState {
+export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<HTMLDivElement>): MenuGridRowState {
   const { tableRowTabsterAttribute } = useMenuGridContext_unstable();
 
   return {
@@ -16,10 +16,7 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: ref as React.Ref<HTMLDivElement>,
+        ref,
         role: 'row',
         tabIndex: 0,
         ...tableRowTabsterAttribute,

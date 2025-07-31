@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: adjust circular sizes to Figma spec",
-  "packageName": "@fluentui/react-tabs",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

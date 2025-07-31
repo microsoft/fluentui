@@ -8,11 +8,9 @@ import { Combobox, Option } from '@fluentui/react-combobox';
 import type { ComboboxProps } from '@fluentui/react-combobox';
 
 import { triggerSelector, listboxSelector, triggerId } from '../../testing/selectors';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mount = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

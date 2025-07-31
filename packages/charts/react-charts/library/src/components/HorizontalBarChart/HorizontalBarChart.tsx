@@ -4,6 +4,7 @@ import { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData, Hori
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { formatScientificLimitWidth, getAccessibleDataObject, useRtl } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
@@ -29,6 +30,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   let _barHeight: number;
   let _calloutAnchorPoint: ChartDataPoint | null;
   let isSingleBar: boolean = true;
+  let _showToolTipOnSegment: boolean = !props.hideTooltip;
 
   const [hoverValue, setHoverValue] = React.useState<string | number | Date | null>('');
   const [lineColor, setLineColor] = React.useState<string>('');
@@ -108,40 +110,38 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     //)
   };
 
-  function _createLegends(chartProps: ChartProps[]): JSX.Element {
-    const legendItems: Legend[] = [];
-    chartProps.forEach((point: ChartProps) => {
-      point.chartData!.forEach((dataPoint: ChartDataPoint) => {
-        const color: string = dataPoint.color!;
-        // mapping data to the format Legends component needs
-        const legendItem: Legend = {
-          title: dataPoint.legend!,
-          color,
-          action: () => {
-            if (selectedLegend === dataPoint.legend) {
-              setSelectedLegend('');
-            } else {
-              setSelectedLegend(dataPoint.legend!);
-            }
-          },
-          hoverAction: () => {
-            _handleChartMouseLeave();
-            setActiveLegend(dataPoint.legend!);
-          },
-          onMouseOutAction: () => {
-            setActiveLegend('');
-          },
-        };
-        legendItems.push(legendItem);
-      });
-    });
-    const legends = (
+  function _createLegends(chartProps: ChartProps[]): JSXElement {
+    const legendItems: Legend[] = chartProps.flatMap(
+      point =>
+        point.chartData?.map((dataPoint): Legend => {
+          const legend = dataPoint.legend ?? '';
+          const color = dataPoint.color ?? '';
+
+          return {
+            title: legend,
+            color,
+            action: () => setSelectedLegend(selectedLegend === legend ? '' : legend),
+            hoverAction: () => {
+              _handleChartMouseLeave();
+              setActiveLegend(legend);
+            },
+            onMouseOutAction: () => setActiveLegend(''),
+          };
+        }) ?? [],
+    );
+
+    return (
       <Legends legends={legendItems} centerLegends overflowText={props.legendsOverflowText} {...props.legendProps} />
     );
-    return legends;
   }
 
-  function _getDefaultTextData(data: ChartProps): JSX.Element {
+  function _getDefaultTextData(data: ChartProps): JSXElement {
+    const chartDataMode = props.chartDataMode || 'default';
+
+    if (chartDataMode === 'hidden') {
+      return <></>; // No text data for hidden mode
+    }
+
     const { culture } = props;
     const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData!, 'text', false);
     if (!isSingleBar) {
@@ -156,7 +156,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         </div>
       );
     }
-    const chartDataMode = props.chartDataMode || 'default';
+
     const chartData: ChartDataPoint = data!.chartData![0];
     const x = chartData.horizontalBarChartdata!.x;
     const y = chartData.horizontalBarChartdata!.total!;
@@ -185,7 +185,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     }
   }
 
-  function _createBenchmark(data: ChartProps): JSX.Element {
+  function _createBenchmark(data: ChartProps): JSXElement {
     if (data.chartData![0].horizontalBarChartdata!.total === undefined) {
       return <></>;
     }
@@ -211,7 +211,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
    * Extra margin is also provided, in the x value to provide some spacing in between the bars
    */
 
-  function _createBars(data: ChartProps): JSX.Element[] {
+  function _createBars(data: ChartProps): JSXElement[] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: ChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
@@ -312,8 +312,10 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
           width={value + '%'}
           height={_barHeight}
           fill={color}
-          onMouseOver={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
-          onFocus={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
+          onMouseOver={
+            _showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
+          }
+          onFocus={_showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
           role="img"
           aria-label={_getAriaLabel(point)}
           onBlur={_hoverOff}
@@ -392,8 +394,9 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         } else {
           datapoint = 0;
         }
-        isSingleBar =
-          points.chartData!.length === 1 || (points.chartData!.length > 1 && points.chartData![1].legend === '');
+        isSingleBar = props.showLegendForSinglePointBar
+          ? false
+          : points.chartData!.length === 1 || (points.chartData!.length > 1 && points.chartData![1].legend === '');
         if (isSingleBar) {
           points.chartData![1] = {
             legend: '',

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import { Provider } from '../Provider/Provider';
 
-const mount = (element: React.JSX.Element) => {
+const mount = (element: JSXElement) => {
   mountBase(<Provider>{element}</Provider>);
 };
 

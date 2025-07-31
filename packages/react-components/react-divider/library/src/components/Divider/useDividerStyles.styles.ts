@@ -148,6 +148,8 @@ const useHorizontalStyles = makeStyles({
 
   // Alignment variations
   start: {
+    textAlign: 'left',
+
     '::before': {
       content: '""',
       marginRight: contentSpacing,
@@ -159,6 +161,8 @@ const useHorizontalStyles = makeStyles({
     },
   },
   center: {
+    textAlign: 'center',
+
     '::before': {
       marginRight: contentSpacing,
     },
@@ -167,6 +171,8 @@ const useHorizontalStyles = makeStyles({
     },
   },
   end: {
+    textAlign: 'right',
+
     '::before': {
       marginRight: contentSpacing,
     },

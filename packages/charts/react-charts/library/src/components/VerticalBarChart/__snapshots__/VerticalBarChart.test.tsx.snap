@@ -3890,7 +3890,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="First"
@@ -3912,7 +3912,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Second"
@@ -3934,7 +3934,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Third"
@@ -4489,7 +4489,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="First"
@@ -4511,7 +4511,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Second"
@@ -4533,7 +4533,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Third"
@@ -5696,12 +5696,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         }
       >
         <div
-          style={
-            Object {
-              "flex": "0 1 auto",
-              "margin": "4px",
-            }
-          }
+          className="fui-legend__legendContainer"
         >
           <button
             aria-label="First"
@@ -5749,12 +5744,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           </button>
         </div>
         <div
-          style={
-            Object {
-              "flex": "0 1 auto",
-              "margin": "4px",
-            }
-          }
+          className="fui-legend__legendContainer"
         >
           <button
             aria-label="Second"
@@ -5802,12 +5792,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           </button>
         </div>
         <div
-          style={
-            Object {
-              "flex": "0 1 auto",
-              "margin": "4px",
-            }
-          }
+          className="fui-legend__legendContainer"
         >
           <button
             aria-label="Third"

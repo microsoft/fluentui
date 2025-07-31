@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 28 Jul 2025 07:22:06 GMT",
+      "tag": "@fluentui/react_v8.123.2",
+      "version": "8.123.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "03f737b707ea3867f079b05c239f2a2dbb30b4db",
+            "comment": "fix(v8 PeoplePicker): Add WHCM styles to the PeoplePickerItem remove button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Jul 2025 07:19:56 GMT",
       "tag": "@fluentui/react_v8.123.1",
       "version": "8.123.1",

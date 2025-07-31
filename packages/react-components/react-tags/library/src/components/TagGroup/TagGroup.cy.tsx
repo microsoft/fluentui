@@ -8,11 +8,9 @@ import { InteractionTagSecondary } from '../InteractionTagSecondary/InteractionT
 import { TagGroup } from './TagGroup';
 import { TagGroupProps } from './TagGroup.types';
 import { Tag } from '../Tag/Tag';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mount = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
