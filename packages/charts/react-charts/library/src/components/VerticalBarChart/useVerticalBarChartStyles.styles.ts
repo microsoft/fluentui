@@ -20,6 +20,7 @@ export const verticalbarchartClassNames: SlotClassNames<VerticalBarChartStyles> 
   shapeStyles: '',
   chartWrapper: '',
   svgTooltip: '',
+  chart: '',
 };
 const useStyles = makeStyles({
   opacityChangeOnHover: {},

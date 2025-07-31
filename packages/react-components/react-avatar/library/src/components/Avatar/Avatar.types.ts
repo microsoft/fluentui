@@ -168,5 +168,6 @@ export type AvatarState = ComponentState<AvatarSlots> &
     /**
      * Hidden span to render the active state label for the purposes of including in the aria-labelledby, if needed.
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     activeAriaLabelElement?: JSX.Element;
   };

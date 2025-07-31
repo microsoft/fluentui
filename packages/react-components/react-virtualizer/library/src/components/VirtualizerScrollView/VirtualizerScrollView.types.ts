@@ -8,6 +8,9 @@ import type {
 } from '../Virtualizer/Virtualizer.types';
 import type { ScrollToInterface } from '../../Utilities';
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerScrollViewSlots = VirtualizerSlots & {
   /**
    * The root container that provides embedded scrolling.
@@ -15,6 +18,9 @@ export type VirtualizerScrollViewSlots = VirtualizerSlots & {
   container: NonNullable<Slot<'div'>>;
 };
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> &
   Partial<
     Omit<
@@ -48,4 +54,7 @@ export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrol
     enablePagination?: boolean;
   };
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerScrollViewState = ComponentState<VirtualizerScrollViewSlots> & VirtualizerConfigState;

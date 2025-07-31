@@ -7,6 +7,7 @@ import type { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 
 export const DefaultPeopleSuggestionsItem = <TPersona extends IPersonaProps>(
   props: ISuggestionModel<TPersona>,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): JSX.Element => {
   const item = props.item;
   return (

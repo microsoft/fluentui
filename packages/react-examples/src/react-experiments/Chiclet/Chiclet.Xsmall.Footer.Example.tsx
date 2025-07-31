@@ -65,8 +65,13 @@ class FooterComponent extends React.Component<IFooterComponent, {}> {
   }
 }
 
+type ReactProps<T> = {
+  children?: React.ReactNode;
+  ref?: React.LegacyRef<T>;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-interface IFooterComponent extends React.Props<FooterComponent> {
+interface IFooterComponent extends ReactProps<FooterComponent> {
   buttonProps: IButtonProps[];
   attachProps: IIconProps;
 }

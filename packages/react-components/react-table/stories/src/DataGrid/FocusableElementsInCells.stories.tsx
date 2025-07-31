@@ -27,7 +27,7 @@ import {
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
 };
 
 type LastUpdatedCell = {

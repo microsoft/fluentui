@@ -51,6 +51,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
   /**
    * A callback for what should happen when a person types text into the input.

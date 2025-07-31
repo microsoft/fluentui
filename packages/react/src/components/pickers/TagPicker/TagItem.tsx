@@ -11,7 +11,8 @@ const getClassNames = classNamesFunction<ITagItemStyleProps, ITagItemStyles>();
 /**
  * {@docCategory TagPicker}
  */
-export const TagItemBase = (props: ITagItemProps) => {
+// eslint-disable-next-line @typescript-eslint/no-deprecated
+export const TagItemBase = (props: ITagItemProps): JSX.Element => {
   const {
     theme,
     styles,

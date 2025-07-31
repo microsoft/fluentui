@@ -11,6 +11,7 @@ import { Portal } from './Portal';
 
 describe('Portal (node)', () => {
   it('renders hidden span as virtual parent in SSR', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(
       <SSRProvider>
         <Portal>portals content</Portal>

@@ -22,8 +22,8 @@ const useStyles = makeStyles({
     ...typographyStyles.body1,
     display: 'flex',
     flexDirection: 'column',
-    width: 'var(--root-width, 100%)',
-    height: 'var(--root-height, 100%)',
+    width: '100%',
+    height: '100%',
   },
   chart: {
     boxSizing: 'content-box',
@@ -31,7 +31,10 @@ const useStyles = makeStyles({
     display: 'block',
     overflow: 'visible',
   },
-  legendContainer: { paddingTop: tokens.spacingVerticalL },
+  legendContainer: {
+    paddingTop: tokens.spacingVerticalL,
+    width: '100%',
+  },
 });
 
 /**
@@ -49,6 +52,6 @@ export const useDonutChartStyles = (props: DonutChartProps): DonutChartStyles =>
       baseStyles.legendContainer,
       props.styles?.legendContainer,
     ),
-    chartWrapper: donutClassNames.chartWrapper,
+    chartWrapper: mergeClasses(donutClassNames.chartWrapper, props.styles?.chartWrapper),
   };
 };

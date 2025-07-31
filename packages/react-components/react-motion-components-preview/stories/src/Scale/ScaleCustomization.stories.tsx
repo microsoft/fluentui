@@ -54,10 +54,19 @@ const useClasses = makeStyles({
   },
 });
 
+// Overshoots the end point, then settles back to it.
+const curveOvershootFirmOut =
+  'linear(0, 0.453 7.8%, 0.803 16.1%, 1.048 24.9%, 1.132 29.5%, 1.194 34.4%, 1.227 38.4%, 1.245 42.5%, 1.25 46.9%, 1.242 51.7%, 1.2 60.5%, 1.038 84.9%, 1.009 92.5%, 1)';
+
+// Overshoots the start and end points.
+const curveOvershootFirmInOut =
+  'linear(0, -0.008 4.1%, -0.035 8.3%, -0.179 21.1%, -0.216 25.3%, -0.228 29.5%, -0.208 33.3%, -0.121 38.2%, 0.036 42.7%, 0.261 46.8%, 0.881 55.6%, 1.058 59.7%, 1.172 64.1%, 1.222 68.6%, 1.228 71.1%, 1.221 73.7%, 1.183 78.5%, 1.034 91.8%, 1.008 95.9%, 1)';
+
 const CustomScaleVariant = createPresenceComponentVariant(Scale, {
   exitDuration: motionTokens.durationSlow,
-  // easing: curveSpringOut,
-  easing: motionTokens.curveEasyEaseMax,
+  easing: curveOvershootFirmOut,
+  exitEasing: curveOvershootFirmInOut,
+  fromScale: 0.5,
 });
 
 const LoremIpsum = () => (
@@ -72,7 +81,7 @@ export const Customization = () => {
   const classes = useClasses();
   const motionRef = React.useRef<MotionImperativeRef>();
 
-  const [animateOpacity, setAnimateOpacity] = React.useState(true);
+  const [animateOpacity, setAnimateOpacity] = React.useState(false);
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(true);
   const [unmountOnExit, setUnmountOnExit] = React.useState<boolean>(false);

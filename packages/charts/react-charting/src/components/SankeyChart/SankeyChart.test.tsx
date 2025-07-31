@@ -3,7 +3,7 @@ import { IChartProps } from '../../index';
 import { resetIds } from '../../Utilities';
 import { ISankeyChartAccessibilityProps, ISankeyChartProps, ISankeyChartStrings, SankeyChart } from './index';
 import { SankeyChartBase } from './SankeyChart.base';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const global: any;
@@ -281,14 +281,18 @@ describe('SankeyChart - mouse events', () => {
   it('Should render correctly on node mouseover', () => {
     const { container } = render(<SankeyChart data={data()} height={500} width={800} />);
     const rects = container.querySelectorAll('rect');
-    rects[1].dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+    act(() => {
+      rects[1].dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+    });
     expect(container).toMatchSnapshot();
   });
 
   it('Should render correctly on link mouseover', () => {
     const { container } = render(<SankeyChart data={data()} height={500} width={800} />);
     const paths = container.querySelectorAll('path');
-    paths[1].dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+    act(() => {
+      paths[1].dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+    });
     expect(container).toMatchSnapshot();
   });
 
@@ -298,7 +302,9 @@ describe('SankeyChart - mouse events', () => {
       el => el.getAttribute('aria-label') === 'node 124.360.55.1 with weight 14',
     );
     if (rect) {
-      rect.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+      act(() => {
+        rect.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+      });
     }
     expect(container).toMatchSnapshot();
   });

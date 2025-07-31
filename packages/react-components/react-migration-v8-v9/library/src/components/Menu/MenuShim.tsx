@@ -17,7 +17,8 @@ import {
 
 import { shimMenuHeaderProps, shimMenuItemCheckboxProps, shimMenuItemProps, shimMenuProps } from './shimMenuProps';
 
-export const MenuItemShim = (props: IContextualMenuItem) => {
+// eslint-disable-next-line @typescript-eslint/no-deprecated
+export const MenuItemShim = (props: IContextualMenuItem): JSX.Element => {
   if (props.itemType === ContextualMenuItemType.Divider) {
     const shimProps = shimMenuItemProps(props);
     return <MenuDivider {...(shimProps as MenuDividerProps)} />;

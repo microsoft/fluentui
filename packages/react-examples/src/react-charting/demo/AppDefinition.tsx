@@ -117,6 +117,12 @@ export const AppDefinition: IAppDefinition = {
           name: 'Declarative Chart',
           url: '#/examples/declarativechart',
         },
+        {
+          component: require<any>('../GanttChart/GanttChartPage').GanttChartPage,
+          key: 'GanttChart',
+          name: 'Gantt Chart',
+          url: '#/examples/GanttChart',
+        },
       ],
     },
   ],

@@ -29,6 +29,8 @@ import {
   getAllupLegendsProps,
   NON_PLOT_KEY_PREFIX,
   SINGLE_REPEAT,
+  transformPlotlyJsonToFunnelChartProps,
+  transformPlotlyJsonToGanttChartProps,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { LineChart } from '../LineChart/index';
@@ -43,6 +45,8 @@ import { IChart, IImageExportOptions } from '../../types/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import { ScatterChart } from '../ScatterChart/index';
 import { ChartTable } from '../ChartTable/index';
+import { FunnelChart } from '../FunnelChart/FunnelChart';
+import { GanttChart } from '../GanttChart/index';
 import { ILegendsProps, Legends } from '../Legends/index';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
@@ -50,13 +54,15 @@ const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStacke
 const ResponsiveLineChart = withResponsiveContainer(LineChart);
 const ResponsiveHorizontalBarChartWithAxis = withResponsiveContainer(HorizontalBarChartWithAxis);
 const ResponsiveAreaChart = withResponsiveContainer(AreaChart);
-const ResponsiveHeatMapChart = withResponsiveContainer(HeatMapChart);
 const ResponsiveSankeyChart = withResponsiveContainer(SankeyChart);
 const ResponsiveGaugeChart = withResponsiveContainer(GaugeChart);
 const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVerticalBarChart);
 const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
 const ResponsiveScatterChart = withResponsiveContainer(ScatterChart);
 const ResponsiveChartTable = withResponsiveContainer(ChartTable);
+// Removing responsive wrapper for FunnelChart as responsive container is not working with FunnelChart
+//const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
+const ResponsiveGanttChart = withResponsiveContainer(GanttChart);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
 const DEFAULT_XAXIS = 'x';
@@ -126,6 +132,7 @@ function renderChart<TProps>(
   commonProps: Partial<TProps>,
   cellRow: number,
   cellColumn: number,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): JSX.Element {
   const chartProps = transformer(...transformerArgs);
   return (
@@ -188,7 +195,7 @@ type ChartTypeMap = {
   } & PreTransformHooks;
   heatmap: {
     transformer: typeof transformPlotlyJsonToHeatmapProps;
-    renderer: typeof ResponsiveHeatMapChart;
+    renderer: typeof HeatMapChart;
   } & PreTransformHooks;
   gauge: {
     transformer: typeof transformPlotlyJsonToGaugeProps;
@@ -209,6 +216,14 @@ type ChartTypeMap = {
   scatter: {
     transformer: typeof transformPlotlyJsonToScatterChartProps;
     renderer: typeof ResponsiveScatterChart;
+  } & PreTransformHooks;
+  funnel: {
+    transformer: typeof transformPlotlyJsonToFunnelChartProps;
+    renderer: typeof FunnelChart;
+  } & PreTransformHooks;
+  gantt: {
+    transformer: typeof transformPlotlyJsonToGanttChartProps;
+    renderer: typeof ResponsiveGanttChart;
   } & PreTransformHooks;
   fallback: {
     transformer: typeof transformPlotlyJsonToVSBCProps;
@@ -247,7 +262,7 @@ const chartMap: ChartTypeMap = {
   },
   heatmap: {
     transformer: transformPlotlyJsonToHeatmapProps,
-    renderer: ResponsiveHeatMapChart,
+    renderer: HeatMapChart,
   },
   gauge: {
     transformer: transformPlotlyJsonToGaugeProps,
@@ -271,6 +286,14 @@ const chartMap: ChartTypeMap = {
     transformer: transformPlotlyJsonToScatterChartProps,
     renderer: ResponsiveScatterChart,
     preTransformOperation: LineAreaPreTransformOp,
+  },
+  funnel: {
+    transformer: transformPlotlyJsonToFunnelChartProps,
+    renderer: FunnelChart,
+  },
+  gantt: {
+    transformer: transformPlotlyJsonToGanttChartProps,
+    renderer: ResponsiveGanttChart,
   },
   fallback: {
     transformer: transformPlotlyJsonToVSBCProps,
@@ -346,6 +369,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     calloutProps: { layerProps: { eventBubblingEnabled: true } },
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   function createLegends(legendProps: ILegendsProps): JSX.Element {
     // eslint-disable-next-line react/jsx-no-bind
     return <Legends {...legendProps} selectedLegends={activeLegends} onChange={onActiveLegendsChange} />;
@@ -385,9 +409,17 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   if (chart.type === 'scatterpolar') {
     const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
     plotlyInputWithValidData.data = cartesianProjection.data;
+    plotlyInputWithValidData.layout = cartesianProjection.layout;
     validTracesFilteredIndex.forEach((trace, index) => {
       if (trace.type === 'scatterpolar') {
-        validTracesFilteredIndex[index].type = 'line'; // Change type to line for rendering
+        const mode = (plotlyInputWithValidData.data[index] as PlotData)?.mode ?? '';
+        if (mode.includes('line')) {
+          validTracesFilteredIndex[index].type = 'line';
+        } else if (mode.includes('markers') || mode === 'text') {
+          validTracesFilteredIndex[index].type = 'scatter';
+        } else {
+          validTracesFilteredIndex[index].type = 'line';
+        }
       }
     });
   }
@@ -500,6 +532,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   );
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 DeclarativeChart.defaultProps = {
   colorwayType: 'default',
 };

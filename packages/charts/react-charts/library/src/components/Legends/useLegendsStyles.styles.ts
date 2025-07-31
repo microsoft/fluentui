@@ -4,6 +4,20 @@ import { LegendsProps, LegendsStyles } from './Legends.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HighContrastSelector } from '../../utilities/index';
 
+// Constants needed to create legends using SVG for image export
+export const LEGEND_CONTAINER_MARGIN_TOP = 8;
+export const LEGEND_CONTAINER_MARGIN_START = 12;
+export const LEGEND_PADDING = 8;
+export const LEGEND_HEIGHT = 32;
+export const LEGEND_SHAPE_BORDER = 1;
+const LEGEND_SHAPE_SIZE_WITHOUT_BORDER = 12;
+// SVG strokes are drawn centered around the path, with half of the stroke width extending inward
+// (overlapping the fill area) and half outward. To ensure the filled area maintains its intended size,
+// expand the shape accordingly.
+export const LEGEND_SHAPE_SIZE = LEGEND_SHAPE_SIZE_WITHOUT_BORDER + LEGEND_SHAPE_BORDER;
+export const LEGEND_SHAPE_MARGIN_END = 8;
+export const INACTIVE_LEGEND_TEXT_OPACITY = 0.67;
+
 /**
  * @internal
  */
@@ -16,10 +30,15 @@ export const legendClassNames: SlotClassNames<LegendsStyles> = {
   text: 'fui-legend__text',
   hoverChange: 'fui-legend__hoverChange',
   resizableArea: 'fui-legend__resizableArea',
+  legendContainer: 'fui-legend__legendContainer',
+  annotation: 'fui-legend__annotation',
 };
 
 const useStyles = makeStyles({
   root: {
+    // FIXME: Removing this style allows the legend container in responsive donut chart to resize
+    // properly (horizontally) within a flexbox or grid layout. But it causes vertical resizing issues
+    // in responsive charts where legends consist of multiple words.
     whiteSpace: 'nowrap',
     width: '100%',
     alignItems: 'center',
@@ -32,8 +51,11 @@ const useStyles = makeStyles({
     justifyContent: 'left',
     cursor: 'pointer',
     ...shorthands.border('none'),
-    ...shorthands.padding(tokens.spacingHorizontalS),
+    padding: `${LEGEND_PADDING}px`,
     textTransform: 'capitalize',
+    // The default min-width is 64px. Setting it to 0 allows the legend container in responsive
+    // cartesian charts to resize properly within a flexbox or grid layout.
+    minWidth: 0,
     [HighContrastSelector]: {
       color: 'WindowText',
       forcedColorAdjust: 'none',
@@ -50,12 +72,12 @@ const useStyles = makeStyles({
       content: 'var(--rect-content-high-contrast)',
       opacity: 'var(--rect-opacity-high-contrast)',
     },
-    width: '12px',
-    border: '1px solid',
-    marginRight: tokens.spacingHorizontalS,
+    width: `${LEGEND_SHAPE_SIZE_WITHOUT_BORDER}px`,
+    marginRight: `${LEGEND_SHAPE_MARGIN_END}px`,
+    border: `${LEGEND_SHAPE_BORDER}px solid`,
   },
   shape: {
-    marginRight: tokens.spacingHorizontalS,
+    marginRight: `${LEGEND_SHAPE_MARGIN_END}px`,
   },
   // TO DO Add props when these styles are used in the component
   triangle: {
@@ -93,6 +115,15 @@ const useStyles = makeStyles({
       ...shorthands.borderLeft('-2px'),
     },
   },
+  legendContainer: {
+    flex: '0 1 auto',
+    margin: '4px',
+  },
+  annotation: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '4px',
+  },
 });
 
 export const useLegendStyles = (props: LegendsProps): LegendsStyles => {
@@ -108,5 +139,11 @@ export const useLegendStyles = (props: LegendsProps): LegendsStyles => {
     text: mergeClasses(legendClassNames.text, baseStyles.text, props.styles?.text),
     hoverChange: mergeClasses(legendClassNames.hoverChange, baseStyles.hoverChange, props.styles?.hoverChange),
     resizableArea: mergeClasses(legendClassNames.resizableArea, baseStyles.resizableArea, props.styles?.resizableArea),
+    legendContainer: mergeClasses(
+      legendClassNames.legendContainer,
+      baseStyles.legendContainer,
+      props.styles?.legendContainer,
+    ),
+    annotation: mergeClasses(legendClassNames.annotation, baseStyles.annotation, props.styles?.annotation),
   };
 };

@@ -15,6 +15,7 @@ describe('AccordionItem', () => {
    * Note: see more visual regression tests for AccordionItem in /apps/vr-tests.
    */
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(<AccordionItem value={0}>Default AccordionItem</AccordionItem>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

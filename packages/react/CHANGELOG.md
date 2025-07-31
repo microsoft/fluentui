@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 29 May 2025 07:21:46 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jul 2025 07:22:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.123.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.2)
+
+Mon, 28 Jul 2025 07:22:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.123.1..@fluentui/react_v8.123.2)
+
+### Patches
+
+- fix(v8 PeoplePicker): Add WHCM styles to the PeoplePickerItem remove button ([PR #34908](https://github.com/microsoft/fluentui/pull/34908) by jiangemma@microsoft.com)
+
+## [8.123.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.1)
+
+Thu, 03 Jul 2025 07:21:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.123.0..@fluentui/react_v8.123.1)
+
+### Patches
+
+- fix: ContextualMenu double onClick firing ([PR #34766](https://github.com/microsoft/fluentui/pull/34766) by sarah.higley@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.4.29 ([PR #34778](https://github.com/microsoft/fluentui/pull/34778) by beachball)
 
 ## [8.123.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.0)
 

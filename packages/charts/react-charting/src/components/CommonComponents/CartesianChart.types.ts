@@ -10,6 +10,7 @@ import {
   IAccessibilityProps,
   IChart,
   IDataPoint,
+  IGanttChartDataPoint,
   IGroupedVerticalBarChartData,
   IHeatMapChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
@@ -194,6 +195,11 @@ export interface ICartesianChartStyles {
    * Styles for the svg tooltip
    */
   svgTooltip?: IStyle;
+
+  /**
+   * Styles for the chart svg element
+   */
+  chart?: IStyle;
 }
 
 /**
@@ -564,6 +570,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Legends of the chart.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   legendBars: JSX.Element | null;
 
   /**
@@ -714,7 +721,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
       | IHorizontalBarChartWithAxisDataPoint[]
       | IVerticalBarChartDataPoint[]
       | IDataPoint[]
-      | IScatterChartDataPoint[],
+      | IScatterChartDataPoint[]
+      | IGanttChartDataPoint[],
     yAxisType: YAxisType | undefined,
     useSecondaryYScale?: boolean,
   ) => { startValue: number; endValue: number };
@@ -742,7 +750,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
       | IVerticalStackedBarDataPoint[]
       | IHorizontalBarChartWithAxisDataPoint[]
       | IGroupedVerticalBarChartData[]
-      | IHeatMapChartDataPoint[],
+      | IHeatMapChartDataPoint[]
+      | IGanttChartDataPoint[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,

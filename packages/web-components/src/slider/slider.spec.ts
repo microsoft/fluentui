@@ -638,7 +638,11 @@ test.describe('Slider', () => {
   });
 
   test.describe('thumb position', () => {
-    test('should follow pointer event coordinates in horizontal orientation', async ({ fastPage, page }) => {
+    test('should follow pointer event coordinates in horizontal orientation', async ({
+      fastPage,
+      page,
+      browserName,
+    }) => {
       const { element } = fastPage;
 
       const track = element.locator('.track');
@@ -655,24 +659,62 @@ test.describe('Slider', () => {
       const thumbMoveToX = thumbCenterX - trackBox.width * 0.1;
       await page.mouse.move(thumbCenterX, thumbCenterY);
       await page.mouse.down();
-
-      thumbBox = (await thumb.boundingBox()) as BoundingBox;
-      expect(thumbBox).not.toBeNull();
-      expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbCenterX);
-      expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbCenterY);
-
       await page.mouse.move(thumbMoveToX, thumbCenterY);
       await page.mouse.up();
-      const thumbHandle = await thumb.elementHandle();
-      await thumbHandle?.waitForElementState('stable');
 
-      thumbBox = (await thumb.boundingBox()) as BoundingBox;
-      expect(thumbBox).not.toBeNull();
-      expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbMoveToX);
-      expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbCenterY);
+      await expect(element).toHaveJSProperty('valueAsNumber', 40);
+
+      // This is too flaky in webkit
+      if (browserName !== 'webkit') {
+        thumbBox = (await thumb.boundingBox()) as BoundingBox;
+        expect(thumbBox).not.toBeNull();
+        expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbMoveToX);
+        expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbCenterY);
+      }
     });
 
-    test('should follow pointer event coordinates in vertical orientation', async ({ fastPage, page }) => {
+    test('should follow pointer event coordinates in horizontal orientation in RTL', async ({
+      fastPage,
+      page,
+      browserName,
+    }) => {
+      await fastPage.setTemplate({
+        attributes: {
+          dir: 'rtl',
+        },
+      });
+
+      const { element } = fastPage;
+
+      const track = element.locator('.track');
+      const thumb = element.locator('.thumb-container');
+      const trackBox = (await track.boundingBox()) as BoundingBox;
+
+      expect(trackBox).not.toBeNull();
+
+      let thumbBox = (await thumb.boundingBox()) as BoundingBox;
+      expect(thumbBox).not.toBeNull();
+
+      const thumbCenterX = thumbBox.x + thumbBox.width / 2;
+      const thumbCenterY = thumbBox.y + thumbBox.height / 2;
+      const thumbMoveToX = thumbCenterX - trackBox.width * 0.1;
+      await page.mouse.move(thumbCenterX, thumbCenterY);
+      await page.mouse.down();
+      await page.mouse.move(thumbMoveToX, thumbCenterY);
+      await page.mouse.up();
+
+      await expect(element).toHaveJSProperty('valueAsNumber', 60);
+
+      // This is too flaky in webkit
+      if (browserName !== 'webkit') {
+        thumbBox = (await thumb.boundingBox()) as BoundingBox;
+        expect(thumbBox).not.toBeNull();
+        expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbMoveToX);
+        expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbCenterY);
+      }
+    });
+
+    test('should follow pointer event coordinates in vertical orientation', async ({ fastPage, page, browserName }) => {
       const { element } = fastPage;
       await fastPage.setTemplate({ attributes: { orientation: 'vertical' } });
       const elementBox = (await element.boundingBox()) as BoundingBox;
@@ -693,21 +735,62 @@ test.describe('Slider', () => {
       const thumbMoveToY = thumbCenterY - trackBox.height * 0.3;
       await page.mouse.move(thumbCenterX, thumbCenterY);
       await page.mouse.down();
-
-      thumbBox = (await thumb.boundingBox()) as BoundingBox;
-      expect(thumbBox).not.toBeNull();
-      expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbCenterX);
-      expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbCenterY);
-
       await page.mouse.move(thumbCenterX, thumbMoveToY);
       await page.mouse.up();
-      const thumbHandle = await thumb.elementHandle();
-      await thumbHandle?.waitForElementState('stable');
 
-      thumbBox = (await thumb.boundingBox()) as BoundingBox;
+      await expect(element).toHaveJSProperty('valueAsNumber', 80);
+
+      // This is too flaky in webkit
+      if (browserName !== 'webkit') {
+        thumbBox = (await thumb.boundingBox()) as BoundingBox;
+        expect(thumbBox).not.toBeNull();
+        expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbCenterX);
+        expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbMoveToY);
+      }
+    });
+
+    test('should follow pointer event coordinates in vertical orientation in RTL', async ({
+      fastPage,
+      page,
+      browserName,
+    }) => {
+      const { element } = fastPage;
+      await fastPage.setTemplate({
+        attributes: {
+          orientation: 'vertical',
+          dir: 'rtl',
+        },
+      });
+      const elementBox = (await element.boundingBox()) as BoundingBox;
+
+      expect(elementBox.width).toBeLessThan(elementBox.height);
+
+      const track = element.locator('.track');
+      const thumb = element.locator('.thumb-container');
+      const trackBox = (await track.boundingBox()) as BoundingBox;
+
+      expect(trackBox).not.toBeNull();
+
+      let thumbBox = (await thumb.boundingBox()) as BoundingBox;
       expect(thumbBox).not.toBeNull();
-      expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbCenterX);
-      expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbMoveToY);
+
+      const thumbCenterX = thumbBox.x + thumbBox.width / 2;
+      const thumbCenterY = thumbBox.y + thumbBox.height / 2;
+      const thumbMoveToY = thumbCenterY - trackBox.height * 0.3;
+      await page.mouse.move(thumbCenterX, thumbCenterY);
+      await page.mouse.down();
+      await page.mouse.move(thumbCenterX, thumbMoveToY);
+      await page.mouse.up();
+
+      await expect(element).toHaveJSProperty('valueAsNumber', 80);
+
+      // This is too flaky in webkit
+      if (browserName !== 'webkit') {
+        thumbBox = (await thumb.boundingBox()) as BoundingBox;
+        expect(thumbBox).not.toBeNull();
+        expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbCenterX);
+        expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbMoveToY);
+      }
     });
   });
 

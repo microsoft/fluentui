@@ -4,11 +4,11 @@ interface FadeAtomParams {
   direction: PresenceDirection;
   duration: number;
   easing?: string;
-  fromValue?: number;
+  fromOpacity?: number;
 }
 
 /**
- * Generates a motion atom object for a fade in or fade out.
+ * Generates a motion atom object for a fade-in or fade-out.
  * @param direction - The functional direction of the motion: 'enter' or 'exit'.
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
@@ -19,9 +19,9 @@ export const fadeAtom = ({
   direction,
   duration,
   easing = motionTokens.curveLinear,
-  fromValue = 0,
+  fromOpacity = 0,
 }: FadeAtomParams): AtomMotion => {
-  const keyframes = [{ opacity: fromValue }, { opacity: 1 }];
+  const keyframes = [{ opacity: fromOpacity }, { opacity: 1 }];
   if (direction === 'exit') {
     keyframes.reverse();
   }

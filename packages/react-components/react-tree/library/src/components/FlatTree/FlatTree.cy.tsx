@@ -16,7 +16,10 @@ import {
 import { Button } from '@fluentui/react-button';
 import { flattenTreeFromElement } from '../../testing/flattenTreeFromElement';
 
-const mount = (element: JSX.Element) => {
+const mount = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

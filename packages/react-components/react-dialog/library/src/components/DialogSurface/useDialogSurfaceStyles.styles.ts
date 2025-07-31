@@ -35,7 +35,7 @@ const useRootBaseStyle = makeResetStyles({
   position: 'fixed',
   height: 'fit-content',
   maxWidth: '600px',
-  maxHeight: '100vh',
+  maxHeight: ['100vh', '100dvh'],
   boxSizing: 'border-box',
   backgroundColor: tokens.colorNeutralBackground1,
   color: tokens.colorNeutralForeground1,
@@ -64,7 +64,7 @@ const useBackdropBaseStyle = makeResetStyles({
   position: 'fixed',
 });
 
-const useBackdropStyles = makeStyles({
+const useStyles = makeStyles({
   nestedDialogBackdrop: {
     backgroundColor: tokens.colorTransparentBackground,
   },
@@ -81,7 +81,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   const rootBaseStyle = useRootBaseStyle();
 
   const backdropBaseStyle = useBackdropBaseStyle();
-  const backdropStyles = useBackdropStyles();
+  const styles = useStyles();
 
   root.className = mergeClasses(dialogSurfaceClassNames.root, rootBaseStyle, root.className);
 
@@ -89,7 +89,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
     backdrop.className = mergeClasses(
       dialogSurfaceClassNames.backdrop,
       backdropBaseStyle,
-      isNestedDialog && backdropStyles.nestedDialogBackdrop,
+      isNestedDialog && styles.nestedDialogBackdrop,
       backdrop.className,
     );
   }

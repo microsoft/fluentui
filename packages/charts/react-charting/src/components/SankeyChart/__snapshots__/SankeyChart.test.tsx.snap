@@ -1660,10 +1660,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
-        height="436"
+        height="468"
         id="sankeyChart2"
-        width="864"
+        width="912"
       >
         <g
           class=
@@ -1682,7 +1687,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               aria-label="node 192.168.42.72 with weight 80"
               data-is-focusable="true"
               fill="#8764B8"
-              height="129.31506849315068"
+              height="131.50684931506842"
               id="nodeBar5"
               opacity="1"
               role="img"
@@ -1757,7 +1762,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               aria-label="node 172.152.48.13 with weight 78"
               data-is-focusable="true"
               fill="#8764B8"
-              height="126.08219178082172"
+              height="128.2191780821918"
               id="nodeBar7"
               opacity="1"
               role="img"
@@ -1766,7 +1771,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               tabindex="-1"
               width="124"
               x="48"
-              y="173.31506849315068"
+              y="175.50684931506842"
             />
             <g
               class=
@@ -1794,7 +1799,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   id="nodeBar7-name"
                   text-anchor="start"
                   x="48"
-                  y="173.31506849315068"
+                  y="175.50684931506842"
                 >
                   172.152.48.13
                 </text>
@@ -1808,7 +1813,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="173.31506849315068"
+                y="175.50684931506842"
               >
                 78
               </text>
@@ -1832,7 +1837,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               aria-label="node 124.360.55.1 with weight 14"
               data-is-focusable="true"
               fill="#8764B8"
-              height="22.630136986301352"
+              height="23.013698630137014"
               id="nodeBar9"
               opacity="1"
               role="img"
@@ -1841,7 +1846,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               tabindex="-1"
               width="124"
               x="48"
-              y="307.3972602739724"
+              y="311.7260273972602"
             />
           </g>
         </g>
@@ -1862,7 +1867,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               aria-label="node 124.124.50.1 with weight 10"
               data-is-focusable="true"
               fill="#8764B8"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar11"
               opacity="1"
               role="img"
@@ -1871,7 +1876,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               tabindex="-1"
               width="124"
               x="48"
-              y="338.02739726027374"
+              y="342.73972602739724"
             />
           </g>
         </g>
@@ -1892,7 +1897,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               aria-label="node 192.564.10.2 with weight 27"
               data-is-focusable="true"
               fill="#8764B8"
-              height="43.643835616438366"
+              height="44.383561643835606"
               id="nodeBar13"
               opacity="1"
               role="img"
@@ -1901,7 +1906,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               tabindex="-1"
               width="124"
               x="48"
-              y="362.1917808219178"
+              y="367.17808219178085"
             />
             <g
               class=
@@ -1929,7 +1934,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   id="nodeBar13-name"
                   text-anchor="start"
                   x="48"
-                  y="362.1917808219178"
+                  y="367.17808219178085"
                 >
                   192.564.10.2
                 </text>
@@ -1943,7 +1948,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="362.1917808219178"
+                y="367.17808219178085"
               >
                 27
               </text>
@@ -1967,7 +1972,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               aria-label="node 172.630.89.4 with weight 10"
               data-is-focusable="true"
               fill="#8764B8"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar15"
               opacity="1"
               role="img"
@@ -1976,7 +1981,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               tabindex="-1"
               width="124"
               x="48"
-              y="413.83561643835617"
+              y="419.56164383561645"
             />
           </g>
         </g>
@@ -2014,7 +2019,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </defs>
             <path
               aria-label="link from 192.168.42.72 to inbox with weight 80"
-              d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
+              d="M172,36C283,36,283,37.687,394,37.687L394,169.194C283,169.194,283,167.507,172,167.507Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link29"
@@ -2060,7 +2065,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </defs>
             <path
               aria-label="link from 172.152.48.13 to inbox with weight 50"
-              d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
+              d="M172,175.507C283,175.507,283,169.194,394,169.194L394,251.386C283,251.386,283,257.699,172,257.699Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link30"
@@ -2106,7 +2111,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </defs>
             <path
               aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
-              d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
+              d="M172,257.699C283,257.699,283,274.496,394,274.496L394,320.523C283,320.523,283,303.726,172,303.726Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link31"
@@ -2152,7 +2157,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </defs>
             <path
               aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
-              d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
+              d="M172,311.726C283,311.726,283,320.523,394,320.523L394,343.537C283,343.537,283,334.74,172,334.74Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link32"
@@ -2198,7 +2203,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </defs>
             <path
               aria-label="link from 124.124.50.1 to Junk Folder with weight 10"
-              d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
+              d="M172,342.74C283,342.74,283,343.537,394,343.537L394,359.975C283,359.975,283,359.178,172,359.178Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link33"
@@ -2244,7 +2249,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Junk Folder with weight 7"
-              d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
+              d="M172,367.178C283,367.178,283,359.975,394,359.975L394,371.482C283,371.482,283,378.685,172,378.685Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link34"
@@ -2290,7 +2295,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Deleted Folder with weight 20"
-              d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
+              d="M172,378.685C283,378.685,283,395.921,394,395.921L394,428.797C283,428.797,283,411.562,172,411.562Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link35"
@@ -2336,7 +2341,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </defs>
             <path
               aria-label="link from 172.630.89.4 to Junk Folder with weight 10"
-              d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
+              d="M172,419.562C283,419.562,283,371.482,394,371.482L394,387.921C283,387.921,283,436,172,436Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link36"
@@ -2365,7 +2370,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               aria-label="node inbox with weight 130"
               data-is-focusable="true"
               fill="#0E7878"
-              height="210.13698630136994"
+              height="213.6986301369863"
               id="nodeBar17"
               opacity="1"
               role="img"
@@ -2373,8 +2378,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="37.68645072950067"
+              x="394"
+              y="37.6871032162321"
             />
             <g
               class=
@@ -2401,8 +2406,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   font-weight="regular"
                   id="nodeBar17-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="37.68645072950067"
+                  x="394"
+                  y="37.6871032162321"
                 >
                   inbox
                 </text>
@@ -2415,8 +2420,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="37.68645072950067"
+                x="394"
+                y="37.6871032162321"
               >
                 130
               </text>
@@ -2440,7 +2445,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               aria-label="node Junk Folder with weight 69"
               data-is-focusable="true"
               fill="#0E7878"
-              height="111.53424657534248"
+              height="113.42465753424653"
               id="nodeBar19"
               opacity="1"
               role="img"
@@ -2448,8 +2453,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="270.8534770168133"
+              x="394"
+              y="274.496046898372"
             />
             <g
               class=
@@ -2476,8 +2481,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   font-weight="regular"
                   id="nodeBar19-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="270.8534770168133"
+                  x="394"
+                  y="274.496046898372"
                 >
                   Junk Folder
                 </text>
@@ -2490,8 +2495,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="270.8534770168133"
+                x="394"
+                y="274.496046898372"
               >
                 69
               </text>
@@ -2515,7 +2520,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               aria-label="node Deleted Folder with weight 20"
               data-is-focusable="true"
               fill="#0E7878"
-              height="32.32876712328766"
+              height="32.8767123287671"
               id="nodeBar21"
               opacity="1"
               role="img"
@@ -2523,8 +2528,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="390.3877235921558"
+              x="394"
+              y="395.92070443261855"
             />
             <g
               class=
@@ -2551,8 +2556,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   font-weight="regular"
                   id="nodeBar21-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="390.3877235921558"
+                  x="394"
+                  y="395.92070443261855"
                 >
                   Deleted Folder
                 </text>
@@ -2565,8 +2570,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="509.5"
-                y="390.3877235921558"
+                x="510"
+                y="395.92070443261855"
               >
                 20
               </text>
@@ -2607,7 +2612,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </defs>
             <path
               aria-label="link from inbox to Clicked with weight 30"
-              d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
+              d="M518,37.687C629,37.687,629,36,740,36L740,85.315C629,85.315,629,87.002,518,87.002Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link37"
@@ -2653,7 +2658,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </defs>
             <path
               aria-label="link from inbox to Opened with weight 55"
-              d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
+              d="M518,87.002C629,87.002,629,93.315,740,93.315L740,183.726C629,183.726,629,177.413,518,177.413Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link38"
@@ -2699,7 +2704,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </defs>
             <path
               aria-label="link from Junk Folder to  No further action  required with weight 60"
-              d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
+              d="M518,274.496C629,274.496,629,275.194,740,275.194L740,373.825C629,373.825,629,373.126,518,373.126Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link39"
@@ -2745,7 +2750,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </defs>
             <path
               aria-label="link from Deleted Folder to  No further action  required with weight 2"
-              d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
+              d="M518,395.921C629,395.921,629,373.825,740,373.825L740,377.112C629,377.112,629,399.208,518,399.208Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link40"
@@ -2774,7 +2779,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               aria-label="node Clicked with weight 30"
               data-is-focusable="true"
               fill="#4F6BED"
-              height="48.49315068493148"
+              height="49.315068493150676"
               id="nodeBar23"
               opacity="1"
               role="img"
@@ -2782,7 +2787,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
+              x="740"
               y="36"
             />
             <g
@@ -2810,7 +2815,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   font-weight="regular"
                   id="nodeBar23-name"
                   text-anchor="start"
-                  x="739"
+                  x="740"
                   y="36"
                 >
                   Clicked
@@ -2824,7 +2829,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
+                x="740"
                 y="36"
               >
                 30
@@ -2849,7 +2854,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               aria-label="node Opened with weight 55"
               data-is-focusable="true"
               fill="#4F6BED"
-              height="88.90410958904114"
+              height="90.41095890410958"
               id="nodeBar25"
               opacity="1"
               role="img"
@@ -2857,8 +2862,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="92.49315068493148"
+              x="740"
+              y="93.31506849315068"
             />
             <g
               class=
@@ -2885,8 +2890,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   font-weight="regular"
                   id="nodeBar25-name"
                   text-anchor="start"
-                  x="739"
-                  y="92.49315068493148"
+                  x="740"
+                  y="93.31506849315068"
                 >
                   Opened
                 </text>
@@ -2899,8 +2904,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="92.49315068493148"
+                x="740"
+                y="93.31506849315068"
               >
                 55
               </text>
@@ -2924,7 +2929,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               aria-label="node  No further action  required with weight 62"
               data-is-focusable="true"
               fill="#4F6BED"
-              height="100.21917808219177"
+              height="101.91780821917808"
               id="nodeBar27"
               opacity="1"
               role="img"
@@ -2932,8 +2937,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="271.54289868025126"
+              x="740"
+              y="275.1944984618674"
             />
             <g
               class=
@@ -2960,8 +2965,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   font-weight="regular"
                   id="nodeBar27-name"
                   text-anchor="start"
-                  x="739"
-                  y="271.54289868025126"
+                  x="740"
+                  y="275.1944984618674"
                 >
                    No further action  required
                 </text>
@@ -2974,8 +2979,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="271.54289868025126"
+                x="740"
+                y="275.1944984618674"
               >
                 62
               </text>
@@ -3020,10 +3025,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
-        height="436"
+        height="468"
         id="sankeyChart2"
-        width="864"
+        width="912"
       >
         <g
           class=
@@ -3042,7 +3052,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               aria-label="node 192.168.42.72 with weight 80"
               data-is-focusable="true"
               fill="#E3008C"
-              height="129.31506849315068"
+              height="131.50684931506842"
               id="nodeBar5"
               opacity="1"
               role="img"
@@ -3117,7 +3127,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               aria-label="node 172.152.48.13 with weight 78"
               data-is-focusable="true"
               fill="#00A2AD"
-              height="126.08219178082172"
+              height="128.2191780821918"
               id="nodeBar7"
               opacity="1"
               role="img"
@@ -3126,7 +3136,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               tabindex="-1"
               width="124"
               x="48"
-              y="173.31506849315068"
+              y="175.50684931506842"
             />
             <g
               class=
@@ -3154,7 +3164,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   id="nodeBar7-name"
                   text-anchor="start"
                   x="48"
-                  y="173.31506849315068"
+                  y="175.50684931506842"
                 >
                   172.152.48.13
                 </text>
@@ -3168,7 +3178,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="173.31506849315068"
+                y="175.50684931506842"
               >
                 78
               </text>
@@ -3192,7 +3202,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               aria-label="node 124.360.55.1 with weight 14"
               data-is-focusable="true"
               fill="#022F22"
-              height="22.630136986301352"
+              height="23.013698630137014"
               id="nodeBar9"
               opacity="1"
               role="img"
@@ -3201,7 +3211,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               tabindex="-1"
               width="124"
               x="48"
-              y="307.3972602739724"
+              y="311.7260273972602"
             />
           </g>
         </g>
@@ -3222,7 +3232,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               aria-label="node 124.124.50.1 with weight 10"
               data-is-focusable="true"
               fill="#E3008C"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar11"
               opacity="1"
               role="img"
@@ -3231,7 +3241,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               tabindex="-1"
               width="124"
               x="48"
-              y="338.02739726027374"
+              y="342.73972602739724"
             />
           </g>
         </g>
@@ -3252,7 +3262,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               aria-label="node 192.564.10.2 with weight 27"
               data-is-focusable="true"
               fill="#00188F"
-              height="43.643835616438366"
+              height="44.383561643835606"
               id="nodeBar13"
               opacity="1"
               role="img"
@@ -3260,7 +3270,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               tabindex="-1"
               width="124"
               x="48"
-              y="362.1917808219178"
+              y="367.17808219178085"
             />
             <g
               class=
@@ -3288,7 +3298,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   id="nodeBar13-name"
                   text-anchor="start"
                   x="48"
-                  y="362.1917808219178"
+                  y="367.17808219178085"
                 >
                   192.564.10.2
                 </text>
@@ -3302,7 +3312,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="362.1917808219178"
+                y="367.17808219178085"
               >
                 27
               </text>
@@ -3326,7 +3336,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               aria-label="node 172.630.89.4 with weight 10"
               data-is-focusable="true"
               fill="#00A2AD"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar15"
               opacity="1"
               role="img"
@@ -3335,7 +3345,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               tabindex="-1"
               width="124"
               x="48"
-              y="413.83561643835617"
+              y="419.56164383561645"
             />
           </g>
         </g>
@@ -3373,7 +3383,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </defs>
             <path
               aria-label="link from 192.168.42.72 to inbox with weight 80"
-              d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
+              d="M172,36C283,36,283,37.687,394,37.687L394,169.194C283,169.194,283,167.507,172,167.507Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link29"
@@ -3419,7 +3429,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </defs>
             <path
               aria-label="link from 172.152.48.13 to inbox with weight 50"
-              d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
+              d="M172,175.507C283,175.507,283,169.194,394,169.194L394,251.386C283,251.386,283,257.699,172,257.699Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link30"
@@ -3465,7 +3475,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </defs>
             <path
               aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
-              d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
+              d="M172,257.699C283,257.699,283,274.496,394,274.496L394,320.523C283,320.523,283,303.726,172,303.726Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link31"
@@ -3511,7 +3521,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </defs>
             <path
               aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
-              d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
+              d="M172,311.726C283,311.726,283,320.523,394,320.523L394,343.537C283,343.537,283,334.74,172,334.74Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link32"
@@ -3557,7 +3567,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </defs>
             <path
               aria-label="link from 124.124.50.1 to Junk Folder with weight 10"
-              d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
+              d="M172,342.74C283,342.74,283,343.537,394,343.537L394,359.975C283,359.975,283,359.178,172,359.178Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link33"
@@ -3603,7 +3613,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Junk Folder with weight 7"
-              d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
+              d="M172,367.178C283,367.178,283,359.975,394,359.975L394,371.482C283,371.482,283,378.685,172,378.685Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link34"
@@ -3649,7 +3659,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Deleted Folder with weight 20"
-              d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
+              d="M172,378.685C283,378.685,283,395.921,394,395.921L394,428.797C283,428.797,283,411.562,172,411.562Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link35"
@@ -3695,7 +3705,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </defs>
             <path
               aria-label="link from 172.630.89.4 to Junk Folder with weight 10"
-              d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
+              d="M172,419.562C283,419.562,283,371.482,394,371.482L394,387.921C283,387.921,283,436,172,436Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link36"
@@ -3724,7 +3734,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               aria-label="node inbox with weight 130"
               data-is-focusable="true"
               fill="#022F22"
-              height="210.13698630136994"
+              height="213.6986301369863"
               id="nodeBar17"
               opacity="1"
               role="img"
@@ -3732,8 +3742,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="37.68645072950067"
+              x="394"
+              y="37.6871032162321"
             />
             <g
               class=
@@ -3760,8 +3770,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   font-weight="regular"
                   id="nodeBar17-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="37.68645072950067"
+                  x="394"
+                  y="37.6871032162321"
                 >
                   inbox
                 </text>
@@ -3774,8 +3784,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="37.68645072950067"
+                x="394"
+                y="37.6871032162321"
               >
                 130
               </text>
@@ -3799,15 +3809,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               aria-label="node Junk Folder with weight 69"
               data-is-focusable="true"
               fill="#00188F"
-              height="111.53424657534248"
+              height="113.42465753424653"
               id="nodeBar19"
               opacity="1"
               role="img"
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="270.8534770168133"
+              x="394"
+              y="274.496046898372"
             />
             <g
               class=
@@ -3834,8 +3844,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   font-weight="regular"
                   id="nodeBar19-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="270.8534770168133"
+                  x="394"
+                  y="274.496046898372"
                 >
                   Junk Folder
                 </text>
@@ -3848,8 +3858,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="270.8534770168133"
+                x="394"
+                y="274.496046898372"
               >
                 69
               </text>
@@ -3873,7 +3883,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               aria-label="node Deleted Folder with weight 20"
               data-is-focusable="true"
               fill="#E3008C"
-              height="32.32876712328766"
+              height="32.8767123287671"
               id="nodeBar21"
               opacity="1"
               role="img"
@@ -3881,8 +3891,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="390.3877235921558"
+              x="394"
+              y="395.92070443261855"
             />
             <g
               class=
@@ -3909,8 +3919,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   font-weight="regular"
                   id="nodeBar21-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="390.3877235921558"
+                  x="394"
+                  y="395.92070443261855"
                 >
                   Deleted Folder
                 </text>
@@ -3923,8 +3933,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="509.5"
-                y="390.3877235921558"
+                x="510"
+                y="395.92070443261855"
               >
                 20
               </text>
@@ -3965,7 +3975,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </defs>
             <path
               aria-label="link from inbox to Clicked with weight 30"
-              d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
+              d="M518,37.687C629,37.687,629,36,740,36L740,85.315C629,85.315,629,87.002,518,87.002Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link37"
@@ -4011,7 +4021,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </defs>
             <path
               aria-label="link from inbox to Opened with weight 55"
-              d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
+              d="M518,87.002C629,87.002,629,93.315,740,93.315L740,183.726C629,183.726,629,177.413,518,177.413Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link38"
@@ -4057,7 +4067,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </defs>
             <path
               aria-label="link from Junk Folder to  No further action  required with weight 60"
-              d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
+              d="M518,274.496C629,274.496,629,275.194,740,275.194L740,373.825C629,373.825,629,373.126,518,373.126Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link39"
@@ -4103,7 +4113,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </defs>
             <path
               aria-label="link from Deleted Folder to  No further action  required with weight 2"
-              d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
+              d="M518,395.921C629,395.921,629,373.825,740,373.825L740,377.112C629,377.112,629,399.208,518,399.208Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link40"
@@ -4132,7 +4142,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               aria-label="node Clicked with weight 30"
               data-is-focusable="true"
               fill="#00A2AD"
-              height="48.49315068493148"
+              height="49.315068493150676"
               id="nodeBar23"
               opacity="1"
               role="img"
@@ -4140,7 +4150,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
+              x="740"
               y="36"
             />
             <g
@@ -4168,7 +4178,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   font-weight="regular"
                   id="nodeBar23-name"
                   text-anchor="start"
-                  x="739"
+                  x="740"
                   y="36"
                 >
                   Clicked
@@ -4182,7 +4192,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
+                x="740"
                 y="36"
               >
                 30
@@ -4207,7 +4217,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               aria-label="node Opened with weight 55"
               data-is-focusable="true"
               fill="#022F22"
-              height="88.90410958904114"
+              height="90.41095890410958"
               id="nodeBar25"
               opacity="1"
               role="img"
@@ -4215,8 +4225,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="92.49315068493148"
+              x="740"
+              y="93.31506849315068"
             />
             <g
               class=
@@ -4243,8 +4253,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   font-weight="regular"
                   id="nodeBar25-name"
                   text-anchor="start"
-                  x="739"
-                  y="92.49315068493148"
+                  x="740"
+                  y="93.31506849315068"
                 >
                   Opened
                 </text>
@@ -4257,8 +4267,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="92.49315068493148"
+                x="740"
+                y="93.31506849315068"
               >
                 55
               </text>
@@ -4282,15 +4292,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               aria-label="node  No further action  required with weight 62"
               data-is-focusable="true"
               fill="#00188F"
-              height="100.21917808219177"
+              height="101.91780821917808"
               id="nodeBar27"
               opacity="1"
               role="img"
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="271.54289868025126"
+              x="740"
+              y="275.1944984618674"
             />
             <g
               class=
@@ -4317,8 +4327,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   font-weight="regular"
                   id="nodeBar27-name"
                   text-anchor="start"
-                  x="739"
-                  y="271.54289868025126"
+                  x="740"
+                  y="275.1944984618674"
                 >
                    No further action  required
                 </text>
@@ -4331,8 +4341,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="271.54289868025126"
+                x="740"
+                y="275.1944984618674"
               >
                 62
               </text>
@@ -4377,10 +4387,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
-        height="436"
+        height="468"
         id="sankeyChart2"
-        width="864"
+        width="912"
       >
         <g
           class=
@@ -4399,7 +4414,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
               aria-label="element First with size 10"
               data-is-focusable="true"
               fill="#00758F"
-              height="394"
+              height="400"
               id="nodeBar5"
               opacity="1"
               role="img"
@@ -4491,7 +4506,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
             </defs>
             <path
               aria-label="10 items moved from First to Second"
-              d="M172,36C455.5,36,455.5,36,739,36L739,430C455.5,430,455.5,430,172,430Z"
+              d="M172,36C456,36,456,36,740,36L740,436C456,436,456,436,172,436Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link9"
@@ -4520,7 +4535,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
               aria-label="element Second with size 10"
               data-is-focusable="true"
               fill="#77004D"
-              height="394"
+              height="400"
               id="nodeBar7"
               opacity="1"
               role="img"
@@ -4528,7 +4543,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
+              x="740"
               y="36"
             />
             <g
@@ -4556,7 +4571,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
                   font-weight="regular"
                   id="nodeBar7-name"
                   text-anchor="start"
-                  x="739"
+                  x="740"
                   y="36"
                 >
                   Second
@@ -4570,7 +4585,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
+                x="740"
                 y="36"
               >
                 10
@@ -4616,10 +4631,15 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
-        height="436"
+        height="468"
         id="sankeyChart2"
-        width="864"
+        width="912"
       >
         <g
           class=
@@ -4638,7 +4658,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               aria-label="node node0 with weight 5"
               data-is-focusable="true"
               fill="#0078D4"
-              height="3.4051558291650537"
+              height="3.4628703347441387"
               id="nodeBar5"
               opacity="1"
               role="img"
@@ -4668,7 +4688,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               aria-label="node node1 with weight 5"
               data-is-focusable="true"
               fill="#0078D4"
-              height="3.4051558291650537"
+              height="3.4628703347441387"
               id="nodeBar7"
               opacity="1"
               role="img"
@@ -4677,7 +4697,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               tabindex="-1"
               width="124"
               x="48"
-              y="47.405155829165054"
+              y="47.46287033474414"
             />
           </g>
         </g>
@@ -4698,7 +4718,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               aria-label="node node2 with weight 5"
               data-is-focusable="true"
               fill="#0078D4"
-              height="3.405155829165068"
+              height="3.4628703347441245"
               id="nodeBar9"
               opacity="1"
               role="img"
@@ -4707,7 +4727,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               tabindex="-1"
               width="124"
               x="48"
-              y="58.81031165833011"
+              y="58.92574066948828"
             />
           </g>
         </g>
@@ -4728,7 +4748,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               aria-label="node node3 with weight 5"
               data-is-focusable="true"
               fill="#0078D4"
-              height="3.405155829165068"
+              height="3.4628703347441387"
               id="nodeBar11"
               opacity="1"
               role="img"
@@ -4737,7 +4757,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               tabindex="-1"
               width="124"
               x="48"
-              y="70.21546748749518"
+              y="70.3886110042324"
             />
           </g>
         </g>
@@ -4758,7 +4778,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               aria-label="node node4 with weight 900"
               data-is-focusable="true"
               fill="#0078D4"
-              height="312.5933051173529"
+              height="317.89149672951135"
               id="nodeBar13"
               opacity="1"
               role="img"
@@ -4767,7 +4787,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               tabindex="-1"
               width="124"
               x="48"
-              y="81.62062331666024"
+              y="81.85148133897654"
             />
             <g
               class=
@@ -4795,7 +4815,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                   id="nodeBar13-name"
                   text-anchor="start"
                   x="48"
-                  y="81.62062331666024"
+                  y="81.85148133897654"
                 >
                   node4
                 </text>
@@ -4809,7 +4829,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="81.62062331666024"
+                y="81.85148133897654"
               >
                 900
               </text>
@@ -4833,7 +4853,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               aria-label="node node5 with weight 80"
               data-is-focusable="true"
               fill="#0078D4"
-              height="27.78607156598696"
+              height="28.2570219315121"
               id="nodeBar15"
               opacity="1"
               role="img"
@@ -4842,7 +4862,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               tabindex="-1"
               width="124"
               x="48"
-              y="402.21392843401316"
+              y="407.7429780684879"
             />
             <g
               class=
@@ -4870,7 +4890,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                   id="nodeBar15-name"
                   text-anchor="start"
                   x="48"
-                  y="402.21392843401316"
+                  y="407.7429780684879"
                 >
                   node5
                 </text>
@@ -4884,7 +4904,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 font-weight="bold"
                 text-anchor="start"
                 x="164"
-                y="402.21392843401316"
+                y="407.7429780684879"
               >
                 80
               </text>
@@ -4925,7 +4945,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </defs>
             <path
               aria-label="link from node0 to node6 with weight 5"
-              d="M172,36C455.5,36,455.5,47.952,739,47.952L739,51.357C455.5,51.357,455.5,39.405,172,39.405Z"
+              d="M172,36C456,36,456,47.952,740,47.952L740,51.414C456,51.414,456,39.463,172,39.463Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link21"
@@ -4971,7 +4991,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </defs>
             <path
               aria-label="link from node1 to node6 with weight 5"
-              d="M172,47.405C455.5,47.405,455.5,51.357,739,51.357L739,54.762C455.5,54.762,455.5,50.81,172,50.81Z"
+              d="M172,47.463C456,47.463,456,51.414,740,51.414L740,54.877C456,54.877,456,50.926,172,50.926Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link22"
@@ -5017,7 +5037,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </defs>
             <path
               aria-label="link from node2 to node6 with weight 5"
-              d="M172,58.81C455.5,58.81,455.5,54.762,739,54.762L739,58.167C455.5,58.167,455.5,62.215,172,62.215Z"
+              d="M172,58.926C456,58.926,456,54.877,740,54.877L740,58.34C456,58.34,456,62.389,172,62.389Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link23"
@@ -5063,7 +5083,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </defs>
             <path
               aria-label="link from node3 to node6 with weight 5"
-              d="M172,70.215C455.5,70.215,455.5,58.167,739,58.167L739,61.572C455.5,61.572,455.5,73.621,172,73.621Z"
+              d="M172,70.389C456,70.389,456,58.34,740,58.34L740,61.803C456,61.803,456,73.851,172,73.851Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link24"
@@ -5109,7 +5129,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </defs>
             <path
               aria-label="link from node4 to node7 with weight 900"
-              d="M172,81.621C455.5,81.621,455.5,82.183,739,82.183L739,394.776C455.5,394.776,455.5,394.214,172,394.214Z"
+              d="M172,81.851C456,81.851,456,82.414,740,82.414L740,400.305C456,400.305,456,399.743,172,399.743Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link25"
@@ -5155,7 +5175,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </defs>
             <path
               aria-label="link from node5 to node7 with weight 80"
-              d="M172,402.214C455.5,402.214,455.5,394.776,739,394.776L739,422.562C455.5,422.562,455.5,430,172,430Z"
+              d="M172,407.743C456,407.743,456,400.305,740,400.305L740,428.562C456,428.562,456,436,172,436Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link26"
@@ -5184,7 +5204,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               aria-label="node node6 with weight 20"
               data-is-focusable="true"
               fill="#E3008C"
-              height="13.620623316660257"
+              height="13.851481338976527"
               id="nodeBar17"
               opacity="1"
               role="img"
@@ -5192,8 +5212,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="47.95153640302901"
+              x="740"
+              y="47.95153640302903"
             />
           </g>
         </g>
@@ -5214,7 +5234,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               aria-label="node node7 with weight 980"
               data-is-focusable="true"
               fill="#E3008C"
-              height="340.37937668333973"
+              height="346.1485186610235"
               id="nodeBar19"
               opacity="1"
               role="img"
@@ -5222,8 +5242,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="82.18303207403032"
+              x="740"
+              y="82.41389009634662"
             />
             <g
               class=
@@ -5250,8 +5270,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                   font-weight="regular"
                   id="nodeBar19-name"
                   text-anchor="start"
-                  x="739"
-                  y="82.18303207403032"
+                  x="740"
+                  y="82.41389009634662"
                 >
                   node7
                 </text>
@@ -5264,8 +5284,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="82.18303207403032"
+                x="740"
+                y="82.41389009634662"
               >
                 980
               </text>
@@ -5310,10 +5330,15 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
-        height="436"
+        height="468"
         id="sankeyChart2"
-        width="864"
+        width="912"
       >
         <g
           class=
@@ -5332,7 +5357,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               aria-label="node Large Source with weight 10001"
               data-is-focusable="true"
               fill="#00758F"
-              height="382.2322981856484"
+              height="388.1737328724719"
               id="nodeBar5"
               opacity="1"
               role="img"
@@ -5407,7 +5432,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               aria-label="node Tiny Source with weight 2"
               data-is-focusable="true"
               fill="#77004D"
-              height="3.7677018143515397"
+              height="3.8262671275280695"
               id="nodeBar7"
               opacity="1"
               role="img"
@@ -5416,7 +5441,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               tabindex="-1"
               width="124"
               x="48"
-              y="426.2322981856484"
+              y="432.1737328724719"
             />
           </g>
         </g>
@@ -5454,7 +5479,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </defs>
             <path
               aria-label="link from Large Source to Large Target with weight 10000"
-              d="M172,36C455.5,36,455.5,36,739,36L739,416.348C455.5,416.348,455.5,416.348,172,416.348Z"
+              d="M172,36C456,36,456,36,740,36L740,422.261C456,422.261,456,422.261,172,422.261Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link13"
@@ -5500,7 +5525,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </defs>
             <path
               aria-label="link from Large Source to Tiny Target with weight 1"
-              d="M172,416.348C455.5,416.348,455.5,426.232,739,426.232L739,428.116C455.5,428.116,455.5,418.232,172,418.232Z"
+              d="M172,422.261C456,422.261,456,432.174,740,432.174L740,434.087C456,434.087,456,424.174,172,424.174Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link14"
@@ -5546,7 +5571,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </defs>
             <path
               aria-label="link from Tiny Source to Large Target with weight 1"
-              d="M172,426.232C455.5,426.232,455.5,416.348,739,416.348L739,418.232C455.5,418.232,455.5,428.116,172,428.116Z"
+              d="M172,432.174C456,432.174,456,422.261,740,422.261L740,424.174C456,424.174,456,434.087,172,434.087Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link15"
@@ -5592,7 +5617,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </defs>
             <path
               aria-label="link from Tiny Source to Tiny Target with weight 1"
-              d="M172,428.116C455.5,428.116,455.5,428.116,739,428.116L739,430C455.5,430,455.5,430,172,430Z"
+              d="M172,434.087C456,434.087,456,434.087,740,434.087L740,436C456,436,456,436,172,436Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link16"
@@ -5621,7 +5646,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               aria-label="node Large Target with weight 10001"
               data-is-focusable="true"
               fill="#4F6BED"
-              height="382.23229818564846"
+              height="388.1737328724719"
               id="nodeBar9"
               opacity="1"
               role="img"
@@ -5629,7 +5654,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
+              x="740"
               y="36"
             />
             <g
@@ -5657,7 +5682,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                   font-weight="regular"
                   id="nodeBar9-name"
                   text-anchor="start"
-                  x="739"
+                  x="740"
                   y="36"
                 >
                   Large Target
@@ -5671,7 +5696,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
+                x="740"
                 y="36"
               >
                 10001
@@ -5696,7 +5721,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               aria-label="node Tiny Target with weight 2"
               data-is-focusable="true"
               fill="#937600"
-              height="3.7677018143516534"
+              height="3.8262671275281264"
               id="nodeBar11"
               opacity="1"
               role="img"
@@ -5704,8 +5729,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="426.23229818564846"
+              x="740"
+              y="432.1737328724719"
             />
           </g>
         </g>
@@ -5747,10 +5772,15 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
-        height="436"
+        height="468"
         id="sankeyChart2"
-        width="864"
+        width="912"
       >
         <g
           class=
@@ -5768,7 +5798,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             <rect
               aria-label="node 192.168.42.72 with weight 80"
               data-is-focusable="true"
-              height="129.31506849315068"
+              height="131.50684931506842"
               id="nodeBar5"
               opacity="1"
               role="img"
@@ -5842,7 +5872,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             <rect
               aria-label="node 172.152.48.13 with weight 78"
               data-is-focusable="true"
-              height="126.08219178082172"
+              height="128.2191780821918"
               id="nodeBar7"
               opacity="1"
               role="img"
@@ -5851,7 +5881,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               tabindex="-1"
               width="124"
               x="48"
-              y="173.31506849315068"
+              y="175.50684931506842"
             />
             <g
               class=
@@ -5879,7 +5909,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   id="nodeBar7-name"
                   text-anchor="start"
                   x="48"
-                  y="173.31506849315068"
+                  y="175.50684931506842"
                 >
                   172.152.48.13
                 </text>
@@ -5893,7 +5923,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="173.31506849315068"
+                y="175.50684931506842"
               >
                 78
               </text>
@@ -5917,7 +5947,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               aria-label="node 124.360.55.1 with weight 14"
               data-is-focusable="true"
               fill="#8764B8"
-              height="22.630136986301352"
+              height="23.013698630137014"
               id="nodeBar9"
               opacity="1"
               role="img"
@@ -5926,7 +5956,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               tabindex="-1"
               width="124"
               x="48"
-              y="307.3972602739724"
+              y="311.7260273972602"
             />
           </g>
         </g>
@@ -5946,7 +5976,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             <rect
               aria-label="node 124.124.50.1 with weight 10"
               data-is-focusable="true"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar11"
               opacity="1"
               role="img"
@@ -5955,7 +5985,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               tabindex="-1"
               width="124"
               x="48"
-              y="338.02739726027374"
+              y="342.73972602739724"
             />
           </g>
         </g>
@@ -5975,7 +6005,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             <rect
               aria-label="node 192.564.10.2 with weight 27"
               data-is-focusable="true"
-              height="43.643835616438366"
+              height="44.383561643835606"
               id="nodeBar13"
               opacity="1"
               role="img"
@@ -5984,7 +6014,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               tabindex="-1"
               width="124"
               x="48"
-              y="362.1917808219178"
+              y="367.17808219178085"
             />
             <g
               class=
@@ -6012,7 +6042,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   id="nodeBar13-name"
                   text-anchor="start"
                   x="48"
-                  y="362.1917808219178"
+                  y="367.17808219178085"
                 >
                   192.564.10.2
                 </text>
@@ -6026,7 +6056,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="362.1917808219178"
+                y="367.17808219178085"
               >
                 27
               </text>
@@ -6049,7 +6079,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             <rect
               aria-label="node 172.630.89.4 with weight 10"
               data-is-focusable="true"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar15"
               opacity="1"
               role="img"
@@ -6058,7 +6088,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               tabindex="-1"
               width="124"
               x="48"
-              y="413.83561643835617"
+              y="419.56164383561645"
             />
           </g>
         </g>
@@ -6096,7 +6126,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </defs>
             <path
               aria-label="link from 192.168.42.72 to inbox with weight 80"
-              d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
+              d="M172,36C283,36,283,37.687,394,37.687L394,169.194C283,169.194,283,167.507,172,167.507Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link29"
@@ -6142,7 +6172,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </defs>
             <path
               aria-label="link from 172.152.48.13 to inbox with weight 50"
-              d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
+              d="M172,175.507C283,175.507,283,169.194,394,169.194L394,251.386C283,251.386,283,257.699,172,257.699Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link30"
@@ -6188,7 +6218,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </defs>
             <path
               aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
-              d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
+              d="M172,257.699C283,257.699,283,274.496,394,274.496L394,320.523C283,320.523,283,303.726,172,303.726Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link31"
@@ -6234,7 +6264,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </defs>
             <path
               aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
-              d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
+              d="M172,311.726C283,311.726,283,320.523,394,320.523L394,343.537C283,343.537,283,334.74,172,334.74Z"
               data-is-focusable="true"
               fill="#8764B8"
               fill-opacity="1"
@@ -6281,7 +6311,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </defs>
             <path
               aria-label="link from 124.124.50.1 to Junk Folder with weight 10"
-              d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
+              d="M172,342.74C283,342.74,283,343.537,394,343.537L394,359.975C283,359.975,283,359.178,172,359.178Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link33"
@@ -6327,7 +6357,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Junk Folder with weight 7"
-              d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
+              d="M172,367.178C283,367.178,283,359.975,394,359.975L394,371.482C283,371.482,283,378.685,172,378.685Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link34"
@@ -6373,7 +6403,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Deleted Folder with weight 20"
-              d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
+              d="M172,378.685C283,378.685,283,395.921,394,395.921L394,428.797C283,428.797,283,411.562,172,411.562Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link35"
@@ -6419,7 +6449,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </defs>
             <path
               aria-label="link from 172.630.89.4 to Junk Folder with weight 10"
-              d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
+              d="M172,419.562C283,419.562,283,371.482,394,371.482L394,387.921C283,387.921,283,436,172,436Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link36"
@@ -6447,7 +6477,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             <rect
               aria-label="node inbox with weight 130"
               data-is-focusable="true"
-              height="210.13698630136994"
+              height="213.6986301369863"
               id="nodeBar17"
               opacity="1"
               role="img"
@@ -6455,8 +6485,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="37.68645072950067"
+              x="394"
+              y="37.6871032162321"
             />
             <g
               class=
@@ -6483,8 +6513,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   font-weight="regular"
                   id="nodeBar17-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="37.68645072950067"
+                  x="394"
+                  y="37.6871032162321"
                 >
                   inbox
                 </text>
@@ -6497,8 +6527,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="37.68645072950067"
+                x="394"
+                y="37.6871032162321"
               >
                 130
               </text>
@@ -6522,7 +6552,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               aria-label="node Junk Folder with weight 69"
               data-is-focusable="true"
               fill="#8764B8"
-              height="111.53424657534248"
+              height="113.42465753424653"
               id="nodeBar19"
               opacity="1"
               role="img"
@@ -6530,8 +6560,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="270.8534770168133"
+              x="394"
+              y="274.496046898372"
             />
             <g
               class=
@@ -6558,8 +6588,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   font-weight="regular"
                   id="nodeBar19-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="270.8534770168133"
+                  x="394"
+                  y="274.496046898372"
                 >
                   Junk Folder
                 </text>
@@ -6572,8 +6602,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="270.8534770168133"
+                x="394"
+                y="274.496046898372"
               >
                 69
               </text>
@@ -6596,7 +6626,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             <rect
               aria-label="node Deleted Folder with weight 20"
               data-is-focusable="true"
-              height="32.32876712328766"
+              height="32.8767123287671"
               id="nodeBar21"
               opacity="1"
               role="img"
@@ -6604,8 +6634,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="390.3877235921558"
+              x="394"
+              y="395.92070443261855"
             />
             <g
               class=
@@ -6632,8 +6662,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   font-weight="regular"
                   id="nodeBar21-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="390.3877235921558"
+                  x="394"
+                  y="395.92070443261855"
                 >
                   Deleted Folder
                 </text>
@@ -6646,8 +6676,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="509.5"
-                y="390.3877235921558"
+                x="510"
+                y="395.92070443261855"
               >
                 20
               </text>
@@ -6688,7 +6718,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </defs>
             <path
               aria-label="link from inbox to Clicked with weight 30"
-              d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
+              d="M518,37.687C629,37.687,629,36,740,36L740,85.315C629,85.315,629,87.002,518,87.002Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link37"
@@ -6734,7 +6764,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </defs>
             <path
               aria-label="link from inbox to Opened with weight 55"
-              d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
+              d="M518,87.002C629,87.002,629,93.315,740,93.315L740,183.726C629,183.726,629,177.413,518,177.413Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link38"
@@ -6780,7 +6810,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </defs>
             <path
               aria-label="link from Junk Folder to  No further action  required with weight 60"
-              d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
+              d="M518,274.496C629,274.496,629,275.194,740,275.194L740,373.825C629,373.825,629,373.126,518,373.126Z"
               data-is-focusable="true"
               fill="#8764B8"
               fill-opacity="1"
@@ -6827,7 +6857,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </defs>
             <path
               aria-label="link from Deleted Folder to  No further action  required with weight 2"
-              d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
+              d="M518,395.921C629,395.921,629,373.825,740,373.825L740,377.112C629,377.112,629,399.208,518,399.208Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link40"
@@ -6855,7 +6885,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             <rect
               aria-label="node Clicked with weight 30"
               data-is-focusable="true"
-              height="48.49315068493148"
+              height="49.315068493150676"
               id="nodeBar23"
               opacity="1"
               role="img"
@@ -6863,7 +6893,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
+              x="740"
               y="36"
             />
             <g
@@ -6891,7 +6921,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   font-weight="regular"
                   id="nodeBar23-name"
                   text-anchor="start"
-                  x="739"
+                  x="740"
                   y="36"
                 >
                   Clicked
@@ -6905,7 +6935,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
+                x="740"
                 y="36"
               >
                 30
@@ -6929,7 +6959,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             <rect
               aria-label="node Opened with weight 55"
               data-is-focusable="true"
-              height="88.90410958904114"
+              height="90.41095890410958"
               id="nodeBar25"
               opacity="1"
               role="img"
@@ -6937,8 +6967,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="92.49315068493148"
+              x="740"
+              y="93.31506849315068"
             />
             <g
               class=
@@ -6965,8 +6995,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   font-weight="regular"
                   id="nodeBar25-name"
                   text-anchor="start"
-                  x="739"
-                  y="92.49315068493148"
+                  x="740"
+                  y="93.31506849315068"
                 >
                   Opened
                 </text>
@@ -6979,8 +7009,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="92.49315068493148"
+                x="740"
+                y="93.31506849315068"
               >
                 55
               </text>
@@ -7004,7 +7034,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               aria-label="node  No further action  required with weight 62"
               data-is-focusable="true"
               fill="#8764B8"
-              height="100.21917808219177"
+              height="101.91780821917808"
               id="nodeBar27"
               opacity="1"
               role="img"
@@ -7012,8 +7042,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="271.54289868025126"
+              x="740"
+              y="275.1944984618674"
             />
             <g
               class=
@@ -7040,8 +7070,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   font-weight="regular"
                   id="nodeBar27-name"
                   text-anchor="start"
-                  x="739"
-                  y="271.54289868025126"
+                  x="740"
+                  y="275.1944984618674"
                 >
                    No further action  required
                 </text>
@@ -7054,8 +7084,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="271.54289868025126"
+                x="740"
+                y="275.1944984618674"
               >
                 62
               </text>
@@ -7103,10 +7133,15 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
-        height="436"
+        height="468"
         id="sankeyChart2"
-        width="864"
+        width="912"
       >
         <g
           class=
@@ -7125,7 +7160,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               aria-label="node 192.168.42.72 with weight 80"
               data-is-focusable="true"
               fill="#8764B8"
-              height="129.31506849315068"
+              height="131.50684931506842"
               id="nodeBar5"
               opacity="1"
               role="img"
@@ -7200,7 +7235,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               aria-label="node 172.152.48.13 with weight 78"
               data-is-focusable="true"
               fill="#8764B8"
-              height="126.08219178082172"
+              height="128.2191780821918"
               id="nodeBar7"
               opacity="1"
               role="img"
@@ -7209,7 +7244,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               tabindex="-1"
               width="124"
               x="48"
-              y="173.31506849315068"
+              y="175.50684931506842"
             />
             <g
               class=
@@ -7237,7 +7272,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   id="nodeBar7-name"
                   text-anchor="start"
                   x="48"
-                  y="173.31506849315068"
+                  y="175.50684931506842"
                 >
                   172.152.48.13
                 </text>
@@ -7251,7 +7286,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="173.31506849315068"
+                y="175.50684931506842"
               >
                 78
               </text>
@@ -7275,7 +7310,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               aria-label="node 124.360.55.1 with weight 14"
               data-is-focusable="true"
               fill="#8764B8"
-              height="22.630136986301352"
+              height="23.013698630137014"
               id="nodeBar9"
               opacity="1"
               role="img"
@@ -7284,7 +7319,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               tabindex="-1"
               width="124"
               x="48"
-              y="307.3972602739724"
+              y="311.7260273972602"
             />
           </g>
         </g>
@@ -7305,7 +7340,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               aria-label="node 124.124.50.1 with weight 10"
               data-is-focusable="true"
               fill="#8764B8"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar11"
               opacity="1"
               role="img"
@@ -7314,7 +7349,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               tabindex="-1"
               width="124"
               x="48"
-              y="338.02739726027374"
+              y="342.73972602739724"
             />
           </g>
         </g>
@@ -7335,7 +7370,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               aria-label="node 192.564.10.2 with weight 27"
               data-is-focusable="true"
               fill="#8764B8"
-              height="43.643835616438366"
+              height="44.383561643835606"
               id="nodeBar13"
               opacity="1"
               role="img"
@@ -7344,7 +7379,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               tabindex="-1"
               width="124"
               x="48"
-              y="362.1917808219178"
+              y="367.17808219178085"
             />
             <g
               class=
@@ -7372,7 +7407,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   id="nodeBar13-name"
                   text-anchor="start"
                   x="48"
-                  y="362.1917808219178"
+                  y="367.17808219178085"
                 >
                   192.564.10.2
                 </text>
@@ -7386,7 +7421,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="362.1917808219178"
+                y="367.17808219178085"
               >
                 27
               </text>
@@ -7410,7 +7445,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               aria-label="node 172.630.89.4 with weight 10"
               data-is-focusable="true"
               fill="#8764B8"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar15"
               opacity="1"
               role="img"
@@ -7419,7 +7454,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               tabindex="-1"
               width="124"
               x="48"
-              y="413.83561643835617"
+              y="419.56164383561645"
             />
           </g>
         </g>
@@ -7457,7 +7492,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </defs>
             <path
               aria-label="link from 192.168.42.72 to inbox with weight 80"
-              d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
+              d="M172,36C283,36,283,37.687,394,37.687L394,169.194C283,169.194,283,167.507,172,167.507Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link29"
@@ -7503,7 +7538,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </defs>
             <path
               aria-label="link from 172.152.48.13 to inbox with weight 50"
-              d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
+              d="M172,175.507C283,175.507,283,169.194,394,169.194L394,251.386C283,251.386,283,257.699,172,257.699Z"
               data-is-focusable="true"
               fill="url(#gradient-link1-1)"
               fill-opacity="0.3"
@@ -7550,7 +7585,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </defs>
             <path
               aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
-              d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
+              d="M172,257.699C283,257.699,283,274.496,394,274.496L394,320.523C283,320.523,283,303.726,172,303.726Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link31"
@@ -7596,7 +7631,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </defs>
             <path
               aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
-              d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
+              d="M172,311.726C283,311.726,283,320.523,394,320.523L394,343.537C283,343.537,283,334.74,172,334.74Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link32"
@@ -7642,7 +7677,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </defs>
             <path
               aria-label="link from 124.124.50.1 to Junk Folder with weight 10"
-              d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
+              d="M172,342.74C283,342.74,283,343.537,394,343.537L394,359.975C283,359.975,283,359.178,172,359.178Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link33"
@@ -7688,7 +7723,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Junk Folder with weight 7"
-              d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
+              d="M172,367.178C283,367.178,283,359.975,394,359.975L394,371.482C283,371.482,283,378.685,172,378.685Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link34"
@@ -7734,7 +7769,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Deleted Folder with weight 20"
-              d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
+              d="M172,378.685C283,378.685,283,395.921,394,395.921L394,428.797C283,428.797,283,411.562,172,411.562Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link35"
@@ -7780,7 +7815,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </defs>
             <path
               aria-label="link from 172.630.89.4 to Junk Folder with weight 10"
-              d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
+              d="M172,419.562C283,419.562,283,371.482,394,371.482L394,387.921C283,387.921,283,436,172,436Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link36"
@@ -7809,7 +7844,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               aria-label="node inbox with weight 130"
               data-is-focusable="true"
               fill="#0E7878"
-              height="210.13698630136994"
+              height="213.6986301369863"
               id="nodeBar17"
               opacity="1"
               role="img"
@@ -7817,8 +7852,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="37.68645072950067"
+              x="394"
+              y="37.6871032162321"
             />
             <g
               class=
@@ -7845,8 +7880,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   font-weight="regular"
                   id="nodeBar17-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="37.68645072950067"
+                  x="394"
+                  y="37.6871032162321"
                 >
                   inbox
                 </text>
@@ -7859,8 +7894,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="37.68645072950067"
+                x="394"
+                y="37.6871032162321"
               >
                 130
               </text>
@@ -7884,7 +7919,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               aria-label="node Junk Folder with weight 69"
               data-is-focusable="true"
               fill="#0E7878"
-              height="111.53424657534248"
+              height="113.42465753424653"
               id="nodeBar19"
               opacity="1"
               role="img"
@@ -7892,8 +7927,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="270.8534770168133"
+              x="394"
+              y="274.496046898372"
             />
             <g
               class=
@@ -7920,8 +7955,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   font-weight="regular"
                   id="nodeBar19-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="270.8534770168133"
+                  x="394"
+                  y="274.496046898372"
                 >
                   Junk Folder
                 </text>
@@ -7934,8 +7969,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="270.8534770168133"
+                x="394"
+                y="274.496046898372"
               >
                 69
               </text>
@@ -7959,7 +7994,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               aria-label="node Deleted Folder with weight 20"
               data-is-focusable="true"
               fill="#0E7878"
-              height="32.32876712328766"
+              height="32.8767123287671"
               id="nodeBar21"
               opacity="1"
               role="img"
@@ -7967,8 +8002,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="390.3877235921558"
+              x="394"
+              y="395.92070443261855"
             />
             <g
               class=
@@ -7995,8 +8030,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   font-weight="regular"
                   id="nodeBar21-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="390.3877235921558"
+                  x="394"
+                  y="395.92070443261855"
                 >
                   Deleted Folder
                 </text>
@@ -8009,8 +8044,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="509.5"
-                y="390.3877235921558"
+                x="510"
+                y="395.92070443261855"
               >
                 20
               </text>
@@ -8051,7 +8086,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </defs>
             <path
               aria-label="link from inbox to Clicked with weight 30"
-              d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
+              d="M518,37.687C629,37.687,629,36,740,36L740,85.315C629,85.315,629,87.002,518,87.002Z"
               data-is-focusable="true"
               fill="url(#gradient-link1-8)"
               fill-opacity="0.3"
@@ -8098,7 +8133,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </defs>
             <path
               aria-label="link from inbox to Opened with weight 55"
-              d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
+              d="M518,87.002C629,87.002,629,93.315,740,93.315L740,183.726C629,183.726,629,177.413,518,177.413Z"
               data-is-focusable="true"
               fill="url(#gradient-link1-9)"
               fill-opacity="0.3"
@@ -8145,7 +8180,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </defs>
             <path
               aria-label="link from Junk Folder to  No further action  required with weight 60"
-              d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
+              d="M518,274.496C629,274.496,629,275.194,740,275.194L740,373.825C629,373.825,629,373.126,518,373.126Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link39"
@@ -8191,7 +8226,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </defs>
             <path
               aria-label="link from Deleted Folder to  No further action  required with weight 2"
-              d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
+              d="M518,395.921C629,395.921,629,373.825,740,373.825L740,377.112C629,377.112,629,399.208,518,399.208Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link40"
@@ -8220,7 +8255,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               aria-label="node Clicked with weight 30"
               data-is-focusable="true"
               fill="#4F6BED"
-              height="48.49315068493148"
+              height="49.315068493150676"
               id="nodeBar23"
               opacity="1"
               role="img"
@@ -8228,7 +8263,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
+              x="740"
               y="36"
             />
             <g
@@ -8256,7 +8291,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   font-weight="regular"
                   id="nodeBar23-name"
                   text-anchor="start"
-                  x="739"
+                  x="740"
                   y="36"
                 >
                   Clicked
@@ -8270,7 +8305,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
+                x="740"
                 y="36"
               >
                 30
@@ -8295,7 +8330,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               aria-label="node Opened with weight 55"
               data-is-focusable="true"
               fill="#4F6BED"
-              height="88.90410958904114"
+              height="90.41095890410958"
               id="nodeBar25"
               opacity="1"
               role="img"
@@ -8303,8 +8338,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="92.49315068493148"
+              x="740"
+              y="93.31506849315068"
             />
             <g
               class=
@@ -8331,8 +8366,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   font-weight="regular"
                   id="nodeBar25-name"
                   text-anchor="start"
-                  x="739"
-                  y="92.49315068493148"
+                  x="740"
+                  y="93.31506849315068"
                 >
                   Opened
                 </text>
@@ -8345,8 +8380,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="92.49315068493148"
+                x="740"
+                y="93.31506849315068"
               >
                 55
               </text>
@@ -8370,7 +8405,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               aria-label="node  No further action  required with weight 62"
               data-is-focusable="true"
               fill="#4F6BED"
-              height="100.21917808219177"
+              height="101.91780821917808"
               id="nodeBar27"
               opacity="1"
               role="img"
@@ -8378,8 +8413,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="271.54289868025126"
+              x="740"
+              y="275.1944984618674"
             />
             <g
               class=
@@ -8406,8 +8441,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   font-weight="regular"
                   id="nodeBar27-name"
                   text-anchor="start"
-                  x="739"
-                  y="271.54289868025126"
+                  x="740"
+                  y="275.1944984618674"
                 >
                    No further action  required
                 </text>
@@ -8420,8 +8455,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="271.54289868025126"
+                x="740"
+                y="275.1944984618674"
               >
                 62
               </text>
@@ -8469,10 +8504,15 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
-        height="436"
+        height="468"
         id="sankeyChart2"
-        width="864"
+        width="912"
       >
         <g
           class=
@@ -8490,7 +8530,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             <rect
               aria-label="node 192.168.42.72 with weight 80"
               data-is-focusable="true"
-              height="129.31506849315068"
+              height="131.50684931506842"
               id="nodeBar5"
               opacity="1"
               role="img"
@@ -8565,7 +8605,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               aria-label="node 172.152.48.13 with weight 78"
               data-is-focusable="true"
               fill="#8764B8"
-              height="126.08219178082172"
+              height="128.2191780821918"
               id="nodeBar7"
               opacity="1"
               role="img"
@@ -8574,7 +8614,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               tabindex="-1"
               width="124"
               x="48"
-              y="173.31506849315068"
+              y="175.50684931506842"
             />
             <g
               class=
@@ -8602,7 +8642,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   id="nodeBar7-name"
                   text-anchor="start"
                   x="48"
-                  y="173.31506849315068"
+                  y="175.50684931506842"
                 >
                   172.152.48.13
                 </text>
@@ -8616,7 +8656,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="173.31506849315068"
+                y="175.50684931506842"
               >
                 78
               </text>
@@ -8639,7 +8679,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             <rect
               aria-label="node 124.360.55.1 with weight 14"
               data-is-focusable="true"
-              height="22.630136986301352"
+              height="23.013698630137014"
               id="nodeBar9"
               opacity="1"
               role="img"
@@ -8648,7 +8688,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               tabindex="-1"
               width="124"
               x="48"
-              y="307.3972602739724"
+              y="311.7260273972602"
             />
           </g>
         </g>
@@ -8668,7 +8708,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             <rect
               aria-label="node 124.124.50.1 with weight 10"
               data-is-focusable="true"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar11"
               opacity="1"
               role="img"
@@ -8677,7 +8717,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               tabindex="-1"
               width="124"
               x="48"
-              y="338.02739726027374"
+              y="342.73972602739724"
             />
           </g>
         </g>
@@ -8697,7 +8737,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             <rect
               aria-label="node 192.564.10.2 with weight 27"
               data-is-focusable="true"
-              height="43.643835616438366"
+              height="44.383561643835606"
               id="nodeBar13"
               opacity="1"
               role="img"
@@ -8706,7 +8746,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               tabindex="-1"
               width="124"
               x="48"
-              y="362.1917808219178"
+              y="367.17808219178085"
             />
             <g
               class=
@@ -8734,7 +8774,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   id="nodeBar13-name"
                   text-anchor="start"
                   x="48"
-                  y="362.1917808219178"
+                  y="367.17808219178085"
                 >
                   192.564.10.2
                 </text>
@@ -8748,7 +8788,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="362.1917808219178"
+                y="367.17808219178085"
               >
                 27
               </text>
@@ -8771,7 +8811,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             <rect
               aria-label="node 172.630.89.4 with weight 10"
               data-is-focusable="true"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar15"
               opacity="1"
               role="img"
@@ -8780,7 +8820,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               tabindex="-1"
               width="124"
               x="48"
-              y="413.83561643835617"
+              y="419.56164383561645"
             />
           </g>
         </g>
@@ -8818,7 +8858,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </defs>
             <path
               aria-label="link from 192.168.42.72 to inbox with weight 80"
-              d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
+              d="M172,36C283,36,283,37.687,394,37.687L394,169.194C283,169.194,283,167.507,172,167.507Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link29"
@@ -8864,7 +8904,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </defs>
             <path
               aria-label="link from 172.152.48.13 to inbox with weight 50"
-              d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
+              d="M172,175.507C283,175.507,283,169.194,394,169.194L394,251.386C283,251.386,283,257.699,172,257.699Z"
               data-is-focusable="true"
               fill="#8764B8"
               fill-opacity="1"
@@ -8911,7 +8951,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </defs>
             <path
               aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
-              d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
+              d="M172,257.699C283,257.699,283,274.496,394,274.496L394,320.523C283,320.523,283,303.726,172,303.726Z"
               data-is-focusable="true"
               fill="#8764B8"
               fill-opacity="1"
@@ -8958,7 +8998,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </defs>
             <path
               aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
-              d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
+              d="M172,311.726C283,311.726,283,320.523,394,320.523L394,343.537C283,343.537,283,334.74,172,334.74Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link32"
@@ -9004,7 +9044,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </defs>
             <path
               aria-label="link from 124.124.50.1 to Junk Folder with weight 10"
-              d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
+              d="M172,342.74C283,342.74,283,343.537,394,343.537L394,359.975C283,359.975,283,359.178,172,359.178Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link33"
@@ -9050,7 +9090,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Junk Folder with weight 7"
-              d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
+              d="M172,367.178C283,367.178,283,359.975,394,359.975L394,371.482C283,371.482,283,378.685,172,378.685Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link34"
@@ -9096,7 +9136,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Deleted Folder with weight 20"
-              d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
+              d="M172,378.685C283,378.685,283,395.921,394,395.921L394,428.797C283,428.797,283,411.562,172,411.562Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link35"
@@ -9142,7 +9182,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </defs>
             <path
               aria-label="link from 172.630.89.4 to Junk Folder with weight 10"
-              d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
+              d="M172,419.562C283,419.562,283,371.482,394,371.482L394,387.921C283,387.921,283,436,172,436Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link36"
@@ -9171,7 +9211,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               aria-label="node inbox with weight 130"
               data-is-focusable="true"
               fill="#8764B8"
-              height="210.13698630136994"
+              height="213.6986301369863"
               id="nodeBar17"
               opacity="1"
               role="img"
@@ -9179,8 +9219,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="37.68645072950067"
+              x="394"
+              y="37.6871032162321"
             />
             <g
               class=
@@ -9207,8 +9247,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   font-weight="regular"
                   id="nodeBar17-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="37.68645072950067"
+                  x="394"
+                  y="37.6871032162321"
                 >
                   inbox
                 </text>
@@ -9221,8 +9261,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="37.68645072950067"
+                x="394"
+                y="37.6871032162321"
               >
                 130
               </text>
@@ -9246,7 +9286,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               aria-label="node Junk Folder with weight 69"
               data-is-focusable="true"
               fill="#8764B8"
-              height="111.53424657534248"
+              height="113.42465753424653"
               id="nodeBar19"
               opacity="1"
               role="img"
@@ -9254,8 +9294,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="270.8534770168133"
+              x="394"
+              y="274.496046898372"
             />
             <g
               class=
@@ -9282,8 +9322,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   font-weight="regular"
                   id="nodeBar19-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="270.8534770168133"
+                  x="394"
+                  y="274.496046898372"
                 >
                   Junk Folder
                 </text>
@@ -9296,8 +9336,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="270.8534770168133"
+                x="394"
+                y="274.496046898372"
               >
                 69
               </text>
@@ -9320,7 +9360,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             <rect
               aria-label="node Deleted Folder with weight 20"
               data-is-focusable="true"
-              height="32.32876712328766"
+              height="32.8767123287671"
               id="nodeBar21"
               opacity="1"
               role="img"
@@ -9328,8 +9368,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="390.3877235921558"
+              x="394"
+              y="395.92070443261855"
             />
             <g
               class=
@@ -9356,8 +9396,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   font-weight="regular"
                   id="nodeBar21-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="390.3877235921558"
+                  x="394"
+                  y="395.92070443261855"
                 >
                   Deleted Folder
                 </text>
@@ -9370,8 +9410,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="509.5"
-                y="390.3877235921558"
+                x="510"
+                y="395.92070443261855"
               >
                 20
               </text>
@@ -9412,7 +9452,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </defs>
             <path
               aria-label="link from inbox to Clicked with weight 30"
-              d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
+              d="M518,37.687C629,37.687,629,36,740,36L740,85.315C629,85.315,629,87.002,518,87.002Z"
               data-is-focusable="true"
               fill="#8764B8"
               fill-opacity="1"
@@ -9459,7 +9499,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </defs>
             <path
               aria-label="link from inbox to Opened with weight 55"
-              d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
+              d="M518,87.002C629,87.002,629,93.315,740,93.315L740,183.726C629,183.726,629,177.413,518,177.413Z"
               data-is-focusable="true"
               fill="#8764B8"
               fill-opacity="1"
@@ -9506,7 +9546,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </defs>
             <path
               aria-label="link from Junk Folder to  No further action  required with weight 60"
-              d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
+              d="M518,274.496C629,274.496,629,275.194,740,275.194L740,373.825C629,373.825,629,373.126,518,373.126Z"
               data-is-focusable="true"
               fill="#8764B8"
               fill-opacity="1"
@@ -9553,7 +9593,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </defs>
             <path
               aria-label="link from Deleted Folder to  No further action  required with weight 2"
-              d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
+              d="M518,395.921C629,395.921,629,373.825,740,373.825L740,377.112C629,377.112,629,399.208,518,399.208Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link40"
@@ -9582,7 +9622,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               aria-label="node Clicked with weight 30"
               data-is-focusable="true"
               fill="#8764B8"
-              height="48.49315068493148"
+              height="49.315068493150676"
               id="nodeBar23"
               opacity="1"
               role="img"
@@ -9590,7 +9630,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
+              x="740"
               y="36"
             />
             <g
@@ -9618,7 +9658,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   font-weight="regular"
                   id="nodeBar23-name"
                   text-anchor="start"
-                  x="739"
+                  x="740"
                   y="36"
                 >
                   Clicked
@@ -9632,7 +9672,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
+                x="740"
                 y="36"
               >
                 30
@@ -9657,7 +9697,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               aria-label="node Opened with weight 55"
               data-is-focusable="true"
               fill="#8764B8"
-              height="88.90410958904114"
+              height="90.41095890410958"
               id="nodeBar25"
               opacity="1"
               role="img"
@@ -9665,8 +9705,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="92.49315068493148"
+              x="740"
+              y="93.31506849315068"
             />
             <g
               class=
@@ -9693,8 +9733,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   font-weight="regular"
                   id="nodeBar25-name"
                   text-anchor="start"
-                  x="739"
-                  y="92.49315068493148"
+                  x="740"
+                  y="93.31506849315068"
                 >
                   Opened
                 </text>
@@ -9707,8 +9747,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="92.49315068493148"
+                x="740"
+                y="93.31506849315068"
               >
                 55
               </text>
@@ -9732,7 +9772,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               aria-label="node  No further action  required with weight 62"
               data-is-focusable="true"
               fill="#8764B8"
-              height="100.21917808219177"
+              height="101.91780821917808"
               id="nodeBar27"
               opacity="1"
               role="img"
@@ -9740,8 +9780,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="271.54289868025126"
+              x="740"
+              y="275.1944984618674"
             />
             <g
               class=
@@ -9768,8 +9808,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   font-weight="regular"
                   id="nodeBar27-name"
                   text-anchor="start"
-                  x="739"
-                  y="271.54289868025126"
+                  x="740"
+                  y="275.1944984618674"
                 >
                    No further action  required
                 </text>
@@ -9782,8 +9822,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="271.54289868025126"
+                x="740"
+                y="275.1944984618674"
               >
                 62
               </text>
@@ -9828,10 +9868,15 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        class=
+
+            {
+              display: block;
+            }
         focusable="false"
-        height="436"
+        height="468"
         id="sankeyChart2"
-        width="864"
+        width="912"
       >
         <g
           class=
@@ -9850,7 +9895,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               aria-label="node 192.168.42.72 with weight 80"
               data-is-focusable="true"
               fill="#8764B8"
-              height="129.31506849315068"
+              height="131.50684931506842"
               id="nodeBar5"
               opacity="1"
               role="img"
@@ -9925,7 +9970,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               aria-label="node 172.152.48.13 with weight 78"
               data-is-focusable="true"
               fill="#8764B8"
-              height="126.08219178082172"
+              height="128.2191780821918"
               id="nodeBar7"
               opacity="1"
               role="img"
@@ -9934,7 +9979,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               tabindex="-1"
               width="124"
               x="48"
-              y="173.31506849315068"
+              y="175.50684931506842"
             />
             <g
               class=
@@ -9962,7 +10007,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   id="nodeBar7-name"
                   text-anchor="start"
                   x="48"
-                  y="173.31506849315068"
+                  y="175.50684931506842"
                 >
                   172.152.48.13
                 </text>
@@ -9976,7 +10021,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="173.31506849315068"
+                y="175.50684931506842"
               >
                 78
               </text>
@@ -10000,7 +10045,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               aria-label="node 124.360.55.1 with weight 14"
               data-is-focusable="true"
               fill="#8764B8"
-              height="22.630136986301352"
+              height="23.013698630137014"
               id="nodeBar9"
               opacity="1"
               role="img"
@@ -10009,7 +10054,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               tabindex="-1"
               width="124"
               x="48"
-              y="307.3972602739724"
+              y="311.7260273972602"
             />
           </g>
         </g>
@@ -10030,7 +10075,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               aria-label="node 124.124.50.1 with weight 10"
               data-is-focusable="true"
               fill="#8764B8"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar11"
               opacity="1"
               role="img"
@@ -10039,7 +10084,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               tabindex="-1"
               width="124"
               x="48"
-              y="338.02739726027374"
+              y="342.73972602739724"
             />
           </g>
         </g>
@@ -10060,7 +10105,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               aria-label="node 192.564.10.2 with weight 27"
               data-is-focusable="true"
               fill="#8764B8"
-              height="43.643835616438366"
+              height="44.383561643835606"
               id="nodeBar13"
               opacity="1"
               role="img"
@@ -10069,7 +10114,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               tabindex="-1"
               width="124"
               x="48"
-              y="362.1917808219178"
+              y="367.17808219178085"
             />
             <g
               class=
@@ -10097,7 +10142,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   id="nodeBar13-name"
                   text-anchor="start"
                   x="48"
-                  y="362.1917808219178"
+                  y="367.17808219178085"
                 >
                   192.564.10.2
                 </text>
@@ -10111,7 +10156,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="362.1917808219178"
+                y="367.17808219178085"
               >
                 27
               </text>
@@ -10135,7 +10180,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               aria-label="node 172.630.89.4 with weight 10"
               data-is-focusable="true"
               fill="#8764B8"
-              height="16.16438356164383"
+              height="16.43835616438355"
               id="nodeBar15"
               opacity="1"
               role="img"
@@ -10144,7 +10189,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               tabindex="-1"
               width="124"
               x="48"
-              y="413.83561643835617"
+              y="419.56164383561645"
             />
           </g>
         </g>
@@ -10182,7 +10227,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 192.168.42.72 to inbox with weight 80"
-              d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
+              d="M172,36C283,36,283,37.687,394,37.687L394,169.194C283,169.194,283,167.507,172,167.507Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link29"
@@ -10228,7 +10273,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 172.152.48.13 to inbox with weight 50"
-              d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
+              d="M172,175.507C283,175.507,283,169.194,394,169.194L394,251.386C283,251.386,283,257.699,172,257.699Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link30"
@@ -10274,7 +10319,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
-              d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
+              d="M172,257.699C283,257.699,283,274.496,394,274.496L394,320.523C283,320.523,283,303.726,172,303.726Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link31"
@@ -10320,7 +10365,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
-              d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
+              d="M172,311.726C283,311.726,283,320.523,394,320.523L394,343.537C283,343.537,283,334.74,172,334.74Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link32"
@@ -10366,7 +10411,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 124.124.50.1 to Junk Folder with weight 10"
-              d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
+              d="M172,342.74C283,342.74,283,343.537,394,343.537L394,359.975C283,359.975,283,359.178,172,359.178Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link33"
@@ -10412,7 +10457,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Junk Folder with weight 7"
-              d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
+              d="M172,367.178C283,367.178,283,359.975,394,359.975L394,371.482C283,371.482,283,378.685,172,378.685Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link34"
@@ -10458,7 +10503,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 192.564.10.2 to Deleted Folder with weight 20"
-              d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
+              d="M172,378.685C283,378.685,283,395.921,394,395.921L394,428.797C283,428.797,283,411.562,172,411.562Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link35"
@@ -10504,7 +10549,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from 172.630.89.4 to Junk Folder with weight 10"
-              d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
+              d="M172,419.562C283,419.562,283,371.482,394,371.482L394,387.921C283,387.921,283,436,172,436Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link36"
@@ -10533,7 +10578,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               aria-label="node inbox with weight 130"
               data-is-focusable="true"
               fill="#0E7878"
-              height="210.13698630136994"
+              height="213.6986301369863"
               id="nodeBar17"
               opacity="1"
               role="img"
@@ -10541,8 +10586,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="37.68645072950067"
+              x="394"
+              y="37.6871032162321"
             />
             <g
               class=
@@ -10569,8 +10614,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   font-weight="regular"
                   id="nodeBar17-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="37.68645072950067"
+                  x="394"
+                  y="37.6871032162321"
                 >
                   inbox
                 </text>
@@ -10583,8 +10628,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="37.68645072950067"
+                x="394"
+                y="37.6871032162321"
               >
                 130
               </text>
@@ -10608,7 +10653,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               aria-label="node Junk Folder with weight 69"
               data-is-focusable="true"
               fill="#0E7878"
-              height="111.53424657534248"
+              height="113.42465753424653"
               id="nodeBar19"
               opacity="1"
               role="img"
@@ -10616,8 +10661,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="270.8534770168133"
+              x="394"
+              y="274.496046898372"
             />
             <g
               class=
@@ -10644,8 +10689,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   font-weight="regular"
                   id="nodeBar19-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="270.8534770168133"
+                  x="394"
+                  y="274.496046898372"
                 >
                   Junk Folder
                 </text>
@@ -10658,8 +10703,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="393.5"
-                y="270.8534770168133"
+                x="394"
+                y="274.496046898372"
               >
                 69
               </text>
@@ -10683,7 +10728,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               aria-label="node Deleted Folder with weight 20"
               data-is-focusable="true"
               fill="#0E7878"
-              height="32.32876712328766"
+              height="32.8767123287671"
               id="nodeBar21"
               opacity="1"
               role="img"
@@ -10691,8 +10736,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="393.5"
-              y="390.3877235921558"
+              x="394"
+              y="395.92070443261855"
             />
             <g
               class=
@@ -10719,8 +10764,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   font-weight="regular"
                   id="nodeBar21-name"
                   text-anchor="start"
-                  x="393.5"
-                  y="390.3877235921558"
+                  x="394"
+                  y="395.92070443261855"
                 >
                   Deleted Folder
                 </text>
@@ -10733,8 +10778,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="509.5"
-                y="390.3877235921558"
+                x="510"
+                y="395.92070443261855"
               >
                 20
               </text>
@@ -10775,7 +10820,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from inbox to Clicked with weight 30"
-              d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
+              d="M518,37.687C629,37.687,629,36,740,36L740,85.315C629,85.315,629,87.002,518,87.002Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link37"
@@ -10821,7 +10866,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from inbox to Opened with weight 55"
-              d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
+              d="M518,87.002C629,87.002,629,93.315,740,93.315L740,183.726C629,183.726,629,177.413,518,177.413Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link38"
@@ -10867,7 +10912,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from Junk Folder to  No further action  required with weight 60"
-              d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
+              d="M518,274.496C629,274.496,629,275.194,740,275.194L740,373.825C629,373.825,629,373.126,518,373.126Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link39"
@@ -10913,7 +10958,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </defs>
             <path
               aria-label="link from Deleted Folder to  No further action  required with weight 2"
-              d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
+              d="M518,395.921C629,395.921,629,373.825,740,373.825L740,377.112C629,377.112,629,399.208,518,399.208Z"
               data-is-focusable="true"
               fill-opacity="1"
               id="link40"
@@ -10942,7 +10987,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               aria-label="node Clicked with weight 30"
               data-is-focusable="true"
               fill="#4F6BED"
-              height="48.49315068493148"
+              height="49.315068493150676"
               id="nodeBar23"
               opacity="1"
               role="img"
@@ -10950,7 +10995,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
+              x="740"
               y="36"
             />
             <g
@@ -10978,7 +11023,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   font-weight="regular"
                   id="nodeBar23-name"
                   text-anchor="start"
-                  x="739"
+                  x="740"
                   y="36"
                 >
                   Clicked
@@ -10992,7 +11037,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
+                x="740"
                 y="36"
               >
                 30
@@ -11017,7 +11062,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               aria-label="node Opened with weight 55"
               data-is-focusable="true"
               fill="#4F6BED"
-              height="88.90410958904114"
+              height="90.41095890410958"
               id="nodeBar25"
               opacity="1"
               role="img"
@@ -11025,8 +11070,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="92.49315068493148"
+              x="740"
+              y="93.31506849315068"
             />
             <g
               class=
@@ -11053,8 +11098,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   font-weight="regular"
                   id="nodeBar25-name"
                   text-anchor="start"
-                  x="739"
-                  y="92.49315068493148"
+                  x="740"
+                  y="93.31506849315068"
                 >
                   Opened
                 </text>
@@ -11067,8 +11112,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="92.49315068493148"
+                x="740"
+                y="93.31506849315068"
               >
                 55
               </text>
@@ -11092,7 +11137,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               aria-label="node  No further action  required with weight 62"
               data-is-focusable="true"
               fill="#4F6BED"
-              height="100.21917808219177"
+              height="101.91780821917808"
               id="nodeBar27"
               opacity="1"
               role="img"
@@ -11100,8 +11145,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width="2"
               tabindex="-1"
               width="124"
-              x="739"
-              y="271.54289868025126"
+              x="740"
+              y="275.1944984618674"
             />
             <g
               class=
@@ -11128,8 +11173,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   font-weight="regular"
                   id="nodeBar27-name"
                   text-anchor="start"
-                  x="739"
-                  y="271.54289868025126"
+                  x="740"
+                  y="275.1944984618674"
                 >
                    No further action  required
                 </text>
@@ -11142,8 +11187,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 font-size="14"
                 font-weight="bold"
                 text-anchor="start"
-                x="739"
-                y="271.54289868025126"
+                x="740"
+                y="275.1944984618674"
               >
                 62
               </text>

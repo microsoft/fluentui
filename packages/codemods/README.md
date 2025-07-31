@@ -1,6 +1,6 @@
 # @fluentui/codemods
 
-This is a utility package to assist with the upgrading of libraries and apps that rely on fluentui.
+Tool enabling easy upgrades to Fluent UI React v8 version
 
 ## How it works
 

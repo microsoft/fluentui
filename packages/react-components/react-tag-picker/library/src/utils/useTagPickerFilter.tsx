@@ -11,10 +11,12 @@ type UseTagPickerFilterConfig = {
   filter?: (option: string, index: number) => boolean;
 
   /** Provides an element to be displayed when there are no options. */
-  noOptionsElement: JSX.Element;
+  noOptionsElement: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element;
 
   /** Provides a custom render for the option. */
-  renderOption?: (option: string) => JSX.Element;
+  renderOption?: (option: string) => // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element;
 };
 
 function defaultRenderOption(option: string) {
@@ -45,7 +47,10 @@ export function useTagPickerFilter({
   const filter = filterOverride ?? defaultFilter;
   const filteredOptions = React.useMemo(
     () =>
-      options.reduce<JSX.Element[]>((accumulator, option, index) => {
+      options.reduce<
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        JSX.Element[]
+      >((accumulator, option, index) => {
         if (filter(option, index)) {
           accumulator.push(renderOption(option));
         }

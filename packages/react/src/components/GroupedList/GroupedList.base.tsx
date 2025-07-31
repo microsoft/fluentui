@@ -129,6 +129,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const {
       className,

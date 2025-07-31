@@ -6,7 +6,10 @@ import { ColorSlider } from './ColorSlider';
 import type { ColorSliderProps } from './ColorSlider.types';
 import { INITIAL_COLOR_HSV } from '../../utils/constants';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

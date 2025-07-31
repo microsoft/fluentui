@@ -1,0 +1,2 @@
+- Each image uses two Blur components with inverse visibility: the background stripes start blurred and become clear when revealed, while the overlay button starts clear and blurs away when clicked.
+- The button fades away with `animateOpacity` set to true, while the background blur stays visible in both states with `animateOpacity` set to false.

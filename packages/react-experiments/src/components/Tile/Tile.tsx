@@ -147,6 +147,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     this._events.dispose();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const {
       children,
@@ -297,7 +298,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       </div>
     );
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderBackground = (backgroundProps?: ITileBackgroundProps): JSX.Element | null => {
     if (!backgroundProps) {
       return null;
@@ -322,6 +323,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     ) : null;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderForeground = (foregroundProps?: ITileForegroundProps): JSX.Element | null => {
     if (!foregroundProps) {
       return null;
@@ -349,7 +351,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       </span>
     ) : null;
   };
-
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderNameplate = (nameplateProps?: ITileNameplateProps): JSX.Element | null => {
     if (!nameplateProps) {
       return null;
@@ -381,6 +383,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     ) : null;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderCheck({ isSelected }: { isSelected: boolean }): JSX.Element {
     const { toggleSelectionAriaLabel } = this.props;
 
@@ -415,6 +418,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
 export type { ITileLayout };
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export function getTileLayout(tileElement: JSX.Element): ITileLayout {
   const tileProps: ITileProps = tileElement.props;
 
@@ -454,6 +458,7 @@ function getTileLayoutFromProps(tileProps: ITileProps): ITileLayout {
   };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export function renderTileWithLayout(tileElement: JSX.Element, props: Partial<ITileProps>): JSX.Element {
   const Tag = tileElement.type;
 

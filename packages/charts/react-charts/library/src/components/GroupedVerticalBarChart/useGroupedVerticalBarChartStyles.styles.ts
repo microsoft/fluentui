@@ -18,6 +18,7 @@ export const groupedVerticalBarChartClassNames: SlotClassNames<GroupedVerticalBa
   shapeStyles: '',
   chartWrapper: '',
   svgTooltip: '',
+  chart: '',
 };
 
 const useStyles = makeStyles({
@@ -41,6 +42,7 @@ const useStyles = makeStyles({
   barLabel: {
     ...typographyStyles.caption1Strong, // Confirm styles
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
 });
 

@@ -6,6 +6,9 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 
 const virtualizerScrollViewClassName = 'fui-Virtualizer-Scroll-View';
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export const virtualizerScrollViewClassNames: SlotClassNames<VirtualizerScrollViewSlots> = {
   ...virtualizerClassNames,
   container: `${virtualizerScrollViewClassName}__container`,
@@ -37,6 +40,7 @@ const useStyles = makeStyles({
 
 /**
  * Apply styling to the Virtualizer states
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export const useVirtualizerScrollViewStyles_unstable = (
   state: VirtualizerScrollViewState,

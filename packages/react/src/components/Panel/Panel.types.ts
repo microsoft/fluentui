@@ -256,6 +256,7 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
    * @param headerTextId - If provided, this **must** be used as the ID of an element containing the
    * panel's title, because the panel popup uses this ID as its aria-labelledby.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSX.Element | null;
 }
 

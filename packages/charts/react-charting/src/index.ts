@@ -104,6 +104,7 @@ export type {
   IScatterChartDataPoint,
   IBaseDataPoint,
   AxisCategoryOrder,
+  IGanttChartDataPoint,
 } from './types/index';
 export type {
   IChartHoverCardProps,
@@ -140,6 +141,8 @@ export type {
   IHorizontalBarChartWithAxisStyles,
 } from './HorizontalBarChartWithAxis';
 export { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
+export type { IFunnelChartProps, IFunnelChartStyleProps, IFunnelChartStyles } from './FunnelChart';
+export { FunnelChart } from './FunnelChart';
 export { DataVizPalette, getColorFromToken, getNextColor } from './utilities/colors';
 export { DataVizGradientPalette, getGradientFromToken, getNextGradient } from './utilities/gradients';
 export type { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart';
@@ -149,5 +152,7 @@ export { DeclarativeChart } from './DeclarativeChart';
 export type { IResponsiveContainerProps, IResponsiveChildProps } from './ResponsiveContainer';
 export { ResponsiveContainer, withResponsiveContainer } from './ResponsiveContainer';
 export type { IScatterChartProps, IScatterChartStyleProps, IScatterChartStyles } from './ScatterChart';
+export type { IGanttChartProps, IGanttChartStyleProps, IGanttChartStyles } from './GanttChart';
+export { GanttChart } from './GanttChart';
 
 import './version';

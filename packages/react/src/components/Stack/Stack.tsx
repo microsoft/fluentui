@@ -60,7 +60,8 @@ function _processStackChildren(
     enableScopedSelectors,
     doNotRenderFalsyValues,
   }: { disableShrink: boolean; enableScopedSelectors: boolean; doNotRenderFalsyValues: boolean },
-): (React.ReactChild | React.ReactFragment | React.ReactPortal)[] {
+): // eslint-disable-next-line @typescript-eslint/no-deprecated
+(React.ReactChild | React.ReactFragment | React.ReactPortal)[] {
   let childrenArray = React.Children.toArray(children);
 
   childrenArray = React.Children.map(childrenArray, child => {
@@ -99,7 +100,7 @@ function _processStackChildren(
   return childrenArray;
 }
 
-function _isStackItem(item: React.ReactNode): item is typeof StackItem {
+function _isStackItem(item: unknown): item is typeof StackItem {
   // In theory, we should be able to just check item.type === StackItem.
   // However, under certain unclear circumstances (see https://github.com/microsoft/fluentui/issues/10785),
   // the object identity is different despite the function implementation being the same.

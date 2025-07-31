@@ -439,7 +439,9 @@ export interface ILineChartLineOptions extends React.SVGProps<SVGPathElement> {
     | 'gauge+number'
     | 'gauge+number+delta'
     | 'gauge+delta'
-    | 'markers+text';
+    | 'markers+text'
+    | 'lines+text'
+    | 'lines+markers+text';
 }
 
 /**
@@ -1000,3 +1002,60 @@ export type AxisCategoryOrder =
   | 'mean descending'
   | 'median ascending'
   | 'median descending';
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface IGanttChartDataPoint {
+  /**
+   * Dependent value of the data point, rendered along the x-axis.
+   * `start` and `end` represent the beginning and end of the data point.
+   */
+  x: {
+    start: Date | number;
+    end: Date | number;
+  };
+
+  /**
+   * Independent value of the data point, rendered along the y-axis.
+   * If y is a number, then each y-coordinate is plotted at its y-coordinate.
+   * If y is a string, then the data is evenly spaced along the y-axis.
+   */
+  y: number | string;
+
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend?: string;
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+
+  /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
+
+  /**
+   * Optional label shown in place of `x` in the callout.
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Optional label shown in place of `y` in the callout.
+   */
+  yAxisCalloutData?: string;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+}

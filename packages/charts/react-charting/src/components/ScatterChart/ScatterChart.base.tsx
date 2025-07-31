@@ -12,6 +12,8 @@ import {
   domainRangeOfNumericForScatterChart,
   domainRangeOfXStringAxis,
   findNumericMinMaxOfY,
+  isScatterPolarSeries,
+  isTextMode,
   YAxisType,
 } from '../../utilities/index';
 import {
@@ -33,9 +35,11 @@ import {
 } from '../../utilities/index';
 import { classNamesFunction, DirectionalHint, find, getId, getRTL } from '@fluentui/react';
 import { IImageExportOptions, IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
+import { ILineChartPoints } from '../../types/IDataPoint';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { ScaleLinear } from 'd3-scale';
+import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -69,6 +73,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const _uniqueCallOutID = React.useRef<string | null>(null);
   const _refArray = React.useMemo(() => [], []);
   const margins = React.useRef<IMargins | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const renderSeries = React.useRef<JSX.Element[]>([]);
   let _xAxisLabels: string[] = [];
   const _xAxisCalloutAccessibilityData: IAccessibilityProps = {};
@@ -85,23 +90,25 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const [activePoint, setActivePoint] = React.useState<string>('');
   const [stackCalloutProps, setStackCalloutProps] = React.useState<ICustomizedCalloutData>();
   const [isCalloutVisible, setCalloutVisible] = React.useState(false);
-  const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
+  const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const [refSelected, setRefSelected] = React.useState<string>('');
-  const prevPropsRef = React.useRef<IScatterChartProps | null>(null);
+  const prevSelectedLegendsRef = React.useRef<string[] | undefined>(undefined);
+  const _isScatterPolarRef = React.useRef(false);
+  const _isTextMode = React.useRef(false);
 
   const classNames = getClassNames(props.styles!, {
     theme: props.theme!,
   });
 
   React.useEffect(() => {
-    if (prevPropsRef.current) {
-      const prevProps = prevPropsRef.current;
-      if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
-        setSelectedLegends(props.legendProps?.selectedLegends || []);
-      }
+    if (
+      prevSelectedLegendsRef.current &&
+      !areArraysEqual(prevSelectedLegendsRef.current, props.legendProps?.selectedLegends)
+    ) {
+      setSelectedLegends(props.legendProps?.selectedLegends || []);
     }
-    prevPropsRef.current = props;
-  }, [props]);
+    prevSelectedLegendsRef.current = props.legendProps?.selectedLegends;
+  }, [props.legendProps?.selectedLegends]);
 
   React.useImperativeHandle(
     props.componentRef,
@@ -168,6 +175,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     setIsSelectedLegend(false);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   function _createLegends(data: ScatterChartDataWithIndex[]): JSX.Element {
     const { legendProps } = props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
@@ -354,16 +362,15 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     }
   }, [_uniqueCallOutID, isCalloutVisible, setActivePoint, setCalloutVisible]);
 
-  /**
-   * This function checks if none of the legends is selected or hovered.*/
-
-  const _noLegendHighlighted = React.useCallback((): boolean => {
-    return selectedLegends.length === 0;
-  }, [selectedLegends]);
-
   const _getHighlightedLegend = React.useCallback((): string[] => {
     return selectedLegends.length > 0 ? selectedLegends : activeLegend ? [activeLegend] : [];
   }, [selectedLegends, activeLegend]);
+
+  /**
+   * This function checks if none of the legends is selected or hovered.*/
+  const _noLegendHighlighted = React.useCallback((): boolean => {
+    return _getHighlightedLegend().length === 0;
+  }, [_getHighlightedLegend]);
 
   /**
    * This function checks if the given legend is highlighted or not.
@@ -409,7 +416,9 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   }
 
   const _createPlot = React.useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     (xElement: SVGElement, containerHeight: number): JSX.Element[] => {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const series: JSX.Element[] = [];
       if (isSelectedLegend) {
         _points.current = selectedLegendPoints;
@@ -430,29 +439,19 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       let xMax: number = 0;
       if (_xAxisType === XAxisTypes.StringAxis) {
         _xBandwidth.current = _xAxisScale.current?.bandwidth() / 2;
-      } else if (_xAxisType === XAxisTypes.DateAxis) {
-        xMin = d3Min(_points.current, (point: IScatterChartPoints) => {
-          return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as Date)!;
-        })!.getTime();
-
-        xMax = d3Max(_points.current, (point: IScatterChartPoints) => {
-          return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
-            return item.x as Date;
-          });
-        })!.getTime();
-
-        xPadding = (xMax - xMin) * 0.1;
       } else {
-        xMin = d3Min(_points.current, (point: IScatterChartPoints) => {
-          return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as number)!;
-        })!;
+        const isDate = _xAxisType === XAxisTypes.DateAxis;
+        const getX = (item: IScatterChartDataPoint) => (isDate ? (item.x as Date) : (item.x as number));
 
-        xMax = d3Max(_points.current, (point: IScatterChartPoints) => {
-          return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
-            return item.x as number;
-          });
-        })!;
+        const minVal = d3Min(_points.current, (point: IScatterChartPoints) =>
+          d3Min(point.data as IScatterChartDataPoint[], getX),
+        );
+        const maxVal = d3Max(_points.current, (point: IScatterChartPoints) =>
+          d3Max(point.data as IScatterChartDataPoint[], getX),
+        );
 
+        xMin = isDate ? (minVal as Date).getTime() : (minVal as number);
+        xMax = isDate ? (maxVal as Date).getTime() : (maxVal as number);
         xPadding = (xMax - xMin) * 0.1;
       }
 
@@ -463,6 +462,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       })!;
 
       for (let i = _points.current?.length - 1; i >= 0; i--) {
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const pointsForSeries: JSX.Element[] = [];
 
         const legendVal: string = _points.current?.[i]?.legend;
@@ -493,59 +493,74 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
           const currentPointHidden = _points.current?.[i]?.hideNonActiveDots && activePoint !== circleId;
           const text = _points.current?.[i].data[j]?.text;
+          if (!_isTextMode.current) {
+            pointsForSeries.push(
+              <>
+                <circle
+                  id={circleId}
+                  key={circleId}
+                  r={Math.max(circleRadius, 4)}
+                  cx={_xAxisScale.current?.(x) + _xBandwidth.current}
+                  cy={_yAxisScale.current?.(y)}
+                  data-is-focusable={isLegendSelected}
+                  onMouseOver={(event: React.MouseEvent<SVGElement>) =>
+                    _handleHover(
+                      x,
+                      y,
+                      verticaLineHeight,
+                      xAxisCalloutData,
+                      circleId,
+                      xAxisCalloutAccessibilityData,
+                      event,
+                    )
+                  }
+                  onMouseMove={(event: React.MouseEvent<SVGElement>) =>
+                    _handleHover(
+                      x,
+                      y,
+                      verticaLineHeight,
+                      xAxisCalloutData,
+                      circleId,
+                      xAxisCalloutAccessibilityData,
+                      event,
+                    )
+                  }
+                  onMouseOut={_handleMouseOut}
+                  onFocus={() => _handleFocus(seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+                  onBlur={_handleMouseOut}
+                  {..._getClickHandler(_points.current?.[i]?.data[j]?.onDataPointClick)}
+                  opacity={isLegendSelected && !currentPointHidden ? 1 : 0.1}
+                  fill={_getPointFill(seriesColor, circleId)}
+                  stroke={seriesColor}
+                  role="img"
+                  aria-label={_getAriaLabel(i, j)}
+                  tabIndex={_points.current?.[i]?.legend !== '' ? 0 : undefined}
+                />
+              </>,
+            );
+          }
+          if (_isTextMode && text) {
+            pointsForSeries.push(
+              <text
+                key={`${circleId}-label`}
+                x={_xAxisScale.current?.(x) + _xBandwidth.current}
+                y={_yAxisScale.current?.(y) + Math.max(circleRadius + 12, 16)}
+                className={classNames.markerLabel}
+              >
+                {text}
+              </text>,
+            );
+          }
+        }
+
+        if (_isScatterPolarRef.current) {
           pointsForSeries.push(
-            <>
-              <circle
-                id={circleId}
-                key={circleId}
-                r={Math.max(circleRadius, 4)}
-                cx={_xAxisScale.current?.(x) + _xBandwidth.current}
-                cy={_yAxisScale.current?.(y)}
-                data-is-focusable={isLegendSelected}
-                onMouseOver={(event: React.MouseEvent<SVGElement>) =>
-                  _handleHover(
-                    x,
-                    y,
-                    verticaLineHeight,
-                    xAxisCalloutData,
-                    circleId,
-                    xAxisCalloutAccessibilityData,
-                    event,
-                  )
-                }
-                onMouseMove={(event: React.MouseEvent<SVGElement>) =>
-                  _handleHover(
-                    x,
-                    y,
-                    verticaLineHeight,
-                    xAxisCalloutData,
-                    circleId,
-                    xAxisCalloutAccessibilityData,
-                    event,
-                  )
-                }
-                onMouseOut={_handleMouseOut}
-                onFocus={() => _handleFocus(seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
-                onBlur={_handleMouseOut}
-                {..._getClickHandler(_points.current?.[i]?.data[j]?.onDataPointClick)}
-                opacity={isLegendSelected && !currentPointHidden ? 1 : 0.1}
-                fill={_getPointFill(seriesColor, circleId)}
-                stroke={seriesColor}
-                role="img"
-                aria-label={_getAriaLabel(i, j)}
-                tabIndex={_points.current?.[i]?.legend !== '' ? 0 : undefined}
-              />
-              {text && (
-                <text
-                  key={`${circleId}-label`}
-                  x={_xAxisScale.current?.(x) + _xBandwidth.current}
-                  y={_yAxisScale.current?.(y) + Math.max(circleRadius + 12, 16)}
-                  className={classNames.markerLabel}
-                >
-                  {text}
-                </text>
-              )}
-            </>,
+            ...renderScatterPolarCategoryLabels({
+              xAxisScale: _xAxisScale.current,
+              yAxisScale: _yAxisScale.current,
+              className: classNames.markerLabel || '',
+              lineOptions: (_points.current?.[i] as Partial<ILineChartPoints>)?.lineOptions,
+            }),
           );
         }
 
@@ -619,6 +634,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     ) => {
       _xAxisScale.current = xScale;
       _yAxisScale.current = yScale;
+      _isScatterPolarRef.current = isScatterPolarSeries(_points.current);
+      _isTextMode.current = isTextMode(_points.current);
       renderSeries.current = _createPlot(xElement!, containerHeight!);
     },
     [renderSeries, _xAxisScale, _yAxisScale, _createPlot],
@@ -667,7 +684,12 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   }
 
   const _getMinMaxofXAxis = React.useCallback(
-    (points, yAxisType) => _getNumericMinMaxOfY(points as IScatterChartPoints[], yAxisType),
+    (
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+      points: any,
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+      yAxisType: any,
+    ) => _getNumericMinMaxOfY(points as IScatterChartPoints[], yAxisType),
     [],
   );
 
@@ -684,7 +706,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   // reduce computation cost by only creating legendBars
   // if when hideLegend is false.
   // NOTE: they are rendered only when hideLegend is false in CartesianChart.
-  if (!props.hideLegend) {
+  if (!props.hideLegend && !_isTextMode.current) {
     legendBars = _createLegends(_points.current!); // ToDo: Memoize legends to improve performance.
   }
   const calloutProps = {
@@ -740,6 +762,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}
       componentRef={cartesianChartRef}
+      {...(_isScatterPolarRef.current ? { yMaxValue: 1, yMinValue: -1 } : {})}
       /* eslint-disable react/jsx-no-bind */
       // eslint-disable-next-line react/no-children-prop
       children={(childProps: IChildProps) => {

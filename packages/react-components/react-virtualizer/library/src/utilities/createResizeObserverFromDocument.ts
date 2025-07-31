@@ -4,6 +4,7 @@
  * @param targetDocument - document to use to create the ResizeObserver
  * @param callback  - https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/ResizeObserver#callback
  * @returns a ResizeObserver instance or null if the global does not exist on the document
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export function createResizeObserverFromDocument(
   targetDocument: Document | null | undefined,

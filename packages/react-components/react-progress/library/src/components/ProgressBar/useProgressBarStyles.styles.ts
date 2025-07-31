@@ -26,6 +26,18 @@ const indeterminateProgressBar = {
   },
 };
 
+const indeterminateProgressBarReducedMotion = {
+  '0%': {
+    opacity: '.2',
+  },
+  '50%': {
+    opacity: '1',
+  },
+  '100%': {
+    opacity: '.2',
+  },
+};
+
 /**
  * Styles for the root slot
  */
@@ -84,8 +96,10 @@ const useBarStyles = makeStyles({
     animationTimingFunction: 'linear',
     animationIterationCount: 'infinite',
     '@media screen and (prefers-reduced-motion: reduce)': {
-      animationDuration: '0.01ms',
-      animationIterationCount: '1',
+      maxWidth: '100%',
+      animationIterationCount: 'infinite',
+      animationDuration: '3s',
+      animationName: indeterminateProgressBarReducedMotion,
     },
   },
 

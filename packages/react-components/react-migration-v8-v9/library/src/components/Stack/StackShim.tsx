@@ -19,7 +19,8 @@ const stackClassNames = {
 
 const getClassNames = classNamesFunction<IStackProps, StackShimStyles>();
 
-export const StackShim = (props: IStackProps) => {
+// eslint-disable-next-line @typescript-eslint/no-deprecated
+export const StackShim = (props: IStackProps): JSX.Element => {
   const styles = useStackStyles();
   const alignItemsFlexStyles = useFlexAlignItemsStyles();
   const justifyContentFlexStyles = useFlexJustifyContentStyles();

@@ -11,6 +11,7 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
     justify: 'start',
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element | null {
     const { children, direction, layoutGap, justify } = this.props;
 
@@ -18,7 +19,7 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
 
     const numberOfChildren = React.Children.count(children);
 
-    const group = React.Children.map(children, (child: React.ReactChild, i: number) => {
+    const group = React.Children.map(children, (child: React.ReactElement | string | number, i: number) => {
       const isLastChild = i === numberOfChildren - 1;
 
       // Render individual item

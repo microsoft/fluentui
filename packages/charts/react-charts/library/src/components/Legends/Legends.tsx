@@ -8,6 +8,8 @@ import { Overflow, OverflowItem } from '@fluentui/react-overflow';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { OverflowMenu } from './OverflowMenu';
 import { tokens } from '@fluentui/react-theme';
+import { cloneLegendsToSVG } from '../../utilities/image-export-utils';
+import { mergeClasses } from '@griffel/react';
 
 // This is an internal interface used for rendering the legends with unique key
 interface LegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -22,6 +24,7 @@ interface LegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   opacity?: number;
   stripePattern?: boolean;
   isLineLegendInBarChart?: boolean;
+  legendAnnotation?: () => React.ReactNode;
 }
 
 interface LegendMap {
@@ -37,12 +40,34 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
   (props, forwardedRef) => {
     /** Boolean variable to check if one or more legends are selected */
     let _isLegendSelected = false;
+    let _rootElem = React.useRef<HTMLDivElement | null>(null);
 
     // set states separately for each instance of the component
     const [activeLegend, setActiveLegend] = React.useState('');
     const [selectedLegends, setSelectedLegends] = React.useState<LegendMap>({});
     const focusAttributes = useFocusableGroup();
     const arrowAttributes = useArrowNavigationGroup({ axis: 'horizontal', memorizeCurrent: true });
+    const classes = useLegendStyles(props);
+    const toSVG = React.useCallback(
+      (svgWidth: number, isRTL: boolean = false) => {
+        return cloneLegendsToSVG(
+          props.legends,
+          svgWidth,
+          {
+            selectedLegends,
+            centerLegends: !!props.centerLegends,
+            textClassName: classes.text!,
+            isRTL,
+          },
+          _rootElem.current,
+        );
+      },
+      [props.legends, props.centerLegends, selectedLegends, classes.text],
+    );
+
+    React.useImperativeHandle(props.legendRef, () => ({
+      toSVG,
+    }));
 
     React.useEffect(() => {
       const initialSelectedLegends = props.selectedLegends ?? props.defaultSelectedLegends;
@@ -71,7 +96,6 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     _isLegendSelected = Object.keys(selectedLegends).length > 0;
     const dataToRender = _generateData();
     const { overflowStyles, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
-    const classes = useLegendStyles(props);
     const itemIds = dataToRender.map((_item, index) => index.toString());
     const overflowHoverCardLegends: JSX.Element[] = [];
     props.legends.map((legend, index) => {
@@ -92,6 +116,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             'aria-multiselectable': canSelectMultipleLegends,
           })}
           className={classes.root}
+          ref={el => (_rootElem.current = el)}
         >
           <Overflow>
             <div className={classes.resizableArea} style={{ textAlign: props.centerLegends ? 'center' : 'unset' }}>
@@ -121,9 +146,13 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           className={classes.root}
         >
           <div className={classes.resizableArea} style={{ display: 'flex', flexWrap: 'wrap', overflow: 'auto' }}>
-            {dataToRender.map((item, id) => (
-              <div key={id} style={{ flex: '0 1 auto', margin: '4px' }}>
+            {dataToRender.map(item => (
+              <div
+                className={mergeClasses(classes.legendContainer, item.legendAnnotation && classes.annotation)}
+                key={item.key}
+              >
                 {_renderButton(item)}
+                {item.legendAnnotation && <div>{item.legendAnnotation()}</div>}
               </div>
             ))}
           </div>
@@ -157,6 +186,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           isLineLegendInBarChart: legend.isLineLegendInBarChart,
           opacity: legend.opacity,
           key: index,
+          legendAnnotation: legend.legendAnnotation,
         };
       });
       return dataItems;

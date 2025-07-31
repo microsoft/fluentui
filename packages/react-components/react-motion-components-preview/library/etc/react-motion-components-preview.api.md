@@ -4,51 +4,49 @@
 
 ```ts
 
-import type { MotionParam } from '@fluentui/react-motion';
 import { PresenceComponent } from '@fluentui/react-motion';
-import type { PresenceMotionFn } from '@fluentui/react-motion';
 
 // @public
-export const Collapse: PresenceComponent<CollapseRuntimeParams>;
-
-// @public (undocumented)
-export const CollapseDelayed: PresenceComponent<CollapseRuntimeParams>;
-
-// @public (undocumented)
-export const CollapseRelaxed: PresenceComponent<CollapseRuntimeParams>;
-
-// @public (undocumented)
-export type CollapseRuntimeParams = {
-    animateOpacity?: boolean;
-    orientation?: CollapseOrientation;
-};
-
-// @public (undocumented)
-export const CollapseSnappy: PresenceComponent<CollapseRuntimeParams>;
+export const Blur: PresenceComponent<BlurParams>;
 
 // @public
-export const createCollapseDelayedPresence: PresenceMotionFnCreator<CollapseDelayedVariantParams, CollapseRuntimeParams>;
+export const Collapse: PresenceComponent<CollapseParams>;
 
 // @public
-export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantParams, CollapseRuntimeParams>;
+export const CollapseDelayed: PresenceComponent<CollapseDelayedParams>;
+
+// @public (undocumented)
+export const CollapseRelaxed: PresenceComponent<CollapseParams>;
+
+// @public (undocumented)
+export const CollapseSnappy: PresenceComponent<CollapseParams>;
 
 // @public
-export const Fade: PresenceComponent<FadeVariantParams>;
+export const Fade: PresenceComponent<FadeParams>;
 
 // @public (undocumented)
-export const FadeRelaxed: PresenceComponent<FadeVariantParams>;
+export const FadeRelaxed: PresenceComponent<FadeParams>;
 
 // @public (undocumented)
-export const FadeSnappy: PresenceComponent<FadeVariantParams>;
+export const FadeSnappy: PresenceComponent<FadeParams>;
 
 // @public
-export const Scale: PresenceComponent<ScaleVariantParams>;
+export const Scale: PresenceComponent<ScaleParams>;
 
 // @public (undocumented)
-export const ScaleRelaxed: PresenceComponent<ScaleVariantParams>;
+export const ScaleRelaxed: PresenceComponent<ScaleParams>;
 
 // @public (undocumented)
-export const ScaleSnappy: PresenceComponent<ScaleVariantParams>;
+export const ScaleSnappy: PresenceComponent<ScaleParams>;
+
+// @public
+export const Slide: PresenceComponent<SlideParams>;
+
+// @public (undocumented)
+export const SlideRelaxed: PresenceComponent<SlideParams>;
+
+// @public (undocumented)
+export const SlideSnappy: PresenceComponent<SlideParams>;
 
 // (No @packageDocumentation comment for this package)
 

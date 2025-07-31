@@ -22,13 +22,13 @@ describe('ColorArea', () => {
           >
             <input
               class="fui-ColorArea__inputX"
-              id="sliderX-15"
+              id="sliderX-re"
               type="range"
               value="100"
             />
             <input
               class="fui-ColorArea__inputY"
-              id="sliderY-16"
+              id="sliderY-rf"
               tabindex="-1"
               type="range"
               value="50"

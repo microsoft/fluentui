@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { DynamicVirtualizerContextProps } from '../Utilities';
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerMeasureProps = {
   defaultItemSize: number;
   direction?: 'vertical' | 'horizontal';
@@ -16,6 +19,9 @@ export type VirtualizerMeasureProps = {
   bufferSize?: number;
 };
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerMeasureDynamicProps = {
   defaultItemSize: number;
   virtualizerContext: DynamicVirtualizerContextProps;
@@ -34,6 +40,9 @@ export type VirtualizerMeasureDynamicProps = {
   bufferSize?: number;
 };
 
+/**
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
+ */
 export type VirtualizerStaticPaginationProps = {
   itemSize: number;
   axis?: 'vertical' | 'horizontal';
@@ -42,6 +51,7 @@ export type VirtualizerStaticPaginationProps = {
 /**
  * Props to be passed into dynamic virtualization hooks
  * All props can be acquired from useVirtualizer hooks themselves and passed in
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export type VirtualizerDynamicPaginationProps = {
   /**
@@ -65,6 +75,7 @@ export type VirtualizerDynamicPaginationProps = {
 /**
  * Additional direct Ref prevents reading old resize entry data
  * Backwards compatible with ResizeObserverCallback if preferred
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export interface ResizeCallbackWithRef {
   (

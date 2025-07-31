@@ -1,7 +1,7 @@
 /*  eslint-disable @typescript-eslint/no-deprecated */
 import '@testing-library/jest-dom';
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import { customizable } from './customizable';
 import { Customizer } from './Customizer';
 import { Customizations } from './Customizations';
@@ -182,28 +182,34 @@ describe('Customizer', () => {
     // verify base state
     expect(screen.getByText('globalName')).toBeInTheDocument();
 
-    // verify it doesn't update during suppressUpdates(), and it works through errors, and it updates after
-    Customizations.applyBatchedUpdates(() => {
-      Customizations.applySettings({ field: 'notGlobalName' });
-      // it should not update inside
-      expect(screen.getByText('globalName')).toBeInTheDocument();
-      throw new Error();
+    act(() => {
+      // verify it doesn't update during suppressUpdates(), and it works through errors, and it updates after
+      Customizations.applyBatchedUpdates(() => {
+        Customizations.applySettings({ field: 'notGlobalName' });
+        // it should not update inside
+        expect(screen.getByText('globalName')).toBeInTheDocument();
+        throw new Error();
+      });
     });
     // afterwards it should have updated
     expect(screen.getByText('notGlobalName')).toBeInTheDocument();
 
-    // verify it doesn't update during suppressUpdates(), works through errors, and can suppress final update
-    Customizations.applyBatchedUpdates(() => {
-      Customizations.applySettings({ field: 'notUpdated' });
-      // it should not update inside
-      expect(screen.getByText('notGlobalName')).toBeInTheDocument();
-      throw new Error();
-    }, true);
+    act(() => {
+      // verify it doesn't update during suppressUpdates(), works through errors, and can suppress final update
+      Customizations.applyBatchedUpdates(() => {
+        Customizations.applySettings({ field: 'notUpdated' });
+        // it should not update inside
+        expect(screen.getByText('notGlobalName')).toBeInTheDocument();
+        throw new Error();
+      }, true);
+    });
     // afterwards, it should still be on the old value
     expect(screen.getByText('notGlobalName')).toBeInTheDocument();
 
     // verify it updates after suppressUpdates()
-    Customizations.applySettings({ field2: 'lastGlobalName' });
+    act(() => {
+      Customizations.applySettings({ field2: 'lastGlobalName' });
+    });
     expect(screen.getByText('notUpdatedlastGlobalName')).toBeInTheDocument();
   });
 });

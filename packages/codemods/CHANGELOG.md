@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Mon, 23 Dec 2024 07:22:57 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Jul 2025 07:19:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.28](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.28)
+
+Thu, 10 Jul 2025 07:19:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.4.27..@fluentui/codemods_v8.4.28)
+
+### Patches
+
+- chore: update description and remove react from direct dependencies ([PR #34790](https://github.com/microsoft/fluentui/pull/34790) by martinhochel@microsoft.com)
 
 ## [8.4.27](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.27)
 

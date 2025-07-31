@@ -5,11 +5,10 @@ import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { HorizontalBarChartWithAxis } from '../../index';
 import { HorizontalBarChartWithAxisBase } from './HorizontalBarChartWithAxis.base';
 import { resetIds } from '@fluentui/react';
-const rendererAct = renderer.act;
-import { act as domAct } from 'react-dom/test-utils';
+
 import { pointsHBCWA } from '../../utilities/test-data';
 import { toHaveNoViolations } from 'jest-axe';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 
 expect.extend(toHaveNoViolations);
 
@@ -45,7 +44,7 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
 
   it('renders HorizontalBarChartWithAxis correctly', () => {
     let component: any;
-    rendererAct(() => {
+    act(() => {
       component = renderer.create(<HorizontalBarChartWithAxis data={pointsHBCWA} />);
     });
     const tree = component!.toJSON();
@@ -53,7 +52,7 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
   });
   it('renders hideLegend correctly', () => {
     let component: any;
-    rendererAct(() => {
+    act(() => {
       component = renderer.create(<HorizontalBarChartWithAxis data={pointsHBCWA} hideLegend={true} />);
     });
     const tree = component!.toJSON();
@@ -62,7 +61,7 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
 
   it('renders showToolTipForYAxisLabels correctly', () => {
     let component: any;
-    rendererAct(() => {
+    act(() => {
       component = renderer.create(
         <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLablesTooltip={true} />,
       );
@@ -73,7 +72,7 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
 
   it('renders showYAxisLables correctly', () => {
     let component: any;
-    rendererAct(() => {
+    act(() => {
       component = renderer.create(
         <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLables={true} showYAxisLablesTooltip={false} />,
       );
@@ -133,7 +132,7 @@ describe('Render calling with respective to props', () => {
       height: 300,
       width: 600,
     };
-    domAct(() => {
+    act(() => {
       render(<HorizontalBarChartWithAxis {...props} />);
     });
     expect(renderMock).toHaveBeenCalledTimes(1);
@@ -149,11 +148,11 @@ describe('Render calling with respective to props', () => {
       hideLegend: true,
     };
     let rerender: any;
-    domAct(() => {
+    act(() => {
       const result = render(<HorizontalBarChartWithAxis {...props} />);
       rerender = result.rerender;
     });
-    domAct(() => {
+    act(() => {
       rerender(<HorizontalBarChartWithAxis {...props} hideTooltip={true} />);
     });
     expect(renderMock).toHaveBeenCalledTimes(2);

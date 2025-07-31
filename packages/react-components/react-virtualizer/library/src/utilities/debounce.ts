@@ -3,6 +3,7 @@
  * https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide
  * @param fn - Function to debounce
  * @returns debounced function
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export function debounce(fn: Function) {
   let pending: boolean;

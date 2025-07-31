@@ -640,6 +640,7 @@ Object {
   "mode": "plotly",
   "roundCorners": true,
   "width": 850,
+  "wrapXAxisLables": true,
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",
@@ -3143,6 +3144,7 @@ Object {
   "showYAxisLablesTooltip": true,
   "sortOrder": "none",
   "width": undefined,
+  "wrapXAxisLables": true,
   "xAxisCategoryOrder": Array [
     "x_0",
     "x_1",
@@ -3345,6 +3347,7 @@ Object {
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
   "width": 850,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "Votes",
   "yAxisCategoryOrder": Array [
     "Laravel",
@@ -5060,7 +5063,7 @@ Object {
     },
     "chartTitle": "Scottish Referendum Voters who now want Independence",
   },
-  "enableReflow": true,
+  "enableReflow": false,
   "height": 772,
   "styles": Object {
     "root": Object {
@@ -6909,7 +6912,10 @@ Object {
   "roundCorners": true,
   "supportNegativeData": true,
   "width": undefined,
+  "wrapXAxisLables": false,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "",
 }
 `;
@@ -7014,6 +7020,7 @@ Object {
   "height": 350,
   "hideLegend": true,
   "hideTickOverlap": true,
+  "maxBarWidth": 1000,
   "mode": "plotly",
   "noOfCharsToTruncate": 20,
   "roundCorners": true,
@@ -7021,6 +7028,7 @@ Object {
   "showYAxisLablesTooltip": true,
   "supportNegativeData": true,
   "width": undefined,
+  "wrapXAxisLables": true,
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",
@@ -7028,7 +7036,10 @@ Object {
     "Apr",
     "May",
   ],
+  "xAxisInnerPadding": 11.864179406671795,
+  "xAxisOuterPadding": 5.9320897033358975,
   "xAxisTitle": "",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "",
   "yMaxValue": 3400,
   "yMinValue": 0,

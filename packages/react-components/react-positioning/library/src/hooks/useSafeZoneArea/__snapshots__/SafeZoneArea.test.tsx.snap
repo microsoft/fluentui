@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SafeZoneArea updateSVGs updates SVGs 1`] = `
+<svg
+  aria-hidden="true"
+  class=""
+  style="width: 400px; height: 300px; transform: translate(0px, 200px);"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g
+    class=""
+    clip-path="url(#fui-r0)"
+  >
+    <path
+      d="M -2.978932121654964,-205.2166790391817,200,0,400,0 z"
+    />
+    <path
+      d="M -2.978932121654964,-205.2166790391817,400,0,400,300 z"
+    />
+    <path
+      d="M -2.978932121654964,-205.2166790391817,400,300,200,300 z"
+    />
+    <path
+      d="M -2.978932121654964,-205.2166790391817,200,300,200,0 z"
+    />
+  </g>
+  <clippath
+    id="fui-r0"
+  >
+    <path
+      d="M 0,0 H 400 V 300 H 0 Z M 0,100 V 150 H 100 V 100 H 0 Z M 200,0 V 300 H 400 V 0 H 200 Z "
+    />
+  </clippath>
+  <path
+    class=""
+    d="M 0,0 H 400 V 300 H 0 Z M 0,100 V 150 H 100 V 100 H 0 Z M 200,0 V 300 H 400 V 0 H 200 Z "
+  />
+</svg>
+`;
+
+exports[`SafeZoneArea updateSVGs updates SVGs 2`] = `
+<svg
+  aria-hidden="true"
+  class=""
+  style="width: 400px; height: 300px; transform: translate(200px, 200px);"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g
+    class=""
+    clip-path="url(#fui-r1)"
+  >
+    <path
+      d="M 111.2475657231036,329.9610515696578,0,0,200,0 z"
+    />
+    <path
+      d="M 111.2475657231036,329.9610515696578,200,0,200,300 z"
+    />
+    <path
+      d="M 111.2475657231036,329.9610515696578,200,300,0,300 z"
+    />
+    <path
+      d="M 111.2475657231036,329.9610515696578,0,300,0,0 z"
+    />
+  </g>
+  <clippath
+    id="fui-r1"
+  >
+    <path
+      d="M 0,0 H 400 V 300 H 0 Z M 300,100 V 150 H 400 V 100 H 300 Z M 0,0 V 300 H 200 V 0 H 0 Z "
+    />
+  </clippath>
+  <path
+    class=""
+    d="M 0,0 H 400 V 300 H 0 Z M 300,100 V 150 H 400 V 100 H 300 Z M 0,0 V 300 H 200 V 0 H 0 Z "
+  />
+</svg>
+`;
+
+exports[`SafeZoneArea updateSVGs updates SVGs 3`] = `
+<svg
+  aria-hidden="true"
+  class=""
+  style="width: 200px; height: 500px; transform: translate(200px, 0px);"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g
+    class=""
+    clip-path="url(#fui-r2)"
+  >
+    <path
+      d="M -210,350,0,200,200,200 z"
+    />
+    <path
+      d="M -210,350,200,200,200,500 z"
+    />
+    <path
+      d="M -210,350,200,500,0,500 z"
+    />
+    <path
+      d="M -210,350,0,500,0,200 z"
+    />
+  </g>
+  <clippath
+    id="fui-r2"
+  >
+    <path
+      d="M 0,0 H 200 V 500 H 0 Z M 100,0 V 50 H 200 V 0 H 100 Z M 0,200 V 500 H 200 V 200 H 0 Z "
+    />
+  </clippath>
+  <path
+    class=""
+    d="M 0,0 H 200 V 500 H 0 Z M 100,0 V 50 H 200 V 0 H 100 Z M 0,200 V 500 H 200 V 200 H 0 Z "
+  />
+</svg>
+`;
+
+exports[`SafeZoneArea updateSVGs updates SVGs 4`] = `
+<svg
+  aria-hidden="true"
+  class=""
+  style="width: 200px; height: 450px; transform: translate(200px, 0px);"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g
+    class=""
+    clip-path="url(#fui-r3)"
+  >
+    <path
+      d="M 218.33309420986427,408.18129645788565,0,0,200,0 z"
+    />
+    <path
+      d="M 218.33309420986427,408.18129645788565,200,0,200,300 z"
+    />
+    <path
+      d="M 218.33309420986427,408.18129645788565,200,300,0,300 z"
+    />
+    <path
+      d="M 218.33309420986427,408.18129645788565,0,300,0,0 z"
+    />
+  </g>
+  <clippath
+    id="fui-r3"
+  >
+    <path
+      d="M 0,0 H 200 V 450 H 0 Z M 100,400 V 450 H 200 V 400 H 100 Z M 0,0 V 300 H 200 V 0 H 0 Z "
+    />
+  </clippath>
+  <path
+    class=""
+    d="M 0,0 H 200 V 450 H 0 Z M 100,400 V 450 H 200 V 400 H 100 Z M 0,0 V 300 H 200 V 0 H 0 Z "
+  />
+</svg>
+`;

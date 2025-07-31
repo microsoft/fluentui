@@ -34,11 +34,11 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -184,7 +184,7 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -225,7 +225,7 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -866,11 +866,11 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -978,7 +978,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -1019,7 +1019,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -1369,11 +1369,11 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
 
             {
               display: block;
-              height: 0px;
-              width: 0px;
             }
         focusable="false"
+        height="0"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -16)"
@@ -1552,11 +1552,11 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -1702,7 +1702,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -1743,7 +1743,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -2106,11 +2106,11 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
 
               {
                 display: block;
-                height: -24px;
-                width: 0px;
               }
           focusable="false"
+          height="-24"
           role="region"
+          width="0"
         >
           <g
             transform="translate(0, -40)"
@@ -2256,7 +2256,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
         class=
 
             {
-              width: 0px;
+              width: 100%;
             }
       >
         <div
@@ -2297,7 +2297,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                         ms-OverflowSet
                         {
                           display: flex;
-                          flex-wrap: wrap;
+                          flex-wrap: nowrap;
                           justify-content: center;
                           position: relative;
                         }
@@ -2648,11 +2648,11 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -2798,7 +2798,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -2839,7 +2839,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -3189,11 +3189,11 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -3323,7 +3323,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -3364,7 +3364,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -3615,11 +3615,11 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -3749,7 +3749,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -3790,7 +3790,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -4040,11 +4040,11 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -4207,7 +4207,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -4248,7 +4248,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -4598,11 +4598,11 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -40)"
@@ -4748,7 +4748,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -4789,7 +4789,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }
@@ -5139,11 +5139,11 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
 
             {
               display: block;
-              height: -24px;
-              width: 0px;
             }
         focusable="false"
+        height="-24"
         role="region"
+        width="0"
       >
         <g
           transform="translate(0, -60)"
@@ -5310,7 +5310,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
       class=
 
           {
-            width: 0px;
+            width: 100%;
           }
     >
       <div
@@ -5351,7 +5351,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                       ms-OverflowSet
                       {
                         display: flex;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: center;
                         position: relative;
                       }

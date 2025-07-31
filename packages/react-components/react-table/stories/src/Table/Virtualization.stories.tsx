@@ -31,7 +31,7 @@ import {
 type Item = {
   file: {
     label: string;
-    icon: JSX.Element;
+    icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
   };
   author: {
     label: string;
@@ -43,7 +43,7 @@ type Item = {
   };
   lastUpdate: {
     label: string;
-    icon: JSX.Element;
+    icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
   };
 };
 

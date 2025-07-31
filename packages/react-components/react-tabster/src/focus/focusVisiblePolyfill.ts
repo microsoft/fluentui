@@ -90,7 +90,7 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
 
     scope.removeEventListener(KEYBORG_FOCUSIN, keyborgListener as ListenerOverride);
     scope.removeEventListener('focusout', blurListener);
-    delete (scope as HTMLElementWithFocusVisibleScope).focusVisible;
+    (scope as HTMLElementWithFocusVisibleScope).focusVisible = undefined;
 
     disposeKeyborg(keyborg);
   };

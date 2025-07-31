@@ -6,6 +6,7 @@ import { ResizeCallbackWithRef } from './hooks.types';
 
 /**
  * useResizeObserverRef_unstable simplifies resize observer connection and ensures debounce/cleanup
+ * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export const useResizeObserverRef_unstable = (resizeCallback: ResizeCallbackWithRef) => {
   'use no memo';

@@ -12,6 +12,7 @@ import type { IFloatingSuggestionsHeaderFooterProps } from '../FloatingSuggestio
 
 const getClassNames = classNamesFunction<IFloatingSuggestionsListStyleProps, IFloatingSuggestionsListStyle>();
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestionsListProps<T>): JSX.Element => {
   const classNames = getClassNames(getStyles);
   const { className, suggestionItems, onRenderNoResultFound, ariaLabel, noResultsFoundText } = props;
@@ -21,6 +22,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
     return noResultsFoundText ? <div className={classNames.noSuggestions}>{noResultsFoundText}</div> : null;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const renderHeader = (): JSX.Element | null => {
     const {
       onRenderHeader,
@@ -67,6 +69,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
     return suggestionsHeaderText ? <div className={classNames.title}>{suggestionsHeaderText}</div> : null;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const renderFooter = (): JSX.Element | null => {
     const { onRenderFooter, footerItemsProps, selectedFooterIndex, suggestionsFooterContainerAriaLabel } = props;
 
@@ -107,6 +110,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
     return null;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const renderSuggestions = (): JSX.Element | null => {
     if (suggestionItems.length === 0) {
       return null;

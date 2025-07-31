@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle, IStyleFunctionOrObject } from '@fluentui/react';
+import { IStyleFunctionOrObject } from '@fluentui/react';
 
 /**
  * Responsive Child props
@@ -9,7 +9,8 @@ export interface IResponsiveChildProps {
   width?: number;
   height?: number;
   shouldResize?: number;
-  styles?: IStyleFunctionOrObject<{}, { root: IStyle }>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  styles?: IStyleFunctionOrObject<any, any>;
 }
 
 /**

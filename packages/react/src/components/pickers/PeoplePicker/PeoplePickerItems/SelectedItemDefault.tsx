@@ -13,6 +13,7 @@ const styles: any = stylesImport;
 /**
  * @deprecated Use `PeoplePickerItem` instead. Will be removed in \>= 7.0.
  */
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const SelectedItemDefault: (props: IPeoplePickerItemSelectedProps) => JSX.Element = (
   peoplePickerItemProps: IPeoplePickerItemSelectedProps,
 ) => {

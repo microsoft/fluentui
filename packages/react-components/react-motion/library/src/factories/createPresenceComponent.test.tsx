@@ -475,6 +475,72 @@ describe('createPresenceComponent', () => {
       expect(animateMock).toHaveBeenCalledWith(exitKeyframes, options);
     });
   });
+
+  describe('.In static method', () => {
+    it('references the enter motion object', () => {
+      const TestPresence = createPresenceComponent(motion);
+      const { animateMock, ElementMock } = createElementMock();
+
+      render(
+        <TestPresence.In>
+          <ElementMock />
+        </TestPresence.In>,
+      );
+
+      expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
+    });
+
+    it('references the enter motion function', () => {
+      const fnMotion = jest.fn().mockImplementation(() => motion);
+      const TestPresence = createPresenceComponent(fnMotion);
+      const { animateMock, ElementMock } = createElementMock();
+
+      render(
+        <TestPresence.In>
+          <ElementMock />
+        </TestPresence.In>,
+      );
+
+      expect(fnMotion).toHaveBeenCalledTimes(1);
+      expect(fnMotion).toHaveBeenCalledWith({ element: { animate: animateMock } /* mock of html element */ });
+
+      expect(animateMock).toHaveBeenCalledTimes(1);
+      expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
+    });
+  });
+
+  describe('.Out static method', () => {
+    it('references the exit motion object', () => {
+      const TestPresence = createPresenceComponent(motion);
+      const { animateMock, ElementMock } = createElementMock();
+
+      render(
+        <TestPresence.Out>
+          <ElementMock />
+        </TestPresence.Out>,
+      );
+
+      expect(animateMock).toHaveBeenCalledWith(exitKeyframes, options);
+    });
+
+    it('references the exit motion function', () => {
+      const fnMotion = jest.fn().mockImplementation(() => motion);
+      const TestPresence = createPresenceComponent(fnMotion);
+      const { animateMock, ElementMock } = createElementMock();
+
+      render(
+        <TestPresence.Out>
+          <ElementMock />
+        </TestPresence.Out>,
+      );
+
+      expect(fnMotion).toHaveBeenCalledTimes(1);
+      expect(fnMotion).toHaveBeenCalledWith({ element: { animate: animateMock } /* mock of html element */ });
+
+      expect(animateMock).toHaveBeenCalledTimes(1);
+      expect(animateMock).toHaveBeenCalledWith(exitKeyframes, options);
+    });
+  });
 });
 
 describe('PresenceGroupChildContext', () => {

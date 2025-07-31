@@ -43,12 +43,13 @@ export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItem
   const navSubItemSpecificStyles = useNavSubItemSpecificStyles();
 
   const { selected, density } = state;
+  const isSmallDensity = density === 'small';
 
   state.root.className = mergeClasses(
     navSubItemClassNames.root,
     rootDefaultClassName,
-    density === 'small' && smallStyles.root,
-    density === 'small' && navSubItemSpecificStyles.smallBase,
+    isSmallDensity && smallStyles.root,
+    isSmallDensity && navSubItemSpecificStyles.smallBase,
     navSubItemSpecificStyles.base,
     selected && indicatorStyles.base,
     selected && contentStyles.selected,

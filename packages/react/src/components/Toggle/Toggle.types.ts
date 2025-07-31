@@ -28,6 +28,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.R
   /**
    * A label for the toggle.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   label?: string | JSX.Element;
 
   /**
