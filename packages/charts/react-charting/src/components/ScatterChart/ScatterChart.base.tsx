@@ -264,7 +264,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       tickValues: number[] | Date[] | string[] | undefined,
     ) => {
       if (xAxisType === XAxisTypes.NumericAxis) {
-        return domainRangeOfNumericForScatterChart(points, domainMargins, width, isRTL, props.xAxisScale);
+        return domainRangeOfNumericForScatterChart(points, domainMargins, width, isRTL, props.xScaleType);
       } else if (xAxisType === XAxisTypes.DateAxis) {
         return domainRangeOfDateForScatterChart(
           points,
@@ -272,7 +272,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           width,
           isRTL,
           tickValues! as Date[],
-          props.xAxisScale,
+          props.xScaleType,
         );
       }
       // String Axis type
@@ -408,7 +408,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   );
 
   function _getRangeForScatterMarkerSize(): number {
-    const filterXPoints = (item: IScatterChartDataPoint) => filterPointsForLogScale(item.x, props.xAxisScale);
+    const filterXPoints = (item: IScatterChartDataPoint) => filterPointsForLogScale(item.x, props.xScaleType);
     const xMin = d3Min(_points.current, (point: IScatterChartPoints) =>
       d3Min(
         point.data.filter(filterXPoints) as IScatterChartDataPoint[],
@@ -438,7 +438,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       _points.current,
       undefined,
       undefined,
-      props.yAxisScale,
+      props.yScaleType,
     );
     const [scaleYMin, scaleYMax] = _yAxisScale.current.domain();
     const yPadding = { start: yMin - scaleYMin, end: scaleYMax - yMax };
@@ -692,8 +692,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     yAxisType?: YAxisType,
   ): { startValue: number; endValue: number } {
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType, undefined, props.yAxisScale);
-    const yPadding = getPadding(startValue, endValue, props.yAxisScale);
+    const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType, undefined, props.yScaleType);
+    const yPadding = getPadding(startValue, endValue, props.yScaleType);
 
     return {
       startValue: startValue - yPadding.start,

@@ -7,7 +7,7 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import {
   AxisCategoryOrder,
-  AxisScale,
+  AxisScaleType,
   IAccessibilityProps,
   IChart,
   IDataPoint,
@@ -516,19 +516,22 @@ export interface ICartesianChartProps {
   yAxisCategoryOrder?: AxisCategoryOrder;
 
   /**
+   * Defines the scale type for the x-axis.
    * @default 'default'
    */
-  xAxisScale?: AxisScale;
+  xScaleType?: AxisScaleType;
 
   /**
+   * Defines the scale type for the primary y-axis.
    * @default 'default'
    */
-  yAxisScale?: AxisScale;
+  yScaleType?: AxisScaleType;
 
   /**
+   * Defines the scale type for the secondary y-axis.
    * @default 'default'
    */
-  secondaryYAxisScale?: AxisScale;
+  secondaryYScaleType?: AxisScaleType;
 }
 
 export interface IYValueHover {
@@ -754,7 +757,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     useSecondaryYScale?: boolean,
     supportNegativeData?: boolean,
     roundedTicks?: boolean,
-    scale?: AxisScale,
+    scale?: AxisScaleType,
   ) => ScaleLinear<number, number, never>;
 
   /**

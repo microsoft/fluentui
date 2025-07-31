@@ -63,7 +63,7 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
-import { AxisScale, IGanttChartDataPoint, IScatterChartDataPoint, IScatterChartPoints } from '../types/IDataPoint';
+import { AxisScaleType, IGanttChartDataPoint, IScatterChartDataPoint, IScatterChartPoints } from '../types/IDataPoint';
 import {
   formatDateToLocaleString,
   formatToLocaleString,
@@ -231,7 +231,7 @@ export function createNumericXAxis(
   tickParams: ITickParams,
   chartType: ChartTypes,
   culture?: string,
-  scale?: AxisScale,
+  scale?: AxisScaleType,
 ) {
   const {
     domainNRangeValues,
@@ -664,7 +664,7 @@ export function createNumericYAxis(
   useSecondaryYScale: boolean = false,
   supportNegativeData: boolean = false,
   roundedTicks: boolean = false,
-  scale?: AxisScale,
+  scale?: AxisScaleType,
 ) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -1174,7 +1174,7 @@ export function domainRangeOfNumericForAreaChart(
   margins: IMargins,
   width: number,
   isRTL: boolean,
-  scale?: AxisScale,
+  scale?: AxisScaleType,
 ): IDomainNRange {
   const isScatterPolar = isScatterPolarSeries(points);
   const filterPoints = (item: ILineChartDataPoint) => filterPointsForLogScale(item.x, scale);
@@ -1417,7 +1417,7 @@ export function findNumericMinMaxOfY(
   points: ILineChartPoints[] | IScatterChartPoints[],
   yAxisType?: YAxisType,
   useSecondaryYScale?: boolean,
-  scale?: AxisScale,
+  scale?: AxisScaleType,
 ): { startValue: number; endValue: number } {
   const values: number[] = [];
   points.forEach(point => {
@@ -1859,7 +1859,7 @@ export function domainRangeOfDateForScatterChart(
   width: number,
   isRTL: boolean,
   tickValues: Date[] = [],
-  scale?: AxisScale,
+  scale?: AxisScaleType,
 ): IDomainNRange {
   let sDate: Date;
   let lDate: Date;
@@ -1908,7 +1908,7 @@ export function domainRangeOfNumericForScatterChart(
   margins: IMargins,
   width: number,
   isRTL: boolean,
-  scale?: AxisScale,
+  scale?: AxisScaleType,
 ): IDomainNRange {
   const isScatterPolar = isScatterPolarSeries(points);
   const filterPoints = (item: IScatterChartDataPoint) => filterPointsForLogScale(item.x, scale);
@@ -2053,7 +2053,7 @@ export function isTextMode(points: (ILineChartPoints | IScatterChartPoints)[]): 
   );
 }
 
-const createNumericScale = (type: AxisScale | undefined) => {
+const createNumericScale = (type: AxisScaleType | undefined) => {
   if (type === 'log') {
     return d3ScaleLog();
   } else {
@@ -2061,7 +2061,7 @@ const createNumericScale = (type: AxisScale | undefined) => {
   }
 };
 
-export const getPadding = (minValue: number, maxValue: number, scale: AxisScale | undefined) => {
+export const getPadding = (minValue: number, maxValue: number, scale: AxisScaleType | undefined) => {
   if (scale === 'log') {
     return {
       start: minValue * 0.5,
@@ -2076,6 +2076,6 @@ export const getPadding = (minValue: number, maxValue: number, scale: AxisScale 
   };
 };
 
-export const filterPointsForLogScale = (value: any, scale: AxisScale | undefined) => {
+export const filterPointsForLogScale = (value: any, scale: AxisScaleType | undefined) => {
   return typeof value !== 'number' || scale !== 'log' || value > 0;
 };

@@ -65,6 +65,7 @@ import {
   isYearArray,
   isInvalidValue,
   formatToLocaleString,
+  getAxisIds,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
@@ -531,7 +532,6 @@ export const transformPlotlyJsonToVSBCProps = (
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
     ...getBarProps(input.data, input.layout),
-    ...getAxisScales(input.layout),
   };
 };
 
@@ -905,7 +905,7 @@ const transformPlotlyJsonToScatterTraceProps = (
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
-    ...getAxisScales(input.layout),
+    ...getAxisScaleTypeProps(input.data, input.layout),
   };
 
   if (isAreaChart) {
@@ -1000,7 +1000,6 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getBarProps(input.data, input.layout, true),
-    ...getAxisScales(input.layout),
   };
 };
 
@@ -1077,7 +1076,6 @@ export const transformPlotlyJsonToGanttChartProps = (
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getBarProps(input.data, input.layout, true),
-    ...getAxisScales(input.layout),
   };
 };
 
@@ -2543,12 +2541,36 @@ const getBarProps = (
   };
 };
 
-const getAxisScales = (
+type GetAxisScaleTypePropsResult = Pick<ICartesianChartProps, 'xScaleType' | 'yScaleType' | 'secondaryYScaleType'>;
+
+const getAxisScaleTypeProps = (
+  data: Data[],
   layout: Partial<Layout> | undefined,
-): Pick<ICartesianChartProps, 'xAxisScale' | 'yAxisScale' | 'secondaryYAxisScale'> => {
-  return {
-    xAxisScale: layout?.xaxis?.type === 'log' ? 'log' : 'default',
-    yAxisScale: layout?.yaxis?.type === 'log' ? 'log' : 'default',
-    secondaryYAxisScale: layout?.yaxis2?.type === 'log' ? 'log' : 'default',
-  };
+): Pick<ICartesianChartProps, 'xScaleType' | 'yScaleType' | 'secondaryYScaleType'> => {
+  const result: GetAxisScaleTypePropsResult = {};
+
+  const xAxisIds = new Set<number>();
+  const yAxisIds = new Set<number>();
+  data.forEach((series: Partial<PlotData>) => {
+    const axisIds = getAxisIds(series);
+    xAxisIds.add(axisIds.x);
+    yAxisIds.add(axisIds.y);
+  });
+
+  const axisKey = (axLetter: string, axId: number) => `${axLetter}axis${axId > 1 ? axId : ''}` as keyof Layout;
+
+  const sortedXAxisIds = Array.from(xAxisIds).sort();
+  if (sortedXAxisIds.length > 0 && layout?.[axisKey('x', sortedXAxisIds[0])]?.type === 'log') {
+    result.xScaleType = 'log';
+  }
+
+  const sortedYAxisIds = Array.from(yAxisIds).sort();
+  if (sortedYAxisIds.length > 0 && layout?.[axisKey('y', sortedYAxisIds[0])]?.type === 'log') {
+    result.yScaleType = 'log';
+  }
+  if (sortedYAxisIds.length > 1 && layout?.[axisKey('y', sortedYAxisIds[1])]?.type === 'log') {
+    result.secondaryYScaleType = 'log';
+  }
+
+  return result;
 };

@@ -1,4 +1,4 @@
-import type { Datum, TypedArray, PlotData, PlotlySchema, Data, SankeyData } from './PlotlySchema';
+import type { Datum, TypedArray, PlotData, PlotlySchema, Data, Layout, SankeyData } from './PlotlySchema';
 import { decodeBase64Fields } from './DecodeBase64Data';
 
 export type FluentChart =
@@ -223,7 +223,10 @@ const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean
   }
 };
 
-const validateBarData = (data: Partial<PlotData>) => {
+const validateBarData = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
+  if (invalidateLogAxisType(layout, getAxisIds(data))) {
+    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, log axis type not supported.`);
+  }
   if (data.orientation === 'h') {
     if (!isNumberArray(data.x) && !isDateArray(data.x)) {
       throw new Error(
@@ -277,6 +280,13 @@ const validateScatterData = (data: Partial<PlotData>) => {
   } else {
     throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, Unsupported mode`);
   }
+};
+
+const invalidateLogAxisType = (layout: Partial<Layout> | undefined, axisIds: Record<string, number>): boolean => {
+  return Object.keys(axisIds).some(axLetter => {
+    const axisKey = (`${axLetter}axis` + (axisIds[axLetter] > 1 ? axisIds[axLetter] : '')) as keyof Layout;
+    return layout?.[axisKey]?.type === 'log';
+  });
 };
 
 /**
@@ -334,7 +344,7 @@ function findSankeyCycles(input: Partial<SankeyData>): boolean {
   return false; // No cycles found
 }
 
-const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
+const DATA_VALIDATORS_MAP: Record<string, ((data: Data, layout: Partial<Layout> | undefined) => void)[]> = {
   indicator: [
     data => {
       if (!(data as Partial<PlotData>).mode?.includes('gauge')) {
@@ -344,8 +354,8 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
   ],
   histogram: [data => validateSeriesData(data as Partial<PlotData>, false)],
   bar: [
-    data => {
-      validateBarData(data as Partial<PlotData>);
+    (data, layout) => {
+      validateBarData(data as Partial<PlotData>, layout);
     },
   ],
   sankey: [
@@ -370,7 +380,7 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
 };
 
 const DEFAULT_CHART_TYPE = '';
-const getValidTraces = (dataArr: Data[]) => {
+const getValidTraces = (dataArr: Data[], layout: Partial<Layout> | undefined) => {
   const errorMessages: string[] = [];
   const validTraces = dataArr
     .map((data, index): [number, string] => {
@@ -380,7 +390,7 @@ const getValidTraces = (dataArr: Data[]) => {
         const validators = DATA_VALIDATORS_MAP[type];
         for (const validator of validators) {
           try {
-            validator(data);
+            validator(data, layout);
           } catch (error) {
             errorMessages.push(`data[${index}] - type: ${data.type}, ${error}`);
             return [-1, DEFAULT_CHART_TYPE];
@@ -415,7 +425,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
       return { isValid: false, errorMessage: `Failed to decode plotly schema: ${error}` };
     }
 
-    const validTraces = getValidTraces(validSchema.data);
+    const validTraces = getValidTraces(validSchema.data, validSchema.layout);
     let mappedTraces = validTraces.map(trace => {
       const traceIndex = trace[0];
       const traceData = validSchema.data[traceIndex];
@@ -546,4 +556,21 @@ export const mapFluentChart = (input: any): OutputChartType => {
 
 const canMapToGantt = (data: Partial<PlotData>) => {
   return isDateArray(data.base) || isNumberArray(data.base);
+};
+
+export const getAxisIds = (data: Partial<PlotData>) => {
+  let xAxisId = 1;
+  if (typeof data.xaxis === 'string' && /^x\d+$/.test(data.xaxis)) {
+    xAxisId = parseInt(data.xaxis.slice(1), 10);
+  }
+
+  let yAxisId = 1;
+  if (typeof data.yaxis === 'string' && /^y\d+$/.test(data.yaxis)) {
+    yAxisId = parseInt(data.yaxis.slice(1), 10);
+  }
+
+  return {
+    x: xAxisId,
+    y: yAxisId,
+  };
 };

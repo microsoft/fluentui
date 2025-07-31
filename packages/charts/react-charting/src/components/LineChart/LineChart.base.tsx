@@ -442,7 +442,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         barWidth,
       );
     } else if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL, this.props.xAxisScale);
+      domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL, this.props.xScaleType);
     } else if (xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
         points,
@@ -512,14 +512,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       points,
       yAxisType,
       useSecondaryYScale,
-      useSecondaryYScale ? this.props.secondaryYAxisScale : this.props.yAxisScale,
+      useSecondaryYScale ? this.props.secondaryYScaleType : this.props.yScaleType,
     );
     let yPadding = { start: 0, end: 0 };
     if (this._hasMarkersMode) {
       yPadding = getPadding(
         startValue,
         endValue,
-        useSecondaryYScale ? this.props.secondaryYAxisScale : this.props.yAxisScale,
+        useSecondaryYScale ? this.props.secondaryYScaleType : this.props.yScaleType,
       );
     }
     return {
@@ -737,7 +737,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       this._points,
       undefined,
       useSecondaryYScale,
-      useSecondaryYScale ? this.props.secondaryYAxisScale : this.props.yAxisScale,
+      useSecondaryYScale ? this.props.secondaryYScaleType : this.props.yScaleType,
     );
     const yScale = useSecondaryYScale ? this._yScaleSecondary : this._yScalePrimary;
     const [scaleYMin, scaleYMax] = yScale.domain();
@@ -1927,7 +1927,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
     // Calculate time-based padding (e.g. 10% of the date range)
     const datePadding = this._hasMarkersMode
-      ? getPadding(sDate.getTime(), lDate.getTime(), this.props.xAxisScale)
+      ? getPadding(sDate.getTime(), lDate.getTime(), this.props.xScaleType)
       : { start: 0, end: 0 };
 
     const paddedSDate = new Date(sDate.getTime() - datePadding.start);
@@ -1961,7 +1961,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
     let xPadding = { start: 0, end: 0 };
     if (this._hasMarkersMode) {
-      xPadding = getPadding(this._xMin, this._xMax, this.props.xAxisScale);
+      xPadding = getPadding(this._xMin, this._xMax, this.props.xScaleType);
     }
     const rStartValue = margins.left!;
     const rEndValue = width - margins.right!;
@@ -1997,7 +1997,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _setXMinMaxValues = (points: ILineChartPoints[]) => {
     const getX = (item: ILineChartDataPoint) => (this._isXAxisDateType ? (item.x as Date) : (item.x as number));
-    const filterPoints = (item: ILineChartDataPoint) => filterPointsForLogScale(item.x, this.props.xAxisScale);
+    const filterPoints = (item: ILineChartDataPoint) => filterPointsForLogScale(item.x, this.props.xScaleType);
 
     const minVal = d3Min(points, (point: ILineChartPoints) =>
       d3Min(point.data.filter(filterPoints) as ILineChartDataPoint[], getX),
