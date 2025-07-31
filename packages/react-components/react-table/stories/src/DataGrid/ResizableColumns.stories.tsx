@@ -196,7 +196,11 @@ export const ResizableColumns = () => {
               dataGrid.resizableColumns ? (
                 <Menu openOnContext>
                   <MenuTrigger>
-                    <DataGridHeaderCell ref={el => (refMap.current[columnId] = el)}>
+                    <DataGridHeaderCell
+                      ref={el => {
+                        refMap.current[columnId] = el;
+                      }}
+                    >
                       {renderHeaderCell()}
                     </DataGridHeaderCell>
                   </MenuTrigger>

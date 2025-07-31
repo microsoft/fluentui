@@ -127,7 +127,7 @@ export type PresenceDirection = 'enter' | 'exit';
 
 // @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {
-    constructor(props: PresenceGroupProps, context: unknown);
+    constructor(props: PresenceGroupProps, context?: unknown);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
