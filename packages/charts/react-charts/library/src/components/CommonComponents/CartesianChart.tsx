@@ -242,7 +242,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       xAxisInnerPadding: props.xAxisInnerPadding,
       xAxisOuterPadding: props.xAxisOuterPadding,
       containerWidth: containerWidth,
-      hideTickOverlap: props.hideTickOverlap,
+      hideTickOverlap: props.rotateXAxisLables ? false : props.hideTickOverlap,
       calcMaxLabelWidth: _calcMaxLabelWidthWithTransform,
     };
 
@@ -710,3 +710,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   );
 });
 CartesianChart.displayName = 'CartesianChart';
+CartesianChart.defaultProps = {
+  hideTickOverlap: true,
+};

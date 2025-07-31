@@ -413,7 +413,7 @@ export interface CartesianChartProps {
 
   /**
    * Determines whether overlapping x-axis tick labels should be hidden.
-   * @default false
+   * @default true
    */
   hideTickOverlap?: boolean;
 
