@@ -45,7 +45,7 @@ export const Default = () => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <React.StrictMode>
+    <>
       <div className={styles.container}>
         <div className={styles.clippingContainer}>
           <span>Clipping parent container</span>
@@ -67,6 +67,6 @@ export const Default = () => {
       </div>
 
       <div ref={setMountNode} />
-    </React.StrictMode>
+    </>
   );
 };

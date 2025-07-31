@@ -9,7 +9,11 @@ const mount = (element: JSXElement) => {
   mountBase(<Provider>{element}</Provider>);
 };
 
-const TestComponent: React.FC = () => {
+const TestComponent: React.FC<{ focusTargetId?: string; triggerId?: string; children?: React.ReactNode }> = ({
+  children,
+  focusTargetId = 'focusTarget',
+  triggerId = 'trigger',
+}) => {
   const ref = React.useRef<HTMLButtonElement>(null);
   const [open, setOpen] = React.useState(false);
   React.useEffect(() => {
@@ -20,13 +24,14 @@ const TestComponent: React.FC = () => {
 
   return (
     <>
-      <button id="trigger" onClick={() => setOpen(!open)}>
+      <button id={triggerId} onClick={() => setOpen(!open)}>
         Toggle Portal
       </button>
       {open && (
         <Portal>
           <div style={{ position: 'fixed', top: 200, left: 100, padding: 20, background: '#ccc' }}>
-            <button id="focusTarget" ref={ref}>
+            {children}
+            <button id={focusTargetId} ref={ref}>
               Test Button
             </button>
           </div>
@@ -92,5 +97,43 @@ describe('Portal', () => {
     // Open the portal again
     cy.get('#trigger').realClick();
     cy.get('body > [data-portal-node="true"]').should('exist');
+  });
+
+  it('should handle multiple portals independently', () => {
+    mount(
+      <>
+        <TestComponent triggerId="triggerA" focusTargetId="focusTargetA">
+          <div id="portalA">Portal A Content</div>
+        </TestComponent>
+        <TestComponent triggerId="triggerB" focusTargetId="focusTargetB">
+          <div id="portalB">Portal B Content</div>
+        </TestComponent>
+      </>,
+    );
+
+    // Initially no portals
+    cy.get('body > [data-portal-node="true"]').should('not.exist');
+
+    // Open Portal A
+    cy.get('#triggerA').realClick();
+    cy.get('body > [data-portal-node="true"]').should('have.length', 1);
+    cy.get('#portalA').should('exist').and('contain.text', 'Portal A Content');
+
+    // Open Portal B
+    cy.get('#triggerB').realClick();
+    cy.get('body > [data-portal-node="true"]').should('have.length', 2);
+    cy.get('#portalA').should('exist');
+    cy.get('#portalB').should('exist').and('contain.text', 'Portal B Content');
+
+    // Close Portal A, Portal B should remain
+    cy.get('#triggerA').realClick();
+    cy.get('body > [data-portal-node="true"]').should('have.length', 1);
+    cy.get('#portalA').should('not.exist');
+    cy.get('#portalB').should('exist');
+
+    // Close Portal B
+    cy.get('#triggerB').realClick();
+    cy.get('body > [data-portal-node="true"]').should('not.exist');
+    cy.get('#portalB').should('not.exist');
   });
 });
