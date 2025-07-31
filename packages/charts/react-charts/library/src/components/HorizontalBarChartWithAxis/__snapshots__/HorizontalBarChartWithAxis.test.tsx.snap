@@ -222,22 +222,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="0"
-                dy="0.32em"
-                id="BaseSpan-0"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-0"
-                x="-16"
-              >
-                0
-              </tspan>
+              0
             </text>
           </g>
           <g
@@ -253,22 +240,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="10k"
-                dy="0.32em"
-                id="BaseSpan-1"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-1"
-                x="-16"
-              >
-                10k
-              </tspan>
+              10k
             </text>
           </g>
           <g
@@ -284,22 +258,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="20k"
-                dy="0.32em"
-                id="BaseSpan-2"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-2"
-                x="-16"
-              >
-                20k
-              </tspan>
+              20k
             </text>
           </g>
           <g
@@ -315,22 +276,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="30k"
-                dy="0.32em"
-                id="BaseSpan-3"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-3"
-                x="-16"
-              >
-                30k
-              </tspan>
+              30k
             </text>
           </g>
           <g
@@ -346,22 +294,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="40k"
-                dy="0.32em"
-                id="BaseSpan-4"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-4"
-                x="-16"
-              >
-                40k
-              </tspan>
+              40k
             </text>
           </g>
           <g
@@ -377,22 +312,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="50k"
-                dy="0.32em"
-                id="BaseSpan-5"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-5"
-                x="-16"
-              >
-                50k
-              </tspan>
+              50k
             </text>
           </g>
         </g>
@@ -810,22 +732,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="String Four"
-                dy="0.32em"
-                id="BaseSpan-0"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-0"
-                x="-16"
-              >
-                String Four
-              </tspan>
+              String Four
             </text>
           </g>
           <g
@@ -840,22 +749,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="String Three"
-                dy="0.32em"
-                id="BaseSpan-1"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-1"
-                x="-16"
-              >
-                String Three
-              </tspan>
+              String Three
             </text>
           </g>
           <g
@@ -870,22 +766,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="String Two"
-                dy="0.32em"
-                id="BaseSpan-2"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-2"
-                x="-16"
-              >
-                String Two
-              </tspan>
+              String Two
             </text>
           </g>
           <g
@@ -900,22 +783,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="String One"
-                dy="0.32em"
-                id="BaseSpan-3"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-3"
-                x="-16"
-              >
-                String One
-              </tspan>
+              String One
             </text>
           </g>
         </g>
@@ -1255,22 +1125,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="0"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    0
-                  </tspan>
+                  0
                 </text>
               </g>
               <g
@@ -1286,22 +1143,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="10k"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    10k
-                  </tspan>
+                  10k
                 </text>
               </g>
               <g
@@ -1317,22 +1161,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="20k"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    20k
-                  </tspan>
+                  20k
                 </text>
               </g>
               <g
@@ -1348,22 +1179,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="30k"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    30k
-                  </tspan>
+                  30k
                 </text>
               </g>
               <g
@@ -1379,22 +1197,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="40k"
-                    dy="0.32em"
-                    id="BaseSpan-4"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-4"
-                    x="-16"
-                  >
-                    40k
-                  </tspan>
+                  40k
                 </text>
               </g>
               <g
@@ -1410,22 +1215,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="50k"
-                    dy="0.32em"
-                    id="BaseSpan-5"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-5"
-                    x="-16"
-                  >
-                    50k
-                  </tspan>
+                  50k
                 </text>
               </g>
             </g>
@@ -1806,22 +1598,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="0"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  0
-                </tspan>
+                0
               </text>
             </g>
             <g
@@ -1837,22 +1616,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="10k"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  10k
-                </tspan>
+                10k
               </text>
             </g>
             <g
@@ -1868,22 +1634,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="20k"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  20k
-                </tspan>
+                20k
               </text>
             </g>
             <g
@@ -1899,22 +1652,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="30k"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  30k
-                </tspan>
+                30k
               </text>
             </g>
             <g
@@ -1930,22 +1670,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="40k"
-                  dy="0.32em"
-                  id="BaseSpan-4"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-4"
-                  x="-16"
-                >
-                  40k
-                </tspan>
+                40k
               </text>
             </g>
             <g
@@ -1961,22 +1688,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan-5"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-5"
-                  x="-16"
-                >
-                  50k
-                </tspan>
+                50k
               </text>
             </g>
           </g>
@@ -2421,22 +2135,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="0"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    0
-                  </tspan>
+                  0
                 </text>
               </g>
               <g
@@ -2452,22 +2153,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="10k"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    10k
-                  </tspan>
+                  10k
                 </text>
               </g>
               <g
@@ -2483,22 +2171,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="20k"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    20k
-                  </tspan>
+                  20k
                 </text>
               </g>
               <g
@@ -2514,22 +2189,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="30k"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    30k
-                  </tspan>
+                  30k
                 </text>
               </g>
               <g
@@ -2545,22 +2207,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="40k"
-                    dy="0.32em"
-                    id="BaseSpan-4"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-4"
-                    x="-16"
-                  >
-                    40k
-                  </tspan>
+                  40k
                 </text>
               </g>
               <g
@@ -2576,22 +2225,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="50k"
-                    dy="0.32em"
-                    id="BaseSpan-5"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-5"
-                    x="-16"
-                  >
-                    50k
-                  </tspan>
+                  50k
                 </text>
               </g>
             </g>
@@ -2972,22 +2608,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="0"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  0
-                </tspan>
+                0
               </text>
             </g>
             <g
@@ -3003,22 +2626,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="10k"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  10k
-                </tspan>
+                10k
               </text>
             </g>
             <g
@@ -3034,22 +2644,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="20k"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  20k
-                </tspan>
+                20k
               </text>
             </g>
             <g
@@ -3065,22 +2662,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="30k"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  30k
-                </tspan>
+                30k
               </text>
             </g>
             <g
@@ -3096,22 +2680,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="40k"
-                  dy="0.32em"
-                  id="BaseSpan-4"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-4"
-                  x="-16"
-                >
-                  40k
-                </tspan>
+                40k
               </text>
             </g>
             <g
@@ -3127,22 +2698,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan-5"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-5"
-                  x="-16"
-                >
-                  50k
-                </tspan>
+                50k
               </text>
             </g>
           </g>
@@ -3582,22 +3140,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="0"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    0
-                  </tspan>
+                  0
                 </text>
               </g>
               <g
@@ -3613,22 +3158,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="10k"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    10k
-                  </tspan>
+                  10k
                 </text>
               </g>
               <g
@@ -3644,22 +3176,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="20k"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    20k
-                  </tspan>
+                  20k
                 </text>
               </g>
               <g
@@ -3675,22 +3194,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="30k"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    30k
-                  </tspan>
+                  30k
                 </text>
               </g>
               <g
@@ -3706,22 +3212,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="40k"
-                    dy="0.32em"
-                    id="BaseSpan-4"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-4"
-                    x="-16"
-                  >
-                    40k
-                  </tspan>
+                  40k
                 </text>
               </g>
               <g
@@ -3737,22 +3230,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="50k"
-                    dy="0.32em"
-                    id="BaseSpan-5"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-5"
-                    x="-16"
-                  >
-                    50k
-                  </tspan>
+                  50k
                 </text>
               </g>
             </g>
@@ -4133,22 +3613,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="0"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  0
-                </tspan>
+                0
               </text>
             </g>
             <g
@@ -4164,22 +3631,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="10k"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  10k
-                </tspan>
+                10k
               </text>
             </g>
             <g
@@ -4195,22 +3649,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="20k"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  20k
-                </tspan>
+                20k
               </text>
             </g>
             <g
@@ -4226,22 +3667,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="30k"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  30k
-                </tspan>
+                30k
               </text>
             </g>
             <g
@@ -4257,22 +3685,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="40k"
-                  dy="0.32em"
-                  id="BaseSpan-4"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-4"
-                  x="-16"
-                >
-                  40k
-                </tspan>
+                40k
               </text>
             </g>
             <g
@@ -4288,22 +3703,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan-5"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-5"
-                  x="-16"
-                >
-                  50k
-                </tspan>
+                50k
               </text>
             </g>
           </g>
@@ -4850,22 +4252,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="Q3"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    Q3
-                  </tspan>
+                  Q3
                 </text>
               </g>
               <g
@@ -4880,22 +4269,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="Q2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    Q2
-                  </tspan>
+                  Q2
                 </text>
               </g>
               <g
@@ -4910,22 +4286,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="Q1"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    Q1
-                  </tspan>
+                  Q1
                 </text>
               </g>
             </g>
@@ -5473,22 +4836,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="Q3"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  Q3
-                </tspan>
+                Q3
               </text>
             </g>
             <g
@@ -5503,22 +4853,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="Q2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  Q2
-                </tspan>
+                Q2
               </text>
             </g>
             <g
@@ -5533,22 +4870,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="Q1"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  Q1
-                </tspan>
+                Q1
               </text>
             </g>
           </g>
@@ -6048,22 +5372,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="0"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    0
-                  </tspan>
+                  0
                 </text>
               </g>
               <g
@@ -6079,22 +5390,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="10k"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    10k
-                  </tspan>
+                  10k
                 </text>
               </g>
               <g
@@ -6110,22 +5408,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="20k"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    20k
-                  </tspan>
+                  20k
                 </text>
               </g>
               <g
@@ -6141,22 +5426,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="30k"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    30k
-                  </tspan>
+                  30k
                 </text>
               </g>
               <g
@@ -6172,22 +5444,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="40k"
-                    dy="0.32em"
-                    id="BaseSpan-4"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-4"
-                    x="-16"
-                  >
-                    40k
-                  </tspan>
+                  40k
                 </text>
               </g>
               <g
@@ -6203,22 +5462,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="50k"
-                    dy="0.32em"
-                    id="BaseSpan-5"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-5"
-                    x="-16"
-                  >
-                    50k
-                  </tspan>
+                  50k
                 </text>
               </g>
             </g>
@@ -6506,22 +5752,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="0"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  0
-                </tspan>
+                0
               </text>
             </g>
             <g
@@ -6537,22 +5770,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="10k"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  10k
-                </tspan>
+                10k
               </text>
             </g>
             <g
@@ -6568,22 +5788,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="20k"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  20k
-                </tspan>
+                20k
               </text>
             </g>
             <g
@@ -6599,22 +5806,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="30k"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  30k
-                </tspan>
+                30k
               </text>
             </g>
             <g
@@ -6630,22 +5824,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="40k"
-                  dy="0.32em"
-                  id="BaseSpan-4"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-4"
-                  x="-16"
-                >
-                  40k
-                </tspan>
+                40k
               </text>
             </g>
             <g
@@ -6661,22 +5842,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan-5"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-5"
-                  x="-16"
-                >
-                  50k
-                </tspan>
+                50k
               </text>
             </g>
           </g>
@@ -8063,22 +7231,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="String Four"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    String Four
-                  </tspan>
+                  String Four
                 </text>
               </g>
               <g
@@ -8093,22 +7248,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="String Three"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    String Three
-                  </tspan>
+                  String Three
                 </text>
               </g>
               <g
@@ -8123,22 +7265,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="String Two"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    String Two
-                  </tspan>
+                  String Two
                 </text>
               </g>
               <g
@@ -8153,22 +7282,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="String One"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    String One
-                  </tspan>
+                  String One
                 </text>
               </g>
             </g>
@@ -8531,22 +7647,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="String Four"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  String Four
-                </tspan>
+                String Four
               </text>
             </g>
             <g
@@ -8561,22 +7664,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="String Three"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  String Three
-                </tspan>
+                String Three
               </text>
             </g>
             <g
@@ -8591,22 +7681,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="String Two"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  String Two
-                </tspan>
+                String Two
               </text>
             </g>
             <g
@@ -8621,22 +7698,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="String One"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  String One
-                </tspan>
+                String One
               </text>
             </g>
           </g>

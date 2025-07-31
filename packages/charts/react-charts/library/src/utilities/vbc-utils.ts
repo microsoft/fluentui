@@ -20,7 +20,7 @@ export const getClosestPairDiffAndRange = (data: number[] | Date[]): [number, nu
   return [minDiff, range];
 };
 
-export const calculateAppropriateBarWidth = (data: number[] | Date[], totalWidth: number) => {
+export const calculateAppropriateBarWidth = (data: number[] | Date[], totalWidth: number, innerPadding: number) => {
   const result = getClosestPairDiffAndRange(data);
   if (!result || result[1] === 0) {
     return 16;
@@ -28,6 +28,8 @@ export const calculateAppropriateBarWidth = (data: number[] | Date[], totalWidth
   const [closestPairDiff, range] = result;
   // Refer to https://microsoft.github.io/fluentui-charting-contrib/docs/rfcs/fix-overlapping-bars-on-continuous-axes
   // for the derivation of the following formula.
-  const barWidth = Math.round((totalWidth * closestPairDiff) / (2 * range + closestPairDiff));
+  const barWidth = Math.floor(
+    (totalWidth * closestPairDiff * (1 - innerPadding)) / (range + closestPairDiff * (1 - innerPadding)),
+  );
   return barWidth;
 };

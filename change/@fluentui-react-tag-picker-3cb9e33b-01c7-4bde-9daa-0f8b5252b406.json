@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: migrate to R19 compatible JSX.* namespace types",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

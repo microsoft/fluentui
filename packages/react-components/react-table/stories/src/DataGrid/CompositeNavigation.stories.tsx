@@ -21,10 +21,12 @@ import {
   TableColumnDefinition,
   createTableColumn,
 } from '@fluentui/react-components';
+// eslint-disable-next-line @fluentui/no-restricted-imports
+import type { JSXElement } from '@fluentui/react-utilities';
 
 type FileCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -34,7 +36,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: JSXElement;
 };
 
 type AuthorCell = {
