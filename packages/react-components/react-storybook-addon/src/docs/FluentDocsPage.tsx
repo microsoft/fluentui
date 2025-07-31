@@ -172,6 +172,13 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
   const transformPropsWithSlotShorthand = (props: Record<string, { type: { name: string } }>) => {
     Object.entries(props).forEach(([key, argType]) => {
       const value: string = argType?.type?.name;
+
+      // If DocGen was already transformed, skip the transformation but set hasArgAsSlot to true so that we can show the info message
+      if (value.includes('Slot')) {
+        hasArgAsSlot = true;
+        return;
+      }
+      // Initial Render Transformation for shorthand slot values (mutates DocGen Object reference)
       if (value.includes('WithSlotShorthandValue')) {
         hasArgAsSlot = true;
         const match = value.match(slotRegex);
