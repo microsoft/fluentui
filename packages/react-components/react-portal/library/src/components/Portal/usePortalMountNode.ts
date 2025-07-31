@@ -35,6 +35,8 @@ type UseElementFactory = (options: UseElementFactoryOptions) => HTMLDivElement |
  * Creates a new element on a "document.body" to mount portals.
  */
 const useLegacyElementFactory: UseElementFactory = options => {
+  'use no memo';
+
   const { className, dir, focusVisibleRef, targetNode } = options;
 
   const targetElement = React.useMemo(() => {
@@ -63,7 +65,6 @@ const useLegacyElementFactory: UseElementFactory = options => {
     targetElement.setAttribute('dir', dir);
     targetElement.setAttribute('data-portal-node', 'true');
 
-    // eslint-disable-next-line react-compiler/react-compiler
     focusVisibleRef.current = targetElement;
   }, [className, dir, targetElement, focusVisibleRef]);
 
@@ -163,7 +164,13 @@ const useModernElementFactory: UseElementFactory = options => {
 
       set(_, property: keyof HTMLDivElement | '_virtual' | 'focusVisible', value) {
         const ignoredProperty = property === '_virtual' || property === 'focusVisible';
-        const targetElement = elementFactory.get(targetNode, false);
+
+        // We should use the `elementFactory.get(targetNode, !ignoredProperty)`,
+        // but TypeScript requires a literal `true` or `false` for the overload signature.
+        // This workaround ensures the correct overload is called and avoids TypeScript errors.
+        const targetElement = ignoredProperty
+          ? elementFactory.get(targetNode, false)
+          : elementFactory.get(targetNode, true);
 
         if (ignoredProperty && !targetElement) {
           // We ignore the `_virtual` and `focusVisible` properties to avoid conflicts with the proxy
