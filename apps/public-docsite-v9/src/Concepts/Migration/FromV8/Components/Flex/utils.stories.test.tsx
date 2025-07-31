@@ -13,7 +13,7 @@ function mockMDXSourceCodeBlock(source: string) {
         },
       },
     },
-  } as JSX.Element;
+  } as React.ReactElement;
 }
 
 test('renders children', () => {

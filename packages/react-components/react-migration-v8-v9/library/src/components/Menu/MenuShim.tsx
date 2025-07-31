@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { ContextualMenuItemType } from '@fluentui/react';
 import type { IContextualMenuItem } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   MenuItem,
   MenuDivider,
@@ -16,9 +17,7 @@ import {
 } from '@fluentui/react-components';
 
 import { shimMenuHeaderProps, shimMenuItemCheckboxProps, shimMenuItemProps, shimMenuProps } from './shimMenuProps';
-
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export const MenuItemShim = (props: IContextualMenuItem): JSX.Element => {
+export const MenuItemShim = (props: IContextualMenuItem): JSXElement => {
   if (props.itemType === ContextualMenuItemType.Divider) {
     const shimProps = shimMenuItemProps(props);
     return <MenuDivider {...(shimProps as MenuDividerProps)} />;

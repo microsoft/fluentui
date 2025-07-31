@@ -12,6 +12,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
@@ -20,7 +21,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const Accordion: ForwardRefComponent<AccordionProps> & (<TItem>(props: AccordionProps<TItem>) => JSX.Element);
+export const Accordion: ForwardRefComponent<AccordionProps> & (<TItem>(props: AccordionProps<TItem>) => JSXElement);
 
 // @public (undocumented)
 export const accordionClassNames: SlotClassNames<AccordionSlots>;
@@ -148,7 +149,7 @@ export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
 };
 
 // @public (undocumented)
-export type AccordionProps<Value = AccordionItemValue> = ComponentProps<AccordionSlots> & {
+export type AccordionProps<Value = AccordionItemValue> = Omit<ComponentProps<AccordionSlots>, 'onToggle'> & {
     defaultOpenItems?: Value | Value[];
     collapsible?: boolean;
     multiple?: boolean;

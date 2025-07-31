@@ -2,6 +2,21 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Wed, 30 Jul 2025 16:55:28 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.8.1",
+      "version": "0.8.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Jul 2025 18:48:19 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.8.0",
       "version": "0.8.0",

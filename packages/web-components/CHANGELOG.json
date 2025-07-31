@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 31 Jul 2025 04:07:07 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.114",
+      "version": "3.0.0-beta.114",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Jul 2025 04:07:23 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.114",
       "version": "3.0.0-beta.114",

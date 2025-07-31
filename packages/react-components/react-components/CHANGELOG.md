@@ -1,8 +1,53 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 28 Jul 2025 18:48:16 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jul 2025 16:55:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.68.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.68.2)
+
+Wed, 30 Jul 2025 16:55:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.68.1..@fluentui/react-components_v9.68.2)
+
+### Patches
+
+- `@fluentui/react-aria`
+  - fix: release TreeWalker reference ([PR #34945](https://github.com/microsoft/fluentui/pull/34945) by seanmonahan@microsoft.com)
+- `@fluentui/react-charts`
+  - make legends of dotted lines dotted ([PR #34947](https://github.com/microsoft/fluentui/pull/34947) by anushgupta@microsoft.com)
+  - support hidelegend property from plotly schema ([PR #34946](https://github.com/microsoft/fluentui/pull/34946) by anushgupta@microsoft.com)
+
+## [9.68.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.68.1)
+
+Wed, 30 Jul 2025 13:10:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.68.0..@fluentui/react-components_v9.68.1)
+
+### Minor changes
+
+- `@fluentui/react-charts`
+  - feat: enable griffel raw styles ([PR #34912](https://github.com/microsoft/fluentui/pull/34912) by martinhochel@microsoft.com)
+- `@fluentui/react-storybook-addon`
+  - Add new brand ramp version ([PR #34900](https://github.com/microsoft/fluentui/pull/34900) by jukapsia@microsoft.com)
+- `@fluentui/react-theme`
+  - Add new brand ramp version ([PR #34900](https://github.com/microsoft/fluentui/pull/34900) by jukapsia@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - GVBC FIX ([PR #34932](https://github.com/microsoft/fluentui/pull/34932) by anushgupta@microsoft.com)
+  - Adding a variation of horizontal stacked bar chart with inline legends that accept optiona annotation JSX from client to be displayed next the legend items. Also an option to hide the hover callout card. ([PR #34895](https://github.com/microsoft/fluentui/pull/34895) by aknowles@microsoft.com)
+  - support image export in v9 charts ([PR #34929](https://github.com/microsoft/fluentui/pull/34929) by anushgupta@microsoft.com)
+  - add histogram mode to vbc ([PR #34930](https://github.com/microsoft/fluentui/pull/34930) by anushgupta@microsoft.com)
+  - add support for scatter polar trace type ([PR #34933](https://github.com/microsoft/fluentui/pull/34933) by anushgupta@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: DialogSurface and DialogBody height respects custom maxHeight styles by replacing @supports rules with Griffel fallback arrays ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-tags`
+  - fix: add aria-pressed semantics to selectable Tag, remove default aria-pressed from InteractionTag ([PR #34619](https://github.com/microsoft/fluentui/pull/34619) by sarah.higley@microsoft.com)
+
+### Changes
+
+- `@fluentui/tokens`
+  - Brand ramp update ([PR #34900](https://github.com/microsoft/fluentui/pull/34900) by jukapsia@microsoft.com)
 
 ## [9.68.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.68.0)
 

@@ -2,12 +2,13 @@ import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { ScaleLinear, ScaleBand, ScaleTime } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
-import { Legend, Legends } from '../Legends/index';
+import type { JSXElement } from '@fluentui/react-utilities';
+import { Legend, Legends, LegendContainer } from '../Legends/index';
 import { Margins, GanttChartDataPoint } from '../../types/DataPoint';
 import { CartesianChart, ModifiedCartesianChartProps } from '../CommonComponents/index';
 import { GanttChartProps } from './GanttChart.types';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { ChartPopoverProps } from '../../index';
+import { ChartPopoverProps, ImageExportOptions, Chart } from '../../index';
 import {
   ChartTypes,
   YAxisType,
@@ -25,8 +26,10 @@ import {
   getColorFromToken,
   getScalePadding,
   getDateFormatLevel,
+  useRtl,
 } from '../../utilities/index';
 import { formatDateToLocaleString, getMultiLevelDateTimeFormatOptions } from '@fluentui/chart-utilities';
+import { toImage } from '../../utilities/image-export-utils';
 
 type NumberScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
@@ -54,6 +57,9 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     const [calloutDataPoint, setCalloutDataPoint] = React.useState<GanttChartDataPoint>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+    const cartesianChartRef = React.useRef<Chart>(null);
+    const _legendsRef = React.useRef<LegendContainer>(null);
+    const _isRTL = useRtl();
 
     React.useEffect(() => {
       if (!areArraysEqual(_prevProps.current.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
@@ -61,6 +67,17 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
       }
       _prevProps.current = props;
     }, [props]);
+
+    React.useImperativeHandle(
+      props.componentRef,
+      () => ({
+        chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+        toImage: (opts?: ImageExportOptions): Promise<string> => {
+          return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRTL, opts);
+        },
+      }),
+      [],
+    );
 
     const _points = React.useMemo(() => {
       _legendMap.current = {};
@@ -218,7 +235,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     );
 
     const _getCustomizedCallout = React.useCallback(() => {
-      const defaultRender = (point?: GanttChartDataPoint): React.JSX.Element | null => {
+      const defaultRender = (point?: GanttChartDataPoint): JSXElement | null => {
         return point ? (
           <ChartPopover
             isPopoverOpen={isPopoverOpen}
@@ -369,13 +386,13 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
       }: {
         xScale: DateScale | NumberScale;
         yScalePrimary: NumberScale | StringScale;
-      }): React.JSX.Element => {
+      }): JSXElement => {
         const getGradientId = (legend: string | undefined) => {
           const legendId = _legendMap.current[`${legend}`].id;
           return `${legendId}_gradient`;
         };
 
-        const gradientDefs: React.JSX.Element[] = [];
+        const gradientDefs: JSXElement[] = [];
         if (props.enableGradient) {
           Object.keys(_legendMap.current).forEach((legend: string, index: number) => {
             const { startColor, endColor } = _legendMap.current[legend];
@@ -468,7 +485,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
       [props.legendProps],
     );
 
-    const _getLegendData = React.useCallback((): React.JSX.Element => {
+    const _getLegendData = React.useCallback((): JSXElement => {
       const actions: Legend[] = [];
 
       Object.keys(_legendMap.current).forEach((legendTitle: string) => {
@@ -494,6 +511,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
           overflowText={props.legendsOverflowText}
           onChange={_onLegendSelectionChange}
           {...props.legendProps}
+          legendRef={_legendsRef}
         />
       );
       return legends;
@@ -585,6 +603,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
           chartType={ChartTypes.GanttChart}
           xAxisType={_xAxisType}
           yAxisType={_yAxisType}
+          componentRef={cartesianChartRef}
           stringDatasetForYAxisDomain={_yAxisLabels}
           calloutProps={calloutProps}
           tickParams={tickParams}

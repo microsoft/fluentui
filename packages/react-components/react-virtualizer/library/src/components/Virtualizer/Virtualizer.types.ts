@@ -202,7 +202,7 @@ export type VirtualizerConfigProps = {
   /**
    * Imperative ref contains our scrollTo index functionality for user control.
    */
-  imperativeVirtualizerRef?: React.RefObject<VirtualizerDataRef>;
+  imperativeVirtualizerRef?: React.RefObject<VirtualizerDataRef | null>;
 
   /**
    * A ref that provides the size of container (vertical - height, horizontal - width), set by a resize observer.

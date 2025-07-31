@@ -13,6 +13,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
@@ -339,7 +340,7 @@ export type MenuPopoverState = ComponentState<MenuPopoverSlots> & Pick<PortalPro
 
 // @public
 export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode'> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
-    children: [JSX.Element, JSX.Element] | JSX.Element;
+    children: [JSXElement, JSXElement] | JSXElement;
     hoverDelay?: number;
     inline?: boolean;
     onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
@@ -424,7 +425,7 @@ export type MenuTriggerState = {
 };
 
 // @public
-export const renderMenu_unstable: (state: MenuState, contextValues: MenuContextValues) => JSX.Element;
+export const renderMenu_unstable: (state: MenuState, contextValues: MenuContextValues) => JSXElement;
 
 // @public
 export const renderMenuDivider_unstable: (state: MenuDividerState) => JSX.Element;
@@ -460,7 +461,7 @@ export const renderMenuPopover_unstable: (state: MenuPopoverState) => JSX.Elemen
 export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState, contexts?: MenuSplitGroupContextValues) => JSX.Element;
 
 // @public
-export const renderMenuTrigger_unstable: (state: MenuTriggerState) => JSX.Element;
+export const renderMenuTrigger_unstable: (state: MenuTriggerState) => JSXElement;
 
 // @public (undocumented)
 export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, name: string, value: string, checked: boolean) => void;

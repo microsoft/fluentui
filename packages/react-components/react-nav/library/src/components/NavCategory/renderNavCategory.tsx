@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { NavCategoryContextValues, NavCategoryProvider } from '../NavCategoryContext';
 
 import type { NavCategoryState } from './NavCategory.types';
@@ -9,7 +10,6 @@ import type { NavCategoryState } from './NavCategory.types';
 export const renderNavCategory_unstable = (
   state: NavCategoryState,
   contextValues: NavCategoryContextValues,
-): // eslint-disable-next-line @typescript-eslint/no-deprecated
-JSX.Element => {
+): JSXElement => {
   return <NavCategoryProvider value={contextValues.categoryValue}>{state.children}</NavCategoryProvider>;
 };

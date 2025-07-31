@@ -26,10 +26,12 @@ import {
   MenuTrigger,
   MenuItem,
 } from '@fluentui/react-components';
+// eslint-disable-next-line @fluentui/no-restricted-imports
+import type { JSXElement } from '@fluentui/react-utilities';
 
 type FileCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -39,7 +41,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -194,7 +196,11 @@ export const ResizableColumns = () => {
               dataGrid.resizableColumns ? (
                 <Menu openOnContext>
                   <MenuTrigger>
-                    <DataGridHeaderCell ref={el => (refMap.current[columnId] = el)}>
+                    <DataGridHeaderCell
+                      ref={el => {
+                        refMap.current[columnId] = el;
+                      }}
+                    >
                       {renderHeaderCell()}
                     </DataGridHeaderCell>
                   </MenuTrigger>

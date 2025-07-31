@@ -7,7 +7,7 @@ const tagGroupContextDefaultValue: TagGroupContextValue = {
   handleTagDismiss: () => ({}),
   size: 'medium',
   role: 'toolbar',
-  handleTagSelect: () => ({}),
+  handleTagSelect: undefined,
 };
 
 /**

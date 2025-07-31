@@ -11,6 +11,7 @@ import {
   scaleTime as d3ScaleTime,
 } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import {
   AccessibilityProps,
@@ -28,6 +29,8 @@ import {
   Legends,
   Chart,
   DataPoint,
+  ImageExportOptions,
+  LegendContainer,
 } from '../../index';
 import {
   ChartTypes,
@@ -56,6 +59,7 @@ import {
   domainRangeOfXStringAxis,
   createStringYAxis,
 } from '../../utilities/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
@@ -92,7 +96,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   let _points: VerticalStackedChartProps[] = [];
   let _dataset: VerticalStackedBarDataPoint[];
   let _xAxisLabels: string[] = [];
-  let _bars: JSX.Element[];
+  let _bars: JSXElement[];
   let _xAxisType: XAxisTypes =
     props.data! && props.data!.length > 0
       ? (getTypeOfAxis(props.data[0]!.xAxisPoint, true) as XAxisTypes)
@@ -109,6 +113,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   let _xAxisOuterPadding: number = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
   const Y_ORIGIN: number = 0;
+  const _legendsRef = React.useRef<LegendContainer>(null);
 
   const [selectedLegends, setSelectedLegends] = React.useState(props.legendProps?.selectedLegends || []);
   const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
@@ -144,11 +149,14 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     props.componentRef,
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRtl, opts);
+      },
     }),
     [],
   );
 
-  function _getLegendData(data: VerticalStackedChartProps[], lineLegends: LineLegends[]): JSX.Element {
+  function _getLegendData(data: VerticalStackedChartProps[], lineLegends: LineLegends[]): JSXElement {
     if (props.hideLegend) {
       return <></>;
     }
@@ -211,6 +219,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         overflowText={props.legendsOverflowText}
         {...props.legendProps}
         onChange={_onLegendSelectionChange}
+        legendRef={_legendsRef}
       />
     );
   }
@@ -530,7 +539,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     containerHeight: number,
     containerWidth: number,
     yScaleSecondary?: NumericScale,
-  ): JSX.Element {
+  ): JSXElement {
     const lineObject: LineObject = _getFormattedLineData(props.data);
     const lines: React.ReactNode[] = [];
     const borderForLines: React.ReactNode[] = [];
@@ -662,7 +671,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     }
   }
 
-  function _renderCallout(props?: VSChartDataPoint): JSX.Element | null {
+  function _renderCallout(props?: VSChartDataPoint): JSXElement | null {
     return props ? (
       <ChartPopover
         culture={props.culture ?? 'en-us'}
@@ -930,7 +939,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     yBarScale: NumericScale,
     containerHeight: number,
     xElement: SVGElement,
-  ): JSX.Element[] {
+  ): JSXElement[] {
     const { barCornerRadius = 0, barMinimumHeight = 0 } = props;
     const _isHavingLines = props.data.some(
       (item: VerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
@@ -1124,7 +1133,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       };
       xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
-    return bars.filter((bar): bar is JSX.Element => !!bar);
+    return bars.filter((bar): bar is JSXElement => !!bar);
   }
 
   function _getMinMaxOfYAxis(
@@ -1156,7 +1165,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     );
     const shouldFocusWholeStack = _toFocusWholeStack(_isHavingLines);
     _dataset = _createDataSetLayer();
-    const legendBars: JSX.Element = _getLegendData(_points, _createLegendsForLine(props.data));
+    const legendBars: JSXElement = _getLegendData(_points, _createLegendsForLine(props.data));
     const calloutProps: ModifiedCartesianChartProps['calloutProps'] = {
       color: color,
       legend: calloutLegend,

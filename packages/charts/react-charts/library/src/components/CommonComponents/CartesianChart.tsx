@@ -23,6 +23,7 @@ import {
   getSecureProps,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { ChartPopover } from './ChartPopover';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -166,7 +167,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
    * @returns
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function _generateCallout(calloutProps: any): JSX.Element {
+  function _generateCallout(calloutProps: any): JSXElement {
     return <ChartPopover {...calloutProps} />;
   }
 
@@ -220,7 +221,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   // Callback for margins to the chart
   props.getmargins && props.getmargins(margin);
 
-  let callout: JSX.Element | null = null;
+  let callout: JSXElement | null = null;
 
   let children = null;
   if ((props.enableFirstRenderOptimization && chartContainer.current) || !props.enableFirstRenderOptimization) {

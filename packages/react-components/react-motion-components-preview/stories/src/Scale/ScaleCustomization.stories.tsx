@@ -79,7 +79,7 @@ const LoremIpsum = () => (
 
 export const Customization = () => {
   const classes = useClasses();
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
 
   const [animateOpacity, setAnimateOpacity] = React.useState(false);
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);

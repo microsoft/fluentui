@@ -617,6 +617,11 @@ export interface LineDataInVerticalStackedBarChart {
   color: string;
   legend: string;
   /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+  /**
    * Data to show in callout
    */
   data?: number;
@@ -755,6 +760,17 @@ export interface CustomizedCalloutData {
  */
 export interface Chart {
   chartContainer: HTMLElement | null;
+  toImage?: (opts?: ImageExportOptions) => Promise<string>;
+}
+
+/**
+ * {@docCategory Chart}
+ */
+export interface ImageExportOptions {
+  width?: number;
+  height?: number;
+  scale?: number;
+  background?: string;
 }
 
 export interface HeatMapChartDataPoint {

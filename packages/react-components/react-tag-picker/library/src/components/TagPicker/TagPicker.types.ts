@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import type { ComponentProps, ComponentState, EventData, EventHandler } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, EventData, EventHandler, JSXElement } from '@fluentui/react-utilities';
 import type { ComboboxProps, ComboboxState, ListboxContextValue } from '@fluentui/react-combobox';
 import type { TagPickerContextValue } from '../../contexts/TagPickerContext';
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
@@ -46,8 +46,7 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> &
     /**
      * Can contain two children including a trigger and a popover
      */
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    children: [JSX.Element, JSX.Element | undefined | false] | JSX.Element;
+    children: [JSXElement, JSXElement | undefined | false] | JSXElement;
     /**
      * TagPickers are rendered out of DOM order on `document.body` by default,
      * use this to render the popover in DOM order

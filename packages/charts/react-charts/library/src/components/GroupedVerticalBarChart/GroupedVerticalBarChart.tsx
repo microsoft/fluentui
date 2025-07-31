@@ -6,6 +6,7 @@ import { max as d3Max, min as d3Min } from 'd3-array';
 import { ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   ChartTypes,
   IAxisData,
@@ -43,7 +44,10 @@ import {
   getColorFromToken,
   ChartPopoverProps,
   Chart,
+  ImageExportOptions,
+  LegendContainer,
 } from '../../index';
+import { toImage } from '../../utilities/image-export-utils';
 
 type StringAxis = D3Axis<string>;
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -79,7 +83,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _xAxisLabels: string[] = [];
   let _datasetForBars: any[] = [];
   let _margins: Margins = { top: 0, right: 0, bottom: 0, left: 0 };
-  let _groupedVerticalBarGraph: JSX.Element[] = [];
+  let _groupedVerticalBarGraph: JSXElement[] = [];
   let _refArray: RefArrayData[] = [];
   let _yMax: number = 0;
   let _calloutAnchorPoint: GVBarChartSeriesPoint | null = null;
@@ -89,6 +93,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _xAxisOuterPadding: number = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
   const Y_ORIGIN: number = 0;
+  const _legendsRef = React.useRef<LegendContainer>(null);
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -116,6 +121,9 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     props.componentRef,
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _useRtl, opts);
+      },
     }),
     [],
   );
@@ -191,7 +199,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     }
   };
 
-  const _getLegendData = (points: GroupedVerticalBarChartData[]): JSX.Element => {
+  const _getLegendData = (points: GroupedVerticalBarChartData[]): JSXElement => {
     const data = points;
     const defaultPalette: string[] = [
       getColorFromToken(DataVizPalette.color1),
@@ -231,6 +239,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         overflowText={props.legendsOverflowText}
         {...props.legendProps}
         onChange={onLegendSelectionChange}
+        legendRef={_legendsRef}
       />
     );
   };
@@ -241,10 +250,10 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   _xAxisLabels = xAxisLabels;
   _datasetForBars = datasetForBars;
   const _xAxisType: XAxisTypes = getTypeOfAxis(points![0].name, true) as XAxisTypes;
-  const legends: JSX.Element = _getLegendData(points!);
+  const legends: JSXElement = _getLegendData(points!);
   _adjustProps();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-anyAdd commentMore actions
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Add commentMore actions
   function _getMinMaxOfYAxis(datasetForBars: any, yAxisType?: YAxisType, useSecondaryYScale?: boolean) {
     const values: number[] = [];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -325,7 +334,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     _groupWidth = (_keys.length + (_keys.length - 1) * BAR_GAP_RATE) * _barWidth;
 
     const xScale1 = _createX1Scale();
-    const allGroupsBars: JSX.Element[] = [];
+    const allGroupsBars: JSXElement[] = [];
     _datasetForBars.forEach((singleSet: GVSingleDataPoint) => {
       allGroupsBars.push(
         _buildGraph(singleSet, xScale0, xScale1, yScalePrimary, yScaleSecondary, containerHeight, xElement!),
@@ -434,9 +443,9 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     yScaleSecondary: ScaleLinear<number, number> | undefined,
     containerHeight: number,
     xElement: SVGElement,
-  ): JSX.Element => {
-    const singleGroup: JSX.Element[] = [];
-    const barLabelsForGroup: JSX.Element[] = [];
+  ): JSXElement => {
+    const singleGroup: JSXElement[] = [];
+    const barLabelsForGroup: JSXElement[] = [];
 
     const tempDataSet = Object.keys(datasetForBars[0]).splice(0, keys.length);
     tempDataSet.forEach((datasetKey: string, index: number) => {

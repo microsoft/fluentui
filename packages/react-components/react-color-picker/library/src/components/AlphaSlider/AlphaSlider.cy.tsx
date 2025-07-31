@@ -6,11 +6,9 @@ import { AlphaSlider } from './AlphaSlider';
 import type { AlphaSliderProps } from './AlphaSlider.types';
 import { calculateTransparencyValue } from './alphaSliderUtils';
 import { INITIAL_COLOR_HSV } from '../../utils/constants';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mountFluent = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

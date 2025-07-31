@@ -1,3 +1,4 @@
+import type { JSXElement } from '@fluentui/react-utilities';
 import { YValueHover } from '../../index';
 
 export interface ChartPopoverProps {
@@ -11,7 +12,7 @@ export interface ChartPopoverProps {
   color?: string;
   culture?: string;
   customCallout?: {
-    customizedCallout?: JSX.Element;
+    customizedCallout?: JSXElement;
     customCalloutProps?: ChartPopoverProps;
   };
   isCalloutForStack?: boolean;

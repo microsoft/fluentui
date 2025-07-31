@@ -2,7 +2,7 @@ import * as React from 'react';
 import { PositioningVirtualElement, SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, JSXElement } from '@fluentui/react-utilities';
 import type { MenuContextValue } from '../../contexts/menuContext';
 import type { MenuListProps } from '../MenuList/MenuList.types';
 
@@ -21,8 +21,7 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * Can contain two children including `MenuTrigger` and `MenuPopover`.
      * Alternatively can only contain `MenuPopover` if using a custom `target`.
      */
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    children: [JSX.Element, JSX.Element] | JSX.Element;
+    children: [JSXElement, JSXElement] | JSXElement;
 
     /**
      * Sets the delay for mouse open/close for the popover one mouse enter/leave

@@ -152,6 +152,7 @@ function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHei
       textOffset = 28;
     } else {
       legendText = legendButtons[i] as HTMLButtonElement;
+      // eslint-disable-next-line no-console
       console.log(legendText!.textContent);
       textOffset = 8;
     }

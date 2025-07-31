@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Portal } from '@fluentui/react-components';
 import { mount as mountBase } from '@cypress/react';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import { Provider } from '../../components/Provider/Provider';
 
-const mount = (element: React.JSX.Element) => {
+const mount = (element: JSXElement) => {
   mountBase(<Provider>{element}</Provider>);
 };
 

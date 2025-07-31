@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { LegendsProps } from '../Legends/index';
 import {
   AccessibilityProps,
@@ -512,7 +513,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /**
    * Legends of the chart.
    */
-  legendBars: JSX.Element | null;
+  legendBars: JSXElement | null;
 
   /**
    * Callout props

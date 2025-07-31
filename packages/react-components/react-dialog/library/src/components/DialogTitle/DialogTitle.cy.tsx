@@ -3,6 +3,7 @@ import { mount as mountBase } from '@cypress/react';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import {
   Dialog,
@@ -16,10 +17,7 @@ import {
 import { Button } from '@fluentui/react-button';
 import { dialogActionSelector, dialogTriggerOpenId, dialogTriggerOpenSelector } from '../../testing/selectors';
 
-const mount = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+const mount = (element: JSXElement) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 
 describe('DialogTitle', () => {
   describe('modalType = modal', () => {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { ChartDataPoint, ChartProps } from './index';
 import { LegendsProps } from '../Legends/index';
@@ -109,7 +110,7 @@ export interface HorizontalBarChartProps extends React.RefAttributes<HTMLDivElem
   /**
    * prop to render the custom callout
    */
-  onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSX.Element | undefined;
+  onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSXElement | undefined;
 
   /**
    * Define a custom callout props override

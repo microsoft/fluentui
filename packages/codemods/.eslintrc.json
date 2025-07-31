@@ -1,7 +1,13 @@
 {
-  "extends": ["plugin:@fluentui/eslint-plugin/node", "plugin:@fluentui/eslint-plugin/react"],
+  "extends": ["plugin:@fluentui/eslint-plugin/node", "plugin:@fluentui/eslint-plugin/react--legacy"],
   "root": true,
   "overrides": [
+    {
+      "files": ["./src/**/*.ts"],
+      "rules": {
+        "@typescript-eslint/naming-convention": "off"
+      }
+    },
     {
       "files": ["./src/codeMods/tests/mock/**/*.{ts,tsx}"],
       "rules": {

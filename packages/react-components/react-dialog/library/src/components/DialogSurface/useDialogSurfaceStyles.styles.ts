@@ -35,17 +35,13 @@ const useRootBaseStyle = makeResetStyles({
   position: 'fixed',
   height: 'fit-content',
   maxWidth: '600px',
-  maxHeight: '100vh',
+  maxHeight: ['100vh', '100dvh'],
   boxSizing: 'border-box',
   backgroundColor: tokens.colorNeutralBackground1,
   color: tokens.colorNeutralForeground1,
   // Same styles as DialogSurfaceMotion last keyframe,
   // to ensure dialog will be properly styled when surfaceMotion is opted-out
   boxShadow: tokens.shadow64,
-
-  '@supports (height: 1dvh)': {
-    maxHeight: '100dvh',
-  },
 
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
