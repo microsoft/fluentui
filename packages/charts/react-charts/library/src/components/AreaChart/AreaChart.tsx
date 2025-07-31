@@ -42,6 +42,7 @@ import {
   useRtl,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Legend, LegendContainer, Legends } from '../Legends/index';
 import { ScaleLinear } from 'd3-scale';
 import { toImage } from '../../utilities/image-export-utils';
@@ -99,7 +100,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     let _opacity: number[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _data: any;
-    let _chart: JSX.Element[];
+    let _chart: JSXElement[];
     let _margins: Margins;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _xAxisRectScale: any;
@@ -483,7 +484,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       setActiveLegend(undefined);
     }
 
-    function _getLegendData(points: LineChartPoints[]): JSX.Element {
+    function _getLegendData(points: LineChartPoints[]): JSXElement {
       const data = points;
       const actions: Legend[] = [];
 
@@ -586,11 +587,11 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       yScalePrimary: ScaleLinear<number, number>,
       yScaleSecondary: ScaleLinear<number, number> | undefined,
       xElement: SVGElement,
-    ): JSX.Element[] {
+    ): JSXElement[] {
       const points = _addDefaultColors(props.data.lineChartData);
       const { pointOptions, pointLineOptions } = props.data;
 
-      const graph: JSX.Element[] = [];
+      const graph: JSXElement[] = [];
       let lineColor: string;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       _data.forEach((singleStackedData: Array<any>, index: number) => {
@@ -937,7 +938,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       _colors = colors;
       _opacity = opacity;
       _data = data.renderData;
-      const legends: JSX.Element = _getLegendData(points);
+      const legends: JSXElement = _getLegendData(points);
 
       const tickParams = {
         tickValues: props.tickValues,

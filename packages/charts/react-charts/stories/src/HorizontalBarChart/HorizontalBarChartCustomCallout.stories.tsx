@@ -9,6 +9,8 @@ import {
 } from '@fluentui/react-charts';
 // import * as d3 from 'd3-format';
 import { Switch, tokens } from '@fluentui/react-components';
+// eslint-disable-next-line  @fluentui/no-restricted-imports
+import type { JSXElement } from '@fluentui/react-utilities';
 
 export const HorizontalBarCustomCallout = () => {
   const hideRatio: boolean[] = [true, false];
@@ -129,10 +131,7 @@ export const HorizontalBarCustomCallout = () => {
     setUseCustomPopover(ev.currentTarget.checked);
   }, []);
 
-  const customPopover = (
-    props: ChartDataPoint,
-  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element | undefined => {
+  const customPopover = (props: ChartDataPoint): JSXElement | undefined => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : 'Y Value';
     const xValue = props ? props.xAxisCalloutData! : 'X Value';
     const legend = props ? props.legend : 'Legend';

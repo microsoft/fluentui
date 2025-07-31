@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { PopoverContext } from '../../popoverContext';
 import type { PopoverState } from './Popover.types';
 
@@ -6,10 +7,7 @@ import type { PopoverState } from './Popover.types';
  * Render the final JSX of Popover
  */
 
-export const renderPopover_unstable = (
-  state: PopoverState,
-): // eslint-disable-next-line @typescript-eslint/no-deprecated
-JSX.Element => {
+export const renderPopover_unstable = (state: PopoverState): JSXElement => {
   const {
     appearance,
     arrowRef,

@@ -46,6 +46,26 @@ module.exports = {
               '`React.RefAttributes` is leaking string starting @types/react@18.2.61 creating invalid type contracts. Use `RefAttributes` from @fluentui/react-utilities instead',
             fixWith: 'RefAttributes',
           },
+          'JSX.IntrinsicElements': {
+            message:
+              '`JSX.IntrinsicElements` is not compatible with @types/react@>=19. To access intrinsic element keys Use `JSXIntrinsicElementKeys`, otherwise use `JSXIntrinsicElement<T>` from @fluentui/react-utilities instead',
+            suggest: ['JSXIntrinsicElementKeys', 'JSXIntrinsicElement'],
+          },
+          'React.JSX.IntrinsicElements': {
+            message:
+              '`JSX.IntrinsicElements` is not backwards compatible with @types/react@17. To access intrinsic element keys Use `JSXIntrinsicElementKeys`, otherwise use `JSXIntrinsicElement<T>` from @fluentui/react-utilities instead',
+            suggest: ['JSXIntrinsicElementKeys', 'JSXIntrinsicElement'],
+          },
+          'JSX.Element': {
+            message:
+              '`JSX.Element` is not compatible with @types/react@>=19. Use `JSXElement` from @fluentui/react-utilities instead',
+            fixWith: 'JSXElement',
+          },
+          'React.JSX.Element': {
+            message:
+              '`React.JSX.Element` is not backwards compatible with @types/react@17. Use `JSXElement` from @fluentui/react-utilities instead',
+            fixWith: 'JSXElement',
+          },
         },
       },
     ],

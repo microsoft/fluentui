@@ -18,6 +18,7 @@
   "dependencies": {
     "@fluentui/react-aria": "^9.16.2",
     "@fluentui/react-provider": "^9.22.2",
+    "@fluentui/react-utilities": "^9.23.1",
     "@fluentui/react-theme": "^9.2.0",
     "@swc/helpers": "^0.5.1"
   },

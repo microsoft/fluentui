@@ -8,6 +8,8 @@ import {
   ChartPopoverProps,
 } from '@fluentui/react-charts';
 import { Switch, tokens } from '@fluentui/react-components';
+// eslint-disable-next-line  @fluentui/no-restricted-imports
+import type { JSXElement } from '@fluentui/react-utilities';
 
 export const DonutChartCustomCallout = () => {
   const [useCustomPopover, setUseCustomPopover] = React.useState(false);
@@ -52,7 +54,7 @@ export const DonutChartCustomCallout = () => {
   const customPopover = (
     props: ChartDataPoint,
   ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element | undefined => {
+  JSXElement | undefined => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : 'Y Value';
     const xValue = props ? props.xAxisCalloutData! : 'X Value';
     const legend = props ? props.legend : 'Legend';

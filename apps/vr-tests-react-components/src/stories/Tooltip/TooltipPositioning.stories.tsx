@@ -3,6 +3,7 @@ import type { Meta } from '@storybook/react';
 import { Steps, type StoryParameters } from 'storywright';
 import { Tooltip } from '@fluentui/react-tooltip';
 import type { PositioningProps } from '@fluentui/react-positioning';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { useStyles } from './utils';
 import { getStoryVariant, TestWrapperDecorator, RTL, HIGH_CONTRAST } from '../../utilities';
 
@@ -50,7 +51,7 @@ const TooltipPositioning: React.FC = () => {
 const TooltipPositioningWithFallbacks: React.FC = () => {
   const [boundaryRef, setBoundaryRef] = React.useState<HTMLDivElement | null>(null);
 
-  const wrapWithTooltip = (content: string, element: JSX.Element, fallback: PositioningProps['fallbackPositions']) => (
+  const wrapWithTooltip = (content: string, element: JSXElement, fallback: PositioningProps['fallbackPositions']) => (
     <Tooltip
       content={content}
       relationship="label"

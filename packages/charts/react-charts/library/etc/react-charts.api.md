@@ -7,6 +7,7 @@
 /// <reference types="react" />
 
 import { CurveFactory } from 'd3-shape';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { RefObject } from 'react';
 import { SankeyGraph } from 'd3-sankey';
@@ -265,7 +266,7 @@ export interface ChartPopoverProps {
     culture?: string;
     // (undocumented)
     customCallout?: {
-        customizedCallout?: JSX.Element;
+        customizedCallout?: JSXElement;
         customCalloutProps?: ChartPopoverProps;
     };
     // (undocumented)
@@ -464,7 +465,7 @@ export interface DonutChartProps {
     legendProps?: Partial<LegendsProps>;
     // (undocumented)
     legendsOverflowText?: any;
-    onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSX.Element | undefined;
+    onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSXElement | undefined;
     parentRef?: HTMLElement | null;
     showLabelsInPercent?: boolean;
     styles?: DonutChartStyles;
@@ -839,7 +840,7 @@ export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivEl
     legendProps?: Partial<LegendsProps>;
     // (undocumented)
     legendsOverflowText?: any;
-    onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSX.Element | undefined;
+    onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSXElement | undefined;
     showLegendForSinglePointBar?: boolean;
     showTriangle?: boolean;
     styles?: HorizontalBarChartStyles;
@@ -1177,7 +1178,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     };
     getYDomainMargins?: (containerHeight: number) => Margins;
     isCalloutForStack?: boolean;
-    legendBars: JSX.Element | null;
+    legendBars: JSXElement | null;
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
     points: any;

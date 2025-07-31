@@ -4,6 +4,7 @@ import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand a
 import { Legend, LegendContainer } from '../../components/Legends/Legends.types';
 import { Legends } from '../../components/Legends/Legends';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   AccessibilityProps,
   HorizontalBarChartWithAxisDataPoint,
@@ -64,7 +65,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   let _barHeight: number = 0;
   let _colors: string[] = [];
   let _margins: Margins;
-  let _bars: JSX.Element[];
+  let _bars: JSXElement[];
   let _yAxisLabels: string[];
   let _xMax: number;
   let _calloutAnchorPoint: HorizontalBarChartWithAxisDataPoint | null;
@@ -131,7 +132,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     _margins = margins;
   }
 
-  function _renderContentForOnlyBars(point: HorizontalBarChartWithAxisDataPoint): JSX.Element {
+  function _renderContentForOnlyBars(point: HorizontalBarChartWithAxisDataPoint): JSXElement {
     const { useSingleColor = false } = props;
     let selectedPointIndex = 0;
     props.data!.forEach((yDataPoint: HorizontalBarChartWithAxisDataPoint, index: number) => {
@@ -164,7 +165,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   }
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  function _renderCallout(props?: HorizontalBarChartWithAxisDataPoint): JSX.Element | null {
+  function _renderCallout(props?: HorizontalBarChartWithAxisDataPoint): JSXElement | null {
     return props ? _renderContentForOnlyBars(props) : null;
   }
 
@@ -192,7 +193,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         ? _getScales(containerHeight, containerWidth, true)
         : _getScales(containerHeight, containerWidth, false);
     const xRange = xBarScale.range();
-    let allBars: JSX.Element[] = [];
+    let allBars: JSXElement[] = [];
     // when the chart mounts, the xRange[1] is sometimes seen to be < 0 (like -40) while xRange[0] > 0.
     if (xRange[0] < xRange[1]) {
       allBars = stackedChartData
@@ -358,7 +359,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     xBarScale: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yBarScale: any,
-  ): JSX.Element[] {
+  ): JSXElement[] {
     const { useSingleColor = false } = props;
     const sortedBars: HorizontalBarChartWithAxisDataPoint[] = [...singleBarData];
     sortedBars.sort((a, b) => {
@@ -533,7 +534,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     xBarScale: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yBarScale: any,
-  ): JSX.Element[] {
+  ): JSXElement[] {
     const { useSingleColor = false } = props;
     let prevWidthPositive = 0;
     let prevWidthNegative = 0;
@@ -642,7 +643,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     }
   }
 
-  function _getLegendData(data: HorizontalBarChartWithAxisDataPoint[]): JSX.Element {
+  function _getLegendData(data: HorizontalBarChartWithAxisDataPoint[]): JSXElement {
     const { useSingleColor } = props;
     const actions: Legend[] = [];
     const mapLegendToColor: Record<string, string> = {};
@@ -808,7 +809,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     const reversedBars = [..._points].reverse();
     _yAxisLabels = reversedBars.map((point: HorizontalBarChartWithAxisDataPoint) => point.y as string);
     _xMax = Math.max(d3Max(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.x)!, props.xMaxValue || 0);
-    const legendBars: JSX.Element = _getLegendData(_points);
+    const legendBars: JSXElement = _getLegendData(_points);
     return (
       <CartesianChart
         yAxisPadding={_yAxisPadding}
