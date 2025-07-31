@@ -2076,6 +2076,7 @@ export const getPadding = (minValue: number, maxValue: number, scale: AxisScaleT
   };
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const filterPointsForLogScale = (value: any, scale: AxisScaleType | undefined) => {
   return typeof value !== 'number' || scale !== 'log' || value > 0;
 };

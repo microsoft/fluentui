@@ -320,12 +320,12 @@ export interface ICartesianChartProps {
     parentRef?: HTMLElement | null;
     rotateXAxisLables?: boolean;
     roundedTicks?: boolean;
-    secondaryYAxisScale?: AxisScale;
     secondaryYAxistitle?: string;
     secondaryYScaleOptions?: {
         yMinValue?: number;
         yMaxValue?: number;
     };
+    secondaryYScaleType?: AxisScaleType;
     showXAxisLablesTooltip?: boolean;
     strokeWidth?: number;
     styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
@@ -341,21 +341,21 @@ export interface ICartesianChartProps {
     wrapXAxisLables?: boolean;
     xAxisAnnotation?: string;
     xAxisCategoryOrder?: AxisCategoryOrder;
-    // Warning: (ae-forgotten-export) The symbol "AxisScale" needs to be exported by the entry point index.d.ts
-    xAxisScale?: AxisScale;
     xAxisTickCount?: number;
     xAxisTickPadding?: number;
     xAxistickSize?: number;
     xAxisTitle?: string;
     xMaxValue?: number;
+    // Warning: (ae-forgotten-export) The symbol "AxisScaleType" needs to be exported by the entry point index.d.ts
+    xScaleType?: AxisScaleType;
     yAxisAnnotation?: string;
     yAxisCategoryOrder?: AxisCategoryOrder;
-    yAxisScale?: AxisScale;
     yAxisTickCount?: number;
     yAxisTickFormat?: any;
     yAxisTitle?: string;
     yMaxValue?: number;
     yMinValue?: number;
+    yScaleType?: AxisScaleType;
 }
 
 // @public
@@ -1250,7 +1250,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     createStringYAxis: (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean, barWidth: number | undefined, chartType?: ChartTypes) => ScaleBand<string>;
     // Warning: (ae-forgotten-export) The symbol "IYAxisParams" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "IAxisData" needs to be exported by the entry point index.d.ts
-    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean, supportNegativeData?: boolean, roundedTicks?: boolean, scale?: AxisScale) => ScaleLinear<number, number, never>;
+    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean, supportNegativeData?: boolean, roundedTicks?: boolean, scale?: AxisScaleType) => ScaleLinear<number, number, never>;
     culture?: string;
     customizedCallout?: any;
     datasetForXAxisDomain?: string[];

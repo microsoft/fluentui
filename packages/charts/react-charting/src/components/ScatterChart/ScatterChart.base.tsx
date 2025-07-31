@@ -278,7 +278,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       // String Axis type
       return domainRangeOfXStringAxis(domainMargins, width, isRTL);
     },
-    [],
+    [props.xScaleType],
   );
 
   const _handleFocus = React.useCallback(

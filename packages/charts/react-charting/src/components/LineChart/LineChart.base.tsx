@@ -903,7 +903,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             this._points[i].data[k].y,
           ]);
         }
-        console.log(line(lineData));
 
         if (isLegendSelected) {
           const lineBorderWidth = this._points[i].lineOptions?.lineBorderWidth
