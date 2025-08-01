@@ -15,6 +15,8 @@ import {
   scaleTime as d3ScaleTime,
   scaleLog as d3ScaleLog,
   NumberValue,
+  ScaleContinuousNumeric,
+  ScaleTime,
 } from 'd3-scale';
 import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
@@ -54,7 +56,7 @@ import {
   AxisCategoryOrder,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
-import { getId, ITheme } from '@fluentui/react';
+import { getId, getRTL, ITheme } from '@fluentui/react';
 import {
   CurveFactory,
   curveLinear as d3CurveLinear,
@@ -69,6 +71,7 @@ import {
   formatToLocaleString,
   getMultiLevelDateTimeFormatOptions,
   handleFloatingPointPrecisionError,
+  isInvalidValue,
 } from '@fluentui/chart-utilities';
 import { getColorContrast } from './colors';
 
@@ -231,7 +234,7 @@ export function createNumericXAxis(
   tickParams: ITickParams,
   chartType: ChartTypes,
   culture?: string,
-  scale?: AxisScaleType,
+  scaleType?: AxisScaleType,
 ) {
   const {
     domainNRangeValues,
@@ -243,7 +246,7 @@ export function createNumericXAxis(
     hideTickOverlap,
     calcMaxLabelWidth,
   } = xAxisParams;
-  const xAxisScale = createNumericScale(scale)
+  const xAxisScale = createNumericScale(scaleType)
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   showRoundOffXTickValues && xAxisScale.nice();
@@ -664,7 +667,7 @@ export function createNumericYAxis(
   useSecondaryYScale: boolean = false,
   supportNegativeData: boolean = false,
   roundedTicks: boolean = false,
-  scale?: AxisScaleType,
+  scaleType?: AxisScaleType,
 ) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -693,7 +696,7 @@ export function createNumericYAxis(
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
   let scaleDomain = [supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]];
 
-  if (scale === 'log') {
+  if (scaleType === 'log') {
     let domainStart = yMinMaxValues.startValue;
     let domainEnd = yMinMaxValues.endValue;
     if (yMinValue > 0) {
@@ -705,13 +708,13 @@ export function createNumericYAxis(
     scaleDomain = [domainStart, domainEnd];
   }
 
-  const yAxisScale = createNumericScale(scale)
+  const yAxisScale = createNumericScale(scaleType)
     .domain(scaleDomain)
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).tickSizeInner(-(containerWidth - margins.left! - margins.right!));
-  if (scale !== 'log') {
+  if (scaleType !== 'log') {
     yAxis.tickValues(domainValues);
   }
 
@@ -1170,23 +1173,21 @@ export function getXAxisType(points: ILineChartPoints[]): boolean {
  * @returns {IDomainNRange}
  */
 export function domainRangeOfNumericForAreaChart(
-  points: ILineChartPoints[],
+  points: ILineChartPoints[] | IScatterChartPoints[],
   margins: IMargins,
   width: number,
   isRTL: boolean,
-  scale?: AxisScaleType,
+  scaleType?: AxisScaleType,
+  hasMarkersMode?: boolean,
 ): IDomainNRange {
   const isScatterPolar = isScatterPolarSeries(points);
-  const filterPoints = (item: ILineChartDataPoint) => filterPointsForLogScale(item.x, scale);
-  const xMin = d3Min(points, (point: ILineChartPoints) => {
-    return d3Min(point.data.filter(filterPoints), (item: ILineChartDataPoint) => item.x as number)!;
-  })!;
+  let [xMin, xMax] = getScatterXDomainExtent(points, scaleType) as [number, number];
 
-  const xMax = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data.filter(filterPoints), (item: ILineChartDataPoint) => {
-      return item.x as number;
-    });
-  })!;
+  if (hasMarkersMode) {
+    const xPadding = getDomainPaddingForMarkers(xMin, xMax, scaleType);
+    xMin = xMin - xPadding.start;
+    xMax = xMax + xPadding.end;
+  }
 
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;
@@ -1337,35 +1338,31 @@ export function domainRangeOfVSBCNumeric(
  * @returns {IDomainNRange}
  */
 export function domainRangeOfDateForAreaLineVerticalBarChart(
-  points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[],
+  points: ILineChartPoints[] | IScatterChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[],
   margins: IMargins,
   width: number,
   isRTL: boolean,
   tickValues: Date[] = [],
   chartType: ChartTypes,
   barWidth?: number,
+  hasMarkersMode?: boolean,
 ): IDomainNRange {
   let sDate: Date;
   let lDate: Date;
-  if (chartType === ChartTypes.AreaChart || chartType === ChartTypes.LineChart) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    sDate = d3Min(points, (point: any) => {
-      return d3Min(point.data, (item: ILineChartDataPoint) => {
-        return item.x as Date;
-      });
-    })!;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    lDate = d3Max(points, (point: any) => {
-      return d3Max(point.data, (item: ILineChartDataPoint) => {
-        return item.x as Date;
-      });
-    })!;
+  if ([ChartTypes.AreaChart, ChartTypes.LineChart, ChartTypes.ScatterChart].includes(chartType)) {
+    [sDate, lDate] = getScatterXDomainExtent(points as ILineChartPoints[]) as [Date, Date];
     // Need to draw graph with given small and large date
     // (Which Involves customization of date axis tick values)
     // That may be Either from given graph data or from prop 'tickValues' date values.
     // So, Finding smallest and largest dates
     sDate = d3Min([...tickValues, sDate])!;
     lDate = d3Max([...tickValues, lDate])!;
+
+    if (hasMarkersMode || chartType === ChartTypes.ScatterChart) {
+      const xPadding = getDomainPaddingForMarkers(sDate.getTime(), lDate.getTime());
+      sDate = new Date(sDate.getTime() - xPadding.start);
+      lDate = new Date(lDate.getTime() + xPadding.end);
+    }
   } else {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     sDate = d3Min(points as any[], point => point.x as Date)!;
@@ -1417,13 +1414,13 @@ export function findNumericMinMaxOfY(
   points: ILineChartPoints[] | IScatterChartPoints[],
   yAxisType?: YAxisType,
   useSecondaryYScale?: boolean,
-  scale?: AxisScaleType,
+  scaleType?: AxisScaleType,
 ): { startValue: number; endValue: number } {
   const values: number[] = [];
   points.forEach(point => {
     if (!useSecondaryYScale === !point.useSecondaryYScale) {
       point.data.forEach(data => {
-        if (filterPointsForLogScale(data.y, scale)) {
+        if (isValidDomainValue(data.y, scaleType)) {
           values.push(data.y);
         }
       });
@@ -1843,100 +1840,6 @@ export function getCurveFactory(
   }
 }
 
-/**
- * Calculates Domain and range values for Date X axis for scatter chart.
- * @export
- * @param {LineChartPoints[]} points
- * @param {IMargins} margins
- * @param {number} width
- * @param {boolean} isRTL
- * @param {Date[] | number[]} tickValues
- * @returns {IDomainNRange}
- */
-export function domainRangeOfDateForScatterChart(
-  points: IScatterChartPoints[],
-  margins: IMargins,
-  width: number,
-  isRTL: boolean,
-  tickValues: Date[] = [],
-  scale?: AxisScaleType,
-): IDomainNRange {
-  let sDate: Date;
-  let lDate: Date;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  sDate = d3Min(points, (point: any) => {
-    return d3Min(point.data, (item: ILineChartDataPoint) => {
-      return item.x as Date;
-    });
-  })!;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  lDate = d3Max(points, (point: any) => {
-    return d3Max(point.data, (item: ILineChartDataPoint) => {
-      return item.x as Date;
-    });
-  })!;
-
-  const xPadding = getPadding(sDate.getTime(), lDate.getTime(), scale);
-  sDate = new Date(sDate.getTime() - xPadding.start);
-  lDate = new Date(lDate.getTime() + xPadding.end);
-  // Need to draw graph with given small and large date
-  // (Which Involves customization of date axis tick values)
-  // That may be Either from given graph data or from prop 'tickValues' date values.
-  // So, Finding smallest and largest dates
-  sDate = d3Min([...tickValues, sDate])!;
-  lDate = d3Max([...tickValues, lDate])!;
-
-  const rStartValue = margins.left!;
-  const rEndValue = width - margins.right!;
-
-  return isRTL
-    ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
-    : { dStartValue: sDate, dEndValue: lDate, rStartValue, rEndValue };
-}
-
-/**
- * Calculates Domain and range values for Numeric X axis for scatter chart.
- * @export
- * @param {LineChartPoints[]} points
- * @param {IMargins} margins
- * @param {number} width
- * @param {boolean} isRTL
- * @returns {IDomainNRange}
- */
-export function domainRangeOfNumericForScatterChart(
-  points: IScatterChartPoints[],
-  margins: IMargins,
-  width: number,
-  isRTL: boolean,
-  scale?: AxisScaleType,
-): IDomainNRange {
-  const isScatterPolar = isScatterPolarSeries(points);
-  const filterPoints = (item: IScatterChartDataPoint) => filterPointsForLogScale(item.x, scale);
-  let xMin = d3Min(points, (point: ILineChartPoints) => {
-    return d3Min(
-      point.data.filter(filterPoints) as IScatterChartDataPoint[],
-      (item: IScatterChartDataPoint) => item.x as number,
-    )!;
-  })!;
-
-  let xMax = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data.filter(filterPoints) as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
-      return item.x as number;
-    });
-  })!;
-
-  const xPadding = getPadding(xMin, xMax, scale);
-  xMin = xMin - xPadding.start;
-  xMax = xMax + xPadding.end;
-
-  const rStartValue = margins.left!;
-  const rEndValue = width - margins.right!;
-
-  return isRTL
-    ? { dStartValue: isScatterPolar ? 1 : xMax, dEndValue: isScatterPolar ? -1 : xMin, rStartValue, rEndValue }
-    : { dStartValue: isScatterPolar ? -1 : xMin, dEndValue: isScatterPolar ? 1 : xMax, rStartValue, rEndValue };
-}
-
 export const truncateString = (str: string, maxLength: number, ellipsis = '...'): string => {
   if (str.length <= maxLength) {
     return str;
@@ -2053,30 +1956,102 @@ export function isTextMode(points: (ILineChartPoints | IScatterChartPoints)[]): 
   );
 }
 
-const createNumericScale = (type: AxisScaleType | undefined) => {
-  if (type === 'log') {
+// TODO: Refactor to encapsulate the complete numeric scale creation logic here, including setting domain and range.
+const createNumericScale = (scaleType?: AxisScaleType) => {
+  if (scaleType === 'log') {
     return d3ScaleLog();
   } else {
     return d3ScaleLinear();
   }
 };
 
-export const getPadding = (minValue: number, maxValue: number, scale: AxisScaleType | undefined) => {
-  if (scale === 'log') {
+export const getDomainPaddingForMarkers = (minVal: number, maxVal: number, scaleType?: AxisScaleType) => {
+  if (scaleType === 'log') {
     return {
-      start: minValue * 0.5,
-      end: maxValue,
+      start: minVal * 0.5,
+      end: maxVal,
     };
   }
 
-  const defaultPadding = (maxValue - minValue) * 0.1;
+  const defaultPadding = (maxVal - minVal) * 0.1;
   return {
     start: defaultPadding,
     end: defaultPadding,
   };
 };
 
+/**
+ * Determines whether a value is valid for inclusion in the scale domain.
+ * For log scales, ensures the value is strictly positive to prevent undefined scale behavior.
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const filterPointsForLogScale = (value: any, scale: AxisScaleType | undefined) => {
-  return typeof value !== 'number' || scale !== 'log' || value > 0;
+export const isValidDomainValue = (value: any, scaleType?: AxisScaleType) => {
+  return typeof value !== 'number' || scaleType !== 'log' || value > 0;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const isPlottable = (x: any, y: any) => {
+  return !isInvalidValue(x) && !isInvalidValue(y);
+};
+
+export const getScatterXDomainExtent = (
+  points: ILineChartPoints[] | IScatterChartPoints[],
+  scaleType?: AxisScaleType,
+) => {
+  const isValidDataPointForScale = (item: ILineChartDataPoint | IScatterChartDataPoint) =>
+    isValidDomainValue(item.x, scaleType);
+
+  let xMin = d3Min(points, point => {
+    return d3Min(point.data.filter(isValidDataPointForScale), item => item.x as number | Date)!;
+  })!;
+
+  let xMax = d3Max(points, point => {
+    return d3Max(point.data.filter(isValidDataPointForScale), item => {
+      return item.x as number | Date;
+    });
+  })!;
+
+  return [xMin, xMax];
+};
+
+export const getRangeForScatterMarkerSize = ({
+  data,
+  xScale,
+  yScalePrimary,
+  yScaleSecondary,
+  useSecondaryYScale,
+  xScaleType,
+  yScaleType,
+  secondaryYScaleType,
+}: {
+  data: ILineChartPoints[] | IScatterChartPoints[];
+  xScale: ScaleContinuousNumeric<number, number> | ScaleTime<number, number>;
+  yScalePrimary: ScaleContinuousNumeric<number, number>;
+  yScaleSecondary?: ScaleContinuousNumeric<number, number>;
+  useSecondaryYScale?: boolean;
+  xScaleType?: AxisScaleType;
+  yScaleType?: AxisScaleType;
+  secondaryYScaleType?: AxisScaleType;
+}): number => {
+  const [xMin, xMax] = getScatterXDomainExtent(data, xScaleType);
+  let scaleXMin: number | Date;
+  let scaleXMax: number | Date;
+  if (getRTL()) {
+    [scaleXMax, scaleXMin] = xScale.domain();
+  } else {
+    [scaleXMin, scaleXMax] = xScale.domain();
+  }
+  const extraXPixels = Math.min(Math.abs(xScale(xMin) - xScale(scaleXMin)), Math.abs(xScale(scaleXMax) - xScale(xMax)));
+
+  const { startValue: yMin, endValue: yMax } = findNumericMinMaxOfY(
+    data,
+    undefined,
+    useSecondaryYScale,
+    useSecondaryYScale ? secondaryYScaleType : yScaleType,
+  );
+  const yScale = (useSecondaryYScale ? yScaleSecondary : yScalePrimary)!;
+  const [scaleYMin, scaleYMax] = yScale.domain();
+  const extraYPixels = Math.min(Math.abs(yScale(scaleYMin) - yScale(yMin)), Math.abs(yScale(yMax) - yScale(scaleYMax)));
+
+  return Math.min(extraXPixels, extraYPixels);
 };

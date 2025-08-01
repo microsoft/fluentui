@@ -3,20 +3,21 @@ import { IChildProps, IScatterChartStyleProps, IScatterChartStyles, IScatterChar
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
-import { max as d3Max, min as d3Min } from 'd3-array';
+import { max as d3Max } from 'd3-array';
 import {
   areArraysEqual,
   createNumericYAxis,
   createStringYAxis,
-  domainRangeOfDateForScatterChart,
-  domainRangeOfNumericForScatterChart,
   domainRangeOfXStringAxis,
-  filterPointsForLogScale,
   findNumericMinMaxOfY,
-  getPadding,
+  getDomainPaddingForMarkers,
   isScatterPolarSeries,
   isTextMode,
   YAxisType,
+  isPlottable,
+  getRangeForScatterMarkerSize,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfNumericForAreaChart,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -264,15 +265,15 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       tickValues: number[] | Date[] | string[] | undefined,
     ) => {
       if (xAxisType === XAxisTypes.NumericAxis) {
-        return domainRangeOfNumericForScatterChart(points, domainMargins, width, isRTL, props.xScaleType);
+        return domainRangeOfNumericForAreaChart(points, domainMargins, width, isRTL, props.xScaleType, true);
       } else if (xAxisType === XAxisTypes.DateAxis) {
-        return domainRangeOfDateForScatterChart(
+        return domainRangeOfDateForAreaLineVerticalBarChart(
           points,
           domainMargins,
           width,
           isRTL,
           tickValues! as Date[],
-          props.xScaleType,
+          _chartType,
         );
       }
       // String Axis type
@@ -407,48 +408,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     [_points, props.culture, props.useUTC],
   );
 
-  function _getRangeForScatterMarkerSize(): number {
-    const filterXPoints = (item: IScatterChartDataPoint) => filterPointsForLogScale(item.x, props.xScaleType);
-    const xMin = d3Min(_points.current, (point: IScatterChartPoints) =>
-      d3Min(
-        point.data.filter(filterXPoints) as IScatterChartDataPoint[],
-        (item: IScatterChartDataPoint) => item.x as number,
-      ),
-    )!;
-    const xMax = d3Max(_points.current, (point: IScatterChartPoints) =>
-      d3Max(
-        point.data.filter(filterXPoints) as IScatterChartDataPoint[],
-        (item: IScatterChartDataPoint) => item.x as number,
-      ),
-    )!;
-    let scaleXMin: number;
-    let scaleXMax: number;
-    if (getRTL()) {
-      [scaleXMax, scaleXMin] = _xAxisScale.current.domain();
-    } else {
-      [scaleXMin, scaleXMax] = _xAxisScale.current.domain();
-    }
-    const xPadding = { start: xMin - scaleXMin, end: scaleXMax - xMax };
-    const extraXPixels = Math.min(
-      Math.abs(_xAxisScale.current(xMin + xPadding.start) - _xAxisScale.current(xMin)),
-      Math.abs(_xAxisScale.current(xMax) - _xAxisScale.current(xMax - xPadding.end)),
-    );
-
-    const { startValue: yMin, endValue: yMax } = findNumericMinMaxOfY(
-      _points.current,
-      undefined,
-      undefined,
-      props.yScaleType,
-    );
-    const [scaleYMin, scaleYMax] = _yAxisScale.current.domain();
-    const yPadding = { start: yMin - scaleYMin, end: scaleYMax - yMax };
-    const extraYPixels = Math.min(
-      _yAxisScale.current(yMin) - _yAxisScale.current(yMin + yPadding.start),
-      _yAxisScale.current(yMax - yPadding.end) - _yAxisScale.current(yMax),
-    );
-    return Math.min(extraXPixels, extraYPixels);
-  }
-
   const _createPlot = React.useCallback(
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     (xElement: SVGElement, containerHeight: number): JSX.Element[] => {
@@ -469,7 +428,16 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           return item.markerSize as number;
         });
       })!;
-      const extraMaxPixels = _xAxisType !== XAxisTypes.StringAxis ? _getRangeForScatterMarkerSize() : 0;
+      const extraMaxPixels =
+        _xAxisType !== XAxisTypes.StringAxis
+          ? getRangeForScatterMarkerSize({
+              data: _points.current,
+              xScale: _xAxisScale.current,
+              yScalePrimary: _yAxisScale.current,
+              xScaleType: props.xScaleType,
+              yScaleType: props.yScaleType,
+            })
+          : 0;
 
       for (let i = _points.current?.length - 1; i >= 0; i--) {
         // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -483,7 +451,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           const { x, y, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points.current?.[i]?.data[j];
           const xPoint = _xAxisScale.current?.(x);
           const yPoint = _yAxisScale.current?.(y);
-          if (!Number.isFinite(xPoint) || !Number.isFinite(yPoint)) {
+          if (!isPlottable(xPoint, yPoint)) {
             continue;
           }
 
@@ -680,27 +648,17 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     setCalloutVisible(false);
   }
 
-  function _getNumericMinMaxOfY(
-    points: IScatterChartPoints[],
-    yAxisType?: YAxisType,
-  ): { startValue: number; endValue: number } {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType, undefined, props.yScaleType);
-    const yPadding = getPadding(startValue, endValue, props.yScaleType);
+  const _getNumericMinMaxOfY = React.useCallback(
+    (points: IScatterChartPoints[], yAxisType?: YAxisType): { startValue: number; endValue: number } => {
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType, undefined, props.yScaleType);
+      const yPadding = getDomainPaddingForMarkers(startValue, endValue, props.yScaleType);
 
-    return {
-      startValue: startValue - yPadding.start,
-      endValue: endValue + yPadding.end,
-    };
-  }
-
-  const _getMinMaxofXAxis = React.useCallback(
-    (
-      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-      points: any,
-      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-      yAxisType: any,
-    ) => _getNumericMinMaxOfY(points as IScatterChartPoints[], yAxisType),
+      return {
+        startValue: startValue - yPadding.start,
+        endValue: endValue + yPadding.end,
+      };
+    },
     [],
   );
 
@@ -763,7 +721,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       tickParams={tickParams}
       legendBars={legendBars}
       getmargins={_getMargins}
-      getMinMaxOfYAxis={_getMinMaxofXAxis}
+      getMinMaxOfYAxis={_getNumericMinMaxOfY}
       getDomainNRangeValues={getDomainNRangeValuesScatterChart}
       createYAxis={createNumericYAxis}
       createStringYAxis={createStringYAxis}

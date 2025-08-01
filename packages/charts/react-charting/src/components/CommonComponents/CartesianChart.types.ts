@@ -17,7 +17,7 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartPoints,
   IMargins,
-  IScatterChartDataPoint,
+  IScatterChartPoints,
   IVerticalBarChartDataPoint,
   IVerticalStackedBarDataPoint,
 } from '../../types/index';
@@ -740,7 +740,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
       | IHorizontalBarChartWithAxisDataPoint[]
       | IVerticalBarChartDataPoint[]
       | IDataPoint[]
-      | IScatterChartDataPoint[]
+      | IScatterChartPoints[]
       | IGanttChartDataPoint[],
     yAxisType: YAxisType | undefined,
     useSecondaryYScale?: boolean,

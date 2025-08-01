@@ -4,7 +4,7 @@ import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { line as d3Line } from 'd3-shape';
-import { max as d3Max, min as d3Min } from 'd3-array';
+import { max as d3Max } from 'd3-array';
 import {
   classNamesFunction,
   getId,
@@ -54,8 +54,9 @@ import {
   getCurveFactory,
   YAxisType,
   isScatterPolarSeries,
-  filterPointsForLogScale,
-  getPadding,
+  getDomainPaddingForMarkers,
+  isPlottable,
+  getRangeForScatterMarkerSize,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
@@ -207,8 +208,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _isRTL: boolean = getRTL();
   private _cartesianChartRef: React.RefObject<IChart>;
   private _legendsRef: React.RefObject<ILegendContainer>;
-  private _xMin: number = Number.NEGATIVE_INFINITY;
-  private _xMax: number = Number.POSITIVE_INFINITY;
   private _yScaleSecondary: ScaleLinear<number, number> | undefined;
   private _hasMarkersMode: boolean = false;
   private _isXAxisDateType: boolean = false;
@@ -429,20 +428,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
-    if (this._hasMarkersMode && xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = this._getDomainNRangeValuesWithPadding(points, margins, width, isRTL);
-    } else if (this._hasMarkersMode && xAxisType === XAxisTypes.DateAxis) {
-      domainNRangeValue = this._getDomainNRangeValuesOfDateWithPadding(
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfNumericForAreaChart(
         points,
         margins,
         width,
         isRTL,
-        tickValues! as Date[],
-        chartType,
-        barWidth,
+        this.props.xScaleType,
+        this._hasMarkersMode,
       );
-    } else if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL, this.props.xScaleType);
     } else if (xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
         points,
@@ -452,6 +446,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         tickValues! as Date[],
         chartType,
         barWidth,
+        this._hasMarkersMode,
       );
     } else {
       domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
@@ -516,7 +511,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     );
     let yPadding = { start: 0, end: 0 };
     if (this._hasMarkersMode) {
-      yPadding = getPadding(
+      yPadding = getDomainPaddingForMarkers(
         startValue,
         endValue,
         useSecondaryYScale ? this.props.secondaryYScaleType : this.props.yScaleType,
@@ -719,36 +714,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       }
     }
   };
-  private _getRangeForScatterMarkerSize(useSecondaryYScale: boolean): number {
-    let scaleXMin: number;
-    let scaleXMax: number;
-    if (getRTL()) {
-      [scaleXMax, scaleXMin] = this._xAxisScale.domain();
-    } else {
-      [scaleXMin, scaleXMax] = this._xAxisScale.domain();
-    }
-    const xPadding = { start: this._xMin - scaleXMin, end: scaleXMax - this._xMax };
-    const extraXPixels = Math.min(
-      Math.abs(this._xAxisScale(this._xMin + xPadding.start) - this._xAxisScale(this._xMin)),
-      Math.abs(this._xAxisScale(this._xMax) - this._xAxisScale(this._xMax - xPadding.end)),
-    );
-
-    const { startValue: yMin, endValue: yMax } = findNumericMinMaxOfY(
-      this._points,
-      undefined,
-      useSecondaryYScale,
-      useSecondaryYScale ? this.props.secondaryYScaleType : this.props.yScaleType,
-    );
-    const yScale = useSecondaryYScale ? this._yScaleSecondary : this._yScalePrimary;
-    const [scaleYMin, scaleYMax] = yScale.domain();
-    const yPadding = { start: yMin - scaleYMin, end: scaleYMax - yMax };
-    const extraYPixels = Math.min(
-      yScale(yMin) - yScale(yMin + yPadding.start),
-      yScale(yMax - yPadding.end) - yScale(yMax),
-    );
-
-    return Math.min(extraXPixels, extraYPixels);
-  }
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -783,13 +748,24 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const verticaLineHeight = containerHeight - this.margins.bottom! + 6;
       const useSecondaryYScale = !!(this._points[i].useSecondaryYScale && this._yScaleSecondary);
       const yScale = useSecondaryYScale ? this._yScaleSecondary : this._yScalePrimary;
-      const extraMaxPixels = this._hasMarkersMode ? this._getRangeForScatterMarkerSize(useSecondaryYScale) : 0;
+      const extraMaxPixels = this._hasMarkersMode
+        ? getRangeForScatterMarkerSize({
+            data: this._points,
+            xScale: this._xAxisScale,
+            yScalePrimary: this._yScalePrimary,
+            yScaleSecondary: this._yScaleSecondary,
+            useSecondaryYScale,
+            xScaleType: this.props.xScaleType,
+            yScaleType: this.props.yScaleType,
+            secondaryYScaleType: this.props.secondaryYScaleType,
+          })
+        : 0;
 
       if (this._points[i].data.length === 1) {
         const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = this._points[i].data[0];
         const xPoint = this._xAxisScale(x1);
         const yPoint = yScale(y1);
-        if (Number.isFinite(xPoint) && Number.isFinite(yPoint)) {
+        if (isPlottable(xPoint, yPoint)) {
           const circleId = `${this._circleId}_${i}`;
           const isLegendSelected: boolean =
             this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
@@ -884,7 +860,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .y((d: any) => yScale(d[1]))
           .curve(getCurveFactory(lineCurve))
-          .defined(d => !isNaN(this._xAxisScale(d[0])) && !isNaN(yScale(d[1])));
+          .defined(d => isPlottable(this._xAxisScale(d[0]), yScale(d[1])));
 
         const lineId = `${this._lineId}_${i}`;
         const borderId = `${this._borderId}_${i}`;
@@ -1000,7 +976,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           const supportsTextMode = this._points[i].lineOptions?.mode?.includes('text');
           const text = this._points[i].data[j - 1].text;
           let currentMarkerSize = this._points[i].data[j - 1].markerSize!;
-          if (!isNaN(xPoint1) && !isNaN(yPoint1)) {
+          if (isPlottable(xPoint1, yPoint1)) {
             const path = this._getPath(xPoint1, yPoint1, circleId, j, false, this._points[i].index);
             pointsForLine.push(
               this._points[i].lineOptions?.mode?.includes('markers') || supportsTextMode ? (
@@ -1123,7 +1099,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             currentMarkerSize = this._points[i].data[j].markerSize!;
             const lastSupportsTextMode = this._points[i].lineOptions?.mode?.includes('text');
             const lastText = this._points[i].data[j].text;
-            if (!isNaN(xPoint2) && !isNaN(yPoint2)) {
+            if (isPlottable(xPoint2, yPoint2)) {
               const path = this._getPath(xPoint2, yPoint2, lastCircleId, j, true, this._points[i].index);
               pointsForLine.push(
                 <React.Fragment key={`${lastCircleId}_container`}>
@@ -1289,10 +1265,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           }
 
           if (
-            !isNaN(xPoint1) &&
-            !isNaN(yPoint1) &&
-            !isNaN(xPoint2) &&
-            !isNaN(yPoint2) &&
+            isPlottable(xPoint1, yPoint1) &&
+            isPlottable(xPoint2, yPoint2) &&
             (!this._hasMarkersMode || this._points[i].lineOptions?.mode?.includes('lines'))
           ) {
             if (isLegendSelected) {
@@ -1897,82 +1871,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
 
-  private _getDomainNRangeValuesOfDateWithPadding = (
-    points: ILineChartPoints[],
-    margins: IMargins,
-    width: number,
-    isRTL: boolean,
-    tickValues: Date[] = [],
-    chartType: ChartTypes,
-    barWidth?: number,
-  ): IDomainNRange => {
-    this._setXMinMaxValues(points);
-    // Include tickValues if present
-    const sDate =
-      tickValues && tickValues.length > 0
-        ? (d3Min([...tickValues, new Date(this._xMin)])! as Date)
-        : new Date(this._xMin);
-    const lDate =
-      tickValues && tickValues.length > 0
-        ? (d3Max([...tickValues, new Date(this._xMax)])! as Date)
-        : new Date(this._xMax);
-
-    // Calculate time-based padding (e.g. 10% of the date range)
-    const datePadding = this._hasMarkersMode
-      ? getPadding(sDate.getTime(), lDate.getTime(), this.props.xScaleType)
-      : { start: 0, end: 0 };
-
-    const paddedSDate = new Date(sDate.getTime() - datePadding.start);
-    const paddedLDate = new Date(lDate.getTime() + datePadding.end);
-
-    const rStartValue = margins.left!;
-    const rEndValue = width - margins.right!;
-
-    return isRTL
-      ? {
-          dStartValue: paddedLDate,
-          dEndValue: paddedSDate,
-          rStartValue,
-          rEndValue,
-        }
-      : {
-          dStartValue: paddedSDate,
-          dEndValue: paddedLDate,
-          rStartValue,
-          rEndValue,
-        };
-  };
-
-  private _getDomainNRangeValuesWithPadding = (
-    points: ILineChartPoints[],
-    margins: IMargins,
-    width: number,
-    isRTL: boolean,
-  ): IDomainNRange => {
-    this._setXMinMaxValues(points);
-
-    let xPadding = { start: 0, end: 0 };
-    if (this._hasMarkersMode) {
-      xPadding = getPadding(this._xMin, this._xMax, this.props.xScaleType);
-    }
-    const rStartValue = margins.left!;
-    const rEndValue = width - margins.right!;
-
-    return isRTL
-      ? {
-          dStartValue: this._xMax + xPadding.end,
-          dEndValue: this._xMin - xPadding.start,
-          rStartValue,
-          rEndValue,
-        }
-      : {
-          dStartValue: this._xMin - xPadding.start,
-          dEndValue: this._xMax + xPadding.end,
-          rStartValue,
-          rEndValue,
-        };
-  };
-
   private _isChartEmpty(): boolean {
     return !(
       this.props.data &&
@@ -1985,22 +1883,5 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _getChartTitle = (): string => {
     const { chartTitle, lineChartData } = this.props.data;
     return (chartTitle ? `${chartTitle}. ` : '') + `Line chart with ${lineChartData?.length || 0} lines. `;
-  };
-
-  private _setXMinMaxValues = (points: ILineChartPoints[]) => {
-    const getX = (item: ILineChartDataPoint) => (this._isXAxisDateType ? (item.x as Date) : (item.x as number));
-    const filterPoints = (item: ILineChartDataPoint) => filterPointsForLogScale(item.x, this.props.xScaleType);
-
-    const minVal = d3Min(points, (point: ILineChartPoints) =>
-      d3Min(point.data.filter(filterPoints) as ILineChartDataPoint[], getX),
-    );
-    const maxVal = d3Max(points, (point: ILineChartPoints) =>
-      d3Max(point.data.filter(filterPoints) as ILineChartDataPoint[], getX),
-    );
-
-    this._xMin = this._isXAxisDateType ? (minVal as Date).getTime() : (minVal as number);
-    this._xMax = this._isXAxisDateType ? (maxVal as Date).getTime() : (maxVal as number);
-    this._xMin = this._xMin === Number.NEGATIVE_INFINITY || !this._xMin ? 0 : this._xMin;
-    this._xMax = this._xMax === Number.POSITIVE_INFINITY || !this._xMax ? 0 : this._xMax;
   };
 }
