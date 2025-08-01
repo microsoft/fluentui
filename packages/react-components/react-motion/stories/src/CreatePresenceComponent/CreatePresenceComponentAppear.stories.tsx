@@ -74,7 +74,7 @@ const Fade = createPresenceComponent({
 
 export const CreatePresenceComponentAppear = () => {
   const classes = useClasses();
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [isMounted, setIsMounted] = React.useState<boolean>(false);

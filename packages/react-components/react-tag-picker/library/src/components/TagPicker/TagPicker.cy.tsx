@@ -15,11 +15,9 @@ import { Button } from '@fluentui/react-button';
 
 import 'cypress-real-events';
 import { tagPickerControlClassNames } from '../TagPickerControl/useTagPickerControlStyles.styles';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mount = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

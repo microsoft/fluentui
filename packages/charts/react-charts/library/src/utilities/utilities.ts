@@ -17,6 +17,7 @@ import {
 } from 'd3-scale';
 import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   TimeLocaleObject as d3TimeLocaleObject,
   timeFormat as d3TimeFormat,
@@ -1849,7 +1850,7 @@ export const HighContrastSelectorBlack =
  * @public
  */
 export interface RenderFunction<P> {
-  (props?: P, defaultRender?: (props?: P) => JSX.Element | null): JSX.Element | null;
+  (props?: P, defaultRender?: (props?: P) => JSXElement | null): JSXElement | null;
 }
 
 export const formatDate = (date: Date, useUTC?: string | boolean) => {
@@ -1986,4 +1987,56 @@ export const sortAxisCategories = (
   }
 
   return Object.keys(categoryToValues);
+};
+
+export function copyStyle(properties: string[] | Record<string, string>, fromEl: Element, toEl: Element) {
+  const styles = getComputedStyle(fromEl);
+  if (Array.isArray(properties)) {
+    properties.forEach(prop => {
+      d3Select(toEl).style(prop, styles.getPropertyValue(prop));
+    });
+  } else {
+    Object.entries(properties).forEach(([fromProp, toProp]) => {
+      d3Select(toEl).style(toProp, styles.getPropertyValue(fromProp));
+    });
+  }
+}
+
+let measurementSpanCounter = 0;
+function getUniqueMeasurementSpanId() {
+  measurementSpanCounter++;
+  return `measurement_span_${measurementSpanCounter}`;
+}
+
+const MEASUREMENT_SPAN_STYLE = {
+  position: 'absolute',
+  visibility: 'hidden',
+  top: '-20000px',
+  left: 0,
+  padding: 0,
+  margin: 0,
+  border: 'none',
+  whiteSpace: 'pre',
+};
+
+export const createMeasurementSpan = (text: string | number, className: string, parentElement?: HTMLElement | null) => {
+  const MEASUREMENT_SPAN_ID = getUniqueMeasurementSpanId();
+  let measurementSpan = document.getElementById(MEASUREMENT_SPAN_ID);
+  if (!measurementSpan) {
+    measurementSpan = document.createElement('span');
+    measurementSpan.setAttribute('id', MEASUREMENT_SPAN_ID);
+    measurementSpan.setAttribute('aria-hidden', 'true');
+
+    if (parentElement) {
+      parentElement.appendChild(measurementSpan);
+    } else {
+      document.body.appendChild(measurementSpan);
+    }
+  }
+
+  measurementSpan.setAttribute('class', className);
+  Object.assign(measurementSpan.style, MEASUREMENT_SPAN_STYLE);
+  measurementSpan.textContent = `${text}`;
+
+  return measurementSpan;
 };

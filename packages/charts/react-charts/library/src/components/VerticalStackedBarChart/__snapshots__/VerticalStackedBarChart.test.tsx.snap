@@ -377,31 +377,31 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             cx="279"
             cy="141.8"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="327"
             cy="143.9"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
         </g>
       </svg>
@@ -880,31 +880,31 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             cx="279"
             cy="141.8"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="327"
             cy="143.9"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
         </g>
       </svg>
@@ -2581,21 +2581,21 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             cx="56"
             cy="194.3269230769231"
             fill="var(--colorNeutralBackground1)"
+            opacity="1"
             r="8"
             stroke="yellow"
             stroke-width="3"
             transform="translate(0, 0)"
-            visibility="visibility"
           />
           <circle
             cx="614"
             cy="123.65384615384616"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="yellow"
             stroke-width="3"
             transform="translate(0, 0)"
-            visibility="hidden"
           />
         </g>
       </svg>
