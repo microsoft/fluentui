@@ -5,7 +5,7 @@ import { Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 
-import { useId } from '@fluentui/react-utilities';
+import { useId, JSXElement } from '@fluentui/react-utilities';
 import {
   ChartTypes,
   IAxisData,
@@ -75,7 +75,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _xAxisLabels: string[] = [];
   let _datasetForBars: any[] = [];
   let _margins: Margins = { top: 0, right: 0, bottom: 0, left: 0 };
-  let _groupedVerticalBarGraph: JSX.Element[] = [];
+  let _groupedVerticalBarGraph: JSXElement[] = [];
   let _yMax: number = 0;
   let _calloutAnchorPoint: GVBarChartSeriesPoint | null = null;
   let _barWidth: number = 0;
@@ -190,7 +190,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const _getLegendData = (points: GroupedVerticalBarChartData[]): JSX.Element => {
+  const _getLegendData = (points: GroupedVerticalBarChartData[]): JSXElement => {
     const actions: Legend[] = [];
 
     _legends.forEach((legendTitle: string) => {
@@ -253,7 +253,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   _xAxisLabels = xAxisLabels;
   _datasetForBars = datasetForBars;
   const _xAxisType: XAxisTypes = getTypeOfAxis(points![0].name, true) as XAxisTypes;
-  const legendBars: JSX.Element = _getLegendData(points);
+  const legendBars: JSXElement = _getLegendData(points);
   _adjustProps();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Add commentMore actions
@@ -337,7 +337,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     _groupWidth = calcRequiredWidth(_barWidth, _legends.length, X1_INNER_PADDING);
 
     const xScale1 = _createX1Scale();
-    const allGroupsBars: JSX.Element[] = [];
+    const allGroupsBars: JSXElement[] = [];
     _datasetForBars.forEach((singleSet: GVSingleDataPoint) => {
       allGroupsBars.push(
         _buildGraph(singleSet, xScale0, xScale1, yScalePrimary, yScaleSecondary, containerHeight, xElement!),
@@ -433,11 +433,11 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     containerHeight: number,
     xElement: SVGElement,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element => {
+  ): JSXElement => {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const singleGroup: JSX.Element[] = [];
+    const singleGroup: JSXElement[] = [];
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const barLabelsForGroup: JSX.Element[] = [];
+    const barLabelsForGroup: JSXElement[] = [];
 
     // Get the actual legends present at this x-axis point
     const presentLegends = Object.keys(singleSet).filter(key => key in _legendColorMap);

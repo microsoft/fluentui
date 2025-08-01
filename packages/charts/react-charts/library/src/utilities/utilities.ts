@@ -938,7 +938,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
         .attr('id', 'LessLength')
         .attr('x', 0)
         .attr('y', y)
-        .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+        .attr('dy', dy + 'em')
         .text(totalWord);
     } else {
       while ((word = words.pop()!)) {
