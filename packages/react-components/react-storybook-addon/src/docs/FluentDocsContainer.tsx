@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { DocsContainer, type DocsContextProps } from '@storybook/addon-docs';
-import { type FluentStoryContext } from '@fluentui/react-storybook-addon';
 import { webLightTheme } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
 
+import { type FluentStoryContext } from '../hooks';
+
 interface FluentDocsContainerProps {
   context: FluentStoryContext & DocsContextProps;
+  children: React.ReactNode;
 }
 
 /**

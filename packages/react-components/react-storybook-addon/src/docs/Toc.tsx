@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { addons } from '@storybook/preview-api';
 import { NAVIGATE_URL } from '@storybook/core-events';
-import { makeStyles, shorthands } from '@fluentui/react-components';
+
+import { makeStyles } from '@griffel/react';
 
 const useTocStyles = makeStyles({
   root: {
@@ -40,7 +41,7 @@ const useTocStyles = makeStyles({
       height: '100%',
       width: '3px',
       backgroundColor: '#EDEBE9',
-      ...shorthands.borderRadius('4px'),
+      borderRadius: '4px',
     },
   },
   selected: {
@@ -53,7 +54,7 @@ const useTocStyles = makeStyles({
       bottom: 0,
       width: '3px',
       backgroundColor: '#436DCD',
-      ...shorthands.borderRadius('4px'),
+      borderRadius: '4px',
     },
   },
 });
@@ -78,6 +79,7 @@ export const Toc = ({ stories }: { stories: TocItem[] }) => {
   const isNavigating = React.useRef<boolean>(false);
 
   React.useEffect(() => {
+    // eslint-disable-next-line @nx/workspace-no-restricted-globals
     const observer = new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
         if (isNavigating.current) {
@@ -98,6 +100,7 @@ export const Toc = ({ stories }: { stories: TocItem[] }) => {
     );
 
     stories.forEach(link => {
+      // eslint-disable-next-line @nx/workspace-no-restricted-globals
       const element = document.getElementById(nameToHash(link.name));
       if (element) {
         observer.observe(element);

@@ -1,16 +1,12 @@
 import * as React from 'react';
-import {
-  makeStyles,
-  Menu,
-  MenuButton,
-  MenuItemRadio,
-  MenuList,
-  MenuPopover,
-  MenuProps,
-  MenuTrigger,
-} from '@fluentui/react-components';
-import { themes, ThemeIds, THEME_ID } from '@fluentui/react-storybook-addon';
 import { addons } from '@storybook/preview-api';
+
+import { Menu, MenuItemRadio, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
+import type { MenuProps } from '@fluentui/react-menu';
+import { MenuButton } from '@fluentui/react-button';
+import { makeStyles } from '@griffel/react';
+
+import { themes, ThemeIds, THEME_ID } from '..';
 
 const useStyles = makeStyles({
   menuButton: {
@@ -47,6 +43,7 @@ export const ThemePicker: React.FC<{ selectedThemeId?: string }> = ({ selectedTh
 
   return (
     <Menu
+      // eslint-disable-next-line react/jsx-no-bind
       onCheckedValueChange={onCheckedValueChange}
       checkedValues={{ theme: selectedThemeId ? [selectedThemeId] : [] }}
       positioning={{ autoSize: true }}
