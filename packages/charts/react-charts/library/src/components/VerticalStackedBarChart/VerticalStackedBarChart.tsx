@@ -77,10 +77,6 @@ type LineLegends = {
   title: string;
   color: string;
 };
-enum CircleVisbility {
-  show = 'visibility',
-  hide = 'hidden',
-}
 type CalloutAnchorPointData = {
   xAxisDataPoint: string;
   chartDataPoint: VSChartDataPoint;
@@ -228,20 +224,32 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     return selectedLegends.length > 0 ? selectedLegends : activeLegend ? [activeLegend] : [];
   }
 
-  function _lineHoverOut() {
-    setPopoverOpen(false);
-    setXCalloutValue('');
-    setYCalloutValue('');
-    setActiveXAxisDataPoint('');
-    setColor('');
-  }
-
-  function _lineHoverFocus(lineData: LinePoint) {
-    setPopoverOpen(true);
-    setXCalloutValue(`${lineData.xItem.xAxisPoint}`);
-    setYCalloutValue(`${lineData.yAxisCalloutData || lineData.data || lineData.y}`);
-    setActiveXAxisDataPoint(lineData.xItem.xAxisPoint);
-    setColor(lineData.color);
+  function _lineHoverFocus(
+    lineData: LinePoint,
+    event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGCircleElement, Element>,
+  ): void {
+    let clientX = 0;
+    let clientY = 0;
+    if ('clientX' in event) {
+      clientX = event.clientX;
+      clientY = event.clientY;
+    } else {
+      const boundingRect = event.target.getBoundingClientRect();
+      clientX = boundingRect.left + boundingRect.width / 2;
+      clientY = boundingRect.top + boundingRect.height / 2;
+    }
+    if (_getHighlightedLegend().length === 1) {
+      if (_noLegendHighlighted() || _isLegendHighlighted(lineData.legend)) {
+        _updatePosition(clientX, clientY);
+        setPopoverOpen(true);
+        setXCalloutValue(`${lineData.xItem.xAxisPoint}`);
+        setYCalloutValue(`${lineData.yAxisCalloutData || lineData.data || lineData.y}`);
+        setActiveXAxisDataPoint(lineData.xItem.xAxisPoint);
+        setColor(lineData.color);
+      }
+    } else {
+      _onStackHoverFocus(lineData.xItem, event as React.MouseEvent<SVGElement>);
+    }
   }
 
   function _onStackHoverFocus(
@@ -402,7 +410,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     return _getHighlightedLegend().length === 0;
   }
 
-  function _getAriaLabel(singleChartData: VerticalStackedChartProps, point?: VSChartDataPoint): string {
+  function _getAriaLabel(
+    singleChartData: VerticalStackedChartProps,
+    point?: VSChartDataPoint | LineDataInVerticalStackedBarChart,
+    isLinePoint?: boolean,
+  ): string {
     if (!point) {
       /** if shouldFocusWholeStack is true */
       const xValue =
@@ -414,15 +426,17 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         .map(pt => {
           const legend = pt.legend;
           const yValue = pt.yAxisCalloutData || pt.data;
-          return `${legend}, ${yValue}.`;
+          return _noLegendHighlighted() || _isLegendHighlighted(legend) ? `${legend}, ${yValue}.` : '';
         })
+        .filter(str => str !== '')
         .join(' ');
       const lineValues = singleChartData.lineData
         ?.map(ln => {
           const legend = ln.legend;
           const yValue = ln.yAxisCalloutData || ln.data || ln.y;
-          return `${legend}, ${yValue}.`;
+          return _noLegendHighlighted() || _isLegendHighlighted(legend) ? `${legend}, ${yValue}.` : '';
         })
+        .filter(str => str !== '')
         .join(' ');
       return (
         singleChartData.stackCallOutAccessibilityData?.ariaLabel ||
@@ -432,13 +446,18 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     /** if shouldFocusWholeStack is false */
     const xValue =
       singleChartData.xAxisCalloutData ||
-      point.xAxisCalloutData ||
+      (!isLinePoint && (point as VSChartDataPoint).xAxisCalloutData) ||
       (singleChartData.xAxisPoint instanceof Date
         ? formatDate(singleChartData.xAxisPoint)
         : singleChartData.xAxisPoint);
     const legend = point.legend;
-    const yValue = point.yAxisCalloutData || point.data;
-    return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
+    const yValue =
+      point.yAxisCalloutData ||
+      (isLinePoint ? point.data || (point as LineDataInVerticalStackedBarChart).y : point.data);
+    return (
+      (!isLinePoint && (point as VSChartDataPoint).callOutAccessibilityData?.ariaLabel) ||
+      `${xValue}. ${legend}, ${yValue}.`
+    );
   }
 
   function _getCustomizedCallout() {
@@ -590,10 +609,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             strokeDasharray={lineObject[item][0].lineOptions?.strokeDasharray}
             stroke={lineObject[item][i].color}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-            {...(_isLegendHighlighted(item) && {
-              onMouseOver: _lineHover.bind(lineObject[item][i - 1]),
-              onMouseLeave: _lineHoverOut,
-            })}
+            onMouseOver={event => _lineHover(lineObject[item][i - 1], event)}
+            onMouseLeave={_handleMouseOut}
           />,
         );
       }
@@ -614,19 +631,15 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
                 ? yScaleSecondary(circlePoint.y)
                 : yScalePrimary(circlePoint.y)
             }
-            onMouseOver={
-              _isLegendHighlighted(item)
-                ? (event: React.MouseEvent<SVGElement, MouseEvent>) => _lineHover(circlePoint, event)
-                : (event: React.MouseEvent<SVGElement, MouseEvent>) => _onStackHover(circlePoint.xItem, event)
-            }
-            {...(_isLegendHighlighted(item) && {
-              onMouseLeave: _lineHoverOut,
-            })}
-            r={_getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).radius}
+            onMouseOver={event => _lineHover(circlePoint, event)}
+            onMouseLeave={_handleMouseOut}
+            r={_getCircleOpacityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).radius}
             stroke={circlePoint.color}
             fill={tokens.colorNeutralBackground1}
             strokeWidth={3}
-            visibility={_getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).visibility}
+            // Elements with visibility: hidden cannot receive focus, so use opacity: 0 instead to hide them.
+            // For more information, see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html
+            opacity={_getCircleOpacityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).opacity}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             ref={e => (circleRef.refElement = e)}
             {...(noBarsAndLinesActive
@@ -651,21 +664,21 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     );
   }
 
-  function _getCircleVisibilityAndRadius(
+  function _getCircleOpacityAndRadius(
     xAxisPoint: string | number | Date,
     legend: string,
-  ): { visibility: CircleVisbility; radius: number } {
+  ): { opacity: number; radius: number } {
     if (!_noLegendHighlighted()) {
       if (xAxisPoint === activeXAxisDataPoint && _isLegendHighlighted(legend)) {
-        return { visibility: CircleVisbility.show, radius: 8 };
+        return { opacity: 1, radius: 8 };
       } else if (_isLegendHighlighted(legend)) {
-        return { visibility: CircleVisbility.show, radius: 0.3 };
+        return { opacity: 1, radius: 0.3 };
       } else {
-        return { visibility: CircleVisbility.hide, radius: 0 };
+        return { opacity: 0, radius: 0 };
       }
     } else {
       return {
-        visibility: activeXAxisDataPoint === xAxisPoint ? CircleVisbility.show : CircleVisbility.hide,
+        opacity: activeXAxisDataPoint === xAxisPoint ? 1 : 0,
         radius: 8,
       };
     }
@@ -733,7 +746,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _lineHover(lineData: LinePoint, mouseEvent: React.MouseEvent<SVGElement>) {
     mouseEvent.persist();
-    _lineHoverFocus(lineData);
+    _lineHoverFocus(lineData, mouseEvent);
   }
 
   function _lineFocus(
@@ -742,7 +755,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     ref: { refElement: SVGCircleElement | null },
   ) {
     if (ref.refElement) {
-      _lineHoverFocus(lineData);
+      _lineHoverFocus(lineData, event);
     }
   }
 
@@ -985,19 +998,20 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         const startColor = point.color ? point.color : _colors[index];
         const ref: RefArrayData = {};
         const shouldHighlight = _isLegendHighlighted(point.legend) || _noLegendHighlighted() ? true : false;
-        const rectFocusProps = !shouldFocusWholeStack && {
-          'aria-label': _getAriaLabel(singleChartData, point),
-          onMouseOver: (event: React.MouseEvent<SVGElement, MouseEvent>) =>
-            _onRectHover(singleChartData.xAxisPoint, point, startColor, event),
-          onMouseMove: (event: React.MouseEvent<SVGElement, MouseEvent>) =>
-            _onRectHover(singleChartData.xAxisPoint, point, startColor, event),
-          onMouseLeave: _handleMouseOut,
-          onFocus: () => _onRectFocus(point, singleChartData.xAxisPoint as string, startColor, ref),
-          onBlur: _handleMouseOut,
-          onClick: (event: React.MouseEvent<SVGElement, MouseEvent>) => _onClick(point, event),
-          role: 'img',
-          tabIndex: !props.hideTooltip && shouldHighlight ? 0 : undefined,
-        };
+        const rectFocusProps = !shouldFocusWholeStack &&
+          shouldHighlight && {
+            'aria-label': _getAriaLabel(singleChartData, point),
+            onMouseOver: (event: React.MouseEvent<SVGElement, MouseEvent>) =>
+              _onRectHover(singleChartData.xAxisPoint, point, startColor, event),
+            onMouseMove: (event: React.MouseEvent<SVGElement, MouseEvent>) =>
+              _onRectHover(singleChartData.xAxisPoint, point, startColor, event),
+            onMouseLeave: _handleMouseOut,
+            onFocus: () => _onRectFocus(point, singleChartData.xAxisPoint as string, startColor, ref),
+            onBlur: _handleMouseOut,
+            onClick: (event: React.MouseEvent<SVGElement, MouseEvent>) => _onClick(point, event),
+            role: 'img',
+            tabIndex: !props.hideTooltip && shouldHighlight ? 0 : undefined,
+          };
 
         let barHeight = Math.abs(heightValueScale * point.data);
         // FIXME: The current scaling logic may produce different min and gap heights for each bar stack.
@@ -1064,17 +1078,24 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         );
       });
       const groupRef: RefArrayData = {};
-      const stackFocusProps = shouldFocusWholeStack && {
-        'aria-label': _getAriaLabel(singleChartData),
-        onMouseOver: (event: any) => _onStackHover(singleChartData, event),
-        onMouseMove: (event: any) => _onStackHover(singleChartData, event),
-        onMouseLeave: _handleMouseOut,
-        onFocus: () => _onStackFocus(singleChartData, groupRef),
-        onBlur: _handleMouseOut,
-        onClick: (event: any) => _onClick(singleChartData, event),
-        role: 'img',
-        tabIndex: !props.hideTooltip ? 0 : undefined,
-      };
+      const someBarsActive =
+        singleChartData.chartData.filter(dataPoint => _noLegendHighlighted() || _isLegendHighlighted(dataPoint.legend))
+          .length > 0;
+      // FIXME: Making the entire stack focusable when stack callout is enabled adds unnecessary complexity
+      // and can reduce usability in certain scenarios. Instead, each individual element within the stack
+      // should be focusable on its own, with its own aria-label. This behavior is also seen in Highcharts.
+      const stackFocusProps = shouldFocusWholeStack &&
+        someBarsActive && {
+          'aria-label': _getAriaLabel(singleChartData),
+          onMouseOver: (event: any) => _onStackHover(singleChartData, event),
+          onMouseMove: (event: any) => _onStackHover(singleChartData, event),
+          onMouseLeave: _handleMouseOut,
+          onFocus: () => _onStackFocus(singleChartData, groupRef),
+          onBlur: _handleMouseOut,
+          onClick: (event: any) => _onClick(singleChartData, event),
+          role: 'img',
+          tabIndex: !props.hideTooltip ? 0 : undefined,
+        };
       let showLabel = false;
       let barLabel = 0;
       if (!props.hideLabels) {
