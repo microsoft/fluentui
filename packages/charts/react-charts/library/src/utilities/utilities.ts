@@ -17,6 +17,7 @@ import {
 } from 'd3-scale';
 import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   TimeLocaleObject as d3TimeLocaleObject,
   timeFormat as d3TimeFormat,
@@ -1852,7 +1853,7 @@ export const HighContrastSelectorBlack =
  * @public
  */
 export interface RenderFunction<P> {
-  (props?: P, defaultRender?: (props?: P) => JSX.Element | null): JSX.Element | null;
+  (props?: P, defaultRender?: (props?: P) => JSXElement | null): JSXElement | null;
 }
 
 export const formatDate = (date: Date, useUTC?: string | boolean) => {

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { Data, PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
 import {
   decodeBase64Fields,
@@ -175,7 +176,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     componentRef: chartRef,
   };
 
-  const renderLineAreaScatter = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
+  const renderLineAreaScatter = (plotlyData: Data[], isAreaChart: boolean): JSXElement => {
     const isScatterMarkers = (plotlyData[0] as PlotData)?.mode === 'markers';
     const chartProps: LineChartProps | AreaChartProps = {
       ...transformPlotlyJsonToScatterChartProps(

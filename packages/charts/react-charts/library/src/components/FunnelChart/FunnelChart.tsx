@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { useRtl } from '../../utilities/index';
 import { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
 import { Legend, Legends, LegendContainer } from '../Legends/index';
@@ -241,7 +242,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     containerHeight: number,
     containerWidth: number,
   ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element[] {
+  JSXElement[] {
     const { data } = props;
     const funnelWidth = containerWidth;
     const funnelHeight = containerHeight * 0.8;
@@ -294,7 +295,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
       isRTL: boolean;
     },
   ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element {
+  JSXElement {
     // Ensure stages have subValues for geometry functions
     const stagesWithSubValues = geometryParams.stages.map(s => ({
       ...s,
@@ -342,7 +343,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     containerHeight: number,
     containerWidth: number,
   ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element[] {
+  JSXElement[] {
     const { data } = props;
 
     const stages = data;
@@ -353,7 +354,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     const funnelHeight = containerHeight * 0.8;
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const paths: JSX.Element[] = [];
+    const paths: JSXElement[] = [];
 
     const geometryParams = {
       stages,
@@ -378,7 +379,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   }
 
   function _renderLegends(): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element {
+  JSXElement {
     if (props.hideLegend) {
       return <></>;
     }

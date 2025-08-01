@@ -8,6 +8,7 @@ import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { getColorFromToken, getNextColor, useRtl } from '../../utilities/index';
 import { Legend, Legends, LegendContainer } from '../../index';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { ImageExportOptions } from '../../types/index';
@@ -90,7 +91,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       });
       return elevatedData;
     }
-    function _createLegends(chartData: ChartDataPoint[]): JSX.Element {
+    function _createLegends(chartData: ChartDataPoint[]): JSXElement {
       const legendDataItems = chartData.map((point: ChartDataPoint, index: number) => {
         const color: string = point.color!;
         // mapping data to the format Legends component needs

@@ -6,6 +6,7 @@ import { select as d3Select } from 'd3-selection';
 import { Legend, Legends } from '../Legends/index';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   areArraysEqual,
   createNumericYAxis,
@@ -74,7 +75,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   let _uniqueCallOutID: string | null = '';
   let _refArray: RefArrayData[] = [];
   let margins: Margins;
-  let renderSeries: JSX.Element[];
+  let renderSeries: JSXElement[];
   let _xAxisLabels: string[] = [];
   let xAxisCalloutAccessibilityData: AccessibilityProps = {};
   let _xBandwidth = 0;
@@ -229,7 +230,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     setIsSelectedLegend(false);
   }
 
-  function _createLegends(data: ScatterChartDataWithIndex[]): JSX.Element {
+  function _createLegends(data: ScatterChartDataWithIndex[]): JSXElement {
     const { legendProps } = props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
     const legendDataItems = data.map((point: ScatterChartDataWithIndex) => {
@@ -290,8 +291,8 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     }
   }
 
-  function _createPlot(xElement: SVGElement, containerHeight: number): JSX.Element[] {
-    const series: JSX.Element[] = [];
+  function _createPlot(xElement: SVGElement, containerHeight: number): JSXElement[] {
+    const series: JSXElement[] = [];
     if (isSelectedLegend) {
       _points = selectedLegendPoints;
     } else {
@@ -348,7 +349,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     })!;
 
     for (let i = _points.length - 1; i >= 0; i--) {
-      const pointsForSeries: JSX.Element[] = [];
+      const pointsForSeries: JSXElement[] = [];
 
       const legendVal: string = _points[i].legend;
       const seriesColor: string = _points[i].color!;

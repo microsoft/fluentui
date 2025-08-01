@@ -10,6 +10,7 @@ import {
   scaleUtc as d3ScaleUtc,
 } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import {
   AccessibilityProps,
@@ -76,7 +77,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const _refArray: RefArrayData[] = [];
   let margins: Margins;
   const _useRtl: boolean = useRtl();
-  let _bars: JSX.Element[];
+  let _bars: JSXElement[];
   let _xAxisLabels: string[];
   let _yMax: number;
   let _yMin: number;
@@ -183,7 +184,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const { data, lineLegendColor = tokens.colorPaletteYellowBackground1, lineLegendText } = props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
-    const line: JSX.Element[] = [];
+    const line: JSXElement[] = [];
     data &&
       data.forEach((item: VerticalBarChartDataPoint, index: number) => {
         if (item.lineData && item.lineData.y) {
@@ -336,10 +337,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     margins = _margins;
   }
 
-  function _renderContentForBothLineAndBars(point: VerticalBarChartDataPoint): JSX.Element {
+  function _renderContentForBothLineAndBars(point: VerticalBarChartDataPoint): JSXElement {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { YValueHover, hoverXValue } = _getCalloutContentForLineAndBar(point);
-    const content: JSX.Element[] = YValueHover.map((item: YValueHover, index: number) => {
+    const content: JSXElement[] = YValueHover.map((item: YValueHover, index: number) => {
       return (
         <>
           <ChartPopover
@@ -358,7 +359,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return <>{content}</>;
   }
 
-  function _renderContentForOnlyBars(_props: VerticalBarChartDataPoint): JSX.Element {
+  function _renderContentForOnlyBars(_props: VerticalBarChartDataPoint): JSXElement {
     return (
       <>
         <ChartPopover
@@ -378,7 +379,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  function _renderCallout(props?: VerticalBarChartDataPoint): JSX.Element | null {
+  function _renderCallout(props?: VerticalBarChartDataPoint): JSXElement | null {
     return props ? (_isHavingLine ? _renderContentForBothLineAndBars(props) : _renderContentForOnlyBars(props)) : null;
   }
 
@@ -642,7 +643,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
   }
 
-  function _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  function _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
@@ -724,7 +725,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return bars;
   }
 
-  function _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  function _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
     const yReferencePoint = _yMax < 0 ? _yMax : 0;
@@ -812,7 +813,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return bars;
   }
 
-  function _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  function _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
@@ -902,7 +903,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     setActiveLegend(undefined);
   }
 
-  function _getLegendData(data: VerticalBarChartDataPoint[]): JSX.Element {
+  function _getLegendData(data: VerticalBarChartDataPoint[]): JSXElement {
     const { useSingleColor } = props;
     const { lineLegendText, lineLegendColor = tokens.colorPaletteYellowForeground1 } = props;
     const actions: Legend[] = [];
@@ -1150,7 +1151,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   _xAxisLabels = _points.map((point: VerticalBarChartDataPoint) => point.x as string);
   _yMax = Math.max(d3Max(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMaxValue || 0);
   _yMin = Math.min(d3Min(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMinValue || 0);
-  const legendBars: JSX.Element = _getLegendData(_points);
+  const legendBars: JSXElement = _getLegendData(_points);
   const calloutProps = {
     ...(_isHavingLine && {
       YValueHover: hoveredYValues,

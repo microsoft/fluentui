@@ -26,6 +26,7 @@ import {
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { CartesianChart, ChartPopoverProps, ChildProps } from '../CommonComponents/index';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useHeatMapChartStyles } from './useHeatMapChartStyles.styles';
 import { Legend, Legends, LegendContainer } from '../Legends/index';
@@ -185,7 +186,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
    * attaching dom events to that rectangles
    */
   const _createRectangles = (): React.ReactNode => {
-    const rectangles: JSX.Element[] = [];
+    const rectangles: JSXElement[] = [];
     const yAxisDataPoints = _stringYAxisDataPoints.current.slice().reverse();
     /**
      * yAxisDataPoint is noting but the DataPoint
@@ -194,7 +195,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     yAxisDataPoints.forEach((yAxisDataPoint: string) => {
       let index = 0;
       _stringXAxisDataPoints.current.forEach((xAxisDataPoint: string) => {
-        let rectElement: JSX.Element;
+        let rectElement: JSXElement;
         const id = `x${xAxisDataPoint}y${yAxisDataPoint}`;
         if (
           _dataSet.current[yAxisDataPoint][index]?.x === xAxisDataPoint &&
@@ -317,7 +318,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       setSelectedLegend(legendTitle);
     }
   };
-  const _createLegendBars = (): JSX.Element => {
+  const _createLegendBars = (): JSXElement => {
     const { data, legendProps } = props;
     const legends: Legend[] = [];
     data.forEach((item: HeatMapChartData) => {
