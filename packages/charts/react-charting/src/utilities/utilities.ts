@@ -2001,11 +2001,11 @@ export const getScatterXDomainExtent = (
   const isValidDataPointForScale = (item: ILineChartDataPoint | IScatterChartDataPoint) =>
     isValidDomainValue(item.x, scaleType);
 
-  let xMin = d3Min(points, point => {
+  const xMin = d3Min(points, point => {
     return d3Min(point.data.filter(isValidDataPointForScale), item => item.x as number | Date)!;
   })!;
 
-  let xMax = d3Max(points, point => {
+  const xMax = d3Max(points, point => {
     return d3Max(point.data.filter(isValidDataPointForScale), item => {
       return item.x as number | Date;
     });

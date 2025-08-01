@@ -601,6 +601,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       isSelectedLegend,
       selectedLegendPoints,
       classNames,
+      props.xScaleType,
+      props.yScaleType,
     ],
   );
 
@@ -659,7 +661,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         endValue: endValue + yPadding.end,
       };
     },
-    [],
+    [props.yScaleType],
   );
 
   const { legendProps, tickValues, tickFormat } = props;
