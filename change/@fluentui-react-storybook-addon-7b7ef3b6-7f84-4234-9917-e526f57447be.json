@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add custom addon-docs containers to preset",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

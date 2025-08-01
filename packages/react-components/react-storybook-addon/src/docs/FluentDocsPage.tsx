@@ -11,12 +11,19 @@ import {
   type DocsContextProps,
 } from '@storybook/addon-docs';
 import type { PreparedStory, Renderer, SBEnumType } from '@storybook/types';
-import { makeStyles, shorthands, tokens, Link, Text } from '@fluentui/react-components';
+
+import { tokens } from '@fluentui/react-theme';
+import { Link } from '@fluentui/react-link';
+import { Text } from '@fluentui/react-text';
+import { makeStyles } from '@griffel/react';
 import { InfoFilled } from '@fluentui/react-icons';
-import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
-import { DirSwitch } from './DirSwitch.stories';
-import { ThemePicker } from './ThemePicker.stories';
-import { Toc, nameToHash } from './Toc.stories';
+
+import { DIR_ID, THEME_ID } from '../constants';
+import { themes } from '../theme';
+
+import { DirSwitch } from './DirSwitch';
+import { ThemePicker } from './ThemePicker';
+import { Toc, nameToHash } from './Toc';
 
 type PrimaryStory = PreparedStory<Renderer>;
 
@@ -24,12 +31,12 @@ const useStyles = makeStyles({
   divider: {
     height: '1px',
     backgroundColor: '#e1dfdd',
-    ...shorthands.border('0px', 'none'),
-    ...shorthands.margin('48px', '0px'),
+    border: '0px none',
+    margin: '48px 0px',
   },
   wrapper: {
     display: 'flex',
-    ...shorthands.gap('16px'),
+    gap: '16px',
   },
   toc: {
     flexBasis: '200px',
@@ -89,14 +96,14 @@ const useVideoClasses = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap(tokens.spacingHorizontalMNudge),
+    gap: tokens.spacingHorizontalMNudge,
   },
   preview: {
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    borderRadius: tokens.borderRadiusSmall,
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap(tokens.spacingHorizontalM),
-    ...shorthands.padding(tokens.spacingHorizontalM),
+    gap: tokens.spacingHorizontalM,
+    padding: tokens.spacingHorizontalM,
     backgroundColor: tokens.colorNeutralBackground2,
 
     ':hover': {
@@ -186,8 +193,10 @@ function withSlotEnhancer(story: PreparedStory) {
   const component = story.component as InternalComponentApi;
   transformComponent(component);
 
-  if (story.subcomponents) {
-    Object.values(story.subcomponents).forEach((subcomponent: InternalComponentApi) => {
+  const subcomponents = story.subcomponents as Record<string, InternalComponentApi>;
+
+  if (subcomponents) {
+    Object.values(subcomponents).forEach(subcomponent => {
       transformComponent(subcomponent);
     });
   }

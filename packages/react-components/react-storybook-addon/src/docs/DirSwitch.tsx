@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { makeStyles, Label, Switch, useId, typographyStyles } from '@fluentui/react-components';
-import type { SwitchProps } from '@fluentui/react-components';
-import { DIR_ID } from '@fluentui/react-storybook-addon';
 import { addons } from '@storybook/preview-api';
+
+import { Label } from '@fluentui/react-label';
+import { Switch, type SwitchProps } from '@fluentui/react-switch';
+import { useId } from '@fluentui/react-utilities';
+import { typographyStyles } from '@fluentui/react-theme';
+import { makeStyles } from '@griffel/react';
+
+import { DIR_ID } from '../constants';
 
 const useStyles = makeStyles({
   container: {

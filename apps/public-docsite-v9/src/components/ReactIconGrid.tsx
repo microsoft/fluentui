@@ -27,7 +27,7 @@ const UNSIZED_ICON_SIZE = 48;
 const ICONS_LIST: React.FC<ReactIcons.FluentIconsProps>[] = Object.keys(ReactIcons)
   .map(iconName => (ReactIcons as any)[iconName])
   .filter(icon => !!icon && !!icon.displayName);
-
+// eslint-disable-next-line @griffel/styles-file
 const useClasses = makeStyles({
   controls: {
     display: 'grid',
@@ -124,6 +124,7 @@ const renderIconCell = (itemProps: GridChildComponentProps & { data: IconCellDat
           <Button
             appearance="transparent"
             icon={<ReactIcons.CopyRegular />}
+            // eslint-disable-next-line react/jsx-no-bind
             onClick={() => onCopy(Icon.displayName as string)}
             title="Copy icon name to clipboard"
           />
@@ -139,6 +140,7 @@ const renderIconCell = (itemProps: GridChildComponentProps & { data: IconCellDat
 
 const ReactIconGrid = () => {
   const classes = useClasses();
+  // eslint-disable-next-line  @nx/workspace-no-restricted-globals
   const scrollBarWidth = useScrollbarWidth({ targetDocument: document }) ?? 0;
 
   const toasterId = useId('toaster');
@@ -178,6 +180,7 @@ const ReactIconGrid = () => {
     classes,
     columnCount,
     onCopy: (iconName: string) => {
+      // eslint-disable-next-line  @nx/workspace-no-restricted-globals
       navigator.clipboard.writeText(`<${iconName} />`);
 
       dispatchToast(
@@ -190,6 +193,7 @@ const ReactIconGrid = () => {
   };
 
   useIsomorphicLayoutEffect(() => {
+    // eslint-disable-next-line  @nx/workspace-no-restricted-globals
     const observer = new ResizeObserver(entries => {
       setWidth(entries[0].contentRect.width);
     });
@@ -213,6 +217,7 @@ const ReactIconGrid = () => {
             aria-label="search"
             className={classes.input}
             type="search"
+            // eslint-disable-next-line react/jsx-no-bind
             onChange={(ev, data) => setSearchQuery(data.value)}
             placeholder="Icon name..."
             size="large"
@@ -232,7 +237,12 @@ const ReactIconGrid = () => {
               ),
             }}
           >
-            <RadioGroup layout="horizontal-stacked" onChange={(ev, data) => setSize(data.value)} value={size}>
+            <RadioGroup
+              layout="horizontal-stacked"
+              // eslint-disable-next-line react/jsx-no-bind
+              onChange={(ev, data) => setSize(data.value)}
+              value={size}
+            >
               <Radio value="Unsized" label="Unsized" />
               {[16, 20, 24, 28, 32, 48].map(option => (
                 <Radio key={option} value={String(option)} label={String(option)} />
