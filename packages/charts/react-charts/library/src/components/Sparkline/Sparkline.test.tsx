@@ -127,6 +127,7 @@ describe('Sparkline Chart - axe-core', () => {
 });
 
 describe('Sparkline snapShot testing', () => {
+  /* eslint-disable @typescript-eslint/no-deprecated */
   it('renders Sparkline correctly', () => {
     const component = renderer.create(<Sparkline data={sparkline1Points} showLegend={true} />);
     const tree = component.toJSON();
@@ -138,6 +139,7 @@ describe('Sparkline snapShot testing', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+  /* eslint-enable @typescript-eslint/no-deprecated */
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {

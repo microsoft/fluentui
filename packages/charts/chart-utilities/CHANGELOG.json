@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Tue, 29 Jul 2025 07:20:56 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.26",
+      "version": "1.1.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "9b7b9539abf6a7a0681c84e97a8af04e321a9463",
+            "comment": "feat(chart-utilities): Routing scattergl charts to scatter charts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Jul 2025 07:21:21 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.25",
       "version": "1.1.25",

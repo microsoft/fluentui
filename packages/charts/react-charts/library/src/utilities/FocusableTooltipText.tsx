@@ -9,7 +9,12 @@ import { Async } from './async-utils';
 
 interface IFocusableTooltipTextProps {
   className?: string;
-  content: string | JSX.Element | JSX.Element[];
+  content:
+    | string
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    | JSX.Element
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    | JSX.Element[];
   accessibilityData?: AccessibilityProps;
 }
 

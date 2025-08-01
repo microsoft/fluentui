@@ -17,6 +17,7 @@ import {
   YValueHover,
   ChartPopoverProps,
   Chart,
+  ImageExportOptions,
 } from '../../index';
 import {
   calloutData,
@@ -38,10 +39,12 @@ import {
   domainRangeOfNumericForAreaChart,
   domainRangeOfDateForAreaLineVerticalBarChart,
   createStringYAxis,
+  useRtl,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
-import { Legend, Legends } from '../Legends/index';
+import { Legend, LegendContainer, Legends } from '../Legends/index';
 import { ScaleLinear } from 'd3-scale';
+import { toImage } from '../../utilities/image-export-utils';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const bisect = bisector((d: any) => d.x).left;
@@ -103,6 +106,8 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     // determines if the given area chart has multiple stacked bar charts
     let _isMultiStackChart: boolean;
     const cartesianChartRef = React.useRef<Chart>(null);
+    const _legendsRef = React.useRef<LegendContainer>(null);
+    const _isRTL: boolean = useRtl();
 
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
@@ -135,6 +140,9 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       props.componentRef,
       () => ({
         chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+        toImage: (opts?: ImageExportOptions): Promise<string> => {
+          return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRTL, opts);
+        },
       }),
       [],
     );
@@ -508,6 +516,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           enabledWrapLines={props.enabledLegendsWrapLines}
           {...props.legendProps}
           onChange={_onLegendSelectionChange}
+          legendRef={_legendsRef}
         />
       );
     }

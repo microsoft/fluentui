@@ -229,10 +229,12 @@ export interface CartesianChartStyles {
 export interface Chart {
     // (undocumented)
     chartContainer: HTMLElement | null;
+    // (undocumented)
+    toImage?: (opts?: ImageExportOptions) => Promise<string>;
 }
 
 // @public
-export type ChartDataMode = 'default' | 'fraction' | 'percentage';
+export type ChartDataMode = 'default' | 'fraction' | 'percentage' | 'hidden';
 
 // @public (undocumented)
 export interface ChartDataPoint {
@@ -838,6 +840,7 @@ export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivEl
     // (undocumented)
     legendsOverflowText?: any;
     onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSX.Element | undefined;
+    showLegendForSinglePointBar?: boolean;
     showTriangle?: boolean;
     styles?: HorizontalBarChartStyles;
     variant?: HorizontalBarChartVariant;
@@ -948,6 +951,7 @@ export interface Legend {
     color: string;
     hoverAction?: VoidFunction;
     isLineLegendInBarChart?: boolean;
+    legendAnnotation?: () => React_2.ReactNode;
     // (undocumented)
     nativeButtonProps?: React_2.ButtonHTMLAttributes<HTMLButtonElement>;
     onMouseOutAction?: (isLegendFocused?: boolean) => void;
@@ -955,6 +959,16 @@ export interface Legend {
     shape?: LegendShape;
     stripePattern?: boolean;
     title: string;
+}
+
+// @public (undocumented)
+export interface LegendContainer {
+    // (undocumented)
+    toSVG: (svgWidth: number, isRTL?: boolean) => {
+        node: SVGGElement | null;
+        width: number;
+        height: number;
+    };
 }
 
 // @public (undocumented)
@@ -978,6 +992,7 @@ export interface LegendsProps {
     defaultSelectedLegend?: string;
     defaultSelectedLegends?: string[];
     enabledWrapLines?: boolean;
+    legendRef?: React_2.RefObject<LegendContainer>;
     legends: Legend[];
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;
@@ -990,8 +1005,11 @@ export interface LegendsProps {
 
 // @public
 export interface LegendsStyles {
+    annotation?: string;
     hoverChange?: string;
     legend?: string;
+    // (undocumented)
+    legendContainer?: string;
     rect?: string;
     resizableArea?: string;
     root?: string;
@@ -1109,6 +1127,7 @@ export interface LineDataInVerticalStackedBarChart {
     data?: number;
     // (undocumented)
     legend: string;
+    legendShape?: LegendShape;
     lineOptions?: LineChartLineOptions;
     useSecondaryYScale?: boolean;
     // (undocumented)
@@ -1162,6 +1181,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
     points: any;
+    showRoundOffXTickValues?: boolean;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
@@ -1436,7 +1456,7 @@ export interface VerticalBarChartProps extends CartesianChartProps {
     lineLegendText?: string;
     lineOptions?: LineChartLineOptions;
     maxBarWidth?: number;
-    mode?: 'default' | 'plotly';
+    mode?: 'default' | 'plotly' | 'histogram';
     onRenderCalloutPerDataPoint?: RenderFunction<VerticalBarChartDataPoint>;
     roundCorners?: boolean;
     styles?: Partial<VerticalBarChartStyles>;
