@@ -233,7 +233,6 @@ const RenderArgsTable = ({
     slotsApi: showSlotsApi,
     nativePropsApi: showNativePropsApi,
   });
-  console.log({ component, hasArgAsProp, hasArgAsSlot, argAsProp });
   const styles = useStyles();
 
   return hideArgsTable ? null : (
