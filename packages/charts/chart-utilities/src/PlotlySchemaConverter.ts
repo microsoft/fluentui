@@ -223,10 +223,7 @@ const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean
   }
 };
 
-const validateBarData = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
-  if (invalidateLogAxisType(layout, getAxisIds(data))) {
-    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, log axis type not supported.`);
-  }
+const validateBarData = (data: Partial<PlotData>) => {
   if (data.orientation === 'h') {
     if (!isNumberArray(data.x) && !isDateArray(data.x)) {
       throw new Error(
@@ -282,10 +279,13 @@ const validateScatterData = (data: Partial<PlotData>) => {
   }
 };
 
-const invalidateLogAxisType = (layout: Partial<Layout> | undefined, axisIds: Record<string, number>): boolean => {
-  return Object.keys(axisIds).some(axLetter => {
+const invalidateLogAxisType = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
+  const axisIds = getAxisIds(data) as Record<string, number>;
+  Object.keys(axisIds).forEach(axLetter => {
     const axisKey = (`${axLetter}axis` + (axisIds[axLetter] > 1 ? axisIds[axLetter] : '')) as keyof Layout;
-    return layout?.[axisKey]?.type === 'log';
+    if (layout?.[axisKey]?.type === 'log') {
+      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, log axis type not supported.`);
+    }
   });
 };
 
@@ -352,10 +352,14 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data, layout: Partial<Layout> 
       }
     },
   ],
-  histogram: [data => validateSeriesData(data as Partial<PlotData>, false)],
+  histogram: [
+    (data, layout) => invalidateLogAxisType(data as Partial<PlotData>, layout),
+    data => validateSeriesData(data as Partial<PlotData>, false),
+  ],
   bar: [
-    (data, layout) => {
-      validateBarData(data as Partial<PlotData>, layout);
+    (data, layout) => invalidateLogAxisType(data as Partial<PlotData>, layout),
+    data => {
+      validateBarData(data as Partial<PlotData>);
     },
   ],
   sankey: [
@@ -378,6 +382,8 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data, layout: Partial<Layout> 
     },
   ],
   funnel: [data => validateSeriesData(data as Partial<PlotData>, false)],
+  histogram2d: [(data, layout) => invalidateLogAxisType(data as Partial<PlotData>, layout)],
+  heatmap: [(data, layout) => invalidateLogAxisType(data as Partial<PlotData>, layout)],
 };
 
 const DEFAULT_CHART_TYPE = '';
