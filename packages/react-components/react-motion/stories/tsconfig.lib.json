@@ -6,5 +6,10 @@
     "inlineSources": true,
     "types": ["static-assets", "environment"]
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "../library/src/mapItemsWithIndexes.test.ts",
+    "../library/src/mapItemsWithIndexes.ts"
+  ]
 }

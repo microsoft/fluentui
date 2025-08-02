@@ -1,0 +1,41 @@
+.tree-item {
+  position: absolute !important;
+
+  transform: translateY(var(--pos));
+  height: var(--height);
+
+  transition-behavior: allow-discrete;
+
+  transition: 1s transform ease-in-out;
+  width: 100%;
+
+  @starting-style {
+    transform: translateY(var(--prev-pos));
+    z-index: -1;
+  }
+}
+
+.tree {
+  @starting-style {
+    opacity: 0;
+    height: 0;
+  }
+}
+
+@property --pos {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --prev-pos {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --height {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0;
+}
