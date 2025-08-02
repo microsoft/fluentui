@@ -56,7 +56,7 @@ import {
   AxisCategoryOrder,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
-import { getId, getRTL, ITheme } from '@fluentui/react';
+import { getId, ITheme } from '@fluentui/react';
 import {
   CurveFactory,
   curveLinear as d3CurveLinear,
@@ -2021,7 +2021,7 @@ export const getRangeForScatterMarkerSize = ({
   yScaleSecondary,
   useSecondaryYScale,
   xScaleType,
-  yScaleType,
+  yScaleType: primaryYScaleType,
   secondaryYScaleType,
 }: {
   data: ILineChartPoints[] | IScatterChartPoints[];
@@ -2033,25 +2033,27 @@ export const getRangeForScatterMarkerSize = ({
   yScaleType?: AxisScaleType;
   secondaryYScaleType?: AxisScaleType;
 }): number => {
+  // Note: This function is executed after the scale is created, so the actual padding can be
+  // obtained by calculating the difference between the respective minimums or maximums of the
+  // scale domain and the data. However, doing so often causes the marker size to scale up
+  // unnecessarily when the scale uses a wider domain than required (due to the use of D3's nice
+  // function or our own tick value calculations).
+  // A better approach could be to treat the marker size as a fixed pixel value and adjust the
+  // scale domain with sufficient padding to accommodate the maximum marker size—instead of doing
+  // it the other way around (i.e., adjusting the scale domain first with padding and then scaling
+  // the markers to fit inside the plot area).
   const [xMin, xMax] = getScatterXDomainExtent(data, xScaleType);
-  let scaleXMin: number | Date;
-  let scaleXMax: number | Date;
-  if (getRTL()) {
-    [scaleXMax, scaleXMin] = xScale.domain();
-  } else {
-    [scaleXMin, scaleXMax] = xScale.domain();
-  }
+  const xPadding = getDomainPaddingForMarkers(+xMin, +xMax, xScaleType);
+  const scaleXMin = xMin instanceof Date ? new Date(+xMin - xPadding.start) : xMin - xPadding.start;
+  const scaleXMax = xMax instanceof Date ? new Date(+xMax + xPadding.end) : xMax + xPadding.end;
   const extraXPixels = Math.min(Math.abs(xScale(xMin) - xScale(scaleXMin)), Math.abs(xScale(scaleXMax) - xScale(xMax)));
 
-  const { startValue: yMin, endValue: yMax } = findNumericMinMaxOfY(
-    data,
-    undefined,
-    useSecondaryYScale,
-    useSecondaryYScale ? secondaryYScaleType : yScaleType,
-  );
+  const yScaleType = useSecondaryYScale ? secondaryYScaleType : primaryYScaleType;
+  const { startValue: yMin, endValue: yMax } = findNumericMinMaxOfY(data, undefined, useSecondaryYScale, yScaleType);
+  const yPadding = getDomainPaddingForMarkers(yMin, yMax, yScaleType);
+  const scaleYMin = yMin - yPadding.start;
+  const scaleYMax = yMax + yPadding.end;
   const yScale = (useSecondaryYScale ? yScaleSecondary : yScalePrimary)!;
-  const [scaleYMin, scaleYMax] = yScale.domain();
   const extraYPixels = Math.min(Math.abs(yScale(scaleYMin) - yScale(yMin)), Math.abs(yScale(yMax) - yScale(scaleYMax)));
-
   return Math.min(extraXPixels, extraYPixels);
 };

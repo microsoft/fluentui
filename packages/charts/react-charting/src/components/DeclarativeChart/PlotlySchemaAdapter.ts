@@ -2517,7 +2517,14 @@ const getBarProps = (
   let padding: number | undefined;
 
   if (typeof layout?.bargap === 'number') {
-    padding = layout.bargap;
+    if (layout.bargap >= 0 && layout.bargap <= 1) {
+      padding = layout.bargap;
+    } else {
+      // Plotly uses a default bargap of 0.2, as noted here: https://github.com/plotly/plotly.js/blob/1d5a249e43dd31ae50acf02117a19e5ac97387e9/src/traces/bar/layout_defaults.js#L58.
+      // However, we don't use this value as our default padding because it causes the bars to
+      // appear disproportionately wide in large containers.
+      padding = 0.2;
+    }
   }
 
   const plotlyBarWidths = data
