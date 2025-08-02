@@ -14,6 +14,8 @@ import { TabsOrientation } from './tabs.options.js';
 /**
  * A Tabs component that wraps a collection of tab and tab panel elements.
  *
+ * @event change - Fires a custom 'change' event when the active tab changes
+ *
  * @deprecated - use tablist instead
  */
 export class BaseTabs extends FASTElement {

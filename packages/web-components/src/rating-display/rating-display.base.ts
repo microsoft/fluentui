@@ -84,6 +84,7 @@ export class BaseRatingDisplay extends FASTElement {
   constructor() {
     super();
 
+    /** @internal */
     this.elementInternals.role = 'img';
   }
 

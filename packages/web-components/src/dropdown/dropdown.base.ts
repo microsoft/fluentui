@@ -24,6 +24,8 @@ import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.templa
  * @slot indicator - The indicator slot.
  * @slot control - The control slot. This slot is automatically populated and should not be manually manipulated.
  *
+ * @fires change - Fires a custom 'change' event when the dropdown value changes.
+ *
  * @public
  */
 export class BaseDropdown extends FASTElement {
@@ -613,9 +615,8 @@ export class BaseDropdown extends FASTElement {
   /**
    * Handles the change events for the dropdown.
    *
+   * @internal
    * @param e - the event object
-   *
-   * @public
    */
   public changeHandler(e: Event): boolean | void {
     if (this === e.target) {
@@ -645,9 +646,8 @@ export class BaseDropdown extends FASTElement {
   /**
    * Handles the click events for the dropdown.
    *
+   * @internal
    * @param e - the event object
-   *
-   * @public
    */
   public clickHandler(e: PointerEvent): boolean | void {
     if (this.disabled) {
@@ -691,6 +691,7 @@ export class BaseDropdown extends FASTElement {
   constructor() {
     super();
 
+    /** @internal */
     this.elementInternals.role = 'presentation';
 
     this.addEventListener('connected', this.listboxConnectedHandler);
@@ -790,8 +791,8 @@ export class BaseDropdown extends FASTElement {
   /**
    * Handles the input events for the dropdown from the control element.
    *
+   * @internal
    * @param e - the input event
-   * @public
    */
   public inputHandler(e: InputEvent): boolean | void {
     if (!this.open) {
@@ -829,8 +830,8 @@ export class BaseDropdown extends FASTElement {
   /**
    * Handles the keydown events for the dropdown.
    *
+   * @internal
    * @param e - the keyboard event
-   * @public
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
     let increment = 0;

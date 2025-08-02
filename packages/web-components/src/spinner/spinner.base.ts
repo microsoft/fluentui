@@ -14,6 +14,7 @@ export class BaseSpinner extends FASTElement {
 
   constructor() {
     super();
+    /** @internal */
     this.elementInternals.role = 'progressbar';
   }
 }

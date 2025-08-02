@@ -364,6 +364,7 @@ export class DropdownOption extends FASTElement implements Start {
 
   constructor() {
     super();
+    /** @internal */
     this.elementInternals.role = 'option';
   }
 
