@@ -68,6 +68,20 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const selectionRef = React.useRef<HTMLInputElement>(null);
   const treeItemRef = React.useRef<HTMLDivElement>(null);
 
+  const treeItemPropertiesRef = React.useCallback(
+    (el: HTMLElement | null) => {
+      if (el) {
+        // TODO use a symbol to hide this from public API
+        // @ts-expect-error
+        el._treeItem = {
+          value,
+          itemType,
+        };
+      }
+    },
+    [value, itemType],
+  );
+
   if (process.env.NODE_ENV !== 'production') {
     // This is acceptable since the NODE_ENV will not change during runtime
 
@@ -331,7 +345,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         [dataTreeItemValueAttrName]: value,
         role: 'treeitem',
         ...rest,
-        ref: useMergedRefs(ref, treeItemRef),
+        ref: useMergedRefs(ref, treeItemRef, treeItemPropertiesRef),
         'aria-level': level,
         'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
         'aria-selected': ariaSelected !== undefined ? ariaSelected : selectionMode === 'single' ? !!checked : undefined,
