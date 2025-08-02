@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
 import { MenuGrid, MenuGridCell, MenuGridRow } from '@fluentui/react-menu-grid-preview';
+import { MoreHorizontalRegular } from '@fluentui/react-icons';
 
 const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'];
 
@@ -9,6 +10,10 @@ const Submenu = () => {
     <Menu positioning={{ autoSize: true }}>
       <MenuTrigger disableButtonEnhancement>
         <Button
+          appearance='transparent'
+          size='small'
+          icon={<MoreHorizontalRegular />}
+          aria-label="More actions"
           onKeyDown={event => {
             if (event.key === 'ArrowDown') {
               // Prevent arrow down from opening the menu to enable navigation in grid instead
@@ -16,7 +21,6 @@ const Submenu = () => {
             }
           }}
         >
-          More actions
         </Button>
       </MenuTrigger>
       <MenuPopover>
