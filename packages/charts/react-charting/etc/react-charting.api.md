@@ -325,6 +325,7 @@ export interface ICartesianChartProps {
         yMinValue?: number;
         yMaxValue?: number;
     };
+    secondaryYScaleType?: AxisScaleType;
     showXAxisLablesTooltip?: boolean;
     strokeWidth?: number;
     styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
@@ -345,6 +346,8 @@ export interface ICartesianChartProps {
     xAxistickSize?: number;
     xAxisTitle?: string;
     xMaxValue?: number;
+    // Warning: (ae-forgotten-export) The symbol "AxisScaleType" needs to be exported by the entry point index.d.ts
+    xScaleType?: AxisScaleType;
     yAxisAnnotation?: string;
     yAxisCategoryOrder?: AxisCategoryOrder;
     yAxisTickCount?: number;
@@ -352,6 +355,7 @@ export interface ICartesianChartProps {
     yAxisTitle?: string;
     yMaxValue?: number;
     yMinValue?: number;
+    yScaleType?: AxisScaleType;
 }
 
 // @public
@@ -1246,7 +1250,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     createStringYAxis: (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean, barWidth: number | undefined, chartType?: ChartTypes) => ScaleBand<string>;
     // Warning: (ae-forgotten-export) The symbol "IYAxisParams" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "IAxisData" needs to be exported by the entry point index.d.ts
-    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean, supportNegativeData?: boolean, roundedTicks?: boolean) => ScaleLinear<number, number, never>;
+    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean, supportNegativeData?: boolean, roundedTicks?: boolean, scale?: AxisScaleType) => ScaleLinear<number, number, never>;
     culture?: string;
     customizedCallout?: any;
     datasetForXAxisDomain?: string[];
@@ -1259,7 +1263,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getDomainNRangeValues: (points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[] | IHorizontalBarChartWithAxisDataPoint[] | IGroupedVerticalBarChartData[] | IHeatMapChartDataPoint[] | IGanttChartDataPoint[], margins: IMargins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
-    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[] | IScatterChartDataPoint[] | IGanttChartDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
+    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[] | IScatterChartPoints[] | IGanttChartDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
         startValue: number;
         endValue: number;
     };

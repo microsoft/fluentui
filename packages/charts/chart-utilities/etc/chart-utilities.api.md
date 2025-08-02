@@ -446,6 +446,12 @@ export interface GaugeLine {
     width: number;
 }
 
+// @public (undocumented)
+export const getAxisIds: (data: Partial<PlotData>) => {
+    x: number;
+    y: number;
+};
+
 // @public
 export function getMultiLevelDateTimeFormatOptions(startLevel?: number, endLevel?: number): Intl.DateTimeFormatOptions;
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add support for log scale in scatter charts",
+  "packageName": "@fluentui/chart-utilities",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
