@@ -796,8 +796,10 @@ export {
   renderText_unstable,
   useText_unstable,
   useTextStyles_unstable,
+  TextProvider,
+  useText,
 } from '@fluentui/react-text';
-export type { TextProps, TextSlots, TextState, TextPresetProps } from '@fluentui/react-text';
+export type { TextProps, TextSlots, TextState, TextPresetProps, TextContextValue } from '@fluentui/react-text';
 export {
   Textarea,
   textareaClassNames,
