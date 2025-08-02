@@ -4530,19 +4530,19 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             <text
               dy="0.32em"
               fill="currentColor"
-              x="-21"
+              x="-16"
             >
               <tspan
                 data-="Final Inspections"
                 dy="0.32em"
                 id="BaseSpan-0"
-                x="-21"
+                x="-16"
               />
               <tspan
                 dx="1.5em"
                 dy="0.32"
                 id="showDots-0"
-                x="-21"
+                x="-16"
               >
                 Fina...
               </tspan>
@@ -4560,19 +4560,19 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             <text
               dy="0.32em"
               fill="currentColor"
-              x="-21"
+              x="-16"
             >
               <tspan
                 data-="Interior Finishing"
                 dy="0.32em"
                 id="BaseSpan-1"
-                x="-21"
+                x="-16"
               />
               <tspan
                 dx="1.5em"
                 dy="0.32"
                 id="showDots-1"
-                x="-21"
+                x="-16"
               >
                 Inte...
               </tspan>
@@ -4590,19 +4590,19 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             <text
               dy="0.32em"
               fill="currentColor"
-              x="-21"
+              x="-16"
             >
               <tspan
                 data-="Exterior Finishing"
                 dy="0.32em"
                 id="BaseSpan-2"
-                x="-21"
+                x="-16"
               />
               <tspan
                 dx="1.5em"
                 dy="0.32"
                 id="showDots-2"
-                x="-21"
+                x="-16"
               >
                 Exte...
               </tspan>
@@ -4620,19 +4620,19 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             <text
               dy="0.32em"
               fill="currentColor"
-              x="-21"
+              x="-16"
             >
               <tspan
                 data-="Plumbing/Electrical"
                 dy="0.32em"
                 id="BaseSpan-3"
-                x="-21"
+                x="-16"
               />
               <tspan
                 dx="1.5em"
                 dy="0.32"
                 id="showDots-3"
-                x="-21"
+                x="-16"
               >
                 Plum...
               </tspan>
@@ -4650,19 +4650,19 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             <text
               dy="0.32em"
               fill="currentColor"
-              x="-21"
+              x="-16"
             >
               <tspan
                 data-="Roof Installation"
                 dy="0.32em"
                 id="BaseSpan-4"
-                x="-21"
+                x="-16"
               />
               <tspan
                 dx="1.5em"
                 dy="0.32"
                 id="showDots-4"
-                x="-21"
+                x="-16"
               >
                 Roof...
               </tspan>
@@ -4680,19 +4680,19 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             <text
               dy="0.32em"
               fill="currentColor"
-              x="-21"
+              x="-16"
             >
               <tspan
                 data-="Framing"
                 dy="0.32em"
                 id="BaseSpan-5"
-                x="-21"
+                x="-16"
               />
               <tspan
                 dx="1.5em"
                 dy="0.32"
                 id="showDots-5"
-                x="-21"
+                x="-16"
               >
                 Fram...
               </tspan>
@@ -4710,19 +4710,19 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             <text
               dy="0.32em"
               fill="currentColor"
-              x="-21"
+              x="-16"
             >
               <tspan
                 data-="Foundation Work"
                 dy="0.32em"
                 id="BaseSpan-6"
-                x="-21"
+                x="-16"
               />
               <tspan
                 dx="1.5em"
                 dy="0.32"
                 id="showDots-6"
-                x="-21"
+                x="-16"
               >
                 Foun...
               </tspan>
@@ -4740,19 +4740,19 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
             <text
               dy="0.32em"
               fill="currentColor"
-              x="-21"
+              x="-16"
             >
               <tspan
                 data-="Site Preparation"
                 dy="0.32em"
                 id="BaseSpan-7"
-                x="-21"
+                x="-16"
               />
               <tspan
                 dx="1.5em"
                 dy="0.32"
                 id="showDots-7"
-                x="-21"
+                x="-16"
               >
                 Site...
               </tspan>
