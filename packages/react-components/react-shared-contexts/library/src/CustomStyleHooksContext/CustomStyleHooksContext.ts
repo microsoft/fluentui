@@ -88,6 +88,11 @@ export type CustomStyleHooksContextValue = Partial<{
   useListboxStyles_unstable: CustomStyleHook;
   useMenuButtonStyles_unstable: CustomStyleHook;
   useMenuDividerStyles_unstable: CustomStyleHook;
+  useMenuGridStyles_unstable: CustomStyleHook;
+  useMenuGridCellStyles_unstable: CustomStyleHook;
+  useMenuGridRowStyles_unstable: CustomStyleHook;
+  useMenuGridRowGroupStyles_unstable: CustomStyleHook;
+  useMenuGridRowGroupHeaderStyles_unstable: CustomStyleHook;
   useMenuGroupHeaderStyles_unstable: CustomStyleHook;
   useMenuGroupStyles_unstable: CustomStyleHook;
   useMenuItemCheckboxStyles_unstable: CustomStyleHook;
