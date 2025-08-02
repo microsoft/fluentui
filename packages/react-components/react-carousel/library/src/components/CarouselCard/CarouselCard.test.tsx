@@ -35,8 +35,8 @@ describe('CarouselCard', () => {
     const result = render(<CarouselCard>Default CarouselCard</CarouselCard>);
 
     setTabsterDefault(result.container, true);
-    // If no tabster present, setTabsterDefault does nothing.
-    expect(result.container.hasAttribute('data-tabster')).toBeFalsy();
+    // We'll set the default param even if no tabster attributes are present
+    expect(result.container.hasAttribute('data-tabster')).toBeTruthy();
     result.container.setAttribute('data-tabster', emptyStrAttr);
 
     const isDefault = render(<CarouselCard {...isDefaultTabProps}>Default CarouselCard</CarouselCard>);

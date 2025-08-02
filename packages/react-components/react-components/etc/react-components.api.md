@@ -180,6 +180,8 @@ import { CarouselButtonProps } from '@fluentui/react-carousel';
 import { CarouselButtonSlots } from '@fluentui/react-carousel';
 import { CarouselButtonState } from '@fluentui/react-carousel';
 import { CarouselCard } from '@fluentui/react-carousel';
+import { CarouselCardButton } from '@fluentui/react-carousel';
+import { carouselCardButtonClassNames } from '@fluentui/react-carousel';
 import { carouselCardClassNames } from '@fluentui/react-carousel';
 import { CarouselCardProps } from '@fluentui/react-carousel';
 import { CarouselCardSlots } from '@fluentui/react-carousel';
@@ -898,6 +900,7 @@ import { renderCarousel_unstable } from '@fluentui/react-carousel';
 import { renderCarouselAutoplayButton_unstable } from '@fluentui/react-carousel';
 import { renderCarouselButton_unstable } from '@fluentui/react-carousel';
 import { renderCarouselCard_unstable } from '@fluentui/react-carousel';
+import { renderCarouselCardButton_unstable } from '@fluentui/react-carousel';
 import { renderCarouselNav_unstable } from '@fluentui/react-carousel';
 import { renderCarouselNavButton_unstable } from '@fluentui/react-carousel';
 import { renderCarouselNavContainer_unstable } from '@fluentui/react-carousel';
@@ -1579,6 +1582,8 @@ import { useCarouselAutoplayButtonStyles_unstable } from '@fluentui/react-carous
 import { useCarouselButton_unstable } from '@fluentui/react-carousel';
 import { useCarouselButtonStyles_unstable } from '@fluentui/react-carousel';
 import { useCarouselCard_unstable } from '@fluentui/react-carousel';
+import { useCarouselCardButton_unstable } from '@fluentui/react-carousel';
+import { useCarouselCardButtonStyles_unstable } from '@fluentui/react-carousel';
 import { useCarouselCardStyles_unstable } from '@fluentui/react-carousel';
 import { useCarouselContext_unstable } from '@fluentui/react-carousel';
 import { useCarouselNav_unstable } from '@fluentui/react-carousel';
@@ -2365,6 +2370,10 @@ export { CarouselButtonSlots }
 export { CarouselButtonState }
 
 export { CarouselCard }
+
+export { CarouselCardButton }
+
+export { carouselCardButtonClassNames }
 
 export { carouselCardClassNames }
 
@@ -3802,6 +3811,8 @@ export { renderCarouselButton_unstable }
 
 export { renderCarouselCard_unstable }
 
+export { renderCarouselCardButton_unstable }
+
 export { renderCarouselNav_unstable }
 
 export { renderCarouselNavButton_unstable }
@@ -5163,6 +5174,10 @@ export { useCarouselButton_unstable }
 export { useCarouselButtonStyles_unstable }
 
 export { useCarouselCard_unstable }
+
+export { useCarouselCardButton_unstable }
+
+export { useCarouselCardButtonStyles_unstable }
 
 export { useCarouselCardStyles_unstable }
 
