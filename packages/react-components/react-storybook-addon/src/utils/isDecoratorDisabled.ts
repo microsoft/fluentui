@@ -1,7 +1,7 @@
-import type { FluentParameters, FluentStoryContext } from '../hooks';
+import { getParametersConfig, type FluentParameters, type FluentStoryContext } from '../hooks';
 
-type DecoratorName = NonNullable<FluentParameters['reactStorybookAddon']>['disabledDecorators'][number];
+type DecoratorName = NonNullable<NonNullable<FluentParameters['reactStorybookAddon']>['disabledDecorators']>[number];
 
 export function isDecoratorDisabled(context: FluentStoryContext, decoratorName: DecoratorName): boolean {
-  return context.parameters.reactStorybookAddon?.disabledDecorators?.includes(decoratorName) ?? false;
+  return getParametersConfig(context)?.disabledDecorators?.includes(decoratorName) ?? false;
 }

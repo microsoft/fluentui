@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/react';
 
 import * as rootPreview from '../../../.storybook/preview';
 
-const preview: Preview = {
+const preview: Preview & { parameters: import('@fluentui/react-storybook-addon').FluentParameters } = {
   ...rootPreview,
   parameters: {
     ...rootPreview.parameters,
@@ -15,6 +15,7 @@ const preview: Preview = {
         order: ['Introduction', 'Packages'],
       },
     },
+    reactStorybookAddon: { docs: true },
   },
 };
 
