@@ -55,6 +55,14 @@ export const CalendarMultidayDayView = () => {
           ))}
         </Dropdown>
       </Field>
+      <h3>Negative date selection</h3>
+      <Calendar
+        highlightSelectedMonth
+        showGoToToday
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+        calendarDayProps={{ daysToSelectInDayView: -daysToSelectInDayView }}
+      />
     </div>
   );
 };

@@ -48,6 +48,14 @@ describe('DateMath', () => {
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
+  it('can add negative days', () => {
+    const startDate = new Date(2016, Months.Feb, 28);
+    const result = DateMath.addDays(startDate, -5);
+    const expected = new Date(2016, Months.Feb, 23);
+
+    expect(result.getTime()).toEqual(expected.getTime());
+  });
+
   it('can add months', () => {
     const startDate = new Date(2015, Months.Dec, 31);
 
@@ -313,6 +321,34 @@ describe('DateMath', () => {
     expectedDates = Array(7).map((val: undefined, i: number) => new Date(2017, 2, 14 + i));
     dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Tuesday);
     Array(7).forEach((val: undefined, i: number) => expect(DateMath.compareDates(dateRangeArray[i], date)).toBe(true));
+
+    // Date range: custom
+    const customExpectedDates = [
+      new Date(2017, 2, 16),
+      new Date(2017, 2, 17),
+      new Date(2017, 2, 18),
+      new Date(2017, 2, 19),
+      new Date(2017, 2, 20),
+    ];
+    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday, undefined, 5);
+    expect(dateRangeArray.length).toEqual(5);
+    Array(5).forEach((val: undefined, i: number) =>
+      expect(DateMath.compareDates(dateRangeArray[i], customExpectedDates[i])).toBe(true),
+    );
+
+    // Date range: custom reverse
+    const reverseExpectedDates = [
+      new Date(2017, 2, 20),
+      new Date(2017, 2, 19),
+      new Date(2017, 2, 18),
+      new Date(2017, 2, 17),
+      new Date(2017, 2, 16),
+    ];
+    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday, undefined, -5);
+    expect(dateRangeArray.length).toEqual(5);
+    Array(5).forEach((val: undefined, i: number) =>
+      expect(DateMath.compareDates(dateRangeArray[i], reverseExpectedDates[i])).toBe(true),
+    );
   });
 
   // Generating week numbers array per month
