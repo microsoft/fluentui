@@ -64,8 +64,8 @@ const CardExample = (props: CardProps) => {
       <CardHeader
         image={<img src={resolveAsset('pptx.png')} width="32px" height="32px" alt="Microsoft PowerPoint logo" />}
         header={
-          <Body1>
-            <b>App Name</b>
+          <Body1 as="h5" style={{ margin: 0, fontWeight: 'bold' }}>
+            App Name
           </Body1>
         }
         description={<Caption1>Developer</Caption1>}
