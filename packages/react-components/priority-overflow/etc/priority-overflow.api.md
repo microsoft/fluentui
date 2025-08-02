@@ -9,6 +9,7 @@ export function createOverflowManager(): OverflowManager;
 
 // @public (undocumented)
 export interface ObserveOptions {
+    measureGap?: boolean;
     minimumVisible?: number;
     onUpdateItemVisibility: OnUpdateItemVisibility;
     onUpdateOverflow: OnUpdateOverflow;

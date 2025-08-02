@@ -32,6 +32,7 @@ export function createOverflowManager(): OverflowManager {
     minimumVisible: 0,
     onUpdateItemVisibility: () => undefined,
     onUpdateOverflow: () => undefined,
+    measureGap: false,
   };
 
   const overflowItems: Record<string, OverflowItemEntry> = {};
@@ -76,10 +77,14 @@ export function createOverflowManager(): OverflowManager {
     vertical: 'clientHeight' | 'offsetHeight',
     el: HTMLElement,
   ): number {
-    if (!sizeCache.has(el)) {
-      sizeCache.set(el, options.overflowAxis === 'horizontal' ? el[horizontal] : el[vertical]);
+    if (sizeCache.has(el)) {
+      return sizeCache.get(el)!;
     }
 
+    const requested = options.overflowAxis === 'horizontal' ? horizontal : vertical;
+    let measurement = el[requested];
+
+    sizeCache.set(el, measurement);
     return sizeCache.get(el)!;
   }
 
@@ -89,6 +94,44 @@ export function createOverflowManager(): OverflowManager {
   const invisibleItemQueue = createPriorityQueue<string>((a, b) => -1 * compareItems(a, b));
 
   const visibleItemQueue = createPriorityQueue<string>(compareItems);
+
+  function hasOverflowItems(): boolean {
+    return Boolean(invisibleItemQueue.size() > 0);
+  }
+
+  function gapSize(): number {
+    const elements = visibleItemQueue.all().map(id => overflowItems[id].element);
+
+    if (Object.keys(overflowDividers).length > 0) {
+      const visibleDividers = Object.entries(overflowDividers)
+        .filter(([id]) => groupManager.groupVisibility()[id] !== 'hidden')
+        .map(([, divider]) => divider.element);
+
+      elements.push(...visibleDividers);
+    }
+
+    if (hasOverflowItems() && overflowMenu) {
+      elements.push(overflowMenu);
+    }
+
+    return elements
+      .sort((a, b) => {
+        return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+      })
+      .reduce((gapSize, el, i, arr) => {
+        if (i === 0) {
+          // We deliberately don't measure the spacing between first and last elements and the container
+          // Space at the ends of a container can be either be container padding or collapsed empty space
+          return gapSize;
+        }
+
+        // If perf becomes an issue we can extend the current sizeCache and cache rects
+        const current = el.getBoundingClientRect();
+        const prev = arr[i - 1].getBoundingClientRect();
+
+        return gapSize + (current.left - prev.right);
+      }, 0);
+  }
 
   function occupiedSize(): number {
     const totalItemSize = visibleItemQueue
@@ -103,7 +146,7 @@ export function createOverflowManager(): OverflowManager {
       0,
     );
 
-    const overflowMenuSize = invisibleItemQueue.size() > 0 && overflowMenu ? getOffsetSize(overflowMenu) : 0;
+    const overflowMenuSize = hasOverflowItems() && overflowMenu ? getOffsetSize(overflowMenu) : 0;
 
     return totalItemSize + totalDividerSize + overflowMenuSize;
   }
@@ -144,13 +187,20 @@ export function createOverflowManager(): OverflowManager {
     options.onUpdateOverflow({ visibleItems, invisibleItems, groupVisibility: groupManager.groupVisibility() });
   };
 
+  const getAvailableSize = () => {
+    if (!container) {
+      return 0;
+    }
+
+    const totalGapSize = options.measureGap ? gapSize() : 0;
+    return getClientSize(container) - options.padding - totalGapSize;
+  };
+
   const processOverflowItems = (): boolean => {
     if (!container) {
       return false;
     }
     sizeCache.clear();
-
-    const availableSize = getClientSize(container) - options.padding;
 
     // Snapshot of the visible/invisible state to compare for updates
     const visibleTop = visibleItemQueue.peek();
@@ -165,14 +215,14 @@ export function createOverflowManager(): OverflowManager {
     for (let i = 0; i < 2; i++) {
       // Add items until available width is filled - can result in overflow
       while (
-        (occupiedSize() < availableSize && invisibleItemQueue.size() > 0) ||
+        (occupiedSize() < getAvailableSize() && invisibleItemQueue.size() > 0) ||
         invisibleItemQueue.size() === 1 // attempt to show the last invisible item hoping it's size does not exceed overflow menu size
       ) {
         showItem();
       }
 
       // Remove items until there's no more overflow
-      while (occupiedSize() > availableSize && visibleItemQueue.size() > options.minimumVisible) {
+      while (occupiedSize() > getAvailableSize() && visibleItemQueue.size() > options.minimumVisible) {
         hideItem();
       }
     }
@@ -196,6 +246,7 @@ export function createOverflowManager(): OverflowManager {
     Object.values(overflowItems).forEach(item => visibleItemQueue.enqueue(item.id));
 
     container = observedContainer;
+
     disposeResizeObserver = observeResize(container, entries => {
       if (!entries[0] || !container) {
         return;
