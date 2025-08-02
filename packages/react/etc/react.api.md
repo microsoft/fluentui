@@ -9586,6 +9586,7 @@ export interface ITooltipHostProps extends Omit<React_2.HTMLAttributes<HTMLDivEl
     closeDelay?: number;
     componentRef?: IRefObject<ITooltipHost>;
     content?: string | JSX.Element | JSX.Element[];
+    customOverflowTarget?: HTMLElement | null;
     delay?: TooltipDelay;
     directionalHint?: DirectionalHint;
     directionalHintForRTL?: DirectionalHint;
@@ -11454,6 +11455,7 @@ export class TooltipHostBase extends React_2.Component<ITooltipHostProps, IToolt
 
 // @public (undocumented)
 export enum TooltipOverflowMode {
+    Custom = 2,
     Parent = 0,
     Self = 1
 }

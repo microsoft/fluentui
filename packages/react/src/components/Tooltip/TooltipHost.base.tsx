@@ -156,7 +156,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       return undefined;
     }
 
-    const { overflowMode } = this.props;
+    const { overflowMode, customOverflowTarget } = this.props;
 
     // Select target element based on overflow mode. For parent mode, you want to position the tooltip relative
     // to the parent element, otherwise it might look off.
@@ -167,6 +167,11 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
 
         case TooltipOverflowMode.Self:
           return this._tooltipHost.current;
+
+        case TooltipOverflowMode.Custom:
+          if (customOverflowTarget) {
+            return customOverflowTarget;
+          }
       }
     }
 
