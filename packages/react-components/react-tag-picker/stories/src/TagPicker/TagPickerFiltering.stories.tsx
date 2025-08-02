@@ -53,7 +53,7 @@ export const Filtering = () => {
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
-          <TagPickerGroup aria-label="Selected Employees">
+          <TagPickerGroup aria-roledescription="List" aria-label="Selected Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option}

@@ -44,7 +44,7 @@ export const SecondaryAction = () => {
             </Button>
           }
         >
-          <TagPickerGroup aria-label="Selected Employees">
+          <TagPickerGroup aria-roledescription="List" aria-label="Selected Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option}
