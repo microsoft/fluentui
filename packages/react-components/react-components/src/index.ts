@@ -1186,6 +1186,9 @@ export {
   useCardPreview_unstable,
   useCardPreviewStyles_unstable,
   useCardStyles_unstable,
+  CardProvider,
+  useCardContext_unstable,
+  CardContextValue,
 } from '@fluentui/react-card';
 export type {
   CardFooterProps,
