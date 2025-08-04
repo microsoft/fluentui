@@ -245,7 +245,7 @@ const isScatterMarkers = (mode: string): boolean => {
   return ['markers', 'text+markers', 'markers+text', 'text'].includes(mode);
 };
 
-const validateScatterData = (data: Partial<PlotData>) => {
+const validateScatterData = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
   const mode = data.mode ?? '';
   const xAxisType = data && data.x && data.x.length > 0 ? typeof data?.x?.[0] : 'undefined';
   const yAxisType = data && data.y && data.y.length > 0 ? typeof data?.y?.[0] : 'undefined';
@@ -276,6 +276,10 @@ const validateScatterData = (data: Partial<PlotData>) => {
     }
   } else {
     throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, Unsupported mode`);
+  }
+
+  if (isScatterAreaChart(data)) {
+    invalidateLogAxisType(data, layout);
   }
 };
 
@@ -369,8 +373,8 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data, layout: Partial<Layout> 
       }
     },
   ],
-  scatter: [data => validateScatterData(data as Partial<PlotData>)],
-  scattergl: [data => validateScatterData(data as Partial<PlotData>)],
+  scatter: [(data, layout) => validateScatterData(data as Partial<PlotData>, layout)],
+  scattergl: [(data, layout) => validateScatterData(data as Partial<PlotData>, layout)],
   scatterpolar: [
     data => {
       if (!isNumberArray((data as Partial<PlotData>).theta) && !isStringArray((data as Partial<PlotData>).theta)) {
@@ -476,8 +480,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
         case 'scatter':
         case 'scattergl':
           const scatterData = traceData as Partial<PlotData>;
-          const isAreaChart =
-            scatterData.fill === 'tonexty' || scatterData.fill === 'tozeroy' || !!scatterData.stackgroup;
+          const isAreaChart = isScatterAreaChart(scatterData);
           const isScatterChart = isScatterMarkers(scatterData.mode ?? '');
           if (isScatterChart) {
             return { isValid: true, traceIndex, type: 'scatter' };
@@ -581,4 +584,11 @@ export const getAxisIds = (data: Partial<PlotData>) => {
     x: xAxisId,
     y: yAxisId,
   };
+};
+
+const isScatterAreaChart = (data: Partial<PlotData>) => {
+  return (
+    (data.type === 'scatter' || data.type === 'scattergl') &&
+    (data.fill === 'tonexty' || data.fill === 'tozeroy' || !!data.stackgroup)
+  );
 };
