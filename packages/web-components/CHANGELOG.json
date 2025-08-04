@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 04 Aug 2025 04:07:50 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.115",
+      "version": "3.0.0-beta.115",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "22f5fcce544cbcde4b2a2b7ee68656c835a1333d",
+            "comment": "fix: avoid setting tabindex before button is connected"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 31 Jul 2025 04:07:07 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.114",
       "version": "3.0.0-beta.114",
