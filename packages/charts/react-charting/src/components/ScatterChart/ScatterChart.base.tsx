@@ -16,8 +16,8 @@ import {
   YAxisType,
   isPlottable,
   getRangeForScatterMarkerSize,
-  domainRangeOfDateForAreaLineVerticalBarChart,
-  domainRangeOfNumericForAreaChart,
+  domainRangeOfDateForAreaLineScatterVerticalBarCharts,
+  domainRangeOfNumericForAreaLineScatterCharts,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -265,9 +265,16 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       tickValues: number[] | Date[] | string[] | undefined,
     ) => {
       if (xAxisType === XAxisTypes.NumericAxis) {
-        return domainRangeOfNumericForAreaChart(points, domainMargins, width, isRTL, props.xScaleType, true);
+        return domainRangeOfNumericForAreaLineScatterCharts(
+          points,
+          domainMargins,
+          width,
+          isRTL,
+          props.xScaleType,
+          true,
+        );
       } else if (xAxisType === XAxisTypes.DateAxis) {
-        return domainRangeOfDateForAreaLineVerticalBarChart(
+        return domainRangeOfDateForAreaLineScatterVerticalBarCharts(
           points,
           domainMargins,
           width,

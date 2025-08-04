@@ -47,8 +47,8 @@ import {
   findNumericMinMaxOfY,
   createNumericYAxis,
   IDomainNRange,
-  domainRangeOfDateForAreaLineVerticalBarChart,
-  domainRangeOfNumericForAreaChart,
+  domainRangeOfDateForAreaLineScatterVerticalBarCharts,
+  domainRangeOfNumericForAreaLineScatterCharts,
   createStringYAxis,
   areArraysEqual,
   getCurveFactory,
@@ -429,7 +429,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRangeOfNumericForAreaChart(
+      domainNRangeValue = domainRangeOfNumericForAreaLineScatterCharts(
         points,
         margins,
         width,
@@ -438,7 +438,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         this._hasMarkersMode,
       );
     } else if (xAxisType === XAxisTypes.DateAxis) {
-      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+      domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
         points,
         margins,
         width,

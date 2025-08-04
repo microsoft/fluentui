@@ -15,8 +15,8 @@ import {
   scaleTime as d3ScaleTime,
   scaleLog as d3ScaleLog,
   NumberValue,
-  ScaleContinuousNumeric,
-  ScaleTime,
+  ScaleContinuousNumeric as IScaleContinuousNumeric,
+  ScaleTime as IScaleTime,
 } from 'd3-scale';
 import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
@@ -1172,7 +1172,7 @@ export function getXAxisType(points: ILineChartPoints[]): boolean {
  * @param {boolean} isRTL
  * @returns {IDomainNRange}
  */
-export function domainRangeOfNumericForAreaChart(
+export function domainRangeOfNumericForAreaLineScatterCharts(
   points: ILineChartPoints[] | IScatterChartPoints[],
   margins: IMargins,
   width: number,
@@ -1337,7 +1337,7 @@ export function domainRangeOfVSBCNumeric(
  * @param {Date[] | number[]} tickValues
  * @returns {IDomainNRange}
  */
-export function domainRangeOfDateForAreaLineVerticalBarChart(
+export function domainRangeOfDateForAreaLineScatterVerticalBarCharts(
   points: ILineChartPoints[] | IScatterChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[],
   margins: IMargins,
   width: number,
@@ -2025,9 +2025,9 @@ export const getRangeForScatterMarkerSize = ({
   secondaryYScaleType,
 }: {
   data: ILineChartPoints[] | IScatterChartPoints[];
-  xScale: ScaleContinuousNumeric<number, number> | ScaleTime<number, number>;
-  yScalePrimary: ScaleContinuousNumeric<number, number>;
-  yScaleSecondary?: ScaleContinuousNumeric<number, number>;
+  xScale: IScaleContinuousNumeric<number, number> | IScaleTime<number, number>;
+  yScalePrimary: IScaleContinuousNumeric<number, number>;
+  yScaleSecondary?: IScaleContinuousNumeric<number, number>;
   useSecondaryYScale?: boolean;
   xScaleType?: AxisScaleType;
   yScaleType?: AxisScaleType;
