@@ -1,4 +1,4 @@
-const restrictedGlobals = require('./utils/restricted-globals');
+const restrictedGlobals = require('./shared/restricted-globals');
 
 function shouldRegisterInternal() {
   try {

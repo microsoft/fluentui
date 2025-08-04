@@ -3,7 +3,7 @@ const baseLegacyConfig = require('../base/legacy');
 const reactConfig = require('../react/config');
 const configHelpers = require('../../utils/configHelpers');
 const tseslint = require('typescript-eslint');
-const { reactLegacy: restrictedGlobals } = require('../../utils/restricted-globals');
+const { reactLegacy: restrictedGlobals } = require('../../shared/restricted-globals');
 
 /** @type {import('typescript-eslint').ConfigArray} */
 module.exports = tseslint.config(
