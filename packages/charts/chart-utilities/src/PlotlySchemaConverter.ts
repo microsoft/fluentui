@@ -148,6 +148,14 @@ export const isStringArray = (data: Datum[] | Datum[][] | TypedArray | undefined
   return isArrayOfType(data, (value: any) => typeof value === 'string' || value === null);
 };
 
+export const isObjectArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return isArrayOfType(
+    data,
+    (value: any): boolean => typeof value === 'object' && value !== null && !isArrayOrTypedArray(value),
+  );
+};
+
 export const validate2Dseries = (series: Partial<PlotData>): boolean => {
   if (Array.isArray(series.x) && series.x.length > 0 && Array.isArray(series.x[0])) {
     return false;
@@ -193,6 +201,136 @@ export function isArrayOrTypedArray(a: any) {
   return Array.isArray(a) || isTypedArray(a);
 }
 
+/**
+ * Checks if a key should be ignored during normalization
+ * @param key The key to check
+ * @returns true if the key should be ignored
+ */
+const shouldIgnoreKey = (key: string): boolean => {
+  const lowerKey = key.toLowerCase();
+  if (lowerKey.includes('style') || lowerKey === 'style') {
+    return true;
+  }
+  // Use regex to match common CSS property patterns
+  // (color, fill, stroke, border, background, font, shadow, outline, etc.)
+  const cssKeyRegex = new RegExp(
+    '^(color|fill|stroke|border|background|font|shadow|outline|margin|padding|gap|align|justify|display|flex|grid|' +
+      'text|line|letter|word|vertical|horizontal|overflow|position|top|right|bottom|left|zindex|z-index|opacity|' +
+      'filter|clip|cursor|resize|transition|animation|transform|box|list|column|row|order|direction|visibility|' +
+      'content|width|height|min|max|size|aspect|object|image|user|pointer|caret|scroll|%)|(-webkit-|-moz-|-ms-|-o-)',
+    'i',
+  );
+  if (cssKeyRegex.test(lowerKey)) {
+    return true;
+  }
+  return false;
+};
+
+/**
+ * Normalizes an array of objects by flattening nested structures and creating grouped data
+ * Uses json_normalize approach with D3 color detection and filtering
+ * @param data Array of objects to normalize
+ * @returns Object containing traces for grouped vertical bar chart
+ */
+export const normalizeObjectArrayForGVBC = (data: any[], xLabels?: string[]): { traces: any[]; x: string[] } => {
+  if (!data || data.length === 0) {
+    return { traces: [], x: [] };
+  }
+
+  // Use provided xLabels if available, otherwise default to Item 1, Item 2, ...
+  const x = xLabels && xLabels.length === data.length ? xLabels : data.map((_, index) => `Item ${index + 1}`);
+
+  // First, flatten all objects and collect all unique keys, excluding style keys
+  const flattenedObjects = data.map((item, index) => {
+    if (typeof item === 'object' && item !== null) {
+      const flattened = flattenObject(item);
+      // Only keep keys where the value is numeric (number or numeric string) and not a style key
+      const filtered: Record<string, any> = {};
+      Object.keys(flattened).forEach(key => {
+        const value = flattened[key];
+        if (!shouldIgnoreKey(key) && (typeof value === 'number' || (typeof value === 'string' && isNumber(value)))) {
+          filtered[key] = value;
+        }
+      });
+      return filtered;
+    } else if (typeof item === 'number' || (typeof item === 'string' && isNumber(item))) {
+      // Only keep primitive numeric values
+      return { [x[index] || `item_${index}`]: item };
+    } else {
+      // Non-numeric primitive, ignore by returning empty object
+      return {};
+    }
+  });
+
+  // Collect all unique keys across all objects
+  const allKeys = new Set<string>();
+  flattenedObjects.forEach(obj => {
+    Object.keys(obj).forEach(key => allKeys.add(key));
+  });
+
+  // Create traces for each key (property)
+  const traces: any[] = [];
+
+  allKeys.forEach(key => {
+    const yValues: number[] = [];
+    let hasValidData = false;
+    let isNumericData = false;
+
+    flattenedObjects.forEach((obj, index) => {
+      const value = obj[key];
+      if (typeof value === 'number') {
+        yValues.push(value);
+        hasValidData = true;
+        isNumericData = true;
+      } else if (typeof value === 'string' && isNumber(value)) {
+        yValues.push(parseFloat(value));
+        hasValidData = true;
+        isNumericData = true;
+      }
+    });
+
+    // Only create trace if we have valid numeric data
+    if (hasValidData && isNumericData) {
+      const trace: any = {
+        type: 'bar',
+        name: key,
+        x,
+        y: yValues,
+      };
+
+      traces.push(trace);
+    }
+  });
+
+  return { traces, x };
+};
+
+/**
+ * Flattens a nested object into a single level object with dot notation keys
+ * @param obj Object to flatten
+ * @param prefix Optional prefix for keys
+ * @returns Flattened object
+ */
+const flattenObject = (obj: any, prefix: string = ''): Record<string, any> => {
+  const flattened: Record<string, any> = {};
+
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const newKey = prefix ? `${prefix}.${key}` : key;
+      const value = obj[key];
+
+      if (typeof value === 'object' && value !== null && !isArrayOrTypedArray(value) && !(value instanceof Date)) {
+        // Recursively flatten nested objects
+        Object.assign(flattened, flattenObject(value, newKey));
+      } else {
+        flattened[newKey] = value;
+      }
+    }
+  }
+
+  return flattened;
+};
+
 export const getValidSchema = (input: any): PlotlySchema => {
   try {
     const validatedSchema = input as PlotlySchema;
@@ -237,8 +375,8 @@ const validateBarData = (data: Partial<PlotData>) => {
       );
     }
     validateSeriesData(data, false);
-  } else if (!isNumberArray(data.y) && !isStringArray(data.y)) {
-    throw new Error(`Non numeric or string Y values encountered, type: ${typeof data.y}`);
+  } else if (!isNumberArray(data.y) && !isStringArray(data.y) && !isObjectArray(data.y)) {
+    throw new Error(`Non numeric, string, or object Y values encountered, type: ${typeof data.y}`);
   }
 };
 const isScatterMarkers = (mode: string): boolean => {
@@ -460,6 +598,35 @@ export const mapFluentChart = (input: any): OutputChartType => {
             }
             return { isValid: true, traceIndex, type: 'horizontalbar' };
           } else {
+            // Handle object arrays in y values by normalizing and setting barmode to group
+            if (isObjectArray(barData.y)) {
+              // Normalize the object array to create multiple traces for GVBC
+              // Pass x labels from barData.x if available
+              const { traces, x } = normalizeObjectArrayForGVBC(
+                barData.y as any[],
+                Array.isArray(barData.x) ? (barData.x as string[]) : undefined,
+              );
+
+              // Replace the current trace with multiple traces
+              validSchema.data.splice(traceIndex, 1, ...traces);
+
+              // Update x values for all new traces
+              traces.forEach((traceObj, idx) => {
+                const newTraceIndex = traceIndex + idx;
+                if (validSchema.data[newTraceIndex] && validSchema.data[newTraceIndex].type === 'bar') {
+                  (validSchema.data[newTraceIndex] as Partial<PlotData>).x = x;
+                }
+              });
+
+              // Set layout barmode to group for object hierarchies
+              if (!validSchema.layout) {
+                validSchema.layout = {};
+              }
+              validSchema.layout.barmode = 'group';
+
+              return { isValid: true, traceIndex, type: 'groupedverticalbar' };
+            }
+
             if (['group', 'overlay'].includes(validSchema?.layout?.barmode!)) {
               if (!isNumberArray(barData.y)) {
                 return { isValid: false, errorMessage: 'GVBC does not support string y-axis.' };
