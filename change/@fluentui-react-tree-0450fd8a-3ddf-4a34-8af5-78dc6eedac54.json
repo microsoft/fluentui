@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixed no onNavigate event not firing when clicked on a leaf",
+  "packageName": "@fluentui/react-tree",
+  "email": "patrycja.fogelman@microsoft.com",
+  "dependentChangeType": "patch"
+}
