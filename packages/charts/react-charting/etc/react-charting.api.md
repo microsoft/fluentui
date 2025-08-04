@@ -35,6 +35,9 @@ export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
 export type AxisCategoryOrder = 'default' | 'data' | string[] | 'category ascending' | 'category descending' | 'total ascending' | 'total descending' | 'min ascending' | 'min descending' | 'max ascending' | 'max descending' | 'sum ascending' | 'sum descending' | 'mean ascending' | 'mean descending' | 'median ascending' | 'median descending';
 
 // @public
+export type AxisScaleType = 'default' | 'log';
+
+// @public
 export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartProps>;
 
 // @public
@@ -346,7 +349,6 @@ export interface ICartesianChartProps {
     xAxistickSize?: number;
     xAxisTitle?: string;
     xMaxValue?: number;
-    // Warning: (ae-forgotten-export) The symbol "AxisScaleType" needs to be exported by the entry point index.d.ts
     xScaleType?: AxisScaleType;
     yAxisAnnotation?: string;
     yAxisCategoryOrder?: AxisCategoryOrder;
