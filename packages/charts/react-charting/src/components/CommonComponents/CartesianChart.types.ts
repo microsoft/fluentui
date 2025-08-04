@@ -757,7 +757,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     useSecondaryYScale?: boolean,
     supportNegativeData?: boolean,
     roundedTicks?: boolean,
-    scale?: AxisScaleType,
+    scaleType?: AxisScaleType,
   ) => ScaleLinear<number, number, never>;
 
   /**
