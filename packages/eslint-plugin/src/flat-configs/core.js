@@ -10,6 +10,7 @@ const prettierConfig = require('eslint-config-prettier/flat');
 const { __internal } = require('../internal-flat');
 const { globalIgnores } = require('eslint/config');
 const airbnbConfig = require('eslint-config-airbnb-extended/legacy');
+const rules = require('../rules');
 
 const IGNORES = [
   '**/coverage',
@@ -201,8 +202,8 @@ module.exports = tseslint.config(
   {
     plugins: {
       '@typescript-eslint': tseslint.plugin,
-      get ['@fluentui']() {
-        return require('../index');
+      '@fluentui': {
+        rules,
       },
       '@rnx-kit': rnxPlugin,
       import: importPlugin,
