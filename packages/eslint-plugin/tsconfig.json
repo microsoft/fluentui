@@ -5,7 +5,6 @@
     "checkJs": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "resolveJsonModule": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "strict": true,

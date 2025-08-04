@@ -30,9 +30,6 @@ module.exports = tseslint.config(
     },
     plugins: {
       'react-compiler': reactCompilerPlugin,
-      get ['@fluentui']() {
-        return require('../../index');
-      },
     },
     rules: {
       'jsdoc/check-tag-names': [
