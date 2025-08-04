@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: support for react 19",
   "packageName": "@fluentui/react-portal",
   "email": "dmytrokirpa@microsoft.com",

@@ -18,12 +18,12 @@ export interface TagPickerContextValue
     | 'appearance'
     | 'disabled'
   > {
-  triggerRef: React.RefObject<HTMLInputElement | HTMLButtonElement>;
-  popoverRef: React.RefObject<HTMLDivElement>;
+  triggerRef: React.RefObject<HTMLInputElement | HTMLButtonElement | null>;
+  popoverRef: React.RefObject<HTMLDivElement | null>;
   popoverId: string;
   targetRef: React.RefObject<HTMLDivElement>;
-  secondaryActionRef: React.RefObject<HTMLSpanElement>;
-  tagPickerGroupRef: React.RefObject<HTMLDivElement>;
+  secondaryActionRef: React.RefObject<HTMLSpanElement | null>;
+  tagPickerGroupRef: React.RefObject<HTMLDivElement | null>;
   size: TagPickerSize;
   noPopover?: boolean;
 }
@@ -35,8 +35,8 @@ export const tagPickerContextDefaultValue: TagPickerContextValue = {
   triggerRef: React.createRef<HTMLInputElement>(),
   popoverRef: React.createRef<HTMLDivElement>(),
   targetRef: React.createRef<HTMLDivElement>(),
-  tagPickerGroupRef: React.createRef<HTMLDivElement>(),
-  secondaryActionRef: React.createRef<HTMLDivElement>(),
+  tagPickerGroupRef: React.createRef<HTMLDivElement | null>(),
+  secondaryActionRef: React.createRef<HTMLSpanElement | null>(),
   open: false,
   clearSelection: () => null,
   getOptionById: () => undefined,

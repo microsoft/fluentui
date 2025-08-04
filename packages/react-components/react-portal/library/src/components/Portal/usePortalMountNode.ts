@@ -77,6 +77,35 @@ const useLegacyElementFactory: UseElementFactory = options => {
   return targetElement;
 };
 
+const initializeElementFactory = () => {
+  let currentElement: HTMLDivElement | undefined = undefined;
+
+  function get(targetRoot: HTMLElement | ShadowRoot, forceCreation: boolean): HTMLDivElement | undefined {
+    if (currentElement) {
+      return currentElement;
+    }
+
+    if (forceCreation) {
+      currentElement = targetRoot.ownerDocument.createElement('div');
+      targetRoot.appendChild(currentElement);
+    }
+
+    return currentElement;
+  }
+
+  function dispose() {
+    if (currentElement) {
+      currentElement.remove();
+      currentElement = undefined;
+    }
+  }
+
+  return {
+    get,
+    dispose,
+  };
+};
+
 /**
  * This is a modern element factory for React 18 and above. It is safe for concurrent rendering.
  *
@@ -87,36 +116,7 @@ const useLegacyElementFactory: UseElementFactory = options => {
 const useModernElementFactory: UseElementFactory = options => {
   const { className, dir, focusVisibleRef, targetNode } = options;
 
-  const [elementFactory] = React.useState(() => {
-    let currentElement: HTMLDivElement | undefined = undefined;
-
-    function get(targetRoot: HTMLElement | ShadowRoot, forceCreation: false): HTMLDivElement | undefined;
-    function get(targetRoot: HTMLElement | ShadowRoot, forceCreation: true): HTMLDivElement;
-    function get(targetRoot: HTMLElement | ShadowRoot, forceCreation: boolean): HTMLDivElement | undefined {
-      if (currentElement) {
-        return currentElement;
-      }
-
-      if (forceCreation) {
-        currentElement = targetRoot.ownerDocument.createElement('div');
-        targetRoot.appendChild(currentElement);
-      }
-
-      return currentElement;
-    }
-
-    function dispose() {
-      if (currentElement) {
-        currentElement.remove();
-        currentElement = undefined;
-      }
-    }
-
-    return {
-      get,
-      dispose,
-    };
-  });
+  const [elementFactory] = React.useState(initializeElementFactory);
 
   const elementProxy = React.useMemo(() => {
     if (targetNode === undefined || options.disabled) {
@@ -153,7 +153,7 @@ const useModernElementFactory: UseElementFactory = options => {
         }
 
         const targetElement = elementFactory.get(targetNode, true);
-        const targetProperty = targetElement[property];
+        const targetProperty = targetElement ? targetElement[property] : undefined;
 
         if (typeof targetProperty === 'function') {
           return targetProperty.bind(targetElement);
@@ -216,6 +216,17 @@ const useModernElementFactory: UseElementFactory = options => {
 };
 
 /**
+ * Element factory based on the React version.
+ *
+ * React 17 and below:
+ * - useLegacyElementFactory
+ *
+ * React 18 and above:
+ * - useModernElementFactory
+ */
+const useElementFactory = useInsertionEffect ? useModernElementFactory : useLegacyElementFactory;
+
+/**
  * Creates a new element on a "document.body" to mount portals.
  */
 export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
@@ -237,11 +248,5 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     targetNode: mountNode ?? targetDocument?.body,
   };
 
-  if (useInsertionEffect) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    return useModernElementFactory(factoryOptions);
-  }
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useLegacyElementFactory(factoryOptions);
+  return useElementFactory(factoryOptions);
 };
