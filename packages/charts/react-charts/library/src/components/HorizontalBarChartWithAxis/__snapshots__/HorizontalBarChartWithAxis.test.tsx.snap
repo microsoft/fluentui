@@ -6235,7 +6235,7 @@ Object {
                     x="-16"
                   />
                   <tspan
-                    dx="1.5em"
+                    dx="0em"
                     dy="0.32"
                     id="showDots-0"
                     x="-16"
@@ -6265,7 +6265,7 @@ Object {
                     x="-16"
                   />
                   <tspan
-                    dx="1.5em"
+                    dx="0em"
                     dy="0.32"
                     id="showDots-1"
                     x="-16"
@@ -6295,7 +6295,7 @@ Object {
                     x="-16"
                   />
                   <tspan
-                    dx="1.5em"
+                    dx="0em"
                     dy="0.32"
                     id="showDots-2"
                     x="-16"
@@ -6325,7 +6325,7 @@ Object {
                     x="-16"
                   />
                   <tspan
-                    dx="1.5em"
+                    dx="0em"
                     dy="0.32"
                     id="showDots-3"
                     x="-16"
@@ -6708,7 +6708,7 @@ Object {
                   x="-16"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   dy="0.32"
                   id="showDots-0"
                   x="-16"
@@ -6738,7 +6738,7 @@ Object {
                   x="-16"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   dy="0.32"
                   id="showDots-1"
                   x="-16"
@@ -6768,7 +6768,7 @@ Object {
                   x="-16"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   dy="0.32"
                   id="showDots-2"
                   x="-16"
@@ -6798,7 +6798,7 @@ Object {
                   x="-16"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   dy="0.32"
                   id="showDots-3"
                   x="-16"
