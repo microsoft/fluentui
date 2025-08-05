@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: prevent focusing trigger on first mount if menu has been opened previously",
+  "packageName": "@fluentui/react-menu",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
