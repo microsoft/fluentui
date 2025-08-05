@@ -114,6 +114,8 @@ export {
   isInvalidValue,
   isStringArray,
   isMonthArray,
+  getAxisIds,
+  getAxisKey,
 } from './PlotlySchemaConverter';
 
 export { decodeBase64Fields } from './DecodeBase64Data';
