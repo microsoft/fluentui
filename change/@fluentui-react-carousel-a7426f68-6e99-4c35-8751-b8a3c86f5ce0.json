@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat/enhance-carousel-styles-theme-tokens",
+  "packageName": "@fluentui/react-carousel",
+  "email": "Oleksandr.Katrukhin@microsoft.com",
+  "dependentChangeType": "patch"
+}

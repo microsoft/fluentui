@@ -15,10 +15,12 @@ import type { JSXElement } from '@fluentui/react-components';
 const useClasses = makeStyles({
   bannerCard: {
     alignContent: 'center',
-    borderRadius: tokens.borderRadiusLarge,
     height: '450px',
     textAlign: 'left',
     position: 'relative',
+  },
+  image: {
+    borderRadius: 'inherit',
   },
   cardContainer: {
     display: 'flex',
@@ -56,7 +58,7 @@ const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string; index:
 
   return (
     <CarouselCard className={classes.bannerCard} aria-label={`${index + 1} of ${IMAGES.length}`} id={`test-${index}`}>
-      <Image fit="cover" src={imageSrc} role="presentation" />
+      <Image fit="cover" src={imageSrc} className={classes.image} role="presentation" />
 
       <div className={classes.cardContainer}>
         <div className={classes.title}>{children}</div>
