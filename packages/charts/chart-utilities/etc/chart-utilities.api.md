@@ -452,6 +452,9 @@ export const getAxisIds: (data: Partial<PlotData>) => {
     y: number;
 };
 
+// @public (undocumented)
+export const getAxisKey: (axLetter: 'x' | 'y', axId: number) => keyof Layout;
+
 // @public
 export function getMultiLevelDateTimeFormatOptions(startLevel?: number, endLevel?: number): Intl.DateTimeFormatOptions;
 

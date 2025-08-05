@@ -286,7 +286,7 @@ const validateScatterData = (data: Partial<PlotData>, layout: Partial<Layout> | 
 const invalidateLogAxisType = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
   const axisIds = getAxisIds(data) as Record<string, number>;
   Object.keys(axisIds).forEach(axLetter => {
-    const axisKey = (`${axLetter}axis` + (axisIds[axLetter] > 1 ? axisIds[axLetter] : '')) as keyof Layout;
+    const axisKey = getAxisKey(axLetter as 'x' | 'y', axisIds[axLetter]);
     if (layout?.[axisKey]?.type === 'log') {
       throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, log axis type not supported.`);
     }
@@ -584,6 +584,10 @@ export const getAxisIds = (data: Partial<PlotData>) => {
     x: xAxisId,
     y: yAxisId,
   };
+};
+
+export const getAxisKey = (axLetter: 'x' | 'y', axId: number) => {
+  return `${axLetter}axis${axId > 1 ? axId : ''}` as keyof Layout;
 };
 
 const isScatterAreaChart = (data: Partial<PlotData>) => {

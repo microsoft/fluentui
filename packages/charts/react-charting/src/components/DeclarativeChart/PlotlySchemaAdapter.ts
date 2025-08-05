@@ -66,6 +66,7 @@ import {
   isInvalidValue,
   formatToLocaleString,
   getAxisIds,
+  getAxisKey,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
@@ -2568,26 +2569,31 @@ const getAxisScaleTypeProps = (
 ): Pick<ICartesianChartProps, 'xScaleType' | 'yScaleType' | 'secondaryYScaleType'> => {
   const result: GetAxisScaleTypePropsResult = {};
 
-  const xAxisIds = new Set<number>();
+  // Traces are grouped by their xaxis property, and for each group/subplot, the adapter functions
+  // are called with the corresponding filtered data. As a result, all traces passed to an adapter
+  // function share the same xaxis.
+  let xAxisId: number | undefined;
   const yAxisIds = new Set<number>();
   data.forEach((series: Partial<PlotData>) => {
     const axisIds = getAxisIds(series);
-    xAxisIds.add(axisIds.x);
+    xAxisId = axisIds.x;
     yAxisIds.add(axisIds.y);
   });
 
-  const axisKey = (axLetter: string, axId: number) => `${axLetter}axis${axId > 1 ? axId : ''}` as keyof Layout;
+  const isLogAxis = (axLetter: 'x' | 'y', axId: number) => {
+    const axisKey = getAxisKey(axLetter, axId);
+    return layout?.[axisKey]?.type === 'log';
+  };
 
-  const sortedXAxisIds = Array.from(xAxisIds).sort();
-  if (sortedXAxisIds.length > 0 && layout?.[axisKey('x', sortedXAxisIds[0])]?.type === 'log') {
+  if (typeof xAxisId === 'number' && isLogAxis('x', xAxisId)) {
     result.xScaleType = 'log';
   }
 
   const sortedYAxisIds = Array.from(yAxisIds).sort();
-  if (sortedYAxisIds.length > 0 && layout?.[axisKey('y', sortedYAxisIds[0])]?.type === 'log') {
+  if (sortedYAxisIds.length > 0 && isLogAxis('y', sortedYAxisIds[0])) {
     result.yScaleType = 'log';
   }
-  if (sortedYAxisIds.length > 1 && layout?.[axisKey('y', sortedYAxisIds[1])]?.type === 'log') {
+  if (sortedYAxisIds.length > 1 && isLogAxis('y', sortedYAxisIds[1])) {
     result.secondaryYScaleType = 'log';
   }
 
