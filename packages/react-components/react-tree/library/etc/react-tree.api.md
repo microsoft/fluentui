@@ -26,6 +26,7 @@ import type { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Home } from '@fluentui/keyboard-keys';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { Radio } from '@fluentui/react-radio';
 import { RadioProps } from '@fluentui/react-radio';
@@ -105,7 +106,7 @@ export type HeadlessFlatTreeOptions = Pick<FlatTreeProps, 'onOpenChange' | 'onNa
 };
 
 // @public (undocumented)
-export const renderFlatTree_unstable: (state: FlatTreeState, contextValues: FlatTreeContextValues) => JSX.Element;
+export const renderFlatTree_unstable: (state: FlatTreeState, contextValues: FlatTreeContextValues) => JSXElement;
 
 // @public (undocumented)
 export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSX.Element;
@@ -385,12 +386,12 @@ export type TreeProps = ComponentProps<TreeSlots> & {
 
 // @public (undocumented)
 export const TreeProvider: {
-    (props: React_2.ProviderProps<TreeContextValue | SubtreeContextValue>): JSX.Element;
+    (props: React_2.ProviderProps<TreeContextValue | SubtreeContextValue>): JSXElement;
     displayName: string;
 };
 
 // @public (undocumented)
-export const TreeRootReset: (props: TreeRootResetProps) => JSX.Element;
+export const TreeRootReset: (props: TreeRootResetProps) => JSXElement;
 
 // @public (undocumented)
 export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;

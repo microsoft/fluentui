@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 04 Aug 2025 07:21:25 GMT",
+      "tag": "@fluentui/react_v8.123.3",
+      "version": "8.123.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0a8e9ecfe73acfa00a58d8355d2dfbc76a7dd149",
+            "comment": "fix: Picker suggestion items hover correctly in WHCM"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Jul 2025 07:22:06 GMT",
       "tag": "@fluentui/react_v8.123.2",
       "version": "8.123.2",

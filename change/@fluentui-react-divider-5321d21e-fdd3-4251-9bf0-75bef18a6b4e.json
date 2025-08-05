@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: fix multiline text alignment for horizontal dividers",
+  "packageName": "@fluentui/react-divider",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

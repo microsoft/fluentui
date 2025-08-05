@@ -359,6 +359,7 @@ Object {
   "hideTickOverlap": true,
   "mode": "plotly",
   "width": 850,
+  "wrapXAxisLables": true,
   "xAxisTitle": "Votes",
   "yAxisTitle": "Framework",
 }
@@ -384,6 +385,9 @@ Object {
       "size": 150,
     },
   ],
+  "styles": Object {
+    "sublabel": "#2aa0a4",
+  },
   "sublabel": "▲ 20",
   "variant": "multiple-segments",
   "width": 500,
@@ -2835,6 +2839,7 @@ Object {
   "showYAxisLablesTooltip": true,
   "sortOrder": "none",
   "width": undefined,
+  "wrapXAxisLables": true,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -4880,6 +4885,7 @@ Object {
   "maxBarWidth": 50,
   "mode": "histogram",
   "width": undefined,
+  "wrapXAxisLables": false,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -4977,6 +4983,7 @@ Object {
   "hideTickOverlap": true,
   "mode": "plotly",
   "width": undefined,
+  "wrapXAxisLables": true,
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 3400,

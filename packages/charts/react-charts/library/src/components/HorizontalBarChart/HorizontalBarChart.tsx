@@ -4,6 +4,7 @@ import { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData, Hori
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { formatScientificLimitWidth, getAccessibleDataObject, useRtl } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
@@ -109,7 +110,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     //)
   };
 
-  function _createLegends(chartProps: ChartProps[]): JSX.Element {
+  function _createLegends(chartProps: ChartProps[]): JSXElement {
     const legendItems: Legend[] = chartProps.flatMap(
       point =>
         point.chartData?.map((dataPoint): Legend => {
@@ -134,7 +135,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     );
   }
 
-  function _getDefaultTextData(data: ChartProps): JSX.Element {
+  function _getDefaultTextData(data: ChartProps): JSXElement {
     const chartDataMode = props.chartDataMode || 'default';
 
     if (chartDataMode === 'hidden') {
@@ -184,7 +185,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     }
   }
 
-  function _createBenchmark(data: ChartProps): JSX.Element {
+  function _createBenchmark(data: ChartProps): JSXElement {
     if (data.chartData![0].horizontalBarChartdata!.total === undefined) {
       return <></>;
     }
@@ -210,7 +211,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
    * Extra margin is also provided, in the x value to provide some spacing in between the bars
    */
 
-  function _createBars(data: ChartProps): JSX.Element[] {
+  function _createBars(data: ChartProps): JSXElement[] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: ChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
