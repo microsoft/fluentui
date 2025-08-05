@@ -278,18 +278,26 @@ const validateScatterData = (data: Partial<PlotData>, layout: Partial<Layout> | 
     throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, Unsupported mode`);
   }
 
-  if (isScatterAreaChart(data)) {
-    invalidateLogAxisType(data, layout);
+  const isAreaChart = isScatterAreaChart(data);
+  const isFallbackNeeded = doesScatterNeedVSBCFallback(data);
+  if (isAreaChart && isFallbackNeeded) {
+    throw new Error(
+      `${UNSUPPORTED_MSG_PREFIX} ${data.type}, Fallback to VerticalStackedBarChart is not allowed for Area Charts.`,
+    );
+  }
+  if (isAreaChart && invalidateLogAxisType(data, layout)) {
+    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, log axis type not supported for AreaChart.`);
+  }
+  if (isFallbackNeeded && invalidateLogAxisType(data, layout)) {
+    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, log axis type not supported for VSBC fallback.`);
   }
 };
 
 const invalidateLogAxisType = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
   const axisIds = getAxisIds(data) as Record<string, number>;
-  Object.keys(axisIds).forEach(axLetter => {
+  return Object.keys(axisIds).some(axLetter => {
     const axisKey = getAxisKey(axLetter as 'x' | 'y', axisIds[axLetter]);
-    if (layout?.[axisKey]?.type === 'log') {
-      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, log axis type not supported.`);
-    }
+    return layout?.[axisKey]?.type === 'log';
   });
 };
 
@@ -357,11 +365,19 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data, layout: Partial<Layout> 
     },
   ],
   histogram: [
-    (data, layout) => invalidateLogAxisType(data as Partial<PlotData>, layout),
+    (data, layout) => {
+      if (invalidateLogAxisType(data as Partial<PlotData>, layout)) {
+        throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, log axis type not supported.`);
+      }
+    },
     data => validateSeriesData(data as Partial<PlotData>, false),
   ],
   bar: [
-    (data, layout) => invalidateLogAxisType(data as Partial<PlotData>, layout),
+    (data, layout) => {
+      if (invalidateLogAxisType(data as Partial<PlotData>, layout)) {
+        throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, log axis type not supported.`);
+      }
+    },
     data => {
       validateBarData(data as Partial<PlotData>);
     },
@@ -386,8 +402,20 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data, layout: Partial<Layout> 
     },
   ],
   funnel: [data => validateSeriesData(data as Partial<PlotData>, false)],
-  histogram2d: [(data, layout) => invalidateLogAxisType(data as Partial<PlotData>, layout)],
-  heatmap: [(data, layout) => invalidateLogAxisType(data as Partial<PlotData>, layout)],
+  histogram2d: [
+    (data, layout) => {
+      if (invalidateLogAxisType(data as Partial<PlotData>, layout)) {
+        throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, log axis type not supported.`);
+      }
+    },
+  ],
+  heatmap: [
+    (data, layout) => {
+      if (invalidateLogAxisType(data as Partial<PlotData>, layout)) {
+        throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, log axis type not supported.`);
+      }
+    },
+  ],
 };
 
 const DEFAULT_CHART_TYPE = '';
@@ -486,24 +514,12 @@ export const mapFluentChart = (input: any): OutputChartType => {
             return { isValid: true, traceIndex, type: 'scatter' };
           }
 
-          const isXDate = isDateArray(scatterData.x);
-          const isXNumber = isNumberArray(scatterData.x);
-
-          // Consider year as categorical variable not numeric continuous variable
-          // Also year is not considered a date variable as it is represented as a point
-          // in time and brings additional complexity of handling timezone and locale
-          // formatting given the current design of the charting library
-          const isXYear = isYearArray(scatterData.x);
-          const isXMonth = isMonthArray(scatterData.x);
-          const isYString = isStringArray(scatterData.y);
-          if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString) {
+          if (!doesScatterNeedVSBCFallback(scatterData)) {
             return { isValid: true, traceIndex, type: isAreaChart ? 'area' : 'line' };
-          } else if (isAreaChart) {
-            return {
-              isValid: false,
-              errorMessage: 'Fallback to VerticalStackedBarChart is not allowed for Area Charts.',
-            };
           }
+
+          // isScatterAreaChart and doesScatterNeedVSBCFallback cannot both return true for the
+          // same trace due to the validation logic in validateScatterData.
           return { isValid: true, traceIndex, type: 'fallback' };
         default:
           return { isValid: false, errorMessage: `${UNSUPPORTED_MSG_PREFIX} ${traceData.type}` };
@@ -591,8 +607,27 @@ export const getAxisKey = (axLetter: 'x' | 'y', axId: number) => {
 };
 
 const isScatterAreaChart = (data: Partial<PlotData>) => {
-  return (
-    (data.type === 'scatter' || data.type === 'scattergl') &&
-    (data.fill === 'tonexty' || data.fill === 'tozeroy' || !!data.stackgroup)
-  );
+  return data.fill === 'tonexty' || data.fill === 'tozeroy' || !!data.stackgroup;
+};
+
+const doesScatterNeedVSBCFallback = (data: Partial<PlotData>) => {
+  if (isScatterMarkers(data.mode ?? '')) {
+    return false;
+  }
+
+  const isXDate = isDateArray(data.x);
+  const isXNumber = isNumberArray(data.x);
+
+  // Consider year as categorical variable not numeric continuous variable
+  // Also year is not considered a date variable as it is represented as a point
+  // in time and brings additional complexity of handling timezone and locale
+  // formatting given the current design of the charting library
+  const isXYear = isYearArray(data.x);
+  const isXMonth = isMonthArray(data.x);
+  const isYString = isStringArray(data.y);
+  if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString) {
+    return false;
+  }
+
+  return true;
 };
