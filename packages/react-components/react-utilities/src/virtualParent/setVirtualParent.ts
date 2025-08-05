@@ -1,3 +1,5 @@
+import type { VirtualElement } from './types';
+
 /**
  * Sets the virtual parent of an element.
  *
@@ -10,9 +12,11 @@ export function setVirtualParent(child: Node, parent?: Node): void {
     return;
   }
 
-  Object.assign(child, {
-    _virtual: {
-      parent,
-    },
-  });
+  const virtualChild = child as VirtualElement;
+
+  if (!virtualChild._virtual) {
+    virtualChild._virtual = {};
+  }
+
+  virtualChild._virtual.parent = parent;
 }
