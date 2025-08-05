@@ -2003,4 +2003,3 @@ export {
   _nullBackgroundColorHover,
   _nullBackgroundColorPressed,
 } from './legacyVariant/tokens';
-export { kumoSemanticTokens } from './themes/kumoTheme';
