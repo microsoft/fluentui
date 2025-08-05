@@ -384,6 +384,9 @@ Object {
       "size": 150,
     },
   ],
+  "styles": Object {
+    "sublabel": "#2aa0a4",
+  },
   "sublabel": "▲ 20",
   "variant": "multiple-segments",
   "width": 500,
