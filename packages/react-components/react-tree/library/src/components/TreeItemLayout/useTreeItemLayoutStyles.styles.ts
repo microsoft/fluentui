@@ -39,14 +39,6 @@ const useRootBaseStyles = makeResetStyles({
       color: tokens.colorNeutralForeground3Pressed,
     },
   },
-  ':active': {
-    color: tokens.colorNeutralForeground2Pressed,
-    backgroundColor: tokens.colorSubtleBackgroundPressed,
-    // TODO: stop using treeItemLayoutClassNames.expandIcon for styling
-    [`& .${treeItemLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Pressed,
-    },
-  },
 });
 
 /**
