@@ -3,6 +3,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselCardSlots, CarouselCardState } from './CarouselCard.types';
+import { tokens } from '@fluentui/react-theme';
 
 export const carouselCardClassNames: SlotClassNames<CarouselCardSlots> = {
   root: 'fui-CarouselCard',
@@ -15,6 +16,8 @@ const useStyles = makeStyles({
   root: {
     flex: '0 0 100%',
     maxWidth: '100%',
+    borderRadius: tokens.borderRadiusXLarge,
+    boxShadow: tokens.shadow16,
   },
   autoSize: {
     flex: '0 0 auto' /* Adapt slide size to its content */,
