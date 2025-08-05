@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add useTypingAnnounce hook for managing live regions triggered by user input",
+  "packageName": "@fluentui/react-aria",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
