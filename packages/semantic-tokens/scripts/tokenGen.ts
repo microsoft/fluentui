@@ -309,13 +309,6 @@ const generateTokenVariables = () => {
     });
   }
 
-  // TODO: Remove this before merging to master
-  const kumoThemePath = './themes/kumoTheme';
-  indexSourceFile.addExportDeclaration({
-    namedExports: ['kumoSemanticTokens'],
-    moduleSpecifier: kumoThemePath,
-  });
-
   const rawText = indexSourceFile.getText();
   const formattedText = format(rawText, {
     parser: 'typescript',
