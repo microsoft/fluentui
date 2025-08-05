@@ -1,3 +1,5 @@
+import { Margins } from '../index';
+
 export const getClosestPairDiffAndRange = (data: number[] | Date[]): [number, number] | undefined => {
   if (data.length < 2) {
     return;
@@ -32,4 +34,36 @@ export const calculateAppropriateBarWidth = (data: number[] | Date[], totalWidth
     (totalWidth * closestPairDiff * (1 - innerPadding)) / (range + closestPairDiff * (1 - innerPadding)),
   );
   return barWidth;
+};
+
+/**
+ * Calculates the total width available for rendering bars.
+ */
+export const calcTotalWidth = (containerWidth: number, margins: Margins, extraMargin = 0): number => {
+  return containerWidth - (margins.left || 0) - (margins.right || 0) - extraMargin * 2;
+};
+
+/**
+ * Calculates the combined size of all bands and the gaps between them, in units relative to the bandwidth.
+ */
+export const calcTotalBandUnits = (numBands: number, innerPadding: number) => {
+  // inner_padding = space_between_bands / (space_between_bands + bandwidth)
+  // => space_between_bands = (inner_padding / (1 - inner_padding)) * bandwidth
+  const gapToBandRatio = innerPadding / (1 - innerPadding);
+  return numBands + (numBands - 1) * gapToBandRatio;
+};
+
+/**
+ * Calculates the total width required to render all bands including the gaps between them.
+ */
+export const calcRequiredWidth = (bandwidth: number, numBands: number, innerPadding: number) => {
+  return bandwidth * calcTotalBandUnits(numBands, innerPadding);
+};
+
+/**
+ * Calculates the maximum possible bandwidth such that the combined widths of all bands
+ * and the gaps between them exactly fill the total available width.
+ */
+export const calcBandwidth = (totalWidth: number, numBands: number, innerPadding: number) => {
+  return totalWidth / calcTotalBandUnits(numBands, innerPadding);
 };
