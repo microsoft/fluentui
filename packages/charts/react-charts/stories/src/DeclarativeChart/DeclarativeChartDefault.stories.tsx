@@ -22,7 +22,7 @@ interface ErrorBoundaryState {
   error: string;
 }
 
-type FluentDataVizColorPaletteTypes = 'default' | 'builtin' | 'override';
+type FluentDataVizColorPaletteTypes = 'default' | 'builtin' | 'others';
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   public static getDerivedStateFromError(error: Error) {
@@ -290,7 +290,7 @@ export const DeclarativeChartBasicExample = () => {
           chartSchema={inputSchema}
           onSchemaChange={handleChartSchemaChange}
           componentRef={declarativeChartRef}
-          fluentDataVizColorPalette={fluentDataVizColorPalette}
+          colorwayType={fluentDataVizColorPalette}
         />
       </ErrorBoundary>
     );
