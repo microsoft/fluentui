@@ -325,11 +325,14 @@ const useMenuOpenState = (
   }, [findFirstFocusable, state.menuPopoverRef]);
 
   const firstMount = useFirstMount();
+  const hasBeenOpenedRef = React.useRef(false);
+
   React.useEffect(() => {
     if (open) {
       focusFirst();
+      hasBeenOpenedRef.current = true;
     } else {
-      if (!firstMount) {
+      if (!firstMount && hasBeenOpenedRef.current) {
         if (targetDocument?.activeElement === targetDocument?.body) {
           // We know that React effects are sync so we focus the trigger here
           // after any event handler (event handlers will update state and re-render).
