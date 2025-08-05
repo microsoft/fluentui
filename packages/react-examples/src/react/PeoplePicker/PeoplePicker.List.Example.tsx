@@ -125,8 +125,9 @@ export const PeoplePickerListExample: React.FunctionComponent = () => {
   const onRenderSuggestionItem = (personaProps: IPersonaProps, suggestionsProps: IBasePickerSuggestionsProps) => {
     return (
       <PeoplePickerItemSuggestion
-        personaProps={{ ...personaProps, styles: personaStyles }}
+        personaProps={{ ...personaProps }}
         suggestionsProps={suggestionsProps}
+        classNames={{ subComponentStyles: { persona: personaStyles } }}
       />
     );
   };
