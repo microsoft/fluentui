@@ -48,6 +48,8 @@ import type {
   ScatterLine,
   TypedArray,
   Data,
+  PieColors,
+  Color,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOfType,
@@ -58,6 +60,7 @@ import {
   isYearArray,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
+import { color as d3Color } from 'd3-color';
 
 interface SecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -206,16 +209,89 @@ const getSecondaryYAxisValues = (
   };
 };
 
+export const getSchemaColors = (
+  colors: PieColors | Color | Color[] | string | null | undefined,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): string[] | string | undefined => {
+  const hexColors: string[] = [];
+  if (!colors) {
+    return undefined;
+  }
+  if (isArrayOrTypedArray(colors)) {
+    (colors as any[]).forEach((element, index) => {
+      const colorString = element?.toString().trim();
+      const nextFluentColor = getColor(`Label_${index}`, colorMap, isDarkTheme);
+      if (colorString) {
+        const parsedColor = d3Color(colorString);
+        hexColors.push(parsedColor ? parsedColor.formatHex() : nextFluentColor);
+      } else {
+        hexColors.push(nextFluentColor);
+      }
+    });
+  } else if (typeof colors === 'string') {
+    const parsedColor = d3Color(colors);
+    return parsedColor ? parsedColor.formatHex() : getColor('Label_0', colorMap, isDarkTheme);
+  }
+  return hexColors;
+};
+
+export const _extractColor = (
+  useFluentVizColorPalette: boolean,
+  colors: PieColors | Color | Color[] | string | null | undefined,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): string | string[] | undefined => {
+  return !useFluentVizColorPalette && colors ? getSchemaColors(colors, colorMap, isDarkTheme) : undefined;
+};
+
+export const _resolveColor = (
+  extractedColors: string[] | string | null | undefined,
+  index: number,
+  legend: string,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): string => {
+  let color = '';
+  if (extractedColors && isArrayOrTypedArray(extractedColors) && extractedColors[index]) {
+    color = extractedColors[index % extractedColors.length];
+  } else if (typeof extractedColors === 'string') {
+    color = extractedColors;
+  } else {
+    color = getColor(legend, colorMap, isDarkTheme);
+  }
+  return color;
+};
+
+export const _getGaugeAxisColor = (
+  useFluentVizColorPalette: boolean,
+  color: Color | undefined,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): string => {
+  const extractedColors = _extractColor(useFluentVizColorPalette, color, colorMap, isDarkTheme);
+  return _resolveColor(extractedColors, 0, '', colorMap, isDarkTheme);
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): DonutChartProps => {
   const firstData = input.data[0] as PieData;
-
+  // extract colors for each series only once
+  const colors: string[] | string | null | undefined = _extractColor(
+    useFluentVizColorPalette,
+    firstData?.marker?.colors,
+    colorMap,
+    isDarkTheme,
+  );
   const mapLegendToDataPoint: Record<string, ChartDataPoint> = {};
   firstData.labels?.forEach((label: string, index: number) => {
-    const color = getColor(label, colorMap, isDarkTheme);
+    // resolve color for each legend from the extracted colors
+    const color: string = _resolveColor(colors, index, label, colorMap, isDarkTheme);
+
     //ToDo how to handle string data?
     const value = typeof firstData.values?.[index] === 'number' ? (firstData.values[index] as number) : 1;
 
@@ -259,6 +335,7 @@ export const transformPlotlyJsonToDonutProps = (
 export const transformPlotlyJsonToVSBCProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
   fallbackVSBC?: boolean,
 ): VerticalStackedBarChartProps => {
@@ -269,14 +346,25 @@ export const transformPlotlyJsonToVSBCProps = (
   let yMinValue = 0;
   input.data.forEach((series: PlotData, index1: number) => {
     const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
+    // extract bar colors for each series only once
+    const extractedBarColors = _extractColor(useFluentVizColorPalette, series.marker?.color, colorMap, isDarkTheme) as
+      | string[]
+      | string
+      | undefined;
+    // extract line colors for each series only once
+    const extractedLineColors = _extractColor(useFluentVizColorPalette, series.line?.color, colorMap, isDarkTheme) as
+      | string[]
+      | string
+      | undefined;
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { xAxisPoint: isXYearCategory ? x.toString() : x, chartData: [], lineData: [] };
       }
       const legend: string = legends[index1];
+      // resolve color for each legend's bars from the extracted colors
+      const color = _resolveColor(extractedBarColors, index1, legend, colorMap, isDarkTheme);
       const yVal: number = (series.y?.[index2] as number) ?? 0;
       if (series.type === 'bar') {
-        const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
           legend,
           data: yVal,
@@ -284,7 +372,7 @@ export const transformPlotlyJsonToVSBCProps = (
         });
         yMaxValue = Math.max(yMaxValue, yVal);
       } else if (series.type === 'scatter' || !!fallbackVSBC) {
-        const color = getColor(legend, colorMap, isDarkTheme);
+        const lineColor = _resolveColor(extractedLineColors, index1, legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
         const dashType = series.line?.dash || 'solid';
         const legendShape =
@@ -293,7 +381,7 @@ export const transformPlotlyJsonToVSBCProps = (
           legend,
           legendShape,
           y: yVal,
-          color,
+          color: lineColor,
           ...(lineOptions ? { lineOptions } : {}),
           useSecondaryYScale: usesSecondaryYScale(series),
         });
@@ -332,19 +420,26 @@ export const transformPlotlyJsonToVSBCProps = (
 export const transformPlotlyJsonToGVBCProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): GroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, GroupedVerticalBarChartData> = {};
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   input.data.forEach((series: PlotData, index1: number) => {
+    // extract colors for each series only once
+    const extractedColors = _extractColor(useFluentVizColorPalette, series.marker?.color, colorMap, isDarkTheme) as
+      | string[]
+      | string
+      | undefined;
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
       }
       if (series.type === 'bar') {
         const legend: string = legends[index1];
-        const color = getColor(legend, colorMap, isDarkTheme);
+        // resolve color for each legend's bars from the extracted colors
+        const color = _resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
 
         mapXToDataPoints[x].series.push({
           key: legend,
@@ -380,6 +475,7 @@ export const transformPlotlyJsonToGVBCProps = (
 export const transformPlotlyJsonToVBCProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): VerticalBarChartProps => {
   const vbcData: VerticalBarChartDataPoint[] = [];
@@ -390,6 +486,11 @@ export const transformPlotlyJsonToVBCProps = (
       return;
     }
 
+    // extract colors for each series only once
+    const extractedColors = _extractColor(useFluentVizColorPalette, series.marker?.color, colorMap, isDarkTheme) as
+      | string[]
+      | string
+      | undefined;
     const isXString = isStringArray(series.x);
     // TODO: In case of a single bin, add an empty bin of the same size to prevent the
     // default bar width from being used and ensure the bar spans the full intended range.
@@ -412,7 +513,8 @@ export const transformPlotlyJsonToVBCProps = (
 
     xBins.forEach((bin, index) => {
       const legend: string = legends[seriesIdx];
-      const color: string = getColor(legend, colorMap, isDarkTheme);
+      // resolve color for each legend's bars from the extracted colors
+      const color = _resolveColor(extractedColors, seriesIdx, legend, colorMap, isDarkTheme);
       const yVal = calculateHistNorm(
         series.histnorm,
         y[index],
@@ -453,6 +555,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   input: PlotlySchema,
   isAreaChart: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): LineChartProps | AreaChartProps => {
   const secondaryYAxisValues = getSecondaryYAxisValues(
@@ -464,12 +567,18 @@ export const transformPlotlyJsonToScatterChartProps = (
   let mode: string = 'tonexty';
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   const chartData: LineChartPoints[] = input.data.map((series: PlotData, index: number) => {
+    // extract colors for each series only once
+    const extractedColors = _extractColor(useFluentVizColorPalette, series.line?.color, colorMap, isDarkTheme) as
+      | string[]
+      | string
+      | undefined;
     const xValues = series.x as Datum[];
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const legend: string = legends[index];
-    const lineColor = getColor(legend, colorMap, isDarkTheme);
+    // resolve color for each legend's lines from the extracted colors
+    const lineColor = _resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
     const lineOptions = getLineOptions(series.line);
     const dashType = series.line?.dash || 'solid';
@@ -537,13 +646,20 @@ export const transformPlotlyJsonToScatterChartProps = (
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): HorizontalBarChartWithAxisProps => {
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   const chartData: HorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: PlotData, index: number) => {
+      // extract colors for each series only once
+      const extractedColors = _extractColor(useFluentVizColorPalette, series.marker?.color, colorMap, isDarkTheme) as
+        | string[]
+        | string
+        | undefined;
       const legend = legends[index];
-      const color = getColor(legend, colorMap, isDarkTheme);
+      // resolve color for each legend's bars from the extracted colors
+      const color = _resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
       return (series.y as Datum[]).map((yValue: string, i: number) => {
         return {
           x: series.x[i],
@@ -708,6 +824,7 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): HeatMapC
 export const transformPlotlyJsonToSankeyProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): SankeyChartProps => {
   const { link, node } = input.data[0] as SankeyData;
@@ -717,13 +834,13 @@ export const transformPlotlyJsonToSankeyProps = (
       source: link?.source![index],
       target: link?.target![index],
     }))
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     // Filter out negative nodes, unequal nodes and self-references (circular links)
     .filter(x => x.source >= 0 && x.target >= 0 && x.source !== x.target);
 
+  const extractedNodeColors = _extractColor(useFluentVizColorPalette, node?.color, colorMap, isDarkTheme);
   const sankeyChartData = {
     nodes: node.label?.map((label: string, index: number) => {
-      const color = getColor(label, colorMap, isDarkTheme);
+      const color = _resolveColor(extractedNodeColors, index, label, colorMap, isDarkTheme);
 
       return {
         nodeId: index,
@@ -761,14 +878,17 @@ export const transformPlotlyJsonToSankeyProps = (
 export const transformPlotlyJsonToGaugeProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): GaugeChartProps => {
   const firstData = input.data[0] as PlotData;
+  const stepsColors = firstData.gauge?.steps ? firstData.gauge.steps.map((step: any) => step.color) : undefined;
+  const extractedColors = _extractColor(useFluentVizColorPalette, stepsColors, colorMap, isDarkTheme);
 
   const segments = firstData.gauge?.steps?.length
     ? firstData.gauge.steps.map((step: any, index: number): GaugeChartSegment => {
         const legend = step.name || `Segment ${index + 1}`;
-        const color = getColor(legend, colorMap, isDarkTheme);
+        const color = _resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
         return {
           legend,
           size: step.range?.[1] - step.range?.[0],
@@ -779,7 +899,7 @@ export const transformPlotlyJsonToGaugeProps = (
         {
           legend: 'Current',
           size: firstData.value ?? 0 - (firstData.gauge?.axis?.range?.[0] ?? 0),
-          color: getColor('Current', colorMap, isDarkTheme),
+          color: _getGaugeAxisColor(useFluentVizColorPalette, firstData.gauge?.axis?.color, colorMap, isDarkTheme),
         },
         {
           legend: 'Target',
@@ -789,25 +909,35 @@ export const transformPlotlyJsonToGaugeProps = (
       ];
 
   let sublabel: string | undefined;
-  // let sublabelColor: string | undefined;
+  let sublabelColor: string | undefined;
   if (firstData.delta?.reference) {
     const diff = firstData.value - firstData.delta.reference;
     if (diff >= 0) {
       sublabel = `\u25B2 ${diff}`;
-      // const color = getColorFromToken(DataVizPalette.success, isDarkTheme);
-      // sublabelColor = color;
+      const extractedIncreasingDeltaColors = _extractColor(
+        useFluentVizColorPalette,
+        firstData.delta?.increasing?.color,
+        colorMap,
+        isDarkTheme,
+      );
+      const color = _resolveColor(extractedIncreasingDeltaColors, 0, '', colorMap, isDarkTheme);
+      sublabelColor = color;
     } else {
       sublabel = `\u25BC ${Math.abs(diff)}`;
-      // const color = getColorFromToken(DataVizPalette.error, isDarkTheme);
-      // sublabelColor = color;
+      const extractedDecreasingDeltaColors = _extractColor(
+        useFluentVizColorPalette,
+        firstData.delta?.decreasing?.color,
+        colorMap,
+        isDarkTheme,
+      );
+      const color = _resolveColor(extractedDecreasingDeltaColors, 0, '', colorMap, isDarkTheme);
+      sublabelColor = color;
     }
   }
 
-  // const styles: GaugeChartProps['styles'] = {
-  //   sublabel: {
-  //     fill: sublabelColor,
-  //   },
-  // };
+  const styles = {
+    sublabel: sublabelColor,
+  };
 
   const { chartTitle } = getTitles(input.layout);
 
@@ -825,6 +955,7 @@ export const transformPlotlyJsonToGaugeProps = (
     // TODO
     // styles,
     variant: firstData.gauge?.steps?.length ? 'multiple-segments' : 'single-segment',
+    styles,
   };
 };
 

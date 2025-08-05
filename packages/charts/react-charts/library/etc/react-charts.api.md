@@ -441,6 +441,7 @@ export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
     chartSchema: Schema;
     componentRef?: React_2.RefObject<IDeclarativeChart>;
+    fluentDataVizColorPalette?: 'default' | 'builtin' | 'override';
     onSchemaChange?: (eventData: Schema) => void;
 }
 
