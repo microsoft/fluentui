@@ -35,7 +35,7 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
       { elementType: 'div' },
     ),
     iconCell: slot.optional(props.iconCell, { elementType: MenuGridCell }),
-    contentCell: slot.optional(props.content, {
+    contentCell: slot.optional(props.contentCell, {
       renderByDefault: !!props.children,
       defaultProps: { children: props.children },
       elementType: MenuGridCell,
