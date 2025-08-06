@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { useRtl } from '../../utilities/index';
 import { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
-import { Legend, Legends } from '../Legends/index';
+import { Legend, Legends, LegendContainer } from '../Legends/index';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
@@ -15,7 +16,8 @@ import {
   getStackedHorizontalFunnelSegmentGeometry,
   getStackedVerticalFunnelSegmentGeometry,
 } from './funnelGeometry';
-import { ChartPopoverProps } from '../../index';
+import { ChartPopoverProps, ImageExportOptions } from '../../index';
+import { toImage } from '../../utilities/image-export-utils';
 
 export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forwardRef<
   HTMLDivElement,
@@ -31,12 +33,23 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const chartContainerRef = React.useRef<HTMLDivElement | null>(null);
   const isStacked = isStackedFunnelData(props.data);
+  const _legendsRef = React.useRef<LegendContainer>(null);
 
   React.useEffect(() => {
     if (props.legendProps?.selectedLegends) {
       setSelectedLegends(props.legendProps.selectedLegends);
     }
   }, [props.legendProps?.selectedLegends]);
+
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(chartContainerRef.current, _legendsRef.current?.toSVG, isRTL, opts);
+      },
+    }),
+    [],
+  );
 
   function _handleHover(data: FunnelChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>) {
     mouseEvent?.persist();
@@ -229,7 +242,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     containerHeight: number,
     containerWidth: number,
   ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element[] {
+  JSXElement[] {
     const { data } = props;
     const funnelWidth = containerWidth;
     const funnelHeight = containerHeight * 0.8;
@@ -282,7 +295,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
       isRTL: boolean;
     },
   ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element {
+  JSXElement {
     // Ensure stages have subValues for geometry functions
     const stagesWithSubValues = geometryParams.stages.map(s => ({
       ...s,
@@ -330,7 +343,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     containerHeight: number,
     containerWidth: number,
   ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element[] {
+  JSXElement[] {
     const { data } = props;
 
     const stages = data;
@@ -341,7 +354,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     const funnelHeight = containerHeight * 0.8;
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const paths: JSX.Element[] = [];
+    const paths: JSXElement[] = [];
 
     const geometryParams = {
       stages,
@@ -366,7 +379,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   }
 
   function _renderLegends(): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element {
+  JSXElement {
     if (props.hideLegend) {
       return <></>;
     }
@@ -404,6 +417,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
           centerLegends={true}
           onChange={_onLegendSelectionChangeCallback}
           {...props.legendProps}
+          legendRef={_legendsRef}
         />
       </div>
     );

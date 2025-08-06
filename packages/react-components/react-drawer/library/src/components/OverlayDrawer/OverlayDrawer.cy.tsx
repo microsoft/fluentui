@@ -7,11 +7,9 @@ import { testDrawerBaseScenarios } from '../../e2e/DrawerShared';
 import { OverlayDrawer } from './OverlayDrawer';
 import { OverlayDrawerProps } from './OverlayDrawer.types';
 import { overlayDrawerClassNames } from './useOverlayDrawerStyles.styles';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mountFluent = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

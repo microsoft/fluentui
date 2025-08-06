@@ -89,7 +89,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(event)) {
+    if (isTargetDisabled(event) || event.isDefaultPrevented()) {
       return;
     }
 
