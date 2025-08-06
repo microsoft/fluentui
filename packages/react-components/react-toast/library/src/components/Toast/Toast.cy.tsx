@@ -434,7 +434,7 @@ describe('Toast', () => {
           <button id="make" onClick={makeToast}>
             Make toast
           </button>
-          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+          <Toaster onKeyDown={() => console.log('test')} shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
         </>
       );
     };
@@ -661,7 +661,7 @@ describe('Toast', () => {
           <button id="make" onClick={makeToast}>
             Make toast
           </button>
-          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+          <Toaster onKeyDown={() => console.log('foo')} shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
         </>
       );
     };
