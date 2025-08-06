@@ -109,7 +109,7 @@ export type MenuGridRowGroupState = ComponentState<MenuGridRowGroupSlots> & {
 };
 
 // @public (undocumented)
-export type MenuGridRowProps = Omit<ComponentProps<Partial<MenuGridRowSlots>>, 'contentCell'> & Pick<Partial<MenuGridRowSlots>, 'contentCell'>;
+export type MenuGridRowProps = ComponentProps<Partial<MenuGridRowSlots>>;
 
 // @public (undocumented)
 export type MenuGridRowSlots = {
