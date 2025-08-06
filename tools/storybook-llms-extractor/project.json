@@ -12,7 +12,7 @@
         "outputPath": "{projectRoot}/dist",
         "main": "tools/storybook-llms-extractor/src/index.ts",
         "tsConfig": "tools/storybook-llms-extractor/tsconfig.lib.json",
-        "assets": ["tools/storybook-llms-extractor/*.md", "tools/storybook-llms-extractor/src/template/*"]
+        "assets": ["tools/storybook-llms-extractor/*.md"]
       }
     }
   }

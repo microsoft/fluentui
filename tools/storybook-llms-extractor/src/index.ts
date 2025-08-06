@@ -1,3 +1,3 @@
-export type { Args } from './types';
+export type { Args as Config } from './types';
 
 export {};

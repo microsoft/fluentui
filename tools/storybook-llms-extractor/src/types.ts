@@ -117,29 +117,3 @@ export type StorybookComponentProp = {
  * ```
  */
 export type StorybookRef = { title: string; url: string; sourceUrl?: string };
-
-/**
- * Storybook Client API store, contains methods to cache CSF files and cached items.
- */
-type StorybookStoryStore = {
-  /**
-   * Caches all CSF files in the Storybook store.
-   * This method must be called before accessing `cachedCSFFiles`.
-   */
-  cacheAllCSFFiles: () => Promise<void>;
-  /**
-   * CSF files become available after `cacheAllCSFFiles()` is resolved.
-   **/
-  cachedCSFFiles?: Record<string, StorybookStoreItem>;
-};
-
-/**
- * Storybook Client API store, contains methods to cache CSF files.
- */
-export interface StorybookGlobals extends Window {
-  /**
-   * Storybook Client API, contains story store and other metadata.
-   * `storyStore` is used for Storybook 7, `storyStoreValue` for >= 8.
-   */
-  __STORYBOOK_PREVIEW__?: { storyStore: StorybookStoryStore } | { storyStoreValue: StorybookStoryStore };
-}

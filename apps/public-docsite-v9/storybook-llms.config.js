@@ -6,7 +6,7 @@ const storybookConfig = require('./.storybook/main');
  * Config for the LLMs docs generator script.
  * @see {@link file://./../../tools/storybook-llms-extractor/src/cli.ts}
  *
- * @type {import('@fluentui/storybook-llms-extractor').Args}
+ * @type {import('@fluentui/storybook-llms-extractor').Config}
  */
 module.exports = {
   distPath: './dist/storybook',
