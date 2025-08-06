@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/semantic-tokens",
-  "version": "0.0.0-alpha.1",
+  "version": "0.0.1",
   "description": "Fluent UI Theme semantic-tokens",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
