@@ -355,8 +355,8 @@ const shouldIgnoreKey = (key: string): boolean => {
   const cssKeyRegex = new RegExp(
     '^(color|fill|stroke|border|background|font|shadow|outline|margin|padding|gap|align|justify|display|flex|grid|' +
       'text|line|letter|word|vertical|horizontal|overflow|position|top|right|bottom|left|zindex|z-index|opacity|' +
-      'filter|clip|cursor|resize|transition|animation|transform|box|list|column|row|order|direction|visibility|' +
-      'content|width|height|min|max|size|aspect|object|image|user|pointer|caret|scroll|%)|(-webkit-|-moz-|-ms-|-o-)',
+      'filter|clip|cursor|resize|transition|animation|transform|box|column|row|direction|visibility|' +
+      'content|width|height|aspect|image|user|pointer|caret|scroll|%)|(-webkit-|-moz-|-ms-|-o-)',
     'i',
   );
   if (cssKeyRegex.test(lowerKey)) {

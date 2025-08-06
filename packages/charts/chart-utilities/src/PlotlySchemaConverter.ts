@@ -504,12 +504,6 @@ export const mapFluentChart = (input: any): OutputChartType => {
           } else {
             // Handle object arrays in y values by setting barmode to group and routing to GVBC
             if (isObjectArray(barData.y)) {
-              // Set layout barmode to group for object hierarchies
-              if (!validSchema.layout) {
-                validSchema.layout = {};
-              }
-              validSchema.layout.barmode = 'group';
-
               return { isValid: true, traceIndex, type: 'groupedverticalbar' };
             }
 
