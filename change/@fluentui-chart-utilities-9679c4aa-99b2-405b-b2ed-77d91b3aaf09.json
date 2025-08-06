@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(chart-utilities): Handling y object values for bar chart. ",
+  "packageName": "@fluentui/chart-utilities",
+  "email": "120183316+srmukher@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
