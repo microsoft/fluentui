@@ -134,8 +134,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         target: event.currentTarget,
         type: isEventFromExpandIcon ? treeDataTypes.ExpandIconClick : treeDataTypes.Click,
       } as const;
-      props.onOpenChange?.(event, data);
       if (itemType !== 'leaf') {
+        props.onOpenChange?.(event, data);
         requestTreeResponse({
           ...data,
           itemType,
