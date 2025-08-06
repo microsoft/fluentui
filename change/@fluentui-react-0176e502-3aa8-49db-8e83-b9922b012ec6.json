@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: VoiceOver on iOS safari can reach Dropdown options",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charting): Handling y object values for bar chart.",
-  "packageName": "@fluentui/react-charting",
-  "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
