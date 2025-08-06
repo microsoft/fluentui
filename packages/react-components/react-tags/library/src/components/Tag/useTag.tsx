@@ -41,7 +41,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     appearance = contextAppearance ?? 'filled',
     disabled = false,
     dismissible = contextDismissible ?? false,
-    selected = false,
+    selected,
     shape = 'rounded',
     size = contextSize,
     value = id,
@@ -62,6 +62,8 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
   });
 
   const elementType = dismissible ? 'button' : 'span';
+  const selectedProp = tagGroupRole === 'listbox' ? 'aria-selected' : 'aria-pressed';
+  const selectable = typeof selected === 'boolean' || tagGroupRole === 'listbox';
 
   return {
     appearance,
@@ -69,7 +71,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     avatarSize: tagAvatarSizeMap[size],
     disabled: contextDisabled ? true : disabled,
     dismissible,
-    selected,
+    selected: !!selected,
     shape,
     size,
 
@@ -86,6 +88,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
       getIntrinsicElementProps(elementType, {
         ref,
         role: tagGroupRole === 'listbox' ? 'option' : undefined,
+        [selectedProp]: selectable ? selected : undefined,
         ...props,
         disabled: contextDisabled ? true : disabled,
         id,

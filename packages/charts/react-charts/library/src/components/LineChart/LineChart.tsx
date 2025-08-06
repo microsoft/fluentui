@@ -4,9 +4,10 @@ import { useLineChartStyles } from './useLineChartStyles.styles';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
-import { Legend, Legends } from '../Legends/index';
+import { Legend, Legends, LegendContainer } from '../Legends/index';
 import { line as d3Line } from 'd3-shape';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { find } from '../../utilities/index';
 import {
   AccessibilityProps,
@@ -20,6 +21,7 @@ import {
   LineChartGap,
   LineChartDataPoint,
   Chart,
+  ImageExportOptions,
 } from '../../index';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { tokens } from '@fluentui/react-theme';
@@ -45,6 +47,7 @@ import {
   getCurveFactory,
 } from '../../utilities/index';
 import { ScaleLinear } from 'd3-scale';
+import { toImage } from '../../utilities/image-export-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 enum PointSize {
@@ -148,8 +151,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     let _refArray: RefArrayData[] = [];
     let margins: Margins;
     let eventLabelHeight: number = 36;
-    let lines: JSX.Element[];
-    let _renderedColorFillBars: JSX.Element[];
+    let lines: JSXElement[];
+    let _renderedColorFillBars: JSXElement[];
     const _colorFillBars = React.useRef<ColorFillBarsProps[]>([]);
     let _tooltipId: string = useId('LineChartTooltipId_');
     let _rectId: string = useId('containerRectLD');
@@ -161,6 +164,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     let xAxisCalloutAccessibilityData: AccessibilityProps = {};
     const cartesianChartRef = React.useRef<Chart>(null);
     let _yScaleSecondary: ScaleLinear<number, number> | undefined;
+    const _legendsRef = React.useRef<LegendContainer>(null);
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -202,6 +206,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       props.componentRef,
       () => ({
         chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+        toImage: (opts?: ImageExportOptions): Promise<string> => {
+          return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRTL, opts);
+        },
       }),
       [],
     );
@@ -331,7 +338,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       }
     }
 
-    function _createLegends(data: LineChartDataWithIndex[]): JSX.Element {
+    function _createLegends(data: LineChartDataWithIndex[]): JSXElement {
       const { legendProps, allowMultipleShapesForPoints = false } = props;
       const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
       const legendDataItems = data.map((point: LineChartDataWithIndex) => {
@@ -399,6 +406,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           overflowText={props.legendsOverflowText}
           {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: _onHoverCardHide })}
           {...props.legendProps}
+          legendRef={_legendsRef}
         />
       );
     }
@@ -463,17 +471,17 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       }
     }
 
-    function _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
-      const lines: JSX.Element[] = [];
+    function _createLines(xElement: SVGElement, containerHeight: number): JSXElement[] {
+      const lines: JSXElement[] = [];
       if (isSelectedLegend) {
         _points = selectedLegendPoints;
       } else {
         _points = _injectIndexPropertyInLineChartData(props.data.lineChartData);
       }
       for (let i = _points.length - 1; i >= 0; i--) {
-        const linesForLine: JSX.Element[] = [];
-        const bordersForLine: JSX.Element[] = [];
-        const pointsForLine: JSX.Element[] = [];
+        const linesForLine: JSXElement[] = [];
+        const bordersForLine: JSXElement[] = [];
+        const pointsForLine: JSXElement[] = [];
 
         const legendVal: string = _points[i].legend;
         const lineColor: string = _points[i].color!;
@@ -532,7 +540,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               ref={(e: SVGCircleElement | null) => {
                 _refCallback(e!, circleId);
               }}
-              onFocus={() => _handleFocus(circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+              onFocus={event =>
+                _handleFocus(event, circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
+              }
               onBlur={_handleMouseOut}
               {..._getClickHandler(_points[i].data[0].onDataPointClick)}
             />,
@@ -691,7 +701,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                   )
                 }
                 onMouseOut={_handleMouseOut}
-                onFocus={() => _handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+                onFocus={event =>
+                  _handleFocus(event, lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
+                }
                 onBlur={_handleMouseOut}
                 {..._getClickHandler(_points[i].data[j - 1].onDataPointClick)}
                 opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
@@ -745,8 +757,15 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       )
                     }
                     onMouseOut={_handleMouseOut}
-                    onFocus={() =>
-                      _handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId, lastCirlceXCalloutAccessibilityData)
+                    onFocus={event =>
+                      _handleFocus(
+                        event,
+                        lineId,
+                        x2,
+                        lastCirlceXCallout,
+                        lastCircleId,
+                        lastCirlceXCalloutAccessibilityData,
+                      )
                     }
                     onBlur={_handleMouseOut}
                     {..._getClickHandler(_points[i].data[j].onDataPointClick)}
@@ -790,6 +809,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         event,
                         yScale,
                       )
+                    }
+                    onFocus={event =>
+                      _handleFocus(event, circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
                     }
                     onMouseOut={_handleMouseOut}
                     strokeWidth={0}
@@ -933,7 +955,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     }
 
     function _createColorFillBars(containerHeight: number) {
-      const colorFillBars: JSX.Element[] = [];
+      const colorFillBars: JSXElement[] = [];
       if (isSelectedLegend) {
         _colorFillBars.current = selectedColorBarLegend;
       } else {
@@ -1104,6 +1126,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     };
 
     function _handleFocus(
+      event: React.FocusEvent<SVGCircleElement | SVGPathElement, Element>,
       lineId: string,
       x: number | Date,
 
@@ -1111,6 +1134,13 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       circleId: string,
       xAxisCalloutAccessibilityData?: AccessibilityProps,
     ) {
+      let cx = 0;
+      let cy = 0;
+
+      const targetRect = (event.target as SVGCircleElement | SVGPathElement).getBoundingClientRect();
+      cx = targetRect.left + targetRect.width / 2;
+      cy = targetRect.top + targetRect.height / 2;
+      updatePosition(cx, cy);
       _uniqueCallOutID = circleId;
       const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
       const xVal = x instanceof Date ? x.getTime() : x;

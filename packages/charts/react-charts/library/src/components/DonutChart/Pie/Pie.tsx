@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { pie as d3Pie } from 'd3-shape';
 import { PieProps } from './index';
 import { Arc } from '../Arc/index';
@@ -29,7 +30,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
       .value((d: any) => d.data)
       .padAngle(0);
 
-    function _focusCallback(data: ChartDataPoint, id: string, e: SVGPathElement): void {
+    function _focusCallback(data: ChartDataPoint, id: string, e: React.FocusEvent<SVGPathElement>): void {
       props.onFocusCallback!(data, id, e);
     }
 
@@ -46,7 +47,13 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function arcGenerator(d: any, i: number, focusData: any, href?: string): JSX.Element {
+    function arcGenerator(
+      d: any,
+      i: number,
+      focusData: any,
+      href?: string,
+    ): // eslint-disable-next-line @typescript-eslint/no-deprecated
+    JSXElement {
       const color = d && d.data && d.data.color;
       return (
         <Arc

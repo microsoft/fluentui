@@ -2,6 +2,78 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Wed, 30 Jul 2025 16:55:28 GMT",
+      "tag": "@fluentui/react-motion_v9.10.1",
+      "version": "9.10.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Jul 2025 13:10:57 GMT",
+      "tag": "@fluentui/react-motion_v9.10.1",
+      "version": "9.10.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.24.1",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.23.1",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jul 2025 18:48:20 GMT",
+      "tag": "@fluentui/react-motion_v9.10.0",
+      "version": "9.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.23.0",
+            "commit": "27822054c223a560c0b49ec0b9079f628776e498"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Jul 2025 13:52:48 GMT",
+      "tag": "@fluentui/react-motion_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-motion",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 10:02:45 GMT",
       "tag": "@fluentui/react-motion_v9.9.0",
       "version": "9.9.0",

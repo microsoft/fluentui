@@ -40,48 +40,88 @@ export type {
 /* eslint-enable @typescript-eslint/no-deprecated */
 
 export {
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   Virtualizer,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   virtualizerClassNames,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   useVirtualizer_unstable,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   renderVirtualizer_unstable,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   useVirtualizerStyles_unstable,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   useIntersectionObserver,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   useStaticVirtualizerMeasure,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   useDynamicVirtualizerMeasure,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   useResizeObserverRef_unstable,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerContextProvider,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   useVirtualizerContext_unstable,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerScrollView,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   virtualizerScrollViewClassNames,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   useVirtualizerScrollView_unstable,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   renderVirtualizerScrollView_unstable,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   useVirtualizerScrollViewStyles_unstable,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerScrollViewDynamic,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   virtualizerScrollViewDynamicClassNames,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   useVirtualizerScrollViewDynamic_unstable,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   renderVirtualizerScrollViewDynamic_unstable,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   useVirtualizerScrollViewDynamicStyles_unstable,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   scrollToItemDynamic,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   scrollToItemStatic,
 } from '@fluentui/react-virtualizer';
 
 export type {
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerProps,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerState,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerSlots,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerChildRenderFunction,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerScrollViewProps,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerScrollViewState,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerScrollViewSlots,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerContextProps,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerScrollViewDynamicProps,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerScrollViewDynamicState,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerScrollViewDynamicSlots,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerMeasureDynamicProps,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   VirtualizerMeasureProps,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   ResizeCallbackWithRef,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   ScrollToInterface,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   ScrollToItemDynamicParams,
+  /** @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.*/
   ScrollToItemStaticParams,
 } from '@fluentui/react-virtualizer';
 

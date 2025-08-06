@@ -7,7 +7,14 @@ import {
 import { fadeAtom } from '../../atoms/fade-atom';
 import { FadeParams } from './fade-types';
 
-/** Define a presence motion for fade in/out  */
+/**
+ * Define a presence motion for fade in/out
+ *
+ * @param duration - Time (ms) for the enter transition (fade-in). Defaults to the `durationNormal` value (200 ms).
+ * @param easing - Easing curve for the enter transition (fade-in). Defaults to the `curveEasyEase` value.
+ * @param exitDuration - Time (ms) for the exit transition (fade-out). Defaults to the `duration` param for symmetry.
+ * @param exitEasing - Easing curve for the exit transition (fade-out). Defaults to the `easing` param for symmetry.
+ */
 export const fadePresenceFn: PresenceMotionFn<FadeParams> = ({
   duration = motionTokens.durationNormal,
   easing = motionTokens.curveEasyEase,

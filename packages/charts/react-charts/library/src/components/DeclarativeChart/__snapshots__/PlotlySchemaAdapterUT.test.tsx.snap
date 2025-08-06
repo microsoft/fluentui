@@ -202,6 +202,7 @@ Object {
   "hideLabels": false,
   "hideLegend": false,
   "innerRadius": 42,
+  "roundCorners": true,
   "showLabelsInPercent": true,
   "width": undefined,
 }
@@ -238,6 +239,7 @@ Object {
   "hideLabels": false,
   "hideLegend": false,
   "innerRadius": 0,
+  "roundCorners": true,
   "showLabelsInPercent": false,
   "width": undefined,
 }
@@ -355,9 +357,12 @@ Object {
     },
   ],
   "height": 742,
+  "hideLegend": true,
   "hideTickOverlap": true,
   "mode": "plotly",
+  "roundCorners": true,
   "width": 850,
+  "wrapXAxisLables": true,
   "xAxisTitle": "Votes",
   "yAxisTitle": "Framework",
 }
@@ -371,6 +376,7 @@ Object {
   "height": 400,
   "maxValue": 500,
   "minValue": undefined,
+  "roundCorners": true,
   "segments": Array [
     Object {
       "color": "#57811b",
@@ -383,6 +389,9 @@ Object {
       "size": 150,
     },
   ],
+  "styles": Object {
+    "sublabel": "#2aa0a4",
+  },
   "sublabel": "▲ 20",
   "variant": "multiple-segments",
   "width": 500,
@@ -2834,6 +2843,7 @@ Object {
   "showYAxisLablesTooltip": true,
   "sortOrder": "none",
   "width": undefined,
+  "wrapXAxisLables": true,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -2984,8 +2994,10 @@ Object {
     },
   ],
   "height": 742,
+  "hideLegend": true,
   "hideTickOverlap": true,
   "noOfCharsToTruncate": 20,
+  "roundCorners": true,
   "secondaryYAxistitle": "",
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
@@ -3176,6 +3188,7 @@ Object {
           },
         ],
         "legend": "a",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3226,6 +3239,7 @@ Object {
           },
         ],
         "legend": "b",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3276,6 +3290,7 @@ Object {
           },
         ],
         "legend": "c",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3326,6 +3341,7 @@ Object {
           },
         ],
         "legend": "d",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3334,6 +3350,7 @@ Object {
     ],
   },
   "height": 350,
+  "hideLegend": false,
   "hideTickOverlap": true,
   "mode": "tonexty",
   "supportNegativeData": true,
@@ -3754,6 +3771,7 @@ Object {
           },
         ],
         "legend": "Trace 0",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -4164,6 +4182,7 @@ Object {
           },
         ],
         "legend": "Trace 1",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -4574,6 +4593,7 @@ Object {
           },
         ],
         "legend": "Trace 2",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -4582,6 +4602,7 @@ Object {
     ],
   },
   "height": 350,
+  "hideLegend": false,
   "hideTickOverlap": true,
   "mode": "tonexty",
   "supportNegativeData": true,
@@ -4864,9 +4885,13 @@ Object {
     },
   ],
   "height": 350,
+  "hideLegend": false,
   "hideTickOverlap": true,
-  "mode": "plotly",
+  "maxBarWidth": 50,
+  "mode": "histogram",
+  "roundCorners": true,
   "width": undefined,
+  "wrapXAxisLables": false,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -4960,9 +4985,12 @@ Object {
     },
   ],
   "height": 350,
+  "hideLegend": true,
   "hideTickOverlap": true,
   "mode": "plotly",
+  "roundCorners": true,
   "width": undefined,
+  "wrapXAxisLables": true,
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 3400,

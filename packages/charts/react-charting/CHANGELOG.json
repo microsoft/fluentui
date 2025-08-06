@@ -2,6 +2,219 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 06 Aug 2025 07:21:21 GMT",
+      "tag": "@fluentui/react-charting_v5.24.22",
+      "version": "5.24.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ed4b52619397ff7a0a30cfa83aba40274b03036f",
+            "comment": "feat: add support for log scale in scatter charts"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e326819eee3a15603f963de9796860ef3c9f8f62",
+            "comment": "fix(react-charting): Handling y object values for bar chart."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.27",
+            "commit": "e326819eee3a15603f963de9796860ef3c9f8f62"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.213",
+            "commit": "e326819eee3a15603f963de9796860ef3c9f8f62"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.123.4",
+            "commit": "e326819eee3a15603f963de9796860ef3c9f8f62"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Aug 2025 07:21:26 GMT",
+      "tag": "@fluentui/react-charting_v5.24.21",
+      "version": "5.24.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.212",
+            "commit": "570f122fba34fa8effaaaa61bf6c9acd4caffc45"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.123.3",
+            "commit": "570f122fba34fa8effaaaa61bf6c9acd4caffc45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Jul 2025 07:20:56 GMT",
+      "tag": "@fluentui/react-charting_v5.24.20",
+      "version": "5.24.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "2270462b84f5713a30faf19474bb4e18abe49ab7",
+            "comment": "fix(react-charting): Disable responsive container for heatmap in Declarative Chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.26",
+            "commit": "2270462b84f5713a30faf19474bb4e18abe49ab7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jul 2025 07:22:06 GMT",
+      "tag": "@fluentui/react-charting_v5.24.19",
+      "version": "5.24.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "a108b452eb0dde43a13925641b7fcab53a385dd5",
+            "comment": "fix(react-charting): Fixed text mode for scatter polar"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.211",
+            "commit": "a108b452eb0dde43a13925641b7fcab53a385dd5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.123.2",
+            "commit": "a108b452eb0dde43a13925641b7fcab53a385dd5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Jul 2025 07:20:42 GMT",
+      "tag": "@fluentui/react-charting_v5.24.18",
+      "version": "5.24.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "fb3328eb40ef68cc45f297f71cff417fcbb5ff13",
+            "comment": "fix funnel chart alignment"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "493257a4ad2140fc56a6f74b496f782561770de9",
+            "comment": "fix(react-charting): Fix alignment issue of stacked grouped vertical bar charts."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Jul 2025 07:20:40 GMT",
+      "tag": "@fluentui/react-charting_v5.24.17",
+      "version": "5.24.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "008224c21535e62891750a692d62eb9fb14f62e8",
+            "comment": "focus handling in funnel chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "80f4b9d4f6eefda53f7c0d38743c78f898f28e24",
+            "comment": "fix: respect bargap and width properties in plotly bar traces"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "85c1501faaf4e7e9977c5f3b8148ed87c016d0c2",
+            "comment": "fix white color issue in chart table"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jul 2025 07:21:22 GMT",
+      "tag": "@fluentui/react-charting_v5.24.16",
+      "version": "5.24.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "598962e4c4dfb8316fb496e0e33e7cc35dcfc92d",
+            "comment": "feat(react-charting): Support additional modes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.25",
+            "commit": "456db10a952bf6bf36213bc8926f4dfd140b5df3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jul 2025 07:19:59 GMT",
+      "tag": "@fluentui/react-charting_v5.24.15",
+      "version": "5.24.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8bdaf976f78b536e4692e1e5950d465b476c32e8",
+            "comment": "fix: resolve minor Gantt chart bugs and optimize logic"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.24",
+            "commit": "8bdaf976f78b536e4692e1e5950d465b476c32e8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Jul 2025 07:19:55 GMT",
+      "tag": "@fluentui/react-charting_v5.24.14",
+      "version": "5.24.14",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Jul 2025 07:20:17 GMT",
       "tag": "@fluentui/react-charting_v5.24.14",
       "version": "5.24.14",

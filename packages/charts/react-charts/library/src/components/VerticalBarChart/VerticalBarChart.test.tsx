@@ -755,12 +755,8 @@ describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
     VerticalBarChart,
     { data: pointsWithLine, showXAxisLablesTooltip: true },
     container => {
-      const bars = getById(container, /_VBC_bar/i);
-      expect(bars).toHaveLength(8);
-      fireEvent.mouseOver(bars[0]);
-      // Assert
-      expect(getById(container, /showDots/i)).toHaveLength(5);
-      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('20,0...');
+      expect(getById(container, /showDots/i)).toHaveLength(10);
+      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('10,0...');
     },
   );
 
@@ -869,6 +865,7 @@ describe('VerticalBarChart - accessibility', () => {
   });
 });
 
+/* eslint-disable @typescript-eslint/no-deprecated */
 describe('VerticalBarChart snapShot testing', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
@@ -933,6 +930,7 @@ describe('VerticalBarChart snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 });
+/* eslint-enable @typescript-eslint/no-deprecated */
 
 describe('VerticalBarChart - basic props', () => {
   afterEach(sharedAfterEach);

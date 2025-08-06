@@ -660,6 +660,24 @@ describe('mapFluentChart UTs', () => {
     expect(result.type).toBe('line');
   });
 
+  test('scatter chart mapping - lines+markers+text', () => {
+    const input = {
+      data: [{ type: 'scatter', mode: 'lines+markers+text', x: [1, 2, 3], y: [4, 5, 6] }],
+    };
+    const result = mapFluentChart(input);
+    expect(result.isValid).toBe(true);
+    expect(result.type).toBe('line');
+  });
+
+  test('scatter chart mapping - text', () => {
+    const input = {
+      data: [{ type: 'scatter', mode: 'text', x: [1, 2, 3], y: [4, 5, 6] }],
+    };
+    const result = mapFluentChart(input);
+    expect(result.isValid).toBe(true);
+    expect(result.type).toBe('scatter');
+  });
+
   test('histogram chart mapping', () => {
     const input = {
       data: [{ type: 'histogram', x: [1, 2, 3, 4, 5] }],
@@ -754,8 +772,17 @@ describe('mapFluentChart UTs', () => {
       layout: { xaxis: { type: 'log' } },
     };
     const result = mapFluentChart(input);
+    expect(result.isValid).toBe(true);
+  });
+
+  test('unsupported log axis type', () => {
+    const input = {
+      data: [{ type: 'bar', x: [1, 2, 3], y: [4, 5, 6] }],
+      layout: { xaxis: { type: 'log' } },
+    };
+    const result = mapFluentChart(input);
     expect(result.isValid).toBe(false);
-    expect(result.errorMessage).toBe('Log axis type is not supported');
+    expect(result.errorMessage).toContain('log axis type not supported');
   });
 
   test('composite chart with multiple types', () => {

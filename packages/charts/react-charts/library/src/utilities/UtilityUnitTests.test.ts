@@ -159,6 +159,7 @@ const createXAxisParams = (xAxisParams?: CreateXAxisParams): utils.IXAxisParams 
       bottom: 0,
       ...xAxisParams?.margins,
     },
+    calcMaxLabelWidth: utils.calculateLongestLabelWidth,
   };
 };
 const convertXAxisResultToJson = (
@@ -1397,5 +1398,15 @@ describe('defaultYAxisTickFormatter tests', () => {
 
   it('should format very small numbers in scientific notation', () => {
     expect(utils.defaultYAxisTickFormatter(0.0000001)).toBe('1e-7'); // Scientific notation
+  });
+});
+
+describe('createMeasurementSpan test', () => {
+  it('should create a span with a unique id on each call', () => {
+    const span1 = utils.createMeasurementSpan('text1', 'class1');
+    const span2 = utils.createMeasurementSpan('text2', 'class2');
+    expect(document.getElementById(span1.id)).toBeTruthy();
+    expect(document.getElementById(span2.id)).toBeTruthy();
+    expect(span1.id).not.toBe(span2.id);
   });
 });

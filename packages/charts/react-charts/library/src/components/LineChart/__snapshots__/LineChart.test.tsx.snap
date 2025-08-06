@@ -4229,7 +4229,7 @@ Object {
               style="display: flex; flex-wrap: wrap; overflow: auto;"
             >
               <div
-                style="flex: 0 1 auto; margin: 4px;"
+                class="fui-legend__legendContainer"
               >
                 <button
                   aria-label="metaData1"
@@ -4251,7 +4251,7 @@ Object {
                 </button>
               </div>
               <div
-                style="flex: 0 1 auto; margin: 4px;"
+                class="fui-legend__legendContainer"
               >
                 <button
                   aria-label="metaData2"
@@ -4273,7 +4273,7 @@ Object {
                 </button>
               </div>
               <div
-                style="flex: 0 1 auto; margin: 4px;"
+                class="fui-legend__legendContainer"
               >
                 <button
                   aria-label="metaData3"
@@ -4697,7 +4697,7 @@ Object {
             style="display: flex; flex-wrap: wrap; overflow: auto;"
           >
             <div
-              style="flex: 0 1 auto; margin: 4px;"
+              class="fui-legend__legendContainer"
             >
               <button
                 aria-label="metaData1"
@@ -4719,7 +4719,7 @@ Object {
               </button>
             </div>
             <div
-              style="flex: 0 1 auto; margin: 4px;"
+              class="fui-legend__legendContainer"
             >
               <button
                 aria-label="metaData2"
@@ -4741,7 +4741,7 @@ Object {
               </button>
             </div>
             <div
-              style="flex: 0 1 auto; margin: 4px;"
+              class="fui-legend__legendContainer"
             >
               <button
                 aria-label="metaData3"
@@ -6683,44 +6683,12 @@ Object {
                     y="11"
                   />
                   <tspan
-                    dy="1.81em"
+                    dy="0.71em"
                     id="LessLength"
                     x="0"
                     y="11"
                   >
                     20
-                  </tspan>
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(28.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  <tspan
-                    data-="30"
-                    dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="1.81em"
-                    id="LessLength"
-                    x="0"
-                    y="11"
-                  >
-                    30
                   </tspan>
                 </text>
               </g>
@@ -6747,44 +6715,12 @@ Object {
                     y="11"
                   />
                   <tspan
-                    dy="1.81em"
+                    dy="0.71em"
                     id="LessLength"
                     x="0"
                     y="11"
                   >
                     40
-                  </tspan>
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(4.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  <tspan
-                    data-="50"
-                    dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="1.81em"
-                    id="LessLength"
-                    x="0"
-                    y="11"
-                  >
-                    50
                   </tspan>
                 </text>
               </g>
@@ -6811,44 +6747,12 @@ Object {
                     y="11"
                   />
                   <tspan
-                    dy="1.81em"
+                    dy="0.71em"
                     id="LessLength"
                     x="0"
                     y="11"
                   >
                     60
-                  </tspan>
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(-19.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  <tspan
-                    data-="70"
-                    dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="1.81em"
-                    id="LessLength"
-                    x="0"
-                    y="11"
-                  >
-                    70
                   </tspan>
                 </text>
               </g>
@@ -7284,44 +7188,12 @@ Object {
                   y="11"
                 />
                 <tspan
-                  dy="1.81em"
+                  dy="0.71em"
                   id="LessLength"
                   x="0"
                   y="11"
                 >
                   20
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(28.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                <tspan
-                  data-="30"
-                  dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="1.81em"
-                  id="LessLength"
-                  x="0"
-                  y="11"
-                >
-                  30
                 </tspan>
               </text>
             </g>
@@ -7348,44 +7220,12 @@ Object {
                   y="11"
                 />
                 <tspan
-                  dy="1.81em"
+                  dy="0.71em"
                   id="LessLength"
                   x="0"
                   y="11"
                 >
                   40
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(4.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                <tspan
-                  data-="50"
-                  dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="1.81em"
-                  id="LessLength"
-                  x="0"
-                  y="11"
-                >
-                  50
                 </tspan>
               </text>
             </g>
@@ -7412,44 +7252,12 @@ Object {
                   y="11"
                 />
                 <tspan
-                  dy="1.81em"
+                  dy="0.71em"
                   id="LessLength"
                   x="0"
                   y="11"
                 >
                   60
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(-19.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                <tspan
-                  data-="70"
-                  dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="1.81em"
-                  id="LessLength"
-                  x="0"
-                  y="11"
-                >
-                  70
                 </tspan>
               </text>
             </g>

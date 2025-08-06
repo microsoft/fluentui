@@ -6,6 +6,7 @@ import { select as d3Select } from 'd3-selection';
 import { Legend, Legends } from '../Legends/index';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   areArraysEqual,
   createNumericYAxis,
@@ -17,6 +18,7 @@ import {
   findNumericMinMaxOfY,
   IDomainNRange,
   YAxisType,
+  useRtl,
 } from '../../utilities/index';
 import {
   AccessibilityProps,
@@ -28,6 +30,8 @@ import {
   RefArrayData,
   ScatterChartDataPoint,
   Chart,
+  ImageExportOptions,
+  LegendContainer,
 } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 import {
@@ -40,6 +44,7 @@ import {
   getColorFromToken,
   formatDate,
 } from '../../utilities/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -70,12 +75,14 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   let _uniqueCallOutID: string | null = '';
   let _refArray: RefArrayData[] = [];
   let margins: Margins;
-  let renderSeries: JSX.Element[];
+  let renderSeries: JSXElement[];
   let _xAxisLabels: string[] = [];
   let xAxisCalloutAccessibilityData: AccessibilityProps = {};
   let _xBandwidth = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
   const classes = useScatterChartStyles(props);
+  const _legendsRef = React.useRef<LegendContainer>(null);
+  const _isRTL: boolean = useRtl();
 
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
@@ -104,6 +111,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     props.componentRef,
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRTL, opts);
+      },
     }),
     [],
   );
@@ -220,7 +230,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     setIsSelectedLegend(false);
   }
 
-  function _createLegends(data: ScatterChartDataWithIndex[]): JSX.Element {
+  function _createLegends(data: ScatterChartDataWithIndex[]): JSXElement {
     const { legendProps } = props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
     const legendDataItems = data.map((point: ScatterChartDataWithIndex) => {
@@ -252,6 +262,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         {...props.legendProps}
         selectedLegends={selectedLegends}
         onChange={_onLegendSelectionChange}
+        legendRef={_legendsRef}
       />
     );
   }
@@ -280,8 +291,8 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     }
   }
 
-  function _createPlot(xElement: SVGElement, containerHeight: number): JSX.Element[] {
-    const series: JSX.Element[] = [];
+  function _createPlot(xElement: SVGElement, containerHeight: number): JSXElement[] {
+    const series: JSXElement[] = [];
     if (isSelectedLegend) {
       _points = selectedLegendPoints;
     } else {
@@ -338,7 +349,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     })!;
 
     for (let i = _points.length - 1; i >= 0; i--) {
-      const pointsForSeries: JSX.Element[] = [];
+      const pointsForSeries: JSXElement[] = [];
 
       const legendVal: string = _points[i].legend;
       const seriesColor: string = _points[i].color!;
@@ -372,7 +383,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
               _handleHover(x, y, verticaLineHeight, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData, event)
             }
             onMouseOut={_handleMouseOut}
-            onFocus={() => _handleFocus(seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+            onFocus={event =>
+              _handleFocus(event, seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
+            }
             onBlur={_handleMouseOut}
             {..._getClickHandler(_points[i].data[j].onDataPointClick)}
             opacity={isLegendSelected && !currentPointHidden ? 1 : 0.1}
@@ -420,13 +433,20 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   }
 
   function _handleFocus(
+    event: React.FocusEvent<SVGCircleElement, Element>,
     seriesId: string,
     x: number | Date | string,
-
     xAxisCalloutData: string | undefined,
     circleId: string,
     xAxisCalloutAccessibilityData?: AccessibilityProps,
   ) {
+    let cx = 0;
+    let cy = 0;
+
+    const targetRect = (event.target as SVGCircleElement).getBoundingClientRect();
+    cx = targetRect.left + targetRect.width / 2;
+    cy = targetRect.top + targetRect.height / 2;
+    updatePosition(cx, cy);
     _uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
     const xVal = x instanceof Date ? x.getTime() : x;

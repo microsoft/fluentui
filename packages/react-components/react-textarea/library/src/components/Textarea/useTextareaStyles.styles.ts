@@ -163,11 +163,6 @@ const useTextareaStyles = makeStyles({
       opacity: 1,
     },
 
-    '::selection': {
-      color: tokens.colorNeutralForegroundInverted,
-      backgroundColor: tokens.colorNeutralBackgroundInverted,
-    },
-
     outlineStyle: 'none', // disable default browser outline
   },
 
