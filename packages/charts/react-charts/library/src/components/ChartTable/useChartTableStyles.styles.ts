@@ -27,9 +27,9 @@ const useStyles = makeStyles({
     fontWeight: tokens.fontWeightSemibold,
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground1,
-    ...shorthands.padding('8px'),
+    ...shorthands.padding(tokens.spacingHorizontalS),
     textAlign: 'left',
-    ...shorthands.border('2px', 'solid', tokens.colorNeutralStroke2),
+    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorNeutralStroke2),
     '@media (forced-colors: active)': {
       backgroundColor: 'Window',
       color: 'WindowText',
@@ -37,8 +37,8 @@ const useStyles = makeStyles({
   },
   bodyCell: {
     ...typographyStyles.caption1,
-    ...shorthands.padding('8px'),
-    ...shorthands.border('2px', 'solid', tokens.colorNeutralStroke2),
+    ...shorthands.padding(tokens.spacingHorizontalS),
+    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorNeutralStroke2),
     color: tokens.colorNeutralForeground1,
     textAlign: 'left',
     '@media (forced-colors: active)': {
