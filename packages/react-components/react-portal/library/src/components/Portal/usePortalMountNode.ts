@@ -114,6 +114,8 @@ const initializeElementFactory = () => {
  * - all other methods (and properties) will be called by React once a portal is mounted
  */
 const useModernElementFactory: UseElementFactory = options => {
+  'use no memo';
+
   const { className, dir, focusVisibleRef, targetNode } = options;
 
   const [elementFactory] = React.useState(initializeElementFactory);
