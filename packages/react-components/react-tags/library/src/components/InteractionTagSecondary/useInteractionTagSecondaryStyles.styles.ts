@@ -157,6 +157,23 @@ const useRootStyles = makeStyles({
     fontSize: extraSmallIconSize,
     paddingLeft: '5px',
     paddingRight: '5px',
+    position: 'relative',
+
+    '@media (forced-colors: none)': {
+      '&:before, &:after': {
+        content: '""',
+        position: 'absolute',
+        height: '2px',
+        left: '0',
+        width: '100%',
+      },
+      '&:before': {
+        bottom: '100%',
+      },
+      '&:after': {
+        top: '100%',
+      },
+    },
   },
 });
 const useRootDisabledStyles = makeStyles({
