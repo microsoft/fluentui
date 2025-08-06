@@ -31,7 +31,6 @@ export type MenuGridRowSlots = {
   thirdActionCell?: Slot<MenuGridCellProps>;
 };
 
-export type MenuGridRowProps = Omit<ComponentProps<Partial<MenuGridRowSlots>>, 'contentCell'> &
-  Pick<Partial<MenuGridRowSlots>, 'contentCell'>;
+export type MenuGridRowProps = ComponentProps<Partial<MenuGridRowSlots>>;
 
 export type MenuGridRowState = ComponentState<MenuGridRowSlots>;
