@@ -42,6 +42,8 @@ const useRootStyles = makeStyles({
   filled: {
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorNeutralBackground3Hover,
@@ -52,6 +54,8 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForeground2BrandPressed,
     },
     '@media (forced-colors: active)': {
+      borderTopWidth: `${tokens.strokeWidthThin}`,
+      borderBottomWidth: `${tokens.strokeWidthThin}`,
       ':hover': {
         backgroundColor: 'HighlightText',
       },
@@ -86,6 +90,8 @@ const useRootStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorBrandForeground2,
     borderLeftColor: tokens.colorBrandStroke2, // divider
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorBrandBackground2Hover,
@@ -96,6 +102,8 @@ const useRootStyles = makeStyles({
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
     '@media (forced-colors: active)': {
+      borderTopWidth: `${tokens.strokeWidthThin}`,
+      borderBottomWidth: `${tokens.strokeWidthThin}`,
       ':hover': {
         backgroundColor: 'HighlightText',
       },
