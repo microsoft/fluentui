@@ -20,6 +20,22 @@ test.describe('Dialog', () => {
     };
   }
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-dialog');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should open and close programmatically', async ({ fastPage }) => {
     const { element } = fastPage;
     const content = element.locator('#content');

@@ -9,6 +9,22 @@ test.describe('RadioGroup', () => {
     innerHTML: '',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-radio-group');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should have a role of `radiogroup`', async ({ fastPage }) => {
     const { element } = fastPage;
 

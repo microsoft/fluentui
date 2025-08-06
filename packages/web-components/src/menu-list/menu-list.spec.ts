@@ -14,6 +14,22 @@ test.describe('Menu', () => {
     `,
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-menu-list');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should have a role of `menu`', async ({ fastPage }) => {
     const { element } = fastPage;
 

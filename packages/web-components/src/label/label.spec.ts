@@ -19,6 +19,22 @@ test.describe('Label', () => {
     }
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-label');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should set the `weight` property to match the `weight` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
