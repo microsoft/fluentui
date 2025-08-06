@@ -28,6 +28,7 @@ import {
   transformPlotlyJsonToGaugeProps,
   transformPlotlyJsonToGVBCProps,
   transformPlotlyJsonToVBCProps,
+  transformPlotlyJsonToChartTableProps,
   projectPolarToCartesian,
 } from './PlotlySchemaAdapter';
 import { DonutChart } from '../DonutChart/index';
@@ -44,6 +45,7 @@ import { Chart, ImageExportOptions } from '../../types/index';
 import { ScatterChart } from '../ScatterChart/index';
 
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
+import { ChartTable } from '../ChartTable/index';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
@@ -56,6 +58,7 @@ const ResponsiveGaugeChart = withResponsiveContainer(GaugeChart);
 const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVerticalBarChart);
 const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
 const ResponsiveScatterChart = withResponsiveContainer(ScatterChart);
+const ResponsiveChartTable = withResponsiveContainer(ChartTable);
 
 /**
  * DeclarativeChart schema.
@@ -347,6 +350,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <ResponsiveVerticalBarChart
           {...transformPlotlyJsonToVBCProps(plotlyInputWithValidData, colorMap, useFluentVizColorPalette, isDarkTheme)}
+          {...commonProps}
+        />
+      );
+    case 'table':
+      return (
+        <ResponsiveChartTable
+          {...transformPlotlyJsonToChartTableProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
