@@ -120,6 +120,7 @@ export type JSXIntrinsicElementKeysCompat =
   | 'meta'
   | 'metadata'
   | 'meter'
+  | 'mpath'
   | 'nav'
   | 'noindex'
   | 'noscript'
@@ -187,4 +188,4 @@ export type JSXIntrinsicElementKeysCompat =
 /**
  * Unwrapped type for 'keyof JSX.IntrinsicElement'
  */
-export type JSXIntrinsicElementKeysLatest = 'set' | 'mpath' | 'center' | 'search' | JSXIntrinsicElementKeysCompat;
+export type JSXIntrinsicElementKeysLatest = 'set' | 'center' | 'search' | JSXIntrinsicElementKeysCompat;

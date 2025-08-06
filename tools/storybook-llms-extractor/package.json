@@ -1,0 +1,29 @@
+{
+  "name": "@fluentui/storybook-llms-extractor",
+  "private": true,
+  "version": "0.0.0",
+  "type": "commonjs",
+  "bin": {
+    "storybook-llms-extractor": "./bin/storybook-llms-extractor.js"
+  },
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ],
+  "dependencies": {
+    "@swc/helpers": "^0.5.1",
+    "playwright": "^1.49.1",
+    "turndown": "^7.2.0",
+    "turndown-plugin-gfm": "^1.0.2",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/turndown": "^5.0.5",
+    "@types/yargs": "^17.0.33"
+  },
+  "peerDependencies": {}
+}

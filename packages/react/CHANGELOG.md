@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 28 Jul 2025 07:22:06 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Aug 2025 07:21:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.123.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.4)
+
+Wed, 06 Aug 2025 07:21:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.123.3..@fluentui/react_v8.123.4)
+
+### Patches
+
+- fix: VoiceOver on iOS safari can reach Dropdown options ([PR #34973](https://github.com/microsoft/fluentui/pull/34973) by sarah.higley@microsoft.com)
+
+## [8.123.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.3)
+
+Mon, 04 Aug 2025 07:21:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.123.2..@fluentui/react_v8.123.3)
+
+### Patches
+
+- fix: Picker suggestion items hover correctly in WHCM ([PR #34724](https://github.com/microsoft/fluentui/pull/34724) by sarah.higley@microsoft.com)
 
 ## [8.123.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.2)
 

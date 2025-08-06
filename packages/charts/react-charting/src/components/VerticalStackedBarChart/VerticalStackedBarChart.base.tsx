@@ -54,7 +54,7 @@ import {
   findVSBCNumericMinMaxOfY,
   createNumericYAxis,
   IDomainNRange,
-  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfVSBCNumeric,
   domainRangeOfXStringAxis,
   createStringYAxis,
@@ -354,7 +354,7 @@ export class VerticalStackedBarChartBase
     if (xAxisType === XAxisTypes.NumericAxis) {
       domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
     } else if (xAxisType === XAxisTypes.DateAxis) {
-      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+      domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
         points,
         margins,
         width,

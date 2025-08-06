@@ -324,6 +324,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       onRenderLabel = this._onRenderLabel,
       onRenderItem = this._onRenderItem,
       hoisted: { selectedIndices },
+      responsiveMode,
     } = props;
     const { isOpen, calloutRenderEdge, hasFocus } = this.state;
     // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -338,6 +339,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const divProps = getNativeProps(props, divProperties);
 
     const disabled = this._isDisabled();
+
+    const isSmall = responsiveMode! <= ResponsiveMode.medium;
 
     const errorMessageId = id + '-errorMessage';
 
@@ -361,7 +364,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       <div
         className={this._classNames.root}
         ref={this.props.hoisted.rootRef}
-        aria-owns={isOpen ? this._listId : undefined}
+        aria-owns={isOpen && !isSmall ? this._listId : undefined}
       >
         {onRenderLabel(this.props, this._onRenderLabel)}
         <div
@@ -379,7 +382,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           aria-required={required}
           aria-disabled={disabled}
           aria-invalid={hasErrorMessage}
-          aria-controls={isOpen ? this._listId : undefined}
+          aria-controls={isOpen && !isSmall ? this._listId : undefined}
           {...divProps}
           className={this._classNames.dropdown}
           onBlur={this._onDropdownBlur}

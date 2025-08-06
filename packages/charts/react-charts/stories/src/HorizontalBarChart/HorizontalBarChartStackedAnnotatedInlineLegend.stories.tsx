@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { HorizontalBarChart, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
+import { CursorClickRegular, CursorClickFilled } from '@fluentui/react-icons';
 
-import { ChevronDown20Regular } from '@fluentui/react-icons';
+const AnnotationPopover = (names: string[], value?: number) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
 
-export const HorizontalBarStackedAnnotatedInlineLegend = () => {
-  const annotationPopover = (names: string[], value?: number) => (
+  const handleClick = () => {
+    setIsExpanded(prev => !prev);
+  };
+  return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
       {value && <span>{value}%</span>}{' '}
       <button /* styling here */
+        onClick={handleClick}
         style={{
           background: 'transparent',
           border: 'none',
@@ -19,25 +24,28 @@ export const HorizontalBarStackedAnnotatedInlineLegend = () => {
           width: '16px', // smaller width
         }}
       >
-        <ChevronDown20Regular />
+        {isExpanded ? <CursorClickRegular /> : <CursorClickFilled />}
       </button>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '4px',
-          flex: '0 1 auto',
-          margin: '4px',
-        }}
-      >
-        {names.map(name => (
-          <span key={name}>{name}</span>
-        ))}
-      </div>
+      {isExpanded && (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px',
+            flex: '0 1 auto',
+            margin: '4px',
+          }}
+        >
+          {names.map(name => (
+            <span key={name}>{name}</span>
+          ))}
+        </div>
+      )}
     </div>
   );
+};
 
+export const HorizontalBarStackedAnnotatedInlineLegend = () => {
   const annotationMeta: string[][][] = [
     [['Person 1', 'Person 2']],
     [
@@ -55,7 +63,7 @@ export const HorizontalBarStackedAnnotatedInlineLegend = () => {
     {
       chartTitle: 'one',
       //ChartDataPoint[]
-      chartDataProps: [
+      chartData: [
         {
           // ChartDataPoint
           legend: 'One.One',
@@ -66,7 +74,7 @@ export const HorizontalBarStackedAnnotatedInlineLegend = () => {
     },
     {
       chartTitle: 'two',
-      chartDataProps: [
+      chartData: [
         {
           legend: 'Two.One',
           horizontalBarChartdata: { x: 66 },
@@ -83,11 +91,10 @@ export const HorizontalBarStackedAnnotatedInlineLegend = () => {
 
   // Now merge chartData and annotationMeta to create full `legendProps`
   const finalData = dataTemplate.map((group, groupIdx) => {
-    const legends = group.chartDataProps?.map((chartDataPoint, itemIdx) => ({
-      title: chartDataPoint.legend ?? '',
-      color: chartDataPoint.color,
-      legendAnnotation: () =>
-        annotationPopover(annotationMeta[groupIdx][itemIdx], chartDataPoint.horizontalBarChartdata.x),
+    const legends = group.chartData?.map((chartData, itemIdx) => ({
+      title: chartData.legend ?? '',
+      color: chartData.color,
+      legendAnnotation: () => AnnotationPopover(annotationMeta[groupIdx][itemIdx], chartData.horizontalBarChartdata.x),
     }));
 
     return {

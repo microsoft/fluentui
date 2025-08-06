@@ -38,6 +38,17 @@ export const ThemePicker: React.FC<{ context: FluentStoryContext }> = ({ context
 };
 ```
 
+### Augmented Docs Blocks
+
+This presets uses [custom docs container and page](https://storybook.js.org/docs/7/writing-docs/autodocs#customize-the-docs-container) for unified FluentUI experience including:
+
+- table of contents
+- theme switcher
+- dir switcher
+- custom ArgsTable
+  - `Slot` api rendering
+  - native props support
+
 ## Getting Started
 
 ### Installation

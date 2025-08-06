@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { Button, Menu, MenuPopover, MenuTrigger } from '@fluentui/react-components';
-import {
-  MenuGrid,
-  MenuGridCell,
-  MenuGridRow,
-  MenuGridRowGroup,
-  MenuGridRowGroupHeader,
-} from '@fluentui/react-menu-grid-preview';
+import { MenuGrid, MenuGridRow, MenuGridRowGroup, MenuGridRowGroupHeader } from '@fluentui/react-menu-grid-preview';
 
 const items = {
   people: ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'],
@@ -24,28 +18,26 @@ export const GroupingItems = () => {
           <MenuGridRowGroup>
             <MenuGridRowGroupHeader>People</MenuGridRowGroupHeader>
             {items.people.map((name, index) => (
-              <MenuGridRow key={index} aria-label={name}>
-                <MenuGridCell>{name}</MenuGridCell>
-                <MenuGridCell>
-                  <Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>
-                </MenuGridCell>
-                <MenuGridCell>
-                  <Button>Remove {name}</Button>
-                </MenuGridCell>
+              <MenuGridRow
+                key={index}
+                secondActionCell={<Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>}
+                thirdActionCell={<Button aria-label={`Remove ${name}`}>Remove</Button>}
+                aria-label={name}
+              >
+                {name}
               </MenuGridRow>
             ))}
           </MenuGridRowGroup>
           <MenuGridRowGroup>
             <MenuGridRowGroupHeader>Agents and bots</MenuGridRowGroupHeader>
             {items.agentsAndBots.map((name, index) => (
-              <MenuGridRow key={index} aria-label={name}>
-                <MenuGridCell>{name}</MenuGridCell>
-                <MenuGridCell>
-                  <Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>
-                </MenuGridCell>
-                <MenuGridCell>
-                  <Button>Remove {name}</Button>
-                </MenuGridCell>
+              <MenuGridRow
+                key={index}
+                secondActionCell={<Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>}
+                thirdActionCell={<Button aria-label={`Remove ${name}`}>Remove</Button>}
+                aria-label={name}
+              >
+                {name}
               </MenuGridRow>
             ))}
           </MenuGridRowGroup>

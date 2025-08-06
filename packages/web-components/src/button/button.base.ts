@@ -45,6 +45,9 @@ export class BaseButton extends FASTElement {
   disabled = false;
 
   protected disabledChanged() {
+    if (!this.$fastController.isConnected) {
+      return;
+    }
     if (this.disabled) {
       this.removeAttribute('tabindex');
     } else {
@@ -259,6 +262,7 @@ export class BaseButton extends FASTElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.elementInternals.ariaDisabled = `${!!this.disabledFocusable}`;
+    this.disabledChanged();
   }
 
   constructor() {

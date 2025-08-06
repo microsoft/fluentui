@@ -115,6 +115,12 @@ export interface DonutChartProps {
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<Chart>;
+
+  /**
+   * Prop to enable the round corners in the chart
+   * @default false
+   */
+  roundCorners?: boolean;
 }
 
 /**

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
-import { MenuGrid, MenuGridCell, MenuGridRow } from '@fluentui/react-menu-grid-preview';
+import { MenuGrid, MenuGridRow } from '@fluentui/react-menu-grid-preview';
 
 const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'];
 
@@ -40,11 +40,8 @@ export const WithSubmenu = () => {
       <MenuPopover>
         <MenuGrid>
           {items.map((name, index) => (
-            <MenuGridRow key={index} aria-label={name}>
-              <MenuGridCell>{name}</MenuGridCell>
-              <MenuGridCell>
-                <Submenu />
-              </MenuGridCell>
+            <MenuGridRow key={index} secondActionCell={<Submenu />} aria-label={name}>
+              {name}
             </MenuGridRow>
           ))}
         </MenuGrid>
@@ -57,7 +54,7 @@ WithSubmenu.parameters = {
   docs: {
     description: {
       story: [
-        'If you need to provide a submenu for a `MenuGrid` item, use a menu button, e.g. "More actions", placed into its own `MenuGridCell`',
+        'If you need to provide a submenu for a `MenuGrid` item, use a menu button, e.g. "More actions", provided via `secondActionCell` or `thirdActionCell`.',
       ].join('\n'),
     },
   },

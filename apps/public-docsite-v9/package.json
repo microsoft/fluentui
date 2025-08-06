@@ -5,7 +5,9 @@
   "description": "Fluent UI React v9 documentation",
   "scripts": {
     "build-storybook": "cross-env NODE_OPTIONS=--max_old_space_size=3072 storybook build -o ./dist/storybook --docs",
-    "postbuild-storybook": "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist/storybook",
+    "postbuild-storybook": "yarn rewrite-title && yarn generate-llms-docs",
+    "rewrite-title": "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist/storybook",
+    "generate-llms-docs": "yarn storybook-llms-extractor --config storybook-llms.config.js",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -19,7 +21,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-storybook": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/storybook-llms-extractor": "*"
   },
   "dependencies": {
     "@fluentui/react-calendar-compat": "*",

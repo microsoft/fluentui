@@ -12,6 +12,7 @@ import { LineChartCustomLocaleDateAxisExample } from './LineChart.CustomLocaleDa
 import { LineChartNegativeExample } from './LineChart.Negative.Example';
 import { LineChartAllNegativeExample } from './LineChart.AllNegative.Example';
 import { LineChartSecondaryYAxisExample } from './LineChart.SecondaryYAxis.Example';
+import { LineChartLogAxisExample } from './LineChart.LogAxis.Example';
 
 const LineChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
@@ -33,6 +34,8 @@ const LineChartAllNegativeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.AllNegative.Example.tsx') as string;
 const LineChartSecondaryYAxisExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.SecondaryYAxis.Example.tsx') as string;
+const LineChartLogAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.LogAxis.Example.tsx') as string;
 
 export const LineChartPageProps: IDocPageProps = {
   title: 'LineChart',
@@ -89,6 +92,11 @@ export const LineChartPageProps: IDocPageProps = {
       title: 'LineChart secondary y-axis',
       code: LineChartSecondaryYAxisExampleCode,
       view: <LineChartSecondaryYAxisExample />,
+    },
+    {
+      title: 'LineChart log axis',
+      code: LineChartLogAxisExampleCode,
+      view: <LineChartLogAxisExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/docs/LineChartOverview.md'),
