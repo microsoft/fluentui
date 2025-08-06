@@ -154,7 +154,7 @@ export const DeclarativeChartBasicExample = () => {
   const [dropdownValue, setDropdownValue] = React.useState('');
   const [selectedLegends, setSelectedLegends] = React.useState('');
   const [fluentDataVizColorPalette, setFluentDataVizColorPalette] =
-    React.useState<FluentDataVizColorPaletteTypes>('builtin');
+    React.useState<FluentDataVizColorPaletteTypes>('default');
   const [showMore, setShowMore] = React.useState(false);
   const [isLoading, setLoading] = React.useState(false);
 
