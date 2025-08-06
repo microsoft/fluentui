@@ -109,11 +109,16 @@ export type MenuGridRowGroupState = ComponentState<MenuGridRowGroupSlots> & {
 };
 
 // @public (undocumented)
-export type MenuGridRowProps = ComponentProps<MenuGridRowSlots>;
+export type MenuGridRowProps = ComponentProps<Partial<MenuGridRowSlots>>;
 
 // @public (undocumented)
 export type MenuGridRowSlots = {
     root: Slot<'div'>;
+    iconCell?: Slot<MenuGridCellProps>;
+    contentCell?: Slot<MenuGridCellProps>;
+    subText?: Slot<'span'>;
+    secondActionCell?: Slot<MenuGridCellProps>;
+    thirdActionCell?: Slot<MenuGridCellProps>;
 };
 
 // @public (undocumented)
