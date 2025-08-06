@@ -148,6 +148,14 @@ export const isStringArray = (data: Datum[] | Datum[][] | TypedArray | undefined
   return isArrayOfType(data, (value: any) => typeof value === 'string' || value === null);
 };
 
+export const isObjectArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return isArrayOfType(
+    data,
+    (value: any): boolean => typeof value === 'object' && value !== null && !isArrayOrTypedArray(value),
+  );
+};
+
 export const validate2Dseries = (series: Partial<PlotData>): boolean => {
   if (Array.isArray(series.x) && series.x.length > 0 && Array.isArray(series.x[0])) {
     return false;
@@ -237,8 +245,8 @@ const validateBarData = (data: Partial<PlotData>) => {
       );
     }
     validateSeriesData(data, false);
-  } else if (!isNumberArray(data.y) && !isStringArray(data.y)) {
-    throw new Error(`Non numeric or string Y values encountered, type: ${typeof data.y}`);
+  } else if (!isNumberArray(data.y) && !isStringArray(data.y) && !isObjectArray(data.y)) {
+    throw new Error(`Non numeric, string, or object Y values encountered, type: ${typeof data.y}`);
   }
 };
 const isScatterMarkers = (mode: string): boolean => {
@@ -494,6 +502,11 @@ export const mapFluentChart = (input: any): OutputChartType => {
             }
             return { isValid: true, traceIndex, type: 'horizontalbar' };
           } else {
+            // Handle object arrays in y values by setting barmode to group and routing to GVBC
+            if (isObjectArray(barData.y)) {
+              return { isValid: true, traceIndex, type: 'groupedverticalbar' };
+            }
+
             if (['group', 'overlay'].includes(validSchema?.layout?.barmode!)) {
               if (!isNumberArray(barData.y)) {
                 return { isValid: false, errorMessage: 'GVBC does not support string y-axis.' };

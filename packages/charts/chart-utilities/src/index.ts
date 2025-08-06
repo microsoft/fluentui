@@ -114,6 +114,7 @@ export {
   isInvalidValue,
   isStringArray,
   isMonthArray,
+  isObjectArray,
   getAxisIds,
   getAxisKey,
 } from './PlotlySchemaConverter';
