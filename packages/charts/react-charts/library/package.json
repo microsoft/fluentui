@@ -27,7 +27,7 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@fluentui/chart-utilities": "^1.1.26",
+    "@fluentui/chart-utilities": "^1.1.27",
     "@fluentui/react-button": "^9.6.3",
     "@fluentui/react-jsx-runtime": "^9.1.4",
     "@fluentui/react-overflow": "^9.5.3",

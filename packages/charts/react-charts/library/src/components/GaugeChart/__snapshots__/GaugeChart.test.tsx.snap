@@ -2887,6 +2887,9 @@ Object {
         />
         25%
       </div>
+      <span
+        hidden=""
+      />
     </div>
   </body>,
   "container": <div>
@@ -3242,6 +3245,9 @@ Object {
         />
         25%
       </div>
+      <span
+        hidden=""
+      />
     </div>
   </body>,
   "container": <div>
@@ -3617,6 +3623,9 @@ Object {
         />
         25%
       </div>
+      <span
+        hidden=""
+      />
     </div>
   </body>,
   "container": <div>
@@ -4037,6 +4046,9 @@ Object {
         />
         60%
       </div>
+      <span
+        hidden=""
+      />
     </div>
   </body>,
   "container": <div>
@@ -4465,6 +4477,9 @@ Object {
         />
         25%
       </div>
+      <span
+        hidden=""
+      />
     </div>
   </body>,
   "container": <div>
@@ -4923,6 +4938,9 @@ Object {
         />
         25/100
       </div>
+      <span
+        hidden=""
+      />
     </div>
   </body>,
   "container": <div>
@@ -5386,6 +5404,9 @@ Object {
         />
         25%
       </div>
+      <span
+        hidden=""
+      />
     </div>
     <div
       class=""
@@ -5402,6 +5423,9 @@ Object {
         />
         Low Risk
       </div>
+      <span
+        hidden=""
+      />
     </div>
   </body>,
   "container": <div>

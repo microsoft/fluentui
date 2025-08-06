@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 06 Aug 2025 07:21:20 GMT",
+      "tag": "@fluentui/react_v8.123.4",
+      "version": "8.123.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "63a1c6ba532b6df61c67a890dea9383b723030c2",
+            "comment": "fix: VoiceOver on iOS safari can reach Dropdown options"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 Aug 2025 07:21:25 GMT",
       "tag": "@fluentui/react_v8.123.3",
       "version": "8.123.3",

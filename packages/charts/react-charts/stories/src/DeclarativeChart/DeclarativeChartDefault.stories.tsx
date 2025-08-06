@@ -22,6 +22,8 @@ interface ErrorBoundaryState {
   error: string;
 }
 
+type FluentDataVizColorPaletteTypes = 'default' | 'builtin' | 'others';
+
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   public static getDerivedStateFromError(error: Error) {
     // Update state so the next render will show the fallback UI.
@@ -55,6 +57,12 @@ const DEFAULT_OPTIONS = [
   { key: 'verticalbar_histogramchart', text: 'VerticalBar Histogram Chart' },
 ];
 
+const DEFAULT_COLOR_OPTIONS = [
+  { key: 'default', text: 'Default' },
+  { key: 'builtin', text: 'Builtin' },
+  { key: 'override', text: 'Override' },
+];
+
 const DEFAULT_SCHEMAS = [
   {
     key: 'areachart',
@@ -65,7 +73,7 @@ const DEFAULT_SCHEMAS = [
   {
     key: 'donutchart',
     schema: JSON.parse(
-      '{"visualizer":"plotly","data":[{"hole":0.6,"type":"pie","frame":null,"marker":{"line":{"color":"transparent"},"color":"rgba(31,119,180,1)","fillcolor":"rgba(31,119,180,1)"},"labels":["AMC","Cadillac","Camaro","Chrysler","Datsun","Dodge","Duster","Ferrari","Fiat","Ford","Honda","Hornet","Lincoln","Lotus","Maserati","Mazda","Merc","Pontiac","Porsche","Toyota","Valiant","Volvo"],"values":[1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,2,7,1,1,2,1,1]}],"layout":{"title":"Donut charts using Plotly","xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"margin":{"b":40,"l":60,"r":10,"t":25},"hovermode":"closest","showlegend":true},"frames":[],"selectedLegends":["Cadillac"]}',
+      '{"visualizer":"plotly","data":[{"hole":0.6,"type":"pie","frame":null,"marker":{"line":{"color":"transparent"},"colors":["rgba(31,119,180,1)","rgba(255,127,14,1)","rgba(44,160,44,1)","rgba(214,39,40,1)","rgba(148,103,189,1)","rgba(140,86,75,1)","rgba(227,119,194,1)","rgba(127,127,127,1)","rgba(188,189,34,1)","rgba(23,190,207,1)"],"fillcolor":"rgba(31,119,180,1)"},"labels":["AMC","Cadillac","Camaro","Chrysler","Datsun","Dodge","Duster","Ferrari","Fiat","Ford","Honda","Hornet","Lincoln","Lotus","Maserati","Mazda","Merc","Pontiac","Porsche","Toyota","Valiant","Volvo"],"values":[1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,2,7,1,1,2,1,1]}],"layout":{"title":"Donut charts using Plotly","xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"margin":{"b":40,"l":60,"r":10,"t":25},"hovermode":"closest","showlegend":true},"frames":[],"selectedLegends":["Cadillac"]}',
     ),
   },
   {
@@ -83,7 +91,7 @@ const DEFAULT_SCHEMAS = [
   {
     key: 'horizontalbarchart',
     schema: JSON.parse(
-      '{"visualizer":"plotly","data":[{"uid":"2f399e","name":"Votes","type":"bar","x":[1659,1067,671,597,504,418,407,390,378,274,255,243,203,169,79,65,42,35,35,25,17,11,10],"y":["Laravel","Symfony2","Nette","CodeIgniter","Yii 2","PHPixie","Yii 1","Zend Framework 2","Company Internal Framework","Zend Framework 1","CakePHP","No Framework","We use a CMS for everything","Phalcon","Slim","Silex","Simple MVC Framework","Typo 3","Kohana","FuelPHP","TYPO3 Flow","Drupal","Aura"],"zmax":1,"zmin":0,"xbins":{"end":2499.5,"size":500,"start":-500.5},"ybins":{"end":23.5,"size":1,"start":-1.5},"opacity":1,"visible":true,"autobinx":true,"autobiny":true,"contours":{"end":0.901,"size":0.1,"start":0.1,"coloring":"fill","showlines":true},"showlegend":true,"orientation":"h"}],"layout":{"title":"PHP Framework Popularity at Work - SitePoint, 2015","width":850,"xaxis":{"type":"linear","range":[-198.2562959184288,1830.6731869091736],"title":"Votes","autorange":false},"yaxis":{"type":"category","range":[-3.301575351429676,23.42061223132087],"title":"Framework","autorange":false},"height":742,"margin":{"l":210,"pad":4},"barmode":"group","barnorm":"","autosize":true,"showlegend":false},"frames":[]}',
+      '{"visualizer":"plotly","data":[{"uid":"2f399e","name":"Votes","type":"bar","x":[1659,1067,671,597,504,418,407,390,378,274,255,243,203,169,79,65,42,35,35,25,17,11,10],"y":["Laravel","Symfony2","Nette","CodeIgniter","Yii 2","PHPixie","Yii 1","Zend Framework 2","Company Internal Framework","Zend Framework 1","CakePHP","No Framework","We use a CMS for everything","Phalcon","Slim","Silex","Simple MVC Framework","Typo 3","Kohana","FuelPHP","TYPO3 Flow","Drupal","Aura"],"zmax":1,"zmin":0,"xbins":{"end":2499.5,"size":500,"start":-500.5},"ybins":{"end":23.5,"size":1,"start":-1.5},"opacity":1,"visible":true,"autobinx":true,"autobiny":true,"contours":{"end":0.901,"size":0.1,"start":0.1,"coloring":"fill","showlines":true},"showlegend":true,"orientation":"h","marker":{"color":"hsl(150, 100%, 50%)"}}],"layout":{"title":"PHP Framework Popularity at Work - SitePoint, 2015","width":850,"xaxis":{"type":"linear","range":[-198.2562959184288,1830.6731869091736],"title":"Votes","autorange":false},"yaxis":{"type":"category","range":[-3.301575351429676,23.42061223132087],"title":"Framework","autorange":false},"height":742,"margin":{"l":210,"pad":4},"barmode":"group","barnorm":"","autosize":true,"showlegend":true},"frames":[]}',
     ),
   },
   {
@@ -107,7 +115,7 @@ const DEFAULT_SCHEMAS = [
   {
     key: 'verticalbarchart',
     schema: JSON.parse(
-      '{"visualizer":"plotly","data":[{"type":"bar","x":[78.31759529851323,98.09122764296625,117.86485998741925,137.63849233187221,157.41212467632522,177.18575702077828,196.95938936523132,216.7330217096843,236.5066540541373,256.28028639859036],"y":[0,0,0,33,84,250,304,221,85,23],"xaxis":"x1","yaxis":"y1","marker":{"line":{"width":1},"color":"#0000FF"},"opacity":1,"orientation":"v"},{"type":"bar","x":[86.22704823629445,106.00068058074744,125.77431292520045,145.54794526965344,165.32157761410645,185.09520995855948,204.8688423030125,224.64247464746552,244.41610699191853,264.18973933637153],"y":[9,51,177,283,264,162,47,6,1,0],"xaxis":"x1","yaxis":"y1","marker":{"line":{"width":1},"color":"#007F00"},"opacity":1,"orientation":"v"}],"layout":{"bargap":11.864179406671795,"xaxis1":{"side":"bottom","type":"linear","range":[50,300],"ticks":"inside","anchor":"y1","domain":[0,1],"mirror":"ticks","nticks":6,"showgrid":false,"showline":true,"tickfont":{"size":12},"zeroline":false},"yaxis1":{"side":"left","type":"linear","range":[0,350],"ticks":"inside","anchor":"x1","domain":[0,1],"mirror":"ticks","nticks":8,"showgrid":false,"showline":true,"tickfont":{"size":12},"zeroline":false},"hovermode":"closest","showlegend":false},"frames":[]}',
+      '{"visualizer":"plotly","data":[{"type":"bar","x":[78.31759529851323,98.09122764296625,117.86485998741925,137.63849233187221,157.41212467632522,177.18575702077828,196.95938936523132,216.7330217096843,236.5066540541373,256.28028639859036],"y":[0,0,0,33,84,250,304,221,85,23],"xaxis":"x1","yaxis":"y1","marker":{"line":{"width":1},"color":"#0000FF"},"opacity":1,"orientation":"v","name":"Votes1"},{"type":"bar","x":[86.22704823629445,106.00068058074744,125.77431292520045,145.54794526965344,165.32157761410645,185.09520995855948,204.8688423030125,224.64247464746552,244.41610699191853,264.18973933637153],"y":[9,51,177,283,264,162,47,6,1,0],"xaxis":"x1","yaxis":"y1","marker":{"line":{"width":1},"color":"#007F00"},"opacity":1,"orientation":"v","name":"Votes2"}],"layout":{"bargap":11.864179406671795,"xaxis1":{"side":"bottom","type":"linear","range":[50,300],"ticks":"inside","anchor":"y1","domain":[0,1],"mirror":"ticks","nticks":6,"showgrid":false,"showline":true,"tickfont":{"size":12},"zeroline":false},"yaxis1":{"side":"left","type":"linear","range":[0,350],"ticks":"inside","anchor":"x1","domain":[0,1],"mirror":"ticks","nticks":8,"showgrid":false,"showline":true,"tickfont":{"size":12},"zeroline":false},"hovermode":"closest","showlegend":true},"frames":[]}',
     ),
   },
   {
@@ -145,6 +153,8 @@ export const DeclarativeChartBasicExample = () => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const [dropdownValue, setDropdownValue] = React.useState('');
   const [selectedLegends, setSelectedLegends] = React.useState('');
+  const [fluentDataVizColorPalette, setFluentDataVizColorPalette] =
+    React.useState<FluentDataVizColorPaletteTypes>('default');
   const [showMore, setShowMore] = React.useState(false);
   const [isLoading, setLoading] = React.useState(false);
 
@@ -232,6 +242,10 @@ export const DeclarativeChartBasicExample = () => {
     setSelectedLegends(_selectedLegends ? JSON.stringify(_selectedLegends) : '');
   }, []);
 
+  const onColorPaletteChange = React.useCallback((_event: SelectionEvents, data: OptionOnSelectData) => {
+    setFluentDataVizColorPalette(data.optionValue as FluentDataVizColorPaletteTypes);
+  }, []);
+
   const fileSaver = React.useCallback(
     (url: string) => {
       if (!doc) {
@@ -257,7 +271,7 @@ export const DeclarativeChartBasicExample = () => {
       }
     }
 
-    const uniqueKey = `${selectedOptions[0]}`;
+    const uniqueKey = `${selectedOptions[0]}_${fluentDataVizColorPalette}`;
     const plotlySchema = getSchemaByKey(selectedOptions[0]);
     if (selectedLegends === '') {
       lastKnownValidLegends.current = undefined;
@@ -276,28 +290,53 @@ export const DeclarativeChartBasicExample = () => {
           chartSchema={inputSchema}
           onSchemaChange={handleChartSchemaChange}
           componentRef={declarativeChartRef}
+          colorwayType={fluentDataVizColorPalette}
         />
       </ErrorBoundary>
     );
-  }, [showMore, isLoading, selectedOptions, selectedLegends, getSchemaByKey, handleChartSchemaChange]);
+  }, [
+    showMore,
+    isLoading,
+    selectedOptions,
+    selectedLegends,
+    getSchemaByKey,
+    handleChartSchemaChange,
+    fluentDataVizColorPalette,
+  ]);
 
   return (
     <div>
       <Switch checked={showMore} onChange={onSwitchDataChange} label={showMore ? 'Show more' : 'Show few'} />
-      <Field label="Select a schema">
-        <Dropdown
-          value={dropdownValue}
-          selectedOptions={selectedOptions}
-          onOptionSelect={onOptionSelect}
-          style={dropdownStyles}
-        >
-          {options.map(option => (
-            <Option key={option.key} value={option.key}>
-              {option.text}
-            </Option>
-          ))}
-        </Dropdown>
-      </Field>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+        <Field label="Select a schema">
+          <Dropdown
+            value={dropdownValue}
+            selectedOptions={selectedOptions}
+            onOptionSelect={onOptionSelect}
+            style={dropdownStyles}
+          >
+            {options.map(option => (
+              <Option key={option.key} value={option.key}>
+                {option.text}
+              </Option>
+            ))}
+          </Dropdown>
+        </Field>
+        <Field label="Select a color palette">
+          <Dropdown
+            value={fluentDataVizColorPalette}
+            selectedOptions={[fluentDataVizColorPalette]}
+            onOptionSelect={onColorPaletteChange}
+            style={dropdownStyles}
+          >
+            {DEFAULT_COLOR_OPTIONS.map(option => (
+              <Option key={option.key} value={option.key}>
+                {option.text}
+              </Option>
+            ))}
+          </Dropdown>
+        </Field>
+      </div>
       <br />
       <button
         onClick={() => {
