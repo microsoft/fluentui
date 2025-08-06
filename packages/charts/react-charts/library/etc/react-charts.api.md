@@ -468,6 +468,7 @@ export interface DonutChartProps {
     legendsOverflowText?: any;
     onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSXElement | undefined;
     parentRef?: HTMLElement | null;
+    roundCorners?: boolean;
     showLabelsInPercent?: boolean;
     styles?: DonutChartStyles;
     valueInsideDonut?: string | number;
