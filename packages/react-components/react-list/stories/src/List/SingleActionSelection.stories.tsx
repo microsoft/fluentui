@@ -28,8 +28,14 @@ export const SingleActionSelection = () => {
 
   return (
     <List selectionMode="multiselect" defaultSelectedItems={defaultSelectedItems} aria-label="People example">
-      {items.map(({ name, avatar }) => (
-        <ListItem key={name} value={name} aria-label={name} checkmark={{ 'aria-label': name }}>
+      {items.map(({ name, avatar }, i) => (
+        <ListItem
+          key={name}
+          value={name}
+          aria-label={name}
+          checkmark={{ 'aria-label': name }}
+          disabledSelection={i > 3} // Example of disabling selection for last 2 items
+        >
           <Persona
             name={name}
             secondaryText="Available"
