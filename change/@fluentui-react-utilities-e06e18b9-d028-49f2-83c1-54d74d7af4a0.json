@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add mpath svg intrinsic element to compat JSXIntrinsicElementKeysCompat",
-  "packageName": "@fluentui/react-utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
