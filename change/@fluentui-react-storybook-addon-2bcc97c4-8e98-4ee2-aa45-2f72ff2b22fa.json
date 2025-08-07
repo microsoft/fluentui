@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat!: make docs enhancements configurable and opt in. BREAKING CHANGE: turned off by default",
-  "packageName": "@fluentui/react-storybook-addon",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove custom selection styles",
-  "packageName": "@fluentui/react-textarea",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}
