@@ -315,6 +315,40 @@ export interface ChartProps {
 }
 
 // @public (undocumented)
+export const ChartTable: React_2.FunctionComponent<ChartTableProps>;
+
+// @public
+export interface ChartTableProps {
+    className?: string;
+    componentRef?: React_2.RefObject<Chart>;
+    headers: {
+        value: string | number | boolean | null;
+        style?: React_2.CSSProperties;
+    }[];
+    height?: string | number;
+    rows: {
+        value: string | number | boolean | null;
+        style?: React_2.CSSProperties;
+    }[][];
+    styles?: ChartTableStyles;
+    width?: string | number;
+}
+
+// @public
+export interface ChartTableStyles {
+    // (undocumented)
+    bodyCell?: string;
+    // (undocumented)
+    chart?: string;
+    // (undocumented)
+    headerCell?: string;
+    // (undocumented)
+    root?: string | React_2.CSSProperties;
+    // (undocumented)
+    table?: string;
+}
+
+// @public (undocumented)
 export interface ChildProps {
     // (undocumented)
     containerHeight?: number;
