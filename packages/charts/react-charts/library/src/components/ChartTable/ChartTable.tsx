@@ -46,6 +46,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                 className={classes.table}
                 style={{
                   width: width ? `${width}px` : '100%',
+                  height: height ? `${height}px` : '650px',
                 }}
               >
                 <thead>
