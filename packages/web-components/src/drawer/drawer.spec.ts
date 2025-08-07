@@ -19,6 +19,22 @@ test.describe('Drawer', () => {
     });
   }
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-drawer');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
