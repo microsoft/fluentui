@@ -10,7 +10,7 @@ import { EventHandler } from '@fluentui/react-utilities';
 function expectListboxItemSelected(item: HTMLElement, selected: boolean) {
   expect(item.getAttribute('aria-selected')).toBe(selected.toString());
 }
-function expectListboxItemAriaDisabledValue(item: HTMLElement, expected: any) {
+function expectListboxItemAriaDisabledValue(item: HTMLElement, expected: string | null) {
   expect(item.getAttribute('aria-disabled')).toBe(expected);
 }
 
