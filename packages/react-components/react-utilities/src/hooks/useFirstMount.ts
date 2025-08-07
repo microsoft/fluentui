@@ -3,10 +3,8 @@ import * as React from 'react';
 /**
  * @internal
  * Checks if components was mounted the first time.
- * Since concurrent mode will be released in the future this needs to be verified
- * Currently (React 17) will always render the initial mount once
- * https://codesandbox.io/s/heuristic-brook-s4w0q?file=/src/App.jsx
- * https://codesandbox.io/s/holy-grass-8nieu?file=/src/App.jsx
+ * Supports React concurrent/strict mode by using `useEffect`
+ * to track the first mount instead of mutating refs during render.
  *
  * @example
  * const isFirstMount = useFirstMount();
@@ -14,10 +12,11 @@ import * as React from 'react';
 export function useFirstMount(): boolean {
   const isFirst = React.useRef(true);
 
-  if (isFirst.current) {
-    isFirst.current = false;
-    return true;
-  }
+  React.useEffect(() => {
+    if (isFirst.current) {
+      isFirst.current = false;
+    }
+  }, []);
 
   return isFirst.current;
 }

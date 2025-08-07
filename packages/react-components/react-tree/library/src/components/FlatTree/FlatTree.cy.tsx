@@ -1,3 +1,4 @@
+import 'cypress-real-events';
 import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
@@ -434,7 +435,7 @@ describe('FlatTree', () => {
           defaultCheckedItems={['item1__item1']}
         />,
       );
-      cy.window().then(win => {
+      cy.window().should(win => {
         expect(win.console.error).to.be.called;
       });
     });
