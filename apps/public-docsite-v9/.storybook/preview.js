@@ -5,7 +5,7 @@ import './docs-root-v9.css';
 /** @type {NonNullable<import('@storybook/react').Story['decorators']>} */
 export const decorators = rootPreview.decorators;
 
-/** @type {typeof rootPreview.parameters} */
+/** @type {import("@fluentui/react-storybook-addon").FluentParameters & typeof rootPreview.parameters} */
 export const parameters = {
   ...rootPreview.parameters,
   docs: {
@@ -51,5 +51,8 @@ export const parameters = {
         'Utilities',
       ],
     },
+  },
+  reactStorybookAddon: {
+    docs: true,
   },
 };
