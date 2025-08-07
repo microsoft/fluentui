@@ -10,5 +10,17 @@ import { MenuGridRowSlots, MenuGridRowState } from './MenuGridRow.types';
 export const renderMenuGridRow_unstable = (state: MenuGridRowState) => {
   assertSlots<MenuGridRowSlots>(state);
 
-  return <state.root />;
+  return (
+    <state.root>
+      {state.iconCell && <state.iconCell />}
+      {state.contentCell && (
+        <state.contentCell>
+          {state.contentCell.children}
+          {state.subText && <state.subText />}
+        </state.contentCell>
+      )}
+      {state.secondActionCell && <state.secondActionCell />}
+      {state.thirdActionCell && <state.thirdActionCell />}
+    </state.root>
+  );
 };

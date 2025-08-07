@@ -474,8 +474,8 @@ export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 // @public
 export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
     chartSchema: Schema;
+    colorwayType?: ColorwayType;
     componentRef?: React_2.RefObject<IDeclarativeChart>;
-    fluentDataVizColorPalette?: 'default' | 'builtin' | 'override';
     onSchemaChange?: (eventData: Schema) => void;
 }
 
@@ -502,6 +502,7 @@ export interface DonutChartProps {
     legendsOverflowText?: any;
     onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSXElement | undefined;
     parentRef?: HTMLElement | null;
+    roundCorners?: boolean;
     showLabelsInPercent?: boolean;
     styles?: DonutChartStyles;
     valueInsideDonut?: string | number;

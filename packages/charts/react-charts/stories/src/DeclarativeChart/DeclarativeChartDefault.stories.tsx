@@ -22,7 +22,7 @@ interface ErrorBoundaryState {
   error: string;
 }
 
-type FluentDataVizColorPaletteTypes = 'default' | 'builtin' | 'override';
+type FluentDataVizColorPaletteTypes = 'default' | 'builtin' | 'others';
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   public static getDerivedStateFromError(error: Error) {
@@ -161,7 +161,7 @@ export const DeclarativeChartBasicExample = () => {
   const [dropdownValue, setDropdownValue] = React.useState('');
   const [selectedLegends, setSelectedLegends] = React.useState('');
   const [fluentDataVizColorPalette, setFluentDataVizColorPalette] =
-    React.useState<FluentDataVizColorPaletteTypes>('builtin');
+    React.useState<FluentDataVizColorPaletteTypes>('default');
   const [showMore, setShowMore] = React.useState(false);
   const [isLoading, setLoading] = React.useState(false);
 
@@ -297,7 +297,7 @@ export const DeclarativeChartBasicExample = () => {
           chartSchema={inputSchema}
           onSchemaChange={handleChartSchemaChange}
           componentRef={declarativeChartRef}
-          fluentDataVizColorPalette={fluentDataVizColorPalette}
+          colorwayType={fluentDataVizColorPalette}
         />
       </ErrorBoundary>
     );
