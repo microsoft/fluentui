@@ -45,6 +45,7 @@ export {
   useFocusObserved,
   useRestoreFocusTarget,
   useRestoreFocusSource,
+  useTabsterAttributes,
   useUncontrolledFocus,
 } from '@fluentui/react-tabster';
 export type {
