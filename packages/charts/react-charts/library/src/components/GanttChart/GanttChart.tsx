@@ -2,6 +2,7 @@ import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { ScaleLinear, ScaleBand, ScaleTime } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Legend, Legends, LegendContainer } from '../Legends/index';
 import { Margins, GanttChartDataPoint } from '../../types/DataPoint';
 import { CartesianChart, ModifiedCartesianChartProps } from '../CommonComponents/index';
@@ -234,7 +235,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     );
 
     const _getCustomizedCallout = React.useCallback(() => {
-      const defaultRender = (point?: GanttChartDataPoint): React.JSX.Element | null => {
+      const defaultRender = (point?: GanttChartDataPoint): JSXElement | null => {
         return point ? (
           <ChartPopover
             isPopoverOpen={isPopoverOpen}
@@ -385,13 +386,13 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
       }: {
         xScale: DateScale | NumberScale;
         yScalePrimary: NumberScale | StringScale;
-      }): React.JSX.Element => {
+      }): JSXElement => {
         const getGradientId = (legend: string | undefined) => {
           const legendId = _legendMap.current[`${legend}`].id;
           return `${legendId}_gradient`;
         };
 
-        const gradientDefs: React.JSX.Element[] = [];
+        const gradientDefs: JSXElement[] = [];
         if (props.enableGradient) {
           Object.keys(_legendMap.current).forEach((legend: string, index: number) => {
             const { startColor, endColor } = _legendMap.current[legend];
@@ -484,7 +485,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
       [props.legendProps],
     );
 
-    const _getLegendData = React.useCallback((): React.JSX.Element => {
+    const _getLegendData = React.useCallback((): JSXElement => {
       const actions: Legend[] = [];
 
       Object.keys(_legendMap.current).forEach((legendTitle: string) => {

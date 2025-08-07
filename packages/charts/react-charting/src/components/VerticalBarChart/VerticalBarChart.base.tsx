@@ -48,7 +48,7 @@ import {
   createNumericYAxis,
   IDomainNRange,
   domainRageOfVerticalNumeric,
-  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfXStringAxis,
   createStringYAxis,
   getNextGradient,
@@ -287,7 +287,7 @@ export class VerticalBarChartBase
     if (xAxisType === XAxisTypes.NumericAxis) {
       domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
     } else if (xAxisType === XAxisTypes.DateAxis) {
-      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+      domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
         points,
         margins,
         width,

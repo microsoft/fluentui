@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import { Button } from '@fluentui/react-button';
 import { Legend, LegendsProps, LegendShape } from './Legends.types';
@@ -97,7 +98,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     const dataToRender = _generateData();
     const { overflowStyles, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
     const itemIds = dataToRender.map((_item, index) => index.toString());
-    const overflowHoverCardLegends: JSX.Element[] = [];
+    const overflowHoverCardLegends: JSXElement[] = [];
     props.legends.map((legend, index) => {
       const hoverCardElement = _renderButton(legend, index);
       overflowHoverCardLegends.push(hoverCardElement);
@@ -105,7 +106,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     const overflowString = props.overflowText ? props.overflowText : 'more';
     return props.enabledWrapLines ? renderWrappedLegends() : renderLegends();
 
-    function renderLegends(): JSX.Element {
+    function renderLegends(): JSXElement {
       return (
         <div
           {...focusAttributes}
@@ -132,7 +133,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
       );
     }
 
-    function renderWrappedLegends(): JSX.Element {
+    function renderWrappedLegends(): JSXElement {
       return (
         <div
           {...focusAttributes}

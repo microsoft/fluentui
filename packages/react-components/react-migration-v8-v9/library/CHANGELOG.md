@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Wed, 30 Jul 2025 16:55:51 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Aug 2025 10:03:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.9.4)
+
+Thu, 07 Aug 2025 10:03:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.9.3..@fluentui/react-migration-v8-v9_v9.9.4)
+
+### Patches
+
+- fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- Bump @fluentui/react-components to v9.68.3 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
 
 ## [9.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.9.3)
 

@@ -7,6 +7,7 @@
 /// <reference types="react" />
 
 import { CurveFactory } from 'd3-shape';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { RefObject } from 'react';
 import { SankeyGraph } from 'd3-sankey';
@@ -265,7 +266,7 @@ export interface ChartPopoverProps {
     culture?: string;
     // (undocumented)
     customCallout?: {
-        customizedCallout?: JSX.Element;
+        customizedCallout?: JSXElement;
         customCalloutProps?: ChartPopoverProps;
     };
     // (undocumented)
@@ -311,6 +312,40 @@ export interface ChartProps {
     pointLineOptions?: SVGProps<SVGLineElement>;
     pointOptions?: SVGProps<SVGCircleElement>;
     SankeyChartData?: SankeyChartData;
+}
+
+// @public (undocumented)
+export const ChartTable: React_2.FunctionComponent<ChartTableProps>;
+
+// @public
+export interface ChartTableProps {
+    className?: string;
+    componentRef?: React_2.RefObject<Chart>;
+    headers: {
+        value: string | number | boolean | null;
+        style?: React_2.CSSProperties;
+    }[];
+    height?: string | number;
+    rows: {
+        value: string | number | boolean | null;
+        style?: React_2.CSSProperties;
+    }[][];
+    styles?: ChartTableStyles;
+    width?: string | number;
+}
+
+// @public
+export interface ChartTableStyles {
+    // (undocumented)
+    bodyCell?: string;
+    // (undocumented)
+    chart?: string;
+    // (undocumented)
+    headerCell?: string;
+    // (undocumented)
+    root?: string | React_2.CSSProperties;
+    // (undocumented)
+    table?: string;
 }
 
 // @public (undocumented)
@@ -439,6 +474,7 @@ export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 // @public
 export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
     chartSchema: Schema;
+    colorwayType?: ColorwayType;
     componentRef?: React_2.RefObject<IDeclarativeChart>;
     onSchemaChange?: (eventData: Schema) => void;
 }
@@ -464,8 +500,9 @@ export interface DonutChartProps {
     legendProps?: Partial<LegendsProps>;
     // (undocumented)
     legendsOverflowText?: any;
-    onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSX.Element | undefined;
+    onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSXElement | undefined;
     parentRef?: HTMLElement | null;
+    roundCorners?: boolean;
     showLabelsInPercent?: boolean;
     styles?: DonutChartStyles;
     valueInsideDonut?: string | number;
@@ -839,7 +876,7 @@ export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivEl
     legendProps?: Partial<LegendsProps>;
     // (undocumented)
     legendsOverflowText?: any;
-    onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSX.Element | undefined;
+    onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSXElement | undefined;
     showLegendForSinglePointBar?: boolean;
     showTriangle?: boolean;
     styles?: HorizontalBarChartStyles;
@@ -1177,7 +1214,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     };
     getYDomainMargins?: (containerHeight: number) => Margins;
     isCalloutForStack?: boolean;
-    legendBars: JSX.Element | null;
+    legendBars: JSXElement | null;
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
     points: any;

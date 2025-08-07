@@ -2,6 +2,63 @@
   "name": "@fluentui/react-toast",
   "entries": [
     {
+      "date": "Thu, 07 Aug 2025 10:03:29 GMT",
+      "tag": "@fluentui/react-toast_v9.6.4",
+      "version": "9.6.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "cb1a71ce9168415a1fd3d3dde962d58b4c5d4b65",
+            "comment": "fix: Toaster should merge user onKeyDown handler"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-aria to v9.16.3",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.1.5",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion to v9.10.2",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.8.2",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-portal to v9.8.0",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-tabster to v9.26.3",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-utilities to v9.23.2",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 16:55:39 GMT",
       "tag": "@fluentui/react-toast_v9.6.3",
       "version": "9.6.3",

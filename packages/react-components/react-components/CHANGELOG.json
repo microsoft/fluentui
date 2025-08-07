@@ -2,6 +2,257 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 07 Aug 2025 10:03:20 GMT",
+      "tag": "@fluentui/react-components_v9.68.3",
+      "version": "9.68.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "cab47f659741b9d42ee7ffae35bfd1d8b4364ffb",
+            "comment": "support for stacked grouped vertical bar chart+ enable wrapping of string x-axis labels in declarative chart+ hide overlapping labels based on post transform width"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c00d18558fdab1085665992fb1161f58e4bc27ef",
+            "comment": "support schema colors"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39",
+            "comment": "Add support for plotly generated tables"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c7a9b297280cf3f2be4e30827b44b5c3e3ec4f0d",
+            "comment": "enable interaction with line points without bars"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5c8f9254a2743798b757d83268bfdfe3d4cab3aa",
+            "comment": "enable round corners in declarative charts"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "0414f91525f0187f45c64ec6f47fac631479ad13",
+            "comment": "create plotly aligned colorway"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "5c903fa1ede10faa163304503f54cfc2a39c40a4",
+            "comment": "fix: fix multiline text alignment for horizontal dividers"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "77dd7de4a9e4db9be2a1adeb4322041cf84a8f1e",
+            "comment": "fix: update inverted link styles to use neutral color tokens"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "3e65d7d69695e5d902c84fa161cd854fed8e492b",
+            "comment": "fix: adjust PresenseGroup types to support react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "249bc540994ac14f1306e0c869317f07df0e5a98",
+            "comment": "feat: add custom addon-docs containers to preset"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "56e1c837dec51188b9186e62dbc308643549c37c",
+            "comment": "fix: remove custom selection styles"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "cb1a71ce9168415a1fd3d3dde962d58b4c5d4b65",
+            "comment": "fix: Toaster should merge user onKeyDown handler"
+          },
+          {
+            "author": "patrycja.fogelman@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "64d4b18e0b06d85399eb7220f54b96a9ca98d2e0",
+            "comment": "Fixed no onNavigate event not firing when clicked on a leaf"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "01eadaac363e2535154c2a343aa50e7f372dc1be",
+            "comment": "refactor: simplify setVirtualParent function by using Object.assign for virtual parent assignment"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "0f52f83d113fc1e2698ff29d4ee73bb4ba3ee89e",
+            "comment": "fix: add mpath svg intrinsic element to compat JSXIntrinsicElementKeysCompat"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "3e65d7d69695e5d902c84fa161cd854fed8e492b",
+            "comment": "fix: adjust compoponent props type to support react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "b32003c886be60cce813ed3dfe61e537a4aa57df",
+            "comment": "feat: support for react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "609e0f34251d73504cc3545d92e79a0f9e8744b0",
+            "comment": "feat!: make docs enhancements configurable and opt in. BREAKING CHANGE: turned off by default"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 16:55:28 GMT",
       "tag": "@fluentui/react-components_v9.68.2",
       "version": "9.68.2",

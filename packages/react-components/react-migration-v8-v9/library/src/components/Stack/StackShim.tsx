@@ -5,6 +5,7 @@ import * as React from 'react';
 
 import { getChildrenGapStyles } from './stackUtils';
 import type { StackShimStyles } from './stackUtils';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   useFlexAlignItemsStyles,
   useFlexGrowStyles,
@@ -18,9 +19,7 @@ const stackClassNames = {
 };
 
 const getClassNames = classNamesFunction<IStackProps, StackShimStyles>();
-
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export const StackShim = (props: IStackProps): JSX.Element => {
+export const StackShim = (props: IStackProps): JSXElement => {
   const styles = useStackStyles();
   const alignItemsFlexStyles = useFlexAlignItemsStyles();
   const justifyContentFlexStyles = useFlexJustifyContentStyles();

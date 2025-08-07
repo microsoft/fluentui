@@ -17,6 +17,7 @@ import {
 } from 'd3-scale';
 import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   TimeLocaleObject as d3TimeLocaleObject,
   timeFormat as d3TimeFormat,
@@ -104,6 +105,7 @@ export interface IWrapLabelProps {
   xAxis: NumericAxis | StringAxis;
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
+  width?: number;
 }
 
 export interface IRotateLabelProps {
@@ -159,6 +161,7 @@ export interface IXAxisParams {
   containerHeight: number;
   containerWidth: number;
   hideTickOverlap?: boolean;
+  calcMaxLabelWidth: (x: (string | number)[]) => number;
 }
 export interface ITickParams {
   tickValues?: Date[] | number[] | string[];
@@ -235,6 +238,7 @@ export function createNumericXAxis(
     xAxisCount,
     xAxisElement,
     hideTickOverlap,
+    calcMaxLabelWidth,
   } = xAxisParams;
   const xAxisScale = d3ScaleLinear()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
@@ -250,8 +254,7 @@ export function createNumericXAxis(
     return formatToLocaleString(xAxisValue, culture) as string;
   };
   if (hideTickOverlap && typeof xAxisCount === 'undefined') {
-    const longestLabelWidth =
-      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '.fui-cart__xAxis text') + 20;
+    const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map(tickFormat)) + 20;
     const [start, end] = xAxisScale.range();
     tickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
   }
@@ -394,7 +397,14 @@ export function createDateXAxis(
   useUTC?: string | boolean,
   chartType?: ChartTypes,
 ) {
-  const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount } = xAxisParams;
+  const {
+    domainNRangeValues,
+    xAxisElement,
+    tickPadding = 6,
+    xAxistickSize = 6,
+    xAxisCount,
+    calcMaxLabelWidth,
+  } = xAxisParams;
   const isUtcSet = useUTC === true || useUTC === 'utc';
   const xAxisScale = isUtcSet ? d3ScaleUtc() : d3ScaleTime();
   xAxisScale
@@ -447,8 +457,7 @@ export function createDateXAxis(
     return formatDateToLocaleString(domainValue, culture, useUTC ? true : false, false, formatOptions);
   };
 
-  const longestLabelWidth =
-    calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '.fui-cart__xAxis text') + 40;
+  const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map(tickFormat)) + 40;
   const [start, end] = xAxisScale.range();
   const maxPossibleTickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
   tickCount = Math.min(maxPossibleTickCount, xAxisCount ?? tickCount);
@@ -496,6 +505,7 @@ export function createStringXAxis(
     xAxisOuterPadding,
     containerWidth,
     hideTickOverlap,
+    calcMaxLabelWidth,
   } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
@@ -509,9 +519,7 @@ export function createStringXAxis(
   };
   if (hideTickOverlap) {
     let nonOverlappingTickValues = [];
-    const tickSizes = tickValues.map((value, index) =>
-      calculateLongestLabelWidth([tickFormat(value, index)], '.fui-cart__xAxis text'),
-    );
+    const tickSizes = tickValues.map(value => calcMaxLabelWidth([value]));
     // for LTR
     let start = 0;
     let end = containerWidth;
@@ -877,6 +885,8 @@ export function silceOrAppendToArray(array: string[], value: string): string[] {
   }
 }
 
+export const DEFAULT_WRAP_WIDTH = 10;
+
 /**
  * This method used for wrapping of x axis labels (tick values).
  * It breaks down given text value by space separated and calculates the total height needed to display all the words.
@@ -887,21 +897,19 @@ export function silceOrAppendToArray(array: string[], value: string): string[] {
  * @returns
  */
 export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
-  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip } = wrapLabelProps;
+  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip, width = DEFAULT_WRAP_WIDTH } = wrapLabelProps;
   if (node === null) {
     return;
   }
   const axisNode = d3Select(node).call(xAxis);
   let removeVal = 0;
-  const width = 10;
-  const arr: number[] = [];
+  let maxLines = 1;
   axisNode.selectAll('.tick text').each(function () {
     const text = d3Select(this);
     const totalWord = text.text();
     const truncatedWord = `${text.text().slice(0, noOfCharsToTruncate)}...`;
     const totalWordLength = text.text().length;
     const words = text.text().split(/\s+/).reverse();
-    arr.push(words.length);
     let word: string = '';
     let line: string[] = [];
     let lineNumber: number = 0;
@@ -923,7 +931,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
         .attr('id', 'showDots')
         .attr('x', 0)
         .attr('y', y)
-        .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+        .attr('dy', dy + 'em')
         .text(truncatedWord);
     } else if (showXAxisLablesTooltip && totalWordLength <= noOfCharsToTruncate) {
       tspan = text
@@ -931,7 +939,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
         .attr('id', 'LessLength')
         .attr('x', 0)
         .attr('y', y)
-        .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+        .attr('dy', dy + 'em')
         .text(totalWord);
     } else {
       while ((word = words.pop()!)) {
@@ -950,30 +958,20 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
             .text(word);
         }
       }
-      const maxDigit = Math.max(...arr);
-      let maxHeight: number = 12; // intial value to render corretly first time
-      axisNode.selectAll('text').each(() => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const outerHTMLElement = document.getElementById('WordBreakId') as any;
-        const BoxCordinates = outerHTMLElement && outerHTMLElement.getBoundingClientRect();
-        const boxHeight = BoxCordinates && BoxCordinates.height;
-        if (boxHeight > maxHeight) {
-          maxHeight = boxHeight;
-        }
-      });
-      // If we take directly maxDigit * maxheight, then it will show more height between x axis tick values and bottom.
-      // To avoid this, reducing maxDigit value by removing some digit based on legth of word.
-      let removeDigit: number = 4;
-      if (maxDigit <= 2) {
-        removeDigit = 1;
-      } else if (maxDigit > 2 && maxDigit <= 6) {
-        removeDigit = 2;
-      } else if (maxDigit > 6 && maxDigit <= 9) {
-        removeDigit = 3;
-      }
-      removeVal = (maxDigit - removeDigit) * maxHeight;
     }
+    maxLines = Math.max(maxLines, lineNumber + 1);
   });
+  if (!showXAxisLablesTooltip) {
+    let maxHeight: number = 12; // intial value to render corretly first time
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const outerHTMLElement = document.getElementById('WordBreakId') as any;
+    const BoxCordinates = outerHTMLElement && outerHTMLElement.getBoundingClientRect();
+    const boxHeight = BoxCordinates && BoxCordinates.height;
+    if (boxHeight > maxHeight) {
+      maxHeight = boxHeight;
+    }
+    removeVal = (maxLines - 1) * maxHeight;
+  }
   return removeVal > 0 ? removeVal : 0;
 }
 
@@ -1001,7 +999,7 @@ export function createYAxisLabels(
       ? `...${text.text().slice(0, noOfCharsToTruncate)}`
       : `${text.text().slice(0, noOfCharsToTruncate)}...`;
     const totalWordLength = text.text().length;
-    const padding = truncateLabel ? 1.5 : 1; // ems
+    const padding = 0; // ems
     const y = text.attr('y');
     const x = text.attr('x');
     const dy = parseFloat(text.attr('dy'));
@@ -1852,7 +1850,7 @@ export const HighContrastSelectorBlack =
  * @public
  */
 export interface RenderFunction<P> {
-  (props?: P, defaultRender?: (props?: P) => JSX.Element | null): JSX.Element | null;
+  (props?: P, defaultRender?: (props?: P) => JSXElement | null): JSXElement | null;
 }
 
 export const formatDate = (date: Date, useUTC?: string | boolean) => {
