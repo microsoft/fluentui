@@ -217,6 +217,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       onDismiss: this._closeCallout,
       ...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false),
       preventDismissOnLostFocus: true,
+      calloutMaxWidth: 238,
     };
     const chartHoverProps: IModifiedCartesianChartProps['chartHoverProps'] = {
       ...(this.state.ratio && {

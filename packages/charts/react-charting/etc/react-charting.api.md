@@ -913,8 +913,8 @@ export interface IHeatMapChartStyles {
     root?: IStyle;
     // (undocumented)
     subComponentStyles: {
-        cartesianStyles: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
-        calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+        cartesianStyles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
+        calloutStyles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     };
     // (undocumented)
     text?: IStyle;
