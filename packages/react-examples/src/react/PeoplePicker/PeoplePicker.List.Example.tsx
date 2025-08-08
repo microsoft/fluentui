@@ -40,6 +40,10 @@ const personaStyles: Partial<IPersonaStyles> = {
   },
 };
 
+const suggestionItemStyles: Partial<ISuggestionItemStyles> = {
+  subComponentStyles: { persona: personaStyles },
+};
+
 export const PeoplePickerListExample: React.FunctionComponent = () => {
   const [delayResults, setDelayResults] = React.useState(false);
   const [isPickerDisabled, setIsPickerDisabled] = React.useState(false);
@@ -125,9 +129,9 @@ export const PeoplePickerListExample: React.FunctionComponent = () => {
   const onRenderSuggestionItem = (personaProps: IPersonaProps, suggestionsProps: IBasePickerSuggestionsProps) => {
     return (
       <PeoplePickerItemSuggestion
-        personaProps={{ ...personaProps }}
+        personaProps={personaProps}
         suggestionsProps={suggestionsProps}
-        className={{ subComponentStyles: { persona: personaStyles } }}
+        styles={suggestionItemStyles}
       />
     );
   };

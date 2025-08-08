@@ -10,10 +10,10 @@ import type {
   IPeoplePickerItemSuggestionStyleProps,
   IPeoplePickerItemSuggestionStyles,
 } from './PeoplePickerItem.types';
+import { concatStyleSetsWithProps } from '../../../../Styling';
 
 const getClassNames = classNamesFunction<IPeoplePickerItemSuggestionStyleProps, IPeoplePickerItemSuggestionStyles>();
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const PeoplePickerItemSuggestionBase = (props: IPeoplePickerItemSuggestionProps): JSX.Element => {
   const { personaProps, suggestionsProps, compact, styles, theme, className } = props;
 
