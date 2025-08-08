@@ -13,8 +13,6 @@ import {
 } from '@fluentui/react-components';
 import { Rotate, type Axis3D } from '@fluentui/react-motion-components-preview';
 
-// import description from './ExperimentsRotate.stories.md';
-
 const useClasses = makeStyles({
   container: {
     display: 'grid',
