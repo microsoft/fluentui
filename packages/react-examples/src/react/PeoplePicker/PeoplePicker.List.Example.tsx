@@ -7,6 +7,7 @@ import {
   ListPeoplePicker,
   ValidationState,
   PeoplePickerItemSuggestion,
+  ISuggestionItemStyles,
 } from '@fluentui/react/lib/Pickers';
 import { people, mru } from '@fluentui/example-data';
 
