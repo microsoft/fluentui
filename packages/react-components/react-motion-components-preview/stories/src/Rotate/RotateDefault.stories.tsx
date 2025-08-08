@@ -71,14 +71,19 @@ const useClasses = makeStyles({
     gap: tokens.spacingHorizontalS,
   },
   sliderLabel: {
-    fontSize: tokens.fontSizeBase200,
+    fontSize: tokens.fontSizeBase300,
     fontWeight: tokens.fontWeightMedium,
     color: tokens.colorNeutralForeground1,
   },
   valueDisplay: {
-    fontSize: tokens.fontSizeBase100,
+    fontSize: tokens.fontSizeBase200,
     color: tokens.colorNeutralForeground2,
     fontFamily: tokens.fontFamilyMonospace,
+  },
+  sliderHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
 
@@ -124,7 +129,6 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
         {/* Rotation Settings Section */}
         <div className={classes.controlSection}>
           <Field className={classes.field}>
-            <Label className={classes.sliderLabel}>Rotation Axis</Label>
             <RadioGroup value={axis} onChange={(_, data) => setAxis(data.value as Axis3D)} layout="horizontal">
               <Radio value="x" label="X-axis" />
               <Radio value="y" label="Y-axis" />
@@ -133,7 +137,7 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
           </Field>
 
           <Field className={classes.sliderField}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className={classes.sliderHeader}>
               <Label htmlFor={enterAngleSliderId} className={classes.sliderLabel}>
                 Enter Angle
               </Label>
@@ -154,7 +158,7 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
         {/* Timing & Perspective Section */}
         <div className={classes.controlSection}>
           <Field className={classes.sliderField}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className={classes.sliderHeader}>
               <Label htmlFor={durationSliderId} className={classes.sliderLabel}>
                 Duration
               </Label>
@@ -172,7 +176,7 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
           </Field>
 
           <Field className={classes.sliderField}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className={classes.sliderHeader}>
               <Label htmlFor={perspectiveSliderId} className={classes.sliderLabel}>
                 Perspective
               </Label>
@@ -198,12 +202,4 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
       </Rotate>
     </div>
   );
-};
-
-Default.parameters = {
-  docs: {
-    description: {
-      // story: description,
-    },
-  },
 };
