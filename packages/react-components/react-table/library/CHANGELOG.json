@@ -2,6 +2,69 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Thu, 07 Aug 2025 10:03:28 GMT",
+      "tag": "@fluentui/react-table_v9.18.4",
+      "version": "9.18.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.16.3",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.9.4",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.5.3",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.5",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.5.3",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.26.3",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.23.2",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.1.5",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 16:55:35 GMT",
       "tag": "@fluentui/react-table_v9.18.3",
       "version": "9.18.3",

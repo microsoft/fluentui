@@ -12,6 +12,22 @@ test.describe('CounterBadge component', () => {
     tagName: 'fluent-counter-badge',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-counter-badge');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should display the count when then the `count` attribute is equal to the `overflow-count` attribute', async ({
     fastPage,
   }) => {

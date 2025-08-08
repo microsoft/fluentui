@@ -4,6 +4,22 @@ import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 test.describe('Text Component', () => {
   test.use({ tagName: 'fluent-text' });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-text');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test(`should set the \`nowrap\` property to true when the \`nowrap\` attribute is present`, async ({ fastPage }) => {
     const { element } = fastPage;
 

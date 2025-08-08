@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "enable interaction with line points without bars",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

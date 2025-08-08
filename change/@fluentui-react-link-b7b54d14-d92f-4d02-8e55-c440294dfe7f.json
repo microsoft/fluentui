@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update inverted link styles to use neutral color tokens",
-  "packageName": "@fluentui/react-link",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

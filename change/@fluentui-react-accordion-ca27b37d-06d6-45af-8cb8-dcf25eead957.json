@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: adjust compoponent props type to support react 19",
-  "packageName": "@fluentui/react-accordion",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
