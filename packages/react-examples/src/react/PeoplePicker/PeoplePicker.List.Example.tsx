@@ -7,7 +7,7 @@ import {
   ListPeoplePicker,
   ValidationState,
   PeoplePickerItemSuggestion,
-  ISuggestionItemStyles,
+  IPeoplePickerItemSuggestionStyles,
 } from '@fluentui/react/lib/Pickers';
 import { people, mru } from '@fluentui/example-data';
 
@@ -41,7 +41,7 @@ const personaStyles: Partial<IPersonaStyles> = {
   },
 };
 
-const suggestionItemStyles: Partial<ISuggestionItemStyles> = {
+const suggestionItemStyles: Partial<IPeoplePickerItemSuggestionStyles> = {
   subComponentStyles: { persona: personaStyles },
 };
 
