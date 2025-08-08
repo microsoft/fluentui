@@ -1,4 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
+import { whitespaceFilter } from '../utils/index.js';
 import type { Label } from '../label/label.js';
 import { hasMatchingState, swapStates, toggleState } from '../utils/element-internals.js';
 import { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';
@@ -62,17 +63,23 @@ export class BaseTextArea extends FASTElement {
     this.value = next;
   }
 
+  private filteredLabelSlottedNodes: Label[] = [];
+
   /**
    * The list of nodes that are assigned to the `label` slot.
    * @internal
    */
   @observable
-  public labelSlottedNodes!: Label[];
+  public labelSlottedNodes: Label[] = [];
   protected labelSlottedNodesChanged() {
+    this.filteredLabelSlottedNodes =
+    	this.labelSlottedNodes.filter(whitespaceFilter);
+
     if (this.labelEl) {
-      this.labelEl.hidden = !this.labelSlottedNodes.length;
+      this.labelEl.hidden = !this.filteredLabelSlottedNodes.length;
     }
-    this.labelSlottedNodes.forEach(node => {
+
+    this.filteredLabelSlottedNodes.forEach(node => {
       node.disabled = this.disabled;
       node.required = this.required;
     });
@@ -245,8 +252,8 @@ export class BaseTextArea extends FASTElement {
   public required = false;
   protected requiredChanged() {
     this.elementInternals.ariaRequired = `${!!this.required}`;
-    if (this.labelSlottedNodes?.length) {
-      this.labelSlottedNodes.forEach(node => (node.required = this.required));
+    if (this.filteredLabelSlottedNodes?.length) {
+      this.filteredLabelSlottedNodes.forEach(node => (node.required = this.required));
     }
   }
 
@@ -552,8 +559,8 @@ export class BaseTextArea extends FASTElement {
       this.controlEl.disabled = disabled;
     }
 
-    if (this.labelSlottedNodes?.length) {
-      this.labelSlottedNodes.forEach(node => (node.disabled = this.disabled));
+    if (this.filteredLabelSlottedNodes?.length) {
+      this.filteredLabelSlottedNodes.forEach(node => (node.disabled = this.disabled));
     }
   }
 
