@@ -2,5 +2,5 @@ export { Collapse, CollapseSnappy, CollapseRelaxed, CollapseDelayed } from './co
 export { Fade, FadeSnappy, FadeRelaxed } from './components/Fade';
 export { Scale, ScaleSnappy, ScaleRelaxed } from './components/Scale';
 export { Slide, SlideSnappy, SlideRelaxed } from './components/Slide';
-export { Blur } from './components/Blur';
-export { Rotate } from './components/Rotate';
+export { Blur, type BlurParams } from './components/Blur';
+export { Rotate, type RotateParams, type Axis3D } from './components/Rotate';

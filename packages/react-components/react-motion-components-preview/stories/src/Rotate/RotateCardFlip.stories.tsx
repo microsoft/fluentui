@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { makeStyles, tokens, Button, Card, Title3, Caption1, motionTokens } from '@fluentui/react-components';
-import { Rotate } from '@fluentui/react-motion-components-preview';
-import { RotateParams } from '../../../library/src/components/Rotate/rotate-types';
+import { Rotate, type RotateParams } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -10,6 +9,7 @@ const useClasses = makeStyles({
     gap: tokens.spacingVerticalXL, // 20px
     padding: tokens.spacingVerticalXL, // 20px
     maxWidth: '1000px',
+    overflow: 'hidden', // Prevent page scrollbars during 3D rotations
   },
   controls: {
     display: 'flex',
@@ -42,13 +42,9 @@ const useClasses = makeStyles({
     justifyContent: 'center',
     gap: tokens.spacingVerticalS,
     border: `2px solid ${tokens.colorNeutralStroke1}`,
-    // Removing shadows because they are not accurate for 3D rotations
-    boxShadow: 'none !important', // Force remove shadow with !important
-    '&::before': {
-      display: 'none', // Remove any pseudo-element shadows
-    },
-    '&::after': {
-      display: 'none', // Remove any pseudo-element shadows
+    backgroundColor: tokens.colorNeutralBackground1, // Override transparent background from outline appearance
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground1Hover, // Override transparent hover background
     },
   },
   patternTitle: {
@@ -71,7 +67,11 @@ const useClasses = makeStyles({
   },
 });
 
-const curveSpringRelaxed = `linear(0.000 0.000%, 0.02760 1.000%, 0.05519 2.000%, 0.08279 3.000%, 0.1104 4.000%, 0.1380 5.000%, 0.1656 6.000%, 0.1932 7.000%, 0.2208 8.000%, 0.2484 9.000%, 0.2760 10.00%, 0.3036 11.00%, 0.3312 12.00%, 0.3587 13.00%, 0.3863 14.00%, 0.4139 15.00%, 0.4415 16.00%, 0.4691 17.00%, 0.4967 18.00%, 0.5243 19.00%, 0.5519 20.00%, 0.5795 21.00%, 0.6071 22.00%, 0.6347 23.00%, 0.6623 24.00%, 0.6899 25.00%, 0.7175 26.00%, 0.7451 27.00%, 0.7727 28.00%, 0.8003 29.00%, 0.8279 30.00%, 0.8555 31.00%, 0.8831 32.00%, 0.9107 33.00%, 0.9383 34.00%, 0.9659 35.00%, 0.9935 36.00%, 1.020 37.00%, 1.042 38.00%, 1.059 39.00%, 1.072 40.00%, 1.080 41.00%, 1.084 42.00%, 1.083 43.00%, 1.080 44.00%, 1.073 45.00%, 1.065 46.00%, 1.055 47.00%, 1.044 48.00%, 1.033 49.00%, 1.022 50.00%, 1.011 51.00%, 1.002 52.00%, 0.9933 53.00%, 0.9864 54.00%, 0.9809 55.00%, 0.9770 56.00%, 0.9746 57.00%, 0.9735 58.00%, 0.9736 59.00%, 0.9748 60.00%, 0.9769 61.00%, 0.9797 62.00%, 0.9829 63.00%, 0.9863 64.00%, 0.9899 65.00%, 0.9934 66.00%, 0.9967 67.00%, 0.9997 68.00%, 1.002 69.00%, 1.004 70.00%, 1.006 71.00%, 1.007 72.00%, 1.008 73.00%, 1.008 74.00%, 1.008 75.00%, 1.008 76.00%, 1.007 77.00%, 1.006 78.00%, 1.005 79.00%, 1.004 80.00%, 1.003 81.00%, 1.002 82.00%, 1.001 83.00%, 1.000 84.00%, 0.9992 85.00%, 0.9986 86.00%, 0.9980 87.00%, 0.9977 88.00%, 0.9974 89.00%, 0.9973 90.00%, 0.9974 91.00%, 0.9975 92.00%, 0.9977 93.00%, 0.9980 94.00%, 0.9983 95.00%, 0.9987 96.00%, 0.9990 97.00%, 0.9994 98.00%, 0.9997 99.00%, 1.000 100.0%)`;
+const curveSpringRelaxed = `linear(0.0000 0.00%, 0.9935 36.00%, 1.042 38.00%, 1.072 40.00%, 1.084 42.00%, 1.080 44.00%, 1.055 47.00%, 0.9933 53.00%, 0.9746 57.00%, 0.9797 62.00%, 1.002 69.00%, 1.008 73.00%, 1.008 76.00%, 0.9980 87.00%, 1.000 100.00%)`;
+
+type RequiredRotateParams = Required<
+  Pick<RotateParams, 'axis' | 'angle' | 'duration' | 'easing' | 'exitEasing' | 'exitDuration'>
+>;
 
 type RotatePattern = {
   id: string;
@@ -79,13 +79,7 @@ type RotatePattern = {
   description: string;
   icon: string;
   color: string;
-  axis: Required<RotateParams['axis']>;
-  angle: Required<RotateParams['angle']>;
-  duration: Required<RotateParams['duration']>;
-  easing: Required<RotateParams['easing']>;
-  exitEasing: Required<RotateParams['easing']>;
-  exitDuration: Required<RotateParams['duration']>;
-};
+} & RequiredRotateParams;
 
 const patterns: RotatePattern[] = [
   {
@@ -181,6 +175,7 @@ export const CardFlip = () => {
               animateOpacity={false}
             >
               <Card
+                appearance="outline"
                 className={classes.patternCard}
                 onClick={() => togglePattern(pattern.id)}
                 role="button"
