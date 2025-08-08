@@ -36,6 +36,29 @@ export class Dialog extends FASTElement {
    */
   @attr
   public type: DialogType = DialogType.modal;
+  protected typeChanged() {
+    if (!this.dialog) {
+      return;
+    }
+
+    if (this.type === DialogType.alert) {
+      this.dialog.setAttribute('role', 'alertdialog');
+    } else {
+      this.dialog.removeAttribute('role');
+    }
+
+    if (this.type !== DialogType.nonModal) {
+      this.dialog.setAttribute('aria-modal', 'true');
+    } else {
+      this.dialog.removeAttribute('aria-modal');
+    }
+  }
+
+  /** @internal */
+  connectedCallback() {
+    super.connectedCallback();
+    this.typeChanged();
+  }
 
   /**
    * @public
