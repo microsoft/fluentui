@@ -32,6 +32,8 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @tag fluent-drawer
  */
 export class Drawer extends FASTElement {
+  private roleAttrObserver!: MutationObserver;
+
   /**
    * @public
    * Determines whether the drawer should be displayed as modal or non-modal
@@ -39,6 +41,19 @@ export class Drawer extends FASTElement {
    */
   @attr
   public type: DrawerType = DrawerType.modal;
+  protected typeChanged() {
+    if (!this.dialog) {
+      return;
+    }
+
+    this.updateDialogRole();
+
+    if (this.type === DrawerType.modal) {
+      this.dialog.setAttribute('aria-modal', 'true');
+    } else {
+      this.dialog.removeAttribute('aria-modal');
+    }
+  }
 
   /**
    * @public
@@ -76,6 +91,19 @@ export class Drawer extends FASTElement {
    */
   @observable
   public dialog!: HTMLDialogElement;
+
+  /** @internal */
+  connectedCallback() {
+    super.connectedCallback();
+    this.typeChanged();
+    this.observeRoleAttr();
+  }
+
+  /** @internal */
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.roleAttrObserver.disconnect();
+  }
 
   /**
    * @public
@@ -139,5 +167,27 @@ export class Drawer extends FASTElement {
       this.hide();
     }
     return true;
+  }
+
+  private observeRoleAttr() {
+    if (this.roleAttrObserver) {
+      return;
+    }
+
+    this.roleAttrObserver = new MutationObserver(() => {
+      this.updateDialogRole();
+    });
+    this.roleAttrObserver.observe(this, {
+      attributes: true,
+      attributeFilter: ['role'],
+    });
+  }
+
+  private updateDialogRole() {
+    console.log(this.role);
+    if (!this.dialog) {
+      return;
+    }
+    this.dialog.role = this.type === DrawerType.modal ? 'dialog' : this.role;
   }
 }
