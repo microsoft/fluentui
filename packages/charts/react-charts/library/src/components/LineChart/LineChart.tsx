@@ -1059,25 +1059,25 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     />,
                   );
                 }
-              }
-            } else {
-              if (!isInGap) {
-                linesForLine.push(
-                  <line
-                    id={lineId}
-                    key={lineId}
-                    x1={_xAxisScale(x1)}
-                    y1={yScale(y1)}
-                    x2={_xAxisScale(x2)}
-                    y2={yScale(y2)}
-                    strokeWidth={strokeWidth}
-                    stroke={lineColor}
-                    strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
-                    strokeDasharray={_points[i].lineOptions?.strokeDasharray}
-                    strokeDashoffset={_points[i].lineOptions?.strokeDashoffset}
-                    opacity={0.1}
-                  />,
-                );
+              } else {
+                if (!isInGap) {
+                  linesForLine.push(
+                    <line
+                      id={lineId}
+                      key={lineId}
+                      x1={_xAxisScale(x1)}
+                      y1={yScale(y1)}
+                      x2={_xAxisScale(x2)}
+                      y2={yScale(y2)}
+                      strokeWidth={strokeWidth}
+                      stroke={lineColor}
+                      strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
+                      strokeDasharray={_points[i].lineOptions?.strokeDasharray}
+                      strokeDashoffset={_points[i].lineOptions?.strokeDashoffset}
+                      opacity={0.1}
+                    />,
+                  );
+                }
               }
             }
           }
