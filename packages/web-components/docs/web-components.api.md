@@ -2319,7 +2319,7 @@ export class Dialog extends FASTElement {
     show(): void;
     type: DialogType;
     // (undocumented)
-    protected typeChanged(): void;
+    protected typeChanged(prev: DialogType | undefined, next: DialogType | undefined): void;
 }
 
 // @public
@@ -2429,6 +2429,7 @@ export const DividerTemplate: ElementViewTemplate<Divider>;
 export class Drawer extends FASTElement {
     ariaDescribedby?: string;
     ariaLabelledby?: string;
+    cancelHandler(): void;
     // (undocumented)
     clickHandler(event: Event): boolean;
     // @internal (undocumented)
@@ -2439,13 +2440,19 @@ export class Drawer extends FASTElement {
     emitBeforeToggle: () => void;
     emitToggle: () => void;
     hide(): void;
+    // (undocumented)
+    protected observeRoleAttr(): void;
     position: DrawerPosition;
+    // (undocumented)
+    protected roleAttrObserver: MutationObserver;
     show(): void;
     // (undocumented)
     size: DrawerSize;
     type: DrawerType;
     // (undocumented)
     protected typeChanged(): void;
+    // (undocumented)
+    protected updateDialogRole(): void;
 }
 
 // Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)

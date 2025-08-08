@@ -16,7 +16,7 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
       size="${x => x.size}"
       position="${x => x.position}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
-      @cancel="${x => x.hide()}"
+      @cancel="${x => x.cancelHandler()}"
       ${ref('dialog')}
     >
       <slot></slot>

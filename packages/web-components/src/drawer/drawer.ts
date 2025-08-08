@@ -24,6 +24,7 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @method show - Method to show the drawer.
  * @method hide - Method to hide the drawer.
  * @method clickHandler - Handles click events on the drawer.
+ * @method cancelHandler - Handles cancel events on the drawer.
  * @method emitToggle - Emits an event after the dialog's open state changes.
  * @method emitBeforeToggle - Emits an event before the dialog's open state changes.
  *
@@ -32,7 +33,7 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @tag fluent-drawer
  */
 export class Drawer extends FASTElement {
-  private roleAttrObserver!: MutationObserver;
+  protected roleAttrObserver!: MutationObserver;
 
   /**
    * @public
@@ -169,7 +170,15 @@ export class Drawer extends FASTElement {
     return true;
   }
 
-  private observeRoleAttr() {
+  /**
+   * @public
+   * Handles cancel events on the drawer.
+   */
+  public cancelHandler() {
+    this.hide();
+  }
+
+  protected observeRoleAttr() {
     if (this.roleAttrObserver) {
       return;
     }
@@ -183,7 +192,7 @@ export class Drawer extends FASTElement {
     });
   }
 
-  private updateDialogRole() {
+  protected updateDialogRole() {
     console.log(this.role);
     if (!this.dialog) {
       return;
