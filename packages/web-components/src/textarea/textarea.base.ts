@@ -72,8 +72,7 @@ export class BaseTextArea extends FASTElement {
   @observable
   public labelSlottedNodes: Label[] = [];
   protected labelSlottedNodesChanged() {
-    this.filteredLabelSlottedNodes =
-    	this.labelSlottedNodes.filter(whitespaceFilter);
+    this.filteredLabelSlottedNodes = this.labelSlottedNodes.filter(whitespaceFilter);
 
     if (this.labelEl) {
       this.labelEl.hidden = !this.filteredLabelSlottedNodes.length;
