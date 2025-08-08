@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, tokens, Button, Card, Title3, Caption1, motionTokens } from '@fluentui/react-components';
+import { makeStyles, tokens, Button, CompoundButton, motionTokens } from '@fluentui/react-components';
 import { Rotate, type RotateParams } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
@@ -9,7 +9,6 @@ const useClasses = makeStyles({
     gap: tokens.spacingVerticalXL, // 20px
     padding: tokens.spacingVerticalXL, // 20px
     maxWidth: '1000px',
-    overflow: 'hidden', // Prevent page scrollbars during 3D rotations
   },
   controls: {
     display: 'flex',
@@ -36,23 +35,12 @@ const useClasses = makeStyles({
   },
   patternCard: {
     height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: tokens.spacingVerticalS,
+    width: '100%',
     border: `2px solid ${tokens.colorNeutralStroke1}`,
     backgroundColor: tokens.colorNeutralBackground1, // Override transparent background from outline appearance
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover, // Override transparent hover background
     },
-  },
-  patternTitle: {
-    color: tokens.colorNeutralForeground1,
-  },
-  patternDescription: {
-    color: tokens.colorNeutralForeground2,
-    textAlign: 'center',
   },
   demoIcon: {
     width: '48px',
@@ -174,26 +162,26 @@ export const CardFlip = () => {
               exitDuration={pattern.exitDuration}
               animateOpacity={false}
             >
-              <Card
+              <CompoundButton
                 appearance="outline"
                 className={classes.patternCard}
                 onClick={() => togglePattern(pattern.id)}
-                role="button"
-                tabIndex={0}
+                icon={
+                  <div className={classes.demoIcon} style={{ backgroundColor: pattern.color }}>
+                    {pattern.icon}
+                  </div>
+                }
+                secondaryContent={pattern.description}
                 aria-label={`Toggle ${pattern.name} rotation`}
-                onKeyDown={e => {
+                onKeyDown={(e: React.KeyboardEvent) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     togglePattern(pattern.id);
                   }
                 }}
               >
-                <div className={classes.demoIcon} style={{ backgroundColor: pattern.color }}>
-                  {pattern.icon}
-                </div>
-                <Title3 className={classes.patternTitle}>{pattern.name}</Title3>
-                <Caption1 className={classes.patternDescription}>{pattern.description}</Caption1>
-              </Card>
+                {pattern.name}
+              </CompoundButton>
             </Rotate>
           </div>
         ))}
