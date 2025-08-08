@@ -3,7 +3,6 @@ import {
   Field,
   makeStyles,
   tokens,
-  Switch,
   useId,
   Label,
   Slider,
@@ -96,7 +95,6 @@ const LoremIpsum = () => (
 export const Default = (props: React.ComponentProps<typeof Rotate>) => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
-  const [autoplay, setAutoplay] = React.useState<boolean>(false);
   const [perspective, setPerspective] = React.useState<string>('1000px');
   const [duration, setDuration] = React.useState<number>(motionTokens.durationUltraSlow); // 500ms
   const [axis, setAxis] = React.useState<Axis3D>('y');
@@ -122,18 +120,6 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
             <Button className={classes.ctaButton} appearance="primary" size="large" onClick={() => setVisible(v => !v)}>
               {visible ? 'Hide' : 'Show'}
             </Button>
-            <Field>
-              <Switch
-                label="Autoplay"
-                checked={autoplay}
-                onChange={() => {
-                  if (!autoplay) {
-                    setVisible(!visible);
-                  }
-                  return setAutoplay(v => !v);
-                }}
-              />
-            </Field>
           </div>
         </div>
 
@@ -207,13 +193,7 @@ export const Default = (props: React.ComponentProps<typeof Rotate>) => {
         </div>
       </div>
 
-      <Rotate
-        visible={visible}
-        axis={axis}
-        angle={angle}
-        duration={duration}
-        onMotionFinish={() => autoplay && setVisible(v => !v)}
-      >
+      <Rotate visible={visible} axis={axis} angle={angle} duration={duration}>
         <div className={classes.card}>
           <LoremIpsum />
         </div>
