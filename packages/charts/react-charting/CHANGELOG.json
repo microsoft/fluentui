@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 08 Aug 2025 07:21:05 GMT",
+      "tag": "@fluentui/react-charting_v5.24.23",
+      "version": "5.24.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "17fd271ab5b27d509c4d446a7015be72a639f3cb",
+            "comment": "refactor: set max-width for heatmap callout without using subComponentStyles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Aug 2025 07:21:21 GMT",
       "tag": "@fluentui/react-charting_v5.24.22",
       "version": "5.24.22",

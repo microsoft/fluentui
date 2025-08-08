@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 06 Aug 2025 07:21:21 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Aug 2025 07:21:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.23)
+
+Fri, 08 Aug 2025 07:21:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.22..@fluentui/react-charting_v5.24.23)
+
+### Patches
+
+- refactor: set max-width for heatmap callout without using subComponentStyles ([PR #34992](https://github.com/microsoft/fluentui/pull/34992) by kumarkshitij@microsoft.com)
 
 ## [5.24.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.22)
 
