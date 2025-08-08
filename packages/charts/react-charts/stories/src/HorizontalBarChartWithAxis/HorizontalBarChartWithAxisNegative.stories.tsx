@@ -146,7 +146,6 @@ export const HorizontalBarWithAxisNegative = () => {
           hideTooltip={false}
           showYAxisLablesTooltip={selectedCallout === 'showTooltip' ? true : false}
           showYAxisLables={selectedCallout === 'expandYAxisLabels' ? true : false}
-          enableReflow={true}
           enableGradient={enableGradient}
           roundCorners={roundCorners}
         />
