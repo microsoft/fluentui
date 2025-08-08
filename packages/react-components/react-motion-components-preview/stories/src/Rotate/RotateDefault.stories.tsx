@@ -12,8 +12,7 @@ import {
   motionTokens,
   Button,
 } from '@fluentui/react-components';
-import { Rotate } from '@fluentui/react-motion-components-preview';
-import { Axis3D } from '../../../library/src/atoms/rotate-atom';
+import { Rotate, type Axis3D } from '@fluentui/react-motion-components-preview';
 
 // import description from './ExperimentsRotate.stories.md';
 

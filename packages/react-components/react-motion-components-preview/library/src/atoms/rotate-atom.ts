@@ -1,6 +1,5 @@
 import { AtomMotion, PresenceDirection, motionTokens } from '@fluentui/react-motion';
-
-export type Axis3D = 'x' | 'y' | 'z';
+import type { Axis3D } from '../components/Rotate/rotate-types';
 
 interface RotateAtomParams {
   direction: PresenceDirection;

@@ -1,5 +1,6 @@
 import type { PresenceDuration, PresenceEasing, AnimateOpacity } from '../../types';
-import type { Axis3D } from '../../atoms/rotate-atom';
+
+export type Axis3D = 'x' | 'y' | 'z';
 
 export type RotateParams = PresenceDuration &
   PresenceEasing &
