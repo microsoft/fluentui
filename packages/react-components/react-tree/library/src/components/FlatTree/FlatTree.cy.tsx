@@ -204,9 +204,9 @@ describe('FlatTree', () => {
         </TreeTest>,
       );
       cy.focused().should('not.exist');
-      cy.document().realPress('Tab');
+      cy.document().press('Tab');
       cy.get('[data-testid="item1"]').should('be.focused');
-      cy.document().realPress('Tab');
+      cy.document().press('Tab');
       cy.get('#action').should('be.focused');
     });
     describe('navigationMode="treegrid"', () => {
@@ -242,9 +242,9 @@ describe('FlatTree', () => {
         </TreeTest>,
       );
       cy.focused().should('not.exist');
-      cy.document().realPress('Tab');
+      cy.document().press('Tab');
       cy.get('[data-testid="item1"]').should('be.focused');
-      cy.document().realPress('Tab');
+      cy.document().press('Tab');
       cy.get('#action').should('be.focused').realPress('{enter}');
       cy.get('[data-testid="item1__item1"]').should('not.exist');
       cy.get('#action').should('be.focused').realPress('Space');
@@ -253,15 +253,15 @@ describe('FlatTree', () => {
     it('should focus on first item when pressing tab key', () => {
       mount(<TreeTest />);
       cy.focused().should('not.exist');
-      cy.document().realPress('Tab');
+      cy.document().press('Tab');
       cy.get('[data-testid="item1"]').should('be.focused');
     });
     it('should focus out of tree when pressing tab key inside tree.', () => {
       mount(<TreeTest />);
       cy.focused().should('not.exist');
-      cy.document().realPress('Tab');
+      cy.document().press('Tab');
       cy.get('[data-testid="item1"]').should('be.focused');
-      cy.focused().realPress('Tab');
+      cy.focused().press('Tab');
       cy.focused().should('not.exist');
     });
     describe('Navigation', () => {
@@ -269,7 +269,7 @@ describe('FlatTree', () => {
         mount(<TreeTest />);
         cy.get('[data-testid="item1"]').focus().realPress('{downarrow}');
         cy.get('[data-testid="item2"]').should('be.focused');
-        cy.focused().realPress('Tab').should('not.exist');
+        cy.focused().press('Tab').should('not.exist');
       });
       describe('navigationMode="treegrid"', () => {
         it('should move with Up/Down keys', () => {
