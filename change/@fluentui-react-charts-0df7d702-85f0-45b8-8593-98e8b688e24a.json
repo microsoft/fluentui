@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "create plotly aligned colorway",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

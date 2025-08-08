@@ -5,6 +5,22 @@ import { ImplicitSubmissionBlockingTypes } from './text-input.options.js';
 test.describe('TextInput', () => {
   test.use({ tagName: 'fluent-text-input' });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-text-input');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should focus the element when the `autofocus` attribute is present', async ({ fastPage }) => {
     const { element } = fastPage;
 

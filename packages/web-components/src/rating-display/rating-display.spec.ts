@@ -7,6 +7,22 @@ test.describe('Rating Display', () => {
     tagName: 'fluent-rating-display',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-rating-display');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should not set any default attributes and custom states', async ({ fastPage }) => {
     const { element } = fastPage;
     await expect(element).toBeVisible();

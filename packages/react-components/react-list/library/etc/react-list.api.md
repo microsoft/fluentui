@@ -34,6 +34,7 @@ export const listItemClassNames: SlotClassNames<ListItemSlots>;
 export type ListItemProps = ComponentProps<ListItemSlots> & {
     value?: ListItemValue;
     onAction?: EventHandler<ListItemActionEventData>;
+    disabledSelection?: boolean;
 };
 
 // @public (undocumented)

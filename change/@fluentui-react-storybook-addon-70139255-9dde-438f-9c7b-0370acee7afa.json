@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "feat!: make docs enhancements configurable and opt in. BREAKING CHANGE: turned off by default",
+  "type": "patch",
+  "comment": "fix: resolve dissapearing Slot Info message on consecutive page re-renders",
   "packageName": "@fluentui/react-storybook-addon",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "patch"

@@ -16,6 +16,22 @@ const attributes = {
 test.describe('Link', () => {
   test.use({ tagName: 'fluent-link' });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-link');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test(`should set each property to match its corresponding attribute`, async ({ fastPage }) => {
     const { element } = fastPage;
     const anchor = element.locator('a');

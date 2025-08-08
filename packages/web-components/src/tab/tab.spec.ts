@@ -4,6 +4,22 @@ import type { Tab } from './tab.js';
 test.describe('Tab', () => {
   test.use({ tagName: 'fluent-tab' });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-tab');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should set defaults', async ({ fastPage }) => {
     const { element } = fastPage;
 
