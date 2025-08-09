@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: make components ready for ssr support",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}

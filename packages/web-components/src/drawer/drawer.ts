@@ -24,6 +24,7 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @method show - Method to show the drawer.
  * @method hide - Method to hide the drawer.
  * @method clickHandler - Handles click events on the drawer.
+ * @method cancelHandler - Handles cancel events on the drawer.
  * @method emitToggle - Emits an event after the dialog's open state changes.
  * @method emitBeforeToggle - Emits an event before the dialog's open state changes.
  *
@@ -32,6 +33,8 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @tag fluent-drawer
  */
 export class Drawer extends FASTElement {
+  protected roleAttrObserver!: MutationObserver;
+
   /**
    * @public
    * Determines whether the drawer should be displayed as modal or non-modal
@@ -39,6 +42,19 @@ export class Drawer extends FASTElement {
    */
   @attr
   public type: DrawerType = DrawerType.modal;
+  protected typeChanged() {
+    if (!this.dialog) {
+      return;
+    }
+
+    this.updateDialogRole();
+
+    if (this.type === DrawerType.modal) {
+      this.dialog.setAttribute('aria-modal', 'true');
+    } else {
+      this.dialog.removeAttribute('aria-modal');
+    }
+  }
 
   /**
    * @public
@@ -76,6 +92,19 @@ export class Drawer extends FASTElement {
    */
   @observable
   public dialog!: HTMLDialogElement;
+
+  /** @internal */
+  connectedCallback() {
+    super.connectedCallback();
+    this.typeChanged();
+    this.observeRoleAttr();
+  }
+
+  /** @internal */
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.roleAttrObserver.disconnect();
+  }
 
   /**
    * @public
@@ -139,5 +168,35 @@ export class Drawer extends FASTElement {
       this.hide();
     }
     return true;
+  }
+
+  /**
+   * @public
+   * Handles cancel events on the drawer.
+   */
+  public cancelHandler() {
+    this.hide();
+  }
+
+  protected observeRoleAttr() {
+    if (this.roleAttrObserver) {
+      return;
+    }
+
+    this.roleAttrObserver = new MutationObserver(() => {
+      this.updateDialogRole();
+    });
+    this.roleAttrObserver.observe(this, {
+      attributes: true,
+      attributeFilter: ['role'],
+    });
+  }
+
+  protected updateDialogRole() {
+    console.log(this.role);
+    if (!this.dialog) {
+      return;
+    }
+    this.dialog.role = this.type === DrawerType.modal ? 'dialog' : this.role;
   }
 }
