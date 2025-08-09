@@ -4,7 +4,7 @@ import { renderMenuGridRowGroupHeader_unstable } from './renderMenuGridRowGroupH
 import type { MenuGridRowGroupHeaderProps } from './MenuGridRowGroupHeader.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useMenuGridRowGroupHeaderStyles_unstable } from './useMenuGridRowGroupHeaderStyles.styles';
-// import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a MenuGridRowGroupHeader, using the `useMenuGridRowGroupHeader_unstable` hook.
@@ -14,8 +14,7 @@ export const MenuGridRowGroupHeader: ForwardRefComponent<MenuGridRowGroupHeaderP
     const state = useMenuGridRowGroupHeader_unstable(props, ref);
 
     useMenuGridRowGroupHeaderStyles_unstable(state);
-
-    // useCustomStyleHook_unstable('useMenuGridRowGroupHeaderStyles_unstable')(state);
+    useCustomStyleHook_unstable('useMenuGridRowGroupHeaderStyles_unstable')(state);
 
     return renderMenuGridRowGroupHeader_unstable(state);
   },
