@@ -88,12 +88,6 @@ export interface LineChartProps extends CartesianChartProps {
    * The prop used to enable the perf optimization
    */
   enablePerfOptimization?: boolean;
-
-  /**
-   * The prop used to define line chart mode(default or scatter)
-   * @deprecated this prop no longer used to identify scatter mode
-   */
-  lineMode?: 'default' | 'scatter';
 }
 
 /**
