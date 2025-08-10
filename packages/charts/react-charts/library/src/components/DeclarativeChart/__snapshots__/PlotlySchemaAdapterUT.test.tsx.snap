@@ -3191,7 +3191,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3243,7 +3242,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3295,7 +3293,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3347,7 +3344,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3779,7 +3775,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -4191,7 +4186,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -4603,7 +4597,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
