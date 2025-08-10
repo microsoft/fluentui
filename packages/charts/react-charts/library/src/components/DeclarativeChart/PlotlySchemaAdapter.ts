@@ -227,10 +227,12 @@ export const transformPlotlyJsonToDonutProps = (
   const firstData = input.data[0] as Partial<PieData>;
 
   // extract colors for each series only once
+  // use piecolorway if available
+  // otherwise, default to colorway from template
   const colors: string[] | string | null | undefined = extractColor(
-    input.layout?.template?.layout?.colorway,
+    input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
     colorwayType,
-    firstData?.marker?.colors,
+    input.layout?.piecolorway ?? firstData?.marker?.colors,
     colorMap,
     isDarkTheme,
   );
