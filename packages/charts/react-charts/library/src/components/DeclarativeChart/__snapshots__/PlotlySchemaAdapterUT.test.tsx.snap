@@ -3191,7 +3191,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3243,7 +3242,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3295,7 +3293,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3347,7 +3344,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3357,6 +3353,7 @@ Object {
   "hideLegend": false,
   "hideTickOverlap": true,
   "mode": "tonexty",
+  "optimizeLargeData": false,
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
@@ -3778,7 +3775,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -4190,7 +4186,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -4602,7 +4597,6 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
-          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -4612,6 +4606,7 @@ Object {
   "hideLegend": false,
   "hideTickOverlap": true,
   "mode": "tonexty",
+  "optimizeLargeData": false,
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
