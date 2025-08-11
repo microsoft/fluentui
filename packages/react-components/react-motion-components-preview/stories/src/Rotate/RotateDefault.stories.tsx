@@ -11,7 +11,9 @@ import {
   motionTokens,
   Button,
 } from '@fluentui/react-components';
-import { Rotate, type Axis3D } from '@fluentui/react-motion-components-preview';
+import { Rotate, type RotateParams } from '@fluentui/react-motion-components-preview';
+
+type Axis3D = NonNullable<RotateParams['axis']>;
 
 const useClasses = makeStyles({
   container: {

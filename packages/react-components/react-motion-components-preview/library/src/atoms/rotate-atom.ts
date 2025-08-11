@@ -1,5 +1,7 @@
 import { AtomMotion, PresenceDirection, motionTokens } from '@fluentui/react-motion';
-import type { Axis3D } from '../components/Rotate/rotate-types';
+import type { RotateParams } from '../components/Rotate/rotate-types';
+
+type Axis3D = NonNullable<RotateParams['axis']>;
 
 interface RotateAtomParams {
   direction: PresenceDirection;
@@ -19,7 +21,7 @@ const createRotateValue = (axis: Axis3D, angle: number): string => {
  * @param direction - The functional direction of the motion: 'enter' or 'exit'.
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
- * @param axis - The axis of rotation: 'X', 'Y', or 'Z'. Defaults to 'Y'.
+ * @param axis - The axis of rotation: 'x', 'y', or 'z'. Defaults to 'y'.
  * @param angle - The starting rotation angle in degrees. Defaults to -90.
  * @param exitAngle - The ending rotation angle in degrees. Defaults to the negation of `angle`.
  * @returns A motion atom object with rotate keyframes and the supplied duration and easing.

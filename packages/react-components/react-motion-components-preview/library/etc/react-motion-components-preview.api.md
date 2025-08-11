@@ -6,9 +6,6 @@
 
 import { PresenceComponent } from '@fluentui/react-motion';
 
-// @public (undocumented)
-export type Axis3D = 'x' | 'y' | 'z';
-
 // @public
 export const Blur: PresenceComponent<BlurParams>;
 
