@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 25 Jul 2025 04:07:23 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Aug 2025 04:07:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.115](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.115)
+
+Mon, 04 Aug 2025 04:07:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.114..@fluentui/web-components_v3.0.0-beta.115)
+
+### Changes
+
+- fix: avoid setting tabindex before button is connected ([PR #34960](https://github.com/microsoft/fluentui/pull/34960) by machi@microsoft.com)
 
 ## [3.0.0-beta.114](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.114)
 

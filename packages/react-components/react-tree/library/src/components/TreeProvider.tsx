@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SubtreeContext, SubtreeContextValue, TreeContextValue, TreeContext } from '../contexts';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 /**
  * @internal
@@ -8,9 +9,7 @@ const rootSubtreeContextValue: SubtreeContextValue = {
   level: 1,
   contextType: 'subtree',
 };
-
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export const TreeProvider = (props: React.ProviderProps<TreeContextValue | SubtreeContextValue>): JSX.Element => {
+export const TreeProvider = (props: React.ProviderProps<TreeContextValue | SubtreeContextValue>): JSXElement => {
   if (props.value.contextType === 'subtree') {
     return <SubtreeContext.Provider value={props.value}>{props.children}</SubtreeContext.Provider>;
   }
@@ -26,9 +25,7 @@ TreeProvider.displayName = 'TreeProvider';
 export type TreeRootResetProps = {
   children?: React.ReactNode;
 };
-
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export const TreeRootReset = (props: TreeRootResetProps): JSX.Element => (
+export const TreeRootReset = (props: TreeRootResetProps): JSXElement => (
   <SubtreeContext.Provider value={undefined as unknown as SubtreeContextValue}>
     {props.children}
   </SubtreeContext.Provider>

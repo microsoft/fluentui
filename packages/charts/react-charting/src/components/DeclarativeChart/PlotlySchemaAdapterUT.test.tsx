@@ -245,7 +245,7 @@ describe('transform Plotly Json To chart Props', () => {
         transformPlotlyJsonToGVBCProps(plotlySchema, false, { current: colorMap }, 'default', true),
       ).toMatchSnapshot();
     } catch (e) {
-      expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'forEach')"));
+      expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'some')"));
     }
   });
 

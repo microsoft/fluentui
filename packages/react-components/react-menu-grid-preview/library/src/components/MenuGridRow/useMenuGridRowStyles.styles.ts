@@ -7,6 +7,11 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 export const menuGridRowClassNames: SlotClassNames<MenuGridRowSlots> = {
   root: 'fui-MenuGridRow',
+  iconCell: 'fui-MenuGridRow__iconCell',
+  contentCell: 'fui-MenuGridRow__contentCell',
+  subText: 'fui-MenuGridRow__subText',
+  secondActionCell: 'fui-MenuGridRow__secondActionCell',
+  thirdActionCell: 'fui-MenuGridRow__thirdActionCell',
 };
 
 // Base styles similar to regular menu item

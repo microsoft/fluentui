@@ -70,7 +70,7 @@ const DropIn = createPresenceComponent({
 export const CreatePresenceComponentFactory = () => {
   const classes = useClasses();
 
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
   const [visible, setVisible] = React.useState<boolean>(false);
 
   return (

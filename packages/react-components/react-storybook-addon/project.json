@@ -7,7 +7,23 @@
   "implicitDependencies": [],
   "targets": {
     "build": {
-      "dependsOn": [{ "projects": ["react-aria", "react-provider"], "target": "build" }]
+      "dependsOn": [
+        {
+          "projects": [
+            "react-aria",
+            "react-provider",
+            "react-button",
+            "react-menu",
+            "react-label",
+            "react-switch",
+            "react-text",
+            "react-link",
+            "react-utilities",
+            "react-theme"
+          ],
+          "target": "build"
+        }
+      ]
     }
   }
 }

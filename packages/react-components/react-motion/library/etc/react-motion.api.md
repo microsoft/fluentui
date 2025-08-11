@@ -4,6 +4,7 @@
 
 ```ts
 
+import type { JSXElement } from '@fluentui/react-utilities';
 import { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { SlotComponentType } from '@fluentui/react-utilities';
@@ -126,7 +127,7 @@ export type PresenceDirection = 'enter' | 'exit';
 
 // @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {
-    constructor(props: PresenceGroupProps, context: unknown);
+    constructor(props: PresenceGroupProps, context?: unknown);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -137,7 +138,7 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
         firstRender: boolean;
     };
     // (undocumented)
-    render(): JSX.Element;
+    render(): JSXElement;
 }
 
 // @public (undocumented)

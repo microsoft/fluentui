@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Button, Menu, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import {
   MenuGrid,
-  MenuGridCell,
   MenuGridRow,
   MenuGridRowGroup,
   MenuGridRowGroupHeader,
@@ -25,28 +24,13 @@ export const GroupingItems = () => {
           <MenuGridRowGroup>
             <MenuGridRowGroupHeader>People</MenuGridRowGroupHeader>
             {items.people.map((name, index) => (
-              <MenuGridRow key={index} aria-label={name}>
-                <MenuGridCell>{name}</MenuGridCell>
-                <MenuGridCell>
-                  <Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>
-                </MenuGridCell>
-                <MenuGridCell>
-                  <Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>
-                 </MenuGridCell>
-              </MenuGridRow>
-            ))}
-          </MenuGridRowGroup>
-          <MenuGridRowGroup>
-            <MenuGridRowGroupHeader>Agents and bots</MenuGridRowGroupHeader>
-            {items.agentsAndBots.map((name, index) => (
-              <MenuGridRow key={index} aria-label={name}>
-                <MenuGridCell>{name}</MenuGridCell>
-                <MenuGridCell>
-                  <Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>
-                </MenuGridCell>
-                <MenuGridCell>
-                  <Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>
-               </MenuGridCell>
+              <MenuGridRow
+                key={index}
+                secondActionCell={<Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>}
+                thirdActionCell={<Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>}
+                aria-label={name}
+              >
+                {name}
               </MenuGridRow>
             ))}
           </MenuGridRowGroup>

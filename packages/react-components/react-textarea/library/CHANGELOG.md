@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-textarea
 
-This log was last generated on Mon, 28 Jul 2025 18:48:21 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Aug 2025 10:03:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.6.3)
+
+Thu, 07 Aug 2025 10:03:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.6.2..@fluentui/react-textarea_v9.6.3)
+
+### Patches
+
+- fix: remove custom selection styles ([PR #34897](https://github.com/microsoft/fluentui/pull/34897) by vgenaev@gmail.com)
+- Bump @fluentui/react-field to v9.4.3 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-utilities to v9.23.2 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.5 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+
+## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.6.2)
+
+Wed, 30 Jul 2025 13:10:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.6.1..@fluentui/react-textarea_v9.6.2)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.4.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.24.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-theme to v9.2.0 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-utilities to v9.23.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.4 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
 
 ## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.6.1)
 

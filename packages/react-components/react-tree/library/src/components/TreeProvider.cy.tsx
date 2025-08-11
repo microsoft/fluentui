@@ -9,11 +9,9 @@ import { Button } from '@fluentui/react-button';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { useRestoreFocusTarget } from '@fluentui/react-tabster';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mount = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

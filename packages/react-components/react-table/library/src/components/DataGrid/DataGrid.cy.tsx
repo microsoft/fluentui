@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   TableColumnDefinition,
   DataGrid,
@@ -35,10 +36,7 @@ const testItems: Item[] = [
   { first: '7-1', second: '7-2', third: '7-3' },
 ];
 
-const mount = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
