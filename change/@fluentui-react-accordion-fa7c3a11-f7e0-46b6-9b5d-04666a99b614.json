@@ -1,6 +1,6 @@
 {
-  "type": "none",
-  "comment": "chore: update api.md",
+  "type": "patch",
+  "comment": "indirect ts emit change with exactOptionalPropertyTypes",
   "packageName": "@fluentui/react-accordion",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "none"

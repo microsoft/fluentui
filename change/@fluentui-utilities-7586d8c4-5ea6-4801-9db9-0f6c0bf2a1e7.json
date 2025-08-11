@@ -1,6 +1,6 @@
 {
-  "type": "none",
-  "comment": "chore: resolve ts errors after update",
+  "type": "patch",
+  "comment": "indirect ts emit change with exactOptionalPropertyTypes",
   "packageName": "@fluentui/utilities",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "none"
