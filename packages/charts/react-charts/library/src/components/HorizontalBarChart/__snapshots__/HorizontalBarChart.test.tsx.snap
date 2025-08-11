@@ -1485,6 +1485,9 @@ Object {
       >
         one
       </div>
+      <span
+        hidden=""
+      />
     </div>
     <div
       class=""
@@ -1498,6 +1501,9 @@ Object {
       >
         two
       </div>
+      <span
+        hidden=""
+      />
     </div>
     <div
       class=""
@@ -1511,6 +1517,9 @@ Object {
       >
         three
       </div>
+      <span
+        hidden=""
+      />
     </div>
   </body>,
   "container": <div>
@@ -1908,6 +1917,9 @@ Object {
       >
         one
       </div>
+      <span
+        hidden=""
+      />
     </div>
     <div
       class=""
@@ -1921,6 +1933,9 @@ Object {
       >
         two
       </div>
+      <span
+        hidden=""
+      />
     </div>
     <div
       class=""
@@ -1934,6 +1949,9 @@ Object {
       >
         three
       </div>
+      <span
+        hidden=""
+      />
     </div>
   </body>,
   "container": <div>

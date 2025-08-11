@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 30 Jul 2025 13:10:57 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Aug 2025 10:03:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.23.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.23.2)
+
+Thu, 07 Aug 2025 10:03:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.23.1..@fluentui/react-utilities_v9.23.2)
+
+### Patches
+
+- refactor: simplify setVirtualParent function by using Object.assign for virtual parent assignment ([PR #34968](https://github.com/microsoft/fluentui/pull/34968) by dmytrokirpa@microsoft.com)
+- fix: add mpath svg intrinsic element to compat JSXIntrinsicElementKeysCompat ([PR #34979](https://github.com/microsoft/fluentui/pull/34979) by martinhochel@microsoft.com)
 
 ## [9.23.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.23.1)
 

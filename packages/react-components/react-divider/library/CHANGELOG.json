@@ -2,6 +2,33 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Thu, 07 Aug 2025 10:03:23 GMT",
+      "tag": "@fluentui/react-divider_v9.4.3",
+      "version": "9.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "5c903fa1ede10faa163304503f54cfc2a39c40a4",
+            "comment": "fix: fix multiline text alignment for horizontal dividers"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.1.5",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-utilities to v9.23.2",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 16:55:47 GMT",
       "tag": "@fluentui/react-divider_v9.4.2",
       "version": "9.4.2",

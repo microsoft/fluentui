@@ -874,7 +874,7 @@ describe('domainRangeOfDateForAreaChart', () => {
   };
 
   it('should return domain and range values correctly for date x-axis', () => {
-    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+    const result = utils.domainRangeOfDateForAreaLineScatterVerticalBarCharts(
       points,
       margins,
       100,
@@ -886,7 +886,7 @@ describe('domainRangeOfDateForAreaChart', () => {
   });
 
   it('should return domain and range values correctly for date x-axis when tickValues are provided', () => {
-    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+    const result = utils.domainRangeOfDateForAreaLineScatterVerticalBarCharts(
       points,
       margins,
       100,
@@ -898,7 +898,7 @@ describe('domainRangeOfDateForAreaChart', () => {
   });
 
   it('should return domain and range values correctly for date x-axis when layout direction is RTL', () => {
-    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+    const result = utils.domainRangeOfDateForAreaLineScatterVerticalBarCharts(
       points,
       margins,
       100,
@@ -928,12 +928,12 @@ describe('domainRangeOfNumericForAreaChart', () => {
   };
 
   it('should return domain and range values correctly for numeric x-axis', () => {
-    const result = utils.domainRangeOfNumericForAreaChart(points, margins, 100, false);
+    const result = utils.domainRangeOfNumericForAreaLineScatterCharts(points, margins, 100, false);
     matchResult(result);
   });
 
   it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
-    const result = utils.domainRangeOfNumericForAreaChart(points, margins, 100, true);
+    const result = utils.domainRangeOfNumericForAreaLineScatterCharts(points, margins, 100, true);
     matchResult(result);
   });
 });

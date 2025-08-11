@@ -28,7 +28,7 @@ export const FocusZoneTabbableExample: React.FunctionComponent = () => {
         handleTabKey={FocusZoneTabbableElements.all}
         isCircularNavigation={true}
       >
-        <Stack tokens={tokens} horizontal verticalAlign="center">
+        <Stack tokens={tokens} horizontal verticalAlign="center" wrap>
           <span>Circular Tabbable FocusZone: </span>
           <DefaultButton>Button 1</DefaultButton>
           <DefaultButton>Button 2</DefaultButton>
@@ -48,7 +48,7 @@ export const FocusZoneTabbableExample: React.FunctionComponent = () => {
         handleTabKey={FocusZoneTabbableElements.inputOnly}
         isCircularNavigation={false}
       >
-        <Stack tokens={tokens} horizontal verticalAlign="center">
+        <Stack tokens={tokens} horizontal verticalAlign="center" wrap>
           <span>Input Only FocusZone: </span>
           <DefaultButton>Button 1</DefaultButton>
           <DefaultButton>Button 2</DefaultButton>

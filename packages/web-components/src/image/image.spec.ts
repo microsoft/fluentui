@@ -10,6 +10,22 @@ test.describe('Image', () => {
     `,
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-image');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should set the `block` property to match the `block` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 

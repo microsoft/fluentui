@@ -52,6 +52,9 @@ import {
   domainRangeOfDateForAreaLineVerticalBarChart,
   domainRangeOfXStringAxis,
   createStringYAxis,
+  calcTotalWidth,
+  calcBandwidth,
+  calcRequiredWidth,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
 
@@ -325,11 +328,14 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     ];
     _colors = props.colors || defaultColors;
     _isHavingLine = _checkForLine();
-    _xAxisInnerPadding = getScalePadding(
-      props.xAxisInnerPadding,
-      props.xAxisPadding,
-      props.mode === 'histogram' ? 0 : _xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
-    );
+    _xAxisInnerPadding =
+      props.mode === 'histogram'
+        ? 0
+        : getScalePadding(
+            props.xAxisInnerPadding,
+            props.xAxisPadding,
+            _xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
+          );
     _xAxisOuterPadding = getScalePadding(props.xAxisOuterPadding, props.xAxisPadding, 0);
   }
 
@@ -1055,10 +1061,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const uniqueX = Object.values(mapX);
 
     /** Total width available to render the bars */
-    const totalWidth = containerWidth - (margins.left! + MIN_DOMAIN_MARGIN) - (margins.right! + MIN_DOMAIN_MARGIN);
-    /** Rate at which the space between the bars changes wrt the bar width */
-    const barGapRate = _xAxisInnerPadding / (1 - _xAxisInnerPadding);
-    const numBars = uniqueX.length + (uniqueX.length - 1) * barGapRate;
+    const totalWidth = calcTotalWidth(containerWidth, margins, MIN_DOMAIN_MARGIN);
 
     if (_xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(props.xAxisOuterPadding, props.xAxisPadding)) {
@@ -1070,7 +1073,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         // the following calculations don't use the previous bar width.
         _barWidth = getBarWidth(props.barWidth, props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
-        const reqWidth = numBars * _barWidth;
+        const reqWidth = calcRequiredWidth(_barWidth, uniqueX.length, _xAxisInnerPadding);
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
@@ -1078,13 +1081,15 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         }
       } else if (['plotly', 'histogram'].includes(props.mode!) && uniqueX.length > 1) {
         // Calculate the remaining width after rendering bars at their maximum allowable width
-        const bandwidth = totalWidth / numBars;
+        const bandwidth = calcBandwidth(totalWidth, uniqueX.length, _xAxisInnerPadding);
         const barWidth = getBarWidth(props.barWidth, props.maxBarWidth, bandwidth, props.mode);
-        let reqWidth = numBars * barWidth;
+        let reqWidth = calcRequiredWidth(barWidth, uniqueX.length, _xAxisInnerPadding);
         const margin1 = (totalWidth - reqWidth) / 2;
 
         let margin2 = Number.POSITIVE_INFINITY;
-        if (!props.hideTickOverlap) {
+        // This logic may introduce gaps between histogram bars when the barWidth is restricted.
+        // So disable it for histogram mode.
+        if (props.mode !== 'histogram') {
           // Calculate the remaining width after accounting for the space required to render x-axis labels
           const step = calculateLongestLabelWidth(uniqueX as string[]) + 20;
           reqWidth = (uniqueX.length - _xAxisInnerPadding) * step;
@@ -1099,7 +1104,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         // This only works if the bin centers are consistent across all legend groups; otherwise,
         // the calculated domainMargin may be too small.
         const barWidth = props.maxBarWidth!;
-        const reqWidth = numBars * barWidth;
+        const reqWidth = calcRequiredWidth(barWidth, uniqueX.length, _xAxisInnerPadding);
         _domainMargin += Math.max(0, (totalWidth - reqWidth) / 2);
       }
 
@@ -1116,11 +1121,12 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         props.maxBarWidth,
         calculateAppropriateBarWidth(
           uniqueX as number[] | Date[],
-          totalWidth - 2 * (_domainMargin - MIN_DOMAIN_MARGIN),
+          calcTotalWidth(containerWidth, margins, _domainMargin),
           _xAxisInnerPadding,
         ),
         props.mode,
       );
+      _domainMargin += _barWidth / 2;
       _domainMargin += _barWidth / 2;
     }
 
