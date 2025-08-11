@@ -27,11 +27,6 @@ const config = {
       isIgnored: true,
     },
     {
-      packages: ['@fluentui/codemods'],
-      dependencies: ['typescript'],
-      isIgnored: true,
-    },
-    {
       packages: ['@fluentui/fluentui-repo'],
       dependencies: [
         '@floating-ui/dom',
