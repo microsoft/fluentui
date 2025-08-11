@@ -131,6 +131,17 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       ? (getTypeOfAxis(props.data.scatterChartData![0].data[0].x, true) as XAxisTypes)
       : XAxisTypes.StringAxis;
 
+  // Detect y axis type (numeric or string)
+  const _yAxisType: YAxisType =
+    props.data.scatterChartData &&
+    props.data.scatterChartData.length > 0 &&
+    props.data.scatterChartData[0].data &&
+    props.data.scatterChartData[0].data.length > 0
+      ? typeof props.data.scatterChartData[0].data[0].y === 'string'
+        ? YAxisType.StringAxis
+        : YAxisType.NumericAxis
+      : YAxisType.NumericAxis;
+
   const pointsRef = React.useRef<ScatterChartDataWithIndex[] | []>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const calloutPointsRef = React.useRef<any[]>([]);
@@ -436,7 +447,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         });
       })!;
       const extraMaxPixels =
-        _xAxisType !== XAxisTypes.StringAxis
+        _xAxisType !== XAxisTypes.StringAxis && _yAxisType !== YAxisType.StringAxis
           ? getRangeForScatterMarkerSize({
               data: _points.current,
               xScale: _xAxisScale.current,
@@ -457,7 +468,11 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         for (let j = 0; j < _points.current?.[i]?.data?.length; j++) {
           const { x, y, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points.current?.[i]?.data[j];
           const xPoint = _xAxisScale.current?.(x);
-          const yPoint = _yAxisScale.current?.(y);
+          // Use string y axis scale if needed
+          const yPoint =
+            _yAxisType === YAxisType.StringAxis
+              ? _yAxisScale.current?.(y) + (_yAxisScale.current?.bandwidth ? _yAxisScale.current.bandwidth() / 2 : 0)
+              : _yAxisScale.current?.(y);
           if (!isPlottable(xPoint, yPoint)) {
             continue;
           }
@@ -604,6 +619,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       _seriesId,
       _tooltipId,
       _xAxisType,
+      _yAxisType,
       activePoint,
       isSelectedLegend,
       selectedLegendPoints,
@@ -718,6 +734,15 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
   _xAxisLabels = Array.from(new Set(xAxisLabels));
 
+  // Compute unique y axis labels for string y axis
+  let _yAxisLabels: string[] = [];
+  if (_yAxisType === YAxisType.StringAxis) {
+    const allYValues: (string | number)[] = _points.current
+      .map((point: ScatterChartDataWithIndex) => point.data.map((dp: IScatterChartDataPoint) => dp.y))
+      .flat();
+    _yAxisLabels = Array.from(new Set(allYValues.filter(y => typeof y === 'string') as string[]));
+  }
+
   return !_isChartEmpty() ? (
     <CartesianChart
       {...props}
@@ -736,6 +761,9 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       createStringYAxis={createStringYAxis}
       getGraphData={_initializeScatterChartData}
       xAxisType={_xAxisType}
+      yAxisType={_yAxisType}
+      // Pass stringDatasetForYAxisDomain only if y axis is string
+      {...(_yAxisType === YAxisType.StringAxis ? { stringDatasetForYAxisDomain: _yAxisLabels } : {})}
       onChartMouseLeave={_handleChartMouseLeave}
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}
