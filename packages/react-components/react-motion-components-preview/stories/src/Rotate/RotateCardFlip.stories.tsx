@@ -164,21 +164,16 @@ export const CardFlip = () => {
             >
               <CompoundButton
                 appearance="outline"
+                aria-label={`Toggle ${pattern.name} rotation`}
+                aria-pressed={activePatterns.has(pattern.id)}
                 className={classes.patternCard}
-                onClick={() => togglePattern(pattern.id)}
                 icon={
                   <div className={classes.demoIcon} style={{ backgroundColor: pattern.color }}>
                     {pattern.icon}
                   </div>
                 }
+                onClick={() => togglePattern(pattern.id)}
                 secondaryContent={pattern.description}
-                aria-label={`Toggle ${pattern.name} rotation`}
-                onKeyDown={(e: React.KeyboardEvent) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    togglePattern(pattern.id);
-                  }
-                }}
               >
                 {pattern.name}
               </CompoundButton>
