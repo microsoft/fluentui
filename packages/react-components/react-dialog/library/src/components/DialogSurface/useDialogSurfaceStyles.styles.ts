@@ -43,10 +43,6 @@ const useRootBaseStyle = makeResetStyles({
   // to ensure dialog will be properly styled when surfaceMotion is opted-out
   boxShadow: tokens.shadow64,
 
-  '@supports (height: 1dvh)': {
-    maxHeight: '100dvh',
-  },
-
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
   },
