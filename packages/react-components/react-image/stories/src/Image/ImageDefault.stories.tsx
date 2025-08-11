@@ -4,8 +4,15 @@ import type { ImageProps } from '@fluentui/react-components';
 import type { ArgTypes, Parameters } from '@storybook/react';
 
 export const Default = (props: ImageProps) => {
-  return <Image {...props} />;
+  return (
+    <Image
+      {...props}
+      alt="Allan's avatar"
+      src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+    />
+  );
 };
+
 Default.argTypes = {
   alt: {
     control: 'text',

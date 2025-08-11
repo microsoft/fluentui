@@ -9,6 +9,11 @@ import { PresenceComponent } from '@fluentui/react-motion';
 // @public
 export const Blur: PresenceComponent<BlurParams>;
 
+// @public (undocumented)
+export type BlurParams = PresenceDuration & PresenceEasing & AnimateOpacity & {
+    fromRadius?: string;
+};
+
 // @public
 export const Collapse: PresenceComponent<CollapseParams>;
 
@@ -29,6 +34,16 @@ export const FadeRelaxed: PresenceComponent<FadeParams>;
 
 // @public (undocumented)
 export const FadeSnappy: PresenceComponent<FadeParams>;
+
+// @public (undocumented)
+export const Rotate: PresenceComponent<RotateParams>;
+
+// @public (undocumented)
+export type RotateParams = PresenceDuration & PresenceEasing & AnimateOpacity & {
+    axis?: Axis3D;
+    angle?: number;
+    exitAngle?: number;
+};
 
 // @public
 export const Scale: PresenceComponent<ScaleParams>;
