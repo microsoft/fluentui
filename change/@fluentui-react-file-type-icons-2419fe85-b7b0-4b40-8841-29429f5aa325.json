@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adding mapping for `onepage` filetype icon and updating CDN url.",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
