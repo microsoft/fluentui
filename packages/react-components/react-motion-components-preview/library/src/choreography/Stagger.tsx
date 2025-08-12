@@ -8,6 +8,7 @@ export interface StaggerProps {
   itemDuration?: number;
   reversed?: boolean; // run sequence backward (defaults to false)
   presence?: boolean; // If true, always render children and control via `visible` prop. If false, unmount when not visible.
+  appear?: boolean; // If true, children will animate on first mount. Defaults to false.
   onMotionFinish?: () => void;
 }
 
@@ -20,6 +21,7 @@ const StaggerBase: React.FC<StaggerProps> = ({
   reversed = false,
   onMotionFinish,
   presence = false,
+  appear = false,
 }) => {
   const elements = toElementArray(children);
 
@@ -37,11 +39,11 @@ const StaggerBase: React.FC<StaggerProps> = ({
       {elements.map((child, idx) => {
         const key = child.key ?? idx;
         if (presence) {
-          // Always render, control visibility via prop
-          return React.cloneElement(child, { key, visible: visibility[idx] });
+          // Always render, control visibility via `visible` prop
+          return React.cloneElement(child, { key, visible: visibility[idx], appear });
         } else {
           // Only render when visible
-          return visibility[idx] ? React.cloneElement(child, { key }) : null;
+          return visibility[idx] ? React.cloneElement(child, { key, appear }) : null;
         }
       })}
     </>

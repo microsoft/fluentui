@@ -141,19 +141,41 @@ export function useStaggerItemsVisibility({
   onMotionFinish,
 }: UseStaggerItemsVisibilityParams): { itemsVisibility: boolean[] } {
   const [requestAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
-  const [itemsVisibility, setItemsVisibility] = React.useState<boolean[]>(() =>
-    Array(itemCount).fill(direction === 'exit'),
-  );
+  const [itemsVisibility, setItemsVisibility] = React.useState<boolean[]>(() => {
+    // Initial state should be the final state of the animation, not the starting state
+    // For 'enter' direction: final state is visible (true)
+    // For 'exit' direction: final state is hidden (false)
+    return Array(itemCount).fill(direction === 'enter');
+  });
   const startTimeRef = React.useRef<number | null>(null);
   const frameRef = React.useRef<number | null>(null);
   const finishedRef = React.useRef(false);
+  const isFirstRender = React.useRef(true);
 
   React.useEffect(() => {
     let cancelled = false;
     startTimeRef.current = null;
     finishedRef.current = false;
-    // Reset visibility array to initial state
-    setItemsVisibility(Array(itemCount).fill(direction === 'exit'));
+
+    // On first render, items should already be in their final state (set in useState)
+    // On subsequent renders, we need to animate from the start state to the final state
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      // Items are already in the correct final state, no animation needed
+      onMotionFinish?.();
+      return () => {
+        cancelled = true;
+        if (frameRef.current) {
+          cancelAnimationFrame();
+        }
+      };
+    }
+
+    // For animations, we start from the opposite of the final state:
+    // - Enter animation: start hidden (false), animate to visible (true)
+    // - Exit animation: start visible (true), animate to hidden (false)
+    const startState = direction === 'exit';
+    setItemsVisibility(Array(itemCount).fill(startState));
 
     const tick = (now: number) => {
       if (cancelled) {
@@ -186,7 +208,9 @@ export function useStaggerItemsVisibility({
     frameRef.current = requestAnimationFrame(tick as () => void);
     return () => {
       cancelled = true;
-      cancelAnimationFrame();
+      if (frameRef.current) {
+        cancelAnimationFrame();
+      }
     };
   }, [
     itemCount,
