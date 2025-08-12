@@ -1,4 +1,4 @@
-import { isDateArray, isMonthArray, isNumberArray, sanitizeJson } from '@fluentui/chart-utilities';
+import { isDateArray, isMonthArray, isNumberArray, sanitizeJson, isInvalidValue } from '@fluentui/chart-utilities';
 
 import {
   correctYearMonth,
@@ -11,7 +11,6 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
-  isInvalidValue,
   getNumberAtIndexOrDefault,
   getValidXYRanges,
 } from './PlotlySchemaAdapter';
