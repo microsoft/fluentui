@@ -68,7 +68,7 @@ export function staggerItemsVisibilityAtTime({
   itemCount,
   elapsed,
   itemDelay = 100,
-  itemDuration = 0,
+  itemDuration = 200,
   direction = 'enter',
   reversed = false,
 }: StaggerItemsVisibilityAtTimeParams): {
