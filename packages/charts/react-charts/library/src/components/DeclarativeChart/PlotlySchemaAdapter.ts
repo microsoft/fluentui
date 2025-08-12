@@ -58,6 +58,7 @@ import {
   isDateArray,
   isNumberArray,
   isYearArray,
+  isInvalidValue,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
@@ -381,6 +382,16 @@ export const transformPlotlyJsonToVSBCProps = (
   };
 };
 
+const createColorScale = (colorscale: Array<[number, string]>, domain: [number, number]) => {
+  const [dMin, dMax] = domain;
+
+  // Normalize colorscale domain to actual data domain
+  const scaleDomain = colorscale.map(([pos]) => dMin + pos * (dMax - dMin));
+  const scaleColors = colorscale.map(item => item[1]);
+
+  return d3ScaleLinear<string>().domain(scaleDomain).range(scaleColors);
+};
+
 export const transformPlotlyJsonToGVBCProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -390,7 +401,23 @@ export const transformPlotlyJsonToGVBCProps = (
   const mapXToDataPoints: Record<string, GroupedVerticalBarChartData> = {};
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+
+  let colorScale: ((value: number) => string) | undefined = undefined;
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
+    if (
+      input.layout?.coloraxis?.colorscale?.length &&
+      isArrayOrTypedArray(series.marker?.color) &&
+      (series.marker?.color as Color[]).length > 0 &&
+      typeof (series.marker?.color as Color[])?.[0] === 'number'
+    ) {
+      const scale = input.layout.coloraxis.colorscale as Array<[number, string]>;
+      const colorValues = series.marker?.color as number[];
+      const [dMin, dMax] = [
+        input.layout.coloraxis?.cmin ?? Math.min(...colorValues),
+        input.layout.coloraxis?.cmax ?? Math.max(...colorValues),
+      ];
+      colorScale = createColorScale(scale, [dMin, dMax]);
+    }
     // extract colors for each series only once
     const extractedColors = extractColor(
       input.layout?.template?.layout?.colorway,
@@ -408,8 +435,12 @@ export const transformPlotlyJsonToGVBCProps = (
       }
       if (series.type === 'bar') {
         const legend: string = legends[index1];
-        // resolve color for each legend's bars from the extracted colors
-        const color = resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
+        // resolve color for each legend's bars from the colorscale or extracted colors
+        const color = colorScale
+          ? colorScale(
+              isArrayOrTypedArray(series.marker?.color) ? ((series.marker?.color as Color[])?.[index2] as number) : 0,
+            )
+          : resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
 
         mapXToDataPoints[x].series.push({
           key: legend,
@@ -1352,11 +1383,6 @@ const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
     legends,
     hideLegend: layout?.showlegend === false ? true : hideLegends,
   };
-};
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const isInvalidValue = (value: any) => {
-  return typeof value === 'undefined' || value === null || (typeof value === 'number' && !isFinite(value));
 };
 
 export const getNumberAtIndexOrDefault = (data: PlotData['z'] | undefined, index: number) => {
