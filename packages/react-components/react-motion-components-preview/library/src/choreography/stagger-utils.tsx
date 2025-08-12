@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useAnimationFrame } from '@fluentui/react-utilities';
 
 export const DEFAULT_ITEM_DELAY = 100;
 export const DEFAULT_ITEM_DURATION = 200;
@@ -139,6 +140,7 @@ export function useStaggerItemsVisibility({
   reversed = false,
   onMotionFinish,
 }: UseStaggerItemsVisibilityParams): { itemsVisibility: boolean[] } {
+  const [requestAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
   const [itemsVisibility, setItemsVisibility] = React.useState<boolean[]>(() =>
     Array(itemCount).fill(direction === 'exit'),
   );
@@ -154,8 +156,12 @@ export function useStaggerItemsVisibility({
     setItemsVisibility(Array(itemCount).fill(direction === 'exit'));
 
     const tick = (now: number) => {
-      if (cancelled) return;
-      if (startTimeRef.current === null) startTimeRef.current = now;
+      if (cancelled) {
+        return;
+      }
+      if (startTimeRef.current === null) {
+        startTimeRef.current = now;
+      }
       const elapsed = now - (startTimeRef.current as number);
 
       const result = staggerItemsVisibilityAtTime({
@@ -170,19 +176,28 @@ export function useStaggerItemsVisibility({
       setItemsVisibility(result.itemsVisibility);
 
       if (elapsed < result.totalDuration) {
-        frameRef.current = requestAnimationFrame(tick);
+        frameRef.current = requestAnimationFrame(tick as () => void);
       } else if (!finishedRef.current) {
         finishedRef.current = true;
         onMotionFinish?.();
       }
     };
 
-    frameRef.current = requestAnimationFrame(tick);
+    frameRef.current = requestAnimationFrame(tick as () => void);
     return () => {
       cancelled = true;
-      if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
+      cancelAnimationFrame();
     };
-  }, [itemCount, itemDelay, itemDuration, direction, reversed, onMotionFinish]);
+  }, [
+    itemCount,
+    itemDelay,
+    itemDuration,
+    direction,
+    reversed,
+    onMotionFinish,
+    requestAnimationFrame,
+    cancelAnimationFrame,
+  ]);
 
   return { itemsVisibility };
 }
