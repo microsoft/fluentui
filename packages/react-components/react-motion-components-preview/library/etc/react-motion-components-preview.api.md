@@ -5,6 +5,7 @@
 ```ts
 
 import { PresenceComponent } from '@fluentui/react-motion';
+import * as React_2 from 'react';
 
 // @public
 export const Blur: PresenceComponent<BlurParams>;
@@ -62,6 +63,30 @@ export const SlideRelaxed: PresenceComponent<SlideParams>;
 
 // @public (undocumented)
 export const SlideSnappy: PresenceComponent<SlideParams>;
+
+// @public
+export const Stagger: React_2.FC<StaggerProps> & {
+    In: React_2.FC<Omit<StaggerProps, "visible">>;
+    Out: React_2.FC<Omit<StaggerProps, "visible">>;
+};
+
+// @public (undocumented)
+export interface StaggerProps {
+    // (undocumented)
+    children: React_2.ReactNode;
+    // (undocumented)
+    itemDelay?: number;
+    // (undocumented)
+    itemDuration?: number;
+    // (undocumented)
+    onMotionFinish?: () => void;
+    // (undocumented)
+    presence?: boolean;
+    // (undocumented)
+    reversed?: boolean;
+    // (undocumented)
+    visible?: boolean;
+}
 
 // (No @packageDocumentation comment for this package)
 
