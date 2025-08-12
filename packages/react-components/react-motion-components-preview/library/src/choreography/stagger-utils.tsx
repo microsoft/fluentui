@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState, useRef, useEffect } from 'react';
 
 export const DEFAULT_ITEM_DELAY = 100;
 export const DEFAULT_ITEM_DURATION = 200;
@@ -140,12 +139,14 @@ export function useStaggerItemsVisibility({
   reversed = false,
   onMotionFinish,
 }: UseStaggerItemsVisibilityParams): { itemsVisibility: boolean[] } {
-  const [itemsVisibility, setItemsVisibility] = useState<boolean[]>(() => Array(itemCount).fill(direction === 'exit'));
-  const startTimeRef = useRef<number | null>(null);
-  const frameRef = useRef<number | null>(null);
-  const finishedRef = useRef(false);
+  const [itemsVisibility, setItemsVisibility] = React.useState<boolean[]>(() =>
+    Array(itemCount).fill(direction === 'exit'),
+  );
+  const startTimeRef = React.useRef<number | null>(null);
+  const frameRef = React.useRef<number | null>(null);
+  const finishedRef = React.useRef(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     let cancelled = false;
     startTimeRef.current = null;
     finishedRef.current = false;
