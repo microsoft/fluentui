@@ -126,11 +126,23 @@ export interface UseStaggerItemsVisibilityParams extends Omit<StaggerItemsVisibi
 
 /**
  * Hook that tracks the visibility of a staggered sequence of items as time progresses.
- * It takes the total number of items, a delay between each item, and an optional item duration,
- * and optionally a direction ('enter' or 'exit') and whether to reverse the order.
- * It fires the onMotionFinish callback when the full stagger completes.
  *
- * @returns An `itemsVisibility` array of booleans that indicates which items are currently visible.
+ * **Behavior:**
+ * - On first render: Items are immediately set to their final state (no animation)
+ * - On subsequent renders: Items animate from start state to final state over time
+ *
+ * **States:**
+ * - Enter direction: Items start hidden → animate to visible
+ * - Exit direction: Items start visible → animate to hidden
+ *
+ * @param itemCount - Total number of items to stagger
+ * @param itemDelay - Milliseconds between the start of each item's animation
+ * @param itemDuration - Milliseconds each item's animation lasts
+ * @param direction - 'enter' (show items) or 'exit' (hide items)
+ * @param reversed - Whether to reverse the stagger order (last item first)
+ * @param onMotionFinish - Callback fired when the full stagger sequence completes
+ *
+ * @returns An `itemsVisibility` array of booleans indicating which items are currently visible
  */
 export function useStaggerItemsVisibility({
   itemCount,
@@ -141,16 +153,23 @@ export function useStaggerItemsVisibility({
   onMotionFinish,
 }: UseStaggerItemsVisibilityParams): { itemsVisibility: boolean[] } {
   const [requestAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
+
+  // State: visibility array for all items
   const [itemsVisibility, setItemsVisibility] = React.useState<boolean[]>(() => {
     // Initial state should be the final state of the animation, not the starting state
     // For 'enter' direction: final state is visible (true)
     // For 'exit' direction: final state is hidden (false)
+    // Note: Array is recreated on each update for simplicity, could be optimized if needed
     return Array(itemCount).fill(direction === 'enter');
   });
+
+  // Refs: animation timing and control
   const startTimeRef = React.useRef<number | null>(null);
   const frameRef = React.useRef<number | null>(null);
   const finishedRef = React.useRef(false);
   const isFirstRender = React.useRef(true);
+
+  // ====== ANIMATION EFFECT ======
 
   React.useEffect(() => {
     let cancelled = false;
@@ -163,12 +182,7 @@ export function useStaggerItemsVisibility({
       isFirstRender.current = false;
       // Items are already in the correct final state, no animation needed
       onMotionFinish?.();
-      return () => {
-        cancelled = true;
-        if (frameRef.current) {
-          cancelAnimationFrame();
-        }
-      };
+      return; // No cleanup needed for first render
     }
 
     // For animations, we start from the opposite of the final state:
@@ -177,6 +191,7 @@ export function useStaggerItemsVisibility({
     const startState = direction === 'exit';
     setItemsVisibility(Array(itemCount).fill(startState));
 
+    // Animation loop: update visibility on each frame until complete
     const tick = (now: number) => {
       if (cancelled) {
         return;
