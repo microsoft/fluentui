@@ -171,6 +171,8 @@ describe('DataGrid', () => {
     cy.focused().should('have.text', '1-1').should('have.attr', 'role', 'gridcell').realPress('ArrowRight');
     cy.focused().should('have.text', '1-2').should('have.attr', 'role', 'gridcell').realPress('ArrowDown');
     cy.focused().should('have.attr', 'role', 'row').realPress('ArrowRight');
+    cy.focused().should('have.text', '2-1').should('have.attr', 'role', 'gridcell').realPress('ArrowLeft');
+    cy.focused().should('have.attr', 'role', 'row').should('have.text', '2-12-22-3').realPress('ArrowRight');
     cy.focused().should('have.text', '2-1').should('have.attr', 'role', 'gridcell').realPress('Tab');
     cy.focused().should('have.text', 'After').realPress(['Shift', 'Tab']);
     cy.focused().should('have.attr', 'role', 'row').should('have.text', '2-12-22-3').realPress('PageUp');

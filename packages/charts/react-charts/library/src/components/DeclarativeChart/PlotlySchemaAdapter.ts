@@ -38,7 +38,7 @@ import { GaugeChartProps, GaugeChartSegment } from '../GaugeChart/index';
 import { GroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChartProps } from '../VerticalBarChart/index';
 import { ChartTableProps } from '../ChartTable/index';
-import { findNumericMinMaxOfY, formatScientificLimitWidth } from '../../utilities/utilities';
+import { findNumericMinMaxOfY, formatScientificLimitWidth, MIN_DONUT_RADIUS } from '../../utilities/utilities';
 import type {
   Datum,
   Layout,
@@ -268,7 +268,7 @@ export const transformPlotlyJsonToDonutProps = (
   const donutMarginVertical: number = 40 + (hideLabels ? 0 : 40);
   const innerRadius: number = firstData.hole
     ? firstData.hole * (Math.min(width - donutMarginHorizontal, height - donutMarginVertical) / 2)
-    : 0;
+    : MIN_DONUT_RADIUS;
   const { chartTitle } = getTitles(input.layout);
 
   return {
