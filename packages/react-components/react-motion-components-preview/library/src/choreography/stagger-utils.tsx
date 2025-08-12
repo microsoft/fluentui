@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { useState, useRef, useEffect } from 'react';
 
+export const DEFAULT_ITEM_DELAY = 100;
+export const DEFAULT_ITEM_DURATION = 200;
+
 /**
  * Flattens ReactNode (including Fragments) to an array of valid ReactElements,
  * filtering out strings, numbers, null, etc.
@@ -39,7 +42,7 @@ export const childrenOrFragmentToArray = (children: React.ReactNode): React.Reac
 export function getStaggerTotalDuration({
   itemCount,
   itemDelay,
-  itemDuration = 200,
+  itemDuration = DEFAULT_ITEM_DURATION,
 }: {
   itemCount: number;
   itemDelay: number;
@@ -67,8 +70,8 @@ export interface StaggerItemsVisibilityAtTimeParams {
 export function staggerItemsVisibilityAtTime({
   itemCount,
   elapsed,
-  itemDelay = 100,
-  itemDuration = 200,
+  itemDelay = DEFAULT_ITEM_DELAY,
+  itemDuration = DEFAULT_ITEM_DURATION,
   direction = 'enter',
   reversed = false,
 }: StaggerItemsVisibilityAtTimeParams): {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { toElementArray, useStaggerItemsVisibility } from './stagger-utils';
+import { toElementArray, useStaggerItemsVisibility, DEFAULT_ITEM_DURATION, DEFAULT_ITEM_DELAY } from './stagger-utils';
 
 export interface StaggerProps {
   children: React.ReactNode;
@@ -15,8 +15,8 @@ export interface StaggerProps {
 const StaggerBase: React.FC<StaggerProps> = ({
   children,
   visible = false,
-  itemDelay = 100,
-  itemDuration = 200,
+  itemDelay = DEFAULT_ITEM_DELAY,
+  itemDuration = DEFAULT_ITEM_DURATION,
   reversed = false,
   onMotionFinish,
   presence = false,
