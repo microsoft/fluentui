@@ -48,6 +48,9 @@ export function getStaggerTotalDuration({
   itemDelay: number;
   itemDuration?: number;
 }): number {
+  if (itemCount <= 0) {
+    return 0;
+  }
   if (itemCount <= 1) {
     return Math.max(0, itemDuration);
   }
@@ -84,21 +87,34 @@ export function staggerItemsVisibilityAtTime({
   }
 
   const totalDuration = getStaggerTotalDuration({ itemCount, itemDelay, itemDuration });
-  const rawProgress = totalDuration > 0 ? elapsed / totalDuration : 1;
-  const progress = Math.min(Math.max(rawProgress, 0), 1);
 
-  const completedSteps = Math.floor(progress * itemCount);
+  // Calculate progression through the stagger sequence
+  let completedSteps: number;
+  if (itemDelay <= 0) {
+    // When itemDelay is 0 or negative, all steps complete immediately
+    completedSteps = itemCount;
+  } else {
+    // For enter: Math.floor(elapsed / itemDelay) gives 0 at t=0, but we want 1 item visible
+    // For exit: Math.floor(elapsed / itemDelay) gives 0 at t=0, which we'll negate to show all items
+    const offset = direction === 'enter' ? 1 : 0;
+    const stepsFromElapsedTime = Math.floor(elapsed / itemDelay) + offset;
+    // Clamp to itemCount to prevent showing more items than we have
+    completedSteps = Math.min(itemCount, stepsFromElapsedTime);
+  }
 
   const itemsVisibility = Array.from({ length: itemCount }, (_, idx) => {
+    // Calculate based on progression through the sequence (enter pattern)
     const fromStart = idx < completedSteps;
     const fromEnd = idx >= itemCount - completedSteps;
 
-    let itemVisibility = reversed ? fromEnd : fromStart;
+    let itemVisible = reversed ? fromEnd : fromStart;
+
+    // For exit, invert the enter pattern
     if (direction === 'exit') {
-      // For exit, invert the visibility logic
-      itemVisibility = !itemVisibility;
+      itemVisible = !itemVisible;
     }
-    return itemVisibility;
+
+    return itemVisible;
   });
 
   return { itemsVisibility, totalDuration };
@@ -119,7 +135,7 @@ export interface UseStaggerItemsVisibilityParams extends Omit<StaggerItemsVisibi
 export function useStaggerItemsVisibility({
   itemCount,
   itemDelay,
-  itemDuration = 0,
+  itemDuration = DEFAULT_ITEM_DURATION,
   direction,
   reversed = false,
   onMotionFinish,
