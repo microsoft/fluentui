@@ -63,7 +63,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                     {rows.map((row, rowIdx) => (
                       <tr key={rowIdx}>
                         {row.map((cell, colIdx) => (
-                          <td key={colIdx} className={classes.bodyCell} style={cell.style}>
+                          <td key={colIdx} className={classes.bodyCell} style={cell?.style}>
                             {cell.value}
                           </td>
                         ))}
