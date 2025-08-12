@@ -5,7 +5,7 @@ import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { getColorFromToken, getNextColor, useRtl } from '../../utilities/index';
+import { getColorFromToken, getNextColor, MIN_DONUT_RADIUS, useRtl } from '../../utilities/index';
 import { Legend, Legends, LegendContainer } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -284,7 +284,8 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const donutMarginVertical = props.hideLabels ? 0 : 40;
     const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical) / 2;
     const chartData = _elevateToMinimums(points.filter((d: ChartDataPoint) => d.data! >= 0));
-    const valueInsideDonut = props.innerRadius !== 0 ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
+    const valueInsideDonut =
+      props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
     const focusAttributes = useFocusableGroup();
     return !_isChartEmpty() ? (
       <div
