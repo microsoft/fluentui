@@ -4,7 +4,7 @@ import { toElementArray, useStaggerItemsVisibility } from './stagger-utils';
 export interface StaggerProps {
   children: React.ReactNode;
   visible?: boolean; // true = enter, false = exit (defaults to false)
-  delay?: number;
+  itemDelay?: number;
   itemDuration?: number;
   reversed?: boolean; // run sequence backward (defaults to false)
   presence?: boolean; // If true, always render children and control via `visible` prop. If false, unmount when not visible.
@@ -15,7 +15,7 @@ export interface StaggerProps {
 const StaggerBase: React.FC<StaggerProps> = ({
   children,
   visible = false,
-  delay = 100,
+  itemDelay = 100,
   itemDuration = 200,
   reversed = false,
   onMotionFinish,
@@ -25,7 +25,7 @@ const StaggerBase: React.FC<StaggerProps> = ({
 
   const { itemsVisibility: visibility } = useStaggerItemsVisibility({
     itemCount: elements.length,
-    delay,
+    itemDelay,
     itemDuration,
     direction: visible ? 'enter' : 'exit',
     reversed,

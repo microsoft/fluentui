@@ -38,24 +38,24 @@ export const childrenOrFragmentToArray = (children: React.ReactNode): React.Reac
  */
 export function getStaggerTotalDuration({
   itemCount,
-  delay,
+  itemDelay,
   itemDuration = 200,
 }: {
   itemCount: number;
-  delay: number;
+  itemDelay: number;
   itemDuration?: number;
 }): number {
   if (itemCount <= 1) {
     return Math.max(0, itemDuration);
   }
-  const staggerDuration = delay * (itemCount - 1);
+  const staggerDuration = itemDelay * (itemCount - 1);
   return Math.max(0, staggerDuration + itemDuration);
 }
 
 export interface StaggerItemsVisibilityAtTimeParams {
   itemCount: number;
   elapsed: number;
-  delay?: number;
+  itemDelay?: number;
   itemDuration?: number;
   direction?: 'enter' | 'exit';
   reversed?: boolean;
@@ -67,7 +67,7 @@ export interface StaggerItemsVisibilityAtTimeParams {
 export function staggerItemsVisibilityAtTime({
   itemCount,
   elapsed,
-  delay = 100,
+  itemDelay = 100,
   itemDuration = 0,
   direction = 'enter',
   reversed = false,
@@ -80,7 +80,7 @@ export function staggerItemsVisibilityAtTime({
     return { itemsVisibility: [], totalDuration: 0 };
   }
 
-  const totalDuration = getStaggerTotalDuration({ itemCount, delay, itemDuration });
+  const totalDuration = getStaggerTotalDuration({ itemCount, itemDelay, itemDuration });
   const rawProgress = totalDuration > 0 ? elapsed / totalDuration : 1;
   const progress = Math.min(Math.max(rawProgress, 0), 1);
 
@@ -114,14 +114,14 @@ export interface UseStaggerItemsVisibilityParams extends Omit<StaggerItemsVisibi
  * @returns An `itemsVisibility` array of booleans that indicates which items are currently visible.
  */
 export function useStaggerItemsVisibility({
-  itemCount: count,
-  delay,
+  itemCount,
+  itemDelay,
   itemDuration = 0,
   direction,
   reversed = false,
   onMotionFinish,
 }: UseStaggerItemsVisibilityParams): { itemsVisibility: boolean[] } {
-  const [itemsVisibility, setItemsVisibility] = useState<boolean[]>(() => Array(count).fill(direction === 'exit'));
+  const [itemsVisibility, setItemsVisibility] = useState<boolean[]>(() => Array(itemCount).fill(direction === 'exit'));
   const startTimeRef = useRef<number | null>(null);
   const frameRef = useRef<number | null>(null);
   const finishedRef = useRef(false);
@@ -131,7 +131,7 @@ export function useStaggerItemsVisibility({
     startTimeRef.current = null;
     finishedRef.current = false;
     // Reset visibility array to initial state
-    setItemsVisibility(Array(count).fill(direction === 'exit'));
+    setItemsVisibility(Array(itemCount).fill(direction === 'exit'));
 
     const tick = (now: number) => {
       if (cancelled) return;
@@ -139,9 +139,9 @@ export function useStaggerItemsVisibility({
       const elapsed = now - (startTimeRef.current as number);
 
       const result = staggerItemsVisibilityAtTime({
-        itemCount: count,
+        itemCount,
         elapsed,
-        delay,
+        itemDelay,
         itemDuration,
         direction,
         reversed,
@@ -162,7 +162,7 @@ export function useStaggerItemsVisibility({
       cancelled = true;
       if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
     };
-  }, [count, delay, itemDuration, direction, reversed, onMotionFinish]);
+  }, [itemCount, itemDelay, itemDuration, direction, reversed, onMotionFinish]);
 
   return { itemsVisibility };
 }
