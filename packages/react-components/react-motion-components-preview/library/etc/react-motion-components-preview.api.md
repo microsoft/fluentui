@@ -73,6 +73,8 @@ export const Stagger: React_2.FC<StaggerProps> & {
 // @public (undocumented)
 export interface StaggerProps {
     // (undocumented)
+    appear?: boolean;
+    // (undocumented)
     children: React_2.ReactNode;
     // (undocumented)
     itemDelay?: number;
