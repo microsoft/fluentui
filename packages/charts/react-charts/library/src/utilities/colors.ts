@@ -1,5 +1,9 @@
 import { tokens } from '@fluentui/react-theme';
-import { rgb as d3Rgb } from 'd3-color';
+import * as React from 'react';
+import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
+import { Theme, webLightTheme } from '@fluentui/tokens';
+import * as d3Color from 'd3-color';
+const { rgb: d3Rgb } = d3Color;
 
 export const DataVizPalette = {
   color1: 'qualitative.1',
@@ -170,6 +174,19 @@ export const getColorContrast = (c1: string, c2: string): number => {
 
 export const getInvertedTextColor = (color: string, isDarkTheme: boolean = false): string => {
   return color === tokens.colorNeutralForeground1 ? tokens.colorNeutralBackground1 : tokens.colorNeutralForeground1;
+};
+
+export const useIsDarkTheme = (): boolean => {
+  const parentV9Theme = React.useContext(V9ThemeContext) as Theme;
+  const v9Theme: Theme = parentV9Theme ? parentV9Theme : webLightTheme;
+
+  // Get background and foreground colors
+  const backgroundColor = d3Color.hsl(v9Theme.colorNeutralBackground1);
+  const foregroundColor = d3Color.hsl(v9Theme.colorNeutralForeground1);
+
+  const isDarkTheme = backgroundColor.l < foregroundColor.l;
+
+  return isDarkTheme;
 };
 
 export function getContrastTextColor(backgroundColor: string, isDarkTheme: boolean = false): string {
