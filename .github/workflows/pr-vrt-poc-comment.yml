@@ -27,7 +27,7 @@ jobs:
         env:
           W_RUN: ${{ toJSON(github.event.workflow_run) }}
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: pr-number
           path: ./results
