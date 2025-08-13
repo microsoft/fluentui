@@ -82,6 +82,8 @@ pipelines:
           lastModifiedDate: 2025-05-14
         armory:
           lastModifiedDate: 2025-05-14
+        accessibilityinsights:
+          lastModifiedDate: 2025-08-13
   228:
     retail:
       binary:
