@@ -1,0 +1,21 @@
+import { join, resolve } from 'node:path';
+import { baseConfig } from '<%= relativePathToWorkspaceRoot %>/scripts/cypress';
+
+const usedNodeModulesPath = join(__dirname, 'node_modules');
+
+const config = { ...baseConfig };
+
+const specs = [resolve('<%= relativePathToProjectRoot %>/**/src/**/*.cy.{tsx,ts}')];
+
+config.component.specPattern = specs;
+config.component.devServer.webpackConfig.resolve ??= {};
+config.component.devServer.webpackConfig.resolve.alias = {
+  ...config.component.devServer.webpackConfig.resolve.alias,
+  '@cypress/react': resolve(usedNodeModulesPath, './@cypress/react'),
+  '@types/react': resolve(usedNodeModulesPath, './@types/react'),
+  '@types/react-dom': resolve(usedNodeModulesPath, './@types/react-dom'),
+  react: resolve(usedNodeModulesPath, './react'),
+  'react-dom': resolve(usedNodeModulesPath, './react-dom'),
+};
+
+export default config;

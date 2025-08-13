@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["ES2019", "dom"],
+    "strict": true,
+    "pretty": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "preserveConstEnums": true,
+    "skipLibCheck": true,
+    "types": [],
+    "baseUrl": "."
+  },
+  "exclude": [
+    "<%= relativePathToProjectRoot %>/**/index.stories.tsx",
+    "<%= relativePathToProjectRoot %>/**/index.stories.ts",
+    "<%= relativePathToProjectRoot %>/**/*.spec.tsx",
+    "<%= relativePathToProjectRoot %>/**/*.test.tsx",
+    "<%= relativePathToProjectRoot %>/**/src/testing/**"
+  ],
+  "include": [
+    "<%= relativePathToProjectRoot %>/**/*.stories.tsx",
+    "<%= relativePathToProjectRoot %>/**/*.stories.ts"
+  ],
+  "files": ["<%= relativePathToWorkspaceRoot %>/typings/static-assets/index.d.ts"]
+}
