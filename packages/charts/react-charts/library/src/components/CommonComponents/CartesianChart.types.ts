@@ -459,7 +459,7 @@ export interface CartesianChartProps {
 
 export interface YValueHover {
   legend?: string;
-  y?: number;
+  y?: number | string;
   color?: string;
   data?: string | number;
   shouldDrawBorderBottom?: boolean;
