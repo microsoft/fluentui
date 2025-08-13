@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { CurveFactory } from 'd3-shape';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -713,7 +711,7 @@ export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
 export type GaugeValueFormat = 'percentage' | 'fraction';
 
 // @public (undocumented)
-export const getChartValueLabel: (chartValue: number, minValue: number, maxValue: number, chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string) | undefined, forCallout?: boolean) => string;
+export const getChartValueLabel: (chartValue: number, minValue: number, maxValue: number, chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string), forCallout?: boolean) => string;
 
 // @public (undocumented)
 export const getColorContrast: (c1: string, c2: string) => number;
@@ -1100,6 +1098,7 @@ export interface LineChartLineOptions extends SVGProps<SVGPathElement> {
     curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
     lineBorderColor?: string;
     lineBorderWidth?: string | number;
+    mode?: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta' | 'markers+text' | 'lines+text' | 'lines+markers+text';
     strokeDasharray?: string | number;
     strokeDashoffset?: string | number;
     strokeLinecap?: 'butt' | 'round' | 'square' | 'inherit';

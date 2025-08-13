@@ -2,6 +2,27 @@
   "name": "@fluentui/react-storybook-addon",
   "entries": [
     {
+      "date": "Wed, 13 Aug 2025 12:49:04 GMT",
+      "tag": "@fluentui/react-storybook-addon_v0.4.1",
+      "version": "0.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "84ee52b61191412220e2ebdfe41090f5ce343fba",
+            "comment": "fix: resolve dissapearing Slot Info message on consecutive page re-renders"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "indirect ts emit change with exactOptionalPropertyTypes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Aug 2025 10:03:26 GMT",
       "tag": "@fluentui/react-storybook-addon_v0.4.0",
       "version": "0.4.0",

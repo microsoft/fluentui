@@ -1,5 +1,4 @@
 import { type ElementViewTemplate, html, ref, slotted } from '@microsoft/fast-element';
-import { whitespaceFilter } from '../utils/index.js';
 import type { TextArea } from './textarea.js';
 
 /**
@@ -11,13 +10,7 @@ export function textAreaTemplate<T extends TextArea>(): ElementViewTemplate<T> {
   return html<T>`
     <template>
       <label ${ref('labelEl')} for="control" part="label">
-        <slot
-          name="label"
-          ${slotted({
-            property: 'labelSlottedNodes',
-            filter: whitespaceFilter,
-          })}
-        ></slot>
+        <slot name="label" ${slotted('labelSlottedNodes')}></slot>
       </label>
       <div class="root" part="root">
         <textarea
@@ -39,12 +32,7 @@ export function textAreaTemplate<T extends TextArea>(): ElementViewTemplate<T> {
         ></textarea>
       </div>
       <div hidden>
-        <slot
-          ${slotted({
-            property: 'defaultSlottedNodes',
-            filter: whitespaceFilter,
-          })}
-        ></slot>
+        <slot ${slotted('defaultSlottedNodes')}></slot>
       </div>
     </template>
   `;
