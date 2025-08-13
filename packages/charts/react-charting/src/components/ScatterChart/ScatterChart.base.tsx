@@ -35,6 +35,7 @@ import {
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
+  sortAxisCategories,
 } from '../../utilities/index';
 import { classNamesFunction, DirectionalHint, find, getId, getRTL } from '@fluentui/react';
 import { IImageExportOptions, IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
@@ -233,6 +234,47 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         {...props.legendProps}
       />
     );
+  }
+
+  function _getOrderedYAxisLabels() {
+    const shouldOrderYAxisLabelsByCategoryOrder =
+      _yAxisType === YAxisType.StringAxis && props.yAxisCategoryOrder !== 'default';
+    if (!shouldOrderYAxisLabelsByCategoryOrder) {
+      // Collect all unique string y values from all data points in all series, in reverse order
+      const yLabelsSet = new Set<string>();
+      for (let i = _points.current.length - 1; i >= 0; i--) {
+        const point = _points.current[i];
+        if (point.data && Array.isArray(point.data)) {
+          for (const d of point.data) {
+            if (typeof d.y === 'string') {
+              yLabelsSet.add(d.y);
+            }
+          }
+        }
+      }
+      return Array.from(yLabelsSet);
+    }
+
+    return sortAxisCategories(_mapCategoryToValues(), props.yAxisCategoryOrder);
+  }
+
+  function _mapCategoryToValues() {
+    const categoryToValues: Record<string, number[]> = {};
+    _points.current.forEach(point => {
+      if (point.data && Array.isArray(point.data)) {
+        point.data.forEach(d => {
+          if (typeof d.y === 'string') {
+            if (!categoryToValues[d.y]) {
+              categoryToValues[d.y] = [];
+            }
+            if (typeof d.x === 'number') {
+              categoryToValues[d.y].push(d.x);
+            }
+          }
+        });
+      }
+    });
+    return categoryToValues;
   }
 
   function _onLegendSelectionChange(
@@ -735,13 +777,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   _xAxisLabels = Array.from(new Set(xAxisLabels));
 
   // Compute unique y axis labels for string y axis
-  let _yAxisLabels: string[] = [];
-  if (_yAxisType === YAxisType.StringAxis) {
-    const allYValues: (string | number)[] = _points.current
-      .map((point: ScatterChartDataWithIndex) => point.data.map((dp: IScatterChartDataPoint) => dp.y))
-      .flat();
-    _yAxisLabels = Array.from(new Set(allYValues.filter(y => typeof y === 'string') as string[]));
-  }
+  const _yAxisLabels: string[] = _getOrderedYAxisLabels();
 
   return !_isChartEmpty() ? (
     <CartesianChart
@@ -762,7 +798,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       getGraphData={_initializeScatterChartData}
       xAxisType={_xAxisType}
       yAxisType={_yAxisType}
-      showYAxisLablesTooltip
       // Pass stringDatasetForYAxisDomain only if y axis is string
       {...(_yAxisType === YAxisType.StringAxis ? { stringDatasetForYAxisDomain: _yAxisLabels } : {})}
       onChartMouseLeave={_handleChartMouseLeave}
