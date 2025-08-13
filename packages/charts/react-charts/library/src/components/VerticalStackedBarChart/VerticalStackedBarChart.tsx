@@ -63,6 +63,7 @@ import {
   calcRequiredWidth,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
@@ -733,14 +734,23 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     if (_calloutAnchorPoint?.chartDataPoint !== point || _calloutAnchorPoint?.xAxisDataPoint !== xAxisPoint) {
       _calloutAnchorPoint = {
         chartDataPoint: point,
-        xAxisDataPoint: `${xAxisPoint}`,
+        xAxisDataPoint:
+          xAxisPoint instanceof Date
+            ? formatDateToLocaleString(xAxisPoint, props.culture, props.useUTC as boolean)
+            : xAxisPoint.toString(),
       };
+      const xCalloutValue =
+        point.xAxisCalloutData ||
+        (xAxisPoint instanceof Date
+          ? formatDateToLocaleString(xAxisPoint, props.culture, props.useUTC as boolean)
+          : xAxisPoint.toString());
+
       _updatePosition(clientX, clientY);
       setPopoverOpen(_noLegendHighlighted() || _isLegendHighlighted(point.legend));
       setCalloutLegend(point.legend);
       setDataForHoverCard(point.data);
       setColor(color);
-      setXCalloutValue(point.xAxisCalloutData ? point.xAxisCalloutData : `${xAxisPoint}`);
+      setXCalloutValue(xCalloutValue);
       setYCalloutValue(point.yAxisCalloutData!);
       setDataPointCalloutProps(point);
       setCallOutAccessibilityData(point.callOutAccessibilityData);
