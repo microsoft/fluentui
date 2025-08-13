@@ -9,6 +9,8 @@
     "rit": "./bin/rit.js"
   },
   "dependencies": {
-    "@swc/helpers": "~0.5.1"
+    "@swc/helpers": "~0.5.1",
+    "ejs": "^3.1.10",
+    "yargs": "^17.7.2"
   }
 }

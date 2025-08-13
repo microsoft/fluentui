@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "swcrc": false,
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "decorators": false,
+      "dynamicImport": false
+    },
+    "externalHelpers": true,
+    "transform": {
+      "react": {
+        "runtime": "classic",
+        "useSpread": true
+      }
+    },
+    "target": "es2019"
+  },
+  "sourceMaps": true
+}
