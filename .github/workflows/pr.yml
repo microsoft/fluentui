@@ -81,6 +81,40 @@ jobs:
           git status --porcelain
           git diff-index --quiet HEAD -- || exit 1
 
+  react_integration_tests_collocated:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: macos-14-xlarge
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
+
+      - run: |
+          yarn install --frozen-lockfile
+          yarn rit --react 17 --install-deps
+          yarn rit --react 19 --install-deps
+
+      - name: Verify Cypress installs from RIT temp workspaces (React 17 -> v13, React 19 -> v14)
+        run: |
+          "$GITHUB_WORKSPACE"/tmp/rit/react-17/node_modules/.bin/cypress verify
+          "$GITHUB_WORKSPACE"/tmp/rit/react-19/node_modules/.bin/cypress verify
+
+      - name: React Versions Integration Tests (17,19)
+        run: |
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit
+
   react_integration_tests:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest
