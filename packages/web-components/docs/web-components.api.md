@@ -2398,10 +2398,7 @@ export const DividerDefinition: FASTElementDefinition<typeof Divider>;
 
 // @public
 export const DividerOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Divider roles
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -3385,10 +3382,7 @@ export const RadioGroupDefinition: FASTElementDefinition<typeof RadioGroup>;
 
 // @public
 export const RadioGroupOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Radio Group orientation
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -3886,10 +3880,7 @@ export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
 
 // @public
 export const TablistOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * The appearance of the component
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
