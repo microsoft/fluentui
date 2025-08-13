@@ -10,7 +10,7 @@
   "typings": "./src/index.d.ts",
   "files": [
     "*.md",
-    "dist/*.d.ts",
+    "dist",
     "lib",
     "lib-commonjs"
   ],
