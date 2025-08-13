@@ -762,6 +762,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       getGraphData={_initializeScatterChartData}
       xAxisType={_xAxisType}
       yAxisType={_yAxisType}
+      showYAxisLablesTooltip
       // Pass stringDatasetForYAxisDomain only if y axis is string
       {...(_yAxisType === YAxisType.StringAxis ? { stringDatasetForYAxisDomain: _yAxisLabels } : {})}
       onChartMouseLeave={_handleChartMouseLeave}

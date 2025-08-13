@@ -46,6 +46,7 @@ const chartTypesWithStringYAxis = [
   ChartTypes.HeatMapChart,
   ChartTypes.VerticalStackedBarChart,
   ChartTypes.GanttChart,
+  ChartTypes.ScatterChart,
 ];
 
 export interface ICartesianChartState {
