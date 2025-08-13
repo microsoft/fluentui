@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add date axis support in vsbc",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}
