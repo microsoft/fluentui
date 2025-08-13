@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: include dist folder contents to the published package",
+  "packageName": "@fluentui/storybook-llms-extractor",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
