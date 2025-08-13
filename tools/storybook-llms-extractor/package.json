@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/storybook-llms-extractor",
   "description": "A CLI tool that extracts documentation from Storybook builds and converts it to LLM-friendly formats.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "commonjs",
   "bin": {
     "storybook-llms-extractor": "./bin/storybook-llms-extractor.js"
