@@ -18,6 +18,7 @@ import {
   mergeCallbacks,
   useEventCallback,
   slot,
+  getRefFromReactElement,
 } from '@fluentui/react-utilities';
 import type { TooltipProps, TooltipState, TooltipChildProps, OnVisibleChangeData } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
@@ -236,6 +237,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   state.content.onBlur = mergeCallbacks(state.content.onBlur, onLeaveTrigger);
 
   const child = getTriggerChild(children);
+  const childRef = child ? getRefFromReactElement(child) : undefined;
 
   const triggerAriaProps: Pick<TooltipChildProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
   const isExpanded = child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true';
@@ -266,7 +268,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     ...triggerAriaProps,
     ...child?.props,
     ref: useMergedRefs(
-      child?.ref,
+      childRef,
       keyborgListenerCallbackRef,
       // If the target prop is not provided, attach targetRef to the trigger element's ref prop
       positioningOptions.target === undefined ? targetRef : undefined,

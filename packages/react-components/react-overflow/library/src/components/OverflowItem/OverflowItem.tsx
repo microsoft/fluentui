@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   applyTriggerPropsToChildren,
+  getRefFromReactElement,
   type FluentTriggerComponent,
   getTriggerChild,
   useMergedRefs,
@@ -19,9 +20,10 @@ export const OverflowItem = React.forwardRef((props: OverflowItemProps, ref) => 
 
   const containerRef = useOverflowItem(id, priority, groupId);
   const child = getTriggerChild(children);
+  const childRef = child ? getRefFromReactElement(child) : undefined;
 
   return applyTriggerPropsToChildren(children, {
-    ref: useMergedRefs(containerRef, ref, child?.ref),
+    ref: useMergedRefs(containerRef, ref, childRef),
   });
 });
 

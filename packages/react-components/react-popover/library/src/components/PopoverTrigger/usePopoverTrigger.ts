@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
+  getRefFromReactElement,
   mergeCallbacks,
   useMergedRefs,
   useEventCallback,
@@ -23,6 +24,7 @@ import { Escape } from '@fluentui/keyboard-keys';
 export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverTriggerState => {
   const { children, disableButtonEnhancement = false } = props;
   const child = getTriggerChild(children);
+  const childRef = child ? getRefFromReactElement(child) : undefined;
 
   const open = usePopoverContext_unstable(context => context.open);
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
@@ -73,7 +75,7 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
     onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),
     onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
     onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
-    ref: useMergedRefs(triggerRef, child?.ref),
+    ref: useMergedRefs(triggerRef, childRef),
   } as const;
 
   const triggerChildProps = {
