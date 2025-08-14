@@ -1,6 +1,7 @@
 import {
   MenuGrid,
   MenuGridCell,
+  MenuGridItem,
   MenuGridRow,
   MenuGridRowGroup,
   MenuGridRowGroupHeader,
@@ -16,6 +17,7 @@ export default {
   component: MenuGrid,
   subcomponents: {
     MenuGridCell,
+    MenuGridItem,
     MenuGridRow,
     MenuGridRowGroup,
     MenuGridRowGroupHeader,
