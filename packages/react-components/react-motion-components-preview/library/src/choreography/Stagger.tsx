@@ -48,10 +48,8 @@ const StaggerBase: React.FC<StaggerProps> = ({
   );
 };
 
-type StaggerOneWay = React.FC<Omit<StaggerProps, 'visible'>>;
-
-const StaggerIn: StaggerOneWay = props => <StaggerBase {...props} visible={true} />;
-const StaggerOut: StaggerOneWay = props => <StaggerBase {...props} visible={false} />;
+const StaggerIn: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBase {...props} visible={true} />;
+const StaggerOut: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBase {...props} visible={false} />;
 
 /**
  * Stagger is a component that manages the staggered entrance and exit of its children.
