@@ -50,18 +50,40 @@ const StaggerBase: React.FC<StaggerProps> = ({
   );
 };
 
-const StaggerIn: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBase {...props} visible={true} />;
-const StaggerOut: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBase {...props} visible={false} />;
+type StaggerOneWay = React.FC<Omit<StaggerProps, 'visible'>>;
+
+const StaggerIn: StaggerOneWay = props => <StaggerBase {...props} visible={true} />;
+const StaggerOut: StaggerOneWay = props => <StaggerBase {...props} visible={false} />;
 
 /**
  * Stagger is a component that manages the staggered entrance and exit of its children.
- * The `children` can be React elements or presence components that accept a `visible` prop to be shown or hidden.
- * Stagger's own `visible` prop determines whether the staggered animation is entering or exiting.
- * The `reversed` prop determines whether the staggered animation is reversed.
- * The `delay` and `itemDuration` props control the timing of the staggered animation.
- * The `onMotionFinish` prop is called when the staggered animation finishes.
- * The `presence` prop determines whether the children are always rendered or unmounted when not visible.
- * The `In` and `Out` components are used to specify the entrance and exit animations respectively.
+ * Children are animated in sequence with configurable timing between each item.
+ * Stagger can be interactively toggled between entrance and exit animations using the `visible` prop.
+ *
+ * @param children - React elements to animate. Elements are cloned with animation props.
+ * @param visible - Controls animation direction: `true` for enter, `false` for exit. Defaults to `false`.
+ * @param itemDelay - Milliseconds between each item's animation start. Defaults to 100ms.
+ * @param itemDuration - Milliseconds each item's animation lasts. Defaults to 200ms.
+ * @param reversed - Whether to reverse the stagger sequence (last item animates first). Defaults to `false`.
+ * @param presence - If `true`, always renders children and controls via `visible` prop. If `false`, unmounts when not visible. Defaults to `false`.
+ * @param appear - If `true`, children animate on first mount. Defaults to `false`.
+ * @param onMotionFinish - Callback invoked when the staggered animation sequence completes.
+ *
+ * Presence children maintain DOM presence but are shown and hidden by receiving the `visible` prop.
+ * Other children are shown and hidden by rendering to, or omitting from, the DOM.
+ *
+ * **Static variants:**
+ * - `<Stagger.In>` - One-way stagger for entrance animations only
+ * - `<Stagger.Out>` - One-way stagger for exit animations only
+ *
+ * @example
+ * ```tsx
+ * <Stagger visible={isVisible} itemDelay={150} onMotionFinish={handleComplete}>
+ *   <div>Item 1</div>
+ *   <div>Item 2</div>
+ *   <div>Item 3</div>
+ * </Stagger>
+ * ```
  */
 export const Stagger = Object.assign(StaggerBase, {
   In: StaggerIn,
