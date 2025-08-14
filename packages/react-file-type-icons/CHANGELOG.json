@@ -2,6 +2,21 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Thu, 14 Aug 2025 07:19:48 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.13.2",
+      "version": "8.13.2",
+      "comments": {
+        "none": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.12.3",
+            "commit": "e7056070683aa0cda7044e05da6e572a658f1a79"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Jul 2025 07:21:40 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.13.2",
       "version": "8.13.2",

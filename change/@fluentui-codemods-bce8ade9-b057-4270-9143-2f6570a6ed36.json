@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: lock ts to 5.3.3",
-  "packageName": "@fluentui/codemods",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}
