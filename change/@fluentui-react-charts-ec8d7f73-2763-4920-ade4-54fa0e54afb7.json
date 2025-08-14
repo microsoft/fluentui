@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add support for string y axis in VSBC",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

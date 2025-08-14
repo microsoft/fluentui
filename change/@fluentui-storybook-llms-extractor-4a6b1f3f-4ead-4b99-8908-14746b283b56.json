@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: initial release",
-  "packageName": "@fluentui/storybook-llms-extractor",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
