@@ -197,7 +197,7 @@ export const DashboardTiles = () => {
       </div>
 
       <div className={classes.dashboardGrid}>
-        <Stagger presence visible={visible} appear itemDelay={100} itemDuration={300}>
+        <Stagger  visible={visible}  itemDelay={100} itemDuration={300}>
           {dashboardMetrics.map((metric, index) => (
             <ScaleVariant key={index}>
               <Card className={classes.metricCard}>

@@ -207,7 +207,7 @@ export const NotificationCenter = () => {
       </div>
 
       <div className={classes.notificationPanel}>
-        <Stagger presence visible={visible} appear itemDelay={120} itemDuration={350}>
+        <Stagger visible={visible} itemDelay={120} itemDuration={350}>
           {visibleNotifications.map(notification => (
             <SlideInVariant key={notification.id}>
               <Card className={`${classes.notification} ${classes[notification.type]}`}>

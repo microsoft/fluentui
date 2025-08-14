@@ -240,7 +240,7 @@ export const FileExplorer = () => {
       </div>
 
       <div className={classes.fileList}>
-        <Stagger presence visible={visible} appear itemDelay={80} itemDuration={400}>
+        <Stagger visible={visible} itemDelay={80} itemDuration={400}>
           {fileItems.map(file => (
             <CollapseVariant key={file.id}>
               <Card className={classes.fileCard}>

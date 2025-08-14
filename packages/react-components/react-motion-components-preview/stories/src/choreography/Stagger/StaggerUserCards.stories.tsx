@@ -159,7 +159,7 @@ export const UserCards = () => {
         </Button>
       </div>
 
-      <Stagger presence visible={visible} appear itemDelay={150} itemDuration={400}>
+      <Stagger visible={visible} itemDelay={150} itemDuration={400}>
         {users.map((user, index) => (
           <FadeSlideVariant key={index}>
             <Card className={classes.userCard}>

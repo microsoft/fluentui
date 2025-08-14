@@ -392,7 +392,7 @@ export const AdvancedConfiguration = () => {
 
       {/* Animation Preview */}
       <div className={classes.animationPreview}>
-        <Stagger presence visible={visible} appear itemDelay={itemDelay} itemDuration={itemDuration}>
+        <Stagger visible={visible}  itemDelay={itemDelay} itemDuration={itemDuration}>
           {demoItems.map(item => (
             <SelectedMotionComponent key={item.id}>
               <Card className={classes.previewCard}>
