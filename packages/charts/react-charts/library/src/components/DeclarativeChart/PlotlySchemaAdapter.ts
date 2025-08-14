@@ -338,16 +338,23 @@ export const transformPlotlyJsonToVSBCProps = (
           });
         } else if (series.type === 'scatter' || !!fallbackVSBC) {
           const lineColor = resolveColor(extractedLineColors, index1, legend, colorMap, isDarkTheme);
-          const lineOptions = getLineOptions(series.line);
+          const lineOptions = !series.mode?.includes('text') ? getLineOptions(series.line) : undefined;
           const dashType = series.line?.dash || 'solid';
           const legendShape =
-            dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
+            dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot'
+              ? 'dottedLine'
+              : series.mode?.includes('markers')
+              ? 'circle'
+              : 'default';
           mapXToDataPoints[x].lineData!.push({
             legend: legend + (validXYRanges.length > 1 ? `.${rangeIdx + 1}` : ''),
             legendShape,
             y: yVal,
             color: lineColor,
-            ...(lineOptions ? { lineOptions } : {}),
+            lineOptions: {
+              ...(lineOptions ?? {}),
+              mode: series.mode,
+            },
             useSecondaryYScale: usesSecondaryYScale(series),
           });
           if (!usesSecondaryYScale(series)) {
@@ -604,10 +611,14 @@ export const transformPlotlyJsonToScatterChartProps = (
       // resolve color for each legend's lines from the extracted colors
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
-      const lineOptions = getLineOptions(series.line);
+      const lineOptions = !series.mode?.includes('text') ? getLineOptions(series.line) : undefined;
       const dashType = series.line?.dash || 'solid';
       const legendShape =
-        dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
+        dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot'
+          ? 'dottedLine'
+          : series.mode?.includes('markers')
+          ? 'circle'
+          : 'default';
 
       const validXYRanges = getValidXYRanges(series);
       return validXYRanges.map(([rangeStart, rangeEnd], rangeIdx) => {
@@ -616,6 +627,7 @@ export const transformPlotlyJsonToScatterChartProps = (
         const markerSizes = isArrayOrTypedArray(series.marker?.size)
           ? (series.marker!.size as number[]).slice(rangeStart, rangeEnd)
           : [];
+        const textValues = Array.isArray(series.text) ? series.text.slice(rangeStart, rangeEnd) : undefined;
 
         return {
           legend,
@@ -628,9 +640,13 @@ export const transformPlotlyJsonToScatterChartProps = (
               : typeof series.marker?.size === 'number'
               ? { markerSize: series.marker.size }
               : {}),
+            ...(textValues ? { text: textValues[i] } : {}),
           })),
           color: seriesColor,
-          ...(lineOptions ? { lineOptions } : {}),
+          lineOptions: {
+            ...(lineOptions ?? {}),
+            mode: series.mode,
+          },
           useSecondaryYScale: usesSecondaryYScale(series),
         } as LineChartPoints;
       });
