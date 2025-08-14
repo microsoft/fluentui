@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat(react-charting): Support string y-axis for Scatter chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "120183316+srmukher@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

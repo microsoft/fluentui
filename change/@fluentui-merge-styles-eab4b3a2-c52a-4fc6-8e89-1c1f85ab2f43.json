@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: remove ts reported errors",
-  "packageName": "@fluentui/merge-styles",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}

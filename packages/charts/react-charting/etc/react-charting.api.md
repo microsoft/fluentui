@@ -1505,6 +1505,7 @@ export interface IScatterChartProps extends ICartesianChartProps {
     data: IChartProps;
     getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
+    showYAxisLablesTooltip?: boolean;
     styles?: IScatterChartStyles;
 }
 

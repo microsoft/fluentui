@@ -149,6 +149,17 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
    * @default 'default'
    */
   mode?: 'default' | 'plotly';
+
+  /**
+   *@default false
+   *Used for to elipse y axis labes and show tooltip on x axis labels
+   */
+  showYAxisLablesTooltip?: boolean;
+
+  /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
 }
 
 /**

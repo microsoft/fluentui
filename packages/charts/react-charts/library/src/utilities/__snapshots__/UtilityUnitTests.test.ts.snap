@@ -3533,7 +3533,6 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
     <text
       dy="0.32em"
       fill="currentColor"
-      text-align="start"
       x="-18"
     >
       <tspan
@@ -3563,7 +3562,6 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
     <text
       dy="0.32em"
       fill="currentColor"
-      text-align="start"
       x="-18"
     >
       <tspan
@@ -3593,7 +3591,6 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
     <text
       dy="0.32em"
       fill="currentColor"
-      text-align="start"
       x="-18"
     >
       <tspan
@@ -3649,7 +3646,7 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       />
       <tspan
         dx="0em"
-        dy="0.32"
+        dy="0.32em"
         id="showDots-0"
         x="-18"
       >
@@ -3679,7 +3676,7 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       />
       <tspan
         dx="0em"
-        dy="0.32"
+        dy="0.32em"
         id="showDots-1"
         x="-18"
       >
@@ -3709,7 +3706,7 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       />
       <tspan
         dx="0em"
-        dy="0.32"
+        dy="0.32em"
         id="showDots-2"
         x="-18"
       >
