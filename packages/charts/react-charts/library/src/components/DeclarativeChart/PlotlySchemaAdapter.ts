@@ -324,8 +324,17 @@ export const transformPlotlyJsonToVSBCProps = (
   let yMaxValue = 0;
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+  let colorScale: ((value: number) => string) | undefined = undefined;
   let yMinValue = 0;
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
+    if (
+      input.layout?.coloraxis?.colorscale?.length &&
+      isArrayOrTypedArray(series.marker?.color) &&
+      (series.marker?.color as Color[]).length > 0 &&
+      typeof (series.marker?.color as Color[])?.[0] === 'number'
+    ) {
+      colorScale = createColorScale(input.layout, series);
+    }
     const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     // extract bar colors for each series only once
     const extractedBarColors = extractColor(
@@ -362,8 +371,14 @@ export const transformPlotlyJsonToVSBCProps = (
           };
         }
         const legend: string = legends[index1];
-        // resolve color for each legend's bars from the extracted colors
-        const color = resolveColor(extractedBarColors, index1, legend, colorMap, isDarkTheme);
+        // resolve color for each legend's bars from the colorscale or extracted colors
+        const color = colorScale
+          ? colorScale(
+              isArrayOrTypedArray(series.marker?.color)
+                ? ((series.marker?.color as Color[])?.[index2 % (series.marker?.color as Color[]).length] as number)
+                : 0,
+            )
+          : resolveColor(extractedBarColors, index2, legend, colorMap, isDarkTheme);
         const yVal: number = rangeYValues[index2] as number;
         if (series.type === 'bar') {
           mapXToDataPoints[x].chartData.push({
@@ -424,12 +439,17 @@ export const transformPlotlyJsonToVSBCProps = (
   };
 };
 
-const createColorScale = (colorscale: Array<[number, string]>, domain: [number, number]) => {
-  const [dMin, dMax] = domain;
+const createColorScale = (layout: Partial<Layout>, series: Partial<PlotData>) => {
+  const scale = layout?.coloraxis?.colorscale as Array<[number, string]>;
+  const colorValues = series.marker?.color as number[];
+  const [dMin, dMax] = [
+    layout?.coloraxis?.cmin ?? Math.min(...colorValues),
+    layout?.coloraxis?.cmax ?? Math.max(...colorValues),
+  ];
 
   // Normalize colorscale domain to actual data domain
-  const scaleDomain = colorscale.map(([pos]) => dMin + pos * (dMax - dMin));
-  const scaleColors = colorscale.map(item => item[1]);
+  const scaleDomain = scale.map(([pos]) => dMin + pos * (dMax - dMin));
+  const scaleColors = scale.map(item => item[1]);
 
   return d3ScaleLinear<string>().domain(scaleDomain).range(scaleColors);
 };
@@ -452,13 +472,7 @@ export const transformPlotlyJsonToGVBCProps = (
       (series.marker?.color as Color[]).length > 0 &&
       typeof (series.marker?.color as Color[])?.[0] === 'number'
     ) {
-      const scale = input.layout.coloraxis.colorscale as Array<[number, string]>;
-      const colorValues = series.marker?.color as number[];
-      const [dMin, dMax] = [
-        input.layout.coloraxis?.cmin ?? Math.min(...colorValues),
-        input.layout.coloraxis?.cmax ?? Math.max(...colorValues),
-      ];
-      colorScale = createColorScale(scale, [dMin, dMax]);
+      colorScale = createColorScale(input.layout, series);
     }
     // extract colors for each series only once
     const extractedColors = extractColor(
@@ -480,7 +494,9 @@ export const transformPlotlyJsonToGVBCProps = (
         // resolve color for each legend's bars from the colorscale or extracted colors
         const color = colorScale
           ? colorScale(
-              isArrayOrTypedArray(series.marker?.color) ? ((series.marker?.color as Color[])?.[index2] as number) : 0,
+              isArrayOrTypedArray(series.marker?.color)
+                ? ((series.marker?.color as Color[])?.[index2 % (series.marker?.color as Color[]).length] as number)
+                : 0,
             )
           : resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
 
@@ -524,10 +540,20 @@ export const transformPlotlyJsonToVBCProps = (
 ): VerticalBarChartProps => {
   const vbcData: VerticalBarChartDataPoint[] = [];
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+  let colorScale: ((value: number) => string) | undefined = undefined;
 
   input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
     if (!series.x) {
       return;
+    }
+
+    if (
+      input.layout?.coloraxis?.colorscale?.length &&
+      isArrayOrTypedArray(series.marker?.color) &&
+      (series.marker?.color as Color[]).length > 0 &&
+      typeof (series.marker?.color as Color[])?.[0] === 'number'
+    ) {
+      colorScale = createColorScale(input.layout, series);
     }
 
     // extract colors for each series only once
@@ -572,8 +598,14 @@ export const transformPlotlyJsonToVBCProps = (
 
     xBins.forEach((bin, index) => {
       const legend: string = legends[seriesIdx];
-      // resolve color for each legend's bars from the extracted colors
-      const color = resolveColor(extractedColors, seriesIdx, legend, colorMap, isDarkTheme);
+      // resolve color for each legend's bars from the colorscale or extracted colors
+      const color = colorScale
+        ? colorScale(
+            isArrayOrTypedArray(series.marker?.color)
+              ? ((series.marker?.color as Color[])?.[index % (series.marker?.color as Color[]).length] as number)
+              : 0,
+          )
+        : resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
       const yVal = calculateHistNorm(
         series.histnorm,
         y[index],
@@ -736,8 +768,17 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   isDarkTheme?: boolean,
 ): HorizontalBarChartWithAxisProps => {
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+  let colorScale: ((value: number) => string) | undefined = undefined;
   const chartData: HorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
+      if (
+        input.layout?.coloraxis?.colorscale?.length &&
+        isArrayOrTypedArray(series.marker?.color) &&
+        (series.marker?.color as Color[]).length > 0 &&
+        typeof (series.marker?.color as Color[])?.[0] === 'number'
+      ) {
+        colorScale = createColorScale(input.layout, series);
+      }
       // extract colors for each series only once
       const extractedColors = extractColor(
         input.layout?.template?.layout?.colorway,
@@ -747,13 +788,20 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
         isDarkTheme,
       ) as string[] | string | undefined;
       const legend = legends[index];
-      // resolve color for each legend's bars from the extracted colors
-      const color = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
       return (series.y as Datum[])
         .map((yValue, i: number) => {
           if (isInvalidValue(series.x?.[i]) || isInvalidValue(yValue)) {
             return null;
           }
+
+          // resolve color for each legend's bars from the colorscale or extracted colors
+          const color = colorScale
+            ? colorScale(
+                isArrayOrTypedArray(series.marker?.color)
+                  ? ((series.marker?.color as Color[])?.[i % (series.marker?.color as Color[]).length] as number)
+                  : 0,
+              )
+            : resolveColor(extractedColors, i, legend, colorMap, isDarkTheme);
 
           return {
             x: series.x![i],
