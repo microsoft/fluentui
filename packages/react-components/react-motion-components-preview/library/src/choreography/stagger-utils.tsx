@@ -240,3 +240,23 @@ export function useStaggerItemsVisibility({
 
   return { itemsVisibility };
 }
+
+/**
+ * Checks if a React element accepts a `visible` prop.
+ * This detects presence motion components by looking for the .In and .Out properties,
+ * or falls back to checking if the visible prop is already explicitly provided.
+ *
+ * @internal - Exported for testing purposes
+ */
+export function acceptsVisibleProp(element: React.ReactElement): boolean {
+  // Check if it's a motion component by looking for .In and .Out properties
+  if (typeof element.type === 'function') {
+    const isPresence = 'In' in element.type && 'Out' in element.type;
+    if (isPresence) {
+      return true;
+    }
+  }
+
+  // Fallback: check if visible prop is already explicitly provided
+  return element.props && 'visible' in element.props;
+}

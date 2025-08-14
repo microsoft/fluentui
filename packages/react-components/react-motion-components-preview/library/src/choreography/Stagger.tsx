@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { toElementArray, useStaggerItemsVisibility, DEFAULT_ITEM_DURATION, DEFAULT_ITEM_DELAY } from './stagger-utils';
+import {
+  toElementArray,
+  useStaggerItemsVisibility,
+  DEFAULT_ITEM_DURATION,
+  DEFAULT_ITEM_DELAY,
+  acceptsVisibleProp,
+} from './stagger-utils';
 
 export interface StaggerProps {
   children: React.ReactNode;
@@ -7,7 +13,6 @@ export interface StaggerProps {
   itemDelay?: number;
   itemDuration?: number;
   reversed?: boolean; // run sequence backward (defaults to false)
-  presence?: boolean; // If true, always render children and control via `visible` prop. If false, unmount when not visible.
   onMotionFinish?: () => void;
 }
 
@@ -19,7 +24,6 @@ const StaggerBase: React.FC<StaggerProps> = ({
   itemDuration = DEFAULT_ITEM_DURATION,
   reversed = false,
   onMotionFinish,
-  presence = false,
 }) => {
   const elements = toElementArray(children);
 
@@ -36,11 +40,13 @@ const StaggerBase: React.FC<StaggerProps> = ({
     <>
       {elements.map((child, idx) => {
         const key = child.key ?? idx;
-        if (presence) {
-          // Always render, control visibility via `visible` prop
+        const hasVisibleProp = acceptsVisibleProp(child);
+
+        if (hasVisibleProp) {
+          // Child expects visible prop, always render and control via visible
           return React.cloneElement(child, { key, visible: visibility[idx] });
         } else {
-          // Only render when visible
+          // Child doesn't expect visible prop, use mount/unmount
           return visibility[idx] ? React.cloneElement(child, { key }) : null;
         }
       })}
@@ -61,11 +67,10 @@ const StaggerOut: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBas
  * @param itemDelay - Milliseconds between each item's animation start. Defaults to 100ms.
  * @param itemDuration - Milliseconds each item's animation lasts. Defaults to 200ms.
  * @param reversed - Whether to reverse the stagger sequence (last item animates first). Defaults to `false`.
- * @param presence - If `true`, always renders children and controls via `visible` prop. If `false`, unmounts when not visible. Defaults to `false`.
  * @param onMotionFinish - Callback invoked when the staggered animation sequence completes.
  *
- * Presence children maintain DOM presence but are shown and hidden by receiving the `visible` prop.
- * Other children are shown and hidden by rendering to, or omitting from, the DOM.
+ * Children that already have a `visible` prop are always rendered and controlled via that prop.
+ * Other children are shown and hidden by mounting/unmounting from the DOM.
  *
  * **Static variants:**
  * - `<Stagger.In>` - One-way stagger for entrance animations only
