@@ -1,9 +1,5 @@
-const baseConfig = require('../../cypress.config').default;
+// base config support file
+import '../../../../scripts/cypress/src/support/component';
 
-// If the base config has a support file, import it
-if (baseConfig.component?.supportFile) {
-  require(baseConfig.component.supportFile);
-}
-
-// Import custom commands
-require('./commands');
+// custom commands
+import './commands';
