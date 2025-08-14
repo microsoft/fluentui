@@ -101,6 +101,11 @@ export type TabRegisterData = {
 };
 
 // @public (undocumented)
+export const tabReservedSpaceClassNames: {
+    content: string;
+};
+
+// @public (undocumented)
 export type TabSlots = {
     root: Slot<'button'>;
     icon?: Slot<'span'>;
@@ -122,6 +127,9 @@ export type TabValue = unknown;
 
 // @public
 export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
+
+// @public
+export const useTabAnimatedIndicatorStyles_unstable: (state: TabState) => TabState;
 
 // @public
 export const useTabButtonStyles_unstable: (state: TabState, slot: TabState["root"]) => TabState;
