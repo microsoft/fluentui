@@ -1096,8 +1096,12 @@ const transformPlotlyJsonToScatterTraceProps = (
       enableReflow: false,
       ...commonProps,
       ...yMinMax,
-      showYAxisLablesTooltip: true,
-      ...getAxisCategoryOrderProps(input.data, input.layout),
+      ...(isScatterChart
+        ? {
+            showYAxisLablesTooltip: true,
+            ...getAxisCategoryOrderProps(input.data, input.layout),
+          }
+        : {}),
     } as ILineChartProps | IScatterChartProps;
   }
 };
