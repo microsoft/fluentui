@@ -23,8 +23,10 @@ export function useMenuGridItem_unstable(props: MenuGridItemProps, ref: React.Re
       firstSubAction: MenuGridCell,
       secondSubAction: MenuGridCell,
     },
-    root: slot.always(
-      rest,
+    root: slot.always({
+      ref,
+      ...rest
+    },
       { elementType: MenuGridRow },
     ),
     icon: slot.optional(props.icon, { elementType: MenuGridCell }),
