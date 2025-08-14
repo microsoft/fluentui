@@ -4,11 +4,11 @@ import type { MenuGridItemSlots, MenuGridItemState } from './MenuGridItem.types'
 
 export const menuGridItemClassNames: SlotClassNames<MenuGridItemSlots> = {
   root: 'fui-MenuGridItem',
-  icon: 'fui-MenuGridRow__iconCell',
-  content: 'fui-MenuGridRow__contentCell',
+  icon: 'fui-MenuGridRow__icon',
+  content: 'fui-MenuGridRow__content',
   subText: 'fui-MenuGridRow__subText',
-  firstSubAction: 'fui-MenuGridRow__secondActionCell',
-  secondSubAction: 'fui-MenuGridRow__thirdActionCell',
+  firstSubAction: 'fui-MenuGridRow__firstSubAction',
+  secondSubAction: 'fui-MenuGridRow__secondSubAction',
 };
 
 export const useMenuGridItemStyles_unstable = (state: MenuGridItemState): MenuGridItemState => {
