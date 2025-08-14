@@ -759,14 +759,34 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
  * @param dataPoints
  * @param isRtl
  */
-export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean) => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding = 0 } = yAxisParams;
+export const createStringYAxis = (
+  yAxisParams: IYAxisParams,
+  dataPoints: string[],
+  isRtl: boolean,
+  barWidth?: number,
+  chartType?: ChartTypes,
+) => {
+  const {
+    containerHeight,
+    tickPadding = 12,
+    margins,
+    yAxisTickFormat,
+    yAxisElement,
+    yAxisPadding = 0,
+    containerWidth,
+  } = yAxisParams;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
     .range([containerHeight - margins.bottom!, margins.top!])
     .padding(yAxisPadding);
+  if (chartType === ChartTypes.VerticalStackedBarChart) {
+    yAxisScale.paddingInner(1).paddingOuter(0);
+  }
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).tickValues(dataPoints).tickSize(0);
+  if (chartType === ChartTypes.VerticalStackedBarChart) {
+    axis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+  }
   if (yAxisTickFormat) {
     yAxis.tickFormat(yAxisTickFormat);
   }
@@ -1019,17 +1039,16 @@ export function createYAxisLabels(
       text
         .append('tspan')
         .attr('id', `showDots-${uid}`)
-        .attr('x', isRtl ? 0 : x)
+        .attr('x', x)
         .attr('y', y)
-        .attr('dy', dy)
+        .attr('dy', dy + 'em')
         .attr('dx', padding + dx + 'em')
         .text(truncatedWord);
     } else {
       text
-        .attr('text-align', 'start')
         .append('tspan')
         .attr('id', `LessLength-${uid}`)
-        .attr('x', isRtl ? 0 : x)
+        .attr('x', x)
         .attr('y', y)
         .attr('dx', padding + dx + 'em')
         .text(totalWord);

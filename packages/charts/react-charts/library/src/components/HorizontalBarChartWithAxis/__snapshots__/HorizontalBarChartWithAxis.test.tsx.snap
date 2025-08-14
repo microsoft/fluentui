@@ -6236,7 +6236,7 @@ Object {
                   />
                   <tspan
                     dx="0em"
-                    dy="0.32"
+                    dy="0.32em"
                     id="showDots-0"
                     x="-16"
                   >
@@ -6266,7 +6266,7 @@ Object {
                   />
                   <tspan
                     dx="0em"
-                    dy="0.32"
+                    dy="0.32em"
                     id="showDots-1"
                     x="-16"
                   >
@@ -6296,7 +6296,7 @@ Object {
                   />
                   <tspan
                     dx="0em"
-                    dy="0.32"
+                    dy="0.32em"
                     id="showDots-2"
                     x="-16"
                   >
@@ -6326,7 +6326,7 @@ Object {
                   />
                   <tspan
                     dx="0em"
-                    dy="0.32"
+                    dy="0.32em"
                     id="showDots-3"
                     x="-16"
                   >
@@ -6709,7 +6709,7 @@ Object {
                 />
                 <tspan
                   dx="0em"
-                  dy="0.32"
+                  dy="0.32em"
                   id="showDots-0"
                   x="-16"
                 >
@@ -6739,7 +6739,7 @@ Object {
                 />
                 <tspan
                   dx="0em"
-                  dy="0.32"
+                  dy="0.32em"
                   id="showDots-1"
                   x="-16"
                 >
@@ -6769,7 +6769,7 @@ Object {
                 />
                 <tspan
                   dx="0em"
-                  dy="0.32"
+                  dy="0.32em"
                   id="showDots-2"
                   x="-16"
                 >
@@ -6799,7 +6799,7 @@ Object {
                 />
                 <tspan
                   dx="0em"
-                  dy="0.32"
+                  dy="0.32em"
                   id="showDots-3"
                   x="-16"
                 >
