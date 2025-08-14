@@ -148,6 +148,7 @@ A card can be disabled, which prevents interaction and shows a visual disabled s
 - Disabled cards have \`aria-disabled="true"\`
 - Screen readers announce the disabled state
 - Cards do not receive focus when disabled, maintaining proper tab order
+- Make sure to disable interactive child elements as well, like buttons and fields
       `,
     },
   },
