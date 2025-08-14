@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import { CurveFactory } from 'd3-shape';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -711,7 +713,7 @@ export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
 export type GaugeValueFormat = 'percentage' | 'fraction';
 
 // @public (undocumented)
-export const getChartValueLabel: (chartValue: number, minValue: number, maxValue: number, chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string), forCallout?: boolean) => string;
+export const getChartValueLabel: (chartValue: number, minValue: number, maxValue: number, chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string) | undefined, forCallout?: boolean) => string;
 
 // @public (undocumented)
 export const getColorContrast: (c1: string, c2: string) => number;
@@ -1083,6 +1085,7 @@ export const LineChart: React_2.FunctionComponent<LineChartProps>;
 
 // @public (undocumented)
 export interface LineChartDataPoint extends BaseDataPoint {
+    text?: string;
     x: number | Date;
     y: number;
 }
@@ -1144,6 +1147,7 @@ export interface LineChartStyleProps extends CartesianChartStyleProps {
 // @public
 export interface LineChartStyles extends CartesianChartStyles {
     lineBorder?: string;
+    markerLabel?: string;
 }
 
 // @public (undocumented)
@@ -1384,6 +1388,7 @@ export const ScatterChart: React_2.FunctionComponent<ScatterChartProps>;
 // @public
 export interface ScatterChartDataPoint extends BaseDataPoint {
     markerSize?: number;
+    text?: string;
     x: number | Date | string;
     y: number;
 }
