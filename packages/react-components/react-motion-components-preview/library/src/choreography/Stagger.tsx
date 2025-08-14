@@ -62,7 +62,6 @@ const StaggerOut: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBas
  * @param itemDuration - Milliseconds each item's animation lasts. Defaults to 200ms.
  * @param reversed - Whether to reverse the stagger sequence (last item animates first). Defaults to `false`.
  * @param presence - If `true`, always renders children and controls via `visible` prop. If `false`, unmounts when not visible. Defaults to `false`.
- * @param appear - If `true`, children animate on first mount. Defaults to `false`.
  * @param onMotionFinish - Callback invoked when the staggered animation sequence completes.
  *
  * Presence children maintain DOM presence but are shown and hidden by receiving the `visible` prop.
