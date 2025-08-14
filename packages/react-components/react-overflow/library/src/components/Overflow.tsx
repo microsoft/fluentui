@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
 import type { OnUpdateOverflow, OverflowGroupState, ObserveOptions } from '@fluentui/priority-overflow';
-import { applyTriggerPropsToChildren, getTriggerChild, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  applyTriggerPropsToChildren,
+  getTriggerChild,
+  getRefFromReactElement,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 
 import { OverflowContext } from '../overflowContext';
 import { updateVisibilityAttribute, useOverflowContainer } from '../useOverflowContainer';
@@ -73,8 +78,9 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
   );
 
   const child = getTriggerChild(children);
+  const childRef = child ? getRefFromReactElement(child) : undefined;
   const clonedChild = applyTriggerPropsToChildren(children, {
-    ref: useMergedRefs(containerRef, ref, child?.ref),
+    ref: useMergedRefs(containerRef, ref, childRef),
     className: mergeClasses('fui-Overflow', styles.overflowMenu, styles.overflowingItems, children.props.className),
   });
 
