@@ -70,21 +70,14 @@ export const Stagger: React_2.FC<StaggerProps> & {
     Out: React_2.FC<Omit<StaggerProps, "visible">>;
 };
 
-// @public (undocumented)
+// @public
 export interface StaggerProps {
-    // (undocumented)
     children: React_2.ReactNode;
-    // (undocumented)
     itemDelay?: number;
-    // (undocumented)
     itemDuration?: number;
-    // (undocumented)
+    mode?: StaggerMode;
     onMotionFinish?: () => void;
-    // (undocumented)
-    presence?: boolean;
-    // (undocumented)
     reversed?: boolean;
-    // (undocumented)
     visible?: boolean;
 }
 
