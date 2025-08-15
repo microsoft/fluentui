@@ -4,7 +4,7 @@ import type { OnUpdateOverflow, OverflowGroupState, ObserveOptions } from '@flue
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
-  getRefFromReactElement,
+  getReactElementRef,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 
@@ -78,9 +78,8 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
   );
 
   const child = getTriggerChild(children);
-  const childRef = child ? getRefFromReactElement(child) : undefined;
   const clonedChild = applyTriggerPropsToChildren(children, {
-    ref: useMergedRefs(containerRef, ref, childRef),
+    ref: useMergedRefs(containerRef, ref, getReactElementRef(child)),
     className: mergeClasses('fui-Overflow', styles.overflowMenu, styles.overflowingItems, children.props.className),
   });
 

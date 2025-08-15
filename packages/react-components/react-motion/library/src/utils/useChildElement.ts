@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getRefFromReactElement, useMergedRefs } from '@fluentui/react-utilities';
+import { getReactElementRef, useMergedRefs } from '@fluentui/react-utilities';
 
 const CHILD_ERROR_MESSAGE = [
   '@fluentui/react-motion: Invalid child element.',
@@ -35,7 +35,7 @@ export function useChildElement(
     if (React.isValidElement(child)) {
       return [
         React.cloneElement(child as React.ReactElement<{ ref: React.Ref<HTMLElement> }>, {
-          ref: useMergedRefs(childRef, getRefFromReactElement(child)),
+          ref: useMergedRefs(childRef, getReactElementRef(child)),
         }),
         childRef,
       ];

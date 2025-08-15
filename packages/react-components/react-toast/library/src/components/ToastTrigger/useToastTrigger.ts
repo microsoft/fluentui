@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
-  getRefFromReactElement,
+  getReactElementRef,
   useEventCallback,
 } from '@fluentui/react-utilities';
 import { useARIAButtonProps } from '@fluentui/react-aria';
@@ -23,7 +23,6 @@ export const useToastTrigger_unstable = (props: ToastTriggerProps): ToastTrigger
   const { close } = useToastContainerContext();
 
   const child = getTriggerChild(children);
-  const childRef = child ? getRefFromReactElement<HTMLButtonElement>(child) : undefined;
 
   const handleClick = useEventCallback(
     (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
@@ -36,7 +35,7 @@ export const useToastTrigger_unstable = (props: ToastTriggerProps): ToastTrigger
 
   const triggerChildProps = {
     ...child?.props,
-    ref: childRef,
+    ref: getReactElementRef<HTMLButtonElement>(child),
     onClick: handleClick,
   };
 
