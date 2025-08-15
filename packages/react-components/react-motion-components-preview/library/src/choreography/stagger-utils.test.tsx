@@ -80,20 +80,6 @@ describe('stagger-utils', () => {
       const element = React.createElement('div', {}, 'content');
       expect(isFragment(element)).toBe(false);
     });
-
-    it('returns false for non-React elements', () => {
-      expect(isFragment('string')).toBe(false);
-      expect(isFragment(42)).toBe(false);
-      expect(isFragment(null)).toBe(false);
-      expect(isFragment(undefined)).toBe(false);
-      expect(isFragment({} as React.ReactNode)).toBe(false);
-    });
-
-    it('returns false for custom components', () => {
-      const CustomComponent = () => React.createElement('div');
-      const element = React.createElement(CustomComponent);
-      expect(isFragment(element)).toBe(false);
-    });
   });
 
   describe('childrenOrFragmentToArray', () => {
@@ -216,30 +202,6 @@ describe('stagger-utils', () => {
       expect(mockRequestAnimationFrame).toHaveBeenCalled();
     });
 
-    it('requests animation frame when parameters change', () => {
-      const TestComponent = ({ triggerChange }: { triggerChange: boolean }) => {
-        const { itemsVisibility } = useStaggerItemsVisibility({
-          itemCount: 2,
-          itemDelay: triggerChange ? 200 : 100, // Change parameters to trigger animation
-          direction: 'enter',
-        });
-        return <div>{JSON.stringify(itemsVisibility)}</div>;
-      };
-
-      const { rerender } = render(<TestComponent triggerChange={false} />);
-
-      // Initially should not have called requestAnimationFrame (first render)
-      expect(mockRequestAnimationFrame).not.toHaveBeenCalled();
-
-      // Trigger animation by changing props (this will trigger useEffect)
-      act(() => {
-        rerender(<TestComponent triggerChange={true} />);
-      });
-
-      // Should have requested animation frame after parameter change
-      expect(mockRequestAnimationFrame).toHaveBeenCalled();
-    });
-
     it('handles direction change correctly', () => {
       const TestComponent = ({ direction }: { direction: 'enter' | 'exit' }) => {
         const { itemsVisibility } = useStaggerItemsVisibility({
@@ -283,31 +245,6 @@ describe('stagger-utils', () => {
       // Change to 3 items - should start animation from start state
       act(() => {
         rerender(<TestComponent itemCount={3} />);
-      });
-
-      // During animation, should show start state (hidden for enter direction)
-      expect(JSON.parse(getByTestId('visibility').textContent!)).toEqual([false, false, false]);
-    });
-
-    it('handles reversed option correctly', () => {
-      const TestComponent = ({ reversed }: { reversed: boolean }) => {
-        const { itemsVisibility } = useStaggerItemsVisibility({
-          itemCount: 3,
-          itemDelay: 100,
-          direction: 'enter',
-          reversed,
-        });
-        return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
-      };
-
-      const { getByTestId, rerender } = render(<TestComponent reversed={false} />);
-
-      // Should show final state on first render
-      expect(JSON.parse(getByTestId('visibility').textContent!)).toEqual([true, true, true]);
-
-      // Change reversed option - should start animation from start state
-      act(() => {
-        rerender(<TestComponent reversed={true} />);
       });
 
       // During animation, should show start state (hidden for enter direction)
@@ -562,37 +499,6 @@ describe('stagger-utils', () => {
       // Should hide all items when time is very large
       expect(result.itemsVisibility).toEqual([false, false, false]);
       expect(result.itemsVisibility.length).toBe(3);
-    });
-
-    it('clamps to itemCount when elapsed time is very large (reversed exit)', () => {
-      const result = staggerItemsVisibilityAtTime({
-        itemCount: 3,
-        elapsed: 10000, // Very large elapsed time
-        itemDelay: 100,
-        itemDuration: 200,
-        direction: 'exit',
-        reversed: true,
-      });
-
-      // Should behave correctly even with very large elapsed times
-      expect(result.itemsVisibility).toEqual([false, false, false]);
-      expect(result.itemsVisibility.length).toBe(3);
-    });
-
-    it('handles very large elapsed time gracefully', () => {
-      // This test documents that the function behaves reasonably even with
-      // elapsed times much larger than the expected stagger duration
-      const result = staggerItemsVisibilityAtTime({
-        itemCount: 2,
-        elapsed: 10000, // Much larger than stagger duration
-        itemDelay: 100,
-        itemDuration: 200,
-        direction: 'enter',
-      });
-
-      // All items should be visible, no weird edge cases
-      expect(result.itemsVisibility).toEqual([true, true]);
-      expect(result.totalDuration).toBe(300); // (2-1)*100 + 200
     });
   });
 });

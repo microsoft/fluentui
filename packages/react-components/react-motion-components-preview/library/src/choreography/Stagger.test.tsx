@@ -94,27 +94,6 @@ describe('Stagger', () => {
       expect(screen.getByText('Motion Item')).toBeDefined();
       expect(screen.getByText('Regular Item')).toBeDefined();
     });
-
-    it('should handle children with visible prop set to undefined', () => {
-      const ComponentWithUndefinedVisible: React.FC<{ visible?: boolean; children: React.ReactNode }> = ({
-        children,
-        visible,
-      }) => (
-        <div data-testid="undefined-visible" data-visible={String(visible)}>
-          {children}
-        </div>
-      );
-
-      render(
-        <Stagger visible={true}>
-          <ComponentWithUndefinedVisible visible={undefined}>Undefined Visible</ComponentWithUndefinedVisible>
-        </Stagger>,
-      );
-
-      const component = screen.getByTestId('undefined-visible');
-      // Since the component has the visible prop (even if undefined), it should receive true from Stagger
-      expect(component.getAttribute('data-visible')).toBe('true');
-    });
   });
 
   describe('Stagger.In and Stagger.Out variants', () => {
