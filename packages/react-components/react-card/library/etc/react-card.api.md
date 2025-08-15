@@ -108,6 +108,7 @@ export type CardProps = ComponentProps<CardSlots> & {
     selected?: boolean;
     defaultSelected?: boolean;
     onSelectionChange?: (event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void;
+    disabled?: boolean;
 };
 
 // @internal (undocumented)
@@ -126,6 +127,7 @@ export type CardState = ComponentState<CardSlots> & CardContextValue & Required<
     selectable: boolean;
     selected: boolean;
     selectFocused: boolean;
+    disabled: boolean;
 }>;
 
 // @public
