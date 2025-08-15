@@ -1,6 +1,7 @@
 import * as React from 'react';
+import StaggerTransitionInDescription from './StaggerTransitionIn.stories.md';
 import { Avatar, Button, Card, CardHeader, Text, makeStyles, tokens } from '@fluentui/react-components';
-import { Stagger, Scale } from '@fluentui/react-motion-components-preview';
+import { Stagger, CollapseRelaxed } from '@fluentui/react-motion-components-preview';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 
 const useClasses = makeStyles({
@@ -66,16 +67,9 @@ const users = [
     post: 'Fascinating findings from our latest user research study. Users are definitely trending towards more personalized experiences.',
     time: '8 hours ago',
   },
-  {
-    name: 'Lisa Thompson',
-    avatar: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/MonaKane.jpg',
-    status: 'do-not-disturb',
-    post: 'Deep dive into performance optimization today. Managed to reduce bundle size by 30% while maintaining all functionality! 💪',
-    time: '10 hours ago',
-  },
 ];
 
-export const UserCards = () => {
+export const TransitionIn = () => {
   const classes = useClasses();
   const [animationKey, setAnimationKey] = React.useState<number>(0);
 
@@ -93,7 +87,7 @@ export const UserCards = () => {
 
       <Stagger.In key={animationKey}>
         {users.map((user, index) => (
-          <Scale.In key={index}>
+          <CollapseRelaxed.In key={index}>
             <Card className={classes.userCard}>
               <CardHeader
                 className={classes.cardHeader}
@@ -116,20 +110,17 @@ export const UserCards = () => {
                 <Text>{user.post}</Text>
               </div>
             </Card>
-          </Scale.In>
+          </CollapseRelaxed.In>
         ))}
       </Stagger.In>
     </div>
   );
 };
 
-UserCards.parameters = {
+TransitionIn.parameters = {
   docs: {
     description: {
-      story:
-        'A simple social media feed-style example showing user posts with staggered animations. ' +
-        'Demonstrates how Stagger works with Card components and Avatars with presence badges. ' +
-        'Perfect for activity streams or news feeds.',
+      story: StaggerTransitionInDescription,
     },
   },
 };
