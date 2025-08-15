@@ -94,7 +94,7 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
 };
 
 // @public
-export function getReactElementRef<T>(element?: React_2.ReactElement): React_2.Ref<T> | undefined;
+export function getReactElementRef<T>(element: React_2.ReactElement | null | undefined): React_2.Ref<T> | undefined;
 
 // @internal
 export const getRTLSafeKey: (key: string, dir: "ltr" | "rtl") => string;
