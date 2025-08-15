@@ -23,6 +23,14 @@ export {
 } from './MenuGridCell';
 export type { MenuGridCellProps, MenuGridCellSlots, MenuGridCellState } from './MenuGridCell';
 export {
+  MenuGridItem,
+  menuGridItemClassNames,
+  renderMenuGridItem_unstable,
+  useMenuGridItemStyles_unstable,
+  useMenuGridItem_unstable,
+} from './MenuGridItem';
+export type { MenuGridItemProps, MenuGridItemSlots, MenuGridItemState } from './MenuGridItem';
+export {
   MenuGridRow,
   menuGridRowClassNames,
   renderMenuGridRow_unstable,
