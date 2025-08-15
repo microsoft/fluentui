@@ -332,6 +332,11 @@ export interface LineChartDataPoint extends BaseDataPoint {
    * Dependent value of the data point, rendered along the y-axis.
    */
   y: number;
+
+  /**
+   * text labels of marker points
+   */
+  text?: string;
 }
 
 /**
@@ -353,6 +358,11 @@ export interface ScatterChartDataPoint extends BaseDataPoint {
    * Marker size of the points
    */
   markerSize?: number;
+
+  /**
+   * text labels of marker points
+   */
+  text?: string;
 }
 
 /**
