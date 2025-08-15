@@ -100,9 +100,9 @@ describe('Stagger', () => {
     it('should render Stagger.In with visible=true', () => {
       render(
         <Stagger.In>
-          <Fade>
+          <Fade.In>
             <div>Motion Item</div>
-          </Fade>
+          </Fade.In>
         </Stagger.In>,
       );
 
@@ -112,9 +112,9 @@ describe('Stagger', () => {
     it('should render Stagger.Out with visible=false', () => {
       render(
         <Stagger.Out>
-          <Scale>
+          <Scale.Out>
             <div>Motion Item</div>
-          </Scale>
+          </Scale.Out>
         </Stagger.Out>,
       );
 
