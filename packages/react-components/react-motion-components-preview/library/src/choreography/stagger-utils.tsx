@@ -5,6 +5,13 @@ export const DEFAULT_ITEM_DELAY = 100;
 export const DEFAULT_ITEM_DURATION = 200;
 
 /**
+ * Defines how Stagger manages its children's visibility.
+ * - 'presence': Children are presence components with visible prop (always rendered, visibility controlled via prop)
+ * - 'mount': Children are mounted/unmounted from DOM based on visibility
+ */
+export type StaggerMode = 'presence' | 'mount';
+
+/**
  * Flattens ReactNode (including Fragments) to an array of valid ReactElements,
  * filtering out strings, numbers, null, etc.
  */
@@ -122,13 +129,16 @@ export function staggerItemsVisibilityAtTime({
 
 export interface UseStaggerItemsVisibilityParams extends Omit<StaggerItemsVisibilityAtTimeParams, 'elapsed'> {
   onMotionFinish?: () => void;
+  /** Defines how children's visibility is managed. Defaults to 'presence'. */
+  mode?: StaggerMode;
 }
 
 /**
  * Hook that tracks the visibility of a staggered sequence of items as time progresses.
  *
  * **Behavior:**
- * - On first render: Items are immediately set to their final state (no animation)
+ * - For presence mode: Items start in their final state on first render (no animation)
+ * - For mount mode: Items start in their start state on first render and animate
  * - On subsequent renders: Items animate from start state to final state over time
  *
  * **States:**
@@ -141,6 +151,7 @@ export interface UseStaggerItemsVisibilityParams extends Omit<StaggerItemsVisibi
  * @param direction - 'enter' (show items) or 'exit' (hide items)
  * @param reversed - Whether to reverse the stagger order (last item first)
  * @param onMotionFinish - Callback fired when the full stagger sequence completes
+ * @param mode - How children's visibility is managed: 'presence' or 'mount'
  *
  * @returns An `itemsVisibility` array of booleans indicating which items are currently visible
  */
@@ -151,16 +162,21 @@ export function useStaggerItemsVisibility({
   direction,
   reversed = false,
   onMotionFinish,
+  mode = 'presence',
 }: UseStaggerItemsVisibilityParams): { itemsVisibility: boolean[] } {
   const [requestAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
 
   // State: visibility array for all items
   const [itemsVisibility, setItemsVisibility] = React.useState<boolean[]>(() => {
-    // Initial state should be the final state of the animation, not the starting state
-    // For 'enter' direction: final state is visible (true)
-    // For 'exit' direction: final state is hidden (false)
-    // Note: Array is recreated on each update for simplicity, could be optimized if needed
-    return Array(itemCount).fill(direction === 'enter');
+    // For presence mode: start in final state (they handle their own animation)
+    // For mount mode: start in start state (we control mount/unmount)
+    if (mode === 'presence') {
+      // For presence components: final state is visible for 'enter', hidden for 'exit'
+      return Array(itemCount).fill(direction === 'enter');
+    } else {
+      // For mount mode: start state is hidden for 'enter', visible for 'exit'
+      return Array(itemCount).fill(direction === 'exit');
+    }
   });
 
   // Refs: animation timing and control
@@ -176,18 +192,22 @@ export function useStaggerItemsVisibility({
     startTimeRef.current = null;
     finishedRef.current = false;
 
-    // On first render, items should already be in their final state (set in useState)
-    // On subsequent renders, we need to animate from the start state to the final state
+    // For presence mode: on first render, items should already be in their final state
+    // For mount mode: on first render, items should be in their start state and animate
     if (isFirstRender.current) {
       isFirstRender.current = false;
-      // Items are already in the correct final state, no animation needed
-      onMotionFinish?.();
-      return; // No cleanup needed for first render
+      if (mode === 'presence') {
+        // Presence components: already in correct final state, no animation needed
+        onMotionFinish?.();
+        return; // No cleanup needed for first render
+      }
+      // For mount mode: we continue to animate from start state (already set in useState)
     }
 
-    // For animations, we start from the opposite of the final state:
+    // For animations after first render, we start from the opposite of the final state:
     // - Enter animation: start hidden (false), animate to visible (true)
     // - Exit animation: start visible (true), animate to hidden (false)
+    // Only set start state if we're doing an animation (not first render for presence components)
     const startState = direction === 'exit';
     setItemsVisibility(Array(itemCount).fill(startState));
 
@@ -236,6 +256,7 @@ export function useStaggerItemsVisibility({
     onMotionFinish,
     requestAnimationFrame,
     cancelAnimationFrame,
+    mode,
   ]);
 
   return { itemsVisibility };

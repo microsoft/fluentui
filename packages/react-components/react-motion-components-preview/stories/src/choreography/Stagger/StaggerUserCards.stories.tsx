@@ -1,16 +1,6 @@
 import * as React from 'react';
-import {
-  Avatar,
-  Button,
-  Card,
-  CardHeader,
-  Text,
-  makeStyles,
-  createPresenceComponentVariant,
-  tokens,
-  motionTokens,
-} from '@fluentui/react-components';
-import { Stagger, Slide, Scale } from '@fluentui/react-motion-components-preview';
+import { Avatar, Button, Card, CardHeader, Text, makeStyles, tokens } from '@fluentui/react-components';
+import { Stagger, Scale } from '@fluentui/react-motion-components-preview';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 
 const useClasses = makeStyles({
@@ -44,11 +34,6 @@ const useClasses = makeStyles({
   ctaButton: {
     minWidth: '120px',
   },
-});
-
-// Enhanced transitions for card reveal
-const FadeSlideVariant = createPresenceComponentVariant(Slide, {
-  duration: motionTokens.durationSlow,
 });
 
 // Sample user data
@@ -92,19 +77,23 @@ const users = [
 
 export const UserCards = () => {
   const classes = useClasses();
-  const [visible, setVisible] = React.useState<boolean>(false);
+  const [animationKey, setAnimationKey] = React.useState<number>(0);
+
+  const replayAnimation = () => {
+    setAnimationKey(prev => prev + 1);
+  };
 
   return (
     <div className={classes.container}>
       <div className={classes.controls}>
-        <Button className={classes.ctaButton} appearance="primary" size="large" onClick={() => setVisible(v => !v)}>
-          {visible ? 'Hide' : 'Show'} Posts
+        <Button className={classes.ctaButton} appearance="primary" size="large" onClick={replayAnimation}>
+          Replay Animation
         </Button>
       </div>
 
-      <Stagger visible={visible} itemDelay={100} itemDuration={400}>
+      <Stagger.In key={animationKey}>
         {users.map((user, index) => (
-          <Scale key={index}>
+          <Scale.In key={index}>
             <Card className={classes.userCard}>
               <CardHeader
                 className={classes.cardHeader}
@@ -127,9 +116,9 @@ export const UserCards = () => {
                 <Text>{user.post}</Text>
               </div>
             </Card>
-          </Scale>
+          </Scale.In>
         ))}
-      </Stagger>
+      </Stagger.In>
     </div>
   );
 };
