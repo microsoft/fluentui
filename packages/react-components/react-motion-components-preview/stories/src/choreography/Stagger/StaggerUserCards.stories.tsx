@@ -4,21 +4,14 @@ import {
   Button,
   Card,
   CardHeader,
-  CardFooter,
   Text,
   makeStyles,
-  tokens,
   createPresenceComponentVariant,
+  tokens,
   motionTokens,
 } from '@fluentui/react-components';
-import { Stagger, Slide } from '@fluentui/react-motion-components-preview';
-import {
-  Heart20Regular,
-  Heart20Filled,
-  ShareAndroid20Regular,
-  Comment20Regular,
-  MoreHorizontal20Regular,
-} from '@fluentui/react-icons';
+import { Stagger, Slide, Scale } from '@fluentui/react-motion-components-preview';
+import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 
 const useClasses = makeStyles({
   container: {
@@ -46,26 +39,7 @@ const useClasses = makeStyles({
     paddingBottom: '8px',
   },
   cardContent: {
-    padding: '0 16px 12px 16px',
-  },
-  cardFooter: {
-    padding: '8px 16px 16px 16px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  actionButtons: {
-    display: 'flex',
-    gap: '8px',
-  },
-  postImage: {
-    width: '100%',
-    height: '200px',
-    objectFit: 'cover',
-    borderRadius: tokens.borderRadiusMedium,
-  },
-  likeButton: {
-    color: tokens.colorPaletteRedForeground1,
+    padding: '0 16px 16px 16px',
   },
   ctaButton: {
     minWidth: '120px',
@@ -81,75 +55,44 @@ const FadeSlideVariant = createPresenceComponentVariant(Slide, {
 const users = [
   {
     name: 'Sarah Chen',
-    username: '@sarahc_design',
     avatar: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg',
     status: 'available',
     post: "Just finished redesigning our mobile app! Really excited about the new user experience we've created. The research phase took months but it was so worth it.",
-    image: 'https://picsum.photos/400/200?random=1',
     time: '2 hours ago',
-    likes: 24,
-    comments: 5,
   },
   {
     name: 'Marcus Johnson',
-    username: '@mjohnson_dev',
     avatar: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/TimDeboer.jpg',
     status: 'busy',
     post: "Working on some exciting new features for our component library. Can't wait to share more details soon! 🚀",
     time: '4 hours ago',
-    likes: 18,
-    comments: 3,
   },
   {
     name: 'Emily Rodriguez',
-    username: '@emilyrod_pm',
     avatar: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg',
     status: 'away',
     post: "Great team meeting today! We're making excellent progress on the Q4 roadmap. Special thanks to everyone who contributed ideas.",
-    image: 'https://picsum.photos/400/200?random=2',
     time: '6 hours ago',
-    likes: 31,
-    comments: 8,
   },
   {
     name: 'David Park',
-    username: '@dpark_research',
     avatar: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CameronEvans.jpg',
     status: 'available',
     post: 'Fascinating findings from our latest user research study. Users are definitely trending towards more personalized experiences.',
     time: '8 hours ago',
-    likes: 42,
-    comments: 12,
   },
   {
     name: 'Lisa Thompson',
-    username: '@lisathompson_eng',
     avatar: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/MonaKane.jpg',
     status: 'do-not-disturb',
     post: 'Deep dive into performance optimization today. Managed to reduce bundle size by 30% while maintaining all functionality! 💪',
-    image: 'https://picsum.photos/400/200?random=3',
     time: '10 hours ago',
-    likes: 56,
-    comments: 15,
   },
 ];
 
 export const UserCards = () => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
-  const [likedPosts, setLikedPosts] = React.useState<Set<number>>(new Set());
-
-  const handleLike = (index: number) => {
-    setLikedPosts(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(index)) {
-        newSet.delete(index);
-      } else {
-        newSet.add(index);
-      }
-      return newSet;
-    });
-  };
 
   return (
     <div className={classes.container}>
@@ -159,9 +102,9 @@ export const UserCards = () => {
         </Button>
       </div>
 
-      <Stagger visible={visible} itemDelay={150} itemDuration={400}>
+      <Stagger visible={visible} itemDelay={100} itemDuration={400}>
         {users.map((user, index) => (
-          <FadeSlideVariant key={index}>
+          <Scale key={index}>
             <Card className={classes.userCard}>
               <CardHeader
                 className={classes.cardHeader}
@@ -169,8 +112,11 @@ export const UserCards = () => {
                 header={
                   <div>
                     <Text weight="semibold">{user.name}</Text>
-                    <Text size={200} style={{ color: tokens.colorNeutralForeground3 }}>
-                      {user.username} · {user.time}
+                    <Text
+                      size={200}
+                      style={{ color: tokens.colorNeutralForeground3, marginLeft: tokens.spacingHorizontalS }}
+                    >
+                      {user.time}
                     </Text>
                   </div>
                 }
@@ -179,37 +125,9 @@ export const UserCards = () => {
 
               <div className={classes.cardContent}>
                 <Text>{user.post}</Text>
-                {user.image && (
-                  <img
-                    src={user.image}
-                    alt="Post content"
-                    className={classes.postImage}
-                    style={{ marginTop: '12px' }}
-                  />
-                )}
               </div>
-
-              <CardFooter className={classes.cardFooter}>
-                <div className={classes.actionButtons}>
-                  <Button
-                    appearance="subtle"
-                    icon={likedPosts.has(index) ? <Heart20Filled /> : <Heart20Regular />}
-                    onClick={() => handleLike(index)}
-                    size="small"
-                    className={likedPosts.has(index) ? classes.likeButton : undefined}
-                  >
-                    {user.likes + (likedPosts.has(index) ? 1 : 0)}
-                  </Button>
-                  <Button appearance="subtle" icon={<Comment20Regular />} size="small">
-                    {user.comments}
-                  </Button>
-                  <Button appearance="subtle" icon={<ShareAndroid20Regular />} size="small">
-                    Share
-                  </Button>
-                </div>
-              </CardFooter>
             </Card>
-          </FadeSlideVariant>
+          </Scale>
         ))}
       </Stagger>
     </div>
@@ -220,9 +138,9 @@ UserCards.parameters = {
   docs: {
     description: {
       story:
-        'A social media feed-style example showing user posts with staggered animations. ' +
-        'Demonstrates how Stagger works with complex Card components, Avatars with presence badges, ' +
-        'and interactive elements like like buttons. Perfect for social feeds, activity streams, or news feeds.',
+        'A simple social media feed-style example showing user posts with staggered animations. ' +
+        'Demonstrates how Stagger works with Card components and Avatars with presence badges. ' +
+        'Perfect for activity streams or news feeds.',
     },
   },
 };
