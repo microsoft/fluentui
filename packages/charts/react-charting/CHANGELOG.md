@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 08 Aug 2025 07:21:05 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Aug 2025 07:21:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.24)
+
+Fri, 15 Aug 2025 07:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.23..@fluentui/react-charting_v5.24.24)
+
+### Patches
+
+- feat(react-charting): Support string y-axis for Scatter chart ([PR #35006](https://github.com/microsoft/fluentui/pull/35006) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.28 ([PR #35007](https://github.com/microsoft/fluentui/pull/35007) by beachball)
 
 ## [5.24.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.23)
 
