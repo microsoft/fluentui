@@ -40,9 +40,8 @@ const StaggerBase: React.FC<StaggerProps> = ({
     <>
       {elements.map((child, idx) => {
         const key = child.key ?? idx;
-        const hasVisibleProp = acceptsVisibleProp(child);
 
-        if (hasVisibleProp) {
+        if (acceptsVisibleProp(child)) {
           // Child expects visible prop, always render and control via visible
           return React.cloneElement(child, { key, visible: visibility[idx] });
         } else {
