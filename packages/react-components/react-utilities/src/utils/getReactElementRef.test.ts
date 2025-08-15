@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { getRefFromReactElement } from './getRefFromReactElement';
+import { getReactElementRef } from './getReactElementRef';
 
-describe('getRefFromReactElement', () => {
+describe('getReactElementRef', () => {
   let versionReplacer: jest.ReplaceProperty<string>;
 
   afterEach(() => {
@@ -19,26 +19,26 @@ describe('getRefFromReactElement', () => {
       const ref = React.createRef<HTMLDivElement>();
       const element = React.createElement('div', { ref });
 
-      expect(getRefFromReactElement(element)).toBe(ref);
+      expect(getReactElementRef(element)).toBe(ref);
     });
 
     it('returns null when no ref is provided', () => {
       const element = React.createElement('div');
 
-      expect(getRefFromReactElement(element)).toBeNull();
+      expect(getReactElementRef(element)).toBeNull();
     });
 
     it('handles function refs', () => {
       const mockFunctionRef = jest.fn();
       const element = React.createElement('div', { ref: mockFunctionRef });
 
-      expect(getRefFromReactElement(element)).toBe(mockFunctionRef);
+      expect(getReactElementRef(element)).toBe(mockFunctionRef);
     });
 
     it('handles null refs', () => {
       const element = React.createElement('div', { ref: null });
 
-      expect(getRefFromReactElement(element)).toBeNull();
+      expect(getReactElementRef(element)).toBeNull();
     });
   });
 
@@ -55,26 +55,26 @@ describe('getRefFromReactElement', () => {
       const ref = React.createRef<HTMLDivElement>();
       const element = createReactElementWithRef(ref);
 
-      expect(getRefFromReactElement(element)).toBe(ref);
+      expect(getReactElementRef(element)).toBe(ref);
     });
 
     it('returns undefined when no ref is provided', () => {
       const element = createReactElementWithRef();
 
-      expect(getRefFromReactElement(element)).toBeUndefined();
+      expect(getReactElementRef(element)).toBeUndefined();
     });
 
     it('handles function refs in pre-React 19', () => {
       const mockFunctionRef = jest.fn(() => null) as React.RefCallback<HTMLDivElement>;
       const element = createReactElementWithRef(mockFunctionRef);
 
-      expect(getRefFromReactElement(element)).toBe(mockFunctionRef);
+      expect(getReactElementRef(element)).toBe(mockFunctionRef);
     });
 
     it('handles null refs', () => {
       const element = createReactElementWithRef(null);
 
-      expect(getRefFromReactElement(element)).toBeNull();
+      expect(getReactElementRef(element)).toBeNull();
     });
   });
 });

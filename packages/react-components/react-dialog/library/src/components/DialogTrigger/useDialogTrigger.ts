@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
-  getRefFromReactElement,
+  getReactElementRef,
   useEventCallback,
 } from '@fluentui/react-utilities';
 import type { DialogTriggerProps, DialogTriggerState } from './DialogTrigger.types';
@@ -22,7 +22,6 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
   const { children, disableButtonEnhancement = false, action = isInsideSurfaceDialog ? 'close' : 'open' } = props;
 
   const child = getTriggerChild(children);
-  const childRef = child ? getRefFromReactElement<HTMLAnchorElement>(child) : undefined;
 
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const { triggerAttributes } = useModalAttributes();
@@ -42,7 +41,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
 
   const triggerChildProps = {
     ...child?.props,
-    ref: childRef,
+    ref: getReactElementRef<HTMLAnchorElement>(child),
     onClick: handleClick,
     ...triggerAttributes,
   } as const;
