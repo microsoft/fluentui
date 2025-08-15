@@ -4,6 +4,7 @@ export {
   getNativeElementProps,
   getPartitionedNativeProps,
 } from './getNativeElementProps';
+export { getReactElementRef } from './getReactElementRef';
 export { getRTLSafeKey } from './getRTLSafeKey';
 export { mergeCallbacks } from './mergeCallbacks';
 export { omit } from './omit';
