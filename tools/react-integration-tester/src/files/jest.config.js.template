@@ -1,0 +1,34 @@
+// @ts-check
+/* eslint-disable */
+
+const { join } = require('node:path');
+
+const usedNodeModulesPath = join(__dirname,'node_modules');
+
+/**
+ * @type {import('@jest/types').Config.InitialOptions}
+ */
+module.exports = {
+  displayName: '<%= projectName %>',
+  roots: ['<%= relativePathToProjectRoot %>'],
+  preset: '<%= relativePathToWorkspaceRoot %>/jest.preset.js',
+  // Heads up!
+  // Forces React to be resolved from the root node_modules to ensure the same instance is used across all packages
+  moduleNameMapper: {
+    '^react$': join(usedNodeModulesPath, './react'),
+    '^react/jsx-runtime$': join(usedNodeModulesPath, 'react/jsx-runtime'),
+    '^react-dom$': join(usedNodeModulesPath, './react-dom'),
+    '^react-dom/(.+)$': join(usedNodeModulesPath, 'react-dom/$1'),
+    '^react-test-renderer$': join(usedNodeModulesPath, './react-test-renderer'),
+    '^@testing-library/(react|dom)$': join(usedNodeModulesPath, './@testing-library/$1'),
+  <%_ if (react === 19) { _%>
+  '^@testing-library/react-hooks$': join(usedNodeModulesPath, './@testing-library/react/'),
+  <%_ } _%>
+  },
+  transform: {
+    '^.+\\.tsx?$': ['@swc/jest'],
+  },
+  coverageDirectory: './coverage',
+  setupFilesAfterEnv: ['./config/tests.js'],
+  snapshotSerializers: ['@griffel/jest-serializer'],
+};

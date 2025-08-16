@@ -81,6 +81,35 @@ jobs:
           git status --porcelain
           git diff-index --quiet HEAD -- || exit 1
 
+  react_integration_tests_collocated:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
+
+      - run: yarn install --frozen-lockfile
+
+      - name: Verify Cypress install
+        run: yarn cypress verify
+
+      - name: React Versions Integration Tests (17,19)
+        run: |
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test:rit --nxBail
+
   react_integration_tests:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest

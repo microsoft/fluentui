@@ -4,5 +4,60 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-button/library/src",
   "tags": ["vNext", "platform:web"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "metadata": {
+    "targetGroups": { "React Integration Tests": ["test:rit", "test:rit--17", "test:rit--19"] }
+  },
+  "namedInputs": {
+    "rit": [
+      "default",
+      "production",
+      "{workspaceRoot}/jest.preset.js",
+      "{workspaceRoot}/tools/react-integration-testing/**"
+    ]
+  },
+  "targets": {
+    "test:rit": {
+      "executor": "nx:noop",
+      "cache": true,
+      "inputs": ["rit", "^production"],
+      "outputs": ["{workspaceRoot}/tmp/rit/react-button-react-*"],
+      "dependsOn": [
+        { "target": "test:rit--17", "projects": "self", "params": "forward" },
+        { "target": "test:rit--19", "projects": "self", "params": "forward" }
+      ]
+    },
+    "test:rit--17": {
+      "command": "yarn rit --react 17 --run test --run type-check --verbose",
+      "cache": true,
+      "options": {
+        "cwd": "{projectRoot}"
+      },
+      "inputs": ["rit", "^production"],
+      "outputs": ["{workspaceRoot}/tmp/rit/react-button-react-17*"],
+      "dependsOn": [
+        { "target": "build", "projects": "self" },
+        {
+          "target": "build",
+          "projects": "react-components"
+        }
+      ]
+    },
+    "test:rit--19": {
+      "command": "yarn rit --react 19 --run test --run type-check --verbose",
+      "cache": true,
+      "options": {
+        "cwd": "{projectRoot}"
+      },
+      "inputs": ["rit", "^production"],
+      "outputs": ["{workspaceRoot}/tmp/rit/react-button-react-19*"],
+      "dependsOn": [
+        { "target": "build", "projects": "self" },
+        {
+          "target": "build",
+          "projects": "react-components"
+        }
+      ]
+    }
+  }
 }
