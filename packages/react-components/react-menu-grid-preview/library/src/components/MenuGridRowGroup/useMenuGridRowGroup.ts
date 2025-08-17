@@ -7,7 +7,7 @@ import { MenuGridRowGroupProps, MenuGridRowGroupState } from './MenuGridRowGroup
  */
 export function useMenuGridRowGroup_unstable(
   props: MenuGridRowGroupProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): MenuGridRowGroupState {
   const headerId = useId('menu-grid-row-group-header');
 
@@ -17,10 +17,7 @@ export function useMenuGridRowGroup_unstable(
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: ref as React.Ref<HTMLDivElement>,
+        ref,
         role: 'rowgroup',
         'aria-labelledby': headerId,
         ...props,

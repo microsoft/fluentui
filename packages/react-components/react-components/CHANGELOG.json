@@ -2,6 +2,918 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 07 Aug 2025 10:03:20 GMT",
+      "tag": "@fluentui/react-components_v9.68.3",
+      "version": "9.68.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "cab47f659741b9d42ee7ffae35bfd1d8b4364ffb",
+            "comment": "support for stacked grouped vertical bar chart+ enable wrapping of string x-axis labels in declarative chart+ hide overlapping labels based on post transform width"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c00d18558fdab1085665992fb1161f58e4bc27ef",
+            "comment": "support schema colors"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39",
+            "comment": "Add support for plotly generated tables"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c7a9b297280cf3f2be4e30827b44b5c3e3ec4f0d",
+            "comment": "enable interaction with line points without bars"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5c8f9254a2743798b757d83268bfdfe3d4cab3aa",
+            "comment": "enable round corners in declarative charts"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "0414f91525f0187f45c64ec6f47fac631479ad13",
+            "comment": "create plotly aligned colorway"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "5c903fa1ede10faa163304503f54cfc2a39c40a4",
+            "comment": "fix: fix multiline text alignment for horizontal dividers"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "77dd7de4a9e4db9be2a1adeb4322041cf84a8f1e",
+            "comment": "fix: update inverted link styles to use neutral color tokens"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "3e65d7d69695e5d902c84fa161cd854fed8e492b",
+            "comment": "fix: adjust PresenseGroup types to support react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "249bc540994ac14f1306e0c869317f07df0e5a98",
+            "comment": "feat: add custom addon-docs containers to preset"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "56e1c837dec51188b9186e62dbc308643549c37c",
+            "comment": "fix: remove custom selection styles"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "cb1a71ce9168415a1fd3d3dde962d58b4c5d4b65",
+            "comment": "fix: Toaster should merge user onKeyDown handler"
+          },
+          {
+            "author": "patrycja.fogelman@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "64d4b18e0b06d85399eb7220f54b96a9ca98d2e0",
+            "comment": "Fixed no onNavigate event not firing when clicked on a leaf"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "01eadaac363e2535154c2a343aa50e7f372dc1be",
+            "comment": "refactor: simplify setVirtualParent function by using Object.assign for virtual parent assignment"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "0f52f83d113fc1e2698ff29d4ee73bb4ba3ee89e",
+            "comment": "fix: add mpath svg intrinsic element to compat JSXIntrinsicElementKeysCompat"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "3e65d7d69695e5d902c84fa161cd854fed8e492b",
+            "comment": "fix: adjust compoponent props type to support react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "b32003c886be60cce813ed3dfe61e537a4aa57df",
+            "comment": "feat: support for react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "609e0f34251d73504cc3545d92e79a0f9e8744b0",
+            "comment": "feat!: make docs enhancements configurable and opt in. BREAKING CHANGE: turned off by default"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Jul 2025 16:55:28 GMT",
+      "tag": "@fluentui/react-components_v9.68.2",
+      "version": "9.68.2",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "1d61f9fdc8fb416dfefc27ceed104cbf11592d56",
+            "comment": "fix: release TreeWalker reference"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "849f09879917b11bfb4058c49464293dd72833e2",
+            "comment": "make legends of dotted lines dotted"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "827895d6a8ac7ace358e07807003869936ab97f8",
+            "comment": "support hidelegend property from plotly schema"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Jul 2025 13:10:55 GMT",
+      "tag": "@fluentui/react-components_v9.68.1",
+      "version": "9.68.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "0aaf72c591dbbaffd3b4d048427b55f5bb628ca8",
+            "comment": "GVBC FIX"
+          },
+          {
+            "author": "aknowles@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "eb21eedb8dda6ded887409e0298028a9cd320b82",
+            "comment": "Adding a variation of horizontal stacked bar chart with inline legends that accept optiona annotation JSX from client to be displayed next the legend items. Also an option to hide the hover callout card."
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b0391936b8540e1c989967c8e51f8dc6f4a30e4d",
+            "comment": "support image export in v9 charts"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "f79794090b2d902c61d6370e7511b6bdf44d88c4",
+            "comment": "add histogram mode to vbc"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "90fd5b6ceb4a17c912c7af32a67dffd6415f04b5",
+            "comment": "add support for scatter polar trace type"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd",
+            "comment": "fix: DialogSurface and DialogBody height respects custom maxHeight styles by replacing @supports rules with Griffel fallback arrays"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "ea2fbd636af8cd5d6b78448c595f9d102ca8a1f9",
+            "comment": "fix: add aria-pressed semantics to selectable Tag, remove default aria-pressed from InteractionTag"
+          }
+        ],
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b28112ae67f3ce4845330d0943839d83a5f3d8e3",
+            "comment": "feat: enable griffel raw styles"
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "c847809beaf412a97d993be0a2b525fd92216346",
+            "comment": "Add new brand ramp version"
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c847809beaf412a97d993be0a2b525fd92216346",
+            "comment": "Add new brand ramp version"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "c847809beaf412a97d993be0a2b525fd92216346",
+            "comment": "Brand ramp update"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jul 2025 18:48:16 GMT",
+      "tag": "@fluentui/react-components_v9.68.0",
+      "version": "9.68.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "0fd55307020d8be2399db8b88ab5da9e78202ab1",
+            "comment": "deprecate: react-virtualizer in process of moving to fluentui-contrib"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "1cf477588a8d5fdc41208a7a7f753ba0306caa15",
+            "comment": "fix(react-list): Dont crash in dev mode when navigation mode is changed"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "61c6eafa0a1c30eb4edf4add53dfa97c3099e78e",
+            "comment": "feat(motion): add Fade presence motion component"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4a1d378d4694d6fa890ef9c653495fe14edb613d",
+            "comment": "feat: add custom JSX.* types that are compatible with various react major versions"
+          }
+        ],
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "89bbbd09f2a14fc95399c2bf7eb6e3e0abad5846",
+            "comment": "fix callout position issues"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d94634a5272e3ca83a2a17d03a1d33611b9140bb",
+            "comment": "mitigate xss vulnerabilities"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e41c077dc4bab9ad3ea2380a70b30fc4b28bc46c",
+            "comment": "Add Gantt chart in v9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "7005d8f675a3e6a67b06a4135145f5a4cbbbc694",
+            "comment": "funnel chart in v9"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "13e9d5663d32fd91ff71a876bb6c3cbf54e0b39b",
+            "comment": "feat: add event.isDefaultPrevented() to `onKeyDown`"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "5cf70b3c5ef2eec4c253e4e60761e3cdde6436a3",
+            "comment": "fix: adjust circular sizes to Figma spec"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "78d8369d838e43f5b259527cdc24c88da2b57db2",
+            "comment": "revert: adjust accordion header chevron alignment styles #34616"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "0fd55307020d8be2399db8b88ab5da9e78202ab1",
+            "comment": "deprecate: react-virtualizer moving to fluentui-contrib"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Jul 2025 13:49:33 GMT",
       "tag": "@fluentui/react-components_v9.67.0",
       "version": "9.67.0",

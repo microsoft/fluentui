@@ -5,8 +5,9 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { MessageBar, MessageBarActions, MessageBarBody, MessageBarTitle } from '@fluentui/react-message-bar';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mount = (element: React.JSX.Element) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

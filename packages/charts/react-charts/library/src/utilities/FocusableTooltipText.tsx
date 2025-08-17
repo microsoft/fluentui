@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { useCallback, useState, useEffect, useRef } from 'react';
 import { Tooltip } from '@fluentui/react-tooltip';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { hasOverflow } from './overflow-utils';
 import { getAccessibleDataObject } from './index';
 import { AccessibilityProps } from '../types/index';
@@ -9,7 +10,12 @@ import { Async } from './async-utils';
 
 interface IFocusableTooltipTextProps {
   className?: string;
-  content: string | JSX.Element | JSX.Element[];
+  content:
+    | string
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    | JSXElement
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    | JSXElement[];
   accessibilityData?: AccessibilityProps;
 }
 

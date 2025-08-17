@@ -2,6 +2,7 @@ import { mergeClasses } from '@griffel/react';
 import * as React from 'react';
 import type { IStackItemProps } from '@fluentui/react';
 
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   useFlexAlignSelfStyles,
   useFlexGrowStyles,
@@ -13,9 +14,7 @@ import {
 const stackItemClassNames = {
   root: 'ms-StackItem',
 };
-
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export const StackItemShim = (props: IStackItemProps): JSX.Element => {
+export const StackItemShim = (props: IStackItemProps): JSXElement => {
   const { grow, shrink, disableShrink, align, verticalFill, order, className, children } = props;
 
   const styles = useStackItemShimStyles();

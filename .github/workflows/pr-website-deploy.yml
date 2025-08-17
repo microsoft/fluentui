@@ -28,7 +28,7 @@ jobs:
           fetch-depth: 0
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4.3.0
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
         with:
           main-branch-name: 'master'
 
@@ -42,6 +42,9 @@ jobs:
         run: node -e 'console.log(v8.getHeapStatistics().heap_size_limit / 1024 / 1024 + " MB");'
 
       - run: yarn install --frozen-lockfile
+
+      - name: Install Playwright Browsers
+        run: yarn playwright install --with-deps
 
       - name: Bundle
         run: yarn nx affected -t bundle --nxBail

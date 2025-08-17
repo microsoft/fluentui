@@ -15,6 +15,22 @@ test.describe('Menu', () => {
     waitFor: ['fluent-menu-list', 'fluent-menu-item', 'fluent-menu-button'],
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-menu');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should have menu-list be initially hidden', async ({ fastPage }) => {
     const { element } = fastPage;
     const menuList = element.locator('fluent-menu-list');

@@ -1,8 +1,174 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 17 Jul 2025 13:49:33 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Aug 2025 10:03:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.68.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.68.3)
+
+Thu, 07 Aug 2025 10:03:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.68.2..@fluentui/react-components_v9.68.3)
+
+### Minor changes
+
+- `@fluentui/react-portal`
+  - feat: support for react 19 ([PR #34916](https://github.com/microsoft/fluentui/pull/34916) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-storybook-addon`
+  - feat!: make docs enhancements configurable and opt in. BREAKING CHANGE: turned off by default ([PR #34950](https://github.com/microsoft/fluentui/pull/34950) by martinhochel@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - support for stacked grouped vertical bar chart+ enable wrapping of string x-axis labels in declarative chart+ hide overlapping labels based on post transform width ([PR #34936](https://github.com/microsoft/fluentui/pull/34936) by anushgupta@microsoft.com)
+  - support schema colors ([PR #34967](https://github.com/microsoft/fluentui/pull/34967) by anushgupta@microsoft.com)
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+  - Add support for plotly generated tables ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by anushgupta@microsoft.com)
+  - enable interaction with line points without bars ([PR #34953](https://github.com/microsoft/fluentui/pull/34953) by anushgupta@microsoft.com)
+  - enable round corners in declarative charts ([PR #34981](https://github.com/microsoft/fluentui/pull/34981) by anushgupta@microsoft.com)
+  - create plotly aligned colorway ([PR #34978](https://github.com/microsoft/fluentui/pull/34978) by anushgupta@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-divider`
+  - fix: fix multiline text alignment for horizontal dividers ([PR #34926](https://github.com/microsoft/fluentui/pull/34926) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-link`
+  - fix: update inverted link styles to use neutral color tokens ([PR #34955](https://github.com/microsoft/fluentui/pull/34955) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: adjust PresenseGroup types to support react 19 ([PR #34722](https://github.com/microsoft/fluentui/pull/34722) by dmytrokirpa@microsoft.com)
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-nav`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-storybook-addon`
+  - feat: add custom addon-docs containers to preset ([PR #34938](https://github.com/microsoft/fluentui/pull/34938) by martinhochel@microsoft.com)
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-storybook-addon-export-to-sandbox`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-table`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-textarea`
+  - fix: remove custom selection styles ([PR #34897](https://github.com/microsoft/fluentui/pull/34897) by vgenaev@gmail.com)
+- `@fluentui/react-toast`
+  - fix: Toaster should merge user onKeyDown handler ([PR #34982](https://github.com/microsoft/fluentui/pull/34982) by lingfangao@hotmail.com)
+- `@fluentui/react-tree`
+  - Fixed no onNavigate event not firing when clicked on a leaf ([PR #34964](https://github.com/microsoft/fluentui/pull/34964) by patrycja.fogelman@microsoft.com)
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-utilities`
+  - refactor: simplify setVirtualParent function by using Object.assign for virtual parent assignment ([PR #34968](https://github.com/microsoft/fluentui/pull/34968) by dmytrokirpa@microsoft.com)
+  - fix: add mpath svg intrinsic element to compat JSXIntrinsicElementKeysCompat ([PR #34979](https://github.com/microsoft/fluentui/pull/34979) by martinhochel@microsoft.com)
+- `@fluentui/react-accordion`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+  - fix: adjust compoponent props type to support react 19 ([PR #34722](https://github.com/microsoft/fluentui/pull/34722) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-aria`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+
+## [9.68.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.68.2)
+
+Wed, 30 Jul 2025 16:55:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.68.1..@fluentui/react-components_v9.68.2)
+
+### Patches
+
+- `@fluentui/react-aria`
+  - fix: release TreeWalker reference ([PR #34945](https://github.com/microsoft/fluentui/pull/34945) by seanmonahan@microsoft.com)
+- `@fluentui/react-charts`
+  - make legends of dotted lines dotted ([PR #34947](https://github.com/microsoft/fluentui/pull/34947) by anushgupta@microsoft.com)
+  - support hidelegend property from plotly schema ([PR #34946](https://github.com/microsoft/fluentui/pull/34946) by anushgupta@microsoft.com)
+
+## [9.68.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.68.1)
+
+Wed, 30 Jul 2025 13:10:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.68.0..@fluentui/react-components_v9.68.1)
+
+### Minor changes
+
+- `@fluentui/react-charts`
+  - feat: enable griffel raw styles ([PR #34912](https://github.com/microsoft/fluentui/pull/34912) by martinhochel@microsoft.com)
+- `@fluentui/react-storybook-addon`
+  - Add new brand ramp version ([PR #34900](https://github.com/microsoft/fluentui/pull/34900) by jukapsia@microsoft.com)
+- `@fluentui/react-theme`
+  - Add new brand ramp version ([PR #34900](https://github.com/microsoft/fluentui/pull/34900) by jukapsia@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - GVBC FIX ([PR #34932](https://github.com/microsoft/fluentui/pull/34932) by anushgupta@microsoft.com)
+  - Adding a variation of horizontal stacked bar chart with inline legends that accept optiona annotation JSX from client to be displayed next the legend items. Also an option to hide the hover callout card. ([PR #34895](https://github.com/microsoft/fluentui/pull/34895) by aknowles@microsoft.com)
+  - support image export in v9 charts ([PR #34929](https://github.com/microsoft/fluentui/pull/34929) by anushgupta@microsoft.com)
+  - add histogram mode to vbc ([PR #34930](https://github.com/microsoft/fluentui/pull/34930) by anushgupta@microsoft.com)
+  - add support for scatter polar trace type ([PR #34933](https://github.com/microsoft/fluentui/pull/34933) by anushgupta@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: DialogSurface and DialogBody height respects custom maxHeight styles by replacing @supports rules with Griffel fallback arrays ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-tags`
+  - fix: add aria-pressed semantics to selectable Tag, remove default aria-pressed from InteractionTag ([PR #34619](https://github.com/microsoft/fluentui/pull/34619) by sarah.higley@microsoft.com)
+
+### Changes
+
+- `@fluentui/tokens`
+  - Brand ramp update ([PR #34900](https://github.com/microsoft/fluentui/pull/34900) by jukapsia@microsoft.com)
+
+## [9.68.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.68.0)
+
+Mon, 28 Jul 2025 18:48:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.67.0..@fluentui/react-components_v9.68.0)
+
+### Minor changes
+
+- `@fluentui/react-aria`
+  - feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
+- `@fluentui/react-components`
+  - deprecate: react-virtualizer in process of moving to fluentui-contrib ([PR #34899](https://github.com/microsoft/fluentui/pull/34899) by mifraser@microsoft.com)
+- `@fluentui/react-list`
+  - fix(react-list): Dont crash in dev mode when navigation mode is changed ([PR #34613](https://github.com/microsoft/fluentui/pull/34613) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - feat(motion): add Fade presence motion component ([PR #34839](https://github.com/microsoft/fluentui/pull/34839) by robertpenner@microsoft.com)
+- `@fluentui/react-motion`
+  - feat: replace global JSX.IntrinsicElements with in house alternative to make types compatible across react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: add custom JSX.* types that are compatible with various react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - fix callout position issues ([PR #34868](https://github.com/microsoft/fluentui/pull/34868) by anushgupta@microsoft.com)
+  - mitigate xss vulnerabilities ([PR #34920](https://github.com/microsoft/fluentui/pull/34920) by anushgupta@microsoft.com)
+  - Add Gantt chart in v9 ([PR #34909](https://github.com/microsoft/fluentui/pull/34909) by anushgupta@microsoft.com)
+  - funnel chart in v9 ([PR #34866](https://github.com/microsoft/fluentui/pull/34866) by anushgupta@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: add event.isDefaultPrevented() to `onKeyDown` ([PR #34905](https://github.com/microsoft/fluentui/pull/34905) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: adjust circular sizes to Figma spec ([PR #34859](https://github.com/microsoft/fluentui/pull/34859) by vgenaev@gmail.com)
+- `@fluentui/react-accordion`
+  - revert: adjust accordion header chevron alignment styles #34616 ([PR #34893](https://github.com/microsoft/fluentui/pull/34893) by dmytrokirpa@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - deprecate: react-virtualizer moving to fluentui-contrib ([PR #34899](https://github.com/microsoft/fluentui/pull/34899) by mifraser@microsoft.com)
 
 ## [9.67.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.67.0)
 

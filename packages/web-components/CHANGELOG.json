@@ -2,6 +2,66 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 14 Aug 2025 04:07:10 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.116",
+      "version": "3.0.0-beta.116",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: remove redundant ts suppressions"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 Aug 2025 04:08:18 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.116",
+      "version": "3.0.0-beta.116",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e81e4694b47d90f3375db3873ccce8ca93ef0db5",
+            "comment": "feat: make components ready for ssr support"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Aug 2025 04:07:50 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.115",
+      "version": "3.0.0-beta.115",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "22f5fcce544cbcde4b2a2b7ee68656c835a1333d",
+            "comment": "fix: avoid setting tabindex before button is connected"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Jul 2025 04:07:07 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.114",
+      "version": "3.0.0-beta.114",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Jul 2025 04:07:23 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.114",
       "version": "3.0.0-beta.114",

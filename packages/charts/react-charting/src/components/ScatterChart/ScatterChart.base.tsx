@@ -3,18 +3,21 @@ import { IChildProps, IScatterChartStyleProps, IScatterChartStyles, IScatterChar
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
-import { max as d3Max, min as d3Min } from 'd3-array';
+import { max as d3Max } from 'd3-array';
 import {
   areArraysEqual,
   createNumericYAxis,
   createStringYAxis,
-  domainRangeOfDateForScatterChart,
-  domainRangeOfNumericForScatterChart,
   domainRangeOfXStringAxis,
   findNumericMinMaxOfY,
+  getDomainPaddingForMarkers,
   isScatterPolarSeries,
   isTextMode,
   YAxisType,
+  isPlottable,
+  getRangeForScatterMarkerSize,
+  domainRangeOfDateForAreaLineScatterVerticalBarCharts,
+  domainRangeOfNumericForAreaLineScatterCharts,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -32,13 +35,13 @@ import {
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
+  sortAxisCategories,
 } from '../../utilities/index';
 import { classNamesFunction, DirectionalHint, find, getId, getRTL } from '@fluentui/react';
 import { IImageExportOptions, IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
 import { ILineChartPoints } from '../../types/IDataPoint';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
-import { ScaleLinear } from 'd3-scale';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -128,6 +131,17 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     props.data.scatterChartData![0].data.length > 0
       ? (getTypeOfAxis(props.data.scatterChartData![0].data[0].x, true) as XAxisTypes)
       : XAxisTypes.StringAxis;
+
+  // Detect y axis type (numeric or string)
+  const _yAxisType: YAxisType =
+    props.data.scatterChartData &&
+    props.data.scatterChartData.length > 0 &&
+    props.data.scatterChartData[0].data &&
+    props.data.scatterChartData[0].data.length > 0
+      ? typeof props.data.scatterChartData[0].data[0].y === 'string'
+        ? YAxisType.StringAxis
+        : YAxisType.NumericAxis
+      : YAxisType.NumericAxis;
 
   const pointsRef = React.useRef<ScatterChartDataWithIndex[] | []>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -222,6 +236,47 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     );
   }
 
+  function _getOrderedYAxisLabels() {
+    const shouldOrderYAxisLabelsByCategoryOrder =
+      _yAxisType === YAxisType.StringAxis && props.yAxisCategoryOrder !== 'default';
+    if (!shouldOrderYAxisLabelsByCategoryOrder) {
+      // Collect all unique string y values from all data points in all series, in reverse order
+      const yLabelsSet = new Set<string>();
+      for (let i = _points.current.length - 1; i >= 0; i--) {
+        const point = _points.current[i];
+        if (point.data && Array.isArray(point.data)) {
+          for (const d of point.data) {
+            if (typeof d.y === 'string') {
+              yLabelsSet.add(d.y);
+            }
+          }
+        }
+      }
+      return Array.from(yLabelsSet);
+    }
+
+    return sortAxisCategories(_mapCategoryToValues(), props.yAxisCategoryOrder);
+  }
+
+  function _mapCategoryToValues() {
+    const categoryToValues: Record<string, number[]> = {};
+    _points.current.forEach(point => {
+      if (point.data && Array.isArray(point.data)) {
+        point.data.forEach(d => {
+          if (typeof d.y === 'string') {
+            if (!categoryToValues[d.y]) {
+              categoryToValues[d.y] = [];
+            }
+            if (typeof d.x === 'number') {
+              categoryToValues[d.y].push(d.x);
+            }
+          }
+        });
+      }
+    });
+    return categoryToValues;
+  }
+
   function _onLegendSelectionChange(
     legendsSelected: string[],
     event: React.MouseEvent<HTMLButtonElement>,
@@ -263,14 +318,28 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       tickValues: number[] | Date[] | string[] | undefined,
     ) => {
       if (xAxisType === XAxisTypes.NumericAxis) {
-        return domainRangeOfNumericForScatterChart(points, domainMargins, width, isRTL);
+        return domainRangeOfNumericForAreaLineScatterCharts(
+          points,
+          domainMargins,
+          width,
+          isRTL,
+          props.xScaleType,
+          true,
+        );
       } else if (xAxisType === XAxisTypes.DateAxis) {
-        return domainRangeOfDateForScatterChart(points, domainMargins, width, isRTL, tickValues! as Date[]);
+        return domainRangeOfDateForAreaLineScatterVerticalBarCharts(
+          points,
+          domainMargins,
+          width,
+          isRTL,
+          tickValues! as Date[],
+          _chartType,
+        );
       }
       // String Axis type
       return domainRangeOfXStringAxis(domainMargins, width, isRTL);
     },
-    [],
+    [props.xScaleType],
   );
 
   const _handleFocus = React.useCallback(
@@ -399,22 +468,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     [_points, props.culture, props.useUTC],
   );
 
-  function _getRangeForScatterMarkerSize(
-    yScale: ScaleLinear<number, number>,
-    yPadding: number,
-    xMin: number,
-    xMax: number,
-    xPadding: number,
-  ): number {
-    const extraXPixels = getRTL()
-      ? _xAxisScale.current?.(xMax - xPadding) - _xAxisScale.current?.(xMax)
-      : _xAxisScale.current?.(xMin + xPadding) - _xAxisScale.current?.(xMin);
-
-    const yMin = yScale.domain()[0];
-    const extraYPixels = yScale(yMin) - yScale(yMin + yPadding);
-    return Math.min(extraXPixels, extraYPixels);
-  }
-
   const _createPlot = React.useCallback(
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     (xElement: SVGElement, containerHeight: number): JSX.Element[] => {
@@ -426,33 +479,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         _points.current = _injectIndexPropertyInScatterChartData(props.data.scatterChartData);
       }
 
-      const yMax = d3Max(_points.current, (point: IScatterChartPoints) => {
-        return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.y)!;
-      })!;
-      const yMin = d3Min(_points.current, (point: IScatterChartPoints) => {
-        return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.y)!;
-      })!;
-      const yPadding = (yMax - yMin) * 0.1;
-
-      let xPadding = 0;
-      let xMin: number = 0;
-      let xMax: number = 0;
       if (_xAxisType === XAxisTypes.StringAxis) {
         _xBandwidth.current = _xAxisScale.current?.bandwidth() / 2;
-      } else {
-        const isDate = _xAxisType === XAxisTypes.DateAxis;
-        const getX = (item: IScatterChartDataPoint) => (isDate ? (item.x as Date) : (item.x as number));
-
-        const minVal = d3Min(_points.current, (point: IScatterChartPoints) =>
-          d3Min(point.data as IScatterChartDataPoint[], getX),
-        );
-        const maxVal = d3Max(_points.current, (point: IScatterChartPoints) =>
-          d3Max(point.data as IScatterChartDataPoint[], getX),
-        );
-
-        xMin = isDate ? (minVal as Date).getTime() : (minVal as number);
-        xMax = isDate ? (maxVal as Date).getTime() : (maxVal as number);
-        xPadding = (xMax - xMin) * 0.1;
       }
 
       const maxMarkerSize = d3Max(_points.current, (point: IScatterChartPoints) => {
@@ -460,6 +488,16 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           return item.markerSize as number;
         });
       })!;
+      const extraMaxPixels =
+        _xAxisType !== XAxisTypes.StringAxis && _yAxisType !== YAxisType.StringAxis
+          ? getRangeForScatterMarkerSize({
+              data: _points.current,
+              xScale: _xAxisScale.current,
+              yScalePrimary: _yAxisScale.current,
+              xScaleType: props.xScaleType,
+              yScaleType: props.yScaleType,
+            })
+          : 0;
 
       for (let i = _points.current?.length - 1; i >= 0; i--) {
         // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -470,14 +508,20 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         const verticaLineHeight = containerHeight - (margins.current?.bottom ?? 0) + 6;
 
         for (let j = 0; j < _points.current?.[i]?.data?.length; j++) {
+          const { x, y, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points.current?.[i]?.data[j];
+          const xPoint = _xAxisScale.current?.(x);
+          // Use string y axis scale if needed
+          const yPoint =
+            _yAxisType === YAxisType.StringAxis
+              ? _yAxisScale.current?.(y) + (_yAxisScale.current?.bandwidth ? _yAxisScale.current.bandwidth() / 2 : 0)
+              : _yAxisScale.current?.(y);
+          if (!isPlottable(xPoint, yPoint)) {
+            continue;
+          }
+
           const seriesId = `${_seriesId}_${i}_${j}`;
           const circleId = `${_circleId}_${i}_${j}`;
-          const { x, y, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points.current?.[i]?.data[j];
           const pointMarkerSize = (_points.current?.[i]?.data[j] as IScatterChartDataPoint).markerSize;
-          const extraMaxPixels =
-            _xAxisType !== XAxisTypes.StringAxis
-              ? _getRangeForScatterMarkerSize(_yAxisScale.current, yPadding, xMin, xMax, xPadding)
-              : 0;
           const minPixel = 4;
           const maxPixel = 16;
           const circleRadius =
@@ -500,8 +544,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
                   id={circleId}
                   key={circleId}
                   r={Math.max(circleRadius, 4)}
-                  cx={_xAxisScale.current?.(x) + _xBandwidth.current}
-                  cy={_yAxisScale.current?.(y)}
+                  cx={xPoint + _xBandwidth.current}
+                  cy={yPoint}
                   data-is-focusable={isLegendSelected}
                   onMouseOver={(event: React.MouseEvent<SVGElement>) =>
                     _handleHover(
@@ -539,12 +583,12 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
               </>,
             );
           }
-          if ((!_isScatterPolarRef.current || _isTextMode) && text) {
+          if (_isTextMode && text) {
             pointsForSeries.push(
               <text
                 key={`${circleId}-label`}
-                x={_xAxisScale.current?.(x) + _xBandwidth.current}
-                y={_yAxisScale.current?.(y) + Math.max(circleRadius + 12, 16)}
+                x={xPoint + _xBandwidth.current}
+                y={yPoint + Math.max(circleRadius + 12, 16)}
                 className={classNames.markerLabel}
               >
                 {text}
@@ -554,15 +598,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         }
 
         if (_isScatterPolarRef.current) {
-          // Render category labels for all series at once to avoid overlap
-          const allSeriesData = _points.current.map(s => ({
-            data: s.data
-              .filter(pt => typeof pt.x === 'number' && typeof pt.y === 'number')
-              .map(pt => ({ x: pt.x as number, y: pt.y as number, text: pt.text })),
-          }));
           pointsForSeries.push(
             ...renderScatterPolarCategoryLabels({
-              allSeriesData,
               xAxisScale: _xAxisScale.current,
               yAxisScale: _yAxisScale.current,
               className: classNames.markerLabel || '',
@@ -624,10 +661,13 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       _seriesId,
       _tooltipId,
       _xAxisType,
+      _yAxisType,
       activePoint,
       isSelectedLegend,
       selectedLegendPoints,
       classNames,
+      props.xScaleType,
+      props.yScaleType,
     ],
   );
 
@@ -675,29 +715,18 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     setCalloutVisible(false);
   }
 
-  function _getNumericMinMaxOfY(
-    points: IScatterChartPoints[],
-    yAxisType?: YAxisType,
-  ): { startValue: number; endValue: number } {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType);
-    let yPadding = 0;
-    yPadding = (endValue - startValue) * 0.1;
+  const _getNumericMinMaxOfY = React.useCallback(
+    (points: IScatterChartPoints[], yAxisType?: YAxisType): { startValue: number; endValue: number } => {
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType, undefined, props.yScaleType);
+      const yPadding = getDomainPaddingForMarkers(startValue, endValue, props.yScaleType);
 
-    return {
-      startValue: startValue - yPadding,
-      endValue: endValue + yPadding,
-    };
-  }
-
-  const _getMinMaxofXAxis = React.useCallback(
-    (
-      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-      points: any,
-      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-      yAxisType: any,
-    ) => _getNumericMinMaxOfY(points as IScatterChartPoints[], yAxisType),
-    [],
+      return {
+        startValue: startValue - yPadding.start,
+        endValue: endValue + yPadding.end,
+      };
+    },
+    [props.yScaleType],
   );
 
   const { legendProps, tickValues, tickFormat } = props;
@@ -747,6 +776,9 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
   _xAxisLabels = Array.from(new Set(xAxisLabels));
 
+  // Compute unique y axis labels for string y axis
+  const _yAxisLabels: string[] = _getOrderedYAxisLabels();
+
   return !_isChartEmpty() ? (
     <CartesianChart
       {...props}
@@ -759,12 +791,15 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       tickParams={tickParams}
       legendBars={legendBars}
       getmargins={_getMargins}
-      getMinMaxOfYAxis={_getMinMaxofXAxis}
+      getMinMaxOfYAxis={_getNumericMinMaxOfY}
       getDomainNRangeValues={getDomainNRangeValuesScatterChart}
       createYAxis={createNumericYAxis}
       createStringYAxis={createStringYAxis}
       getGraphData={_initializeScatterChartData}
       xAxisType={_xAxisType}
+      yAxisType={_yAxisType}
+      // Pass stringDatasetForYAxisDomain only if y axis is string
+      {...(_yAxisType === YAxisType.StringAxis ? { stringDatasetForYAxisDomain: _yAxisLabels } : {})}
       onChartMouseLeave={_handleChartMouseLeave}
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}

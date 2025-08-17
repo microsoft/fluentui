@@ -46,6 +46,7 @@ const chartTypesWithStringYAxis = [
   ChartTypes.HeatMapChart,
   ChartTypes.VerticalStackedBarChart,
   ChartTypes.GanttChart,
+  ChartTypes.ScatterChart,
 ];
 
 export interface ICartesianChartState {
@@ -329,6 +330,7 @@ export class CartesianChartBase
             this.props.tickParams!,
             this.props.chartType,
             culture,
+            this.props.xScaleType,
           ));
           break;
         case XAxisTypes.DateAxis:
@@ -357,6 +359,7 @@ export class CartesianChartBase
             this.props.tickParams!,
             this.props.chartType,
             culture,
+            this.props.xScaleType,
           ));
       }
       this._xScale = xScale;
@@ -430,6 +433,7 @@ export class CartesianChartBase
             true,
             this.props.supportNegativeData!,
             this.props.roundedTicks!,
+            this.props.secondaryYScaleType,
           );
         }
         yScalePrimary = this.props.createYAxis(
@@ -440,6 +444,7 @@ export class CartesianChartBase
           false,
           this.props.supportNegativeData!,
           this.props.roundedTicks!,
+          this.props.yScaleType,
         );
       }
 

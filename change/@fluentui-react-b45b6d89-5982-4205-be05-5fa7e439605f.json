@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(v8 PeoplePicker): Add WHCM styles to the PeoplePickerItem remove button",
-  "packageName": "@fluentui/react",
-  "email": "jiangemma@microsoft.com",
-  "dependentChangeType": "patch"
-}

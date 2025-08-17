@@ -1,8 +1,65 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Thu, 17 Jul 2025 13:49:34 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Aug 2025 10:03:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.9.4)
+
+Thu, 07 Aug 2025 10:03:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.9.3..@fluentui/react-avatar_v9.9.4)
+
+### Patches
+
+- fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- Bump @fluentui/react-badge to v9.4.3 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.5 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-popover to v9.12.4 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-tabster to v9.26.3 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-tooltip to v9.8.3 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-utilities to v9.23.2 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.5 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+
+## [9.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.9.3)
+
+Wed, 30 Jul 2025 16:55:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.9.2..@fluentui/react-avatar_v9.9.3)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.12.3 ([PR #34945](https://github.com/microsoft/fluentui/pull/34945) by beachball)
+
+## [9.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.9.2)
+
+Wed, 30 Jul 2025 13:10:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.9.1..@fluentui/react-avatar_v9.9.2)
+
+### Patches
+
+- Bump @fluentui/react-badge to v9.4.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.4 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-popover to v9.12.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.24.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-tabster to v9.26.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-theme to v9.2.0 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-tooltip to v9.8.2 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-utilities to v9.23.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.4 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+
+## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.9.1)
+
+Mon, 28 Jul 2025 18:48:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.9.0..@fluentui/react-avatar_v9.9.1)
+
+### Patches
+
+- Bump @fluentui/react-badge to v9.4.1 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.3 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-popover to v9.12.1 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-tabster to v9.26.1 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-tooltip to v9.8.1 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-utilities to v9.23.0 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.3 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
 
 ## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.9.0)
 
