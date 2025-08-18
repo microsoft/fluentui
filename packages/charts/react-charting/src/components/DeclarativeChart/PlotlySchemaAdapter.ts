@@ -2574,32 +2574,15 @@ type GetAxisScaleTypePropsResult = Pick<ICartesianChartProps, 'xScaleType' | 'yS
 
 const getAxisScaleTypeProps = (data: Data[], layout: Partial<Layout> | undefined): GetAxisScaleTypePropsResult => {
   const result: GetAxisScaleTypePropsResult = {};
+  const axisObjects = getAxisObjects(data, layout);
 
-  // Traces are grouped by their xaxis property, and for each group/subplot, the adapter functions
-  // are called with the corresponding filtered data. As a result, all traces passed to an adapter
-  // function share the same xaxis.
-  let xAxisId: number | undefined;
-  const yAxisIds = new Set<number>();
-  data.forEach((series: Partial<PlotData>) => {
-    const axisIds = getAxisIds(series);
-    xAxisId = axisIds.x;
-    yAxisIds.add(axisIds.y);
-  });
-
-  const isLogAxis = (axLetter: 'x' | 'y', axId: number) => {
-    const axisKey = getAxisKey(axLetter, axId);
-    return layout?.[axisKey]?.type === 'log';
-  };
-
-  if (typeof xAxisId === 'number' && isLogAxis('x', xAxisId)) {
+  if (axisObjects['x']?.type === 'log') {
     result.xScaleType = 'log';
   }
-
-  const sortedYAxisIds = Array.from(yAxisIds).sort();
-  if (sortedYAxisIds.length > 0 && isLogAxis('y', sortedYAxisIds[0])) {
+  if (axisObjects['y']?.type === 'log') {
     result.yScaleType = 'log';
   }
-  if (sortedYAxisIds.length > 1 && isLogAxis('y', sortedYAxisIds[1])) {
+  if (axisObjects['y2']?.type === 'log') {
     result.secondaryYScaleType = 'log';
   }
 
@@ -2613,55 +2596,60 @@ type GetAxisTickPropsResult = Pick<
 
 const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): GetAxisTickPropsResult => {
   const result: GetAxisTickPropsResult = {};
+  const axisObjects = getAxisObjects(data, layout);
 
-  // duplication start
-  let xAxisId: number | undefined;
-  const yAxisIds = new Set<number>();
-  data.forEach((series: Partial<PlotData>) => {
-    const axisIds = getAxisIds(series);
-    xAxisId = axisIds.x;
-    yAxisIds.add(axisIds.y);
+  Object.keys(axisObjects).forEach(axId => {
+    const ax = axisObjects[axId];
+    if (!ax) {
+      return;
+    }
+
+    const axType = getAxisType(data, axId[0] as 'x' | 'y', ax);
+
+    if ((!ax.tickmode || ax.tickmode === 'array') && isArrayOrTypedArray(ax.tickvals)) {
+      const tickValues = axType === 'date' ? ax.tickvals!.map(v => new Date(v)) : ax.tickvals;
+
+      if (axId === 'x') {
+        result.tickValues = tickValues;
+      } else if (axId === 'y') {
+        result.yAxisTickValues = tickValues;
+      }
+      return;
+    }
+
+    if ((!ax.tickmode || ax.tickmode === 'linear') && ax.dtick) {
+      const dtickValue = dtick(ax.dtick, axType);
+      const tick0Value = tick0(ax.tick0, axType, dtickValue);
+
+      if (axId === 'x') {
+        result.xAxis = {
+          tickInterval: dtickValue,
+          tick0: tick0Value,
+        };
+      } else if (axId === 'y') {
+        result.yAxis = {
+          tickInterval: dtickValue,
+          tick0: tick0Value,
+        };
+      }
+      return;
+    }
+
+    if (typeof ax.nticks === 'number' && ax.nticks > 0) {
+      if (axId === 'x') {
+        result.xAxisTickCount = ax.nticks;
+      } else if (axId === 'y') {
+        result.yAxisTickCount = ax.nticks;
+      }
+    }
   });
-
-  let xAxis: Partial<LayoutAxis> | undefined;
-  if (typeof xAxisId === 'number') {
-    xAxis = layout?.[getAxisKey('x', xAxisId)];
-  }
-
-  let yAxis: Partial<LayoutAxis> | undefined;
-  const sortedYAxisIds = Array.from(yAxisIds).sort();
-  if (sortedYAxisIds.length > 0) {
-    yAxis = layout?.[getAxisKey('y', sortedYAxisIds[0])];
-  }
-  // duplication end
-
-  // const supportedTickmodes = ['auto', 'linear', 'array'];
-  // !supportedTickmodes.includes(xAxis?.tickmode ?? '')
-  if ((!xAxis?.tickmode || xAxis?.tickmode === 'array') && isArrayOrTypedArray(xAxis?.tickvals)) {
-    result.tickValues = xAxis!.tickvals;
-  } else if ((!xAxis?.tickmode || xAxis?.tickmode === 'linear') && xAxis?.dtick) {
-    const values: Datum[] = [];
-    data.forEach((series: Partial<PlotData>) => {
-      series.x?.forEach(val => {
-        if (!isInvalidValue(val)) {
-          values.push(val as Datum);
-        }
-      });
-    });
-
-    const xAxisType = xAxis!.type;
-    const dtickValue = dtick(xAxis!.dtick, xAxisType);
-    result.xAxis = {
-      tickInterval: dtickValue,
-      tick0: tick0(xAxis!.tick0, xAxisType, dtickValue),
-    };
-  } else if (typeof xAxis?.nticks === 'number' && xAxis!.nticks > 0) {
-    result.xAxisTickCount = xAxis!.nticks;
-  }
 
   return result;
 };
 
+/**
+ *
+ */
 const dtick = (dtick: DTickValue | undefined, axType: AxisType | undefined) => {
   const isLog = axType === 'log';
   const isDate = axType === 'date';
@@ -2710,6 +2698,9 @@ const dtick = (dtick: DTickValue | undefined, axType: AxisType | undefined) => {
   return dtick;
 };
 
+/**
+ *
+ */
 const tick0 = (tick0: number | string | undefined, axType: AxisType | undefined, dtick: string | number) => {
   if (axType === 'date') {
     return isDate(tick0) ? new Date(tick0!) : new Date('2000-01-01');
@@ -2720,4 +2711,61 @@ const tick0 = (tick0: number | string | undefined, axType: AxisType | undefined,
   }
   // Aside from date axes, tick0 must be numeric
   return isNumber(tick0) ? Number(tick0) : 0;
+};
+
+const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
+  // Traces are grouped by their xaxis property, and for each group/subplot, the adapter functions
+  // are called with the corresponding filtered data. As a result, all traces passed to an adapter
+  // function share the same xaxis.
+  let xAxisId: number | undefined;
+  const yAxisIds = new Set<number>();
+  data.forEach((series: Partial<PlotData>) => {
+    const axisIds = getAxisIds(series);
+    xAxisId = axisIds.x;
+    yAxisIds.add(axisIds.y);
+  });
+
+  const result: Record<string, Partial<LayoutAxis> | undefined> = {};
+
+  if (typeof xAxisId === 'number') {
+    result.x = layout?.[getAxisKey('x', xAxisId)];
+  }
+
+  const sortedYAxisIds = Array.from(yAxisIds).sort();
+  if (sortedYAxisIds.length > 0) {
+    result.y = layout?.[getAxisKey('y', sortedYAxisIds[0])];
+  }
+  if (sortedYAxisIds.length > 1) {
+    result.y2 = layout?.[getAxisKey('y', sortedYAxisIds[1])];
+  }
+
+  return result;
+};
+
+const getAxisType = (data: Data[], axLetter: 'x' | 'y', ax: Partial<LayoutAxis> | undefined): AxisType | undefined => {
+  const values: Datum[] = [];
+  data.forEach((series: Partial<PlotData>) => {
+    series[axLetter]?.forEach(val => {
+      if (!isInvalidValue(val)) {
+        values.push(val as Datum);
+      }
+    });
+  });
+
+  // TODO: add comment about ax.type
+
+  if (isNumberArray(values)) {
+    if (ax?.type === 'log') {
+      return 'log';
+    }
+    return 'linear';
+  }
+
+  if (isDateArray(values)) {
+    return 'date';
+  }
+
+  if (isStringArray(values)) {
+    return 'category';
+  }
 };
