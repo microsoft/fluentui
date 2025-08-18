@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const IS_REACT_19_OR_HIGHER = parseInt(React.version, 10) > 19;
+const IS_REACT_19_OR_HIGHER = parseInt(React.version, 10) >= 19;
 
 /**
  * Returns a ref for the React element in a backwards-compatible way.
