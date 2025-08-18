@@ -10,7 +10,11 @@ import { MenuGridRow } from './../MenuGridRow/MenuGridRow';
  */
 export function useMenuGridItem_unstable(props: MenuGridItemProps, ref: React.Ref<HTMLDivElement>): MenuGridItemState {
   const {
+    icon,
   content: _content, // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
+  subText,
+  firstSubAction,
+  secondSubAction,
   ...rest
   } = props;
 
