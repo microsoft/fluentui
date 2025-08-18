@@ -97,6 +97,10 @@
       "dependsOn": ["build"],
       "cache": true
     },
+    "test:rit--*": {
+      "dependsOn": ["build", "react-components:build"],
+      "cache": true
+    },
     "@nx/jest:jest": {
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
       "cache": true,
@@ -145,6 +149,11 @@
         },
         "verifyPackaging": {
           "include": ["react-text", "react-components"]
+        },
+        "reactIntegrationTesting": {
+          "targetName": "test:rit",
+          "reactVersions": ["17", "19"],
+          "exclude": []
         }
       },
       "include": [
