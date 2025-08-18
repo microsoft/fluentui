@@ -57,6 +57,9 @@ describe('presenceMotionSlot', () => {
     expect(queryByTestId('root')).not.toBeNull();
     expect(queryByTestId('content')).not.toBeNull();
 
+    expect(TestMotion).toHaveBeenCalledTimes(1);
+
+    // TODO: these fail in React 19
     expect(TestMotion).toHaveBeenCalledWith(
       expect.objectContaining({ visible: true, unmountOnExit: true }),
       expect.any(Object),
@@ -69,6 +72,8 @@ describe('presenceMotionSlot', () => {
     expect(queryByTestId('root')).not.toBeNull();
     expect(queryByTestId('content')).toBeNull();
 
+    expect(TestMotion).toHaveBeenCalledTimes(4);
+    // TODO: these fail in React 19
     expect(TestMotion).toHaveBeenLastCalledWith(
       expect.objectContaining({ visible: false, unmountOnExit: true }),
       expect.any(Object),
