@@ -48,6 +48,8 @@ const useStyles = makeStyles({
     },
   },
   markerLabel: {
+    fill: tokens.colorNeutralForeground1,
+    textAnchor: 'middle',
     selectors: {
       [HighContrastSelector]: {
         fill: 'CanvasText',

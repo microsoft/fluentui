@@ -805,8 +805,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       x={_xAxisScale(x1)}
                       y={yScale(y1) + 12}
                       fontSize={12}
-                      fill={tokens.colorNeutralForeground1}
-                      textAnchor="middle"
                       className={classes.markerLabel}
                     >
                       {_points[i].data[j - 1].text}
@@ -931,8 +929,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           x={_xAxisScale(x2)}
                           y={yScale(y2) + 12}
                           fontSize={12}
-                          fill={tokens.colorNeutralForeground1}
-                          textAnchor="middle"
                           className={classes.markerLabel}
                         >
                           {_points[i].data[j].text}
