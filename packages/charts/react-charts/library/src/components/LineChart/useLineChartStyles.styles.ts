@@ -10,6 +10,7 @@ import { HighContrastSelector } from '../../utilities/index';
 export const linechartClassNames: SlotClassNames<LineChartStyles> = {
   tooltip: 'fui-line__tooltip',
   lineBorder: 'fui-line_lineBorder',
+  markerLabel: 'fui-line__markerLabel',
   root: 'fui-line__root',
   xAxis: 'fui-line__xAxis',
   yAxis: 'fui-line__yAxis',
@@ -46,6 +47,15 @@ const useStyles = makeStyles({
       stroke: 'Canvas',
     },
   },
+  markerLabel: {
+    fill: tokens.colorNeutralForeground1,
+    textAnchor: 'middle',
+    selectors: {
+      [HighContrastSelector]: {
+        fill: 'CanvasText',
+      },
+    },
+  },
 });
 
 /**
@@ -56,5 +66,6 @@ export const useLineChartStyles = (props: LineChartProps): LineChartStyles => {
   return {
     tooltip: mergeClasses(linechartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
     lineBorder: mergeClasses(linechartClassNames.lineBorder, baseStyles.lineBorder /*props.styles?.lineBorder*/),
+    markerLabel: mergeClasses(linechartClassNames.markerLabel, baseStyles.markerLabel /*props.styles?.markerLabel*/),
   };
 };

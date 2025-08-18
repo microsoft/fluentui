@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Enable custom style hooks on OverlayDrawerSurface",
+  "packageName": "@fluentui/react-drawer",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
