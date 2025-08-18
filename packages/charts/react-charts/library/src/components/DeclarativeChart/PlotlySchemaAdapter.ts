@@ -62,7 +62,6 @@ import {
   isInvalidValue,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
-import { ScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { extractColor, resolveColor } from './PlotlyColorAdapter';
 
