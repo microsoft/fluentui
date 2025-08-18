@@ -1083,6 +1083,7 @@ export const LineChart: React_2.FunctionComponent<LineChartProps>;
 
 // @public (undocumented)
 export interface LineChartDataPoint extends BaseDataPoint {
+    text?: string;
     x: number | Date;
     y: number;
 }
@@ -1144,6 +1145,7 @@ export interface LineChartStyleProps extends CartesianChartStyleProps {
 // @public
 export interface LineChartStyles extends CartesianChartStyles {
     lineBorder?: string;
+    markerLabel?: string;
 }
 
 // @public (undocumented)
@@ -1384,6 +1386,7 @@ export const ScatterChart: React_2.FunctionComponent<ScatterChartProps>;
 // @public
 export interface ScatterChartDataPoint extends BaseDataPoint {
     markerSize?: number;
+    text?: string;
     x: number | Date | string;
     y: number;
 }
