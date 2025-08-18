@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-storybook-addon
 
-This log was last generated on Thu, 07 Aug 2025 10:03:26 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Aug 2025 12:49:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.4.1)
+
+Wed, 13 Aug 2025 12:49:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.4.0..@fluentui/react-storybook-addon_v0.4.1)
+
+### Patches
+
+- fix: resolve dissapearing Slot Info message on consecutive page re-renders ([PR #34958](https://github.com/microsoft/fluentui/pull/34958) by martinhochel@microsoft.com)
+- indirect ts emit change with exactOptionalPropertyTypes ([PR #33498](https://github.com/microsoft/fluentui/pull/33498) by vgenaev@gmail.com)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.4.0)
 

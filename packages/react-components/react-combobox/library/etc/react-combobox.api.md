@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';

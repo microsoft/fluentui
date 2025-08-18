@@ -237,17 +237,17 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
           ...point,
           series:
             point.series?.map(seriesPoint => {
+              // TODO: Add support for gradient colors
+              let startColor = seriesPoint.color ? seriesPoint.color : getNextColor(colorIndex, 0);
+              let endColor = startColor;
               if (!_legendColorMap[seriesPoint.legend]) {
-                let startColor = seriesPoint.color ? seriesPoint.color : getNextColor(colorIndex, 0);
-                let endColor = startColor;
-
                 _legendColorMap[seriesPoint.legend] = [startColor, endColor];
-                colorIndex += 1;
               }
+              colorIndex += 1;
 
               return {
                 ...seriesPoint,
-                color: _legendColorMap[seriesPoint.legend][0],
+                color: seriesPoint.color ?? _legendColorMap[seriesPoint.legend][0],
               };
             }) ?? [],
         };

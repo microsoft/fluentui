@@ -42,7 +42,7 @@ export type ToastContainerState = ComponentState<ToastContainerSlots> &
      */
     onTransitionEntering: () => void;
     /**
-     * @deprecated
+     * @deprecated now merged with root ref
      */
     nodeRef: React.Ref<HTMLDivElement>;
 

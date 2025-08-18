@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
@@ -25,6 +23,15 @@ import { useModalAttributes } from '@fluentui/react-tabster';
 
 // @public
 export const Dialog: React_2.FC<DialogProps>;
+
+// @public (undocumented)
+export const DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET = "4px";
+
+// @public (undocumented)
+export const DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR = "@media screen and (max-width: 480px)";
+
+// @public (undocumented)
+export const DIALOG_MEDIA_QUERY_SHORT_SCREEN = "@media screen and (max-height: 359px)";
 
 // @public
 export const DialogActions: ForwardRefComponent<DialogActionsProps>;

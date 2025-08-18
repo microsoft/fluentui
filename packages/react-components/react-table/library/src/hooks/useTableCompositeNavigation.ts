@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { ArrowDown, ArrowRight, ArrowUp } from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowRight, ArrowUp, ArrowLeft } from '@fluentui/keyboard-keys';
 import {
   useArrowNavigationGroup,
   useFocusableGroup,
@@ -62,7 +62,11 @@ export function useTableCompositeNavigation(): {
         return false;
       })();
 
-      // Escape groupper focus trap before arrow down
+      // Escape groupper focus trap before arrow left, arrow down or arrow up
+      if (e.key === ArrowLeft && isInCell) {
+        activeElement.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape }));
+        return;
+      }
       if ((e.key === ArrowDown || e.key === ArrowUp) && isInCell) {
         activeElement.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape }));
 

@@ -238,7 +238,7 @@ Object {
   "height": 220,
   "hideLabels": false,
   "hideLegend": false,
-  "innerRadius": 0,
+  "innerRadius": 1,
   "roundCorners": true,
   "showLabelsInPercent": false,
   "width": undefined,
@@ -3191,6 +3191,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3242,6 +3243,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3293,6 +3295,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3344,6 +3347,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3775,6 +3779,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -4186,6 +4191,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -4597,6 +4603,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -4605,13 +4612,148 @@ Object {
   "height": 350,
   "hideLegend": false,
   "hideTickOverlap": true,
-  "mode": "tonexty",
   "optimizeLargeData": false,
+  "roundedTicks": true,
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
+  "yMaxValue": 16.562957844203055,
+  "yMinValue": -14.29078542197376,
+}
+`;
+
+exports[`transform Plotly Json To chart Props transformPlotlyJsonToScatterChartProps - Should return scatter chart props 1`] = `
+Object {
+  "data": Object {
+    "chartTitle": "",
+    "scatterChartData": Array [
+      Object {
+        "color": "#ff9933",
+        "data": Array [
+          Object {
+            "markerSize": 10,
+            "x": 2015-01-01T00:00:00.000Z,
+            "y": 0.5353935439391206,
+          },
+          Object {
+            "markerSize": 20,
+            "x": 2015-01-02T00:00:00.000Z,
+            "y": -0.3510205670171982,
+          },
+          Object {
+            "markerSize": 15,
+            "x": 2015-01-03T00:00:00.000Z,
+            "y": -1.3420793330744663,
+          },
+          Object {
+            "markerSize": 25,
+            "x": 2015-01-04T00:00:00.000Z,
+            "y": -1.683479706754631,
+          },
+          Object {
+            "markerSize": 30,
+            "x": 2015-01-05T00:00:00.000Z,
+            "y": -2.0207368899942826,
+          },
+        ],
+        "legend": "Trace 0",
+        "legendShape": "circle",
+        "lineOptions": Object {
+          "curve": "linear",
+          "mode": "markers",
+        },
+        "useSecondaryYScale": false,
+      },
+      Object {
+        "color": "#3780bf",
+        "data": Array [
+          Object {
+            "markerSize": 15,
+            "x": 2015-01-01T00:00:00.000Z,
+            "y": -2.58404773330316,
+          },
+          Object {
+            "markerSize": 10,
+            "x": 2015-01-02T00:00:00.000Z,
+            "y": -1.9162964761259451,
+          },
+          Object {
+            "markerSize": 20,
+            "x": 2015-01-03T00:00:00.000Z,
+            "y": -1.8899798841571565,
+          },
+          Object {
+            "markerSize": 25,
+            "x": 2015-01-04T00:00:00.000Z,
+            "y": -1.098466181069551,
+          },
+          Object {
+            "markerSize": 30,
+            "x": 2015-01-05T00:00:00.000Z,
+            "y": -1.2161136413159992,
+          },
+        ],
+        "legend": "Trace 1",
+        "legendShape": "circle",
+        "lineOptions": Object {
+          "curve": "linear",
+          "mode": "markers",
+        },
+        "useSecondaryYScale": false,
+      },
+      Object {
+        "color": "#32ab60",
+        "data": Array [
+          Object {
+            "markerSize": 20,
+            "x": 2015-01-01T00:00:00.000Z,
+            "y": 0.4661114764240781,
+          },
+          Object {
+            "markerSize": 15,
+            "x": 2015-01-02T00:00:00.000Z,
+            "y": 1.0610769506804194,
+          },
+          Object {
+            "markerSize": 25,
+            "x": 2015-01-03T00:00:00.000Z,
+            "y": 1.0620659379275244,
+          },
+          Object {
+            "markerSize": 10,
+            "x": 2015-01-04T00:00:00.000Z,
+            "y": -0.5603096501263787,
+          },
+          Object {
+            "markerSize": 30,
+            "x": 2015-01-05T00:00:00.000Z,
+            "y": -0.22966983294858567,
+          },
+        ],
+        "legend": "Trace 2",
+        "legendShape": "circle",
+        "lineOptions": Object {
+          "curve": "linear",
+          "mode": "markers",
+        },
+        "useSecondaryYScale": false,
+      },
+    ],
+  },
+  "height": 350,
+  "hideLegend": false,
+  "hideTickOverlap": true,
+  "optimizeLargeData": false,
+  "roundedTicks": true,
+  "supportNegativeData": true,
+  "useUTC": false,
+  "width": undefined,
+  "xAxisTitle": "",
+  "yAxisTitle": "",
+  "yMaxValue": 1.0620659379275244,
+  "yMinValue": -2.58404773330316,
 }
 `;
 
@@ -4990,7 +5132,10 @@ Object {
   "hideLegend": true,
   "hideTickOverlap": true,
   "mode": "plotly",
+  "noOfCharsToTruncate": 20,
   "roundCorners": true,
+  "showYAxisLables": true,
+  "showYAxisLablesTooltip": true,
   "width": undefined,
   "wrapXAxisLables": true,
   "xAxisTitle": "",

@@ -35,6 +35,7 @@ import {
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
+  sortAxisCategories,
 } from '../../utilities/index';
 import { classNamesFunction, DirectionalHint, find, getId, getRTL } from '@fluentui/react';
 import { IImageExportOptions, IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
@@ -131,6 +132,17 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       ? (getTypeOfAxis(props.data.scatterChartData![0].data[0].x, true) as XAxisTypes)
       : XAxisTypes.StringAxis;
 
+  // Detect y axis type (numeric or string)
+  const _yAxisType: YAxisType =
+    props.data.scatterChartData &&
+    props.data.scatterChartData.length > 0 &&
+    props.data.scatterChartData[0].data &&
+    props.data.scatterChartData[0].data.length > 0
+      ? typeof props.data.scatterChartData[0].data[0].y === 'string'
+        ? YAxisType.StringAxis
+        : YAxisType.NumericAxis
+      : YAxisType.NumericAxis;
+
   const pointsRef = React.useRef<ScatterChartDataWithIndex[] | []>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const calloutPointsRef = React.useRef<any[]>([]);
@@ -222,6 +234,47 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         {...props.legendProps}
       />
     );
+  }
+
+  function _getOrderedYAxisLabels() {
+    const shouldOrderYAxisLabelsByCategoryOrder =
+      _yAxisType === YAxisType.StringAxis && props.yAxisCategoryOrder !== 'default';
+    if (!shouldOrderYAxisLabelsByCategoryOrder) {
+      // Collect all unique string y values from all data points in all series, in reverse order
+      const yLabelsSet = new Set<string>();
+      for (let i = _points.current.length - 1; i >= 0; i--) {
+        const point = _points.current[i];
+        if (point.data && Array.isArray(point.data)) {
+          for (const d of point.data) {
+            if (typeof d.y === 'string') {
+              yLabelsSet.add(d.y);
+            }
+          }
+        }
+      }
+      return Array.from(yLabelsSet);
+    }
+
+    return sortAxisCategories(_mapCategoryToValues(), props.yAxisCategoryOrder);
+  }
+
+  function _mapCategoryToValues() {
+    const categoryToValues: Record<string, number[]> = {};
+    _points.current.forEach(point => {
+      if (point.data && Array.isArray(point.data)) {
+        point.data.forEach(d => {
+          if (typeof d.y === 'string') {
+            if (!categoryToValues[d.y]) {
+              categoryToValues[d.y] = [];
+            }
+            if (typeof d.x === 'number') {
+              categoryToValues[d.y].push(d.x);
+            }
+          }
+        });
+      }
+    });
+    return categoryToValues;
   }
 
   function _onLegendSelectionChange(
@@ -436,7 +489,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         });
       })!;
       const extraMaxPixels =
-        _xAxisType !== XAxisTypes.StringAxis
+        _xAxisType !== XAxisTypes.StringAxis && _yAxisType !== YAxisType.StringAxis
           ? getRangeForScatterMarkerSize({
               data: _points.current,
               xScale: _xAxisScale.current,
@@ -457,7 +510,11 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         for (let j = 0; j < _points.current?.[i]?.data?.length; j++) {
           const { x, y, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points.current?.[i]?.data[j];
           const xPoint = _xAxisScale.current?.(x);
-          const yPoint = _yAxisScale.current?.(y);
+          // Use string y axis scale if needed
+          const yPoint =
+            _yAxisType === YAxisType.StringAxis
+              ? _yAxisScale.current?.(y) + (_yAxisScale.current?.bandwidth ? _yAxisScale.current.bandwidth() / 2 : 0)
+              : _yAxisScale.current?.(y);
           if (!isPlottable(xPoint, yPoint)) {
             continue;
           }
@@ -604,6 +661,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       _seriesId,
       _tooltipId,
       _xAxisType,
+      _yAxisType,
       activePoint,
       isSelectedLegend,
       selectedLegendPoints,
@@ -718,6 +776,9 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
   _xAxisLabels = Array.from(new Set(xAxisLabels));
 
+  // Compute unique y axis labels for string y axis
+  const _yAxisLabels: string[] = _getOrderedYAxisLabels();
+
   return !_isChartEmpty() ? (
     <CartesianChart
       {...props}
@@ -736,6 +797,9 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       createStringYAxis={createStringYAxis}
       getGraphData={_initializeScatterChartData}
       xAxisType={_xAxisType}
+      yAxisType={_yAxisType}
+      // Pass stringDatasetForYAxisDomain only if y axis is string
+      {...(_yAxisType === YAxisType.StringAxis ? { stringDatasetForYAxisDomain: _yAxisLabels } : {})}
       onChartMouseLeave={_handleChartMouseLeave}
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}

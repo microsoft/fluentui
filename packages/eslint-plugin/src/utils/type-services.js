@@ -1,9 +1,11 @@
 const { ESLintUtils } = require('@typescript-eslint/utils');
 
+/** @import {TSESLint} from '@typescript-eslint/utils' */
+
 /**
  * @template {string} TMessageIds
  * @template {unknown[]} TOptions
- * @param {import('@typescript-eslint/utils').TSESLint.RuleContext<TMessageIds, Readonly<TOptions>>} context
+ * @param {TSESLint.RuleContext<TMessageIds, Readonly<TOptions>>} context
  * @returns
  */
 function getTypeServices(context) {
