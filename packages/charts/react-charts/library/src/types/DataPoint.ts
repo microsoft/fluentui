@@ -541,6 +541,11 @@ export interface ChartProps {
   lineChartData?: LineChartPoints[];
 
   /**
+   * data for the points in the scatter chart
+   */
+  scatterChartData?: ScatterChartPoints[];
+
+  /**
    * data for the points in the line chart
    */
   SankeyChartData?: SankeyChartData;
@@ -987,4 +992,51 @@ export interface GanttChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: AccessibilityProps;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface ScatterChartPoints {
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend: string;
+
+  /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+
+  /**
+   * dataPoints for the line chart
+   */
+  data: ScatterChartDataPoint[];
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+
+  /**
+   * opacity for chart fill color
+   */
+  opacity?: number;
+
+  /**
+   * hide dots for points that are not active
+   */
+  hideNonActiveDots?: boolean;
+
+  /**
+   * Defines the function that is executed on clicking this legend
+   */
+  onLegendClick?: (selectedLegend: string | null | string[]) => void;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }
