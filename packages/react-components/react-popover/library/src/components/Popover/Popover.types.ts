@@ -98,7 +98,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
 
   /**
    * Configures the position of the Popover.
-   * Explore [Positioning docs](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--docs) for more options.
+   * Explore [Positioning docs](?path=/docs/concepts-developer-positioning-components--docs) for more options.
    */
   positioning?: PositioningShorthand;
 
