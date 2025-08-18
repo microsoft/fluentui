@@ -11,11 +11,11 @@ import { MenuGridRow } from './../MenuGridRow/MenuGridRow';
 export function useMenuGridItem_unstable(props: MenuGridItemProps, ref: React.Ref<HTMLDivElement>): MenuGridItemState {
   const {
     icon,
-  content: _content, // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
-  subText,
-  firstSubAction,
-  secondSubAction,
-  ...rest
+    content: _content, // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
+    subText,
+    firstSubAction,
+    secondSubAction,
+    ...rest
   } = props;
 
   return {
@@ -27,10 +27,11 @@ export function useMenuGridItem_unstable(props: MenuGridItemProps, ref: React.Re
       firstSubAction: MenuGridCell,
       secondSubAction: MenuGridCell,
     },
-    root: slot.always({
-      ref,
-      ...rest
-    },
+    root: slot.always(
+      {
+        ref,
+        ...rest,
+      },
       { elementType: MenuGridRow },
     ),
     icon: slot.optional(props.icon, { elementType: MenuGridCell }),
