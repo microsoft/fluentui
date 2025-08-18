@@ -310,6 +310,7 @@ export interface ChartProps {
     pointLineOptions?: SVGProps<SVGLineElement>;
     pointOptions?: SVGProps<SVGCircleElement>;
     SankeyChartData?: SankeyChartData;
+    scatterChartData?: ScatterChartPoints[];
 }
 
 // @public (undocumented)
@@ -1389,6 +1390,18 @@ export interface ScatterChartDataPoint extends BaseDataPoint {
     text?: string;
     x: number | Date | string;
     y: number;
+}
+
+// @public (undocumented)
+export interface ScatterChartPoints {
+    color?: string;
+    data: ScatterChartDataPoint[];
+    hideNonActiveDots?: boolean;
+    legend: string;
+    legendShape?: LegendShape;
+    onLegendClick?: (selectedLegend: string | null | string[]) => void;
+    opacity?: number;
+    useSecondaryYScale?: boolean;
 }
 
 // @public
