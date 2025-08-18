@@ -55,6 +55,8 @@ import type {
   LayoutAxis,
   XAxisName,
   TraceInfo,
+  DTickValue,
+  AxisType,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -67,6 +69,7 @@ import {
   formatToLocaleString,
   getAxisIds,
   getAxisKey,
+  isNumber,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
@@ -533,6 +536,7 @@ export const transformPlotlyJsonToVSBCProps = (
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
     ...getBarProps(input.data, input.layout),
+    ...getAxisTickProps(input.data, input.layout),
   };
 };
 
@@ -614,6 +618,7 @@ export const transformPlotlyJsonToGVBCProps = (
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
     ...getBarProps(input.data, input.layout),
+    ...getAxisTickProps(input.data, input.layout),
   };
 };
 
@@ -910,6 +915,7 @@ const transformPlotlyJsonToScatterTraceProps = (
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
     ...getAxisScaleTypeProps(input.data, input.layout),
+    ...getAxisTickProps(input.data, input.layout),
   };
 
   if (isAreaChart) {
@@ -1004,6 +1010,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getBarProps(input.data, input.layout, true),
+    ...getAxisTickProps(input.data, input.layout),
   };
 };
 
@@ -1080,6 +1087,7 @@ export const transformPlotlyJsonToGanttChartProps = (
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getBarProps(input.data, input.layout, true),
+    ...getAxisTickProps(input.data, input.layout),
   };
 };
 
@@ -1241,6 +1249,7 @@ export const transformPlotlyJsonToHeatmapProps = (
     wrapXAxisLables: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps([firstData], input.layout),
+    ...getAxisTickProps(input.data, input.layout),
   };
 };
 
@@ -2563,10 +2572,7 @@ const getBarProps = (
 
 type GetAxisScaleTypePropsResult = Pick<ICartesianChartProps, 'xScaleType' | 'yScaleType' | 'secondaryYScaleType'>;
 
-const getAxisScaleTypeProps = (
-  data: Data[],
-  layout: Partial<Layout> | undefined,
-): Pick<ICartesianChartProps, 'xScaleType' | 'yScaleType' | 'secondaryYScaleType'> => {
+const getAxisScaleTypeProps = (data: Data[], layout: Partial<Layout> | undefined): GetAxisScaleTypePropsResult => {
   const result: GetAxisScaleTypePropsResult = {};
 
   // Traces are grouped by their xaxis property, and for each group/subplot, the adapter functions
@@ -2598,4 +2604,120 @@ const getAxisScaleTypeProps = (
   }
 
   return result;
+};
+
+type GetAxisTickPropsResult = Pick<
+  ICartesianChartProps,
+  'tickValues' | 'xAxisTickCount' | 'xAxis' | 'yAxisTickValues' | 'yAxisTickCount' | 'yAxis'
+>;
+
+const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): GetAxisTickPropsResult => {
+  const result: GetAxisTickPropsResult = {};
+
+  // duplication start
+  let xAxisId: number | undefined;
+  const yAxisIds = new Set<number>();
+  data.forEach((series: Partial<PlotData>) => {
+    const axisIds = getAxisIds(series);
+    xAxisId = axisIds.x;
+    yAxisIds.add(axisIds.y);
+  });
+
+  let xAxis: Partial<LayoutAxis> | undefined;
+  if (typeof xAxisId === 'number') {
+    xAxis = layout?.[getAxisKey('x', xAxisId)];
+  }
+
+  let yAxis: Partial<LayoutAxis> | undefined;
+  const sortedYAxisIds = Array.from(yAxisIds).sort();
+  if (sortedYAxisIds.length > 0) {
+    yAxis = layout?.[getAxisKey('y', sortedYAxisIds[0])];
+  }
+  // duplication end
+
+  // const supportedTickmodes = ['auto', 'linear', 'array'];
+  // !supportedTickmodes.includes(xAxis?.tickmode ?? '')
+  if ((!xAxis?.tickmode || xAxis?.tickmode === 'array') && isArrayOrTypedArray(xAxis?.tickvals)) {
+    result.tickValues = xAxis!.tickvals;
+  } else if ((!xAxis?.tickmode || xAxis?.tickmode === 'linear') && xAxis?.dtick) {
+    const values: Datum[] = [];
+    data.forEach((series: Partial<PlotData>) => {
+      series.x?.forEach(val => {
+        if (!isInvalidValue(val)) {
+          values.push(val as Datum);
+        }
+      });
+    });
+
+    const xAxisType = xAxis!.type;
+    const dtickValue = dtick(xAxis!.dtick, xAxisType);
+    result.xAxis = {
+      tickInterval: dtickValue,
+      tick0: tick0(xAxis!.tick0, xAxisType, dtickValue),
+    };
+  } else if (typeof xAxis?.nticks === 'number' && xAxis!.nticks > 0) {
+    result.xAxisTickCount = xAxis!.nticks;
+  }
+
+  return result;
+};
+
+const dtick = (dtick: DTickValue | undefined, axType: AxisType | undefined) => {
+  const isLog = axType === 'log';
+  const isDate = axType === 'date';
+  const isCat = axType === 'category';
+  const dtickDflt = isDate ? 86400000 : 1;
+
+  if (!dtick) return dtickDflt;
+
+  if (isNumber(dtick)) {
+    dtick = Number(dtick);
+    if (dtick <= 0) return dtickDflt;
+    if (isCat) {
+      // category dtick must be positive integers
+      return Math.max(1, Math.round(dtick));
+    }
+    if (isDate) {
+      // date dtick must be at least 0.1ms (our current precision)
+      return Math.max(0.1, dtick);
+    }
+    return dtick;
+  }
+
+  if (typeof dtick !== 'string' || !(isDate || isLog)) {
+    return dtickDflt;
+  }
+
+  const prefix = dtick.charAt(0);
+  let dtickNum = isNumber(dtick.slice(1)) ? Number(dtick.slice(1)) : 0;
+
+  if (
+    dtickNum <= 0 ||
+    !(
+      // "M<n>" gives ticks every (integer) n months
+      (
+        (isDate && prefix === 'M' && dtickNum === Math.round(dtickNum)) ||
+        // "L<f>" gives ticks linearly spaced in data (not in position) every (float) f
+        (isLog && prefix === 'L') ||
+        // "D1" gives powers of 10 with all small digits between, "D2" gives only 2 and 5
+        (isLog && prefix === 'D' && (dtickNum === 1 || dtickNum === 2))
+      )
+    )
+  ) {
+    return dtickDflt;
+  }
+
+  return dtick;
+};
+
+const tick0 = (tick0: number | string | undefined, axType: AxisType | undefined, dtick: string | number) => {
+  if (axType === 'date') {
+    return isDate(tick0) ? new Date(tick0!) : new Date('2000-01-01');
+  }
+  if (dtick === 'D1' || dtick === 'D2') {
+    // D1 and D2 modes ignore tick0 entirely
+    return undefined;
+  }
+  // Aside from date axes, tick0 must be numeric
+  return isNumber(tick0) ? Number(tick0) : 0;
 };

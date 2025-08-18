@@ -311,6 +311,8 @@ export class CartesianChartBase
         containerWidth: this.state.containerWidth,
         hideTickOverlap: this.props.hideTickOverlap,
         calcMaxLabelWidth: this._calcMaxLabelWidthWithTransform,
+        tickInterval: this.props.xAxis?.tickInterval,
+        tick0: this.props.xAxis?.tick0,
       };
 
       /**
@@ -382,6 +384,9 @@ export class CartesianChartBase
         // and the parent chart(HBWA/Vertical etc..) for more details refer example
         // http://using-d3js.com/04_07_ordinal_scales.html
         yAxisPadding: this.props.yAxisPadding || 0,
+        tickValues: this.props.yAxisTickValues,
+        tickInterval: this.props.yAxis?.tickInterval,
+        tick0: this.props.yAxis?.tick0,
       };
 
       /**

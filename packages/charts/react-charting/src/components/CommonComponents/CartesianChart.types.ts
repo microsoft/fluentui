@@ -7,6 +7,7 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import {
   AxisCategoryOrder,
+  AxisProps,
   AxisScaleType,
   IAccessibilityProps,
   IChart,
@@ -532,6 +533,21 @@ export interface ICartesianChartProps {
    * @default 'default'
    */
   secondaryYScaleType?: AxisScaleType;
+
+  /**
+   *
+   */
+  yAxisTickValues?: number[] | Date[] | string[];
+
+  /**
+   *
+   */
+  xAxis?: AxisProps;
+
+  /**
+   *
+   */
+  yAxis?: AxisProps;
 }
 
 export interface IYValueHover {

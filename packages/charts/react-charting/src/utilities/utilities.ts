@@ -65,7 +65,13 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
-import { AxisScaleType, IGanttChartDataPoint, IScatterChartDataPoint, IScatterChartPoints } from '../types/IDataPoint';
+import {
+  AxisProps,
+  AxisScaleType,
+  IGanttChartDataPoint,
+  IScatterChartDataPoint,
+  IScatterChartPoints,
+} from '../types/IDataPoint';
 import {
   formatDateToLocaleString,
   formatToLocaleString,
@@ -152,7 +158,7 @@ export interface IDomainNRange {
   rEndValue: number;
 }
 
-export interface IXAxisParams {
+export interface IXAxisParams extends AxisProps {
   domainNRangeValues: IDomainNRange;
   xAxisElement?: SVGSVGElement | null;
   xAxisCount?: number;
@@ -173,7 +179,7 @@ export interface ITickParams {
   tickFormat?: string;
 }
 
-export interface IYAxisParams {
+export interface IYAxisParams extends AxisProps {
   yMinMaxValues?: {
     startValue: number;
     endValue: number;
@@ -192,6 +198,7 @@ export interface IYAxisParams {
   eventAnnotationProps?: IEventsAnnotationProps;
   eventLabelHeight?: number;
   yAxisPadding?: number;
+  tickValues?: Date[] | number[] | string[];
 }
 
 function yAxisTickFormatterInternal(value: number, limitWidth: boolean = false): string {
@@ -245,6 +252,8 @@ export function createNumericXAxis(
     xAxisElement,
     hideTickOverlap,
     calcMaxLabelWidth,
+    tickInterval,
+    tick0,
   } = xAxisParams;
   const xAxisScale = createNumericScale(scaleType)
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
@@ -273,16 +282,33 @@ export function createNumericXAxis(
   if ([ChartTypes.HorizontalBarChartWithAxis, ChartTypes.GanttChart].includes(chartType)) {
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
+
+  let customTickValues: number[] | null = null;
   if (tickParams.tickValues) {
-    xAxis.tickValues(tickParams.tickValues as number[]);
+    customTickValues = tickParams.tickValues as number[];
+  } else if (tickInterval) {
+    if (scaleType === 'log') {
+      if (typeof tickInterval === 'number' && tickInterval > 0) {
+        customTickValues = def(tickInterval, xAxisScale.domain());
+      } else if (typeof tickInterval === 'string') {
+        const prefix = tickInterval[0];
+        const num = Number(tickInterval.slice(1));
+        if (prefix === 'L' && num > 0) {
+          customTickValues = abc(typeof tick0 === 'number' ? tick0 : 0, num, xAxisScale.domain());
+        }
+      }
+    } else if (typeof tickInterval === 'number' && tickInterval > 0) {
+      customTickValues = abc(typeof tick0 === 'number' ? tick0 : 0, tickInterval, xAxisScale.domain());
+    }
+  }
+  if (customTickValues) {
+    xAxis.tickValues(customTickValues);
   }
 
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = ((tickParams.tickValues as number[] | undefined) ?? xAxisScale.ticks(tickCount)).map(
-    xAxis.tickFormat()!,
-  );
+  const tickValues = (customTickValues ?? xAxisScale.ticks(tickCount)).map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
 }
 
@@ -415,6 +441,8 @@ export function createDateXAxis(
     xAxistickSize = 6,
     xAxisCount,
     calcMaxLabelWidth,
+    tickInterval,
+    tick0,
   } = xAxisParams;
   const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
   xAxisScale
@@ -481,13 +509,28 @@ export function createDateXAxis(
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
 
-  tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues as Date[]) : '';
+  let customTickValues: Date[] | null = null;
+  if (tickParams.tickValues) {
+    customTickValues = tickParams.tickValues as Date[];
+  } else if (tickInterval) {
+    if (typeof tickInterval === 'number' && tickInterval > 0) {
+      customTickValues = ghi(tick0 instanceof Date ? tick0 : new Date('2000-01-01'), tickInterval, xAxisScale.domain());
+    } else if (typeof tickInterval === 'string') {
+      const prefix = tickInterval[0];
+      const num = Number(tickInterval.slice(1));
+      if (prefix === 'M' && num > 0 && num === Math.round(num)) {
+        customTickValues = jkl(tick0 instanceof Date ? tick0 : new Date('2000-01-01'), num, xAxisScale.domain());
+      }
+    }
+  }
+  if (customTickValues) {
+    xAxis.tickValues(customTickValues);
+  }
+
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = ((tickParams.tickValues as Date[] | undefined) ?? xAxisScale.ticks(tickCount)).map(
-    xAxis.tickFormat()!,
-  );
+  const tickValues = (customTickValues ?? xAxisScale.ticks(tickCount)).map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
 }
 
@@ -643,6 +686,9 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
     maxOfYVal = 0,
     yAxisTickFormat,
     yAxisTickCount = 4,
+    tickValues,
+    tickInterval,
+    tick0,
   } = yAxisParams;
 
   // maxOfYVal coming from horizontal bar chart with axis (Calculation done at base file)
@@ -655,6 +701,19 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
+
+  let customTickValues: number[] | null = null;
+  if (tickValues) {
+    customTickValues = tickValues as number[];
+  } else if (tickInterval) {
+    if (typeof tickInterval === 'number' && tickInterval > 0) {
+      customTickValues = abc(typeof tick0 === 'number' ? tick0 : 0, tickInterval, yAxisScale.domain());
+    }
+  }
+  if (customTickValues) {
+    yAxis.tickValues(customTickValues);
+  }
+
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   return yAxisScale;
 }
@@ -683,6 +742,9 @@ export function createNumericYAxis(
     yAxisTickCount = 4,
     eventAnnotationProps,
     eventLabelHeight,
+    tickValues,
+    tickInterval,
+    tick0,
   } = yAxisParams;
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
@@ -714,8 +776,35 @@ export function createNumericYAxis(
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).tickSizeInner(-(containerWidth - margins.left! - margins.right!));
-  if (scaleType !== 'log') {
-    yAxis.tickValues(domainValues);
+
+  let customTickValues: number[] | null = null;
+  if (tickValues) {
+    customTickValues = tickValues as number[];
+  } else if (tickInterval) {
+    if (scaleType === 'log') {
+      if (typeof tickInterval === 'number' && tickInterval > 0) {
+        customTickValues = def(tickInterval, yAxisScale.domain());
+      } else if (typeof tickInterval === 'string') {
+        const prefix = tickInterval[0];
+        const num = Number(tickInterval.slice(1));
+        if (prefix === 'L' && num > 0) {
+          customTickValues = abc(typeof tick0 === 'number' ? tick0 : 0, num, yAxisScale.domain());
+        }
+      }
+    } else if (typeof tickInterval === 'number' && tickInterval > 0) {
+      customTickValues = abc(typeof tick0 === 'number' ? tick0 : 0, tickInterval, yAxisScale.domain());
+    }
+  }
+  if (customTickValues) {
+    yAxis.tickValues(customTickValues);
+    axisData.yAxisDomainValues = customTickValues;
+  } else {
+    if (scaleType === 'log') {
+      axisData.yAxisDomainValues = yAxisScale.ticks();
+    } else {
+      yAxis.tickValues(domainValues);
+      axisData.yAxisDomainValues = domainValues;
+    }
   }
 
   const tickFormat = (domainValue: NumberValue, index: number, defaultFormat?: (val: NumberValue) => string) => {
@@ -726,7 +815,6 @@ export function createNumericYAxis(
     ? yAxis.tickFormat(yAxisTickFormat)
     : yAxis.tickFormat((v, i) => tickFormat(v, i, yAxisScale.tickFormat(yAxisTickCount)));
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
-  axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
 }
 
@@ -2056,4 +2144,118 @@ export const getRangeForScatterMarkerSize = ({
   const yScale = (useSecondaryYScale ? yScaleSecondary : yScalePrimary)!;
   const extraYPixels = Math.min(Math.abs(yScale(scaleYMin) - yScale(yMin)), Math.abs(yScale(yMax) - yScale(scaleYMax)));
   return Math.min(extraXPixels, extraYPixels);
+};
+
+const abc = (tick0: number, tickInterval: number, bounds: number[]) => {
+  const result: number[] = [];
+  const minBound = Math.min(...bounds);
+  const maxBound = Math.max(...bounds);
+  for (let i = tick0 - tickInterval; i >= minBound; i -= tickInterval) {
+    if (i <= maxBound) {
+      result.push(i);
+    }
+  }
+  result.reverse();
+  for (let i = tick0; i <= maxBound; i += tickInterval) {
+    if (i >= minBound) {
+      result.push(i);
+    }
+  }
+  return result;
+};
+
+const def = (tickInterval: number, bounds: number[]) => {
+  const result: number[] = [];
+  const minBound = Math.min(...bounds);
+  const maxBound = Math.max(...bounds);
+  const e = Math.pow(10, tickInterval);
+  for (let i = 1 / e; i >= minBound; i /= e) {
+    if (i <= maxBound) {
+      result.push(i);
+    }
+  }
+  result.reverse();
+  for (let i = 1; i <= maxBound; i *= e) {
+    if (i >= minBound) {
+      result.push(i);
+    }
+  }
+  return result;
+};
+
+const ghi = (tick0: Date, tickIntervalInMs: number, bounds: Date[]) => {
+  const result: Date[] = [];
+  const minBound = +d3Min(bounds)!;
+  const maxBound = +d3Max(bounds)!;
+  for (let i = +tick0 - tickIntervalInMs; i >= minBound; i -= tickIntervalInMs) {
+    if (i <= maxBound) {
+      result.push(new Date(i));
+    }
+  }
+  result.reverse();
+  for (let i = +tick0; i <= maxBound; i += tickIntervalInMs) {
+    if (i >= minBound) {
+      result.push(new Date(i));
+    }
+  }
+  return result;
+};
+
+const jkl = (tick0: Date, tickIntervalInMonths: number, bounds: Date[]) => {
+  const result: Date[] = [];
+  const minBound = +d3Min(bounds)!;
+  const maxBound = +d3Max(bounds)!;
+  for (let i = -tickIntervalInMonths; ; i -= tickIntervalInMonths) {
+    let d = new Date(+tick0);
+    const pm = d.getUTCMonth();
+    d.setUTCMonth(pm + i);
+    const nm = d.getUTCMonth();
+    const z = Math.trunc(Math.abs(pm + i) / 12) + 1;
+    if ((pm + i + 12 * z) % 12 !== nm) {
+      d = new Date(
+        Date.UTC(
+          d.getUTCFullYear(),
+          nm,
+          0,
+          tick0.getUTCHours(),
+          tick0.getUTCMinutes(),
+          tick0.getUTCSeconds(),
+          tick0.getUTCMilliseconds(),
+        ),
+      );
+    }
+    if (+d < minBound) {
+      break;
+    }
+    if (+d <= maxBound) {
+      result.push(d);
+    }
+  }
+  result.reverse();
+  for (let i = 0; i <= maxBound; i += tickIntervalInMonths) {
+    let d = new Date(+tick0);
+    const pm = d.getUTCMonth();
+    d.setUTCMonth(pm + i);
+    const nm = d.getUTCMonth();
+    if ((pm + i) % 12 !== nm) {
+      d = new Date(
+        Date.UTC(
+          d.getUTCFullYear(),
+          nm,
+          0,
+          tick0.getUTCHours(),
+          tick0.getUTCMinutes(),
+          tick0.getUTCSeconds(),
+          tick0.getUTCMilliseconds(),
+        ),
+      );
+    }
+    if (+d > maxBound) {
+      break;
+    }
+    if (+d >= minBound) {
+      result.push(d);
+    }
+  }
+  return result;
 };

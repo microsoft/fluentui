@@ -1069,3 +1069,18 @@ export interface IGanttChartDataPoint {
  * {@docCategory CartesianChart}
  */
 export type AxisScaleType = 'default' | 'log';
+
+/**
+ *
+ */
+export type AxisProps = {
+  /**
+   *
+   */
+  tickInterval?: number | string;
+
+  /**
+   *
+   */
+  tick0?: number | Date;
+};
