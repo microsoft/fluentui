@@ -579,6 +579,10 @@ function buildReactIntegrationTesterProjectConfiguration(
 
   // creates atomized targets
   for (const reactVersion of reactVersions) {
+    if (ritRunOptions.length === 0) {
+      continue;
+    }
+
     const targetName = options.reactIntegrationTesting.targetName + '--' + reactVersion;
     targets[targetName] = {
       command: `${config.pmc.exec} rit --react ${reactVersion} ${ritRunOptions.join(' ')} --verbose`,
