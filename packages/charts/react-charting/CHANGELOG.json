@@ -2,6 +2,81 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 15 Aug 2025 07:21:22 GMT",
+      "tag": "@fluentui/react-charting_v5.24.24",
+      "version": "5.24.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c0aabdccb5c79620be68ec17d80c8454b541d1be",
+            "comment": "feat(react-charting): Support string y-axis for Scatter chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.28",
+            "commit": "e9d9ff6670189ffa97f9c21450fe4ddba15a461d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Aug 2025 07:21:05 GMT",
+      "tag": "@fluentui/react-charting_v5.24.23",
+      "version": "5.24.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "17fd271ab5b27d509c4d446a7015be72a639f3cb",
+            "comment": "refactor: set max-width for heatmap callout without using subComponentStyles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Aug 2025 07:21:21 GMT",
+      "tag": "@fluentui/react-charting_v5.24.22",
+      "version": "5.24.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ed4b52619397ff7a0a30cfa83aba40274b03036f",
+            "comment": "feat: add support for log scale in scatter charts"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e326819eee3a15603f963de9796860ef3c9f8f62",
+            "comment": "fix(react-charting): Handling y object values for bar chart."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.27",
+            "commit": "e326819eee3a15603f963de9796860ef3c9f8f62"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.213",
+            "commit": "e326819eee3a15603f963de9796860ef3c9f8f62"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.123.4",
+            "commit": "e326819eee3a15603f963de9796860ef3c9f8f62"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 Aug 2025 07:21:26 GMT",
       "tag": "@fluentui/react-charting_v5.24.21",
       "version": "5.24.21",

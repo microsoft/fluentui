@@ -2,7 +2,9 @@
  * This files is used solely for react-northstar projects. Please don't any new logic here
  */
 
-/** @typedef {import('@babel/core').TransformOptions['caller']} Caller */
+/** @import {TransformOptions, ConfigAPI} from '@babel/core';
+ */
+/** @typedef {TransformOptions['caller']} Caller */
 
 const isNodeCaller = (/** @type {Caller}*/ caller) => {
   return Boolean(caller && (caller.name === '@babel/register' || caller.name === 'babel-jest'));
@@ -15,7 +17,7 @@ const supportsESM = (/** @type {Caller}*/ caller) => {
   return !!((caller && caller.name === 'babel-loader') || caller.useESModules);
 };
 
-module.exports = (/** @type {import('@babel/core').ConfigAPI} */ api) => {
+module.exports = (/** @type {ConfigAPI} */ api) => {
   const isDistBundle = api.caller(isDistCaller);
   const isNode = api.caller(isNodeCaller);
   const useESModules = !isNode && api.caller(supportsESM);

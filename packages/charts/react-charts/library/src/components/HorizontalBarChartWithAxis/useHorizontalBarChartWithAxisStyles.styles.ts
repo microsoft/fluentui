@@ -24,6 +24,7 @@ export const hbcWithAxisClassNames: SlotClassNames<HorizontalBarChartWithAxisSty
   chartWrapper: '',
   svgTooltip: '',
   chart: '',
+  axisAnnotation: '',
 };
 
 const useStyles = makeStyles({

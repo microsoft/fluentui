@@ -21,6 +21,7 @@ import { InfoFilled } from '@fluentui/react-icons';
 import { DIR_ID, THEME_ID } from '../constants';
 import { themes } from '../theme';
 
+import { getDocsPageConfig } from './utils';
 import { DirSwitch } from './DirSwitch';
 import { ThemePicker } from './ThemePicker';
 import { Toc, nameToHash } from './Toc';
@@ -156,8 +157,8 @@ const slotRegex = /as\?:\s*"([^"]+)"/;
 /**
  * NOTE: this function mutates original story argTypes including all story subcomponents if they are present
  */
-function withSlotEnhancer(story: PreparedStory) {
-  const hasArgAsProp = story.argTypes.as?.type?.name === 'enum';
+function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; nativePropsApi?: boolean }) {
+  const hasArgAsProp = options.nativePropsApi ? story.argTypes.as?.type?.name === 'enum' : false;
   const argAsProp = hasArgAsProp ? (story.argTypes.as.type as SBEnumType).value : null;
   let hasArgAsSlot = false;
 
@@ -171,6 +172,13 @@ function withSlotEnhancer(story: PreparedStory) {
   const transformPropsWithSlotShorthand = (props: Record<string, { type: { name: string } }>) => {
     Object.entries(props).forEach(([key, argType]) => {
       const value: string = argType?.type?.name;
+
+      // If DocGen was already transformed, skip the transformation but set hasArgAsSlot to true so that we can show the info message
+      if (value.includes('Slot')) {
+        hasArgAsSlot = true;
+        return;
+      }
+      // Initial Render Transformation for shorthand slot values (mutates DocGen Object reference)
       if (value.includes('WithSlotShorthandValue')) {
         hasArgAsSlot = true;
         const match = value.match(slotRegex);
@@ -191,14 +199,15 @@ function withSlotEnhancer(story: PreparedStory) {
   };
 
   const component = story.component as InternalComponentApi;
-  transformComponent(component);
-
   const subcomponents = story.subcomponents as Record<string, InternalComponentApi>;
 
-  if (subcomponents) {
-    Object.values(subcomponents).forEach(subcomponent => {
-      transformComponent(subcomponent);
-    });
+  if (options.slotsApi) {
+    transformComponent(component);
+    if (subcomponents) {
+      Object.values(subcomponents).forEach(subcomponent => {
+        transformComponent(subcomponent);
+      });
+    }
   }
 
   return { component, hasArgAsSlot, hasArgAsProp, argAsProp };
@@ -215,8 +224,22 @@ const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactEl
     </div>
   );
 };
-const RenderArgsTable = ({ hideArgsTable, story }: { story: PrimaryStory; hideArgsTable: boolean }) => {
-  const { component, hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story);
+
+const RenderArgsTable = ({
+  story,
+  hideArgsTable,
+  showSlotsApi,
+  showNativePropsApi,
+}: {
+  story: PrimaryStory;
+  hideArgsTable: boolean;
+  showSlotsApi?: boolean;
+  showNativePropsApi?: boolean;
+}) => {
+  const { component, hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story, {
+    slotsApi: showSlotsApi,
+    nativePropsApi: showNativePropsApi,
+  });
   const styles = useStyles();
 
   return hideArgsTable ? null : (
@@ -261,6 +284,7 @@ const RenderArgsTable = ({ hideArgsTable, story }: { story: PrimaryStory; hideAr
     </>
   );
 };
+
 const RenderPrimaryStory = ({
   primaryStory,
   skipPrimaryStory,
@@ -282,6 +306,10 @@ const RenderPrimaryStory = ({
 
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
+
+  // Get the fluent docs page configuration from context
+  const docsPageConfig = getDocsPageConfig(context);
+
   const stories = context.componentStories();
 
   const primaryStory = stories[0];
@@ -297,6 +325,29 @@ export const FluentDocsPage = () => {
 
   const videos = primaryStoryContext.parameters?.videos ?? null;
   const styles = useStyles();
+
+  // If docs page is disabled, return Storybook's default docs page
+  if (!docsPageConfig) {
+    return (
+      <div className="sb-unstyled">
+        <Title />
+        <Subtitle />
+        <Description />
+        <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
+        <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} />
+        <Stories />
+      </div>
+    );
+  }
+
+  // Determine what to show based on configuration
+  const {
+    tableOfContents: showTableOfContents,
+    dirSwitcher: showDirSwitcher,
+    themePicker: showThemePicker,
+    argTable,
+  } = docsPageConfig;
+
   // DEBUG
   // console.log('FluentDocsPage', context);
   // console.table(stories.map((s: StoreItem) => ({ id: s.id, kind: s.kind, name: s.name, story: s.story })));
@@ -314,22 +365,31 @@ export const FluentDocsPage = () => {
       <Title />
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          <div className={styles.globalTogglesContainer}>
-            <ThemePicker selectedThemeId={selectedTheme?.id} />
-            <DirSwitch dir={dir} />
-          </div>
+          {(showThemePicker || showDirSwitcher) && (
+            <div className={styles.globalTogglesContainer}>
+              {showThemePicker && <ThemePicker selectedThemeId={selectedTheme?.id} />}
+              {showDirSwitcher && <DirSwitch dir={dir} />}
+            </div>
+          )}
           <Subtitle />
           <div className={styles.description}>
             <Description />
             {videos && <VideoPreviews videos={videos} />}
           </div>
           <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
-          <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} />
+          <RenderArgsTable
+            story={primaryStory}
+            hideArgsTable={hideArgsTable}
+            showSlotsApi={argTable.slotsApi}
+            showNativePropsApi={argTable.nativePropsApi}
+          />
           <Stories />
         </div>
-        <div className={styles.toc}>
-          <Toc stories={stories} />
-        </div>
+        {showTableOfContents && (
+          <div className={styles.toc}>
+            <Toc stories={stories} />
+          </div>
+        )}
       </div>
     </div>
   );

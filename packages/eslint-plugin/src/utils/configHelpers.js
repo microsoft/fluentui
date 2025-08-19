@@ -12,7 +12,6 @@ const { readProjectConfiguration } = require('@nx/devkit');
 /**
  *  @typedef {{root: string, name: string}} Options
  *  @typedef {{name: string, version: string, dependencies: {[key: string]: string}}} PackageJson
- *  @typedef {import("@nx/devkit").WorkspaceJsonConfiguration} WorkspaceJsonConfiguration
  */
 
 // FIXME: this is not ok (to depend on nx packages within this plugin - redo)

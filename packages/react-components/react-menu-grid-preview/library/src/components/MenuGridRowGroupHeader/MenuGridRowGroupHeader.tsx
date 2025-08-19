@@ -21,4 +21,4 @@ export const MenuGridRowGroupHeader: ForwardRefComponent<MenuGridRowGroupHeaderP
   },
 );
 
-MenuGridRowGroupHeader.displayName = 'MenuGroup';
+MenuGridRowGroupHeader.displayName = 'MenuGridRowGroupHeader';

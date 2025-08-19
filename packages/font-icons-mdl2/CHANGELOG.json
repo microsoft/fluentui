@@ -2,6 +2,27 @@
   "name": "@fluentui/font-icons-mdl2",
   "entries": [
     {
+      "date": "Thu, 14 Aug 2025 07:19:48 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.62",
+      "version": "8.5.62",
+      "comments": {
+        "none": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.12.3",
+            "commit": "e7056070683aa0cda7044e05da6e572a658f1a79"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.15.23",
+            "commit": "e7056070683aa0cda7044e05da6e572a658f1a79"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 May 2025 07:22:04 GMT",
       "tag": "@fluentui/font-icons-mdl2_v8.5.62",
       "version": "8.5.62",

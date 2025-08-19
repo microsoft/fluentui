@@ -43,6 +43,9 @@ jobs:
       - name: Install packages
         run: yarn install --frozen-lockfile
 
+      - name: Install Playwright Browsers
+        run: yarn playwright install --with-deps
+
       - name: Build storybook
         run: yarn nx run public-docsite-v9:build-storybook --nxBail
         env:

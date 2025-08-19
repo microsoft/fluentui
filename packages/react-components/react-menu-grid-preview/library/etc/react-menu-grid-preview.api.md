@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -49,6 +47,28 @@ export type MenuGridContextValue = {
 export type MenuGridContextValues = {
     menuGrid: MenuGridContextValue;
 };
+
+// @public
+export const MenuGridItem: ForwardRefComponent<MenuGridItemProps>;
+
+// @public (undocumented)
+export const menuGridItemClassNames: SlotClassNames<MenuGridItemSlots>;
+
+// @public (undocumented)
+export type MenuGridItemProps = ComponentProps<Partial<MenuGridItemSlots>>;
+
+// @public (undocumented)
+export type MenuGridItemSlots = {
+    root: Slot<MenuGridRowProps>;
+    icon?: Slot<MenuGridCellProps>;
+    content?: Slot<MenuGridCellProps>;
+    subText?: Slot<'span'>;
+    firstSubAction?: Slot<MenuGridCellProps>;
+    secondSubAction?: Slot<MenuGridCellProps>;
+};
+
+// @public (undocumented)
+export type MenuGridItemState = ComponentState<MenuGridItemSlots>;
 
 // @public (undocumented)
 export type MenuGridProps = ComponentProps<MenuGridSlots> & {};
@@ -109,7 +129,7 @@ export type MenuGridRowGroupState = ComponentState<MenuGridRowGroupSlots> & {
 };
 
 // @public (undocumented)
-export type MenuGridRowProps = ComponentProps<MenuGridRowSlots>;
+export type MenuGridRowProps = ComponentProps<Partial<MenuGridRowSlots>>;
 
 // @public (undocumented)
 export type MenuGridRowSlots = {
@@ -136,6 +156,9 @@ export const renderMenuGrid_unstable: (state: MenuGridState, contextValues: Menu
 export const renderMenuGridCell_unstable: (state: MenuGridCellState) => JSX.Element;
 
 // @public
+export const renderMenuGridItem_unstable: (state: MenuGridItemState) => JSX.Element;
+
+// @public
 export const renderMenuGridRow_unstable: (state: MenuGridRowState) => JSX.Element;
 
 // @public
@@ -158,6 +181,12 @@ export const useMenuGridContext_unstable: () => MenuGridContextValue;
 
 // @public (undocumented)
 export function useMenuGridContextValues_unstable(state: MenuGridState): MenuGridContextValues;
+
+// @public
+export function useMenuGridItem_unstable(props: MenuGridItemProps, ref: React_2.Ref<HTMLDivElement>): MenuGridItemState;
+
+// @public (undocumented)
+export const useMenuGridItemStyles_unstable: (state: MenuGridItemState) => MenuGridItemState;
 
 // @public
 export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React_2.Ref<HTMLDivElement>): MenuGridRowState;

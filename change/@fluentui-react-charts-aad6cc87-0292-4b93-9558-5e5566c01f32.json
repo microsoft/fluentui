@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "remove duplicated legends in line chart",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

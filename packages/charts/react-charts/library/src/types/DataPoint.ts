@@ -8,13 +8,13 @@ export interface Basestate {
   _height?: number;
   activeLegend?: string;
   color?: string;
-  dataForHoverCard?: number;
+  dataForHoverCard?: number | string;
   isCalloutVisible: boolean;
   isLegendSelected?: boolean;
   isLegendHovered?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected?: any;
-  YValueHover?: { legend?: string; y?: number; color?: string }[];
+  YValueHover?: { legend?: string; y?: number | string; color?: string }[];
   hoverYValue?: string | number | null;
   hoverXValue?: string | number | null;
   xCalloutValue?: string;
@@ -312,6 +312,11 @@ interface BaseDataPoint {
    * X axis Accessibility data for callout
    */
   xAxisCalloutAccessibilityData?: AccessibilityProps;
+
+  /**
+   * Marker size of the points
+   */
+  markerSize?: number;
 }
 
 /**
@@ -327,6 +332,11 @@ export interface LineChartDataPoint extends BaseDataPoint {
    * Dependent value of the data point, rendered along the y-axis.
    */
   y: number;
+
+  /**
+   * text labels of marker points
+   */
+  text?: string;
 }
 
 /**
@@ -348,6 +358,11 @@ export interface ScatterChartDataPoint extends BaseDataPoint {
    * Marker size of the points
    */
   markerSize?: number;
+
+  /**
+   * text labels of marker points
+   */
+  text?: string;
 }
 
 /**
@@ -410,6 +425,29 @@ export interface LineChartLineOptions extends SVGProps<SVGPathElement> {
    * @default 'linear'
    */
   curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
+
+  /**
+   * Defines the mode of points to be rendered.
+   */
+  mode?:
+    | 'lines'
+    | 'markers'
+    | 'text'
+    | 'lines+markers'
+    | 'text+markers'
+    | 'text+lines'
+    | 'text+lines+markers'
+    | 'none'
+    | 'gauge'
+    | 'number'
+    | 'delta'
+    | 'number+delta'
+    | 'gauge+number'
+    | 'gauge+number+delta'
+    | 'gauge+delta'
+    | 'markers+text'
+    | 'lines+text'
+    | 'lines+markers+text';
 }
 
 /**
@@ -503,6 +541,11 @@ export interface ChartProps {
   lineChartData?: LineChartPoints[];
 
   /**
+   * data for the points in the scatter chart
+   */
+  scatterChartData?: ScatterChartPoints[];
+
+  /**
    * data for the points in the line chart
    */
   SankeyChartData?: SankeyChartData;
@@ -545,7 +588,7 @@ export interface VSChartDataPoint {
   /**
    * data the datapoint in the chart
    */
-  data: number;
+  data: number | string;
 
   /**
    * Legend text for the datapoint in the chart
@@ -613,7 +656,7 @@ export interface VerticalStackedChartProps {
  * {@docCategory ChartData}
  */
 export interface LineDataInVerticalStackedBarChart {
-  y: number;
+  y: number | string;
   color: string;
   legend: string;
   /**
@@ -624,7 +667,7 @@ export interface LineDataInVerticalStackedBarChart {
   /**
    * Data to show in callout
    */
-  data?: number;
+  data?: number | string;
   yAxisCalloutData?: string;
   /**
    * Whether to use the secondary y scale or not
@@ -949,4 +992,51 @@ export interface GanttChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: AccessibilityProps;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface ScatterChartPoints {
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend: string;
+
+  /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+
+  /**
+   * dataPoints for the line chart
+   */
+  data: ScatterChartDataPoint[];
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+
+  /**
+   * opacity for chart fill color
+   */
+  opacity?: number;
+
+  /**
+   * hide dots for points that are not active
+   */
+  hideNonActiveDots?: boolean;
+
+  /**
+   * Defines the function that is executed on clicking this legend
+   */
+  onLegendClick?: (selectedLegend: string | null | string[]) => void;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }

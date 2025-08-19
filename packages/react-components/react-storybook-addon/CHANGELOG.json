@@ -2,6 +2,110 @@
   "name": "@fluentui/react-storybook-addon",
   "entries": [
     {
+      "date": "Wed, 13 Aug 2025 12:49:04 GMT",
+      "tag": "@fluentui/react-storybook-addon_v0.4.1",
+      "version": "0.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "84ee52b61191412220e2ebdfe41090f5ce343fba",
+            "comment": "fix: resolve dissapearing Slot Info message on consecutive page re-renders"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "indirect ts emit change with exactOptionalPropertyTypes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Aug 2025 10:03:26 GMT",
+      "tag": "@fluentui/react-storybook-addon_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "609e0f34251d73504cc3545d92e79a0f9e8744b0",
+            "comment": "feat!: make docs enhancements configurable and opt in. BREAKING CHANGE: turned off by default"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-aria to v9.16.3",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-button to v9.6.4",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-menu to v9.19.4",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-label to v9.3.3",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-switch to v9.4.3",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-text to v9.6.3",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-link to v9.6.3",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-provider to v9.22.3",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon",
+            "comment": "Bump @fluentui/react-utilities to v9.23.2",
+            "commit": "f0fd6ed6a3817e00bd01fcb5d76daa0e99903f39"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "249bc540994ac14f1306e0c869317f07df0e5a98",
+            "comment": "feat: add custom addon-docs containers to preset"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 16:55:34 GMT",
       "tag": "@fluentui/react-storybook-addon_v0.3.1",
       "version": "0.3.1",

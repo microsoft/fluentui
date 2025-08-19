@@ -4,6 +4,6 @@ export type MenuGridRowSlots = {
   root: Slot<'div'>;
 };
 
-export type MenuGridRowProps = ComponentProps<MenuGridRowSlots>;
+export type MenuGridRowProps = ComponentProps<Partial<MenuGridRowSlots>>;
 
 export type MenuGridRowState = ComponentState<MenuGridRowSlots>;

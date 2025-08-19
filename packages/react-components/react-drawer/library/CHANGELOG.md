@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Wed, 30 Jul 2025 16:55:48 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Aug 2025 10:03:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.9.4)
+
+Thu, 07 Aug 2025 10:03:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.9.3..@fluentui/react-drawer_v9.9.4)
+
+### Patches
+
+- fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- Bump @fluentui/react-dialog to v9.14.4 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.5 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-motion to v9.10.2 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-portal to v9.8.0 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-tabster to v9.26.3 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+- Bump @fluentui/react-utilities to v9.23.2 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
 
 ## [9.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.9.3)
 

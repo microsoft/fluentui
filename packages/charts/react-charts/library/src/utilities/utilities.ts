@@ -49,6 +49,7 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
+import { ScatterChartPoints } from '../types/DataPoint';
 import {
   AccessibilityProps,
   EventsAnnotationProps,
@@ -72,6 +73,7 @@ import {
 } from '@fluentui/chart-utilities';
 
 export const MIN_DOMAIN_MARGIN = 8;
+export const MIN_DONUT_RADIUS = 1;
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -758,14 +760,34 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
  * @param dataPoints
  * @param isRtl
  */
-export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean) => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding = 0 } = yAxisParams;
+export const createStringYAxis = (
+  yAxisParams: IYAxisParams,
+  dataPoints: string[],
+  isRtl: boolean,
+  barWidth?: number,
+  chartType?: ChartTypes,
+) => {
+  const {
+    containerHeight,
+    tickPadding = 12,
+    margins,
+    yAxisTickFormat,
+    yAxisElement,
+    yAxisPadding = 0,
+    containerWidth,
+  } = yAxisParams;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
     .range([containerHeight - margins.bottom!, margins.top!])
     .padding(yAxisPadding);
+  if (chartType === ChartTypes.VerticalStackedBarChart) {
+    yAxisScale.paddingInner(1).paddingOuter(0);
+  }
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).tickValues(dataPoints).tickSize(0);
+  if (chartType === ChartTypes.VerticalStackedBarChart) {
+    axis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+  }
   if (yAxisTickFormat) {
     yAxis.tickFormat(yAxisTickFormat);
   }
@@ -779,17 +801,19 @@ export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[
  * @param values
  */
 
-export function calloutData(values: (LineChartPoints & { index?: number })[]) {
-  let combinedResult: (LineChartDataPoint & {
+// changing the type to any as it is used by multiple charts with different data types
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function calloutData(values: ((LineChartPoints | ScatterChartPoints) & { index?: number })[]) {
+  let combinedResult: ((LineChartDataPoint | ScatterChartDataPoint) & {
     legend: string;
     color?: string;
     index?: number;
   })[] = [];
 
-  values.forEach((line: LineChartPoints & { index?: number }) => {
+  values.forEach((line: (LineChartPoints | ScatterChartPoints) & { index?: number }) => {
     const elements = line.data
-      .filter((point: LineChartDataPoint) => !point.hideCallout)
-      .map((point: LineChartDataPoint) => {
+      .filter((point: LineChartDataPoint | ScatterChartDataPoint) => !point.hideCallout)
+      .map((point: LineChartDataPoint | ScatterChartDataPoint) => {
         return { ...point, legend: line.legend, color: line.color, index: line.index };
       });
     combinedResult = combinedResult.concat(elements);
@@ -815,7 +839,8 @@ export function calloutData(values: (LineChartPoints & { index?: number })[]) {
       index?: number;
     }[];
   } = {};
-  combinedResult.forEach(ele => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  combinedResult.forEach((ele: any) => {
     const xValue = ele.x instanceof Date ? ele.x.getTime() : ele.x;
     if (xValue in xValToDataPoints) {
       xValToDataPoints[xValue].push({
@@ -1018,17 +1043,16 @@ export function createYAxisLabels(
       text
         .append('tspan')
         .attr('id', `showDots-${uid}`)
-        .attr('x', isRtl ? 0 : x)
+        .attr('x', x)
         .attr('y', y)
-        .attr('dy', dy)
+        .attr('dy', dy + 'em')
         .attr('dx', padding + dx + 'em')
         .text(truncatedWord);
     } else {
       text
-        .attr('text-align', 'start')
         .append('tspan')
         .attr('id', `LessLength-${uid}`)
-        .attr('x', isRtl ? 0 : x)
+        .attr('x', x)
         .attr('y', y)
         .attr('dx', padding + dx + 'em')
         .text(totalWord);
@@ -1910,6 +1934,57 @@ export function getCurveFactory(
     default:
       return defaultFactory;
   }
+}
+
+export function createYAxisForScatterChart(
+  yAxisParams: IYAxisParams,
+  isRtl: boolean,
+  axisData: IAxisData,
+  isIntegralDataset: boolean,
+  useSecondaryYScale: boolean = false,
+  _supportNegativeData: boolean = false,
+  roundedTicks: boolean = false,
+) {
+  const {
+    yMinMaxValues = { startValue: 0, endValue: 0 },
+    yAxisElement = null,
+    yMaxValue = 0,
+    yMinValue = 0,
+    containerHeight,
+    containerWidth,
+    margins,
+    tickPadding = 12,
+    maxOfYVal = 0,
+    yAxisTickFormat,
+    yAxisTickCount = 4,
+    eventAnnotationProps,
+    eventLabelHeight,
+  } = yAxisParams;
+
+  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
+  const tempVal = maxOfYVal || yMinMaxValues.endValue;
+  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
+  const finalYmin = Math.min(yMinMaxValues.startValue, yMinValue || 0);
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
+  let yMin = finalYmin;
+  let yMax = domainValues[domainValues.length - 1];
+  const yPadding = (yMax - yMin) * 0.1;
+  yMin = yMin - yPadding;
+  yMax = yMax + yPadding;
+  const yAxisScale = d3ScaleLinear()
+    .domain([domainValues[0], yMax])
+    .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
+  const axis =
+    (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+  const yAxis = axis
+    .tickPadding(tickPadding)
+    .tickValues(domainValues)
+    .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+  axisData.yAxisDomainValues = domainValues;
+  return yAxisScale;
 }
 
 export const truncateString = (str: string, maxLength: number, ellipsis = '...'): string => {

@@ -40,3 +40,6 @@ export {
   toastFooterClassNames,
 } from './ToastFooter';
 export type { ToastFooterProps, ToastFooterState, ToastFooterSlots } from './ToastFooter';
+
+export { toastContainerClassNames } from './ToastContainer';
+export type { ToastContainerState } from './ToastContainer';

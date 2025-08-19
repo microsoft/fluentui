@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ModifiedCartesianChartProps, HorizontalBarChartWithAxisDataPoint, HeatMapChartDataPoint } from '../../index';
+import { ModifiedCartesianChartProps } from '../../index';
 import { useCartesianChartStyles } from './useCartesianChartStyles.styles';
 import { select as d3Select } from 'd3-selection';
 import {
@@ -67,7 +67,12 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   const [startFromX, setStartFromX] = React.useState<number>(0);
   const [prevProps, setPrevProps] = React.useState<ModifiedCartesianChartProps | null>(null);
 
-  const chartTypesToCheck = [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart, ChartTypes.GanttChart];
+  const chartTypesWithStringYAxis = [
+    ChartTypes.HorizontalBarChartWithAxis,
+    ChartTypes.HeatMapChart,
+    ChartTypes.VerticalStackedBarChart,
+    ChartTypes.GanttChart,
+  ];
   /**
    * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
    * So that, in RTL, left margins becomes right margins and viceversa.
@@ -81,16 +86,35 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     right: _useRtl ? props.margins?.left ?? 40 : props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20,
     left: _useRtl ? (props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20) : props.margins?.left ?? 40,
   };
+  const TITLE_MARGIN = 20;
   if (props.xAxisTitle !== undefined && props.xAxisTitle !== '') {
-    margins.bottom! = props.margins?.bottom ?? 55;
+    margins.bottom! = props.margins?.bottom ?? margins.bottom! + TITLE_MARGIN;
   }
   if (props.yAxisTitle !== undefined && props.yAxisTitle !== '') {
     margins.left! = _useRtl
       ? props.margins?.right ?? props?.secondaryYAxistitle
-        ? 80
-        : 40
-      : props.margins?.left ?? 60;
-    margins.right! = _useRtl ? props.margins?.left ?? 60 : props.margins?.right ?? props?.secondaryYAxistitle ? 80 : 40;
+        ? margins.right! + 2 * TITLE_MARGIN
+        : margins.right! + TITLE_MARGIN
+      : props.margins?.left ?? margins.left! + TITLE_MARGIN;
+    margins.right! = _useRtl
+      ? props.margins?.left ?? margins.left! + TITLE_MARGIN
+      : props.margins?.right ?? props?.secondaryYAxistitle
+      ? margins.right! + 2 * TITLE_MARGIN
+      : margins.right! + TITLE_MARGIN;
+  }
+  if (props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '') {
+    margins.top! = props.margins?.top ?? margins.top! + TITLE_MARGIN;
+  }
+  if (
+    props.yAxisAnnotation !== undefined &&
+    props.yAxisAnnotation !== '' &&
+    (props.secondaryYAxistitle === undefined || props.secondaryYAxistitle === '')
+  ) {
+    if (_useRtl) {
+      margins.left! = props.margins?.right ?? margins.right! + TITLE_MARGIN;
+    } else {
+      margins.right! = props.margins?.right ?? margins.right! + TITLE_MARGIN;
+    }
   }
 
   const classes = useCartesianChartStyles(props);
@@ -102,8 +126,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     if (props !== null) {
       setPrevProps(props);
     }
-    if (chartTypesToCheck.includes(props.chartType) && props.showYAxisLables && yAxisElement) {
-      const maxYAxisLabelLength = calculateMaxYAxisLabelLength(props.chartType, props.points, classes.yAxis!);
+    if (
+      chartTypesWithStringYAxis.includes(props.chartType) &&
+      props.showYAxisLables &&
+      yAxisElement &&
+      props.yAxisType === YAxisType.StringAxis
+    ) {
+      const maxYAxisLabelLength = calculateMaxYAxisLabelLength(classes.yAxis!);
       if (startFromX !== maxYAxisLabelLength) {
         setStartFromX(maxYAxisLabelLength);
       }
@@ -124,8 +153,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         _fitParentContainer();
       }
     }
-    if (chartTypesToCheck.includes(props.chartType) && props.showYAxisLables && yAxisElement) {
-      const maxYAxisLabelLength = calculateMaxYAxisLabelLength(props.chartType, props.points, classes.yAxis!);
+    if (
+      chartTypesWithStringYAxis.includes(props.chartType) &&
+      props.showYAxisLables &&
+      yAxisElement &&
+      props.yAxisType === YAxisType.StringAxis
+    ) {
+      const maxYAxisLabelLength = calculateMaxYAxisLabelLength(classes.yAxis!);
       if (startFromX !== maxYAxisLabelLength) {
         setStartFromX(maxYAxisLabelLength);
       }
@@ -158,12 +192,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     return <ChartPopover {...calloutProps} />;
   }
 
-  function calculateMaxYAxisLabelLength(
-    chartType: ChartTypes,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    points: any[],
-    className: string,
-  ): number {
+  function calculateMaxYAxisLabelLength(className: string): number {
     const formatTickLabel = (str: string) => {
       if (props.showYAxisLablesTooltip) {
         return truncateString(str, props.noOfCharsToTruncate || 4);
@@ -171,17 +200,10 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
 
       return str;
     };
-    if (chartType === ChartTypes.HeatMapChart) {
-      return calculateLongestLabelWidth(
-        points[0]?.data?.map((point: HeatMapChartDataPoint) => formatTickLabel(`${point.y}`)),
-        `.${className} text`,
-      );
-    } else {
-      return calculateLongestLabelWidth(
-        points?.map((point: HorizontalBarChartWithAxisDataPoint) => formatTickLabel(`${point.y}`)),
-        `.${className} text`,
-      );
-    }
+    return calculateLongestLabelWidth(
+      props.stringDatasetForYAxisDomain!.map(label => formatTickLabel(label)),
+      `.${className} text`,
+    );
   }
 
   const {
@@ -198,7 +220,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     _fitParentContainer();
   }
   const margin = { ...margins };
-  if (chartTypesToCheck.includes(props.chartType)) {
+  // Note: This check is unnecessary since startFromX is only set for charts with string y-axis.
+  if (chartTypesWithStringYAxis.includes(props.chartType)) {
     if (!_useRtl) {
       margin.left! += startFromX;
     } else {
@@ -317,7 +340,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     let yScaleSecondary: any;
     const axisData: IAxisData = { yAxisDomainValues: [] };
     if (props.yAxisType && props.yAxisType === YAxisType.StringAxis) {
-      yScalePrimary = props.createStringYAxis(YAxisParams, props.stringDatasetForYAxisDomain!, _useRtl, props.barwidth);
+      yScalePrimary = props.createStringYAxis(
+        YAxisParams,
+        props.stringDatasetForYAxisDomain!,
+        _useRtl,
+        props.barwidth,
+        props.chartType,
+      );
     } else {
       // TODO: Since the scale domain values are now computed independently for both the primary and
       // secondary y-axes, the yMinValue and yMaxValue props are no longer necessary for accurately
@@ -360,7 +389,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       );
     }
 
-    if (chartTypesToCheck.includes(props.chartType)) {
+    if (chartTypesWithStringYAxis.includes(props.chartType) && props.yAxisType === YAxisType.StringAxis) {
       // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
       // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
       // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with _tooltipId)
@@ -636,6 +665,20 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               className={classes.svgTooltip}
             />
           )}
+          {props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '' && (
+            <SVGTooltipText
+              content={props.xAxisAnnotation}
+              textProps={{
+                x: margins.left! + startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                y: titleMargin + 3,
+                className: classes.axisAnnotation!,
+                textAnchor: 'middle',
+                'aria-hidden': true,
+              }}
+              maxWidth={xAxisTitleMaximumAllowedWidth}
+              wrapContent={wrapContent}
+            />
+          )}
           <g
             ref={(e: SVGSVGElement | null) => {
               yAxisElement.current = e!;
@@ -697,6 +740,27 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               className={classes.svgTooltip}
             />
           )}
+          {props.yAxisAnnotation !== undefined &&
+            props.yAxisAnnotation !== '' &&
+            (props.secondaryYAxistitle === undefined || props.secondaryYAxistitle === '') && (
+              <SVGTooltipText
+                content={props.yAxisAnnotation}
+                textProps={{
+                  x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + _removalValueForTextTuncate!,
+                  y: _useRtl ? startFromX - titleMargin : svgDimensions.width - margins.right!,
+                  textAnchor: 'middle',
+                  transform: `translate(${
+                    _useRtl ? margins.right! / 2 - titleMargin : margins.right! / 2 + titleMargin
+                  },
+                   ${svgDimensions.height - margins.bottom! - margins.top! - titleMargin})rotate(-90)`,
+                  className: classes.axisAnnotation!,
+                  'aria-hidden': true,
+                }}
+                maxWidth={yAxisTitleMaximumAllowedHeight}
+                wrapContent={wrapContent}
+                showBackground={true}
+              />
+            )}
         </svg>
       </div>
 

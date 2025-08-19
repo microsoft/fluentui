@@ -921,8 +921,8 @@ export interface IHeatMapChartStyles {
     root?: IStyle;
     // (undocumented)
     subComponentStyles: {
-        cartesianStyles: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
-        calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+        cartesianStyles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
+        calloutStyles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     };
     // (undocumented)
     text?: IStyle;
@@ -1513,6 +1513,7 @@ export interface IScatterChartProps extends ICartesianChartProps {
     data: IChartProps;
     getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
+    showYAxisLablesTooltip?: boolean;
     styles?: IScatterChartStyles;
 }
 

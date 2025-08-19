@@ -3,9 +3,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import {
-  FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
-  MEDIA_QUERY_BREAKPOINT_SELECTOR,
-  MEDIA_QUERY_SHORT_SCREEN,
+  DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+  DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR,
+  DIALOG_MEDIA_QUERY_SHORT_SCREEN,
   SURFACE_BORDER_WIDTH,
   SURFACE_PADDING,
 } from '../../contexts';
@@ -43,18 +43,18 @@ const useRootBaseStyle = makeResetStyles({
   // to ensure dialog will be properly styled when surfaceMotion is opted-out
   boxShadow: tokens.shadow64,
 
-  [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+  [DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
   },
 
-  [MEDIA_QUERY_SHORT_SCREEN]: {
+  [DIALOG_MEDIA_QUERY_SHORT_SCREEN]: {
     overflowY: 'auto',
     // We need to offset the scrollbar by adding transparent borders otherwise
     // it conflicts with the border radius.
-    paddingRight: `calc(${SURFACE_PADDING} - ${FULLSCREEN_DIALOG_SCROLLBAR_OFFSET})`,
-    borderRightWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
-    borderTopWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
-    borderBottomWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+    paddingRight: `calc(${SURFACE_PADDING} - ${DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET})`,
+    borderRightWidth: DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+    borderTopWidth: DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+    borderBottomWidth: DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
   },
 });
 

@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -197,7 +195,7 @@ export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSX.
 export const useAccordion_unstable: <Value = unknown>(props: AccordionProps<Value>, ref: React_2.Ref<HTMLElement>) => AccordionState<Value>;
 
 // @public (undocumented)
-export const useAccordionContext_unstable: <T>(selector: ContextSelector<AccordionContextValue<unknown>, T>) => T;
+export const useAccordionContext_unstable: <T>(selector: ContextSelector<AccordionContextValue, T>) => T;
 
 // @public (undocumented)
 export function useAccordionContextValues_unstable(state: AccordionState): AccordionContextValues;
