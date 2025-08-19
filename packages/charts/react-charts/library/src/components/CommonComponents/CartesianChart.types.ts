@@ -118,9 +118,14 @@ export interface CartesianChartStyles {
   tooltip?: string;
 
   /**
-   * styles for tooltip
+   * styles for axis title
    */
   axisTitle?: string;
+
+  /**
+   * styles for axis annotation
+   */
+  axisAnnotation?: string;
 
   /**
    * Style for the chart Title.

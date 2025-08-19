@@ -86,16 +86,35 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     right: _useRtl ? props.margins?.left ?? 40 : props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20,
     left: _useRtl ? (props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20) : props.margins?.left ?? 40,
   };
+  const TITLE_MARGIN = 20;
   if (props.xAxisTitle !== undefined && props.xAxisTitle !== '') {
-    margins.bottom! = props.margins?.bottom ?? 55;
+    margins.bottom! = props.margins?.bottom ?? margins.bottom! + TITLE_MARGIN;
   }
   if (props.yAxisTitle !== undefined && props.yAxisTitle !== '') {
     margins.left! = _useRtl
       ? props.margins?.right ?? props?.secondaryYAxistitle
-        ? 80
-        : 40
-      : props.margins?.left ?? 60;
-    margins.right! = _useRtl ? props.margins?.left ?? 60 : props.margins?.right ?? props?.secondaryYAxistitle ? 80 : 40;
+        ? margins.right! + 2 * TITLE_MARGIN
+        : margins.right! + TITLE_MARGIN
+      : props.margins?.left ?? margins.left! + TITLE_MARGIN;
+    margins.right! = _useRtl
+      ? props.margins?.left ?? margins.left! + TITLE_MARGIN
+      : props.margins?.right ?? props?.secondaryYAxistitle
+      ? margins.right! + 2 * TITLE_MARGIN
+      : margins.right! + TITLE_MARGIN;
+  }
+  if (props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '') {
+    margins.top! = props.margins?.top ?? margins.top! + TITLE_MARGIN;
+  }
+  if (
+    props.yAxisAnnotation !== undefined &&
+    props.yAxisAnnotation !== '' &&
+    (props.secondaryYAxistitle === undefined || props.secondaryYAxistitle === '')
+  ) {
+    if (_useRtl) {
+      margins.left! = props.margins?.right ?? margins.right! + TITLE_MARGIN;
+    } else {
+      margins.right! = props.margins?.right ?? margins.right! + TITLE_MARGIN;
+    }
   }
 
   const classes = useCartesianChartStyles(props);
@@ -646,6 +665,20 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               className={classes.svgTooltip}
             />
           )}
+          {props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '' && (
+            <SVGTooltipText
+              content={props.xAxisAnnotation}
+              textProps={{
+                x: margins.left! + startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                y: titleMargin + 3,
+                className: classes.axisAnnotation!,
+                textAnchor: 'middle',
+                'aria-hidden': true,
+              }}
+              maxWidth={xAxisTitleMaximumAllowedWidth}
+              wrapContent={wrapContent}
+            />
+          )}
           <g
             ref={(e: SVGSVGElement | null) => {
               yAxisElement.current = e!;
@@ -707,6 +740,27 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               className={classes.svgTooltip}
             />
           )}
+          {props.yAxisAnnotation !== undefined &&
+            props.yAxisAnnotation !== '' &&
+            (props.secondaryYAxistitle === undefined || props.secondaryYAxistitle === '') && (
+              <SVGTooltipText
+                content={props.yAxisAnnotation}
+                textProps={{
+                  x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + _removalValueForTextTuncate!,
+                  y: _useRtl ? startFromX - titleMargin : svgDimensions.width - margins.right!,
+                  textAnchor: 'middle',
+                  transform: `translate(${
+                    _useRtl ? margins.right! / 2 - titleMargin : margins.right! / 2 + titleMargin
+                  },
+                   ${svgDimensions.height - margins.bottom! - margins.top! - titleMargin})rotate(-90)`,
+                  className: classes.axisAnnotation!,
+                  'aria-hidden': true,
+                }}
+                maxWidth={yAxisTitleMaximumAllowedHeight}
+                wrapContent={wrapContent}
+                showBackground={true}
+              />
+            )}
         </svg>
       </div>
 

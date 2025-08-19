@@ -51,13 +51,15 @@ import type {
   Data,
   TableData,
   Color,
+  LayoutAxis,
+  XAxisName,
 } from '@fluentui/chart-utilities';
 import {
-  isArrayOfType,
   isArrayOrTypedArray,
   isDate,
   isDateArray,
   isNumberArray,
+  isStringArray,
   isYearArray,
   isInvalidValue,
 } from '@fluentui/chart-utilities';
@@ -65,6 +67,22 @@ import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { getOpacity, extractColor, resolveColor } from './PlotlyColorAdapter';
 import { rgb } from 'd3-color';
+import { Legend, LegendsProps } from '../Legends/index';
+import { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
+
+export type AxisProperties = {
+  xAnnotation?: string;
+  yAnnotation?: string;
+  row: number;
+  column: number;
+};
+export type GridAxisProperties = Record<string, AxisProperties>;
+
+export type GridProperties = {
+  templateRows: string;
+  templateColumns: string;
+  layout: GridAxisProperties;
+};
 
 type ScatterChartTypes = 'area' | 'line' | 'scatter';
 interface SecondaryYAxisValues {
@@ -157,8 +175,8 @@ export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any
   return xValues;
 };
 
-const usesSecondaryYScale = (series: Partial<PlotData>): boolean => {
-  return series.yaxis === 'y2';
+const usesSecondaryYScale = (series: Partial<PlotData>, layout: Partial<Layout> | undefined): boolean => {
+  return series.yaxis === 'y2' && (layout?.yaxis2?.anchor === 'x' || layout?.yaxis2?.side === 'right');
 };
 
 const getSecondaryYAxisValues = (
@@ -172,7 +190,7 @@ const getSecondaryYAxisValues = (
   let yMaxValue: number | undefined;
 
   data.forEach((series: Partial<PlotData>) => {
-    if (usesSecondaryYScale(series)) {
+    if (usesSecondaryYScale(series, layout)) {
       containsSecondaryYAxis = true;
       const yValues = series.y as number[];
       if (yValues) {
@@ -250,6 +268,7 @@ export const resolveXAxisPoint = (
 
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -317,6 +336,7 @@ export const transformPlotlyJsonToDonutProps = (
 
 export const transformPlotlyJsonToVSBCProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -325,7 +345,7 @@ export const transformPlotlyJsonToVSBCProps = (
   const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
   let yMaxValue = 0;
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
-  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
   let yMinValue = 0;
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
@@ -395,13 +415,7 @@ export const transformPlotlyJsonToVSBCProps = (
         } else if (series.type === 'scatter' || !!fallbackVSBC) {
           const lineColor = resolveColor(extractedLineColors, index1, legend, colorMap, isDarkTheme);
           const lineOptions = !series.mode?.includes('text') ? getLineOptions(series.line) : undefined;
-          const dashType = series.line?.dash || 'solid';
-          const legendShape =
-            dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot'
-              ? 'dottedLine'
-              : series.mode?.includes('markers')
-              ? 'circle'
-              : 'default';
+          const legendShape = getLegendShape(series);
           mapXToDataPoints[x].lineData!.push({
             legend: legend + (validXYRanges.length > 1 ? `.${rangeIdx + 1}` : ''),
             legendShape,
@@ -411,9 +425,9 @@ export const transformPlotlyJsonToVSBCProps = (
               ...(lineOptions ?? {}),
               mode: series.mode,
             },
-            useSecondaryYScale: usesSecondaryYScale(series),
+            useSecondaryYScale: usesSecondaryYScale(series, input.layout),
           });
-          if (!usesSecondaryYScale(series) && typeof yVal === 'number') {
+          if (!usesSecondaryYScale(series, input.layout) && typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
             yMinValue = Math.min(yMinValue, yVal);
           }
@@ -466,13 +480,14 @@ const createColorScale = (layout: Partial<Layout>, series: Partial<PlotData>) =>
 
 export const transformPlotlyJsonToGVBCProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): GroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, GroupedVerticalBarChartData> = {};
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
-  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
 
   let colorScale: ((value: number) => string) | undefined = undefined;
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
@@ -517,7 +532,7 @@ export const transformPlotlyJsonToGVBCProps = (
           xAxisCalloutData: x as string,
           color: rgb(color).copy({ opacity }).formatHex8() ?? color,
           legend,
-          useSecondaryYScale: usesSecondaryYScale(series),
+          useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         });
       }
     });
@@ -545,12 +560,13 @@ export const transformPlotlyJsonToGVBCProps = (
 
 export const transformPlotlyJsonToVBCProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): VerticalBarChartProps => {
   const vbcData: VerticalBarChartDataPoint[] = [];
-  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
 
   input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
@@ -655,14 +671,72 @@ export const transformPlotlyJsonToVBCProps = (
   };
 };
 
-export const transformPlotlyJsonToScatterChartProps = (
+export const transformPlotlyJsonToAreaChartProps = (
   input: PlotlySchema,
-  chartType: ScatterChartTypes,
-  isScatterMarkers: boolean,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
-): LineChartProps | AreaChartProps => {
+): AreaChartProps => {
+  return transformPlotlyJsonToScatterTraceProps(
+    input,
+    isMultiPlot,
+    'area',
+    colorMap,
+    colorwayType,
+    isDarkTheme,
+  ) as AreaChartProps;
+};
+
+export const transformPlotlyJsonToLineChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): LineChartProps => {
+  return transformPlotlyJsonToScatterTraceProps(
+    input,
+    isMultiPlot,
+    'line',
+    colorMap,
+    colorwayType,
+    isDarkTheme,
+  ) as LineChartProps;
+};
+
+export const transformPlotlyJsonToScatterChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): LineChartProps => {
+  return transformPlotlyJsonToScatterTraceProps(
+    input,
+    isMultiPlot,
+    'scatter',
+    colorMap,
+    colorwayType,
+    isDarkTheme,
+  ) as ScatterChartProps;
+};
+
+const transformPlotlyJsonToScatterTraceProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  chartType: ScatterChartTypes,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): LineChartProps | AreaChartProps | ScatterChartProps => {
+  const isScatterMarkers = [
+    'text+markers',
+    'markers+text',
+    'lines+markers',
+    'markers+line',
+    'text+lines+markers',
+  ].includes((input.data[0] as PlotData)?.mode);
   const isAreaChart = chartType === 'area';
   const isScatterChart = chartType === 'scatter';
   const secondaryYAxisValues = getSecondaryYAxisValues(
@@ -672,7 +746,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     isAreaChart ? 0 : undefined,
   );
   let mode: string = 'tonexty';
-  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   const chartData: LineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
       const colors = isScatterMarkers
@@ -699,13 +773,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       const seriesOpacity = getOpacity(series, index);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
       const lineOptions = !series.mode?.includes('text') ? getLineOptions(series.line) : undefined;
-      const dashType = series.line?.dash || 'solid';
-      const legendShape =
-        dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot'
-          ? 'dottedLine'
-          : series.mode?.includes('markers')
-          ? 'circle'
-          : 'default';
+      const legendShape = getLegendShape(series);
 
       const validXYRanges = getValidXYRanges(series);
       return validXYRanges.map(([rangeStart, rangeEnd], rangeIdx) => {
@@ -734,7 +802,7 @@ export const transformPlotlyJsonToScatterChartProps = (
             ...(lineOptions ?? {}),
             mode: series.mode,
           },
-          useSecondaryYScale: usesSecondaryYScale(series),
+          useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         } as LineChartPoints;
       });
     })
@@ -791,11 +859,12 @@ export const transformPlotlyJsonToScatterChartProps = (
 
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): HorizontalBarChartWithAxisProps => {
-  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
   const chartData: HorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
@@ -878,7 +947,13 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   };
 };
 
-export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): HeatMapChartProps => {
+export const transformPlotlyJsonToHeatmapProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): HeatMapChartProps => {
   const firstData = input.data[0] as Partial<PlotData>;
   const heatmapDataPoints: HeatMapChartDataPoint[] = [];
   let zMin = Number.POSITIVE_INFINITY;
@@ -1039,6 +1114,7 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): HeatMapC
 
 export const transformPlotlyJsonToSankeyProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1106,6 +1182,7 @@ export const transformPlotlyJsonToSankeyProps = (
 
 export const transformPlotlyJsonToGaugeProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1242,7 +1319,9 @@ const formatValue = (
 
 export const transformPlotlyJsonToChartTableProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): ChartTableProps => {
   const tableData = input.data[0] as TableData;
@@ -1482,12 +1561,6 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): LineChartLineOp
   return Object.keys(lineOptions).length > 0 ? lineOptions : undefined;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const isStringArray = (arr: any) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return isArrayOfType(arr, (value: any) => typeof value === 'string' || value === null);
-};
-
 // TODO: Use binary search to find the appropriate bin for numeric value.
 const findBinIndex = (
   bins: string[][] | Bin<number, number>[],
@@ -1613,7 +1686,59 @@ const precisionRound = (value: number, precision: number) => {
   return Math.round(value * factor) / factor;
 };
 
-const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
+const getLegendShape = (series: Partial<PlotData>): Legend['shape'] => {
+  const dashType = series.line?.dash || 'solid';
+  if (dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot') {
+    return 'dottedLine';
+  } else if (series.mode?.includes('markers')) {
+    return 'circle';
+  }
+  return 'default';
+};
+
+export const getAllupLegendsProps = (
+  input: PlotlySchema,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): LegendsProps => {
+  const allupLegends: Legend[] = [];
+  // reduce on showlegend boolean propperty. reduce should return true if at least one series has showlegend true
+  const toShowLegend = input.data.reduce((acc, series) => {
+    return acc || (series as Partial<PlotData>).showlegend === true;
+  }, false);
+
+  if (toShowLegend) {
+    input.data.forEach((series: Partial<PlotData>, index) => {
+      const name = series.legendgroup;
+      const color = series.line?.color || (series as Partial<PlotData>).marker?.color;
+      const legendShape = getLegendShape(series);
+      const resolvedColor = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        color,
+        colorMap,
+        isDarkTheme,
+      );
+      if (name !== undefined && allupLegends.some(group => group.title === name) === false) {
+        allupLegends.push({
+          title: name,
+          color: resolvedColor as string,
+          shape: legendShape,
+        });
+      }
+    });
+  }
+
+  return {
+    legends: allupLegends,
+    centerLegends: true,
+    enabledWrapLines: true,
+    canSelectMultipleLegends: true,
+  };
+};
+
+const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined, isMultiPlot: boolean) => {
   const legends: string[] = [];
   if (data.length === 1) {
     legends.push(data[0].name || '');
@@ -1623,11 +1748,12 @@ const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
     });
   }
 
-  const hideLegends = data.every((series: Partial<PlotData>) => series.showlegend === false);
+  const hideLegendsData = data.every((series: Partial<PlotData>) => series.showlegend === false);
+  const hideLegendsInferred = layout?.showlegend === false || (layout?.showlegend !== true && legends.length < 2);
 
   return {
     legends,
-    hideLegend: layout?.showlegend === false ? true : hideLegends,
+    hideLegend: isMultiPlot || hideLegendsInferred || hideLegendsData,
   };
 };
 
@@ -1664,4 +1790,183 @@ export const getValidXYRanges = (series: Partial<PlotData>) => {
   }
 
   return ranges;
+};
+
+const getIndexFromKey = (key: string, pattern: string): number => {
+  const normalizedKey = key.replace(pattern, '') === '' ? '1' : key.replace(pattern, '');
+  return parseInt(normalizedKey, 10) - 1;
+};
+
+type FillInfo = {
+  row: number;
+  fillDomain: number;
+};
+
+export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPlot: boolean): GridProperties => {
+  const gridX: number[][] = [];
+  const gridY: number[][] = [];
+  type AnnotationProps = {
+    xAnnotation?: string;
+    yAnnotation?: string;
+  };
+  const annotations: Record<number, AnnotationProps> = {};
+  let templateRows = '1fr';
+  let templateColumns = '1fr';
+  const gridLayout: GridAxisProperties = {};
+  if (layout === undefined || layout === null || Object.keys(layout).length === 0) {
+    return { templateRows, templateColumns, layout: gridLayout };
+  }
+  if (!layout.xaxis || !layout.yaxis) {
+    return { templateRows, templateColumns, layout: gridLayout };
+  }
+  if (!isMultiPlot) {
+    return { templateRows, templateColumns, layout: gridLayout };
+  }
+
+  Object.keys(layout).forEach(key => {
+    if (key.startsWith('xaxis')) {
+      const index = getIndexFromKey(key, 'xaxis');
+      const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'y';
+      const anchorIndex = getIndexFromKey(anchor, 'y');
+      if (index !== anchorIndex) {
+        throw new Error(`Invalid layout: xaxis ${index + 1} anchor should be y${anchorIndex + 1}`);
+      }
+      gridX[index] = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.domain ?? [];
+    } else if (key.startsWith('yaxis')) {
+      const index = getIndexFromKey(key, 'yaxis');
+      const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'x';
+      const anchorIndex = getIndexFromKey(anchor, 'x');
+      if (index !== anchorIndex) {
+        if ((index === 1 && anchorIndex === 0) || layout.yaxis2?.side === 'right') {
+          // Special case for secondary y axis where yaxis2 can anchor to x1
+          return { templateRows, templateColumns };
+        }
+        throw new Error(`Invalid layout: yaxis ${index + 1} anchor should be x${anchorIndex + 1}`);
+      }
+      gridY[index] = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.domain ?? [];
+    }
+  });
+
+  layout.annotations?.forEach(annotation => {
+    const xMatches = gridX.flatMap((interval, idx) =>
+      (annotation?.x as number) >= interval[0] && (annotation?.x as number) <= interval[1] ? [idx] : [],
+    );
+    const yMatch = gridY.findIndex(
+      (interval, yIndex) =>
+        xMatches.includes(yIndex) &&
+        (annotation?.y as number) >= interval[0] &&
+        (annotation?.y as number) <= interval[1],
+    );
+
+    if (yMatch !== -1) {
+      if (annotations[yMatch] === undefined) {
+        annotations[yMatch] = {} as AnnotationProps;
+      }
+      if ((annotation?.textangle as number) === 90) {
+        annotations[yMatch].yAnnotation = annotation.text;
+      } else {
+        annotations[yMatch].xAnnotation = annotation.text;
+      }
+    }
+  });
+
+  if (gridX.length > 0) {
+    const uniqueXIntervals = new Map<string, number[]>();
+    gridX.forEach(interval => {
+      const key = `${interval[0]}-${interval[1]}`;
+      if (!uniqueXIntervals.has(key)) {
+        uniqueXIntervals.set(key, interval);
+      }
+    });
+    const minXInterval = Math.min(...Array.from(uniqueXIntervals.values()).map(interval => interval[1] - interval[0]));
+    templateColumns = Array.from(uniqueXIntervals.values())
+      .map(interval => `${(interval[1] - interval[0]) / minXInterval}fr`)
+      .join(' ');
+
+    let columnNumber = 1;
+    let lastIntervalEnd = 0;
+    gridX.forEach((interval, index) => {
+      if (interval.length === 0) {
+        return;
+      }
+
+      const cellName = `x${index === 0 ? '' : index + 1}` as XAxisName;
+
+      const annotationProps = annotations[index] as AnnotationProps;
+      const xAnnotation = annotationProps?.xAnnotation;
+
+      if (interval[0] < lastIntervalEnd) {
+        columnNumber = 1;
+      }
+      lastIntervalEnd = interval[1];
+
+      const row: AxisProperties = {
+        row: -1,
+        column: columnNumber,
+        xAnnotation,
+      };
+      gridLayout[cellName] = row;
+      columnNumber += 1;
+    });
+  }
+  const numColumns = Math.max(...Object.values(gridLayout).map(cell => cell.column ?? 0));
+
+  const columnFill: Record<number, FillInfo> = {};
+  for (let i = 1; i <= numColumns; i++) {
+    columnFill[i] = { row: 1, fillDomain: 0 };
+  }
+
+  if (gridY.length > 0) {
+    const uniqueYIntervals = new Map<string, number[]>();
+    gridY.forEach(interval => {
+      const key = `${interval[0]}-${interval[1]}`;
+      if (!uniqueYIntervals.has(key)) {
+        uniqueYIntervals.set(key, interval);
+      }
+    });
+    const minYInterval = Math.min(...Array.from(uniqueYIntervals.values()).map(interval => interval[1] - interval[0]));
+    templateRows = Array.from(uniqueYIntervals.values())
+      .map(interval => `${(interval[1] - interval[0]) / minYInterval}fr`)
+      .join(' ');
+
+    gridY.forEach((interval, index) => {
+      if (interval.length === 0) {
+        return;
+      }
+
+      const cellName = `x${index === 0 ? '' : index + 1}` as XAxisName;
+
+      const annotationProps = annotations[index] as AnnotationProps;
+      const yAnnotation = annotationProps?.yAnnotation;
+
+      const cell = gridLayout[cellName];
+
+      if (cell !== undefined) {
+        cell.row = columnFill[cell.column].row;
+        cell.yAnnotation = yAnnotation;
+      }
+      columnFill[cell.column].fillDomain = interval[1];
+      columnFill[cell.column].row += 1;
+    });
+  }
+
+  // reverse the order of rows in grid layout from bottom-top to top-bottom as required by CSS grid
+  const reversedGridLayout: GridAxisProperties = {};
+  // find the maximum row number
+  const maxRowNumber = Math.max(...Object.values(gridLayout).map(cell => cell.row ?? 0));
+  // iterate over the gridLayout and reverse the row numbers
+  Object.keys(gridLayout).forEach(key => {
+    const cell = gridLayout[key];
+    if (cell.row !== undefined) {
+      // reverse the row number
+      cell.row = maxRowNumber - cell.row + 1;
+    }
+    reversedGridLayout[key] = cell;
+  });
+
+  return {
+    templateRows,
+    templateColumns,
+    layout: reversedGridLayout,
+  };
 };
