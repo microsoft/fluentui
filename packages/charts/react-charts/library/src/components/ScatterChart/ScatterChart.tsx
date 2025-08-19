@@ -401,7 +401,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
             <circle
               id={circleId}
               key={circleId}
-              r={circleRadius}
+              r={Math.max(circleRadius, 4)}
               cx={_xAxisScale(x) + _xBandwidth}
               cy={_yAxisScale(y)}
               data-is-focusable={isLegendSelected}
