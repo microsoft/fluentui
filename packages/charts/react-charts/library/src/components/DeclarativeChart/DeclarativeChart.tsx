@@ -49,6 +49,7 @@ import { ScatterChart } from '../ScatterChart/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import { ChartTable } from '../ChartTable/index';
 import { LegendsProps, Legends } from '../Legends/index';
+import { JSXElement } from '@fluentui/react-utilities/src/index';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
@@ -131,10 +132,8 @@ function renderChart<TProps>(
   commonProps: Partial<TProps>,
   cellRow: number,
   cellColumn: number,
-): JSX.Element {
-  console.log('xx', Renderer);
+): JSXElement {
   const chartProps = transformer(...transformerArgs);
-  console.log('chartProps', chartProps);
   return (
     <div
       key={`${cellRow}_${cellColumn}`}
@@ -364,7 +363,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     componentRef: chartRef,
   };
 
-  function createLegends(legendProps: LegendsProps): JSX.Element {
+  function createLegends(legendProps: LegendsProps): JSXElement {
     // eslint-disable-next-line react/jsx-no-bind
     return <Legends {...legendProps} selectedLegends={activeLegends} onChange={onActiveLegendsChange} />;
   }
@@ -451,19 +450,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
             chartType = 'line';
           }
 
-          console.log('chartype', chartType);
           const chartEntry = chartMap[chartType as ChartType];
-          console.log('chart entry', chartEntry);
           if (chartEntry) {
             const { transformer, renderer, preTransformCondition, preTransformOperation } = chartEntry;
-            console.log('pre', preTransformCondition, preTransformOperation);
-            console.log('transfor', transformer);
             if (preTransformCondition === undefined || preTransformCondition(plotlyInputForGroup)) {
-              console.log('hello');
               const transformedInput = preTransformOperation
                 ? preTransformOperation(plotlyInputForGroup)
                 : plotlyInputForGroup;
-              console.log('transformedInput', transformedInput);
               const cellProperties = gridProperties.layout[xAxisKey];
 
               return renderChart<ReturnType<typeof transformer>>(
