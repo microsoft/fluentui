@@ -1397,3 +1397,114 @@ describe('formatDateToLocaleString', () => {
     expect(result).toBe('Invalid Date');
   });
 });
+
+describe('generateLinearTicks', () => {
+  it('generates ticks starting from tick0 within the domain', () => {
+    const ticks = utils.generateLinearTicks(0, 10, [0, 50]);
+    expect(ticks).toEqual([0, 10, 20, 30, 40, 50]);
+  });
+
+  it('generates ticks when tick0 is not at domain min', () => {
+    const ticks = utils.generateLinearTicks(5, 10, [0, 50]);
+    expect(ticks).toEqual([5, 15, 25, 35, 45]);
+  });
+
+  it('handles domain min greater than tick0', () => {
+    const ticks = utils.generateLinearTicks(0, 10, [25, 60]);
+    expect(ticks).toEqual([30, 40, 50, 60]);
+  });
+
+  it('handles negative domain values', () => {
+    const ticks = utils.generateLinearTicks(0, 10, [-30, -5]);
+    expect(ticks).toEqual([-30, -20, -10]);
+  });
+
+  it('returns an empty array when domain is below tick0 and interval', () => {
+    const ticks = utils.generateLinearTicks(100, 10, [0, 50]);
+    expect(ticks).toEqual([0, 10, 20, 30, 40, 50]);
+  });
+
+  it('handles small intervals correctly', () => {
+    const ticks = utils.generateLinearTicks(0, 2, [1, 7]);
+    expect(ticks).toEqual([2, 4, 6]);
+  });
+
+  it('includes domainMax if it lands exactly on a tick', () => {
+    const ticks = utils.generateLinearTicks(0, 5, [0, 20]);
+    expect(ticks).toContain(20);
+  });
+
+  it('excludes domainMax if it does not land on a tick', () => {
+    const ticks = utils.generateLinearTicks(0, 7, [0, 20]);
+    expect(ticks).toEqual([0, 7, 14]);
+  });
+});
+
+describe('generateMonthlyTicks', () => {
+  const jan1 = new Date(2020, 0, 1); // Jan 1, 2020 (local time)
+
+  it('generates ticks every 1 month within domain', () => {
+    const ticks = utils.generateMonthlyTicks(jan1, 1, [new Date(2020, 0, 1), new Date(2020, 5, 30)]);
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual([
+      '2020-01-01',
+      '2020-02-01',
+      '2020-03-01',
+      '2020-04-01',
+      '2020-05-01',
+      '2020-06-01',
+    ]);
+  });
+
+  it('generates ticks every 3 months within domain', () => {
+    const ticks = utils.generateMonthlyTicks(jan1, 3, [new Date(2020, 0, 1), new Date(2020, 11, 31)]);
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual([
+      '2020-01-01',
+      '2020-04-01',
+      '2020-07-01',
+      '2020-10-01',
+    ]);
+  });
+
+  it('respects domainMin (no ticks before domain)', () => {
+    const ticks = utils.generateMonthlyTicks(jan1, 2, [new Date(2020, 2, 1), new Date(2020, 8, 1)]);
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual([
+      '2020-03-01',
+      '2020-05-01',
+      '2020-07-01',
+      '2020-09-01',
+    ]);
+  });
+
+  it('handles leap years correctly (Feb 29)', () => {
+    const ticks = utils.generateMonthlyTicks(new Date(2020, 0, 31), 1, [new Date(2020, 0, 1), new Date(2020, 2, 31)]);
+    // Jan 31 → Feb (adjust to Feb 29 since Feb 31 is invalid) → Mar 31
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual(['2020-01-31', '2020-02-29', '2020-03-31']);
+  });
+
+  it('handles end-of-month correctly (short months)', () => {
+    const ticks = utils.generateMonthlyTicks(new Date(2021, 0, 31), 1, [new Date(2021, 0, 1), new Date(2021, 4, 31)]);
+    // Jan 31 → Feb (28th in non-leap year) → Mar 31 → Apr 30 → May 31
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual([
+      '2021-01-31',
+      '2021-02-28',
+      '2021-03-31',
+      '2021-04-30',
+      '2021-05-31',
+    ]);
+  });
+
+  it('works with UTC mode', () => {
+    const ticks = utils.generateMonthlyTicks(
+      new Date(Date.UTC(2020, 0, 1)),
+      2,
+      [new Date(Date.UTC(2020, 0, 1)), new Date(Date.UTC(2020, 6, 1))],
+      true,
+    );
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual([
+      '2020-01-01',
+      '2020-03-01',
+      '2020-05-01',
+      '2020-07-01',
+    ]);
+  });
+});

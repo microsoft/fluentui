@@ -501,7 +501,7 @@ export function createDateXAxis(
   if (tickParams.tickValues) {
     customTickValues = tickParams.tickValues as Date[];
   } else if (tickInterval) {
-    customTickValues = generateDateTicks(tickInterval, tick0, xAxisScale.domain());
+    customTickValues = generateDateTicks(tickInterval, tick0, xAxisScale.domain(), useUTC);
   }
   if (customTickValues) {
     xAxis.tickValues(customTickValues);
@@ -2112,7 +2112,7 @@ export const getRangeForScatterMarkerSize = ({
   return Math.min(extraXPixels, extraYPixels);
 };
 
-const generateLinearTicks = (tick0: number, tickInterval: number, scaleDomain: number[]) => {
+export const generateLinearTicks = (tick0: number, tickInterval: number, scaleDomain: number[]) => {
   const domainMin = d3Min(scaleDomain)!;
   const domainMax = d3Max(scaleDomain)!;
 
@@ -2128,27 +2128,34 @@ const generateLinearTicks = (tick0: number, tickInterval: number, scaleDomain: n
   return ticks;
 };
 
-const generateMonthlyTicks = (tick0: Date, tickIntervalInMonths: number, scaleDomain: Date[]) => {
+export const generateMonthlyTicks = (
+  tick0: Date,
+  tickIntervalInMonths: number,
+  scaleDomain: Date[],
+  useUTC?: boolean,
+) => {
   const domainMin = +d3Min(scaleDomain)!;
   const domainMax = +d3Max(scaleDomain)!;
 
   const ticks: Date[] = [];
 
+  const getMonth = (d: Date) => (useUTC ? d.getUTCMonth() : d.getMonth());
+  const setMonth = (d: Date, month: number) => (useUTC ? new Date(d.setUTCMonth(month)) : new Date(d.setMonth(month)));
+
   let start = 0;
-  for (let startDate = new Date(+tick0); +startDate >= domainMin; ) {
-    startDate.setUTCMonth(startDate.getUTCMonth() - tickIntervalInMonths);
+  for (let firstTick = new Date(+tick0); +firstTick >= domainMin; ) {
+    firstTick = setMonth(firstTick, getMonth(firstTick) - tickIntervalInMonths);
     start -= tickIntervalInMonths;
   }
   start += tickIntervalInMonths;
 
-  const baseMonth = tick0.getUTCMonth();
+  const baseMonth = getMonth(tick0);
 
   for (let i = start; ; i += tickIntervalInMonths) {
-    const tickDate = new Date(+tick0);
-    tickDate.setUTCMonth(baseMonth + i);
+    let tickDate = setMonth(new Date(+tick0), baseMonth + i);
 
-    if ((baseMonth + (i % 12) + 12) % 12 !== tickDate.getUTCMonth()) {
-      tickDate.setUTCDate(0);
+    if (getMonth(tickDate) !== (((baseMonth + i) % 12) + 12) % 12) {
+      tickDate = useUTC ? new Date(tickDate.setUTCDate(0)) : new Date(tickDate.setDate(0));
     }
 
     if (+tickDate > domainMax) {
@@ -2193,6 +2200,7 @@ const generateDateTicks = (
   tickInterval: string | number | undefined,
   tick0: number | Date | undefined,
   scaleDomain: Date[],
+  useUTC?: boolean,
 ) => {
   const x = tick0 instanceof Date ? tick0 : new Date('2000-01-01');
   if (typeof tickInterval === 'number' && tickInterval > 0) {
@@ -2206,7 +2214,7 @@ const generateDateTicks = (
     const prefix = tickInterval[0];
     const num = Number(tickInterval.slice(1));
     if (prefix === 'M' && num > 0 && num === Math.round(num)) {
-      return generateMonthlyTicks(x, num, scaleDomain);
+      return generateMonthlyTicks(x, num, scaleDomain, useUTC);
     }
   }
 };
