@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.12",
-    "@floating-ui/devtools": "0.2.1",
+    "@floating-ui/devtools": "^0.2.3",
     "@fluentui/react-shared-contexts": "^9.24.1",
     "@fluentui/react-theme": "^9.2.0",
     "@fluentui/react-utilities": "^9.23.2",
