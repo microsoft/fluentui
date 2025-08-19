@@ -14,8 +14,11 @@ const tsPathAliases = pathsToModuleNameMapper(tsConfig.compilerOptions.paths, {
  */
 const testingLibraryPaths = {
   '^@testing-library/(.*)$': [path.join(__dirname, 'node_modules/@testing-library/$1')],
+  // without this React 17 will be used instead of React 18
+  '^@testing-library/react-hooks$': path.join(__dirname, 'node_modules/@testing-library/react-hooks'),
   '^react-is$': path.join(__dirname, 'node_modules/react-is'),
   '^react$': path.join(__dirname, 'node_modules/react'),
+  '^react/jsx-runtime$': path.join(__dirname, 'node_modules/react/jsx-runtime'),
   '^react-dom$': path.join(__dirname, 'node_modules/react-dom'),
   '^react-dom/(.*)$': path.join(__dirname, 'node_modules/react-dom/$1'),
   '^react-test-renderer$': path.join(__dirname, 'node_modules/react-test-renderer'),
