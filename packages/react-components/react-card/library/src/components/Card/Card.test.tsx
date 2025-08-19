@@ -126,8 +126,9 @@ describe('Card', () => {
   });
 
   it('disables checkbox when card is disabled', () => {
+    const onSelectionChange = jest.fn();
     const { container } = render(
-      <Card disabled selected={false} onSelectionChange={() => {}}>
+      <Card disabled selected={false} onSelectionChange={onSelectionChange}>
         Default Card
       </Card>,
     );
