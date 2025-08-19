@@ -2573,20 +2573,20 @@ const getBarProps = (
 type GetAxisScaleTypePropsResult = Pick<ICartesianChartProps, 'xScaleType' | 'yScaleType' | 'secondaryYScaleType'>;
 
 const getAxisScaleTypeProps = (data: Data[], layout: Partial<Layout> | undefined): GetAxisScaleTypePropsResult => {
-  const result: GetAxisScaleTypePropsResult = {};
+  const props: GetAxisScaleTypePropsResult = {};
   const axisObjects = getAxisObjects(data, layout);
 
   if (axisObjects.x?.type === 'log') {
-    result.xScaleType = 'log';
+    props.xScaleType = 'log';
   }
   if (axisObjects.y?.type === 'log') {
-    result.yScaleType = 'log';
+    props.yScaleType = 'log';
   }
   if (axisObjects.y2?.type === 'log') {
-    result.secondaryYScaleType = 'log';
+    props.secondaryYScaleType = 'log';
   }
 
-  return result;
+  return props;
 };
 
 type GetAxisTickPropsResult = Pick<
@@ -2595,7 +2595,7 @@ type GetAxisTickPropsResult = Pick<
 >;
 
 const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): GetAxisTickPropsResult => {
-  const result: GetAxisTickPropsResult = {};
+  const props: GetAxisTickPropsResult = {};
   const axisObjects = getAxisObjects(data, layout);
 
   Object.keys(axisObjects).forEach(axId => {
@@ -2610,9 +2610,9 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
       const tickValues = axType === 'date' ? ax.tickvals!.map(v => new Date(v)) : ax.tickvals;
 
       if (axId === 'x') {
-        result.tickValues = tickValues;
+        props.tickValues = tickValues;
       } else if (axId === 'y') {
-        result.yAxisTickValues = tickValues;
+        props.yAxisTickValues = tickValues;
       }
       return;
     }
@@ -2622,12 +2622,12 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
       const tick0 = getTick0(ax.tick0, axType, dtick);
 
       if (axId === 'x') {
-        result.xAxis = {
+        props.xAxis = {
           tickInterval: dtick,
           tick0: tick0,
         };
       } else if (axId === 'y') {
-        result.yAxis = {
+        props.yAxis = {
           tickInterval: dtick,
           tick0: tick0,
         };
@@ -2635,16 +2635,16 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
       return;
     }
 
-    if (typeof ax.nticks === 'number' && ax.nticks > 0) {
+    if ((!ax.tickmode || ax.tickmode === 'auto') && typeof ax.nticks === 'number' && ax.nticks > 0) {
       if (axId === 'x') {
-        result.xAxisTickCount = ax.nticks;
+        props.xAxisTickCount = ax.nticks;
       } else if (axId === 'y') {
-        result.yAxisTickCount = ax.nticks;
+        props.yAxisTickCount = ax.nticks;
       }
     }
   });
 
-  return result;
+  return props;
 };
 
 /**
@@ -2656,11 +2656,15 @@ const getDtick = (dtick: DTickValue | undefined, axType: AxisType | undefined) =
   const isCatAx = axType === 'category';
   const dtickDflt = isDateAx ? 86400000 : 1;
 
-  if (!dtick) {return dtickDflt;}
+  if (!dtick) {
+    return dtickDflt;
+  }
 
   if (isNumber(dtick)) {
     dtick = Number(dtick);
-    if (dtick <= 0) {return dtickDflt;}
+    if (dtick <= 0) {
+      return dtickDflt;
+    }
     if (isCatAx) {
       // category dtick must be positive integers
       return Math.max(1, Math.round(dtick));
@@ -2725,21 +2729,21 @@ const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
     yAxisIds.add(axisIds.y);
   });
 
-  const result: Record<string, Partial<LayoutAxis> | undefined> = {};
+  const axisObjects: Record<string, Partial<LayoutAxis> | undefined> = {};
 
   if (typeof xAxisId === 'number') {
-    result.x = layout?.[getAxisKey('x', xAxisId)];
+    axisObjects.x = layout?.[getAxisKey('x', xAxisId)];
   }
 
   const sortedYAxisIds = Array.from(yAxisIds).sort();
   if (sortedYAxisIds.length > 0) {
-    result.y = layout?.[getAxisKey('y', sortedYAxisIds[0])];
+    axisObjects.y = layout?.[getAxisKey('y', sortedYAxisIds[0])];
   }
   if (sortedYAxisIds.length > 1) {
-    result.y2 = layout?.[getAxisKey('y', sortedYAxisIds[1])];
+    axisObjects.y2 = layout?.[getAxisKey('y', sortedYAxisIds[1])];
   }
 
-  return result;
+  return axisObjects;
 };
 
 const getAxisType = (data: Data[], axLetter: 'x' | 'y', ax: Partial<LayoutAxis> | undefined): AxisType | undefined => {

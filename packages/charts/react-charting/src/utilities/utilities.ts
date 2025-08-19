@@ -2128,26 +2128,6 @@ const generateLinearTicks = (tick0: number, tickInterval: number, scaleDomain: n
   return ticks;
 };
 
-const generateLogTicks = (tickInterval: number, scaleDomain: number[]) => {
-  const domainMin = d3Min(scaleDomain)!;
-  const domainMax = d3Max(scaleDomain)!;
-
-  const ticks: number[] = [];
-  if (domainMin <= 0) {
-    return ticks;
-  }
-
-  const base = Math.pow(10, tickInterval);
-  const minExp = Math.ceil(Math.log(domainMin) / Math.log(base));
-  const maxExp = Math.floor(Math.log(domainMax) / Math.log(base));
-
-  for (let exp = minExp; exp <= maxExp; exp++) {
-    ticks.push(Math.pow(base, exp));
-  }
-
-  return ticks;
-};
-
 const generateMonthlyTicks = (tick0: Date, tickIntervalInMonths: number, scaleDomain: Date[]) => {
   const domainMin = +d3Min(scaleDomain)!;
   const domainMax = +d3Max(scaleDomain)!;
@@ -2191,7 +2171,12 @@ const generateNumericTicks = (
   const x = typeof tick0 === 'number' ? tick0 : 0;
   if (scaleType === 'log') {
     if (typeof tickInterval === 'number' && tickInterval > 0) {
-      return generateLogTicks(tickInterval, scaleDomain);
+      const ticks = generateLinearTicks(
+        x,
+        tickInterval,
+        scaleDomain.map(d => Math.log10(d)),
+      );
+      return ticks.map(t => Math.pow(10, t));
     } else if (typeof tickInterval === 'string') {
       const prefix = tickInterval[0];
       const num = Number(tickInterval.slice(1));
