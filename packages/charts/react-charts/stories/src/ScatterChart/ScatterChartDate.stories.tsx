@@ -1,7 +1,15 @@
 import * as React from 'react';
 import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
+import { makeStyles, tokens } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
 
 export const ScatterChartDate = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
 
@@ -147,6 +155,7 @@ export const ScatterChartDate = () => {
           width={width}
           xAxisTitle={'Date'}
           yAxisTitle={'Number of visitors'}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </>

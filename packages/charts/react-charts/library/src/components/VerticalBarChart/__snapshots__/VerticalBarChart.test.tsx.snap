@@ -12,6 +12,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -27,13 +28,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         >
           <path
             class="domain"
-            d="M56.5,6V0.5H614.5V6"
+            d="M64.5,6V0.5H606.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(56.5,0)"
+            transform="translate(64.5,0)"
           >
             <line
               stroke="currentColor"
@@ -51,7 +52,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(99.42307692307693,0)"
+            transform="translate(106.19230769230771,0)"
           >
             <line
               stroke="currentColor"
@@ -69,7 +70,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(142.34615384615387,0)"
+            transform="translate(147.8846153846154,0)"
           >
             <line
               stroke="currentColor"
@@ -87,7 +88,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(185.26923076923077,0)"
+            transform="translate(189.5769230769231,0)"
           >
             <line
               stroke="currentColor"
@@ -105,7 +106,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(228.1923076923077,0)"
+            transform="translate(231.26923076923077,0)"
           >
             <line
               stroke="currentColor"
@@ -123,7 +124,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(271.11538461538464,0)"
+            transform="translate(272.96153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -141,7 +142,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(314.03846153846155,0)"
+            transform="translate(314.6538461538462,0)"
           >
             <line
               stroke="currentColor"
@@ -159,7 +160,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(356.96153846153845,0)"
+            transform="translate(356.3461538461538,0)"
           >
             <line
               stroke="currentColor"
@@ -177,7 +178,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(399.8846153846154,0)"
+            transform="translate(398.03846153846155,0)"
           >
             <line
               stroke="currentColor"
@@ -195,7 +196,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(442.8076923076923,0)"
+            transform="translate(439.7307692307692,0)"
           >
             <line
               stroke="currentColor"
@@ -213,7 +214,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(485.7307692307692,0)"
+            transform="translate(481.42307692307696,0)"
           >
             <line
               stroke="currentColor"
@@ -231,7 +232,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(528.6538461538462,0)"
+            transform="translate(523.1153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -249,7 +250,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(571.5769230769231,0)"
+            transform="translate(564.8076923076924,0)"
           >
             <line
               stroke="currentColor"
@@ -267,7 +268,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(614.5,0)"
+            transform="translate(606.5,0)"
           >
             <line
               stroke="currentColor"
@@ -392,23 +393,22 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="aqua"
               height="49"
-              id="_VBC_bar_166-0"
+              id="_VBC_bar_r5s-0"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="48"
+              x="56"
               y="216"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="56"
+              x="64"
               y="210"
             >
               10k
@@ -417,23 +417,22 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="blue"
               height="245"
-              id="_VBC_bar_166-1"
+              id="_VBC_bar_r5s-1"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="262.61538461538464"
+              x="264.46153846153845"
               y="20"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="270.61538461538464"
+              x="272.46153846153845"
               y="14"
             >
               50k
@@ -442,23 +441,22 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="navy"
               height="147"
-              id="_VBC_bar_166-2"
+              id="_VBC_bar_r5s-2"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="584.5384615384615"
+              x="577.1538461538462"
               y="118"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="592.5384615384615"
+              x="585.1538461538462"
               y="112"
             >
               30k
@@ -557,6 +555,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -572,13 +571,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         >
           <path
             class="domain"
-            d="M56.5,6V0.5H614.5V6"
+            d="M64.5,6V0.5H606.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(56.5,0)"
+            transform="translate(64.5,0)"
           >
             <line
               stroke="currentColor"
@@ -596,7 +595,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(99.42307692307693,0)"
+            transform="translate(106.19230769230771,0)"
           >
             <line
               stroke="currentColor"
@@ -614,7 +613,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(142.34615384615387,0)"
+            transform="translate(147.8846153846154,0)"
           >
             <line
               stroke="currentColor"
@@ -632,7 +631,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(185.26923076923077,0)"
+            transform="translate(189.5769230769231,0)"
           >
             <line
               stroke="currentColor"
@@ -650,7 +649,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(228.1923076923077,0)"
+            transform="translate(231.26923076923077,0)"
           >
             <line
               stroke="currentColor"
@@ -668,7 +667,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(271.11538461538464,0)"
+            transform="translate(272.96153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -686,7 +685,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(314.03846153846155,0)"
+            transform="translate(314.6538461538462,0)"
           >
             <line
               stroke="currentColor"
@@ -704,7 +703,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(356.96153846153845,0)"
+            transform="translate(356.3461538461538,0)"
           >
             <line
               stroke="currentColor"
@@ -722,7 +721,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(399.8846153846154,0)"
+            transform="translate(398.03846153846155,0)"
           >
             <line
               stroke="currentColor"
@@ -740,7 +739,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(442.8076923076923,0)"
+            transform="translate(439.7307692307692,0)"
           >
             <line
               stroke="currentColor"
@@ -758,7 +757,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(485.7307692307692,0)"
+            transform="translate(481.42307692307696,0)"
           >
             <line
               stroke="currentColor"
@@ -776,7 +775,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(528.6538461538462,0)"
+            transform="translate(523.1153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -794,7 +793,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(571.5769230769231,0)"
+            transform="translate(564.8076923076924,0)"
           >
             <line
               stroke="currentColor"
@@ -812,7 +811,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(614.5,0)"
+            transform="translate(606.5,0)"
           >
             <line
               stroke="currentColor"
@@ -937,23 +936,22 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="aqua"
               height="49"
-              id="_VBC_bar_172-0"
+              id="_VBC_bar_r63-0"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="48"
+              x="56"
               y="216"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="56"
+              x="64"
               y="210"
             >
               10k
@@ -962,23 +960,22 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="blue"
               height="245"
-              id="_VBC_bar_172-1"
+              id="_VBC_bar_r63-1"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="262.61538461538464"
+              x="264.46153846153845"
               y="20"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="270.61538461538464"
+              x="272.46153846153845"
               y="14"
             >
               50k
@@ -987,23 +984,22 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="navy"
               height="147"
-              id="_VBC_bar_172-2"
+              id="_VBC_bar_r63-2"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="584.5384615384615"
+              x="577.1538461538462"
               y="118"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="592.5384615384615"
+              x="585.1538461538462"
               y="112"
             >
               30k
@@ -1093,7 +1089,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 exports[`Theme Change Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider174"
+    class="fui-FluentProvider fui-FluentProviderr66"
     dir="ltr"
   >
     <div
@@ -1106,6 +1102,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -1121,13 +1118,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
           >
             <path
               class="domain"
-              d="M56.5,6V0.5H614.5V6"
+              d="M64.5,6V0.5H606.5V6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(56.5,0)"
+              transform="translate(64.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -1145,7 +1142,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(99.42307692307693,0)"
+              transform="translate(106.19230769230771,0)"
             >
               <line
                 stroke="currentColor"
@@ -1163,7 +1160,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(142.34615384615387,0)"
+              transform="translate(147.8846153846154,0)"
             >
               <line
                 stroke="currentColor"
@@ -1181,7 +1178,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(185.26923076923077,0)"
+              transform="translate(189.5769230769231,0)"
             >
               <line
                 stroke="currentColor"
@@ -1199,7 +1196,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(228.1923076923077,0)"
+              transform="translate(231.26923076923077,0)"
             >
               <line
                 stroke="currentColor"
@@ -1217,7 +1214,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(271.11538461538464,0)"
+              transform="translate(272.96153846153845,0)"
             >
               <line
                 stroke="currentColor"
@@ -1235,7 +1232,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(314.03846153846155,0)"
+              transform="translate(314.6538461538462,0)"
             >
               <line
                 stroke="currentColor"
@@ -1253,7 +1250,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(356.96153846153845,0)"
+              transform="translate(356.3461538461538,0)"
             >
               <line
                 stroke="currentColor"
@@ -1271,7 +1268,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(399.8846153846154,0)"
+              transform="translate(398.03846153846155,0)"
             >
               <line
                 stroke="currentColor"
@@ -1289,7 +1286,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(442.8076923076923,0)"
+              transform="translate(439.7307692307692,0)"
             >
               <line
                 stroke="currentColor"
@@ -1307,7 +1304,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(485.7307692307692,0)"
+              transform="translate(481.42307692307696,0)"
             >
               <line
                 stroke="currentColor"
@@ -1325,7 +1322,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(528.6538461538462,0)"
+              transform="translate(523.1153846153845,0)"
             >
               <line
                 stroke="currentColor"
@@ -1343,7 +1340,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(571.5769230769231,0)"
+              transform="translate(564.8076923076924,0)"
             >
               <line
                 stroke="currentColor"
@@ -1361,7 +1358,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(614.5,0)"
+              transform="translate(606.5,0)"
             >
               <line
                 stroke="currentColor"
@@ -1486,23 +1483,22 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g>
               <rect
                 aria-label="2020/04/30. First, 10%."
-                data-is-focusable="true"
                 fill="aqua"
                 height="49"
-                id="_VBC_bar_179-0"
+                id="_VBC_bar_r6b-0"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
-                x="48"
+                x="56"
                 y="216"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
-                x="56"
+                x="64"
                 y="210"
               >
                 10k
@@ -1511,23 +1507,22 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g>
               <rect
                 aria-label="2020/04/30. Second, 20%."
-                data-is-focusable="true"
                 fill="blue"
                 height="245"
-                id="_VBC_bar_179-1"
+                id="_VBC_bar_r6b-1"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
-                x="262.61538461538464"
+                x="264.46153846153845"
                 y="20"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
-                x="270.61538461538464"
+                x="272.46153846153845"
                 y="14"
               >
                 50k
@@ -1536,23 +1531,22 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g>
               <rect
                 aria-label="2020/04/30. Third, 37%."
-                data-is-focusable="true"
                 fill="navy"
                 height="147"
-                id="_VBC_bar_179-2"
+                id="_VBC_bar_r6b-2"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
-                x="584.5384615384615"
+                x="577.1538461538462"
                 y="118"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
-                x="592.5384615384615"
+                x="585.1538461538462"
                 y="112"
               >
                 30k
@@ -1644,7 +1638,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_VBC_empty182"
+    id="_VBC_emptyr6f"
     role="alert"
     style="opacity: 0;"
   />
@@ -1663,6 +1657,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -1678,13 +1673,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
         >
           <path
             class="domain"
-            d="M56.5,6V0.5H614.5V6"
+            d="M64.5,6V0.5H606.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(56.5,0)"
+            transform="translate(64.5,0)"
           >
             <line
               stroke="currentColor"
@@ -1702,7 +1697,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(99.42307692307693,0)"
+            transform="translate(106.19230769230771,0)"
           >
             <line
               stroke="currentColor"
@@ -1720,7 +1715,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(142.34615384615387,0)"
+            transform="translate(147.8846153846154,0)"
           >
             <line
               stroke="currentColor"
@@ -1738,7 +1733,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(185.26923076923077,0)"
+            transform="translate(189.5769230769231,0)"
           >
             <line
               stroke="currentColor"
@@ -1756,7 +1751,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(228.1923076923077,0)"
+            transform="translate(231.26923076923077,0)"
           >
             <line
               stroke="currentColor"
@@ -1774,7 +1769,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(271.11538461538464,0)"
+            transform="translate(272.96153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -1792,7 +1787,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(314.03846153846155,0)"
+            transform="translate(314.6538461538462,0)"
           >
             <line
               stroke="currentColor"
@@ -1810,7 +1805,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(356.96153846153845,0)"
+            transform="translate(356.3461538461538,0)"
           >
             <line
               stroke="currentColor"
@@ -1828,7 +1823,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(399.8846153846154,0)"
+            transform="translate(398.03846153846155,0)"
           >
             <line
               stroke="currentColor"
@@ -1846,7 +1841,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(442.8076923076923,0)"
+            transform="translate(439.7307692307692,0)"
           >
             <line
               stroke="currentColor"
@@ -1864,7 +1859,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(485.7307692307692,0)"
+            transform="translate(481.42307692307696,0)"
           >
             <line
               stroke="currentColor"
@@ -1882,7 +1877,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(528.6538461538462,0)"
+            transform="translate(523.1153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -1900,7 +1895,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(571.5769230769231,0)"
+            transform="translate(564.8076923076924,0)"
           >
             <line
               stroke="currentColor"
@@ -1918,7 +1913,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(614.5,0)"
+            transform="translate(606.5,0)"
           >
             <line
               stroke="currentColor"
@@ -2043,23 +2038,22 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="aqua"
               height="49"
-              id="_VBC_bar_185-0"
+              id="_VBC_bar_r6i-0"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="48"
+              x="56"
               y="216"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="56"
+              x="64"
               y="210"
             >
               10k
@@ -2068,23 +2062,22 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="blue"
               height="245"
-              id="_VBC_bar_185-1"
+              id="_VBC_bar_r6i-1"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="262.61538461538464"
+              x="264.46153846153845"
               y="20"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="270.61538461538464"
+              x="272.46153846153845"
               y="14"
             >
               50k
@@ -2093,23 +2086,22 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="navy"
               height="147"
-              id="_VBC_bar_185-2"
+              id="_VBC_bar_r6i-2"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="584.5384615384615"
+              x="577.1538461538462"
               y="118"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="592.5384615384615"
+              x="585.1538461538462"
               y="112"
             >
               30k
@@ -2208,6 +2200,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -2223,13 +2216,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         >
           <path
             class="domain"
-            d="M49,6V0.5H-28V6"
+            d="M49.5,6V0.5H-28.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(49,0)"
+            transform="translate(49.5,0)"
           >
             <line
               stroke="currentColor"
@@ -2247,7 +2240,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(19.384615384615387,0)"
+            transform="translate(19.5,0)"
           >
             <line
               stroke="currentColor"
@@ -2265,7 +2258,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(-10.230769230769234,0)"
+            transform="translate(-10.500000000000005,0)"
           >
             <line
               stroke="currentColor"
@@ -2390,48 +2383,45 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="qualitative.1"
               height="51"
-              id="_VBC_bar_23-0"
+              id="_VBC_bar_rp-0"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="1"
-              x="48"
+              x="48.5"
               y="20"
             />
           </g>
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="qualitative.2"
               height="255"
-              id="_VBC_bar_23-1"
+              id="_VBC_bar_rp-1"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="1"
-              x="18.384615384615387"
+              x="18.5"
               y="20"
             />
           </g>
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="qualitative.3"
               height="153"
-              id="_VBC_bar_23-2"
+              id="_VBC_bar_rp-2"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="1"
-              x="-26.03846153846154"
+              x="-26.500000000000004"
               y="20"
             />
           </g>
@@ -2528,6 +2518,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -2543,13 +2534,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         >
           <path
             class="domain"
-            d="M49,6V0.5H-28V6"
+            d="M49.5,6V0.5H-28.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(49,0)"
+            transform="translate(49.5,0)"
           >
             <line
               stroke="currentColor"
@@ -2567,7 +2558,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(19.384615384615387,0)"
+            transform="translate(19.5,0)"
           >
             <line
               stroke="currentColor"
@@ -2585,7 +2576,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(-10.230769230769234,0)"
+            transform="translate(-10.500000000000005,0)"
           >
             <line
               stroke="currentColor"
@@ -2710,48 +2701,45 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="aqua"
               height="51"
-              id="_VBC_bar_5-0"
+              id="_VBC_bar_r4-0"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="1"
-              x="48"
+              x="48.5"
               y="224"
             />
           </g>
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="blue"
               height="255"
-              id="_VBC_bar_5-1"
+              id="_VBC_bar_r4-1"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="1"
-              x="18.384615384615387"
+              x="18.5"
               y="20"
             />
           </g>
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="navy"
               height="153"
-              id="_VBC_bar_5-2"
+              id="_VBC_bar_r4-2"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="1"
-              x="-26.03846153846154"
+              x="-26.500000000000004"
               y="122"
             />
           </g>
@@ -2848,6 +2836,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -2978,10 +2967,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="This is a medium long label. . 3500."
-              data-is-focusable="true"
               fill="#627CEF"
               height="255"
-              id="_VBC_bar_11-0"
+              id="_VBC_bar_rb-0"
               opacity="1"
               role="img"
               rx="0"
@@ -2996,10 +2984,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="This is a long label This is a long label. 2500."
-              data-is-focusable="true"
               fill="#C19C00"
               height="182.14285714285714"
-              id="_VBC_bar_11-1"
+              id="_VBC_bar_rb-1"
               opacity="1"
               role="img"
               rx="0"
@@ -3014,10 +3001,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="This label is as long as the previous one. 1900."
-              data-is-focusable="true"
               fill="#E650AF"
               height="138.42857142857142"
-              id="_VBC_bar_11-2"
+              id="_VBC_bar_rb-2"
               opacity="1"
               role="img"
               rx="0"
@@ -3032,10 +3018,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="A short label. 2800."
-              data-is-focusable="true"
               fill="#0E7878"
               height="204"
-              id="_VBC_bar_11-3"
+              id="_VBC_bar_rb-3"
               opacity="1"
               role="img"
               rx="0"
@@ -3100,6 +3085,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -3115,13 +3101,13 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
         >
           <path
             class="domain"
-            d="M49,6V0.5H-28V6"
+            d="M49.5,6V0.5H-28.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(49,0)"
+            transform="translate(49.5,0)"
           >
             <line
               stroke="currentColor"
@@ -3139,7 +3125,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(19.384615384615387,0)"
+            transform="translate(19.5,0)"
           >
             <line
               stroke="currentColor"
@@ -3157,7 +3143,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(-10.230769230769234,0)"
+            transform="translate(-10.500000000000005,0)"
           >
             <line
               stroke="currentColor"
@@ -3300,48 +3286,45 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="qualitative.1"
               height="25.5"
-              id="_VBC_bar_29-0"
+              id="_VBC_bar_r10-0"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="1"
-              x="48"
+              x="48.5"
               y="96.5"
             />
           </g>
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="qualitative.2"
               height="127.5"
-              id="_VBC_bar_29-1"
+              id="_VBC_bar_r10-1"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="1"
-              x="18.384615384615387"
+              x="18.5"
               y="122"
             />
           </g>
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="qualitative.3"
               height="76.5"
-              id="_VBC_bar_29-2"
+              id="_VBC_bar_r10-2"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="1"
-              x="-26.03846153846154"
+              x="-26.500000000000004"
               y="45.5"
             />
           </g>
@@ -3438,6 +3421,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -3453,13 +3437,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         >
           <path
             class="domain"
-            d="M56.5,6V0.5H614.5V6"
+            d="M64.5,6V0.5H606.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(56.5,0)"
+            transform="translate(64.5,0)"
           >
             <line
               stroke="currentColor"
@@ -3477,7 +3461,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(99.42307692307693,0)"
+            transform="translate(106.19230769230771,0)"
           >
             <line
               stroke="currentColor"
@@ -3495,7 +3479,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(142.34615384615387,0)"
+            transform="translate(147.8846153846154,0)"
           >
             <line
               stroke="currentColor"
@@ -3513,7 +3497,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(185.26923076923077,0)"
+            transform="translate(189.5769230769231,0)"
           >
             <line
               stroke="currentColor"
@@ -3531,7 +3515,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(228.1923076923077,0)"
+            transform="translate(231.26923076923077,0)"
           >
             <line
               stroke="currentColor"
@@ -3549,7 +3533,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(271.11538461538464,0)"
+            transform="translate(272.96153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -3567,7 +3551,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(314.03846153846155,0)"
+            transform="translate(314.6538461538462,0)"
           >
             <line
               stroke="currentColor"
@@ -3585,7 +3569,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(356.96153846153845,0)"
+            transform="translate(356.3461538461538,0)"
           >
             <line
               stroke="currentColor"
@@ -3603,7 +3587,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(399.8846153846154,0)"
+            transform="translate(398.03846153846155,0)"
           >
             <line
               stroke="currentColor"
@@ -3621,7 +3605,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(442.8076923076923,0)"
+            transform="translate(439.7307692307692,0)"
           >
             <line
               stroke="currentColor"
@@ -3639,7 +3623,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(485.7307692307692,0)"
+            transform="translate(481.42307692307696,0)"
           >
             <line
               stroke="currentColor"
@@ -3657,7 +3641,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(528.6538461538462,0)"
+            transform="translate(523.1153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -3675,7 +3659,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(571.5769230769231,0)"
+            transform="translate(564.8076923076924,0)"
           >
             <line
               stroke="currentColor"
@@ -3693,7 +3677,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(614.5,0)"
+            transform="translate(606.5,0)"
           >
             <line
               stroke="currentColor"
@@ -3818,23 +3802,22 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="aqua"
               height="49"
-              id="_VBC_bar_191-0"
+              id="_VBC_bar_r6p-0"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="48"
+              x="56"
               y="216"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="56"
+              x="64"
               y="210"
             >
               10k
@@ -3843,23 +3826,22 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="blue"
               height="245"
-              id="_VBC_bar_191-1"
+              id="_VBC_bar_r6p-1"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="262.61538461538464"
+              x="264.46153846153845"
               y="20"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="270.61538461538464"
+              x="272.46153846153845"
               y="14"
             >
               50k
@@ -3868,23 +3850,22 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="navy"
               height="147"
-              id="_VBC_bar_191-2"
+              id="_VBC_bar_r6p-2"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="584.5384615384615"
+              x="577.1538461538462"
               y="118"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="592.5384615384615"
+              x="585.1538461538462"
               y="112"
             >
               30k
@@ -3909,7 +3890,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="First"
@@ -3931,7 +3912,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Second"
@@ -3953,7 +3934,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Third"
@@ -3973,6 +3954,52 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 Third
               </div>
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fui-cart__calloutContainer"
+      id="calloutr6r"
+    >
+      <div
+        class="fui-PopoverSurface"
+        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        role="group"
+        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+      >
+        <div
+          class="fui-cart__calloutContentRoot"
+        >
+          <div
+            class="fui-cart__calloutDateTimeContainer"
+          >
+            <div
+              class="fui-cart__calloutContentX"
+            >
+              2020/04/30
+               
+            </div>
+          </div>
+          <div
+            class="fui-cart__calloutInfoContainer"
+            style="border-inline-start: 4px solid blue; margin-top: 11px;"
+          >
+            <div
+              class="fui-cart__calloutBlockContainer"
+            >
+              <div
+                class="fui-cart__calloutlegendText"
+              >
+                Second
+              </div>
+              <div
+                class="fui-cart__calloutContentY"
+                style="color: blue;"
+              >
+                50,000
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -3993,6 +4020,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -4008,13 +4036,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         >
           <path
             class="domain"
-            d="M56.5,6V0.5H614.5V6"
+            d="M64.5,6V0.5H606.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(56.5,0)"
+            transform="translate(64.5,0)"
           >
             <line
               stroke="currentColor"
@@ -4032,7 +4060,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(99.42307692307693,0)"
+            transform="translate(106.19230769230771,0)"
           >
             <line
               stroke="currentColor"
@@ -4050,7 +4078,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(142.34615384615387,0)"
+            transform="translate(147.8846153846154,0)"
           >
             <line
               stroke="currentColor"
@@ -4068,7 +4096,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(185.26923076923077,0)"
+            transform="translate(189.5769230769231,0)"
           >
             <line
               stroke="currentColor"
@@ -4086,7 +4114,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(228.1923076923077,0)"
+            transform="translate(231.26923076923077,0)"
           >
             <line
               stroke="currentColor"
@@ -4104,7 +4132,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(271.11538461538464,0)"
+            transform="translate(272.96153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -4122,7 +4150,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(314.03846153846155,0)"
+            transform="translate(314.6538461538462,0)"
           >
             <line
               stroke="currentColor"
@@ -4140,7 +4168,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(356.96153846153845,0)"
+            transform="translate(356.3461538461538,0)"
           >
             <line
               stroke="currentColor"
@@ -4158,7 +4186,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(399.8846153846154,0)"
+            transform="translate(398.03846153846155,0)"
           >
             <line
               stroke="currentColor"
@@ -4176,7 +4204,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(442.8076923076923,0)"
+            transform="translate(439.7307692307692,0)"
           >
             <line
               stroke="currentColor"
@@ -4194,7 +4222,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(485.7307692307692,0)"
+            transform="translate(481.42307692307696,0)"
           >
             <line
               stroke="currentColor"
@@ -4212,7 +4240,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(528.6538461538462,0)"
+            transform="translate(523.1153846153845,0)"
           >
             <line
               stroke="currentColor"
@@ -4230,7 +4258,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(571.5769230769231,0)"
+            transform="translate(564.8076923076924,0)"
           >
             <line
               stroke="currentColor"
@@ -4248,7 +4276,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(614.5,0)"
+            transform="translate(606.5,0)"
           >
             <line
               stroke="currentColor"
@@ -4373,23 +4401,22 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
               fill="aqua"
               height="49"
-              id="_VBC_bar_198-0"
+              id="_VBC_bar_r71-0"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="48"
+              x="56"
               y="216"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="56"
+              x="64"
               y="210"
             >
               10k
@@ -4398,23 +4425,22 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g>
             <rect
               aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
               fill="blue"
               height="245"
-              id="_VBC_bar_198-1"
+              id="_VBC_bar_r71-1"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="262.61538461538464"
+              x="264.46153846153845"
               y="20"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="270.61538461538464"
+              x="272.46153846153845"
               y="14"
             >
               50k
@@ -4423,23 +4449,22 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
               fill="navy"
               height="147"
-              id="_VBC_bar_198-2"
+              id="_VBC_bar_r71-2"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
-              x="584.5384615384615"
+              x="577.1538461538462"
               y="118"
             />
             <text
               aria-hidden="true"
               class="fui-vbc__barLabel"
               text-anchor="middle"
-              x="592.5384615384615"
+              x="585.1538461538462"
               y="112"
             >
               30k
@@ -4464,7 +4489,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="First"
@@ -4486,7 +4511,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Second"
@@ -4508,7 +4533,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Third"
@@ -4532,6 +4557,30 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         </div>
       </div>
     </div>
+    <div
+      class="fui-cart__calloutContainer"
+      id="calloutr73"
+    >
+      <div
+        class="fui-PopoverSurface"
+        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        role="group"
+        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+      >
+        <div>
+          <pre>
+            {
+  "x": 10000,
+  "y": 50000,
+  "legend": "Second",
+  "color": "blue",
+  "xAxisCalloutData": "2020/04/30",
+  "yAxisCalloutData": "20%"
+}
+          </pre>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -4548,6 +4597,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -4570,10 +4620,9 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_251-0"
+            id="_VBC_bar_r1j-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -4583,17 +4632,16 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_251-1"
+            id="_VBC_bar_r1j-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -4603,17 +4651,16 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_251-2"
+            id="_VBC_bar_r1j-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -4623,7 +4670,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -4798,6 +4845,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -4820,10 +4868,9 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_257-0"
+            id="_VBC_bar_r1q-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -4833,17 +4880,16 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_257-1"
+            id="_VBC_bar_r1q-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -4853,17 +4899,16 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_257-2"
+            id="_VBC_bar_r1q-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -4873,7 +4918,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -5048,6 +5093,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -5070,10 +5116,9 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_263-0"
+            id="_VBC_bar_r21-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5083,17 +5128,16 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             rx={3}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_263-1"
+            id="_VBC_bar_r21-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5103,17 +5147,16 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             rx={3}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_263-2"
+            id="_VBC_bar_r21-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5123,7 +5166,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             rx={3}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -5298,6 +5341,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -5320,10 +5364,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_211-0"
+            id="_VBC_bar_r4-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5333,17 +5376,16 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_211-1"
+            id="_VBC_bar_r4-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5353,17 +5395,16 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_211-2"
+            id="_VBC_bar_r4-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5373,7 +5414,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -5548,6 +5589,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -5570,10 +5612,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_228-0"
+            id="_VBC_bar_ro-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5583,17 +5624,16 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_228-1"
+            id="_VBC_bar_ro-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5603,17 +5643,16 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_228-2"
+            id="_VBC_bar_ro-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5623,7 +5662,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -5657,12 +5696,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         }
       >
         <div
-          style={
-            Object {
-              "flex": "0 1 auto",
-              "margin": "4px",
-            }
-          }
+          className="fui-legend__legendContainer"
         >
           <button
             aria-label="First"
@@ -5710,12 +5744,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           </button>
         </div>
         <div
-          style={
-            Object {
-              "flex": "0 1 auto",
-              "margin": "4px",
-            }
-          }
+          className="fui-legend__legendContainer"
         >
           <button
             aria-label="Second"
@@ -5763,12 +5792,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           </button>
         </div>
         <div
-          style={
-            Object {
-              "flex": "0 1 auto",
-              "margin": "4px",
-            }
-          }
+          className="fui-legend__legendContainer"
         >
           <button
             aria-label="Third"
@@ -5833,6 +5857,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -5855,10 +5880,9 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_217-0"
+            id="_VBC_bar_rb-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5868,17 +5892,16 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_217-1"
+            id="_VBC_bar_rb-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5888,17 +5911,16 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_217-2"
+            id="_VBC_bar_rb-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5908,7 +5930,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -5930,6 +5952,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -5952,10 +5975,9 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={false}
             fill="aqua"
             height={11}
-            id="_VBC_bar_222-0"
+            id="_VBC_bar_rh-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5963,19 +5985,17 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             opacity={1}
             role="img"
             rx={0}
-            tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={false}
             fill="blue"
             height={55}
-            id="_VBC_bar_222-1"
+            id="_VBC_bar_rh-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -5983,19 +6003,17 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             opacity={1}
             role="img"
             rx={0}
-            tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={false}
             fill="navy"
             height={33}
-            id="_VBC_bar_222-2"
+            id="_VBC_bar_rh-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6003,9 +6021,8 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             opacity={1}
             role="img"
             rx={0}
-            tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -6180,6 +6197,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -6202,10 +6220,9 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_233-0"
+            id="_VBC_bar_ru-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6215,17 +6232,16 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_233-1"
+            id="_VBC_bar_ru-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6235,17 +6251,16 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_233-2"
+            id="_VBC_bar_ru-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6255,7 +6270,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>
@@ -6430,6 +6445,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -6441,7 +6457,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
       <g
         className="fui-cart__xAxis"
         id="xAxisGElementchart_"
-        transform="translate(0, NaN)"
+        transform="translate(0, -35)"
       />
       <g
         className="fui-cart__yAxis"
@@ -6452,10 +6468,9 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
-            height={NaN}
-            id="_VBC_bar_239-0"
+            height={11}
+            id="_VBC_bar_r15-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6465,17 +6480,16 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
-            y={NaN}
+            x={48.5}
+            y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
-            height={NaN}
-            id="_VBC_bar_239-1"
+            height={55}
+            id="_VBC_bar_r15-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6485,17 +6499,16 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
-            y={NaN}
+            x={18.5}
+            y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
-            height={NaN}
-            id="_VBC_bar_239-2"
+            height={33}
+            id="_VBC_bar_r15-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6505,8 +6518,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
-            y={NaN}
+            x={-26.500000000000004}
+            y={-35}
           />
         </g>
       </g>
@@ -6680,6 +6693,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
     <svg
+      className="fui-cart__chart"
       height={0}
       style={
         Object {
@@ -6702,10 +6716,9 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
-            data-is-focusable={true}
             fill="aqua"
             height={11}
-            id="_VBC_bar_245-0"
+            id="_VBC_bar_r1c-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6715,17 +6728,16 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             rx={0}
             tabIndex={0}
             width={1}
-            x={48}
+            x={48.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
-            data-is-focusable={true}
             fill="blue"
             height={55}
-            id="_VBC_bar_245-1"
+            id="_VBC_bar_r1c-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6735,17 +6747,16 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             rx={0}
             tabIndex={0}
             width={1}
-            x={18.384615384615387}
+            x={18.5}
             y={-35}
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
-            data-is-focusable={true}
             fill="navy"
             height={33}
-            id="_VBC_bar_245-2"
+            id="_VBC_bar_r1c-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -6755,7 +6766,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             rx={0}
             tabIndex={0}
             width={1}
-            x={-26.03846153846154}
+            x={-26.500000000000004}
             y={-35}
           />
         </g>

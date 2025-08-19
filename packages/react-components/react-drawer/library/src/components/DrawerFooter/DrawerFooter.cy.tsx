@@ -7,8 +7,9 @@ import { webLightTheme } from '@fluentui/react-theme';
 import { Drawer } from '../Drawer/Drawer';
 import { DrawerBody } from '../DrawerBody/DrawerBody';
 import { DrawerFooter } from './DrawerFooter';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import { ComboboxBaseState } from '@fluentui/react-combobox';
 import { ComboboxProps } from '@fluentui/react-combobox';
@@ -19,6 +17,7 @@ import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { Listbox } from '@fluentui/react-combobox';
 import type { ListboxContextValue } from '@fluentui/react-combobox';
 import { OptionGroupProps } from '@fluentui/react-combobox';
@@ -34,7 +33,7 @@ import type { TagGroupSlots } from '@fluentui/react-tags';
 import type { TagGroupState } from '@fluentui/react-tags';
 
 // @public
-export const renderTagPicker_unstable: (state: TagPickerState, contexts: TagPickerContextValues) => JSX.Element;
+export const renderTagPicker_unstable: (state: TagPickerState, contexts: TagPickerContextValues) => JSXElement;
 
 // @public
 export const renderTagPickerButton_unstable: (state: TagPickerButtonState) => JSX.Element;
@@ -55,7 +54,7 @@ export const renderTagPickerList_unstable: (state: TagPickerListState) => JSX.El
 export const renderTagPickerOption_unstable: (state: TagPickerOptionState) => JSX.Element;
 
 // @public
-export const renderTagPickerOptionGroup: (state: TagPickerOptionGroupState) => JSX.Element;
+export const renderTagPickerOptionGroup: (state: TagPickerOptionGroupState) => JSXElement;
 
 // @public
 export const TagPicker: React_2.FC<TagPickerProps>;
@@ -241,7 +240,7 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps
     noPopover?: boolean;
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
     onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;
-    children: [JSX.Element, JSX.Element | undefined | false] | JSX.Element;
+    children: [JSXElement, JSXElement | undefined | false] | JSXElement;
     inline?: boolean;
 };
 
@@ -277,7 +276,7 @@ export const useTagPickerControl_unstable: (props: TagPickerControlProps, ref: R
 export const useTagPickerControlStyles_unstable: (state: TagPickerControlState) => TagPickerControlState;
 
 // @public (undocumented)
-export function useTagPickerFilter({ filter: filterOverride, noOptionsElement, renderOption, query, options, }: UseTagPickerFilterConfig): JSX.Element[];
+export function useTagPickerFilter({ filter: filterOverride, noOptionsElement, renderOption, query, options, }: UseTagPickerFilterConfig): JSXElement[];
 
 // @public
 export const useTagPickerGroup_unstable: (props: TagPickerGroupProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerGroupState;

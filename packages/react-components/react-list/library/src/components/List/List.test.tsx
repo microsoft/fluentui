@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fireEvent, render, within } from '@testing-library/react';
+import { act, fireEvent, render, within } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { List } from './List';
 import { ListProps } from './List.types';
@@ -9,6 +9,9 @@ import { EventHandler } from '@fluentui/react-utilities';
 
 function expectListboxItemSelected(item: HTMLElement, selected: boolean) {
   expect(item.getAttribute('aria-selected')).toBe(selected.toString());
+}
+function expectListboxItemAriaDisabledValue(item: HTMLElement, expected: string | null) {
+  expect(item.getAttribute('aria-disabled')).toBe(expected);
 }
 
 describe('List', () => {
@@ -270,11 +273,11 @@ describe('List', () => {
       expectListboxItemSelected(firstItem, false);
       expectListboxItemSelected(secondItem, false);
 
-      firstItem.click();
+      fireEvent.click(firstItem);
       expectListboxItemSelected(firstItem, true);
       expectListboxItemSelected(secondItem, false);
 
-      secondItem.click();
+      fireEvent.click(secondItem);
       expectListboxItemSelected(firstItem, false);
       expectListboxItemSelected(secondItem, true);
     });
@@ -294,22 +297,22 @@ describe('List', () => {
       expectListboxItemSelected(firstItem, false);
       expectListboxItemSelected(secondItem, false);
 
-      firstItem.click();
+      fireEvent.click(firstItem);
       // [x][ ]
       expectListboxItemSelected(firstItem, true);
       expectListboxItemSelected(secondItem, false);
 
-      secondItem.click();
+      fireEvent.click(secondItem);
       // [x][x]
       expectListboxItemSelected(firstItem, true);
       expectListboxItemSelected(secondItem, true);
 
-      secondItem.click();
+      fireEvent.click(secondItem);
       // [x][ ]
       expectListboxItemSelected(firstItem, true);
       expectListboxItemSelected(secondItem, false);
 
-      firstItem.click();
+      fireEvent.click(firstItem);
       // [ ][ ]
       expectListboxItemSelected(firstItem, false);
       expectListboxItemSelected(secondItem, false);
@@ -372,24 +375,32 @@ describe('List', () => {
       function interactWithFirstElement(
         interaction: (firstItem: HTMLElement) => void,
         customAction?: EventHandler<ListItemActionEventData>,
+        disabledSelection?: boolean,
       ) {
         const onAction = jest.fn(customAction);
 
         const result = render(
           <List selectionMode="multiselect">
-            <ListItem onAction={onAction}>First ListItem</ListItem>
+            <ListItem onAction={customAction ? onAction : undefined} disabledSelection={disabledSelection}>
+              First ListItem
+            </ListItem>
             <ListItem>Second ListItem</ListItem>
           </List>,
         );
 
         const firstItem = result.getByText('First ListItem');
-        interaction(firstItem);
+        act(() => {
+          interaction(firstItem);
+        });
 
         return { listItem: firstItem, onAction };
       }
 
       it('Click should trigger selection and onAction callback by default', () => {
-        const { listItem, onAction } = interactWithFirstElement(item => item.click());
+        const { listItem, onAction } = interactWithFirstElement(
+          item => item.click(),
+          () => null,
+        );
         expect(onAction).toHaveBeenCalledTimes(1);
         expectListboxItemSelected(listItem, true);
       });
@@ -409,6 +420,23 @@ describe('List', () => {
         });
         expect(onAction).not.toHaveBeenCalled();
         expectListboxItemSelected(listItem, true);
+      });
+
+      it('Click should not toggle selection if disabledSelection is true, aria-disabled should be true', () => {
+        const { listItem } = interactWithFirstElement(item => item.click(), undefined, true);
+        expectListboxItemSelected(listItem, false);
+        expectListboxItemAriaDisabledValue(listItem, 'true');
+      });
+
+      it('Click should not toggle selection if disabledSelection is true, aria-disabled should be false when custom action is present', () => {
+        const { listItem, onAction } = interactWithFirstElement(
+          item => item.click(),
+          () => null,
+          true,
+        );
+        expect(onAction).toHaveBeenCalledTimes(1);
+        expectListboxItemSelected(listItem, false);
+        expectListboxItemAriaDisabledValue(listItem, null);
       });
     });
   });

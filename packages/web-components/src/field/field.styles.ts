@@ -53,7 +53,6 @@ export const styles = css`
     align-items: center;
     gap: 0 ${spacingHorizontalM};
     justify-items: start;
-    position: relative;
   }
 
   :has([slot='message']) {
@@ -101,8 +100,6 @@ export const styles = css`
 
   ::slotted([slot='input']) {
     grid-area: input;
-    position: relative;
-    z-index: 1;
   }
 
   ::slotted([slot='message']) {

@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
@@ -17,6 +15,7 @@ import { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { Provider } from 'react';
@@ -278,7 +277,7 @@ export function useComboboxContextValues(state: Omit<ComboboxBaseState, 'freefor
 export function useComboboxFilter<T extends {
     children: React_2.ReactNode;
     value: string;
-} | string>(query: string, options: T[], config: UseComboboxFilterConfig<T>): JSX.Element[];
+} | string>(query: string, options: T[], config: UseComboboxFilterConfig<T>): JSXElement[];
 
 // @public
 export const useComboboxStyles_unstable: (state: ComboboxState) => ComboboxState;

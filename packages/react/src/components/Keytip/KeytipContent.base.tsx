@@ -7,6 +7,7 @@ import type { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.ty
  * {@docCategory Keytips}
  */
 export class KeytipContentBase extends React.Component<IKeytipProps, {}> {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { content, styles, theme, disabled, visible } = this.props;
 

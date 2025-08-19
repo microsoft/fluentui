@@ -480,7 +480,9 @@ export class BaseButton extends FASTElement {
     // (undocumented)
     connectedCallback(): void;
     defaultSlottedContent: HTMLElement[];
-    disabled?: boolean;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
     disabledFocusable: boolean;
     // @internal
     disabledFocusableChanged(previous: boolean, next: boolean): void;
@@ -501,7 +503,6 @@ export class BaseButton extends FASTElement {
     name?: string;
     protected press(): void;
     resetForm(): void;
-    tabIndex: number;
     type: ButtonType;
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
@@ -590,8 +591,6 @@ export class BaseDropdown extends FASTElement {
     changeHandler(e: Event): boolean | void;
     checkValidity(): boolean;
     clickHandler(e: PointerEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
     // @internal
     control: HTMLInputElement;
     // @internal
@@ -761,7 +760,7 @@ export class BaseTablist extends FASTElement {
     activeid: string;
     // @internal (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
-    activetab: HTMLElement;
+    activetab: Tab;
     adjust(adjustment: number): void;
     // @internal (undocumented)
     connectedCallback(): void;
@@ -774,8 +773,12 @@ export class BaseTablist extends FASTElement {
     // @internal (undocumented)
     protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
     protected setTabs(): void;
+    // @internal
+    slottedTabs: Node[];
+    // @internal
+    slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
     // @internal (undocumented)
-    tabs: HTMLElement[];
+    tabs: Tab[];
     // @internal (undocumented)
     protected tabsChanged(): void;
 }
@@ -2307,12 +2310,16 @@ export class Dialog extends FASTElement {
     ariaDescribedby?: string;
     ariaLabelledby?: string;
     clickHandler(event: Event): boolean;
+    // @internal (undocumented)
+    connectedCallback(): void;
     dialog: HTMLDialogElement;
     emitBeforeToggle: () => void;
     emitToggle: () => void;
     hide(): void;
     show(): void;
     type: DialogType;
+    // (undocumented)
+    protected typeChanged(prev: DialogType | undefined, next: DialogType | undefined): void;
 }
 
 // @public
@@ -2391,10 +2398,7 @@ export const DividerDefinition: FASTElementDefinition<typeof Divider>;
 
 // @public
 export const DividerOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Divider roles
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -2422,17 +2426,30 @@ export const DividerTemplate: ElementViewTemplate<Divider>;
 export class Drawer extends FASTElement {
     ariaDescribedby?: string;
     ariaLabelledby?: string;
+    cancelHandler(): void;
     // (undocumented)
     clickHandler(event: Event): boolean;
+    // @internal (undocumented)
+    connectedCallback(): void;
     dialog: HTMLDialogElement;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
     emitBeforeToggle: () => void;
     emitToggle: () => void;
     hide(): void;
+    // (undocumented)
+    protected observeRoleAttr(): void;
     position: DrawerPosition;
+    // (undocumented)
+    protected roleAttrObserver: MutationObserver;
     show(): void;
     // (undocumented)
     size: DrawerSize;
     type: DrawerType;
+    // (undocumented)
+    protected typeChanged(): void;
+    // (undocumented)
+    protected updateDialogRole(): void;
 }
 
 // Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -2804,6 +2821,9 @@ export function isDropdownOption(value: Node | null, tagName?: string): value is
 
 // @public
 export function isListbox(element?: Node | null, tagName?: string): element is Listbox;
+
+// @public
+export function isTab(element?: Node | null, tagName?: string): element is Tab;
 
 // @public
 export function isTreeItem(element?: Node | null, tagName?: string): element is BaseTreeItem;
@@ -3279,8 +3299,6 @@ export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationSt
 // @public
 export class Radio extends BaseCheckbox {
     constructor();
-    // (undocumented)
-    connectedCallback(): void;
     // @internal @override
     protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal @override
@@ -3364,10 +3382,7 @@ export const RadioGroupDefinition: FASTElementDefinition<typeof RadioGroup>;
 
 // @public
 export const RadioGroupOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Radio Group orientation
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -3865,10 +3880,7 @@ export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
 
 // @public
 export const TablistOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * The appearance of the component
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 

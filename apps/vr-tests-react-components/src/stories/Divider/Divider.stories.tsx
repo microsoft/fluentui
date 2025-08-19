@@ -33,9 +33,33 @@ export const StartAligned = () => <Divider alignContent="start">Today</Divider>;
 
 export const StartAlignedRTL = getStoryVariant(StartAligned, RTL);
 
+export const StartAlignedMultiline = () => (
+  <Divider alignContent="start">
+    Yesterday
+    <br />
+    Today
+    <br />
+    Tomorrow
+  </Divider>
+);
+
+export const StartAlignedMultilineRTL = getStoryVariant(StartAlignedMultiline, RTL);
+
 export const EndAligned = () => <Divider alignContent="end">Today</Divider>;
 
 export const EndAlignedRTL = getStoryVariant(EndAligned, RTL);
+
+export const EndAlignedMultiline = () => (
+  <Divider alignContent="end">
+    Yesterday
+    <br />
+    Today
+    <br />
+    Tomorrow
+  </Divider>
+);
+
+export const EndAlignedMultilineRTL = getStoryVariant(EndAlignedMultiline, RTL);
 
 export const AppearanceSubtle = () => <Divider appearance="subtle">Today</Divider>;
 AppearanceSubtle.storyName = 'Appearance subtle';

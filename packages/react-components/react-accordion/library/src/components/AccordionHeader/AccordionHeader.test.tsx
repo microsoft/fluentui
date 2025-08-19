@@ -31,6 +31,7 @@ describe('AccordionHeader', () => {
    * Note: see more visual regression tests for AccordionHeader in /apps/vr-tests.
    */
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(<AccordionHeader>Default AccordionHeader</AccordionHeader>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -40,6 +41,7 @@ describe('AccordionHeader', () => {
    * Note: see more visual regression tests for AccordionHeader in /apps/vr-tests.
    */
   it('renders when expandIcon is null', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(<AccordionHeader expandIcon={null}>Default AccordionHeader</AccordionHeader>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -47,6 +49,7 @@ describe('AccordionHeader', () => {
 
   it('should invoke click and toggle', () => {
     const mockClick = jest.fn();
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(
       <Accordion collapsible openItems={0} onToggle={mockClick}>
         <AccordionItem value={0}>
@@ -55,6 +58,7 @@ describe('AccordionHeader', () => {
         </AccordionItem>
       </Accordion>,
     );
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     renderer.act(() => {
       component.root.findAllByType('button')[0].props.onClick({ defaultPrevented: false });
     });
@@ -63,6 +67,7 @@ describe('AccordionHeader', () => {
 
   it('should invoke click and prevent toggle', () => {
     const mockClick = jest.fn();
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(
       <Accordion collapsible openItems={0} onToggle={mockClick}>
         <AccordionItem value={0}>
@@ -71,6 +76,7 @@ describe('AccordionHeader', () => {
         </AccordionItem>
       </Accordion>,
     );
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     renderer.act(() => {
       component.root.findAllByType('button')[0].props.onClick({ defaultPrevented: true });
     });

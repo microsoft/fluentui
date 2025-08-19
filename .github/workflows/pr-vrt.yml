@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4.3.0
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
         with:
           main-branch-name: 'master'
 
@@ -52,7 +52,7 @@ jobs:
           script: |
             const run = require('./.github/scripts/prepare-vr-screenshots-for-upload');
             const config = {
-              projects: ['vr-tests-web-components', 'vr-tests-react-components', 'vr-tests', 'docs']
+              projects: ['vr-tests-web-components', 'vr-tests-react-components', 'vr-tests']
             };
             const result = await run({github,context,core,config});
             return result;

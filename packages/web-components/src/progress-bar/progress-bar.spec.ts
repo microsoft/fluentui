@@ -11,6 +11,22 @@ test.describe('Progress Bar', () => {
     tagName: 'fluent-progress-bar',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-progress-bar');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should include a role of progressbar', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -39,6 +55,16 @@ test.describe('Progress Bar', () => {
     await fastPage.setTemplate({ attributes: { max: '50' } });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaValueMax', '50');
+  });
+
+  test('should set indicator width to be 1/3 of the container width if `value` is missing', async ({ fastPage }) => {
+    const { element } = fastPage;
+    await element.evaluate(node => {
+      node.style.setProperty('width', '100px');
+    });
+    const indicator = element.locator('.indicator');
+
+    await expect(indicator).toHaveCSS('width', '33px');
   });
 
   test('should set indicator width to match the `value` property as a percentage between 0 and 100 when `min` and `max` are unset', async ({

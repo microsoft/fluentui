@@ -23,13 +23,17 @@ class StandardTree {
   public treeData: ITreeChartDataPoint;
   public styleClassNames: IProcessedStyleSet<ITreeStyles>;
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _nodeElements: JSX.Element[] = [];
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _linkElements: JSX.Element[] = [];
 
   constructor(
     treeData: ITreeChartDataPoint,
     styleClassNames: IProcessedStyleSet<ITreeStyles>,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     _nodeElements: JSX.Element[] = [],
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     _linkElements: JSX.Element[] = [],
   ) {
     this.treeData = treeData;
@@ -240,7 +244,9 @@ class LayeredTree extends StandardTree {
     treeData: ITreeChartDataPoint,
     composition: number | undefined,
     styleClassNames: IProcessedStyleSet<ITreeStyles>,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     _nodeElements: JSX.Element[] = [],
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     _linkElements: JSX.Element[] = [],
     _treeTraversal: number | undefined,
   ) {
@@ -474,7 +480,9 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   private _composition: number | undefined;
   private _classNames: IProcessedStyleSet<ITreeStyles>;
   private _margin: IMargins;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _nodeElements: JSX.Element[] = [];
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _linkElements: JSX.Element[] = [];
   private _treeTraversal: number | undefined;
 
@@ -532,7 +540,9 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
     }
   }
   public createTreeChart() {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const nodeElements: JSX.Element[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const linkElements: JSX.Element[] = [];
 
     // Instantiate inherited class and call createTree function for the object
@@ -550,6 +560,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
     this._linkElements = linkElements;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     return (
       <FocusZone>

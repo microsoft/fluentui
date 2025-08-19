@@ -58,5 +58,8 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
     chartWrapper: {
       ...(enableReflow ? { overflow: 'auto' } : {}),
     },
+    chart: {
+      display: 'block',
+    },
   };
 };

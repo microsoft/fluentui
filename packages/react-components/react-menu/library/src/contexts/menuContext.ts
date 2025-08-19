@@ -46,6 +46,7 @@ export type MenuContextValue = Pick<
   | 'inline'
   | 'checkedValues'
   | 'onCheckedValueChange'
+  | 'safeZone'
 > & {
   open: boolean;
   triggerId: string;

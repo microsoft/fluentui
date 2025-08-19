@@ -17,6 +17,7 @@ describe('CounterBadge', () => {
   });
 
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(<CounterBadge />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

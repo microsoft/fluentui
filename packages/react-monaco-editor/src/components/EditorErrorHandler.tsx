@@ -22,7 +22,10 @@ interface IEditorErrorBoundaryState {
  * The example preview should be rendered as a child of this component. (This component can't just
  * render the preview directly because error boundaries only catch errors in passed-in children.)
  */
-export class EditorErrorBoundary extends React.Component<IEditorErrorBoundaryProps, IEditorErrorBoundaryState> {
+export class EditorErrorBoundary extends React.Component<
+  React.PropsWithChildren<IEditorErrorBoundaryProps>,
+  IEditorErrorBoundaryState
+> {
   public state: IEditorErrorBoundaryState = {};
   private _lastGoodChildren: React.ReactNode;
   private _lastErrorTime: number | undefined;

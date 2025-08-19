@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
+// eslint-disable-next-line @fluentui/no-restricted-imports
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   FolderRegular,
   EditRegular,
@@ -31,7 +33,7 @@ import {
 type Item = {
   file: {
     label: string;
-    icon: JSX.Element;
+    icon: JSXElement;
   };
   author: {
     label: string;
@@ -43,7 +45,7 @@ type Item = {
   };
   lastUpdate: {
     label: string;
-    icon: JSX.Element;
+    icon: JSXElement;
   };
 };
 

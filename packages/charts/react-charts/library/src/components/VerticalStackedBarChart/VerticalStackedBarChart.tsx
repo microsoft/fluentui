@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { useVerticalStackedBarChartStyles } from './useVerticalStackedBarChartStyles.styles';
 import {
@@ -9,8 +8,10 @@ import {
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
   scaleTime as d3ScaleTime,
+  ScaleBand,
 } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import {
   AccessibilityProps,
@@ -27,6 +28,9 @@ import {
   ChartPopover,
   Legends,
   Chart,
+  DataPoint,
+  ImageExportOptions,
+  LegendContainer,
 } from '../../index';
 import {
   ChartTypes,
@@ -34,7 +38,7 @@ import {
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
@@ -46,10 +50,23 @@ import {
   useRtl,
   DataVizPalette,
   getColorFromToken,
+  findVSBCNumericMinMaxOfY,
+  YAxisType,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfVSBCNumeric,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
+  calcTotalWidth,
+  calcBandwidth,
+  calcRequiredWidth,
 } from '../../utilities/index';
+import { toImage } from '../../utilities/image-export-utils';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 
-type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
+type StringScale = ScaleBand<string>;
 const barGapMultiplier = 0.2;
 const barGapMin = 1;
 const MIN_DOMAIN_MARGIN = 8;
@@ -64,10 +81,6 @@ type LineLegends = {
   title: string;
   color: string;
 };
-enum CircleVisbility {
-  show = 'visibility',
-  hide = 'hidden',
-}
 type CalloutAnchorPointData = {
   xAxisDataPoint: string;
   chartDataPoint: VSChartDataPoint;
@@ -83,7 +96,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   let _points: VerticalStackedChartProps[] = [];
   let _dataset: VerticalStackedBarDataPoint[];
   let _xAxisLabels: string[] = [];
-  let _bars: JSX.Element[];
+  let _bars: JSXElement[];
   let _xAxisType: XAxisTypes =
     props.data! && props.data!.length > 0
       ? (getTypeOfAxis(props.data[0]!.xAxisPoint, true) as XAxisTypes)
@@ -93,11 +106,16 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   let _margins: Margins;
   let _lineObject: LineObject;
   let _yMax: number;
+  let _yMin: number;
   let _calloutAnchorPoint: CalloutAnchorPointData | null;
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
   const cartesianChartRef = React.useRef<Chart>(null);
+  const Y_ORIGIN: number = 0;
+  const _legendsRef = React.useRef<LegendContainer>(null);
+  let _yAxisType: YAxisType;
+  let _yAxisLabels: string[] = [];
 
   const [selectedLegends, setSelectedLegends] = React.useState(props.legendProps?.selectedLegends || []);
   const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
@@ -133,11 +151,14 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     props.componentRef,
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRtl, opts);
+      },
     }),
     [],
   );
 
-  function _getLegendData(data: VerticalStackedChartProps[], lineLegends: LineLegends[]): JSX.Element {
+  function _getLegendData(data: VerticalStackedChartProps[], lineLegends: LineLegends[]): JSXElement {
     if (props.hideLegend) {
       return <></>;
     }
@@ -200,6 +221,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         overflowText={props.legendsOverflowText}
         {...props.legendProps}
         onChange={_onLegendSelectionChange}
+        legendRef={_legendsRef}
       />
     );
   }
@@ -208,20 +230,32 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     return selectedLegends.length > 0 ? selectedLegends : activeLegend ? [activeLegend] : [];
   }
 
-  function _lineHoverOut() {
-    setPopoverOpen(false);
-    setXCalloutValue('');
-    setYCalloutValue('');
-    setActiveXAxisDataPoint('');
-    setColor('');
-  }
-
-  function _lineHoverFocus(lineData: LinePoint) {
-    setPopoverOpen(true);
-    setXCalloutValue(`${lineData.xItem.xAxisPoint}`);
-    setYCalloutValue(`${lineData.yAxisCalloutData || lineData.data || lineData.y}`);
-    setActiveXAxisDataPoint(lineData.xItem.xAxisPoint);
-    setColor(lineData.color);
+  function _lineHoverFocus(
+    lineData: LinePoint,
+    event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGCircleElement, Element>,
+  ): void {
+    let clientX = 0;
+    let clientY = 0;
+    if ('clientX' in event) {
+      clientX = event.clientX;
+      clientY = event.clientY;
+    } else {
+      const boundingRect = event.target.getBoundingClientRect();
+      clientX = boundingRect.left + boundingRect.width / 2;
+      clientY = boundingRect.top + boundingRect.height / 2;
+    }
+    if (_getHighlightedLegend().length === 1) {
+      if (_noLegendHighlighted() || _isLegendHighlighted(lineData.legend)) {
+        _updatePosition(clientX, clientY);
+        setPopoverOpen(true);
+        setXCalloutValue(`${lineData.xItem.xAxisPoint}`);
+        setYCalloutValue(`${lineData.yAxisCalloutData || lineData.data || lineData.y}`);
+        setActiveXAxisDataPoint(lineData.xItem.xAxisPoint);
+        setColor(lineData.color);
+      }
+    } else {
+      _onStackHoverFocus(lineData.xItem, event as React.MouseEvent<SVGElement>);
+    }
   }
 
   function _onStackHoverFocus(
@@ -294,18 +328,30 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     _colors = defaultColors;
     _xAxisType = getTypeOfAxis(props.data[0].xAxisPoint, true) as XAxisTypes;
     _lineObject = _getFormattedLineData(props.data);
-    _xAxisInnerPadding = getScalePadding(props.xAxisInnerPadding, props.xAxisPadding, 2 / 3);
+    _xAxisInnerPadding = getScalePadding(
+      props.xAxisInnerPadding,
+      props.xAxisPadding,
+      _xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
+    );
     _xAxisOuterPadding = getScalePadding(props.xAxisOuterPadding, props.xAxisPadding, 0);
+    _initYAxisParams();
   }
 
   function _createDataSetLayer(): VerticalStackedBarDataPoint[] {
     const tempArr: string[] = [];
     const dataset: VerticalStackedBarDataPoint[] = _points.map(singlePointData => {
+      tempArr.push(singlePointData.xAxisPoint as string);
+
+      if (_yAxisType === YAxisType.StringAxis) {
+        return {
+          x: singlePointData.xAxisPoint,
+          y: 0,
+        };
+      }
       let total: number = 0;
       singlePointData.chartData!.forEach((point: VSChartDataPoint) => {
-        total = total + point.data;
+        total = total + (point.data as number);
       });
-      tempArr.push(singlePointData.xAxisPoint as string);
       return {
         x: singlePointData.xAxisPoint,
         y: total,
@@ -344,19 +390,25 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _getGraphData(
     xScale: any,
-    yScale: NumericAxis,
+    yScale: NumericScale | StringScale,
     containerHeight: number,
     containerWidth: number,
     xElement: SVGElement | null,
   ) {
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
-    return (_bars = _createBar(xBarScale, yBarScale, containerHeight, xElement!));
+    return (_bars = _createBar(
+      xBarScale,
+      _yAxisType === YAxisType.StringAxis ? yScale : yBarScale,
+      containerHeight,
+      xElement!,
+    ));
   }
 
   function _getAxisData(yAxisData: IAxisData) {
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
       const { yAxisDomainValues: domainValue } = yAxisData;
-      _yMax = Math.max(domainValue[domainValue.length - 1], props.yMaxValue || 0);
+      _yMax = Math.max(domainValue[domainValue.length - 1], props.yMaxValue || Y_ORIGIN);
+      _yMin = Math.min(domainValue[0], props.yMinValue || Y_ORIGIN);
     }
   }
 
@@ -377,7 +429,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     return _getHighlightedLegend().length === 0;
   }
 
-  function _getAriaLabel(singleChartData: VerticalStackedChartProps, point?: VSChartDataPoint): string {
+  function _getAriaLabel(
+    singleChartData: VerticalStackedChartProps,
+    point?: VSChartDataPoint | LineDataInVerticalStackedBarChart,
+    isLinePoint?: boolean,
+  ): string {
     if (!point) {
       /** if shouldFocusWholeStack is true */
       const xValue =
@@ -389,15 +445,17 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         .map(pt => {
           const legend = pt.legend;
           const yValue = pt.yAxisCalloutData || pt.data;
-          return `${legend}, ${yValue}.`;
+          return _noLegendHighlighted() || _isLegendHighlighted(legend) ? `${legend}, ${yValue}.` : '';
         })
+        .filter(str => str !== '')
         .join(' ');
       const lineValues = singleChartData.lineData
         ?.map(ln => {
           const legend = ln.legend;
           const yValue = ln.yAxisCalloutData || ln.data || ln.y;
-          return `${legend}, ${yValue}.`;
+          return _noLegendHighlighted() || _isLegendHighlighted(legend) ? `${legend}, ${yValue}.` : '';
         })
+        .filter(str => str !== '')
         .join(' ');
       return (
         singleChartData.stackCallOutAccessibilityData?.ariaLabel ||
@@ -407,13 +465,18 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     /** if shouldFocusWholeStack is false */
     const xValue =
       singleChartData.xAxisCalloutData ||
-      point.xAxisCalloutData ||
+      (!isLinePoint && (point as VSChartDataPoint).xAxisCalloutData) ||
       (singleChartData.xAxisPoint instanceof Date
         ? formatDate(singleChartData.xAxisPoint)
         : singleChartData.xAxisPoint);
     const legend = point.legend;
-    const yValue = point.yAxisCalloutData || point.data;
-    return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
+    const yValue =
+      point.yAxisCalloutData ||
+      (isLinePoint ? point.data || (point as LineDataInVerticalStackedBarChart).y : point.data);
+    return (
+      (!isLinePoint && (point as VSChartDataPoint).callOutAccessibilityData?.ariaLabel) ||
+      `${xValue}. ${legend}, ${yValue}.`
+    );
   }
 
   function _getCustomizedCallout() {
@@ -440,6 +503,36 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       shouldFocusStackOnly = isCalloutForStack;
     }
     return shouldFocusStackOnly;
+  }
+
+  function _getDomainNRangeValues(
+    points: DataPoint[],
+    margins: Margins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+        points,
+        margins,
+        width,
+        isRTL,
+        tickValues! as Date[],
+        chartType,
+        barWidth,
+      );
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
   }
 
   function _getFormattedLineData(data: VerticalStackedChartProps[]): LineObject {
@@ -480,11 +573,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _createLines(
     xScale: any,
-    yScale: NumericScale,
+    yScalePrimary: NumericScale | StringScale,
     containerHeight: number,
     containerWidth: number,
-    secondaryYScale?: NumericScale,
-  ): JSX.Element {
+    yScaleSecondary?: NumericScale,
+  ): JSXElement {
     const lineObject: LineObject = _getFormattedLineData(props.data);
     const lines: React.ReactNode[] = [];
     const borderForLines: React.ReactNode[] = [];
@@ -499,10 +592,20 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       for (let i = 1; i < lineObject[item].length; i++) {
         const x1 = xScale(lineObject[item][i - 1].xItem.xAxisPoint);
         const useSecondaryYScale =
-          lineObject[item][i - 1].useSecondaryYScale && lineObject[item][i].useSecondaryYScale && secondaryYScale;
-        const y1 = useSecondaryYScale ? secondaryYScale!(lineObject[item][i - 1].y) : yScale(lineObject[item][i - 1].y);
+          lineObject[item][i - 1].useSecondaryYScale && lineObject[item][i].useSecondaryYScale && yScaleSecondary;
+        const y1 = useSecondaryYScale
+          ? yScaleSecondary!(lineObject[item][i - 1].y as number)
+          : //eslint-disable-next-line @typescript-eslint/no-explicit-any
+            yScalePrimary(lineObject[item][i - 1].y as any);
         const x2 = xScale(lineObject[item][i].xItem.xAxisPoint);
-        const y2 = useSecondaryYScale ? secondaryYScale!(lineObject[item][i].y) : yScale(lineObject[item][i].y);
+        const y2 = useSecondaryYScale
+          ? yScaleSecondary!(lineObject[item][i].y as number)
+          : //eslint-disable-next-line @typescript-eslint/no-explicit-any
+            yScalePrimary(lineObject[item][i].y as any);
+        const yScaleBandwidthTranslate =
+          !useSecondaryYScale && _yAxisType === YAxisType.StringAxis
+            ? (yScalePrimary as StringScale).bandwidth() / 2
+            : 0;
         if (lineBorderWidth > 0) {
           borderForLines.push(
             <line
@@ -516,7 +619,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               fill="transparent"
               strokeLinecap="round"
               stroke={tokens.colorNeutralBackground1}
-              transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+              transform={`translate(${xScaleBandwidthTranslate}, ${yScaleBandwidthTranslate})`}
             />,
           );
         }
@@ -532,11 +635,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             strokeLinecap={lineObject[item][0].lineOptions?.strokeLinecap ?? 'round'}
             strokeDasharray={lineObject[item][0].lineOptions?.strokeDasharray}
             stroke={lineObject[item][i].color}
-            transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-            {...(_isLegendHighlighted(item) && {
-              onMouseOver: _lineHover.bind(lineObject[item][i - 1]),
-              onMouseLeave: _lineHoverOut,
-            })}
+            transform={`translate(${xScaleBandwidthTranslate}, ${yScaleBandwidthTranslate})`}
+            onMouseOver={event => _lineHover(lineObject[item][i - 1], event)}
+            onMouseLeave={_handleMouseOut}
           />,
         );
       }
@@ -544,32 +645,44 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     Object.keys(lineObject).forEach((item: string, index: number) => {
       lineObject[item].forEach((circlePoint: LinePoint, subIndex: number) => {
         const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
+        const noBarsAndLinesActive =
+          circlePoint.xItem.chartData.filter(
+            dataPoint => _noLegendHighlighted() || _isLegendHighlighted(dataPoint.legend),
+          ).length === 0;
+        const yScaleBandwidthTranslate =
+          !circlePoint.useSecondaryYScale && _yAxisType === YAxisType.StringAxis
+            ? (yScalePrimary as StringScale).bandwidth() / 2
+            : 0;
         dots.push(
           <circle
             key={`${index}-${subIndex}-dot`}
             cx={xScale(circlePoint.xItem.xAxisPoint)}
             cy={
-              circlePoint.useSecondaryYScale && secondaryYScale ? secondaryYScale(circlePoint.y) : yScale(circlePoint.y)
+              circlePoint.useSecondaryYScale && yScaleSecondary
+                ? yScaleSecondary(circlePoint.y as number)
+                : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  yScalePrimary(circlePoint.y as any)
             }
-            onMouseOver={
-              _isLegendHighlighted(item)
-                ? (event: React.MouseEvent<SVGElement, MouseEvent>) => _lineHover(circlePoint, event)
-                : (event: React.MouseEvent<SVGElement, MouseEvent>) => _onStackHover(circlePoint.xItem, event)
-            }
-            {...(_isLegendHighlighted(item) && {
-              onMouseLeave: _lineHoverOut,
-            })}
-            r={_getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).radius}
+            onMouseOver={event => _lineHover(circlePoint, event)}
+            onMouseLeave={_handleMouseOut}
+            r={_getCircleOpacityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).radius}
             stroke={circlePoint.color}
             fill={tokens.colorNeutralBackground1}
             strokeWidth={3}
-            visibility={_getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).visibility}
-            transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-            data-is-focusable={_isLegendHighlighted(item)}
+            // Elements with visibility: hidden cannot receive focus, so use opacity: 0 instead to hide them.
+            // For more information, see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html
+            opacity={_getCircleOpacityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).opacity}
+            transform={`translate(${xScaleBandwidthTranslate}, ${yScaleBandwidthTranslate})`}
             ref={e => (circleRef.refElement = e)}
-            onFocus={_lineFocus.bind(circlePoint, circleRef)}
-            onBlur={_lineHoverOut}
-            tabIndex={circlePoint.legend !== '' ? 0 : undefined}
+            {...(noBarsAndLinesActive
+              ? {
+                  tabIndex: !props.hideTooltip ? 0 : undefined,
+                  onFocus: event => _lineFocus(event, circlePoint, circleRef),
+                  onBlur: _handleMouseOut,
+                  role: 'img',
+                  'aria-label': _getAriaLabel(circlePoint.xItem, circlePoint as VSChartDataPoint),
+                }
+              : {})}
           />,
         );
       });
@@ -583,27 +696,27 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     );
   }
 
-  function _getCircleVisibilityAndRadius(
+  function _getCircleOpacityAndRadius(
     xAxisPoint: string | number | Date,
     legend: string,
-  ): { visibility: CircleVisbility; radius: number } {
+  ): { opacity: number; radius: number } {
     if (!_noLegendHighlighted()) {
       if (xAxisPoint === activeXAxisDataPoint && _isLegendHighlighted(legend)) {
-        return { visibility: CircleVisbility.show, radius: 8 };
+        return { opacity: 1, radius: 8 };
       } else if (_isLegendHighlighted(legend)) {
-        return { visibility: CircleVisbility.show, radius: 0.3 };
+        return { opacity: 1, radius: 0.3 };
       } else {
-        return { visibility: CircleVisbility.hide, radius: 0 };
+        return { opacity: 0, radius: 0 };
       }
     } else {
       return {
-        visibility: activeXAxisDataPoint === xAxisPoint ? CircleVisbility.show : CircleVisbility.hide,
+        opacity: activeXAxisDataPoint === xAxisPoint ? 1 : 0,
         radius: 8,
       };
     }
   }
 
-  function _renderCallout(props?: VSChartDataPoint): JSX.Element | null {
+  function _renderCallout(props?: VSChartDataPoint): JSXElement | null {
     return props ? (
       <ChartPopover
         culture={props.culture ?? 'en-us'}
@@ -649,14 +762,23 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     if (_calloutAnchorPoint?.chartDataPoint !== point || _calloutAnchorPoint?.xAxisDataPoint !== xAxisPoint) {
       _calloutAnchorPoint = {
         chartDataPoint: point,
-        xAxisDataPoint: `${xAxisPoint}`,
+        xAxisDataPoint:
+          xAxisPoint instanceof Date
+            ? formatDateToLocaleString(xAxisPoint, props.culture, props.useUTC as boolean)
+            : xAxisPoint.toString(),
       };
+      const xCalloutValue =
+        point.xAxisCalloutData ||
+        (xAxisPoint instanceof Date
+          ? formatDateToLocaleString(xAxisPoint, props.culture, props.useUTC as boolean)
+          : xAxisPoint.toString());
+
       _updatePosition(clientX, clientY);
       setPopoverOpen(_noLegendHighlighted() || _isLegendHighlighted(point.legend));
       setCalloutLegend(point.legend);
-      setDataForHoverCard(point.data);
+      setDataForHoverCard(point.data as number);
       setColor(color);
-      setXCalloutValue(point.xAxisCalloutData ? point.xAxisCalloutData : `${xAxisPoint}`);
+      setXCalloutValue(xCalloutValue);
       setYCalloutValue(point.yAxisCalloutData!);
       setDataPointCalloutProps(point);
       setCallOutAccessibilityData(point.callOutAccessibilityData);
@@ -665,12 +787,16 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _lineHover(lineData: LinePoint, mouseEvent: React.MouseEvent<SVGElement>) {
     mouseEvent.persist();
-    _lineHoverFocus(lineData);
+    _lineHoverFocus(lineData, mouseEvent);
   }
 
-  function _lineFocus(lineData: LinePoint, ref: { refElement: SVGCircleElement | null }) {
+  function _lineFocus(
+    event: React.FocusEvent<SVGCircleElement, Element>,
+    lineData: LinePoint,
+    ref: { refElement: SVGCircleElement | null },
+  ) {
     if (ref.refElement) {
-      _lineHoverFocus(lineData);
+      _lineHoverFocus(lineData, event);
     }
   }
 
@@ -697,41 +823,51 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _getBarGapAndScale(
     bars: VSChartDataPoint[],
-    yBarScale: NumericScale,
+    yBarScale: NumericScale | StringScale,
     defaultTotalHeight?: number,
   ): {
     readonly gapHeight: number;
     readonly heightValueScale: number;
-    readonly adjustedTotalHeight: number;
+    readonly absStackTotal: number;
   } {
     const { barGapMax = 0 } = props;
-    // When displaying gaps between the bars, the height of each bar is
-    // adjusted so that the total of all bars is not changed by the gaps
-    const totalData = bars.reduce((iter, value) => iter + Math.abs(value.data), 0);
-    const totalHeight = defaultTotalHeight ?? yBarScale(totalData);
+    let totalData = 0;
+    let totalHeight: number;
     let sumOfPercent = 0;
-    bars.forEach(point => {
-      let value = (Math.abs(point.data) / totalData) * 100;
-      if (value < 1 && value !== 0) {
-        value = 1;
-      }
-      sumOfPercent += value;
-    });
-    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
+    let scalingRatio: number;
+    if (_yAxisType === YAxisType.StringAxis) {
+      totalHeight =
+        defaultTotalHeight ?? bars.reduce((total, bar) => total + (yBarScale as StringScale)(bar.data as string)!, 0);
+    } else {
+      // When displaying gaps between the bars, the height of each bar is
+      // adjusted so that the total of all bars is not changed by the gaps
+      totalData = bars.reduce((iter, value) => iter + Math.abs(value.data as number), 0);
+      totalHeight =
+        defaultTotalHeight ?? Math.abs((yBarScale as NumericScale)(totalData) - (yBarScale as NumericScale)(Y_ORIGIN));
+      bars.forEach(point => {
+        let value = (Math.abs(point.data as number) / totalData) * 100;
+        if (value < 1 && value !== 0) {
+          value = 1;
+        }
+        sumOfPercent += value;
+      });
+      scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
+    }
     const gaps = barGapMax && bars.length - 1;
     const gapHeight = gaps && Math.max(barGapMin, Math.min(barGapMax, (totalHeight * barGapMultiplier) / gaps));
-    const heightValueScale = (totalHeight - gapHeight * gaps) / (totalData * scalingRatio);
+    const heightValueScale =
+      _yAxisType === YAxisType.StringAxis ? 0 : (totalHeight - gapHeight * gaps) / (totalData * scalingRatio!);
     return {
       gapHeight,
       heightValueScale,
-      adjustedTotalHeight: sumOfPercent,
+      absStackTotal: totalData,
     } as const;
   }
 
   function _getScales(containerHeight: number, containerWidth: number) {
-    const yMax = _yMax;
+    const yDomain = [Math.min(Y_ORIGIN, _yMin), Math.max(Y_ORIGIN, _yMax)];
     const yBarScale = d3ScaleLinear()
-      .domain([0, yMax])
+      .domain(yDomain)
       .range([0, containerHeight - _margins.bottom! - _margins.top!]);
     if (_xAxisType === XAxisTypes.NumericAxis) {
       const xMax = d3Max(_dataset, (point: VerticalStackedBarDataPoint) => point.x as number)!;
@@ -739,9 +875,10 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
       const xBarScale = d3ScaleLinear()
         .domain(_isRtl ? [xMax, xMin] : [xMin, xMax])
-        .nice()
         .range([_margins.left! + _domainMargin, containerWidth - _margins.right! - _domainMargin]);
-
+      if (!isScalePaddingDefined(props.xAxisInnerPadding, props.xAxisPadding)) {
+        xBarScale.nice();
+      }
       return { xBarScale, yBarScale };
     }
     if (_xAxisType === XAxisTypes.DateAxis) {
@@ -794,10 +931,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   function _getDomainMargins(containerWidth: number): Margins {
     _domainMargin = MIN_DOMAIN_MARGIN;
 
-    /** Total width available to render the bars */
-    const totalWidth = containerWidth - (_margins.left! + MIN_DOMAIN_MARGIN) - (_margins.right! + MIN_DOMAIN_MARGIN);
-    /** Rate at which the space between the bars changes wrt the bar width */
-    const barGapRate = _xAxisInnerPadding / (1 - _xAxisInnerPadding);
+    const totalWidth = calcTotalWidth(containerWidth, _margins, MIN_DOMAIN_MARGIN);
 
     if (_xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(props.xAxisOuterPadding, props.xAxisPadding)) {
@@ -809,7 +943,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         // the following calculations don't use the previous bar width.
         _barWidth = getBarWidth(props.barWidth, props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
-        const reqWidth = (_xAxisLabels.length + (_xAxisLabels.length - 1) * barGapRate) * _barWidth;
+        const reqWidth = calcRequiredWidth(_barWidth, _xAxisLabels.length, _xAxisInnerPadding);
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
@@ -817,21 +951,28 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         }
       } else if (props.mode === 'plotly' && _xAxisLabels.length > 1) {
         // Calculate the remaining width after rendering bars at their maximum allowable width
-        const bandwidth = totalWidth / (_xAxisLabels.length + (_xAxisLabels.length - 1) * barGapRate);
+        const bandwidth = calcBandwidth(totalWidth, _xAxisLabels.length, _xAxisInnerPadding);
         const barWidth = getBarWidth(props.barWidth, props.maxBarWidth, bandwidth);
-        let reqWidth = (_xAxisLabels.length + (_xAxisLabels.length - 1) * barGapRate) * barWidth;
+        let reqWidth = calcRequiredWidth(barWidth, _xAxisLabels.length, _xAxisInnerPadding);
         const margin1 = (totalWidth - reqWidth) / 2;
 
-        // Calculate the remaining width after accounting for the space required to render x-axis labels
-        const step = calculateLongestLabelWidth(_xAxisLabels) + 20;
-        reqWidth = (_xAxisLabels.length - _xAxisInnerPadding) * step;
-        const margin2 = (totalWidth - reqWidth) / 2;
+        let margin2 = Number.POSITIVE_INFINITY;
+        if (!props.hideTickOverlap) {
+          // Calculate the remaining width after accounting for the space required to render x-axis labels
+          const step = calculateLongestLabelWidth(_xAxisLabels) + 20;
+          reqWidth = (_xAxisLabels.length - _xAxisInnerPadding) * step;
+          margin2 = (totalWidth - reqWidth) / 2;
+        }
 
         _domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
     } else {
       const data = (props.data?.map(point => point.xAxisPoint) as number[] | Date[] | undefined) || [];
-      _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, calculateAppropriateBarWidth(data, totalWidth));
+      _barWidth = getBarWidth(
+        props.barWidth,
+        props.maxBarWidth,
+        calculateAppropriateBarWidth(data, totalWidth, _xAxisInnerPadding),
+      );
       _domainMargin = MIN_DOMAIN_MARGIN + _barWidth / 2;
     }
 
@@ -856,10 +997,10 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   const classes = useVerticalStackedBarChartStyles(props);
   function _createBar(
     xBarScale: any,
-    yBarScale: NumericScale,
+    yBarScale: NumericScale | StringScale,
     containerHeight: number,
     xElement: SVGElement,
-  ): JSX.Element[] {
+  ): JSXElement[] {
     const { barCornerRadius = 0, barMinimumHeight = 0 } = props;
     const _isHavingLines = props.data.some(
       (item: VerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
@@ -871,7 +1012,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     }
 
     const bars = _points.map((singleChartData: VerticalStackedChartProps, indexNumber: number) => {
-      let yPoint = containerHeight - _margins.bottom!;
       const xPoint = xBarScale(
         _xAxisType === XAxisTypes.NumericAxis
           ? (singleChartData.xAxisPoint as number)
@@ -884,42 +1024,85 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
       let barTotalValue = 0;
 
-      const barsToDisplay = singleChartData.chartData.filter(point => point.data > 0);
+      const barsToDisplay = singleChartData.chartData.filter(
+        point =>
+          point.data !== 0 &&
+          point.data !== '' &&
+          !(
+            _yAxisType === YAxisType.StringAxis &&
+            typeof (yBarScale as StringScale)(point.data as string) === 'undefined'
+          ),
+      );
 
       if (!barsToDisplay.length) {
         return undefined;
       }
 
-      const { gapHeight, heightValueScale, adjustedTotalHeight } = _getBarGapAndScale(barsToDisplay, yBarScale);
+      const { gapHeight, heightValueScale, absStackTotal } = _getBarGapAndScale(barsToDisplay, yBarScale);
 
       if (heightValueScale < 0) {
         return undefined;
       }
 
+      const yBaseline =
+        containerHeight -
+        _margins.bottom! -
+        (_yAxisType === YAxisType.StringAxis ? 0 : (yBarScale as NumericScale)(Y_ORIGIN));
+      let yPositiveStart = yBaseline;
+      let yNegativeStart = yBaseline;
+      let yPoint = 0;
+      let heightOfLastBar = 0;
+
       const singleBar = barsToDisplay.map((point: VSChartDataPoint, index: number) => {
         const startColor = point.color ? point.color : _colors[index];
         const ref: RefArrayData = {};
         const shouldHighlight = _isLegendHighlighted(point.legend) || _noLegendHighlighted() ? true : false;
-        const rectFocusProps = !shouldFocusWholeStack && {
-          'data-is-focusable': !props.hideTooltip && shouldHighlight,
-          'aria-label': _getAriaLabel(singleChartData, point),
-          onMouseOver: (event: React.MouseEvent<SVGElement, MouseEvent>) =>
-            _onRectHover(singleChartData.xAxisPoint, point, startColor, event),
-          onMouseMove: (event: React.MouseEvent<SVGElement, MouseEvent>) =>
-            _onRectHover(singleChartData.xAxisPoint, point, startColor, event),
-          onMouseLeave: _handleMouseOut,
-          onFocus: () => _onRectFocus(point, singleChartData.xAxisPoint as string, startColor, ref),
-          onBlur: _handleMouseOut,
-          onClick: (event: React.MouseEvent<SVGElement, MouseEvent>) => _onClick(point, event),
-          role: 'img',
-        };
+        const rectFocusProps = !shouldFocusWholeStack &&
+          shouldHighlight && {
+            'aria-label': _getAriaLabel(singleChartData, point),
+            onMouseOver: (event: React.MouseEvent<SVGElement, MouseEvent>) =>
+              _onRectHover(singleChartData.xAxisPoint, point, startColor, event),
+            onMouseMove: (event: React.MouseEvent<SVGElement, MouseEvent>) =>
+              _onRectHover(singleChartData.xAxisPoint, point, startColor, event),
+            onMouseLeave: _handleMouseOut,
+            onFocus: () => _onRectFocus(point, singleChartData.xAxisPoint as string, startColor, ref),
+            onBlur: _handleMouseOut,
+            onClick: (event: React.MouseEvent<SVGElement, MouseEvent>) => _onClick(point, event),
+            role: 'img',
+            tabIndex: !props.hideTooltip && shouldHighlight ? 0 : undefined,
+          };
 
-        let barHeight = heightValueScale * point.data;
-        if (barHeight < Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight)) {
-          barHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
+        let barHeight: number;
+        const gapOffset = index ? gapHeight : 0;
+        if (_yAxisType === YAxisType.StringAxis) {
+          barHeight = Math.max(
+            containerHeight -
+              _margins.bottom! -
+              ((yBarScale as StringScale)(point.data as string)! + (yBarScale as StringScale).bandwidth() / 2) -
+              gapOffset,
+            barMinimumHeight,
+            1,
+          );
+          yPositiveStart -= barHeight + gapOffset;
+          yPoint = yPositiveStart;
+        } else {
+          barHeight = Math.abs(heightValueScale * (point.data as number));
+          // FIXME: The current scaling logic may produce different min and gap heights for each bar stack.
+          const minHeight = Math.max((heightValueScale * absStackTotal) / 100.0, barMinimumHeight);
+          if (barHeight < minHeight) {
+            barHeight = minHeight;
+          }
+          if ((point.data as number) >= Y_ORIGIN) {
+            yPositiveStart -= barHeight + gapOffset;
+            yPoint = yPositiveStart;
+          } else {
+            yPoint = yNegativeStart + gapOffset;
+            yNegativeStart = yPoint + barHeight;
+          }
+
+          barTotalValue += point.data as number;
+          heightOfLastBar = index === barsToDisplay.length - 1 ? barHeight : 0;
         }
-        yPoint = yPoint - barHeight - (index ? gapHeight : 0);
-        barTotalValue += point.data;
 
         if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {
           return (
@@ -968,20 +1151,27 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         );
       });
       const groupRef: RefArrayData = {};
-      const stackFocusProps = shouldFocusWholeStack && {
-        'data-is-focusable': !props.hideTooltip,
-        'aria-label': _getAriaLabel(singleChartData),
-        onMouseOver: (event: any) => _onStackHover(singleChartData, event),
-        onMouseMove: (event: any) => _onStackHover(singleChartData, event),
-        onMouseLeave: _handleMouseOut,
-        onFocus: () => _onStackFocus(singleChartData, groupRef),
-        onBlur: _handleMouseOut,
-        onClick: (event: any) => _onClick(singleChartData, event),
-        role: 'img',
-      };
+      const someBarsActive =
+        singleChartData.chartData.filter(dataPoint => _noLegendHighlighted() || _isLegendHighlighted(dataPoint.legend))
+          .length > 0;
+      // FIXME: Making the entire stack focusable when stack callout is enabled adds unnecessary complexity
+      // and can reduce usability in certain scenarios. Instead, each individual element within the stack
+      // should be focusable on its own, with its own aria-label. This behavior is also seen in Highcharts.
+      const stackFocusProps = shouldFocusWholeStack &&
+        someBarsActive && {
+          'aria-label': _getAriaLabel(singleChartData),
+          onMouseOver: (event: any) => _onStackHover(singleChartData, event),
+          onMouseMove: (event: any) => _onStackHover(singleChartData, event),
+          onMouseLeave: _handleMouseOut,
+          onFocus: () => _onStackFocus(singleChartData, groupRef),
+          onBlur: _handleMouseOut,
+          onClick: (event: any) => _onClick(singleChartData, event),
+          role: 'img',
+          tabIndex: !props.hideTooltip ? 0 : undefined,
+        };
       let showLabel = false;
       let barLabel = 0;
-      if (!props.hideLabels) {
+      if (!props.hideLabels && _yAxisType !== YAxisType.StringAxis) {
         if (_noLegendHighlighted()) {
           showLabel = true;
           barLabel = barTotalValue;
@@ -989,25 +1179,25 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           barsToDisplay.forEach(point => {
             if (_isLegendHighlighted(point.legend)) {
               showLabel = true;
-              barLabel += point.data;
+              barLabel += point.data as number;
             }
           });
         }
       }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
-          <g
-            id={`${indexNumber}-singleBar`}
-            ref={e => (groupRef.refElement = e)}
-            {...stackFocusProps}
-            tabIndex={!props.hideTooltip ? 0 : undefined}
-          >
+          <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
             {singleBar}
           </g>
+          {/*
+            Note: No need to check hideLabels here, as showLabel is only set to true
+            when hideLabels is false earlier in the code.
+          */}
           {!props.hideLabels && _barWidth >= 16 && showLabel && (
             <text
               x={xPoint + _barWidth / 2}
-              y={yPoint - 6}
+              //if total bar value >=0, show label above top bar, otherwise below bottom bar
+              y={barLabel >= Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
               textAnchor="middle"
               className={classes.barLabel}
               aria-label={`Total: ${barLabel}`}
@@ -1037,11 +1227,105 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
-    return bars.filter((bar): bar is JSX.Element => !!bar);
+    return bars.filter((bar): bar is JSXElement => !!bar);
+  }
+
+  function _getMinMaxOfYAxis(
+    dataset: DataPoint[],
+    yAxisType?: YAxisType,
+    useSecondaryYScale?: boolean,
+  ): { startValue: number; endValue: number } {
+    if (!useSecondaryYScale) {
+      return findVSBCNumericMinMaxOfY(dataset);
+    }
+
+    const values: number[] = [];
+    props.data.forEach(xPoint => {
+      xPoint.lineData?.forEach(point => {
+        // useSecondaryYScale is applicable only for lines in VSBC
+        if (point.useSecondaryYScale) {
+          values.push(point.y as number);
+        }
+      });
+    });
+
+    return { startValue: d3Min(values)!, endValue: d3Max(values)! };
+  }
+
+  function _initYAxisParams() {
+    if (_points[0].chartData.length > 0) {
+      _yAxisType = getTypeOfAxis(_points[0].chartData[0].data, false) as YAxisType;
+    } else {
+      Object.keys(_lineObject).forEach(lineLegend => {
+        if (!_lineObject[lineLegend][0].useSecondaryYScale) {
+          _yAxisType = getTypeOfAxis(_lineObject[lineLegend][0].y, false) as YAxisType;
+        }
+      });
+    }
+
+    if (_yAxisType === YAxisType.StringAxis) {
+      const legendToYValues: Record<string, string[]> = {};
+      _points.forEach(xPoint => {
+        xPoint.chartData.forEach(bar => {
+          if (!legendToYValues[bar.legend]) {
+            legendToYValues[bar.legend] = [`${bar.data}`];
+          } else {
+            legendToYValues[bar.legend].push(`${bar.data}`);
+          }
+        });
+      });
+
+      const yAxisLabels = new Set<string>();
+      Object.values(legendToYValues).forEach(yValues => {
+        yValues.forEach(yVal => {
+          yAxisLabels.add(yVal);
+        });
+      });
+      Object.values(_lineObject).forEach(linePoints => {
+        linePoints.forEach(linePoint => {
+          if (!linePoint.useSecondaryYScale) {
+            yAxisLabels.add(`${linePoint.y}`);
+          }
+        });
+      });
+      _yAxisLabels = Array.from(yAxisLabels);
+    }
+  }
+
+  function _getYDomainMargins(containerHeight: number): Margins {
+    /**
+     * Specifies the extra top margin to apply above the highest y-axis tick label.
+     * Useful when stacked bars extend beyond the combined height of all y-axis labels (or categories).
+     */
+    let yAxisTickMarginTop = 0;
+
+    /** Total height available to render the bars */
+    const totalHeight = containerHeight - _margins.bottom! - _margins.top!;
+
+    if (_yAxisType === YAxisType.StringAxis) {
+      /** Maximum height of the stacked bars, expressed in multiples of the height of a y-axis label (or category) */
+      let maxBarHeightInLabels = 0;
+      _points.forEach(xPoint => {
+        /** Height of the stacked bar, expressed in multiples of the height of a y-axis label (or category) */
+        let barHeightInLabels = 0;
+        xPoint.chartData.forEach(bar => {
+          barHeightInLabels += _yAxisLabels.indexOf(`${bar.data}`) + 1;
+        });
+        maxBarHeightInLabels = Math.max(maxBarHeightInLabels, barHeightInLabels);
+      });
+      /** Height of a y-axis label (or category) */
+      const yAxisLabelHeight = maxBarHeightInLabels === 0 ? 0 : totalHeight / maxBarHeightInLabels;
+      yAxisTickMarginTop += yAxisLabelHeight * (maxBarHeightInLabels - _yAxisLabels.length);
+    }
+
+    return {
+      ..._margins,
+      top: _margins.top! + yAxisTickMarginTop,
+    };
   }
 
   if (!_isChartEmpty()) {
@@ -1051,7 +1335,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     );
     const shouldFocusWholeStack = _toFocusWholeStack(_isHavingLines);
     _dataset = _createDataSetLayer();
-    const legendBars: JSX.Element = _getLegendData(_points, _createLegendsForLine(props.data));
+    const legendBars: JSXElement = _getLegendData(_points, _createLegendsForLine(props.data));
     const calloutProps: ModifiedCartesianChartProps['calloutProps'] = {
       color: color,
       legend: calloutLegend,
@@ -1084,11 +1368,15 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         points={_dataset}
         chartType={ChartTypes.VerticalStackedBarChart}
         xAxisType={_xAxisType}
+        getMinMaxOfYAxis={_getMinMaxOfYAxis}
         calloutProps={calloutProps}
+        createYAxis={createNumericYAxis}
         tickParams={tickParams}
         legendBars={legendBars}
         datasetForXAxisDomain={_xAxisLabels}
         isCalloutForStack={shouldFocusWholeStack}
+        getDomainNRangeValues={_getDomainNRangeValues}
+        createStringYAxis={createStringYAxis}
         barwidth={_barWidth}
         getmargins={_getMargins}
         getGraphData={_getGraphData}
@@ -1100,6 +1388,10 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           xAxisOuterPadding: _xAxisOuterPadding,
         })}
         componentRef={cartesianChartRef}
+        showRoundOffXTickValues={!isScalePaddingDefined(props.xAxisInnerPadding, props.xAxisPadding)}
+        yAxisType={_yAxisType!}
+        stringDatasetForYAxisDomain={['', ..._yAxisLabels]}
+        getYDomainMargins={_getYDomainMargins}
         /* eslint-disable react/jsx-no-bind */
         children={(props: ChildProps) => {
           return (
@@ -1109,7 +1401,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
                 {_isHavingLines &&
                   _createLines(
                     props.xScale!,
-                    props.yScale!,
+                    props.yScalePrimary!,
                     props.containerHeight!,
                     props.containerWidth!,
                     props.yScaleSecondary,

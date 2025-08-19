@@ -50,6 +50,7 @@ export const styles = css`
     grid-template-columns: auto auto 1fr;
     min-height: 32px;
     padding: ${spacingHorizontalSNudge};
+    text-align: start;
   }
 
   .content {

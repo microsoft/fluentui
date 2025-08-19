@@ -77,7 +77,7 @@ const Grow = createMotionComponent(({ element }) => ({
 export const CreateMotionComponentFunctions = () => {
   const classes = useClasses();
 
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
   const [playbackRate, setPlaybackRate] = React.useState<number>(20);
 
   // Heads up!

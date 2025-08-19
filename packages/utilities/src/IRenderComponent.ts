@@ -8,5 +8,6 @@ export interface IRenderComponent<TProps> {
   /**
    * JSX.Element to return in this component's render() function.
    */
-  children: (props: TProps) => JSX.Element;
+  children: (props: TProps) => // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element;
 }

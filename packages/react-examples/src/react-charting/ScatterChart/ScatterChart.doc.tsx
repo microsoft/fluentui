@@ -5,6 +5,7 @@ import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { ScatterChartBasicExample } from './ScatterChart.Basic.Example';
 import { ScatterChartDateExample } from './ScatterChart.DateAxis.Example';
 import { ScatterChartStringExample } from './ScatterChart.StringAxis.Example';
+import { ScatterChartLogAxisExample } from './ScatterChart.LogAxis.Example';
 import { ScatterChartShapesExample } from './ScatterChart.Shapes.Example';
 
 const ScatterChartBasicExampleCode =
@@ -13,6 +14,8 @@ const ScatterChartDateExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/ScatterChart/ScatterChart.DateAxis.Example.tsx') as string;
 const ScatterChartStringExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/ScatterChart/ScatterChart.StringAxis.Example.tsx') as string;
+const ScatterChartLogAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/ScatterChart/ScatterChart.LogAxis.Example.tsx') as string;
 const ScatterChartShapesExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/ScatterChart/ScatterChart.Shapes.Example.tsx') as string;
 
@@ -36,6 +39,11 @@ export const ScatterChartPageProps: IDocPageProps = {
       title: 'ScatterChart string',
       code: ScatterChartStringExampleCode,
       view: <ScatterChartStringExample />,
+    },
+    {
+      title: 'ScatterChart log axis',
+      code: ScatterChartLogAxisExampleCode,
+      view: <ScatterChartLogAxisExample />,
     },
     {
       title: 'ScatterChart with different shapes',

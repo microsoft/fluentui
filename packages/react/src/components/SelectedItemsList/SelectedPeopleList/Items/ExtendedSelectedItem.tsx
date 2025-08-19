@@ -21,6 +21,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
     this.state = { contextualMenuVisible: false };
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { item, onExpandItem, onRemoveItem, removeButtonAriaLabel, index, selected } = this.props;
     const itemId = getId();

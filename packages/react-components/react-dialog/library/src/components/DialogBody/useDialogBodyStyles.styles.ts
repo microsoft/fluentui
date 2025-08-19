@@ -14,7 +14,7 @@ const useResetStyles = makeResetStyles({
   overflow: 'unset',
   gap: DIALOG_GAP,
   display: 'grid',
-  maxHeight: `calc(100vh - 2 * ${SURFACE_PADDING})`,
+  maxHeight: [`calc(100vh - 2 * ${SURFACE_PADDING})`, `calc(100dvh - 2 * ${SURFACE_PADDING})`],
   boxSizing: 'border-box',
   gridTemplateRows: 'auto 1fr',
   gridTemplateColumns: '1fr 1fr auto',

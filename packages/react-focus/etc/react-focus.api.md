@@ -21,6 +21,8 @@ export class FocusZone extends React_2.Component<IFocusZoneProps> implements IFo
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: any;
+    // (undocumented)
     static contextType: React_2.Context<MergeStylesShadowRootContextValue | undefined>;
     // (undocumented)
     get defaultFocusElement(): HTMLElement | null;

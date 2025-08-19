@@ -11,6 +11,7 @@ import {
 import { ScatterChartBasicExample } from './ScatterChart.Basic.Example';
 import { ScatterChartDateExample } from './ScatterChart.DateAxis.Example';
 import { ScatterChartStringExample } from './ScatterChart.StringAxis.Example';
+import { ScatterChartLogAxisExample } from './ScatterChart.LogAxis.Example';
 import { ScatterChartShapesExample } from './ScatterChart.Shapes.Example';
 
 const ScatterChartBasicExampleCode =
@@ -19,6 +20,8 @@ const ScatterChartDateExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/ScatterChart/ScatterChart.DateAxis.Example.tsx') as string;
 const ScatterChartStringExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/ScatterChart/ScatterChart.StringAxis.Example.tsx') as string;
+const ScatterChartLogAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/ScatterChart/ScatterChart.LogAxis.Example.tsx') as string;
 const ScatterChartShapesExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/ScatterChart/ScatterChart.Shapes.Example.tsx') as string;
 // All Scatter charts locale is impacted.
@@ -39,6 +42,9 @@ export class ScatterChartPage extends React.Component<IComponentDemoPageProps, {
             </ExampleCard>
             <ExampleCard title="ScatterChart string" code={ScatterChartStringExampleCode}>
               <ScatterChartStringExample />
+            </ExampleCard>
+            <ExampleCard title="ScatterChart log axis" code={ScatterChartLogAxisExampleCode}>
+              <ScatterChartLogAxisExample />
             </ExampleCard>
             <ExampleCard title="ScatterChart shapes" code={ScatterChartShapesExampleCode}>
               <ScatterChartShapesExample />

@@ -1824,6 +1824,7 @@ import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
 import { usePortal_unstable } from '@fluentui/react-portal';
 import { usePortalMountNode } from '@fluentui/react-shared-contexts';
+import { usePositioning } from '@fluentui/react-positioning';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
 import { usePresenceBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
@@ -1846,6 +1847,8 @@ import { useRatingItemStyles_unstable } from '@fluentui/react-rating';
 import { useRatingStyles_unstable } from '@fluentui/react-rating';
 import { useRestoreFocusSource } from '@fluentui/react-tabster';
 import { useRestoreFocusTarget } from '@fluentui/react-tabster';
+import { useSafeZoneArea } from '@fluentui/react-positioning';
+import { UseSafeZoneOptions } from '@fluentui/react-positioning';
 import { useScrollbarWidth } from '@fluentui/react-utilities';
 import { useSearchBox_unstable } from '@fluentui/react-search';
 import { useSearchBoxStyles_unstable } from '@fluentui/react-search';
@@ -5651,6 +5654,8 @@ export { usePortal_unstable }
 
 export { usePortalMountNode }
 
+export { usePositioning }
+
 export { usePresenceBadge_unstable }
 
 export { usePresenceBadgeStyles_unstable }
@@ -5694,6 +5699,10 @@ export { useRatingStyles_unstable }
 export { useRestoreFocusSource }
 
 export { useRestoreFocusTarget }
+
+export { useSafeZoneArea }
+
+export { UseSafeZoneOptions }
 
 export { useScrollbarWidth }
 

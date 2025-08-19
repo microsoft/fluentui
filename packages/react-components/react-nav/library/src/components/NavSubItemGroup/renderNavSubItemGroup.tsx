@@ -10,5 +10,11 @@ import type { NavSubItemGroupState, NavSubItemGroupSlots } from './NavSubItemGro
 export const renderNavSubItemGroup_unstable = (state: NavSubItemGroupState) => {
   assertSlots<NavSubItemGroupSlots>(state);
 
-  return state.open ? <state.root>{state.root.children}</state.root> : null;
+  return state.collapseMotion ? (
+    <state.collapseMotion>
+      <state.root />
+    </state.collapseMotion>
+  ) : (
+    <state.root />
+  );
 };

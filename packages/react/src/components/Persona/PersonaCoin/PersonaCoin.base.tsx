@@ -203,7 +203,8 @@ const getCoinRenderer =
     theme,
     showUnknownPersonaCoin,
     size = DEFAULT_PROPS.size,
-  }: IPersonaCoinProps): JSX.Element | null => {
+  }: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  IPersonaCoinProps): JSX.Element | null => {
     // Render the Image component only if an image URL is provided
     if (!imageUrl) {
       return null;
@@ -237,7 +238,8 @@ const renderPersonaCoinInitials = ({
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   primaryText,
   theme,
-}: IPersonaCoinProps): JSX.Element => {
+}: // eslint-disable-next-line @typescript-eslint/no-deprecated
+IPersonaCoinProps): JSX.Element => {
   if (showUnknownPersonaCoin) {
     return <Icon iconName="Help" />;
   }

@@ -1,7 +1,15 @@
 import * as React from 'react';
 import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
+import { makeStyles, tokens } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
 
 export const ScatterChartString = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
 
@@ -115,6 +123,7 @@ export const ScatterChartString = () => {
           width={width}
           xAxisTitle={'Product Category'}
           yAxisTitle={'Revenue in dollars'}
+          styles={{ svgTooltip: classes.svgTooltip }}
         />
       </div>
     </>

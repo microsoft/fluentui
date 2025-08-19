@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Wed, 14 May 2025 18:49:17 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jul 2025 18:48:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.8.0)
+
+Mon, 28 Jul 2025 18:48:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.7.0..@fluentui/react-motion-components-preview_v0.8.0)
+
+### Minor changes
+
+- feat(motion): add Fade presence motion component ([PR #34839](https://github.com/microsoft/fluentui/pull/34839) by robertpenner@microsoft.com)
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.7.0)
+
+Wed, 16 Jul 2025 13:52:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.6.2..@fluentui/react-motion-components-preview_v0.7.0)
+
+### Minor changes
+
+- refactor(Collapse): make consistent with other motion components ([PR #34831](https://github.com/microsoft/fluentui/pull/34831) by robertpenner@microsoft.com)
+- feat(motion): add Slide presence motion component ([PR #34774](https://github.com/microsoft/fluentui/pull/34774) by robertpenner@microsoft.com)
+- refactor(motion): apply consistent patterns across Fade and Scale ([PR #34830](https://github.com/microsoft/fluentui/pull/34830) by robertpenner@microsoft.com)
+
+## [0.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.6.2)
+
+Thu, 26 Jun 2025 14:11:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.5.0..@fluentui/react-motion-components-preview_v0.6.2)
+
+### Patches
+
+- fix(Scale): update variant parameters to design spec & refactor internally ([PR #34712](https://github.com/microsoft/fluentui/pull/34712) by robertpenner@microsoft.com)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.5.0)
 

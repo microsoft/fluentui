@@ -3,6 +3,7 @@ import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   TreeProps,
   Tree,
@@ -13,7 +14,7 @@ import {
 } from '@fluentui/react-tree';
 import { Button } from '@fluentui/react-button';
 
-const mount = (element: JSX.Element) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

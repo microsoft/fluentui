@@ -4,14 +4,13 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
@@ -129,7 +128,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     open?: boolean;
     defaultOpen?: boolean;
     onOpenChange?: DialogOpenChangeEventHandler;
-    children: [JSX.Element, JSX.Element] | JSX.Element;
+    children: [JSXElement, JSXElement] | JSXElement;
     inertTrapFocus?: boolean;
 };
 

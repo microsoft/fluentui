@@ -3,7 +3,7 @@
  */
 
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { getTheme } from '@fluentui/react';
 import { CommandBarButton } from '@fluentui/react/lib/Button';
@@ -101,7 +101,9 @@ describe('Sidebar', () => {
     const { container, rerender } = render(<Sidebar componentRef={sidebar} {...sidebarAccordionExampleProps} />);
 
     // Set collapsed state
-    sidebar.current?.setCollapsed(true);
+    act(() => {
+      sidebar.current?.setCollapsed(true);
+    });
 
     // Re-render with updated state
     rerender(<Sidebar componentRef={sidebar} {...sidebarAccordionExampleProps} />);

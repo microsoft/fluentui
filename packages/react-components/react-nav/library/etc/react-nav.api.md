@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
@@ -31,7 +29,9 @@ import type { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InlineDrawerSlots } from '@fluentui/react-drawer';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { MenuButtonProps } from '@fluentui/react-button';
+import { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -125,6 +125,7 @@ export type NavCategoryItemSlots = {
     root: NonNullable<Slot<'button'>>;
     icon?: Slot<'span'>;
     expandIcon: NonNullable<Slot<'span'>>;
+    expandIconMotion?: Slot<PresenceMotionSlotProps>;
 };
 
 // @public
@@ -333,7 +334,7 @@ export const navSubItemClassNames: SlotClassNames<NavSubItemSlots>;
 export const NavSubItemGroup: ForwardRefComponent<NavSubItemGroupProps>;
 
 // @public (undocumented)
-export const navSubItemGroupClassNames: SlotClassNames<NavSubItemGroupSlots>;
+export const navSubItemGroupClassNames: SlotClassNames<Omit<NavSubItemGroupSlots, 'collapseMotion'>>;
 
 // @public
 export type NavSubItemGroupProps = ComponentProps<NavSubItemGroupSlots>;
@@ -341,6 +342,7 @@ export type NavSubItemGroupProps = ComponentProps<NavSubItemGroupSlots>;
 // @public (undocumented)
 export type NavSubItemGroupSlots = {
     root: NonNullable<Slot<'div'>>;
+    collapseMotion?: Slot<PresenceMotionSlotProps<NavSubItemGroupCollapseMotionParams>>;
 };
 
 // @public
@@ -384,7 +386,7 @@ export const renderAppItemStatic_unstable: (state: AppItemStaticState) => JSX.El
 export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSX.Element;
 
 // @public
-export const renderNavCategory_unstable: (state: NavCategoryState, contextValues: NavCategoryContextValues) => JSX.Element;
+export const renderNavCategory_unstable: (state: NavCategoryState, contextValues: NavCategoryContextValues) => JSXElement;
 
 // @public
 export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, contextValues: NavCategoryItemContextValues) => JSX.Element;
@@ -402,7 +404,7 @@ export const renderNavSectionHeader_unstable: (state: NavSectionHeaderState) => 
 export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 
 // @public
-export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element | null;
+export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element;
 
 // @public
 export const renderSplitNavItem_unstable: (state: SplitNavItemState) => JSX.Element;

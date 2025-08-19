@@ -4,6 +4,7 @@ import type {} from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   Card,
   CardFooter,
@@ -15,7 +16,7 @@ import {
 } from '@fluentui/react-card';
 import type { CardProps, CardOnSelectionChangeEvent } from '@fluentui/react-card';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

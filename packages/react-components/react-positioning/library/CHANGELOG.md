@@ -1,8 +1,83 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 18 Jun 2025 17:33:58 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Aug 2025 10:03:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.20.3)
+
+Thu, 07 Aug 2025 10:03:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.20.2..@fluentui/react-positioning_v9.20.3)
+
+### Patches
+
+- fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.23.2 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+
+## [9.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.20.2)
+
+Wed, 30 Jul 2025 13:10:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.20.1..@fluentui/react-positioning_v9.20.2)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.24.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-theme to v9.2.0 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-utilities to v9.23.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+
+## [9.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.20.1)
+
+Mon, 28 Jul 2025 18:48:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.20.0..@fluentui/react-positioning_v9.20.1)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.23.0 ([PR #34918](https://github.com/microsoft/fluentui/pull/34918) by beachball)
+
+## [9.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.20.0)
+
+Thu, 17 Jul 2025 13:49:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.19.0..@fluentui/react-positioning_v9.20.0)
+
+### Minor changes
+
+- feat: enable griffel raw styles ([PR #34853](https://github.com/microsoft/fluentui/pull/34853) by martinhochel@microsoft.com)
+
+## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.19.0)
+
+Fri, 11 Jul 2025 15:59:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.18.5..@fluentui/react-positioning_v9.19.0)
+
+### Minor changes
+
+- feat: SafeZone restarts timeout on mouse move ([PR #34807](https://github.com/microsoft/fluentui/pull/34807) by lingfangao@hotmail.com)
+
+## [9.18.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.5)
+
+Fri, 27 Jun 2025 13:39:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.18.4..@fluentui/react-positioning_v9.18.5)
+
+### Patches
+
+- fix: stop rAF if no mouse movement happening ([PR #34734](https://github.com/microsoft/fluentui/pull/34734) by olfedias@microsoft.com)
+
+## [9.18.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.4)
+
+Thu, 26 Jun 2025 14:11:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.18.3..@fluentui/react-positioning_v9.18.4)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.22.0 ([PR #34529](https://github.com/microsoft/fluentui/pull/34529) by beachball)
+
+## [9.18.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.3)
+
+Mon, 23 Jun 2025 15:49:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.18.2..@fluentui/react-positioning_v9.18.3)
+
+### Patches
+
+- feat: improve handling of different shapes of rectangles in useSafeZoneArea() ([PR #34677](https://github.com/microsoft/fluentui/pull/34677) by olfedias@microsoft.com)
 
 ## [9.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.18.2)
 

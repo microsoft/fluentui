@@ -22,8 +22,8 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       _updateChart(props);
     }, [props]);
 
-    function _onFocus(data: ChartDataPoint, id: string): void {
-      props.onFocusCallback!(data, id, currentRef.current);
+    function _onFocus(data: ChartDataPoint, id: string, event: React.FocusEvent<SVGPathElement, Element>): void {
+      props.onFocusCallback!(data, id, event, currentRef.current);
     }
 
     function _hoverOn(data: ChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {
@@ -44,6 +44,12 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       const legend = point.xAxisCalloutData || point.legend;
       const yValue = point.yAxisCalloutData || point.data || 0;
       return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+    }
+
+    function _shouldHighlightArc(legend?: string): boolean {
+      const { activeArc } = props;
+      // If no activeArc is provided, highlight all arcs. Otherwise, only highlight the arcs that are active.
+      return !activeArc || activeArc.length === 0 || legend === undefined || activeArc.includes(legend);
     }
 
     function _renderArcLabel(className: string) {
@@ -93,27 +99,41 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       (typeof props.data!.data.legend === 'string' ? props.data!.data.legend.replace(/\s+/g, '') : '') +
       props.data!.data.data;
     const opacity: number = props.activeArc === props.data!.data.legend || props.activeArc === '' ? 1 : 0.1;
+    const cornerRadius = props.roundCorners ? 3 : 0;
     return (
       <g ref={currentRef}>
         {!!focusedArcId && focusedArcId === id && (
           // TODO innerradius and outerradius were absent
           <path
             id={id + 'focusRing'}
-            d={arc({ ...props.focusData!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!}
+            d={
+              arc.cornerRadius(cornerRadius)({
+                ...props.data!,
+                innerRadius: props.innerRadius,
+                outerRadius: props.outerRadius,
+              })!
+            }
             className={classes.focusRing}
           />
         )}
         <path
           // TODO innerradius and outerradius were absent
           id={id}
-          d={arc({ ...props.data!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!}
+          d={
+            arc.cornerRadius(cornerRadius)({
+              ...props.data!,
+              innerRadius: props.innerRadius,
+              outerRadius: props.outerRadius,
+            })!
+          }
           className={classes.root}
           style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
-          onFocus={_onFocus.bind(this, props.data!.data, id)}
+          onFocus={event => _onFocus(props.data!.data, id, event)}
           data-is-focusable={props.activeArc === props.data!.data.legend || props.activeArc === ''}
-          onMouseOver={_hoverOn.bind(this, props.data!.data)}
-          onMouseMove={_hoverOn.bind(this, props.data!.data)}
+          onMouseOver={event => _hoverOn(props.data!.data, event)}
+          onMouseMove={event => _hoverOn(props.data!.data, event)}
           onMouseLeave={_hoverOff}
+          tabIndex={_shouldHighlightArc(props.data!.data.legend!) ? 0 : undefined}
           onBlur={_onBlur}
           opacity={opacity}
           onClick={props.data?.data.onClick}

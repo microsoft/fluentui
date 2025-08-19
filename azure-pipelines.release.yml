@@ -56,10 +56,6 @@ extends:
                   artifactName: homepage.htm
                   displayName: homepage.htm
                 - output: pipelineArtifact
-                  targetPath: $(System.DefaultWorkingDirectory)/packages/fluentui/docs/src/public
-                  artifactName: demo-images
-                  displayName: demo-images
-                - output: pipelineArtifact
                   targetPath: $(System.DefaultWorkingDirectory)/oufr-version.txt
                   artifactName: oufr-version
                   displayName: oufr-version

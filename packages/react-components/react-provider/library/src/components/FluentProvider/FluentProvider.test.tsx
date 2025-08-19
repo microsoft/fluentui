@@ -8,6 +8,11 @@ import { FluentProvider } from './FluentProvider';
 import { fluentProviderClassNames } from './useFluentProviderStyles.styles';
 import { isConformant } from '../../testing/isConformant';
 
+jest.mock('@fluentui/react-utilities', () => ({
+  ...jest.requireActual('@fluentui/react-utilities'),
+  ...jest.requireActual('../../testing/createUseIdMock').createUseIdMock(),
+}));
+
 describe('FluentProvider', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
@@ -32,6 +37,7 @@ describe('FluentProvider', () => {
    * Note: see more visual regression tests for FluentProvider in /apps/vr-tests.
    */
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- FIXME
     const component = reactTestRenderer.create(
       <FluentProvider theme={{ colorBrandBackground2: '#fff' }}>Default FluentProvider</FluentProvider>,
     );

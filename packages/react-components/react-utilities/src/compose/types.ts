@@ -9,6 +9,8 @@ import type {
   ReactNode,
   ReactVersionDependent,
   ReplaceNullWithUndefined,
+  JSXIntrinsicElementKeys,
+  JSXIntrinsicElement,
 } from '../utils/types';
 
 export type SlotRenderFunction<Props> = (Component: React.ElementType<Props>, props: Omit<Props, 'as'>) => ReactNode;
@@ -33,7 +35,7 @@ export type SlotShorthandValue = React.ReactElement | string | number | Iterable
  * it shouldn't be used as the type of a slot.
  */
 export type UnknownSlotProps = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'style'> & {
-  as?: keyof JSX.IntrinsicElements;
+  as?: JSXIntrinsicElementKeys;
   children?: ReactNode;
 };
 
@@ -99,13 +101,13 @@ type EmptyIntrinsicElements =
   | 'wbr';
 
 /**
- * Helper type for {@link Slot}. Modifies `JSX.IntrinsicElements[Type]`:
+ * Helper type for {@link Slot}. Modifies `JSXIntrinsicElements<Type>`:
  * * Removes legacy string ref.
  * * Disallows children for empty tags like 'img'.
  */
-type IntrinsicElementProps<Type extends keyof JSX.IntrinsicElements> = Type extends EmptyIntrinsicElements
-  ? PropsWithoutChildren<React.PropsWithRef<JSX.IntrinsicElements[Type]>>
-  : React.PropsWithRef<JSX.IntrinsicElements[Type]>;
+type IntrinsicElementProps<Type extends JSXIntrinsicElementKeys> = Type extends EmptyIntrinsicElements
+  ? PropsWithoutChildren<React.PropsWithRef<JSXIntrinsicElement<Type>>>
+  : React.PropsWithRef<JSXIntrinsicElement<Type>>;
 
 /**
  * The props type and shorthand value for a slot. Type is either a single intrinsic element like `'div'`,
@@ -131,12 +133,12 @@ type IntrinsicElementProps<Type extends keyof JSX.IntrinsicElements> = Type exte
  */
 export type Slot<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Type extends keyof JSX.IntrinsicElements | ComponentType<any> | UnknownSlotProps,
-  AlternateAs extends keyof JSX.IntrinsicElements = never,
+  Type extends JSXIntrinsicElementKeys | ComponentType<any> | UnknownSlotProps,
+  AlternateAs extends JSXIntrinsicElementKeys = never,
 > = IsSingleton<Extract<Type, string>> extends true
   ?
       | WithSlotShorthandValue<
-          Type extends keyof JSX.IntrinsicElements // Intrinsic elements like `div`
+          Type extends JSXIntrinsicElementKeys // Intrinsic elements like `div`
             ? { as?: Type } & WithSlotRenderFunction<IntrinsicElementProps<Type>>
             : Type extends ComponentType<infer Props> // Component types like `typeof Button`
             ? Props extends UnknownSlotProps
@@ -168,7 +170,7 @@ export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends ne
  * type Example<T> = T extends AsIntrinsicElement<infer As> ? As : never;
  * ```
  */
-export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = { as?: As };
+export type AsIntrinsicElement<As extends JSXIntrinsicElementKeys> = { as?: As };
 
 /**
  * Removes SlotShorthandValue and null from the slot type, extracting just the slot's Props object.
@@ -267,7 +269,7 @@ export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> &
      */
     [SLOT_ELEMENT_TYPE_SYMBOL]:
       | ComponentType<Props>
-      | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+      | (Props extends AsIntrinsicElement<infer As> ? As : JSXIntrinsicElementKeys);
     /**
      * @internal
      * The original className prop for the slot, before being modified by the useStyles hook.

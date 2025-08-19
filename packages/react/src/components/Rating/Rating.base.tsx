@@ -129,6 +129,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
     const readOnlyAriaLabel = getAriaLabel?.(displayRating, max);
     const normalModeAriaLabel = ariaLabel ? ariaLabel : readOnlyAriaLabel;
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const stars: JSX.Element[] = [];
 
     const renderStar = (starProps: IRatingStarProps, renderer?: IRatingProps['onRenderStar']) =>

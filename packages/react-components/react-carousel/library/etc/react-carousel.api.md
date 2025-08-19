@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ARIAButtonElement } from '@fluentui/react-aria';
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ButtonProps } from '@fluentui/react-button';

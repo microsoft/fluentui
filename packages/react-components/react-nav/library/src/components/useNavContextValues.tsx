@@ -13,6 +13,7 @@ export function useNavContextValues_unstable(state: NavState): NavContextValues 
     openCategories,
     multiple,
     density,
+    onNavItemSelect,
   } = state;
 
   const navContext = React.useMemo<NavContextValue>(
@@ -27,6 +28,7 @@ export function useNavContextValues_unstable(state: NavState): NavContextValues 
       openCategories,
       multiple,
       density,
+      onNavItemSelect,
     }),
     [
       selectedValue,
@@ -39,6 +41,7 @@ export function useNavContextValues_unstable(state: NavState): NavContextValues 
       openCategories,
       multiple,
       density,
+      onNavItemSelect,
     ],
   );
 

@@ -12,6 +12,9 @@ export const SecondaryContentForMenuItems = () => (
       <MenuList>
         <MenuItem secondaryContent="Ctrl+N">New File</MenuItem>
         <MenuItem secondaryContent="Ctrl+Shift+N">New Window</MenuItem>
+        <MenuItem secondaryContent="Ctrl+T" disabled>
+          New Tab
+        </MenuItem>
         <MenuItem secondaryContent="Ctrl+O">Open File</MenuItem>
       </MenuList>
     </MenuPopover>

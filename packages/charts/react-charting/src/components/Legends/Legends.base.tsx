@@ -98,6 +98,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     };
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
@@ -166,12 +167,13 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     return result;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSX.Element => {
     const { overflowProps, allowFocusOnLegends = true, canSelectMultipleLegends = false } = this.props;
     const rootStyles = {
       root: {
         justifyContent: this.props.centerLegends ? 'center' : 'unset',
-        flexWrap: 'wrap',
+        flexWrap: this.props.enabledWrapLines ? 'wrap' : 'nowrap',
       },
     };
     return (
@@ -254,8 +256,10 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     legend.action?.();
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSX.Element => {
     const { allowFocusOnLegends = true, className, styles, theme, canSelectMultipleLegends = false } = this.props;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const overflowHoverCardLegends: JSX.Element[] = [];
     const classNames = getClassNames(styles!, {
       theme: theme!,

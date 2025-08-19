@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -22,10 +20,10 @@ export const fieldClassNames: SlotClassNames<FieldSlots>;
 
 // @public (undocumented)
 export const FieldContextProvider: React_2.Provider<Readonly<Pick<FieldState, "required" | "size" | "orientation" | "validationState" | "generatedControlId"> & {
-    labelFor?: string | undefined;
-    labelId?: string | undefined;
-    validationMessageId?: string | undefined;
-    hintId?: string | undefined;
+    labelFor?: string;
+    labelId?: string;
+    validationMessageId?: string;
+    hintId?: string;
 }> | undefined>;
 
 // @public (undocumented)
@@ -82,10 +80,10 @@ export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElem
 
 // @public (undocumented)
 export const useFieldContext_unstable: () => Readonly<Pick<FieldState, "required" | "size" | "orientation" | "validationState" | "generatedControlId"> & {
-    labelFor?: string | undefined;
-    labelId?: string | undefined;
-    validationMessageId?: string | undefined;
-    hintId?: string | undefined;
+    labelFor?: string;
+    labelId?: string;
+    validationMessageId?: string;
+    hintId?: string;
 }> | undefined;
 
 // @public

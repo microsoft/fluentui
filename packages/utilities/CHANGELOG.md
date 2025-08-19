@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Fri, 16 May 2025 07:22:04 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Aug 2025 07:19:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.23](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.23)
+
+Thu, 14 Aug 2025 07:19:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.22..@fluentui/utilities_v8.15.23)
+
+### Patches
+
+- indirect ts emit change with exactOptionalPropertyTypes ([PR #33498](https://github.com/microsoft/fluentui/pull/33498) by vgenaev@gmail.com)
 
 ## [8.15.22](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.22)
 

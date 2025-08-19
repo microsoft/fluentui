@@ -7,15 +7,17 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import {
   AxisCategoryOrder,
+  AxisScaleType,
   IAccessibilityProps,
   IChart,
   IDataPoint,
+  IGanttChartDataPoint,
   IGroupedVerticalBarChartData,
   IHeatMapChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartPoints,
   IMargins,
-  IScatterChartDataPoint,
+  IScatterChartPoints,
   IVerticalBarChartDataPoint,
   IVerticalStackedBarDataPoint,
 } from '../../types/index';
@@ -194,6 +196,11 @@ export interface ICartesianChartStyles {
    * Styles for the svg tooltip
    */
   svgTooltip?: IStyle;
+
+  /**
+   * Styles for the chart svg element
+   */
+  chart?: IStyle;
 }
 
 /**
@@ -507,6 +514,24 @@ export interface ICartesianChartProps {
    * @default 'default'
    */
   yAxisCategoryOrder?: AxisCategoryOrder;
+
+  /**
+   * Defines the scale type for the x-axis.
+   * @default 'default'
+   */
+  xScaleType?: AxisScaleType;
+
+  /**
+   * Defines the scale type for the primary y-axis.
+   * @default 'default'
+   */
+  yScaleType?: AxisScaleType;
+
+  /**
+   * Defines the scale type for the secondary y-axis.
+   * @default 'default'
+   */
+  secondaryYScaleType?: AxisScaleType;
 }
 
 export interface IYValueHover {
@@ -564,6 +589,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Legends of the chart.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   legendBars: JSX.Element | null;
 
   /**
@@ -714,7 +740,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
       | IHorizontalBarChartWithAxisDataPoint[]
       | IVerticalBarChartDataPoint[]
       | IDataPoint[]
-      | IScatterChartDataPoint[],
+      | IScatterChartPoints[]
+      | IGanttChartDataPoint[],
     yAxisType: YAxisType | undefined,
     useSecondaryYScale?: boolean,
   ) => { startValue: number; endValue: number };
@@ -730,6 +757,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     useSecondaryYScale?: boolean,
     supportNegativeData?: boolean,
     roundedTicks?: boolean,
+    scaleType?: AxisScaleType,
   ) => ScaleLinear<number, number, never>;
 
   /**
@@ -742,7 +770,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
       | IVerticalStackedBarDataPoint[]
       | IHorizontalBarChartWithAxisDataPoint[]
       | IGroupedVerticalBarChartData[]
-      | IHeatMapChartDataPoint[],
+      | IHeatMapChartDataPoint[]
+      | IGanttChartDataPoint[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,

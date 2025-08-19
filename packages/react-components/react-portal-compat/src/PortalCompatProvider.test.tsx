@@ -41,7 +41,7 @@ describe('useProviderThemeClasses', () => {
 
     expect(result.current).toMatchInlineSnapshot(`
       Array [
-        "fui-FluentProvider1",
+        "fui-FluentProviderr0",
       ]
     `);
   });
@@ -53,8 +53,8 @@ describe('useProviderThemeClasses', () => {
 
     expect(result.current).toMatchInlineSnapshot(`
       Array [
-        "fui-FluentProvider2",
-        "fui-FluentProvider1",
+        "fui-FluentProviderr2",
+        "fui-FluentProviderr1",
       ]
     `);
   });
@@ -72,7 +72,7 @@ describe('useProviderThemeClasses', () => {
 
     expect(result.current).toMatchInlineSnapshot(`
       Array [
-        "custom1-fui-FluentProvider1",
+        "custom1-fui-FluentProviderr3",
       ]
     `);
   });
@@ -143,7 +143,7 @@ describe('PortalCompatProvider', () => {
     expect(result.current(element)).toBeInstanceOf(Function);
     expect(element.classList).toMatchInlineSnapshot(`
       DOMTokenList {
-        "0": "fui-FluentProvider1",
+        "0": "fui-FluentProviderr4",
       }
     `);
   });
@@ -157,8 +157,8 @@ describe('PortalCompatProvider', () => {
     expect(result.current(element)).toBeInstanceOf(Function);
     expect(element.classList).toMatchInlineSnapshot(`
       DOMTokenList {
-        "0": "fui-FluentProvider2",
-        "1": "fui-FluentProvider1",
+        "0": "fui-FluentProviderr6",
+        "1": "fui-FluentProviderr5",
       }
     `);
   });
@@ -177,7 +177,7 @@ describe('PortalCompatProvider', () => {
 
     expect(element.classList).toMatchInlineSnapshot(`
       DOMTokenList {
-        "0": "fui-FluentProvider1",
+        "0": "fui-FluentProviderr7",
       }
     `);
     expect(unregister).toBeInstanceOf(Function);

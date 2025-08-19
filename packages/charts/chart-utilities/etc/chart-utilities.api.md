@@ -387,7 +387,7 @@ export interface ErrorOptions {
 }
 
 // @public (undocumented)
-export type FluentChart = 'area' | 'composite' | 'donut' | 'fallback' | 'gauge' | 'groupedverticalbar' | 'heatmap' | 'horizontalbar' | 'line' | 'scatter' | 'scatterpolar' | 'sankey' | 'table' | 'verticalstackedbar';
+export type FluentChart = 'area' | 'composite' | 'donut' | 'fallback' | 'gauge' | 'groupedverticalbar' | 'heatmap' | 'horizontalbar' | 'line' | 'scatter' | 'scatterpolar' | 'sankey' | 'table' | 'verticalstackedbar' | 'gantt';
 
 // @public (undocumented)
 export interface Font {
@@ -445,6 +445,15 @@ export interface GaugeLine {
     // (undocumented)
     width: number;
 }
+
+// @public (undocumented)
+export const getAxisIds: (data: Partial<PlotData>) => {
+    x: number;
+    y: number;
+};
+
+// @public (undocumented)
+export const getAxisKey: (axLetter: "x" | "y", axId: number) => keyof Layout;
 
 // @public
 export function getMultiLevelDateTimeFormatOptions(startLevel?: number, endLevel?: number): Intl.DateTimeFormatOptions;
@@ -507,6 +516,9 @@ export const isNumber: (value: any) => boolean;
 
 // @public (undocumented)
 export const isNumberArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
+
+// @public (undocumented)
+export const isObjectArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
 export const isStringArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
@@ -1265,7 +1277,7 @@ export interface PlotData {
     // (undocumented)
     marker: Partial<PlotMarker>;
     // (undocumented)
-    mode: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta' | 'markers+text';
+    mode: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta' | 'markers+text' | 'lines+text' | 'lines+markers+text';
     // (undocumented)
     name: string;
     // (undocumented)
@@ -1298,6 +1310,8 @@ export interface PlotData {
     stackgaps: 'infer zero' | 'interpolate';
     // (undocumented)
     stackgroup: string;
+    // (undocumented)
+    stage: string;
     // (undocumented)
     text: string | string[];
     // (undocumented)
