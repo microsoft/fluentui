@@ -140,7 +140,7 @@ describe(`workspace-plugin`, () => {
 
   describe(`v9 project nodes`, () => {
     describe(`React Integration Tester config`, () => {
-      it(`should not --run type-check within targets for projects without stories sibling projects`, async () => {
+      it(`should not create atomized targets if project doesnt have required configurations`, async () => {
         await tempFs.createFiles({
           'proj/library/project.json': serializeJson({
             root: 'proj',
@@ -153,13 +153,39 @@ describe(`workspace-plugin`, () => {
             private: true,
           } satisfies Partial<PackageJson>),
         });
+        const results = await createNodesFunction(['proj/library/project.json'], options, context);
+
+        const targets = getTargets(results, 'proj/library')!;
+
+        expect(targets['react-integration-testing'].dependsOn).toEqual([]);
+        expect(targets['react-integration-testing--17']).toBeUndefined();
+        expect(targets['react-integration-testing--18']).toBeUndefined();
+      });
+      it(`should --run type-check within targets for projects with "stories" sibling projects`, async () => {
+        await tempFs.createFiles({
+          'proj/library/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+          } satisfies ProjectConfiguration),
+          'proj/library/package.json': serializeJson({
+            name: '@proj/proj',
+            private: true,
+          } satisfies Partial<PackageJson>),
+          'proj/stories/project.json': serializeJson({
+            root: 'proj/stories',
+            name: 'proj-stories',
+            tags: ['type:stories', 'vNext'],
+          } satisfies ProjectConfiguration),
+        });
 
         const results = await createNodesFunction(['proj/library/project.json'], options, context);
 
         const targets = getTargets(results, 'proj/library')!;
 
         expect(targets['react-integration-testing--17'].command).toMatchInlineSnapshot(
-          `"yarn rit --react 17  --verbose"`,
+          `"yarn rit --react 17 --run type-check --verbose"`,
         );
       });
 
