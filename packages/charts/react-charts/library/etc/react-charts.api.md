@@ -1420,6 +1420,7 @@ export interface ScatterChartStyleProps extends CartesianChartStyleProps {
 
 // @public
 export interface ScatterChartStyles extends CartesianChartStyles {
+    markerLabel?: string;
 }
 
 // @public

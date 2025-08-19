@@ -731,6 +731,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   isDarkTheme?: boolean,
 ): LineChartProps | AreaChartProps | ScatterChartProps => {
   const isScatterMarkers = [
+    'markers',
     'text+markers',
     'markers+text',
     'lines+markers',
