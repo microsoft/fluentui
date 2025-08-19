@@ -2576,13 +2576,13 @@ const getAxisScaleTypeProps = (data: Data[], layout: Partial<Layout> | undefined
   const result: GetAxisScaleTypePropsResult = {};
   const axisObjects = getAxisObjects(data, layout);
 
-  if (axisObjects['x']?.type === 'log') {
+  if (axisObjects.x?.type === 'log') {
     result.xScaleType = 'log';
   }
-  if (axisObjects['y']?.type === 'log') {
+  if (axisObjects.y?.type === 'log') {
     result.yScaleType = 'log';
   }
-  if (axisObjects['y2']?.type === 'log') {
+  if (axisObjects.y2?.type === 'log') {
     result.secondaryYScaleType = 'log';
   }
 
@@ -2618,18 +2618,18 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
     }
 
     if ((!ax.tickmode || ax.tickmode === 'linear') && ax.dtick) {
-      const dtickValue = dtick(ax.dtick, axType);
-      const tick0Value = tick0(ax.tick0, axType, dtickValue);
+      const dtick = getDtick(ax.dtick, axType);
+      const tick0 = getTick0(ax.tick0, axType, dtick);
 
       if (axId === 'x') {
         result.xAxis = {
-          tickInterval: dtickValue,
-          tick0: tick0Value,
+          tickInterval: dtick,
+          tick0: tick0,
         };
       } else if (axId === 'y') {
         result.yAxis = {
-          tickInterval: dtickValue,
-          tick0: tick0Value,
+          tickInterval: dtick,
+          tick0: tick0,
         };
       }
       return;
@@ -2650,45 +2650,45 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
 /**
  *
  */
-const dtick = (dtick: DTickValue | undefined, axType: AxisType | undefined) => {
-  const isLog = axType === 'log';
-  const isDate = axType === 'date';
-  const isCat = axType === 'category';
-  const dtickDflt = isDate ? 86400000 : 1;
+const getDtick = (dtick: DTickValue | undefined, axType: AxisType | undefined) => {
+  const isLogAx = axType === 'log';
+  const isDateAx = axType === 'date';
+  const isCatAx = axType === 'category';
+  const dtickDflt = isDateAx ? 86400000 : 1;
 
-  if (!dtick) return dtickDflt;
+  if (!dtick) {return dtickDflt;}
 
   if (isNumber(dtick)) {
     dtick = Number(dtick);
-    if (dtick <= 0) return dtickDflt;
-    if (isCat) {
+    if (dtick <= 0) {return dtickDflt;}
+    if (isCatAx) {
       // category dtick must be positive integers
       return Math.max(1, Math.round(dtick));
     }
-    if (isDate) {
+    if (isDateAx) {
       // date dtick must be at least 0.1ms (our current precision)
       return Math.max(0.1, dtick);
     }
     return dtick;
   }
 
-  if (typeof dtick !== 'string' || !(isDate || isLog)) {
+  if (typeof dtick !== 'string' || !(isDateAx || isLogAx)) {
     return dtickDflt;
   }
 
   const prefix = dtick.charAt(0);
-  let dtickNum = isNumber(dtick.slice(1)) ? Number(dtick.slice(1)) : 0;
+  const dtickNum = isNumber(dtick.slice(1)) ? Number(dtick.slice(1)) : 0;
 
   if (
     dtickNum <= 0 ||
     !(
       // "M<n>" gives ticks every (integer) n months
       (
-        (isDate && prefix === 'M' && dtickNum === Math.round(dtickNum)) ||
+        (isDateAx && prefix === 'M' && dtickNum === Math.round(dtickNum)) ||
         // "L<f>" gives ticks linearly spaced in data (not in position) every (float) f
-        (isLog && prefix === 'L') ||
+        (isLogAx && prefix === 'L') ||
         // "D1" gives powers of 10 with all small digits between, "D2" gives only 2 and 5
-        (isLog && prefix === 'D' && (dtickNum === 1 || dtickNum === 2))
+        (isLogAx && prefix === 'D' && (dtickNum === 1 || dtickNum === 2))
       )
     )
   ) {
@@ -2701,7 +2701,7 @@ const dtick = (dtick: DTickValue | undefined, axType: AxisType | undefined) => {
 /**
  *
  */
-const tick0 = (tick0: number | string | undefined, axType: AxisType | undefined, dtick: string | number) => {
+const getTick0 = (tick0: number | string | undefined, axType: AxisType | undefined, dtick: string | number) => {
   if (axType === 'date') {
     return isDate(tick0) ? new Date(tick0!) : new Date('2000-01-01');
   }

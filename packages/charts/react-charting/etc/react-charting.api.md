@@ -342,6 +342,10 @@ export interface ICartesianChartProps {
     useUTC?: boolean;
     width?: number;
     wrapXAxisLables?: boolean;
+    // Warning: (ae-forgotten-export) The symbol "AxisProps" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    xAxis?: AxisProps;
     xAxisAnnotation?: string;
     xAxisCategoryOrder?: AxisCategoryOrder;
     xAxisTickCount?: number;
@@ -350,10 +354,14 @@ export interface ICartesianChartProps {
     xAxisTitle?: string;
     xMaxValue?: number;
     xScaleType?: AxisScaleType;
+    // (undocumented)
+    yAxis?: AxisProps;
     yAxisAnnotation?: string;
     yAxisCategoryOrder?: AxisCategoryOrder;
     yAxisTickCount?: number;
     yAxisTickFormat?: any;
+    // (undocumented)
+    yAxisTickValues?: number[] | Date[] | string[];
     yAxisTitle?: string;
     yMaxValue?: number;
     yMinValue?: number;
