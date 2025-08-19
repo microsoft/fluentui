@@ -6,9 +6,7 @@ export const MenuGridGroupHeaderClassNames: SlotClassNames<MenuGridGroupHeaderSl
   root: 'fui-MenuGridGroupHeader',
 };
 
-export const useMenuGridGroupHeaderStyles_unstable = (
-  state: MenuGridGroupHeaderState,
-): MenuGridGroupHeaderState => {
+export const useMenuGridGroupHeaderStyles_unstable = (state: MenuGridGroupHeaderState): MenuGridGroupHeaderState => {
   'use no memo';
 
   state.root.className = mergeClasses(MenuGridGroupHeaderClassNames.root, state.root.className);

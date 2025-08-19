@@ -1,9 +1,6 @@
 export { MenuGridContextProvider, useMenuGridContext_unstable } from './contexts/menuGridContext';
 export type { MenuGridContextValue } from './contexts/menuGridContext';
-export {
-  MenuGridGroupContextProvider,
-  useMenuGridGroupContext_unstable,
-} from './contexts/menuGridGroupContext';
+export { MenuGridGroupContextProvider, useMenuGridGroupContext_unstable } from './contexts/menuGridGroupContext';
 export type { MenuGridGroupContextValue } from './contexts/menuGridGroupContext';
 export {
   MenuGrid,

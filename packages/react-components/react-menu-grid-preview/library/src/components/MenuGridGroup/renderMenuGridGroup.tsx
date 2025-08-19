@@ -7,10 +7,7 @@ import { MenuGridGroupContextProvider } from '../../contexts/menuGridGroupContex
 /**
  * Function that renders the final JSX of the component
  */
-export const renderMenuGridGroup_unstable = (
-  state: MenuGridGroupState,
-  contextValues: MenuGridGroupContextValues,
-) => {
+export const renderMenuGridGroup_unstable = (state: MenuGridGroupState, contextValues: MenuGridGroupContextValues) => {
   assertSlots<MenuGridGroupSlots>(state);
 
   return (
