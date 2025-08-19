@@ -18,6 +18,7 @@ import {
   mergeCallbacks,
   useEventCallback,
   slot,
+  getReactElementRef,
 } from '@fluentui/react-utilities';
 import type { TooltipProps, TooltipState, TooltipChildProps, OnVisibleChangeData } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
@@ -266,7 +267,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     ...triggerAriaProps,
     ...child?.props,
     ref: useMergedRefs(
-      child?.ref,
+      getReactElementRef<HTMLButtonElement>(child),
       keyborgListenerCallbackRef,
       // If the target prop is not provided, attach targetRef to the trigger element's ref prop
       positioningOptions.target === undefined ? targetRef : undefined,

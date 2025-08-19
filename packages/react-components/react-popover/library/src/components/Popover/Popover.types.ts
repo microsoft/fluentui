@@ -97,7 +97,8 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
   closeOnIframeFocus?: boolean;
 
   /**
-   * Configures the position of the Popover
+   * Configures the position of the Popover.
+   * Explore [Positioning docs](?path=/docs/concepts-developer-positioning-components--docs) for more options.
    */
   positioning?: PositioningShorthand;
 
