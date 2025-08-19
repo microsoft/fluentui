@@ -16,7 +16,10 @@ export function getReactElementRef<T>(element: React.ReactElement | null | undef
     return element.props.ref;
   }
 
-  type ReactElementLegacy = React.ReactElement & { ref?: React.Ref<any> };
+  type ReactElementLegacy = React.ReactElement & {
+    ref?: // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    React.Ref<any>;
+  };
   // React < 19
   if (typeof (element as ReactElementLegacy).ref !== 'undefined') {
     return (element as ReactElementLegacy).ref;
