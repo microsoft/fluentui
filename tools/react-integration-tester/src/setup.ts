@@ -46,6 +46,30 @@ function renderTemplateToFile(templateFilePath: string, data: Record<string, unk
   writeFileSync(outFilePath, rendered);
 }
 
+async function installDependencies(projectPath: string) {
+  // Use a per-project yarn cache and a global mutex to avoid concurrent cache corruption on CI
+  const yarnCacheFolder = join(projectPath, '.yarn-cache');
+  // small retry loop
+  const maxAttempts = 3;
+  let attempt = 0;
+  while (true) {
+    try {
+      attempt += 1;
+      await runCmd('yarn install --mutex network --network-timeout 600000', {
+        cwd: projectPath,
+        env: { YARN_CACHE_FOLDER: yarnCacheFolder },
+      });
+      break;
+    } catch (err) {
+      if (attempt >= maxAttempts) {
+        throw err;
+      }
+      // brief backoff
+      await new Promise(r => setTimeout(r, 1500 * attempt));
+    }
+  }
+}
+
 export async function setup(options: Required<Args>) {
   const { react, templatePath } = options;
   // Placeholder: prepare project workspace; actual scaffolding to follow.
@@ -131,7 +155,7 @@ export async function setup(options: Required<Args>) {
   );
 
   // Install deps
-  await runCmd('yarn install', { cwd: projectPath });
+  await installDependencies(projectPath);
 
   return {
     projectPath,

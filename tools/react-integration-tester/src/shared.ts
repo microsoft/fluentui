@@ -29,12 +29,13 @@ export function resolveTemplatePath(templateArg: string | undefined, reactVersio
   }
 }
 
-export function runCmd(command: string, opts: { cwd: string }): Promise<void> {
+export function runCmd(command: string, opts: { cwd: string; env?: NodeJS.ProcessEnv }): Promise<void> {
   return new Promise((resolvePromise, reject) => {
     const child = spawn(command, {
       cwd: opts.cwd,
       stdio: 'inherit',
       shell: true,
+      env: { ...process.env, ...(opts.env ?? {}) },
     });
     child.on('error', reject);
     child.on('exit', code => {
