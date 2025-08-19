@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Menu, MenuPopover, MenuTrigger } from '@fluentui/react-components';
-import { MenuGrid, MenuGridItem, MenuGridRowGroup, MenuGridRowGroupHeader } from '@fluentui/react-menu-grid-preview';
+import { MenuGrid, MenuGridGroup, MenuGridGroupHeader, MenuGridItem } from '@fluentui/react-menu-grid-preview';
 
 const items = {
   people: ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'],
@@ -15,8 +15,8 @@ export const GroupingItems = () => {
       </MenuTrigger>
       <MenuPopover>
         <MenuGrid>
-          <MenuGridRowGroup>
-            <MenuGridRowGroupHeader>People</MenuGridRowGroupHeader>
+          <MenuGridGroup>
+            <MenuGridGroupHeader>People</MenuGridGroupHeader>
             {items.people.map((name, index) => (
               <MenuGridItem
                 key={index}
@@ -27,9 +27,9 @@ export const GroupingItems = () => {
                 {name}
               </MenuGridItem>
             ))}
-          </MenuGridRowGroup>
-          <MenuGridRowGroup>
-            <MenuGridRowGroupHeader>Agents and bots</MenuGridRowGroupHeader>
+          </MenuGridGroup>
+          <MenuGridGroup>
+            <MenuGridGroupHeader>Agents and bots</MenuGridGroupHeader>
             {items.agentsAndBots.map((name, index) => (
               <MenuGridItem
                 key={index}
@@ -40,7 +40,7 @@ export const GroupingItems = () => {
                 {name}
               </MenuGridItem>
             ))}
-          </MenuGridRowGroup>
+          </MenuGridGroup>
         </MenuGrid>
       </MenuPopover>
     </Menu>
