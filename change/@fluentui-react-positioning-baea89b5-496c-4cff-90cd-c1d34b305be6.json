@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: bumps @floating-ui/devtools ver to latest",
+  "packageName": "@fluentui/react-positioning",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
