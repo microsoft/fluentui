@@ -208,6 +208,7 @@ export interface CartesianChartStyleProps {
 
 // @public
 export interface CartesianChartStyles {
+    axisAnnotation?: string;
     axisTitle?: string;
     chart?: string;
     chartTitle?: string;
@@ -310,6 +311,7 @@ export interface ChartProps {
     pointLineOptions?: SVGProps<SVGLineElement>;
     pointOptions?: SVGProps<SVGCircleElement>;
     SankeyChartData?: SankeyChartData;
+    scatterChartData?: ScatterChartPoints[];
 }
 
 // @public (undocumented)
@@ -1083,6 +1085,7 @@ export const LineChart: React_2.FunctionComponent<LineChartProps>;
 
 // @public (undocumented)
 export interface LineChartDataPoint extends BaseDataPoint {
+    text?: string;
     x: number | Date;
     y: number;
 }
@@ -1144,6 +1147,7 @@ export interface LineChartStyleProps extends CartesianChartStyleProps {
 // @public
 export interface LineChartStyles extends CartesianChartStyles {
     lineBorder?: string;
+    markerLabel?: string;
 }
 
 // @public (undocumented)
@@ -1384,8 +1388,21 @@ export const ScatterChart: React_2.FunctionComponent<ScatterChartProps>;
 // @public
 export interface ScatterChartDataPoint extends BaseDataPoint {
     markerSize?: number;
+    text?: string;
     x: number | Date | string;
     y: number;
+}
+
+// @public (undocumented)
+export interface ScatterChartPoints {
+    color?: string;
+    data: ScatterChartDataPoint[];
+    hideNonActiveDots?: boolean;
+    legend: string;
+    legendShape?: LegendShape;
+    onLegendClick?: (selectedLegend: string | null | string[]) => void;
+    opacity?: number;
+    useSecondaryYScale?: boolean;
 }
 
 // @public

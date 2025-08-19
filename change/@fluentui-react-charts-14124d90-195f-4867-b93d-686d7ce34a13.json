@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add labels for text+markers",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

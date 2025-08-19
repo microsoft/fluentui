@@ -7,7 +7,7 @@ expect.extend(toHaveNoViolations);
 
 const chartData: ChartProps = {
   chartTitle: 'Sales Performance by Category',
-  lineChartData: [
+  scatterChartData: [
     {
       legend: 'Region 1',
       data: [

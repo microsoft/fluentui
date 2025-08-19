@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Fri, 15 Aug 2025 07:21:22 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.28",
+      "version": "1.1.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "c0aabdccb5c79620be68ec17d80c8454b541d1be",
+            "comment": "feat(chart-utilities): Support string y-axis for Scatter chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Aug 2025 07:19:47 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.27",
       "version": "1.1.27",
