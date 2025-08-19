@@ -22,22 +22,20 @@ const focusMap = {
  * @param props - props from this instance of Card
  */
 const useCardInteractive = ({ focusMode: initialFocusMode, disabled = false, ...props }: CardProps) => {
-  const interactive =
-    !disabled &&
-    (
-      [
-        'onClick',
-        'onDoubleClick',
-        'onMouseUp',
-        'onMouseDown',
-        'onPointerUp',
-        'onPointerDown',
-        'onTouchStart',
-        'onTouchEnd',
-        'onDragStart',
-        'onDragEnd',
-      ] as (keyof React.HTMLAttributes<HTMLElement>)[]
-    ).some(prop => props[prop]);
+  const interactive = (
+    [
+      'onClick',
+      'onDoubleClick',
+      'onMouseUp',
+      'onMouseDown',
+      'onPointerUp',
+      'onPointerDown',
+      'onTouchStart',
+      'onTouchEnd',
+      'onDragStart',
+      'onDragEnd',
+    ] as (keyof React.HTMLAttributes<HTMLElement>)[]
+  ).some(prop => props[prop]);
 
   // default focusMode to tab-only when interactive, and off when not
   const focusMode = initialFocusMode ?? (interactive ? 'no-tab' : 'off');
@@ -46,14 +44,26 @@ const useCardInteractive = ({ focusMode: initialFocusMode, disabled = false, ...
     tabBehavior: focusMap[focusMode],
   });
 
-  const interactiveFocusAttributes = {
-    ...groupperAttrs,
-    tabIndex: disabled ? undefined : 0,
-  };
+  if (disabled) {
+    return {
+      interactive: false,
+      focusAttributes: null,
+    };
+  }
+
+  if (focusMode === 'off') {
+    return {
+      interactive,
+      focusAttributes: null,
+    };
+  }
 
   return {
     interactive,
-    focusAttributes: focusMode === 'off' || disabled ? null : interactiveFocusAttributes,
+    focusAttributes: {
+      ...groupperAttrs,
+      tabIndex: 0,
+    },
   };
 };
 
