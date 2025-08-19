@@ -283,23 +283,11 @@ export function createNumericXAxis(
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
 
-  let customTickValues: number[] | null = null;
+  let customTickValues: number[] | undefined;
   if (tickParams.tickValues) {
     customTickValues = tickParams.tickValues as number[];
   } else if (tickInterval) {
-    if (scaleType === 'log') {
-      if (typeof tickInterval === 'number' && tickInterval > 0) {
-        customTickValues = def(tickInterval, xAxisScale.domain());
-      } else if (typeof tickInterval === 'string') {
-        const prefix = tickInterval[0];
-        const num = Number(tickInterval.slice(1));
-        if (prefix === 'L' && num > 0) {
-          customTickValues = abc(typeof tick0 === 'number' ? tick0 : 0, num, xAxisScale.domain());
-        }
-      }
-    } else if (typeof tickInterval === 'number' && tickInterval > 0) {
-      customTickValues = abc(typeof tick0 === 'number' ? tick0 : 0, tickInterval, xAxisScale.domain());
-    }
+    customTickValues = generateNumericTicks(scaleType, tickInterval, tick0, xAxisScale.domain());
   }
   if (customTickValues) {
     xAxis.tickValues(customTickValues);
@@ -509,19 +497,11 @@ export function createDateXAxis(
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
 
-  let customTickValues: Date[] | null = null;
+  let customTickValues: Date[] | undefined;
   if (tickParams.tickValues) {
     customTickValues = tickParams.tickValues as Date[];
   } else if (tickInterval) {
-    if (typeof tickInterval === 'number' && tickInterval > 0) {
-      customTickValues = ghi(tick0 instanceof Date ? tick0 : new Date('2000-01-01'), tickInterval, xAxisScale.domain());
-    } else if (typeof tickInterval === 'string') {
-      const prefix = tickInterval[0];
-      const num = Number(tickInterval.slice(1));
-      if (prefix === 'M' && num > 0 && num === Math.round(num)) {
-        customTickValues = jkl(tick0 instanceof Date ? tick0 : new Date('2000-01-01'), num, xAxisScale.domain());
-      }
-    }
+    customTickValues = generateDateTicks(tickInterval, tick0, xAxisScale.domain());
   }
   if (customTickValues) {
     xAxis.tickValues(customTickValues);
@@ -702,13 +682,11 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
 
-  let customTickValues: number[] | null = null;
+  let customTickValues: number[] | undefined;
   if (tickValues) {
     customTickValues = tickValues as number[];
   } else if (tickInterval) {
-    if (typeof tickInterval === 'number' && tickInterval > 0) {
-      customTickValues = abc(typeof tick0 === 'number' ? tick0 : 0, tickInterval, yAxisScale.domain());
-    }
+    customTickValues = generateNumericTicks(undefined, tickInterval, tick0, yAxisScale.domain());
   }
   if (customTickValues) {
     yAxis.tickValues(customTickValues);
@@ -777,23 +755,11 @@ export function createNumericYAxis(
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).tickSizeInner(-(containerWidth - margins.left! - margins.right!));
 
-  let customTickValues: number[] | null = null;
+  let customTickValues: number[] | undefined;
   if (tickValues) {
     customTickValues = tickValues as number[];
   } else if (tickInterval) {
-    if (scaleType === 'log') {
-      if (typeof tickInterval === 'number' && tickInterval > 0) {
-        customTickValues = def(tickInterval, yAxisScale.domain());
-      } else if (typeof tickInterval === 'string') {
-        const prefix = tickInterval[0];
-        const num = Number(tickInterval.slice(1));
-        if (prefix === 'L' && num > 0) {
-          customTickValues = abc(typeof tick0 === 'number' ? tick0 : 0, num, yAxisScale.domain());
-        }
-      }
-    } else if (typeof tickInterval === 'number' && tickInterval > 0) {
-      customTickValues = abc(typeof tick0 === 'number' ? tick0 : 0, tickInterval, yAxisScale.domain());
-    }
+    customTickValues = generateNumericTicks(scaleType, tickInterval, tick0, yAxisScale.domain());
   }
   if (customTickValues) {
     yAxis.tickValues(customTickValues);
@@ -2146,116 +2112,116 @@ export const getRangeForScatterMarkerSize = ({
   return Math.min(extraXPixels, extraYPixels);
 };
 
-const abc = (tick0: number, tickInterval: number, bounds: number[]) => {
-  const result: number[] = [];
-  const minBound = Math.min(...bounds);
-  const maxBound = Math.max(...bounds);
-  for (let i = tick0 - tickInterval; i >= minBound; i -= tickInterval) {
-    if (i <= maxBound) {
-      result.push(i);
-    }
+const generateLinearTicks = (tick0: number, tickInterval: number, scaleDomain: number[]) => {
+  const domainMin = d3Min(scaleDomain)!;
+  const domainMax = d3Max(scaleDomain)!;
+
+  const ticks: number[] = [];
+
+  let firstTick = tick0 - Math.ceil((tick0 - domainMin) / tickInterval) * tickInterval;
+  if (firstTick < domainMin) firstTick += tickInterval;
+
+  for (let i = firstTick; i <= domainMax; i += tickInterval) {
+    ticks.push(i);
   }
-  result.reverse();
-  for (let i = tick0; i <= maxBound; i += tickInterval) {
-    if (i >= minBound) {
-      result.push(i);
-    }
-  }
-  return result;
+
+  return ticks;
 };
 
-const def = (tickInterval: number, bounds: number[]) => {
-  const result: number[] = [];
-  const minBound = Math.min(...bounds);
-  const maxBound = Math.max(...bounds);
-  const e = Math.pow(10, tickInterval);
-  for (let i = 1 / e; i >= minBound; i /= e) {
-    if (i <= maxBound) {
-      result.push(i);
-    }
+const generateLogTicks = (tickInterval: number, scaleDomain: number[]) => {
+  const domainMin = d3Min(scaleDomain)!;
+  const domainMax = d3Max(scaleDomain)!;
+
+  const ticks: number[] = [];
+  if (domainMin <= 0) {
+    return ticks;
   }
-  result.reverse();
-  for (let i = 1; i <= maxBound; i *= e) {
-    if (i >= minBound) {
-      result.push(i);
-    }
+
+  const base = Math.pow(10, tickInterval);
+  const minExp = Math.ceil(Math.log(domainMin) / Math.log(base));
+  const maxExp = Math.floor(Math.log(domainMax) / Math.log(base));
+
+  for (let exp = minExp; exp <= maxExp; exp++) {
+    ticks.push(Math.pow(base, exp));
   }
-  return result;
+
+  return ticks;
 };
 
-const ghi = (tick0: Date, tickIntervalInMs: number, bounds: Date[]) => {
-  const result: Date[] = [];
-  const minBound = +d3Min(bounds)!;
-  const maxBound = +d3Max(bounds)!;
-  for (let i = +tick0 - tickIntervalInMs; i >= minBound; i -= tickIntervalInMs) {
-    if (i <= maxBound) {
-      result.push(new Date(i));
-    }
-  }
-  result.reverse();
-  for (let i = +tick0; i <= maxBound; i += tickIntervalInMs) {
-    if (i >= minBound) {
-      result.push(new Date(i));
-    }
-  }
-  return result;
-};
+const generateMonthlyTicks = (tick0: Date, tickIntervalInMonths: number, scaleDomain: Date[]) => {
+  const domainMin = +d3Min(scaleDomain)!;
+  const domainMax = +d3Max(scaleDomain)!;
 
-const jkl = (tick0: Date, tickIntervalInMonths: number, bounds: Date[]) => {
-  const result: Date[] = [];
-  const minBound = +d3Min(bounds)!;
-  const maxBound = +d3Max(bounds)!;
-  for (let i = -tickIntervalInMonths; ; i -= tickIntervalInMonths) {
-    let d = new Date(+tick0);
-    const pm = d.getUTCMonth();
-    d.setUTCMonth(pm + i);
-    const nm = d.getUTCMonth();
-    const z = Math.trunc(Math.abs(pm + i) / 12) + 1;
-    if ((pm + i + 12 * z) % 12 !== nm) {
-      d = new Date(
-        Date.UTC(
-          d.getUTCFullYear(),
-          nm,
-          0,
-          tick0.getUTCHours(),
-          tick0.getUTCMinutes(),
-          tick0.getUTCSeconds(),
-          tick0.getUTCMilliseconds(),
-        ),
-      );
+  const ticks: Date[] = [];
+
+  let start = 0;
+  for (let startDate = new Date(+tick0); +startDate >= domainMin; ) {
+    startDate.setUTCMonth(startDate.getUTCMonth() - tickIntervalInMonths);
+    start -= tickIntervalInMonths;
+  }
+  start += tickIntervalInMonths;
+
+  const baseMonth = tick0.getUTCMonth();
+
+  for (let i = start; ; i += tickIntervalInMonths) {
+    const tickDate = new Date(+tick0);
+    tickDate.setUTCMonth(baseMonth + i);
+
+    if ((baseMonth + (i % 12) + 12) % 12 !== tickDate.getUTCMonth()) {
+      tickDate.setUTCDate(0);
     }
-    if (+d < minBound) {
+
+    if (+tickDate > domainMax) {
       break;
     }
-    if (+d <= maxBound) {
-      result.push(d);
+    if (+tickDate >= domainMin) {
+      ticks.push(tickDate);
     }
   }
-  result.reverse();
-  for (let i = 0; i <= maxBound; i += tickIntervalInMonths) {
-    let d = new Date(+tick0);
-    const pm = d.getUTCMonth();
-    d.setUTCMonth(pm + i);
-    const nm = d.getUTCMonth();
-    if ((pm + i) % 12 !== nm) {
-      d = new Date(
-        Date.UTC(
-          d.getUTCFullYear(),
-          nm,
-          0,
-          tick0.getUTCHours(),
-          tick0.getUTCMinutes(),
-          tick0.getUTCSeconds(),
-          tick0.getUTCMilliseconds(),
-        ),
-      );
+
+  return ticks;
+};
+
+const generateNumericTicks = (
+  scaleType: AxisScaleType | undefined,
+  tickInterval: string | number | undefined,
+  tick0: number | Date | undefined,
+  scaleDomain: number[],
+) => {
+  const x = typeof tick0 === 'number' ? tick0 : 0;
+  if (scaleType === 'log') {
+    if (typeof tickInterval === 'number' && tickInterval > 0) {
+      return generateLogTicks(tickInterval, scaleDomain);
+    } else if (typeof tickInterval === 'string') {
+      const prefix = tickInterval[0];
+      const num = Number(tickInterval.slice(1));
+      if (prefix === 'L' && num > 0) {
+        return generateLinearTicks(x, num, scaleDomain);
+      }
     }
-    if (+d > maxBound) {
-      break;
-    }
-    if (+d >= minBound) {
-      result.push(d);
+  } else if (typeof tickInterval === 'number' && tickInterval > 0) {
+    return generateLinearTicks(x, tickInterval, scaleDomain);
+  }
+};
+
+const generateDateTicks = (
+  tickInterval: string | number | undefined,
+  tick0: number | Date | undefined,
+  scaleDomain: Date[],
+) => {
+  const x = tick0 instanceof Date ? tick0 : new Date('2000-01-01');
+  if (typeof tickInterval === 'number' && tickInterval > 0) {
+    const ticks = generateLinearTicks(
+      +x,
+      tickInterval,
+      scaleDomain.map(d => +d),
+    );
+    return ticks.map(t => new Date(t));
+  } else if (typeof tickInterval === 'string') {
+    const prefix = tickInterval[0];
+    const num = Number(tickInterval.slice(1));
+    if (prefix === 'M' && num > 0 && num === Math.round(num)) {
+      return generateMonthlyTicks(x, num, scaleDomain);
     }
   }
-  return result;
 };
