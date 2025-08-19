@@ -5,8 +5,7 @@ import { MenuGridRowGroupContextValues, MenuGridRowGroupSlots, MenuGridRowGroupS
 import { MenuGridRowGroupContextProvider } from '../../contexts/menuGridRowGroupContext';
 
 /**
- * Redefine the render function to add slots. Reuse the menugroup structure but add
- * slots to children.
+ * Function that renders the final JSX of the component
  */
 export const renderMenuGridRowGroup_unstable = (
   state: MenuGridRowGroupState,

@@ -21,4 +21,4 @@ export const MenuGridRowGroup: ForwardRefComponent<MenuGridRowGroupProps> = Reac
   return renderMenuGridRowGroup_unstable(state, contextValues);
 });
 
-MenuGridRowGroup.displayName = 'MenuGroup';
+MenuGridRowGroup.displayName = 'MenuGridRowGroup';
