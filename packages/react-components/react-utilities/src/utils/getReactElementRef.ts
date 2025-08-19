@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+const IS_REACT_19_OR_HIGHER = parseInt(React.version, 10) >= 19;
+
 /**
  * Returns a ref for the React element in a backwards-compatible way.
  *
@@ -11,17 +13,9 @@ export function getReactElementRef<T>(element: React.ReactElement | null | undef
     return undefined;
   }
 
-  // React 19+
-  if (typeof element.props.ref !== 'undefined') {
-    return element.props.ref;
+  if (IS_REACT_19_OR_HIGHER) {
+    return element.props?.ref;
   }
 
-  type ReactElementLegacy = React.ReactElement & {
-    ref?: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    React.Ref<any>;
-  };
-  // React < 19
-  if (typeof (element as ReactElementLegacy).ref !== 'undefined') {
-    return (element as ReactElementLegacy).ref;
-  }
+  return (element as React.ReactElement & { ref: React.Ref<T> | undefined }).ref;
 }
