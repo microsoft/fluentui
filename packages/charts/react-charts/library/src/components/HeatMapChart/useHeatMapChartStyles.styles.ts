@@ -20,6 +20,7 @@ export const heatmapChartClassNames: SlotClassNames<HeatMapChartStyles> = {
   chartWrapper: '',
   svgTooltip: '',
   chart: '',
+  axisAnnotation: '',
 };
 const useStyles = makeStyles({
   root: {},

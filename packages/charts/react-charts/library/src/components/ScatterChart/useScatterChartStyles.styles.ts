@@ -23,6 +23,7 @@ export const scatterChartClassNames: SlotClassNames<ScatterChartStyles> = {
   chartWrapper: 'fui-line__chartWrapper',
   svgTooltip: '',
   chart: '',
+  axisAnnotation: '',
 };
 
 /**

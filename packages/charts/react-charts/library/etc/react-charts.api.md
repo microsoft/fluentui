@@ -208,6 +208,7 @@ export interface CartesianChartStyleProps {
 
 // @public
 export interface CartesianChartStyles {
+    axisAnnotation?: string;
     axisTitle?: string;
     chart?: string;
     chartTitle?: string;

@@ -24,6 +24,7 @@ export const linechartClassNames: SlotClassNames<LineChartStyles> = {
   chartWrapper: 'fui-line__chartWrapper',
   svgTooltip: '',
   chart: '',
+  axisAnnotation: '',
 };
 
 /**
