@@ -70,5 +70,3 @@ export {
   useDrawerFooter_unstable,
 } from './DrawerFooter';
 export type { DrawerFooterProps, DrawerFooterSlots, DrawerFooterState } from './DrawerFooter';
-
-export type { DrawerBaseState } from './shared';

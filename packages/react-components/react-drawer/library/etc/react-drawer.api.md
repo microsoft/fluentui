@@ -19,12 +19,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Drawer: ForwardRefComponent<DrawerProps>;
 
-// @public (undocumented)
-export type DrawerBaseState = Required<Pick<DrawerBaseProps, 'position' | 'size'>> & {
-    motion: MotionState<HTMLElement>;
-    open?: boolean;
-};
-
 // @public
 export const DrawerBody: ForwardRefComponent<DrawerBodyProps>;
 

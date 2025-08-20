@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import {
-  reservedSpaceClassNames,
+  tabReservedSpaceClassNames,
   tabClassNames,
   type TabState,
   useTabAnimatedIndicatorStyles_unstable,
@@ -785,7 +785,7 @@ export const useSemanticTabContentStyles_unstable = (state: TabState): TabState 
   if (state.contentReservedSpace) {
     state.contentReservedSpace.className = mergeClasses(
       state.content.className,
-      reservedSpaceClassNames.content,
+      tabReservedSpaceClassNames.content,
       contentStyles.base,
       size === 'large' ? contentStyles.largeSelected : contentStyles.selected,
       state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,

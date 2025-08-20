@@ -38,12 +38,6 @@ const useStyles = makeStyles({
   },
   itemSelected: {
     backgroundColor: tokens.colorSubtleBackgroundSelected,
-    ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundSelected,
-    },
-    ':active': {
-      backgroundColor: tokens.colorSubtleBackgroundSelected,
-    },
     '@media (forced-colors:active)': {
       background: 'Highlight',
     },
