@@ -39,7 +39,12 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { IChartTableProps } from '../ChartTable/index';
-import { findNumericMinMaxOfY, formatScientificLimitWidth, MIN_DONUT_RADIUS } from '../../utilities/utilities';
+import {
+  DEFAULT_DATE_STRING,
+  findNumericMinMaxOfY,
+  formatScientificLimitWidth,
+  MIN_DONUT_RADIUS,
+} from '../../utilities/utilities';
 import type {
   Datum,
   Layout,
@@ -81,6 +86,7 @@ import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
 import { IGanttChartProps } from '../GanttChart/GanttChart.types';
+import { calculatePrecision, precisionRound } from '@fluentui/react';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
 export const SINGLE_REPEAT = 'repeat(1, 1fr)';
@@ -2220,7 +2226,7 @@ const createBins = (
 
   if (typeof binSize === 'number' && binSize > 0) {
     const thresholds: number[] = [];
-    const precision = Math.max(getPrecision(minVal), getPrecision(binSize));
+    const precision = Math.max(calculatePrecision(minVal), calculatePrecision(binSize));
     let th = precisionRound(minVal, precision);
 
     while (th < precisionRound(maxVal + binSize, precision)) {
@@ -2276,15 +2282,6 @@ const calculateHistNorm = (
     default:
       return value;
   }
-};
-
-const getPrecision = (value: number) => {
-  return value.toString().split('.')[1]?.length ?? 0;
-};
-
-const precisionRound = (value: number, precision: number) => {
-  const factor = Math.pow(10, precision);
-  return Math.round(value * factor) / factor;
 };
 
 const getLegendShape = (series: Partial<PlotData>): ILegend['shape'] => {
@@ -2749,20 +2746,20 @@ const getBarProps = (
 type GetAxisScaleTypePropsResult = Pick<ICartesianChartProps, 'xScaleType' | 'yScaleType' | 'secondaryYScaleType'>;
 
 const getAxisScaleTypeProps = (data: Data[], layout: Partial<Layout> | undefined): GetAxisScaleTypePropsResult => {
-  const props: GetAxisScaleTypePropsResult = {};
+  const result: GetAxisScaleTypePropsResult = {};
   const axisObjects = getAxisObjects(data, layout);
 
   if (axisObjects.x?.type === 'log') {
-    props.xScaleType = 'log';
+    result.xScaleType = 'log';
   }
   if (axisObjects.y?.type === 'log') {
-    props.yScaleType = 'log';
+    result.yScaleType = 'log';
   }
   if (axisObjects.y2?.type === 'log') {
-    props.secondaryYScaleType = 'log';
+    result.secondaryYScaleType = 'log';
   }
 
-  return props;
+  return result;
 };
 
 type GetAxisTickPropsResult = Pick<
@@ -2770,6 +2767,9 @@ type GetAxisTickPropsResult = Pick<
   'tickValues' | 'xAxisTickCount' | 'xAxis' | 'yAxisTickValues' | 'yAxisTickCount' | 'yAxis'
 >;
 
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/cartesian/tick_value_defaults.js#L8}
+ */
 const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): GetAxisTickPropsResult => {
   const props: GetAxisTickPropsResult = {};
   const axisObjects = getAxisObjects(data, layout);
@@ -2794,8 +2794,8 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
     }
 
     if ((!ax.tickmode || ax.tickmode === 'linear') && ax.dtick) {
-      const dtick = getDtick(ax.dtick, axType);
-      const tick0 = getTick0(ax.tick0, axType, dtick);
+      const dtick = plotlyDtick(ax.dtick, axType);
+      const tick0 = plotlyTick0(ax.tick0, axType, dtick);
 
       if (axId === 'x') {
         props.xAxis = {
@@ -2811,7 +2811,7 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
       return;
     }
 
-    if ((!ax.tickmode || ax.tickmode === 'auto') && typeof ax.nticks === 'number' && ax.nticks > 0) {
+    if ((!ax.tickmode || ax.tickmode === 'auto') && typeof ax.nticks === 'number' && ax.nticks >= 0) {
       if (axId === 'x') {
         props.xAxisTickCount = ax.nticks;
       } else if (axId === 'y') {
@@ -2824,9 +2824,9 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
 };
 
 /**
- *
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/cartesian/clean_ticks.js#L16}
  */
-const getDtick = (dtick: DTickValue | undefined, axType: AxisType | undefined) => {
+const plotlyDtick = (dtick: DTickValue | undefined, axType: AxisType | undefined) => {
   const isLogAx = axType === 'log';
   const isDateAx = axType === 'date';
   const isCatAx = axType === 'category';
@@ -2879,11 +2879,11 @@ const getDtick = (dtick: DTickValue | undefined, axType: AxisType | undefined) =
 };
 
 /**
- *
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/cartesian/clean_ticks.js#L70}
  */
-const getTick0 = (tick0: number | string | undefined, axType: AxisType | undefined, dtick: string | number) => {
+const plotlyTick0 = (tick0: number | string | undefined, axType: AxisType | undefined, dtick: string | number) => {
   if (axType === 'date') {
-    return isDate(tick0) ? new Date(tick0!) : new Date('2000-01-01');
+    return isDate(tick0) ? new Date(tick0!) : new Date(DEFAULT_DATE_STRING);
   }
   if (dtick === 'D1' || dtick === 'D2') {
     // D1 and D2 modes ignore tick0 entirely
@@ -2932,7 +2932,9 @@ const getAxisType = (data: Data[], axLetter: 'x' | 'y', ax: Partial<LayoutAxis> 
     });
   });
 
-  // TODO: add comment about ax.type
+  // Note: When ax.type is explicitly specified, Plotly casts the values to match that type.
+  // Therefore, simply checking the type of the values may not be sufficient. At the moment,
+  // we don’t always perform this casting ourselves and instead use the values as provided.
 
   if (isNumberArray(values)) {
     if (ax?.type === 'log') {

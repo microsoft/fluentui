@@ -1399,44 +1399,32 @@ describe('formatDateToLocaleString', () => {
 });
 
 describe('generateLinearTicks', () => {
-  it('generates ticks starting from tick0 within the domain', () => {
-    const ticks = utils.generateLinearTicks(0, 10, [0, 50]);
-    expect(ticks).toEqual([0, 10, 20, 30, 40, 50]);
+  it('generates ticks within the domain', () => {
+    expect(utils.generateLinearTicks(0, 1, [0, 5])).toEqual([0, 1, 2, 3, 4, 5]);
   });
 
-  it('generates ticks when tick0 is not at domain min', () => {
-    const ticks = utils.generateLinearTicks(5, 10, [0, 50]);
-    expect(ticks).toEqual([5, 15, 25, 35, 45]);
+  it('respects tick0 offset', () => {
+    expect(utils.generateLinearTicks(0.5, 1, [0, 5])).toEqual([0.5, 1.5, 2.5, 3.5, 4.5]);
   });
 
-  it('handles domain min greater than tick0', () => {
-    const ticks = utils.generateLinearTicks(0, 10, [25, 60]);
-    expect(ticks).toEqual([30, 40, 50, 60]);
+  it('handles non-integer tickStep', () => {
+    expect(utils.generateLinearTicks(0, 0.5, [0, 2])).toEqual([0, 0.5, 1, 1.5, 2]);
   });
 
-  it('handles negative domain values', () => {
-    const ticks = utils.generateLinearTicks(0, 10, [-30, -5]);
-    expect(ticks).toEqual([-30, -20, -10]);
+  it('rounds to avoid floating point issues', () => {
+    expect(utils.generateLinearTicks(0, 0.1, [0, 0.3])).toEqual([0, 0.1, 0.2, 0.3]);
   });
 
-  it('returns an empty array when domain is below tick0 and interval', () => {
-    const ticks = utils.generateLinearTicks(100, 10, [0, 50]);
-    expect(ticks).toEqual([0, 10, 20, 30, 40, 50]);
+  it('works when domainMin > tick0', () => {
+    expect(utils.generateLinearTicks(0, 2, [5, 12])).toEqual([6, 8, 10, 12]);
   });
 
-  it('handles small intervals correctly', () => {
-    const ticks = utils.generateLinearTicks(0, 2, [1, 7]);
-    expect(ticks).toEqual([2, 4, 6]);
+  it('works when domainMax < tick0', () => {
+    expect(utils.generateLinearTicks(10, 2, [2, 8])).toEqual([2, 4, 6, 8]);
   });
 
-  it('includes domainMax if it lands exactly on a tick', () => {
-    const ticks = utils.generateLinearTicks(0, 5, [0, 20]);
-    expect(ticks).toContain(20);
-  });
-
-  it('excludes domainMax if it does not land on a tick', () => {
-    const ticks = utils.generateLinearTicks(0, 7, [0, 20]);
-    expect(ticks).toEqual([0, 7, 14]);
+  it('handles reversed domain', () => {
+    expect(utils.generateLinearTicks(0, 1, [5, 0])).toEqual([0, 1, 2, 3, 4, 5]);
   });
 });
 
@@ -1465,7 +1453,7 @@ describe('generateMonthlyTicks', () => {
     ]);
   });
 
-  it('respects domainMin (no ticks before domain)', () => {
+  it('works when domainMin > tick0', () => {
     const ticks = utils.generateMonthlyTicks(jan1, 2, [new Date(2020, 2, 1), new Date(2020, 8, 1)]);
     expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual([
       '2020-03-01',
@@ -1473,6 +1461,11 @@ describe('generateMonthlyTicks', () => {
       '2020-07-01',
       '2020-09-01',
     ]);
+  });
+
+  it('works when domainMax < tick0', () => {
+    const ticks = utils.generateMonthlyTicks(new Date(2020, 11, 1), 2, [new Date(2020, 2, 1), new Date(2020, 8, 1)]);
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual(['2020-04-01', '2020-06-01', '2020-08-01']);
   });
 
   it('handles leap years correctly (Feb 29)', () => {

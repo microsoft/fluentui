@@ -56,7 +56,7 @@ import {
   AxisCategoryOrder,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
-import { getId, ITheme } from '@fluentui/react';
+import { calculatePrecision, getId, ITheme, precisionRound } from '@fluentui/react';
 import {
   CurveFactory,
   curveLinear as d3CurveLinear,
@@ -78,11 +78,13 @@ import {
   getMultiLevelDateTimeFormatOptions,
   handleFloatingPointPrecisionError,
   isInvalidValue,
+  isNumber,
 } from '@fluentui/chart-utilities';
 import { getColorContrast } from './colors';
 
 export const MIN_DOMAIN_MARGIN = 8;
 export const MIN_DONUT_RADIUS = 1;
+export const DEFAULT_DATE_STRING = '2000-01-01';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -2116,15 +2118,14 @@ export const generateLinearTicks = (tick0: number, tickStep: number, scaleDomain
   const domainMin = d3Min(scaleDomain)!;
   const domainMax = d3Max(scaleDomain)!;
 
+  const precision = Math.max(calculatePrecision(tick0), calculatePrecision(tickStep));
+
+  const start = Math.ceil(precisionRound((domainMin - tick0) / tickStep, precision));
+  const end = Math.floor(precisionRound((domainMax - tick0) / tickStep, precision));
+
   const ticks: number[] = [];
-
-  let firstTick = tick0 - Math.ceil((tick0 - domainMin) / tickStep) * tickStep;
-  if (firstTick < domainMin) {
-    firstTick += tickStep;
-  }
-
-  for (let i = firstTick; i <= domainMax; i += tickStep) {
-    ticks.push(i);
+  for (let i = start; i <= end; i++) {
+    ticks.push(precisionRound(tick0 + i * tickStep, precision));
   }
 
   return ticks;
@@ -2134,23 +2135,24 @@ export const generateMonthlyTicks = (tick0: Date, tickStepInMonths: number, scal
   const domainMin = +d3Min(scaleDomain)!;
   const domainMax = +d3Max(scaleDomain)!;
 
-  const ticks: Date[] = [];
-
   const getMonth = (d: Date) => (useUTC ? d.getUTCMonth() : d.getMonth());
   const setMonth = (d: Date, month: number) => (useUTC ? new Date(d.setUTCMonth(month)) : new Date(d.setMonth(month)));
 
+  // Find the earliest tick <= domainMin
   let start = 0;
-  for (let firstTick = new Date(+tick0); +firstTick >= domainMin; ) {
+  for (let firstTick = new Date(+tick0); +firstTick > domainMin; ) {
     firstTick = setMonth(firstTick, getMonth(firstTick) - tickStepInMonths);
     start -= tickStepInMonths;
   }
-  start += tickStepInMonths;
 
   const baseMonth = getMonth(tick0);
+  const ticks: Date[] = [];
 
+  // Generate ticks forward until domainMax
   for (let i = start; ; i += tickStepInMonths) {
     let tickDate = setMonth(new Date(+tick0), baseMonth + i);
 
+    // Handle month rollover (e.g., Jan 31 + 1 month → Mar 3 instead of Feb)
     if (getMonth(tickDate) !== (((baseMonth + i) % 12) + 12) % 12) {
       tickDate = useUTC ? new Date(tickDate.setUTCDate(0)) : new Date(tickDate.setDate(0));
     }
@@ -2172,24 +2174,30 @@ const generateNumericTicks = (
   tick0: number | Date | undefined,
   scaleDomain: number[],
 ) => {
-  const x = typeof tick0 === 'number' ? tick0 : 0;
+  const refTick = typeof tick0 === 'number' ? tick0 : 0;
+
   if (scaleType === 'log') {
     if (typeof tickStep === 'number' && tickStep > 0) {
-      const ticks = generateLinearTicks(
-        x,
+      return generateLinearTicks(
+        refTick,
         tickStep,
         scaleDomain.map(d => Math.log10(d)),
-      );
-      return ticks.map(t => Math.pow(10, t));
-    } else if (typeof tickStep === 'string') {
+      ).map(t => Math.pow(10, t));
+    }
+
+    if (typeof tickStep === 'string') {
       const prefix = tickStep[0];
-      const num = Number(tickStep.slice(1));
+      const num = isNumber(tickStep.slice(1)) ? Number(tickStep.slice(1)) : 0;
       if (prefix === 'L' && num > 0) {
-        return generateLinearTicks(x, num, scaleDomain);
+        return generateLinearTicks(refTick, num, scaleDomain);
       }
     }
-  } else if (typeof tickStep === 'number' && tickStep > 0) {
-    return generateLinearTicks(x, tickStep, scaleDomain);
+
+    return;
+  }
+
+  if (typeof tickStep === 'number' && tickStep > 0) {
+    return generateLinearTicks(refTick, tickStep, scaleDomain);
   }
 };
 
@@ -2199,19 +2207,21 @@ const generateDateTicks = (
   scaleDomain: Date[],
   useUTC?: boolean,
 ) => {
-  const x = tick0 instanceof Date ? tick0 : new Date('2000-01-01');
+  const refTick = tick0 instanceof Date ? tick0 : new Date(DEFAULT_DATE_STRING);
+
   if (typeof tickStep === 'number' && tickStep > 0) {
-    const ticks = generateLinearTicks(
-      +x,
+    return generateLinearTicks(
+      +refTick,
       tickStep,
       scaleDomain.map(d => +d),
-    );
-    return ticks.map(t => new Date(t));
-  } else if (typeof tickStep === 'string') {
+    ).map(t => new Date(t));
+  }
+
+  if (typeof tickStep === 'string') {
     const prefix = tickStep[0];
-    const num = Number(tickStep.slice(1));
+    const num = isNumber(tickStep.slice(1)) ? Number(tickStep.slice(1)) : 0;
     if (prefix === 'M' && num > 0 && num === Math.round(num)) {
-      return generateMonthlyTicks(x, num, scaleDomain, useUTC);
+      return generateMonthlyTicks(refTick, num, scaleDomain, useUTC);
     }
   }
 };

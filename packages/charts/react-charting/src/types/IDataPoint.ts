@@ -1079,8 +1079,7 @@ export type AxisProps = {
   /**
    * Defines the step between tick marks on the axis.
    * Works in combination with `tick0`.
-   *
-   * - **Linear/Number axis**: Must be a positive number.
+   * Must be a positive number.
    *
    * - **Log scale**:
    *   - Ticks are placed at `10^(n * tickStep)` where `n` is the tick index.
