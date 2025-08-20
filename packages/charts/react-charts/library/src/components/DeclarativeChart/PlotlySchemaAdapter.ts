@@ -523,7 +523,7 @@ export const transformPlotlyJsonToGVBCProps = (
                 ? ((series.marker?.color as Color[])?.[index2 % (series.marker?.color as Color[]).length] as number)
                 : 0,
             )
-          : resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
+          : resolveColor(extractedColors, index2, legend, colorMap, isDarkTheme);
         const opacity = getOpacity(series, index2);
 
         mapXToDataPoints[x].series.push({
@@ -731,6 +731,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   isDarkTheme?: boolean,
 ): LineChartProps | AreaChartProps | ScatterChartProps => {
   const isScatterMarkers = [
+    'markers',
     'text+markers',
     'markers+text',
     'lines+markers',

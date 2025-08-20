@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
-import { MenuGridRowGroupProps, MenuGridRowGroupState } from './MenuGridRowGroup.types';
+import { MenuGridGroupProps, MenuGridGroupState } from './MenuGridGroup.types';
 
 /**
- * Given user props, returns state and render function for a MenuGridRowGroup.
+ * Given user props, returns state and render function for a MenuGridGroup.
  */
-export function useMenuGridRowGroup_unstable(
-  props: MenuGridRowGroupProps,
+export function useMenuGridGroup_unstable(
+  props: MenuGridGroupProps,
   ref: React.Ref<HTMLDivElement>,
-): MenuGridRowGroupState {
+): MenuGridGroupState {
   const headerId = useId('menu-grid-row-group-header');
 
   return {
