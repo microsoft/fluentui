@@ -1,10 +1,10 @@
 import {
   MenuGrid,
   MenuGridCell,
+  MenuGridGroup,
+  MenuGridGroupHeader,
   MenuGridItem,
   MenuGridRow,
-  MenuGridRowGroup,
-  MenuGridRowGroupHeader,
 } from '@fluentui/react-menu-grid-preview';
 import descriptionMd from './MenuGridDescription.md';
 
@@ -17,10 +17,10 @@ export default {
   component: MenuGrid,
   subcomponents: {
     MenuGridCell,
+    MenuGridGroup,
+    MenuGridGroupHeader,
     MenuGridItem,
     MenuGridRow,
-    MenuGridRowGroup,
-    MenuGridRowGroupHeader,
   },
   parameters: {
     docs: {
