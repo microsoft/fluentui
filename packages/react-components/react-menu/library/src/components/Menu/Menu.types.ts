@@ -127,7 +127,7 @@ export type MenuState = ComponentState<MenuSlots> &
     /**
      * The ref for the popup
      */
-    menuPopoverRef: React.MutableRefObject<HTMLElement>;
+    menuPopoverRef: React.MutableRefObject<HTMLElement | null>;
 
     /**
      * Internal react node that just simplifies handling children
@@ -152,7 +152,7 @@ export type MenuState = ComponentState<MenuSlots> &
     /**
      * The ref for the MenuTrigger, used for popup positioning
      */
-    triggerRef: React.MutableRefObject<HTMLElement>;
+    triggerRef: React.MutableRefObject<HTMLElement | null>;
 
     /**
      * Call back when the component requests to change value

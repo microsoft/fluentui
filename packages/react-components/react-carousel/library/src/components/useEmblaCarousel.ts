@@ -210,8 +210,8 @@ export function useEmblaCarousel(
     }
   });
 
-  const viewportRef: React.RefObject<HTMLDivElement> = React.useRef(null);
-  const containerRef: React.RefObject<HTMLDivElement> = React.useMemo(() => {
+  const viewportRef: React.RefObject<HTMLDivElement | null> = React.useRef(null);
+  const containerRef: React.RefObject<HTMLDivElement | null> = React.useMemo(() => {
     const handleVisibilityChange = () => {
       const cardElements = emblaApi.current?.slideNodes();
       const visibleIndexes = emblaApi.current?.slidesInView() ?? [];

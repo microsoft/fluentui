@@ -24,24 +24,24 @@ export const useFocusFinders = (): {
 
   // Narrow props for now and let need dictate additional props in the future
   const findAllFocusable = React.useCallback(
-    (container: HTMLElement, acceptCondition?: (el: HTMLElement) => boolean) =>
-      tabsterRef.current?.focusable.findAll({ container, acceptCondition }) || [],
+    (container: HTMLElement | null, acceptCondition?: (el: HTMLElement) => boolean) =>
+      (container && tabsterRef.current?.focusable.findAll({ container, acceptCondition })) || [],
     [tabsterRef],
   );
 
   const findFirstFocusable = React.useCallback(
-    (container: HTMLElement) => tabsterRef.current?.focusable.findFirst({ container }),
+    (container: HTMLElement | null) => container && tabsterRef.current?.focusable.findFirst({ container }),
     [tabsterRef],
   );
 
   const findLastFocusable = React.useCallback(
-    (container: HTMLElement) => tabsterRef.current?.focusable.findLast({ container }),
+    (container: HTMLElement | null) => container && tabsterRef.current?.focusable.findLast({ container }),
     [tabsterRef],
   );
 
   const findNextFocusable = React.useCallback(
-    (currentElement: HTMLElement, options: Pick<Partial<TabsterTypes.FindNextProps>, 'container'> = {}) => {
-      if (!tabsterRef.current || !targetDocument) {
+    (currentElement: HTMLElement | null, options: Pick<Partial<TabsterTypes.FindNextProps>, 'container'> = {}) => {
+      if (!tabsterRef.current || !targetDocument || !currentElement) {
         return null;
       }
 
@@ -53,8 +53,8 @@ export const useFocusFinders = (): {
   );
 
   const findPrevFocusable = React.useCallback(
-    (currentElement: HTMLElement, options: Pick<Partial<TabsterTypes.FindNextProps>, 'container'> = {}) => {
-      if (!tabsterRef.current || !targetDocument) {
+    (currentElement: HTMLElement | null, options: Pick<Partial<TabsterTypes.FindNextProps>, 'container'> = {}) => {
+      if (!tabsterRef.current || !targetDocument || !currentElement) {
         return null;
       }
 

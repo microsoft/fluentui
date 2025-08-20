@@ -61,7 +61,7 @@ export interface ActiveDescendantImperativeRef {
 
 // @public (undocumented)
 export interface ActiveDescendantOptions {
-    imperativeRef?: React_2.RefObject<ActiveDescendantImperativeRef>;
+    imperativeRef?: React_2.RefObject<ActiveDescendantImperativeRef | null>;
     // (undocumented)
     matchOption: (el: HTMLElement) => boolean;
 }

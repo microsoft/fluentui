@@ -288,7 +288,7 @@ const useMenuOpenState = (
     element: targetDocument,
     refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
       Boolean,
-    ) as React.MutableRefObject<HTMLElement>[],
+    ) as React.MutableRefObject<HTMLElement | null>[],
     callback: event => setOpen(event, { open: false, type: 'clickOutside', event }),
   });
 
@@ -300,7 +300,7 @@ const useMenuOpenState = (
     callback: event => setOpen(event, { open: false, type: 'scrollOutside', event }),
     refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
       Boolean,
-    ) as React.MutableRefObject<HTMLElement>[],
+    ) as React.MutableRefObject<HTMLElement | null>[],
     disabled: !open || !closeOnScroll,
   });
 

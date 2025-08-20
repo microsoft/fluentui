@@ -26,12 +26,19 @@
   "exclude": [
     "../../packages/react-components/react-migration-v0-v9/**",
     "../../packages/react-components/react-migration-v8-v9/**",
+    "../../packages/react-components/react-conformance-griffel/**",
     "../../packages/react-components/**/*.stories.tsx",
-    "../../packages/react-components/**/*.stories.ts"
+    "../../packages/react-components/**/*.stories.ts",
+    "../../packages/react-components/**/*.test.tsx",
+    "../../packages/react-components/**/*.test.ts",
+    "../../packages/react-components/**/*.spec.tsx",
+    "../../packages/react-components/**/*.spec.ts",
+    "../../packages/react-components/**/*.cy.tsx",
+    "../../packages/react-components/**/*.cy.ts"
   ],
   "include": [
-    "../../packages/react-components/react-*/library/**/*.tsx",
-    "../../packages/react-components/react-*/library/**/*.ts"
+    "../../packages/react-components/react-*/library/src/*.tsx",
+    "../../packages/react-components/react-*/library/src/*.ts"
   ],
   "files": [
     "../../typings/static-assets/index.d.ts",

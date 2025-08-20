@@ -26,7 +26,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState): {
   };
 } {
   const [columnId, setColumnId] = React.useState<TableColumnId>();
-  const onChangeRef = React.useRef<EnableKeyboardModeOnChangeCallback>();
+  const onChangeRef = React.useRef<EnableKeyboardModeOnChangeCallback>(undefined);
   const { findPrevFocusable } = useFocusFinders();
 
   const columnResizeStateRef = React.useRef<ColumnResizeState>(columnResizeState);
@@ -34,7 +34,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState): {
     columnResizeStateRef.current = columnResizeState;
   }, [columnResizeState]);
 
-  const [resizeHandleRefs] = React.useState(() => new Map<TableColumnId, React.RefObject<HTMLDivElement>>());
+  const [resizeHandleRefs] = React.useState(() => new Map<TableColumnId, React.RefObject<HTMLDivElement | null>>());
 
   const keyboardHandler = useEventCallback((event: React.KeyboardEvent) => {
     if (!columnId) {
@@ -146,7 +146,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState): {
       (colId: TableColumnId, currentWidth: number) => ({
         onKeyDown: keyboardHandler,
         onBlur: disableInteractiveMode,
-        ref: getKeyboardResizingRef(colId),
+        ref: getKeyboardResizingRef(colId) as React.RefObject<HTMLDivElement>,
         role: 'separator',
         'aria-label': 'Resize column',
         'aria-valuetext': `${currentWidth} pixels`,

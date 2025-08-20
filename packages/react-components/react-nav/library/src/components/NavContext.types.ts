@@ -67,7 +67,7 @@ export type NavItemRegisterData = {
   /**
    * The reference to the navItem HTML element.
    */
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement | null>;
 };
 
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;

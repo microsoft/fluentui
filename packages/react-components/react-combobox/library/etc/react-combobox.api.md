@@ -48,7 +48,7 @@ export type ComboboxBaseProps = SelectionProps & HighlightedOptionProps & Pick<P
 export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 'open' | 'clearable' | 'inlinePopup' | 'size'>> & Pick<ComboboxBaseProps, 'mountNode' | 'placeholder' | 'value' | 'multiselect'> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
     focusVisible: boolean;
-    ignoreNextBlur: React_2.MutableRefObject<boolean>;
+    ignoreNextBlur: React_2.MutableRefObject<boolean | null>;
     setActiveOption: React_2.Dispatch<React_2.SetStateAction<OptionValue | undefined>>;
     setFocusVisible(focusVisible: boolean): void;
     hasFocus: boolean;

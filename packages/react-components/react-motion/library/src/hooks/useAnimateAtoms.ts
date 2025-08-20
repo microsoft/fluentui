@@ -140,7 +140,7 @@ function useAnimateAtomsInSupportedEnvironment() {
  */
 function useAnimateAtomsInTestEnvironment() {
   const [count, setCount] = React.useState(0);
-  const callbackRef = React.useRef<() => void>();
+  const callbackRef = React.useRef<() => void>(undefined);
 
   const realAnimateAtoms = useAnimateAtomsInSupportedEnvironment();
 

@@ -22,7 +22,7 @@ type SelectableA11yProps = Pick<CardContextValue['selectableA11yProps'], 'refere
 export const useCardSelectable = (
   props: CardProps,
   { referenceLabel, referenceId }: SelectableA11yProps,
-  cardRef: React.RefObject<HTMLDivElement>,
+  cardRef: React.RefObject<HTMLDivElement | null>,
 ): {
   selected: boolean;
   selectable: boolean;

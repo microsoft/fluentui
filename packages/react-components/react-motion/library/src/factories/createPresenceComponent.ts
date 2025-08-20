@@ -1,4 +1,4 @@
-import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { type JSXElement, useEventCallback, useFirstMount, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
@@ -31,7 +31,7 @@ export type PresenceComponentProps = {
   appear?: boolean;
 
   /** A React element that will be cloned and will have motion effects applied to it. */
-  children: React.ReactElement;
+  children: JSXElement;
 
   /** Provides imperative controls for the animation. */
   imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
@@ -75,8 +75,10 @@ export type PresenceComponentProps = {
   unmountOnExit?: boolean;
 };
 
-export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = {
-  (props: PresenceComponentProps & MotionParams): React.ReactElement | null;
+export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React.FC<
+  PresenceComponentProps & MotionParams
+> & {
+  (props: PresenceComponentProps & MotionParams): JSXElement | null;
   [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
   In: React.FC<MotionComponentProps & MotionParams>;
   Out: React.FC<MotionComponentProps & MotionParams>;

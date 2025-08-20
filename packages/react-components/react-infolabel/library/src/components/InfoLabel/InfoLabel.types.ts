@@ -1,6 +1,5 @@
-import { Label } from '@fluentui/react-label';
+import { LabelProps } from '@fluentui/react-label';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { InfoButton } from '../InfoButton';
 import type { InfoButtonProps } from '../InfoButton';
 
 export type InfoLabelSlots = {
@@ -15,14 +14,14 @@ export type InfoLabelSlots = {
    * This is the PRIMARY slot: all native properties specified directly on `<InfoLabel>` will be applied to this slot,
    * except `className` and `style`, which remain on the root slot.
    */
-  label: NonNullable<Slot<typeof Label>>;
+  label: NonNullable<Slot<LabelProps>>;
 
   /**
    * The InfoButton component.
    *
    * It is not typically necessary to use this prop. The content can be set using the `info` prop of the InfoLabel.
    */
-  infoButton: Slot<typeof InfoButton>;
+  infoButton: Slot<InfoButtonProps>;
 };
 
 /**
