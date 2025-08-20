@@ -312,7 +312,7 @@ export class CartesianChartBase
         containerWidth: this.state.containerWidth,
         hideTickOverlap: this.props.hideTickOverlap,
         calcMaxLabelWidth: this._calcMaxLabelWidthWithTransform,
-        tickInterval: this.props.xAxis?.tickInterval,
+        tickStep: this.props.xAxis?.tickStep,
         tick0: this.props.xAxis?.tick0,
       };
 
@@ -386,7 +386,7 @@ export class CartesianChartBase
         // http://using-d3js.com/04_07_ordinal_scales.html
         yAxisPadding: this.props.yAxisPadding || 0,
         tickValues: this.props.yAxisTickValues,
-        tickInterval: this.props.yAxis?.tickInterval,
+        tickStep: this.props.yAxis?.tickStep,
         tick0: this.props.yAxis?.tick0,
       };
 

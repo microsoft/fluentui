@@ -535,17 +535,20 @@ export interface ICartesianChartProps {
   secondaryYScaleType?: AxisScaleType;
 
   /**
-   *
+   * Explicit set of tick values for the y-axis.
+   * If provided, these values override automatic tick generation.
    */
   yAxisTickValues?: number[] | Date[] | string[];
 
   /**
-   *
+   * Configuration for the x-axis.
+   * Use this to control `tickStep`, `tick0`, etc.
    */
   xAxis?: AxisProps;
 
   /**
-   *
+   * Configuration for the y-axis.
+   * Use this to control `tickStep`, `tick0`, etc.
    */
   yAxis?: AxisProps;
 }

@@ -252,7 +252,7 @@ export function createNumericXAxis(
     xAxisElement,
     hideTickOverlap,
     calcMaxLabelWidth,
-    tickInterval,
+    tickStep,
     tick0,
   } = xAxisParams;
   const xAxisScale = createNumericScale(scaleType)
@@ -286,8 +286,8 @@ export function createNumericXAxis(
   let customTickValues: number[] | undefined;
   if (tickParams.tickValues) {
     customTickValues = tickParams.tickValues as number[];
-  } else if (tickInterval) {
-    customTickValues = generateNumericTicks(scaleType, tickInterval, tick0, xAxisScale.domain());
+  } else if (tickStep) {
+    customTickValues = generateNumericTicks(scaleType, tickStep, tick0, xAxisScale.domain());
   }
   if (customTickValues) {
     xAxis.tickValues(customTickValues);
@@ -429,7 +429,7 @@ export function createDateXAxis(
     xAxistickSize = 6,
     xAxisCount,
     calcMaxLabelWidth,
-    tickInterval,
+    tickStep,
     tick0,
   } = xAxisParams;
   const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
@@ -500,8 +500,8 @@ export function createDateXAxis(
   let customTickValues: Date[] | undefined;
   if (tickParams.tickValues) {
     customTickValues = tickParams.tickValues as Date[];
-  } else if (tickInterval) {
-    customTickValues = generateDateTicks(tickInterval, tick0, xAxisScale.domain(), useUTC);
+  } else if (tickStep) {
+    customTickValues = generateDateTicks(tickStep, tick0, xAxisScale.domain(), useUTC);
   }
   if (customTickValues) {
     xAxis.tickValues(customTickValues);
@@ -667,7 +667,7 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
     yAxisTickFormat,
     yAxisTickCount = 4,
     tickValues,
-    tickInterval,
+    tickStep,
     tick0,
   } = yAxisParams;
 
@@ -685,8 +685,8 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
   let customTickValues: number[] | undefined;
   if (tickValues) {
     customTickValues = tickValues as number[];
-  } else if (tickInterval) {
-    customTickValues = generateNumericTicks(undefined, tickInterval, tick0, yAxisScale.domain());
+  } else if (tickStep) {
+    customTickValues = generateNumericTicks(undefined, tickStep, tick0, yAxisScale.domain());
   }
   if (customTickValues) {
     yAxis.tickValues(customTickValues);
@@ -721,7 +721,7 @@ export function createNumericYAxis(
     eventAnnotationProps,
     eventLabelHeight,
     tickValues,
-    tickInterval,
+    tickStep,
     tick0,
   } = yAxisParams;
 
@@ -758,8 +758,8 @@ export function createNumericYAxis(
   let customTickValues: number[] | undefined;
   if (tickValues) {
     customTickValues = tickValues as number[];
-  } else if (tickInterval) {
-    customTickValues = generateNumericTicks(scaleType, tickInterval, tick0, yAxisScale.domain());
+  } else if (tickStep) {
+    customTickValues = generateNumericTicks(scaleType, tickStep, tick0, yAxisScale.domain());
   }
   if (customTickValues) {
     yAxis.tickValues(customTickValues);
@@ -2112,30 +2112,25 @@ export const getRangeForScatterMarkerSize = ({
   return Math.min(extraXPixels, extraYPixels);
 };
 
-export const generateLinearTicks = (tick0: number, tickInterval: number, scaleDomain: number[]) => {
+export const generateLinearTicks = (tick0: number, tickStep: number, scaleDomain: number[]) => {
   const domainMin = d3Min(scaleDomain)!;
   const domainMax = d3Max(scaleDomain)!;
 
   const ticks: number[] = [];
 
-  let firstTick = tick0 - Math.ceil((tick0 - domainMin) / tickInterval) * tickInterval;
+  let firstTick = tick0 - Math.ceil((tick0 - domainMin) / tickStep) * tickStep;
   if (firstTick < domainMin) {
-    firstTick += tickInterval;
+    firstTick += tickStep;
   }
 
-  for (let i = firstTick; i <= domainMax; i += tickInterval) {
+  for (let i = firstTick; i <= domainMax; i += tickStep) {
     ticks.push(i);
   }
 
   return ticks;
 };
 
-export const generateMonthlyTicks = (
-  tick0: Date,
-  tickIntervalInMonths: number,
-  scaleDomain: Date[],
-  useUTC?: boolean,
-) => {
+export const generateMonthlyTicks = (tick0: Date, tickStepInMonths: number, scaleDomain: Date[], useUTC?: boolean) => {
   const domainMin = +d3Min(scaleDomain)!;
   const domainMax = +d3Max(scaleDomain)!;
 
@@ -2146,14 +2141,14 @@ export const generateMonthlyTicks = (
 
   let start = 0;
   for (let firstTick = new Date(+tick0); +firstTick >= domainMin; ) {
-    firstTick = setMonth(firstTick, getMonth(firstTick) - tickIntervalInMonths);
-    start -= tickIntervalInMonths;
+    firstTick = setMonth(firstTick, getMonth(firstTick) - tickStepInMonths);
+    start -= tickStepInMonths;
   }
-  start += tickIntervalInMonths;
+  start += tickStepInMonths;
 
   const baseMonth = getMonth(tick0);
 
-  for (let i = start; ; i += tickIntervalInMonths) {
+  for (let i = start; ; i += tickStepInMonths) {
     let tickDate = setMonth(new Date(+tick0), baseMonth + i);
 
     if (getMonth(tickDate) !== (((baseMonth + i) % 12) + 12) % 12) {
@@ -2173,48 +2168,48 @@ export const generateMonthlyTicks = (
 
 const generateNumericTicks = (
   scaleType: AxisScaleType | undefined,
-  tickInterval: string | number | undefined,
+  tickStep: string | number | undefined,
   tick0: number | Date | undefined,
   scaleDomain: number[],
 ) => {
   const x = typeof tick0 === 'number' ? tick0 : 0;
   if (scaleType === 'log') {
-    if (typeof tickInterval === 'number' && tickInterval > 0) {
+    if (typeof tickStep === 'number' && tickStep > 0) {
       const ticks = generateLinearTicks(
         x,
-        tickInterval,
+        tickStep,
         scaleDomain.map(d => Math.log10(d)),
       );
       return ticks.map(t => Math.pow(10, t));
-    } else if (typeof tickInterval === 'string') {
-      const prefix = tickInterval[0];
-      const num = Number(tickInterval.slice(1));
+    } else if (typeof tickStep === 'string') {
+      const prefix = tickStep[0];
+      const num = Number(tickStep.slice(1));
       if (prefix === 'L' && num > 0) {
         return generateLinearTicks(x, num, scaleDomain);
       }
     }
-  } else if (typeof tickInterval === 'number' && tickInterval > 0) {
-    return generateLinearTicks(x, tickInterval, scaleDomain);
+  } else if (typeof tickStep === 'number' && tickStep > 0) {
+    return generateLinearTicks(x, tickStep, scaleDomain);
   }
 };
 
 const generateDateTicks = (
-  tickInterval: string | number | undefined,
+  tickStep: string | number | undefined,
   tick0: number | Date | undefined,
   scaleDomain: Date[],
   useUTC?: boolean,
 ) => {
   const x = tick0 instanceof Date ? tick0 : new Date('2000-01-01');
-  if (typeof tickInterval === 'number' && tickInterval > 0) {
+  if (typeof tickStep === 'number' && tickStep > 0) {
     const ticks = generateLinearTicks(
       +x,
-      tickInterval,
+      tickStep,
       scaleDomain.map(d => +d),
     );
     return ticks.map(t => new Date(t));
-  } else if (typeof tickInterval === 'string') {
-    const prefix = tickInterval[0];
-    const num = Number(tickInterval.slice(1));
+  } else if (typeof tickStep === 'string') {
+    const prefix = tickStep[0];
+    const num = Number(tickStep.slice(1));
     if (prefix === 'M' && num > 0 && num === Math.round(num)) {
       return generateMonthlyTicks(x, num, scaleDomain, useUTC);
     }

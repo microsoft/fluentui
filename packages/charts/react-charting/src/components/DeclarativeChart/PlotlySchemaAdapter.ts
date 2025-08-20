@@ -2799,12 +2799,12 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
 
       if (axId === 'x') {
         props.xAxis = {
-          tickInterval: dtick,
+          tickStep: dtick,
           tick0: tick0,
         };
       } else if (axId === 'y') {
         props.yAxis = {
-          tickInterval: dtick,
+          tickStep: dtick,
           tick0: tick0,
         };
       }
