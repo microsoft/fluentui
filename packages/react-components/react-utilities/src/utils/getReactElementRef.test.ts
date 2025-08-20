@@ -14,10 +14,10 @@ describe('getReactElementRef', () => {
         expect(getReactElementRef(element)).toBe(ref);
       });
 
-      it('returns null when no ref is provided', () => {
+      it('returns undefined when no ref is provided', () => {
         const element = React.createElement('div');
 
-        expect(getReactElementRef(element)).toBeNull();
+        expect(getReactElementRef(element)).toBeUndefined();
       });
 
       it('handles function refs', () => {
