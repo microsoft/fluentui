@@ -1,5 +1,7 @@
 # @fluentui/semantic-tokens
 
+WARNING: Semantic tokens and their style hooks are undergoing rapid transformation as we prepare to build out AI adjacent design systems - we expect many breaking changes to occur in this preview release to the token names, however the overall structure and fallback implementation should remain consistent.
+
 **Fluent UI Theme semantic-tokens**
 
 The semantic tokens package provides finely tuneable theme control via generic and component level CSSVars with fallbacks.

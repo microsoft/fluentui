@@ -1,5 +1,7 @@
 # @fluentui/semantic-style-hooks-preview
 
+WARNING: Semantic tokens and their style hooks are undergoing rapid transformation as we prepare to build out AI adjacent design systems - we expect many breaking changes to occur in this preview release to the token names, however the overall structure and fallback implementation should remain consistent.
+
 **Semantic Style Hooks components for [Fluent UI React](https://react.fluentui.dev/)**
 
 These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
