@@ -1,6 +1,10 @@
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { dialogContentClassNames, type DialogContentState, MEDIA_QUERY_SHORT_SCREEN } from '@fluentui/react-dialog';
+import {
+  dialogContentClassNames,
+  type DialogContentState,
+  DIALOG_MEDIA_QUERY_SHORT_SCREEN,
+} from '@fluentui/react-dialog';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
@@ -22,7 +26,7 @@ const useStyles = makeResetStyles({
   gridColumnStart: 1,
   gridColumnEnd: 4,
 
-  [MEDIA_QUERY_SHORT_SCREEN]: {
+  [DIALOG_MEDIA_QUERY_SHORT_SCREEN]: {
     overflowY: 'unset',
   },
 });

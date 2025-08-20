@@ -3,9 +3,9 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import {
   dialogSurfaceClassNames,
   DialogSurfaceState,
-  FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
-  MEDIA_QUERY_BREAKPOINT_SELECTOR,
-  MEDIA_QUERY_SHORT_SCREEN,
+  DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+  DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR,
+  DIALOG_MEDIA_QUERY_SHORT_SCREEN,
 } from '@fluentui/react-dialog';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
@@ -41,18 +41,18 @@ const useRootBaseStyle = makeResetStyles({
     maxHeight: '100dvh',
   },
 
-  [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+  [DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
   },
 
-  [MEDIA_QUERY_SHORT_SCREEN]: {
+  [DIALOG_MEDIA_QUERY_SHORT_SCREEN]: {
     overflowY: 'auto',
     // We need to offset the scrollbar by adding transparent borders otherwise
     // it conflicts with the border radius.
-    paddingRight: `calc(${semanticTokens.paddingContentLarge} - ${FULLSCREEN_DIALOG_SCROLLBAR_OFFSET})`,
-    borderRightWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
-    borderTopWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
-    borderBottomWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+    paddingRight: `calc(${semanticTokens.paddingContentLarge} - ${DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET})`,
+    borderRightWidth: DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+    borderTopWidth: DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+    borderBottomWidth: DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
   },
 });
 

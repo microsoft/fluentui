@@ -1,5 +1,4 @@
 import { type GriffelResetStyle, makeStyles, mergeClasses } from '@griffel/react';
-import type { DrawerBaseState } from '@fluentui/react-drawer';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 
 /**
@@ -87,7 +86,13 @@ export const useDrawerBottomBaseStyles = makeStyles({
   },
 });
 
-export const useSemanticDrawerBaseClassNames = ({ position, size }: DrawerBaseState) => {
+export const useSemanticDrawerBaseClassNames = ({
+  position,
+  size,
+}: {
+  position: 'start' | 'end' | 'bottom';
+  size: 'small' | 'medium' | 'large' | 'full';
+}) => {
   const baseStyles = useDrawerStyles();
   const bottomBaseStyles = useDrawerBottomBaseStyles();
 

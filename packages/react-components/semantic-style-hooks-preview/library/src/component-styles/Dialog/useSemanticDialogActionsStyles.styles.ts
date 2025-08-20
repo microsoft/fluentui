@@ -3,7 +3,7 @@ import * as semanticTokens from '@fluentui/semantic-tokens';
 import {
   type DialogActionsState,
   dialogActionsClassNames,
-  MEDIA_QUERY_BREAKPOINT_SELECTOR,
+  DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR,
 } from '@fluentui/react-dialog';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
@@ -17,7 +17,7 @@ const useResetStyles = makeResetStyles({
   display: 'flex',
   gridRowStart: 3,
   gridRowEnd: 3,
-  [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+  [DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     flexDirection: 'column',
     justifySelf: 'stretch',
   },
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     justifySelf: 'end',
     gridColumnStart: 2,
     gridColumnEnd: 4,
-    [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+    [DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       gridColumnStart: 1,
       gridRowStart: 4,
       gridRowEnd: 'auto',
@@ -38,7 +38,7 @@ const useStyles = makeStyles({
     justifySelf: 'start',
     gridColumnStart: 1,
     gridColumnEnd: 2,
-    [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+    [DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       gridColumnEnd: 4,
       gridRowStart: 3,
       gridRowEnd: 'auto',

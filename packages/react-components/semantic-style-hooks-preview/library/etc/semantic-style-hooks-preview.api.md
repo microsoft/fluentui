@@ -289,7 +289,7 @@ export const useSemanticSplitButtonStyles: (_state: unknown) => SplitButtonState
 export const useSemanticSwitchStyles: (_state: unknown) => SwitchState;
 
 // @public
-export const useSemanticTabButtonStyles_unstable: (state: TabState, slot: TabState['root']) => TabState;
+export const useSemanticTabButtonStyles_unstable: (state: TabState, slot: TabState["root"]) => TabState;
 
 // @public
 export const useSemanticTabContentStyles_unstable: (state: TabState) => TabState;

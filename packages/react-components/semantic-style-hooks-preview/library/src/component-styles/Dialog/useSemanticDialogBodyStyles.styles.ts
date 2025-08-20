@@ -2,8 +2,8 @@ import { makeResetStyles, mergeClasses } from '@griffel/react';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 import {
   dialogBodyClassNames,
-  MEDIA_QUERY_BREAKPOINT_SELECTOR,
-  MEDIA_QUERY_SHORT_SCREEN,
+  DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR,
+  DIALOG_MEDIA_QUERY_SHORT_SCREEN,
   type DialogBodyState,
 } from '@fluentui/react-dialog';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
@@ -25,12 +25,12 @@ const useResetStyles = makeResetStyles({
     maxHeight: `calc(100dvh - 2 * ${semanticTokens.paddingContentLarge})`,
   },
 
-  [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+  [DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
     gridTemplateRows: 'auto 1fr auto',
   },
 
-  [MEDIA_QUERY_SHORT_SCREEN]: {
+  [DIALOG_MEDIA_QUERY_SHORT_SCREEN]: {
     maxHeight: 'unset',
   },
 });
