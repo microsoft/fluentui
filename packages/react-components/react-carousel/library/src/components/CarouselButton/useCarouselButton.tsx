@@ -35,7 +35,7 @@ export const useCarouselButton_unstable = (
   const [totalSlides, setTotalSlides] = React.useState(0);
 
   const { dir } = useFluent();
-  const buttonRef = React.useRef<HTMLButtonElement>();
+  const buttonRef = React.useRef<HTMLButtonElement>(undefined);
   const circular = useCarouselContext(ctx => ctx.circular);
   const [canLoop, setCanLoop] = React.useState(circular);
   const containerRef = useCarouselContext(ctx => ctx.containerRef);

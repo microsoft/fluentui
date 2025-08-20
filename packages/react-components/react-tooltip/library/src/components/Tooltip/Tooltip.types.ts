@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { ComponentProps, ComponentState, Slot, TriggerProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, JSXElement, Slot, TriggerProps } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 
 /**
@@ -128,7 +128,7 @@ export type TooltipProps = ComponentProps<TooltipSlots> &
 export type TooltipState = ComponentState<TooltipSlots> &
   Pick<TooltipProps, 'mountNode' | 'relationship'> &
   Required<Pick<TooltipProps, 'appearance' | 'hideDelay' | 'positioning' | 'showDelay' | 'visible' | 'withArrow'>> & {
-    children?: React.ReactElement | null;
+    children?: JSXElement | null;
 
     /**
      * Whether the tooltip should be rendered to the DOM.

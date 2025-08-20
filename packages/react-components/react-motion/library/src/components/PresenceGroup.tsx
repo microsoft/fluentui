@@ -33,15 +33,10 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
     };
   }
 
-  constructor(props: PresenceGroupProps, context?: unknown) {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    super(props, context);
-
-    this.state = {
-      childMapping: {},
-      firstRender: true,
-    };
-  }
+  state: PresenceGroupState = {
+    childMapping: {},
+    firstRender: true,
+  };
 
   private handleExit = (childKey: string): void => {
     const currentChildMapping = getChildMapping(this.props.children);

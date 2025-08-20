@@ -4,6 +4,7 @@ import {
   type SlotComponentType,
   type SlotRenderFunction,
   type JSXIntrinsicElementKeys,
+  type JSXElement,
 } from '@fluentui/react-utilities';
 
 import * as React from 'react';
@@ -34,7 +35,7 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
 
   // TODO: remove once React v18 slot API is modified ComponentProps is not properly adding render function as a
   //       possible value for children
-  children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & { children: React.ReactElement }>;
+  children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & { children: JSXElement }>;
 };
 
 export function presenceMotionSlot<MotionParams extends Record<string, MotionParam> = {}>(
@@ -57,9 +58,10 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
     // Heads up!
     // Render function is used there to avoid rendering a motion component and handle unmounting logic
     const isUnmounted = !options.defaultProps.visible && options.defaultProps.unmountOnExit;
-    const renderFn: SlotRenderFunction<
-      PresenceMotionSlotRenderProps & MotionParams & { children: React.ReactElement }
-    > = (_, props) => (isUnmounted ? null : <>{props.children}</>);
+    const renderFn: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & { children: JSXElement }> = (
+      _,
+      props,
+    ) => (isUnmounted ? null : <>{props.children}</>);
 
     /**
      * Casting is required here as SlotComponentType is a function, not an object.

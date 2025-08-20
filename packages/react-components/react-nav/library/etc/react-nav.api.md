@@ -264,7 +264,7 @@ export type NavItemProps = ComponentProps<NavItemSlots> & {
 // @public (undocumented)
 export type NavItemRegisterData = {
     value: NavItemValue;
-    ref: React_2.RefObject<HTMLElement>;
+    ref: React_2.RefObject<HTMLElement | null>;
 };
 
 // @public (undocumented)

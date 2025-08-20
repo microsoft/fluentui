@@ -4,7 +4,7 @@
 
 ```ts
 
-import type { JSXElement } from '@fluentui/react-utilities';
+import { JSXElement } from '@fluentui/react-utilities';
 import { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { SlotComponentType } from '@fluentui/react-utilities';
@@ -59,7 +59,7 @@ export const MotionBehaviourProvider: React_2.Provider<MotionBehaviourType | und
 
 // @public (undocumented)
 export type MotionComponentProps = {
-    children: React_2.ReactElement;
+    children: JSXElement;
     imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
     onMotionFinish?: (ev: null) => void;
     onMotionCancel?: (ev: null) => void;
@@ -97,8 +97,8 @@ export const motionTokens: {
 };
 
 // @public (undocumented)
-export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = {
-    (props: PresenceComponentProps & MotionParams): React_2.ReactElement | null;
+export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React_2.FC<PresenceComponentProps & MotionParams> & {
+    (props: PresenceComponentProps & MotionParams): JSXElement | null;
     [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
     In: React_2.FC<MotionComponentProps & MotionParams>;
     Out: React_2.FC<MotionComponentProps & MotionParams>;
@@ -107,7 +107,7 @@ export type PresenceComponent<MotionParams extends Record<string, MotionParam> =
 // @public (undocumented)
 export type PresenceComponentProps = {
     appear?: boolean;
-    children: React_2.ReactElement;
+    children: JSXElement;
     imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
     onMotionFinish?: (ev: null, data: {
         direction: PresenceDirection;
@@ -127,7 +127,6 @@ export type PresenceDirection = 'enter' | 'exit';
 
 // @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {
-    constructor(props: PresenceGroupProps, context?: unknown);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -136,6 +135,8 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
     static getDerivedStateFromProps(nextProps: PresenceGroupProps, { childMapping: prevChildMapping, firstRender }: PresenceGroupState): PresenceGroupState;
     // (undocumented)
     render(): JSXElement;
+    // (undocumented)
+    state: PresenceGroupState;
 }
 
 // @public (undocumented)
@@ -167,7 +168,7 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
 export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<PresenceComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart'> & {
     as?: JSXIntrinsicElementKeys;
     children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & {
-        children: React_2.ReactElement;
+        children: JSXElement;
     }>;
 };
 
