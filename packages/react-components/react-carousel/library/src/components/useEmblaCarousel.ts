@@ -55,8 +55,8 @@ export function useEmblaCarousel(
     scrollToIndex: (index: number, jump?: boolean) => void;
     scrollInDirection: (dir: 'prev' | 'next') => number;
   };
-  viewportRef: React.RefObject<HTMLDivElement>;
-  containerRef: React.RefObject<HTMLDivElement>;
+  viewportRef: React.RefObject<HTMLDivElement | null>;
+  containerRef: React.RefObject<HTMLDivElement | null>;
   subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
   enableAutoplay: (autoplay: boolean, temporary?: boolean) => void;
   resetAutoplay: () => void;

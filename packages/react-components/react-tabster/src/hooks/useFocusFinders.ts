@@ -7,15 +7,15 @@ import { useTabster } from './useTabster';
  * Returns a set of helper functions that will traverse focusable elements in the context of a root DOM element
  */
 export const useFocusFinders = (): {
-  findAllFocusable: (container: HTMLElement, acceptCondition?: (el: HTMLElement) => boolean) => HTMLElement[];
-  findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
-  findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
+  findAllFocusable: (container: HTMLElement | null, acceptCondition?: (el: HTMLElement) => boolean) => HTMLElement[];
+  findFirstFocusable: (container: HTMLElement | null) => HTMLElement | null | undefined;
+  findLastFocusable: (container: HTMLElement | null) => HTMLElement | null | undefined;
   findNextFocusable: (
-    currentElement: HTMLElement,
+    currentElement: HTMLElement | null,
     options?: { container?: HTMLElement },
   ) => HTMLElement | null | undefined;
   findPrevFocusable: (
-    currentElement: HTMLElement,
+    currentElement: HTMLElement | null,
     options?: { container?: HTMLElement },
   ) => HTMLElement | null | undefined;
 } => {
