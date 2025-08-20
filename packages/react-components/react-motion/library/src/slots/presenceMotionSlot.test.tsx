@@ -59,11 +59,8 @@ describe('presenceMotionSlot', () => {
 
     expect(TestMotion).toHaveBeenCalledTimes(1);
 
-    // TODO: these fail in React 19
-    expect(TestMotion).toHaveBeenCalledWith(
-      expect.objectContaining({ visible: true, unmountOnExit: true }),
-      expect.any(Object),
-    );
+    const firstCall = TestMotion.mock.calls[0];
+    expect(firstCall[0]).toEqual(expect.objectContaining({ visible: true, unmountOnExit: true }));
 
     // ---
 
@@ -73,11 +70,9 @@ describe('presenceMotionSlot', () => {
     expect(queryByTestId('content')).toBeNull();
 
     expect(TestMotion).toHaveBeenCalledTimes(4);
-    // TODO: these fail in React 19
-    expect(TestMotion).toHaveBeenLastCalledWith(
-      expect.objectContaining({ visible: false, unmountOnExit: true }),
-      expect.any(Object),
-    );
+
+    const lastCall = TestMotion.mock.calls[3];
+    expect(lastCall[0]).toEqual(expect.objectContaining({ visible: false, unmountOnExit: true }));
   });
 
   it('handles object as value', () => {
