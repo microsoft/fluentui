@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Label } from '@fluentui/react-label';
 import type { OnOpenChangeData } from '@fluentui/react-popover';
-import { mergeCallbacks, useEventCallback, useId, slot } from '@fluentui/react-utilities';
+import { mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton/InfoButton';
 import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
 
@@ -57,16 +57,13 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     elementType: InfoButton,
   });
 
-  const infoButtonPopover = slot.always(infoButton?.popover, {
-    elementType: 'div',
-  });
-  infoButtonPopover.onOpenChange = useEventCallback(
-    mergeCallbacks(infoButtonPopover.onOpenChange, (_, data: OnOpenChangeData) => {
-      setOpen(data.open);
-    }),
-  );
-
   if (infoButton) {
+    const infoButtonPopover = slot.always(infoButton.popover, {
+      elementType: 'div',
+    });
+    infoButtonPopover.onOpenChange = mergeCallbacks(infoButtonPopover.onOpenChange, (_, data: OnOpenChangeData) => {
+      setOpen(data.open);
+    });
     infoButton.popover = infoButtonPopover;
     const infoPopupId = baseId + '__info'; // used as a self-referencing aria-labelledby to name the popup
     infoButton.info = slot.optional(infoButton?.info, {
