@@ -2119,7 +2119,9 @@ export const generateLinearTicks = (tick0: number, tickInterval: number, scaleDo
   const ticks: number[] = [];
 
   let firstTick = tick0 - Math.ceil((tick0 - domainMin) / tickInterval) * tickInterval;
-  if (firstTick < domainMin) firstTick += tickInterval;
+  if (firstTick < domainMin) {
+    firstTick += tickInterval;
+  }
 
   for (let i = firstTick; i <= domainMax; i += tickInterval) {
     ticks.push(i);

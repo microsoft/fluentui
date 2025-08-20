@@ -71,7 +71,6 @@ import {
   isObjectArray,
   getAxisIds,
   getAxisKey,
-  isNumber,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
