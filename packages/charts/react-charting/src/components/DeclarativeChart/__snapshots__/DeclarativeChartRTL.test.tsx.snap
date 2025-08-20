@@ -1539,7 +1539,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
               >
                 <g>
                   <path
-                    aria-label="AMC, 1."
+                    aria-label="Merc, 7."
                     class=
 
                         {
@@ -1552,7 +1552,117 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M0.58,-38.835A3,3,0,0,1,3.855,-41.823A42,42,0,0,1,4.639,-41.743A3,3,0,0,1,7.246,-38.158L-8.616,39.061Z"
+                    d="M0.58,-38.835A3,3,0,0,1,3.855,-41.823A42,42,0,0,1,39.24,-14.973A3,3,0,0,1,37.245,-11.014L-38.675,10.21Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Merc7"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Fiat, 2."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #ca5010;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M37.557,-9.897A3,3,0,0,1,41.316,-7.547A42,42,0,0,1,41.991,0.868A3,3,0,0,1,38.655,3.787L-39.677,-5.07Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Fiat2"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Hornet, 2."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #57811b;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M38.524,4.94A3,3,0,0,1,41.125,8.53A42,42,0,0,1,38.588,16.583A3,3,0,0,1,34.399,18.034L-34.865,-19.607Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Hornet2"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Mazda, 2."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #9373c0;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M33.845,19.053A3,3,0,0,1,34.906,23.357A42,42,0,0,1,29.529,29.867A3,3,0,0,1,25.102,29.638L-24.943,-31.271Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Mazda2"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Toyota, 2."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #f7630c;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M24.206,30.374A3,3,0,0,1,23.572,34.762A42,42,0,0,1,16.143,38.774A3,3,0,0,1,12.127,36.898L-11.365,-38.351Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Toyota2"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="AMC, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #3a96dd;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M11.019,37.244A3,3,0,0,1,8.783,41.071A42,42,0,0,1,8.011,41.229A3,3,0,0,1,4.454,38.583L-3.416,-39.854Z"
                     data-is-focusable="false"
                     id="_Pie_1AMC1"
                     role="img"
@@ -1566,7 +1676,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #f7630c;
+                          fill: #e3008c;
                           opacity: 1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1574,7 +1684,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M8.382,-37.924A3,3,0,0,1,12.192,-40.192A42,42,0,0,1,12.943,-39.956A3,3,0,0,1,14.776,-35.919L-16.299,36.528Z"
+                    d="M3.3,38.699A3,3,0,0,1,0.339,41.999A42,42,0,0,1,-0.448,41.998A3,3,0,0,1,-3.401,38.691L4.673,-39.726Z"
                     data-is-focusable="true"
                     id="_Pie_1Cadillac1"
                     role="img"
@@ -1588,7 +1698,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #57811b;
+                          fill: #13a10e;
                           opacity: 0.1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1596,7 +1706,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M15.842,-35.462A3,3,0,0,1,20.03,-36.916A42,42,0,0,1,20.718,-36.534A3,3,0,0,1,21.701,-32.211L-23.316,32.502Z"
+                    d="M-4.554,38.572A3,3,0,0,1,-8.119,41.208A42,42,0,0,1,-8.89,41.048A3,3,0,0,1,-11.116,37.215L12.571,-37.973Z"
                     data-is-focusable="false"
                     id="_Pie_1Camaro1"
                     role="img"
@@ -1610,7 +1720,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #9373c0;
+                          fill: #b146c2;
                           opacity: 0.1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1618,7 +1728,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M22.653,-31.549A3,3,0,0,1,27.048,-32.131A42,42,0,0,1,27.646,-31.618A3,3,0,0,1,27.739,-27.186L-29.379,27.145Z"
+                    d="M-12.223,36.866A3,3,0,0,1,-16.244,38.731A42,42,0,0,1,-16.968,38.42A3,3,0,0,1,-18.377,34.217L19.955,-34.667Z"
                     data-is-focusable="false"
                     id="_Pie_1Chrysler1"
                     role="img"
@@ -1632,7 +1742,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #ca5010;
+                          fill: #ae8c00;
                           opacity: 0.1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1640,7 +1750,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M28.538,-26.345A3,3,0,0,1,32.96,-26.031A42,42,0,0,1,33.443,-25.409A3,3,0,0,1,32.642,-21.048L-34.24,20.678Z"
+                    d="M-19.391,33.653A3,3,0,0,1,-23.705,34.671A42,42,0,0,1,-24.351,34.22A3,3,0,0,1,-24.886,29.819L26.522,-29.943Z"
                     data-is-focusable="false"
                     id="_Pie_1Datsun1"
                     role="img"
@@ -1654,7 +1764,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #3a96dd;
+                          fill: #3c51b4;
                           opacity: 0.1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1662,7 +1772,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M33.256,-20.064A3,3,0,0,1,37.524,-18.867A42,42,0,0,1,37.871,-18.16A3,3,0,0,1,36.209,-14.05L-37.701,13.366Z"
+                    d="M-25.766,29.063A3,3,0,0,1,-30.197,29.192A42,42,0,0,1,-30.739,28.62A3,3,0,0,1,-30.377,24.202L32.005,-23.994Z"
                     data-is-focusable="false"
                     id="_Pie_1Dodge1"
                     role="img"
@@ -1676,7 +1786,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #e3008c;
+                          fill: #ad006a;
                           opacity: 0.1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1684,7 +1794,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M36.613,-12.962A3,3,0,0,1,40.553,-10.93A42,42,0,0,1,40.751,-10.168A3,3,0,0,1,38.296,-6.477L-39.619,5.506Z"
+                    d="M-31.087,23.284A3,3,0,0,1,-35.453,22.518A42,42,0,0,1,-35.869,21.85A3,3,0,0,1,-34.626,17.595L36.178,-17.063Z"
                     data-is-focusable="false"
                     id="_Pie_1Duster1"
                     role="img"
@@ -1698,7 +1808,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #13a10e;
+                          fill: #026467;
                           opacity: 0.1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1706,31 +1816,9 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M38.472,-5.33A3,3,0,0,1,41.923,-2.547A42,42,0,0,1,41.963,-1.76A3,3,0,0,1,38.816,1.362L-39.917,-2.578Z"
+                    d="M-35.136,16.553A3,3,0,0,1,-39.259,14.924A42,42,0,0,1,-39.532,14.185A3,3,0,0,1,-37.458,10.267L38.872,-9.434Z"
                     data-is-focusable="false"
                     id="_Pie_1Ferrari1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Fiat, 2."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #b146c2;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M38.758,2.52A3,3,0,0,1,41.578,5.941A42,42,0,0,1,39.55,14.136A3,3,0,0,1,35.46,15.847L-36.023,-17.388Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Fiat2"
                     role="img"
                     tabindex="-1"
                   />
@@ -1742,7 +1830,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #ae8c00;
+                          fill: #674c8c;
                           opacity: 0.1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1750,7 +1838,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M34.971,16.899A3,3,0,0,1,36.299,21.128A42,42,0,0,1,35.896,21.805A3,3,0,0,1,31.546,22.658L-31.788,-24.281Z"
+                    d="M-37.748,9.144A3,3,0,0,1,-41.459,6.719A42,42,0,0,1,-41.578,5.941A3,3,0,0,1,-38.758,2.52L39.975,-1.42Z"
                     data-is-focusable="false"
                     id="_Pie_1Ford1"
                     role="img"
@@ -1764,7 +1852,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #3c51b4;
+                          fill: #0e7a0b;
                           opacity: 0.1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1772,31 +1860,9 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M30.855,23.59A3,3,0,0,1,31.305,28A42,42,0,0,1,30.775,28.582A3,3,0,0,1,26.342,28.542L-26.252,-30.18Z"
+                    d="M-38.816,1.362A3,3,0,0,1,-41.963,-1.76A42,42,0,0,1,-41.923,-2.547A3,3,0,0,1,-38.472,-5.33L39.443,6.653Z"
                     data-is-focusable="false"
                     id="_Pie_1Honda1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Hornet, 2."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #ad006a;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M25.478,29.316A3,3,0,0,1,25.031,33.726A42,42,0,0,1,17.78,38.051A3,3,0,0,1,13.687,36.348L-12.988,-37.833Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Hornet2"
                     role="img"
                     tabindex="-1"
                   />
@@ -1808,7 +1874,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #026467;
+                          fill: #2c72a8;
                           opacity: 0.1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1816,7 +1882,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M12.595,36.741A3,3,0,0,1,10.524,40.66A42,42,0,0,1,9.76,40.85A3,3,0,0,1,6.093,38.359L-5.11,-39.672Z"
+                    d="M-38.296,-6.477A3,3,0,0,1,-40.751,-10.168A42,42,0,0,1,-40.553,-10.93A3,3,0,0,1,-36.613,-12.962L37.297,14.453Z"
                     data-is-focusable="false"
                     id="_Pie_1Lincoln1"
                     role="img"
@@ -1830,7 +1896,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #674c8c;
+                          fill: #9a3d0c;
                           opacity: 0.1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1838,7 +1904,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M4.945,38.524A3,3,0,0,1,2.127,41.946A42,42,0,0,1,1.341,41.979A3,3,0,0,1,-1.75,38.8L2.977,-39.889Z"
+                    d="M-36.209,-14.05A3,3,0,0,1,-37.871,-18.16A42,42,0,0,1,-37.524,-18.867A3,3,0,0,1,-33.256,-20.064L33.626,21.663Z"
                     data-is-focusable="false"
                     id="_Pie_1Lotus1"
                     role="img"
@@ -1852,7 +1918,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #0e7a0b;
+                          fill: #405f14;
                           opacity: 0.1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1860,53 +1926,9 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M-2.908,38.731A3,3,0,0,1,-6.356,41.516A42,42,0,0,1,-7.134,41.39A3,3,0,0,1,-9.521,37.655L10.943,-38.474Z"
+                    d="M-32.642,-21.048A3,3,0,0,1,-33.443,-25.409A42,42,0,0,1,-32.96,-26.031A3,3,0,0,1,-28.538,-26.345L28.58,27.986Z"
                     data-is-focusable="false"
                     id="_Pie_1Maserati1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Mazda, 2."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #2c72a8;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-10.641,37.353A3,3,0,0,1,-14.58,39.388A42,42,0,0,1,-22.163,35.676A3,3,0,0,1,-22.972,31.318L24.597,-31.543Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Mazda2"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Merc, 7."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #9a3d0c;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-23.897,30.618A3,3,0,0,1,-28.311,31.024A42,42,0,0,1,-40.326,-11.739A3,3,0,0,1,-36.346,-13.692L37.001,15.196Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Merc7"
                     role="img"
                     tabindex="-1"
                   />
@@ -1918,7 +1940,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #405f14;
+                          fill: #863593;
                           opacity: 0.1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1926,7 +1948,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M-35.921,-14.771A3,3,0,0,1,-37.5,-18.913A42,42,0,0,1,-37.139,-19.613A3,3,0,0,1,-32.848,-20.725L33.186,22.331Z"
+                    d="M-27.739,-27.186A3,3,0,0,1,-27.646,-31.618A42,42,0,0,1,-27.048,-32.131A3,3,0,0,1,-22.653,-31.549L22.364,33.164Z"
                     data-is-focusable="false"
                     id="_Pie_1Pontiac1"
                     role="img"
@@ -1940,28 +1962,6 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #863593;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-32.214,-21.697A3,3,0,0,1,-32.928,-26.072A42,42,0,0,1,-32.433,-26.685A3,3,0,0,1,-28.006,-26.911L28.014,28.552Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Porsche1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Toyota, 2."
-                    class=
-
-                        {
-                          cursor: default;
                           fill: #6d5700;
                           opacity: 0.1;
                           outline: transparent;
@@ -1970,9 +1970,9 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M-27.19,-27.735A3,3,0,0,1,-27.008,-32.165A42,42,0,0,1,-20.03,-36.916A3,3,0,0,1,-15.842,-35.462L15.233,36.986Z"
+                    d="M-21.701,-32.211A3,3,0,0,1,-20.718,-36.534A42,42,0,0,1,-20.03,-36.916A3,3,0,0,1,-15.842,-35.462L15.233,36.986Z"
                     data-is-focusable="false"
-                    id="_Pie_1Toyota2"
+                    id="_Pie_1Porsche1"
                     role="img"
                     tabindex="-1"
                   />
@@ -2113,7 +2113,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="AMC"
+                            aria-label="Merc"
                             aria-posinset="1"
                             aria-selected="false"
                             aria-setsize="22"
@@ -2199,7 +2199,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              AMC
+                              Merc
                             </div>
                           </button>
                         </div>
@@ -2213,9 +2213,9 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Cadillac"
+                            aria-label="Fiat"
                             aria-posinset="2"
-                            aria-selected="true"
+                            aria-selected="false"
                             aria-setsize="22"
                             class=
 
@@ -2272,8 +2272,8 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                               class=
 
                                   {
-                                    background-color: #f7630c;
-                                    border-color: #f7630c;
+                                    background-color: #ffffff;
+                                    border-color: #ca5010;
                                     border: 1px solid;
                                     content: ;
                                     height: 12px;
@@ -2281,8 +2281,8 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     width: 12px;
                                   }
                                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #f7630c, #f7630c);
-                                    opacity: ;
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
                                   }
                             />
                             <div
@@ -2296,10 +2296,10 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     font-size: 12px;
                                     font-weight: 400;
                                     line-height: 16px;
-                                    opacity: ;
+                                    opacity: 0.67;
                                   }
                             >
-                              Cadillac
+                              Fiat
                             </div>
                           </button>
                         </div>
@@ -2313,7 +2313,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Camaro"
+                            aria-label="Hornet"
                             aria-posinset="3"
                             aria-selected="false"
                             aria-setsize="22"
@@ -2399,7 +2399,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Camaro
+                              Hornet
                             </div>
                           </button>
                         </div>
@@ -2413,7 +2413,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Chrysler"
+                            aria-label="Mazda"
                             aria-posinset="4"
                             aria-selected="false"
                             aria-setsize="22"
@@ -2499,7 +2499,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Chrysler
+                              Mazda
                             </div>
                           </button>
                         </div>
@@ -2513,7 +2513,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Datsun"
+                            aria-label="Toyota"
                             aria-posinset="5"
                             aria-selected="false"
                             aria-setsize="22"
@@ -2573,7 +2573,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                                   {
                                     background-color: #ffffff;
-                                    border-color: #ca5010;
+                                    border-color: #f7630c;
                                     border: 1px solid;
                                     content: ;
                                     height: 12px;
@@ -2599,7 +2599,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Datsun
+                              Toyota
                             </div>
                           </button>
                         </div>
@@ -2613,7 +2613,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Dodge"
+                            aria-label="AMC"
                             aria-posinset="6"
                             aria-selected="false"
                             aria-setsize="22"
@@ -2699,7 +2699,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Dodge
+                              AMC
                             </div>
                           </button>
                         </div>
@@ -2713,9 +2713,9 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Duster"
+                            aria-label="Cadillac"
                             aria-posinset="7"
-                            aria-selected="false"
+                            aria-selected="true"
                             aria-setsize="22"
                             class=
 
@@ -2772,7 +2772,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                               class=
 
                                   {
-                                    background-color: #ffffff;
+                                    background-color: #e3008c;
                                     border-color: #e3008c;
                                     border: 1px solid;
                                     content: ;
@@ -2781,8 +2781,8 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     width: 12px;
                                   }
                                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
+                                    content: linear-gradient(to right, #e3008c, #e3008c);
+                                    opacity: ;
                                   }
                             />
                             <div
@@ -2796,10 +2796,10 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     font-size: 12px;
                                     font-weight: 400;
                                     line-height: 16px;
-                                    opacity: 0.67;
+                                    opacity: ;
                                   }
                             >
-                              Duster
+                              Cadillac
                             </div>
                           </button>
                         </div>
@@ -2813,7 +2813,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Ferrari"
+                            aria-label="Camaro"
                             aria-posinset="8"
                             aria-selected="false"
                             aria-setsize="22"
@@ -2899,7 +2899,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Ferrari
+                              Camaro
                             </div>
                           </button>
                         </div>
@@ -2913,7 +2913,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Fiat"
+                            aria-label="Chrysler"
                             aria-posinset="9"
                             aria-selected="false"
                             aria-setsize="22"
@@ -2999,7 +2999,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Fiat
+                              Chrysler
                             </div>
                           </button>
                         </div>
@@ -3013,7 +3013,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Ford"
+                            aria-label="Datsun"
                             aria-posinset="10"
                             aria-selected="false"
                             aria-setsize="22"
@@ -3099,7 +3099,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Ford
+                              Datsun
                             </div>
                           </button>
                         </div>
@@ -3113,7 +3113,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Honda"
+                            aria-label="Dodge"
                             aria-posinset="11"
                             aria-selected="false"
                             aria-setsize="22"
@@ -3199,7 +3199,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Honda
+                              Dodge
                             </div>
                           </button>
                         </div>
@@ -3213,7 +3213,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Hornet"
+                            aria-label="Duster"
                             aria-posinset="12"
                             aria-selected="false"
                             aria-setsize="22"
@@ -3299,7 +3299,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Hornet
+                              Duster
                             </div>
                           </button>
                         </div>
@@ -3313,7 +3313,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Lincoln"
+                            aria-label="Ferrari"
                             aria-posinset="13"
                             aria-selected="false"
                             aria-setsize="22"
@@ -3399,7 +3399,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Lincoln
+                              Ferrari
                             </div>
                           </button>
                         </div>
@@ -3413,7 +3413,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Lotus"
+                            aria-label="Ford"
                             aria-posinset="14"
                             aria-selected="false"
                             aria-setsize="22"
@@ -3499,7 +3499,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Lotus
+                              Ford
                             </div>
                           </button>
                         </div>
@@ -3513,7 +3513,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Maserati"
+                            aria-label="Honda"
                             aria-posinset="15"
                             aria-selected="false"
                             aria-setsize="22"
@@ -3599,7 +3599,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Maserati
+                              Honda
                             </div>
                           </button>
                         </div>
@@ -3613,7 +3613,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Mazda"
+                            aria-label="Lincoln"
                             aria-posinset="16"
                             aria-selected="false"
                             aria-setsize="22"
@@ -3699,7 +3699,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Mazda
+                              Lincoln
                             </div>
                           </button>
                         </div>
@@ -3713,7 +3713,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Merc"
+                            aria-label="Lotus"
                             aria-posinset="17"
                             aria-selected="false"
                             aria-setsize="22"
@@ -3799,7 +3799,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Merc
+                              Lotus
                             </div>
                           </button>
                         </div>
@@ -3813,7 +3813,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Pontiac"
+                            aria-label="Maserati"
                             aria-posinset="18"
                             aria-selected="false"
                             aria-setsize="22"
@@ -3899,7 +3899,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Pontiac
+                              Maserati
                             </div>
                           </button>
                         </div>
@@ -3913,7 +3913,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Porsche"
+                            aria-label="Pontiac"
                             aria-posinset="19"
                             aria-selected="false"
                             aria-setsize="22"
@@ -3999,7 +3999,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Porsche
+                              Pontiac
                             </div>
                           </button>
                         </div>
@@ -4013,7 +4013,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Toyota"
+                            aria-label="Porsche"
                             aria-posinset="20"
                             aria-selected="false"
                             aria-setsize="22"
@@ -4099,7 +4099,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Toyota
+                              Porsche
                             </div>
                           </button>
                         </div>
