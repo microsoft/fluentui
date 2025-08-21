@@ -5,6 +5,12 @@ trigger: none
 # Example: v8_20201022.1
 name: 'v8_$(Date:yyyyMMdd)$(Rev:.r)'
 
+parameters:
+  - name: dryRun
+    displayName: Dry Run Mode
+    type: boolean
+    default: false
+
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
@@ -120,7 +126,7 @@ extends:
               - script: |
                   yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-v8.config.js --message 'release: applying package updates - react v8'
                   git reset --hard origin/master
-                condition: and(succeeded(), eq(variables.dryRun, false))
+                condition: and(succeeded(), not(${{ parameters.dryRun }}))
                 env:
                   GITHUB_PAT: $(githubPAT)
                 displayName: Publish changes and bump versions
@@ -159,7 +165,7 @@ extends:
               # failure doesn't need to block anything else
               - script: |
                   node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --token=$(githubPAT) --apply --debug
-                condition: eq(variables.dryRun, false)
+                condition: not(${{ parameters.dryRun }})
                 displayName: 'Update github release notes'
 
               - template: .devops/templates/cleanup.yml@self
