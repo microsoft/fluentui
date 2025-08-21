@@ -4766,9 +4766,13 @@ export { TeachingPopoverTriggerState }
 
 export { teamsDarkTheme }
 
+export { teamsDarkV21Theme }
+
 export { teamsHighContrastTheme }
 
 export { teamsLightTheme }
+
+export { teamsLightV21Theme }
 
 export { Text_2 as Text }
 
