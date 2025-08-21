@@ -184,8 +184,8 @@ describe(`workspace-plugin`, () => {
 
         const targets = getTargets(results, 'proj/library')!;
 
-        expect(targets['react-integration-testing--17'].command).toMatchInlineSnapshot(
-          `"yarn rit --react 17 --run type-check --verbose"`,
+        expect(targets['react-integration-testing--17--type-check'].command).toMatchInlineSnapshot(
+          `"yarn rit --use-existing-project-id ci --react 17 --run type-check --verbose"`,
         );
       });
 
@@ -212,8 +212,8 @@ describe(`workspace-plugin`, () => {
 
         const targets = getTargets(results, 'proj/library')!;
 
-        expect(targets['react-integration-testing--17'].command).toMatchInlineSnapshot(
-          `"yarn rit --react 17 --run e2e --verbose"`,
+        expect(targets['react-integration-testing--17--e2e'].command).toMatchInlineSnapshot(
+          `"yarn rit --use-existing-project-id ci --react 17 --run e2e --verbose"`,
         );
       });
       it(`should --run test within targets for projects which have jest config`, async () => {
@@ -237,8 +237,8 @@ describe(`workspace-plugin`, () => {
 
         const targets = getTargets(results, 'proj/library')!;
 
-        expect(targets['react-integration-testing--17'].command).toMatchInlineSnapshot(
-          `"yarn rit --react 17 --run test --verbose"`,
+        expect(targets['react-integration-testing--17--test'].command).toMatchInlineSnapshot(
+          `"yarn rit --use-existing-project-id ci --react 17 --run test --verbose"`,
         );
       });
       it(`should create the targets name based on user provided options `, async () => {
@@ -264,7 +264,9 @@ describe(`workspace-plugin`, () => {
           context,
         );
 
-        expect(getTargetsNames(results, 'proj/library')).toEqual(expect.arrayContaining(['rit', 'rit--17']));
+        expect(getTargetsNames(results, 'proj/library')).toEqual(
+          expect.arrayContaining(['rit', 'rit--17--prepare', 'rit--17--test']),
+        );
       });
     });
 
@@ -296,8 +298,10 @@ describe(`workspace-plugin`, () => {
         'build',
         'storybook',
         'start',
-        'react-integration-testing--17',
-        'react-integration-testing--18',
+        'react-integration-testing--17--prepare',
+        'react-integration-testing--17--type-check',
+        'react-integration-testing--18--prepare',
+        'react-integration-testing--18--type-check',
         'react-integration-testing',
       ]);
 
@@ -311,8 +315,10 @@ describe(`workspace-plugin`, () => {
                   "metadata": Object {
                     "targetGroups": Object {
                       "React Integration Tester": Array [
-                        "react-integration-testing--17",
-                        "react-integration-testing--18",
+                        "react-integration-testing--17--prepare",
+                        "react-integration-testing--17--type-check",
+                        "react-integration-testing--18--prepare",
+                        "react-integration-testing--18--type-check",
                         "react-integration-testing",
                       ],
                     },
@@ -441,12 +447,12 @@ describe(`workspace-plugin`, () => {
                         Object {
                           "params": "forward",
                           "projects": "self",
-                          "target": "react-integration-testing--17",
+                          "target": "react-integration-testing--17--type-check",
                         },
                         Object {
                           "params": "forward",
                           "projects": "self",
-                          "target": "react-integration-testing--18",
+                          "target": "react-integration-testing--18--type-check",
                         },
                       ],
                       "executor": "nx:noop",
@@ -471,9 +477,9 @@ describe(`workspace-plugin`, () => {
                         "{workspaceRoot}/tmp/rit/proj-react-*",
                       ],
                     },
-                    "react-integration-testing--17": Object {
+                    "react-integration-testing--17--prepare": Object {
                       "cache": true,
-                      "command": "yarn rit --react 17 --run type-check --verbose",
+                      "command": "yarn rit --prepare-only --project-id ci --react 17 --verbose",
                       "dependsOn": Array [],
                       "inputs": Array [
                         "default",
@@ -499,9 +505,37 @@ describe(`workspace-plugin`, () => {
                         "{workspaceRoot}/tmp/rit/proj-react-17*",
                       ],
                     },
-                    "react-integration-testing--18": Object {
+                    "react-integration-testing--17--type-check": Object {
                       "cache": true,
-                      "command": "yarn rit --react 18 --run type-check --verbose",
+                      "command": "yarn rit --use-existing-project-id ci --react 17 --run type-check --verbose",
+                      "dependsOn": Array [
+                        "react-integration-testing--17--prepare",
+                      ],
+                      "inputs": Array [
+                        "default",
+                        "production",
+                        "^production",
+                        "{workspaceRoot}/jest.preset.js",
+                        "{workspaceRoot}/tools/react-integration-testing/**",
+                      ],
+                      "metadata": Object {
+                        "description": "Run react integration tests against React 17",
+                        "help": Object {
+                          "command": "yarn rit --help",
+                          "example": Object {},
+                        },
+                        "technologies": Array [
+                          "react-integration-tester",
+                        ],
+                      },
+                      "options": Object {
+                        "cwd": "{projectRoot}",
+                      },
+                      "outputs": Array [],
+                    },
+                    "react-integration-testing--18--prepare": Object {
+                      "cache": true,
+                      "command": "yarn rit --prepare-only --project-id ci --react 18 --verbose",
                       "dependsOn": Array [],
                       "inputs": Array [
                         "default",
@@ -526,6 +560,34 @@ describe(`workspace-plugin`, () => {
                       "outputs": Array [
                         "{workspaceRoot}/tmp/rit/proj-react-18*",
                       ],
+                    },
+                    "react-integration-testing--18--type-check": Object {
+                      "cache": true,
+                      "command": "yarn rit --use-existing-project-id ci --react 18 --run type-check --verbose",
+                      "dependsOn": Array [
+                        "react-integration-testing--18--prepare",
+                      ],
+                      "inputs": Array [
+                        "default",
+                        "production",
+                        "^production",
+                        "{workspaceRoot}/jest.preset.js",
+                        "{workspaceRoot}/tools/react-integration-testing/**",
+                      ],
+                      "metadata": Object {
+                        "description": "Run react integration tests against React 18",
+                        "help": Object {
+                          "command": "yarn rit --help",
+                          "example": Object {},
+                        },
+                        "technologies": Array [
+                          "react-integration-tester",
+                        ],
+                      },
+                      "options": Object {
+                        "cwd": "{projectRoot}",
+                      },
+                      "outputs": Array [],
                     },
                     "start": Object {
                       "cache": true,
