@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore(themes): Export new themes from react-components",
+  "packageName": "@fluentui/react-components",
+  "email": "jurokapsiar@gmail.com",
+  "dependentChangeType": "patch"
+}
