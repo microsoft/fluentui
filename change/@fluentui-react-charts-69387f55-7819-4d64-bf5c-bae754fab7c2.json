@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "support for using opacity provided in plotly schema",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
