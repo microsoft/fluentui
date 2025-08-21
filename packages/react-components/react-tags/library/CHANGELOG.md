@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-tags
 
-This log was last generated on Thu, 07 Aug 2025 10:03:33 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 12:25:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.7.5)
+
+Thu, 21 Aug 2025 12:25:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.7.4..@fluentui/react-tags_v9.7.5)
+
+### Patches
+
+- fix: borders issues with small-circular and HC ([PR #34986](https://github.com/microsoft/fluentui/pull/34986) by vgenaev@gmail.com)
+- Bump @fluentui/react-aria to v9.16.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-avatar to v9.9.5 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.6 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.25.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-tabster to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-utilities to v9.24.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
 
 ## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.7.4)
 

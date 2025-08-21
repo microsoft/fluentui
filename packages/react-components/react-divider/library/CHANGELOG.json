@@ -2,6 +2,33 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Thu, 21 Aug 2025 12:25:39 GMT",
+      "tag": "@fluentui/react-divider_v9.4.4",
+      "version": "9.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.1.6",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.25.0",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-utilities to v9.24.0",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Aug 2025 10:03:23 GMT",
       "tag": "@fluentui/react-divider_v9.4.3",
       "version": "9.4.3",

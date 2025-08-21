@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Wed, 30 Jul 2025 13:10:57 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 12:25:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.25.0)
+
+Thu, 21 Aug 2025 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.24.1..@fluentui/react-shared-contexts_v9.25.0)
+
+### Minor changes
+
+- feat: Add DrawerSurfaceStyle custom style hook ([PR #35007](https://github.com/microsoft/fluentui/pull/35007) by mifraser@microsoft.com)
 
 ## [9.24.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.24.1)
 

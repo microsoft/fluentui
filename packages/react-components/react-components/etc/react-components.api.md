@@ -1379,8 +1379,10 @@ import { TeachingPopoverTriggerChildProps } from '@fluentui/react-teaching-popov
 import { TeachingPopoverTriggerProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverTriggerState } from '@fluentui/react-teaching-popover';
 import { teamsDarkTheme } from '@fluentui/react-theme';
+import { teamsDarkV21Theme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import { teamsLightV21Theme } from '@fluentui/react-theme';
 import { Text as Text_2 } from '@fluentui/react-text';
 import { Textarea } from '@fluentui/react-textarea';
 import { textareaClassNames } from '@fluentui/react-textarea';
@@ -4764,9 +4766,13 @@ export { TeachingPopoverTriggerState }
 
 export { teamsDarkTheme }
 
+export { teamsDarkV21Theme }
+
 export { teamsHighContrastTheme }
 
 export { teamsLightTheme }
+
+export { teamsLightV21Theme }
 
 export { Text_2 as Text }
 

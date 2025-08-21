@@ -51,7 +51,7 @@ GroupingItems.parameters = {
   docs: {
     description: {
       story: [
-        'A menu grid can be divided in to separate groups, using the `MenuGridRowGroup` and `MenuGridRowGroupHeader`',
+        'A menu grid can be divided into separate groups, using the `MenuGridGroup` and `MenuGridGroupHeader`',
         'components. This ensures the correct accessible markup is rendered for screen reader users.',
       ].join('\n'),
     },

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(codemods): fix issues related to ts 5.5 upgrade",
-  "packageName": "@fluentui/react-teaching-popover",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}
