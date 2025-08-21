@@ -30,6 +30,7 @@ import {
   calcTotalWidth,
   calcBandwidth,
   calcTotalBandUnits,
+  sortAxisCategories,
 } from '../../utilities/index';
 
 import {
@@ -70,7 +71,7 @@ interface GVSingleDataPoint {
 export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = React.forwardRef<
   HTMLDivElement,
   GroupedVerticalBarChartProps
->((props = { maxBarWidth: 24 }, forwardedRef) => {
+>((props = { maxBarWidth: 24, xAxisCategoryOrder: 'default' }, forwardedRef) => {
   const _tooltipId: string = useId('GVBCTooltipId_');
   const _emptyChartId: string = useId('_GVBC_empty');
   const _useRtl: boolean = useRtl();
@@ -167,7 +168,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
   const _createDataSetOfGVBC = (points: GroupedVerticalBarChartData[]) => {
     const legends = new Set<string>();
-    const xAxisLabels: string[] = points.map(singlePoint => singlePoint.name);
+    const xAxisLabels: string[] = _getOrderedXAxisLabels(points);
     points.forEach((point: GroupedVerticalBarChartData) => {
       point.series.forEach((seriesPoint: GVBarChartSeriesPoint) => {
         legends.add(seriesPoint.legend);
@@ -255,12 +256,33 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     );
   };
 
+  const _getOrderedXAxisLabels = (points: GroupedVerticalBarChartData[]) => {
+    if (_xAxisType !== XAxisTypes.StringAxis) {
+      return [];
+    }
+
+    return sortAxisCategories(_mapCategoryToValues(points), props.xAxisCategoryOrder);
+  };
+
+  const _mapCategoryToValues = (points: GroupedVerticalBarChartData[]) => {
+    const categoryToValues: Record<string, number[]> = {};
+    points.forEach(point => {
+      if (!categoryToValues[point.name]) {
+        categoryToValues[point.name] = [];
+      }
+      point.series.forEach(seriesPoint => {
+        categoryToValues[point.name].push(seriesPoint.data);
+      });
+    });
+    return categoryToValues;
+  };
+
   const points = _addDefaultColors(props.data);
+  const _xAxisType: XAxisTypes = getTypeOfAxis(points![0].name, true) as XAxisTypes;
   const { legends, xAxisLabels, datasetForBars } = _createDataSetOfGVBC(points!);
   _legends = legends;
   _xAxisLabels = xAxisLabels;
   _datasetForBars = datasetForBars;
-  const _xAxisType: XAxisTypes = getTypeOfAxis(points![0].name, true) as XAxisTypes;
   const legendBars: JSXElement = _getLegendData(points);
   _adjustProps();
 
