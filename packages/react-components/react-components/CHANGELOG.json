@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 21 Aug 2025 13:38:51 GMT",
+      "tag": "@fluentui/react-components_v9.68.4",
+      "version": "9.68.4",
+      "comments": {
+        "minor": [
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "79d03462c235013e9ae73d7ea66e9a08951e3f49",
+            "comment": "'feat:"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Aug 2025 12:25:13 GMT",
       "tag": "@fluentui/react-components_v9.68.4",
       "version": "9.68.4",

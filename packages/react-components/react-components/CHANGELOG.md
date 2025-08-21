@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 21 Aug 2025 12:25:13 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 13:38:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.68.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.68.4)
+
+Thu, 21 Aug 2025 13:38:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.68.4..@fluentui/react-components_v9.68.4)
+
+### Minor changes
+
+- `@fluentui/react-menu-grid-preview`
+  - 'feat: ([PR #35064](https://github.com/microsoft/fluentui/pull/35064) by adam.samec@gmail.com)
 
 ## [9.68.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.68.4)
 

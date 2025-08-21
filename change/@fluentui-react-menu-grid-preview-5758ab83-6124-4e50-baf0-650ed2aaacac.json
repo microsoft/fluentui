@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "'feat:",
-  "packageName": "@fluentui/react-menu-grid-preview",
-  "email": "adam.samec@gmail.com",
-  "dependentChangeType": "patch"
-}
