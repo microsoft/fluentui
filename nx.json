@@ -97,7 +97,7 @@
       "dependsOn": ["build"],
       "cache": true
     },
-    "test:rit--*": {
+    "test:rit--*--prepare": {
       "dependsOn": ["build", "react-components:build"],
       "cache": true
     },
