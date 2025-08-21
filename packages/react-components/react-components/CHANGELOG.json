@@ -2,6 +2,550 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 21 Aug 2025 13:38:51 GMT",
+      "tag": "@fluentui/react-components_v9.68.4",
+      "version": "9.68.4",
+      "comments": {
+        "minor": [
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "79d03462c235013e9ae73d7ea66e9a08951e3f49",
+            "comment": "'feat:"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Aug 2025 12:25:13 GMT",
+      "tag": "@fluentui/react-components_v9.68.4",
+      "version": "9.68.4",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "86c9ea988d336855abed51d4504ccdf7cd1409a4",
+            "comment": "feat(motion): add Rotate presence motion component"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "e9d9ff6670189ffa97f9c21450fe4ddba15a461d",
+            "comment": "feat: Add DrawerSurfaceStyle custom style hook"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e9d9ff6670189ffa97f9c21450fe4ddba15a461d",
+            "comment": "feat: Export tabReservedSpaceClassNames and useTabAnimatedIndicatorStyles_unstable for style overrides"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "e9d9ff6670189ffa97f9c21450fe4ddba15a461d",
+            "comment": "feat: Export ToastContainer state and classNames nessecary for style overrides"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "e9d9ff6670189ffa97f9c21450fe4ddba15a461d",
+            "comment": "feat: Export TreeItemCSSProperties for external usage"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "ab6fb4819047f69cc84b0651fc3e592e6a24d31a",
+            "comment": "feat: enhance hook to support React concurrent mode using setEffect for first mount tracking"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e9d9ff6670189ffa97f9c21450fe4ddba15a461d",
+            "comment": "feat: Export dialog style constants"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e9d9ff6670189ffa97f9c21450fe4ddba15a461d",
+            "comment": "feat: Enable custom style hooks on OverlayDrawerSurface"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "1f837f524e30211635b6217a7594e1b3a8fb56ac",
+            "comment": "Feat: Add support for disabling selection per item"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md files"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-progress",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-rating",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-search",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-select",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore(codemods): fix issues related to ts 5.5 upgrade"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: remove ts errors after update"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md file\" "
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-list",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "1903d944f294b33c62151c5101e2ca82a2c6c3e5",
+            "comment": "refactor: move getRefFromReactElement to react-utilities"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "1903d944f294b33c62151c5101e2ca82a2c6c3e5",
+            "comment": "fix: replace deprecated element.ref usages to support react 19"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "indirect ts emit change with exactOptionalPropertyTypes"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "1903d944f294b33c62151c5101e2ca82a2c6c3e5",
+            "comment": "fix: replace deprecated element.ref usages to support react 19"
+          },
+          {
+            "author": "v.kozlova@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "b2aff77653fb19baed9a51daa3f4bfd1e7c3677c",
+            "comment": "docs: Include Positioning Docs Link For positioning props"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a2ba6c8017fb540dc9db0c0c5e4e2acce4846376",
+            "comment": "chore: bumps @floating-ui/devtools ver to latest"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "aa0ead3b623f70c8e0d9c14f367ea5de5e415b63",
+            "comment": "feat(react-table): Allow Left arrow to focus back to row in composite navigation"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "indirect ts emit change with exactOptionalPropertyTypes"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "78fdfc8a1e93c0aaf7a0bb996e650a309827a541",
+            "comment": "fix: borders issues with small-circular and HC"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "1903d944f294b33c62151c5101e2ca82a2c6c3e5",
+            "comment": "fix: replace deprecated element.ref usages to support react 19"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "daca32b55401d22111bc17788cbdfa15295814a4",
+            "comment": "fix: apply styles for ToolbarGroup"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "1903d944f294b33c62151c5101e2ca82a2c6c3e5",
+            "comment": "fix: replace deprecated element.ref usages to support react 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "1903d944f294b33c62151c5101e2ca82a2c6c3e5",
+            "comment": "fix: replace deprecated element.ref usages to support react 19"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "indirect ts emit change with exactOptionalPropertyTypes"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "3d11f19773afbb244164e60e9dfd1e6a44001993",
+            "comment": "add labels for text+markers"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "2bc2bb44d90bc2ef496165e3900043d3c44abc7a",
+            "comment": "fix scatter chart bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "09c8b374fa93f702e3fca5062b79715ea102bb93",
+            "comment": "update validation to tolerate invalid traces"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "582ab70fc2acba5fc6e4f6e33d7df4dc83c2f834",
+            "comment": "support for ordering tick labels"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6ede9917ad4feebf72bb4f5ada6df30f4bb9e4b1",
+            "comment": "colorscale support for bar charts"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6da67eed40189c0ac4960884afa5d42bd81c028b",
+            "comment": "pie chart fix"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9e49d04ae562feb5b4007a7166a2ade5cd6e2aa2",
+            "comment": "use piecolorway for donut chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d874542903a4ab6e118d85f744d2bfdbcdd4b5ee",
+            "comment": "enable scatter chart in v9 declatative"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c61b81a2255f853328a41dbd24d5f2be57af3bc0",
+            "comment": "support for using opacity provided in plotly schema"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "fa43b2a576f27540b122c81b350d4cf7a62c306b",
+            "comment": "add date axis support in vsbc"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "221627560a7c0f8fffc19439dd8d0598f5502a41",
+            "comment": "add support for multiplot declarative chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "06e544bf49c5a92fe791ffc237885b387d8da3fd",
+            "comment": "add styles to tables"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "67bc41d7160712cf3d4ad5c4620636a23cbe4e42",
+            "comment": "remove duplicated legends in line chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6ebe48a92dd4fd4139674a385d5316ec1244bb3e",
+            "comment": "fix color issue in gvbc"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "2659ef1569d9755082c3dadc28f8261925ea6aa7",
+            "comment": "support for lines+markers"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "0c668ae20a166bcd62182003744c53683b6020a3",
+            "comment": "use schema colorscale for gvbc"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e7056070683aa0cda7044e05da6e572a658f1a79",
+            "comment": "add support for string y axis in VSBC"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "1903d944f294b33c62151c5101e2ca82a2c6c3e5",
+            "comment": "fix: replace deprecated element.ref usages to support react 19"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-field",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "indirect ts emit change with exactOptionalPropertyTypes"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "1903d944f294b33c62151c5101e2ca82a2c6c3e5",
+            "comment": "fix: replace deprecated element.ref usages to support react 19"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "indirect ts emit change with exactOptionalPropertyTypes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Aug 2025 10:03:20 GMT",
       "tag": "@fluentui/react-components_v9.68.3",
       "version": "9.68.3",

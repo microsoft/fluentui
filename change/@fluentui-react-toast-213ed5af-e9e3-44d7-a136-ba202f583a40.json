@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Export ToastContainer state and classNames nessecary for style overrides",
-  "packageName": "@fluentui/react-toast",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

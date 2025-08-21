@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: apply styles for ToolbarGroup",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

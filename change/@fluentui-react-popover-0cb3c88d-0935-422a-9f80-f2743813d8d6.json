@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: replace deprecated element.ref usages to support react 19",
-  "packageName": "@fluentui/react-popover",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

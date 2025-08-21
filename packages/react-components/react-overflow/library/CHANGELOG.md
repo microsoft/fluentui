@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Thu, 07 Aug 2025 10:03:33 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 12:25:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.5.5)
+
+Thu, 21 Aug 2025 12:25:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.5.4..@fluentui/react-overflow_v9.5.5)
+
+### Patches
+
+- fix: replace deprecated element.ref usages to support react 19 ([PR #35030](https://github.com/microsoft/fluentui/pull/35030) by dmytrokirpa@microsoft.com)
+- indirect ts emit change with exactOptionalPropertyTypes ([PR #33498](https://github.com/microsoft/fluentui/pull/33498) by vgenaev@gmail.com)
+- Bump @fluentui/react-context-selector to v9.2.6 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-utilities to v9.24.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
 
 ## [9.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.5.4)
 

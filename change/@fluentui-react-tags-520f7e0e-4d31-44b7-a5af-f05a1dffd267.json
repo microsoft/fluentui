@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: borders issues with small-circular and HC",
-  "packageName": "@fluentui/react-tags",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}
