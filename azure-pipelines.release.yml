@@ -160,6 +160,7 @@ extends:
               - template: .devops/templates/publish-website.yml@self
                 parameters:
                   version: 8
+                condition: not(${{ parameters.dryRun }})
 
               # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
               # failure doesn't need to block anything else
