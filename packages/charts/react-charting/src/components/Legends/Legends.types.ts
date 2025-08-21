@@ -116,7 +116,7 @@ export interface ILegend {
   /**
    * The shape for the legend or marker. Backward compatible: accepts both LegendShape and DataPointShape.
    */
-  shape?: LegendShape | DataPointShape;
+  shape?: DataPointShape;
 
   /**
    * Indicated whether or not to apply stripe pattern

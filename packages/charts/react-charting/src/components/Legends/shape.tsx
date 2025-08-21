@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { DataPointShape, LegendShape } from './Legends.types';
-import { CustomPoints, getShapePath, isOpenShape, pointPaths } from '../../utilities/shape-utilities';
+import { CustomPoints, getShapePath, isOpenShape, pointPaths, Points } from '../../utilities/shape-utilities';
 import { getSecureProps } from '../../utilities/utilities';
 
 export interface IShapeProps {
   svgProps: React.SVGAttributes<SVGElement>;
   pathProps: React.SVGAttributes<SVGPathElement>;
-  shape: LegendShape | DataPointShape;
+  shape: DataPointShape;
   classNameForNonSvg?: string;
-  isOpenShape?: boolean;
 }
 
 // Legacy point paths for backward compatibility
@@ -18,25 +17,27 @@ const customPointPaths: { [key: string]: string } = {
 
 const pointPath = { ...pointPaths, ...customPointPaths };
 
-const getViewBoxForShape = (shapeName: string): string => {
-  if (shapeName === 'dottedLine' || shapeName === 'pyramid') {
-    return '-1 -1 14 14';
-  }
-  // For plotly-based shapes, use centered viewBox
-  return '-7 -7 14 14';
-};
-
 export const Shape: React.FC<IShapeProps> = ({ svgProps, pathProps, shape, classNameForNonSvg }) => {
-  if (Object.keys(pointPath).indexOf(String(shape)) === -1) {
+  const isOpenShapeValue = isOpenShape(shape);
+  shape = (isOpenShapeValue ? String(shape).replace('-open', '') : String(shape).toLowerCase()) as DataPointShape;
+
+  if (Object.keys(pointPath).indexOf(shape) === -1) {
     return <div className={classNameForNonSvg} />;
   }
 
   return (
-    <svg width={14} height={14} viewBox={getViewBoxForShape(String(shape))} {...getSecureProps(svgProps)}>
+    <svg
+      width={14}
+      height={14}
+      viewBox={'-1 -1 14 14'}
+      {...getSecureProps(svgProps)}
+      transform={`rotate(${shape === Points[Points.diamond] ? 45 : shape === Points[Points.pyramid] ? 180 : 0}, 0, 0)`}
+    >
+      {' '}
       <path
         d={getShapePath(shape)}
         {...getSecureProps(pathProps)}
-        fill={isOpenShape(shape) ? 'none' : pathProps.fill || 'currentColor'}
+        fill={isOpenShapeValue ? 'none' : pathProps.fill || 'currentColor'}
       />
     </svg>
   );

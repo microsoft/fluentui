@@ -447,13 +447,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
       <Shape
         svgProps={svgParentProps}
         pathProps={svgChildProps}
-        shape={
-          String(legend.shape)?.includes('open')
-            ? (String(legend.shape).replace('open', '') as DataPointShape)
-            : (String(legend.shape).toLowerCase() as DataPointShape)
-        }
+        shape={String(legend.shape).toLowerCase() as DataPointShape}
         classNameForNonSvg={classNames.rect}
-        isOpenShape={String(legend.shape)?.toLowerCase().includes('open')}
       />
     );
   }

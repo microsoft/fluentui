@@ -45,6 +45,7 @@ import { ILineChartPoints } from '../../types/IDataPoint';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
+import { Points } from '../../utilities/shape-utilities';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -490,13 +491,18 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       const cy = _yAxisScale.current?.(y);
 
       const pathData = getShapePath(shape);
+      const isDiamond = shape === Points[Points.diamond];
+      const isPyramid = shape === Points[Points.pyramid];
+      const baseTransform = `translate(${cx}, ${cy}) scale(${size / 6})`;
+      const rotateTransform = isDiamond ? ' rotate(45, 0, 0)' : isPyramid ? ' rotate(180, 0, 0)' : '';
+      const fullTransform = baseTransform + rotateTransform;
 
       return (
         <path
           id={circleId}
           key={circleId}
           d={pathData}
-          transform={`translate(${cx}, ${cy}) scale(${size / 6})`}
+          transform={fullTransform}
           data-is-focusable={isLegendSelected}
           {...eventHandlers}
           opacity={opacity}

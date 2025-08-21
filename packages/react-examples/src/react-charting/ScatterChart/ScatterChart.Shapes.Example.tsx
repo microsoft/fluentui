@@ -27,7 +27,7 @@ export class ScatterChartShapesExample extends React.Component<{}, IScatterChart
         {
           legend: 'Circle Points',
           legendShape: 'circle',
-          data: [{ x: 15, y: 50, markerSize: 1 }],
+          data: [{ x: 15, y: 100, markerSize: 1 }],
           color: DataVizPalette.color1,
         },
         {
@@ -198,6 +198,7 @@ export class ScatterChartShapesExample extends React.Component<{}, IScatterChart
             data={data}
             height={this.state.height}
             width={this.state.width}
+            enabledLegendsWrapLines={true}
             legendProps={{
               allowFocusOnLegends: true,
             }}
