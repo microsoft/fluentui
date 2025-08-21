@@ -1237,20 +1237,28 @@ export function domainRangeOfNumericForAreaLineScatterCharts(
   hasMarkersMode?: boolean,
 ): IDomainNRange {
   const isScatterPolar = isScatterPolarSeries(points);
-  let [xMin, xMax] = getScatterXDomainExtent(points, scaleType) as [number, number];
 
-  if (hasMarkersMode) {
+  const extent = getScatterXDomainExtent(points, scaleType);
+  let xMin = extent[0];
+  let xMax = extent[1];
+
+  // Only perform arithmetic if xMin/xMax are numbers
+  if (hasMarkersMode && typeof xMin === 'number' && typeof xMax === 'number') {
     const xPadding = getDomainPaddingForMarkers(xMin, xMax, scaleType);
     xMin = xMin - xPadding.start;
     xMax = xMax + xPadding.end;
   }
 
+  // Only return if xMin/xMax are number or Date, otherwise fallback to 0
+  const safeXMin = typeof xMin === 'number' || xMin instanceof Date ? xMin : 0;
+  const safeXMax = typeof xMax === 'number' || xMax instanceof Date ? xMax : 0;
+
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;
 
   return isRTL
-    ? { dStartValue: isScatterPolar ? 1 : xMax, dEndValue: isScatterPolar ? -1 : xMin, rStartValue, rEndValue }
-    : { dStartValue: isScatterPolar ? -1 : xMin, dEndValue: isScatterPolar ? 1 : xMax, rStartValue, rEndValue };
+    ? { dStartValue: isScatterPolar ? 1 : safeXMax, dEndValue: isScatterPolar ? -1 : safeXMin, rStartValue, rEndValue }
+    : { dStartValue: isScatterPolar ? -1 : safeXMin, dEndValue: isScatterPolar ? 1 : safeXMax, rStartValue, rEndValue };
 }
 
 /**
@@ -1991,16 +1999,20 @@ export const getScatterXDomainExtent = (
   const isValidDataPointForScale = (item: ILineChartDataPoint | IScatterChartDataPoint) =>
     isValidDomainValue(item.x, scaleType);
 
-  const xMin = d3Min(points, point => {
-    return d3Min(point.data.filter(isValidDataPointForScale), item => item.x as number | Date)!;
-  })!;
-
-  const xMax = d3Max(points, point => {
-    return d3Max(point.data.filter(isValidDataPointForScale), item => {
-      return item.x as number | Date;
-    });
-  })!;
-
+  // Only consider number or Date x values for min/max
+  let xMin: number | Date | undefined;
+  let xMax: number | Date | undefined;
+  for (const point of points) {
+    for (const item of point.data) {
+      if (isValidDataPointForScale(item)) {
+        const x = item.x;
+        if (typeof x === 'number' || x instanceof Date) {
+          if (xMin === undefined || x < xMin) {xMin = x;}
+          if (xMax === undefined || x > xMax) {xMax = x;}
+        }
+      }
+    }
+  }
   return [xMin, xMax];
 };
 
@@ -2033,10 +2045,22 @@ export const getRangeForScatterMarkerSize = ({
   // it the other way around (i.e., adjusting the scale domain first with padding and then scaling
   // the markers to fit inside the plot area).
   const [xMin, xMax] = getScatterXDomainExtent(data, xScaleType);
-  const xPadding = getDomainPaddingForMarkers(+xMin, +xMax, xScaleType);
-  const scaleXMin = xMin instanceof Date ? new Date(+xMin - xPadding.start) : xMin - xPadding.start;
-  const scaleXMax = xMax instanceof Date ? new Date(+xMax + xPadding.end) : xMax + xPadding.end;
-  const extraXPixels = Math.min(Math.abs(xScale(xMin) - xScale(scaleXMin)), Math.abs(xScale(scaleXMax) - xScale(xMax)));
+  let scaleXMin = xMin;
+  let scaleXMax = xMax;
+  let extraXPixels = 0;
+  if (typeof xMin === 'number' && typeof xMax === 'number') {
+    const xPadding = getDomainPaddingForMarkers(xMin, xMax, xScaleType);
+    scaleXMin = xMin - xPadding.start;
+    scaleXMax = xMax + xPadding.end;
+    extraXPixels = Math.min(Math.abs(xScale(xMin) - xScale(scaleXMin)), Math.abs(xScale(scaleXMax) - xScale(xMax)));
+  } else if (xMin instanceof Date && xMax instanceof Date) {
+    const xPadding = getDomainPaddingForMarkers(+xMin, +xMax, xScaleType);
+    scaleXMin = new Date(+xMin - xPadding.start);
+    scaleXMax = new Date(+xMax + xPadding.end);
+    extraXPixels = Math.min(Math.abs(xScale(xMin) - xScale(scaleXMin)), Math.abs(xScale(scaleXMax) - xScale(xMax)));
+  } else {
+    extraXPixels = 0;
+  }
 
   const yScaleType = useSecondaryYScale ? secondaryYScaleType : primaryYScaleType;
   const { startValue: yMin, endValue: yMax } = findNumericMinMaxOfY(data, undefined, useSecondaryYScale, yScaleType);

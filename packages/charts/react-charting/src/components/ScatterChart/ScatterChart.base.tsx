@@ -472,8 +472,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const _renderShape = React.useCallback(
     (
       shape: DataPointShape | undefined,
-      x: number | string | Date,
-      y: number,
+      cx: number,
+      cy: number,
       size: number,
       fill: string,
       stroke: string,
@@ -485,9 +485,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       ariaLabel: string,
       tabIndex?: number,
     ): JSX.Element => {
-      const cx = _xAxisScale.current?.(x) + _xBandwidth.current;
-      const cy = _yAxisScale.current?.(y);
-
       const pathData = getShapePath(shape);
       const isDiamond = shape === Points[Points.diamond];
       const isPyramid = shape === Points[Points.pyramid];
@@ -500,6 +497,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           id={circleId}
           key={circleId}
           d={pathData}
+          cx={cx}
+          cy={cy}
           transform={fullTransform}
           data-is-focusable={isLegendSelected}
           {...eventHandlers}
@@ -513,7 +512,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         />
       );
     },
-    [_xAxisScale, _xBandwidth, _yAxisScale],
+    [],
   );
 
   const _createPlot = React.useCallback(
@@ -593,8 +592,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
               <>
                 {_renderShape(
                   pointShape,
-                  x,
-                  y,
+                  xPoint + _xBandwidth.current,
+                  yPoint,
                   circleRadius,
                   _getPointFill(seriesColor, circleId),
                   seriesColor,
