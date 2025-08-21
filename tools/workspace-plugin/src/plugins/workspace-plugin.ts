@@ -561,9 +561,9 @@ function buildReactIntegrationTesterProjectConfiguration(
   const hasTypeCheck = existsSync(resolve(projectRoot, '../stories/project.json'));
   const hasE2E = existsSync(join(projectRoot, 'cypress.config.ts'));
   const hasTest = existsSync(join(projectRoot, 'jest.config.js')) || existsSync(join(projectRoot, 'jest.config.ts'));
-  const ritRunOptions = [hasTypeCheck ? 'type-check' : null, hasE2E ? 'e2e' : null, hasTest ? 'test' : null]
-    .map(target => (target ? `--run ${target}` : null))
-    .filter(Boolean) as string[];
+  const ritRunOptions = [hasTypeCheck ? 'type-check' : null, hasE2E ? 'e2e' : null, hasTest ? 'test' : null].filter(
+    Boolean,
+  ) as string[];
 
   const targets: Record<string, TargetConfiguration> = {};
   const inputs = [
@@ -583,9 +583,11 @@ function buildReactIntegrationTesterProjectConfiguration(
       continue;
     }
 
-    const targetName = options.reactIntegrationTesting.targetName + '--' + reactVersion;
-    targets[targetName] = {
-      command: `${config.pmc.exec} rit --react ${reactVersion} ${ritRunOptions.join(' ')} --verbose`,
+    const projectSuffixId = 'ci';
+
+    const targetNamePrepare = options.reactIntegrationTesting.targetName + '--' + reactVersion + '--prepare';
+    targets[targetNamePrepare] = {
+      command: `${config.pmc.exec} rit --prepare-only --project-id ${projectSuffixId} --react ${reactVersion} --verbose`,
       options: { cwd: '{projectRoot}' },
       cache: true,
       inputs: inputs,
@@ -601,15 +603,38 @@ function buildReactIntegrationTesterProjectConfiguration(
         },
       },
     };
+
+    for (const runOption of ritRunOptions) {
+      const targetName = options.reactIntegrationTesting.targetName + '--' + reactVersion + '--' + runOption;
+      targets[targetName] = {
+        command: `${config.pmc.exec} rit --use-existing-project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
+        options: { cwd: '{projectRoot}' },
+        cache: true,
+        inputs: inputs,
+        outputs: [],
+        // this should be set via nx.json
+        dependsOn: [targetNamePrepare],
+        metadata: {
+          technologies: ['react-integration-tester'],
+          description: `Run react integration tests against React ${reactVersion}`,
+          help: {
+            command: `${config.pmc.exec} rit --help`,
+            example: {},
+          },
+        },
+      };
+    }
   }
 
   // main group default target
   targets[options.reactIntegrationTesting.targetName] = {
     executor: 'nx:noop',
     cache: true,
-    dependsOn: Object.keys(targets).map(target => {
-      return { target, projects: 'self', params: 'forward' };
-    }),
+    dependsOn: Object.keys(targets)
+      .filter(target => !target.includes('--prepare'))
+      .map(target => {
+        return { target, projects: 'self', params: 'forward' };
+      }),
     inputs: inputs,
     outputs: [`{workspaceRoot}/tmp/rit/${config.projectJSON.name}-react-*`],
     metadata: {
