@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 21 Aug 2025 17:40:36 GMT",
+      "tag": "@fluentui/react-components_v9.69.0",
+      "version": "9.69.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jurokapsiar@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "b8e7f001f6b14d9d07acd18b558aab7eeabf5622",
+            "comment": "chore(themes): Export new themes from react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Aug 2025 13:38:51 GMT",
       "tag": "@fluentui/react-components_v9.68.4",
       "version": "9.68.4",

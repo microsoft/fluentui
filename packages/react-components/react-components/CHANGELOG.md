@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 21 Aug 2025 13:38:51 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 17:40:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.69.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.69.0)
+
+Thu, 21 Aug 2025 17:40:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.68.4..@fluentui/react-components_v9.69.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - chore(themes): Export new themes from react-components ([PR #35063](https://github.com/microsoft/fluentui/pull/35063) by jurokapsiar@gmail.com)
 
 ## [9.68.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.68.4)
 
