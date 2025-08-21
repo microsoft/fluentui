@@ -75,7 +75,9 @@ export const toolbarGroupClassNames: SlotClassNames<ToolbarGroupSlots>;
 export type ToolbarGroupProps = ComponentProps<ToolbarGroupSlots>;
 
 // @public
-export type ToolbarGroupState = ComponentState<ToolbarGroupSlots>;
+export type ToolbarGroupState = ComponentState<ToolbarGroupSlots> & {
+    vertical?: boolean;
+};
 
 // @public
 export type ToolbarProps = ComponentProps<ToolbarSlots> & {
