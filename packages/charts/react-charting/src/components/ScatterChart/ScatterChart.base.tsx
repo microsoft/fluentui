@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IChildProps, IScatterChartStyleProps, IScatterChartStyles, IScatterChartProps } from './ScatterChart.types';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
-import { ILegend, ILegendContainer, Legends } from '../Legends/index';
+import { DataPointShape, ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { max as d3Max } from 'd3-array';
 import {
   areArraysEqual,
@@ -43,6 +43,7 @@ import { ILineChartPoints } from '../../types/IDataPoint';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
+import { getShapePath, isOpenShape, Points } from '../../utilities/shape-utilities';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -468,6 +469,53 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     [_points, props.culture, props.useUTC],
   );
 
+  const _renderShape = React.useCallback(
+    (
+      shape: DataPointShape | undefined,
+      x: number | string | Date,
+      y: number,
+      size: number,
+      fill: string,
+      stroke: string,
+      opacity: number,
+      circleId: string,
+      isLegendSelected: boolean,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      eventHandlers: any,
+      ariaLabel: string,
+      tabIndex?: number,
+    ): JSX.Element => {
+      const cx = _xAxisScale.current?.(x) + _xBandwidth.current;
+      const cy = _yAxisScale.current?.(y);
+
+      const pathData = getShapePath(shape);
+      const isDiamond = shape === Points[Points.diamond];
+      const isPyramid = shape === Points[Points.pyramid];
+      const baseTransform = `translate(${cx}, ${cy}) scale(${size / 6})`;
+      const rotateTransform = isDiamond ? ' rotate(45, 0, 0)' : isPyramid ? ' rotate(180, 0, 0)' : '';
+      const fullTransform = baseTransform + rotateTransform;
+
+      return (
+        <path
+          id={circleId}
+          key={circleId}
+          d={pathData}
+          transform={fullTransform}
+          data-is-focusable={isLegendSelected}
+          {...eventHandlers}
+          opacity={opacity}
+          fill={isOpenShape(shape) ? 'none' : fill}
+          stroke={stroke}
+          strokeWidth={isOpenShape(shape) ? 2 : 1}
+          role="img"
+          aria-label={ariaLabel}
+          tabIndex={tabIndex}
+        />
+      );
+    },
+    [_xAxisScale, _xBandwidth, _yAxisScale],
+  );
+
   const _createPlot = React.useCallback(
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     (xElement: SVGElement, containerHeight: number): JSX.Element[] => {
@@ -537,49 +585,51 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
           const currentPointHidden = _points.current?.[i]?.hideNonActiveDots && activePoint !== circleId;
           const text = _points.current?.[i].data[j]?.text;
+          const pointShape =
+            (_points.current?.[i]?.data[j] as IScatterChartDataPoint).markerShape ||
+            (_points.current?.[i]?.legendShape as DataPointShape);
           if (!_isTextMode.current) {
             pointsForSeries.push(
               <>
-                <circle
-                  id={circleId}
-                  key={circleId}
-                  r={Math.max(circleRadius, 4)}
-                  cx={xPoint + _xBandwidth.current}
-                  cy={yPoint}
-                  data-is-focusable={isLegendSelected}
-                  onMouseOver={(event: React.MouseEvent<SVGElement>) =>
-                    _handleHover(
-                      x,
-                      y,
-                      verticaLineHeight,
-                      xAxisCalloutData,
-                      circleId,
-                      xAxisCalloutAccessibilityData,
-                      event,
-                    )
-                  }
-                  onMouseMove={(event: React.MouseEvent<SVGElement>) =>
-                    _handleHover(
-                      x,
-                      y,
-                      verticaLineHeight,
-                      xAxisCalloutData,
-                      circleId,
-                      xAxisCalloutAccessibilityData,
-                      event,
-                    )
-                  }
-                  onMouseOut={_handleMouseOut}
-                  onFocus={() => _handleFocus(seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
-                  onBlur={_handleMouseOut}
-                  {..._getClickHandler(_points.current?.[i]?.data[j]?.onDataPointClick)}
-                  opacity={isLegendSelected && !currentPointHidden ? 1 : 0.1}
-                  fill={_getPointFill(seriesColor, circleId)}
-                  stroke={seriesColor}
-                  role="img"
-                  aria-label={_getAriaLabel(i, j)}
-                  tabIndex={_points.current?.[i]?.legend !== '' ? 0 : undefined}
-                />
+                {_renderShape(
+                  pointShape,
+                  x,
+                  y,
+                  circleRadius,
+                  _getPointFill(seriesColor, circleId),
+                  seriesColor,
+                  isLegendSelected && !currentPointHidden ? 1 : 0.1,
+                  circleId,
+                  isLegendSelected,
+                  {
+                    onMouseOver: (event: React.MouseEvent<SVGElement>) =>
+                      _handleHover(
+                        x,
+                        y,
+                        verticaLineHeight,
+                        xAxisCalloutData,
+                        circleId,
+                        xAxisCalloutAccessibilityData,
+                        event,
+                      ),
+                    onMouseMove: (event: React.MouseEvent<SVGElement>) =>
+                      _handleHover(
+                        x,
+                        y,
+                        verticaLineHeight,
+                        xAxisCalloutData,
+                        circleId,
+                        xAxisCalloutAccessibilityData,
+                        event,
+                      ),
+                    onMouseOut: _handleMouseOut,
+                    onFocus: () => _handleFocus(seriesId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData),
+                    onBlur: _handleMouseOut,
+                    ..._getClickHandler(_points.current?.[i]?.data[j]?.onDataPointClick),
+                  },
+                  _getAriaLabel(i, j),
+                  _points.current?.[i]?.legend !== '' ? 0 : undefined,
+                )}
               </>,
             );
           }
@@ -668,6 +718,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       classNames,
       props.xScaleType,
       props.yScaleType,
+      _renderShape,
     ],
   );
 

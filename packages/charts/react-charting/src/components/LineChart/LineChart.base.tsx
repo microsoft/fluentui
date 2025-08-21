@@ -39,8 +39,6 @@ import {
   getXAxisType,
   XAxisTypes,
   tooltipOfAxislabels,
-  Points,
-  pointTypes,
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
@@ -62,6 +60,7 @@ import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
+import { Points, pointTypes } from '../../utilities/shape-utilities';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();

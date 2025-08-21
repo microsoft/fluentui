@@ -15,6 +15,7 @@ import {
   ILegendStyleProps,
   ILegendOverflowData,
   ILegendContainer,
+  DataPointShape,
 } from './Legends.types';
 import { Shape } from './shape';
 import { cloneLegendsToSVG } from '../../utilities/image-export-utils';
@@ -29,7 +30,7 @@ interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   hoverAction: VoidFunction;
   onMouseOutAction: VoidFunction;
   color: string;
-  shape?: LegendShape;
+  shape?: DataPointShape;
   key: number;
   opacity?: number;
   stripePattern?: boolean;
