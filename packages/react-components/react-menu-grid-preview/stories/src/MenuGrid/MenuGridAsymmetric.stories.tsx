@@ -22,7 +22,11 @@ export const Asymmetric = () => {
             <MenuGridItem
               key={index}
               firstSubAction={
-                item.cannotRemove ? { visuallyHidden: true } : <Button aria-label={`Remove ${item.name}`}>Remove</Button>
+                item.cannotRemove ? (
+                  { visuallyHidden: true }
+                ) : (
+                  <Button aria-label={`Remove ${item.name}`}>Remove</Button>
+                )
               }
               secondSubAction={<Button aria-label={`Profile card for ${item.name}`}>Avatar icon</Button>}
               aria-label={item.name}
