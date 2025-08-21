@@ -734,7 +734,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               x="-16"
             >
-              String Four
+              String One
             </text>
           </g>
           <g
@@ -751,7 +751,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               x="-16"
             >
-              String Three
+              String Two
             </text>
           </g>
           <g
@@ -768,7 +768,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               x="-16"
             >
-              String Two
+              String Three
             </text>
           </g>
           <g
@@ -785,7 +785,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               x="-16"
             >
-              String One
+              String Four
             </text>
           </g>
         </g>
@@ -803,7 +803,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.634920634920636)"
             width="118"
             x="40"
-            y="53.44444444444446"
+            y="206.11111111111111"
           />
           <rect
             aria-label="5000. String Two."
@@ -818,7 +818,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.634920634920636)"
             width="590"
             x="40"
-            y="104.33333333333334"
+            y="155.22222222222223"
           />
           <rect
             aria-label="3000. String Three."
@@ -833,7 +833,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.634920634920636)"
             width="354"
             x="40"
-            y="155.22222222222223"
+            y="104.33333333333334"
           />
           <rect
             aria-label="2000. String Four."
@@ -848,7 +848,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.634920634920636)"
             width="236"
             x="40"
-            y="206.11111111111111"
+            y="53.44444444444446"
           />
         </g>
       </svg>
@@ -4254,7 +4254,7 @@ Object {
                   fill="currentColor"
                   x="-16"
                 >
-                  Q3
+                  Q1
                 </text>
               </g>
               <g
@@ -4288,7 +4288,7 @@ Object {
                   fill="currentColor"
                   x="-16"
                 >
-                  Q1
+                  Q3
                 </text>
               </g>
             </g>
@@ -4306,7 +4306,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="208.71428571428575"
                 x="208.57142857142858"
-                y="60.71428571428571"
+                y="191.57142857142856"
               />
               <rect
                 aria-label="-5K. Q1."
@@ -4321,7 +4321,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="103.35714285714286"
                 x="103.21428571428572"
-                y="60.71428571428571"
+                y="191.57142857142856"
               />
               <rect
                 aria-label="8K. Q1."
@@ -4336,7 +4336,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="168.57142857142858"
                 x="419.28571428571433"
-                y="60.71428571428571"
+                y="191.57142857142856"
               />
               <rect
                 aria-label="-7K. Q2."
@@ -4396,7 +4396,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="314.07142857142856"
                 x="208.57142857142858"
-                y="191.57142857142856"
+                y="60.71428571428571"
               />
               <rect
                 aria-label="-4K. Q3."
@@ -4411,7 +4411,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="82.28571428571429"
                 x="124.28571428571429"
-                y="191.57142857142856"
+                y="60.71428571428571"
               />
               <rect
                 aria-label="5K. Q3."
@@ -4426,7 +4426,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="105.35714285714286"
                 x="524.6428571428571"
-                y="191.57142857142856"
+                y="60.71428571428571"
               />
             </g>
           </svg>
@@ -4838,7 +4838,7 @@ Object {
                 fill="currentColor"
                 x="-16"
               >
-                Q3
+                Q1
               </text>
             </g>
             <g
@@ -4872,7 +4872,7 @@ Object {
                 fill="currentColor"
                 x="-16"
               >
-                Q1
+                Q3
               </text>
             </g>
           </g>
@@ -4890,7 +4890,7 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="208.71428571428575"
               x="208.57142857142858"
-              y="60.71428571428571"
+              y="191.57142857142856"
             />
             <rect
               aria-label="-5K. Q1."
@@ -4905,7 +4905,7 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="103.35714285714286"
               x="103.21428571428572"
-              y="60.71428571428571"
+              y="191.57142857142856"
             />
             <rect
               aria-label="8K. Q1."
@@ -4920,7 +4920,7 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="168.57142857142858"
               x="419.28571428571433"
-              y="60.71428571428571"
+              y="191.57142857142856"
             />
             <rect
               aria-label="-7K. Q2."
@@ -4980,7 +4980,7 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="314.07142857142856"
               x="208.57142857142858"
-              y="191.57142857142856"
+              y="60.71428571428571"
             />
             <rect
               aria-label="-4K. Q3."
@@ -4995,7 +4995,7 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="82.28571428571429"
               x="124.28571428571429"
-              y="191.57142857142856"
+              y="60.71428571428571"
             />
             <rect
               aria-label="5K. Q3."
@@ -5010,7 +5010,7 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="105.35714285714286"
               x="524.6428571428571"
-              y="191.57142857142856"
+              y="60.71428571428571"
             />
           </g>
         </svg>
@@ -6229,7 +6229,7 @@ Object {
                   x="-16"
                 >
                   <tspan
-                    data-="String Four"
+                    data-="String One"
                     dy="0.32em"
                     id="BaseSpan-0"
                     x="-16"
@@ -6259,7 +6259,7 @@ Object {
                   x="-16"
                 >
                   <tspan
-                    data-="String Three"
+                    data-="String Two"
                     dy="0.32em"
                     id="BaseSpan-1"
                     x="-16"
@@ -6289,7 +6289,7 @@ Object {
                   x="-16"
                 >
                   <tspan
-                    data-="String Two"
+                    data-="String Three"
                     dy="0.32em"
                     id="BaseSpan-2"
                     x="-16"
@@ -6319,7 +6319,7 @@ Object {
                   x="-16"
                 >
                   <tspan
-                    data-="String One"
+                    data-="String Four"
                     dy="0.32em"
                     id="BaseSpan-3"
                     x="-16"
@@ -6349,7 +6349,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="118"
                 x="40"
-                y="53.44444444444446"
+                y="206.11111111111111"
               />
               <rect
                 aria-label="5000. String Two."
@@ -6364,7 +6364,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="590"
                 x="40"
-                y="104.33333333333334"
+                y="155.22222222222223"
               />
               <rect
                 aria-label="3000. String Three."
@@ -6379,7 +6379,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="354"
                 x="40"
-                y="155.22222222222223"
+                y="104.33333333333334"
               />
               <rect
                 aria-label="2000. String Four."
@@ -6394,7 +6394,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="236"
                 x="40"
-                y="206.11111111111111"
+                y="53.44444444444446"
               />
             </g>
           </svg>
@@ -6702,7 +6702,7 @@ Object {
                 x="-16"
               >
                 <tspan
-                  data-="String Four"
+                  data-="String One"
                   dy="0.32em"
                   id="BaseSpan-0"
                   x="-16"
@@ -6732,7 +6732,7 @@ Object {
                 x="-16"
               >
                 <tspan
-                  data-="String Three"
+                  data-="String Two"
                   dy="0.32em"
                   id="BaseSpan-1"
                   x="-16"
@@ -6762,7 +6762,7 @@ Object {
                 x="-16"
               >
                 <tspan
-                  data-="String Two"
+                  data-="String Three"
                   dy="0.32em"
                   id="BaseSpan-2"
                   x="-16"
@@ -6792,7 +6792,7 @@ Object {
                 x="-16"
               >
                 <tspan
-                  data-="String One"
+                  data-="String Four"
                   dy="0.32em"
                   id="BaseSpan-3"
                   x="-16"
@@ -6822,7 +6822,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="118"
               x="40"
-              y="53.44444444444446"
+              y="206.11111111111111"
             />
             <rect
               aria-label="5000. String Two."
@@ -6837,7 +6837,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="590"
               x="40"
-              y="104.33333333333334"
+              y="155.22222222222223"
             />
             <rect
               aria-label="3000. String Three."
@@ -6852,7 +6852,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="354"
               x="40"
-              y="155.22222222222223"
+              y="104.33333333333334"
             />
             <rect
               aria-label="2000. String Four."
@@ -6867,7 +6867,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="236"
               x="40"
-              y="206.11111111111111"
+              y="53.44444444444446"
             />
           </g>
         </svg>
@@ -7233,7 +7233,7 @@ Object {
                   fill="currentColor"
                   x="-16"
                 >
-                  String Four
+                  String One
                 </text>
               </g>
               <g
@@ -7250,7 +7250,7 @@ Object {
                   fill="currentColor"
                   x="-16"
                 >
-                  String Three
+                  String Two
                 </text>
               </g>
               <g
@@ -7267,7 +7267,7 @@ Object {
                   fill="currentColor"
                   x="-16"
                 >
-                  String Two
+                  String Three
                 </text>
               </g>
               <g
@@ -7284,7 +7284,7 @@ Object {
                   fill="currentColor"
                   x="-16"
                 >
-                  String One
+                  String Four
                 </text>
               </g>
             </g>
@@ -7302,7 +7302,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="118"
                 x="40"
-                y="53.44444444444446"
+                y="206.11111111111111"
               />
               <rect
                 aria-label="5000. String Two."
@@ -7317,7 +7317,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="590"
                 x="40"
-                y="104.33333333333334"
+                y="155.22222222222223"
               />
               <rect
                 aria-label="3000. String Three."
@@ -7332,7 +7332,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="354"
                 x="40"
-                y="155.22222222222223"
+                y="104.33333333333334"
               />
               <rect
                 aria-label="2000. String Four."
@@ -7347,7 +7347,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="236"
                 x="40"
-                y="206.11111111111111"
+                y="53.44444444444446"
               />
             </g>
           </svg>
@@ -7649,7 +7649,7 @@ Object {
                 fill="currentColor"
                 x="-16"
               >
-                String Four
+                String One
               </text>
             </g>
             <g
@@ -7666,7 +7666,7 @@ Object {
                 fill="currentColor"
                 x="-16"
               >
-                String Three
+                String Two
               </text>
             </g>
             <g
@@ -7683,7 +7683,7 @@ Object {
                 fill="currentColor"
                 x="-16"
               >
-                String Two
+                String Three
               </text>
             </g>
             <g
@@ -7700,7 +7700,7 @@ Object {
                 fill="currentColor"
                 x="-16"
               >
-                String One
+                String Four
               </text>
             </g>
           </g>
@@ -7718,7 +7718,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="118"
               x="40"
-              y="53.44444444444446"
+              y="206.11111111111111"
             />
             <rect
               aria-label="5000. String Two."
@@ -7733,7 +7733,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="590"
               x="40"
-              y="104.33333333333334"
+              y="155.22222222222223"
             />
             <rect
               aria-label="3000. String Three."
@@ -7748,7 +7748,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="354"
               x="40"
-              y="155.22222222222223"
+              y="104.33333333333334"
             />
             <rect
               aria-label="2000. String Four."
@@ -7763,7 +7763,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="236"
               x="40"
-              y="206.11111111111111"
+              y="53.44444444444446"
             />
           </g>
         </svg>

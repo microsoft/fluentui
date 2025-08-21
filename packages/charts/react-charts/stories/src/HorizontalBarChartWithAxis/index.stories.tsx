@@ -7,6 +7,7 @@ export { HorizontalBarWithAxisBasic } from './HorizontalBarChartWithAxisDefault.
 export { HorizontalBarWithAxisStringAxisTooltip } from './HorizontalBarChartWithAxisStringAxisTooltip.stories';
 export { HorizontalBarWithAxisDynamic } from './HorizontalBarChartWithAxisDynamic.stories';
 export { HorizontalBarWithAxisNegative } from './HorizontalBarChartWithAxisNegative.stories';
+export { HorizontalBarWithAxisCategoryOrder } from './HorizontalBarChartWithAxisCategoryOrder.stories';
 
 export default {
   title: 'Charts/HorizontalBarChartWithAxis',
