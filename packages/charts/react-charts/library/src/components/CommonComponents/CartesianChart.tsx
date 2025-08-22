@@ -86,24 +86,25 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     right: _useRtl ? props.margins?.left ?? 40 : props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20,
     left: _useRtl ? (props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20) : props.margins?.left ?? 40,
   };
-  const TITLE_MARGIN = 20;
+  const TITLE_MARGIN_HORIZONTAL = 24;
+  const TITLE_MARGIN_VERTICAL = 20;
   if (props.xAxisTitle !== undefined && props.xAxisTitle !== '') {
-    margins.bottom! = props.margins?.bottom ?? margins.bottom! + TITLE_MARGIN;
+    margins.bottom! = props.margins?.bottom ?? margins.bottom! + TITLE_MARGIN_VERTICAL;
   }
   if (props.yAxisTitle !== undefined && props.yAxisTitle !== '') {
     margins.left! = _useRtl
       ? props.margins?.right ?? props?.secondaryYAxistitle
-        ? margins.right! + 2 * TITLE_MARGIN
-        : margins.right! + TITLE_MARGIN
-      : props.margins?.left ?? margins.left! + TITLE_MARGIN;
+        ? margins.right! + 2 * TITLE_MARGIN_HORIZONTAL
+        : margins.right! + TITLE_MARGIN_HORIZONTAL
+      : props.margins?.left ?? margins.left! + TITLE_MARGIN_HORIZONTAL;
     margins.right! = _useRtl
-      ? props.margins?.left ?? margins.left! + TITLE_MARGIN
+      ? props.margins?.left ?? margins.left! + TITLE_MARGIN_HORIZONTAL
       : props.margins?.right ?? props?.secondaryYAxistitle
-      ? margins.right! + 2 * TITLE_MARGIN
-      : margins.right! + TITLE_MARGIN;
+      ? margins.right! + 2 * TITLE_MARGIN_HORIZONTAL
+      : margins.right! + TITLE_MARGIN_HORIZONTAL;
   }
   if (props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '') {
-    margins.top! = props.margins?.top ?? margins.top! + TITLE_MARGIN;
+    margins.top! = props.margins?.top ?? margins.top! + TITLE_MARGIN_VERTICAL;
   }
   if (
     props.yAxisAnnotation !== undefined &&
@@ -111,9 +112,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     (props.secondaryYAxistitle === undefined || props.secondaryYAxistitle === '')
   ) {
     if (_useRtl) {
-      margins.left! = props.margins?.right ?? margins.right! + TITLE_MARGIN;
+      margins.left! = props.margins?.right ?? margins.right! + TITLE_MARGIN_HORIZONTAL;
     } else {
-      margins.right! = props.margins?.right ?? margins.right! + TITLE_MARGIN;
+      margins.right! = props.margins?.right ?? margins.right! + TITLE_MARGIN_HORIZONTAL;
     }
   }
 
