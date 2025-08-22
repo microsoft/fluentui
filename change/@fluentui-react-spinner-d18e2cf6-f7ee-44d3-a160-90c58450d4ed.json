@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bug fix",
+  "packageName": "@fluentui/react-spinner",
+  "email": "busratemizyureek@gmail.com",
+  "dependentChangeType": "patch"
+}
