@@ -2,6 +2,21 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Thu, 14 Aug 2025 07:19:47 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.14",
+      "version": "8.6.14",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: remove ts reported errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Feb 2025 07:22:41 GMT",
       "tag": "@fluentui/merge-styles_v8.6.14",
       "version": "8.6.14",

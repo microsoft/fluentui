@@ -556,60 +556,77 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           const isLegendSelected: boolean = _legendHighlighted(legendVal) || _noLegendHighlighted() || isSelectedLegend;
           const currentMarkerSize = _points[i].data[0].markerSize!;
           pointsForLine.push(
-            <circle
-              id={circleId}
-              key={circleId}
-              r={
-                currentMarkerSize
-                  ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize
-                  : activePoint === circleId
-                  ? 5.5
-                  : 3.5
-              }
-              cx={_xAxisScale(x1)}
-              cy={yScale(y1)}
-              fill={activePoint === circleId ? tokens.colorNeutralBackground1 : lineColor}
-              opacity={isLegendSelected ? 1 : 0.1}
-              tabIndex={isLegendSelected ? 0 : undefined}
-              onMouseOver={(event: React.MouseEvent<SVGElement>) =>
-                _handleHover(
-                  x1,
-                  y1,
-                  verticaLineHeight,
-                  xAxisCalloutData,
-                  circleId,
-                  xAxisCalloutAccessibilityData,
-                  event,
-                  yScale,
-                )
-              }
-              onMouseMove={(event: React.MouseEvent<SVGElement>) =>
-                _handleHover(
-                  x1,
-                  y1,
-                  verticaLineHeight,
-                  xAxisCalloutData,
-                  circleId,
-                  xAxisCalloutAccessibilityData,
-                  event,
-                  yScale,
-                )
-              }
-              onMouseOut={_handleMouseOut}
-              strokeWidth={activePoint === circleId ? DEFAULT_LINE_STROKE_SIZE : 0}
-              stroke={activePoint === circleId ? lineColor : ''}
-              role="img"
-              aria-label={_getAriaLabel(i, 0)}
-              data-is-focusable={isLegendSelected}
-              ref={(e: SVGCircleElement | null) => {
-                _refCallback(e!, circleId);
-              }}
-              onFocus={event =>
-                _handleFocus(event, circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
-              }
-              onBlur={_handleMouseOut}
-              {..._getClickHandler(_points[i].data[0].onDataPointClick)}
-            />,
+            <>
+              <circle
+                id={circleId}
+                key={circleId}
+                r={
+                  currentMarkerSize
+                    ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize
+                    : activePoint === circleId
+                    ? 5.5
+                    : 3.5
+                }
+                cx={_xAxisScale(x1)}
+                cy={yScale(y1)}
+                fill={activePoint === circleId ? tokens.colorNeutralBackground1 : lineColor}
+                opacity={isLegendSelected ? 1 : 0.1}
+                tabIndex={isLegendSelected ? 0 : undefined}
+                onMouseOver={(event: React.MouseEvent<SVGElement>) =>
+                  _handleHover(
+                    x1,
+                    y1,
+                    verticaLineHeight,
+                    xAxisCalloutData,
+                    circleId,
+                    xAxisCalloutAccessibilityData,
+                    event,
+                    yScale,
+                  )
+                }
+                onMouseMove={(event: React.MouseEvent<SVGElement>) =>
+                  _handleHover(
+                    x1,
+                    y1,
+                    verticaLineHeight,
+                    xAxisCalloutData,
+                    circleId,
+                    xAxisCalloutAccessibilityData,
+                    event,
+                    yScale,
+                  )
+                }
+                onMouseOut={_handleMouseOut}
+                strokeWidth={activePoint === circleId ? DEFAULT_LINE_STROKE_SIZE : 0}
+                stroke={activePoint === circleId ? lineColor : ''}
+                role="img"
+                aria-label={_points[i].data[0].text ?? _getAriaLabel(i, 0)}
+                data-is-focusable={isLegendSelected}
+                ref={(e: SVGCircleElement | null) => {
+                  _refCallback(e!, circleId);
+                }}
+                onFocus={event =>
+                  _handleFocus(event, circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
+                }
+                onBlur={_handleMouseOut}
+                {..._getClickHandler(_points[i].data[0].onDataPointClick)}
+              />
+              {_points[i].data[0].text && (
+                <text
+                  key={`${circleId}-label`}
+                  x={_xAxisScale(x1)}
+                  y={
+                    yScale(y1) +
+                    Math.max(currentMarkerSize ? (currentMarkerSize * extraMaxPixels) / maxMarkerSize : 3.5, 4) +
+                    12
+                  }
+                  className={classes.markerLabel}
+                  opacity={isLegendSelected ? 1 : 0.1}
+                >
+                  {_points[i].data[0].text}
+                </text>
+              )}
+            </>,
           );
         }
 
@@ -737,50 +754,63 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             let currentMarkerSize = _points[i].data[j - 1].markerSize!;
             pointsForLine.push(
               _points[i].lineOptions?.mode?.includes('markers') ? (
-                <circle
-                  id={circleId}
-                  key={circleId}
-                  r={currentMarkerSize ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize : 4}
-                  cx={_xAxisScale(x1)}
-                  cy={yScale(y1)}
-                  data-is-focusable={isLegendSelected}
-                  onMouseOver={event =>
-                    _handleHover(
-                      x1,
-                      y1,
-                      verticaLineHeight,
-                      xAxisCalloutData,
-                      circleId,
-                      xAxisCalloutAccessibilityData,
-                      event,
-                      yScale,
-                    )
-                  }
-                  onMouseMove={event =>
-                    _handleHover(
-                      x1,
-                      y1,
-                      verticaLineHeight,
-                      xAxisCalloutData,
-                      circleId,
-                      xAxisCalloutAccessibilityData,
-                      event,
-                      yScale,
-                    )
-                  }
-                  onMouseOut={_handleMouseOut}
-                  onFocus={event =>
-                    _handleFocus(event, lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
-                  }
-                  onBlur={_handleMouseOut}
-                  {..._getClickHandler(_points[i].data[j - 1].onDataPointClick)}
-                  opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
-                  fill={_getPointFill(lineColor, circleId, j, false)}
-                  stroke={lineColor}
-                  strokeWidth={strokeWidth}
-                  role="img"
-                  aria-label={_getAriaLabel(i, j - 1)}
-                />
+                <>
+                  <circle
+                    id={circleId}
+                    key={circleId}
+                    r={currentMarkerSize ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize : 4}
+                    cx={_xAxisScale(x1)}
+                    cy={yScale(y1)}
+                    data-is-focusable={isLegendSelected}
+                    onMouseOver={event =>
+                      _handleHover(
+                        x1,
+                        y1,
+                        verticaLineHeight,
+                        xAxisCalloutData,
+                        circleId,
+                        xAxisCalloutAccessibilityData,
+                        event,
+                        yScale,
+                      )
+                    }
+                    onMouseMove={event =>
+                      _handleHover(
+                        x1,
+                        y1,
+                        verticaLineHeight,
+                        xAxisCalloutData,
+                        circleId,
+                        xAxisCalloutAccessibilityData,
+                        event,
+                        yScale,
+                      )
+                    }
+                    onMouseOut={_handleMouseOut}
+                    onFocus={event =>
+                      _handleFocus(event, lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
+                    }
+                    onBlur={_handleMouseOut}
+                    {..._getClickHandler(_points[i].data[j - 1].onDataPointClick)}
+                    opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
+                    fill={_getPointFill(lineColor, circleId, j, false)}
+                    stroke={lineColor}
+                    strokeWidth={strokeWidth}
+                    role="img"
+                    aria-label={_points[i].data[j - 1].text ?? _getAriaLabel(i, j - 1)}
+                  />
+                  {_points[i].data[j - 1].text && (
+                    <text
+                      key={`${circleId}-label`}
+                      x={_xAxisScale(x1)}
+                      y={yScale(y1) + 12}
+                      fontSize={12}
+                      className={classes.markerLabel}
+                    >
+                      {_points[i].data[j - 1].text}
+                    </text>
+                  )}
+                </>
               ) : (
                 <path
                   id={circleId}
@@ -841,57 +871,70 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               pointsForLine.push(
                 <React.Fragment key={`${lastCircleId}_container`}>
                   {_points[i].lineOptions?.mode?.includes('markers') ? (
-                    <circle
-                      id={lastCircleId}
-                      key={lastCircleId}
-                      r={currentMarkerSize ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize : 4}
-                      cx={_xAxisScale(x2)}
-                      cy={yScale(y2)}
-                      data-is-focusable={isLegendSelected}
-                      onMouseOver={event =>
-                        _handleHover(
-                          x2,
-                          y2,
-                          verticaLineHeight,
-                          lastCirlceXCallout,
-                          lastCircleId,
-                          lastCirlceXCalloutAccessibilityData,
-                          event,
-                          yScale,
-                        )
-                      }
-                      onMouseMove={event =>
-                        _handleHover(
-                          x2,
-                          y2,
-                          verticaLineHeight,
-                          lastCirlceXCallout,
-                          lastCircleId,
-                          lastCirlceXCalloutAccessibilityData,
-                          event,
-                          yScale,
-                        )
-                      }
-                      onMouseOut={_handleMouseOut}
-                      onFocus={event =>
-                        _handleFocus(
-                          event,
-                          lineId,
-                          x2,
-                          lastCirlceXCallout,
-                          lastCircleId,
-                          lastCirlceXCalloutAccessibilityData,
-                        )
-                      }
-                      onBlur={_handleMouseOut}
-                      {..._getClickHandler(_points[i].data[j].onDataPointClick)}
-                      opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
-                      fill={_getPointFill(lineColor, lastCircleId, j, true)}
-                      stroke={lineColor}
-                      strokeWidth={strokeWidth}
-                      role="img"
-                      aria-label={_getAriaLabel(i, j)}
-                    />
+                    <>
+                      <circle
+                        id={lastCircleId}
+                        key={lastCircleId}
+                        r={currentMarkerSize ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize : 4}
+                        cx={_xAxisScale(x2)}
+                        cy={yScale(y2)}
+                        data-is-focusable={isLegendSelected}
+                        onMouseOver={event =>
+                          _handleHover(
+                            x2,
+                            y2,
+                            verticaLineHeight,
+                            lastCirlceXCallout,
+                            lastCircleId,
+                            lastCirlceXCalloutAccessibilityData,
+                            event,
+                            yScale,
+                          )
+                        }
+                        onMouseMove={event =>
+                          _handleHover(
+                            x2,
+                            y2,
+                            verticaLineHeight,
+                            lastCirlceXCallout,
+                            lastCircleId,
+                            lastCirlceXCalloutAccessibilityData,
+                            event,
+                            yScale,
+                          )
+                        }
+                        onMouseOut={_handleMouseOut}
+                        onFocus={event =>
+                          _handleFocus(
+                            event,
+                            lineId,
+                            x2,
+                            lastCirlceXCallout,
+                            lastCircleId,
+                            lastCirlceXCalloutAccessibilityData,
+                          )
+                        }
+                        onBlur={_handleMouseOut}
+                        {..._getClickHandler(_points[i].data[j].onDataPointClick)}
+                        opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
+                        fill={_getPointFill(lineColor, lastCircleId, j, true)}
+                        stroke={lineColor}
+                        strokeWidth={strokeWidth}
+                        role="img"
+                        aria-label={_points[i].data[j].text ?? _getAriaLabel(i, j)}
+                      />
+                      {_points[i].data[j].text && (
+                        <text
+                          key={`${lastCircleId}-label`}
+                          x={_xAxisScale(x2)}
+                          y={yScale(y2) + 12}
+                          fontSize={12}
+                          className={classes.markerLabel}
+                        >
+                          {_points[i].data[j].text}
+                        </text>
+                      )}
+                    </>
                   ) : (
                     <path
                       id={lastCircleId}

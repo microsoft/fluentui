@@ -6,18 +6,25 @@ export const menuGridCellClassNames: SlotClassNames<MenuGridCellSlots> = {
   root: 'fui-MenuGridCell',
 };
 
-const useStyles = makeStyles({
+const useRootStyles = makeStyles({
   root: {
     boxSizing: 'border-box',
+  },
+  visuallyHidden: {
+    position: 'absolute',
   },
 });
 
 export const useMenuGridCellStyles_unstable = (state: MenuGridCellState): MenuGridCellState => {
   'use no memo';
 
-  const classes = useStyles();
-
-  state.root.className = mergeClasses(menuGridCellClassNames.root, classes.root, state.root.className);
+  const rootStyles = useRootStyles();
+  state.root.className = mergeClasses(
+    menuGridCellClassNames.root,
+    rootStyles.root,
+    state.visuallyHidden && rootStyles.visuallyHidden,
+    state.root.className,
+  );
 
   return state;
 };

@@ -52,7 +52,12 @@ export interface ScatterChartProps extends CartesianChartProps {
  * Scatter Chart styles
  * {@docCategory ScatterChart}
  */
-export interface ScatterChartStyles extends CartesianChartStyles {}
+export interface ScatterChartStyles extends CartesianChartStyles {
+  /**
+   * Style for the marker label
+   */
+  markerLabel?: string;
+}
 
 /**
  * Scatter Chart style properties

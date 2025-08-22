@@ -3,6 +3,11 @@ const fs = require('node:fs');
 const { createProjectGraphAsync, joinPathFragments, workspaceRoot } = require('@nx/devkit');
 
 /**
+ * @import { PackageJson } from './types';
+ * @import { ProjectGraph } from '@nx/devkit';
+ */
+
+/**
 * @typedef {{
     name: string,
     isTopLevel: boolean,
@@ -10,7 +15,7 @@ const { createProjectGraphAsync, joinPathFragments, workspaceRoot } = require('@
   }} Dependency
  */
 
-/** @typedef {import('./types').PackageJson & {absoluteRootPath:string}} PackageJsonInfoData */
+/** @typedef {PackageJson & {absoluteRootPath:string}} PackageJsonInfoData */
 
 /**
  * @type {Record<string,PackageJsonInfoData>}
@@ -20,7 +25,7 @@ const packageJsonInfo = {};
 /**
  *
  * @param {string} project
- * @param {import('@nx/devkit').ProjectGraph} projectGraph
+ * @param {ProjectGraph} projectGraph
  */
 function getProjectPackageJsonInfo(project, projectGraph) {
   const normalizedProjectName = getNormalizedName(project);
@@ -48,7 +53,7 @@ function getProjectPackageJsonInfo(project, projectGraph) {
 /**
  * Returns local dependencies of provided project. Local means dependency from within workspace
  * @param {string} project
- * @param {import('@nx/devkit').ProjectGraph} projectGraph
+ * @param {ProjectGraph} projectGraph
  */
 function getLocalDeps(project, projectGraph) {
   const deps = projectGraph.dependencies[project];
@@ -74,7 +79,7 @@ function getLocalDeps(project, projectGraph) {
 /**
  *
  * @param {string} pkgName
- * @param {import('./types').PackageJson} json
+ * @param {PackageJson} json
  * @returns
  */
 function getDepType(pkgName, json) {
@@ -95,7 +100,7 @@ function getDepType(pkgName, json) {
 /**
  *
  * @param {string} project
- * @param {import('@nx/devkit').ProjectGraph} projectGraph
+ * @param {ProjectGraph} projectGraph
  * @param {*} options
  * @param {Dependency[]} _acc
  * @param {boolean} _areTopLevelDeps

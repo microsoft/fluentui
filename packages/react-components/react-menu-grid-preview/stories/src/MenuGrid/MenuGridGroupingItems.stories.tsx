@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Button, Menu, MenuPopover, MenuTrigger } from '@fluentui/react-components';
-import {
-  MenuGrid,
-  MenuGridRow,
-  MenuGridRowGroup,
-  MenuGridRowGroupHeader,
-} from '@fluentui/react-menu-grid-preview';
+import { MenuGrid, MenuGridGroup, MenuGridGroupHeader, MenuGridItem } from '@fluentui/react-menu-grid-preview';
 import { DeleteRegular, GlobePersonRegular } from '@fluentui/react-icons';
 
 const items = {
@@ -21,19 +16,32 @@ export const GroupingItems = () => {
       </MenuTrigger>
       <MenuPopover>
         <MenuGrid>
-          <MenuGridRowGroup>
-            <MenuGridRowGroupHeader>People</MenuGridRowGroupHeader>
+          <MenuGridGroup>
+            <MenuGridGroupHeader>People</MenuGridGroupHeader>
             {items.people.map((name, index) => (
-              <MenuGridRow
+              <MenuGridItem
                 key={index}
-                secondActionCell={<Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>}
-                thirdActionCell={<Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>}
+                icon={<Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>}
+                firstSubAction={<Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>}
                 aria-label={name}
               >
                 {name}
-              </MenuGridRow>
+              </MenuGridItem>
             ))}
-          </MenuGridRowGroup>
+          </MenuGridGroup>
+          <MenuGridGroup>
+            <MenuGridGroupHeader>Agents and bots</MenuGridGroupHeader>
+            {items.agentsAndBots.map((name, index) => (
+              <MenuGridItem
+                key={index}
+                icon={<Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>}
+                firstSubAction={<Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>}
+                aria-label={name}
+              >
+                {name}
+              </MenuGridItem>
+            ))}
+          </MenuGridGroup>
         </MenuGrid>
       </MenuPopover>
     </Menu>
@@ -44,7 +52,7 @@ GroupingItems.parameters = {
   docs: {
     description: {
       story: [
-        'A menu grid can be divided in to separate groups, using the `MenuGridRowGroup` and `MenuGridRowGroupHeader`',
+        'A menu grid can be divided into separate groups, using the `MenuGridGroup` and `MenuGridGroupHeader`',
         'components. This ensures the correct accessible markup is rendered for screen reader users.',
       ].join('\n'),
     },

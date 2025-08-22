@@ -50,9 +50,9 @@ export function parameters(options?: FluentParameters): {
     fluentTheme: string;
     mode: string;
     reactStorybookAddon?: {
-        disabledDecorators?: ["AriaLive" | "FluentProvider" | "ReactStrictMode"] | undefined;
-        docs?: FluentDocsConfig | undefined;
-    } | undefined;
+        disabledDecorators?: ["AriaLive" | "FluentProvider" | "ReactStrictMode"];
+        docs?: FluentDocsConfig;
+    };
 };
 
 // @public (undocumented)

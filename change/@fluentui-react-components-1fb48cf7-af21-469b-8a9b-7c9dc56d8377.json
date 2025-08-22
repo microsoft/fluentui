@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: re-export custom JSX types from react-utilities",
+  "packageName": "@fluentui/react-components",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

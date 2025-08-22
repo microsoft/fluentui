@@ -111,6 +111,11 @@ export interface LineChartStyles extends CartesianChartStyles {
    * styles for line border
    */
   lineBorder?: string;
+
+  /**
+   * styles for marker label
+   */
+  markerLabel?: string;
 }
 
 /**

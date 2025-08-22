@@ -78,7 +78,7 @@ export function useFluentProviderContextValues_unstable(state: FluentProviderSta
 export const useFluentProviderStyles_unstable: (state: FluentProviderState) => FluentProviderState;
 
 // @internal
-export const useFluentProviderThemeStyleTag: (options: Pick<FluentProviderState, 'theme' | 'targetDocument'> & {
+export const useFluentProviderThemeStyleTag: (options: Pick<FluentProviderState, "theme" | "targetDocument"> & {
     rendererAttributes: Record<string, string>;
 }) => {
     styleTagId: string;

@@ -72,7 +72,7 @@ export function getEventClientCoords(event: TouchOrMouseEvent): {
 };
 
 // @public
-export const getIntrinsicElementProps: <Props extends UnknownSlotProps, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: NonNullable<Props["as"]>, props: Props & React_2.RefAttributes<InferredElementRefType<Props>>, excludedPropNames?: ExcludedPropKeys[] | undefined) => DistributiveOmit<Props, ExcludedPropKeys | Exclude<keyof Props, "as" | keyof HTMLAttributes>>;
+export const getIntrinsicElementProps: <Props extends UnknownSlotProps, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: NonNullable<Props["as"]>, props: Props & React_2.RefAttributes<InferredElementRefType<Props>>, excludedPropNames?: ExcludedPropKeys[]) => DistributiveOmit<Props, ExcludedPropKeys | Exclude<keyof Props, "as" | keyof HTMLAttributes>>;
 
 // @public @deprecated
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
@@ -84,7 +84,7 @@ export function getParent(child: Node | null, options?: GetParentOptions): Node 
 export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className">, ExcludedPropKeys extends Extract<keyof Props, string> = never>({ primarySlotTagName, props, excludedPropNames, }: {
     primarySlotTagName: JSXIntrinsicElementKeys;
     props: Props;
-    excludedPropNames?: ExcludedPropKeys[] | undefined;
+    excludedPropNames?: ExcludedPropKeys[];
 }) => {
     root: {
         style: React_2.CSSProperties | undefined;
@@ -93,8 +93,11 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
     primary: Omit<Props, ExcludedPropKeys>;
 };
 
+// @public
+export function getReactElementRef<T>(element: React_2.ReactElement | null | undefined): React_2.Ref<T> | undefined;
+
 // @internal
-export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
+export const getRTLSafeKey: (key: string, dir: "ltr" | "rtl") => string;
 
 // @public
 export const getSlotClassNameProp_unstable: (slot: UnknownSlotProps) => string | undefined;
@@ -349,7 +352,7 @@ export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'classN
 };
 
 // @internal
-export function useAnimationFrame(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
+export function useAnimationFrame(): readonly [(fn: () => void, delay?: number) => number, () => void];
 
 // @internal
 export const useControllableState: <State>(options: UseControllableStateOptions<State>) => [State, React_2.Dispatch<React_2.SetStateAction<State>>];
@@ -408,7 +411,7 @@ export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | u
 export function useSelection(params: SelectionHookParams): readonly [Set<SelectionItemId>, SelectionMethods];
 
 // @internal
-export function useTimeout(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
+export function useTimeout(): readonly [(fn: () => void, delay?: number) => number, () => void];
 
 // (No @packageDocumentation comment for this package)
 

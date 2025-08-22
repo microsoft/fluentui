@@ -1,8 +1,18 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Fri, 16 May 2025 07:22:04 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Aug 2025 07:19:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.3](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.12.3)
+
+Thu, 14 Aug 2025 07:19:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.12.2..@fluentui/style-utilities_v8.12.3)
+
+### Patches
+
+- indirect ts emit change with exactOptionalPropertyTypes ([PR #33498](https://github.com/microsoft/fluentui/pull/33498) by vgenaev@gmail.com)
+- Bump @fluentui/utilities to v8.15.23 ([PR #35016](https://github.com/microsoft/fluentui/pull/35016) by beachball)
 
 ## [8.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.12.2)
 
