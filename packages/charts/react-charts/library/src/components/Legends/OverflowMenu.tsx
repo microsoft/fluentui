@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
 import { useOverflowMenu } from '@fluentui/react-overflow';
@@ -7,7 +8,7 @@ export const OverflowMenu: React.FC<{
   itemIds: string[];
   title: string;
   items: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element[];
+  JSXElement[];
 }> = ({ itemIds, title, items }) => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
   let displayLabel = title;

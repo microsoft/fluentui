@@ -4,14 +4,13 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -94,7 +93,7 @@ export const renderImageSwatch_unstable: (state: ImageSwatchState) => JSX.Elemen
 export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValues) => JSX.Element;
 
 // @public (undocumented)
-export const renderSwatchPickerGrid: (props: SwatchPickerGridProps) => JSX.Element[];
+export const renderSwatchPickerGrid: (props: SwatchPickerGridProps) => JSXElement[];
 
 // @public
 export const renderSwatchPickerRow_unstable: (state: SwatchPickerRowState) => JSX.Element;
@@ -133,10 +132,10 @@ export type SwatchPickerGridProps = {
     items: SwatchProps[];
     columnCount: number;
     renderRow?: (props: {
-        children: JSX.Element[];
+        children: JSXElement[];
         rowId: string | number;
-    }) => JSX.Element;
-    renderSwatch?: (item: SwatchProps) => JSX.Element;
+    }) => JSXElement;
+    renderSwatch?: (item: SwatchProps) => JSXElement;
 };
 
 // @public (undocumented)

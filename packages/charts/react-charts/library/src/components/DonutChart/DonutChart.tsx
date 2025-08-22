@@ -5,11 +5,14 @@ import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { getColorFromToken, getNextColor } from '../../utilities/index';
-import { Legend, Legends } from '../../index';
+import { getColorFromToken, getNextColor, MIN_DONUT_RADIUS, useRtl } from '../../utilities/index';
+import { Legend, Legends, LegendContainer } from '../../index';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
+import { ImageExportOptions } from '../../types/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 const MIN_LEGEND_CONTAINER_HEIGHT = 40;
 
@@ -41,6 +44,8 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ChartDataPoint | undefined>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+    const _legendsRef = React.useRef<LegendContainer>(null);
+    const _isRTL: boolean = useRtl();
 
     React.useEffect(() => {
       _fitParentContainer();
@@ -58,6 +63,9 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       props.componentRef,
       () => ({
         chartContainer: _rootElem.current,
+        toImage: (opts?: ImageExportOptions): Promise<string> => {
+          return toImage(_rootElem.current, _legendsRef.current?.toSVG, _isRTL, opts);
+        },
       }),
       [],
     );
@@ -83,7 +91,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       });
       return elevatedData;
     }
-    function _createLegends(chartData: ChartDataPoint[]): JSX.Element {
+    function _createLegends(chartData: ChartDataPoint[]): JSXElement {
       const legendDataItems = chartData.map((point: ChartDataPoint, index: number) => {
         const color: string = point.color!;
         // mapping data to the format Legends component needs
@@ -113,6 +121,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           centerLegends
           overflowText={props.legendsOverflowText}
           {...props.legendProps}
+          legendRef={_legendsRef}
         />
       );
       return legends;
@@ -275,7 +284,8 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const donutMarginVertical = props.hideLabels ? 0 : 40;
     const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical) / 2;
     const chartData = _elevateToMinimums(points.filter((d: ChartDataPoint) => d.data! >= 0));
-    const valueInsideDonut = props.innerRadius !== 0 ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
+    const valueInsideDonut =
+      props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
     const focusAttributes = useFocusableGroup();
     return !_isChartEmpty() ? (
       <div

@@ -1,10 +1,7 @@
 export { MenuGridContextProvider, useMenuGridContext_unstable } from './contexts/menuGridContext';
 export type { MenuGridContextValue } from './contexts/menuGridContext';
-export {
-  MenuGridRowGroupContextProvider,
-  useMenuGridRowGroupContext_unstable,
-} from './contexts/menuGridRowGroupContext';
-export type { MenuGridRowGroupContextValue } from './contexts/menuGridRowGroupContext';
+export { MenuGridGroupContextProvider, useMenuGridGroupContext_unstable } from './contexts/menuGridGroupContext';
+export type { MenuGridGroupContextValue } from './contexts/menuGridGroupContext';
 export {
   MenuGrid,
   menuGridClassNames,
@@ -23,6 +20,14 @@ export {
 } from './MenuGridCell';
 export type { MenuGridCellProps, MenuGridCellSlots, MenuGridCellState } from './MenuGridCell';
 export {
+  MenuGridItem,
+  menuGridItemClassNames,
+  renderMenuGridItem_unstable,
+  useMenuGridItemStyles_unstable,
+  useMenuGridItem_unstable,
+} from './MenuGridItem';
+export type { MenuGridItemProps, MenuGridItemSlots, MenuGridItemState } from './MenuGridItem';
+export {
   MenuGridRow,
   menuGridRowClassNames,
   renderMenuGridRow_unstable,
@@ -31,28 +36,28 @@ export {
 } from './MenuGridRow';
 export type { MenuGridRowProps, MenuGridRowSlots, MenuGridRowState } from './MenuGridRow';
 export {
-  MenuGridRowGroup,
-  menuGridRowGroupClassNames,
-  renderMenuGridRowGroup_unstable,
-  useMenuGridRowGroupContextValues_unstable,
-  useMenuGridRowGroupStyles_unstable,
-  useMenuGridRowGroup_unstable,
-} from './MenuGridRowGroup';
+  MenuGridGroup,
+  MenuGridGroupClassNames,
+  renderMenuGridGroup_unstable,
+  useMenuGridGroupContextValues_unstable,
+  useMenuGridGroupStyles_unstable,
+  useMenuGridGroup_unstable,
+} from './MenuGridGroup';
 export type {
-  MenuGridRowGroupContextValues,
-  MenuGridRowGroupProps,
-  MenuGridRowGroupSlots,
-  MenuGridRowGroupState,
-} from './MenuGridRowGroup';
+  MenuGridGroupContextValues,
+  MenuGridGroupProps,
+  MenuGridGroupSlots,
+  MenuGridGroupState,
+} from './MenuGridGroup';
 export {
-  MenuGridRowGroupHeader,
-  menuGridRowGroupHeaderClassNames,
-  renderMenuGridRowGroupHeader_unstable,
-  useMenuGridRowGroupHeaderStyles_unstable,
-  useMenuGridRowGroupHeader_unstable,
-} from './MenuGridRowGroupHeader';
+  MenuGridGroupHeader,
+  MenuGridGroupHeaderClassNames,
+  renderMenuGridGroupHeader_unstable,
+  useMenuGridGroupHeaderStyles_unstable,
+  useMenuGridGroupHeader_unstable,
+} from './MenuGridGroupHeader';
 export type {
-  MenuGridRowGroupHeaderProps,
-  MenuGridRowGroupHeaderSlots,
-  MenuGridRowGroupHeaderState,
-} from './MenuGridRowGroupHeader';
+  MenuGridGroupHeaderProps,
+  MenuGridGroupHeaderSlots,
+  MenuGridGroupHeaderState,
+} from './MenuGridGroupHeader';

@@ -4,14 +4,13 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
@@ -20,7 +19,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const Accordion: ForwardRefComponent<AccordionProps> & (<TItem>(props: AccordionProps<TItem>) => JSX.Element);
+export const Accordion: ForwardRefComponent<AccordionProps> & (<TItem>(props: AccordionProps<TItem>) => JSXElement);
 
 // @public (undocumented)
 export const accordionClassNames: SlotClassNames<AccordionSlots>;
@@ -148,7 +147,7 @@ export type AccordionPanelState = ComponentState<AccordionPanelSlots> & {
 };
 
 // @public (undocumented)
-export type AccordionProps<Value = AccordionItemValue> = ComponentProps<AccordionSlots> & {
+export type AccordionProps<Value = AccordionItemValue> = Omit<ComponentProps<AccordionSlots>, 'onToggle'> & {
     defaultOpenItems?: Value | Value[];
     collapsible?: boolean;
     multiple?: boolean;
@@ -196,7 +195,7 @@ export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSX.
 export const useAccordion_unstable: <Value = unknown>(props: AccordionProps<Value>, ref: React_2.Ref<HTMLElement>) => AccordionState<Value>;
 
 // @public (undocumented)
-export const useAccordionContext_unstable: <T>(selector: ContextSelector<AccordionContextValue<unknown>, T>) => T;
+export const useAccordionContext_unstable: <T>(selector: ContextSelector<AccordionContextValue, T>) => T;
 
 // @public (undocumented)
 export function useAccordionContextValues_unstable(state: AccordionState): AccordionContextValues;

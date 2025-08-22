@@ -4,6 +4,22 @@ import type { Switch } from './switch.js';
 test.describe('Switch', () => {
   test.use({ tagName: 'fluent-switch' });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-switch');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should have a role of `switch`', async ({ fastPage }) => {
     const { element } = fastPage;
 

@@ -1,0 +1,35 @@
+{
+  "name": "@fluentui/storybook-llms-extractor",
+  "entries": [
+    {
+      "date": "Wed, 13 Aug 2025 14:06:48 GMT",
+      "tag": "@fluentui/storybook-llms-extractor_v0.0.2",
+      "version": "0.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/storybook-llms-extractor",
+            "commit": "f42d5e07541cf7b30a9578d133c27034e20800b8",
+            "comment": "fix: include dist folder contents to the published package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 Aug 2025 12:49:05 GMT",
+      "tag": "@fluentui/storybook-llms-extractor_v0.0.1",
+      "version": "0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/storybook-llms-extractor",
+            "commit": "fe893d664d39e551641f4908ba40ec71ef61e5b5",
+            "comment": "chore: initial release"
+          }
+        ]
+      }
+    }
+  ]
+}

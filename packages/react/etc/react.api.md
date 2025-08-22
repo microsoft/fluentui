@@ -488,7 +488,7 @@ export class Autofill extends React_2.Component<IAutofillProps, IAutofillState> 
     get cursorLocation(): number | null;
     // (undocumented)
     static defaultProps: {
-        enableAutofillOnKeyPress: number[];
+        enableAutofillOnKeyPress: KeyCodes[];
     };
     // (undocumented)
     focus(): void;
@@ -1745,7 +1745,7 @@ export { formProperties }
 export const getActivityItemClassNames: (styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean) => IActivityItemClassNames;
 
 // @public (undocumented)
-export const getActivityItemStyles: (theme?: ITheme, customStyles?: IActivityItemStyles, animateBeaconSignal?: IActivityItemProps['animateBeaconSignal'], beaconColorOne?: IActivityItemProps['beaconColorOne'], beaconColorTwo?: IActivityItemProps['beaconColorTwo'], isCompact?: IActivityItemProps['isCompact']) => IActivityItemStyles;
+export const getActivityItemStyles: (theme?: ITheme, customStyles?: IActivityItemStyles, animateBeaconSignal?: IActivityItemProps["animateBeaconSignal"], beaconColorOne?: IActivityItemProps["beaconColorOne"], beaconColorTwo?: IActivityItemProps["beaconColorTwo"], isCompact?: IActivityItemProps["isCompact"]) => IActivityItemStyles;
 
 // @public (undocumented)
 export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
@@ -1765,7 +1765,7 @@ export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point |
 // @public (undocumented)
 export const getCellStyles: (props: {
     theme: ITheme;
-    cellStyleProps?: ICellStyleProps | undefined;
+    cellStyleProps?: ICellStyleProps;
 }) => IStyle;
 
 export { getChildren }
@@ -2108,7 +2108,7 @@ export class HoverCardBase extends React_2.Component<IHoverCardProps, IHoverCard
         expandedCardOpenDelay: number;
         instantOpenOnClick: boolean;
         setInitialFocus: boolean;
-        openHotKey: number;
+        openHotKey: KeyCodes;
         type: HoverCardType;
     };
     // (undocumented)

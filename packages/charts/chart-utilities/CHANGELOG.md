@@ -1,8 +1,27 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Tue, 29 Jul 2025 07:20:56 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Aug 2025 07:21:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.28](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.28)
+
+Fri, 15 Aug 2025 07:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.27..@fluentui/chart-utilities_v1.1.28)
+
+### Patches
+
+- feat(chart-utilities): Support string y-axis for Scatter chart ([PR #35006](https://github.com/microsoft/fluentui/pull/35006) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.27](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.27)
+
+Wed, 06 Aug 2025 07:21:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.26..@fluentui/chart-utilities_v1.1.27)
+
+### Patches
+
+- feat: add support for log scale in scatter charts ([PR #34902](https://github.com/microsoft/fluentui/pull/34902) by kumarkshitij@microsoft.com)
+- fix(chart-utilities): Handling y object values for bar chart.  ([PR #34963](https://github.com/microsoft/fluentui/pull/34963) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.26](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.26)
 

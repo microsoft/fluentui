@@ -46,6 +46,7 @@ const chartTypesWithStringYAxis = [
   ChartTypes.HeatMapChart,
   ChartTypes.VerticalStackedBarChart,
   ChartTypes.GanttChart,
+  ChartTypes.ScatterChart,
 ];
 
 export interface ICartesianChartState {
@@ -311,6 +312,8 @@ export class CartesianChartBase
         containerWidth: this.state.containerWidth,
         hideTickOverlap: this.props.hideTickOverlap,
         calcMaxLabelWidth: this._calcMaxLabelWidthWithTransform,
+        tickStep: this.props.xAxis?.tickStep,
+        tick0: this.props.xAxis?.tick0,
       };
 
       /**
@@ -329,6 +332,7 @@ export class CartesianChartBase
             this.props.tickParams!,
             this.props.chartType,
             culture,
+            this.props.xScaleType,
           ));
           break;
         case XAxisTypes.DateAxis:
@@ -357,6 +361,7 @@ export class CartesianChartBase
             this.props.tickParams!,
             this.props.chartType,
             culture,
+            this.props.xScaleType,
           ));
       }
       this._xScale = xScale;
@@ -380,6 +385,9 @@ export class CartesianChartBase
         // and the parent chart(HBWA/Vertical etc..) for more details refer example
         // http://using-d3js.com/04_07_ordinal_scales.html
         yAxisPadding: this.props.yAxisPadding || 0,
+        tickValues: this.props.yAxisTickValues,
+        tickStep: this.props.yAxis?.tickStep,
+        tick0: this.props.yAxis?.tick0,
       };
 
       /**
@@ -430,6 +438,7 @@ export class CartesianChartBase
             true,
             this.props.supportNegativeData!,
             this.props.roundedTicks!,
+            this.props.secondaryYScaleType,
           );
         }
         yScalePrimary = this.props.createYAxis(
@@ -440,6 +449,7 @@ export class CartesianChartBase
           false,
           this.props.supportNegativeData!,
           this.props.roundedTicks!,
+          this.props.yScaleType,
         );
       }
 

@@ -4,8 +4,7 @@ import { assertSlots } from '@fluentui/react-utilities';
 import { MenuGridCellSlots, MenuGridCellState } from './MenuGridCell.types';
 
 /**
- * Redefine the render function to add slots. Reuse the menugroup structure but add
- * slots to children.
+ * Function that renders the final JSX of the component
  */
 export const renderMenuGridCell_unstable = (state: MenuGridCellState) => {
   assertSlots<MenuGridCellSlots>(state);

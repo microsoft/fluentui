@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { LegendsProps } from '../Legends/index';
 import {
   AccessibilityProps,
@@ -117,9 +118,14 @@ export interface CartesianChartStyles {
   tooltip?: string;
 
   /**
-   * styles for tooltip
+   * styles for axis title
    */
   axisTitle?: string;
+
+  /**
+   * styles for axis annotation
+   */
+  axisAnnotation?: string;
 
   /**
    * Style for the chart Title.
@@ -458,7 +464,7 @@ export interface CartesianChartProps {
 
 export interface YValueHover {
   legend?: string;
-  y?: number;
+  y?: number | string;
   color?: string;
   data?: string | number;
   shouldDrawBorderBottom?: boolean;
@@ -512,7 +518,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /**
    * Legends of the chart.
    */
-  legendBars: JSX.Element | null;
+  legendBars: JSXElement | null;
 
   /**
    * Callout props

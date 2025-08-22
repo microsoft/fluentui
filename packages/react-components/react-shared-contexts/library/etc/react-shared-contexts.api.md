@@ -92,6 +92,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
     useDrawerInlineStyles_unstable: CustomStyleHook;
     useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useOverlayDrawerSurfaceStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
     useDropdownStyles_unstable: CustomStyleHook;
     useEmptySwatchStyles_unstable: CustomStyleHook;
@@ -288,6 +289,7 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
     useDrawerInlineStyles_unstable: CustomStyleHook;
     useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useOverlayDrawerSurfaceStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
     useDropdownStyles_unstable: CustomStyleHook;
     useEmptySwatchStyles_unstable: CustomStyleHook;
@@ -484,6 +486,7 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
     useDrawerInlineStyles_unstable: CustomStyleHook;
     useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useOverlayDrawerSurfaceStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
     useDropdownStyles_unstable: CustomStyleHook;
     useEmptySwatchStyles_unstable: CustomStyleHook;

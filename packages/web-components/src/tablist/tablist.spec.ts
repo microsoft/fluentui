@@ -14,6 +14,22 @@ test.describe('Tablist', () => {
     `,
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-tablist');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should reset tab indicator offset and scale for horizontal orientation after animation', async ({
     fastPage,
   }) => {

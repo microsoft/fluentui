@@ -1,8 +1,59 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 29 Jul 2025 07:20:56 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 12:15:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.25)
+
+Thu, 21 Aug 2025 12:15:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.24..@fluentui/react-charting_v5.24.25)
+
+### Patches
+
+- feat: add support for tickmode in DeclarativeChart ([PR #35039](https://github.com/microsoft/fluentui/pull/35039) by kumarkshitij@microsoft.com)
+
+## [5.24.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.24)
+
+Fri, 15 Aug 2025 07:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.23..@fluentui/react-charting_v5.24.24)
+
+### Patches
+
+- feat(react-charting): Support string y-axis for Scatter chart ([PR #35006](https://github.com/microsoft/fluentui/pull/35006) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.28 ([PR #35007](https://github.com/microsoft/fluentui/pull/35007) by beachball)
+
+## [5.24.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.23)
+
+Fri, 08 Aug 2025 07:21:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.22..@fluentui/react-charting_v5.24.23)
+
+### Patches
+
+- refactor: set max-width for heatmap callout without using subComponentStyles ([PR #34992](https://github.com/microsoft/fluentui/pull/34992) by kumarkshitij@microsoft.com)
+
+## [5.24.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.22)
+
+Wed, 06 Aug 2025 07:21:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.21..@fluentui/react-charting_v5.24.22)
+
+### Patches
+
+- feat: add support for log scale in scatter charts ([PR #34902](https://github.com/microsoft/fluentui/pull/34902) by kumarkshitij@microsoft.com)
+- fix(react-charting): Handling y object values for bar chart. ([PR #34963](https://github.com/microsoft/fluentui/pull/34963) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.27 ([PR #34963](https://github.com/microsoft/fluentui/pull/34963) by beachball)
+- Bump @fluentui/theme-samples to v8.7.213 ([PR #34963](https://github.com/microsoft/fluentui/pull/34963) by beachball)
+- Bump @fluentui/react to v8.123.4 ([PR #34963](https://github.com/microsoft/fluentui/pull/34963) by beachball)
+
+## [5.24.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.21)
+
+Mon, 04 Aug 2025 07:21:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.20..@fluentui/react-charting_v5.24.21)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.212 ([commit](https://github.com/microsoft/fluentui/commit/570f122fba34fa8effaaaa61bf6c9acd4caffc45) by beachball)
+- Bump @fluentui/react to v8.123.3 ([commit](https://github.com/microsoft/fluentui/commit/570f122fba34fa8effaaaa61bf6c9acd4caffc45) by beachball)
 
 ## [5.24.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.20)
 

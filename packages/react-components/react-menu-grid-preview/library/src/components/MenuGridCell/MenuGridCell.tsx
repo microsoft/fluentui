@@ -19,4 +19,4 @@ export const MenuGridCell: ForwardRefComponent<MenuGridCellProps> = React.forwar
   return renderMenuGridCell_unstable(state);
 });
 
-MenuGridCell.displayName = 'MenuGroup';
+MenuGridCell.displayName = 'MenuGridCell';

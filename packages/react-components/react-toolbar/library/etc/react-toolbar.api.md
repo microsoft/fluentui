@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
@@ -77,7 +75,9 @@ export const toolbarGroupClassNames: SlotClassNames<ToolbarGroupSlots>;
 export type ToolbarGroupProps = ComponentProps<ToolbarGroupSlots>;
 
 // @public
-export type ToolbarGroupState = ComponentState<ToolbarGroupSlots>;
+export type ToolbarGroupState = ComponentState<ToolbarGroupSlots> & {
+    vertical?: boolean;
+};
 
 // @public
 export type ToolbarProps = ComponentProps<ToolbarSlots> & {

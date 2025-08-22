@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Mon, 28 Jul 2025 18:48:20 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 12:25:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.10.3)
+
+Thu, 21 Aug 2025 12:25:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.10.2..@fluentui/react-motion_v9.10.3)
+
+### Patches
+
+- refactor: move getRefFromReactElement to react-utilities ([PR #35030](https://github.com/microsoft/fluentui/pull/35030) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.25.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-utilities to v9.24.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+
+## [9.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.10.2)
+
+Thu, 07 Aug 2025 10:03:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.10.1..@fluentui/react-motion_v9.10.2)
+
+### Patches
+
+- fix: adjust PresenseGroup types to support react 19 ([PR #34722](https://github.com/microsoft/fluentui/pull/34722) by dmytrokirpa@microsoft.com)
+- fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.23.2 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+
+## [9.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.10.1)
+
+Wed, 30 Jul 2025 13:10:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.10.0..@fluentui/react-motion_v9.10.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.24.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-utilities to v9.23.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
 
 ## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.10.0)
 

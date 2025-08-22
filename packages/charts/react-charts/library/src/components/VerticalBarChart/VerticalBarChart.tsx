@@ -10,6 +10,7 @@ import {
   scaleUtc as d3ScaleUtc,
 } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import {
   AccessibilityProps,
@@ -25,6 +26,8 @@ import {
   ChartPopover,
   Chart,
   DataPoint,
+  ImageExportOptions,
+  LegendContainer,
 } from '../../index';
 import {
   ChartTypes,
@@ -49,7 +52,12 @@ import {
   domainRangeOfDateForAreaLineVerticalBarChart,
   domainRangeOfXStringAxis,
   createStringYAxis,
+  calcTotalWidth,
+  calcBandwidth,
+  calcRequiredWidth,
+  sortAxisCategories,
 } from '../../utilities/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -66,23 +74,20 @@ const MIN_DOMAIN_MARGIN = 8;
 export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = React.forwardRef<
   HTMLDivElement,
   VerticalBarChartProps
->((props, forwardedRef) => {
+>((props = { xAxisCategoryOrder: 'default' }, forwardedRef) => {
   let _points: VerticalBarChartDataPoint[] = [];
   let _barWidth: number = 0;
   let _colors: string[];
   const _refArray: RefArrayData[] = [];
   let margins: Margins;
   const _useRtl: boolean = useRtl();
-  let _bars: JSX.Element[];
+  let _bars: JSXElement[];
   let _xAxisLabels: string[];
   let _yMax: number;
   let _yMin: number;
   let _isHavingLine: boolean = _checkForLine();
   const _tooltipId: string = useId('VCTooltipID_');
-  const _xAxisType: XAxisTypes =
-    props.data! && props.data!.length > 0
-      ? (getTypeOfAxis(props.data![0].x, true) as XAxisTypes)
-      : XAxisTypes.StringAxis;
+  let _xAxisType: XAxisTypes;
   let _calloutAnchorPoint: VerticalBarChartDataPoint | null;
   let _domainMargin: number;
   const _emptyChartId: string = useId('_VBC_empty');
@@ -93,6 +98,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   let _xAxisOuterPadding: number = 0;
   type ColorScale = (_p?: number) => string;
   const cartesianChartRef = React.useRef<Chart>(null);
+  const _legendsRef = React.useRef<LegendContainer>(null);
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -114,6 +120,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     props.componentRef,
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      toImage: (opts?: ImageExportOptions): Promise<string> => {
+        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _useRtl, opts);
+      },
     }),
     [],
   );
@@ -176,7 +185,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const { data, lineLegendColor = tokens.colorPaletteYellowBackground1, lineLegendText } = props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
-    const line: JSX.Element[] = [];
+    const line: JSXElement[] = [];
     data &&
       data.forEach((item: VerticalBarChartDataPoint, index: number) => {
         if (item.lineData && item.lineData.y) {
@@ -306,6 +315,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   function _adjustProps(): void {
+    _xAxisType =
+      props.data! && props.data!.length > 0
+        ? (getTypeOfAxis(props.data![0].x, true) as XAxisTypes)
+        : XAxisTypes.StringAxis;
     _points = props.data || [];
     _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, undefined, props.mode);
     const defaultColors: string[] = [
@@ -317,11 +330,14 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     ];
     _colors = props.colors || defaultColors;
     _isHavingLine = _checkForLine();
-    _xAxisInnerPadding = getScalePadding(
-      props.xAxisInnerPadding,
-      props.xAxisPadding,
-      props.mode === 'histogram' ? 0 : _xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
-    );
+    _xAxisInnerPadding =
+      props.mode === 'histogram'
+        ? 0
+        : getScalePadding(
+            props.xAxisInnerPadding,
+            props.xAxisPadding,
+            _xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
+          );
     _xAxisOuterPadding = getScalePadding(props.xAxisOuterPadding, props.xAxisPadding, 0);
   }
 
@@ -329,10 +345,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     margins = _margins;
   }
 
-  function _renderContentForBothLineAndBars(point: VerticalBarChartDataPoint): JSX.Element {
+  function _renderContentForBothLineAndBars(point: VerticalBarChartDataPoint): JSXElement {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { YValueHover, hoverXValue } = _getCalloutContentForLineAndBar(point);
-    const content: JSX.Element[] = YValueHover.map((item: YValueHover, index: number) => {
+    const content: JSXElement[] = YValueHover.map((item: YValueHover, index: number) => {
       return (
         <>
           <ChartPopover
@@ -351,7 +367,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return <>{content}</>;
   }
 
-  function _renderContentForOnlyBars(_props: VerticalBarChartDataPoint): JSX.Element {
+  function _renderContentForOnlyBars(_props: VerticalBarChartDataPoint): JSXElement {
     return (
       <>
         <ChartPopover
@@ -371,7 +387,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  function _renderCallout(props?: VerticalBarChartDataPoint): JSX.Element | null {
+  function _renderCallout(props?: VerticalBarChartDataPoint): JSXElement | null {
     return props ? (_isHavingLine ? _renderContentForBothLineAndBars(props) : _renderContentForOnlyBars(props)) : null;
   }
 
@@ -635,7 +651,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
   }
 
-  function _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  function _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
@@ -717,7 +733,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return bars;
   }
 
-  function _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  function _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
     const yReferencePoint = _yMax < 0 ? _yMax : 0;
@@ -805,7 +821,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return bars;
   }
 
-  function _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  function _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
@@ -895,7 +911,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     setActiveLegend(undefined);
   }
 
-  function _getLegendData(data: VerticalBarChartDataPoint[]): JSX.Element {
+  function _getLegendData(data: VerticalBarChartDataPoint[]): JSXElement {
     const { useSingleColor } = props;
     const { lineLegendText, lineLegendColor = tokens.colorPaletteYellowForeground1 } = props;
     const actions: Legend[] = [];
@@ -943,6 +959,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         {...props.legendProps}
         selectedLegends={selectedLegends}
         onChange={_onLegendSelectionChange}
+        legendRef={_legendsRef}
       />
     );
     return legends;
@@ -1046,10 +1063,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const uniqueX = Object.values(mapX);
 
     /** Total width available to render the bars */
-    const totalWidth = containerWidth - (margins.left! + MIN_DOMAIN_MARGIN) - (margins.right! + MIN_DOMAIN_MARGIN);
-    /** Rate at which the space between the bars changes wrt the bar width */
-    const barGapRate = _xAxisInnerPadding / (1 - _xAxisInnerPadding);
-    const numBars = uniqueX.length + (uniqueX.length - 1) * barGapRate;
+    const totalWidth = calcTotalWidth(containerWidth, margins, MIN_DOMAIN_MARGIN);
 
     if (_xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(props.xAxisOuterPadding, props.xAxisPadding)) {
@@ -1061,7 +1075,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         // the following calculations don't use the previous bar width.
         _barWidth = getBarWidth(props.barWidth, props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
-        const reqWidth = numBars * _barWidth;
+        const reqWidth = calcRequiredWidth(_barWidth, uniqueX.length, _xAxisInnerPadding);
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
@@ -1069,13 +1083,15 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         }
       } else if (['plotly', 'histogram'].includes(props.mode!) && uniqueX.length > 1) {
         // Calculate the remaining width after rendering bars at their maximum allowable width
-        const bandwidth = totalWidth / numBars;
+        const bandwidth = calcBandwidth(totalWidth, uniqueX.length, _xAxisInnerPadding);
         const barWidth = getBarWidth(props.barWidth, props.maxBarWidth, bandwidth, props.mode);
-        let reqWidth = numBars * barWidth;
+        let reqWidth = calcRequiredWidth(barWidth, uniqueX.length, _xAxisInnerPadding);
         const margin1 = (totalWidth - reqWidth) / 2;
 
         let margin2 = Number.POSITIVE_INFINITY;
-        if (!props.hideTickOverlap) {
+        // This logic may introduce gaps between histogram bars when the barWidth is restricted.
+        // So disable it for histogram mode.
+        if (props.mode !== 'histogram') {
           // Calculate the remaining width after accounting for the space required to render x-axis labels
           const step = calculateLongestLabelWidth(uniqueX as string[]) + 20;
           reqWidth = (uniqueX.length - _xAxisInnerPadding) * step;
@@ -1090,7 +1106,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         // This only works if the bin centers are consistent across all legend groups; otherwise,
         // the calculated domainMargin may be too small.
         const barWidth = props.maxBarWidth!;
-        const reqWidth = numBars * barWidth;
+        const reqWidth = calcRequiredWidth(barWidth, uniqueX.length, _xAxisInnerPadding);
         _domainMargin += Math.max(0, (totalWidth - reqWidth) / 2);
       }
 
@@ -1107,11 +1123,12 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         props.maxBarWidth,
         calculateAppropriateBarWidth(
           uniqueX as number[] | Date[],
-          totalWidth - 2 * (_domainMargin - MIN_DOMAIN_MARGIN),
+          calcTotalWidth(containerWidth, margins, _domainMargin),
           _xAxisInnerPadding,
         ),
         props.mode,
       );
+      _domainMargin += _barWidth / 2;
       _domainMargin += _barWidth / 2;
     }
 
@@ -1124,6 +1141,29 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
 
   function _isChartEmpty(): boolean {
     return _points.length === 0 || (_points.every(point => point.y === 0) && !_isHavingLine);
+  }
+
+  function _getOrderedXAxisLabels() {
+    if (_xAxisType !== XAxisTypes.StringAxis) {
+      return [];
+    }
+
+    return sortAxisCategories(_mapCategoryToValues(), props.xAxisCategoryOrder);
+  }
+
+  function _mapCategoryToValues() {
+    const categoryToValues: Record<string, number[]> = {};
+    _points.forEach(point => {
+      const xValue = point.x as string;
+      if (!categoryToValues[xValue]) {
+        categoryToValues[xValue] = [];
+      }
+      categoryToValues[xValue].push(point.y);
+      if (point.lineData) {
+        categoryToValues[xValue].push(point.lineData.y);
+      }
+    });
+    return categoryToValues;
   }
 
   function updatePosition(newX: number, newY: number) {
@@ -1139,10 +1179,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   _adjustProps();
-  _xAxisLabels = _points.map((point: VerticalBarChartDataPoint) => point.x as string);
+  _xAxisLabels = _getOrderedXAxisLabels();
   _yMax = Math.max(d3Max(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMaxValue || 0);
   _yMin = Math.min(d3Min(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMinValue || 0);
-  const legendBars: JSX.Element = _getLegendData(_points);
+  const legendBars: JSXElement = _getLegendData(_points);
   const calloutProps = {
     ...(_isHavingLine && {
       YValueHover: hoveredYValues,
@@ -1176,7 +1216,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       {...props}
       points={_points}
       chartType={ChartTypes.VerticalBarChart}
-      xAxisType={_xAxisType}
+      xAxisType={_xAxisType!}
       createYAxis={createNumericYAxis}
       calloutProps={calloutProps}
       tickParams={tickParams}
@@ -1192,7 +1232,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       getAxisData={_getAxisData}
       onChartMouseLeave={_handleChartMouseLeave}
       getDomainMargins={_getDomainMargins}
-      {...(_xAxisType === XAxisTypes.StringAxis && {
+      {...(_xAxisType! === XAxisTypes.StringAxis && {
         xAxisInnerPadding: _xAxisInnerPadding,
         xAxisOuterPadding: _xAxisOuterPadding,
       })}

@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 28 Jul 2025 18:48:21 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 12:25:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.20.4)
+
+Thu, 21 Aug 2025 12:25:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.20.3..@fluentui/react-positioning_v9.20.4)
+
+### Patches
+
+- chore: bumps @floating-ui/devtools ver to latest ([PR #35044](https://github.com/microsoft/fluentui/pull/35044) by vgenaev@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.25.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-utilities to v9.24.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+
+## [9.20.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.20.3)
+
+Thu, 07 Aug 2025 10:03:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.20.2..@fluentui/react-positioning_v9.20.3)
+
+### Patches
+
+- fix: migrate to R19 compatible JSX.* namespace types ([PR #34923](https://github.com/microsoft/fluentui/pull/34923) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.23.2 ([PR #34980](https://github.com/microsoft/fluentui/pull/34980) by beachball)
+
+## [9.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.20.2)
+
+Wed, 30 Jul 2025 13:10:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.20.1..@fluentui/react-positioning_v9.20.2)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.24.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-theme to v9.2.0 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+- Bump @fluentui/react-utilities to v9.23.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
 
 ## [9.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.20.1)
 

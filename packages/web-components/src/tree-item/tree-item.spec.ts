@@ -6,6 +6,22 @@ test.describe('Tree Item', () => {
     tagName: 'fluent-tree-item',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-tree-item');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should work with basic rendering', async ({ fastPage }) => {
     const { element } = fastPage;
     await fastPage.setTemplate({
