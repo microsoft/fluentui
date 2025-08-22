@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button, Menu, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import { MenuGrid, MenuGridItem } from '@fluentui/react-menu-grid-preview';
+import { DeleteRegular, GlobePersonRegular } from '@fluentui/react-icons';
 
 const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'];
 
@@ -15,8 +16,8 @@ export const Default = () => {
           {items.map((name, index) => (
             <MenuGridItem
               key={index}
-              icon={<Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>}
-              firstSubAction={<Button aria-label={`Remove ${name}`}>Remove</Button>}
+              icon={<Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>}
+              secondSubAction={<Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>}
               aria-label={name}
             >
               {name}

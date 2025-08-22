@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button, Menu, MenuTrigger, MenuPopover } from '@fluentui/react-components';
 import { MenuGrid, MenuGridItem } from '@fluentui/react-menu-grid-preview';
+import { DeleteRegular, GlobePersonRegular } from '@fluentui/react-icons';
 
 const items = [
   { name: 'Olivia Carter (owner)', cannotRemove: true },
@@ -25,10 +26,10 @@ export const Asymmetric = () => {
                 item.cannotRemove ? (
                   { visuallyHidden: true }
                 ) : (
-                  <Button aria-label={`Remove ${item.name}`}>Remove</Button>
+                  <Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>
                 )
               }
-              secondSubAction={<Button aria-label={`Profile card for ${item.name}`}>Avatar icon</Button>}
+              icon={<Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>}
               aria-label={item.name}
             >
               {item.name}

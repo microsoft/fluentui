@@ -1,5 +1,5 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { MenuGridItemSlots, MenuGridItemState } from './MenuGridItem.types';
 
 export const menuGridItemClassNames: SlotClassNames<MenuGridItemSlots> = {
@@ -11,10 +11,24 @@ export const menuGridItemClassNames: SlotClassNames<MenuGridItemSlots> = {
   secondSubAction: 'fui-MenuGridRow__secondSubAction',
 };
 
+const useStyles  = makeStyles({
+  secondSubAction: {
+    marginLeft: 'auto',
+  }
+});
+
 export const useMenuGridItemStyles_unstable = (state: MenuGridItemState): MenuGridItemState => {
   'use no memo';
 
-  state.root.className = mergeClasses(menuGridItemClassNames.root, state.root.className);
+  const classes = useStyles();
 
+  state.root.className = mergeClasses(menuGridItemClassNames.root, state.root.className);
+  if (state.secondSubAction) {
+    state.secondSubAction.className = mergeClasses(
+      menuGridItemClassNames.secondSubAction,
+      classes.secondSubAction,
+      state.secondSubAction.className,
+    );
+  }
   return state;
 };

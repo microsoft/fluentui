@@ -44,7 +44,7 @@ export const WithSubmenu = () => {
       <MenuPopover>
         <MenuGrid>
           {items.map((name, index) => (
-            <MenuGridItem key={index} firstSubAction={<Submenu />} aria-label={name}>
+            <MenuGridItem key={index} secondSubAction={<Submenu />} aria-label={name}>
               {name}
             </MenuGridItem>
           ))}
