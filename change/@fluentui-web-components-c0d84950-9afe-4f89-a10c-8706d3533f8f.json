@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: remove unnecessary type check for better ssr compatibility",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}
