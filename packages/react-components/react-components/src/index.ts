@@ -137,6 +137,9 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  JSXElement,
+  JSXIntrinsicElement,
+  JSXIntrinsicElementKeys,
   // ResolveShorthandFunction is deprecated but removing it would be a breaking change
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandFunction,

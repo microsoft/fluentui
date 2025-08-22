@@ -525,6 +525,9 @@ import { InteractionTagSlots } from '@fluentui/react-tags';
 import { InteractionTagState } from '@fluentui/react-tags';
 import { isHTMLElement } from '@fluentui/react-utilities';
 import { isTruncatableBreadcrumbContent } from '@fluentui/react-breadcrumb';
+import { JSXElement } from '@fluentui/react-utilities';
+import { JSXIntrinsicElement } from '@fluentui/react-utilities';
+import { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import { labelClassNames } from '@fluentui/react-label';
 import { LabelProps } from '@fluentui/react-label';
@@ -3057,6 +3060,12 @@ export { InteractionTagState }
 export { isHTMLElement }
 
 export { isTruncatableBreadcrumbContent }
+
+export { JSXElement }
+
+export { JSXIntrinsicElement }
+
+export { JSXIntrinsicElementKeys }
 
 export { Label }
 
