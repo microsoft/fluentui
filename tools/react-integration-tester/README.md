@@ -2,6 +2,27 @@
 
 This library was generated with [Nx](https://nx.dev).
 
+## CLI
+
+Scaffolded projects now live under a shared React root, e.g. `.../tmp/rit/react-17/<project-id>`, and dependencies are installed once under `.../tmp/rit/react-17/node_modules`.
+
+Key flags:
+
+- `--prepare-only` prepares the project. Use `--no-install` to skip installing deps.
+- `--install-deps` installs dependencies for the selected React root and exits. Useful for CI when `--no-install` was used during prepare.
+- `--use-existing-project-id` runs commands in an already prepared project.
+
+Examples:
+
+```
+# Install deps for particular React major. Run later without install (used on CI)
+rit --react 17 --install-deps
+rit --react 17 --prepare-only --no-install --project-id ci
+
+# Run specific commands from existing project
+rit --react 17 --use-existing-project-id ci --run test --run type-check
+```
+
 ## Building
 
 Run `nx build react-integration-tester` to build the library.

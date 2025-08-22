@@ -3,7 +3,8 @@
 
 const { join } = require('node:path');
 
-const usedNodeModulesPath = join(__dirname,'node_modules');
+// Resolve dependencies from the shared react-version root folder (injected by CLI)
+const usedNodeModulesPath = join(__dirname, '<%= usedNodeModulesDirRelative %>', 'node_modules');
 
 /**
  * @type {import('@jest/types').Config.InitialOptions}
