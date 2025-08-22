@@ -119,11 +119,9 @@ export class Accordion extends FASTElement {
     // Add event listeners to each non-disabled AccordionItem
     this.accordionItems = children.filter(child => !child.hasAttribute('disabled'));
     this.accordionItems.forEach((item: Element, index: number) => {
-      if (item instanceof BaseAccordionItem) {
-        item.addEventListener('click', this.expandedChangedHandler);
-        // Subscribe to the expanded attribute of the item
-        Observable.getNotifier(item).subscribe(this, 'expanded');
-      }
+      item.addEventListener('click', this.expandedChangedHandler);
+      // Subscribe to the expanded attribute of the item
+      Observable.getNotifier(item).subscribe(this, 'expanded');
     });
 
     if (this.isSingleExpandMode()) {
