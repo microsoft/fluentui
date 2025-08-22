@@ -587,7 +587,7 @@ function buildReactIntegrationTesterProjectConfiguration(
 
     const targetNamePrepare = options.reactIntegrationTesting.targetName + '--' + reactVersion + '--prepare';
     targets[targetNamePrepare] = {
-      command: `${config.pmc.exec} rit --prepare-only --project-id ${projectSuffixId} --react ${reactVersion} --verbose`,
+      command: `${config.pmc.exec} rit --prepare-only --project-id ${projectSuffixId} --no-install --react ${reactVersion} --verbose`,
       options: { cwd: '{projectRoot}' },
       cache: true,
       inputs: inputs,

@@ -479,7 +479,7 @@ describe(`workspace-plugin`, () => {
                     },
                     "react-integration-testing--17--prepare": Object {
                       "cache": true,
-                      "command": "yarn rit --prepare-only --project-id ci --react 17 --verbose",
+                      "command": "yarn rit --prepare-only --project-id ci --no-install --react 17 --verbose",
                       "dependsOn": Array [],
                       "inputs": Array [
                         "default",
@@ -535,7 +535,7 @@ describe(`workspace-plugin`, () => {
                     },
                     "react-integration-testing--18--prepare": Object {
                       "cache": true,
-                      "command": "yarn rit --prepare-only --project-id ci --react 18 --verbose",
+                      "command": "yarn rit --prepare-only --project-id ci --no-install --react 18 --verbose",
                       "dependsOn": Array [],
                       "inputs": Array [
                         "default",
