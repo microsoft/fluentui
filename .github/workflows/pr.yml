@@ -101,7 +101,10 @@ jobs:
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
-      - run: yarn install --frozen-lockfile
+      - run: |
+          yarn install --frozen-lockfile
+          yarn rit --react 17 --install-deps
+          yarn rit --react 19 --install-deps
 
       - name: Verify Cypress installs (v14 workspace + v13 for RIT)
         run: |
@@ -120,7 +123,7 @@ jobs:
 
       - name: React Versions Integration Tests (17,19)
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t test:rit --nxBail
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test:rit
 
   react_integration_tests:
     if: ${{ github.repository_owner == 'microsoft' }}
