@@ -429,7 +429,7 @@ test.describe('Accordion', () => {
     const { element } = fastPage;
 
     await fastPage.setTemplate({
-      attributes: {'expand-mode': 'single'},
+      attributes: { 'expand-mode': 'single' },
       innerHTML: /* html */ `
         <fluent-accordion-item>
           <div slot="heading">Accordion Item 1 Heading</div>
