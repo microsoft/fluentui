@@ -207,9 +207,7 @@ export class MenuList extends FASTElement {
     }, 0);
 
     filteredMenuListItems?.forEach((item: HTMLElement) => {
-      if (item instanceof MenuItem) {
-        item.setAttribute('data-indent', `${indent}`);
-      }
+      item.setAttribute('data-indent', `${indent}`);
     });
   }
 
@@ -266,7 +264,7 @@ export class MenuList extends FASTElement {
    */
   protected isMenuItemElement = (el: Element): el is HTMLElement => {
     return (
-      el instanceof MenuItem ||
+      el.nodeName.endsWith('-MENU-ITEM') ||
       (isHTMLElement(el) && (el.getAttribute('role') as string) in MenuList.focusableElementRoles)
     );
   };
