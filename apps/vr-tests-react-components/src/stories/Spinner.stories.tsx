@@ -113,7 +113,6 @@ export const Animation = () => (
 
 export const AnimationRTL = getStoryVariant(Animation, RTL);
 
-//
 export const SpinnerMinWidth = () => (
   <div
     style={{
