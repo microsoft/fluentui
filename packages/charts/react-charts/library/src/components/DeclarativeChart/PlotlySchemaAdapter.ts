@@ -62,6 +62,7 @@ import {
   isStringArray,
   isYearArray,
   isInvalidValue,
+  formatToLocaleString,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
@@ -138,6 +139,57 @@ function getTitles(layout: Partial<Layout> | undefined) {
   };
   return titles;
 }
+
+const getXAxisTickFormat = (series: Data, layout: Partial<Layout> | undefined) => {
+  const xAxis = getXAxisProperties(series, layout);
+  if (xAxis?.tickformat) {
+    return {
+      tickFormat: xAxis?.tickformat,
+    };
+  }
+
+  return {};
+};
+
+const getYAxisTickFormat = (series: Data, layout: Partial<Layout> | undefined) => {
+  const yAxis = getYAxisProperties(series, layout);
+  if (yAxis?.tickformat) {
+    return {
+      yAxisTickFormat: d3Format(yAxis?.tickformat),
+    };
+  }
+
+  return {};
+};
+
+const getYMinMaxValues = (series: Data, layout: Partial<Layout> | undefined) => {
+  const range = getYAxisProperties(series, layout)?.range;
+  if (range && range.length === 2) {
+    return {
+      yMinValue: range[0],
+      yMaxValue: range[1],
+    };
+  }
+  return {};
+};
+
+const getYAxisProperties = (series: Data, layout: Partial<Layout> | undefined): Partial<LayoutAxis> | undefined => {
+  return layout?.yaxis;
+};
+
+const getXAxisProperties = (series: Data, layout: Partial<Layout> | undefined): Partial<LayoutAxis> | undefined => {
+  return layout?.xaxis;
+};
+
+const getFormattedCalloutYData = (
+  yVal: string | number,
+  yAxisFormat: ReturnType<typeof getYAxisTickFormat>,
+): string => {
+  if (typeof yAxisFormat?.yAxisTickFormat === 'function' && typeof yVal === 'number') {
+    return yAxisFormat.yAxisTickFormat(yVal);
+  }
+  return formatToLocaleString(yVal) as string;
+};
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any[] => {
@@ -348,6 +400,7 @@ export const transformPlotlyJsonToVSBCProps = (
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
+  const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
   let yMinValue = 0;
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
     if (
@@ -403,12 +456,14 @@ export const transformPlotlyJsonToVSBCProps = (
             )
           : resolveColor(extractedBarColors, index2, legend, colorMap, isDarkTheme);
         const opacity = getOpacity(series, index2);
-        const yVal: number = rangeYValues[index2] as number;
+        const yVal: number | string = rangeYValues[index2] as number | string;
+        const yAxisCalloutData = getFormattedCalloutYData(yVal, yAxisTickFormat);
         if (series.type === 'bar') {
           mapXToDataPoints[x].chartData.push({
             legend,
             data: yVal,
             color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+            yAxisCalloutData,
           });
           if (typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
@@ -427,18 +482,18 @@ export const transformPlotlyJsonToVSBCProps = (
               mode: series.mode,
             },
             useSecondaryYScale: usesSecondaryYScale(series, input.layout),
+            yAxisCalloutData,
           });
           if (!usesSecondaryYScale(series, input.layout) && typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
             yMinValue = Math.min(yMinValue, yVal);
           }
         }
-        yMaxValue = Math.max(yMaxValue, yVal);
+        yMaxValue = Math.max(yMaxValue, yVal as number);
       });
     });
   });
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
   const vsbcData = Object.values(mapXToDataPoints);
 
   return {
@@ -448,9 +503,6 @@ export const transformPlotlyJsonToVSBCProps = (
     barWidth: 'auto',
     yMaxValue,
     yMinValue,
-    chartTitle,
-    xAxisTitle,
-    yAxisTitle,
     mode: 'plotly',
     ...secondaryYAxisValues,
     wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
@@ -461,6 +513,9 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    ...getTitles(input.layout),
+    ...getXAxisTickFormat(input.data[0], input.layout),
+    ...yAxisTickFormat,
     ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
@@ -492,6 +547,7 @@ export const transformPlotlyJsonToGVBCProps = (
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
 
   let colorScale: ((value: number) => string) | undefined = undefined;
+  const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
     if (
       input.layout?.coloraxis?.colorscale?.length &&
@@ -528,19 +584,21 @@ export const transformPlotlyJsonToGVBCProps = (
           : resolveColor(extractedColors, index2, legend, colorMap, isDarkTheme);
         const opacity = getOpacity(series, index2);
 
+        const yVal: number = series.y![index2] as number;
+
         mapXToDataPoints[x].series.push({
           key: legend,
-          data: series.y![index2] as number,
+          data: yVal,
           xAxisCalloutData: x as string,
           color: rgb(color).copy({ opacity }).formatHex8() ?? color,
           legend,
           useSecondaryYScale: usesSecondaryYScale(series, input.layout),
+          yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
         });
       }
     });
   });
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
   const gvbcData = Object.values(mapXToDataPoints);
 
   return {
@@ -548,15 +606,16 @@ export const transformPlotlyJsonToGVBCProps = (
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     barWidth: 'auto',
-    chartTitle,
-    xAxisTitle,
-    yAxisTitle,
     mode: 'plotly',
     ...secondaryYAxisValues,
     hideTickOverlap: true,
     wrapXAxisLables: typeof gvbcData[0]?.name === 'string',
     hideLegend,
     roundCorners: true,
+    ...getTitles(input.layout),
+    ...getYMinMaxValues(input.data[0], input.layout),
+    ...getXAxisTickFormat(input.data[0], input.layout),
+    ...yAxisTickFormat,
     ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
@@ -656,21 +715,18 @@ export const transformPlotlyJsonToVBCProps = (
     });
   });
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
-
   return {
     data: vbcData,
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
-    chartTitle,
-    xAxisTitle,
-    yAxisTitle,
     mode: 'histogram',
     hideTickOverlap: true,
     wrapXAxisLables: typeof vbcData[0]?.x === 'string',
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
+    ...getTitles(input.layout),
+    ...getYMinMaxValues(input.data[0], input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
@@ -752,6 +808,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   );
   let mode: string = 'tonexty';
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
   const chartData: LineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
       const colors = isScatterMarkers
@@ -801,6 +858,7 @@ const transformPlotlyJsonToScatterTraceProps = (
               ? { markerSize: series.marker.size }
               : {}),
             ...(textValues ? { text: textValues[i] } : {}),
+            yAxisCalloutData: getFormattedCalloutYData(rangeYValues[i] as number, yAxisTickFormat),
           })),
           color: rgb(seriesColor).copy({ opacity: seriesOpacity }).formatHex8() ?? seriesColor,
           lineOptions: {
@@ -813,51 +871,48 @@ const transformPlotlyJsonToScatterTraceProps = (
     })
     .flat();
 
-  const yMinMaxValues = findNumericMinMaxOfY(chartData);
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
+  const yMinMax = getYMinMaxValues(input.data[0], input.layout);
+  if (yMinMax.yMinValue === undefined && yMinMax.yMaxValue === undefined) {
+    const yMinMaxValues = findNumericMinMaxOfY(chartData);
+    yMinMax.yMinValue = yMinMaxValues.startValue;
+    yMinMax.yMaxValue = yMinMaxValues.endValue;
+  }
   const numDataPoints = chartData.reduce((total, lineChartPoints) => total + lineChartPoints.data.length, 0);
 
   const chartProps: ChartProps = {
-    chartTitle,
     lineChartData: chartData,
   };
 
   const scatterChartProps: ChartProps = {
-    chartTitle,
     scatterChartData: chartData,
+  };
+
+  const commonProps = {
+    supportNegativeData: true,
+    ...secondaryYAxisValues,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
+    hideTickOverlap: true,
+    hideLegend,
+    useUTC: false,
+    optimizeLargeData: numDataPoints > 1000,
+    ...getTitles(input.layout),
+    ...getXAxisTickFormat(input.data[0], input.layout),
+    ...yAxisTickFormat,
   };
 
   if (isAreaChart) {
     return {
       data: chartProps,
-      supportNegativeData: true,
-      xAxisTitle,
-      yAxisTitle,
-      ...secondaryYAxisValues,
       mode,
-      width: input.layout?.width,
-      height: input.layout?.height ?? 350,
-      hideTickOverlap: true,
-      useUTC: false,
-      hideLegend,
-      optimizeLargeData: numDataPoints > 1000,
+      ...commonProps,
     } as AreaChartProps;
   } else {
     return {
       data: isScatterChart ? scatterChartProps : chartProps,
-      supportNegativeData: true,
-      xAxisTitle,
-      yAxisTitle,
-      ...secondaryYAxisValues,
       roundedTicks: true,
-      yMinValue: yMinMaxValues.startValue,
-      yMaxValue: yMinMaxValues.endValue,
-      width: input.layout?.width,
-      height: input.layout?.height ?? 350,
-      hideTickOverlap: true,
-      useUTC: false,
-      hideLegend,
-      optimizeLargeData: numDataPoints > 1000,
+      ...commonProps,
+      ...yMinMax,
     } as LineChartProps;
   }
 };
@@ -926,13 +981,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const gapFactor = 1 / (1 + scalingFactor * numberOfRows);
   const barHeight = availableHeight / (numberOfRows * (1 + gapFactor));
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
-
   return {
     data: chartData,
-    chartTitle,
-    xAxisTitle,
-    yAxisTitle,
     secondaryYAxistitle:
       typeof input.layout?.yaxis2?.title === 'string'
         ? input.layout?.yaxis2?.title
@@ -946,6 +996,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     showYAxisLablesTooltip: true,
     hideLegend,
     roundCorners: true,
+    ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
@@ -1094,17 +1145,12 @@ export const transformPlotlyJsonToHeatmapProps = (
     ? (colorscale as Array<[number, string]>).map(arr => arr[1])
     : defaultRange;
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
-
   return {
     data: [heatmapData],
     domainValuesForColorScale,
     rangeValuesForColorScale,
     hideLegend: true,
     showYAxisLables: true,
-    chartTitle,
-    xAxisTitle,
-    yAxisTitle,
     sortOrder: 'none',
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
@@ -1112,6 +1158,7 @@ export const transformPlotlyJsonToHeatmapProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     wrapXAxisLables: true,
+    ...getTitles(input.layout),
     ...getAxisCategoryOrderProps([firstData], input.layout),
   };
 };
