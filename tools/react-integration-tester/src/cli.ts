@@ -1,10 +1,22 @@
 import yargs from 'yargs';
 
 import { Args, ReactVersion, resolveTemplatePath, runCmd, CommandName } from './shared';
-import { setup } from './setup';
+import { setup, installDepsForReactRoot } from './setup';
 
 async function cli() {
   const args = parseArgs();
+
+  // Handle install-only mode early (no scaffolding required)
+  if (args.installDeps) {
+    if (!args.react) {
+      throw new Error('Missing required --react when installing dependencies');
+    }
+    // When --install-deps is used without explicit template, use builtin for the react version
+    const templatePath = args.templatePath || resolveTemplatePath(undefined, args.react);
+    const { reactRootPath } = await installDepsForReactRoot(args.react, templatePath, args.verbose);
+    console.log(`[rit / v${args.react}] Dependencies installed under shared react root -> ${reactRootPath}.`);
+    return;
+  }
 
   const project = await setup(args);
   // If prepareOnly, do not run any commands. Optionally keep the project
@@ -54,7 +66,8 @@ function parseArgs(): Required<Args> {
     .usage(
       'Usage:\n' +
         '  $0 --react <17|18|19> --run <e2e|type-check|test> [--run <...>] [--template <relative/path.json>]\n' +
-        '  $0 --react <17|18|19> --prepare-only [--project-id <id>] [--force]\n' +
+        '  $0 --react <17|18|19> --prepare-only [--project-id <id>] [--force] [--no-install]\n' +
+        '  $0 --react <17|18|19> --install-deps    # installs deps under react-XX root and exits\n' +
         '  $0 --react <17|18|19> --use-existing-project-id <project-id> --run <e2e|type-check|test> [--run <...>]',
     )
     .option('react', {
@@ -94,6 +107,16 @@ function parseArgs(): Required<Args> {
       describe: 'Prepare (scaffold + install) only; do not run any commands',
       default: false,
     })
+    .option('install', {
+      type: 'boolean',
+      describe: 'When used with --prepare-only, install dependencies (use --no-install to skip)',
+      default: true,
+    })
+    .option('install-deps', {
+      type: 'boolean',
+      describe: 'Only install dependencies for the selected React version root and exit',
+      default: false,
+    })
     .option('use-existing-project-id', {
       type: 'string',
       describe: 'Run using an already prepared project (skips prepare) by providing the project-id suffix',
@@ -113,6 +136,9 @@ function parseArgs(): Required<Args> {
 
   const useExistingProjectId = argv['use-existing-project-id'] as string | undefined;
   const prepareOnly = (argv['prepare-only'] as boolean | undefined) ?? false;
+  const installFlag = (argv['install'] as boolean | undefined) ?? true;
+  const noInstall = !installFlag;
+  const installDeps = (argv['install-deps'] as boolean | undefined) ?? false;
   const force = (argv['force'] as boolean | undefined) ?? false;
   const projectId = argv['project-id'] as string | undefined;
   let react = argv.react as number | undefined as ReactVersion | undefined;
@@ -131,25 +157,28 @@ function parseArgs(): Required<Args> {
       );
     }
     return {
-      // react/templatePath not required for run-only
-      react: (react ?? 19) as ReactVersion,
+      react,
+      // templatePath not required for run-only
       templatePath: '',
       run,
       verbose,
       cleanup,
       prepareOnly,
+      noInstall,
+      installDeps,
       useExistingProjectId,
-      projectId: projectId ?? '',
+      // projectId not required for run-only ( we use useExistingProjectId)
+      projectId: '',
       force,
     };
   }
 
   if (!react) {
-    throw new Error('Missing required --react when preparing a project');
+    throw new Error('Missing required --react');
   }
-  templatePath = resolveTemplatePath(argv.template as string | undefined, react);
+  templatePath = resolveTemplatePath(argv.template, react);
 
-  if (!prepareOnly && !run.length) {
+  if (!installDeps && !prepareOnly && !run.length) {
     throw new Error('Provide at least one --run or use --prepare-only');
   }
 
@@ -160,6 +189,8 @@ function parseArgs(): Required<Args> {
     verbose,
     cleanup,
     prepareOnly,
+    noInstall,
+    installDeps,
     useExistingProjectId,
     projectId: projectId ?? '',
     force,
