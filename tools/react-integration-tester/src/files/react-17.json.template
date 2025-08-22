@@ -1,6 +1,6 @@
 {
   "commands": {
-    "e2e": "npx --yes cypress@13 run --component",
+    "e2e": "cypress run --component",
     "test": "jest --passWithNoTests -u",
     "type-check": "tsc -p ./tsconfig.json --noEmit --listFiles"
   },
@@ -13,11 +13,13 @@
     "@types/react": "17.0.44",
     "@types/react-dom": "17.0.15",
     "@types/react-test-renderer": "17.0.2",
+    "cypress": "13",
     "cypress-real-events": "1.13.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-test-renderer": "17.0.2",
     "tslib": "^2.1.0",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "jest": "29.7.0"
   }
 }

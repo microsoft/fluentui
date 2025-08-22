@@ -16,6 +16,9 @@ export interface Args {
   useExistingProjectId?: string; // use `projectId` that was used when running the CLI with `--prepare-only` to use an existing prepared project
   projectId?: string; // optional suffix to make the prepared project name deterministic and unique
   force?: boolean; // when preparing, remove any existing folder first
+  // Installation control
+  noInstall?: boolean; // when preparing, skip installing dependencies
+  installDeps?: boolean; // install dependencies for the selected react version root only and exit
 }
 
 export function resolveTemplatePath(templateArg: string | undefined, reactVersion: ReactVersion): string {
@@ -36,11 +39,25 @@ export function resolveTemplatePath(templateArg: string | undefined, reactVersio
 
 export function runCmd(command: string, opts: { cwd: string; env?: NodeJS.ProcessEnv }): Promise<void> {
   return new Promise((resolvePromise, reject) => {
+    const localBin = join(opts.cwd, 'node_modules', '.bin');
+    const parentBin = join(opts.cwd, '..', 'node_modules', '.bin');
+    const pathKey = process.platform === 'win32' ? 'Path' : 'PATH';
+    const existingPath = process.env[pathKey] ?? '';
+    const mergedPath = [localBin, parentBin, existingPath]
+      .filter(Boolean)
+      .join(process.platform === 'win32' ? ';' : ':');
+    // Help Node resolve modules like '@swc/jest' from parent/react-root or repo root
+    const existingNodePath = process.env['NODE_PATH'] ?? '';
+    const parentNodeModules = join(opts.cwd, '..', 'node_modules');
+    const mergedNodePath = [parentNodeModules, existingNodePath]
+      .filter(Boolean)
+      .join(process.platform === 'win32' ? ';' : ':');
+
     const child = spawn(command, {
       cwd: opts.cwd,
       stdio: 'inherit',
       shell: true,
-      env: { ...process.env, ...(opts.env ?? {}) },
+      env: { ...process.env, [pathKey]: mergedPath, NODE_PATH: mergedNodePath, ...(opts.env ?? {}) },
     });
     child.on('error', reject);
     child.on('exit', code => {
@@ -55,11 +72,11 @@ export function runCmd(command: string, opts: { cwd: string; env?: NodeJS.Proces
 export function readCommandsFromPreparedProject(projectPath: string): Record<string, string> {
   const pkgPath = join(projectPath, 'package.json');
   if (!existsSync(pkgPath)) {
-    throw new Error(`No package.json found at prepared project: ${pkgPath}`);
+    throw new Error(
+      `No package.json found in prepared project at: ${pkgPath}. Re-run preparation with a supported template.`,
+    );
   }
-  const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8')) as {
-    scripts?: Record<string, string>;
-  };
+  const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8')) as { scripts?: Record<string, string> };
   const scripts = pkg.scripts ?? {};
 
   // Only expose the known command names; ignore others

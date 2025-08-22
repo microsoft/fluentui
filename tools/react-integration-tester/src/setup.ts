@@ -10,25 +10,29 @@ import { Args, ReactVersion, runCmd, readCommandsFromPreparedProject } from './s
 
 const scaffoldRoot = join(tmpFolder(), 'rit');
 
+function reactRoot(react: ReactVersion) {
+  return join(scaffoldRoot, `react-${react}`);
+}
+
 function createProject(options: { projectName: string; react: ReactVersion; projectId?: string; force?: boolean }) {
   // If projectId provided, use deterministic name, otherwise use uniq()
   const base = `${options.projectName}-react-${options.react}`;
   const finalName = options.projectId ? `${base}-${options.projectId}` : uniq(base);
   if (options.force) {
-    removeTmpProject(finalName);
+    removeTmpProject(options.react, finalName);
   }
-  const { projectPath } = ensureProject(finalName);
+  const { projectPath } = ensureProject(options.react, finalName);
   return { projectPath, projectName: finalName };
 }
-function removeTmpProject(project: string) {
-  const projectPath = join(scaffoldRoot, project);
-  rmSync(projectPath, { recursive: true, force: true });
+function removeTmpProject(react: ReactVersion, project: string) {
+  // Remove only the project folder under its react root; do not delete shared node_modules
+  const projectPathGlob = join(reactRoot(react), project);
+  // Best-effort remove if exists in any react root
+  rmSync(projectPathGlob, { recursive: true, force: true });
 }
-
-function ensureProject(project: string) {
-  const projectPath = join(scaffoldRoot, project);
+function ensureProject(react: ReactVersion, project: string) {
+  const projectPath = join(reactRoot(react), project);
   mkdirSync(projectPath, { recursive: true });
-
   return { projectPath };
 }
 
@@ -50,7 +54,7 @@ function resolveProjectName() {
 export function getPreparedProjectPath(args: { react: ReactVersion; projectId: string }) {
   const { projectName } = resolveProjectName();
   const finalName = `${projectName}-react-${args.react}-${args.projectId}`;
-  return join(tmpFolder(), 'rit', finalName);
+  return join(reactRoot(args.react), finalName);
 }
 
 function renderTemplateToFile(templateFilePath: string, data: Record<string, unknown>, outFilePath: string) {
@@ -59,7 +63,7 @@ function renderTemplateToFile(templateFilePath: string, data: Record<string, unk
   writeFileSync(outFilePath, rendered);
 }
 
-async function installDependencies(projectPath: string) {
+async function installDependenciesAtReactRoot(rootPath: string) {
   // Use a scoped global yarn cache and a global mutex to avoid concurrent cache corruption on CI
   const yarnCacheFolder = join(scaffoldRoot, '.yarn-cache');
 
@@ -71,7 +75,7 @@ async function installDependencies(projectPath: string) {
     try {
       attempt += 1;
       await runCmd(`yarn install --mutex network --network-timeout 60000 --cache-folder ${yarnCacheFolder}`, {
-        cwd: projectPath,
+        cwd: rootPath,
       });
       break;
     } catch (err) {
@@ -97,8 +101,37 @@ export async function setup(options: Required<Args>) {
     } as const;
   }
 
-  // Placeholder: prepare project workspace; actual scaffolding to follow.
+  // Read template JSON for commands/dependencies and ensure react root exists
+  const templateJson = JSON.parse(readFileSync(templatePath, 'utf-8')) as {
+    commands: Record<string, string>;
+    dependencies: Record<string, string>;
+  };
   const { projectName, projectRoot } = resolveProjectName();
+  const reactRootPath = reactRoot(react);
+  mkdirSync(reactRootPath, { recursive: true });
+
+  // Create or update package.json at the react root with the dependencies once.
+  const reactRootPkgPath = join(reactRootPath, 'package.json');
+  const reactRootPkg: PackageJson = existsSync(reactRootPkgPath)
+    ? (JSON.parse(readFileSync(reactRootPkgPath, 'utf-8')) as PackageJson)
+    : ({ name: `@rit/react-${react}-root`, private: true, version: '0.0.0', license: 'UNLICENSED' } as PackageJson);
+  reactRootPkg.dependencies = {
+    ...(reactRootPkg.dependencies ?? {}),
+    ...templateJson.dependencies,
+  };
+  writeFileSync(reactRootPkgPath, JSON.stringify(reactRootPkg, null, 2));
+
+  // If only installing deps was requested, perform install and return
+  if (options.installDeps) {
+    await installDependenciesAtReactRoot(reactRootPath);
+    return {
+      projectPath: reactRootPath,
+      commands: templateJson.commands,
+      cleanup: () => {},
+    } as const;
+  }
+
+  // Prepare project workspace under the react root
   const { projectPath, projectName: createdProjectName } = createProject({
     projectName,
     react,
@@ -115,6 +148,8 @@ export async function setup(options: Required<Args>) {
     tmpl: {
       relativePathToProjectRoot: relative(projectPath, projectRoot.replace('/library', '')),
       relativePathToWorkspaceRoot: relative(projectPath, workspaceRoot),
+      // path from project to its react root (where shared node_modules live)
+      usedNodeModulesDirRelative: relative(projectPath, reactRootPath),
       projectName: createdProjectName,
     },
   };
@@ -125,21 +160,7 @@ export async function setup(options: Required<Args>) {
     console.log(JSON.stringify(metadata, null, 2));
   }
 
-  // 1) Create package.json based on template.dependencies
-  const templateJson = JSON.parse(readFileSync(templatePath, 'utf-8')) as {
-    commands: Record<string, string>;
-    dependencies: Record<string, string>;
-  };
-
-  const packageJson: PackageJson = {
-    name: metadata.projectName,
-    private: true,
-    version: '0.0.0',
-    license: 'UNLICENSED',
-    scripts: templateJson.commands,
-    dependencies: templateJson.dependencies,
-  } as const;
-  writeFileSync(join(projectPath, 'package.json'), JSON.stringify(packageJson, null, 2));
+  // 1) Prepare TypeScript/Jest/Cypress config files inside the project
 
   // 2) Create tsconfig.json from template with EJS
   renderTemplateToFile(
@@ -184,14 +205,79 @@ export async function setup(options: Required<Args>) {
     join(projectPath, 'tsconfig.cy.json'),
   );
 
-  // Install deps
-  await installDependencies(projectPath);
+  // Create project-level package.json exposing runnable scripts (no dependencies here)
+  const parentBinRel = join(metadata.tmpl.usedNodeModulesDirRelative as string, 'node_modules', '.bin');
+  const addRelativeBinPathToCmd = (cmd: string) => {
+    // Extract the first word (command name) from the command string
+    const [commandName, ...args] = cmd.split(' ');
+    const binPath = join(parentBinRel, commandName);
+
+    // Prepend with node and the bin path, preserving any arguments
+    if (args.length === 0) {
+      throw new Error(`Command "${commandName}" has no arguments`);
+    }
+    return `node ${binPath} ${args.join(' ')}`;
+  };
+  const projectScripts = Object.fromEntries(
+    Object.entries(templateJson.commands).map(([k, v]) => [k, addRelativeBinPathToCmd(v)]),
+  ) as Record<string, string>;
+  const projectPkg: PackageJson = {
+    name: metadata.projectName,
+    private: true,
+    version: '0.0.0',
+    license: 'UNLICENSED',
+    scripts: projectScripts,
+  } as const;
+  writeFileSync(join(projectPath, 'package.json'), JSON.stringify(projectPkg, null, 2));
+
+  // Install deps, but only for specific flows:
+  // - On --prepare-only (default): install unless --no-install is used
+  // - On --install-deps: install and exit (handled in CLI by early return)
+  if (options.prepareOnly && !options.noInstall) {
+    await installDependenciesAtReactRoot(reactRootPath);
+  }
+  // For normal runs, ensure deps are installed at least once (unless disabled)
+  if (!options.prepareOnly && !options.noInstall) {
+    const nodeModulesDir = join(reactRootPath, 'node_modules');
+    if (!existsSync(nodeModulesDir)) {
+      await installDependenciesAtReactRoot(reactRootPath);
+    }
+  }
 
   return {
     projectPath,
     commands: templateJson.commands,
     cleanup: () => {
-      removeTmpProject(createdProjectName);
+      removeTmpProject(react, createdProjectName);
     },
   };
+}
+
+/**
+ * Install dependencies under the shared react root based on the provided template JSON.
+ * This does not scaffold a project; it only ensures the react root package.json contains required deps and runs install.
+ */
+export async function installDepsForReactRoot(react: ReactVersion, templatePath: string, verbose = false) {
+  const reactRootPath = reactRoot(react);
+  mkdirSync(reactRootPath, { recursive: true });
+
+  const templateJson = JSON.parse(readFileSync(templatePath, 'utf-8')) as {
+    dependencies: Record<string, string>;
+  };
+
+  const reactRootPkgPath = join(reactRootPath, 'package.json');
+  const reactRootPkg: PackageJson = existsSync(reactRootPkgPath)
+    ? (JSON.parse(readFileSync(reactRootPkgPath, 'utf-8')) as PackageJson)
+    : ({ name: `@rit/react-${react}-root`, private: true, version: '0.0.0', license: 'UNLICENSED' } as PackageJson);
+  reactRootPkg.dependencies = {
+    ...(reactRootPkg.dependencies ?? {}),
+    ...templateJson.dependencies,
+  };
+  writeFileSync(reactRootPkgPath, JSON.stringify(reactRootPkg, null, 2));
+
+  if (verbose) {
+    console.log(`[rit / v${react}] Installing dependencies under: ${reactRootPath}`);
+  }
+  await installDependenciesAtReactRoot(reactRootPath);
+  return { reactRootPath } as const;
 }
