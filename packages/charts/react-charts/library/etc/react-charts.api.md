@@ -483,7 +483,7 @@ export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElem
 export const DonutChart: React_2.FunctionComponent<DonutChartProps>;
 
 // @public
-export interface DonutChartProps {
+export interface DonutChartProps extends CartesianChartProps {
     calloutProps?: ChartPopoverProps;
     calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     className?: string;
@@ -515,6 +515,7 @@ export interface DonutChartStyleProps extends CartesianChartStyleProps {
 
 // @public
 export interface DonutChartStyles {
+    axisAnnotation?: string;
     chart?: string;
     chartWrapper?: string;
     legendContainer: string;
