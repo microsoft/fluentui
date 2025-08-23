@@ -27,10 +27,10 @@ const DEFAULT_PLOTLY_COLORWAY = [
 
 const PLOTLY_FLUENTVIZ_COLORWAY_MAPPING = [
   DataVizPalette.color1, //1
-  DataVizPalette.color7, //2
+  DataVizPalette.warning, //2
   DataVizPalette.color8, //3
   DataVizPalette.color4, //4
-  DataVizPalette.warning, //5
+  DataVizPalette.color7, //5
   DataVizPalette.color6, //6
   DataVizPalette.color2, //7
   DataVizPalette.color5, //8
@@ -64,7 +64,6 @@ export const getColor = (
   legendLabel: string,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
-  index?: number,
 ): string => {
   if (!colorMap.current.has(legendLabel)) {
     let nextColor: string;
@@ -78,9 +77,7 @@ export const getColor = (
     return nextColor;
   }
 
-  return index !== undefined
-    ? Array.from(colorMap.current.values())[index]
-    : (colorMap.current.get(legendLabel) as string);
+  return colorMap.current.get(legendLabel) as string;
 };
 
 export const getSchemaColors = (
@@ -140,7 +137,7 @@ export const resolveColor = (
   } else if (typeof extractedColors === 'string') {
     color = extractedColors;
   } else {
-    color = getColor(legend, colorMap, isDarkTheme, index);
+    color = getColor(legend, colorMap, isDarkTheme);
   }
   return color;
 };
