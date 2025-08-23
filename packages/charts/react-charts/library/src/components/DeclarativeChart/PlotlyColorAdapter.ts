@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { color as d3Color } from 'd3-color';
-import type { PieColors, Color } from '@fluentui/chart-utilities';
+import type { PieColors, Color, PlotData } from '@fluentui/chart-utilities';
 import { isArrayOrTypedArray } from '@fluentui/chart-utilities';
 import { areArraysEqual } from '../../utilities/utilities';
 import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
@@ -131,7 +131,7 @@ export const resolveColor = (
   isDarkTheme?: boolean,
 ): string => {
   let color = '';
-  if (extractedColors && isArrayOrTypedArray(extractedColors) && extractedColors[index]) {
+  if (extractedColors && isArrayOrTypedArray(extractedColors) && extractedColors.length > 0) {
     color = extractedColors[index % extractedColors.length];
   } else if (typeof extractedColors === 'string') {
     color = extractedColors;
@@ -139,4 +139,12 @@ export const resolveColor = (
     color = getColor(legend, colorMap, isDarkTheme);
   }
   return color;
+};
+
+export const getOpacity = (series: Partial<PlotData>, index: number): number => {
+  return series.marker?.opacity
+    ? isArrayOrTypedArray(series.marker?.opacity)
+      ? (series.marker?.opacity as number[])[index % (series.marker?.opacity as number[]).length]
+      : (series.marker?.opacity as number)
+    : series.opacity ?? 1;
 };

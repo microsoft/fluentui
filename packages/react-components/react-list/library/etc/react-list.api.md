@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -34,6 +32,7 @@ export const listItemClassNames: SlotClassNames<ListItemSlots>;
 export type ListItemProps = ComponentProps<ListItemSlots> & {
     value?: ListItemValue;
     onAction?: EventHandler<ListItemActionEventData>;
+    disabledSelection?: boolean;
 };
 
 // @public (undocumented)

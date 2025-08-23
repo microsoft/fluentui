@@ -40,6 +40,7 @@ import {
   computeLongestBars,
   groupChartDataByYValue,
   MIN_DOMAIN_MARGIN,
+  sortAxisCategories,
 } from '../../utilities/index';
 import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
 import { toImage } from '../../utilities/image-export-utils';
@@ -48,7 +49,7 @@ type ColorScale = (_p?: number) => string;
 export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarChartWithAxisProps> = React.forwardRef<
   HTMLDivElement,
   HorizontalBarChartWithAxisProps
->((props, forwardedRef) => {
+>((props = { yAxisCategoryOrder: 'default' }, forwardedRef) => {
   const _refArray: RefArrayData[] = [];
   const _calloutId: string = useId('callout');
   const _isRtl: boolean = useRtl();
@@ -738,6 +739,29 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     return (chartTitle ? `${chartTitle}. ` : '') + `Horizontal bar chart with ${data?.length || 0} bars. `;
   }
 
+  function _getOrderedYAxisLabels() {
+    const shouldOrderYAxisLabelsByCategoryOrder =
+      _yAxisType === YAxisType.StringAxis && props.yAxisCategoryOrder !== 'default';
+    if (!shouldOrderYAxisLabelsByCategoryOrder) {
+      // Keep the original ordering logic as the default behavior to ensure backward compatibility
+      const reversedBars = [..._points].reverse();
+      return reversedBars.map((point: HorizontalBarChartWithAxisDataPoint) => point.y as string);
+    }
+
+    return sortAxisCategories(_mapCategoryToValues(), props.yAxisCategoryOrder);
+  }
+
+  function _mapCategoryToValues() {
+    const categoryToValues: Record<string, number[]> = {};
+    _points.forEach(point => {
+      if (!categoryToValues[point.y]) {
+        categoryToValues[point.y] = [];
+      }
+      categoryToValues[point.y].push(point.x);
+    });
+    return categoryToValues;
+  }
+
   function _isChartEmpty(): boolean {
     return !(props.data && props.data.length > 0);
   }
@@ -806,8 +830,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       tickFormat: props.tickFormat,
     };
 
-    const reversedBars = [..._points].reverse();
-    _yAxisLabels = reversedBars.map((point: HorizontalBarChartWithAxisDataPoint) => point.y as string);
+    _yAxisLabels = _getOrderedYAxisLabels();
     _xMax = Math.max(d3Max(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.x)!, props.xMaxValue || 0);
     const legendBars: JSXElement = _getLegendData(_points);
     return (

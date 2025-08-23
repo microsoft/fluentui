@@ -2,6 +2,57 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 21 Aug 2025 12:15:04 GMT",
+      "tag": "@fluentui/react-charting_v5.24.25",
+      "version": "5.24.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0983f8e39ab375d87f5124c17821a618971881c0",
+            "comment": "feat: add support for tickmode in DeclarativeChart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Aug 2025 07:21:22 GMT",
+      "tag": "@fluentui/react-charting_v5.24.24",
+      "version": "5.24.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c0aabdccb5c79620be68ec17d80c8454b541d1be",
+            "comment": "feat(react-charting): Support string y-axis for Scatter chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.28",
+            "commit": "e9d9ff6670189ffa97f9c21450fe4ddba15a461d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Aug 2025 07:21:05 GMT",
+      "tag": "@fluentui/react-charting_v5.24.23",
+      "version": "5.24.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "17fd271ab5b27d509c4d446a7015be72a639f3cb",
+            "comment": "refactor: set max-width for heatmap callout without using subComponentStyles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Aug 2025 07:21:21 GMT",
       "tag": "@fluentui/react-charting_v5.24.22",
       "version": "5.24.22",

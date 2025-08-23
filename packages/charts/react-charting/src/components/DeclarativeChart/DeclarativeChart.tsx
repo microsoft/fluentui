@@ -54,6 +54,7 @@ const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStacke
 const ResponsiveLineChart = withResponsiveContainer(LineChart);
 const ResponsiveHorizontalBarChartWithAxis = withResponsiveContainer(HorizontalBarChartWithAxis);
 const ResponsiveAreaChart = withResponsiveContainer(AreaChart);
+const ResponsiveHeatMapChart = withResponsiveContainer(HeatMapChart);
 const ResponsiveSankeyChart = withResponsiveContainer(SankeyChart);
 const ResponsiveGaugeChart = withResponsiveContainer(GaugeChart);
 const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVerticalBarChart);
@@ -195,7 +196,7 @@ type ChartTypeMap = {
   } & PreTransformHooks;
   heatmap: {
     transformer: typeof transformPlotlyJsonToHeatmapProps;
-    renderer: typeof HeatMapChart;
+    renderer: typeof ResponsiveHeatMapChart;
   } & PreTransformHooks;
   gauge: {
     transformer: typeof transformPlotlyJsonToGaugeProps;
@@ -262,7 +263,7 @@ const chartMap: ChartTypeMap = {
   },
   heatmap: {
     transformer: transformPlotlyJsonToHeatmapProps,
-    renderer: HeatMapChart,
+    renderer: ResponsiveHeatMapChart,
   },
   gauge: {
     transformer: transformPlotlyJsonToGaugeProps,

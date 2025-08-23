@@ -10,6 +10,22 @@ test.describe('Radio', () => {
     await expect(element).toHaveJSProperty('elementInternals.role', 'radio');
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-radio');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should set ARIA attributes to match the state', async ({ fastPage }) => {
     const { element } = fastPage;
 

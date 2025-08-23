@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Thu, 14 Aug 2025 07:19:46 GMT",
+      "tag": "@fluentui/utilities_v8.15.23",
+      "version": "8.15.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "indirect ts emit change with exactOptionalPropertyTypes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Jul 2025 07:19:40 GMT",
       "tag": "@fluentui/utilities_v8.15.22",
       "version": "8.15.22",

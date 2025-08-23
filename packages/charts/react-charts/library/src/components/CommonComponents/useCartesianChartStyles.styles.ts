@@ -20,6 +20,7 @@ export const cartesianchartClassNames: SlotClassNames<CartesianChartStyles> = {
   descriptionMessage: 'fui-cart__descriptionMessage',
   hover: 'fui-cart__hover',
   tooltip: 'fui-cart__tooltip',
+  axisAnnotation: 'fui-cart__axisAnnotation',
   chartTitle: 'fui-cart__chartTitle',
   chart: 'fui-cart__chart',
 };
@@ -112,6 +113,16 @@ const useStyles = makeStyles({
     borderRadius: tokens.borderRadiusSmall,
     pointerEvents: 'none',
   },
+  axisAnnotation: {
+    ...typographyStyles.caption2Strong,
+    textAlign: 'center',
+    fontStyle: 'normal',
+    color: tokens.colorNeutralForeground2,
+    fill: tokens.colorNeutralForeground1,
+    [HighContrastSelector]: {
+      fill: 'CanvasText',
+    },
+  },
 });
 /**
  * Apply styling to the Carousel slots based on the state
@@ -143,6 +154,11 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
     ),
     svgTooltip: mergeClasses(cartesianchartClassNames.svgTooltip, baseStyles.svgTooltip, props.styles?.svgTooltip),
     tooltip: mergeClasses(cartesianchartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
+    axisAnnotation: mergeClasses(
+      cartesianchartClassNames.axisAnnotation,
+      baseStyles.axisAnnotation,
+      /*props.styles?.axisAnnotation,*/
+    ),
     chart: mergeClasses(cartesianchartClassNames.chart, props.styles?.chart),
   };
 };

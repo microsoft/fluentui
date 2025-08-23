@@ -1473,11 +1473,11 @@ export function useFocusedElementChange(callback: Types.SubscribableCallback<HTM
 
 // @public
 export const useFocusFinders: () => {
-    findAllFocusable: (container: HTMLElement, acceptCondition?: ((el: HTMLElement) => boolean) | undefined) => HTMLElement[];
+    findAllFocusable: (container: HTMLElement, acceptCondition?: (el: HTMLElement) => boolean) => HTMLElement[];
     findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
-    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
-    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
+    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, "container">) => HTMLElement | null | undefined;
+    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, "container">) => HTMLElement | null | undefined;
 };
 
 // @public (undocumented)

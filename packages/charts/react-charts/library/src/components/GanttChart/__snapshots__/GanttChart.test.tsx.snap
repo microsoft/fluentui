@@ -4540,7 +4540,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               />
               <tspan
                 dx="0em"
-                dy="0.32"
+                dy="0.32em"
                 id="showDots-0"
                 x="-16"
               >
@@ -4570,7 +4570,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               />
               <tspan
                 dx="0em"
-                dy="0.32"
+                dy="0.32em"
                 id="showDots-1"
                 x="-16"
               >
@@ -4600,7 +4600,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               />
               <tspan
                 dx="0em"
-                dy="0.32"
+                dy="0.32em"
                 id="showDots-2"
                 x="-16"
               >
@@ -4630,7 +4630,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               />
               <tspan
                 dx="0em"
-                dy="0.32"
+                dy="0.32em"
                 id="showDots-3"
                 x="-16"
               >
@@ -4660,7 +4660,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               />
               <tspan
                 dx="0em"
-                dy="0.32"
+                dy="0.32em"
                 id="showDots-4"
                 x="-16"
               >
@@ -4690,7 +4690,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               />
               <tspan
                 dx="0em"
-                dy="0.32"
+                dy="0.32em"
                 id="showDots-5"
                 x="-16"
               >
@@ -4720,7 +4720,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               />
               <tspan
                 dx="0em"
-                dy="0.32"
+                dy="0.32em"
                 id="showDots-6"
                 x="-16"
               >
@@ -4750,7 +4750,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               />
               <tspan
                 dx="0em"
-                dy="0.32"
+                dy="0.32em"
                 id="showDots-7"
                 x="-16"
               >

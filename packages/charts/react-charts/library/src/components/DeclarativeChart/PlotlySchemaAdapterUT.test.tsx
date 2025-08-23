@@ -1,4 +1,4 @@
-import { isDateArray, isMonthArray, isNumberArray, sanitizeJson } from '@fluentui/chart-utilities';
+import { isDateArray, isMonthArray, isNumberArray, sanitizeJson, isInvalidValue } from '@fluentui/chart-utilities';
 
 import {
   correctYearMonth,
@@ -7,10 +7,15 @@ import {
   transformPlotlyJsonToGVBCProps,
   transformPlotlyJsonToVBCProps,
   transformPlotlyJsonToScatterChartProps,
+  transformPlotlyJsonToAreaChartProps,
+  transformPlotlyJsonToLineChartProps,
   transformPlotlyJsonToHorizontalBarWithAxisProps,
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
+  getNumberAtIndexOrDefault,
+  getValidXYRanges,
+  resolveXAxisPoint,
 } from './PlotlySchemaAdapter';
 import { getColor, getSchemaColors } from './PlotlyColorAdapter';
 
@@ -143,11 +148,7 @@ describe('correctYearMonth', () => {
   });
 
   test('Should return error when input array contains invalid months', () => {
-    try {
-      expect(correctYearMonth([10, 11, 16])).toStrictEqual([]);
-    } catch (e) {
-      expect(e).toStrictEqual(TypeError("Cannot read properties of null (reading 'getMonth')"));
-    }
+    expect(correctYearMonth([10, 11, 16])).toStrictEqual(['10 01, 2025', '11 01, 2025', null]);
   });
 
   test('Should return dates array when input array contains months data in MMM format', () => {
@@ -180,13 +181,17 @@ describe('getColor', () => {
 describe('transform Plotly Json To chart Props', () => {
   test('transformPlotlyJsonToDonutProps - Should return donut chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_donut_test.json');
-    expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToDonutProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+      expect(
+        transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true),
+      ).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
@@ -194,20 +199,24 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToDonutProps - Should return pie chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_pie_test.json');
-    expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToVSBCProps - Should return VSBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_verticalstackedbarchart_test.json');
     expect(
-      transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, 'default', true, true),
+      transformPlotlyJsonToVSBCProps(plotlySchema, false, { current: colorMap }, 'default', true, true),
     ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToVSBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+      expect(
+        transformPlotlyJsonToVSBCProps(plotlySchema, false, { current: colorMap }, 'default', true),
+      ).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'forEach')"));
     }
@@ -215,13 +224,17 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToGVBCProps - Should return GVBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_groupedverticalbarchart_test.json');
-    expect(transformPlotlyJsonToGVBCProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToGVBCProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToGVBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToGVBCProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+      expect(
+        transformPlotlyJsonToGVBCProps(plotlySchema, false, { current: colorMap }, 'default', true),
+      ).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'forEach')"));
     }
@@ -229,60 +242,73 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToVBCProps - Should return VBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_verticalbar_histogram_test.json');
-    expect(transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToVBCProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToVBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, 'default', true);
+      transformPlotlyJsonToVBCProps(plotlySchema, false, { current: colorMap }, 'default', true);
     }).toThrow(TypeError);
   });
 
-  test('transformPlotlyJsonToScatterChartProps - Should return line chart props', () => {
+  test('transformPlotlyJsonToLineChartProps - Should return line chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_line_test.json');
     expect(
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, false, { current: colorMap }, 'default', true),
+      transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToScatterChartProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, false, { current: colorMap }, 'default', true);
+      transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: colorMap }, 'default', true);
     }).toThrow(TypeError);
   });
 
   test('transformPlotlyJsonToScatterChartProps - Should return area chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_area_test.json');
     expect(
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, false, { current: colorMap }, 'default', true),
+      transformPlotlyJsonToAreaChartProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
+  });
+
+  test('transformPlotlyJsonToScatterChartProps - Should return scatter chart props', () => {
+    const plotlySchema = require('./tests/schema/fluent_scatter_test.json');
+    expect(
+      transformPlotlyJsonToScatterChartProps(plotlySchema, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should return HBC with axis chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_horizontalbar_test.json');
     expect(
-      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, 'default', true),
+      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, 'default', true);
+      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, false, { current: colorMap }, 'default', true);
     }).toThrow(TypeError);
   });
 
   test('transformPlotlyJsonToHeatmapProps - Should return heatmap chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_heatmap_test.json');
-    expect(transformPlotlyJsonToHeatmapProps(plotlySchema)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToHeatmapProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToHeatmapProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToHeatmapProps(plotlySchema)).toMatchSnapshot();
+      expect(
+        transformPlotlyJsonToHeatmapProps(plotlySchema, false, { current: colorMap }, 'default', true),
+      ).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
@@ -290,13 +316,17 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToSankeyProps - Should return sankey chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_sankey_test.json');
-    expect(transformPlotlyJsonToSankeyProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToSankeyProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToSankeyProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToSankeyProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+      expect(
+        transformPlotlyJsonToSankeyProps(plotlySchema, false, { current: colorMap }, 'default', true),
+      ).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
@@ -304,13 +334,17 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToGaugeProps - Should return gauge chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_gauge_test.json');
-    expect(transformPlotlyJsonToGaugeProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToGaugeProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToGaugeProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToGaugeProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
+      expect(
+        transformPlotlyJsonToGaugeProps(plotlySchema, false, { current: colorMap }, 'default', true),
+      ).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
@@ -425,5 +459,125 @@ describe('getSchemaColors with other colorways', () => {
   test('Should return undefined when input schema has color in undefined format', () => {
     const undefinedColor = [undefined];
     expect(getSchemaColors(undefined, undefinedColor, { current: colorMap })).not.toBe([]);
+  });
+});
+describe('isInvalidValue', () => {
+  it('returns true for undefined', () => {
+    expect(isInvalidValue(undefined)).toBe(true);
+  });
+
+  it('returns true for null', () => {
+    expect(isInvalidValue(null)).toBe(true);
+  });
+
+  it('returns true for non-finite numbers', () => {
+    expect(isInvalidValue(NaN)).toBe(true);
+    expect(isInvalidValue(Infinity)).toBe(true);
+    expect(isInvalidValue(-Infinity)).toBe(true);
+  });
+
+  it('returns false for valid numbers', () => {
+    expect(isInvalidValue(0)).toBe(false);
+    expect(isInvalidValue(123)).toBe(false);
+    expect(isInvalidValue(-456.78)).toBe(false);
+  });
+
+  it('returns false for strings', () => {
+    expect(isInvalidValue('')).toBe(false);
+    expect(isInvalidValue('test')).toBe(false);
+  });
+});
+
+describe('getNumberAtIndexOrDefault', () => {
+  it('returns the number at the given index for a valid array', () => {
+    expect(getNumberAtIndexOrDefault([10, 20, 30], 1)).toBe(20);
+  });
+
+  it('returns undefined if the value at the index is not a number or a non-finite number', () => {
+    expect(getNumberAtIndexOrDefault([10, 'a', 30], 1)).toBeUndefined();
+    expect(getNumberAtIndexOrDefault([10, NaN, 30], 1)).toBeUndefined();
+    expect(getNumberAtIndexOrDefault([10, Infinity, 30], 1)).toBeUndefined();
+    expect(getNumberAtIndexOrDefault([10, -Infinity, 30], 1)).toBeUndefined();
+  });
+
+  it('returns 1 if data is not an array or typed array', () => {
+    expect(getNumberAtIndexOrDefault(undefined, 0)).toBe(1);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(getNumberAtIndexOrDefault(null as any, 0)).toBe(1);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(getNumberAtIndexOrDefault('not-an-array' as any, 0)).toBe(1);
+  });
+
+  it('returns undefined if index is out of bounds', () => {
+    expect(getNumberAtIndexOrDefault([10, 20], 5)).toBeUndefined();
+  });
+});
+
+describe('getValidXYRanges', () => {
+  it('returns a single valid range when all values are valid', () => {
+    const series = { x: [1, 2, 3], y: [4, 5, 6] };
+    expect(getValidXYRanges(series)).toEqual([[0, 3]]);
+  });
+
+  it('returns empty array when all values are invalid', () => {
+    const series = { x: [Infinity, null, NaN], y: [null, Infinity, NaN] };
+    expect(getValidXYRanges(series)).toEqual([]);
+  });
+
+  it('returns correct ranges when there are invalid values in between', () => {
+    const series = { x: [1, null, 3, 4, Infinity, 6], y: [1, 2, 3, null, 5, 6] };
+    expect(getValidXYRanges(series)).toEqual([
+      [0, 1],
+      [2, 3],
+      [5, 6],
+    ]);
+  });
+
+  it('handles invalid values at the start and end', () => {
+    const series = { x: [Infinity, 2, 3, 4, Infinity], y: [1, 2, 3, 4, 5] };
+    expect(getValidXYRanges(series)).toEqual([[1, 4]]);
+  });
+
+  it('handles empty x and y arrays', () => {
+    const series = { x: [], y: [] };
+    expect(getValidXYRanges(series)).toEqual([]);
+  });
+
+  it('handles x or y missing', () => {
+    expect(getValidXYRanges({ x: [1, 2, 3] })).toEqual([]);
+    expect(getValidXYRanges({ y: [1, 2, 3] })).toEqual([]);
+  });
+});
+
+describe('resolveXAxisPoint', () => {
+  it('should return the input as a string if isXYearCategory is true', () => {
+    const result = resolveXAxisPoint(2023, true, false, false, false);
+    expect(result).toStrictEqual('2023');
+  });
+
+  it('should return a Date object if isXString and isXDate are true', () => {
+    const result = resolveXAxisPoint('2023-01-01', false, true, true, false);
+    expect(result).toBeInstanceOf(Date);
+    expect(result).toStrictEqual(new Date('2023-01-01'));
+  });
+
+  it('should return a number if isXString and isXNumber are true', () => {
+    const result = resolveXAxisPoint('123.45', false, true, false, true);
+    expect(result).toStrictEqual(123.45);
+  });
+
+  it('should return the input as-is if isXString is true but neither isXDate nor isXNumber are true', () => {
+    const result = resolveXAxisPoint('test', false, true, false, false);
+    expect(result).toStrictEqual('test');
+  });
+
+  it('should return the input as-is if none of the conditions are met', () => {
+    const result = resolveXAxisPoint(42, false, false, false, false);
+    expect(result).toStrictEqual(42);
+  });
+  it('should return empty string for null, empty string and 0', () => {
+    expect(resolveXAxisPoint(null, false, false, false, false)).toBe('');
+    expect(resolveXAxisPoint('', false, false, false, false)).toBe('');
+    expect(resolveXAxisPoint(0, false, false, false, false)).toBe(0);
   });
 });

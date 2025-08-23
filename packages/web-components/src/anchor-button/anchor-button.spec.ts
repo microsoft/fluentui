@@ -7,6 +7,22 @@ test.describe('Anchor Button', () => {
     tagName: 'fluent-anchor-button',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-anchor-button');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should set the `href` property to match the `href` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 

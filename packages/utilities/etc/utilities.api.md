@@ -160,7 +160,7 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 export function createMemoizer<F extends (input: any) => any>(getValue: F): F;
 
 // @public
-export const createMergedRef: <TType, TValue = null>(value?: TValue | undefined) => (...newRefs: (React_2.Ref<TType | TValue | null> | undefined)[]) => (newValue: TType | TValue | null) => void;
+export const createMergedRef: <TType, TValue = null>(value?: TValue) => (...newRefs: (React_2.Ref<TType | null | TValue> | undefined)[]) => ((newValue: TType | TValue | null) => void);
 
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
 //
@@ -1174,7 +1174,7 @@ export function resetIds(counter?: number): void;
 export function resetMemoizations(): void;
 
 // @public
-export const safeRequestAnimationFrame: (component: React_2.Component) => (cb: Function) => void;
+export const safeRequestAnimationFrame: (component: React_2.Component) => ((cb: Function) => void);
 
 // @public
 export const safeSetTimeout: (component: React_2.Component) => (cb: Function, duration: number) => void;

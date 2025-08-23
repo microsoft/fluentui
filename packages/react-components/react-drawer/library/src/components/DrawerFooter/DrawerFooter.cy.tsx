@@ -43,7 +43,7 @@ describe('DrawerFooter', () => {
 
     cy.get('#drawer-body').scrollTo('center');
     cy.get('#drawer-footer').within($el => {
-      cy.window().then(win => {
+      cy.window().should(win => {
         const before = win.getComputedStyle($el[0], '::before');
         const opacity = before.getPropertyValue('opacity');
 

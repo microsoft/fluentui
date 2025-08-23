@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-storybook-addon
 
-This log was last generated on Thu, 07 Aug 2025 10:03:26 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 12:25:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.4.2)
+
+Thu, 21 Aug 2025 12:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.4.1..@fluentui/react-storybook-addon_v0.4.2)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.16.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-button to v9.6.5 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-menu to v9.19.5 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-label to v9.3.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-switch to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-text to v9.6.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-link to v9.6.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-provider to v9.22.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-utilities to v9.24.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+
+## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.4.1)
+
+Wed, 13 Aug 2025 12:49:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.4.0..@fluentui/react-storybook-addon_v0.4.1)
+
+### Patches
+
+- fix: resolve dissapearing Slot Info message on consecutive page re-renders ([PR #34958](https://github.com/microsoft/fluentui/pull/34958) by martinhochel@microsoft.com)
+- indirect ts emit change with exactOptionalPropertyTypes ([PR #33498](https://github.com/microsoft/fluentui/pull/33498) by vgenaev@gmail.com)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.4.0)
 

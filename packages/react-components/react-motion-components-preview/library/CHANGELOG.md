@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Mon, 28 Jul 2025 18:48:19 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 12:25:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.9.0)
+
+Thu, 21 Aug 2025 12:25:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.8.1..@fluentui/react-motion-components-preview_v0.9.0)
+
+### Minor changes
+
+- feat(motion): add Rotate presence motion component ([PR #34928](https://github.com/microsoft/fluentui/pull/34928) by robertpenner@microsoft.com)
 
 ## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.8.0)
 

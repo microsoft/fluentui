@@ -47,8 +47,8 @@
     "@fluentui/merge-styles": "^8.6.14",
     "@fluentui/react-hooks": "^8.8.19",
     "@fluentui/set-version": "^8.2.24",
-    "@fluentui/style-utilities": "^8.12.2",
-    "@fluentui/utilities": "^8.15.22",
+    "@fluentui/style-utilities": "^8.12.3",
+    "@fluentui/utilities": "^8.15.23",
     "deep-assign": "^2.0.0",
     "prop-types": "^15.7.2",
     "tslib": "^2.1.0"
