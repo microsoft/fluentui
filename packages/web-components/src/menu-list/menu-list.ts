@@ -264,8 +264,7 @@ export class MenuList extends FASTElement {
    */
   protected isMenuItemElement = (el: Element): el is HTMLElement => {
     return (
-      isMenuItem(el) ||
-      (isHTMLElement(el) && (el.getAttribute('role') as string) in MenuList.focusableElementRoles)
+      isMenuItem(el) || (isHTMLElement(el) && (el.getAttribute('role') as string) in MenuList.focusableElementRoles)
     );
   };
 
