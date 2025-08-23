@@ -5,6 +5,7 @@ interface BlurAtomParams {
   duration: number;
   easing?: string;
   fromRadius?: string;
+  delay?: number;
 }
 
 /**
@@ -13,6 +14,7 @@ interface BlurAtomParams {
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
  * @param fromRadius - The blur radius value with units (e.g., '20px', '1rem'). Defaults to '20px'.
+ * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @returns A motion atom object with filter blur keyframes and the supplied duration and easing.
  */
 export const blurAtom = ({
@@ -20,6 +22,7 @@ export const blurAtom = ({
   duration,
   easing = motionTokens.curveLinear,
   fromRadius = '10px',
+  delay = 0,
 }: BlurAtomParams): AtomMotion => {
   const keyframes = [{ filter: `blur(${fromRadius})` }, { filter: 'blur(0px)' }];
   if (direction === 'exit') {
@@ -29,5 +32,6 @@ export const blurAtom = ({
     keyframes,
     duration,
     easing,
+    delay,
   };
 };

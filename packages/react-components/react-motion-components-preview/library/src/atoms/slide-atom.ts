@@ -6,6 +6,7 @@ interface SlideAtomParams {
   easing?: string;
   fromX?: string;
   fromY?: string;
+  delay?: number;
 }
 
 /**
@@ -15,6 +16,7 @@ interface SlideAtomParams {
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
  * @param fromX - The starting X translate value with units (e.g., '0px', '100%'). Defaults to '0px'.
  * @param fromY - The starting Y translate value with units (e.g., '-20px', '100%'). Defaults to '0px'.
+ * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @returns A motion atom object with translate keyframes and the supplied duration and easing.
  */
 export const slideAtom = ({
@@ -23,6 +25,7 @@ export const slideAtom = ({
   easing = motionTokens.curveLinear,
   fromX = '0px',
   fromY = '20px',
+  delay = 0,
 }: SlideAtomParams): AtomMotion => {
   const keyframes = [{ translate: `${fromX} ${fromY}` }, { translate: '0px 0px' }];
   if (direction === 'exit') {
@@ -32,5 +35,6 @@ export const slideAtom = ({
     keyframes,
     duration,
     easing,
+    delay,
   };
 };

@@ -1,7 +1,8 @@
-import type { PresenceDuration, PresenceEasing, AnimateOpacity } from '../../types';
+import type { PresenceDuration, PresenceEasing, PresenceDelay, AnimateOpacity } from '../../types';
 
 export type SlideParams = PresenceDuration &
   PresenceEasing &
+  PresenceDelay &
   AnimateOpacity & {
     /** The X translate value with units to animate from. Defaults to `'0px'`. */
     fromX?: string;

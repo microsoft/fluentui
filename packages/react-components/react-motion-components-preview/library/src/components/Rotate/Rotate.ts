@@ -10,6 +10,8 @@ import { RotateParams } from './rotate-types';
  * @param easing - Easing curve for the enter transition (rotate-in). Defaults to the `curveDecelerateMax` value.
  * @param exitDuration - Time (ms) for the exit transition (rotate-out). Defaults to the `duration` param for symmetry.
  * @param exitEasing - Easing curve for the exit transition (rotate-out). Defaults to the `curveAccelerateMax` value.
+ * @param delay - Time (ms) to delay the enter transition. Defaults to 0.
+ * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
  * @param axis - The axis of rotation: 'x', 'y', or 'z'. Defaults to 'y'.
  * @param angle - The starting rotation angle in degrees. Defaults to -90.
  * @param exitAngle - The ending rotation angle in degrees. Defaults to the negation of `angle`.
@@ -23,6 +25,8 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
   exitDuration = duration,
   easing = motionTokens.curveDecelerateMax,
   exitEasing = motionTokens.curveAccelerateMax,
+  delay = 0,
+  exitDelay = delay,
   animateOpacity = true,
 }: RotateParams) => {
   const enterAtoms: AtomMotion[] = [
@@ -33,6 +37,7 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
       axis,
       angle,
       exitAngle,
+      delay,
     }),
   ];
 
@@ -44,12 +49,13 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
       axis,
       angle,
       exitAngle,
+      delay: exitDelay,
     }),
   ];
 
   if (animateOpacity) {
-    enterAtoms.push(fadeAtom({ direction: 'enter', duration, easing }));
-    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing }));
+    enterAtoms.push(fadeAtom({ direction: 'enter', duration, easing, delay }));
+    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing, delay: exitDelay }));
   }
 
   return {

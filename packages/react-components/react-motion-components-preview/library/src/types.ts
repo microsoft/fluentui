@@ -51,6 +51,17 @@ export type PresenceEasing = {
 };
 
 /**
+ * Common delay parameters for presence motion components.
+ */
+export type PresenceDelay = {
+  /** Time (ms) to delay the enter transition. */
+  delay?: number;
+
+  /** Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry. */
+  exitDelay?: number;
+};
+
+/**
  * Common opacity animation parameter for motion components.
  */
 export type AnimateOpacity = {

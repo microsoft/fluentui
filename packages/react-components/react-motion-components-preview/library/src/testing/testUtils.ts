@@ -27,11 +27,13 @@ export function expectPresenceMotionObject(component: PresenceComponent) {
       duration: expect.any(Number),
       easing: expect.any(String),
       keyframes: expect.any(Array),
+      delay: expect.any(Number),
     }),
     exit: expect.objectContaining({
       duration: expect.any(Number),
       easing: expect.any(String),
       keyframes: expect.any(Array),
+      delay: expect.any(Number),
     }),
   });
 }
@@ -46,6 +48,7 @@ export function expectPresenceMotionArray(component: PresenceComponent) {
         duration: expect.any(Number),
         easing: expect.any(String),
         keyframes: expect.any(Array),
+        delay: expect.any(Number),
       },
     ]),
     exit: expect.arrayContaining([
@@ -53,6 +56,7 @@ export function expectPresenceMotionArray(component: PresenceComponent) {
         duration: expect.any(Number),
         easing: expect.any(String),
         keyframes: expect.any(Array),
+        delay: expect.any(Number),
       },
     ]),
   });
