@@ -1,9 +1,10 @@
-import type { PresenceDuration, PresenceEasing, AnimateOpacity } from '../../types';
+import type { PresenceDuration, PresenceEasing, PresenceDelay, AnimateOpacity } from '../../types';
 
 type Axis3D = 'x' | 'y' | 'z';
 
 export type RotateParams = PresenceDuration &
   PresenceEasing &
+  PresenceDelay &
   AnimateOpacity & {
     /**
      * The axis of rotation: 'x', 'y', or 'z'.

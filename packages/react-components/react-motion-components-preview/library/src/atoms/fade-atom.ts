@@ -17,6 +17,7 @@ export const fadeAtom = ({
   direction,
   duration,
   easing = motionTokens.curveLinear,
+  delay = 0,
   fromOpacity = 0,
 }: FadeAtomParams): AtomMotion => {
   const keyframes = [{ opacity: fromOpacity }, { opacity: 1 }];
@@ -27,5 +28,6 @@ export const fadeAtom = ({
     keyframes,
     duration,
     easing,
+    delay,
   };
 };

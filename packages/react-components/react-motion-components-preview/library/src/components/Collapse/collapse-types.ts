@@ -1,9 +1,10 @@
-import type { PresenceDuration, PresenceEasing, AnimateOpacity } from '../../types';
+import type { PresenceDuration, PresenceEasing, PresenceDelay, AnimateOpacity } from '../../types';
 
 export type CollapseOrientation = 'horizontal' | 'vertical';
 
 /** Common properties shared by all collapse components */
 type CollapseBaseParams = PresenceEasing &
+  PresenceDelay &
   AnimateOpacity & {
     /** The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height. */
     orientation?: CollapseOrientation;

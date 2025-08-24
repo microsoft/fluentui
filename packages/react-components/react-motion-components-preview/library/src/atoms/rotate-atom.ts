@@ -28,6 +28,7 @@ export const rotateAtom = ({
   direction,
   duration,
   easing = motionTokens.curveLinear,
+  delay = 0,
   axis = 'y',
   angle = -90,
   exitAngle = -angle,
@@ -45,5 +46,6 @@ export const rotateAtom = ({
     keyframes,
     duration,
     easing,
+    delay,
   };
 };
