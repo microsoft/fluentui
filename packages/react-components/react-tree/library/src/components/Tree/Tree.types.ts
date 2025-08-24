@@ -3,7 +3,7 @@ import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { ComponentProps, ComponentState, SelectionMode, Slot } from '@fluentui/react-utilities';
 import type { TreeContextValue, SubtreeContextValue } from '../../contexts';
 import type { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
-import type { TreeItemValue } from '../TreeItem/TreeItem.types';
+import type { TreeItemType, TreeItemValue } from '../TreeItem/TreeItem.types';
 import { CheckboxProps } from '@fluentui/react-checkbox';
 import { RadioProps } from '@fluentui/react-radio';
 
@@ -146,6 +146,8 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    */
   onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationDataParam): void;
 
+  onNavigationIn?(event: React.SyntheticEvent, data: { value: TreeItemValue; itemType: TreeItemType }): void;
+
   /**
    * This refers to the selection mode of the tree.
    * - undefined: No selection can be done.
@@ -170,7 +172,13 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * such as checked value and type of interaction that created the event.
    */
   onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
+
+  imperativeRef?: React.RefObject<TreeImperativeRef>;
 };
+
+interface TreeImperativeRef {
+  focus(value: TreeItemValue): void;
+}
 
 /**
  * State used in rendering Tree
