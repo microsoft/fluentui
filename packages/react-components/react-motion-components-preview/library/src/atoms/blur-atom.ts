@@ -1,10 +1,7 @@
-import { AtomMotion, PresenceDirection, motionTokens } from '@fluentui/react-motion';
+import { AtomMotion, motionTokens } from '@fluentui/react-motion';
+import type { CommonAtomParams } from '../types';
 
-interface BlurAtomParams {
-  direction: PresenceDirection;
-  duration: number;
-  easing?: string;
-  delay?: number;
+interface BlurAtomParams extends CommonAtomParams {
   fromRadius?: string;
 }
 

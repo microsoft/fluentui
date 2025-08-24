@@ -1,10 +1,7 @@
-import { AtomMotion, PresenceDirection, motionTokens } from '@fluentui/react-motion';
+import { AtomMotion, motionTokens } from '@fluentui/react-motion';
+import type { CommonAtomParams } from '../types';
 
-interface FadeAtomParams {
-  direction: PresenceDirection;
-  duration: number;
-  easing?: string;
-  delay?: number;
+interface FadeAtomParams extends CommonAtomParams {
   fromOpacity?: number;
 }
 
