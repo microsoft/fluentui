@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add custom style hook for CarouselCardButton",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
