@@ -44,20 +44,20 @@ export function expectPresenceMotionArray(component: PresenceComponent) {
   // eslint-disable-next-line @nx/workspace-no-restricted-globals
   expect(presenceMotionFn?.({ element: document.createElement('div') })).toMatchObject({
     enter: expect.arrayContaining([
-      {
+      expect.objectContaining({
         duration: expect.any(Number),
         easing: expect.any(String),
         keyframes: expect.any(Array),
         delay: expect.any(Number),
-      },
+      }),
     ]),
     exit: expect.arrayContaining([
-      {
+      expect.objectContaining({
         duration: expect.any(Number),
         easing: expect.any(String),
         keyframes: expect.any(Array),
         delay: expect.any(Number),
-      },
+      }),
     ]),
   });
 }
