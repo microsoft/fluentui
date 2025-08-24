@@ -4,8 +4,8 @@ interface FadeAtomParams {
   direction: PresenceDirection;
   duration: number;
   easing?: string;
-  fromOpacity?: number;
   delay?: number;
+  fromOpacity?: number;
 }
 
 /**
@@ -13,16 +13,16 @@ interface FadeAtomParams {
  * @param direction - The functional direction of the motion: 'enter' or 'exit'.
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
- * @param fromOpacity - The starting opacity value. Defaults to 0.
  * @param delay - Time (ms) to delay the animation. Defaults to 0.
+ * @param fromOpacity - The starting opacity value. Defaults to 0.
  * @returns A motion atom object with opacity keyframes and the supplied duration and easing.
  */
 export const fadeAtom = ({
   direction,
   duration,
   easing = motionTokens.curveLinear,
-  fromOpacity = 0,
   delay = 0,
+  fromOpacity = 0,
 }: FadeAtomParams): AtomMotion => {
   const keyframes = [{ opacity: fromOpacity }, { opacity: 1 }];
   if (direction === 'exit') {

@@ -4,9 +4,9 @@ interface ScaleAtomParams {
   direction: PresenceDirection;
   duration: number;
   easing?: string;
+  delay?: number;
   fromScale?: number;
   toScale?: number;
-  delay?: number;
 }
 
 /**
@@ -14,18 +14,18 @@ interface ScaleAtomParams {
  * @param direction - The functional direction of the motion: 'enter' or 'exit'.
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
+ * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @param fromScale - The starting scale value. Defaults to 0.9.
  * @param toScale - The ending scale value. Defaults to 1.
- * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @returns A motion atom object with scale keyframes and the supplied duration and easing.
  */
 export const scaleAtom = ({
   direction,
   duration,
   easing = motionTokens.curveLinear,
+  delay = 0,
   fromScale = 0.9,
   toScale = 1,
-  delay = 0,
 }: ScaleAtomParams): AtomMotion => {
   const keyframes = [{ scale: fromScale }, { scale: toScale }];
   if (direction === 'exit') {

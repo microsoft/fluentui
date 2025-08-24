@@ -7,10 +7,10 @@ interface RotateAtomParams {
   direction: PresenceDirection;
   duration: number;
   easing?: string;
+  delay?: number;
   axis?: Axis3D;
   angle?: number;
   exitAngle?: number;
-  delay?: number;
 }
 
 const createRotateValue = (axis: Axis3D, angle: number): string => {
@@ -22,20 +22,20 @@ const createRotateValue = (axis: Axis3D, angle: number): string => {
  * @param direction - The functional direction of the motion: 'enter' or 'exit'.
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
+ * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @param axis - The axis of rotation: 'x', 'y', or 'z'. Defaults to 'y'.
  * @param angle - The starting rotation angle in degrees. Defaults to -90.
  * @param exitAngle - The ending rotation angle in degrees. Defaults to the negation of `angle`.
- * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @returns A motion atom object with rotate keyframes and the supplied duration and easing.
  */
 export const rotateAtom = ({
   direction,
   duration,
   easing = motionTokens.curveLinear,
+  delay = 0,
   axis = 'y',
   angle = -90,
   exitAngle = -angle,
-  delay = 0,
 }: RotateAtomParams): AtomMotion => {
   let fromAngle = angle;
   let toAngle = 0;
