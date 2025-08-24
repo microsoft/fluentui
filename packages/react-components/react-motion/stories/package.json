@@ -8,6 +8,8 @@
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/scripts-storybook": "*",
-    "@fluentui/eslint-plugin": "*"
+    "@fluentui/eslint-plugin": "*",
+    "@faker-js/faker": "^9.6.0",
+    "nanoid": "^5.1.5"
   }
 }
