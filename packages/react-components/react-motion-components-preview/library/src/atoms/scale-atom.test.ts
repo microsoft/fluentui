@@ -1,5 +1,28 @@
 import { scaleAtom } from './scale-atom';
-import { expectScaleAtom, expectValidAtomMotion, expectReversedKeyframes, expectCustomParameters } from '../testing/atomTestUtils';
+import {
+  expectValidAtomMotion,
+  expectReversedKeyframes,
+  expectCustomParameters,
+  expectKeyframeProperty,
+} from '../testing/atomTestUtils';
+
+/**
+ * Test utility for validating scale-specific atom properties.
+ */
+function expectScaleAtom(
+  atom: import('@fluentui/react-motion').AtomMotion,
+  direction: 'enter' | 'exit',
+  fromScale: number = 0.9,
+  toScale: number = 1,
+) {
+  expectValidAtomMotion(atom);
+
+  if (direction === 'enter') {
+    expectKeyframeProperty(atom, 'scale', [fromScale, toScale]);
+  } else {
+    expectKeyframeProperty(atom, 'scale', [toScale, fromScale]);
+  }
+}
 
 describe('scaleAtom', () => {
   it('creates proper keyframes for enter and exit directions', () => {
@@ -128,17 +151,17 @@ describe('scaleAtom', () => {
   });
 
   it('validates custom scale values with test utility', () => {
-    const enterAtom = scaleAtom({ 
-      direction: 'enter', 
-      duration: 300, 
+    const enterAtom = scaleAtom({
+      direction: 'enter',
+      duration: 300,
       fromScale: 0.5,
-      toScale: 1.2
+      toScale: 1.2,
     });
-    const exitAtom = scaleAtom({ 
-      direction: 'exit', 
-      duration: 300, 
+    const exitAtom = scaleAtom({
+      direction: 'exit',
+      duration: 300,
       fromScale: 0.5,
-      toScale: 1.2
+      toScale: 1.2,
     });
 
     expectScaleAtom(enterAtom, 'enter', 0.5, 1.2);

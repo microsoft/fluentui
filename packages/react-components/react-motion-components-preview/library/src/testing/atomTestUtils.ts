@@ -28,10 +28,10 @@ export function expectValidAtomMotion(atom: AtomMotion) {
  */
 export function expectReversedKeyframes(enterAtom: AtomMotion, exitAtom: AtomMotion) {
   expect(enterAtom.keyframes).toHaveLength(exitAtom.keyframes.length);
-  
+
   const enterKeyframes = enterAtom.keyframes;
   const exitKeyframes = exitAtom.keyframes;
-  
+
   // Check that keyframes are reversed
   for (let i = 0; i < enterKeyframes.length; i++) {
     const enterFrame = enterKeyframes[i];
@@ -59,7 +59,7 @@ export function expectCustomParameters(
     duration?: number;
     easing?: string;
     delay?: number;
-  }
+  },
 ) {
   if (expectedParams.duration !== undefined) {
     expect(atom.duration).toBe(expectedParams.duration);
@@ -75,68 +75,10 @@ export function expectCustomParameters(
 /**
  * Test utility to validate keyframe structure for specific CSS properties.
  */
-export function expectKeyframeProperty(
-  atom: AtomMotion,
-  property: string,
-  expectedValues: any[]
-) {
+export function expectKeyframeProperty(atom: AtomMotion, property: string, expectedValues: any[]) {
   expect(atom.keyframes).toHaveLength(expectedValues.length);
-  
+
   atom.keyframes.forEach((frame, index) => {
     expect(frame).toHaveProperty(property, expectedValues[index]);
   });
-}
-
-/**
- * Test utility for validating fade-specific atom properties.
- */
-export function expectFadeAtom(
-  atom: AtomMotion,
-  direction: 'enter' | 'exit',
-  fromOpacity: number = 0,
-  toOpacity: number = 1
-) {
-  expectValidAtomMotion(atom);
-  
-  if (direction === 'enter') {
-    expectKeyframeProperty(atom, 'opacity', [fromOpacity, toOpacity]);
-  } else {
-    expectKeyframeProperty(atom, 'opacity', [toOpacity, fromOpacity]);
-  }
-}
-
-/**
- * Test utility for validating scale-specific atom properties.
- */
-export function expectScaleAtom(
-  atom: AtomMotion,
-  direction: 'enter' | 'exit',
-  fromScale: number = 0.9,
-  toScale: number = 1
-) {
-  expectValidAtomMotion(atom);
-  
-  if (direction === 'enter') {
-    expectKeyframeProperty(atom, 'scale', [fromScale, toScale]);
-  } else {
-    expectKeyframeProperty(atom, 'scale', [toScale, fromScale]);
-  }
-}
-
-/**
- * Test utility for validating slide-specific atom properties.
- */
-export function expectSlideAtom(
-  atom: AtomMotion,
-  direction: 'enter' | 'exit',
-  fromTranslate: string = '0px 20px',
-  toTranslate: string = '0px 0px'
-) {
-  expectValidAtomMotion(atom);
-  
-  if (direction === 'enter') {
-    expectKeyframeProperty(atom, 'translate', [fromTranslate, toTranslate]);
-  } else {
-    expectKeyframeProperty(atom, 'translate', [toTranslate, fromTranslate]);
-  }
 }

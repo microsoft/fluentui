@@ -1,5 +1,28 @@
 import { slideAtom } from './slide-atom';
-import { expectSlideAtom, expectValidAtomMotion, expectReversedKeyframes, expectCustomParameters } from '../testing/atomTestUtils';
+import {
+  expectValidAtomMotion,
+  expectReversedKeyframes,
+  expectCustomParameters,
+  expectKeyframeProperty,
+} from '../testing/atomTestUtils';
+
+/**
+ * Test utility for validating slide-specific atom properties.
+ */
+function expectSlideAtom(
+  atom: import('@fluentui/react-motion').AtomMotion,
+  direction: 'enter' | 'exit',
+  fromTranslate: string = '0px 20px',
+  toTranslate: string = '0px 0px',
+) {
+  expectValidAtomMotion(atom);
+
+  if (direction === 'enter') {
+    expectKeyframeProperty(atom, 'translate', [fromTranslate, toTranslate]);
+  } else {
+    expectKeyframeProperty(atom, 'translate', [toTranslate, fromTranslate]);
+  }
+}
 
 describe('slideAtom', () => {
   it('creates proper keyframes for enter and exit directions', () => {
@@ -117,17 +140,17 @@ describe('slideAtom', () => {
   });
 
   it('validates custom translate values with test utility', () => {
-    const enterAtom = slideAtom({ 
-      direction: 'enter', 
-      duration: 300, 
-      fromX: '100px', 
-      fromY: '-50px' 
+    const enterAtom = slideAtom({
+      direction: 'enter',
+      duration: 300,
+      fromX: '100px',
+      fromY: '-50px',
     });
-    const exitAtom = slideAtom({ 
-      direction: 'exit', 
-      duration: 300, 
-      fromX: '100px', 
-      fromY: '-50px' 
+    const exitAtom = slideAtom({
+      direction: 'exit',
+      duration: 300,
+      fromX: '100px',
+      fromY: '-50px',
     });
 
     expectSlideAtom(enterAtom, 'enter', '100px -50px', '0px 0px');

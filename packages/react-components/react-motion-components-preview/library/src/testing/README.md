@@ -25,11 +25,7 @@ Specialized utilities for testing motion atoms:
 - `expectCustomParameters()` - Validates custom timing parameters
 - `expectKeyframeProperty()` - Validates specific CSS properties in keyframes
 
-#### Atom-Specific Validators
-
-- `expectFadeAtom()` - Validates fade animation atoms (opacity changes)
-- `expectScaleAtom()` - Validates scale animation atoms (scale transforms)
-- `expectSlideAtom()` - Validates slide animation atoms (translate transforms)
+**Note**: Atom-specific validators like `expectFadeAtom()`, `expectScaleAtom()`, and `expectSlideAtom()` are defined within their respective test files to maintain better organization and reduce coupling.
 
 ## Usage Examples
 
@@ -48,8 +44,13 @@ it('creates valid presence motion', () => {
 ### Testing Motion Atoms
 
 ```typescript
-import { expectFadeAtom, expectValidAtomMotion } from '../testing';
+import { expectValidAtomMotion } from '../testing';
 import { fadeAtom } from './fade-atom';
+
+// Atom-specific validators are defined within each test file
+function expectFadeAtom(atom, direction, fromOpacity = 0, toOpacity = 1) {
+  // Implementation specific to fade atom testing
+}
 
 it('creates valid fade atom', () => {
   const atom = fadeAtom({ direction: 'enter', duration: 300 });

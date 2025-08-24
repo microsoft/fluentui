@@ -1,5 +1,28 @@
 import { fadeAtom } from './fade-atom';
-import { expectFadeAtom, expectValidAtomMotion, expectReversedKeyframes, expectCustomParameters } from '../testing/atomTestUtils';
+import {
+  expectValidAtomMotion,
+  expectReversedKeyframes,
+  expectCustomParameters,
+  expectKeyframeProperty,
+} from '../testing/atomTestUtils';
+
+/**
+ * Test utility for validating fade-specific atom properties.
+ */
+function expectFadeAtom(
+  atom: import('@fluentui/react-motion').AtomMotion,
+  direction: 'enter' | 'exit',
+  fromOpacity: number = 0,
+  toOpacity: number = 1,
+) {
+  expectValidAtomMotion(atom);
+
+  if (direction === 'enter') {
+    expectKeyframeProperty(atom, 'opacity', [fromOpacity, toOpacity]);
+  } else {
+    expectKeyframeProperty(atom, 'opacity', [toOpacity, fromOpacity]);
+  }
+}
 
 describe('fadeAtom', () => {
   it('creates proper keyframes for enter and exit directions', () => {
