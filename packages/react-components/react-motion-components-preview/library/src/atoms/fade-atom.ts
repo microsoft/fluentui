@@ -3,6 +3,7 @@ import type { CommonAtomParams } from '../types';
 
 interface FadeAtomParams extends CommonAtomParams {
   fromOpacity?: number;
+  fill?: FillMode;
 }
 
 /**
@@ -20,6 +21,7 @@ export const fadeAtom = ({
   easing = motionTokens.curveLinear,
   delay = 0,
   fromOpacity = 0,
+  fill = 'both',
 }: FadeAtomParams): AtomMotion => {
   const keyframes = [{ opacity: fromOpacity }, { opacity: 1 }];
   if (direction === 'exit') {
@@ -30,5 +32,6 @@ export const fadeAtom = ({
     duration,
     easing,
     delay,
+    fill,
   };
 };
