@@ -1,12 +1,10 @@
-import { AtomMotion, PresenceDirection, motionTokens } from '@fluentui/react-motion';
+import { AtomMotion, motionTokens } from '@fluentui/react-motion';
 import type { RotateParams } from '../components/Rotate/rotate-types';
+import { BaseAtomParams } from '../types';
 
 type Axis3D = NonNullable<RotateParams['axis']>;
 
-interface RotateAtomParams {
-  direction: PresenceDirection;
-  duration: number;
-  easing?: string;
+interface RotateAtomParams extends BaseAtomParams {
   axis?: Axis3D;
   angle?: number;
   exitAngle?: number;
