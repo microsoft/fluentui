@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 13 Aug 2025 04:08:18 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Aug 2025 04:07:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.117](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.117)
+
+Mon, 25 Aug 2025 04:07:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.116..@fluentui/web-components_v3.0.0-beta.117)
+
+### Changes
+
+- fix: remove unnecessary type check for better ssr compatibility ([PR #35073](https://github.com/microsoft/fluentui/pull/35073) by machi@microsoft.com)
 
 ## [3.0.0-beta.116](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.116)
 

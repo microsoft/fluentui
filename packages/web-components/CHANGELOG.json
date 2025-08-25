@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 25 Aug 2025 04:07:50 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.117",
+      "version": "3.0.0-beta.117",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a443aa54a00c816089de96d957ed4039a5caad8a",
+            "comment": "fix: remove unnecessary type check for better ssr compatibility"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Aug 2025 04:07:10 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.116",
       "version": "3.0.0-beta.116",
