@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DeclarativeChart, IDeclarativeChart, Schema } from '@fluentui/react-charts';
 import {
   Dropdown,
@@ -156,7 +157,7 @@ const cachedFetch = (url: string) => {
     });
 };
 
-export const DeclarativeChartBasicExample = () => {
+export const DeclarativeChartBasicExample = (): JSXElement => {
   const declarativeChartRef = React.useRef<IDeclarativeChart>(null);
   const lastKnownValidLegends = React.useRef<string[]>();
   const { targetDocument: doc } = useFluent();

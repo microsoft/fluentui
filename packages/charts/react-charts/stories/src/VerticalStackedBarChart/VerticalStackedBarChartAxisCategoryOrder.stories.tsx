@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   VerticalStackedChartProps,
   VerticalStackedBarChart,
@@ -38,7 +39,7 @@ const axisCategoryOrderOptions = [
   'median descending',
 ];
 
-export const VerticalStackedBarAxisCategoryOrder = () => {
+export const VerticalStackedBarAxisCategoryOrder = (): JSXElement => {
   const _getData = (dataSize: number) => {
     const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
     for (let i = 0; i < dataSize; i++) {

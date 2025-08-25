@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   HorizontalBarChartWithAxis,
   HorizontalBarChartWithAxisDataPoint,
@@ -47,7 +48,7 @@ const axisCategoryOrderOptions = [
   'median descending',
 ];
 
-export const HorizontalBarWithAxisCategoryOrder = () => {
+export const HorizontalBarWithAxisCategoryOrder = (): JSXElement => {
   const _getData = (dataSize: number): HorizontalBarChartWithAxisDataPoint[] => {
     const data: HorizontalBarChartWithAxisDataPoint[] = [];
     for (let i = 0; i < dataSize; i++) {

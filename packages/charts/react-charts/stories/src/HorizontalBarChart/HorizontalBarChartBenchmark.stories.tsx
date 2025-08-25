@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { HorizontalBarChart, ChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 
-export const HorizontalBarBenchmark = () => {
+export const HorizontalBarBenchmark = (): JSXElement => {
   const hideRatio: boolean[] = [true, false];
   const data: ChartProps[] = [
     {

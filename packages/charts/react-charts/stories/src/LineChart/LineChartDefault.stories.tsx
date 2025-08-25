@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { LineChartProps, LineChart, ChartProps, DataVizPalette } from '@fluentui/react-charts';
 import { Switch, Checkbox, makeStyles, tokens, Field, Radio, RadioGroup } from '@fluentui/react-components';
 import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
@@ -9,7 +10,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const LineChartBasic = (props: LineChartProps) => {
+export const LineChartBasic = (props: LineChartProps): JSXElement => {
   const classes = useStyles();
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
