@@ -1134,6 +1134,7 @@ export interface LineChartProps extends CartesianChartProps {
     enablePerfOptimization?: boolean;
     eventAnnotationProps?: EventsAnnotationProps;
     getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
+    isCalloutForStack?: boolean;
     onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
     onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
     // (undocumented)

@@ -88,6 +88,13 @@ export interface LineChartProps extends CartesianChartProps {
    * The prop used to enable the perf optimization
    */
   enablePerfOptimization?: boolean;
+
+  /**
+   * To enable callout for individual line or complete stack.
+   * @default false
+   * @type \{boolean \}
+   */
+  isCalloutForStack?: boolean;
 }
 
 /**

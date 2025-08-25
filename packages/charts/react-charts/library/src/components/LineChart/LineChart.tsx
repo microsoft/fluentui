@@ -16,6 +16,7 @@ import {
   ChildProps,
   LineChartPoints,
   CustomizedCalloutData,
+  CustomizedCalloutDataPoint,
   Margins,
   RefArrayData,
   ColorFillBarsProps,
@@ -194,6 +195,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+    const [YValue, setYValue] = React.useState<number | string>('');
+    const [legendVal, setLegendVal] = React.useState<string>('');
+    const [lineColor, setLineColor] = React.useState<string>('');
 
     const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
     const calloutPointsRef = React.useRef<any[]>([]);
@@ -582,6 +586,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     xAxisCalloutAccessibilityData,
                     event,
                     yScale,
+                    legendVal,
+                    lineColor,
                   )
                 }
                 onMouseMove={(event: React.MouseEvent<SVGElement>) =>
@@ -594,6 +600,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     xAxisCalloutAccessibilityData,
                     event,
                     yScale,
+                    legendVal,
+                    lineColor,
                   )
                 }
                 onMouseOut={_handleMouseOut}
@@ -772,6 +780,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         xAxisCalloutAccessibilityData,
                         event,
                         yScale,
+                        legendVal,
+                        lineColor,
                       )
                     }
                     onMouseMove={event =>
@@ -784,6 +794,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         xAxisCalloutAccessibilityData,
                         event,
                         yScale,
+                        legendVal,
+                        lineColor,
                       )
                     }
                     onMouseOut={_handleMouseOut}
@@ -827,6 +839,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       xAxisCalloutAccessibilityData,
                       event,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )
                   }
                   onMouseMove={(event: React.MouseEvent<SVGElement>) =>
@@ -839,6 +853,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       xAxisCalloutAccessibilityData,
                       event,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )
                   }
                   onMouseOut={_handleMouseOut}
@@ -889,6 +905,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                             lastCirlceXCalloutAccessibilityData,
                             event,
                             yScale,
+                            legendVal,
+                            lineColor,
                           )
                         }
                         onMouseMove={event =>
@@ -901,6 +919,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                             lastCirlceXCalloutAccessibilityData,
                             event,
                             yScale,
+                            legendVal,
+                            lineColor,
                           )
                         }
                         onMouseOut={_handleMouseOut}
@@ -951,6 +971,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           lastCirlceXCalloutAccessibilityData,
                           event,
                           yScale,
+                          legendVal,
+                          lineColor,
                         )
                       }
                       onMouseMove={(event: React.MouseEvent<SVGElement>) =>
@@ -963,6 +985,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           lastCirlceXCalloutAccessibilityData,
                           event,
                           yScale,
+                          legendVal,
+                          lineColor,
                         )
                       }
                       onMouseOut={_handleMouseOut}
@@ -1006,6 +1030,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         lastCirlceXCalloutAccessibilityData,
                         event,
                         yScale,
+                        legendVal,
+                        lineColor,
                       )
                     }
                     onMouseMove={(event: React.MouseEvent<SVGElement>) =>
@@ -1018,6 +1044,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         lastCirlceXCalloutAccessibilityData,
                         event,
                         yScale,
+                        legendVal,
+                        lineColor,
                       )
                     }
                     onFocus={event =>
@@ -1078,6 +1106,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           xAxisCalloutAccessibilityData,
                           event,
                           yScale,
+                          legendVal,
+                          lineColor,
                         )
                       }
                       onMouseMove={event =>
@@ -1090,6 +1120,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           xAxisCalloutAccessibilityData,
                           event,
                           yScale,
+                          legendVal,
+                          lineColor,
                         )
                       }
                       onMouseOut={_handleMouseOut}
@@ -1383,11 +1415,25 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       xAxisCalloutAccessibilityData: AccessibilityProps | undefined,
       mouseEvent: React.MouseEvent<SVGElement>,
       yScale: ScaleLinear<number, number>,
+      legendVal: string,
+      lineColor: string,
     ) {
       mouseEvent?.persist();
       const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
       const xVal = x instanceof Date ? x.getTime() : x;
+      const yVal = y instanceof Date ? y.getTime() : y;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
+      let hoverDp: CustomizedCalloutData | undefined = undefined;
+
+      if (props.isCalloutForStack === false && found?.values) {
+        const dp = find(found.values, (val: CustomizedCalloutDataPoint) => val?.y === yVal);
+        if (dp) {
+          hoverDp = {
+            x: xVal,
+            values: [dp],
+          };
+        }
+      }
       // if no points need to be called out then don't show vertical line and callout card
 
       if (found) {
@@ -1401,8 +1447,11 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           updatePosition(mouseEvent.clientX, mouseEvent.clientY);
           xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
           setYValueHover(found.values);
+          setYValue(yVal);
+          setLegendVal(legendVal);
+          setLineColor(lineColor);
           setStackCalloutProps(found!);
-          setDataPointCalloutProps(found!);
+          setDataPointCalloutProps(hoverDp);
           setActivePoint(circleId);
           setNearestCircleToHighlight(null);
         }
@@ -1673,6 +1722,10 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const calloutProps = {
       YValueHover: YValueHover,
       hoverXValue: hoverXValue,
+      YValue: YValue,
+      legend: legendVal,
+      color: lineColor,
+      XValue: hoverXValue! as string,
       descriptionMessage:
         props.getCalloutDescriptionMessage && stackCalloutProps
           ? props.getCalloutDescriptionMessage(stackCalloutProps)
@@ -1682,7 +1735,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       ...props.calloutProps,
       clickPosition: clickPosition,
       isPopoverOpen: isPopoverOpen,
-      isCalloutForStack: true,
+      isCalloutForStack: props.isCalloutForStack,
       culture: props.culture ?? 'en-us',
       isCartesian: true,
       customCallout: {
@@ -1763,3 +1816,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
   },
 );
 LineChart.displayName = 'LineChart';
+LineChart.defaultProps = {
+  isCalloutForStack: false,
+};
