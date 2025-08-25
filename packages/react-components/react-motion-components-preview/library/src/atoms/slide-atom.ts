@@ -1,9 +1,7 @@
-import { AtomMotion, PresenceDirection, motionTokens } from '@fluentui/react-motion';
+import { AtomMotion, motionTokens } from '@fluentui/react-motion';
+import { BaseAtomParams } from '../types';
 
-interface SlideAtomParams {
-  direction: PresenceDirection;
-  duration: number;
-  easing?: string;
+interface SlideAtomParams extends BaseAtomParams {
   fromX?: string;
   fromY?: string;
 }

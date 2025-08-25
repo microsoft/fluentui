@@ -1,4 +1,4 @@
-import type { MotionParam, PresenceMotion, PresenceMotionFn } from '@fluentui/react-motion';
+import type { MotionParam, PresenceMotion, PresenceMotionFn, PresenceDirection } from '@fluentui/react-motion';
 
 /**
  * This is a factory function that generates a motion object from variant params, e.g. duration, easing, etc.
@@ -56,4 +56,16 @@ export type PresenceEasing = {
 export type AnimateOpacity = {
   /** Whether to animate the opacity. Defaults to `true`. */
   animateOpacity?: boolean;
+};
+
+/**
+ * Common parameters shared by all atom functions (without delay).
+ */
+export type BaseAtomParams = {
+  /** The functional direction of the motion: 'enter' or 'exit'. */
+  direction: PresenceDirection;
+  /** The duration of the motion in milliseconds. */
+  duration: number;
+  /** The easing curve for the motion. */
+  easing?: string;
 };

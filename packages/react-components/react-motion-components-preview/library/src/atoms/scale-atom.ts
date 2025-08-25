@@ -1,9 +1,7 @@
-import { AtomMotion, PresenceDirection, motionTokens } from '@fluentui/react-motion';
+import { AtomMotion, motionTokens } from '@fluentui/react-motion';
+import { BaseAtomParams } from '../types';
 
-interface ScaleAtomParams {
-  direction: PresenceDirection;
-  duration: number;
-  easing?: string;
+interface ScaleAtomParams extends BaseAtomParams {
   fromScale?: number;
   toScale?: number;
 }
