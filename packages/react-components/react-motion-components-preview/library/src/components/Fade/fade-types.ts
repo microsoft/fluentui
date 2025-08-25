@@ -1,3 +1,3 @@
-import type { PresenceDuration, PresenceEasing } from '../../types';
+import type { BasePresenceParams } from '../../types';
 
-export type FadeParams = PresenceDuration & PresenceEasing;
+export type FadeParams = BasePresenceParams;

@@ -17,6 +17,7 @@ export const blurAtom = ({
   direction,
   duration,
   easing = motionTokens.curveLinear,
+  delay = 0,
   fromRadius = '10px',
 }: BlurAtomParams): AtomMotion => {
   const keyframes = [{ filter: `blur(${fromRadius})` }, { filter: 'blur(0px)' }];
@@ -27,5 +28,6 @@ export const blurAtom = ({
     keyframes,
     duration,
     easing,
+    delay,
   };
 };

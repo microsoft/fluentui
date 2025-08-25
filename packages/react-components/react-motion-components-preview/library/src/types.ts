@@ -51,6 +51,22 @@ export type PresenceEasing = {
 };
 
 /**
+ * Common delay parameters for presence motion components.
+ */
+export type PresenceDelay = {
+  /** Time (ms) to delay the enter transition. */
+  delay?: EffectTiming['delay'];
+
+  /** Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry. */
+  exitDelay?: EffectTiming['delay'];
+};
+
+/**
+ * Base presence parameters combining duration, easing, and delay for motion components.
+ */
+export type BasePresenceParams = PresenceDuration & PresenceEasing & PresenceDelay;
+
+/**
  * Common opacity animation parameter for motion components.
  */
 export type AnimateOpacity = {
@@ -59,7 +75,7 @@ export type AnimateOpacity = {
 };
 
 /**
- * Common parameters shared by all atom functions (without delay).
+ * Common parameters shared by all atom functions.
  */
 export type BaseAtomParams = {
   /** The functional direction of the motion: 'enter' or 'exit'. */
@@ -67,5 +83,7 @@ export type BaseAtomParams = {
   /** The duration of the motion in milliseconds. */
   duration: number;
   /** The easing curve for the motion. */
-  easing?: string;
+  easing?: EffectTiming['easing'];
+  /** Time (ms) to delay the animation. */
+  delay?: EffectTiming['delay'];
 };

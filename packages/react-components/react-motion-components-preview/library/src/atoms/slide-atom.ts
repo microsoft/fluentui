@@ -19,6 +19,7 @@ export const slideAtom = ({
   direction,
   duration,
   easing = motionTokens.curveLinear,
+  delay = 0,
   fromX = '0px',
   fromY = '20px',
 }: SlideAtomParams): AtomMotion => {
@@ -30,5 +31,6 @@ export const slideAtom = ({
     keyframes,
     duration,
     easing,
+    delay,
   };
 };
