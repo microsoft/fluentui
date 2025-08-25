@@ -91,7 +91,7 @@ export interface LineChartProps extends CartesianChartProps {
 
   /**
    * To enable callout for individual line or complete stack.
-   * @default false
+   * @default true
    * @type \{boolean \}
    */
   isCalloutForStack?: boolean;
