@@ -2,6 +2,7 @@ import { AtomMotion, motionTokens } from '@fluentui/react-motion';
 import { BaseAtomParams } from '../types';
 
 interface FadeAtomParams extends BaseAtomParams {
+  fill?: FillMode;
   fromOpacity?: number;
 }
 
