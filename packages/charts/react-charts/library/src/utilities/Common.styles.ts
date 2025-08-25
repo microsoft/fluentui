@@ -1,4 +1,4 @@
-import { HighContrastSelector } from '@fluentui/react/lib/Styling';
+import { HighContrastSelector } from '../utilities/utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { shorthands } from '@griffel/react';
 
