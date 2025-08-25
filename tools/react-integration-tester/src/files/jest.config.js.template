@@ -1,7 +1,10 @@
 // @ts-check
 /* eslint-disable */
 
-const { join } = require('node:path');
+const { join, sep } = require('node:path');
+const { pathsToModuleNameMapper } = require('ts-jest');
+
+const baseConfig = require('<%= relativePathToProjectRoot %>/jest.config');
 
 // Resolve dependencies from the shared react-version root folder (injected by CLI)
 const usedNodeModulesPath = join(__dirname, '<%= usedNodeModulesDirRelative %>', 'node_modules');
@@ -9,13 +12,10 @@ const usedNodeModulesPath = join(__dirname, '<%= usedNodeModulesDirRelative %>',
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */
-module.exports = {
-  displayName: '<%= projectName %>',
-  roots: ['<%= relativePathToProjectRoot %>'],
-  preset: '<%= relativePathToWorkspaceRoot %>/jest.preset.js',
-  // Heads up!
-  // Forces React to be resolved from the root node_modules to ensure the same instance is used across all packages
+const ritConfig = {
+  rootDir: '<%= relativePathToProjectRoot %>',
   moduleNameMapper: {
+    ...getTsPathAliases(),
     '^react$': join(usedNodeModulesPath, './react'),
     '^react/jsx-runtime$': join(usedNodeModulesPath, 'react/jsx-runtime'),
     '^react-dom$': join(usedNodeModulesPath, './react-dom'),
@@ -25,11 +25,45 @@ module.exports = {
   <%_ if (react === 19) { _%>
   '^@testing-library/react-hooks$': join(usedNodeModulesPath, './@testing-library/react/'),
   <%_ } _%>
-  },
-  transform: {
-    '^.+\\.tsx?$': ['@swc/jest'],
-  },
-  coverageDirectory: './coverage',
-  setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@griffel/jest-serializer'],
-};
+  }
+}
+
+const config = merge(baseConfig, ritConfig);
+
+module.exports = config;
+
+// helpers
+
+function merge(obj1, obj2) {
+  const merged = Object.assign({}, obj1);
+
+  for (const prop in obj2) {
+    const sourceValue = obj2[prop];
+    const targetValue = obj1[prop];
+
+    if (sourceValue && Array.isArray(sourceValue) && targetValue && Array.isArray(targetValue)) {
+      merged[prop] = targetValue.concat(sourceValue);
+    } else if (typeof targetValue === 'object' && typeof sourceValue === 'object') {
+      merged[prop] = merge(targetValue, sourceValue);
+    } else {
+      merged[prop] = sourceValue;
+    }
+  }
+
+  return merged;
+}
+
+function getTsPathAliases(){
+  // Compute absolute workspace root from this config file location
+  const workspaceRoot = join(__dirname, '<%= relativePathToWorkspaceRoot %>');
+  const tsConfigBase = require(join(workspaceRoot, 'tsconfig.base.json'));
+
+  // Ensure prefix ends with a path separator so mapped paths concatenate correctly
+  const prefix = workspaceRoot.endsWith(sep) ? workspaceRoot : workspaceRoot + sep;
+
+  const tsPathAliases = pathsToModuleNameMapper(tsConfigBase.compilerOptions.paths, {
+    prefix,
+  });
+
+  return tsPathAliases;
+}

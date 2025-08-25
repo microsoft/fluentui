@@ -3,6 +3,7 @@
     "target": "ES2019",
     "module": "esnext",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "lib": ["ES2019", "dom"],
     "strict": true,
     "pretty": true,
@@ -16,15 +17,15 @@
     "baseUrl": "."
   },
   "exclude": [
-    "<%= relativePathToProjectRoot %>/**/index.stories.tsx",
-    "<%= relativePathToProjectRoot %>/**/index.stories.ts",
-    "<%= relativePathToProjectRoot %>/**/*.spec.tsx",
-    "<%= relativePathToProjectRoot %>/**/*.test.tsx",
-    "<%= relativePathToProjectRoot %>/**/src/testing/**"
+    "<%= relativePathToProjectDomainRoot %>/**/index.stories.tsx",
+    "<%= relativePathToProjectDomainRoot %>/**/index.stories.ts",
+    "<%= relativePathToProjectDomainRoot %>/**/*.spec.tsx",
+    "<%= relativePathToProjectDomainRoot %>/**/*.test.tsx",
+    "<%= relativePathToProjectDomainRoot %>/**/src/testing/**"
   ],
   "include": [
-    "<%= relativePathToProjectRoot %>/**/*.stories.tsx",
-    "<%= relativePathToProjectRoot %>/**/*.stories.ts"
+    "<%= relativePathToProjectDomainRoot %>/**/*.stories.tsx",
+    "<%= relativePathToProjectDomainRoot %>/**/*.stories.ts"
   ],
   "files": ["<%= relativePathToWorkspaceRoot %>/typings/static-assets/index.d.ts"]
 }
