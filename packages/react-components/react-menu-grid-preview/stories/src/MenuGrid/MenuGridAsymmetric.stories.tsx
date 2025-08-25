@@ -26,10 +26,22 @@ export const Asymmetric = () => {
                 item.cannotRemove ? (
                   { visuallyHidden: true }
                 ) : (
-                  <Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<DeleteRegular />}
+                    aria-label={`Remove ${name}`}
+                  ></Button>
                 )
               }
-              icon={<Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>}
+              icon={
+                <Button
+                  size="small"
+                  appearance="transparent"
+                  icon={<GlobePersonRegular />}
+                  aria-label={`Profile card for ${name}`}
+                ></Button>
+              }
               aria-label={item.name}
             >
               {item.name}

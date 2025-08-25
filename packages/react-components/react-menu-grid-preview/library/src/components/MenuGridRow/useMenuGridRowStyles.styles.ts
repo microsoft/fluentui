@@ -61,7 +61,6 @@ const useRootBaseStyles = makeResetStyles({
   ...createFocusOutlineStyle(),
 });
 
-
 export const useMenuGridRowStyles_unstable = (state: MenuGridRowState): MenuGridRowState => {
   'use no memo';
 

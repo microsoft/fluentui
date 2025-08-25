@@ -16,8 +16,22 @@ export const Default = () => {
           {items.map((name, index) => (
             <MenuGridItem
               key={index}
-              icon={<Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>}
-              secondSubAction={<Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>}
+              icon={
+                <Button
+                  size="small"
+                  appearance="transparent"
+                  icon={<GlobePersonRegular />}
+                  aria-label={`Profile card for ${name}`}
+                ></Button>
+              }
+              secondSubAction={
+                <Button
+                  size="small"
+                  appearance="transparent"
+                  icon={<DeleteRegular />}
+                  aria-label={`Remove ${name}`}
+                ></Button>
+              }
               aria-label={name}
             >
               {name}

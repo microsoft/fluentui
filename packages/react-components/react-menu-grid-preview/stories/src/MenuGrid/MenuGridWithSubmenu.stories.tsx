@@ -10,8 +10,8 @@ const Submenu = () => {
     <Menu positioning={{ autoSize: true }}>
       <MenuTrigger disableButtonEnhancement>
         <Button
-          appearance='transparent'
-          size='small'
+          appearance="transparent"
+          size="small"
           icon={<MoreHorizontalRegular />}
           aria-label="More actions"
           onKeyDown={event => {
@@ -20,8 +20,7 @@ const Submenu = () => {
               event.preventDefault();
             }
           }}
-        >
-        </Button>
+        ></Button>
       </MenuTrigger>
       <MenuPopover>
         <MenuList>

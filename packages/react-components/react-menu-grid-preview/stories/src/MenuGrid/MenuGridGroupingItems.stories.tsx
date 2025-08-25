@@ -21,8 +21,22 @@ export const GroupingItems = () => {
             {items.people.map((name, index) => (
               <MenuGridItem
                 key={index}
-                icon={<Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>}
-                firstSubAction={<Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>}
+                icon={
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<GlobePersonRegular />}
+                    aria-label={`Profile card for ${name}`}
+                  ></Button>
+                }
+                firstSubAction={
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<DeleteRegular />}
+                    aria-label={`Remove ${name}`}
+                  ></Button>
+                }
                 aria-label={name}
               >
                 {name}
@@ -34,8 +48,22 @@ export const GroupingItems = () => {
             {items.agentsAndBots.map((name, index) => (
               <MenuGridItem
                 key={index}
-                icon={<Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>}
-                firstSubAction={<Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>}
+                icon={
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<GlobePersonRegular />}
+                    aria-label={`Profile card for ${name}`}
+                  ></Button>
+                }
+                firstSubAction={
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<DeleteRegular />}
+                    aria-label={`Remove ${name}`}
+                  ></Button>
+                }
                 aria-label={name}
               >
                 {name}

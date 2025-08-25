@@ -16,7 +16,12 @@ export const MoreComplexMenus = () => {
           {items.map((name, index) => (
             <MenuGridRow key={index} aria-label={name}>
               <MenuGridCell>
-                <Button size="small" appearance="transparent" icon={<GlobePersonRegular />} aria-label={`Profile card for ${name}`}></Button>
+                <Button
+                  size="small"
+                  appearance="transparent"
+                  icon={<GlobePersonRegular />}
+                  aria-label={`Profile card for ${name}`}
+                ></Button>
               </MenuGridCell>
               <MenuGridCell>{name}</MenuGridCell>
               <MenuGridCell>
@@ -26,7 +31,12 @@ export const MoreComplexMenus = () => {
                 <Button size="small" appearance="transparent" icon={<CameraRegular />} aria-label="Video call"></Button>
               </MenuGridCell>
               <MenuGridCell>
-                <Button size="small" appearance='transparent' icon={<DeleteRegular />} aria-label={`Remove ${name}`}></Button>
+                <Button
+                  size="small"
+                  appearance="transparent"
+                  icon={<DeleteRegular />}
+                  aria-label={`Remove ${name}`}
+                ></Button>
               </MenuGridCell>
             </MenuGridRow>
           ))}

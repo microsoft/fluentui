@@ -11,10 +11,10 @@ export const menuGridItemClassNames: SlotClassNames<MenuGridItemSlots> = {
   secondSubAction: 'fui-MenuGridRow__secondSubAction',
 };
 
-const useStyles  = makeStyles({
+const useStyles = makeStyles({
   secondSubAction: {
     marginLeft: 'auto',
-  }
+  },
 });
 
 export const useMenuGridItemStyles_unstable = (state: MenuGridItemState): MenuGridItemState => {
