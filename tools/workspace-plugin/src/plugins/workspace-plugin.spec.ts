@@ -161,6 +161,38 @@ describe(`workspace-plugin`, () => {
         expect(targets['react-integration-testing--17']).toBeUndefined();
         expect(targets['react-integration-testing--18']).toBeUndefined();
       });
+
+      it(`should not create atomized targets if project is explicitly excluded via plugin config#exclude`, async () => {
+        await tempFs.createFiles({
+          'proj/library/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+          } satisfies ProjectConfiguration),
+          'proj/library/package.json': serializeJson({
+            name: '@proj/proj',
+            private: true,
+          } satisfies Partial<PackageJson>),
+          'proj/stories/project.json': serializeJson({
+            root: 'proj/stories',
+            name: 'proj-stories',
+            tags: ['type:stories', 'vNext'],
+          } satisfies ProjectConfiguration),
+        });
+        const results = await createNodesFunction(
+          ['proj/library/project.json'],
+          { reactIntegrationTesting: { exclude: ['proj'], reactVersions: ['17', '18'] } },
+          context,
+        );
+
+        const targets = getTargets(results, 'proj/library')!;
+
+        expect(targets['react-integration-testing']).toEqual(undefined);
+        expect(targets['react-integration-testing--17']).toBeUndefined();
+        expect(targets['react-integration-testing--18']).toBeUndefined();
+      });
+
       it(`should --run type-check within targets for projects with "stories" sibling projects`, async () => {
         await tempFs.createFiles({
           'proj/library/project.json': serializeJson({
