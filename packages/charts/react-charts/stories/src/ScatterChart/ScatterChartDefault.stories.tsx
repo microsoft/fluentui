@@ -28,7 +28,7 @@ export const ScatterChartDefault = () => {
 
   const data: ChartProps = {
     chartTitle: 'Project Revenue and Transactions Over Time',
-    lineChartData: [
+    scatterChartData: [
       {
         legend: 'Phase 1',
         data: [

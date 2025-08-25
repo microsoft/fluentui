@@ -1,8 +1,8 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { DonutChartProps, DonutChartStyles } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { HighContrastSelector } from '../../utilities/utilities';
+import { getAxisTitleStyle } from '../../utilities/index';
 
 /**
  * @internal
@@ -37,16 +37,7 @@ const useStyles = makeStyles({
     paddingTop: tokens.spacingVerticalL,
     width: '100%',
   },
-  axisAnnotation: {
-    ...typographyStyles.caption2Strong,
-    textAlign: 'center',
-    fontStyle: 'normal',
-    color: tokens.colorNeutralForeground2,
-    fill: tokens.colorNeutralForeground1,
-    [HighContrastSelector]: {
-      fill: 'CanvasText',
-    },
-  },
+  axisAnnotation: getAxisTitleStyle() as GriffelStyle,
 });
 
 /**

@@ -6,7 +6,7 @@ import { Async } from './async-utils';
 import { KeyCodes } from './KeyCodes';
 import { useId } from '@fluentui/react-utilities';
 
-interface SVGTooltipTextProps {
+export interface SVGTooltipTextProps {
   closeDelay?: number;
   content: string;
   delay?: number;
