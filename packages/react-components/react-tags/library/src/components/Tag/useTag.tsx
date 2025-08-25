@@ -94,7 +94,12 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
         id,
         ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
       }),
-      { elementType },
+      {
+        defaultProps: {
+          type: elementType === 'button' ? 'button' : undefined,
+        },
+        elementType,
+      },
     ),
 
     media: slot.optional(props.media, { elementType: 'span' }),
