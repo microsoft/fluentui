@@ -1,8 +1,7 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { ScatterChartProps, ScatterChartStyles } from './ScatterChart.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { HighContrastSelector } from '../../utilities/index';
+import { getMarkerLabelStyle, getTooltipStyle } from '../../utilities/index';
 
 /**
  * @internal
@@ -30,25 +29,8 @@ export const scatterChartClassNames: SlotClassNames<ScatterChartStyles> = {
  * Base Styles
  */
 const useStyles = makeStyles({
-  tooltip: {
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    position: 'absolute',
-    textAlign: 'center',
-    top: tokens.spacingVerticalNone,
-    fill: tokens.colorNeutralBackground1,
-    borderRadius: tokens.borderRadiusSmall,
-    pointerEvents: 'none',
-  },
-  markerLabel: {
-    ...typographyStyles.body1,
-    fill: tokens.colorNeutralForeground1,
-    textAnchor: 'middle',
-    [HighContrastSelector]: {
-      fill: 'CanvasText',
-    },
-  },
+  tooltip: getTooltipStyle() as GriffelStyle,
+  markerLabel: getMarkerLabelStyle() as GriffelStyle,
 });
 
 /**
