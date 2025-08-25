@@ -7,6 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { PopoverSurface } from '@fluentui/react-popover';
@@ -58,10 +59,10 @@ export type InfoLabelSlots = {
 export type InfoLabelState = ComponentState<InfoLabelSlots> & Pick<InfoLabelProps, 'size'>;
 
 // @public
-export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;
+export const renderInfoButton_unstable: (state: InfoButtonState) => JSXElement;
 
 // @public
-export const renderInfoLabel_unstable: (state: InfoLabelState) => JSX.Element;
+export const renderInfoLabel_unstable: (state: InfoLabelState) => JSXElement;
 
 // @public
 export const useInfoButton_unstable: (props: InfoButtonProps, ref: React_2.Ref<HTMLButtonElement>) => InfoButtonState;

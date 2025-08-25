@@ -7,6 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -152,22 +153,22 @@ export type MenuGridState = ComponentState<MenuGridSlots> & {
 };
 
 // @public
-export const renderMenuGrid_unstable: (state: MenuGridState, contextValues: MenuGridContextValues) => JSX.Element;
+export const renderMenuGrid_unstable: (state: MenuGridState, contextValues: MenuGridContextValues) => JSXElement;
 
 // @public
-export const renderMenuGridCell_unstable: (state: MenuGridCellState) => JSX.Element;
+export const renderMenuGridCell_unstable: (state: MenuGridCellState) => JSXElement;
 
 // @public
-export const renderMenuGridGroup_unstable: (state: MenuGridGroupState, contextValues: MenuGridGroupContextValues) => JSX.Element;
+export const renderMenuGridGroup_unstable: (state: MenuGridGroupState, contextValues: MenuGridGroupContextValues) => JSXElement;
 
 // @public
-export const renderMenuGridGroupHeader_unstable: (state: MenuGridGroupHeaderState) => JSX.Element;
+export const renderMenuGridGroupHeader_unstable: (state: MenuGridGroupHeaderState) => JSXElement;
 
 // @public
-export const renderMenuGridItem_unstable: (state: MenuGridItemState) => JSX.Element;
+export const renderMenuGridItem_unstable: (state: MenuGridItemState) => JSXElement;
 
 // @public
-export const renderMenuGridRow_unstable: (state: MenuGridRowState) => JSX.Element;
+export const renderMenuGridRow_unstable: (state: MenuGridRowState) => JSXElement;
 
 // @public
 export const useMenuGrid_unstable: (props: MenuGridProps, ref: React_2.Ref<HTMLDivElement>) => MenuGridState;

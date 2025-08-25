@@ -107,16 +107,16 @@ export type HeadlessFlatTreeOptions = Pick<FlatTreeProps, 'onOpenChange' | 'onNa
 export const renderFlatTree_unstable: (state: FlatTreeState, contextValues: FlatTreeContextValues) => JSXElement;
 
 // @public (undocumented)
-export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSX.Element;
+export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSXElement;
 
 // @public
-export const renderTreeItem_unstable: (state: TreeItemState, contextValues: TreeItemContextValues) => JSX.Element;
+export const renderTreeItem_unstable: (state: TreeItemState, contextValues: TreeItemContextValues) => JSXElement;
 
 // @public
-export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState) => JSX.Element;
+export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState) => JSXElement;
 
 // @public
-export const renderTreeItemPersonaLayout_unstable: (state: TreeItemPersonaLayoutState, contextValues: TreeItemPersonaLayoutContextValues) => JSX.Element;
+export const renderTreeItemPersonaLayout_unstable: (state: TreeItemPersonaLayoutState, contextValues: TreeItemPersonaLayoutContextValues) => JSXElement;
 
 // @public (undocumented)
 export type SubtreeContextValue = {
