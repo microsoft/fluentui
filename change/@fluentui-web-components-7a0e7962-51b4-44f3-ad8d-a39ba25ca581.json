@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: remove unnecessary type check and avoid using instanceof in menu-list",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}
