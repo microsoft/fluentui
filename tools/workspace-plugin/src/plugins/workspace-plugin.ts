@@ -543,6 +543,18 @@ function buildReactIntegrationTesterProjectConfiguration(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): ReactIntegrationTesterTargets {
+  if (
+    options.reactIntegrationTesting.include.length &&
+    !options.reactIntegrationTesting.include.includes(config.projectJSON.name!)
+  ) {
+    return {};
+  }
+  if (
+    options.reactIntegrationTesting.exclude.length &&
+    options.reactIntegrationTesting.exclude.includes(config.projectJSON.name!)
+  ) {
+    return {};
+  }
   // react v9 lib
   if (
     config.projectJSON.projectType !== 'library' ||
