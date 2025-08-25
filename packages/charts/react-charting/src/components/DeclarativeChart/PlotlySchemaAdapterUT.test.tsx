@@ -183,7 +183,7 @@ describe('getColor', () => {
   });
 
   test('Should return color code when we had legend title is empty', () => {
-    expect(getColor('', { current: colorMap }, false)).toBe('#ca5010');
+    expect(getColor('', { current: colorMap }, false)).toBe('#f7630c');
   });
 });
 
@@ -401,11 +401,11 @@ describe('getSchemaColors with plotly colorway', () => {
   });
   test('Should return array of fluent colorway colors when input has plotly colorway colors in RGB format', () => {
     const rgbColors = ['rgb(255, 161, 90)', 'rgb(25, 211, 243)'];
-    expect(getSchemaColors(plotlyColorway, rgbColors, { current: colorMap })).toStrictEqual(['#f7630c', '#3a96dd']);
+    expect(getSchemaColors(plotlyColorway, rgbColors, { current: colorMap })).toStrictEqual(['#ca5010', '#3a96dd']);
   });
   test('Should return array of fluent colorway colors when input has plotly colorway colors in RGBA format', () => {
     const rgbaColors = ['rgba(255, 161, 90, 1)', 'rgba(25, 211, 243, 1)'];
-    expect(getSchemaColors(plotlyColorway, rgbaColors, { current: colorMap })).toStrictEqual(['#f7630c', '#3a96dd']);
+    expect(getSchemaColors(plotlyColorway, rgbaColors, { current: colorMap })).toStrictEqual(['#ca5010', '#3a96dd']);
   });
   // The provided hex colors are not mapping to hsl color clamped color string.
   // Eg: hsl(235.62913907284766, 0.9378881987577639, 0.6843137254901961) is mapping as hsl(236, 94%, 68%)
