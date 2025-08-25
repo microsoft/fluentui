@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: enforce explicit module boundary types",
+  "packageName": "@fluentui/react-list",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "none"
+}
