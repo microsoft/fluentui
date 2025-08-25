@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
 import {
   MessageBar,
@@ -11,7 +12,7 @@ import {
 } from '@fluentui/react-components';
 
 const intents = ['info', 'warning', 'error', 'success'] as const;
-export const ManualLayout = () => {
+export const ManualLayout = (): JSXElement => {
   const [single, setSingle] = React.useState(true);
   return (
     <>

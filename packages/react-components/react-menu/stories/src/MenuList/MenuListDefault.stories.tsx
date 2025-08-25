@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, MenuList, MenuItem } from '@fluentui/react-components';
 
 const useMenuListContainerStyles = makeStyles({
@@ -14,7 +15,7 @@ const useMenuListContainerStyles = makeStyles({
   },
 });
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const styles = useMenuListContainerStyles();
   return (
     <div className={styles.container}>

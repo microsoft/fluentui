@@ -1,6 +1,7 @@
 import { Field, makeStyles, tokens, Switch, PresenceComponentProps } from '@fluentui/react-components';
 import { Collapse } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {
@@ -35,7 +36,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Default = (props: PresenceComponentProps) => {
+export const Default = (props: PresenceComponentProps): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
 

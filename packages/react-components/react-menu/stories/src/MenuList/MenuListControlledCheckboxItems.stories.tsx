@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { MenuList, MenuItemCheckbox, makeStyles, tokens } from '@fluentui/react-components';
 import {
@@ -29,7 +30,7 @@ const useMenuListContainerStyles = makeStyles({
   },
 });
 
-export const ControlledCheckboxItems = () => {
+export const ControlledCheckboxItems = (): JSXElement => {
   const styles = useMenuListContainerStyles();
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ edit: ['cut', 'paste'] });
   const onChange: MenuProps['onCheckedValueChange'] = (e, { name, checkedItems }) => {

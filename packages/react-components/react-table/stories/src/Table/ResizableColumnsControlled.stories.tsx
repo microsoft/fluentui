@@ -1,5 +1,4 @@
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   TableColumnDefinition,
   TableColumnId,
@@ -162,7 +161,7 @@ const items: Item[] = [
   },
 ];
 
-export const ResizableColumnsControlled = () => {
+export const ResizableColumnsControlled = (): JSXElement => {
   const [columns, setColumns] = React.useState<TableColumnDefinition<Item>[]>(columnsDef);
   const [columnSizingOptions, setColumnSizingOptions] = React.useState<TableColumnSizingOptions>({
     file: {

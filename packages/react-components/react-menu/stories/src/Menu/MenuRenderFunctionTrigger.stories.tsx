@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
@@ -6,7 +7,7 @@ import type { MenuProps, MenuTriggerChildProps } from '@fluentui/react-component
 
 const buttonStyle = { height: 22, verticalAlign: 'middle' };
 
-export const RenderFunctionTrigger = () => {
+export const RenderFunctionTrigger = (): JSXElement => {
   const [open, setOpen] = React.useState(false);
   const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
     setOpen(data.open);

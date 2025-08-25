@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
 import type { MenuProps } from '@fluentui/react-components';
@@ -75,7 +76,7 @@ const PreferencesSubMenu = () => {
   );
 };
 
-export const NestedSubmenusControlled = () => {
+export const NestedSubmenusControlled = (): JSXElement => {
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>

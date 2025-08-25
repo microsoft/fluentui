@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
 
-export const HeadingLevels = () => (
+export const HeadingLevels = (): JSXElement => (
   <Accordion>
     <AccordionItem value="1">
       <AccordionHeader as="h1">Accordion Header as h1</AccordionHeader>

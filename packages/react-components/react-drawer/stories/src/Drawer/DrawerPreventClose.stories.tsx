@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   OverlayDrawer,
   DrawerBody,
@@ -10,7 +11,7 @@ import {
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
-export const PreventClose = () => {
+export const PreventClose = (): JSXElement => {
   const [open, setOpen] = React.useState(false);
 
   // all Drawers need manual focus restoration attributes

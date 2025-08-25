@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, SwatchPicker, ImageSwatch } from '@fluentui/react-components';
 import type { SwatchPickerOnSelectEventHandler } from '@fluentui/react-components';
 
@@ -43,7 +44,7 @@ const images = [
   },
 ];
 
-export const SwatchPickerImage = () => {
+export const SwatchPickerImage = (): JSXElement => {
   const [selectedValue, setSelectedValue] = React.useState('1');
   const [selectedImage, setSelectedImage] = React.useState(DEFAULT_IMAGE);
   const handleSelect: SwatchPickerOnSelectEventHandler = (_, data) => {

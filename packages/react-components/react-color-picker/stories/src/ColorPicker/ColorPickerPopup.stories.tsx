@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
 import {
   makeStyles,
@@ -42,7 +43,7 @@ const useStyles = makeStyles({
 
 const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 
-export const ColorPickerPopup = () => {
+export const ColorPickerPopup = (): JSXElement => {
   const styles = useStyles();
   const [previewColor, setPreviewColor] = React.useState(DEFAULT_COLOR_HSV);
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);

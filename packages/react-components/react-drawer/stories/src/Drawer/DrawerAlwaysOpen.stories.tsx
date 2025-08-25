@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DrawerBody, DrawerHeader, DrawerHeaderTitle, InlineDrawer, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const AlwaysOpen = () => {
+export const AlwaysOpen = (): JSXElement => {
   const styles = useStyles();
 
   return (

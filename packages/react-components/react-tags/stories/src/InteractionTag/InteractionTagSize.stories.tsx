@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   InteractionTag,
   InteractionTagPrimary,
@@ -21,7 +22,7 @@ const useContainerStyles = makeStyles({
     rowGap: '10px',
   },
 });
-export const Size = () => {
+export const Size = (): JSXElement => {
   const styles = useContainerStyles();
   return (
     <div className={styles.outerWrapper}>
