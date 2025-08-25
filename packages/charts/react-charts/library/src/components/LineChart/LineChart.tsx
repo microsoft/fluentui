@@ -1817,5 +1817,5 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 );
 LineChart.displayName = 'LineChart';
 LineChart.defaultProps = {
-  isCalloutForStack: false,
+  isCalloutForStack: true,
 };
