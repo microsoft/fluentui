@@ -146,8 +146,12 @@ export async function setup(options: Required<Args>) {
     templatePath,
     projectPath,
     tmpl: {
-      relativePathToProjectRoot: relative(projectPath, projectRoot.replace('/library', '')),
+      relativePathToProjectRoot: relative(projectPath, projectRoot),
       relativePathToWorkspaceRoot: relative(projectPath, workspaceRoot),
+      // TODO - this needs to become generic. stories/ project sibling is only our repo pattern
+      relativePathToProjectDomainRoot: existsSync(join(projectRoot, '../stories'))
+        ? relative(projectPath, join(projectRoot, '..'))
+        : relative(projectPath, projectRoot),
       // path from project to its react root (where shared node_modules live)
       usedNodeModulesDirRelative: relative(projectPath, reactRootPath),
       projectName: createdProjectName,
@@ -179,18 +183,6 @@ export async function setup(options: Required<Args>) {
     join(__dirname, 'files', '.swcrc.template'),
     { ...metadata.tmpl, projectName: metadata.projectName },
     join(projectPath, '.swcrc'),
-  );
-
-  // Ensure referenced setup file exists to avoid Jest error
-  const jestSetupDir = join(projectPath, 'config');
-  mkdirSync(jestSetupDir, { recursive: true });
-  writeFileSync(
-    join(jestSetupDir, 'tests.js'),
-    `
-    // Test setup placeholder
-
-    require('@testing-library/jest-dom');
-    `,
   );
 
   // 4) Create cypress.config.ts from template with EJS
