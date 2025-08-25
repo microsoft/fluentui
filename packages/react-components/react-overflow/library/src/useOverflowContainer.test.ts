@@ -73,6 +73,7 @@ describe('useOverflowContainer', () => {
       Array [
         <div />,
         Object {
+          "hasHiddenItems": false,
           "minimumVisible": 0,
           "onUpdateItemVisibility": [Function],
           "onUpdateOverflow": [Function],
