@@ -50,7 +50,7 @@ export type MotionComponentProps = {
  */
 export function createMotionComponent<MotionParams extends Record<string, MotionParam> = {}>(
   value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>,
-) {
+): React.FC<MotionComponentProps & MotionParams> {
   const Atom: React.FC<MotionComponentProps & MotionParams> = props => {
     'use no memo';
 

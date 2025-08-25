@@ -2,12 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { CarouselNavContainerState, CarouselNavContainerSlots } from './CarouselNavContainer.types';
 
 /**
  * Render the final JSX of CarouselNavContainer
  */
-export const renderCarouselNavContainer_unstable = (state: CarouselNavContainerState) => {
+export const renderCarouselNavContainer_unstable = (state: CarouselNavContainerState): JSXElement => {
   assertSlots<CarouselNavContainerSlots>(state);
 
   return (

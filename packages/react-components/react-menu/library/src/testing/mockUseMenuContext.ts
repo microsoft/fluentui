@@ -7,7 +7,7 @@ import type { MenuContextValue } from '../contexts/menuContext';
  * Don't forget to call `jest.mock(**\/popupContext.ts)` while using this
  * @param options Menu context values to set for testing
  */
-export const mockUseMenuContext = (options: Partial<MenuContextValue> = {}) => {
+export const mockUseMenuContext = (options: Partial<MenuContextValue> = {}): void => {
   const mockContext: MenuContextValue = {
     open: false,
     setOpen: () => null,

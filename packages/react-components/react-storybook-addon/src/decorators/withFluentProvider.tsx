@@ -31,7 +31,7 @@ const findTheme = (themeId?: ThemeIds) => {
   return themeId ? themes[themeId] : null;
 };
 
-export const withFluentProvider = (StoryFn: () => JSXElement, context: FluentStoryContext) => {
+export const withFluentProvider = (StoryFn: () => JSXElement, context: FluentStoryContext): JSXElement => {
   const { globals, parameters } = context;
   const { mode } = parameters;
 

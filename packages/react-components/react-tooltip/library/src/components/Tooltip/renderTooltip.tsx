@@ -3,12 +3,13 @@
 
 import { Portal } from '@fluentui/react-portal';
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { TooltipSlots, TooltipState } from './Tooltip.types';
 
 /**
  * Render the final JSX of Tooltip
  */
-export const renderTooltip_unstable = (state: TooltipState) => {
+export const renderTooltip_unstable = (state: TooltipState): JSXElement => {
   assertSlots<TooltipSlots>(state);
 
   return (

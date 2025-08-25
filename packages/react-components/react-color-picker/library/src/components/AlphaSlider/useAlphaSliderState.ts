@@ -10,7 +10,7 @@ import { getPercent } from '../../utils/getPercent';
 import { adjustToTransparency, calculateTransparencyValue, getSliderDirection } from './alphaSliderUtils';
 import { createHsvColor } from '../../utils/createHsvColor';
 
-export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: AlphaSliderProps) => {
+export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: AlphaSliderProps): AlphaSliderState => {
   'use no memo';
 
   const { dir } = useFluent();

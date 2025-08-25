@@ -32,7 +32,7 @@ export function useTagPickerFilter({
   renderOption = defaultRenderOption,
   query,
   options,
-}: UseTagPickerFilterConfig) {
+}: UseTagPickerFilterConfig): JSXElement[] {
   const defaultFilter = React.useCallback(
     (option: string) => {
       const trimmedQuery = query.trim();

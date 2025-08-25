@@ -2,6 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { MessageBarBodyState, MessageBarBodySlots, MessageBarBodyContextValues } from './MessageBarBody.types';
 import { LinkContextProvider } from '@fluentui/react-link';
 
@@ -11,7 +12,7 @@ import { LinkContextProvider } from '@fluentui/react-link';
 export const renderMessageBarBody_unstable = (
   state: MessageBarBodyState,
   contextValues: MessageBarBodyContextValues,
-) => {
+): JSXElement => {
   assertSlots<MessageBarBodySlots>(state);
 
   return (

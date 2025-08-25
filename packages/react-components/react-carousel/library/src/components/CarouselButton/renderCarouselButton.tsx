@@ -1,11 +1,12 @@
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { CarouselButtonState, CarouselButtonSlots } from './CarouselButton.types';
 import { renderButton_unstable } from '@fluentui/react-button';
 
 /**
  * Render the final JSX of CarouselButton
  */
-export const renderCarouselButton_unstable = (state: CarouselButtonState) => {
+export const renderCarouselButton_unstable = (state: CarouselButtonState): JSXElement => {
   assertSlots<CarouselButtonSlots>(state);
 
   // We render the underlying react-button with injected carousel functionality

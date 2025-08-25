@@ -12,7 +12,9 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverCarouselStyles_unstable = (state: TeachingPopoverCarouselState) => {
+export const useTeachingPopoverCarouselStyles_unstable = (
+  state: TeachingPopoverCarouselState,
+): TeachingPopoverCarouselState => {
   'use no memo';
 
   const styles = useStyles();

@@ -1,12 +1,13 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { MenuItemLinkState, MenuItemLinkSlots } from './MenuItemLink.types';
 
 /**
  * Render the final JSX of MenuItemLink
  */
-export const renderMenuItemLink_unstable = (state: MenuItemLinkState) => {
+export const renderMenuItemLink_unstable = (state: MenuItemLinkState): JSXElement => {
   assertSlots<MenuItemLinkSlots>(state);
 
   // TODO Add additional slots in the appropriate place

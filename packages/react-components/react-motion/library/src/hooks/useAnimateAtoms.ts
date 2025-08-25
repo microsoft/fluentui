@@ -203,7 +203,11 @@ function useAnimateAtomsInTestEnvironment() {
 /**
  * @internal
  */
-export function useAnimateAtoms() {
+export function useAnimateAtoms(): (
+  element: HTMLElement,
+  value: AtomMotion | AtomMotion[],
+  options: { isReducedMotion: boolean },
+) => AnimationHandle {
   'use no memo';
 
   if (process.env.NODE_ENV === 'test') {

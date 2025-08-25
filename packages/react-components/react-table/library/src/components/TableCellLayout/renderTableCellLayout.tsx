@@ -1,6 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { AvatarContextProvider } from '@fluentui/react-avatar';
 import type { TableCellLayoutState, TableCellLayoutSlots, TableCellLayoutContextValues } from './TableCellLayout.types';
 
@@ -10,7 +11,7 @@ import type { TableCellLayoutState, TableCellLayoutSlots, TableCellLayoutContext
 export const renderTableCellLayout_unstable = (
   state: TableCellLayoutState,
   contextValues: TableCellLayoutContextValues,
-) => {
+): JSXElement => {
   assertSlots<TableCellLayoutSlots>(state);
 
   return (
