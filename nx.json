@@ -153,7 +153,7 @@
         "reactIntegrationTesting": {
           "targetName": "test:rit",
           "reactVersions": ["17", "19"],
-          "exclude": []
+          "exclude": ["react-theme-sass", "babel-preset-global-context", "eslint-plugin-react-components"]
         }
       },
       "include": [
