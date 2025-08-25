@@ -4,7 +4,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "lib": ["ES2019", "dom"],
+    "lib": ["ES2019", "dom", "ES2020.Intl"],
     "strict": true,
     "pretty": true,
     "noEmit": true,

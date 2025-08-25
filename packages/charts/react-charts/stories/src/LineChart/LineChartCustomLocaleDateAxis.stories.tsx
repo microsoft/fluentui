@@ -2,7 +2,7 @@ import * as React from 'react';
 import { LineChartProps, ChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts';
 import { Switch } from '@fluentui/react-components';
 import { TimeLocaleDefinition } from 'd3-time-format';
-import itITLocale from 'd3-time-format/locale/it-IT.json';
+import * as itITLocale from 'd3-time-format/locale/it-IT.json';
 
 export const LineChartCustomLocaleDateAxis = (props: LineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
