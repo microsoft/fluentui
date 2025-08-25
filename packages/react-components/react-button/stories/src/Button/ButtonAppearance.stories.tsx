@@ -1,8 +1,19 @@
 import * as React from 'react';
-import { makeStyles, Button } from '@fluentui/react-components';
+import { makeStyles, Button, webLightTheme, Theme, FluentProvider } from '@fluentui/react-components';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+
+const customSemanticTokensTheme: Theme = {
+  ...webLightTheme,
+  'smtc-foreground-control-onNeutral-rest': 'red',
+  'smtc-icon-theme-control-default-rest': 'green',
+  // 'ctrl-stroke-control-onNeutral-gradientStop2-hover': 'yellow',
+  'smtc-background-control-neutral-hover': 'silver',
+  'smtc-stroke-control-onNeutral-rest': 'pink',
+  'smtc-stroke-control-onNeutral-hover': 'blue',
+  'smtc-background-control-brand-hover': 'quartz',
+};
 
 const useStyles = makeStyles({
   wrapper: {
@@ -15,21 +26,39 @@ export const Appearance = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.wrapper}>
-      <Button icon={<CalendarMonthRegular />}>Default</Button>
-      <Button appearance="primary" icon={<CalendarMonthRegular />}>
-        Primary
-      </Button>
-      <Button appearance="outline" icon={<CalendarMonth />}>
-        Outline
-      </Button>
-      <Button appearance="subtle" icon={<CalendarMonth />}>
-        Subtle
-      </Button>
-      <Button appearance="transparent" icon={<CalendarMonth />}>
-        Transparent
-      </Button>
-    </div>
+    <>
+      <div className={styles.wrapper}>
+        <Button icon={<CalendarMonthRegular />}>Default</Button>
+        <Button appearance="primary" icon={<CalendarMonthRegular />}>
+          Primary
+        </Button>
+        <Button appearance="outline" icon={<CalendarMonth />}>
+          Outline
+        </Button>
+        <Button appearance="subtle" icon={<CalendarMonth />}>
+          Subtle
+        </Button>
+        <Button appearance="transparent" icon={<CalendarMonth />}>
+          Transparent
+        </Button>
+      </div>
+
+      <FluentProvider className={styles.wrapper} theme={customSemanticTokensTheme}>
+        <Button icon={<CalendarMonthRegular />}>Default</Button>
+        <Button appearance="primary" icon={<CalendarMonthRegular />}>
+          Primary
+        </Button>
+        <Button appearance="outline" icon={<CalendarMonth />}>
+          Outline
+        </Button>
+        <Button appearance="subtle" icon={<CalendarMonth />}>
+          Subtle
+        </Button>
+        <Button appearance="transparent" icon={<CalendarMonth />}>
+          Transparent
+        </Button>
+      </FluentProvider>
+    </>
   );
 };
 
