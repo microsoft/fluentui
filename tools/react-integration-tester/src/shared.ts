@@ -7,7 +7,7 @@ export type CommandName = 'e2e' | 'type-check' | 'test';
 
 export interface Args {
   react: ReactVersion;
-  templatePath?: string;
+  configPath?: string;
   run?: CommandName[];
   verbose?: boolean;
   cleanup?: boolean;
@@ -20,20 +20,71 @@ export interface Args {
   installDeps?: boolean; // install dependencies for the selected react version root only and exit
 }
 
-export function resolveTemplatePath(templateArg: string | undefined, reactVersion: ReactVersion): string {
-  const candidate = templateArg ? resolve(process.cwd(), templateArg) : getBuiltinTemplatePath(reactVersion);
+export interface Config {
+  react: {
+    [version: string]: {
+      commands?: {
+        test?: string;
+        e2e?: string;
+        typeCheck?: string;
+      };
+      dependencies?: Record<string, string>;
+    };
+  };
+}
 
-  if (!existsSync(candidate)) {
-    const hint = templateArg
-      ? `Provided template not found at: ${candidate}`
-      : `Builtin template not found for React ${reactVersion} at: ${candidate}`;
-    throw new Error(hint);
-  }
-  return candidate;
+function getBuiltinTemplatePath(version: ReactVersion) {
+  return join(__dirname, 'files', `react-${version}.json.template`);
+}
 
-  function getBuiltinTemplatePath(version: ReactVersion) {
-    return join(__dirname, 'files', `react-${version}.json.template`);
+/**
+ * Load rit.config.js if provided or present in CWD, merge with builtin template for the selected React version,
+ * and return a concrete set of commands and dependencies used to scaffold and run.
+ */
+export function getMergedTemplate(
+  reactVersion: ReactVersion,
+  configPath: string,
+): { commands: Record<string, string>; dependencies: Record<string, string> } {
+  const builtinPath = getBuiltinTemplatePath(reactVersion);
+  if (!existsSync(builtinPath)) {
+    throw new Error(`Builtin template not found for React ${reactVersion} at: ${builtinPath}`);
   }
+  const defaults = JSON.parse(readFileSync(builtinPath, 'utf-8')) as {
+    commands: Record<string, string>;
+    dependencies: Record<string, string>;
+  };
+
+  // Resolve config path: explicit --config wins, else default to ./rit.config.js if exists, else no overrides
+
+  let overrides: Config['react'][string] | undefined;
+  if (configPath) {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const loaded = require(configPath) as Config | { default: Config };
+    const conf: Config = (loaded as any).default ? (loaded as any).default : (loaded as any);
+    const perVersion = conf?.react?.[String(reactVersion)] ?? {};
+    overrides = perVersion;
+  }
+
+  const merged: { commands: Record<string, string>; dependencies: Record<string, string> } = {
+    commands: { ...defaults.commands },
+    dependencies: { ...defaults.dependencies },
+  };
+  if (overrides?.commands) {
+    // Map camelCase keys from config to script names used in builtins
+    const map: Record<string, string> = {
+      test: 'test',
+      e2e: 'e2e',
+      typeCheck: 'type-check',
+    };
+    for (const [k, v] of Object.entries(overrides.commands)) {
+      const key = map[k] ?? k;
+      if (v) merged.commands[key] = v as string;
+    }
+  }
+  if (overrides?.dependencies) {
+    merged.dependencies = { ...merged.dependencies, ...overrides.dependencies };
+  }
+  return merged;
 }
 
 export function runCmd(command: string, opts: { cwd: string; env?: NodeJS.ProcessEnv }): Promise<void> {

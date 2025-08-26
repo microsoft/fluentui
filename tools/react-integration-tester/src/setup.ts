@@ -6,7 +6,7 @@ import { workspaceRoot } from '@nx/devkit';
 import { type PackageJson } from 'nx/src/utils/package-json';
 
 import * as ejs from 'ejs';
-import { Args, ReactVersion, runCmd, readCommandsFromPreparedProject } from './shared';
+import { Args, ReactVersion, runCmd, readCommandsFromPreparedProject, getMergedTemplate } from './shared';
 
 const scaffoldRoot = join(tmpFolder(), 'rit');
 
@@ -89,7 +89,7 @@ async function installDependenciesAtReactRoot(rootPath: string) {
 }
 
 export async function setup(options: Required<Args>) {
-  const { react, templatePath } = options;
+  const { react } = options;
   // If user wants to reuse an existing prepared project, short-circuit.
   if (options.run.length && options.projectId) {
     const projectPath = getPreparedProjectPath({ react: options.react, projectId: options.projectId });
@@ -101,11 +101,8 @@ export async function setup(options: Required<Args>) {
     } as const;
   }
 
-  // Read template JSON for commands/dependencies and ensure react root exists
-  const templateJson = JSON.parse(readFileSync(templatePath, 'utf-8')) as {
-    commands: Record<string, string>;
-    dependencies: Record<string, string>;
-  };
+  // Merge builtin defaults with optional user config and ensure react root exists
+  const templateJson = getMergedTemplate(react, options.configPath);
   const { projectName, projectRoot } = resolveProjectName();
   const reactRootPath = reactRoot(react);
   mkdirSync(reactRootPath, { recursive: true });
@@ -143,7 +140,7 @@ export async function setup(options: Required<Args>) {
     projectName,
     projectRoot,
     react,
-    templatePath,
+    configPath: options.configPath,
     projectPath,
     tmpl: {
       relativePathToProjectRoot: relative(projectPath, projectRoot),
@@ -158,7 +155,7 @@ export async function setup(options: Required<Args>) {
     },
   };
 
-  // Emit minimal info for now; further steps will use templatePath to scaffold.
+  // Emit minimal info for now; config + builtin will be used to scaffold.
   // Keeping stdout simple helps scripting.
   if (options.verbose) {
     console.log(JSON.stringify(metadata, null, 2));
@@ -249,13 +246,13 @@ export async function setup(options: Required<Args>) {
  * Install dependencies under the shared react root based on the provided template JSON.
  * This does not scaffold a project; it only ensures the react root package.json contains required deps and runs install.
  */
-export async function installDepsForReactRoot(react: ReactVersion, templatePath: string, verbose = false) {
+export async function installDepsForReactRoot(
+  react: ReactVersion,
+  dependencies: Record<string, string>,
+  verbose = false,
+) {
   const reactRootPath = reactRoot(react);
   mkdirSync(reactRootPath, { recursive: true });
-
-  const templateJson = JSON.parse(readFileSync(templatePath, 'utf-8')) as {
-    dependencies: Record<string, string>;
-  };
 
   const reactRootPkgPath = join(reactRootPath, 'package.json');
   const reactRootPkg: PackageJson = existsSync(reactRootPkgPath)
@@ -263,7 +260,7 @@ export async function installDepsForReactRoot(react: ReactVersion, templatePath:
     : ({ name: `@rit/react-${react}-root`, private: true, version: '0.0.0', license: 'UNLICENSED' } as PackageJson);
   reactRootPkg.dependencies = {
     ...(reactRootPkg.dependencies ?? {}),
-    ...templateJson.dependencies,
+    ...dependencies,
   };
   writeFileSync(reactRootPkgPath, JSON.stringify(reactRootPkg, null, 2));
 

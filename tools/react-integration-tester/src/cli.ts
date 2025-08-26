@@ -1,7 +1,9 @@
 import yargs from 'yargs';
 
-import { Args, ReactVersion, resolveTemplatePath, runCmd, CommandName } from './shared';
+import { Args, ReactVersion, runCmd, CommandName, getMergedTemplate } from './shared';
 import { setup, installDepsForReactRoot } from './setup';
+import { resolve } from 'node:path';
+import { existsSync } from 'node:fs';
 
 async function cli() {
   const args = parseArgs();
@@ -11,9 +13,9 @@ async function cli() {
     if (!args.react) {
       throw new Error('Missing required --react when installing dependencies');
     }
-    // When --install-deps is used without explicit template, use builtin for the react version
-    const templatePath = args.templatePath || resolveTemplatePath(undefined, args.react);
-    const { reactRootPath } = await installDepsForReactRoot(args.react, templatePath, args.verbose);
+    // When --install-deps is used, merge defaults with optional user config and install deps under the react root
+    const merged = getMergedTemplate(args.react, args.configPath);
+    const { reactRootPath } = await installDepsForReactRoot(args.react, merged.dependencies, args.verbose);
     console.log(`[rit / v${args.react}] Dependencies installed under shared react root -> ${reactRootPath}.`);
     return;
   }
@@ -65,7 +67,7 @@ function parseArgs(): Required<Args> {
     .scriptName('rit')
     .usage(
       'Usage:\n' +
-        '  $0 --react <17|18|19> --run <e2e|type-check|test> [--run <...>] [--template <relative/path.json>] [--project-id <id>]\n' +
+        '  $0 --react <17|18|19> --run <e2e|type-check|test> [--run <...>] [--config <path/to/rit.config.js>] [--project-id <id>]\n' +
         '  $0 --react <17|18|19> --prepare-only [--project-id <id>] [--force] [--no-install]\n' +
         '  $0 --react <17|18|19> --install-deps    # installs deps under react-XX root and exits\n' +
         '  # Example: run tests against an existing prepared scaffold\n' +
@@ -83,9 +85,9 @@ function parseArgs(): Required<Args> {
         return value;
       },
     })
-    .option('template', {
+    .option('config', {
       type: 'string',
-      describe: 'Relative path to a custom template JSON to use',
+      describe: 'Path to rit.config.js with per-react overrides (defaults to ./rit.config.js if present)',
     })
     .option('run', {
       type: 'array',
@@ -138,11 +140,11 @@ function parseArgs(): Required<Args> {
   const installDeps = (argv['install-deps'] as boolean | undefined) ?? false;
   const force = (argv['force'] as boolean | undefined) ?? false;
   const projectId = argv['project-id'] as string | undefined;
-  let react = argv.react as number | undefined as ReactVersion | undefined;
-  let templatePath: string | undefined = undefined;
+  const react = argv.react as number | undefined as ReactVersion | undefined;
   const run = (argv.run as CommandName[] | undefined) ?? [];
   const verbose = (argv.verbose as boolean | undefined) ?? false;
   const cleanup = (argv.cleanup as boolean | undefined) ?? true;
+  const configPath = resolveConfigPath();
 
   // Validate mutually exclusive flags with --run
   if (run.length) {
@@ -154,13 +156,9 @@ function parseArgs(): Required<Args> {
     }
   }
 
-  // Derive reuse behavior: if running and a project-id is given, reuse the existing prepared project
-  // Reuse behavior is determined by presence of both --run and --project-id
-
   if (!react) {
     throw new Error('Missing required --react');
   }
-  templatePath = resolveTemplatePath(argv.template, react);
 
   if (!installDeps && !prepareOnly && !run.length) {
     throw new Error('Provide at least one --run or use --prepare-only');
@@ -168,7 +166,7 @@ function parseArgs(): Required<Args> {
 
   return {
     react,
-    templatePath,
+    configPath: configPath ?? '',
     run,
     verbose,
     cleanup,
@@ -178,6 +176,20 @@ function parseArgs(): Required<Args> {
     projectId: projectId ?? '',
     force,
   } satisfies Required<Args>;
+
+  function resolveConfigPath(): string | undefined {
+    const defaultConfigPath = resolve(process.cwd(), 'rit.config.js');
+
+    if (argv['config']) {
+      const userProvidedConfigPath = resolve(process.cwd(), argv['config']);
+      if (!existsSync(userProvidedConfigPath)) {
+        throw new Error(`Config not found at: ${userProvidedConfigPath}`);
+      }
+      return userProvidedConfigPath;
+    }
+
+    return existsSync(defaultConfigPath) ? defaultConfigPath : undefined;
+  }
 }
 
 // Execute when invoked via bin script
