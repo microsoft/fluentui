@@ -802,12 +802,14 @@ const transformPlotlyJsonToScatterTraceProps = (
   isDarkTheme?: boolean,
 ): LineChartProps | AreaChartProps | ScatterChartProps => {
   const isScatterMarkers = [
+    'text',
     'markers',
     'text+markers',
     'markers+text',
     'lines+markers',
     'markers+line',
     'text+lines+markers',
+    'lines+markers+text',
   ].includes((input.data[0] as PlotData)?.mode);
   const isAreaChart = chartType === 'area';
   const isScatterChart = chartType === 'scatter';
