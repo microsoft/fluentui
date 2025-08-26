@@ -67,7 +67,7 @@ import {
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
-import { getOpacity, extractColor, resolveColor } from './PlotlyColorAdapter';
+import { getOpacity, extractColor, resolveColor, createColorScale } from './PlotlyColorAdapter';
 import { rgb } from 'd3-color';
 import { Legend, LegendsProps } from '../Legends/index';
 import { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
@@ -414,14 +414,7 @@ export const transformPlotlyJsonToVSBCProps = (
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
   let yMinValue = 0;
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
-    if (
-      input.layout?.coloraxis?.colorscale?.length &&
-      isArrayOrTypedArray(series.marker?.color) &&
-      (series.marker?.color as Color[]).length > 0 &&
-      typeof (series.marker?.color as Color[])?.[0] === 'number'
-    ) {
-      colorScale = createColorScale(input.layout, series);
-    }
+    colorScale = createColorScale(input.layout, series, colorScale);
     const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     // extract bar colors for each series only once
     const extractedBarColors = extractColor(
@@ -531,21 +524,6 @@ export const transformPlotlyJsonToVSBCProps = (
   };
 };
 
-const createColorScale = (layout: Partial<Layout>, series: Partial<PlotData>) => {
-  const scale = layout?.coloraxis?.colorscale as Array<[number, string]>;
-  const colorValues = series.marker?.color as number[];
-  const [dMin, dMax] = [
-    layout?.coloraxis?.cmin ?? Math.min(...colorValues),
-    layout?.coloraxis?.cmax ?? Math.max(...colorValues),
-  ];
-
-  // Normalize colorscale domain to actual data domain
-  const scaleDomain = scale.map(([pos]) => dMin + pos * (dMax - dMin));
-  const scaleColors = scale.map(item => item[1]);
-
-  return d3ScaleLinear<string>().domain(scaleDomain).range(scaleColors);
-};
-
 export const transformPlotlyJsonToGVBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
@@ -560,14 +538,7 @@ export const transformPlotlyJsonToGVBCProps = (
   let colorScale: ((value: number) => string) | undefined = undefined;
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
-    if (
-      input.layout?.coloraxis?.colorscale?.length &&
-      isArrayOrTypedArray(series.marker?.color) &&
-      (series.marker?.color as Color[]).length > 0 &&
-      typeof (series.marker?.color as Color[])?.[0] === 'number'
-    ) {
-      colorScale = createColorScale(input.layout, series);
-    }
+    colorScale = createColorScale(input.layout, series, colorScale);
     // extract colors for each series only once
     const extractedColors = extractColor(
       input.layout?.template?.layout?.colorway,
@@ -647,14 +618,7 @@ export const transformPlotlyJsonToVBCProps = (
       return;
     }
 
-    if (
-      input.layout?.coloraxis?.colorscale?.length &&
-      isArrayOrTypedArray(series.marker?.color) &&
-      (series.marker?.color as Color[]).length > 0 &&
-      typeof (series.marker?.color as Color[])?.[0] === 'number'
-    ) {
-      colorScale = createColorScale(input.layout, series);
-    }
+    colorScale = createColorScale(input.layout, series, colorScale);
 
     // extract colors for each series only once
     const extractedColors = extractColor(
@@ -940,14 +904,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   let colorScale: ((value: number) => string) | undefined = undefined;
   const chartData: HorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
-      if (
-        input.layout?.coloraxis?.colorscale?.length &&
-        isArrayOrTypedArray(series.marker?.color) &&
-        (series.marker?.color as Color[]).length > 0 &&
-        typeof (series.marker?.color as Color[])?.[0] === 'number'
-      ) {
-        colorScale = createColorScale(input.layout, series);
-      }
+      colorScale = createColorScale(input.layout, series, colorScale);
       // extract colors for each series only once
       const extractedColors = extractColor(
         input.layout?.template?.layout?.colorway,
