@@ -2,6 +2,65 @@
   "name": "@fluentui/react-tags",
   "entries": [
     {
+      "date": "Thu, 21 Aug 2025 12:25:22 GMT",
+      "tag": "@fluentui/react-tags_v9.7.5",
+      "version": "9.7.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "78fdfc8a1e93c0aaf7a0bb996e650a309827a541",
+            "comment": "fix: borders issues with small-circular and HC"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-aria to v9.16.4",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-avatar to v9.9.5",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.1.6",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.25.0",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-tabster to v9.26.4",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-utilities to v9.24.0",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Aug 2025 10:03:33 GMT",
       "tag": "@fluentui/react-tags_v9.7.4",
       "version": "9.7.4",

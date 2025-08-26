@@ -1177,6 +1177,7 @@ export function domainRangeOfNumericForAreaChart(
   width: number,
   isRTL: boolean,
 ): IDomainNRange {
+  const isScatterPolar = isScatterPolarSeries(points);
   const xMin = d3Min(points, (point: LineChartPoints) => {
     return d3Min(point.data as LineChartDataPoint[], (item: LineChartDataPoint) => item.x as number)!;
   })!;
@@ -1191,8 +1192,8 @@ export function domainRangeOfNumericForAreaChart(
   const rEndValue = width - margins.right!;
 
   return isRTL
-    ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
-    : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
+    ? { dStartValue: isScatterPolar ? 1 : xMax, dEndValue: isScatterPolar ? -1 : xMin, rStartValue, rEndValue }
+    : { dStartValue: isScatterPolar ? -1 : xMin, dEndValue: isScatterPolar ? 1 : xMax, rStartValue, rEndValue };
 }
 
 /**
@@ -1210,6 +1211,7 @@ export function domainRangeOfNumericForScatterChart(
   width: number,
   isRTL: boolean,
 ): IDomainNRange {
+  const isScatterPolar = isScatterPolarSeries(points);
   let xMin = d3Min(points, (point: LineChartPoints) => {
     return d3Min(point.data as ScatterChartDataPoint[], (item: ScatterChartDataPoint) => item.x as number)!;
   })!;
@@ -1228,8 +1230,8 @@ export function domainRangeOfNumericForScatterChart(
   const rEndValue = width - margins.right!;
 
   return isRTL
-    ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
-    : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
+    ? { dStartValue: isScatterPolar ? 1 : xMax, dEndValue: isScatterPolar ? -1 : xMin, rStartValue, rEndValue }
+    : { dStartValue: isScatterPolar ? -1 : xMin, dEndValue: isScatterPolar ? 1 : xMax, rStartValue, rEndValue };
 }
 
 /**
@@ -1499,7 +1501,7 @@ export function domainRangeOfVerticalNumeric(
  * @returns {{ startValue: number; endValue: number }}
  */
 export function findNumericMinMaxOfY(
-  points: LineChartPoints[],
+  points: LineChartPoints[] | ScatterChartPoints[],
   yAxisType?: YAxisType | undefined,
   useSecondaryYScale?: boolean,
 ): { startValue: number; endValue: number } {
@@ -1936,57 +1938,6 @@ export function getCurveFactory(
   }
 }
 
-export function createYAxisForScatterChart(
-  yAxisParams: IYAxisParams,
-  isRtl: boolean,
-  axisData: IAxisData,
-  isIntegralDataset: boolean,
-  useSecondaryYScale: boolean = false,
-  _supportNegativeData: boolean = false,
-  roundedTicks: boolean = false,
-) {
-  const {
-    yMinMaxValues = { startValue: 0, endValue: 0 },
-    yAxisElement = null,
-    yMaxValue = 0,
-    yMinValue = 0,
-    containerHeight,
-    containerWidth,
-    margins,
-    tickPadding = 12,
-    maxOfYVal = 0,
-    yAxisTickFormat,
-    yAxisTickCount = 4,
-    eventAnnotationProps,
-    eventLabelHeight,
-  } = yAxisParams;
-
-  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
-  const tempVal = maxOfYVal || yMinMaxValues.endValue;
-  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = Math.min(yMinMaxValues.startValue, yMinValue || 0);
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
-  let yMin = finalYmin;
-  let yMax = domainValues[domainValues.length - 1];
-  const yPadding = (yMax - yMin) * 0.1;
-  yMin = yMin - yPadding;
-  yMax = yMax + yPadding;
-  const yAxisScale = d3ScaleLinear()
-    .domain([domainValues[0], yMax])
-    .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
-  const axis =
-    (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis
-    .tickPadding(tickPadding)
-    .tickValues(domainValues)
-    .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
-
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
-  axisData.yAxisDomainValues = domainValues;
-  return yAxisScale;
-}
-
 export const truncateString = (str: string, maxLength: number, ellipsis = '...'): string => {
   if (str.length <= maxLength) {
     return str;
@@ -2115,3 +2066,27 @@ export const createMeasurementSpan = (text: string | number, className: string, 
 
   return measurementSpan;
 };
+
+/**
+ * Utility function to check if an array of points is scatterpolar
+ * @param points - Array of chart points
+ * @returns true if any point has lineOptions.mode as 'scatterpolar'
+ */
+export function isScatterPolarSeries(points: (LineChartPoints | ScatterChartPoints)[]): boolean {
+  return points.some(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    item => typeof (item as any).lineOptions?.mode === 'string' && (item as any).lineOptions.mode === 'scatterpolar',
+  );
+}
+
+/**
+ * Utility function to check if an array of points contains mode as 'text' only
+ * @param points - Array of chart points
+ * @returns true if any point has lineOptions.mode as 'text'
+ */
+export function isTextMode(points: (LineChartPoints | ScatterChartPoints)[]): boolean {
+  return points.some(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    item => typeof (item as any).lineOptions?.mode === 'string' && (item as any).lineOptions.mode === 'text',
+  );
+}

@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Thu, 07 Aug 2025 10:03:21 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 12:25:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.2.3)
+
+Thu, 21 Aug 2025 12:25:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.2.2..@fluentui/react-charts_v9.2.3)
+
+### Patches
+
+- add labels for text+markers ([PR #35025](https://github.com/microsoft/fluentui/pull/35025) by anushgupta@microsoft.com)
+- fix scatter chart bugs ([PR #35047](https://github.com/microsoft/fluentui/pull/35047) by anushgupta@microsoft.com)
+- update validation to tolerate invalid traces ([PR #34998](https://github.com/microsoft/fluentui/pull/34998) by anushgupta@microsoft.com)
+- support for ordering tick labels ([PR #35053](https://github.com/microsoft/fluentui/pull/35053) by anushgupta@microsoft.com)
+- colorscale support for bar charts ([PR #35026](https://github.com/microsoft/fluentui/pull/35026) by anushgupta@microsoft.com)
+- pie chart fix ([PR #35013](https://github.com/microsoft/fluentui/pull/35013) by anushgupta@microsoft.com)
+- use piecolorway for donut chart ([PR #34999](https://github.com/microsoft/fluentui/pull/34999) by anushgupta@microsoft.com)
+- enable scatter chart in v9 declatative ([PR #35036](https://github.com/microsoft/fluentui/pull/35036) by anushgupta@microsoft.com)
+- support for using opacity provided in plotly schema ([PR #35045](https://github.com/microsoft/fluentui/pull/35045) by anushgupta@microsoft.com)
+- add date axis support in vsbc ([PR #35018](https://github.com/microsoft/fluentui/pull/35018) by anushgupta@microsoft.com)
+- add support for multiplot declarative chart ([PR #35038](https://github.com/microsoft/fluentui/pull/35038) by anushgupta@microsoft.com)
+- add styles to tables ([PR #35012](https://github.com/microsoft/fluentui/pull/35012) by anushgupta@microsoft.com)
+- remove duplicated legends in line chart ([PR #34991](https://github.com/microsoft/fluentui/pull/34991) by anushgupta@microsoft.com)
+- fix color issue in gvbc ([PR #35050](https://github.com/microsoft/fluentui/pull/35050) by anushgupta@microsoft.com)
+- support for lines+markers ([PR #34997](https://github.com/microsoft/fluentui/pull/34997) by anushgupta@microsoft.com)
+- use schema colorscale for gvbc ([PR #35011](https://github.com/microsoft/fluentui/pull/35011) by anushgupta@microsoft.com)
+- add support for string y axis in VSBC ([PR #35016](https://github.com/microsoft/fluentui/pull/35016) by anushgupta@microsoft.com)
+- Bump @fluentui/react-button to v9.6.5 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.6 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-overflow to v9.5.5 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-popover to v9.12.5 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.25.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-tabster to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-tooltip to v9.8.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-utilities to v9.24.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
 
 ## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.2.2)
 

@@ -40,6 +40,7 @@ import {
   domainRangeOfDateForAreaLineVerticalBarChart,
   createStringYAxis,
   useRtl,
+  YAxisType,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -149,6 +150,10 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     );
 
     const classes = useAreaChartStyles(props);
+
+    function _getMinMaxOfYAxis(points: LineChartPoints[], yAxisType: YAxisType, useSecondaryYScale: boolean) {
+      return findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
+    }
 
     function _getDomainNRangeValues(
       points: LineChartPoints[],
@@ -978,7 +983,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           createStringYAxis={createStringYAxis}
           getmargins={_getMargins}
           onChartMouseLeave={_handleChartMouseLeave}
-          getMinMaxOfYAxis={findNumericMinMaxOfY}
+          getMinMaxOfYAxis={_getMinMaxOfYAxis}
           enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
           componentRef={cartesianChartRef}
           /* eslint-disable react/jsx-no-bind */

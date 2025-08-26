@@ -2,6 +2,59 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Thu, 21 Aug 2025 12:25:20 GMT",
+      "tag": "@fluentui/react-tabs_v9.10.0",
+      "version": "9.10.0",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          }
+        ],
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e9d9ff6670189ffa97f9c21450fe4ddba15a461d",
+            "comment": "feat: Export tabReservedSpaceClassNames and useTabAnimatedIndicatorStyles_unstable for style overrides"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.6",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.1.6",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.25.0",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.26.4",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-utilities to v9.24.0",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Aug 2025 10:03:33 GMT",
       "tag": "@fluentui/react-tabs_v9.9.3",
       "version": "9.9.3",

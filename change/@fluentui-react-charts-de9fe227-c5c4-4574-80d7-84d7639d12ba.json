@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "support tick formatting from plotly output",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

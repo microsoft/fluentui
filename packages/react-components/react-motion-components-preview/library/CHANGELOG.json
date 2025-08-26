@@ -2,6 +2,29 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Thu, 21 Aug 2025 12:25:13 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "86c9ea988d336855abed51d4504ccdf7cd1409a4",
+            "comment": "feat(motion): add Rotate presence motion component"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 16:55:28 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.8.1",
       "version": "0.8.1",

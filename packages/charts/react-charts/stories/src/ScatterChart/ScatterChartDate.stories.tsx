@@ -22,7 +22,7 @@ export const ScatterChartDate = () => {
 
   const data: ChartProps = {
     chartTitle: 'Website Traffic and Sales Performance',
-    lineChartData: [
+    scatterChartData: [
       {
         legend: 'Website Traffic',
         data: [
@@ -63,7 +63,6 @@ export const ScatterChartDate = () => {
           },
         ],
         color: DataVizPalette.color3,
-        onLineClick: () => console.log('Website Traffic'),
       },
       {
         legend: 'Sales Performance',

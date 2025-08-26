@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "align labels and points according to given directions and rotation in schema for scatter polar",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -22,7 +22,7 @@ export const ScatterChartString = () => {
 
   const data: ChartProps = {
     chartTitle: 'Sales Performance by Category',
-    lineChartData: [
+    scatterChartData: [
       {
         legend: 'Region 1',
         data: [

@@ -4,6 +4,12 @@ trigger: none
 
 name: '$(targetNpmVersion) ($(Rev:r))'
 
+parameters:
+  - name: dryRun
+    displayName: Dry Run Mode
+    type: boolean
+    default: false
+
 variables:
   - template: .devops/templates/variables.yml
   - name: tags
@@ -76,7 +82,7 @@ extends:
               - script: |
                   npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
                 displayName: Publish new version
-                condition: eq(variables.dryRun, false)
+                condition: not(${{ parameters.dryRun }})
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:

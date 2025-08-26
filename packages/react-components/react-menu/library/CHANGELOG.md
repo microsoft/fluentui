@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 07 Aug 2025 10:03:24 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 12:25:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.19.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.19.5)
+
+Thu, 21 Aug 2025 12:25:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.19.4..@fluentui/react-menu_v9.19.5)
+
+### Patches
+
+- fix: replace deprecated element.ref usages to support react 19 ([PR #35030](https://github.com/microsoft/fluentui/pull/35030) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-aria to v9.16.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.6 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-portal to v9.8.1 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-positioning to v9.20.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.25.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-tabster to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-utilities to v9.24.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.6 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
 
 ## [9.19.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.19.4)
 
