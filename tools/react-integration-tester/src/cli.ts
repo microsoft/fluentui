@@ -32,8 +32,8 @@ async function cli() {
     if (args.cleanup !== false) {
       project.cleanup();
     } else {
-      if (args.useExistingProjectId) {
-        console.info('NOTE: "--no-cleanup" has no effect when running via "--use-existing-project-id"');
+      if (args.run.length && args.projectId) {
+        console.info('NOTE: "--no-cleanup" has no effect when reusing an existing prepared project via --project-id');
       }
     }
   }
@@ -65,10 +65,11 @@ function parseArgs(): Required<Args> {
     .scriptName('rit')
     .usage(
       'Usage:\n' +
-        '  $0 --react <17|18|19> --run <e2e|type-check|test> [--run <...>] [--template <relative/path.json>]\n' +
+        '  $0 --react <17|18|19> --run <e2e|type-check|test> [--run <...>] [--template <relative/path.json>] [--project-id <id>]\n' +
         '  $0 --react <17|18|19> --prepare-only [--project-id <id>] [--force] [--no-install]\n' +
         '  $0 --react <17|18|19> --install-deps    # installs deps under react-XX root and exits\n' +
-        '  $0 --react <17|18|19> --use-existing-project-id <project-id> --run <e2e|type-check|test> [--run <...>]',
+        '  # Example: run tests against an existing prepared scaffold\n' +
+        '  $0 --react <17|18|19> --project-id <id> --run test',
     )
     .option('react', {
       type: 'number',
@@ -117,13 +118,10 @@ function parseArgs(): Required<Args> {
       describe: 'Only install dependencies for the selected React version root and exit',
       default: false,
     })
-    .option('use-existing-project-id', {
-      type: 'string',
-      describe: 'Run using an already prepared project (skips prepare) by providing the project-id suffix',
-    })
     .option('project-id', {
       type: 'string',
-      describe: 'Optional deterministic suffix for the prepared project folder name',
+      describe:
+        'Deterministic suffix for the prepared project folder name. With --prepare-only: used to name the scaffold. With --run: reuse an existing scaffold with this id (skips prepare).',
     })
     .option('force', {
       type: 'boolean',
@@ -134,7 +132,6 @@ function parseArgs(): Required<Args> {
     .help()
     .parse();
 
-  const useExistingProjectId = argv['use-existing-project-id'] as string | undefined;
   const prepareOnly = (argv['prepare-only'] as boolean | undefined) ?? false;
   const installFlag = (argv['install'] as boolean | undefined) ?? true;
   const noInstall = !installFlag;
@@ -147,31 +144,18 @@ function parseArgs(): Required<Args> {
   const verbose = (argv.verbose as boolean | undefined) ?? false;
   const cleanup = (argv.cleanup as boolean | undefined) ?? true;
 
-  if (useExistingProjectId) {
-    if (!run.length) {
-      throw new Error('When using "--use-existing-project-id" you must provide at least one "--run"');
+  // Validate mutually exclusive flags with --run
+  if (run.length) {
+    if (prepareOnly) {
+      throw new Error('Invalid combination: --prepare-only cannot be used together with --run');
     }
-    if (!react) {
-      throw new Error(
-        'When using "--use-existing-project-id" you must also provide "--react" to resolve the prepared folder',
-      );
+    if (noInstall === true) {
+      throw new Error('Invalid combination: --no-install cannot be used together with --run');
     }
-    return {
-      react,
-      // templatePath not required for run-only
-      templatePath: '',
-      run,
-      verbose,
-      cleanup,
-      prepareOnly,
-      noInstall,
-      installDeps,
-      useExistingProjectId,
-      // projectId not required for run-only ( we use useExistingProjectId)
-      projectId: '',
-      force,
-    };
   }
+
+  // Derive reuse behavior: if running and a project-id is given, reuse the existing prepared project
+  // Reuse behavior is determined by presence of both --run and --project-id
 
   if (!react) {
     throw new Error('Missing required --react');
@@ -191,10 +175,9 @@ function parseArgs(): Required<Args> {
     prepareOnly,
     noInstall,
     installDeps,
-    useExistingProjectId,
     projectId: projectId ?? '',
     force,
-  } as Required<Args>;
+  } satisfies Required<Args>;
 }
 
 // Execute when invoked via bin script

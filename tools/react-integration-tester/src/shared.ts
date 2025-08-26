@@ -13,8 +13,7 @@ export interface Args {
   cleanup?: boolean;
   // New flags for advanced workflows
   prepareOnly?: boolean; // scaffold+install only, do not run commands
-  useExistingProjectId?: string; // use `projectId` that was used when running the CLI with `--prepare-only` to use an existing prepared project
-  projectId?: string; // optional suffix to make the prepared project name deterministic and unique
+  projectId?: string; // deterministic suffix to make the prepared project name unique; with --run, reuse existing prepared project with this id
   force?: boolean; // when preparing, remove any existing folder first
   // Installation control
   noInstall?: boolean; // when preparing, skip installing dependencies
