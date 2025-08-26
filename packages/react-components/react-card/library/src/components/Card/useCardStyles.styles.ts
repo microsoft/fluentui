@@ -76,9 +76,9 @@ const disabledStyles: GriffelStyle = {
   '::before': {
     content: '""',
     position: 'absolute',
-    zIndex: `calc(${tokens.zIndexContent} + 1)`,
     inset: 0,
     zIndex: Number(tokens.zIndexContent) + 1,
+  },
 
   '::after': {
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
