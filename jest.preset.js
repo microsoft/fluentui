@@ -12,8 +12,8 @@ const tsPathAliases = pathsToModuleNameMapper(tsConfig.compilerOptions.paths, {
 /**
  * NOTE: this is necessary because react-button (v9) uses v0 a11y-testing package which uses react 17 and RTL v12
  */
-const testingLibraryPaths = {
-  '^@testing-library/(.*)$': [path.join(__dirname, 'node_modules/@testing-library/$1')],
+const reactDepsPaths = {
+  '^@testing-library/(react|dom)$': [path.join(__dirname, 'node_modules/@testing-library/$1')],
   // without this React 17 will be used instead of React 18
   '^@testing-library/react-hooks$': path.join(__dirname, 'node_modules/@testing-library/react'),
   '^react-is$': path.join(__dirname, 'node_modules/react-is'),
@@ -35,7 +35,7 @@ const baseConfig = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   testPathIgnorePatterns: ['/node_modules/', '/lib/', '/lib-commonjs/', '/dist/'],
   testEnvironment: 'jsdom',
-  moduleNameMapper: { ...tsPathAliases, ...testingLibraryPaths },
+  moduleNameMapper: { ...tsPathAliases, ...reactDepsPaths },
   cacheDirectory: '<rootDir>/node_modules/.cache/jest',
   clearMocks: true,
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
