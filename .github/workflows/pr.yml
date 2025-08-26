@@ -288,8 +288,16 @@ jobs:
       - name: Verify Cypress install
         run: yarn cypress verify
 
+        # Use a single headless X server to avoid Xvfb display collisions across parallel Cypress runs
+      - name: Start Xvfb (shared display)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+          Xvfb :99 -screen 0 1920x1080x24 -ac +extension RANDR &
+          echo "DISPLAY=:99" >> $GITHUB_ENV
+
       - name: Cypress/Playwright E2E tests
-        run: yarn nx affected -t e2e --exclude react-19-tests-v9 --nxBail --parallel 1
+        run: yarn nx affected -t e2e --exclude react-19-tests-v9 --nxBail
 
       - name: Upload Cypress screenshots if exist
         uses: actions/upload-artifact@v4
