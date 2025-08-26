@@ -2,22 +2,18 @@
 
 exports[`MenuItemRadio renders a default state 1`] = `
 <div
-  aria-checked={false}
-  className="fui-MenuItem fui-MenuItemRadio"
+  aria-checked="false"
+  class="fui-MenuItem fui-MenuItemRadio"
   name="radio"
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  onKeyUp={[Function]}
-  onMouseMove={[Function]}
   role="menuitemradio"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="fui-MenuItem__checkmark fui-MenuItemRadio__checkmark"
+    class="fui-MenuItem__checkmark fui-MenuItemRadio__checkmark"
   >
     <svg
-      aria-hidden={true}
-      className=""
+      aria-hidden="true"
+      class=""
       fill="currentColor"
       height="16"
       viewBox="0 0 16 16"
@@ -31,7 +27,7 @@ exports[`MenuItemRadio renders a default state 1`] = `
     </svg>
   </span>
   <span
-    className="fui-MenuItem__content fui-MenuItemRadio__content"
+    class="fui-MenuItem__content fui-MenuItemRadio__content"
   >
     Default MenuItemRadio
   </span>
