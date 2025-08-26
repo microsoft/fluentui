@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ScaleLinear } from 'd3-scale';
+import { JSXElement } from '@fluentui/react-utilities';
 
 /**
  * Helper to render categorical labels for scatterpolar charts with improved overlap logic across all series
@@ -19,7 +20,7 @@ export function renderScatterPolarCategoryLabels({
   className: string;
   maybeLineOptions?: { originXOffset?: number };
   minPixelGap?: number;
-}): React.JSX.Element[] {
+}): JSXElement[] {
   // 1. Aggregate all data points from all series
   const allLabels: { x: number; y: number; text: string }[] = [];
   allSeriesData.forEach(series => {
@@ -34,7 +35,7 @@ export function renderScatterPolarCategoryLabels({
   const uniqueTexts = Array.from(new Set(allLabels.map(l => l.text)));
 
   // 3. Place labels at equal angles
-  const renderedLabels: React.JSX.Element[] = [];
+  const renderedLabels: JSXElement[] = [];
   const placedPositions: { x: number; y: number }[] = [];
   const labelRadius = 0.7; // You can adjust this value for more/less offset
   const numLabels = uniqueTexts.length;
