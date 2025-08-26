@@ -528,6 +528,7 @@ export const transformPlotlyJsonToVSBCProps = (
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getYMinMaxValues(input.data[0], input.layout),
   };
 };
 
