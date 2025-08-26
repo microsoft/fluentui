@@ -121,7 +121,7 @@ jobs:
 
       - name: React Versions Integration Tests (17,19)
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t test:rit
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit
 
   react_integration_tests:
     if: ${{ github.repository_owner == 'microsoft' }}
