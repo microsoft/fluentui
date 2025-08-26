@@ -3621,7 +3621,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -4134,7 +4133,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -4647,7 +4645,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -4863,7 +4860,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -4926,7 +4922,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -4989,7 +4984,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -5052,7 +5046,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -5115,7 +5108,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "markers",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -5158,7 +5150,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "markers",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -5201,7 +5192,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "markers",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },

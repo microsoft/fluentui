@@ -449,12 +449,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
             xAxisScale: _xAxisScale.current,
             yAxisScale: _yAxisScale.current,
             className: classes.markerLabel || '',
-            maybeLineOptions: (_points?.[i] as Partial<LineChartPoints>)?.lineOptions
-              ? {
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  originXOffset: ((_points?.[i] as Partial<LineChartPoints>).lineOptions as any)?.originXOffset,
-                }
-              : undefined,
+            lineOptions: (_points?.[i] as Partial<LineChartPoints>)?.lineOptions,
           }),
         );
       }

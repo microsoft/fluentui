@@ -1191,12 +1191,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               xAxisScale: _xAxisScale,
               yAxisScale: yScale,
               className: classes.markerLabel || '',
-              maybeLineOptions: (_points[i] as Partial<LineChartPoints>)?.lineOptions
-                ? {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    originXOffset: (_points[i] as any).lineOptions?.originXOffset,
-                  }
-                : undefined,
+              lineOptions: (_points[i] as Partial<LineChartPoints>)?.lineOptions,
             }),
           );
         }
