@@ -599,7 +599,7 @@ function buildReactIntegrationTesterProjectConfiguration(
 
     const targetNamePrepare = options.reactIntegrationTesting.targetName + '--' + reactVersion + '--prepare';
     targets[targetNamePrepare] = {
-      command: `${config.pmc.exec} rit --prepare-only --project-id ${projectSuffixId} --no-install --react ${reactVersion} --verbose`,
+      command: `${config.pmc.exec} rit --prepare-only --no-install --project-id ${projectSuffixId} --react ${reactVersion} --verbose`,
       options: { cwd: '{projectRoot}' },
       cache: true,
       inputs: inputs,
@@ -619,7 +619,7 @@ function buildReactIntegrationTesterProjectConfiguration(
     for (const runOption of ritRunOptions) {
       const targetName = options.reactIntegrationTesting.targetName + '--' + reactVersion + '--' + runOption;
       targets[targetName] = {
-        command: `${config.pmc.exec} rit --use-existing-project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
+        command: `${config.pmc.exec} rit --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
         options: { cwd: '{projectRoot}' },
         cache: true,
         inputs: inputs,
