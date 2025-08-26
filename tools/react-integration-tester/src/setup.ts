@@ -91,8 +91,8 @@ async function installDependenciesAtReactRoot(rootPath: string) {
 export async function setup(options: Required<Args>) {
   const { react, templatePath } = options;
   // If user wants to reuse an existing prepared project, short-circuit.
-  if (options.useExistingProjectId) {
-    const projectPath = getPreparedProjectPath({ react: options.react, projectId: options.useExistingProjectId });
+  if (options.run.length && options.projectId) {
+    const projectPath = getPreparedProjectPath({ react: options.react, projectId: options.projectId });
     const commands = readCommandsFromPreparedProject(projectPath);
     return {
       projectPath,

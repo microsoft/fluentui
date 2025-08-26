@@ -10,7 +10,11 @@ Key flags:
 
 - `--prepare-only` prepares the project. Use `--no-install` to skip installing deps.
 - `--install-deps` installs dependencies for the selected React root and exits. Useful for CI when `--no-install` was used during prepare.
-- `--use-existing-project-id` runs commands in an already prepared project.
+- `--project-id` deterministic suffix for the prepared project folder name. With `--prepare-only`, it names the scaffold. With `--run`, it reuses an already prepared scaffold.
+
+Notes:
+
+- When using `--run`, you cannot also pass `--prepare-only` or `--no-install`.
 
 Examples:
 
@@ -20,7 +24,7 @@ rit --react 17 --install-deps
 rit --react 17 --prepare-only --no-install --project-id ci
 
 # Run specific commands from existing project
-rit --react 17 --use-existing-project-id ci --run test --run type-check
+rit --react 17 --project-id ci --run test --run type-check
 ```
 
 ## Building
