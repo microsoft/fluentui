@@ -77,14 +77,7 @@ const useCardInteractive = ({ focusMode: initialFocusMode, disabled = false, ...
  * @param ref - reference to the root element of Card
  */
 export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardState => {
-  const {
-    appearance = 'filled',
-    orientation = 'vertical',
-    size = 'medium',
-    disabled = false,
-    onClick,
-    ...restProps
-  } = props;
+  const { appearance = 'filled', orientation = 'vertical', size = 'medium', disabled = false, ...restProps } = props;
 
   const [referenceId, setReferenceId] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
   const [referenceLabel, setReferenceLabel] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
@@ -97,11 +90,21 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
 
   const { interactive, focusAttributes } = useCardInteractive(props);
 
-  // Disable focus attributes when the card is disabled
-  const finalFocusAttributes = disabled ? null : focusAttributes;
+  const cardProps = React.useMemo(() => {
+    if (disabled) {
+      return {
+        ...restProps,
+        'aria-disabled': true,
+        onClick: undefined,
+      };
+    }
 
-  // Disable selectable card props when the card is disabled
-  const finalSelectableCardProps = disabled ? {} : selectableCardProps;
+    return {
+      ...(!selectable ? focusAttributes : null),
+      ...restProps,
+      ...selectableCardProps,
+    };
+  }, [disabled, restProps, selectable, focusAttributes, selectableCardProps]);
 
   return {
     appearance,
@@ -129,11 +132,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
       getIntrinsicElementProps('div', {
         ref: cardRef,
         role: 'group',
-        'aria-disabled': disabled || undefined,
-        ...(!selectable ? finalFocusAttributes : null),
-        ...restProps,
-        ...(disabled ? {} : { onClick }),
-        ...finalSelectableCardProps,
+        ...cardProps,
       }),
       { elementType: 'div' },
     ),
