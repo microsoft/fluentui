@@ -14,19 +14,9 @@ export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots> = {
 
 const useStyles = makeStyles({
   singleSelectHeader: {
-    ...createCustomFocusIndicatorStyle(
-      {
-        [`& .${tableSelectionCellClassNames.root}`]: {
-          opacity: 0,
-        },
-      },
-      { selector: 'focus-within' },
-    ),
-
-    ':hover': {
-      [`& .${tableSelectionCellClassNames.root}`]: {
-        opacity: 0,
-      },
+    // the selection cell's radio indicator should not be exposed in a single-select header row
+    ['& .fui-Radio']: {
+      display: 'none',
     },
   },
 
