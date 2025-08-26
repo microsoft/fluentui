@@ -47,9 +47,11 @@ import {
   useRtl,
   formatDate,
   getCurveFactory,
+  isScatterPolarSeries,
 } from '../../utilities/index';
 import { ScaleLinear } from 'd3-scale';
 import { toImage } from '../../utilities/image-export-utils';
+import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 enum PointSize {
@@ -139,6 +141,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
   (props, forwardedRef) => {
     let _hasMarkersMode: boolean = false;
     let _isXAxisDateType: boolean = false;
+    let _isScatterPolar: boolean = false;
     let _points: LineChartDataWithIndex[] = _injectIndexPropertyInLineChartData(props.data.lineChartData);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _calloutPoints: any[] = calloutData(_points) || [];
@@ -282,6 +285,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         : lineChartData;
       _hasMarkersMode =
         filteredData?.some((item: LineChartPoints) => item.lineOptions?.mode?.includes?.('markers')) ?? false;
+      _isScatterPolar = isScatterPolarSeries(filteredData!);
       return filteredData
         ? filteredData.map((item: LineChartPoints, index: number) => {
             let color: string;
@@ -623,7 +627,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                   onBlur={_handleMouseOut}
                   {..._getClickHandler(_points[i].data[0].onDataPointClick)}
                 />
-                {supportsTextMode && text && (
+                {!_isScatterPolar && supportsTextMode && text && (
                   <text
                     key={`${circleId}-label`}
                     x={_xAxisScale(x1)}
@@ -818,7 +822,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     role="img"
                     aria-label={_points[i].data[j - 1].text ?? _getAriaLabel(i, j - 1)}
                   />
-                  {supportsTextMode && text && (
+                  {!_isScatterPolar && supportsTextMode && text && (
                     <text
                       key={`${circleId}-label`}
                       x={_xAxisScale(x1)}
@@ -956,7 +960,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         role="img"
                         aria-label={_points[i].data[j].text ?? _getAriaLabel(i, j)}
                       />
-                      {lastSupportsTextMode && lastText && (
+                      {!_isScatterPolar && lastSupportsTextMode && lastText && (
                         <text
                           key={`${lastCircleId}-label`}
                           x={_xAxisScale(x2)}
@@ -1172,6 +1176,24 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               }
             }
           }
+        }
+
+        if (_isScatterPolar) {
+          // Render category labels for all series at once to avoid overlap
+          const allSeriesData = _points.map(series => ({
+            data: series.data
+              .filter(pt => typeof pt.x === 'number' && typeof pt.y === 'number')
+              .map(pt => ({ x: pt.x as number, y: pt.y as number, text: pt.text })),
+          }));
+          pointsForLine.push(
+            ...renderScatterPolarCategoryLabels({
+              allSeriesData,
+              xAxisScale: _xAxisScale,
+              yAxisScale: yScale,
+              className: classes.markerLabel || '',
+              lineOptions: (_points[i] as Partial<LineChartPoints>)?.lineOptions,
+            }),
+          );
         }
 
         lines.push(
@@ -1777,6 +1799,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         getMinMaxOfYAxis={_getNumericMinMaxOfY}
         getGraphData={_initializeLineChartData}
         xAxisType={_isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
+        {...(_isScatterPolar ? { yMaxValue: 1, yMinValue: -1 } : {})}
         getDomainNRangeValues={_getDomainNRangeValues}
         createStringYAxis={createStringYAxis}
         onChartMouseLeave={_handleChartMouseLeave}
