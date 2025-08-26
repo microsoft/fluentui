@@ -76,5 +76,6 @@
   "typescript.tsdk": "./node_modules/typescript/lib",
   "typescript.reportStyleChecksAsWarnings": false,
   "cSpell.words": ["beachball", "borderless", "fluentui", "griffel", "spinbutton", "tabster"],
-  "nxConsole.generateAiAgentRules": true
+  "nxConsole.generateAiAgentRules": true,
+  "chat.agent.maxRequests": 999
 }
