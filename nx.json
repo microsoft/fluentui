@@ -58,6 +58,10 @@
       "dependsOn": [],
       "cache": true
     },
+    "test-rit--*--prepare": {
+      "dependsOn": ["build", "react-components:build"],
+      "cache": true
+    },
     "e2e": {
       "dependsOn": [],
       "cache": true,
@@ -95,10 +99,6 @@
     },
     "verify-packaging": {
       "dependsOn": ["build"],
-      "cache": true
-    },
-    "test:rit--*--prepare": {
-      "dependsOn": ["build", "react-components:build"],
       "cache": true
     },
     "@nx/jest:jest": {
@@ -151,7 +151,7 @@
           "include": ["react-text", "react-components"]
         },
         "reactIntegrationTesting": {
-          "targetName": "test:rit",
+          "targetName": "test-rit",
           "reactVersions": ["17", "19"],
           "exclude": ["react-theme-sass", "babel-preset-global-context", "eslint-plugin-react-components"]
         }
