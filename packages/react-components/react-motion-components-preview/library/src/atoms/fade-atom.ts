@@ -15,7 +15,6 @@ interface FadeAtomParams extends BaseAtomParams {
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
  * @param delay - The delay before the motion starts. Defaults to 0.
- * @param fill - Defines how values are applied before and after execution. Defaults to 'both'.
  * @param fromOpacity - The starting opacity value. Defaults to 0.
  * @returns A motion atom object with opacity keyframes and the supplied duration and easing.
  */
@@ -24,7 +23,6 @@ export const fadeAtom = ({
   duration,
   easing = motionTokens.curveLinear,
   delay = 0,
-  fill = 'both',
   fromOpacity = 0,
 }: FadeAtomParams): AtomMotion => {
   const keyframes = [{ opacity: fromOpacity }, { opacity: 1 }];
@@ -36,6 +34,8 @@ export const fadeAtom = ({
     duration,
     easing,
     delay,
-    fill,
+    // Applying opacity backwards and forwards in time is important
+    // to avoid a bug where a delayed animation is not hidden when it should be.
+    fill: 'both',
   };
 };
