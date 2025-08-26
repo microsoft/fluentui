@@ -142,13 +142,12 @@ A card can be disabled, which prevents interaction and shows a visual disabled s
 - Selectable disabled cards cannot change their selection state
 - The internal checkbox in selectable cards is also disabled
 - Focus is not applied to disabled cards (no tabindex)
-- Child elements can still be interacted with unless explicitly disabled
 
 **Accessibility:**
 - Disabled cards have \`aria-disabled="true"\`
 - Screen readers announce the disabled state
 - Cards do not receive focus when disabled, maintaining proper tab order
-- Make sure to disable interactive child elements as well, like buttons and fields
+- Make sure to explicitly disable interactive child elements as well, like buttons and fields, as they are not disabled by default due to limited control over slot contents
       `,
     },
   },
