@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 25 Aug 2025 04:07:50 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Aug 2025 04:07:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.118](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.118)
+
+Tue, 26 Aug 2025 04:07:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.117..@fluentui/web-components_v3.0.0-beta.118)
+
+### Changes
+
+- fix: remove unnecessary type check and avoid using instanceof in menu-list ([PR #35074](https://github.com/microsoft/fluentui/pull/35074) by machi@microsoft.com)
+- fix: make tablist more ssr compatible ([PR #35072](https://github.com/microsoft/fluentui/pull/35072) by machi@microsoft.com)
 
 ## [3.0.0-beta.117](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.117)
 

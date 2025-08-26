@@ -16,6 +16,7 @@ import {
   ChildProps,
   LineChartPoints,
   CustomizedCalloutData,
+  CustomizedCalloutDataPoint,
   Margins,
   RefArrayData,
   ColorFillBarsProps,
@@ -46,9 +47,11 @@ import {
   useRtl,
   formatDate,
   getCurveFactory,
+  isScatterPolarSeries,
 } from '../../utilities/index';
 import { ScaleLinear } from 'd3-scale';
 import { toImage } from '../../utilities/image-export-utils';
+import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 enum PointSize {
@@ -138,6 +141,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
   (props, forwardedRef) => {
     let _hasMarkersMode: boolean = false;
     let _isXAxisDateType: boolean = false;
+    let _isScatterPolar: boolean = false;
     let _points: LineChartDataWithIndex[] = _injectIndexPropertyInLineChartData(props.data.lineChartData);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _calloutPoints: any[] = calloutData(_points) || [];
@@ -195,6 +199,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+    const [YValue, setYValue] = React.useState<number | string>('');
+    const [legendVal, setLegendVal] = React.useState<string>('');
+    const [lineColor, setLineColor] = React.useState<string>('');
 
     const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
     const calloutPointsRef = React.useRef<any[]>([]);
@@ -278,6 +285,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         : lineChartData;
       _hasMarkersMode =
         filteredData?.some((item: LineChartPoints) => item.lineOptions?.mode?.includes?.('markers')) ?? false;
+      _isScatterPolar = isScatterPolarSeries(filteredData!);
       return filteredData
         ? filteredData.map((item: LineChartPoints, index: number) => {
             let color: string;
@@ -586,6 +594,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       xAxisCalloutAccessibilityData,
                       event,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )
                   }
                   onMouseMove={(event: React.MouseEvent<SVGElement>) =>
@@ -598,6 +608,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       xAxisCalloutAccessibilityData,
                       event,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )
                   }
                   onMouseOut={_handleMouseOut}
@@ -615,7 +627,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                   onBlur={_handleMouseOut}
                   {..._getClickHandler(_points[i].data[0].onDataPointClick)}
                 />
-                {supportsTextMode && text && (
+                {!_isScatterPolar && supportsTextMode && text && (
                   <text
                     key={`${circleId}-label`}
                     x={_xAxisScale(x1)}
@@ -779,6 +791,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         xAxisCalloutAccessibilityData,
                         event,
                         yScale,
+                        legendVal,
+                        lineColor,
                       )
                     }
                     onMouseMove={event =>
@@ -791,6 +805,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         xAxisCalloutAccessibilityData,
                         event,
                         yScale,
+                        legendVal,
+                        lineColor,
                       )
                     }
                     onMouseOut={_handleMouseOut}
@@ -806,7 +822,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     role="img"
                     aria-label={_points[i].data[j - 1].text ?? _getAriaLabel(i, j - 1)}
                   />
-                  {supportsTextMode && text && (
+                  {!_isScatterPolar && supportsTextMode && text && (
                     <text
                       key={`${circleId}-label`}
                       x={_xAxisScale(x1)}
@@ -838,6 +854,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       xAxisCalloutAccessibilityData,
                       event,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )
                   }
                   onMouseMove={(event: React.MouseEvent<SVGElement>) =>
@@ -850,6 +868,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       xAxisCalloutAccessibilityData,
                       event,
                       yScale,
+                      legendVal,
+                      lineColor,
                     )
                   }
                   onMouseOut={_handleMouseOut}
@@ -902,6 +922,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                             lastCirlceXCalloutAccessibilityData,
                             event,
                             yScale,
+                            legendVal,
+                            lineColor,
                           )
                         }
                         onMouseMove={event =>
@@ -914,6 +936,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                             lastCirlceXCalloutAccessibilityData,
                             event,
                             yScale,
+                            legendVal,
+                            lineColor,
                           )
                         }
                         onMouseOut={_handleMouseOut}
@@ -936,7 +960,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         role="img"
                         aria-label={_points[i].data[j].text ?? _getAriaLabel(i, j)}
                       />
-                      {lastSupportsTextMode && lastText && (
+                      {!_isScatterPolar && lastSupportsTextMode && lastText && (
                         <text
                           key={`${lastCircleId}-label`}
                           x={_xAxisScale(x2)}
@@ -967,6 +991,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           lastCirlceXCalloutAccessibilityData,
                           event,
                           yScale,
+                          legendVal,
+                          lineColor,
                         )
                       }
                       onMouseMove={(event: React.MouseEvent<SVGElement>) =>
@@ -979,6 +1005,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           lastCirlceXCalloutAccessibilityData,
                           event,
                           yScale,
+                          legendVal,
+                          lineColor,
                         )
                       }
                       onMouseOut={_handleMouseOut}
@@ -1022,6 +1050,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         lastCirlceXCalloutAccessibilityData,
                         event,
                         yScale,
+                        legendVal,
+                        lineColor,
                       )
                     }
                     onMouseMove={(event: React.MouseEvent<SVGElement>) =>
@@ -1034,6 +1064,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         lastCirlceXCalloutAccessibilityData,
                         event,
                         yScale,
+                        legendVal,
+                        lineColor,
                       )
                     }
                     onFocus={event =>
@@ -1094,6 +1126,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           xAxisCalloutAccessibilityData,
                           event,
                           yScale,
+                          legendVal,
+                          lineColor,
                         )
                       }
                       onMouseMove={event =>
@@ -1106,6 +1140,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           xAxisCalloutAccessibilityData,
                           event,
                           yScale,
+                          legendVal,
+                          lineColor,
                         )
                       }
                       onMouseOut={_handleMouseOut}
@@ -1140,6 +1176,24 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               }
             }
           }
+        }
+
+        if (_isScatterPolar) {
+          // Render category labels for all series at once to avoid overlap
+          const allSeriesData = _points.map(series => ({
+            data: series.data
+              .filter(pt => typeof pt.x === 'number' && typeof pt.y === 'number')
+              .map(pt => ({ x: pt.x as number, y: pt.y as number, text: pt.text })),
+          }));
+          pointsForLine.push(
+            ...renderScatterPolarCategoryLabels({
+              allSeriesData,
+              xAxisScale: _xAxisScale,
+              yAxisScale: yScale,
+              className: classes.markerLabel || '',
+              lineOptions: (_points[i] as Partial<LineChartPoints>)?.lineOptions,
+            }),
+          );
         }
 
         lines.push(
@@ -1399,11 +1453,25 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       xAxisCalloutAccessibilityData: AccessibilityProps | undefined,
       mouseEvent: React.MouseEvent<SVGElement>,
       yScale: ScaleLinear<number, number>,
+      legendVal: string,
+      lineColor: string,
     ) {
       mouseEvent?.persist();
       const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
       const xVal = x instanceof Date ? x.getTime() : x;
+      const yVal = y instanceof Date ? y.getTime() : y;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
+      let hoverDp: CustomizedCalloutData | undefined = undefined;
+
+      if (props.isCalloutForStack === false && found?.values) {
+        const dp = find(found.values, (val: CustomizedCalloutDataPoint) => val?.y === yVal);
+        if (dp) {
+          hoverDp = {
+            x: xVal,
+            values: [dp],
+          };
+        }
+      }
       // if no points need to be called out then don't show vertical line and callout card
 
       if (found) {
@@ -1417,8 +1485,11 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           updatePosition(mouseEvent.clientX, mouseEvent.clientY);
           xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
           setYValueHover(found.values);
+          setYValue(yVal);
+          setLegendVal(legendVal);
+          setLineColor(lineColor);
           setStackCalloutProps(found!);
-          setDataPointCalloutProps(found!);
+          setDataPointCalloutProps(hoverDp);
           setActivePoint(circleId);
           setNearestCircleToHighlight(null);
         }
@@ -1686,6 +1757,10 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const calloutProps = {
       YValueHover: YValueHover,
       hoverXValue: hoverXValue,
+      YValue: YValue,
+      legend: legendVal,
+      color: lineColor,
+      XValue: hoverXValue! as string,
       descriptionMessage:
         props.getCalloutDescriptionMessage && stackCalloutProps
           ? props.getCalloutDescriptionMessage(stackCalloutProps)
@@ -1695,7 +1770,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       ...props.calloutProps,
       clickPosition: clickPosition,
       isPopoverOpen: isPopoverOpen,
-      isCalloutForStack: true,
+      isCalloutForStack: props.isCalloutForStack,
       culture: props.culture ?? 'en-us',
       isCartesian: true,
       customCallout: {
@@ -1724,6 +1799,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         getMinMaxOfYAxis={_getNumericMinMaxOfY}
         getGraphData={_initializeLineChartData}
         xAxisType={_isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
+        {...(_isScatterPolar ? { yMaxValue: 1, yMinValue: -1 } : {})}
         getDomainNRangeValues={_getDomainNRangeValues}
         createStringYAxis={createStringYAxis}
         onChartMouseLeave={_handleChartMouseLeave}
@@ -1776,3 +1852,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
   },
 );
 LineChart.displayName = 'LineChart';
+LineChart.defaultProps = {
+  isCalloutForStack: true,
+};
