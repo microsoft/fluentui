@@ -22,14 +22,12 @@ export const Collapse: PresenceComponent<CollapseParams>;
 // @public
 export const CollapseDelayed: PresenceComponent<CollapseDelayedParams>;
 
-// @public (undocumented)
-export type CollapseDelayedParams = CollapseBaseParams & {
+// @public
+export type CollapseDelayedParams = Omit<CollapseParams, 'duration' | 'exitDuration'> & {
     sizeDuration?: number;
     opacityDuration?: number;
     exitSizeDuration?: number;
     exitOpacityDuration?: number;
-    delay?: number;
-    exitDelay?: number;
 };
 
 // @public (undocumented)
