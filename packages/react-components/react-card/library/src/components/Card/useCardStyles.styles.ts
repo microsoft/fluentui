@@ -71,11 +71,9 @@ const disabledStyles: GriffelStyle = {
   color: tokens.colorNeutralForegroundDisabled,
   backgroundColor: tokens.colorNeutralBackgroundDisabled,
   boxShadow: tokens.shadow2,
-  position: 'relative',
   ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
 
   '::before': {
-    cursor: 'not-allowed',
     content: '""',
     position: 'absolute',
     zIndex: `calc(${tokens.zIndexContent} + 1)`,
@@ -84,10 +82,6 @@ const disabledStyles: GriffelStyle = {
 
   '::after': {
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-  },
-
-  '& img, & video': {
-    opacity: 0.4,
   },
 };
 
