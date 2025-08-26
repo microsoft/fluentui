@@ -11,9 +11,11 @@ export const template = html<Tree>`
     @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     @change="${(x, c) => x.changeHandler(c.event)}"
   >
-    <slot ${slotted({
-      property: 'childTreeItems',
-      filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
-    })}></slot>
+    <slot
+      ${slotted({
+        property: 'childTreeItems',
+        filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
+      })}
+    ></slot>
   </template>
 `;

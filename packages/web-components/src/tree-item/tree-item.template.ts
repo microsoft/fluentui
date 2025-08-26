@@ -11,9 +11,7 @@ const chevronIcon = html`
 `;
 
 export const template = html<TreeItem>`
-  <template
-    slot="${x => (x.isNestedItem ? 'item' : void 0)}"
-  >
+  <template slot="${x => (x.isNestedItem ? 'item' : void 0)}">
     <div class="positioning-region" part="positioning-region">
       <div class="content" part="content">
         <span class="chevron" part="chevron" aria-hidden="true">
@@ -28,7 +26,8 @@ export const template = html<TreeItem>`
       </div>
     </div>
     <div role="group" class="items" part="items">
-      <slot name="item"
+      <slot
+        name="item"
         ${slotted({
           property: 'childTreeItems',
           filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
