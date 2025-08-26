@@ -90,21 +90,19 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
 
   const { interactive, focusAttributes } = useCardInteractive(props);
 
-  const cardProps = React.useMemo(() => {
-    if (disabled) {
-      return {
-        ...restProps,
-        'aria-disabled': true,
-        onClick: undefined,
-      };
-    }
+  let cardRootProps = {
+    ...(!selectable ? focusAttributes : null),
+    ...restProps,
+    ...selectableCardProps,
+  };
 
-    return {
-      ...(!selectable ? focusAttributes : null),
+  if (disabled) {
+    cardRootProps = {
       ...restProps,
-      ...selectableCardProps,
+      'aria-disabled': true,
+      onClick: undefined,
     };
-  }, [disabled, restProps, selectable, focusAttributes, selectableCardProps]);
+  }
 
   return {
     appearance,
@@ -132,7 +130,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
       getIntrinsicElementProps('div', {
         ref: cardRef,
         role: 'group',
-        ...cardProps,
+        ...cardRootProps,
       }),
       { elementType: 'div' },
     ),
