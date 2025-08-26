@@ -135,10 +135,10 @@ function parseArgs(): Required<Args> {
     .parse();
 
   const prepareOnly = (argv['prepare-only'] as boolean | undefined) ?? false;
-  const installFlag = (argv['install'] as boolean | undefined) ?? true;
+  const installFlag = (argv.install as boolean | undefined) ?? true;
   const noInstall = !installFlag;
   const installDeps = (argv['install-deps'] as boolean | undefined) ?? false;
-  const force = (argv['force'] as boolean | undefined) ?? false;
+  const force = (argv.force as boolean | undefined) ?? false;
   const projectId = argv['project-id'] as string | undefined;
   const react = argv.react as number | undefined as ReactVersion | undefined;
   const run = (argv.run as CommandName[] | undefined) ?? [];
@@ -180,8 +180,8 @@ function parseArgs(): Required<Args> {
   function resolveConfigPath(): string | undefined {
     const defaultConfigPath = resolve(process.cwd(), 'rit.config.js');
 
-    if (argv['config']) {
-      const userProvidedConfigPath = resolve(process.cwd(), argv['config']);
+    if (argv.config) {
+      const userProvidedConfigPath = resolve(process.cwd(), argv.config);
       if (!existsSync(userProvidedConfigPath)) {
         throw new Error(`Config not found at: ${userProvidedConfigPath}`);
       }
