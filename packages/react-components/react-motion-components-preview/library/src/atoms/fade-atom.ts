@@ -1,9 +1,7 @@
-import { AtomMotion, PresenceDirection, motionTokens } from '@fluentui/react-motion';
+import { AtomMotion, motionTokens } from '@fluentui/react-motion';
+import { BaseAtomParams } from '../types';
 
-interface FadeAtomParams {
-  direction: PresenceDirection;
-  duration: number;
-  easing?: string;
+interface FadeAtomParams extends BaseAtomParams {
   fromOpacity?: number;
 }
 
@@ -19,6 +17,7 @@ export const fadeAtom = ({
   direction,
   duration,
   easing = motionTokens.curveLinear,
+  delay = 0,
   fromOpacity = 0,
 }: FadeAtomParams): AtomMotion => {
   const keyframes = [{ opacity: fromOpacity }, { opacity: 1 }];
@@ -29,5 +28,6 @@ export const fadeAtom = ({
     keyframes,
     duration,
     easing,
+    delay,
   };
 };
