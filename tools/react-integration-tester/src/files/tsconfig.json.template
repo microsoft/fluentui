@@ -14,7 +14,12 @@
     "preserveConstEnums": true,
     "skipLibCheck": true,
     "types": [],
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "react/jsx-runtime": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react/jsx-runtime.d.ts"],
+      "react": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react/index.d.ts"],
+      "react-dom": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react-dom/index.d.ts"]
+    }
   },
   "exclude": [
     "<%= relativePathToProjectDomainRoot %>/**/index.stories.tsx",
