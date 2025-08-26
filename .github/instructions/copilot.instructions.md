@@ -16,20 +16,15 @@ This is a large Nx monorepo (Nx 20.8.1) with the following key characteristics:
 
 ## Project Structure
 
-### Three Main Products
-
 1. **Fluent UI v9** (`@fluentui/react-components`) - **PRIORITIZE FOR NEW WORK**
 
    - Location: `packages/react-components/`
-   - Status: Current stable version, actively developed
-   - Used by: Microsoft 365
-   - Architecture: Hook-based, Griffel build-time CSS-in-JS, slot system
-   - Bundle: Tree-shakeable, atomic CSS classes
+   - Features: Current stable version, actively developed. Tree-shakeable, atomic CSS classes
 
 2. **Fluent UI v8** (`@fluentui/react`) - **MAINTENANCE ONLY**
 
    - Location: `packages/react/`
-   - Status: Maintenance mode (sunset July 2025)
+   - Status: Maintenance mode
    - Features: Runtime styling, mature and stable
 
 3. **Web Components** (`@fluentui/web-components`) - Framework-agnostic
@@ -37,16 +32,7 @@ This is a large Nx monorepo (Nx 20.8.1) with the following key characteristics:
    - Used by: Microsoft Edge
    - Features: Platform-agnostic web standards
 
-### Monorepo Structure
-
-```
-packages/react-components/              # v9 components
-packages/react/                         # v8 legacy components
-packages/tokens/                        # Design tokens (shared)
-apps/public-docsite-v9/                 # Main v9 documentation site
-tools/workspace-plugin/                 # Custom Nx generators/executors
-scripts/                                # Build utilities and tooling
-```
+More information about the projects and their status can be found through NX tags.
 
 ## Development Guidelines
 
@@ -323,9 +309,8 @@ export const Component: ForwardRefComponent<ComponentProps> = React.forwardRef((
 
 ### Accessibility Standards
 
-**WCAG 2.1 AA compliance required** for all interactive components:
+**WCAG 2.1 compliance required** for all interactive components:
 
-- Use `@fluentui/a11y-testing` utilities in tests
 - Provide proper ARIA labels and roles
 - Support keyboard navigation patterns
 - Test with screen readers (NVDA, JAWS, VoiceOver)
