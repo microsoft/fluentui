@@ -38,6 +38,7 @@ import { GaugeChartProps, GaugeChartSegment } from '../GaugeChart/index';
 import { GroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChartProps } from '../VerticalBarChart/index';
 import { ChartTableProps } from '../ChartTable/index';
+import { GanttChartProps } from '../GanttChart/index';
 import { findNumericMinMaxOfY, formatScientificLimitWidth, MIN_DONUT_RADIUS } from '../../utilities/utilities';
 import type {
   Datum,
@@ -521,6 +522,8 @@ export const transformPlotlyJsonToVSBCProps = (
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getBarProps(input.data, input.layout),
+    ...getYMinMaxValues(input.data[0], input.layout),
   };
 };
 
@@ -599,6 +602,7 @@ export const transformPlotlyJsonToGVBCProps = (
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getBarProps(input.data, input.layout),
   };
 };
 
@@ -766,12 +770,14 @@ const transformPlotlyJsonToScatterTraceProps = (
   isDarkTheme?: boolean,
 ): LineChartProps | AreaChartProps | ScatterChartProps => {
   const isScatterMarkers = [
+    'text',
     'markers',
     'text+markers',
     'markers+text',
     'lines+markers',
     'markers+line',
     'text+lines+markers',
+    'lines+markers+text',
   ].includes((input.data[0] as PlotData)?.mode);
   const isAreaChart = chartType === 'area';
   const isScatterChart = chartType === 'scatter';
@@ -843,7 +849,13 @@ const transformPlotlyJsonToScatterTraceProps = (
             mode: series.type !== 'scatterpolar' ? series.mode : 'scatterpolar',
             // originXOffset is not typed on Layout, but may be present in input.layout as a part of projection of
             // scatter polar coordingates to cartesian coordinates
-            originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
+            ...(series.type === 'scatterpolar'
+              ? {
+                  originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
+                  direction: input.layout?.polar?.angularaxis?.direction,
+                  rotation: input.layout?.polar?.angularaxis?.rotation,
+                }
+              : {}),
           },
           useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         } as LineChartPoints;
@@ -971,6 +983,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     roundCorners: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getBarProps(input.data, input.layout, true),
   };
 };
 
@@ -1524,6 +1537,10 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       continue;
     }
 
+    // retrieve polar axis settings
+    const dirMultiplier = input.layout?.polar?.angularaxis?.direction === 'clockwise' ? -1 : 1;
+    const startAngleInRad = ((input.layout?.polar?.angularaxis?.rotation ?? 0) * Math.PI) / 180;
+
     // Compute tick positions if categorical
     let uniqueTheta: Datum[] = [];
     let categorical = false;
@@ -1538,13 +1555,13 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       }
 
       // 4. Map theta to angle in radians
-      let thetaRad;
+      let thetaRad: number;
       if (categorical) {
         const idx = uniqueTheta.indexOf(thetas[ptindex]);
         const step = (2 * Math.PI) / uniqueTheta.length;
-        thetaRad = idx * step;
+        thetaRad = startAngleInRad + dirMultiplier * idx * step;
       } else {
-        thetaRad = ((thetas[ptindex] as number) * Math.PI) / 180;
+        thetaRad = startAngleInRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
       }
       // 5. Shift only the polar origin (not the cartesian)
       const rawRadius = rVals[ptindex] as number;
@@ -2194,4 +2211,50 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
   });
 
   return result;
+};
+
+const getBarProps = (
+  data: Data[],
+  layout: Partial<Layout> | undefined,
+  isHorizontal?: boolean,
+):
+  | Pick<VerticalBarChartProps, 'barWidth' | 'maxBarWidth' | 'xAxisInnerPadding' | 'xAxisOuterPadding' | 'xAxisPadding'>
+  | Pick<GanttChartProps, 'barHeight' | 'maxBarHeight' | 'yAxisPadding'> => {
+  let padding: number | undefined;
+
+  if (typeof layout?.bargap === 'number') {
+    padding = layout.bargap;
+  }
+
+  const plotlyBarWidths = data
+    .map((series: Partial<PlotData>) => {
+      if (series.type === 'bar' && (isArrayOrTypedArray(series.width) || typeof series.width === 'number')) {
+        return series.width;
+      }
+      return [];
+    })
+    .flat();
+  const maxPlotlyBarWidth = d3Max(plotlyBarWidths as number[]);
+  if (typeof maxPlotlyBarWidth === 'number') {
+    padding = 1 - maxPlotlyBarWidth;
+    padding = Math.max(0, Math.min(padding, 1));
+  }
+
+  if (typeof padding === 'undefined') {
+    return {};
+  }
+
+  if (isHorizontal) {
+    return {
+      maxBarHeight: 1000,
+      yAxisPadding: padding,
+    };
+  }
+
+  return {
+    barWidth: 'auto',
+    maxBarWidth: 1000,
+    xAxisInnerPadding: padding,
+    xAxisOuterPadding: padding / 2,
+  };
 };
