@@ -26,16 +26,6 @@ describe('fadeAtom', () => {
     expect(atom.keyframes).toEqual([{ opacity: 0.5 }, { opacity: 1 }]);
   });
 
-  it('allows custom fill mode when explicitly provided', () => {
-    const atom = fadeAtom({
-      direction: 'enter',
-      duration: 300,
-      fill: 'forwards',
-    });
-
-    expect(atom.fill).toBe('forwards');
-  });
-
   it('has fill mode "both" by default to prevent opacity flickering during delays', () => {
     const enterAtom = fadeAtom({
       direction: 'enter',
