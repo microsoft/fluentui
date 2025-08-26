@@ -19,6 +19,7 @@ import {
   IDomainNRange,
   YAxisType,
   useRtl,
+  isScatterPolarSeries,
 } from '../../utilities/index';
 import {
   AccessibilityProps,
@@ -44,8 +45,10 @@ import {
   getColorFromToken,
   formatDate,
 } from '../../utilities/index';
+import { LineChartPoints } from '../../types/DataPoint';
 import { toImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
+import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -97,6 +100,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const prevSelectedLegendsRef = React.useRef<string[] | undefined>(undefined);
+  const _isScatterPolarRef = React.useRef(false);
 
   React.useEffect(() => {
     if (
@@ -223,6 +227,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   ) {
     _xAxisScale = xScale;
     _yAxisScale = yScale;
+    _isScatterPolarRef.current = isScatterPolarSeries(_points);
     renderSeries = _createPlot(xElement!, containerHeight!);
   }
 
@@ -430,7 +435,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
               tabIndex={isLegendSelected ? 0 : undefined}
             />
             ,
-            {text && (
+            {!_isScatterPolarRef.current && text && (
               <text
                 key={`${circleId}-label`}
                 x={_xAxisScale(x) + _xBandwidth}
@@ -441,6 +446,29 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
               </text>
             )}
           </>,
+        );
+      }
+
+      if (_isScatterPolarRef.current) {
+        // Render category labels for all series at once to avoid overlap
+        const allSeriesData = _points.map(s => ({
+          data: s.data
+            .filter(pt => typeof pt.x === 'number' && typeof pt.y === 'number')
+            .map(pt => ({ x: pt.x as number, y: pt.y as number, text: pt.text })),
+        }));
+        pointsForSeries.push(
+          ...renderScatterPolarCategoryLabels({
+            allSeriesData,
+            xAxisScale: _xAxisScale.current,
+            yAxisScale: _yAxisScale.current,
+            className: classes.markerLabel || '',
+            maybeLineOptions: (_points?.[i] as Partial<LineChartPoints>)?.lineOptions
+              ? {
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  originXOffset: ((_points?.[i] as Partial<LineChartPoints>).lineOptions as any)?.originXOffset,
+                }
+              : undefined,
+          }),
         );
       }
 
@@ -686,6 +714,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}
       componentRef={cartesianChartRef}
+      {...(_isScatterPolarRef.current ? { yMaxValue: 1, yMinValue: -1 } : {})}
       /* eslint-disable react/jsx-no-bind */
       // eslint-disable-next-line react/no-children-prop
       children={(props: ChildProps) => {
