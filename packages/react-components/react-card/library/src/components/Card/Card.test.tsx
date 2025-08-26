@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '@testing-library/jest-dom'; // Add this import for custom matchers
+import '@testing-library/jest-dom';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -127,13 +127,13 @@ describe('Card', () => {
 
   it('disables checkbox when card is disabled', () => {
     const onSelectionChange = jest.fn();
-    const { container } = render(
+    const { getByRole } = render(
       <Card disabled selected={false} onSelectionChange={onSelectionChange}>
         Default Card
       </Card>,
     );
 
-    const checkbox = container.querySelector('input[type="checkbox"]');
+    const checkbox = getByRole('checkbox');
     expect(checkbox).toHaveAttribute('disabled');
   });
 
