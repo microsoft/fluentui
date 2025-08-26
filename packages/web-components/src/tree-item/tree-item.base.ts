@@ -109,6 +109,11 @@ export class BaseTreeItem extends FASTElement {
     this.updateChildTreeItems();
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.updateTabindexBySelected();
+  }
+
   /**
    * Updates the childrens indent
    *
