@@ -217,7 +217,7 @@ describe(`workspace-plugin`, () => {
         const targets = getTargets(results, 'proj/library')!;
 
         expect(targets['react-integration-testing--17--type-check'].command).toMatchInlineSnapshot(
-          `"yarn rit --use-existing-project-id ci --react 17 --run type-check --verbose"`,
+          `"yarn rit --project-id ci --react 17 --run type-check --verbose"`,
         );
       });
 
@@ -245,7 +245,7 @@ describe(`workspace-plugin`, () => {
         const targets = getTargets(results, 'proj/library')!;
 
         expect(targets['react-integration-testing--17--e2e'].command).toMatchInlineSnapshot(
-          `"yarn rit --use-existing-project-id ci --react 17 --run e2e --verbose"`,
+          `"yarn rit --project-id ci --react 17 --run e2e --verbose"`,
         );
       });
       it(`should --run test within targets for projects which have jest config`, async () => {
@@ -270,7 +270,7 @@ describe(`workspace-plugin`, () => {
         const targets = getTargets(results, 'proj/library')!;
 
         expect(targets['react-integration-testing--17--test'].command).toMatchInlineSnapshot(
-          `"yarn rit --use-existing-project-id ci --react 17 --run test --verbose"`,
+          `"yarn rit --project-id ci --react 17 --run test --verbose"`,
         );
       });
       it(`should create the targets name based on user provided options `, async () => {
@@ -511,7 +511,7 @@ describe(`workspace-plugin`, () => {
                     },
                     "react-integration-testing--17--prepare": Object {
                       "cache": true,
-                      "command": "yarn rit --prepare-only --project-id ci --no-install --react 17 --verbose",
+                      "command": "yarn rit --prepare-only --no-install --project-id ci --react 17 --verbose",
                       "dependsOn": Array [],
                       "inputs": Array [
                         "default",
@@ -539,7 +539,7 @@ describe(`workspace-plugin`, () => {
                     },
                     "react-integration-testing--17--type-check": Object {
                       "cache": true,
-                      "command": "yarn rit --use-existing-project-id ci --react 17 --run type-check --verbose",
+                      "command": "yarn rit --project-id ci --react 17 --run type-check --verbose",
                       "dependsOn": Array [
                         "react-integration-testing--17--prepare",
                       ],
@@ -567,7 +567,7 @@ describe(`workspace-plugin`, () => {
                     },
                     "react-integration-testing--18--prepare": Object {
                       "cache": true,
-                      "command": "yarn rit --prepare-only --project-id ci --no-install --react 18 --verbose",
+                      "command": "yarn rit --prepare-only --no-install --project-id ci --react 18 --verbose",
                       "dependsOn": Array [],
                       "inputs": Array [
                         "default",
@@ -595,7 +595,7 @@ describe(`workspace-plugin`, () => {
                     },
                     "react-integration-testing--18--type-check": Object {
                       "cache": true,
-                      "command": "yarn rit --use-existing-project-id ci --react 18 --run type-check --verbose",
+                      "command": "yarn rit --project-id ci --react 18 --run type-check --verbose",
                       "dependsOn": Array [
                         "react-integration-testing--18--prepare",
                       ],
