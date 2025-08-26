@@ -2,7 +2,7 @@
 
 exports[`MenuGroupHeader renders a default state 1`] = `
 <div
-  className="fui-MenuGroupHeader"
+  class="fui-MenuGroupHeader"
   id=""
 >
   Default MenuGroupHeader
