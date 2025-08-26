@@ -30,7 +30,7 @@ const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
   fromScale = 0.9,
   animateOpacity = true,
 }) => {
-  const enterAtoms = [scaleAtom({ direction: 'enter', duration, easing, delay, fromScale: fromScale })];
+  const enterAtoms = [scaleAtom({ direction: 'enter', duration, easing, delay, fromScale })];
   const exitAtoms = [
     scaleAtom({
       direction: 'exit',

@@ -1,5 +1,16 @@
 // Main test utilities for presence motion components
-export * from './testUtils';
+export {
+  expectPresenceMotionObject,
+  expectPresenceMotionArray,
+  expectPresenceMotionFunction,
+  mockAnimation,
+} from './testUtils';
 
 // Specialized test utilities for atom-level testing
-export * from './atomTestUtils';
+export {
+  expectValidAtomMotion,
+  expectReversedKeyframes,
+  expectConsistentTiming,
+  expectCustomParameters,
+  expectKeyframeProperty,
+} from './atomTestUtils';

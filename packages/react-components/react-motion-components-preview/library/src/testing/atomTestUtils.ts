@@ -1,4 +1,4 @@
-import type { AtomMotion } from '@fluentui/react-motion';
+import type { AtomMotion, MotionParam } from '@fluentui/react-motion';
 
 /**
  * Test utility to validate that an atom motion object has all required properties
@@ -75,7 +75,7 @@ export function expectCustomParameters(
 /**
  * Test utility to validate keyframe structure for specific CSS properties.
  */
-export function expectKeyframeProperty(atom: AtomMotion, property: string, expectedValues: any[]) {
+export function expectKeyframeProperty(atom: AtomMotion, property: string, expectedValues: MotionParam[]) {
   expect(atom.keyframes).toHaveLength(expectedValues.length);
 
   atom.keyframes.forEach((frame, index) => {
