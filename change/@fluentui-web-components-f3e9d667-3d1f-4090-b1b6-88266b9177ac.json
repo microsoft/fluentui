@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: make tablist more ssr compatible",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}

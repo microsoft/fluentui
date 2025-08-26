@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 26 Aug 2025 04:07:19 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.118",
+      "version": "3.0.0-beta.118",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "761b211b1b978a0b5b8041f89ba9e86a1dbf58c7",
+            "comment": "fix: remove unnecessary type check and avoid using instanceof in menu-list"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "20d47059a7a6b1d7c052772e840df95f6dd20fd7",
+            "comment": "fix: make tablist more ssr compatible"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Aug 2025 04:07:50 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.117",
       "version": "3.0.0-beta.117",
