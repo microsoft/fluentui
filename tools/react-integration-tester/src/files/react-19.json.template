@@ -2,7 +2,7 @@
   "commands": {
     "e2e": "cypress run --component",
     "test": "jest --passWithNoTests -u",
-    "type-check": "tsc -p ./tsconfig.json --noEmit --listFiles"
+    "type-check": "tsc -p ./tsconfig.json --noEmit"
   },
   "dependencies": {
     "@cypress/react": "9.0.1",
