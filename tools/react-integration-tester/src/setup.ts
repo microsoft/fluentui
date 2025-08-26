@@ -97,7 +97,10 @@ export async function setup(options: Required<Args>) {
     return {
       projectPath,
       commands,
-      cleanup: () => {},
+      cleanup: () => {
+        // no-op: user opted to reuse an existing prepared project; nothing to remove here
+        return;
+      },
     } as const;
   }
 
@@ -124,7 +127,10 @@ export async function setup(options: Required<Args>) {
     return {
       projectPath: reactRootPath,
       commands: templateJson.commands,
-      cleanup: () => {},
+      cleanup: () => {
+        // no-op: install-deps mode doesn't create a per-project folder
+        return;
+      },
     } as const;
   }
 

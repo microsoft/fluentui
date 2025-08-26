@@ -1,6 +1,6 @@
 import { spawn } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { join } from 'node:path';
 
 export type ReactVersion = 17 | 18 | 19;
 export type CommandName = 'e2e' | 'type-check' | 'test';
@@ -55,12 +55,11 @@ export function getMergedTemplate(
   };
 
   // Resolve config path: explicit --config wins, else default to ./rit.config.js if exists, else no overrides
-
   let overrides: Config['react'][string] | undefined;
   if (configPath) {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const loaded = require(configPath) as Config | { default: Config };
-    const conf: Config = (loaded as any).default ? (loaded as any).default : (loaded as any);
+    // Load CommonJS or ESM config with proper typing
+    const loaded = require(configPath) as unknown;
+    const conf: Config = (loaded as { default?: Config })?.default ?? (loaded as Config);
     const perVersion = conf?.react?.[String(reactVersion)] ?? {};
     overrides = perVersion;
   }
@@ -78,7 +77,9 @@ export function getMergedTemplate(
     };
     for (const [k, v] of Object.entries(overrides.commands)) {
       const key = map[k] ?? k;
-      if (v) merged.commands[key] = v as string;
+      if (v) {
+        merged.commands[key] = v as string;
+      }
     }
   }
   if (overrides?.dependencies) {
@@ -97,7 +98,8 @@ export function runCmd(command: string, opts: { cwd: string; env?: NodeJS.Proces
       .filter(Boolean)
       .join(process.platform === 'win32' ? ';' : ':');
     // Help Node resolve modules like '@swc/jest' from parent/react-root or repo root
-    const existingNodePath = process.env['NODE_PATH'] ?? '';
+
+    const existingNodePath = (process.env as NodeJS.ProcessEnv & { NODE_PATH?: string }).NODE_PATH ?? '';
     const parentNodeModules = join(opts.cwd, '..', 'node_modules');
     const mergedNodePath = [parentNodeModules, existingNodePath]
       .filter(Boolean)
@@ -112,7 +114,8 @@ export function runCmd(command: string, opts: { cwd: string; env?: NodeJS.Proces
     child.on('error', reject);
     child.on('exit', code => {
       if (code === 0) {
-        return resolvePromise();
+        resolvePromise();
+        return;
       }
       reject(new Error(`Command failed with exit code ${code}: ${command}`));
     });
