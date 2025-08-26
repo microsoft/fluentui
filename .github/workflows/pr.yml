@@ -83,7 +83,7 @@ jobs:
 
   react_integration_tests_collocated:
     if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: ubuntu-latest
+    runs-on: macos-14-xlarge
     steps:
       - uses: actions/checkout@v4
         with:
@@ -106,20 +106,18 @@ jobs:
           yarn rit --react 17 --install-deps
           yarn rit --react 19 --install-deps
 
-      - name: Verify Cypress installs (v14 workspace + v13 for RIT)
+      - name: Verify Cypress installs from RIT temp workspaces (React 17 -> v13, React 19 -> v14)
         run: |
-          # Verify workspace Cypress (v14)
-          yarn cypress verify
-          # Pre-install/verify Cypress v13 used by some RIT targets (e.g., React 17)
-          npx --yes cypress@13 verify
+          "$GITHUB_WORKSPACE"/tmp/rit/react-17/node_modules/.bin/cypress verify
+          "$GITHUB_WORKSPACE"/tmp/rit/react-19/node_modules/.bin/cypress verify
 
       # Use a single headless X server to avoid Xvfb display collisions across parallel Cypress runs
-      - name: Start Xvfb (shared display)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y xvfb
-          Xvfb :99 -screen 0 1920x1080x24 -ac +extension RANDR &
-          echo "DISPLAY=:99" >> $GITHUB_ENV
+      # - name: Start Xvfb (shared display)
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y xvfb
+      #     Xvfb :99 -screen 0 1920x1080x24 -ac +extension RANDR &
+      #     echo "DISPLAY=:99" >> $GITHUB_ENV
 
       - name: React Versions Integration Tests (17,19)
         run: |
