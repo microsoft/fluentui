@@ -58,14 +58,15 @@ describe('useTabster', () => {
         initialProps: { factory: mockFactory1 },
       });
 
-      const expected =
-        /@fluentui\/react-tabster:\s*\nThe factory function passed to useTabster has changed\. This should not ever happen\./;
-
-      expectRenderErrorMatching(() => rerender({ factory: mockFactory2 }), result, expected);
+      expectRenderErrorMatching(
+        () => rerender({ factory: mockFactory2 }),
+        result,
+        /@fluentui\/react-tabster:\s*\nThe factory function passed to useTabster has changed\. This should not ever happen\./,
+      );
 
       // React 17 (with @testing-library/react-hooks) captures hook errors into result.error instead of throwing
       // while React 18/19 tend to throw synchronously. Support both behaviors.
-      function expectRenderErrorMatching(run: () => void, result: { error?: unknown }, expected: RegExp) {
+      function expectRenderErrorMatching(run: () => void, renderResult: { error?: unknown }, expected: RegExp) {
         let threw: unknown;
         try {
           run();
@@ -77,8 +78,8 @@ describe('useTabster', () => {
           expect(getErrorMessages(threw).join('\n')).toMatch(expected);
         } else {
           // React 17 behavior
-          expect(result.error).toBeDefined();
-          expect(getErrorMessages(result.error).join('\n')).toMatch(expected);
+          expect(renderResult.error).toBeDefined();
+          expect(getErrorMessages(renderResult.error).join('\n')).toMatch(expected);
         }
       }
     });
