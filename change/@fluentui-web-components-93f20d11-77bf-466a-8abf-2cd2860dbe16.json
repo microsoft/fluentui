@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: make tree and tree-item SSR compatible",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}
