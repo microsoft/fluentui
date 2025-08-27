@@ -1,15 +1,6 @@
 import * as React from 'react';
 import StaggerBouncingDotsDescription from './StaggerBouncingDots.stories.md';
-import {
-  Button,
-  Field,
-  makeStyles,
-  tokens,
-  motionTokens,
-  createMotionComponent,
-  Slider,
-  Label,
-} from '@fluentui/react-components';
+import { makeStyles, tokens, motionTokens, createMotionComponent, Slider, Label } from '@fluentui/react-components';
 import { Stagger } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
@@ -32,6 +23,7 @@ const useClasses = makeStyles({
   controlsRow: {
     display: 'flex',
     gap: tokens.spacingHorizontalL,
+    justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',
   },
@@ -101,19 +93,14 @@ export const BouncingDots = () => {
   const [bounceDuration, setBounceDuration] = React.useState<number>(2000);
   const [bounceItemDelay, setBounceItemDelay] = React.useState<number>(100);
 
-  const replayAnimation = () => {
+  // Automatically restart animation when slider values change
+  React.useEffect(() => {
     setAnimationKey(prev => prev + 1);
-  };
+  }, [bounceDuration, bounceItemDelay]);
 
   return (
     <div className={classes.container}>
       <div className={classes.controls}>
-        <Field>
-          <Button appearance="primary" onClick={replayAnimation}>
-            Replay Animation
-          </Button>
-        </Field>
-
         <div className={classes.controlsRow}>
           <div className={classes.controlGroup}>
             <Label>Bounce Duration: {bounceDuration}ms</Label>
