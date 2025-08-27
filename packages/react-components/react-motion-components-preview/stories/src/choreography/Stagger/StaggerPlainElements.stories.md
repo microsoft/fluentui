@@ -1,4 +1,4 @@
-By default, `Stagger` will hide plain elements using a `visibility: hidden` style, to preserve their layout.
+By default, `Stagger` will hide regular elements using a `visibility: hidden` style, to preserve their layout.
 
 ```tsx
 <Stagger visible={isVisible}>

@@ -5,9 +5,9 @@ export { Default } from './StaggerDefault.stories';
 export { Reversed } from './StaggerReversed.stories';
 export { ItemDelay } from './StaggerItemDelay.stories';
 export { PlainElements } from './StaggerPlainElements.stories';
-export { ExpandableContainer } from './StaggerExpandableContainer.stories';
-export { OneWayIn } from './StaggerOneWayIn.stories';
 export { ModeComparison } from './StaggerModeComparison.stories';
+export { OneWayIn } from './StaggerOneWayIn.stories';
+export { ExpandableContainer } from './StaggerExpandableContainer.stories';
 export { StaggerSpinners } from './StaggerSpinners.stories';
 export { BouncingDots } from './StaggerBouncingDots.stories';
 
