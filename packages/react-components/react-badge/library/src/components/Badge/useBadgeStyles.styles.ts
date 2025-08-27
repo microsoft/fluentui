@@ -321,7 +321,7 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
   const iconStyles = useIconStyles();
   if (state.icon) {
     let iconPositionClass;
-    if (state.root.children) {
+    if (state.root.children !== null && state.root.children !== undefined && state.root.children !== false) {
       if (state.size === 'extra-large') {
         iconPositionClass = state.iconPosition === 'after' ? iconStyles.afterTextXL : iconStyles.beforeTextXL;
       } else {
