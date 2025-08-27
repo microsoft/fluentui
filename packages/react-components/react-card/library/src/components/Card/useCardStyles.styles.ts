@@ -77,7 +77,7 @@ const disabledStyles: GriffelStyle = {
     content: '""',
     position: 'absolute',
     inset: 0,
-    zIndex: Number(tokens.zIndexContent) + 1,
+    zIndex: `calc(${tokens.zIndexContent} + 1)`,
   },
 
   '::after': {
