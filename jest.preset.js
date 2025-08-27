@@ -20,7 +20,9 @@ const reactDepsPaths = {
   '^react$': path.join(__dirname, 'node_modules/react'),
   '^react/jsx-runtime$': path.join(__dirname, 'node_modules/react/jsx-runtime'),
   '^react-dom$': path.join(__dirname, 'node_modules/react-dom'),
-  '^react-dom/(.*)$': path.join(__dirname, 'node_modules/react-dom/$1'),
+  // explicitly needed as R17 doesn't have this API and if not declared explicitly our integration jest config wouldn't be able to override this
+  '^react-dom/client$': path.join(__dirname, 'node_modules/react-dom/client'),
+  '^react-dom/(server|test-utils)$': path.join(__dirname, 'node_modules/react-dom/$1'),
   '^react-test-renderer$': path.join(__dirname, 'node_modules/react-test-renderer'),
 };
 
