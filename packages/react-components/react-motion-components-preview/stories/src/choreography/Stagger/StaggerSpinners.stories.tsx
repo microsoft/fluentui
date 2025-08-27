@@ -242,7 +242,7 @@ export const StaggerSpinners = () => {
       </div>
 
       {/* Dot Orbit Spinner */}
-      <div className={classes.spinnerSection}>
+      <div className={classes.spinnerSection} style={{ display: 'none' }}>
         <h3 className={classes.spinnerTitle}>Dot Orbit Spinner</h3>
         <div className={classes.spinnerContainer}>
           <div className={classes.dotOrbitSpinner}>
@@ -258,7 +258,7 @@ export const StaggerSpinners = () => {
       </div>
 
       {/* Growing Bars Spinner */}
-      <div className={classes.spinnerSection}>
+      <div className={classes.spinnerSection} style={{ display: 'none' }}>
         <h3 className={classes.spinnerTitle}>Growing Bars Spinner</h3>
         <div className={classes.spinnerContainer}>
           <div className={classes.growingBarsSpinner}>
