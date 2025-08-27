@@ -4349,9 +4349,13 @@ export const TooltipTemplate: ViewTemplate<Tooltip, any>;
 // @public
 export class Tree extends BaseTree {
     appearance: TreeItemAppearance;
+    // (undocumented)
+    protected appearanceChanged(): void;
     // @internal
     childTreeItemsChanged(): void;
     size: TreeItemSize;
+    // (undocumented)
+    protected sizeChanged(): void;
     updateSizeAndAppearance(): void;
 }
 
@@ -4364,8 +4368,12 @@ export const TreeDefinition: FASTElementDefinition<typeof Tree>;
 export class TreeItem extends BaseTreeItem {
     appearance: TreeItemAppearance;
     // @internal
+    protected appearanceChanged(): void;
+    // @internal
     childTreeItemsChanged(): void;
     size: TreeItemSize;
+    // @internal
+    protected sizeChanged(): void;
     updateSizeAndAppearance(): void;
 }
 

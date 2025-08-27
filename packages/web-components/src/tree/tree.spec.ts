@@ -212,7 +212,7 @@ test.describe('Tree', () => {
     const treeItem1 = element.locator('fluent-tree-item').nth(0);
     expect(await treeItem1.getAttribute('selected')).toBeNull();
 
-    await treeItem1.focus();
+    await element.focus();
     expect(await elementHandle).toBe(false);
     await page.keyboard.press('Space');
 

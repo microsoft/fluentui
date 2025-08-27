@@ -1,6 +1,6 @@
 import { attr } from '@microsoft/fast-element';
-import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
 import { BaseTreeItem } from './tree-item.base.js';
+import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
 
 /**
  * The Fluent Tree Item Element. Implements {@link @microsoft/fast-foundation#BaseTreeItem}.
@@ -21,7 +21,7 @@ export class TreeItem extends BaseTreeItem {
    * we update the child tree items' size based on the size
    *  @internal
    */
-  private sizeChanged() {
+  protected sizeChanged() {
     this.updateSizeAndAppearance();
   }
 
@@ -37,7 +37,7 @@ export class TreeItem extends BaseTreeItem {
    *
    * @internal
    */
-  private appearanceChanged() {
+  protected appearanceChanged() {
     this.updateSizeAndAppearance();
   }
 

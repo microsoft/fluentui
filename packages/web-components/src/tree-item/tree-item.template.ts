@@ -1,9 +1,9 @@
-import { children, html } from '@microsoft/fast-element';
+import { elements, html, slotted } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { TreeItem } from './tree-item.js';
-import { isTreeItem } from './tree-item.options.js';
 
 const chevronIcon = html`
-  <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+  <svg viewBox="0 0 12 12" fill="currentColor">
     <path
       d="M4.65 2.15a.5.5 0 000 .7L7.79 6 4.65 9.15a.5.5 0 10.7.7l3.5-3.5a.5.5 0 000-.7l-3.5-3.5a.5.5 0 00-.7 0z"
     ></path>
@@ -11,17 +11,10 @@ const chevronIcon = html`
 `;
 
 export const template = html<TreeItem>`
-  <template
-    tabindex="${x => (x.selected ? 0 : -1)}"
-    slot="${x => (x.isNestedItem ? 'item' : void 0)}"
-    ${children({
-      property: 'childTreeItems',
-      filter: node => isTreeItem(node),
-    })}
-  >
+  <template slot="${x => (x.isNestedItem ? 'item' : void 0)}">
     <div class="positioning-region" part="positioning-region">
       <div class="content" part="content">
-        <span class="chevron" part="chevron">
+        <span class="chevron" part="chevron" aria-hidden="true">
           <slot name="chevron">${chevronIcon}</slot>
         </span>
         <slot name="start"></slot>
@@ -33,7 +26,13 @@ export const template = html<TreeItem>`
       </div>
     </div>
     <div role="group" class="items" part="items">
-      <slot name="item"></slot>
+      <slot
+        name="item"
+        ${slotted({
+          property: 'childTreeItems',
+          filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
+        })}
+      ></slot>
     </div>
   </template>
 `;

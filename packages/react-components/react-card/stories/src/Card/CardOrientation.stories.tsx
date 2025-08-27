@@ -70,7 +70,11 @@ export const Orientation = () => {
         <Card className={styles.card}>
           <CardHeader
             image={<img className={styles.headerImage} src={resolveAsset('app_logo.svg')} alt="App Name Document" />}
-            header={<Text weight="semibold">App Name</Text>}
+            header={
+              <Text as="h5" weight="semibold" style={{ margin: 0 }}>
+                App Name
+              </Text>
+            }
             description={<Caption1 className={styles.caption}>Developer</Caption1>}
             action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
           />

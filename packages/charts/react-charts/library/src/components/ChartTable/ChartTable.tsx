@@ -4,6 +4,37 @@ import { useChartTableStyles } from './useChartTableStyles.styles';
 import { useRtl } from '../../utilities/utilities';
 import { ImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
+import { tokens } from '@fluentui/react-theme';
+import * as d3 from 'd3-color';
+import { getColorContrast } from '../../utilities/colors';
+
+function invertHexColor(hex: string): string {
+  const color = d3.color(hex);
+  if (!color) {
+    return tokens.colorNeutralForeground1!;
+  }
+  const rgb = color.rgb();
+  return d3.rgb(255 - rgb.r, 255 - rgb.g, 255 - rgb.b).formatHex();
+}
+
+function getSafeBackgroundColor(foreground?: string, background?: string): string {
+  const fallbackFg = tokens.colorNeutralForeground1;
+  const fallbackBg = tokens.colorNeutralBackground1;
+
+  const fg = d3.color(foreground || fallbackFg);
+  const bg = d3.color(background || fallbackBg);
+  if (!fg || !bg) {
+    return fallbackBg;
+  }
+  const contrast = getColorContrast(fg.formatHex(), bg.formatHex());
+  if (contrast >= 3) {
+    return bg.formatHex();
+  }
+
+  const invertedBg = invertHexColor(bg.formatHex());
+  const invertedContrast = getColorContrast(fg.formatHex(), invertedBg);
+  return invertedContrast >= 3 ? invertedBg : fallbackBg;
+}
 
 export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwardRef<HTMLDivElement, ChartTableProps>(
   (props, forwardedRef) => {
@@ -25,6 +56,39 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
 
     if (!headers || headers.length === 0) {
       return <div>No data available</div>;
+    }
+
+    const bgColorSet = new Set<string>();
+    headers.forEach(header => {
+      const bg = header?.style?.backgroundColor;
+      const normalized = d3.color(bg || '')?.formatHex();
+      if (normalized) {
+        bgColorSet.add(normalized);
+      }
+    });
+    let sharedBackgroundColor: string | undefined;
+    let useSharedBackground = false;
+
+    /*
+    If we have only one or two unique background colors, we can consider using a shared background color
+    for the table headers. This is to ensure better contrast with the foreground text.
+    For size 1, we will consider that as default color if it satisfies the contrast ratio.
+    There could also be a scenario where backgroundcolor array is of size 2, for eg: ["dimsgray", "gray"],
+    which will assign 1st column header bg color to dimsgray and rest to gray. so our logic of shared background
+    color won't run here. So will consider for size 2 as well.
+    For size greater than this, we will consider that user wants different colors and will let color contrast fail
+    if any.
+    */
+    if (bgColorSet.size === 1 || bgColorSet.size === 2) {
+      const candidateBg = bgColorSet.size === 1 ? Array.from(bgColorSet)[0] : Array.from(bgColorSet)[1];
+      for (const header of headers) {
+        const fg = header?.style?.color;
+        if (fg && getColorContrast(fg, candidateBg) >= 3) {
+          sharedBackgroundColor = candidateBg;
+          useSharedBackground = true;
+          break;
+        }
+      }
     }
 
     return (
@@ -51,22 +115,41 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
               >
                 <thead>
                   <tr>
-                    {headers.map((header, idx) => (
-                      <th key={idx} className={classes.headerCell} style={header?.style}>
-                        {header.value}
-                      </th>
-                    ))}
+                    {headers.map((header, idx) => {
+                      const style = { ...header?.style };
+                      const fg = style.color;
+                      const bg = style.backgroundColor;
+
+                      if (useSharedBackground) {
+                        style.backgroundColor = sharedBackgroundColor;
+                      } else if (fg || bg) {
+                        style.backgroundColor = getSafeBackgroundColor(fg, bg);
+                      }
+                      return (
+                        <th key={idx} className={classes.headerCell} style={style}>
+                          {header.value}
+                        </th>
+                      );
+                    })}
                   </tr>
                 </thead>
                 {rows && rows.length > 0 && (
                   <tbody>
                     {rows.map((row, rowIdx) => (
                       <tr key={rowIdx}>
-                        {row.map((cell, colIdx) => (
-                          <td key={colIdx} className={classes.bodyCell} style={cell?.style}>
-                            {cell.value}
-                          </td>
-                        ))}
+                        {row.map((cell, colIdx) => {
+                          const style = { ...cell?.style };
+                          const fg = style.color;
+                          const bg = style.backgroundColor;
+                          if (fg || bg) {
+                            style.backgroundColor = getSafeBackgroundColor(fg, bg);
+                          }
+                          return (
+                            <td key={colIdx} className={classes.bodyCell} style={style}>
+                              {cell.value}
+                            </td>
+                          );
+                        })}
                       </tr>
                     ))}
                   </tbody>
