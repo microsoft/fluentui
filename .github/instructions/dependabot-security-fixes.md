@@ -41,9 +41,6 @@ For complex monorepo scenarios where automatic updates fail, security vulnerabil
 The following resolutions are maintained for security purposes:
 
 - `**/tar-fs`: `^2.1.3` - Fixes directory traversal vulnerability
-- `**/semver`: `^7.5.2` - Fixes ReDoS vulnerability
-- `**/cross-spawn`: `^6.0.6` - Fixes ReDoS vulnerability
-- `**/trim`: `^0.0.3` - Fixes ReDoS vulnerability
 
 ## Troubleshooting
 
