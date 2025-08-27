@@ -1,6 +1,6 @@
 import * as React from 'react';
 import StaggerSpinnersDescription from './StaggerSpinners.stories.md';
-import { Button, Field, makeStyles, tokens, motionTokens, createMotionComponent } from '@fluentui/react-components';
+import { makeStyles, tokens, motionTokens, createMotionComponent } from '@fluentui/react-components';
 import { Stagger } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
@@ -205,28 +205,15 @@ const OrbitMotion = createMotionComponent(({ element }) => {
 
 export const StaggerSpinners = () => {
   const classes = useClasses();
-  const [animationKey, setAnimationKey] = React.useState<number>(0);
-
-  const replayAnimation = () => {
-    setAnimationKey(prev => prev + 1);
-  };
 
   return (
     <div className={classes.container}>
-      <div className={classes.controls}>
-        <Field>
-          <Button appearance="primary" onClick={replayAnimation}>
-            Replay Stagger Animations
-          </Button>
-        </Field>
-      </div>
-
       {/* Nested Arcs Spinner */}
       <div className={classes.spinnerSection}>
         <h3 className={classes.spinnerTitle}>Nested Arcs Spinner</h3>
         <div className={classes.spinnerContainer}>
           <div className={classes.arcSpinner}>
-            <Stagger.In delayMode="timing" itemDelay={60} key={`arcs-${animationKey}`}>
+            <Stagger.In delayMode="timing" itemDelay={60}>
               <SpinMotion>
                 <div className={`${classes.arc} ${classes.arc3}`} />
               </SpinMotion>
@@ -246,7 +233,7 @@ export const StaggerSpinners = () => {
         <h3 className={classes.spinnerTitle}>Dot Orbit Spinner</h3>
         <div className={classes.spinnerContainer}>
           <div className={classes.dotOrbitSpinner}>
-            <Stagger.In itemDelay={motionTokens.durationFaster} key={`orbit-${animationKey}`}>
+            <Stagger.In itemDelay={motionTokens.durationFaster}>
               {Array.from({ length: 6 }, (_, i) => (
                 <OrbitMotion key={i}>
                   <div className={classes.orbitDot} data-index={i} />
@@ -262,7 +249,7 @@ export const StaggerSpinners = () => {
         <h3 className={classes.spinnerTitle}>Growing Bars Spinner</h3>
         <div className={classes.spinnerContainer}>
           <div className={classes.growingBarsSpinner}>
-            <Stagger.In itemDelay={motionTokens.durationFaster} key={`bars-${animationKey}`}>
+            <Stagger.In itemDelay={motionTokens.durationFaster}>
               {Array.from({ length: 7 }, (_, i) => (
                 <ScaleMotion key={i}>
                   <div
@@ -283,7 +270,7 @@ export const StaggerSpinners = () => {
         <h3 className={classes.spinnerTitle}>Sliding Blocks Spinner</h3>
         <div className={classes.spinnerContainer}>
           <div className={classes.slidingBlocksSpinner}>
-            <Stagger.In itemDelay={motionTokens.durationFaster} key={`slide-${animationKey}`}>
+            <Stagger.In itemDelay={motionTokens.durationFaster}>
               {Array.from({ length: 5 }, (_, i) => (
                 <SlideMotion key={i}>
                   <div className={classes.slidingBlock} />
