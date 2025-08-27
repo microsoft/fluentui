@@ -1,7 +1,7 @@
 import * as React from 'react';
 import StaggerModeComparisonDescription from './StaggerModeComparison.stories.md';
-import { makeStyles, tokens, Button, Avatar, Checkbox } from '@fluentui/react-components';
-import { Blur, Stagger } from '@fluentui/react-motion-components-preview';
+import { makeStyles, tokens, Button, Avatar, Checkbox, motionTokens } from '@fluentui/react-components';
+import { Scale, Stagger } from '@fluentui/react-motion-components-preview';
 
 const avatarData = [
   { initials: 'DR', color: 'dark-red', name: 'darkRed avatar' },
@@ -38,9 +38,16 @@ const renderAvatars = () => {
 
 const renderAvatarsWithTransition = () => {
   return avatarData.map(avatar => (
-    <Blur key={avatar.name}>
+    <Scale
+      fromScale={0}
+      duration={600}
+      exitDuration={300}
+      easing={curveOvershootFirmOut}
+      exitEasing={motionTokens.curveAccelerateMid}
+      key={avatar.name}
+    >
       <Avatar initials={avatar.initials} color={avatar.color} name={avatar.name} />
-    </Blur>
+    </Scale>
   ));
 };
 
@@ -89,11 +96,15 @@ const useClasses = makeStyles({
   },
 });
 
+// Overshoots the end point, then settles back to it.
+const curveOvershootFirmOut =
+  'linear(0, 0.453 7.8%, 0.803 16.1%, 1.048 24.9%, 1.132 29.5%, 1.194 34.4%, 1.227 38.4%, 1.245 42.5%, 1.25 46.9%, 1.242 51.7%, 1.2 60.5%, 1.038 84.9%, 1.009 92.5%, 1)';
+
 export const ModeComparison = () => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState(false);
   const [reversed, setReversed] = React.useState(false);
-  const itemDelay = 50;
+  const itemDelay = 100;
 
   return (
     <div className={classes.container}>
@@ -108,7 +119,7 @@ export const ModeComparison = () => {
         <div className={classes.section}>
           <div className={classes.sectionTitle}>visibleProp mode</div>
           <div className={classes.items}>
-            <Stagger visible={visible} mode="visibleProp" itemDelay={itemDelay} reversed={reversed}>
+            <Stagger visible={visible} hideMode="visibleProp" itemDelay={itemDelay} reversed={reversed}>
               {renderAvatarsWithTransition()}
             </Stagger>
           </div>
@@ -117,7 +128,7 @@ export const ModeComparison = () => {
         <div className={classes.section}>
           <div className={classes.sectionTitle}>visibilityStyle mode</div>
           <div className={classes.items}>
-            <Stagger visible={visible} mode="visibilityStyle" itemDelay={itemDelay} reversed={reversed}>
+            <Stagger visible={visible} hideMode="visibilityStyle" itemDelay={itemDelay} reversed={reversed}>
               {renderAvatars()}
             </Stagger>
           </div>
@@ -126,7 +137,7 @@ export const ModeComparison = () => {
         <div className={classes.section}>
           <div className={classes.sectionTitle}>unmount mode</div>
           <div className={classes.items}>
-            <Stagger visible={visible} mode="unmount" itemDelay={itemDelay} reversed={reversed}>
+            <Stagger visible={visible} hideMode="unmount" itemDelay={itemDelay} reversed={reversed}>
               {renderAvatars()}
             </Stagger>
           </div>
