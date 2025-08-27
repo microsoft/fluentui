@@ -92,7 +92,7 @@ describe('Motion Component Detection', () => {
       expect(hasExplicitProps(elementWithUndefinedDelay, ['delay'])).toBe(true);
 
       // Element has null visible - this should still be considered as having the prop
-      const elementWithNullVisible = <TestComponent visible={null as any}>Test</TestComponent>;
+      const elementWithNullVisible = <TestComponent visible={null as unknown as boolean}>Test</TestComponent>;
       expect(hasExplicitProps(elementWithNullVisible, ['visible'])).toBe(true);
     });
   });

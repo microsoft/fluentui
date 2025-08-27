@@ -45,6 +45,17 @@ const StaggerOneWay: React.FC<StaggerOneWayProps> = ({
 }) => {
   const elements = toElementArray(children);
 
+  // Always call hooks at the top level, regardless of delayMode
+  const { itemsVisibility } = useStaggerItemsVisibility({
+    itemCount: elements.length,
+    itemDelay,
+    itemDuration,
+    direction,
+    reversed,
+    onMotionFinish,
+    hideMode,
+  });
+
   // For delayProp mode, pass delay props directly to motion components
   if (delayMode === 'delayProp') {
     return (
@@ -72,15 +83,6 @@ const StaggerOneWay: React.FC<StaggerOneWayProps> = ({
   }
 
   // For timing mode, use the existing timing-based implementation
-  const { itemsVisibility } = useStaggerItemsVisibility({
-    itemCount: elements.length,
-    itemDelay,
-    itemDuration,
-    direction,
-    reversed,
-    onMotionFinish,
-    hideMode: hideMode,
-  });
 
   return (
     <>
