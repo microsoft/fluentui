@@ -298,7 +298,7 @@ describe('Stagger', () => {
       });
 
       render(
-        <Stagger visible mode="visibilityStyle">
+        <Stagger visible hideMode="visibilityStyle">
           <div data-testid="item-1">Item 1</div>
           <div data-testid="item-2">Item 2</div>
           <div data-testid="item-3">Item 3</div>
@@ -328,7 +328,7 @@ describe('Stagger', () => {
       });
 
       render(
-        <Stagger visible mode="visibilityStyle">
+        <Stagger visible hideMode="visibilityStyle">
           <div data-testid="styled-item" style={{ color: 'red', fontSize: '14px' }}>
             Styled Item
           </div>
@@ -350,7 +350,7 @@ describe('Stagger', () => {
       });
 
       render(
-        <Stagger visible mode="visibilityStyle">
+        <Stagger visible hideMode="visibilityStyle">
           <SimpleWrapper>Item 1</SimpleWrapper>
           <SimpleWrapper>Item 2</SimpleWrapper>
         </Stagger>,

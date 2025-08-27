@@ -21,6 +21,7 @@ describe('useStaggerItemsVisibility', () => {
         itemCount: 3,
         itemDelay: 100,
         direction: 'enter',
+        hideMode: 'visibilityStyle',
       });
       return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
     };
@@ -37,6 +38,7 @@ describe('useStaggerItemsVisibility', () => {
         itemCount: 3,
         itemDelay: 100,
         direction: 'exit',
+        hideMode: 'visibilityStyle',
       });
       return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
     };
@@ -55,6 +57,7 @@ describe('useStaggerItemsVisibility', () => {
         itemCount: 2,
         itemDelay: 100,
         direction: 'enter',
+        hideMode: 'visibilityStyle',
         onMotionFinish: mockOnMotionFinish,
       });
       return <div>{JSON.stringify(itemsVisibility)}</div>;
@@ -71,6 +74,7 @@ describe('useStaggerItemsVisibility', () => {
         itemCount: 2,
         itemDelay,
         direction: 'enter',
+        hideMode: 'visibilityStyle',
       });
       return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
     };
@@ -95,6 +99,7 @@ describe('useStaggerItemsVisibility', () => {
         itemCount: 2,
         itemDelay: 100,
         direction,
+        hideMode: 'visibilityStyle',
       });
       return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
     };
@@ -120,6 +125,7 @@ describe('useStaggerItemsVisibility', () => {
         itemCount,
         itemDelay: 100,
         direction: 'enter',
+        hideMode: 'visibilityStyle',
       });
       return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
     };
@@ -144,6 +150,7 @@ describe('useStaggerItemsVisibility', () => {
         itemCount,
         itemDelay: 100,
         direction: 'enter',
+        hideMode: 'visibilityStyle',
       });
       return <div>Test</div>;
     };
