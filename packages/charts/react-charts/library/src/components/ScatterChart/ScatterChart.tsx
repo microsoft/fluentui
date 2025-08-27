@@ -396,7 +396,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
 
         const currentPointHidden = _points[i].hideNonActiveDots && activePoint !== circleId;
         const text = _points?.[i].data[j]?.text;
-        if (!_isTextMode.current && text) {
+        if (!_isTextMode.current) {
           pointsForSeries.push(
             <>
               <circle
