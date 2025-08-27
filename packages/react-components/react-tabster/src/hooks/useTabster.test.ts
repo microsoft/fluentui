@@ -54,19 +54,55 @@ describe('useTabster', () => {
       const mockFactory1 = jest.fn(tabster => tabster);
       const mockFactory2 = jest.fn(tabster => tabster);
 
-      const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {
-        return;
-      });
-
-      const { rerender } = renderHook(({ factory }) => useTabster(factory), {
+      const { rerender, result } = renderHook(({ factory }) => useTabster(factory), {
         initialProps: { factory: mockFactory1 },
       });
 
-      expect(() => rerender({ factory: mockFactory2 })).toThrow(
-        /@fluentui\/react-tabster:\s*\nThe factory function passed to useTabster has changed\. This should not ever happen\./,
-      );
+      const expected =
+        /@fluentui\/react-tabster:\s*\nThe factory function passed to useTabster has changed\. This should not ever happen\./;
 
-      expect(consoleErrorSpy).toHaveBeenCalled();
+      expectRenderErrorMatching(() => rerender({ factory: mockFactory2 }), result, expected);
+
+      // React 17 (with @testing-library/react-hooks) captures hook errors into result.error instead of throwing
+      // while React 18/19 tend to throw synchronously. Support both behaviors.
+      function expectRenderErrorMatching(run: () => void, result: { error?: unknown }, expected: RegExp) {
+        let threw: unknown;
+        try {
+          run();
+        } catch (e) {
+          threw = e;
+        }
+
+        if (threw) {
+          expect(getErrorMessages(threw).join('\n')).toMatch(expected);
+        } else {
+          // React 17 behavior
+          expect(result.error).toBeDefined();
+          expect(getErrorMessages(result.error).join('\n')).toMatch(expected);
+        }
+      }
     });
   });
 });
+
+// React 19 wraps render-time errors into an AggregateError with empty message.
+// This helper extracts nested messages so we can assert reliably across React versions.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function getErrorMessages(err: any): string[] {
+  if (!err) {
+    return [];
+  }
+  const messages: string[] = [];
+  if (typeof err.message === 'string') {
+    messages.push(err.message);
+  }
+  if (Array.isArray(err?.errors)) {
+    for (const inner of err.errors) {
+      messages.push(...getErrorMessages(inner));
+    }
+  }
+  if (err?.cause) {
+    messages.push(...getErrorMessages(err.cause));
+  }
+  return messages;
+}
