@@ -42,7 +42,7 @@ export function useTypingAnnounce<
         mutationObserver.disconnect();
       }, 500);
     },
-    [announce, clearTypingTimeout, setTypingTimeout],
+    [announce, setTypingTimeout],
   );
 
   const typingAnnounce: AriaLiveAnnounceFn = React.useCallback(
