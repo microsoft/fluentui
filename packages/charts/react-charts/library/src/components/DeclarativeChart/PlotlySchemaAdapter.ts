@@ -854,6 +854,9 @@ const transformPlotlyJsonToScatterTraceProps = (
                   originXOffset: (input.layout as { __polarOriginX?: number } | undefined)?.__polarOriginX,
                   direction: input.layout?.polar?.angularaxis?.direction,
                   rotation: input.layout?.polar?.angularaxis?.rotation,
+                  axisLabel: (series as { __axisLabel: string[] }).__axisLabel
+                    ? (series as { __axisLabel: string[] }).__axisLabel
+                    : {},
                 }
               : {}),
           },
@@ -1381,7 +1384,7 @@ export const transformPlotlyJsonToChartTableProps = (
       let fontColor: React.CSSProperties['color'] | undefined;
 
       if (Array.isArray(fontColorRaw)) {
-        const colorEntry = fontColorRaw[colIndex];
+        const colorEntry = fontColorRaw[colIndex] ?? fontColorRaw[0];
         if (Array.isArray(colorEntry)) {
           fontColor = typeof colorEntry[0] === 'string' ? colorEntry[0] : undefined;
         } else if (typeof colorEntry === 'string') {
@@ -1395,17 +1398,24 @@ export const transformPlotlyJsonToChartTableProps = (
       let fontSize: React.CSSProperties['fontSize'] | undefined;
 
       if (Array.isArray(fontSizeRaw)) {
-        fontSize = Array.isArray(fontSizeRaw[0]) ? fontSizeRaw[0][colIndex] : fontSizeRaw[colIndex];
+        const fontSizeEntry = fontSizeRaw[colIndex] ?? fontSizeRaw[0];
+        fontSize = Array.isArray(fontSizeRaw[0])
+          ? fontSizeRaw[0][colIndex] ?? fontSizeRaw[0][0]
+          : typeof fontSizeEntry === 'number'
+          ? fontSizeEntry
+          : undefined;
       } else if (typeof fontSizeRaw === 'number') {
         fontSize = fontSizeRaw;
       }
 
       const updatedColIndex = colIndex >= 1 ? 1 : 0;
       const fillColorRaw = header?.fill?.color;
-      const backgroundColor = Array.isArray(fillColorRaw) ? fillColorRaw[updatedColIndex] : fillColorRaw;
+      const backgroundColor = Array.isArray(fillColorRaw)
+        ? fillColorRaw[updatedColIndex] ?? fillColorRaw[0]
+        : fillColorRaw;
 
       const textAlignRaw = header?.align;
-      const textAlign = Array.isArray(textAlignRaw) ? textAlignRaw[colIndex] : textAlignRaw;
+      const textAlign = Array.isArray(textAlignRaw) ? textAlignRaw[colIndex] ?? textAlignRaw[0] : textAlignRaw;
 
       const style: React.CSSProperties = {
         ...(typeof fontColor === 'string' ? { color: fontColor } : {}),
@@ -1418,7 +1428,10 @@ export const transformPlotlyJsonToChartTableProps = (
     });
   };
   const columns = tableData.cells?.values ?? [];
-  const cells = tableData.cells!.font ? tableData.cells! : input.layout?.template?.data?.table![0].cells;
+  const cells =
+    tableData.cells && Object.keys(tableData.cells).length > 0
+      ? tableData.cells
+      : input.layout?.template?.data?.table?.[0]?.cells;
   const rows = columns[0].map((_, rowIndex: number) =>
     columns.map((col, colIndex) => {
       const cellValue = col[rowIndex];
@@ -1432,7 +1445,7 @@ export const transformPlotlyJsonToChartTableProps = (
       const rawFontColor = cells?.font?.color;
       let fontColor: React.CSSProperties['color'] | undefined;
       if (Array.isArray(rawFontColor)) {
-        const entry = rawFontColor[colIndex];
+        const entry = rawFontColor[colIndex] ?? rawFontColor[0];
         const colorValue = Array.isArray(entry) ? entry[rowIndex] : entry;
         fontColor = typeof colorValue === 'string' ? colorValue : undefined;
       } else if (typeof rawFontColor === 'string') {
@@ -1442,7 +1455,7 @@ export const transformPlotlyJsonToChartTableProps = (
       const rawFontSize = cells?.font?.size;
       let fontSize: React.CSSProperties['fontSize'] | undefined;
       if (Array.isArray(rawFontSize)) {
-        const entry = rawFontSize[colIndex];
+        const entry = rawFontSize[colIndex] ?? rawFontSize[0];
         const fontSizeValue = Array.isArray(entry) ? entry[rowIndex] : entry;
         fontSize = typeof fontSizeValue === 'number' ? fontSizeValue : undefined;
       } else if (typeof rawFontSize === 'number') {
@@ -1453,14 +1466,14 @@ export const transformPlotlyJsonToChartTableProps = (
       const rawBackgroundColor = cells?.fill?.color;
       let backgroundColor: React.CSSProperties['backgroundColor'] | undefined;
       if (Array.isArray(rawBackgroundColor)) {
-        const entry = rawBackgroundColor[updatedColIndex];
+        const entry = rawBackgroundColor[updatedColIndex] ?? rawBackgroundColor[0];
         const colorValue = Array.isArray(entry) ? entry[rowIndex] : entry;
         backgroundColor = typeof colorValue === 'string' ? colorValue : undefined;
       } else if (typeof rawBackgroundColor === 'string') {
         backgroundColor = rawBackgroundColor;
       }
 
-      const rawTextAlign = Array.isArray(cells?.align) ? cells.align[colIndex] : cells?.align;
+      const rawTextAlign = Array.isArray(cells?.align) ? cells.align[colIndex] ?? cells.align[0] : cells?.align;
       const textAlign = rawTextAlign as React.CSSProperties['textAlign'] | undefined;
 
       const style: React.CSSProperties = {
@@ -1486,7 +1499,9 @@ export const transformPlotlyJsonToChartTableProps = (
   return {
     headers: normalizeHeaders(
       tableData.header?.values ?? [],
-      tableData.header?.font ? tableData.header : input.layout?.template?.data?.table![0].header,
+      tableData.header && Object.keys(tableData.header).length > 0
+        ? tableData.header
+        : input.layout?.template?.data?.table![0].header,
     ),
     rows,
     width: input.layout?.width,
@@ -1498,7 +1513,7 @@ export const transformPlotlyJsonToChartTableProps = (
 export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
   const projection: PlotlySchema = { ...input };
 
-  // 1. Find the global min and max radius across all series
+  // Find the global min and max radius across all series
   let minRadius = 0;
   let maxRadius = 0;
   for (let sindex = 0; sindex < input.data.length; sindex++) {
@@ -1513,18 +1528,27 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
     }
   }
 
-  // 2. If there are negative radii, compute the shift
+  // If there are negative radii, compute the shift
   const radiusShift = minRadius < 0 ? -minRadius : 0;
 
-  // 3. Project all points and create a perfect square domain
+  // Collect all unique theta values from all scatterpolar series for equal spacing
+  const allThetaValues: Set<string> = new Set();
+  for (let sindex = 0; sindex < input.data.length; sindex++) {
+    const series = input.data[sindex] as Partial<PlotData>;
+    if (series.theta && isArrayOrTypedArray(series.theta)) {
+      series.theta.forEach(theta => allThetaValues.add(String(theta)));
+    }
+  }
+
+  // Project all points and create a perfect square domain
   const allX: number[] = [];
   const allY: number[] = [];
   let originX: number | null = null;
   for (let sindex = 0; sindex < input.data.length; sindex++) {
     const series = input.data[sindex] as Partial<PlotData>;
-    // If scatterpolar, set text to theta values as strings
-    if (series.type === 'scatterpolar' && Array.isArray(series.theta)) {
-      series.text = series.theta.map(v => String(v));
+    // If scatterpolar, set __axisLabel to all unique theta values for equal spacing
+    if (isArrayOrTypedArray(series.theta)) {
+      (series as { __axisLabel: string[] }).__axisLabel = Array.from(allThetaValues);
     }
     series.x = [] as Datum[];
     series.y = [] as Datum[];
@@ -1554,7 +1578,7 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
         continue;
       }
 
-      // 4. Map theta to angle in radians
+      // Map theta to angle in radians
       let thetaRad: number;
       if (categorical) {
         const idx = uniqueTheta.indexOf(thetas[ptindex]);
@@ -1563,10 +1587,10 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
       } else {
         thetaRad = startAngleInRad + dirMultiplier * (((thetas[ptindex] as number) * Math.PI) / 180);
       }
-      // 5. Shift only the polar origin (not the cartesian)
+      // Shift only the polar origin (not the cartesian)
       const rawRadius = rVals[ptindex] as number;
       const polarRadius = rawRadius + radiusShift; // Only for projection
-      // 6. Calculate cartesian coordinates (with shifted polar origin)
+      // Calculate cartesian coordinates (with shifted polar origin)
       const x = polarRadius * Math.cos(thetaRad);
       const y = polarRadius * Math.sin(thetaRad);
 

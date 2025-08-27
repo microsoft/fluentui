@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 27 Aug 2025 04:06:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.119",
+      "version": "3.0.0-beta.119",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "344cc2b4984bb6fc08d2c0d44a80dca2ea0323a5",
+            "comment": "feat: make tree and tree-item SSR compatible"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Aug 2025 04:07:19 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.118",
       "version": "3.0.0-beta.118",

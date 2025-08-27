@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 26 Aug 2025 04:07:19 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Aug 2025 04:06:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.119](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.119)
+
+Wed, 27 Aug 2025 04:06:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.118..@fluentui/web-components_v3.0.0-beta.119)
+
+### Changes
+
+- feat: make tree and tree-item SSR compatible ([PR #35091](https://github.com/microsoft/fluentui/pull/35091) by machi@microsoft.com)
 
 ## [3.0.0-beta.118](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.118)
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "change foreground color based on contrast ratio in chart table",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -94,6 +94,11 @@ export const styles = css`
     transform: rotate(180deg);
   }
 
+  .chevron svg {
+    inline-size: 12px;
+    block-size: 12px;
+  }
+
   .aside {
     display: flex;
     align-items: center;

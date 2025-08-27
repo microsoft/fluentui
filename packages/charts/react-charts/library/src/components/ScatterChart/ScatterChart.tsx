@@ -458,15 +458,8 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       }
 
       if (_isScatterPolarRef.current) {
-        // Render category labels for all series at once to avoid overlap
-        const allSeriesData = _points.map(s => ({
-          data: s.data
-            .filter(pt => typeof pt.x === 'number' && typeof pt.y === 'number')
-            .map(pt => ({ x: pt.x as number, y: pt.y as number, text: pt.text })),
-        }));
         pointsForSeries.push(
           ...renderScatterPolarCategoryLabels({
-            allSeriesData,
             xAxisScale: _xAxisScale.current,
             yAxisScale: _yAxisScale.current,
             className: classes.markerLabel || '',
