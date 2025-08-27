@@ -58,7 +58,8 @@ const StaggerOneWay: React.FC<StaggerOneWayProps> = ({
           const delayProp = direction === 'enter' ? { delay } : { exitDelay: delay };
 
           // Only set visible prop if the component supports it
-          const visibleProp = acceptsVisibleProp(child) ? { visible: true } : {};
+          // Set visible based on direction: true for enter, false for exit
+          const visibleProp = acceptsVisibleProp(child) ? { visible: direction === 'enter' } : {};
 
           return React.cloneElement(child, {
             key,
