@@ -17,7 +17,7 @@ import { Stagger, Slide } from '@fluentui/react-motion-components-preview';
   <Slide>{/* item 3 */}</Slide>
 </Stagger>
 
-// wrapping plain elements
+// wrapping regular elements
 <Stagger visible={isVisible}>
   <div>1</div>
   <div>2</div>
