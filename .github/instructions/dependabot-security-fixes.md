@@ -7,7 +7,7 @@ This instruction guide explains how Dependabot automation works for security fix
 Dependabot is configured to automatically create pull requests for:
 
 1. **Security updates** - Daily scanning for vulnerable production dependencies
-2. **Development dependencies** - Weekly updates for devDependencies  
+2. **Development dependencies** - Weekly updates for devDependencies
 3. **GitHub Actions** - Weekly updates for workflow dependencies
 
 ## Configuration
