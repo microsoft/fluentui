@@ -54,16 +54,19 @@ describe('useTabster', () => {
       const mockFactory1 = jest.fn(tabster => tabster);
       const mockFactory2 = jest.fn(tabster => tabster);
 
-      const { result, rerender } = renderHook(({ factory }) => useTabster(factory), {
+      const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {
+        return;
+      });
+
+      const { rerender } = renderHook(({ factory }) => useTabster(factory), {
         initialProps: { factory: mockFactory1 },
       });
 
-      rerender({ factory: mockFactory2 });
+      expect(() => rerender({ factory: mockFactory2 })).toThrow(
+        /@fluentui\/react-tabster:\s*\nThe factory function passed to useTabster has changed\. This should not ever happen\./,
+      );
 
-      expect(result.error).toMatchInlineSnapshot(`
-        [Error: @fluentui/react-tabster: 
-        The factory function passed to useTabster has changed. This should not ever happen.]
-      `);
+      expect(consoleErrorSpy).toHaveBeenCalled();
     });
   });
 });
