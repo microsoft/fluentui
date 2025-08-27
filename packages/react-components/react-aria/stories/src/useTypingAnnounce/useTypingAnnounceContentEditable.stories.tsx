@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { AriaLiveAnnouncer, Field, makeStyles, tokens, useId } from '@fluentui/react-components';
-import { useTypingAnnounce } from '../../../library/src/useTypingAnnounce/useTypingAnnounce';
+import { AriaLiveAnnouncer, Field, makeStyles, tokens, useId, useTypingAnnounce } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   contentEditable: {

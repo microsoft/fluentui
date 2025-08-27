@@ -1,7 +1,14 @@
 import * as React from 'react';
-import { AriaLiveAnnouncer, Field, Input, makeStyles, tokens, useId } from '@fluentui/react-components';
+import {
+  AriaLiveAnnouncer,
+  Field,
+  Input,
+  makeStyles,
+  tokens,
+  useId,
+  useTypingAnnounce,
+} from '@fluentui/react-components';
 import type { InputProps } from '@fluentui/react-components';
-import { useTypingAnnounce } from '../../../library/src/useTypingAnnounce/useTypingAnnounce';
 
 const useStyles = makeStyles({
   results: {

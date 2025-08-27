@@ -34,7 +34,6 @@ export function useTypingAnnounce<
 
   const callback: MutationCallback = React.useCallback(
     (mutationList, mutationObserver) => {
-      clearTypingTimeout();
       setTypingTimeout(() => {
         messageQueue.current.forEach(({ message, options }) => {
           announce(message, options);

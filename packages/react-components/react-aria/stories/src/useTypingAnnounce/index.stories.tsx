@@ -1,10 +1,10 @@
 import type { Meta } from '@storybook/react';
 
-import descriptionMd from './useTypingAnnounceDescription.md';
+import descriptionMd from './UseTypingAnnounceDescription.md';
 
-export { Default } from './useTypingAnnounceDefault.stories';
-export { ContentEditable } from './useTypingAnnounceContentEditable.stories';
-export { Filtering } from './useTypingAnnounceFiltering.stories';
+export { Default } from './UseTypingAnnounceDefault.stories';
+export { ContentEditable } from './UseTypingAnnounceContentEditable.stories';
+export { Filtering } from './UseTypingAnnounceFiltering.stories';
 
 export default {
   title: 'Utilities/ARIA live/useTypingAnnounce',

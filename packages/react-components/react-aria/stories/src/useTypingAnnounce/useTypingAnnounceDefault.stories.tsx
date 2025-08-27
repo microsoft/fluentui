@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { AriaLiveAnnouncer, Field, Input, useId } from '@fluentui/react-components';
+import { AriaLiveAnnouncer, Field, Input, useId, useTypingAnnounce } from '@fluentui/react-components';
 import type { InputProps } from '@fluentui/react-components';
-import { useTypingAnnounce } from '../../../library/src/useTypingAnnounce/useTypingAnnounce';
 
 export const Default = () => {
   const [overLimit, setOverLimit] = React.useState(false);
