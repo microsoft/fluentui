@@ -2,6 +2,126 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 26 Aug 2025 07:21:44 GMT",
+      "tag": "@fluentui/react_v8.123.5",
+      "version": "8.123.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.30",
+            "commit": "54d698502c976954b7246ada9cc866e7c6a881a2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.63",
+            "commit": "54d698502c976954b7246ada9cc866e7c6a881a2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.9.26",
+            "commit": "54d698502c976954b7246ada9cc866e7c6a881a2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.12.4",
+            "commit": "54d698502c976954b7246ada9cc866e7c6a881a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Aug 2025 07:19:47 GMT",
+      "tag": "@fluentui/react_v8.123.4",
+      "version": "8.123.4",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.12.3",
+            "commit": "e7056070683aa0cda7044e05da6e572a658f1a79"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.15.23",
+            "commit": "e7056070683aa0cda7044e05da6e572a658f1a79"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Aug 2025 07:21:20 GMT",
+      "tag": "@fluentui/react_v8.123.4",
+      "version": "8.123.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "63a1c6ba532b6df61c67a890dea9383b723030c2",
+            "comment": "fix: VoiceOver on iOS safari can reach Dropdown options"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Aug 2025 07:21:25 GMT",
+      "tag": "@fluentui/react_v8.123.3",
+      "version": "8.123.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0a8e9ecfe73acfa00a58d8355d2dfbc76a7dd149",
+            "comment": "fix: Picker suggestion items hover correctly in WHCM"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jul 2025 07:22:06 GMT",
+      "tag": "@fluentui/react_v8.123.2",
+      "version": "8.123.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "03f737b707ea3867f079b05c239f2a2dbb30b4db",
+            "comment": "fix(v8 PeoplePicker): Add WHCM styles to the PeoplePickerItem remove button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Jul 2025 07:19:56 GMT",
+      "tag": "@fluentui/react_v8.123.1",
+      "version": "8.123.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "f71a9914869b14f515433e75989f686fd87a225f",
+            "comment": "chore: suppress deprecation errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Jul 2025 07:21:38 GMT",
       "tag": "@fluentui/react_v8.123.1",
       "version": "8.123.1",

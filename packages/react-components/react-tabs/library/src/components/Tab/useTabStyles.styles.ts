@@ -11,7 +11,7 @@ export const tabClassNames: SlotClassNames<TabSlots> = {
   content: 'fui-Tab__content',
 };
 
-const reservedSpaceClassNames = {
+export const tabReservedSpaceClassNames = {
   content: 'fui-Tab__content--reserved-space',
 };
 
@@ -186,8 +186,14 @@ const useCircularAppearanceStyles = makeStyles({
       color: 'inherit',
     },
   },
+  small: {
+    paddingBlock: `calc(${tokens.spacingVerticalXXS} - ${tokens.strokeWidthThin})`,
+  },
   medium: {
-    paddingBlock: `${tokens.spacingVerticalSNudge}`,
+    paddingBlock: `calc(${tokens.spacingVerticalSNudge} - ${tokens.strokeWidthThin})`,
+  },
+  large: {
+    paddingBlock: `calc(${tokens.spacingVerticalS} - ${tokens.strokeWidthThin})`,
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
@@ -680,7 +686,9 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
     circularStyles.base,
     focusStyles.circular,
     // sizes
+    size === 'small' && circularStyles.small,
     size === 'medium' && circularStyles.medium,
+    size === 'large' && circularStyles.large,
     // subtle-circular appearance
     isSubtleCircular && circularStyles.subtle,
     selected && isSubtleCircular && circularStyles.subtleSelected,
@@ -747,7 +755,7 @@ export const useTabContentStyles_unstable = (state: TabState): TabState => {
   // This needs to be before state.content.className is updated
   if (state.contentReservedSpace) {
     state.contentReservedSpace.className = mergeClasses(
-      reservedSpaceClassNames.content,
+      tabReservedSpaceClassNames.content,
       contentStyles.base,
       size === 'large' ? contentStyles.largeSelected : contentStyles.selected,
       state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,

@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
+import {
+  applyTriggerPropsToChildren,
+  getTriggerChild,
+  getReactElementRef,
+  useEventCallback,
+} from '@fluentui/react-utilities';
 import { useARIAButtonProps } from '@fluentui/react-aria';
 import type { ToastTriggerProps, ToastTriggerState } from './ToastTrigger.types';
 import { useToastContainerContext } from '../../contexts/toastContainerContext';
@@ -30,7 +35,7 @@ export const useToastTrigger_unstable = (props: ToastTriggerProps): ToastTrigger
 
   const triggerChildProps = {
     ...child?.props,
-    ref: child?.ref,
+    ref: getReactElementRef<HTMLButtonElement>(child),
     onClick: handleClick,
   };
 

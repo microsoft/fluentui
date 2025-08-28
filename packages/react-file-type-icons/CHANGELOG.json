@@ -2,6 +2,42 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Tue, 26 Aug 2025 07:21:43 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.13.3",
+      "version": "8.13.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "135cfcc89d45486ad513c19ac7273a7a602e56d5",
+            "comment": "Adding mapping for `onepage` filetype icon and updating CDN url."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.12.4",
+            "commit": "54d698502c976954b7246ada9cc866e7c6a881a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Aug 2025 07:19:48 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.13.2",
+      "version": "8.13.2",
+      "comments": {
+        "none": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.12.3",
+            "commit": "e7056070683aa0cda7044e05da6e572a658f1a79"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Jul 2025 07:21:40 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.13.2",
       "version": "8.13.2",

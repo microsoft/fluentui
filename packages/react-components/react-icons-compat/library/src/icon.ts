@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { GlobalSettings } from './GlobalSettings';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 export type T = React.ReactNode;
 
 export interface IconSubset {
   icons: {
-    [key: string]:
-      | string
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      | JSX.Element;
+    [key: string]: string | JSXElement;
   };
   /**
    * Indicates to the icon renderer that it is safe to merge any props on the original `Icon` element

@@ -5,6 +5,22 @@ import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole
 test.describe('Divider', () => {
   test.use({ tagName: 'fluent-divider' });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-divider');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should set a default `role` attribute of "separator"', async ({ fastPage }) => {
     const { element } = fastPage;
 

@@ -105,6 +105,8 @@ export type {
   IBaseDataPoint,
   AxisCategoryOrder,
   IGanttChartDataPoint,
+  AxisScaleType,
+  AxisProps,
 } from './types/index';
 export type {
   IChartHoverCardProps,

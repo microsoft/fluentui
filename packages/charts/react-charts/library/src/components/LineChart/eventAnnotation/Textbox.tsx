@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { select } from 'd3-selection';
+import { getSecureProps } from '../../../utilities/utilities';
 
 interface TextboxProps {
   text: string;
@@ -48,5 +49,5 @@ export const Textbox: React.FunctionComponent<TextboxProps> = props => {
 
   const { lineHeight, ...rest } = props;
 
-  return <text ref={textElementRef} {...rest} />;
+  return <text ref={textElementRef} {...getSecureProps(rest)} />;
 };

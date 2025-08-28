@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 03 Jul 2025 07:21:38 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Aug 2025 07:21:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.123.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.5)
+
+Tue, 26 Aug 2025 07:21:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.123.4..@fluentui/react_v8.123.5)
+
+### Patches
+
+- Bump @fluentui/foundation-legacy to v8.4.30 ([commit](https://github.com/microsoft/fluentui/commit/54d698502c976954b7246ada9cc866e7c6a881a2) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.63 ([commit](https://github.com/microsoft/fluentui/commit/54d698502c976954b7246ada9cc866e7c6a881a2) by beachball)
+- Bump @fluentui/react-focus to v8.9.26 ([commit](https://github.com/microsoft/fluentui/commit/54d698502c976954b7246ada9cc866e7c6a881a2) by beachball)
+- Bump @fluentui/style-utilities to v8.12.4 ([commit](https://github.com/microsoft/fluentui/commit/54d698502c976954b7246ada9cc866e7c6a881a2) by beachball)
+
+## [8.123.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.4)
+
+Wed, 06 Aug 2025 07:21:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.123.3..@fluentui/react_v8.123.4)
+
+### Patches
+
+- fix: VoiceOver on iOS safari can reach Dropdown options ([PR #34973](https://github.com/microsoft/fluentui/pull/34973) by sarah.higley@microsoft.com)
+
+## [8.123.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.3)
+
+Mon, 04 Aug 2025 07:21:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.123.2..@fluentui/react_v8.123.3)
+
+### Patches
+
+- fix: Picker suggestion items hover correctly in WHCM ([PR #34724](https://github.com/microsoft/fluentui/pull/34724) by sarah.higley@microsoft.com)
+
+## [8.123.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.2)
+
+Mon, 28 Jul 2025 07:22:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.123.1..@fluentui/react_v8.123.2)
+
+### Patches
+
+- fix(v8 PeoplePicker): Add WHCM styles to the PeoplePickerItem remove button ([PR #34908](https://github.com/microsoft/fluentui/pull/34908) by jiangemma@microsoft.com)
 
 ## [8.123.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.1)
 

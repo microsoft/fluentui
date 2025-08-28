@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { Button } from '@fluentui/react-button';
 import { ButtonProps } from '@fluentui/react-button';
@@ -15,6 +13,7 @@ import { ComponentState } from '@fluentui/react-utilities';
 import { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { JSXElement } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import type { PopoverProps } from '@fluentui/react-popover';
@@ -30,7 +29,7 @@ import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTeachingPopover_unstable: (state: PopoverState) => JSX.Element;
+export const renderTeachingPopover_unstable: (state: PopoverState) => JSXElement;
 
 // @public
 export const renderTeachingPopoverBody_unstable: (state: TeachingPopoverBodyState) => JSX.Element;

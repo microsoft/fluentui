@@ -8,6 +8,22 @@ test.describe('TextArea', () => {
     waitFor: ['fluent-label'],
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-textarea');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   // TODO: This should test 'elementInternals.role' as 'textbox' when Reference Target is widely supported.
   test('should not have a role on element internals', async ({ fastPage }) => {
     const { element } = fastPage;

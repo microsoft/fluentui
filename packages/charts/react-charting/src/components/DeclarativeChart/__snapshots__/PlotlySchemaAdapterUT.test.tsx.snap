@@ -145,7 +145,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -208,7 +207,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -271,7 +269,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -334,7 +331,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -359,103 +355,103 @@ Object {
     "chartData": Array [
       Object {
         "color": "#57811b",
-        "data": 1,
-        "legend": "AMC",
-      },
-      Object {
-        "color": "#9373c0",
-        "data": 1,
-        "legend": "Cadillac",
-      },
-      Object {
-        "color": "#ca5010",
-        "data": 1,
-        "legend": "Camaro",
-      },
-      Object {
-        "color": "#3a96dd",
-        "data": 1,
-        "legend": "Chrysler",
-      },
-      Object {
-        "color": "#e3008c",
-        "data": 1,
-        "legend": "Datsun",
-      },
-      Object {
-        "color": "#13a10e",
-        "data": 1,
-        "legend": "Dodge",
-      },
-      Object {
-        "color": "#b146c2",
-        "data": 1,
-        "legend": "Duster",
-      },
-      Object {
-        "color": "#ae8c00",
-        "data": 1,
-        "legend": "Ferrari",
-      },
-      Object {
-        "color": "#93a4f4",
-        "data": 2,
-        "legend": "Fiat",
-      },
-      Object {
-        "color": "#ee5fb7",
-        "data": 1,
-        "legend": "Ford",
-      },
-      Object {
-        "color": "#4cb4b7",
-        "data": 1,
-        "legend": "Honda",
-      },
-      Object {
-        "color": "#a083c9",
-        "data": 2,
-        "legend": "Hornet",
-      },
-      Object {
-        "color": "#27ac22",
-        "data": 1,
-        "legend": "Lincoln",
-      },
-      Object {
-        "color": "#4fa1e1",
-        "data": 1,
-        "legend": "Lotus",
-      },
-      Object {
-        "color": "#d77440",
-        "data": 1,
-        "legend": "Maserati",
-      },
-      Object {
-        "color": "#73aa24",
-        "data": 2,
-        "legend": "Mazda",
-      },
-      Object {
-        "color": "#c36bd1",
         "data": 7,
         "legend": "Merc",
       },
       Object {
+        "color": "#9373c0",
+        "data": 2,
+        "legend": "Fiat",
+      },
+      Object {
+        "color": "#ca5010",
+        "data": 2,
+        "legend": "Hornet",
+      },
+      Object {
+        "color": "#3a96dd",
+        "data": 2,
+        "legend": "Mazda",
+      },
+      Object {
+        "color": "#e3008c",
+        "data": 2,
+        "legend": "Toyota",
+      },
+      Object {
+        "color": "#13a10e",
+        "data": 1,
+        "legend": "AMC",
+      },
+      Object {
+        "color": "#b146c2",
+        "data": 1,
+        "legend": "Cadillac",
+      },
+      Object {
+        "color": "#ae8c00",
+        "data": 1,
+        "legend": "Camaro",
+      },
+      Object {
+        "color": "#93a4f4",
+        "data": 1,
+        "legend": "Chrysler",
+      },
+      Object {
+        "color": "#ee5fb7",
+        "data": 1,
+        "legend": "Datsun",
+      },
+      Object {
+        "color": "#4cb4b7",
+        "data": 1,
+        "legend": "Dodge",
+      },
+      Object {
+        "color": "#a083c9",
+        "data": 1,
+        "legend": "Duster",
+      },
+      Object {
+        "color": "#27ac22",
+        "data": 1,
+        "legend": "Ferrari",
+      },
+      Object {
+        "color": "#4fa1e1",
+        "data": 1,
+        "legend": "Ford",
+      },
+      Object {
+        "color": "#d77440",
+        "data": 1,
+        "legend": "Honda",
+      },
+      Object {
+        "color": "#73aa24",
+        "data": 1,
+        "legend": "Lincoln",
+      },
+      Object {
+        "color": "#c36bd1",
+        "data": 1,
+        "legend": "Lotus",
+      },
+      Object {
         "color": "#d0b232",
         "data": 1,
-        "legend": "Pontiac",
+        "legend": "Maserati",
       },
       Object {
         "color": "#4f6bed",
         "data": 1,
-        "legend": "Porsche",
+        "legend": "Pontiac",
       },
       Object {
         "color": "#ea38a6",
-        "data": 2,
-        "legend": "Toyota",
+        "data": 1,
+        "legend": "Porsche",
       },
       Object {
         "color": "#038387",
@@ -3896,7 +3892,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -4409,7 +4404,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -4922,7 +4916,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "lines",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -5595,7 +5588,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "markers",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -6108,7 +6100,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "markers",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -6621,7 +6612,6 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
           "mode": "markers",
-          "originXOffset": undefined,
         },
         "useSecondaryYScale": false,
       },
@@ -6633,10 +6623,13 @@ Object {
   "hideTickOverlap": true,
   "optimizeLargeData": false,
   "roundedTicks": true,
+  "showYAxisLablesTooltip": true,
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "",
   "yMaxValue": 16.562957844203055,
   "yMinValue": -14.29078542197376,
@@ -7030,6 +7023,7 @@ Object {
   "height": 350,
   "hideLegend": true,
   "hideTickOverlap": true,
+  "maxBarWidth": 1000,
   "mode": "plotly",
   "noOfCharsToTruncate": 20,
   "roundCorners": true,
@@ -7045,6 +7039,8 @@ Object {
     "Apr",
     "May",
   ],
+  "xAxisInnerPadding": 0.2,
+  "xAxisOuterPadding": 0.1,
   "xAxisTitle": "",
   "yAxisCategoryOrder": "data",
   "yAxisTitle": "",

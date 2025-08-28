@@ -2,6 +2,153 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 27 Aug 2025 04:06:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.119",
+      "version": "3.0.0-beta.119",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "344cc2b4984bb6fc08d2c0d44a80dca2ea0323a5",
+            "comment": "feat: make tree and tree-item SSR compatible"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Aug 2025 04:07:19 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.118",
+      "version": "3.0.0-beta.118",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "761b211b1b978a0b5b8041f89ba9e86a1dbf58c7",
+            "comment": "fix: remove unnecessary type check and avoid using instanceof in menu-list"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "20d47059a7a6b1d7c052772e840df95f6dd20fd7",
+            "comment": "fix: make tablist more ssr compatible"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Aug 2025 04:07:50 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.117",
+      "version": "3.0.0-beta.117",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a443aa54a00c816089de96d957ed4039a5caad8a",
+            "comment": "fix: remove unnecessary type check for better ssr compatibility"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Aug 2025 04:07:10 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.116",
+      "version": "3.0.0-beta.116",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: remove redundant ts suppressions"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 Aug 2025 04:08:18 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.116",
+      "version": "3.0.0-beta.116",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e81e4694b47d90f3375db3873ccce8ca93ef0db5",
+            "comment": "feat: make components ready for ssr support"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Aug 2025 04:07:50 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.115",
+      "version": "3.0.0-beta.115",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "22f5fcce544cbcde4b2a2b7ee68656c835a1333d",
+            "comment": "fix: avoid setting tabindex before button is connected"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Jul 2025 04:07:07 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.114",
+      "version": "3.0.0-beta.114",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Jul 2025 04:07:23 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.114",
+      "version": "3.0.0-beta.114",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "286ce2b6005c3d2580f6af9188ef7e73a7de91c9",
+            "comment": "a11y: remove vertical margins on dialog to support 400% zoom"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jul 2025 04:07:39 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.113",
+      "version": "3.0.0-beta.113",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "eddafeab690be93419049cdfcc1af124dc06e788",
+            "comment": "fix: remove unnecessary tabindex logic from switch template"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "493a28819075697d2a95546924971dcda3a94c86",
+            "comment": "fix: vertical slider in rtl has the opposite value than the visual"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 04:08:39 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.112",
       "version": "3.0.0-beta.112",

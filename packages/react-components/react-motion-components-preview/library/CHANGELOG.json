@@ -2,6 +2,86 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Thu, 21 Aug 2025 12:25:13 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "86c9ea988d336855abed51d4504ccdf7cd1409a4",
+            "comment": "feat(motion): add Rotate presence motion component"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Jul 2025 16:55:28 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.8.1",
+      "version": "0.8.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jul 2025 18:48:19 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "61c6eafa0a1c30eb4edf4add53dfa97c3099e78e",
+            "comment": "feat(motion): add Fade presence motion component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Jul 2025 13:52:47 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "0390c60c88c5ce232c63670e1c9a2ff1b4853cb1",
+            "comment": "refactor(Collapse): make consistent with other motion components"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "57cf606591172a42b4b107c0b91c9ab63aaae176",
+            "comment": "feat(motion): add Slide presence motion component"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "d9e4426535cd4bd4f8069c0acdbd9d5c6f6c4611",
+            "comment": "refactor(motion): apply consistent patterns across Fade and Scale"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jun 2025 14:11:54 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.6.2",
       "version": "0.6.2",

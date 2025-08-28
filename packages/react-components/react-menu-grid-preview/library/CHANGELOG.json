@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-menu-grid-preview",
+  "entries": [
+    {
+      "date": "Thu, 21 Aug 2025 13:38:51 GMT",
+      "tag": "@fluentui/react-menu-grid-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "79d03462c235013e9ae73d7ea66e9a08951e3f49",
+            "comment": "'feat:"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -6,7 +6,7 @@ import { Async } from './async-utils';
 import { KeyCodes } from './KeyCodes';
 import { useId } from '@fluentui/react-utilities';
 
-interface SVGTooltipTextProps {
+export interface SVGTooltipTextProps {
   closeDelay?: number;
   content: string;
   delay?: number;
@@ -151,6 +151,7 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
 
   const onTooltipKeyDown = useCallback(
     (ev: React.KeyboardEvent<SVGElement>) => {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if ((ev.which === KeyCodes.escape || ev.ctrlKey) && isTooltipVisible) {
         hideTooltip();
         ev.stopPropagation();
@@ -202,7 +203,7 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
     </>
   );
 });
-
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 SVGTooltipText.defaultProps = {
   delay: 0,
   showBackground: false,

@@ -9,6 +9,22 @@ test.describe('Accordion item', () => {
     waitFor: ['fluent-accordion-item'],
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-accordion-item');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should set a default heading level of 2 when `headinglevel` is not provided', async ({ fastPage }) => {
     const { element } = fastPage;
 

@@ -440,7 +440,8 @@ export interface ILineChartLineOptions extends React.SVGProps<SVGPathElement> {
     | 'gauge+number+delta'
     | 'gauge+delta'
     | 'markers+text'
-    | 'lines+text';
+    | 'lines+text'
+    | 'lines+markers+text';
 }
 
 /**
@@ -1008,6 +1009,7 @@ export type AxisCategoryOrder =
 export interface IGanttChartDataPoint {
   /**
    * Dependent value of the data point, rendered along the x-axis.
+   * `start` and `end` represent the beginning and end of the data point.
    */
   x: {
     start: Date | number;
@@ -1038,14 +1040,12 @@ export interface IGanttChartDataPoint {
   gradient?: [string, string];
 
   /**
-   * Callout data for x axis
-   * This is an optional prop, If haven;t given legend will take
+   * Optional label shown in place of `x` in the callout.
    */
   xAxisCalloutData?: string;
 
   /**
-   * Callout data for y axis
-   * This is an optional prop, If haven't given data will take
+   * Optional label shown in place of `y` in the callout.
    */
   yAxisCalloutData?: string;
 
@@ -1059,3 +1059,52 @@ export interface IGanttChartDataPoint {
    */
   callOutAccessibilityData?: IAccessibilityProps;
 }
+
+/**
+ * Available scale types for axes.
+ *
+ * - `'default'`: Uses an automatic scale (linear, band, or time) based on axis data type.
+ * - `'log'`: Uses a logarithmic scale. Only supported for numeric axes in LineChart and ScatterChart.
+ *
+ * {@docCategory CartesianChart}
+ */
+export type AxisScaleType = 'default' | 'log';
+
+/**
+ * Configuration options for an axis.
+ *
+ * {@docCategory CartesianChart}
+ */
+export type AxisProps = {
+  /**
+   * Defines the step between tick marks on the axis.
+   * Works in combination with `tick0`.
+   * Must be a positive number.
+   *
+   * - **Log scale**:
+   *   - Ticks are placed at `10^(n * tickStep)` where `n` is the tick index.
+   *     - Example: `tickStep = 2` → ticks at 1, 100, 10,000...
+   *     - Example: `tickStep = log10(5)` → ticks at 1, 5, 25, 125...
+   *   - Special format `"L<f>"`: Creates ticks that are linearly spaced in value (not position).
+   *     - Example: `tick0 = 0.1`, `tickStep = "L0.5"` → ticks at 0.1, 0.6, 1.1, 1.6...
+   *
+   * - **Date axis**:
+   *   - Must be in milliseconds.
+   *     - Example: one day = `tickStep = 86400000`.
+   *   - Special format `"M<n>"`: Places ticks every `n` months.
+   *     - Example: `tick0 = "2000-01-15"`, `tickStep = "M3"` → ticks on the 15th every third month.
+   *     - Example: `tickStep = "M48"` → ticks every 4 years.
+   */
+  tickStep?: number | string;
+
+  /**
+   * Sets the reference value for axis ticks.
+   * Works in combination with `tickStep`.
+   *
+   * - **Log scale**:
+   *   - `tick0` must be given as the logarithm of the reference tick.
+   *     - Example: to align ticks with 100, use `tick0 = 2`.
+   *   - Exception: when `tickStep` uses `"L<f>"`, you can specify the raw value directly.
+   */
+  tick0?: number | Date;
+};

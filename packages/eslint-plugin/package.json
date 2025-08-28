@@ -17,7 +17,7 @@
     "@typescript-eslint/type-utils": "^8.19.1",
     "eslint-plugin-compat": "^6.0.2",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.1.5",
     "eslint-import-resolver-typescript": "^3.7.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jest": "^28.10.0",

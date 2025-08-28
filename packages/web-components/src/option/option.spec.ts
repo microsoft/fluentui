@@ -7,6 +7,22 @@ test.describe('DropdownOption', () => {
     innerHTML: 'Option',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-option');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should render an option', async ({ fastPage }) => {
     const { element } = fastPage;
 

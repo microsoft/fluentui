@@ -4,6 +4,8 @@
 
 ```ts
 
+import type { JSXElement } from '@fluentui/react-utilities';
+import { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { SlotComponentType } from '@fluentui/react-utilities';
 import { SlotRenderFunction } from '@fluentui/react-utilities';
@@ -125,7 +127,7 @@ export type PresenceDirection = 'enter' | 'exit';
 
 // @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {
-    constructor(props: PresenceGroupProps, context: unknown);
+    constructor(props: PresenceGroupProps, context?: unknown);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -136,7 +138,7 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
         firstRender: boolean;
     };
     // (undocumented)
-    render(): JSX.Element;
+    render(): JSXElement;
 }
 
 // @public (undocumented)
@@ -166,7 +168,7 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
 
 // @public (undocumented)
 export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<PresenceComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart'> & {
-    as?: keyof JSX.IntrinsicElements;
+    as?: JSXIntrinsicElementKeys;
     children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & {
         children: React_2.ReactElement;
     }>;

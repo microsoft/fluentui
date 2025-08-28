@@ -12,6 +12,10 @@ parameters:
   - name: message
     type: string
     default: 'Deprecated in favor of stable release'
+  - name: dryRun
+    displayName: Dry Run Mode
+    type: boolean
+    default: false
 
 variables:
   - group: 'Github and NPM secrets'
@@ -52,4 +56,4 @@ extends:
               - script: |
                   npm deprecate ${{ parameters.packageSpec }} "${{ parameters.message }}" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=$(npmToken)
                 displayName: 'Deprecate package'
-                condition: eq(variables.dryRun, false)
+                condition: not(${{ parameters.dryRun }})

@@ -10,6 +10,7 @@ export { VerticalStackedBarCustomAccessibility } from '../../../../react-charts/
 export { VerticalStackedBarDateAxis } from '../../../../react-charts/stories/src/VerticalStackedBarChart/VerticalStackedBarChartDateAxis.stories';
 export { VerticalStackedBarNegative } from '../../../../react-charts/stories/src/VerticalStackedBarChart/VerticalStackedBarChartNegative.stories';
 export { VerticalStackedBarSecondaryYAxis } from '../../../../react-charts/stories/src/VerticalStackedBarChart/VerticalStackedBarChartSecondaryYAxis.stories';
+export { VerticalStackedBarAxisCategoryOrder } from '../../../../react-charts/stories/src/VerticalStackedBarChart/VerticalStackedBarChartAxisCategoryOrder.stories';
 
 export default {
   title: 'Charts/VerticalStackedBarChart',

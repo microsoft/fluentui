@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add support for marker texts for modes containing text",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

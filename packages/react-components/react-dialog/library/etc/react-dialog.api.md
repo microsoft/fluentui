@@ -4,14 +4,13 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
@@ -24,6 +23,15 @@ import { useModalAttributes } from '@fluentui/react-tabster';
 
 // @public
 export const Dialog: React_2.FC<DialogProps>;
+
+// @public (undocumented)
+export const DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET = "4px";
+
+// @public (undocumented)
+export const DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR = "@media screen and (max-width: 480px)";
+
+// @public (undocumented)
+export const DIALOG_MEDIA_QUERY_SHORT_SCREEN = "@media screen and (max-height: 359px)";
 
 // @public
 export const DialogActions: ForwardRefComponent<DialogActionsProps>;
@@ -129,7 +137,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     open?: boolean;
     defaultOpen?: boolean;
     onOpenChange?: DialogOpenChangeEventHandler;
-    children: [JSX.Element, JSX.Element] | JSX.Element;
+    children: [JSXElement, JSXElement] | JSXElement;
     inertTrapFocus?: boolean;
 };
 

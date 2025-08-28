@@ -100,22 +100,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -130,22 +117,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
@@ -393,22 +367,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p1"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  p1
-                </tspan>
+                p1
               </text>
             </g>
             <g
@@ -423,22 +384,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  p2
-                </tspan>
+                p2
               </text>
             </g>
           </g>
@@ -697,7 +645,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  p3
+                  p4
                 </text>
               </g>
               <g
@@ -715,7 +663,7 @@ Object {
                   fill="currentColor"
                   y="10"
                 >
-                  p4
+                  p3
                 </text>
               </g>
             </g>
@@ -745,22 +693,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p2
                 </text>
               </g>
               <g
@@ -775,34 +710,21 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p1
                 </text>
               </g>
             </g>
             <g
-              aria-label="p3, p2. Nasty, 25."
+              aria-label="p4, p1. Nasty, 50."
               fill-opacity="1"
               role="img"
               tabindex="0"
               transform="translate(45.8415841584158, 22.42574257425744)"
             >
               <rect
-                fill="rgb(255, 195, 195)"
+                fill="rgb(255, 197, 186)"
                 height="118.86138613861385"
                 width="286.23762376237624"
               />
@@ -813,29 +735,7 @@ Object {
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
-                25
-              </text>
-            </g>
-            <g
-              aria-label="p4, p2. Excellent, 100."
-              fill-opacity="1"
-              role="img"
-              tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
-            >
-              <rect
-                fill="rgb(255, 203, 169)"
-                height="118.86138613861385"
-                width="286.23762376237624"
-              />
-              <text
-                class="fui-hmc__text"
-                dominant-baseline="middle"
-                fill="var(--colorNeutralForeground1)"
-                text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
-              >
-                100
+                50
               </text>
             </g>
             <g
@@ -843,7 +743,7 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
+              transform="translate(337.9207920792079, 22.42574257425744)"
             >
               <rect
                 fill="rgb(255, 200, 178)"
@@ -861,14 +761,14 @@ Object {
               </text>
             </g>
             <g
-              aria-label="p4, p1. Nasty, 50."
+              aria-label="p4, p2. Excellent, 100."
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
+              transform="translate(45.8415841584158, 143.71287128712873)"
             >
               <rect
-                fill="rgb(255, 197, 186)"
+                fill="rgb(255, 203, 169)"
                 height="118.86138613861385"
                 width="286.23762376237624"
               />
@@ -879,7 +779,29 @@ Object {
                 text-anchor="middle"
                 transform="translate(143.11881188118812, 59.430693069306926)"
               >
-                50
+                100
+              </text>
+            </g>
+            <g
+              aria-label="p3, p2. Nasty, 25."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(337.9207920792079, 143.71287128712873)"
+            >
+              <rect
+                fill="rgb(255, 195, 195)"
+                height="118.86138613861385"
+                width="286.23762376237624"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(143.11881188118812, 59.430693069306926)"
+              >
+                25
               </text>
             </g>
           </svg>
@@ -988,7 +910,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                p3
+                p4
               </text>
             </g>
             <g
@@ -1006,7 +928,7 @@ Object {
                 fill="currentColor"
                 y="10"
               >
-                p4
+                p3
               </text>
             </g>
           </g>
@@ -1036,22 +958,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p1"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  p1
-                </tspan>
+                p2
               </text>
             </g>
             <g
@@ -1066,34 +975,21 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  p2
-                </tspan>
+                p1
               </text>
             </g>
           </g>
           <g
-            aria-label="p3, p2. Nasty, 25."
+            aria-label="p4, p1. Nasty, 50."
             fill-opacity="1"
             role="img"
             tabindex="0"
             transform="translate(45.8415841584158, 22.42574257425744)"
           >
             <rect
-              fill="rgb(255, 195, 195)"
+              fill="rgb(255, 197, 186)"
               height="118.86138613861385"
               width="286.23762376237624"
             />
@@ -1104,29 +1000,7 @@ Object {
               text-anchor="middle"
               transform="translate(143.11881188118812, 59.430693069306926)"
             >
-              25
-            </text>
-          </g>
-          <g
-            aria-label="p4, p2. Excellent, 100."
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
-          >
-            <rect
-              fill="rgb(255, 203, 169)"
-              height="118.86138613861385"
-              width="286.23762376237624"
-            />
-            <text
-              class="fui-hmc__text"
-              dominant-baseline="middle"
-              fill="var(--colorNeutralForeground1)"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
-            >
-              100
+              50
             </text>
           </g>
           <g
@@ -1134,7 +1008,7 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
+            transform="translate(337.9207920792079, 22.42574257425744)"
           >
             <rect
               fill="rgb(255, 200, 178)"
@@ -1152,14 +1026,14 @@ Object {
             </text>
           </g>
           <g
-            aria-label="p4, p1. Nasty, 50."
+            aria-label="p4, p2. Excellent, 100."
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
+            transform="translate(45.8415841584158, 143.71287128712873)"
           >
             <rect
-              fill="rgb(255, 197, 186)"
+              fill="rgb(255, 203, 169)"
               height="118.86138613861385"
               width="286.23762376237624"
             />
@@ -1170,7 +1044,29 @@ Object {
               text-anchor="middle"
               transform="translate(143.11881188118812, 59.430693069306926)"
             >
-              50
+              100
+            </text>
+          </g>
+          <g
+            aria-label="p3, p2. Nasty, 25."
+            fill-opacity="1"
+            role="img"
+            tabindex="0"
+            transform="translate(337.9207920792079, 143.71287128712873)"
+          >
+            <rect
+              fill="rgb(255, 195, 195)"
+              height="118.86138613861385"
+              width="286.23762376237624"
+            />
+            <text
+              class="fui-hmc__text"
+              dominant-baseline="middle"
+              fill="var(--colorNeutralForeground1)"
+              text-anchor="middle"
+              transform="translate(143.11881188118812, 59.430693069306926)"
+            >
+              25
             </text>
           </g>
         </svg>
@@ -1386,22 +1282,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -1416,22 +1299,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
@@ -1624,22 +1494,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p1"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  p1
-                </tspan>
+                p1
               </text>
             </g>
             <g
@@ -1654,22 +1511,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  p2
-                </tspan>
+                p2
               </text>
             </g>
           </g>
@@ -1921,22 +1765,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -1951,22 +1782,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
@@ -2214,22 +2032,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p1"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  p1
-                </tspan>
+                p1
               </text>
             </g>
             <g
@@ -2244,22 +2049,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="p2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  p2
-                </tspan>
+                p2
               </text>
             </g>
           </g>
@@ -2566,22 +2358,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="/%d"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    /%d
-                  </tspan>
+                  /%d
                 </text>
               </g>
               <g
@@ -2596,22 +2375,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="/%d"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    /%d
-                  </tspan>
+                  /%d
                 </text>
               </g>
             </g>
@@ -2859,22 +2625,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="/%d"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-10"
-                >
-                  /%d
-                </tspan>
+                /%d
               </text>
             </g>
             <g
@@ -2889,22 +2642,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-10"
               >
-                <tspan
-                  data-="/%d"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-10"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-10"
-                >
-                  /%d
-                </tspan>
+                /%d
               </text>
             </g>
           </g>
@@ -3215,22 +2955,9 @@ Object {
                   <text
                     dy="0.32em"
                     fill="currentColor"
-                    text-align="start"
                     x="-10"
                   >
-                    <tspan
-                      data-="p1"
-                      dy="0.32em"
-                      id="BaseSpan-0"
-                      x="-10"
-                    />
-                    <tspan
-                      dx="1em"
-                      id="LessLength-0"
-                      x="-10"
-                    >
-                      p1
-                    </tspan>
+                    p1
                   </text>
                 </g>
                 <g
@@ -3245,22 +2972,9 @@ Object {
                   <text
                     dy="0.32em"
                     fill="currentColor"
-                    text-align="start"
                     x="-10"
                   >
-                    <tspan
-                      data-="p2"
-                      dy="0.32em"
-                      id="BaseSpan-1"
-                      x="-10"
-                    />
-                    <tspan
-                      dx="1em"
-                      id="LessLength-1"
-                      x="-10"
-                    >
-                      p2
-                    </tspan>
+                    p2
                   </text>
                 </g>
               </g>
@@ -3513,22 +3227,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -3543,22 +3244,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
@@ -3869,22 +3557,9 @@ Object {
                   <text
                     dy="0.32em"
                     fill="currentColor"
-                    text-align="start"
                     x="-10"
                   >
-                    <tspan
-                      data-="p1"
-                      dy="0.32em"
-                      id="BaseSpan-0"
-                      x="-10"
-                    />
-                    <tspan
-                      dx="1em"
-                      id="LessLength-0"
-                      x="-10"
-                    >
-                      p1
-                    </tspan>
+                    p1
                   </text>
                 </g>
                 <g
@@ -3899,22 +3574,9 @@ Object {
                   <text
                     dy="0.32em"
                     fill="currentColor"
-                    text-align="start"
                     x="-10"
                   >
-                    <tspan
-                      data-="p2"
-                      dy="0.32em"
-                      id="BaseSpan-1"
-                      x="-10"
-                    />
-                    <tspan
-                      dx="1em"
-                      id="LessLength-1"
-                      x="-10"
-                    >
-                      p2
-                    </tspan>
+                    p2
                   </text>
                 </g>
               </g>
@@ -4166,22 +3828,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p1"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-10"
-                  >
-                    p1
-                  </tspan>
+                  p1
                 </text>
               </g>
               <g
@@ -4196,22 +3845,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-10"
                 >
-                  <tspan
-                    data-="p2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-10"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-10"
-                  >
-                    p2
-                  </tspan>
+                  p2
                 </text>
               </g>
             </g>
@@ -4514,22 +4150,9 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
-              <tspan
-                data-="10"
-                dy="0.32em"
-                id="BaseSpan-0"
-                x="-10"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-0"
-                x="-10"
-              >
-                10
-              </tspan>
+              10
             </text>
           </g>
           <g
@@ -4544,22 +4167,9 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
-              <tspan
-                data-="20"
-                dy="0.32em"
-                id="BaseSpan-1"
-                x="-10"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-1"
-                x="-10"
-              >
-                20
-              </tspan>
+              20
             </text>
           </g>
         </g>
@@ -4751,7 +4361,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               fill="currentColor"
               y="10"
             >
-              xPoint p3
+              xPoint p4
             </text>
           </g>
           <g
@@ -4769,7 +4379,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               fill="currentColor"
               y="10"
             >
-              xPoint p4
+              xPoint p3
             </text>
           </g>
         </g>
@@ -4799,22 +4409,9 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
-              <tspan
-                data-="yPoint p1"
-                dy="0.32em"
-                id="BaseSpan-0"
-                x="-10"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-0"
-                x="-10"
-              >
-                yPoint p1
-              </tspan>
+              yPoint p2
             </text>
           </g>
           <g
@@ -4829,34 +4426,21 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
-              <tspan
-                data-="yPoint p2"
-                dy="0.32em"
-                id="BaseSpan-1"
-                x="-10"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-1"
-                x="-10"
-              >
-                yPoint p2
-              </tspan>
+              yPoint p1
             </text>
           </g>
         </g>
         <g
-          aria-label="xPoint p3, yPoint p2. Nasty, 25."
+          aria-label="xPoint p4, yPoint p1. Nasty, 50."
           fill-opacity="1"
           role="img"
           tabindex="0"
           transform="translate(45.8415841584158, 22.42574257425744)"
         >
           <rect
-            fill="rgb(166, 207, 226)"
+            fill="rgb(159, 198, 222)"
             height="118.86138613861385"
             width="286.23762376237624"
           />
@@ -4867,29 +4451,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             text-anchor="middle"
             transform="translate(143.11881188118812, 59.430693069306926)"
           >
-            25
-          </text>
-        </g>
-        <g
-          aria-label="xPoint p4, yPoint p2. Excellent, 100."
-          fill-opacity="1"
-          role="img"
-          tabindex="0"
-          transform="translate(337.9207920792079, 22.42574257425744)"
-        >
-          <rect
-            fill="rgb(144, 180, 215)"
-            height="118.86138613861385"
-            width="286.23762376237624"
-          />
-          <text
-            class="fui-hmc__text"
-            dominant-baseline="middle"
-            fill="var(--colorNeutralForeground1)"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
-          >
-            100
+            50
           </text>
         </g>
         <g
@@ -4897,7 +4459,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(45.8415841584158, 143.71287128712873)"
+          transform="translate(337.9207920792079, 22.42574257425744)"
         >
           <rect
             fill="rgb(151, 189, 219)"
@@ -4915,14 +4477,14 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           </text>
         </g>
         <g
-          aria-label="xPoint p4, yPoint p1. Nasty, 50."
+          aria-label="xPoint p4, yPoint p2. Excellent, 100."
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(337.9207920792079, 143.71287128712873)"
+          transform="translate(45.8415841584158, 143.71287128712873)"
         >
           <rect
-            fill="rgb(159, 198, 222)"
+            fill="rgb(144, 180, 215)"
             height="118.86138613861385"
             width="286.23762376237624"
           />
@@ -4933,7 +4495,29 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             text-anchor="middle"
             transform="translate(143.11881188118812, 59.430693069306926)"
           >
-            50
+            100
+          </text>
+        </g>
+        <g
+          aria-label="xPoint p3, yPoint p2. Nasty, 25."
+          fill-opacity="1"
+          role="img"
+          tabindex="0"
+          transform="translate(337.9207920792079, 143.71287128712873)"
+        >
+          <rect
+            fill="rgb(166, 207, 226)"
+            height="118.86138613861385"
+            width="286.23762376237624"
+          />
+          <text
+            class="fui-hmc__text"
+            dominant-baseline="middle"
+            fill="var(--colorNeutralForeground1)"
+            text-anchor="middle"
+            transform="translate(143.11881188118812, 59.430693069306926)"
+          >
+            25
           </text>
         </g>
       </svg>

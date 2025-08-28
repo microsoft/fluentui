@@ -1,7 +1,9 @@
+/* eslint @typescript-eslint/no-deprecated: 0 */
 import * as React from 'react';
 import { Combobox, Option, makeStyles, useId, useMergedRefs, useTimeout } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
+// TODO: Migrate virtualizer to fluentui-contrib dependency once released
 import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
 
 const useStyles = makeStyles({
