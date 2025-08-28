@@ -21,22 +21,17 @@ export const MoreComplexMenus = () => {
                   appearance="transparent"
                   icon={<GlobePersonRegular />}
                   aria-label={`Profile card for ${name}`}
-                ></Button>
+                />
               </MenuGridCell>
               <MenuGridCell>{name}</MenuGridCell>
               <MenuGridCell>
-                <Button size="small" appearance="transparent" icon={<PhoneRegular />} aria-label="Audio call"></Button>
+                <Button size="small" appearance="transparent" icon={<PhoneRegular />} aria-label="Audio call" />
               </MenuGridCell>
               <MenuGridCell>
-                <Button size="small" appearance="transparent" icon={<CameraRegular />} aria-label="Video call"></Button>
+                <Button size="small" appearance="transparent" icon={<CameraRegular />} aria-label="Video call" />
               </MenuGridCell>
               <MenuGridCell>
-                <Button
-                  size="small"
-                  appearance="transparent"
-                  icon={<DeleteRegular />}
-                  aria-label={`Remove ${name}`}
-                ></Button>
+                <Button size="small" appearance="transparent" icon={<DeleteRegular />} aria-label={`Remove ${name}`} />
               </MenuGridCell>
             </MenuGridRow>
           ))}

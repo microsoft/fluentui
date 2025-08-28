@@ -22,15 +22,10 @@ export const Default = () => {
                   appearance="transparent"
                   icon={<GlobePersonRegular />}
                   aria-label={`Profile card for ${name}`}
-                ></Button>
+                />
               }
               secondSubAction={
-                <Button
-                  size="small"
-                  appearance="transparent"
-                  icon={<DeleteRegular />}
-                  aria-label={`Remove ${name}`}
-                ></Button>
+                <Button size="small" appearance="transparent" icon={<DeleteRegular />} aria-label={`Remove ${name}`} />
               }
               aria-label={name}
             >

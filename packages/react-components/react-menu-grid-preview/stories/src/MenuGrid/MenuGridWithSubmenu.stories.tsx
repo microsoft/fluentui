@@ -20,7 +20,7 @@ const Submenu = () => {
               event.preventDefault();
             }
           }}
-        ></Button>
+        />
       </MenuTrigger>
       <MenuPopover>
         <MenuList>

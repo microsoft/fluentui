@@ -27,7 +27,7 @@ export const GroupingItems = () => {
                     appearance="transparent"
                     icon={<GlobePersonRegular />}
                     aria-label={`Profile card for ${name}`}
-                  ></Button>
+                  />
                 }
                 firstSubAction={
                   <Button
@@ -35,7 +35,7 @@ export const GroupingItems = () => {
                     appearance="transparent"
                     icon={<DeleteRegular />}
                     aria-label={`Remove ${name}`}
-                  ></Button>
+                  />
                 }
                 aria-label={name}
               >
@@ -54,7 +54,7 @@ export const GroupingItems = () => {
                     appearance="transparent"
                     icon={<GlobePersonRegular />}
                     aria-label={`Profile card for ${name}`}
-                  ></Button>
+                  />
                 }
                 firstSubAction={
                   <Button
@@ -62,7 +62,7 @@ export const GroupingItems = () => {
                     appearance="transparent"
                     icon={<DeleteRegular />}
                     aria-label={`Remove ${name}`}
-                  ></Button>
+                  />
                 }
                 aria-label={name}
               >

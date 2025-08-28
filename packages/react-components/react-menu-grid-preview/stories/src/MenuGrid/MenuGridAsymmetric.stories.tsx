@@ -30,8 +30,8 @@ export const Asymmetric = () => {
                     size="small"
                     appearance="transparent"
                     icon={<DeleteRegular />}
-                    aria-label={`Remove ${name}`}
-                  ></Button>
+                    aria-label={`Remove ${item.name}`}
+                  />
                 )
               }
               icon={
@@ -39,8 +39,8 @@ export const Asymmetric = () => {
                   size="small"
                   appearance="transparent"
                   icon={<GlobePersonRegular />}
-                  aria-label={`Profile card for ${name}`}
-                ></Button>
+                  aria-label={`Profile card for ${item.name}`}
+                />
               }
               aria-label={item.name}
             >
