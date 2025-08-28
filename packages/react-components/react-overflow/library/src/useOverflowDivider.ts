@@ -8,7 +8,7 @@ import { useOverflowContext } from './overflowContext';
  * @param groupId - assigns the item to a group, group visibility can be watched
  * @returns ref to assign to an intrinsic HTML element
  */
-export function useOverflowDivider<TElement extends HTMLElement>(groupId?: string) {
+export function useOverflowDivider<TElement extends HTMLElement>(groupId?: string): React.RefObject<TElement> {
   const ref = React.useRef<TElement>(null);
   const registerDivider = useOverflowContext(v => v.registerDivider);
 

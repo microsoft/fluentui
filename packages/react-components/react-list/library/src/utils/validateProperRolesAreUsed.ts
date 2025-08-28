@@ -13,7 +13,7 @@ export const validateProperRolesAreUsed = (
   listItemRole: string,
   hasSelection: boolean,
   hasFocusableChildren: boolean,
-) => {
+): void => {
   // Explode when the pair of roles is invalid
   if (role === 'list' && listItemRole !== 'listitem') {
     throw new Error('When the List role is "list", ListItem role must be "listitem".');

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { FixedSizeList } from 'react-window';
 import { List, ListItem } from '@fluentui/react-components';
 import { tokens, Text, makeResetStyles } from '@fluentui/react-components';
@@ -210,7 +211,7 @@ const CountriesList = React.forwardRef<HTMLUListElement>((props: React.Component
   <List aria-label="Countries" tabIndex={0} {...props} ref={ref} />
 ));
 
-export const VirtualizedList = () => {
+export const VirtualizedList = (): JSXElement => {
   const textStyle = useTextStyle();
   return (
     <FixedSizeList

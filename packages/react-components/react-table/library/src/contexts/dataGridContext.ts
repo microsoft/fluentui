@@ -17,5 +17,5 @@ export const dataGridContextDefaultValue: DataGridContextValue = {
 
 export const DataGridContextProvider = dataGridContext.Provider;
 
-export const useDataGridContext_unstable = <T>(selector: ContextSelector<DataGridContextValue, T>) =>
+export const useDataGridContext_unstable = <T>(selector: ContextSelector<DataGridContextValue, T>): T =>
   useContextSelector(dataGridContext, (ctx = dataGridContextDefaultValue) => selector(ctx));

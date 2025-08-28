@@ -9,6 +9,6 @@ const portalCompatContextDefaultValue = () => () => undefined;
 
 export const PortalCompatContextProvider = PortalCompatContext.Provider;
 
-export function usePortalCompat() {
+export function usePortalCompat(): RegisterPortalFn {
   return React.useContext(PortalCompatContext) ?? portalCompatContextDefaultValue;
 }

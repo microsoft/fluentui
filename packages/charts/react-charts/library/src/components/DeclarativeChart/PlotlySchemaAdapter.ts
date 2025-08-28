@@ -1685,7 +1685,7 @@ var baseContainer: any, baseAttrName: any;
  * @param trace
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function findArrayAttributes(trace: any) {
+export function findArrayAttributes(trace: any): void {
   // Init basecontainer and baseAttrName
   crawlIntoTrace(baseContainer, 0, '');
 }
@@ -1967,7 +1967,7 @@ const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined, isMul
   };
 };
 
-export const getNumberAtIndexOrDefault = (data: PlotData['z'] | undefined, index: number) => {
+export const getNumberAtIndexOrDefault = (data: PlotData['z'] | undefined, index: number): number | undefined => {
   if (isArrayOrTypedArray(data)) {
     if (typeof data![index] !== 'number' || !isFinite(data![index] as number)) {
       return;
@@ -1979,7 +1979,7 @@ export const getNumberAtIndexOrDefault = (data: PlotData['z'] | undefined, index
   return 1;
 };
 
-export const getValidXYRanges = (series: Partial<PlotData>) => {
+export const getValidXYRanges = (series: Partial<PlotData>): [number, number][] => {
   if (!isArrayOrTypedArray(series.x) || !isArrayOrTypedArray(series.y)) {
     return [];
   }

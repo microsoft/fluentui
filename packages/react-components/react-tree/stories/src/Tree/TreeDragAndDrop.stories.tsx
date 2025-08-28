@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FlatTree,
   FlatTreeItem,
@@ -57,7 +58,7 @@ const SortableTreeItem = ({ children, value, ...rest }: FlatTreeItemProps) => {
   );
 };
 
-export const DragAndDrop = () => {
+export const DragAndDrop = (): JSXElement => {
   const [items, setItems] = React.useState(flatTreeItems);
   const virtualTree = useHeadlessFlatTree_unstable(items, {
     defaultOpenItems: ['1'],

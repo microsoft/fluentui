@@ -48,7 +48,7 @@ const insertSheet = (tag: HTMLStyleElement, rule: string) => {
  */
 export const useFluentProviderThemeStyleTag = (
   options: Pick<FluentProviderState, 'theme' | 'targetDocument'> & { rendererAttributes: Record<string, string> },
-) => {
+): { styleTagId: string; rule: string } => {
   'use no memo';
 
   const { targetDocument, theme, rendererAttributes } = options;

@@ -47,7 +47,7 @@ export function useTabster<FactoryResult>(
   factory: UseTabsterFactory<FactoryResult>,
 ): React.RefObject<FactoryResult | null>;
 
-export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY) {
+export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY): React.RefObject<FactoryResult | null> {
   const { targetDocument } = useFluent();
   const factoryResultRef = React.useRef<FactoryResult | null>(null);
 

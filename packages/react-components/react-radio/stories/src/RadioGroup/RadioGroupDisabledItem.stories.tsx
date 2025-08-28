@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, Radio, RadioGroup } from '@fluentui/react-components';
 
-export const DisabledItem = () => (
+export const DisabledItem = (): JSXElement => (
   <Field label="Favorite Fruit">
     <RadioGroup defaultValue="apple">
       <Radio value="apple" label="Apple" />

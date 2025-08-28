@@ -14,7 +14,7 @@ export const menuItemRadioClassNames: SlotClassNames<Omit<MenuItemSlots, 'submen
   subText: 'fui-MenuItemRadio__subText',
 };
 
-export const useMenuItemRadioStyles_unstable = (state: MenuItemRadioState) => {
+export const useMenuItemRadioStyles_unstable = (state: MenuItemRadioState): void => {
   'use no memo';
 
   state.root.className = mergeClasses(menuItemRadioClassNames.root, state.root.className);

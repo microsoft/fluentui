@@ -1,8 +1,8 @@
 import { HighContrastSelector } from '../utilities/utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { shorthands } from '@griffel/react';
+import { shorthands, type GriffelStyle } from '@griffel/react';
 
-export const getTooltipStyle = () => {
+export const getTooltipStyle = (): GriffelStyle => {
   return {
     ...typographyStyles.body1,
     display: 'flex',
@@ -18,7 +18,7 @@ export const getTooltipStyle = () => {
   };
 };
 
-export const getAxisTitleStyle = () => {
+export const getAxisTitleStyle = (): GriffelStyle => {
   return {
     ...typographyStyles.caption2Strong,
     fontStyle: 'normal',
@@ -31,7 +31,7 @@ export const getAxisTitleStyle = () => {
   };
 };
 
-export const getBarLabelStyle = () => {
+export const getBarLabelStyle = (): GriffelStyle => {
   return {
     ...typographyStyles.caption1Strong, // Confirm styles
     fill: tokens.colorNeutralForeground1,
@@ -39,7 +39,7 @@ export const getBarLabelStyle = () => {
   };
 };
 
-export const getMarkerLabelStyle = () => {
+export const getMarkerLabelStyle = (): GriffelStyle => {
   return {
     ...typographyStyles.body1,
     fill: tokens.colorNeutralForeground1,

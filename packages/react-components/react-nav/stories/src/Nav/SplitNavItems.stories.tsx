@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   NavCategory,
   NavCategoryItem,
@@ -187,7 +188,7 @@ const DemoMenuPopover = () => {
   );
 };
 
-export const SplitNavItems = () => {
+export const SplitNavItems = (): JSXElement => {
   const styles = useStyles();
 
   const labelId = useId('type-label');

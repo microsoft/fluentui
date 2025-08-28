@@ -1,12 +1,13 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { MenuGridItemSlots, MenuGridItemState } from './MenuGridItem.types';
 
 /**
  * Function that renders the final JSX of the component
  */
-export const renderMenuGridItem_unstable = (state: MenuGridItemState) => {
+export const renderMenuGridItem_unstable = (state: MenuGridItemState): JSXElement => {
   assertSlots<MenuGridItemSlots>(state);
 
   return (

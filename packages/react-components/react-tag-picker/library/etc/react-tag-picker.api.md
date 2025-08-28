@@ -36,22 +36,22 @@ import type { TagGroupState } from '@fluentui/react-tags';
 export const renderTagPicker_unstable: (state: TagPickerState, contexts: TagPickerContextValues) => JSXElement;
 
 // @public
-export const renderTagPickerButton_unstable: (state: TagPickerButtonState) => JSX.Element;
+export const renderTagPickerButton_unstable: (state: TagPickerButtonState) => JSXElement;
 
 // @public
-export const renderTagPickerControl_unstable: (state: TagPickerControlState) => JSX.Element;
+export const renderTagPickerControl_unstable: (state: TagPickerControlState) => JSXElement;
 
 // @public (undocumented)
-export function renderTagPickerGroup_unstable(state: TagPickerGroupState, contexts: TagGroupContextValues): JSX.Element | null;
+export function renderTagPickerGroup_unstable(state: TagPickerGroupState, contexts: TagGroupContextValues): JSXElement | null;
 
 // @public
-export const renderTagPickerInput_unstable: (state: TagPickerInputState) => JSX.Element;
+export const renderTagPickerInput_unstable: (state: TagPickerInputState) => JSXElement;
 
 // @public
-export const renderTagPickerList_unstable: (state: TagPickerListState) => JSX.Element;
+export const renderTagPickerList_unstable: (state: TagPickerListState) => JSXElement;
 
 // @public
-export const renderTagPickerOption_unstable: (state: TagPickerOptionState) => JSX.Element;
+export const renderTagPickerOption_unstable: (state: TagPickerOptionState) => JSXElement;
 
 // @public
 export const renderTagPickerOptionGroup: (state: TagPickerOptionGroupState) => JSXElement;

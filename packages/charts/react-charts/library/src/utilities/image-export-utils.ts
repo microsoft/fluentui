@@ -168,7 +168,11 @@ export function cloneLegendsToSVG(
     isRTL: boolean;
   },
   legendContainer?: HTMLElement | null,
-) {
+): {
+  node: SVGGElement | null;
+  width: number;
+  height: number;
+} {
   if (legends.length === 0) {
     return {
       node: null,

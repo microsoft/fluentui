@@ -127,7 +127,12 @@ export const constructRowParameters = (
   token: string,
   onNewOverride: (color: string, newColor: Brands) => void,
   themeOverrides: Partial<Theme>,
-) => {
+): {
+  colorValue: Brands;
+  usage: string;
+  handleColorChange: MenuProps['onCheckedValueChange'];
+  overridenTokens: string[];
+} => {
   const colorValue: Brands = colorOverrides[token];
   const usage = (usageList as unknown as Record<string, string>)[token];
   const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {

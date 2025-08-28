@@ -3,6 +3,7 @@
   "root": true,
   "rules": {
     "@nx/workspace-no-restricted-globals": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "import/no-extraneous-dependencies": "off"
   }
 }

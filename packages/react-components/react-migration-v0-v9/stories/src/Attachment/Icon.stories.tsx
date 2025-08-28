@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Attachment, AttachmentIcon, AttachmentHeader, AttachmentBody } from '@fluentui/react-migration-v0-v9';
 import {
   BriefcaseRegular as Briefcase,
@@ -6,7 +7,7 @@ import {
   PresenterRegular as Presenter,
 } from '@fluentui/react-icons';
 
-export const Icon = () => {
+export const Icon = (): JSXElement => {
   return (
     <div>
       <Attachment>

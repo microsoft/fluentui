@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
 import type { InputProps } from '@fluentui/react-components';
 
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Controlled = () => {
+export const Controlled = (): JSXElement => {
   const inputId = useId('input');
   const [value, setValue] = React.useState('initial value');
   const styles = useStyles();

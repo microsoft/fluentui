@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   TagPicker,
   TagPickerList,
@@ -21,7 +22,7 @@ const options = [
   'Maria Rossi',
 ];
 
-export const SecondaryAction = () => {
+export const SecondaryAction = (): JSXElement => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([options[0]]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (event, data) => {
     if (data.value === 'no-options') {

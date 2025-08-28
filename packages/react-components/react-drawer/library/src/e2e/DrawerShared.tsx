@@ -12,7 +12,7 @@ const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
-export function testDrawerBaseScenarios(Component: typeof Drawer | typeof OverlayDrawer | typeof InlineDrawer) {
+export function testDrawerBaseScenarios(Component: typeof Drawer | typeof OverlayDrawer | typeof InlineDrawer): void {
   describe('basic functionality', () => {
     it('should not render any element when closed', () => {
       mountFluent(<Component id="drawer" />);

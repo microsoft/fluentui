@@ -1,5 +1,6 @@
 import * as React from 'react';
-export const Virtualization = () => {
+import type { JSXElement } from '@fluentui/react-components';
+export const Virtualization = (): JSXElement => {
   return (
     <iframe
       style={{ width: '100%', height: 500, border: 'none' }}

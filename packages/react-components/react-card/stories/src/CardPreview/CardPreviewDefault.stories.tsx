@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { CardPreview } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
@@ -8,7 +9,7 @@ const resolveAsset = (asset: string) => {
   return `${ASSET_URL}${asset}`;
 };
 
-export const Default = () => (
+export const Default = (): JSXElement => (
   <CardPreview logo={<img src={resolveAsset('docx.png')} alt="Microsoft Word logo" />}>
     <img src={resolveAsset('doc_template.png')} alt="Preview of a Word document " />
   </CardPreview>

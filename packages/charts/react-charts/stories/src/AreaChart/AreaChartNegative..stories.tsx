@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { AreaChart } from '@fluentui/react-charts';
 import {
   Switch,
@@ -16,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const AreaChartNegative = () => {
+export const AreaChartNegative = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [isCalloutSelected, setIsCalloutSelected] = React.useState<boolean>(false);

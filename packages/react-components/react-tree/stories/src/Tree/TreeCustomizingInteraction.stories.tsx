@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Tree,
   TreeItem,
@@ -8,7 +9,7 @@ import {
   TreeOpenChangeEvent,
 } from '@fluentui/react-components';
 
-export const CustomizingInteraction = () => {
+export const CustomizingInteraction = (): JSXElement => {
   const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>([]);
   const onOpenChange = (_e: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     if (data.type === 'Click' || data.type === 'Enter') {

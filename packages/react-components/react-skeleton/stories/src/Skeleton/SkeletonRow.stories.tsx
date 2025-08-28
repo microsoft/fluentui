@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Skeleton, SkeletonItem, makeStyles, tokens } from '@fluentui/react-components';
 import type { SkeletonProps } from '@fluentui/react-components';
 
@@ -24,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Row = (props: Partial<SkeletonProps>) => {
+export const Row = (props: Partial<SkeletonProps>): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.invertedWrapper}>

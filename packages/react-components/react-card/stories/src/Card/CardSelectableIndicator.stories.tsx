@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Caption1, tokens, Checkbox, Text, useId } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
@@ -54,7 +55,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const SelectableIndicator = () => {
+export const SelectableIndicator = (): JSXElement => {
   const styles = useStyles();
   const idPrefix = useId('card-title');
 

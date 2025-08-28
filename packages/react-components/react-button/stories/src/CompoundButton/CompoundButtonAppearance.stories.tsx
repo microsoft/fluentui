@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, CompoundButton } from '@fluentui/react-components';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 
@@ -12,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Appearance = () => {
+export const Appearance = (): JSXElement => {
   const styles = useStyles();
 
   return (

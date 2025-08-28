@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, Radio, RadioGroup } from '@fluentui/react-components';
 
-export const HorizontalStacked = () => (
+export const HorizontalStacked = (): JSXElement => (
   <Field label="Favorite Fruit">
     <RadioGroup layout="horizontal-stacked">
       <Radio value="apple" label="Apple" />

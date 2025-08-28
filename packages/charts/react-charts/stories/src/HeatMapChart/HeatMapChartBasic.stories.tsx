@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { HeatMapChart, HeatMapChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 
-export const HeatMapChartBasic: React.FunctionComponent<{}> = () => {
+export const HeatMapChartBasic: React.FunctionComponent<{}> = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(450);
   const [height, setHeight] = React.useState<number>(350);
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChartProps, DataVizPalette, ScatterChartProps, ScatterChart, AxisScaleType } from '@fluentui/react-charts';
-import { RadioGroup, Radio, Field } from '@fluentui/react-components';
+import { RadioGroup, Radio, Field, JSXElement } from '@fluentui/react-components';
 
 const data: ChartProps = {
   chartTitle: 'Scatter Chart',
@@ -52,7 +52,7 @@ const data: ChartProps = {
   ],
 };
 
-export const ScatterChartLogAxisExample = (props: ScatterChartProps) => {
+export const ScatterChartLogAxisExample = (props: ScatterChartProps): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [xScaleType, setXScaleType] = React.useState<string>('log');

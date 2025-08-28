@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, typographyStyles, Text } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -11,7 +12,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const MixedStyles = () => {
+export const MixedStyles = (): JSXElement => {
   const styles = useStyles();
 
   return (
