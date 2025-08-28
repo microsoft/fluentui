@@ -1040,3 +1040,13 @@ export interface ScatterChartPoints {
    */
   useSecondaryYScale?: boolean;
 }
+
+/**
+ * Available scale types for axes.
+ *
+ * - `'default'`: Uses an automatic scale (linear, band, or time) based on axis data type.
+ * - `'log'`: Uses a logarithmic scale. Only supported for numeric axes in LineChart and ScatterChart.
+ *
+ * {@docCategory CartesianChart}
+ */
+export type AxisScaleType = 'default' | 'log';
