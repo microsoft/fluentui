@@ -72,7 +72,19 @@ export default {
       control: 'text',
       table: { category: 'attributes' },
     },
+    disabled: {
+      control: 'boolean',
+      table: { category: 'attributes' },
+    },
     multiple: {
+      control: 'boolean',
+      table: { category: 'attributes' },
+    },
+    name: {
+      control: 'text',
+      table: { category: 'attributes' },
+    },
+    required: {
       control: 'boolean',
       table: { category: 'attributes' },
     },
