@@ -449,7 +449,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       if (_isScatterPolarRef.current) {
         pointsForSeries.push(
           ...renderScatterPolarCategoryLabels({
-            allSeriesData,
             xAxisScale: _xAxisScale,
             yAxisScale: _yAxisScale,
             className: classes.markerLabel || '',
