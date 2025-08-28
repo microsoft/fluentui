@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@fluentui/react-menu": "^9.19.5",
+    "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-table": "^9.18.5",
     "@fluentui/react-tabster": "^9.26.4",
     "@fluentui/react-jsx-runtime": "^9.1.6",

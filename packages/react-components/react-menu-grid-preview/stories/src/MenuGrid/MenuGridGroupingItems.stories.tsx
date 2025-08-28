@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button, Menu, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import { MenuGrid, MenuGridGroup, MenuGridGroupHeader, MenuGridItem } from '@fluentui/react-menu-grid-preview';
+import { DeleteRegular, GlobePersonRegular } from '@fluentui/react-icons';
 
 const items = {
   people: ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'],
@@ -20,8 +21,22 @@ export const GroupingItems = () => {
             {items.people.map((name, index) => (
               <MenuGridItem
                 key={index}
-                firstSubAction={<Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>}
-                secondSubAction={<Button aria-label={`Remove ${name}`}>Remove</Button>}
+                icon={
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<GlobePersonRegular />}
+                    aria-label={`Profile card for ${name}`}
+                  />
+                }
+                firstSubAction={
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<DeleteRegular />}
+                    aria-label={`Remove ${name}`}
+                  />
+                }
                 aria-label={name}
               >
                 {name}
@@ -33,8 +48,22 @@ export const GroupingItems = () => {
             {items.agentsAndBots.map((name, index) => (
               <MenuGridItem
                 key={index}
-                firstSubAction={<Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>}
-                secondSubAction={<Button aria-label={`Remove ${name}`}>Remove</Button>}
+                icon={
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<GlobePersonRegular />}
+                    aria-label={`Profile card for ${name}`}
+                  />
+                }
+                firstSubAction={
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<DeleteRegular />}
+                    aria-label={`Remove ${name}`}
+                  />
+                }
                 aria-label={name}
               >
                 {name}
