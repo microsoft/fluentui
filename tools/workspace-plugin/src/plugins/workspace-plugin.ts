@@ -612,7 +612,7 @@ function buildReactIntegrationTesterProjectConfiguration(
         options: { cwd: '{projectRoot}' },
         cache: true,
         inputs: inputs,
-        outputs: [`{workspaceRoot}/tmp/rit/${config.projectJSON.name}-react-${reactVersion}*`],
+        outputs: [`{workspaceRoot}/tmp/rit/**/${config.projectJSON.name}-react-${reactVersion}*`],
         // this should be set via nx.json
         dependsOn: [],
         metadata: {
@@ -683,7 +683,14 @@ function buildReactIntegrationTesterProjectConfiguration(
     dependsOn: Object.keys(targets)
       .filter(target => !target.includes('--prepare'))
       .map(target => {
-        return { target, projects: 'self', params: 'forward' };
+        return {
+          target,
+          projects:
+            isLibraryWithStorybookAdjacentProject && target.includes('--type-check')
+              ? `${config.projectJSON.name}-stories`
+              : 'self',
+          params: 'forward',
+        };
       }),
     inputs: inputs,
     outputs: [`{workspaceRoot}/tmp/rit/${config.projectJSON.name}-react-*`],

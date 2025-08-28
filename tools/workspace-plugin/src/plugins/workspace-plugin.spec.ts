@@ -510,12 +510,12 @@ describe(`workspace-plugin`, () => {
                       "dependsOn": Array [
                         Object {
                           "params": "forward",
-                          "projects": "self",
+                          "projects": "proj-stories",
                           "target": "react-integration-testing--17--type-check",
                         },
                         Object {
                           "params": "forward",
-                          "projects": "self",
+                          "projects": "proj-stories",
                           "target": "react-integration-testing--18--type-check",
                         },
                       ],
