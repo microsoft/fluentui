@@ -346,7 +346,7 @@ export type TableCellProps = ComponentProps<TableCellSlots> & {};
 
 // @public (undocumented)
 export type TableCellSlots = {
-    root: Slot<'td', 'div'>;
+    root: Slot<'td', 'th' | 'div'>;
 };
 
 // @public
