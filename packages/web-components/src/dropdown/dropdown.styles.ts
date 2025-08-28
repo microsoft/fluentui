@@ -25,6 +25,8 @@ import {
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorNeutralStrokeDisabled,
+  colorStrokeFocus1,
+  colorStrokeFocus2,
   colorTransparentBackground,
   colorTransparentStroke,
   colorTransparentStrokeInteractive,
@@ -149,6 +151,17 @@ export const styles = css`
     height: ${strokeWidthThick};
     scale: 0 1;
     transition: scale ${durationUltraFast} ${curveDecelerateMid};
+  }
+
+  /**
+  * Uses focus-ring style use lingerings :focus-within selector due to platform limitations
+  * TODO: Convert selector to \`:host(:has(:focus-visible)) .control\` when browser support increases
+  * ISSUE: https://issues.chromium.org/issues/40062355
+  */
+  :host(:where(:focus-within)) .control {
+    border-radius: ${borderRadiusMedium};
+    box-shadow: inset 0 0 0 1px ${colorStrokeFocus1};
+    outline: ${strokeWidthThick} solid ${colorStrokeFocus2};
   }
 
   :host(:where(${openState}, :focus-within)) .control::after {
