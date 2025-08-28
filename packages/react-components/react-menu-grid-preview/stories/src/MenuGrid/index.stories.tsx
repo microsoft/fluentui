@@ -7,6 +7,7 @@ import {
   MenuGridRow,
 } from '@fluentui/react-menu-grid-preview';
 import descriptionMd from './MenuGridDescription.md';
+import bestPracticesMd from './MenuGridBestPractices.md';
 
 export { Default } from './MenuGridDefault.stories';
 export { GroupingItems } from './MenuGridGroupingItems.stories';
@@ -27,7 +28,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
   },

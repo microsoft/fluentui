@@ -7,6 +7,8 @@ const { join } = require('node:path');
 const { getNodeModulesPath } = require('./config/utils');
 
 const usedNodeModulesPath = getNodeModulesPath();
+const workspaceRootNodeModulesPath = join(__dirname, '../../node_modules');
+
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
 const { exclude: _, ...swcJestConfig } = JSON.parse(readFileSync(join(__dirname, '.swcrc'), 'utf-8'));
@@ -32,10 +34,12 @@ module.exports = {
   // Forces React to be resolved from the root node_modules to ensure the same instance is used across all packages
   moduleNameMapper: {
     '^react$': join(usedNodeModulesPath, './react'),
+    '^react/jsx-runtime$': join(usedNodeModulesPath, 'react/jsx-runtime'),
     '^react-dom$': join(usedNodeModulesPath, './react-dom'),
-    '^react-dom/(test-utils|client)$': join(usedNodeModulesPath, './react-dom/$1'),
+    '^react-dom/(.+)$': join(usedNodeModulesPath, 'react-dom/$1'),
     '^react-test-renderer$': join(usedNodeModulesPath, './react-test-renderer'),
-    '^@testing-library/(react|dom)$': join(usedNodeModulesPath, './@testing-library/$1'),
+    '^@testing-library/(react|dom)$': join(workspaceRootNodeModulesPath, './@testing-library/$1'),
+    '^@testing-library/react-hooks$': join(workspaceRootNodeModulesPath, './@testing-library/react'),
   },
   transform: {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],

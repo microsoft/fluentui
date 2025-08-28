@@ -41,13 +41,13 @@ describe(`types`, () => {
 
       type ChildrenLessIntrinsicElement = Types.Slot<'input'>;
       // @ts-expect-error - particular elements cannot have any children
-      const noChildrenEl: ChildrenLessIntrinsicElement = { children: React.createElement('div', 'hello') };
+      const noChildrenEl: ChildrenLessIntrinsicElement = { children: React.createElement('div', null, 'hello') };
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore - FIX THE API / this doesn't work ATM and should be fixed
       type NoChildrenComponent = Types.Slot<typeof NoChildrenAllowedComponent>;
       // @ts-expect-error - component doesn't allow any children
-      const noChildrenComponentEl: NoChildrenComponent = { children: React.createElement('div', 'hello') };
+      const noChildrenComponentEl: NoChildrenComponent = { children: React.createElement('div', null, 'hello') };
 
       type ComponentDeclaration = Types.Slot<typeof GreeterComponent>;
       let componentEl: ComponentDeclaration = { greeting: 'hello', who: 'world' };

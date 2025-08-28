@@ -139,6 +139,23 @@ describe('DataGridSelectionCell', () => {
       expect((getByRole('checkbox') as HTMLInputElement).checked).toBe(true);
     });
 
+    it('should not render a radio in the header in single-select mode', () => {
+      const allRowsSelected = true;
+      const ctx = mockDataGridContext(
+        { selectableRows: true },
+        { selection: { allRowsSelected, selectionMode: 'single' } },
+      );
+      const { queryByRole } = render(
+        <DataGridHeader>
+          <DataGridContextProvider value={ctx}>
+            <DataGridSelectionCell />
+          </DataGridContextProvider>
+        </DataGridHeader>,
+      );
+
+      expect(queryByRole('radio') as HTMLInputElement).toBeFalsy();
+    });
+
     it('should toggle all rows in multiselect mode', () => {
       const toggleAllRows = jest.fn();
       const ctx = mockDataGridContext(
