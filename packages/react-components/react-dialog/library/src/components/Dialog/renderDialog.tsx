@@ -21,7 +21,11 @@ export const renderDialog_unstable = (state: DialogState, contextValues: DialogC
         {state.trigger}
         {state.content && (
           <state.surfaceMotion>
-            <MotionRefForwarder children={state.content as React.ReactElement} />
+            <MotionRefForwarder>
+              {/* Casting here as content should be equivalent to <DialogSurface/> */}
+              {/* FIXME: content should not be ReactNode it should be ReactElement instead. */}
+              {state.content as React.ReactElement}
+            </MotionRefForwarder>
           </state.surfaceMotion>
         )}
       </DialogSurfaceProvider>

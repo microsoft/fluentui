@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { Label } from '@fluentui/react-label';
-import type { OnOpenChangeData } from '@fluentui/react-popover';
 import { mergeCallbacks, useId, slot, useEventCallback } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton/InfoButton';
 import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
@@ -61,7 +60,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     elementType: 'div',
   });
   infoButtonPopover.onOpenChange = useEventCallback(
-    mergeCallbacks(infoButtonPopover.onOpenChange, (_, data: OnOpenChangeData) => {
+    mergeCallbacks(infoButtonPopover.onOpenChange, (_, data) => {
       setOpen(data.open);
     }),
   );
