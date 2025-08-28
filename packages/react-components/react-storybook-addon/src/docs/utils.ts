@@ -41,7 +41,15 @@ export function isDocsEnabled(context: DocsContextProps): boolean {
 /**
  * Gets the docs page configuration from context
  */
-export function getDocsPageConfig(context: DocsContextProps) {
+export function getDocsPageConfig(context: DocsContextProps): {
+  tableOfContents: boolean;
+  dirSwitcher: boolean;
+  themePicker: boolean;
+  argTable: {
+    slotsApi: boolean;
+    nativePropsApi: boolean;
+  };
+} | null {
   const docsConfig = getDocsParametersConfig(context);
 
   // If docs is true, return default config (all enabled)

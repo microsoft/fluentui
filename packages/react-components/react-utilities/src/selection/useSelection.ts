@@ -79,7 +79,7 @@ function useMultipleSelection(params: Omit<SelectionHookParams, 'selectionMode'>
   return [selected, methods] as const;
 }
 
-export function useSelection(params: SelectionHookParams) {
+export function useSelection(params: SelectionHookParams): readonly [Set<SelectionItemId>, SelectionMethods] {
   'use no memo';
 
   if (params.selectionMode === 'multiselect') {

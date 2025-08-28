@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, Checkbox } from '@fluentui/react-components';
 import type { CheckboxProps, PopoverProps } from '@fluentui/react-components';
 
@@ -23,7 +24,7 @@ const ExampleContent = () => {
   );
 };
 
-export const ControllingOpenAndClose = () => {
+export const ControllingOpenAndClose = (): JSXElement => {
   const styles = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpenChange: PopoverProps['onOpenChange'] = (e, data) => setOpen(data.open || false);

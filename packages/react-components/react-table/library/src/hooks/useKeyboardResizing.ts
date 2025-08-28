@@ -8,7 +8,23 @@ const STEP = 20;
 const PRECISION_MODIFIER = Shift;
 const PRECISION_FACTOR = 1 / 4;
 
-export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
+export function useKeyboardResizing(columnResizeState: ColumnResizeState): {
+  toggleInteractiveMode: (colId: TableColumnId, onChange?: EnableKeyboardModeOnChangeCallback) => void;
+  columnId: TableColumnId | undefined;
+  getKeyboardResizingProps: (
+    colId: TableColumnId,
+    currentWidth: number,
+  ) => {
+    onKeyDown: (event: React.KeyboardEvent) => void;
+    onBlur: () => void;
+    ref: React.RefObject<HTMLDivElement>;
+    role: string;
+    'aria-label': string;
+    'aria-valuetext': string;
+    'aria-hidden': boolean;
+    tabIndex?: number;
+  };
+} {
   const [columnId, setColumnId] = React.useState<TableColumnId>();
   const onChangeRef = React.useRef<EnableKeyboardModeOnChangeCallback>();
   const { findPrevFocusable } = useFocusFinders();

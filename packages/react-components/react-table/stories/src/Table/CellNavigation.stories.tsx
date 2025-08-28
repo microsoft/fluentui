@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -21,6 +22,7 @@ import {
   Button,
   useArrowNavigationGroup,
 } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
 
 const items = [
   {
@@ -68,7 +70,7 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const CellNavigation = () => {
+export const CellNavigation = (): JSXElement => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (

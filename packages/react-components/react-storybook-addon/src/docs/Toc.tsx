@@ -3,6 +3,7 @@ import { addons } from '@storybook/preview-api';
 import { NAVIGATE_URL } from '@storybook/core-events';
 
 import { makeStyles } from '@griffel/react';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 const useTocStyles = makeStyles({
   root: {
@@ -74,7 +75,7 @@ const navigate = (url: string) => {
 
 export const nameToHash = (id: string): string => id.toLowerCase().replace(/[^a-z0-9]/gi, '-');
 
-export const Toc = ({ stories }: { stories: TocItem[] }) => {
+export const Toc = ({ stories }: { stories: TocItem[] }): JSXElement => {
   const [selected, setSelected] = React.useState('');
   const isNavigating = React.useRef<boolean>(false);
 

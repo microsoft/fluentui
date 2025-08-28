@@ -3,6 +3,7 @@
 
 import * as React from 'react';
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import type { SplitNavItemState, SplitNavItemSlots } from './SplitNavItem.types';
 
@@ -30,7 +31,7 @@ const renderButtonSlot = (Button?: React.ElementType, ButtonTooltip?: React.Elem
 /**
  * Render the final JSX of SplitNavItem
  */
-export const renderSplitNavItem_unstable = (state: SplitNavItemState) => {
+export const renderSplitNavItem_unstable = (state: SplitNavItemState): JSXElement => {
   assertSlots<SplitNavItemSlots>(state);
 
   return (

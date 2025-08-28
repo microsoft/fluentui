@@ -11,6 +11,7 @@ import {
 } from '@fluentui/react-components';
 import { PlayFilled, PauseFilled } from '@fluentui/react-icons';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreateMotionComponentArrays.stories.md';
 
@@ -90,7 +91,7 @@ const FadeFastGrowSlow = createMotionComponent([
   },
 ]);
 
-export const CreateMotionComponentArrays = () => {
+export const CreateMotionComponentArrays = (): JSXElement => {
   const classes = useClasses();
 
   const motionRef = React.useRef<MotionImperativeRef>(null);

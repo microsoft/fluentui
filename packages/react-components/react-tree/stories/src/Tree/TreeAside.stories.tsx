@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 import { CounterBadge } from '@fluentui/react-components';
 import { FluentIconsProps, Important16Regular } from '@fluentui/react-icons';
@@ -14,7 +15,7 @@ const AsideContent = ({ isImportant, messageCount }: { isImportant?: boolean; me
   </>
 );
 
-export const Aside = () => (
+export const Aside = (): JSXElement => (
   <Tree aria-label="Aside">
     <TreeItem itemType="branch" aria-description="Important, 3 message">
       <TreeItemLayout aside={<AsideContent isImportant={true} messageCount={3} />}>level 1, item 1</TreeItemLayout>

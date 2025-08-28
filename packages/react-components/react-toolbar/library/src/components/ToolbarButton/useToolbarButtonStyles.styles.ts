@@ -15,7 +15,7 @@ const useBaseStyles = makeStyles({
 /**
  * Apply styling to the ToolbarButton slots based on the state
  */
-export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState) => {
+export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState): void => {
   'use no memo';
 
   const buttonStyles = useBaseStyles();

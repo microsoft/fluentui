@@ -10,6 +10,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { SelectionItemId } from '@fluentui/react-utilities';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
@@ -65,10 +66,10 @@ export type ListSlots = {
 export type ListState = ComponentState<ListSlots> & ListContextValue & ListSynchronousContextValue;
 
 // @public
-export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSX.Element;
+export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSXElement;
 
 // @public
-export const renderListItem_unstable: (state: ListItemState) => JSX.Element;
+export const renderListItem_unstable: (state: ListItemState) => JSXElement;
 
 // @public
 export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>) => ListState;

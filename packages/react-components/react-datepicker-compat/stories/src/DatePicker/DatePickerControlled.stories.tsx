@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { addDays } from '@fluentui/react-calendar-compat';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
 import { AriaLiveAnnouncer, Button, Field, makeStyles, useAnnounce } from '@fluentui/react-components';
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Controlled = () => {
+export const Controlled = (): JSXElement => {
   const styles = useStyles();
   const { announce } = useAnnounce();
 

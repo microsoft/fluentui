@@ -10,6 +10,7 @@ import {
   CarouselSlider,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   bannerCard: {
@@ -77,7 +78,7 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
-export const Default = () => (
+export const Default = (): JSXElement => (
   <Carousel groupSize={1} circular announcement={getAnnouncement}>
     <CarouselViewport>
       <CarouselSlider>

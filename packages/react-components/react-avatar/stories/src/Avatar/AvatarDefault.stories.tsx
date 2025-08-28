@@ -1,9 +1,10 @@
 import type { ArgTypes } from '@storybook/react';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Avatar } from '@fluentui/react-components';
 import type { AvatarProps } from '@fluentui/react-components';
 
-export const Default = (props: Partial<AvatarProps>) => <Avatar aria-label="Guest" {...props} />;
+export const Default = (props: Partial<AvatarProps>): JSXElement => <Avatar aria-label="Guest" {...props} />;
 
 const argTypes: ArgTypes = {
   initials: {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   TagPicker,
   TagPickerList,
@@ -21,7 +22,7 @@ const options = [
   'Maria Rossi',
 ];
 
-export const SingleSelect = () => {
+export const SingleSelect = (): JSXElement => {
   const [selectedOption, setSelectedOption] = React.useState<string | undefined>();
   const selectedOptions = React.useMemo(() => (selectedOption ? [selectedOption] : []), [selectedOption]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {

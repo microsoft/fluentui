@@ -18,7 +18,7 @@ export const MENU_ENTER_EVENT = 'fuimenuenter';
  * Instead, dispatch custom DOM event from the menu so that it can bubble
  * Each nested menu can use the listener to check if the event is from a child or parent menu
  */
-export const useOnMenuMouseEnter = (options: UseOnClickOrScrollOutsideOptions) => {
+export const useOnMenuMouseEnter = (options: UseOnClickOrScrollOutsideOptions): void => {
   const { refs, callback, element, disabled } = options;
 
   // Keep mouse event here because this is essentially a custom 'mouseenter' event
@@ -65,6 +65,6 @@ export const useOnMenuMouseEnter = (options: UseOnClickOrScrollOutsideOptions) =
  * @param el - element for the event target
  * @param nativeEvent - the native mouse event this is mapped to
  */
-export const dispatchMenuEnterEvent = (el: HTMLElement, nativeEvent: MouseEvent) => {
+export const dispatchMenuEnterEvent = (el: HTMLElement, nativeEvent: MouseEvent): void => {
   el.dispatchEvent(new CustomEvent(MENU_ENTER_EVENT, { bubbles: true, detail: { nativeEvent } }));
 };

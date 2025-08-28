@@ -12,9 +12,10 @@ import {
   LineChartPoints,
   VerticalBarChartDataPoint,
   VerticalStackedBarDataPoint,
-  ScatterChartDataPoint,
+  ScatterChartPoints,
   GanttChartDataPoint,
   AxisCategoryOrder,
+  AxisScaleType,
 } from '../../types/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartPopoverProps } from './ChartPopover.types';
@@ -460,6 +461,24 @@ export interface CartesianChartProps {
    * @default 'default'
    */
   yAxisCategoryOrder?: AxisCategoryOrder;
+
+  /**
+   * Defines the scale type for the x-axis.
+   * @default 'default'
+   */
+  xScaleType?: AxisScaleType;
+
+  /**
+   * Defines the scale type for the primary y-axis.
+   * @default 'default'
+   */
+  yScaleType?: AxisScaleType;
+
+  /**
+   * Defines the scale type for the secondary y-axis.
+   * @default 'default'
+   */
+  secondaryYScaleType?: AxisScaleType;
 }
 
 export interface YValueHover {
@@ -642,7 +661,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
       | HorizontalBarChartWithAxisDataPoint[]
       | VerticalBarChartDataPoint[]
       | DataPoint[]
-      | ScatterChartDataPoint[]
+      | ScatterChartPoints[]
       | GanttChartDataPoint[],
     yAxisType: YAxisType | undefined,
     useSecondaryYScale?: boolean,
@@ -659,6 +678,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     chartType: ChartTypes,
     useSecondaryYScale?: boolean,
     roundedTicks?: boolean,
+    scaleType?: AxisScaleType,
   ) => ScaleLinear<number, number, never>;
 
   /**

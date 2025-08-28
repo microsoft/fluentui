@@ -1,6 +1,6 @@
 import * as React from 'react';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -108,7 +108,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const SingleSelect = () => {
+export const SingleSelect = (): JSXElement => {
   const {
     getRows,
     selection: { toggleRow, isRowSelected },

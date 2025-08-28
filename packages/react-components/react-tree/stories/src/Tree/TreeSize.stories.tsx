@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 
-export const Size = () => {
+export const Size = (): JSXElement => {
   return (
     <>
       <Tree size="small" aria-label="Small Size Tree">

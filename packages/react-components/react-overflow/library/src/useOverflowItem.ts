@@ -10,7 +10,11 @@ import { useOverflowContext } from './overflowContext';
  * @param groupId - assigns the item to a group, group visibility can be watched
  * @returns ref to assign to an intrinsic HTML element
  */
-export function useOverflowItem<TElement extends HTMLElement>(id: string, priority?: number, groupId?: string) {
+export function useOverflowItem<TElement extends HTMLElement>(
+  id: string,
+  priority?: number,
+  groupId?: string,
+): React.RefObject<TElement> {
   const ref = React.useRef<TElement>(null);
   const registerItem = useOverflowContext(v => v.registerItem);
 

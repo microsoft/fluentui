@@ -426,37 +426,37 @@ export type MenuTriggerState = {
 export const renderMenu_unstable: (state: MenuState, contextValues: MenuContextValues) => JSXElement;
 
 // @public
-export const renderMenuDivider_unstable: (state: MenuDividerState) => JSX.Element;
+export const renderMenuDivider_unstable: (state: MenuDividerState) => JSXElement;
 
 // @public
-export const renderMenuGroup_unstable: (state: MenuGroupState, contextValues: MenuGroupContextValues) => JSX.Element;
+export const renderMenuGroup_unstable: (state: MenuGroupState, contextValues: MenuGroupContextValues) => JSXElement;
 
 // @public
-export const renderMenuGroupHeader_unstable: (state: MenuGroupHeaderState) => JSX.Element;
+export const renderMenuGroupHeader_unstable: (state: MenuGroupHeaderState) => JSXElement;
 
 // @public
-export const renderMenuItem_unstable: (state: MenuItemState) => JSX.Element;
+export const renderMenuItem_unstable: (state: MenuItemState) => JSXElement;
 
 // @public
-export const renderMenuItemCheckbox_unstable: (state: MenuItemCheckboxState) => JSX.Element;
+export const renderMenuItemCheckbox_unstable: (state: MenuItemCheckboxState) => JSXElement;
 
 // @public
-export const renderMenuItemLink_unstable: (state: MenuItemLinkState) => JSX.Element;
+export const renderMenuItemLink_unstable: (state: MenuItemLinkState) => JSXElement;
 
 // @public
-export const renderMenuItemRadio_unstable: (state: MenuItemRadioState) => JSX.Element;
+export const renderMenuItemRadio_unstable: (state: MenuItemRadioState) => JSXElement;
 
 // @public
-export const renderMenuItemSwitch_unstable: (state: MenuItemSwitchState) => JSX.Element;
+export const renderMenuItemSwitch_unstable: (state: MenuItemSwitchState) => JSXElement;
 
 // @public
-export const renderMenuList_unstable: (state: MenuListState, contextValues: MenuListContextValues) => JSX.Element;
+export const renderMenuList_unstable: (state: MenuListState, contextValues: MenuListContextValues) => JSXElement;
 
 // @public
-export const renderMenuPopover_unstable: (state: MenuPopoverState) => JSX.Element;
+export const renderMenuPopover_unstable: (state: MenuPopoverState) => JSXElement;
 
 // @public
-export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState, contexts?: MenuSplitGroupContextValues) => JSX.Element;
+export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState, contexts?: MenuSplitGroupContextValues) => JSXElement;
 
 // @public
 export const renderMenuTrigger_unstable: (state: MenuTriggerState) => JSXElement;

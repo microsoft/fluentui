@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   DrawerBody,
   DrawerHeader,
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const OverlayInsideContainer = () => {
+export const OverlayInsideContainer = (): JSXElement => {
   const [isOpen, setIsOpen] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
   const styles = useStyles();

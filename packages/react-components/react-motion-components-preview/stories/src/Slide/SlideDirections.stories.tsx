@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, Button } from '@fluentui/react-components';
 import { Slide } from '@fluentui/react-motion-components-preview';
 import SlideDirectionsDescription from './SlideDirections.stories.md';
@@ -105,7 +106,7 @@ const directionGrid = [
   ['Bottom-Left', 'Bottom', 'Bottom-Right'],
 ];
 
-export const Directions = () => {
+export const Directions = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
   const [selectedDirection, setSelectedDirection] = React.useState<keyof typeof slideDirections>('Top');

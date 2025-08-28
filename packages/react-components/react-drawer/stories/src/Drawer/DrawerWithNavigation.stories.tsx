@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   OverlayDrawer,
   DrawerBody,
@@ -27,7 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const WithNavigation = () => {
+export const WithNavigation = (): JSXElement => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);

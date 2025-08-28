@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
 import {
   makeStyles,
@@ -58,7 +59,7 @@ const DEFAULT_SELECTED_VALUE = '2be700';
 const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 const DEFAULT_SELECTED_COLOR = tinycolor(DEFAULT_COLOR_HSV).toHex();
 
-export const ColorAndSwatchPicker = () => {
+export const ColorAndSwatchPicker = (): JSXElement => {
   const styles = useStyles();
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const [selectedValue, setSelectedValue] = React.useState(DEFAULT_SELECTED_VALUE);

@@ -282,7 +282,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     let tickValues: (string | number)[];
     switch (props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, props.tickParams!, props.chartType, culture));
+        ({ xScale, tickValues } = createNumericXAxis(
+          XAxisParams,
+          props.tickParams!,
+          props.chartType,
+          culture,
+          props.xScaleType,
+        ));
         break;
       case XAxisTypes.DateAxis:
         ({ xScale, tickValues } = createDateXAxis(
@@ -305,7 +311,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         ));
         break;
       default:
-        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, props.tickParams!, props.chartType, culture));
+        ({ xScale, tickValues } = createNumericXAxis(
+          XAxisParams,
+          props.tickParams!,
+          props.chartType,
+          culture,
+          props.xScaleType,
+        ));
     }
     _xScale = xScale;
     _tickValues = tickValues;
@@ -377,6 +389,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           chartType,
           true,
           props.roundedTicks!,
+          props.secondaryYScaleType,
         );
       }
       yScalePrimary = props.createYAxis(
@@ -387,6 +400,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         chartType,
         false,
         props.roundedTicks!,
+        props.yScaleType,
       );
     }
 

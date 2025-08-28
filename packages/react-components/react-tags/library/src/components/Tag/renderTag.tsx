@@ -2,13 +2,14 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { TagState, TagSlots, TagContextValues } from './Tag.types';
 import { AvatarContextProvider } from '@fluentui/react-avatar';
 
 /**
  * Render the final JSX of Tag
  */
-export const renderTag_unstable = (state: TagState, contextValues: TagContextValues) => {
+export const renderTag_unstable = (state: TagState, contextValues: TagContextValues): JSXElement => {
   assertSlots<TagSlots>(state);
 
   return (
