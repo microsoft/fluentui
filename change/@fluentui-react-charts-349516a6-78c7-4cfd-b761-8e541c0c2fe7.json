@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "colorscale support for bar charts",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

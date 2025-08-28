@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Thu, 07 Aug 2025 10:03:25 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 12:25:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.10.3)
+
+Thu, 21 Aug 2025 12:25:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.10.2..@fluentui/react-motion_v9.10.3)
+
+### Patches
+
+- refactor: move getRefFromReactElement to react-utilities ([PR #35030](https://github.com/microsoft/fluentui/pull/35030) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.25.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-utilities to v9.24.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
 
 ## [9.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.10.2)
 

@@ -2,8 +2,8 @@
 
 exports[`MenuGroup renders a default state 1`] = `
 <div
-  aria-labelledby="menu-groupr0"
-  className="fui-MenuGroup"
+  aria-labelledby="menu-groupr7"
+  class="fui-MenuGroup"
   role="group"
 >
   Default MenuGroup

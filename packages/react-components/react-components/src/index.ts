@@ -62,8 +62,10 @@ export {
   createTeamsDarkTheme,
   themeToTokensObject,
   teamsDarkTheme,
+  teamsDarkV21Theme,
   teamsHighContrastTheme,
   teamsLightTheme,
+  teamsLightV21Theme,
   tokens,
   typographyStyles,
   webDarkTheme,
@@ -135,6 +137,9 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  JSXElement,
+  JSXIntrinsicElement,
+  JSXIntrinsicElementKeys,
   // ResolveShorthandFunction is deprecated but removing it would be a breaking change
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandFunction,

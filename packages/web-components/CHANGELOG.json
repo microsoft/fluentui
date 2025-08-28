@@ -2,6 +2,57 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 27 Aug 2025 04:06:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.119",
+      "version": "3.0.0-beta.119",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "344cc2b4984bb6fc08d2c0d44a80dca2ea0323a5",
+            "comment": "feat: make tree and tree-item SSR compatible"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Aug 2025 04:07:19 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.118",
+      "version": "3.0.0-beta.118",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "761b211b1b978a0b5b8041f89ba9e86a1dbf58c7",
+            "comment": "fix: remove unnecessary type check and avoid using instanceof in menu-list"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "20d47059a7a6b1d7c052772e840df95f6dd20fd7",
+            "comment": "fix: make tablist more ssr compatible"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Aug 2025 04:07:50 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.117",
+      "version": "3.0.0-beta.117",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a443aa54a00c816089de96d957ed4039a5caad8a",
+            "comment": "fix: remove unnecessary type check for better ssr compatibility"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Aug 2025 04:07:10 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.116",
       "version": "3.0.0-beta.116",

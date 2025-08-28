@@ -35,6 +35,12 @@ export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
 export type AxisCategoryOrder = 'default' | 'data' | string[] | 'category ascending' | 'category descending' | 'total ascending' | 'total descending' | 'min ascending' | 'min descending' | 'max ascending' | 'max descending' | 'sum ascending' | 'sum descending' | 'mean ascending' | 'mean descending' | 'median ascending' | 'median descending';
 
 // @public
+export type AxisProps = {
+    tickStep?: number | string;
+    tick0?: number | Date;
+};
+
+// @public
 export type AxisScaleType = 'default' | 'log';
 
 // @public
@@ -342,6 +348,7 @@ export interface ICartesianChartProps {
     useUTC?: boolean;
     width?: number;
     wrapXAxisLables?: boolean;
+    xAxis?: AxisProps;
     xAxisAnnotation?: string;
     xAxisCategoryOrder?: AxisCategoryOrder;
     xAxisTickCount?: number;
@@ -350,10 +357,12 @@ export interface ICartesianChartProps {
     xAxisTitle?: string;
     xMaxValue?: number;
     xScaleType?: AxisScaleType;
+    yAxis?: AxisProps;
     yAxisAnnotation?: string;
     yAxisCategoryOrder?: AxisCategoryOrder;
     yAxisTickCount?: number;
     yAxisTickFormat?: any;
+    yAxisTickValues?: number[] | Date[] | string[];
     yAxisTitle?: string;
     yMaxValue?: number;
     yMinValue?: number;

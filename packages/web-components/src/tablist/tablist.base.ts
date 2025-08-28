@@ -180,7 +180,7 @@ export class BaseTablist extends FASTElement {
   protected setTabs(): void {
     this.activeTabIndex = this.getActiveIndex();
 
-    const hasStartSlot = this.tabs.some(tab => tab.start.assignedNodes().length > 0);
+    const hasStartSlot = this.tabs.some(tab => !!tab.querySelector("[slot='start']"));
 
     this.tabs.forEach((tab: Tab, index: number) => {
       if (tab.slot === 'tab') {

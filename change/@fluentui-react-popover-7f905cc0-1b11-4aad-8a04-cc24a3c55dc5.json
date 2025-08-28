@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "docs: Include Positioning Docs Link For positioning props",
-  "packageName": "@fluentui/react-popover",
-  "email": "v.kozlova@gmail.com",
-  "dependentChangeType": "patch"
-}

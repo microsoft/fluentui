@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LineChartProps, LineChart, ChartProps, DataVizPalette } from '@fluentui/react-charts';
-import { Switch, Checkbox, makeStyles, tokens } from '@fluentui/react-components';
+import { Switch, Checkbox, makeStyles, tokens, Field, Radio, RadioGroup } from '@fluentui/react-components';
 import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -16,6 +16,7 @@ export const LineChartBasic = (props: LineChartProps) => {
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(true);
   const [useUTC, setUseUTC] = React.useState<CheckboxProps['checked']>(true);
+  const [selectedCallout, setSelectedCallout] = React.useState<string>('MultiCallout');
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -189,6 +190,21 @@ export const LineChartBasic = (props: LineChartProps) => {
       <div style={{ marginTop: '10px' }}>
         <Checkbox label="Use UTC time" checked={useUTC} onChange={_onCheckChange} />
       </div>
+      <Field label="Pick one">
+        <RadioGroup
+          defaultValue="MultiCallout"
+          onChange={(_ev, option) => {
+            if (selectedCallout === 'MultiCallout') {
+              setSelectedCallout('singleCallout');
+            } else {
+              setSelectedCallout('MultiCallout');
+            }
+          }}
+        >
+          <Radio value="singleCallout" label="Single Callout" />
+          <Radio value="MultiCallout" label="Stack Callout" />
+        </RadioGroup>
+      </Field>
       {showAxisTitles && (
         <div style={rootStyle}>
           <LineChart
@@ -202,6 +218,7 @@ export const LineChartBasic = (props: LineChartProps) => {
             xAxisTickCount={10}
             allowMultipleShapesForPoints={allowMultipleShapes}
             enablePerfOptimization={true}
+            isCalloutForStack={selectedCallout === 'MultiCallout'}
             yAxisTitle={
               showAxisTitles
                 ? 'Different categories of mail flow each of which are categorized into different categories'
@@ -226,6 +243,7 @@ export const LineChartBasic = (props: LineChartProps) => {
             xAxisTickCount={10}
             allowMultipleShapesForPoints={allowMultipleShapes}
             enablePerfOptimization={true}
+            isCalloutForStack={selectedCallout === 'MultiCallout'}
             yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
             xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
             useUTC={useUTC}

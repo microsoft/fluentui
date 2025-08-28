@@ -22,7 +22,9 @@ export const MenuGridCell: ForwardRefComponent<MenuGridCellProps>;
 export const menuGridCellClassNames: SlotClassNames<MenuGridCellSlots>;
 
 // @public (undocumented)
-export type MenuGridCellProps = ComponentProps<MenuGridCellSlots>;
+export type MenuGridCellProps = ComponentProps<MenuGridCellSlots> & {
+    visuallyHidden?: boolean;
+};
 
 // @public (undocumented)
 export type MenuGridCellSlots = {
@@ -30,7 +32,7 @@ export type MenuGridCellSlots = {
 };
 
 // @public (undocumented)
-export type MenuGridCellState = ComponentState<MenuGridCellSlots>;
+export type MenuGridCellState = ComponentState<MenuGridCellSlots> & Pick<MenuGridCellProps, 'visuallyHidden'>;
 
 // @public (undocumented)
 export const menuGridClassNames: SlotClassNames<MenuGridSlots>;

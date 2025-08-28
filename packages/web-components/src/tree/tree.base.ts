@@ -10,8 +10,8 @@ import {
   keyHome,
   keySpace,
 } from '@microsoft/fast-web-utilities';
+import type { BaseTreeItem } from '../tree-item/tree-item.base';
 import { isTreeItem } from '../tree-item/tree-item.options';
-import { BaseTreeItem } from '../tree-item/tree-item.base';
 
 export class BaseTree extends FASTElement {
   /**
@@ -146,6 +146,9 @@ export class BaseTree extends FASTElement {
 
     if (e.target === this) {
       this.currentFocused = this.getValidFocusableItem();
+      if (this.currentFocused && this.currentFocused.tabIndex < 0) {
+        this.currentFocused.tabIndex = 0;
+      }
       this.currentFocused?.focus();
 
       return;

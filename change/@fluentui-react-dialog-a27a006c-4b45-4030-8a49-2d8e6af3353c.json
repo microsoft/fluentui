@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Export dialog style constants",
-  "packageName": "@fluentui/react-dialog",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

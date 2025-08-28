@@ -2,6 +2,44 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Thu, 21 Aug 2025 17:40:37 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.9.6",
+      "version": "9.9.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.69.0",
+            "commit": "b8e7f001f6b14d9d07acd18b558aab7eeabf5622"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Aug 2025 12:25:39 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.9.5",
+      "version": "9.9.5",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.68.4",
+            "commit": "884c695de4f736774c224fa33b2e410bf42752b0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Aug 2025 10:03:24 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.9.4",
       "version": "9.9.4",

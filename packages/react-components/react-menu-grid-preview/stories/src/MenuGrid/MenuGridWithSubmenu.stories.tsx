@@ -54,7 +54,7 @@ WithSubmenu.parameters = {
   docs: {
     description: {
       story: [
-        'If you need to provide a submenu for a `MenuGrid` item, use a menu button, e.g. "More actions", provided via `secondActionCell` or `thirdActionCell`.',
+        'If you need to provide a submenu for a `MenuGridItem`, use a menu button, e.g. "More actions", provided via `firstSubAction` or `secondSubAction` slots.',
       ].join('\n'),
     },
   },
