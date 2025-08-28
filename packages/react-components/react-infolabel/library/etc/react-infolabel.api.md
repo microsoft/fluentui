@@ -8,7 +8,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { LabelProps } from '@fluentui/react-label';
+import { Label } from '@fluentui/react-label';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
@@ -52,8 +52,8 @@ export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & 
 // @public (undocumented)
 export type InfoLabelSlots = {
     root: NonNullable<Slot<'span'>>;
-    label: NonNullable<Slot<LabelProps>>;
-    infoButton: Slot<InfoButtonProps>;
+    label: NonNullable<Slot<typeof Label>>;
+    infoButton: Slot<typeof InfoButton>;
 };
 
 // @public
