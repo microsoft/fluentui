@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: overflowMenuSize included in occupiedSize",
+  "packageName": "@fluentui/react-overflow",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}
