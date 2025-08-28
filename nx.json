@@ -59,7 +59,7 @@
       "cache": true
     },
     "test-rit--*--prepare": {
-      "dependsOn": ["^build", "react-components:build"],
+      "dependsOn": ["^build"],
       "cache": true
     },
     "e2e": {
