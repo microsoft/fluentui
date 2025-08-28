@@ -72,6 +72,9 @@ export interface AreaChartStyles extends CartesianChartStyles {
 // @public
 export type AxisCategoryOrder = 'default' | 'data' | string[] | 'category ascending' | 'category descending' | 'total ascending' | 'total descending' | 'min ascending' | 'min descending' | 'max ascending' | 'max descending' | 'sum ascending' | 'sum descending' | 'mean ascending' | 'mean descending' | 'median ascending' | 'median descending';
 
+// @public
+export type AxisScaleType = 'default' | 'log';
+
 // @public (undocumented)
 export interface Basestate {
     // (undocumented)
@@ -164,6 +167,7 @@ export interface CartesianChartProps {
         yMinValue?: number;
         yMaxValue?: number;
     };
+    secondaryYScaleType?: AxisScaleType;
     showXAxisLablesTooltip?: boolean;
     strokeWidth?: number;
     styles?: CartesianChartStyles;
@@ -182,6 +186,7 @@ export interface CartesianChartProps {
     xAxistickSize?: number;
     xAxisTitle?: string;
     xMaxValue?: number;
+    xScaleType?: AxisScaleType;
     yAxisAnnotation?: string;
     yAxisCategoryOrder?: AxisCategoryOrder;
     yAxisTickCount?: number;
@@ -189,6 +194,7 @@ export interface CartesianChartProps {
     yAxisTitle?: string;
     yMaxValue?: number;
     yMinValue?: number;
+    yScaleType?: AxisScaleType;
 }
 
 // @public
@@ -1202,7 +1208,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     chartType: ChartTypes;
     children(props: ChildProps): React_2.ReactNode;
     createStringYAxis: (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean, barWidth: number | undefined, chartType?: ChartTypes) => ScaleBand<string>;
-    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, chartType: ChartTypes, useSecondaryYScale?: boolean, roundedTicks?: boolean) => ScaleLinear<number, number, never>;
+    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, chartType: ChartTypes, useSecondaryYScale?: boolean, roundedTicks?: boolean, scaleType?: AxisScaleType) => ScaleLinear<number, number, never>;
     culture?: string;
     customizedCallout?: any;
     datasetForXAxisDomain?: string[];
@@ -1213,7 +1219,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     getDomainNRangeValues: (points: LineChartPoints[] | VerticalBarChartDataPoint[] | VerticalStackedBarDataPoint[] | HorizontalBarChartWithAxisDataPoint[] | GroupedVerticalBarChartData[] | HeatMapChartDataPoint[] | GanttChartDataPoint[], margins: Margins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: Margins) => void;
-    getMinMaxOfYAxis: (points: LineChartPoints[] | HorizontalBarChartWithAxisDataPoint[] | VerticalBarChartDataPoint[] | DataPoint[] | ScatterChartDataPoint[] | GanttChartDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
+    getMinMaxOfYAxis: (points: LineChartPoints[] | HorizontalBarChartWithAxisDataPoint[] | VerticalBarChartDataPoint[] | DataPoint[] | ScatterChartPoints[] | GanttChartDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
         startValue: number;
         endValue: number;
     };

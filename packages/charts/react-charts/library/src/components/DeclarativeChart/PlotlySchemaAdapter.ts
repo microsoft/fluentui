@@ -65,6 +65,8 @@ import {
   isYearArray,
   isInvalidValue,
   formatToLocaleString,
+  getAxisIds,
+  getAxisKey,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
@@ -891,6 +893,7 @@ const transformPlotlyJsonToScatterTraceProps = (
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
+    ...getAxisScaleTypeProps(input.data, input.layout),
   };
 
   if (isAreaChart) {
@@ -2235,7 +2238,14 @@ const getBarProps = (
   let padding: number | undefined;
 
   if (typeof layout?.bargap === 'number') {
-    padding = layout.bargap;
+    if (layout.bargap >= 0 && layout.bargap <= 1) {
+      padding = layout.bargap;
+    } else {
+      // Plotly uses a default bargap of 0.2, as noted here: https://github.com/plotly/plotly.js/blob/1d5a249e43dd31ae50acf02117a19e5ac97387e9/src/traces/bar/layout_defaults.js#L58.
+      // However, we don't use this value as our default padding because it causes the bars to
+      // appear disproportionately wide in large containers.
+      padding = 0.2;
+    }
   }
 
   const plotlyBarWidths = data
@@ -2269,4 +2279,43 @@ const getBarProps = (
     xAxisInnerPadding: padding,
     xAxisOuterPadding: padding / 2,
   };
+};
+
+type GetAxisScaleTypePropsResult = Pick<CartesianChartProps, 'xScaleType' | 'yScaleType' | 'secondaryYScaleType'>;
+
+const getAxisScaleTypeProps = (
+  data: Data[],
+  layout: Partial<Layout> | undefined,
+): Pick<CartesianChartProps, 'xScaleType' | 'yScaleType' | 'secondaryYScaleType'> => {
+  const result: GetAxisScaleTypePropsResult = {};
+
+  // Traces are grouped by their xaxis property, and for each group/subplot, the adapter functions
+  // are called with the corresponding filtered data. As a result, all traces passed to an adapter
+  // function share the same xaxis.
+  let xAxisId: number | undefined;
+  const yAxisIds = new Set<number>();
+  data.forEach((series: Partial<PlotData>) => {
+    const axisIds = getAxisIds(series);
+    xAxisId = axisIds.x;
+    yAxisIds.add(axisIds.y);
+  });
+
+  const isLogAxis = (axLetter: 'x' | 'y', axId: number) => {
+    const axisKey = getAxisKey(axLetter, axId);
+    return layout?.[axisKey]?.type === 'log';
+  };
+
+  if (typeof xAxisId === 'number' && isLogAxis('x', xAxisId)) {
+    result.xScaleType = 'log';
+  }
+
+  const sortedYAxisIds = Array.from(yAxisIds).sort();
+  if (sortedYAxisIds.length > 0 && isLogAxis('y', sortedYAxisIds[0])) {
+    result.yScaleType = 'log';
+  }
+  if (sortedYAxisIds.length > 1 && isLogAxis('y', sortedYAxisIds[1])) {
+    result.secondaryYScaleType = 'log';
+  }
+
+  return result;
 };
