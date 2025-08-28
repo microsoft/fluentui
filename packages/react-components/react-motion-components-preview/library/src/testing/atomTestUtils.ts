@@ -4,7 +4,7 @@ import type { AtomMotion, MotionParam } from '@fluentui/react-motion';
  * Test utility to validate that an atom motion object has all required properties
  * with correct types and expected default values.
  */
-export function expectValidAtomMotion(atom: AtomMotion) {
+export function expectValidAtomMotion(atom: AtomMotion): void {
   expect(atom).toMatchObject({
     keyframes: expect.any(Array),
     duration: expect.any(Number),
@@ -26,7 +26,7 @@ export function expectValidAtomMotion(atom: AtomMotion) {
  * Test utility to validate that enter and exit atoms are properly reversed versions
  * of each other (keyframes should be in opposite order).
  */
-export function expectReversedKeyframes(enterAtom: AtomMotion, exitAtom: AtomMotion) {
+export function expectReversedKeyframes(enterAtom: AtomMotion, exitAtom: AtomMotion): void {
   expect(enterAtom.keyframes).toHaveLength(exitAtom.keyframes.length);
 
   const enterKeyframes = enterAtom.keyframes;
@@ -43,7 +43,7 @@ export function expectReversedKeyframes(enterAtom: AtomMotion, exitAtom: AtomMot
 /**
  * Test utility to validate that atom motion objects have consistent timing properties.
  */
-export function expectConsistentTiming(atoms: AtomMotion[], expectedDuration: number, expectedDelay: number = 0) {
+export function expectConsistentTiming(atoms: AtomMotion[], expectedDuration: number, expectedDelay: number = 0): void {
   atoms.forEach(atom => {
     expect(atom.duration).toBe(expectedDuration);
     expect(atom.delay).toBe(expectedDelay);
@@ -60,7 +60,7 @@ export function expectCustomParameters(
     easing?: string;
     delay?: number;
   },
-) {
+): void {
   if (expectedParams.duration !== undefined) {
     expect(atom.duration).toBe(expectedParams.duration);
   }
@@ -75,7 +75,7 @@ export function expectCustomParameters(
 /**
  * Test utility to validate keyframe structure for specific CSS properties.
  */
-export function expectKeyframeProperty(atom: AtomMotion, property: string, expectedValues: MotionParam[]) {
+export function expectKeyframeProperty(atom: AtomMotion, property: string, expectedValues: MotionParam[]): void {
   expect(atom.keyframes).toHaveLength(expectedValues.length);
 
   atom.keyframes.forEach((frame, index) => {
