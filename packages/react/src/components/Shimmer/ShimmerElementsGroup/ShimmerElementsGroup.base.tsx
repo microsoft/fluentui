@@ -51,7 +51,7 @@ function getRenderedElements(
   const renderedElements: React.ReactNode = shimmerElements ? (
     shimmerElements.map(
       // false positive
-      // eslint-disable-next-line array-callback-return
+      // eslint-disable-next-line array-callback-return, @typescript-eslint/no-deprecated
       (element: IShimmerElement, index: number): JSX.Element => {
         const { type, ...filteredElem } = element;
         const { verticalAlign, height } = filteredElem;

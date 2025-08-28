@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/React Version Support" />
+
+# React Version Support
+
+> ℹ️ **Note**: Our migration docs focus solely on FluentUI related changes.
+
+If you're migrating between React major versions, please refer to the official React documentation for comprehensive migration guides.
+
+For migrating your codebase TypeScript types, you can leverage [Types React Codemod](https://github.com/eps1lon/types-react-codemod)
+
+## React 17
+
+Full support starting `@fluentui/react-components` v9.0.0.
+
+## React 18
+
+Full support starting `@fluentui/react-components` v9.66.0.
+
+### Migration
+
+> 💡 Check Following PR for further details https://github.com/microsoft/fluentui/pull/34456
+
+#### Runtime/API changes:
+
+NONE
+
+#### TypeScript types changes:
+
+##### Slot Children as a Function
+
+Because `@types/react@18` Breaking Changes, we needed to loosen `Slot` children property to `any`.
+
+This change will affect users that use `Slot` children as a function in conjunction with TypeScript strict mode.
+
+If that's your case, TypeScript will fail on `noImplicitAny`. To mitigate this you need to add type assertions (`satisfies SlotRenderFunction<T>`)
+
+Before:
+
+```tsx
+import * as React from 'React';
+
+<Button
+  // children was inferred as union of ReactNode and SlotRenderFunction
+  icon={{ children: (Component, props) => <Component {...props /> }}
+>
+Label
+</Button>
+```
+
+After:
+
+```tsx
+import * as React from 'React';
+import { type SlotRenderFunction } from '@fluentui/react-utilities';
+
+<Button
+  icon={{
+    // children is now `any` and needs to be asserted as `SlotRenderFunction`
+    children: ((Component, props) => <Component {...props} />) satisfies SlotRenderFunction<
+      React.ComponentProps<'span'>
+    >,
+  }}
+>
+  Label
+</Button>;
+```

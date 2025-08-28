@@ -50,6 +50,7 @@ export const useToastContainer_unstable = (
     pauseOnWindowBlur,
     imperativeRef,
     tryRestoreFocus,
+    content: _content, // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
     ...rest
   } = props;
   const titleId = useId('toast-title');

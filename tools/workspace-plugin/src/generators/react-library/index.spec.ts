@@ -25,7 +25,6 @@ describe('react-library generator', () => {
     tree = createLibrary(tree, 'react-utilities');
     tree = createLibrary(tree, 'react-shared-contexts');
 
-    writeJson(tree, 'tsconfig.base.v0.json', { compilerOptions: { paths: {} } });
     writeJson(tree, 'tsconfig.base.v8.json', { compilerOptions: { paths: {} } });
     writeJson(tree, 'tsconfig.base.all.json', { compilerOptions: { paths: {} } });
   });

@@ -152,6 +152,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
       this._unregisterResizeObserver();
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     public render(): JSX.Element {
       const { viewport } = this.state;
       const newViewport = viewport!.width > 0 && viewport!.height > 0 ? viewport : undefined;

@@ -19,6 +19,22 @@ test.describe('Dropdown', () => {
     waitFor: ['fluent-listbox', 'fluent-option'],
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-dropdown');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should render a dropdown', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -499,5 +515,16 @@ test.describe('Dropdown', () => {
     await expect(element).toHaveJSProperty('value', 'kiwi');
 
     await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', true);
+  });
+
+  test('should not focus listbox when tabbing from dropdown', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    const listbox = element.locator('fluent-listbox');
+
+    await element.focus();
+    await page.keyboard.press('Tab');
+
+    await expect(listbox).toBeHidden();
   });
 });

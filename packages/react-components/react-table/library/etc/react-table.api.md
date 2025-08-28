@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { AvatarSize } from '@fluentui/react-avatar';
 import type { Checkbox } from '@fluentui/react-checkbox';
@@ -15,6 +13,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import type { Radio } from '@fluentui/react-radio';
@@ -50,7 +49,7 @@ export interface CreateTableColumnOptions<TItem> extends Partial<TableColumnDefi
 export const DataGrid: ForwardRefComponent<DataGridProps>;
 
 // @public
-export const DataGridBody: ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element);
+export const DataGridBody: ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSXElement);
 
 // @public (undocumented)
 export const dataGridBodyClassNames: SlotClassNames<DataGridBodySlots>;
@@ -160,7 +159,7 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
 };
 
 // @public
-export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element);
+export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSXElement);
 
 // @public (undocumented)
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
@@ -206,7 +205,7 @@ export type DataGridState = TableState & {
 } & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns' | 'compositeRowTabsterAttribute'>;
 
 // @public
-export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSX.Element;
+export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSXElement;
 
 // @public
 export const renderDataGridBody_unstable: (state: DataGridBodyState) => JSX.Element;

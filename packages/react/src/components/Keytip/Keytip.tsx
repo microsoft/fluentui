@@ -12,6 +12,7 @@ import type { Target } from '@fluentui/react-hooks';
  * A callout corresponding to another Fabric component to describe a key sequence that will activate that component
  */
 export class Keytip extends React.Component<IKeytipProps, {}> {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { keySequences, offset, overflowSetSequence } = this.props;
     let { calloutProps } = this.props;

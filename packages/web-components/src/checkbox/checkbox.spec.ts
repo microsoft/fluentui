@@ -5,6 +5,23 @@ import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 test.describe('Checkbox', () => {
   test.use({
     tagName: 'fluent-checkbox',
+    waitFor: ['fluent-button'],
+  });
+
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-checkbox');
+    });
+
+    expect(hasError).toBe(false);
   });
 
   test('should have a role of `checkbox`', async ({ fastPage }) => {
@@ -349,5 +366,34 @@ test.describe('Checkbox', () => {
     await submitButton.click();
 
     await expect(page).toHaveURL(/\?checkbox=foo&checkbox=bar/);
+  });
+
+  test('should not change the checkedness when the form is submitted and the checkbox is invalid (required and unchecked)', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const submitButton = page.locator('fluent-button');
+
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <label for="checkbox">Checkbox</label>
+        <fluent-checkbox required name="checkbox" id="checkbox"></fluent-checkbox>
+        <fluent-button type="submit">submit</fluent-button>
+      </form>
+    `);
+
+    await expect(element).toHaveJSProperty('checked', false);
+    await expect(element).toHaveJSProperty('validity.valueMissing', true);
+
+    await submitButton.focus();
+
+    await expect(submitButton).toBeFocused();
+
+    await page.keyboard.down(' ');
+
+    await page.keyboard.up(' ');
+
+    await expect(element).toHaveJSProperty('checked', false);
   });
 });

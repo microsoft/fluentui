@@ -4,7 +4,7 @@ import { isConformant } from '../../testing/isConformant';
 import { TagPickerList } from './TagPickerList';
 import { TagPickerContextProvider, tagPickerContextDefaultValue } from '../../contexts/TagPickerContext';
 
-const Wrapper: React.FC = props => (
+const Wrapper: React.FC<{ children?: React.ReactNode }> = props => (
   <TagPickerContextProvider
     value={{
       ...tagPickerContextDefaultValue,

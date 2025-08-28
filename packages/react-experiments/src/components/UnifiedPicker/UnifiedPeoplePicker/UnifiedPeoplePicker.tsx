@@ -7,8 +7,10 @@ import type { IPersonaProps } from '@fluentui/react/lib/Persona';
 import type { IFloatingPeopleSuggestionsProps } from '../../FloatingSuggestionsComposite/FloatingPeopleSuggestions/FloatingPeopleSuggestions.types';
 import type { ISelectedPeopleListProps } from '../../SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Element => {
   const renderSelectedItems = React.useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     (selectedPeopleListProps: ISelectedPeopleListProps<IPersonaProps>): JSX.Element => {
       return <SelectedPeopleList {...selectedPeopleListProps} ref={null} />;
     },
@@ -18,6 +20,7 @@ export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Eleme
   );
 
   const renderFloatingPeopleSuggestions = React.useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     (floatingPeoplePickerProps: IFloatingPeopleSuggestionsProps): JSX.Element => {
       return <FloatingPeopleSuggestions {...floatingPeoplePickerProps} />;
     },

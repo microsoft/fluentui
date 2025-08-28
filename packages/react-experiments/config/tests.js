@@ -9,3 +9,7 @@ initializeIcons('');
 setIconOptions({
   disableWarnings: true,
 });
+
+// override v8 setup which throws error on console.errors
+// issues started to occur after react 18 upgrade within `packages/react-experiments/src/components/VirtualizedList/VirtualizedList.test.tsx`
+console.error = (...args) => {};

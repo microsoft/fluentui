@@ -416,7 +416,7 @@ The expanded token system opens the door to adding many more tokens than might b
 
 ### Semantic tokens
 
-The expanded token enables deeper, more portable customization, but adding many extra CSS variables to a theme can have a performance tradeoff. To guide developers to make the most of this system, we’d propose adding the following guidance to the [Styles Handbook](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/styles-handbook.md) and/or [Theming page](https://react.fluentui.dev/?path=/docs/concepts-developer-theming--page).
+The expanded token enables deeper, more portable customization, but adding many extra CSS variables to a theme can have a performance tradeoff. To guide developers to make the most of this system, we’d propose adding the following guidance to the [Styles Handbook](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/styles-handbook.md) and/or [Theming page](https://react.fluentui.dev/?path=/docs/concepts-developer-theming--docs).
 
 1.  **Only include the tokens you need to customize in a theme.** Component tokens are pay-for-play: there is a small but measurable cost to using them.
 

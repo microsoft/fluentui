@@ -37,7 +37,6 @@ export const styles = css`
   ${display('inline')}
 
   :host {
-    contain: content;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};

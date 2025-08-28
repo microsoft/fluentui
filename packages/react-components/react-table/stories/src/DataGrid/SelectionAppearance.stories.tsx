@@ -1,4 +1,6 @@
 import * as React from 'react';
+// eslint-disable-next-line @fluentui/no-restricted-imports
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   FolderRegular,
   EditRegular,
@@ -24,7 +26,7 @@ import {
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -34,7 +36,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {

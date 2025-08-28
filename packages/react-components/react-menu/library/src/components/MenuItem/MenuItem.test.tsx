@@ -2,7 +2,6 @@ import * as React from 'react';
 import { render, fireEvent, createEvent } from '@testing-library/react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { MenuItem } from './MenuItem';
-import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../testing/isConformant';
 import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
 import { MenuListProvider } from '../../contexts/menuListContext';
@@ -35,9 +34,8 @@ describe('MenuItem', () => {
    * Note: see more visual regression tests for MenuItem in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(<MenuItem>Default MenuItem</MenuItem>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<MenuItem>Default MenuItem</MenuItem>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should focus the item on mousemove', () => {

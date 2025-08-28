@@ -132,6 +132,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { cells } = this.state;
 
@@ -210,7 +211,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
     return 0; // Stub
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderCell(item: ITileCell<TItem>, finalSize: ITileSize, column: number): JSX.Element {
     if (item.grid.mode === TilesGridMode.none) {
       return (
@@ -259,6 +260,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   private _onRenderListRoot = (
     props: IListOnRenderRootProps<TItem>,
     defaultRender?: IRenderFunction<IListOnRenderRootProps<TItem>>,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element | null => {
     const { onRenderRoot } = this.props;
 
@@ -284,6 +286,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const baseOnRenderRoot = (baseProps: ITilesListRootProps<TItem>): JSX.Element | null => {
       return defaultRender({
         ...props,
@@ -310,6 +313,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
    * By default, List provides no special formatting for a list page. For Tiles, the parent element
    * needs flexbox metadata and padding to support the alignment rules.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderPage = (pageProps?: IPageProps, defaultRender?: IRenderFunction<IPageProps>): JSX.Element | null => {
     if (!pageProps) {
       return null;
@@ -415,6 +419,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           }
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const renderedCell = (keyOffset: number = 0): JSX.Element => {
           return (
             <div
@@ -475,6 +480,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         currentRowCells = [];
       }
 
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const finalGrid: JSX.Element = (
         <div
           key={grid.key}
@@ -709,6 +715,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     return pageSpecification;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderRow: IRenderFunction<ITilesListRowProps<TItem>> = (props: ITilesListRowProps<TItem>): JSX.Element => {
     const { cellElements, divProps } = props;
 

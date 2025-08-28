@@ -87,6 +87,12 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
    * @default 'default'
    */
   mode?: 'default' | 'plotly';
+
+  /**
+   * @default false
+   * The prop used to enable rounded corners for the chart.
+   */
+  roundCorners?: boolean;
 }
 
 /**

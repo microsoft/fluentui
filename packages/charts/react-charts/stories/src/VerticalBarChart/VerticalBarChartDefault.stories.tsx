@@ -8,9 +8,18 @@ import {
   Radio,
   RadioGroup,
   RadioGroupOnChangeData,
+  makeStyles,
+  tokens,
 } from '@fluentui/react-components';
 
+const useStyles = makeStyles({
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground2,
+  },
+});
+
 export const VerticalBarDefault = () => {
+  const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [isCalloutselected, setIsCalloutSelected] = React.useState<boolean>(false);
@@ -43,7 +52,7 @@ export const VerticalBarDefault = () => {
   const _onToggleAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
-  const _onToggleMultiLegendSelection = React.useCallback(ev => {
+  const _onToggleMultiLegendSelection = React.useCallback((ev: any) => {
     setSelectMultipleLegends(ev.currentTarget.checked);
   }, []);
 
@@ -231,6 +240,7 @@ export const VerticalBarDefault = () => {
                 ? 'Values of each category are shown in the x-axis of the vertical bar chart whose values range from zero to 100,000. The x-axis is divided into 10 equal parts, each part representing 10,000.'
                 : undefined
             }
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}
@@ -263,6 +273,7 @@ export const VerticalBarDefault = () => {
             legendProps={{
               canSelectMultipleLegends: selectMultipleLegends,
             }}
+            styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
       )}

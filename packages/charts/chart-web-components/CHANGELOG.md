@@ -1,8 +1,162 @@
 # Change Log - @fluentui/chart-web-components
 
-This log was last generated on Wed, 21 May 2025 04:07:26 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Aug 2025 04:06:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.43](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.43)
+
+Wed, 27 Aug 2025 04:06:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.42..@fluentui/chart-web-components_v0.0.43)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.119 ([PR #35101](https://github.com/microsoft/fluentui/pull/35101) by beachball)
+
+## [0.0.42](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.42)
+
+Tue, 26 Aug 2025 04:07:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.41..@fluentui/chart-web-components_v0.0.42)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.118 ([PR #35084](https://github.com/microsoft/fluentui/pull/35084) by beachball)
+
+## [0.0.41](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.41)
+
+Mon, 25 Aug 2025 04:07:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.40..@fluentui/chart-web-components_v0.0.41)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.117 ([PR #35054](https://github.com/microsoft/fluentui/pull/35054) by beachball)
+
+## [0.0.40](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.40)
+
+Wed, 13 Aug 2025 04:08:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.39..@fluentui/chart-web-components_v0.0.40)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.116 ([PR #34996](https://github.com/microsoft/fluentui/pull/34996) by beachball)
+
+## [0.0.39](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.39)
+
+Mon, 04 Aug 2025 04:07:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.38..@fluentui/chart-web-components_v0.0.39)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.115 ([PR #34960](https://github.com/microsoft/fluentui/pull/34960) by beachball)
+
+## [0.0.38](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.38)
+
+Fri, 25 Jul 2025 04:07:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.37..@fluentui/chart-web-components_v0.0.38)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.114 ([PR #34906](https://github.com/microsoft/fluentui/pull/34906) by beachball)
+
+## [0.0.37](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.37)
+
+Mon, 21 Jul 2025 04:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.36..@fluentui/chart-web-components_v0.0.37)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.113 ([PR #34877](https://github.com/microsoft/fluentui/pull/34877) by beachball)
+
+## [0.0.36](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.36)
+
+Fri, 04 Jul 2025 04:08:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.35..@fluentui/chart-web-components_v0.0.36)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.112 ([PR #34776](https://github.com/microsoft/fluentui/pull/34776) by beachball)
+
+## [0.0.35](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.35)
+
+Tue, 01 Jul 2025 04:08:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.34..@fluentui/chart-web-components_v0.0.35)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.111 ([PR #34741](https://github.com/microsoft/fluentui/pull/34741) by beachball)
+
+## [0.0.34](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.34)
+
+Tue, 24 Jun 2025 04:06:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.33..@fluentui/chart-web-components_v0.0.34)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.110 ([PR #34704](https://github.com/microsoft/fluentui/pull/34704) by beachball)
+
+## [0.0.33](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.33)
+
+Fri, 20 Jun 2025 04:06:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.32..@fluentui/chart-web-components_v0.0.33)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.109 ([PR #34684](https://github.com/microsoft/fluentui/pull/34684) by beachball)
+
+## [0.0.32](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.32)
+
+Thu, 19 Jun 2025 04:06:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.31..@fluentui/chart-web-components_v0.0.32)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.108 ([PR #34674](https://github.com/microsoft/fluentui/pull/34674) by beachball)
+
+## [0.0.31](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.31)
+
+Mon, 02 Jun 2025 04:07:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.30..@fluentui/chart-web-components_v0.0.31)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.107 ([PR #34560](https://github.com/microsoft/fluentui/pull/34560) by beachball)
+
+## [0.0.30](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.30)
+
+Wed, 28 May 2025 04:06:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.29..@fluentui/chart-web-components_v0.0.30)
+
+### Patches
+
+- Co-locate ES modules and type definitions. This should not affect users. ([PR #34487](https://github.com/microsoft/fluentui/pull/34487) by burtonsmith@microsoft.com)
+- Bump @fluentui/web-components to v3.0.0-beta.106 ([PR #34535](https://github.com/microsoft/fluentui/pull/34535) by beachball)
+
+## [0.0.29](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.29)
+
+Mon, 26 May 2025 04:07:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.28..@fluentui/chart-web-components_v0.0.29)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.105 ([PR #34525](https://github.com/microsoft/fluentui/pull/34525) by beachball)
+
+## [0.0.28](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.28)
+
+Fri, 23 May 2025 04:06:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.27..@fluentui/chart-web-components_v0.0.28)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.104 ([PR #34513](https://github.com/microsoft/fluentui/pull/34513) by beachball)
+
+## [0.0.27](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.27)
+
+Thu, 22 May 2025 04:06:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.26..@fluentui/chart-web-components_v0.0.27)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-beta.103 ([PR #34490](https://github.com/microsoft/fluentui/pull/34490) by beachball)
 
 ## [0.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.26)
 

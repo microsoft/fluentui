@@ -1,4 +1,4 @@
-import type { MotionParam, PresenceMotion, PresenceMotionFn } from '@fluentui/react-motion';
+import type { MotionParam, PresenceMotion, PresenceMotionFn, PresenceDirection } from '@fluentui/react-motion';
 
 /**
  * This is a factory function that generates a motion object from variant params, e.g. duration, easing, etc.
@@ -27,3 +27,63 @@ export type PresenceMotionFnCreator<
   MotionVariantParams extends Record<string, MotionParam> = {},
   MotionRuntimeParams extends Record<string, MotionParam> = {},
 > = (variantParams?: MotionVariantParams) => PresenceMotionFn<MotionRuntimeParams>;
+
+/**
+ * Common duration parameters for presence motion components.
+ */
+export type PresenceDuration = {
+  /** Time (ms) for the enter transition. */
+  duration?: number;
+
+  /** Time (ms) for the exit transition. Defaults to the `duration` param for symmetry. */
+  exitDuration?: number;
+};
+
+/**
+ * Common easing parameters for presence motion components.
+ */
+export type PresenceEasing = {
+  /** Easing curve for the enter transition. */
+  easing?: string;
+
+  /** Easing curve for the exit transition. Defaults to the `easing` param for symmetry. */
+  exitEasing?: string;
+};
+
+/**
+ * Common delay parameters for presence motion components.
+ */
+export type PresenceDelay = {
+  /** Time (ms) to delay the enter transition. */
+  delay?: EffectTiming['delay'];
+
+  /** Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry. */
+  exitDelay?: EffectTiming['delay'];
+};
+
+/**
+ * Base presence parameters combining duration, easing, and delay for motion components.
+ */
+export type BasePresenceParams = PresenceDuration & PresenceEasing & PresenceDelay;
+
+/**
+ * Common opacity animation parameter for motion components.
+ */
+export type AnimateOpacity = {
+  /** Whether to animate the opacity. Defaults to `true`. */
+  animateOpacity?: boolean;
+};
+
+/**
+ * Common parameters shared by all atom functions.
+ */
+export type BaseAtomParams = {
+  /** The functional direction of the motion: 'enter' or 'exit'. */
+  direction: PresenceDirection;
+  /** The duration of the motion in milliseconds. */
+  duration: number;
+  /** The easing curve for the motion. */
+  easing?: EffectTiming['easing'];
+  /** Time (ms) to delay the animation. */
+  delay?: EffectTiming['delay'];
+};

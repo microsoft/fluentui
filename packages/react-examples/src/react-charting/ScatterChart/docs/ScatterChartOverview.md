@@ -1,0 +1,1 @@
+A scatter (or bubble) chart is used to visualize relationships between two numerical variables, with data points plotted along the x and y axes. Bubble charts extend this by using the size of the markers to represent an additional variable, providing a third dimension of data visualization.

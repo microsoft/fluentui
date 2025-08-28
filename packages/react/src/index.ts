@@ -6,6 +6,7 @@ export { Announced, AnnouncedBase } from './Announced';
 export type { IAnnouncedProps, IAnnouncedStyleProps, IAnnouncedStyles } from './Announced';
 export { Breadcrumb, BreadcrumbBase } from './Breadcrumb';
 export type {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IBreadCrumbData,
   IBreadcrumb,
   IBreadcrumbData,
@@ -18,6 +19,7 @@ export type {
 export {
   ActionButton,
   BaseButton,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   Button,
   ButtonGlobalClassNames,
   ButtonType,
@@ -56,6 +58,7 @@ export {
   FirstWeekOfYear,
   defaultCalendarNavigationIcons,
   defaultCalendarStrings,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   defaultDayPickerStrings,
 } from './Calendar';
 export type {
@@ -68,7 +71,9 @@ export type {
   ICalendarDayProps,
   ICalendarDayStyleProps,
   ICalendarDayStyles,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ICalendarFormatDateCallbacks,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ICalendarIconStrings,
   ICalendarMonth,
   ICalendarMonthProps,
@@ -121,6 +126,7 @@ export type {
   ICoachmarkProps,
   ICoachmarkStyleProps,
   ICoachmarkStyles,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ICoachmarkTypes,
   IEntityRect,
 } from './Coachmark';
@@ -129,6 +135,7 @@ export {
   MAX_COLOR_ALPHA,
   MAX_COLOR_HUE,
   MAX_COLOR_RGB,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   MAX_COLOR_RGBA,
   MAX_COLOR_SATURATION,
   MAX_COLOR_VALUE,
@@ -211,6 +218,7 @@ export {
   ContextualMenuItemBase,
   ContextualMenuItemType,
   canAnyMenuItemsCheck,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getContextualMenuItemClassNames,
   getContextualMenuItemStyles,
   getMenuItemStyles,
@@ -218,6 +226,7 @@ export {
 } from './ContextualMenu';
 export type {
   IContextualMenu,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IContextualMenuClassNames,
   IContextualMenuItem,
   IContextualMenuItemProps,
@@ -232,6 +241,7 @@ export type {
   IContextualMenuStyleProps,
   IContextualMenuStyles,
   IContextualMenuSubComponentStyles,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IMenuItemClassNames,
   IMenuItemStyles,
 } from './ContextualMenu';
@@ -391,6 +401,7 @@ export type {
 } from './Dialog';
 export { VerticalDivider } from './Divider';
 export type {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IVerticalDividerClassNames,
   IVerticalDividerProps,
   IVerticalDividerPropsStyles,
@@ -473,7 +484,11 @@ export type {
   IExtendedPeoplePickerProps,
   IPeoplePickerItemProps,
 } from './ExtendedPicker';
-export { Fabric, FabricBase } from './Fabric';
+export {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  Fabric,
+  FabricBase,
+} from './Fabric';
 export type { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric';
 export { Facepile, FacepileBase, OverflowButtonType } from './Facepile';
 export type { IFacepile, IFacepilePersona, IFacepileProps, IFacepileStyleProps, IFacepileStyles } from './Facepile';
@@ -528,7 +543,9 @@ export type {
   IGroupShowAllStyleProps,
   IGroupShowAllStyles,
   IGroupSpacerProps,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IGroupSpacerStyleProps,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IGroupSpacerStyles,
   IGroupedListSectionProps,
   IGroupedListSectionState,
@@ -569,7 +586,16 @@ export type {
   IPlainCardStyleProps,
   IPlainCardStyles,
 } from './HoverCard';
-export { FontIcon, Icon, IconBase, IconType, ImageIcon, getFontIcon, getIconContent } from './Icon';
+export {
+  FontIcon,
+  Icon,
+  IconBase,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  IconType,
+  ImageIcon,
+  getFontIcon,
+  getIconContent,
+} from './Icon';
 export type {
   IFontIconProps,
   IIconContent,
@@ -580,6 +606,7 @@ export type {
   IImageIconProps,
 } from './Icon';
 export { initializeIcons } from './Icons';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export type { IconNames } from './Icons';
 export { Image, ImageBase, ImageCoverStyle, ImageFit, ImageLoadState } from './Image';
 export type { IImage, IImageProps, IImageState, IImageStyleProps, IImageStyles } from './Image';
@@ -648,6 +675,7 @@ export {
 } from './Layer';
 export type { ILayer, ILayerHost, ILayerHostProps, ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer';
 export { Link, LinkBase } from './Link';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export type { ILink, ILinkHTMLAttributes, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link';
 export { List, ScrollToMode } from './List';
 export type {
@@ -782,8 +810,10 @@ export type {
   IPeoplePickerItemSuggestionProps,
   IPeoplePickerItemSuggestionStyleProps,
   IPeoplePickerItemSuggestionStyles,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IPeoplePickerItemWithMenuProps,
   IPeoplePickerProps,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IPersonaWithMenu,
   IPickerAriaIds,
   IPickerItem,
@@ -809,6 +839,7 @@ export type {
   ITagItemRemoveButtonProps,
   ITagPickerProps,
 } from './Pickers';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export { Pivot, PivotBase, PivotItem, PivotLinkFormat, PivotLinkSize } from './Pivot';
 export type {
   IPivot,
@@ -837,6 +868,7 @@ export type {
   ICalloutPositionedInfo,
   IElementPosition,
   IElementPositionInfo,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IPoint,
   IPosition,
   IPositionDirectionalHintData,
@@ -850,6 +882,7 @@ export { PositioningContainer, useHeightOffset } from './PositioningContainer';
 export type {
   IPositioningContainer,
   IPositioningContainerProps,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IPositioningContainerTypes,
 } from './PositioningContainer';
 export { ProgressIndicator, ProgressIndicatorBase } from './ProgressIndicator';
@@ -882,8 +915,10 @@ export {
   initializeResponsiveMode,
   setResponsiveMode,
   useResponsiveMode,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   withResponsiveMode,
 } from './ResponsiveMode';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export type { IWithResponsiveModeState } from './ResponsiveMode';
 export { ScrollablePane, ScrollablePaneBase, ScrollablePaneContext, ScrollbarVisibility } from './ScrollablePane';
 export type {
@@ -969,7 +1004,13 @@ export { Slider, SliderBase } from './Slider';
 export type { ISlider, ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider';
 export { KeyboardSpinDirection, SpinButton } from './SpinButton';
 export type { ISpinButton, ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles } from './SpinButton';
-export { Spinner, SpinnerBase, SpinnerSize, SpinnerType } from './Spinner';
+export {
+  Spinner,
+  SpinnerBase,
+  SpinnerSize,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  SpinnerType,
+} from './Spinner';
 export type { ISpinner, ISpinnerProps, ISpinnerStyleProps, ISpinnerStyles, SpinnerLabelPosition } from './Spinner';
 export { Stack, StackItem } from './Stack';
 export type {
@@ -1001,6 +1042,7 @@ export {
   DefaultEffects,
   DefaultFontStyles,
   DefaultPalette,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   EdgeChromiumHighContrastSelector,
   FontClassNames,
   FontSizes,
@@ -1033,9 +1075,11 @@ export {
   createTheme,
   focusClear,
   fontFace,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getEdgeChromiumNoHighContrastAdjustSelector,
   getFadedOverflowStyle,
   getFocusOutlineStyle,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getFocusStyle,
   getGlobalClassNames,
   getHighContrastNoAdjustStyle,
@@ -1163,8 +1207,10 @@ export type {
 export {
   Async,
   AutoScroll,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   BaseComponent,
   Customizations,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   Customizer,
   CustomizerContext,
   DATA_IS_SCROLLABLE_ATTRIBUTE,
@@ -1245,6 +1291,7 @@ export {
   getRTL,
   getRTLSafeKeyCode,
   getRect,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getResourceUrl,
   getScrollbarWidth,
   getVirtualParent,
@@ -1256,9 +1303,11 @@ export {
   hoistStatics,
   htmlElementProperties,
   iframeProperties,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   imageProperties,
   imgProperties,
   initializeComponentRef,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   initializeFocusRects,
   inputProperties,
   isControlled,
@@ -1292,6 +1341,7 @@ export {
   optionProperties,
   portalContainsElement,
   precisionRound,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   raiseClick,
   removeDirectionalKeyCode,
   removeIndex,
@@ -1302,12 +1352,15 @@ export {
   safeRequestAnimationFrame,
   safeSetTimeout,
   selectProperties,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   setBaseUrl,
   setFocusVisibility,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   setLanguage,
   setMemoizeWeakMap,
   setPortalAttribute,
   setRTL,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   setSSR,
   setVirtualParent,
   setWarningCallback,
@@ -1346,6 +1399,7 @@ export type {
   ICancelable,
   IChangeDescription,
   IChangeEventCallback,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IClassNames,
   IClassNamesFunctionOptions,
   IComponentAs,
@@ -1383,9 +1437,12 @@ export type {
   IStyleFunctionOrObject,
   IVirtualElement,
   IWarnControlledUsageParams,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   Omit,
   RefObject,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   Settings,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   SettingsFunction,
   StyleFunction,
 } from './Utilities';
@@ -1411,8 +1468,19 @@ export type { WindowProviderProps } from './WindowProvider';
  * Styles and Theme both exported the same names which causes conflicting
  * star exports with webpack5. See here: https://github.com/microsoft/fluentui/issues/21601.
  */
-export { ThemeContext, ThemeProvider, makeStyles, useTheme } from './utilities/ThemeProvider/index';
-export type { StylesClassMapping, ThemeProviderProps, UseStylesOptions } from './utilities/ThemeProvider/index';
+export {
+  ThemeContext,
+  ThemeProvider,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  makeStyles,
+  useTheme,
+} from './utilities/ThemeProvider/index';
+export type {
+  StylesClassMapping,
+  ThemeProviderProps,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  UseStylesOptions,
+} from './utilities/ThemeProvider/index';
 export {
   CommunicationColors,
   DefaultSpacing,

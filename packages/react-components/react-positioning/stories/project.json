@@ -1,0 +1,16 @@
+{
+  "name": "react-positioning-stories",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-positioning/stories/src",
+  "tags": ["vNext", "platform:web", "type:stories"],
+  "implicitDependencies": [],
+  "targets": {
+    "test-ssr": {
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "yarn test-ssr \"./src/**/*.stories.tsx\" --exclude \"./src/UseSafeZoneArea/UseSafeZoneAreaDefault.stories.tsx\""
+      }
+    }
+  }
+}

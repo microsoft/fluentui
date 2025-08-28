@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Thu, 27 Mar 2025 21:12:49 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Aug 2025 12:25:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.25.0)
+
+Thu, 21 Aug 2025 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.24.1..@fluentui/react-shared-contexts_v9.25.0)
+
+### Minor changes
+
+- feat: Add DrawerSurfaceStyle custom style hook ([PR #35007](https://github.com/microsoft/fluentui/pull/35007) by mifraser@microsoft.com)
+
+## [9.24.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.24.1)
+
+Wed, 30 Jul 2025 13:10:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.24.0..@fluentui/react-shared-contexts_v9.24.1)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.2.0 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+
+## [9.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.24.0)
+
+Wed, 18 Jun 2025 17:33:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.23.1..@fluentui/react-shared-contexts_v9.24.0)
+
+### Minor changes
+
+- feat: add support for custom style hooks for nav components ([PR #34633](https://github.com/microsoft/fluentui/pull/34633) by marcosvmmoura@gmail.com)
 
 ## [9.23.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.23.1)
 

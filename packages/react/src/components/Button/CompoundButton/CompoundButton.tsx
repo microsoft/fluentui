@@ -9,6 +9,7 @@ import type { IButtonProps } from '../Button.types';
  */
 @customizable('CompoundButton', ['theme', 'styles'], true)
 export class CompoundButton extends React.Component<IButtonProps, {}> {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { primary = false, styles, theme } = this.props;
     return (

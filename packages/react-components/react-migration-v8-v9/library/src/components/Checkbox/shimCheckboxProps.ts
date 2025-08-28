@@ -5,7 +5,7 @@ import { CheckboxProps, CheckboxOnChangeData } from '@fluentui/react-components'
 import { useControllableValue } from '@fluentui/react-hooks';
 import { getHTMLAttributes } from '../utils';
 
-// https://react.fluentui.dev/?path=/docs/concepts-migration-from-v8-components-checkbox-migration--page [Link of the fluent v9 migration guide]
+// https://react.fluentui.dev/?path=/docs/concepts-migration-from-v8-components-checkbox-migration--docs [Link of the fluent v9 migration guide]
 // https://github.com/microsoft/fluentui/blob/master/packages/react/src/components/Checkbox/Checkbox.types.ts [Link of the fluent v8 checkbox types definition]
 // https://github.com/microsoft/fluentui/blob/103b8977f8d5f8dd8c430bab46ff5308a2c76371/packages/react-components/react-checkbox/src/components/Checkbox/Checkbox.types.ts [Link of the fluent v9 checkbox types definition]
 

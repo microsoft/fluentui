@@ -18,7 +18,7 @@ export const donutArcClassNames: SlotClassNames<ArcStyles> = {
 const useStyles = makeStyles({
   root: {
     cursor: 'default',
-    ...shorthands.outline('transparent'),
+    outline: 'transparent',
     stroke: tokens.colorNeutralBackground1,
     '& selectors': {
       '::-moz-focus-inner': {

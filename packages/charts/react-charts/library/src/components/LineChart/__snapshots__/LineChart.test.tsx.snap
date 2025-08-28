@@ -13,6 +13,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
     >
       <svg
         aria-label="LineChart"
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -52,24 +53,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           <g
             class="tick"
             opacity="1"
-            transform="translate(28.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              30
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(16.5,0)"
           >
             <line
@@ -88,24 +71,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           <g
             class="tick"
             opacity="1"
-            transform="translate(4.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              50
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(-7.500000000000002,0)"
           >
             <line
@@ -119,24 +84,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               y="16"
             >
               60
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(-19.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              70
             </text>
           </g>
         </g>
@@ -247,7 +194,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
         </g>
         <g>
           <line
-            id="verticalLine4"
+            id="verticalLiner3"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -262,7 +209,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               role="region"
             >
               <line
-                id="lineID2_2_1"
+                id="lineIDr1_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -281,7 +228,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle1_2_1"
+                id="circler0_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -297,7 +244,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle1_2_11L"
+                id="circler0_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -308,7 +255,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circle1_2_11D"
+                id="circler0_2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -320,7 +267,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               role="region"
             >
               <line
-                id="lineID2_1_1"
+                id="lineIDr1_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -339,7 +286,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle1_1_1"
+                id="circler0_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -355,7 +302,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle1_1_11L"
+                id="circler0_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -366,7 +313,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 cx="4"
                 cy="25.543478260869563"
                 focusable="false"
-                id="circle1_1_11D"
+                id="circler0_1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -378,7 +325,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               role="region"
             >
               <line
-                id="lineID2_0_1"
+                id="lineIDr1_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -397,7 +344,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle1_0_1"
+                id="circler0_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -413,7 +360,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle1_0_11L"
+                id="circler0_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -424,7 +371,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circle1_0_11D"
+                id="circler0_0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -526,6 +473,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
     >
       <svg
         aria-label="LineChart"
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -565,24 +513,6 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           <g
             class="tick"
             opacity="1"
-            transform="translate(28.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              30
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(16.5,0)"
           >
             <line
@@ -601,24 +531,6 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           <g
             class="tick"
             opacity="1"
-            transform="translate(4.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              50
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(-7.500000000000002,0)"
           >
             <line
@@ -632,24 +544,6 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               y="16"
             >
               60
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(-19.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              70
             </text>
           </g>
         </g>
@@ -760,7 +654,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
         </g>
         <g>
           <line
-            id="verticalLine15"
+            id="verticalLinerf"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -775,7 +669,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               role="region"
             >
               <line
-                id="lineID13_2_1"
+                id="lineIDrd_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -792,7 +686,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      L-20 197.62182608695653 Z"
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle12_2_1"
+                id="circlerc_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -806,7 +700,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      L16 59.0348695652174 Z"
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle12_2_11L"
+                id="circlerc_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -817,7 +711,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circle12_2_11D"
+                id="circlerc_2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -829,7 +723,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               role="region"
             >
               <line
-                id="lineID13_1_1"
+                id="lineIDrd_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -848,7 +742,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      Z"
                 data-is-focusable="true"
                 fill="green"
-                id="circle12_1_1"
+                id="circlerc_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -864,7 +758,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      Z"
                 data-is-focusable="true"
                 fill="green"
-                id="circle12_1_11L"
+                id="circlerc_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -875,7 +769,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 cx="4"
                 cy="25.543478260869563"
                 focusable="false"
-                id="circle12_1_11D"
+                id="circlerc_1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -887,7 +781,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               role="region"
             >
               <line
-                id="lineID13_0_1"
+                id="lineIDrd_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -906,7 +800,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle12_0_1"
+                id="circlerc_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -922,7 +816,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle12_0_11L"
+                id="circlerc_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -933,7 +827,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circle12_0_11D"
+                id="circlerc_0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1068,6 +962,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
     >
       <svg
         aria-label="LineChart"
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -1107,24 +1002,6 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           <g
             class="tick"
             opacity="1"
-            transform="translate(28.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              30
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(16.5,0)"
           >
             <line
@@ -1143,24 +1020,6 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           <g
             class="tick"
             opacity="1"
-            transform="translate(4.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              50
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(-7.500000000000002,0)"
           >
             <line
@@ -1174,24 +1033,6 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               y="16"
             >
               60
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(-19.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              70
             </text>
           </g>
         </g>
@@ -1302,7 +1143,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         </g>
         <g>
           <line
-            id="verticalLine375"
+            id="verticalLinercb"
             stroke="#323130"
             stroke-dasharray="5,5"
             transform="translate(-20, 191.84782608695653)"
@@ -1318,7 +1159,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               role="region"
             >
               <line
-                id="lineID373_2_1"
+                id="lineIDrc9_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -1337,7 +1178,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
                 data-is-focusable="true"
                 fill="var(--colorNeutralBackground1)"
-                id="circle372_2_1"
+                id="circlerc8_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -1353,7 +1194,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle372_2_11L"
+                id="circlerc8_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -1364,7 +1205,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circle372_2_11D"
+                id="circlerc8_2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1376,7 +1217,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               role="region"
             >
               <line
-                id="lineID373_1_1"
+                id="lineIDrc9_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -1395,7 +1236,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle372_1_1"
+                id="circlerc8_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -1411,7 +1252,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle372_1_11L"
+                id="circlerc8_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -1422,7 +1263,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 cx="4"
                 cy="25.543478260869563"
                 focusable="false"
-                id="circle372_1_11D"
+                id="circlerc8_1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1434,7 +1275,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               role="region"
             >
               <line
-                id="lineID373_0_1"
+                id="lineIDrc9_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -1453,7 +1294,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle372_0_1"
+                id="circlerc8_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -1469,7 +1310,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle372_0_11L"
+                id="circlerc8_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -1480,7 +1321,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circle372_0_11D"
+                id="circlerc8_0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1582,6 +1423,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
     >
       <svg
         aria-label="LineChart"
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -1621,24 +1463,6 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           <g
             class="tick"
             opacity="1"
-            transform="translate(28.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              30
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(16.5,0)"
           >
             <line
@@ -1657,24 +1481,6 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           <g
             class="tick"
             opacity="1"
-            transform="translate(4.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              50
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(-7.500000000000002,0)"
           >
             <line
@@ -1688,24 +1494,6 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               y="16"
             >
               60
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(-19.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              70
             </text>
           </g>
         </g>
@@ -1816,7 +1604,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         </g>
         <g>
           <line
-            id="verticalLine408"
+            id="verticalLinerdf"
             stroke="#323130"
             stroke-dasharray="5,5"
             transform="translate(-20, 191.84782608695653)"
@@ -1832,7 +1620,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               role="region"
             >
               <line
-                id="lineID406_2_1"
+                id="lineIDrdd_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -1851,7 +1639,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
                 data-is-focusable="true"
                 fill="var(--colorNeutralBackground1)"
-                id="circle405_2_1"
+                id="circlerdc_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -1867,7 +1655,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle405_2_11L"
+                id="circlerdc_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -1878,7 +1666,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circle405_2_11D"
+                id="circlerdc_2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1890,7 +1678,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               role="region"
             >
               <line
-                id="lineID406_1_1"
+                id="lineIDrdd_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -1909,7 +1697,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle405_1_1"
+                id="circlerdc_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -1925,7 +1713,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle405_1_11L"
+                id="circlerdc_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -1936,7 +1724,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 cx="4"
                 cy="25.543478260869563"
                 focusable="false"
-                id="circle405_1_11D"
+                id="circlerdc_1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1948,7 +1736,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               role="region"
             >
               <line
-                id="lineID406_0_1"
+                id="lineIDrdd_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -1967,7 +1755,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle405_0_1"
+                id="circlerdc_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -1983,7 +1771,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle405_0_11L"
+                id="circlerdc_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -1994,7 +1782,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circle405_0_11D"
+                id="circlerdc_0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -2091,14 +1879,7 @@ Object {
   >
     <div
       class="fui-line__tooltip"
-      id="LineChartTooltipId_160"
-      style="opacity: 0.9;"
-    >
-      February
-    </div>
-    <div
-      class="fui-line__tooltip"
-      id="LineChartTooltipId_258"
+      id="LineChartTooltipId_r8c"
       style="opacity: 0;"
     />
     <div>
@@ -2113,6 +1894,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="310"
             style="display: block;"
             width="0"
@@ -2152,24 +1934,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(28.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  30
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(16.5,0)"
               >
                 <line
@@ -2188,24 +1952,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(4.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  50
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(-7.500000000000002,0)"
               >
                 <line
@@ -2219,24 +1965,6 @@ Object {
                   y="16"
                 >
                   60
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(-19.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  70
                 </text>
               </g>
             </g>
@@ -2347,7 +2075,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine278"
+                id="verticalLiner92"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -2362,7 +2090,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID276_2_1"
+                    id="lineIDr90_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -2381,7 +2109,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle275_2_1"
+                    id="circler8v_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -2397,7 +2125,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle275_2_11L"
+                    id="circler8v_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -2408,7 +2136,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circle275_2_11D"
+                    id="circler8v_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -2420,7 +2148,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID276_1_1"
+                    id="lineIDr90_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -2439,7 +2167,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle275_1_1"
+                    id="circler8v_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -2455,7 +2183,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle275_1_11L"
+                    id="circler8v_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -2466,7 +2194,7 @@ Object {
                     cx="4"
                     cy="25.543478260869563"
                     focusable="false"
-                    id="circle275_1_11D"
+                    id="circler8v_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -2478,7 +2206,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID276_0_1"
+                    id="lineIDr90_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -2497,7 +2225,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle275_0_1"
+                    id="circler8v_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -2513,7 +2241,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle275_0_11L"
+                    id="circler8v_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -2524,7 +2252,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circle275_0_11D"
+                    id="circler8v_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -2624,6 +2352,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"
@@ -2663,24 +2392,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(28.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                30
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(16.5,0)"
             >
               <line
@@ -2699,24 +2410,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(4.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                50
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(-7.500000000000002,0)"
             >
               <line
@@ -2730,24 +2423,6 @@ Object {
                 y="16"
               >
                 60
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(-19.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                70
               </text>
             </g>
           </g>
@@ -2858,7 +2533,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine278"
+              id="verticalLiner92"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -2873,7 +2548,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID276_2_1"
+                  id="lineIDr90_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -2892,7 +2567,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle275_2_1"
+                  id="circler8v_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -2908,7 +2583,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle275_2_11L"
+                  id="circler8v_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -2919,7 +2594,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle275_2_11D"
+                  id="circler8v_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -2931,7 +2606,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID276_1_1"
+                  id="lineIDr90_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -2950,7 +2625,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle275_1_1"
+                  id="circler8v_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -2966,7 +2641,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle275_1_11L"
+                  id="circler8v_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -2977,7 +2652,7 @@ Object {
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circle275_1_11D"
+                  id="circler8v_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -2989,7 +2664,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID276_0_1"
+                  id="lineIDr90_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -3008,7 +2683,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle275_0_1"
+                  id="circler8v_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -3024,7 +2699,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle275_0_11L"
+                  id="circler8v_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -3035,7 +2710,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle275_0_11D"
+                  id="circler8v_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -3182,13 +2857,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-line__tooltip"
-      id="LineChartTooltipId_160"
-      style="opacity: 0.9;"
-    >
-      February
-    </div>
     <div>
       <div
         class="fui-cart__root"
@@ -3201,6 +2869,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="310"
             style="display: block;"
             width="0"
@@ -3240,24 +2909,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(28.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  30
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(16.5,0)"
               >
                 <line
@@ -3276,24 +2927,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(4.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  50
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(-7.500000000000002,0)"
               >
                 <line
@@ -3307,24 +2940,6 @@ Object {
                   y="16"
                 >
                   60
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(-19.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  70
                 </text>
               </g>
             </g>
@@ -3435,7 +3050,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine214"
+                id="verticalLiner6s"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -3450,7 +3065,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID212_2_1"
+                    id="lineIDr6q_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -3469,7 +3084,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle211_2_1"
+                    id="circler6p_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -3485,7 +3100,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle211_2_11L"
+                    id="circler6p_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -3496,7 +3111,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circle211_2_11D"
+                    id="circler6p_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -3508,7 +3123,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID212_1_1"
+                    id="lineIDr6q_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -3527,7 +3142,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle211_1_1"
+                    id="circler6p_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -3543,7 +3158,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle211_1_11L"
+                    id="circler6p_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -3554,7 +3169,7 @@ Object {
                     cx="4"
                     cy="25.543478260869563"
                     focusable="false"
-                    id="circle211_1_11D"
+                    id="circler6p_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -3566,7 +3181,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID212_0_1"
+                    id="lineIDr6q_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -3585,7 +3200,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle211_0_1"
+                    id="circler6p_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -3601,7 +3216,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle211_0_11L"
+                    id="circler6p_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -3612,7 +3227,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circle211_0_11D"
+                    id="circler6p_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -3712,6 +3327,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"
@@ -3751,24 +3367,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(28.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                30
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(16.5,0)"
             >
               <line
@@ -3787,24 +3385,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(4.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                50
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(-7.500000000000002,0)"
             >
               <line
@@ -3818,24 +3398,6 @@ Object {
                 y="16"
               >
                 60
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(-19.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                70
               </text>
             </g>
           </g>
@@ -3946,7 +3508,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine214"
+              id="verticalLiner6s"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -3961,7 +3523,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID212_2_1"
+                  id="lineIDr6q_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -3980,7 +3542,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle211_2_1"
+                  id="circler6p_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -3996,7 +3558,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle211_2_11L"
+                  id="circler6p_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -4007,7 +3569,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle211_2_11D"
+                  id="circler6p_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -4019,7 +3581,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID212_1_1"
+                  id="lineIDr6q_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -4038,7 +3600,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle211_1_1"
+                  id="circler6p_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -4054,7 +3616,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle211_1_11L"
+                  id="circler6p_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -4065,7 +3627,7 @@ Object {
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circle211_1_11D"
+                  id="circler6p_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -4077,7 +3639,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID212_0_1"
+                  id="lineIDr6q_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -4096,7 +3658,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle211_0_1"
+                  id="circler6p_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -4112,7 +3674,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle211_0_11L"
+                  id="circler6p_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -4123,7 +3685,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle211_0_11D"
+                  id="circler6p_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -4270,13 +3832,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-line__tooltip"
-      id="LineChartTooltipId_160"
-      style="opacity: 0.9;"
-    >
-      February
-    </div>
     <div>
       <div
         class="fui-cart__root"
@@ -4289,6 +3844,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="310"
             style="display: block;"
             width="0"
@@ -4328,24 +3884,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(28.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  30
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(16.5,0)"
               >
                 <line
@@ -4364,24 +3902,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(4.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  50
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(-7.500000000000002,0)"
               >
                 <line
@@ -4395,24 +3915,6 @@ Object {
                   y="16"
                 >
                   60
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(-19.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  70
                 </text>
               </g>
             </g>
@@ -4523,7 +4025,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine246"
+                id="verticalLiner7v"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -4538,7 +4040,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID244_2_1"
+                    id="lineIDr7t_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -4557,7 +4059,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle243_2_1"
+                    id="circler7s_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -4573,7 +4075,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle243_2_11L"
+                    id="circler7s_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -4584,7 +4086,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circle243_2_11D"
+                    id="circler7s_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -4596,7 +4098,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID244_1_1"
+                    id="lineIDr7t_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -4615,7 +4117,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle243_1_1"
+                    id="circler7s_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -4631,7 +4133,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle243_1_11L"
+                    id="circler7s_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -4642,7 +4144,7 @@ Object {
                     cx="4"
                     cy="25.543478260869563"
                     focusable="false"
-                    id="circle243_1_11D"
+                    id="circler7s_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -4654,7 +4156,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID244_0_1"
+                    id="lineIDr7t_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -4673,7 +4175,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle243_0_1"
+                    id="circler7s_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -4689,7 +4191,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle243_0_11L"
+                    id="circler7s_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -4700,7 +4202,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circle243_0_11D"
+                    id="circler7s_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -4727,7 +4229,7 @@ Object {
               style="display: flex; flex-wrap: wrap; overflow: auto;"
             >
               <div
-                style="flex: 0 1 auto; margin: 4px;"
+                class="fui-legend__legendContainer"
               >
                 <button
                   aria-label="metaData1"
@@ -4749,7 +4251,7 @@ Object {
                 </button>
               </div>
               <div
-                style="flex: 0 1 auto; margin: 4px;"
+                class="fui-legend__legendContainer"
               >
                 <button
                   aria-label="metaData2"
@@ -4771,7 +4273,7 @@ Object {
                 </button>
               </div>
               <div
-                style="flex: 0 1 auto; margin: 4px;"
+                class="fui-legend__legendContainer"
               >
                 <button
                   aria-label="metaData3"
@@ -4810,6 +4312,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"
@@ -4849,24 +4352,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(28.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                30
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(16.5,0)"
             >
               <line
@@ -4885,24 +4370,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(4.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                50
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(-7.500000000000002,0)"
             >
               <line
@@ -4916,24 +4383,6 @@ Object {
                 y="16"
               >
                 60
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(-19.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                70
               </text>
             </g>
           </g>
@@ -5044,7 +4493,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine246"
+              id="verticalLiner7v"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -5059,7 +4508,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID244_2_1"
+                  id="lineIDr7t_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -5078,7 +4527,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle243_2_1"
+                  id="circler7s_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -5094,7 +4543,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle243_2_11L"
+                  id="circler7s_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -5105,7 +4554,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle243_2_11D"
+                  id="circler7s_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -5117,7 +4566,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID244_1_1"
+                  id="lineIDr7t_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -5136,7 +4585,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle243_1_1"
+                  id="circler7s_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -5152,7 +4601,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle243_1_11L"
+                  id="circler7s_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -5163,7 +4612,7 @@ Object {
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circle243_1_11D"
+                  id="circler7s_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -5175,7 +4624,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID244_0_1"
+                  id="lineIDr7t_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -5194,7 +4643,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle243_0_1"
+                  id="circler7s_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -5210,7 +4659,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle243_0_11L"
+                  id="circler7s_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -5221,7 +4670,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle243_0_11D"
+                  id="circler7s_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -5248,7 +4697,7 @@ Object {
             style="display: flex; flex-wrap: wrap; overflow: auto;"
           >
             <div
-              style="flex: 0 1 auto; margin: 4px;"
+              class="fui-legend__legendContainer"
             >
               <button
                 aria-label="metaData1"
@@ -5270,7 +4719,7 @@ Object {
               </button>
             </div>
             <div
-              style="flex: 0 1 auto; margin: 4px;"
+              class="fui-legend__legendContainer"
             >
               <button
                 aria-label="metaData2"
@@ -5292,7 +4741,7 @@ Object {
               </button>
             </div>
             <div
-              style="flex: 0 1 auto; margin: 4px;"
+              class="fui-legend__legendContainer"
             >
               <button
                 aria-label="metaData3"
@@ -5378,13 +4827,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-line__tooltip"
-      id="LineChartTooltipId_160"
-      style="opacity: 0.9;"
-    >
-      February
-    </div>
     <div>
       <div
         class="fui-cart__root"
@@ -5397,6 +4839,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="350"
             style="display: block;"
             width="0"
@@ -5436,24 +4879,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(28.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  30
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(16.5,0)"
               >
                 <line
@@ -5472,24 +4897,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(4.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  50
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(-7.500000000000002,0)"
               >
                 <line
@@ -5503,24 +4910,6 @@ Object {
                   y="16"
                 >
                   60
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(-19.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  70
                 </text>
               </g>
             </g>
@@ -5631,7 +5020,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine225"
+                id="verticalLiner78"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -5646,7 +5035,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID223_2_1"
+                    id="lineIDr76_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -5665,7 +5054,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle222_2_1"
+                    id="circler75_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -5681,7 +5070,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle222_2_11L"
+                    id="circler75_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -5692,7 +5081,7 @@ Object {
                     cx="16"
                     cy="58.478260869565226"
                     focusable="false"
-                    id="circle222_2_11D"
+                    id="circler75_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5704,7 +5093,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID223_1_1"
+                    id="lineIDr76_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -5723,7 +5112,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle222_1_1"
+                    id="circler75_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -5739,7 +5128,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle222_1_11L"
+                    id="circler75_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -5750,7 +5139,7 @@ Object {
                     cx="4"
                     cy="26.413043478260864"
                     focusable="false"
-                    id="circle222_1_11D"
+                    id="circler75_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5762,7 +5151,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID223_0_1"
+                    id="lineIDr76_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -5781,7 +5170,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle222_0_1"
+                    id="circler75_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -5797,7 +5186,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle222_0_11L"
+                    id="circler75_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -5808,7 +5197,7 @@ Object {
                     cx="16"
                     cy="58.478260869565226"
                     focusable="false"
-                    id="circle222_0_11D"
+                    id="circler75_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5834,6 +5223,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="350"
           style="display: block;"
           width="0"
@@ -5873,24 +5263,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(28.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                30
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(16.5,0)"
             >
               <line
@@ -5909,24 +5281,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(4.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                50
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(-7.500000000000002,0)"
             >
               <line
@@ -5940,24 +5294,6 @@ Object {
                 y="16"
               >
                 60
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(-19.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                70
               </text>
             </g>
           </g>
@@ -6068,7 +5404,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine225"
+              id="verticalLiner78"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -6083,7 +5419,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID223_2_1"
+                  id="lineIDr76_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -6102,7 +5438,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle222_2_1"
+                  id="circler75_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -6118,7 +5454,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle222_2_11L"
+                  id="circler75_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -6129,7 +5465,7 @@ Object {
                   cx="16"
                   cy="58.478260869565226"
                   focusable="false"
-                  id="circle222_2_11D"
+                  id="circler75_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -6141,7 +5477,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID223_1_1"
+                  id="lineIDr76_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -6160,7 +5496,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle222_1_1"
+                  id="circler75_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -6176,7 +5512,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle222_1_11L"
+                  id="circler75_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -6187,7 +5523,7 @@ Object {
                   cx="4"
                   cy="26.413043478260864"
                   focusable="false"
-                  id="circle222_1_11D"
+                  id="circler75_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -6199,7 +5535,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID223_0_1"
+                  id="lineIDr76_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -6218,7 +5554,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle222_0_1"
+                  id="circler75_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -6234,7 +5570,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle222_0_11L"
+                  id="circler75_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -6245,7 +5581,7 @@ Object {
                   cx="16"
                   cy="58.478260869565226"
                   focusable="false"
-                  id="circle222_0_11D"
+                  id="circler75_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -6318,13 +5654,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-line__tooltip"
-      id="LineChartTooltipId_160"
-      style="opacity: 0.9;"
-    >
-      February
-    </div>
     <div>
       <div
         class="fui-cart__root"
@@ -6337,6 +5666,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="310"
             style="display: block;"
             width="0"
@@ -6376,24 +5706,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(28.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  30
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(16.5,0)"
               >
                 <line
@@ -6412,24 +5724,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(4.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  50
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(-7.500000000000002,0)"
               >
                 <line
@@ -6443,24 +5737,6 @@ Object {
                   y="16"
                 >
                   60
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(-19.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  70
                 </text>
               </g>
             </g>
@@ -6571,7 +5847,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine235"
+                id="verticalLiner7j"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -6586,7 +5862,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID233_2_1"
+                    id="lineIDr7h_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -6605,7 +5881,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle232_2_1"
+                    id="circler7g_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -6621,7 +5897,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle232_2_11L"
+                    id="circler7g_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -6632,7 +5908,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circle232_2_11D"
+                    id="circler7g_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -6644,7 +5920,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID233_1_1"
+                    id="lineIDr7h_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -6663,7 +5939,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle232_1_1"
+                    id="circler7g_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -6679,7 +5955,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle232_1_11L"
+                    id="circler7g_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -6690,7 +5966,7 @@ Object {
                     cx="4"
                     cy="25.543478260869563"
                     focusable="false"
-                    id="circle232_1_11D"
+                    id="circler7g_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -6702,7 +5978,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID233_0_1"
+                    id="lineIDr7h_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -6721,7 +5997,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle232_0_1"
+                    id="circler7g_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -6737,7 +6013,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle232_0_11L"
+                    id="circler7g_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -6748,7 +6024,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circle232_0_11D"
+                    id="circler7g_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -6848,6 +6124,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"
@@ -6887,24 +6164,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(28.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                30
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(16.5,0)"
             >
               <line
@@ -6923,24 +6182,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(4.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                50
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(-7.500000000000002,0)"
             >
               <line
@@ -6954,24 +6195,6 @@ Object {
                 y="16"
               >
                 60
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(-19.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                70
               </text>
             </g>
           </g>
@@ -7082,7 +6305,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine235"
+              id="verticalLiner7j"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -7097,7 +6320,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID233_2_1"
+                  id="lineIDr7h_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -7116,7 +6339,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle232_2_1"
+                  id="circler7g_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -7132,7 +6355,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle232_2_11L"
+                  id="circler7g_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -7143,7 +6366,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle232_2_11D"
+                  id="circler7g_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -7155,7 +6378,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID233_1_1"
+                  id="lineIDr7h_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -7174,7 +6397,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle232_1_1"
+                  id="circler7g_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -7190,7 +6413,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle232_1_11L"
+                  id="circler7g_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -7201,7 +6424,7 @@ Object {
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circle232_1_11D"
+                  id="circler7g_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -7213,7 +6436,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID233_0_1"
+                  id="lineIDr7h_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -7232,7 +6455,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle232_0_1"
+                  id="circler7g_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -7248,7 +6471,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle232_0_11L"
+                  id="circler7g_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -7259,7 +6482,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle232_0_11D"
+                  id="circler7g_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -7406,13 +6629,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-line__tooltip"
-      id="LineChartTooltipId_160"
-      style="opacity: 0.9;"
-    >
-      February
-    </div>
     <div>
       <div
         class="fui-cart__root"
@@ -7425,6 +6641,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="310"
             style="display: block;"
             width="0"
@@ -7466,44 +6683,12 @@ Object {
                     y="11"
                   />
                   <tspan
-                    dy="1.81em"
+                    dy="0.71em"
                     id="LessLength"
                     x="0"
                     y="11"
                   >
                     20
-                  </tspan>
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(28.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  <tspan
-                    data-="30"
-                    dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="1.81em"
-                    id="LessLength"
-                    x="0"
-                    y="11"
-                  >
-                    30
                   </tspan>
                 </text>
               </g>
@@ -7530,44 +6715,12 @@ Object {
                     y="11"
                   />
                   <tspan
-                    dy="1.81em"
+                    dy="0.71em"
                     id="LessLength"
                     x="0"
                     y="11"
                   >
                     40
-                  </tspan>
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(4.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  <tspan
-                    data-="50"
-                    dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="1.81em"
-                    id="LessLength"
-                    x="0"
-                    y="11"
-                  >
-                    50
                   </tspan>
                 </text>
               </g>
@@ -7594,44 +6747,12 @@ Object {
                     y="11"
                   />
                   <tspan
-                    dy="1.81em"
+                    dy="0.71em"
                     id="LessLength"
                     x="0"
                     y="11"
                   >
                     60
-                  </tspan>
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(-19.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="11"
-                >
-                  <tspan
-                    data-="70"
-                    dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="1.81em"
-                    id="LessLength"
-                    x="0"
-                    y="11"
-                  >
-                    70
                   </tspan>
                 </text>
               </g>
@@ -7743,7 +6864,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine256"
+                id="verticalLiner8a"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -7758,7 +6879,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID254_2_1"
+                    id="lineIDr88_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -7777,7 +6898,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle253_2_1"
+                    id="circler87_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -7793,7 +6914,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle253_2_11L"
+                    id="circler87_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -7804,7 +6925,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circle253_2_11D"
+                    id="circler87_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -7816,7 +6937,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID254_1_1"
+                    id="lineIDr88_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -7835,7 +6956,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle253_1_1"
+                    id="circler87_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -7851,7 +6972,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle253_1_11L"
+                    id="circler87_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -7862,7 +6983,7 @@ Object {
                     cx="4"
                     cy="25.543478260869563"
                     focusable="false"
-                    id="circle253_1_11D"
+                    id="circler87_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -7874,7 +6995,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID254_0_1"
+                    id="lineIDr88_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -7893,7 +7014,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle253_0_1"
+                    id="circler87_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -7909,7 +7030,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle253_0_11L"
+                    id="circler87_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -7920,7 +7041,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circle253_0_11D"
+                    id="circler87_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -8009,7 +7130,7 @@ Object {
     </div>
     <div
       class="fui-line__tooltip"
-      id="LineChartTooltipId_258"
+      id="LineChartTooltipId_r8c"
       style="opacity: 0;"
     />
   </body>,
@@ -8025,6 +7146,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"
@@ -8066,44 +7188,12 @@ Object {
                   y="11"
                 />
                 <tspan
-                  dy="1.81em"
+                  dy="0.71em"
                   id="LessLength"
                   x="0"
                   y="11"
                 >
                   20
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(28.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                <tspan
-                  data-="30"
-                  dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="1.81em"
-                  id="LessLength"
-                  x="0"
-                  y="11"
-                >
-                  30
                 </tspan>
               </text>
             </g>
@@ -8130,44 +7220,12 @@ Object {
                   y="11"
                 />
                 <tspan
-                  dy="1.81em"
+                  dy="0.71em"
                   id="LessLength"
                   x="0"
                   y="11"
                 >
                   40
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(4.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                <tspan
-                  data-="50"
-                  dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="1.81em"
-                  id="LessLength"
-                  x="0"
-                  y="11"
-                >
-                  50
                 </tspan>
               </text>
             </g>
@@ -8194,44 +7252,12 @@ Object {
                   y="11"
                 />
                 <tspan
-                  dy="1.81em"
+                  dy="0.71em"
                   id="LessLength"
                   x="0"
                   y="11"
                 >
                   60
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(-19.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                <tspan
-                  data-="70"
-                  dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="1.81em"
-                  id="LessLength"
-                  x="0"
-                  y="11"
-                >
-                  70
                 </tspan>
               </text>
             </g>
@@ -8343,7 +7369,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine256"
+              id="verticalLiner8a"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -8358,7 +7384,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID254_2_1"
+                  id="lineIDr88_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -8377,7 +7403,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle253_2_1"
+                  id="circler87_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -8393,7 +7419,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle253_2_11L"
+                  id="circler87_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -8404,7 +7430,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle253_2_11D"
+                  id="circler87_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -8416,7 +7442,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID254_1_1"
+                  id="lineIDr88_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -8435,7 +7461,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle253_1_1"
+                  id="circler87_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -8451,7 +7477,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle253_1_11L"
+                  id="circler87_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -8462,7 +7488,7 @@ Object {
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circle253_1_11D"
+                  id="circler87_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -8474,7 +7500,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID254_0_1"
+                  id="lineIDr88_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -8493,7 +7519,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle253_0_1"
+                  id="circler87_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -8509,7 +7535,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle253_0_11L"
+                  id="circler87_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -8520,7 +7546,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle253_0_11D"
+                  id="circler87_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -8669,14 +7695,7 @@ Object {
   >
     <div
       class="fui-line__tooltip"
-      id="LineChartTooltipId_160"
-      style="opacity: 0.9;"
-    >
-      February
-    </div>
-    <div
-      class="fui-line__tooltip"
-      id="LineChartTooltipId_258"
+      id="LineChartTooltipId_r8c"
       style="opacity: 0;"
     />
     <div>
@@ -8691,6 +7710,7 @@ Object {
         >
           <svg
             aria-label="LineChart"
+            class="fui-cart__chart"
             height="310"
             style="display: block;"
             width="0"
@@ -8730,24 +7750,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(28.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  30
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(16.5,0)"
               >
                 <line
@@ -8766,24 +7768,6 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(4.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  50
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
                 transform="translate(-7.500000000000002,0)"
               >
                 <line
@@ -8797,24 +7781,6 @@ Object {
                   y="16"
                 >
                   60
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(-19.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  70
                 </text>
               </g>
             </g>
@@ -8925,7 +7891,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine267"
+                id="verticalLiner8m"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -8940,7 +7906,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID265_2_1"
+                    id="lineIDr8k_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -8959,7 +7925,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle264_2_1"
+                    id="circler8j_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -8975,7 +7941,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle264_2_11L"
+                    id="circler8j_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -8986,7 +7952,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circle264_2_11D"
+                    id="circler8j_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -8998,7 +7964,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID265_1_1"
+                    id="lineIDr8k_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -9017,7 +7983,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle264_1_1"
+                    id="circler8j_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -9033,7 +7999,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle264_1_11L"
+                    id="circler8j_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -9044,7 +8010,7 @@ Object {
                     cx="4"
                     cy="25.543478260869563"
                     focusable="false"
-                    id="circle264_1_11D"
+                    id="circler8j_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -9056,7 +8022,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID265_0_1"
+                    id="lineIDr8k_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -9075,7 +8041,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle264_0_1"
+                    id="circler8j_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -9091,7 +8057,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle264_0_11L"
+                    id="circler8j_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -9102,7 +8068,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circle264_0_11D"
+                    id="circler8j_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -9202,6 +8168,7 @@ Object {
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"
@@ -9241,24 +8208,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(28.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                30
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(16.5,0)"
             >
               <line
@@ -9277,24 +8226,6 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(4.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                50
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(-7.500000000000002,0)"
             >
               <line
@@ -9308,24 +8239,6 @@ Object {
                 y="16"
               >
                 60
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(-19.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                70
               </text>
             </g>
           </g>
@@ -9436,7 +8349,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine267"
+              id="verticalLiner8m"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -9451,7 +8364,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID265_2_1"
+                  id="lineIDr8k_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -9470,7 +8383,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle264_2_1"
+                  id="circler8j_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -9486,7 +8399,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle264_2_11L"
+                  id="circler8j_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -9497,7 +8410,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle264_2_11D"
+                  id="circler8j_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -9509,7 +8422,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID265_1_1"
+                  id="lineIDr8k_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -9528,7 +8441,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle264_1_1"
+                  id="circler8j_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -9544,7 +8457,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle264_1_11L"
+                  id="circler8j_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -9555,7 +8468,7 @@ Object {
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circle264_1_11D"
+                  id="circler8j_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -9567,7 +8480,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID265_0_1"
+                  id="lineIDr8k_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -9586,7 +8499,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle264_0_1"
+                  id="circler8j_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -9602,7 +8515,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle264_0_11L"
+                  id="circler8j_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -9613,7 +8526,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle264_0_11D"
+                  id="circler8j_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -9767,6 +8680,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
     >
       <svg
         aria-label="LineChart"
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -10001,7 +8915,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         </g>
         <g>
           <line
-            id="verticalLine169"
+            id="verticalLiner5b"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -10016,7 +8930,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               role="region"
             >
               <line
-                id="lineID167_2_1"
+                id="lineIDr59_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -10035,7 +8949,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle166_2_1"
+                id="circler58_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -10051,7 +8965,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle166_2_11L"
+                id="circler58_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -10062,7 +8976,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circle166_2_11D"
+                id="circler58_2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -10074,7 +8988,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               role="region"
             >
               <line
-                id="lineID167_1_1"
+                id="lineIDr59_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -10093,7 +9007,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle166_1_1"
+                id="circler58_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -10109,7 +9023,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle166_1_11L"
+                id="circler58_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -10120,7 +9034,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 cx="4"
                 cy="25.543478260869563"
                 focusable="false"
-                id="circle166_1_11D"
+                id="circler58_1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -10132,7 +9046,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               role="region"
             >
               <line
-                id="lineID167_0_1"
+                id="lineIDr59_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -10151,7 +9065,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle166_0_1"
+                id="circler58_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -10167,7 +9081,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle166_0_11L"
+                id="circler58_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -10178,7 +9092,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circle166_0_11D"
+                id="circler58_0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -10280,6 +9194,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
     >
       <svg
         aria-label="LineChart"
+        class="fui-cart__chart"
         height="310"
         style="display: block;"
         width="0"
@@ -10514,7 +9429,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         </g>
         <g>
           <line
-            id="verticalLine180"
+            id="verticalLiner5n"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -10529,7 +9444,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               role="region"
             >
               <line
-                id="lineID178_2_1"
+                id="lineIDr5l_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -10548,7 +9463,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle177_2_1"
+                id="circler5k_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -10564,7 +9479,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle177_2_11L"
+                id="circler5k_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -10575,7 +9490,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circle177_2_11D"
+                id="circler5k_2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -10587,7 +9502,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               role="region"
             >
               <line
-                id="lineID178_1_1"
+                id="lineIDr5l_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -10606,7 +9521,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle177_1_1"
+                id="circler5k_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -10622,7 +9537,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle177_1_11L"
+                id="circler5k_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -10633,7 +9548,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 cx="4"
                 cy="25.543478260869563"
                 focusable="false"
-                id="circle177_1_11D"
+                id="circler5k_1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -10645,7 +9560,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               role="region"
             >
               <line
-                id="lineID178_0_1"
+                id="lineIDr5l_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -10664,7 +9579,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle177_0_1"
+                id="circler5k_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -10680,7 +9595,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle177_0_11L"
+                id="circler5k_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -10691,7 +9606,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circle177_0_11D"
+                id="circler5k_0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -10783,7 +9698,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 exports[`Theme and accessibility Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider188"
+    class="fui-FluentProvider fui-FluentProviderr60"
     dir="ltr"
   >
     <div
@@ -10797,6 +9712,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
       >
         <svg
           aria-label="LineChart"
+          class="fui-cart__chart"
           height="310"
           style="display: block;"
           width="0"
@@ -10836,24 +9752,6 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(28.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                30
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(16.5,0)"
             >
               <line
@@ -10872,24 +9770,6 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(4.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                50
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(-7.500000000000002,0)"
             >
               <line
@@ -10903,24 +9783,6 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 y="16"
               >
                 60
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(-19.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                70
               </text>
             </g>
           </g>
@@ -11031,7 +9893,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
           </g>
           <g>
             <line
-              id="verticalLine192"
+              id="verticalLiner64"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -11046,7 +9908,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 role="region"
               >
                 <line
-                  id="lineID190_2_1"
+                  id="lineIDr62_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -11065,7 +9927,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle189_2_1"
+                  id="circler61_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -11081,7 +9943,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle189_2_11L"
+                  id="circler61_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -11092,7 +9954,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle189_2_11D"
+                  id="circler61_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -11104,7 +9966,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 role="region"
               >
                 <line
-                  id="lineID190_1_1"
+                  id="lineIDr62_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -11123,7 +9985,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle189_1_1"
+                  id="circler61_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -11139,7 +10001,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle189_1_11L"
+                  id="circler61_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -11150,7 +10012,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circle189_1_11D"
+                  id="circler61_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -11162,7 +10024,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 role="region"
               >
                 <line
-                  id="lineID190_0_1"
+                  id="lineIDr62_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -11181,7 +10043,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle189_0_1"
+                  id="circler61_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -11197,7 +10059,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle189_0_11L"
+                  id="circler61_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -11208,7 +10070,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circle189_0_11D"
+                  id="circler61_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"

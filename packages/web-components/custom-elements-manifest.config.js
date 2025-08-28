@@ -26,7 +26,6 @@ export default {
     modulePathResolverPlugin({
       modulePathTemplate: (modulePath, name, tagName) => `./dist/esm/${getFolderName(name)}/${getFileName(name)}`,
       definitionPathTemplate: (modulePath, name, tagName) => `./dist/esm/${getFolderName(name)}/define.js`,
-      typeDefinitionPathTemplate: (modulePath, name, tagName) => `./dist/dts/${getFolderName(name)}/index.d.ts`,
     }),
     typeParserPlugin(),
     cemInheritancePlugin(),

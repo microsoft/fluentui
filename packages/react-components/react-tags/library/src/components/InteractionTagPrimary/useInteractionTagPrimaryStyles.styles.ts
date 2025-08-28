@@ -58,10 +58,7 @@ const useRootRoundedBaseClassName = makeResetStyles({
       content: '""',
       borderTop: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderTopLeftRadius: tokens.borderRadiusMedium,
       borderTopRightRadius: tokens.borderRadiusMedium,
     },
@@ -83,10 +80,7 @@ const useRootCircularBaseClassName = makeResetStyles({
       borderTop: `${tokens.strokeWidthThin} solid`,
       borderLeft: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderTopLeftRadius: tokens.borderRadiusCircular,
       borderBottomLeftRadius: tokens.borderRadiusCircular,
     },
@@ -194,11 +188,21 @@ const useRootStyles = makeStyles({
     background: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
     ...shorthands.borderColor(tokens.colorBrandStroke1),
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+      backgroundColor: 'Highlight',
+      color: 'HighlightText',
+    },
+
     ':hover': {
       backgroundColor: tokens.colorBrandBackgroundHover,
       color: tokens.colorNeutralForegroundOnBrand,
       [`& .${iconFilledClassName}`]: {
         color: tokens.colorNeutralForegroundOnBrand,
+      },
+      '@media (forced-colors: active)': {
+        backgroundColor: 'Highlight',
+        color: 'HighlightText',
       },
     },
     ':active': {
@@ -206,6 +210,10 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForegroundOnBrand,
       [`& .${iconFilledClassName}`]: {
         color: tokens.colorNeutralForegroundOnBrand,
+      },
+      '@media (forced-colors: active)': {
+        backgroundColor: 'Highlight',
+        color: 'HighlightText',
       },
     },
   },
@@ -217,6 +225,25 @@ const useRootStyles = makeStyles({
   },
   'extra-small': {
     paddingRight: '5px',
+    position: 'relative',
+
+    // Increase clickable area to meet WCAG 2.2 AA
+    // https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+    '@media (forced-colors: none)': {
+      '&:before, &:after': {
+        content: '""',
+        position: 'absolute',
+        height: '2px',
+        left: '0',
+        width: '100%',
+      },
+      '&:before': {
+        bottom: '100%',
+      },
+      '&:after': {
+        top: '100%',
+      },
+    },
   },
 });
 const useRootDisabledAppearances = makeStyles({
@@ -266,6 +293,11 @@ const useRootWithSecondaryActionStyles = makeStyles({
       borderTopRightRadius: tokens.borderRadiusNone,
       borderBottomRightRadius: tokens.borderRadiusNone,
     }),
+    '@media (forced-colors: active)': {
+      '::before': {
+        borderTopRightRadius: '0',
+      },
+    },
   },
   medium: {
     paddingRight: tokens.spacingHorizontalS,

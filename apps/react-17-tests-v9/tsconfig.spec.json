@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "types": []
+  },
+  "files": [
+    "../../node_modules/@types/jest/index.d.ts",
+    "../../node_modules/@types/testing-library__jest-dom/index.d.ts",
+    "../../node_modules/@types/node/index.d.ts"
+  ],
+  "include": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx", "**/*.d.ts"]
+}

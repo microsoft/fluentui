@@ -2,6 +2,21 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Thu, 14 Aug 2025 07:19:46 GMT",
+      "tag": "@fluentui/api-docs_v8.2.27",
+      "version": "8.2.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/api-docs",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update microsoft/api-doc to 15.1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Feb 2025 07:20:51 GMT",
       "tag": "@fluentui/api-docs_v8.2.26",
       "version": "8.2.26",

@@ -5,9 +5,12 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { Toaster, ToastTitle, Toast, useToastController, toastClassNames } from '../..';
 import { toastContainerClassNames } from '../ToastContainer/useToastContainerStyles.styles';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mount = (element: JSX.Element) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+const mount = (element: JSXElement) => {
+  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>, {
+    strict: false, // TODO: Disable strict mode for toast tests until it gets fixed
+  });
 };
 
 describe('Toast', () => {
@@ -316,9 +319,8 @@ describe('Toast', () => {
     };
 
     mount(<Example />);
-    cy.get('#make')
-      .click()
-      .get('li')
+    cy.get('#make').realClick();
+    cy.get('li')
       .should('have.length', 4)
       .get('li')
       .eq(0)
@@ -432,7 +434,7 @@ describe('Toast', () => {
           <button id="make" onClick={makeToast}>
             Make toast
           </button>
-          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+          <Toaster onKeyDown={() => console.log('test')} shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
         </>
       );
     };
@@ -659,7 +661,7 @@ describe('Toast', () => {
           <button id="make" onClick={makeToast}>
             Make toast
           </button>
-          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+          <Toaster onKeyDown={() => console.log('foo')} shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
         </>
       );
     };

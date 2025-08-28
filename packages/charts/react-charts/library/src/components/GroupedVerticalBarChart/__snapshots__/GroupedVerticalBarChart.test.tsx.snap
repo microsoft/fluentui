@@ -13,6 +13,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
     >
       <svg
         aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -133,7 +134,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -169,7 +170,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -198,21 +199,19 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
-              height="161.70000000000002"
+              height="161.7"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="0"
-              y="103.29999999999998"
+              y="103.30000000000001"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="215.6"
               opacity=""
@@ -228,9 +227,9 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="8"
-              y="97.29999999999998"
+              y="97.30000000000001"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -239,7 +238,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="25.77777777777778"
               y="43.400000000000006"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -248,48 +247,46 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
-              height="161.70000000000002"
+              height="161.7"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="0"
-              y="103.29999999999998"
+              y="103.30000000000001"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
-              height="14.7"
+              height="14.700000000000017"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="17.77777777777778"
-              y="250.3"
+              y="250.29999999999998"
             />
             <text
               aria-hidden="true"
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="8"
-              y="97.29999999999998"
+              y="97.30000000000001"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="25.77777777777778"
-              y="244.3"
+              y="244.29999999999998"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -298,9 +295,8 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
-              height="68.60000000000001"
+              height="68.60000000000002"
               opacity=""
               role="img"
               rx="0"
@@ -312,7 +308,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/06/30. MetaData4, 50%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="245"
               opacity=""
@@ -330,7 +325,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="8"
               y="190.39999999999998"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -339,7 +334,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -417,6 +412,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
     >
       <svg
         aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -537,7 +533,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -573,7 +569,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -602,21 +598,19 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
-              height="161.70000000000002"
+              height="161.7"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="0"
-              y="103.29999999999998"
+              y="103.30000000000001"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="215.6"
               opacity=""
@@ -632,9 +626,9 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="8"
-              y="97.29999999999998"
+              y="97.30000000000001"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -643,7 +637,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="25.77777777777778"
               y="43.400000000000006"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -652,48 +646,46 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
-              height="161.70000000000002"
+              height="161.7"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="0"
-              y="103.29999999999998"
+              y="103.30000000000001"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
-              height="14.7"
+              height="14.700000000000017"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="17.77777777777778"
-              y="250.3"
+              y="250.29999999999998"
             />
             <text
               aria-hidden="true"
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="8"
-              y="97.29999999999998"
+              y="97.30000000000001"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="25.77777777777778"
-              y="244.3"
+              y="244.29999999999998"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -702,9 +694,8 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
-              height="68.60000000000001"
+              height="68.60000000000002"
               opacity=""
               role="img"
               rx="0"
@@ -716,7 +707,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             <rect
               aria-label="2020/06/30. MetaData4, 50%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="245"
               opacity=""
@@ -734,7 +724,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="8"
               y="190.39999999999998"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -743,7 +733,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -828,6 +818,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
       />
       <svg
         aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+        class="fui-cart__chart"
         height="300"
         style="display: block;"
         width="650"
@@ -948,7 +939,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -984,7 +975,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -1013,21 +1004,19 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
-              height="161.70000000000002"
+              height="161.7"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="0"
-              y="103.29999999999998"
+              y="103.30000000000001"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="215.6"
               opacity=""
@@ -1043,9 +1032,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="8"
-              y="97.29999999999998"
+              y="97.30000000000001"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -1054,7 +1043,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               x="25.77777777777778"
               y="43.400000000000006"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -1063,48 +1052,46 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
-              height="161.70000000000002"
+              height="161.7"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="0"
-              y="103.29999999999998"
+              y="103.30000000000001"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
-              height="14.7"
+              height="14.700000000000017"
               opacity=""
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="17.77777777777778"
-              y="250.3"
+              y="250.29999999999998"
             />
             <text
               aria-hidden="true"
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="8"
-              y="97.29999999999998"
+              y="97.30000000000001"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
               class="fui-gvbc**barLabel"
               text-anchor="middle"
               x="25.77777777777778"
-              y="244.3"
+              y="244.29999999999998"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -1113,9 +1100,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#00bcf2"
-              height="68.60000000000001"
+              height="68.60000000000002"
               opacity=""
               role="img"
               rx="0"
@@ -1127,7 +1113,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             <rect
               aria-label="2020/06/30. MetaData4, 50%."
               class="fui-gvbc**opacityChangeOnHover"
-              data-is-focusable="true"
               fill="#0078d4"
               height="245"
               opacity=""
@@ -1145,7 +1130,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               x="8"
               y="190.39999999999998"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -1154,7 +1139,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -1238,7 +1223,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout79"
+      id="calloutr39"
     >
       <div
         class="fui-PopoverSurface"
@@ -1264,7 +1249,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           </div>
           <div
             class="fui-cart__calloutInfoContainer"
-            style="border-inline-start: 4px solid #00bcf2;"
+            style="border-inline-start: 4px solid #00bcf2; margin-top: 11px;"
           >
             <div
               class="fui-cart__calloutBlockContainer"
@@ -1307,6 +1292,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -1427,7 +1413,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  13k
+                  12.5k
                 </text>
               </g>
               <g
@@ -1463,7 +1449,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  38k
+                  37.5k
                 </text>
               </g>
               <g
@@ -1492,21 +1478,19 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="161.70000000000002"
+                  height="161.7"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="103.29999999999998"
+                  y="103.30000000000001"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="215.6"
                   opacity=""
@@ -1522,9 +1506,9 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="97.29999999999998"
+                  y="97.30000000000001"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -1533,7 +1517,7 @@ Object {
                   x="25.77777777777778"
                   y="43.400000000000006"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -1542,48 +1526,46 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="161.70000000000002"
+                  height="161.7"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="103.29999999999998"
+                  y="103.30000000000001"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
-                  height="14.7"
+                  height="14.700000000000017"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="250.3"
+                  y="250.29999999999998"
                 />
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="97.29999999999998"
+                  y="97.30000000000001"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="244.3"
+                  y="244.29999999999998"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -1592,9 +1574,8 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="68.60000000000001"
+                  height="68.60000000000002"
                   opacity=""
                   role="img"
                   rx="0"
@@ -1606,7 +1587,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="245"
                   opacity=""
@@ -1624,7 +1604,7 @@ Object {
                   x="8"
                   y="190.39999999999998"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
@@ -1633,7 +1613,7 @@ Object {
                   x="25.77777777777778"
                   y="14"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -1709,6 +1689,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -1829,7 +1810,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -1865,7 +1846,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -1894,21 +1875,19 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="161.70000000000002"
+                height="161.7"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="103.29999999999998"
+                y="103.30000000000001"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="215.6"
                 opacity=""
@@ -1924,9 +1903,9 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="97.29999999999998"
+                y="97.30000000000001"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -1935,7 +1914,7 @@ Object {
                 x="25.77777777777778"
                 y="43.400000000000006"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -1944,48 +1923,46 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="161.70000000000002"
+                height="161.7"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="103.29999999999998"
+                y="103.30000000000001"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
-                height="14.7"
+                height="14.700000000000017"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="250.3"
+                y="250.29999999999998"
               />
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="97.29999999999998"
+                y="97.30000000000001"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="244.3"
+                y="244.29999999999998"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -1994,9 +1971,8 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="68.60000000000001"
+                height="68.60000000000002"
                 opacity=""
                 role="img"
                 rx="0"
@@ -2008,7 +1984,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="245"
                 opacity=""
@@ -2026,7 +2001,7 @@ Object {
                 x="8"
                 y="190.39999999999998"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -2035,7 +2010,7 @@ Object {
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>
@@ -2170,6 +2145,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -2290,7 +2266,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  13k
+                  12.5k
                 </text>
               </g>
               <g
@@ -2326,7 +2302,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  38k
+                  37.5k
                 </text>
               </g>
               <g
@@ -2355,21 +2331,19 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="161.70000000000002"
+                  height="161.7"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="103.29999999999998"
+                  y="103.30000000000001"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="215.6"
                   opacity=""
@@ -2385,9 +2359,9 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="97.29999999999998"
+                  y="97.30000000000001"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -2396,7 +2370,7 @@ Object {
                   x="25.77777777777778"
                   y="43.400000000000006"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -2405,48 +2379,46 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="161.70000000000002"
+                  height="161.7"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="103.29999999999998"
+                  y="103.30000000000001"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
-                  height="14.7"
+                  height="14.700000000000017"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="250.3"
+                  y="250.29999999999998"
                 />
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="97.29999999999998"
+                  y="97.30000000000001"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="244.3"
+                  y="244.29999999999998"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -2455,9 +2427,8 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="68.60000000000001"
+                  height="68.60000000000002"
                   opacity=""
                   role="img"
                   rx="0"
@@ -2469,7 +2440,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="245"
                   opacity=""
@@ -2487,7 +2457,7 @@ Object {
                   x="8"
                   y="190.39999999999998"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
@@ -2496,7 +2466,7 @@ Object {
                   x="25.77777777777778"
                   y="14"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -2518,7 +2488,7 @@ Object {
               style="display: flex; flex-wrap: wrap; overflow: auto;"
             >
               <div
-                style="flex: 0 1 auto; margin: 4px;"
+                class="fui-legend__legendContainer"
               >
                 <button
                   aria-label="MetaData1"
@@ -2540,7 +2510,7 @@ Object {
                 </button>
               </div>
               <div
-                style="flex: 0 1 auto; margin: 4px;"
+                class="fui-legend__legendContainer"
               >
                 <button
                   aria-label="MetaData4"
@@ -2579,6 +2549,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -2699,7 +2670,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -2735,7 +2706,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -2764,21 +2735,19 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="161.70000000000002"
+                height="161.7"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="103.29999999999998"
+                y="103.30000000000001"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="215.6"
                 opacity=""
@@ -2794,9 +2763,9 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="97.29999999999998"
+                y="97.30000000000001"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -2805,7 +2774,7 @@ Object {
                 x="25.77777777777778"
                 y="43.400000000000006"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -2814,48 +2783,46 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="161.70000000000002"
+                height="161.7"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="103.29999999999998"
+                y="103.30000000000001"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
-                height="14.7"
+                height="14.700000000000017"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="250.3"
+                y="250.29999999999998"
               />
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="97.29999999999998"
+                y="97.30000000000001"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="244.3"
+                y="244.29999999999998"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -2864,9 +2831,8 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="68.60000000000001"
+                height="68.60000000000002"
                 opacity=""
                 role="img"
                 rx="0"
@@ -2878,7 +2844,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="245"
                 opacity=""
@@ -2896,7 +2861,7 @@ Object {
                 x="8"
                 y="190.39999999999998"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -2905,7 +2870,7 @@ Object {
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>
@@ -2927,7 +2892,7 @@ Object {
             style="display: flex; flex-wrap: wrap; overflow: auto;"
           >
             <div
-              style="flex: 0 1 auto; margin: 4px;"
+              class="fui-legend__legendContainer"
             >
               <button
                 aria-label="MetaData1"
@@ -2949,7 +2914,7 @@ Object {
               </button>
             </div>
             <div
-              style="flex: 0 1 auto; margin: 4px;"
+              class="fui-legend__legendContainer"
             >
               <button
                 aria-label="MetaData4"
@@ -3047,6 +3012,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="50"
             style="display: block;"
             width="650"
@@ -3167,7 +3133,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  13k
+                  12.5k
                 </text>
               </g>
               <g
@@ -3203,7 +3169,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  38k
+                  37.5k
                 </text>
               </g>
               <g
@@ -3232,48 +3198,46 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="0"
+                  height="1"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="18.3"
+                  y="14"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
-                  height="0"
+                  height="1"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="19.4"
+                  y="14"
                 />
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="12.3"
+                  y="8"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="13.399999999999999"
+                  y="8"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -3282,48 +3246,46 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="0"
+                  height="1"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="18.3"
+                  y="14"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
-                  height="0"
+                  height="1"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="15.3"
+                  y="14"
                 />
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="12.3"
+                  y="8"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="9.3"
+                  y="8"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -3332,48 +3294,46 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="0"
+                  height="1"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="16.4"
+                  y="14"
                 />
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
-                  height="0"
+                  height="1"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="20"
+                  y="14"
                 />
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="10.399999999999999"
+                  y="8"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="14"
+                  y="8"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -3394,6 +3354,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="50"
           style="display: block;"
           width="650"
@@ -3514,7 +3475,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -3550,7 +3511,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -3579,48 +3540,46 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="0"
+                height="1"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="18.3"
+                y="14"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
-                height="0"
+                height="1"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="19.4"
+                y="14"
               />
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="12.3"
+                y="8"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="13.399999999999999"
+                y="8"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -3629,48 +3588,46 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="0"
+                height="1"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="18.3"
+                y="14"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
-                height="0"
+                height="1"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="15.3"
+                y="14"
               />
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="12.3"
+                y="8"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="9.3"
+                y="8"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -3679,48 +3636,46 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="0"
+                height="1"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="16.4"
+                y="14"
               />
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
-                height="0"
+                height="1"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="20"
+                y="14"
               />
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="10.399999999999999"
+                y="8"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="14"
+                y="8"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>
@@ -3800,6 +3755,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -3920,7 +3876,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  13k
+                  12.5k
                 </text>
               </g>
               <g
@@ -3956,7 +3912,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  38k
+                  37.5k
                 </text>
               </g>
               <g
@@ -3985,21 +3941,19 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="false"
                   fill="#00bcf2"
-                  height="161.70000000000002"
+                  height="161.7"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="103.29999999999998"
+                  y="103.30000000000001"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="false"
                   fill="#0078d4"
                   height="215.6"
                   opacity=""
@@ -4015,9 +3969,9 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="97.29999999999998"
+                  y="97.30000000000001"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -4026,7 +3980,7 @@ Object {
                   x="25.77777777777778"
                   y="43.400000000000006"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -4035,48 +3989,46 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="false"
                   fill="#00bcf2"
-                  height="161.70000000000002"
+                  height="161.7"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="103.29999999999998"
+                  y="103.30000000000001"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="false"
                   fill="#0078d4"
-                  height="14.7"
+                  height="14.700000000000017"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="250.3"
+                  y="250.29999999999998"
                 />
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="97.29999999999998"
+                  y="97.30000000000001"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="244.3"
+                  y="244.29999999999998"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -4085,9 +4037,8 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="false"
                   fill="#00bcf2"
-                  height="68.60000000000001"
+                  height="68.60000000000002"
                   opacity=""
                   role="img"
                   rx="0"
@@ -4099,7 +4050,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="false"
                   fill="#0078d4"
                   height="245"
                   opacity=""
@@ -4117,7 +4067,7 @@ Object {
                   x="8"
                   y="190.39999999999998"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
@@ -4126,7 +4076,7 @@ Object {
                   x="25.77777777777778"
                   y="14"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -4202,6 +4152,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -4322,7 +4273,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -4358,7 +4309,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -4387,21 +4338,19 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="false"
                 fill="#00bcf2"
-                height="161.70000000000002"
+                height="161.7"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="103.29999999999998"
+                y="103.30000000000001"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="false"
                 fill="#0078d4"
                 height="215.6"
                 opacity=""
@@ -4417,9 +4366,9 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="97.29999999999998"
+                y="97.30000000000001"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -4428,7 +4377,7 @@ Object {
                 x="25.77777777777778"
                 y="43.400000000000006"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -4437,48 +4386,46 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="false"
                 fill="#00bcf2"
-                height="161.70000000000002"
+                height="161.7"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="103.29999999999998"
+                y="103.30000000000001"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="false"
                 fill="#0078d4"
-                height="14.7"
+                height="14.700000000000017"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="250.3"
+                y="250.29999999999998"
               />
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="97.29999999999998"
+                y="97.30000000000001"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="244.3"
+                y="244.29999999999998"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -4487,9 +4434,8 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="false"
                 fill="#00bcf2"
-                height="68.60000000000001"
+                height="68.60000000000002"
                 opacity=""
                 role="img"
                 rx="0"
@@ -4501,7 +4447,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="false"
                 fill="#0078d4"
                 height="245"
                 opacity=""
@@ -4519,7 +4464,7 @@ Object {
                 x="8"
                 y="190.39999999999998"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -4528,7 +4473,7 @@ Object {
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>
@@ -4663,6 +4608,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -4704,7 +4650,7 @@ Object {
                     y="11"
                   />
                   <tspan
-                    dy="1.81em"
+                    dy="0.71em"
                     id="showDots"
                     x="0"
                     y="11"
@@ -4736,7 +4682,7 @@ Object {
                     y="11"
                   />
                   <tspan
-                    dy="1.81em"
+                    dy="0.71em"
                     id="showDots"
                     x="0"
                     y="11"
@@ -4768,7 +4714,7 @@ Object {
                     y="11"
                   />
                   <tspan
-                    dy="1.81em"
+                    dy="0.71em"
                     id="showDots"
                     x="0"
                     y="11"
@@ -4825,7 +4771,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  13k
+                  12.5k
                 </text>
               </g>
               <g
@@ -4861,7 +4807,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  38k
+                  37.5k
                 </text>
               </g>
               <g
@@ -4890,21 +4836,19 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="161.70000000000002"
+                  height="161.7"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="103.29999999999998"
+                  y="103.30000000000001"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="215.6"
                   opacity=""
@@ -4920,9 +4864,9 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="97.29999999999998"
+                  y="97.30000000000001"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -4931,7 +4875,7 @@ Object {
                   x="25.77777777777778"
                   y="43.400000000000006"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -4940,48 +4884,46 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="161.70000000000002"
+                  height="161.7"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="103.29999999999998"
+                  y="103.30000000000001"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
-                  height="14.7"
+                  height="14.700000000000017"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="250.3"
+                  y="250.29999999999998"
                 />
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="97.29999999999998"
+                  y="97.30000000000001"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="244.3"
+                  y="244.29999999999998"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -4990,9 +4932,8 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="68.60000000000001"
+                  height="68.60000000000002"
                   opacity=""
                   role="img"
                   rx="0"
@@ -5004,7 +4945,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="245"
                   opacity=""
@@ -5022,7 +4962,7 @@ Object {
                   x="8"
                   y="190.39999999999998"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
@@ -5031,7 +4971,7 @@ Object {
                   x="25.77777777777778"
                   y="14"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -5096,7 +5036,7 @@ Object {
     </div>
     <div
       class="fui-gvbc**tooltip"
-      id="GVBCTooltipId_46"
+      id="GVBCTooltipId_r1t"
       style="opacity: 0;"
     />
   </body>,
@@ -5112,6 +5052,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -5153,7 +5094,7 @@ Object {
                   y="11"
                 />
                 <tspan
-                  dy="1.81em"
+                  dy="0.71em"
                   id="showDots"
                   x="0"
                   y="11"
@@ -5185,7 +5126,7 @@ Object {
                   y="11"
                 />
                 <tspan
-                  dy="1.81em"
+                  dy="0.71em"
                   id="showDots"
                   x="0"
                   y="11"
@@ -5217,7 +5158,7 @@ Object {
                   y="11"
                 />
                 <tspan
-                  dy="1.81em"
+                  dy="0.71em"
                   id="showDots"
                   x="0"
                   y="11"
@@ -5274,7 +5215,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -5310,7 +5251,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -5339,21 +5280,19 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="161.70000000000002"
+                height="161.7"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="103.29999999999998"
+                y="103.30000000000001"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="215.6"
                 opacity=""
@@ -5369,9 +5308,9 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="97.29999999999998"
+                y="97.30000000000001"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -5380,7 +5319,7 @@ Object {
                 x="25.77777777777778"
                 y="43.400000000000006"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -5389,48 +5328,46 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="161.70000000000002"
+                height="161.7"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="103.29999999999998"
+                y="103.30000000000001"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
-                height="14.7"
+                height="14.700000000000017"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="250.3"
+                y="250.29999999999998"
               />
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="97.29999999999998"
+                y="97.30000000000001"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="244.3"
+                y="244.29999999999998"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -5439,9 +5376,8 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="68.60000000000001"
+                height="68.60000000000002"
                 opacity=""
                 role="img"
                 rx="0"
@@ -5453,7 +5389,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="245"
                 opacity=""
@@ -5471,7 +5406,7 @@ Object {
                 x="8"
                 y="190.39999999999998"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -5480,7 +5415,7 @@ Object {
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>
@@ -5605,7 +5540,7 @@ Object {
   >
     <div
       class="fui-gvbc**tooltip"
-      id="GVBCTooltipId_46"
+      id="GVBCTooltipId_r1t"
       style="opacity: 0;"
     />
     <div>
@@ -5620,6 +5555,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -5631,7 +5567,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 217)"
+              transform="translate(0, 205)"
             >
               <path
                 class="domain"
@@ -5792,13 +5728,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,217.5H0.5V20.5H-6"
+                d="M-6,205.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,217.5)"
+                transform="translate(0,205.5)"
               >
                 <line
                   stroke="currentColor"
@@ -5816,7 +5752,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,168.25)"
+                transform="translate(0,159.25)"
               >
                 <line
                   stroke="currentColor"
@@ -5828,13 +5764,13 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  13k
+                  12.5k
                 </text>
               </g>
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,119)"
+                transform="translate(0,113)"
               >
                 <line
                   stroke="currentColor"
@@ -5852,7 +5788,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,69.75)"
+                transform="translate(0,66.75)"
               >
                 <line
                   stroke="currentColor"
@@ -5864,7 +5800,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  38k
+                  37.5k
                 </text>
               </g>
               <g
@@ -5893,48 +5829,46 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="130.02"
+                  height="122.10000000000001"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="86.97999999999999"
+                  y="82.89999999999999"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
-                  height="173.36"
+                  height="162.8"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="43.639999999999986"
+                  y="42.19999999999999"
                 />
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="80.97999999999999"
+                  y="76.89999999999999"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="37.639999999999986"
+                  y="36.19999999999999"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -5943,48 +5877,46 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="130.02"
+                  height="122.10000000000001"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="86.97999999999999"
+                  y="82.89999999999999"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
-                  height="11.82"
+                  height="11.100000000000023"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="205.18"
+                  y="193.89999999999998"
                 />
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="80.97999999999999"
+                  y="76.89999999999999"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="199.18"
+                  y="187.89999999999998"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -5993,23 +5925,21 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="55.160000000000004"
+                  height="51.80000000000001"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="161.84"
+                  y="153.2"
                 />
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
-                  height="197"
+                  height="185"
                   opacity=""
                   role="img"
                   rx="0"
@@ -6023,9 +5953,9 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="155.84"
+                  y="147.2"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
@@ -6034,7 +5964,7 @@ Object {
                   x="25.77777777777778"
                   y="14"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -6110,6 +6040,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -6121,7 +6052,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 217)"
+            transform="translate(0, 205)"
           >
             <path
               class="domain"
@@ -6282,13 +6213,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,217.5H0.5V20.5H-6"
+              d="M-6,205.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,217.5)"
+              transform="translate(0,205.5)"
             >
               <line
                 stroke="currentColor"
@@ -6306,7 +6237,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,168.25)"
+              transform="translate(0,159.25)"
             >
               <line
                 stroke="currentColor"
@@ -6318,13 +6249,13 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,119)"
+              transform="translate(0,113)"
             >
               <line
                 stroke="currentColor"
@@ -6342,7 +6273,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,69.75)"
+              transform="translate(0,66.75)"
             >
               <line
                 stroke="currentColor"
@@ -6354,7 +6285,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -6383,48 +6314,46 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="130.02"
+                height="122.10000000000001"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="86.97999999999999"
+                y="82.89999999999999"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
-                height="173.36"
+                height="162.8"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="43.639999999999986"
+                y="42.19999999999999"
               />
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="80.97999999999999"
+                y="76.89999999999999"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="37.639999999999986"
+                y="36.19999999999999"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -6433,48 +6362,46 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="130.02"
+                height="122.10000000000001"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="86.97999999999999"
+                y="82.89999999999999"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
-                height="11.82"
+                height="11.100000000000023"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="205.18"
+                y="193.89999999999998"
               />
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="80.97999999999999"
+                y="76.89999999999999"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="199.18"
+                y="187.89999999999998"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -6483,23 +6410,21 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="55.160000000000004"
+                height="51.80000000000001"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="161.84"
+                y="153.2"
               />
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
-                height="197"
+                height="185"
                 opacity=""
                 role="img"
                 rx="0"
@@ -6513,9 +6438,9 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="155.84"
+                y="147.2"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -6524,7 +6449,7 @@ Object {
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>
@@ -6649,7 +6574,7 @@ Object {
   >
     <div
       class="fui-gvbc**tooltip"
-      id="GVBCTooltipId_46"
+      id="GVBCTooltipId_r1t"
       style="opacity: 0;"
     />
     <div>
@@ -6664,6 +6589,7 @@ Object {
         >
           <svg
             aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            class="fui-cart__chart"
             height="300"
             style="display: block;"
             width="650"
@@ -6849,21 +6775,19 @@ Object {
                 <rect
                   aria-label="2020/04/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="161.70000000000002"
+                  height="161.7"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="103.29999999999998"
+                  y="103.30000000000001"
                 />
                 <rect
                   aria-label="2020/04/30. MetaData4, 44%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="215.6"
                   opacity=""
@@ -6879,9 +6803,9 @@ Object {
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="97.29999999999998"
+                  y="97.30000000000001"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -6890,7 +6814,7 @@ Object {
                   x="25.77777777777778"
                   y="43.400000000000006"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -6899,48 +6823,46 @@ Object {
                 <rect
                   aria-label="2020/05/30. MetaData1, 33%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="161.70000000000002"
+                  height="161.7"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="0"
-                  y="103.29999999999998"
+                  y="103.30000000000001"
                 />
                 <rect
                   aria-label="2020/05/30. MetaData4, 3%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
-                  height="14.7"
+                  height="14.700000000000017"
                   opacity=""
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="16"
                   x="17.77777777777778"
-                  y="250.3"
+                  y="250.29999999999998"
                 />
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="8"
-                  y="97.29999999999998"
+                  y="97.30000000000001"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
                   class="fui-gvbc**barLabel"
                   text-anchor="middle"
                   x="25.77777777777778"
-                  y="244.3"
+                  y="244.29999999999998"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -6949,9 +6871,8 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData1, 14%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#00bcf2"
-                  height="68.60000000000001"
+                  height="68.60000000000002"
                   opacity=""
                   role="img"
                   rx="0"
@@ -6963,7 +6884,6 @@ Object {
                 <rect
                   aria-label="2020/06/30. MetaData4, 50%."
                   class="fui-gvbc**opacityChangeOnHover"
-                  data-is-focusable="true"
                   fill="#0078d4"
                   height="245"
                   opacity=""
@@ -6981,7 +6901,7 @@ Object {
                   x="8"
                   y="190.39999999999998"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
@@ -6990,7 +6910,7 @@ Object {
                   x="25.77777777777778"
                   y="14"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -7066,6 +6986,7 @@ Object {
       >
         <svg
           aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          class="fui-cart__chart"
           height="300"
           style="display: block;"
           width="650"
@@ -7251,21 +7172,19 @@ Object {
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="161.70000000000002"
+                height="161.7"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="103.29999999999998"
+                y="103.30000000000001"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="215.6"
                 opacity=""
@@ -7281,9 +7200,9 @@ Object {
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="97.29999999999998"
+                y="97.30000000000001"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -7292,7 +7211,7 @@ Object {
                 x="25.77777777777778"
                 y="43.400000000000006"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -7301,48 +7220,46 @@ Object {
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="161.70000000000002"
+                height="161.7"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
-                y="103.29999999999998"
+                y="103.30000000000001"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
-                height="14.7"
+                height="14.700000000000017"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="17.77777777777778"
-                y="250.3"
+                y="250.29999999999998"
               />
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="8"
-                y="97.29999999999998"
+                y="97.30000000000001"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
                 class="fui-gvbc**barLabel"
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="244.3"
+                y="244.29999999999998"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -7351,9 +7268,8 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#00bcf2"
-                height="68.60000000000001"
+                height="68.60000000000002"
                 opacity=""
                 role="img"
                 rx="0"
@@ -7365,7 +7281,6 @@ Object {
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
                 class="fui-gvbc**opacityChangeOnHover"
-                data-is-focusable="true"
                 fill="#0078d4"
                 height="245"
                 opacity=""
@@ -7383,7 +7298,7 @@ Object {
                 x="8"
                 y="190.39999999999998"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -7392,7 +7307,7 @@ Object {
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>

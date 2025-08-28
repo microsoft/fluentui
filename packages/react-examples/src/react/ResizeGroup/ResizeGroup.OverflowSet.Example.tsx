@@ -107,7 +107,7 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
   };
 
   const onRenderOverflowButton = (overflowItems: any) => (
-    <CommandBarButton role="menuitem" menuProps={{ items: overflowItems! }} />
+    <CommandBarButton aria-label="more" menuProps={{ items: overflowItems! }} />
   );
 
   const onRenderData = (data: any) => {

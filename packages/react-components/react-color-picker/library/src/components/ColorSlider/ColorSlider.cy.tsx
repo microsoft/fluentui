@@ -5,8 +5,9 @@ import { webLightTheme } from '@fluentui/react-theme';
 import { ColorSlider } from './ColorSlider';
 import type { ColorSliderProps } from './ColorSlider.types';
 import { INITIAL_COLOR_HSV } from '../../utils/constants';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

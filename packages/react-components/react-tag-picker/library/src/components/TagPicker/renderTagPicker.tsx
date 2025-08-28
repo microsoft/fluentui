@@ -3,13 +3,15 @@ import type { TagPickerState, TagPickerContextValues, TagPickerSlots } from './T
 import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 import { ListboxProvider } from '@fluentui/react-combobox';
 import { Portal } from '@fluentui/react-portal';
-import { TagPickerContextProvider } from '../../contexts/TagPickerContext';
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
+import { TagPickerContextProvider } from '../../contexts/TagPickerContext';
 
 /**
  * Render the final JSX of Picker
  */
-export const renderTagPicker_unstable = (state: TagPickerState, contexts: TagPickerContextValues) => {
+
+export const renderTagPicker_unstable = (state: TagPickerState, contexts: TagPickerContextValues): JSXElement => {
   assertSlots<TagPickerSlots>(state);
   return (
     <TagPickerContextProvider value={contexts.picker}>

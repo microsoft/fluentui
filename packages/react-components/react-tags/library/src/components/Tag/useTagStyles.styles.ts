@@ -62,10 +62,7 @@ const useRootRoundedBaseClassName = makeResetStyles({
       content: '""',
       borderTop: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderTopLeftRadius: tokens.borderRadiusMedium,
       borderTopRightRadius: tokens.borderRadiusMedium,
     },
@@ -93,10 +90,7 @@ const useRootCircularBaseClassName = makeResetStyles({
       borderLeft: `${tokens.strokeWidthThin} solid`,
       borderRight: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderRadius: tokens.borderRadiusCircular,
     },
   },
@@ -120,6 +114,12 @@ const useRootStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
     ...shorthands.borderColor(tokens.colorBrandStroke1),
+
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+      backgroundColor: 'Highlight',
+      color: 'HighlightText',
+    },
   },
   medium: {
     height: '32px',
@@ -133,17 +133,20 @@ const useRootStyles = makeStyles({
 
     // Increase clickable area to meet WCAG 2.2 AA
     // https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
-    '&:before, &:after': {
-      content: '""',
-      position: 'absolute',
-      height: '2px',
-      width: '100%',
-    },
-    '&:before': {
-      bottom: '100%',
-    },
-    '&:after': {
-      top: '100%',
+    '@media (forced-colors: none)': {
+      '&:before, &:after': {
+        content: '""',
+        position: 'absolute',
+        height: '2px',
+        left: '0',
+        width: '100%',
+      },
+      '&:before': {
+        bottom: '100%',
+      },
+      '&:after': {
+        top: '100%',
+      },
     },
   },
 });

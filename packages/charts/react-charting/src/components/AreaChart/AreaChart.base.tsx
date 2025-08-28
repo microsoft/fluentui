@@ -25,6 +25,7 @@ import {
   IAreaChartStyles,
 } from '../../index';
 import { warnDeprecations } from '@fluentui/react/lib/Utilities';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import {
   calloutData,
   getXAxisType,
@@ -37,13 +38,13 @@ import {
   findNumericMinMaxOfY,
   createNumericYAxis,
   IDomainNRange,
-  domainRangeOfNumericForAreaChart,
-  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfNumericForAreaLineScatterCharts,
+  domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   createStringYAxis,
-  formatDate,
   getSecureProps,
   areArraysEqual,
   getCurveFactory,
+  YAxisType,
 } from '../../utilities/index';
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -130,6 +131,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _uniqueCallOutID: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _data: any;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _chart: JSX.Element[];
   private margins: IMargins;
   private _rectId: string;
@@ -202,6 +204,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     if (!this._isChartEmpty()) {
       const { lineChartData } = this.props.data;
@@ -215,6 +218,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       this._colors = colors;
       this._opacity = opacity;
       this._data = data.renderData;
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const legends: JSX.Element = this._getLegendData(points);
 
       const tickParams = {
@@ -253,7 +257,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           getDomainNRangeValues={this._getDomainNRangeValues}
           createStringYAxis={createStringYAxis}
           getmargins={this._getMargins}
-          getMinMaxOfYAxis={findNumericMinMaxOfY}
+          getMinMaxOfYAxis={this._getMinMaxOfYAxis}
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
           enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
@@ -303,6 +307,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, getRTL(), opts);
   };
 
+  private _getMinMaxOfYAxis = (points: ILineChartPoints[], yAxisType: YAxisType, useSecondaryYScale: boolean) =>
+    findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
+
   private _getDomainNRangeValues = (
     points: ILineChartPoints[],
     margins: IMargins,
@@ -315,9 +322,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
+      domainNRangeValue = domainRangeOfNumericForAreaLineScatterCharts(points, margins, width, isRTL);
     } else if (xAxisType === XAxisTypes.DateAxis) {
-      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+      domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
         points,
         margins,
         width,
@@ -381,7 +388,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![0].data[index as number];
     const formattedDate =
-      pointToHighlight instanceof Date ? formatDate(pointToHighlight, this.props.useUTC) : pointToHighlight;
+      pointToHighlight instanceof Date
+        ? formatDateToLocaleString(pointToHighlight, this.props.culture, this.props.useUTC)
+        : pointToHighlight;
     const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
@@ -728,6 +737,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getLegendData = (points: ILineChartPoints[]): JSX.Element => {
     const data = points;
     const actions: ILegend[] = [];
@@ -833,10 +843,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     yScalePrimary: ScaleLinear<number, number>,
     yScaleSecondary: ScaleLinear<number, number> | undefined,
     xElement: SVGElement,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element[] => {
     const points = this._addDefaultColors(this.props.data.lineChartData);
     const { pointOptions, pointLineOptions } = this.props.data;
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const graph: JSX.Element[] = [];
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -1150,7 +1162,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _handleFocus = (lineIndex: number, pointIndex: number, circleId: string) => {
     const { x, y, xAxisCalloutData } = this.props.data.lineChartData![lineIndex].data[pointIndex];
-    const formattedDate = x instanceof Date ? formatDate(x, this.props.useUTC) : x;
+    const formattedDate = x instanceof Date ? formatDateToLocaleString(x, this.props.culture, this.props.useUTC) : x;
     const modifiedXVal = x instanceof Date ? x.getTime() : x;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = this._calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
@@ -1191,7 +1203,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _getAriaLabel(lineIndex: number, pointIndex: number): string {
     const line = this.props.data.lineChartData![lineIndex];
     const point = line.data[pointIndex];
-    const formattedDate = point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x;
+    const formattedDate =
+      point.x instanceof Date ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC) : point.x;
     const xValue = point.xAxisCalloutData || formattedDate;
     const legend = line.legend;
     const yValue = point.yAxisCalloutData || point.y;

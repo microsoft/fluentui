@@ -364,6 +364,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     // This is a partial OneNote page or section export. Not whole notebooks, see "onetoc"
     extensions: ['one', 'onepart'],
   },
+  onepage: {
+    extensions: ['onepage'],
+  },
   onetoc: {
     // This is an entire OneNote notebook.
     extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'], // This represents a complete, logical notebook.

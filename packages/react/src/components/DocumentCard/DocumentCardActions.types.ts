@@ -26,7 +26,7 @@ export interface IDocumentCardActionsProps extends React.ClassAttributes<Documen
   /**
    * The number of views this document has received.
    */
-  views?: Number;
+  views?: number;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

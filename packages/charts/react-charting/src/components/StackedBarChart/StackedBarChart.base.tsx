@@ -8,7 +8,7 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
@@ -74,6 +74,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     if (!this._isChartEmpty()) {
       this._adjustProps();
@@ -120,7 +121,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         showTriangle: !!(benchmarkData || targetData),
       });
       const getChartData = () =>
-        convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
+        formatToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture) as React.ReactNode;
 
       return (
         <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
@@ -138,7 +139,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                   <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                   {!this.props.hideDenominator && (
                     <span className={this._classNames.ratioDenominator}>
-                      {' / ' + convertToLocaleString(total, culture)}
+                      {' / ' + formatToLocaleString(total, culture)}
                     </span>
                   )}
                 </div>
@@ -233,6 +234,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     palette: IPalette,
     benchmarkData?: IChartDataPoint,
     targetData?: IChartDataPoint,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): [JSX.Element[], JSX.Element] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
@@ -436,6 +438,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _generateEmptyBar(barHeight: number, color: string): JSX.Element {
     return (
       <g key={0} className={this._classNames.opacityChangeOnHover}>

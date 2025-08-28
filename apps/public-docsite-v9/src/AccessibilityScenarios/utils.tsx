@@ -17,10 +17,10 @@ export const FullscreenLink = (props: FullscreenLinkProps) => (
   </a>
 );
 
-export const ScenariosListLink: React.FC = props => (
+export const ScenariosListLink: React.FC<{ children: React.ReactNode }> = props => (
   <a
     className="sbdocs sbdocs-a"
-    href={`iframe.html?id=concepts-developer-accessibility-stories-list-of-scenarios--page`}
+    href={`iframe.html?id=concepts-developer-accessibility-stories-list-of-scenarios--docs`}
   >
     {props.children}
   </a>
@@ -28,7 +28,10 @@ export const ScenariosListLink: React.FC = props => (
 
 export const BackLink = () => <ScenariosListLink>Go back to main menu</ScenariosListLink>;
 
-export const Scenario: React.FunctionComponent<{ pageTitle: string }> = ({ pageTitle, children }) => {
+export const Scenario: React.FunctionComponent<{ pageTitle: string; children: React.ReactNode }> = ({
+  pageTitle,
+  children,
+}) => {
   React.useEffect(() => {
     // eslint-disable-next-line @nx/workspace-no-restricted-globals
     document.title = pageTitle + APP_TITLE_SEPARATOR + APP_TITLE;

@@ -15,8 +15,9 @@ import { Button } from '@fluentui/react-button';
 
 import 'cypress-real-events';
 import { tagPickerControlClassNames } from '../TagPickerControl/useTagPickerControlStyles.styles';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mount = (element: JSX.Element) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
@@ -40,12 +41,8 @@ const TagPickerControlled = ({
   noPopover = false,
 }: TagPickerControlledProps) => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>(defaultSelectedOptions);
-  const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
-    setSelectedOptions(data.selectedOptions);
-  };
-  const handleAllClear: React.MouseEventHandler = event => {
-    setSelectedOptions([]);
-  };
+  const onOptionSelect: TagPickerProps['onOptionSelect'] = (_, data) => setSelectedOptions(data.selectedOptions);
+  const handleAllClear: React.MouseEventHandler = _ => setSelectedOptions([]);
 
   return (
     <div style={{ display: 'flex', maxWidth: 400, flexDirection: 'column', gap: 20 }}>
@@ -57,6 +54,7 @@ const TagPickerControlled = ({
         selectedOptions={selectedOptions}
         open={open}
         defaultOpen={defaultOpen}
+        inline
       >
         <TagPickerControl
           data-testid="tag-picker-control"

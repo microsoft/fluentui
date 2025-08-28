@@ -24,6 +24,13 @@ export const styles = css`
     background-color: ${colorNeutralBackground6};
     border-radius: ${borderRadiusMedium};
     contain: content;
+
+    @supports (width: attr(value type(<number>))) {
+      --max: attr(max type(<number>), 100);
+      --min: attr(min type(<number>), 0);
+      --value: attr(value type(<number>), 0);
+      --indicator-width: clamp(0%, calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), 100%);
+    }
   }
 
   :host([thickness='large']) {
@@ -42,6 +49,10 @@ export const styles = css`
 
   :host([value]) .indicator {
     transition: all 0.2s ease-in-out;
+
+    @supports (width: attr(value type(<number>))) {
+      width: var(--indicator-width);
+    }
   }
 
   :host(:not([value])) .indicator {

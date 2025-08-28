@@ -12,6 +12,8 @@ export { VerticalBarStyled } from './VerticalBarChartStyled.stories';
 export { VerticalBarDynamic } from './VerticalBarChartDynamic.stories';
 export { VerticalBarAllNegative } from './VerticalBarChartAllNegative.stories';
 export { VerticalBarNegative } from './VerticalBarChartNegative.stories';
+export { VerticalBarChartResponsive } from './VerticalBarChartResponsive.stories';
+export { VerticalBarSecondaryYAxis } from './VerticalBarChartSecondaryYAxis.stories';
 
 export default {
   title: 'Charts/VerticalBarChart',

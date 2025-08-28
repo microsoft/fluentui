@@ -56,7 +56,7 @@ export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
 export function asAsync<TProps extends {}>(options: IAsAsyncOptions<TProps>): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TProps & {
-    asyncPlaceholder?: React_2.ElementType<any> | undefined;
+    asyncPlaceholder?: React_2.ElementType | undefined;
 }> & React_2.RefAttributes<React_2.ElementType<TProps>>>;
 
 // @public
@@ -160,7 +160,7 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 export function createMemoizer<F extends (input: any) => any>(getValue: F): F;
 
 // @public
-export const createMergedRef: <TType, TValue = null>(value?: TValue | undefined) => (...newRefs: (React_2.Ref<TType | TValue | null> | undefined)[]) => (newValue: TType | TValue | null) => void;
+export const createMergedRef: <TType, TValue = null>(value?: TValue) => (...newRefs: (React_2.Ref<TType | null | TValue> | undefined)[]) => ((newValue: TType | TValue | null) => void);
 
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
 //
@@ -1174,7 +1174,7 @@ export function resetIds(counter?: number): void;
 export function resetMemoizations(): void;
 
 // @public
-export const safeRequestAnimationFrame: (component: React_2.Component) => (cb: Function) => void;
+export const safeRequestAnimationFrame: (component: React_2.Component) => ((cb: Function) => void);
 
 // @public
 export const safeSetTimeout: (component: React_2.Component) => (cb: Function, duration: number) => void;
@@ -1313,10 +1313,10 @@ export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): bo
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap', doc?: Document): boolean;
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSetBase>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.FunctionComponent<TComponentProps>;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSetBase>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<React_2.PropsWithChildren<TComponentProps>>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: React_2.PropsWithoutRef<TComponentProps>) => Partial<React_2.PropsWithoutRef<TComponentProps>>, customizable?: ICustomizableProps, pure?: boolean): React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<TComponentProps>>>;
 
 // @public (undocumented)
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React_2.RefAttributes<TRef>, TStyleProps, TStyleSet extends IStyleSetBase, TRef = unknown>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TComponentProps> & React_2.RefAttributes<TRef>>;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React_2.RefAttributes<TRef>, TStyleProps, TStyleSet extends IStyleSetBase, TRef = unknown>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<React_2.PropsWithChildren<TComponentProps>>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: React_2.PropsWithoutRef<TComponentProps>) => Partial<React_2.PropsWithoutRef<TComponentProps>>, customizable?: ICustomizableProps, pure?: boolean): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TComponentProps> & React_2.RefAttributes<TRef>>;
 
 // @public (undocumented)
 export type StyleFunction<TStyleProps, TStyleSet extends IStyleSetBase> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {

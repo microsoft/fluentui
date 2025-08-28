@@ -2,12 +2,13 @@ import * as React from 'react';
 import { mount } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import { InlineDrawer } from '../components/InlineDrawer';
 import { OverlayDrawer } from '../components/OverlayDrawer';
 import { Drawer, DrawerProps } from '../Drawer';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

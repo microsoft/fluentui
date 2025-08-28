@@ -1,8 +1,168 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 21 May 2025 04:07:25 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Aug 2025 04:06:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.119](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.119)
+
+Wed, 27 Aug 2025 04:06:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.118..@fluentui/web-components_v3.0.0-beta.119)
+
+### Changes
+
+- feat: make tree and tree-item SSR compatible ([PR #35091](https://github.com/microsoft/fluentui/pull/35091) by machi@microsoft.com)
+
+## [3.0.0-beta.118](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.118)
+
+Tue, 26 Aug 2025 04:07:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.117..@fluentui/web-components_v3.0.0-beta.118)
+
+### Changes
+
+- fix: remove unnecessary type check and avoid using instanceof in menu-list ([PR #35074](https://github.com/microsoft/fluentui/pull/35074) by machi@microsoft.com)
+- fix: make tablist more ssr compatible ([PR #35072](https://github.com/microsoft/fluentui/pull/35072) by machi@microsoft.com)
+
+## [3.0.0-beta.117](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.117)
+
+Mon, 25 Aug 2025 04:07:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.116..@fluentui/web-components_v3.0.0-beta.117)
+
+### Changes
+
+- fix: remove unnecessary type check for better ssr compatibility ([PR #35073](https://github.com/microsoft/fluentui/pull/35073) by machi@microsoft.com)
+
+## [3.0.0-beta.116](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.116)
+
+Wed, 13 Aug 2025 04:08:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.115..@fluentui/web-components_v3.0.0-beta.116)
+
+### Changes
+
+- feat: make components ready for ssr support ([PR #34996](https://github.com/microsoft/fluentui/pull/34996) by machi@microsoft.com)
+
+## [3.0.0-beta.115](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.115)
+
+Mon, 04 Aug 2025 04:07:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.114..@fluentui/web-components_v3.0.0-beta.115)
+
+### Changes
+
+- fix: avoid setting tabindex before button is connected ([PR #34960](https://github.com/microsoft/fluentui/pull/34960) by machi@microsoft.com)
+
+## [3.0.0-beta.114](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.114)
+
+Fri, 25 Jul 2025 04:07:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.113..@fluentui/web-components_v3.0.0-beta.114)
+
+### Changes
+
+- a11y: remove vertical margins on dialog to support 400% zoom ([PR #34906](https://github.com/microsoft/fluentui/pull/34906) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.113](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.113)
+
+Mon, 21 Jul 2025 04:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.112..@fluentui/web-components_v3.0.0-beta.113)
+
+### Changes
+
+- fix: remove unnecessary tabindex logic from switch template ([PR #34877](https://github.com/microsoft/fluentui/pull/34877) by machi@microsoft.com)
+- fix: vertical slider in rtl has the opposite value than the visual ([PR #34876](https://github.com/microsoft/fluentui/pull/34876) by machi@microsoft.com)
+
+## [3.0.0-beta.112](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.112)
+
+Fri, 04 Jul 2025 04:08:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.111..@fluentui/web-components_v3.0.0-beta.112)
+
+### Changes
+
+- fix: initially checked radio should be focusable ([PR #34776](https://github.com/microsoft/fluentui/pull/34776) by machi@microsoft.com)
+
+## [3.0.0-beta.111](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.111)
+
+Tue, 01 Jul 2025 04:08:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.110..@fluentui/web-components_v3.0.0-beta.111)
+
+### Changes
+
+- refactor: move tabindex logic into JS class ([PR #34741](https://github.com/microsoft/fluentui/pull/34741) by machi@microsoft.com)
+
+## [3.0.0-beta.110](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.110)
+
+Tue, 24 Jun 2025 04:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.109..@fluentui/web-components_v3.0.0-beta.110)
+
+### Changes
+
+- fix start and end slot for tabs ([PR #34704](https://github.com/microsoft/fluentui/pull/34704) by jes@microsoft.com)
+- fix(dropdown): add anchor positioning fallback logic ([PR #34647](https://github.com/microsoft/fluentui/pull/34647) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.109](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.109)
+
+Fri, 20 Jun 2025 04:06:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.108..@fluentui/web-components_v3.0.0-beta.109)
+
+### Changes
+
+- fix: progress bar when value is missing in firefox and safari ([PR #34684](https://github.com/microsoft/fluentui/pull/34684) by machi@microsoft.com)
+
+## [3.0.0-beta.108](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.108)
+
+Thu, 19 Jun 2025 04:06:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.107..@fluentui/web-components_v3.0.0-beta.108)
+
+### Changes
+
+- refactor: use css attr func to calculate progress indicator width ([PR #34674](https://github.com/microsoft/fluentui/pull/34674) by machi@microsoft.com)
+
+## [3.0.0-beta.107](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.107)
+
+Mon, 02 Jun 2025 04:07:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.106..@fluentui/web-components_v3.0.0-beta.107)
+
+### Changes
+
+- fix: various field interaction bugs ([PR #34555](https://github.com/microsoft/fluentui/pull/34555) by 863023+radium-v@users.noreply.github.com)
+- occasionally focusing off of combobox would open and focus listbox ([PR #34404](https://github.com/microsoft/fluentui/pull/34404) by jes@microsoft.com)
+
+## [3.0.0-beta.106](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.106)
+
+Wed, 28 May 2025 04:06:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.105..@fluentui/web-components_v3.0.0-beta.106)
+
+### Changes
+
+- Co-located types with ES modules. This should not affect users. ([PR #34487](https://github.com/microsoft/fluentui/pull/34487) by burtonsmith@microsoft.com)
+- Accesible name and title for dialog ([PR #34519](https://github.com/microsoft/fluentui/pull/34519) by jes@microsoft.com)
+
+## [3.0.0-beta.105](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.105)
+
+Mon, 26 May 2025 04:07:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.104..@fluentui/web-components_v3.0.0-beta.105)
+
+### Changes
+
+- fix: dialog click event prevents default for arbitrary content clicks ([PR #34511](https://github.com/microsoft/fluentui/pull/34511) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.104](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.104)
+
+Fri, 23 May 2025 04:06:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.103..@fluentui/web-components_v3.0.0-beta.104)
+
+### Changes
+
+- fix: updated rating-display icon color tokens to match the React version. ([PR #34513](https://github.com/microsoft/fluentui/pull/34513) by 601470+mlijanto@users.noreply.github.com)
+- fix: better fallback positioning for sub menu ([PR #34499](https://github.com/microsoft/fluentui/pull/34499) by machi@microsoft.com)
+
+## [3.0.0-beta.103](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.103)
+
+Thu, 22 May 2025 04:06:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.102..@fluentui/web-components_v3.0.0-beta.103)
+
+### Changes
+
+- Fixed compound-button high contrast text colors. ([PR #34490](https://github.com/microsoft/fluentui/pull/34490) by 601470+mlijanto@users.noreply.github.com)
+- Adds click event to close slot of drawer ([PR #34479](https://github.com/microsoft/fluentui/pull/34479) by jes@microsoft.com)
 
 ## [3.0.0-beta.102](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.102)
 

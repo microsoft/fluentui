@@ -220,38 +220,22 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
   }
 
-  ::slotted([popover]) {
-    inset: unset;
-    position: absolute;
-    position-anchor: --dropdown-trigger;
-    position-area: block-end span-inline-end;
-    position-try-fallbacks: flip-inline, flip-block, block-start;
-    max-height: var(--listbox-max-height, calc(50vh - anchor-size(self-block)));
-    min-width: anchor-size(width);
-    overflow: auto;
-  }
-
   ::slotted([popover]:not(:popover-open)) {
     display: none;
   }
 
   @supports not (anchor-name: --anchor) {
-    ::slotted([popover]) {
-      margin-block-start: calc(${lineHeightBase300} + (${spacingVerticalSNudge} * 2) + ${strokeWidthThin});
-      max-height: 50vh;
+    :host {
+      --listbox-max-height: 50vh;
+      --margin-offset: calc(${lineHeightBase300} + (${spacingVerticalSNudge} * 2) + ${strokeWidthThin});
     }
 
-    :host([size='small']) ::slotted([popover]) {
-      margin-block-start: calc(${lineHeightBase200} + (${spacingVerticalXS} * 2) + ${strokeWidthThin});
+    :host([size='small']) {
+      --margin-offset: calc(${lineHeightBase200} + (${spacingVerticalXS} * 2) + ${strokeWidthThin});
     }
 
-    :host([size='large']) ::slotted([popover]) {
-      margin-block-start: calc(${lineHeightBase400} + (${spacingVerticalS} * 2) + ${strokeWidthThin});
-    }
-
-    :host(${flipBlockState}) ::slotted([popover]) {
-      margin-block-start: revert;
-      transform: translate(0, -100%);
+    :host([size='large']) {
+      --margin-offset: calc(${lineHeightBase400} + (${spacingVerticalS} * 2) + ${strokeWidthThin});
     }
   }
 `;

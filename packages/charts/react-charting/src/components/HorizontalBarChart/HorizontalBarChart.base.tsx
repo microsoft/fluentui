@@ -12,8 +12,13 @@ import {
   HorizontalBarChartVariant,
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import { convertToLocaleString } from '../../utilities/locale-util';
-import { ChartHoverCard, formatValueLimitWidth, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
+import {
+  ChartHoverCard,
+  formatScientificLimitWidth,
+  getAccessibleDataObject,
+  getNextGradient,
+} from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
@@ -74,6 +79,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { data, theme } = this.props;
     this._adjustProps();
@@ -262,6 +268,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     );
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getDefaultTextData(data: IChartProps): JSX.Element {
     const { culture } = this.props;
     const chartDataMode = this.props.chartDataMode || 'default';
@@ -274,20 +281,22 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       case 'default':
         return (
           <div className={this._classNames.chartTitleRight} {...accessibilityData}>
-            {convertToLocaleString(x, culture)}
+            {formatToLocaleString(x, culture) as React.ReactNode}
           </div>
         );
       case 'fraction':
         return (
           <div {...accessibilityData}>
-            <span className={this._classNames.chartTitleRight}>{convertToLocaleString(x, culture)}</span>
+            <span className={this._classNames.chartTitleRight}>
+              {formatToLocaleString(x, culture) as React.ReactNode}
+            </span>
             <span className={this._classNames.chartDataTextDenominator}>
-              {' / ' + convertToLocaleString(y, culture)}
+              {' / ' + formatToLocaleString(y, culture)}
             </span>
           </div>
         );
       case 'percentage':
-        const dataRatioPercentage = `${convertToLocaleString(Math.round((x / y) * 100), culture)}%`;
+        const dataRatioPercentage = `${formatToLocaleString(Math.round((x / y) * 100), culture)}%`;
         return (
           <div className={this._classNames.chartTitleRight} {...accessibilityData}>
             {dataRatioPercentage}
@@ -296,6 +305,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createBenchmark(data: IChartProps): JSX.Element {
     const totalData = data.chartData![0].horizontalBarChartdata!.y;
     const benchmarkData = data.chartData![0].data;
@@ -319,6 +329,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
    * Extra margin is also provided, in the x value to provide some spacing in between the bars
    */
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createBars(data: IChartProps, palette: IPalette, dataPointIndex: number): JSX.Element[] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
@@ -403,7 +414,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             className={this._classNames.barLabel}
             aria-hidden={true}
           >
-            {formatValueLimitWidth(barValue)}
+            {formatScientificLimitWidth(barValue)}
           </text>
         );
       }

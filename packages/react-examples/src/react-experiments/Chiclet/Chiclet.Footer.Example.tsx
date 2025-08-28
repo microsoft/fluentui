@@ -63,8 +63,13 @@ export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
   );
 };
 
+type ReactProps<T> = {
+  children?: React.ReactNode;
+  ref?: React.LegacyRef<T>;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-export interface IFooterComponent extends React.Props<FooterComponent> {
+export interface IFooterComponent extends ReactProps<FooterComponent> {
   buttonProps: IButtonProps[];
   activities: string;
 }

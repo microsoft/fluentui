@@ -35,6 +35,7 @@ describe('Shimmer', () => {
   });
 
   it('renders Shimmer with custom elements correctly', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const customElements: JSX.Element = (
       <div style={{ display: 'flex' }}>
         <ShimmerElementsGroup

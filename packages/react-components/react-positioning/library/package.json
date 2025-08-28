@@ -1,0 +1,55 @@
+{
+  "name": "@fluentui/react-positioning",
+  "version": "9.20.4",
+  "description": "A react wrapper around Popper.js for Fluent UI",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-cypress": "*"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.6.12",
+    "@floating-ui/devtools": "^0.2.3",
+    "@fluentui/react-shared-contexts": "^9.25.0",
+    "@fluentui/react-theme": "^9.2.0",
+    "@fluentui/react-utilities": "^9.24.0",
+    "@griffel/react": "^1.5.22",
+    "@swc/helpers": "^0.5.1",
+    "use-sync-external-store": "^1.2.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
+}

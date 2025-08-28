@@ -7,8 +7,9 @@ import { Breadcrumb } from './Breadcrumb';
 import { BreadcrumbItem } from '../BreadcrumbItem';
 import { BreadcrumbButton } from '../BreadcrumbButton';
 import type { BreadcrumbProps } from '../Breadcrumb';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

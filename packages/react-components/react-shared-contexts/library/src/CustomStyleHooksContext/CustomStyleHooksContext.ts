@@ -65,6 +65,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useDrawerInlineStyles_unstable: CustomStyleHook;
   /** @deprecated Use useOverlayDrawerStyles_unstable instead. */
   useDrawerOverlayStyles_unstable: CustomStyleHook;
+  useOverlayDrawerSurfaceStyles_unstable: CustomStyleHook;
   useDrawerStyles_unstable: CustomStyleHook;
   useDropdownStyles_unstable: CustomStyleHook;
   useEmptySwatchStyles_unstable: CustomStyleHook;
@@ -103,6 +104,20 @@ export type CustomStyleHooksContextValue = Partial<{
   useMessageBarGroupStyles_unstable: CustomStyleHook;
   useMessageBarStyles_unstable: CustomStyleHook;
   useMessageBarTitleStyles_unstable: CustomStyleHook;
+  useAppItemStyles_unstable: CustomStyleHook;
+  useAppItemStaticStyles_unstable: CustomStyleHook;
+  useHamburgerStyles_unstable: CustomStyleHook;
+  useNavCategoryItemStyles: CustomStyleHook;
+  useNavDividerStyles_unstable: CustomStyleHook;
+  useNavDrawerStyles_unstable: CustomStyleHook;
+  useNavDrawerBodyStyles_unstable: CustomStyleHook;
+  useNavDrawerFooterStyles_unstable: CustomStyleHook;
+  useNavDrawerHeaderStyles_unstable: CustomStyleHook;
+  useNavItemStyles_unstable: CustomStyleHook;
+  useNavSectionHeaderStyles_unstable: CustomStyleHook;
+  useNavSubItemStyles_unstable: CustomStyleHook;
+  useNavSubItemGroupStyles_unstable: CustomStyleHook;
+  useSplitNavItemStyles_unstable: CustomStyleHook;
   useOptionGroupStyles_unstable: CustomStyleHook;
   useOptionStyles_unstable: CustomStyleHook;
   useOverlayDrawerStyles_unstable: CustomStyleHook;

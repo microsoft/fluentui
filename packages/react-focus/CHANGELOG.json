@@ -2,6 +2,72 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Tue, 26 Aug 2025 07:21:44 GMT",
+      "tag": "@fluentui/react-focus_v8.9.26",
+      "version": "8.9.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.12.4",
+            "commit": "54d698502c976954b7246ada9cc866e7c6a881a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Aug 2025 07:19:48 GMT",
+      "tag": "@fluentui/react-focus_v8.9.25",
+      "version": "8.9.25",
+      "comments": {
+        "none": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.12.3",
+            "commit": "e7056070683aa0cda7044e05da6e572a658f1a79"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.15.23",
+            "commit": "e7056070683aa0cda7044e05da6e572a658f1a79"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Jul 2025 07:19:40 GMT",
+      "tag": "@fluentui/react-focus_v8.9.25",
+      "version": "8.9.25",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "4291969387141914ba673d01e1272d002c5e0349",
+            "comment": "chore: explicitly add node globals to previously leaking types from enzyme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Jul 2025 07:21:40 GMT",
+      "tag": "@fluentui/react-focus_v8.9.25",
+      "version": "8.9.25",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "e2bebc694f2ba6bfcb0efe49ef93c0f7d1009e61",
+            "comment": "chore: migrate repo to react 18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 May 2025 07:22:04 GMT",
       "tag": "@fluentui/react-focus_v8.9.25",
       "version": "8.9.25",

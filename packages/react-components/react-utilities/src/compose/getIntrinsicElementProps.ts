@@ -11,16 +11,18 @@ type HTMLAttributes = React.HTMLAttributes<any>;
  * element type.
  *
  * Equivalent to {@link getNativeElementProps}, but more type-safe.
+ *
+ * @param tagName - The slot's default element type (e.g. 'div')
+ * @param props - The component's props object
+ * @param excludedPropNames - List of native props to exclude from the returned value
  */
 export const getIntrinsicElementProps = <
   Props extends UnknownSlotProps,
   ExcludedPropKeys extends Extract<keyof Props, string> = never,
 >(
-  /** The slot's default element type (e.g. 'div') */
   tagName: NonNullable<Props['as']>,
-  /** The component's props object */
+  // eslint-disable-next-line @typescript-eslint/no-restricted-types -- in order to not introduce Type Restriction CHANGe which is kinda "breaking change from Types POV", we don't enforce our custom `RefAttributes` in this API, to be compatible with scenarios where non v9 interfaces might be used. This may/will change with React 19
   props: Props & React.RefAttributes<InferredElementRefType<Props>>,
-  /** List of native props to exclude from the returned value */
   excludedPropNames?: ExcludedPropKeys[],
 ) => {
   // eslint-disable-next-line @typescript-eslint/no-deprecated

@@ -12,9 +12,9 @@ import { CarouselViewport } from '../CarouselViewport/CarouselViewport';
 import { Carousel } from './Carousel';
 import { CarouselCard, carouselCardClassNames } from '../CarouselCard/index';
 import { CarouselIndexChangeData } from '../CarouselContext.types';
-import { EventHandler } from '@fluentui/react-utilities';
+import type { EventHandler, JSXElement } from '@fluentui/react-utilities';
 
-const mount = (element: JSX.Element) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 

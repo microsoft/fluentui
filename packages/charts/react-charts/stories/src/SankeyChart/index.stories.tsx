@@ -8,6 +8,7 @@ import dontsMd from './docs/SankeyChartDonts.md';
 export { SankeyChartBasic } from './SankeyChartBasic.stories';
 export { SankeyChartInbox } from './SankeyChartInbox.stories';
 export { SankeyChartRebalance } from './SankeyChartRebalance.stories';
+export { SankeyChartResponsive } from './SankeyChartResponsive.stories';
 
 export default {
   title: 'Charts/SankeyChart',

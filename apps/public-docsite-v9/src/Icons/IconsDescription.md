@@ -9,4 +9,4 @@ As a general guideline, it's recommended to utilize unsized icons since the same
 
 ---
 
-You can preview <a href="#" data-sb-kind="icons-catalog--page">all icons in the catalog</a>.
+You can preview <a href="" data-sb-kind="icons-catalog--docs">all icons in the catalog</a>.

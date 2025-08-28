@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { PopoverTrigger } from './PopoverTrigger';
-import * as renderer from 'react-test-renderer';
 import { mockPopoverContext } from '../../testing/mockUsePopoverContext';
 import { isConformant } from '../../testing/isConformant';
 
@@ -31,13 +30,12 @@ describe('PopoverTrigger', () => {
    * Note: see more visual regression tests for PopoverTrigger in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(
+    const { container } = render(
       <PopoverTrigger disableButtonEnhancement>
         <button>Popover trigger</button>
       </PopoverTrigger>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it.each([

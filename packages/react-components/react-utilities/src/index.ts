@@ -20,6 +20,7 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  RefAttributes,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandFunction,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -65,6 +66,7 @@ export {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,
   getPartitionedNativeProps,
+  getReactElementRef,
   getRTLSafeKey,
   mergeCallbacks,
   isHTMLElement,
@@ -73,7 +75,13 @@ export {
   createPriorityQueue,
 } from './utils/index';
 
-export type { DistributiveOmit, UnionToIntersection } from './utils/types';
+export type {
+  DistributiveOmit,
+  UnionToIntersection,
+  JSXElement,
+  JSXIntrinsicElement,
+  JSXIntrinsicElementKeys,
+} from './utils/types';
 
 export type { PriorityQueue } from './utils/priorityQueue';
 

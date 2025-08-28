@@ -1,8 +1,367 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 21 May 2025 07:20:20 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Aug 2025 07:21:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.26)
+
+Tue, 26 Aug 2025 07:21:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.25..@fluentui/react-charting_v5.24.26)
+
+### Patches
+
+- fix(react-charting): Updating segment colors for Donut chart ([PR #35054](https://github.com/microsoft/fluentui/pull/35054) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/react-focus to v8.9.26 ([commit](https://github.com/microsoft/fluentui/commit/54d698502c976954b7246ada9cc866e7c6a881a2) by beachball)
+- Bump @fluentui/theme-samples to v8.7.214 ([commit](https://github.com/microsoft/fluentui/commit/54d698502c976954b7246ada9cc866e7c6a881a2) by beachball)
+- Bump @fluentui/react to v8.123.5 ([commit](https://github.com/microsoft/fluentui/commit/54d698502c976954b7246ada9cc866e7c6a881a2) by beachball)
+
+## [5.24.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.25)
+
+Thu, 21 Aug 2025 12:15:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.24..@fluentui/react-charting_v5.24.25)
+
+### Patches
+
+- feat: add support for tickmode in DeclarativeChart ([PR #35039](https://github.com/microsoft/fluentui/pull/35039) by kumarkshitij@microsoft.com)
+
+## [5.24.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.24)
+
+Fri, 15 Aug 2025 07:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.23..@fluentui/react-charting_v5.24.24)
+
+### Patches
+
+- feat(react-charting): Support string y-axis for Scatter chart ([PR #35006](https://github.com/microsoft/fluentui/pull/35006) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.28 ([PR #35007](https://github.com/microsoft/fluentui/pull/35007) by beachball)
+
+## [5.24.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.23)
+
+Fri, 08 Aug 2025 07:21:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.22..@fluentui/react-charting_v5.24.23)
+
+### Patches
+
+- refactor: set max-width for heatmap callout without using subComponentStyles ([PR #34992](https://github.com/microsoft/fluentui/pull/34992) by kumarkshitij@microsoft.com)
+
+## [5.24.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.22)
+
+Wed, 06 Aug 2025 07:21:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.21..@fluentui/react-charting_v5.24.22)
+
+### Patches
+
+- feat: add support for log scale in scatter charts ([PR #34902](https://github.com/microsoft/fluentui/pull/34902) by kumarkshitij@microsoft.com)
+- fix(react-charting): Handling y object values for bar chart. ([PR #34963](https://github.com/microsoft/fluentui/pull/34963) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.27 ([PR #34963](https://github.com/microsoft/fluentui/pull/34963) by beachball)
+- Bump @fluentui/theme-samples to v8.7.213 ([PR #34963](https://github.com/microsoft/fluentui/pull/34963) by beachball)
+- Bump @fluentui/react to v8.123.4 ([PR #34963](https://github.com/microsoft/fluentui/pull/34963) by beachball)
+
+## [5.24.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.21)
+
+Mon, 04 Aug 2025 07:21:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.20..@fluentui/react-charting_v5.24.21)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.212 ([commit](https://github.com/microsoft/fluentui/commit/570f122fba34fa8effaaaa61bf6c9acd4caffc45) by beachball)
+- Bump @fluentui/react to v8.123.3 ([commit](https://github.com/microsoft/fluentui/commit/570f122fba34fa8effaaaa61bf6c9acd4caffc45) by beachball)
+
+## [5.24.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.20)
+
+Tue, 29 Jul 2025 07:20:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.19..@fluentui/react-charting_v5.24.20)
+
+### Patches
+
+- fix(react-charting): Disable responsive container for heatmap in Declarative Chart ([PR #34931](https://github.com/microsoft/fluentui/pull/34931) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.26 ([PR #34931](https://github.com/microsoft/fluentui/pull/34931) by beachball)
+
+## [5.24.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.19)
+
+Mon, 28 Jul 2025 07:22:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.18..@fluentui/react-charting_v5.24.19)
+
+### Patches
+
+- fix(react-charting): Fixed text mode for scatter polar ([PR #34896](https://github.com/microsoft/fluentui/pull/34896) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/theme-samples to v8.7.211 ([PR #34896](https://github.com/microsoft/fluentui/pull/34896) by beachball)
+- Bump @fluentui/react to v8.123.2 ([PR #34896](https://github.com/microsoft/fluentui/pull/34896) by beachball)
+
+## [5.24.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.18)
+
+Fri, 25 Jul 2025 07:20:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.17..@fluentui/react-charting_v5.24.18)
+
+### Patches
+
+- fix funnel chart alignment ([PR #34903](https://github.com/microsoft/fluentui/pull/34903) by anushgupta@microsoft.com)
+- fix(react-charting): Fix alignment issue of stacked grouped vertical bar charts. ([PR #34882](https://github.com/microsoft/fluentui/pull/34882) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.24.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.17)
+
+Wed, 23 Jul 2025 07:20:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.16..@fluentui/react-charting_v5.24.17)
+
+### Patches
+
+- focus handling in funnel chart ([PR #34890](https://github.com/microsoft/fluentui/pull/34890) by anushgupta@microsoft.com)
+- fix: respect bargap and width properties in plotly bar traces ([PR #34887](https://github.com/microsoft/fluentui/pull/34887) by kumarkshitij@microsoft.com)
+- fix white color issue in chart table ([PR #34865](https://github.com/microsoft/fluentui/pull/34865) by anushgupta@microsoft.com)
+
+## [5.24.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.16)
+
+Mon, 21 Jul 2025 07:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.15..@fluentui/react-charting_v5.24.16)
+
+### Patches
+
+- feat(react-charting): Support additional modes ([PR #34860](https://github.com/microsoft/fluentui/pull/34860) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.25 ([commit](https://github.com/microsoft/fluentui/commit/456db10a952bf6bf36213bc8926f4dfd140b5df3) by beachball)
+
+## [5.24.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.15)
+
+Fri, 18 Jul 2025 07:19:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.14..@fluentui/react-charting_v5.24.15)
+
+### Patches
+
+- fix: resolve minor Gantt chart bugs and optimize logic ([PR #34841](https://github.com/microsoft/fluentui/pull/34841) by kumarkshitij@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.24 ([PR #34841](https://github.com/microsoft/fluentui/pull/34841) by beachball)
+
+## [5.24.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.14)
+
+Wed, 16 Jul 2025 07:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.13..@fluentui/react-charting_v5.24.14)
+
+### Patches
+
+- fix(react-charting): Align labels and points according to given directions and rotation in schema ([PR #34828](https://github.com/microsoft/fluentui/pull/34828) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Support min max for VSBC in plotly ([PR #34846](https://github.com/microsoft/fluentui/pull/34846) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.23 ([PR #34846](https://github.com/microsoft/fluentui/pull/34846) by beachball)
+
+## [5.24.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.13)
+
+Mon, 14 Jul 2025 07:21:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.12..@fluentui/react-charting_v5.24.13)
+
+### Patches
+
+- feat: add GanttChart ([PR #34791](https://github.com/microsoft/fluentui/pull/34791) by kumarkshitij@microsoft.com)
+- fix(react-charting): Disable responsive container for funnel in Declarative Chart ([PR #34821](https://github.com/microsoft/fluentui/pull/34821) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(react-charting): Remove duplicate code to reduce size ([PR #34809](https://github.com/microsoft/fluentui/pull/34809) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.22 ([PR #34791](https://github.com/microsoft/fluentui/pull/34791) by beachball)
+
+## [5.24.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.12)
+
+Fri, 11 Jul 2025 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.11..@fluentui/react-charting_v5.24.12)
+
+### Patches
+
+- feat(react-charting): Support for categorical theta values for scatter polar chart ([PR #34682](https://github.com/microsoft/fluentui/pull/34682) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Fix hover card not coming properly for large data flow ([PR #34816](https://github.com/microsoft/fluentui/pull/34816) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.21 ([PR #34682](https://github.com/microsoft/fluentui/pull/34682) by beachball)
+
+## [5.24.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.11)
+
+Thu, 03 Jul 2025 07:21:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.10..@fluentui/react-charting_v5.24.11)
+
+### Patches
+
+- fix(react-charting): Enable correct datapoint for single datapoint hover behavior for line chart ([PR #34778](https://github.com/microsoft/fluentui/pull/34778) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix: ensure ResponsiveContainer resizes correctly within grid layout ([PR #34728](https://github.com/microsoft/fluentui/pull/34728) by kumarkshitij@microsoft.com)
+- Bump @fluentui/theme-samples to v8.7.210 ([PR #34778](https://github.com/microsoft/fluentui/pull/34778) by beachball)
+- Bump @fluentui/react to v8.123.1 ([PR #34778](https://github.com/microsoft/fluentui/pull/34778) by beachball)
+
+## [5.24.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.10)
+
+Wed, 02 Jul 2025 07:20:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.9..@fluentui/react-charting_v5.24.10)
+
+### Patches
+
+- implement single value callout in line chart ([PR #34757](https://github.com/microsoft/fluentui/pull/34757) by anushgupta@microsoft.com)
+- feat(react-charting): Support for Funnel Chart ([PR #34688](https://github.com/microsoft/fluentui/pull/34688) by email not defined)
+- Bump @fluentui/chart-utilities to v1.1.20 ([PR #34688](https://github.com/microsoft/fluentui/pull/34688) by beachball)
+
+## [5.24.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.9)
+
+Mon, 30 Jun 2025 07:19:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.8..@fluentui/react-charting_v5.24.9)
+
+### Patches
+
+- fix(react-charting): Adding support for marker texts for modes containing text ([PR #34708](https://github.com/microsoft/fluentui/pull/34708) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.19 ([PR #34731](https://github.com/microsoft/fluentui/pull/34731) by beachball)
+
+## [5.24.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.8)
+
+Tue, 24 Jun 2025 07:20:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.7..@fluentui/react-charting_v5.24.8)
+
+### Patches
+
+- fix(react-charting): Fix legend selection for Scatter charts ([PR #34701](https://github.com/microsoft/fluentui/pull/34701) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.24.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.7)
+
+Mon, 23 Jun 2025 07:19:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.6..@fluentui/react-charting_v5.24.7)
+
+### Patches
+
+- make change in createNumericYAxis function in utilities  ([PR #34665](https://github.com/microsoft/fluentui/pull/34665) by anushgupta@microsoft.com)
+- feat: enable wrapping of string x-axis labels in DeclarativeChart + hide overlapping labels based on post-transform width ([PR #34666](https://github.com/microsoft/fluentui/pull/34666) by kumarkshitij@microsoft.com)
+- fix: correct bar height rendering for values less than 1 in VSBC ([PR #34680](https://github.com/microsoft/fluentui/pull/34680) by kumarkshitij@microsoft.com)
+
+## [5.24.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.6)
+
+Thu, 19 Jun 2025 07:20:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.5..@fluentui/react-charting_v5.24.6)
+
+### Patches
+
+- fix(react-charting): Refactoring common code to reduce bundle size ([PR #34675](https://github.com/microsoft/fluentui/pull/34675) by 98592573+AtishayMsft@users.noreply.github.com)
+
+## [5.24.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.5)
+
+Tue, 17 Jun 2025 07:20:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.4..@fluentui/react-charting_v5.24.5)
+
+### Patches
+
+- fix(react-charting): Support axis tick formatting and y axis range ([PR #34653](https://github.com/microsoft/fluentui/pull/34653) by 98592573+AtishayMsft@users.noreply.github.com)
+- chore(react-charting): Remove enzyme react 17 test adapter ([PR #34595](https://github.com/microsoft/fluentui/pull/34595) by 98592573+AtishayMsft@users.noreply.github.com)
+- feat(react-charting): Support non plot and composite multiplots ([PR #34652](https://github.com/microsoft/fluentui/pull/34652) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(react-charting): Fix svg tooltip background alignment ([PR #34663](https://github.com/microsoft/fluentui/pull/34663) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.18 ([PR #34663](https://github.com/microsoft/fluentui/pull/34663) by beachball)
+
+## [5.24.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.4)
+
+Fri, 13 Jun 2025 07:21:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.3..@fluentui/react-charting_v5.24.4)
+
+### Patches
+
+- fix(react-charting): Support for using opacity provided in schema for decalarative charts ([PR #34635](https://github.com/microsoft/fluentui/pull/34635) by 120183316+srmukher@users.noreply.github.com)
+- feat: add support for ordering string tick labels on x and y axes ([PR #34623](https://github.com/microsoft/fluentui/pull/34623) by kumarkshitij@microsoft.com)
+- fix(react-charting): Fixing color, marker size, yaxis issues for Scatter chart ([PR #34628](https://github.com/microsoft/fluentui/pull/34628) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Fixing resolve color issue ([PR #34636](https://github.com/microsoft/fluentui/pull/34636) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Fixing color issue for GVBC ([PR #34637](https://github.com/microsoft/fluentui/pull/34637) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.17 ([PR #34623](https://github.com/microsoft/fluentui/pull/34623) by beachball)
+
+## [5.24.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.3)
+
+Thu, 12 Jun 2025 07:20:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.2..@fluentui/react-charting_v5.24.3)
+
+### Patches
+
+- axis title background fix ([PR #34621](https://github.com/microsoft/fluentui/pull/34621) by anushgupta@microsoft.com)
+- feat(react-charting): Adding Scatter chart component ([PR #34374](https://github.com/microsoft/fluentui/pull/34374) by 120183316+srmukher@users.noreply.github.com)
+- feat(react-charting): Enable support for multiplots in declarative chart ([PR #34626](https://github.com/microsoft/fluentui/pull/34626) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.16 ([PR #34621](https://github.com/microsoft/fluentui/pull/34621) by beachball)
+
+## [5.24.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.2)
+
+Fri, 06 Jun 2025 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.1..@fluentui/react-charting_v5.24.2)
+
+### Patches
+
+- add labels for text+markers ([PR #34587](https://github.com/microsoft/fluentui/pull/34587) by anushgupta@microsoft.com)
+- fix(react-charting): Colorscale support for bar charts ([PR #34578](https://github.com/microsoft/fluentui/pull/34578) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting):Date Axis Support for Vertical Stacked Bar Chart ([PR #34532](https://github.com/microsoft/fluentui/pull/34532) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.24.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.1)
+
+Thu, 05 Jun 2025 07:20:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.0..@fluentui/react-charting_v5.24.1)
+
+### Patches
+
+- fix(react-charting): Fixing line color mismatch ([PR #34589](https://github.com/microsoft/fluentui/pull/34589) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.0)
+
+Wed, 04 Jun 2025 07:20:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.97..@fluentui/react-charting_v5.24.0)
+
+### Minor changes
+
+- feat(react-charting): Improve locale aware date and number label formatting ([PR #34562](https://github.com/microsoft/fluentui/pull/34562) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.15 ([PR #34552](https://github.com/microsoft/fluentui/pull/34552) by beachball)
+
+### Patches
+
+- pie chart fix ([PR #34582](https://github.com/microsoft/fluentui/pull/34582) by anushgupta@microsoft.com)
+- feat: add support for string y-axis in VSBC ([PR #34552](https://github.com/microsoft/fluentui/pull/34552) by kumarkshitij@microsoft.com)
+
+## [5.23.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.97)
+
+Mon, 02 Jun 2025 07:20:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.96..@fluentui/react-charting_v5.23.97)
+
+### Patches
+
+- fix(react-charting): Use colorscale for Grouped Vertical Bar chart ([PR #34530](https://github.com/microsoft/fluentui/pull/34530) by 120183316+srmukher@users.noreply.github.com)
+- Add styling to tables ([PR #34560](https://github.com/microsoft/fluentui/pull/34560) by anushgupta@microsoft.com)
+- fix(react-charting): Move isInvalid function to chart-utilities ([PR #34556](https://github.com/microsoft/fluentui/pull/34556) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.14 ([commit](https://github.com/microsoft/fluentui/commit/228c9e24a8dc443fd756d841b52c231f9e697e92) by beachball)
+
+## [5.23.96](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.96)
+
+Fri, 30 May 2025 07:20:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.95..@fluentui/react-charting_v5.23.96)
+
+### Patches
+
+- fix(react-charting): use piecolorway for donut/pie charts ([PR #34516](https://github.com/microsoft/fluentui/pull/34516) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.13 ([PR #34555](https://github.com/microsoft/fluentui/pull/34555) by beachball)
+
+## [5.23.95](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.95)
+
+Thu, 29 May 2025 07:21:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.94..@fluentui/react-charting_v5.23.95)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.209 ([PR #34273](https://github.com/microsoft/fluentui/pull/34273) by beachball)
+- Bump @fluentui/react to v8.123.0 ([PR #34273](https://github.com/microsoft/fluentui/pull/34273) by beachball)
+
+## [5.23.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.94)
+
+Wed, 28 May 2025 07:21:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.93..@fluentui/react-charting_v5.23.94)
+
+### Patches
+
+- fix(declarative-charts): thin bars fix ([PR #34535](https://github.com/microsoft/fluentui/pull/34535) by anushgupta@microsoft.com)
+
+## [5.23.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.93)
+
+Tue, 27 May 2025 07:20:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.92..@fluentui/react-charting_v5.23.93)
+
+### Patches
+
+- fix(react-charting): Use colorscale for heatmap charts ([PR #34518](https://github.com/microsoft/fluentui/pull/34518) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.12 ([PR #34518](https://github.com/microsoft/fluentui/pull/34518) by beachball)
+
+## [5.23.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.92)
+
+Mon, 26 May 2025 07:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.91..@fluentui/react-charting_v5.23.92)
+
+### Patches
+
+- fix bar gap issue in VSBC ([PR #34525](https://github.com/microsoft/fluentui/pull/34525) by anushgupta@microsoft.com)
+- fix: enable rendering optimization for large datasets + clear large variables after use during image export ([PR #34524](https://github.com/microsoft/fluentui/pull/34524) by kumarkshitij@microsoft.com)
+- support combination of lines and markers ([PR #34505](https://github.com/microsoft/fluentui/pull/34505) by anushgupta@microsoft.com)
+- fix: filter out null values ([PR #34474](https://github.com/microsoft/fluentui/pull/34474) by kumarkshitij@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.11 ([commit](https://github.com/microsoft/fluentui/commit/3ecfb8c6af1077247cd8d57f493d79e60eb3ef49) by beachball)
 
 ## [5.23.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.91)
 

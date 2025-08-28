@@ -5,8 +5,9 @@ import { webLightTheme } from '@fluentui/react-theme';
 
 import { testDrawerBaseScenarios } from '../../e2e/DrawerShared';
 import { InlineDrawer } from './InlineDrawer';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

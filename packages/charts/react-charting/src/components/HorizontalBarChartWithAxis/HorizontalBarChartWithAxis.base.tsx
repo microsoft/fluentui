@@ -44,6 +44,7 @@ import {
   computeLongestBars,
   groupChartDataByYValue,
   MIN_DOMAIN_MARGIN,
+  sortAxisCategories,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
@@ -70,6 +71,10 @@ export class HorizontalBarChartWithAxisBase
   extends React.Component<IHorizontalBarChartWithAxisProps, IHorizontalBarChartWithAxisState>
   implements IChart
 {
+  public static defaultProps: Partial<IHorizontalBarChartWithAxisProps> = {
+    yAxisCategoryOrder: 'default',
+  };
+
   private _points: IHorizontalBarChartWithAxisDataPoint[];
   private _barHeight: number;
   private _colors: string[];
@@ -78,6 +83,7 @@ export class HorizontalBarChartWithAxisBase
   private _calloutId: string;
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _bars: JSX.Element[];
   private _yAxisLabels: string[];
   private _xMax: number;
@@ -138,14 +144,15 @@ export class HorizontalBarChartWithAxisBase
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     this._adjustProps();
-    const reversedBars = [...this._points].reverse();
-    this._yAxisLabels = reversedBars.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y as string);
+    this._yAxisLabels = this._getOrderedYAxisLabels();
     this._xMax = Math.max(
       d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x)!,
       this.props.xMaxValue || 0,
     );
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -255,6 +262,7 @@ export class HorizontalBarChartWithAxisBase
     this.margins = margins;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderContentForOnlyBars = (point: IHorizontalBarChartWithAxisDataPoint): JSX.Element => {
     const { useSingleColor = false, enableGradient = false } = this.props;
     let selectedPointIndex = 0;
@@ -291,6 +299,7 @@ export class HorizontalBarChartWithAxisBase
     );
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderCallout = (props?: IHorizontalBarChartWithAxisDataPoint): JSX.Element | null => {
     return props ? this._renderContentForOnlyBars(props) : null;
   };
@@ -318,6 +327,7 @@ export class HorizontalBarChartWithAxisBase
         ? this._getScales(containerHeight, containerWidth, true)
         : this._getScales(containerHeight, containerWidth, false);
     const xRange = xBarScale.range();
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     let allBars: JSX.Element[] = [];
     // when the chart mounts, the xRange[1] is sometimes seen to be < 0 (like -40) while xRange[0] > 0.
     if (xRange[0] < xRange[1]) {
@@ -537,6 +547,7 @@ export class HorizontalBarChartWithAxisBase
     xBarScale: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yBarScale: any,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     const sortedBars: IHorizontalBarChartWithAxisDataPoint[] = [...singleBarData];
@@ -743,6 +754,7 @@ export class HorizontalBarChartWithAxisBase
     xBarScale: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yBarScale: any,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     let prevWidthPositive = 0;
@@ -893,6 +905,7 @@ export class HorizontalBarChartWithAxisBase
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSX.Element => {
     const { useSingleColor } = this.props;
     const actions: ILegend[] = [];
@@ -1005,5 +1018,28 @@ export class HorizontalBarChartWithAxisBase
   private _getChartTitle = (): string => {
     const { chartTitle, data } = this.props;
     return (chartTitle ? `${chartTitle}. ` : '') + `Horizontal bar chart with ${data?.length || 0} bars. `;
+  };
+
+  private _getOrderedYAxisLabels = () => {
+    const shouldOrderYAxisLabelsByCategoryOrder =
+      this._yAxisType === YAxisType.StringAxis && this.props.yAxisCategoryOrder !== 'default';
+    if (!shouldOrderYAxisLabelsByCategoryOrder) {
+      // Keep the original ordering logic as the default behavior to ensure backward compatibility
+      const reversedBars = [...this._points].reverse();
+      return reversedBars.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y as string);
+    }
+
+    return sortAxisCategories(this._mapCategoryToValues(), this.props.yAxisCategoryOrder);
+  };
+
+  private _mapCategoryToValues = () => {
+    const categoryToValues: Record<string, number[]> = {};
+    this._points.forEach(point => {
+      if (!categoryToValues[point.y]) {
+        categoryToValues[point.y] = [];
+      }
+      categoryToValues[point.y].push(point.x);
+    });
+    return categoryToValues;
   };
 }

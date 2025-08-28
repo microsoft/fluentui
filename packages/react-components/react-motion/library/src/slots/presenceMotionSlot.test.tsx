@@ -21,11 +21,7 @@ const TestMotion = jest.fn(
 const TestComponent: React.FC<TestComponentProps> = props => {
   const state: TestComponentState = {
     components: {
-      // TODO: remove once React v18 slot API is modified
-      // This is a problem at the moment due to UnknownSlotProps assumption
-      // that `children` property is `ReactNode`, which in this case is not valid
-      // as PresenceComponentProps['children'] is `ReactElement`
-      presenceMotion: TestMotion as React.FC<PresenceMotionSlotProps>,
+      presenceMotion: TestMotion,
     },
     presenceMotion: presenceMotionSlot(props.presenceMotion, {
       elementType: TestMotion,
@@ -61,10 +57,10 @@ describe('presenceMotionSlot', () => {
     expect(queryByTestId('root')).not.toBeNull();
     expect(queryByTestId('content')).not.toBeNull();
 
-    expect(TestMotion).toHaveBeenCalledWith(
-      expect.objectContaining({ visible: true, unmountOnExit: true }),
-      expect.any(Object),
-    );
+    expect(TestMotion).toHaveBeenCalledTimes(1);
+
+    const firstCall = TestMotion.mock.calls[0];
+    expect(firstCall[0]).toEqual(expect.objectContaining({ visible: true, unmountOnExit: true }));
 
     // ---
 
@@ -73,10 +69,10 @@ describe('presenceMotionSlot', () => {
     expect(queryByTestId('root')).not.toBeNull();
     expect(queryByTestId('content')).toBeNull();
 
-    expect(TestMotion).toHaveBeenLastCalledWith(
-      expect.objectContaining({ visible: false, unmountOnExit: true }),
-      expect.any(Object),
-    );
+    expect(TestMotion).toHaveBeenCalledTimes(4);
+
+    const lastCall = TestMotion.mock.calls[3];
+    expect(lastCall[0]).toEqual(expect.objectContaining({ visible: false, unmountOnExit: true }));
   });
 
   it('handles object as value', () => {

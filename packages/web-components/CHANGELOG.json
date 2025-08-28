@@ -2,6 +2,333 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 27 Aug 2025 04:06:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.119",
+      "version": "3.0.0-beta.119",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "344cc2b4984bb6fc08d2c0d44a80dca2ea0323a5",
+            "comment": "feat: make tree and tree-item SSR compatible"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Aug 2025 04:07:19 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.118",
+      "version": "3.0.0-beta.118",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "761b211b1b978a0b5b8041f89ba9e86a1dbf58c7",
+            "comment": "fix: remove unnecessary type check and avoid using instanceof in menu-list"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "20d47059a7a6b1d7c052772e840df95f6dd20fd7",
+            "comment": "fix: make tablist more ssr compatible"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Aug 2025 04:07:50 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.117",
+      "version": "3.0.0-beta.117",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a443aa54a00c816089de96d957ed4039a5caad8a",
+            "comment": "fix: remove unnecessary type check for better ssr compatibility"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Aug 2025 04:07:10 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.116",
+      "version": "3.0.0-beta.116",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: remove redundant ts suppressions"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 Aug 2025 04:08:18 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.116",
+      "version": "3.0.0-beta.116",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e81e4694b47d90f3375db3873ccce8ca93ef0db5",
+            "comment": "feat: make components ready for ssr support"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Aug 2025 04:07:50 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.115",
+      "version": "3.0.0-beta.115",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "22f5fcce544cbcde4b2a2b7ee68656c835a1333d",
+            "comment": "fix: avoid setting tabindex before button is connected"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Jul 2025 04:07:07 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.114",
+      "version": "3.0.0-beta.114",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Jul 2025 04:07:23 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.114",
+      "version": "3.0.0-beta.114",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "286ce2b6005c3d2580f6af9188ef7e73a7de91c9",
+            "comment": "a11y: remove vertical margins on dialog to support 400% zoom"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jul 2025 04:07:39 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.113",
+      "version": "3.0.0-beta.113",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "eddafeab690be93419049cdfcc1af124dc06e788",
+            "comment": "fix: remove unnecessary tabindex logic from switch template"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "493a28819075697d2a95546924971dcda3a94c86",
+            "comment": "fix: vertical slider in rtl has the opposite value than the visual"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jul 2025 04:08:39 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.112",
+      "version": "3.0.0-beta.112",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "32098df4c38328469012dec2fa3a684b1d2c6094",
+            "comment": "fix: initially checked radio should be focusable"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Jul 2025 04:08:27 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.111",
+      "version": "3.0.0-beta.111",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9afbdec18a05a1f8bd20ba560754e5c1aa4dd375",
+            "comment": "refactor: move tabindex logic into JS class"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Jun 2025 04:06:55 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.110",
+      "version": "3.0.0-beta.110",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "b187b0751628ee81f8964a83e7e73d323fea36b1",
+            "comment": "fix start and end slot for tabs"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "750d30f9a2fcb2b9d896465994f31c61c05ef2d0",
+            "comment": "fix(dropdown): add anchor positioning fallback logic"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Jun 2025 04:06:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.109",
+      "version": "3.0.0-beta.109",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "29f518aed9699becb81f89996a4f08a3b763d47e",
+            "comment": "fix: progress bar when value is missing in firefox and safari"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Jun 2025 04:06:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.108",
+      "version": "3.0.0-beta.108",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "0faa5951fbd59ea5b666e20b141c6a5547871eb3",
+            "comment": "refactor: use css attr func to calculate progress indicator width"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Jun 2025 04:07:10 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.107",
+      "version": "3.0.0-beta.107",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "e729e4ea591ad577768fa1bc9eb3df19693e4574",
+            "comment": "fix: various field interaction bugs"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f35e9acba80b4c9fd602111ad9c3284e80da7ce3",
+            "comment": "occasionally focusing off of combobox would open and focus listbox"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 May 2025 04:06:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.106",
+      "version": "3.0.0-beta.106",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "burtonsmith@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f90b2181a0b5b46d53f0c1abbd2107c1ba85eb92",
+            "comment": "Co-located types with ES modules. This should not affect users."
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "32bd0b11b7e4f5ab94663efc81cb5f828a02b6f1",
+            "comment": "Accesible name and title for dialog"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 May 2025 04:07:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.105",
+      "version": "3.0.0-beta.105",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "c688d9a55a85dda5eb2851c1783942b174277239",
+            "comment": "fix: dialog click event prevents default for arbitrary content clicks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 May 2025 04:06:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.104",
+      "version": "3.0.0-beta.104",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "601470+mlijanto@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "9cef8e89b544a343bd68a2aa869a2bef11312ced",
+            "comment": "fix: updated rating-display icon color tokens to match the React version."
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fc51468ae17a371b723777c2c2b5e381a050b7b5",
+            "comment": "fix: better fallback positioning for sub menu"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 May 2025 04:06:51 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.103",
+      "version": "3.0.0-beta.103",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "601470+mlijanto@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "60d604640cf64bdfe1bb9ff1a73cd49e129cb822",
+            "comment": "Fixed compound-button high contrast text colors."
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "df3b89c816d24eb74d899da694d028aa90f6b35f",
+            "comment": "Adds click event to close slot of drawer"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 May 2025 04:07:25 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.102",
       "version": "3.0.0-beta.102",

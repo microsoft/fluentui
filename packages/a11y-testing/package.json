@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "Fluent UI tests for a11y patterns.",
   "private": true,
-  "main": "lib-commonjs/src/index.js",
-  "typings": "lib-commonjs/src/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "typings": "lib-commonjs/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -25,9 +25,14 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "jest": "^26.0.0",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.0.0",
+    "jest": ">=26.0.0",
+    "@testing-library/react": "^12 || ^16",
+    "@testing-library/user-event": "^13 || ^14",
     "react": ">=16.8.0 <19.0.0"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib-commonjs"
+  ]
 }

@@ -14,6 +14,7 @@ import {
   ICartesianChartStyles,
   IChildProps,
 } from '../CommonComponents/index';
+import { IStyle } from '@fluentui/react/lib/Styling';
 
 export type { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
 
@@ -89,10 +90,17 @@ export interface ILineChartProps extends ICartesianChartProps {
   enablePerfOptimization?: boolean;
 
   /**
-   * @default default
    * The prop used to define line chart mode(default or scatter)
+   * @deprecated this prop no longer used to identify scatter mode
    */
   lineMode?: 'default' | 'scatter';
+
+  /**
+   * To enable callout for individual line or complete stack.
+   * @default false
+   * @type \{boolean \}
+   */
+  isCalloutForStack?: boolean;
 }
 
 /**
@@ -111,7 +119,9 @@ export interface IEventsAnnotationProps {
  * Line Chart styles
  * {@docCategory LineChart}
  */
-export interface ILineChartStyles extends ICartesianChartStyles {}
+export interface ILineChartStyles extends ICartesianChartStyles {
+  markerLabel?: IStyle;
+}
 
 /**
  * Line Chart style properties

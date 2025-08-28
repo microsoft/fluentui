@@ -33,7 +33,7 @@
   "dependencies": {
     "@fluentui/react-window-provider": "^2.2.30",
     "@fluentui/set-version": "^8.2.24",
-    "@fluentui/utilities": "^8.15.22",
+    "@fluentui/utilities": "^8.15.23",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

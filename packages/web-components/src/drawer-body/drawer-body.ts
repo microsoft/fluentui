@@ -1,4 +1,5 @@
 import { FASTElement } from '@microsoft/fast-element';
+import { isDialog } from '../dialog/dialog.options';
 
 /**
  * A DrawerBody component to layout drawer content
@@ -20,4 +21,22 @@ import { FASTElement } from '@microsoft/fast-element';
  *
  * @tag fluent-drawer-body
  */
-export class DrawerBody extends FASTElement {}
+export class DrawerBody extends FASTElement {
+  /**
+   * Handles click event for the close slot
+   *
+   * @param e - the click event
+   * @internal
+   */
+  public clickHandler(event: PointerEvent): boolean | void {
+    if (!event.defaultPrevented) {
+      const dialog = this.parentElement;
+
+      if (isDialog(dialog, '-drawer')) {
+        dialog.hide();
+      }
+    }
+
+    return true;
+  }
+}

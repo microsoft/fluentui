@@ -3,9 +3,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import {
-  FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
-  MEDIA_QUERY_BREAKPOINT_SELECTOR,
-  MEDIA_QUERY_SHORT_SCREEN,
+  DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+  DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR,
+  DIALOG_MEDIA_QUERY_SHORT_SCREEN,
   SURFACE_BORDER_WIDTH,
   SURFACE_PADDING,
 } from '../../contexts';
@@ -35,7 +35,7 @@ const useRootBaseStyle = makeResetStyles({
   position: 'fixed',
   height: 'fit-content',
   maxWidth: '600px',
-  maxHeight: '100vh',
+  maxHeight: ['100vh', '100dvh'],
   boxSizing: 'border-box',
   backgroundColor: tokens.colorNeutralBackground1,
   color: tokens.colorNeutralForeground1,
@@ -43,18 +43,18 @@ const useRootBaseStyle = makeResetStyles({
   // to ensure dialog will be properly styled when surfaceMotion is opted-out
   boxShadow: tokens.shadow64,
 
-  [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+  [DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
   },
 
-  [MEDIA_QUERY_SHORT_SCREEN]: {
+  [DIALOG_MEDIA_QUERY_SHORT_SCREEN]: {
     overflowY: 'auto',
     // We need to offset the scrollbar by adding transparent borders otherwise
     // it conflicts with the border radius.
-    paddingRight: `calc(${SURFACE_PADDING} - ${FULLSCREEN_DIALOG_SCROLLBAR_OFFSET})`,
-    borderRightWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
-    borderTopWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
-    borderBottomWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+    paddingRight: `calc(${SURFACE_PADDING} - ${DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET})`,
+    borderRightWidth: DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+    borderTopWidth: DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+    borderBottomWidth: DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
   },
 });
 
@@ -64,7 +64,7 @@ const useBackdropBaseStyle = makeResetStyles({
   position: 'fixed',
 });
 
-const useBackdropStyles = makeStyles({
+const useStyles = makeStyles({
   nestedDialogBackdrop: {
     backgroundColor: tokens.colorTransparentBackground,
   },
@@ -81,7 +81,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   const rootBaseStyle = useRootBaseStyle();
 
   const backdropBaseStyle = useBackdropBaseStyle();
-  const backdropStyles = useBackdropStyles();
+  const styles = useStyles();
 
   root.className = mergeClasses(dialogSurfaceClassNames.root, rootBaseStyle, root.className);
 
@@ -89,7 +89,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
     backdrop.className = mergeClasses(
       dialogSurfaceClassNames.backdrop,
       backdropBaseStyle,
-      isNestedDialog && backdropStyles.nestedDialogBackdrop,
+      isNestedDialog && styles.nestedDialogBackdrop,
       backdrop.className,
     );
   }

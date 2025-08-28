@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Dialog } from '@fluentui/react-dialog';
 import { slot } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { toMountNodeProps } from '@fluentui/react-portal';
 
@@ -66,7 +67,7 @@ export const useOverlayDrawer_unstable = (
        * children is not needed here because we construct the children in the render function,
        * but it's required by DialogProps
        */
-      children: null as unknown as JSX.Element,
+      children: null as unknown as JSXElement,
     },
     {
       elementType: Dialog,

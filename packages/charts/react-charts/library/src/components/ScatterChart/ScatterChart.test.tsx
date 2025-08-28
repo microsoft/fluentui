@@ -7,7 +7,7 @@ expect.extend(toHaveNoViolations);
 
 const chartData: ChartProps = {
   chartTitle: 'Sales Performance by Category',
-  lineChartData: [
+  scatterChartData: [
     {
       legend: 'Region 1',
       data: [
@@ -177,11 +177,11 @@ describe('ScatterChart- Subcomponent Legends', () => {
       const circles = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'circle');
       // Assert
       expect(circles).toHaveLength(10);
-      expect(circles[0]).toHaveAttribute('opacity', '1');
-      expect(circles[1]).toHaveAttribute('opacity', '1');
-      expect(circles[2]).toHaveAttribute('opacity', '1');
-      expect(circles[3]).toHaveAttribute('opacity', '1');
-      expect(circles[4]).toHaveAttribute('opacity', '1');
+      expect(circles[0]).toHaveAttribute('opacity', '0.1');
+      expect(circles[1]).toHaveAttribute('opacity', '0.1');
+      expect(circles[2]).toHaveAttribute('opacity', '0.1');
+      expect(circles[3]).toHaveAttribute('opacity', '0.1');
+      expect(circles[4]).toHaveAttribute('opacity', '0.1');
       expect(circles[5]).toHaveAttribute('opacity', '1');
       expect(circles[6]).toHaveAttribute('opacity', '1');
       expect(circles[7]).toHaveAttribute('opacity', '1');

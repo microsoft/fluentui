@@ -11,7 +11,7 @@ import {
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
 
-type CustomTreeItemProps = TreeItemProps;
+type CustomTreeItemProps = TreeItemProps & { children?: React.ReactNode };
 
 const CustomTreeItem = ({ children, ...props }: CustomTreeItemProps) => {
   const focusTargetAttribute = useRestoreFocusTarget();

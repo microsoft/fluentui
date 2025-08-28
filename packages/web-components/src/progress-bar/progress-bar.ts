@@ -1,6 +1,6 @@
 import { attr } from '@microsoft/fast-element';
 import { BaseProgressBar } from './progress-bar.base.js';
-import { ProgressBarShape, ProgressBarThickness } from './progress-bar.options.js';
+import type { ProgressBarShape, ProgressBarThickness } from './progress-bar.options.js';
 
 /**
  * A Progress HTML Element.

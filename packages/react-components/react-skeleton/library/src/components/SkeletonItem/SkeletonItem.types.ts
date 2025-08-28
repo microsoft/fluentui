@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type SkeletonItemSlots = {
-  root: Slot<'div'>;
+  root: Slot<'div', 'span'>;
 };
 
 /**
