@@ -52,12 +52,12 @@ export const LineChartLogAxisExample = (props: LineChartProps) => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onXScaleTypeChange = (event: any, data: any) => {
-    setXScaleType(data.value);
+  const _onXScaleTypeChange = (event: any, d: any) => {
+    setXScaleType(d.value);
   };
 
-  const _onYScaleTypeChange = (event: any, data: any) => {
-    setYScaleType(data.value);
+  const _onYScaleTypeChange = (event: any, d: any) => {
+    setYScaleType(d.value);
   };
 
   const rootStyle = { width: `${width}px`, height: `${height}px` };
