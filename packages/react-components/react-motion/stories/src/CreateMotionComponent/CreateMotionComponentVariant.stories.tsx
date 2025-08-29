@@ -73,26 +73,30 @@ const useClasses = makeStyles({
 });
 
 // Base motion component with configurable parameters
-const FadeMotion = createMotionComponent<{ opacity?: number; duration?: number; easing?: string }>(
-  ({ opacity = 0, duration = 1000, easing = 'ease' }) => ({
-    keyframes: [{ opacity }, { opacity: 1 }, { opacity }],
+const SlideMotion = createMotionComponent<{ fromX?: string; fromY?: string; duration?: number }>(
+  ({ fromX = '0px', fromY = '0px', duration = 1000 }) => ({
+    keyframes: [
+      { transform: `translate(${fromX}, ${fromY})` },
+      { transform: 'translate(0px, 0px)' },
+      { transform: `translate(${fromX}, ${fromY})` },
+    ],
     duration,
-    easing,
     iterations: Infinity,
   }),
 );
 
 // Fast variant with different defaults
-const FastFadeMotion = createMotionComponentVariant(FadeMotion, {
+const FastSlideMotion = createMotionComponentVariant(SlideMotion, {
+  fromX: '-50px',
+  fromY: '-20px',
   duration: 500,
-  easing: 'ease-in-out',
 });
 
 // Slow variant with different defaults
-const SlowFadeMotion = createMotionComponentVariant(FadeMotion, {
-  opacity: 0.2,
+const SlowSlideMotion = createMotionComponentVariant(SlideMotion, {
+  fromX: '100px',
+  fromY: '50px',
   duration: 2000,
-  easing: 'ease-out',
 });
 
 export const CreateMotionComponentVariant = (): JSXElement => {
@@ -113,17 +117,17 @@ export const CreateMotionComponentVariant = (): JSXElement => {
     <div className={classes.container}>
       <div className={classes.cards}>
         <div className={classes.card}>
-          <div className={classes.cardTitle}>Fast Variant (500ms, ease-in-out)</div>
-          <FastFadeMotion imperativeRef={fastMotionRef}>
+          <div className={classes.cardTitle}>Fast Variant (fromX: -50px, fromY: -20px, 500ms)</div>
+          <FastSlideMotion imperativeRef={fastMotionRef}>
             <div className={classes.item} />
-          </FastFadeMotion>
+          </FastSlideMotion>
         </div>
 
         <div className={classes.card}>
-          <div className={classes.cardTitle}>Slow Variant (2000ms, ease-out, opacity: 0.2)</div>
-          <SlowFadeMotion imperativeRef={slowMotionRef}>
+          <div className={classes.cardTitle}>Slow Variant (fromX: 100px, fromY: 50px, 2000ms)</div>
+          <SlowSlideMotion imperativeRef={slowMotionRef}>
             <div className={classes.item} />
-          </SlowFadeMotion>
+          </SlowSlideMotion>
         </div>
       </div>
 
