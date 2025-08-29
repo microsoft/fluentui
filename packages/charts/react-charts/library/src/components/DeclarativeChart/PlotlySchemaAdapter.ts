@@ -44,6 +44,8 @@ import {
   findNumericMinMaxOfY,
   formatScientificLimitWidth,
   MIN_DONUT_RADIUS,
+  calculatePrecision,
+  precisionRound,
 } from '../../utilities/utilities';
 import type {
   Datum,
@@ -84,7 +86,6 @@ import { rgb } from 'd3-color';
 import { Legend, LegendsProps } from '../Legends/index';
 import { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
 import { CartesianChartProps } from '../CommonComponents/index';
-import { calculatePrecision, precisionRound } from '@fluentui/react';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
 export const SINGLE_REPEAT = 'repeat(1, 1fr)';
