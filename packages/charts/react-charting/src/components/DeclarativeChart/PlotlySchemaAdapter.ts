@@ -2662,9 +2662,8 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
       });
     });
 
-    const isAxisTypeCategory =
-      ax?.type === 'category' || (isStringArray(values) && !isNumberArray(values) && !isDateArray(values));
-    if (!isAxisTypeCategory) {
+    const areValuesPureStrings = isStringArray(values) && !isNumberArray(values) && !isDateArray(values);
+    if (ax?.type !== 'category' && !areValuesPureStrings) {
       result[propName] = 'data';
       return;
     }
@@ -2676,7 +2675,9 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
     }
 
     if (!ax?.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
-      const categoriesInTraceOrder = Array.from(new Set(values as string[]));
+      const categoriesInTraceOrder = areValuesPureStrings
+        ? sortCategoriesTopologically(data, axLetter)
+        : Array.from(new Set(values as string[]));
       result[propName] = ax?.autorange === 'reversed' ? categoriesInTraceOrder.reverse() : categoriesInTraceOrder;
       return;
     }
@@ -2978,4 +2979,69 @@ const getAxisType = (data: Data[], axLetter: 'x' | 'y', ax: Partial<LayoutAxis> 
   if (isStringArray(values)) {
     return 'category';
   }
+};
+
+export const sortCategoriesTopologically = (data: Data[], axLetter: 'x' | 'y') => {
+  const graph = new Map<string, Set<string>>();
+
+  // Build directed graph from consecutive category relationships
+  data.forEach((series: Partial<PlotData>) => {
+    let prevNode: string | null = null;
+    series[axLetter]?.forEach(val => {
+      if (isInvalidValue(val)) {
+        return;
+      }
+
+      const node = val as string;
+      if (!graph.has(node)) {
+        graph.set(node, new Set<string>());
+      }
+      if (prevNode !== null) {
+        graph.get(prevNode)!.add(node);
+      }
+      prevNode = node;
+    });
+  });
+
+  const result: string[] = [];
+  const visited: Record<string, number> = {}; // 0 = unvisited, 1 = visiting, 2 = visited
+  let hasCycle = false;
+
+  // Depth-first search with cycle detection
+  const dfs = (node: string) => {
+    if (visited[node] === 1) {
+      hasCycle = true;
+      return;
+    }
+    if (visited[node] === 2) {
+      return;
+    }
+
+    visited[node] = 1;
+    const neighbors = Array.from(graph.get(node)!).reverse();
+    for (const nextNode of neighbors) {
+      dfs(nextNode);
+      if (hasCycle) {
+        return;
+      }
+    }
+    visited[node] = 2;
+    result.push(node);
+  };
+
+  // Run DFS on all nodes
+  const nodes = Array.from(graph.keys());
+  for (const node of nodes) {
+    if (visited[node]) {
+      continue;
+    }
+
+    dfs(node);
+    if (hasCycle) {
+      // If cycle exists, return categories without sorting
+      return nodes;
+    }
+  }
+
+  return result.reverse();
 };
