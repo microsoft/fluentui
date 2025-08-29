@@ -21,7 +21,10 @@ export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> 
 } & MotionParams) => AtomMotion | AtomMotion[];
 
 // @public
-export function createMotionComponent<MotionParams extends Record<string, MotionParam> = {}>(value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>): React_2.FC<MotionComponentProps & MotionParams>;
+export function createMotionComponent<MotionParams extends Record<string, MotionParam> = {}>(value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>): MotionComponent<MotionParams>;
+
+// @public
+export function createMotionComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: MotionComponent<MotionParams>, variantParams: Partial<MotionParams>): MotionComponent<MotionParams>;
 
 // @public (undocumented)
 export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): PresenceComponent<MotionParams>;
@@ -56,6 +59,11 @@ export const durations: {
 
 // @public (undocumented)
 export const MotionBehaviourProvider: React_2.Provider<MotionBehaviourType | undefined>;
+
+// @public (undocumented)
+export type MotionComponent<MotionParams extends Record<string, MotionParam> = {}> = React_2.FC<MotionComponentProps & MotionParams> & {
+    [MOTION_DEFINITION]: AtomMotionFn<MotionParams>;
+};
 
 // @public (undocumented)
 export type MotionComponentProps = {
@@ -99,7 +107,7 @@ export const motionTokens: {
 // @public (undocumented)
 export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React_2.FC<PresenceComponentProps & MotionParams> & {
     (props: PresenceComponentProps & MotionParams): JSXElement | null;
-    [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
+    [MOTION_DEFINITION_2]: PresenceMotionFn<MotionParams>;
     In: React_2.FC<MotionComponentProps & MotionParams>;
     Out: React_2.FC<MotionComponentProps & MotionParams>;
 };
