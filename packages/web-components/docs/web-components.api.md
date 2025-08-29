@@ -3453,9 +3453,7 @@ export type RatingDisplaySize = ValuesOf<typeof RatingDisplaySize>;
 // @public
 export const RatingDisplayStyles: ElementStyles;
 
-// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export const RatingDisplayTemplate: ElementViewTemplate<RatingDisplay>;
 
 // Warning: (ae-internal-missing-underscore) The name "roleForMenuItem" should be prefixed with an underscore because the declaration is marked as @internal
