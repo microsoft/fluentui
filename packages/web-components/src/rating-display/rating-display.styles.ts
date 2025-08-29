@@ -17,11 +17,8 @@ import {
   spacingHorizontalXS,
   spacingHorizontalXXS,
 } from '../theme/design-tokens.js';
-import { svgToDataURI } from "./rating-display.base.js";
-import {
-    defaultIconFilled,
-    defaultIconOutlined,
-} from "./rating-display.template.js";
+import { svgToDataURI } from './rating-display.base.js';
+import { defaultIconFilled, defaultIconOutlined } from './rating-display.template.js';
 
 /**
  * The styles for the Rating Display component.
@@ -97,8 +94,7 @@ export const styles = css`
     --_mask-inline-size: calc(var(--_icon-size) + ${spacingHorizontalXXS});
     --_icon-gradient-stop-visual-adjustment: 0px;
     --_icon-gradient-stop: calc(
-      var(--_mask-inline-size) * var(--_value) -
-      var(--_icon-gradient-stop-visual-adjustment)
+      var(--_mask-inline-size) * var(--_value) - var(--_icon-gradient-stop-visual-adjustment)
     );
 
     background-image: linear-gradient(
@@ -108,10 +104,7 @@ export const styles = css`
     );
     block-size: calc(var(--_icon-size) + 2px);
     display: grid;
-    inline-size: calc(
-      var(--_max) * var(--_mask-inline-size) -
-      ${spacingHorizontalXXS} / 2
-    );
+    inline-size: calc(var(--_max) * var(--_mask-inline-size) - ${spacingHorizontalXXS} / 2);
     mask-image: var(--_mask-image-filled);
     mask-repeat: repeat no-repeat;
     mask-size: var(--_mask-inline-size) var(--_icon-size);
@@ -166,7 +159,7 @@ export const styles = css`
 
     .display::before {
       background-color: var(--_icon-color-value);
-      content: "";
+      content: '';
       grid-area: 1 / 1 / -1 / -1;
       mask: inherit;
       mask-image: var(--_mask-image-outlined);

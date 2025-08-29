@@ -20,8 +20,8 @@ export const defaultIconOutlined = `
  */
 export function ratingDisplayTemplate<T extends RatingDisplay>(): ElementViewTemplate<T> {
   return html<T>`
-    <div ${ref("display")} class="display" aria-hidden="true"></div>
-    <slot name="icon" ${ref("iconSlot")} @slotchange="${x => x.handleSlotChange()}"></slot>
+    <div ${ref('display')} class="display" aria-hidden="true"></div>
+    <slot name="icon" ${ref('iconSlot')} @slotchange="${x => x.handleSlotChange()}"></slot>
     <slot name="value"><span class="value-label" aria-hidden="true">${x => x.value}</span></slot>
     <slot name="count"><span class="count-label" aria-hidden="true">${x => x.formattedCount}</span></slot>
   `;
