@@ -26,6 +26,7 @@ import {
   VerticalBarChartDataPoint,
   SankeyChartData,
   LineChartLineOptions,
+  GanttChartDataPoint,
 } from '../../types/DataPoint';
 import { SankeyChartProps } from '../SankeyChart/index';
 import { VerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -86,6 +87,7 @@ import { rgb } from 'd3-color';
 import { Legend, LegendsProps } from '../Legends/index';
 import { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
 import { CartesianChartProps } from '../CommonComponents/index';
+import { FunnelChartDataPoint, FunnelChartProps } from '../FunnelChart/FunnelChart.types';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
 export const SINGLE_REPEAT = 'repeat(1, 1fr)';
@@ -1210,6 +1212,83 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   };
 };
 
+export const transformPlotlyJsonToGanttChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): GanttChartProps => {
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  let colorScale: ((value: number) => string) | undefined = undefined;
+  const chartData: GanttChartDataPoint[] = input.data
+    .map((series: Partial<PlotData>, index: number) => {
+      colorScale = createColorScale(input.layout, series, colorScale);
+
+      // extract colors for each series only once
+      const extractedColors = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.marker?.color,
+        colorMap,
+        isDarkTheme,
+      ) as string[] | string | undefined;
+      const legend = legends[index];
+      const isXDate = input.layout?.xaxis?.type === 'date' || isDateArray(series.x);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const convertXValueToNumber = (value: any) => {
+        return isInvalidValue(value) ? 0 : isXDate ? +parseLocalDate(value) : +value;
+      };
+
+      return (series.y as Datum[])
+        .map((yVal, i: number) => {
+          if (isInvalidValue(yVal)) {
+            return null;
+          }
+          // resolve color for each legend's bars from the colorscale or extracted colors
+          const color = colorScale
+            ? colorScale(
+                isArrayOrTypedArray(series.marker?.color)
+                  ? ((series.marker?.color as Color[])?.[i % (series.marker?.color as Color[]).length] as number)
+                  : 0,
+              )
+            : resolveColor(extractedColors, i, legend, colorMap, isDarkTheme);
+          const opacity = getOpacity(series, i);
+          const base = convertXValueToNumber(series.base?.[i]);
+          const xVal = convertXValueToNumber(series.x?.[i]);
+
+          return {
+            x: {
+              start: isXDate ? new Date(base) : base,
+              end: isXDate ? new Date(base + xVal) : base + xVal,
+            },
+            y: yVal,
+            legend,
+            color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+          } as GanttChartDataPoint;
+        })
+        .filter(point => point !== null) as GanttChartDataPoint[];
+    })
+    .flat();
+
+  return {
+    data: chartData,
+    showYAxisLables: true,
+    height: input.layout?.height ?? 350,
+    width: input.layout?.width,
+    hideTickOverlap: true,
+    hideLegend,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
+    roundCorners: true,
+    useUTC: false,
+    ...getTitles(input.layout),
+    ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getBarProps(input.data, input.layout, true),
+    ...getAxisTickProps(input.data, input.layout),
+  };
+};
+
 export const transformPlotlyJsonToHeatmapProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
@@ -1728,6 +1807,148 @@ export const transformPlotlyJsonToChartTableProps = (
     width: input.layout?.width,
     height: input.layout?.height,
     styles,
+  };
+};
+
+function getCategoriesAndValues(series: Partial<PlotData>): {
+  categories: (string | number)[];
+  values: (string | number)[];
+} {
+  const orientation = series.orientation || 'h';
+  const y = series.labels ?? series.y ?? series.stage;
+  const x = series.values ?? series.x ?? series.value;
+  const xIsString = isStringArray(x as Datum[] | Datum[][] | TypedArray | undefined);
+  const yIsString = isStringArray(y as Datum[] | Datum[][] | TypedArray | undefined);
+  const xIsNumber = isNumberArray(x as Datum[] | Datum[][] | TypedArray | undefined);
+  const yIsNumber = isNumberArray(y as Datum[] | Datum[][] | TypedArray | undefined);
+
+  // Helper to ensure array of (string | number)
+  const toArray = (arr: unknown): (string | number)[] => {
+    if (Array.isArray(arr)) {
+      return arr as (string | number)[];
+    }
+    if (typeof arr === 'string' || typeof arr === 'number') {
+      return [arr];
+    }
+    return [];
+  };
+
+  if (orientation === 'h') {
+    if (yIsString && xIsNumber) {
+      return { categories: toArray(y), values: toArray(x) };
+    } else if (xIsString && yIsNumber) {
+      return { categories: toArray(x), values: toArray(y) };
+    } else {
+      return { categories: yIsString ? toArray(y) : toArray(x), values: yIsString ? toArray(x) : toArray(y) };
+    }
+  } else {
+    if (xIsString && yIsNumber) {
+      return { categories: toArray(x), values: toArray(y) };
+    } else if (yIsString && xIsNumber) {
+      return { categories: toArray(y), values: toArray(x) };
+    } else {
+      return { categories: xIsString ? toArray(x) : toArray(y), values: xIsString ? toArray(y) : toArray(x) };
+    }
+  }
+}
+
+export const transformPlotlyJsonToFunnelChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): FunnelChartProps => {
+  const funnelData: FunnelChartDataPoint[] = [];
+
+  // Determine if data is stacked based on multiple series with multiple values per series
+  const isStacked =
+    input.data.length > 1 &&
+    input.data.every((series: Partial<PlotData>) => {
+      const values = series.values ?? series.x ?? series.value;
+      const labels = series.labels ?? series.y ?? series.stage;
+      return Array.isArray(labels) && Array.isArray(values) && values.length > 1 && labels.length > 1;
+    });
+
+  if (isStacked) {
+    // Assign a color per series/category and use it for all subValues of that category
+    const seriesColors: Record<string, string> = {};
+    input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
+      const category = series.name || `Category ${seriesIdx + 1}`;
+      // Use the same color for this category across all stages
+      const extractedColors = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.marker?.colors ?? series.marker?.color,
+        colorMap,
+        isDarkTheme,
+      );
+      // Always use the first color for the series/category
+      const color = resolveColor(extractedColors, 0, category, colorMap, isDarkTheme);
+      seriesColors[category] = color;
+
+      const labels = series.labels ?? series.y ?? series.stage;
+      const values = series.values ?? series.x ?? series.value;
+
+      if (!isArrayOrTypedArray(labels) || !isArrayOrTypedArray(values)) {
+        return;
+      }
+      if (labels && isArrayOrTypedArray(labels) && labels.length > 0) {
+        (labels as (string | number)[]).forEach((label: string, i: number) => {
+          const stageIndex = funnelData.findIndex(stage => stage.stage === label);
+          const valueNum = Number((values as (string | number)[])[i]);
+          if (isNaN(valueNum)) {
+            return;
+          }
+          if (stageIndex === -1) {
+            funnelData.push({
+              stage: label,
+              subValues: [{ category, value: valueNum, color }],
+            });
+          } else {
+            funnelData[stageIndex].subValues!.push({ category, value: valueNum, color });
+          }
+        });
+      }
+    });
+  } else {
+    // Non-stacked data handling (multiple series with single-value arrays)
+    input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
+      const { categories, values } = getCategoriesAndValues(series);
+
+      if (!isArrayOrTypedArray(categories) || !isArrayOrTypedArray(values)) {
+        return;
+      }
+
+      const extractedColors = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.marker?.colors ?? series.marker?.color,
+        colorMap,
+        isDarkTheme,
+      );
+
+      categories.forEach((label: string, i: number) => {
+        const color = resolveColor(extractedColors, i, label, colorMap, isDarkTheme);
+        const valueNum = Number(values[i]);
+        if (isNaN(valueNum)) {
+          return;
+        }
+        funnelData.push({
+          stage: label,
+          value: valueNum,
+          color,
+        });
+      });
+    });
+  }
+
+  return {
+    data: funnelData,
+    width: input.layout?.width,
+    height: input.layout?.height,
+    orientation: (input.data[0] as Partial<PlotData>)?.orientation === 'v' ? 'horizontal' : 'vertical',
+    hideLegend: isMultiPlot || input.layout?.showlegend === false,
   };
 };
 
@@ -2710,4 +2931,32 @@ const getAxisType = (data: Data[], axLetter: 'x' | 'y', ax: Partial<LayoutAxis> 
   if (isStringArray(values)) {
     return 'category';
   }
+};
+
+/**
+ * This is experimental. Use it only with valid datetime strings to verify if they conform to the ISO 8601 format.
+ */
+const isoDateRegex = /^\d{4}(-\d{2}(-\d{2})?)?(T\d{2}:\d{2}(:\d{2}(\.\d{1,9})?)?(Z)?)?$/;
+
+/**
+ * We want to display localized date and time in the charts, so the useUTC prop is set to false.
+ * But this can sometimes cause the formatters to display the datetime incorrectly.
+ * To work around this issue, we use this function to adjust datetime strings so that they are always interpreted
+ * as local time, allowing the formatters to produce the correct output.
+ *
+ * FIXME: The formatters should always produce a clear and accurate localized output, regardless of the
+ * format used to create the date object.
+ */
+const parseLocalDate = (value: string | number) => {
+  if (typeof value === 'string') {
+    const match = value.match(isoDateRegex);
+    if (match) {
+      if (!match[3]) {
+        value += 'T00:00';
+      } else if (match[6]) {
+        value = value.replace('Z', '');
+      }
+    }
+  }
+  return new Date(value);
 };
