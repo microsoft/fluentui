@@ -16,6 +16,7 @@ export type {
   ILegendsStyles,
   IShapeProps,
   LegendShape,
+  DataPointShape,
 } from './Legends';
 export { Legends, Shape } from './Legends';
 export type {
