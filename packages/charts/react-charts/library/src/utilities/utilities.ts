@@ -2220,7 +2220,7 @@ export const getRangeForScatterMarkerSize = ({
   return Math.min(extraXPixels, extraYPixels);
 };
 
-export const generateLinearTicks = (tick0: number, tickStep: number, scaleDomain: number[]) => {
+export const generateLinearTicks = (tick0: number, tickStep: number, scaleDomain: number[]): number[] => {
   const domainMin = d3Min(scaleDomain)!;
   const domainMax = d3Max(scaleDomain)!;
 
@@ -2237,7 +2237,12 @@ export const generateLinearTicks = (tick0: number, tickStep: number, scaleDomain
   return ticks;
 };
 
-export const generateMonthlyTicks = (tick0: Date, tickStepInMonths: number, scaleDomain: Date[], useUTC?: boolean) => {
+export const generateMonthlyTicks = (
+  tick0: Date,
+  tickStepInMonths: number,
+  scaleDomain: Date[],
+  useUTC?: boolean,
+): Date[] => {
   const domainMin = +d3Min(scaleDomain)!;
   const domainMax = +d3Max(scaleDomain)!;
 
