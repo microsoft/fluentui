@@ -769,7 +769,7 @@ export const transformPlotlyJsonToGVBCProps = (
     wrapXAxisLables: typeof gvbcData[0]?.name === 'string',
     hideLegend,
     roundCorners: true,
-     ...getTitles(processedInput.layout),
+    ...getTitles(processedInput.layout),
     ...getAxisCategoryOrderProps(processedInput.data, processedInput.layout),
     ...getYMinMaxValues(processedInput.data[0], processedInput.layout),
     ...getXAxisTickFormat(processedInput.data[0], processedInput.layout),
