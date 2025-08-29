@@ -39,7 +39,12 @@ import { GroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChartProps } from '../VerticalBarChart/index';
 import { ChartTableProps } from '../ChartTable/index';
 import { GanttChartProps } from '../GanttChart/index';
-import { findNumericMinMaxOfY, formatScientificLimitWidth, MIN_DONUT_RADIUS } from '../../utilities/utilities';
+import {
+  DEFAULT_DATE_STRING,
+  findNumericMinMaxOfY,
+  formatScientificLimitWidth,
+  MIN_DONUT_RADIUS,
+} from '../../utilities/utilities';
 import type {
   Datum,
   Layout,
@@ -55,6 +60,8 @@ import type {
   LayoutAxis,
   XAxisName,
   TraceInfo,
+  DTickValue,
+  AxisType,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -77,6 +84,7 @@ import { rgb } from 'd3-color';
 import { Legend, LegendsProps } from '../Legends/index';
 import { ScatterChartProps } from '../ScatterChart/ScatterChart.types';
 import { CartesianChartProps } from '../CommonComponents/index';
+import { calculatePrecision, precisionRound } from '@fluentui/react';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
 export const SINGLE_REPEAT = 'repeat(1, 1fr)';
@@ -661,6 +669,7 @@ export const transformPlotlyJsonToVSBCProps = (
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getBarProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
+    ...getAxisTickProps(input.data, input.layout),
   };
 };
 
@@ -775,6 +784,7 @@ export const transformPlotlyJsonToGVBCProps = (
     ...getXAxisTickFormat(processedInput.data[0], processedInput.layout),
     ...yAxisTickFormat,
     ...getBarProps(processedInput.data, processedInput.layout),
+    ...getAxisTickProps(processedInput.data, processedInput.layout),
   };
 };
 
@@ -1067,6 +1077,7 @@ const transformPlotlyJsonToScatterTraceProps = (
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
     ...getAxisScaleTypeProps(input.data, input.layout),
+    ...getAxisTickProps(input.data, input.layout),
   };
 
   if (isAreaChart) {
@@ -1160,6 +1171,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getBarProps(input.data, input.layout, true),
+    ...getAxisTickProps(input.data, input.layout),
   };
 };
 
@@ -1322,6 +1334,7 @@ export const transformPlotlyJsonToHeatmapProps = (
     wrapXAxisLables: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps([firstData], input.layout),
+    ...getAxisTickProps(input.data, input.layout),
   };
 };
 
@@ -1973,7 +1986,7 @@ const createBins = (
 
   if (typeof binSize === 'number' && binSize > 0) {
     const thresholds: number[] = [];
-    const precision = Math.max(getPrecision(minVal), getPrecision(binSize));
+    const precision = Math.max(calculatePrecision(minVal), calculatePrecision(binSize));
     let th = precisionRound(minVal, precision);
 
     while (th < precisionRound(maxVal + binSize, precision)) {
@@ -2028,15 +2041,6 @@ const calculateHistNorm = (
     default:
       return value;
   }
-};
-
-const getPrecision = (value: number) => {
-  return value.toString().split('.')[1]?.length ?? 0;
-};
-
-const precisionRound = (value: number, precision: number) => {
-  const factor = Math.pow(10, precision);
-  return Math.round(value * factor) / factor;
 };
 
 const getLegendShape = (series: Partial<PlotData>): Legend['shape'] => {
@@ -2465,12 +2469,156 @@ const getBarProps = (
 
 type GetAxisScaleTypePropsResult = Pick<CartesianChartProps, 'xScaleType' | 'yScaleType' | 'secondaryYScaleType'>;
 
-const getAxisScaleTypeProps = (
-  data: Data[],
-  layout: Partial<Layout> | undefined,
-): Pick<CartesianChartProps, 'xScaleType' | 'yScaleType' | 'secondaryYScaleType'> => {
+const getAxisScaleTypeProps = (data: Data[], layout: Partial<Layout> | undefined): GetAxisScaleTypePropsResult => {
   const result: GetAxisScaleTypePropsResult = {};
 
+  const axisObjects = getAxisObjects(data, layout);
+
+  if (axisObjects.x?.type === 'log') {
+    result.xScaleType = 'log';
+  }
+  if (axisObjects.y?.type === 'log') {
+    result.yScaleType = 'log';
+  }
+  if (axisObjects.y2?.type === 'log') {
+    result.secondaryYScaleType = 'log';
+  }
+
+  return result;
+};
+
+type GetAxisTickPropsResult = Pick<
+  CartesianChartProps,
+  'tickValues' | 'xAxisTickCount' | 'xAxis' | 'yAxisTickValues' | 'yAxisTickCount' | 'yAxis'
+>;
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/cartesian/tick_value_defaults.js#L8}
+ */
+const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): GetAxisTickPropsResult => {
+  const props: GetAxisTickPropsResult = {};
+  const axisObjects = getAxisObjects(data, layout);
+
+  Object.keys(axisObjects).forEach(axId => {
+    const ax = axisObjects[axId];
+    if (!ax) {
+      return;
+    }
+
+    const axType = getAxisType(data, axId[0] as 'x' | 'y', ax);
+
+    if ((!ax.tickmode || ax.tickmode === 'array') && isArrayOrTypedArray(ax.tickvals)) {
+      const tickValues = axType === 'date' ? ax.tickvals!.map((v: string | number | Date) => new Date(v)) : ax.tickvals;
+
+      if (axId === 'x') {
+        props.tickValues = tickValues;
+      } else if (axId === 'y') {
+        props.yAxisTickValues = tickValues;
+      }
+      return;
+    }
+
+    if ((!ax.tickmode || ax.tickmode === 'linear') && ax.dtick) {
+      const dtick = plotlyDtick(ax.dtick, axType);
+      const tick0 = plotlyTick0(ax.tick0, axType, dtick);
+
+      if (axId === 'x') {
+        props.xAxis = {
+          tickStep: dtick,
+          tick0: tick0,
+        };
+      } else if (axId === 'y') {
+        props.yAxis = {
+          tickStep: dtick,
+          tick0: tick0,
+        };
+      }
+      return;
+    }
+
+    if ((!ax.tickmode || ax.tickmode === 'auto') && typeof ax.nticks === 'number' && ax.nticks >= 0) {
+      if (axId === 'x') {
+        props.xAxisTickCount = ax.nticks;
+      } else if (axId === 'y') {
+        props.yAxisTickCount = ax.nticks;
+      }
+    }
+  });
+
+  return props;
+};
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/cartesian/clean_ticks.js#L16}
+ */
+const plotlyDtick = (dtick: DTickValue | undefined, axType: AxisType | undefined) => {
+  const isLogAx = axType === 'log';
+  const isDateAx = axType === 'date';
+  const isCatAx = axType === 'category';
+  const dtickDflt = isDateAx ? 86400000 : 1;
+
+  if (!dtick) {
+    return dtickDflt;
+  }
+
+  if (isNumber(dtick)) {
+    dtick = Number(dtick);
+    if (dtick <= 0) {
+      return dtickDflt;
+    }
+    if (isCatAx) {
+      // category dtick must be positive integers
+      return Math.max(1, Math.round(dtick));
+    }
+    if (isDateAx) {
+      // date dtick must be at least 0.1ms (our current precision)
+      return Math.max(0.1, dtick);
+    }
+    return dtick;
+  }
+
+  if (typeof dtick !== 'string' || !(isDateAx || isLogAx)) {
+    return dtickDflt;
+  }
+
+  const prefix = dtick.charAt(0);
+  const dtickNum = isNumber(dtick.slice(1)) ? Number(dtick.slice(1)) : 0;
+
+  if (
+    dtickNum <= 0 ||
+    !(
+      // "M<n>" gives ticks every (integer) n months
+      (
+        (isDateAx && prefix === 'M' && dtickNum === Math.round(dtickNum)) ||
+        // "L<f>" gives ticks linearly spaced in data (not in position) every (float) f
+        (isLogAx && prefix === 'L') ||
+        // "D1" gives powers of 10 with all small digits between, "D2" gives only 2 and 5
+        (isLogAx && prefix === 'D' && (dtickNum === 1 || dtickNum === 2))
+      )
+    )
+  ) {
+    return dtickDflt;
+  }
+
+  return dtick;
+};
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/cartesian/clean_ticks.js#L70}
+ */
+const plotlyTick0 = (tick0: number | string | undefined, axType: AxisType | undefined, dtick: string | number) => {
+  if (axType === 'date') {
+    return isDate(tick0) ? new Date(tick0!) : new Date(DEFAULT_DATE_STRING);
+  }
+  if (dtick === 'D1' || dtick === 'D2') {
+    // D1 and D2 modes ignore tick0 entirely
+    return undefined;
+  }
+  // Aside from date axes, tick0 must be numeric
+  return isNumber(tick0) ? Number(tick0) : 0;
+};
+
+const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
   // Traces are grouped by their xaxis property, and for each group/subplot, the adapter functions
   // are called with the corresponding filtered data. As a result, all traces passed to an adapter
   // function share the same xaxis.
@@ -2482,22 +2630,49 @@ const getAxisScaleTypeProps = (
     yAxisIds.add(axisIds.y);
   });
 
-  const isLogAxis = (axLetter: 'x' | 'y', axId: number) => {
-    const axisKey = getAxisKey(axLetter, axId);
-    return layout?.[axisKey]?.type === 'log';
-  };
+  const axisObjects: Record<string, Partial<LayoutAxis> | undefined> = {};
 
-  if (typeof xAxisId === 'number' && isLogAxis('x', xAxisId)) {
-    result.xScaleType = 'log';
+  if (typeof xAxisId === 'number') {
+    axisObjects.x = layout?.[getAxisKey('x', xAxisId)];
   }
 
   const sortedYAxisIds = Array.from(yAxisIds).sort();
-  if (sortedYAxisIds.length > 0 && isLogAxis('y', sortedYAxisIds[0])) {
-    result.yScaleType = 'log';
+  if (sortedYAxisIds.length > 0) {
+    axisObjects.y = layout?.[getAxisKey('y', sortedYAxisIds[0])];
   }
-  if (sortedYAxisIds.length > 1 && isLogAxis('y', sortedYAxisIds[1])) {
-    result.secondaryYScaleType = 'log';
+  if (sortedYAxisIds.length > 1) {
+    axisObjects.y2 = layout?.[getAxisKey('y', sortedYAxisIds[1])];
   }
 
-  return result;
+  return axisObjects;
+};
+
+const getAxisType = (data: Data[], axLetter: 'x' | 'y', ax: Partial<LayoutAxis> | undefined): AxisType | undefined => {
+  const values: Datum[] = [];
+  data.forEach((series: Partial<PlotData>) => {
+    series[axLetter]?.forEach(val => {
+      if (!isInvalidValue(val)) {
+        values.push(val as Datum);
+      }
+    });
+  });
+
+  // Note: When ax.type is explicitly specified, Plotly casts the values to match that type.
+  // Therefore, simply checking the type of the values may not be sufficient. At the moment,
+  // we don’t always perform this casting ourselves and instead use the values as provided.
+
+  if (isNumberArray(values)) {
+    if (ax?.type === 'log') {
+      return 'log';
+    }
+    return 'linear';
+  }
+
+  if (isDateArray(values)) {
+    return 'date';
+  }
+
+  if (isStringArray(values)) {
+    return 'category';
+  }
 };
