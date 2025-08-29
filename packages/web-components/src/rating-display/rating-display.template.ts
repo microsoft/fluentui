@@ -41,5 +41,9 @@ export function ratingDisplayTemplate<
   `;
 }
 
-export const template: ElementViewTemplate<RatingDisplay> =
-    ratingDisplayTemplate();
+/**
+ * The template for the Rating Display component.
+ *
+ * @public
+ */
+export const template: ElementViewTemplate<RatingDisplay> = ratingDisplayTemplate();
