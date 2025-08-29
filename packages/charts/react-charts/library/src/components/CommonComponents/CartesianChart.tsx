@@ -270,6 +270,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       containerWidth: containerWidth,
       hideTickOverlap: props.rotateXAxisLables ? false : props.hideTickOverlap,
       calcMaxLabelWidth: _calcMaxLabelWidthWithTransform,
+      tickStep: props.xAxis?.tickStep,
+      tick0: props.xAxis?.tick0,
     };
 
     /**
@@ -341,6 +343,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       // and the parent chart(HBWA/Vertical etc..) for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
       yAxisPadding: props.yAxisPadding || 0,
+      tickValues: props.yAxisTickValues,
+      tickStep: props.yAxis?.tickStep,
+      tick0: props.yAxis?.tick0,
     };
     /**
      * These scales used for 2 purposes.
