@@ -73,6 +73,12 @@ export interface AreaChartStyles extends CartesianChartStyles {
 export type AxisCategoryOrder = 'default' | 'data' | string[] | 'category ascending' | 'category descending' | 'total ascending' | 'total descending' | 'min ascending' | 'min descending' | 'max ascending' | 'max descending' | 'sum ascending' | 'sum descending' | 'mean ascending' | 'mean descending' | 'median ascending' | 'median descending';
 
 // @public
+export type AxisProps = {
+    tickStep?: number | string;
+    tick0?: number | Date;
+};
+
+// @public
 export type AxisScaleType = 'default' | 'log';
 
 // @public (undocumented)
@@ -179,6 +185,7 @@ export interface CartesianChartProps {
     useUTC?: string | boolean;
     width?: number;
     wrapXAxisLables?: boolean;
+    xAxis?: AxisProps;
     xAxisAnnotation?: string;
     xAxisCategoryOrder?: AxisCategoryOrder;
     xAxisTickCount?: number;
@@ -187,10 +194,12 @@ export interface CartesianChartProps {
     xAxisTitle?: string;
     xMaxValue?: number;
     xScaleType?: AxisScaleType;
+    yAxis?: AxisProps;
     yAxisAnnotation?: string;
     yAxisCategoryOrder?: AxisCategoryOrder;
     yAxisTickCount?: number;
     yAxisTickFormat?: any;
+    yAxisTickValues?: number[] | Date[] | string[];
     yAxisTitle?: string;
     yMaxValue?: number;
     yMinValue?: number;
@@ -1419,6 +1428,7 @@ export interface ScatterChartProps extends CartesianChartProps {
     data: ChartProps;
     getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
     onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
+    showYAxisLablesTooltip?: boolean;
     styles?: ScatterChartStyles;
 }
 
