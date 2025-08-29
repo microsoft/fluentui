@@ -730,22 +730,35 @@ export class BaseProgressBar extends FASTElement {
 // @public
 export class BaseRatingDisplay extends FASTElement {
     constructor();
+    // (undocumented)
+    connectedCallback(): void;
     count?: number;
+    // (undocumented)
+    protected defaultCustomIconViewBox: string;
+    // @internal
+    display: HTMLElement;
     // @internal
     elementInternals: ElementInternals;
     // @internal
     get formattedCount(): string;
-    // @internal
-    generateIcons(): string;
-    protected getMaxIcons(): number;
-    protected getSelectedValue(): number;
+    // @internal (undocumented)
+    handleSlotChange(): void;
+    // @internal (undocumented)
+    iconSlot: HTMLSlotElement;
+    // @deprecated
     iconViewBox?: string;
     max?: number;
-    // @internal (undocumented)
-    slottedIcon: HTMLElement[];
-    // @internal (undocumented)
-    slottedIconChanged(): void;
+    // (undocumented)
+    protected maxChanged(): void;
+    // (undocumented)
+    protected renderSlottedIcon(svg: SVGSVGElement | null): void;
+    // Warning: (ae-forgotten-export) The symbol "PropertyNameForCalculation" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected setCustomPropertyValue(propertyName: PropertyNameForCalculation): void;
     value?: number;
+    // (undocumented)
+    protected valueChanged(): void;
 }
 
 // @public
@@ -3411,10 +3424,6 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 export class RatingDisplay extends BaseRatingDisplay {
     color?: RatingDisplayColor;
     compact: boolean;
-    // @override
-    protected getMaxIcons(): number;
-    // @override
-    protected getSelectedValue(): number;
     size?: RatingDisplaySize;
 }
 
@@ -3444,7 +3453,9 @@ export type RatingDisplaySize = ValuesOf<typeof RatingDisplaySize>;
 // @public
 export const RatingDisplayStyles: ElementStyles;
 
-// @public
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
 export const RatingDisplayTemplate: ElementViewTemplate<RatingDisplay>;
 
 // Warning: (ae-internal-missing-underscore) The name "roleForMenuItem" should be prefixed with an underscore because the declaration is marked as @internal
