@@ -77,6 +77,26 @@ test.describe('DropdownOption', () => {
     await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
   });
 
+  test('removing the `disabled` attribute should set the `disabled` property to false', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { disabled: true } });
+
+    await expect(element).toHaveJSProperty('disabled', true);
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
+
+    await element.evaluate((node: DropdownOption) => {
+      node.removeAttribute('disabled');
+    });
+
+    await expect(element).not.toHaveAttribute('disabled');
+
+    await expect(element).toHaveJSProperty('disabled', false);
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
+  });
+
   test('should NOT set the `selected` attribute to match the `selected` property when the `selected` attribute is NOT present', async ({
     fastPage,
   }) => {
@@ -133,5 +153,27 @@ test.describe('DropdownOption', () => {
     await expect(element).toHaveJSProperty('selected', false);
 
     await expect(element).toHaveJSProperty('elementInternals.ariaSelected', 'false');
+  });
+
+  test('should unset the form value when the option is disabled and selected', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate(/* html */ `
+      <form id="test-form" action="#">
+        <fluent-option name="option" value="hello" selected>Hello</fluent-option>
+      </form>
+    `);
+
+    const form = page.locator('#test-form');
+
+    expect(await form.evaluate((node: HTMLFormElement) => Array.from(new FormData(node).entries()))).toEqual([
+      ['option', 'hello'],
+    ]);
+
+    await element.evaluate((node: DropdownOption) => {
+      node.disabled = true;
+    });
+
+    expect(await form.evaluate((node: HTMLFormElement) => Array.from(new FormData(node).entries()))).toEqual([]);
   });
 });

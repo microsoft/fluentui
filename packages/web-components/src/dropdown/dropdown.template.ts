@@ -35,6 +35,7 @@ export const dropdownInputTemplate = html<BaseDropdown>`
     ?disabled="${x => x.disabled}"
     type="${x => x.type}"
     value="${x => x.valueAttribute}"
+    slot="control"
     ${ref('control')}
   />
 `;
@@ -57,6 +58,7 @@ export const dropdownButtonTemplate = html<BaseDropdown>`
     role="combobox"
     ?disabled="${x => x.disabled}"
     type="button"
+    slot="control"
     ${ref('control')}
   >
     ${x => x.displayValue}
@@ -83,7 +85,7 @@ export function dropdownTemplate<T extends BaseDropdown>(options: DropdownOption
         <slot name="control" ${ref('controlSlot')}></slot>
         <slot name="indicator" ${ref('indicatorSlot')}>${staticallyCompose(options.indicator)}</slot>
       </div>
-      <slot ${ref('listboxSlot')}></slot>
+      <slot @slotchange="${(x, c) => x.slotchangeHandler(c.event)}"></slot>
     </template>
   `;
 }

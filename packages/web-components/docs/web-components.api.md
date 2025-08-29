@@ -630,8 +630,6 @@ export class BaseDropdown extends FASTElement {
     // @internal
     listboxChanged(prev: Listbox | undefined, next: Listbox | undefined): void;
     // @internal
-    listboxSlot: HTMLSlotElement;
-    // @internal
     mousedownHandler(e: MouseEvent): boolean | void;
     multiple?: boolean;
     // @internal
@@ -651,6 +649,8 @@ export class BaseDropdown extends FASTElement {
     selectOption(index?: number, shouldEmit?: boolean): void;
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    // @internal
+    slotchangeHandler(e: Event): boolean | void;
     type: DropdownType;
     // @internal
     typeChanged(prev: DropdownType | undefined, next: DropdownType | undefined): void;
@@ -2945,8 +2945,6 @@ export class Listbox extends FASTElement {
     // @internal
     beforetoggleHandler(e: ToggleEvent): boolean | undefined;
     clickHandler(e: PointerEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
     // @internal
     dropdown?: BaseDropdown;
     // @internal
@@ -2966,6 +2964,7 @@ export class Listbox extends FASTElement {
     selectedIndex: number;
     get selectedOptions(): DropdownOption[];
     selectOption(index?: number): void;
+    slotchangeHandler(e: Event): void;
 }
 
 // @public
