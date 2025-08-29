@@ -497,26 +497,54 @@ export const transformPlotlyJsonToDonutProps = (
     isDarkTheme,
   );
   const mapLegendToDataPoint: Record<string, ChartDataPoint> = {};
-  firstData.labels?.forEach((label, index: number) => {
-    const value = getNumberAtIndexOrDefault(firstData.values, index);
-    if (isInvalidValue(value) || (value as number) < 0) {
-      return;
-    }
+  if (colors) {
+    firstData.labels?.forEach((label, index: number) => {
+      const value = getNumberAtIndexOrDefault(firstData.values, index);
+      if (isInvalidValue(value) || (value as number) < 0) {
+        return;
+      }
 
-    const legend = `${label}`;
-    // resolve color for each legend from the extracted colors
-    const color: string = resolveColor(colors, index, legend, colorMap, isDarkTheme);
+      const legend = `${label}`;
+      // resolve color for each legend from the extracted colors
+      const color: string = resolveColor(colors, index, legend, colorMap, isDarkTheme);
 
-    if (!mapLegendToDataPoint[legend]) {
-      mapLegendToDataPoint[legend] = {
-        legend,
-        data: value,
-        color,
-      };
-    } else {
-      mapLegendToDataPoint[legend].data! += value as number;
+      if (!mapLegendToDataPoint[legend]) {
+        mapLegendToDataPoint[legend] = {
+          legend,
+          data: value,
+          color,
+        };
+      } else {
+        mapLegendToDataPoint[legend].data! += value as number;
+      }
+    });
+  } else {
+    // Sort labels by value descending before mapping
+    if (firstData.labels && firstData.values) {
+      const labelValuePairs = firstData.labels.map((label, index) => ({
+        label,
+        value: getNumberAtIndexOrDefault(firstData.values, index),
+        index,
+      }));
+      // Filter out invalid values
+      const validPairs = labelValuePairs.filter(pair => !isInvalidValue(pair.value));
+      // Sort descending by value
+      validPairs.sort((a, b) => (b.value as number) - (a.value as number));
+      validPairs.forEach((pair, sortedIdx) => {
+        const legend = `${pair.label}`;
+        const color: string = resolveColor(colors, sortedIdx, legend, colorMap, isDarkTheme);
+        if (!mapLegendToDataPoint[legend]) {
+          mapLegendToDataPoint[legend] = {
+            legend,
+            data: pair.value,
+            color,
+          };
+        } else {
+          mapLegendToDataPoint[legend].data! += pair.value as number;
+        }
+      });
     }
-  });
+  }
 
   const width: number = input.layout?.width ?? 440;
   const height: number = input.layout?.height ?? 220;
