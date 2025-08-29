@@ -1419,6 +1419,7 @@ export interface ScatterChartProps extends CartesianChartProps {
     data: ChartProps;
     getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
     onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
+    showYAxisLablesTooltip?: boolean;
     styles?: ScatterChartStyles;
 }
 

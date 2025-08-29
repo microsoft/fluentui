@@ -72,6 +72,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     ChartTypes.HeatMapChart,
     ChartTypes.VerticalStackedBarChart,
     ChartTypes.GanttChart,
+    ChartTypes.ScatterChart,
   ];
   /**
    * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.

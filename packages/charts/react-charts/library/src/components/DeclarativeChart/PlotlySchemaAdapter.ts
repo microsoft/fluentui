@@ -1081,6 +1081,12 @@ const transformPlotlyJsonToScatterTraceProps = (
       roundedTicks: true,
       ...commonProps,
       ...yMinMax,
+      ...(isScatterChart
+        ? {
+            showYAxisLablesTooltip: true,
+            ...getAxisCategoryOrderProps(input.data, input.layout),
+          }
+        : {}),
     } as LineChartProps;
   }
 };

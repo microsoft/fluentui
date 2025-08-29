@@ -24,6 +24,7 @@ import {
   getRangeForScatterMarkerSize,
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfNumericForAreaLineScatterCharts,
+  sortAxisCategories,
 } from '../../utilities/index';
 import {
   AccessibilityProps,
@@ -134,6 +135,17 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     props.data.scatterChartData![0].data.length > 0
       ? (getTypeOfAxis(props.data.scatterChartData![0].data[0].x, true) as XAxisTypes)
       : XAxisTypes.StringAxis;
+
+  // Detect y axis type (numeric or string)
+  const _yAxisType: YAxisType =
+    props.data.scatterChartData &&
+    props.data.scatterChartData.length > 0 &&
+    props.data.scatterChartData[0].data &&
+    props.data.scatterChartData[0].data.length > 0
+      ? typeof props.data.scatterChartData[0].data[0].y === 'string'
+        ? YAxisType.StringAxis
+        : YAxisType.NumericAxis
+      : YAxisType.NumericAxis;
 
   const pointsRef = React.useRef<ScatterChartDataWithIndex[] | []>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -300,6 +312,47 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     );
   }
 
+  function _getOrderedYAxisLabels() {
+    const shouldOrderYAxisLabelsByCategoryOrder =
+      _yAxisType === YAxisType.StringAxis && props.yAxisCategoryOrder !== 'default';
+    if (!shouldOrderYAxisLabelsByCategoryOrder) {
+      // Collect all unique string y values from all data points in all series, in reverse order
+      const yLabelsSet = new Set<string>();
+      for (let i = _points.length - 1; i >= 0; i--) {
+        const point = _points[i];
+        if (point.data && Array.isArray(point.data)) {
+          for (const d of point.data) {
+            if (typeof d.y === 'string') {
+              yLabelsSet.add(d.y);
+            }
+          }
+        }
+      }
+      return Array.from(yLabelsSet);
+    }
+
+    return sortAxisCategories(_mapCategoryToValues(), props.yAxisCategoryOrder);
+  }
+
+  function _mapCategoryToValues() {
+    const categoryToValues: Record<string, number[]> = {};
+    _points.forEach(point => {
+      if (point.data && Array.isArray(point.data)) {
+        point.data.forEach(d => {
+          if (typeof d.y === 'string') {
+            if (!categoryToValues[d.y]) {
+              categoryToValues[d.y] = [];
+            }
+            if (typeof d.x === 'number') {
+              categoryToValues[d.y].push(d.x);
+            }
+          }
+        });
+      }
+    });
+    return categoryToValues;
+  }
+
   function _onLegendSelectionChange(
     legendsSelected: string[],
     event: React.MouseEvent<HTMLButtonElement>,
@@ -343,7 +396,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     })!;
 
     const extraMaxPixels =
-      _xAxisType !== XAxisTypes.StringAxis
+      _xAxisType !== XAxisTypes.StringAxis && _yAxisType !== YAxisType.StringAxis
         ? getRangeForScatterMarkerSize({
             data: _points,
             xScale: _xAxisScale,
@@ -363,7 +416,11 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       for (let j = 0; j < _points[i].data.length; j++) {
         const { x, y, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points?.[i]?.data[j];
         const xPoint = _xAxisScale?.(x);
-        const yPoint = _yAxisScale?.(y);
+        // Use string y axis scale if needed
+        const yPoint =
+          _yAxisType === YAxisType.StringAxis
+            ? _yAxisScale?.(y) + (_yAxisScale?.bandwidth ? _yAxisScale.bandwidth() / 2 : 0)
+            : _yAxisScale?.(y);
         if (!isPlottable(xPoint, yPoint)) {
           continue;
         }
@@ -673,6 +730,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
 
   _xAxisLabels = [...new Set(xAxisLabels)];
 
+  // Compute unique y axis labels for string y axis
+  const _yAxisLabels: string[] = _getOrderedYAxisLabels();
+
   return !_isChartEmpty() ? (
     <CartesianChart
       {...props}
@@ -685,6 +745,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       getmargins={_getMargins}
       getGraphData={_initializeScatterChartData}
       xAxisType={_xAxisType}
+      yAxisType={_yAxisType}
+      // Pass stringDatasetForYAxisDomain only if y axis is string
+      {...(_yAxisType === YAxisType.StringAxis ? { stringDatasetForYAxisDomain: _yAxisLabels } : {})}
       getMinMaxOfYAxis={_getNumericMinMaxOfY}
       getDomainNRangeValues={_getDomainNRangeValues}
       createYAxis={createNumericYAxis}
