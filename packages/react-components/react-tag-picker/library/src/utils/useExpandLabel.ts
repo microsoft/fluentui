@@ -6,11 +6,11 @@ import { TagPickerControlState } from '../TagPickerControl';
 export function useExpandLabel(options: {
   tagPickerId: string;
   state: Pick<TagPickerControlState, 'expandIcon'>;
-}): React.RefObject<HTMLSpanElement> {
+}): React.RefObject<HTMLSpanElement | null> {
   const { tagPickerId, state } = options;
   const { targetDocument } = useFluent();
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
-  const expandIconRef = React.useRef<HTMLSpanElement>(null);
+  const expandIconRef = React.useRef<HTMLSpanElement | null>(null);
 
   const hasExpandIcon = !!state.expandIcon;
   const {

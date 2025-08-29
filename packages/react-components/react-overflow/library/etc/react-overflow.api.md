@@ -75,14 +75,14 @@ export const useOverflowContext: <SelectedValue>(selector: ContextSelector<Overf
 export const useOverflowCount: () => number;
 
 // @internal
-export function useOverflowDivider<TElement extends HTMLElement>(groupId?: string): React_2.RefObject<TElement>;
+export function useOverflowDivider<TElement extends HTMLElement>(groupId?: string): React_2.RefObject<TElement | null>;
 
 // @internal
-export function useOverflowItem<TElement extends HTMLElement>(id: string, priority?: number, groupId?: string): React_2.RefObject<TElement>;
+export function useOverflowItem<TElement extends HTMLElement>(id: string, priority?: number, groupId?: string): React_2.RefObject<TElement | null>;
 
 // @public (undocumented)
 export function useOverflowMenu<TElement extends HTMLElement>(id?: string): {
-    ref: React_2.RefObject<TElement>;
+    ref: React_2.RefObject<TElement | null>;
     overflowCount: number;
     isOverflowing: boolean;
 };

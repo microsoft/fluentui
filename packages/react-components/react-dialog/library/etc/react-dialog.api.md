@@ -94,7 +94,7 @@ export type DialogContextValue = {
     inertTrapFocus: boolean;
     dialogTitleId?: string;
     isNestedDialog: boolean;
-    dialogRef: React_2.Ref<DialogSurfaceElement>;
+    dialogRef: React_2.Ref<DialogSurfaceElement | null>;
     modalType: DialogModalType;
     requestOpenChange: (data: DialogOpenChangeData) => void;
 } & Partial<ReturnType<typeof useModalAttributes>>;
