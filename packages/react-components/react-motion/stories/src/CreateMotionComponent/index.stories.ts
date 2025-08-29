@@ -5,6 +5,7 @@ import { CreateMotionComponentDefault } from './CreateMotionComponentDefault.sto
 export { CreateMotionComponentDefault as Default } from './CreateMotionComponentDefault.stories';
 
 export { CreateMotionComponentFactory as createMotionComponent } from './CreateMotionComponentFactory.stories';
+export { CreateMotionComponentVariant as createMotionComponentVariant } from './CreateMotionComponentVariant.stories';
 
 export { CreateMotionComponentImperativeRefPlayState as imperativeRef } from './CreateMotionComponentImperativeRefPlayState.stories';
 export { CreateMotionComponentTokensUsage as tokens } from './CreateMotionComponentTokensUsage.stories';

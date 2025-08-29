@@ -1,6 +1,7 @@
 export { motionTokens, durations, curves } from './motions/motionTokens';
 
-export { createMotionComponent, type MotionComponentProps } from './factories/createMotionComponent';
+export { createMotionComponent, type MotionComponentProps, type MotionComponent } from './factories/createMotionComponent';
+export { createMotionComponentVariant } from './factories/createMotionComponentVariant';
 export {
   createPresenceComponent,
   type PresenceComponentProps,
