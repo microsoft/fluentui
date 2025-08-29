@@ -5202,6 +5202,7 @@ Object {
   "hideTickOverlap": true,
   "optimizeLargeData": false,
   "roundedTicks": true,
+  "showYAxisLablesTooltip": true,
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
