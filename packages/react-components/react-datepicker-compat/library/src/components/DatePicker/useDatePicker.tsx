@@ -346,6 +346,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   ]);
 
   const onIconClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    ev.preventDefault();
     ev.stopPropagation();
     if (!open && !props.disabled) {
       showDatePickerPopup();
