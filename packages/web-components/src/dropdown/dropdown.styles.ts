@@ -154,7 +154,7 @@ export const styles = css`
   }
 
   /**
-  * Uses focus-ring style use lingerings :focus-within selector due to platform limitations
+  * focus-ring style uses lingering :focus-within selector due to platform limitations
   * TODO: Convert selector to \`:host(:has(:focus-visible)) .control\` when browser support increases
   * ISSUE: https://issues.chromium.org/issues/40062355
   */
