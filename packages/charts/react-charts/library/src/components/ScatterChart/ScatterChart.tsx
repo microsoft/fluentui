@@ -419,7 +419,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         // Use string y axis scale if needed
         const yPoint =
           _yAxisType === YAxisType.StringAxis
-            ? _yAxisScale?.(y) + (_yAxisScale.current?.bandwidth ? _yAxisScale.current.bandwidth() / 2 : 0)
+            ? _yAxisScale?.(y) + (_yAxisScale?.bandwidth ? _yAxisScale.bandwidth() / 2 : 0)
             : _yAxisScale?.(y);
         if (!isPlottable(xPoint, yPoint)) {
           continue;
