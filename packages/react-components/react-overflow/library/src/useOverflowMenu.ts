@@ -5,7 +5,7 @@ import { useOverflowCount } from './useOverflowCount';
 
 export function useOverflowMenu<TElement extends HTMLElement>(
   id?: string,
-): { ref: React.RefObject<TElement | null>; overflowCount: number; isOverflowing: boolean } {
+): { ref: React.MutableRefObject<TElement | null>; overflowCount: number; isOverflowing: boolean } {
   const elementId = useId('overflow-menu', id);
   const overflowCount = useOverflowCount();
   const registerOverflowMenu = useOverflowContext(v => v.registerOverflowMenu);

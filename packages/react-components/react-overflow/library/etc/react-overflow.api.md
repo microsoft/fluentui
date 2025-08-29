@@ -82,7 +82,7 @@ export function useOverflowItem<TElement extends HTMLElement>(id: string, priori
 
 // @public (undocumented)
 export function useOverflowMenu<TElement extends HTMLElement>(id?: string): {
-    ref: React_2.RefObject<TElement | null>;
+    ref: React_2.MutableRefObject<TElement | null>;
     overflowCount: number;
     isOverflowing: boolean;
 };
