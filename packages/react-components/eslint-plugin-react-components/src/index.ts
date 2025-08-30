@@ -1,15 +1,17 @@
 import { name, version } from '../package.json';
 import { RULE_NAME as preferFluentUIV9Name, rule as preferFluentUIV9 } from './rules/prefer-fluentui-v9';
+import { RULE_NAME as noMissingJsxPragmaName, rule as noMissingJsxPragma } from './rules/no-missing-jsx-pragma';
 
 const allRules = {
   [preferFluentUIV9Name]: preferFluentUIV9,
+  [noMissingJsxPragmaName]: noMissingJsxPragma,
 };
 
 const configs = {
   recommended: {
     plugins: [name],
     rules: {
-      // add all recommended rules here
+      [`${name}/${noMissingJsxPragmaName}`]: ['error', { runtime: 'automatic' }],
     },
   },
 };
