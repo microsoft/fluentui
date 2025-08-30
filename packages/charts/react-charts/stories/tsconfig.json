@@ -8,8 +8,7 @@
     "jsx": "react",
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true
+    "resolveJsonModule": true
   },
   "include": [],
   "files": [],

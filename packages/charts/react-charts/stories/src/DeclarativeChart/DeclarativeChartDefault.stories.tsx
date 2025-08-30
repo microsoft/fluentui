@@ -173,7 +173,7 @@ const cachedFetch = (url: string) => {
 
 export const DeclarativeChartBasicExample = (): JSXElement => {
   const declarativeChartRef = React.useRef<IDeclarativeChart>(null);
-  const lastKnownValidLegends = React.useRef<string[]>();
+  const lastKnownValidLegends = React.useRef<string[]>(undefined);
   const { targetDocument: doc } = useFluent();
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const loadedSchemas = React.useRef<{ key: string; schema: any }[]>([]);

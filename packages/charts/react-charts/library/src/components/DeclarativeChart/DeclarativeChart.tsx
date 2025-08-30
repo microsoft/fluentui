@@ -109,7 +109,7 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
    * Optional callback to access the IDeclarativeChart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<IDeclarativeChart>;
+  componentRef?: React.RefObject<IDeclarativeChart | null>;
 
   /**
    * Optional prop to specify the colorway type of the chart.

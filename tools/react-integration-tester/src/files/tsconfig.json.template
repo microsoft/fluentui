@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "lib": ["ES2019", "dom", "ES2020.Intl"],
+    "strict": true,
+    "pretty": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "preserveConstEnums": true,
+    "skipLibCheck": true,
+    "types": [],
+    "baseUrl": ".",
+    "paths": {
+      "react/jsx-runtime": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react/jsx-runtime.d.ts"],
+      "react": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react/index.d.ts"],
+      "react-dom": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react-dom/index.d.ts"]
+    }
+  },
+  "exclude": [
+    "<%= relativePathToProjectDomainRoot %>/**/index.stories.tsx",
+    "<%= relativePathToProjectDomainRoot %>/**/index.stories.ts",
+    "<%= relativePathToProjectDomainRoot %>/**/*.spec.tsx",
+    "<%= relativePathToProjectDomainRoot %>/**/*.test.tsx",
+    "<%= relativePathToProjectDomainRoot %>/**/src/testing/**"
+  ],
+  "include": [
+    "<%= relativePathToProjectDomainRoot %>/**/*.stories.tsx",
+    "<%= relativePathToProjectDomainRoot %>/**/*.stories.ts"
+  ],
+  "files": ["<%= relativePathToWorkspaceRoot %>/typings/static-assets/index.d.ts"]
+}

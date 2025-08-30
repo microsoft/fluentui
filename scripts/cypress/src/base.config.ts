@@ -7,12 +7,38 @@ import type { Configuration } from 'webpack';
 /**
  * use this as base webpack config if you need to customize devServer webpack configuration
  */
+// Generate a deterministic, project-scoped port to avoid collisions when multiple Cypress component
+// test servers start in parallel on the same machine/agent. Allows override via WEBPACK_DEV_SERVER_PORT.
+const webpackProjectRoot = process.cwd();
+const hashToInt = (str: string) => {
+  let h = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    // simple 32-bit hash
+    /* eslint-disable no-bitwise */
+    h = (h << 5) - h + str.charCodeAt(i);
+    h |= 0;
+    /* eslint-enable no-bitwise */
+  }
+  return Math.abs(h);
+};
+// Use a high port range unlikely to collide with other services: 20000-29999
+const deterministicPort = 20000 + (hashToInt(webpackProjectRoot) % 10000);
+
 export const baseWebpackConfig: Configuration = {
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx'],
   },
   mode: 'development',
   devtool: 'eval',
+  // Ensure parallel Cypress component runs don't collide on a fixed port (8080 is webpack-dev-server default).
+  // Pick a deterministic port per project (can be overridden) since some CI setups ignore 'auto'.
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore - devServer is provided by webpack-dev-server typings
+  devServer: {
+    port: process.env.WEBPACK_DEV_SERVER_PORT ? Number(process.env.WEBPACK_DEV_SERVER_PORT) : deterministicPort,
+    host: '127.0.0.1',
+  },
   output: {
     publicPath: '/',
     chunkFilename: '[name].bundle.js',
@@ -80,12 +106,12 @@ export const baseConfig = defineConfig({
   video: false,
   component: {
     specPattern: [path.join(projectRoot, '**/*.e2e.tsx'), path.join(projectRoot, '**/*.cy.tsx')],
+    // Use function API to be able to set dev server port/hostname explicitly.
     devServer: {
-      framework: 'react',
       bundler: 'webpack',
+      framework: 'react',
       webpackConfig: cypressWebpackConfig(),
     },
-
     supportFile: path.join(projectSupportDir, './component.js'),
     indexHtmlFile: path.join(projectSupportDir, './component-index.html'),
   },

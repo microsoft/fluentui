@@ -490,7 +490,7 @@ export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
     chartSchema: Schema;
     colorwayType?: ColorwayType;
-    componentRef?: React_2.RefObject<IDeclarativeChart>;
+    componentRef?: React_2.RefObject<IDeclarativeChart | null>;
     onSchemaChange?: (eventData: Schema) => void;
 }
 

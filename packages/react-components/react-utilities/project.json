@@ -8,6 +8,12 @@
   "targets": {
     "prebuild": {
       "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": [
+        { "externalDependencies": ["@types/react"] },
+        "{projectRoot}/scripts/expand-jsx-intrinsic-elements.ts"
+      ],
+      "outputs": ["{projectRoot}/src/utils/generated-types.ts"],
       "options": {
         "commands": [
           "node -r ../../../scripts/ts-node/src/register scripts/expand-jsx-intrinsic-elements.ts --target-file ./src/utils/generated-types.ts --omit-elements set,center,search",
