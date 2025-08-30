@@ -37,7 +37,7 @@
     "../../packages/react-components/react-migration-v8-v9/stories/**/index.tsx",
     "../../packages/react-components/react-migration-v8-v9/library/**/*.tsx",
     "../../packages/react-components/react-migration-v8-v9/library/**/*.ts",
-    "./src/issues.tsx"
+    "./src/issues/"
   ],
   "files": ["../../typings/static-assets/index.d.ts"]
 }
