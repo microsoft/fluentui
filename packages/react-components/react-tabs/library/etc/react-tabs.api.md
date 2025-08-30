@@ -98,7 +98,7 @@ export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content' | 'valu
 // @public (undocumented)
 export type TabRegisterData = {
     value: TabValue;
-    ref: React_2.RefObject<HTMLElement>;
+    ref: React_2.RefObject<HTMLElement | null>;
 };
 
 // @public (undocumented)

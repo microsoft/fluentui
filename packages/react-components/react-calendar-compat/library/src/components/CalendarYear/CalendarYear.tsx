@@ -35,7 +35,7 @@ interface CalendarYearGridCellProps extends CalendarYearProps {
 interface CalendarYearGridProps extends CalendarYearProps, CalendarYearRange {
   selectedYear?: number;
   animateBackwards?: boolean;
-  componentRef?: React.RefObject<CalendarYearGridCell>;
+  componentRef?: React.RefObject<CalendarYearGridCell | null>;
 }
 
 interface CalendarYearGridCell {

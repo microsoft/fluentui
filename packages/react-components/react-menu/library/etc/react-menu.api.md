@@ -379,14 +379,14 @@ export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'ha
     contextTarget?: PositioningVirtualElement;
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;
-    menuPopoverRef: React_2.MutableRefObject<HTMLElement>;
+    menuPopoverRef: React_2.MutableRefObject<HTMLElement | null>;
     menuTrigger: React_2.ReactNode;
     setContextTarget: SetVirtualMouseTarget;
     setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData & {
         ignoreHoverDelay?: boolean;
     }) => void;
     triggerId: string;
-    triggerRef: React_2.MutableRefObject<HTMLElement>;
+    triggerRef: React_2.MutableRefObject<HTMLElement | null>;
     onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
     defaultCheckedValues?: Record<string, string[]>;
     safeZone?: React_2.ReactElement | null;

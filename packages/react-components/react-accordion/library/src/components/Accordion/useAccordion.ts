@@ -22,6 +22,7 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
     onToggle,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     navigation,
+    ...rest
   } = props;
   const [openItems, setOpenItems] = useControllableState({
     state: React.useMemo(() => normalizeValues(controlledOpenItems), [controlledOpenItems]),
@@ -52,7 +53,7 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ...props,
+        ...rest,
 
         ...(navigation ? arrowNavigationProps : undefined),
         // FIXME:

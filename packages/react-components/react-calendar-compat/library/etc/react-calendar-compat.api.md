@@ -51,7 +51,7 @@ export interface CalendarDayGridProps extends DayGridOptions {
     allFocusable?: boolean;
     animationDirection?: AnimationDirection;
     className?: string;
-    componentRef?: React_2.RefObject<ICalendarDayGrid>;
+    componentRef?: React_2.RefObject<ICalendarDayGrid | null>;
     customDayCellRef?: (element: HTMLElement, date: Date, classNames: CalendarDayGridStyles) => void;
     dateRangeType: DateRangeType;
     dateTimeFormatter: DateFormatting;
@@ -114,7 +114,7 @@ export interface CalendarDayGridStyles {
 export interface CalendarDayProps extends CalendarDayGridProps {
     allFocusable?: boolean;
     className?: string;
-    componentRef?: React_2.RefObject<ICalendarDay>;
+    componentRef?: React_2.RefObject<ICalendarDay | null>;
     dateTimeFormatter: DateFormatting;
     maxDate?: Date;
     minDate?: Date;
@@ -155,7 +155,7 @@ export interface CalendarMonthProps {
     allFocusable?: boolean;
     animationDirection?: AnimationDirection;
     className?: string;
-    componentRef?: React_2.RefObject<ICalendarMonth>;
+    componentRef?: React_2.RefObject<ICalendarMonth | null>;
     dateTimeFormatter?: DateFormatting;
     highlightCurrentMonth?: boolean;
     highlightSelectedMonth?: boolean;
@@ -224,7 +224,7 @@ export interface CalendarProps extends React_2.RefAttributes<HTMLDivElement> {
     calendarDayProps?: Partial<CalendarDayProps>;
     calendarMonthProps?: Partial<CalendarMonthProps>;
     className?: string;
-    componentRef?: React_2.RefObject<ICalendar>;
+    componentRef?: React_2.RefObject<ICalendar | null>;
     dateRangeType?: DateRangeType;
     dateTimeFormatter?: DateFormatting;
     firstDayOfWeek?: DayOfWeek;
@@ -309,7 +309,7 @@ export interface CalendarYearHeaderProps extends CalendarYearProps, CalendarYear
 export interface CalendarYearProps {
     animationDirection?: AnimationDirection;
     className?: string;
-    componentRef?: React_2.RefObject<ICalendarYear>;
+    componentRef?: React_2.RefObject<ICalendarYear | null>;
     highlightCurrentYear?: boolean;
     highlightSelectedYear?: boolean;
     maxYear?: number;

@@ -3,7 +3,7 @@ import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import type { MenuItemState } from '../../components/index';
 import type { ARIAButtonElementIntersection } from '@fluentui/react-aria';
 
-export const useCharacterSearch = (state: MenuItemState, ref: React.RefObject<HTMLElement>): MenuItemState => {
+export const useCharacterSearch = (state: MenuItemState, ref: React.RefObject<HTMLElement | null>): MenuItemState => {
   'use no memo';
 
   const setFocusByFirstCharacter = useMenuListContext_unstable(context => context.setFocusByFirstCharacter);

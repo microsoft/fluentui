@@ -11,7 +11,7 @@ import type { DatePickerProps } from '../DatePicker';
  */
 export function usePopupPositioning(
   props: DatePickerProps,
-): [triggerRef: React.MutableRefObject<HTMLElement>, popupRef: React.MutableRefObject<HTMLDivElement>] {
+): [triggerRef: React.MutableRefObject<HTMLElement | null>, popupRef: React.MutableRefObject<HTMLDivElement | null>] {
   const { positioning } = props;
 
   const popupOptions = {
