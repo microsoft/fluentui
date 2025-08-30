@@ -5,7 +5,7 @@ import type { RatingDisplay } from './rating-display.js';
 function encodedSvg(str: string, browserName: string) {
   return encodeURIComponent(str)
     .replaceAll('.', browserName === 'webkit' ? '\\.' : '.')
-    .replaceAll('%', browserName === 'webkit' ? '\\%' : '%')
+    .replaceAll('%', browserName === 'webkit' ? '\\%' : '%');
 }
 
 test.describe('Rating Display', () => {
@@ -61,7 +61,7 @@ test.describe('Rating Display', () => {
 
     await expect(element).toHaveJSProperty('value', 3.5);
     await expect(element.locator('.value-label')).toHaveText('3.5');
-    await expect(display).toHaveCSS('inline-size', `${5 * (16 + 2) - 2 /2}px`);
+    await expect(display).toHaveCSS('inline-size', `${5 * (16 + 2) - 2 / 2}px`);
     await expect(display).toHaveCSS(
       'background-image',
       browserName === 'chromium'
@@ -133,7 +133,7 @@ test.describe('Rating Display', () => {
     await expect(element).toHaveJSProperty('size', undefined);
 
     await expect(element).toHaveCSS('--_icon-size', '16px');
-    await expect(display).toHaveCSS('inline-size', `${5 * (16 + 2) - 2 /2}px`);
+    await expect(display).toHaveCSS('inline-size', `${5 * (16 + 2) - 2 / 2}px`);
     await expect(display).toHaveCSS('block-size', '16px');
     await expect(value).toHaveCSS('font-size', '12px');
     await expect(value).toHaveCSS('line-height', '16px');
@@ -147,7 +147,7 @@ test.describe('Rating Display', () => {
 
     await expect(element).toHaveJSProperty('size', RatingDisplaySize.small);
     await expect(element).toHaveCSS('--_icon-size', '12px');
-    await expect(display).toHaveCSS('inline-size', `${5 * (12 + 2) - 2 /2}px`);
+    await expect(display).toHaveCSS('inline-size', `${5 * (12 + 2) - 2 / 2}px`);
     await expect(display).toHaveCSS('block-size', '12px');
     await expect(value).toHaveCSS('font-size', '12px');
     await expect(value).toHaveCSS('line-height', '16px');
@@ -161,7 +161,7 @@ test.describe('Rating Display', () => {
 
     await expect(element).toHaveJSProperty('size', RatingDisplaySize.large);
     await expect(element).toHaveCSS('--_icon-size', '20px');
-    await expect(display).toHaveCSS('inline-size', `${5 * (20 + 2) - 2 /2}px`);
+    await expect(display).toHaveCSS('inline-size', `${5 * (20 + 2) - 2 / 2}px`);
     await expect(display).toHaveCSS('block-size', '20px');
     await expect(value).toHaveCSS('font-size', '14px');
     await expect(value).toHaveCSS('line-height', '20px');
@@ -171,8 +171,9 @@ test.describe('Rating Display', () => {
   test('should use custom icons when provided', async ({ fastPage, browserName }) => {
     const { element } = fastPage;
     const display = element.locator('.display');
-    const customIconPath = '<path d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2Z"></path>';
-    const customIcon =  /* html */ `<svg slot="icon">${customIconPath}</svg>`;
+    const customIconPath =
+      '<path d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2Z"></path>';
+    const customIcon = /* html */ `<svg slot="icon">${customIconPath}</svg>`;
 
     await fastPage.setTemplate({
       attributes: { value: '4.1' },
