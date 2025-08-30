@@ -102,7 +102,7 @@ export const styles = css`
       var(--_icon-color-value) var(--_icon-gradient-stop),
       var(--_icon-color-empty) calc(var(--_icon-gradient-stop) + 0.5px)
     );
-    block-size: calc(var(--_icon-size) + 2px);
+    block-size: var(--_icon-size);
     display: grid;
     inline-size: calc(var(--_max) * var(--_mask-inline-size) - ${spacingHorizontalXXS} / 2);
     mask-image: var(--_mask-image-filled);
