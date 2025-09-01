@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DataVizPalette, GanttChart, GanttChartDataPoint } from '@fluentui/react-charts';
 import { Switch, makeStyles, shorthands } from '@fluentui/react-components';
 
@@ -110,7 +111,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const GanttChartGrouped = () => {
+export const GanttChartGrouped = (): JSXElement => {
   const styles = useStyles();
   const [width, setWidth] = React.useState(600);
   const [height, setHeight] = React.useState(350);

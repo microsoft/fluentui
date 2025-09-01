@@ -21,7 +21,7 @@ const focusMap = {
  *
  * @param props - props from this instance of Card
  */
-const useCardInteractive = ({ focusMode: initialFocusMode, ...props }: CardProps) => {
+const useCardInteractive = ({ focusMode: initialFocusMode, disabled = false, ...props }: CardProps) => {
   const interactive = (
     [
       'onClick',
@@ -44,14 +44,26 @@ const useCardInteractive = ({ focusMode: initialFocusMode, ...props }: CardProps
     tabBehavior: focusMap[focusMode],
   });
 
-  const interactiveFocusAttributes = {
-    ...groupperAttrs,
-    tabIndex: 0,
-  };
+  if (disabled) {
+    return {
+      interactive: false,
+      focusAttributes: null,
+    };
+  }
+
+  if (focusMode === 'off') {
+    return {
+      interactive,
+      focusAttributes: null,
+    };
+  }
 
   return {
     interactive,
-    focusAttributes: focusMode === 'off' ? null : interactiveFocusAttributes,
+    focusAttributes: {
+      ...groupperAttrs,
+      tabIndex: 0,
+    },
   };
 };
 
@@ -65,7 +77,7 @@ const useCardInteractive = ({ focusMode: initialFocusMode, ...props }: CardProps
  * @param ref - reference to the root element of Card
  */
 export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardState => {
-  const { appearance = 'filled', orientation = 'vertical', size = 'medium' } = props;
+  const { appearance = 'filled', orientation = 'vertical', size = 'medium', disabled = false, ...restProps } = props;
 
   const [referenceId, setReferenceId] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
   const [referenceLabel, setReferenceLabel] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
@@ -78,6 +90,20 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
 
   const { interactive, focusAttributes } = useCardInteractive(props);
 
+  let cardRootProps = {
+    ...(!selectable ? focusAttributes : null),
+    ...restProps,
+    ...selectableCardProps,
+  };
+
+  if (disabled) {
+    cardRootProps = {
+      ...restProps,
+      'aria-disabled': true,
+      onClick: undefined,
+    };
+  }
+
   return {
     appearance,
     orientation,
@@ -86,6 +112,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
     selectable,
     selectFocused,
     selected,
+    disabled,
     selectableA11yProps: {
       setReferenceId,
       referenceId,
@@ -103,9 +130,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
       getIntrinsicElementProps('div', {
         ref: cardRef,
         role: 'group',
-        ...(!selectable ? focusAttributes : null),
-        ...props,
-        ...selectableCardProps,
+        ...cardRootProps,
       }),
       { elementType: 'div' },
     ),

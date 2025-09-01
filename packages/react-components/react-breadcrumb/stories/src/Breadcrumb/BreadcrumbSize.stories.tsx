@@ -1,9 +1,10 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider, BreadcrumbButton } from '@fluentui/react-components';
 import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular } from '@fluentui/react-icons';
 const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 
-export const BreadcrumbSize = () => {
+export const BreadcrumbSize = (): JSXElement => {
   return (
     <>
       <Breadcrumb aria-label="Small breadcrumb example with buttons" size="small">

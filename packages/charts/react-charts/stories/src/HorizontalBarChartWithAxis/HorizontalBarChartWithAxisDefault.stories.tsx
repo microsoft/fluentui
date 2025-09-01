@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   HorizontalBarChartWithAxisDataPoint,
   HorizontalBarChartWithAxis,
@@ -15,7 +16,7 @@ import {
   RadioGroupOnChangeData,
 } from '@fluentui/react-components';
 
-export const HorizontalBarWithAxisBasic = () => {
+export const HorizontalBarWithAxisBasic = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [isCalloutselected, setIsCalloutselected] = React.useState<boolean>(false);

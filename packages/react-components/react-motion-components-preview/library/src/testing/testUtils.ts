@@ -13,7 +13,7 @@ function getMotionFunction(component: PresenceComponent): PresenceMotionFn | nul
   return null;
 }
 
-export function expectPresenceMotionObject(component: PresenceComponent) {
+export function expectPresenceMotionObject(component: PresenceComponent): void {
   const presenceMotionFn = getMotionFunction(component);
 
   expect(
@@ -38,7 +38,7 @@ export function expectPresenceMotionObject(component: PresenceComponent) {
   });
 }
 
-export function expectPresenceMotionArray(component: PresenceComponent) {
+export function expectPresenceMotionArray(component: PresenceComponent): void {
   const presenceMotionFn = getMotionFunction(component);
 
   // eslint-disable-next-line @nx/workspace-no-restricted-globals
@@ -62,7 +62,7 @@ export function expectPresenceMotionArray(component: PresenceComponent) {
   });
 }
 
-export function expectPresenceMotionFunction(PresenceComponent: PresenceComponent) {
+export function expectPresenceMotionFunction(PresenceComponent: PresenceComponent): void {
   const presenceMotionFn = getMotionFunction(PresenceComponent);
 
   expect(presenceMotionFn).toBeInstanceOf(Function);

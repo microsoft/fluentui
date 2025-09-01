@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   VerticalBarChart,
   VerticalBarChartDataPoint,
@@ -24,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const VerticalBarAllNegative = () => {
+export const VerticalBarAllNegative = (): JSXElement => {
   const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);

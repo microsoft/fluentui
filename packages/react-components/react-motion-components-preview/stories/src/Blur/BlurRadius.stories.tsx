@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, Button } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurRadiusDescription from './BlurRadius.stories.md';
@@ -43,7 +44,7 @@ const blurRadiusOptions = [
   { label: 'Extra Large (100px)', value: '100px' },
 ];
 
-export const Radius = () => {
+export const Radius = (): JSXElement => {
   const classes = useClasses();
   const [visibleStates, setVisibleStates] = React.useState<boolean[]>(blurRadiusOptions.map(() => true));
 

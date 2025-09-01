@@ -49,7 +49,7 @@ import {
   createNumericYAxis,
   IDomainNRange,
   domainRangeOfVerticalNumeric,
-  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfXStringAxis,
   createStringYAxis,
   calcTotalWidth,
@@ -155,7 +155,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     if (xAxisType === XAxisTypes.NumericAxis) {
       domainNRangeValue = domainRangeOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
     } else if (xAxisType === XAxisTypes.DateAxis) {
-      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+      domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
         points,
         margins,
         width,

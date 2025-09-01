@@ -22,7 +22,7 @@ export function writeContainerUpdates(options: {
   strategy: Strategy;
   coordinates: Coords;
   useTransform?: boolean;
-}) {
+}): void {
   const { container, placement, middlewareData, strategy, lowPPI, coordinates, useTransform = true } = options;
   if (!container) {
     return;

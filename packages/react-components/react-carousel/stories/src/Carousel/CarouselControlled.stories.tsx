@@ -19,6 +19,7 @@ import {
   CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   carousel: {
@@ -119,7 +120,7 @@ const WireframeContent: React.FC<{
   );
 };
 
-export const Controlled = () => {
+export const Controlled = (): JSXElement => {
   const [activeIndex, setActiveIndex] = React.useState(1);
   const classes = useClasses();
 

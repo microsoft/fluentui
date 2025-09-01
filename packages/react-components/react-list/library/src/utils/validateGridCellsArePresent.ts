@@ -5,7 +5,7 @@
  * @param listItemEl - The list item element
  * @returns
  */
-export const validateGridCellsArePresent = (listRole: string, listItemEl: HTMLElement) => {
+export const validateGridCellsArePresent = (listRole: string, listItemEl: HTMLElement): void => {
   if (listRole !== 'grid') {
     return;
   }

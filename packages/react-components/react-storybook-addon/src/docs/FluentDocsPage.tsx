@@ -17,6 +17,7 @@ import { Link } from '@fluentui/react-link';
 import { Text } from '@fluentui/react-text';
 import { makeStyles } from '@griffel/react';
 import { InfoFilled } from '@fluentui/react-icons';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import { DIR_ID, THEME_ID } from '../constants';
 import { themes } from '../theme';
@@ -304,7 +305,7 @@ const RenderPrimaryStory = ({
   );
 };
 
-export const FluentDocsPage = () => {
+export const FluentDocsPage = (): JSXElement => {
   const context = React.useContext(DocsContext);
 
   // Get the fluent docs page configuration from context

@@ -3,7 +3,10 @@ import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { HTMLElementWalker, createHTMLElementWalker } from '../utils/createHTMLElementWalker';
 import { treeItemFilter } from '../utils/treeItemFilter';
 
-export function useHTMLElementWalkerRef() {
+export function useHTMLElementWalkerRef(): {
+  walkerRef: React.MutableRefObject<HTMLElementWalker | undefined>;
+  rootRef: React.Ref<HTMLElement>;
+} {
   const { targetDocument } = useFluent_unstable();
 
   const walkerRef = React.useRef<HTMLElementWalker>();

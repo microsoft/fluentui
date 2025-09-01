@@ -1,4 +1,5 @@
 import { Divider, Switch } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { curves, durations } from '@fluentui/react-motion';
 import * as React from 'react';
 
@@ -93,7 +94,7 @@ function useAnimationEnabled() {
   return [animationEnabled, setAnimationEnabled] as const;
 }
 
-export const MotionCurves = () => {
+export const MotionCurves = (): JSXElement => {
   const classes = useClasses();
   const [animationEnabled, setAnimationEnabled] = useAnimationEnabled();
 
@@ -120,7 +121,7 @@ export const MotionCurves = () => {
   );
 };
 
-export const MotionDuration = () => {
+export const MotionDuration = (): JSXElement => {
   const classes = useClasses();
   const [animationEnabled, setAnimationEnabled] = useAnimationEnabled();
 

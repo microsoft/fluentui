@@ -14,7 +14,8 @@ const defaultContextValue: DrawerContextValue = {
 
 export const drawerContext = React.createContext<DrawerContextValue | undefined>(undefined);
 export const DrawerProvider = drawerContext.Provider;
-export const useDrawerContext_unstable = () => React.useContext(drawerContext) ?? defaultContextValue;
+export const useDrawerContext_unstable = (): DrawerContextValue =>
+  React.useContext(drawerContext) ?? defaultContextValue;
 
 export const useDrawerContextValue = (): DrawerContextValue => {
   const [scrollState, setScrollState] = React.useState<DrawerScrollState>('none');

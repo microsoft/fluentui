@@ -48,7 +48,7 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverBodyStyles_unstable = (state: TeachingPopoverBodyState) => {
+export const useTeachingPopoverBodyStyles_unstable = (state: TeachingPopoverBodyState): TeachingPopoverBodyState => {
   'use no memo';
 
   const { mediaLength } = state;

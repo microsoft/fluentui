@@ -6,7 +6,19 @@ import { useTabster } from './useTabster';
 /**
  * Returns a set of helper functions that will traverse focusable elements in the context of a root DOM element
  */
-export const useFocusFinders = () => {
+export const useFocusFinders = (): {
+  findAllFocusable: (container: HTMLElement, acceptCondition?: (el: HTMLElement) => boolean) => HTMLElement[];
+  findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
+  findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
+  findNextFocusable: (
+    currentElement: HTMLElement,
+    options?: { container?: HTMLElement },
+  ) => HTMLElement | null | undefined;
+  findPrevFocusable: (
+    currentElement: HTMLElement,
+    options?: { container?: HTMLElement },
+  ) => HTMLElement | null | undefined;
+} => {
   const tabsterRef = useTabster();
   const { targetDocument } = useFluent();
 

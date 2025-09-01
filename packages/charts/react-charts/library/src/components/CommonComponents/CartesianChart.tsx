@@ -72,6 +72,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     ChartTypes.HeatMapChart,
     ChartTypes.VerticalStackedBarChart,
     ChartTypes.GanttChart,
+    ChartTypes.ScatterChart,
   ];
   /**
    * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
@@ -269,6 +270,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       containerWidth: containerWidth,
       hideTickOverlap: props.rotateXAxisLables ? false : props.hideTickOverlap,
       calcMaxLabelWidth: _calcMaxLabelWidthWithTransform,
+      tickStep: props.xAxis?.tickStep,
+      tick0: props.xAxis?.tick0,
     };
 
     /**
@@ -282,7 +285,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     let tickValues: (string | number)[];
     switch (props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, props.tickParams!, props.chartType, culture));
+        ({ xScale, tickValues } = createNumericXAxis(
+          XAxisParams,
+          props.tickParams!,
+          props.chartType,
+          culture,
+          props.xScaleType,
+        ));
         break;
       case XAxisTypes.DateAxis:
         ({ xScale, tickValues } = createDateXAxis(
@@ -305,7 +314,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         ));
         break;
       default:
-        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, props.tickParams!, props.chartType, culture));
+        ({ xScale, tickValues } = createNumericXAxis(
+          XAxisParams,
+          props.tickParams!,
+          props.chartType,
+          culture,
+          props.xScaleType,
+        ));
     }
     _xScale = xScale;
     _tickValues = tickValues;
@@ -328,6 +343,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       // and the parent chart(HBWA/Vertical etc..) for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
       yAxisPadding: props.yAxisPadding || 0,
+      tickValues: props.yAxisTickValues,
+      tickStep: props.yAxis?.tickStep,
+      tick0: props.yAxis?.tick0,
     };
     /**
      * These scales used for 2 purposes.
@@ -377,6 +395,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           chartType,
           true,
           props.roundedTicks!,
+          props.secondaryYScaleType,
         );
       }
       yScalePrimary = props.createYAxis(
@@ -387,6 +406,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         chartType,
         false,
         props.roundedTicks!,
+        props.yScaleType,
       );
     }
 

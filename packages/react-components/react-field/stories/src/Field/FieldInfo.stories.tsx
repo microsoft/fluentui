@@ -1,9 +1,10 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, Input, LabelProps } from '@fluentui/react-components';
 import { InfoLabel } from '@fluentui/react-components';
 
-export const Info = () => (
+export const Info = (): JSXElement => (
   <Field
     label={{
       // Setting children to a render function allows you to replace the entire slot.

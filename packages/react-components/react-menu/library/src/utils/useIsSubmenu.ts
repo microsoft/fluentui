@@ -10,7 +10,7 @@ import { MenuListContext } from '../contexts/menuListContext';
  *
  * @returns whether the component is part of a submenu
  */
-export function useIsSubmenu() {
+export function useIsSubmenu(): boolean {
   const menuContextValue = useMenuContext_unstable(context => context.isSubmenu);
   const hasMenuListContext = useHasParentContext(MenuListContext);
 

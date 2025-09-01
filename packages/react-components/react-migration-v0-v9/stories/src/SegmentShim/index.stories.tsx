@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 import { Segment, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { makeStyles } from '@fluentui/react-components';
@@ -10,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const styles = useStyles();
 
   return (

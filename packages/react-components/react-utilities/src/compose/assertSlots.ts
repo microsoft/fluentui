@@ -15,7 +15,7 @@ type SlotComponents<Slots extends SlotPropsRecord> = {
  *
  * @example
  * ```tsx
- * export const renderInput_unstable = (state: InputState) => {
+ * export const renderInput_unstable  = (state: InputState): JSXElement => {
     assertSlots<InputSlots>(state);
     return (
       <state.root>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
   Button,
@@ -11,7 +12,7 @@ import {
   Toast,
 } from '@fluentui/react-components';
 
-export const MultipleToasters = () => {
+export const MultipleToasters = (): JSXElement => {
   const first = useId('toaster-1');
   const second = useId('toaster-2');
   const [toaster, setToaster] = React.useState(first);

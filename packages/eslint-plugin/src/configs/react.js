@@ -69,6 +69,19 @@ module.exports = {
         },
       },
     ],
+    /**
+     * Require explicit type annotations for all module exports.
+     * This ensures that exports have clearly defined types,
+     * preventing accidental exposure of implicit return types to consumers.
+     * @see https://typescript-eslint.io/rules/explicit-module-boundary-types/
+     */
+    '@typescript-eslint/explicit-module-boundary-types': [
+      'error',
+      {
+        allowArgumentsExplicitlyTypedAsAny: true,
+        allowOverloadFunctions: true,
+      },
+    ],
   },
   overrides: [
     // Enable rules requiring type info only for appropriate files/circumstances

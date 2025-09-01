@@ -1,7 +1,7 @@
 import { UpdateToastEventDetail } from '../types';
 import { EVENTS } from '../constants';
 
-export function updateToast(options: UpdateToastEventDetail, targetDocument: Document) {
+export function updateToast(options: UpdateToastEventDetail, targetDocument: Document): void {
   const event = new CustomEvent<UpdateToastEventDetail>(EVENTS.update, {
     bubbles: false,
     cancelable: false,

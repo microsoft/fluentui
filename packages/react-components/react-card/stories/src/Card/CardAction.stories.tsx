@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Body1,
   Button,
@@ -73,7 +74,7 @@ const Header = ({ title, description }: Record<string, string>) => {
   );
 };
 
-export const WithAction = () => {
+export const WithAction = (): JSXElement => {
   const styles = useStyles();
   const linkRef = React.useRef<HTMLAnchorElement>(null);
 
