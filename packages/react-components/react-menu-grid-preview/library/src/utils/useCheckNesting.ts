@@ -4,6 +4,8 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 type NestingComponentName = 'MenuGrid' | 'MenuGridItem' | 'MenuGridRow';
 
 export const useCheckNesting = (ref: React.RefObject<HTMLElement>, componentName: NestingComponentName) => {
+  'use no memo';
+
   const { targetDocument } = useFluent();
 
   if (process.env.NODE_ENV !== 'production') {
