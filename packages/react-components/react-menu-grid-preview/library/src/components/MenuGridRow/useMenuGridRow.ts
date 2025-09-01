@@ -1,13 +1,16 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { useMergedRefs, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 
 import { useMenuGridContext_unstable } from '../../contexts/menuGridContext';
 import { MenuGridRowProps, MenuGridRowState } from './MenuGridRow.types';
+import { useCheckMenuGridRowNesting } from './useCheckMenuGridRowNesting';
 
 /**
  * Given user props, returns state and render function for a MenuGridRow.
  */
 export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<HTMLDivElement>): MenuGridRowState {
+  const innerRef = React.useRef<HTMLDivElement>(null);
+  useCheckMenuGridRowNesting(innerRef);
   const { tableRowTabsterAttribute } = useMenuGridContext_unstable();
 
   return {
@@ -16,7 +19,7 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref,
+        ref: useMergedRefs(ref, innerRef),
         role: 'row',
         tabIndex: 0,
         ...tableRowTabsterAttribute,
