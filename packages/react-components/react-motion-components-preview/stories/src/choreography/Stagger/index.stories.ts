@@ -3,6 +3,7 @@ import StaggerDescription from './StaggerDescription.md';
 
 export { Default } from './StaggerDefault.stories';
 export { Reversed } from './StaggerReversed.stories';
+export { Text } from './StaggerText.stories';
 export { ItemDelay } from './StaggerItemDelay.stories';
 export { PlainElements } from './StaggerPlainElements.stories';
 export { ModeComparison } from './StaggerModeComparison.stories';
