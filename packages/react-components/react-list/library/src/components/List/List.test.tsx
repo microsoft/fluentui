@@ -25,12 +25,12 @@ function getErrorMessages(err: any): string[] {
   if (typeof err.message === 'string') {
     messages.push(err.message);
   }
-  if (Array.isArray(err?.errors)) {
+  if (Array.isArray(err.errors)) {
     for (const inner of err.errors) {
       messages.push(...getErrorMessages(inner));
     }
   }
-  if (err?.cause) {
+  if (err.cause) {
     messages.push(...getErrorMessages(err.cause));
   }
   return messages;
