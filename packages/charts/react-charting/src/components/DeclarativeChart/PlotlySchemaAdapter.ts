@@ -488,66 +488,51 @@ export const transformPlotlyJsonToDonutProps = (
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): IDonutChartProps => {
-  const firstData = input.data[0] as Partial<PieData>;
+  const firstData = input.data[input.data.length - 1] as Partial<PieData>;
   // extract colors for each series only once
   // use piecolorway if available
   // otherwise, default to colorway from template
   const colors: string[] | string | null | undefined = extractColor(
     input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
     colorwayType,
-    input.layout?.piecolorway ?? firstData?.marker?.colors,
+    input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway ?? firstData?.marker?.colors,
     colorMap,
     isDarkTheme,
+    true,
   );
 
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
-  if (colors) {
-    firstData.labels?.forEach((label, index: number) => {
-      const value = getNumberAtIndexOrDefault(firstData.values, index);
-      if (isInvalidValue(value) || (value as number) < 0) {
-        return;
-      }
+  // clear colorMap for donut chart to reassign colors as the colorMap initially gets assigned by
+  // getAllupLegendsProps function without sorting labels by value
+  colorMap.current.clear();
 
-      const legend = `${label}`;
-      // resolve color for each legend from the extracted colors
-      const color: string = resolveColor(colors, index, legend, colorMap, isDarkTheme);
-
+  // Sort labels by value descending before mapping
+  if (firstData.labels && firstData.values) {
+    const markerColors = (firstData.marker?.colors as unknown as string[]) || undefined;
+    const hasMarkerColors = Array.isArray(markerColors) && markerColors.length >= firstData.labels.length;
+    const labelValuePairs = firstData.labels.map((label, index) => ({
+      label,
+      value: getNumberAtIndexOrDefault(firstData.values, index),
+      index,
+      color: hasMarkerColors ? markerColors[index] : undefined,
+    }));
+    // Filter out invalid values
+    const validPairs = labelValuePairs.filter(pair => !isInvalidValue(pair.value));
+    // Sort descending by value; when marker colors are present, keep color attached to the label
+    validPairs.sort((a, b) => (b.value as number) - (a.value as number));
+    validPairs.forEach((pair, sortedIdx) => {
+      const legend = `${pair.label}`;
+      const color: string = pair.color ?? resolveColor(colors, sortedIdx, legend, colorMap, isDarkTheme, true);
       if (!mapLegendToDataPoint[legend]) {
         mapLegendToDataPoint[legend] = {
           legend,
-          data: value,
+          data: pair.value,
           color,
         };
       } else {
-        mapLegendToDataPoint[legend].data! += value as number;
+        mapLegendToDataPoint[legend].data! += pair.value as number;
       }
     });
-  } else {
-    // Sort labels by value descending before mapping
-    if (firstData.labels && firstData.values) {
-      const labelValuePairs = firstData.labels.map((label, index) => ({
-        label,
-        value: getNumberAtIndexOrDefault(firstData.values, index),
-        index,
-      }));
-      // Filter out invalid values
-      const validPairs = labelValuePairs.filter(pair => !isInvalidValue(pair.value));
-      // Sort descending by value
-      validPairs.sort((a, b) => (b.value as number) - (a.value as number));
-      validPairs.forEach((pair, sortedIdx) => {
-        const legend = `${pair.label}`;
-        const color: string = resolveColor(colors, sortedIdx, legend, colorMap, isDarkTheme);
-        if (!mapLegendToDataPoint[legend]) {
-          mapLegendToDataPoint[legend] = {
-            legend,
-            data: pair.value,
-            color,
-          };
-        } else {
-          mapLegendToDataPoint[legend].data! += pair.value as number;
-        }
-      });
-    }
   }
 
   const width: number = input.layout?.width ?? 440;
@@ -561,11 +546,22 @@ export const transformPlotlyJsonToDonutProps = (
     ? firstData.hole * (Math.min(width - donutMarginHorizontal, height - donutMarginVertical) / 2)
     : MIN_DONUT_RADIUS;
   const { chartTitle } = getTitles(input.layout);
-
+  // Build anticlockwise order by keeping the first item, reversing the rest
+  const legends = Object.keys(mapLegendToDataPoint);
+  const reorderedEntries =
+    legends.length > 1
+      ? ([
+          [legends[0], mapLegendToDataPoint[legends[0]]],
+          ...legends
+            .slice(1)
+            .reverse()
+            .map(key => [key, mapLegendToDataPoint[key]] as const),
+        ] as ReadonlyArray<readonly [string, IChartDataPoint]>)
+      : legends.map(key => [key, mapLegendToDataPoint[key]] as const);
   return {
     data: {
       chartTitle,
-      chartData: Object.values(mapLegendToDataPoint),
+      chartData: reorderedEntries.map(([, v]) => v as IChartDataPoint),
     },
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
     width: input.layout?.width,
@@ -2347,12 +2343,13 @@ export const getAllupLegendsProps = (
           input.layout?.piecolorway ?? pieSeries?.marker?.colors,
           colorMap,
           isDarkTheme,
+          true,
         );
 
         pieSeries.labels?.forEach((label, labelIndex: number) => {
           const legend = `${label}`;
           // resolve color for each legend from the extracted colors
-          const color: string = resolveColor(colors, labelIndex, legend, colorMap, isDarkTheme);
+          const color: string = resolveColor(colors, labelIndex, legend, colorMap, isDarkTheme, true);
           if (legend !== '' && allupLegends.some(group => group.title === legend) === false) {
             allupLegends.push({
               title: legend,
@@ -2828,12 +2825,12 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
       if (axId === 'x') {
         props.xAxis = {
           tickStep: dtick,
-          tick0: tick0,
+          tick0,
         };
       } else if (axId === 'y') {
         props.yAxis = {
           tickStep: dtick,
-          tick0: tick0,
+          tick0,
         };
       }
       return;
