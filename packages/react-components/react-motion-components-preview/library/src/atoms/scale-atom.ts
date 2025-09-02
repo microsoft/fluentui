@@ -13,6 +13,7 @@ interface ScaleAtomParams extends BaseAtomParams {
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
  * @param fromScale - The starting scale value. Defaults to 0.9.
  * @param toScale - The ending scale value. Defaults to 1.
+ * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @returns A motion atom object with scale keyframes and the supplied duration and easing.
  */
 export const scaleAtom = ({
