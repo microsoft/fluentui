@@ -6,7 +6,7 @@ import { areArraysEqual } from '../../utilities/utilities';
 import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 
-type PlotlyColorway = 'plotly' | 'others';
+type PlotlyColorway = 'plotly' | 'd3' | 'others';
 
 // The color sequences in plotly express are defined here:
 // https://plotly.com/python/discrete-color/#:~:text=Join%20now.-,Color%20Sequences%20in%20Plotly%20Express,-By%20default%2C%20Plotly
@@ -69,14 +69,17 @@ export const D3_FLUENTVIZ_COLORWAY_MAPPING: string[] = [
 ];
 
 function getPlotlyColorway(colorway: string[] | undefined, isDonut: boolean = false): PlotlyColorway {
-  const isPlotlyColorway =
-    isArrayOrTypedArray(colorway) &&
-    areArraysEqual(
-      colorway?.map(c => c.toLowerCase()),
-      isDonut ? D3_FLUENTVIZ_COLORWAY_MAPPING : DEFAULT_PLOTLY_COLORWAY,
-    );
-
-  return isPlotlyColorway ? 'plotly' : 'others';
+  if (!colorway || !isArrayOrTypedArray(colorway)) {
+    return 'others';
+  }
+  const lower = colorway.map(c => c.toLowerCase());
+  if (isDonut && areArraysEqual(lower, D3_FLUENTVIZ_COLORWAY_MAPPING)) {
+    return 'd3';
+  }
+  if (areArraysEqual(lower, DEFAULT_PLOTLY_COLORWAY)) {
+    return 'plotly';
+  }
+  return 'others';
 }
 
 function tryMapFluentDataViz(
@@ -89,7 +92,10 @@ function tryMapFluentDataViz(
     return hexColor;
   }
   if (isDonut) {
-    const idx = DEFAULT_D3_COLORWAY.indexOf(hexColor.toLowerCase());
+    const idx =
+      templateColorway === 'plotly'
+        ? DEFAULT_PLOTLY_COLORWAY.indexOf(hexColor.toLowerCase())
+        : DEFAULT_D3_COLORWAY.indexOf(hexColor.toLowerCase());
     return idx !== -1 ? getColorFromToken(D3_FLUENTVIZ_COLORWAY_MAPPING[idx], !!isDarkTheme) : hexColor;
   } else {
     const index = DEFAULT_PLOTLY_COLORWAY.indexOf(hexColor.toLowerCase());
@@ -103,12 +109,14 @@ function tryMapFluentDataViz(
 export const getColor = (
   legendLabel: string,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  templateColorway: PlotlyColorway,
   isDarkTheme?: boolean,
   isDonut?: boolean,
 ): string => {
   if (!colorMap.current.has(legendLabel)) {
     let nextColor: string;
-    const defaultColorMapping = isDonut ? D3_FLUENTVIZ_COLORWAY_MAPPING : PLOTLY_FLUENTVIZ_COLORWAY_MAPPING;
+    const defaultColorMapping =
+      isDonut && templateColorway === 'plotly' ? PLOTLY_FLUENTVIZ_COLORWAY_MAPPING : D3_FLUENTVIZ_COLORWAY_MAPPING;
     if (colorMap.current.size < defaultColorMapping.length) {
       // Get first 10 colors from plotly-fluentviz colorway mapping
       nextColor = getColorFromToken(defaultColorMapping[colorMap.current.size], isDarkTheme);
@@ -138,7 +146,7 @@ export const getSchemaColors = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (colors as any[]).forEach((element, index) => {
       const colorString = element?.toString().trim();
-      const nextFluentColor = getColor(`Label_${index}`, colorMap, isDarkTheme, isDonut);
+      const nextFluentColor = getColor(`Label_${index}`, colorMap, templateColorway, isDarkTheme, isDonut);
       if (colorString) {
         const parsedColor = d3Color(colorString);
         hexColors.push(
@@ -152,7 +160,7 @@ export const getSchemaColors = (
     const parsedColor = d3Color(colors);
     return parsedColor
       ? tryMapFluentDataViz(parsedColor.formatHex(), templateColorway, isDarkTheme)
-      : getColor('Label_0', colorMap, isDarkTheme, isDonut);
+      : getColor('Label_0', colorMap, templateColorway, isDarkTheme, isDonut);
   }
   return hexColors;
 };
@@ -175,16 +183,18 @@ export const resolveColor = (
   index: number,
   legend: string,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  colorway: string[] | undefined,
   isDarkTheme?: boolean,
   isDonut?: boolean,
 ): string => {
   let color = '';
+  const templateColorway = getPlotlyColorway(colorway, isDonut);
   if (extractedColors && isArrayOrTypedArray(extractedColors) && extractedColors.length > 0) {
     color = extractedColors[index % extractedColors.length];
   } else if (typeof extractedColors === 'string') {
     color = extractedColors;
   } else {
-    color = getColor(legend, colorMap, isDarkTheme, isDonut);
+    color = getColor(legend, colorMap, templateColorway, isDarkTheme, isDonut);
   }
   return color;
 };
