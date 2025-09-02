@@ -22,7 +22,9 @@ const charCountMessage = (count: number) => {
     return `You have 1 character remaining`;
   } else if (maxLength - count <= threshold) {
     return `You have ${maxLength - count} characters remaining`;
-  } else return undefined;
+  } else {
+    return undefined;
+  }
 };
 
 export const ContentEditable = () => {
