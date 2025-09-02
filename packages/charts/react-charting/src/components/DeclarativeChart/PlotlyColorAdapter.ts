@@ -68,11 +68,6 @@ export const D3_FLUENTVIZ_COLORWAY_MAPPING: string[] = [
   DataVizPalette.color3, // cyan/teal -> teal.tint20
 ];
 
-// Quick lookup from D3 hex to Fluent token
-export const D3_TO_FLUENT_TOKEN_BY_HEX: Record<string, string> = Object.fromEntries(
-  DEFAULT_D3_COLORWAY.map((hex, i) => [hex.toLowerCase(), D3_FLUENTVIZ_COLORWAY_MAPPING[i]]),
-);
-
 function getPlotlyColorway(colorway: string[] | undefined, isDonut: boolean = false): PlotlyColorway {
   const isPlotlyColorway =
     isArrayOrTypedArray(colorway) &&
@@ -94,8 +89,8 @@ function tryMapFluentDataViz(
     return hexColor;
   }
   if (isDonut) {
-    const idx = DEFAULT_PLOTLY_COLORWAY.indexOf(hexColor.toLowerCase());
-    return idx !== -1 ? getColorFromToken(DEFAULT_PLOTLY_COLORWAY[idx], !!isDarkTheme) : hexColor;
+    const idx = DEFAULT_D3_COLORWAY.indexOf(hexColor.toLowerCase());
+    return idx !== -1 ? getColorFromToken(D3_FLUENTVIZ_COLORWAY_MAPPING[idx], !!isDarkTheme) : hexColor;
   } else {
     const index = DEFAULT_PLOTLY_COLORWAY.indexOf(hexColor.toLowerCase());
     if (index !== -1) {
