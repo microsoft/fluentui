@@ -1,14 +1,35 @@
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
-
-import { tmpFolder, uniq } from '@nx/plugin/testing';
-import { workspaceRoot } from '@nx/devkit';
-import { type PackageJson } from 'nx/src/utils/package-json';
+import { execSync } from 'node:child_process';
 
 import * as ejs from 'ejs';
-import { Args, ReactVersion, runCmd, readCommandsFromPreparedProject, getPreparedTemplate } from './shared';
 
+import type { Args, ReactVersion, PackageJson, TsConfig } from './shared';
+import { runCmd, readCommandsFromPreparedProject, getPreparedTemplate, getMergedTemplate } from './shared';
+import { type Logger } from './logger';
+
+// Define workspaceRoot before using it in tmpFolder() to avoid TDZ issues
+const workspaceRoot = findGitRoot(process.cwd());
 const scaffoldRoot = join(tmpFolder(), 'rit');
+
+function findGitRoot(cwd: string) {
+  const output = execSync('git rev-parse --show-toplevel', { cwd });
+
+  return output.toString().trim();
+}
+
+function tmpFolder() {
+  return `${workspaceRoot}/tmp`;
+}
+/**
+ * Generate a unique name for running CLI commands
+ * @param prefix
+ *
+ * @returns `'<prefix><random number>'`
+ */
+function uniq(prefix: string) {
+  return `${prefix}${Math.floor(Math.random() * 10000000)}`;
+}
 
 function reactRoot(react: ReactVersion) {
   return join(scaffoldRoot, `react-${react}`);
@@ -94,7 +115,7 @@ function getProjectInfo(): {
   };
 }
 
-export function getPreparedProjectPath(args: { react: ReactVersion; projectId: string }) {
+function getPreparedProjectPath(args: { react: ReactVersion; projectId: string }) {
   const { projectName } = getProjectInfo();
   const finalName = `${projectName}-react-${args.react}-${args.projectId}`;
   return join(reactRoot(args.react), finalName);
@@ -141,7 +162,6 @@ function createProjectPackageJson(options: {
 function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: string; projectTsConfigPath: string }) {
   const relativePathToProjectTsConfig = relative(options.projectPath, options.projectTsConfigPath);
 
-  type TsConfig = { include?: string[]; compilerOptions?: Partial<{ target: string; lib: string[] }> };
   const tsConfig: TsConfig = JSON.parse(readFileSync(options.projectTsConfigPath, 'utf-8'));
   if (!tsConfig.include) {
     throw new Error(`No include paths found at: ${options.projectTsConfigPath}`);
@@ -149,7 +169,7 @@ function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: st
   const relativeIncludePaths = tsConfig.include?.map(includePath => {
     return relative(options.projectPath, join(options.projectRoot, includePath));
   });
-  const target = tsConfig.compilerOptions?.target ?? ['ES2019'];
+  const target = tsConfig.compilerOptions?.target ?? 'ES2019';
   const lib = tsConfig.compilerOptions?.lib ?? ['ES2019', 'DOM'];
 
   return {
@@ -185,7 +205,14 @@ async function installDependenciesAtReactRoot(rootPath: string) {
   }
 }
 
-export async function setup(options: Required<Args>) {
+export async function setup(
+  options: Required<Args>,
+  logger: Logger,
+): Promise<{
+  projectPath: string;
+  commands: Record<string, string>;
+  cleanup: () => void;
+}> {
   const { react } = options;
   // If user wants to reuse an existing prepared project, short-circuit.
   if (options.run.length && options.projectId) {
@@ -198,7 +225,7 @@ export async function setup(options: Required<Args>) {
         // no-op: user opted to reuse an existing prepared project; nothing to remove here
         return;
       },
-    } as const;
+    };
   }
 
   // Merge builtin defaults with optional user config, detect origin setups and ensure react root exists
@@ -256,13 +283,7 @@ export async function setup(options: Required<Args>) {
     },
   };
 
-  // Emit minimal info for now; config + builtin will be used to scaffold.
-  // Keeping stdout simple helps scripting.
-  if (options.verbose) {
-    console.log(JSON.stringify(metadata, null, 2));
-  }
-
-  // Prepare TypeScript/Jest/Cypress config files inside the project
+  logger.verbose('setup metadata:', JSON.stringify(metadata, null, 2));
 
   // 1) Create tsconfig.json from template with EJS
   renderTemplateToFile(
@@ -326,30 +347,30 @@ export async function setup(options: Required<Args>) {
 }
 
 /**
- * Install dependencies under the shared react root based on the provided template JSON.
- * This does not scaffold a project; it only ensures the react root package.json contains required deps and runs install.
+ * Install dependencies for a React version root.
  */
-export async function installDepsForReactRoot(
-  react: ReactVersion,
-  dependencies: Record<string, string>,
-  verbose = false,
-) {
-  const reactRootPath = reactRoot(react);
+export async function installDepsForReactVersion(
+  args: Pick<Args, 'react' | 'configPath' | 'verbose'>,
+  logger: Logger,
+): Promise<void> {
+  const merged = getMergedTemplate(args.react, args.configPath ?? '');
+
+  const reactRootPath = reactRoot(args.react);
   mkdirSync(reactRootPath, { recursive: true });
 
   const reactRootPkgPath = join(reactRootPath, 'package.json');
   const reactRootPkg: PackageJson = existsSync(reactRootPkgPath)
-    ? (JSON.parse(readFileSync(reactRootPkgPath, 'utf-8')) as PackageJson)
-    : ({ name: `@rit/react-${react}-root`, private: true, version: '0.0.0', license: 'UNLICENSED' } as PackageJson);
+    ? JSON.parse(readFileSync(reactRootPkgPath, 'utf-8'))
+    : { name: `@rit/react-${args.react}-root`, private: true, version: '0.0.0', license: 'UNLICENSED' };
   reactRootPkg.dependencies = {
     ...(reactRootPkg.dependencies ?? {}),
-    ...dependencies,
+    ...merged.dependencies,
   };
   writeFileSync(reactRootPkgPath, JSON.stringify(reactRootPkg, null, 2));
 
-  if (verbose) {
-    console.log(`[rit / v${react}] Installing dependencies under: ${reactRootPath}`);
-  }
+  logger.verbose(`Installing dependencies under: ${reactRootPath}`);
+
   await installDependenciesAtReactRoot(reactRootPath);
-  return { reactRootPath } as const;
+
+  logger.log(`Dependencies installed under shared react root -> ${reactRootPath}.`);
 }

@@ -1,6 +1,16 @@
 import { spawn } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { type PackageJson } from 'nx/src/utils/package-json';
+
+export { type PackageJson };
+
+export interface TsConfig {
+  include?: string[];
+  exclude?: string[];
+  files?: string[];
+  compilerOptions?: Partial<{ target: string; lib: string[] }>;
+}
 
 export type ReactVersion = 17 | 18 | 19;
 export type CommandName = 'e2e' | 'type-check' | 'test';
@@ -49,10 +59,10 @@ export function getMergedTemplate(
   if (!existsSync(builtinPath)) {
     throw new Error(`Builtin template not found for React ${reactVersion} at: ${builtinPath}`);
   }
-  const defaults = JSON.parse(readFileSync(builtinPath, 'utf-8')) as {
+  const defaults: {
     commands: Record<string, string>;
     dependencies: Record<string, string>;
-  };
+  } = JSON.parse(readFileSync(builtinPath, 'utf-8'));
 
   // Resolve config path: explicit --config wins, else default to ./rit.config.js if exists, else no overrides
   let overrides: Config['react'][string] | undefined;
