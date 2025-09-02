@@ -1,17 +1,15 @@
 {
+  "extends": "<%= tsconfig.relativePathToProjectTsConfig %>",
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "<%= tsconfig.target %>",
     "module": "esnext",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "lib": ["ES2019", "dom"],
+    "lib": [<%- tsconfig.lib.map(p => `"${p}"`).join(',') %>],
     "strict": true,
     "pretty": true,
     "noEmit": true,
     "isolatedModules": true,
-    "importHelpers": true,
     "jsx": "react",
-    "preserveConstEnums": true,
     "skipLibCheck": true,
     "types": [],
     "baseUrl": ".",
@@ -21,16 +19,16 @@
       "react-dom": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react-dom/index.d.ts"]
     }
   },
+  "references": [],
   "exclude": [
-    "<%= relativePathToProjectDomainRoot %>/**/index.stories.tsx",
-    "<%= relativePathToProjectDomainRoot %>/**/index.stories.ts",
-    "<%= relativePathToProjectDomainRoot %>/**/*.spec.tsx",
-    "<%= relativePathToProjectDomainRoot %>/**/*.test.tsx",
-    "<%= relativePathToProjectDomainRoot %>/**/src/testing/**"
+    "<%= relativePathToProjectRoot %>/**/index.stories.tsx",
+    "<%= relativePathToProjectRoot %>/**/index.stories.ts",
+    "<%= relativePathToProjectRoot %>/**/*.spec.tsx",
+    "<%= relativePathToProjectRoot %>/**/*.test.tsx",
+    "<%= relativePathToProjectRoot %>/**/src/testing/**"
   ],
   "include": [
-    "<%= relativePathToProjectDomainRoot %>/**/*.stories.tsx",
-    "<%= relativePathToProjectDomainRoot %>/**/*.stories.ts"
+    <%- tsconfig.relativeIncludePaths.map(p => `"${p}"`).join(',\n    ') %>
   ],
   "files": ["<%= relativePathToWorkspaceRoot %>/typings/static-assets/index.d.ts"]
 }

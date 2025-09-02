@@ -14,7 +14,16 @@ function reactRoot(react: ReactVersion) {
   return join(scaffoldRoot, `react-${react}`);
 }
 
-function createProject(options: { projectName: string; react: ReactVersion; projectId?: string; force?: boolean }) {
+function createProject(options: { projectName: string; react: ReactVersion; projectId?: string; force?: boolean }): {
+  /**
+   * The absolute path to the project directory scaffolded for testing.
+   */
+  projectPath: string;
+  /**
+   * The name of the project scaffolded for testing.
+   */
+  projectName: string;
+} {
   // If projectId provided, use deterministic name, otherwise use uniq()
   const base = `${options.projectName}-react-${options.react}`;
   const finalName = options.projectId ? `${base}-${options.projectId}` : uniq(base);
@@ -36,7 +45,16 @@ function ensureProject(react: ReactVersion, project: string) {
   return { projectPath };
 }
 
-function resolveProjectName() {
+function resolveProjectName(): {
+  /**
+   * The normalized name (without npm scope) of the project which will be tested against react integration.
+   */
+  projectName: string;
+  /**
+   * The absolute path to the project directory which will be tested against react integration.
+   */
+  projectRoot: string;
+} {
   const projectRoot = process.cwd();
   const packageJsonPath = join(projectRoot, 'package.json');
   if (!existsSync(packageJsonPath)) {
@@ -61,6 +79,31 @@ function renderTemplateToFile(templateFilePath: string, data: Record<string, unk
   const content = readFileSync(templateFilePath, 'utf-8');
   const rendered = ejs.render(content, data, { filename: templateFilePath });
   writeFileSync(outFilePath, rendered);
+}
+
+function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: string }) {
+  const tsConfigPath = join(options.projectRoot, 'tsconfig.lib.json');
+  const relativePathToProjectTsConfig = relative(options.projectPath, tsConfigPath);
+  if (!existsSync(tsConfigPath)) {
+    throw new Error(`Could not find tsconfig.lib.json at: ${tsConfigPath}`);
+  }
+  type TsConfig = { include?: string[]; compilerOptions?: Partial<{ target: string; lib: string[] }> };
+  const tsConfig: TsConfig = JSON.parse(readFileSync(tsConfigPath, 'utf-8'));
+  if (!tsConfig.include) {
+    throw new Error(`No include paths found in tsconfig.lib.json at: ${tsConfigPath}`);
+  }
+  const relativeIncludePaths = tsConfig.include?.map(includePath => {
+    return relative(options.projectPath, join(options.projectRoot, includePath));
+  });
+  const target = tsConfig.compilerOptions?.target ?? ['ES2019'];
+  const lib = tsConfig.compilerOptions?.lib ?? ['ES2019', 'DOM'];
+
+  return {
+    relativePathToProjectTsConfig,
+    relativeIncludePaths,
+    target,
+    lib,
+  };
 }
 
 async function installDependenciesAtReactRoot(rootPath: string) {
@@ -145,16 +188,13 @@ export async function setup(options: Required<Args>) {
   const metadata = {
     projectName,
     projectRoot,
+    projectPath,
     react,
     configPath: options.configPath,
-    projectPath,
     tmpl: {
       relativePathToProjectRoot: relative(projectPath, projectRoot),
       relativePathToWorkspaceRoot: relative(projectPath, workspaceRoot),
-      // TODO - this needs to become generic. stories/ project sibling is only our repo pattern
-      relativePathToProjectDomainRoot: existsSync(join(projectRoot, '../stories'))
-        ? relative(projectPath, join(projectRoot, '..'))
-        : relative(projectPath, projectRoot),
+      tsconfig: prepareTsConfigTemplate({ projectRoot, projectPath }),
       // path from project to its react root (where shared node_modules live)
       usedNodeModulesDirRelative: relative(projectPath, reactRootPath),
       projectName: createdProjectName,
