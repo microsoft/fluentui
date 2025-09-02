@@ -6,12 +6,52 @@
   "tags": ["platform:web", "vNext"],
   "targets": {
     "build-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/public-docsite-v9",
+        "env": {
+          "NODE_OPTIONS": "--max_old_space_size=3072"
+        },
+        "command": "storybook build -o ./dist/storybook --docs"
+      },
+      "configurations": {
+        "react": {
+          "cwd": "apps/public-docsite-v9",
+          "env": { "DEPLOY_PATH": "/react/", "NODE_OPTIONS": "--max_old_space_size=3072" },
+          "command": "storybook build -o ./dist/react --docs"
+        }
+      },
       "dependsOn": [
         {
           "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
           "target": "build"
         }
       ]
+    },
+    "build-docsites": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "yarn nx run public-docsite-v9:build-storybook",
+          "yarn nx run public-docsite-v9:build-storybook:react"
+        ]
+      },
+      "dependsOn": [
+        {
+          "projects": ["chart-docsite", "web-components"],
+          "target": "deploy-website"
+        }
+      ]
+    },
+    "deploy-website": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-docsites"],
+      "options": {
+        "cwd": "apps/public-docsite-v9",
+        "commands": [
+          "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist/react/"
+        ]
+      }
     }
   }
 }

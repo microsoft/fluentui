@@ -12,6 +12,17 @@
           "target": "build"
         }
       ]
+    },
+    "deploy-website": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/chart-docsite",
+        "commands": [
+          "cross-env DEPLOY_PATH=/charts/ storybook build --docs -o ../public-docsite-v9/dist/charts/",
+          "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI Charts v9' --distPath ../public-docsite-v9/dist/charts/"
+        ],
+        "parallel": false
+      }
     }
   }
 }
