@@ -7,6 +7,7 @@ import {
   CarouselNavButton,
   CarouselNavContainer,
   CarouselViewport,
+  Text,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
@@ -127,7 +128,9 @@ export const TopNavigation = () => {
       <div className={classes.card}>
         <Carousel circular draggable announcement={getAnnouncement}>
           <div className={classes.carouselHeader}>
-            <h1 className={classes.carouselHeaderTitle}>Carousel Title</h1>
+            <Text as="h1" className={classes.carouselHeaderTitle}>
+              Carousel Title
+            </Text>
             <CarouselNavContainer
               next={{ 'aria-label': 'go to next' }}
               prev={{ 'aria-label': 'go to prev' }}
