@@ -958,17 +958,21 @@ export class BaseTree extends FASTElement {
     changeHandler(e: Event): boolean | void;
     // Warning: (ae-forgotten-export) The symbol "BaseTreeItem" needs to be exported by the entry point index.d.ts
     //
-    // (undocumented)
+    // @internal (undocumented)
     childTreeItems: BaseTreeItem[];
-    // (undocumented)
+    // @internal (undocumented)
     childTreeItemsChanged(): void;
     // @internal
     clickHandler(e: Event): boolean | void;
     currentSelected: HTMLElement | null;
+    // @internal (undocumented)
+    defaultSlot: HTMLSlotElement;
     // @internal
     elementInternals: ElementInternals;
     // @internal
     focusHandler(e: FocusEvent): void;
+    // @internal (undocumented)
+    handleDefaultSlotChange(): void;
     // @internal
     keydownHandler(e: KeyboardEvent): boolean | void;
 }
