@@ -1,5 +1,4 @@
-import { elements, html, slotted } from '@microsoft/fast-element';
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { html, ref } from '@microsoft/fast-element';
 import type { Tree } from './tree.js';
 
 export const template = html<Tree>`
@@ -12,10 +11,8 @@ export const template = html<Tree>`
     @change="${(x, c) => x.changeHandler(c.event)}"
   >
     <slot
-      ${slotted({
-        property: 'childTreeItems',
-        filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
-      })}
+      ${ref('defaultSlot')}
+      @slotchange="${x => x.handleDefaultSlotChange()}"
     ></slot>
   </template>
 `;
