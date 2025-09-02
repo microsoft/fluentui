@@ -3,14 +3,14 @@ import { baseConfig } from '@fluentui/scripts-cypress';
 
 import { getNodeModulesPath } from './config/utils';
 
-const usedNodeModulesPath = getNodeModulesPath();
+const { usedNodeModulesPath, workspaceRootNodeModulesPath } = getNodeModulesPath();
 
 const config = { ...baseConfig };
 
 config.component.devServer.webpackConfig.resolve ??= {};
 config.component.devServer.webpackConfig.resolve.alias = {
   ...config.component.devServer.webpackConfig.resolve.alias,
-  '@cypress/react': path.resolve(usedNodeModulesPath, './@cypress/react'),
+  '@cypress/react': path.resolve(workspaceRootNodeModulesPath, './@cypress/react'),
   '@types/react': path.resolve(usedNodeModulesPath, './@types/react'),
   '@types/react-dom': path.resolve(usedNodeModulesPath, './@types/react-dom'),
   react: path.resolve(usedNodeModulesPath, './react'),
