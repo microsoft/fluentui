@@ -126,7 +126,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                         style.backgroundColor = getSafeBackgroundColor(fg, bg);
                       }
                       return (
-                        <th key={idx} className={classes.headerCell} style={style}>
+                        <th key={idx} className={classes.headerCell} style={style} tabIndex={0}>
                           {header.value}
                         </th>
                       );
@@ -145,7 +145,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                             style.backgroundColor = getSafeBackgroundColor(fg, bg);
                           }
                           return (
-                            <td key={colIdx} className={classes.bodyCell} style={style}>
+                            <td key={colIdx} className={classes.bodyCell} style={style} tabIndex={0}>
                               {cell.value}
                             </td>
                           );

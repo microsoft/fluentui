@@ -28,8 +28,11 @@ export function createTabsterWithConfig(targetDocument: Document | undefined): T
       autoRoot: {},
       controlTab: false,
       getParent,
-      checkUncontrolledTrappingFocus: element =>
-        !!element.firstElementChild?.hasAttribute('data-is-focus-trap-zone-bumper'),
+      // The non-undefined return value of checkUncontrolledCompletely() dominates the value that the element might
+      // have in its `uncontrolled: { completely: true }` part of the tabster attribute. We must make sure to return
+      // undefined if we want the value from tabster attribute to be respected.
+      checkUncontrolledCompletely: element =>
+        element.firstElementChild?.hasAttribute('data-is-focus-trap-zone-bumper') === true || undefined,
       DOMAPI: shadowDOMAPI,
     });
   }

@@ -322,7 +322,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
           onMouseLeave={_hoverOff}
           className={classes.barWrapper}
           opacity={isLegendSelected ? 1 : 0.1}
-          tabIndex={point.legend !== '' ? 0 : undefined}
+          tabIndex={_legendHighlighted(point.legend!) || _noLegendHighlighted() ? 0 : undefined}
         />
       );
     });
