@@ -127,6 +127,7 @@ export type PresenceDirection = 'enter' | 'exit';
 
 // @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {
+    constructor(props: PresenceGroupProps, context?: unknown);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -135,8 +136,6 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
     static getDerivedStateFromProps(nextProps: PresenceGroupProps, { childMapping: prevChildMapping, firstRender }: PresenceGroupState): PresenceGroupState;
     // (undocumented)
     render(): JSXElement;
-    // (undocumented)
-    state: PresenceGroupState;
 }
 
 // @public (undocumented)

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { type JSXElement, getReactElementRef, useMergedRefs } from '@fluentui/react-utilities';
+import { getReactElementRef, useMergedRefs } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 const CHILD_ERROR_MESSAGE = [
   '@fluentui/react-motion: Invalid child element.',
