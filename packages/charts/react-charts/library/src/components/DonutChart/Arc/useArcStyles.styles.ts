@@ -2,6 +2,7 @@ import { ArcProps, ArcStyles } from './Arc.types';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { HighContrastSelector } from '../../../utilities/utilities';
 
 /**
  * @internal
@@ -32,8 +33,11 @@ const useStyles = makeStyles({
     fill: 'transparent',
   },
   arcLabel: {
-    ...typographyStyles.caption1Strong,
+    ...typographyStyles.caption1,
     fill: tokens.colorNeutralForeground1,
+    [HighContrastSelector]: {
+      stroke: 'CanvasText',
+    },
   },
 });
 

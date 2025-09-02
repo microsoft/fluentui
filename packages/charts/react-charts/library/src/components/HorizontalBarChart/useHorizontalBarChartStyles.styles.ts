@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HorizontalBarChartProps, HorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { HighContrastSelector } from '../../utilities/index';
 
 /**
  * @internal
@@ -87,9 +88,11 @@ const useStyles = makeStyles({
     position: 'absolute',
   },
   barLabel: {
-    ...typographyStyles.caption1Strong,
+    ...typographyStyles.caption1,
     fill: tokens.colorNeutralForeground1,
-    forcedColorAdjust: 'none',
+    [HighContrastSelector]: {
+      stroke: 'CanvasText',
+    },
   },
   chartWrapper40ppadding: {
     paddingRight: '40p',
