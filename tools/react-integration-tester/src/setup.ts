@@ -6,7 +6,7 @@ import { workspaceRoot } from '@nx/devkit';
 import { type PackageJson } from 'nx/src/utils/package-json';
 
 import * as ejs from 'ejs';
-import { Args, ReactVersion, runCmd, readCommandsFromPreparedProject, getMergedTemplate } from './shared';
+import { Args, ReactVersion, runCmd, readCommandsFromPreparedProject, getPreparedTemplate } from './shared';
 
 const scaffoldRoot = join(tmpFolder(), 'rit');
 
@@ -45,7 +45,7 @@ function ensureProject(react: ReactVersion, project: string) {
   return { projectPath };
 }
 
-function resolveProjectName(): {
+function getProjectInfo(): {
   /**
    * The normalized name (without npm scope) of the project which will be tested against react integration.
    */
@@ -54,23 +54,48 @@ function resolveProjectName(): {
    * The absolute path to the project directory which will be tested against react integration.
    */
   projectRoot: string;
+  projectPaths: {
+    packageJson: string;
+    tsConfig: string;
+    jestConfig: string | null;
+    cypressConfig: string | null;
+  };
 } {
   const projectRoot = process.cwd();
-  const packageJsonPath = join(projectRoot, 'package.json');
-  if (!existsSync(packageJsonPath)) {
-    throw new Error(`Could not find package.json at: ${packageJsonPath}`);
+  const jestConfig = existsSync(join(projectRoot, 'jest.config.ts'))
+    ? join(projectRoot, 'jest.config.ts')
+    : existsSync(join(projectRoot, 'jest.config.js'))
+    ? join(projectRoot, 'jest.config.js')
+    : null;
+  const cypressConfig = existsSync(join(projectRoot, 'cypress.config.ts'))
+    ? join(projectRoot, 'cypress.config.ts')
+    : existsSync(join(projectRoot, 'cypress.config.js'))
+    ? join(projectRoot, 'cypress.config.js')
+    : null;
+  const projectPaths = {
+    packageJson: join(projectRoot, 'package.json'),
+    jestConfig: jestConfig,
+    cypressConfig: cypressConfig,
+    tsConfig: join(projectRoot, 'tsconfig.lib.json'),
+  };
+  if (!existsSync(projectPaths.packageJson)) {
+    throw new Error(`Could not find package.json at: ${projectPaths.packageJson}`);
+  }
+  if (!existsSync(projectPaths.tsConfig)) {
+    throw new Error(`Could not find tsconfig.lib.json at: ${projectPaths.tsConfig}`);
   }
 
-  const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
+  const packageJson = JSON.parse(readFileSync(projectPaths.packageJson, 'utf-8'));
 
   return {
     projectName: packageJson.name.replace(/^@[a-z-]+\//gi, ''),
     projectRoot,
+    projectPaths,
   };
 }
 
 export function getPreparedProjectPath(args: { react: ReactVersion; projectId: string }) {
-  const { projectName } = resolveProjectName();
+  const { projectName } = getProjectInfo();
   const finalName = `${projectName}-react-${args.react}-${args.projectId}`;
   return join(reactRoot(args.react), finalName);
 }
@@ -81,16 +106,45 @@ function renderTemplateToFile(templateFilePath: string, data: Record<string, unk
   writeFileSync(outFilePath, rendered);
 }
 
-function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: string }) {
-  const tsConfigPath = join(options.projectRoot, 'tsconfig.lib.json');
-  const relativePathToProjectTsConfig = relative(options.projectPath, tsConfigPath);
-  if (!existsSync(tsConfigPath)) {
-    throw new Error(`Could not find tsconfig.lib.json at: ${tsConfigPath}`);
-  }
+function createProjectPackageJson(options: {
+  projectPath: string;
+  projectName: string;
+  usedNodeModulesDirRelative: string;
+  commands: Record<string, string>;
+}) {
+  // Create project-level package.json exposing runnable scripts (no dependencies here)
+  const parentBinRel = join(options.usedNodeModulesDirRelative, 'node_modules', '.bin');
+  const addRelativeBinPathToCmd = (cmd: string) => {
+    // Extract the first word (command name) from the command string
+    const [commandName, ...argsRest] = cmd.split(' ');
+    const binPath = join(parentBinRel, commandName);
+
+    // Prepend with node and the bin path, preserving any arguments
+    if (argsRest.length === 0) {
+      throw new Error(`Command "${commandName}" has no arguments`);
+    }
+    return `node ${binPath} ${argsRest.join(' ')}`;
+  };
+  const projectScripts = Object.fromEntries(
+    Object.entries(options.commands).map(([k, v]) => [k, addRelativeBinPathToCmd(v)]),
+  ) as Record<string, string>;
+  const projectPkg: PackageJson = {
+    name: options.projectName,
+    private: true,
+    version: '0.0.0',
+    license: 'UNLICENSED',
+    scripts: projectScripts,
+  } as const;
+  writeFileSync(join(options.projectPath, 'package.json'), JSON.stringify(projectPkg, null, 2));
+}
+
+function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: string; projectTsConfigPath: string }) {
+  const relativePathToProjectTsConfig = relative(options.projectPath, options.projectTsConfigPath);
+
   type TsConfig = { include?: string[]; compilerOptions?: Partial<{ target: string; lib: string[] }> };
-  const tsConfig: TsConfig = JSON.parse(readFileSync(tsConfigPath, 'utf-8'));
+  const tsConfig: TsConfig = JSON.parse(readFileSync(options.projectTsConfigPath, 'utf-8'));
   if (!tsConfig.include) {
-    throw new Error(`No include paths found in tsconfig.lib.json at: ${tsConfigPath}`);
+    throw new Error(`No include paths found at: ${options.projectTsConfigPath}`);
   }
   const relativeIncludePaths = tsConfig.include?.map(includePath => {
     return relative(options.projectPath, join(options.projectRoot, includePath));
@@ -147,9 +201,9 @@ export async function setup(options: Required<Args>) {
     } as const;
   }
 
-  // Merge builtin defaults with optional user config and ensure react root exists
-  const templateJson = getMergedTemplate(react, options.configPath);
-  const { projectName, projectRoot } = resolveProjectName();
+  // Merge builtin defaults with optional user config, detect origin setups and ensure react root exists
+  const { projectName, projectRoot, projectPaths } = getProjectInfo();
+  const templatePrepared = getPreparedTemplate(react, options.configPath, projectPaths);
   const reactRootPath = reactRoot(react);
   mkdirSync(reactRootPath, { recursive: true });
 
@@ -160,7 +214,7 @@ export async function setup(options: Required<Args>) {
     : ({ name: `@rit/react-${react}-root`, private: true, version: '0.0.0', license: 'UNLICENSED' } as PackageJson);
   reactRootPkg.dependencies = {
     ...(reactRootPkg.dependencies ?? {}),
-    ...templateJson.dependencies,
+    ...templatePrepared.dependencies,
   };
   writeFileSync(reactRootPkgPath, JSON.stringify(reactRootPkg, null, 2));
 
@@ -169,7 +223,7 @@ export async function setup(options: Required<Args>) {
     await installDependenciesAtReactRoot(reactRootPath);
     return {
       projectPath: reactRootPath,
-      commands: templateJson.commands,
+      commands: templatePrepared.commands,
       cleanup: () => {
         // no-op: install-deps mode doesn't create a per-project folder
         return;
@@ -194,10 +248,11 @@ export async function setup(options: Required<Args>) {
     tmpl: {
       relativePathToProjectRoot: relative(projectPath, projectRoot),
       relativePathToWorkspaceRoot: relative(projectPath, workspaceRoot),
-      tsconfig: prepareTsConfigTemplate({ projectRoot, projectPath }),
+      tsconfig: prepareTsConfigTemplate({ projectRoot, projectPath, projectTsConfigPath: projectPaths.tsConfig }),
       // path from project to its react root (where shared node_modules live)
       usedNodeModulesDirRelative: relative(projectPath, reactRootPath),
       projectName: createdProjectName,
+      react,
     },
   };
 
@@ -207,63 +262,45 @@ export async function setup(options: Required<Args>) {
     console.log(JSON.stringify(metadata, null, 2));
   }
 
-  // 1) Prepare TypeScript/Jest/Cypress config files inside the project
+  // Prepare TypeScript/Jest/Cypress config files inside the project
 
-  // 2) Create tsconfig.json from template with EJS
+  // 1) Create tsconfig.json from template with EJS
   renderTemplateToFile(
     join(__dirname, 'files', 'tsconfig.json.template'),
     metadata.tmpl,
     join(projectPath, 'tsconfig.json'),
   );
 
-  // 3) Create jest.config.js from template with EJS
-  renderTemplateToFile(
-    join(__dirname, 'files', 'jest.config.js.template'),
-    { ...metadata.tmpl, projectName: metadata.projectName, react: metadata.react },
-    join(projectPath, 'jest.config.js'),
-  );
-  renderTemplateToFile(
-    join(__dirname, 'files', '.swcrc.template'),
-    { ...metadata.tmpl, projectName: metadata.projectName },
-    join(projectPath, '.swcrc'),
-  );
+  // 3) Create jest.config.js from template with EJS (only if origin project has Jest setup)
+  if (templatePrepared.hasJestSetup) {
+    renderTemplateToFile(
+      join(__dirname, 'files', 'jest.config.js.template'),
+      metadata.tmpl,
+      join(projectPath, 'jest.config.js'),
+    );
+    renderTemplateToFile(join(__dirname, 'files', '.swcrc.template'), metadata.tmpl, join(projectPath, '.swcrc'));
+  }
 
-  // 4) Create cypress.config.ts from template with EJS
-  renderTemplateToFile(
-    join(__dirname, 'files', 'cypress.config.ts.template'),
-    metadata.tmpl,
-    join(projectPath, 'cypress.config.ts'),
-  );
-  renderTemplateToFile(
-    join(__dirname, 'files', 'tsconfig.cy.json.template'),
-    metadata.tmpl,
-    join(projectPath, 'tsconfig.cy.json'),
-  );
+  // 4) Create cypress.config.ts and tsconfig.cy.json from template with EJS (only if origin project has Cypress setup)
+  if (templatePrepared.hasCypressSetup) {
+    renderTemplateToFile(
+      join(__dirname, 'files', 'cypress.config.ts.template'),
+      metadata.tmpl,
+      join(projectPath, 'cypress.config.ts'),
+    );
+    renderTemplateToFile(
+      join(__dirname, 'files', 'tsconfig.cy.json.template'),
+      metadata.tmpl,
+      join(projectPath, 'tsconfig.cy.json'),
+    );
+  }
 
-  // Create project-level package.json exposing runnable scripts (no dependencies here)
-  const parentBinRel = join(metadata.tmpl.usedNodeModulesDirRelative as string, 'node_modules', '.bin');
-  const addRelativeBinPathToCmd = (cmd: string) => {
-    // Extract the first word (command name) from the command string
-    const [commandName, ...args] = cmd.split(' ');
-    const binPath = join(parentBinRel, commandName);
-
-    // Prepend with node and the bin path, preserving any arguments
-    if (args.length === 0) {
-      throw new Error(`Command "${commandName}" has no arguments`);
-    }
-    return `node ${binPath} ${args.join(' ')}`;
-  };
-  const projectScripts = Object.fromEntries(
-    Object.entries(templateJson.commands).map(([k, v]) => [k, addRelativeBinPathToCmd(v)]),
-  ) as Record<string, string>;
-  const projectPkg: PackageJson = {
-    name: metadata.projectName,
-    private: true,
-    version: '0.0.0',
-    license: 'UNLICENSED',
-    scripts: projectScripts,
-  } as const;
-  writeFileSync(join(projectPath, 'package.json'), JSON.stringify(projectPkg, null, 2));
+  createProjectPackageJson({
+    projectPath,
+    projectName: metadata.projectName,
+    usedNodeModulesDirRelative: metadata.tmpl.usedNodeModulesDirRelative,
+    commands: templatePrepared.commands,
+  });
 
   // Install deps, but only for specific flows:
   // - On --prepare-only (default): install unless --no-install is used
@@ -281,7 +318,7 @@ export async function setup(options: Required<Args>) {
 
   return {
     projectPath,
-    commands: templateJson.commands,
+    commands: templatePrepared.commands,
     cleanup: () => {
       removeTmpProject(react, createdProjectName);
     },

@@ -88,6 +88,49 @@ export function getMergedTemplate(
   return merged;
 }
 
+/**
+ * Prepare template by filtering commands based on the origin project's setups (Jest/Cypress) and
+ * reporting which setups exist. Keeps getMergedTemplate pure while providing a convenient wrapper.
+ */
+export function getPreparedTemplate(
+  reactVersion: ReactVersion,
+  configPath: string,
+  projectPaths: {
+    packageJson: string;
+    jestConfig: string | null;
+    cypressConfig: string | null;
+    tsConfig: string | null;
+  },
+): {
+  commands: Record<string, string>;
+  dependencies: Record<string, string>;
+  hasJestSetup: boolean;
+  hasCypressSetup: boolean;
+} {
+  const merged = getMergedTemplate(reactVersion, configPath);
+  const hasJestSetup = Boolean(projectPaths.jestConfig);
+  const hasCypressSetup = Boolean(projectPaths.cypressConfig);
+
+  const filteredCommands = Object.fromEntries(
+    Object.entries(merged.commands).filter(([commandKey]) => {
+      if (!hasCypressSetup && /^e2e($|:)/.test(commandKey)) {
+        return false;
+      }
+      if (!hasJestSetup && /^test($|:)/.test(commandKey)) {
+        return false;
+      }
+      return true;
+    }),
+  ) as Record<string, string>;
+
+  return {
+    commands: filteredCommands,
+    dependencies: merged.dependencies,
+    hasJestSetup,
+    hasCypressSetup,
+  } as const;
+}
+
 export function runCmd(command: string, opts: { cwd: string; env?: NodeJS.ProcessEnv }): Promise<void> {
   return new Promise((resolvePromise, reject) => {
     const localBin = join(opts.cwd, 'node_modules', '.bin');
