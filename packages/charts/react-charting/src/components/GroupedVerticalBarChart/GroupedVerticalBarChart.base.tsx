@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { select as d3Select } from 'd3-selection';
-import { Axis as D3Axis } from 'd3-axis';
-import { scaleLinear as d3ScaleLinear, ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
+import { select as d3Select, pointer as d3Pointer } from 'd3-selection';
+import { scaleLinear as d3ScaleLinear, ScaleLinear, scaleBand as d3ScaleBand, ScaleBand } from 'd3-scale';
 import {
   classNamesFunction,
   getId,
@@ -39,6 +38,7 @@ import {
   calcBandwidth,
   calcTotalBandUnits,
   calcRequiredWidth,
+  getColorFromToken,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -52,16 +52,18 @@ import {
   IMargins,
   IBasestate,
   Legends,
+  IChildProps,
+  IYValueHover,
 } from '../../index';
-import { IChart, IImageExportOptions } from '../../types/index';
+import { IChart, IImageExportOptions, ILineChartDataPoint, ILineChartPoints } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
 import { rgb } from 'd3-color';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
-type StringAxis = D3Axis<string>;
-type NumericAxis = D3Axis<number | { valueOf(): number }>;
+type NumericScale = ScaleLinear<number, number>;
+type StringScale = ScaleBand<string>;
 
 const MIN_DOMAIN_MARGIN = 8;
 const X1_INNER_PADDING = 0.1;
@@ -82,6 +84,7 @@ export interface IGroupedVerticalBarChartState extends IBasestate {
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
   selectedLegends: string[];
+  activeLinePoints: string[];
 }
 
 export class GroupedVerticalBarChartBase
@@ -95,6 +98,7 @@ export class GroupedVerticalBarChartBase
 
   private _createSet: (
     data: IGroupedVerticalBarChartData[],
+    lineData: ILineChartPoints[],
   ) => // eslint-disable-next-line @typescript-eslint/no-explicit-any
   { legends: string[]; xAxisLabels: string[]; datasetForBars: any };
   private _legends: string[];
@@ -121,13 +125,16 @@ export class GroupedVerticalBarChartBase
   private _legendsRef: React.RefObject<ILegendContainer>;
   private _legendColorMap: Record<string, [string, string]> = {};
   private readonly Y_ORIGIN: number = 0;
+  private _rectRef: React.RefObject<SVGRectElement>;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
 
     initializeComponentRef(this);
 
-    this._createSet = memoizeFunction((data: IGroupedVerticalBarChartData[]) => this._createDataSetOfGVBC(data));
+    this._createSet = memoizeFunction((data: IGroupedVerticalBarChartData[], lineData: ILineChartPoints[]) =>
+      this._createDataSetOfGVBC(data, lineData),
+    );
     this.state = {
       color: '',
       dataForHoverCard: 0,
@@ -140,6 +147,7 @@ export class GroupedVerticalBarChartBase
       hoverXValue: '',
       calloutLegend: '',
       activeLegend: '',
+      activeLinePoints: [],
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
@@ -154,6 +162,7 @@ export class GroupedVerticalBarChartBase
     this._domainMargin = MIN_DOMAIN_MARGIN;
     this._cartesianChartRef = React.createRef();
     this._legendsRef = React.createRef();
+    this._rectRef = React.createRef();
   }
 
   public componentDidUpdate(prevProps: IGroupedVerticalBarChartProps): void {
@@ -165,14 +174,14 @@ export class GroupedVerticalBarChartBase
   }
 
   public render(): React.ReactNode {
-    const points = this._addDefaultColors(this.props.data);
-    this._xAxisType = getTypeOfAxis(points[0].name, true) as XAxisTypes;
-    const { legends, xAxisLabels, datasetForBars } = this._createSet(points);
+    const { barData, lineData } = this._addDefaultColors(this.props.data, this.props.lineData);
+    this._xAxisType = getTypeOfAxis(barData[0].name, true) as XAxisTypes;
+    const { legends, xAxisLabels, datasetForBars } = this._createSet(barData, lineData);
     this._legends = legends;
     this._xAxisLabels = xAxisLabels;
     this._datasetForBars = datasetForBars;
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const legendBars: JSX.Element = this._getLegendData();
+    const legendBars: JSX.Element = this._getLegendData(lineData);
     this._adjustProps();
 
     // The maxOfYVal prop is only required for the primary y-axis, so yMax should be calculated
@@ -241,8 +250,20 @@ export class GroupedVerticalBarChartBase
         barwidth={this._barWidth}
         ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
-        children={() => {
-          return <g>{this._groupedVerticalBarGraph}</g>;
+        children={(props: IChildProps) => {
+          return (
+            <>
+              <rect
+                ref={this._rectRef}
+                width="100%"
+                height="100%"
+                fill="transparent"
+                style={{ pointerEvents: 'none' }}
+              />
+              <g>{this._groupedVerticalBarGraph}</g>
+              <g>{this._createLines(lineData, props.xScale, props.yScalePrimary, props.yScaleSecondary)}</g>
+            </>
+          );
         }}
       />
     ) : (
@@ -299,7 +320,7 @@ export class GroupedVerticalBarChartBase
   };
 
   private _getGraphData = (
-    xScale: StringAxis | NumericAxis,
+    xScale: StringScale | NumericScale,
     yScalePrimary: ScaleLinear<number, number>,
     containerHeight: number,
     containerWidth: number,
@@ -331,7 +352,7 @@ export class GroupedVerticalBarChartBase
 
   private _getMargins = (margins: IMargins) => (this.margins = margins);
 
-  private _createDataSetOfGVBC = (points: IGroupedVerticalBarChartData[]) => {
+  private _createDataSetOfGVBC = (points: IGroupedVerticalBarChartData[], lineData: ILineChartPoints[]) => {
     const legends = new Set<string>();
     const xAxisLabels: string[] = this._getOrderedXAxisLabels(points);
     points.forEach((point: IGroupedVerticalBarChartData) => {
@@ -339,7 +360,7 @@ export class GroupedVerticalBarChartBase
         legends.add(seriesPoint.legend);
       });
     });
-    const datasetForBars = this._createDataset(points);
+    const datasetForBars = this._createDataset(points, lineData);
     return {
       legends: Array.from(legends),
       xAxisLabels,
@@ -369,14 +390,15 @@ export class GroupedVerticalBarChartBase
         calloutLegend: pointData.legend,
         dataForHoverCard: pointData.data,
         color: pointData.color,
-        xCalloutValue: pointData.xAxisCalloutData,
+        xCalloutValue: pointData.xAxisCalloutData || groupData.xAxisPoint,
         yCalloutValue: pointData.yAxisCalloutData,
         dataPointCalloutProps: pointData,
         callOutAccessibilityData: this.props.isCalloutForStack
           ? groupData.stackCallOutAccessibilityData
           : pointData.callOutAccessibilityData,
         YValueHover: groupData.groupSeries,
-        hoverXValue: pointData.xAxisCalloutData,
+        hoverXValue: pointData.xAxisCalloutData || groupData.xAxisPoint,
+        activeLinePoints: this.props.isCalloutForStack ? [groupData.xAxisPoint] : [],
       });
     }
   };
@@ -403,14 +425,15 @@ export class GroupedVerticalBarChartBase
       calloutLegend: pointData.legend,
       dataForHoverCard: pointData.data,
       color: pointData.color,
-      xCalloutValue: pointData.xAxisCalloutData,
+      xCalloutValue: pointData.xAxisCalloutData || groupData.xAxisPoint,
       yCalloutValue: pointData.yAxisCalloutData,
       dataPointCalloutProps: pointData,
       callOutAccessibilityData: this.props.isCalloutForStack
         ? groupData.stackCallOutAccessibilityData
         : pointData.callOutAccessibilityData,
       YValueHover: groupData.groupSeries,
-      hoverXValue: pointData.xAxisCalloutData,
+      hoverXValue: pointData.xAxisCalloutData || groupData.xAxisPoint,
+      activeLinePoints: this.props.isCalloutForStack ? [groupData.xAxisPoint] : [],
     });
   };
 
@@ -437,7 +460,7 @@ export class GroupedVerticalBarChartBase
     const barLabelsForGroup: JSX.Element[] = [];
 
     // Get the actual legends present at this x-axis point
-    const presentLegends = Object.keys(singleSet).filter(key => key in this._legendColorMap);
+    const presentLegends = this._legends.filter(key => key in singleSet);
     const effectiveGroupWidth = calcRequiredWidth(this._barWidth, presentLegends.length, X1_INNER_PADDING);
 
     // For stacked bars, center the single bar group in the available space
@@ -561,9 +584,20 @@ export class GroupedVerticalBarChartBase
     );
   };
 
-  private _createDataset = (points: IGroupedVerticalBarChartData[]) => {
+  private _createDataset = (points: IGroupedVerticalBarChartData[], lineData: ILineChartPoints[]) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const datasetForBars: any = [];
+
+    const a: Record<string, IYValueHover[]> = {};
+    lineData?.forEach(series => {
+      series.data.forEach(point => {
+        if (!a[`${point.x}`]) {
+          a[`${point.x}`] = [{ ...point, legend: series.legend, color: series.color }];
+        } else {
+          a[`${point.x}`].push({ ...point, legend: series.legend, color: series.color });
+        }
+      });
+    });
 
     points.forEach((point: IGroupedVerticalBarChartData, index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -582,7 +616,7 @@ export class GroupedVerticalBarChartBase
 
       singleDatasetPointForBars.xAxisPoint = point.name;
       singleDatasetPointForBars.indexNum = index;
-      singleDatasetPointForBars.groupSeries = Object.values(legendToBarPoint);
+      singleDatasetPointForBars.groupSeries = [...Object.values(legendToBarPoint), ...(a[point.name] ?? [])];
       singleDatasetPointForBars.stackCallOutAccessibilityData = point.stackCallOutAccessibilityData;
       datasetForBars.push(singleDatasetPointForBars);
     });
@@ -636,13 +670,14 @@ export class GroupedVerticalBarChartBase
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _getLegendData = (): JSX.Element => {
+  private _getLegendData = (lineData: ILineChartPoints[]): JSX.Element => {
     const actions: ILegend[] = [];
 
-    this._legends.forEach((legendTitle: string) => {
+    const addLegendButton = (legendTitle: string, isLineLegendInBarChart?: boolean) => {
       const legend: ILegend = {
         title: legendTitle,
         color: this._legendColorMap[legendTitle][0],
+        isLineLegendInBarChart,
         hoverAction: () => {
           this._handleChartMouseLeave();
           this._onLegendHover(legendTitle);
@@ -653,7 +688,11 @@ export class GroupedVerticalBarChartBase
       };
 
       actions.push(legend);
-    });
+    };
+
+    lineData.forEach(series => addLegendButton(series.legend, true));
+    this._legends.forEach(legendTitle => addLegendButton(legendTitle));
+
     return (
       <Legends
         legends={actions}
@@ -805,57 +844,78 @@ export class GroupedVerticalBarChartBase
     return rgb(colorInterpolator(percentage)).formatRgb();
   };
 
-  private _addDefaultColors = (data?: IGroupedVerticalBarChartData[]): IGroupedVerticalBarChartData[] => {
+  private _addDefaultColors = (data?: IGroupedVerticalBarChartData[], lineData?: ILineChartPoints[]) => {
     this._legendColorMap = {};
     let colorIndex = 0;
 
-    return (
-      data?.map(point => {
-        return {
-          ...point,
-          series:
-            point.series?.map(seriesPoint => {
-              let startColor = seriesPoint.color
-                ? seriesPoint.color
-                : getNextColor(colorIndex, 0, this.props.theme?.isInverted);
-              let endColor = startColor;
+    return {
+      barData:
+        data?.map(point => {
+          return {
+            ...point,
+            series:
+              point.series?.map(seriesPoint => {
+                let startColor = seriesPoint.color
+                  ? seriesPoint.color
+                  : getNextColor(colorIndex, 0, this.props.theme?.isInverted);
+                let endColor = startColor;
 
-              if (this.props.enableGradient) {
-                if (seriesPoint.color) {
-                  // Generate gradient colors based on seriesPoint.color
-                  startColor = this._adjustColor(
-                    seriesPoint.color || endColor,
-                    0.2,
-                    false,
-                    this.props.theme?.isInverted!,
-                  );
-                  endColor = this._adjustColor(
-                    seriesPoint.color || startColor,
-                    0.2,
-                    true,
-                    this.props.theme?.isInverted!,
-                  );
-                } else {
-                  const nextGradient = getNextGradient(colorIndex, 0, this.props.theme?.isInverted);
-                  startColor = seriesPoint.gradient?.[0] || nextGradient[0];
-                  endColor = seriesPoint.gradient?.[1] || nextGradient[1];
+                if (this.props.enableGradient) {
+                  if (seriesPoint.color) {
+                    // Generate gradient colors based on seriesPoint.color
+                    startColor = this._adjustColor(
+                      seriesPoint.color || endColor,
+                      0.2,
+                      false,
+                      this.props.theme?.isInverted!,
+                    );
+                    endColor = this._adjustColor(
+                      seriesPoint.color || startColor,
+                      0.2,
+                      true,
+                      this.props.theme?.isInverted!,
+                    );
+                  } else {
+                    const nextGradient = getNextGradient(colorIndex, 0, this.props.theme?.isInverted);
+                    startColor = seriesPoint.gradient?.[0] || nextGradient[0];
+                    endColor = seriesPoint.gradient?.[1] || nextGradient[1];
+                  }
                 }
-              }
-              const pointGradient: [string, string] = [startColor, endColor];
-              if (!this._legendColorMap[seriesPoint.legend]) {
-                this._legendColorMap[seriesPoint.legend] = [startColor, endColor];
-              }
-              colorIndex += 1;
+                const pointGradient: [string, string] = [startColor, endColor];
+                if (!this._legendColorMap[seriesPoint.legend]) {
+                  this._legendColorMap[seriesPoint.legend] = [startColor, endColor];
+                }
+                colorIndex += 1;
 
-              return {
-                ...seriesPoint,
-                color: seriesPoint.color ?? this._legendColorMap[seriesPoint.legend][0],
-                ...(this.props.enableGradient ? { gradient: pointGradient } : {}),
-              };
-            }) ?? [],
-        };
-      }) ?? []
-    );
+                return {
+                  ...seriesPoint,
+                  color: seriesPoint.color ?? this._legendColorMap[seriesPoint.legend][0],
+                  ...(this.props.enableGradient ? { gradient: pointGradient } : {}),
+                };
+              }) ?? [],
+          };
+        }) ?? [],
+
+      lineData:
+        lineData?.map(series => {
+          let color: string;
+          if (typeof series.color === 'undefined') {
+            color = getNextColor(colorIndex, 0, this.props.theme?.isInverted);
+          } else {
+            color = getColorFromToken(series.color, this.props.theme?.isInverted);
+          }
+
+          if (!this._legendColorMap[series.legend]) {
+            this._legendColorMap[series.legend] = [color, color];
+          }
+          colorIndex += 1;
+
+          return {
+            ...series,
+            color: this._legendColorMap[series.legend][0],
+          };
+        }) ?? [],
+    };
   };
 
   private _getOrderedXAxisLabels = (points: IGroupedVerticalBarChartData[]) => {
@@ -877,5 +937,223 @@ export class GroupedVerticalBarChartBase
       });
     });
     return categoryToValues;
+  };
+
+  private _createLines = (
+    lineData: ILineChartPoints[],
+    xScale: StringScale,
+    yScalePrimary: NumericScale,
+    yScaleSecondary?: NumericScale,
+  ): React.ReactNode => {
+    const lineBorders: React.ReactNode[] = [];
+    const lines: React.ReactNode[] = [];
+    const dots: React.ReactNode[] = [];
+    const { activeLinePoints } = this.state;
+
+    lineData.forEach((series, index) => {
+      const lineBorderGroup: React.ReactNode[] = [];
+      const lineGroup: React.ReactNode[] = [];
+      const dotGroup: React.ReactNode[] = [];
+      const lineBorderWidth = series.lineOptions?.lineBorderWidth
+        ? Number.parseFloat(series.lineOptions.lineBorderWidth.toString())
+        : 0;
+      const yScale = series.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
+      const shouldHighlight = this._legendHighlighted(series.legend) || this._noLegendHighlighted();
+
+      series.data.forEach((point, i) => {
+        const x2 = xScale(`${point.x}`)! + xScale.bandwidth() / 2;
+        const y2 = yScale(point.y);
+
+        const isLinePointActive =
+          activeLinePoints[0] === `${point.x}` &&
+          (!activeLinePoints[1] || activeLinePoints[1] === `${index}`) &&
+          (!activeLinePoints[2] || activeLinePoints[2] === `${i}`);
+        const { opacity: dotOpacity, radius: dotRadius } = this._getDotOpacityAndRadius(
+          series.legend,
+          isLinePointActive,
+        );
+
+        if (i > 0) {
+          const x1 = xScale(`${series.data[i - 1].x}`)! + xScale.bandwidth() / 2;
+          const y1 = yScale(series.data[i - 1].y);
+
+          if (lineBorderWidth > 0) {
+            lineBorderGroup.push(
+              <line
+                key={`lineBorder-${index}-${i}`}
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                fill="transparent"
+                stroke={series.lineOptions?.lineBorderColor ?? this.props.theme!.semanticColors.bodyBackground}
+                strokeWidth={lineBorderWidth * 2}
+                strokeLinecap="round"
+                opacity={shouldHighlight ? 1 : 0.1}
+              />,
+            );
+          }
+
+          lineGroup.push(
+            <line
+              key={`line-${index}-${i}`}
+              x1={x1}
+              y1={y1}
+              x2={x2}
+              y2={y2}
+              stroke={series.color}
+              strokeWidth={series.lineOptions?.strokeWidth ?? 3}
+              strokeLinecap={series.lineOptions?.strokeLinecap ?? 'round'}
+              strokeDasharray={series.lineOptions?.strokeDasharray}
+              opacity={shouldHighlight ? 1 : 0.1}
+              onMouseOver={e => this._lineHover(e, xScale, lineData, index, i)}
+              onMouseLeave={this._onBarLeave}
+            />,
+          );
+        }
+
+        dotGroup.push(
+          <circle
+            key={`dot-${index}-${i}`}
+            cx={x2}
+            cy={y2}
+            r={dotRadius}
+            fill={this.props.theme!.semanticColors.bodyBackground}
+            stroke={series.color}
+            strokeWidth={3}
+            opacity={dotOpacity}
+            onMouseOver={e => this._lineHover(e, xScale, lineData, index, i)}
+            onMouseLeave={this._onBarLeave}
+            data-is-focusable={shouldHighlight}
+            onFocus={e => this._lineFocus(e, xScale, lineData, index, i)}
+            onBlur={this._onBarLeave}
+            role="img"
+            aria-label={this._getAriaLabel(
+              {
+                xAxisCalloutData: point.xAxisCalloutData,
+                legend: series.legend,
+                yAxisCalloutData: point.yAxisCalloutData,
+                data: point.y,
+                callOutAccessibilityData: point.callOutAccessibilityData,
+              } as IGVBarChartSeriesPoint,
+              `${point.x}`,
+            )}
+          />,
+        );
+      });
+
+      lineBorders.push(<g key={`lineBorderGroup-${index}`}>{lineBorderGroup}</g>);
+      lines.push(<g key={`lineGroup-${index}`}>{lineGroup}</g>);
+      dots.push(<g key={`dotGroup-${index}`}>{dotGroup}</g>);
+    });
+
+    return (
+      <>
+        <g>{lineBorders}</g>
+        <g>{lines}</g>
+        <g>{dots}</g>
+      </>
+    );
+  };
+
+  private _getDotOpacityAndRadius = (legend: string, isActive: boolean): { opacity: number; radius: number } => {
+    if (this._noLegendHighlighted()) {
+      return {
+        opacity: isActive ? 1 : 0,
+        radius: 8,
+      };
+    } else {
+      if (this._legendHighlighted(legend)) {
+        return {
+          opacity: 1,
+          radius: isActive ? 8 : 0.3,
+        };
+      } else {
+        return { opacity: 0, radius: 0 };
+      }
+    }
+  };
+
+  private _lineHover = (
+    event: React.MouseEvent<SVGElement>,
+    xScale: StringScale,
+    lineData: ILineChartPoints[],
+    seriesIdx: number,
+    pointIdx: number,
+  ) => {
+    const x = d3Pointer(event, this._rectRef.current)[0];
+    const series = lineData[seriesIdx];
+    const xp = (i: number) => xScale(series.data[i].x)! + xScale.bandwidth() / 2;
+    let closestIdx = pointIdx;
+    if (pointIdx > 0 && Math.abs(xp(pointIdx - 1) - x) < Math.abs(xp(pointIdx) - x)) {
+      closestIdx = pointIdx - 1;
+    }
+    const groupData = this._datasetForBars.find(singleSet => singleSet.xAxisPoint === series.data[closestIdx].x);
+    const pointData = {
+      ...series.data[closestIdx],
+      legend: series.legend,
+      color: series.color!,
+      key: series.legend,
+      data: series.data[closestIdx]?.y,
+    };
+    this.setState({
+      refSelected: event,
+      /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
+      isCalloutVisible: this._noLegendHighlighted() || this._legendHighlighted(series.legend),
+      calloutLegend: series.legend,
+      dataForHoverCard: series.data[closestIdx]?.y,
+      color: series.color,
+      xCalloutValue: series.data[closestIdx]?.xAxisCalloutData || `${series.data[closestIdx]?.x}`,
+      yCalloutValue: series.data[closestIdx]?.yAxisCalloutData as string,
+      dataPointCalloutProps: pointData,
+      callOutAccessibilityData: this.props.isCalloutForStack
+        ? groupData.stackCallOutAccessibilityData
+        : pointData.callOutAccessibilityData,
+      YValueHover: groupData.groupSeries,
+      hoverXValue: series.data[closestIdx]?.xAxisCalloutData || `${series.data[closestIdx]?.x}`,
+      activeLinePoints: [
+        `${series.data[closestIdx]?.x}`,
+        ...(this.props.isCalloutForStack ? [] : [`${seriesIdx}`, `${closestIdx}`]),
+      ],
+    });
+  };
+
+  private _lineFocus = (
+    event: React.FocusEvent<SVGElement>,
+    xScale: StringScale,
+    lineData: ILineChartPoints[],
+    seriesIdx: number,
+    pointIdx: number,
+  ) => {
+    const series = lineData[seriesIdx];
+    let closestIdx = pointIdx;
+    const groupData = this._datasetForBars.find(singleSet => singleSet.xAxisPoint === series.data[closestIdx].x);
+    const pointData = {
+      ...series.data[closestIdx],
+      legend: series.legend,
+      color: series.color!,
+      key: series.legend,
+      data: series.data[closestIdx]?.y,
+    };
+    this.setState({
+      refSelected: event.currentTarget,
+      /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
+      isCalloutVisible: this._noLegendHighlighted() || this._legendHighlighted(series.legend),
+      calloutLegend: series.legend,
+      dataForHoverCard: series.data[closestIdx]?.y,
+      color: series.color,
+      xCalloutValue: series.data[closestIdx]?.xAxisCalloutData || `${series.data[closestIdx]?.x}`,
+      yCalloutValue: series.data[closestIdx]?.yAxisCalloutData as string,
+      dataPointCalloutProps: pointData,
+      callOutAccessibilityData: this.props.isCalloutForStack
+        ? groupData.stackCallOutAccessibilityData
+        : pointData.callOutAccessibilityData,
+      YValueHover: groupData.groupSeries,
+      hoverXValue: series.data[closestIdx]?.xAxisCalloutData || `${series.data[closestIdx]?.x}`,
+      activeLinePoints: [
+        `${series.data[closestIdx]?.x}`,
+        ...(this.props.isCalloutForStack ? [] : [`${seriesIdx}`, `${closestIdx}`]),
+      ],
+    });
   };
 }
