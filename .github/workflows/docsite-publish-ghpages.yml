@@ -8,27 +8,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'microsoft' }} && ${{ contains(github.event.head_commit.message, 'applying package updates') || github.event_name == 'workflow_dispatch' }}
-
-    outputs:
-      status: ${{ steps.verify-react-components-changed.outputs.any_changed == 'true' || github.event_name == 'workflow_dispatch' }}
-
-    steps:
-      - uses: actions/checkout@v4
-        name: Checkout [master]
-
-      - name: Verify react-compoenents has changed
-        uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46.0.5
-        id: verify-react-components-changed
-        with:
-          files: |
-            packages/react-components/react-components/package.json
   build:
     runs-on: ubuntu-latest
-    needs: check
-    if: needs.check.outputs.status == 'true'
+    outputs:
+      artifact_id: ${{ steps.artifact_upload.outputs.artifact_id }}
 
     steps:
       - uses: actions/checkout@v4
@@ -46,20 +29,29 @@ jobs:
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps
 
-      - name: Build storybook
-        run: yarn nx run public-docsite-v9:build-storybook --nxBail
-        env:
-          STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY: ${{ secrets.STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY }}
+      - name: Affected Deployable Storybooks
+        id: affected_storybooks_count
+        run: |
+          affected_count=$(yarn --silent nx show projects -t build-storybook:docsite --affected --verbose false | wc -l | tr -d ' ')
+          echo "value=$affected_count" >> $GITHUB_OUTPUT
+
+      - name: Build affected storybooks
+        if: steps.affected_storybooks_count.outputs.value > 0
+        run: |
+          yarn nx run public-docsite-v9:build-storybook
+          yarn nx run-many -t build-storybook:docsite --nxBail
 
       - name: Upload Pages Artifact
+        if: steps.affected_storybooks_count.outputs.value > 0
+        id: artifact_upload
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './apps/public-docsite-v9/dist/storybook/'
+          path: './apps/public-docsite-v9/dist/'
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
-
+    if: needs.build.outputs.artifact_id
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
       pages: write # to deploy to Pages

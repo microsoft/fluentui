@@ -65,6 +65,7 @@
     "start": "yarn start-storybook -p 6006 --docs",
     "start-storybook": "storybook dev",
     "build-storybook": "storybook build -o ./dist/storybook --docs",
+    "build-storybook:docsite": "cross-env DEPLOY_PATH=/web-components/ storybook build -o ../../apps/public-docsite-v9/dist/web-components --docs",
     "e2e": "node ./scripts/e2e.js",
     "e2e:local": "node ./scripts/e2e.js --ui"
   },
