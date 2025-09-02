@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -262,6 +263,6 @@ const BreadcrumbOverflowExample = () => {
   );
 };
 
-export const BreadcrumbWithOverflow = () => {
+export const BreadcrumbWithOverflow = (): JSXElement => {
   return <BreadcrumbOverflowExample />;
 };

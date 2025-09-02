@@ -10,6 +10,7 @@ import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -113,16 +114,16 @@ export type PartitionBreadcrumbItemsOptions<T> = {
 };
 
 // @public
-export const renderBreadcrumb_unstable: (state: BreadcrumbState, contextValues: BreadcrumbContextValues) => JSX.Element;
+export const renderBreadcrumb_unstable: (state: BreadcrumbState, contextValues: BreadcrumbContextValues) => JSXElement;
 
 // @public
-export const renderBreadcrumbButton_unstable: (state: BreadcrumbButtonState) => JSX.Element;
+export const renderBreadcrumbButton_unstable: (state: BreadcrumbButtonState) => JSXElement;
 
 // @public
-export const renderBreadcrumbDivider_unstable: (state: BreadcrumbDividerState) => JSX.Element;
+export const renderBreadcrumbDivider_unstable: (state: BreadcrumbDividerState) => JSXElement;
 
 // @public
-export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemState) => JSX.Element;
+export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemState) => JSXElement;
 
 // @public (undocumented)
 export const truncateBreadcrumbLongName: (content: string, maxLength?: number) => string;
@@ -140,7 +141,7 @@ export const useBreadcrumbButton_unstable: (props: BreadcrumbButtonProps, ref: R
 export const useBreadcrumbButtonStyles_unstable: (state: BreadcrumbButtonState) => BreadcrumbButtonState;
 
 // @internal (undocumented)
-export const useBreadcrumbContext_unstable: () => Required<Pick<BreadcrumbProps, "size">>;
+export const useBreadcrumbContext_unstable: () => BreadcrumbContextValues;
 
 // @public
 export const useBreadcrumbDivider_unstable: (props: BreadcrumbDividerProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbDividerState;

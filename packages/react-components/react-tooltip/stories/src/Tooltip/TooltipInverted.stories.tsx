@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Tooltip } from '@fluentui/react-components';
 import { SlideTextFilled } from '@fluentui/react-icons';
 
-export const Inverted = () => (
+export const Inverted = (): JSXElement => (
   <Tooltip appearance="inverted" content="Example inverted tooltip" relationship="label">
     <Button icon={<SlideTextFilled />} size="large" />
   </Tooltip>

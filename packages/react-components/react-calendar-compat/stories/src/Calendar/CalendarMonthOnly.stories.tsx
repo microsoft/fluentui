@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Calendar, DateRangeType } from '@fluentui/react-calendar-compat';
 
-export const CalendarMonthOnly = () => {
+export const CalendarMonthOnly = (): JSXElement => {
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 

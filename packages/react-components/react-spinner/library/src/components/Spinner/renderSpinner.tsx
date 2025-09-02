@@ -2,12 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { SpinnerState, SpinnerSlots } from './Spinner.types';
 
 /**
  * Render the final JSX of Spinner
  */
-export const renderSpinner_unstable = (state: SpinnerState) => {
+export const renderSpinner_unstable = (state: SpinnerState): JSXElement => {
   assertSlots<SpinnerSlots>(state);
   const { labelPosition, shouldRenderSpinner } = state;
   return (

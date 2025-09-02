@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: enforce explicit module boundary types",
+  "packageName": "@fluentui/react-carousel",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

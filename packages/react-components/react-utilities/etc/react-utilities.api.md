@@ -365,7 +365,7 @@ export type UseControllableStateOptions<State> = {
 };
 
 // @internal
-export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
+export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => ((...args: Args) => Return);
 
 // @internal
 export function useFirstMount(): boolean;

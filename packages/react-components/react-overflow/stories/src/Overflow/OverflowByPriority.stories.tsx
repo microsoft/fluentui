@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   Button,
@@ -49,7 +50,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const OverflowByPriority = () => {
+export const OverflowByPriority = (): JSXElement => {
   const styles = useStyles();
 
   const priorities = [2, 3, 6, 1, 4, 5, 0, 7];

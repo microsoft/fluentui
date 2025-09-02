@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { GroupedVerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import {
   Switch,
@@ -10,7 +11,7 @@ import {
   RadioGroupOnChangeData,
 } from '@fluentui/react-components';
 
-export const GroupedVerticalBarNegative = () => {
+export const GroupedVerticalBarNegative = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(400);
   const [barWidth, setBarWidth] = React.useState<number>(16);

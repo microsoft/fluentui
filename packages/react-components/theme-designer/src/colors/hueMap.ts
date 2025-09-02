@@ -1,4 +1,4 @@
-export function hexToHue(hexColor: string) {
+export function hexToHue(hexColor: string): number {
   // Parse the hex color string into its red, green, and blue components
   const red = parseInt(hexColor.substring(1, 3), 16);
   const green = parseInt(hexColor.substring(3, 5), 16);

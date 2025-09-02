@@ -1,8 +1,9 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { CartesianChartProps, CartesianChartStyles } from './CartesianChart.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HighContrastSelector, useRtl } from '../../utilities/utilities';
+import { getAxisTitleStyle, getTooltipStyle } from '../../utilities/index';
 
 /**
  * @internal
@@ -40,16 +41,8 @@ const useStyles = makeStyles({
   chartWrapper: {
     overflow: 'auto',
   },
-  axisTitle: {
-    ...typographyStyles.caption2Strong,
-    fontStyle: 'normal',
-    textAlign: 'center',
-    color: tokens.colorNeutralForeground2,
-    fill: tokens.colorNeutralForeground1,
-    [HighContrastSelector]: {
-      fill: 'CanvasText',
-    },
-  },
+  axisTitle: getAxisTitleStyle() as GriffelStyle,
+  axisAnnotation: getAxisTitleStyle() as GriffelStyle,
   xAxis: {
     '& text': {
       fill: tokens.colorNeutralForeground1,
@@ -101,30 +94,10 @@ const useStyles = makeStyles({
       fill: 'Canvas',
     },
   },
-  tooltip: {
-    ...typographyStyles.body1,
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    position: 'absolute',
-    textAlign: 'center',
-    top: tokens.spacingVerticalNone,
-    backgroundColor: tokens.colorNeutralBackground1,
-    borderRadius: tokens.borderRadiusSmall,
-    pointerEvents: 'none',
-  },
-  axisAnnotation: {
-    ...typographyStyles.caption2Strong,
-    textAlign: 'center',
-    fontStyle: 'normal',
-    color: tokens.colorNeutralForeground2,
-    fill: tokens.colorNeutralForeground1,
-    [HighContrastSelector]: {
-      fill: 'CanvasText',
-    },
-  },
+  tooltip: getTooltipStyle() as GriffelStyle,
 });
 /**
+ *
  * Apply styling to the Carousel slots based on the state
  */
 export const useCartesianChartStyles = (props: CartesianChartProps): CartesianChartStyles => {

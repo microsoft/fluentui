@@ -1,6 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { DrawerContextValue, DrawerProvider } from '../../contexts/drawerContext';
 
 import type { OverlayDrawerState, OverlayDrawerInternalSlots } from './OverlayDrawer.types';
@@ -8,7 +9,10 @@ import type { OverlayDrawerState, OverlayDrawerInternalSlots } from './OverlayDr
 /**
  * Render the final JSX of OverlayDrawer
  */
-export const renderOverlayDrawer_unstable = (state: OverlayDrawerState, contextValue: DrawerContextValue) => {
+export const renderOverlayDrawer_unstable = (
+  state: OverlayDrawerState,
+  contextValue: DrawerContextValue,
+): JSXElement => {
   assertSlots<OverlayDrawerInternalSlots>(state);
 
   return (

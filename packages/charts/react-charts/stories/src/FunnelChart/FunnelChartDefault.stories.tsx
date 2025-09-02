@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { FunnelChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Switch, Field, Radio, RadioGroup } from '@fluentui/react-components';
 
-export const FunnelChartBasic = () => {
+export const FunnelChartBasic = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(600);
   const [height, setHeight] = React.useState<number>(500);
   const [hideLegend, setHideLegend] = React.useState<boolean>(false);

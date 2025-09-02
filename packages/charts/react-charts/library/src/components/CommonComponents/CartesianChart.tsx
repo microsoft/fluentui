@@ -25,7 +25,7 @@ import {
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { SVGTooltipText } from '../../utilities/SVGTooltipText';
+import { SVGTooltipText, SVGTooltipTextProps } from '../../utilities/SVGTooltipText';
 import { ChartPopover } from './ChartPopover';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 
@@ -72,6 +72,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     ChartTypes.HeatMapChart,
     ChartTypes.VerticalStackedBarChart,
     ChartTypes.GanttChart,
+    ChartTypes.ScatterChart,
   ];
   /**
    * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
@@ -269,6 +270,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       containerWidth: containerWidth,
       hideTickOverlap: props.rotateXAxisLables ? false : props.hideTickOverlap,
       calcMaxLabelWidth: _calcMaxLabelWidthWithTransform,
+      tickStep: props.xAxis?.tickStep,
+      tick0: props.xAxis?.tick0,
     };
 
     /**
@@ -282,7 +285,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     let tickValues: (string | number)[];
     switch (props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, props.tickParams!, props.chartType, culture));
+        ({ xScale, tickValues } = createNumericXAxis(
+          XAxisParams,
+          props.tickParams!,
+          props.chartType,
+          culture,
+          props.xScaleType,
+        ));
         break;
       case XAxisTypes.DateAxis:
         ({ xScale, tickValues } = createDateXAxis(
@@ -305,7 +314,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         ));
         break;
       default:
-        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, props.tickParams!, props.chartType, culture));
+        ({ xScale, tickValues } = createNumericXAxis(
+          XAxisParams,
+          props.tickParams!,
+          props.chartType,
+          culture,
+          props.xScaleType,
+        ));
     }
     _xScale = xScale;
     _tickValues = tickValues;
@@ -328,6 +343,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       // and the parent chart(HBWA/Vertical etc..) for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
       yAxisPadding: props.yAxisPadding || 0,
+      tickValues: props.yAxisTickValues,
+      tickStep: props.yAxis?.tickStep,
+      tick0: props.yAxis?.tick0,
     };
     /**
      * These scales used for 2 purposes.
@@ -377,6 +395,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           chartType,
           true,
           props.roundedTicks!,
+          props.secondaryYScaleType,
         );
       }
       yScalePrimary = props.createYAxis(
@@ -387,6 +406,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         chartType,
         false,
         props.roundedTicks!,
+        props.yScaleType,
       );
     }
 
@@ -467,6 +487,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   const xAxisTitleMaximumAllowedWidth = svgDimensions.width - margins.left! - margins.right! - startFromX!;
   const yAxisTitleMaximumAllowedHeight =
     svgDimensions.height - margins.bottom! - margins.top! - _removalValueForTextTuncate! - titleMargin;
+
+  const commonSvgToolTipProps: SVGTooltipTextProps = {
+    wrapContent,
+    showBackground: true,
+    className: classes.svgTooltip,
+    content: '',
+  };
   /**
    * When screen resizes, along with screen, chart also auto adjusted.
    * This method used to adjust height and width of the charts.
@@ -653,6 +680,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           />
           {props.xAxisTitle !== undefined && props.xAxisTitle !== '' && (
             <SVGTooltipText
+              {...commonSvgToolTipProps}
               content={props.xAxisTitle}
               textProps={{
                 x: margins.left! + startFromX + xAxisTitleMaximumAllowedWidth / 2,
@@ -661,13 +689,11 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                 textAnchor: 'middle',
               }}
               maxWidth={xAxisTitleMaximumAllowedWidth}
-              wrapContent={wrapContent}
-              showBackground={true}
-              className={classes.svgTooltip}
             />
           )}
           {props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '' && (
             <SVGTooltipText
+              {...commonSvgToolTipProps}
               content={props.xAxisAnnotation}
               textProps={{
                 x: margins.left! + startFromX + xAxisTitleMaximumAllowedWidth / 2,
@@ -677,9 +703,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                 'aria-hidden': true,
               }}
               maxWidth={xAxisTitleMaximumAllowedWidth}
-              wrapContent={wrapContent}
-              showBackground={true}
-              className={classes.svgTooltip}
             />
           )}
           <g
@@ -706,6 +729,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               />
               {props.secondaryYAxistitle !== undefined && props.secondaryYAxistitle !== '' && (
                 <SVGTooltipText
+                  {...commonSvgToolTipProps}
                   content={props.secondaryYAxistitle}
                   textProps={{
                     x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + _removalValueForTextTuncate!,
@@ -718,9 +742,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                     className: classes.axisTitle!,
                   }}
                   maxWidth={yAxisTitleMaximumAllowedHeight}
-                  wrapContent={wrapContent}
-                  showBackground={true}
-                  className={classes.svgTooltip}
                 />
               )}
             </g>
@@ -728,6 +749,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           {children}
           {props.yAxisTitle !== undefined && props.yAxisTitle !== '' && (
             <SVGTooltipText
+              {...commonSvgToolTipProps}
               content={props.yAxisTitle}
               textProps={{
                 x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + _removalValueForTextTuncate!,
@@ -738,15 +760,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                 className: classes.axisTitle!,
               }}
               maxWidth={yAxisTitleMaximumAllowedHeight}
-              wrapContent={wrapContent}
-              showBackground={true}
-              className={classes.svgTooltip}
             />
           )}
           {props.yAxisAnnotation !== undefined &&
             props.yAxisAnnotation !== '' &&
             (props.secondaryYAxistitle === undefined || props.secondaryYAxistitle === '') && (
               <SVGTooltipText
+                {...commonSvgToolTipProps}
                 content={props.yAxisAnnotation}
                 textProps={{
                   x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + _removalValueForTextTuncate!,
@@ -760,9 +780,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                   'aria-hidden': true,
                 }}
                 maxWidth={yAxisTitleMaximumAllowedHeight}
-                wrapContent={wrapContent}
-                showBackground={true}
-                className={classes.svgTooltip}
               />
             )}
         </svg>

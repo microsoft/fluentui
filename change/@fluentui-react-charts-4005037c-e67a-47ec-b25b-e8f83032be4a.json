@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "reduce component size by removing duplicate code",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

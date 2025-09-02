@@ -11,12 +11,13 @@ import type { InputOnChangeData } from '@fluentui/react-input';
 import type { InputProps } from '@fluentui/react-input';
 import type { InputSlots } from '@fluentui/react-input';
 import type { InputState } from '@fluentui/react-input';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSearchBox_unstable: (state: SearchBoxState) => JSX.Element;
+export const renderSearchBox_unstable: (state: SearchBoxState) => JSXElement;
 
 // @public
 export const SearchBox: ForwardRefComponent<SearchBoxProps>;

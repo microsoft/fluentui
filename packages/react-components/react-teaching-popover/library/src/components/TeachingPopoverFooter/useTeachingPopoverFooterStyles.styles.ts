@@ -48,7 +48,9 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverFooterStyles_unstable = (state: TeachingPopoverFooterState) => {
+export const useTeachingPopoverFooterStyles_unstable = (
+  state: TeachingPopoverFooterState,
+): TeachingPopoverFooterState => {
   'use no memo';
 
   const styles = useStyles();

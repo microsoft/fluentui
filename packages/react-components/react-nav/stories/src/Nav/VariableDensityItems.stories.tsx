@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Hamburger,
   NavCategory,
@@ -88,7 +89,7 @@ const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
 const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
 const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
 
-export const VariableDensityItems = (props: Partial<NavDrawerProps>) => {
+export const VariableDensityItems = (props: Partial<NavDrawerProps>): JSXElement => {
   const styles = useStyles();
 
   const labelId = useId('type-label');

@@ -133,10 +133,7 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    static getDerivedStateFromProps(nextProps: PresenceGroupProps, { childMapping: prevChildMapping, firstRender }: PresenceGroupState): {
-        childMapping: PresenceGroupChildMapping;
-        firstRender: boolean;
-    };
+    static getDerivedStateFromProps(nextProps: PresenceGroupProps, { childMapping: prevChildMapping, firstRender }: PresenceGroupState): PresenceGroupState;
     // (undocumented)
     render(): JSXElement;
 }

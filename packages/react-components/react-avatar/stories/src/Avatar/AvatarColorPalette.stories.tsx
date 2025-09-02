@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Avatar } from '@fluentui/react-components';
 
-export const ColorPalette = () => (
+export const ColorPalette = (): JSXElement => (
   <>
     <Avatar initials="DR" color="dark-red" name="darkRed avatar" />
     <Avatar initials="CR" color="cranberry" name="cranberry avatar" />

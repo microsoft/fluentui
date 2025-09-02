@@ -1,7 +1,9 @@
 import * as React from 'react';
 import type { AnimationHandle, MotionImperativeRef } from '../types';
 
-export function useMotionImperativeRef(imperativeRef: React.Ref<MotionImperativeRef | undefined> | undefined) {
+export function useMotionImperativeRef(
+  imperativeRef: React.Ref<MotionImperativeRef | undefined> | undefined,
+): React.MutableRefObject<AnimationHandle | undefined> {
   const animationRef = React.useRef<AnimationHandle | undefined>();
 
   React.useImperativeHandle(imperativeRef, () => ({

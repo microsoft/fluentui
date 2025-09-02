@@ -7,7 +7,7 @@ import type { DialogModalType } from '../Dialog';
 /**
  * Focus first element on content when dialog is opened,
  */
-export function useFocusFirstElement(open: boolean, modalType: DialogModalType) {
+export function useFocusFirstElement(open: boolean, modalType: DialogModalType): React.RefObject<DialogSurfaceElement> {
   const { findFirstFocusable } = useFocusFinders();
   const { targetDocument } = useFluent_unstable();
   const dialogRef = React.useRef<DialogSurfaceElement>(null);

@@ -24,7 +24,7 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
   static getDerivedStateFromProps(
     nextProps: PresenceGroupProps,
     { childMapping: prevChildMapping, firstRender }: PresenceGroupState,
-  ) {
+  ): PresenceGroupState {
     const nextChildMapping = getChildMapping(nextProps.children);
 
     return {
@@ -43,7 +43,7 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
     };
   }
 
-  private handleExit = (childKey: string) => {
+  private handleExit = (childKey: string): void => {
     const currentChildMapping = getChildMapping(this.props.children);
 
     if (childKey in currentChildMapping) {
@@ -60,11 +60,11 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
     }
   };
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.mounted = true;
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     this.mounted = false;
   }
   render(): JSXElement {

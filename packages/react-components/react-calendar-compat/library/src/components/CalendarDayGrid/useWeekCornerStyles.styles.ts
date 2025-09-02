@@ -25,7 +25,12 @@ export interface WeekCorners {
 /**
  * @internal
  */
-export function useWeekCornerStyles(props: CalendarDayGridProps) {
+export function useWeekCornerStyles(
+  props: CalendarDayGridProps,
+): readonly [
+  (initialWeeks: DayInfo[][]) => WeekCorners,
+  (above: boolean, below: boolean, left: boolean, right: boolean) => string,
+] {
   const { dir } = useFluent_unstable();
 
   /**

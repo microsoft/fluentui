@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, Button, Card, CardHeader, CardPreview, Body1 } from '@fluentui/react-components';
 import { SlideRelaxed } from '@fluentui/react-motion-components-preview';
 
@@ -85,7 +86,7 @@ const cardData = [
   },
 ];
 
-export const CardsDemo = () => {
+export const CardsDemo = (): JSXElement => {
   const classes = useClasses();
   const [visibleCards, setVisibleCards] = React.useState<Set<number>>(() => new Set(cardData.map(card => card.id)));
 

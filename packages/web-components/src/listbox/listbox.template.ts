@@ -1,11 +1,9 @@
-import { ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
-import { isDropdownOption } from '../option/option.options.js';
+import { type ElementViewTemplate, html } from '@microsoft/fast-element';
 import type { Listbox } from './listbox.js';
 
 /**
  * Generates a template for the {@link (Dropdown:class)} component.
  *
- * @param options - The {@link (DropdownOptions:interface)} to use for generating the template.
  * @returns The template object.
  *
  * @public
@@ -17,12 +15,7 @@ export function listboxTemplate<T extends Listbox>(): ElementViewTemplate<T> {
       @beforetoggle="${(x, c) => x.beforetoggleHandler(c.event as ToggleEvent)}"
       @click="${(x, c) => x.clickHandler(c.event as PointerEvent)}"
     >
-      <slot
-        ${slotted({
-          property: 'options',
-          filter: node => isDropdownOption(node),
-        })}
-      ></slot>
+      <slot @slotchange="${(x, c) => x.slotchangeHandler(c.event)}"></slot>
     </template>
   `;
 }

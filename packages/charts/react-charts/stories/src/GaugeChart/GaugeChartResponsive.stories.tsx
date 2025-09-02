@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DataVizPalette, GaugeChart, ResponsiveContainer } from '@fluentui/react-charts';
 
-export const GaugeChartResponsive = () => {
+export const GaugeChartResponsive = (): JSXElement => {
   return (
     <ResponsiveContainer height={128}>
       <GaugeChart

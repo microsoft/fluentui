@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Field,
   makeStyles,
@@ -97,7 +98,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Default = (props: React.ComponentProps<typeof Rotate>) => {
+export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
   const [perspective, setPerspective] = React.useState<string>('1000px');

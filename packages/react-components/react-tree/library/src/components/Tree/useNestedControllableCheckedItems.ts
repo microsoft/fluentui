@@ -4,7 +4,9 @@ import { ImmutableMap } from '../../utils/ImmutableMap';
 import { createCheckedItems } from '../../utils/createCheckedItems';
 import { TreeItemValue } from '../TreeItem/TreeItem.types';
 
-export function useNestedCheckedItems(props: Pick<TreeProps, 'checkedItems'>) {
+export function useNestedCheckedItems(
+  props: Pick<TreeProps, 'checkedItems'>,
+): ImmutableMap<TreeItemValue, 'mixed' | boolean> {
   return React.useMemo(() => createCheckedItems(props.checkedItems), [props.checkedItems]);
 }
 

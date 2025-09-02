@@ -1,6 +1,6 @@
 import * as React from 'react';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Table,
   TableBody,
@@ -130,7 +130,7 @@ const columnSizingOptions = {
   },
 };
 
-export const ResizableColumnsDisableAutoFit = () => {
+export const ResizableColumnsDisableAutoFit = (): JSXElement => {
   const [columns] = React.useState<TableColumnDefinition<Item>[]>(columnsDef);
 
   // eslint-disable-next-line @typescript-eslint/naming-convention

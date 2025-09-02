@@ -1,8 +1,37 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 25 Aug 2025 04:07:50 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Sep 2025 04:08:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.120](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.120)
+
+Mon, 01 Sep 2025 04:08:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.119..@fluentui/web-components_v3.0.0-beta.120)
+
+### Changes
+
+- fix: add focus-ring to dropdown ([PR #35116](https://github.com/microsoft/fluentui/pull/35116) by rupertdavid@microsoft.com)
+- fix(dropdown): use slotchange events instead of manual slot assignment ([PR #35125](https://github.com/microsoft/fluentui/pull/35125) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.119](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.119)
+
+Wed, 27 Aug 2025 04:06:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.118..@fluentui/web-components_v3.0.0-beta.119)
+
+### Changes
+
+- feat: make tree and tree-item SSR compatible ([PR #35091](https://github.com/microsoft/fluentui/pull/35091) by machi@microsoft.com)
+
+## [3.0.0-beta.118](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.118)
+
+Tue, 26 Aug 2025 04:07:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.117..@fluentui/web-components_v3.0.0-beta.118)
+
+### Changes
+
+- fix: remove unnecessary type check and avoid using instanceof in menu-list ([PR #35074](https://github.com/microsoft/fluentui/pull/35074) by machi@microsoft.com)
+- fix: make tablist more ssr compatible ([PR #35072](https://github.com/microsoft/fluentui/pull/35072) by machi@microsoft.com)
 
 ## [3.0.0-beta.117](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.117)
 
