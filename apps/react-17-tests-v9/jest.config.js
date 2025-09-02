@@ -7,6 +7,7 @@ const { join } = require('node:path');
 const { getNodeModulesPath } = require('./config/utils');
 
 const usedNodeModulesPath = getNodeModulesPath();
+const workspacePresetNodeModulesPath = join(__dirname, '../../node_modules');
 
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
@@ -34,9 +35,14 @@ module.exports = {
   moduleNameMapper: {
     '^react$': join(usedNodeModulesPath, './react'),
     '^react-dom$': join(usedNodeModulesPath, './react-dom'),
-    '^react-dom/(test-utils|client)$': join(usedNodeModulesPath, './react-dom/$1'),
+    '^react-dom/(server|test-utils)$': join(usedNodeModulesPath, './react-dom/$1'),
+    // React 17 doesn't have this API so we need to explicitly point it to noop module
+    // NOTE: noop.js doesn't exist
+    '^react-dom/client$': join(usedNodeModulesPath, 'noop.js'),
     '^react-test-renderer$': join(usedNodeModulesPath, './react-test-renderer'),
     '^@testing-library/(react|dom)$': join(usedNodeModulesPath, './@testing-library/$1'),
+    // need to remap to monorepo root as react-hooks is hoisted
+    '^@testing-library/react-hooks$': join(workspacePresetNodeModulesPath, './@testing-library/react-hooks'),
   },
   transform: {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],

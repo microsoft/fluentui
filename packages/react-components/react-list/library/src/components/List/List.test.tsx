@@ -14,6 +14,40 @@ function expectListboxItemAriaDisabledValue(item: HTMLElement, expected: string 
   expect(item.getAttribute('aria-disabled')).toBe(expected);
 }
 
+// React 19 wraps render-time errors into an AggregateError with empty message.
+// This helper extracts nested messages so we can assert reliably across React versions.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function getErrorMessages(err: any): string[] {
+  if (!err) {
+    return [];
+  }
+  const messages: string[] = [];
+  if (typeof err.message === 'string') {
+    messages.push(err.message);
+  }
+  if (Array.isArray(err.errors)) {
+    for (const inner of err.errors) {
+      messages.push(...getErrorMessages(inner));
+    }
+  }
+  if (err.cause) {
+    messages.push(...getErrorMessages(err.cause));
+  }
+  return messages;
+}
+
+function expectRenderToThrowWithMessage(ui: React.ReactElement, expectedSubstring: string) {
+  let thrown: unknown;
+  try {
+    render(ui);
+  } catch (e) {
+    thrown = e;
+  }
+  expect(thrown).toBeDefined();
+  const messages = getErrorMessages(thrown);
+  expect(messages.join('\n')).toContain(expectedSubstring);
+}
+
 describe('List', () => {
   isConformant({
     Component: List as React.FunctionComponent<ListProps>,
@@ -78,29 +112,27 @@ describe('List', () => {
         (console.error as jest.Mock).mockRestore();
       });
       it('div and li throws', () => {
-        expect(() =>
-          render(
-            <List as="div">
-              <ListItem value="test-value-1">First ListItem</ListItem>
-              <ListItem value="test-value-2">Second ListItem</ListItem>
-            </List>,
-          ),
-        ).toThrow('ListItem cannot be rendered as a li when its parent is a div.');
+        expectRenderToThrowWithMessage(
+          <List as="div">
+            <ListItem value="test-value-1">First ListItem</ListItem>
+            <ListItem value="test-value-2">Second ListItem</ListItem>
+          </List>,
+          'ListItem cannot be rendered as a li when its parent is a div.',
+        );
       });
 
       it('ul and div throws', () => {
-        expect(() =>
-          render(
-            <List>
-              <ListItem as="div" value="test-value-1">
-                First ListItem
-              </ListItem>
-              <ListItem as="div" value="test-value-2">
-                Second ListItem
-              </ListItem>
-            </List>,
-          ),
-        ).toThrow('ListItem cannot be rendered as a div when its parent is not a div.');
+        expectRenderToThrowWithMessage(
+          <List>
+            <ListItem as="div" value="test-value-1">
+              First ListItem
+            </ListItem>
+            <ListItem as="div" value="test-value-2">
+              Second ListItem
+            </ListItem>
+          </List>,
+          'ListItem cannot be rendered as a div when its parent is not a div.',
+        );
       });
 
       it("div and div doesn't throw", () => {

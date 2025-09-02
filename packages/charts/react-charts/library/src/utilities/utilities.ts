@@ -1221,7 +1221,7 @@ export function tooltipOfAxislabels(axistooltipProps: any): null | undefined {
     return null;
   }
   const div = d3Select('body').append('div').attr('id', id).attr('class', tooltipCls).style('opacity', 0);
-  const aa = axis!.selectAll('#BaseSpan')._groups[0];
+  const aa = axis!.selectAll('[id^="BaseSpan-"]')._groups[0];
   const baseSpanLength = aa && Object.keys(aa)!.length;
   const originalDataArray: string[] = [];
   for (let i = 0; i < baseSpanLength; i++) {

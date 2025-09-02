@@ -156,6 +156,11 @@ export const VerticalStackedBarDateAxis = (): JSXElement => {
         <VerticalStackedBarChart
           chartTitle="Vertical stacked bar chart styled example"
           data={data}
+          width={width}
+          height={height}
+          barGapMax={barGapMax}
+          barCornerRadius={barCornerRadius}
+          barMinimumHeight={barMinimumHeight}
           yAxisTickCount={10}
           tickValues={tickValues}
           tickFormat={timeFormat}

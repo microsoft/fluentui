@@ -341,23 +341,21 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
             d="M0,0Z"
-            data-is-focusable="false"
+            data-is-focusable="true"
             fill="#f7630c"
             opacity="0.1"
             role="img"
             stroke-width="0"
-            tabindex="0"
           />
           <path
             aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
             d="M0,0Z"
-            data-is-focusable="false"
+            data-is-focusable="true"
             fill="#c50f1f"
             opacity="0.1"
             role="img"
             stroke-width="0"
-            tabindex="0"
           />
           <g
             transform="rotate(54, 0, 0)"
@@ -532,23 +530,21 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
             d="M0,0Z"
-            data-is-focusable="false"
+            data-is-focusable="true"
             fill="#f7630c"
             opacity="0.1"
             role="img"
             stroke-width="0"
-            tabindex="0"
           />
           <path
             aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
             d="M0,0Z"
-            data-is-focusable="false"
+            data-is-focusable="true"
             fill="#c50f1f"
             opacity="0.1"
             role="img"
             stroke-width="0"
-            tabindex="0"
           />
           <g
             transform="rotate(54, 0, 0)"
