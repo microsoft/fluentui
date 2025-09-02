@@ -55,6 +55,11 @@ export const ChartHoverCard: React_2.FunctionComponent<IChartHoverCardProps>;
 // @public
 export const ChartTable: React_2.FunctionComponent<IChartTableProps>;
 
+// Warning: (ae-forgotten-export) The symbol "Points" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type DataPointShape = LegendShape | `${keyof typeof Points}-open`;
+
 // @public (undocumented)
 export const DataVizGradientPalette: {
     gradient1: string;
@@ -1053,7 +1058,7 @@ export interface ILegend {
     nativeButtonProps?: React_2.ButtonHTMLAttributes<HTMLButtonElement>;
     onMouseOutAction?: (isLegendFocused?: boolean) => void;
     opacity?: number;
-    shape?: LegendShape;
+    shape?: DataPointShape;
     stripePattern?: boolean;
     title: string;
 }
@@ -1167,7 +1172,7 @@ export interface ILineChartPoints {
     gaps?: ILineChartGap[];
     hideNonActiveDots?: boolean;
     legend: string;
-    legendShape?: LegendShape;
+    legendShape?: DataPointShape;
     lineOptions?: ILineChartLineOptions;
     onLegendClick?: (selectedLegend: string | null | string[]) => void;
     onLineClick?: () => void;
@@ -1222,7 +1227,7 @@ export interface ILineDataInVerticalStackedBarChart {
     data?: number | string;
     // (undocumented)
     legend: string;
-    legendShape?: LegendShape;
+    legendShape?: DataPointShape;
     lineOptions?: ILineChartLineOptions;
     useSecondaryYScale?: boolean;
     // (undocumented)
@@ -1492,6 +1497,7 @@ export interface ISankeyChartStyles {
 
 // @public
 export interface IScatterChartDataPoint extends IBaseDataPoint {
+    markerShape?: DataPointShape;
     x: number | Date | string;
     y: number;
 }
@@ -1502,7 +1508,7 @@ export interface IScatterChartPoints {
     data: IScatterChartDataPoint[];
     hideNonActiveDots?: boolean;
     legend: string;
-    legendShape?: LegendShape;
+    legendShape?: DataPointShape;
     onLegendClick?: (selectedLegend: string | null | string[]) => void;
     opacity?: number;
     useSecondaryYScale?: boolean;
@@ -1534,7 +1540,7 @@ export interface IShapeProps {
     // (undocumented)
     pathProps: React_2.SVGAttributes<SVGPathElement>;
     // (undocumented)
-    shape: LegendShape;
+    shape: DataPointShape;
     // (undocumented)
     svgProps: React_2.SVGAttributes<SVGElement>;
 }
@@ -1859,7 +1865,6 @@ export interface IYValueHover {
 // @public
 export const Legends: React_2.FunctionComponent<ILegendsProps>;
 
-// Warning: (ae-forgotten-export) The symbol "Points" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "CustomPoints" needs to be exported by the entry point index.d.ts
 //
 // @public

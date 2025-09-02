@@ -22,8 +22,6 @@ import {
   YAxisType,
   createWrapOfXLabels,
   rotateXAxisLabels,
-  Points,
-  pointTypes,
   calculateLongestLabelWidth,
   createYAxisLabels,
   ChartTypes,
@@ -36,6 +34,7 @@ import {
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText, ISVGTooltipTextProps } from '../../utilities/SVGTooltipText';
 import { IChart } from '../../types/index';
+import { Points, pointTypes } from '../../utilities/shape-utilities';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 const ChartHoverCard = React.lazy(() =>
