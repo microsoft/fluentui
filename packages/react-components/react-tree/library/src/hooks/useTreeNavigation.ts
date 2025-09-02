@@ -9,8 +9,10 @@ import { useMergedRefs } from '@fluentui/react-utilities';
 import { treeItemLayoutClassNames } from '../TreeItemLayout';
 import { useFocusFinders } from '@fluentui/react-tabster';
 
-/**
- * @internal
+/***
+ * Hook used to manage navigation in the tree.
+ *
+ * @param navigationMode - the navigation mode of the tree, 'tree' (default) or 'treegrid'
  */
 export function useTreeNavigation(navigationMode: TreeNavigationMode = 'tree') {
   'use no memo';
@@ -75,6 +77,7 @@ export function useTreeNavigation(navigationMode: TreeNavigationMode = 'tree') {
     if (nextElement) {
       rove(nextElement, focusOptions);
     }
+    return nextElement;
   }
   return {
     navigate,
