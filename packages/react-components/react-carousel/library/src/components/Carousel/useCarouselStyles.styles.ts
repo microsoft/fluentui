@@ -1,5 +1,6 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 
 import type { CarouselSlots, CarouselState } from './Carousel.types';
 
@@ -16,6 +17,8 @@ const useStyles = makeStyles({
     overflowX: 'hidden',
     overflowAnchor: 'none',
     position: 'relative',
+    margin: tokens.spacingVerticalL,
+    padding: tokens.spacingVerticalL,
   },
 });
 
