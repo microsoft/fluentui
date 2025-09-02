@@ -516,7 +516,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
             if (donutIdxs.length > 1 && donutIdxs.length === index.length) {
               groupIdxs = [donutIdxs[donutIdxs.length - 1]];
               filteredTracesInfo = validTracesFilteredIndex.filter(trace => groupIdxs.includes(trace.index));
-              // chartType = 'donut';
             }
           }
 
