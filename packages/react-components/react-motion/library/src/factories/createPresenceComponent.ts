@@ -31,7 +31,7 @@ export type PresenceComponentProps = {
    */
   appear?: boolean;
 
-    /** A React element that will be cloned and will have motion effects applied to it. */
+  /** A React element that will be cloned and will have motion effects applied to it. */
   children: JSXElement;
 
   /** Provides imperative controls for the animation. */
