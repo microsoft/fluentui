@@ -7,4 +7,9 @@ const { registerTsProject } = require('@nx/js/src/internal');
 
 registerTsProject(joinPathFragments(__dirname, '..', 'tsconfig.lib.json'));
 
-require('../src/cli');
+const { cli } = require('../src/cli');
+
+cli().catch(err => {
+  console.error(err instanceof Error ? err.message : err);
+  process.exit(1);
+});

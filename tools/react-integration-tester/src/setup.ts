@@ -8,18 +8,10 @@ import type { Args, ReactVersion, PackageJson, TsConfig } from './shared';
 import { runCmd, readCommandsFromPreparedProject, getPreparedTemplate, getMergedTemplate } from './shared';
 import { type Logger } from './logger';
 
-// Define workspaceRoot before using it in tmpFolder() to avoid TDZ issues
-const workspaceRoot = findGitRoot(process.cwd());
-const scaffoldRoot = join(tmpFolder(), 'rit');
-
 function findGitRoot(cwd: string) {
   const output = execSync('git rev-parse --show-toplevel', { cwd });
 
   return output.toString().trim();
-}
-
-function tmpFolder() {
-  return `${workspaceRoot}/tmp`;
 }
 /**
  * Generate a unique name for running CLI commands
@@ -31,11 +23,20 @@ function uniq(prefix: string) {
   return `${prefix}${Math.floor(Math.random() * 10000000)}`;
 }
 
-function reactRoot(react: ReactVersion) {
-  return join(scaffoldRoot, `react-${react}`);
+function computeRoots(cwd: string) {
+  const workspaceRoot = findGitRoot(cwd);
+  const tmpRoot = join(workspaceRoot, 'tmp');
+  const scaffoldRoot = join(tmpRoot, 'rit');
+  return { workspaceRoot, scaffoldRoot } as const;
 }
 
-function createProject(options: { projectName: string; react: ReactVersion; projectId?: string; force?: boolean }): {
+function createProject(options: {
+  projectName: string;
+  react: ReactVersion;
+  projectId?: string;
+  force?: boolean;
+  scaffoldRoot: string;
+}): {
   /**
    * The absolute path to the project directory scaffolded for testing.
    */
@@ -49,24 +50,24 @@ function createProject(options: { projectName: string; react: ReactVersion; proj
   const base = `${options.projectName}-react-${options.react}`;
   const finalName = options.projectId ? `${base}-${options.projectId}` : uniq(base);
   if (options.force) {
-    removeTmpProject(options.react, finalName);
+    removeTmpProject(options.scaffoldRoot, options.react, finalName);
   }
-  const { projectPath } = ensureProject(options.react, finalName);
+  const { projectPath } = ensureProject(options.scaffoldRoot, options.react, finalName);
   return { projectPath, projectName: finalName };
 }
-function removeTmpProject(react: ReactVersion, project: string) {
+function removeTmpProject(scaffoldRoot: string, react: ReactVersion, project: string) {
   // Remove only the project folder under its react root; do not delete shared node_modules
-  const projectPathGlob = join(reactRoot(react), project);
+  const projectPathGlob = join(scaffoldRoot, `react-${react}`, project);
   // Best-effort remove if exists in any react root
   rmSync(projectPathGlob, { recursive: true, force: true });
 }
-function ensureProject(react: ReactVersion, project: string) {
-  const projectPath = join(reactRoot(react), project);
+function ensureProject(scaffoldRoot: string, react: ReactVersion, project: string) {
+  const projectPath = join(scaffoldRoot, `react-${react}`, project);
   mkdirSync(projectPath, { recursive: true });
   return { projectPath };
 }
 
-function getProjectInfo(): {
+function getProjectInfo(cwd: string): {
   /**
    * The normalized name (without npm scope) of the project which will be tested against react integration.
    */
@@ -82,7 +83,7 @@ function getProjectInfo(): {
     cypressConfig: string | null;
   };
 } {
-  const projectRoot = process.cwd();
+  const projectRoot = cwd;
   const jestConfig = existsSync(join(projectRoot, 'jest.config.ts'))
     ? join(projectRoot, 'jest.config.ts')
     : existsSync(join(projectRoot, 'jest.config.js'))
@@ -115,10 +116,10 @@ function getProjectInfo(): {
   };
 }
 
-function getPreparedProjectPath(args: { react: ReactVersion; projectId: string }) {
-  const { projectName } = getProjectInfo();
-  const finalName = `${projectName}-react-${args.react}-${args.projectId}`;
-  return join(reactRoot(args.react), finalName);
+function getPreparedProjectPath(params: { react: ReactVersion; projectId: string; cwd: string; scaffoldRoot: string }) {
+  const { projectName } = getProjectInfo(params.cwd);
+  const finalName = `${projectName}-react-${params.react}-${params.projectId}`;
+  return join(params.scaffoldRoot, `react-${params.react}`, finalName);
 }
 
 function renderTemplateToFile(templateFilePath: string, data: Record<string, unknown>, outFilePath: string) {
@@ -180,9 +181,9 @@ function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: st
   };
 }
 
-async function installDependenciesAtReactRoot(rootPath: string) {
+async function installDependenciesAtReactRoot(rootPath: string, opts: { scaffoldRoot: string }) {
   // Use a scoped global yarn cache and a global mutex to avoid concurrent cache corruption on CI
-  const yarnCacheFolder = join(scaffoldRoot, '.yarn-cache');
+  const yarnCacheFolder = join(opts.scaffoldRoot, '.yarn-cache');
 
   mkdirSync(yarnCacheFolder, { recursive: true });
   // small retry loop
@@ -214,9 +215,15 @@ export async function setup(
   cleanup: () => void;
 }> {
   const { react } = options;
+  const { workspaceRoot, scaffoldRoot } = computeRoots(options.cwd);
   // If user wants to reuse an existing prepared project, short-circuit.
   if (options.run.length && options.projectId) {
-    const projectPath = getPreparedProjectPath({ react: options.react, projectId: options.projectId });
+    const projectPath = getPreparedProjectPath({
+      react: options.react,
+      projectId: options.projectId,
+      cwd: options.cwd,
+      scaffoldRoot,
+    });
     const commands = readCommandsFromPreparedProject(projectPath);
     return {
       projectPath,
@@ -229,9 +236,9 @@ export async function setup(
   }
 
   // Merge builtin defaults with optional user config, detect origin setups and ensure react root exists
-  const { projectName, projectRoot, projectPaths } = getProjectInfo();
+  const { projectName, projectRoot, projectPaths } = getProjectInfo(options.cwd);
   const templatePrepared = getPreparedTemplate(react, options.configPath, projectPaths);
-  const reactRootPath = reactRoot(react);
+  const reactRootPath = join(scaffoldRoot, `react-${react}`);
   mkdirSync(reactRootPath, { recursive: true });
 
   // Create or update package.json at the react root with the dependencies once.
@@ -245,25 +252,13 @@ export async function setup(
   };
   writeFileSync(reactRootPkgPath, JSON.stringify(reactRootPkg, null, 2));
 
-  // If only installing deps was requested, perform install and return
-  if (options.installDeps) {
-    await installDependenciesAtReactRoot(reactRootPath);
-    return {
-      projectPath: reactRootPath,
-      commands: templatePrepared.commands,
-      cleanup: () => {
-        // no-op: install-deps mode doesn't create a per-project folder
-        return;
-      },
-    } as const;
-  }
-
   // Prepare project workspace under the react root
   const { projectPath, projectName: createdProjectName } = createProject({
     projectName,
     react,
     projectId: options.projectId,
     force: options.force,
+    scaffoldRoot,
   });
 
   const metadata = {
@@ -327,13 +322,13 @@ export async function setup(
   // - On --prepare-only (default): install unless --no-install is used
   // - On --install-deps: install and exit (handled in CLI by early return)
   if (options.prepareOnly && !options.noInstall) {
-    await installDependenciesAtReactRoot(reactRootPath);
+    await installDependenciesAtReactRoot(reactRootPath, { scaffoldRoot });
   }
   // For normal runs, ensure deps are installed at least once (unless disabled)
   if (!options.prepareOnly && !options.noInstall) {
     const nodeModulesDir = join(reactRootPath, 'node_modules');
     if (!existsSync(nodeModulesDir)) {
-      await installDependenciesAtReactRoot(reactRootPath);
+      await installDependenciesAtReactRoot(reactRootPath, { scaffoldRoot });
     }
   }
 
@@ -341,7 +336,7 @@ export async function setup(
     projectPath,
     commands: templatePrepared.commands,
     cleanup: () => {
-      removeTmpProject(react, createdProjectName);
+      removeTmpProject(scaffoldRoot, react, createdProjectName);
     },
   };
 }
@@ -350,12 +345,12 @@ export async function setup(
  * Install dependencies for a React version root.
  */
 export async function installDepsForReactVersion(
-  args: Pick<Args, 'react' | 'configPath' | 'verbose'>,
+  args: Required<Pick<Args, 'react' | 'configPath' | 'verbose' | 'cwd'>>,
   logger: Logger,
 ): Promise<void> {
-  const merged = getMergedTemplate(args.react, args.configPath ?? '');
-
-  const reactRootPath = reactRoot(args.react);
+  const merged = getMergedTemplate(args.react, args.configPath);
+  const { scaffoldRoot } = computeRoots(args.cwd);
+  const reactRootPath = join(scaffoldRoot, `react-${args.react}`);
   mkdirSync(reactRootPath, { recursive: true });
 
   const reactRootPkgPath = join(reactRootPath, 'package.json');
@@ -370,7 +365,7 @@ export async function installDepsForReactVersion(
 
   logger.verbose(`Installing dependencies under: ${reactRootPath}`);
 
-  await installDependenciesAtReactRoot(reactRootPath);
+  await installDependenciesAtReactRoot(reactRootPath, { scaffoldRoot });
 
   logger.log(`Dependencies installed under shared react root -> ${reactRootPath}.`);
 }

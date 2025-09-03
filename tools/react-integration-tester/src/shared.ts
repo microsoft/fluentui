@@ -21,6 +21,7 @@ export interface Args {
   run?: CommandName[];
   verbose?: boolean;
   cleanup?: boolean;
+  cwd?: string;
   // New flags for advanced workflows
   prepareOnly?: boolean; // scaffold+install only, do not run commands
   projectId?: string; // deterministic suffix to make the prepared project name unique; with --run, reuse existing prepared project with this id

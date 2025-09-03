@@ -4,13 +4,13 @@ import { existsSync } from 'node:fs';
 
 import { type Args, type ReactVersion, type CommandName } from './shared';
 
-export function parseArgs(): Required<Args> {
-  const argv = yargs(process.argv.slice(2))
+export function parseArgs(processArgs: string[]): Required<Args> {
+  const argv = yargs(processArgs)
     .scriptName('rit')
     .usage(
       'Usage:\n' +
         '  $0 --react <17|18|19> --run <e2e|type-check|test> [--run <...>] [--config <path/to/rit.config.js>] [--project-id <id>]\n' +
-        '  $0 --react <17|18|19> --prepare-only [--project-id <id>] [--force] [--no-install]\n' +
+        '  $0 --react <17|18|19> --prepare-only --project-id <id> [--force] [--no-install]\n' +
         '  $0 --react <17|18|19> --install-deps    # installs deps under react-XX root and exits\n' +
         '  # Example: run tests against an existing prepared scaffold\n' +
         '  $0 --react <17|18|19> --project-id <id> --run test',
@@ -46,6 +46,10 @@ export function parseArgs(): Required<Args> {
       type: 'boolean',
       describe: 'Cleanup the temporary project after run (use --no-cleanup to keep it)',
       default: true,
+    })
+    .option('cwd', {
+      type: 'string',
+      describe: 'Working directory to resolve project files from (defaults to current process cwd)',
     })
     .option('prepare-only', {
       type: 'boolean',
@@ -86,7 +90,8 @@ export function parseArgs(): Required<Args> {
   const run = (argv.run as CommandName[] | undefined) ?? [];
   const verbose = (argv.verbose as boolean | undefined) ?? false;
   const cleanup = (argv.cleanup as boolean | undefined) ?? true;
-  const configPath = resolveConfigPath();
+  const cwd = argv.cwd ?? process.cwd();
+  const configPath = resolveConfigPath(cwd);
 
   // Validate mutually exclusive flags with --run
   if (run.length) {
@@ -102,6 +107,11 @@ export function parseArgs(): Required<Args> {
     throw new Error('Missing required --react');
   }
 
+  // Require project-id when preparing only; deterministic name is needed for reuse and clarity
+  if (prepareOnly && !projectId) {
+    throw new Error('Using --prepare-only requires --project-id');
+  }
+
   if (!installDeps && !prepareOnly && !run.length) {
     throw new Error('Provide at least one --run or use --prepare-only');
   }
@@ -112,6 +122,7 @@ export function parseArgs(): Required<Args> {
     run,
     verbose,
     cleanup,
+    cwd,
     prepareOnly,
     noInstall,
     installDeps,
@@ -119,11 +130,11 @@ export function parseArgs(): Required<Args> {
     force,
   } satisfies Required<Args>;
 
-  function resolveConfigPath(): string | undefined {
-    const defaultConfigPath = resolve(process.cwd(), 'rit.config.js');
+  function resolveConfigPath(projectRoot: string): string | undefined {
+    const defaultConfigPath = resolve(projectRoot, 'rit.config.js');
 
     if (argv.config) {
-      const userProvidedConfigPath = resolve(process.cwd(), argv.config);
+      const userProvidedConfigPath = resolve(projectRoot, argv.config);
       if (!existsSync(userProvidedConfigPath)) {
         throw new Error(`Config not found at: ${userProvidedConfigPath}`);
       }
