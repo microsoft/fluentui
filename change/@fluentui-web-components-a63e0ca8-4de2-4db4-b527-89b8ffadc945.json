@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "refactor: replace slotted with slotchange for tree and tree-item",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}
