@@ -220,7 +220,7 @@ export class GroupedVerticalBarChartBase
     return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
-        chartTitle={this._getChartTitle()}
+        chartTitle={this._getChartTitle(lineData)}
         points={this._datasetForBars}
         chartType={ChartTypes.GroupedVerticalBarChart}
         calloutProps={calloutProps}
@@ -354,7 +354,7 @@ export class GroupedVerticalBarChartBase
 
   private _createDataSetOfGVBC = (points: IGroupedVerticalBarChartData[], lineData: IGVBCLinePoints[]) => {
     const legends = new Set<string>();
-    const xAxisLabels: string[] = this._getOrderedXAxisLabels(points);
+    const xAxisLabels: string[] = this._getOrderedXAxisLabels(points, lineData);
     points.forEach((point: IGroupedVerticalBarChartData) => {
       point.series.forEach((seriesPoint: IGVBarChartSeriesPoint) => {
         legends.add(seriesPoint.legend);
@@ -591,13 +591,19 @@ export class GroupedVerticalBarChartBase
     const datasetForBars: any = [];
 
     const a: Record<string, IYValueHover[]> = {};
+    const b = new Set<string>();
     lineData?.forEach(series => {
       series.data.forEach(point => {
         if (!a[`${point.x}`]) {
-          a[`${point.x}`] = [{ ...point, legend: series.legend, color: series.color }];
-        } else {
-          a[`${point.x}`].push({ ...point, legend: series.legend, color: series.color });
+          a[`${point.x}`] = [];
         }
+        a[`${point.x}`].push({
+          ...point,
+          legend: series.legend,
+          color: series.color,
+          data: point.y,
+          useSecondaryYScale: series.useSecondaryYScale,
+        });
       });
     });
 
@@ -621,7 +627,18 @@ export class GroupedVerticalBarChartBase
       singleDatasetPointForBars.groupSeries = [...Object.values(legendToBarPoint), ...(a[point.name] ?? [])];
       singleDatasetPointForBars.stackCallOutAccessibilityData = point.stackCallOutAccessibilityData;
       datasetForBars.push(singleDatasetPointForBars);
+      b.add(point.name);
     });
+
+    Object.keys(a).forEach(x => {
+      if (!b.has(x)) {
+        datasetForBars.push({
+          xAxisPoint: x,
+          groupSeries: a[x],
+        });
+      }
+    });
+
     return datasetForBars;
   };
 
@@ -812,9 +829,12 @@ export class GroupedVerticalBarChartBase
 
   private _isChartEmpty(): boolean {
     return !(
-      this.props.data &&
-      this.props.data.length > 0 &&
-      this.props.data.filter((item: IGroupedVerticalBarChartData) => item.series.length).length > 0
+      (this.props.data &&
+        this.props.data.length > 0 &&
+        this.props.data.filter((item: IGroupedVerticalBarChartData) => item.series.length).length > 0) ||
+      (this.props.lineData &&
+        this.props.lineData.length > 0 &&
+        this.props.lineData.some(series => series.data.length > 0))
     );
   }
 
@@ -831,11 +851,11 @@ export class GroupedVerticalBarChartBase
     this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding);
   }
 
-  private _getChartTitle = (): string => {
+  private _getChartTitle = (lineData: IGVBCLinePoints[]): string => {
     const { chartTitle } = this.props;
     return (
       (chartTitle ? `${chartTitle}. ` : '') +
-      `Vertical bar chart with ${this._xAxisLabels.length} groups of ${this._legends.length} bars each. `
+      `Vertical bar chart with ${this._legends.length} grouped bar series and ${lineData.length} line series. `
     );
   };
 
@@ -920,15 +940,15 @@ export class GroupedVerticalBarChartBase
     };
   };
 
-  private _getOrderedXAxisLabels = (points: IGroupedVerticalBarChartData[]) => {
+  private _getOrderedXAxisLabels = (points: IGroupedVerticalBarChartData[], lineData: IGVBCLinePoints[]) => {
     if (this._xAxisType !== XAxisTypes.StringAxis) {
       return [];
     }
 
-    return sortAxisCategories(this._mapCategoryToValues(points), this.props.xAxisCategoryOrder);
+    return sortAxisCategories(this._mapCategoryToValues(points, lineData), this.props.xAxisCategoryOrder);
   };
 
-  private _mapCategoryToValues = (points: IGroupedVerticalBarChartData[]) => {
+  private _mapCategoryToValues = (points: IGroupedVerticalBarChartData[], lineData: IGVBCLinePoints[]) => {
     const categoryToValues: Record<string, number[]> = {};
     points.forEach(point => {
       if (!categoryToValues[point.name]) {
@@ -936,6 +956,14 @@ export class GroupedVerticalBarChartBase
       }
       point.series.forEach(seriesPoint => {
         categoryToValues[point.name].push(seriesPoint.data);
+      });
+    });
+    lineData.forEach(series => {
+      series.data.forEach(point => {
+        if (!categoryToValues[point.x]) {
+          categoryToValues[point.x] = [];
+        }
+        categoryToValues[point.x].push(point.y);
       });
     });
     return categoryToValues;
