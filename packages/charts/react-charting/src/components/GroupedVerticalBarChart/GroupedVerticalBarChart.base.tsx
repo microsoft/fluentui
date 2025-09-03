@@ -396,7 +396,9 @@ export class GroupedVerticalBarChartBase
         callOutAccessibilityData: this.props.isCalloutForStack
           ? groupData.stackCallOutAccessibilityData
           : pointData.callOutAccessibilityData,
-        YValueHover: groupData.groupSeries,
+        YValueHover: groupData.groupSeries.filter(
+          z => this._noLegendHighlighted() || this._legendHighlighted(z.legend),
+        ),
         hoverXValue: pointData.xAxisCalloutData || groupData.xAxisPoint,
         activeLinePoints: this.props.isCalloutForStack ? [groupData.xAxisPoint] : [],
       });
@@ -431,7 +433,7 @@ export class GroupedVerticalBarChartBase
       callOutAccessibilityData: this.props.isCalloutForStack
         ? groupData.stackCallOutAccessibilityData
         : pointData.callOutAccessibilityData,
-      YValueHover: groupData.groupSeries,
+      YValueHover: groupData.groupSeries.filter(z => this._noLegendHighlighted() || this._legendHighlighted(z.legend)),
       hoverXValue: pointData.xAxisCalloutData || groupData.xAxisPoint,
       activeLinePoints: this.props.isCalloutForStack ? [groupData.xAxisPoint] : [],
     });
@@ -1109,7 +1111,7 @@ export class GroupedVerticalBarChartBase
       callOutAccessibilityData: this.props.isCalloutForStack
         ? groupData.stackCallOutAccessibilityData
         : pointData.callOutAccessibilityData,
-      YValueHover: groupData.groupSeries,
+      YValueHover: groupData.groupSeries.filter(z => this._noLegendHighlighted() || this._legendHighlighted(z.legend)),
       hoverXValue: series.data[closestIdx]?.xAxisCalloutData || `${series.data[closestIdx]?.x}`,
       activeLinePoints: [
         `${series.data[closestIdx]?.x}`,
@@ -1148,7 +1150,7 @@ export class GroupedVerticalBarChartBase
       callOutAccessibilityData: this.props.isCalloutForStack
         ? groupData.stackCallOutAccessibilityData
         : pointData.callOutAccessibilityData,
-      YValueHover: groupData.groupSeries,
+      YValueHover: groupData.groupSeries.filter(z => this._noLegendHighlighted() || this._legendHighlighted(z.legend)),
       hoverXValue: series.data[closestIdx]?.xAxisCalloutData || `${series.data[closestIdx]?.x}`,
       activeLinePoints: [
         `${series.data[closestIdx]?.x}`,
