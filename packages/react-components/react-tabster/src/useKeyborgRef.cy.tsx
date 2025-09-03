@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useKeyborgRef } from './hooks/useKeyborgRef';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 
 describe('Keyborg', () => {
   const Example = () => {
