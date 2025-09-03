@@ -9,8 +9,7 @@ import { useCheckMenuGridRowNesting } from './useCheckMenuGridRowNesting';
  * Given user props, returns state and render function for a MenuGridRow.
  */
 export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<HTMLDivElement>): MenuGridRowState {
-  const innerRef = React.useRef<HTMLDivElement>(null);
-  useCheckMenuGridRowNesting(innerRef);
+  const checkNestingRef = useCheckMenuGridRowNesting();
   const { tableRowTabsterAttribute } = useMenuGridContext_unstable();
 
   return {
@@ -19,7 +18,7 @@ export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, innerRef),
+        ref: useMergedRefs(ref, checkNestingRef),
         role: 'row',
         tabIndex: 0,
         ...tableRowTabsterAttribute,

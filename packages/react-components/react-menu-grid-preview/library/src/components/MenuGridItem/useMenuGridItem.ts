@@ -18,8 +18,7 @@ export function useMenuGridItem_unstable(props: MenuGridItemProps, ref: React.Re
     secondSubAction,
     ...rest
   } = props;
-  const innerRef = React.useRef<HTMLDivElement>(null);
-  useCheckMenuGridItemNesting(innerRef);
+  const checkNestingRef = useCheckMenuGridItemNesting();
 
   return {
     components: {
@@ -32,7 +31,7 @@ export function useMenuGridItem_unstable(props: MenuGridItemProps, ref: React.Re
     },
     root: slot.always(
       {
-        ref: useMergedRefs(ref, innerRef),
+        ref: useMergedRefs(ref, checkNestingRef),
         ...rest,
       },
       { elementType: MenuGridRow },

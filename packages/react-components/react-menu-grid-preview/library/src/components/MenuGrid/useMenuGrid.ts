@@ -10,8 +10,7 @@ import { useCheckMenuGridNesting } from './useCheckMenuGridNesting';
  * Returns the props and state required to render the component
  */
 export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDivElement>): MenuGridState => {
-  const innerRef = React.useRef<HTMLDivElement>(null);
-  useCheckMenuGridNesting(innerRef);
+  const checkNestingRef = useCheckMenuGridNesting();
   const triggerId = useMenuContext_unstable(context => context.triggerId);
   const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useTableCompositeNavigation();
 
@@ -21,7 +20,7 @@ export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDi
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, innerRef),
+        ref: useMergedRefs(ref, checkNestingRef),
         role: 'grid',
         'aria-labelledby': triggerId,
         onKeyDown: onTableKeyDown,
