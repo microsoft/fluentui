@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor(react-dialog): migrate to standard Scale motion component",
+  "packageName": "@fluentui/react-dialog",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
