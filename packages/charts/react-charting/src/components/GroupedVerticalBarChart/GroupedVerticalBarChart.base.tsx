@@ -55,7 +55,7 @@ import {
   IChildProps,
   IYValueHover,
 } from '../../index';
-import { IChart, IImageExportOptions, ILineChartDataPoint, ILineChartPoints } from '../../types/index';
+import { IChart, IImageExportOptions, IGVBCLinePoints } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
 import { rgb } from 'd3-color';
@@ -98,7 +98,7 @@ export class GroupedVerticalBarChartBase
 
   private _createSet: (
     data: IGroupedVerticalBarChartData[],
-    lineData: ILineChartPoints[],
+    lineData: IGVBCLinePoints[],
   ) => // eslint-disable-next-line @typescript-eslint/no-explicit-any
   { legends: string[]; xAxisLabels: string[]; datasetForBars: any };
   private _legends: string[];
@@ -132,7 +132,7 @@ export class GroupedVerticalBarChartBase
 
     initializeComponentRef(this);
 
-    this._createSet = memoizeFunction((data: IGroupedVerticalBarChartData[], lineData: ILineChartPoints[]) =>
+    this._createSet = memoizeFunction((data: IGroupedVerticalBarChartData[], lineData: IGVBCLinePoints[]) =>
       this._createDataSetOfGVBC(data, lineData),
     );
     this.state = {
@@ -352,7 +352,7 @@ export class GroupedVerticalBarChartBase
 
   private _getMargins = (margins: IMargins) => (this.margins = margins);
 
-  private _createDataSetOfGVBC = (points: IGroupedVerticalBarChartData[], lineData: ILineChartPoints[]) => {
+  private _createDataSetOfGVBC = (points: IGroupedVerticalBarChartData[], lineData: IGVBCLinePoints[]) => {
     const legends = new Set<string>();
     const xAxisLabels: string[] = this._getOrderedXAxisLabels(points);
     points.forEach((point: IGroupedVerticalBarChartData) => {
@@ -584,7 +584,7 @@ export class GroupedVerticalBarChartBase
     );
   };
 
-  private _createDataset = (points: IGroupedVerticalBarChartData[], lineData: ILineChartPoints[]) => {
+  private _createDataset = (points: IGroupedVerticalBarChartData[], lineData: IGVBCLinePoints[]) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const datasetForBars: any = [];
 
@@ -670,7 +670,7 @@ export class GroupedVerticalBarChartBase
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _getLegendData = (lineData: ILineChartPoints[]): JSX.Element => {
+  private _getLegendData = (lineData: IGVBCLinePoints[]): JSX.Element => {
     const actions: ILegend[] = [];
 
     const addLegendButton = (legendTitle: string, isLineLegendInBarChart?: boolean) => {
@@ -844,7 +844,7 @@ export class GroupedVerticalBarChartBase
     return rgb(colorInterpolator(percentage)).formatRgb();
   };
 
-  private _addDefaultColors = (data?: IGroupedVerticalBarChartData[], lineData?: ILineChartPoints[]) => {
+  private _addDefaultColors = (data?: IGroupedVerticalBarChartData[], lineData?: IGVBCLinePoints[]) => {
     this._legendColorMap = {};
     let colorIndex = 0;
 
@@ -940,7 +940,7 @@ export class GroupedVerticalBarChartBase
   };
 
   private _createLines = (
-    lineData: ILineChartPoints[],
+    lineData: IGVBCLinePoints[],
     xScale: StringScale,
     yScalePrimary: NumericScale,
     yScaleSecondary?: NumericScale,
@@ -1077,7 +1077,7 @@ export class GroupedVerticalBarChartBase
   private _lineHover = (
     event: React.MouseEvent<SVGElement>,
     xScale: StringScale,
-    lineData: ILineChartPoints[],
+    lineData: IGVBCLinePoints[],
     seriesIdx: number,
     pointIdx: number,
   ) => {
@@ -1121,7 +1121,7 @@ export class GroupedVerticalBarChartBase
   private _lineFocus = (
     event: React.FocusEvent<SVGElement>,
     xScale: StringScale,
-    lineData: ILineChartPoints[],
+    lineData: IGVBCLinePoints[],
     seriesIdx: number,
     pointIdx: number,
   ) => {

@@ -1109,6 +1109,15 @@ export type AxisProps = {
   tick0?: number | Date;
 };
 
+export interface IGVBCLineDataPoint extends IBaseDataPoint {
+  x: string;
+  y: number;
+}
+
+export interface IGVBCLinePoints extends Omit<ILineChartPoints, 'data'> {
+  data: IGVBCLineDataPoint[];
+}
+
 export interface IStandardBarSeries<T, U> {
   type: 'bar';
   x: T[];

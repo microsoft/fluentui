@@ -109,6 +109,8 @@ export type {
   IGanttChartDataPoint,
   AxisScaleType,
   AxisProps,
+  IGVBCLineDataPoint,
+  IGVBCLinePoints,
   IStandardBarSeries,
   IStandardLineSeries,
 } from './types/index';

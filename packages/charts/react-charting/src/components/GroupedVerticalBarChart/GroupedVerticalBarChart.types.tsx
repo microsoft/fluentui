@@ -6,7 +6,7 @@ import {
   ICartesianChartProps,
   IGroupedVerticalBarChartData,
   IGVBarChartSeriesPoint,
-  ILineChartPoints,
+  IGVBCLinePoints,
 } from '../../index';
 
 /**
@@ -132,7 +132,7 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
   /**
    *
    */
-  lineData? : ILineChartPoints[];
+  lineData?: IGVBCLinePoints[];
 }
 
 /**
