@@ -8,14 +8,12 @@ export const useCheckNesting = (componentName: NestingComponentName): React.RefO
 
   const ref = React.useRef<HTMLElement>(null);
   const { targetDocument } = useFluent();
-  
+
   if (process.env.NODE_ENV !== 'production') {
     // This check should run only in development mode
     // It's okay to disable the ESLint rule because we ar checking env variable statically (not at runtime)
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
-      console.log(ref.current);
-      /*
       let current = ref.current?.parentElement;
       let role = current?.getAttribute('role');
       while (current !== targetDocument?.body) {
@@ -42,7 +40,6 @@ export const useCheckNesting = (componentName: NestingComponentName): React.RefO
         current = current?.parentElement ?? null;
         role = current?.getAttribute('role');
       }
-        */
     }, [componentName, ref, targetDocument?.body]);
   }
   return ref;
