@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 01 Sep 2025 04:08:19 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Sep 2025 04:08:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.121](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.121)
+
+Wed, 03 Sep 2025 04:08:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.120..@fluentui/web-components_v3.0.0-beta.121)
+
+### Changes
+
+- refactor: replace slotted with slotchange for tree and tree-item ([PR #35138](https://github.com/microsoft/fluentui/pull/35138) by machi@microsoft.com)
 
 ## [3.0.0-beta.120](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.120)
 

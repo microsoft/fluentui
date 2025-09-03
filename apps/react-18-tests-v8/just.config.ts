@@ -6,7 +6,7 @@ const { getNodeModulesPath } = require('./config/utils');
 
 preset();
 
-const usedNodeModulesPath: string = getNodeModulesPath();
+const { usedNodeModulesPath } = getNodeModulesPath();
 
 task('type-check', () =>
   typeCheckWithConfigOverride(config => {

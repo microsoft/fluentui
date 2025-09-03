@@ -6,8 +6,7 @@ const { join } = require('node:path');
 
 const { getNodeModulesPath } = require('./config/utils');
 
-const usedNodeModulesPath = getNodeModulesPath();
-const workspacePresetNodeModulesPath = join(__dirname, '../../node_modules');
+const { usedNodeModulesPath, workspaceRootNodeModulesPath } = getNodeModulesPath();
 
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
@@ -42,7 +41,7 @@ module.exports = {
     '^react-test-renderer$': join(usedNodeModulesPath, './react-test-renderer'),
     '^@testing-library/(react|dom)$': join(usedNodeModulesPath, './@testing-library/$1'),
     // need to remap to monorepo root as react-hooks is hoisted
-    '^@testing-library/react-hooks$': join(workspacePresetNodeModulesPath, './@testing-library/react-hooks'),
+    '^@testing-library/react-hooks$': join(workspaceRootNodeModulesPath, './@testing-library/react-hooks'),
   },
   transform: {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],

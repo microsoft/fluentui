@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { Dialog, DialogSurface, DialogTrigger, DialogBody, Button } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-utilities';
 
