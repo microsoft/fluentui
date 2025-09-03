@@ -1108,3 +1108,15 @@ export type AxisProps = {
    */
   tick0?: number | Date;
 };
+
+export interface IStandardBarSeries<T, U> {
+  type: 'bar';
+  x: T[];
+  y: U[];
+}
+
+export interface IStandardLineSeries<T, U> {
+  type: 'line';
+  x: T[];
+  y: U[];
+}
