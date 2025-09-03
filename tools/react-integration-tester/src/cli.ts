@@ -3,8 +3,8 @@ import { installDepsForReactVersion, setup } from './setup';
 import { parseArgs } from './args';
 import { createLogger, type Logger } from './logger';
 
-async function cli() {
-  const args = parseArgs();
+export async function cli() {
+  const args = parseArgs(process.argv.slice(2));
   const logger = createLogger(args);
 
   // Handle install-only mode early (no scaffolding required)
@@ -59,9 +59,3 @@ async function executeSelectedCommands(
     await runCmd(cmd, { cwd: project.projectPath });
   }
 }
-
-// Execute when invoked via bin script
-cli().catch(err => {
-  console.error(err instanceof Error ? err.message : err);
-  process.exit(1);
-});
