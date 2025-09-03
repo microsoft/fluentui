@@ -1,13 +1,11 @@
-import {
-  SLOT_ELEMENT_TYPE_SYMBOL,
-  SLOT_RENDER_FUNCTION_SYMBOL,
-  type SlotComponentType,
-  type SlotRenderFunction,
-  type JSXIntrinsicElementKeys,
-  type JSXElement,
-} from '@fluentui/react-utilities';
-
 import * as React from 'react';
+import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from '@fluentui/react-utilities';
+import type {
+  JSXElement,
+  JSXIntrinsicElementKeys,
+  SlotComponentType,
+  SlotRenderFunction,
+} from '@fluentui/react-utilities';
 
 import type { PresenceComponentProps } from '../factories/createPresenceComponent';
 import type { MotionParam } from '../types';

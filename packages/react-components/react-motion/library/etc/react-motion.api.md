@@ -4,11 +4,11 @@
 
 ```ts
 
-import { JSXElement } from '@fluentui/react-utilities';
-import { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { SlotComponentType } from '@fluentui/react-utilities';
-import { SlotRenderFunction } from '@fluentui/react-utilities';
+import type { SlotComponentType } from '@fluentui/react-utilities';
+import type { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export type AtomMotion = AtomCore & {
