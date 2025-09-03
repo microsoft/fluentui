@@ -558,16 +558,7 @@ export const transformPlotlyJsonToDonutProps = (
   const { chartTitle } = getTitles(input.layout);
   // Build anticlockwise order by keeping the first item, reversing the rest
   const legends = Object.keys(mapLegendToDataPoint);
-  const reorderedEntries =
-    legends.length > 1
-      ? ([
-          [legends[0], mapLegendToDataPoint[legends[0]]],
-          ...legends
-            .slice(1)
-            .reverse()
-            .map(key => [key, mapLegendToDataPoint[key]] as const),
-        ] as ReadonlyArray<readonly [string, IChartDataPoint]>)
-      : legends.map(key => [key, mapLegendToDataPoint[key]] as const);
+  const reorderedEntries = legends.map(key => [key, mapLegendToDataPoint[key]] as const);
   return {
     data: {
       chartTitle,

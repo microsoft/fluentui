@@ -454,15 +454,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     gridProperties.templateRows === SINGLE_REPEAT &&
     gridProperties.templateColumns === SINGLE_REPEAT
   ) {
-    const groupKeys = Object.keys(groupedTraces);
-    // If all traces are pie/donut-like, keep the LAST one; otherwise keep the FIRST
-    const allPieLike = plotlyInputWithValidData.data.every(d => {
-      const pd = d as Partial<PlotData> & { labels?: unknown; values?: unknown };
-      return pd?.type === 'pie' || pd?.hole !== undefined || (pd?.labels && pd?.values);
-    });
-    groupKeys.forEach((key, index) => {
-      const keepIndex = allPieLike ? groupKeys.length - 1 : 0;
-      if (index !== keepIndex) {
+    Object.keys(groupedTraces).forEach((key, index) => {
+      if (index > 0) {
         delete groupedTraces[key];
       }
     });
@@ -489,8 +482,12 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         }}
       >
         {Object.entries(groupedTraces).map(([xAxisKey, index]) => {
-          // Determine chart type for this group first
-          let filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace.index));
+          const plotlyInputForGroup: PlotlySchema = {
+            ...plotlyInputWithValidData,
+            data: index.map(idx => plotlyInputWithValidData.data[idx]),
+          };
+
+          const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace.index));
           let chartType =
             validTracesFilteredIndex.some(trace => trace.type === FALLBACK_TYPE) || chart.type === FALLBACK_TYPE
               ? FALLBACK_TYPE
@@ -502,27 +499,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           ) {
             chartType = 'line';
           }
-
-          // In single-plot mode, if multiple donut/pie traces are present in this group, pass only the last one
-          let groupIdxs = index;
-          if (!isMultiPlot.current && index.length > 1) {
-            const donutIdxs = index.filter(idx => {
-              const d = plotlyInputWithValidData.data[idx] as Partial<PlotData> & {
-                labels?: unknown;
-                values?: unknown;
-              };
-              return d?.type === 'pie' || d?.hole !== undefined || (d?.labels && d?.values);
-            });
-            if (donutIdxs.length > 1 && donutIdxs.length === index.length) {
-              groupIdxs = [donutIdxs[donutIdxs.length - 1]];
-              filteredTracesInfo = validTracesFilteredIndex.filter(trace => groupIdxs.includes(trace.index));
-            }
-          }
-
-          const plotlyInputForGroup: PlotlySchema = {
-            ...plotlyInputWithValidData,
-            data: groupIdxs.map(idx => plotlyInputWithValidData.data[idx]),
-          };
 
           const chartEntry = chartMap[chartType as ChartType];
           if (chartEntry) {
