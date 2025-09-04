@@ -458,6 +458,13 @@ export const useTreeItemPersonaLayoutStyles_unstable: (state: TreeItemPersonaLay
 // @public
 export const useTreeItemStyles_unstable: (state: TreeItemState) => TreeItemState;
 
+// @public
+export function useTreeNavigation(navigationMode?: TreeNavigationMode): {
+    readonly navigate: (data: TreeNavigationData_unstable, focusOptions?: FocusOptions) => HTMLElement | null;
+    readonly treeRef: React_2.RefCallback<HTMLElement>;
+    readonly forceUpdateRovingTabIndex: () => void;
+};
+
 // @public (undocumented)
 export const useTreeStyles_unstable: (state: TreeState) => TreeState;
 
