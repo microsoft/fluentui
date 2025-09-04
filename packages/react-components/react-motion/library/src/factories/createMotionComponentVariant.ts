@@ -31,7 +31,7 @@ export function createMotionComponentVariant<MotionParams extends Record<string,
   variantParams: Partial<MotionParams>,
 ): MotionComponent<MotionParams> {
   const originalFn = component[MOTION_DEFINITION];
-  // The variant params become new defaults, but they can still be be overridden by runtime params.
+  // The variant params become new defaults, but they can still be overridden by runtime params.
   const variantFn = createMotionFnVariant(originalFn, variantParams);
   return createMotionComponent(variantFn);
 }

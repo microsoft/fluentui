@@ -31,7 +31,7 @@ export function createPresenceComponentVariant<MotionParams extends Record<strin
   variantParams: Partial<MotionParams>,
 ): PresenceComponent<MotionParams> {
   const originalFn = component[PRESENCE_MOTION_DEFINITION];
-  // The variant params become new defaults, but they can still be be overridden by runtime params.
+  // The variant params become new defaults, but they can still be overridden by runtime params.
   const variantFn = createPresenceFnVariant(originalFn, variantParams);
   return createPresenceComponent(variantFn);
 }
