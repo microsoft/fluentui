@@ -730,22 +730,35 @@ export class BaseProgressBar extends FASTElement {
 // @public
 export class BaseRatingDisplay extends FASTElement {
     constructor();
+    // (undocumented)
+    connectedCallback(): void;
     count?: number;
+    // (undocumented)
+    protected defaultCustomIconViewBox: string;
+    // @internal
+    display: HTMLElement;
     // @internal
     elementInternals: ElementInternals;
     // @internal
     get formattedCount(): string;
-    // @internal
-    generateIcons(): string;
-    protected getMaxIcons(): number;
-    protected getSelectedValue(): number;
+    // @internal (undocumented)
+    handleSlotChange(): void;
+    // @internal (undocumented)
+    iconSlot: HTMLSlotElement;
+    // @deprecated
     iconViewBox?: string;
     max?: number;
-    // @internal (undocumented)
-    slottedIcon: HTMLElement[];
-    // @internal (undocumented)
-    slottedIconChanged(): void;
+    // (undocumented)
+    protected maxChanged(): void;
+    // (undocumented)
+    protected renderSlottedIcon(svg: SVGSVGElement | null): void;
+    // Warning: (ae-forgotten-export) The symbol "PropertyNameForCalculation" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected setCustomPropertyValue(propertyName: PropertyNameForCalculation): void;
     value?: number;
+    // (undocumented)
+    protected valueChanged(): void;
 }
 
 // @public
@@ -945,17 +958,21 @@ export class BaseTree extends FASTElement {
     changeHandler(e: Event): boolean | void;
     // Warning: (ae-forgotten-export) The symbol "BaseTreeItem" needs to be exported by the entry point index.d.ts
     //
-    // (undocumented)
+    // @internal (undocumented)
     childTreeItems: BaseTreeItem[];
-    // (undocumented)
+    // @internal (undocumented)
     childTreeItemsChanged(): void;
     // @internal
     clickHandler(e: Event): boolean | void;
     currentSelected: HTMLElement | null;
+    // @internal (undocumented)
+    defaultSlot: HTMLSlotElement;
     // @internal
     elementInternals: ElementInternals;
     // @internal
     focusHandler(e: FocusEvent): void;
+    // @internal (undocumented)
+    handleDefaultSlotChange(): void;
     // @internal
     keydownHandler(e: KeyboardEvent): boolean | void;
 }
@@ -3411,10 +3428,6 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 export class RatingDisplay extends BaseRatingDisplay {
     color?: RatingDisplayColor;
     compact: boolean;
-    // @override
-    protected getMaxIcons(): number;
-    // @override
-    protected getSelectedValue(): number;
     size?: RatingDisplaySize;
 }
 

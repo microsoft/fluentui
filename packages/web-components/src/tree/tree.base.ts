@@ -35,13 +35,18 @@ export class BaseTree extends FASTElement {
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
+  /** @internal */
+  public defaultSlot!: HTMLSlotElement;
+
   constructor() {
     super();
     this.elementInternals.role = 'tree';
   }
 
+  /** @internal */
   @observable
   childTreeItems: BaseTreeItem[] = [];
+  /** @internal */
   public childTreeItemsChanged() {
     this.updateCurrentSelected();
   }
@@ -260,5 +265,10 @@ export class BaseTree extends FASTElement {
     if (isHTMLElement(focusItem)) {
       focusItem.focus();
     }
+  }
+
+  /** @internal */
+  public handleDefaultSlotChange() {
+    this.childTreeItems = this.defaultSlot.assignedElements().filter(el => isTreeItem(el));
   }
 }

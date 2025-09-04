@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { useOnKeyboardNavigationChange } from './hooks';
 
 describe('useOnKeyboardNavigationChange', () => {
