@@ -92,11 +92,11 @@ function tryMapFluentDataViz(
     return hexColor;
   }
   if (isDonut) {
-    const idx =
-      templateColorway === 'plotly'
-        ? DEFAULT_PLOTLY_COLORWAY.indexOf(hexColor.toLowerCase())
-        : DEFAULT_D3_COLORWAY.indexOf(hexColor.toLowerCase());
-    return idx !== -1 ? getColorFromToken(D3_FLUENTVIZ_COLORWAY_MAPPING[idx], !!isDarkTheme) : hexColor;
+    const defaultColorway = templateColorway === 'plotly' ? DEFAULT_PLOTLY_COLORWAY : DEFAULT_D3_COLORWAY;
+    const defaultMapping =
+      templateColorway === 'plotly' ? PLOTLY_FLUENTVIZ_COLORWAY_MAPPING : D3_FLUENTVIZ_COLORWAY_MAPPING;
+    const idx = defaultColorway.indexOf(hexColor.toLowerCase());
+    return idx !== -1 ? getColorFromToken(defaultMapping[idx], !!isDarkTheme) : hexColor;
   } else {
     const index = DEFAULT_PLOTLY_COLORWAY.indexOf(hexColor.toLowerCase());
     if (index !== -1) {
@@ -115,8 +115,11 @@ export const getColor = (
 ): string => {
   if (!colorMap.current.has(legendLabel)) {
     let nextColor: string;
-    const defaultColorMapping =
-      isDonut && templateColorway === 'plotly' ? PLOTLY_FLUENTVIZ_COLORWAY_MAPPING : D3_FLUENTVIZ_COLORWAY_MAPPING;
+    const defaultColorMapping = isDonut
+      ? templateColorway === 'plotly'
+        ? PLOTLY_FLUENTVIZ_COLORWAY_MAPPING
+        : D3_FLUENTVIZ_COLORWAY_MAPPING
+      : PLOTLY_FLUENTVIZ_COLORWAY_MAPPING;
     if (colorMap.current.size < defaultColorMapping.length) {
       // Get first 10 colors from plotly-fluentviz colorway mapping
       nextColor = getColorFromToken(defaultColorMapping[colorMap.current.size], isDarkTheme);

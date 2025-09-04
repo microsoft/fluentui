@@ -280,6 +280,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLegends(chartData: IChartDataPoint[]): JSX.Element {
+    if (this.props.order === 'sorted') {
+      chartData.sort((a: IChartDataPoint, b: IChartDataPoint) => {
+        return b.data! - a.data!;
+      });
+    }
     const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
       const color: string = this.props.enableGradient
         ? point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0]
