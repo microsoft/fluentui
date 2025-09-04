@@ -27,6 +27,8 @@
   ],
   "exports": {
     ".": "./dist/esm/index.js",
+    "./utils/behaviors/*.js": "./dist/esm/utils/behaviors/*.js",
+    "./utils/*.js": "./dist/esm/utils/*.js",
     "./utilities.js": "./dist/esm/utils/index.js",
     "./theme/*.js": "./dist/esm/theme/*.js",
     "./*/base.js": "./dist/esm/*/*.base.js",
