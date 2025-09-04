@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 04 Sep 2025 04:07:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.122",
+      "version": "3.0.0-beta.122",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "3ed039a93f54418671e90b9b4a0f9ee32632f86d",
+            "comment": "feat: enable SSR for rating-display"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Sep 2025 04:08:39 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.121",
       "version": "3.0.0-beta.121",

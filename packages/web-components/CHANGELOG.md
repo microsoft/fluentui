@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 03 Sep 2025 04:08:39 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Sep 2025 04:07:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.122](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.122)
+
+Thu, 04 Sep 2025 04:07:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.121..@fluentui/web-components_v3.0.0-beta.122)
+
+### Changes
+
+- feat: enable SSR for rating-display ([PR #35126](https://github.com/microsoft/fluentui/pull/35126) by machi@microsoft.com)
 
 ## [3.0.0-beta.121](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.121)
 
