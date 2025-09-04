@@ -36,7 +36,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
     ...rest
   } = props;
 
-  const innerRef = React.useRef<HTMLElement>();
+  const innerRef = React.useRef<HTMLElement>(undefined);
   const { targetDocument } = useFluent();
   const { findNextFocusable, findPrevFocusable } = useFocusFinders();
 

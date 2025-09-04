@@ -14,8 +14,8 @@ export function useOverflowItem<TElement extends HTMLElement>(
   id: string,
   priority?: number,
   groupId?: string,
-): React.RefObject<TElement> {
-  const ref = React.useRef<TElement>(null);
+): React.RefObject<TElement | null> {
+  const ref = React.useRef<TElement | null>(null);
   const registerItem = useOverflowContext(v => v.registerItem);
 
   useIsomorphicLayoutEffect(() => {

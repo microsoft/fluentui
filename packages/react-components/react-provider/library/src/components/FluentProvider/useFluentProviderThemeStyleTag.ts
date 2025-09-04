@@ -53,7 +53,7 @@ export const useFluentProviderThemeStyleTag = (
 
   const { targetDocument, theme, rendererAttributes } = options;
 
-  const styleTag = React.useRef<HTMLStyleElement | undefined | null>();
+  const styleTag = React.useRef<HTMLStyleElement | undefined | null>(undefined);
 
   const styleTagId = useId(fluentProviderClassNames.root);
   const styleElementAttributes = rendererAttributes;

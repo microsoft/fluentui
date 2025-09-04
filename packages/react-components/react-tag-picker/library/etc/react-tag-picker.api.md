@@ -87,17 +87,17 @@ export interface TagPickerContextValue extends Pick<ComboboxBaseState, 'open' | 
     // (undocumented)
     popoverId: string;
     // (undocumented)
-    popoverRef: React_2.RefObject<HTMLDivElement>;
+    popoverRef: React_2.RefObject<HTMLDivElement | null>;
     // (undocumented)
-    secondaryActionRef: React_2.RefObject<HTMLSpanElement>;
+    secondaryActionRef: React_2.RefObject<HTMLSpanElement | null>;
     // (undocumented)
     size: TagPickerSize;
     // (undocumented)
-    tagPickerGroupRef: React_2.RefObject<HTMLDivElement>;
+    tagPickerGroupRef: React_2.RefObject<HTMLDivElement | null>;
     // (undocumented)
-    targetRef: React_2.RefObject<HTMLDivElement>;
+    targetRef: React_2.RefObject<HTMLDivElement | null>;
     // (undocumented)
-    triggerRef: React_2.RefObject<HTMLInputElement | HTMLButtonElement>;
+    triggerRef: React_2.RefObject<HTMLInputElement | HTMLButtonElement | null>;
 }
 
 // @public (undocumented)
