@@ -216,8 +216,9 @@ export class Listbox extends FASTElement {
    * @public
    */
   public slotchangeHandler(e: Event): void {
+    const target = e.target as HTMLSlotElement;
     waitForConnectedDescendants(this, () => {
-      const options = (e.target as HTMLSlotElement)
+      const options = target
         .assignedElements()
         .filter<DropdownOption>((option): option is DropdownOption => isDropdownOption(option));
 

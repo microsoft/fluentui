@@ -8,7 +8,7 @@
  * @public
  */
 export function requestIdleCallback(
-  callback: (args: { didTimeout: boolean }) => void,
+  callback: (deadline: IdleDeadline) => void,
   options?: { timeout: number },
 ): ReturnType<typeof globalThis.requestIdleCallback | typeof setTimeout> {
   if ('requestIdleCallback' in globalThis) {
@@ -19,6 +19,7 @@ export function requestIdleCallback(
   return setTimeout(() => {
     callback({
       didTimeout: options?.timeout ? Date.now() - start >= options.timeout : false,
+      timeRemaining: () => 0,
     });
   }, 1);
 }
@@ -58,30 +59,25 @@ export function cancelIdleCallback(id: ReturnType<typeof globalThis.requestIdleC
 export function waitForConnectedDescendants(
   target: HTMLElement,
   callback: () => void,
-  options = { shallow: false, timeout: 50 },
+  options?: { shallow?: boolean; timeout?: number },
 ): void {
-  let idleCallbackId: ReturnType<typeof requestIdleCallback> | void;
-  const query = options.shallow ? ':scope > *' : '*';
+  let idleCallbackId: ReturnType<typeof requestIdleCallback> | undefined;
+  const shallow = options?.shallow ?? false;
+  const query = `${shallow ? ':scope > ' : ''}:not(:defined)`;
+  const timeout = options?.timeout ?? 50;
 
-  if (!target.isConnected) {
-    return;
-  }
-
-  const scheduleCheck = () => {
+  const scheduleCheck = (deadline?: IdleDeadline) => {
     if (idleCallbackId) {
-      idleCallbackId = cancelIdleCallback(idleCallbackId);
+      cancelIdleCallback(idleCallbackId);
+      idleCallbackId = undefined;
     }
 
-    if (
-      Array.from(target.querySelectorAll(query))
-        .filter(el => el.tagName.includes('-'))
-        .every(el => el.isConnected)
-    ) {
+    if (!target.querySelector(query) || (deadline && deadline.timeRemaining() <= 0)) {
       callback();
       return;
     }
 
-    idleCallbackId = requestIdleCallback(scheduleCheck, { timeout: options.timeout });
+    idleCallbackId = requestIdleCallback(scheduleCheck, { timeout });
   };
 
   scheduleCheck();
