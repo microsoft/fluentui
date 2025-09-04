@@ -1,10 +1,10 @@
 import type { PresenceComponent, PresenceMotionFn } from '@fluentui/react-motion';
 
-function getMotionFunction(component: PresenceComponent): PresenceMotionFn | null {
+function getPresenceMotionFunction(component: PresenceComponent): PresenceMotionFn | null {
   const symbols = Object.getOwnPropertySymbols(component);
 
   for (const symbol of symbols) {
-    if (symbol.toString() === 'Symbol(MOTION_DEFINITION)') {
+    if (symbol.toString() === 'Symbol(PRESENCE_MOTION_DEFINITION)') {
       // @ts-expect-error symbol can't be used as an index there, type casting is also not possible
       return component[symbol];
     }
@@ -14,7 +14,7 @@ function getMotionFunction(component: PresenceComponent): PresenceMotionFn | nul
 }
 
 export function expectPresenceMotionObject(component: PresenceComponent): void {
-  const presenceMotionFn = getMotionFunction(component);
+  const presenceMotionFn = getPresenceMotionFunction(component);
 
   expect(
     presenceMotionFn?.({
@@ -39,7 +39,7 @@ export function expectPresenceMotionObject(component: PresenceComponent): void {
 }
 
 export function expectPresenceMotionArray(component: PresenceComponent): void {
-  const presenceMotionFn = getMotionFunction(component);
+  const presenceMotionFn = getPresenceMotionFunction(component);
 
   // eslint-disable-next-line @nx/workspace-no-restricted-globals
   expect(presenceMotionFn?.({ element: document.createElement('div') })).toMatchObject({
@@ -63,7 +63,7 @@ export function expectPresenceMotionArray(component: PresenceComponent): void {
 }
 
 export function expectPresenceMotionFunction(PresenceComponent: PresenceComponent): void {
-  const presenceMotionFn = getMotionFunction(PresenceComponent);
+  const presenceMotionFn = getPresenceMotionFunction(PresenceComponent);
 
   expect(presenceMotionFn).toBeInstanceOf(Function);
 }
