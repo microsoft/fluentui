@@ -73,7 +73,7 @@ export function waitForConnectedDescendants(
     }
 
     if (!target.querySelector(query) || (deadline && deadline.timeRemaining() <= 0)) {
-      requestAnimationFrame(callback);
+      callback();
       return;
     }
 
