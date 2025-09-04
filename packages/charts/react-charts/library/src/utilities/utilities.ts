@@ -241,6 +241,7 @@ export function createNumericXAxis(
   chartType: ChartTypes,
   culture?: string,
   scaleType?: AxisScaleType,
+  _useRtl?: boolean,
 ): {
   xScale: ScaleLinear<number, number>;
   tickValues: string[];
@@ -302,7 +303,7 @@ export function createNumericXAxis(
       .attr('aria-hidden', 'true')
       .style('direction', 'ltr')
       .style('unicode-bidi', 'isolate')
-      .style('text-anchor', useRtl() ? 'start' : 'end');
+      .style('text-anchor', _useRtl ? 'start' : 'end');
   }
   const tickValues = (customTickValues ?? xAxisScale.ticks(tickCount)).map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
@@ -531,6 +532,7 @@ export function createStringXAxis(
   tickParams: ITickParams,
   dataset: string[],
   culture?: string,
+  _useRtl?: boolean,
 ): {
   xScale: ScaleBand<string>;
   tickValues: string[];
@@ -597,7 +599,7 @@ export function createStringXAxis(
       .attr('aria-hidden', 'true')
       .style('direction', 'ltr')
       .style('unicode-bidi', 'isolate')
-      .style('text-anchor', useRtl() ? 'start' : 'end');
+      .style('text-anchor', _useRtl ? 'start' : 'end');
   }
   return { xScale: xAxisScale, tickValues: tickValues.map(xAxis.tickFormat()!) };
 }
@@ -741,6 +743,7 @@ export function createNumericYAxis(
   useSecondaryYScale: boolean = false,
   roundedTicks: boolean = false,
   scaleType?: AxisScaleType,
+  _useRtl?: boolean,
 ): ScaleLinear<number, number> {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -825,7 +828,7 @@ export function createNumericYAxis(
         .attr('aria-hidden', 'true')
         .style('direction', 'ltr')
         .style('unicode-bidi', 'isolate')
-        .style('text-anchor', useRtl() ? 'start' : 'end')
+        .style('text-anchor', _useRtl ? 'start' : 'end')
     : '';
   return yAxisScale;
 }
