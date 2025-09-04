@@ -18,7 +18,9 @@ export function createLogger(config: Pick<Args, 'react' | 'verbose'>): Logger {
     warn: (...msg: unknown[]) => console.warn(header, ...msg),
     error: (...msg: unknown[]) => console.error(header, ...msg),
     verbose: (...msg: unknown[]) => {
-      if (config.verbose) console.log(header, ...msg);
+      if (config.verbose) {
+        console.log(header, ...msg);
+      }
     },
   };
 }

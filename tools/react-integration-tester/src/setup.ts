@@ -96,8 +96,8 @@ function getProjectInfo(cwd: string): {
     : null;
   const projectPaths = {
     packageJson: join(projectRoot, 'package.json'),
-    jestConfig: jestConfig,
-    cypressConfig: cypressConfig,
+    jestConfig,
+    cypressConfig,
     tsConfig: join(projectRoot, 'tsconfig.lib.json'),
   };
   if (!existsSync(projectPaths.packageJson)) {
