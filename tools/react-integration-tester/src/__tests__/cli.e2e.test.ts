@@ -208,6 +208,9 @@ describe('rit CLI e2e', () => {
           "skipLibCheck": true,
           "strict": true,
           "target": "ES2019",
+          "typeRoots": Array [
+            "../node_modules/@types",
+          ],
           "types": Array [],
         },
         "exclude": Array [
