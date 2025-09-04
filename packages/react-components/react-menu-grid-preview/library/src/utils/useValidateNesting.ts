@@ -3,7 +3,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 
 type NestingComponentName = 'MenuGrid' | 'MenuGridItem' | 'MenuGridRow';
 
-export const useCheckNesting = (componentName: NestingComponentName): React.RefObject<HTMLElement> => {
+export const useValidateNesting = (componentName: NestingComponentName): React.RefObject<HTMLElement> => {
   'use no memo';
 
   const ref = React.useRef<HTMLElement>(null);

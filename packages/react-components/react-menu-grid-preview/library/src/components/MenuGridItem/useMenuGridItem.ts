@@ -4,7 +4,7 @@ import { useMergedRefs, slot } from '@fluentui/react-utilities';
 import { MenuGridItemProps, MenuGridItemState } from './MenuGridItem.types';
 import { MenuGridCell } from './../MenuGridCell/MenuGridCell';
 import { MenuGridRow } from './../MenuGridRow/MenuGridRow';
-import { useCheckMenuGridItemNesting } from './useCheckMenuGridItemNesting';
+import { useValidateMenuGridItemNesting } from './useValidateMenuGridItemNesting';
 
 /**
  * Given user props, returns state and render function for a MenuGridItem.
@@ -18,7 +18,7 @@ export function useMenuGridItem_unstable(props: MenuGridItemProps, ref: React.Re
     secondSubAction,
     ...rest
   } = props;
-  const checkNestingRef = useCheckMenuGridItemNesting();
+  const validateNestingRef = useValidateMenuGridItemNesting();
 
   return {
     components: {
@@ -31,7 +31,7 @@ export function useMenuGridItem_unstable(props: MenuGridItemProps, ref: React.Re
     },
     root: slot.always(
       {
-        ref: useMergedRefs(ref, checkNestingRef),
+        ref: useMergedRefs(ref, validateNestingRef),
         ...rest,
       },
       { elementType: MenuGridRow },
