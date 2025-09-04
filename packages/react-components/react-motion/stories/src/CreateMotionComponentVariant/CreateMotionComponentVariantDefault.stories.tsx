@@ -4,15 +4,11 @@ import {
   Field,
   makeStyles,
   mergeClasses,
-  type MotionImperativeRef,
-  motionTokens,
   Slider,
   tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-
-// import description from './CreateMotionComponentVariant.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -134,11 +130,3 @@ export const CreateMotionComponentVariantDefault = (): JSXElement => {
     </div>
   );
 };
-
-// CreateMotionComponentVariantDefault.parameters = {
-//   docs: {
-//     description: {
-//       story: description,
-//     },
-//   },
-// };
