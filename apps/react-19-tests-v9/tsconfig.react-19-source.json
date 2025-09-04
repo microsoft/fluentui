@@ -40,5 +40,5 @@
     "../../packages/react-components/react-*/library/src/*.tsx",
     "../../packages/react-components/react-*/library/src/*.ts"
   ],
-  "files": ["../../typings/static-assets/index.d.ts", "../../node_modules/@types/node/index.d.ts"]
+  "files": ["../../typings/static-assets/index.d.ts", "../../typings/environment/index.d.ts"]
 }
