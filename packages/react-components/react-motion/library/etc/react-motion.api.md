@@ -106,7 +106,7 @@ export const motionTokens: {
 
 // @public (undocumented)
 export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = {
-    (props: PresenceComponentProps & MotionParams): React_2.ReactElement | null;
+    (props: PresenceComponentProps & MotionParams): JSXElement | null;
     [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
     In: React_2.FC<MotionComponentProps & MotionParams>;
     Out: React_2.FC<MotionComponentProps & MotionParams>;
