@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { ChartProps, SankeyChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Switch } from '@fluentui/react-components';
 
@@ -345,7 +346,7 @@ const dataComplex: ChartProps = {
   },
 };
 
-export const SankeyChartRebalance: React.FunctionComponent<{}> = () => {
+export const SankeyChartRebalance: React.FunctionComponent<{}> = (): JSXElement => {
   const [width, setWidth] = React.useState(820);
   const [height, setHeight] = React.useState(400);
   const [dataSource, setDataSource] = React.useState<DataSouce>(DataSouce.Simple);

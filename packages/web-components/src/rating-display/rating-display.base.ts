@@ -1,4 +1,21 @@
-import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
+
+const SUPPORTS_ATTR_TYPE = CSS.supports('width: attr(value type(<number>))');
+const CUSTOM_PROPERTY_NAME = {
+  max: '--_attr-max',
+  value: '--_attr-value',
+  maskImageFilled: '--_mask-image-filled',
+  maskImageOutlined: '--_mask-image-outlined',
+};
+type PropertyNameForCalculation = 'max' | 'value';
+
+export function svgToDataURI(svg: string) {
+  if (!svg) {
+    return '';
+  }
+
+  return ['data:image/svg+xml', encodeURIComponent(svg.replace(/\n/g, '').replace(/\s+/g, ' '))].join(',');
+}
 
 /**
  * The base class used for constructing a fluent-rating-display custom element
@@ -8,12 +25,25 @@ import { attr, FASTElement, nullableNumberConverter, observable } from '@microso
  * @public
  */
 export class BaseRatingDisplay extends FASTElement {
+  private numberFormatter!: Intl.NumberFormat;
+
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
    */
   public elementInternals: ElementInternals = this.attachInternals();
+
+  /** @internal */
+  public iconSlot!: HTMLSlotElement;
+
+  protected defaultCustomIconViewBox = '0 0 20 20';
+
+  /**
+   * The element that displays the rating icons.
+   * @internal
+   */
+  public display!: HTMLElement;
 
   /**
    * The number of ratings.
@@ -29,9 +59,9 @@ export class BaseRatingDisplay extends FASTElement {
    * The `viewBox` attribute of the icon <svg> element.
    *
    * @public
-   * @default `0 0 20 20`
    * @remarks
    * HTML Attribute: `icon-view-box`
+   * @deprecated Add `viewBox` attribute on the custom SVG directly.
    */
   @attr({ attribute: 'icon-view-box' })
   iconViewBox?: string;
@@ -47,6 +77,9 @@ export class BaseRatingDisplay extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public max?: number;
+  protected maxChanged() {
+    this.setCustomPropertyValue('max');
+  }
 
   /**
    * The value of the rating.
@@ -57,34 +90,21 @@ export class BaseRatingDisplay extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public value?: number;
-
-  /**
-   * @internal
-   */
-  @observable
-  public slottedIcon!: HTMLElement[];
-
-  /**
-   * @internal
-   */
-  public slottedIconChanged(): void {
-    if (this.$fastController.isConnected) {
-      this.customIcon = this.slottedIcon[0]?.outerHTML;
-    }
+  protected valueChanged() {
+    this.setCustomPropertyValue('value');
   }
-
-  /**
-   * @internal
-   */
-  @observable
-  private customIcon?: string;
-
-  private intlNumberFormatter = new Intl.NumberFormat();
 
   constructor() {
     super();
 
     this.elementInternals.role = 'img';
+    this.numberFormatter = new Intl.NumberFormat();
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.setCustomPropertyValue('value');
+    this.setCustomPropertyValue('max');
   }
 
   /**
@@ -93,53 +113,54 @@ export class BaseRatingDisplay extends FASTElement {
    * @internal
    */
   public get formattedCount(): string {
-    return this.count ? this.intlNumberFormatter.format(this.count) : '';
+    return this.count ? this.numberFormatter.format(this.count) : '';
   }
 
-  /**
-   * Gets the selected value
-   *
-   * @protected
-   */
-  protected getSelectedValue(): number {
-    return Math.round((this.value ?? 0) * 2) / 2;
+  /** @internal */
+  public handleSlotChange() {
+    const icon = this.iconSlot.assignedElements()?.find(el => el.nodeName.toLowerCase() === 'svg') as SVGSVGElement;
+
+    this.renderSlottedIcon(icon ?? null);
   }
 
-  /**
-   * Gets the maximum icons to render
-   *
-   * @protected
-   */
-  protected getMaxIcons(): number {
-    return (this.max ?? 5) * 2;
-  }
-
-  /**
-   * Generates the icon SVG elements based on the "max" attribute.
-   *
-   * @internal
-   */
-  public generateIcons(): string {
-    let htmlString: string = '';
-    let customIcon: string | undefined;
-
-    if (this.customIcon) {
-      // Extract the SVG element content
-      customIcon = /<svg[^>]*>([\s\S]*?)<\/svg>/.exec(this.customIcon)?.[1] ?? '';
+  protected renderSlottedIcon(svg: SVGSVGElement | null) {
+    if (!svg) {
+      this.display.style.removeProperty(CUSTOM_PROPERTY_NAME.maskImageFilled);
+      this.display.style.removeProperty(CUSTOM_PROPERTY_NAME.maskImageOutlined);
+      return;
     }
 
-    // The value of the selected icon. Based on the "value" attribute, rounded to the nearest half.
-    const selectedValue: number = this.getSelectedValue();
+    const innerSvg = svg.innerHTML;
+    const viewBox = svg.getAttribute('viewBox') ?? this.iconViewBox ?? this.defaultCustomIconViewBox;
 
-    // Render the icons based on the "max" attribute. If "max" is not set, render 5 icons.
-    for (let i: number = 0; i < this.getMaxIcons(); i++) {
-      const iconValue: number = (i + 1) / 2;
+    const customSvgFilled = `
+            <svg
+                viewBox="${viewBox}"
+                xmlns="http://www.w3.org/2000/svg"
+            >${innerSvg}</svg>`;
+    const customSvgOutlined = `
+            <svg
+                viewBox="${viewBox}"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="black"
+                stroke-width="2"
+            >${innerSvg}</svg>`;
+    this.display.style.setProperty(CUSTOM_PROPERTY_NAME.maskImageFilled, `url(${svgToDataURI(customSvgFilled)})`);
+    this.display.style.setProperty(CUSTOM_PROPERTY_NAME.maskImageOutlined, `url(${svgToDataURI(customSvgOutlined)})`);
+  }
 
-      htmlString += `<svg aria-hidden="true" viewBox="${this.iconViewBox ?? '0 0 20 20'}" ${
-        iconValue === selectedValue ? 'selected' : ''
-      }>${customIcon ?? '<use href="#star"></use>'}</svg>`;
+  protected setCustomPropertyValue(propertyName: PropertyNameForCalculation) {
+    if (!this.display || SUPPORTS_ATTR_TYPE) {
+      return;
     }
 
-    return htmlString;
+    const propertyValue = this[propertyName];
+
+    if (typeof propertyValue !== 'number' || Number.isNaN(propertyValue)) {
+      this.display.style.removeProperty(CUSTOM_PROPERTY_NAME[propertyName]);
+    } else {
+      this.display.style.setProperty(CUSTOM_PROPERTY_NAME[propertyName], `${propertyValue}`);
+    }
   }
 }

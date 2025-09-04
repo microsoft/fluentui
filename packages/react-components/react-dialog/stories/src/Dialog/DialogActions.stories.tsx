@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   DialogTrigger,
@@ -13,7 +14,7 @@ import {
 } from '@fluentui/react-components';
 import story from './DialogActions.md';
 
-export const Actions = () => {
+export const Actions = (): JSXElement => {
   const [checked, setChecked] = React.useState(false);
   const handleChange = (ev: React.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => {
     setChecked(Boolean(data.checked));

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   tokens,
@@ -70,7 +71,7 @@ const excelLogo = resolveAsset('xlsx.png');
 const wordLogo = resolveAsset('docx.png');
 const powerpointLogoURL = resolveAsset('pptx.png');
 
-export const Templates = () => {
+export const Templates = (): JSXElement => {
   const styles = useStyles();
 
   return (

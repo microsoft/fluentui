@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: expose JSX namespace in backwards compatible way for react 19 typescript support",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

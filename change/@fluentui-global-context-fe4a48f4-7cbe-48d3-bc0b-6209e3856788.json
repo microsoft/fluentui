@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: enforce explicit module boundary types",
+  "packageName": "@fluentui/global-context",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

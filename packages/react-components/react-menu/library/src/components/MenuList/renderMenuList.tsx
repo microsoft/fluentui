@@ -1,13 +1,14 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { MenuListContextValues, MenuListSlots, MenuListState } from './MenuList.types';
 import { MenuListProvider } from '../../contexts/menuListContext';
 
 /**
  * Function that renders the final JSX of the component
  */
-export const renderMenuList_unstable = (state: MenuListState, contextValues: MenuListContextValues) => {
+export const renderMenuList_unstable = (state: MenuListState, contextValues: MenuListContextValues): JSXElement => {
   assertSlots<MenuListSlots>(state);
 
   return (

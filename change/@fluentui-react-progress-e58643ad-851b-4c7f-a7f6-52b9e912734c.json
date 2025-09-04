@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: extend peer dependencies versions to support React 19",
+  "packageName": "@fluentui/react-progress",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

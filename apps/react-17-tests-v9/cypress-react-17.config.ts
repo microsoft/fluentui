@@ -13,19 +13,8 @@ const specs = [
   path.resolve('../../packages/react-components/react-tabster/src/**/*.cy.{tsx,ts}'),
   ...excludedSpecs,
 ];
-const config = {
-  ...baseConfig,
-  component: {
-    ...baseConfig.component,
-    supportFile: path.resolve(__dirname, 'config/support/component.js'),
-  },
-};
+const config = { ...baseConfig };
 
 config.component.specPattern = specs;
-config.component.devServer.webpackConfig.resolve ??= {};
-config.component.devServer.webpackConfig.resolve.alias = {
-  ...config.component.devServer.webpackConfig.resolve.alias,
-  '@cypress/react': path.resolve(__dirname, './config/cypressWithStrictMode.ts'),
-};
 
 export default config;

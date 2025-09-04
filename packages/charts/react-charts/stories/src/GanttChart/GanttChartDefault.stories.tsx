@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DataVizPalette, GanttChart, GanttChartDataPoint } from '@fluentui/react-charts';
 import { Switch } from '@fluentui/react-components';
 
@@ -35,7 +36,7 @@ const data: GanttChartDataPoint[] = [
   },
 ];
 
-export const GanttChartBasic = () => {
+export const GanttChartBasic = (): JSXElement => {
   const [width, setWidth] = React.useState(600);
   const [height, setHeight] = React.useState(350);
   const [enableGradient, setEnableGradient] = React.useState(false);

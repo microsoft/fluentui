@@ -81,22 +81,22 @@ export type ImageSwatchState = ComponentState<ImageSwatchSlots> & Pick<ImageSwat
 };
 
 // @public
-export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Element;
+export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSXElement;
 
 // @public
-export const renderEmptySwatch_unstable: (state: EmptySwatchState) => JSX.Element;
+export const renderEmptySwatch_unstable: (state: EmptySwatchState) => JSXElement;
 
 // @public
-export const renderImageSwatch_unstable: (state: ImageSwatchState) => JSX.Element;
+export const renderImageSwatch_unstable: (state: ImageSwatchState) => JSXElement;
 
 // @public
-export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValues) => JSX.Element;
+export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValues) => JSXElement;
 
 // @public (undocumented)
 export const renderSwatchPickerGrid: (props: SwatchPickerGridProps) => JSXElement[];
 
 // @public
-export const renderSwatchPickerRow_unstable: (state: SwatchPickerRowState) => JSX.Element;
+export const renderSwatchPickerRow_unstable: (state: SwatchPickerRowState) => JSXElement;
 
 // @public (undocumented)
 export const swatchCSSVars: {

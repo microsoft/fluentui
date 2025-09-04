@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shorthands, makeStyles, mergeClasses, makeResetStyles } from '@griffel/react';
+import { shorthands, makeStyles, mergeClasses, makeResetStyles, GriffelStyle } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { textClassNames } from '@fluentui/react-text';
@@ -64,6 +64,26 @@ const useCardResetStyles = makeResetStyles({
     flexShrink: 0,
   },
 });
+
+const disabledStyles: GriffelStyle = {
+  cursor: 'not-allowed',
+  userSelect: 'none',
+  color: tokens.colorNeutralForegroundDisabled,
+  backgroundColor: tokens.colorNeutralBackgroundDisabled,
+  boxShadow: tokens.shadow2,
+  ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+
+  '::before': {
+    content: '""',
+    position: 'absolute',
+    inset: 0,
+    zIndex: `calc(${tokens.zIndexContent} + 1)`,
+  },
+
+  '::after': {
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+  },
+};
 
 const useCardStyles = makeStyles({
   focused: {
@@ -274,6 +294,20 @@ const useCardStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundSelected,
     },
   },
+  outlineDisabled: {
+    backgroundColor: tokens.colorTransparentBackground,
+    boxShadow: 'none',
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+
+    '&:hover, &:active': {
+      backgroundColor: tokens.colorTransparentBackground,
+      boxShadow: 'none',
+    },
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    },
+  },
 
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
@@ -351,7 +385,7 @@ const useCardStyles = makeStyles({
     position: 'absolute',
     top: '4px',
     right: '4px',
-    zIndex: 1,
+    zIndex: tokens.zIndexContent,
   },
 
   hiddenCheckbox: {
@@ -362,6 +396,11 @@ const useCardStyles = makeStyles({
     clip: 'rect(0 0 0 0)',
     clipPath: 'inset(50%)',
     whiteSpace: 'nowrap',
+  },
+
+  disabled: {
+    ...disabledStyles,
+    '&:hover, &:active': disabledStyles,
   },
 });
 
@@ -405,9 +444,13 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     subtle: styles.subtleInteractive,
   };
 
-  const isSelectableOrInteractive = state.interactive || state.selectable;
+  const isSelectableOrInteractive = !state.disabled && (state.interactive || state.selectable);
 
   const focusedClassName = React.useMemo(() => {
+    if (state.disabled) {
+      return '';
+    }
+
     if (state.selectable) {
       if (state.selectFocused) {
         return styles.selectableFocused;
@@ -417,7 +460,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     }
 
     return styles.focused;
-  }, [state.selectFocused, state.selectable, styles.focused, styles.selectableFocused]);
+  }, [state.disabled, state.selectFocused, state.selectable, styles.focused, styles.selectableFocused]);
 
   state.root.className = mergeClasses(
     cardClassNames.root,
@@ -431,6 +474,8 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     focusedClassName,
     isSelectableOrInteractive && styles.highContrastInteractive,
     state.selected && styles.highContrastSelected,
+    state.disabled && styles.disabled,
+    state.disabled && state.appearance === 'outline' && styles.outlineDisabled,
     state.root.className,
   );
 

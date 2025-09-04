@@ -1,3 +1,4 @@
+import type { JSXElement } from '@fluentui/react-utilities';
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -9,7 +10,7 @@ import type { AtomMotion, AtomMotionFn, MotionParam, MotionImperativeRef } from 
 import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
 
 export type MotionComponentProps = {
-  children: React.ReactElement;
+  children: JSXElement;
 
   /** Provides imperative controls for the animation. */
   imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
@@ -50,7 +51,7 @@ export type MotionComponentProps = {
  */
 export function createMotionComponent<MotionParams extends Record<string, MotionParam> = {}>(
   value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>,
-) {
+): React.FC<MotionComponentProps & MotionParams> {
   const Atom: React.FC<MotionComponentProps & MotionParams> = props => {
     'use no memo';
 

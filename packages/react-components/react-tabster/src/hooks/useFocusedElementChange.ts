@@ -11,7 +11,7 @@ import { createTabsterWithConfig } from './useTabster';
  */
 export function useFocusedElementChange(
   callback: TabsterTypes.SubscribableCallback<HTMLElement | undefined, TabsterTypes.FocusedElementDetail>,
-) {
+): void {
   const { targetDocument } = useFluent();
   const listener = useEventCallback(callback);
 

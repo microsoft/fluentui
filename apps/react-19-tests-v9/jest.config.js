@@ -6,8 +6,7 @@ const { join } = require('node:path');
 
 const { getNodeModulesPath } = require('./config/utils');
 
-const usedNodeModulesPath = getNodeModulesPath();
-const workspaceRootNodeModulesPath = join(__dirname, '../../node_modules');
+const { usedNodeModulesPath, workspaceRootNodeModulesPath } = getNodeModulesPath();
 
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC

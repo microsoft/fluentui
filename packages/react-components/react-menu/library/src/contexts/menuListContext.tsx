@@ -38,5 +38,5 @@ export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIco
 
 export const MenuListProvider = MenuListContext.Provider;
 
-export const useMenuListContext_unstable = <T,>(selector: ContextSelector<MenuListContextValue, T>) =>
+export const useMenuListContext_unstable = <T,>(selector: ContextSelector<MenuListContextValue, T>): T =>
   useContextSelector(MenuListContext, (ctx = menuListContextDefaultValue) => selector(ctx));

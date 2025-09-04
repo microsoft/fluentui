@@ -1,6 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FlatTreeProps,
   FlatTreeItem,
@@ -84,7 +85,7 @@ const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
   );
 };
 
-export const Virtualization = () => {
+export const Virtualization = (): JSXElement => {
   const headlessTree = useHeadlessFlatTree_unstable(defaultItems);
   const listRef = React.useRef<FixedSizeList>(null);
   const items = React.useMemo(() => Array.from(headlessTree.items()), [headlessTree]);

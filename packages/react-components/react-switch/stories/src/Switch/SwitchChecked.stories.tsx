@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Switch } from '@fluentui/react-components';
 
-export const Checked = () => {
+export const Checked = (): JSXElement => {
   const [checked, setChecked] = React.useState(true);
   const onChange = React.useCallback(
     (ev: React.ChangeEvent<HTMLInputElement>) => {

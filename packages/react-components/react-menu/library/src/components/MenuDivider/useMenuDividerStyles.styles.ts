@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useMenuDividerStyles_unstable = (state: MenuDividerState) => {
+export const useMenuDividerStyles_unstable = (state: MenuDividerState): MenuDividerState => {
   'use no memo';
 
   const styles = useStyles();

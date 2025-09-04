@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Sparkline, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
 
-export const SparklineBasic = () => {
+export const SparklineBasic = (): JSXElement => {
   const sl1 = {
     chartTitle: '10.21',
     lineChartData: [

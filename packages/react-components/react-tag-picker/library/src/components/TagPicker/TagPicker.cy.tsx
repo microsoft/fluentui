@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { TagPickerProps } from './TagPicker.types';

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Attachment,
   AttachmentIcon,
@@ -9,7 +10,7 @@ import {
 } from '@fluentui/react-migration-v0-v9';
 import { MoreHorizontalRegular as MoreHorizontal, TableRegular as Table } from '@fluentui/react-icons';
 
-export const Actionable = () => {
+export const Actionable = (): JSXElement => {
   const handleClick = (message: string) => (e: React.MouseEvent) => {
     alert(`'${message}' was clicked`);
     e.stopPropagation();

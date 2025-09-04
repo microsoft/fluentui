@@ -5,7 +5,7 @@ const MotionRefForwarderContext = React.createContext<React.Ref<HTMLElement> | u
 /**
  * @internal
  */
-export function useMotionForwardedRef() {
+export function useMotionForwardedRef(): React.Ref<HTMLElement> | undefined {
   return React.useContext(MotionRefForwarderContext);
 }
 

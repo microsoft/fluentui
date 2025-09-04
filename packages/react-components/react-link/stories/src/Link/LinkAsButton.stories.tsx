@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Link } from '@fluentui/react-components';
 
-export const AsButton = () => <Link>Render as a button</Link>;
+export const AsButton = (): JSXElement => <Link>Render as a button</Link>;
 
 AsButton.parameters = {
   docs: {

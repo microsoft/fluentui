@@ -209,7 +209,7 @@ export interface RefAttributes<T> extends React_2.Attributes {
 }
 
 // @public
-export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T | null) => void);
+export type RefObjectFunction<T> = React_2.RefObject<T | null> & ((value: T | null) => void);
 
 // @public
 export function resetIdsForTests(): void;
@@ -365,7 +365,7 @@ export type UseControllableStateOptions<State> = {
 };
 
 // @internal
-export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
+export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => ((...args: Args) => Return);
 
 // @internal
 export function useFirstMount(): boolean;

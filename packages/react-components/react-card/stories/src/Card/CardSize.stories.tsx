@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, Caption1, Subtitle1, mergeClasses, Text } from '@fluentui/react-components';
 import { Card, CardHeader, CardProps } from '@fluentui/react-components';
 
@@ -85,7 +86,7 @@ const CardExample = (props: CardProps) => {
   );
 };
 
-export const Size = () => {
+export const Size = (): JSXElement => {
   const styles = useStyles();
 
   return (

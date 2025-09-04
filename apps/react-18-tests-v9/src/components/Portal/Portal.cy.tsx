@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Portal } from '@fluentui/react-components';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { Provider } from '../../components/Provider/Provider';

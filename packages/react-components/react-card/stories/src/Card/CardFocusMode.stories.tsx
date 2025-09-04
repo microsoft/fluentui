@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Caption1, Body1, Subtitle1 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular, Open16Regular, Share16Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardFooter, CardPreview, CardProps } from '@fluentui/react-components';
@@ -86,7 +87,7 @@ const CardExample = (props: CardProps) => {
   );
 };
 
-export const FocusMode = () => {
+export const FocusMode = (): JSXElement => {
   const styles = useStyles();
 
   return (

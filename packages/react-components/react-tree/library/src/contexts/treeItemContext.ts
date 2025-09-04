@@ -22,7 +22,7 @@ export type TreeItemContextValue = {
   subtreeRef: React.Ref<HTMLDivElement>;
   // FIXME: this is only marked as optional to avoid breaking changes
   // it should always be provided internally
-  treeItemRef?: React.RefObject<HTMLDivElement>;
+  treeItemRef?: React.RefObject<HTMLDivElement | null>;
   itemType: TreeItemType;
   value: TreeItemValue;
   open: boolean;

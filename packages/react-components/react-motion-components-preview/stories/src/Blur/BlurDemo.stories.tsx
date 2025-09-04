@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, Button } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurDemoDescription from './BlurDemo.stories.md';
@@ -74,7 +75,7 @@ const images = [
   },
 ];
 
-export const LayeredBlurDemo = () => {
+export const LayeredBlurDemo = (): JSXElement => {
   const classes = useClasses();
 
   // Image Gallery Demo

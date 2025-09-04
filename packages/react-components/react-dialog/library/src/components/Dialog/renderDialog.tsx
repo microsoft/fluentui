@@ -2,6 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { MotionRefForwarder } from '../MotionRefForwarder';
@@ -11,7 +12,7 @@ import type { DialogState, DialogContextValues, InternalDialogSlots } from './Di
 /**
  * Render the final JSX of Dialog
  */
-export const renderDialog_unstable = (state: DialogState, contextValues: DialogContextValues) => {
+export const renderDialog_unstable = (state: DialogState, contextValues: DialogContextValues): JSXElement => {
   assertSlots<InternalDialogSlots>(state);
 
   return (

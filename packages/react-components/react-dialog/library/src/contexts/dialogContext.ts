@@ -10,7 +10,7 @@ export type DialogContextValue = {
   inertTrapFocus: boolean;
   dialogTitleId?: string;
   isNestedDialog: boolean;
-  dialogRef: React.Ref<DialogSurfaceElement>;
+  dialogRef: React.Ref<DialogSurfaceElement | null>;
   modalType: DialogModalType;
   /**
    * Requests dialog main component to update it's internal open state

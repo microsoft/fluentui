@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, InfoLabel, Input, LabelProps } from '@fluentui/react-components';
 
-export const InField = () => (
+export const InField = (): JSXElement => (
   <Field
     label={{
       children: (_: unknown, props: LabelProps) => (

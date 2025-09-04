@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
   Button,
@@ -38,7 +39,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Offset = () => {
+export const Offset = (): JSXElement => {
   const styles = useStyles();
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
