@@ -50,6 +50,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   Mar/01
@@ -68,6 +69,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   Mar/02
@@ -317,6 +319,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="10"
               >
                 Mar/01
@@ -335,6 +338,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="10"
               >
                 Mar/02
@@ -643,6 +647,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   p4
@@ -661,6 +666,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   p3
@@ -908,6 +914,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="10"
               >
                 p4
@@ -926,6 +933,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="10"
               >
                 p3
@@ -1232,6 +1240,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   Mar/01
@@ -1250,6 +1259,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   Mar/02
@@ -1444,6 +1454,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="10"
               >
                 Mar/01
@@ -1462,6 +1473,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="10"
               >
                 Mar/02
@@ -1715,6 +1727,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   Mar/01
@@ -1733,6 +1746,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   Mar/02
@@ -1982,6 +1996,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="10"
               >
                 Mar/01
@@ -2000,6 +2015,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="10"
               >
                 Mar/02
@@ -2308,6 +2324,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   Mar/01
@@ -2326,6 +2343,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   Mar/02
@@ -2575,6 +2593,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="10"
               >
                 Mar/01
@@ -2593,6 +2612,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="10"
               >
                 Mar/02
@@ -2905,6 +2925,7 @@ Object {
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
+                    style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                     y="10"
                   >
                     Mar/01
@@ -2923,6 +2944,7 @@ Object {
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
+                    style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                     y="10"
                   >
                     Mar/02
@@ -3177,6 +3199,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   Mar/01
@@ -3195,6 +3218,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   Mar/02
@@ -3507,6 +3531,7 @@ Object {
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
+                    style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                     y="10"
                   >
                     Mar/01
@@ -3525,6 +3550,7 @@ Object {
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
+                    style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                     y="10"
                   >
                     Mar/02
@@ -3778,6 +3804,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   Mar/01
@@ -3796,6 +3823,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   y="10"
                 >
                   Mar/02
@@ -4100,6 +4128,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="10"
             >
               30
@@ -4118,6 +4147,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="10"
             >
               40
@@ -4359,6 +4389,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="10"
             >
               xPoint p4
@@ -4377,6 +4408,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="10"
             >
               xPoint p3

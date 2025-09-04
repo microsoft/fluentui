@@ -126,7 +126,13 @@ export const SankeyChartBasic: React.FunctionComponent<{}> = (): JSXElement => {
         />
       </div>
       <div style={rootStyle}>
-        <SankeyChart data={data} height={height} width={width} shouldResize={width + height} />
+        <SankeyChart
+          data={data}
+          height={height}
+          width={width}
+          shouldResize={width + height}
+          reflowProps={{ mode: 'min-width' }}
+        />
       </div>
     </div>
   );

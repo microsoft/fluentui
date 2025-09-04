@@ -45,6 +45,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               January
@@ -63,6 +64,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               February
@@ -81,6 +83,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               March
@@ -114,6 +117,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -132,6 +136,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               25
@@ -150,6 +155,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               50
@@ -168,6 +174,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               75
@@ -186,6 +193,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               100
@@ -548,6 +556,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               January
@@ -566,6 +575,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               February
@@ -584,6 +594,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               March
@@ -617,6 +628,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -635,6 +647,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               25
@@ -653,6 +666,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               50
@@ -671,6 +685,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               75
@@ -689,6 +704,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               100
@@ -1051,6 +1067,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               0
@@ -1069,6 +1086,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               2
@@ -1087,6 +1105,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               4
@@ -1105,6 +1124,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               6
@@ -1123,6 +1143,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               8
@@ -1141,6 +1162,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               10
@@ -1159,6 +1181,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               12
@@ -1177,6 +1200,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               14
@@ -1195,6 +1219,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               16
@@ -1213,6 +1238,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               18
@@ -1231,6 +1257,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               20
@@ -1264,6 +1291,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -1282,6 +1310,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               13
@@ -1300,6 +1329,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               26
@@ -1318,6 +1348,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               39
@@ -1336,6 +1367,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               52
@@ -1545,6 +1577,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               0
@@ -1563,6 +1596,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               2
@@ -1581,6 +1615,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               4
@@ -1599,6 +1634,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               6
@@ -1617,6 +1653,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               8
@@ -1635,6 +1672,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               10
@@ -1653,6 +1691,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               12
@@ -1671,6 +1710,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               14
@@ -1689,6 +1729,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               16
@@ -1707,6 +1748,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               18
@@ -1725,6 +1767,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               20
@@ -1758,6 +1801,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -1776,6 +1820,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               13
@@ -1794,6 +1839,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               26
@@ -1812,6 +1858,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               39
@@ -1830,6 +1877,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               52
@@ -2092,6 +2140,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               0
@@ -2110,6 +2159,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               2
@@ -2128,6 +2178,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               4
@@ -2146,6 +2197,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               6
@@ -2164,6 +2216,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               8
@@ -2182,6 +2235,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               10
@@ -2200,6 +2254,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               12
@@ -2218,6 +2273,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               14
@@ -2236,6 +2292,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               16
@@ -2254,6 +2311,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               18
@@ -2272,6 +2330,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               20
@@ -2305,6 +2364,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -2323,6 +2383,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               13
@@ -2341,6 +2402,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               26
@@ -2359,6 +2421,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               39
@@ -2377,6 +2440,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               52
@@ -2616,6 +2680,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               0
@@ -2634,6 +2699,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               2
@@ -2652,6 +2718,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               4
@@ -2670,6 +2737,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               6
@@ -2688,6 +2756,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               8
@@ -2706,6 +2775,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               10
@@ -2724,6 +2794,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               12
@@ -2742,6 +2813,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               14
@@ -2760,6 +2832,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               16
@@ -2778,6 +2851,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               18
@@ -2796,6 +2870,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               20
@@ -2829,6 +2904,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -2847,6 +2923,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               13
@@ -2865,6 +2942,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               26
@@ -2883,6 +2961,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               39
@@ -2901,6 +2980,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               52

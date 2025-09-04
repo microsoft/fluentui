@@ -44,6 +44,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               0
@@ -62,6 +63,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               2000
@@ -80,6 +82,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               4000
@@ -98,6 +101,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               6000
@@ -116,6 +120,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               8000
@@ -134,6 +139,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               10,000
@@ -152,6 +158,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               12,000
@@ -170,6 +177,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               14,000
@@ -188,6 +196,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               16,000
@@ -206,6 +215,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               18,000
@@ -224,6 +234,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               20,000
@@ -242,6 +253,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               22,000
@@ -260,6 +272,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               24,000
@@ -278,6 +291,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               26,000
@@ -311,6 +325,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -329,6 +344,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               12.5k
@@ -347,6 +363,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               25k
@@ -365,6 +382,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               37.5k
@@ -383,6 +401,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               50k
@@ -587,6 +606,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               0
@@ -605,6 +625,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               2000
@@ -623,6 +644,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               4000
@@ -641,6 +663,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               6000
@@ -659,6 +682,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               8000
@@ -677,6 +701,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               10,000
@@ -695,6 +720,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               12,000
@@ -713,6 +739,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               14,000
@@ -731,6 +758,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               16,000
@@ -749,6 +777,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               18,000
@@ -767,6 +796,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               20,000
@@ -785,6 +815,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               22,000
@@ -803,6 +834,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               24,000
@@ -821,6 +853,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               26,000
@@ -854,6 +887,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -872,6 +906,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               12.5k
@@ -890,6 +925,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               25k
@@ -908,6 +944,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               37.5k
@@ -926,6 +963,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               50k
@@ -1134,6 +1172,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 0
@@ -1152,6 +1191,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 2000
@@ -1170,6 +1210,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 4000
@@ -1188,6 +1229,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 6000
@@ -1206,6 +1248,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 8000
@@ -1224,6 +1267,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 10,000
@@ -1242,6 +1286,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 12,000
@@ -1260,6 +1305,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 14,000
@@ -1278,6 +1324,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 16,000
@@ -1296,6 +1343,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 18,000
@@ -1314,6 +1362,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 20,000
@@ -1332,6 +1381,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 22,000
@@ -1350,6 +1400,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 24,000
@@ -1368,6 +1419,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 y="16"
               >
                 26,000
@@ -1401,6 +1453,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
                 0
@@ -1419,6 +1472,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
                 12.5k
@@ -1437,6 +1491,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
                 25k
@@ -1455,6 +1510,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
                 37.5k
@@ -1473,6 +1529,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
                 50k
@@ -1689,6 +1746,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               0
@@ -1707,6 +1765,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               2000
@@ -1725,6 +1784,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               4000
@@ -1743,6 +1803,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               6000
@@ -1761,6 +1822,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               8000
@@ -1779,6 +1841,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               10,000
@@ -1797,6 +1860,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               12,000
@@ -1815,6 +1879,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               14,000
@@ -1833,6 +1898,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               16,000
@@ -1851,6 +1917,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               18,000
@@ -1869,6 +1936,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               20,000
@@ -1887,6 +1955,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               22,000
@@ -1905,6 +1974,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               24,000
@@ -1923,6 +1993,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               26,000
@@ -1956,6 +2027,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -1974,6 +2046,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               12.5k
@@ -1992,6 +2065,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               25k
@@ -2010,6 +2084,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               37.5k
@@ -2028,6 +2103,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               50k
@@ -2232,6 +2308,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               0
@@ -2250,6 +2327,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               10,000
@@ -2268,6 +2346,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               20,000
@@ -2301,6 +2380,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               −50k
@@ -2319,6 +2399,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               −37.5k
@@ -2337,6 +2418,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               −25k
@@ -2355,6 +2437,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               −12.5k
@@ -2373,6 +2456,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               0
@@ -2550,6 +2634,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               0
@@ -2568,6 +2653,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               10,000
@@ -2586,6 +2672,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               20,000
@@ -2619,6 +2706,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               0
@@ -2637,6 +2725,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               12.5k
@@ -2655,6 +2744,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               25k
@@ -2673,6 +2763,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               37.5k
@@ -2691,6 +2782,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               50k
@@ -2883,6 +2975,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               0
@@ -2901,6 +2994,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               875
@@ -2919,6 +3013,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               1.75k
@@ -2937,6 +3032,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               2.63k
@@ -2955,6 +3051,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               3.5k
@@ -3117,6 +3214,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               0
@@ -3135,6 +3233,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               10,000
@@ -3153,6 +3252,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               20,000
@@ -3186,6 +3286,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               −60k
@@ -3204,6 +3305,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               −40k
@@ -3222,6 +3324,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               −20k
@@ -3240,6 +3343,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               0
@@ -3258,6 +3362,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               20k
@@ -3276,6 +3381,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               40k
@@ -3453,6 +3559,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               0
@@ -3471,6 +3578,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               2000
@@ -3489,6 +3597,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               4000
@@ -3507,6 +3616,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               6000
@@ -3525,6 +3635,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               8000
@@ -3543,6 +3654,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               10,000
@@ -3561,6 +3673,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               12,000
@@ -3579,6 +3692,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               14,000
@@ -3597,6 +3711,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               16,000
@@ -3615,6 +3730,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               18,000
@@ -3633,6 +3749,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               20,000
@@ -3651,6 +3768,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               22,000
@@ -3669,6 +3787,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               24,000
@@ -3687,6 +3806,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               26,000
@@ -3720,6 +3840,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -3738,6 +3859,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               12.5k
@@ -3756,6 +3878,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               25k
@@ -3774,6 +3897,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               37.5k
@@ -3792,6 +3916,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               50k
@@ -4052,6 +4177,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               0
@@ -4070,6 +4196,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               2000
@@ -4088,6 +4215,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               4000
@@ -4106,6 +4234,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               6000
@@ -4124,6 +4253,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               8000
@@ -4142,6 +4272,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               10,000
@@ -4160,6 +4291,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               12,000
@@ -4178,6 +4310,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               14,000
@@ -4196,6 +4329,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               16,000
@@ -4214,6 +4348,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               18,000
@@ -4232,6 +4367,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               20,000
@@ -4250,6 +4386,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               22,000
@@ -4268,6 +4405,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               24,000
@@ -4286,6 +4424,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               y="16"
             >
               26,000
@@ -4319,6 +4458,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -4337,6 +4477,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               12.5k
@@ -4355,6 +4496,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               25k
@@ -4373,6 +4515,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               37.5k
@@ -4391,6 +4534,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               50k

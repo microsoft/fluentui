@@ -296,7 +296,13 @@ export function createNumericXAxis(
   }
 
   if (xAxisElement) {
-    d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
+    d3Select(xAxisElement)
+      .call(xAxis)
+      .selectAll('text')
+      .attr('aria-hidden', 'true')
+      .style('direction', 'ltr')
+      .style('unicode-bidi', 'isolate')
+      .style('text-anchor', useRtl() ? 'start' : 'end');
   }
   const tickValues = (customTickValues ?? xAxisScale.ticks(tickCount)).map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
@@ -585,7 +591,13 @@ export function createStringXAxis(
     .tickFormat(tickFormat);
 
   if (xAxisParams.xAxisElement) {
-    d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
+    d3Select(xAxisParams.xAxisElement)
+      .call(xAxis)
+      .selectAll('text')
+      .attr('aria-hidden', 'true')
+      .style('direction', 'ltr')
+      .style('unicode-bidi', 'isolate')
+      .style('text-anchor', useRtl() ? 'start' : 'end');
   }
   return { xScale: xAxisScale, tickValues: tickValues.map(xAxis.tickFormat()!) };
 }
@@ -806,7 +818,15 @@ export function createNumericYAxis(
   yAxisTickFormat
     ? yAxis.tickFormat(yAxisTickFormat)
     : yAxis.tickFormat((v, i) => tickFormat(v as NumberValue, i, yAxisScale.tickFormat(yAxisTickCount)));
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+  yAxisElement
+    ? d3Select(yAxisElement)
+        .call(yAxis)
+        .selectAll('text')
+        .attr('aria-hidden', 'true')
+        .style('direction', 'ltr')
+        .style('unicode-bidi', 'isolate')
+        .style('text-anchor', useRtl() ? 'start' : 'end')
+    : '';
   return yAxisScale;
 }
 

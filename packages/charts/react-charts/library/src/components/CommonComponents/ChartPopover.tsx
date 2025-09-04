@@ -216,7 +216,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
               )}
             >
               <div className={classes.calloutlegendText}> {xValue.legend}</div>
-              <div className={classes.calloutContentY}>
+              <div className={classes.calloutContentY} style={{ direction: 'ltr', unicodeBidi: 'isolate' }}>
                 {
                   formatToLocaleString(
                     xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
