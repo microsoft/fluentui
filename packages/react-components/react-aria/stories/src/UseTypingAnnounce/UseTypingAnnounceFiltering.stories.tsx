@@ -8,7 +8,7 @@ import {
   useId,
   useTypingAnnounce,
 } from '@fluentui/react-components';
-import type { InputProps } from '@fluentui/react-components';
+import type { InputProps, JSXElement } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   results: {
@@ -45,7 +45,7 @@ const sampleItems = [
   'Workshop_Notes_2024.docx',
 ];
 
-export const Filtering = () => {
+export const Filtering = (): JSXElement => {
   const [results, setResults] = React.useState<string[]>([]);
   const styles = useStyles();
 

@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { AriaLiveAnnouncer, Field, makeStyles, tokens, useId, useTypingAnnounce } from '@fluentui/react-components';
+import {
+  AriaLiveAnnouncer,
+  Field,
+  JSXElement,
+  makeStyles,
+  tokens,
+  useId,
+  useTypingAnnounce,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   contentEditable: {
@@ -27,7 +35,7 @@ const charCountMessage = (count: number) => {
   }
 };
 
-export const ContentEditable = () => {
+export const ContentEditable = (): JSXElement => {
   const [count, setCount] = React.useState(0);
   const styles = useStyles();
 

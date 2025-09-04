@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { AriaLiveAnnouncer, Field, Input, useId, useTypingAnnounce } from '@fluentui/react-components';
-import type { InputProps } from '@fluentui/react-components';
+import type { InputProps, JSXElement } from '@fluentui/react-components';
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const [overLimit, setOverLimit] = React.useState(false);
   const announceId = useId('charLimit');
 
