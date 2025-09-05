@@ -97,7 +97,7 @@ describe('rit CLI e2e', () => {
     expect(installDeps.command).toContain('yarn install');
     expect(installDeps.cwd.endsWith('tmp/rit/react-18')).toEqual(true);
 
-    expect(runCmd.command).toContain('jest --passWithNoTests -u');
+    expect(runCmd.command).toContain('jest --passWithNoTests');
     expect(runCmd.cwd).toEqual(expect.stringContaining(join(fs.tempDir, 'tmp/rit/react-18/proj-react-18')));
 
     // no project folder exists as it was cleanuped
@@ -262,7 +262,10 @@ describe('rit CLI e2e', () => {
           '^react-test-renderer$': join(usedNodeModulesPath, './react-test-renderer'),
           '^@testing-library/(react|dom)$': join(usedNodeModulesPath, './@testing-library/$1'),
           '^@testing-library/react-hooks$': join(usedNodeModulesPath, './@testing-library/react/'),
-        }
+        },
+        setupFilesAfterEnv: [
+          join(__dirname, './jest.mock-snapshots.js'),
+        ],
       }
 
       const repoProjectConfig = merge(normalizedWorkspacePreset, normalizedBaseConfig)

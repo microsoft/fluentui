@@ -294,6 +294,11 @@ export async function setup(
       metadata.tmpl,
       join(projectPath, 'jest.config.js'),
     );
+    renderTemplateToFile(
+      join(__dirname, 'files', 'jest.mock-snapshots.js.template'),
+      metadata.tmpl,
+      join(projectPath, 'jest.mock-snapshots.js'),
+    );
     renderTemplateToFile(join(__dirname, 'files', '.swcrc.template'), metadata.tmpl, join(projectPath, '.swcrc'));
   }
 
