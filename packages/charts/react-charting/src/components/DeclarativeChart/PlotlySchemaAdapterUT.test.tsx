@@ -175,11 +175,11 @@ describe('correctYearMonth', () => {
 
 describe('getColor', () => {
   test('Should return color code when we had legend title', () => {
-    expect(getColor('test', { current: colorMap }, 'plotly', true)).toBe('#3487c7');
+    expect(getColor('test', { current: colorMap }, 'plotly', true)).toBe('#637cef');
   });
 
   test('Should return color code when we had legend title', () => {
-    expect(getColor('test', { current: colorMap }, 'plotly', false)).toBe('#3487c7');
+    expect(getColor('test', { current: colorMap }, 'plotly', false)).toBe('#637cef');
   });
 
   test('Should return color code when we had legend title is empty', () => {
