@@ -38,6 +38,10 @@ const useStyles = makeStyles({
     display: 'flex',
     cursor: 'pointer',
   },
+
+  disabledSelection: {
+    cursor: 'default',
+  },
 });
 
 /**
@@ -54,6 +58,7 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
     listItemClassNames.root,
     rootBaseStyles,
     (state.selectable || state.navigable) && styles.rootClickableOrSelectable,
+    state.disabledSelection && styles.disabledSelection,
     state.root.className,
   );
 
