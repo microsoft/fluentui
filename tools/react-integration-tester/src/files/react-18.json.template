@@ -1,7 +1,7 @@
 {
   "commands": {
     "e2e": "cypress run --component",
-    "test": "jest --passWithNoTests -u",
+    "test": "jest --passWithNoTests",
     "type-check": "tsc -p ./tsconfig.json --noEmit"
   },
   "dependencies": {

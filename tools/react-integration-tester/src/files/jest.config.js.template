@@ -39,7 +39,10 @@ const ritConfig = {
     <%_ } else { _%>
     '^@testing-library/react-hooks$': join(usedNodeModulesPath, './@testing-library/react-hooks'),
     <%_ } _%>
-  }
+  },
+  setupFilesAfterEnv: [
+    join(__dirname, './jest.mock-snapshots.js'),
+  ],
 }
 
 const repoProjectConfig = merge(normalizedWorkspacePreset, normalizedBaseConfig)
