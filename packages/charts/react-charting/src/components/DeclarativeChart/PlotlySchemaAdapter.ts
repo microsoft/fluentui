@@ -495,7 +495,7 @@ export const transformPlotlyJsonToDonutProps = (
   const colors: string[] | string | null | undefined = extractColor(
     input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
     colorwayType,
-    input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway ?? firstData?.marker?.colors,
+    input.layout?.piecolorway ?? firstData?.marker?.colors,
     colorMap,
     isDarkTheme,
     true,
