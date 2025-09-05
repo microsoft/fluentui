@@ -6,6 +6,7 @@ import {
   ICartesianChartProps,
   IGroupedVerticalBarChartData,
   IGVBarChartSeriesPoint,
+  IGVBCLinePoints,
 } from '../../index';
 
 /**
@@ -127,6 +128,11 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    * @default 'default'
    */
   mode?: 'default' | 'plotly';
+
+  /**
+   *
+   */
+  lineData?: IGVBCLinePoints[];
 }
 
 /**
