@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 04 Sep 2025 04:07:08 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Sep 2025 04:09:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.123](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.123)
+
+Fri, 05 Sep 2025 04:09:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.122..@fluentui/web-components_v3.0.0-beta.123)
+
+### Changes
+
+- fix: use defined selector in waitForConnectedDescendants ([PR #35142](https://github.com/microsoft/fluentui/pull/35142) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.122](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.122)
 
