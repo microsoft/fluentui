@@ -25,6 +25,15 @@ import { arrowHeight, tooltipBorderRadius } from './private/constants';
 import { Escape } from '@fluentui/keyboard-keys';
 
 /**
+ * The parameters to setVisibleDelay, to be stored in a ref while the timer is running.
+ */
+type PendingVisibleDelay = {
+  ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined;
+  data: OnVisibleChangeData;
+  delayUntil: number;
+};
+
+/**
  * Create the state required to render Tooltip.
  *
  * The returned state can be modified with hooks such as useTooltipStyles_unstable,
@@ -53,10 +62,18 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     mountNode,
   } = props;
 
+  // Save the parameters to the setVisibleDelay, while the timer is running.
+  const pendingVisibleDelayRef = React.useRef<PendingVisibleDelay | undefined>(undefined);
+
+  const cancelVisibleDelay = React.useCallback(() => {
+    pendingVisibleDelayRef.current = undefined;
+    clearDelayTimeout();
+  }, [clearDelayTimeout]);
+
   const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
   const setVisible = React.useCallback(
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => {
-      clearDelayTimeout();
+      cancelVisibleDelay();
       setVisibleInternal(oldVisible => {
         if (data.visible !== oldVisible) {
           onVisibleChange?.(ev, data);
@@ -64,8 +81,30 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
         return data.visible;
       });
     },
-    [clearDelayTimeout, setVisibleInternal, onVisibleChange],
+    [cancelVisibleDelay, setVisibleInternal, onVisibleChange],
   );
+
+  const setVisibleDelay = React.useCallback(
+    (
+      ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined,
+      data: OnVisibleChangeData,
+      delay: number,
+    ) => {
+      pendingVisibleDelayRef.current = { ev, data, delayUntil: Date.now() + delay };
+      setDelayTimeout(() => setVisible(ev, data), delay);
+    },
+    [setDelayTimeout, setVisible],
+  );
+
+  // In StrictMode, the component may be unmounted while the visible delay timer is still pending.
+  // Use an effect to restart the timer upon remounting.
+  // See https://github.com/microsoft/fluentui/issues/34296
+  React.useEffect(() => {
+    if (pendingVisibleDelayRef.current) {
+      const { ev, data, delayUntil } = pendingVisibleDelayRef.current;
+      setVisibleDelay(ev, data, Math.max(0, delayUntil - Date.now()));
+    }
+  }, [setVisibleDelay]);
 
   const state: TooltipState = {
     withArrow,
@@ -169,13 +208,11 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
       // Show immediately if another tooltip is already visible
       const delay = context.visibleTooltip ? 0 : state.showDelay;
 
-      setDelayTimeout(() => {
-        setVisible(ev, { visible: true });
-      }, delay);
+      setVisibleDelay(ev, { visible: true }, delay);
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously
     },
-    [setDelayTimeout, setVisible, state.showDelay, context],
+    [setVisibleDelay, state.showDelay, context],
   );
 
   const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
@@ -220,20 +257,18 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
         ignoreNextFocusEventRef.current = targetDocument?.activeElement === ev.target;
       }
 
-      setDelayTimeout(() => {
-        setVisible(ev, { visible: false });
-      }, delay);
+      setVisibleDelay(ev, { visible: false }, delay);
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously
     },
-    [setDelayTimeout, setVisible, state.hideDelay, targetDocument],
+    [setVisibleDelay, state.hideDelay, targetDocument],
   );
 
   // Cancel the hide timer when the mouse or focus enters the tooltip, and restart it when the mouse or focus leaves.
   // This keeps the tooltip visible when the mouse is moved over it, or it has focus within.
-  state.content.onPointerEnter = mergeCallbacks(state.content.onPointerEnter, clearDelayTimeout);
+  state.content.onPointerEnter = mergeCallbacks(state.content.onPointerEnter, cancelVisibleDelay);
   state.content.onPointerLeave = mergeCallbacks(state.content.onPointerLeave, onLeaveTrigger);
-  state.content.onFocus = mergeCallbacks(state.content.onFocus, clearDelayTimeout);
+  state.content.onFocus = mergeCallbacks(state.content.onFocus, cancelVisibleDelay);
   state.content.onBlur = mergeCallbacks(state.content.onBlur, onLeaveTrigger);
 
   const child = getTriggerChild(children);
