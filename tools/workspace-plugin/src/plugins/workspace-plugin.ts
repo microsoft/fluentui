@@ -661,6 +661,7 @@ function buildReactIntegrationTesterProjectConfiguration(
           cache: true,
           inputs: inputs,
           outputs: [],
+          parallelism: runOption === 'e2e' ? false : true,
           // this should be set via nx.json
           dependsOn: [targetNamePrepare],
           metadata: {
