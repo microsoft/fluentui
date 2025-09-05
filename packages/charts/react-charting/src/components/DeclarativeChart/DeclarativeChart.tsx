@@ -489,8 +489,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
           const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace.index));
           let chartType =
-            validTracesFilteredIndex.some(trace => trace.type === FALLBACK_TYPE) || chart.type === FALLBACK_TYPE
+            chart.type === FALLBACK_TYPE
               ? FALLBACK_TYPE
+              : validTracesFilteredIndex.some(trace => trace.type === FALLBACK_TYPE) &&
+                chart.type === 'groupedverticalbar'
+              ? chart.type
               : filteredTracesInfo[0].type;
 
           if (

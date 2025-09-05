@@ -679,7 +679,9 @@ export class GroupedVerticalBarChartBase
       actions.push(legend);
     };
 
-    lineData.forEach(series => addLegendButton(series.legend, true));
+    const lineLegends = new Set<string>(lineData.map(series => series.legend));
+    lineLegends.forEach(legendTitle => addLegendButton(legendTitle, true));
+
     this._barLegends.forEach(legendTitle => addLegendButton(legendTitle));
 
     return (

@@ -27,6 +27,7 @@ import {
   ISankeyChartData,
   ILineChartLineOptions,
   IGanttChartDataPoint,
+  IGVBCLinePoints,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -752,6 +753,7 @@ export const transformPlotlyJsonToGVBCProps = (
   }
 
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
+  const lineData: IGVBCLinePoints[] = [];
   const secondaryYAxisValues = getSecondaryYAxisValues(processedInput.data, processedInput.layout, 0, 0);
   const { legends, hideLegend } = getLegendProps(processedInput.data, processedInput.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
@@ -759,14 +761,24 @@ export const transformPlotlyJsonToGVBCProps = (
   processedInput.data.forEach((series: Partial<PlotData>, index1: number) => {
     colorScale = createColorScale(processedInput.layout, series, colorScale);
 
-    // extract colors for each series only once
-    const extractedColors = extractColor(
+    // extract bar colors for each series only once
+    const extractedBarColors = extractColor(
       processedInput.layout?.template?.layout?.colorway,
       colorwayType,
       series.marker?.color,
       colorMap,
       isDarkTheme,
     ) as string[] | string | undefined;
+    // extract line colors for each series only once
+    const extractedLineColors = extractColor(
+      input.layout?.template?.layout?.colorway,
+      colorwayType,
+      series.line?.color,
+      colorMap,
+      isDarkTheme,
+    ) as string[] | string | undefined;
+    const legend: string = legends[index1];
+
     (series.x as Datum[])?.forEach((x: string | number, xIndex: number) => {
       if (isInvalidValue(x) || isInvalidValue(series.y?.[xIndex])) {
         return;
@@ -777,7 +789,6 @@ export const transformPlotlyJsonToGVBCProps = (
       }
 
       if (series.type === 'bar') {
-        const legend: string = legends[index1];
         // resolve color for each legend's bars from the colorscale or extracted colors
         const color = colorScale
           ? colorScale(
@@ -785,7 +796,7 @@ export const transformPlotlyJsonToGVBCProps = (
                 ? ((series.marker?.color as Color[])?.[xIndex % (series.marker?.color as Color[]).length] as number)
                 : 0,
             )
-          : resolveColor(extractedColors, xIndex, legend, colorMap, isDarkTheme);
+          : resolveColor(extractedBarColors, xIndex, legend, colorMap, isDarkTheme);
         const opacity = getOpacity(series, xIndex);
 
         const yVal: number = series.y![xIndex] as number;
@@ -801,12 +812,42 @@ export const transformPlotlyJsonToGVBCProps = (
         });
       }
     });
+
+    if (series.type === 'scatter') {
+      const lineColor = resolveColor(extractedLineColors, index1, legend, colorMap, isDarkTheme);
+      const lineOptions = getLineOptions(series.line);
+      const legendShape = getLegendShape(series);
+      const seriesOpacity = getOpacity(series, index1);
+      const validXYRanges = getValidXYRanges(series);
+
+      validXYRanges.forEach(([rangeStart, rangeEnd]) => {
+        const rangeXValues = series.x!.slice(rangeStart, rangeEnd) as Datum[];
+        const rangeYValues = series.y!.slice(rangeStart, rangeEnd) as Datum[];
+
+        lineData.push({
+          legend,
+          legendShape,
+          data: rangeXValues.map((x, i: number) => ({
+            x: x!.toString(),
+            y: rangeYValues[i] as number,
+            yAxisCalloutData: getFormattedCalloutYData(rangeYValues[i] as number, yAxisTickFormat),
+          })),
+          color: rgb(lineColor).copy({ opacity: seriesOpacity }).formatHex8() ?? lineColor,
+          lineOptions: {
+            ...(lineOptions ?? {}),
+            mode: series.mode,
+          },
+          useSecondaryYScale: usesSecondaryYScale(series, input.layout),
+        });
+      });
+    }
   });
 
   const gvbcData = Object.values(mapXToDataPoints);
 
   return {
     data: gvbcData,
+    lineData,
     width: processedInput.layout?.width,
     height: processedInput.layout?.height ?? 350,
     barwidth: 'auto',
