@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Use default cursor when selection is disabled",
+  "packageName": "@fluentui/react-list",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}
