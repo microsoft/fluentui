@@ -1904,6 +1904,7 @@ export type {
 export {
   motionTokens,
   createMotionComponent,
+  createMotionComponentVariant,
   createPresenceComponent,
   createPresenceComponentVariant,
   PresenceGroup,

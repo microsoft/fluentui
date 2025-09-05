@@ -22,7 +22,7 @@ import { createMotionComponent, MotionComponentProps } from './createMotionCompo
 /**
  * @internal A private symbol to store the motion definition on the component for variants.
  */
-export const MOTION_DEFINITION = Symbol('MOTION_DEFINITION');
+export const PRESENCE_MOTION_DEFINITION = Symbol('PRESENCE_MOTION_DEFINITION');
 
 export type PresenceComponentProps = {
   /**
@@ -80,7 +80,7 @@ export type PresenceComponent<MotionParams extends Record<string, MotionParam> =
   PresenceComponentProps & MotionParams
 > & {
   (props: PresenceComponentProps & MotionParams): JSXElement | null;
-  [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
+  [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
   In: React.FC<MotionComponentProps & MotionParams>;
   Out: React.FC<MotionComponentProps & MotionParams>;
 };
@@ -248,7 +248,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
     {
       // Heads up!
       // Always normalize it to a function to simplify types
-      [MOTION_DEFINITION]: typeof value === 'function' ? value : () => value,
+      [PRESENCE_MOTION_DEFINITION]: typeof value === 'function' ? value : () => value,
     },
     {
       // Wrap `enter` in its own motion component as a static method, e.g. <Fade.In>
