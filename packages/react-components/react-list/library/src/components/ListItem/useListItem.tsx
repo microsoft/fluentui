@@ -227,7 +227,7 @@ export const useListItem_unstable = (
     },
     root,
     checkmark,
-    disabledSelection,
+    disabled: disabledSelection && !onAction,
     selectable: isSelectionModeEnabled,
     navigable: focusableItems,
   };
