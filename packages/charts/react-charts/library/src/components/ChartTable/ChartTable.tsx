@@ -7,6 +7,8 @@ import { toImage } from '../../utilities/image-export-utils';
 import { tokens } from '@fluentui/react-theme';
 import * as d3 from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
+import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
+import { Theme, webLightTheme } from '@fluentui/tokens';
 
 function invertHexColor(hex: string): string {
   const color = d3.color(hex);
@@ -18,8 +20,10 @@ function invertHexColor(hex: string): string {
 }
 
 function getSafeBackgroundColor(foreground?: string, background?: string): string {
-  const fallbackFg = tokens.colorNeutralForeground1;
-  const fallbackBg = tokens.colorNeutralBackground1;
+  const parentV9Theme = React.useContext(V9ThemeContext) as Theme;
+  const v9Theme: Theme = parentV9Theme ? parentV9Theme : webLightTheme;
+  const fallbackFg = v9Theme.colorNeutralForeground1;
+  const fallbackBg = v9Theme.colorNeutralBackground1;
 
   const fg = d3.color(foreground || fallbackFg);
   const bg = d3.color(background || fallbackBg);
