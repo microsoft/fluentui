@@ -180,6 +180,7 @@ export const SankeyChartInbox: React.FunctionComponent<{}> = (): JSXElement => {
             nodeAriaLabel: 'Category {0} with email count {1}',
             linkAriaLabel: '{2} items moved from category {0} to {1}',
           }}
+          reflowProps={{ mode: 'min-width' }}
         />
       </div>
     </div>
