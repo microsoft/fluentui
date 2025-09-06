@@ -45,7 +45,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="11"
             >
               Metadata info multi lines text Completed
@@ -64,7 +64,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="11"
             >
               Meta Data2
@@ -83,7 +83,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="11"
             >
               Single line text 
@@ -452,7 +452,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="11"
             >
               Metadata info multi lines text Completed
@@ -471,7 +471,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="11"
             >
               Meta Data2
@@ -490,7 +490,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="11"
             >
               Single line text 
@@ -866,7 +866,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="11"
             >
               Metadata info multi lines text Completed
@@ -885,7 +885,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="11"
             >
               Meta Data2
@@ -904,7 +904,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="11"
             >
               Single line text 
@@ -1348,7 +1348,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Metadata info multi lines text Completed
@@ -1367,7 +1367,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Meta Data2
@@ -1386,7 +1386,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Single line text 
@@ -1753,7 +1753,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Metadata info multi lines text Completed
@@ -1772,7 +1772,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Meta Data2
@@ -1791,7 +1791,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Single line text 
@@ -2217,7 +2217,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Metadata info multi lines text Completed
@@ -2236,7 +2236,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Meta Data2
@@ -2255,7 +2255,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Single line text 
@@ -2629,7 +2629,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Metadata info multi lines text Completed
@@ -2648,7 +2648,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Meta Data2
@@ -2667,7 +2667,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Single line text 
@@ -3100,7 +3100,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Metadata info multi lines text Completed
@@ -3119,7 +3119,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Meta Data2
@@ -3138,7 +3138,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Single line text 
@@ -3450,7 +3450,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Metadata info multi lines text Completed
@@ -3469,7 +3469,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Meta Data2
@@ -3488,7 +3488,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Single line text 
@@ -3859,7 +3859,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Metadata info multi lines text Completed
@@ -3878,7 +3878,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Meta Data2
@@ -3897,7 +3897,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Single line text 
@@ -4264,7 +4264,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Metadata info multi lines text Completed
@@ -4283,7 +4283,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Meta Data2
@@ -4302,7 +4302,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Single line text 
@@ -4728,7 +4728,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -4761,7 +4761,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -4794,7 +4794,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -5180,7 +5180,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -5213,7 +5213,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -5246,7 +5246,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -5691,7 +5691,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -5758,7 +5758,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -5793,7 +5793,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -6184,7 +6184,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -6251,7 +6251,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -6286,7 +6286,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -6741,7 +6741,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Metadata info multi lines text Completed
@@ -6760,7 +6760,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Meta Data2
@@ -6779,7 +6779,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   Single line text 
@@ -7146,7 +7146,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Metadata info multi lines text Completed
@@ -7165,7 +7165,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Meta Data2
@@ -7184,7 +7184,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 Single line text 

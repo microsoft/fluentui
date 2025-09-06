@@ -570,7 +570,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       0
@@ -589,7 +589,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       20
@@ -608,7 +608,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       40
@@ -627,7 +627,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       60
@@ -646,7 +646,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       80
@@ -665,7 +665,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       100
@@ -699,7 +699,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="10"
     >
       0
@@ -718,7 +718,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="10"
     >
       20
@@ -737,7 +737,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="10"
     >
       40
@@ -756,7 +756,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="10"
     >
       60
@@ -775,7 +775,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="10"
     >
       80
@@ -794,7 +794,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="10"
     >
       100
@@ -828,7 +828,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       0
@@ -847,7 +847,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       20
@@ -866,7 +866,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       40
@@ -885,7 +885,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       60
@@ -904,7 +904,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       80
@@ -923,7 +923,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       100
@@ -1852,7 +1852,7 @@ exports[`createStringXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       X-axis label 1
@@ -1871,7 +1871,7 @@ exports[`createStringXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       X-axis label 2
@@ -1890,7 +1890,7 @@ exports[`createStringXAxis should render the x-axis labels correctly 1`] = `
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       X-axis label 3
@@ -1924,7 +1924,7 @@ exports[`createStringXAxis should render the x-axis labels correctly for specifi
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       X-axis label 1
@@ -1943,7 +1943,7 @@ exports[`createStringXAxis should render the x-axis labels correctly for specifi
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       X-axis label 2
@@ -1962,7 +1962,7 @@ exports[`createStringXAxis should render the x-axis labels correctly for specifi
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="15"
     >
       X-axis label 3
@@ -2591,7 +2591,7 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
@@ -2624,7 +2624,7 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
@@ -2657,7 +2657,7 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
@@ -2706,7 +2706,7 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
@@ -2739,7 +2739,7 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
@@ -2772,7 +2772,7 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
@@ -2820,7 +2820,7 @@ exports[`createWrapOfXLabels should wrap x-axis labels when their width exceeds 
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
@@ -2855,7 +2855,7 @@ exports[`createWrapOfXLabels should wrap x-axis labels when their width exceeds 
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
@@ -2890,7 +2890,7 @@ exports[`createWrapOfXLabels should wrap x-axis labels when their width exceeds 
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       <tspan
@@ -4257,7 +4257,7 @@ exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwi
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       X-axis label 1
@@ -4276,7 +4276,7 @@ exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwi
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       X-axis label 2
@@ -4295,7 +4295,7 @@ exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwi
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate;"
       y="16"
     >
       X-axis label 3

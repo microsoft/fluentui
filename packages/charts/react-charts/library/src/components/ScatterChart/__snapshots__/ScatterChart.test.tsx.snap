@@ -45,7 +45,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               Electronics
@@ -64,7 +64,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               Furniture
@@ -83,7 +83,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               Clothing
@@ -102,7 +102,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               Toys
@@ -121,7 +121,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               Books

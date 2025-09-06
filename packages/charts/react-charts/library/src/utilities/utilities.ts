@@ -302,8 +302,7 @@ export function createNumericXAxis(
       .selectAll('text')
       .attr('aria-hidden', 'true')
       .style('direction', 'ltr')
-      .style('unicode-bidi', 'isolate')
-      .style('text-anchor', _useRtl ? 'start' : 'end');
+      .style('unicode-bidi', 'isolate');
   }
   const tickValues = (customTickValues ?? xAxisScale.ticks(tickCount)).map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
@@ -598,8 +597,7 @@ export function createStringXAxis(
       .selectAll('text')
       .attr('aria-hidden', 'true')
       .style('direction', 'ltr')
-      .style('unicode-bidi', 'isolate')
-      .style('text-anchor', _useRtl ? 'start' : 'end');
+      .style('unicode-bidi', 'isolate');
   }
   return { xScale: xAxisScale, tickValues: tickValues.map(xAxis.tickFormat()!) };
 }

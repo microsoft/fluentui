@@ -45,7 +45,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -64,7 +64,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -83,7 +83,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -513,7 +513,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -532,7 +532,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -551,7 +551,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -1010,7 +1010,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -1029,7 +1029,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -1048,7 +1048,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -1479,7 +1479,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -1498,7 +1498,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -1517,7 +1517,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -1958,7 +1958,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -1977,7 +1977,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -1996,7 +1996,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -2424,7 +2424,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -2443,7 +2443,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -2462,7 +2462,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -2949,7 +2949,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -2968,7 +2968,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -2987,7 +2987,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -3415,7 +3415,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -3434,7 +3434,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -3453,7 +3453,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -3940,7 +3940,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -3959,7 +3959,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -3978,7 +3978,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -4416,7 +4416,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -4435,7 +4435,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -4454,7 +4454,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -4951,7 +4951,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -4970,7 +4970,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -4989,7 +4989,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -5343,7 +5343,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -5362,7 +5362,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -5381,7 +5381,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -5794,7 +5794,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -5813,7 +5813,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -5832,7 +5832,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -6260,7 +6260,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -6279,7 +6279,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -6298,7 +6298,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -6785,7 +6785,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -6818,7 +6818,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -6851,7 +6851,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -7298,7 +7298,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -7331,7 +7331,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -7364,7 +7364,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -7870,7 +7870,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -7889,7 +7889,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -7908,7 +7908,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -8336,7 +8336,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -8355,7 +8355,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -8374,7 +8374,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -8856,7 +8856,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -8875,7 +8875,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               30
@@ -8894,7 +8894,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -8913,7 +8913,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               50
@@ -8932,7 +8932,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -8951,7 +8951,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               70
@@ -9381,7 +9381,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -9400,7 +9400,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               30
@@ -9419,7 +9419,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -9438,7 +9438,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               50
@@ -9457,7 +9457,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -9476,7 +9476,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               70
@@ -9910,7 +9910,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -9929,7 +9929,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -9948,7 +9948,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60

@@ -45,7 +45,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -64,7 +64,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               25
@@ -83,7 +83,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               30
@@ -102,7 +102,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               35
@@ -121,7 +121,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -140,7 +140,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               45
@@ -159,7 +159,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               50
@@ -178,7 +178,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               55
@@ -197,7 +197,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -216,7 +216,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               65
@@ -903,7 +903,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -922,7 +922,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               25
@@ -941,7 +941,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               30
@@ -960,7 +960,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               35
@@ -979,7 +979,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -998,7 +998,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               45
@@ -1017,7 +1017,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               50
@@ -1036,7 +1036,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               55
@@ -1055,7 +1055,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -1074,7 +1074,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               65
@@ -1761,7 +1761,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -1780,7 +1780,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               25
@@ -1799,7 +1799,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               30
@@ -1818,7 +1818,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               35
@@ -1837,7 +1837,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -1856,7 +1856,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               45
@@ -1875,7 +1875,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               50
@@ -1894,7 +1894,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               55
@@ -1913,7 +1913,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -1932,7 +1932,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               65
@@ -2731,7 +2731,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -2750,7 +2750,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               25
@@ -2769,7 +2769,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               30
@@ -2788,7 +2788,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               35
@@ -2807,7 +2807,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -2826,7 +2826,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               45
@@ -2845,7 +2845,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               50
@@ -2864,7 +2864,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               55
@@ -2883,7 +2883,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -2902,7 +2902,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               65
@@ -3599,7 +3599,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -3618,7 +3618,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   25
@@ -3637,7 +3637,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   30
@@ -3656,7 +3656,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   35
@@ -3675,7 +3675,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -3694,7 +3694,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   45
@@ -3713,7 +3713,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   50
@@ -3732,7 +3732,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   55
@@ -3751,7 +3751,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -3770,7 +3770,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   65
@@ -4455,7 +4455,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -4474,7 +4474,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 25
@@ -4493,7 +4493,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 30
@@ -4512,7 +4512,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 35
@@ -4531,7 +4531,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -4550,7 +4550,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 45
@@ -4569,7 +4569,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 50
@@ -4588,7 +4588,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 55
@@ -4607,7 +4607,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -4626,7 +4626,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 65
@@ -5375,7 +5375,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -5394,7 +5394,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   25
@@ -5413,7 +5413,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   30
@@ -5432,7 +5432,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   35
@@ -5451,7 +5451,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -5470,7 +5470,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   45
@@ -5489,7 +5489,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   50
@@ -5508,7 +5508,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   55
@@ -5527,7 +5527,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -5546,7 +5546,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   65
@@ -6231,7 +6231,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -6250,7 +6250,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 25
@@ -6269,7 +6269,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 30
@@ -6288,7 +6288,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 35
@@ -6307,7 +6307,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -6326,7 +6326,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 45
@@ -6345,7 +6345,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 50
@@ -6364,7 +6364,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 55
@@ -6383,7 +6383,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -6402,7 +6402,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 65
@@ -7151,7 +7151,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -7170,7 +7170,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   25
@@ -7189,7 +7189,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   30
@@ -7208,7 +7208,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   35
@@ -7227,7 +7227,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -7246,7 +7246,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   45
@@ -7265,7 +7265,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   50
@@ -7284,7 +7284,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   55
@@ -7303,7 +7303,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -7322,7 +7322,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   65
@@ -8007,7 +8007,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -8026,7 +8026,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 25
@@ -8045,7 +8045,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 30
@@ -8064,7 +8064,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 35
@@ -8083,7 +8083,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -8102,7 +8102,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 45
@@ -8121,7 +8121,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 50
@@ -8140,7 +8140,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 55
@@ -8159,7 +8159,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -8178,7 +8178,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 65
@@ -8922,7 +8922,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -8941,7 +8941,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   25
@@ -8960,7 +8960,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   30
@@ -8979,7 +8979,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   35
@@ -8998,7 +8998,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -9017,7 +9017,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   45
@@ -9036,7 +9036,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   50
@@ -9055,7 +9055,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   55
@@ -9074,7 +9074,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -9093,7 +9093,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   65
@@ -9408,7 +9408,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -9427,7 +9427,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 25
@@ -9446,7 +9446,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 30
@@ -9465,7 +9465,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 35
@@ -9484,7 +9484,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -9503,7 +9503,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 45
@@ -9522,7 +9522,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 50
@@ -9541,7 +9541,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 55
@@ -9560,7 +9560,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -9579,7 +9579,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 65
@@ -9953,7 +9953,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -9972,7 +9972,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   25
@@ -9991,7 +9991,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   30
@@ -10010,7 +10010,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   35
@@ -10029,7 +10029,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -10048,7 +10048,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   45
@@ -10067,7 +10067,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   50
@@ -10086,7 +10086,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   55
@@ -10105,7 +10105,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -10124,7 +10124,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   65
@@ -10809,7 +10809,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -10828,7 +10828,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 25
@@ -10847,7 +10847,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 30
@@ -10866,7 +10866,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 35
@@ -10885,7 +10885,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -10904,7 +10904,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 45
@@ -10923,7 +10923,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 50
@@ -10942,7 +10942,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 55
@@ -10961,7 +10961,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -10980,7 +10980,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 65
@@ -11724,7 +11724,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -11743,7 +11743,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   25
@@ -11762,7 +11762,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   30
@@ -11781,7 +11781,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   35
@@ -11800,7 +11800,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -11819,7 +11819,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   45
@@ -11838,7 +11838,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   50
@@ -11857,7 +11857,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   55
@@ -11876,7 +11876,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -11895,7 +11895,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   65
@@ -12580,7 +12580,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -12599,7 +12599,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 25
@@ -12618,7 +12618,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 30
@@ -12637,7 +12637,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 35
@@ -12656,7 +12656,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -12675,7 +12675,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 45
@@ -12694,7 +12694,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 50
@@ -12713,7 +12713,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 55
@@ -12732,7 +12732,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -12751,7 +12751,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 65
@@ -13495,7 +13495,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -13756,7 +13756,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -14076,7 +14076,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -14095,7 +14095,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   25
@@ -14114,7 +14114,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   30
@@ -14133,7 +14133,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   35
@@ -14152,7 +14152,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -14171,7 +14171,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   45
@@ -14190,7 +14190,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   50
@@ -14209,7 +14209,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   55
@@ -14228,7 +14228,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -14247,7 +14247,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   65
@@ -14942,7 +14942,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -14961,7 +14961,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 25
@@ -14980,7 +14980,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 30
@@ -14999,7 +14999,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 35
@@ -15018,7 +15018,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -15037,7 +15037,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 45
@@ -15056,7 +15056,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 50
@@ -15075,7 +15075,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 55
@@ -15094,7 +15094,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -15113,7 +15113,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 65
@@ -15867,7 +15867,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -15886,7 +15886,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   25
@@ -15905,7 +15905,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   30
@@ -15924,7 +15924,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   35
@@ -15943,7 +15943,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -15962,7 +15962,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   45
@@ -15981,7 +15981,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   50
@@ -16000,7 +16000,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   55
@@ -16019,7 +16019,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -16038,7 +16038,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   65
@@ -16649,7 +16649,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -16668,7 +16668,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 25
@@ -16687,7 +16687,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 30
@@ -16706,7 +16706,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 35
@@ -16725,7 +16725,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -16744,7 +16744,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 45
@@ -16763,7 +16763,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 50
@@ -16782,7 +16782,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 55
@@ -16801,7 +16801,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -16820,7 +16820,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 65
@@ -17490,7 +17490,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -17509,7 +17509,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   25
@@ -17528,7 +17528,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   30
@@ -17547,7 +17547,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   35
@@ -17566,7 +17566,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -17585,7 +17585,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   45
@@ -17604,7 +17604,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   50
@@ -17623,7 +17623,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   55
@@ -17642,7 +17642,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -17661,7 +17661,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   65
@@ -18346,7 +18346,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -18365,7 +18365,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 25
@@ -18384,7 +18384,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 30
@@ -18403,7 +18403,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 35
@@ -18422,7 +18422,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -18441,7 +18441,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 45
@@ -18460,7 +18460,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 50
@@ -18479,7 +18479,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 55
@@ -18498,7 +18498,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -18517,7 +18517,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 65
@@ -19261,7 +19261,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -19294,7 +19294,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -19327,7 +19327,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -19360,7 +19360,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -19393,7 +19393,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -19426,7 +19426,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -19459,7 +19459,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -19492,7 +19492,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -19525,7 +19525,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -19558,7 +19558,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -20262,7 +20262,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -20295,7 +20295,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -20328,7 +20328,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -20361,7 +20361,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -20394,7 +20394,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -20427,7 +20427,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -20460,7 +20460,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -20493,7 +20493,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -20526,7 +20526,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -20559,7 +20559,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -21322,7 +21322,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
@@ -21349,7 +21349,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
@@ -21376,7 +21376,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
@@ -21403,7 +21403,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
@@ -21430,7 +21430,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
@@ -21457,7 +21457,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
@@ -21484,7 +21484,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
@@ -21511,7 +21511,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
@@ -21538,7 +21538,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
@@ -21565,7 +21565,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
@@ -22258,7 +22258,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
@@ -22285,7 +22285,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
@@ -22312,7 +22312,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
@@ -22339,7 +22339,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
@@ -22366,7 +22366,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
@@ -22393,7 +22393,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
@@ -22420,7 +22420,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
@@ -22447,7 +22447,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
@@ -22474,7 +22474,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
@@ -22501,7 +22501,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
@@ -23253,7 +23253,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -23272,7 +23272,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   25
@@ -23291,7 +23291,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   30
@@ -23310,7 +23310,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   35
@@ -23329,7 +23329,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -23348,7 +23348,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   45
@@ -23367,7 +23367,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   50
@@ -23386,7 +23386,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   55
@@ -23405,7 +23405,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -23424,7 +23424,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   65
@@ -24109,7 +24109,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -24128,7 +24128,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 25
@@ -24147,7 +24147,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 30
@@ -24166,7 +24166,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 35
@@ -24185,7 +24185,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -24204,7 +24204,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 45
@@ -24223,7 +24223,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 50
@@ -24242,7 +24242,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 55
@@ -24261,7 +24261,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -24280,7 +24280,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 65
@@ -25019,7 +25019,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -25038,7 +25038,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               30
@@ -25057,7 +25057,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -25076,7 +25076,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               50
@@ -25095,7 +25095,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -25782,7 +25782,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -25801,7 +25801,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               30
@@ -25820,7 +25820,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -25839,7 +25839,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               50
@@ -25858,7 +25858,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
