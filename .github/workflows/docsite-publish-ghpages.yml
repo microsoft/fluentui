@@ -11,20 +11,47 @@ jobs:
   check:
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'microsoft' }} && ${{ contains(github.event.head_commit.message, 'applying package updates') || github.event_name == 'workflow_dispatch' }}
-
     outputs:
-      status: ${{ steps.verify-react-components-changed.outputs.any_changed == 'true' || github.event_name == 'workflow_dispatch' }}
+      status: ${{ steps.decide.outputs.should_build }}
+      affected_projects: ${{ steps.affected.outputs.affected_projects }}
 
     steps:
       - uses: actions/checkout@v4
-        name: Checkout [master]
-
-      - name: Verify react-compoenents has changed
-        uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46.0.5
-        id: verify-react-components-changed
         with:
-          files: |
-            packages/react-components/react-components/package.json
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+        with:
+          main-branch-name: 'master'
+
+      - name: Compute affected projects (v9, charts, web components)
+        id: affected
+        shell: bash
+        run: |
+          RAW_AFFECTED="$(yarn nx show projects --affected --projects='public-docsite-v9,chart-docsite,web-components')"
+          AFFECTED="$(echo "$RAW_AFFECTED" | tr '\n' ',' | sed 's/,$//')"
+          echo "Affected projects: $AFFECTED"
+          echo "affected_projects=${AFFECTED}" >> "$GITHUB_OUTPUT"
+
+      - name: Decide whether to build
+        id: decide
+        shell: bash
+        run: |
+          SHOULD_BUILD="false"
+          if [ -n "${{ steps.affected.outputs.affected_projects }}" ]; then
+            SHOULD_BUILD="true"
+          fi
+          echo "should_build=${SHOULD_BUILD}" >> "$GITHUB_OUTPUT"
+
   build:
     runs-on: ubuntu-latest
     needs: check
@@ -46,15 +73,18 @@ jobs:
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps
 
-      - name: Build storybook
-        run: yarn nx run public-docsite-v9:build-storybook --nxBail
+      - name: Build affected storybooks
+        if: ${{ needs.check.outputs.affected_projects != '' }}
         env:
+          AFFECTED: ${{ needs.check.outputs.affected_projects }}
           STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY: ${{ secrets.STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY }}
+        run: |
+          yarn nx run-many -t deploy-website -p "$AFFECTED" --parallel=3 --nxBail
 
-      - name: Upload Pages Artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './apps/public-docsite-v9/dist/storybook/'
+          path: './apps/public-docsite-v9/dist/'
 
   deploy:
     runs-on: ubuntu-latest

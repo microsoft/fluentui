@@ -35,6 +35,9 @@ module.exports =
         },
       },
     ],
+    build: {
+      previewUrl: process.env.DEPLOY_PATH,
+    },
     webpackFinal: async config => {
       config.resolve = config.resolve ?? {};
       config.resolve.extensions = config.resolve.extensions ?? [];
