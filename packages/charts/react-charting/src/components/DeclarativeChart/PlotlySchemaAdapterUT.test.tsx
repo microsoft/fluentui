@@ -202,7 +202,7 @@ describe('transform Plotly Json To chart Props', () => {
         transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true),
       ).toMatchSnapshot();
     } catch (e) {
-      expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'length')"));
+      expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
   });
 
