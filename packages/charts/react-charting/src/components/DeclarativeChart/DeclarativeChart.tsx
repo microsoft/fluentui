@@ -455,6 +455,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     gridProperties.templateColumns === SINGLE_REPEAT
   ) {
     if (chart.type === 'donut') {
+      // If there are multiple data traces for donut/pie, picking the last one similar to plotly
       const keys = Object.keys(groupedTraces);
       keys.forEach((key, index) => {
         if (index < keys.length - 1) {

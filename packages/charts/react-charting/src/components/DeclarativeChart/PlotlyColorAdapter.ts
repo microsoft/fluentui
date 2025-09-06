@@ -91,17 +91,15 @@ function tryMapFluentDataViz(
   if (templateColorway !== 'plotly') {
     return hexColor;
   }
+  let defaultColorway: string[] = DEFAULT_PLOTLY_COLORWAY;
+  let defaultMapping: string[] = PLOTLY_FLUENTVIZ_COLORWAY_MAPPING;
   if (isDonut) {
-    const defaultColorway = templateColorway === 'plotly' ? DEFAULT_PLOTLY_COLORWAY : DEFAULT_D3_COLORWAY;
-    const defaultMapping =
-      templateColorway === 'plotly' ? PLOTLY_FLUENTVIZ_COLORWAY_MAPPING : D3_FLUENTVIZ_COLORWAY_MAPPING;
-    const idx = defaultColorway.indexOf(hexColor.toLowerCase());
-    return idx !== -1 ? getColorFromToken(defaultMapping[idx], !!isDarkTheme) : hexColor;
-  } else {
-    const index = DEFAULT_PLOTLY_COLORWAY.indexOf(hexColor.toLowerCase());
-    if (index !== -1) {
-      return getColorFromToken(PLOTLY_FLUENTVIZ_COLORWAY_MAPPING[index], isDarkTheme);
-    }
+    defaultColorway = templateColorway === 'plotly' ? DEFAULT_PLOTLY_COLORWAY : DEFAULT_D3_COLORWAY;
+    defaultMapping = templateColorway === 'plotly' ? PLOTLY_FLUENTVIZ_COLORWAY_MAPPING : D3_FLUENTVIZ_COLORWAY_MAPPING;
+  }
+  const idx = defaultColorway.indexOf(hexColor.toLowerCase());
+  if (idx !== -1) {
+    return getColorFromToken(defaultMapping[idx], !!isDarkTheme);
   }
   return hexColor;
 }

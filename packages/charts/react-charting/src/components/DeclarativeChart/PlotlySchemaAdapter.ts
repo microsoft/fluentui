@@ -488,7 +488,7 @@ export const transformPlotlyJsonToDonutProps = (
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): IDonutChartProps => {
-  const firstData = input.data[input.data.length - 1] as Partial<PieData>;
+  const firstData = input.data[0] as Partial<PieData>;
   // extract colors for each series only once
   // use piecolorway if available
   // otherwise, default to colorway from template
