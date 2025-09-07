@@ -19,9 +19,7 @@ function invertHexColor(hex: string): string {
   return d3.rgb(255 - rgb.r, 255 - rgb.g, 255 - rgb.b).formatHex();
 }
 
-function getSafeBackgroundColor(foreground?: string, background?: string): string {
-  const parentV9Theme = React.useContext(V9ThemeContext) as Theme;
-  const v9Theme: Theme = parentV9Theme ? parentV9Theme : webLightTheme;
+function getSafeBackgroundColor(v9Theme: Theme, foreground?: string, background?: string): string {
   const fallbackFg = v9Theme.colorNeutralForeground1;
   const fallbackBg = v9Theme.colorNeutralBackground1;
 
@@ -42,6 +40,8 @@ function getSafeBackgroundColor(foreground?: string, background?: string): strin
 
 export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwardRef<HTMLDivElement, ChartTableProps>(
   (props, forwardedRef) => {
+    const parentV9Theme = React.useContext(V9ThemeContext) as Theme;
+    const v9Theme: Theme = parentV9Theme ? parentV9Theme : webLightTheme;
     const { headers, rows, width, height } = props;
     const _isRTL: boolean = useRtl();
     const _rootElem = React.useRef<HTMLDivElement | null>(null);
@@ -127,7 +127,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                       if (useSharedBackground) {
                         style.backgroundColor = sharedBackgroundColor;
                       } else if (fg || bg) {
-                        style.backgroundColor = getSafeBackgroundColor(fg, bg);
+                        style.backgroundColor = getSafeBackgroundColor(v9Theme, fg, bg);
                       }
                       return (
                         <th key={idx} className={classes.headerCell} style={style} tabIndex={0}>
@@ -146,7 +146,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                           const fg = style.color;
                           const bg = style.backgroundColor;
                           if (fg || bg) {
-                            style.backgroundColor = getSafeBackgroundColor(fg, bg);
+                            style.backgroundColor = getSafeBackgroundColor(v9Theme, fg, bg);
                           }
                           return (
                             <td key={colIdx} className={classes.bodyCell} style={style} tabIndex={0}>

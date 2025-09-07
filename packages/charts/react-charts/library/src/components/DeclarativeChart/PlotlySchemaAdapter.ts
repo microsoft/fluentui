@@ -1715,7 +1715,7 @@ export const transformPlotlyJsonToChartTableProps = (
     tableData.cells && Object.keys(tableData.cells).length > 0
       ? tableData.cells
       : input.layout?.template?.data?.table?.[0]?.cells;
-  const rows = (columns[0] || []).map((_, rowIndex: number) =>
+  const rows = columns[0].map((_, rowIndex: number) =>
     columns.map((col, colIndex) => {
       const cellValue = col[rowIndex];
       const cleanValue = typeof cellValue === 'string' ? cleanText(cellValue) : cellValue;
