@@ -1728,7 +1728,6 @@ export const transformPlotlyJsonToChartTableProps = (
       const fontColor = resolveCellStyle(cells?.font?.color, rowIndex, colIndex) as string | undefined;
       const fontSize = resolveCellStyle(cells?.font?.size, rowIndex, colIndex) as number | undefined;
       const backgroundColor = resolveCellStyle(cells?.fill?.color, rowIndex, colIndex) as string | undefined;
-      console.log('backgroundColor', backgroundColor);
       const textAlign = resolveCellStyle(cells?.align, rowIndex, colIndex) as
         | React.CSSProperties['textAlign']
         | undefined;
@@ -1739,8 +1738,6 @@ export const transformPlotlyJsonToChartTableProps = (
         ...(backgroundColor ? { backgroundColor } : {}),
         ...(textAlign ? { textAlign } : {}),
       };
-
-      console.log('style', style);
 
       return {
         value: formattedValue,
