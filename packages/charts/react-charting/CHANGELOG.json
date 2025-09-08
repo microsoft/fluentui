@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 08 Sep 2025 07:22:39 GMT",
+      "tag": "@fluentui/react-charting_v5.24.27",
+      "version": "5.24.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "2d6aca289ee6cc4571e4e3dcdf810deb78ac18fa",
+            "comment": "fix(react-charting): Fixing donut colors and segment orders"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Aug 2025 07:21:43 GMT",
       "tag": "@fluentui/react-charting_v5.24.26",
       "version": "5.24.26",

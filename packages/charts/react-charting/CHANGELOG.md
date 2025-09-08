@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 26 Aug 2025 07:21:43 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Sep 2025 07:22:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.27)
+
+Mon, 08 Sep 2025 07:22:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.26..@fluentui/react-charting_v5.24.27)
+
+### Patches
+
+- fix(react-charting): Fixing donut colors and segment orders ([PR #35131](https://github.com/microsoft/fluentui/pull/35131) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.24.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.26)
 
