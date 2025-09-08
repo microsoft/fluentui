@@ -1067,7 +1067,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="12"
     >
       0
@@ -1086,7 +1086,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="12"
     >
       25
@@ -1105,7 +1105,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="12"
     >
       50
@@ -1124,7 +1124,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="12"
     >
       75
@@ -1143,7 +1143,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="12"
     >
       100
@@ -1177,7 +1177,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="-12"
     >
       0
@@ -1196,7 +1196,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="-12"
     >
       25
@@ -1215,7 +1215,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="-12"
     >
       50
@@ -1234,7 +1234,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="-12"
     >
       75
@@ -1253,7 +1253,7 @@ exports[`createNumericYAxisForOtherCharts should render y-axis labels correctly 
       aria-hidden="true"
       dy="0.32em"
       fill="currentColor"
-      style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+      style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
       x="-12"
     >
       100

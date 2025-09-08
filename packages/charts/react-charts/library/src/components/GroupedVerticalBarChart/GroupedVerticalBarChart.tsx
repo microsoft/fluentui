@@ -545,6 +545,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               textAnchor="middle"
               className={classes.barLabel}
               aria-hidden={true}
+              style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
             >
               {typeof props.yAxisTickFormat === 'function'
                 ? props.yAxisTickFormat(barTotalValue)

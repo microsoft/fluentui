@@ -826,7 +826,7 @@ export function createNumericYAxis(
         .attr('aria-hidden', 'true')
         .style('direction', 'ltr')
         .style('unicode-bidi', 'isolate')
-        .style('text-anchor', _useRtl ? 'start' : 'end')
+        .style('text-anchor', !useSecondaryYScale && (_useRtl ? 'start' : 'end'))
     : '';
   return yAxisScale;
 }

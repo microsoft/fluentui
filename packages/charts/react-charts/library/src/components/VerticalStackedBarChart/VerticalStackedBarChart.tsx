@@ -1216,6 +1216,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
                 aria-label={`Total: ${barLabel}`}
                 role="img"
                 transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+                style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
               >
                 {typeof props.yAxisTickFormat === 'function'
                   ? props.yAxisTickFormat(barLabel)

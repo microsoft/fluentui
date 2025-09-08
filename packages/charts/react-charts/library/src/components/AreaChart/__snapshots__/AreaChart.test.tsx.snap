@@ -2077,7 +2077,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
                 x="10"
               >
                 0
@@ -2096,7 +2096,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
                 x="10"
               >
                 25
@@ -2115,7 +2115,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
                 x="10"
               >
                 50
@@ -2134,7 +2134,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
                 x="10"
               >
                 75
@@ -2153,7 +2153,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: false;"
                 x="10"
               >
                 100
