@@ -111,9 +111,27 @@ jobs:
           "$GITHUB_WORKSPACE"/tmp/rit/react-17/node_modules/.bin/cypress verify
           "$GITHUB_WORKSPACE"/tmp/rit/react-19/node_modules/.bin/cypress verify
 
-      - name: React Versions Integration Tests (17,19)
+      - name: React Versions Integration Tests (17,19) - E2E
+        id: e2e
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit
+          yarn nx affected -t test-rit--17--e2e,test-rit--19--e2e
+
+      - name: Upload Cypress screenshots if exist
+        uses: actions/upload-artifact@v4
+        if: always() && steps.e2e.outcome == 'failure'
+        with:
+          name: cypress-screenshots-react-test-rit
+          path: |
+            tmp/rit/**/cypress/screenshots/**/*.png
+          retention-days: 1
+
+      - name: React Versions Integration Tests (17,19) - Test
+        run: |
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--19--test
+
+      - name: React Versions Integration Tests (17,19) - Type-check
+        run: |
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--type-check,test-rit--19--type-check
 
   react_integration_tests:
     if: ${{ github.repository_owner == 'microsoft' }}
