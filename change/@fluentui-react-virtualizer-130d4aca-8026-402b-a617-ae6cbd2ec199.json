@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "\"fix: addjust type for ref props to add null to support react 19\"  ",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
