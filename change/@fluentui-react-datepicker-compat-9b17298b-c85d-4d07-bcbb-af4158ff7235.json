@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: react 19 type issues",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

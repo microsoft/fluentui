@@ -1,8 +1,335 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 21 Aug 2025 17:40:36 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Sep 2025 12:50:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.70.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.70.0)
+
+Mon, 08 Sep 2025 12:50:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.69.0..@fluentui/react-components_v9.70.0)
+
+### Minor changes
+
+- `@fluentui/react-jsx-runtime`
+  - feat: expose JSX namespace in backwards compatible way for react 19 typescript support ([PR #35137](https://github.com/microsoft/fluentui/pull/35137) by martinhochel@microsoft.com)
+- `@fluentui/react-list`
+  - Use default cursor when selection is disabled ([PR #35153](https://github.com/microsoft/fluentui/pull/35153) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - feat(motion): add delay parameter to motion components ([PR #35077](https://github.com/microsoft/fluentui/pull/35077) by robertpenner@microsoft.com)
+- `@fluentui/react-aria`
+  - feat: add useTypingAnnounce hook for managing live regions triggered by user input ([PR #34354](https://github.com/microsoft/fluentui/pull/34354) by sarah.higley@microsoft.com)
+- `@fluentui/react-card`
+  - feat: add support for disabled cards ([PR #35028](https://github.com/microsoft/fluentui/pull/35028) by marcosvmmoura@gmail.com)
+- `@fluentui/react-components`
+  - feat: re-export custom JSX types from react-utilities ([PR #35057](https://github.com/microsoft/fluentui/pull/35057) by dmytrokirpa@microsoft.com)
+  - feat: add useTypingAnnounce hook ([PR #34354](https://github.com/microsoft/fluentui/pull/34354) by sarah.higley@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-search`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-select`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-skeleton`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - fix: set min-width to min-content to prevent spinner clipping ([PR #35068](https://github.com/microsoft/fluentui/pull/35068) by busratemizyureek@gmail.com)
+- `@fluentui/react-storybook-addon`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-table`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: single-select radio input should be fully hidden, not disabled ([PR #35103](https://github.com/microsoft/fluentui/pull/35103) by sarah.higley@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix(react-tabster): Fixing the uncontrolled completely callback return value and switching it away from the deprecated method. ([PR #35136](https://github.com/microsoft/fluentui/pull/35136) by marata@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tags`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: set default button type for dismissible ([PR #35088](https://github.com/microsoft/fluentui/pull/35088) by vgenaev@gmail.com)
+- `@fluentui/react-teaching-popover`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-text`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toast`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - refactor(react-dialog): migrate to standard Scale motion component ([PR #35141](https://github.com/microsoft/fluentui/pull/35141) by robertpenner@microsoft.com)
+- `@fluentui/react-divider`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-field`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-image`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-infolabel`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-input`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-label`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-link`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-list`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu-grid-preview`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-message-bar`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-motion`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - refactor(motion): normalize motion atom parameters & types ([PR #35076](https://github.com/microsoft/fluentui/pull/35076) by robertpenner@microsoft.com)
+  - fix(motion): apply opacity in animations using fill mode ([PR #35078](https://github.com/microsoft/fluentui/pull/35078) by robertpenner@microsoft.com)
+  - test(motion): expand motion atom testing ([PR #35079](https://github.com/microsoft/fluentui/pull/35079) by robertpenner@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-nav`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-overflow`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-persona`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-popover`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal-compat-context`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-progress`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-radio`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-rating`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-aria`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-avatar`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-badge`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - fix: badge icon margin styling for falsy content ([PR #35110](https://github.com/microsoft/fluentui/pull/35110) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-button`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-card`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-carousel`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - add support for tickmode in declarative chart ([PR #35121](https://github.com/microsoft/fluentui/pull/35121) by anushgupta@microsoft.com)
+  - fix svg background alignment issue ([PR #35070](https://github.com/microsoft/fluentui/pull/35070) by anushgupta@microsoft.com)
+  - fix a11y bugs ([PR #35127](https://github.com/microsoft/fluentui/pull/35127) by anushgupta@microsoft.com)
+  - refactor common styles to reduce bundle size ([PR #35081](https://github.com/microsoft/fluentui/pull/35081) by anushgupta@microsoft.com)
+  - add support for declarative multiplot chart - non cartesian ([PR #35069](https://github.com/microsoft/fluentui/pull/35069) by anushgupta@microsoft.com)
+  - reduce component size by removing duplicate code ([PR #35094](https://github.com/microsoft/fluentui/pull/35094) by anushgupta@microsoft.com)
+  - change foreground color based on contrast ratio in chart table ([PR #35101](https://github.com/microsoft/fluentui/pull/35101) by anushgupta@microsoft.com)
+  - handling y object values for bar chart ([PR #35115](https://github.com/microsoft/fluentui/pull/35115) by anushgupta@microsoft.com)
+  - fix text mode for scatter polar ([PR #35104](https://github.com/microsoft/fluentui/pull/35104) by anushgupta@microsoft.com)
+  - update segment colors of donut chart ([PR #35122](https://github.com/microsoft/fluentui/pull/35122) by anushgupta@microsoft.com)
+  - fix: resolve R19 type issues on refs ([PR #35144](https://github.com/microsoft/fluentui/pull/35144) by martinhochel@microsoft.com)
+  - add support for marker texts for modes containing text ([PR #35083](https://github.com/microsoft/fluentui/pull/35083) by anushgupta@microsoft.com)
+  - fix v9 charts bugs ([PR #35132](https://github.com/microsoft/fluentui/pull/35132) by anushgupta@microsoft.com)
+  - align labels and points according to given directions and rotation in schema for scatter polar ([PR #35098](https://github.com/microsoft/fluentui/pull/35098) by anushgupta@microsoft.com)
+  - Add Gantt and Funnel chart in declarative charts ([PR #35123](https://github.com/microsoft/fluentui/pull/35123) by anushgupta@microsoft.com)
+  - support string y axis in scatter chart ([PR #35120](https://github.com/microsoft/fluentui/pull/35120) by anushgupta@microsoft.com)
+  - respect bargap and width properties in plotly bar traces ([PR #35097](https://github.com/microsoft/fluentui/pull/35097) by anushgupta@microsoft.com)
+  - support categorical theta values for scatter polar chart ([PR #35092](https://github.com/microsoft/fluentui/pull/35092) by anushgupta@microsoft.com)
+  - support single value callout in linechart ([PR #35084](https://github.com/microsoft/fluentui/pull/35084) by anushgupta@microsoft.com)
+  - support additional modes ([PR #35096](https://github.com/microsoft/fluentui/pull/35096) by anushgupta@microsoft.com)
+  - support tick formatting from plotly output ([PR #35060](https://github.com/microsoft/fluentui/pull/35060) by anushgupta@microsoft.com)
+  - log axis support in linechart and scatter chart ([PR #35112](https://github.com/microsoft/fluentui/pull/35112) by anushgupta@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-color-picker`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-components`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-context-selector`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: onIconClick triggering useOnClickOutside ([PR #35114](https://github.com/microsoft/fluentui/pull/35114) by vkozlova@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/priority-overflow`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+
+### Changes
+
+- `@fluentui/global-context`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
 
 ## [9.69.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.69.0)
 

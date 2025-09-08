@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: extend peer dependencies versions to support React 19",
-  "packageName": "@fluentui/global-context",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

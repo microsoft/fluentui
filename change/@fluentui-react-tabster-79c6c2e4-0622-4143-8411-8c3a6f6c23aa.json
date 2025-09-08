@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-tabster): Fixing the uncontrolled completely callback return value and switching it away from the deprecated method.",
-  "packageName": "@fluentui/react-tabster",
-  "email": "marata@microsoft.com",
-  "dependentChangeType": "patch"
-}

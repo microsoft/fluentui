@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 21 Aug 2025 12:25:26 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Sep 2025 12:50:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.24.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.24.1)
+
+Mon, 08 Sep 2025 12:50:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.24.0..@fluentui/react-utilities_v9.24.1)
+
+### Patches
+
+- chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.25.1 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
 
 ## [9.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.24.0)
 

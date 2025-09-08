@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: resolve R19 type issues on refs",
-  "packageName": "@fluentui/react-charts",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: extend peer dependencies versions to support React 19",
-  "packageName": "@fluentui/react-avatar",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

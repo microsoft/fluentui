@@ -1,8 +1,17 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Fri, 21 Feb 2025 14:34:03 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Sep 2025 12:51:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.16)
+
+Mon, 08 Sep 2025 12:51:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.15..@fluentui/priority-overflow_v9.1.16)
+
+### Patches
+
+- chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
 
 ## [9.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.15)
 

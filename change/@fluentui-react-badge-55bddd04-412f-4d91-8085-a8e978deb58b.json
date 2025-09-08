@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: badge icon margin styling for falsy content",
-  "packageName": "@fluentui/react-badge",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

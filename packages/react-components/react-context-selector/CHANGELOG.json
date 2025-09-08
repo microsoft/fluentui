@@ -2,6 +2,33 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Mon, 08 Sep 2025 12:51:40 GMT",
+      "tag": "@fluentui/react-context-selector_v9.2.7",
+      "version": "9.2.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.24.1",
+            "commit": "17af11b3c9f4cac2beeaf4342a81c1f08e95fd29"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Aug 2025 12:25:39 GMT",
       "tag": "@fluentui/react-context-selector_v9.2.6",
       "version": "9.2.6",

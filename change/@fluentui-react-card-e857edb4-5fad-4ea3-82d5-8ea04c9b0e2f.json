@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add support for disabled cards",
-  "packageName": "@fluentui/react-card",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}
