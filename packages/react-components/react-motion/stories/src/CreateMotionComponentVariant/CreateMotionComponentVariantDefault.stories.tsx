@@ -1,14 +1,6 @@
-import {
-  createMotionComponent,
-  createMotionComponentVariant,
-  Field,
-  makeStyles,
-  mergeClasses,
-  Slider,
-  tokens,
-} from '@fluentui/react-components';
+import { createMotionComponent, createMotionComponentVariant, makeStyles, tokens } from '@fluentui/react-components';
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, MotionComponentProps } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {
@@ -87,7 +79,7 @@ const PulseMotionVariant = createMotionComponentVariant(PulseMotion, {
   duration: 2000,
 });
 
-export const CreateMotionComponentVariantDefault = (): JSXElement => {
+export const CreateMotionComponentVariantDefault = (props: MotionComponentProps): JSXElement => {
   const classes = useClasses();
 
   return (
@@ -110,23 +102,6 @@ export const CreateMotionComponentVariantDefault = (): JSXElement => {
             <div className={classes.item} />
           </PulseMotionVariant>
         </div>
-      </div>
-
-      <div className={classes.controls}>
-        <Field
-          className={mergeClasses(classes.field, classes.sliderField)}
-          label={{
-            children: (
-              <>
-                <code>TODO</code>: [some quantity]
-              </>
-            ),
-            className: classes.sliderLabel,
-          }}
-          orientation="horizontal"
-        >
-          <Slider aria-valuetext={`TODO`} value={0} onChange={(ev, data) => null} min={0} max={100} step={5} />
-        </Field>
       </div>
     </div>
   );
