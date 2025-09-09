@@ -232,11 +232,18 @@ const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean
 };
 
 const validateBarData = (data: Partial<PlotData>) => {
-  if (data.x && isArrayOrTypedArray(data.x) && data.x.length === 0) {
-    throw new Error(`Empty x array detected for bar chart.`);
-  }
-  if (data.y && isArrayOrTypedArray(data.y) && data.y.length === 0) {
-    throw new Error(`Empty y array detected for bar chart.`);
+  const isXEmpty = data.x && isArrayOrTypedArray(data.x) && data.x.length === 0;
+  const isYEmpty = data.y && isArrayOrTypedArray(data.y) && data.y.length === 0;
+  if (isXEmpty || isYEmpty) {
+    let emptyMsg = 'Bar chart: ';
+    if (isXEmpty && isYEmpty) {
+      emptyMsg += 'both x and y arrays are empty.';
+    } else if (isXEmpty) {
+      emptyMsg += 'x array is empty.';
+    } else if (isYEmpty) {
+      emptyMsg += 'y array is empty.';
+    }
+    throw new Error(emptyMsg);
   }
   if (data.orientation === 'h') {
     if (!isNumberArray(data.x) && !isDateArray(data.x)) {
