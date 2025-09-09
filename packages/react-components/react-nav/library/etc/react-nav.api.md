@@ -264,7 +264,7 @@ export type NavItemProps = ComponentProps<NavItemSlots> & {
 // @public (undocumented)
 export type NavItemRegisterData = {
     value: NavItemValue;
-    ref: React_2.RefObject<HTMLElement>;
+    ref: React_2.RefObject<HTMLElement | null>;
 };
 
 // @public (undocumented)
@@ -377,37 +377,37 @@ export type OnNavItemSelectData = EventData<'click', React_2.MouseEvent<HTMLButt
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;
 
 // @public
-export const renderAppItem_unstable: (state: AppItemState) => JSX.Element;
+export const renderAppItem_unstable: (state: AppItemState) => JSXElement;
 
 // @public
-export const renderAppItemStatic_unstable: (state: AppItemStaticState) => JSX.Element;
+export const renderAppItemStatic_unstable: (state: AppItemStaticState) => JSXElement;
 
 // @public (undocumented)
-export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSX.Element;
+export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSXElement;
 
 // @public
 export const renderNavCategory_unstable: (state: NavCategoryState, contextValues: NavCategoryContextValues) => JSXElement;
 
 // @public
-export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, contextValues: NavCategoryItemContextValues) => JSX.Element;
+export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, contextValues: NavCategoryItemContextValues) => JSXElement;
 
 // @public (undocumented)
-export const renderNavDrawer_unstable: (state: NavDrawerState, contextValues: NavContextValues) => JSX.Element;
+export const renderNavDrawer_unstable: (state: NavDrawerState, contextValues: NavContextValues) => JSXElement;
 
 // @public
-export const renderNavItem_unstable: (state: NavItemState) => JSX.Element;
+export const renderNavItem_unstable: (state: NavItemState) => JSXElement;
 
 // @public
-export const renderNavSectionHeader_unstable: (state: NavSectionHeaderState) => JSX.Element;
+export const renderNavSectionHeader_unstable: (state: NavSectionHeaderState) => JSXElement;
 
 // @public
-export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
+export const renderNavSubItem_unstable: (state: NavSubItemState) => JSXElement;
 
 // @public
-export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element;
+export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSXElement;
 
 // @public
-export const renderSplitNavItem_unstable: (state: SplitNavItemState) => JSX.Element;
+export const renderSplitNavItem_unstable: (state: SplitNavItemState) => JSXElement;
 
 // @public
 export const SplitNavItem: ForwardRefComponent<SplitNavItemProps>;

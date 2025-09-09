@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   TagGroup,
   InteractionTag,
@@ -140,7 +141,7 @@ const DismissWithInteractionTags = () => {
   );
 };
 
-export const Select = () => {
+export const Select = (): JSXElement => {
   const containerStyles = useContainerStyles();
   return (
     <div className={containerStyles}>

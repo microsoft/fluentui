@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FlatTree,
   FlatTreeItem,
@@ -35,7 +36,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const LazyLoading = () => {
+export const LazyLoading = (): JSXElement => {
   const [ariaMessage, setAriaMessage] = React.useState('');
   const styles = useStyles();
   return (

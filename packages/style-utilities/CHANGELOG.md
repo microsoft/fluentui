@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Thu, 14 Aug 2025 07:19:46 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Aug 2025 07:21:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.4](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.12.4)
+
+Tue, 26 Aug 2025 07:21:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.12.3..@fluentui/style-utilities_v8.12.4)
+
+### Patches
+
+- Adding mapping for `onepage` filetype icon and updating CDN url. ([PR #34954](https://github.com/microsoft/fluentui/pull/34954) by caperez@microsoft.com)
 
 ## [8.12.3](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.12.3)
 

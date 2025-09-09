@@ -319,7 +319,7 @@ export const _getGaugeAxisColor = (
   isDarkTheme?: boolean,
 ): string => {
   const extractedColors = extractColor(colorway, colorwayType, color, colorMap, isDarkTheme);
-  return resolveColor(extractedColors, 0, '', colorMap, isDarkTheme);
+  return resolveColor(extractedColors, 0, '', colorMap, colorway, isDarkTheme);
 };
 
 export const resolveXAxisPoint = (
@@ -498,29 +498,52 @@ export const transformPlotlyJsonToDonutProps = (
     input.layout?.piecolorway ?? firstData?.marker?.colors,
     colorMap,
     isDarkTheme,
+    true,
   );
 
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
-  firstData.labels?.forEach((label, index: number) => {
-    const value = getNumberAtIndexOrDefault(firstData.values, index);
-    if (isInvalidValue(value) || (value as number) < 0) {
-      return;
-    }
+  // clear colorMap for donut chart to reassign colors as the colorMap initially gets assigned by
+  // getAllupLegendsProps function without sorting labels by value
+  colorMap.current.clear();
 
-    const legend = `${label}`;
-    // resolve color for each legend from the extracted colors
-    const color: string = resolveColor(colors, index, legend, colorMap, isDarkTheme);
-
-    if (!mapLegendToDataPoint[legend]) {
-      mapLegendToDataPoint[legend] = {
-        legend,
-        data: value,
-        color,
-      };
-    } else {
-      mapLegendToDataPoint[legend].data! += value as number;
-    }
-  });
+  // Sort labels by value descending before mapping
+  if (firstData.labels && firstData.values) {
+    const markerColors = (firstData.marker?.colors as unknown as string[]) || undefined;
+    const hasMarkerColors = Array.isArray(markerColors) && markerColors.length >= firstData.labels.length;
+    const labelValuePairs = firstData.labels.map((label, index) => ({
+      label,
+      value: getNumberAtIndexOrDefault(firstData.values, index),
+      index,
+      color: hasMarkerColors ? markerColors[index] : undefined,
+    }));
+    // Filter out invalid values
+    const validPairs = labelValuePairs.filter(pair => !isInvalidValue(pair.value));
+    // Sort descending by value; when marker colors are present, keep color attached to the label
+    validPairs.sort((a, b) => (b.value as number) - (a.value as number));
+    validPairs.forEach((pair, sortedIdx) => {
+      const legend = `${pair.label}`;
+      const color: string =
+        pair.color ??
+        resolveColor(
+          colors,
+          sortedIdx,
+          legend,
+          colorMap,
+          input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
+          isDarkTheme,
+          true,
+        );
+      if (!mapLegendToDataPoint[legend]) {
+        mapLegendToDataPoint[legend] = {
+          legend,
+          data: pair.value,
+          color,
+        };
+      } else {
+        mapLegendToDataPoint[legend].data! += pair.value as number;
+      }
+    });
+  }
 
   const width: number = input.layout?.width ?? 440;
   const height: number = input.layout?.height ?? 220;
@@ -533,11 +556,22 @@ export const transformPlotlyJsonToDonutProps = (
     ? firstData.hole * (Math.min(width - donutMarginHorizontal, height - donutMarginVertical) / 2)
     : MIN_DONUT_RADIUS;
   const { chartTitle } = getTitles(input.layout);
-
+  // Build anticlockwise order by keeping the first item, reversing the rest
+  const legends = Object.keys(mapLegendToDataPoint);
+  const reorderedEntries =
+    legends.length > 1
+      ? ([
+          [legends[0], mapLegendToDataPoint[legends[0]]],
+          ...legends
+            .slice(1)
+            .reverse()
+            .map(key => [key, mapLegendToDataPoint[key]] as const),
+        ] as ReadonlyArray<readonly [string, IChartDataPoint]>)
+      : legends.map(key => [key, mapLegendToDataPoint[key]] as const);
   return {
     data: {
       chartTitle,
-      chartData: Object.values(mapLegendToDataPoint),
+      chartData: reorderedEntries.map(([, v]) => v as IChartDataPoint),
     },
     hideLegend: isMultiPlot || input.layout?.showlegend === false,
     width: input.layout?.width,
@@ -546,6 +580,7 @@ export const transformPlotlyJsonToDonutProps = (
     hideLabels,
     showLabelsInPercent: firstData.textinfo ? ['percent', 'label+percent'].includes(firstData.textinfo) : true,
     roundCorners: true,
+    order: 'sorted',
   };
 };
 
@@ -610,7 +645,14 @@ export const transformPlotlyJsonToVSBCProps = (
                 ? ((series.marker?.color as Color[])?.[index2 % (series.marker?.color as Color[]).length] as number)
                 : 0,
             )
-          : resolveColor(extractedBarColors, index2, legend, colorMap, isDarkTheme);
+          : resolveColor(
+              extractedBarColors,
+              index2,
+              legend,
+              colorMap,
+              input.layout?.template?.layout?.colorway,
+              isDarkTheme,
+            );
         const opacity = getOpacity(series, index2);
         const yVal: number | string = rangeYValues[index2] as number | string;
         const yAxisCalloutData = getFormattedCalloutYData(yVal, yAxisTickFormat);
@@ -625,7 +667,14 @@ export const transformPlotlyJsonToVSBCProps = (
             yMaxValue = Math.max(yMaxValue, yVal);
           }
         } else if (series.type === 'scatter' || !!fallbackVSBC) {
-          const lineColor = resolveColor(extractedLineColors, index1, legend, colorMap, isDarkTheme);
+          const lineColor = resolveColor(
+            extractedLineColors,
+            index1,
+            legend,
+            colorMap,
+            input.layout?.template?.layout?.colorway,
+            isDarkTheme,
+          );
           const lineOptions = getLineOptions(series.line);
           const legendShape = getLegendShape(series);
 
@@ -757,7 +806,14 @@ export const transformPlotlyJsonToGVBCProps = (
                 ? ((series.marker?.color as Color[])?.[xIndex % (series.marker?.color as Color[]).length] as number)
                 : 0,
             )
-          : resolveColor(extractedColors, xIndex, legend, colorMap, isDarkTheme);
+          : resolveColor(
+              extractedColors,
+              xIndex,
+              legend,
+              colorMap,
+              processedInput.layout?.template?.layout?.colorway,
+              isDarkTheme,
+            );
         const opacity = getOpacity(series, xIndex);
 
         const yVal: number = series.y![xIndex] as number;
@@ -866,7 +922,7 @@ export const transformPlotlyJsonToVBCProps = (
               ? ((series.marker?.color as Color[])?.[index % (series.marker?.color as Color[]).length] as number)
               : 0,
           )
-        : resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
+        : resolveColor(extractedColors, index, legend, colorMap, input.layout?.template?.layout?.colorway, isDarkTheme);
       const opacity = getOpacity(series, index);
       const yVal = calculateHistNorm(
         series.histnorm,
@@ -1006,7 +1062,14 @@ const transformPlotlyJsonToScatterTraceProps = (
       const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
       const legend: string = legends[index];
       // resolve color for each legend's lines from the extracted colors
-      const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
+      const seriesColor = resolveColor(
+        extractedColors,
+        index,
+        legend,
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
       const seriesOpacity = getOpacity(series, index);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
       // if mode contains 'text', we prioritize showing the text over curving the line
@@ -1151,7 +1214,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
                   ? ((series.marker?.color as Color[])?.[i % (series.marker?.color as Color[]).length] as number)
                   : 0,
               )
-            : resolveColor(extractedColors, i, legend, colorMap, isDarkTheme);
+            : resolveColor(extractedColors, i, legend, colorMap, input.layout?.template?.layout?.colorway, isDarkTheme);
           const opacity = getOpacity(series, i);
 
           return {
@@ -1236,7 +1299,7 @@ export const transformPlotlyJsonToGanttChartProps = (
                   ? ((series.marker?.color as Color[])?.[i % (series.marker?.color as Color[]).length] as number)
                   : 0,
               )
-            : resolveColor(extractedColors, i, legend, colorMap, isDarkTheme);
+            : resolveColor(extractedColors, i, legend, colorMap, input.layout?.template?.layout?.colorway, isDarkTheme);
           const opacity = getOpacity(series, i);
           const base = convertXValueToNumber(series.base?.[i]);
           const xVal = convertXValueToNumber(series.x?.[i]);
@@ -1466,7 +1529,14 @@ export const transformPlotlyJsonToSankeyProps = (
   );
   const sankeyChartData = {
     nodes: node.label?.map((label: string, index: number) => {
-      const color = resolveColor(extractedNodeColors, index, label, colorMap, isDarkTheme);
+      const color = resolveColor(
+        extractedNodeColors,
+        index,
+        label,
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
 
       return {
         nodeId: index,
@@ -1522,7 +1592,14 @@ export const transformPlotlyJsonToGaugeProps = (
     ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
       firstData.gauge.steps.map((step: any, index: number): IGaugeChartSegment => {
         const legend = step.name || `Segment ${index + 1}`;
-        const color = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
+        const color = resolveColor(
+          extractedColors,
+          index,
+          legend,
+          colorMap,
+          input.layout?.template?.layout?.colorway,
+          isDarkTheme,
+        );
         return {
           legend,
           size: step.range?.[1] - step.range?.[0],
@@ -1561,7 +1638,14 @@ export const transformPlotlyJsonToGaugeProps = (
         colorMap,
         isDarkTheme,
       );
-      const color = resolveColor(extractedIncreasingDeltaColors, 0, '', colorMap, isDarkTheme);
+      const color = resolveColor(
+        extractedIncreasingDeltaColors,
+        0,
+        '',
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
       sublabelColor = color;
     } else {
       sublabel = `\u25BC ${Math.abs(diff)}`;
@@ -1572,7 +1656,14 @@ export const transformPlotlyJsonToGaugeProps = (
         colorMap,
         isDarkTheme,
       );
-      const color = resolveColor(extractedDecreasingDeltaColors, 0, '', colorMap, isDarkTheme);
+      const color = resolveColor(
+        extractedDecreasingDeltaColors,
+        0,
+        '',
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
       sublabelColor = color;
     }
   }
@@ -1864,7 +1955,14 @@ export const transformPlotlyJsonToFunnelChartProps = (
         isDarkTheme,
       );
       // Always use the first color for the series/category
-      const color = resolveColor(extractedColors, 0, category, colorMap, isDarkTheme);
+      const color = resolveColor(
+        extractedColors,
+        0,
+        category,
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
       seriesColors[category] = color;
 
       const labels = series.labels ?? series.y ?? series.stage;
@@ -1909,7 +2007,14 @@ export const transformPlotlyJsonToFunnelChartProps = (
       );
 
       categories.forEach((label: string, i: number) => {
-        const color = resolveColor(extractedColors, i, label, colorMap, isDarkTheme);
+        const color = resolveColor(
+          extractedColors,
+          i,
+          label,
+          colorMap,
+          input.layout?.template?.layout?.colorway,
+          isDarkTheme,
+        );
         const valueNum = Number(values[i]);
         if (isNaN(valueNum)) {
           return;
@@ -2319,12 +2424,21 @@ export const getAllupLegendsProps = (
           input.layout?.piecolorway ?? pieSeries?.marker?.colors,
           colorMap,
           isDarkTheme,
+          true,
         );
 
         pieSeries.labels?.forEach((label, labelIndex: number) => {
           const legend = `${label}`;
           // resolve color for each legend from the extracted colors
-          const color: string = resolveColor(colors, labelIndex, legend, colorMap, isDarkTheme);
+          const color: string = resolveColor(
+            colors,
+            labelIndex,
+            legend,
+            colorMap,
+            input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
+            isDarkTheme,
+            true,
+          );
           if (legend !== '' && allupLegends.some(group => group.title === legend) === false) {
             allupLegends.push({
               title: legend,
@@ -2800,12 +2914,12 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
       if (axId === 'x') {
         props.xAxis = {
           tickStep: dtick,
-          tick0: tick0,
+          tick0,
         };
       } else if (axId === 'y') {
         props.yAxis = {
           tickStep: dtick,
-          tick0: tick0,
+          tick0,
         };
       }
       return;

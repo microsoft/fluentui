@@ -10,6 +10,10 @@ export class BaseTreeItem extends FASTElement {
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
+  /** @internal */
+  @observable
+  public itemSlot!: HTMLSlotElement;
+
   constructor() {
     super();
     this.elementInternals.role = 'treeitem';
@@ -58,6 +62,7 @@ export class BaseTreeItem extends FASTElement {
    * @internal
    */
   protected selectedChanged(prev: boolean, next: boolean): void {
+    this.updateTabindexBySelected();
     this.$emit('change');
     toggleState(this.elementInternals, 'selected', next);
     this.elementInternals.ariaSelected = next ? 'true' : 'false';
@@ -81,7 +86,7 @@ export class BaseTreeItem extends FASTElement {
   @attr({ attribute: 'data-indent' })
   public dataIndent!: number | undefined;
 
-  private dataIndentChanged(prev: number, next: number) {
+  protected dataIndentChanged(prev: number, next: number) {
     if (this.styles !== undefined) {
       this.$fastController.removeStyles(this.styles);
     }
@@ -95,6 +100,7 @@ export class BaseTreeItem extends FASTElement {
     this.$fastController.addStyles(this.styles);
   }
 
+  /** @internal */
   @observable
   public childTreeItems: BaseTreeItem[] | undefined = [];
 
@@ -106,6 +112,11 @@ export class BaseTreeItem extends FASTElement {
   public childTreeItemsChanged() {
     this.empty = this.childTreeItems?.length === 0;
     this.updateChildTreeItems();
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.updateTabindexBySelected();
   }
 
   /**
@@ -153,5 +164,16 @@ export class BaseTreeItem extends FASTElement {
    */
   get isNestedItem() {
     return isTreeItem(this.parentElement);
+  }
+
+  protected updateTabindexBySelected() {
+    if (this.$fastController.isConnected) {
+      this.tabIndex = this.selected ? 0 : -1;
+    }
+  }
+
+  /** @internal */
+  public handleItemSlotChange() {
+    this.childTreeItems = this.itemSlot.assignedElements().filter(el => isTreeItem(el));
   }
 }

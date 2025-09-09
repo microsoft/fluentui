@@ -12,7 +12,7 @@ export type SwatchPickerGridProps = {
   renderSwatch?: (item: SwatchProps) => JSXElement;
 };
 
-export const renderSwatchPickerGrid = (props: SwatchPickerGridProps) => {
+export const renderSwatchPickerGrid = (props: SwatchPickerGridProps): JSXElement[] => {
   const { items, columnCount, renderRow, renderSwatch } = props;
   const _renderRow = renderRow || (({ children, rowId }) => <SwatchPickerRow key={rowId}>{children}</SwatchPickerRow>);
   const _renderSwatch =

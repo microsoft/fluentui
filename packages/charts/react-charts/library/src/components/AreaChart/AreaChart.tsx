@@ -36,8 +36,8 @@ import {
   findNumericMinMaxOfY,
   createNumericYAxis,
   IDomainNRange,
-  domainRangeOfNumericForAreaChart,
-  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfNumericForAreaLineScatterCharts,
+  domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   createStringYAxis,
   useRtl,
   YAxisType,
@@ -167,9 +167,9 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     ) {
       let domainNRangeValue: IDomainNRange;
       if (xAxisType === XAxisTypes.NumericAxis) {
-        domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
+        domainNRangeValue = domainRangeOfNumericForAreaLineScatterCharts(points, margins, width, isRTL);
       } else if (xAxisType === XAxisTypes.DateAxis) {
-        domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+        domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
           points,
           margins,
           width,

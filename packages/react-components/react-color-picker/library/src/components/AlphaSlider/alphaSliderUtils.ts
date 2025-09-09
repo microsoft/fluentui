@@ -5,7 +5,7 @@
  * @param transparency - A boolean flag indicating whether to adjust for transparency.
  * @returns The adjusted value.
  */
-export function adjustToTransparency(value: number, transparency: boolean) {
+export function adjustToTransparency(value: number, transparency: boolean): number {
   return transparency ? 100 - value : value;
 }
 
@@ -16,7 +16,7 @@ export function adjustToTransparency(value: number, transparency: boolean) {
  * @param value - An optional numeric value to adjust.
  * @returns The calculated transparency value or undefined if the value is not provided.
  */
-export function calculateTransparencyValue(transparency: boolean, value?: number) {
+export function calculateTransparencyValue(transparency: boolean, value?: number): number | undefined {
   return value !== undefined ? adjustToTransparency(value * 100, transparency) : undefined;
 }
 
@@ -28,7 +28,7 @@ export function calculateTransparencyValue(transparency: boolean, value?: number
  * @param transparency - A boolean indicating if the slider is for transparency.
  * @returns The direction of the slider as a string representing degrees (e.g., '90deg').
  */
-export function getSliderDirection(dir: 'ltr' | 'rtl', vertical: boolean, transparency: boolean) {
+export function getSliderDirection(dir: 'ltr' | 'rtl', vertical: boolean, transparency: boolean): string {
   if (vertical) {
     return transparency ? '180deg' : '0deg';
   }

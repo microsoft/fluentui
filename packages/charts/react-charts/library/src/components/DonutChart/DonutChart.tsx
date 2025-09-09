@@ -293,6 +293,11 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         ref={(rootElem: HTMLDivElement | null) => (_rootElem.current = rootElem)}
         onMouseLeave={_handleChartMouseLeave}
       >
+        {props.xAxisAnnotation && (
+          <text className={classes.axisAnnotation} x={_width! / 2} y={_height! - 10} textAnchor="middle">
+            {props.xAxisAnnotation}
+          </text>
+        )}
         <div className={classes.chartWrapper} {...focusAttributes}>
           <svg className={classes.chart} aria-label={data?.chartTitle} width={_width} height={_height}>
             <Pie

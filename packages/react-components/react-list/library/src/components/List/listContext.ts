@@ -26,7 +26,7 @@ export const useListContext_unstable = <T>(selector: ContextSelector<ListContext
 const ListSynchronousContext = React.createContext<ListSynchronousContextValue | undefined>(undefined);
 
 export const ListSynchronousContextProvider = ListSynchronousContext.Provider;
-export const useListSynchronousContext = () =>
+export const useListSynchronousContext = (): ListSynchronousContextValue =>
   React.useContext(ListSynchronousContext) || {
     navigationMode: undefined,
     listItemRole: 'listitem',

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, useId, Label, SpinButton } from '@fluentui/react-components';
 
 const useLayoutStyles = makeStyles({
@@ -13,7 +14,7 @@ const useLayoutStyles = makeStyles({
   },
 });
 
-export const Step = () => {
+export const Step = (): JSXElement => {
   const layoutStyles = useLayoutStyles();
   const id = useId();
 

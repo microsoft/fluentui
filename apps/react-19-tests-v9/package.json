@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "type-check": "just-scripts type-check",
-    "type-check:integration": "tsc -p tsconfig.react-19.json --noEmit",
+    "type-check:integration": "yarn type-check:integration:stories && yarn type-check:integration:source",
+    "type-check:integration:stories": "tsc -p tsconfig.react-19.json --noEmit",
+    "type-check:integration:source": "tsc -p tsconfig.react-19-source.json --noEmit",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
     "test": "jest --passWithNoTests",
     "test:integration": "jest --passWithNoTests -u -c jest-react-19.config.js",

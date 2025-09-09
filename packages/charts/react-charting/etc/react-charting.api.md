@@ -608,6 +608,7 @@ export interface IDonutChartProps extends ICartesianChartProps {
     hideLabels?: boolean;
     innerRadius?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
+    order?: 'default' | 'sorted';
     roundCorners?: boolean;
     showLabelsInPercent?: boolean;
     styles?: IStyleFunctionOrObject<IDonutChartStyleProps, IDonutChartStyles>;

@@ -9,10 +9,9 @@ import {
 } from '@fluentui/react-charts';
 // import * as d3 from 'd3-format';
 import { Switch, tokens } from '@fluentui/react-components';
-// eslint-disable-next-line  @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-components';
 
-export const HorizontalBarCustomCallout = () => {
+export const HorizontalBarCustomCallout = (): JSXElement => {
   const hideRatio: boolean[] = [true, false];
   const [useCustomPopover, setUseCustomPopover] = React.useState(false);
 

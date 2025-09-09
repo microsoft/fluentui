@@ -2,6 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { InteractionTagState, InteractionTagSlots, InteractionTagContextValues } from './InteractionTag.types';
 import { InteractionTagContextProvider } from '../../contexts/interactionTagContext';
 
@@ -11,7 +12,7 @@ import { InteractionTagContextProvider } from '../../contexts/interactionTagCont
 export const renderInteractionTag_unstable = (
   state: InteractionTagState,
   contextValues: InteractionTagContextValues,
-) => {
+): JSXElement => {
   assertSlots<InteractionTagSlots>(state);
 
   return (

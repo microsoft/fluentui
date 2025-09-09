@@ -630,8 +630,6 @@ export class BaseDropdown extends FASTElement {
     // @internal
     listboxChanged(prev: Listbox | undefined, next: Listbox | undefined): void;
     // @internal
-    listboxSlot: HTMLSlotElement;
-    // @internal
     mousedownHandler(e: MouseEvent): boolean | void;
     multiple?: boolean;
     // @internal
@@ -651,6 +649,8 @@ export class BaseDropdown extends FASTElement {
     selectOption(index?: number, shouldEmit?: boolean): void;
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    // @internal
+    slotchangeHandler(e: Event): boolean | void;
     type: DropdownType;
     // @internal
     typeChanged(prev: DropdownType | undefined, next: DropdownType | undefined): void;
@@ -730,22 +730,35 @@ export class BaseProgressBar extends FASTElement {
 // @public
 export class BaseRatingDisplay extends FASTElement {
     constructor();
+    // (undocumented)
+    connectedCallback(): void;
     count?: number;
+    // (undocumented)
+    protected defaultCustomIconViewBox: string;
+    // @internal
+    display: HTMLElement;
     // @internal
     elementInternals: ElementInternals;
     // @internal
     get formattedCount(): string;
-    // @internal
-    generateIcons(): string;
-    protected getMaxIcons(): number;
-    protected getSelectedValue(): number;
+    // @internal (undocumented)
+    handleSlotChange(): void;
+    // @internal (undocumented)
+    iconSlot: HTMLSlotElement;
+    // @deprecated
     iconViewBox?: string;
     max?: number;
-    // @internal (undocumented)
-    slottedIcon: HTMLElement[];
-    // @internal (undocumented)
-    slottedIconChanged(): void;
+    // (undocumented)
+    protected maxChanged(): void;
+    // (undocumented)
+    protected renderSlottedIcon(svg: SVGSVGElement | null): void;
+    // Warning: (ae-forgotten-export) The symbol "PropertyNameForCalculation" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected setCustomPropertyValue(propertyName: PropertyNameForCalculation): void;
     value?: number;
+    // (undocumented)
+    protected valueChanged(): void;
 }
 
 // @public
@@ -945,17 +958,21 @@ export class BaseTree extends FASTElement {
     changeHandler(e: Event): boolean | void;
     // Warning: (ae-forgotten-export) The symbol "BaseTreeItem" needs to be exported by the entry point index.d.ts
     //
-    // (undocumented)
+    // @internal (undocumented)
     childTreeItems: BaseTreeItem[];
-    // (undocumented)
+    // @internal (undocumented)
     childTreeItemsChanged(): void;
     // @internal
     clickHandler(e: Event): boolean | void;
     currentSelected: HTMLElement | null;
+    // @internal (undocumented)
+    defaultSlot: HTMLSlotElement;
     // @internal
     elementInternals: ElementInternals;
     // @internal
     focusHandler(e: FocusEvent): void;
+    // @internal (undocumented)
+    handleDefaultSlotChange(): void;
     // @internal
     keydownHandler(e: KeyboardEvent): boolean | void;
 }
@@ -2945,8 +2962,6 @@ export class Listbox extends FASTElement {
     // @internal
     beforetoggleHandler(e: ToggleEvent): boolean | undefined;
     clickHandler(e: PointerEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
     // @internal
     dropdown?: BaseDropdown;
     // @internal
@@ -2966,6 +2981,7 @@ export class Listbox extends FASTElement {
     selectedIndex: number;
     get selectedOptions(): DropdownOption[];
     selectOption(index?: number): void;
+    slotchangeHandler(e: Event): void;
 }
 
 // @public
@@ -3412,10 +3428,6 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 export class RatingDisplay extends BaseRatingDisplay {
     color?: RatingDisplayColor;
     compact: boolean;
-    // @override
-    protected getMaxIcons(): number;
-    // @override
-    protected getSelectedValue(): number;
     size?: RatingDisplaySize;
 }
 
@@ -4349,9 +4361,13 @@ export const TooltipTemplate: ViewTemplate<Tooltip, any>;
 // @public
 export class Tree extends BaseTree {
     appearance: TreeItemAppearance;
+    // (undocumented)
+    protected appearanceChanged(): void;
     // @internal
     childTreeItemsChanged(): void;
     size: TreeItemSize;
+    // (undocumented)
+    protected sizeChanged(): void;
     updateSizeAndAppearance(): void;
 }
 
@@ -4364,8 +4380,12 @@ export const TreeDefinition: FASTElementDefinition<typeof Tree>;
 export class TreeItem extends BaseTreeItem {
     appearance: TreeItemAppearance;
     // @internal
+    protected appearanceChanged(): void;
+    // @internal
     childTreeItemsChanged(): void;
     size: TreeItemSize;
+    // @internal
+    protected sizeChanged(): void;
     updateSizeAndAppearance(): void;
 }
 

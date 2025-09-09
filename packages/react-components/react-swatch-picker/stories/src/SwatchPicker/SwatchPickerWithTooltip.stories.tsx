@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Tooltip, SwatchPicker, ColorSwatch, renderSwatchPickerGrid } from '@fluentui/react-components';
 import type { ColorSwatchProps, SwatchProps, SwatchPickerOnSelectEventHandler } from '@fluentui/react-components';
 
@@ -26,7 +27,7 @@ const colors = [
   { color: '#FF0099', value: 'FF0099', 'aria-label': 'pink' },
 ];
 
-export const SwatchPickerWithTooltip = () => {
+export const SwatchPickerWithTooltip = (): JSXElement => {
   const [selectedValue, setSelectedValue] = React.useState('00B053');
   const [selectedColor, setSelectedColor] = React.useState('#00B053');
   const handleSelect: SwatchPickerOnSelectEventHandler = (_, data) => {

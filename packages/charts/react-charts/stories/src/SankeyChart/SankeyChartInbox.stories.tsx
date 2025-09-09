@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { ChartProps, SankeyChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 
 const data: ChartProps = {
@@ -144,7 +145,7 @@ const data: ChartProps = {
   },
 };
 
-export const SankeyChartInbox: React.FunctionComponent<{}> = () => {
+export const SankeyChartInbox: React.FunctionComponent<{}> = (): JSXElement => {
   const [width, setWidth] = React.useState(820);
   const [height, setHeight] = React.useState(400);
 

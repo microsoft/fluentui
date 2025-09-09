@@ -5,7 +5,7 @@ import type { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-export const withAriaLive = (Story: () => JSXElement, context: FluentStoryContext) => {
+export const withAriaLive = (Story: () => JSXElement, context: FluentStoryContext): JSXElement => {
   if (isDecoratorDisabled(context, 'AriaLive')) {
     return Story();
   }

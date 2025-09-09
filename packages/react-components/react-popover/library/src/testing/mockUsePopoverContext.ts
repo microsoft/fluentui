@@ -6,7 +6,7 @@ import type { PopoverContextValue } from '../popoverContext';
  * Don't forget to call `jest.mock(**\/popupContext.ts)` while using this
  * @param options Popover context values to set for testing
  */
-export const mockPopoverContext = (options: Partial<PopoverContextValue> = {}) => {
+export const mockPopoverContext = (options: Partial<PopoverContextValue> = {}): void => {
   const mockContext: PopoverContextValue = {
     open: false,
     setOpen: () => null,

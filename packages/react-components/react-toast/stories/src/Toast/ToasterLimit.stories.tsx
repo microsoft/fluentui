@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
   Button,
@@ -10,7 +11,7 @@ import {
   Toast,
 } from '@fluentui/react-components';
 
-export const ToasterLimit = () => {
+export const ToasterLimit = (): JSXElement => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
   const [limit, setLimit] = React.useState(3);

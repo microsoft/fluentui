@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, Input, makeResetStyles, tokens } from '@fluentui/react-components';
 
@@ -8,7 +9,7 @@ const useStackClassName = makeResetStyles({
   rowGap: tokens.spacingVerticalL,
 });
 
-export const Size = () => (
+export const Size = (): JSXElement => (
   <div className={useStackClassName()}>
     <Field label="Size small" size="small">
       <Input />

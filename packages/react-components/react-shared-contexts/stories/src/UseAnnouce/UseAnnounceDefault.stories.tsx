@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   AnnounceProvider,
   Button,
@@ -42,7 +43,7 @@ const AnnouncePlayground: React.FC = () => {
   );
 };
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const announce: AnnounceContextValue['announce'] = React.useCallback((message, options) => {
     alert(`Announced {polite: ${String(options?.polite ?? false)}}: ${message}`);
   }, []);

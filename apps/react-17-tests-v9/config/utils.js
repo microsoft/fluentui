@@ -5,7 +5,7 @@ const { join } = require('node:path');
 
 /**
  *
- * @returns {string} The path to the node_modules directory used by the project
+ * @returns {{ usedNodeModulesPath: string, workspaceRootNodeModulesPath: string }} The path to the node_modules directory used by the project
  */
 function getNodeModulesPath() {
   const projectRoot = join(__dirname, '..');
@@ -22,7 +22,7 @@ function getNodeModulesPath() {
   console.log('Using React from:', reactPath);
   console.log('Using ReactDOM from:', reactDomPath);
 
-  return usedNodeModulesPath;
+  return { usedNodeModulesPath, workspaceRootNodeModulesPath: rootNodeModulesPath };
 }
 
 module.exports = {

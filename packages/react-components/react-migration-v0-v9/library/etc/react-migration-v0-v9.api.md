@@ -10,6 +10,7 @@ import type { ComponentProps as ComponentProps_2 } from '@fluentui/react-utiliti
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { GriffelStyle } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { JSXIntrinsicElement } from '@fluentui/react-utilities';
 import type { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
 import type { ObjectShorthandValue } from '@fluentui/react-northstar';
@@ -231,10 +232,10 @@ export const Primitive: PrimitiveComponent;
 export const primitiveClassName = "fui-Primitive";
 
 // @public
-export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSX.Element;
+export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSXElement;
 
 // @public
-export const renderListItem_unstable: (state: ListItemState) => JSX.Element;
+export const renderListItem_unstable: (state: ListItemState) => JSXElement;
 
 // @public (undocumented)
 export const Segment: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>>;

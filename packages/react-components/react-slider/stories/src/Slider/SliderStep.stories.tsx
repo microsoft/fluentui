@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { useId, Label, Slider } from '@fluentui/react-components';
 
-export const Step = () => {
+export const Step = (): JSXElement => {
   const id = useId();
   return (
     <>

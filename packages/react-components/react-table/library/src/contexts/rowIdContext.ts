@@ -5,6 +5,6 @@ const rowIdContext = React.createContext<TableRowId | undefined>(undefined);
 
 export const tableRowIdContextDefaultValue = '';
 
-export const useTableRowIdContext = () => React.useContext(rowIdContext) ?? tableRowIdContextDefaultValue;
+export const useTableRowIdContext = (): TableRowId => React.useContext(rowIdContext) ?? tableRowIdContextDefaultValue;
 
 export const TableRowIdContextProvider = rowIdContext.Provider;

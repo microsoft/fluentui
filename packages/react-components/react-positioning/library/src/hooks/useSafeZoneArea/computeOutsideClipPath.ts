@@ -27,7 +27,7 @@ export function computeOutsideClipPath(
   svgHeight: number,
   targetRect: { x: number; y: number; width: number; height: number },
   containerRect: { x: number; y: number; width: number; height: number },
-) {
+): string {
   let pathData = `M 0,0 H ${svgWidth} V ${svgHeight} H 0 Z `;
 
   // For each rectangle, add a subpath that "cuts out" the rectangle

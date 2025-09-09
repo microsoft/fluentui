@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-components';
 
 import { Provider } from '../Provider/Provider';

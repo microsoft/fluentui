@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useAccordionPanelStyles_unstable = (state: AccordionPanelState) => {
+export const useAccordionPanelStyles_unstable = (state: AccordionPanelState): AccordionPanelState => {
   'use no memo';
 
   const styles = useStyles();

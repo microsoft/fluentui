@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -22,8 +23,8 @@ import {
   TableColumnDefinition,
   createTableColumn,
 } from '@fluentui/react-components';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+
+import type { JSXElement } from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
@@ -148,7 +149,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const Sort = () => {
+export const Sort = (): JSXElement => {
   const defaultSortState = React.useMemo<Parameters<NonNullable<DataGridProps['onSortChange']>>[1]>(
     () => ({ sortColumn: 'file', sortDirection: 'ascending' }),
     [],

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Thu, 21 Aug 2025 12:25:39 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Sep 2025 12:51:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.9.7)
+
+Mon, 08 Sep 2025 12:51:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.9.6..@fluentui/react-migration-v8-v9_v9.9.7)
+
+### Patches
+
+- chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-components to v9.70.0 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+
+## [9.9.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.9.6)
+
+Thu, 21 Aug 2025 17:40:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.9.5..@fluentui/react-migration-v8-v9_v9.9.6)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.69.0 ([PR #35063](https://github.com/microsoft/fluentui/pull/35063) by beachball)
 
 ## [9.9.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.9.5)
 

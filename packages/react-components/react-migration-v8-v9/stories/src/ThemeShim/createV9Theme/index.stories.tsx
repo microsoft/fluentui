@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import type { Meta } from '@storybook/react';
 
 import { createTheme, ThemeProvider, Theme as ThemeV8, DefaultPalette } from '@fluentui/react';
@@ -58,7 +59,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Playground = () => {
+export const Playground = (): JSXElement => {
   const styles = useStyles();
 
   const defaultPaletteText = JSON.stringify(DefaultPalette, null, 4);

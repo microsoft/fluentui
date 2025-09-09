@@ -12,7 +12,7 @@
     "lib-commonjs"
   ],
   "dependencies": {
-    "@fluentui/react-provider": "^9.22.4",
+    "@fluentui/react-provider": "^9.22.5",
     "@fluentui/react-theme": "^9.2.0",
     "@swc/helpers": "^0.5.1"
   },
