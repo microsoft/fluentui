@@ -609,11 +609,15 @@ function buildReactIntegrationTesterProjectConfiguration(
     if (!skipPrepare) {
       targets[targetNamePrepare] = {
         command: `${config.pmc.exec} rit --prepare-only --no-install --project-id ${projectSuffixId} --react ${reactVersion} --verbose`,
-        options: { cwd: '{projectRoot}' },
+        options: {
+          cwd: '{projectRoot}',
+        },
         cache: true,
         inputs: inputs,
-        outputs: [`{workspaceRoot}/tmp/rit/**/${config.projectJSON.name}-react-${reactVersion}*`],
-        // this should be set via nx.json
+        outputs: [
+          `{workspaceRoot}/tmp/rit/react-${reactVersion}/${config.projectJSON.name}-react-${reactVersion}-${projectSuffixId}`,
+        ],
+        // this should be set via nx.json - usually `^build` (depends on project)
         dependsOn: [],
         metadata: {
           technologies: ['react-integration-tester'],
@@ -649,6 +653,7 @@ function buildReactIntegrationTesterProjectConfiguration(
             },
           };
         } else if (isLibraryWithStorybookAdjacentProject) {
+          // convenience target created on library target scope, which runs the `*-stories` type-check
           targets[targetName] = {
             command: `nx run ${config.projectJSON.name}-stories:${targetName}`,
             cache: true,
@@ -694,7 +699,7 @@ function buildReactIntegrationTesterProjectConfiguration(
         };
       }),
     inputs: inputs,
-    outputs: [`{workspaceRoot}/tmp/rit/${config.projectJSON.name}-react-*`],
+    outputs: [],
     metadata: {
       technologies: ['react-integration-tester'],
       description: `Run react integration tests against React ${reactVersions.join(', ')}`,
