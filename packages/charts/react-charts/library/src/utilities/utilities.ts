@@ -241,6 +241,7 @@ export function createNumericXAxis(
   chartType: ChartTypes,
   culture?: string,
   scaleType?: AxisScaleType,
+  _useRtl?: boolean,
 ): {
   xScale: ScaleLinear<number, number>;
   tickValues: string[];
@@ -296,7 +297,12 @@ export function createNumericXAxis(
   }
 
   if (xAxisElement) {
-    d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
+    d3Select(xAxisElement)
+      .call(xAxis)
+      .selectAll('text')
+      .attr('aria-hidden', 'true')
+      .style('direction', 'ltr')
+      .style('unicode-bidi', 'isolate');
   }
   const tickValues = (customTickValues ?? xAxisScale.ticks(tickCount)).map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
@@ -525,6 +531,7 @@ export function createStringXAxis(
   tickParams: ITickParams,
   dataset: string[],
   culture?: string,
+  _useRtl?: boolean,
 ): {
   xScale: ScaleBand<string>;
   tickValues: string[];
@@ -585,7 +592,12 @@ export function createStringXAxis(
     .tickFormat(tickFormat);
 
   if (xAxisParams.xAxisElement) {
-    d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
+    d3Select(xAxisParams.xAxisElement)
+      .call(xAxis)
+      .selectAll('text')
+      .attr('aria-hidden', 'true')
+      .style('direction', 'ltr')
+      .style('unicode-bidi', 'isolate');
   }
   return { xScale: xAxisScale, tickValues: tickValues.map(xAxis.tickFormat()!) };
 }
@@ -729,6 +741,7 @@ export function createNumericYAxis(
   useSecondaryYScale: boolean = false,
   roundedTicks: boolean = false,
   scaleType?: AxisScaleType,
+  _useRtl?: boolean,
 ): ScaleLinear<number, number> {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -806,7 +819,15 @@ export function createNumericYAxis(
   yAxisTickFormat
     ? yAxis.tickFormat(yAxisTickFormat)
     : yAxis.tickFormat((v, i) => tickFormat(v as NumberValue, i, yAxisScale.tickFormat(yAxisTickCount)));
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+  yAxisElement
+    ? d3Select(yAxisElement)
+        .call(yAxis)
+        .selectAll('text')
+        .attr('aria-hidden', 'true')
+        .style('direction', 'ltr')
+        .style('unicode-bidi', 'isolate')
+        .style('text-anchor', !useSecondaryYScale && (_useRtl ? 'start' : 'end'))
+    : '';
   return yAxisScale;
 }
 

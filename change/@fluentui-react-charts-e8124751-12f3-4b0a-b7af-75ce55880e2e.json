@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "handled negative sign in RTL mode",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -88,7 +88,7 @@ const useStyles = makeStyles({
     position: 'absolute',
   },
   barLabel: {
-    ...typographyStyles.caption1,
+    ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
     [HighContrastSelector]: {
       stroke: 'CanvasText',
