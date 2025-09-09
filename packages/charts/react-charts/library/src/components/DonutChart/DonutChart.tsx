@@ -5,7 +5,7 @@ import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { getColorFromToken, getNextColor, MIN_DONUT_RADIUS, useRtl } from '../../utilities/index';
+import { areArraysEqual, getColorFromToken, getNextColor, MIN_DONUT_RADIUS, useRtl } from '../../utilities/index';
 import { Legend, Legends, LegendContainer } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -39,17 +39,28 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const [color, setColor] = React.useState<string | undefined>('');
     const [xCalloutValue, setXCalloutValue] = React.useState<string>('');
     const [yCalloutValue, setYCalloutValue] = React.useState<string>('');
-    const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
+    const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [focusedArcId, setFocusedArcId] = React.useState<string>('');
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ChartDataPoint | undefined>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+    const prevPropsRef = React.useRef<DonutChartProps | null>(null);
     const _legendsRef = React.useRef<LegendContainer>(null);
     const _isRTL: boolean = useRtl();
 
     React.useEffect(() => {
       _fitParentContainer();
     }, []);
+
+    React.useEffect(() => {
+      if (prevPropsRef.current) {
+        const prevProps = prevPropsRef.current;
+        if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
+          setSelectedLegends(props.legendProps?.selectedLegends || []);
+        }
+      }
+      prevPropsRef.current = props;
+    }, [props]);
 
     React.useEffect(() => {
       if (prevSize.current.height !== props.height || prevSize.current.width !== props.width) {

@@ -58,7 +58,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       if (
         hideLabels ||
         Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12 ||
-        _shouldHighlightArc(data!.data.legend!)
+        !_shouldHighlightArc(data!.data.legend!)
       ) {
         return null;
       }
