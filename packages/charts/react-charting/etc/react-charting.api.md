@@ -808,11 +808,15 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     chartTitle?: string;
     culture?: string;
     data: IGroupedVerticalBarChartData[];
+    // (undocumented)
+    dataV2?: (IStandardBarSeries<string, number> | IStandardLineSeries<string, number>)[];
     enableGradient?: boolean;
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
     // @deprecated
     legendColor?: string;
+    // (undocumented)
+    lineData?: IGVBCLinePoints[];
     maxBarWidth?: number;
     mode?: 'default' | 'plotly';
     onRenderCalloutPerDataPoint?: IRenderFunction<IGVBarChartSeriesPoint>;
@@ -852,6 +856,20 @@ export interface IGVBarChartSeriesPoint {
     useSecondaryYScale?: boolean;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;
+}
+
+// @public (undocumented)
+export interface IGVBCLineDataPoint extends IBaseDataPoint {
+    // (undocumented)
+    x: string;
+    // (undocumented)
+    y: number;
+}
+
+// @public (undocumented)
+export interface IGVBCLinePoints extends Omit<ILineChartPoints, 'data'> {
+    // (undocumented)
+    data: IGVBCLineDataPoint[];
 }
 
 // @public (undocumented)
@@ -1627,6 +1645,68 @@ export interface IStackedBarChartStyles {
     ratioNumerator: IStyle;
     root: IStyle;
     target: IStyle;
+}
+
+// @public (undocumented)
+export interface IStandardBarSeries<T, U> extends IStandardSeries {
+    // (undocumented)
+    data: IStandardDataPoint<T, U>[];
+    // (undocumented)
+    key?: string;
+    // (undocumented)
+    type: 'bar';
+}
+
+// @public (undocumented)
+export interface IStandardDataPoint<T, U> {
+    // (undocumented)
+    markerSize?: number;
+    // (undocumented)
+    onDataPointClick?: () => void;
+    // (undocumented)
+    text?: string;
+    // (undocumented)
+    x: T;
+    // (undocumented)
+    xAxisCalloutData?: string;
+    // (undocumented)
+    y: U;
+    // (undocumented)
+    yAxisCalloutData?: string;
+}
+
+// @public (undocumented)
+export interface IStandardLineSeries<T, U> extends IStandardSeries {
+    // (undocumented)
+    data: IStandardDataPoint<T, U>[];
+    // (undocumented)
+    gaps?: ILineChartGap[];
+    // (undocumented)
+    hideNonActiveDots?: boolean;
+    // (undocumented)
+    lineOptions?: ILineChartLineOptions;
+    // (undocumented)
+    onLineClick?: () => void;
+    // (undocumented)
+    type: 'line';
+}
+
+// @public (undocumented)
+export interface IStandardSeries {
+    // (undocumented)
+    color?: string;
+    // (undocumented)
+    gradient?: [string, string];
+    // (undocumented)
+    legend: string;
+    // (undocumented)
+    legendShape?: LegendShape;
+    // (undocumented)
+    onLegendClick?: (selectedLegend: string | null | string[]) => void;
+    // (undocumented)
+    opacity?: number;
+    // (undocumented)
+    useSecondaryYScale?: boolean;
 }
 
 // @public (undocumented)
