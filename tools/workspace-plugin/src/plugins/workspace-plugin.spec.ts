@@ -223,9 +223,36 @@ describe(`workspace-plugin`, () => {
         expect(targets['react-integration-testing--17--type-check'].command).toMatchInlineSnapshot(
           `"yarn rit --project-id ci --react 17 --run type-check --verbose"`,
         );
-        expect(targets['react-integration-testing--17--prepare'].command).toMatchInlineSnapshot(
-          `"yarn rit --prepare-only --no-install --project-id ci --react 17 --verbose"`,
-        );
+        expect(targets['react-integration-testing--17--prepare']).toMatchInlineSnapshot(`
+          Object {
+            "cache": true,
+            "command": "yarn rit --prepare-only --no-install --project-id ci --react 17 --verbose",
+            "dependsOn": Array [],
+            "inputs": Array [
+              "default",
+              "production",
+              "^production",
+              "{workspaceRoot}/jest.preset.js",
+              "{workspaceRoot}/tools/react-integration-testing/**",
+            ],
+            "metadata": Object {
+              "description": "Run react integration tests against React 17",
+              "help": Object {
+                "command": "yarn rit --help",
+                "example": Object {},
+              },
+              "technologies": Array [
+                "react-integration-tester",
+              ],
+            },
+            "options": Object {
+              "cwd": "{projectRoot}",
+            },
+            "outputs": Array [
+              "{workspaceRoot}/tmp/rit/react-17/proj-stories-react-17-ci",
+            ],
+          }
+        `);
       });
 
       it(`should --run type-check within targets for projects with "stories" sibling projects`, async () => {
@@ -537,9 +564,7 @@ describe(`workspace-plugin`, () => {
                           "react-integration-tester",
                         ],
                       },
-                      "outputs": Array [
-                        "{workspaceRoot}/tmp/rit/proj-react-*",
-                      ],
+                      "outputs": Array [],
                     },
                     "react-integration-testing--17--type-check": Object {
                       "cache": true,
