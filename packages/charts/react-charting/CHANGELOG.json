@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 09 Sep 2025 07:20:21 GMT",
+      "tag": "@fluentui/react-charting_v5.24.28",
+      "version": "5.24.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "cb0e73c4485c9839ecdd19a27dc6adb91ae7ae34",
+            "comment": "fix styling in chart table"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Sep 2025 07:22:39 GMT",
       "tag": "@fluentui/react-charting_v5.24.27",
       "version": "5.24.27",

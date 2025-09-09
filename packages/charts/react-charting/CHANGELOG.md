@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 08 Sep 2025 07:22:39 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Sep 2025 07:20:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.28)
+
+Tue, 09 Sep 2025 07:20:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.27..@fluentui/react-charting_v5.24.28)
+
+### Patches
+
+- fix styling in chart table ([PR #35156](https://github.com/microsoft/fluentui/pull/35156) by anushgupta@microsoft.com)
 
 ## [5.24.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.27)
 
