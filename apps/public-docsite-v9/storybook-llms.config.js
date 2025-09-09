@@ -9,7 +9,7 @@ const storybookConfig = require('./.storybook/main');
  * @type {import('@fluentui/storybook-llms-extractor').Config}
  */
 module.exports = {
-  distPath: './dist/storybook',
+  distPath: './dist/',
   summaryBaseUrl: 'https://react.fluentui.dev',
   summaryTitle: 'Fluent UI React v9',
   summaryDescription:
