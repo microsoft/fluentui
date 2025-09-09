@@ -44,7 +44,6 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
-  formatDate,
   areArraysEqual,
   calculateLongestLabelWidth,
   useRtl,
@@ -309,7 +308,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           ? [...lineData!.sort((a, b) => (a.data! < b.data! ? 1 : -1)), ...stack.chartData.slice().reverse()]
           : stack.chartData.slice().reverse(),
       );
-      setHoverXValue(stack.xAxisPoint instanceof Date ? formatDate(stack.xAxisPoint, props.useUTC) : stack.xAxisPoint);
+      setHoverXValue(
+        stack.xAxisPoint instanceof Date
+          ? formatDateToLocaleString(stack.xAxisPoint, props.culture, props.useUTC as boolean)
+          : stack.xAxisPoint,
+      );
       setStackCalloutProps(stack);
       setActiveXAxisDataPoint(stack.xAxisPoint);
       setCallOutAccessibilityData(stack.stackCallOutAccessibilityData);
@@ -450,7 +453,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         const xValue =
           singleChartData.xAxisCalloutData ||
           (singleChartData.xAxisPoint instanceof Date
-            ? formatDate(singleChartData.xAxisPoint)
+            ? formatDateToLocaleString(singleChartData.xAxisPoint, props.culture, props.useUTC as boolean)
             : singleChartData.xAxisPoint);
         const pointValues = singleChartData.chartData
           .map(pt => {
@@ -478,7 +481,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         singleChartData.xAxisCalloutData ||
         (!isLinePoint && (point as VSChartDataPoint).xAxisCalloutData) ||
         (singleChartData.xAxisPoint instanceof Date
-          ? formatDate(singleChartData.xAxisPoint)
+          ? formatDateToLocaleString(singleChartData.xAxisPoint, props.culture, props.useUTC as boolean)
           : singleChartData.xAxisPoint);
       const legend = point.legend;
       const yValue =

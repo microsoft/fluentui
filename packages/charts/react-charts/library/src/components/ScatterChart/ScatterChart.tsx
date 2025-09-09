@@ -25,7 +25,6 @@ import {
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfNumericForAreaLineScatterCharts,
   sortAxisCategories,
-  formatDate,
 } from '../../utilities/index';
 import {
   AccessibilityProps,
@@ -672,7 +671,8 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   function _getAriaLabel(seriesIndex: number, pointIndex: number): string {
     const series = _points[seriesIndex];
     const point = series.data[pointIndex];
-    const formattedDate = point.x instanceof Date ? formatDate(point.x, props.useUTC) : point.x;
+    const formattedDate =
+      point.x instanceof Date ? formatDateToLocaleString(point.x, props.culture, props.useUTC as boolean) : point.x;
     const xValue = point.xAxisCalloutData || formattedDate;
     const legend = series.legend;
     const yValue = point.yAxisCalloutData || point.y;

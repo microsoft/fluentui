@@ -40,7 +40,6 @@ import {
   createStringYAxis,
   useRtl,
   YAxisType,
-  formatDate,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -904,7 +903,8 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     function _getAriaLabel(lineIndex: number, pointIndex: number): string {
       const line = props.data.lineChartData![lineIndex];
       const point = line.data[pointIndex];
-      const formattedDate = point.x instanceof Date ? formatDate(point.x, props.useUTC) : point.x;
+      const formattedDate =
+        point.x instanceof Date ? formatDateToLocaleString(point.x, props.culture, props.useUTC as boolean) : point.x;
       const xValue = point.xAxisCalloutData || formattedDate;
       const legend = line.legend;
       const yValue = point.yAxisCalloutData || point.y;

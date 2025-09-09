@@ -9,7 +9,7 @@ import { line as d3Line } from 'd3-shape';
 import { max as d3Max } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { find, formatDate, YAxisType } from '../../utilities/index';
+import { find, YAxisType } from '../../utilities/index';
 import {
   AccessibilityProps,
   CartesianChart,
@@ -1662,7 +1662,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     function _getAriaLabel(lineIndex: number, pointIndex: number): string {
       const line = _points[lineIndex];
       const point = line.data[pointIndex];
-      const formattedDate = point.x instanceof Date ? formatDate(point.x, props.useUTC) : point.x;
+      const formattedDate =
+        point.x instanceof Date ? formatDateToLocaleString(point.x, props.culture, props.useUTC as boolean) : point.x;
       const xValue = point.xAxisCalloutData || formattedDate;
       const legend = line.legend;
       const yValue = point.yAxisCalloutData || point.y;
