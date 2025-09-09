@@ -1649,9 +1649,9 @@ export interface IStackedBarChartStyles {
 }
 
 // @public (undocumented)
-export interface IStandardBarSeries<T, U> extends IStandardSeries {
+export interface IStandardBarSeries<X, Y> extends IStandardSeries {
     // (undocumented)
-    data: IStandardDataPoint<T, U>[];
+    data: IStandardDataPoint<X, Y>[];
     // (undocumented)
     key?: string;
     // (undocumented)
@@ -1659,7 +1659,7 @@ export interface IStandardBarSeries<T, U> extends IStandardSeries {
 }
 
 // @public (undocumented)
-export interface IStandardDataPoint<T, U> {
+export interface IStandardDataPoint<X, Y> {
     // (undocumented)
     markerSize?: number;
     // (undocumented)
@@ -1667,19 +1667,19 @@ export interface IStandardDataPoint<T, U> {
     // (undocumented)
     text?: string;
     // (undocumented)
-    x: T;
+    x: X;
     // (undocumented)
     xAxisCalloutData?: string;
     // (undocumented)
-    y: U;
+    y: Y;
     // (undocumented)
     yAxisCalloutData?: string;
 }
 
 // @public (undocumented)
-export interface IStandardLineSeries<T, U> extends IStandardSeries {
+export interface IStandardLineSeries<X, Y> extends IStandardSeries {
     // (undocumented)
-    data: IStandardDataPoint<T, U>[];
+    data: IStandardDataPoint<X, Y>[];
     // (undocumented)
     gaps?: ILineChartGap[];
     // (undocumented)
