@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(motion): add createMotionComponentVariant factory",
+  "packageName": "@fluentui/react-motion",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

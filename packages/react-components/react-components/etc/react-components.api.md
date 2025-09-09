@@ -284,6 +284,7 @@ import { CreateFocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createMotionComponent } from '@fluentui/react-motion';
+import { createMotionComponentVariant } from '@fluentui/react-motion';
 import { createPresenceComponent } from '@fluentui/react-motion';
 import { createPresenceComponentVariant } from '@fluentui/react-motion';
 import { createTableColumn } from '@fluentui/react-table';
@@ -2579,6 +2580,8 @@ export { createHighContrastTheme }
 export { createLightTheme }
 
 export { createMotionComponent }
+
+export { createMotionComponentVariant }
 
 export { createPresenceComponent }
 
