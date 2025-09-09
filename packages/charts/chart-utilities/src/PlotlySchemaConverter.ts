@@ -567,7 +567,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
     );
     const containsLines = mappedTraces.some(trace => trace.type === 'line' || trace.type === 'fallback');
     if (containsBars && containsLines) {
-      const shouldUseGVBC = !mappedTraces.some(trace => trace.type === 'verticalstackedbar' || trace.type === 'line');
+      const shouldUseGVBC = !mappedTraces.some(trace => trace.type === 'verticalstackedbar');
       if (shouldUseGVBC) {
         return {
           isValid: true,

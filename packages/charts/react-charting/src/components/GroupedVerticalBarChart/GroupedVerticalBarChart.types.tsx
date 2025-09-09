@@ -6,7 +6,6 @@ import {
   ICartesianChartProps,
   IGroupedVerticalBarChartData,
   IGVBarChartSeriesPoint,
-  IGVBCLinePoints,
   IStandardBarSeries,
   IStandardLineSeries,
 } from '../../index';
@@ -23,7 +22,7 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
    */
-  data: IGroupedVerticalBarChartData[];
+  data?: IGroupedVerticalBarChartData[];
 
   /**
    * Width of each bar in the chart. When set to `undefined` or `'default'`, the bar width defaults to 16px,
@@ -130,11 +129,6 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    * @default 'default'
    */
   mode?: 'default' | 'plotly';
-
-  /**
-   *
-   */
-  lineData?: IGVBCLinePoints[];
 
   /**
    *

@@ -67,7 +67,6 @@ const ResponsiveGanttChart = withResponsiveContainer(GanttChart);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
 const DEFAULT_XAXIS = 'x';
-const FALLBACK_TYPE = 'fallback';
 
 /**
  * DeclarativeChart schema.
@@ -498,13 +497,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           };
 
           const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace.index));
-          let chartType =
-            chart.type === FALLBACK_TYPE
-              ? FALLBACK_TYPE
-              : validTracesFilteredIndex.some(trace => trace.type === FALLBACK_TYPE) &&
-                chart.type === 'groupedverticalbar'
-              ? chart.type
-              : filteredTracesInfo[0].type;
+          let chartType = chart.type !== 'composite' ? chart.type : filteredTracesInfo[0].type;
 
           if (
             validTracesFilteredIndex.some(trace => trace.type === 'line') &&

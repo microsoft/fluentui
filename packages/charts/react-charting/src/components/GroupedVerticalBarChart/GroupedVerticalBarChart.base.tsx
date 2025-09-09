@@ -55,13 +55,7 @@ import {
   IChildProps,
   IYValueHover,
 } from '../../index';
-import {
-  IChart,
-  IImageExportOptions,
-  IGVBCLinePoints,
-  IStandardBarSeries,
-  IStandardLineSeries,
-} from '../../types/index';
+import { IChart, IImageExportOptions, IStandardBarSeries, IStandardLineSeries } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
 import { rgb } from 'd3-color';
@@ -85,6 +79,9 @@ interface IGVDataPoint {
 interface IGVSingleDataPoint {
   [key: string]: IGVDataPoint;
 }
+
+type IGVBCLinePoints = IStandardLineSeries<string, number>;
+
 export interface IGroupedVerticalBarChartState extends IBasestate {
   dataPointCalloutProps?: IGVBarChartSeriesPoint;
   callOutAccessibilityData?: IAccessibilityProps;
@@ -845,7 +842,7 @@ export class GroupedVerticalBarChartBase
 
   private _prepareChartData = () => {
     let barData = this.props.data;
-    let lineData = this.props.lineData;
+    let lineData: IGVBCLinePoints[] | undefined;
 
     if (Array.isArray(this.props.dataV2) && this.props.dataV2.length > 0) {
       ({ barData, lineData } = this._processDataV2(this.props.dataV2));

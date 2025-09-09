@@ -22,12 +22,10 @@ import {
   IVerticalStackedChartProps,
   IHeatMapChartData,
   IHeatMapChartDataPoint,
-  IGroupedVerticalBarChartData,
   IVerticalBarChartDataPoint,
   ISankeyChartData,
   ILineChartLineOptions,
   IGanttChartDataPoint,
-  IGVBCLinePoints,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -773,75 +771,76 @@ export const transformPlotlyJsonToGVBCProps = (
     };
   }
 
-  const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
-  const lineData: IGVBCLinePoints[] = [];
+  const gvbcDataV2: IGroupedVerticalBarChartProps['dataV2'] = [];
   const secondaryYAxisValues = getSecondaryYAxisValues(processedInput.data, processedInput.layout, 0, 0);
   const { legends, hideLegend } = getLegendProps(processedInput.data, processedInput.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
   const yAxisTickFormat = getYAxisTickFormat(processedInput.data[0], processedInput.layout);
   processedInput.data.forEach((series: Partial<PlotData>, index1: number) => {
     colorScale = createColorScale(processedInput.layout, series, colorScale);
-
-    // extract bar colors for each series only once
-    const extractedBarColors = extractColor(
-      processedInput.layout?.template?.layout?.colorway,
-      colorwayType,
-      series.marker?.color,
-      colorMap,
-      isDarkTheme,
-    ) as string[] | string | undefined;
-    // extract line colors for each series only once
-    const extractedLineColors = extractColor(
-      processedInput.layout?.template?.layout?.colorway,
-      colorwayType,
-      series.line?.color,
-      colorMap,
-      isDarkTheme,
-    ) as string[] | string | undefined;
     const legend: string = legends[index1];
+    const legendShape = getLegendShape(series);
+    const seriesOpacity = getOpacity(series, index1);
 
-    (series.x as Datum[])?.forEach((x: string | number, xIndex: number) => {
-      if (isInvalidValue(x) || isInvalidValue(series.y?.[xIndex])) {
-        return;
-      }
+    if (series.type === 'bar') {
+      // extract bar colors for each series only once
+      const extractedBarColors = extractColor(
+        processedInput.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.marker?.color,
+        colorMap,
+        isDarkTheme,
+      ) as string[] | string | undefined;
+      const barSeriesColor = resolveColor(
+        extractedBarColors,
+        index1,
+        legend,
+        colorMap,
+        processedInput.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
 
-      if (!mapXToDataPoints[x]) {
-        mapXToDataPoints[x] = { name: x.toString(), series: [] };
-      }
+      gvbcDataV2.push({
+        type: 'bar',
+        legend,
+        key: legend,
+        data: (series.x as Datum[])
+          .map((x, xIndex) => {
+            if (isInvalidValue(x) || isInvalidValue(series.y?.[xIndex])) {
+              return;
+            }
 
-      if (series.type === 'bar') {
-        // resolve color for each legend's bars from the colorscale or extracted colors
-        const color = colorScale
-          ? colorScale(
-              isArrayOrTypedArray(series.marker?.color)
-                ? ((series.marker?.color as Color[])?.[xIndex % (series.marker?.color as Color[]).length] as number)
-                : 0,
-            )
-          : resolveColor(
-              extractedBarColors,
-              xIndex,
-              legend,
-              colorMap,
-              processedInput.layout?.template?.layout?.colorway,
-              isDarkTheme,
-            );
-        const opacity = getOpacity(series, xIndex);
+            // resolve color for each legend's bars from the colorscale or extracted colors
+            const color = colorScale
+              ? colorScale(
+                  isArrayOrTypedArray(series.marker?.color)
+                    ? ((series.marker?.color as Color[])?.[xIndex % (series.marker?.color as Color[]).length] as number)
+                    : 0,
+                )
+              : barSeriesColor;
+            const opacity = getOpacity(series, xIndex);
+            const yVal: number = series.y![xIndex] as number;
 
-        const yVal: number = series.y![xIndex] as number;
-
-        mapXToDataPoints[x].series.push({
-          key: legend,
-          data: yVal,
-          xAxisCalloutData: x as string,
-          color: rgb(color).copy({ opacity }).formatHex8() ?? color,
-          legend,
-          useSecondaryYScale: usesSecondaryYScale(series, processedInput.layout),
-          yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
-        });
-      }
-    });
-
-    if (series.type === 'scatter') {
+            return {
+              x: x!.toString(),
+              y: yVal,
+              yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
+              color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+            };
+          })
+          .filter(item => typeof item !== 'undefined'),
+        color: rgb(barSeriesColor).copy({ opacity: seriesOpacity }).formatHex8() ?? barSeriesColor,
+        useSecondaryYScale: usesSecondaryYScale(series, processedInput.layout),
+      });
+    } else if (series.type === 'scatter') {
+      // extract line colors for each series only once
+      const extractedLineColors = extractColor(
+        processedInput.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.line?.color,
+        colorMap,
+        isDarkTheme,
+      ) as string[] | string | undefined;
       const lineColor = resolveColor(
         extractedLineColors,
         index1,
@@ -851,15 +850,14 @@ export const transformPlotlyJsonToGVBCProps = (
         isDarkTheme,
       );
       const lineOptions = getLineOptions(series.line);
-      const legendShape = getLegendShape(series);
-      const seriesOpacity = getOpacity(series, index1);
       const validXYRanges = getValidXYRanges(series);
 
       validXYRanges.forEach(([rangeStart, rangeEnd]) => {
         const rangeXValues = series.x!.slice(rangeStart, rangeEnd) as Datum[];
         const rangeYValues = series.y!.slice(rangeStart, rangeEnd) as Datum[];
 
-        lineData.push({
+        gvbcDataV2.push({
+          type: 'line',
           legend,
           legendShape,
           data: rangeXValues.map((x, i: number) => ({
@@ -878,11 +876,8 @@ export const transformPlotlyJsonToGVBCProps = (
     }
   });
 
-  const gvbcData = Object.values(mapXToDataPoints);
-
   return {
-    data: gvbcData,
-    lineData,
+    dataV2: gvbcDataV2,
     width: processedInput.layout?.width,
     height: processedInput.layout?.height ?? 350,
     barwidth: 'auto',
@@ -891,7 +886,7 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
-    wrapXAxisLables: typeof gvbcData[0]?.name === 'string',
+    wrapXAxisLables: true,
     ...getTitles(processedInput.layout),
     ...getAxisCategoryOrderProps(processedInput.data, processedInput.layout),
     ...getYMinMaxValues(processedInput.data[0], processedInput.layout),

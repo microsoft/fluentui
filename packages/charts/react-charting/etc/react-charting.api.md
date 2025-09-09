@@ -808,7 +808,7 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     barwidth?: number | 'default' | 'auto';
     chartTitle?: string;
     culture?: string;
-    data: IGroupedVerticalBarChartData[];
+    data?: IGroupedVerticalBarChartData[];
     // (undocumented)
     dataV2?: (IStandardBarSeries<string, number> | IStandardLineSeries<string, number>)[];
     enableGradient?: boolean;
@@ -816,8 +816,6 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     isCalloutForStack?: boolean;
     // @deprecated
     legendColor?: string;
-    // (undocumented)
-    lineData?: IGVBCLinePoints[];
     maxBarWidth?: number;
     mode?: 'default' | 'plotly';
     onRenderCalloutPerDataPoint?: IRenderFunction<IGVBarChartSeriesPoint>;
@@ -857,20 +855,6 @@ export interface IGVBarChartSeriesPoint {
     useSecondaryYScale?: boolean;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;
-}
-
-// @public (undocumented)
-export interface IGVBCLineDataPoint extends IBaseDataPoint {
-    // (undocumented)
-    x: string;
-    // (undocumented)
-    y: number;
-}
-
-// @public (undocumented)
-export interface IGVBCLinePoints extends Omit<ILineChartPoints, 'data'> {
-    // (undocumented)
-    data: IGVBCLineDataPoint[];
 }
 
 // @public (undocumented)
@@ -1660,6 +1644,8 @@ export interface IStandardBarSeries<X, Y> extends IStandardSeries {
 
 // @public (undocumented)
 export interface IStandardDataPoint<X, Y> {
+    // (undocumented)
+    callOutAccessibilityData?: IAccessibilityProps;
     // (undocumented)
     markerSize?: number;
     // (undocumented)

@@ -7,127 +7,101 @@ import {
 } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption, Toggle, getId, Label, Stack } from '@fluentui/react';
 
-const barData = [
+const data: IGroupedVerticalBarChartProps['dataV2'] = [
   {
-    name: 'Jan - Mar',
-    series: [
+    type: 'bar',
+    legend: '2022',
+    data: [
       {
-        key: 'series1',
-        data: 33000,
-        color: getColorFromToken(DataVizPalette.color3),
-        legend: '2022',
+        x: 'Jan - Mar',
+        y: 33000,
       },
       {
-        key: 'series2',
-        data: -44000,
-        color: getColorFromToken(DataVizPalette.color4),
-        legend: '2023',
+        x: 'Apr - Jun',
+        y: 33000,
       },
       {
-        key: 'series3',
-        data: -54000,
-        color: getColorFromToken(DataVizPalette.color5),
-        legend: '2024',
+        x: 'Jul - Sep',
+        y: 14000,
       },
       {
-        key: 'series4',
-        data: 24000,
-        color: getColorFromToken(DataVizPalette.color6),
-        legend: '2021',
+        x: 'Oct - Dec',
+        y: -33000,
       },
     ],
+    color: getColorFromToken(DataVizPalette.color3),
   },
   {
-    name: 'Apr - Jun',
-    series: [
+    type: 'bar',
+    legend: '2023',
+    data: [
       {
-        key: 'series1',
-        data: 33000,
-        color: getColorFromToken(DataVizPalette.color3),
-        legend: '2022',
+        x: 'Jan - Mar',
+        y: -44000,
       },
       {
-        key: 'series2',
-        data: -3000,
-        color: getColorFromToken(DataVizPalette.color4),
-        legend: '2023',
+        x: 'Apr - Jun',
+        y: -3000,
       },
       {
-        key: 'series3',
-        data: 9000,
-        color: getColorFromToken(DataVizPalette.color5),
-        legend: '2024',
+        x: 'Jul - Sep',
+        y: 50000,
       },
       {
-        key: 'series4',
-        data: -12000,
-        color: getColorFromToken(DataVizPalette.color6),
-        legend: '2021',
+        x: 'Oct - Dec',
+        y: 3000,
       },
     ],
+    color: getColorFromToken(DataVizPalette.color4),
   },
   {
-    name: 'Jul - Sep',
-    series: [
+    type: 'bar',
+    legend: '2024',
+    data: [
       {
-        key: 'series1',
-        data: 14000,
-        color: getColorFromToken(DataVizPalette.color3),
-        legend: '2022',
+        x: 'Jan - Mar',
+        y: -54000,
       },
       {
-        key: 'series2',
-        data: 50000,
-        color: getColorFromToken(DataVizPalette.color4),
-        legend: '2023',
+        x: 'Apr - Jun',
+        y: 9000,
       },
       {
-        key: 'series3',
-        data: -60000,
-        color: getColorFromToken(DataVizPalette.color5),
-        legend: '2024',
+        x: 'Jul - Sep',
+        y: -60000,
       },
       {
-        key: 'series4',
-        data: -10000,
-        color: getColorFromToken(DataVizPalette.color6),
-        legend: '2021',
+        x: 'Oct - Dec',
+        y: -6000,
       },
     ],
+    color: getColorFromToken(DataVizPalette.color5),
   },
   {
-    name: 'Oct - Dec',
-    series: [
+    type: 'bar',
+    legend: '2021',
+    data: [
       {
-        key: 'series1',
-        data: -33000,
-        color: getColorFromToken(DataVizPalette.color3),
-        legend: '2022',
+        x: 'Jan - Mar',
+        y: 24000,
       },
       {
-        key: 'series2',
-        data: 3000,
-        color: getColorFromToken(DataVizPalette.color4),
-        legend: '2023',
+        x: 'Apr - Jun',
+        y: -12000,
       },
       {
-        key: 'series3',
-        data: -6000,
-        color: getColorFromToken(DataVizPalette.color5),
-        legend: '2024',
+        x: 'Jul - Sep',
+        y: -10000,
       },
       {
-        key: 'series4',
-        data: -15000,
-        color: getColorFromToken(DataVizPalette.color6),
-        legend: '2021',
+        x: 'Oct - Dec',
+        y: -15000,
       },
     ],
+    color: getColorFromToken(DataVizPalette.color6),
   },
-];
-
-const lineData = [
   {
+    type: 'line',
     legend: 'From_Legacy_to_O365',
     data: [
       {
@@ -153,6 +127,7 @@ const lineData = [
     },
   },
   {
+    type: 'line',
     legend: 'All',
     data: [
       {
@@ -286,8 +261,7 @@ export class GroupedVerticalBarChartLineExample extends React.Component<{}, IGVB
         <div style={rootStyle}>
           <GroupedVerticalBarChart
             chartTitle="Grouped Vertical Bar chart line example"
-            data={barData}
-            lineData={lineData}
+            dataV2={data}
             height={this.state.height}
             width={this.state.width}
             isCalloutForStack={this.state.calloutVariant === 'StackCallout'}

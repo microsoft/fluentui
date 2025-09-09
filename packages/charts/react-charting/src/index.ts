@@ -107,8 +107,6 @@ export type {
   IGanttChartDataPoint,
   AxisScaleType,
   AxisProps,
-  IGVBCLineDataPoint,
-  IGVBCLinePoints,
   IStandardDataPoint,
   IStandardSeries,
   IStandardBarSeries,
