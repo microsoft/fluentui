@@ -55,7 +55,13 @@ import {
   IChildProps,
   IYValueHover,
 } from '../../index';
-import { IChart, IImageExportOptions, IGVBCLinePoints } from '../../types/index';
+import {
+  IChart,
+  IImageExportOptions,
+  IGVBCLinePoints,
+  IStandardBarSeries,
+  IStandardLineSeries,
+} from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
 import { rgb } from 'd3-color';
@@ -175,7 +181,7 @@ export class GroupedVerticalBarChartBase
   }
 
   public render(): React.ReactNode {
-    const { barData, lineData } = this._addDefaultColors(this.props.data, this.props.lineData);
+    const { barData, lineData } = this._prepareChartData();
     this._xAxisType = getTypeOfAxis(barData[0].name, true) as XAxisTypes;
     const { barLegends, xAxisLabels, datasetForBars } = this._createSet(barData, lineData);
     this._barLegends = barLegends;
@@ -218,7 +224,7 @@ export class GroupedVerticalBarChartBase
       tickFormat: this.props.tickFormat!,
     };
 
-    return !this._isChartEmpty() ? (
+    return !this._isChartEmpty(barData, lineData) ? (
       <CartesianChart
         {...this.props}
         chartTitle={this._getChartTitle(lineData)}
@@ -799,14 +805,12 @@ export class GroupedVerticalBarChartBase
     };
   };
 
-  private _isChartEmpty(): boolean {
+  private _isChartEmpty(barData: IGroupedVerticalBarChartData[], lineData: IGVBCLinePoints[]): boolean {
     return !(
-      (this.props.data &&
-        this.props.data.length > 0 &&
-        this.props.data.filter((item: IGroupedVerticalBarChartData) => item.series.length).length > 0) ||
-      (this.props.lineData &&
-        this.props.lineData.length > 0 &&
-        this.props.lineData.some(series => series.data.length > 0))
+      (barData &&
+        barData.length > 0 &&
+        barData.filter((item: IGroupedVerticalBarChartData) => item.series.length).length > 0) ||
+      (lineData && lineData.length > 0 && lineData.some(series => series.data.length > 0))
     );
   }
 
@@ -839,7 +843,14 @@ export class GroupedVerticalBarChartBase
     return rgb(colorInterpolator(percentage)).formatRgb();
   };
 
-  private _addDefaultColors = (barData?: IGroupedVerticalBarChartData[], lineData?: IGVBCLinePoints[]) => {
+  private _prepareChartData = () => {
+    let barData = this.props.data;
+    let lineData = this.props.lineData;
+
+    if (Array.isArray(this.props.dataV2) && this.props.dataV2.length > 0) {
+      ({ barData, lineData } = this._processDataV2(this.props.dataV2));
+    }
+
     this._legendColorMap = {};
     let colorIndex = 0;
 
@@ -982,7 +993,7 @@ export class GroupedVerticalBarChartBase
                 y2={y2}
                 fill="transparent"
                 stroke={series.lineOptions?.lineBorderColor ?? this.props.theme!.semanticColors.bodyBackground}
-                strokeWidth={lineBorderWidth * 2}
+                strokeWidth={3 + lineBorderWidth * 2}
                 strokeLinecap="round"
                 opacity={shouldHighlight ? 1 : 0.1}
               />,
@@ -1139,5 +1150,36 @@ export class GroupedVerticalBarChartBase
 
   private _getDotId = (seriesIdx: number, pointIdx: number) => {
     return this._uniqDotId + `-${seriesIdx}-${pointIdx}`;
+  };
+
+  private _processDataV2 = (dataV2: (IStandardBarSeries<string, number> | IStandardLineSeries<string, number>)[]) => {
+    const barPointsByX: Record<string, IGroupedVerticalBarChartData> = {};
+    const lineData: IGVBCLinePoints[] = [];
+
+    dataV2.forEach(series => {
+      if (series.type === 'bar') {
+        series.data.forEach(point => {
+          if (!barPointsByX[point.x]) {
+            barPointsByX[point.x] = { name: point.x, series: [] };
+          }
+
+          barPointsByX[point.x].series.push({
+            key: series.key ?? series.legend,
+            data: point.y,
+            color: series.color!,
+            gradient: series.gradient,
+            legend: series.legend,
+            xAxisCalloutData: point.xAxisCalloutData,
+            yAxisCalloutData: point.yAxisCalloutData,
+            onClick: point.onDataPointClick,
+            useSecondaryYScale: series.useSecondaryYScale,
+          });
+        });
+      } else if (series.type === 'line') {
+        lineData!.push(series);
+      }
+    });
+
+    return { barData: Object.values(barPointsByX), lineData };
   };
 }

@@ -1118,14 +1118,37 @@ export interface IGVBCLinePoints extends Omit<ILineChartPoints, 'data'> {
   data: IGVBCLineDataPoint[];
 }
 
-export interface IStandardBarSeries<T, U> {
-  type: 'bar';
-  x: T[];
-  y: U[];
+export interface IStandardDataPoint<T, U> {
+  x: T;
+  y: U;
+  onDataPointClick?: () => void;
+  xAxisCalloutData?: string;
+  yAxisCalloutData?: string;
+  markerSize?: number;
+  text?: string;
 }
 
-export interface IStandardLineSeries<T, U> {
+export interface IStandardSeries {
+  legend: string;
+  legendShape?: LegendShape;
+  color?: string;
+  opacity?: number;
+  gradient?: [string, string];
+  useSecondaryYScale?: boolean;
+  onLegendClick?: (selectedLegend: string | null | string[]) => void;
+}
+
+export interface IStandardBarSeries<T, U> extends IStandardSeries {
+  type: 'bar';
+  data: IStandardDataPoint<T, U>[];
+  key?: string;
+}
+
+export interface IStandardLineSeries<T, U> extends IStandardSeries {
   type: 'line';
-  x: T[];
-  y: U[];
+  data: IStandardDataPoint<T, U>[];
+  gaps?: ILineChartGap[];
+  lineOptions?: ILineChartLineOptions;
+  hideNonActiveDots?: boolean;
+  onLineClick?: () => void;
 }

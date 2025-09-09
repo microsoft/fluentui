@@ -56,8 +56,6 @@ export type {
   IGroupedVerticalBarChartStyles,
 } from './GroupedVerticalBarChart';
 export { GroupedVerticalBarChart } from './GroupedVerticalBarChart';
-export type { IGroupedVerticalBarChartV2Props } from './GroupedVerticalBarChartV2';
-export { GroupedVerticalBarChartV2 } from './GroupedVerticalBarChartV2';
 export type {
   ICartesianChartProps,
   ICartesianChartStyleProps,
@@ -111,6 +109,8 @@ export type {
   AxisProps,
   IGVBCLineDataPoint,
   IGVBCLinePoints,
+  IStandardDataPoint,
+  IStandardSeries,
   IStandardBarSeries,
   IStandardLineSeries,
 } from './types/index';

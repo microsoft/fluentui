@@ -7,6 +7,8 @@ import {
   IGroupedVerticalBarChartData,
   IGVBarChartSeriesPoint,
   IGVBCLinePoints,
+  IStandardBarSeries,
+  IStandardLineSeries,
 } from '../../index';
 
 /**
@@ -133,6 +135,11 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    *
    */
   lineData?: IGVBCLinePoints[];
+
+  /**
+   *
+   */
+  dataV2?: (IStandardBarSeries<string, number> | IStandardLineSeries<string, number>)[];
 }
 
 /**
