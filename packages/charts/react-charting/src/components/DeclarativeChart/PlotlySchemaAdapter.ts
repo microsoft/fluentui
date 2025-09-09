@@ -1728,6 +1728,17 @@ const formatValue = (
   return `${prefix ?? ''}${formatted}${suffix ?? ''}`;
 };
 
+function resolveCellStyle<T>(raw: T | T[] | T[][] | undefined, rowIndex: number, colIndex: number): T | undefined {
+  if (Array.isArray(raw)) {
+    const rowEntry = raw[colIndex] ?? raw[0];
+    if (Array.isArray(rowEntry)) {
+      return rowEntry[rowIndex] ?? rowEntry[0];
+    }
+    return rowEntry;
+  }
+  return raw;
+}
+
 export const transformPlotlyJsonToChartTableProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
@@ -1751,42 +1762,14 @@ export const transformPlotlyJsonToChartTableProps = (
       : (values as string[]).map(cell => cleanText(cell));
 
     return cleanedValues.map((value, colIndex) => {
-      const fontColorRaw = header?.font?.color;
-      let fontColor: React.CSSProperties['color'] | undefined;
-
-      if (Array.isArray(fontColorRaw)) {
-        const colorEntry = fontColorRaw[colIndex] ?? fontColorRaw[0];
-        if (Array.isArray(colorEntry)) {
-          fontColor = typeof colorEntry[0] === 'string' ? colorEntry[0] : undefined;
-        } else if (typeof colorEntry === 'string') {
-          fontColor = colorEntry;
-        }
-      } else if (typeof fontColorRaw === 'string') {
-        fontColor = fontColorRaw;
-      }
-
-      const fontSizeRaw = header?.font?.size;
-      let fontSize: React.CSSProperties['fontSize'] | undefined;
-
-      if (Array.isArray(fontSizeRaw)) {
-        const fontSizeEntry = fontSizeRaw[colIndex] ?? fontSizeRaw[0];
-        fontSize = Array.isArray(fontSizeRaw[0])
-          ? fontSizeRaw[0][colIndex] ?? fontSizeRaw[0][0]
-          : typeof fontSizeEntry === 'number'
-          ? fontSizeEntry
-          : undefined;
-      } else if (typeof fontSizeRaw === 'number') {
-        fontSize = fontSizeRaw;
-      }
-
-      const updatedColIndex = colIndex >= 1 ? 1 : 0;
-      const fillColorRaw = header?.fill?.color;
-      const backgroundColor = Array.isArray(fillColorRaw)
-        ? fillColorRaw[updatedColIndex] ?? fillColorRaw[0]
-        : fillColorRaw;
-
-      const textAlignRaw = header?.align;
-      const textAlign = Array.isArray(textAlignRaw) ? textAlignRaw[colIndex] ?? textAlignRaw[0] : textAlignRaw;
+      //headers are at first row only
+      const rowIndex = 0;
+      const fontColor = resolveCellStyle(header?.font?.color, rowIndex, colIndex) as string | undefined;
+      const fontSize = resolveCellStyle(header?.font?.size, rowIndex, colIndex) as number | undefined;
+      const backgroundColor = resolveCellStyle(header?.fill?.color, rowIndex, colIndex) as string | undefined;
+      const textAlign = resolveCellStyle(header?.align, rowIndex, colIndex) as
+        | React.CSSProperties['textAlign']
+        | undefined;
 
       const style: React.CSSProperties = {
         ...(typeof fontColor === 'string' ? { color: fontColor } : {}),
@@ -1813,39 +1796,12 @@ export const transformPlotlyJsonToChartTableProps = (
           ? formatValue(cleanValue, colIndex, cells)
           : cleanValue;
 
-      const rawFontColor = cells?.font?.color;
-      let fontColor: React.CSSProperties['color'] | undefined;
-      if (Array.isArray(rawFontColor)) {
-        const entry = rawFontColor[colIndex] ?? rawFontColor[0];
-        const colorValue = Array.isArray(entry) ? entry[rowIndex] : entry;
-        fontColor = typeof colorValue === 'string' ? colorValue : undefined;
-      } else if (typeof rawFontColor === 'string') {
-        fontColor = rawFontColor;
-      }
-
-      const rawFontSize = cells?.font?.size;
-      let fontSize: React.CSSProperties['fontSize'] | undefined;
-      if (Array.isArray(rawFontSize)) {
-        const entry = rawFontSize[colIndex] ?? rawFontSize[0];
-        const fontSizeValue = Array.isArray(entry) ? entry[rowIndex] : entry;
-        fontSize = typeof fontSizeValue === 'number' ? fontSizeValue : undefined;
-      } else if (typeof rawFontSize === 'number') {
-        fontSize = rawFontSize;
-      }
-
-      const updatedColIndex = colIndex >= 1 ? 1 : 0;
-      const rawBackgroundColor = cells?.fill?.color;
-      let backgroundColor: React.CSSProperties['backgroundColor'] | undefined;
-      if (Array.isArray(rawBackgroundColor)) {
-        const entry = rawBackgroundColor[updatedColIndex] ?? rawBackgroundColor[0];
-        const colorValue = Array.isArray(entry) ? entry[rowIndex] : entry;
-        backgroundColor = typeof colorValue === 'string' ? colorValue : undefined;
-      } else if (typeof rawBackgroundColor === 'string') {
-        backgroundColor = rawBackgroundColor;
-      }
-
-      const rawTextAlign = Array.isArray(cells?.align) ? cells.align[colIndex] ?? cells.align[0] : cells?.align;
-      const textAlign = rawTextAlign as React.CSSProperties['textAlign'] | undefined;
+      const fontColor = resolveCellStyle(cells?.font?.color, rowIndex, colIndex) as string | undefined;
+      const fontSize = resolveCellStyle(cells?.font?.size, rowIndex, colIndex) as number | undefined;
+      const backgroundColor = resolveCellStyle(cells?.fill?.color, rowIndex, colIndex) as string | undefined;
+      const textAlign = resolveCellStyle(cells?.align, rowIndex, colIndex) as
+        | React.CSSProperties['textAlign']
+        | undefined;
 
       const style: React.CSSProperties = {
         ...(fontColor ? { color: fontColor } : {}),
