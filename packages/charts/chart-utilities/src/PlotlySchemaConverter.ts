@@ -232,6 +232,12 @@ const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean
 };
 
 const validateBarData = (data: Partial<PlotData>) => {
+  if (data.x && isArrayOrTypedArray(data.x) && data.x.length === 0) {
+    throw new Error(`Empty x array detected for bar chart.`);
+  }
+  if (data.y && isArrayOrTypedArray(data.y) && data.y.length === 0) {
+    throw new Error(`Empty y array detected for bar chart.`);
+  }
   if (data.orientation === 'h') {
     if (!isNumberArray(data.x) && !isDateArray(data.x)) {
       throw new Error(
@@ -245,8 +251,10 @@ const validateBarData = (data: Partial<PlotData>) => {
       );
     }
     validateSeriesData(data, false);
-  } else if (!isNumberArray(data.y) && !isStringArray(data.y) && !isObjectArray(data.y)) {
-    throw new Error(`Non numeric, string, or object Y values encountered, type: ${typeof data.y}`);
+  } else {
+    if (!isNumberArray(data.y) && !isStringArray(data.y) && !isObjectArray(data.y)) {
+      throw new Error(`Non numeric, string, or object Y values encountered, type: ${typeof data.y}`);
+    }
   }
 };
 const isScatterMarkers = (mode: string): boolean => {
