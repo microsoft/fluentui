@@ -1,8 +1,9 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import type { SankeyChartProps, SankeyChartStyles } from './SankeyChart.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HighContrastSelector } from '../../utilities/index';
+import { getTooltipStyle } from '../../utilities/index';
 
 export const sankeyChartClassNames: SlotClassNames<SankeyChartStyles> = {
   root: 'fui-sc__root',
@@ -35,18 +36,7 @@ const useStyles = makeStyles({
       fill: 'Canvas',
     },
   },
-  toolTip: {
-    ...typographyStyles.body1,
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '8px',
-    position: 'absolute',
-    textAlign: 'center',
-    top: '0px',
-    background: tokens.colorNeutralBackground1,
-    borderRadius: '2px',
-    pointerEvents: 'none',
-  },
+  toolTip: getTooltipStyle() as GriffelStyle,
   nodeTextContainer: {
     '& text': {
       [HighContrastSelector]: {

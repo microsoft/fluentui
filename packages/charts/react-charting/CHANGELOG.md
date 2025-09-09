@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 21 Aug 2025 12:15:04 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Sep 2025 07:22:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.27)
+
+Mon, 08 Sep 2025 07:22:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.26..@fluentui/react-charting_v5.24.27)
+
+### Patches
+
+- fix(react-charting): Fixing donut colors and segment orders ([PR #35131](https://github.com/microsoft/fluentui/pull/35131) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.24.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.26)
+
+Tue, 26 Aug 2025 07:21:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.25..@fluentui/react-charting_v5.24.26)
+
+### Patches
+
+- fix(react-charting): Updating segment colors for Donut chart ([PR #35054](https://github.com/microsoft/fluentui/pull/35054) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/react-focus to v8.9.26 ([commit](https://github.com/microsoft/fluentui/commit/54d698502c976954b7246ada9cc866e7c6a881a2) by beachball)
+- Bump @fluentui/theme-samples to v8.7.214 ([commit](https://github.com/microsoft/fluentui/commit/54d698502c976954b7246ada9cc866e7c6a881a2) by beachball)
+- Bump @fluentui/react to v8.123.5 ([commit](https://github.com/microsoft/fluentui/commit/54d698502c976954b7246ada9cc866e7c6a881a2) by beachball)
 
 ## [5.24.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.25)
 

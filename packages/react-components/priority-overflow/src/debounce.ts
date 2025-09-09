@@ -4,7 +4,7 @@
  * @param fn - Function to debounce
  * @returns debounced function
  */
-export function debounce(fn: Function) {
+export function debounce(fn: Function): () => void {
   let pending: boolean;
 
   // React testing platforms will often output errors when state updates happen outside `act`

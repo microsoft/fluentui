@@ -16,10 +16,5 @@ const specs = [
 const config = { ...baseConfig };
 
 config.component.specPattern = specs;
-config.component.devServer.webpackConfig.resolve ??= {};
-config.component.devServer.webpackConfig.resolve.alias = {
-  ...config.component.devServer.webpackConfig.resolve.alias,
-  '@cypress/react': path.resolve(__dirname, './config/cypressWithStrictMode.ts'),
-};
 
 export default config;

@@ -10,7 +10,7 @@ const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
 };
 
-export const useSliderState_unstable = (state: SliderState, props: SliderProps) => {
+export const useSliderState_unstable = (state: SliderState, props: SliderProps): SliderState => {
   'use no memo';
 
   const { min = 0, max = 100, step } = props;

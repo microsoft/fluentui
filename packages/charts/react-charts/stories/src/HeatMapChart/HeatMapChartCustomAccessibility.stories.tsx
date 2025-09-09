@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   HeatMapChart,
   HeatMapChartDataPoint,
@@ -64,7 +65,7 @@ function getDescription(x: string, y: string, value: number, prevValue: number):
   return `${yPointMap[y]}, ${x}. ${value}, ${percentageChange >= 0 ? '+' : ''}${percentageChange.toFixed(2)}%.`;
 }
 
-export const HeatMapChartCustomAccessibility: React.FunctionComponent<{}> = () => {
+export const HeatMapChartCustomAccessibility: React.FunctionComponent<{}> = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(450);
   const [height, setHeight] = React.useState<number>(350);
 

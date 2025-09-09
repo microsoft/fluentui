@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Tue, 26 Aug 2025 07:21:43 GMT",
+      "tag": "@fluentui/style-utilities_v8.12.4",
+      "version": "8.12.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "135cfcc89d45486ad513c19ac7273a7a602e56d5",
+            "comment": "Adding mapping for `onepage` filetype icon and updating CDN url."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Aug 2025 07:19:46 GMT",
       "tag": "@fluentui/style-utilities_v8.12.3",
       "version": "8.12.3",

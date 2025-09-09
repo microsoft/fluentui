@@ -1,4 +1,4 @@
-import { shift as baseShift, limitShift } from '@floating-ui/dom';
+import { shift as baseShift, limitShift, Middleware } from '@floating-ui/dom';
 import type { PositioningOptions } from '../types';
 import { getBoundary, toFloatingUIPadding } from '../utils/index';
 
@@ -13,7 +13,7 @@ export interface ShiftMiddlewareOptions
 /**
  * Wraps the floating UI shift middleware for easier usage of our options
  */
-export function shift(options: ShiftMiddlewareOptions) {
+export function shift(options: ShiftMiddlewareOptions): Middleware {
   const {
     hasScrollableElement,
     shiftToCoverTarget,

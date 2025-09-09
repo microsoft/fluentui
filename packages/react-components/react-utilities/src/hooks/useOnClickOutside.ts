@@ -45,7 +45,7 @@ const DEFAULT_CONTAINS: UseOnClickOrScrollOutsideOptions['contains'] = (parent, 
  * @internal
  * Utility to perform checks where a click/touch event was made outside a component
  */
-export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => {
+export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions): void => {
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
   const { refs, callback, element, disabled, disabledFocusOnIframe, contains = DEFAULT_CONTAINS } = options;

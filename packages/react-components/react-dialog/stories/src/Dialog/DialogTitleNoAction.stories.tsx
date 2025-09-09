@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   DialogTrigger,
@@ -11,7 +12,7 @@ import {
 } from '@fluentui/react-components';
 import story from './DialogTitleNoAction.md';
 
-export const TitleNoAction = () => {
+export const TitleNoAction = (): JSXElement => {
   return (
     <Dialog modalType="non-modal">
       <DialogTrigger disableButtonEnhancement>

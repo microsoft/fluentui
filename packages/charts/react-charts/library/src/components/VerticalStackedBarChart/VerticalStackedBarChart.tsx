@@ -54,7 +54,7 @@ import {
   YAxisType,
   createNumericYAxis,
   IDomainNRange,
-  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfVSBCNumeric,
   domainRangeOfXStringAxis,
   createStringYAxis,
@@ -531,7 +531,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       if (xAxisType === XAxisTypes.NumericAxis) {
         domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
       } else if (xAxisType === XAxisTypes.DateAxis) {
-        domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+        domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
           points,
           margins,
           width,
@@ -1216,6 +1216,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
                 aria-label={`Total: ${barLabel}`}
                 role="img"
                 transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+                style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
               >
                 {typeof props.yAxisTickFormat === 'function'
                   ? props.yAxisTickFormat(barLabel)

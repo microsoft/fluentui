@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, Button, motionTokens } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurDurationDescription from './BlurDuration.stories.md';
@@ -46,7 +47,7 @@ const durationOptions: Array<{ label: string; duration: number; exitDuration?: n
   },
 ];
 
-export const Duration = () => {
+export const Duration = (): JSXElement => {
   const classes = useClasses();
   const [visibleStates, setVisibleStates] = React.useState<boolean[]>(durationOptions.map(() => true));
 

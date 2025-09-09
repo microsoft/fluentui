@@ -1,7 +1,7 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { AreaChartProps, AreaChartStyles } from './index';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { getTooltipStyle } from '../../utilities/index';
 
 export const areaChartClassNames: SlotClassNames<AreaChartStyles> = {
   tooltip: 'fui-ac__tooltip',
@@ -22,19 +22,7 @@ export const areaChartClassNames: SlotClassNames<AreaChartStyles> = {
 };
 
 const useStyles = makeStyles({
-  tooltip: {
-    ...typographyStyles.body1,
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    position: 'absolute',
-    textAlign: 'center',
-    top: tokens.spacingVerticalNone,
-    backgroundColor: tokens.colorNeutralBackground1,
-    borderRadius: tokens.borderRadiusSmall,
-    pointerEvents: 'none',
-    color: tokens.colorNeutralForeground1,
-  },
+  tooltip: getTooltipStyle() as GriffelStyle,
 });
 
 /**

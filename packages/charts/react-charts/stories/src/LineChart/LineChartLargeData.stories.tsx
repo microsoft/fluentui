@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { LineChartProps, LineChart, ChartProps, LineChartDataPoint, DataVizPalette } from '@fluentui/react-charts';
 import { Switch } from '@fluentui/react-components';
 
-export const LineChartLargeData = (props: LineChartProps) => {
+export const LineChartLargeData = (props: LineChartProps): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);

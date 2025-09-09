@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { ChartProps, SankeyChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 
 const data: ChartProps = {
@@ -87,7 +88,7 @@ const data: ChartProps = {
   },
 };
 
-export const SankeyChartBasic: React.FunctionComponent<{}> = () => {
+export const SankeyChartBasic: React.FunctionComponent<{}> = (): JSXElement => {
   const [width, setWidth] = React.useState(820);
   const [height, setHeight] = React.useState(412);
 
@@ -125,7 +126,13 @@ export const SankeyChartBasic: React.FunctionComponent<{}> = () => {
         />
       </div>
       <div style={rootStyle}>
-        <SankeyChart data={data} height={height} width={width} shouldResize={width + height} />
+        <SankeyChart
+          data={data}
+          height={height}
+          width={width}
+          shouldResize={width + height}
+          reflowProps={{ mode: 'min-width' }}
+        />
       </div>
     </div>
   );

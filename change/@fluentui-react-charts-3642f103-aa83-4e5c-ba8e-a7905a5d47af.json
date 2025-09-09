@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add support for declarative multiplot chart - non cartesian",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

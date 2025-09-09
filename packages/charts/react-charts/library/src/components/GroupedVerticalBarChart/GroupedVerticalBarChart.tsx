@@ -521,7 +521,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               y={yPoint}
               opacity={barOpacity}
               fill={pointColor}
-              rx={0}
+              rx={props.roundCorners ? 3 : 0}
               onMouseOver={event => onBarHover(pointData, singleSet, event)}
               onMouseMove={event => onBarHover(pointData, singleSet, event)}
               onMouseOut={_onBarLeave}
@@ -536,7 +536,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
           barTotalValue += pointData.data;
         });
-        if (barTotalValue !== null && !props.hideLabels && _barWidth >= 16 && isLegendActive) {
+        if (barTotalValue !== null && !props.hideLabels && Math.ceil(_barWidth) >= 16 && isLegendActive) {
           barLabelsForGroup.push(
             <text
               key={`${singleSet.indexNum}-${legendIndex}`}
@@ -545,6 +545,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               textAnchor="middle"
               className={classes.barLabel}
               aria-hidden={true}
+              style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
             >
               {typeof props.yAxisTickFormat === 'function'
                 ? props.yAxisTickFormat(barTotalValue)

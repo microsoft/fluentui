@@ -1,9 +1,10 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import type { ArgTypes } from '@storybook/react';
 import { Field, SearchBox } from '@fluentui/react-components';
 import type { SearchBoxProps } from '@fluentui/react-components';
 
-export const Default = (props: SearchBoxProps) => {
+export const Default = (props: SearchBoxProps): JSXElement => {
   return (
     <Field label="Sample SearchBox">
       <SearchBox {...props} />

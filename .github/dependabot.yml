@@ -1,10 +1,12 @@
 version: 2
 updates:
+  # GitHub Actions updates
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
       interval: 'weekly'
-  # Weekly updates for devDependencies.
+
+  # npm dependencies - weekly updates for devDependencies
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
@@ -14,6 +16,23 @@ updates:
     open-pull-requests-limit: 6
     versioning-strategy: increase
     ignore:
-      # Ignore major version bumps for all npm dependencies
+      # Ignore major version bumps for all npm dependencies in weekly updates
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+    # Note: Security updates for known vulnerabilities are handled automatically by GitHub
+    # and will create PRs regardless of the ignore rules above
+
+  # Additional configuration for production dependencies security updates
+  # This ensures production dependencies get security updates more frequently
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    allow:
+      - dependency-type: 'production'
+    open-pull-requests-limit: 3
+    versioning-strategy: increase
+    # Only create PRs for security updates and minor/patch versions
+    ignore:
       - dependency-name: '*'
         update-types: ['version-update:semver-major']

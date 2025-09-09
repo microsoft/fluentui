@@ -2,12 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { TextareaState, TextareaSlots } from './Textarea.types';
 
 /**
  * Render the final JSX of Textarea
  */
-export const renderTextarea_unstable = (state: TextareaState) => {
+export const renderTextarea_unstable = (state: TextareaState): JSXElement => {
   assertSlots<TextareaSlots>(state);
 
   return (

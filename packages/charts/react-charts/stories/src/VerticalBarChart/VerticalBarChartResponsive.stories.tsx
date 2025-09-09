@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   VerticalBarChart,
   VerticalBarChartDataPoint,
@@ -8,7 +9,7 @@ import {
   ResponsiveContainer,
 } from '@fluentui/react-charts';
 
-export const VerticalBarChartResponsive = () => {
+export const VerticalBarChartResponsive = (): JSXElement => {
   const points: VerticalBarChartDataPoint[] = [
     {
       x: 0,

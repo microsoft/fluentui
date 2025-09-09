@@ -41,4 +41,4 @@ const NavContext = React.createContext<NavContextValue | undefined>(undefined);
 
 export const NavProvider = NavContext.Provider;
 
-export const useNavContext_unstable = () => React.useContext(NavContext) || navContextDefaultValue;
+export const useNavContext_unstable = (): NavContextValue => React.useContext(NavContext) || navContextDefaultValue;

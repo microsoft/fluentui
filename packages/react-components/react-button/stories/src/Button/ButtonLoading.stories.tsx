@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { buttonClassNames, makeStyles, tokens, Button, Spinner } from '@fluentui/react-components';
 import { CheckmarkFilled } from '@fluentui/react-icons';
 // eslint-disable-next-line @fluentui/no-restricted-imports
@@ -24,7 +25,7 @@ const useStyles = makeStyles({
 
 type LoadingState = 'initial' | 'loading' | 'loaded';
 
-export const Loading = () => {
+export const Loading = (): JSXElement => {
   const styles = useStyles();
 
   const [loadingState, setLoadingState] = React.useState<LoadingState>('initial');

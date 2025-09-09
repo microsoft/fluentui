@@ -1,5 +1,5 @@
 import 'cypress-real-events';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import {
   usePositioning,
   useSafeZoneArea,

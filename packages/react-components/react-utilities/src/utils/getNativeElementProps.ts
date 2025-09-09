@@ -99,7 +99,13 @@ export const getPartitionedNativeProps = <
 
   /** List of native props to exclude from the returned value */
   excludedPropNames?: ExcludedPropKeys[];
-}) => {
+}): {
+  root: {
+    style: React.CSSProperties | undefined;
+    className: string | undefined;
+  };
+  primary: Omit<Props, ExcludedPropKeys>;
+} => {
   return {
     root: { style: props.style, className: props.className },
     // eslint-disable-next-line @typescript-eslint/no-deprecated

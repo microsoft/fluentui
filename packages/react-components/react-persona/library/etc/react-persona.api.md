@@ -8,6 +8,7 @@ import { Avatar } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -45,7 +46,7 @@ export type PersonaState = ComponentState<PersonaSlots> & Required<Pick<PersonaP
 };
 
 // @public
-export const renderPersona_unstable: (state: PersonaState) => JSX.Element;
+export const renderPersona_unstable: (state: PersonaState) => JSXElement;
 
 // @public
 export const usePersona_unstable: (props: PersonaProps, ref: React_2.Ref<HTMLElement>) => PersonaState;

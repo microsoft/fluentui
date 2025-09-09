@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Mon, 08 Sep 2025 12:51:42 GMT",
+      "tag": "@fluentui/priority-overflow_v9.1.16",
+      "version": "9.1.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Feb 2025 14:34:03 GMT",
       "tag": "@fluentui/priority-overflow_v9.1.15",
       "version": "9.1.15",

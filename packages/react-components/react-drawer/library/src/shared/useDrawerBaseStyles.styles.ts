@@ -82,7 +82,7 @@ export const useDrawerBottomBaseStyles = makeStyles({
   },
 });
 
-export const useDrawerBaseClassNames = ({ position, size }: DrawerBaseState) => {
+export const useDrawerBaseClassNames = ({ position, size }: DrawerBaseState): string => {
   const baseStyles = useDrawerStyles();
   const bottomBaseStyles = useDrawerBottomBaseStyles();
 

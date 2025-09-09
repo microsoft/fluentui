@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   return (
     <Tree aria-label="Default">
       <TreeItem itemType="branch">

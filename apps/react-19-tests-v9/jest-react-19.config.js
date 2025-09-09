@@ -15,7 +15,7 @@ const jestConfig = require('./jest.config');
  */
 const config = {
   ...jestConfig,
-  moduleNameMapper: { ...tsPathAliases },
+  moduleNameMapper: { ...tsPathAliases, ...jestConfig.moduleNameMapper },
   displayName: 'react-19-tests-v9-integration',
   roots: createRoots(),
   // Keeps Jest from using too much memory as GC gets invokes more often, makes tests slower

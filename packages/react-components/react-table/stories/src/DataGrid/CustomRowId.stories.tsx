@@ -25,8 +25,7 @@ import {
   TableRowId,
   DataGridProps,
 } from '@fluentui/react-components';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
@@ -154,7 +153,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const CustomRowId = () => {
+export const CustomRowId = (): JSXElement => {
   const [selectedRows, setSelectedRows] = React.useState(new Set<TableRowId>(['Thursday presentation']));
   const onSelectionChange: DataGridProps['onSelectionChange'] = (e, data) => {
     setSelectedRows(data.selectedItems);

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -155,7 +155,7 @@ const RenderRow = ({ index, style, data }: ReactWindowRenderFnProps) => {
   );
 };
 
-export const Virtualization = () => {
+export const Virtualization = (): JSXElement => {
   const { targetDocument } = useFluent();
   const scrollbarWidth = useScrollbarWidth({ targetDocument });
 
