@@ -1,9 +1,30 @@
 import { spawn } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { type PackageJson } from 'nx/src/utils/package-json';
 
 export { type PackageJson };
+
+/**
+ * Parse JSON from a file path with proper error handling
+ */
+export function parseJson<T extends object = any>(filePath: string): T {
+  try {
+    const content = readFileSync(filePath, 'utf-8');
+    return JSON.parse(content);
+  } catch (error) {
+    const raw = readFileSync(filePath, 'utf-8');
+    console.error('Failed to parse JSON at', filePath, 'content=', raw);
+
+    if (error instanceof SyntaxError) {
+      throw new Error(`Invalid JSON in file ${filePath}: ${error.message}`);
+    } else if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+      throw new Error(`File not found: ${filePath}`);
+    } else {
+      throw error;
+    }
+  }
+}
 
 export interface TsConfig {
   include?: string[];
@@ -60,10 +81,10 @@ export function getMergedTemplate(
   if (!existsSync(builtinPath)) {
     throw new Error(`Builtin template not found for React ${reactVersion} at: ${builtinPath}`);
   }
-  const defaults: {
+  const defaults = parseJson<{
     commands: Record<string, string>;
     dependencies: Record<string, string>;
-  } = JSON.parse(readFileSync(builtinPath, 'utf-8'));
+  }>(builtinPath);
 
   // Resolve config path: explicit --config wins, else default to ./rit.config.js if exists, else no overrides
   let overrides: Config['react'][string] | undefined;
@@ -183,7 +204,7 @@ export function readCommandsFromPreparedProject(projectPath: string): Record<str
       `No package.json found in prepared project at: ${pkgPath}. Re-run preparation with a supported template.`,
     );
   }
-  const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8')) as { scripts?: Record<string, string> };
+  const pkg = parseJson<{ scripts?: Record<string, string> }>(pkgPath);
   const scripts = pkg.scripts ?? {};
 
   // Only expose the known command names; ignore others

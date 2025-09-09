@@ -5,7 +5,7 @@ import { execSync } from 'node:child_process';
 import * as ejs from 'ejs';
 
 import type { Args, ReactVersion, PackageJson, TsConfig } from './shared';
-import { runCmd, readCommandsFromPreparedProject, getPreparedTemplate, getMergedTemplate } from './shared';
+import { runCmd, readCommandsFromPreparedProject, getPreparedTemplate, getMergedTemplate, parseJson } from './shared';
 import { type Logger } from './logger';
 
 function findGitRoot(cwd: string) {
@@ -107,7 +107,7 @@ function getProjectInfo(cwd: string): {
     throw new Error(`Could not find tsconfig.lib.json at: ${projectPaths.tsConfig}`);
   }
 
-  const packageJson = JSON.parse(readFileSync(projectPaths.packageJson, 'utf-8'));
+  const packageJson = parseJson(projectPaths.packageJson);
 
   return {
     projectName: packageJson.name.replace(/^@[a-z-]+\//gi, ''),
@@ -163,7 +163,7 @@ function createProjectPackageJson(options: {
 function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: string; projectTsConfigPath: string }) {
   const relativePathToProjectTsConfig = relative(options.projectPath, options.projectTsConfigPath);
 
-  const tsConfig: TsConfig = JSON.parse(readFileSync(options.projectTsConfigPath, 'utf-8'));
+  const tsConfig: TsConfig = parseJson(options.projectTsConfigPath);
   if (!tsConfig.include) {
     throw new Error(`No include paths found at: ${options.projectTsConfigPath}`);
   }
@@ -244,7 +244,7 @@ export async function setup(
   // Create or update package.json at the react root with the dependencies once.
   const reactRootPkgPath = join(reactRootPath, 'package.json');
   const reactRootPkg: PackageJson = existsSync(reactRootPkgPath)
-    ? (JSON.parse(readFileSync(reactRootPkgPath, 'utf-8')) as PackageJson)
+    ? parseJson<PackageJson>(reactRootPkgPath)
     : ({ name: `@rit/react-${react}-root`, private: true, version: '0.0.0', license: 'UNLICENSED' } as PackageJson);
   reactRootPkg.dependencies = {
     ...(reactRootPkg.dependencies ?? {}),
@@ -360,7 +360,7 @@ export async function installDepsForReactVersion(
 
   const reactRootPkgPath = join(reactRootPath, 'package.json');
   const reactRootPkg: PackageJson = existsSync(reactRootPkgPath)
-    ? JSON.parse(readFileSync(reactRootPkgPath, 'utf-8'))
+    ? parseJson(reactRootPkgPath)
     : { name: `@rit/react-${args.react}-root`, private: true, version: '0.0.0', license: 'UNLICENSED' };
   reactRootPkg.dependencies = {
     ...(reactRootPkg.dependencies ?? {}),
