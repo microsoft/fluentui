@@ -206,6 +206,45 @@ async function installDependenciesAtReactRoot(rootPath: string, opts: { scaffold
   }
 }
 
+type EnsureDepsMode =
+  | { kind: 'reuse-run'; projectId: string }
+  | { kind: 'prepare-only-no-install' }
+  | { kind: 'prepare-install'; scaffoldRoot: string }
+  | { kind: 'run-install'; scaffoldRoot: string };
+
+async function ensureDependencies(params: {
+  reactRootPath: string;
+  react: ReactVersion;
+  logger: Logger;
+  mode: EnsureDepsMode;
+}): Promise<void> {
+  const nodeModulesDir = join(params.reactRootPath, 'node_modules');
+  if (existsSync(nodeModulesDir)) {
+    // already installed
+    return;
+  }
+
+  switch (params.mode.kind) {
+    case 'reuse-run':
+    case 'prepare-only-no-install': {
+      const isReuse = params.mode.kind === 'reuse-run';
+      const abortContext = isReuse ? 'run on existing project' : 'prepare-only';
+      const usageContext = isReuse ? '--run with --project-id.' : '--prepare-only --no-install.';
+      params.logger.warn('🔴 Missing dependencies for React', params.react, 'at:', nodeModulesDir);
+      throw new Error(
+        `Aborting ${abortContext}: Run 'rit --install-deps --react ${params.react}' before using ${usageContext}`,
+      );
+    }
+    case 'prepare-install':
+    case 'run-install': {
+      const action = params.mode.kind === 'prepare-install' ? 'Preparing' : 'Running';
+      params.logger.verbose(`${action}: installing dependencies for React ${params.react}...`);
+      await installDependenciesAtReactRoot(params.reactRootPath, { scaffoldRoot: params.mode.scaffoldRoot });
+      return;
+    }
+  }
+}
+
 export async function setup(
   options: Required<Args>,
   logger: Logger,
@@ -216,8 +255,15 @@ export async function setup(
 }> {
   const { react } = options;
   const { workspaceRoot, scaffoldRoot } = computeRoots(options.cwd);
+  const reactRootPath = join(scaffoldRoot, `react-${react}`);
   // If user wants to reuse an existing prepared project, short-circuit.
   if (options.run.length && options.projectId) {
+    await ensureDependencies({
+      reactRootPath,
+      react,
+      logger,
+      mode: { kind: 'reuse-run', projectId: options.projectId },
+    });
     const projectPath = getPreparedProjectPath({
       react: options.react,
       projectId: options.projectId,
@@ -235,10 +281,16 @@ export async function setup(
     };
   }
 
+  // Guard: user asked to only prepare (scaffold) but also skip installation; we forbid this
+  // when dependencies are not already installed for the shared React root. This avoids creating
+  // orphan scaffold projects that cannot run later.
+  if (options.prepareOnly && options.noInstall) {
+    await ensureDependencies({ reactRootPath, react, logger, mode: { kind: 'prepare-only-no-install' } });
+  }
+
   // Merge builtin defaults with optional user config, detect origin setups and ensure react root exists
   const { projectName, projectRoot, projectPaths } = getProjectInfo(options.cwd);
   const templatePrepared = getPreparedTemplate(react, options.configPath, projectPaths);
-  const reactRootPath = join(scaffoldRoot, `react-${react}`);
   mkdirSync(reactRootPath, { recursive: true });
 
   // Create or update package.json at the react root with the dependencies once.
@@ -325,16 +377,12 @@ export async function setup(
 
   // Install deps, but only for specific flows:
   // - On --prepare-only (default): install unless --no-install is used
-  // - On --install-deps: install and exit (handled in CLI by early return)
   if (options.prepareOnly && !options.noInstall) {
-    await installDependenciesAtReactRoot(reactRootPath, { scaffoldRoot });
+    await ensureDependencies({ reactRootPath, react, logger, mode: { kind: 'prepare-install', scaffoldRoot } });
   }
-  // For normal runs, ensure deps are installed at least once (unless disabled)
+  // - On one shot (default): install unless --no-install is used
   if (!options.prepareOnly && !options.noInstall) {
-    const nodeModulesDir = join(reactRootPath, 'node_modules');
-    if (!existsSync(nodeModulesDir)) {
-      await installDependenciesAtReactRoot(reactRootPath, { scaffoldRoot });
-    }
+    await ensureDependencies({ reactRootPath, react, logger, mode: { kind: 'run-install', scaffoldRoot } });
   }
 
   return {

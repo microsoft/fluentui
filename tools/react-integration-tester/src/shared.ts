@@ -8,7 +8,10 @@ export { type PackageJson };
 /**
  * Parse JSON from a file path with proper error handling
  */
-export function parseJson<T extends object = any>(filePath: string): T {
+export function parseJson<
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  T extends object = any,
+>(filePath: string): T {
   try {
     const content = readFileSync(filePath, 'utf-8');
     return JSON.parse(content);

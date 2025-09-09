@@ -58,8 +58,11 @@ describe('setup()', () => {
 
     mockGitRoot(fs.tempDir);
 
+    // React root with node_modules present to satisfy dependency guard
+    const reactRoot = join(fs.tempDir, 'tmp/rit/react-18');
+    mkdirSync(join(reactRoot, 'node_modules'), { recursive: true });
     // Prepared project under tmp/rit/react-18/origin-proj-react-18-abc123
-    const preparedPath = join(fs.tempDir, 'tmp/rit/react-18/origin-proj-react-18-abc123');
+    const preparedPath = join(reactRoot, 'origin-proj-react-18-abc123');
     mkdirSync(preparedPath, { recursive: true });
     writeFileSync(
       join(preparedPath, 'package.json'),
@@ -111,6 +114,9 @@ describe('setup()', () => {
     writeFileSync(join(fs.tempDir, 'package.json'), JSON.stringify({ name: '@scope/origin-proj' }));
     writeFileSync(join(fs.tempDir, 'tsconfig.lib.json'), JSON.stringify({ extends: './tsconfig.json' }));
     mockGitRoot(fs.tempDir);
+
+    // Ensure react root has node_modules so missing project triggers original missing package error path
+    mkdirSync(join(fs.tempDir, 'tmp/rit/react-18/node_modules'), { recursive: true });
 
     const { setup } = await loadModule();
 
@@ -305,5 +311,59 @@ describe('setup()', () => {
       expect.stringContaining('yarn install'),
       expect.objectContaining({ cwd: join(fs.tempDir, 'tmp/rit/react-18') }),
     );
+  });
+
+  test('fails reuse run when dependencies missing', async () => {
+    fs = new TempFs('rit-setup-reuse-missing-deps');
+    writeFileSync(join(fs.tempDir, 'package.json'), JSON.stringify({ name: '@scope/origin-proj' }));
+    writeFileSync(join(fs.tempDir, 'tsconfig.lib.json'), JSON.stringify({ include: ['src/index.ts'] }));
+    mockGitRoot(fs.tempDir);
+
+    // create prepared project folder WITHOUT node_modules at react root
+    const preparedPath = join(fs.tempDir, 'tmp/rit/react-18/origin-proj-react-18-ci');
+    mkdirSync(preparedPath, { recursive: true });
+    writeFileSync(
+      join(preparedPath, 'package.json'),
+      JSON.stringify({ name: 'origin-proj-react-18-ci', scripts: { test: 'jest' } }),
+    );
+
+    const { setup } = await loadModule();
+    const args: Required<Args> = {
+      react: 18,
+      configPath: '',
+      run: ['test'],
+      verbose: false,
+      cleanup: true,
+      cwd: fs.tempDir,
+      prepareOnly: false,
+      noInstall: false,
+      installDeps: false,
+      projectId: 'ci',
+      force: false,
+    };
+    await expect(setup(args, logger)).rejects.toThrow(/Aborting run on existing project/);
+  });
+
+  test('blocks prepare-only --no-install when deps missing', async () => {
+    fs = new TempFs('rit-setup-prepare-only-no-install-missing-deps');
+    writeFileSync(join(fs.tempDir, 'package.json'), JSON.stringify({ name: '@scope/origin-proj' }));
+    writeFileSync(join(fs.tempDir, 'tsconfig.lib.json'), JSON.stringify({ include: ['src/index.ts'] }));
+    mockGitRoot(fs.tempDir);
+
+    const { setup } = await loadModule();
+    const args: Required<Args> = {
+      react: 18,
+      configPath: '',
+      run: [],
+      verbose: false,
+      cleanup: true,
+      cwd: fs.tempDir,
+      prepareOnly: true,
+      noInstall: true,
+      installDeps: false,
+      projectId: '',
+      force: false,
+    };
+    await expect(setup(args, logger)).rejects.toThrow(/Aborting prepare-only/);
   });
 });
