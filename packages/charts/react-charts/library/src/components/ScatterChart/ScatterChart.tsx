@@ -25,6 +25,7 @@ import {
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfNumericForAreaLineScatterCharts,
   sortAxisCategories,
+  formatDate,
 } from '../../utilities/index';
 import {
   AccessibilityProps,
@@ -48,11 +49,11 @@ import {
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
-  formatDate,
 } from '../../utilities/index';
 import { LineChartPoints } from '../../types/DataPoint';
 import { toImage } from '../../utilities/image-export-utils';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -564,7 +565,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     cy = targetRect.top + targetRect.height / 2;
     updatePosition(cx, cy);
     _uniqueCallOutID = circleId;
-    const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
+    const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
     const xVal = x instanceof Date ? x.getTime() : x;
     const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
     // if no points need to be called out then don't show vertical line and callout card
@@ -597,7 +598,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     mouseEvent: React.MouseEvent<SVGElement>,
   ) {
     mouseEvent?.persist();
-    const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
+    const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
     const xVal = x instanceof Date ? x.getTime() : x;
     const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
     // if no points need to be called out then don't show vertical line and callout card

@@ -9,7 +9,7 @@ import { line as d3Line } from 'd3-shape';
 import { max as d3Max } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { find, YAxisType } from '../../utilities/index';
+import { find, formatDate, YAxisType } from '../../utilities/index';
 import {
   AccessibilityProps,
   CartesianChart,
@@ -45,7 +45,6 @@ import {
   domainRangeOfNumericForAreaLineScatterCharts,
   createStringYAxis,
   useRtl,
-  formatDate,
   getCurveFactory,
   isScatterPolarSeries,
   getDomainPaddingForMarkers,
@@ -55,6 +54,7 @@ import {
 import { ScaleLinear } from 'd3-scale';
 import { toImage } from '../../utilities/image-export-utils';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 enum PointSize {
@@ -1383,7 +1383,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
       const { xAxisCalloutData } = lineChartData![linenumber].data[index as number];
       const formattedDate =
-        xPointToHighlight instanceof Date ? formatDate(xPointToHighlight, props.useUTC) : xPointToHighlight;
+        xPointToHighlight instanceof Date
+          ? formatDateToLocaleString(xPointToHighlight, props.culture, props.useUTC as boolean)
+          : xPointToHighlight;
       const modifiedXVal = xPointToHighlight instanceof Date ? xPointToHighlight.getTime() : xPointToHighlight;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const found: any = find(_calloutPoints, (element: { x: string | number }) => {
@@ -1442,7 +1444,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       cy = targetRect.top + targetRect.height / 2;
       updatePosition(cx, cy);
       _uniqueCallOutID = circleId;
-      const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
+      const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
       const xVal = x instanceof Date ? x.getTime() : x;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
       // if no points need to be called out then don't show vertical line and callout card
@@ -1479,7 +1481,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       lineColor: string,
     ) {
       mouseEvent?.persist();
-      const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
+      const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
       const xVal = x instanceof Date ? x.getTime() : x;
       const yVal = y instanceof Date ? y.getTime() : y;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);

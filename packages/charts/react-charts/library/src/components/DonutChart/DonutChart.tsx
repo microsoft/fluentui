@@ -35,11 +35,11 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const [legend, setLegend] = React.useState<string | undefined>('');
     const [_width, setWidth] = React.useState<number | undefined>(props.width || 200);
     const [_height, setHeight] = React.useState<number | undefined>(props.height || 200);
-    const [activeLegend, setActiveLegend] = React.useState<string>('');
+    const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
     const [color, setColor] = React.useState<string | undefined>('');
     const [xCalloutValue, setXCalloutValue] = React.useState<string>('');
     const [yCalloutValue, setYCalloutValue] = React.useState<string>('');
-    const [selectedLegend, setSelectedLegend] = React.useState<string>('');
+    const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
     const [focusedArcId, setFocusedArcId] = React.useState<string>('');
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ChartDataPoint | undefined>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
@@ -98,19 +98,12 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         const legend: Legend = {
           title: point.legend!,
           color,
-          action: () => {
-            if (selectedLegend === point.legend) {
-              setSelectedLegend('');
-            } else {
-              setSelectedLegend(point.legend!);
-            }
-          },
           hoverAction: () => {
             _handleChartMouseLeave();
             setActiveLegend(point.legend!);
           },
           onMouseOutAction: () => {
-            setActiveLegend('');
+            setActiveLegend(undefined);
           },
         };
         return legend;
@@ -121,10 +114,26 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           centerLegends
           overflowText={props.legendsOverflowText}
           {...props.legendProps}
+          // eslint-disable-next-line react/jsx-no-bind
+          onChange={_onLegendSelectionChange}
           legendRef={_legendsRef}
         />
       );
       return legends;
+    }
+    function _onLegendSelectionChange(
+      selectedLegends: string[],
+      event: React.MouseEvent<HTMLButtonElement>,
+      currentLegend?: Legend,
+    ): void {
+      if (props.legendProps && props.legendProps?.canSelectMultipleLegends) {
+        setSelectedLegends(selectedLegends);
+      } else {
+        setSelectedLegends(selectedLegends.slice(-1));
+      }
+      if (props.legendProps?.onChange) {
+        props.legendProps.onChange(selectedLegends, event, currentLegend);
+      }
     }
 
     function _focusCallback(data: ChartDataPoint, id: string, e: React.FocusEvent<SVGPathElement>): void {
@@ -135,7 +144,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       cx = targetRect.left + targetRect.width / 2;
       cy = targetRect.top + targetRect.height / 2;
       updatePosition(cx, cy);
-      setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
+      setPopoverOpen(_noLegendsHighlighted() || _isLegendHighlighted(data.legend));
       setValue(data.data!.toString());
       setLegend(data.legend);
       setColor(data.color!);
@@ -148,7 +157,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     function _hoverCallback(data: ChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
       if (_calloutAnchorPoint !== data) {
         _calloutAnchorPoint = data;
-        setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
+        setPopoverOpen(_noLegendsHighlighted() || _isLegendHighlighted(data.legend));
         setValue(data.data!.toString());
         setLegend(data.legend);
         setColor(data.color!);
@@ -172,16 +181,22 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     }
 
     function _valueInsideDonut(valueInsideDonut: string | number | undefined, data: ChartDataPoint[]) {
-      const highlightedLegend = _getHighlightedLegend();
-      if (valueInsideDonut !== undefined && (highlightedLegend !== '' || isPopoverOpen)) {
-        let legendValue = valueInsideDonut;
-        data!.map((point: ChartDataPoint, index: number) => {
-          if (point.legend === highlightedLegend || (isPopoverOpen && point.legend === legend)) {
-            legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
+      const highlightedLegends = _getHighlightedLegend();
+      if (valueInsideDonut !== undefined && (highlightedLegends.length === 1 || isPopoverOpen)) {
+        const pointValue = data.find(point => _isLegendHighlighted(point.legend));
+        return pointValue
+          ? pointValue.yAxisCalloutData
+            ? pointValue.yAxisCalloutData
+            : pointValue.data!
+          : valueInsideDonut;
+      } else if (highlightedLegends.length > 0) {
+        let totalValue = 0;
+        data.forEach(point => {
+          if (highlightedLegends.includes(point.legend!)) {
+            totalValue += point.data!;
           }
-          return;
         });
-        return legendValue;
+        return totalValue;
       } else {
         return valueInsideDonut;
       }
@@ -199,10 +214,17 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
      * This function returns
      * the selected legend if there is one
      * or the hovered legend if none of the legends is selected.
-     * Note: This won't work in case of multiple legends selection.
      */
     function _getHighlightedLegend() {
-      return selectedLegend || activeLegend;
+      return selectedLegends.length > 0 ? selectedLegends : activeLegend ? [activeLegend] : [];
+    }
+
+    function _isLegendHighlighted(legend: string | undefined): boolean {
+      return _getHighlightedLegend().includes(legend!);
+    }
+
+    function _noLegendsHighlighted(): boolean {
+      return _getHighlightedLegend().length === 0;
     }
 
     function _isChartEmpty(): boolean {
