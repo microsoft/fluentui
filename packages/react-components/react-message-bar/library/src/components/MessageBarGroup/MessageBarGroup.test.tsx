@@ -74,13 +74,13 @@ describe('MessageBarGroup', () => {
   // Ensures motion components gracefully handle ref forwarding issues
   it('should not crash with invalid children (bug #33914 fix)', () => {
     // Component that doesn't forward refs properly (reproduces the original bug scenario)
-    function NonRefForwardingWrapper(props: any) {
+    const NonRefForwardingWrapper = (props: React.ComponentProps<typeof MessageBarBody>) => {
       return <MessageBarBody {...props} />;
-    }
+    };
 
     const TestComponent = () => (
       <MessageBarGroup>
-        <NonRefForwardingWrapper intent="info">
+        <NonRefForwardingWrapper>
           <MessageBarBody>
             <MessageBarTitle>Test Message</MessageBarTitle>
             This tests the ref forwarding fix.
