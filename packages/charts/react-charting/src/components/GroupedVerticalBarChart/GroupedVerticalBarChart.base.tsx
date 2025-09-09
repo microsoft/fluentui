@@ -268,7 +268,7 @@ export class GroupedVerticalBarChartBase
                 style={{ pointerEvents: 'none' }}
               />
               <g>{this._groupedVerticalBarGraph}</g>
-              <g>{this._createLines(lineData, props.xScale, props.yScalePrimary, props.yScaleSecondary)}</g>
+              {this._createLines(lineData, props.xScale, props.yScalePrimary, props.yScaleSecondary)}
             </>
           );
         }}
@@ -1058,13 +1058,13 @@ export class GroupedVerticalBarChartBase
       dots.push(<g key={`dotGroup-${seriesIdx}`}>{dotGroup}</g>);
     });
 
-    return (
-      <>
-        <g>{lineBorders}</g>
-        <g>{lines}</g>
+    return dots.length > 0 ? (
+      <g>
+        {lineBorders.length > 0 ? <g>{lineBorders}</g> : null}
+        {lines.length > 0 ? <g>{lines}</g> : null}
         <g>{dots}</g>
-      </>
-    );
+      </g>
+    ) : null;
   };
 
   private _onLineHover = (

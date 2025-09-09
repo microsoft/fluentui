@@ -639,6 +639,7 @@ Object {
   "height": 742,
   "hideLegend": true,
   "hideTickOverlap": true,
+  "lineData": Array [],
   "mode": "plotly",
   "roundCorners": true,
   "width": 850,

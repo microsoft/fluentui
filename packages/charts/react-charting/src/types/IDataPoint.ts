@@ -1118,9 +1118,9 @@ export interface IGVBCLinePoints extends Omit<ILineChartPoints, 'data'> {
   data: IGVBCLineDataPoint[];
 }
 
-export interface IStandardDataPoint<T, U> {
-  x: T;
-  y: U;
+export interface IStandardDataPoint<X, Y> {
+  x: X;
+  y: Y;
   onDataPointClick?: () => void;
   xAxisCalloutData?: string;
   yAxisCalloutData?: string;
@@ -1138,15 +1138,15 @@ export interface IStandardSeries {
   onLegendClick?: (selectedLegend: string | null | string[]) => void;
 }
 
-export interface IStandardBarSeries<T, U> extends IStandardSeries {
+export interface IStandardBarSeries<X, Y> extends IStandardSeries {
   type: 'bar';
-  data: IStandardDataPoint<T, U>[];
+  data: IStandardDataPoint<X, Y>[];
   key?: string;
 }
 
-export interface IStandardLineSeries<T, U> extends IStandardSeries {
+export interface IStandardLineSeries<X, Y> extends IStandardSeries {
   type: 'line';
-  data: IStandardDataPoint<T, U>[];
+  data: IStandardDataPoint<X, Y>[];
   gaps?: ILineChartGap[];
   lineOptions?: ILineChartLineOptions;
   hideNonActiveDots?: boolean;
