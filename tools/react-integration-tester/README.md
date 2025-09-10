@@ -1,13 +1,48 @@
 # react-integration-tester (rit)
 
-CLI to scaffold and run integration checks for multiple React majors (17/18/19) using your project test stack. Provides fast reuse of deps + project scaffold to run 3 essential commands (test, e2e, type-check).
+CLI to scaffold and run integration checks for multiple React majors (17/18/19) using YOUR project's existing test tooling (Jest / Cypress / TypeScript). It re‑uses a single shared dependency install per React major and creates cheap throw‑away (or reusable) scaffold projects exposing exactly three scripts: `test`, `type-check`, `e2e`.
 
 ## Essentials
 
 React majors support: 17, 18, 19
 Runners support: `test` (Jest), `type-check` (TypeScript), `e2e` (Cypress)
-Shared root: `./tmp/rit/react-<major>/` (deps installed once)
-Prepared project: `./tmp/rit/react-<major>/<project-id>/`
+Shared root: `<repoRoot>/tmp/rit/react-<major>/` (deps installed once)
+Prepared project naming:
+
+```
+<repoRoot>/tmp/rit/react-<major>/<origin-project-name>-react-<major>-<project-id>
+```
+
+When you omit `--project-id`, a random suffix is used instead of `<project-id>`, e.g.
+
+```
+button-react-18-7423891
+```
+
+This deterministic pattern (when you pass `--project-id`) lets you reliably re‑use a scaffold across multiple `--run` invocations without re‑preparing.
+
+## How it works
+
+```mermaid
+flowchart LR
+  START((Start)) --> A["A: Install dependencies<br/>shared react-<major> root<br/><code>tmp/rit/react-<major></code>"]
+  A --> B["B: Scaffold project<br/><code><origin>-react-<major>-<id></code>"]
+  B --> C{C: Run selected scripts}
+  C -->|test| T["test (Jest)"]
+  C -->|type-check| TC["type-check (tsc)"]
+  C -->|e2e| E2E["e2e (Cypress)"]
+  T --> END((End))
+  TC --> END
+  E2E --> END
+  classDef phase fill:#eef,stroke:#447,stroke-width:1px;
+  class A,B,C phase;
+```
+
+Legend:
+
+- A runs when you use `--install-deps`, or implicitly during a prepare/run unless you pass `--no-install` with prior deps installed.
+- B runs on `--prepare-only` or any one‑shot run without `--project-id` (temporary) or with `--project-id` (reusable).
+- C executes only the scripts you explicitly list via repeated `--run` flags, sequentially.
 
 ## Quick start
 
@@ -34,21 +69,34 @@ rit --react 17 --install-deps
 ## Usage
 
 ```bash
-rit --react <17|18|19> [--project-id <id>] [--config <file>]
-    [--prepare-only [--no-install] | --install-deps | --run <script> ...]
+rit --react <17|18|19> \
+  [--project-id <id>] [--config <file>] [--cwd <path>] \
+  [--prepare-only [--no-install] [--force]] \
+  [--install-deps] \
+  [--run <test|type-check|e2e> ...] \
+  [--cleanup|--no-cleanup] [--verbose]
 ```
 
-Key flags:
+Flag reference (implementation accurate):
 
-- `--react` (required) React major.
-- `--project-id` stable folder name (speeds reuse). Auto-generated if omitted.
-- `--config` path to `rit.config.js`; falls back to local `./rit.config.js`.
-- `--prepare-only` scaffold/update project (no scripts).
-- `--no-install` skip install during prepare (assumes deps present).
-- `--install-deps` install/update deps only, then exit.
-- `--run <script>` run script(s); repeat flag for multiple.
+- `--react` (required for every invocation) React major.
+- `--project-id` stable suffix enabling scaffold reuse. Required when using `--prepare-only`. Optional otherwise (random suffix used if omitted).
+- `--config` path to a config module (CommonJS or ESM). Defaults to `./rit.config.js` if present.
+- `--prepare-only` create/update a scaffold (and install unless `--no-install`). Does NOT run scripts.
+- `--no-install` (only valid with `--prepare-only`) skips dependency installation. Requires that dependencies have already been installed earlier via `--install-deps` for that React major; otherwise it fails fast.
+- `--install-deps` install/update shared deps for the React major root and exit (no scaffold created).
+- `--run <script>` select one or more scripts to execute sequentially. Repeat the flag for multiple (e.g. `--run test --run type-check`). You must list all you want; there is no implicit “run all”.
+- `--force` (with `--prepare-only`) delete existing scaffold with the same computed name before recreating it.
+- `--cleanup` / `--no-cleanup` (default: cleanup) remove the temporary project after running. When reusing via `--run` + `--project-id`, cleanup is effectively a no‑op; the scaffold remains unless you prepared and then ran in one shot without reuse.
+- `--verbose` extra logging including resolved metadata.
+- `--cwd` working directory for discovering the origin project (defaults to process cwd).
 
-Rules: `--run` is mutually exclusive with `--prepare-only` / `--no-install`.
+Rules & guardrails:
+
+- `--run` cannot be combined with `--prepare-only` or `--no-install`.
+- `--prepare-only` requires `--project-id` (deterministic reuse is a core feature).
+- You must pass at least one `--run` OR use `--prepare-only` OR `--install-deps`.
+- Reusing (`--run ... --project-id <id>`) requires that dependencies are already installed for that React root (`rit --install-deps --react <major>` or a prior prepare/run that installed them).
 
 ## Configuration (`rit.config.js`)
 
@@ -100,11 +148,13 @@ module.exports = {
 };
 ```
 
-Script key mapping: `test` → `test`, `typeCheck` → `type-check`, `e2e` → `e2e`.
+Script key mapping (config camelCase → scaffold script name): `test` → `test`, `typeCheck` → `type-check`, `e2e` → `e2e`.
+
+Only these three script names are runnable (`--run` choices). Additional scripts you add to the template are ignored by the CLI selector.
 
 ## Typical CI flow
 
-Install dependencies for your React major under test ( cache warm )
+Install dependencies for your React major under test (cache warm; safe to run repeatedly—it only rewrites/reacts when deps change):
 
 ```bash
 rit --react 18 --install-deps
@@ -113,7 +163,7 @@ rit --react 18 --install-deps
 From project root:
 
 ```bash
-# prepare project with known suffix so we can target it against --run
+# prepare project with known suffix so we can target it against --run (depends already installed)
 rit --react 18 --prepare-only --no-install --project-id ci
 
 # execute following in parallel via your task runner for best performance
@@ -124,23 +174,39 @@ rit --react 18 --project-id ci --run type-check
 ## Multiple runners
 
 ```bash
-# runs test,type-check,e2e in order ( no parallelization )
-rit --react 19 --project-id all --run test --run type-check --run e2e
+rit --react 19 --project-id all --run test --run type-check --run e2e  # runs sequentially
+# Partial subset
+rit --react 19 --project-id fast --run type-check
 ```
+
+## Project naming & reuse
+
+Given a source package `@scope/button` and `--react 18 --project-id demo` the scaffold will live at:
+
+```text
+<repoRoot>/tmp/rit/react-18/button-react-18-demo
+```
+
+Reusing later:
+
+```bash
+rit --react 18 --project-id demo --run test
+```
+
+If you omit `--project-id` the name ends with a random number and is NOT intended for reuse.
 
 ## Troubleshooting
 
-- Reset cache: delete `./tmp/rit/react-<major>/`.
-- Template changed / stale deps: rerun `--install-deps`.
-- Missing script: ensure key exists in `commands` and you invoke kebab-case (`type-check`).
-- Faster local edits: keep the prepared project; only re-run with `--run`.
+- Reset cache (all scaffolds + deps for a major): delete `<repoRoot>/tmp/rit/react-<major>/`.
+- Template or dependency change: run `rit --react <major> --install-deps` (updates root package.json & installs if needed).
+- Missing script: confirm it exists in merged template AND origin project tooling (e.g. Jest/Cypress present). You must invoke with kebab-case (`type-check`).
+- Using `--prepare-only --no-install` without prior `--install-deps` will fail intentionally to prevent unusable scaffolds.
+- Keep a scaffold for iterative local debugging: run with `--no-cleanup` (except when reusing via `--project-id`, cleanup is already a no-op).
+- Force a clean re‑prepare (discard old scaffold): add `--force`.
 
-## Developing this package (monorepo specifics)
+## Contributing
 
-Inside this Nx repo only:
+Inside this repo only:
 
-- Build: `nx build react-integration-tester`
-- Unit tests: `nx test react-integration-tester`
-- CLI e2e tests: `nx test-e2e react-integration-tester`
-
-Outside the repo, these Nx commands are not needed; just use the published CLI.
+- Build: `nx run react-integration-tester:build`
+- Tests: `nx test react-integration-tester:test`
