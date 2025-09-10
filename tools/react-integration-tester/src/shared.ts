@@ -1,9 +1,33 @@
 import { spawn } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { type PackageJson } from 'nx/src/utils/package-json';
 
 export { type PackageJson };
+
+export function serializeJson<T extends object = object>(
+  input: T,
+  options?: {
+    /**
+     * the whitespaces to add as indentation to make the output more readable.
+     * @default 2
+     */
+    spaces?: number;
+  },
+): string {
+  return JSON.stringify(input, null, options?.spaces ?? 2);
+}
+
+export function writeJsonFile<T extends object = object>(
+  path: string,
+  data: T,
+  options?: { appendNewLine?: boolean; spaces?: number },
+) {
+  mkdirSync(dirname(path), { recursive: true });
+  const serializedJson = serializeJson(data, options);
+  const content = options?.appendNewLine ? `${serializedJson}\n` : serializedJson;
+  writeFileSync(path, content, { encoding: 'utf-8' });
+}
 
 /**
  * Parse JSON from a file path with proper error handling
@@ -99,7 +123,7 @@ export function getMergedTemplate(
     overrides = perVersion;
   }
 
-  const merged: { commands: Record<string, string>; dependencies: Record<string, string> } = {
+  const merged = {
     commands: { ...defaults.commands },
     dependencies: { ...defaults.dependencies },
   };

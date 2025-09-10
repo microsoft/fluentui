@@ -5,7 +5,15 @@ import { execSync } from 'node:child_process';
 import * as ejs from 'ejs';
 
 import type { Args, ReactVersion, PackageJson, TsConfig } from './shared';
-import { runCmd, readCommandsFromPreparedProject, getPreparedTemplate, getMergedTemplate, parseJson } from './shared';
+import {
+  runCmd,
+  readCommandsFromPreparedProject,
+  getPreparedTemplate,
+  getMergedTemplate,
+  parseJson,
+  writeJsonFile,
+  serializeJson,
+} from './shared';
 import { type Logger } from './logger';
 
 function findGitRoot(cwd: string) {
@@ -23,11 +31,12 @@ function uniq(prefix: string) {
   return `${prefix}${Math.floor(Math.random() * 10000000)}`;
 }
 
-function computeRoots(cwd: string) {
+function computeRoots(cwd: string, reactVersion: number) {
   const workspaceRoot = findGitRoot(cwd);
   const tmpRoot = join(workspaceRoot, 'tmp');
   const scaffoldRoot = join(tmpRoot, 'rit');
-  return { workspaceRoot, scaffoldRoot } as const;
+  const reactRootPath = join(scaffoldRoot, `react-${reactVersion}`);
+  return { workspaceRoot, scaffoldRoot, reactRootPath } as const;
 }
 
 function createProject(options: {
@@ -107,17 +116,21 @@ function getProjectInfo(cwd: string): {
     throw new Error(`Could not find tsconfig.lib.json at: ${projectPaths.tsConfig}`);
   }
 
-  const packageJson = parseJson(projectPaths.packageJson);
-
   return {
-    projectName: packageJson.name.replace(/^@[a-z-]+\//gi, ''),
+    projectName: getNormalizedProjectName(projectRoot),
     projectRoot,
     projectPaths,
   };
 }
 
+function getNormalizedProjectName(cwd: string): string {
+  const packageJsonPath = join(cwd, 'package.json');
+  const packageJson = parseJson(packageJsonPath);
+  return packageJson.name.replace(/^@[a-z-]+\//gi, '');
+}
+
 function getPreparedProjectPath(params: { react: ReactVersion; projectId: string; cwd: string; scaffoldRoot: string }) {
-  const { projectName } = getProjectInfo(params.cwd);
+  const projectName = getNormalizedProjectName(params.cwd);
   const finalName = `${projectName}-react-${params.react}-${params.projectId}`;
   return join(params.scaffoldRoot, `react-${params.react}`, finalName);
 }
@@ -126,6 +139,59 @@ function renderTemplateToFile(templateFilePath: string, data: Record<string, unk
   const content = readFileSync(templateFilePath, 'utf-8');
   const rendered = ejs.render(content, data, { filename: templateFilePath });
   writeFileSync(outFilePath, rendered);
+}
+
+/**
+ * Create or update the shared React root package.json with the provided dependencies.
+ * Writes only when the file does not exist or dependencies actually change (to avoid race issues on CI).
+ * Returned value indicates whether a write occurred.
+ */
+function upsertReactRootPackageJson(params: {
+  reactRootPath: string;
+  react: ReactVersion;
+  dependencies: Record<string, string>;
+  logger?: Logger;
+}): { wrote: boolean; pkgPath: string } {
+  const { reactRootPath, react, dependencies, logger } = params;
+  mkdirSync(reactRootPath, { recursive: true });
+  const reactRootPkgPath = join(reactRootPath, 'package.json');
+
+  const basePkg: PackageJson = {
+    name: `@rit/react-${react}-root`,
+    private: true,
+    version: '0.0.0',
+    license: 'UNLICENSED',
+  };
+
+  let existingPkg: PackageJson | null = null;
+  if (existsSync(reactRootPkgPath)) {
+    try {
+      existingPkg = parseJson<PackageJson>(reactRootPkgPath);
+    } catch (e) {
+      // If parsing fails we deliberately re-create the file (helps recover from partial writes on CI)
+      logger?.warn?.(`Failed to parse existing react root package.json. Recreating. Path: ${reactRootPkgPath}`);
+    }
+  }
+
+  const prevDeps = existingPkg?.dependencies ?? basePkg.dependencies ?? {};
+  const mergedDeps = { ...prevDeps, ...dependencies };
+  const depsChanged = JSON.stringify(prevDeps) !== JSON.stringify(mergedDeps) || !existsSync(reactRootPkgPath);
+
+  if (depsChanged) {
+    const nextPkg: PackageJson = {
+      ...(existingPkg ?? basePkg),
+      dependencies: mergedDeps,
+    };
+    writeJsonFile(reactRootPkgPath, nextPkg);
+    logger?.verbose?.(
+      `${existingPkg ? 'Updated' : 'Created'} react root package.json (${
+        Object.keys(mergedDeps).length
+      } deps) at ${reactRootPkgPath}`,
+    );
+    return { wrote: true, pkgPath: reactRootPkgPath };
+  }
+  logger?.verbose?.('React root package.json unchanged; no write performed.');
+  return { wrote: false, pkgPath: reactRootPkgPath };
 }
 
 function createProjectPackageJson(options: {
@@ -181,9 +247,13 @@ function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: st
   };
 }
 
-async function installDependenciesAtReactRoot(rootPath: string, opts: { scaffoldRoot: string }) {
+async function installDependenciesAtReactRoot(reactVersionRootPath: string, opts: { scaffoldRoot: string }) {
   // Use a scoped global yarn cache and a global mutex to avoid concurrent cache corruption on CI
   const yarnCacheFolder = join(opts.scaffoldRoot, '.yarn-cache');
+
+  if (!existsSync(join(reactVersionRootPath, 'package.json'))) {
+    throw new Error(`Missing package.json at react root: ${reactVersionRootPath}`);
+  }
 
   mkdirSync(yarnCacheFolder, { recursive: true });
   // small retry loop
@@ -193,7 +263,7 @@ async function installDependenciesAtReactRoot(rootPath: string, opts: { scaffold
     try {
       attempt += 1;
       await runCmd(`yarn install --mutex network --network-timeout 60000 --cache-folder ${yarnCacheFolder}`, {
-        cwd: rootPath,
+        cwd: reactVersionRootPath,
       });
       break;
     } catch (err) {
@@ -207,9 +277,8 @@ async function installDependenciesAtReactRoot(rootPath: string, opts: { scaffold
 }
 
 type EnsureDepsMode =
-  | { kind: 'reuse-run'; projectId: string }
+  | { kind: 'reuse-run' }
   | { kind: 'prepare-only-no-install' }
-  | { kind: 'prepare-install'; scaffoldRoot: string }
   | { kind: 'run-install'; scaffoldRoot: string };
 
 async function ensureDependencies(params: {
@@ -219,7 +288,8 @@ async function ensureDependencies(params: {
   mode: EnsureDepsMode;
 }): Promise<void> {
   const nodeModulesDir = join(params.reactRootPath, 'node_modules');
-  if (existsSync(nodeModulesDir)) {
+  const nodeModulesPackageJson = join(params.reactRootPath, 'package.json');
+  if (existsSync(nodeModulesDir) && existsSync(nodeModulesPackageJson)) {
     // already installed
     return;
   }
@@ -235,10 +305,9 @@ async function ensureDependencies(params: {
         `Aborting ${abortContext}: Run 'rit --install-deps --react ${params.react}' before using ${usageContext}`,
       );
     }
-    case 'prepare-install':
+
     case 'run-install': {
-      const action = params.mode.kind === 'prepare-install' ? 'Preparing' : 'Running';
-      params.logger.verbose(`${action}: installing dependencies for React ${params.react}...`);
+      params.logger.verbose(`Installing dependencies for React ${params.react}...`);
       await installDependenciesAtReactRoot(params.reactRootPath, { scaffoldRoot: params.mode.scaffoldRoot });
       return;
     }
@@ -254,15 +323,15 @@ export async function setup(
   cleanup: () => void;
 }> {
   const { react } = options;
-  const { workspaceRoot, scaffoldRoot } = computeRoots(options.cwd);
-  const reactRootPath = join(scaffoldRoot, `react-${react}`);
+  const { workspaceRoot, scaffoldRoot, reactRootPath } = computeRoots(options.cwd, react);
+
   // If user wants to reuse an existing prepared project, short-circuit.
   if (options.run.length && options.projectId) {
     await ensureDependencies({
       reactRootPath,
       react,
       logger,
-      mode: { kind: 'reuse-run', projectId: options.projectId },
+      mode: { kind: 'reuse-run' },
     });
     const projectPath = getPreparedProjectPath({
       react: options.react,
@@ -291,20 +360,31 @@ export async function setup(
   // Merge builtin defaults with optional user config, detect origin setups and ensure react root exists
   const { projectName, projectRoot, projectPaths } = getProjectInfo(options.cwd);
   const templatePrepared = getPreparedTemplate(react, options.configPath, projectPaths);
-  mkdirSync(reactRootPath, { recursive: true });
 
-  // Create or update package.json at the react root with the dependencies once.
-  const reactRootPkgPath = join(reactRootPath, 'package.json');
-  const reactRootPkg: PackageJson = existsSync(reactRootPkgPath)
-    ? parseJson<PackageJson>(reactRootPkgPath)
-    : ({ name: `@rit/react-${react}-root`, private: true, version: '0.0.0', license: 'UNLICENSED' } as PackageJson);
-  reactRootPkg.dependencies = {
-    ...(reactRootPkg.dependencies ?? {}),
-    ...templatePrepared.dependencies,
-  };
-  writeFileSync(reactRootPkgPath, JSON.stringify(reactRootPkg, null, 2));
+  // install mode ( always creates package.json and installs node_modules -> this is purely for local usage, wont work on CI)
+  if (!options.noInstall) {
+    // one shot mode - scaffold -> install -> run
+    if (options.run.length && !options.projectId) {
+      upsertReactRootPackageJson({
+        reactRootPath,
+        react,
+        dependencies: templatePrepared.dependencies,
+        logger,
+      });
+    } else if (options.prepareOnly) {
+      upsertReactRootPackageJson({
+        reactRootPath,
+        react,
+        dependencies: templatePrepared.dependencies,
+        logger,
+      });
+    }
+    await ensureDependencies({ reactRootPath, react, logger, mode: { kind: 'run-install', scaffoldRoot } });
+  }
 
-  // Prepare project workspace under the react root
+  //
+  // Prepare Testing Project under the react <version> root
+  //
   const { projectPath, projectName: createdProjectName } = createProject({
     projectName,
     react,
@@ -330,7 +410,7 @@ export async function setup(
     },
   };
 
-  logger.verbose('setup metadata:', JSON.stringify(metadata, null, 2));
+  logger.verbose('setup metadata:', serializeJson(metadata));
 
   // 1) Create tsconfig.json from template with EJS
   renderTemplateToFile(
@@ -375,16 +455,6 @@ export async function setup(
     commands: templatePrepared.commands,
   });
 
-  // Install deps, but only for specific flows:
-  // - On --prepare-only (default): install unless --no-install is used
-  if (options.prepareOnly && !options.noInstall) {
-    await ensureDependencies({ reactRootPath, react, logger, mode: { kind: 'prepare-install', scaffoldRoot } });
-  }
-  // - On one shot (default): install unless --no-install is used
-  if (!options.prepareOnly && !options.noInstall) {
-    await ensureDependencies({ reactRootPath, react, logger, mode: { kind: 'run-install', scaffoldRoot } });
-  }
-
   return {
     projectPath,
     commands: templatePrepared.commands,
@@ -402,19 +472,13 @@ export async function installDepsForReactVersion(
   logger: Logger,
 ): Promise<void> {
   const merged = getMergedTemplate(args.react, args.configPath);
-  const { scaffoldRoot } = computeRoots(args.cwd);
-  const reactRootPath = join(scaffoldRoot, `react-${args.react}`);
-  mkdirSync(reactRootPath, { recursive: true });
-
-  const reactRootPkgPath = join(reactRootPath, 'package.json');
-  const reactRootPkg: PackageJson = existsSync(reactRootPkgPath)
-    ? parseJson(reactRootPkgPath)
-    : { name: `@rit/react-${args.react}-root`, private: true, version: '0.0.0', license: 'UNLICENSED' };
-  reactRootPkg.dependencies = {
-    ...(reactRootPkg.dependencies ?? {}),
-    ...merged.dependencies,
-  };
-  writeFileSync(reactRootPkgPath, JSON.stringify(reactRootPkg, null, 2));
+  const { scaffoldRoot, reactRootPath } = computeRoots(args.cwd, args.react);
+  upsertReactRootPackageJson({
+    reactRootPath,
+    react: args.react,
+    dependencies: merged.dependencies,
+    logger,
+  });
 
   logger.verbose(`Installing dependencies under: ${reactRootPath}`);
 

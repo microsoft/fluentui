@@ -348,6 +348,7 @@ describe('rit CLI e2e', () => {
     // Simulate previously installed deps (empty node_modules is enough for guard)
     const reactRoot = join(fs.tempDir, 'tmp/rit/react-18');
     mkdirSync(join(reactRoot, 'node_modules'), { recursive: true });
+    writeFileSync(join(reactRoot, 'package.json'), JSON.stringify({}));
 
     // Step 1: prepare scaffold (no install to keep quick)
     let res = runCLI('--react 18 --prepare-only --project-id ci --no-install', {

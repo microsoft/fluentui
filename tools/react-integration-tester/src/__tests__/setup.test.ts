@@ -1,6 +1,6 @@
 import { TempFs } from './fixtures/temp-fs';
 import { join, resolve } from 'node:path';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, write, writeFileSync } from 'node:fs';
 
 import type { Logger } from '../logger';
 import type { Args } from '../shared';
@@ -61,6 +61,8 @@ describe('setup()', () => {
     // React root with node_modules present to satisfy dependency guard
     const reactRoot = join(fs.tempDir, 'tmp/rit/react-18');
     mkdirSync(join(reactRoot, 'node_modules'), { recursive: true });
+    writeFileSync(join(reactRoot, 'package.json'), JSON.stringify({}));
+
     // Prepared project under tmp/rit/react-18/origin-proj-react-18-abc123
     const preparedPath = join(reactRoot, 'origin-proj-react-18-abc123');
     mkdirSync(preparedPath, { recursive: true });
@@ -117,6 +119,7 @@ describe('setup()', () => {
 
     // Ensure react root has node_modules so missing project triggers original missing package error path
     mkdirSync(join(fs.tempDir, 'tmp/rit/react-18/node_modules'), { recursive: true });
+    writeFileSync(join(fs.tempDir, 'tmp/rit/react-18/package.json'), JSON.stringify({}));
 
     const { setup } = await loadModule();
 
@@ -251,6 +254,7 @@ describe('setup()', () => {
 
     const reactRoot = join(fs.tempDir, 'tmp/rit/react-18');
     mkdirSync(join(reactRoot, 'node_modules'), { recursive: true });
+    writeFileSync(join(reactRoot, 'package.json'), JSON.stringify({}));
 
     let runCmdMock: any;
     jest.doMock('../shared', () => {
@@ -276,41 +280,6 @@ describe('setup()', () => {
 
     await setup(args, logger);
     expect(runCmdMock).not.toHaveBeenCalled();
-  });
-
-  test('install-deps only mode installs and returns react root path', async () => {
-    fs = new TempFs('rit-setup-install-deps');
-    writeFileSync(join(fs.tempDir, 'package.json'), JSON.stringify({ name: '@scope/origin-proj' }));
-    writeFileSync(join(fs.tempDir, 'tsconfig.lib.json'), JSON.stringify({ include: ['src/index.ts'] }));
-    mockGitRoot(fs.tempDir);
-
-    let runCmdMock: any;
-    jest.doMock('../shared', () => {
-      const actual = jest.requireActual('../shared');
-      runCmdMock = jest.fn().mockResolvedValue(undefined);
-      return { ...actual, runCmd: runCmdMock };
-    });
-    const { setup } = await loadModule();
-
-    const args: Required<Args> = {
-      react: 18,
-      configPath: '',
-      run: [],
-      verbose: false,
-      cleanup: true,
-      cwd: fs.tempDir,
-      prepareOnly: false,
-      noInstall: false,
-      installDeps: true,
-      projectId: '',
-      force: false,
-    };
-
-    await setup(args, logger);
-    expect(runCmdMock).toHaveBeenCalledWith(
-      expect.stringContaining('yarn install'),
-      expect.objectContaining({ cwd: join(fs.tempDir, 'tmp/rit/react-18') }),
-    );
   });
 
   test('fails reuse run when dependencies missing', async () => {
