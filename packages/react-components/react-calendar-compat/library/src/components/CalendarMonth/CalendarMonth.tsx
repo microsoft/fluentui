@@ -18,7 +18,7 @@ import { CalendarYear } from '../CalendarYear/CalendarYear';
 import { useCalendarMonthStyles_unstable } from './useCalendarMonthStyles.styles';
 import type { CalendarMonthProps } from './CalendarMonth.types';
 import type { CalendarYearRange, ICalendarYear } from '../CalendarYear/CalendarYear.types';
-import { SlideDown, SlideUp } from '../../utils/motions';
+import { SlideDown, SlideUp, SlideLeft, SlideRight } from '../../utils/motions';
 import { AnimationDirection } from '../../Calendar';
 
 const MONTHS_PER_ROW = 4;
@@ -98,7 +98,10 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
   const animateBackwards = useAnimateBackwards({ navigatedDate });
   // TODO: consider replacing SlideDown/SlideUp with a single motion component
   // that receives animateBackwards in a prop, so the component type isn't changing back and forth.
-  const SlideMotion = animateBackwards ? SlideDown : SlideUp;
+  let SlideMotion = animateBackwards ? SlideDown : SlideUp;
+  if (animationDirection === AnimationDirection.Horizontal) {
+    SlideMotion = animateBackwards ? SlideRight : SlideLeft;
+  }
 
   const selectMonthCallback = (newMonth: number): (() => void) => {
     return () => onSelectMonth(newMonth);

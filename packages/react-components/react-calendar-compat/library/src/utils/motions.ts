@@ -12,3 +12,19 @@ export const SlideDown = createMotionComponentVariant(Slide.In, {
   duration: 367,
   easing: motionTokens.curveDecelerateMax,
 });
+
+export const SlideLeft = createMotionComponentVariant(Slide.In, {
+  fromX: '20px',
+  fromY: '0px',
+  duration: 367,
+  easing: motionTokens.curveDecelerateMax,
+});
+
+export const SlideRight = createMotionComponentVariant(Slide.In, {
+  fromX: '-20px',
+  fromY: '0px',
+  duration: 367,
+  easing: motionTokens.curveDecelerateMax,
+});
+
+// export const CalendarSlide =
