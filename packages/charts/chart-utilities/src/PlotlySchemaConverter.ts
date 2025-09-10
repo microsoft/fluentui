@@ -566,21 +566,23 @@ export const mapFluentChart = (input: any): OutputChartType => {
       trace => trace.type === 'groupedverticalbar' || trace.type === 'verticalstackedbar',
     );
     const containsLines = mappedTraces.some(trace => trace.type === 'line' || trace.type === 'fallback');
-    if (containsBars && containsLines) {
-      const shouldUseGVBC = !mappedTraces.some(trace => trace.type === 'verticalstackedbar');
-      if (shouldUseGVBC) {
+    if (containsLines) {
+      if (containsBars) {
+        const shouldUseGVBC = !mappedTraces.some(trace => trace.type === 'verticalstackedbar');
         return {
           isValid: true,
-          type: 'groupedverticalbar',
+          type: shouldUseGVBC ? 'groupedverticalbar' : 'fallback',
           validTracesInfo: tracesInfo,
         };
       }
 
-      return {
-        isValid: true,
-        type: 'fallback',
-        validTracesInfo: tracesInfo,
-      };
+      if (mappedTraces.some(trace => trace.type === 'fallback')) {
+        return {
+          isValid: true,
+          type: 'fallback',
+          validTracesInfo: tracesInfo,
+        };
+      }
     }
 
     const uniqueTypes = new Set(mappedTraces.map(trace => trace.type));
