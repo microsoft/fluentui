@@ -59,10 +59,6 @@
       "dependsOn": [],
       "cache": true
     },
-    "test-rit--*--prepare": {
-      "dependsOn": ["^build"],
-      "cache": true
-    },
     "e2e": {
       "dependsOn": [],
       "cache": true,
