@@ -16,6 +16,7 @@
     "build-storybook:docsite": {
       "executor": "nx:noop",
       "dependsOn": [
+        "build-storybook",
         "build-storybook:react",
         {
           "projects": ["chart-docsite", "web-components"],

@@ -38,15 +38,25 @@ jobs:
       - name: Build affected storybooks
         if: steps.affected_storybooks_count.outputs.value > 0
         run: |
-          yarn nx run public-docsite-v9:build-storybook
           yarn nx run-many -t build-storybook:docsite --nxBail
+
+      - name: Prepare Artifact
+        if: steps.affected_storybooks_count.outputs.value > 0
+        run: |
+          rm -rf _pages
+          mkdir -p _pages/react _pages/charts _pages/web-components
+
+          cp -R apps/public-docsite-v9/dist/storybook/* _pages/
+          cp -R apps/public-docsite-v9/dist/react/* _pages/react/
+          cp -R apps/chart-docsite/dist/storybook/* _pages/charts/
+          cp -R packages/web-components/dist/storybook/* _pages/web-components
 
       - name: Upload Pages Artifact
         if: steps.affected_storybooks_count.outputs.value > 0
         id: artifact_upload
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './apps/public-docsite-v9/dist/'
+          path: _pages
 
   deploy:
     runs-on: ubuntu-latest
