@@ -336,7 +336,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
     YValueHover,
     hoverXValue,
-    culture: props.culture ?? 'en-us',
+    culture: props.culture,
     isCartesian: true,
     ...props.calloutProps,
     ...getAccessibleDataObject(callOutAccessibilityData, 'text', false),

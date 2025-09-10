@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "remove default culture in v9 charts",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

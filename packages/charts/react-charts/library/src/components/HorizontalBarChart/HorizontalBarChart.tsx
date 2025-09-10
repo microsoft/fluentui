@@ -458,7 +458,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       <ChartPopover
         xCalloutValue={xCalloutValue}
         yCalloutValue={yCalloutValue}
-        culture={props.culture ?? 'en-us'}
+        culture={props.culture}
         clickPosition={clickPosition}
         isPopoverOpen={isPopoverOpen}
         legend={legend!}
