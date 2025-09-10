@@ -226,7 +226,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
     const ariaPositionInSet = group ? itemIndex - group.startIndex + 1 : undefined;
     const ariaSetSize = group ? group.count : undefined;
-    const focusZoneDirection = focusZoneProps ? focusZoneProps.direction : FocusZoneDirection.horizontal;
+    const focusZoneDirection = focusZoneProps?.direction ?? FocusZoneDirection.horizontal;
 
     this._classNames = {
       ...this._classNames,
