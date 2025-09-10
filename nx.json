@@ -128,10 +128,7 @@
     ]
   },
   "release": {
-    "projectsRelationship": "independent",
-    "version": {
-      "preVersionCommand": "yarn nx run-many -t build"
-    }
+    "projectsRelationship": "independent"
   },
   "parallel": 3,
   "useInferencePlugins": false,
