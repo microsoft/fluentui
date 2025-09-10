@@ -14,6 +14,7 @@ function createCollapseAtoms({
   element,
   orientation,
   animateOpacity,
+  fromSize,
 
   // Enter params
   sizeDuration,
@@ -32,7 +33,7 @@ function createCollapseAtoms({
   // ----- ENTER -----
   // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
   const enterAtoms: AtomMotion[] = [
-    sizeEnterAtom({ orientation, duration: sizeDuration, easing, element }),
+    sizeEnterAtom({ orientation, duration: sizeDuration, easing, element, fromSize }),
     whitespaceAtom({ direction: 'enter', orientation, duration: sizeDuration, easing }),
   ];
   // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
@@ -53,7 +54,7 @@ function createCollapseAtoms({
   }
 
   exitAtoms.push(
-    sizeExitAtom({ orientation, duration: exitSizeDuration, easing: exitEasing, element, delay: exitDelay }),
+    sizeExitAtom({ orientation, duration: exitSizeDuration, easing: exitEasing, element, delay: exitDelay, fromSize }),
     whitespaceAtom({
       direction: 'exit',
       orientation,
@@ -75,8 +76,10 @@ function createCollapseAtoms({
  * @param element - The element to apply the collapse motion to
  * @param duration - Time (ms) for the enter transition (expand). Defaults to the `durationNormal` value (200 ms)
  * @param easing - Easing curve for the enter transition. Defaults to the `curveEasyEaseMax` value
+ * @param delay - Time (ms) to delay the enter transition. Defaults to 0
  * @param exitDuration - Time (ms) for the exit transition (collapse). Defaults to the `duration` param for symmetry
  * @param exitEasing - Easing curve for the exit transition. Defaults to the `easing` param for symmetry
+ * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`
  * @param orientation - The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height
  */
@@ -84,10 +87,13 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   element,
   duration = motionTokens.durationNormal,
   easing = motionTokens.curveEasyEaseMax,
+  delay = 0,
   exitDuration = duration,
   exitEasing = easing,
+  exitDelay = delay,
   animateOpacity = true,
   orientation = 'vertical',
+  fromSize = '0px',
 }) => {
   return createCollapseAtoms({
     element,
@@ -99,8 +105,9 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
     exitSizeDuration: exitDuration,
     exitOpacityDuration: exitDuration,
     exitEasing,
-    delay: 0,
-    exitDelay: 0,
+    delay,
+    exitDelay,
+    fromSize,
   });
 };
 
@@ -131,6 +138,7 @@ const collapseDelayedPresenceFn: PresenceMotionFn<CollapseDelayedParams> = ({
   exitDelay = motionTokens.durationSlower,
   animateOpacity = true,
   orientation = 'vertical',
+  fromSize = '0px',
 }) => {
   return createCollapseAtoms({
     element,
@@ -144,6 +152,7 @@ const collapseDelayedPresenceFn: PresenceMotionFn<CollapseDelayedParams> = ({
     exitOpacityDuration,
     exitEasing,
     exitDelay,
+    fromSize,
   });
 };
 
