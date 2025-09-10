@@ -242,6 +242,13 @@ export interface IAreaChartStyleProps extends ICartesianChartStyleProps {
 export interface IAreaChartStyles extends ICartesianChartStyles {
 }
 
+// @public
+export interface IBarSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+    data: IDataPointV2<X, Y>[];
+    key?: string;
+    type: 'bar';
+}
+
 // @public (undocumented)
 export interface IBaseDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
@@ -588,6 +595,29 @@ export interface IDataPoint {
     y: number;
 }
 
+// @public
+export interface IDataPointV2<X extends string | number | Date, Y extends string | number | Date> {
+    callOutAccessibilityData?: IAccessibilityProps;
+    markerSize?: number;
+    onClick?: () => void;
+    text?: string;
+    x: X;
+    xAxisCalloutData?: string;
+    y: Y;
+    yAxisCalloutData?: string;
+}
+
+// @public
+export interface IDataSeries {
+    color?: string;
+    gradient?: [string, string];
+    legend: string;
+    legendShape?: LegendShape;
+    onLegendClick?: (selectedLegend: string | null | string[]) => void;
+    opacity?: number;
+    useSecondaryYScale?: boolean;
+}
+
 // @public (undocumented)
 export interface IDeclarativeChart {
     // (undocumented)
@@ -809,8 +839,7 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     chartTitle?: string;
     culture?: string;
     data?: IGroupedVerticalBarChartData[];
-    // (undocumented)
-    dataV2?: (IStandardBarSeries<string, number> | IStandardLineSeries<string, number>)[];
+    dataV2?: (IBarSeries<string, number> | ILineSeries<string, number>)[];
     enableGradient?: boolean;
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
@@ -1234,6 +1263,16 @@ export interface ILineDataInVerticalStackedBarChart {
     yAxisCalloutData?: string;
 }
 
+// @public
+export interface ILineSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+    data: IDataPointV2<X, Y>[];
+    gaps?: ILineChartGap[];
+    hideInactiveDots?: boolean;
+    lineOptions?: ILineChartLineOptions;
+    onLineClick?: () => void;
+    type: 'line';
+}
+
 // @public (undocumented)
 export interface IMargins {
     bottom?: number;
@@ -1630,70 +1669,6 @@ export interface IStackedBarChartStyles {
     ratioNumerator: IStyle;
     root: IStyle;
     target: IStyle;
-}
-
-// @public (undocumented)
-export interface IStandardBarSeries<X, Y> extends IStandardSeries {
-    // (undocumented)
-    data: IStandardDataPoint<X, Y>[];
-    // (undocumented)
-    key?: string;
-    // (undocumented)
-    type: 'bar';
-}
-
-// @public (undocumented)
-export interface IStandardDataPoint<X, Y> {
-    // (undocumented)
-    callOutAccessibilityData?: IAccessibilityProps;
-    // (undocumented)
-    markerSize?: number;
-    // (undocumented)
-    onDataPointClick?: () => void;
-    // (undocumented)
-    text?: string;
-    // (undocumented)
-    x: X;
-    // (undocumented)
-    xAxisCalloutData?: string;
-    // (undocumented)
-    y: Y;
-    // (undocumented)
-    yAxisCalloutData?: string;
-}
-
-// @public (undocumented)
-export interface IStandardLineSeries<X, Y> extends IStandardSeries {
-    // (undocumented)
-    data: IStandardDataPoint<X, Y>[];
-    // (undocumented)
-    gaps?: ILineChartGap[];
-    // (undocumented)
-    hideNonActiveDots?: boolean;
-    // (undocumented)
-    lineOptions?: ILineChartLineOptions;
-    // (undocumented)
-    onLineClick?: () => void;
-    // (undocumented)
-    type: 'line';
-}
-
-// @public (undocumented)
-export interface IStandardSeries {
-    // (undocumented)
-    color?: string;
-    // (undocumented)
-    gradient?: [string, string];
-    // (undocumented)
-    legend: string;
-    // (undocumented)
-    legendShape?: LegendShape;
-    // (undocumented)
-    onLegendClick?: (selectedLegend: string | null | string[]) => void;
-    // (undocumented)
-    opacity?: number;
-    // (undocumented)
-    useSecondaryYScale?: boolean;
 }
 
 // @public (undocumented)

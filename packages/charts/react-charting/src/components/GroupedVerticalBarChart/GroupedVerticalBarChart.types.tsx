@@ -6,8 +6,8 @@ import {
   ICartesianChartProps,
   IGroupedVerticalBarChartData,
   IGVBarChartSeriesPoint,
-  IStandardBarSeries,
-  IStandardLineSeries,
+  IBarSeries,
+  ILineSeries,
 } from '../../index';
 
 /**
@@ -131,9 +131,10 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
   mode?: 'default' | 'plotly';
 
   /**
-   *
+   * New flexible data prop - supports both bar and line series.
+   * Use `dataV2` instead of `data` when line series are included.
    */
-  dataV2?: (IStandardBarSeries<string, number> | IStandardLineSeries<string, number>)[];
+  dataV2?: (IBarSeries<string, number> | ILineSeries<string, number>)[];
 }
 
 /**

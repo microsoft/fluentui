@@ -819,7 +819,7 @@ export const transformPlotlyJsonToGVBCProps = (
                 )
               : barSeriesColor;
             const opacity = getOpacity(series, xIndex);
-            const yVal: number = series.y![xIndex] as number;
+            const yVal = series.y![xIndex] as number;
 
             return {
               x: x!.toString(),
@@ -860,11 +860,14 @@ export const transformPlotlyJsonToGVBCProps = (
           type: 'line',
           legend,
           legendShape,
-          data: rangeXValues.map((x, i: number) => ({
-            x: x!.toString(),
-            y: rangeYValues[i] as number,
-            yAxisCalloutData: getFormattedCalloutYData(rangeYValues[i] as number, yAxisTickFormat),
-          })),
+          data: rangeXValues.map((x, i: number) => {
+            const yVal = rangeYValues[i] as number;
+            return {
+              x: x!.toString(),
+              y: yVal,
+              yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
+            };
+          }),
           color: rgb(lineColor).copy({ opacity: seriesOpacity }).formatHex8() ?? lineColor,
           lineOptions: {
             ...(lineOptions ?? {}),

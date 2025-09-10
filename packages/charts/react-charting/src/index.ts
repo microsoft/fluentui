@@ -107,10 +107,10 @@ export type {
   IGanttChartDataPoint,
   AxisScaleType,
   AxisProps,
-  IStandardDataPoint,
-  IStandardSeries,
-  IStandardBarSeries,
-  IStandardLineSeries,
+  IDataPointV2,
+  IDataSeries,
+  IBarSeries,
+  ILineSeries,
 } from './types/index';
 export type {
   IChartHoverCardProps,
