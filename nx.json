@@ -20,6 +20,7 @@
     },
     "build-storybook": {
       "dependsOn": [],
+      "outputs": ["{projectRoot}/dist/storybook"],
       "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
       "cache": true
     },
