@@ -80,18 +80,18 @@ export function parseArgs(processArgs: string[]): Required<Args> {
     .help()
     .parse();
 
-  const prepareOnly = (argv['prepare-only'] as boolean | undefined) ?? false;
-  const installFlag = (argv.install as boolean | undefined) ?? true;
+  const prepareOnly = argv['prepare-only'] ?? false;
+  const installFlag = argv.install ?? true;
   const noInstall = !installFlag;
-  const installDeps = (argv['install-deps'] as boolean | undefined) ?? false;
-  const force = (argv.force as boolean | undefined) ?? false;
-  const projectId = argv['project-id'] as string | undefined;
-  const react = argv.react as number | undefined as ReactVersion | undefined;
-  const run = (argv.run as CommandName[] | undefined) ?? [];
-  const verbose = (argv.verbose as boolean | undefined) ?? false;
-  const cleanup = (argv.cleanup as boolean | undefined) ?? true;
+  const installDeps = argv['install-deps'] ?? false;
+  const force = argv.force ?? false;
+  const projectId = argv['project-id'] ?? '';
+  const react = argv.react as ReactVersion | undefined;
+  const run = (argv.run ?? []) as CommandName[];
+  const verbose = argv.verbose ?? false;
+  const cleanup = argv.cleanup ?? true;
   const cwd = argv.cwd ?? process.cwd();
-  const configPath = resolveConfigPath(cwd);
+  const configPath = resolveConfigPath(cwd) ?? '';
 
   // Validate mutually exclusive flags with --run
   if (run.length) {
@@ -118,7 +118,7 @@ export function parseArgs(processArgs: string[]): Required<Args> {
 
   return {
     react,
-    configPath: configPath ?? '',
+    configPath,
     run,
     verbose,
     cleanup,
@@ -126,7 +126,7 @@ export function parseArgs(processArgs: string[]): Required<Args> {
     prepareOnly,
     noInstall,
     installDeps,
-    projectId: projectId ?? '',
+    projectId,
     force,
   } satisfies Required<Args>;
 
