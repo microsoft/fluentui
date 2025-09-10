@@ -733,7 +733,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     function _renderCallout(props?: VSChartDataPoint): JSXElement | null {
       return props ? (
         <ChartPopover
-          culture={props.culture ?? 'en-us'}
+          culture={props.culture}
           XValue={props.xAxisCalloutData}
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}

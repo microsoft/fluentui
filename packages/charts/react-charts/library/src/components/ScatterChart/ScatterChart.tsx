@@ -717,7 +717,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     clickPosition,
     isPopoverOpen,
     isCalloutForStack: true,
-    culture: props.culture ?? 'en-us',
+    culture: props.culture,
     isCartesian: true,
   };
   const tickParams = {
