@@ -13,6 +13,7 @@ import { mergeClasses } from '@griffel/react';
 import type { Day } from '../../utils';
 import type { CalendarDayGridProps } from './CalendarDayGrid.types';
 import { SlideDown, SlideUp } from '../../utils/motions';
+import { AnimationDirection } from '../../Calendar';
 
 export interface DayInfo extends Day {
   onSelected: () => void;
@@ -133,7 +134,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     showWeekNumbers,
     labelledBy,
     lightenDaysOutsideNavigatedMonth,
-    animationDirection,
+    animationDirection = AnimationDirection.Horizontal,
   } = props;
 
   const classNames = useCalendarDayGridStyles_unstable({

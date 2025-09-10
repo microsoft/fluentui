@@ -9,6 +9,7 @@ import { useCalendarDayStyles_unstable } from './useCalendarDayStyles.styles';
 import type { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
 import type { CalendarDayProps, CalendarDayStyles } from './CalendarDay.types';
 import type { JSXElement } from '@fluentui/react-utilities';
+import { AnimationDirection } from '../../Calendar';
 
 /**
  * @internal
@@ -40,7 +41,7 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
     onNavigateDate,
     showWeekNumbers,
     dateRangeType,
-    animationDirection,
+    animationDirection = AnimationDirection.Horizontal,
   } = props;
 
   const classNames = useCalendarDayStyles_unstable({
